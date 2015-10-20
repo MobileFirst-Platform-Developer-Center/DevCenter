@@ -1,2 +1,5 @@
-url: http://mysite.com
 baseurl: /NATHANH
+collections:
+  tutorials:
+    output: true
+    permalink: /tutorials/:path/
