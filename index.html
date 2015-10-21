@@ -1,74 +1,117 @@
 ---
 layout: default
-custom_js:
-- lib/slick-1.5.7/slick/slick.min.js
-- js/home.js
 custom_css:
-- lib/slick-1.5.7/slick/slick.css
-- lib/slick-1.5.7/slick/slick-theme.css
+- css/carousel.css
 ---
-<div id="carousel">
-  <div class="carouselItem">
-    <div class="carouselItemImg">
-      <img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71banner_1.png" alt="71banner_1" />
-    </div>
-    <div>
-      <p class="tagline">Develop, test, manage, and secure your mobile applications</p>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <!-- <img class="first-slide" alt="First slide"> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-7 carousel-caption">
 
-      <a class="button download" href="https://www-01.ibm.com/marketing/iwm/dre/signup?source=comm-mobile&S_PKG=ov36416&dynform=19811&S_CMP=web_dw_rt_swd">Get the Developer Edition</a>
+                        <h1>Develop, test, manage and secure your mobile applications</h1>
 
-      <a class="button stack" href="http://stackoverflow.com/search?q=%5B*worklight*%5D+or+%5B*mobilefirst*%5D+is%3Aquestion">Find answers on Stack Overflow</a>
-    </div>
-  </div>
+                        <p><a class="btn btn-lg btn-default" href="#" role="button">Get the Developer Edition</a></p>
+                        <p><a class="btn btn-lg btn-default stack" href="#" role="button">Find answers on Stack Overflow</a></p>
 
-  <div class="carouselItem">
-    <div class="carouselItemImg">
-      <img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71banner_3.png" alt="71banner_3" />
-    </div>
-    <div>
-      <p class="tagline">MobileFirst Platform Foundation on IBM Containers</p>
+                    </div>
+                    <div class="hidden-xs col-md-5 carousel-caption">
 
-      <a class="button containers" href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/">Evaluate Foundation on IBM Containers</a>
-    </div>
-  </div>
-  <div class="carouselItem">
-    <div class="carouselItemImg">
-      <img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71banner_2.png" alt="71banner_2" />
-    </div>
-    <div>
-      <p class="tagline">Learn MobileFirst Platform with self-paced instructional videos</p>
+                        <img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71banner_1.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <!-- <img class="second-slide" src="#" alt="Second slide"> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 carousel-caption">
 
-      <a class="button labs" href="/https://developer.ibm.com/mobilefirstplatform/labs">Visit the Labs</a>
+                        <h1>MobileFirst Platform Foundation on IBM Containers</h1>
+
+                        <p><a class="btn btn-lg btn-default containers" href="#" role="button">Experience Foundation on IBM Containers</a></p>
+
+                    </div>
+                    <div class="hidden-xs col-md-5 carousel-caption">
+
+                        <img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71banner_3.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <!-- <img class="third-slide" src="#" alt="Third slide"> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 carousel-caption">
+
+                        <h1>Experience MobileFirst Platform with self-paced instructional videos</h1>
+
+                        <p><a class="btn btn-lg btn-default" href="#" role="button">Visit the Labs</a></p>
+
+                    </div>
+                    <div class="hidden-xs col-md-5 carousel-caption">
+
+                        <img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71banner_2.png"/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
 </div>
+<!-- /.carousel -->
 
-<div id="middleMenuBar">
-  <ul class="middleNav">
-    <li><a href="https://developer.ibm.com/mobilefirstplatform/get-introduced"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71getintroduced.png" alt="_GetIntroduced" width="64" height="64" /></a>
-      <h2><a href="https://developer.ibm.com/mobilefirstplatform/get-introduced">Get Introduced</a></h2>
-      <p>Introduction to MobileFirst Platform offerings.</p>
-    </li>
 
-            <li class="middleNav-item"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71getstarted.png" alt="_GetStarted" width="64" height="64" /></a>
-      <h2><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started">Get Started</a></h2>
-      <p>Follow our tutorials, and you'll be up and running in no time.</p>
-    </li>
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4">
+            <img class="img-circle hidden-xs" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2><a href="#">Get Introduced</a></h2>
+            <p>Introduction to MobileFirst Platform offerings.</p>
+            <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+        </div>
+        <div class="col-md-4">
+            <img class="img-circle hidden-xs" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2><a href="#">Get Started</a></h2>
+            <p>Follow our tutorials, and you’ll be up and running in no time.</p>
+            <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+        </div>
+        <div class="col-md-4">
+            <img class="img-circle hidden-xs" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2><a href="#">Get Docs</a></h2>
+            <p>Access full product documentation.</p>
+            <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+        </div>
+        <div class="col-md-4">
+            <img class="img-circle hidden-xs" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <h2><a href="#">Get Help</a></h2>
+            <p>Find answers to your questions and more…</p>
+            <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
+        </div>
+    </div>
 
-            <li class="middleNav-item"><a href="http://www-01.ibm.com/support/knowledgecenter/SSNJXP/welcome.html"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71getdocs.png" alt="_GetDocs" width="64" height="64" /></a>
-      <h2><a href="http://www.ibm.com/support/knowledgecenter/SSVNYL">Get Docs</a></h2>
-      <p>Access full product documentation.</p>
-    </li>
+    <hr>
 
-            <li class="middleNav-item"><a href="https://developer.ibm.com/mobilefirstplatform/help"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/71gethelp.png" alt="_GetHelp" width="64" height="64" /></a>
-      <h2><a href="https://developer.ibm.com/mobilefirstplatform/help/">Get Help</a></h2>
-      <p>Find answers to your questions and more...</p>
-    </li>
-  </ul>
+    <h1>Recent Updates</h1>
+    <div style="height: 100px">BLOG POSTS</div>
+
+
 </div>
-<hr>
-<div id="recentUpdates">
-  <h2>Recent Updates</h2>
-</div>
-
-{{site.tutorials}}
