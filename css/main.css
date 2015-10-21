@@ -22,6 +22,10 @@ hr {
     margin: auto;
 }
 
+.get-x {
+    background-color: #e7e7e7;
+}
+
 /* START BUTTONS */
 
 .btn {
@@ -120,19 +124,23 @@ footer ul {
     list-style-type: none;
     margin: 0 0 0 140px;
     padding: 10px;
+    color: #999;
 }
 
 footer ul li {
     display: inline;
     margin: 0;
-    padding-right: 20px;
+}
+footer ul li:first-child a {
+    padding-left: 0px;
 }
 
 footer ul li a {
     color: #999;
+    padding: 0 10px 0 10px;
 }
 
-footer ul li a:hover {
+footer ul li a:hover, footer ul li a:active {
     color: white;
     text-decoration: none;
 }
