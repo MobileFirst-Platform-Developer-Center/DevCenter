@@ -45,9 +45,11 @@
  }
  .carousel-indicators li {
      background-color: white;
+     opacity: 0.5;
  }
  .carousel-indicators .active {
      background-color: white;
+     opacity: 1.0;
  }
 
  /* RESPONSIVE CSS
