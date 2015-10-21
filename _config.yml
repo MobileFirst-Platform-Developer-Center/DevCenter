@@ -2,4 +2,4 @@ baseurl: /NATHANH
 collections:
   tutorials:
     output: true
-    permalink: /tutorials/:path/
+    permalink: /tutorials/:path.html
