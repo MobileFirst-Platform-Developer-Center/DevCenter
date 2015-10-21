@@ -1,12 +1,12 @@
-/* GLOBAL STYLES
+ /*GLOBAL STYLES
 -------------------------------------------------- */
 /* Padding below the footer and lighter body text */
 
-body {
+/*body {
   padding-bottom: 40px;
   color: #5a5a5a;
 
-}
+}*/
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -15,7 +15,7 @@ body {
 .carousel {
   /*height: 500px;*/
   height: 330px;
-  margin-bottom: 60px;
+  margin-bottom: 70px;
 }
 
 .carousel .carousel-control.left, .carousel .carousel-control.right{
@@ -126,13 +126,18 @@ body {
 }
 
 .carousel-indicators {
-    bottom: -46px;
+    bottom: -70px;
+    background-color: #5aaafa;
+    padding: 10px;
+    width: 100%;
+    left: auto;
+    margin-left: 0;
 }
 
 .carousel-indicators li {
-    background-color: black;
+    background-color: white;
 }
 
 .carousel-indicators .active {
-    background-color: black;
+    background-color: white;
 }

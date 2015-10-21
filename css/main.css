@@ -1,8 +1,11 @@
-/* Move down content because we have a fixed navbar that is 50px tall */
+
 body {
   padding-top: 50px;
   padding-bottom: 20px;
 }
+
+
+/* START BUTTONS */
 
 .btn {
     display: block;
@@ -35,9 +38,13 @@ body {
 	color: white;
 }
 
+/* END BUTTONS */
+
 .logo {
     padding-top: 13px;
 }
+
+/* START MID-SCREEN MENU */
 
 .img-circle {
     border-radius: 50%;
@@ -47,6 +54,8 @@ body {
 .col-md-3 h2 {
     text-align: center;
 }
+
+/* END MID-SCREEN MENU */
 
 footer {
 }
