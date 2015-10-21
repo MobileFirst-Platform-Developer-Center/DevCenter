@@ -132,7 +132,12 @@ footer ul li {
     margin: 0;
 }
 footer ul li:first-child a {
-    padding-left: 0px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.footer-fix {
+    padding-right: 10px;
 }
 
 footer ul li a {
