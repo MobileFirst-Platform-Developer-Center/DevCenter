@@ -17,6 +17,10 @@ body {
   height: 330px;
   margin-bottom: 60px;
 }
+
+.carousel .carousel-control.left, .carousel .carousel-control.right{
+  background-image: none;
+}
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
