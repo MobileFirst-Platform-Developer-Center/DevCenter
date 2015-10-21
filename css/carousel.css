@@ -126,5 +126,13 @@ body {
 }
 
 .carousel-indicators {
-    bottom: -46px
+    bottom: -46px;
+}
+
+.carousel-indicators li {
+    background-color: black;
+}
+
+.carousel-indicators .active {
+    background-color: black;
 }
