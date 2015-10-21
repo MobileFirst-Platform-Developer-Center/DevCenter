@@ -74,6 +74,7 @@
  .carousel-caption h1 {
      color: black;
      text-align: left;
+     text-shadow: none;
  }
  @media (min-width: 768px) {
      /* Navbar positioning foo */
