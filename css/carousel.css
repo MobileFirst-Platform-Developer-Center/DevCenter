@@ -12,7 +12,7 @@
 
  .carousel {
      /*height: 500px;*/
-     height: 270px;
+     height: 290px;
      margin-bottom: 70px;
  }
  .carousel .carousel-control.left, .carousel .carousel-control.right {
@@ -35,6 +35,7 @@
  .carousel .item img {
      height: 250px;
      width: 450px;
+     margin-top: 24px;
  }
  .carousel-inner > .item > img {
      position: absolute;
