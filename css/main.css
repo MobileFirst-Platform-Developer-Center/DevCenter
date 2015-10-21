@@ -5,6 +5,16 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+.logo {
+    margin-top:-2px;
+    font-size:140%;
+}
+.mobilefirst {
+    font-weight:bold;
+}
+.dev {
+    color:#236B8E;
+}
 
 /* START BUTTONS */
 
