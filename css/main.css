@@ -33,6 +33,7 @@ body {
 .btn.stack {
 	background: none;
 	color: #325c80;
+    margin-top: -10px;
 }
 
 .btn.stack:hover {
