@@ -1,17 +1,8 @@
- /*GLOBAL STYLES
--------------------------------------------------- */
- /* Padding below the footer and lighter body text */
- /*body {
-  padding-bottom: 40px;
-  color: #5a5a5a;
-
-}*/
  /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
  /* Carousel base class */
 
  .carousel {
-     /*height: 500px;*/
      height: 290px;
      margin-bottom: 70px;
  }
@@ -22,16 +13,15 @@
 
  .carousel-caption {
      z-index: 10;
+     font-family: "HelveticaNeue-UltraLight", "Helvetica Neue Light", "Helvetica Neue", "Open Sans", Helvetica, Arial, "Lucida Grande", sans-serif;
+     font-weight: 300;
  }
  /* Declare heights because of positioning of img element */
 
  .carousel .item {
-     /*height: 500px;*/
      height: 330px;
-     /*background-color: #777;*/
      background: linear-gradient(#c0e6ff, #ffffff);
  }
-
  .carousel .item img {
      height: 250px;
      width: 450px;
@@ -42,38 +32,8 @@
      top: 0;
      left: 0;
      min-width: 100%;
-     /*height: 500px;*/
      height: 330px;
  }
- /* MARKETING CONTENT
--------------------------------------------------- */
- /* Center align the text within the three columns below the carousel */
-
- /*.marketing .col-lg-4 {
-     margin-bottom: 20px;
-     text-align: center;
- }
- .marketing h2 {
-     font-weight: normal;
- }
- .marketing .col-lg-4 p {
-     margin-right: 10px;
-     margin-left: 10px;
- }*/
- /* Featurettes
-------------------------- */
-
- /*.featurette-divider {
-     margin: 80px 0;*/
-     /* Space out the Bootstrap <hr> more */
- /*}*/
- /* Thin out the marketing headings */
-
- /*.featurette-heading {
-     font-weight: 300;
-     line-height: 1;
-     letter-spacing: -1px;
- }*/
 
  .carousel-indicators {
      bottom: -64px;

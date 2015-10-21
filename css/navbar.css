@@ -1,6 +1,5 @@
 body {
   padding-top: 0;
-  padding-bottom: 20px;
 }
 
 .navbar {
@@ -33,6 +32,10 @@ body {
     background-color: white;
 }
 
+.dropdown-menu {
+    opacity: 0.97;
+}
+
 /* multi-level */
 .dropdown-submenu {
     position: relative;
@@ -43,9 +46,8 @@ body {
     left: 100%;
     margin-top: -6px;
     margin-left: -1px;
-    -webkit-border-radius: 0 6px 6px 6px;
-    -moz-border-radius: 0 6px 6px;
     border-radius: 0 6px 6px 6px;
+    opacity: 0.97;
 }
 
 .dropdown-submenu:hover>.dropdown-menu {
