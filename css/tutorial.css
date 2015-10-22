@@ -1,3 +1,39 @@
+
+.tutorial h2 {
+    font-size: 200%;
+    font-weight: bold;
+}
+
+.tutorial h3 {
+    font-size: 150%;
+    font-weight: bold;
+    margin: 30px 0 10px 0;
+    padding: 0;
+}
+
+.tutorial h4 {
+    font-size: 140%;
+}
+
+.tutorial p {
+    font-size: 110%;
+}
+
+.tutorial ol {
+    line-height: 1.7em;
+}
+
+.tutorial img {
+    width: 680px;
+    height: 480px;
+}
+
+.tutorial blockquote {
+    background-color: #DDDDDD;
+}
+
+
+
 .tutorial .col-sm-2 {
     padding: 23px 0 0 7px;
 }
