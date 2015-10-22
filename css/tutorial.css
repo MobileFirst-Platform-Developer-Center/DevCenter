@@ -28,6 +28,13 @@
     color: black;
 }
 
+.tutorial .col-sm-2 .navmenu-default .navmenu-nav.dropdown-menu > li.active{
+  background-color: #f5f5f5;
+}
+.tutorial .col-sm-2 .navmenu-default .navmenu-nav.dropdown-menu > li.active a{
+  background-color: inherit;
+}
+
 .tutorial .col-sm-2 .navmenu-default .navmenu-nav.dropdown-menu {
     background-color: inherit;
 }
