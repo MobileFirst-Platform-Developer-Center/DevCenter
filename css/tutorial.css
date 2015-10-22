@@ -1,49 +1,46 @@
 .tutorial .col-sm-2 {
-  padding-left: 0;
-  padding-right: 0;
+    padding: 23px 0 0 7px;
 }
-
 .tutorial .navmenu {
-  width: 100%;
-  border-style: none;
-  background-color: inherit;
+    width: 100%;
+    border-style: none;
+    background-color: inherit;
 }
 
-.tutorial .col-sm-2 h1 {
+/*.tutorial .col-sm-2 h1 {
     font-size:150%;
     margin-left: 20px;
     margin-top: 21px;
     padding:0;
-}
+}*/
 
 .tutorial .col-sm-2 ul {
     list-style-type: none;
     padding: 0 0 0 20px;
 }
-
 .tutorial .col-sm-2 ul.dropdown-menu.navmenu-nav {
     padding: 0;
     margin-bottom: 10px;
 }
-
 .tutorial .col-sm-2 ul a {
     padding: 0 0 10px 0;
     margin-bottom: 10px;
-    font-size: 110%;
-    margin:0;
+    font-size: 115%;
+    margin: 0;
+}
+
+.tutorial .col-sm-2 ul a:hover {
+    /*text-decoration: underline;*/
+    color: black;
 }
 
 .tutorial .col-sm-2 .navmenu-default .navmenu-nav.dropdown-menu {
     background-color: inherit;
 }
-
-.tutorial .col-sm-2 .navmenu-default .navmenu-nav.dropdown-menu li  {
+.tutorial .col-sm-2 .navmenu-default .navmenu-nav.dropdown-menu li {
     padding: 0 0 0 20px;
     border-left: 2px solid black;
 }
-
-
 .tutorial .col-sm-2 .navmenu-default .navmenu-nav.dropdown-menu li a {
-
     font-size: 100%;
 }
