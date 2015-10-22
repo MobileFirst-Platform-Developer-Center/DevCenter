@@ -24,8 +24,7 @@
 }
 
 .tutorial img {
-    width: 680px;
-    height: 480px;
+    max-width: 800px;
 }
 
 .tutorial blockquote {
