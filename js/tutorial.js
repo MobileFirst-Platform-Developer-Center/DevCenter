@@ -8,7 +8,10 @@ $('.tutorial .col-sm-2 .navmenu-default li').on({
       this.closable = false;
     },
     "click":             function() {
-      this.closable = true;
+      var openedItems = $('.tutorial .col-sm-2 .navmenu-default li.open');
+      if(openedItems.length){
+        openedItems[0].closable = true;
+      }
     },
     "hide.bs.dropdown":  function() {
       return this.closable;
