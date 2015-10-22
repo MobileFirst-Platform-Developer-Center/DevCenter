@@ -28,17 +28,31 @@ body {
   width: auto;
 }
 
-.dropdown-menu > li > a:hover {
-    background-color: white;
+.dropdown-menu > li:not(.divider){
+  padding: 5px 0 5px 0;
+}
+.dropdown-menu > li:hover:not(.divider){
+  background-color: #f5f5f5;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus{
+  background-color: inherit;
+}
+
+.dropdown-menu .divider {
+  margin: 0;
 }
 
 .dropdown-menu {
     opacity: 0.97;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 /* multi-level */
 .dropdown-submenu {
     position: relative;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .dropdown-submenu>.dropdown-menu {
