@@ -6,6 +6,25 @@ body {
   margin-bottom: 0;
 }
 
+/* START LOGO */
+
+.navbar .logo {
+  margin-top: -2px;
+  font-size: 140%;
+  color: black;
+}
+.navbar .logo .mobilefirst {
+  font-weight: bold;
+}
+.navbar .logo .dev {
+  color: #236B8E;
+}
+
+.navbar .navbar-header a:hover {
+  text-decoration: none;
+}
+/* END LOGO */
+
 /* Special class on .container surrounding .navbar, used for positioning it into place. */
 .navbar-wrapper {
   position: absolute;
