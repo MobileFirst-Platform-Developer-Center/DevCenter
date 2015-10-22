@@ -10,7 +10,9 @@
                 <ul class="dropdown-menu navmenu-nav" role="menu">
                   {% for topic in category.children %}
                     {% capture combined_path %}{{version.path}}{{category.path}}{{topic.path}}{% endcapture %}
-                    <li><a href="{{site.baseurl}}{{combined_path}}">{{topic.name}}</a></li>
+                    <li {% if page.url contains combined_path %} class="active" {% endif %}>
+                      <a href="{{site.baseurl}}{{combined_path}}">{{topic.name}}</a>
+                    </li>
                   {% endfor %}
                 </ul>
               </li>
