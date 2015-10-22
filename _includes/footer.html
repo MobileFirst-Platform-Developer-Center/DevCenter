@@ -26,3 +26,8 @@
     <script src='{{site.baseurl}}/{{ js_file }}' type="text/javascript"></script>
   {% endfor %}
 {% endif %}
+{% if layout.custom_js %}
+  {% for js_file in layout.custom_js %}
+    <script src='{{site.baseurl}}/{{ js_file }}' type="text/javascript"></script>
+  {% endfor %}
+{% endif %}

@@ -24,3 +24,8 @@
     <link rel="stylesheet" href="{{site.baseurl}}/{{ stylesheet }}" media="screen" type="text/css">
   {% endfor %}
 {% endif %}
+{% if layout.custom_css %}
+  {% for stylesheet in layout.custom_css %}
+    <link rel="stylesheet" href="{{site.baseurl}}/{{ stylesheet }}" media="screen" type="text/css">
+  {% endfor %}
+{% endif %}
