@@ -16,7 +16,7 @@
         },
         {
           "name": "Quick start",
-          "path": "/xxx"
+          "path": "/hello-world"
         },
         {
           "name": "Configuring the MobileFirst SDK",
