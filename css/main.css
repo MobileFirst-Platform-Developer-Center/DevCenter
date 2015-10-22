@@ -10,6 +10,19 @@ hr {
   margin: auto;
 }
 
+/* START HELP PAGE */
+
+h4.help {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+
+.col-md-12.help {
+    width: 390px;
+}
+
+/* END HELP PAGE */
+
 /* START BUTTONS */
 
 .btn {
