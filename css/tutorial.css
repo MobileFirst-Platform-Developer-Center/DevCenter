@@ -1,0 +1,10 @@
+.tutorial .col-sm-2 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.tutorial .navmenu {
+  width: 100%;
+  border-style: none;
+  background-color: inherit;
+}

@@ -1,12 +1,17 @@
 ---
 layout: default
+custom_css:
+- lib/jasny-bootstrap/css/jasny-bootstrap.css
+- css/tutorial.css
+custom_js:
+- lib/jasny-bootstrap/js/jasny-bootstrap.js
 ---
-<div class="container-fluid">
+<div class="container-fluid tutorial">
   <div class="row">
-    <div class="col-xs-2">
+    <div class="hidden-xs col-sm-2">
       {% include tutorialNav.html %}
     </div>
-    <div class="col-xs-10">
+    <div class="col-sm-10">
       <h1>{{ page.title}}</h1>
       {{ content }}
     </div>
