@@ -4,6 +4,8 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+/* START LOGO */
+
 .logo {
     margin-top: -2px;
     font-size: 140%;
@@ -15,15 +17,13 @@ body {
     color: #236B8E;
 }
 
+/* END LOGO */
+
 hr {
     border-top: 1px solid black;
     width: 100%;
     left: auto;
     margin: auto;
-}
-
-.get-x {
-    background-color: #e7e7e7;
 }
 
 /* START BUTTONS */
@@ -116,14 +116,16 @@ hr {
 
 /* END BLOG POSTS AREA */
 
+/* START FOOTER */
+
 footer {
     background: linear-gradient(to bottom, #111111 0%, #242528 10%, #313236 100%);
 }
 
 footer ul {
     list-style-type: none;
-    margin: 0 0 0 140px;
-    padding: 10px;
+    margin: 0 0 0 10px;
+    padding: 20px 0 21px 0;
     color: #999;
 }
 
@@ -131,6 +133,7 @@ footer ul li {
     display: inline;
     margin: 0;
 }
+
 footer ul li:first-child a {
     padding-left: 0;
     padding-right: 0;
@@ -149,3 +152,5 @@ footer ul li a:hover, footer ul li a:active {
     color: white;
     text-decoration: none;
 }
+
+/* END FOOTER */
