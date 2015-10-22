@@ -1,3 +1,19 @@
+
+html,
+body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
 body {
   padding-top: 50px;
   font-family: Helvetica, Arial, sans-serif;
@@ -21,6 +37,9 @@ h4.help {
     width: 390px;
 }
 
+.container.help {
+    height: inherit;
+}
 /* END HELP PAGE */
 
 /* START BUTTONS */
@@ -109,6 +128,7 @@ h4.help {
 
 footer {
   background: linear-gradient(to bottom, #111111 0%, #242528 10%, #313236 100%);
+  height: 42px;
 }
 footer ul {
   list-style-type: none;
