@@ -1,0 +1,126 @@
+{
+  "name": "8.0",
+  "path": "/tutorials/en/8.0",
+  "children": [
+    {
+      "name": "Foundation",
+      "path": "/foundation",
+      "children": [
+        {
+          "name": "Overview",
+          "path": "/index.html"
+        },
+        {
+          "name": "Setting up the development environment",
+          "path": "/xxx"
+        },
+        {
+          "name": "Quick start",
+          "path": "/xxx"
+        },
+        {
+          "name": "Configuring the MobileFirst SDK",
+          "path": "/xxx"
+        },
+        {
+          "name": "Client-side development",
+          "path": "/xxx"
+        },
+        {
+          "name": "Server-side development",
+          "path": "/xxx"
+        },
+        {
+          "name": "Notifications",
+          "path": "/xxx"
+        },
+        {
+          "name": "Authentication and security",
+          "path": "/xxx"
+        },
+        {
+          "name": "Advanced topics",
+          "path": "/xxx"
+        },
+        {
+          "name": "Moving to production",
+          "path": "/xxx"
+        },
+      ]
+    },
+    {
+      "name": "IBM Countainers",
+      "path": "/containers",
+      "children": [
+        {
+          "name": "Overview",
+          "path": "/index.html"
+        },
+        {
+          "name": "Evaluating Foundation on IBM Containers",
+          "path": "/xxx"
+        },
+        {
+          "name": "Running Foundation on IBM Containers",
+          "path": "/xxx"
+        },
+        {
+          "name": "Foundation on IBM Containers sample app",
+          "path": "/xxx"
+        },
+      ]
+    },
+    {
+      "name": "Quality Assurance",
+      "path": "/mqa",
+      "children": [
+        {
+          "name": "Overview",
+          "path": "/index.html"
+        },
+        {
+          "name": "MQA in Cordova applications",
+          "path": "/xxx"
+        },
+        {
+          "name": "MQA in iOS applications",
+          "path": "/xxx"
+        },
+        {
+          "name": "MQA in Android applications",
+          "path": "/xxx"
+        },
+      ]
+    },
+    {
+      "name": "Cloudant Local Data Layer",
+      "path": "/cloudant",
+      "children": [
+        {
+          "name": "Overview",
+          "path": "/index.html"
+        },
+      ]
+    },
+    {
+      "name": "Application Scanning",
+      "path": "/xxxx",
+      "children": [
+        {
+          "name": "Overview",
+          "path": "/index.html"
+        },
+      ]
+    },
+    {
+      "name": "Presence Insights",
+      "path": "/xxxx",
+      "children": [
+        {
+          "name": "Overview",
+          "path": "/index.html"
+        },
+      ]
+    },
+  ]
+}
