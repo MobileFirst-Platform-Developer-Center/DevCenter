@@ -27,6 +27,7 @@
     margin-bottom: 10px;
     font-size: 115%;
     margin: 0;
+    white-space: normal;
 }
 
 .tutorial .col-sm-2 ul a:hover {
