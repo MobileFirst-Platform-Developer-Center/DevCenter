@@ -83,5 +83,9 @@
          line-height: 1.4;
          color: black;
      }
+
+     .carousel-caption h1 {
+         margin-bottom: 20px;
+     }
  }
  @media (min-width: 992px) {}
