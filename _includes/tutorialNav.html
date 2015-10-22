@@ -2,13 +2,15 @@
     <ul>
       {% for version_hash in site.data.tutorials.menus %}
         {% assign version = version_hash[1] %}
-          {% if version.name == "8.0"%}
+          {% if page.url contains version.path %}
             {% for category in version.children %}
-              <li>
+              {% capture combined_path %}{{version.path}}{{category.path}}{% endcapture %}
+              <li {% if page.url contains combined_path %} class="open" {% endif %}>
                 <a href="#" class="navmenu-brand dropdown-toggle" data-toggle="dropdown">{{category.name}}</a>
                 <ul class="dropdown-menu navmenu-nav" role="menu">
                   {% for topic in category.children %}
-                    <li><a href="{{site.baseurl}}{{version.path}}{{category.path}}{{topic.path}}">{{topic.name}}</a></li>
+                    {% capture combined_path %}{{version.path}}{{category.path}}{{topic.path}}{% endcapture %}
+                    <li><a href="{{site.baseurl}}{{combined_path}}">{{topic.name}}</a></li>
                   {% endfor %}
                 </ul>
               </li>
