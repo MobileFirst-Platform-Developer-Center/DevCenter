@@ -1,0 +1,12 @@
+ul {
+    line-height: 1.5em;
+}
+
+ul li.learnmore  {
+    padding: 5px 0 5px 0;
+}
+
+h4 {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}

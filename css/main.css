@@ -26,23 +26,6 @@ hr {
   margin: auto;
 }
 
-/* START STATIC PAGES */
-
-h4.help, h4.learnmore {
-    border-bottom: 2px solid black;
-    padding-bottom: 10px;
-}
-
-.col-md-12.help {
-    width: 390px;
-}
-
-ul.learnmore{
-    line-height: 1.5em;
-}
-
-/* END STATIC PAGES */
-
 /* START BUTTONS */
 
 .btn {
