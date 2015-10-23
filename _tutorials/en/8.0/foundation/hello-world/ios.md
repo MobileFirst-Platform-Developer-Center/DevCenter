@@ -87,24 +87,24 @@ Open the **AppDelegate.h** file and add the header:
 <br>
 Open the **AppDelegate.m** file and add the following to `didFinishLaunchingWithOptions`:
 
-   ```
-  - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    NSURL* url = [NSURL URLWithString:@"/adapters/MyAdapter/getFeed"];
-    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
-    [request setQueryParameterValue:@"['technology']" forName:@"params"];
+{% highlight objective-c linenos %}
+ - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  NSURL* url = [NSURL URLWithString:@"/adapters/MyAdapter/getFeed"];
+  WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+  [request setQueryParameterValue:@"['technology']" forName:@"params"];
 
-    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-        if(error != nil){
-             NSLog(@"%@",error.description);
-        }
-        else{
-            NSLog(@"%@",response.responseJSON);
-        }
-    }];
+  [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+      if(error != nil){
+           NSLog(@"%@",error.description);
+      }
+      else{
+          NSLog(@"%@",response.responseJSON);
+      }
+  }];
 
-    return YES;
-  }
-```
+  return YES;
+}
+{% endhighlight %}
 
 <br>
 **Click Run**
