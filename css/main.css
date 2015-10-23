@@ -26,9 +26,9 @@ hr {
   margin: auto;
 }
 
-/* START HELP PAGE */
+/* START STATIC PAGES */
 
-h4.help {
+h4.help, h4.learnmore {
     border-bottom: 2px solid black;
     padding-bottom: 10px;
 }
@@ -37,10 +37,11 @@ h4.help {
     width: 390px;
 }
 
-.container.help {
-    height: inherit;
+ul.learnmore{
+    line-height: 1.5em;
 }
-/* END HELP PAGE */
+
+/* END STATIC PAGES */
 
 /* START BUTTONS */
 
