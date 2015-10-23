@@ -5,3 +5,10 @@
 ul {
     line-height: 2.0em;
 }
+
+.btn {
+    width: auto;
+    padding: 5px 15px 5px 15px;
+    margin: 0 10px 0 0;
+    display: inline;
+}
