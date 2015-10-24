@@ -21,25 +21,25 @@ Make sure that the following software is installed:
 ### 1. Create a MobileFirst back-end project and adapter
 Create a back-end project in a location of your choice:
 
-```
+{% highlight bash %}
 mfp create MyProject
 cd MyProject
-```
+{% endhighlight %}
 
 Add an HTTP adapter to the project:
 
-```
+{% highlight bash %}
 cd MyProject
 mfp add adapter MyAdapter -t http
-```
+{% endhighlight %}
 
 ### 2. Deploy artifacts to the MobileFirst Server**
 Start the MobileFirst Server and deploy the adapter.
 
-```
+{% highlight bash %}
 mfp start
 mfp push
-```
+{% endhighlight %}
 
 ### 3. Create an Xcode project
 
@@ -60,10 +60,10 @@ If [CocoaPods](http://guides.cocoapods.org/) is not installed in your developmen
 <br>
 Add the following lines and save the changes:
 
-```
+{% highlight bash %}
 source 'https://github.com/CocoaPods/Specs.git'
 pod 'IBMMobileFirstPlatformFoundation'
-```
+{% endhighlight %}
 
 <br>
 Run the command `pod install`. This command adds the MobileFirst Platform Native SDK, generates the Pod project and integrates it with the Xcode project.
@@ -82,7 +82,9 @@ Select the `worklight.plist` file, located in the Xcode project root folder.
 #### Implement MobileFirst adapter invocation
 Open the **AppDelegate.h** file and add the header:
 
-  `#import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>`
+{% highlight objective-c %}
+#import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
+{% endhighlight %}
 
 <br>
 Open the **AppDelegate.m** file and add the following to `didFinishLaunchingWithOptions`:
