@@ -11,15 +11,15 @@
           "path": "/index.html"
         },
         {
-          "name": "Setting up the development environment",
-          "path": "/xxx"
-        },
-        {
           "name": "Quick start",
           "path": "/hello-world"
         },
         {
-          "name": "Configuring the MobileFirst SDK",
+          "name": "Setting up the development environment",
+          "path": "/xxx"
+        },
+        {
+          "name": "Adding the MobileFirst SDK",
           "path": "/xxx"
         },
         {
@@ -57,15 +57,15 @@
           "path": "/index.html"
         },
         {
-          "name": "Evaluating Foundation on IBM Containers",
+          "name": "Evaluate",
           "path": "/xxx"
         },
         {
-          "name": "Running Foundation on IBM Containers",
+          "name": "Run",
           "path": "/xxx"
         },
         {
-          "name": "Foundation on IBM Containers sample app",
+          "name": "Sample application",
           "path": "/xxx"
         },
       ]
