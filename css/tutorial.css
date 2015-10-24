@@ -11,6 +11,10 @@
     padding: 0;
 }
 
+.tutorial h3 a, .tutorial h3 a:visited {
+    color: black;
+}
+
 .tutorial h4 {
     font-size: 140%;
 }
@@ -20,6 +24,10 @@
 }
 
 .tutorial ol {
+    line-height: 1.7em;
+}
+
+.tutorial ul li {
     line-height: 1.7em;
 }
 
@@ -44,14 +52,14 @@
 
 .tutorial .col-sm-2 ul {
     list-style-type: none;
-    padding: 0 0 0 20px;
+    padding: 0 0 0 10px;
 }
 .tutorial .col-sm-2 ul.dropdown-menu.navmenu-nav {
     padding: 0;
     margin-bottom: 10px;
 }
 .tutorial .col-sm-2 ul a {
-    padding: 0 0 10px 0;
+    padding: 5px 0 5px 0;
     margin-bottom: 10px;
     font-size: 115%;
     margin: 0;
