@@ -172,7 +172,7 @@ Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 
 * <a href="../ibm-containers/evaluate-foundation-on-ibm-containers">Evaluate</a>
 * <a href="../ibm-containers/run-foundation-on-ibm-containers">Run</a>
-* <a href="../ibm-containers/sample-application">Sample application</a>
+* <a href="../ibm-containers/ibm-containers-ample-application">Sample application</a>
 
 ### <a href="../quality-assurance">Integrate with MobileFirst Quality Assurance</a>
 Add testing capabilities to your application.
@@ -186,7 +186,7 @@ Scan your application for potential harming code.
 
 * <a href="../application-scanning/mobilefirst-platform-application-scanning/">MobileFirst application scanning</a>
 
-### <a href="../cloundant-data-layer">Cloudant Data Layer</a>
+### <a href="../cloundant-local-data-layer">Cloudant Data Layer</a>
 Scalable database management for your MobileFirst projects.
 
 * <a href="../data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>

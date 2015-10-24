@@ -39,18 +39,28 @@
           "path": "/xxx"
         },
         {
-          "name": "Advanced topics",
-          "path": "/xxx"
+          "name": "Analytics",
+          "path": "/analytics"
         },
         {
           "name": "Moving to production",
-          "path": "/xxx"
+          "path": "/moving-to-production",
+          "children": [
+            {
+              "name": "Moving from development environment to stand-alone QA and production servers",
+              "path": "/moving-production/moving-development-environment-stand-alone-qa-production-servers"
+            },
+            {
+              "name": "Distributing mobile applications with Application Center",
+              "path": "distributing-mobile-applications-with-application-center"
+            }
+          ]
         },
       ]
     },
     {
       "name": "IBM Countainers",
-      "path": "/containers",
+      "path": "/ibm-containers",
       "children": [
         {
           "name": "Overview",
@@ -58,15 +68,15 @@
         },
         {
           "name": "Evaluate",
-          "path": "/xxx"
+          "path": "/evaluate-foundation-on-ibm-containers"
         },
         {
           "name": "Run",
-          "path": "/xxx"
+          "path": "/run-foundation-on-ibm-containers"
         },
         {
           "name": "Sample application",
-          "path": "/xxx"
+          "path": "/ibm-containers-sample-application"
         },
       ]
     },
@@ -80,21 +90,21 @@
         },
         {
           "name": "MQA in Cordova applications",
-          "path": "/xxx"
+          "path": "/mqa-in-cordova-applications"
         },
         {
           "name": "MQA in iOS applications",
-          "path": "/xxx"
+          "path": "/mqa-in-ios-applications"
         },
         {
           "name": "MQA in Android applications",
-          "path": "/xxx"
+          "path": "/mqa-in-android-applications"
         },
       ]
     },
     {
       "name": "Cloudant Local Data Layer",
-      "path": "/cloudant",
+      "path": "/cloudant-local-data-layer",
       "children": [
         {
           "name": "Overview",
@@ -104,7 +114,7 @@
     },
     {
       "name": "Application Scanning",
-      "path": "/xxxx",
+      "path": "/application-scanning",
       "children": [
         {
           "name": "Overview",
@@ -114,7 +124,7 @@
     },
     {
       "name": "Presence Insights",
-      "path": "/xxxx",
+      "path": "/presence-insights",
       "children": [
         {
           "name": "Overview",
