@@ -11,21 +11,22 @@ tabs:
   - name: Comrade
     path: /labs/7.1/comrade/
 ---
+<h4>Hybrid Wallet</h4>
+<p>This 1-day PoT path will allow you to get used to work with the MobileFirst Platform Foundation 7.1 release within 1 day of hands-on experience. During this day you will develop a small banking app to check your card's balance and transactions, and change limits.</p>
+<p>This app will be using Adapter-based authentication, Push notifications, JavaScript adapters, JSONStore and the recently introduced Cordova application project.</p>
+<p>Development will be done using the Ionic Framework, MobileFirst Platform CLI and Atom as the main IDE. You will also learn how to use the  Mobile Quality Assurance service on Bluemix, and report a bug from inside the app. Your application development will start with creating an  application using the Ionic command-line interface. The created project will be then moved to a MobileFirst Platform Cordova application project and you will continue development from there.</p>
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Install the Command-line interface</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Introduction</a>
             </h4>
         </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <b>Description:</b> Download latest CLI package from getting-started page and install it
-                <br>
-                <b>Time to complete:</b> 10 minutes
-                <br>
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="320px" src="https://www.youtube.com/embed/X_XpwBWZXhE" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/lRPGfbGuRMs"></iframe>
                 </div>
             </div>
         </div>
@@ -34,17 +35,151 @@ tabs:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingTwo">
             <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Register on Bluemix for trial account</a>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Create an Ionic project and migrate it to MobileFirst Platform</a>
             </h4>
         </div>
         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
-                <b>Description:</b> Create account on Bluemix to get 30 days trial period, that will be required for some labs.
+                <b>Description:</b> Using the Ionic framework CLI create a project based on the tabs template, then migrate it to a MobileFirst Platform Cordova project using the MobileFirst CLI.
                 <br>
-                <b>Time to complete:</b> 8 minutes
+                <b>Time to complete:</b> 20 minutes
                 <br>
                 <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Kcvp9xw6pgg"></iframe>
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/bsK7hyuWpME"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Create backend mocks, and using an adapter retrieve data and display it inside the  application</a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <b>Description:</b> Using JavaScript adapters call to emulated back-end services and display the result inside the application.
+                <br>
+                <b>Time to complete:</b> 45 minutes
+                <br>
+                <b>Lab files:</b> <a href="https://www.dropbox.com/sh/0m66k2dbc5ws8my/AACnMd9THbXsguV4czRHft9Ea?dl=0">download</a>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pVWykU2ACaw"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Add adapter-based authentication</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <b>Description:</b> Using MobileFirst Platform classic security model, configure an adapter-based authentication mechanism in the application.
+                <br>
+                <b>Time to complete:</b> 50 minutes
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Bd3m5aldwq0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Display cards using Angular-Carousel</a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+                <b>Description:</b> Implement a cards carousel using angular-carousel and prepare cards images for it using Canvas and drawing on images.
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <br>
+                <b>Lab files:</b> <a href="https://www.dropbox.com/sh/kvxoos3hvjei4ld/AABeybnCPYB6K1X3XyNZgeNLa?dl=0">download</a>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/2b2qOlxtCAE"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSix">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Display cards transactions and add ability to change card limits</a>
+            </h4>
+        </div>
+        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div class="panel-body">
+                <b>Description:</b> Prepare backend services mocks and by calling the through the adapter, implement transaction display login as well as change limits capability.
+                <br>
+                <b>Time to complete:</b> 1 hour 40 minutes
+                <br>
+                <b>Lab files:</b> <a href="https://www.dropbox.com/sh/9ib9elio5kmdrdd/AABGpJl8Dt-bMRO-8x_HUqkCa?dl=0">download</a>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/tg_eyBb1qKM"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSeven">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">Add JSONStore support</a>
+            </h4>
+        </div>
+        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+            <div class="panel-body">
+                <b>Description:</b> Add a Messages tab and store data from backend service in JSONStore.
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <br>
+                <b>Lab files:</b> <a href="https://www.dropbox.com/sh/n00zhic7l33mwji/AADy6Fs41iiFrfDS-DJIvscqa?dl=0">download</a>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ThdeBjwHn94"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingEight">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">Add Push Notifications support</a>
+            </h4>
+        </div>
+        <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+            <div class="panel-body">
+                <b>Description:</b> Register an event source and subscribe to push notification to deliver notification to the device.
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IVoBl4k0NO8"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingNine">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNin">Use the Mobile Quality Assurance service on Bluemix to submit a bug report</a>
+            </h4>
+        </div>
+        <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+            <div class="panel-body">
+                <b>Description:</b> Create an MQA service instance on Bluemix, add MQA SDK to hybrid application, establish the session and submit a bug report.
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/k8tjrwqHaVg"></iframe>
                 </div>
             </div>
         </div>
