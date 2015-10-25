@@ -6,3 +6,7 @@ h4 {
 .col-md-12 {
     width: 390px;
 }
+
+.btn {
+    font-size: 100%;
+}

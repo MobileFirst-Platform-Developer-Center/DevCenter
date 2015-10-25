@@ -151,3 +151,8 @@ code {
     font-family:Consolas,Monaco,"Lucida Console",Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,"Courier New";
     padding: 2px 0 2px 2px;
 }
+
+blockquote {
+    background-color: #DDDDDD;
+    font-size: 90%;
+}
