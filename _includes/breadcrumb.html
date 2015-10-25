@@ -1,0 +1,8 @@
+{% assign minLevel = include.minLevel %}
+{% if minLevel == nil %}{% assign minLevel = 1 %}{% endif %}
+
+<ol class="breadcrumb">
+  {% assign documents = site.pages | sort: "weight" %}
+  {% include get-parents.html page=page minLevel=minLevel docs=documents %}
+  <li class="active">{{ page.title }}</li>
+</ol>

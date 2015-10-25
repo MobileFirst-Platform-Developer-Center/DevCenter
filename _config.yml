@@ -1,5 +1,1 @@
 baseurl: /NATHANH
-collections:
-  tutorials:
-    output: true
-    permalink: /tutorials/:path.html

@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: All Tutorials
+weight: 1
 ---
 
 Review all available tutorials for MobileFirst Platform products.

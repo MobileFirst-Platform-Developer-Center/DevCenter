@@ -1,0 +1,14 @@
+{% assign currentPage = include.page %}
+{% assign minLevel    = include.minLevel %}
+{% assign allDocs     = include.docs %}
+{% assign pageLevel   = currentPage.dir | remove_first: "/" | split:"/" | size %}
+{% assign parentLevel = pageLevel | minus: 1 %}
+{% if parentLevel >= minLevel %}
+    {% for p in allDocs %}
+        {% assign pPageLevel = p.dir | remove_first: "/" | split:"/" | size %}
+        {% if pPageLevel == parentLevel and currentPage.dir contains p.dir %}
+            {% include get-parents.html page=p minLevel=minLevel docs=allDocs %}
+            <li><a href="{{site.baseurl}}{{p.url}}">{{ p.title }}</a></li>
+        {% endif %}
+    {% endfor %}
+{% endif %}

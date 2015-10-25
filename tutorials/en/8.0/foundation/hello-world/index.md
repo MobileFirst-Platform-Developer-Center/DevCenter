@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Hello World
+weight: 0
 ---
 Home for Hello World
 

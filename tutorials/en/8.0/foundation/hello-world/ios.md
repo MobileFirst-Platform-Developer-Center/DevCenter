@@ -1,12 +1,8 @@
 ---
 layout: tutorial
 title: iOS Quick Start
+weight: 1
 ---
-
-<ol class="breadcrumb">
-  <li><a href="#">iOS</a></li>
-  <li class="active">iOS Quick Start</li>
-</ol>
 
 ## Overview
 The purpose of this demonstration is to experience an end-to-end flow by quickly integrating and using the MobileFirst Platform Foundation SDK.
