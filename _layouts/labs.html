@@ -1,0 +1,17 @@
+---
+layout: default
+custom_css:
+- css/labs.css
+---
+<div class="container">
+    <h2>MobileFirst Platform Foundation 7.1 Labs</h2>
+
+    <ul class="nav nav-tabs labs">
+      {% for tab in page.tabs %}
+        <li role="presentation" {% if page.url contains tab.path %} class="active" {% endif %}><a href="{{site.baseurl}}{{tab.path}}">{{tab.name}}</a></li>
+      {% endfor %}
+    </ul>
+
+    <br>
+    {{content}}
+</div>

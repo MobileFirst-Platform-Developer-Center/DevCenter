@@ -1,66 +1,60 @@
 ---
-layout: default
+layout: labs
 title: Labs
-custom_css:
-- css/labs.css
+tabs:
+  - name: Setup
+    path: /labs/7.1/index.html
+  - name: Hybrid Wallet
+    path: /url2
+  - name: Canteen
+    path: /url3
+  - name: Comrade
+    path: /url4
 ---
-<div class="container">
-    <h2>MobileFirst Platform Foundation 7.1 Labs</h2>
+<h4>Download and setup VM image</h4>
+<ul>
+    <li>Download the VMware image archive <a href="https://www.dropbox.com/s/thhf1c4nqoqlb2c/mfp-seminar_2.0.ova?dl=0" target="_blank">from Dropbox</a> (4.4 GB)</li>
+    <li>Import the downloaded .ova file into the latest version of VMware Player / VMware Fusion / VMware Workstation</li>
+    <li>Set the VM settings to at least 2 CPU cores and 4GB of RAM; Enable VT-x/EPT support (may also be required to enable it in the computer BIOS as well)</li>
+    <li>Start the VM image</li>
+    <li>Check for image updates by running “Update VM image” from the left side menu. IBM username/password: “QQqq1234″.</li>
+</ul>
 
-    <ul class="nav nav-tabs labs">
-        <li role="presentation" class="active"><a href="#">Setup</a></li>
-        <li role="presentation"><a href="#">Hybrid Wallet</a></li>
-        <li role="presentation"><a href="#">Canteen</a></li>
-        <li role="presentation"><a href="#">Comrade</a></li>
-    </ul>
-
-    <br>
-    <h4>Download and setup VM image</h4>
-    <ul>
-        <li>Download the VMware image archive <a href="https://www.dropbox.com/s/thhf1c4nqoqlb2c/mfp-seminar_2.0.ova?dl=0" target="_blank">from Dropbox</a> (4.4 GB)</li>
-        <li>Import the downloaded .ova file into the latest version of VMware Player / VMware Fusion / VMware Workstation</li>
-        <li>Set the VM settings to at least 2 CPU cores and 4GB of RAM; Enable VT-x/EPT support (may also be required to enable it in the computer BIOS as well)</li>
-        <li>Start the VM image</li>
-        <li>Check for image updates by running “Update VM image” from the left side menu. IBM username/password: “QQqq1234″.</li>
-    </ul>
-
-    <br>
-    <h4>Download and setup development tools</h4>
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Install the Command-line interface</a>
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                <div class="panel-body">
-                    <b>Description:</b> Download latest CLI package from getting-started page and install it
-                    <br>
-                    <b>Time to complete:</b> 10 minutes
-                    <br>
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe width="320px" src="https://www.youtube.com/embed/X_XpwBWZXhE" allowfullscreen></iframe>
-                    </div>
+<br>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Install the Command-line interface</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <b>Description:</b> Download latest CLI package from getting-started page and install it
+                <br>
+                <b>Time to complete:</b> 10 minutes
+                <br>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe width="320px" src="https://www.youtube.com/embed/X_XpwBWZXhE" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Register on Bluemix for trial account</a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                <div class="panel-body">
-                    <b>Description:</b> Create account on Bluemix to get 30 days trial period, that will be required for some labs.
-                    <br>
-                    <b>Time to complete:</b> 8 minutes
-                    <br>
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Kcvp9xw6pgg"></iframe>
-                    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Register on Bluemix for trial account</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <b>Description:</b> Create account on Bluemix to get 30 days trial period, that will be required for some labs.
+                <br>
+                <b>Time to complete:</b> 8 minutes
+                <br>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Kcvp9xw6pgg"></iframe>
                 </div>
             </div>
         </div>
