@@ -11,6 +11,7 @@ ul.labs {
     padding: 5px 15px 5px 15px;
     margin: 0 10px 0 0;
     display: inline;
+    font-size: 100%;
 }
 
 .panel-group {
