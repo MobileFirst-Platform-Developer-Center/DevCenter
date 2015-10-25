@@ -16,3 +16,10 @@ ul.labs {
 .panel-group {
     margin-top: 15px;
 }
+
+.sizer {
+    max-width: 840px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}

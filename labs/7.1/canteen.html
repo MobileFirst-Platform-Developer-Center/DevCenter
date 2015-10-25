@@ -11,21 +11,25 @@ tabs:
   - name: Comrade
     path: /labs/7.1/comrade/
 ---
+<h4>Canteen</h4>
+<p>During this lab you will create a Canteen application for cashiers of a Canteen. They will use this app on tablets instead of having a PC with touch-enabled monitors to select and report an order.</p>
+<p>This app will be using a Cloudant database, JavaScript adapters, JSONStore and the recently introduced Cordova application project.</p>
+<p>Development will be done using the Ionic Framework, MobileFirst Platform CLI and Atom as the main IDE.</p>
+<p>You will learn how to create a MobileFirst Platform server instance on Bluemix. You will also learn how to use the Mobile Quality Assurance service on Bluemix. Application development will start with creating a application using the Ionic command-line interface. The created blank project will be then migrated to a MobileFirst platform Cordova application project and you development will continue from there.</p>
+
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Install the Command-line interface</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Introduction</a>
             </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-                <b>Description:</b> Download latest CLI package from getting-started page and install it
-                <br>
-                <b>Time to complete:</b> 10 minutes
-                <br>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe width="320px" src="https://www.youtube.com/embed/X_XpwBWZXhE" allowfullscreen></iframe>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe src="https://www.youtube.com/embed/NhADevlK0DE"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,17 +38,185 @@ tabs:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingTwo">
             <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Register on Bluemix for trial account</a>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Create blank ionic project for the “canteenPOS” application and migrate it MobileFirst Platform</a>
             </h4>
         </div>
         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
-                <b>Description:</b> Create account on Bluemix to get 30 days trial period, that will be required for some labs.
+                <b>Description:</b> Using the Ionic framework CLI, create blank project and then migrate it to a MobileFirst Platforn Cordova project.
                 <br>
-                <b>Time to complete:</b> 8 minutes
+                <b>Time to complete:</b> 20 minutes
                 <br>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Kcvp9xw6pgg"></iframe>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/wOHen4ayEro"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Create a Cloudant database instance and retrieve data from it</a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <b>Description:</b> Create a Cloudant service instance on Bluemix. Add data to database and retrieve it using a JavaScript adapter. Display in application.
+                <br>
+                <b>Time to complete:</b> 50 minutes
+                <br>
+                <b>Lab files:</b> <a href="https://www.dropbox.com/sh/aqakmuzqxwo7966/AACSZ8Trj7_Id8G_7GEIDrGma?dl=0">download</a>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ySExO1ViDPo"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Create a MobileFirst Platform server container instance on Bluemix</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <b>Description:</b> Using the Bluemix Containers capabilities, create a MobileFirst IBM Container with the evaluation image.
+                <br>
+                <b>Time to complete:</b> 10 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/byY2OI23kJE"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Add logic code to the application and push it to Bluemix</a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+                <b>Description:</b> Implement the "order" logic and deploy the “canteenPOS” application to the MobileFirst Platform IBM  Container on Bluemix.
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/RPQe1mbuCeo"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSix">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Add application UI</a>
+            </h4>
+        </div>
+        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div class="panel-body">
+                <b>Description:</b> Using the Ionic framework and custom css, modify the application UI.
+                <br>
+                <b>Time to complete:</b> 50 minutes
+                <br>
+                <b>Lab files:</b> <a href="https://www.dropbox.com/sh/v6h2n03jco9i3s6/AADRLZVnnF_JZulSJEY7_0dda?dl=0">download</a>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/64D6RRr2nEQ"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSeven">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">Add JSONStore support</a>
+            </h4>
+        </div>
+        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+            <div class="panel-body">
+                <b>Description:</b> Create a JSONStore instance and sync it with the Cloudant database on Bluemix using a JavaScript adapter.
+                <br>
+                <b>Time to complete:</b> 35 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/csjwp62GYpw"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingEight">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">Use application security using the AppScan Mobile Analyzer service</a>
+            </h4>
+        </div>
+        <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+            <div class="panel-body">
+                <b>Description:</b> Create an AppScan Mobile Analyzer service instance on Bluemix, scan the “canteenPOS” binary apk file and investigate scanning report.
+                <br>
+                <b>Time to complete:</b> 10 minutes
+                <br>
+                <b>Lab files:</b> <a href="https://www.dropbox.com/sh/2yqo3lm4yu5wbmy/AACawjU34gEpmuQQGhRikQisa?dl=0">download</a>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/8u-jgXa02ws"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingNine">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">Use the Mobile Quality Assurance service on Bluemix to submit a bug report</a>
+            </h4>
+        </div>
+        <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+            <div class="panel-body">
+                <b>Description:</b> Create an MQA service instance on Bluemix, add MQA SDK to hybrid application, establish the session and submit a bug report.
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/phkfbQoU3nQ"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTen">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">Retrieve data from JSONStore and display it</a>
+            </h4>
+        </div>
+        <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+            <div class="panel-body">
+                <b>Description:</b> Add a modal window with a list of past orders by getting it from JSONStore.
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/uvKmF2CdxWE"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
