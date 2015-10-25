@@ -142,3 +142,12 @@ footer ul li a:hover, footer ul li a:active {
 }
 
 /* END FOOTER */
+
+/* CODE STUFF */
+
+code {
+    background-color: inherit;
+    color: black;
+    font-family:Consolas,Monaco,"Lucida Console",Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,"Courier New";
+    padding: 2px 0 2px 2px;
+}
