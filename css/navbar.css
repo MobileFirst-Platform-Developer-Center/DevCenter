@@ -67,6 +67,15 @@ body {
     padding-bottom: 0;
 }
 
+.dropdown-menu li:last-of-type:hover{
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.dropdown-menu ul li:first-of-type:hover{
+  border-top-right-radius: 6px;
+}
+
 /* multi-level */
 .dropdown-submenu {
     position: relative;
