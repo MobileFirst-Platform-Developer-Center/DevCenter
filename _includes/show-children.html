@@ -1,0 +1,44 @@
+{% assign parentDir = include.dir %}
+{% if parentDir == nil %}<h1>You must specify a root directory</h1>{% endif %}
+
+{% assign allDocs = include.docs %}
+{% if allDocs == nil %}{% assign allDocs = site.pages | sort: "weight" %}{% endif %}
+
+{% assign level = include.level %}
+{% if level == nil %}{% assign level = parentDir | remove_first: "/" | split:"/" | size %}{% endif %}
+
+{% assign maxLevel = include.maxLevel %}
+{% if maxLevel == nil %}{% assign maxLevel = 100 %}{% endif %}
+
+{% assign nextLevel = level | plus : 1 %}
+
+{% comment %}+++++++++++++++++++++++++++++++++++++++++++++++++
+Looking for all page in this path with the same level (siblings)
+This avoid to deep recursion and error like :
+__ Liquid Exception: Nesting too deep __
++++++++++++++++++++++++++++++++++++++++++++++++++{% endcomment %}
+
+{% assign siblings = "" | split: "/" %}
+{% for s in allDocs %}
+    {% assign sPageLevel = s.url | remove_first: "/" | split:"/" | size %}
+    {% if sPageLevel == level and s.url contains parentDir %}
+        {% if s.title %}{% assign siblings = siblings | push: s %}{% endif %}
+    {% endif %}
+{% endfor %}
+
+<ul>
+{% for p in siblings %}
+    <li><a href="{{site.baseurl}}{{p.url}}"{%if p.url == page.url%} class="active"{%endif%}>{{ p.title }}</a>
+    {% if nextLevel <= maxLevel %}
+      {% include show-children.html dir=p.dir docs=allDocs level=nextLevel maxLevel=maxLevel %}
+    {% endif %}
+    </li>
+{% endfor %}
+</ul>
+
+{% comment %}+++++++++++++++++++++++++++++++++++++++++++++++++
+Because all variables are globales (all includes have the same scope)
+we restore level and nextLevel variables to parent values
++++++++++++++++++++++++++++++++++++++++++++++++++{% endcomment %}
+{% assign level = level | minus : 1 %}
+{% assign nextLevel = nextLevel | minus : 1 %}
