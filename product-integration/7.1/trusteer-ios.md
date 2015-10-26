@@ -27,7 +27,7 @@ selected.
 
 Drag the “**tas.license**” file from the tas folder into the “**Resources**” folder. Make sure the file contains your license information. The format of the file should be:
 
-{% highlight bash linenos %}
+{% highlight bash %}
 vendorId=com.mycompany
 clientId=my.client.id
 clientKey=YMAQAABNFUWS2L
@@ -152,7 +152,6 @@ trusteerChallengeHandler.handleFailure = function(error) {
     WL.SimpleDialog.show("Error", "Operation failed. Please contact customer support (reason code: " + error.reason + ")", [{text:"OK"}]); };
 {% endhighlight %}
 
-**
     <code>error.reason</code>
 ** can be one of the following:
 <ul>

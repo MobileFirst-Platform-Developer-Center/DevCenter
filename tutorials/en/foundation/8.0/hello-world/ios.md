@@ -29,7 +29,7 @@ cd MyProject
 mfp add adapter MyAdapter -t http
 {% endhighlight %}
 
-### 2. Deploy artifacts to the MobileFirst Server**
+### 2. Deploy artifacts to the MobileFirst Server
 Start the MobileFirst Server and deploy the adapter.
 
 {% highlight bash %}
