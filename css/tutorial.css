@@ -33,13 +33,13 @@
 
 .tutorial img {
     max-width: 100%;
+    margin: 30px auto 30px auto;
+    display: block;
 }
 
 .tutorial blockquote {
     background-color: #DDDDDD;
 }
-
-
 
 .tutorial .col-sm-2 {
     padding: 23px 0 0 7px;
