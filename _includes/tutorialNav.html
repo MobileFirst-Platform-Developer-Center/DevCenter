@@ -1,6 +1,6 @@
 <nav class="navmenu navmenu-default" role="navigation">
     <ul>
-      {% for version_hash in site.data.tutorials.menus %}
+      {% for version_hash in site.data.menus.en.tutorials %}
         {% assign version = version_hash[1] %}
           {% if page.url contains version.path %}
             {% for category in version.children %}

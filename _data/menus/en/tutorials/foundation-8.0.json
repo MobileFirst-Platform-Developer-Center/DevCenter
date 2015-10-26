@@ -1,14 +1,14 @@
 {
-  "name": "8.0",
-  "path": "/tutorials/en/8.0",
+  "name": "Foundation 8.0",
+  "path": "/tutorials/en/foundation/8.0",
   "children": [
     {
       "name": "Foundation",
-      "path": "/foundation",
+      "path": "",
       "children": [
         {
           "name": "Overview",
-          "path": "/index.html"
+          "path": "/"
         },
         {
           "name": "Quick start",
@@ -80,57 +80,6 @@
         },
       ]
     },
-    {
-      "name": "Quality Assurance",
-      "path": "/mqa",
-      "children": [
-        {
-          "name": "Overview",
-          "path": "/index.html"
-        },
-        {
-          "name": "MQA in Cordova applications",
-          "path": "/mqa-in-cordova-applications"
-        },
-        {
-          "name": "MQA in iOS applications",
-          "path": "/mqa-in-ios-applications"
-        },
-        {
-          "name": "MQA in Android applications",
-          "path": "/mqa-in-android-applications"
-        },
-      ]
-    },
-    {
-      "name": "Cloudant Local Data Layer",
-      "path": "/cloudant-local-data-layer",
-      "children": [
-        {
-          "name": "Overview",
-          "path": "/index.html"
-        },
-      ]
-    },
-    {
-      "name": "Application Scanning",
-      "path": "/application-scanning",
-      "children": [
-        {
-          "name": "Overview",
-          "path": "/index.html"
-        },
-      ]
-    },
-    {
-      "name": "Presence Insights",
-      "path": "/presence-insights",
-      "children": [
-        {
-          "name": "Overview",
-          "path": "/index.html"
-        },
-      ]
-    },
+
   ]
 }
