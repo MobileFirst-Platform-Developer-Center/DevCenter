@@ -1,8 +1,23 @@
 {% assign minLevel = include.minLevel %}
 {% if minLevel == nil %}{% assign minLevel = 1 %}{% endif %}
 
-<ol class="breadcrumb">
-  {% assign documents = site.pages | sort: "weight" %}
-  {% include get-parents.html page=page minLevel=minLevel docs=documents %}
-  <li class="active">{{ page.title }}</li>
-</ol>
+<div class="row outerbreadcrumb">
+  <div class="col-xs-8">
+    <ol class="breadcrumb">
+      {% assign documents = site.pages | sort: "weight" %}
+      {% include get-parents.html page=page minLevel=minLevel docs=documents %}
+      <li class="active">{{ page.title }}</li>
+    </ol>
+  </div>
+  <div class="col-xs-4">
+    <ul class="relevantTo">
+      <li class="ios" title="ios">&nbsp;</li>
+      <li class="android">&nbsp;</li>
+      <li class="cordova">&nbsp;</li>
+      <li class="windows8">&nbsp;</li>
+      <li class="windows10">&nbsp;</li>
+      <li class="windowsphone8">&nbsp;</li>
+      <li class="windowsphone10">&nbsp;</li>
+    </ul>
+  </div>
+</div>

@@ -84,4 +84,53 @@ $color_wild_sand_approx: #f5f5f5;
 	ul li {
 		line-height: 1.7em;
 	}
+	.outerbreadcrumb.row {
+		background-color: #f5f5f5;
+		border-radius: 4px;
+		margin-right:0;
+		margin-left:0;
+		padding: 8px 15px;
+		.col-xs-4 {
+			text-align: right;
+			padding-right: 0;
+			ul.relevantTo {
+				margin-bottom: 2px;
+				li {
+					display: inline-block;
+					background-repeat: no-repeat;
+					padding-left: 25px;
+					line-height: 1.7em;
+
+					&.ios {
+						background-image: url({{site.baseurl}}/assets/personas/ios.png);
+					}
+					&.android {
+						background-image: url({{site.baseurl}}/assets/personas/android.png);
+					}
+					&.cordova {
+						background-image: url({{site.baseurl}}/assets/personas/cordova.png);
+					}
+					&.windows8 {
+						background-image: url({{site.baseurl}}/assets/personas/windows.png);
+					}
+					&.windows10 {
+						background-image: url({{site.baseurl}}/assets/personas/windows.png);
+					}
+					&.windowsphone8 {
+						background-image: url({{site.baseurl}}/assets/personas/windowsphone.png);
+					}
+					&.windowsphone10 {
+						background-image: url({{site.baseurl}}/assets/personas/windowsphone.png);
+					}
+				}
+			}
+		}
+		.col-xs-8 {
+			padding-left: 0;
+		}
+		.breadcrumb {
+			margin-bottom: 0;
+			padding: 0;
+		}
+	}
 }
