@@ -8,7 +8,7 @@
       "children": [
         {
           "name": "Overview",
-          "path": "/"
+          "path": "/overview"
         },
         {
           "name": "Quick start",
@@ -64,19 +64,19 @@
       "children": [
         {
           "name": "Overview",
-          "path": "/index.html"
+          "path": "/overview"
         },
         {
           "name": "Evaluate",
-          "path": "/evaluate-foundation-on-ibm-containers"
+          "path": "/evaluate"
         },
         {
           "name": "Run",
-          "path": "/run-foundation-on-ibm-containers"
+          "path": "/run"
         },
         {
           "name": "Sample application",
-          "path": "/ibm-containers-sample-application"
+          "path": "/sample"
         },
       ]
     },
