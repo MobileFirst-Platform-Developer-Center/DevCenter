@@ -18,7 +18,8 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         {% for item in site.data.menus.en.navigation %}
-          <li {% if item.children %}class="dropdown"{%endif%}>
+          {% capture classes %}{% if item.children %}dropdown{%endif%} {% if page.url contains item.path %}active{% endif%}{% endcapture %}
+          <li {% if classes %}class="{{classes}}"{%endif%}>
             {% if item.children %}
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.name}}<span class="caret"></span></a>
             <ul class="dropdown-menu">
