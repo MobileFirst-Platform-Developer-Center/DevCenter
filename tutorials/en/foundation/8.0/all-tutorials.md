@@ -4,8 +4,6 @@ title: All Tutorials
 weight: 1
 ---
 
-Review all available tutorials for MobileFirst Platform products.
-
 ### <a href="../hello-world/">Hello World</a>
 Get a feel of the MobileFirst SDK with these fast-tracked demos.
 
