@@ -1,0 +1,87 @@
+---
+---
+//colors
+$black: black;
+$color_alto_approx: #dddddd;
+$color_wild_sand_approx: #f5f5f5;
+
+.tutorial {
+	h2 {
+		font-size: 200%;
+		font-weight: bold;
+	}
+	h3 {
+		font-size: 150%;
+		font-weight: bold;
+		margin: 30px 0 10px;
+		padding: 0;
+		a {
+			color: $black;
+			&:visited {
+				color: $black;
+			}
+		}
+	}
+	h4 {
+		font-size: 140%;
+	}
+	p {
+		font-size: 110%;
+	}
+	ol {
+		line-height: 1.7em;
+	}
+	img {
+		max-width: 100%;
+		margin: 30px auto 30px auto;
+		display: block;
+	}
+	blockquote {
+		background-color: $color_alto_approx;
+	}
+	.col-sm-2 {
+		padding: 23px 0 0 7px;
+		ul {
+			list-style-type: none;
+			padding: 0 0 0 10px;
+			a {
+				padding: 5px 0;
+				margin-bottom: 10px;
+				font-size: 115%;
+				margin: 0;
+				white-space: normal;
+				&:hover {
+					color: $black;
+				}
+			}
+			&.dropdown-menu.navmenu-nav {
+				padding: 0;
+				margin-bottom: 10px;
+			}
+		}
+		.navmenu-default .navmenu-nav.dropdown-menu {
+			background-color: inherit;
+			li {
+				padding: 0 0 0 20px;
+				border-left: 2px solid $black;
+				a {
+					font-size: 100%;
+				}
+			}
+			> li.active {
+				background-color: $color_wild_sand_approx;
+				a {
+					background-color: inherit;
+				}
+			}
+		}
+	}
+	.navmenu {
+		width: 100%;
+		border-style: none;
+		background-color: inherit;
+	}
+	ul li {
+		line-height: 1.7em;
+	}
+}

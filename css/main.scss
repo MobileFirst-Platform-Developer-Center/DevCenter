@@ -1,0 +1,155 @@
+---
+---
+//colors
+$black:  black;
+$color_chambray_approx: #325c80;
+$white: white;
+$color_rhino_approx: #264a60;
+$color_woodsmoke_approx: #111111;
+$color_shark_approx: #242528;
+$color_mine_shaft_approx: #313236;
+$color_mountain_mist_approx: #999;
+$color_alto_approx: #dddddd;
+
+//fonts
+$font_0: Helvetica;
+$font_1: Arial;
+$font_2: sans-serif;
+$font_3: Lucida Grande;
+$font_4: Consolas;
+$font_5: Monaco;
+$font_6: Lucida Console;
+$font_7: Liberation Mono;
+$font_8: DejaVu Sans Mono;
+$font_9: Bitstream Vera Sans Mono;
+$font_10: Courier New;
+
+html {
+	height: 100%;
+}
+body {
+	height: 100%;
+	padding-top: 50px;
+	font-family: $font_0, $font_1, $font_2;
+}
+#wrap {
+	min-height: 100%;
+	height: auto;
+	margin: 0 auto -60px;
+	padding: 0 0 60px;
+}
+hr {
+	border-top: 1px solid $black;
+	width: 100%;
+	left: auto;
+	margin: auto;
+}
+.btn {
+	display: block;
+	width: 300px;
+	background: $color_chambray_approx;
+	color: $white;
+	text-align: center;
+	padding: 7px 0;
+	margin: 0 0 10px;
+	border: 1px solid $color_chambray_approx;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 0;
+	font-size: 70%;
+	font-family: $font_0, $font_1, $font_3, $font_2;
+	font-weight: 300;
+	&:hover {
+		background: $color_rhino_approx;
+		color: $white;
+	}
+	&.containers {
+		width: 400px;
+	}
+	&.stack {
+		background: none;
+		color: $color_chambray_approx;
+		margin-top: -10px;
+		&:hover {
+			background: $color_rhino_approx;
+			color: $white;
+		}
+	}
+}
+.logo {
+	padding-top: 13px;
+	padding-right: 5px;
+}
+.img-circle {
+	margin-left: 98px;
+	height: 64px;
+	width: 64px;
+}
+.col-md-3 {
+	margin: 20px 0;
+	p {
+		text-align: center;
+		font-size: 100%;
+	}
+	h2 {
+		text-align: center;
+		font-size: 120%;
+	}
+}
+#blogPosts {
+	margin-bottom: 50px;
+}
+.blogPostsHeading {
+	margin-top: 30px;
+}
+.postDate {
+	font-size: 80%;
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+}
+.postTitle {
+	font-size: 120%;
+}
+footer {
+	background: linear-gradient(to bottom, $color_woodsmoke_approx 0, $color_shark_approx 10%, $color_mine_shaft_approx 100%);
+	height: 42px;
+	ul {
+		list-style-type: none;
+		margin: 21px 0 0 10px;
+		padding: 10px;
+		color: $color_mountain_mist_approx;
+		li {
+			display: inline;
+			margin: 0;
+			a {
+				color: $color_mountain_mist_approx;
+				padding: 0 10px;
+				&:hover {
+					color: $white;
+					text-decoration: none;
+				}
+				&:active {
+					color: $white;
+					text-decoration: none;
+				}
+			}
+			&:first-child a {
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
+}
+.footer-fix {
+	padding-right: 10px;
+}
+code {
+	background-color: inherit;
+	color: $black;
+	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
+	padding: 2px 0 2px 2px;
+}
+blockquote {
+	background-color: $color_alto_approx;
+	font-size: 90%;
+}
