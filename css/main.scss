@@ -153,3 +153,9 @@ blockquote {
 	background-color: $color_alto_approx;
 	font-size: 90%;
 }
+
+@media(max-width: 768px) {
+	footer ul {
+		padding: 0;
+	}
+}
