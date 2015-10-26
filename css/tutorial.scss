@@ -63,13 +63,15 @@ $color_wild_sand_approx: #f5f5f5;
 			background-color: inherit;
 			li {
 				padding: 0 0 0 20px;
-				border-left: 2px solid $black;
+				/*border-left: 2px solid $black;*/
 				a {
 					font-size: 100%;
 				}
 			}
 			> li.active {
-				background-color: $color_wild_sand_approx;
+				/*background-color: $color_wild_sand_approx;*/
+				/*padding: 0 0 0 20px;*/
+				border-left: 2px solid $black;
 				a {
 					background-color: inherit;
 				}
