@@ -1,0 +1,37 @@
+{% assign parentDir = include.dir %}
+{% if parentDir == nil %}<h1>You must specify a root directory</h1>{% endif %}
+
+{% assign allDocs = include.docs %}
+{% if allDocs == nil %}{% assign allDocs = site.pages | sort: "weight" %}{% endif %}
+
+{% assign level = include.level %}
+{% if level == nil %}{% assign level = parentDir | remove_first: "/" | split:"/" | size | plus : 1 %}{% endif %}
+
+{% assign siblings = "" | split: "/" %}
+{% for s in allDocs %}
+    {% assign sPageLevel = s.url | remove_first: "/" | split:"/" | size %}
+    {% if sPageLevel == level and s.url contains parentDir %}
+        {% if s.title %}{% assign siblings = siblings | push: s %}{% endif %}
+    {% endif %}
+{% endfor %}
+<!-- <ul class="dropdown-menu">
+    <li><a tabindex="-1" href="...8109a3a986c7">commissions - <code>8109a3a986c7</code></a></li>
+    <li><a tabindex="-1" href="...76d3a7022f9e">dashboard-integration - <code>76d3a7022f9e</code></a></li>
+    <li><a tabindex="-1" href="...4ee00eb42b72">default - <code>4ee00eb42b72</code></a></li>
+    <li><a tabindex="-1" href="...10755b086192">led-support - <code>10755b086192</code></a></li>
+    <li><a tabindex="-1" href="...298fa9e18508">stable - <code>298fa9e18508</code></a></li>
+    <li><a tabindex="-1" href="...990826c5d5df">xdm-customer-selection - <code>990826c5d5df</code></a></li>
+</ul> -->
+
+<ul class="dropdown-menu">
+{% for p in siblings %}
+    <li><a tabindex="-1" href="{{site.baseurl}}{{p.url}}"{%if p.url == page.url%} class="active"{%endif%}>{{ p.title }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+{% comment %}+++++++++++++++++++++++++++++++++++++++++++++++++
+Because all variables are globales (all includes have the same scope)
+we restore level and nextLevel variables to parent values
++++++++++++++++++++++++++++++++++++++++++++++++++{% endcomment %}
+{% assign level = level | minus : 1 %}

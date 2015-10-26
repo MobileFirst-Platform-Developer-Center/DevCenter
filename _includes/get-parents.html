@@ -8,7 +8,18 @@
         {% assign pPageLevel = p.dir | remove_first: "/" | split:"/" | size %}
         {% if pPageLevel == parentLevel and currentPage.dir contains p.dir %}
             {% include get-parents.html page=p minLevel=minLevel docs=allDocs %}
-            <li><a href="{{site.baseurl}}{{p.url}}">{{ p.title }}</a></li>
+            {% if p.use_dropdown %}
+              <li class="dropdown">
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">{{ p.title }} <b class="caret"></b></a>
+                {% assign documents = site.pages | sort: "weight" %}
+
+                {% assign currentItem = p.dir | split: "/" | last | append: "/@" %}
+                {% assign start = p.dir | append: "@" | remove: currentItem %}
+                {% include show-siblings.html docs=documents dir=start %}
+              </li>
+            {% else %}
+              <li><a href="{{site.baseurl}}{{p.url}}">{{ p.title }}</a></li>
+            {% endif %}
         {% endif %}
     {% endfor %}
 {% endif %}
