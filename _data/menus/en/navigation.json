@@ -1,0 +1,132 @@
+[
+  {
+    "name": "Tutorials",
+    "path": "/tutorials/en",
+    "children": [
+      {
+        "name": "All Tutorials",
+        "path": "/foundation/8.0/all-tutorials"
+      },
+      {
+        "name": "Quick Start",
+        "path": "/foundation/8.0/hello-world",
+        "children": [
+          {
+            "name": "Cordova",
+            "path": "/cordova"
+          },
+          {
+            "name": "iOS",
+            "path": "/ios"
+          },
+          {
+            "name": "Android",
+            "path": "/android"
+          },
+          {
+            "name": "Windows Phone",
+            "path": "/windows-phone"
+          },
+          {
+            "name": "Windows",
+            "path": "/windows"
+          },
+        ]
+      },
+      {
+        "name": "By Persona",
+        "path": "/persona",
+        "children": [
+          {
+            "name": "Cordova",
+            "path": "/cordova"
+          },
+          {
+            "name": "iOS",
+            "path": "/ios"
+          },
+          {
+            "name": "Android",
+            "path": "/android"
+          },
+          {
+            "name": "Windows Phone",
+            "path": "/windows-phone"
+          },
+          {
+            "name": "Windows",
+            "path": "/windows"
+          },
+        ]
+      },
+      {
+        "name": "By Product",
+        "path": "",
+        "children": [
+          {
+            "name": "Foundation",
+            "path": "/foundation/8.0"
+          },
+          {
+            "name": "IBM Containers",
+            "path": ""
+          },
+          {
+            "name": "Quality Assurance",
+            "path": ""
+          },
+          {
+            "name": "Cloudant Data Layer",
+            "path": ""
+          },
+          {
+            "name": "Application Scanning",
+            "path": ""
+          },
+          {
+            "name": "Presence Insights",
+            "path": ""
+          },
+        ]
+      },
+    ]
+  },
+  {
+    "name": "Product Integrations",
+    "path": "/integrations",
+  },
+  {
+    "name": "Labs",
+    "path": "/labs",
+    "children": [
+      {
+        "name": "Welcome to Labs",
+        "path": ""
+      },
+      {
+        "name": "7.1 Labs",
+        "path": "/7.1/setup"
+      },
+      {
+        "name": "7.0 Labs",
+        "path": "/7.0/setup"
+      },
+    ]
+  },
+  {
+    "name": "Learn More",
+    "path": "/learn-more",
+  },
+  {
+    "name": "Videos",
+    "path": "/videos",
+  },
+  {
+    "name": "Blogs",
+    "path": "/blogs",
+  },
+  {
+    "name": "Help",
+    "path": "/help",
+  },
+]

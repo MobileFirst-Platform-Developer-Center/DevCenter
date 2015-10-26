@@ -17,80 +17,38 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tutorials<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials">All Tutorials</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-submenu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quick Start</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Cordova</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/hello-world/ios">iOS</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/hello-world/android">Android</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Windows Phone</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Windows</a></li>
-              </ul>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-submenu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">By Persona</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Cordova</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">iOS</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Android</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Windows Phone</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Windows</a></li>
-              </ul>
-            </li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-submenu">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">By Product</a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Foundation</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">IBM Containers</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Quality Assurance</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Cloudant Data Layer</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Application Scanning</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Presence Insights</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li><a href="{{site.baseurl}}/product-integration/8.0/">Product Integration</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Labs<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{site.baseurl}}/labs/index.html">Welcome to Labs</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="{{site.baseurl}}/labs/7.1/setup/">7.1 Labs</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="{{site.baseurl}}/labs/7.0/setup/">7.0 Labs</a></li>
-          </ul>
-        </li>
-        <li><a href="{{site.baseurl}}/learn-more/">Learn More</a></li>
-        <li><a href="#">Videos</a></li>
-        <li><a href="#">Blogs</a></li>
-        <li><a href="{{site.baseurl}}/help/">Help</a></li>
+        {% for item in site.data.menus.en.navigation %}
+          <li {% if item.children %}class="dropdown"{%endif%}>
+            {% if item.children %}
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.name}}<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {% for subitem in item.children %}
+                <li {% if subitem.children %}class="dropdown-submenu"{%endif%}>
+                  {% if subitem.children %}
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{subitem.name}}</a>
+                    <ul class="dropdown-menu">
+                      {% for subsubitem in subitem.children %}
+                        <li><a href="{{site.baseurl}}{{item.path}}{{subitem.path}}{{subsubitem.path}}">{{subsubitem.name}}</a></li>
+                        {% if forloop.last != true %}
+                          <li role="separator" class="divider"></li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                  <a href="{{site.baseurl}}{{item.path}}{{subitem.path}}">{{subitem.name}}</a>
+                  {% endif %}
+                </li>
+                {% if forloop.last != true %}
+                  <li role="separator" class="divider"></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+            {% else %}
+            <a href="{{site.baseurl}}{{item.path}}">{{item.name}}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
       </ul>
-      <!-- <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-                <li><a href="../navbar-static-top/">Static top</a></li>
-                <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-            </ul> -->
     </div>
     <!--/.nav-collapse -->
   </div>
