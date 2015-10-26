@@ -3,9 +3,7 @@ layout: product-integration
 title: Trusteer for iOS
 ---
 
-Trusteer Mobile SDK collects multiple mobile device risk factors and provides them to the mobile app, enabling organizations to restrict mobile app functionality based on risk levels. In your IBM MobileFirst Platform Foundation application, you may want
-to protect access to some specific resources or procedures based risk levels, such as detected malware or whether the device is jailbroken or rooted. For example, you could prevent a malware-ridden device from logging into your banking app, and prevent
-rooted devices from using the “transfer funds” feature.
+Trusteer Mobile SDK collects multiple mobile device risk factors and provides them to the mobile app, enabling organizations to restrict mobile app functionality based on risk levels. In your IBM MobileFirst Platform Foundation application, you may want to protect access to some specific resources or procedures based risk levels, such as detected malware or whether the device is jailbroken or rooted. For example, you could prevent a malware-ridden device from logging into your banking app, and prevent rooted devices from using the “transfer funds” feature.
 
 ### Obtain Trusteer SDK for iOS
 Before starting make sure you have the following items:
@@ -128,23 +126,12 @@ and <code>realms</code>. The Trusteer <code>realm</code> will check the data gen
 {% endhighlight %}
 
 This <code>realm</code> contains 5 parameters:
-<ul>
-    <li>
-        **rooted-device** - indicates whether the device is rooted (android) or jailbroken (iOS)</li>
 
-    <li>
-        **device-with-malware** - indicates whether the device contains malware</li>
-
-    <li>
-        **rooted-hiders** - indicate that the device contains root hiders applications that hides the fact that the device is rooted/jailbroken</li>
-
-    <li>
-        **unsecured-wifi** - indicates that the device is currently connected to an insecure wifi.</li>
-
-    <li>
-        **outdated-configuration** - indicates that Trusteer SDK configuration hasn't updated for some time (didn't connect to the Trusteer server).</li>
-
-</ul>
+* rooted-device - indicates whether the device is rooted (android) or jailbroken (iOS)
+* device-with-malware - indicates whether the device contains malware
+* rooted-hiders - indicate that the device contains root hiders applications that hides the fact that the device is rooted/jailbroken
+* unsecured-wifi - indicates that the device is currently connected to an insecure wifi.
+* outdated-configuration - indicates that Trusteer SDK configuration hasn't updated for some time (didn't connect to the Trusteer server).
 
 The possible values are: <code>block</code>, <code>alert</code> or <code>accept</code>.
 
