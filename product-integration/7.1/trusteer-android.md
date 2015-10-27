@@ -121,7 +121,7 @@ trusteerChallengeHandler.handleFailure = function(error) {
 };
 {% endhighlight %}
 
-**<code>error.reason</code>** can be one of the following:
+<code>error.reason</code> can be one of the following:
 <ul>
 	<li><code>TAS_ROOT</code></li>
 	<li><code>TAS_ROOT_EVIDENCE</code></li>
@@ -177,7 +177,7 @@ public class TrusteerChallengeHandler extends WLChallengeHandler {
 }
 {% endhighlight %}
 
-**<code>error.reason</code>** can be one of the following:
+<code>error.reason</code> can be one of the following:
 <ul>
 	<li><code>TAS_ROOT</code></li>
 	<li><code>TAS_ROOT_EVIDENCE</code></li>

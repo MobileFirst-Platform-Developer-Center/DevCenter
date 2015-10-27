@@ -152,8 +152,7 @@ trusteerChallengeHandler.handleFailure = function(error) {
     WL.SimpleDialog.show("Error", "Operation failed. Please contact customer support (reason code: " + error.reason + ")", [{text:"OK"}]); };
 {% endhighlight %}
 
-    <code>error.reason</code>
-** can be one of the following:
+<code>error.reason</code> can be one of the following:
 <ul>
     <li>
         <code>TAS_ROOT</code>
@@ -216,9 +215,7 @@ If you have set one of your <code>realm</code> options to
  @end
  {% endhighlight %}
 
-**
-    <code>error.reason</code>
-** can be one of the following:
+<code>error.reason</code> can be one of the following:
 <ul>
     <li>
         <code>TAS_ROOT</code>
