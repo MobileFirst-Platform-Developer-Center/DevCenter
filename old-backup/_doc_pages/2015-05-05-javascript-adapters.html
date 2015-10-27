@@ -1,0 +1,111 @@
+---
+layout: doc_page
+title: JavaScript adapters
+date: 2015-05-05 14:09:52.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442512786;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:10894;}i:1;a:1:{s:2:"id";i:10912;}i:2;a:1:{s:2:"id";i:10899;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="../">Server-side development</a></p>
+<div id="samplesAndPersonas">
+<div>
+        Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+<li class="android">Native Android</li>
+<li class="wp8">Native Windows Phone 8</li>
+<li class="wp8">Native Windows 8 Universal</li>
+<li class="hybrid">Hybrid</li>
+</ul></div>
+</div>
+<h2>Overview</h2>
+<p><strong>Prerequisite</strong>: Make sure to read the Adapters Overview tutorial first.</p>
+<p>JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, Cast Iron, SAP JCo, and SAP Netweaver. JavaScript adapters also provide a service discovery wizard, which you can use to autogenerate adapters for connecting to WSDL services and more.</p>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#anatomy">Anatomy of JavaScript adapters</a></li>
+<li><a href="#procedureStructure">Structure of a JavaScript adapter procedure</a></li>
+<li><a href="#adapterProcedures">JavaScript adapter procedures</a></li>
+<li><a href="#xmlStructure">XML structure of JavaScript adapters</a></li>
+<li><a href="#javascriptAdapterTypes">JavaScript adapter types</a></li>
+</ul>
+<h2 id="anatomy">Anatomy of JavaScript adapters</h2>
+<p>Each adapter consists of the following elements:</p>
+<ul>
+<li>An XML file, which describes the connectivity options and lists the procedures that are exposed to the application or other adapters</li>
+<li>A JavaScript file, which contains the implementation of procedures that are declared in the XML file</li>
+<li>Zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data</li>
+</ul>
+<p>Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a <strong>JSON object</strong>.</p>
+<h2 id="adapterProcedures">JavaScript adapter procedures</h2>
+<p>Procedures are declared in XML and are implemented with server-side JavaScript, for the following purposes:</p>
+<ul>
+<li>To provide adapter functions to the application</li>
+<li>To call back-end services to retrieve data or to perform actions</li>
+</ul>
+<p>By using server-side JavaScript, a procedure can process the data before or after it calls the service.<br />
+You can apply more filtering to retrieved data by using simple XSLT code.</p>
+<p>JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to use Java in the adapter code.</p>
+<h2 id="xmlStructure">XML structure of JavaScript adapters</h2>
+<p>[code lang="xml"]<br />
+&lt;wl:adapter name=&quot;HelloWorld&quot;&gt;<br />
+  &lt;displayName /&gt;<br />
+  &lt;description /&gt;<br />
+  &lt;connectivity&gt;<br />
+    &lt;connectionPolicy&gt;<br />
+    ...</p>
+<p>    &lt;loadConstraints&gt;<br />
+    ...<br />
+  &lt;/connectivity&gt;<br />
+  &lt;procedure /&gt;<br />
+  &lt;procedure /&gt;<br />
+  ...<br />
+&lt;/wl:adapter&gt;<br />
+[/code]</p>
+<ul>
+<li><code>name:</code> Mandatory. The name of the adapter</li>
+<li><code>displayName</code>: Optional. The name that is displayed in the MobileFirst Console</li>
+<li><code>description</code>: Optional. Additional information that is displayed in the MobileFirst Console</li>
+<li><code>connectivity</code>:
+<ul>
+<li>Defines the connection properties and load constraints of the back-end system.</li>
+<li>When the back-end system requires user authentication, defines how user credentials are obtained.</li>
+</ul>
+</li>
+<li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
+</ul>
+<p>[code lang="xml"]<br />
+&lt;procedure name=&quot;procedure1&quot;&gt;&lt;/procedure&gt;<br />
+&lt;procedure name=&quot;procedure2&quot;&gt;&lt;/procedure&gt;<br />
+[/code]</p>
+<h2 id="procedureStructure">Structure of a JavaScript adapter procedure</h2>
+<p>Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
+The <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
+<p>[code lang="javascript"]<br />
+function procedure1(param) {<br />
+  return WL.Server.invokeSQLStatement({<br />
+    preparedStatement: procedure1Statement,<br />
+    parameters: [param]<br />
+  });<br />
+}<br />
+[/code]</p>
+<h2 id="globalvars">Using global variables</h2>
+<p>Depending on your infrastructure and configuration, your MobileFirst server may be running with <code>SessionIndependent</code> set to true, where each request may reach a different node and HTTP sessions are not used.<br />
+In such cases you should not rely on global variables to keep data from one request to the next.</p>
+<h2 id="javascriptAdapterTypes">JavaScript adapter types</h2>

@@ -1,0 +1,474 @@
+---
+layout: doc_page
+title: Offline Authentication
+date: 2014-12-17 10:55:55.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/authentication-security/">Authentication and security</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/OfflineAuthenticationProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial explains a sample implementation of offline user authentication.<br />
+The goal of offline authentication is to make the login/logout end-user experience consistent whether the end user works online or offline.</p>
+<h3>Prerequisites</h3>
+<p>It is assumed that the developer is familiar with IBM MobileFirst Platform Foundation application development, adapter-based authentication, and JSONStore.<br />
+The associated sample project demonstrates an end-to-end scenario. However, there are many ways to achieve the same results.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#offlineAuthenticationConcept">Offline authentication concept</a></li>
+<li><a href="#implementingAuthenticationFlows">Implementing the authentication flows</a></li>
+<li><a href="#sampleApplication">Sample application</a></li>
+</ul>
+<h2 id="offlineAuthenticationConcept">Offline authentication concept</h2>
+<p>By using offline authentication, an end user is able to authenticate even if no Internet connection is available.</p>
+<p><em>Online login</em> is necessary when logging-in is attempted for the first time, so that MobileFirst Server validates the user’s credentials. After successful validation, a JSONStore object is created for the logged-in user. You implement offline authentication by opening the JSONStore object for the supplied username and password. This is further explained below.</p>
+<p>The sample application for this tutorial has the following structure:</p>
+<ul>
+<li>An unsecured area, which is accessible without authentication</li>
+<li>A secured area, which is accessible only after authentication, whether online or offline</li>
+<li>The same login form for both online and offline authentication, so that the end-user experience is the same in either case</li>
+<li>Support for logging out</li>
+</ul>
+<p>Going through the online and offline flows from a high-level point of view:</p>
+<h4>Step 1:</h4>
+<p>Before either online or offline authentication occurs, the availability of an Internet connection is checked first. Depending on the result, the appropriate authentication flow is used.</p>
+<h3>Online authentication</h3>
+<h4>Steps 2 and 3</h4>
+<p>The online authentication flow is implemented as explained in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/authentication-security/adapter-based-authentication/adapter-based-authentication-hybrid-applications/" title="Adapter-based authentication in hybrid applications">adapter-based authentication in hybrid applications</a> tutorial.</p>
+<h4>Steps 4 and 5</h4>
+<p>After successful login, a JSONStore is created by using the end-user’s username and encrypted by using the user's password.</p>
+<h4>Step 6</h4>
+<p>The secured area is displayed.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_18_online_flow.jpg"><img src="{{ site.baseurl }}/assets/09_18_online_flow.jpg" alt="09_18_online_flow" width="800" height="460" class="aligncenter size-full wp-image-15978" /></a></p>
+<h3>Offline authentication</h3>
+<h4>Steps 2 and 3</h4>
+<p>The authentication process tries to open the previously created JSONStore by using the end-user’s password that was passed as input.</p>
+<h4>Step 4</h4>
+<p>If the attempt is successful, the secured area is displayed.</p>
+<h2 id="implementingAuthenticationFlows">Implementing the authentication flows</h2>
+<p><strong>Note:</strong> Some of the implementation code relates to the application UI.<br />
+You can find the rest of the application code (HTML, CSS, additional JavaScript) in the sample application.</p>
+<p>The <code>username</code>, <code>password</code> and <code>offlineLoggedIn</code> global variables help determine the user’s login state, whether connected or not connected to the Internet.<br />
+[code lang="javascript"]<br />
+var username = null, password = null;<br />
+var offlineLoggedIn = false;<br />
+[/code]</p>
+<p><strong>Prerequisite:</strong> When an end user tries to log in for the very first time, an Internet connection must be available so that the user credentials can be verified against the server back end.</p>
+<p>Therefore, before any authentication is performed, the Internet connection is checked so that the appropriate authentication flow is executed.<br />
+[code lang="javascript"]<br />
+function goToSecuredArea() {<br />
+    WL.Device.getNetworkInfo(<br />
+        function (networkInfo) {<br />
+            if (networkInfo.isNetworkConnected == &quot;true&quot;) {<br />
+                onlineAuthentication();<br />
+            } else {<br />
+                offlineAuthentication();<br />
+            }<br />
+        }<br />
+    );<br />
+}<br />
+[/code]</p>
+<h3>Implementation notes</h3>
+<h4>Single-Step authentication</h4>
+<ol>
+<li>The online authentication flow uses the same code as the one provided in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/authentication-security/adapter-based-authentication/" title="Adapter-based authentication">single-step adapter authentication sample application</a>.</li>
+<li>To simulate a back end of multiple users, a login is considered valid when <code>username == password</code>, no matter what <code>username</code> is.
+<p>The <code>submitAuthentication</code> function in the adapter <code>*-impl.js</code> file is therefore modified to:<br />
+[code lang="javascript"]<br />
+function submitAuthentication (username, password){<br />
+    if (username == password) {<br />
+[/code]</li>
+</ol>
+<h4>JSONStore</h4>
+<p>Because the authentication process simulates multiple users, you must use multiple JSONStores, too, in order to accommodate the multiple users.</p>
+<p>Thus, in the <code>WL.JSONStore.init</code> file, the <code>username</code> string is passed as a parameter for a new JSONStore to be opened for each authenticated user. For this, declare a collection to define the structure of the JSONStore:<br />
+[code lang="javascript"]<br />
+var collectionName = &quot;userCredentials&quot;;<br />
+var collections = {<br />
+    userCredentials : {<br />
+        searchFields : {<br />
+            collectionNotEmpty: &quot;string&quot;<br />
+        }<br />
+    }<br />
+};<br />
+[/code]</p>
+<h3>Online authentication</h3>
+<p>Below is the complete implementation, followed by a breakdown and explanation, code block by code block.<br />
+The sample application contains additional comments.</p>
+<p>[code lang="javascript"]<br />
+function onlineAuthentication() {<br />
+  if (WL.Client.isUserAuthenticated(&quot;myCustomRealm&quot;)) {<br />
+    if (username == null) {<br />
+      WL.Client.logout(&quot;myCustomRealm&quot;, {<br />
+        onSuccess: function() {<br />
+          onlineAuthentication();<br />
+        },<br />
+        onFailure: function() {<br />
+          WL.SimpleDialog.show(&quot;Logout&quot;, &quot;Unable to logout at this time. Try again later.&quot;, [{<br />
+            text: &quot;OK&quot;,<br />
+            handler: function() {}<br />
+          }]);<br />
+        }<br />
+      });<br />
+    } else {<br />
+      displaySecuredArea();<br />
+    }<br />
+  } else if (username) {<br />
+    var invocationData = {<br />
+      adapter: &quot;authenticationAdapter&quot;,<br />
+      procedure: &quot;submitAuthentication&quot;,<br />
+      parameters: [$(&quot;#username&quot;).val(), $(&quot;#password&quot;).val()]<br />
+    };</p>
+<p>    myCustomRealmChallengeHandler.submitAdapterAuthentication(<br />
+      invocationData, {<br />
+        onSuccess: onlineAuthenticationSuccess,<br />
+        onFailure: onlineAuthenticationFailure<br />
+      });<br />
+  } else {<br />
+    WL.Client.login(&quot;myCustomRealm&quot;, {<br />
+      onSuccess: onlineAuthenticationSuccess,<br />
+      onFailure: onlineAuthenticationFailure<br />
+    });<br />
+  }<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<ol>
+<li>Check whether the user is already authenticated.
+<ul>
+<li>If the check returns <code>true</code>, display the secured area.</li>
+<li>If the check returns <code>false</code>, display the login form and start authentication via the challenge handler.</li>
+</ul>
+<p>[code lang="javascript"]<br />
+function onlineAuthentication() {<br />
+  if (WL.Client.isUserAuthenticated(&quot;myCustomRealm&quot;)) {<br />
+    if (username == null) {<br />
+      //...<br />
+      });<br />
+    } else {<br />
+      displaySecuredArea();<br />
+    }<br />
+  } else if (username) {<br />
+    //...<br />
+  } else {<br />
+    WL.Client.login(&quot;myCustomRealm&quot;, {<br />
+      onSuccess: onlineAuthenticationSuccess,<br />
+      onFailure: onlineAuthenticationFailure<br />
+    });<br />
+  }<br />
+}<br />
+[/code]
+</li>
+<p><br clear="all" /></p>
+<li>If the Internet connection is established and the user is authenticated on the back end but the <code>username</code> variable is empty, assume that a logout happened offline.<br />
+Log out the user from the realm before trying to log in again online.</p>
+<p>[code lang="javascript"]<br />
+if (WL.Client.isUserAuthenticated(&quot;myCustomRealm&quot;)) {<br />
+  if (username == null) {<br />
+    WL.Client.logout(&quot;myCustomRealm&quot;, {<br />
+      onSuccess: function() {<br />
+        onlineAuthentication();<br />
+      },<br />
+      onFailure: function() {<br />
+        WL.SimpleDialog.show(&quot;Logout&quot;, &quot;Unable to logout at this time. Try again later.&quot;, [{<br />
+          text: &quot;OK&quot;,<br />
+          handler: function() {}<br />
+        }]);<br />
+      }<br />
+    });<br />
+  } else {<br />
+    displaySecuredArea();<br />
+  }<br />
+}<br />
+[/code]
+</li>
+<p><br clear="all" /></p>
+<li>If logging-in occurs offline and an Internet connection is then available, log in to the realm without showing the login form.<br />
+[code lang="javascript"]<br />
+function onlineAuthentication() {<br />
+  if (WL.Client.isUserAuthenticated(&quot;myCustomRealm&quot;)) {<br />
+    //...<br />
+  } else if (username) {<br />
+    var invocationData = {<br />
+      adapter: &quot;authenticationAdapter&quot;,<br />
+      procedure: &quot;submitAuthentication&quot;,<br />
+      parameters: [$(&quot;#username&quot;).val(), $(&quot;#password&quot;).val()]<br />
+    };</p>
+<p>    myCustomRealmChallengeHandler.submitAdapterAuthentication(<br />
+      invocationData, {<br />
+        onSuccess: onlineAuthenticationSuccess,<br />
+        onFailure: onlineAuthenticationFailure<br />
+      });<br />
+  } else {<br />
+    //...<br />
+  }<br />
+}<br />
+[/code]
+</li>
+<p><br clear="all" /></p>
+<li>If online authentication fails, for example if MobileFirst Server is unavailable, offline authentication is attempted instead.</li>
+<p>[code lang="javascript"]<br />
+function onlineAuthenticationFailure() {<br />
+    offlineAuthentication();<br />
+}<br />
+[/code]</p>
+</ol>
+<h3>Online authentication success</h3>
+<p>Upon successful online authentication, the secured area can be displayed.</p>
+<p>The username and password are saved for future use.<br />
+A JSONStore for the user is initialized from the user’s <code>username</code> string and encrypted by using the user’s password.</p>
+<p>Before populating the collection, it is best to check whether it is already populated from a previous login attempt. The check returns the contents of the collection.</p>
+<ul>
+<li>If the collection is empty, populate it. </li>
+<li>If the collection is not empty, do not populate it again.</li>
+</ul>
+<p>Finally, the username and password variables are emptied, the JSONStore is closed and the secured area is displayed.</p>
+<p>[code lang="javascript"]<br />
+function onlineAuthenticationSuccess() {<br />
+    username = $(&quot;#username&quot;).val();<br />
+    password = $(&quot;#password&quot;).val();</p>
+<p>    WL.JSONStore.init(collections, {password:password, username:username, localKeyGen:true})<br />
+    .then(function() {<br />
+        return WL.JSONStore.get(collectionName).findAll();<br />
+    })<br />
+    .then(function(findAllResult) {<br />
+        if (findAllResult.length == 0) {<br />
+            // The JSONStore collection is empty, populate it.<br />
+            var data = [{isEmpty:&quot;false&quot;}];<br />
+            return WL.JSONStore.get(collectionName).add(data);<br />
+        }<br />
+    })<br />
+    .then(function() {<br />
+         password = null;<br />
+         username = null;<br />
+         WL.JSONStore.closeAll();<br />
+         displaySecuredArea();<br />
+    })<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<h3>Offline authentication</h3>
+<p>In online authentication, if <code>username != password</code>, the authentication process stops. In contrast, during offline authentication in JSONStore, you must deal with a couple of additional scenarios:</p>
+<ul>
+<li>Empty username and password fields</li>
+<li>First-time log-in when offline</li>
+<li>Already authenticated users</li>
+</ul>
+<h4>Empty username and password fields</h4>
+<p>Empty username and password fields destroy your JSONStore. As a result, users can no longer log in offline until the next online authentication, where the JSONStore is created again if it does not exist.</p>
+<h4>First-time log-in</h4>
+<p>First-time log-in cannot happen because there is no JSONStore yet.</p>
+<p>[code lang="javascript"]<br />
+function offlineAuthentication() {<br />
+  $(&quot;#username&quot;).val('');<br />
+  $(&quot;#password&quot;).val('');<br />
+  $(&quot;#authInfo&quot;).empty();</p>
+<p>  // Don't show the login form  if already offline-logged-in via JSONStore, or previously logged-in online (but have yet logged-out).<br />
+  if (offlineLoggedIn === true || username) {<br />
+    offlineLoggedIn = true;<br />
+    displaySecuredAreaOffline();<br />
+  } else {<br />
+    // Prepare the login form.<br />
+    $(&quot;#unsecuredDiv&quot;).hide();<br />
+    $(&quot;#authDiv&quot;).show();<br />
+    $(&quot;#offlineLoginButton&quot;).show();<br />
+    $(&quot;#onlineLoginButton&quot;).hide();<br />
+    $(&quot;#offlineLoginButton&quot;).unbind(&quot;click&quot;);<br />
+    $(&quot;#offlineLoginButton&quot;).bind(&quot;click&quot;, function() {</p>
+<p>      // Don't allow empty username/password field.<br />
+      if (($(&quot;#username&quot;).val() == '') || ($(&quot;#password&quot;).val() == '')) {<br />
+        $(&quot;#authInfo&quot;).html(&quot;Invalid credentials. Please try again.&quot;);<br />
+      } else {<br />
+        WL.JSONStore.init(collections, {<br />
+            password: $(&quot;#password&quot;).val(),<br />
+            username: $(&quot;#username&quot;).val(),<br />
+            localKeyGen: true<br />
+          })<br />
+          .then(function() {<br />
+            /*<br />
+             * Need to handle the case where logging in when offline for the first time, in which case logging in cannot be done as there wouldn't be a<br />
+             * JSONStore available yet.<br />
+             */<br />
+            WL.JSONStore.get(collectionName).count()<br />
+              .then(function(countResult) {<br />
+                if (countResult == 0) {<br />
+                  WL.JSONStore.destroy($(&quot;#username&quot;).val());<br />
+                  $(&quot;#authInfo&quot;).html(&quot;First time login must be done when Internet connection is available.&quot;);<br />
+                  $(&quot;#username&quot;).val(&quot;&quot;);<br />
+                  $(&quot;#password&quot;).val(&quot;&quot;);<br />
+                } else {<br />
+                  // Preserve the username and password, set the offline-logged-in flag and dislay the secured area.<br />
+                  offlineLoggedIn = true;<br />
+                  username = $(&quot;#username&quot;).val();<br />
+                  password = $(&quot;#password&quot;).val();<br />
+                  displaySecuredAreaOffline();<br />
+                }<br />
+              })<br />
+          })<br />
+          .fail(function() {<br />
+            $(&quot;#authInfo&quot;).html(&quot;Invalid credentials. Please try again.&quot;);<br />
+            $(&quot;#username&quot;).val(&quot;&quot;);<br />
+            $(&quot;#password&quot;).val(&quot;&quot;);<br />
+          })<br />
+      }<br />
+    });<br />
+  }<br />
+}<br />
+[/code]</p>
+<h4>Already authenticated users</h4>
+<ol>
+<li>This function first checks whether the user is already authenticated.
+<p>[code lang="javascript" firstline="7"]<br />
+  if (offlineLoggedIn === true || username) {<br />
+    offlineLoggedIn = true;<br />
+    displaySecuredAreaOffline();<br />
+  }<br />
+[/code]</p>
+<p><br clear="all" /><br />
+If the user is not authenticated, offline authentication is attempted.
+</li>
+<li>Check the validity of the user credentials.
+<ul>
+<li>If they are not valid, display an error message.</li>
+<li>If they are valid, try to open and decrypt the user’s JSONStore by using the user’s password.</li>
+</ul>
+<p>[code lang="javascript" firstline="17"]<br />
+    $(&quot;#offlineLoginButton&quot;).bind(&quot;click&quot;, function() {</p>
+<p>      // Don't allow empty username/password field.<br />
+      if (($(&quot;#username&quot;).val() == '') || ($(&quot;#password&quot;).val() == '')) {<br />
+        $(&quot;#authInfo&quot;).html(&quot;Invalid credentials. Please try again.&quot;);<br />
+      } else {<br />
+        WL.JSONStore.init(collections, {<br />
+            password: $(&quot;#password&quot;).val(),<br />
+            username: $(&quot;#username&quot;).val(),<br />
+            localKeyGen: true<br />
+          })<br />
+[/code]
+</li>
+<li>Check the contents of the store.
+<ul>
+<li>If the store is empty, this user did not previously log in: no stored data in the collection.<br />
+Destroy the store for this username and provide an appropriate error message.</p>
+<p>[code lang="javascript" firstline="28"]<br />
+          .then(function() {<br />
+            /*<br />
+             * Need to handle the case where logging in when offline for the first time, in which case logging in cannot be done as there wouldn't be a<br />
+             * JSONStore available yet.<br />
+             */<br />
+            WL.JSONStore.get(collectionName).count()<br />
+              .then(function(countResult) {<br />
+                if (countResult == 0) {<br />
+                  WL.JSONStore.destroy($(&quot;#username&quot;).val());<br />
+                  $(&quot;#authInfo&quot;).html(&quot;First time login must be done when Internet connection is available.&quot;);<br />
+                  $(&quot;#username&quot;).val('');<br />
+                  $(&quot;#password&quot;).val('');<br />
+[/code]</p>
+</li>
+<li>If the JSON store is NOT empty, set the <code>offlineLoggedIn</code> flag to <code>true</code> and display the secured area.
+<p>[code lang="javascript" firstline="40"]<br />
+                } else {<br />
+                  // Preserve the username and password, set the offline-logged-in flag and dislay the secured area.<br />
+                  offlineLoggedIn = true;<br />
+                  username = $(&quot;#username&quot;).val();<br />
+                  password = $(&quot;#password&quot;).val();<br />
+                  displaySecuredAreaOffline();<br />
+                }<br />
+[/code]</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3>Logout</h3>
+<p>[code lang="javascript"]<br />
+function logout() {<br />
+  password = null;<br />
+  username = null;<br />
+  WL.JSONStore.closeAll();<br />
+  offlineLoggedIn = false;</p>
+<p>  WL.Device.getNetworkInfo(<br />
+    function(networkInfo) {<br />
+      if (networkInfo.isNetworkConnected == &quot;true&quot;) {<br />
+        WL.Client.logout(&quot;myCustomRealm&quot;, {onSuccess: displayUnsecuredArea, onFailure: displayUnsecuredArea});<br />
+      }<br />
+    }<br />
+  );</p>
+<p>  displayUnsecuredArea();<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<ol>
+<li>Upon logout, mark the user as logged out:
+<ol>
+<li>Empty the username and password variables.</li>
+<li>Close the JSONStore.</li>
+<li>Set the <code>offlineLoggedIn</code> flag to <code>false</code>.</li>
+</ol>
+<p>[code lang="javascript" firstline="2"]<br />
+  password = null;<br />
+  username = null;<br />
+  WL.JSONStore.closeAll();<br />
+  offlineLoggedIn = false;<br />
+[/code]</p>
+<p><br clear="all" />
+</li>
+<li>Check the Internet connection before logging out.
+<ul>
+<li>If available, log out the user from the realm and display the unsecured area.
+<p>[code lang="javascript" firstline="7"]<br />
+  WL.Device.getNetworkInfo(<br />
+    function(networkInfo) {<br />
+      if (networkInfo.isNetworkConnected == &quot;true&quot;) {<br />
+        WL.Client.logout(&quot;myCustomRealm&quot;, {onSuccess: displayUnsecuredArea, onFailure: displayUnsecuredArea});<br />
+      }<br />
+    }<br />
+  );<br />
+  displayUnsecuredArea();<br />
+[/code]
+</li>
+</ul>
+<p><br clear="all" />
+</li>
+<li>If online logout fails (for example because MobileFirst Server is not available), logging out takes place anyway. See online authentication in case the <code>username</code> variable is empty.</li>
+</ol>
+<h2>The end result</h2>
+<p><strong>Note:</strong> The sample code that is written in this tutorial is only a suggestion. You can use other implementation methods.<br />
+To use the sample:</p>
+<ol>
+<li>Import the MobileFirst project into MobileFirst Studio.</li>
+<li>Deploy the adapter and application.</li>
+<li>Start the application on a device.</li>
+<li>Start online and log in by using, for example, <code>mobile</code>/<code>mobile</code> as the username and password. The secured area is then displayed.</li>
+<li>Log out.</li>
+<li>In the device settings, change to airplane mode and log in again. The secured area is then displayed, in "offline access".</li>
+</ol>
+<h2 id="sampleApplication">Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/OfflineAuthenticationProject.zip">Click to download</a> the Studio project.</p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_18_results.png"><img src="{{ site.baseurl }}/assets/09_18_results.png" alt="09_18_results" width="1338" height="585" class="alignnone size-full wp-image-1124" /></a></p>

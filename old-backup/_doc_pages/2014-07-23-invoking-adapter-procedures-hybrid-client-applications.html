@@ -1,0 +1,138 @@
+---
+layout: doc_page
+title: Invoking adapter procedures from hybrid client applications
+date: 2014-07-23 05:55:30.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442502876;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11938;}i:1;a:1:{s:2:"id";i:10912;}i:2;a:1:{s:2:"id";i:262;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/server-side-development/">Server-side development</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a>
+      </li>
+</ul></div>
+<ul>
+<li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresHybridProject.zip">Download Studio project</a>
+    </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>MobileFirst applications can adapt procedures to communicate with any data source without being subjected to same-origin constraints.</p>
+<h2>Basic API</h2>
+<p>Adapter procedures can be called from the client-side JavaScript:</p>
+<p>[code lang="javascript"]<br />
+ WL.Client.invokeProcedure(invocationData, options);<br />
+[/code]</p>
+<h2>invocationData</h2>
+<p>The first step to invoke an adapter procedure in JavaScript is to create an <code>invocationData</code> object. The <code>invocationData</code> object is used to provide invocation configuration and procedure parameters. It consists of a JSON block of properties.</p>
+<p>[code lang="javascript"]<br />
+var invocationData = {<br />
+    adapter : 'RSSReader',<br />
+    procedure : 'getFeedsFiltered',<br />
+    parameters : []<br />
+};<br />
+[/code]</p>
+<p>The properties are:</p>
+<ul>
+<li><strong>adapter</strong> (mandatory): A string that contains the name of the adapter as specified in the adapter XML file.</li>
+<li><strong>procedure</strong> (mandatory): The procedure name as defined in the XML file.</li>
+<li><strong>parameters</strong> (mandatory): An array of parameters that are passed to the back-end JavaScript™ procedure. Leave this property empty if no parameters are required.</li>
+</ul>
+<h2>Options</h2>
+<p>The second step is to define failure and success behaviors in the <code>options</code> object.</p>
+<p>[code lang="javascript"]<br />
+var options = {<br />
+    onSuccess : loadFeedsSuccess,<br />
+    onFailure : loadFeedsFailure,<br />
+    invocationContext: {}<br />
+};<br />
+[/code]</p>
+<p>The <code>options</code> object must be passed for all asynchronous calls to MobileFirst Server.</p>
+<h3>onSuccess</h3>
+<p>The <code>onSuccess</code> function is to be invoked on successful completion of the asynchronous call.</p>
+<p>The <code>response</code> typically contains the following properties:</p>
+<ul>
+<li><strong><code>invocationContext</code></strong>: The <code>invocationContext</code> object that was originally passed in the <code>options</code> object, or undefined if no <code>invocationContext</code> object was passed</li>
+<li><strong><code>status</code></strong>: The HTTP response status </li>
+<li><strong><code>invocationResult</code></strong>: An object that contains the data that is returned by the invoked procedure, and additional information about the procedure invocation.</li>
+</ul>
+<h3>onFailure</h3>
+<p>The <code>onFailure</code> function is to be invoked on failure.</p>
+<p>It includes both server-side and client-side errors (such as server connection failure or timed out calls).<br />
+The <code>response</code> typically contains the following properties:</p>
+<ul>
+<li><strong><code>invocationContext</code></strong>: The <code>invocationContext</code> object that was originally passed in the <code>options</code> object, or undefined if no <code>invocationContext</code> object was passed.</li>
+<li><strong><code>status</code></strong>: The HTTP response status</li>
+<li><strong><code>invocationResult</code></strong>: An object that contains the data that is returned by the invoked procedure, and additional information about the procedure invocation.</li>
+</ul>
+<h3>invocationContext</h3>
+<p><code>invocationContext</code> is an optional parameter.  It is an object that is returned to the success and failure handlers.</p>
+<p>The <code>invocationContext</code> object is used to preserve the context of the calling asynchronous service upon return from the service.</p>
+<h2>Invocation Results</h2>
+<p><code>invocationResult</code> is a JSON object that is returned. It contains the data and more information about the procedure invocation.<br />
+The object is returned to a corresponding success/failure handler.</p>
+<p>[code lang="javascript" highlight="2,3,4,5,13"]<br />
+{<br />
+  &quot;errors&quot;: [],<br />
+  &quot;info&quot;: [],<br />
+  &quot;warnings&quot;: [],<br />
+  &quot;isSuccessful&quot;: true,<br />
+  &quot;responseHeaders&quot;: {<br />
+    &quot;Cache-Control&quot;: &quot;no-cache, must-revalidate, post-check=0, pre-check=0&quot;<br />
+  },<br />
+  &quot;responseTime&quot;: 491,<br />
+  &quot;statusCode&quot;: 200,<br />
+  &quot;statusReason&quot;: &quot;OK&quot;,<br />
+  &quot;totalTime&quot;: 592,<br />
+  &quot;Items&quot;: [{<br />
+    &quot;creator&quot;: &quot;Jon Fingas&quot;,<br />
+    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated&quot;,<br />
+    &quot;pubDate&quot;: &quot;Mon, 10 Nov 2014 02:21:00 -0500&quot;,<br />
+    &quot;title&quot;: &quot;Harvard used cameras to track attendance without telling students&quot;<br />
+  }, {<br />
+    &quot;creator&quot;: &quot;Jon Fingas&quot;,<br />
+    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/10\/bmw-ev-charging-street-lights\/?ncid=rss_truncated&quot;,<br />
+    &quot;pubDate&quot;: &quot;Mon, 10 Nov 2014 00:10:00 -0500&quot;,<br />
+    &quot;title&quot;: &quot;BMW's new street lights will charge your electric car&quot;<br />
+  }, {<br />
+    &quot;creator&quot;: &quot;Daniel Cooper&quot;,<br />
+    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/09\/hwyc-lumia-925\/?ncid=rss_truncated&quot;,<br />
+    &quot;pubDate&quot;: &quot;Sun, 09 Nov 2014 22:43:00 -0500&quot;,<br />
+    &quot;title&quot;: &quot;How would you change Nokia's Lumia 925?&quot;<br />
+  }]<br />
+}<br />
+[/code]</p>
+<p><code>errors</code>, <code>info</code>, and <code>warnings</code> are optional arrays of strings that contain messages.</p>
+<p>The <code>isSuccessful</code> property is set to <code>true</code> if the procedure invocation succeeded (even if no data was retrieved), to <code>false</code> otherwise.</p>
+<p>The response can contain other metadata such as <code>responseHeaders</code>, <code>responseTime</code>, <code>statusCode</code>, <code>statusReason</code>, and <code>totalTime</code>.</p>
+<p>The rest of the invocation result depends on what was retrieved from the back-end system. In this example, the <code>Items</code> element is a JSON representation of the XML code that was received from the back-end, after applying the rules in the XSL file.</p>
+<p>[code lang="javascript"]<br />
+function loadFeedsSuccess(result){<br />
+    WL.Logger.debug(&quot;Feed retrieve success&quot;);<br />
+    if (result.invocationResult.Items.length&gt;0)<br />
+        displayFeeds(result.invocationResult.Items);<br />
+}<br />
+[/code]</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresHybridProject.zip">Click to download</a> the Studio project.</p>
+<p>The attached sample uses the HTTP adapter created in the <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/server-side-development/http-adapter-communicating-http-back-end-systems/" title="HTTP adapter – Communicating with HTTP back-end systems">HTTP Adapter tutorial</a>.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_06_results.png"><img src="{{ site.baseurl }}/assets/04_06_results.png" alt="04_06_results" width="316" height="413" class="aligncenter size-full wp-image-3341" /></a></p>

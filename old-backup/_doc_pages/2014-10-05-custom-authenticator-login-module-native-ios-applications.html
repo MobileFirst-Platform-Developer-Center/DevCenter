@@ -1,0 +1,120 @@
+---
+layout: doc_page
+title: Custom Authenticator and Login Module in native iOS applications
+date: 2014-10-05 11:34:24.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/">Authentication and security</a> &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/custom-authenticator-login-module/">Custom Authenticator and Login Module<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-6-3/">Native iOS</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeCustomLoginModuleProject.zip">Download Studio project</a>
+        </li>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iOSNativeCustomLoginModuleProject.zip">Download native project</a>
+        </li>
+</ul>
+</div>
+<p><br clear="all" /><br />
+This is a continuation of <a title="Custom Authenticator and Login Module" href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/custom-authenticator-login-module/">Custom Authenticator and Login Module</a>.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native iOS application and add the IBM MobileFirst Platform Foundation native APIs following the documentation.<br />
+In your storyboard, add a <em>ViewController</em> containing a login form.<br />
+<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_09_storyboard.png"><img class="aligncenter wp-image-1043 size-full" src="{{ site.baseurl }}/assets/09_09_storyboard.png" alt="09_09_storyboard" width="1000" height="586" /></a></p>
+<h3>Challenge Handler</h3>
+<p>Create a <em>MyChallengeHandler</em> class as a subclass of <em>ChallengeHandler</em>.<br />
+We will implement some of the <em>ChallengeHandler</em> methods to respond to the challenge.</p>
+<p>[code lang="obj-c"]<br />
+@interface MyChallengeHandler : ChallengeHandler<br />
+@property ViewController* vc;</p>
+<p>//A convenient way of updating the View<br />
+-(id)initWithViewController: (ViewController*) vc;<br />
+@end<br />
+[/code]</p>
+<p>Before calling your protected adapter, make sure to register your challenge handler using <em>WLClient</em>'s <em>registerChallengeHandler</em> method.</p>
+<p>[code lang="obj-c"]<br />
+[[WLClient sharedInstance] registerChallengeHandler:[[MyChallengeHandler alloc] initWithViewController:self] ];<br />
+[/code]</p>
+<p>The <em>isCustomResponse</em> method of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <em>true</em> or <em>false</em>.</p>
+<p>[code lang="obj-c"]<br />
+@implementation MyChallengeHandler<br />
+//...<br />
+-(BOOL) isCustomResponse:(WLResponse *)response {<br />
+    if(response &amp;&amp; [response getResponseJson]){<br />
+        if ([[response getResponseJson] objectForKey:@&quot;authStatus&quot;]) {<br />
+            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@&quot;authStatus&quot;];<br />
+            	//return if auth is required<br />
+return ([authRequired compare:@&quot;required&quot;] == NSOrderedSame);<br />
+        }<br />
+    }<br />
+    return false;<br />
+}<br />
+@end<br />
+[/code]</p>
+<p>If <em>isCustomResponse</em> returns <em>true</em>, the framework calls the <em>handleChallenge</em> method. This function is used to perform required actions, such as hide application screen and show login screen.</p>
+<p>[code lang="obj-c"]<br />
+@implementation MyChallengeHandler<br />
+//...<br />
+-(void) handleChallenge:(WLResponse *)response {<br />
+    NSLog(@&quot;Inside handleChallenge - need to show form on the screen&quot;);<br />
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@&quot;LoginViewController&quot;];<br />
+    loginController.challengeHandler = self;<br />
+    [self.vc.navigationController pushViewController:loginController animated:YES];<br />
+}<br />
+@end<br />
+[/code]</p>
+<p><em>onSuccess</em> and <em>onFailure</em> get triggers when the authentication ends.<br />
+You need to call <em>submitSuccess</em> to inform the framework that the authentication process is over, and allow the invocation’s success handler to be called.</p>
+<p>[code lang="obj-c"]<br />
+@implementation MyChallengeHandler<br />
+//...<br />
+-(void) onSuccess:(WLResponse *)response {<br />
+    NSLog(@&quot;inside challenge success&quot;);<br />
+    [self.vc.navigationController popViewControllerAnimated:YES];<br />
+    [self submitSuccess:response];<br />
+}</p>
+<p>-(void) onFailure:(WLFailResponse *)response {<br />
+    NSLog(@&quot;inside challenge failure&quot;);<br />
+    [self submitFailure:response];<br />
+}<br />
+[/code]</p>
+<p>In your <em>LoginViewController</em>, when the user clicks to submit his credentials, you need to call <em>submitLoginForm</em> to send the credentials to the MobileFirst Server.</p>
+<p>[code lang="obj-c"]<br />
+@implementation LoginViewController<br />
+//***<br />
+- (IBAction)login:(id)sender {<br />
+    [self.challengeHandler<br />
+         submitLoginForm:@&quot;/my_custom_auth_request_url&quot;<br />
+         requestParameters:@{@&quot;username&quot;: self.username.text, @&quot;password&quot;: self.password.text}<br />
+         requestHeaders:nil<br />
+         requestTimeoutInMilliSeconds:0<br />
+         requestMethod:@&quot;POST&quot;];<br />
+}<br />
+[/code]</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeCustomLoginModuleProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iOSNativeCustomLoginModuleProject.zip">Click to download</a> the Native project.</p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_09_results.png"><img class="aligncenter wp-image-1044 size-full" src="{{ site.baseurl }}/assets/09_09_results.png" alt="09_09_results" width="1205" height="607" /></a></p>

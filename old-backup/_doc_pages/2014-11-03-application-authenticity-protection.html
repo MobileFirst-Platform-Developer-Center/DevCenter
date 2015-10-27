@@ -1,0 +1,76 @@
+---
+layout: doc_page
+title: Application Authenticity Protection
+date: 2014-11-03 14:06:17.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442508877;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11113;}i:1;a:1:{s:2:"id";i:10465;}i:2;a:1:{s:2:"id";i:214;}}}}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/">Authentication and security</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-6-3/">Native iOS</a></li>
+<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-6-3/">Native Android</a></li>
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>The HTTP services (APIs) that IBM MobileFirst Platform Foundation Server offers can be accessed by any entity by issuing an HTTP request.<br />
+As described in previous tutorials, it is possible to protect relevant services with various security tests.</p>
+<p>The application authenticity check ensures that the application that tries to connect to a MobileFirst Server is the authentic one and was not tampered with or modified by a third-party attacker.</p>
+<p>Application authenticity protection is available for Android, iOS and Windows Phone 8.</p>
+<p><strong>Important:</strong><br />
+Application authenticity protection is <em>not available </em>in the MobileFirst Development Server. To test, deploy the application to a MobileFirst Server on a remote application server.<br />
+Application authenticity protection is available only to licensed installations of MobileFirst Server.</p>
+<h2>Authenticity Protection Check Flow</h2>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_15_check_flow.png"><img class="aligncenter wp-image-1088 size-full" src="{{ site.baseurl }}/assets/09_15_check_flow.png" alt="09_15_check_flow" width="1313" height="575" /></a><br />
+The challenge token is processed by using a compiled native code, therefore third-party attacker cannot see the logic of this processing.</p>
+<p>The application authentication is based on certificate keys that are used to sign application bundle.<br />
+Only the developers or the enterprise who have the original private key that was used to create the application are able to modify, repackage, and re-sign the bundle.</p>
+<h2>Enabling application authenticity protection</h2>
+<h4>authenticationConfig.xml</h4>
+<p>Add the relevant authentication realm to a security test.</p>
+<p>If mobileSecurityTest is used, the testAppAuthenticity child-element must be added to it:<br />
+[code lang="xml" highlight="2"]&lt;mobileSecurityTest name=&quot;mobileTests&quot;&gt;<br />
+			&lt;testAppAuthenticity/&gt;<br />
+			&lt;testDeviceId provisioningType=&quot;none&quot; /&gt;<br />
+			&lt;testUser realm=&quot;myMobileLoginForm&quot; /&gt;<br />
+			&lt;testDirectUpdate mode=&quot;perSession&quot; /&gt;<br />
+		&lt;/mobileSecurityTest&gt;<br />
+[/code]</p>
+<p>If customSecurityTest is used, the wl_authenticityRealm realm must be added to it:<br />
+[code lang="xml" highlight="3"]&lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
+        	&lt;test realm=&quot;wl_antiXSRFRealm&quot; step=&quot;1&quot;/&gt;<br />
+        	&lt;test realm=&quot;wl_authenticityRealm&quot; step=&quot;1&quot;/&gt;<br />
+        	&lt;test realm=&quot;wl_remoteDisableRealm&quot; step=&quot;1&quot;/&gt;<br />
+        	&lt;test realm=&quot;wl_directUpdateRealm&quot; mode=&quot;perSession&quot; step=&quot;1&quot;/&gt;<br />
+            &lt;test realm=&quot;wl_anonymousUserRealm&quot; isInternalUserID=&quot;true&quot; step=&quot;1&quot;/&gt;<br />
+			&lt;test realm=&quot;wl_deviceNoProvisioningRealm&quot; isInternalDeviceID=&quot;true&quot; step=&quot;2&quot;/&gt;<br />
+       	&lt;/customSecurityTest&gt;<br />
+[/code]</p>
+<h2>Controlling application authenticity from MobileFirst Console</h2>
+<p>IBM MobileFirst Platform Foundation Console provides means for enabling and disabling application authenticity realm.<br />
+You can set three modes:</p>
+<ul>
+<li><strong>Enabled, blocking</strong> – This mode means that the application authenticity check is enabled. If the application fails the check, it will not be served by a MobileFirst Server.</li>
+<li><strong>Enabled, serving</strong> – This mode means that the application authenticity check is enabled. If the application fails the check, it will still be served by a MobileFirst Server.</li>
+<li><strong>Disabled</strong> – This mode means that application authenticity check is disabled.</li>
+</ul>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_15_console.png"><img class="aligncenter wp-image-1093 size-full" src="{{ site.baseurl }}/assets/09_15_console.png" alt="09_15_console" width="1988" height="1124" /></a></p>
+<h2 class="noPrint">Environment Specific</h2>

@@ -1,0 +1,276 @@
+---
+layout: doc_page
+title: Custom device provisioning
+date: 2014-07-23 06:25:16.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442507658;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11111;}i:1;a:1:{s:2:"id";i:11109;}i:2;a:1:{s:2:"id";i:9818;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/">Authentication and security</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomDeviceProvisioningProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>In this tutorial, enabling and configuring custom device provisioning will be covered.<br />
+Custom device provisioning is an extension of auto device provisioning.<br />
+With Custom device provisioning you can validate:</p>
+<ul>
+<li>Certificate Signing Request during initial provisioning flow.</li>
+<li>Certificate during every application start.</li>
+</ul>
+<p>It is vital to gain a solid understanding of the topics that are discussed in the <a title="Device provisioning concepts" href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/device-provisioning-concepts/">Device Provisioning Concepts tutorial</a> because this tutorial is fully based on those concepts.</p>
+<h2>Understanding custom device provisioning</h2>
+<h3>First Application Start</h3>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_14_flow_firststart.png"><img class="aligncenter wp-image-1078 size-full" src="{{ site.baseurl }}/assets/09_14_flow_firststart.png" alt="09_14_flow_firststart" width="1405" height="797" /></a><br />
+Authenticity check is a proprietary IBM MobileFirst Platform Foundation technology that makes sure application is the authentic one and was not modified by anyone.<br />
+The main difference between auto and custom provisioning is two functions that you can perform custom validation of CSR during the provisioning process and custom validation of certificate during each application start.</p>
+<h3>Subsequent Application Starts</h3>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_14_flow_subsequent.png"><img class="aligncenter wp-image-1079 size-full" src="{{ site.baseurl }}/assets/09_14_flow_subsequent.png" alt="09_14_flow_subsequent" width="1402" height="578" /></a></p>
+<h3>keystore</h3>
+<p>By default, the MobileFirst Server uses its internal keystore to issue a certificate.<br />
+You can tell the server to use your own keystore by adjusting the <strong>worklight.properties</strong> file.<br />
+Note: The <em>wl.ca.keystore.path</em> property value can be either relative to the <em>/server/</em> folder of the MobileFirst project or absolute to the file system.</p>
+<p>[code lang="bash" firstline="137"]<br />
+#######################################################################################################################<br />
+#    Worklight Default Certificate (For device provisioning)<br />
+#######################################################################################################################<br />
+# You can change the default behavior with regard to CA certificates. You can also implement custom provisioning.<br />
+# If you want to change the auto-provisioning mechanism to use different granularity (application, device or group) or a<br />
+# different list of pre-required realms, you can create your own customized authenticator, login module and challenge handler.<br />
+# For more information, see the &quot;Custom Authenticator and Login Module&quot; Getting Started training module.</p>
+<p>#The path to the keystore, relative to the server folder in the Worklight Project, for example: conf/my-cert.jks<br />
+#wl.ca.keystore.path=<br />
+#The type of the keystore file. Valid values are jks or pkcs12.<br />
+#wl.ca.keystore.type=<br />
+#The password to the keystore file.<br />
+#wl.ca.keystore.password=<br />
+#The alias of the entry where the private key and certificate are stored, in the keystore.<br />
+#wl.ca.key.alias=<br />
+#The password to the alias in the keystore.<br />
+#wl.ca.key.alias.password=</p>
+<p>#######################################################################################################################<br />
+#    Worklight SSL keystore<br />
+#######################################################################################################################<br />
+#SSL certificate keystore location.<br />
+ssl.keystore.path=conf/default.keystore<br />
+#SSL certificate keystore type (jks or PKCS12)<br />
+ssl.keystore.type=jks<br />
+#SSL certificate keystore password.<br />
+ssl.keystore.password=worklight<br />
+[/code]</p>
+<h2>Configuring authenticationConfig.xml</h2>
+<h3>Realm</h3>
+<p>Start by adding a realm that is named <strong>CustomDeviceProvisioningRealm</strong> to the <em>authenticationConfig.xml</em> file.<br />
+Use <strong>CustomDeviceProvisioningLoginModule</strong>.<br />
+Use the auto provisioning authenticator <em>className</em> parameter.<br />
+Add a <strong>validate-csr-function</strong> parameter.<br />
+The value of this parameter points to an Adapter function that performs CSR validation.</p>
+<p>[code lang="xml"]<br />
+&lt;realm name=&quot;CustomDeviceProvisioningRealm&quot; loginModule=&quot;CustomDeviceProvisioningLoginModule&quot;&gt;<br />
+  &lt;className&gt;com.worklight.core.auth.ext.DeviceAutoProvisioningAuthenticator&lt;/className&gt;<br />
+  &lt;parameter name=&quot;validate-csr-function&quot; value=&quot;ProvisioningAdapter.validateCSR&quot; /&gt;<br />
+&lt;/realm&gt;<br />
+[/code]</p>
+<h3>Login Module</h3>
+<p>Add <strong>CustomDeviceProvisioningLoginModule</strong>.<br />
+Use the auto provisioning login module <em>className</em> parameter.<br />
+Add a <strong>validate-certificate-function</strong> parameter.<br />
+The value of this parameter points to an Adapter function that performs certificate validation.</p>
+<p>[code lang="xml"]<br />
+&lt;loginModule name=&quot;CustomDeviceProvisioningLoginModule&quot;&gt;<br />
+  &lt;className&gt;com.worklight.core.auth.ext.DeviceAutoProvisioningLoginModule&lt;/className&gt;<br />
+  &lt;parameter name=&quot;validate-certificate-function&quot; value=&quot;ProvisioningAdapter.validateCertificate&quot; /&gt;<br />
+&lt;/loginModule&gt;<br />
+[/code]</p>
+<h3>Security Test</h3>
+<p>Create a <strong>mobileSecurityTest</strong>.<br />
+Add a mandatory <em>testAppAuthenticity</em> test.<br />
+Add a mandatory <em>testDeviceId</em> test.<br />
+Specify <em>provisioningType="custom"</em>.<br />
+Specify <em>realm="CustomDeviceProvisioningRealm"</em>.</p>
+<p>[code lang="xml"]<br />
+&lt;mobileSecurityTest name=&quot;CustomDeviceProvisioningSecurityTest&quot;&gt;<br />
+  &lt;testAppAuthenticity/&gt;<br />
+  &lt;testDeviceId provisioningType=&quot;custom&quot; realm=&quot;CustomDeviceProvisioningRealm&quot; /&gt;<br />
+&lt;/mobileSecurityTest&gt;<br />
+[/code]</p>
+<h2>Implementing server-side components</h2>
+<p>Create an adapter that is named <strong>ProvisioningAdapter</strong>.<br />
+Add two functions with following signatures to the JavaScript file of the adapter.</p>
+<ul>
+<li><em>validateCSR (clientDN, csrContent)</em> – this function is invoked only during initial device provisioning. It is used to check whether the device is authorized to be provisioned. Once the device is provisioned, this function is not invoked again.</li>
+<li><em>validateCertificate (certificate, customAttributes)</em> – this function is invoked every time that the mobile application establishes a new session with the MobileFirst server. It is used to validate that the certificate that the application/device possesses is still valid and that the application/device is allowed to communicate with server.</li>
+</ul>
+<p>These functions are called internally by the MobileFirst authentication framework. Therefore, do not declare them in the XML file of the adapter XML file.</p>
+<h3>validateCSR</h3>
+<p>[code lang="javascript"]<br />
+function validateCSR(clientDN, csrContent){<br />
+	WL.Logger.info(&quot;validateCSR :: clientDN :: &quot; + JSON.stringify(clientDN));<br />
+	WL.Logger.info(&quot;validateCSR :: csrContent :: &quot; + JSON.stringify(csrContent));</p>
+<p>	var activationCode = csrContent.activationCode;<br />
+	var response;</p>
+<p>	// This is a place to perform validation of csrContent and update clientDN if required.<br />
+	// You can do it using adapter backend connectivity<br />
+	if (activationCode === &quot;mobilefirst&quot;){<br />
+		response = {<br />
+			isSuccessful: true,<br />
+			clientDN: clientDN + &quot;,CN=someCustomData&quot;,<br />
+			attributes: {<br />
+				customAttribute: &quot;some-custom-attribute&quot;<br />
+			}<br />
+		};<br />
+	} else {<br />
+		response = {<br />
+			isSuccessful: false,<br />
+			errors: [&quot;Invalid activation code&quot;]<br />
+		};<br />
+	}</p>
+<p>	return response;<br />
+}<br />
+[/code]</p>
+<p><em>csrContent.activationCode</em> is a custom property that you add to CSR on the client side.<br />
+Adapter functionality, for example access http web services, can be used to validate CSR information. For simplicity, the <em>activationCode</em> is checked whether it is equal to a predefined hardcoded string.<br />
+If CSR validation is successful, the <em>validateCSR</em> function returns a <em>clientDN</em> (note that it can be modified with more custom data). In addition, it is possible to specify custom attributes to be saved in certificate. Once <em>isSuccessful:true</em> is returned from the <em>validateCSR</em> function, the server generates a certificate and return it to the application.<br />
+If CSR validation fails, you must return <em>isSuccessful:false</em> and supply an error message.</p>
+<h3>validateCertificate</h3>
+<p>[code lang="javascript"]<br />
+function validateCertificate(certificate,customAttributes){<br />
+	WL.Logger.info(&quot;validateCertificate :: certificate :: &quot; + JSON.stringify(certificate));<br />
+	WL.Logger.info(&quot;validateCertificate :: customAttributes :: &quot; + JSON.stringify(customAttributes));</p>
+<p>	// Additional custom certificate validations can be performed here.</p>
+<p>	return {<br />
+		isSuccessful: true<br />
+	};<br />
+}<br />
+[/code]</p>
+<p>You can perform certificate validations according to your custom rules here. Adapter functionality, for example access http web services, can be used to validate the certificate. If the certificate is valid, you must return <em>isSuccessful:true</em>.<br />
+Returning <em>isSuccessful:false</em> means that application cannot operate and the only thing that can be done is to reinstall the application so it can be provisioned again.</p>
+<h2>Implementing client-side components</h2>
+<p>Create an application, add iPhone/iPad/Android environment to it.</p>
+<h3>Application Descriptor</h3>
+<p>Add security test that is created in previous steps to protect created environment.</p>
+<p>[code lang="xml"]<br />
+&lt;iphone applicationId=&quot;CustomDeviceProvisioning&quot; bundleId=&quot;com.CustomDeviceProvisioning&quot; securityTest=&quot;CustomDeviceProvisioningSecurityTest&quot; version=&quot;1.0&quot;&gt;<br />
+  &lt;worklightSettings include=&quot;false&quot; /&gt;<br />
+  &lt;security&gt;<br />
+    &lt;encryptWebResources enabled=&quot;false&quot; /&gt;<br />
+    &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot; /&gt;<br />
+  &lt;/security&gt;<br />
+&lt;/iphone&gt;<br />
+[/code]</p>
+<p>In case it is required, configure your application for Application Authenticity test as described in the <a title="Application Authenticity Protection" href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/application-authenticity-protection/">Application Authenticity Protection</a> training module.</p>
+<h3>HTML</h3>
+<p>The <em>AppBody</em> element holds application content.<br />
+The <em>ProvBody</em> element holds device provisioning-related content.<br />
+Note the <em>connectToServerButton</em> in <em>AppBody</em>.</p>
+<p>[code lang="html" highlight="2,11,7"]<br />
+&lt;div id=&quot;wrapper&quot;&gt;<br />
+  &lt;div id=&quot;AppBody&quot;&gt;<br />
+    &lt;p id=&quot;beforeProv&quot;&gt;<br />
+      Tap the connect button to authenticate using custom device provisioning.<br />
+    &lt;/p&gt;</p>
+<p>    &lt;input type=&quot;button&quot; id=&quot;connectToServerButton&quot; class=&quot;appButton&quot; value=&quot;Connect to MobileFirst Server&quot; /&gt;<br />
+    &lt;p id=&quot;provisioningError&quot; style=&quot;display: none&quot;&gt;&lt;/p&gt;<br />
+  &lt;/div&gt;</p>
+<p>  &lt;div id=&quot;ProvBody&quot; style=&quot;display: none&quot;&gt;<br />
+    &lt;p id=&quot;provisioningError&quot;&gt;<br />
+      &lt;input id=&quot;provisioningCode&quot; placeholder=&quot;Enter code&quot; type=&quot;text&quot; /&gt;<br />
+      &lt;input type=&quot;button&quot; id=&quot;submitProvCodeButton&quot; class=&quot;formButton&quot; value=&quot;Send&quot; /&gt;<br />
+    &lt;/p&gt;<br />
+  &lt;/div&gt;<br />
+&lt;/div&gt;<br />
+[/code]</p>
+<h3>main.js</h3>
+<p>Add listener to <strong>connectToServerButton</strong>.<br />
+Use the <em>WL.Client.connect()</em> API to connect to the MobileFirst Server.</p>
+<p>[code lang="javascript"]<br />
+function wlCommonInit(){<br />
+	$(&quot;#connectToServerButton&quot;).click(function(){<br />
+		WL.Client.connect({<br />
+			  onFailure: onConnectFailure<br />
+		});<br />
+	});<br />
+}<br />
+[/code]</p>
+<h3>Challenge Handler</h3>
+<p>Add a <em>CustomDeviceProvisioningRealmChallengeHandler.js</em> file and reference it in the main HTML file.<br />
+Device provisioning challenge handler requires following methods to be implemented:</p>
+<ul>
+<li><em>handler.createCustomCsr (challenge)</em> – This method is responsible for returning custom properties that are added to CSR. Here you add a custom <em>activationCode</em> property, which is used in the adapter’s <em>validateCSR</em> function. This method is asynchronous to allow collecting custom properties via native code or separate flow.</li>
+<li><em>handler.processSuccess(identity)</em> – This method is invoked when certificate validation is successfully completed by using the <em>validateCertificate</em> adapter function that you implemented earlier.</li>
+<li><em>handler.handleFailure()</em> – This method is invoked when certificate validation fails <em>(isSuccessful:false</em> is returned from <em>validateCertificate</em> function).</li>
+</ul>
+<p>[code lang="javascript"]<br />
+var customDevProvChallengeHandler =<br />
+	WL.Client.createProvisioningChallengeHandler(&quot;CustomDeviceProvisioningRealm&quot;);<br />
+[/code]</p>
+<p>Create device provisioning challenge handler by using the <em>WL.Client.createProvisioningChallengeHandler()</em> API. Specify realm name as parameter.</p>
+<p>[code lang="javascript" title="createCustomCsr"]<br />
+customDevProvChallengeHandler.createCustomCsr = function(challenge){<br />
+	WL.Logger.debug(&quot;createCustomCsr :: &quot; + JSON.stringify(challenge));</p>
+<p>	$(&quot;#AppBody&quot;).hide();<br />
+	$(&quot;#ProvBody&quot;).show();<br />
+	$(&quot;#provisioningCode&quot;).val(&quot;&quot;);</p>
+<p>	if (challenge.error) {<br />
+		$(&quot;#provisioningError&quot;).html(new Date() + &quot; &quot; + challenge.error);<br />
+	} else {<br />
+		$(&quot;#provisioningError&quot;).html(new Date() + &quot; Enter activation code.&quot;);<br />
+	}</p>
+<p>	$(&quot;#submitProvCodeButton&quot;).click(function(){<br />
+		var customCsrProperties = {<br />
+			activationCode: $(&quot;#provisioningCode&quot;).val()<br />
+		};<br />
+		customDevProvChallengeHandler.submitCustomCsr(customCsrProperties, challenge);<br />
+	});<br />
+};<br />
+[/code]</p>
+<p>When the MobileFirst Server triggers device provisioning, the <em>createCustomCsr</em> function is invoked. Use it to manipulate your UI, for example to hide the application screen and show device provisioning-related components.<br />
+You can use information that is returned in the authentication challenge, for example, error messages.<br />
+When required custom properties are collected, invoke the <em>submitCustomCsr()</em> API. Adding custom properties to CSR is optional. If you do not want to add custom properties, supply empty JSON object as a parameter.</p>
+<p>[code lang="javascript" title="processSuccess"]<br />
+customDevProvChallengeHandler.processSuccess = function(identity) {<br />
+	WL.Logger.debug(&quot;processSuccess :: &quot; + JSON.stringify(identity));<br />
+	$(&quot;#connectToServerButton&quot;).hide();<br />
+	$(&quot;#AppBody&quot;).show();<br />
+	$(&quot;#ProvBody&quot;).hide();<br />
+	$(&quot;#AppBody&quot;).html(&quot;&lt;p&gt;Device authentication with custom device provisioning was successfully completed.&lt;/p&gt;&quot;);<br />
+};<br />
+[/code]</p>
+<p><em>processSuccess</em> function is called each time the certificate successfully passes validation. You can use it for UI manipulations.</p>
+<p>[code lang="javascript" title="handleFailure"]<br />
+customDevProvChallengeHandler.handleFailure = function(){<br />
+	WL.Logger.debug(&quot;handleFailure&quot;);<br />
+	$(&quot;#AppBody&quot;).show();<br />
+	$(&quot;#ProvBody&quot;).hide();<br />
+	$(&quot;#wrapper&quot;).text(&quot;MobileFirst Server rejected your device. You will need to re-install the application and perform device provisioning again.&quot;);<br />
+};<br />
+[/code]</p>
+<p><em>handleFailure</em> function is called each time that the certificate fails validation. You can use it for UI manipulations and to notify the user that the application cannot connect to server.</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomDeviceProvisioningProject.zip">Click to download</a> the Studio project.</p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_14_results.png"><img class="alignnone size-full wp-image-1084" src="{{ site.baseurl }}/assets/09_14_results.png" alt="09_14_results" width="944" height="550" /></a></p>

@@ -1,0 +1,118 @@
+---
+layout: doc_page
+title: Application Authenticity Protection in Hybrid applications
+date: 2015-09-09 06:48:32.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-2
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="../../">Authentication and security</a> &lt; <a href="../">Application Authenticity Protection<br />
+</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<p><br clear="all" /><br />
+This tutorial is a continuation of the <a title="Application Authenticity Protection" href="../">Application Authenticity Protection</a> tutorial.</p>
+<h3>The application-descriptor.xml file</h3>
+<p>Add the <code>securityTest</code> attribute to the relevant environment element. For example:</p>
+<p>[code lang="xml"]&lt;iphone bundleId=&quot;com.worklight.MyBankApp&quot; applicationId=&quot;MyBankApp&quot; securityTest=&quot;customTests&quot; version=&quot;1.0“&gt;[/code]</p>
+<p>Next, you must make modifications that are specific to each environment.</p>
+<h3>iOS</h3>
+<p>To enable application authenticity protection check for the iPhone/iPad environment, specify the following identifiers in the <code>application-descriptor.xml</code> file.</p>
+<h4>Specifying the <code>bundleId</code> and <code>applicationId</code> identifiers</h4>
+<ol>
+<li>Specify the <code>bundleId</code> value of the application exactly as it is defined in the <strong>Apple Developer portal</strong>.<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/09_10_appId.png"><img class="aligncenter wp-image-1573 size-full" src="{{ site.baseurl }}/assets/09_10_appId.png" alt="09_10_appId" width="744" height="224" /></a>You can add the value either in the Application Description Design view:
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_15_application_descriptor_ios.png"><img class="aligncenter wp-image-1090 size-full" src="{{ site.baseurl }}/assets/09_15_application_descriptor_ios.png" alt="09_15_application_descriptor_ios" width="862" height="267" /></a></p>
+<p>Or in the Application Descriptor Source view:</p>
+<p>[code lang="xml"]&lt;iphone bundleId=&quot;com.worklight.MyBankApp&quot; version=&quot;1.0&quot;&gt;[/code]</p>
+</li>
+<li>Specify the <code>applicationId</code> value. The application identifier must match the value of the <code>application id</code> property, which is located in the <code>native\worklight.plist</code> file. You can add the value either in the Application Description Design view:<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/09_10_applicationId.png"><img class="aligncenter wp-image-1574 size-full" src="{{ site.baseurl }}/assets/09_10_applicationId.png" alt="09_10_applicationId" width="900" height="280" /></a>
+<p>Or in the Application Descriptor Source view:</p>
+<p>[code lang="xml"]&lt;iphone bundleId=&quot;com.worklight.MyBankApp&quot; applicationId=&quot;MyBankApp&quot; securityTest=&quot;customTests&quot; version=&quot;1.0“&gt;[/code]</p>
+</li>
+<li>In Xcode, verify that the following value exists in the <strong>Other Linker Flags</strong> field: <code>-ObjC</code></li>
+</ol>
+<h3>Android</h3>
+<p>To enable application authenticity protection check for the Android hybrid environment, follow these steps:</p>
+<ol>
+<li>Extract the public signing key of the certificate that is used to sign application bundle (<code>.apk</code> file).
+<ul>
+<li>If the application is built for distribution (production), extract the public key from the certificate that is used to sign the production-ready application.</li>
+<li>If the application is built in the development environment, you can use the default public key that is supplied by the Android SDK. You can find the development certificate in a keystore that is in a <code>{user-home}/.android/debug.keystore</code> file.</li>
+<li>You can extract the public signing key either manually or by using the wizard that MobileFirst Studio provides.<br />
+<h4>Extracting the public signing key by using the wizard (Eclipse)</h4>
+<p><em>If you are using Android Studio - look <a href="http://developer.android.com/tools/publishing/app-signing.html" title="here" target="_blank">here</a> for information about how to sign your Android application</em>.<br />
+The following instructions are for Eclipse:</p>
+<ol>
+<li>Right-click the Android environment folder and select <strong>Extract public signing key</strong>.</li>
+<li>Specify the location and the password of a keystore file and click <strong>Load Keystore</strong>.<br />
+    The default password for <strong>debug.keystore</strong> is <code>android</code>.</li>
+<li>Set the <strong>Key alias</strong> and click <strong>Next</strong>.</li>
+<p>    A dialog displays the public key.</p>
+<li>Click <strong>Finish</strong>. The public key is automatically pasted to the relevant section of the <code>application-descriptor.xml</code> file. <a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_15_android-signing-key.png"><img class="alignnone size-full wp-image-1091" src="{{ site.baseurl }}/assets/09_15_android-signing-key.png" alt="09_15_android-signing-key" width="1121" height="518" /></a>
+</li>
+<li>Add the Application package name by using the Application Descriptor Editor (design view):<br />
+<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_15_android-package-name-editor.png"><img class="alignnone size-full wp-image-1092" src="{{ site.baseurl }}/assets/09_15_android-package-name-editor.png" alt="09_15_android-package-name-editor" width="710" height="164" /></a></li>
+<li>Take the value of the application package name from the package attribute of the <em>manifest</em> node in the <code>AndroidManifest.xml</code> file.<br />
+If you decide to change the value, make sure that you change it in both locations. You can also directly edit the  <code>application-descriptor.xml</code> file and add a package name.</p>
+<p>[code lang="xml" highlight="7"]&lt;android version=&quot;1.0&quot;&gt;<br />
+        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
+        &lt;security&gt;<br />
+            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
+            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
+            &lt;publicSigningKey&gt;MIGff ...&lt;/publicSigningKey&gt;<br />
+            &lt;packageName&gt;com.MyBankApp&lt;/packageName&gt;<br />
+        &lt;/security&gt;<br />
+&lt;/android&gt;[/code]</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<h3>Windows Phone 8 - Silverlight</h3>
+<p>To enable application authenticity check for the Windows Phone 8 hybrid environment, modify the <code>application-descriptor.xml</code> file as follows.</p>
+<ul>
+<li>In the Application Descriptor Design view, supply the <code>applicationId</code> and <code>productId</code> in the Windows Phone 8 Security section:<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/09_11_windowsphone8.png"><img class="aligncenter size-large wp-image-1687" src="{{ site.baseurl }}/assets/09_11_windowsphone8-1024x492.png" alt="09_11_windowsphone8" width="980" height="470" /></a></li>
+<p> You can find the <code>productId</code> value in the <code>native\PropertiesWMAppManifest.xml</code> file.<br />
+ The <code>applicationId</code> value must match the value of the <code>wlAppId</code> property, which you can find in the <code>native\wlclient.properties</code> file.</p>
+<li>You can also supply these values in the Application Descriptor Source view. For example:
+<p>[code lang="xml" highlight="4,5"]&lt;windowsPhone8 version=&quot;1.0&quot;&gt;<br />
+        &lt;uuid&gt;b5542877-7afe-4edc-a817-5341b5027633&lt;/uuid&gt;<br />
+        &lt;security&gt;<br />
+            &lt;productId&gt;fca81480-7b4a-4ed0-b387-178e8fa0c3d5&lt;/productId&gt;<br />
+            &lt;applicationId&gt;HelloWorld&lt;/applicationId&gt;<br />
+        &lt;/security&gt;<br />
+    &lt;/windowsPhone8&gt;[/code]</li>
+</ul>
+<h3>Windows 8 - Universal</h3>
+<p>To enable application authenticity check for the Windows 8 Hybrid Universal applications, modify the <code>application-descriptor.xml</code> file as follows.</p>
+<ul>
+<li>Add the <code>packageName</code> attribute to the Windows / Windows Phone environment element:<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/AppDescriptorPackageName.png"><img src="{{ site.baseurl }}/assets/AppDescriptorPackageName-1024x413.png" alt="AppDescriptorPackageName" width="980" height="395" class="alignnone size-large wp-image-14656" /></a></li>
+<li>You can also supply the values in the Application Descriptor Source view. For example:
+<p>[code lang="xml" highlight="4,5"]&lt;windowsphoneuniversal version=&quot;1.0&quot;&gt;<br />
+        &lt;uuid&gt;3b081db3-9b9e-44c4-b7c0-1f09b067ce98&lt;/uuid&gt;<br />
+        &lt;security&gt;<br />
+        	&lt;packageName&gt;&lt;/packageName&gt;<br />
+        &lt;/security&gt;<br />
+    &lt;/windowsphoneuniversal&gt;[/code]</li>
+<li>You can find the <code>packageName</code> value in the <code>native project\environment(Win8 or WinPh8)\package.appxmanifest</code> file:<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/06/PackageNameWinUniv.png"><img src="{{ site.baseurl }}/assets/PackageNameWinUniv.png" alt="PackageNameWinUniv" width="1003" height="478" class="alignnone size-full wp-image-14646" /></a></li>
+</ul>

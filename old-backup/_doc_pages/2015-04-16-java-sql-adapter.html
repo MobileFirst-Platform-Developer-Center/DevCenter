@@ -1,0 +1,266 @@
+---
+layout: doc_page
+title: Java SQL Adapter
+date: 2015-04-16 07:48:44.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '9037'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442512797;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:9560;}i:1;a:1:{s:2:"id";i:9566;}i:2;a:1:{s:2:"id";i:10921;}}}}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/server-side-development-category/">Server-side development</a> &lt; ... <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/server-side-development-category/java-adapter/">Java Adapter</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+<li class="android">Native Android</li>
+<li class="wp8">Native Windows Phone 8</li>
+<li class="wp8">Native Windows 8 Universal</li>
+<li class="hybrid">Hybrid</li>
+</ul></div>
+<ul>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters" target="_blank">Download MobileFirst project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial is a continuation of <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/server-side-development-category/java-adapter/" title="Java Adapter">Java Adapter</a> and assumes previous knowledge of the concepts described there.</p>
+<p>Java adapters give developers control over connectivity to a back end. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.</p>
+<p>This tutorial covers an example of a Java adapter that connects to a MySQL back end to make CRUD (Create, Read, Update, Delete) operations on a <code>users</code> table, using REST concepts.</p>
+<p><strong>Prerequisite:</strong> This tutorial assumes knowledge of SQL.</p>
+<p>Topics:</p>
+<ul>
+<li><a href="#setupds">Setting up the data source</a></li>
+<li><a href="#UserAdapterApplication">UserAdapterApplication</a></li>
+<li><a href="#UserAdapterResource">UserAdapterResource</a></li>
+<li><a href="#results">Results</a></li>
+<li><a href="#sample">Sample</a></li>
+</ul>
+<h2 id="setupds">Setting up the data source</h2>
+<p>The MobileFirst Server needs to be configured to connect to the MySQL server. Those configurations can be stored in the <code>server.xml</code> file.</p>
+<p>To connect to a database, Java code needs a JDBC driver. For MySQL, the latest driver can be found on the <a href="http://dev.mysql.com/downloads/connector/j/" target="_blank">Download Connector/J</a> MySQL page, at <code>http://dev.mysql.com/downloads/connector/j/</code>.</p>
+<p>This example uses the embedded application server of MobileFirst Studio.</p>
+<p>[code lang="xml" title="server.xml"]<br />
+&lt;library id=&quot;MySQLLib&quot;&gt;<br />
+  &lt;fileset dir=&quot;${shared.resource.dir}&quot; includes=&quot;mysql-*.jar&quot; /&gt;<br />
+&lt;/library&gt;</p>
+<p>&lt;dataSource jndiName=&quot;jdbc/mobilefirst_training&quot;&gt;<br />
+  &lt;jdbcDriver libraryRef=&quot;MySQLLib&quot; /&gt;<br />
+  &lt;properties databaseName=&quot;mobilefirst_training&quot;<br />
+              password=&quot;&quot;<br />
+              portNumber=&quot;3306&quot;<br />
+              serverName=&quot;localhost&quot;<br />
+              user=&quot;root&quot; /&gt;<br />
+&lt;/dataSource&gt;<br />
+[/code]</p>
+<ul>
+<li>The <code>library</code> tag specifies where to find the <code>MySQL .jar</code> file. In most cases, <code>${shared.resource.dir}</code> is <strong>shared/resources</strong> under the Liberty server root folder.
+<p>In MobileFirst Studio for Eclipse, select <strong>Project Explorer > MobileFirst Development Server > shared > resources</strong>.</li>
+<li>The <code>dataSource</code> tag specifies how to connect to the database. Write down the <code>jndiName</code> that you choose, because you will need it later.</li>
+</ul>
+<h2 id="UserAdapterApplication">UserAdapterApplication</h2>
+<p><code>UserAdapterApplication</code> extends <code>MFPJAXRSApplication</code> and is a good place to trigger any initialization required by the adapter application.</p>
+<p>[code lang="java"]<br />
+	@Override<br />
+	protected void init() throws Exception {<br />
+		UserAdapterResource.init();<br />
+		logger.info(&quot;Adapter initialized!&quot;);<br />
+	}<br />
+[/code]</p>
+<h2 id="UserAdapterResource">UserAdapterResource</h2>
+<p>[code lang="java"]<br />
+@Path(&quot;/&quot;)<br />
+public class UserAdapterResource {<br />
+}<br />
+[/code]</p>
+<p><code>UserAdapterResource</code> is where requests to the adapter are handled.</p>
+<p><code>@Path("/")</code> means that the resources will be available at the URL <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code>.</p>
+<h3>Using DataSource</h3>
+<p>[code lang="java" title="UserAdapterResource"]<br />
+    static DataSource ds = null;<br />
+    static Context ctx = null;</p>
+<p>    public static void init() throws NamingException {<br />
+    	ctx = new InitialContext();<br />
+        ds = (DataSource)ctx.lookup(&quot;jdbc/mobilefirst_training&quot;);<br />
+    }<br />
+[/code]</p>
+<p>The <code>DataSource</code> is set as <code>static</code> so that it can be shared across all requests to the adapter. It is initialized in the <code>init()</code> method, which is called by the <code>init()</code> method of <code>UserAdapterApplication</code>, as described above.</p>
+<p>The previously defined <code>jndiName</code> parameter is used to find the database configuration.</p>
+<h3>Create User</h3>
+<p>[code lang="java"]<br />
+	@POST<br />
+	public Response createUser(@FormParam(&quot;userId&quot;) String userId,<br />
+								@FormParam(&quot;firstName&quot;) String firstName,<br />
+								@FormParam(&quot;lastName&quot;) String lastName,<br />
+								@FormParam(&quot;password&quot;) String password)<br />
+										throws SQLException{</p>
+<p>		Connection con = ds.getConnection();<br />
+		PreparedStatement insertUser = con.prepareStatement(&quot;INSERT INTO users (userId, firstName, lastName, password) VALUES (?,?,?,?)&quot;);</p>
+<p>		try{<br />
+			insertUser.setString(1, userId);<br />
+			insertUser.setString(2, firstName);<br />
+			insertUser.setString(3, lastName);<br />
+			insertUser.setString(4, password);<br />
+			insertUser.executeUpdate();<br />
+			//Return a 200 OK<br />
+			return Response.ok().build();<br />
+		}<br />
+		catch (SQLIntegrityConstraintViolationException violation) {<br />
+			//Trying to create a user that already exists<br />
+			return Response.status(Status.CONFLICT).entity(violation.getMessage()).build();<br />
+		}<br />
+		finally{<br />
+			//Close resources in all cases<br />
+			insertUser.close();<br />
+			con.close();<br />
+		}<br />
+	}<br />
+[/code]</p>
+<p>Because this method does not have any <code>@Path</code>, it is accessible as the root URL of the resource. Because it uses <code>@POST</code>, it is accessible via <code>HTTP POST</code> only.</p>
+<p>The method has a series of <code>@FormParam</code> arguments, which means that those can be sent in the HTTP body as <code>x-www-form-urlencoded</code> parameters.</p>
+<p>It is also possible to pass the parameters in the HTTP body as JSON objects, by using <code>@Consumes(MediaType.APPLICATION_JSON)</code>, in which case the method needs a <code>JSONObject</code> argument, or a simple Java object with properties that match the JSON property names.</p>
+<p>The <code>Connection con = ds.getConnection();</code> method gets the connection from the data source that was defined earlier.</p>
+<p>The SQL queries are built by the <code>PreparedStatement</code> method.</p>
+<p>If the insertion was successful, the <code>return Response.ok().build()</code> method is used to send a <code>200 OK</code> back to the client. If there was an error, a different <code>Response</code> object can be built with a specific HTTP status code. In this example, a <code>409 Conflict</code> error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.</p>
+<p><strong>Important:</strong> Make sure to close resources, such as prepared statements and connections.</p>
+<h3>Get User</h3>
+<p>[code lang="java"]<br />
+	@GET<br />
+	@Produces(&quot;application/json&quot;)<br />
+	@Path(&quot;/{userId}&quot;)<br />
+	public Response getUser(@PathParam(&quot;userId&quot;) String userId) throws SQLException{<br />
+		Connection con = ds.getConnection();<br />
+		PreparedStatement getUser = con.prepareStatement(&quot;SELECT * FROM users WHERE userId = ?&quot;);</p>
+<p>		try{<br />
+			JSONObject result = new JSONObject();</p>
+<p>			getUser.setString(1, userId);<br />
+			ResultSet data = getUser.executeQuery();</p>
+<p>			if(data.first()){<br />
+				result.put(&quot;userId&quot;, data.getString(&quot;userId&quot;));<br />
+				result.put(&quot;firstName&quot;, data.getString(&quot;firstName&quot;));<br />
+				result.put(&quot;lastName&quot;, data.getString(&quot;lastName&quot;));<br />
+				result.put(&quot;password&quot;, data.getString(&quot;password&quot;));<br />
+				return Response.ok(result).build();</p>
+<p>			} else{<br />
+				return Response.status(Status.NOT_FOUND).entity(&quot;User not found...&quot;).build();<br />
+			}</p>
+<p>		}<br />
+		finally{<br />
+			//Close resources in all cases<br />
+			getUser.close();<br />
+			con.close();<br />
+		}</p>
+<p>	}<br />
+[/code]</p>
+<p>This method uses <code>@GET</code> with a <code>@Path("/{userId}")</code>, which means that it is available via <code>HTTP GET /adapters/UserAdapter/{userId}</code>, and the <code>{userId}</code> is retrieved by the <code>@PathParam("userId")</code> argument of the method.</p>
+<p>If the user is not found, the <code>404 NOT FOUND</code> error code is returned.<br />
+If the user is found, a response is built from the generated JSON object.</p>
+<p>Prepending the method with <code>@Produces("application/json")</code> makes sure that the <code>Content-Type</code> of the output is correct.</p>
+<h3>Get all users</h3>
+<p>This method is similar to <code>getUser</code>, except for the loop over the <code>ResultSet</code>.</p>
+<p>[code lang="java"]<br />
+	@GET<br />
+	@Produces(&quot;application/json&quot;)<br />
+	public Response getAllUsers() throws SQLException{<br />
+		JSONArray results = new JSONArray();<br />
+		Connection con = ds.getConnection();<br />
+		PreparedStatement getAllUsers = con.prepareStatement(&quot;SELECT * FROM users&quot;);<br />
+		ResultSet data = getAllUsers.executeQuery();</p>
+<p>		while(data.next()){<br />
+			JSONObject item = new JSONObject();<br />
+			item.put(&quot;userId&quot;, data.getString(&quot;userId&quot;));<br />
+			item.put(&quot;firstName&quot;, data.getString(&quot;firstName&quot;));<br />
+			item.put(&quot;lastName&quot;, data.getString(&quot;lastName&quot;));<br />
+			item.put(&quot;password&quot;, data.getString(&quot;password&quot;));</p>
+<p>			results.add(item);<br />
+		}</p>
+<p>		getAllUsers.close();<br />
+		con.close();</p>
+<p>		return Response.ok(results).build();<br />
+	}<br />
+[/code]</p>
+<h3>Update user</h3>
+<p>[code lang="java"]<br />
+	@PUT<br />
+	@Path(&quot;/{userId}&quot;)<br />
+	public Response updateUser(@PathParam(&quot;userId&quot;) String userId,<br />
+								@FormParam(&quot;firstName&quot;) String firstName,<br />
+								@FormParam(&quot;lastName&quot;) String lastName,<br />
+								@FormParam(&quot;password&quot;) String password)<br />
+										throws SQLException{<br />
+		Connection con = ds.getConnection();<br />
+		PreparedStatement getUser = con.prepareStatement(&quot;SELECT * FROM users WHERE userId = ?&quot;);</p>
+<p>		try{<br />
+			getUser.setString(1, userId);<br />
+			ResultSet data = getUser.executeQuery();</p>
+<p>			if(data.first()){<br />
+				PreparedStatement updateUser = con.prepareStatement(&quot;UPDATE users SET firstName = ?, lastName = ?, password = ? WHERE userId = ?&quot;);</p>
+<p>				updateUser.setString(1, firstName);<br />
+				updateUser.setString(2, lastName);<br />
+				updateUser.setString(3, password);<br />
+				updateUser.setString(4, userId);</p>
+<p>				updateUser.executeUpdate();<br />
+				updateUser.close();<br />
+				return Response.ok().build();</p>
+<p>			} else{<br />
+				return Response.status(Status.NOT_FOUND).entity(&quot;User not found...&quot;).build();<br />
+			}<br />
+		}<br />
+		finally{<br />
+			//Close resources in all cases<br />
+			getUser.close();<br />
+			con.close();<br />
+		}</p>
+<p>	}<br />
+[/code]</p>
+<p>When updating an existing resource, it is standard practice to use <code>@PUT</code> (for <code>HTTP PUT</code>) and to use the resource ID in the <code>@Path</code>.</p>
+<h3>Delete user</h3>
+<p>[code lang="java"]<br />
+	@DELETE<br />
+	@Path(&quot;/{userId}&quot;)<br />
+	public Response deleteUser(@PathParam(&quot;userId&quot;) String userId) throws SQLException{<br />
+		Connection con = ds.getConnection();<br />
+		PreparedStatement getUser = con.prepareStatement(&quot;SELECT * FROM users WHERE userId = ?&quot;);</p>
+<p>		try{<br />
+			getUser.setString(1, userId);<br />
+			ResultSet data = getUser.executeQuery();</p>
+<p>			if(data.first()){<br />
+				PreparedStatement deleteUser = con.prepareStatement(&quot;DELETE FROM users WHERE userId = ?&quot;);<br />
+				deleteUser.setString(1, userId);<br />
+				deleteUser.executeUpdate();<br />
+				deleteUser.close();<br />
+				return Response.ok().build();</p>
+<p>			} else{<br />
+				return Response.status(Status.NOT_FOUND).entity(&quot;User not found...&quot;).build();<br />
+			}<br />
+		}<br />
+		finally{<br />
+			//Close resources in all cases<br />
+			getUser.close();<br />
+			con.close();<br />
+		}</p>
+<p>	}<br />
+[/code]</p>
+<p><code>@DELETE</code> (for <code>HTTP DELETE</code>) is used together with the resource ID in the <code>@Path</code>, to delete a user.</p>
+<h2 id="results">Results</h2>
+<p>Use the testing techniques described in <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/server-side-development-category/java-adapter/" title="Java Adapter">Java Adapter</a> to test your work.</p>
+<h2 id="sample">Sample</h2>
+<p>Download the <a href="https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters" target="_blank">MobileFirst project</a> which includes the <strong>UserAdapter</strong> described here.</p>
+<p>The project also includes a sample MySQL script in the <strong>server</strong> folder, which needs to be imported into your database to test the project.</p>
+<p>The project does not include the MySQL connector driver, and does not include the <strong>server.xml</strong> configuration described above. Those steps need to be completed in order to use the sample.</p>

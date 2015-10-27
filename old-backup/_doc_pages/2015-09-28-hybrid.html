@@ -1,0 +1,228 @@
+---
+layout: doc_page
+title: MobileFirst Quality Assurance in Hybrid Applications
+date: 2015-09-28 11:46:38.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _wpas_done_all: '1'
+  _oembed_8bb195f47d7ea118d550a376aafbf2b7: "{{unknown}}"
+  _oembed_3262f5e03e4f606350a579b8b68cc931: "{{unknown}}"
+  _oembed_72285d46af0b27869497889cea2826c8: "{{unknown}}"
+  _oembed_188f1543575c04ef2c4d9bca4a492251: "{{unknown}}"
+  _oembed_ad3724d51c2e151c75c361f18ca499a2: "{{unknown}}"
+  _oembed_9af624359edefe942d608264e3b039b3: "{{unknown}}"
+  _oembed_8342a93482c919053d0d10019914a654: "{{unknown}}"
+  _syntaxhighlighter_encoded: '1'
+  _post_restored_from: a:3:{s:20:"restored_revision_id";i:16943;s:16:"restored_by_user";i:26999;s:13:"restored_time";i:1442940975;}
+  oasis_original: '12691'
+  _edit_last: '6643'
+author:
+  login: cdawson@us.ibm.com
+  email: cdawson@us.ibm.com
+  display_name: Christopher Dawson
+  first_name: Christopher
+  last_name: Dawson
+---
+<p class="breadcrumbs">
+&lt; <a href="/mobilefirstplatform/documentation/getting-started-7-1/quality-assurance/">Quality Assurance</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial is a continuation of the IBM Mobile Quality Assurance setup step.<br />
+If you haven't done it yet, <a href="../quality-assurance/">please do so now</a>.</p>
+<p>This tutorial explains how to install and configure the Mobile Quality Assurance client JavaScript hybrid SDK for MobileFirst Platform Foundation, and how to enable apps to send back bug reports and feedback.</p>
+<h3>Topics</h3>
+<ul>
+<li><a href="#creatingapp">Creating a simple hybrid app</a></li>
+<li><a href="#installingLibraries">Installing the libraries</a></li>
+<li><a href="#configuringSession">Configuring how MQA communicates with your app</a></li>
+<li><a href="#Testing">Testing your app</a></li>
+<li><a href="#otherfeatures">Further discovery</a></li>
+</ul>
+<h2 id="creatingapp">Creating a simple hybrid MobileFirst application</h2>
+<p>If you do not already have a hybrid app to use for this procedure, create a Hello World app by completing the appropriate procedures after installing MobileFirst Project Studio into your Eclipse IDE:</p>
+<p><!--<br />
+<h3>Using the CLI</p>
+<ol>
+<li>If you have installed the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/advanced-client-side-development/using-cli-create-build-manage-project-artifacts/" title="Updated: Using CLI to create, build, and manage MobileFirst project artifacts">CLICLI, navigate to the directory where you want your project and create a project named <code>HelloWorldProject</code>.<br />
+[code]<br />
+$ cd c:\newProject<br />
+$ mfp create HelloWorldProject<br />
+[/code]<br />
+A MobileFirst Project called HelloWorldProject is created in the <em>c:\newProject\HelloWorldProject</em> directory.</a></li>
+<li>Go to the folder of your newly created project.<br />
+[code]<br />
+$ cd HelloWorldProject/<br />
+[/code]</li>
+<li>Define a hybrid application named <code>HelloWorld</code>.<br />
+[code]<br />
+$ mfp add hybrid HelloWorld<br />
+[/code]<br />
+A new hybrid app called HelloWorld is added to the <em>c:\HelloWorldProject\</em> directory.</li>
+<li>Add the required platforms that your app will run on.  For example, enter the following code to add the Android platform:<br />
+[code]<br />
+$ mfp add platform android<br />
+[/code]</p>
+<p>The Android platform is added to your HelloWorld app.</p>
+</li>
+</ol>
+<p>--></p>
+<ol>
+<li>Install MobileFirst Studio in your Eclipse IDE by selecting <strong>Eclipse Marketplace</strong> from the Help menu.</li>
+<li>Locate and install <strong>IBM MobileFirst Platform Studio</strong>.</li>
+<li>In MobileFirst Studio, select <strong>File &gt; New &gt; MobileFirst Project</strong> to create a new MobileFirst Project from the menu bar.<br />
+ <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_toolbar_menu.png"><img class="aligncenter wp-image-1399 size-full" src="{{ site.baseurl }}/assets/02_01_toolbar_menu.png" alt="02_01_toolbar_menu" width="603" height="344" /></a></li>
+<li>Name your project, for example <em>HelloWorldProject</em>, and select the <strong>Hybrid Application</strong> template.<br />
+ <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_new_project.png"><img class="aligncenter wp-image-1401 size-full" src="{{ site.baseurl }}/assets/02_01_new_project.png" alt="02_01_new_project" width="603" height="602" /></a></li>
+<li>Name your application, for example <em>HelloWorld</em>.<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_new_application.png"><img class="aligncenter wp-image-1398 size-full" src="{{ site.baseurl }}/assets/02_01_new_application.png" alt="02_01_new_application" width="603" height="603" /></a></li>
+<li>Select <strong>Environments</strong> to select and install the required structure for the platforms, such as Android or iPhone.</li>
+<li>Click <strong>Finish</strong> when complete.</li>
+<li>After the app builds, you can preview it by right-clicking the <strong>Android</strong> platform for your app in the Project Navigation pane and selecting <strong>Run as</strong> &gt; <strong>Preview</strong>.</li>
+</ol>
+<h2 id="installingLibraries">Installing the libraries</h2>
+<p>The libraries support both preproduction mode and production mode. Use preproduction mode when you want internal testers to report bugs and feedback with detailed information and have apps under test automatically report crashes. Use production mode when the app is publicly available and you want to gather information after it is released. Complete these steps to install the libraries in preproduction mode:</p>
+<h3>Download the libraries</h3>
+<ol>
+<li>Download the required libraries from <a href="http://www.ibm.com/support/docview.wss?uid=swg27044490" target="_blank">Device SDKs for Mobile Quality Assurance for Bluemix</a>:
+<ul>
+<li>MobileFirst Hybrid JavaScript SDK component (required for all JavaScript hybrid apps)</li>
+<li>MobileFirst Hybrid Android SDK component (required if your app runs on Android)</li>
+<li>MobileFirst Hybrid iPhone SDK component (required if your app runs on iPhone)</li>
+<li>MobileFirst Hybrid iPad SDK component (required if your app runs on iPad)</li>
+<li>Android SDK for ADT (Eclipse) (required if your app runs on Android)</li>
+<li>iOS SDK (required if your app runs on iOS)</li>
+</ul>
+</li>
+<li>Set your MobileFirst Studio file location preferences.
+<p>When you add the JavaScript components and native platform SDKs to your project, you have to specify where these files are so that MobileFirst Studio can find them.
+    </p>
+<ol>
+<li>From the Windows menu in the MobileFirst Studio interface, select <strong>Preferences</strong>. </li>
+<li>Click <strong>MobileFirst</strong> &gt; <strong>Templates and Components</strong></li>
+<li>Ensure that the folder where you plan to save the library files is the folder that is specified in the Download Folder field.<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/PrefTempAndComp.jpg"><img class="aligncenter wp-image-1401 size-full" src="{{ site.baseurl }}/assets/PrefTempAndComp.jpg" alt="Download folder preference" width="603" height="602" /></a></li>
+</ol>
+</li>
+</ol>
+<h3>Install the Mobile Quality Assurance JavaScript and native platform components</h3>
+<ol>
+<li>From the MobileFirst Studio Project Navigator view in the Design perspective, right-click the HelloWorld project and select <strong>Add/Remove Application Components</strong>.</li>
+<li>Select the JavaScript component and any operating system  components on which you your app runs.<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/mobilefirst6.jpg"><img class="aligncenter wp-image-1401 size-full" src="{{ site.baseurl }}/assets/mobilefirst6.jpg" alt="Select components" width="603" height="602" /></a></li>
+<li>Click <strong>Finish</strong>.</li>
+<li>Click <strong>OK</strong> until you see a confirmation that the components were added.</li>
+<li>Click <strong>OK</strong> to close the window.</li>
+</ol>
+<h3>Add the required scripts to the project</h3>
+<p>In the &lt;head&gt; section of the <em>project_name/apps/app_name/common/index.html</em> file, add the following lines:<br />
+[code]<br />
+&lt;script src=&quot;js/tracekit.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />
+&lt;script src=&quot;js/MQA.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />
+[/code]</p>
+<h3>Add the required native SDKs to the project</h3>
+<ul>
+<li>Android
+<ol>
+<li>Extract the native Android SDK for ADT zip file that you downloaded with the JavaScript component.</li>
+<li>In the File menu, select <strong>Import...</strong>.</li>
+<li>Expand the Android options and select <strong>Existing Android Code into Workspace</strong>.</li>
+<li>Browse to the folder where you extracted the Android SDK and select the MQA project.<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/mobilefirst10.jpg"><img class="aligncenter wp-image-1401 size-full" src="{{ site.baseurl }}/assets/mobilefirst10.jpg" alt="Add MQA project" width="603" height="602" /></a></li>
+<li>Click <strong>Finish</strong> to import the content.</li>
+</ol>
+<h3>Link the MQA project your Android project as a library</h3>
+<ol>
+<li>In the Project Explorer, right-click the Android project environment for your project and select <strong>Properties</strong>. The Android project environment name for this example is called <em>HelloWorldProjectHelloWorldAndroid</em>.</li>
+<li>Select <strong>Android</strong> in the navigation.</li>
+<li>Click <strong>Add</strong> in the library section.</li>
+<li>Add the Mobile Quality Assurance library, and click <strong>OK</strong>.</li>
+<li>Click <strong>OK</strong> to close the window and update the environment.<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/mobilefirst12.jpg"><img class="aligncenter wp-image-1401 size-full" src="{{ site.baseurl }}/assets/mobilefirst12.jpg" alt="Link the MQA library for Android" width="603" height="602" /></a></li>
+</ol>
+</li>
+<li>iOS (requires Xcode)
+<ol>
+<li>Extract the native iOS SDK that you downloaded with the JavaScript component.</li>
+<li>If you are using MobileFirst Studio, open the iPhone section of your project in Xcode by right-clicking the platform in the Project Navigator.</li>
+<li>Select <strong>Run as...</strong> &gt; <strong>Xcode project</strong>. You must be working on a device with the iOS platform and have Xcode installed to open the file with Xcode.<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/xcodethrougheclipse.jpg"><img class="aligncenter wp-image-1401 size-full" src="{{ site.baseurl }}/assets/xcodethrougheclipse.jpg" alt="Accessing Xcode for the iOS platforms" width="603" height="602" /></a></li>
+<li>Add the native iOS platform SDK (Q4M.framework) to the project by dragging it to the Frameworks folder in your Xcode Project Navigator.</li>
+<li>Link the required files to your Xcode project:
+<ol>
+<li>Click your project in the Xcode Project Navigator.</li>
+<li>Select <strong>Build Phases</strong>.</li>
+<li>Click <strong>Link Binary With Libraries</strong>.</li>
+<li>Link the following libraries:
+<ul>
+<li>AssetsLibrary.framework</li>
+<li>AudioToolbox.framework</li>
+<li>CoreLocation.framework</li>
+<li>CoreMotion.framework</li>
+<li>CoreTelephony.framework (for devices running iOS versions that are earlier than 4.0).</li>
+<li>CoreText.framework</li>
+<li>QuartzCore.framework</li>
+<li>Security.framework</li>
+<li>SystemConfiguration.framework</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="configuringSession">Configuring how MQA communicates with your app</h2>
+<p>For your app to send data to Mobile Quality Assurance, you must have an application key from the MQA service in Bluemix. For more information about application settings, see Registering apps. If you already have an account, you can find your application key by clicking the settings icon (gear) and then selecting App Settings.</p>
+<h3>Configure MQA to start a new Mobile Quality Assurance session each time your app starts in the JavaScript file</h3>
+<ol>
+<li>Locate the main.js JavaScript file in the app_name/common/js folder.</li>
+<li>Place the following function and required parameters inside the wlCommonInit() method immediately after this comment: <em>//Common initialization code goes here.</em>
+<p>[code lang="java"]<br />
+MQA.startNewSession(<br />
+   {<br />
+      mode: &quot;QA&quot;,<br />
+      //or mode: &quot;MARKET&quot; for production mode<br />
+      android: {<br />
+         appKey: &quot;your_MQA_Android_appKey&quot; ,<br />
+         notificationsEnabled: true<br />
+		},<br />
+      ios: {<br />
+         appKey: &quot;your_MQA_iOS_appKey&quot; ,<br />
+         screenShotsFromGallery: true,<br />
+           }<br />
+	},<br />
+       {<br />
+      success: function () {console.log(&quot;Session Started successfully&quot;);},<br />
+      error: function (string) { console.log(&quot;Session error&quot; + string);}<br />
+	}<br />
+   );<br />
+[/code]</p>
+<blockquote><p>To learn more about starting a Mobile Quality Assurance session, including details about the different session configuration options, see <a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_start_worklight_session.html" title="Starting IBM MobileFirst Platform Foundation quality assurance sessions" target="_blank">Starting IBM MobileFirst Platform Foundation quality assurance sessions</a>.</p></blockquote>
+</li>
+<li>Build and run your app in an emulator by right-clicking the Android project environment (not the project) and selecting <strong>Run as...</strong> > <strong>Android Application</strong>.</li>
+</ol>
+<h2 id="Testing">Testing your app</h2>
+<p>After the environment is set up and working with the emulator, you can load your app on your device and start testing it.  Complete the following steps to report a bug or provide feedback during testing:</p>
+<ol>
+<li>Shake your mobile device lightly.</li>
+<li>Select <strong>Report a bug</strong> or <strong>Give feedback</strong>.</li>
+<li>Enter the required information and select <strong>Send</strong> to send the information.</li>
+<li>View the bug reports and feedback in your Bluemix MQA instance where you retrieved the AppKey.</li>
+</ol>
+<p>For more information about reporting bugs, see <a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_ReportingBugs.html">Reporting bugs</a>. For more information about submitting feedback, see <a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/c_UserFeedback.html">User feedback</a>.</p>
+<h2 id="otherfeatures">Further discovery</h2>
+<p>After you are comfortable with the basics of setting up MQA with your app, you can read content in IBM Knowledge Center to learn and explore some of the other things that you can do.  For example:</p>
+<dl>
+<dt><a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_ManagingTesters.html">Managing users and testers</a></dt>
+<dd>You can manage the roles and access of your team as they apply to your app and MQA instance.</dd>
+<dt><a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_DistributingBuilds.html">Distributing and managing builds</a></dt>
+<dd>You can distribute test builds and production builds to the appropriate audience.</dd>
+<dt><a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_ManagingReports.html">Managing reports</a></dt>
+<dd>You can automatically distribute test builds and production builds to your audience.</dd>
+<dt><a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/UserSentiment.html">User sentiment analytics</a></dt>
+<dd>You can use MQA to analyze and monitor user comments and information about your app. You can also compare the analysis of those comments with the analysis of the user feedback from similar apps.</dd>
+</dl>

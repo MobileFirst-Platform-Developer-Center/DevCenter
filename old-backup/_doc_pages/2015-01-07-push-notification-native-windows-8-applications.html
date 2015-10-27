@@ -1,0 +1,80 @@
+---
+layout: doc_page
+title: 'NEW: Push notifications in native Windows 8 applications'
+date: 2015-01-07 10:46:16.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="/mobilefirstplatform/documentation/getting-started-7-0/notifications">Notifications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="wp8">Native Windows 8</li>
+</ul>
+</div>
+</div>
+<h2>Overview</h2>
+<p>IBM MobileFirst Platform Foundation provides a unified set of API methods to send, or push, notifications to devices where the MobileFirst application is installed. It is possible to send notification in 3 distinct types: event source notification, broadcast notification, or tag-based notification.</p>
+<p>This tutorial explains the concept, API, and usage of push notifications in the context of Native Windows 8 applications.<br />
+To create and configure a Windows 8 native project, first follow these tutorials:</p>
+<ul>
+<li><a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/creating-first-native-windows-8-mobilefirst-application/">Creating your first Native Windows 8 MobileFirst application</a></li>
+<li><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/invoking-adapter-procedures-native-windows-8-applications/">Invoking adapter procedures from native Windows 8 applications</a></li>
+</ul>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#settingUpPushNotifications">Setting up push notification</a></li>
+<li><a href="#NotificationTypes">Notification types</a></li>
+</ul>
+<h2 id="settingUpPushNotifications">Setting up push notification</h2>
+<h3>Server side</h3>
+<p>In the <code>application-descriptor.xml</code> file, for <em>windows8</em>, set the following attributes to the <span class="inline-code">pushSender</span> element.</p>
+<p><em>packageSID</em> - Unique identifier of your Windows Store app</p>
+<p><em>clientSecret</em> - Secret key</p>
+<p>[code lang="xml"]<br />
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;<br />
+&lt;nativeWindows8App xmlns=&quot;http://www.worklight.com/native-windows8-descriptor&quot; id=&quot;Windows8NativePush&quot; platformVersion=&quot;7.0.0.00.20150227-0916&quot; securityTest=&quot;MySecurityTest&quot; version=&quot;1.0&quot;&gt;</p>
+<p>   &lt;displayName&gt;Windows8NativePush&lt;/displayName&gt;<br />
+   &lt;description&gt;Windows8NativePush&lt;/description&gt;</p>
+<p>   &lt;pushSender clientSecret=&quot;WNS_SECRET_KEY&quot; packageSID=&quot;WNS_UNIQUE_IDENTIFIER&quot;/&gt;</p>
+<p>&lt;/nativeWindows8App&gt;</p>
+<p>[/code]</p>
+<h3>Client side</h3>
+<p>Set the Identity Name and Publisher values manually in the package manifest or associate your native project with the application in the Windows Store by right-clicking the project and selecting <strong>Store->Associate App with the Store</strong>.</p>
+<p>If you want your app to support toast notification, add the <code>ToastCapable="true"</code> attribute to the <span class="inline-code">VisualElements</span> element in the package manifest.</p>
+<p>[code lang="xml"]<br />
+   &lt;Applications&gt;<br />
+        &lt;Application Id=&quot;App&quot; ....&gt;<br />
+            &lt;VisualElements  .. ... ToastCapable=&quot;true&quot;&gt;<br />
+             ....<br />
+            &lt;/VisualElements&gt;<br />
+        &lt;/Application&gt;<br />
+   &lt;/Applications&gt;<br />
+[/code]</p>
+<blockquote><p>For more information about setting up your native Windows 8 application for push notification, see the topic about "Setting up push notifications for Windows 8" in the user documentation.</p></blockquote>
+<h2 id="additionalNotificationTypes">Notification types</h2>
+<h3>Event source notification</h3>
+<p>Event source notifications are notification messages that are targeted to devices with a user subscription.</p>
+<h3>Broadcast notification</h3>
+<p>Broadcast notifications are notification messages that are targeted to all subscribed devices.</p>
+<h3>Tag-based notification</h3>
+<p>Tag-based notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.</p>
+<p>For more information, <a href="#selectNotificationType">select a notification type</a>.</p>
+<h2 id="selectNotificationType">Select a notification type</h2>

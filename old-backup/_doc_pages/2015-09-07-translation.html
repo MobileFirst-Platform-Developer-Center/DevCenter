@@ -1,0 +1,150 @@
+---
+layout: doc_page
+title: Translation
+date: 2015-09-07 19:04:15.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 8-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="../">Advanced client-side development</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+       <a href="https://github.com/MobileFirst-Platform-Developer-Center/Translation" target="_blank">Download MobileFirst project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>You can use the IBM MobileFirst Platform Foundation framework to add multilingual translation of Hybrid applications into other languages. Items that can be translated are application strings and system messages.<br />
+The platform can automatically translate application strings according to a designated file.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#encoding">Encoding</a></li>
+<li><a href="#strings">Enabling translation of application strings</a></li>
+<li><a href="#system">Enabling translation of system messages</a></li>
+<li><a href="#multilang">Multilanguage translation</a></li>
+<li><a href="#detectLocale">Detecting the device locale and language</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="encoding">Encoding</h2>
+<p>The default workspace encoding in Eclipse is <code>Cp1252</code>.</p>
+<p>Before you create the MobileFirst project and start the translation work, you must change the default encoding of the Eclipse workspace.<br />
+In Eclipse, navigate to <strong>Window > Preferences > General > Workspace</strong> and change the encoding to <code>UTF-8</code>. If you have already created a project, you will need to go over each <code>.css</code> and <code>.js</code> file and change its encoding property.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_encoding.png"><img src="{{ site.baseurl }}/assets/05_05_encoding.png" alt="05_05_encoding" width="825" height="624" class="aligncenter size-full wp-image-1323" /></a></p>
+<h2 id="strings">Enabling translation of application strings</h2>
+<p>You can find the <code>messages.js</code> file, which is intended for application strings, in the <code>common\js</code> folder.<br />
+[code lang="javascript"]<br />
+Messages = {<br />
+  headerText: &quot;Default header&quot;,<br />
+  actionsLabel: &quot;Default action label&quot;,<br />
+  sampleText: &quot;Default sample text&quot;,<br />
+};<br />
+[/code]</p>
+<p>Application messages that are stored in the <code>messages.js</code> file can be referenced in two ways:</p>
+<ul>
+<li>As a JavaScript object property. For example: <code>Messages.headerText</code></li>
+<li>As an ID of an HTML element with <code>class="translate"</code>.<br />
+[code lang="html" title="A 1=that 2=is 3=defined 4=in 5=Messages.headerText 6=is 7=automatically 8=used 9=here." language="string"]<br />
+&lt;h1 id=&quot;headerText&quot; class=&quot;translate&quot;&gt;&lt;/h1&gt;<br />
+[/code]
+</li>
+</ul>
+<h2 id="system">Enabling translation of system messages</h2>
+<p>It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password".<br />
+System messages are stored in the <code>WL.ClientMessages</code> object.<br />
+You can find a full list of system messages in the <code>www\default\worklight\messages\messages.json</code> file, which is inside the generated projects (iOS, Android, Windows Phone 8, and so on,…).<br />
+To enable the translation of a system message, override it in your JavaScript application.<br />
+[code lang="javascript"]<br />
+WL.ClienMessages.loading = &quot;Application HelloWorld is loading... please wait.&quot;;<br />
+[/code]</p>
+<p>Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.</p>
+<h2 id="multilang">Multilanguage translation</h2>
+<p>Using JavaScript, you can implement multilanguage translation for your applications.</p>
+<ol>
+<li>Set up the default application strings in the <code>messages.js</code> file.<br />
+[code lang="javascript"]<br />
+Messages = {<br />
+  headerText: &quot;Default header&quot;,<br />
+  actionsLabel: &quot;Default action label&quot;,<br />
+  sampleText: &quot;Default sample text&quot;,<br />
+  englishLanguage : &quot;English&quot;,<br />
+  frenchLanguage : &quot;French&quot;,<br />
+  russianLanguage : &quot;Russian&quot;,<br />
+  hebrewLanguage : &quot;Hebrew&quot;<br />
+};<br />
+[/code]</p>
+</li>
+<li>Override specific strings when required.<br />
+[code lang="javascript"]<br />
+function setFrench(){<br />
+  Messages.headerText = &quot;Traduction&quot;;<br />
+  Messages.actionsLabel = &quot;Sélectionnez une langue:&quot;;<br />
+  Messages.sampleText = &quot;Ceci est un exemple de texte en français.&quot;;<br />
+}<br />
+[/code]
+</li>
+<li>Update the GUI components with the new strings.<br />
+You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic.<br />
+Each time that an element is updated, it is updated with different strings according to the active language.</p>
+<p>[code lang="javascript"]<br />
+function languageChanged(lang) {<br />
+  if (typeof(lang)!=&quot;string&quot;)<br />
+    lang = $(&quot;#languages&quot;).val();</p>
+<p>    switch (lang){<br />
+      case &quot;english&quot;:<br />
+        setEnglish();<br />
+        break;<br />
+      case &quot;french&quot;:<br />
+        setFrench();<br />
+        break;<br />
+      case &quot;russian&quot;:<br />
+        setRussian();<br />
+        break;<br />
+      case &quot;hebrew&quot;:<br />
+        setHebrew();<br />
+        break;<br />
+    }</p>
+<p>    if ($(&quot;#languages&quot;).val()==&quot;hebrew&quot;)<br />
+      $(&quot;#wrapper&quot;).css({direction: 'rtl'});<br />
+    else<br />
+      $(&quot;#wrapper&quot;).css({direction: 'ltr'});</p>
+<p>    $(&quot;#sampleText&quot;).html(Messages.sampleText);<br />
+    $(&quot;#headerText&quot;).html(Messages.headerText);<br />
+    $(&quot;#actionsLabel&quot;).html(Messages.actionsLabel);<br />
+}<br />
+[/code]
+</li>
+</ol>
+<h2 id="detectLocale">Detecting the device locale and language</h2>
+<p>It is possible to detect the locale and the language of the device.<br />
+Use the <code>WL.App.getDeviceLocale()</code> and <code>WL.App.getDeviceLanguage()</code> functions to detect the current locale.<br />
+[code lang="javascript"]<br />
+var locale = WL.App.getDeviceLocale();<br />
+var lang = WL.App.getDeviceLanguage();<br />
+WL.Logger.debug(&quot;&gt;&gt; Detected locale: &quot; + locale);<br />
+WL.Logger.debug(&quot;&gt;&gt; Detected language: &quot; + lang);<br />
+[/code]<br />
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_detected-logs.png"><img src="{{ site.baseurl }}/assets/05_05_detected-logs.png" alt="05_05_detected-logs" width="505" height="65" class="alignnone size-full wp-image-1327" /></a></p>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/Translation" target="_blank">Click to download</a> the MobileFirst project.</p>

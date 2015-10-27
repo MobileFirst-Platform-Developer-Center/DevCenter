@@ -1,0 +1,163 @@
+---
+layout: doc_page
+title: Form-based authentication in native Android applications
+date: 2015-04-16 10:00:16.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '12536'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442512992;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11035;}i:1;a:1:{s:2:"id";i:11086;}i:2;a:1:{s:2:"id";i:1024;}}}}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+&lt; <a href="../../">Authentication and security</a> &lt; <a href="../">Form-based authentication<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="android">Native Android</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuth" target="_blank">Download MobileFirst project</a>
+        </li>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuthAndroid" target="_blank">Download Native project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial explains how to implement the client-side of form-based authentication in native Android.<br />
+<strong>Prerequisite:</strong> Make sure that you read the <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/form-based-authentication/" title="Form-based authentication">Form-based authentication</a> tutorial first.</p>
+<h2>Implementing the client-side authentication</h2>
+<ul>
+<li>Create a native Android application and add the MobileFirst native APIs as explained in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/" target="_blank">Configuring a native Android application with the MobileFirst Platform SDK</a> tutorial.
+</li>
+<li>Add an activity which handles and presents a login form.
+<p></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/FormBased.png"><img src="{{ site.baseurl }}/assets/FormBased.png" alt="FormBased" width="435" height="350" class="aligncenter size-full wp-image-16948" /></a>
+</li>
+</ul>
+<h3>Challenge Handler</h3>
+<ul>
+<li>Create a <span class="inline-code">MyChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span>.<br />
+[code lang="java"]<br />
+public class AndroidChallengeHandler extends ChallengeHandler<br />
+[/code]
+</li>
+<li>Call the <code>super</code> method:<br />
+[code lang="java"]<br />
+	public AndroidChallengeHandler(String realm) {<br />
+		super(realm);<br />
+	}<br />
+[/code]
+</li>
+<li>Add an implementation of the following <code>ChallengeHandler</code> methods to handle the form-based challenge:
+<ol>
+<li><strong><code>isCustomResponse</code> method:</strong><br />
+The <code>isCustomResponse</code> method is invoked each time a response is received from the MobileFirst Server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <code>true</code> or <code>false</code>.<br />
+The default login form that returns from the MobileFirst Server contains the <code>j_security_check</code> string. If the response contains the string, the challenge handler returns <code>true</code>.<br />
+[code lang="java"]<br />
+public boolean isCustomResponse(WLResponse response) {<br />
+    if (response == null || response.getResponseText() == null ||<br />
+            response.getResponseText().indexOf(&quot;j_security_check&quot;) == -1) {<br />
+        return false;<br />
+    }<br />
+    return true;<br />
+}<br />
+[/code]
+</li>
+<li><strong><code>handleChallenge</code> method:</strong><br />
+If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hiding the application screen and showing the login screen.<br />
+[code lang="java"]<br />
+public void handleChallenge(WLResponse response){<br />
+    if (!isCustomResponse(response)) {<br />
+        submitSuccess(response);<br />
+    } else {<br />
+        cachedResponse = response;<br />
+        Intent login = new Intent(parentActivity, LoginFormBasedAuth.class);<br />
+        parentActivity.startActivityForResult(login, 1);<br />
+    }<br />
+}<br />
+[/code]
+</li>
+<li><strong><code>onSuccess</code> and <code>onFailure</code> methods: </strong><br />
+At the end of the authentication flow, <code>onSuccess</code> or <code>onFailure</code> will be triggered<br />
+Call the <code>submitSuccess</code> method in order to inform the framework that the authentication process completed successfully and for the <code>onSuccess</code> handler of the invocation to be called.<br />
+Call the <code>submitFailure</code> method in order to inform the framework that the authentication process failed and for the <code>onFailure</code> handler of the invocation to be called.<br />
+[code lang="java"]<br />
+	public void onFailure(WLFailResponse response) {<br />
+		submitFailure(response);<br />
+	}</p>
+<p>	public void onSuccess(WLResponse response) {<br />
+		submitSuccess(response);<br />
+	}<br />
+[/code]
+</li>
+</ol>
+</li>
+</ul>
+<p><br clear="all" /></p>
+<h4>submitLoginForm</h4>
+<p>When the user taps to submit the credentials, you need to call the <span class="inline-code">submitLoginForm</span> method in order to send the <code>j_security_check</code> string and the credentials to the MobileFirst Server.<br />
+For example, in here we implemented a <code>submitLogin method</code> that called by the MainActivity after the login process is completed.<br />
+[code lang="java"]<br />
+public void submitLogin(int resultCode, String userName, String password, boolean back){<br />
+    if (resultCode != Activity.RESULT_OK || back) {<br />
+        submitFailure(cachedResponse);<br />
+    } else {<br />
+        HashMap&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();<br />
+        params.put(&quot;j_username&quot;, userName);<br />
+        params.put(&quot;j_password&quot;, password);<br />
+        submitLoginForm(&quot;/j_security_check&quot;, params, null, 0, &quot;post&quot;);<br />
+    }<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<h3>The Main Activity</h3>
+<p>In the sample project, in order to trigger the challenge handler we use the <code>WLClient invokeProcedure</code> method.<br />
+The protected procedure invocation triggers MobileFirst Server to send the challenge.</p>
+<ul>
+<li>Create a <code>WLClient</code> instance and use the <code>connect</code> method to connect to the MobileFirst Server:<br />
+[code lang="java"]<br />
+final WLClient client = WLClient.createInstance(this);<br />
+client.connect(new MyConnectionListener());<br />
+[/code]
+</li>
+<li>In order to listen to incoming challenges, make sure to register the challenge handler by using the <code>registerChallengeHandler</code> method:<br />
+[code lang="java"]<br />
+challengeHandler = new AndroidChallengeHandler(this, realm);<br />
+client.registerChallengeHandler(challengeHandler);<br />
+[/code]
+</li>
+<li>Invoke the protected adapter procedure:<br />
+[code lang="java"]<br />
+URI adapterPath = new URI(&quot;/adapters/AuthAdapter/getSecretData&quot;);<br />
+WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
+request.send(new MyResponseListener());<br />
+[/code]
+</li>
+</ul>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuth" target="_blank">Click to download</a> the MobileFirst project.<br />
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuthAndroid" target="_blank">Click to download</a> the Native project.</p>
+<ul>
+<li>The <code>FormBasedAuth</code> project contains a MobileFirst native API that you can deploy to your MobileFirst server.</li>
+<li>The <code>FormBasedAuthAndroid</code> project contains a native Android application that uses a MobileFirst native API library.</li>
+<li>Make sure to update the <code>wlclient.properties</code> file in the native project with the relevant server settings.</li>
+</ul>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/FormAuth.png"><img src="{{ site.baseurl }}/assets/FormAuth-1024x579.png" alt="FormAuth" width="1359" height="702" class="aligncenter size-large wp-image-11505" /></a></p>

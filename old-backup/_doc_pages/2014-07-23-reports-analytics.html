@@ -1,0 +1,96 @@
+---
+layout: doc_page
+title: Reports and analytics
+date: 2014-07-23 06:32:17.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '11223'
+  _wpas_done_all: '1'
+  _oembed_dacea75ff6e809186ab4ca6634b6e53f: "{{unknown}}"
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/moving-production/">Moving to production</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-7-0/">Native iOS</a></li>
+<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-7-0/">Native Android</a></li>
+<li class="wp8"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-WP8-development-7-0/">Native Windows Phone 8</a></li>
+<li class="wp8"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-windows-8-development-7-0/">Native Windows 8</a></li>
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-7-0/">Hybrid</a></li>
+</ul>
+</div>
+<h2>Introducing Reports</h2>
+<p>IBM MobileFirst Platform provides an extensible mechanism for enterprises to use their own reporting tools to integrate with the IBM MobileFirst platform and use the analytics data that is captured by the platform.</p>
+<p>The figure to the right gives a high-level overview of the reports architecture.</p>
+<h2>Comparison with IBM MobileFirst Platform Operational Analytics</h2>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/reports_highlevel.jpg"><img src="{{ site.baseurl }}/assets/reports_highlevel.jpg" alt="reports_highlevel" width="400" height="457" class="alignright size-full wp-image-2097" /></a></p>
+<ul>
+<li>
+        IBM MobileFirst Platform Operational Analytics provides the capability to search for specific terms in your mobile infrastructure, including IBM MobileFirst Server logs and client-generated analytic data.
+    </li>
+<li>
+        IBM MobileFirst Platform Operational Analytics is more convenient to set up than BIRT (Business Intelligence Reporting Tool).
+    </li>
+<li>
+        You do not have to configure or administer a database for the specific purpose of managing accumulated analytics data in IBM MobileFirst Platform Operational Analytics.
+    </li>
+</ul>
+<p><br clear="all" /></p>
+<h2>Introducing Device Reports</h2>
+<p>IBM MobileFirst Platform provides two reporting mechanisms:</p>
+<ul>
+<li>
+        <strong>Raw Data</strong> - IBM MobileFirst Platform emits raw data that enables an OLAP system to extract the required information and present it through corporate reporting mechanisms.
+    </li>
+<li>
+        <strong>Device Usage</strong> - Device Usage reports are default aggregations that are based on the Raw Data and are provided for the benefit of organizations that do not have OLAP systems or choose not to integrate IBM MobileFirst Platform with an OLAP system.
+    </li>
+</ul>
+<p>To <strong>enable Raw Data</strong> collection, edit the worklight.properties file:</p>
+<ul>
+<li>
+        Uncomment the <code>reports.exportRawData</code> property and set its value to <code>true</code>.
+    </li>
+<li>
+        Modify the <code>wl.reports.db</code> properties to contain your database settings.
+    </li>
+</ul>
+<h2>Raw data</h2>
+<p>With the Raw Data reports feature, you create collections of analytics information about the usage of your applications and adapters (such as: activity type, device info, or app version).</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/app_activity_report.png"><img src="{{ site.baseurl }}/assets/app_activity_report-300x238.png" alt="app_activity_report" width="300" height="238" class="alignright size-medium wp-image-1774" /></a></p>
+<p>For more information about how to enable Raw Data reports, see the IBM MobileFirst Platform user documentation.</p>
+<h2>Device Usage Reports</h2>
+<p>To allow simpler and faster access to the reports data, the MobileFirst Server runs an analytics data processor task with a default 24-hour interval.</p>
+<p>This task retrieves the raw entries for the specified time interval from the <code>app_activity_report table</code>, processes them, and fills the <code>fact_activities</code> table.</p>
+<p>For more information about how to enable Device Usage reports, see the IBM MobileFirst Platform user documentation.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/fact_activities.png"><img src="{{ site.baseurl }}/assets/fact_activities-185x300.png" alt="fact_activities" width="185" height="300" class="alignright size-medium wp-image-1776" /></a></p>
+<h2>BIRT reports</h2>
+<p>You can use Business Intelligence Reporting Tool (BIRT) to generate and render report content.</p>
+<p>BIRT provides two different user interfaces:</p>
+<ul>
+<li>
+        Report designer and viewer (an Eclipse plug-in)
+    </li>
+<li>
+        Reports viewer (installed on an application server and accessible via a browser)
+    </li>
+</ul>
+<p>a</p>
+<p>IBM MobileFirst Platform installation contains a number of predefined BIRT reports.<br />
+These reports are configurable XML files that are designed to retrieve and present data from MobileFirst Reports database tables. These files have a <code>.rptdesign</code> extension.</p>
+<p>For more information about how to enable BIRT reports, see the IBM MobileFirst Platform user documentation.</p>
+<h2>Viewing reports</h2>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/piechart.png"><img src="{{ site.baseurl }}/assets/piechart.png" alt="piechart" width="1662" height="1156" class="alignnone size-full wp-image-1777" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/bargraph.png"><img src="{{ site.baseurl }}/assets/bargraph.png" alt="bargraph" width="2156" height="954" class="alignnone size-full wp-image-1775" /></a></p>

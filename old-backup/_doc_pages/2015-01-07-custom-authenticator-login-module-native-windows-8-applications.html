@@ -1,0 +1,112 @@
+---
+layout: doc_page
+title: Custom Authenticator and Login Module in native Windows 8 applications
+date: 2015-01-07 12:18:58.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '9037'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/authentication-security/">Authentication and security</a> &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/authentication-security/custom-authenticator-login-module/">Custom Authenticator and Login Module<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="wp8">Native Windows 8</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeCustomLoginModuleProject.zip">Download Studio project</a>
+        </li>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/Win8NativeCustomLoginModuleProject.zip">Download native project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial illustrates the native Windows 8 client-side authentication components for custom authentication. Make sure you read <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/authentication-security/custom-authenticator-login-module/" title="Custom Authenticator and Login Module">Custom Authenticator and Login Module</a> first.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native Windows 8 application and add the MobileFirst native APIs following the documentation.</p>
+<h3>CustomChallengeHandler</h3>
+<p>Create a <span class="inline-code">CustomChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span>.<br />
+<span class="inline-code">CustomChallengeHandler</span> should implement</p>
+<ul>
+<li><span class="inline-code">isCustomResponse</span> </li>
+<li><span class="inline-code">handleChallenge</span> </li>
+</ul>
+<p><span class="inline-code">isCustomResponse</span> checks every custom response received from MobileFirst Server to see if this is the challenge we are expecting.<br />
+[code lang="csharp"]<br />
+public override bool isCustomResponse(WLResponse response)<br />
+{<br />
+    if (!(response.getResponseJSON()[&quot;authStatus&quot;] == null) &amp;&amp; response.getResponseJSON()[&quot;authStatus&quot;].ToString().CompareTo(&quot;required&quot;) == 0)<br />
+    {<br />
+       return true;<br />
+    }<br />
+    else<br />
+    {<br />
+       return false;<br />
+    }<br />
+}<br />
+[/code]</p>
+<p><span class="inline-code">handleChallenge</span> method, is called after the <span class="inline-code">isCustomResponse</span> method returned true.<br />
+Within this method we present our login form. Different approaches may be adopted to present the login form.<br />
+[code lang="csharp"]<br />
+public override void handleChallenge(JObject response)<br />
+{<br />
+  CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,<br />
+async () =&gt;<br />
+  {<br />
+     MainPage._this.LoginGrid.Visibility = Visibility.Visible;<br />
+  });<br />
+}<br />
+[/code]</p>
+<p>From the login form , credentials are passed to the <span class="inline-code">CustomChallengeHandler</span> class. The <span class="inline-code">submitLoginForm()</span> method is used to send our input data to the authenticator.<br />
+[code lang="csharp"]<br />
+public void sendResponse(String username, String password)<br />
+{<br />
+   Dictionary&lt;String, String&gt; parms = new Dictionary&lt;String, String&gt;();</p>
+<p>   parms.Add(&quot;username&quot;, username);<br />
+   parms.Add(&quot;password&quot;, password);</p>
+<p>   submitLoginForm(&quot;/my_custom_auth_request_url&quot;, parms, null, 0, &quot;post&quot;);<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<h3>MainPage</h3>
+<p>Within the MainPage class connect to MobileFirst server, register your <span class="inline-code">challengeHandler</span> and invoke the protected adapter procedure.<br />
+The procedure invocation will trigger MobileFirst server to send a challenge that will trigger our <span class="inline-code">challengeHandler</span>.<br />
+[code lang="csharp"]<br />
+WLClient wlClient = WLClient.getInstance();</p>
+<p>CustomChallengeHandler ch = new CustomChallengeHandler();<br />
+wlClient.registerChallengeHandler((BaseChallengeHandler&lt;JObject&gt;)ch);</p>
+<p>MyResponseListener mylistener = new MyResponseListener(this);<br />
+wlClient.connect(mylistener);</p>
+<p>[/code]</p>
+<p>Since the native API not protected by a defined security test, there is no login form presented during server connection.<br />
+Invoke the protected adapter procedure and the login form is presented by the <span class="inline-code">challengeHandler</span>.<br />
+[code lang="csharp"]<br />
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;DummyAdapter&quot;, &quot;getSecretData&quot;);<br />
+Object[] parameters = { 0 };<br />
+invocationData.setParameters(parameters);<br />
+MyInvokeListener listener = new MyInvokeListener(this);<br />
+WLClient.getInstance().invokeProcedure(invocationData, listener, new WLRequestOptions());<br />
+[/code]</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeCustomLoginModuleProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/Win8NativeCustomLoginModuleProject.zip">Click to download</a> the Native project.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/Win8NativeCustomLoginModule.png"><img src="{{ site.baseurl }}/assets/Win8NativeCustomLoginModule.png" alt="Win8NativeCustomLoginModule" width="2560" height="676" class="aligncenter size-full wp-image-7557" /></a></p>

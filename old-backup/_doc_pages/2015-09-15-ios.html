@@ -1,0 +1,136 @@
+---
+layout: doc_page
+title: iOS - Quick Start demonstration
+date: 2015-09-15 09:33:32.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 8-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="../">Hello World</a></p>
+<p>The purpose of this demonstration is to make you experience an end-to-end flow where the MobileFirst Platform Foundation SDK for iOS is integrated into an Xcode project and used to retrieve data by using a MobileFirst adapter.</p>
+<p>To learn more about creating projects and applications, using adapters, and lots more, <a href="../">visit the Native iOS Development</a> landing page.</p>
+<p><strong>Prerequisites:</strong> Make sure that the following software is installed:</p>
+<ul>
+<li>MobileFirst Platform command line tool (<a href="http://developer.ibm.com/mobilefirstplatform/install/#clui" target="_blank">download</a>)</li>
+<li>Xcode 6.1 and later</li>
+</ul>
+<hr />
+<p><br clear="all" /></p>
+<ol>
+<li>
+<h3>Create a MobileFirst back-end project and adapter</h3>
+<ul>
+<li>
+<h4>Create a back-end project in a location of your choice.</h4>
+<p>                [code lang="shell"]<br />
+                mfp create MyProject<br />
+                cd MyProject<br />
+                [/code]
+            </li>
+<li>
+<h4>Add an HTTP adapter to the project.</h4>
+<p>                [code lang="shell"]<br />
+                cd MyProject<br />
+                mfp add adapter MyAdapter -t http<br />
+                [/code]
+            </li>
+</ul>
+</li>
+<li>
+<h3>Deploy artifacts to the MobileFirst Server</h3>
+<ul>
+<li>
+<h4>Start the MobileFirst Server and deploy the adapter.</h4>
+<p>                [code lang="shell"]<br />
+                mfp start<br />
+                mfp push<br />
+                [/code]
+            </li>
+</ul>
+</li>
+<li>
+<h3>Create an Xcode project</h3>
+</li>
+<li>
+<h3>Add the MobileFirst iOS SDK to the Xcode project</h3>
+</li>
+<li>If <a href="http://guides.cocoapods.org">CocoaPods</a> is not installed in your development environment, install it as follows:
+<ol>
+<li>Open <strong>Terminal</strong>.</li>
+<li>Run the command <code>sudo gem install cocoapods</code></li>
+<li>Run the command <code>pod setup</code> - Note that this command might take several minutes to complete.</li>
+</ol>
+</li>
+<li>Change directory to the location of the Xcode project.</li>
+<li>Run the command <code>pod init</code>. This command creates a <code>Podfile</code>.</li>
+<li>Open the <code>Podfile</code> file, located at the root of the project, with your favorite editor.</li>
+<li>Comment out or remove the file contents.</li>
+<li>Add the following lines and save the changes:<br />
+         [code]<br />
+             source 'https://github.com/CocoaPods/Specs.git'<br />
+             pod 'IBMMobileFirstPlatformFoundation'<br />
+         [/code]
+      </li>
+<li>Run the command <code>pod install</code>. This command adds the MobileFirst Platform Native SDK, generates the Pod project, and integrates it with the Xcode project.</li>
+<li>
+<blockquote><strong>Important</strong>: From here on, use the <code>[ProjectName].<strong>xcworkspace</strong></code> file to open the project in Xcode. <strong>Do not use</strong> the <code>[ProjectName].<strong>xcodeproj</strong></code> file. A CocoaPods-based project is managed as a workspace that contains the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).</p></blockquote>
+</li>
+<li>In <strong>Terminal</strong>, navigate to the root of the Xcode project and add the required configuration files by running the command. Then follow the onscreen instructions:<br />
+[code lang="shell"]<br />
+mfp push<br />
+[/code]</li>
+<li>Open the Xcode project by double-clicking the <strong>.xcworkspace</strong> file.</li>
+<li>Right-click the project and select <strong>Add Files To [ProjectName]</strong>, select the <code>worklight.plist</code> file, which is located in the Xcode project root folder.</li>
+<li>
+<h3>Implement MobileFirst adapter invocation</h3>
+<ul>
+<li>
+<h4>AppDelegate.h</h4>
+<p>                Add the header:<br />
+                [code lang="objc"]<br />
+#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;<br />
+[/code]
+            </li>
+<li style="margin-bottom:30px">
+<h4>AppDelegate.m</h4>
+<p>                Add the following to <code>didFinishLaunchingWithOptions</code>:<br />
+[code lang="objc"]- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {<br />
+    NSURL* url = [NSURL URLWithString:@&quot;/adapters/MyAdapter/getFeed&quot;];<br />
+    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
+    [request setQueryParameterValue:@&quot;['technology']&quot; forName:@&quot;params&quot;];</p>
+<p>    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
+        if(error != nil){<br />
+             NSLog(@&quot;%@&quot;,error.description);<br />
+        }<br />
+        else{<br />
+            NSLog(@&quot;%@&quot;,response.responseJSON);<br />
+        }<br />
+    }];</p>
+<p>    return YES;<br />
+}[/code]</p>
+<p>The same example can be adapted to a Swift project.
+            </li>
+</ul>
+</li>
+<li>
+<h3>Click <strong>Run</strong></h3>
+<p>    Review the Xcode console for the data retrieved by the adapter request.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/ios-quick-start-result.png"><img src="{{ site.baseurl }}/assets/ios-quick-start-result-1024x574.png" alt="ios-quick-start-result" width="980" height="549" class="aligncenter size-large wp-image-9713" /></a>
+    </li>
+</ol>
+<blockquote><p>When you use Xcode 7 and iOS 9, read the notes about Apple Transport Security (ATS) and bitcode here: <a href="https://ibm.biz/BdX37K" target="_blank">https://ibm.biz/BdXNsT</a></p></blockquote>

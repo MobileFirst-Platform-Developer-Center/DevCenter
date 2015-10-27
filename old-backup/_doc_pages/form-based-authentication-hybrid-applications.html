@@ -1,0 +1,169 @@
+---
+layout: doc_page
+title: Form-based authentication in hybrid applications
+date: 
+type: doc_page
+published: false
+status: trash
+categories: []
+tags:
+- 7-2
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+  oasis_is_in_workflow: '0'
+  _wp_trash_meta_status: publish
+  _wp_trash_meta_time: '1444818008'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="../../">Authentication and security</a> &lt; <a href="../">Form-based authentication<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuth" target="_blank">Download MobileFirst project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial illustrates the JavaScript client-side authentication components for form-based authentication.<br />
+<strong>Prerequisite:</strong> Make sure that you read <a title="Form-based authentication" href="../">Form-based authentication</a> first.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#createClientSide">Creating the client-side authentication components</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="createClientSide">Creating the client-side authentication components</h2>
+<p>The application consists of two main <span class="inline-code">div</span> elements:</p>
+<ul>
+<li>The <span class="inline-code">AppDiv</span> element is used to display the application content.</li>
+<li>The <span class="inline-code">AuthDiv</span> element is used for authentication form purposes.</li>
+</ul>
+<p>When authentication is required, the application hides <span class="inline-code">AppDiv</span> and shows <span class="inline-code">AuthDiv</span>.<br />
+When authentication is complete, it does the opposite.</p>
+<h3>AppDiv</h3>
+<p>[code lang="html"]<br />
+&amp;lt;div id=&amp;quot;AppDiv&amp;quot;&amp;gt;<br />
+  &amp;lt;input type=&amp;quot;button&amp;quot; id=&amp;quot;getSecretDataButton&amp;quot; value=&amp;quot;Call protected adapter procedure&amp;quot; onclick=&amp;quot;getSecretData()&amp;quot; /&amp;gt;<br />
+  &amp;lt;input type=&amp;quot;button&amp;quot; class=&amp;quot;appButton&amp;quot; value=&amp;quot;Logout&amp;quot; onclick=&amp;quot;WL.Client.logout('SampleAppRealm', {onSuccess:  WL.Client.reloadApp});&amp;quot; /&amp;gt;<br />
+  &amp;lt;div id=&amp;quot;ResponseDiv&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;<br />
+&amp;lt;/div&amp;gt;<br />
+[/code]</p>
+<p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.</p>
+<h3>AuthDiv</h3>
+<p>[code lang="html"]<br />
+&amp;lt;div id=&amp;quot;AuthDiv&amp;quot; style=&amp;quot;display: none&amp;quot;&amp;gt;<br />
+  &amp;lt;div id=&amp;quot;loginForm&amp;quot;&amp;gt;<br />
+    &amp;lt;input type=&amp;quot;text&amp;quot; placeholder=&amp;quot;Enter username&amp;quot; id=&amp;quot;AuthUsername&amp;quot; /&amp;gt;<br />
+    &amp;lt;br /&amp;gt;<br />
+    &amp;lt;input type=&amp;quot;password&amp;quot; placeholder=&amp;quot;Enter password&amp;quot; id=&amp;quot;AuthPassword&amp;quot; /&amp;gt;<br />
+    &amp;lt;br/&amp;gt;<br />
+    &amp;lt;input type=&amp;quot;button&amp;quot; class=&amp;quot;formButton&amp;quot; id=&amp;quot;AuthSubmitButton&amp;quot; value=&amp;quot;Login&amp;quot; /&amp;gt;<br />
+    &amp;lt;input type=&amp;quot;button&amp;quot; class=&amp;quot;formButton&amp;quot; id=&amp;quot;AuthCancelButton&amp;quot; value=&amp;quot;Cancel&amp;quot; /&amp;gt;<br />
+  &amp;lt;/div&amp;gt;<br />
+&amp;lt;/div&amp;gt;<br />
+[/code]</p>
+<p>The <code>AuthDiv</code> element is styled as <code>display:none</code> because it must not be displayed before authentication is requested by the server.</p>
+<h3>Challenge handler</h3>
+<ol>
+<li>Use the <code>WL.Client.createChallengeHandler()</code> method to create a challenge handler object. The realm name is a mandatory parameter.
+<p>[code lang="javascript"]<br />
+var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler(&amp;quot;SampleAppRealm&amp;quot;);<br />
+[/code]</p>
+<p>The <code>isCustomResponse</code> function of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <code>true</code> or <code>false</code>.</p>
+<p>[code lang="javascript"]<br />
+sampleAppRealmChallengeHandler.isCustomResponse = function(response) {<br />
+    return false;<br />
+};<br />
+[/code]</p>
+<p>If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge()</code> function. This function is used to perform required actions, such as hiding the application screen or showing the login screen.</p>
+<p>[code lang="javascript"]<br />
+sampleAppRealmChallengeHandler.handleChallenge = function(response) {</p>
+<p>};<br />
+[/code]
+</li>
+<li>Create a challenge handler to define a customized authentication flow. In your challenge handler, do not add code that modifies the user interface when this modification is not related to the authentication flow.
+<p>In addition to the methods that the developer must implement, the challenge handler contains functionality that the developer might want to use:</p>
+<ul>
+<li><code>submitLoginForm()</code> sends the collected credentials to a specific URL. The developer can also specify request parameters, headers, and callback.</li>
+<li><code>submitSuccess()</code> notifies the MobileFirst framework that the authentication successfully finished. The framework then automatically issues the original request that triggered the authentication.</li>
+<li><code>submitFailure()</code> notifies the MobileFirst framework that the authentication process completed with failure. The framework then disposes of the original request that triggered the authentication.</li>
+</ul>
+<p><strong>Important:</strong> Each function must be attached to its object. For example: <code>SampleAppRealmChallengeHandler.submitSuccess()</code>
+</li>
+</ol>
+<p>The default login form that is returned from the MobileFirst server contains the <code>j_security_check</code> string. If the challenge handler detects it in the response, it returns <code>true</code>.</p>
+<p>[code lang="javascript"]<br />
+sampleAppRealmChallengeHandler.isCustomResponse = function(response) {<br />
+    if (!response || response.responseText === null) {<br />
+        return false;<br />
+    }<br />
+    var indicatorIdx = response.responseText.search('j_security_check');</p>
+<p>    if (indicatorIdx &amp;gt;= 0){<br />
+        return true;<br />
+    }<br />
+    return false;<br />
+};<br />
+[/code]</p>
+<p>After the client application detects that the server sent a login form, which means that the server is requesting authentication, the application hides the <code>AppDiv</code> element, shows the <code>AuthDiv</code> element, and cleans up the <code>AuthPassword</code>.</p>
+<p>[code lang="javascript"]<br />
+sampleAppRealmChallengeHandler.handleChallenge = function(response) {<br />
+    $('#AppDiv').hide();<br />
+    $('#AuthDiv').show();<br />
+    $('#AuthPassword').val('');<br />
+};<br />
+[/code]</p>
+<p>Clicking the <code>login</code> button triggers a function that collects the user name and password from the HTML input fields and submits them to the server.<br />
+It is possible to set request headers here, and specify callback.<br />
+The form-based authenticator uses a hardcoded <code>j_security_check</code> URL component. You cannot have more than one instance of it.</p>
+<p>[code lang="javascript"]<br />
+$('#AuthSubmitButton').bind('click', function () {<br />
+    var reqURL = '/j_security_check';<br />
+    var options = {};<br />
+    options.parameters = {<br />
+        j_username : $('#AuthUsername').val(),<br />
+        j_password : $('#AuthPassword').val()<br />
+    };<br />
+    options.headers = {};<br />
+    sampleAppRealmChallengeHandler.submitLoginForm(reqURL, options, sampleAppRealmChallengeHandler.submitLoginFormCallback);<br />
+});<br />
+[/code]</p>
+<p>Clicking the cancel button hides the <code>authDiv</code> element, shows the <code>appDiv</code> element, and notifies the framework that authentication failed.</p>
+<p>[code lang="javascript"]<br />
+$('#AuthCancelButton').bind('click', function () {<br />
+    sampleAppRealmChallengeHandler.submitFailure();<br />
+    $('#AppDiv').show();<br />
+    $('#AuthDiv').hide();<br />
+});<br />
+[/code]</p>
+<p>The callback function checks the response for the containing server challenge again. If a challenge is found, the <code>handleChallenge()</code> function is called again.<br />
+No challenge present in the server response means that the authentication process successfully completed. In this case, <code>AppDiv</code> is shown, <code>AuthDiv</code> is hidden, and the framework is notified about the authentication success.</p>
+<p>[code lang="javascript"]<br />
+sampleAppRealmChallengeHandler.submitLoginFormCallback = function(response) {<br />
+    var isLoginFormResponse = sampleAppRealmChallengeHandler.isCustomResponse(response);<br />
+    if (isLoginFormResponse){<br />
+        sampleAppRealmChallengeHandler.handleChallenge(response);<br />
+    } else {<br />
+        $('#AppDiv').show();<br />
+        $('#AuthDiv').hide();<br />
+        sampleAppRealmChallengeHandler.submitSuccess();<br />
+    }<br />
+};<br />
+[/code]</p>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuth" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_02_results.png"><img class="aligncenter wp-image-920 size-full" src="{{ site.baseurl }}/assets/09_02_results.png" alt="09_02_results" width="1363" height="760" /></a></p>

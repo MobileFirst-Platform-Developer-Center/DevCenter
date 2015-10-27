@@ -1,0 +1,88 @@
+---
+layout: doc_page
+title: General information for developing desktop applications
+date: 2014-12-16 14:44:09.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '9037'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/client-side-development-basics/">Client-side development basics</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial presents general development information for supported desktop environments. IBM MobileFirst Platform Foundation supports the following desktop environments:</p>
+<ul>
+<li>Windows Store Apps – Built into the Windows 8 OS</li>
+<li>Adobe Air</li>
+<li>Desktop Browser web page</li>
+</ul>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#devEnv">Development environments</a></li>
+<li><a href="#design">Design</a></li>
+<li><a href="#appOptim">Optimizing applications</a></li>
+<li><a href="#networkOptim">Network optimization</a></li>
+<li><a href="#publish">Publishing</a></li>
+</ul>
+<h2 id="devEnv">Development environments</h2>
+<p>Development for Windows 8 apps (known as Windows Store apps) is done in MobileFirst Studio and later continued in Microsoft Visual Studio Express 2012 for Windows 8.<br />
+To open the project in Visual Studio Express 2012 for Windows 8, double-click the <code><em>application_name</em>.jsproj</code> file that is in the native folder.</p>
+<p>For the Adobe Air and Desktop browser web page environments, development is done entirely in MobileFirst Studio.</p>
+<h2 id="design">Design</h2>
+<p>When you develop applications, it is useful to always consult the Microsoft <a href="http://dev.windowsphone.com/en-us/design">Design</a> and <a href="http://dev.windowsphone.com/en-us/develop">Develop</a> websites.</p>
+<h2 id="appOptim">Optimizing applications</h2>
+<h3>Windows 8</h3>
+<p>In a Windows 8 application, it is possible to override icons with default icons provided by the system. To do so:<br />
+[code lang="js" gutter="false"]document.getElementById('#ID').winControl.icon = 'refresh';[/code]</p>
+<p>Other Windows 8 APIs:<br />
+[code lang="js" gutter="false"]Windows.Devices.Geolocation<br />
+Windows.Media.Capture<br />
+Windows.ApplicationModel.Contacts[/code]</p>
+<h3>Adobe Air</h3>
+<ul>
+<li>To minimize a window: [code lang="js" gutter="false"]window.nativeWindow.minimize();[/code]</li>
+<li>To maximize a window: [code lang="js" gutter="false"]window.nativeWindow.maximize();[/code]</li>
+<li>To restore a window: [code lang="js" gutter="false"]window.nativeWindow.restore();[/code]</li>
+<li>To close a window: [code lang="js" gutter="false"]window.nativeWindow.close();[/code]</li>
+</ul>
+<h2 id="networkOptim">Network optimization</h2>
+<p>When developing a Desktop browser application, network performance is a highly important optimization to think about.<br />
+You can optimize network performance by implementing the following two actions:</p>
+<ul>
+<li>Use minification and concatenation to reduce the size and number of files that are used within the application. This feature is available for the following environments: Android, iOS, Windows 8, Windows Phone 8, BlackBerry 10, Mobile Web and Desktop Browser.</li>
+<li>Use HTML 5 Application Cache.</li>
+</ul>
+<blockquote><p>
+For more information about minification and concatenation, see the topic about optimizing MobileFirst applications, in the user documentation.
+</p></blockquote>
+<h2 id="publish">Publishing</h2>
+<h3>Windows 8</h3>
+<p>You need Microsoft Visual Studio Express 2012 for Windows 8 to create App Packages.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_12_generate_app.png"><img src="{{ site.baseurl }}/assets/03_12_generate_app.png" alt="03_12_generate_app" width="914" height="506" class="aligncenter size-full wp-image-1477" /></a></p>
+<h3>Adobe Air</h3>
+<p>You can download the Adobe Air package from IBM MobileFirst Platform Operations Console.<br />
+When you click the <strong>Install</strong> button, a <code>.air</code> file is downloaded. This file is the Adobe Air Installer that installs the application on the computer.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/adobe-air-console.png"><img src="{{ site.baseurl }}/assets/adobe-air-console.png" alt="adobe-air-console" width="611" height="258" class="aligncenter size-full wp-image-6425" /></a></p>
+<h3>Desktop Browser</h3>
+<p>You must embed the Desktop Browser web page in the website code.<br />
+To get the URL of the application, look at the Desktop Browser environment in the MobileFirst Operations Console.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/desktop-browser.png"><img src="{{ site.baseurl }}/assets/desktop-browser.png" alt="desktop-browser" width="679" height="297" class="aligncenter size-full wp-image-6421" /></a></p>

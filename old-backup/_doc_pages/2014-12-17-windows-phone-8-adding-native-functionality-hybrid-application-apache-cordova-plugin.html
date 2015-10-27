@@ -1,0 +1,142 @@
+---
+layout: doc_page
+title: Windows Phone 8 - Adding native functionality to hybrid applications with a
+  Apache Cordova plug-in
+date: 2014-12-17 09:22:08.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/adding-native-functionality/">Adding native functionality to hybrid applications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/ApacheCordovaPluginsProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>In some cases, developers of a MobileFirst application might have to use a specific third-party native library or a device function that is not yet available in Apache Cordova.</p>
+<p>With Apache Cordova, developers can create an Apache Cordova plug-in, which means that they create custom native code blocks, and call these code blocks in their applications by using JavaScript.</p>
+<p>This tutorial demonstrates how to create and integrate a simple Apache Cordova plug-in for Windows Phone 8, in the following topics:</p>
+<ul>
+<li><a href="#create">Creating a plug-in</a></li>
+<li><a href="#declare">Declaring a plug-in</a></li>
+<li><a href="#exec">Implementing cordova.exec() in JavaScript</a></li>
+<li><a href="#csharp">Implementing the C# code of a Cordova plug-in</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<p><strong>Note:</strong> In Cordova-based applications, developers must check for the <code>deviceready</code> event before they use the Cordova API set. In a MobileFirst application, however, this check is done internally.</p>
+<p>Instead of implementing this check, you can place implementation code in the <code>wlCommonInit()</code> function in the <code>common\js\main.js</code> file.</p>
+<h2 id="create">Creating a plug-in</h2>
+<ol>
+<li>Declare the plug-in in the <code>config.xml</code> file.</li>
+<li>Use the <code>cordova.exec()</code> API in the JavaScript code.</li>
+<li>Create the plug-in class that will run natively in Windows Phone 8.<br />
+The plug-in performs the required action and calls a JavaScript callback method that is specified during the call to <code>cordova.exec()</code></li>
+</ol>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/07_07_overview.jpg"><img src="{{ site.baseurl }}/assets/07_07_overview.jpg" alt="07_07_overview" width="580" height="180" class="aligncenter size-full wp-image-15386" /></a></p>
+<h2 id="declare">Declaring a plug-in</h2>
+<p>You must declare the plug-in in the project, so that Cordova can detect it.<br />
+To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the native folder of the Windows Phone 8 environment.</p>
+<p>[code lang="xml"]&lt;feature name=“sayHelloPlugin&quot;&gt;<br />
+  &lt;param name=&quot;wp-package&quot; value=“sayHelloPlugin&quot; /&gt;<br />
+&lt;/feature&gt;[/code]</p>
+<h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
+<p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
+[code lang="js"]function sayHello() {<br />
+    var name = $(&quot;#NameInput&quot;).val();<br />
+    cordova.exe(sayHelloSuccess, sayHelloFailure, &quot;SayHelloPlugin&quot;, &quot;sayHello&quot;, [name]);<br />
+}[/code]</p>
+<p><br clear="all" /><br />
+<code>sayHelloSuccess</code> - Success callback<br />
+<code>sayHelloFailure</code> - Failure callback<br />
+<code>SayHelloPlugin</code> - Plug-in name as declared in the <code>config.xml</code> file<br />
+<code>sayHello</code> - Action name<br />
+<code>[name]</code> - Parameters array</p>
+<p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks.<br />
+[code lang="js" firstline="5"]<br />
+function sayHelloSuccess(data){<br />
+    WL.SimpleDialog.show(<br />
+        &quot;Response from plug-in&quot;, data,<br />
+  [{text: &quot;OK&quot;, handler: function() {WL.Logger.debug(&quot;Ok button pressed&quot;);}}]<br />
+    );<br />
+}</p>
+<p>function sayHelloFailure(data){<br />
+    WL.SimpleDialog.show(<br />
+  &quot;Response from plug-in&quot;, data,<br />
+  [{text: &quot;OK&quot;, handler: function() {WL.Logger.debug(&quot;Ok button pressed&quot;);}}]<br />
+    );<br />
+}[/code]</p>
+<h2 id="csharp">Implementing the C# code of a Cordova plug-in</h2>
+<p>After you have declared the plug-in and the JavaScript implementation is ready, you can implement the Cordova plug-in.<br />
+For this purpose, ensure that the project is built in Eclipse and opened in the Visual Studio IDE.</p>
+<h3>Step 1</h3>
+<ol>
+<li>Create a new C# class.</li>
+<li>Add the new class to your project namespace and add the required import statements.
+<p>    [code lang="csharp"]using System;<br />
+using System.Collections.Generic;<br />
+using System.Linq;<br />
+using System.Text;<br />
+using System.Threading.Tasks;</p>
+<p>using WPCordovaClassLib.Cordova;<br />
+using WPCordovaClassLib.Cordova.Commands;<br />
+using WPCordovaClassLib.Cordova.JSON;</p>
+<p>namespace Cordova.Extension.Commands<br />
+{<br />
+    public class SayHelloPlugin : BaseCommand<br />
+    {[/code]
+</li>
+</ol>
+<h3>Step 2</h3>
+<p>Implement the <code>SayHelloPlugin</code> class and the <code>sayHello</code> method.</p>
+<ol>
+<li>The JavaScript wrapper calls the <code>sayHello</code> method and passes a single parameter. It returns a string back to JavaScript.<br />
+    [code lang="csharp" firstline="15"]public void sayHello(string options)<br />
+        {<br />
+            string optVal = null;<br />
+            try {<br />
+                optVal = JsonHelper.Deserialize&lt;string[]&gt;(options)[0];<br />
+            }<br />
+            catch (Exception) {<br />
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, &quot;SayHelloPlugin signaled an error&quot;));<br />
+            }[/code]</li>
+<p><br clear="all" /></p>
+<li>The <code>DispatchCommandResult</code> method returns the result to JavaScript, whether success or failure.<br />
+[code lang="csharp" firstline="24"]if (optVal == null)<br />
+            {<br />
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, &quot;Got null value as input&quot;));<br />
+            }<br />
+            else<br />
+            {<br />
+                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, &quot;Hello &quot; + optVal));<br />
+            }<br />
+        }<br />
+    }<br />
+}[/code]</li>
+</ol>
+<h2 id="sample">Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/ApacheCordovaPluginsProject.zip">Click to download</a> the Studio project.</p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/07_07_sample_app.png"><img src="{{ site.baseurl }}/assets/07_07_sample_app.png" alt="07_07_sample_app" width="598" height="381" class="aligncenter size-full wp-image-1051" /></a></p>

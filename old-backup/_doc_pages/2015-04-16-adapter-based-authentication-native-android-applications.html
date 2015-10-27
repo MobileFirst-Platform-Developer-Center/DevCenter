@@ -1,0 +1,177 @@
+---
+layout: doc_page
+title: Adapter-based authentication in native Android applications
+date: 2015-04-16 10:13:16.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6690'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _post_restored_from: a:3:{s:20:"restored_revision_id";i:11423;s:16:"restored_by_user";i:13020;s:13:"restored_time";i:1441190064;}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+&lt; <a href="../../">Authentication and security</a> &lt; <a href="../">Adapter-based authentication<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="android">Native Android</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth" target="_blank">Download MobileFirst project</a>
+        </li>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuthAndroid" target="_blank">Download Native project</a>
+        </li>
+</ul>
+</div>
+<p><br clear="all" /><br />
+This tutorial explains how to implement the client-side of adapter-based authentication in native Android.<br />
+<strong>Prerequisite:</strong> Make sure that you read the <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/authentication-security/adapter-based-authentication/" title="Adapter-based authentication">Adapter-based authentication</a> tutorial first.</p>
+<h2>Implementing the client-side authentication</h2>
+<ul>
+<li>Create a native Android application and add the MobileFirst native APIs as explained in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/mobilefirstplatform/documentation/getting-started-7-1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/" target="_blank">Configuring a native Android application with the MobileFirst Platform SDK</a> tutorial.
+</li>
+<li>Add an activity which handles and presents a login form.
+<p></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/AdapterBased.png"><img src="{{ site.baseurl }}/assets/AdapterBased.png" alt="AdapterBased" width="429" height="350" class="aligncenter size-full wp-image-16974" /></a>
+</li>
+</ul>
+<h3>Challenge Handler</h3>
+<ul>
+<li>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
+[code lang="java"]<br />
+public class AndroidChallengeHandler extends ChallengeHandler<br />
+[/code]
+</li>
+<li>Call the <code>super</code> method:<br />
+[code lang="java"]<br />
+	public AndroidChallengeHandler(String realm) {<br />
+		super(realm);<br />
+	}<br />
+[/code]
+</li>
+<li>Add an implementation of the following <code>ChallengeHandler</code> methods to handle the form-based challenge:
+<ol>
+<li><strong><code>isCustomResponse</code> method:</strong><br />
+The <code>isCustomResponse</code> method is invoked each time a response is received from the MobileFirst Server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <code>true</code> or <code>false</code>.<br />
+[code lang="java"]<br />
+public boolean isCustomResponse(WLResponse response) {<br />
+	try {<br />
+		if(response!= null &amp;&amp;<br />
+				response.getResponseJSON()!=null &amp;&amp;<br />
+				!response.getResponseJSON().isNull(&quot;authStatus&quot;) &amp;&amp;<br />
+				response.getResponseJSON().getString(&quot;authStatus&quot;) != &quot;&quot;){<br />
+			return true;<br />
+		}<br />
+	} catch (JSONException e) {<br />
+		e.printStackTrace();<br />
+	}<br />
+	return false;<br />
+}<br />
+[/code]
+</li>
+<li><strong><code>handleChallenge</code> method:</strong><br />
+If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hiding the application screen and showing the login screen.<br />
+[code lang="java"]<br />
+public void handleChallenge(WLResponse response){<br />
+	cachedResponse = response;<br />
+	try {<br />
+		if(response.getResponseJSON().getString(&quot;authStatus&quot;).equals(&quot;credentialsRequired&quot;)){<br />
+			MainAdapterBasedAuth.setMainText(&quot;handleChallenge-&gt;credentialsRequired&quot;);<br />
+			Intent login = new Intent(parentActivity, LoginAdapterBasedAuth.class);<br />
+			parentActivity.startActivityForResult(login, 1);<br />
+		}<br />
+		else if(response.getResponseJSON().getString(&quot;authStatus&quot;).equals(&quot;complete&quot;)){<br />
+			submitSuccess(cachedResponse);<br />
+		}<br />
+	} catch (JSONException e) {<br />
+		// TODO Auto-generated catch block<br />
+		e.printStackTrace();<br />
+	}<br />
+}<br />
+[/code]
+</li>
+<li><strong><code>onSuccess</code> and <code>onFailure</code> methods: </strong><br />
+At the end of the authentication flow, <code>onSuccess</code> or <code>onFailure</code> will be triggered<br />
+Call the <code>submitSuccess</code> method in order to inform the framework that the authentication process completed successfully and for the <code>onSuccess</code> handler of the invocation to be called.<br />
+Call the <code>submitFailure</code> method in order to inform the framework that the authentication process failed and for the <code>onFailure</code> handler of the invocation to be called.<br />
+[code lang="java"]<br />
+	public void onFailure(WLFailResponse response) {<br />
+		submitFailure(response);<br />
+	}</p>
+<p>	public void onSuccess(WLResponse response) {<br />
+		submitSuccess(response);<br />
+	}<br />
+[/code]
+</li>
+</ol>
+</li>
+</ul>
+<p><br clear="all" /></p>
+<h4>submitLoginForm</h4>
+<p>When the user taps to submit the credentials, call the <code>submitLoginForm</code> method to send the credentials to the adapter procedure.<br />
+For example, in here we implemented a <code>submitLogin method</code> that called by the MainActivity after the login process is completed.<br />
+[code lang="java"]<br />
+	public void submitLogin(int resultCode, String userName, String password, boolean back){<br />
+		if (resultCode != Activity.RESULT_OK || back) {<br />
+			submitFailure(cachedResponse);<br />
+		} else {<br />
+			Object[] parameters = new Object[]{userName, password};<br />
+			WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;AuthAdapter&quot;, &quot;submitAuthentication&quot;);<br />
+			invocationData.setParameters(parameters);<br />
+			WLRequestOptions options = new WLRequestOptions();<br />
+			options.setTimeout(30000);<br />
+			submitAdapterAuthentication(invocationData, options);<br />
+		}<br />
+	}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<h3>The Main Activity</h3>
+<p>In the sample project, in order to trigger the challenge handler we use the <code>WLClient invokeProcedure</code> method.<br />
+The protected procedure invocation triggers MobileFirst Server to send the challenge.</p>
+<ul>
+<li>Create a <code>WLClient</code> instance and use the <code>connect</code> method to connect to the MobileFirst Server:<br />
+[code lang="java"]<br />
+final WLClient client = WLClient.createInstance(this);<br />
+client.connect(new MyConnectionListener());<br />
+[/code]
+</li>
+<li>In order to listen to incoming challenges, make sure to register the challenge handler by using the <code>registerChallengeHandler</code> method:<br />
+[code lang="java"]<br />
+challengeHandler = new AndroidChallengeHandler(this, realm);<br />
+client.registerChallengeHandler(challengeHandler);<br />
+[/code]
+</li>
+<li>Invoke the protected adapter procedure:<br />
+[code lang="java"]<br />
+URI adapterPath = new URI(&quot;/adapters/AuthAdapter/getSecretData&quot;);<br />
+WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
+request.send(new MyResponseListener());<br />
+[/code]
+</li>
+</ul>
+<h2>Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth" target="_blank">Click to download</a> the MobileFirst project.<br />
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuthAndroid" target="_blank">Click to download</a> the Native project.</p>
+<ul>
+<li>The <code>AdapterBasedAuth</code> project contains a MobileFirst native API that you can deploy to your MobileFirst server.</li>
+<li>The <code>AdapterBasedAuthAndroid</code> project contains a native Android application that uses a MobileFirst native API library.</li>
+<li>Make sure to update the <code>worklight.plist</code> file in the native project with the relevant server settings.</li>
+</ul>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/AdapterAuth.png"><img src="{{ site.baseurl }}/assets/AdapterAuth-1024x584.png" alt="AdapterAuth" width="1296" height="668" class="aligncenter size-large wp-image-11503" /></a></p>

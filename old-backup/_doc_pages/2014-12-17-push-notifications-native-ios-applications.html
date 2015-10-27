@@ -1,0 +1,148 @@
+---
+layout: doc_page
+title: 'UPDATED: Push notifications in native iOS applications'
+date: 2014-12-17 09:29:03.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442505392;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11194;}i:1;a:1:{s:2:"id";i:322;}i:2;a:1:{s:2:"id";i:11685;}}}}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/notifications">Notifications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS
+      </li>
+</ul></div>
+</div>
+<h2>Overview</h2>
+<p>IBM MobileFirst Platform Foundation provides a unified set of API methods to send, or push, notifications to devices where the MobileFirst application is installed in. It is possible to send a notification in 3 distinct types: event source notifications, broadcast notifications and tag notifications.</p>
+<p>In this tutorial, the concept, API and usage of push notifications will be explained in the context of Native iOS applications.<br />
+To create and configure an iOS native project, first follow these tutorials:</p>
+<ul>
+<li><a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/creating-first-native-ios-mobilefirst-application/">Creating your first Native iOS MobileFirst application</a></li>
+<li><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/invoking-adapter-procedures-native-ios-applications/">Invoking adapter procedures from native iOS applications</a></li>
+</ul>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#settingUpPushNotifications">Setting-up push notification</a></li>
+<li><a href="#selectNotificationType">Notification types</a></li>
+<li><a href="#selectNotificationType">Select a notification type</a></li>
+</ul>
+<h2 id="settingUpPushNotifications">Setting up push notifications</h2>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/PushNotificationsNativeiOSProjectBaham.png"><img src="{{ site.baseurl }}/assets/PushNotificationsNativeiOSProjectBaham-300x282.png" alt="PushNotificationsNativeiOSProjectBaham" width="300" height="282" class="alignright size-medium wp-image-6281" /></a></p>
+<ol>
+<li>Create a MobileFirst project and add a MobileFirst iOS Native API.
+</li>
+<li>Add the Apple Push Notification Service (APNS) p12 keys to the root folder of the application (either apns-certificate-sandbox.p12 or apns-certificate-production.p12).
+<p>apns-certificate-sandbox.p12 is used in development mode. When you move to production, use apns-certificate-production.p12.</p>
+<p><br clear="all" /></p>
+</li>
+<li>In <strong>application-descriptor.xml</strong>, add the <code>pushSender</code> tag with the <code>password</code> attribute. Use the .p12 keystore as the password value.
+<p>For example :<br />
+[code lang="xml"]<br />
+&lt;nativeIOSApp xmlns=&quot;http://www.worklight.com/native-ios-descriptor&quot; bundleId=&quot;com.iOSNativePush&quot; id=&quot;iOSNativePush&quot; platformVersion=&quot;6.3.0.00.20141105-0943&quot; securityTest=&quot;MySecurityTest&quot; version=&quot;1.0&quot;&gt;<br />
+  &lt;displayName&gt;iOSNativePush&lt;/displayName&gt;<br />
+  &lt;description&gt;iOSNativePush&lt;/description&gt;<br />
+  &lt;pushSender password=&quot;replace-with-certificate-password&quot;/&gt;<br />
+&lt;/nativeIOSApp&gt;<br />
+[/code]</p>
+</li>
+<li>Deploy the MobileFirst native API. In MobileFirst Studio, right-click the native API and select <strong>"Run As >  Deploy Native API"</strong>. With the CLI, use <code>mfp deploy</code> from within the application folder.
+</li>
+</ol>
+<h2 id="additionalNotificationTypes">Notification types</h2>
+<h3>Event source notifications</h3>
+<p>Event source notifications are notification messages that are targeted to devices with a user subscription.</p>
+<h3>Broadcast notifications</h3>
+<p>Broadcast notifications are notification messages that are targeted to all subscribed devices.</p>
+<h3>Tag notifications</h3>
+<p>Tag notifications are notification messages that are targeted to all subscribed devices to a particular tag.</p>
+<p>For more information, <a href="#selectNotificationType">select a notification type</a>.</p>
+<h2>Additional iOS-specific notification types</p>
+<h3 id="notificationapisilent">Silent notifications</h3>
+<p>iOS 7 and above.</p>
+<p>Silent notifications is a feature allowing to send notifications without disturbing the user. Notifications are not shown in the notification center or notification bar.<br />
+Callback methods are executed even when the application is running in the background.</p>
+<blockquote><p>For more information, refer to the "silent notifications" topics in the MobileFirst Platform user documentation, and in Apple's user documentation.</p></blockquote>
+<h4>Server API for silent notification</h4>
+<p>To implement silent notification in the case of event source/broadcast/tag-based notifications, create a notification object by using the <code>WL.Server.createDefaultNotification</code> API and set the type as below:</p>
+<p><span class="inline-code">notification.APNS.type = "DEFAULT" | "SILENT" | "MIXED"; </span></p>
+<ul>
+<li><code>DEFAULT</code> means normal notification, which shows the alert and is kept in the notification center if the application is running in the background.</li>
+<li><code>SILENT</code> means silent notification, which does not show any alert or the message is not placed in the notification center. In the silent type, the aps tag of push notification contains only content-available.</li>
+<li><code>MIXED</code> means a combination of the above: This option invokes the callback method silently and shows the alert.</li>
+</ul>
+<h4>Client-side API for silent notification</h4>
+<p>To handle silent notification on the client-side:</p>
+<ol>
+<li>Enable the application capability to perform background tasks on receiving the remote notifications<br />
+To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes, like Remote notifications and Background fetch.
+</li>
+<li>Implement a new callback method in the <code>AppDelegate</code> <span class="inline-code">(application: didReceiveRemoteNotification:fetchCompletionHandler:)</span> to receive silent notifications when the application is running in the background.</li>
+<li>In the callback, check whether the notification is silent by checking that the key content-available is set to 1.</li>
+<li>Call the <span class="inline-code">fetchCompletionHandler</span> block method at the end of the notification handler.</li>
+</ol>
+<h3 id="notificationapiinteractive">Interactive notifications</h3>
+<p>iOS 8 and above.</p>
+<p>Interactive notification enables users to take actions when a notification is received without the application being open.<br />
+When an interactive notification is received, the device shows action buttons along with the notification message.</p>
+<blockquote><p>For more information, refer to the "interactive notifications" topics in the MobileFirst Platform user documentation, and in Apple's user documentation.</p></blockquote>
+<h4>Server API for interactive notification</h4>
+<p>To send interactive notification, set a string to indicate the category.<br />
+Categories describe a custom type of notification that your application sends and contains actions that a user can perform in response.</p>
+<ul>
+<li>For event-source notifications, create a notification object and set type as below:<br />
+        <span class="inline-code">notification.APNS.category = “poll"; </span></li>
+<li>For broadcast/tag-based notifications, create a notification object and set the type as below:<br />
+        <span class="inline-code">notification.settings.apns.category = “poll"; </span></li>
+<li>The category name must be same as the one used on the client side.</li>
+</ul>
+<h4>Client-side steps for interactive notification</h4>
+<p>On the client side, to handle interactive notification:</p>
+<ul>
+<li>Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.<br />
+To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes like Remote notifications and Background fetch.</li>
+<li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>(application: didRegisterForRemoteNotificationsWithDeviceTokenapplication:)</code> method in <code>AppDelegate</code> class.
+<p>    [code lang="obj-c"]<br />
+if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){<br />
+  UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;</p>
+<p>  UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];<br />
+  acceptAction.identifier = @&quot;OK&quot;;<br />
+  acceptAction.title = @&quot;OK&quot;;</p>
+<p>  UIMutableUserNotificationAction *rejetAction = [[UIMutableUserNotificationAction alloc] init];<br />
+  rejetAction.identifier = @&quot;NOK&quot;;<br />
+  rejetAction.title = @&quot;NOK&quot;;</p>
+<p>  UIMutableUserNotificationCategory *cateogory = [[UIMutableUserNotificationCategory alloc] init];<br />
+  cateogory.identifier = @&quot;poll&quot;;<br />
+  [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextDefault];<br />
+  [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextMinimal];</p>
+<p>  NSSet *catgories = [NSSet setWithObject:cateogory];<br />
+  [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:catgories]];<br />
+}<br />
+[/code]</li>
+<li>Implement the new callback method:<br />
+    [code lang="obj-c"]<br />
+(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (ˆ)())completionHandler<br />
+[/code]</p>
+<p>This new callback method is invoked when the user clicks the action button.</p>
+<p>The implementation of this method must perform the action that is associated with the specified identifier and execute the block in the <span class="inline-code">completionHandler</span> parameter.</li>
+</ul>
+</h2>
+<h2 id="selectNotificationType">Select a notification type</h2>

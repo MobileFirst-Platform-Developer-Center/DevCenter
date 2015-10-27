@@ -1,0 +1,69 @@
+---
+layout: doc_page
+title: Previewing your application on BlackBerry 6 and 7
+date: 
+type: doc_page
+published: false
+status: private
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; ... <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/">Hello World</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-7-0/">Hybrid</a></li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>In this tutorial the following topics are covered.<br />
+As a pre-requisite, read the "Previewing your application's web resources" tutorial.</p>
+<ul>
+<li>Preview the application in the BlackBerry Ripple Emulator</li>
+<li>Run the application in a physical device or simulator</li>
+</ul>
+<h2>Preview the application in the BlackBerry Ripple Emulator</h2>
+<p>To preview the application in the Ripple Emulator, Ripple must first be installed. Ripple is a Chrome extension that can be downloaded and installed from the Chrome Web Store. Once Ripple is installed, follow these steps.</p>
+<ol>
+<li>Preview the BlackBerry environment from the MobileFirst Console by clicking the "eye" icon, then click <strong>Open Simple Preview </strong>.</li>
+</ol>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_008_blackberry6_mbs.png"><img class="aligncenter wp-image-1434 size-large" src="{{ site.baseurl }}/assets/02_008_blackberry6_mbs-1024x541.png" alt="02_008_blackberry6_mbs" width="980" height="517" /></a></p>
+<ol>
+<li>Enable Ripple by clicking <strong>Enable</strong> from the extension's menu in Chrome.</li>
+<li>If you get the following screen, choose <strong>WebWorks (2.0.0)</strong> to proceed with previewing the application.</li>
+</ol>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/02_08_webworks2.png"><img class="aligncenter size-full wp-image-646" src="{{ site.baseurl }}/assets/02_08_webworks2.png" alt="02_08_webworks2" width="518" height="327" /></a></p>
+<p>The page refreshes and the environment's web resources are displayed in the Ripple Emulator:</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_08_blackberry6_ripple.png"><img class="aligncenter wp-image-1435 size-large" src="{{ site.baseurl }}/assets/02_08_blackberry6_ripple-1024x248.png" alt="02_08_blackberry6_ripple" width="980" height="237" /></a></p>
+<h2>Run the application in a physical device or simulator</h2>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/02_08_ripple_build_settings.png"><img class="alignright wp-image-652 size-full" src="{{ site.baseurl }}/assets/02_08_ripple_build_settings-e1410850164363.png" alt="02_08_ripple_build_settings" width="200" height="274" /></a><br />
+Before proceeding, you must have the BlackBerry WebWorks SDK installed.<br />
+For more information, see the <em>Setting up your BlackBerry 6 and 7 development environment</em> tutorial.</p>
+<p>In Ripple, on the right menu, click <strong>Build</strong>, and then click <strong>Settings...</strong> at the bottom.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Next, enter the following details:<br />
+<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/02_08_ripple_settings.png"><img class="aligncenter size-full wp-image-653" src="{{ site.baseurl }}/assets/02_08_ripple_settings.png" alt="02_08_ripple_settings" width="703" height="473" /></a></p>
+<p><strong>SDK Path:</strong> Path where BlackBerry WebWorks SDK is installed<br />
+<strong>Project root:</strong> The root folder of your project. To find the root folder, right-click the native folder in your Eclipse blackberry environment and select <strong>Properties</strong>.<br />
+<strong>Archive Name:</strong> The name for your archive.<br />
+<strong>Output Folder:</strong> The folder where to output the application. Specify a folder outside your project.<br />
+<strong>Password:</strong> Sign your app with a BlackBerry developer certificate to run it on a BlackBerry handset. Specify your certificate password here. Signing is NOT required to run the application in the BlackBerry Simulator.<br />
+<strong>Simulator:</strong> <em>Optional</em>. You can select a simulator that is automatically called after your application is packaged.</p>
+<p>After the package settings are defined, open the Ripple menu in Chrome and click <strong>start services</strong>. Then select one of the Packaging options.</p>

@@ -1,0 +1,109 @@
+---
+layout: doc_page
+title: Form-based authentication
+date: 2015-04-16 09:50:51.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6637'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442507308;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11028;}i:1;a:1:{s:2:"id";i:11040;}i:2;a:1:{s:2:"id";i:11038;}}}}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+&lt; <a href="../">Authentication and security</a></p>
+<div id="samplesAndPersonas">
+<div>
+        Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+<li class="android">Native Android</li>
+<li class="wp8">Native Windows Phone 8</li>
+<li class="wp8">Native Windows 8 Universal</li>
+<li class="hybrid">Hybrid</li>
+</ul></div>
+</div>
+<h2>Overview</h2>
+<p>In form-based authentication, the HTML code of a login form is returned in the server response when the application tries to access a protected resource.<br />
+Although form-based authentication is best suited for desktop and web environments, where you actually display and use the returned login form, you can also use this authentication mode in mobile applications.</p>
+<p>To use form-based authentication, you must use a login module to validate the received credentials.<br />
+In this tutorial, you implement a simple form-based authentication mechanism that is based on a user name and a password.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#config">Configuring the authenticationConfig.xml file</a></li>
+<li><a href="#protectJsAdapt">Protecting a JavaScript adapter</a></li>
+<li><a href="#protectJavaAdapt">Protecting a Java adapter</a></li>
+<li><a href="#creatingTheClientsideAuthenticationComponents">Creating client-side authentication components</a></li>
+</ul>
+<p>The following diagram illustrates the form-based authentication process.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_02_flow_diagram.jpg"><img src="{{ site.baseurl }}/assets/09_02_flow_diagram.jpg" alt="09_02_flow_diagram" width="720" height="521" class="aligncenter size-full wp-image-12304" /></a></p>
+<h2 id="config">Configuring the authenticationConfig.xml file</h2>
+<p>The default <code>authenticationConfig.xml</code> file already contains a sample realm that is configured to use a form-based authenticator.</p>
+<p>[code lang="xml"]<br />
+&lt;realm name=&quot;SampleAppRealm&quot; loginModule=&quot;StrongDummy&quot;&gt;<br />
+  &lt;className&gt;com.worklight.core.auth.ext.FormBasedAuthenticator&lt;/className&gt;<br />
+&lt;/realm&gt;<br />
+[/code]</p>
+<p>Notice the <code>StrongDummy</code> login module that is used for this realm.</p>
+<p>[code lang="xml"]<br />
+&lt;loginModule name=&quot;StrongDummy&quot;&gt;<br />
+  &lt;className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule&lt;/className&gt;<br />
+&lt;/loginModule&gt;<br />
+[/code]</p>
+<p>The <code>NonValidatingLoginModule</code> parameter means that the user credentials are not validated. In other words: any combination of user name and password is valid.</p>
+<p>Define a security test that uses the <code>SampleAppRealm</code>. Remember the security test name, to use it in the subsequent steps.<br />
+<strong>Note:</strong> If you use Java adapters (and not JavaScript adapters), this step is not necessary.</p>
+<p>[code lang="xml"]<br />
+&lt;customSecurityTest name=&quot;AuthSecurityTest&quot;&gt;<br />
+  &lt;test isInternalUserID=&quot;true&quot; realm=&quot;SampleAppRealm&quot; /&gt;<br />
+&lt;/customSecurityTest&gt;<br />
+[/code]</p>
+<h2 id="protectJsAdapt">Protecting a JavaScript adapter</h2>
+<ol>
+<li>Create an adapter and name it <code>AuthAdapter</code>.</li>
+<li>Add a <code>getSecretData</code> procedure and protect it with the security test that you created previously.</li>
+<p>[code lang="xml"]&lt;procedure name=&quot;getSecretData&quot; securityTest=&quot;AuthSecurityTest&quot;/&gt;[/code]</p>
+<p>In this module, the <code>getSecretData</code> procedure returns some hardcoded value:</p>
+<p>[code lang="javascript"]<br />
+function getSecretData(){<br />
+    return {<br />
+        secretData: '123456'<br />
+    };<br />
+}<br />
+[/code]</p>
+</ol>
+<h2 id="protectJavaAdapt">Protecting a Java adapter</h2>
+<ol>
+<li>Create a Java adapter. </li>
+<li>Add a <code>getSecretData</code> method and protect it with the realm that you created previously. In this module, the <code>getSecretData</code> procedure returns some hardcoded value:
+<p>[code lang="java" highlight="3"]<br />
+	@GET<br />
+	@Produces(&quot;application/json&quot;)<br />
+	@OAuthSecurity(scope=&quot;SampleAppRealm&quot;)<br />
+	public JSONObject getSecretData(){<br />
+		JSONObject result = new JSONObject();<br />
+		result.put(&quot;secretData&quot;, &quot;123456&quot;);</p>
+<p>		return result;<br />
+	}<br />
+[/code]
+</li>
+<li>To set your new realm as the default user identity for the application, add this option to the application descriptor:<br />
+[code lang="xml"]<br />
+&lt;userIdentityRealms&gt;SampleAppRealm&lt;/userIdentityRealms&gt;<br />
+[/code]
+</li>
+</ol>
+<blockquote><p>To learn more about application descriptor properties, see the user documentation.</p></blockquote>
+<blockquote><p>To learn more about authenticators, see the topic about implementing form-based authenticators, in the user documentation.</p></blockquote>
+<h2 id="creatingTheClientsideAuthenticationComponents" class="noPrint">Creating client-side authentication components</h2>

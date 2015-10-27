@@ -1,0 +1,157 @@
+---
+layout: doc_page
+title: Custom Authenticator and Login Module in hybrid applications
+date: 2014-07-23 06:23:53.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt;  <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/">Authentication and security</a> &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/custom-authenticator-login-module/">Custom Authenticator and Login Module<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomLoginModuleHybridProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<p><br clear="all" /><br />
+This is a continuation of <a title="Custom Authenticator and Login Module" href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/custom-authenticator-login-module/">Custom Authenticator and Login Module</a>.</p>
+<h2>Creating client-side authentication components</h2>
+<p>The application consists of two main <em>div</em> elements:<br />
+The <em>AppDiv</em> element is used to display the application content.<br />
+The <em>AuthDiv</em> element is used for authentication forms.<br />
+When authentication is required, the application hides <em>AppDiv</em> and shows <em>AuthDiv</em>. When authentication is complete, it does the opposite.</p>
+<h3>AppDiv</h3>
+<p>[code lang="html"]<br />
+&lt;div id=&quot;AppDiv&quot;&gt;<br />
+  &lt;input type=&quot;button&quot; id=&quot;getSecretDataButton&quot; value=&quot;Call protected adapter proc&quot; onclick=&quot;getSecretData()&quot; /&gt;<br />
+  &lt;input type=&quot;button&quot; class=&quot;appButton&quot; value=&quot;Logout&quot; onclick=&quot;WL.Client.logout('CustomAuthenticatorRealm',{onSuccess: WL.Client.reloadApp})&quot; /&gt;<br />
+  &lt;div id=&quot;ResponseDiv&quot;&gt;&lt;/div&gt;<br />
+&lt;/div&gt;<br />
+[/code]</p>
+<p>Buttons are used to call the <em>getSecretData</em> procedure and to log out.</p>
+<h3>AuthDiv</h3>
+<p>[code lang="html"]<br />
+&lt;div id=&quot;AuthDiv&quot; style=&quot;display: none&quot;&gt;<br />
+  &lt;p id=&quot;AuthInfo&quot;&gt;&lt;/p&gt;<br />
+  &lt;div id=&quot;loginForm&quot;&gt;<br />
+    &lt;input type=&quot;text&quot; id=&quot;AuthUsername&quot; placeholder=&quot;Enter username&quot; /&gt;<br />
+    &lt;br/&gt;<br />
+    &lt;br/&gt;<br />
+    &lt;input type=&quot;password&quot; id=&quot;AuthPassword&quot; placeholder=&quot;Enter password&quot; /&gt;<br />
+    &lt;br/&gt;<br />
+    &lt;input type=&quot;button&quot; id=&quot;AuthSubmitButton&quot; class=&quot;formButton&quot; value=&quot;Login&quot; /&gt;<br />
+    &lt;input type=&quot;button&quot; id=&quot;AuthCancelButton&quot; class=&quot;formButton&quot; value=&quot;Cancel&quot; /&gt;<br />
+  &lt;/div&gt;<br />
+&lt;/div&gt;<br />
+[/code]</p>
+<p><em>AuthDiv</em> is styled with <em>display:none</em> because it must not be displayed before the server requests the authentication.</p>
+<h3>Challenge Handler</h3>
+<p>Use <em>WL.Client.createChallengeHandler</em> to create a challenge handler object. Supply a realm name as a parameter.</p>
+<p>[code lang="javascript"]<br />
+var customAuthenticatorRealmChallengeHandler = WL.Client.createChallengeHandler(&quot;CustomAuthenticatorRealm&quot;);<br />
+[/code]</p>
+<p>The <em>isCustomResponse</em> function of the challenge handler is called each time a response is received from the server.<br />
+It is used to detect whether the response contains data that is related to this challenge handler. It must return <strong>true</strong> or <strong>false</strong>.</p>
+<p>[code lang="javascript"]<br />
+customAuthenticatorRealmChallengeHandler.isCustomResponse = function(response) {}<br />
+[/code]</p>
+<p>If <em>isCustomResponse</em> returns true, the framework calls the <em>handleChallenge</em> function. This function is used to perform required actions, such as hide application screen and show login screen.</p>
+<p>[code lang="javascript"]<br />
+customAuthenticatorRealmChallengeHandler.handleChallenge = function(response){}<br />
+[/code]</p>
+<p>In addition to the methods that the developer must implement, the challenge handler contains functionality that the developer might want to use:</p>
+<ul>
+<li><em>submitLoginForm</em> to send collected credentials to a specific URL. The developer can also specify request parameters, headers, and callback.</li>
+<li><em>submitSuccess</em> to notify the framework that the authentication finished successfully. The framework then automatically issues the original request that triggered the authentication.</li>
+<li><em>submitFailure</em> to notify the framework that the authentication completed with a failure. The framework then disposes of the original request that triggered the authentication</li>
+</ul>
+<p>Note: Attach each of these functions to its object. For example: <em>myChallengeHandler.submitSucces()</em></p>
+<h3>isCustomResponse</h3>
+<p>If the challenge JSON block contains the <em>authStatus</em> property, return <em>true</em>, otherwise return <em>false</em>.</p>
+<p>[code lang="javascript"]<br />
+customAuthenticatorRealmChallengeHandler.isCustomResponse = function(response) {<br />
+    if (!response || !response.responseJSON) {<br />
+        return false;<br />
+    }</p>
+<p>    if (response.responseJSON.authStatus)<br />
+    	return true;<br />
+    else<br />
+    	return false;<br />
+};<br />
+[/code]</p>
+<h3>handleChallenge</h3>
+<p>If the <em>authStatus</em> property equals “required”, show the login form, clean up the password input field, and display the error message if applicable.<br />
+if <em>authStatus</em> equals “complete”, hide the login screen, return to the application, and notify the framework that authentication completed successfully.</p>
+<p>[code lang="javascript"]<br />
+customAuthenticatorRealmChallengeHandler.handleChallenge = function(response){<br />
+	var authStatus = response.responseJSON.authStatus;</p>
+<p>	if (authStatus == &quot;required&quot;){<br />
+		$('#AppDiv').hide();<br />
+		$('#AuthDiv').show();<br />
+		$(&quot;#AuthInfo&quot;).empty();<br />
+		$('#AuthPassword').val('');<br />
+        if (response.responseJSON.errorMessage){<br />
+        	$(&quot;#AuthInfo&quot;).html(response.responseJSON.errorMessage);<br />
+        }<br />
+	} else if (authStatus == &quot;complete&quot;){<br />
+		$('#AppDiv').show();<br />
+		$('#AuthDiv').hide();<br />
+		customAuthenticatorRealmChallengeHandler.submitSuccess();<br />
+	}<br />
+};<br />
+[/code]</p>
+<p>Clicking the <strong>login</strong> button triggers the function that collects the user name and password from HTML input fields and submits them to server. You can set request headers here and specify callback functions.</p>
+<p>[code lang="javascript"]<br />
+$('#AuthSubmitButton').bind('click', function () {<br />
+    var reqURL = '/my_custom_auth_request_url';<br />
+    var options = {};<br />
+    options.parameters = {<br />
+        username : $('#AuthUsername').val(),<br />
+        password : $('#AuthPassword').val()<br />
+    };<br />
+    options.headers = {};<br />
+    customAuthenticatorRealmChallengeHandler.submitLoginForm(reqURL, options, customAuthenticatorRealmChallengeHandler.submitLoginFormCallback);<br />
+});<br />
+[/code]</p>
+<p>Clicking the <strong>cancel</strong> button hides <em>AuthDiv</em>, shows <em>AppDiv</em> and notifies the framework that authentication failed.</p>
+<p>[code lang="javascript"]<br />
+$('#AuthCancelButton').bind('click', function () {<br />
+	$('#AppDiv').show();<br />
+	$('#AuthDiv').hide();<br />
+	customAuthenticatorRealmChallengeHandler.submitFailure();<br />
+});<br />
+[/code]</p>
+<p>The <strong>submitLoginFormCallback</strong> function checks the response for the containing server challenge once again. If the challenge is found, the <em>handleChallenge</em> function is called again.</p>
+<p>[code lang="javascript"]<br />
+customAuthenticatorRealmChallengeHandler.submitLoginFormCallback = function(response) {<br />
+    var isLoginFormResponse = customAuthenticatorRealmChallengeHandler.isCustomResponse(response);<br />
+    if (isLoginFormResponse){<br />
+    	customAuthenticatorRealmChallengeHandler.handleChallenge(response);<br />
+    }<br />
+};<br />
+[/code]</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomLoginModuleHybridProject.zip">Click to download</a> the Studio project.</p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_08_results.png"><img class="aligncenter wp-image-1040 size-full" src="{{ site.baseurl }}/assets/09_08_results.png" alt="09_08_results" width="929" height="540" /></a></p>

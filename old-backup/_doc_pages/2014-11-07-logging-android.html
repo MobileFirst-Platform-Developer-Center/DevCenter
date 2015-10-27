@@ -1,0 +1,53 @@
+---
+layout: doc_page
+title: Logging in native Android (Java)
+date: 2014-11-07 17:27:30.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: erikahoffman6@gmail.com
+  email: enhoffma@us.ibm.com
+  display_name: Erika Hoffman
+  first_name: ERIKA
+  last_name: HOFFMAN
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/advanced-client-side-development/">Advanced client-side development</a> &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote Controlled Client-side Log Collection<br />
+</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-6-3/">Native Android</a></li>
+</ul>
+</div>
+<p>Android MobileFirst Platform SDK cannot persistently capture log data until the <code>com.worklight.common.Logger.setContext(Context)</code> method is called.</p>
+<h2 id="loggingAndroid">Logging example for native Android (Java):</h2>
+<h3>Outputs to LogCat:</h3>
+<p>[code lang="java"]<br />
+import com.worklight.common.Logger;</p>
+<p>public class MathUtils{</p>
+<p>  private static final Logger logger = Logger.getInstance(MathUtils.class.getName());</p>
+<p>  public int sum(final int a, final int b){</p>
+<p>  int sum = a + b;<br />
+  logger.debug(&quot;sum called with args &quot; + a + &quot; and &quot; + b + &quot;. Returning &quot; + sum);</p>
+<p>  return sum;<br />
+  }<br />
+}<br />
+[/code]</p>
+<h2>API calls for specific tasks</h2>
+<h3>Turn log capture on or off:</h3>
+<p><code>Logger.setCapture(boolean)</code></p>
+<h3>Control capture level (verbosity):</h3>
+<p><code>Logger.setLevel(LEVEL)</code></p>
+<h3>Turn automatic log sending on or off:</h3>
+<p><code>Logger.setAutoSendLogs(boolean)</code></p>
+<h3>Turn automatic configuration retrieval on or off:</h3>
+<p><code>Logger.setAutoUpdateConfig(boolean)</code></p>

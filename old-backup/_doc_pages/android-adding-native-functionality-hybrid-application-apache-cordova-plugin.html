@@ -1,0 +1,124 @@
+---
+layout: doc_page
+title: Android - Adding native functionality to hybrid application with Apache Cordova
+  plugin
+date: 
+type: doc_page
+published: false
+status: trash
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _post_restored_from: a:3:{s:20:"restored_revision_id";i:891;s:16:"restored_by_user";i:6643;s:13:"restored_time";i:1412159266;}
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442518355;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11241;}i:1;a:1:{s:2:"id";i:5716;}i:2;a:1:{s:2:"id";i:11248;}}}}
+  oasis_is_in_workflow: '0'
+  _wp_trash_meta_status: publish
+  _wp_trash_meta_time: '1444817983'
+  _wp_trash_meta_comments_status: a:4:{i:1941;s:1:"1";i:3323;s:1:"1";i:3324;s:1:"1";i:3867;s:4:"spam";}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/adding-native-functionality/">Adding native functionality to hybrid applications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ApacheCordovaPluginsProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>In some cases, developers of a MobileFirst application might have to use a specific third-party native library or a device function that is not yet available in Apache Cordova.</p>
+<p>With Apache Cordova, developers can create an Apache Cordova plug-in, which means that they create custom native code blocks, and call these code blocks in their applications by using JavaScript.</p>
+<p>In this tutorial, a simple Apache Cordova plug-in creation and integration for Android will be demonstrated.</p>
+<p><strong>Note:</strong> In Cordova-based applications, developers must check for the <span class="inline-code">deviceready</span> event before they use the Cordova API set. In a MobileFirst application, however, this check is done internally.</p>
+<p>Instead of implementing this check, implementation code can be placed in the <span class="inline-code">wlCommonInit()</span> function in <span class="inline-code">commonjsmain.js</span>.</p>
+<p>
+The below code blocks are based on the sample application, provided at the bottom of this tutorial.</p>
+<h3>Plug-in creation overview:</h3>
+<ul>
+<li>Declare the plug-in in the config.xml file</li>
+<li>Use the <span class="inline-code">cordova.exec()</span> API in the JavaScript code</li>
+<li>Create the plug-in class that will run natively in Android</li>
+<li>The plug-in performs the required action and calls a JavaScript callback method that is specified during the call to <span class="inline-code">cordova.exec()</span></li>
+</ul>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_05_overview.png"><img src="{{ site.baseurl }}/assets/07_05_overview.png" alt="07_05_overview" width="847" height="230" class="aligncenter size-full wp-image-893" /></a></p>
+<h2>Declaring a plug-in</h2>
+<p>The plug-in needs to be declared in the project, so that Cordova can detect it.<br />
+To declare the plug-in, add a reference to the config.xml file, located in the <span class="inline-code">nativeresxml</span> folder in the Android environment.</p>
+<p>[code lang="xml"]&amp;lt;feature name=“sayHelloPlugin&amp;quot;&amp;gt;<br />
+	&amp;lt;param name=&amp;quot;android-package&amp;quot; value=“sayHelloPlugin&amp;quot; /&amp;gt;<br />
+&amp;lt;/feature&amp;gt;[/code]</p>
+<h2>Implementing cordova.exec() in JavaScript</h2>
+<p>From the JavaScript code of the application, use <span class="inline-code">cordova.exec()</span> to call the Cordova plug-in:<br />
+[code lang="js"]function sayHello() {<br />
+    var name = $(&amp;quot;#NameInput&amp;quot;).val();<br />
+    cordova.exec(sayHelloSuccess, sayHelloFailure, &amp;quot;SayHelloPlugin&amp;quot;, &amp;quot;sayHello&amp;quot;, [name]);<br />
+}[/code]</p>
+<p><br clear="all" /><br />
+<span class="inline-code">sayHelloSuccess</span> - Success callback<br />
+<span class="inline-code">sayHelloFailure</span> - Failure callback<br />
+<span class="inline-code">SayHelloPlugin</span> - Plug-in name as declared in config.xml<br />
+<span class="inline-code">sayHello</span> - Action name<br />
+<span class="inline-code">[name]</span> - Parameters array</p>
+<p>The plug-in calls the <span class="inline-code">success</span> and <span class="inline-code">failure</span> callbacks.<br />
+[code lang="js" firstline="5"]<br />
+function sayHelloSuccess(data){<br />
+    WL.SimpleDialog.show(<br />
+        &amp;quot;Response from plug-in&amp;quot;, data,<br />
+	[{text: &amp;quot;OK&amp;quot;, handler: function() {WL.Logger.debug(&amp;quot;Ok button pressed&amp;quot;);}}]<br />
+    );<br />
+}</p>
+<p>function sayHelloFailure(data){<br />
+    WL.SimpleDialog.show(<br />
+	&amp;quot;Response from plug-in&amp;quot;, data,<br />
+	[{text: &amp;quot;OK&amp;quot;, handler: function() {WL.Logger.debug(&amp;quot;Ok button pressed&amp;quot;);}}]<br />
+    );<br />
+}[/code]</p>
+<h2>Implementing the Java code of a Cordova plug-in</h2>
+<p>After the plug-in is declared, and the JavaScript implementation is ready, the Cordova plug-in can be implemented.</p>
+<h4>Step 1</h4>
+<ul>
+<li>Add a new Java class file</li>
+<li>Extend the org.apache.cordova.CordovaPlugin class and add the required import statements<br />
+     [code lang="java"][/code]public class SayHelloPlugin extends CordovaPlugin {[/code]</li>
+</ul>
+<h4>Step 2</h4>
+<p>Implement an <span class="inline-code">execute</span> method.</p>
+<ul>
+<li>The arguments contain information that is required by a plug-in, such as action, arguments array, and callback context<br />
+    [code lang="java" firstline="2"]public boolean execute(String action, JSONArray args, CallbackContext callbackContext)<br />
+	throws JSONException {[/code]</li>
+<p><br clear="all" /></p>
+<li>If the supplied action is <span class="inline-code">sayHello</span>, retrieve the first argument from the <span class="inline-code">args</span> array, prepares a <span class="inline-code">responseText</span> string and, by using the <span class="inline-code">callbackContext</span> argument, calls the <span class="inline-code">success</span> callback with this <span class="inline-code">responseText</span> string as the argument.<br />
+    [code lang="java" firstline="4"]if (action.equals(&amp;quot;sayHello&amp;quot;)){<br />
+		try {<br />
+			String responseText = &amp;quot;Hello &amp;quot; + args.getString(0);<br />
+			callbackContext.success(responseText);<br />
+		} catch (JSONException e){<br />
+			callbackContext.error(&amp;quot;Failed to parse parameters&amp;quot;);<br />
+		}<br />
+		return true;<br />
+	}[/code]</li>
+<p><br clear="all" /></p>
+<li>Returning <span class="inline-code">false</span> means that the action that is supplied from JavaScript was not recognized.<br />
+    [code lang="java" firstline="13"]return false;<br />
+}[/code]</li>
+</ul>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ApacheCordovaPluginsProject.zip">Click to download</a> the Studio project.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_05_sample_app.png"><img src="{{ site.baseurl }}/assets/07_05_sample_app.png" alt="07_05_sample_app" width="650" height="386" class="aligncenter size-full wp-image-900" /></a></p>

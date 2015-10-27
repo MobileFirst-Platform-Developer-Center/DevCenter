@@ -1,0 +1,150 @@
+---
+layout: doc_page
+title: Beacons in iOS
+date: 2015-04-16 09:16:53.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6637'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/advanced-topics/">Advanced topics</a> &lt; <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/advanced-topics/working-with-beacons/">Working with Beacons<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+        Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS
+            </li>
+</ul></div>
+<ul>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/Beacons" target="_blank">Download MobileFirst project</a>
+    </li>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/BeaconsObjC" target="_blank">Download Native project</a>
+    </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial discusses the client-side API for working with beacons in iOS.<br />
+This tutorial is a continuation of <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/advanced-topics/working-with-beacons">Working with Beacons</a> (introduction, setup, and server-side API).</p>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#applicationconfiguration">Configuring you application</a></li>
+<li><a href="#simplifiedapis">Simplified APIs for ranging/monitoring iBeacons</a></li>
+<li><a href="#sampleresult">Running the sample application</a></li>
+</ul>
+<h2 id="applicationconfiguration">Configuring your application</h2>
+<ol>
+<li>On iOS 8 and later, to enable Location services, add <code>NSLocationAlwaysUsageDescription</code> in the iOS project <code>Info.plist</code>.
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/iOS8LocationServices.png"><img src="{{ site.baseurl }}/assets/iOS8LocationServices.png" alt="iOS8LocationServices" width="730" height="350" class="alignnone size-full wp-image-5404" /></a></p>
+</li>
+<li>Copy the <code>iOSNativeiBeaconsLibrary</code> folder of the iOSNativeiBeacons project into your native iOS application. That folder contains the library that provides the simplified set of APIs for ranging/monitoring iBeacons.
+<p>To request permission to use location services and local/push notifications, write the following code:</p>
+<p>[code lang="obj-c"]<br />
+- (void) viewDidLoad {<br />
+	[super viewDidLoad];<br />
+	...<br />
+	[[WLBeaconsLocationManager sharedInstance] requestPermissionToUseLocationServices];<br />
+	[[WLBeaconsLocationManager sharedInstance] requestPermissionToUseNotifications];<br />
+}[/code]</p>
+<h2 id="simplifiedapis">Simplified APIs for ranging/monitoring iBeacons</h2>
+<h3>Loading beacons and triggers from the server</h3>
+<p>To load information pertaining to beacons, triggers, and their associations from the server and storing it in the application JSONStore, write the following code:<br />
+[code lang="obj-c"]<br />
+[[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@&quot;BeaconsAdapter&quot; withProcedure:@&quot;getBeaconsAndTriggers&quot; withCompletionHandler:^(bool success, NSString *error) {<br />
+	if (success) {<br />
+		[self showBeaconsAndTriggers];<br />
+	} else {<br />
+		[self updateView:error];<br />
+	}<br />
+}];[/code]</p>
+<p><br clear="all" /></p>
+<h3>Triggering actions</h3>
+<p>To set the monitoring/ranging of iBeacons and to fire trigger actions, write the following code:</p>
+<p>[code lang="obj-c"]<br />
+	[[WLBeaconsLocationManager sharedInstance] startMonitoring];[/code]</p>
+<p>To let the user opt out of iBeacon monitoring, write the following code:</p>
+<p>[code lang="obj-c"]<br />
+	[[WLBeaconsLocationManager sharedInstance] stopMonitoring];<br />
+	// Optionally reset monioring/ranging state<br />
+	[[WLBeaconsLocationManager sharedInstance] resetMonitoringRangingState]; [/code]</p>
+<p><br clear="all" /></p>
+<h3>Turning the device into an iBeacon</h3>
+<p>To turn a device into an iBeacon, write the following code:</p>
+<p>[code lang="obj-c"]<br />
+	NSString *uuidString = @&quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;;<br />
+	int major = 1;<br />
+	int minor = 4417;<br />
+	[[WLBeaconsLocationManager sharedInstance] turnIntoiBeaconWithUuid:uuidString withMajor:major withMinor:minor withStatusHandler:^(NSString *turnIntoiBeaconStatusDetails) {<br />
+		[self updateView:turnIntoiBeaconStatusDetails];<br />
+	}];[/code]</p>
+<p>Generally, use this feature for testing and development purposes. The UUID string must match the UUID of the beacons that are registered on server.</p>
+<h3>Increasing the application running time</h3>
+<p>To increase the running time of the application when it runs in background (as part of iBeacon monitoring), write the following code:</p>
+<p>[code lang="obj-c"]<br />
+- (void)applicationDidEnterBackground:(UIApplication *)application {<br />
+	...<br />
+	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidEnterBackground];<br />
+}</p>
+<p>- (void)applicationDidBecomeActive:(UIApplication *)application {<br />
+	...<br />
+	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidBecomeActive];<br />
+}<br />
+[/code]<br />
+This code increases the running time of the application up to 3 minutes from the default 10 seconds.</p>
+<h3>Handling local notifications</h3>
+<p>To handle local notifications that originate from the application, write the following code:<br />
+[code lang="obj-c"]<br />
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {<br />
+	...<br />
+	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];<br />
+	if (localNotif) {<br />
+		application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1;<br />
+		[self processLocalNotification:localNotif];<br />
+	}<br />
+	return YES;<br />
+}</p>
+<p>- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification<br />
+{<br />
+	application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1;<br />
+	[self processLocalNotification:notification];<br />
+}</p>
+<p>- (void)processLocalNotification:(UILocalNotification *)notification<br />
+{<br />
+	NSString *alertMessage = [notification.userInfo objectForKey:@&quot;alertMessage&quot;];<br />
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Received local notification&quot; message:alertMessage delegate:nil cancelButtonTitle:@&quot;OK&quot; otherButtonTitles:nil, nil];<br />
+	[alert show];<br />
+}[/code]</p>
+<h2 id="sampleresult">Running the sample application</h2>
+<p>The sample is in two parts:</p>
+<ul>
+<li>The <a href="https://github.com/MobileFirst-Platform-Developer-Center/Beacons" target="_blank">Beacons</a> MobileFirst project contains a <strong>MobileFirst native API</strong> that you can deploy to your MobileFirst Server instance.</li>
+<li>The <a href="https://github.com/MobileFirst-Platform-Developer-Center/BeaconsObjC" target="_blank">BeaconsObjC</a> native project contains <strong>a native library</strong> that provides a simplified set of APIs for ranging/monitoring iBeacons and a <strong>native iOS application</strong> that demonstrates the usage of those APIs.</li>
+</ul>
+<p>Make sure to update the <code>worklight.plist</code> file in iOSNativePush with the relevant server settings.</p>
+<p>The sample showcases a simple banking scenario where actions are triggered based on proximity:</p>
+<ul>
+<li>When the user enters a Bank branch, a notification action is triggered with a Welcome message.</li>
+<li>When the user enters the loan processing section, an alert is triggered with a message stating that a bank personnel will assist the user soon.</li>
+<li>When the user exits the Bank branch, a notification action is triggered with a message.</li>
+</ul>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/iBeaconSampleApplicationInitialPermissions.png"><img src="{{ site.baseurl }}/assets/iBeaconSampleApplicationInitialPermissions.png" alt="iBeaconSampleApplicationInitialPermissions" width="2258" height="1336" class="aligncenter size-full wp-image-7998" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/iBeaconSampleApplicationWorking.png"><img src="{{ site.baseurl }}/assets/iBeaconSampleApplicationWorking.png" alt="iBeaconSampleApplicationWorking" width="1950" height="1152" class="aligncenter size-full wp-image-7996" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/iBeaconSampleLocalNotifications.png"><img src="{{ site.baseurl }}/assets/iBeaconSampleLocalNotifications.png" alt="iBeaconSampleLocalNotifications" width="1928" height="1136" class="aligncenter size-full wp-image-7997" /></a></p>
+</li>
+</ol>

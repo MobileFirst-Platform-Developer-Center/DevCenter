@@ -1,0 +1,142 @@
+---
+layout: doc_page
+title: 'Updated: Invoking adapter procedures from native iOS Swift applications'
+date: 2014-12-17 08:10:42.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6637'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/">Server-side development</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Download Studio project</a>
+    </li>
+<li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresSwiftProject.zip">Download native project</a>
+    </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>To create and configure an iOS native project, first follow the “<a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/configuring-a-native-ios-with-the-mfp-sdk/" title="Configuring a native iOS application with the MobileFirst Platform SDK">Configuring a native iOS application with the MobileFirst Platform SDK</a>” tutorial.</p>
+<p>If you are developing Swift-based applications, make sure that you follow the additional steps.</p>
+<p>MobileFirst applications can adapt procedures to communicate with any data source. This tutorial explains how to use the REST API for returning data from an HTTP adapter. The same can be applied using other data sources (such as SQL adapters, etc).</p>
+<h2>Initializing WLClient</h2>
+<ol>
+<li>Access the <code>WLClient</code> functionality by calling the <code>WLClient.sharedInstance</code> method anywhere in your application.
+</li>
+<li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.<br />
+For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:<br />
+[code]<br />
+let connectListener = MyConnectListener(vc: self)<br />
+WLClient.sharedInstance().wlConnectWithDelegate(connectListener)<br />
+[/code]
+</li>
+<li>Make sure that your Bridging Header includes the <code>WLSwiftBridgingHeader.h</code> file for access to MobileFirst APIs.
+</li>
+<li>To specify the delegate object, create a delegate for the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server instance. Name the class <code>MyConnectListener</code>.
+<p>For your <code>MyConnectListener</code> class, the header file must specify that it implements the <code>WLDelegate</code> protocol.</p>
+<p><strong>Note</strong>: To avoid a compiler error raising that your delegate does not conform to <code>NSObjectProtocol</code>, make your class a subclass of <code>NSObject</code>.</p>
+<p>[code]<br />
+class MyConnectListener: NSObject, WLDelegate{<br />
+//...<br />
+}<br />
+[/code]</p>
+<p>The <code>WLDelegate</code> protocol specifies that the class implements the following methods:<br />
+- The <strong>onSuccess</strong> method: <code>func onSuccess(response: WLResponse!)</code><br />
+- The <strong>onFailure</strong> method: <code>func onFailure(response: WLFailResponse!)</code></p>
+<p>After <code>wlConnectWithDelegate</code> finishes, the <code>onSuccess</code> method or the <code>onFailure</code> method of the supplied <code>MyConnectListener</code> instance is called.<br />
+In both cases, the response object is passed as an argument.
+</li>
+<li>Use this object to operate data that is retrieved from the server.
+<p>[code]<br />
+func onSuccess(response: WLResponse!) {<br />
+    var resultText = &quot;Connection success. &quot;<br />
+    if(response != nil){<br />
+        resultText += response.responseText<br />
+    }<br />
+    self.vc.updateView(resultText)<br />
+}</p>
+<p>func onFailure(response: WLFailResponse!) {<br />
+    var resultText = &quot;Connection failure. &quot;<br />
+    if(response != nil){<br />
+        resultText += response.errorMsg<br />
+    }<br />
+    self.vc.updateView(resultText)<br />
+}<br />
+[/code]
+</li>
+</ol>
+<h2>Calling an adapter procedure</h2>
+<p>The <code>WLResourceRequest</code> class handles resource requests to MobileFirst adapters or external resources.</p>
+<ol>
+<li>To call a procedure, create a <code>WLResourceRequest</code> object and specify the path to the adapter and the HTTP method.<br />
+[code]<br />
+let request = WLResourceRequest(URL: NSURL(string: &quot;/adapters/RSSReader/getStories&quot;), method: WLHttpMethodGet)<br />
+[/code]
+</li>
+<li>Add the required parameters.
+<ul>
+<li>For JavaScript-based adapters, use the <code>params</code> parameter name to set an array of parameters.<br />
+[code]<br />
+request.setQueryParameterValue(&quot;['technology']&quot;, forName: &quot;params&quot;)<br />
+[/code]
+</li>
+<li>For Java adapters or other resources, you can use <code>setQueryParameterValue</code> for each parameter.<br />
+[code]<br />
+request.setQueryParameterValue(&quot;value1&quot;, forName: &quot;param1&quot;)<br />
+request.setQueryParameterValue(&quot;value2&quot;, forName: &quot;param2&quot;)<br />
+[/code]
+</li>
+</ul>
+</li>
+<li>Call the procedure by using the <code>sendWithCompletionHandler</code> method. Supply a completion handler to manage the retrieved data.
+<p>[code]<br />
+        request.sendWithCompletionHandler { (WLResponse response, NSError error) -&gt; Void in<br />
+            var resultText = &quot;&quot;<br />
+            if(error != nil){<br />
+                resultText = &quot;Invocation failure. &quot;<br />
+                resultText += error.description<br />
+            }<br />
+            else if(response != nil){<br />
+                resultText = &quot;Invocation success. &quot;<br />
+                resultText += response.responseText<br />
+            }<br />
+            self.updateView(resultText)<br />
+        }<br />
+[/code]</p>
+<p>For more granular management of the retrieved data (such as non-text responses, PDF, etc), you can use the <code>sendWithDelegate</code> method and provide a delegate which conforms to both the <code>NSURLConnectionDataDelegate</code> and <code>NSURLConnectionDelegate</code> protocols.</p>
+<p>Other signatures, which are not covered in this tutorial, exist for the <code>send</code> method. Those will enable you to set parameters in the body instead of the query, or handle the response with a delegate instead of a completion handler. See the user documentation to learn more.</p>
+<blockquote><p>Learn more about <code>WLResourceRequest</code> in the user documentation.</p></blockquote>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresSwiftProject.zip">Click to download</a> the Native project.</p>
+<p>The sample contains two projects:</p>
+<ul>
+<li>The <code>InvokingAdapterProceduresNativeProject.zip</code> file contains a <strong>MobileFirst native API</strong> that you can deploy to your MobileFirst Server instance.</li>
+<li>The <code>InvokingAdapterProceduresSwiftProject.zip</code> file contains a <strong>native iOS Swift application</strong> that uses a MobileFirst native API library to communicate with the MobileFirst Server instance.</li>
+</ul>
+<p>Make sure to update the <code>worklight.plist</code> file in <strong>SwiftNativeApp</strong> with the relevant server settings.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/04_08_results_swift.pptx_.png"><img src="{{ site.baseurl }}/assets/04_08_results_swift.pptx_.png" alt="04_08_results_swift.pptx" width="363" height="712" class="aligncenter size-full wp-image-3316" /></a></li>
+</ol>

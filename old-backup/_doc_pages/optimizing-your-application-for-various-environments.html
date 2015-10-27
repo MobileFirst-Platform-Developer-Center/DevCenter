@@ -1,0 +1,107 @@
+---
+layout: doc_page
+title: Optimizing your application for various environments
+date: 
+type: doc_page
+published: false
+status: trash
+categories: []
+tags:
+- 7-2
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  oasis_is_in_workflow: '0'
+  _wp_trash_meta_status: publish
+  _wp_trash_meta_time: '1444817930'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="../">Client-side development basics</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<h2 id="overview">Overview</h2>
+<p>MobileFirst applications run in mobile, tablet, and web environments. These runtime environments differ in many aspects such as screen size, orientation, specific UI guidelines and components, physical user interface, and unique environment functionalities. This tutorial explores the ways in which you can optimize an environment.</p>
+<ul>
+<li><a href="#whatisEnvironmentOptimization">What is environment optimization?</a></li>
+<li><a href="#supportedEnvironments">Currently supported environments</a></li>
+</ul>
+<h2 id="whatisEnvironmentOptimization">What is environment optimization?</h2>
+<p>IBM MobileFirst Platform Foundation increases development efficiency and productivity by providing an environment optimization framework. The core logic and design guidelines of the app are implemented by using web technologies (HTML, CSS, and JavaScript) and are shared by all environments. You can then add environment-specific optimizations when needed.</p>
+<blockquote><p>If you use a source control management system (such as Rational Team Concert™, Git, or Subversion), refer to the topic about integrating with source control systems, in the user documentation.</p></blockquote>
+<h2 id="supportedEnvironments">Currently supported environments</h2>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_05_smartphones.png"><img src="{{ site.baseurl }}/assets/03_05_smartphones.png" alt="03_05_smartphones" width="314" height="197" class="alignright size-full wp-image-754" /></a><br />
+<strong>Smartphones</strong></p>
+<ul>
+<li>iOS 7.x, 8.x</li>
+<li>Android 2.3.3, 4.x, 5.x</li>
+<li>Windows Phone 8.x</li>
+</ul>
+<p><br clear="all" /><br />
+<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_05_tablets.png"><img src="{{ site.baseurl }}/assets/03_05_tablets.png" alt="03_05_tablets" width="314" height="204" class="alignright size-full wp-image-755" /></a><br />
+<strong>Tablets</strong></p>
+<ul>
+<li>iOS 7.x, 8.x</li>
+<li>Android 2.3.3, 4.x, 5.x</li>
+<li>Windows 8.x</li>
+</ul>
+<p><br clear="all" /><br />
+<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_05_web.png"><img src="{{ site.baseurl }}/assets/03_05_web.png" alt="03_05_web" width="313" height="201" class="alignright size-full wp-image-756" /></a><br />
+<strong>Web</strong></p>
+<ul>
+<li>Modern browsers that support HTML 4, CSS 2.1, and JavaScript 1.5 at a minimum</li>
+<li>Browsers that support HTML 5 and CSS 3</li>
+</ul>
+<p><br clear="all" /><br />
+<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_05_browsers.png"><img src="{{ site.baseurl }}/assets/03_05_browsers.png" alt="03_05_browsers" width="313" height="209" class="alignright size-full wp-image-757" /></a><br />
+<strong>Browsers</strong></p>
+<ul>
+<li>Modern browsers that support HTML 4, CSS 2.1, and JavaScript 1.5 at a minimum</li>
+<li>Browsers that support HTML 5 and CSS 3</li>
+</ul>
+<p><br clear="all" /></p>
+<h2>How does optimization work?</h2>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_05_common_folder_structure.png"><img src="{{ site.baseurl }}/assets/03_05_common_folder_structure-219x300.png" alt="03_05_common_folder_structure" width="219" height="300" class="alignright size-medium wp-image-1484" /></a></p>
+<p>The MobileFirst application structure is divided into environment folders (iPhone, Android and so on).</p>
+<p>Each environment folder contains the web resources (CSS, JS, images, and so on) that are relevant for that specific environment.</p>
+<p>A newly created application contains the base environment in the <code>common</code> folder. The web resources that are in the <code>common</code> folder serve as the basis for the optimized environments that might be added later on.</p>
+<p>The <code>common</code> folder must hold <strong>only</strong> resources that are shared by all environments.</p>
+<h3>Adding an environment</h3>
+<h4>Using the command-line interface (CLI)</h4>
+<ul>
+<li>In a terminal window, navigate to the application folder and use the command: <code>mfp add environment</code>. An interactive menu is displayed.</li>
+<li>
+</li>
+</ul>
+<h4>Using the Studio</h4>
+<ol>
+<li>Click the MobileFirst icon from the Eclipse menu bar and select <strong>MobileFirst Environment</strong>.</li>
+<li>Right-click the MobileFirst project folder and select <strong>New > MobileFirst Environment</strong>.</li>
+</ol>
+<h3>HTML optimization</h3>
+<p>The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: The new environment HTML code overrides the common HTML file.<br />
+<strong>Note:</strong> By default, a new environment does not include a new HTML file because the common HTML file is shared by all environments.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/03_05_html.jpg"><img src="{{ site.baseurl }}/assets/03_05_html.jpg" alt="03_05_html" width="560" height="180" class="aligncenter size-full wp-image-14709" /></a></p>
+<h3>JavaScript optimization</h3>
+<p>The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: The JavaScript file from an environment folder has a <code>wlEnvInit()</code> function that invokes the <code>wlCommonInit()</code> JavaScript function from the <code>common</code> folder.</p>
+<p>Technically, the JavaScript from an environment folder is appended to the file from the <code>common</code> folder.<br />
+Using the same variable names as in the <code>common</code> folder redefines their meaning.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/03_05_javascript.jpg"><img src="{{ site.baseurl }}/assets/03_05_javascript.jpg" alt="03_05_javascript" width="560" height="340" class="aligncenter size-full wp-image-14711" /></a></p>
+<h3>CSS optimization</h3>
+<p>The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: The CSS file from an environment folder is appended to the CSS file from the <code>common</code> folder.</p>
+<p>Using the same property names as the ones in the <code>common</code> folder overrides their settings.<br />
+<strong>Note:</strong> The CSS from the environment folder might contain some default CSS rules that match the environment needs.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/03_05_css.jpg"><img src="{{ site.baseurl }}/assets/03_05_css.jpg" alt="03_05_css" width="600" height="340" class="aligncenter size-full wp-image-14722" /></a></p>
+<h3>Images optimization</h3>
+<p>The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: Image files in the images folder of the environment folder that have the same file name as the image files in the <code>common</code> folder override the image files in the <code>common</code> folder.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/03_05_iphone.jpg"><img src="{{ site.baseurl }}/assets/03_05_iphone.jpg" alt="03_05_iphone" width="510" height="400" class="aligncenter size-full wp-image-14712" /></a></p>

@@ -1,0 +1,112 @@
+---
+layout: doc_page
+title: Working with UI frameworks
+date: 2014-07-23 05:48:07.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '12536'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442511688;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:10504;}i:1;a:1:{s:2:"id";i:9570;}i:2;a:1:{s:2:"id";i:9560;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/client-side-development-basics/">Client-side development basics</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>Designing and implementing the UI of an application is an important part of the development process.</p>
+<p>Writing custom CSS style for each component from scratch can deliver a high level of customization, but also requires a large amount of resources.<br />
+Sometimes it is better to use the existing JavaScript™ UI frameworks.</p>
+<p>This module describes the development of MobileFirst applications by using two JavaScript UI frameworks: jQuery Mobile and Dojo Mobile using the provided wizards in MobileFirst Studio.</p>
+<p>This tutorial will cover the following topics:</p>
+<ul>
+<li>Using jQuery in a MobileFirst application</li>
+<li>Working with jQuery Mobile</li>
+<li>Working with Dojo Mobile</li>
+</ul>
+<h2>Using jQuery in a MobileFirst application</h2>
+<p>jQuery is a fast and concise JavaScript framework that simplifies HTML document flow, event handling, animating, and Ajax interactions for rapid web development.</p>
+<p>The MobileFirst client-side framework uses the jQuery library for internal functionality. By default, the <span class="inline-code">$</span> character is assigned to the internal jQuery in the main HTML file of the application, in the HEAD element:</p>
+<p>[code lang="js"]&lt;script&gt;window.$ = window.jQuery = WLJQ;&lt;/script&gt;[/code]</p>
+<p>If the application does not require jQuery, or if you want to use a different version of jQuery, you can remove this line.<br />
+For more information about jQuery, see <a href="http://jquery.com/">http://jquery.com/</a>.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_jquery_mobile_ui-e1411375701917.png"><img src="{{ site.baseurl }}/assets/03_03_jquery_mobile_ui-e1411375701917.png" alt="03_03_jquery_mobile_ui" width="388" height="500" class="alignright size-full wp-image-712" /></a></p>
+<h2>Working with jQuery Mobile</h2>
+<p>jQuery Mobile is a touch-optimized web framework for smartphones and tablets.<br />
+jQuery Mobile requires jQuery to run.</p>
+<p>The required jQuery Mobile components are in the .js and .css files provided by jQuery Mobile.<br />
+More style images can optionally be added.</p>
+<ul>
+<li>When creating a new application, the jQuery Mobile files can be added from the "Configure JavaScript Libraries" option. Either the compressed jQuery Mobile .zip file or the extracted folder can be used.</li>
+<li>The required files can then be selected. At minimum, the images folder and the jquery-mobile-*.css and jquery-mobile-*.js files should be selected.</li>
+<li>When creating the application, a "jqueryMobile" folder is added that contains these files.<br />
+The main HTML file of the application is created with references to the .css and .js files as well as with a basic jQuery Mobile template.</li>
+</ul>
+<p><br clear="all" /></p>
+<h3>Basic structure of a screen</h3>
+<p>The basic structure of a screen in a jQuery Mobile application is as follows:<br />
+[code lang="js"]&lt;div data-role=&quot;page&quot;&gt;<br />
+    &lt;div data-role=&quot;header&quot;&gt; ... &lt;/div&gt;<br />
+    &lt;div data-role=&quot;content&quot;&gt; ... &lt;/div&gt;<br />
+    &lt;div data-role=&quot;footer&quot;&gt; ... &lt;/div&gt;<br />
+&lt;/div&gt;[/code]</p>
+<ul>
+<li>The header and footer elements are optional</li>
+<li>The page is rendered by a jQuery Mobile at run-time</li>
+<li>All the required styles are automatically applied</li>
+</ul>
+<h3>WYSIWYG editor</h3>
+<p>A WYSIWYG editor is provided for jQuery Mobile widgets for developer convenience.<br />
+<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_RPE.png"><img src="{{ site.baseurl }}/assets/03_03_RPE.png" alt="03_03_RPE" width="1084" height="683" class="aligncenter size-full wp-image-715" /></a></p>
+<p>By using jQuery Mobile, you can create mobile application screens with a few lines of code<br />
+[code lang="js"]&lt;div data-role=&quot;page&quot;&gt;<br />
+    &lt;div data-role=&quot;header&quot;&gt;<br />
+        &lt;h2&gt;My Application&lt;/h2&gt;<br />
+    &lt;/div&gt;<br />
+    &lt;div data-role=&quot;content&quot;&gt; This is the application body &lt;/div&gt;<br />
+&lt;/div&gt;[/code]<br />
+<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_jquery_sample.png"><img src="{{ site.baseurl }}/assets/03_03_jquery_sample-300x182.png" alt="03_03_jquery_sample" width="300" height="182" class="aligncenter size-medium wp-image-716" /></a></p>
+<p>For more information, see <a href="http://jquerymobile.com/demos">http://jquerymobile.com/demos</a>.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_adding_dojo.png"><img src="{{ site.baseurl }}/assets/03_03_adding_dojo.png" alt="03_03_adding_dojo" width="375" height="500" class="alignright size-full wp-image-717" /></a></p>
+<h2>Working with Dojo Mobile</h2>
+<p>Dojo Mobile can be used to rapidly develop mobile web applications on iPhone, iPod Touch, iPad, Android, and BlackBerry touch devices, with the appearance of the native device.</p>
+<p>Dojo Mobile is part of the Dojo Toolkit, which is developed and maintained by the Dojo Foundation.<br />
+For more information about the Dojo Toolkit, see the Dojo Toolkit website at http://dojotoolkit.org/documentation/.</p>
+<p>MobileFirst Studio includes a Dojo Toolkit package and tools that you can use to develop your mobile web applications.</p>
+<ul>
+<li>When creating a new application, the Dojo Mobile files can be added from the "Configure JavaScript Libraries" option. Select the Add Dojo Toolkit check box.</li>
+<li>The project is initialized with mobile-optimized layers and resources. A new Dojo Library project is created that has a full Dojo Toolkit to supplement the mobile layers.</li>
+</ul>
+<p><br clear="all" /></p>
+<h3>Deployment configuration with Ant</h3>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_dojo_files.png"><img src="{{ site.baseurl }}/assets/03_03_dojo_files.png" alt="03_03_dojo_files" width="262" height="338" class="alignright size-full wp-image-718" /></a><br />
+MobileFirst Studio automatically uses the build-dojo.xml file to specify which parts of the Dojo Toolkit package, such as compressed layers and resources, must be deployed with your application.<br />
+By default, all of the resources from the <span class="inline-code">www</span> folder are deployed.</p>
+<p><strong>Note:</strong> The <span class="inline-code">build-dojo.xml</span><br />
+ file stores the configuration that must be deployed to run a basic Dojo Mobile application. The file can be modified to add other layers to deploy with the application.</p>
+<h3>Custom layers</h3>
+<p>To create custom layers, the full Dojo Toolkit that is part of the Dojo Library project can be used.</p>
+<ul>
+<li>Update the <span class="inline-code">build-dojo.properties</span> file to indicate where to pick up the Dojo Toolkit files from.</li>
+<li>Update the <span class="inline-code">dojo.workspaceRoot</span> property value to pick up the files from another directory in your project, or from another project in your workspace: <span class="inline-code">dojo.workspaceRoot=/myProject/dojo</span></li>
+<li>Use the dojo.root property instead if the directory is not in your workspace: <span class="inline-code">dojo.root=C\:/dojo</span></li>
+</ul>
+<h3>Deploying to a device</h3>
+<p>When the development is done,the used resources must be in the application (either copied loosely or as layers) to run properly.</p>
+<p>To configure the application to use local resources only, toggle the <strong>Provide Library Resources</strong> action in the console and redeploy.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_provide_resources.png"><img src="{{ site.baseurl }}/assets/03_03_provide_resources.png" alt="03_03_provide_resources" width="945" height="115" class="aligncenter size-full wp-image-719" /></a></p>

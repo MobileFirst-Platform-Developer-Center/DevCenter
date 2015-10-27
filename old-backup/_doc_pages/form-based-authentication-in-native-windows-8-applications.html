@@ -1,0 +1,120 @@
+---
+layout: doc_page
+title: Form-based authentication in native Windows 8 applications
+date: 
+type: doc_page
+published: false
+status: trash
+categories: []
+tags:
+- 7-2
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+  oasis_is_in_workflow: '0'
+  _wp_trash_meta_status: publish
+  _wp_trash_meta_time: '1444818012'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="../../">Authentication and security</a> &lt; <a href="../">Form-based authentication<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="wp8">Native Windows 8 Universal</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuth" target="_blank">Download MobileFirst project</a>
+        </li>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuthWin8" target="_blank">Download Native project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial illustrates the native Windows 8 Universal client-side authentication components for form-based authentication.<br />
+<strong>Prerequisite:</strong> Make sure that you read <a href="../" title="Form-based authentication">Form-based authentication</a> first.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#createClientSide">Creating the client-side authentication components</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="createClientSide">Creating the client-side authentication components</h2>
+<p>Create a native Windows 8 application and add the MobileFirst native APIs as explained in the <a href="../../../hello-world/configuring-a-native-windows-8-application-with-the-mfp-sdk/" target="_blank">Configuring a native Windows 8 application with the MobileFirst Platform SDK</a> tutorial.</p>
+<h3>FormChallengeHandler</h3>
+<p>Create a <span class="inline-code">FormChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span>.<br />
+Your <span class="inline-code">FormChallengeHandler</span> class must implement the <span class="inline-code">isCustomResponse</span> and <span class="inline-code">handleChallenge</span> methods.</p>
+<p>The <span class="inline-code">isCustomResponse</span> method checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
+[code lang="csharp"]<br />
+public override bool isCustomResponse(WLResponse response)<br />
+{<br />
+    if (response == null || response.getResponseText() == null || !response.getResponseText().Contains(&amp;quot;j_security_check&amp;quot;))<br />
+    {<br />
+        return false;<br />
+    }<br />
+    else<br />
+    {<br />
+        return true;<br />
+    }<br />
+}<br />
+[/code]</p>
+<p>The <span class="inline-code">handleChallenge</span> method is called after the <span class="inline-code">isCustomResponse</span> method returns <code>true</code>.<br />
+Within this method, present your login form. Different approaches are available.<br />
+[code lang="csharp"]<br />
+public override void handleChallenge(JObject response)<br />
+{<br />
+  CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,<br />
+async () =&amp;gt;<br />
+  {<br />
+     MainPage._this.LoginGrid.Visibility = Visibility.Visible;<br />
+  });<br />
+}<br />
+[/code]</p>
+<p>From the login form , credentials are passed to the <span class="inline-code">FormChallengeHandler</span> class. Use the <span class="inline-code">submitLoginForm()</span> method to send input data to the authenticator.<br />
+[code lang="csharp"]<br />
+public void sendResponse(String username, String password)<br />
+{<br />
+   Dictionary&amp;lt;String, String&amp;gt; parms = new Dictionary&amp;lt;String, String&amp;gt;();</p>
+<p>   parms.Add(&amp;quot;j_username&amp;quot;, username);<br />
+   parms.Add(&amp;quot;j_password&amp;quot;, password);</p>
+<p>   submitLoginForm(&amp;quot;j_security_check&amp;quot;, parms, null, 0, &amp;quot;post&amp;quot;);<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<h3>MainPage</h3>
+<p>Within the <code>MainPage</code> class, connect to MobileFirst Server, register your <span class="inline-code">challengeHandler</span> and invoke the protected adapter procedure.<br />
+The procedure invocation triggers MobileFirst Server to send a challenge that will trigger our challenge handler.<br />
+[code lang="csharp"]<br />
+WLClient wlClient = WLClient.getInstance();</p>
+<p>FormChallengeHandler ch = new FormChallengeHandler();<br />
+wlClient.registerChallengeHandler((BaseChallengeHandler&amp;lt;JObject&amp;gt;)ch);</p>
+<p>MyResponseListener mylistener = new MyResponseListener(this);<br />
+wlClient.connect(mylistener);</p>
+<p>[/code]</p>
+<p>Because the native API not protected by a defined security test, no login form is presented during server connection.<br />
+Invoke the protected adapter procedure. The login form is presented by the <span class="inline-code">challengeHandler</span>.<br />
+[code lang="csharp"]<br />
+ WLResourceRequest adapter = new WLResourceRequest(&amp;quot;/adapters/AuthAdapter/getSecretData&amp;quot;, &amp;quot;GET&amp;quot;);<br />
+ MyInvokeListener listener = new MyInvokeListener(this);<br />
+ adapter.send(listener);<br />
+[/code]</p>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuth" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/FormBasedAuthWin8" target="_blank">Click to download</a> the Native project.</p>
+<ul>
+<li>The <code>FormBasedAuth</code> project contains a MobileFirst native API that you can deploy to your MobileFirst server.</li>
+<li>The <code>FormBasedAuthWin8</code> project contains a native Windows 8 Universal application that uses a MobileFirst native API library.</li>
+<li>Make sure to update the <code>wlclient.properties</code> file in the native project with the relevant server settings.</li>
+</ul>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/FormBasedAuthWin8.png"><img src="{{ site.baseurl }}/assets/FormBasedAuthWin8-1024x265.png" alt="FormBasedAuthWin8" width="980" height="254" class="aligncenter size-large wp-image-15970" /></a></p>

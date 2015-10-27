@@ -1,0 +1,154 @@
+---
+layout: doc_page
+title: 'UPDATED: Push notifications in native Android applications'
+date: 2014-12-17 09:30:53.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/notifications">Notifications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="android">Native Android</li>
+</ul>
+</div>
+</div>
+<h2>Overview</h2>
+<p>IBM MobileFirst Platform Foundation provides a unified set of API methods to send, or push, notifications to devices where the MobileFirst application is installed. It is possible to send a notification in 3 distinct types: event source notifications, broadcast notifications and tag notifications.</p>
+<p>In this tutorial, the concept, API, and usage of push notifications are explained in the context of Native Android applications.<br />
+To create and configure an Android native project, first follow these tutorials:</p>
+<ul>
+<li><a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/creating-first-native-android-mobilefirst-application/">Creating your first Native Android MobileFirst application</a></li>
+<li><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/invoking-adapter-procedures-native-android-applications/">Invoking adapter procedures from native Android applications</a></li>
+</ul>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#notificationTypes">Notification types</a></li>
+<li><a href="#settingUpTheProject">Setting up the project</a></li>
+</ul>
+<h2 id="notificationTypes">Notification types</h2>
+<h3>Event source notifications</h3>
+<p>Event source notifications are notification messages that are targeted to devices with a user subscription.</p>
+<h3>Broadcast notifications</h3>
+<p>Broadcast notifications are notification messages that are targeted to all subscribed devices.</p>
+<h3>Tag notifications</h3>
+<p>Tag notifications are notification messages that are targeted to all subscribed devices to a particular tag.</p>
+<p>For more information, <a href="#selectNotificationType">select a notification type</a>.</p>
+<h2 id="settingUpTheProject">Setting up the project</h2>
+<ol>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/NativeAndroidPushAdapterExpanded-70.png"><img src="{{ site.baseurl }}/assets/NativeAndroidPushAdapterExpanded-70.png" alt="NativeAndroidPushAdapterExpanded-70" width="300" height="500" class="alignright size-full wp-image-6220" /></a></p>
+<li>
+<h3>Create a MobileFirst project and add a MobileFirst Android Native API.</h3>
+<p>    In this tutorial and the accompanying sample, the application is called "androidnativepush". Be sure to replace this value with your own application name.</p>
+<p>        The native API includes the following push-related file:</p>
+<ul>
+<li>The <code>push.png</code> file is an icon file that is displayed when a push notification arrives. Copy this file from your native API project and put it in your project <code>res/drawable</code> folders.</li>
+</ul>
+</li>
+<li>
+<h3>Edit the <code>application-descriptor.xml</code> file.</h3>
+<ul>
+<li>Replace the <code>key</code> and <code>senderId</code> values with your API key and project number respectively in the <code>pushSender</code> tag. In case you do not have these, you can get them from the <a href="https://console.developers.google.com">Google Developer Console</a>.
+<ul>
+<li>Your project number is the <code>senderId</code>.</li>
+<li>Your Android key is the GCM <code>key</code>. You can generate it in <strong>API &amp; Auth > Credentials</strong>.</li>
+</ul>
+<p>[code lang="xml"]<br />
+&lt;pushSender key=&quot;GCM-KEY&quot; senderId=&quot;GCM-ID&quot;/&gt;<br />
+[/code]
+        </li>
+</ul>
+</li>
+<li>
+<h3>Edit the <code>wlclient.properties</code> file.</h3>
+<p>        Edit the <code>wlclient.properties</code> file in your native Android project and enter appropriate values for the following fields:</p>
+<ul>
+<li>wlServerHost – The hostname or IP address of MobileFirst Server.</li>
+<li>wlServerPort – The port on which MobileFirst Server is listening. </li>
+<li>wlServerContext – The context root of your MobileFirst Server instance.</li>
+<li>GcmSenderId – The project number that you obtained through the Google API console.</li>
+</ul>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/wlclient_properties.png"><img src="{{ site.baseurl }}/assets/wlclient_properties.png" alt="wlclient_properties" width="554" height="184" class="alignnone size-full wp-image-1727" /></a>
+    </li>
+<li>
+<h3>Add Google Play Services</h3>
+<ul>
+<li>From <strong>Android SDK Manager > Extras</strong>, add the <strong>Google Play Services</strong> option.</li>
+<li>Import Google Play Services as a library to the Eclipse workspace:
+<ol>
+<li>Select <strong>File > Import</strong>, select <strong>Android > Existing Android Code into workspace</strong>, and browse to the<br />
+google-play-services_lib project @ <code><em>android_sdk_location</em>\extras\google\google_play_services\libproject\google-play-services_lib</code></li>
+<li>After successfully importing google-play-services_lib into the workspace, mark it as an Android library project: Right-click <strong>imported-project > properties > Android</strong> and select the <strong>IsLibrary</strong> checkbox.</li>
+</ol>
+</li>
+<li>Right-click the <strong>Android project > properties > Android ></strong> and click <strong>Add</strong>.
+<ol>
+<li>In the Project Selection dialog, select the <strong>google-play-services_lib project</strong> and click <strong>OK</strong>.</li>
+<li>Click <strong>Apply</strong> and <strong>OK</strong> in the Properties window.</li>
+</ol>
+</li>
+<li>Add a reference to the google-play-services version in <code>your-app\android\native\AndroidManifest.xml</code> as the first child of the <code>application</code> element:
+<p>[code lang="xml"]&lt;meta-data<br />
+    android:name=&quot;com.google.android.gms.version&quot;<br />
+    android:value=&quot;@integer/google_play_services_version&quot; /&gt;[/code]</li>
+</ul>
+<p><br clear="all" /></li>
+<li>
+<h3>Modify the native Android project.</h3>
+<h4>Verify that the following permissions exist in the <code>AndroidManifest.xml</code> file of your Android project.</h4>
+<p>[code lang="xml"]&lt;permission android:name=&quot;com.imf.androidnativepush.permission.C2D_MESSAGE&quot; android:protectionLevel=&quot;signature&quot; /&gt;</p>
+<p> &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;<br />
+ &lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot;/&gt;<br />
+ &lt;uses-permission android:name=&quot;com.worklight.androidnativepush.permission.C2D_MESSAGE&quot; /&gt;<br />
+ &lt;uses-permission android:name=&quot;com.google.android.c2dm.permission.RECEIVE&quot; /&gt;<br />
+ &lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;<br />
+ &lt;uses-permission android:name=&quot;android.permission.GET_ACCOUNTS&quot; /&gt;<br />
+ &lt;uses-permission android:name=&quot;android.permission.USE_CREDENTIALS&quot; /&gt;<br />
+ &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;<br />
+ &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;[/code]</p>
+<h4>Add the <code>launchMode</code> attribute to the main <code>AndroidNativePush</code> activity. Set its value to <code>singleTask</code>.</h4>
+<p>[code lang="xml"]<br />
+&lt;activity<br />
+    android:name=&quot;com.worklight.androidnativepush.AndroidNativePush&quot;<br />
+    android:label=&quot;@string/app_name&quot;<br />
+    android:theme=&quot;@android:style/Theme.Black.NoTitleBar&quot;<br />
+    android:launchMode=&quot;singleTask&quot;&gt;[/code]</p>
+<h4>Add an intent-filter to the main <code>AndroidNativePush</code> activity for notifications.</h4>
+<p>[code lang="xml"]<br />
+&lt;intent-filter&gt;<br />
+   &lt;action android:name=&quot;com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION&quot; /&gt;<br />
+   &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;<br />
+&lt;/intent-filter&gt;[/code]</p>
+<h4>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</h4>
+<p>[code lang="xml"]<br />
+&lt;service android:name=&quot;com.worklight.wlclient.push.GCMIntentService&quot; /&gt;<br />
+&lt;receiver android:name=&quot;com.worklight.wlclient.push.WLBroadcastReceiver&quot; android:permission=&quot;com.google.android.c2dm.permission.SEND&quot;&gt;<br />
+   &lt;intent-filter&gt;<br />
+       &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;<br />
+       &lt;category android:name=&quot;com.worklight.androidnativepush&quot; /&gt;<br />
+   &lt;/intent-filter&gt;<br />
+   &lt;intent-filter&gt;<br />
+       &lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;<br />
+       &lt;category android:name=&quot;com.worklight.androidnativepush&quot; /&gt;<br />
+   &lt;/intent-filter&gt;<br />
+&lt;/receiver&gt;[/code]</p>
+</li>
+</ol>
+<h2 id="selectNotificationType">Select a notification type</h2>

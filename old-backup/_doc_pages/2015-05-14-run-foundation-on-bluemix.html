@@ -1,0 +1,354 @@
+---
+layout: doc_page
+title: Run IBM MobileFirst Platform Foundation on IBM Containers
+date: 2015-05-14 10:10:15.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '13020'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _post_restored_from: a:3:{s:20:"restored_revision_id";i:12878;s:16:"restored_by_user";i:13020;s:13:"restored_time";i:1435831900;}
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442503834;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:12568;}i:1;a:1:{s:2:"id";i:12492;}i:2;a:1:{s:2:"id";i:5445;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="/mobilefirstplatform/documentation/getting-started-7-1/bluemix/">Bluemix</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+<li class="android">Native Android</li>
+<li class="wp8">Native Windows Phone 8</li>
+<li class="wp8">Native Windows 8</li>
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial demonstrates how to take a locally developed IBM MobileFirst Platform Foundation project and run it on Bluemix. To achieve this result, you go through the following steps: set up your host computer with the required tools (MobileFirst CLI, Docker, and IBM Containers Extension (ICE) CLI), set up your Bluemix environment, build a MobileFirst Platform Foundation Server image, deploy your project runtime and push it to the Bluemix repository. Finally, you run the image on an IBM Container and update it with the MobileFirst project application and adapter.</p>
+<p><strong>Note:</strong> Windows OS is currently not supported.<br />
+<strong>Note:</strong> The MobileFirst Server Configuration Tools cannot be used for deployments to IBM Containers.</p>
+<p><strong>Prerequisite:</strong> Make sure to read the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/introduction-to-foundation-on-bluemix/" target="_blank">Introduction to IBM MobileFirst Platform Foundation on IBM Containers</a> tutorial.</p>
+<h3>Topics</h3>
+<ul>
+<li><a href="#registerAccount">Register an account at Bluemix</a></li>
+<li><a href="#setupVM">Set up your host machine</a></li>
+<li><a href="#runOnBluemix">Run IBM MobileFirst Platform Foundation on IBM Containers</a></li>
+<p><!--
+<li><a href="#tips">Tips</a> --></p>
+</ul>
+<h2 id="registerAccount">Register an account at Bluemix</h2>
+<p>If you do not yet have an account, visit the <a href="http://www.bluemix.net">Bluemix website</a> and click <strong>Get Started Free</strong> or <strong>Sign Up</strong>. You'll need to fill up a registration form before you can move on to the next step.</p>
+<h4>The Bluemix Dashboard</h4>
+<p>After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix <strong>space</strong>. By default, this work area  receives the name "dev". You can create multiple work areas/spaces if needed.</p>
+<h2 id="setupVM">Set up your host machine</h2>
+<p>To manage containers and images, you need to install the following tools: IBM MobileFirst Platform Foundation CLI, Docker, and IBM Containers Extension (ICE) CLI.</p>
+<h3>MobileFirst Platform Foundation CLI</h3>
+<p>Follow the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/advanced-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/" target="_blank">Using CLI to create, build, and manage MobileFirst project artifacts</a> tutorial to install the MobileFirst Command Line Interface.</p>
+<h3>Docker</h3>
+<p>Go to the <a href="https://docs.docker.com/" target="_blank">Docker Documentation</a> > on the left menu, select <strong>Install > Docker Engine</strong>, select your OS type and follow the instructions to install the Docker Toolbox.<br />
+<strong>Note:</strong> IBM does not support Docker's Kitematic software.</p>
+<p>In OS X there are two options to run Docker commands:</p>
+<ul>
+<li>From the OS X Terminal</li>
+<li>From the Docker Quickstart Terminal</li>
+</ul>
+<p>If you choose to work from the Docker Quickstart Terminal no further setup is needed. You must work only from it.<br />
+If you choose to work from the OS X Terminal, do the following:</p>
+<ul>
+<li>Run the command: <code>docker-machine env default</code></li>
+<li>Set the result as environment variables, for example:<br />
+[code lang="shell"]$ docker-machine env default<br />
+export DOCKER_TLS_VERIFY=&quot;1&quot;<br />
+export DOCKER_HOST=&quot;tcp://192.168.99.101:2376&quot;<br />
+export DOCKER_CERT_PATH=&quot;/Users/mary/.docker/machine/machines/default&quot;<br />
+export DOCKER_MACHINE_NAME=&quot;default&quot;[/code]</li>
+</ul>
+<blockquote><p>For further information consult the Docker documentation.</p></blockquote>
+<h3>IBM Containers Extension (ICE)</h3>
+<p><strong>Prerequisites:</strong> Before you install the ICE CLI tool, you must first install Python, Python Setuptools, Python Pip, and Cloud Foundry CLI.</p>
+<h4>Installing Python, Python Pip, and Python Setuptools</h4>
+<p><!--<br />
+[collapse label="Instructions for Windows"]</p>
+<ol>
+<li>Launch Boot2Docker and run:<br />
+        [code lang="xml" gutter="false"]<br />
+        $ boot2docker ssh<br />
+        [/code]
+    </li>
+<li>Install Python:<br />
+        [code lang="xml" gutter="false"]<br />
+        $ wget http://www.tinycorelinux.net/5.x/x86/tcz/python.tcz &amp;&amp; tce-load -i python.tcz &amp;&amp; rm -f python.tcz<br />
+        [/code]
+    </li>
+<li>Install Python pip:<br />
+        [code lang="xml" gutter="false"]<br />
+        $ curl -O https://bootstrap.pypa.io/get-pip.py<br />
+        $ sudo python get-pip.py<br />
+        [/code]
+    </li>
+<li>Follow the <a href="https://pypi.python.org/pypi/setuptools" target="_blank">Python Setuptools installation instructions</a> to install Python Setuptools.</li>
+<li>Download the Cloud Foundry CLI:<br />
+        [code lang="xml" gutter="false"]<br />
+        $ wget -O cf.tgz http://cli.run.pivotal.io/stable?release=linux32-binary<br />
+        [/code]
+    </li>
+<li>Install the Cloud Foundry CLI:<br />
+        [code lang="xml" gutter="false"]<br />
+        $ sudo tar -zxvf cf.tgz -C /usr/bin/<br />
+        [/code]
+    </li>
+<p>[/collapse]<br />
+--></p>
+<ol>
+<li>Install Python, Python Pip, and Python Setuptools:
+<ul>
+<li><a href="http://docs.python-guide.org/en/latest/starting/install/linux/" target="_blank">Linux</a></li>
+<li><a href="http://docs.python-guide.org/en/latest/starting/install/osx/" target="_blank">Mac OS X</a></li>
+<li><a href="http://docs.python-guide.org/en/latest/starting/install/win/" target="_blank">Windows</a></li>
+</ul>
+</li>
+<li>Install the Cloud Foundry CLI <a href="https://github.com/cloudfoundry/cli/releases" target="_blank">from the Cloud Foundry CLI GitHub repository</a>. </li>
+</ol>
+<h4>Installing ICE</h4>
+<ul>
+<li>Install the IBM Containers Extension by running:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ pip install https://static-ice.ng.bluemix.net/icecli-3.0.zip<br />
+            [/code]<br />
+Note: You may need to use <code>sudo</code>
+        </li>
+</ul>
+<p><!--<br />
+Note: If Boot2Docker was installed in OS X, remember to run the Docker<code>save command in order to persist the changes. Otherwise you will have to go through the installation steps every time that the <a href="https://github.com/boot2docker/boot2docker/issues/834">Boot2Docker VM is restarted</a>.<br />
+--></p>
+<h2 id="runOnBluemix">Run IBM MobileFirst Platform Foundation on IBM Containers</h2>
+<p>To run IBM MobileFirst Platform Foundation on IBM Containers, you must first create an image that will later be pushed to Bluemix.</p>
+<p>If you have not downloaded the IBM MobileFirst Platform Foundation Evaluation on Containers v7.1 ZIP file yet, click the button below, accept the license, and download it.</p>
+<p><a class="pn-btn pn-btn-secondary" href="http://www14.software.ibm.com/cgi-bin/weblap/lap.pl?popup=Y&li_formnum=L-BVID-9XEQG7&accepted_url=http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mfpfcontainers/ibm-mfpf-container-7.1.0.0-eval.zip" target="blank">Review the license and download the ibm-mfpf-container-7.1.0.0-eval.zip</a></p>
+<h3>Structure of the ibm-mfpf-container-7.1.0.0-eval.zip archive</h3>
+<p></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/Screen-Shot-2015-06-28-at-11.01.15.png"><img src="{{ site.baseurl }}/assets/Screen-Shot-2015-06-28-at-11.01.15.png" alt="Screen Shot 2015-06-28 at 11.01.15" width="310" height="267" class="alignright size-full wp-image-14032" /></a></p>
+<p>The extracted ZIP file contains the files for building an image (<code>dependencies</code> and <code>mfpf-libs</code>), the files for building and deploying an IBM MobileFirst Platform Foundation Operational Analytics Container (<code>mfpf-analytics</code>), and files for configuring an IBM MobileFirst Platform Server Container <code>(mfpf-server</code>). This tutorial does not cover the analytics part.</p>
+<h4>The mfpf-server folder</h4>
+<ul>
+<li><code>Dockerfile</code>: text document that contains all the commands in order to build an image.</li>
+<li><code>usr</code> folder:
+<ul>
+<li><code>config</code> folder: ￼Contains server key store configuration, User registry configuration, MobileFirst Platform Foundation Server properties (includes runtime configuration – analytics, attribute store etc).</li>
+<li><code>env</code> folder: Contains server environment configuration (ports, application root names etc).</li>
+<li><code>projects</code> folder: The location of your MobileFirst Platform project runtime (<code>.war</code> file).</li>
+<li><code>security</code> folder: The key store, trust store and the LTPA keys files (ltpa.keys) should be placed here.</li>
+<li><code>ssh</code> folder: Contains the id_rsa.pub file - the ssh public key file to enable ssh on the container.</li>
+<li><code>wxs</code> folder: Contains the data cache / extreme scale client library when Data Cache is used as attribute store for the server.</li>
+</ul>
+</li>
+<blockquote><p>This tutorial refers only to the <code>projects</code> folder.</p></blockquote>
+<li><code>server</code> folder: Contains elements that are required for the IBM MobileFirst Platform Foundation Operational Server deployment.</li>
+<li><code>scripts</code> folder: This folder contains the <code>args</code> folder, which contains a set of configuration files. It also contains scripts to run for logging in to Bluemix, building a Mobilefirst Platform Foundation Server image, deploying your project runtime, and for pushing and running the image on Bluemix.<br />
+You can choose to run the scripts interactively or by pre-configuring the configuration files as will be further explained.</li>
+</ul>
+<h3>Step 1: Create an IBM MobileFirst Platform Foundation project</h3>
+<p>Create a new MobileFirst project or use an existing one. You can find tutorials on how to create a new project, and their associated sample projects, in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/" target="_blank">Getting Started with Foundation</a> page.</p>
+<h3>Step 2: Prerequisites</h3>
+<ol>
+<li><code><strong>ice login</strong></code>: To run ICE commands, you must first log in into the IBM Container Cloud Service.<br />
+This step is mandatory because you will be running ICE commands during the following step.<br />
+Run:<br />
+[code gutter="false"]$ ice login[/code]</p>
+<p>When prompted, enter the following information:</p>
+<ul>
+<li>Email</li>
+<li>Password</li>
+<li>Organization, if you have more than one</li>
+<li>Space, if you have more than one</li>
+</ul>
+</li>
+<p><!--</p>
+<li><code><strong>boot2docker start</strong></code> - If you are running on Linux, skip this step.
+<p>To run the scripts and use Docker commands, you must first launch your Boot2Docker machine.<br />
+On Windows or OS X, run:<br />
+[code gutter="false"]$ boot2docker start[/code]<br />
+--></p>
+<li>Make sure that the <code>namespace</code> for container registry is set. The <code>namespace</code> is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned once for an organization and cannot be changed.<br />
+Choose a namespace according to following rules:</p>
+<ul>
+<li>It can contain only lowercase letters, numbers, or underscores (_).</li>
+<li>It can be 4 - 30 characters. If you plan to manage containers from the command line, you might prefer to have a short namespace that can be typed quickly.</li>
+<li>It must be unique in the Bluemix registry.</li>
+</ul>
+<p>To set a namespace, run the command:<br />
+[code lang="xml" gutter="false"]<br />
+            $ ice namespace set &lt;new_name&gt;<br />
+            [/code]<br />
+To get the namespace that you have set, run the command:<br />
+[code lang="xml" gutter="false"]<br />
+            $ ice namespace get<br />
+            [/code]
+        </li>
+</ol>
+<blockquote><p>To learn more about ICE commands, use the <code>ice help</code> command.</p></blockquote>
+<h3 id="configfiles">Step 3: Using the configuration files</h3>
+<p><strong>Note:</strong> If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments you will need to provide.<br />
+The <code>args</code> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the arguments' values in the following files:</p>
+<p>[collapse label="initenv.properties"]</p>
+<ul>
+<li><strong>BLUEMIX_API_URL - </strong>Bluemix API endpoint. The default is <em>https://api.ng.bluemix.net</em>.</li>
+<li><strong>BLUEMIX_REGISTRY - </strong>The IBM Containers registry domain. The default is <em>registry.ng.bluemix.net</em>.</li>
+<li><strong>BLUEMIX_CCS_HOST - </strong>The IBM Container Cloud Service Host. The default is <em>https://containers-api.ng.bluemix.net/v3/containers</em>.</li>
+<li><strong>BLUEMIX_USER - </strong>Your Bluemix username (email).</li>
+<li><strong>BLUEMIX_PASSWORD - </strong>Your Bluemix password.</li>
+<li><strong>BLUEMIX_ORG - </strong>Your Bluemix organization name.</li>
+<li><strong>BLUEMIX_SPACE - </strong>Your Bluemix space (as explained previously).</li>
+</ul>
+<p>[/collapse]</p>
+<p>[collapse label="prepareserverdbs.properties"]</p>
+<ul>
+<li><strong>DB_TYPE - </strong>Bluemix DB service type (sqldb, cloudantNoSQLDB).</li>
+<li><strong>DB_SRV_NAME - </strong>Your Bluemix DB service instance name.</li>
+<li><strong>DB_SRV_PLAN - </strong>Bluemix database service plan.<br />
+For SQL DB, the accepted values are sqldb_free or sqldb_premium.<br />
+For Cloudant DB, the accepted value is <em>Shared</em>.
+</li>
+<li><strong>APP_NAME - </strong>Your Bluemix DB application name.<br />
+<strong>Note:</strong> Choose a unique name.</li>
+<li><strong>RUNTIME_NAME - </strong>The MobileFirst project runtime name. Required for configuring runtime databases only, as explained in the next step.</li>
+<li><strong>SCHEMA_NAME - </strong>Your database schema name. The default names are:
+<ul>
+<li>For the admin database: WLDAMIN</li>
+<li>For the MobileFirst project runtime database: the value of RUNTIME_NAME</li>
+</ul>
+</li>
+</ul>
+<p>[/collapse]</p>
+<p>[collapse label="prepareserver.properties"]</p>
+<ul>
+<li><strong>SERVER_IMAGE_TAG - </strong>A tag for the image. Should be of the form: <em>registry-url/namespace/your-tag</em>.
+</li>
+<li><strong>PROJECT_LOC - </strong>A path to the root directory of your MobileFirst project. Multiple project locations can be delimited by a comma.</li>
+</ul>
+<p>[/collapse]</p>
+<p>[collapse label="startserver.properties"]</p>
+<ul>
+<li><strong>SERVER_IMAGE_TAG - </strong> Same as in <em>prepareserver.sh</em>.</li>
+<li><strong>SERVER_CONTAINER_NAME - </strong>A name for your Bluemix Container.</li>
+<li><strong>SERVER_IP - </strong>An IP address that the Bluemix Container should be bound to. To assign an IP address, run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ ice ip request<br />
+            [/code]<br />
+IP addresses can be reused in multiple containers in a space. If you've already assigned one, you can run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ ice ip list<br />
+            [/code]
+</li>
+</ul>
+<p>[/collapse]</p>
+<p></p>
+<h3>Step 4: Running the scripts</h3>
+<p>As explained above you can choose to run the scripts interactively or by using the configuration files:</p>
+<ul>
+<li>Using the configuration files - run the scripts and pass the respective configuration file as an argument</li>
+<li>Interactively - run the scripts without any arguments</li>
+</ul>
+<p>The following demonstrate the first option.</p>
+<ol>
+<li><strong>installcontainercli.sh - Adding Container Extension to the MobileFirst CLI</strong><br />
+In order to use the Container Extension you must first add it to the MobileFirst CLI.<br />
+Run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ ./installcontainercli.sh<br />
+            [/code]<br />
+Note: You may need to use <code>sudo</code>
+</li>
+<li><strong>initenv.sh - Logging in to Bluemix</strong><br />
+Run the <code>initenv.sh</code> script in order to create an environment for building and running IBM MobileFirst Platform Foundation on the IBM Containers:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ ./initenv.sh args/initenv.properties<br />
+            [/code]</p>
+</li>
+<li><strong>prepareserverdbs.sh - Prepare the MobileFirst Server database</strong><br />
+The <code>prepareserverdbs.sh</code> script is used to configure your MobileFirst project database. You will need to run it separately, once for the admin database and once for every MobileFirst project runtime database.</p>
+<ul>
+<li>For the admin database make sure to comment out the <code>RUNTIME_NAME</code> argument and run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ ./prepareserverdbs.sh args/prepareserverdbs.properties<br />
+            [/code]
+</li>
+<li>For each MobileFirst project runtime database - first uncomment the project <code>RUNTIME_NAME</code> argument, change it value to match the specific project war file and run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ ./prepareserverdbs.sh args/prepareserverdbs.properties<br />
+            [/code]
+</li>
+</ul>
+<p><strong>Note: </strong>If you are getting an error: "Application not configured correctly" - try to run the script (with the same properties) again.
+</li>
+<li><strong>prepareserver.sh - Prepare a Mobilefirst Platform Foundation Server image</strong><br />
+Uncomment the <code>PROJECT_LOC</code> argument and run the <code>prepareserver.sh</code> script in order to build a MobileFirst Platform Foundation Server image, deploy your project runtime and push it to to your Bluemix repository:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ ./prepareserver.sh args/prepareserver.properties<br />
+            [/code]</p>
+<p>To view all available images in your Bluemix repository run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ ice images<br />
+            [/code]<br />
+The list contains the image name, date of creation and ID.
+</li>
+<li><strong>startserver.sh - Running the image on an IBM Container</strong><br />
+The <code>startserver.sh</code> script is used to run the Mobilefirst Server image on an IBM Container. It also Binds your image to the public IP you configured in the <code>SERVER_IP</code> property.</p>
+<ul>
+<li>Run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ ./startserver.sh args/startserver.properties<br />
+            [/code]
+</li>
+<li> Launch the MobileFirst Console by loading the following URL: http://&#60;server_ip&#62;:9080/worklightconsole (it may take a few moments).</li>
+<li>Upload the <code>.wlapp</code> and <code>.adapter</code> files.</li>
+<li>Update the application's <code>worklight.plist</code> (for iOS) and/or <code>wlclient.properties</code> (for Android, Windows Universal, Windows Phone) with the protocol, host and port values of the IBM Container.</li>
+<li>You can now run your application to verify that it successfully connects to the MobileFirst Server, running on IBM Containers.</li>
+</ul>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/Screen-Shot-2015-06-22-at-15.47.14.png"><img src="{{ site.baseurl }}/assets/Screen-Shot-2015-06-22-at-15.47.14-1024x493.png" alt="console 71" width="1500" height="723" class="aligncenter size-large wp-image-13840" /></a></p>
+</li>
+</ol>
+<p><!--</p>
+<h2 id="tips">Tips</p>
+<ul>
+<li>Part of the image building process is loading the image into your local docker repository.<br />
+To view all available images in your local docker repository run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ docker images<br />
+            [/code]<br />
+The list contains the image repository, tag, ID, date of creation and virtual size.</li>
+<li>To delete an image from your local docker repository run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ docker rmi &lt;image ID&gt;<br />
+            [/code]</li>
+<li>To start your image on a local container run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ docker run -d -p 9080:9080 -p 9443:9443 &lt;image ID&gt;<br />
+            [/code]</li>
+<li>To view all available containers in your local docker repository run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ docker ps<br />
+            [/code]</li>
+<li>To stop a running container run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ docker stop &lt;container ID&gt;<br />
+            [/code]</li>
+<li>To delete a container from your local docker repository run:<br />
+            [code lang="xml" gutter="false"]<br />
+            $ docker rm &lt;container ID&gt;<br />
+            [/code]</li>
+<li>To verify that the image is properly configured and the MobileFirst project runtime is available, launch the MobileFirst Console by loading the following URL: http://192.168.59.103:9080/worklightconsole. </li>
+</ul>
+<blockquote><p>To learn more about Docker commands, review the Docker Documentation.</p></blockquote>
+<p>--></p>

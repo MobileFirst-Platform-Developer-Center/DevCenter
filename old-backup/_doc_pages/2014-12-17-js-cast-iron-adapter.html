@@ -1,0 +1,88 @@
+---
+layout: doc_page
+title: JavaScript Cast Iron Adapter
+date: 2014-12-17 08:04:27.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/">Server-side development</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+<li class="android">Native Android</li>
+<li class="wp8">Native Windows Phone 8</li>
+<li class="wp8">Native Windows 8</li>
+<li class="hybrid">Hybrid</li>
+</ul></div>
+</div>
+<h2>Overview</h2>
+<p>IBM WebSphere Cast Iron enables companies to integrate applications, whether the applications are located on-premises or in public or private clouds.<br />
+WebSphere Cast Iron provides an approach to integrating applications that does not require any programming knowledge.<br />
+You can build integration flows in WebSphere Cast Iron Studio, which is a graphical development environment that is installed on a personal computer.<br />
+With Cast Iron Studio, you create an integration project that contains one or more orchestrations. Each orchestration is built with a number of activities that define the flow of data.<br />
+IBM MobileFirst Platform Foundation provides a <strong>Cast Iron Adapter</strong> type to integrate with WebSphere Cast Iron.</p>
+<p>A MobileFirst Cast Iron adapter initiates orchestrations in Cast Iron to retrieve and return data to mobile clients.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/04_04_castiron-flow.jpg"><img src="{{ site.baseurl }}/assets/04_04_castiron-flow.jpg" alt="04_04_castiron-flow" width="720" height="400" class="aligncenter size-full wp-image-15238" /></a></p>
+<p>For more information about Cast Iron, see:<br />
+<a href="http://www.redbooks.ibm.com/redpapers/pdfs/redp4840.pdf" target="_blank">http://www.redbooks.ibm.com/redpapers/pdfs/redp4840.pdf</a><br />
+<a href="http://www.redbooks.ibm.com/abstracts/sg248004.html?Open" target="_blank">http://www.redbooks.ibm.com/abstracts/sg248004.html?Open</a></p>
+<h2>Creating the adapter</h2>
+<h3>CLI</h3>
+<p>From the project's directory, use <code>mfp add adapter</code> and follow the interactive instructions.</p>
+<h3>Studio</h3>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_04_creating-adapter.png"><img src="{{ site.baseurl }}/assets/04_04_creating-adapter.png" alt="04_04_creating-adapter" width="526" height="392" class="aligncenter size-full wp-image-3360" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_04_castiron-filestruct.png"><img src="{{ site.baseurl }}/assets/04_04_castiron-filestruct.png" alt="04_04_castiron-filestruct" width="216" height="140" class="alignright size-full wp-image-3361" /></a><br />
+In MobileFirst Studio, create an adapter and select the <strong>Cast Iron Adapter</strong> type.<br />
+A standard Cast Iron adapter file structure is created.<br />
+<br clear="all" /></p>
+<h2>Procedure Implementation</h2>
+<p>Procedures are implemented in the adapter JavaScript™ file.<br />
+Procedure names in the JavaScript file must be the same as in the XML file.<br />
+The mandatory invocation parameters are <code>method</code>, <code>appName</code>, <code>requestType</code>, <code>path</code>, and <code>returnedContentType</code>.<br />
+The <code>transformation</code> parameter is optional and takes the <code>type</code> and <code>xslfile</code> subparameters.<br />
+Procedures can be parameterized at run time.</p>
+<p>[code lang="javascript"]<br />
+function startOrchestration(orchestrationName) {</p>
+<p>  var input = {<br />
+    method: 'get',<br />
+    appName: 'myApp',<br />
+    requestType: 'http',<br />
+    path: orchestrationName,<br />
+    returnedContentType: 'xml',<br />
+    transformation: {<br />
+      type: 'xslFile',<br />
+      xslFile: 'ci-filtered.xsl'<br />
+    }</p>
+<p>  };<br />
+  return WL.Server.invokeCastIron(input);<br />
+}<br />
+[/code]</p>
+<p>To invoke a Cast Iron request, use the <code>WL.Server.invokeCastIron</code> API method.<br />
+Provide an input parameters object with the following properties:</p>
+<ul>
+<li><code>method</code>: the HTTP method (<code>get</code> or <code>post</code>)</li>
+<li><code>appName</code>: the application name</li>
+<li><code>requestType</code>: the request type</li>
+<li><code>path</code>: the service path</li>
+<li><code>returnedContentType</code>: the returned content type (<code>XML</code>, <code>JSON</code>, <code>HTML</code>, or <code>plain</code>)</li>
+<li><code>transformation</code> (optional): applies transformation filters to the received data</li>
+</ul>
+<p>For a complete list of invocation options, see the MobileFirst user documentation about adapter files.</p>

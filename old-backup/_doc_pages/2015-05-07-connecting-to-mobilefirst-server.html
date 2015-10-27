@@ -1,0 +1,78 @@
+---
+layout: doc_page
+title: Connecting to the MobileFirst Server
+date: 2015-05-07 10:11:09.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442506982;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:10463;}i:1;a:1:{s:2:"id";i:9795;}i:2;a:1:{s:2:"id";i:10461;}}}}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="../">Hello World</a></p>
+<div id="samplesAndPersonas">
+<div>
+        Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+<li class="android">Native Android</li>
+<li class="wp8">Native Windows Phone 8</li>
+<li class="wp8">Native Windows 8 Universal</li>
+<li class="hybrid">Hybrid</li>
+</ul></div>
+</div>
+<h2>Overview</h2>
+<p>To provide the best initial experience, a MobileFirst hybrid application starts without connecting to the MobileFirst Server. It is up to the developer to decide when the application should connect to the MobileFirst Server.<br />
+As an application developer, you are responsible for maintaining the offline or online state within the application, and ensure that the application can recover from failed attempts to connect to the MobileFirst Server. This requirement also applies to native applications that use the MobileFirst SDK for connecting to the MobileFirst Server.</p>
+<p>Connecting to the MobileFirst Server ensures that a single HTTP session between client and server communications, and thus minimizes the risk of a request race condition where a session does not exist yet and several requests are sent simultaneously from the client to the server. Hence it is recommended to establish a connection with the MobileFirst Server before any other interaction.</p>
+<p>Connecting to the MobileFirst Server ensures that APIs that return authentication-related data such as <code>getUserName()</code> or <code>isAuthenticated()</code> retrieve the necessary information from the server.</p>
+<h2>API signatures</h2>
+<h3>JavaScript</h3>
+<p>[code lang="javascript"]<br />
+WL.Client.connect(<br />
+  {<br />
+    onSuccess: successCallback,<br />
+    onFailure: failureCallback<br />
+  }<br />
+);<br />
+[/code]</p>
+<h3>Objective-C</h3>
+<p>[code lang="objc"]<br />
+[[WLClient sharedInstance] wlConnectWithDelegate:myConnectListener];<br />
+[/code]<br />
+The <code>myConnectListener</code> argument is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
+<h3>Swift</h3>
+<p>[code]<br />
+WLClient.sharedInstance().wlConnectWithDelegate(myConnectListener)<br />
+[/code]<br />
+The <code>myConnectListener</code> argument is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
+<h3>Java</h3>
+<p>[code lang="java"]<br />
+WLClient.createInstance(this).connect(myConnectListener);<br />
+[/code]<br />
+The <code>myConnectListener</code> argument is an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
+<h3>C#</h3>
+<p>[code lang="c-sharp"]<br />
+WLClient.getInstance().connect(myConnectListener);<br />
+[/code]<br />
+The <code>myConnectListener</code> argument is an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
+<blockquote><p>For detailed examples of connecting to the MobileFirst Server, see the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/server-side-development-category/" title="Server-side development">Invoking adapter procedures</a> tutorials.</p></blockquote>
+<h2>When to use the <code>WL.Client.connect</code> API</h2>
+<p>It is recommended to use the <code>WL.Client.connect</code> API in the following cases:</p>
+<ul>
+<li>A connection must always be initiated before the first request of any type to the MobileFirst Server. Subsequent requests must be made only after the <code>onSuccess</code> is invoked.</li>
+<li>A new connection request is initiated after long periods of inactivity where session timeout might have occurred, such as application returning from background. Subsequent requests must be made only after the <code>onSuccess</code> is invoked.</li>
+</ul>

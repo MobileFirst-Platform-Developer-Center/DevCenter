@@ -1,0 +1,196 @@
+---
+layout: doc_page
+title: 'UPDATED: Operational Analytics'
+date: 2014-12-17 07:38:12.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+  _oembed_976d22350568bffd4613b29b5446389c: "{{unknown}}"
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/moving-production/">Moving to production</a></p>
+<div id="samplesAndPersonas">
+<div>
+        Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+<li class="android">Native Android</li>
+<li class="wp8">Native Windows Phone 8</li>
+<li class="wp8">Native Windows 8</li>
+<li class="hybrid">Hybrid</li>
+</ul></div>
+</div>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#introAnalytics">Introducing IBM MobileFirst Platform Operational Analytics</a></li>
+<li><a href="#viewingDashboard">Viewing the Analytics Dashboard - Configurations</a></li>
+<li><a href="#capturingData">Capturing data</a></li>
+<li><a href="#applicationActivities">Capturing data - Application Activities</a></li>
+<li><a href="#notificationActivities">Capturing data - Notification Activities</a></li>
+<li><a href="#serverLogs">Capturing data - Server logs</a></li>
+<li><a href="#clientLogs">Capturing data - Client logs</a></li>
+<li><a href="#analyticsLogs">Analytics logs</a></li>
+<li><a href="#sendingData">Sending data</a></li>
+<li><a href="#creatingCustomChart">Creating a custom chart</a></li>
+</ul>
+<h2 id="introAnalytics">Introducing IBM MobileFirst Platform Operational Analytics</h2>
+<p>MobileFirst Operational Analytics collects data about applications, adapters, devices, logs, and your own custom events to give a high-level view of the client interaction with the IBM MobileFirst Platform Server.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/mfp_operational_analytics.jpg"><img src="{{ site.baseurl }}/assets/mfp_operational_analytics.jpg" alt="MobileFirst Platform Operational Analytics" width="450" height="160" class="alignright size-full wp-image-2094" /></a></p>
+<p>In IBM MobileFirst Platform Foundation V7.0, MobileFirst Operational Analytics is delivered as an EAR file which contains two WAR files: <code>analytics.war</code> and <code>analytics-service.war</code>. You can deploy the EAR file to the following supported application servers:</p>
+<ul>
+<li>Liberty</li>
+<li>WebSphere® Application Server</li>
+<li>Tomcat</li>
+</ul>
+<p>In MobileFirst Studio, the two WAR files are installed and available by default in the embedded Liberty server.</p>
+<h2 id="viewingDashboard">Viewing the Analytics Dashboard - Configurations</h2>
+<p>The <code>wl.analytics.url</code> property must be set to send data to the Analytics server and the <code>wl.analytics.console.url</code> must be set to access the Analytics dashboard.</p>
+<ol>
+<li>You can set these two properties in the <code>server.xml</code> file:
+<p>[code lang="xml"]<br />
+&lt;jndiEntry jndiName=&quot;AppName/wl.analytics.url&quot; value=&quot;http://localhost:10080/analytics-service/data&quot;/&gt;<br />
+&lt;jndiEntry jndiName=&quot;AppName/wl.analytics.console.url&quot; value=&quot;http://localhost:10080/analytics/console&quot;/&gt;<br />
+[/code]</p>
+<p>After the property is set, the <strong>Analytics Dashboard</strong> link appears in the MobileFirst Operations Console.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/Screen-Shot-2015-02-09-at-1.45.06-PM.png"><img ƒ src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/Screen-Shot-2015-02-09-at-1.45.06-PM.png" alt="MobileFirst-Platform-Console-Analytics-7-0" width="2852" height="1174" class="alignnone size-full wp-image-7128" /></a></p>
+</li>
+<li>Click the <strong>Analytics Dashboard</strong> link to open up the dashboard in a new window.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/Screen-Shot-2015-02-09-at-1.36.16-PM.png"><img src="{{ site.baseurl }}/assets/Screen-Shot-2015-02-09-at-1.36.16-PM.png" alt="Analytics-7-0-console" width="2848" height="1734" class="alignnone size-full wp-image-7127" /></a></p>
+</li>
+</ol>
+<h2 id="capturingData">Capturing data</h2>
+<p>Different types of analytics events are captured by the MobileFirst Operational Analytics server: app activities, notification activities, server logs, and client logs.</p>
+<h3><a href="#applicationActivities">Application activities</a></h3>
+<ul>
+<li>Client initializations with the server</li>
+<li>Adapter calls</li>
+</ul>
+<h3><a href="#notificationActivities">Notification activities</a></h3>
+<ul>
+<li>Push notifications</li>
+</ul>
+<h3><a href="#serverLogs">Server Logs</a></h3>
+<ul>
+<li>Server events</li>
+<li>Server stack traces</li>
+</ul>
+<h3><a href="#clientLogs">Client Logs</a></h3>
+<ul>
+<li>Debug logs</li>
+<li>Crashes</li>
+<li>Custom events</li>
+<li>Network latency information</li>
+</ul>
+<h2 id="applicationActivities">Capturing data - Application activities</h2>
+<p>When an application activity occurs, the event is captured automatically and forwarded to the MobileFirst Operational Analytics server.</p>
+<ul>
+<li>The following API call results in a session hit that is visualized on MobileFirst Operational Analytics:
+    </li>
+<p>    [code lang="javascript"]</p>
+<p>    // a 'session hit' will be recorded upon a successful connection<br />
+    WL.Client.connect();[/code]</p>
+<li>The following API call results in an adapter hit that is visualized on the MobileFirst Operational Analytics dashboard:</li>
+<p>    [code lang="javascript"]</p>
+<p>    // an 'adapter hit' will be recorded upon a successful adapter invocation<br />
+    WL.Client.invokeProcedure({...});[/code]</p>
+</ul>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/MobileFirst-Analytics-70-SessionCharts.png"><img src="{{ site.baseurl }}/assets/MobileFirst-Analytics-70-SessionCharts.png" alt="MobileFirst-Analytics-70-SessionCharts" width="1014" height="670" class="alignnone size-full wp-image-7322" /></a></p>
+<h2 id="notificationActivities">Capturing data - Notification Activities</h2>
+<p>When a push notification occurs, the event is captured automatically and forwarded to the MobileFirst Operational Analytics server.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/MobileFirst-Analytics-Push-7-0.png"><img src="{{ site.baseurl }}/assets/MobileFirst-Analytics-Push-7-0.png" alt="MobileFirst-Analytics-Push-7-0" width="2544" height="1800" class="alignnone size-full wp-image-7151" /></a></p>
+<h2 id="serverLogs">Capturing data - Server Logs</h2>
+<p>The log data that is generated by MobileFirst Server is automatically forwarded to the MobileFirst Operational Analytics server, where the data can be searched and downloaded.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/MobileFirst-Analytics-ServerLogs-7-0.png"><img src="{{ site.baseurl }}/assets/MobileFirst-Analytics-ServerLogs-7-0.png" alt="MobileFirst-Analytics-ServerLogs-7-0" width="2704" height="1806" class="alignnone size-full wp-image-7152" /></a></p>
+<p>To disable this behavior, set the <code>wl.analytics.logs.forward</code> property to <code>false</code>.</p>
+<h2 id="clientLogs">Capturing data - Client Logs</h2>
+<p>You can instrument a MobileFirst application with client logs to record client debugging information and events.</p>
+<p>You can use the following APIs to create client logs which are then forwarded to the MobileFirst Operational Analytics server, where they can be searched and downloaded.</p>
+<p>[code lang="javascript"]<br />
+// Set the log level to trace so that all logs are captured<br />
+WL.Logger.config({&quot;level&quot;: &quot;TRACE&quot;});</p>
+<p>// Create a client side log that is persisted locally until it is sent to the server<br />
+WL.Logger.trace(&quot;Create a client log at the TRACE level.&quot;);<br />
+WL.Logger.debug(&quot;Create a client log at the DEBUG level.&quot;);<br />
+WL.Logger.info(&quot;Create a client log at the INFO level.&quot;);<br />
+WL.Logger.warn(&quot;Create a client log at the WARN level.&quot;);<br />
+WL.Logger.error(&quot;Create a client log at the ERROR level.&quot;);<br />
+WL.Logger.fatal(&quot;Create a client log at the FATAL level.&quot;);[/code]</p>
+<h2 id="analyticsLogs">Analytics Logs</h2>
+<p>Client-side logs are captured based on the logging level that is set on the client. If you want to create analytics logs that are always captured regardless of the logging level, you can use the <code>WL.Analytics</code> API.</p>
+<p>[code lang="javascript"]<br />
+// Create an analytics log message<br />
+WL.Analytics.log(&quot;Analytics log message&quot;);</p>
+<p>// Create a custom activity<br />
+WL.Analytics.log({_activity: &quot;customActivity&quot;});</p>
+<p>// Create a custom activity with a log message<br />
+WL.Analytics.log({_activity: &quot;customActivity&quot;}, &quot;Analytics log message&quot;);<br />
+[/code]</p>
+<h2 id="sendingData">Sending data</h2>
+<p>Logs that are captured by the client-side logging APIs and the <code>WL.Analytics</code> APIs are sent to the server automatically upon a successful server connection or a successful adapter call.</p>
+<p>[code lang="javascript"]</p>
+<p>// Logs sent upon successful connection<br />
+WL.Client.connect();</p>
+<p>// Logs sent upon successful adapter invocation<br />
+WL.Client.invokeProcedure({...});[/code]</p>
+<p>You can disable this automatic behavior by using the following call:</p>
+<p>[code lang="javascript"]</p>
+<p>// Disable automatic sending of client and analytics logs<br />
+WL.Logger.config({autoSendLogs: false});[/code]</p>
+<p>If you want to send this data more frequently, you can use the following API calls:</p>
+<p>[code lang="javascript"]</p>
+<p>// Send client debug logs<br />
+WL.Logger.send();</p>
+<p>// Send analytics logs<br />
+WL.Analytics.send();[/code]</p>
+<h2 id="customCharts">Custom charts</h2>
+<p>Custom charts are a new feature of MobileFirst Platform Operational Analytics 7.0. By using custom charts, you can take data that is already collected, like device ID, device model, device OS, etc., or log your own custom data and create charts. To understand how to log and send data, see <a href="#analyticsLogs">Analytics logs</a> and <a href="#sendingData">Sending data</a>.</p>
+<h3>Chart types</h3>
+<ul>
+<li>Bar Graph</li>
+<li>Flow Chart</li>
+<li>Line Graph</li>
+<li>Metric Group</li>
+<li>Pie Chart</li>
+<li>Table</li>
+</ul>
+<h2 id="creatingCustomChart">Creating a custom chart</h2>
+<p>Creating a custom chart is simple. The following example walks you through creating a pie chart, based on your user location.</p>
+<p>The messages that are logged to the Operational Analytics server in this example are hard-coded locations. Those messages look like this:</p>
+<p>[code lang="javascript"]<br />
+WL.Analytics.log({location: &quot;USA&quot;}, &quot;visit&quot;);<br />
+WL.Analytics.log({location: &quot;Mexico&quot;}, &quot;visit&quot;);<br />
+WL.Analytics.log({location: &quot;Canada&quot;}, &quot;visit&quot;);<br />
+[/code]</p>
+<p>To create a chart, follow these steps.</p>
+<ol>
+<li>Go to the <strong>Custom Charts</strong> tab and click <strong>Add New Chart</strong>.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/MobileFirst-7-0-CustomChartsTab.png"><img src="{{ site.baseurl }}/assets/MobileFirst-7-0-CustomChartsTab.png" alt="MobileFirst-7-0-CustomChartsTab" width="1366" height="251" class="alignnone size-full wp-image-7355" /></a></p>
+<p>The following dialog opens:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/CreateNewChart-Screen1.png"><img src="{{ site.baseurl }}/assets/CreateNewChart-Screen1.png" alt="CreateNewChart Screen1" width="1338" height="528" class="alignnone size-full wp-image-7357" /></a></p>
+<p>As you fill out your information, more input fields are displayed.</p>
+</li>
+<li>Type a chart title.
+</li>
+<li>From the <strong>Event Type</strong> menu, select <strong>Custom Activities</strong>. No other option creates charts from the custom data sent to the server.
+</li>
+<li>Select a chart type. This example uses a pie chart.
+</li>
+<p>The last menu that becomes available depends on the chart type that you selected. In this example, the <strong>Property </strong>menu contains a list of the custom data that you created to send to the server, plus a few more. In this example, the <strong>location</strong> property is selected, as shown below.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/PieChartforCustomCharts.png"><img src="{{ site.baseurl }}/assets/PieChartforCustomCharts.png" alt="PieChartforCustomCharts" width="1345" height="556" class="alignnone size-full wp-image-7358" /></a></p>
+<li>Click <strong>Save New Chart</strong>. The chart is saved under the <strong>Custom Charts</strong> tab in the main dashboard.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/CustomChartMainDashboard.png"><img src="{{ site.baseurl }}/assets/CustomChartMainDashboard.png" alt="CustomChartMainDashboard" width="1103" height="594" class="alignnone size-full wp-image-7360" /></a></li>
+</ol>

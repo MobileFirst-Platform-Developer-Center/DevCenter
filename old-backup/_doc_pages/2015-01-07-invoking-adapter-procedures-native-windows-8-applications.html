@@ -1,0 +1,131 @@
+---
+layout: doc_page
+title: 'NEW: Invoking adapter procedures from native Windows 8 applications'
+date: 2015-01-07 12:10:20.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '13020'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442504785;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:10945;}i:1;a:1:{s:2:"id";i:10947;}i:2;a:1:{s:2:"id";i:10942;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/">Server-side development</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="wp8">Native Windows 8</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Download Studio project</a>
+    </li>
+<li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWin8Project.zip">Download native project</a>
+    </li>
+</ul>
+</div>
+<p><br clear="all" /><br />
+To create and configure a Windows 8 native project, first follow Tutorial <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/creating-first-native-windows-8-mobilefirst-application/" title="Creating your first native Windows 8 MobileFirst application">Creating your first Native Windows 8 MobileFirst application</a>.</p>
+<h2>Initializing WLClient</h2>
+<p>[code lang="csharp"]<br />
+WLClient client = WLClient.getInstance();<br />
+[/code]</p>
+<ol>
+<li>To establish a connection to MobileFirst Server, use the <code>connect</code> method by specifying the <code>MyConnectResponseListener</code> class instance as a parameter.<br />
+[code lang="csharp"]<br />
+client.connect(new MyConnectResponseListener(this));<br />
+[/code]</p>
+<p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server instance according to the properties of the <code>wlclient.properties</code> file.<br />
+After the connection is established, it invokes one of the methods of the <code>MyConnectResponseListener</code> class.
+</li>
+<li>Specify that the <code>MyConnectResponseListener</code> class implements the <code>WLResponseListener</code> interface.
+<p>[code lang="csharp"]<br />
+public class MyConnectResponseListener : WLResponseListener<br />
+[/code]</p>
+<p>The <code>WLResponseListener</code> interface defines two methods:<br />
+- <code>public void onSuccess (WLResponse response) { }</code><br />
+- <code>public void onFailure (WLFailResponse response) { }</code>
+</li>
+<li>Use the previous methods to process connection success or connection failure.
+</li>
+</ol>
+<h2>Invoking an adapter procedure</h2>
+<p>After the connection is established with a MobileFirst Server instance, you can use the <code>WLClient</code> instance to invoke adapter procedures.</p>
+<ol>
+<li>Create a <code>WLProcedureInvocationData</code> object with the adapter and procedure names.
+</li>
+<li>Add the required parameters as an object array and set request options (for example: Invocation Context).
+</li>
+<li>Get the existing <code>WLClient</code> instance and use it to invoke an adapter procedure.
+</li>
+<li>Specify the <code>MyInvokeListener</code> class instance as a parameter.
+<p>[code lang="csharp"]<br />
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;RSSReader&quot;, &quot;getStories&quot;);<br />
+invocationData.setParameters(new Object[]{});<br />
+String myContextObject = &quot;InvokingAdapterProceduresWin8&quot;;<br />
+WLRequestOptions options = new WLRequestOptions();<br />
+options.setInvocationContext(myContextObject);<br />
+WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);<br />
+[/code]
+</li>
+</ol>
+<h2>Receiving a procedure response</h2>
+<p>After the procedure invocation is completed, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
+As before, you must specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.</p>
+<p>[code lang="csharp"]<br />
+using IBM.Worklight;<br />
+namespace InvokingAdapterProceduresWin8{<br />
+    public class MyInvokeListener : WLResponseListener<br />
+    { }<br />
+{<br />
+[/code]</p>
+<p>The <code>onSuccess</code> and <code>onFailure</code> methods are invoked by the <code>WLClient</code> instance. The response object contains the response data. You can use its methods and properties to retrieve the required information.</p>
+<p>[code lang="csharp"]<br />
+public void onSuccess(WLResponse response)<br />
+{<br />
+    WLProcedureInvocationResult invocationResponse = ((WLProcedureInvocationResult) response);<br />
+    JObject items;<br />
+    try<br />
+    {<br />
+        items = invocationResponse.getResponseJSON();<br />
+        await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =&gt;<br />
+        {<br />
+            myMainPage.AddTextToReceivedTextBlock(&quot;Response Success: &quot; + items.ToString());<br />
+        });<br />
+    }<br />
+    catch (JsonReaderException e)<br />
+    {<br />
+          Debug.WriteLine(&quot;JSONException : &quot; + e.Message);<br />
+    }<br />
+}</p>
+<p>public void onFailure(WLFailResponse response)<br />
+{<br />
+    await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =&gt;<br />
+    {<br />
+        myMainPage.AddTextToReceivedTextBlock(&quot;Response failed: &quot; + response.ToString());<br />
+    });<br />
+}<br />
+[/code]</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWin8Project.zip">Click to download</a> the Native project.</p>
+<p>The sample contains two projects:<br />
+- The <code>InvokingAdapterProceduresNativeProject.zip</code> file contains a <strong>MobileFirst Native API</strong> to deploy to MobileFirst Server.<br />
+- The <code>InvokingAdapterProceduresWin8project.zip</code> file contains a <strong>native Windows 8 application</strong> that uses a MobileFirst native API library to communicate with a MobileFirst Server instance.</p>
+<p>Make sure to update the <code>wlclient.properties</code> file in <strong>InvokingAdapterProceduresWin8</strong> with the relevant server settings.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/InvokeProcedureWin8Native.png"><img src="{{ site.baseurl }}/assets/InvokeProcedureWin8Native.png" alt="InvokeProcedureWin8Native" width="936" height="577" class="aligncenter size-full wp-image-6250" /></a></p>

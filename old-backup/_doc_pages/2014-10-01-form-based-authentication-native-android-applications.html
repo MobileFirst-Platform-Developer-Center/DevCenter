@@ -1,0 +1,112 @@
+---
+layout: doc_page
+title: Form-based authentication in native Android applications
+date: 2014-10-01 13:09:44.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442506313;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11016;}i:1;a:1:{s:2:"id";i:11035;}i:2;a:1:{s:2:"id";i:982;}}}}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/">Authentication and security</a> &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/form-based-authentication/">Form-based authentication<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-6-3/">Native Android</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeFormBasedAuthProject.zip">Download Studio project</a>
+        </li>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/AndroidNativeFormBasedAuthProject.zip">Download native project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial illustrates the native Android client-side authentication components for form-based authentication. Make sure you read <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/form-based-authentication/" title="Form-based authentication">Form-based authentication</a> first.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native Android application and add the MobileFirst native APIs following the documentation.<br />
+Add an Activity, <span class="inline-code">LoginFormBasedAuth</span>, that will handle and present the login form.<br />
+Remember to add this Activity to the <span class="inline-code">AndroidManifest.xml</span> file as well.</p>
+<h3>MyChallengeHandler</h3>
+<p>Create a <span class="inline-code">MyChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span>.<br />
+<span class="inline-code">MyChallengeHandler</span> should implement <span class="inline-code">isCustomResponse</span> which checks every custom response received from MobileFirst Server to see if this is the challenge we are expecting.<br />
+[code lang="java"]<br />
+public boolean isCustomResponse(WLResponse response) {<br />
+	if (response == null || response.getResponseText() == null ||<br />
+			response.getResponseText().indexOf(&quot;j_security_check&quot;) == -1) {<br />
+		return false;<br />
+	}<br />
+	return true;<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /><br />
+<span class="inline-code">handleChallenge</span> is called after the <span class="inline-code">isCustomResponse</span> method returned true.<br />
+Here we use this method to present our login form.<br />
+[code lang="java"]<br />
+public void handleChallenge(WLResponse response){<br />
+	if (!isCustomResponse(response)) {<br />
+		submitSuccess(response);<br />
+	} else {<br />
+		cachedResponse = response;<br />
+		Intent login = new Intent(parentActivity, LoginFormBasedAuth.class);<br />
+		parentActivity.startActivityForResult(login, 1);<br />
+	}<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /><br />
+<span class="inline-code">submitLogin</span> is called by the login form. If the user asked to abort this action we use  <span class="inline-code">submitFailure()</span> method, otherwise we use <span class="inline-code">submitLoginForm()</span> method to send our input data to the authenticator.<br />
+[code lang="java"]<br />
+public void submitLogin(int resultCode, String userName, String password, boolean back){<br />
+	if (resultCode != Activity.RESULT_OK || back) {<br />
+		submitFailure(cachedResponse);<br />
+	} else {<br />
+		HashMap&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();<br />
+		params.put(&quot;j_username&quot;, userName);<br />
+		params.put(&quot;j_password&quot;, password);<br />
+		submitLoginForm(&quot;/j_security_check&quot;, params, null, 0, &quot;post&quot;);<br />
+	}<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<h3>Main Activity</h3>
+<p>In the Main Activity class connect to MobileFirst server, register your <span class="inline-code">challengeHandler</span> and invoke the protected adapter procedure.<br />
+The procedure invocation will trigger MobileFirst server to send a challenge that will trigger our <span class="inline-code">challengeHandler</span>.<br />
+[code lang="java"]<br />
+final WLClient client = WLClient.createInstance(this);</p>
+<p>client.connect(new MyConnectionListener());</p>
+<p>challengeHandler = new AndroidChallengeHandler(this, realm);<br />
+client.registerChallengeHandler(challengeHandler);</p>
+<p>invokeBtn = (Button) findViewById(R.id.invoke);<br />
+invokeBtn.setOnClickListener(new View.OnClickListener() {</p>
+<p>	@Override<br />
+	public void onClick(View v) {<br />
+		//setMainText(&quot;Invoking...&quot;);<br />
+		WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;DummyAdapter&quot;, &quot;getSecretData&quot;);<br />
+		WLRequestOptions options = new WLRequestOptions();<br />
+		options.setTimeout(30000);<br />
+		client.invokeProcedure(invocationData, new MyResponseListener(), options);<br />
+	}</p>
+<p>});<br />
+[/code]</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeFormBasedAuthProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/AndroidNativeFormBasedAuthProject.zip">Click to download</a> the Native project.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/10/09_04_results.png"><img src="{{ site.baseurl }}/assets/09_04_results.png" alt="09_04_results" width="1359" height="702" class="aligncenter size-full wp-image-947" /></a></p>

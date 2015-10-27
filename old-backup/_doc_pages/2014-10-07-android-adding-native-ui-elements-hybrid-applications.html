@@ -1,0 +1,195 @@
+---
+layout: doc_page
+title: 'NEW: Android - Adding native UI elements to hybrid applications'
+date: 2014-10-07 04:14:33.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '9037'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:0:{}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/adding-native-functionality/">Adding native functionality to hybrid applications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeUIInHybridProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>While you can write hybrid application by using solely web technologies, IBM MobileFirst Platform Foundation also allows you to mix and match native code with web code as needed.</p>
+<p>For example, use native UI controls or native elements, provide an animated native introduction screen, etc. To do so, you must take control of part of the application startup flow.</p>
+<p><strong>Prerequisite:</strong> This tutorial assumes working knowledge of native Android development.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#control">Taking control of the startup flow</a></li>
+<li><a href="#splashSample">Native SplashScreen sample</a></li>
+<li><a href="#jstonative">Sending actions from JavaScript to native</a></li>
+<li><a href="#nativetojs">Sending actions from native code to JavaScript code</a></li>
+<li><a href="#sendSample">SendAction sample</a></li>
+<li><a href="#shared">Shared session</a></li>
+</ul>
+<h2 id="control">Taking control of the startup flow</h2>
+<p>When you create a hybrid application, MobileFirst Studio generates a main <code>CordovaActivity</code> class (<code>appname.java</code>) which handles various stages of the application startup flow.</p>
+<p>The <code>showSplashScreen</code> method is called to display a simple splash screen while resources are being loaded. You can modify the location with any native introduction screen.</p>
+<p>To initialize the MobileFirst framework and prepare web resources, the <code>initializeWebFramework</code> method is called.<br />
+As soon as the web framework finishes initializing and all resources are ready, the <span class="inline-code">onInitWebFrameworkComplete</span> method is called. The value of <span class="inline-code">WLInitWebFrameworkResult</span> can be checked and the application can be started.</p>
+<h2 id="splashSample">Native SplashScreen sample</h2>
+<p>The <code>NativeUIInHybrid</code> project includes a hybrid application called <code>NativeSplashScreen</code>.</p>
+<p>The application contains an <span class="inline-code">InitiativeActivity</span> activity. This activity is used to show a simple text view and a button as our customized splash screen:</p>
+<p>In the <span class="inline-code">onCreate</span> method:<br />
+[code lang="java"]setContentView(R.layout.activity_initiative);<br />
+startAppBtn = (Button) findViewById(R.id.StartApp);[/code]</p>
+<p>And in the <span class="inline-code">onClickListener</span> method:<br />
+[code lang="java"]startAppBtn.setOnClickListener(new View.OnClickListener() {<br />
+	public void onClick(View v) {<br />
+		setResult(Activity.RESULT_OK);<br />
+		finish();<br />
+	}<br />
+});[/code]</p>
+<p>The text view and the button are also added to the activity layout file:<br />
+[code lang="xml"]&lt;TextView<br />
+        android:layout_width=&quot;wrap_content&quot;<br />
+        android:layout_height=&quot;wrap_content&quot;<br />
+        android:text=&quot;@string/InitiativeActivityText&quot; /&gt;</p>
+<p>&lt;Button<br />
+    	android:id=&quot;@+id/StartApp&quot;<br />
+        android:layout_width=&quot;wrap_content&quot;<br />
+        android:layout_height=&quot;wrap_content&quot;<br />
+        android:layout_centerHorizontal=&quot;true&quot;<br />
+        android:layout_marginTop=&quot;150dp&quot;<br />
+        android:text=&quot;@string/InitiativeButtonText&quot; /&gt;[/code]</p>
+<p>It is also required to add an Intent to the <code>MainActivity</code> before the call to the <span class="inline-code">initializeWebFramework</span> method. The intent loads the newly created activity instead of opening the default MobileFirst splash screen.</p>
+<p>[code lang="java"]WL.createInstance(this);</p>
+<p>Intent intent = new Intent(this, InitiativeActivity.class);<br />
+startActivity(intent);</p>
+<p>WL.getInstance().initializeWebFramework(getApplicationContext(), this);[/code]</p>
+<h2 id="jstonative">Sending actions from JavaScript to native code</h2>
+<p>In MobileFirst applications, commands are sent with parameters from the web view (via JavaScript) to an Android native class (written in Java).<br />
+You can use this feature to trigger native code to be run in the background, to update the native UI, to use native-only features, etc.</p>
+<h3>Step 1</h3>
+<p>In JavaScript, the following API is used:<br />
+<span class="inline-code">WL.App.sendActionToNative("doSomething", {customData: 12345});</span></p>
+<p>The <span class="inline-code">doSomething</span> parameter is an arbitrary action name to be used in the native side (see Step 2). The second parameter is a JSON object that contains any data.</p>
+<h3>Step 2</h3>
+<p>The native class to receive the action must implement the <span class="inline-code">WLActionReceiver</span> protocol:<br />
+[code lang="java"]public class ActionReceiver implements WLActionReceiver{</p>
+<p>}[/code]</p>
+<p>The <span class="inline-code">WLActionReceiver</span> protocol requires an <span class="inline-code">onActionReceived</span> method in which the action name can be checked for and perform any native code that the action needs:<br />
+[code lang="java"]public void onActionReceived(String action, JSONObject data){<br />
+	if (action.equals(&quot;doSomething&quot;)){<br />
+		// Write your code here...<br />
+	}<br />
+}[/code]</p>
+<h3>Step 3</h3>
+<p>For the action receiver to receive actions from the MobileFirst Web View, it must be registered. The registration can be done during the startup flow of the application to catch any actions early enough:<br />
+[code lang="java"]WL.getInstance().addActionReceiver(new ActionReceiver(this));[/code]</p>
+<h2 id="nativetojs">Sending actions from native code to JavaScript code</h2>
+<p>In MobileFirst applications, commands can be sent with parameters from native Android code to web view JavaScript code.<br />
+You can use this feature to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
+<h3>Step 1</h3>
+<p>In Java, the following API is used:<br />
+[code lang="java"]JSONObject data = new JSONObject();<br />
+	data.put(&quot;someProperty&quot;, 12345);<br />
+	WL.getInstance().sendActionToJS(&quot;doSomething&quot;, data);[/code]</p>
+<p>The <span class="inline-code">doSomething</span> parameter is an arbitrary action name to be used on the JavaScript side and the second parameter is an <span class="inline-code">JSONObject</span> instance that contains any data.</p>
+<h3>Step 2</h3>
+<p>A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
+<p>[code lang="js"]function actionReceiver(received){<br />
+  if (received.action == &quot;doSomething&quot; &amp;&amp; received.data.someProperty == &quot;12345&quot;){<br />
+    //perform required actions, e.g., update web user interface<br />
+  }<br />
+}[/code]</p>
+<h3>Step 3</h3>
+<p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function handles those actions as early as possible.</p>
+<p>[code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, actionReceiver);[/code]</p>
+<p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
+[code lang="js"]WL.App.removeActionReceiver(&quot;MyActionReceiverId&quot;);[/code]</p>
+<h2 id="sendSample">SendAction sample</h2>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/07_09_sendaction.png"><img src="{{ site.baseurl }}/assets/07_09_sendaction.png" alt="07_09_sendaction" width="665" height="481" class="aligncenter size-full wp-image-1109" /></a></p>
+<h3>Overview</h3>
+<p>Download the <code>NativeUIInHybrid</code> project, which includes a hybrid application called <code>SendAction</code>.<br />
+This sample uses the MapView and the Google Maps services.</p>
+<p><strong>Note</strong>: This sample will <strong>NOT</strong> work without the following extra steps to install the MapView.</p>
+<p>For more information about the MapView and Google Maps services, see the Google Map Android page at <a href="https://developers.google.com/maps/documentation/android/">https://developers.google.com/maps/documentation/android/</a><br />
+This sample includes an additional <span class="inline-code">FragmentActivity</span> (DisplayMap) to display the requested map.</p>
+<h3>HTML</h3>
+<p>The HTML page shows the following elements:</p>
+<ul>
+<li>A simple input field to enter an address</li>
+<li>A button to trigger validation</li>
+<li>An empty  line to show potential error messages</li>
+</ul>
+<p>[code lang="html"]&lt;p&gt;This is a MobileFirst WebView.&lt;/p&gt;<br />
+&lt;p&gt;Enter a valid address (requires Internet connection):&lt;br/&gt;<br />
+    	&lt;input type=&quot;text&quot; name=&quot;address&quot; id=&quot;address&quot;/&gt;<br />
+&lt;input type=&quot;button&quot; value=&quot;Display&quot; id=&quot;displayBtn&quot;/&gt;<br />
+ &lt;/p&gt;<br />
+ &lt;p id=&quot;errorMsg&quot; style=&quot;color:red;&quot;&gt;&lt;/p&gt;[/code]</p>
+<h3>JavaScript</h3>
+<p>When the button is clicked, the <span class="inline-code">sendActionToNative</span> method is called to send the address to the native code.<br />
+[code lang="js"]$('#displayBtn').on('click', function(){<br />
+	$('#errorMsg').empty();<br />
+	WL.App.sendActionToNative(&quot;displayAddress&quot;,<br />
+				{ address: $('#address').val()}<br />
+		);<br />
+	});[/code]</p>
+<p>The code also registers an action receiver to display potential error messages from the native code.<br />
+    [code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, function actionReceiver(received){<br />
+		if(received.action == 'displayError'){<br />
+			$('#errorMsg').html(received.data.errorReason);<br />
+		}<br />
+	});[/code]</p>
+<h3>Action receiver</h3>
+<p>A new class is required. It implements <span class="inline-code">WLActionReceiver</span>.<br />
+Before using this new class, call the <span class="inline-code">addActionReceiver</span> method to register <span class="inline-code">ActionReceiver</span> in the main activity after the initialization process is complete.</p>
+<p>[code lang="java" highlight="7"]public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {<br />
+		if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {<br />
+			super.loadUrl(WL.getInstance().getMainHtmlFilePath());<br />
+		} else {<br />
+			handleWebFrameworkInitFailure(result);<br />
+		}<br />
+		WL.getInstance().addActionReceiver(new ActionReceiver(this));<br />
+	}[/code]</p>
+<p>The <span class="inline-code">ActionReceiver</span> class implements the <span class="inline-code">onActionReceived</span> method. This  method is used to receive the address that was passed in the JavaScript code.</p>
+<p>[code lang="java"]public void onActionReceived(String action, JSONObject data){<br />
+	if (action.equals(&quot;displayAddress&quot;)){<br />
+		try {<br />
+			mAddress = data.getString(&quot;address&quot;);<br />
+		} catch (JSONException e) {<br />
+			e.printStackTrace();<br />
+		}</p>
+<p>		Intent intent = new Intent(parentActivity,DisplayMap.class);<br />
+		intent.putExtra(&quot;RECEIVED_ADDRESS&quot;, mAddress);<br />
+		parentActivity.startActivity(intent);<br />
+	}<br />
+}[/code]</p>
+<h3>Displaying the map</h3>
+<p>After the address parameter is received, a <code>FragmentActivity</code> instance is needed to display it.<br />
+This activity uses the GoogleMap services and the Google Geocoder to display the requested address on a map.</p>
+<p>The address parameter needs to be sent to this activity in order to display the address in the map.</p>
+<h2 id="shared">Shared session</h2>
+<p>When you use both JavaScript and native code in the same application, you might need to make HTTP requests to MobileFirst Server (connect,  procedure invocation, etc.)</p>
+<p>HTTP requests are explained in other tutorials (both for hybrid and native applications).<br />
+IBM Worklight 6.2 and IBM MobileFirst Platform Foundation 6.3 and later keep your session (cookies and HTTP headers) automatically synchronized between the JavaScript client and the native client.</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeUIInHybridProject.zip">Click to download</a> the Studio project.</p>

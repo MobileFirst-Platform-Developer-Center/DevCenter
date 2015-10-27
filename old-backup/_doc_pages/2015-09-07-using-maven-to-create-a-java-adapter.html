@@ -1,0 +1,161 @@
+---
+layout: doc_page
+title: Using Maven to Create a Java Adapter
+date: 2015-09-07 14:53:08.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 7-2
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: liorbu@il.ibm.com
+  email: liorbu@il.ibm.com
+  display_name: LiorBu
+  first_name: Lior
+  last_name: Burg
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-2/server-side-development-category/">Server-side development</a> &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-2/server-side-development-category/java-adapter/">Java Adapter</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+<li class="android">Native Android</li>
+<li class="wp8">Native Windows Phone 8</li>
+<li class="wp8">Native Windows 8 Universal</li>
+<li class="hybrid">Hybrid</li>
+</ul></div>
+</div>
+<h2>Overview</h2>
+<p>This tutorial demonstrate how to create a Java adapter using Maven Archetype. The maven-adapter-archetype is an archetype that creates the Java adapter as a Maven project.</p>
+<p><strong>Prerequisite:</strong> Make sure that you read the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/server-side-development-category/java-adapter/" target="_blank">Java Adapters</a> tutorial first.</p>
+<h2>Creating a Java Adapter</h2>
+<p>To create a Java adapter Maven project, use the <code>archetype:generate</code> command.<br />
+You can choose to run the command interactively or directly.</p>
+<h3>In Interactive Mode</h3>
+<ul>
+<li>
+Run:<br />
+[code lang="xml" gutter="false"]<br />
+$ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=maven-adapter-archetype -DarchetypeVersion=7.2.0.0<br />
+[/code]<br />
+The Archetype Group Id, Archetype Artifact Id, and Archetype Version are required parameters to identify the archetype.
+</li>
+<li>You will be asked to enter the Group Id and the Artifact Id of the Maven project to be build:<br />
+[code lang="xml" gutter="false"]<br />
+Define value for property 'groupId': : sample.group.id<br />
+Define value for property 'artifactId': : SampleProject<br />
+[/code]
+</li>
+<li>You will be asked to enter the Maven project version (the default is <code>1.0-SNAPSHOT</code>):<br />
+[code lang="xml" gutter="false"]<br />
+Define value for property 'version':  1.0-SNAPSHOT: : 1.0<br />
+[/code]
+</li>
+<li>You will be asked to enter the Java adapter package name (the default is the <code>groupId</code>):<br />
+[code lang="xml" gutter="false"]<br />
+Define value for property 'package':  sample.group.id: : com.sample.adapter<br />
+[/code]
+</li>
+<li>You will be asked to enter the Java adapter name (the default is the <code>artifactId</code>):<br />
+[code lang="xml" gutter="false"]<br />
+Define value for property 'adapter-name':  Sample: : TestAdapter<br />
+[/code]
+</li>
+<li>Enter <code>y</code> to confirm:<br />
+[code lang="xml" gutter="false"]<br />
+[INFO] Using property: archetypeVersion = 7.2.0.0<br />
+Confirm properties configuration:<br />
+groupId: sample.group.id<br />
+artifactId: Sample<br />
+version: 1.0<br />
+package: com.sample.adapter<br />
+adapter-name: TestAdapter<br />
+archetypeVersion: 7.2.0.0<br />
+ Y: : y<br />
+[/code]
+</li>
+</ul>
+<h3>In Direct Mode</h3>
+<li>Replace the placeholders with the actual values and run:<br />
+[code lang="xml" gutter="false"]<br />
+$ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=maven-adapter-archetype -DarchetypeVersion=7.2.0.0 -DgroupId=&lt;maven_project_groupid&gt; -DartifactId=&lt;maven_project_artifactid&gt; -Dversion=&lt;maven_project_version&gt; -Dpackage=&lt;java_adapter_package_name&gt; -Dadapter-name=&lt;adapter_name&gt;<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<blockquote><p>For more information about the <code>archetype:generate</code> command see the Maven documentation.</p></blockquote>
+<p>The result will be a Maven project containing a <code>src</code> folder and a <code>pom.xml</code> file:</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/Screen-Shot-2015-09-07-at-15.26.58.png"><img src="{{ site.baseurl }}/assets/Screen-Shot-2015-09-07-at-15.26.58.png" alt="Screen Shot 2015-09-07 at 15.26.58" width="1564" height="888" class="aligncenter size-full wp-image-17151" /></a></p>
+<h2>Building and Deploying a Java Adapter</h2>
+<h3>Build</h3>
+<p>There are three ways you can build your adapter:</p>
+<ul>
+<li>One way is to edit the <code>pom.xml</code> to include the <code>build</code> <code>goal</code> (the default option). This means that the adapter will be built every time you run the <code>mvn install</code> command to build your Maven project.
+</li>
+<li>The other way is to run the <code>mvn adapter</code> command:<br />
+[code lang="xml" gutter="false"]<br />
+$ mvn adapter:build<br />
+[/code]
+</li>
+<li>You can also build the Java adapter using Ant tasks.<br />
+For more information see the topic about Building applications and adapters in the user documentation.
+</li>
+</ul>
+<p>The end result is the <code>.adapter</code> file in the project <code>target</code> folder:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/Screen-Shot-2015-09-07-at-17.11.48.png"><img src="{{ site.baseurl }}/assets/Screen-Shot-2015-09-07-at-17.11.48.png" alt="Screen Shot 2015-09-07 at 17.11.48" width="1306" height="782" class="aligncenter size-full wp-image-17191" /></a></p>
+<h3>Deploy</h3>
+<p><strong>NOTE:</strong> The deploy command is available only during development.</p>
+<ul>
+<li>Edit the <code>pom.xml</code> file with the following <code>configuration</code> parameters:<br />
+[code lang="xml" gutter="true"]<br />
+&lt;configuration&gt;<br />
+    ...<br />
+    &lt;!-- parameters for deploy adapter --&gt;<br />
+    &lt;serverUrl&gt;http://&lt;IP&gt;:&lt;PORT&gt;/worklightadmin&lt;/serverUrl&gt;<br />
+    &lt;user&gt;ADMIN_USER&lt;/user&gt;<br />
+    &lt;password&gt;ADMIN_PASSWORD&lt;/password&gt;<br />
+    &lt;projectName&gt;CONTEXT_ROOT&lt;/projectName&gt;<br />
+&lt;/configuration&gt;<br />
+[/code]<br />
+Replace the <code>IP</code> and <code>PORT</code> with the MobileFirst Server IP and port.<br />
+Replace the <code>ADMIN_USER</code> and <code>ADMIN_PASSWORD</code> with the MobileFirst admin user and password.<br />
+Replace the <code>CONTEXT_ROOT</code> with the MobileFirst project name.
+</li>
+<li>There are two ways you can deploy your adapter:
+<ul>
+<li>One way is to edit the <code>pom.xml</code> to include the <code>deploy</code> <code>goal</code>. This means that the adapter will be deployed every time you run the <code>mvn install</code> command to build your Maven project.<br />
+[code lang="xml" gutter="true"]<br />
+&lt;goals&gt;<br />
+    &lt;goal&gt;deploy&lt;/goal&gt;<br />
+&lt;/goals&gt;<br />
+[/code]
+</li>
+<li>The other way is to run the <code>mvn:adapter</code> command:<br />
+[code lang="xml" gutter="false"]<br />
+$ mvn adapter:deploy<br />
+[/code]
+</li>
+<li>You can also deploy the Java adapter using Ant tasks.<br />
+For more information see the topic about Deploying applications and adapters in the user documentation.
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="dependencies">Dependencies</h2>
+<p>Unlike using the Studio or the CLI <code>lib</code> folder to put your dependencies, in the Java adapter Maven project you'll put them under the <code>dependencies</code> element in the Maven project pom.xml file.</p>
+<blockquote><p>For more information about <code>dependencies</code> see the Maven documentation.</p></blockquote>
+</li>
+<h2>Migrating an Existing Java Adapter</h2>
+<p>In order to migrate an existing Java adapter to Java adapter Maven project you need to:</p>
+<ul>
+<li>Create a new Maven project using the existing adapter name and adapter package name.</li>
+<li>Overwrite the adapter .xml file (under src/main/resources) with the existing Java adapter .xml file.</li>
+<li>Overwrite the adapter application and resource Java files (under src/main/java/adapter_package_name) with the existing Java adapter application and resource Java files.</li>
+<li>To add dependencies from the existing Java adapter <code>lib</code> folder see the <a href="#dependencies">Dependencies</a> section.</li>
+</ul>

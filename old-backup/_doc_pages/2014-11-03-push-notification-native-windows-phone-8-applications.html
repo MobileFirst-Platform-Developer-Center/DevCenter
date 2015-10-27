@@ -1,0 +1,301 @@
+---
+layout: doc_page
+title: 'NEW: Push notifications in native Windows Phone 8 applications'
+date: 2014-11-03 15:19:49.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442523108;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11215;}i:1;a:1:{s:2:"id";i:11223;}i:2;a:1:{s:2:"id";i:322;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/notifications">Notifications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="wp8"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-wp8-development-6-3/">Native Windows Phone 8</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/PushNotificationsNativeProject.zip">Download Studio project</a>
+    </li>
+<li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/WP8NativePushProject.zip">Download native project</a>
+    </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>In this tutorial, the concept, API, and usage of push notifications are explained, in the context of Native Windows Phone 8 applications.</p>
+<p>The following topics are covered:</p>
+<ul>
+<li><a href="#settingup">Setting up for push notification</a></li>
+<li><a href="#notificationapiserver">Server-side notification APIs</a></li>
+<li><a href="#notificationAPIClient">Client-side notification APIs</a></li>
+<li><a href="#notificaitonAPITag">Tag-based notification</a></li>
+<li><a href="#notificationAPIBroadcast">Broadcast-based notification</a></li>
+<li><a href="#sampleApplication">Sample application</a></li>
+</ul>
+<h2 id="settingup"> Setting up your native Windows Phone 8 application for push notification </h2>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/nativeWP8PushProjectAdapterExpanded.png"><img src="{{ site.baseurl }}/assets/nativeWP8PushProjectAdapterExpanded.png" alt="nativeWP8PushProjectAdapterExpanded" width="256" height="379" class="alignright size-full wp-image-4092" /></a></p>
+<ol>
+<li>In MobileFirst Studio, create a MobileFirst project.
+</li>
+<li>Add a MobileFirst Windows Phone 8 native API. The native API project provides the files that are necessary to build a Windows Phone 8 app.
+</li>
+<li>Create an HTTP Adapter in the MobileFirst project.
+</li>
+</ol>
+<p>In this tutorial, you set up the adapter to send and receive unauthenticated push notifications.</p>
+<p><br clear="all" /></p>
+<h4>Edit the application-descriptor.xml file</h4>
+<p>Add the "<strong>pushSender</strong>" tag to the application-descriptor.xml file. -<br />
+[code lang="xml"]<br />
+&lt;nativeWindowsPhone8App id=&quot;WindowsPhone8NativePush&quot; platformVersion=&quot;6.3.0.00.20141111-0731&quot;<br />
+version=&quot;1.0&quot; xmlns=&quot;http://www.worklight.com/native-windowsphone8-descriptor&quot; securityTest=&quot;MySecurityTest&quot;&gt;</p>
+<p> &lt;displayName&gt;WindowsPhone8NativePush&lt;/displayName&gt;<br />
+ &lt;description&gt;WindowsPhone8NativePush&lt;/description&gt;<br />
+ &lt;pushSender/&gt;</p>
+<p>&lt;/nativeWindowsPhone8App&gt; [/code]<br />
+<br clear="all" /></p>
+<h4>Deploy the native API and the adapter.</h4>
+<h4>Copy the libraries from the MobileFirst native API to the Windows Phone 8 project.</h4>
+<ol>
+<li>Create a Visual Studio project for the Windows Phone 8 app that you are building.
+</li>
+<li>Copy the following files from the MobileFirst project to the Windows Phone 8 project.<br />
+<table border="2" style="width:100%">
+<tr>
+<td>MobileFirst project</td>
+<td>Windows Phone 8  project</td>
+</tr>
+<tr>
+<td>wlclient.properties</td>
+<td>wlclient.properties</td>
+</tr>
+<tr>
+<td>worklight-windowsphone8.dll</td>
+<td>worklight-windowsphone8.dll</td>
+</tr>
+<tr>
+<td>Newtonsoft.Json.WindowsPhone.dll</td>
+<td>Newtonsoft.Json.WindowsPhone.dll</td>
+</tr>
+</table>
+<p><br clear="all" />
+</li>
+<li>After copying the libraries, add "worklight-windowsphone8.dll" and "Newtonsoft.Json.WindowsPhone.dll" as references to the Microsoft Visual Studio project. The native Windows Phone 8 project appears as shown:
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/nativeWP8PushProject1.png"><img src="{{ site.baseurl }}/assets/nativeWP8PushProject1.png" alt="nativeWP8PushProject" width="219" height="331" class="alignnone size-full wp-image-4194" /></a></p>
+</li>
+</ol>
+<h4>Edit the wlclient.properties.</h4>
+<p>Edit the wlclient.properties file in your native Windows Phone 8 project and enter appropriate values for the following fields:</p>
+<ul>
+<li>wlServerHost - The host name or IP address of the MobileFirst Server instance.</li>
+<li>wlServerPort - The port on which MobileFirst Server is listening. </li>
+<li>wlServerContext - The context root of your MobileFirst Server instance.</li>
+</ul>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/nativeWP8Pushwlclientproperties.png"><img src="{{ site.baseurl }}/assets/nativeWP8Pushwlclientproperties.png" alt="nativeWP8Pushwlclientproperties" width="628" height="259" class="alignnone size-full wp-image-4086" /></a></p>
+<h4>Modifications to the native Windows Phone 8 project</h4>
+<p>Edit the Properties\WMAppManifest.xml file and add the following capabilities:<br />
+[code lang="xml"]<br />
+&lt;Capability Name=&quot;ID_CAP_PUSH_NOTIFICATION&quot; /&gt;<br />
+&lt;Capability Name=&quot;ID_CAP_IDENTITY_DEVICE&quot; /&gt;<br />
+[/code]</p>
+<h2 id="notificationapiserver">Notification API: Server side</h2>
+<h3>Creating an event source.</h3>
+<p>This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).<br />
+[code lang="js"]<br />
+WL.Server.createEventSource({<br />
+    name: 'PushEventSource',<br />
+    onDeviceSubscribe: 'deviceSubscribeFunc',<br />
+    onDeviceUnsubscribe: 'deviceUnsubscribeFunc',<br />
+    securityTest:'PushApplication-strong-mobile-securityTest'<br />
+});<br />
+[/code]</p>
+<ul>
+<li><code>name</code> – A name by which the event source is referenced.</li>
+<li><code>onDeviceSubscribe</code> – An adapter function that is called when the request for user subscription is received.</li>
+<li><code>onDeviceUnsubscribe</code> – An adapter function that is called when the request for user unsubscription is received.</li>
+<li><code>securityTest</code> – A security test from the authenticationConfig.xml file, which is used to protect the event source.</li>
+</ul>
+<h3>Sending a notification</h3>
+<p>Notifications can be either pulled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications. Windows Phone 8 supports Raw, Tile, and Toast notifications. To set up Toast notifications to Windows Phone 8 devices, set the appropriate JSON object to the response of <code>WL.Server.createDefaultNotification()</code> API.</p>
+<p>[code lang="js"]function submitNotification(userId, notificationText) {<br />
+    var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
+<p>    if (userSubscription === null) {<br />
+        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+    }</p>
+<p>    var badgeDigit = 1;<br />
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});</p>
+<p>    //Sending Toast notifications to Windows Phone 8 devices can be achieved by setting the appropriate JSON<br />
+	//to the response of WL.Server.createDefaultNotification() API.<br />
+	 /*<br />
+    notification.MPNS.toast = {<br />
+       text1: 'Meeting ',<br />
+       text2 : &quot;Your meeting starts in 5 minutes&quot;<br />
+    }; */</p>
+<p>	//Send Tile notifications</p>
+<p>    /*<br />
+    notification.MPNS.tile = {<br />
+	title : &quot;Meeting in 5 &quot;,<br />
+	count : 1<br />
+    };*/</p>
+<p>    notification.MPNS.raw = {<br />
+	payload : {payload : &quot;You have a meeting in 5 minutes&quot;}<br />
+    };</p>
+<p>    WL.Server.notifyAllDevices(userSubscription, notification);</p>
+<p>    return {<br />
+        result: &quot;Notification sent to user :: &quot; + userId<br />
+    };<br />
+}[/code]</p>
+<h2 id="notificationAPIClient"> Notification API - Client side </h2>
+<p>The first step is to create an instance of the <code>WLClient</code> class:</p>
+<p>[code lang="java"] WLClient client = WLClient.getInstance();[/code]</p>
+<p>You derive all push notification operations from the <code>WLPush</code> class.</p>
+<ul>
+<code>getPush</code> - This method is used to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.</p>
+<p>[code lang="java"]WLPush push = client.getPush();[/code]<br />
+<code>onReadyToSubscribeListener</code> - When connecting to a MobileFirst Server instance, the application attempts to register itself with the MPNS server to receive push notifications.</p>
+<p>[code lang="java"] push.onReadyToSubscribeListener = onReadyListener;<br />
+client.connect(connectListener); [/code]</p>
+<p><code>notificationListener</code> - Then the app receives the notification.</p>
+<p>[code lang="java"] push.notificationListener = notificationListener;<br />
+client.connect(connectListener); [/code]</p>
+<p>The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when registration is complete.</p>
+<p>[code lang="java"] public void onReadyToSubscribe() { ..... } [/code]
+</ul>
+<h3><code>WLPush.registerEventSourceCallback</code></h3>
+<p>To register an alias on a particular event source, use the <code>WLPush.registerEventSourceCallback</code> method. The API takes the following arguments:</p>
+<ul>
+<p>alias - An alias name.<br />
+Adaptername - The adapter in which the event source is defined.<br />
+EventSourceName - The event source on which the alias is called.</p>
+</ul>
+<p>Example:<br />
+[code lang="java"]  WLClient.getInstance().getPush().registerEventSourceCallback(&quot;newalias&quot;, &quot;PushAdapter&quot;, &quot;PushEventSource&quot;, this); [/code]</p>
+<p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
+<p>[code lang="java"]<br />
+public void onReadyToSubscribe() {<br />
+      WLClient.getInstance().getPush().registerEventSourceCallback(&quot;newalias&quot;,&quot;PushAdapter&quot;,&quot;PushEventSource&quot;,this);<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<h3>Subscribing to push notifications</h3>
+<p>To set up subscription to push notifications, use the <code>WLPush.subscribe(alias, pushOptions, responseListener)</code> API.</p>
+<p>The API takes the following arguments:</p>
+<ul>
+<p><code>alias</code> - The alias to which the device must subscribe.<br />
+<code>pushOptions</code> - An object of type <code>WLPushOptions</code><br />
+<code>responseListener</code> - An object of type <code>WLResponseListener</code>, which is called when subscription completes.
+</ul>
+<p>Example:<br />
+[code lang="java"]<br />
+WLClient client = WLClient.getInstance(); client.getPush().subscribe(&quot;newalias&quot;,new WLPushOptions(), new MyListener());<br />
+[/code]</p>
+<p><code>MyListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
+<ul>
+<p><code>onSuccess</code> - Called when subscription succeeds.<br />
+<code>onFailure</code> - Called when subscription fails.
+</ul>
+<h3>Unsubscribing from push notifications</h3>
+<p>To set up unsubscription from push notifications, use the <code>WLPush.unsubscribe(alias, responseListener)</code> API.<br />
+The API takes the following arguments:</p>
+<ul>
+<code>alias</code> - The alias to which the device has subscribed.<br />
+<code>responseListener</code> - An object of type <code>WLResponseListener</code>, which is called when unsubscription completes. </ul>
+<p>[code lang="java"]<br />
+WLClient client = WLClient.getInstance(); client.getPush().unsubscribe(&quot;newalias&quot;,new MyListener());<br />
+[/code]</p>
+<p><code>MyListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
+<ul>
+<code>onSuccess</code> - Called when unsubscription succeeds.<br />
+<code>onFailure</code> - Called when unsubscription fails.
+</ul>
+<h3>Additional client-side API methods:</h3>
+<p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
+<p>[code lang="java"]<br />
+WLClient client = WLClient.getInstance(); boolean bIsSubscribed = client.getPush().isSubscribed(&quot;newalias&quot;);<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<h3>Receiving a push notification</h3>
+<p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
+<p>[code lang="java"]<br />
+class MyListener : WLOnReadyToSubscribeListener , WLEventSourceListener<br />
+{ [/code]</p>
+<p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
+<p>[code lang="java"] WLClient.getInstance().getPush().registerEventSourceCallback(&quot;newalias&quot;, &quot;PushAdapter&quot;,&quot;PushEventSource&quot;, this );<br />
+[/code]</p>
+<p>The <code>onReceive</code> method displays the received notification on the screen.</p>
+<p>[code lang="java"]<br />
+public void onReceive(String props, String payload) {<br />
+   Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+   {<br />
+       MessageBox.Show(&quot;Push notification received &quot; + payload);<br />
+   });<br />
+}<br />
+[/code]</p>
+<p>If the application is not running, the notification icon appears on the notification bar at the top of the screen.</p>
+<h2 id="notificationAPITag">Notification API - Tag-based notification</h2>
+<p>This notification type enables sending and receiving messages by tags. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. Tags are defined in the application-descriptor.xml file.</p>
+<p>[code lang="xml"]<br />
+&lt;tags&gt;<br />
+    &lt;tag&gt;<br />
+        &lt;name&gt;PushTag1&lt;/name&gt;<br />
+        &lt;description&gt;About pushTag1&lt;/description&gt;<br />
+    &lt;/tag&gt;<br />
+    &lt;tag&gt;<br />
+        &lt;name&gt;PushTag2&lt;/name&gt;<br />
+        &lt;description&gt;About pushTag2&lt;/description&gt;<br />
+    &lt;/tag&gt;<br />
+&lt;/tags&gt;<br />
+ [/code]</p>
+<h4>Client-side API:</h4>
+<ul>
+<li><code>WLPush.subscribeTag(tagName,options)</code> - Subscribes the device to the specified tag name.</li>
+<li><code>WLPush.unsubscribeTag(tagName,options)</code> - Unsubscribes the device from the specified tag name.</li>
+<li><code>WLPush.isTagSubscribed(tagName)</code> - Returns whether the device is subscribed to a specified tag name.</li>
+</ul>
+<h2 id="notificationAPIBroadcast">Notification API - Broadcast notification</h2>
+<p>Broadcast notifications are enabled by default for any push-enabled MobileFirst application. A subscription to a reserved tag, <code>Push.ALL</code>, is created for every device. Broadcast notifications can be disabled by unsubscribing to the reserved tag <code>Push.ALL</code>.</p>
+<p>For more information about broadcast notification, see the topic about broadcast notification in the user documentation.</p>
+<h3>Common APIs for tag-based and broadcast notifications</h3>
+<h4>Client-side API:</h4>
+<p><code>WLNotificationListener</code> defines the callback method to be notified when the notification arrives.</p>
+<p>[code lang="java"]client.getPush().setWLNotificationListener(listener)[/code]</p>
+<p>The <code>onMessage(props,payload)</code> method of <code>WLNotificationListener</code> is called when a push notification is received by the device.</p>
+<ul>
+<strong>props</strong> - A JSON block that contains the notifications properties of the platform.<br />
+<strong>payload</strong> - A JSON block that contains other data that is sent from MobileFirst Server. It also contains the tag name for tag and broadcast notification. The tag name appears in the "tag" element. For broadcast notification, the default tag name is <code>Push.ALL</code>.
+</ul>
+<h4>Server-side API:</h4>
+<p><code>WL.Server.sendMessage(applicationId,notificationOptions)</code> method takes two mandatory parameters:</p>
+<ul>
+<strong>applicationId</strong> - (mandatory) The name of the MobileFirst application.<br />
+<strong>notificationOptions</strong> - (mandatory) A JSON block that contains message properties.
+</ul>
+<p>This API submits a notification that is based on the specified target parameters. For a full list of message properties, see the user documentation.</p>
+<h2 id="sampleApplication">Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/PushNotificationsNativeProject.zip">Click to download</a> the studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/WP8NativePushProject.zip">Click to download</a> the Native project.</p>
+<p>The sample contains two projects:<br />
+-The <strong>PushNotificationsNativeProject.zip</strong> file contains a MobileFirst native API that you can deploy to your MobileFirst server.<br />
+-The <strong>WP8NativePushProject.zip</strong> file contains a native Windows Phone 8 application that uses a MobileFirst native API library to subscribe for push notifications and receive notifications from MPNS.<br />
+Make sure to update the wlclient.properties file in WP8NativePush with the relevant server settings.</p>
+<p>To run the native Windows Phone 8 application, use the Microsoft Visual Studio IDE.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/nativeWP8PushProjectRun.png"><img src="{{ site.baseurl }}/assets/nativeWP8PushProjectRun.png" alt="nativeWP8PushProjectRun" width="1024" height="611" class="alignnone size-full wp-image-4191" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSSendnotificationmobilefirst.png"><img src="{{ site.baseurl }}/assets/nativeiOSSendnotificationmobilefirst.png" alt="nativeiOSSendnotificationmobilefirst" width="596" height="389" class="alignnone size-full wp-image-3961" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/nativeWP8PushNotificationwithType.png"><img src="{{ site.baseurl }}/assets/nativeWP8PushNotificationwithType.png" alt="nativeWP8PushNotificationwithType" width="1008" height="627" class="alignnone size-full wp-image-4196" /></a></p>

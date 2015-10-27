@@ -1,0 +1,90 @@
+---
+layout: doc_page
+title: Android - Using native pages in hybrid applications
+date: 
+type: doc_page
+published: false
+status: trash
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442518515;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:5714;}i:1;a:1:{s:2:"id";i:11239;}i:2;a:1:{s:2:"id";i:5718;}}}}
+  oasis_is_in_workflow: '0'
+  _wp_trash_meta_status: publish
+  _wp_trash_meta_time: '1444817983'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/adding-native-functionality/">Adding native functionality to hybrid applications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingNativePagesInHybridAppsProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>In this tutorial, integration of native and web "pages" in an Android application will be explained by using the <span class="inline-code">WL.NativePage.show()</span> API to open a native page from JavaScript.</p>
+<p>With this method, data can be sent from JavaScript to the opened native page, and specify a callback to call after the native page closes.</p>
+<h2>Connecting to the plugin from the JavaScript code</h2>
+<p>As a first step, <span class="inline-code">WL.NativePage.show()</span> needs to be implemented in order to open the native page:</p>
+<p>[code lang="js"]function openNativePage(){<br />
+    var params = {<br />
+        nameParam : $('#nameInput').val()<br />
+    };<br />
+    WL.NativePage.show(nativePageClassName, backFromNativePage, params);<br />
+}[/code]</p>
+<ul>
+<li><span class="inline-code">nativePageClassName</span>: The name of a native Android Activity to start.</li>
+<li><span class="inline-code">backFromNativePage</span>: A callback function to call when the native page closes.</li>
+<li><span class="inline-code">params</span>: optional custom parameters object to pass to the native code.</li>
+</ul>
+<p>To handle the callback function:</p>
+<p>[code lang="js"]function backFromNativePage(data){<br />
+	alert(&amp;quot;Received phone number is: &amp;quot; + data.phoneNumber);<br />
+}[/code]</p>
+<ul>
+<li><span class="inline-code">backFromNativePage(data)</span>: After the native closes, it can pass data back to the web part of an application.</li>
+</ul>
+<h2>Creating a native page</h2>
+<p>In Android, the native page must be implemented as an Android Activity, or extend an existing Activity.</p>
+<p><strong>Step 1</strong><br />
+As with any Activity, it must be declared in the <span class="inline-code">AndroidManifest.xml</span> file. For example:<br />
+[code lang="xml"]&amp;lt;activity android:name=&amp;quot;.HelloNative&amp;quot;&amp;gt;&amp;lt;/activity&amp;gt;[/code]</p>
+<p><strong>Step 2</strong><br />
+To retrieve custom data parameters that are passed from the web view, an <code>intent</code> should be used:</p>
+<p>[code lang="java"]protected void onCreate(Bundle savedInstanceState) {<br />
+super.onCreate(savedInstanceState);</p>
+<p>String name = getIntent().getStringExtra(&amp;quot;nameParam&amp;quot;);[/code]</p>
+<h2>Returning control to the web view</h2>
+<p>When the native page switches back to the web view, the <span class="inline-code">finish()</span> function is called for the Activity.<br />
+To pass data back to the web view can be done by using an <span class="inline-code">Intent</span> object. For example:</p>
+<p>Java:<br />
+[code lang="java"]String phoneNumber = editText.getText().toString();<br />
+Intent phoneNumberInfo = new Intent();<br />
+phoneNumberInfo.putExtra(&amp;quot;phoneNumber&amp;quot;, phoneNumber);<br />
+setResult(RESULT_OK, phoneNumberInfo);<br />
+finish();<br />
+[/code]</p>
+<p>JavaScript:<br />
+[code lang="js"]function backFromNativePage(data){<br />
+    alert(&amp;quot;Received phone number is: &amp;quot; + data.phoneNumber);<br />
+}[/code]</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingNativePagesInHybridAppsProject.zip">Click to download</a> the Studio project.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_04_sample_app.png"><img src="{{ site.baseurl }}/assets/07_04_sample_app.png" alt="07_04_sample_app" width="834" height="405" class="aligncenter size-full wp-image-882" /></a></p>

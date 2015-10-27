@@ -1,0 +1,88 @@
+---
+layout: doc_page
+title: iOS - Using native pages in hybrid applications
+date: 2014-07-23 06:11:39.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/adding-native-functionality/">Adding native functionality to hybrid applications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingNativePagesInHybridAppsProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>In this tutorial, integration of native and web "pages" in an iOS application will be explained by using the <span class="inline-code">WL.NativePage.show()</span> API to open a native page from JavaScript.</p>
+<p>With this method, data can be sent from JavaScript to the opened native page, and specify a callback to call after the native page closes.</p>
+<h2>Connecting to the plugin from the JavaScript code</h2>
+<p>As a first step, <span class="inline-code">WL.NativePage.show()</span> needs to be implemented in order to open the native page:</p>
+<p>[code lang="js"]function openNativePage(){<br />
+    var params = {<br />
+        nameParam : $('#nameInput').val()<br />
+    };<br />
+    WL.NativePage.show(nativePageClassName, backFromNativePage, params);<br />
+}[/code]</p>
+<ul>
+<li><span class="inline-code">nativePageClassName</span>: The name of a native iOS UIViewController instance to start.</li>
+<li><span class="inline-code">backFromNativePage</span>: A callback function to call when the native page closes.</li>
+<li><span class="inline-code">params</span>: optional custom parameters object to pass to the native code.</li>
+</ul>
+<p>To handle the callback function:</p>
+<p>[code lang="js"]function backFromNativePage(data){<br />
+	alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
+}[/code]</p>
+<ul>
+<li><span class="inline-code">backFromNativePage(data)</span>: After the native closes, it can pass data back to the web part of an application.</li>
+</ul>
+<h2>Creating a native page</h2>
+<p>To manage to native page, the generated iOS projects need to be opened in Xcode and afterwards:</p>
+<h4>Step 1</h4>
+<p>Add a new Cocoa Touch Class file, make sure it is a subclass of <span class="inline-code">UIViewController</span>, and save it in the <span class="inline-code">Classes</span> folder of the Xcode project.</p>
+<p><em>Important:</em><br />
+If working with existing .m and .h files, the files must be referenced while in Xcode.<br />
+Placing the .m and .h files only in the <span class="inline-code">iphone\native\Classes></span> folder in Eclipse is not sufficient, as these files will not be referenced in the Xcode project unless added in Xcode.</p>
+<h4>Step 2</h4>
+<p>To retrieve custom data parameters that are passed from the web view, the <span class="inline-code">setDataFromWebView:(NSDictionary*)data</span> method should be used:</p>
+<p>[code lang="obj-c"]-(void)setDataFromWebView:(NSDictionary*)data{<br />
+    self.nameParam = (NSString*)[data valueForKey:@&quot;nameParam&quot;];<br />
+}[/code]</p>
+<h2>Returning control to the web view</h2>
+<p>When the native page switches back to the web view, a <span class="inline-code">[NativePage showWebView:]</span> method should be called.<br />
+To pass data back to the web view can be done by using the <span class="inline-code">NSDictionary</span> object. For example:</p>
+<h4>Objective-C:</h4>
+<p>[code lang="obj-c"]-(IBAction)returnClicked:(id)sender{<br />
+    NSString *phone = [phoneNumber text];<br />
+    NSDictionary *returnedData = [NSDictionary dictionaryWithObject:phone forKey:@&quot;phoneNumber&quot;];<br />
+    [NativePage showWebView:returnedData];<br />
+}[/code]</p>
+<p><br clear="all" /></p>
+<h4>JavaScript:</h4>
+<p>[code lang="js"]function backFromNativePage(data){<br />
+    alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
+}[/code]</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingNativePagesInHybridAppsProject.zip">Click to download</a> the Studio project.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_02_ios_sample_app.png"><img src="{{ site.baseurl }}/assets/07_02_ios_sample_app.png" alt="07_02_ios_sample_app" width="662" height="360" class="aligncenter size-full wp-image-853" /></a></p>

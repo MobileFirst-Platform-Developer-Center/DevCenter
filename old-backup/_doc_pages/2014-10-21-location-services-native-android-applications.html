@@ -1,0 +1,181 @@
+---
+layout: doc_page
+title: Location services in native Android applications
+date: 2014-10-21 07:08:12.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442524150;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:10965;}i:1;a:1:{s:2:"id";i:5619;}i:2;a:1:{s:2:"id";i:10967;}}}}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/advanced-topics/">Advanced topics</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-6-3/">Native Android</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesProject.zip">Download Studio project</a>
+        </li>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesNativeAndroidProject.zip">Download native project</a>
+        </li>
+</ul>
+</div>
+<h2>Architecture</h2>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/location_service_diagram.jpg"><img src="{{ site.baseurl }}/assets/location_service_diagram.jpg" alt="location_service_diagram" width="650" height="404" class="aligncenter size-full wp-image-5171" /></a></p>
+<p>The application code on the mobile device, in the form of an acquisition policy, controls the collection of data from device sensors.</p>
+<p>The collected data is referred to as the device context.</p>
+<p>When a change occurs in the device context, such as a change in the geolocation of the device or the fact that it entered a WiFi zone, triggers can be activated.</p>
+<p>The triggers specify that an action occurs: either a callback function is called, or an event is sent to the server, based on the device context.</p>
+<p>Events are created by triggers and application code, and include a snapshot of the device context at the time of their creation.</p>
+<p>Events are buffered on the client and are transmitted to the server periodically.</p>
+<p>The server might process the event later.</p>
+<p>During the event transmission process, the device context is synchronized transparently to the server.</p>
+<p>To handle the events, the server uses adapter application code.</p>
+<p>This code sets up event handlers on the server. These handlers filter event data and pass matching events to a callback function.</p>
+<p>The code also accesses the client device context (its location and WiFi network information) and sets an application context.</p>
+<p>Server activities and received events are logged, together with the device and application contexts, for future reporting and analytics.</p>
+<h2>Acquisition policy</h2>
+<p>An acquisition policy defines how acquisition takes place.</p>
+<p>[code lang="java"]<br />
+WLAcquisitionPolicy policy = new WLAcquisitionPolicy();<br />
+[/code]</p>
+<h3>Geo Acquisition policy</h3>
+<p>To enable geolocation, make sure to update your AndroidManifest.xml file to enable the following permissions:<br />
+[code lang="xml" title="AndroidManifest.xml"]<br />
+&lt;uses-permission android:name=&quot;com.google.android.c2dm.permission.ACCESS_COARSE_LOCATION&quot;/&gt;<br />
+&lt;uses-permission android:name=&quot;com.google.android.c2dm.permission.ACCESS_FINE_LOCATION&quot;/&gt;<br />
+[/code]</p>
+<p>Then in your Java code:<br />
+[code lang="java"]<br />
+policy.setGeoPolicy(WLGeoAcquisitionPolicy.getLiveTrackingProfile());<br />
+[/code]<br />
+LiveTracking is a preset profile that uses the most accurate settings to track the device.<br />
+Additional configuration options include:</p>
+<ul>
+<li><span class="inline-code">RoughTracking</span></li>
+<li><span class="inline-code">PowerSaving</span></li>
+<li>Custom settings</li>
+</ul>
+<blockquote><p>For more information, see the topic about setting an acquisition policy in the user documentation.</p></blockquote>
+<h3>Wifi Acquisition policy</h3>
+<p>To enable Wifi tracking, make sure to update your AndroidManifest.xml file to enable the following permissions:<br />
+[code lang="xml" title="AndroidManifest.xml"]<br />
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;<br />
+&lt;uses-permission android:name=&quot;android.permission.CHANGE_WIFI_STATE&quot;/&gt;<br />
+[/code]</p>
+<p>Then in your Java code:<br />
+[code lang="java"]<br />
+policy.setWifiPolicy(new WLWifiAcquisitionPolicy()<br />
+                     .setInterval(10000)<br />
+                     .setAccessPointFilters(<br />
+                             Arrays.asList(<br />
+                                     new WLWifiAccessPointFilter(&quot;Net1&quot;),<br />
+                                     new WLWifiAccessPointFilter(&quot;Net2&quot;,&quot;*&quot;)<br />
+                                     )<br />
+                             )<br />
+                     );<br />
+[/code]<br />
+<span class="inline-code">interval</span> is the polling interval, in milliseconds. WiFi polling is performed at each interval.</p>
+<p><span class="inline-code">accessPointFilters</span> are access points of interest.<br />
+In the above example, the acquisition policy:</p>
+<ul>
+<li>Ignores everything except "Net1" and "Net2" – Helpful in dynamic environments, such as mobile hotspots.
+</li>
+<li>Considers all "Net1" access points as if they were one access point.
+</li>
+<li>Differentiates "Net2" access points by MAC address.
+</li>
+</ul>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_wifi-policy-example.png"><img src="{{ site.baseurl }}/assets/10_04_wifi-policy-example.png" alt="10_04_wifi-policy-example" width="505" height="470" class="aligncenter size-full wp-image-1482" /></a></p>
+<blockquote><p>For more information, see the topic about setting an acquisition policy in the user documentation.</p></blockquote>
+<h2>Triggers</h2>
+<p>You can set up triggers for</p>
+<ul>
+<li>Geo/Wifi fences (<span class="inline-code">Enter</span>, <span class="inline-code">Exit</span>, <span class="inline-code">Dwell Inside</span>, <span class="inline-code">Dwell Outside</span>)</li>
+<li>Movement (Geo: <span class="inline-code">PositionChange</span>, WiFi: <span class="inline-code">VisibleAccessPointsChange</span>)</li>
+<li>WiFi <span class="inline-code">Connect</span> / <span class="inline-code">Disconnect</span></li>
+</ul>
+<p>[code lang="java"]<br />
+WLTriggersConfiguration triggers = new WLTriggersConfiguration();<br />
+triggers.getGeoTriggers().put(<br />
+        &quot;trigger1&quot;,<br />
+        new WLGeoEnterTrigger()<br />
+        .setArea(new WLCircle(new WLCoordinate(40.68917,-74.04444),100))<br />
+        .setCallback(libertyAtLast)<br />
+        .setEvent(new JSONObject().put(&quot;bring&quot;,&quot;me&quot;).put(&quot;your&quot;,&quot;huddledMasses&quot;))<br />
+        );<br />
+[/code]</p>
+<p>In the above example, <span class="inline-code">trigger1</span> is an <strong>Enter</strong> trigger which is activated when the device enters the defined circle (longitude, latitude, and radius).</p>
+<p>When a trigger activates, it can call a callback function and/or create an event to be sent to the server.</p>
+<blockquote><p>For more information, see the topic about triggers in the user documentation.</p></blockquote>
+<h2>Start Acquisition</h2>
+<p>Use the <span class="inline-code">policy</span> and <span class="inline-code">triggers</span> defined above to start the acquisition.<br />
+[code lang="java"]<br />
+WLLocationServicesConfiguration config = new WLLocationServicesConfiguration();<br />
+config.setPolicy(policy);<br />
+config.setTriggers(triggers);</p>
+<p>WLClient.getInstance().getWLDevice().startAcquisition(config);<br />
+[/code]</p>
+<h2>Events</h2>
+<h3>Client Side</h3>
+<p>Events are generated by triggers (as explained above).<br />
+[code lang="java" firstline="7"]<br />
+        .setEvent(new JSONObject().put(&quot;bring&quot;,&quot;me&quot;).put(&quot;your&quot;,&quot;huddledMasses&quot;))<br />
+[/code]</p>
+<p>Events can also be generated manually by calls to the API:<br />
+[code lang="java"]<br />
+WLClient.getInstance().transmitEvent(event,immediate)<br />
+[/code]<br />
+Where <strong>event</strong> is a <span class="inline-code">JSONObject</span> and <strong>immediate</strong> is a <span class="inline-code">boolean</span>.</p>
+<h3>Server side</h3>
+<p>In the adapter code, create event handlers by using:<br />
+[code lang="javascript"]<br />
+WL.Server.createEventHandler(filter, handlerFunction);<br />
+[/code]<br />
+Events that match the filter are passed to <span class="inline-code">handlerFunction</span>.<br />
+Filter examples:</p>
+<ul>
+<li><span class="inline-code">{status: "platinum"}</span> – handle platinum members only</li>
+<li><span class="inline-code">{hotel: { country: "USA" } }</span> – hotels in the USA</li>
+<li><span class="inline-code">{}</span> – all events</li>
+</ul>
+<p>Register the event handlers by using:<br />
+[code lang="javascript"]<br />
+WL.Server.setEventHandlers([...]);<br />
+[/code]</p>
+<blockquote><p>For more information, see the topic about working with geofences and triggers in the user documentation.</p></blockquote>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesNativeAndroidProject.zip">Click to download</a> the Native project.</p>
+<p>The LocationServices sample demonstrates:</p>
+<ul>
+<li>Acquiring an initial position
+</li>
+<li>Using a Geo profile
+</li>
+<li>Using Geo Triggers for DwellInside, Exit area, and PositionChange
+</li>
+<li>Transmitting event to the server on DwellInside and Exit area
+</li>
+<li>Ongoing acquisition
+</li>
+</ul>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_sample.png"><img src="{{ site.baseurl }}/assets/10_04_sample.png" alt="10_04_sample" width="338" height="600" class="aligncenter size-full wp-image-1500" /></a></p>
