@@ -2,14 +2,14 @@
 {% if minLevel == nil %}{% assign minLevel = 1 %}{% endif %}
 
 <div class="row outerbreadcrumb">
-  <div class="col-xs-8">
+  <div class="leftPart col-lg-8 col-xs-12">
     <ol class="breadcrumb">
       {% assign documents = site.pages | sort: "weight" %}
       {% include get-parents.html page=page minLevel=minLevel docs=documents %}
       <li class="active">{{ page.title }}</li>
     </ol>
   </div>
-  <div class="hidden-xs hidden-md hidden-sm col-xs-4">
+  <div class="rightPart hidden-xs hidden-md hidden-sm col-lg-4">
     {% if page.relevantTo %}
     <ul class="relevantTo">
       {% for persona in page.relevantTo %}
