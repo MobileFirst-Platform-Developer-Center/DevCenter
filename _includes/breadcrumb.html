@@ -10,14 +10,12 @@
     </ol>
   </div>
   <div class="hidden-xs hidden-md hidden-sm col-xs-4">
+    {% if page.relevantTo %}
     <ul class="relevantTo">
-      <li class="ios" title="ios">&nbsp;</li>
-      <li class="android">&nbsp;</li>
-      <li class="cordova">&nbsp;</li>
-      <li class="windows8">&nbsp;</li>
-      <li class="windows10">&nbsp;</li>
-      <li class="windowsphone8">&nbsp;</li>
-      <li class="windowsphone10">&nbsp;</li>
+      {% for persona in page.relevantTo %}
+        <li class="{{persona}}" title="{{persona}}">&nbsp;</li>
+      {% endfor %}
     </ul>
+    {% endif %}
   </div>
 </div>
