@@ -3,6 +3,10 @@ if(openedItems.length){
   openedItems[0].closable = false;
 }
 
+$('.tutorial .col-sm-2 .navmenu-default li ul').on('click',function(e){
+  e.stopPropagation();
+});
+
 $('.tutorial .col-sm-2 .navmenu-default li').on({
     "shown.bs.dropdown": function() {
       this.closable = false;
