@@ -2,6 +2,7 @@
 layout: tutorial
 title: All Tutorials
 weight: 1
+relevantTo: [ios,android,windows8,windows10,windowsphone8,windowsphone10,cordova]
 ---
 
 ### <a href="../hello-world/">Hello World</a>
