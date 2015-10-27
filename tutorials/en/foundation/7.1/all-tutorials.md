@@ -2,6 +2,7 @@
 layout: tutorial
 title: All Tutorials
 weight: 1
+relevantTo: [ios,android,windows8,windows10,windowsphone8,windowsphone10,cordova]
 ---
 
 Review all available tutorials for MobileFirst Platform products.

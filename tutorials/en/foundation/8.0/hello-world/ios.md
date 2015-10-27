@@ -2,7 +2,7 @@
 layout: tutorial
 title: iOS Quick Start
 weight: 1
-relevantTo: [ios, android]
+relevantTo: [ios]
 ---
 
 ## Overview
