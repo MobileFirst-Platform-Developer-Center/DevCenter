@@ -19,6 +19,7 @@
 {% for p in siblings %}
     <li><a tabindex="-1" href="{{site.baseurl}}{{p.url}}{{p.use_dropdown_home}}"{%if p.url == page.url%} class="active"{%endif%}>{{ p.title }}</a>
     </li>
+    <li role="separator" class="divider"></li>
 {% endfor %}
 </ul>
 
