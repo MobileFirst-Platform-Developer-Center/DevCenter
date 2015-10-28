@@ -1,7 +1,12 @@
 ---
 title: Hello World
-custom_css:
- - css/blog.css
+date: 2015-10-28 22:11:23.000000000 +02:00
+author:
+  login: antona@us.ibm.com
+  email: antona@us.ibm.com
+  display_name: AntonAleksandrov
+  first_name: Anton
+  last_name: Aleksandrov
 ---
 
 This is the beginning of my blog post...
