@@ -9,3 +9,9 @@ h1, h4 {
 .label {
     margin-right: 5px;
 }
+
+img {
+    max-width: 100%;
+    margin: 30px auto 30px auto;
+    display: block;
+}

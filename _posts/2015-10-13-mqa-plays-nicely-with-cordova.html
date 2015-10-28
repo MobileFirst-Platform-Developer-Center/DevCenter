@@ -8,6 +8,7 @@ status: publish
 categories: []
 tags:
 - MobileFirst_Platform
+- MobileFirst Quality Assurance
 meta:
   _wpcom_is_markdown: '1'
   _edit_last: '6643'
@@ -21,68 +22,91 @@ author:
   first_name: Christopher
   last_name: Dawson
 ---
-<p>My brother and I never got along when we were kids. I suppose that happens with most siblings. I would want to watch a movie, while he preferred to read comic books. We quite simply didn’t mesh that well together.<br />
-Similarly, IBM Mobile Quality Assurance (MQA) and Apache Cordova are great products by themselves, but they could never interact with each other. Until now. In this tutorial, I will show you just how easy it is to make them work together (much easier than for a parent of siblings).<br />
-Cordova is one of the hot new ways to develop mobile apps by leveraging the web technologies that are in use today. What does this mean for developers? Well, it is no longer the estranged little brother to IBM MQA. Now, they play nicely together.  In the rest of this post, I will explain how.</p>
-<h3>Register for IBM Bluemix</h3>
-<p>To implement MQA into a Cordova app, you must first register for Bluemix and create an instance of MQA. This tutorial isn’t about how to register for Bluemix, so I’ll point you to the instructions:<br />
+<p>My brother and I never got along when we were kids. I suppose that happens with most siblings. I would want to watch a movie, while he preferred to read comic books. We quite simply didn’t mesh that well together.
+Similarly, IBM Mobile Quality Assurance (MQA) and Apache Cordova are great products by themselves, but they could never interact with each other. Until now. In this tutorial, I will show you just how easy it is to make them work together (much easier than for a parent of siblings).</p>
+
+<p>Cordova is one of the hot new ways to develop mobile apps by leveraging the web technologies that are in use today. What does this mean for developers? Well, it is no longer the estranged little brother to IBM MQA. Now, they play nicely together.  In the rest of this post, I will explain how.</p>
+
+<h4>Register for IBM Bluemix</h4>
+<p>To implement MQA into a Cordova app, you must first register for Bluemix and create an instance of MQA. This tutorial isn’t about how to register for Bluemix, so I’ll point you to the instructions:
 <a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_setup_mqa_services_saas.html">www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_setup_mqa_services_saas.html</a>. Don’t worry, it is super easy!</p>
+
 <p>After creating the instance of MQA, follow these steps to instrument MQA into your Cordova app:</p>
-<h3>Download and install the Cordova CLI from the Apache website</h3>
+
+<h4>Download and install the Cordova CLI from the Apache website</h4>
 <p><a href="http://cordova.apache.org/docs/en/5.0.0//guide_cli_index.md.html#The%20Command-Line%20Interface">http://cordova.apache.org/docs/en/5.0.0//guide_cli_index.md.html#The%20Command-Line%20Interface</a>.</p>
-<h3>Download and unzip the Cordova MQA SDK</h3>
+
+<h4>Download and unzip the Cordova MQA SDK</h4>
 <p><a href="http://www.ibm.com/support/docview.wss?uid=swg27044490">www.ibm.com/support/docview.wss?uid=swg27044490</a>.</p>
-<h3>Create your Cordova project</h3>
-<p>[code]<br />
-C:\Cordova&gt;cordova create Hello com.example hello<br />
-[/code]</p>
-<h3>Change the directory to your project folder</h3>
-<p>[code]<br />
-C:\Cordova&gt;cd Hello<br />
-[/code]</p>
-<h3>Add the platform (android/ios)</h3>
-<p>[code]<br />
-C:\Cordova\Hello&gt;cordova platform add android<br />
-[/code]</p>
-<h3>Add the 'device' plugin</h3>
-<p>[code]<br />
-C:\Cordova\Hello&gt;cordova plugin add cordova-plugin-device<br />
-[/code]</p>
-<h3>Add the MQA plugin</h3>
-<p>[code]<br />
-C:\Cordova\Hello&gt;cordova plugin add &quot;C:\Users\IBM_ADMIN\Desktop\MQA Plugin&quot;<br />
-[/code]<br />
+
+<h4>Create your Cordova project</h4>
+<p><pre>
+C:\Cordova&gt;cordova create Hello com.example hello
+</pre></p>
+
+<h4>Change the directory to your project folder</h4>
+<p><pre>
+C:\Cordova&gt;cd Hello
+</pre></p>
+
+<h4>Add the platform (android/ios)</h4>
+<p><pre>
+C:\Cordova\Hello&gt;cordova platform add android
+</pre></p>
+
+<h4>Add the 'device' plugin</h4>
+<p><pre>
+C:\Cordova\Hello&gt;cordova plugin add cordova-plugin-device
+</pre></p>
+
+<h4>Add the MQA plugin</h4>
+<p><pre>
+C:\Cordova\Hello&gt;cordova plugin add &quot;C:\Users\IBM_ADMIN\Desktop\MQA Plugin&quot;
+</pre>
+
 Or, the location of the MQA plugin.</p>
-<h3>Add the MQA.startNewSession code in index.js file</h3>
+
+<h4>Add the MQA.startNewSession code in index.js file</h4>
 <p>Include your appkey from the MQA instance in Bluemix. The index.js file is located in the project_root_folder/www/js folder.</p>
-<p>[code lang="java"]<br />
-onDeviceReady: function() {<br />
-        app.receivedEvent('deviceready');<br />
-        MQA.startNewSession({<br />
-                mode: 'QA',<br />
-                reportOnShakeEnabled: true,<br />
-            android: {<br />
-                    appKey: &quot;your app key&quot;,<br />
-                    notificationsEnabled: true<br />
-                     },<br />
-            ios: {<br />
-                    appKey: &quot;your app key&quot;,<br />
-                    screenShotsFromGallery: true<br />
-                 }<br />
-            }, {<br />
-                    success: function (params) { console.log(&quot;MQA initialized&quot;, params); },<br />
-                    error: function (error) { console.error(error); }<br />
-               });</p>
-<p>    }<br />
-[/code]</p>
-<h3>Build the app</h3>
-<p>[code]<br />
-C:\Users\IBM_ADMIN\Desktop\Cordova\Hello&gt;cordova build<br />
-[/code]</p>
-<h3>Run the app</h3>
-<p>[code]<br />
-C:\Users\IBM_ADMIN\Desktop\Cordova\Hello&gt;cordova run<br />
-[/code]</p>
+
+{% highlight javascript %}
+onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+        MQA.startNewSession({
+            mode: 'QA',
+            reportOnShakeEnabled: true,
+            android: {
+                appKey: "your app key",
+                notificationsEnabled: true
+            },
+            ios: {
+                appKey: "your app key",
+                screenShotsFromGallery: true
+            }
+            }, 
+            {
+                success: function (params) {
+                    console.log("MQA initialized", params);
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            }
+        );
+}
+{% endhighlight %}
+
+<h4>Build the app</h4>
+<p><pre>
+C:\Users\IBM_ADMIN\Desktop\Cordova\Hello&gt;cordova build
+</pre></p>
+
+<h4>Run the app</h4>
+<p><pre>
+C:\Users\IBM_ADMIN\Desktop\Cordova\Hello&gt;cordova run
+</pre></p>
+
 <p>If it is configured correctly, you see screens that include a short tutorial on how to use MQA. If you want to try this procedure, <a href="http://ibm.biz/MobileFirstQualityAssuranceTrial">try MQA now on IBM Bluemix</a>.</p>
-<p>My brother and I compromised and now watch comic book movies together. Similarly, MQA and Cordova integrate seamlessly with each other.<br />
+
+<p>My brother and I compromised and now watch comic book movies together. Similarly, MQA and Cordova integrate seamlessly with each other.
 Stay tuned for more posts from <a href="mailto:sdpuryea@us.ibm.com">Rob Puryear</a> and the IBM MQA team.</p>

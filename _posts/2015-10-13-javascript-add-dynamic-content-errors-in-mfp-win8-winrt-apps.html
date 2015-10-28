@@ -26,14 +26,18 @@ author:
   first_name: Vinod
   last_name: Appajanna
 ---
-<p>Have you experienced the "add dynamic content Errors" in MFP Windows Universal apps ?</p>
+<p>Have you experienced the "add dynamic content Errors" in MFP Windows Universal apps?</p>
+
 <p>When you are building a Mobilefirst Hyrid app using frameworks like AngularJS, you will see some errors on the Windows universal platform. Windows Universal apps are built as Win JS apps. the WinJS Universal apps are built on the Windows 8 WinRT platform. The reason behind this is that these frameworks relies on innerHtml that injects the dynamic contents. For security reason on Windows Phone 8.1 or Windows Surface / Desktop 8.1 apps Microsoft doesn't allow to inject scripts this way.</p>
 <p>Running such apps results in the below error:</p>
-<blockquote style="font-size: 0.8em;font-family: courier"><p>
+
+<blockquote><p>
 Unhandled exception at line 12229, column 11 in ms-appx://b5fb28e5-26bc-40e7-b0b8-91afcaef904d/www/default/lib/ionic/js/ionic.bundle.js</p>
-<p>    0x800c001c - JavaScript runtime error: Unable to add dynamic content. A script attempted to inject dynamic content, or elements previously modified dynamically, that might be unsafe. For example, using the innerHTML property to add script or malformed HTML will generate this exception. Use the toStaticHTML method to filter dynamic content, or explicitly create elements and attributes with a method such as createElement.  For more information, see http://go.microsoft.com/fwlink/?LinkID=247104
-</p></blockquote>
+0x800c001c - JavaScript runtime error: Unable to add dynamic content. A script attempted to inject dynamic content, or elements previously modified dynamically, that might be unsafe. For example, using the innerHTML property to add script or malformed HTML will generate this exception. Use the toStaticHTML method to filter dynamic content, or explicitly create elements and attributes with a method such as createElement.  For more information, see http://go.microsoft.com/fwlink/?LinkID=247104
+</blockquote>
+
 <p>To avoid or ignore such errors while using the frameworks in your app, Microsoft provides a way to disable the scripts injection validation. It can be disabled by just wrapping the function that injects the content dynamically with MSApp.execUnsafeLocalFunction and in this way your code works without errors.</p>
+
 <p>Example:</p>
 <pre>
 MSApp.execUnsafeLocalFunction(<span style="color:Blue">function</span>() {
@@ -41,9 +45,11 @@ MSApp.execUnsafeLocalFunction(<span style="color:Blue">function</span>() {
   body.innerHTML = <span style="color:#A31515">'&lt;div style="color:'</span> + textColor + <span style="color:#A31515">'"&gt;example&lt;/div&gt;'</span>;
 });
 </pre>
+
 <p>The only problem in here is that we will have to search and replace it in all the places in the framework files and this causes maintenance overheads and is error prone.</p>
 <p>Can we avoid modifying the framework files and still make the app work ? Yes, we have tried our sample with one of the below JavaScript dynamic content Shim. It works just by including the JavaScript file before any your framework file is loaded.Include the <a href="https://github.com/MSOpenTech/winstore-jscompat" target="_blank">JavaScript Dynamic Content shim for Windows Store apps</a> in your app to address this issue.</p>
 <p>Refer the below Microsoft links for more information on how to build a secured WinJS apps</p>
+
 <ul>
 <li><em><a href="https://msdn.microsoft.com/en-in/library/windows/apps/hh767331.aspx" target="_blank">About execUnsafeLocalFunction method</a></em></li>
 <li><a href="https://msdn.microsoft.com/en-us/library/windows/apps/hh849625.aspx" target="_blank">Developing secure apps</a></li>

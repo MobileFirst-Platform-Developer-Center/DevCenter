@@ -93,8 +93,8 @@ custom_css:
 <div class="container">
     <div id="blogPosts">
       <h3 class="blogPostsHeading">Recent Updates</h3>
-      {% for post in site.posts limit:5 %}
-        <p class="postDate">{{post.date}}</p>
+      {% for post in site.posts limit:10 %}
+        <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
         <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
       {% endfor %}
     </div>
