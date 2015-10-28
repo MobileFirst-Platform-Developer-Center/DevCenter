@@ -128,8 +128,8 @@
     "path": "/video-gallery",
   },
   {
-    "name": "Blogs",
-    "path": "/blogs",
+    "name": "Blog",
+    "path": "/blog",
   },
   {
     "name": "Help",
