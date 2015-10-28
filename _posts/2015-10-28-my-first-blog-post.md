@@ -2,11 +2,8 @@
 title: Hello World
 date: 2015-10-28 22:11:23.000000000 +02:00
 author:
-  login: antona@us.ibm.com
-  email: antona@us.ibm.com
-  display_name: AntonAleksandrov
-  first_name: Anton
-  last_name: Aleksandrov
+  display_name: Anton Aleksandrov
+tags: [MobileFirst_Platform,hello_world]
 ---
 
 This is the beginning of my blog post...
