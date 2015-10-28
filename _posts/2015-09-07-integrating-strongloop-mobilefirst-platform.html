@@ -1,0 +1,120 @@
+---
+
+title: Integrating StrongLoop with MobileFirst Platform
+date: 2015-09-07 13:38:36.000000000 +03:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _rawhtml_settings: '0,0,0,0'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442522002;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:17659;}i:1;a:1:{s:2:"id";i:16161;}i:2;a:1:{s:2:"id";i:16523;}}}}
+author:
+  login: usegev@il.ibm.com
+  email: usegev@il.ibm.com
+  display_name: UriSegev
+  first_name: Uri
+  last_name: Segev
+---
+<h1>Overview</h1>
+<p>Most mobile applications need to access data stored in the enterprise's back-end system of records and other back-end systems. The traditional way for accessing those back-end systems in MobileFirst Platform (MFP) is using adapters. Adapters are pieces of code written in JavaScript that are called fom the mobile application using RPC over HTTP and that make a call to some back-end system.</p>
+<p>In addition to the ability to integrate with back-end systems from within a mobile application using adapters, MFP provides the following capabilities which are very important to any mobile application:</p>
+<li>Security – Protect each one of the APIs which are called by the mobile application, allowing for different levels of security for each API.
+</li>
+<li>Operational Analytics – Monitoring all events that occur in the system and storing them to gain significant information that can be used to enhance the system's performance as well as gain insight into the usage of the applications and the back-end services.
+</li>
+<p>Recently, the de-facto standard for accessing back-end systems has become RESTful APIs, because of performance, scalability, simplicity and other reasons.  This is true for all types of applications, but especially mobile applications because of the demands on performance.</p>
+<p>IBM added support for REST APIs with MFP version 7.0 and has continued to enhance that function in more recent releases.  The REST adapters can be written in Java (JAX-RS) or JavaScript and deployed to the MFP server.</p>
+<p>In addition to deployed adapters, we also support external REST APIs. External REST APIs are any REST service which runs outside the context of MFP and can still be called from within a mobile application. Not only it can be invoked from a mobile application, it can also be protected using the MFP security and logged to the MFP Analytics as if it was an adapter running inside MFP.  This capability is extremely important as it allows operators to see how specific back end services may be contributing to problems on mobile applications. The following article describes how MFP integrates with external node.js REST APIs: <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.dev.doc/dev/r_oauth_filter_onprem.html">www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.dev.doc/dev/r_oauth_filter_onprem.html</a></p>
+<p>This article shows how to integrate StrongLoop and MFP so that the REST APIs that were created by StrongLoop and run on the StrongLoop server will be treated as external REST services, just as described above.</p>
+<h1>Authentication through an access token over OAuth 2.0</h1>
+<p>The OAuth 2.0 authorization framework enables an application to obtain limited access to an HTTP service.</p>
+<p>The implementation uses three roles of the OAuth protocol:</p>
+<li>
+<b>Client:</b> An application that requests protected resources.</p>
+<p>In this case the client is a mobile application invoking the WLResourceRequest API in the MFP SDK to access remote resources. This API handles the OAuth-based security model protocol and invokes the required challenges.
+</li>
+<li>
+<b>Authorization Server:</b> The server that issues access tokens to the client after it has successfully authenticated the resource owner and obtained authorization.</p>
+<p>In this case the MFP server will act as the authorization server. It will authenticate and authorize clients by running a series of challenges to the client. When the client answers all challenges appropriately, MFP will send back to the client an Access Token which can be used to access external resources.</p>
+<p>The following diagram shows the flow in which the client obtains an access token from the MFP server.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/image001.png"><img src="{{ site.baseurl }}/assets/backup/image001.png" alt="image001" width="690" height="532" class="aligncenter size-full wp-image-17623" /></a></p>
+</li>
+<li>
+<b>Resource Server:</b> The server that hosts the protected resources. It can accept, and respond to, protected resource requests by using access tokens.</p>
+<p>In this case the StrongLoop server, together with the node.js  TokenValidation library, will act as the resource server while all the REST APIs hosted on the server are the different resources. The Token Validation library will intercept all REST API calls, will validate the OAuth Access Token, and if the token is valid and contains the right scopes, will invoke the REST API.</p>
+<p>The following diagram shows how StrongLoop, using the npm token validation library, verifies the access token off-line, i.e., without accessing the MFP server. For this to work, the library will connect MFP once to get the public key and will then do all validation locally.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/MFP_Security_validation_cc_BG-720x560-landscape.jpg"><img src="{{ site.baseurl }}/assets/backup/MFP_Security_validation_cc_BG-720x560-landscape.jpg" alt="MFP_Security_validation_cc_BG 720x560 landscape" width="720" height="560" class="aligncenter size-full wp-image-17622" /></a></p>
+<h1>Configuring the StrongLoop API</h1>
+<p>For your StrongLoop Server to accept the access token, you must add the node.js Token Validation library, passport-mfp-token-validation, to your code. The passport-mfp-token-validation npm module provides passport validation strategy and a verification function to validate access tokens and ID tokens that are issued by the MobileFirst Server. It also supports logging events to the MobileFirst Platform Analytics server.</p>
+<p>The library can be downloaded through npm:<br />
+<code>$ npm install passport<br />$ npm install passport-mfp-token-validation</code></p>
+<p>Once installed, it can be used for protecting APIs as well as reporting analytics events.</p>
+<p>The following code example shows how to use an MFP Strategy in a StrongLoop application to initiate Analytics logging and to protect APIs. The code changes are done in the <code>server/server.js</code> file.</p>
+<p>[code lang="JavaScript"]<br />
+var passport = require('passport-mfp-token-validation').Passport,<br />
+    mfpStrategy = require('passport-mfp-token-validation').Strategy;</p>
+<p>passport.use(new mfpStrategy({<br />
+    publicKeyServerUrl:'http://mfp-host:10080/WLProject',<br />
+    // The analytics item is optional and only required if you wish<br />
+    // to log analytics events to MFP.<br />
+    analytics : {<br />
+	  onpremise: {<br />
+    		url : 'http://mfp-host:10080/analytics-service/data',<br />
+    		username : 'admin',<br />
+    		password : 'admin'<br />
+	  }<br />
+    }<br />
+}));<br />
+app.use(passport.initialize());</p>
+<p>// Helper functions to have one liner API protection<br />
+var cont = function(req, res){<br />
+    next();<br />
+};</p>
+<p>var auth = function(scopes) {<br />
+    return passport.authenticate('mobilefirst-strategy', {<br />
+        session: false,<br />
+        scope: scopes<br />
+    });<br />
+}<br />
+[/code]</p>
+<p>Then, for every API you would like to protect, add the following lines to the same file:</p>
+<p>[code lang="JavaScript"]<br />
+//protect the GET CoffeeShops API with MFP strategy using scope 'Realm1'<br />
+app.get('/api/CoffeeShops', auth('Realm1'), cont);</p>
+<p>//protect the PUT CoffeeShop API with MFP strategy using scope 'Realm2'<br />
+app.put('/api/CoffeeShops/:id', auth('Realm2'), cont);<br />
+[/code]</p>
+<p>Please note, the function that you specify in each line above must call <code>next()</code> so that the StrongLoop implementation will be called (just like in the <code>cont()</code> method above). You should not define new end-points, just invoke the ones created by StrongLoop.</p>
+<h1>Using the WLResourceRequest API on the client</h1>
+<p>The MobileFirst WLResourceRequest API provides built-in support for accessing REST APIs using the MobileFirst access tokens for the following platforms:<br />
+•   Hybrid – JavaScript<br />
+•   Android<br />
+•   iOS<br />
+•   Windows Phone 8.1</p>
+<h2>Use of WLResourceRequest</h2>
+<p>This JavaScript example shows how to use the client-side API for access an external REST service.<br />
+[code lang="JavaScript"]<br />
+function callProtectedRestAPI() {<br />
+    var url = EXTERNAL_SERVER_URL + REST_CONTEXT_ROOT + PATH_PROTECTED;<br />
+    var request = new WLResourceRequest(url, WLResourceRequest.GET);<br />
+    request.send().then(<br />
+        function(response){<br />
+            showResult(response.responseJSON.description);<br />
+        },<br />
+        function(error){<br />
+            showErrorResult('failed to get scope!');<br />
+        }<br />
+    );<br />
+}<br />
+[/code]</p>
+<h1>Additional Resources</h1>
+<p>Additional information about the Token Validation library and all of its parameters can be found <a href="http://www.npmjs.com/package/passport-mfp-token-validation">here</a>.</p>
+<p>In depth information about the OAuth Security Model can be found <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_security_model.html">here</a>.</p>
+<p>Details about how to configure the MFP server to support external resources can be found <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/using-mobilefirst-server-authenticate-external-resources/">here</a>.</li>

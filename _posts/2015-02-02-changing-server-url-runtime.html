@@ -1,0 +1,82 @@
+---
+
+title: Changing the Server URL during runtime
+date: 2015-02-02 17:09:55.000000000 +02:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _rawhtml_settings: '0,0,1,0'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442521296;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:3550;}i:1;a:1:{s:2:"id";i:13793;}i:2;a:1:{s:2:"id";i:16161;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<h2>Introduction</h2>
+<p>An often requested feature by customers for MobileFirst Platform (previously Worklight) is having the ability to change, during runtime, the MobileFirst Server URL an application will attempt connecting to.</p>
+<p>What can you do with it, you ask? Well, an example scenario would be a single client application for multiple sites/locations or customers. It could be likened to the MobileFirst Application Center Installer app, where you are not required to re-build the application for every server, rather you simply set a different IP address via the app's UI in order to connect to a different Application Center server to be served whichever applications that were deployed to it.</p>
+<p>Now, starting MobileFirst Platform v6.3, this is also possible for Hybrid (iOS, Android) and Native (iOS, Android, WP8) applications attempting to connect to a MobileFirst Server during runtime and without the need to re-build the application.</p>
+<p>In this blog post I will provide a quick usage example for the Hybrid API methods, for getting and setting the server URL in a simple demo application.</p>
+<h3>Note on feature availability</h3>
+<p>This feature can be used only in emulators/simulators and physical devices.<br />
+It is <em>not</em> supported while previewing the application's web resources in the MobileFirst Console.</p>
+<h2>Download and documentation</h2>
+<p>You can download the demo application <a href="https://github.com/IdanAdar/Change-Server-URL">from my GitHub repository</a>.<br />
+For API documentation visit this <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_6.3.0/com.ibm.worklight.getstart.doc/what_s_new/c_wn_api.html">IBM MobileFirst Platform Foundation user documentation page</a>.</p>
+<h2>Demo application</h2>
+<p>So what's going on in the application?</p>
+<p>As written above, this is a pretty simple application. It allows you to get &amp; set the server URL as well as provide a verification that the URL change was successful. After the image is a quick rundown of the application's flow.</p>
+<p><img src="{{ site.baseurl }}/assets/backup/app-ui.png" alt="app-ui" width="337" height="600" class="aligncenter size-full wp-image-6947" /></p>
+<h3>Application flow</h3>
+<h4>Step 1</h4>
+<p><code>WL.Client.connect</code> is called in order to connect to a MobileFirst Server. This can be either the MobileFirst Development Server in Eclipse, or a remote MobileFirst Server.</p>
+<p>One pre-requisite is to make sure the .wlapp file of the application is deployed at each server that you intend to be able to connect to from the application.</p>
+<h4>Step 2</h4>
+<p>To find out what is the URL of the current server the application is intended to connect to, <code>WL.App.getServerUrl</code> is used:</p>
+<p>[code lang="js"]function getServerURL() {<br />
+    WL.App.getServerUrl(getServerURLSuccess, getServerURLFailure)<br />
+}</p>
+<p>function getServerURLSuccess(serverURL) {<br />
+    WL.SimpleDialog.show(<br />
+	&quot;Change Server URL&quot;, &quot;Server URL is: &quot; + JSON.stringify(serverURL),<br />
+	[{<br />
+	    text: &quot;Close&quot;, handler: function() {}<br />
+	}]<br />
+    )<br />
+}<br />
+...<br />
+...[/code]</p>
+<p><img src="{{ site.baseurl }}/assets/backup/before-address.png" alt="before-address" width="337" height="600" class="aligncenter size-full wp-image-6948" /></p>
+<h4>Step 3</h4>
+<p>The application successfully connected to a MobileFirst server using the current server URL. To change the server URL to another server's URL, <code>WL.App.setServerUrl</code> is used. In this sample I chose to have the end-user manually enter a fully qualified address by inputting the <code>protocol</code>, <code>host/IP address</code>, <code>port</code> and <code>context root</code>, but of course this is purely applicative.</p>
+<p>Possible alternatives:</p>
+<ul>
+<li>A UI with a dropdown or otherwise, pre-filled with pre-defined server URLs</li>
+<li>Entering only the context root or only the host/IP address (and handling in the app logic any string operations)</li>
+<li>You name it</li>
+</ul>
+<p>[code lang="js"]function setServerURL() {<br />
+    // Get the URL from the text field.<br />
+    var serverURL = $(&quot;#serverURL&quot;).val();<br />
+    WL.App.setServerUrl(serverURL, setServerURLSuccess, setServerURLFailure);<br />
+}</p>
+<p>function setServerURLSuccess() {<br />
+    // Display the newly set server URL.<br />
+    getServerURL();<br />
+}<br />
+...<br />
+...[/code]</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/after-address.png"><img src="{{ site.baseurl }}/assets/backup/after-address.png" alt="after-address" width="337" height="600" class="aligncenter size-full wp-image-6949" /></a></p>
+<h4>Step 4</h4>
+<p>After setting the new server URL, we can now tap the connect button to connect again. Viola!</p>
+<p><img src="{{ site.baseurl }}/assets/backup/connect-success1.png" alt="connect-success1" width="337" height="600" class="aligncenter size-full wp-image-6960" /></p>

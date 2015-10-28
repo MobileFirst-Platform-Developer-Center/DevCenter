@@ -1,0 +1,69 @@
+---
+
+title: 'Windows Universal Apps: Part 1 - Native C# apps'
+date: 2015-03-29 18:50:11.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- Mobile
+tags:
+- mobile
+- MobileFirst_Playground
+- windows
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '12127'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442508791;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:16220;}i:1;a:1:{s:2:"id";i:14955;}i:2;a:1:{s:2:"id";i:16297;}}}}
+author:
+  login: ajay.chebbi@in.ibm.com
+  email: ajay.chebbi@in.ibm.com
+  display_name: AjayChebbi devWorks
+  first_name: AJAY
+  last_name: CHEBBI
+---
+<p>In April 2014 Microsoft <a href="http://blogs.windows.com/buildingapps/2014/04/02/extending-platform-commonality-through-universal-windows-apps/" target="_blank">announced Universal Apps</a> for Windows 8.1 . Universal app development is a paradigm in which you can use a lot of shared code between Windows Tabs and Windows Phone. In 8.1 – Microsoft introduced the <a href="https://msdn.microsoft.com/library/windows/apps/dn726767.aspx" target="_blank">Windows Runtime API (Win RT)</a> that works on the Windows Phone 8.1 as well. Up until Windows Phone 8.0 – the Windows Phone apps were Windows Silverlight apps. Silverlight Phone apps don’t migrate to the Windows tablet world; they <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn762318.aspx" target="_blank">have to be re-written</a>. Starting 8.1 you can write Windows Phone apps using the Win RT API – the same API you used to use to build the Windows tablet apps. A detailed explanation is available  in a <a href="http://www.slideshare.net/ITCamp/it-camp-2014-developing-for-windows-phone-81-dan-ardelean" target="_blank">MS IT Camp presentation</a> by Dan Ardelean</p>
+<p><img src="{{ site.baseurl }}/assets/backup/UnivApp1.jpg" alt="" target="_blank" /><br />
+Source : https://dev.windows.com/en-us/develop/building-universal-windows-apps</p>
+<h1>IBM MobileFirst Windows SDKs</h1>
+<p>Note: At the time of the article the IBM MobileFirst Foundation 7.0 does not have a formal support for Windows Universal apps</p>
+<p>IBM MobileFirst 7.0 has 4 SDKs available for Windows app developers. The WindowsPhone8 native and hybrid and Windows8 native and hybrid. The Hybrid SDKs are for developing Cordova Hybrid apps across all phone types.</p>
+<p><img src="{{ site.baseurl }}/assets/backup/IBMWinSDKs.jpg" alt="" target="_blank" /></p>
+<h1>Building IBM MobileFirst Windows Universal C# apps (Native)</h1>
+<p>In this post we will see how you can build a IBM MobileFirst Windows Universal native C# app using the Windows 8 Native SDKs. If you are new to Windows Universal apps, a very <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn609832.aspx" target="_blank">detailed article </a> is available in the Windows dev center. The IBM MobileFirst Windows8 SDK is written on Windows RT APIs. So it also happens to work on Windows Phone 8.1. This will however not work on Windows Phone 8.0 as Windows Phone 8.0 can run only Silverligt apps. If you have written a app for Windows 8 tabs, you can migrate them to a Windows phone app pretty easily by adding a Windows Phone project to it</p>
+<h3>1. Create the IBM MF Windows 8 native app</h3>
+<p><img src="{{ site.baseurl }}/assets/backup/AjayCreateWinApp.jpg" alt="" /></p>
+<p>This will give you the necessary Windows artifacts to create the universal app.</p>
+<p><img src="{{ site.baseurl }}/assets/backup/AjayCreateWinApp2.jpg" alt="" /></p>
+<p>This also is the “server environment” that you will be connecting to from your app from the tab as well as the phone.</p>
+<h3>2. Create the Universal App </h3>
+<h4> a. New Visual Studio project</h4>
+<p>In a Visual Studio 2013 solution – create a Windows Universal C# App.</p>
+<p><img src="{{ site.baseurl }}/assets/backup/AjayCreateWinProj1.jpg" alt="" /></p>
+<p>This in fact adds 3 projects to your solution<br />
+1. [appname].Windows (Windows 8.1)<br />
+2. [appname].WindowsPhone (Windows Phone 8.1)<br />
+3. [appname].shared (shared code)</p>
+<p>So as you can see in essence you are still creating and maintaining 2 apps.</p>
+<h4>b. Migrating from existing Windows 8 project</h4>
+<p>If you have a existing IBM MF Windows8 app – its easy to convert it to a Universal app. Right click on the [appname].Windows project in your solution and select “Add Phone app”. This will bring your solution to the Universal app template as above.</p>
+<h3>3. Add the IBM MF artifacts to your Windows Phone 8.1 project</h3>
+<p>Now add the following as <code>References</code> to the project from the location that the IBM MF Windows8 native app.</p>
+<ol>
+<li>Newstonsoft.Json.dll</li>
+<li>worklight-windows8.dll</li>
+</ol>
+<p><img src="{{ site.baseurl }}/assets/backup/AjayCreateWinProj2.jpg" alt="" /></p>
+<p>Also <code>Add > Existing item </code> the wlclient.properties file to the root of the project . Make sure you</p>
+<ol>
+<li>Build Action = Content</li>
+<li>Copy to Output Directory = Copy Always</li>
+</ol>
+<p>If you are migrating from a existing project – you would have already done this for the Windows 8.1 project. If this is a brand new project  – repeat this for the Windows 8.1 project as well.</p>
+<h3>4. Code the app </h3>
+<p>Now you are ready to add code to the app. You can use the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-windows-8-development-7-0/" target="_blank"> getting started </a> as a starting point. For <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/notifications/push-notification-native-windows-8-applications/" target="_blank">push notifications</a> refer to the Windows 8 Native section. Once you are done coding your app – the build will produce 2 installers one for the tab app and one for the phone that you can use to submit to the app stores.</p>
+<p><b>Summary:</b><br />
+All the features of the IBM MF Windows8 SDK should work on the Windows Phone 8.1 as well. Make sure you refer to the SDK as the IBM MF Windows 8 Native SDK and not the Windows Phone SDK. The Existing IBM MF Windows Phone SDK is Silverlight based and none of features of that SDK are applicable to the apps built for the Windows Phone 8.1 using the IBM MF Windows 8 SDK.</p>
+<p>Let me know your experience in using the IBM MobileFirst Windows 8 Native SDK in a Windows Universal app.</p>

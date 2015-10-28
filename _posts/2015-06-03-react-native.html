@@ -1,0 +1,87 @@
+---
+
+title: React Native for iOS with IBM MobileFirst Platform Foundation
+date: 2015-06-03 15:56:31.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- v7.0
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '10080'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: cshunger@us.ibm.com
+  email: cshunger@us.ibm.com
+  display_name: cshunger
+  first_name: Chevy
+  last_name: Hungerford
+---
+<h1>MobileFirst Platform Foundation with React Native for iOS</h1>
+<p>
+In the video below I go through a simple app using the MobileFirst Platform Foundation iOS SDK and a MobileFirst Platform Foundation HTTP Adapter with React Native for iOS as the front end framework. Below I will include important snippets of how to export the native MobileFirst iOS SDK methods into the React Native javascript code.</p>
+<p>[embed]https://youtu.be/fz3rWIREqTE[/embed]</p>
+<p>Below I think one of the more important chunks of code to integrate React Native for iOS with the MobileFirst Platform Foundation. The code chunk is the MobileFirst Platform Foundation Adapter invocation call from the file <span sytle="font-family:'Courier New'">ResourceRequest.m</span> being exported into the React Native javascript code. In this section of code there are two important React Native methods. One being <span sytle="font-family:'Courier New'">RCT_EXPORT_MODULE();</span> which will allow you to export a native class into the React Native javascript. The other is <span sytle="font-family:'Courier New'">RCT_EXPORT_METHOD(...)</span> this class explicitly tells React to expose this class's method for use in the React Native javascript. Exporting the particular method below is going to pass in a path named "path" and also a callback named "results." The adapter call is getting a list of movies stored as JSON data to a particular path (this path ended up not being needed). Then that data is passed as the callback into the React Native code.<br />
+[code lang="objc"]<br />
+#import &lt;Foundation/Foundation.h&gt;<br />
+#import &quot;WLResourceRequest.h&quot;<br />
+#import &quot;ResourceRequest.h&quot;</p>
+<p>@implementation ResourceRequest<br />
+RCT_EXPORT_MODULE();</p>
+<p>RCT_EXPORT_METHOD(getJavaAdapter:(NSString *)path results:(RCTResponseSenderBlock)callback)<br />
+{</p>
+<p>  NSLog(@&quot;Invoking GET Procedure...&quot;);</p>
+<p>  NSURL* url = [NSURL URLWithString:@&quot;http://localhost:10080/HelloMobileFirst/adapters/MoviesAdapter/getStories&quot;];<br />
+  WLResourceRequest* resourceRequest = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];</p>
+<p>  [resourceRequest sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
+    NSString* resultText;<br />
+    if(error != nil){<br />
+      resultText = @&quot;Invocation failure.&quot;;<br />
+      resultText = [resultText stringByAppendingString: error.description];<br />
+    }<br />
+    else{<br />
+      resultText = response.responseText;<br />
+      callback(@[[NSNull null], resultText]);<br />
+    }<br />
+  }];<br />
+}<br />
+@end<br />
+[/code]</p>
+<p>Below is some React Native for iOS snippets that I found important when creating my sample from the file <span sytle="font-family:'Courier New'">index.ios.js</span> that is created when create a React Native project.</p>
+<p>It is important that you use require to import the module from the MobileFirst iOS SDK into the React Native javascript. Take note that the 'NativeModule' that is being imported is the name of the class above.<br />
+[code lang="javascript"]<br />
+var ResourceRequest = require('NativeModules').ResourceRequest;<br />
+[/code]</p>
+<p>After importing it is simple to use a method from that class inside the <span sytle="font-family:'Courier New'">index.ios.js</span> file. Below is the invocation of the MobileFirst Adapter from the React Native iOS javascript. The success call of this adapter invocation is going to populate a native <span sytle="font-family:'Courier New'">ListView</span> with movies from the JSON that is returned.<br />
+[code lang="javascript"]<br />
+    ResourceRequest.getJavaAdapter(&quot;cart&quot;, (error, result) =&gt; {<br />
+              if(error){<br />
+                alert(&quot;No Dice&quot;);<br />
+              } else if(result){<br />
+                resultJSON = JSON.parse(result);<br />
+                this.setState({<br />
+                  dataSource: this.state.dataSource.cloneWithRows(resultJSON.movies),<br />
+                  loaded: true, });<br />
+              }<br />
+          });<br />
+[/code]<br />
+<br />
+Helpful links to recreate this project.</p>
+<ol>
+<li><a href="https://facebook.github.io/react-native/docs/tutorial.html#content">React Native Tutorial</a>.<br />
+You should go through this tutorial first to get a base project set up.</li>
+<li>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/configuring-a-native-ios-with-the-mfp-sdk/">Configuring a native iOS application with the MobileFirst Platform SDK</a><br />
+Use this tutorial to learn the necessary files to use the MobileFirst iOS SDK.</p>
+</li>
+<li>
+<p><a href="https://facebook.github.io/react-native/docs/nativemodulesios.html#content">React's Native Module (iOS) Tutorial</a><br />
+This tutorial will cover how to export your native modules to use in your React's javascript code.</p>
+</li>
+</ol>
+<p>You can download a zip of my project from my google drive account <a href="https://drive.google.com/file/d/0B9JoyI0q8lIwRTVPUGkzYVA2REE/view?usp=sharing">here</a>. This project will not work right away when downloading it. You still need to set up the MobileFirst server to connect to and create a MobileFirst adapter to invoke. This project should put you on a good starting path if you intend to use React Native for iOS.</p>

@@ -1,0 +1,106 @@
+---
+
+title: Changing the adapter host at runtime
+date: 2015-03-20 08:00:07.000000000 +02:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _rawhtml_settings: '0,0,0,0'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p>HTTP adapters are a great way to connect your application to a backend system. You can set the hostname and port in the XML file and get started quickly.</p>
+<p>However sometimes, your hostname is not "set in stone". Maybe you work with a staging server and a production server, maybe you have a list of alternate servers, or maybe your customers can choose the source from a list?</p>
+<p>With MobileFirst Platform 7.0 and Java Adapters, this scenario is much easier to accomplish.</p>
+<p>In this article, I will extend the RSS Reader built in the tutorial for <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/java-adapter/java-http-adapter/" title="Java HTTP Adapter">Java HTTP Adapter</a> to allow the user to choose the news source from a dropdown.</p>
+<blockquote><p>Requirements: IBM MobileFirst Platform Foundation 7.0 or above, knowledge of Java and Javascript development, <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/java-adapter/" title="NEW: Java Adapter" target="_blank">Java Adapter</a> and <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/java-adapter/java-http-adapter/" title="Java HTTP Adapter" target="_blank">Java HTTP Adapter</a>.</p></blockquote>
+<h2>Concept</h2>
+<p>With JavaScript adapters, the connection policy (HTTP, SQL, etc) was set in the adapter's XML file and could not be altered without a new deployment. With Java adapter, there is no connection policy. Your custom Java code has free rein over the connection.</p>
+<h2>Starting point</h2>
+<p>I started with the sample attached to the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/java-adapter/java-http-adapter/" title="Java HTTP Adapter">Java HTTP Adapter</a> tutorial.</p>
+<p>This sample features a Hybrid application to read a CNN RSS feed. The feed comes from a Java adapter.<br />
+The application has a dropdown to choose a topic from the CNN site.</p>
+<p>This sample will be adapted to replace the concept of "topic" by one of "host".</p>
+<h2>Initialization</h2>
+<p>[code lang="java" title="RSSAdapterResource.java" highlight="2"]<br />
+	private static CloseableHttpClient client;<br />
+	private static HashMap&lt;String, HttpHost&gt; hosts;<br />
+	private static HashMap&lt;String, String&gt; paths;</p>
+<p>	public static void init() {<br />
+		client = HttpClients.createDefault();</p>
+<p>		hosts = new HashMap&lt;String, HttpHost&gt;();<br />
+		hosts.put(&quot;cnn&quot;, new HttpHost(&quot;rss.cnn.com&quot;));<br />
+		hosts.put(&quot;engadget&quot;, new HttpHost(&quot;www.engadget.com&quot;));</p>
+<p>		paths = new HashMap&lt;String, String&gt;();<br />
+		paths.put(&quot;cnn&quot;, &quot;/rss/edition.rss&quot;);<br />
+		paths.put(&quot;engadget&quot;, &quot;/rss.xml&quot;);</p>
+<p>	}<br />
+[/code]<br />
+As with the original sample, I've set the HTTP Client and the HTTP Hosts as <strong>static</strong> properties. The difference is instead of having one <code>HttpHost</code>, I have two <code>HashMap</code> of hosts and paths.</p>
+<p>Both are initialized in the static <code>init()</code> method of <strong>RSSAdapterResource.java</strong>, which gets called by the <code>init()</code> method of <strong>RSSAdapterApplication.java</strong>.</p>
+<blockquote><p>If your application can connect to a longer list of backends, you could set this list in an array instead of a list of variables.</p></blockquote>
+<h2>execute</h2>
+<p>[code lang="java" title="RSSAdapterResource.java" highlight="1,4"]<br />
+	public void execute(HttpUriRequest req, HttpServletResponse resultResponse, HttpHost host)<br />
+			throws ClientProtocolException, IOException,<br />
+			IllegalStateException, SAXException {<br />
+		HttpResponse RSSResponse = client.execute(host, req);<br />
+		ServletOutputStream os = resultResponse.getOutputStream();<br />
+		if (RSSResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){<br />
+			resultResponse.addHeader(&quot;Content-Type&quot;, &quot;application/json&quot;);<br />
+			String json = XML.toJson(RSSResponse.getEntity().getContent());<br />
+			os.write(json.getBytes(Charset.forName(&quot;UTF-8&quot;)));</p>
+<p>		}else{<br />
+			resultResponse.setStatus(RSSResponse.getStatusLine().getStatusCode());<br />
+			RSSResponse.getEntity().getContent().close();<br />
+			os.write(RSSResponse.getStatusLine().getReasonPhrase().getBytes());<br />
+		}<br />
+		os.flush();<br />
+		os.close();<br />
+	}<br />
+[/code]</p>
+<p>As with the original sample, the <code>execute()</code> method is responsible for retrieving the RSS feed.<br />
+The difference here is I pass a <code>HttpHost</code> since it will be different for each request.</p>
+<h2>GET procedure</h2>
+<p>[code lang="java" title="RSSAdapterResource.java" highlight="7"]<br />
+	@GET<br />
+	@Produces(&quot;application/json&quot;)<br />
+	public void get(@Context HttpServletResponse response, @QueryParam(&quot;host&quot;) String hostKeyword)<br />
+			throws ClientProtocolException, IOException, IllegalStateException, SAXException {</p>
+<p>		if(hostKeyword!=null &amp;&amp; hosts.containsKey(hostKeyword) &amp;&amp; paths.containsKey(hostKeyword)){<br />
+			execute(new HttpGet(paths.get(hostKeyword)), response, hosts.get(hostKeyword));<br />
+		}<br />
+		else{<br />
+			response.setStatus(404);<br />
+			response.flushBuffer();<br />
+		}</p>
+<p>	}<br />
+[/code]</p>
+<p>This JAX-RS method is the only public endpoint of the adapter. It can be reached via a <code>GET</code> call to <strong>/IMFMultiHostAdapter/adapters/RSSAdapter</strong>.</p>
+<p>It receives a query parameter <code>host</code> which in our example can either be "cnn" or "engadget". The methods retrieves the HttpHost and the path from the HashMaps, and calls the execute method.</p>
+<h2>Client-side code</h2>
+<h3>index.html</h3>
+<p>I took the existing index.html from the original sample and changed the dropdown to show a list of RSS sources instead of topics.</p>
+<p>[code lang="html"]<br />
+					&lt;select id=&quot;host&quot; style=&quot;width:90%; height:3em;&quot;&gt;<br />
+						&lt;option value=&quot;engadget&quot; selected=&quot;selected&quot;&gt;Engadget&lt;/option&gt;<br />
+						&lt;option value=&quot;cnn&quot;&gt;CNN&lt;/option&gt;<br />
+					&lt;/select&gt;<br />
+[/code]</p>
+<p>The <code>id</code> was changed to <code>host</code> as well, be careful to update any reference to it.</p>
+<h3>main.js</h3>
+<p>This file is almost the same as the original sample. The variable topic was changed to host, and it is initialized to <code>var host = "engadget";</code> instead of keeping it empty.</p>
+<h2>Updated sample</h2>
+<p>The project described in this article can be downloaded or cloned from this URL: <a href="https://github.com/nasht00/IMFMultiHostAdapter" target="_blank">https://github.com/nasht00/IMFMultiHostAdapter</a></p>

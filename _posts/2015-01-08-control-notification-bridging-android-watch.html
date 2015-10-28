@@ -1,0 +1,60 @@
+---
+
+title: Control Notification bridging on Android watch
+date: 2015-01-08 14:10:33.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- Mobile
+tags:
+- mobile
+- MobileFirst_Playground
+- wearables
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '12127'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _yoast_wpseo_focuskw: android watch
+  _yoast_wpseo_linkdex: '62'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: ajay.chebbi@in.ibm.com
+  email: ajay.chebbi@in.ibm.com
+  display_name: AjayChebbi devWorks
+  first_name: AJAY
+  last_name: CHEBBI
+---
+<p>In Android 5.0 (Lollipop), <a href="http://developer.android.com/design/patterns/notifications.html#notifications_on_android_wear" target="_blank"> Google announced bridged notifications for wearables</a>. Notifications and their actions (i.e what happens when you tap on a notification) are bridged over to the wearable devices by default. However all the actions cannot be achieved with a single tap on the watch. So mobile developers need a way to hide some of the notifications from appearing on the watch, and conversely allow some notifications to bridge over to the watch. IBM MobileFirst v6.3.0 added support for  bridging control of notifications.</p>
+<p>[embed]http://youtu.be/R7yyooujSa4[/embed]</p>
+<p>You can now include a new optional field in GCM properties of notification options when the notification is sent from the Adapter.</p>
+<p>For broadcast and tag based notification :</p>
+<p>[code lang="javascript"]<br />
+function sendNotification(applicationId, notification, notificationText) {<br />
+   notification.message = {};<br />
+   notification.message.alert = notificationText;<br />
+   notification.settings = {};<br />
+   notification.settings.gcm = {};</p>
+<p>   //turn this true or false for a notification to be bridged to the watch<br />
+   notification.settings.gcm.bridge= 'false'; //(true,false)	</p>
+<p>   WL.Server.sendMessage(applicationId, notification);<br />
+}</p>
+<p>[/code]</p>
+<p>For Event Source notifications:<br />
+[code lang="javascript"]<br />
+function submitNotification(userId, notificationText){<br />
+   var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);<br />
+   if (userSubscription==null){<br />
+      return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+         }<br />
+   var badgeDigit = 1;<br />
+   var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});</p>
+<p>  //turn this true or false for a notification to be bridged to the watch<br />
+   notification.GCM.bridge = 'false'; //</p>
+<p>   WL.Server.notifyAllDevices(userSubscription, notification);<br />
+   return {<br />
+      result: &quot;Notification sent to user :: &quot; + userId<br />
+      };<br />
+}<br />
+[/code]</p>

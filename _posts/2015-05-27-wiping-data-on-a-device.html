@@ -1,0 +1,91 @@
+---
+
+title: Managing app and data on a device (Block, Wipe and others)
+date: 2015-05-27 10:32:17.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- Mobile
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '12960'
+  _syntaxhighlighter_encoded: '1'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _yoast_wpseo_focuskw: MAM Mobile Application Management data wipe
+  _yoast_wpseo_metadesc: MAM Mobile Application Management device data wipe MobileFirst
+  _yoast_wpseo_linkdex: '61'
+author:
+  login: etien71@hotmail.com
+  email: etien71@hotmail.com
+  display_name: Etienne Noiret
+  first_name: ETIENNE
+  last_name: NOIRET
+---
+<p>Managing the lifecycle of mobiles apps, often referred as <strong>M</strong>obile <strong>A</strong>pplication <strong>M</strong>anagement (MAM), is one of the key features of MobileFirst Platform Foundation. It includes:</p>
+<ul>
+<li>Managing app distribution (using the Application Center)</li>
+<li><a href="#manageVersions">Managing app versions (using the Operations Console)</a></li>
+<li><a href="#manageApps">Managing app access (using the Operations Console)</a></li>
+<li>Managing usage, performance, warnings and errors (using the Analytics Console)</li>
+<li><a href="#dataAccess">Managing data access</a></li>
+</ul>
+<p>In this article, let's see how data access can be controlled on a device that has been disabled. Whilst wiping data can be achieved through the usage of a Mobile Device Management solution (like IBM Maas360) in an enterprise context, there are various cases where the mobile device cannot be controlled by the company. This is especially the case in B2B contexts, when subcontractors or partners are granted to access sensitive data of the company: if any data is stored locally on the devices for offline availability (see my <a href="https://developer.ibm.com/mobilefirstplatform/2015/04/03/managing-pdf-documents-in-a-hybrid-app-for-offline-availability-updated-mfp-v7/" target="_blank">recent article</a> on this subject for example), what happens when the company wants to deny access to a particular device for any reason (device stolen, lost or employee no longer granted access...)?</p>
+<h2 id="manageVersions">Managing app versions</h2>
+<p>There are two options to deny access to an app using MobileFirst Platform v7.0. The first one concerns the entire app, as shown in the following figure:</p>
+<div><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/disableApp1.png"><img src="{{ site.baseurl }}/assets/backup/disableApp1.png" alt="disableApp" width="782" height="481" class="alignnone size-medium" /></a></div>
+<p>By doing this, all users having this specific version of the app on this platform will be informed that they should upgrade. By default, the client MobileFirst Platform SDK will display a dialog box with the message entered in the console and a button to access the new version specified in the URL. But this default behavior can be customized, as we will see later.</p>
+<h2 id="manageApps">Managing app access</h2>
+<p>The second option, which is what we are aiming at here, is the ability to deny access to a particular user or even a specific device:</p>
+<div><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/manageDevices.png"><img src="{{ site.baseurl }}/assets/backup/manageDevices.png" alt="manageDevices" width="775" height="372" class="alignnone size-medium" /></a></div>
+<p>To take advantage of this feature, you must enable device tracking (see the <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.monitor.doc/monitor/c_device_mgmt.html" target="_blank">documentation</a>) by adding <code>wl.device.tracking.enabled=true</code> in the <code>worklight.properties</code> file.<br />
+Note that, depending on your application, a particular device can be found based on its id, user id or even a friendly name.<br />
+Once a device has been found, either the entire device can be "disabled" (e.g. the device is still usable but cannot make any request to the MobileFirst Platform server), or a specific app on the device. The following options are available for disabling a device:</p>
+<div><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/disableDeviceOptions.png"><img src="{{ site.baseurl }}/assets/backup/disableDeviceOptions.png" alt="disableDeviceOptions" width="232" height="290" class="alignnone size-medium" /></a></div>
+<p>and the following options for disabling an app:</p>
+<div><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/disableDeviceAppOptions.png"><img src="{{ site.baseurl }}/assets/backup/disableDeviceAppOptions.png" alt="disableDeviceAppOptions" width="206" height="158" class="alignnone size-medium" /></a></div>
+<p>So what happens when any of the device or app status has been changed using this panel? The app, when it connects to the MobileFirst Platform server, receives exactly the same challenge handler as when the entire app is disabled for everybody, except that the generic message received is "This device has been decommissioned" (whatever the status that was selected).</p>
+<h2 id="dataAccess">Managing data access</h2>
+<p>The last concern is regarding the data that still lives on the user device. With MobileFirst Platform data and documents can be fully encrypted so that when the app is blocked, enterprise data cannot be accessed. In this last section let's see how we can take advantage of the blocking message to wipe data on the device, by adding the following piece of code (in the default <code>initOptions.js</code> file in this case).</p>
+<div>[code lang="javascript"]<br />
+var wlInitOptions = {<br />
+	 onErrorRemoteDisableDenial : function (message, downloadLink) {<br />
+		 if(message===&quot;This device has been decommissioned&quot;) {<br />
+		 	// this device has been disabled<br />
+			 wipeAppData();<br />
+		 } else {<br />
+		 	// This app version has been disabled<br />
+			 WL.SimpleDialog.show(<br />
+					 &quot;Application Disabled&quot;,<br />
+					 message,<br />
+					 [{text: &quot;Close application&quot;, handler: disableApp },<br />
+					  {text: &quot;Download new version&quot;, handler: function() {WL.App.openURL(downloadLink, &quot;_blank&quot;);}}]<br />
+			 );<br />
+		 }<br />
+	 }<br />
+};</p>
+<p>function wipeAppData() {<br />
+	// Erase local data if any<br />
+	WL.JSONStore.destroy().then(function() {<br />
+		console.log(&quot;JSONStore successfully destroyed!&quot;);<br />
+	});<br />
+	// And more if needed...<br />
+	// Display denied access message<br />
+	WL.SimpleDialog.show(&quot;Non authorized device&quot;, &quot;This application has been disabled&quot;,<br />
+			[{text: &quot;Close&quot;, handler: disableApp}]);<br />
+} </p>
+<p>function disableApp() {<br />
+	// Make app unusable<br />
+	document.body.innerHTML = '&lt;strong&gt;Please quit this application&lt;/strong&gt;';<br />
+	if(WL.Client.getEnvironment()===WL.Environment.ANDROID) {<br />
+		// Eventually force exit the app<br />
+		WL.App.close();<br />
+	}<br />
+}<br />
+[/code]</p></div>
+<h2 id="summary">Conclusion</h2>
+<p>As you can see above, you can control what you want to do with local data in the event an app, or a device, or an app on a device has been disabled. You could also add some logic within your app so that local data has a time to live value and is also automatically erased if a server access has not been recently successful.<br />
+Although the sample was given is Javascript, you can achieve the same behavior using the SDK native APIs. MobileFirst Platform supports these features for every mobile development model, either hybrid or fully native.</p>

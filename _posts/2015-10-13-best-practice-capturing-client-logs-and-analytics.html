@@ -1,0 +1,173 @@
+---
+
+title: Best Practice - Capturing Client Logs and Analytics
+date: 2015-10-13 12:18:20.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- Best Practices
+- Mobile
+tags:
+- Analytics
+- android
+- API
+- hybrid
+- mobile
+- mobile_development
+- mobilefirst
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '35650'
+  _rawhtml_settings: '0,0,0,0'
+  oasis_is_in_workflow: '1'
+  _wpas_done_all: '1'
+author:
+  login: rott@us.ibm.com
+  email: rott@us.ibm.com
+  display_name: Mike Rheinheimer
+  first_name: Mike
+  last_name: Rheinheimer
+---
+<p>Do you need to capture raw debug logs from devices in production from the field?  Do you want to capture analytics events from applications deployed in production?</p>
+<p>The answer is yes!  At some point, you absolutely will want to gather crash logs, or debug logs from devices in production in the field, because you don't have that device or the environment to be able to reproduce a user-reported problem.  I hope the value of analytics is obvious.  You want to know how many times the application makes network requests, or if you've instrumented your application to report custom analytics, then you've clearly invested in its value already!</p>
+<p>This post gives a brief introduction to the technology, but more importantly, gives some best practice guidelines on how to (or if you should) expose the underlying capture-and-report to the end user based on real-world applications you probably already use.</p>
+<p><strong>Before We Get Started</strong></p>
+<p>The MobileFirst Platform Foundation client-side SDKs have built-in ability to capture and report both raw debug logs and analytics.  The client SDK has both a logger API and analytics API to report more data than what is reported out of the box.  It is your job to configure each using the appropriate function calls.  In fact, you actually have four jobs:</p>
+<ul>
+<li>instrument</li>
+<li>configure</li>
+<li>capture</li>
+<li>send</li>
+</ul>
+<p>The objective-c (for iOS) codebase, Java (for Android), and JavaScript (for hybrid) codebases all have equivalent capabilities, in that they each have a raw debug logger API, and an analytics API built into the MobileFirst client SDK.  The names are:</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>objective-c (iOS)</th>
+<th>Java (Android)</th>
+<th>JavaScript (hybrid)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logger</td>
+<td><code>OCLogger</code></td>
+<td><code>com.worklight.common.Logger</code></td>
+<td><code>WL.Logger</code></td>
+</tr>
+<tr>
+<td>Analytics</td>
+<td><code>WLAnalytics</code></td>
+<td><code>com.worklight.common.WLAnalytics</code></td>
+<td><code>WL.Analytics</code></td>
+</tr>
+</tbody>
+</table>
+<p>I'm going to show the examples using Java to keep this post shorter, but please understand that the usage is similar across the languages.</p>
+<p>First let's talk about your four jobs.</p>
+<p><strong>Instrument</strong></p>
+<p>The logger API is a log framework that is similar to other well known log frameworks, such as <code>java.util.logging</code> or <code>log4j</code> in Java and <a href="https://github.com/CocoaLumberjack/CocoaLumberjack">Cocoa Lumberjack</a> in objective-c. It includes features such as level filtering and package filtering.  The core MobileFirst codebase is already instrumented with debug log calls, so your only job is to consider if you want to instrument your code with the public logger API provided from MobileFirst SDK (you do!).  The obvious benefit of instrumenting your code with logger API calls is that it gives you the opportunity to capture logs in production from your applications already deployed in the field.</p>
+<p>You certainly can take advantage of the public analytics API to report structured data you intend to display or analyze later.  Unlike the logger API which takes unstructured human-readable text, the analytics API takes structured data intended to be used in a chart or to detect trends.</p>
+<p><strong>Configure</strong></p>
+<p>You could just take the defaults, which is why this is optional.  The default configuration for both the logger and analytics is:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>Default</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capture</td>
+<td>on</td>
+<td>record output to persistent store</td>
+</tr>
+<tr>
+<td>Max storage size</td>
+<td>100,000 bytes</td>
+<td>store up to, but not more than, this many bytes to avoid using too much disk space.  Once this size is reached, older data is purged to make room for newer data</td>
+</tr>
+<tr>
+<td>Autosend</td>
+<td>on</td>
+<td>automatically send stored data upon MobileFirst client SDK API calls to <code>connect</code> and <code>invokeProcedure</code>.  Important:  autosend is strongly discouraged.  Also, the two API calls on which autosend is triggered are deprecated.</td>
+</tr>
+<tr>
+<td>Verbosity</td>
+<td>FATAL</td>
+<td>(logger only) by default, the log verbosity is set to DEBUG (noisy!) while in your development workflow, but FATAL (quiet!) in production</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Capture</strong></p>
+<p>Capture is on by default.  This just means the MobileFirst SDK is recording the output reported through the logger and analytics API calls to a persistent store, nothing more.  The performance cost of having capture on is negligible.</p>
+<p><strong>Send</strong></p>
+<p>This is the most important consideration!  There's no sense turning verbosity way up, heavily instrumenting your application with logger output and custom analytics, if you never send that data anywhere!</p>
+<p>However, you need to decide if you want all that debug log data all the time (you probably don't), and all analytics records (you probably do).  The debug log data is only really useful if you have a specific problem you need to solve.</p>
+<p>Finally, we get to see some real-world examples, and apply them to the MobileFirst client SDK.</p>
+<p><strong>Example:  Chrome Mobile</strong></p>
+<p>Chrome asks the end user if they desire to send usage and crash reports:</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/10/Screenshot_2015-02-01-21-24-56.png"><img src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-01-21-24-56-169x300.png" alt="Screenshot_2015-02-01-21-24-56" width="169" height="300" class="alignnone size-medium wp-image-18418" /></a></p>
+<p>In this case, you'd always capture, but only send if the user has agreed to it.  Your configuration is:</p>
+<p><code><br />
+Logger.setAutoSendLogs(false);  // only send on-demand, and only if the user agreed to it<br />
+Logger.setCapture(true);<br />
+Logger.setLevel(Logger.LEVEL.FATAL);  // user agreed to "crash reports" only<br />
+WLAnalytics.setCapture(true);<br />
+</code></p>
+<p>Then of course you'd send any captured data from the device up to the server periodically:</p>
+<p><code><br />
+if (userAgreed) {<br />
+    Logger.send();<br />
+    WLAnalytics.send();<br />
+}<br />
+</code></p>
+<p>When to send is a decision left to the developer.  Should you send only on wifi?  Should you send on an interval?  Should you send always on app open?  It's up to you!</p>
+<p><strong>Example:  Nova Launcher</strong></p>
+<p>Nova Launcher is slightly different than Chrome Mobile in that it also includes "errors", and gives a more verbose explanation to the end user as to what they have agreed.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/10/Screenshot_2015-02-01-21-31-13.png"><img src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-01-21-31-13-169x300.png" alt="Screenshot_2015-02-01-21-31-13" width="169" height="300" class="alignnone size-medium wp-image-18420" /></a></p>
+<p>The configuration is very similar, except for the logger level:</p>
+<p><code><br />
+Logger.setAutoSendLogs(false);  // only send on-demand, and only if the user agreed to it<br />
+Logger.setCapture(true);<br />
+Logger.setLevel(Logger.LEVEL.ERROR);  // user agreed to error and crash, and like any logger, the ERROR level is "error and above"<br />
+WLAnalytics.setCapture(true);<br />
+</code></p>
+<p>Then of course the send strategy is up to you.</p>
+<p><strong>Example:  Tasker</strong></p>
+<p>Tasker is an Android "automation" application, that listens for device events and triggers an action.  It is extremely powerful, intended for a highly technical end user.  I include it here because Tasker chose to be extremely verbose about what the user has agreed to.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/10/Screenshot_2015-02-07-21-34-20.png"><img src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-07-21-34-20-169x300.png" alt="Screenshot_2015-02-07-21-34-20" width="169" height="300" class="alignnone size-medium wp-image-18421" /></a></p>
+<p>The text strongly hints that Tasker is recording at debug level, but only when the user agrees, so their initial configuration would be:</p>
+<p><code><br />
+Logger.setLevel(Logger.LEVEL.DEBUG);  // always record at high verbosity<br />
+Logger.setCapture(false);<br />
+</code></p>
+<p>Once the user presses the button that turns on logging, your configuration changes.  In the button press callback:</p>
+<p><code><br />
+Logger.setCapture(true);<br />
+</code></p>
+<p>You may wish to be as verbose in both your log output and your end user explanation.</p>
+<p>The Tasker dialog box never implies any sending to a server.  It is your choice whether to do so in your use of the MobileFirst infrastructure or not, considering your end user's privacy.</p>
+<p><strong>Example:  Evernote</strong></p>
+<p>I cannot find evidence in the Evernote user experience of giving the end user the choice of opting in or out of "usage reporting", so let's assume for the sake of this example that Evernote never collects anonymous usage data (which is probably a bad assumption, but go with me anyway).  Evernote does, however, send raw debug logs up to the server, but only on end user demand.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/10/Screenshot_2015-02-14-21-36-08.png"><img src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-14-21-36-08-169x300.png" alt="Screenshot_2015-02-14-21-36-08" width="169" height="300" class="alignnone size-medium wp-image-18422" /></a></p>
+<p>Notice that Evernote uses the phrase "activity log" and "error log".  To the end user, this may be confusing.  Is it my activity or just application errors?  It's not completely clear what the end user is sending when they use this button.  So, the configuration is:</p>
+<p><code><br />
+Logger.setAutoSendLogs(false);  // only send on-demand, and only if the user agreed to it<br />
+Logger.setCapture(true);<br />
+Logger.setLevel(Logger.LEVEL.ERROR);  // user agreed to error, and like any logger, the ERROR level is "error and above"<br />
+WLAnalytics.setCapture(false);  // remember our assumption!<br />
+</code></p>
+<p>The send strategy is to only send upon end user demand:</p>
+<p><code><br />
+// inside the button on-click callback:<br />
+Logger.send();  // but not WLAnalytics.send() because of our assumption<br />
+</code></p>
+<p>This strategy probably makes the most sense for users who have paid for your application, as a paid-for application implies some level of support.  Perhaps the "send activity logs" button is not even available in the free version of your application.</p>
+<p><strong>Conclusion</strong></p>
+<p>In general, don't set your logger to maximum verbosity and send all that data from all your in-production applications.  You don't need all that data, nor do you want to manage the storage burden that comes with it!  Consider the end-user's privacy, their technical abilities, and apply a good user experience for both both you and the end user to satisfy your need to capture logs and analytics!</p>

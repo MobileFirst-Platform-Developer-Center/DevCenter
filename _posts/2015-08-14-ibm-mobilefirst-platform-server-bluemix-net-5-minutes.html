@@ -1,0 +1,113 @@
+---
+
+title: IBM MobileFirst Platform Server on Bluemix.net in under 5 minutes
+date: 2015-08-14 13:30:45.000000000 +03:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- bluemix
+- docker
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '12127'
+  _rawhtml_settings: '0,0,0,0'
+  _yoast_wpseo_focuskw: docker container
+  _yoast_wpseo_linkdex: '62'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442512738;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:17048;}i:1;a:1:{s:2:"id";i:15193;}i:2;a:1:{s:2:"id";i:17659;}}}}
+author:
+  login: ajay.chebbi@in.ibm.com
+  email: ajay.chebbi@in.ibm.com
+  display_name: AjayChebbi devWorks
+  first_name: AJAY
+  last_name: CHEBBI
+---
+<p>You may have already heard about <a href="https://developer.ibm.com/mobilefirstplatform/" target="_blank">IBM MobileFirst Platform Foundation</a> and its capabilities. Some of the industry-grade features like <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/authentication-security/" target="_blank">security framework</a> that it provides may have appealed to you and you now want to try it! You can do this in under 5 minutes, without downloading any software and without running around to find a machine to install it on!</p>
+<p>Typically when you build a POC or demo of a mobile app with MobileFirst Platform,</p>
+<ul>
+<li>You first download  the <a href="https://developer.ibm.com/mobilefirstplatform/install/" target="_blank">MobileFirst developer Studio or the MobileFirst CLI</a>.  </li>
+<li>Then you build the app and demo it from your laptop.</li>
+</ul>
+<p>After this the fun begins. What if your boss or client wants to try the app for themselves and show it to their teams? This means you had to keep your laptop running or find a desktop where you could install the developer studio. When was the last time you looked for a desktop? And it gets more fun if you are a remote worker working off a mobile internet dongle and the clients cannot get  into your base office intranet.</p>
+<h2>IBM Bluemix to the rescue!</h2>
+<p>Now you can get a fully configured (with a trial license ofcourse) IBM MobileFirst Platform server on the IBM cloud platform: <a href="http://bluemix.net" target="_blank">bluemix.net</a> . In under 5 minutes you can get a internet accessible server in a Docker container. The MobileFirst Platform server comes with a sample Runtime/project, MobileFirst Adapters and source code for a demo app that you can start using instantly.</p>
+<p>The MobileFirst trial server uses the newly introduced capability on Bluemix.net called <a href="https://www.ng.bluemix.net/docs/containers/container_index.html" target="_blank">IBM Containers</a> which lets you host your own Docker images. With IBM Containers, you create Docker containers from Docker images in the IBM Container registry (if you did not understand that - don't worry). The MobileFirst trial server is available as an image in the registry. However you do not need to learn Docker or any other additional technology to use this trial version of MobileFirst Platform server.</p>
+<h2>Running the sample</h2>
+<p>The server is a full featured MobileFirst Platform server that contains the MobileFirst runtime service, Analytics service, the Cloudant data proxy and the Mobile browser simulator - all installed on a liberty server. This server is configured with a local database (Derby) inside the container itself.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/trial_container.jpg"><img src="{{ site.baseurl }}/assets/backup/trial_container.jpg" alt="trial_container" width="500" class="alignnone size-large wp-image-16162" /></a></p>
+<p>Once you have created the container and downloaded the demo app source code, you can use it right away. The sample uses app configuration and adapters that are pre loaded in the container image. You can find the detailed steps of creating the container in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/evaluate-foundation-on-bluemix/" target="_blank">tutorial</a> as well as a companion <a href="http://youtu.be/w2r8RmQyCMA" target="_blank">video</a>.</p>
+<p>Just to demonstrate one of the basic capabilities follow the steps below.</p>
+<ol>
+<li>List the Catalog in the mobile app</li>
+<li>Go to the Operations console in the browser and Click on the App you are connecting (IOSWishList if you are using a native xcode app or AndroidWishlist if using a native Android app etc.)</li>
+<li>Then in the “Application Access” dropdown , select “Active Notifying”. Type some message  in the notification message box </li>
+<li>Hit save</li>
+<li>Go back to the mobile app – and try to get the Catalog again</li>
+<li>You will see the message you added to the console. This appears only once per logged in session</li>
+</ol>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/container_disable.png"><img src="{{ site.baseurl }}/assets/backup/container_disable.png" alt="container_disable" height="300" class="alignnone size-medium wp-image-16164" /></a> <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/container_phone_disable.png"><img src="{{ site.baseurl }}/assets/backup/container_phone_disable-169x300.png" alt="container_phone_disable" width="169" height="300" class="alignnone size-medium wp-image-16166" /></a></p>
+<h1>Viewing Analytics Console of the MobileFirst server</h1>
+<p>The IBM MobileFirst trial server comes with inbuilt analytics. This helps you in analyzing various metrics around your app. You can read more about it here. For example you can see the various usage statistics.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/container_analytics.png"><img src="{{ site.baseurl }}/assets/backup/container_analytics.png" alt="container_analytics" width="300" class="alignnone size-medium wp-image-16167" /></a></p>
+<h1>Adding your own apps and adapters</h1>
+<p>If you are developing a POC and want to host your own app and adapters, you can do so by either uploading them thru the console.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/container_upload.png"><img src="{{ site.baseurl }}/assets/backup/container_upload.png" alt="container_upload" width="400" class="alignnone size-medium wp-image-16168" /></a></p>
+<p>If you are using the MobileFirst CLI, then you can also add them via the newly introduced capability of pushing apps and adapters to a remote server.</p>
+<p>[code lang="powershell" highlight="1,3,4,6,8,19"]<br />
+c:\mfpPOC&gt;mfp create MobileFirst<br />
+A MobileFirst Project was successfully created at c:\mfpPOC\MobileFirst<br />
+c:\mfpPOC&gt;cd MobileFirst<br />
+c:\mfpPOC\MobileFirst&gt;mfp add api MyCart -e windows8<br />
+A new Windows8 - Universal API was added at c:\mfpPOC\MobileFirst\apps\MyCart<br />
+c:\mfpPOC\MobileFirst&gt;mfp add adapter StoreAdapter -t http<br />
+A new http Adapter was added at c:\mfpPOC\MobileFirst\adapters\StoreAdapter<br />
+c:\mfpPOC\MobileFirst&gt;mfp server add<br />
+[?] Enter name of new server definition: BluemixServer<br />
+[?] Enter the fully qualified URL of this server: http://***.***.***.***:9080<br />
+[?] Enter the MFP admin login id: admin<br />
+[?] Enter the MFP admin password: *****<br />
+[?] Save admin password for this server?: Yes<br />
+[?] Enter the context root of the MobileFirst administration services: worklightadmin<br />
+[?] Make this server the default?: No<br />
+Contacting server...<br />
+The following runtimes are currently installed on this server: MobileFirst<br />
+Server profile 'BluemixServer' added successfully.<br />
+c:\mfpPOC\MobileFirst&gt;mfp push BluemixServer<br />
+Preparing for push...<br />
+Contacting server...<br />
+Runtime 'MobileFirst' will be used to push the project into.<br />
+Pushing to Server...<br />
+Deploying c:\mfpPOC\MobileFirst\bin\MyCart-Windows8native-1.0.wlapp...<br />
+Deploy complete for c:\mfpPOC\MobileFirst\bin\MyCart-Windows8native-1.0.wlapp.<br />
+Deploying c:\mfpPOC\MobileFirst\bin\StoreAdapter.adapter...<br />
+Deploy complete for c:\mfpPOC\MobileFirst\bin\StoreAdapter.adapter.<br />
+c:\mfpPOC\MobileFirst\bin\MyCart-Windows8native-1.0.wlapp has been deployed.<br />
+c:\mfpPOC\MobileFirst\bin\StoreAdapter.adapter has been deployed.<br />
+Push Completed Successfully.<br />
+[/code]</p>
+<p>[embed]http://youtu.be/w2r8RmQyCMA[/embed]</p>
+<h2>Additionally using Cloudant from your mobile app</h2>
+<p>If you want to try out the Cloudant connectivity capabilities then you have to follow these steps</p>
+<ol>
+<li>Create a Bluemix Cloud Foundry App (of any type)</li>
+<li>Add a Cloudant DB service and bind it to the Bluemix app</li>
+<li>Create a container and bind it to the Bluemix application (You cannot seem to bind a already created container)</li>
+</ol>
+<p>This will activate the configuration in the eval MobileFirst server to make the Cloudant access available to the MobileFirst client SDK so that the app can start reading and writing from the Cloudant DB. The Infocentre has  <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.deploy.doc/deploy/t_using_cloudant_gscontainer.html" target="_blank"> more information </a> you might want to look at.<br />
+However this capability exists only for iOS and Android as there is no Cloudant SDK available for Hybrid JS or Xamarin yet. You can however use an <a href="https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release71/adapters/CloudantJS" target="_blank"> Adapter to talk to Cloudant </a> from a mobile app in any platform.</p>
+<p>There is more information on the Cloudant capabilities in MobileFirst in the <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/cloud/data/c_cloudant_onprem.html" target="_blank"> Infocentre  </a></p>
+<h2>Limitations</h2>
+<p>There are a few limitations to the trial server image on Bluemix.</p>
+<ol>
+<li>This comes with a trial license and you cannot use this in production</li>
+<li>Any changes you make to the server like adding apps and adapters are non persistent. If you re-create the container again– those changes are lost</li>
+<li>You cannot add new Runtimes – you have to work with the default runtime “MobileFirstStarter”</li>
+<li>You cannot make changes to any of the server artifacts like authentication configuration, add new libs etc.</li>
+</ol>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/container_limitation.png"><img src="{{ site.baseurl }}/assets/backup/container_limitation.png" alt="container_limitation" width="231" height="231" class="alignnone size-full wp-image-16169" /></a></p>
+<h2>Next steps</h2>
+<p>If you want to run a customized MobileFirst server on the container service, you can find more information in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/run-foundation-on-bluemix/" target="_blank">getting started guide</a> on creating your own images</p>

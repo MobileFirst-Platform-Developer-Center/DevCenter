@@ -1,0 +1,336 @@
+---
+
+title: Managing PDF documents in a hybrid app for offline availability
+date: 2014-12-22 11:48:23.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- Integration
+- Mobile
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6649'
+  _syntaxhighlighter_encoded: '1'
+  _rawhtml_settings: '0,0,0,0'
+  _yoast_wpseo_focuskw: hybrid offline PDF
+  _yoast_wpseo_metadesc: mobile offline PDF document hybrid Android iOS mobilefirstplatform
+    MFP
+  _yoast_wpseo_linkdex: '57'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442522406;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:16964;}i:1;a:1:{s:2:"id";i:16662;}i:2;a:1:{s:2:"id";i:16161;}}}}
+author:
+  login: etien71@hotmail.com
+  email: etien71@hotmail.com
+  display_name: Etienne Noiret
+  first_name: ETIENNE
+  last_name: NOIRET
+---
+<p>It is a common requirement for a mobile app to give access to the end user to a set of documentation like PDF files, so that he can read them even when he is offline. This blog post explains how to <a href="#manage">manage documents metadata with the JSONStore</a>, <a href="#download">download documents from a remote location</a> and <a href="#display">read them locally</a>.</p>
+<h2 id="manage">Managing documents metadata</h2>
+<p>Depending on the number of documents to be downloaded and their size, it may be useful to manage which ones are already available, which ones have been downloaded, and thus only update those that are new or that changed since the last synchronization. Of course this is only possible if you have a service that can give you metadata about the files (but this is something usually available or at least easy to implement by reading a directory content in a file system).</p>
+<p>For the purpose of this demonstration, we have implemented an adapter service that simulates a list of documents on an initial call, and updates on a second call:</p>
+<p>[code lang="javascript"]<br />
+//TODO: ensure that these documents exist or replace the names<br />
+var docs = [<br />
+            { name: &quot;doc1.pdf&quot;, title: &quot;Procedure 1&quot;, size: &quot;10kb&quot;, timestamp: 1234},<br />
+            { name: &quot;doc2.pdf&quot;, title: &quot;Procedure 2&quot;, size: &quot;20kb&quot;, timestamp: 1234},<br />
+            { name: &quot;doc3.pdf&quot;, title: &quot;Procedure 3&quot;, size: &quot;30kb&quot;, timestamp: 1234},<br />
+            { name: &quot;doc4.pdf&quot;, title: &quot;Procedure 4&quot;, size: &quot;40kb&quot;, timestamp: 1234},<br />
+            { name: &quot;doc5.pdf&quot;, title: &quot;Procedure 5&quot;, size: &quot;50kb&quot;, timestamp: 1234}<br />
+            ];<br />
+var count = 0;</p>
+<p>function getDocumentList() {<br />
+	if(count&amp;gt;0) { // modify table so that second time we call the function it returns different content<br />
+		docs[0] = { name: &quot;doc1.pdf&quot;, title: &quot;Procedure 1&quot;, size: &quot;15kb&quot;, timestamp: 4321}; // updated item<br />
+		docs[5] = { name: &quot;doc6.pdf&quot;, title: &quot;Procedure 6&quot;, size: &quot;1Mb&quot;, timestamp: 1234}; // new item<br />
+	}<br />
+	var res = {<br />
+		documents: docs,<br />
+		statusCode: 200<br />
+	};<br />
+	count++;<br />
+	return res;<br />
+}<br />
+[/code]<br />
+On the client side, we need to initialize a JSONStore collection to hold these metadata:<br />
+[code lang="javascript"]<br />
+var collections = {};<br />
+collections[collectionName] = {<br />
+		searchFields : { name:&quot;string&quot;, timestamp:&quot;integer&quot;},<br />
+};</p>
+<p>//Initialize the document collection<br />
+WL.JSONStore.init(collections)<br />
+.then(function() {<br />
+	documentsCollection = WL.JSONStore.get(collectionName);<br />
+	documentsCollection.findAll({}).then(function (allDocs) { // If any document already available, display in the list<br />
+		printList(allDocs);<br />
+	});</p>
+<p>})<br />
+.fail(function(errorObject) {<br />
+	console.log(&quot;Failed to initialize collection&quot;);<br />
+});<br />
+[/code]<br />
+And then create a function that calls the adapter service and fills the local collection with the result:<br />
+[code lang="javascript"]<br />
+var nbDocsFound;<br />
+var docsToUpdate;<br />
+var docsToAdd;<br />
+function getDocumentList() {<br />
+	var invocationData = {<br />
+			adapter : 'DocumentAdapter',<br />
+			procedure : 'getDocumentList',<br />
+			parameters : [],<br />
+			compressResponse: true<br />
+	};</p>
+<p>	WL.Client.invokeProcedure(invocationData)<br />
+	.then(function (responseFromAdapter) {<br />
+		// Handle invokeProcedure success.<br />
+		var data = responseFromAdapter.invocationResult.documents;<br />
+		// First check if some documents have their timestamp updated<br />
+		nbDocsFound = data.length;<br />
+		docsToUpdate = [];<br />
+		docsToAdd = [];</p>
+<p>		data.forEach( function(doc) {<br />
+			console.log(&quot;current doc &quot;+doc.name);<br />
+			doc.pdfLoaded = false;<br />
+			documentsCollection.find({'name': doc.name}, {limit:1}).then(function (existingDocs) {<br />
+				// This code is executed asynchronously (after the loop exits)<br />
+				if(existingDocs.length==1) { // document already exists locally<br />
+					if(existingDocs[0].json.timestamp!=doc.timestamp) { // document needs to be updated<br />
+						console.log(doc.name + &quot; is updated!&quot;);<br />
+						docsToUpdate.push({_id: existingDocs[0]._id, json: doc});<br />
+					}<br />
+				} else if(existingDocs.length==0) { // document doesn't exist locally<br />
+					console.log(&quot;adding document &quot;+doc.name);<br />
+					docsToAdd.push(doc);<br />
+				}<br />
+				displayUpdatedDocumentList();<br />
+			});<br />
+		});</p>
+<p>	})<br />
+	.fail(function (errorObject) {<br />
+		// Handle invokeProcedure failure.<br />
+	});<br />
+}</p>
+<p>function displayUpdatedDocumentList() {<br />
+	if(--nbDocsFound) return; // Wait until all promises have been executed<br />
+	console.log(&quot;after promises &quot;+docsToAdd.length+&quot;:&quot;+docsToUpdate.length);<br />
+	updateDocs()<br />
+	.then(function(numberOfDocumentsReplaced) {<br />
+		console.log(&quot;Successfully updated &quot;+numberOfDocumentsReplaced+&quot; documents&quot;);<br />
+		addDocs()<br />
+		.then(function (numberOfDocumentsAdded) {<br />
+			console.log(&quot;Successfully added &quot;+numberOfDocumentsAdded+&quot; documents&quot;);<br />
+			documentsCollection.findAll({})<br />
+			.then(function (allDocs) {<br />
+				console.log(&quot;printing list&quot;);<br />
+				printList(allDocs);<br />
+			});<br />
+		});<br />
+	});<br />
+}</p>
+<p>function updateDocs() {<br />
+	if(docsToAdd.length&amp;gt;0) { // Add new items into collection<br />
+		return documentsCollection.add(docsToAdd, {markDirty: false});<br />
+	}<br />
+	var dfd = new $.Deferred();<br />
+	dfd.resolve(0);<br />
+	return dfd.promise();<br />
+}</p>
+<p>function addDocs() {<br />
+	if(docsToUpdate.length&amp;gt;0) { // Update collection<br />
+		return documentsCollection.replace(docsToUpdate, {markDirty: false});<br />
+	}<br />
+	var dfd = new $.Deferred();<br />
+	dfd.resolve(0);<br />
+	return dfd.promise();<br />
+}</p>
+<p>function printList(allDocs) {<br />
+	var ul = $('#docList'), doc, li;<br />
+	ul.empty();<br />
+	for (var i = 0; i &amp;lt; allDocs.length; i += 1) {<br />
+		doc = allDocs[i].json;<br />
+		// Create new &amp;lt;li&amp;gt; element<br />
+		li = $('&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;');<br />
+		var text = $('&lt;span&gt;&lt;/span&gt;').text(doc.title);<br />
+		li.append(text);<br />
+		var loadedText = doc.pdfLoaded ? &quot;&quot; : &quot; (not downloaded)&quot;;<br />
+		li.append('&amp;lt;div&amp;gt; ts: ' + doc.timestamp + &quot;, size: &quot;+ doc.size + loadedText + '&amp;lt;/div&amp;gt;');<br />
+		ul.append(li);<br />
+	}<br />
+}<br />
+[/code]<br />
+Notice that because of the asynchronous execution of some APIs, the code has been spread into several functions in order to ensure the consistency of the results stored and displayed. An initial call to the <code>getDocumentList()</code> function (button "Refresh List") gives the following result:</p>
+<div><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/managePDFhybridApp1.png"><img src="{{ site.baseurl }}/assets/backup/managePDFhybridApp1-291x300.png" alt="managePDFhybridApp1" width="291" height="300" class="alignnone size-medium wp-image-5878" /></a></div>
+<p>After having downloaded the initial set of documents (button “Download files”) as we will see later in the post, a second call to the <code>getDocumentList()</code> function gives the following new result:</p>
+<div><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/managePDFhybridApp2.png"><img src="{{ site.baseurl }}/assets/backup/managePDFhybridApp2-260x300.png" alt="managePDFhybridApp2" width="260" height="300" class="alignnone size-medium wp-image-5879" /></a></div>
+<h2 id="download">Downloading documents into the mobile app</h2>
+<p>Once we know which documents are available, the next step is to be able to download these locally. We will explore two options for downloading the documents.</p>
+<h3>Option 1: download the documents from a remote web server</h3>
+<p>This option is the easiest and preferred way to download the documents into the app. The following function is responsible for downloading an individual document:<br />
+[code lang="javascript"]<br />
+//TODO: replace with URL of the web server where documents are located<br />
+var pdfRemoteUrl = &quot;http://192.168.1.26:10080/MockService/&quot;;<br />
+function downloadDocument(docName) {<br />
+	var localPath = getFilePath(docName);<br />
+	var fileTransfer = new FileTransfer();<br />
+	fileTransfer.download(<br />
+			pdfRemoteUrl + docName, // remote file location<br />
+			localPath, // where to store file locally<br />
+			function (entry) {<br />
+				console.log(&quot;download complete: &quot; + entry.fullPath);<br />
+			},<br />
+			function (error) {<br />
+				//Download abort errors or download failed errors<br />
+				console.log(&quot;download error source &quot; + error.source);<br />
+			}<br />
+	);<br />
+}<br />
+[/code]</p>
+<p>Notice here the hardcoded base URL of the remote server that should be calculated or dynamically retrieved in a real scenario. Notice also the <code>getFilePath()</code> function that calculates where the file should be stored. We’ll see later why this is platform dependent.</p>
+<p>In this sample, a <code>downloadDocuments()</code> function loops over the local metadata from the JSONStore and updates the <code>pdfLoaded</code> flag before redrawing the list with a link per line that gives access to each file downloaded:</p>
+<p>[code lang="javascript"]<br />
+function downloadDocuments() {<br />
+	documentsCollection.findAll({})<br />
+	.then(function (allDocs) {<br />
+		allDocs.forEach( function(jdoc) {<br />
+			doc = jdoc.json;<br />
+			if(!doc.pdfLoaded) {<br />
+				downloadDocument(doc.name);<br />
+				doc.pdfLoaded = true;<br />
+			}<br />
+		});<br />
+		// update the collection<br />
+		documentsCollection.replace(allDocs, {markDirty : false});<br />
+		// redraw list<br />
+		printList(allDocs);<br />
+	})<br />
+	.fail(function (errorObject) {<br />
+	  // Handle failure.<br />
+	});<br />
+}<br />
+[/code]<br />
+If you implement such a way to download documents, take advantage of the MobileFirst Platform security framework in order to secure the two servers but still provide a SSO between them.</p>
+<h3>Option 2: download the documents through an adapter service</h3>
+<p>In case option 1 is not possible, this option gives you the opportunity to get access to the files from the MFP server directly. I’d personally not recommend this way of doing since, as you’ll see, it requires to encode and decode the documents which will lead to lower performance as their size increases.</p>
+<p>The adapter service is quite simple:<br />
+[code lang="javascript"]<br />
+/**<br />
+ * Used only when individual document content is served by MFP server<br />
+ * Replace localFilePath with root directory where documents can be found<br />
+ * @param docName<br />
+ * @returns document content encoded in base 64<br />
+ */<br />
+function getDocument(docName) {<br />
+	var localFilePath = &quot;/Users/enoiret/Documents/workspaces/v62/MockService/WebContent/&quot;;<br />
+	return {<br />
+		pdf : com.acme.document.DocumentReader().getEncodedContent(localFilePath + docName)<br />
+	};<br />
+}<br />
+[/code]<br />
+It requires a piece of Java code in order to read the content of the file and return it encoded in base64 format:</p>
+<div><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/managePDFhybridApp3.png"><img src="{{ site.baseurl }}/assets/backup/managePDFhybridApp3-300x253.png" alt="managePDFhybridApp3" width="300" height="253" class="alignnone size-medium wp-image-5883" /></a></div>
+<p>The Java code itself is quite simple:<br />
+[code lang="javascript"]<br />
+public static String getEncodedContent(String url)<br />
+        throws IOException {</p>
+<p>    byte[] buf = new byte[8192];</p>
+<p>    InputStream is = new FileInputStream(url);<br />
+    ByteArrayOutputStream bos = new  ByteArrayOutputStream();</p>
+<p>    int read = 0;</p>
+<p>    while ((read = is.read(buf, 0, buf.length)) &amp;gt; 0) {<br />
+    	bos.write(buf, 0, read);<br />
+    }<br />
+    bos.close();<br />
+    is.close();</p>
+<p>    return Base64.encodeBase64String(bos.toByteArray());<br />
+}<br />
+[/code]<br />
+Since the documents are downloaded differently, the <code>downloadDocument()</code> function on the client side needs of course to be updated accordingly:<br />
+[code lang="javascript"]<br />
+function downloadDocument(docName) {<br />
+	var invocationData = {<br />
+			adapter : 'DocumentAdapter',<br />
+			procedure : 'getDocument',<br />
+			parameters : [docName],<br />
+			compressResponse: true<br />
+	};</p>
+<p>	WL.Client.invokeProcedure(invocationData)<br />
+	.then(function (response) {<br />
+		// Handle invokeProcedure success: remove backslash character and decode binary data<br />
+		var content = Base64Binary.decodeArrayBuffer(response.invocationResult.pdf.replace(/\\/g,&quot;&quot; ));<br />
+		var localPath = getFilePath(docName);<br />
+		function writeDocument(fileEntry) {<br />
+		    fileEntry.createWriter(<br />
+		    		function (writer) {<br />
+		    		    writer.onwriteend = function(evt) {<br />
+		    		        console.log(&quot;done written pdf &quot;+docName);<br />
+		    		    };<br />
+		    		    writer.write(content);<br />
+		    		},<br />
+		    		fail);<br />
+		};<br />
+		// Write file on local system<br />
+		window.resolveLocalFileSystemURL(<br />
+				localPath.substring(0, localPath.lastIndexOf('/')), // retrieve directory<br />
+				function(dirEntry) {<br />
+					dirEntry.getFile( // open new file in write mode<br />
+							docName,<br />
+							{create: true, exclusive: false},<br />
+							writeDocument,<br />
+							fail);<br />
+				},<br />
+				fail);<br />
+	})<br />
+	.fail(function (errorObject) {<br />
+		// Handle invokeProcedure failure.<br />
+		console.log(&quot;Failed to load pdf from adapter&quot;, errorObject);<br />
+	});<br />
+}<br />
+[/code]</p>
+<h2 id="display">Display a document from the mobile app</h2>
+<p>Once the documents are in the app, they can be displayed at any time, even when there is no connectivity.</p>
+<p>The tricky thing here is that depending on the platform, you won’t store the files at the same location. Indeed, iOS has a built-in PDF reader available for Safari, whilst for Android an external app is required to render the PDF. Therefore on Android it is important to store the files in a location that will be accessible from this app. In order to have a platform dependent implementation, the same function can be written specifically under its own platform, as shown in figure 4:</p>
+<div><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/managePDFhybridApp4.png"><img src="{{ site.baseurl }}/assets/backup/managePDFhybridApp4-163x300.png" alt="managePDFhybridApp4" width="163" height="300" class="alignnone size-medium wp-image-5885" /></a></div>
+<p>In the <code>main.js</code> file under the Android folder, the <code>geFilePath()</code> function is implemented as follow:<br />
+[code lang="javascript"]<br />
+function getFilePath(fileName) {<br />
+	console.log(&quot;external dir:&quot;+cordova.file.externalDataDirectory);<br />
+	return cordova.file.externalDataDirectory + fileName; // Works starting with MFP 6.3<br />
+	// For Worklight 6.2, use one of the following lines:<br />
+	//return &quot;file:///mnt/sdcard/Android/data/&quot; + &quot;com.DocViewer&quot; + &quot;/&quot; + fileName; //TODO: replace &quot;com.DocViewer&quot; with package name of the app<br />
+	//return &quot;file:///storage/emulated/0/Android/data/&quot; + &quot;com.DocViewer/files/&quot; + fileName; //TODO: replace &quot;com.DocViewer&quot; with package name of the app<br />
+}</p>
+<p>function getTarget() {<br />
+	return &quot;_system&quot;;<br />
+}<br />
+[/code]</p>
+<p>(Notice here that prior to MFP 6.3 the API <code>cordova.file</code> was not available, so an alternative hardcoded way is given here as an example).</p>
+<p>Under the iPhone folder, the <code>geFilePath()</code> function has a different implementation:</p>
+<p>[code lang="javascript"]<br />
+function getFilePath(fileName) {<br />
+	return ctx.fileSystem.root.toURL() + fileName;<br />
+}</p>
+<p>function getTarget() {<br />
+	return &quot;_blank&quot;;<br />
+}<br />
+[/code]<br />
+Finally, it is also needed to create the URL links properly on each platform in order to be able to launch the right PDF viewer:<br />
+[code lang="javascript"]<br />
+$('#docList').on('click', 'li', function() {<br />
+	var docLoaded = $(this).attr(&quot;doc_loaded&quot;)===&quot;true&quot;;<br />
+	if(docLoaded) {<br />
+		var docName = $(this).attr(&quot;doc_name&quot;);<br />
+		console.log(&quot;before trying to launch &quot;+docName);<br />
+		var localPath = getFilePath(docName);<br />
+		window.open(localPath, getTarget(), &quot;location=yes,hidden=no,closebuttoncaption=Close&quot;);<br />
+	}<br />
+});<br />
+[/code]<br />
+Figure 5 shows how it renders on iOS:</p>
+<div><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/managePDFhybridApp5.png"><img src="{{ site.baseurl }}/assets/backup/managePDFhybridApp5-160x300.png" alt="managePDFhybridApp5" width="160" height="300" class="alignnone size-medium wp-image-5886" /></a></div>
+<p>On Android it is necessary to hit the system back button to go from the PDF viewer app back to the hybrid app.</p>
+<p>Use <code>git clone https://hub.jazz.net/git/enoiret/MFPDocViewer</code> if you want to download the sample project to make tests.</p>

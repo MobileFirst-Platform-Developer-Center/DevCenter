@@ -1,0 +1,75 @@
+---
+
+title: ATS and Bitcode in iOS 9
+date: 2015-09-09 11:00:20.000000000 +03:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6637'
+  _syntaxhighlighter_encoded: '1'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442501546;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:17103;}i:1;a:1:{s:2:"id";i:13793;}i:2;a:1:{s:2:"id";i:17788;}}}}
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p>iOS 9 brings a lot of new features for developers, some of which may affect your development of applications using MobileFirst Platform.</p>
+<p>In this post I'd like to talk about two of those features: <strong>App Transport Security</strong> and <strong>Bitcode</strong>.</p>
+<h2>App Transport Security (ATS)</h2>
+<p>Applications built with XCode 7 for iOS 9 have strict requirements regarding requests made to external hosts. Connections that do not follow the requirements will fail.</p>
+<p>These are the App Transport Security requirements:</p>
+<ul>
+<li>The protocol Transport Security Layer (TLS) must be at least version 1.2.
+</li>
+<li>Connection ciphers are limited to those that provide forward secrecy (<a href="https://ibm.biz/BdX3kd" target="_blank">see the list of ciphers</a>.)
+</li>
+<li>Certificates must use at least an SHA256 fingerprint with either a 2048 bit or greater RSA key, or a 256 bit or greater Elliptic-Curve (ECC) key.</li>
+</ul>
+<p>Source: <a href="https://ibm.biz/BdX3kd" target="_blank">https://ibm.biz/BdX3kd</a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/2015/09/07/preparing-ibm-mobilefirst-platform-server-app-transport-security-ios-9/">Make sure that your production servers are ready for those requirements</a>.</p>
+<p>During development there are workarounds to be able to connect to unsecured servers.</p>
+<h3>Whitelist</h3>
+<p>You can configure a list of hostnames with exceptions.<br />
+For example, to allow HTTP (no SSL) for localhost, add the following entries to your Info.plist:</p>
+<p>[code lang="xml" title="Info.plist"]<br />
+&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;<br />
+&lt;dict&gt;<br />
+  &lt;key&gt;NSExceptionDomains&lt;/key&gt;<br />
+  &lt;dict&gt;<br />
+    &lt;key&gt;localhost&lt;/key&gt;<br />
+    &lt;dict&gt;<br />
+      &lt;!--Include to allow HTTP requests--&gt;<br />
+      &lt;key&gt;NSTemporaryExceptionAllowsInsecureHTTPLoads&lt;/key&gt;<br />
+      &lt;true/&gt;<br />
+    &lt;/dict&gt;<br />
+  &lt;/dict&gt;<br />
+&lt;/dict&gt;<br />
+[/code]</p>
+<blockquote><p>Note: The domain needs to be a named domain (localhost, sub.domain.com, etc). There are reports that hardcoded IPs do not work.</p></blockquote>
+<p>There are other kinds of exceptions you can configure for each domain, such as the minimum TLS version, forward secrecy requirement, etc. See the full list here: <a href="https://ibm.biz/BdX3kd" target="_blank">https://ibm.biz/BdX3kd</a></p>
+<h3>Disable ATS</h3>
+<p>At your own risk, you can also disable the ATS features completely, by adding this entry to your <strong>Info.plist</strong>:<br />
+[code lang="xml" title="Info.plist"]<br />
+&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;<br />
+&lt;dict&gt;<br />
+  &lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;<br />
+      &lt;true/&gt;<br />
+&lt;/dict&gt;<br />
+[/code]</p>
+<h2>Bitcode</h2>
+<p>Apple introduced a new feature called Bitcode, an intermediate code uploaded to the Apple App Store. Apple will then compile your application's bitcode to optimize it for each type of devices.</p>
+<p>The IBM MobileFirst Platform SDK <strong>does not currently support</strong> Bitcode. Your application will fail to build and archive unless you disable bitcode completely. In <strong>Xcode > Build Settings > Build Options</strong>, set <strong>Enable Bitcode</strong> to <strong>No</strong>.</p>
+<p>You will see an error similar to this:</p>
+<blockquote><p>You must rebuild it with bitcode enabled (Xcode setting ENABLE_BITCODE), obtain an updated library from the vendor, or disable bitcode for this target. for architecture armv7<br />
+clang: error: linker command failed with exit code 1 (use -v to see invocation)</p></blockquote>
+<p><blackquote>To configure the MobilFirst Server with TLS 1.2 with Forward Secrecy support, <a href="https://developer.ibm.com/mobilefirstplatform/2015/09/07/preparing-ibm-mobilefirst-platform-server-app-transport-security-ios-9/">read this blog post</a><br />
+</blackquote></p>

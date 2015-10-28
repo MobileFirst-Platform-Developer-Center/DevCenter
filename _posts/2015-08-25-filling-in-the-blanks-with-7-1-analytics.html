@@ -1,0 +1,141 @@
+---
+
+title: Filling in the blanks with 7.1 Analytics
+date: 2015-08-25 17:11:16.000000000 +03:00
+type: post
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '35501'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _wp_old_slug: copy-of-filling-in-the-blanks-with-7-1-analytics-5
+author:
+  login: wrighthw@us.ibm.com
+  email: wrighthw@us.ibm.com
+  display_name: W Harrison Wright
+  first_name: William
+  last_name: Wright
+---
+<p>Sometimes you may want to take your analytics data beyond the console.</p>
+<p>Since version 6.2 there has been the ability to export your raw analytics data with the <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.monitor.doc/monitor/c_op_analytics_raw_reports.html" target="_blank">export API</a>. This API allows querying directly into our underlying datastore, Elasticsearch.</p>
+<p>In prior versions of Analytics we were able to satisfy all desired permutations of your data. New requests have come up showing different breakdowns that are not easily supported with the current architecture. Until we have a chance to satisfy these feature requests, we have created a small python program in the interim for version 7.1.</p>
+<p>The python program, known as mfp_query_helper, queries directly into Elasticsearch and aggregates the desired results in memory. This can be a slow and expensive process, and thus mfp_query_helper should normally be run remotely from outside your cluster. The program is available for download <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/mfp-query-helper.zip">here</a>.</p>
+<h2>What kind of data permutations can I achieve with this program?</h2>
+<p>This tool is primarily focus on breaking down device data. It's main functions are to query for new devices, and to break down devices by application name and version.</p>
+<h2>Preparing your cluster for querying</h2>
+<p>The Elasticsearch http endpoint must be enabled for the tool to query your datastore. To enable to the http endpoint, add the JNDI property "analytics/http.enabled" to your cluster with value "true".</p>
+<h2>Using mfp_query_helper</h2>
+<h3>Installation</h3>
+<p>To install the mfp_query_helper CLI:<br />
+[code language="text"]<br />
+$ sudo python setup.py install<br />
+[/code]</p>
+<p>To uninstall, use the uninstall.sh script with root:<br />
+[code language="text"]<br />
+$ sudo sh uninstall.sh<br />
+[/code]</p>
+<p>You can also create a python virtual environment, if you do not wish to install globally. Make sure the virtual environment uses python 2.7<br />
+[code language="text"]<br />
+$ virtualenv venv<br />
+$ . venv/bin/activate<br />
+$ python setup.py install<br />
+[/code]</p>
+<h3>Basic Usage</h3>
+<p>[code language="text"]<br />
+$ mfp_query_helper -h<br />
+[/code]</p>
+<p>Currently, there are 3 queries that are supported: newDevices, mfpAppVersions, and distinctMfpAppVersions.</p>
+<p>To run one simply use:<br />
+[code language="text"]<br />
+$ mfp_query_helper [QUERY_NAME]<br />
+[/code]</p>
+<p>By default, this will search Elasticsearch host localhost:9500 on index 'worklight'.</p>
+<h3>Query Information</h3>
+<ul>
+<li>newDevices<br />
+        The newDevices query returns an array of new devices per day. A device is considered new the first time it connects to your MFP server.</p>
+<p>Response payload looks like<br />
+[code language="text"]<br />
+[<br />
+    {<br />
+        'date': 0000000000000, // timestamp of day<br />
+        'count': 0 // number of new devices on that day<br />
+    },<br />
+    ...<br />
+]<br />
+[/code]</p>
+</li>
+<li>mfpAppVersions<br />
+        The mfpAppVersions query returns a count of all devices that have connected to a an MFP application. An MFP application is considered a unique combination of app name and app version.</p>
+<p>Response payload looks like<br />
+[code language="text"]<br />
+{<br />
+    'AppName1': {<br />
+        '1.0': 20,<br />
+        '2.0': 25,<br />
+        ...<br />
+    },<br />
+    ...<br />
+}<br />
+[/code]</p>
+<p>It is important to note that if a device connects to AppName1 version 1.0 and version 2.0, it is counted in both. If you would like distinct devices, use distinctMfpAppVersions query.</p>
+</li>
+<li>distinctMfpAppVersions<br />
+        The distinctMfpAppVersions query returns a count of unique devices that have connected to an MFP application. An MFP application is considered a unique combination of app name and app version. For this query, the latest app version will be used.</p>
+<p>For example, if a device connects to AppName1 versions 1.0, 2.0 and 3.0, it will only be counted in version 3.0.</p>
+<p>Response payload looks like<br />
+[code language="text"]<br />
+{<br />
+    'AppName1': {<br />
+        '1.0': 20,<br />
+        '2.0': 25,<br />
+        ...<br />
+    },<br />
+    ...<br />
+}<br />
+[/code]</p>
+</li>
+</ul>
+<h3>Command Line Arguments</h3>
+<p>There are command line arguments for Elasticsearch configuration, and to filter the given queries</p>
+<p>To change the Elasticsearch host to query, use -esHost<br />
+[code language="text"]<br />
+$ mfp_query_helper [QUERY_NAME] -esHost myhost.com:9500<br />
+[/code]</p>
+<p>To change the index to query, use -esIndex<br />
+[code language="text"]<br />
+$ mfp_query_helper [QUERY_NAME] -esIndex otherindex<br />
+[/code]</p>
+<p>You can filter by app name, app version, device model, device os, device os version, and time range.</p>
+<p>A basic filter would look like:<br />
+[code language="text"]<br />
+$ mfp_query_helper [QUERY_NAME] --mfpAppName myApp --mfpAppVersion 1.0<br />
+[/code]</p>
+<p>The keys for filtering are as follows</p>
+<ul>
+<li>mfpAppName</li>
+<li>mfpAppVersion</li>
+<li>deviceModel</li>
+<li>deviceOS</li>
+<li>deviceOSversion</li>
+</ul>
+<p>Time range filters use</p>
+<ul>
+<li>startDate</li>
+<li>endDate</li>
+</ul>
+<p>startDate and endDate parameters can be epoch timestamps or date strings of the format year,month,date (i.e. 2015,4,24). Both startDate and endDate need to be used together.</p>
+<p>[code language="text"]<br />
+$ mfp_query_helper [QUERY_NAME] --startDate 2015,1,1 --endDate 2015,2,1<br />
+[/code]</p>
+<h3>Some Examples</h3>
+<p>To get all new devices for the app "Insurance App" with Elasticsearch running on mysite.com, port 9500, index myindex</p>
+<p>[code language="text"]<br />
+$ mfp_query_helper newDevices -esHost mysite.com:9500 -esIndex myindex --mfpAppName InsuranceApp<br />
+[/code]</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/mfp-query-helper.zip">Download mfp-query-helper</a></p>

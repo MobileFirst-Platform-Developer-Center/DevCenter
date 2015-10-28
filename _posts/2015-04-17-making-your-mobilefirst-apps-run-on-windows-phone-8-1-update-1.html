@@ -1,0 +1,100 @@
+---
+
+title: IBM MobileFirst apps on WindowsPhone 8.1 Update 1
+date: 2015-04-17 09:32:45.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- Mobile
+tags:
+- MobileFirst_Playground
+- windows
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '12127'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: skulkarni@in.ibm.com
+  email: skulkarni@in.ibm.com
+  display_name: SrihariKulkarni
+  first_name: Srihari
+  last_name: Kulkarni
+---
+<p>Last year, Microsoft released <a href="http://en.wikipedia.org/wiki/Windows_Phone_version_history#GDR1" target="_blank">Update 1 for Windows Phones 8.1</a>, also known as GDR1. While initially, this update was available only on device that were shipped new and for those with had the <a href="https://www.windowsphone.com/en-in/store/app/preview-for-developers/178ac8a1-6519-4a0b-960c-038393741e96">Preview for Developers</a> installed, later on the update proliferated to almost all of the Lumia models. Known as the Denim update for Lumia phones, it was a <a href="http://blogs.msdn.com/b/ie/archive/2014/07/31/the-mobile-web-should-just-work-for-everyone.aspx" target="_blank">major update with several changes to Internet Explorer that comes bundled with the OS</a>.</p>
+<p>With this update of Windows Phone, we at IBM had to make some changes to have MobileFirst applications run smoothly on Windows Phone 8.1 Update 1. Here is a list of things you might have to be cognizant of if you have your apps running on Windows Phone 8.1 Update 1.</p>
+<li><strong><a href="http://www-01.ibm.com/support/docview.wss?uid=swg1PI31804" target="_blank">APAR PI31804</a></strong> </li>
+<p>Title: WINDOWS PHONE 8 APPLICATIONS CANNOT CONNECT TO WORKLIGHT SERVER 6.1 ON WINDOWS PHONE 8.1 UPDATE 1<br />
+Resolution: Ensure to have the latest iFix installed.</p>
+<li><strong><a href="http://www-01.ibm.com/support/docview.wss?uid=swg1PI36918" target="_blank">APAR PI36918</a></strong></li>
+<p>Title: WINDOWS PHONE 8.1 IS BEING DETECTED AS IOS DEVICE ON MOBILEFIRST APPLICATION CENTER<br />
+Resolution: If you're using the MobileFirst Application Center, then this APAR fix is an important one to ensure that your Windows Phone users get the correct version of applications hosted on Application Center.</p>
+<p>This issue was caused by a <a href="https://msdn.microsoft.com/en-us/library/ie/hh869301(v=vs.85).aspx#ie11">change in the User-agent string</a> that is sent to the server by the Windows Phone device.</p>
+<li><strong>Rendering Google Maps</strong> </li>
+<p>MobileFirst Hybrid apps displaying Google Maps have issues when the map is zoomed in and out. The final image is not rendered correctly. This was investigated to be a problem with the WebBrowser control provided by the operating system and IBM cannot provide a fix for this. However, by retargetting the application to Windows Phone 8.1, the issue is not seen. Retargetting the app will mean that the app will no longer be able to run on devices with Windows Phone 8.0.</p>
+<li><strong>Dojo</strong> </li>
+<p>MobileFirst Hybrid applications will require some changes to the Windows Phone 8 environment. If you have any of your dojo code in your HTML  tags, move it to your js files.</p>
+<p>For example, if you had the following code in your html</p>
+<p>[code lang="javascript"]<br />
+require([<br />
+			&quot;dojo/_base/connect&quot;,<br />
+			&quot;dojo/ready&quot;,<br />
+			&quot;dojo/_base/array&quot;,<br />
+			&quot;dojo/dom&quot;,<br />
+			&quot;dijit/registry&quot;,<br />
+			&quot;dojox/mobile/parser&quot;,<br />
+			&quot;dojox/mobile&quot;,<br />
+			&quot;dojox/mobile/compat&quot;,<br />
+			&quot;dojox/mobile/Button&quot;<br />
+		], function(connect, ready, array, dom, registry){<br />
+			ready(function(){<br />
+				array.forEach([&quot;btn1&quot;, &quot;btn2&quot;, &quot;btn3&quot;, &quot;btn4&quot;, &quot;btn5&quot;], function(btnId){<br />
+					var btnWidget = registry.byId(btnId);<br />
+					connect.connect(btnWidget.domNode, &quot;click&quot;, onBtnClicked);<br />
+				});<br />
+			});<br />
+			function onBtnClicked(){<br />
+				var span = dom.byId(&quot;msgArea&quot;);<br />
+				span.innerHTML = &quot;&amp;quot;&quot; + dom.byId(this.id).innerHTML + &quot;&amp;quot; button was clicked.&quot;;<br />
+				setTimeout(function(){<br />
+					span.innerHTML = &quot;&quot;;<br />
+				}, 1000);<br />
+			};<br />
+		});</p>
+<p>[/code]</p>
+<p>Then, move it to your <code>js/main.js</code> .</p>
+<p>[code lang="javascript"]<br />
+function wlCommonInit(){<br />
+	require([ &quot;layers/core-web-layer&quot;, &quot;layers/mobile-ui-layer&quot; ], dojoInit);<br />
+}</p>
+<p>function dojoInit() {<br />
+	require([<br />
+				&quot;dojo/_base/connect&quot;,<br />
+				&quot;dojo/ready&quot;,<br />
+				&quot;dojo/_base/array&quot;,<br />
+				&quot;dojo/dom&quot;,<br />
+				&quot;dijit/registry&quot;,<br />
+				&quot;dojox/mobile/parser&quot;,<br />
+				&quot;dojox/mobile&quot;,<br />
+				&quot;dojox/mobile/compat&quot;,<br />
+				&quot;dojox/mobile/Button&quot;<br />
+			], function(connect, ready, array, dom, registry){<br />
+				ready(function(){<br />
+					array.forEach([&quot;btn1&quot;, &quot;btn2&quot;, &quot;btn3&quot;, &quot;btn4&quot;, &quot;btn5&quot;], function(btnId){<br />
+						var btnWidget = registry.byId(btnId);<br />
+						connect.connect(btnWidget.domNode, &quot;click&quot;, onBtnClicked);<br />
+					});<br />
+				});<br />
+				function onBtnClicked(){<br />
+					var span = dom.byId(&quot;msgArea&quot;);<br />
+					span.innerHTML = &quot;&amp;quot;&quot; + dom.byId(this.id).innerHTML + &quot;&amp;quot; button was clicked.&quot;;<br />
+					setTimeout(function(){<br />
+						span.innerHTML = &quot;&quot;;<br />
+					}, 1000);<br />
+				};<br />
+			});<br />
+}<br />
+[/code]</p>
+<p>Have you run your MobileFirst apps on Windows Phone 8.1 GDR 1 ? How did it work out for you ? We'd love to hear from you in the comments below.</p>

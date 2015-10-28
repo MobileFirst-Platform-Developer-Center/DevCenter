@@ -1,0 +1,37 @@
+---
+
+title: MobileFirst Services on Bluemix now support Android and Open Source SDKs
+date: 2015-10-05 15:54:48.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- Mobile
+tags:
+- bluemix
+- mobile_development
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6696'
+  _rawhtml_settings: '0,0,0,0'
+  _yoast_wpseo_metadesc: 'Today we are announcing some exciting additions for our
+    mobile developers: Open Source Android SDKs and a standalone Push service'
+  oasis_is_in_workflow: '1'
+  _wpas_done_all: '1'
+author:
+  login: gilly@il.ibm.com
+  email: GILLY@il.ibm.com
+  display_name: gilly_d
+  first_name: GILLY
+  last_name: DEKEL
+---
+<p>When IBM Bluemix started, the opportunity for mobile developers was an obvious one. It takes only a quick look at your phone to see that almost every app uses a core set of capabilities - Authentication, Push Notifications, Data and Analytics. Consider how many apps there are, and that they are all using this functionality. Should every developer be standing up a server and rewriting this rudimentary software? No, they should be using a service or services. Heck, they probably shouldn’t be writing any server side code at all, right? So true to lean, we stood up a set of mobile backend services that did three out of four - Authentication, Data persistence and Push notifications.</p>
+<p>We learned a lot while we were building these services - it was our first fore into delivering services on the Bluemix PaaS. After we delivered our first generation, we were left with the age old question - make these better? Or toss them and write new ones?</p>
+<p>We opted to write new ones, and roll them in phases. We’d leave our first generation out there as we built out the new services across platforms. We started with a focused set of services for iOS 8 and add the fourth core capability - analytics. We would also make all of these services secure and available at the click of a button. These new services went live in January of 2015, and on September 16th we added support for iOS9. Today I’m happy to announce that we are adding Android to our second generation of mobile cloud services.</p>
+<p>Our Android story has another exciting aspect - we developed the <a href="https://github.com/ibm-bluemix-mobile-services">Android SDK’s for these services in github</a>, open from day one of development - open by design. Our development team got to perform the coveted ‘file->new’ for the Android project, and have been happily committing ever since.<br />
+The Android SDK is the first in many that you can expect to see open in the coming year - we truly believe that there is an amazing strength in the developer community, and that opening the code opens the door to contributions, communication, and the opportunity to learn from each other.</p>
+<p>Another thing that you can look forward to doing is using our second generation IBM Push Notifications service as a standalone service. We’ve removed dependencies that Push previously had on other services, so it can now operate independently. The Push service was also built with Swagger API’s, so you can use our SDK, or you can directly access the rest API’s.</p>
+<p>Our second generation of services – IBM Mobile Client Access, IBM Push Notifications, and Cloudant NoSQLDB – are ready and waiting for you to try them out. We’ve made it easier than ever to get started. You’ll still see our first generation – Mobile Application Security, Push, and Mobile Data – in the catalog for a bit, but we highly recommend starting with the second gen. If you’ve already been using our second generation, you’ll see some instructions on how to get setup when you go to the service dashboards.</p>
+<p>Here in IBM MobileFirst Platform, we are just at the beginning of our Bluemix adventure, and we look forward to continuously improving the way you develop mobile applications. You can learn more about these and other services available for mobile <a href="http://www.ibm.com/cloud-computing/bluemix/solutions/mobilefirst/">here</a>.<br />
+Stay Tuned!</p>

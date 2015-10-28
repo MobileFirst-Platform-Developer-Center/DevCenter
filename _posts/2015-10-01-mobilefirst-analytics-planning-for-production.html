@@ -1,0 +1,101 @@
+---
+
+title: MobileFirst Analytics - Planning for Production
+date: 2015-10-01 17:39:19.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- Best Practices
+- Mobile
+tags:
+- Analytics
+- capacity
+- mobilefirst
+- MobileFirst_Platform
+- preproduction
+- production
+meta:
+  _wpcom_is_markdown: '1'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _post_restored_from: a:3:{s:20:"restored_revision_id";i:18177;s:16:"restored_by_user";i:35650;s:13:"restored_time";i:1443720573;}
+  oasis_original: '18096'
+  _edit_last: '6643'
+  oasis_is_in_workflow: '0'
+  _wp_old_slug: mobilefirst-analytics-planning-for-production-2
+author:
+  login: rott@us.ibm.com
+  email: rott@us.ibm.com
+  display_name: Mike Rheinheimer
+  first_name: Mike
+  last_name: Rheinheimer
+---
+<p><strong>MobileFirst Analytics – Pre-production</strong></p>
+<p>Part of the value of MobileFirst Platform (MFP) Foundation is the out-of-the-box, simple, integrated analytics reporting and console you deploy so you can see a near live view of your infrastructure performance, client logs, and many other events and statistics.</p>
+<p>This article does not intend to give you the talking points or espouse the benefits of analytics.  I hope the value of analytics and in-production client log collection is well understood!  The goal here is to give you the proper knowledge to confidently go into production with a robust, ready, and scalable analytics cluster capable of handling the heaviest punishment.</p>
+<p><strong>MFP Analytics Server Internals</strong></p>
+<p>The underlying data store in the analytics server is <a href="https://www.elastic.co/products/elasticsearch" target="_blank">ElasticSearch</a>.  More than just the data store, ElasticSearch also manages a horizontally scalable cluster of ElasticSearch nodes.  Ultimately, then, the analytics server is really just a single ElasticSearch node.  We entrust all of the cluster management to ElasticSearch.</p>
+<p>ElasticSearch gives deployers the opportunity to set some fine-grained configuration parameters.  One example is the ability to control all twelve of ElasticSearch’s thread pools.  All told, there are perhaps over a hundred configuration parameters you can tune.  Don’t do it!  Unless you really know what you’re doing, and have specifically identified the need, avoid falling to the temptation to turn the knobs and flip the switches.</p>
+<p>There are a few configuration parameters that MFP Analytics Server requires you to consider before going into production.  We’ll get into that a bit later.</p>
+<p>I strongly encourage you to get familiar with ElasticSearch.  It’s documentation will be your primary source for understanding and managing the cluster of MFP Analytics servers.</p>
+<p><strong>It’s Not a Data Warehouse!</strong></p>
+<p>Relational database technology has been around since roughly the early 1970s.  ElasticSearch is not a relational database.  It is fundamentally different, and even encourages data duplication to improve query efficiency.  ElasticSearch uses Apache Lucene, which describes itself as a “high-performance, full-featured text search engine.”  ElasticSearch describes itself as “distributed, scalable, highly available, with real-time search and analytics capabilities.”  ElasticSearch promotes its use for “real-time data” and “real-time analytics”.  Also, “with ElasticSearch, all data is immediately made available for search and analytics.”</p>
+<p>Let’s dissect that last claim.  Can you apply the same claim to a relational database?  In the general case, no.  To achieve near real-time data access to all of your data, you need to distribute load and keep the data in memory.  It’s not quite accurate to call ElasticSearch a NoSQL data store.  It’s much more than that!</p>
+<p>I strongly encourage you to read the <a href="https://en.wikipedia.org/wiki/NoSQL" target="_blank">Wikipedia entry on “NoSQL”</a>.</p>
+<p><strong>If it’s Not a Data Warehouse, Why Do I Need a Disk?</strong></p>
+<p>I’ve heard people say they did not give any disk space to the MFP Analytics Server installation because “we were told it was not a database.”  Well, it’s not a <em>relational</em> database, but it certainly has data storage requirements!  How would you achieve persistent data store without a disk?  Please, please give your installation some disk space.</p>
+<p><strong>So How Do I Confidently Go Into Production, Anyway?</strong></p>
+<p>First, test!  Seriously, you do have a test cluster, right?  And you’ll be simulating the stress that cluster will experience in production, right?  That’s the advice given by the <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/capacity-planning.html">capacity planning section</a> of the <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/index.html">ElasticSearch Definitive Guide</a> (to which I will be referring a lot and which you are strongly encouraged to read).</p>
+<p>There are several basic constraints you must be concerned with when planning for capacity.</p>
+<ol>
+<li>rate of indexing (do you have a busy infrastructure?)</li>
+<li>size of documents (are your debug log messages huge?)</li>
+<li>rate of querying (how often are you querying the data?)</li>
+<li>desired query performance (can you tolerate 5-second wait times on the console?)</li>
+<li>how long to keep the data (one week or many months?)</li>
+</ol>
+<p>To properly plan for capacity, you’ll need to know the answers (or at least an approximation) to each of the above points.  Do you process millions of network requests per second, or only a few sync requests per day?  Are you keeping all of your client and server logs at high verbosity?  Do you have many people refreshing the analytics web console throughout the day and night?  Are you willing to have poor query performance, therefore poor analytics web console load times?  How long do you want to keep the data?</p>
+<p>Because ElasticSearch and the analytics server intends to be real-time, all data is held in fielddata in memory.  Quoting <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/_limiting_memory_usage.html">ElasticSearch guide</a>:  “[Fielddata] is an in-memory data structure that must be accessible for fast execution, and it is expensive to build. If you have to reload data for every request, performance is going to be awful.”</p>
+<p>That should help us draw a strong conclusion about our hardware requirements.  We need enough memory to hold all of the fielddata.  Which brings us to…</p>
+<p><strong>Hardware Requirements</strong></p>
+<p>I shant repeat <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/hardware.html">what ElasticSearch Guide already says about hardware</a>, so, go forth and read, my son!</p>
+<p><strong>How Does MFP Analytics Contribute to Scaling Requirements</strong></p>
+<p>We store many document types in the ElasticSearch data store, but only a few can experience rapid accumulation.  Some of that accumulation is out of your control, such as the recording of all network requests coming into the MobileFirst Operations Server.  Some of the accumulation is fully under your control, such as at what verbosity the client and server logger is configured, and whether or not you have instrumented your applications to report custom analytics, and how extensive that instrumentation is.</p>
+<p>The document types that contribute most heavily to rapid accumulation are:</p>
+<ul>
+<li>ServerNetworkTransactions – all network requests received by MFP Operations Server</li>
+<li>CustomData – data reported by you if you’ve instrumented your client applications</li>
+<li>Devices (bounded to a fixed number)</li>
+<li>MfpAppLogs – raw debug logs from client applications, if you’ve set a high verbosity and are explicitly sending them to the server</li>
+<li>MobileUsers (bounded to a fixed number)</li>
+<li>ServerLogs – raw debug logs from the MFP Operations Server, if you’ve set a high verbosity and are explicitly sending them to the server</li>
+</ul>
+<p>You have the choice to turn off or on any of these.  Turning off some of these reported types reduces the value of the analytics, and reduces your ability to make informed decisions about your applications and infrastructure.  Storing all types, but reducing their longevity restores that value.  It is your job to decide what data is most valuable to you, and to set the capacity and scaling requirements accordingly!</p>
+<p><strong>Ok, So What Performance Should I Expect</strong></p>
+<p>In our testing, we found that 10 million ServerNetworkTransactions documents in one shard on one physical node answered a complex query in about 3.7 seconds.  50 million ServerNetworkTransactions documents answered in about 10 seconds.  If you consider the analytics web console “broken” when it takes longer than 10 seconds to load, then 50 million ServerNetworkTransactions per node is your scaling factor.</p>
+<p>Hmmm… instead of writing a big convoluted paragraph describing all the various permutations of shards and nodes, perhaps this type of calculation would fit neatly into some kind of computer thing, like a high tech <a href="https://en.wikipedia.org/wiki/Abacus">abacus</a>.</p>
+<p>As it turns out, the analytics team produced a capacity planning spreadsheet for exactly that purpose.</p>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v710/Hardware_Calculator.xlsx">MFP Analytics Capacity Planning (see sheet 2)</a></p>
+<p>One other thing to note, also from our testing, is that setting two primary shards, two replica shards, and two physical nodes reduced that 3.7 second query time to under one second.</p>
+<p>Don’t assume you can just keep bumping that primary shard setting and get more performance!  <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/kagillion-shards.html">Shards are not free</a>; they take system resources to manage.  There is a sweet spot, and you have to find it.</p>
+<p>You really, <em>really</em> should read the whole <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/scale.html">Designing for Scale section</a>.</p>
+<p><strong>Can’t a Guy Just Get a Quick Start Guide?</strong></p>
+<p>Ok, fine.  I’ll give you some requirements.  This is the part I promised earlier!</p>
+<ul>
+<li>Run production servers on Linux (prefer not VM due to the VM’s unpredictable handling of virtual memory).</li>
+<li>Turn off swap (see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/setup-configuration.html">Elastic configuration documentation</a>)</li>
+<li>Configure swappiness (see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/setup-configuration.html">ES configuration documentation</a>)</li>
+<li>Give half of the physical memory to the JVM for heap space (by -Xms8G -Xmx8G or by using ES_HEAP_SIZE env var.  See <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/setup-configuration.html">ES configuration documentation</a>)</li>
+<li>Do not give more than 32G RAM per node to the JVM.</li>
+<li>Increase allowed open file descriptors to 32k or 64k (see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/setup-configuration.html">ES configuration documentation</a>)</li>
+<li>Increase the virtual memory mmap counts (see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/setup-configuration.html">ES configuration documentation</a>)</li>
+<li>Set bootstrap.mlockall to false (see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/1.x/setup-configuration.html">ES configuration documentation</a>)</li>
+<li>Use a JDK from the <a href="https://www.elastic.co/subscriptions/matrix">ES support matrix</a> or IBM J9 version 8.0.1.10 (Java 8 SR1) or version 7.1.3.10 (Java 7.1 SR3)</li>
+<li>Use the capacity calculator spreadsheet and set the <a href="https://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.monitor.doc/monitor/c_op_analytics_properties.html?lang=en">shards configuration</a> accordingly, or with a bit of a buffer.</li>
+<li>Use the capacity calculator spreadsheet and allocate (or at least plan for!) physical nodes to handle the capacity you require.</li>
+<li>Use a 64-bit JVM. The heap size for a 32-bit JVM is extremely limited (<a href="http://javarevisited.blogspot.com/2013/04/what-is-maximum-heap-size-for-32-bit-64-JVM-Java-memory.html">http://javarevisited.blogspot.com/2013/04/what-is-maximum-heap-size-for-32-bit-64-JVM-Java-memory.html</a>).  This is not a suitable environment in which to run the Analytics console, as Elasticsearch heavily relies on a substantial heap size.</li>
+<li>Then, <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/deploy.html">revisit this list before production</a> and don’t skip any of it!  Especially the minimum_master_nodes setting in the <a href="https://www.elastic.co/guide/en/elasticsearch/guide/current/_important_configuration_changes.html">Important Configuration Changes section</a>.</li>
+</ul>
+<p><strong>Conclusion</strong></p>
+<p>I hope this post gives you a better feel for the fundamentals of the MFP Analytics Server technology, scaling techniques, and production planning.  I welcome your feedback, and look forward to your comments!</p>

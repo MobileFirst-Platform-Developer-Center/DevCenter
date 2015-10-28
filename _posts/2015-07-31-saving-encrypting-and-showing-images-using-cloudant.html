@@ -1,0 +1,108 @@
+---
+
+title: Saving, Encrypting and Showing Images using Cloudant
+date: 2015-07-31 16:42:32.000000000 +03:00
+type: post
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '13054'
+  _syntaxhighlighter_encoded: '1'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:0:{}
+author:
+  login: nanaus13@yahoo.com
+  email: nanaus13@yahoo.com
+  display_name: Namfo12
+  first_name: Nana
+  last_name: Amfo
+---
+<h2>Overview</h2>
+<p>This blog post is based on <a href="https://developer.ibm.com/mobilefirstplatform/2015/04/27/saving-and-retrieving-images-using-cloudant-with-http-adapters/">Saving and Retrieving Images using Cloudant with HTTP Adapters</a> that I made a while ago using cloudant to store a base64 encoded image. Instead of saving the encoded image I will encrypt it using <code>WL.SecurityUtils</code> class provided in MobileFirst Foundation. WL.SecurityUtils is a small utility class that provides encryption and decryption of data using the Stanford Javascript Crypto Library (SJCL). In addition, I will not be covering the database creation or the Cordova plugin integration you can find that in the previous blog.</p>
+<h2>Encryption</h2>
+<p>To encrypt data you can use the <code>WL.SecurityUtils.encrypt</code> method. This method requires the key and the text that you wish to encrypt. It is recommended that you secure your key so that no one else can use it. In this blog I am hardcoding the key for simplicity.</p>
+<p>[code lang="js"]<br />
+function sendRequest(res){<br />
+	var def = $.Deferred();<br />
+	name = generateName();</p>
+<p>	 WL.SecurityUtils.encrypt({<br />
+	      key: key,<br />
+	      text: res<br />
+	 })<br />
+	 .then(function (res) {<br />
+		var payload = {<br />
+					&quot;_id&quot; : name,<br />
+					&quot;ct&quot;: res.ct,<br />
+					&quot;iv&quot;: res.iv,<br />
+					&quot;v&quot; : res.v,<br />
+					&quot;src&quot; : &quot;objc&quot;<br />
+			};</p>
+<p>			$.ajax({<br />
+		        url: 'https://ibmdemo.cloudant.com/demo',<br />
+		        data : JSON.stringify(payload),<br />
+		        contentType : &quot;application/json&quot;,<br />
+		           headers : {&quot;Authorization&quot; : &quot;Basic &quot; + btoa(&quot;ibmdemo:password123&quot;)},<br />
+		        dataType : &quot;json&quot;,<br />
+		        type : &quot;POST&quot;,<br />
+		        success : function(response) {<br />
+		     		WL.Logger.info(response);<br />
+		     		def.resolve(response);<br />
+		        },<br />
+		        error : function(response) {<br />
+		     	   WL.Logger.error(response);<br />
+		     	   def.reject(response);<br />
+		        }<br />
+		    });</p>
+<p>	 })<br />
+	 .fail(function (err) {<br />
+		 def.reject(err);<br />
+	 });</p>
+<p>	return def.promise();<br />
+}[/code]</p>
+<p>The response from  <code>WL.SecurityUtils.encrypt</code> are as follows : ct, iv, and v. Ct is the cipher text or the encrypted text. Iv is the initialization vector which is unique to the encrypted data. V is the version number which is generally 1. If you have an astute eye you may have noticed that I included a property called src before sending the payload to Cloudant. We will be using src later when decrypted the text.</p>
+<h2>Decrypting</h2>
+<p>[code lang="js"]function retrieveImageFromCloudant(){</p>
+<p>	var config = {<br />
+			db : &quot;demo&quot;,<br />
+			attachment : name,<br />
+			auth : btoa(&quot;ibmdemo:password123&quot;)<br />
+	};<br />
+	 WL.Client.invokeProcedure({<br />
+		adapter: 'cloudant',<br />
+		procedure: 'getImage',<br />
+		parameters: [config],<br />
+		compressResponse : true<br />
+	})<br />
+		.then(function (res) {<br />
+              var responseJSON = JSON.parse(res.responseText);<br />
+              var data = JSON.parse(responseJSON.text);<br />
+			var img =document.getElementById('img');<br />
+			WL.SecurityUtils.decrypt({<br />
+				key : key,<br />
+				ct : data.ct,<br />
+				iv : data.iv,<br />
+				src : data.src,<br />
+				v : res.iv<br />
+			})<br />
+			.then(function (res) {<br />
+					img.setAttribute(&quot;src&quot;, &quot;data:image/png;base64,&quot;+res);<br />
+			})<br />
+			.fail(function (err) {<br />
+				WL.Logger.error(&quot;Failed to decrypt image&quot;);<br />
+			});</p>
+<p>		})<br />
+		.fail(function (err) {<br />
+			WL.Logger.error(&quot;Failed to read image&quot;);<br />
+		});<br />
+}<br />
+[/code]</p>
+<p>To decrypt the data you can use <code>WL.SecurityUtils.decrypt</code>. This requires the key, ct, iv, src, and v. I have already discussed what  are the key, ct, and v but not the src. The src takes of the three options -- objc, java, and js. Java is for Android, objc is for iOS and js is for web. In this example I will be using objc. The response you will get is the decrypted text which in this case the base64 encoded string of the image.</p>
+<h2>Conclusion</h2>
+<p>Hopefully, this blog post will show you how easy it is to use encryption and decryption.</p>
+<p><a href="https://github.ibm.com/noamfo/developerWorks/tree/master/WLSecurityUtilsTestProject">WLSecurityUtilsSampleApp</a></p>
+<h2>Resources</h2>
+<p><a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.SecurityUtils.html?cp=SSHS8R_7.0.0%2F9-0-0-1-23" title="WL Security Utils Docs">IBM Knowledge Center Docs for WL.SecurityUtils</a></p>

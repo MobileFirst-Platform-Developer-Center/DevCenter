@@ -1,0 +1,125 @@
+---
+
+title: Protecting adapter procedures for backend access
+date: 2015-02-04 14:15:57.000000000 +02:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6637'
+  _rawhtml_settings: '0,0,0,0'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<h2>Overview</h2>
+<p>MobileFirst Platform Foundation Server allows to protect adapter procedures via several types of authentication, using security tests, realms and login modules.</p>
+<p>The MobileFirst client-side SDK helps you handle challenges sent by the server when trying to access a protected resource.</p>
+<p>One question that often surfaces is: What if my backend needs to invoke an adapter procedure?<br />
+A common example of this scenario is <a href="https://ibm.biz/BdETuE" target="_blank">Push notifications</a>. You want your backend to send push notifications via the MobileFirst server. To do so, your backend needs to invoke an adapter procedure.</p>
+<p>MobileFirst adapters can be <a href="https://ibm.biz/BdETus" target="_blank">invoked via simple HTTP requests</a>.<br />
+The URL for the invocation is service is <code>http(s)://{server}:{port}/{Context}/invoke</code>.<br />
+The request needs to include the parameters: <code>adapter, procedure, parameters</code>.</p>
+<p>You would not want anyone who knows this URL to be able to send push notifications to your users. Therefore you need to protect the adapter procedure with a security test that your backend can easily handle.</p>
+<p>One possible solution for this: HTTP's <a href="http://en.wikipedia.org/wiki/Basic_access_authentication" target="_blank">Basic Access Authentication</a>.<br />
+Basic access authentication sends a username and password in the HTTP headers, encoded in base64.</p>
+<h2>Authenticator &amp; Realm</h2>
+<p>MobileFirst includes an Authenticator able to extract and decode this header. To use it, add a new <strong>realm</strong> in your <strong>authenticationConfig.xml</strong> which uses the class <code>com.worklight.core.auth.ext.BasicAuthenticator</code>:</p>
+<p>[code lang="xml" title="authenticationConfig.xml"]<br />
+&lt;realm name=&quot;BackendAccessRealm&quot; loginModule=&quot;BackendAccessLogin&quot;&gt;<br />
+  &lt;className&gt;com.worklight.core.auth.ext.BasicAuthenticator&lt;/className&gt;<br />
+  &lt;parameter name=&quot;basic-realm-name&quot; value=&quot;Private&quot;/&gt;<br />
+&lt;/realm&gt;<br />
+[/code]</p>
+<ul>
+<li><code>name</code>: An arbitrary name for the realm.</li>
+<li><code>loginModule</code>: The login module that will verify the credentials. Defined later.</li>
+<li><code>className</code>: The class provided out of the box by MobileFirst to extract the authentication headers.</li>
+<li><code>basic-realm-name</code>: An arbitrary name for the HTTP realm.</li>
+</ul>
+<p>If you prefer to use your own custom HTTP header or your own credentials encoding, you can write a custom authenticator instead of the provided class.</p>
+<h2>Login Module</h2>
+<p>To validate credentials, a Login Module is used. In our case there is only one set of credentials that are are valid. Let's add the valid credentials in the <code>worklight.properties</code>.</p>
+<p>[code title="worklight.properties"]<br />
+##<br />
+# Backend access credentials<br />
+##<br />
+backend.username=user<br />
+backend.password=password<br />
+[/code]</p>
+<p>Define a login module to use those properties:<br />
+[code lang="xml" title="authenticationConfig.xml"]<br />
+&lt;loginModule name=&quot;BackendAccessLogin&quot;&gt;<br />
+  &lt;className&gt;com.sample.auth.ConfiguredIdentityLoginModule&lt;/className&gt;<br />
+  &lt;parameter name=&quot;username-property&quot; value=&quot;backend.username&quot;/&gt;<br />
+  &lt;parameter name=&quot;password-property&quot; value=&quot;backend.password&quot;/&gt;<br />
+&lt;/loginModule&gt;<br />
+[/code]</p>
+<ul>
+<li><code>name</code>: an arbitrary name, to be used in the realm.</li>
+<li><code>className</code>: The custom Java class responsible for checking the credentials. Code will be covered below. It needs to be added to your java folder.</li>
+<li><code>username-property</code>: the name of the username property in <strong>worklight.properties</strong></li>
+<li><code>password-property</code>: the name of the password property in <strong>worklight.properties</strong></li>
+</ul>
+<p>Our <code>ConfiguredIdentityLoginModule</code> class is responsible for comparing the credentials collected by authenticator to the credentials stored in the properties file. If you prefer to store/retrieve the credentials some other way, you can modify this code.</p>
+<p>To see the full code for this class: <a href="https://ibm.biz/BdETCd" target="_blank">https://ibm.biz/BdETLK</a></p>
+<p>[code lang="java" title="ConfiguredIdentityLoginModule.java"]<br />
+@Override<br />
+public void init(Map&lt;String, String&gt; options) throws MissingConfigurationOptionException {<br />
+  String usernameProperty = options.remove(USERNAME_PROPERTY_CONF);<br />
+  if (usernameProperty == null) throw new MissingConfigurationOptionException(USERNAME_PROPERTY_CONF);<br />
+  String passwordProperty = options.remove(PASSWORD_PROPERTY_CONF);<br />
+  if (passwordProperty == null) throw new MissingConfigurationOptionException(PASSWORD_PROPERTY_CONF);<br />
+  super.init(options);</p>
+<p>  WorklightConfiguration conf = WorklightConfiguration.getInstance();<br />
+  configuredUsername = conf.getStringProperty(usernameProperty);<br />
+  configuredPassword = conf.getStringProperty(passwordProperty);</p>
+<p>  if (configuredUsername == null || configuredUsername.length() == 0) {<br />
+    throw new IllegalStateException(&quot;ConfiguredIdentityLoginModule cannot resolve property &quot; + usernameProperty + &quot;. Please check project configuration properties.&quot;);<br />
+  }</p>
+<p>  if (configuredPassword == null || configuredPassword.length() == 0) {<br />
+    throw new IllegalStateException(&quot;ConfiguredIdentityLoginModule cannot resolve property &quot; + usernameProperty + &quot;. Please check project configuration properties.&quot;);<br />
+  }</p>
+<p>}</p>
+<p>@Override<br />
+public boolean login(Map&lt;String, Object&gt; authenticationData) {<br />
+  populateCache(authenticationData);<br />
+  return configuredUsername.equals(username) &amp;&amp; configuredPassword.equals(password);<br />
+}<br />
+[/code]</p>
+<h2>Protecting the procedure</h2>
+<p>Combine all of the above in a custom security that uses the defined realm:</p>
+<p>[code lang="xml" title="authenticationConfig.xml"]<br />
+&lt;customSecurityTest name=&quot;BackendAccessSecurity&quot;&gt;<br />
+ &lt;test realm=&quot;BackendAccessRealm&quot; isInternalUserID=&quot;true&quot;/&gt;<br />
+&lt;/customSecurityTest&gt;<br />
+[/code]</p>
+<p>Protect your procedure with the newly created security test:<br />
+[code lang="xml" title="Adapter.xml"]<br />
+&lt;procedure name=&quot;doAction&quot; securityTest=&quot;BackendAccessSecurity&quot;/&gt;<br />
+[/code]</p>
+<p>[code lang="javascript" title="Adapter-Impl.js"]<br />
+function doAction(data){<br />
+	//Here do something with the data received by the backend<br />
+	//A classic example is Push Notifications</p>
+<p>	WL.Logger.info(&quot;doAction was called with data = &quot; + data);<br />
+	//Don't forget to set the correct console log level in the server properties<br />
+}<br />
+[/code]</p>
+<h2>Testing</h2>
+<p>Your backend can now make HTTP requests to the invocation service using your favorite HTTP client. Pass the base64 authentication credentials in the headers:<br />
+<code>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</code></p>
+<p>For testing purposes, you can use tools such as <a href="http://www.getpostman.com/" target="_blank">PostMan</a>. It includes a feature to generate the base64 credentials for testing Basic Auth.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/basicauth-postman.png"><img src="{{ site.baseurl }}/assets/backup/basicauth-postman.png" alt="basicauth-postman" width="722" height="405" class="aligncenter size-full wp-image-7004" /></a></p>
+<p>Keep in mind that your browser will keep the <code>JSESSIONID</code> cookie and use it for subsequent requests. You will need to clear the browser cookies to start a new scenario.</p>
+<h2>Sample Code</h2>
+<p>The full sample used here is available on <a href="https://ibm.biz/BdETCc" target="_blank">GitHub</a>.</p>

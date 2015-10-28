@@ -1,0 +1,215 @@
+---
+
+title: Working with JSONStore Collections (Join)
+date: 2015-02-24 17:41:51.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- Best Practices
+- Mobile
+tags:
+- jsonstore
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442519071;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:5876;}i:1;a:1:{s:2:"id";i:17659;}i:2;a:1:{s:2:"id";i:13084;}}}}
+author:
+  login: nanaus13@yahoo.com
+  email: nanaus13@yahoo.com
+  display_name: Namfo12
+  first_name: Nana
+  last_name: Amfo
+---
+<h2>Overview</h2>
+<p>Currently, JSONStore does not have a dedicated feature to join collection like most relational databases. However, you can utilize shared indexes using <code>additional search fields</code> to relate different collections. In this blog, I will demonstrate how this is done and at the end of the blog I will attach an app that you can use to help you. In addition, I would recommend using the latest publicly available version of MobileFirst Platform but this may apply to older versions as well.</p>
+<h2>Create the collections</h2>
+<p>Assuming you know the basics of creating collections in JSONStore, you will know that you can create a collection with search fields that are not part of the collection.</p>
+<p>[code lang="js"]var OrdersCollection = {<br />
+	      orders: {<br />
+	        searchFields: {<br />
+	          order_id: 'integer',<br />
+	          order_date: 'string'<br />
+	        },<br />
+	        additionalSearchFields: {<br />
+	          customer_id: 'integer'<br />
+	        }<br />
+	      }<br />
+	};</p>
+<p>	var CustomerCollection = {<br />
+		  customers: {<br />
+			  searchFields: {<br />
+				  customer_name : 'string',<br />
+				  contact_name : 'string',<br />
+				  country : 'string'<br />
+			  },<br />
+			  additionalSearchFields : {<br />
+				  customer_id : 'integer'<br />
+			  }<br />
+		  	}<br />
+		};[/code]</p>
+<p>As you see from the example above, the additional search field is the same for both the <code>customer</code> collection and the <code>orders</code> collection. You can call this additional search field a shared index.</p>
+<h2>Adding data using additional search fields</h2>
+<p>Since additional search fields are not part of the data you will need to specify it when adding each new data to your collection.</p>
+<p>[code lang="js"]var data = [<br />
+			                {order_id : 462, order_date : '1-1-2000'},<br />
+			                {order_id: 608, order_date : '2-2-2001'},<br />
+			                {order_id: 898, order_date : '3-3-2002'}<br />
+			                ];</p>
+<p>			    var counter = 0;</p>
+<p>			    var q = async.queue(function (task, callback) {<br />
+			    	setTimeout(function () {<br />
+			    		WL.JSONStore.get('orders').add(task.data, {additionalSearchFields: {customer_id: task.customer_id}});<br />
+				    	callback(++counter);<br />
+			    	},0);<br />
+			    },1);</p>
+<p>			    for(var i = 0; i &lt; data.length; i++){<br />
+			     q.push({data : data[i], customer_id: i+1}, function(counter){<br />
+			    	 console.log(&quot;Added Order Doc &quot; + counter);<br />
+			     });<br />
+			    }</p>
+<p>		    q.drain = function(){<br />
+		    	setTimeout(function() {<br />
+		    		console.log(&quot;Finished adding order documents&quot;);</p>
+<p>			    	WL.JSONStore.get(&quot;orders&quot;).findAll({filter : [&quot;customer_id&quot;, &quot;order_id&quot;, &quot;order_date&quot;]})<br />
+			    		.then(function (res) {<br />
+			    			ordersCollectionData = res;<br />
+			    			document.getElementById(&quot;orders&quot;).innerHTML = JSON.stringify(res, null, &quot;\t&quot;);<br />
+			    		})<br />
+			    		 .fail(function (err) {<br />
+			    			    console.log(&quot;There was a problem at &quot; + JSON.stringify(err));<br />
+			    		});<br />
+		    	},0);</p>
+<p>		    };[/code]</p>
+<p>You may have noticed the <code>async.queue</code> method. This method derives from the <a href="https://github.com/caolan/async#queue">async utility library</a>. <code>Queue</code> will allow each task to run asynchronously and <code>push</code> will add the tasks to the queue. You will notice that I add both the data and the additional search field. Lastly, <code>drain</code> will run after the last task has been run. I added a setTimeout to keep the tasks from running too fast but it may be different for you.</p>
+<p>The collection generated would look something like this.</p>
+<table>
+<thead>
+<tr>
+<th>customer_id</th>
+<th>order_id</th>
+<th>order_date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>462</td>
+<td>1-1-2000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>608</td>
+<td>2-2-2001</td>
+</tr>
+<tr>
+<td>3</td>
+<td>898</td>
+<td>3-3-2002</td>
+</tr>
+</tbody>
+</table>
+<p>This process goes the same for the next collection which would produce a collection like this.</p>
+<table>
+<thead>
+<tr>
+<th>customer_id</th>
+<th>customer_name</th>
+<th>contact_name</th>
+<th>country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Customer1</td>
+<td>Contact1</td>
+<td>USA</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Customer2</td>
+<td>Contact2</td>
+<td>China</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Customer3</td>
+<td>Contact3</td>
+<td>Spain</td>
+</tr>
+</tbody>
+</table>
+<p>I would like to add that the concurrency of the operation queue is set to one because the JavaScript-only implementation of the JSONStore API which is only meant for development expects synchronous operations. However, all the production ready implementation of the JSONStore API (i.e. Android, iOS, WP8 and W8) support the execution of various operations in parallel hence you may increase that number if desired without adverse consequences. Here's some code that should work everywhere:</p>
+<p>[code lang="js"]var env = WL.Client.getEnvironment();<br />
+    var CONCURRENCY = 1;<br />
+    if (env === WL.Environment.IPHONE ||<br />
+    	env === WL.Environment.IPAD ||<br />
+        env === WL.Environment.ANDROID ||<br />
+        env === WL.Environment.WINDOWS8 ||<br />
+        env === WL.Environment.WINDOWS_PHONE_8) {<br />
+	      CONCURRENCY = 2;<br />
+    }</p>
+<p>    var q = async.queue(function (task, callback) {<br />
+	//[...]<br />
+     }, CONCURRENCY); [/code]</p>
+<h2>Grab documents for merging</h2>
+<p>Make sure to retrieve the documents from your collection filtering out the search fields and additional search fields you will need to merge. You can see how I do this above or you can look below.</p>
+<p>[code lang="js"]WL.JSONStore.get('orders').findAll({filter : ['customer_id', 'order_id', 'order_date']})<br />
+			    		.then(function (res) {<br />
+			    			ordersCollectionData = res;<br />
+			    		});[/code]</p>
+<h2>Merge the collections together</h2>
+<p>There are many ways in which you can merge these collections together. What you are merging is simply arrays of JSON objects. I used the merge method in <a>lodash</a>.</p>
+<p>[code lang="js"]var shared_index = 'customer_id';<br />
+	var mergedCollection = [];<br />
+	mergedCollection =_.merge(customerCollectionData, ordersCollectionData, function(a, b){<br />
+			if(_.isObject(a) &amp;&amp; (a[shared_index] == b[shared_index])) {<br />
+				return _.merge({}, a, b);<br />
+			}<br />
+	});[/code]</p>
+<p>This would produce a collection similar to this.</p>
+<table>
+<thead>
+<tr>
+<th>customer_id</th>
+<th>customer_name</th>
+<th>contact_name</th>
+<th>country</th>
+<th>order_id</th>
+<th>order_date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Customer1</td>
+<td>Contact1</td>
+<td>USA</td>
+<td>462</td>
+<td>1-1-2000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Customer2</td>
+<td>Contact2</td>
+<td>China</td>
+<td>608</td>
+<td>2-2-2001</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Customer3</td>
+<td>Contact3</td>
+<td>Spain</td>
+<td>898</td>
+<td>3-3-2002</td>
+</tr>
+</tbody>
+</table>
+<p>Hopefully this blog post will help you in joining collections. Of course this is just a full join.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/JSONStoreJoin.zip">MobileFirst Platform Tutorial JSONStore Join App</a></p>

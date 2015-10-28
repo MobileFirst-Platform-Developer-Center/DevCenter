@@ -1,0 +1,154 @@
+---
+
+title: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix
+  containers
+date: 2015-08-27 11:09:24.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- Mobile
+tags:
+- bluemix
+- container
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '16388'
+  _rawhtml_settings: '0,0,0,0'
+  _syntaxhighlighter_encoded: '1'
+  _yoast_wpseo_focuskw: on-premise connectivity
+  _yoast_wpseo_linkdex: '66'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442511335;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:16476;}i:1;a:1:{s:2:"id";i:14955;}i:2;a:1:{s:2:"id";i:16161;}}}}
+author:
+  login: mageorge@in.ibm.com
+  email: mageorge@in.ibm.com
+  display_name: ManuGeorge
+  first_name: Manu
+  last_name: George
+---
+<h2>Introduction</h2>
+<p>With the IBM MobileFirst  Platform Foundation 7.1 release there is an option to run the MobileFirst Platform Foundation Server on the IBM Container service on IBM Bluemix. This option enables you to build docker images of your IBM MobileFirst Foundation runtimes and then run them on the IBM Container Service. The advantage here is that you do not need to roll your own infrastructure. In this blog post we will deal with the problem of connectivity with on-premise backends. This is a common use case for an enterprise to have its MFP adapters connect to backends that are hosted on-premise. We will use the Mutual Authentication feature provided by the Secure Gateway service to ensure that the traffic between the Secure Gateway client which runs on-premise and the Secure Gateway cloud endpoint is encrypted and thus safe from man in the middle attacks.</p>
+<h2>Pre-requisites</h2>
+<p>The ibm-mfpf-container-7.1.0.0.eval.zip archive file should have been downloaded and extracted into a directory say ibm-mfpf-container-7.1.0.0.eval. Users should also be familiar with deploying their MobileFirst Platform Foundation projects on the IBM container service and have all the pre-requisites installed on the system where they are going to run the secure gateway client. If they are not, then they should read the article linked below</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/">https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/run-foundation-on-bluemix/</a></p>
+<h2>Connecting to On-Premise</h2>
+<p>In order to support communication over TLS from an adapter to Secure Gateway we would need to use a TLS proxy. In this post we will use <a href="https://www.stunnel.org/index.html" target="_blank">stunnel</a> an opensource TLS proxy to connect to the public endpoint exposed by the Secure Gateway service on IBM Bluemix. We will install this proxy inside the docker container and it will listen for unencrypted calls at a particular local port. The EIS connectivity driver can then make calls to this local port on the docker container which are then transmitted by stunnel over TLS to the secure gateway public endpoint. This is shown in the figure below</p>
+<p>[caption id="attachment_16758" align="aligncenter" width="720"]<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/Slide1.jpg"><img src="{{ site.baseurl }}/assets/backup/Slide1.jpg" alt="On-Premise Connectivity" width="720" height="540" class="size-full wp-image-16758" /></a> [/caption]</p>
+<h3>Steps to connect to On premise with Mutual Auth</h3>
+<ol>
+<li>Login to the IBM Bluemix PAAS Platform. </li>
+<li>Open the Bluemix Dashboard and click on the Use Services or APIs button. </li>
+<li>Go to the integration section and select secure gateway. </li>
+<li>Let the App be left unbound and select the standard plan. </li>
+<li>Click the use button and the secure gateway dashboard is opened. </li>
+<li>Click on the ‘Add Gateway’ button. This will bring up the Add Gateway screen.</li>
+<li>Enter a name for the gateway say ‘testGateway’. Leave the enforce security token on client checkbox unchecked. </li>
+<li>Click on Connect it.</li>
+<li>You will be displayed a docker run command like docker run -it ibmcom/secure-gateway-client nPtTLWKrrKC_prod_ng. Copy and paste the command exactly as its shown to you and run it on the on premise system.</li>
+<li>This will result in a docker image being downloaded from the repository and its then run. Wait until you get the message below.<br />
+<code>[2015-08-25 10:41:18.423] [INFO] The Secure Gateway tunnel is connected</code>
+</li>
+<li>Click on “Add Destinations” and you are shown a Create Destinations section. Enter any name as the destination name .  Enter the IP address of the on premise system you want to connect to along with the port. Choose the protocol to be TLS: Mutual Auth. Eg of IP address and port can be 192.168.1.3 and 3306 where the IP address is the IP address in the on-premise network and port is the port on which the EIS is listening. </li>
+<li>Click the + button to add the destination.</li>
+<li>Click on the Info icon on the destination tile and you get the cloud host and port which you need to save somewhere for future use.</li>
+<li>Click on the settings button, on the top right corner of the destination tile, and select download keys to download the keys for mutual authentication. These keys need to be extracted to a directory called certs. We will use them later.</li>
+<li>Change the dockerfile present in the ibm-mfpf-container-7.1.0.0.eval/mfpf-server directory to install a tunneling proxy called stunnel. We will need this tunnel to connect to the secure gateway over TLS. Stunnel will then expose an unsecured host and port locally which we will then use to connect to the onpremise Enterprise Information System like database ldap etc.  Use the docker file attached below to replace the one in your mfpf-server directory.
+<p>[code]<br />
+FROM ubuntu:14.04<br />
+MAINTAINER IBM</p>
+<p>RUN apt-get update \<br />
+    &amp;&amp; apt-get install -y wget \<br />
+# Install stunnel<br />
+    &amp;&amp; apt-get install stunnel -y \<br />
+    &amp;&amp; apt-get install -y curl supervisor openssh-server \<br />
+    &amp;&amp; rm -rf /var/lib/apt/lists/*</p>
+<p># Install JRE<br />
+ADD dependencies/ibm-java-jre-7.1-2.10-x86_64-archive.bin /tmp/java.bin<br />
+RUN chmod +x /tmp/java.bin<br />
+RUN /tmp/java.bin -i silent -DUSER_INSTALL_DIR=/opt/ibm/java \<br />
+    &amp;&amp; rm /tmp/java.bin<br />
+ENV JAVA_HOME /opt/ibm/java<br />
+ENV PATH $JAVA_HOME/jre/bin:$PATH<br />
+COPY dependencies/license-check /opt/ibm/docker/</p>
+<p># Install WebSphere Liberty<br />
+ADD dependencies/wlp-runtime-8.5.5.5.jar /tmp/wlp-runtime.jar<br />
+RUN /opt/ibm/java/jre/bin/java -jar /tmp/wlp-runtime.jar --acceptLicense /opt/ibm \<br />
+    &amp;&amp; rm /tmp/wlp-runtime.jar<br />
+ENV PATH /opt/ibm/wlp/bin:$PATH</p>
+<p># Create 'worklight' profile<br />
+RUN /opt/ibm/wlp/bin/server create worklight \<br />
+    &amp;&amp; rm -rf /opt/ibm/wlp/usr/servers/.classCache \<br />
+    &amp;&amp; rm -rf /opt/ibm/wlp/usr/servers/worklight/apps/* \<br />
+    &amp;&amp; mkdir -p /opt/ibm/wlp/usr/extension/lib \<br />
+    &amp;&amp; mkdir -p /opt/ibm/MobileFirst/licenses </p>
+<p># SSH<br />
+RUN mkdir -p /var/run/sshd &amp;&amp;\<br />
+    mkdir -p /root/.ssh/ &amp;&amp;\<br />
+    mkdir -p /root/sshkey/ &amp;&amp;\<br />
+    touch /root/.ssh/authorized_keys &amp;&amp;\<br />
+    sed -i 's/session \+required \+pam_loginuid\.so/session optional pam_loginuid.so/' /etc/pam.d/sshd &amp;&amp;\<br />
+    sed -i 's/.*PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config &amp;&amp;\<br />
+    sed -i 's/.*UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config &amp;&amp;\<br />
+    sed -i 's/.*ChallengeResponseAuthentication yes/ChallengeResponseAuthentication no/g' /etc/ssh/sshd_config</p>
+<p>COPY mfpf-libs/*.war /opt/ibm/wlp/usr/servers/worklight/apps/<br />
+COPY mfpf-libs/*.jar /opt/ibm/wlp/usr/shared/resources/lib/<br />
+COPY mfpf-libs/oauthtai/ /opt/ibm/wlp/usr/extension/lib/<br />
+COPY server/env /opt/ibm/wlp/usr/servers/worklight/<br />
+COPY server/config/logs/50-default.conf /etc/rsyslog.d/<br />
+COPY server/config/logs/rsyslog.conf /etc/supervisor/conf.d/<br />
+COPY server/bin/liberty-run /opt/ibm/wlp/bin/<br />
+COPY server/bin/mfp-init /opt/ibm/wlp/bin/<br />
+COPY server/bin/wlpropsparser.py /opt/ibm/wlp/bin/<br />
+COPY server/bin/liberty.conf /etc/supervisor/conf.d/<br />
+COPY server/bin/sshd.conf /etc/supervisor/conf.d/<br />
+COPY server/bin/run_supervisord /root/bin/<br />
+COPY server/bin/supervisord.conf /etc/supervisor/<br />
+COPY licenses/ /opt/ibm/MobileFirst/licenses</p>
+<p># Set password length and expiry for compliance with Vulnerability Advisor<br />
+RUN sed -i 's/^PASS_MAX_DAYS.*/PASS_MAX_DAYS   90/' /etc/login.defs<br />
+RUN sed -i 's/sha512/sha512  minlen=8/' /etc/pam.d/common-password</p>
+<p>COPY usr/security /opt/ibm/wlp/usr/servers/worklight/resources/security/<br />
+COPY usr/env /opt/ibm/wlp/usr/servers/worklight/<br />
+COPY usr/ssh /root/sshkey/<br />
+COPY usr/wxs /opt/ibm/wlp/</p>
+<p>RUN chmod u+x /opt/ibm/docker/license-check \<br />
+    &amp;&amp; chmod u+x /opt/ibm/wlp/bin/liberty-run \<br />
+    &amp;&amp; chmod u+x /opt/ibm/wlp/bin/mfp-init \<br />
+    &amp;&amp; chmod +x /root/bin/run_supervisord \<br />
+    &amp;&amp; mkdir /var/log/rsyslog \<br />
+    &amp;&amp; chown syslog /var/log/rsyslog</p>
+<p>COPY usr/config/*.xml /opt/ibm/wlp/usr/servers/worklight/configDropins/overrides/</p>
+<p>ENV LICENSE accept</p>
+<p>## create a certs directory for stunnel certificates and config<br />
+RUN mkdir /opt/ibm/certs</p>
+<p>## copy certificates and config<br />
+COPY stunnel/certificates/ /opt/ibm/certs</p>
+<p>COPY stunnel/certificates/stunnel.conf /etc/stunnel/stunnel.conf</p>
+<p>COPY stunnel/certificates/stunnel4 /etc/default/stunnel4</p>
+<p>ENTRYPOINT [&quot;/bin/sh&quot;, &quot;-c&quot; ]<br />
+CMD [&quot;/root/bin/run_supervisord&quot;]<br />
+[/code]
+</li>
+<li>Create an ibm-mfpf-container-7.1.0.0.eval/mfpf-server /stunnel/certificates directory and drop the keys and certificates downloaded in step 14 inside this directory. </li>
+<li>Create an stunnel.conf file inside the same directory as #17.  This file should have the following contents<br />
+[code]<br />
+cert = /opt/ibm/certs/DBWZqgsdcui_k8t_cert.pem<br />
+client = yes<br />
+key = /opt/ibm/certs/DBWZqgsdcui_k8t_key.pem<br />
+[securegateway]<br />
+accept = 127.0.0.1:4409<br />
+connect = cap-sg-prd-1.integration.ibmcloud.com:15391<br />
+CApath = /opt/ibm/certs<br />
+[/code]
+</li>
+<li>The cert and key values correspond to the path of the client certs that were generated by Secure Gateway in step 14 and will be of the format shown above i.e. ends with _cert.pem and _key.pem.</li>
+<li>The CApath points to the directory containing the server certificates namely secureGatewayCert.pem, DigiCertTrustedRoot.pem and DigiCertCA2.pem i.e. /opt/ibm/certs.</li>
+<li>The connect property should have the value that you got in step 13, i.e. the cloud host and port eg cap-sg-prd-1.integration.ibmcloud.com:15391.</li>
+<li>The accept property should have the unsecured host and port name to which your adapter or any other code running in the docker container will connect to. The stunnel proxy will then listen at that port for unsecured requests from the MobileFirst Platform Foundation server. The client property should be yes.</li>
+<li>Modify the mfp-init file in ibm-mfpf-container-7.1.0.0.eval/mfpf-server /server/bin to contain the command to start the secure tunnel i.e. service stunnel4 start.</li>
+<li>Ensure that in the MobileFirst adapter configuration or any other artifact that you are using to connect to the on premise EIS, you use the hostname and port specified in  accept property in step 17 i.e. 127.0.0.1 and 4409.</li>
+</ol>
+<p>You can now follow the steps to build, deploy and run your container on Bluemix as mentioned in<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/">https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/run-foundation-on-bluemix/</a></p>

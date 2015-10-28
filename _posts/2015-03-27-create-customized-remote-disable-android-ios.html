@@ -1,0 +1,437 @@
+---
+
+title: 'HowTo: Create a customized "Remote Disable"  for Native Android and iOS applications'
+date: 2015-03-27 20:42:34.000000000 +03:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442519281;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:16161;}i:1;a:1:{s:2:"id";i:16860;}i:2;a:1:{s:2:"id";i:14955;}}}}
+author:
+  login: y.nunez@floms.com
+  email: yoel@nunez.guru
+  display_name: Yoel Nunez
+  first_name: YOEL
+  last_name: NUNEZ
+---
+<h2>Overview</h2>
+<p>One of the features of the IBM MobileFirst Platform is to prevent certain apps from connecting to the server. This is very useful when a vulnerability is found in one of the versions of your app and you want to prevent this app from accessing the server or using server resources.</p>
+<ul>
+<li><a href="#default-behavior">Default Behavior</a></li>
+<li>
+<a href="#implementation">Custom Implementation</a></p>
+<ul>
+<li><a href="#android-implementation">Android</a></li>
+<li><a href="#ios-implementation">iOS</a></li>
+</ul>
+</li>
+<li><a href="#final-thoughts">Final Thoughts</a></li>
+</ul>
+<h2 id="default-behavior">Default Behavior</h2>
+<p>The default, out-of-the box behavior for Remote Disable is to show an "Access Denied" popup with an "OK" and a "Download" button for the new app. This popup is triggered every time a request to the IBM MobileFirst Platform Server occurs.</p>
+<p>Essentially, by default your app is turned into an offline only app. Everything that does not perform a request to the MobileFirst server still works normally.</p>
+<p>What about changing the overall behavior of the app when it is disabled?</p>
+<p>In the next section we will go over examples on how to do just that for Android and iOS apps.</p>
+<h2 id="implementation">Custom Implementation</h2>
+<p>By now you may ask yourself: How do I change the default behavior of <strong>Remote Disable</strong>?</p>
+<p>The simple answer: You have to register an instance of WLChallengeHandler to the WLClient instance for the following realm "<em><strong>wl_remoteDisableRealm</strong></em>". Below, you will see example of how to implement this for Android and iOS.</p>
+<h3 id="android-implementation">Android</h3>
+<p>First, you will need a native Android application with the IBM MobileFirst SDK included in it; for more information on how to do this visit the Getting Started section for <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-7-0/">Android</a>.</p>
+<p>Next, let's create the challenge handler and response listener, MyRemoteDisableChallengeHandler and MyResponseListener respectively.</p>
+<p>[code lang="java" title="MyRemoteDisableChallengeHandler.java"]<br />
+package com.ibm.mobilefirst.android.challengehandler;</p>
+<p>import com.ibm.mobilefirst.android.MainActivity;<br />
+import com.worklight.wlclient.api.challengehandler.WLChallengeHandler;</p>
+<p>import org.json.JSONObject;</p>
+<p>/**<br />
+ * Custom Challenge Handler for RemoteDisable<br />
+ */<br />
+public class MyRemoteDisableChallengeHandler extends WLChallengeHandler {<br />
+    private MainActivity mainActivity;</p>
+<p>    public MyRemoteDisableChallengeHandler(final MainActivity activity) {<br />
+        super(&quot;wl_remoteDisableRealm&quot;);</p>
+<p>        mainActivity = activity;<br />
+    }</p>
+<p>    @Override<br />
+    public void handleSuccess(JSONObject jsonObject) {<br />
+        // the app is not notifying nor disabled. normal process can follow<br />
+    }</p>
+<p>    @Override<br />
+    public void handleFailure(JSONObject jsonObject) {<br />
+        // create an enum from the Notification for easier handling<br />
+        final DisableMessage disableMessage = DisableMessage.fromJSON(jsonObject);</p>
+<p>        /*<br />
+         * the app is disabled. disabled the connect button in the main activity<br />
+         * you could do other things like changing the colors and show a different activity<br />
+         */<br />
+        mainActivity.disableApp(disableMessage);</p>
+<p>    }</p>
+<p>    @Override<br />
+    public void handleChallenge(JSONObject jsonObject) {<br />
+        // create an enum from the Notification for easier handling<br />
+        final DisableMessage disableMessage = DisableMessage.fromJSON(jsonObject);</p>
+<p>        /*<br />
+         * the app is not disabled but it is marked as &quot;Active, Notifying&quot; submit challenge answer<br />
+         * so that the normal flow of the app continues.<br />
+         *<br />
+         * NOTE: if you also want to disable the app when it's notifying then don't call<br />
+         * submitChallengeAnswer and follow a similar approach to the handleFailure method<br />
+         */<br />
+        submitChallengeAnswer(disableMessage.getMessageId());</p>
+<p>        // OPTIONAL: show a dialog indicating the message that was received<br />
+        mainActivity.notifyApp(disableMessage);<br />
+    }</p>
+<p>    public static enum DisableMessage {<br />
+        BLOCK(0), NOTIFY(1);</p>
+<p>        private int type;</p>
+<p>        private DisableMessage(int i) {<br />
+            type = i;<br />
+        }</p>
+<p>        protected static DisableMessage fromJSON(JSONObject object) {<br />
+            String messageType = object.optString(&quot;messageType&quot;, null);</p>
+<p>            DisableMessage disableMessage = null;<br />
+            for (DisableMessage n : values()) {<br />
+                if (messageType.equalsIgnoreCase(n.name())) {<br />
+                    disableMessage = n;<br />
+                }<br />
+            }</p>
+<p>            if (disableMessage == null) {<br />
+                disableMessage = DisableMessage.BLOCK;<br />
+            }</p>
+<p>            disableMessage.setMessage(object.optString(&quot;message&quot;, null));<br />
+            disableMessage.setDownloadLink(object.optString(&quot;downloadLink&quot;, null));<br />
+            disableMessage.setMessageId(object.optString(&quot;messageId&quot;, null));</p>
+<p>            return disableMessage;<br />
+        }</p>
+<p>        private String message;<br />
+        private String downloadLink;<br />
+        private String messageId;</p>
+<p>        public String getMessage() {<br />
+            return message;<br />
+        }</p>
+<p>        public void setMessage(String message) {<br />
+            this.message = message;<br />
+        }</p>
+<p>        public String getDownloadLink() {<br />
+            return downloadLink;<br />
+        }</p>
+<p>        public void setDownloadLink(String downloadLink) {<br />
+            this.downloadLink = downloadLink;<br />
+        }</p>
+<p>        public String getMessageId() {<br />
+            return messageId;<br />
+        }</p>
+<p>        public void setMessageId(String messageId) {<br />
+            this.messageId = messageId;<br />
+        }<br />
+    }<br />
+}</p>
+<p>[/code]</p>
+<p>[code lang="java" title="MyResponseListener.java"]<br />
+package com.ibm.mobilefirst.android.listener;</p>
+<p>import com.ibm.mobilefirst.android.MainActivity;<br />
+import com.worklight.wlclient.api.WLFailResponse;<br />
+import com.worklight.wlclient.api.WLResponse;<br />
+import com.worklight.wlclient.api.WLResponseListener;</p>
+<p>public class MyResponseListener implements WLResponseListener {<br />
+    private MainActivity mainActivity;</p>
+<p>    public MyResponseListener(MainActivity activity) {<br />
+        mainActivity = activity;<br />
+    }</p>
+<p>    @Override<br />
+    public void onSuccess(WLResponse response) {<br />
+        // update the text field inside MainActivity with the response from the MobileFirst server<br />
+        mainActivity.updateConsole(response.getResponseText());</p>
+<p>    }</p>
+<p>    @Override<br />
+    public void onFailure(WLFailResponse wlFailResponse) {<br />
+        // update the text field inside MainActivity with the response from the MobileFirst server<br />
+        mainActivity.updateConsole(wlFailResponse.getResponseText());<br />
+    }<br />
+}<br />
+[/code]</p>
+<p>Now, let's modify our main activity. We will create an instance of WLClient, register our "MyRemoteDisableChallengeHandler", and follow with a connection to the MobileFirst server.</p>
+<p>[code lang="java" title="MainActivity.java"]<br />
+package com.ibm.mobilefirst.android;</p>
+<p>import android.app.Activity;<br />
+import android.app.AlertDialog;<br />
+import android.content.DialogInterface;<br />
+import android.os.Bundle;<br />
+import android.view.View;<br />
+import android.widget.Button;<br />
+import android.widget.EditText;</p>
+<p>import com.ibm.mobilefirst.andorid.challengehandler.MyRemoteDisableChallengeHandler;<br />
+import com.ibm.mobilefirst.android.listener.MyResponseListener;<br />
+import com.worklight.wlclient.api.WLClient;<br />
+import com.worklight.wlclient.api.WLResponseListener;</p>
+<p>public class MainActivity extends Activity {</p>
+<p>    private WLResponseListener responseListener;</p>
+<p>    private Button connectButton;<br />
+    private EditText textConsole;</p>
+<p>    @Override<br />
+    protected void onCreate(Bundle savedInstanceState) {<br />
+        super.onCreate(savedInstanceState);<br />
+        setContentView(R.layout.activity_main);</p>
+<p>        // create the instance of WLClient<br />
+        final WLClient client = WLClient.createInstance(this);</p>
+<p>        // register the customer remote disable challenge handler<br />
+        client.registerChallengeHandler(new MyRemoteDisableChallengeHandler(this));</p>
+<p>        // connect to the server<br />
+        client.connect(responseListener());</p>
+<p>        connectButton = (Button) findViewById(R.id.connectButton);</p>
+<p>        textConsole = (EditText) findViewById(R.id.textConsole);<br />
+        // disable editing in the EditText field, this will be used for server response output<br />
+        textConsole.setKeyListener(null);</p>
+<p>        // every time &quot;Connect&quot; is pressed, you will connect to MobileFirst Server<br />
+        connectButton.setOnClickListener(new View.OnClickListener() {<br />
+            @Override<br />
+            public void onClick(View v) {<br />
+                client.connect(responseListener());<br />
+            }<br />
+        });<br />
+    }</p>
+<p>    private WLResponseListener responseListener() {</p>
+<p>        if (responseListener == null) {<br />
+            responseListener = new MyResponseListener(this);<br />
+        }</p>
+<p>        return responseListener;</p>
+<p>    }</p>
+<p>    /*<br />
+     * disable app handler, this will show a dialog with an &quot;Ok&quot; button and a &quot;Download&quot; button that<br />
+     * will allow the user to download a new app from the Play store, App Center, or the internet<br />
+     */<br />
+    public void disableApp(final MyRemoteDisableChallengeHandler.DisableMessage disableMessage) {<br />
+        Runnable runnable = new Runnable() {<br />
+            @Override<br />
+            public void run() {<br />
+                connectButton.setEnabled(false);</p>
+<p>                AlertDialog.Builder builder = notificationDialog(disableMessage);</p>
+<p>                builder.setNeutralButton(&quot;Download New Version&quot;, new DialogInterface.OnClickListener() {<br />
+                    @Override<br />
+                    public void onClick(DialogInterface dialog, int which) {<br />
+                        // download the new .apk (Play Store, App Center, etc...)<br />
+                    }<br />
+                });</p>
+<p>                builder.create().show();<br />
+            }<br />
+        };</p>
+<p>        runOnUiThread(runnable);<br />
+    }</p>
+<p>    /*<br />
+     * app notify handler, this will show a dialog when the app is marked as &quot;Active, Notifying&quot;<br />
+     * in the MobileFirst Operations Console<br />
+     */<br />
+    public void notifyApp(final MyRemoteDisableChallengeHandler.DisableMessage message) {<br />
+        Runnable runnable = new Runnable() {<br />
+            @Override<br />
+            public void run() {<br />
+                notificationDialog(message).create().show();<br />
+            }<br />
+        };</p>
+<p>        runOnUiThread(runnable);<br />
+    }</p>
+<p>    /*<br />
+     * notification helper, this will set the title of the dialog and add a default &quot;OK&quot; button<br />
+     * to dismiss it<br />
+     */<br />
+    private AlertDialog.Builder notificationDialog(MyRemoteDisableChallengeHandler.DisableMessage message) {<br />
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);</p>
+<p>        builder.setPositiveButton(&quot;OK&quot;, new DialogInterface.OnClickListener() {<br />
+            public void onClick(DialogInterface dialog, int id) {</p>
+<p>            }<br />
+        });</p>
+<p>        String title;</p>
+<p>        switch (message) {<br />
+            case NOTIFY:<br />
+                title = getString(&quot;Notification&quot;);<br />
+                break;<br />
+            default:<br />
+                title = getString(&quot;DISABLED App&quot;);<br />
+        }</p>
+<p>        builder.setTitle(title);<br />
+        builder.setMessage(message.getMessage());</p>
+<p>        return builder;</p>
+<p>    }</p>
+<p>    /**<br />
+     *<br />
+     * this will be called by the connection listener to show the response text of each connection<br />
+     * to the MobileFirst server<br />
+     */<br />
+    public void updateConsole(final String content) {<br />
+        Runnable runnable = new Runnable() {<br />
+            @Override<br />
+            public void run() {<br />
+                textConsole.setText(content);<br />
+            }<br />
+        };</p>
+<p>        runOnUiThread(runnable);<br />
+    }<br />
+}<br />
+[/code]</p>
+<h3 id="ios-implementation">iOS</h3>
+<p>First, you will need a native iOS application with the IBM MobileFirst SDK included in it; for more information on how to do this visit the Getting Started section for <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-7-0/">iOS</a>.</p>
+<p>Next, let's create the challenge handler and response delegate, MyRemoteDisableChallengeHandler and MyResponseDelegate respectively.</p>
+<p>[code lang="objc" title="MyRemoteDisableChallengeHandler.h"]<br />
+#import &lt;Foundation/Foundation.h&gt;<br />
+#import &quot;WLChallengeHandler.h&quot;<br />
+#import &quot;ViewController.h&quot;</p>
+<p>@interface MyRemoteDisableChallengeHandler : WLChallengeHandler</p>
+<p>@property (nonatomic) ViewController *viewController;</p>
+<p>-(id)initWithController:(ViewController *)viewController;</p>
+<p>@end<br />
+[/code]</p>
+<p>[code lang="objc" title="MyRemoteDisableChallengeHandler.m"]<br />
+#import &quot;MyRemoteDisableChallengeHandler.h&quot;<br />
+#import &quot;ViewController.h&quot;</p>
+<p>@implementation MyRemoteDisableChallengeHandler</p>
+<p>-(id)initWithController:(ViewController *)viewController {<br />
+    self = [super initWithRealm:@&quot;wl_remoteDisableRealm&quot;];</p>
+<p>    if (self) {<br />
+        self.viewController = viewController;<br />
+    }</p>
+<p>    return self;<br />
+}</p>
+<p>-(void)handleSuccess:(NSDictionary *)success {<br />
+    // the app is not notifying nor disabled. normal process can follow<br />
+}</p>
+<p>-(void)handleChallenge:(NSDictionary *)challenge {<br />
+    /*<br />
+     * the app is not disabled but it is marked as &quot;Active, Notifying&quot;<br />
+     * submit challenge answer, so that the normal flow of the app continues.<br />
+     *<br />
+     * NOTE: if you also want to disable the app when it's notifying then don't call<br />
+     * answerChallenge and follow a similar approach to the handleFailure method<br />
+     */<br />
+    NSString *messageId = [challenge valueForKey:@&quot;messageId&quot;];<br />
+    [self answerChallenge:messageId];</p>
+<p>    // OPTIONAL: show an alert indicating the message that was received<br />
+    [self.viewController notifyApp:[challenge valueForKey:@&quot;message&quot;]];<br />
+}</p>
+<p>-(void)handleFailure:(NSDictionary *)failure {<br />
+    /*<br />
+     * the app is disabled. disabled the connect button in the view controller<br />
+     * you could do other things like changing the colors and show a different view<br />
+     */<br />
+    [self.viewController disableApp:[failure valueForKey:@&quot;message&quot;]];<br />
+}</p>
+<p>-(void)answerChallenge:(NSString*) messageId {<br />
+    // submit answer so that challenge is satisfied<br />
+    NSMutableDictionary *remoteDisableDict = [[NSMutableDictionary alloc]init];<br />
+    [remoteDisableDict setValue:messageId forKey:@&quot;string&quot;];</p>
+<p>    [self submitChallengeAnswer:remoteDisableDict];<br />
+}<br />
+@end<br />
+[/code]</p>
+<p>[code lang="objc" title="MyResponseDelegate.h"]<br />
+#import &lt;Foundation/Foundation.h&gt;<br />
+#import &quot;WLDelegate.h&quot;<br />
+#import &quot;ViewController.h&quot;</p>
+<p>@interface MyResponseDelegate : NSObject  &lt;WLDelegate&gt;</p>
+<p>@property (nonatomic) ViewController *viewController;</p>
+<p>-(id)initWithController:(ViewController *)viewController;</p>
+<p>@end<br />
+[/code]</p>
+<p>[code lang="objc" title="MyResponseDelegate.m"]<br />
+#import &quot;MyResponseDelegate.h&quot;</p>
+<p>@implementation MyResponseDelegate</p>
+<p>-(id)initWithController:(ViewController *)viewController {<br />
+    self = [super init];</p>
+<p>    if(self) {<br />
+        self.viewController = viewController;<br />
+    }</p>
+<p>    return self;<br />
+}<br />
+-(void)onSuccess:(WLResponse *)response {<br />
+    [self.viewController updateConsole:[response responseText]];<br />
+}</p>
+<p>-(void)onFailure:(WLFailResponse *)response {<br />
+    [self.viewController updateConsole:[response responseText]];<br />
+}</p>
+<p>@end<br />
+[/code]</p>
+<p>Now, let’s modify your main view controller. We will register our “MyRemoteDisableChallengeHandler” and follow with a connection to the MobileFirst Server.</p>
+<p>[code lang="objc" title="ViewController.h"]<br />
+#import &lt;UIKit/UIKit.h&gt;</p>
+<p>@interface ViewController : UIViewController</p>
+<p>@property (weak, nonatomic) IBOutlet UITextView *consoleTextView;</p>
+<p>-(void)updateConsole:(NSString*)content;</p>
+<p>-(void)notifyApp:(NSString*)message;<br />
+-(void)disableApp:(NSString*)message;</p>
+<p>@end<br />
+[/code]</p>
+<p>[code lang="objc" title="ViewController.m"]<br />
+#import &quot;ViewController.h&quot;<br />
+#import &quot;WLClient.h&quot;<br />
+#import &quot;MyRemoteDisableChallengeHandler.h&quot;<br />
+#import &quot;MyResponseDelegate.h&quot;</p>
+<p>@interface ViewController () {<br />
+    MyResponseDelegate *responseDelegate;<br />
+}</p>
+<p>@property (weak, nonatomic) IBOutlet UIButton *connectButton;</p>
+<p>- (IBAction)connectButtonClick:(id)sender;<br />
+@end</p>
+<p>@implementation ViewController</p>
+<p>@synthesize connectButton;</p>
+<p>- (void)viewDidLoad {<br />
+    [super viewDidLoad];</p>
+<p>    responseDelegate = [[MyResponseDelegate alloc] initWithController:self];</p>
+<p>    // register the customer remote disable challenge handler<br />
+    [[WLClient sharedInstance] registerChallengeHandler:[[MyRemoteDisableChallengeHandler alloc] initWithController:self]];</p>
+<p>    // connect to the server<br />
+    [[WLClient sharedInstance] wlConnectWithDelegate:responseDelegate];</p>
+<p>}</p>
+<p>- (void)didReceiveMemoryWarning {<br />
+    [super didReceiveMemoryWarning];<br />
+    // Dispose of any resources that can be recreated.<br />
+}</p>
+<p>- (IBAction)connectButtonClick:(id)sender {<br />
+    [[WLClient sharedInstance] wlConnectWithDelegate:responseDelegate];<br />
+}</p>
+<p>-(void)updateConsole:(NSString*)content {</p>
+<p>    NSLog(@&quot;ynunez content %@&quot;, content);</p>
+<p>    [self.consoleTextView setText:content];</p>
+<p>}<br />
+/*<br />
+ * app notify handler, this will show an alert when the app is marked as &quot;Active, Notifying&quot;<br />
+ * in the MobileFirst Operations Console<br />
+ */<br />
+-(void)notifyApp:(NSString*)message {<br />
+    UIAlertView *alert = [self alertBuilder:@&quot;App Notification&quot;];</p>
+<p>    [alert setMessage:message];</p>
+<p>    [alert show];<br />
+}</p>
+<p>/*<br />
+ * disable app handler, this will show an alert with an &quot;Ok&quot; button and a &quot;Download&quot; button that<br />
+ * will allow the user to download a new app from the App Store, App Center, or the internet<br />
+ */<br />
+-(void)disableApp:(NSString*)message {</p>
+<p>    [connectButton setEnabled:NO];</p>
+<p>    [connectButton setBackgroundColor:[UIColor grayColor]];</p>
+<p>    [connectButton setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];</p>
+<p>    UIAlertView *alert = [self alertBuilder:@&quot;App Disabled&quot;];</p>
+<p>    [alert setMessage:message];</p>
+<p>    [alert addButtonWithTitle:@&quot;Download Update&quot;];</p>
+<p>    [alert show];</p>
+<p>}</p>
+<p>/*<br />
+ * alert helper, this will set the title of the alert and add a default &quot;OK&quot; button<br />
+ * to dismiss it<br />
+ */<br />
+-(UIAlertView*)alertBuilder:(NSString*) title {<br />
+    UIAlertView *alert = [[UIAlertView alloc] init];</p>
+<p>    [alert setTitle:title];</p>
+<p>    [alert setCancelButtonIndex:[alert addButtonWithTitle:@&quot;OK&quot;]];</p>
+<p>    return alert;<br />
+}<br />
+@end<br />
+[/code]</p>
+<h2 id="final-thoughts">Final Thoughts</h2>
+<p>In this blog post we have learned how to implement our own "Remote Disable" behavior for native Android and iOS apps. Our application shows the response from the MobileFirst server when the app is marked "<strong>Active</strong>", shows popup with a message when the app is marked "<strong>Active, Notifying</strong>", and disables the "Connect" button and shows popup with a download button when the app is marked "<strong>Access Disabled</strong>".</p>

@@ -1,0 +1,36 @@
+---
+
+title: Using Multiple Versions of the MobileFirst CLI Simultaneously
+date: 2015-05-05 14:14:57.000000000 +03:00
+type: post
+published: true
+status: publish
+categories: []
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '8551'
+  _rawhtml_settings: '0,0,0,0'
+  _wpas_done_all: '1'
+author:
+  login: andrew.ferrier@uk.ibm.com
+  email: andrew.ferrier@uk.ibm.com
+  display_name: andrewferrier
+  first_name: ANDREW
+  last_name: FERRIER
+---
+<p>One of the things to be aware of when working with MobileFirst platform is that you can often have installed multiple versions of tools simultaneously, with a little care. This is something as IBM consultants we frequently need to do, as we work with different customers, but might also be of value to you, our customers, as you test out upgrades and other changes to your MobileFirst applications.</p>
+<p>In this article, we're going to take a look at using multiple copies of the MobileFirst CLI (Command Line Interface) at the same time. The CLI is a powerful tool, and many of our customers are now using it in preference to the Eclipse platform. As consultants, we ourselves use it on a day-to-day basis. We'll focus on the Mac platform, although the principles apply to all operating systems.</p>
+<p>Firstly, it's very easy to install the CLI into different locations, for different versions - <em>but</em> this won't happen by default. Normally you download the CLI from <a href="https://developer.ibm.com/mobilefirstplatform/">here</a>, following the instructions to get to the Command Line Interface download package. Note that even though IBM doesn't normally encourage downloading older versions, should you need to, you can get some older versions from <a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/">here</a> - and of course you may already have a download package stashed away locally from a previous version.</p>
+<p>Once you have your MobileFirst CLI installation package, you install it as normal (unzip the .zip file, and run the installer relevant to your platform), expect that you need to take care to change the installation directory during install. I follow a convention like this:</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/Screen-Shot-2015-05-04-at-19.20.36.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-05-04-at-19.20.36-1024x765.png" alt="Screen Shot 2015-05-04 at 19.20.36" width="980" height="732" class="alignnone size-large wp-image-11787" /></a></p>
+<p>This means that the CLI will be installed into <code>/Applications/IBM/MobileFirst-CLI-7.0</code>, and makes it very clear which each installation lies. (<em>Note</em>: because of a limitation in Worklight 6.2 and previous, the installer forces you to use <code>Worklight-CLI</code> as the last portion of the pathname for those versions. I recommend choosing something like <code>/Applications/IBM/Worklight-CLI-6.2/Worklight-CLI</code> in this case).</p>
+<p>Note that once you have finished, the CLI installer (on Unix-like platforms, like Mac) will automatically add an entry into your <code>/etc/profile</code> and <code>/etc/zprofile</code> shell files that look like these:</p>
+<p><code>PATH="${PATH}:/Applications/IBM/MobileFirst-CLI-7.0"</code><br />
+<code>export PATH</code></p>
+<p>Of course, if you install multiple versions of the MFP CLI, you will end up with multiple versions of these entries. In this case you may want to reorder them according to your preference so that your preferred version is used by default when you enter the <code>mfp</code> or <code>mobilefirst</code> commands. (Of course, you can always enter the full path, e.g. <code>/Applications/IBM/MobileFirst-CLI-6.3/mfp</code> to access a specific version directly).</p>
+<p>Once you have your multiple versions installed, you should be aware of how they work together. Your MobileFirst projects, of course, are your own business; you can structure them on disk and in your source control system however you prefer. However, MobileFirst also needs somewhere to track the Development Server infrastructure it uses when you run commands such as <code>mfp create-server</code>, <code>mfp start</code>, <code>mfp deploy</code>, etc. Typically, this sits in <code>~/.ibm/mobilefirst/x.y.z</code>, where x.y.z is the version number of MobileFirst CLI you are using. (Note: in versions of the MobileFirst platform prior to 6.3, MobileFirst was called Worklight, and this directory structure is called <code>~/.worklight/x.y.z/</code>)</p>
+<p>In general, your MobileFirst servers need not conflict. However, I <em>highly</em> recommend that you keep only one running at a time. You can only have one MobileFirst server per version of the MFP CLI installed, and by default they will attempt to use the same HTTP port numbers. Therefore, doing an <code>mfp stop</code> on one server before attempting to run <code>mfp start</code> on another will keep your job much simpler.</p>
+<p>If everything gets too confusing, or something gets messed up, you can always delete state by removing the <code>~/.ibm/mobilefirst/x.y.z</code> or <code>~/.worklight/x.y.z</code> directories, which will kill your servers completely (and you'll need to recreate them). But that's definitely a last resort.</p>
+<p>I hope you find these tips helpful - write great apps!</p>

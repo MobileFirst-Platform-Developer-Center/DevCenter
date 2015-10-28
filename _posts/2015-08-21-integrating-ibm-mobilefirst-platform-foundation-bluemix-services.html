@@ -1,0 +1,78 @@
+---
+
+title: Integrating IBM MobileFirst on Bluemix Containers with Bluemix Services
+date: 2015-08-21 07:26:27.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- Mobile
+tags:
+- bluemix
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '12127'
+  _rawhtml_settings: '0,0,0,0'
+  _thumbnail_id: '16485'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442510098;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:16662;}i:1;a:1:{s:2:"id";i:16161;}i:2;a:1:{s:2:"id";i:14769;}}}}
+author:
+  login: srinivasan.nanduri@in.ibm.com
+  email: srinivasan.nanduri@in.ibm.com
+  display_name: SrinivasanNanduri
+  first_name: Srinivasan
+  last_name: Nanduri
+---
+<p>IBM MobileFirst Platform Foundation v7.1 is enabled to run on <a href="https://www.ng.bluemix.net/docs/">IBM Bluemix</a> using the <a href="https://www.ng.bluemix.net/docs/containers/container_index.html">IBM Containers</a>. For more information on this feature, refer to the links mentioned in the references below. This feature also allows integration of MobileFirst Platform Foundation Server with IBM Bluemix services. This article discusses the integration using the IBM Bluemix SQLDB Service while we can use the same approach to integrate with other services too. The MobileFirst adapters can be used to expose secure and monitored mobile friendly endpoints to mobile applications which can then be accessed via the MobileFirst Client SDK API. These adapters can be used to expose Bluemix services like Data management services, Watson services as MobileFirst endpoints for easy consumption by mobile clients.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/mfp_bm_sqldb.png"><img src="{{ site.baseurl }}/assets/backup/mfp_bm_sqldb.png" alt="mfp_bm_sqldb" width="856" height="516" class="aligncenter size-full wp-image-16485" /></a></p>
+<p>As illustrated in the above diagram, we use the MobileFirst Java adapter to access the <a href="https://www.ng.bluemix.net/docs/services/SQLDB/index.html">SQLDB</a> service. This involves the following steps:</p>
+<ol>
+<li>Create a Bluemix application and add the SQLDB Service to the Bluemix application.The application created here is just a holder to be able to interact with the SQLDB service.  Instructions <a href="https://www.ng.bluemix.net/docs/starters/index.html">here</a></li>
+<li>Use the SQLDB console to generate the DB Schema and tables as per your requirements</li>
+<li>Bind the Bluemix application to the IBM MobileFirst Platform Foundation Container before starting the container</li>
+<li>Build the adapter to access the SQLDB, deploy to the IBM MobileFirst Platform Server on IBM Containers</li>
+</ol>
+<p><b>Building the adapter: VCAP_SERVICES to the rescue</b><br />
+<br />
+The <a href="https://www.ng.bluemix.net/docs/services/SQLDB/index.html#vcap">VCAP_SERVICES</a> environment variable provides the adapter with the information of the SQLDB service bound to the IBM MobileFirst Platform Foundation Container running on Bluemix. The following code illustrates parsing the VCAP_SERVICES environment variable to retrieve the details of the SQLDB service bound to the container.</p>
+<p>[code lang="java"]<br />
+String user = null;<br />
+String password = null;<br />
+String jdbcurl = null;</p>
+<p>String VCAP_SERVICES = System.getenv(&quot;VCAP_SERVICES&quot;);<br />
+if (VCAP_SERVICES != null) {<br />
+    JSONObject vcapServices = (JSONObject) JSON.parse(VCAP_SERVICES);</p>
+<p>    String sqlDbKey = null;<br />
+    Set&lt;String&gt; keys = vcapServices.keySet();<br />
+    for (String key : keys) {<br />
+        if (sqlDbKey == null &amp;&amp; key.toUpperCase().contains(&quot;SQLDB&quot;)) {<br />
+            sqlDbKey = key;<br />
+        }<br />
+    }</p>
+<p>    if (sqlDbKey != null) {<br />
+        JSONArray list = (JSONArray) obj.get(sqlDbKey);<br />
+        JSONObject sqlDbService = (JSONObject) list.get(0);<br />
+        sqlDbService = (JSONObject) sqlDbService.get(&quot;credentials&quot;);<br />
+        jdbcurl = (String) sqlDbService.get(&quot;jdbcurl&quot;);<br />
+        user = (String) sqlDbService.get(&quot;username&quot;);<br />
+        password = (String) sqlDbService.get(&quot;password&quot;);<br />
+    }<br />
+}<br />
+[/code]<br /></p>
+<p>Now we can use the standard JDBC programming model to connect to the SQLDB instance and perform SQL operations</p>
+<p>[code lang="java"]<br />
+Class.forName(&quot;com.ibm.db2.jcc.DB2Driver&quot;);<br />
+Connection conn = DriverManager.getConnection(jdbcurl, user, password);<br />
+Statement stmt = db.createStatement();<br />
+ResultSet rs = stmt.executeQuery(....);<br />
+[/code]</p>
+<p><b>Authors : </b><br />
+<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/author/srinivasan-nanduri/">Srinivasan Nanduri</a>, <i>Developer, IBM MobileFirst Platform</i><br />
+<a href="https://developer.ibm.com/mobilefirstplatform/author/srikanth-murali/">Srikanth K Murali</a>, <i>Developer, IBM MobileFirst Platform</i></p>
+<p><b>References : </b><br />
+<br />
+<a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.deploy.doc/deploy/c_deploy_cloud_container.html">IBM MobileFirst Platform Foundation on IBM Bluemix</a><br />
+<a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/">Getting Started Tutorials - IBM MobileFirst Platform Foundation on IBM Bluemix</a></p>

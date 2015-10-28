@@ -1,0 +1,158 @@
+---
+
+title: Serving Data to the Apple Watch & other Wearables with IBM MobileFirst
+date: 2015-07-22 20:21:57.000000000 +03:00
+type: post
+published: true
+status: publish
+categories:
+- Mobile
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _rawhtml_settings: '0,0,0,0'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: amtrice@us.ibm.com
+  email: amtrice@us.ibm.com
+  display_name: AndrewTrice
+  first_name: Andrew
+  last_name: Trice
+---
+<p>Since Apple recently announced they've achieved over <a href="http://mashable.com/2015/07/21/apple-watch-sales-analysis/" target="_blank">$1B in sales with the Apple Watch</a> and <a href="http://9to5mac.com/2015/07/22/apple-smartwatch-marketshare/" target="_blank">taken over 75% of the smartwatch market</a>, I figured a friendly reminder that you can power the Apple Watch (and other wearable platforms) easily, securely, and efficiently with the IBM MobileFirst Platform can't hurt... All those great features that the MobileFirst Platform brings to your mobile development process are also easily accessible to your wearable apps, including (but not limited to) data adapters, remote logging, operational analytics, push notification management, and more.</p>
+<p>In this post I'm going to demonstrate how to consume data from a MobileFirst Adapter to power a recreation of the <a href="https://www.apple.com/watch/built-in-apps/" target="_blank">Stocks</a> app on the <a href="https://www.apple.com/watch/" target="_blank">Apple Watch</a>.  This demonstrates how you can deliver a solution today using WatchOS, and it is also possible to deliver on other wearable platforms platforms including <a href="https://www.android.com/intl/en_us/wear/" target="_blank">Android Wear</a> using a similar process.</p>
+<p>If you're already familiar with consuming data using <a href="https://ibm.biz/MobileFirst-JS-Adapters" target="_blank">MobileFirst Adapters</a>, then guess what... consuming data from an Adapter for the Apple Watch is <em>exactly</em> the same as consuming an Adapter in a native iOS project. Since the logic for a WatchKit app is executed in the WatchKit extension, which is actually an executable that runs on the phone, there is no difference between between the two (for WatchOS 1 - the options will be different in WatchOS 2, but the same technique will still apply).</p>
+<p>If you aren't familiar with <a href="https://ibm.biz/MobileFirst-JS-Adapters" target="_blank">Adapters</a>, they are server-side code that is used to transfer and retrieve information from back-end systems to client applications and cloud services.  You can write them in either Java or JavaScript, they can be consumed in any MobileFirst app, and they offer security, data transformation, and reporting metrics out of the box.</p>
+<p>In the video below I walk through the process of recreating the Apple Watch Stocks app using data delivered from a MobileFirst Platform Foundation server instance. The data is simulated, so don't use it for any investments. :)</p>
+<p>[youtube https://www.youtube.com/watch?v=o43R5pwQPkE?rel=0]</p>
+<p>&nbsp;</p>
+<p>The basic process was this: build out the Apple Watch apps user interface in Xcode/Interface Builder, build the adapters to expose the data, then start consuming the data within the WatchKit extension to deliver it to the watch app interface.</p>
+<p><em>Full source code for this project is available at: <a href="https://github.com/triceam/MobileFirst-WatchKit/tree/master/Stocks" target="_blank">https://github.com/triceam/MobileFirst-WatchKit/tree/master/Stocks</a></em></p>
+<h3>The User Interface</h3>
+<p>So, lets first look at the app interface.  I have two views that were built in Interface Builder.  One is a table that displays rows of data, one is a details screen which has lots of labels used to display data.</p>
+<p><img src="{{ site.baseurl }}/assets/backup/applewatch-ui1.jpg" alt="Apple Watch - MFP Stocks UI" width="700" height="412" class="alignnone size-full wp-image-15065" /></p>
+<p>In the main interface I have a "loading..." label (that is hidden once the data is loaded) and a table that is used to display data.  For each row in the table there are 3 labels to display specific data fields. These were connected to IBOutlet references in the view controller class. All of these are straightforward WatchKit development practices.  Be sure to check out the <a href="https://developer.apple.com/library/ios/documentation/WatchKit/Reference/WKInterfaceTable_class/index.html#//apple_ref/occ/cl/WKInterfaceTable" target="_blank">WKInterfaceTable class reference</a> for more detail on working with WatchKit tables.</p>
+<p>[caption id="attachment_15067" align="alignnone" width="698"]<img src="{{ site.baseurl }}/assets/backup/watchkit-ib-table.jpg" alt="Xcode-Interface Builder Table View" width="698" height="273" class="size-full wp-image-15067" /> Xcode-Interface Builder Table View[/caption]</p>
+<p>For displaying the details screen, I also used very similar pattern.  I added labels for displaying data, and linked them to IBOutlet references in my view controller so I can change their values once the data is loaded.</p>
+<p>[caption id="attachment_15066" align="alignnone" width="699"]<img src="{{ site.baseurl }}/assets/backup/watchkit-ib-details.jpg" alt="Xcode-Interface Builder Detail View" width="699" height="312" class="size-full wp-image-15066" /> Xcode-Interface Builder for Table View[/caption]</p>
+<h3>Serving Data</h3>
+<p>Loading data into a WatchKit extension is identical to making a request to the MobileFirst server adapter from a native iOS app, which can be done in either <a href="https://ibm.biz/MobileFirst-InvokeAdapter-iOS" target="_blank">Objective-C</a> or <a href="https://ibm.biz/MobileFirst-InvokeAdapter-Swift" target="_blank">Swift</a>.  </p>
+<p>So, here's how we can create an adapter using the MobileFirst Command Line Interface.  Use the "mfp add adapter" command and follow the prompts to create a new Adapter.  The one I created in this sample is a HTTP Adapter that I modified to return stub data:</p>
+<p>[bash]$ mfp add adapter<br />
+[?] What do you want to name your MobileFirst Adapter? StocksAdapter<br />
+[?] What type of adapter would you like?<br />
+ Cast Iron<br />
+❯ HTTP<br />
+ Java<br />
+ JMS<br />
+ SAP JCo<br />
+ SAP Netweaver Gateway<br />
+ SQL<br />
+ [?] Create procedures for offline JSONStore? No<br />
+ A new sql Adapter was added at /Users/andrewtrice/Documents/dev/MobileFirst-Stocks/server/MFStocks/adapters/StocksAdapter[/bash]</p>
+<p>Adapters can be used to easily connect back end systems to mobile clients.  You can quickly and easily expose data from a relational database, or even consume data from http endpoints and easily serialize it into a more compact mobile-friendly format.  You should definitely read more about <a href="https://ibm.biz/MobileFirst-JS-Adapters" target="_blank">MobileFirst adapters through the platform documentation</a> for more detail.</p>
+<p>What's also great about the MobileFirst platform is that you get <a href="https://ibm.biz/MFP-Operational-Analytics" target="_blank">operational analytics</a> for all adapters out of the box, with no additional configuration.  You can see the number of requests, data payload sizes, response times, devices/platforms used to consumes, and much more.  Plus, you can also remotely access client log messages from the mobile devices.  Take a look at the screenshots below for just a sample (these are from my dev instance on my laptop):</p>
+<p>[gallery ids="15070,15071,15072"]</p>
+<p>All of the data I am displaying is simulated.  I'm not actively pulling from a relational database or live service. However, you could use a very similar method to connect to a live data repository.</p>
+<p>I exposed two pretty basic procedures on the MobileFirst server: getList - which returns a stripped down list of data, and getDetail - which returns complete data for a stock symbol:</p>
+<p>[js]function getList() {</p>
+<p>  simulateData();</p>
+<p>  var items = [];<br />
+  var trimmedProperties = [&quot;symbol&quot;,&quot;price&quot;,&quot;change&quot;];</p>
+<p>  for (var i=0; i&lt;data.length; i++) {<br />
+    var item = {};<br />
+    for (var j in trimmedProperties) {<br />
+      var prop = trimmedProperties[j];<br />
+      item[prop] = data[i][prop];<br />
+    }<br />
+    items.push(item);<br />
+  }</p>
+<p>  return {<br />
+    &quot;stocks&quot;:items<br />
+  };<br />
+}</p>
+<p>function getDetail(symbol) {</p>
+<p>  for (var i=0; i&lt;data.length; i++) {<br />
+    if (data[i].symbol == symbol) {<br />
+      return data[i];<br />
+    }<br />
+  }<br />
+  return null;<br />
+}[/js]</p>
+<p>Once these are deployed to the server using the CLI "<a href="https://ibm.biz/MobileFirst-CLI" target="_blank">mfp bd</a>" command, you can invoke the adapter procedures from a client application, regardless of whether it is native iOS, native Android, or hybrid application.</p>
+<h3>Consuming the Data</h3>
+<p>OK, now we're back to the native iOS project.  In either <a href="https://ibm.biz/MobileFirst-InvokeAdapter-iOS" target="_blank">Objective-C</a> or <a href="https://ibm.biz/MobileFirst-InvokeAdapter-Swift" target="_blank">Swift</a> you can invoke an adapter directly using the <a href="https://ibm.biz/MFP-WLResourceRequest" target="_blank">WLResourceRequest</a> or <a href="https://ibm.biz/MFP-WLResourceRequest" target="_blank">invokeProcedure</a> mechanisms.  In my sample I used the WLResoruceRequest API so that I could leverage <a href="https://ibm.biz/MFP-WLResourceRequest" target="_blank">code blocks</a> to define the response/failure handlers directly inline in my code.  So, in my code, I invoke the adapters like so:</p>
+<p>[objc]-(void) getList:(void (^)(NSArray*))callback{</p>
+<p>  NSURL* url = [NSURL URLWithString:@&quot;/adapters/StockAdapter/getList&quot;];<br />
+  WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];</p>
+<p>  [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
+    if(error != nil){<br />
+      //you should do better error handling than this<br />
+      callback(nil);<br />
+    }<br />
+    else{<br />
+      NSDictionary *responseJSON = response.responseJSON;<br />
+      callback( [responseJSON objectForKey:@&quot;stocks&quot;] );<br />
+    }<br />
+  }];<br />
+}[/objc]</p>
+<p>Once you have the data within the WatchKit extension, we can use it to update the user interface.</p>
+<p>For the data table implementation, you simply need to set the number of rows, and then loop over the data to set values for each row based on the <a href="https://developer.apple.com/library/ios/documentation/WatchKit/Reference/WKInterfaceTable_class/index.html#//apple_ref/occ/cl/WKInterfaceTable" target="_blank">WKInterfaceTable</a> specification.</p>
+<p>[objc][self.dataTable setNumberOfRows:[self.stocks count] withRowType:@&quot;stockTableRow&quot;];</p>
+<p>for (NSInteger i = 0; i &lt; self.dataTable.numberOfRows; i++) {</p>
+<p>  StockTableRow* row = [self.dataTable rowControllerAtIndex:i];<br />
+  NSDictionary* item = [self.stocks objectAtIndex:i];</p>
+<p>  [row.stockLabel setText:[item valueForKey:@&quot;symbol&quot;]];</p>
+<p>  NSNumber *price = [item valueForKey:@&quot;price&quot;];<br />
+  NSNumber *change = [item valueForKey:@&quot;change&quot;];<br />
+  [row.priceLabel setText:[NSString stringWithFormat:@&quot;%-.2f&quot;, [price floatValue]]];<br />
+  [row.changeLabel setText:[NSString stringWithFormat:@&quot;%-.2f&quot;, [change floatValue]]];</p>
+<p>  if ([change floatValue] &gt; 0.0) {<br />
+    [row.changeLabel setTextColor: [UIColor greenColor]];<br />
+    [row.containerGroup setBackgroundColor:[UIColor colorWithRed:0 green:0.2 blue:0 alpha:1]];<br />
+  } else if ([change floatValue] &lt; 0.0) {<br />
+    [row.changeLabel setTextColor: [UIColor redColor]];<br />
+    [row.containerGroup setBackgroundColor:[UIColor colorWithRed:0.2 green:0 blue:0 alpha:1]];<br />
+  }<br />
+  else {<br />
+    [row.changeLabel setTextColor: [UIColor whiteColor]];<br />
+    [row.containerGroup setBackgroundColor:[UIColor colorWithRed:0.15 green:0.15 blue:0.15 alpha:1]];<br />
+  }<br />
+}[/objc]</p>
+<p>For the detail screen we're also doing things even more straightforward.  When the screen is initialized, we request detail data from the server.  Once we receive that data, we're simply assigning label values based upon the data that was returned.</p>
+<p>[objc][self.nameLabel setText:[stockData objectForKey:@&quot;name&quot;]];</p>
+<p>NSNumber *change = [stockData objectForKey:@&quot;change&quot;];<br />
+NSNumber *price = [stockData objectForKey:@&quot;price&quot;];<br />
+NSNumber *high = [stockData objectForKey:@&quot;high&quot;];<br />
+NSNumber *low = [stockData objectForKey:@&quot;low&quot;];<br />
+NSNumber *high52 = [stockData objectForKey:@&quot;high52&quot;];<br />
+NSNumber *low52 = [stockData objectForKey:@&quot;low52&quot;];<br />
+NSNumber *open = [stockData objectForKey:@&quot;open&quot;];<br />
+NSNumber *eps = [stockData objectForKey:@&quot;eps&quot;];</p>
+<p>float percentChange = [change floatValue]/[price floatValue];</p>
+<p>[self.priceLabel setText:[NSString stringWithFormat:@&quot;%-.2f&quot;, [price floatValue]]];<br />
+[self.changeLabel setText:[NSString stringWithFormat:@&quot;%.02f (%.02f%%)&quot;, [change floatValue], percentChange]];</p>
+<p>if ([change floatValue] &gt; 0.0) {<br />
+	[self.changeLabel setTextColor: [UIColor greenColor]];<br />
+} else if ([change floatValue] &lt; 0.0) {<br />
+	[self.changeLabel setTextColor: [UIColor redColor]];<br />
+}<br />
+else {<br />
+	[self.changeLabel setTextColor: [UIColor whiteColor]];<br />
+}</p>
+<p>//update change with percentage</p>
+<p>[self.highLabel setText:[NSString stringWithFormat:@&quot;%-.2f&quot;, [high floatValue]]];<br />
+[self.lowLabel setText:[NSString stringWithFormat:@&quot;%-.2f&quot;, [low floatValue]]];<br />
+[self.high52Label setText:[NSString stringWithFormat:@&quot;%-.2f&quot;, [high52 floatValue]]];<br />
+[self.low52Label setText:[NSString stringWithFormat:@&quot;%-.2f&quot;, [low52 floatValue]]];</p>
+<p>[self.openLabel setText:[NSString stringWithFormat:@&quot;%-.2f&quot;, [open floatValue]]];<br />
+[self.epsLabel setText:[NSString stringWithFormat:@&quot;%-.2f&quot;, [eps floatValue]]];<br />
+[self.volLabel setText:[stockData objectForKey:@&quot;shares&quot;]];[/objc]</p>
+<p>&nbsp;</p>
+<h3>What next?</h3>
+<p>Ready to get started?  Just download the free <a href="https://ibm.biz/MobileFirst-Platform" target="_blank">MobileFirst Platform Server Developer Edition</a>, and get started.</p>
+<p>Complete source code for this project is available on github at: <a href="https://github.com/triceam/MobileFirst-WatchKit/tree/master/Stocks" target="_blank">https://github.com/triceam/MobileFirst-WatchKit/tree/master/Stocks</a></p>
+<p>Enjoy!</p>

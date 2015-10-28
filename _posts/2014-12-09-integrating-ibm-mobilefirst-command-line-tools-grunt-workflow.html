@@ -1,0 +1,98 @@
+---
+
+title: Integrating IBM MobileFirst Command Line Tools with a Grunt Workflow
+date: 2014-12-09 18:42:20.000000000 +02:00
+type: post
+published: true
+status: publish
+categories:
+- Integration
+- Mobile
+tags:
+- MobileFirst_Platform
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '13442'
+  _rawhtml_settings: '0,0,0,0'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: bjustin@us.ibm.com
+  email: bjustin@us.ibm.com
+  display_name: Berstler
+  first_name: Justin
+  last_name: Berstler
+---
+<p>The IBM MobileFirst Platform Command Line Interface allows you to integrate MobileFirst technologies with your existing workflows and tools. In this video tutorial, I show you step-by-step how to integrate the MobileFirst CLI into a Grunt workflow that verifies, builds, and publishes MobileFirst artifacts automatically as you make code changes.</p>
+<p>[embed]http://youtu.be/tFvogRMC4ss[/embed]</p>
+<p>Below you will find the completed Gruntfile that was used in this tutorial.  Feel free to copy and paste it as a starting point for your own Grunt build.</p>
+<p>[sourcecode language="javascript"]<br />
+module.exports = function (grunt) {</p>
+<p>    // Project configuration.<br />
+    grunt.initConfig({<br />
+        jshint: {<br />
+            js: {<br />
+                // define the files to lint<br />
+                src: ['apps/**/*.js', 'adapters/**/*.js'],<br />
+                // configure JSHint (documented at http://www.jshint.com/docs/)<br />
+                options: {<br />
+                    curly: true,<br />
+                    eqeqeq: false,<br />
+                    '-W041': true,<br />
+                    browser: true,<br />
+                },<br />
+            },<br />
+            html: {<br />
+                options: {<br />
+                    extract: 'always',<br />
+                    browser: true,<br />
+                    undef: false,<br />
+                },<br />
+                src: ['apps/**/*.html'],<br />
+            },<br />
+            options: {<br />
+                // comment out to prevent further tasks from running after linting fails<br />
+                force: true,<br />
+            },<br />
+        },<br />
+        watch: {<br />
+            apps: {<br />
+                files: ['apps/*', 'apps/**'],<br />
+                tasks: ['jshint', 'mobilefirst:build:apps', 'mobilefirst:deploy:apps'],<br />
+            },<br />
+            adapters: {<br />
+                files: ['adapters/*', 'adapters/**'],<br />
+                tasks: ['jshint', 'mobilefirst:build:adapters', 'mobilefirst:deploy:adapters'],<br />
+            },<br />
+        },<br />
+        mobilefirst: {<br />
+            build: {},<br />
+            deploy: {},<br />
+        },<br />
+    });</p>
+<p>    var execCommand = function (name, cmd, opts) {<br />
+        var exec = require('child_process').exec;<br />
+        var done = this.async();<br />
+        exec(cmd, opts || {}, function (err, stdout, stderr) {<br />
+            if (err) {<br />
+                grunt.log.error(stderr);<br />
+                done();<br />
+                grunt.fail.fatal(name + ' failed.');<br />
+            }<br />
+            console.log(stdout);<br />
+            grunt.log.ok(name + ' succeeded.');<br />
+            done();<br />
+        });<br />
+    };</p>
+<p>    grunt.registerMultiTask('mobilefirst', function(artifactFolder) {<br />
+        execCommand.apply(this, ['MobileFirst Task', 'mfp ' + this.target, {<br />
+            cwd: artifactFolder<br />
+        }]);<br />
+    });</p>
+<p>    // Load additional grunt tasks<br />
+    grunt.loadNpmTasks('grunt-contrib-watch');<br />
+    grunt.loadNpmTasks('grunt-contrib-jshint');</p>
+<p>    // Default task(s).<br />
+    grunt.registerTask('default', ['jshint', 'mobilefirst:build:apps', 'mobilefirst:build:adapters']);</p>
+<p>};<br />
+[/sourcecode]</p>
