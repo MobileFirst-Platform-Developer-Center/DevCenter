@@ -1,0 +1,78 @@
+---
+layout: doc_page
+title: Application Authenticity Protection in Native Android applications
+date: 2015-09-09 06:51:20.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 8-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt;  <a href="../../">Authentication and security</a> &lt; <a href="../">Application Authenticity Protection<br />
+</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="android">Native Android</li>
+</ul>
+</div>
+<p><br clear="all" /><br />
+This is a continuation of the <a title="Application Authenticity Protection" href="../">Application Authenticity Protection</a> tutorial.</p>
+<h2>Adding required files</h2>
+<p>From the MobileFirst project's Native API folder, copy the following folders to your native's project <code>lib</code> folder: <code>armabi</code>, <code>armabi-v7a</code>, <code>mips</code>, <code>x86</code>.</p>
+<h2>The application-descriptor.xml file</h2>
+<p>Modify the <code>application-descriptor.xml</code> file of your application by adding a security test and a public signing key.</p>
+<h3>Adding the security test</h3>
+<p>Add the <code>securityTest</code> attribute to the Android environment element. For example:</p>
+<p>[code lang="xml"]&lt;android version=&quot;1.0&quot; securityTest=&quot;MyCustomAuthenticityTest&quot;&gt;[/code]</p>
+<p>&nbsp;</p>
+<h3>Adding the public signing key</h3>
+<ol>
+<li>Extract the public signing key of the certificate that is used to sign application bundle (<code>.apk</code> file).
+<ul>
+<li>If the application is built for distribution (production), extract the public key from the certificate that is used to sign the production-ready application.</li>
+<li>If the application is built in the development environment, you can use the default public key that is supplied by the Android SDK. You can find the development certificate in a keystore that is in a <code>{user-home}/.android/debug.keystore</code> file.</li>
+</ul>
+<p>You can extract the public signing key either manually or by using the wizard that MobileFirst Studio provides.<br />
+<em>For more information about how to sign your Android application look <a href="http://developer.android.com/tools/publishing/app-signing.html" title="here" target="_blank">here</a></em>.</p>
+<h4>Extracting the public signing key by using the wizard (Eclipse)</h4>
+<ol>
+<li>Right-click the Android NativeAPI folder and select <strong>Extract public signing key</strong>.</li>
+<li>Specify the location and the password of a keystore file and click <strong>Load Keystore</strong>. The default password for <code>debug.keystore</code> is <code>android</code>.</li>
+<li>Set the <strong>Key alias</strong> and click <strong>Next</strong>.</li>
+<p>A dialog displays the public key.</p>
+<li>Click <strong>Finish</strong> to automatically paste the public signing key to the relevant section of the <code>application-descriptor.xml</code> file.</li>
+</ol>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/08_11_adding_public_signing_key.png"><img src="{{ site.baseurl }}/assets/08_11_adding_public_signing_key.png" alt="08_11_adding_public_signing_key" width="960" height="409" class="aligncenter size-full wp-image-1570" /></a>
+</li>
+</ol>
+<li>Add the Application package name by using the Application Descriptor Editor (design view).</li>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_15_android-package-name-editor.png"><img class="aligncenter wp-image-1092 size-full" src="{{ site.baseurl }}/assets/09_15_android-package-name-editor.png" alt="09_15_android-package-name-editor" width="710" height="164" /></a></p>
+<li>Take the Application package name value from the package attribute of the <em>manifest</em> node in the <code>AndroidManifest.xml</code>.<br />
+If you decide to change the value, make sure that you change it in both locations.</p>
+<p>You can also edit the <code>application-descriptor.xml</code> file directly to add the package name:</p>
+<p>[code lang="xml" highlight="8"]<br />
+&lt;android version=&quot;1.0&quot; securityTest=&quot;customTests&quot;&gt;<br />
+     &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
+     &lt;security&gt;<br />
+         &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
+         &lt;testWebResourcesChecksum enabled=&quot;false&quot;<br />
+             ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
+         &lt;publicSigningKey&gt;MIGfM …&lt;/publicSigningKey&gt;<br />
+         &lt;packageName&gt;com.MyBankApp&lt;/packageName&gt;<br />
+     &lt;/security&gt;<br />
+&lt;/android&gt;<br />
+[/code]</li>

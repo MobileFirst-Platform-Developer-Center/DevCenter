@@ -1,0 +1,54 @@
+---
+layout: doc_page
+title: Application Authenticity Protection in Native Windows Universal applications
+date: 2015-09-09 06:52:11.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 8-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt;  <a href="../../">Authentication and security</a> &lt; <a href="../">Application Authenticity Protection<br />
+</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="wp8">Native Windows 8 Universal</li>
+</ul>
+</div>
+<p><br clear="all" /><br />
+This is a continuation of the <a title="Application Authenticity Protection" href="../">Application Authenticity Protection</a> tutorial.</p>
+<h2>The application-descriptor.xml file</h2>
+<p>Modify the application-descriptor.xml file on your application by adding a security test configured for application authentication.</p>
+<h3>Adding the security test</h3>
+<p>Add the <code>securityTest</code> attribute to the Windows / Windows Phone environment element. For example:</p>
+<p>[code lang="xml"]&lt;nativeWindows8App id=&quot;MyApplication&quot; platformVersion=&quot;7.1.0.00.20150703-0630&quot; version=&quot;1.0&quot; securityTest=&quot;MyCustomAuthenticityTest&quot;&gt;[/code]</p>
+<h3>Adding the package family name</h3>
+<p>Add the <code>packageName</code> attribute to the Windows / Windows Phone environment element. For example:</p>
+<p>[code lang="xml"]&lt;packageName&gt;b7a9dddd-bfa9-4954-8050-9407b9e957f5_2q4h08h62pzyj&lt;/packageName&gt;[/code]</p>
+<p>The package name can be extracted from Visual Studio. Open the Project in Visual Studio and search for <code>Package.appxmanifest</code> file. Navigate to the Packaging Tab and pick up the package name as shown below.</p>
+<ol><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/06/PackageNameWinUniv.png"><img src="{{ site.baseurl }}/assets/PackageNameWinUniv.png" alt="PackageNameWinUniv" width="988" height="412" class="alignnone size-full wp-image-14664" /></a></ol>
+<p>&nbsp;</p>
+<h3>Adding the runtime package to enable application authenticity</h3>
+<ol>
+<li>Open your Native Mobile First Project in Visual Studio. Choose the environment, either Windows or WindowsPhone in your solution. Choose References in the environment and select to Add Reference.</li>
+<p>        <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/06/PackageNameReferenceSel.png"><img src="{{ site.baseurl }}/assets/PackageNameReferenceSel.png" alt="PackageNameReferenceSel" width="876" height="480" class="alignnone size-full wp-image-14648" /></a></p>
+<li>In the Reference Manager Window, select Windows 8.1 -> Extensions, as shown. This will list out the SDKs applicable to your project.</li>
+<p>        <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/06/ReferenceManagerWindow.png"><img src="{{ site.baseurl }}/assets/ReferenceManagerWindow.png" alt="ReferenceManagerWindow" width="806" height="556" class="alignnone size-full wp-image-14649" /></a></p>
+<li>Add the <code>Microsoft Visual C++ 2013 Runtime Package for Windows</code> or the <code>Microsoft Visual C++ 2013 Runtime Package for Windows Phone</code> based on which environment your are adding it to.</li>
+<p>        <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/06/ReferenceManagerSelection.png"><img src="{{ site.baseurl }}/assets/ReferenceManagerSelection.png" alt="ReferenceManagerSelection" width="902" height="218" class="alignnone size-full wp-image-14650" /></a></p>
+<li>Now build your project to generate the final executable (.appx) and pass it to the <code>wladm</code> command to enable extended application authenticity as explained earlier</li>
+</ol>

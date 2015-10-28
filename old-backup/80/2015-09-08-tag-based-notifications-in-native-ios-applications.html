@@ -1,0 +1,136 @@
+---
+layout: doc_page
+title: Tag and Broadcast Notifications in Native iOS Applications
+date: 2015-09-08 06:50:24.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 8-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="../../../">Notifications</a> &lt; <a href="../../">Push Notifications Overview</a> &lt; <a href="../">Push notifications in native iOS applications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/TagNotifications" target="_blank">Download MobileFirst project</a>
+        </li>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/TagNotificationsObjC" target="_blank">Download Native project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p><strong>Prerequisite:</strong> Make sure to read the <a href="../../" title="Push notifications in native iOS applications">Push notifications in native iOS applications</a> tutorial first.</p>
+<p>Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.<br />
+Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.</p>
+<p>Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved <code>Push.all</code> tag (auto-created for every device). Broadcast notifications can be disabled by by unsubscribing from the reserved <code>Push.all</code> tag.</p>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#configuration">Notifications configuration</a></li>
+<li><a href="#notificationsAPI">Notifications API</a></li>
+</ul>
+<h2 id="configuration">Notifications configuration</h2>
+<h3>Tag Notifications configuration</h3>
+<h4>Setting up tags</h4>
+<p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
+<p>[code lang="xml"]&lt;nativeIOSApp xmlns=&quot;http://www.worklight.com/native-ios-descriptor&quot; bundleId=&quot;com.REPLACE-WITH-BUNDLE-ID&quot; id=&quot;NativeiOSTagNotifications&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot; version=&quot;1.0&quot;&gt;<br />
+...<br />
+...<br />
+...<br />
+&lt;tags&gt;<br />
+    &lt;tag&gt;<br />
+        &lt;name&gt;my tag 1&lt;/name&gt;<br />
+        &lt;description&gt;About my tag 1&lt;/description&gt;<br />
+    &lt;/tag&gt;<br />
+    &lt;tag&gt;<br />
+        &lt;name&gt;my tag 2&lt;/name&gt;<br />
+        &lt;description&gt;About my tag 2&lt;/description&gt;<br />
+    &lt;/tag&gt;<br />
+&lt;/tags&gt;[/code]</p>
+<h2 id="notificationsAPI">Notifications API</h2>
+<h3>API methods for tag notifications</h3>
+<h4>Client-side API</h4>
+<ul>
+<li><code>[[WLPush sharedInstance]subscribeTag:tagName :options)]</code><br />
+    Subscribes the device to the specified tag name.</li>
+<li><code>[[WLPush sharedInstance]unsubscribeTag:tagName :options)]</code><br />
+    Unsubscribes the device from the specified tag name.</li>
+<li><code>[WLPush sharedInstance]isTagSubscribed:tagName]</code><br />
+    Returns whether the device is subscribed to a specified tag name.</li>
+</ul>
+<h3>Common API methods for tag and broadcast notifications</h3>
+<h4>Client-side API:</h4>
+<ul>
+<li><code>didReceiveRemoteNotification</code><br />
+When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is   called. The logic to handle the notification should be defined here.</p>
+<p>[code lang="obj-c"]<br />
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
+    NSLog(@&quot;Received Notification %@&quot;,userInfo.description);<br />
+}<br />
+[/code]</p>
+<ul>
+<li>userInfo - A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
+</ul>
+</li>
+<li><code>setOnReadyToSubscribeListener</code><br />
+This method registers a listener to be used for push notifications. This listener should implement the OnReadyToSubscribe() method.<br />
+[code lang="obj-c"][[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];[/code]</li>
+</ul>
+<h4>Server-side API</h4>
+<p><code>WL.Server.sendMessage(applicationId,notificationOptions)</code><br />
+    This method submits a notification based on the specified target parameters and takes two mandatory parameters:</p>
+<ul>
+<li><code>applicationId</code> - (mandatory) The name of the MobileFirst application</li>
+<li><code>notificationOptions</code> - (mandatory) A JSON block containing message properties</li>
+</ul>
+<blockquote><p>For a full list of message properties, refer to the <code>WL.Server.sendMessage</code> API in the API reference documentation.</p></blockquote>
+<h2>Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/TagNotifications" target="_blank">Click to download</a> the MobileFirst project.<br />
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/TagNotificationsObjC" target="_blank">Click to download</a> the Native project.</p>
+<ul>
+<li>The <code>TagNotifications</code> project contains a MobileFirst native API that you can deploy to your MobileFirst server.</li>
+<li>The <code>TagNotificationsObjC</code> project contains a native iOS application that uses a MobileFirst native API library to subscribe for push notification and receive notifications from APNS.</li>
+<li>Make sure to update the <code>worklight.plist</code> file in the native project with the relevant server settings.</li>
+</ul>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Screen-Shot-2015-08-30-at-11.15.57.png"><img src="{{ site.baseurl }}/assets/Screen-Shot-2015-08-30-at-11.15.57.png" alt="Screen Shot 2015-08-30 at 11.15.57" width="304" height="500" class="aligncenter size-full wp-image-16909" /></a></p>
+<h3>Sending a notification</h3>
+<p>To test the application is able to receive a push notification you can perform one of the following:</p>
+<ol>
+<li>From MobileFirst Studio, right-click the adapter folder, select <strong>Call MobileFirst Adapter</strong> and:
+<ul>
+<li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
+<li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
+<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: [code lang="xml"]&lt;application ... id=&quot;NativeiOSTagNotifications&quot; ...&gt;[/code]</li>
+</ul>
+</li>
+<li>If using the CLI:
+<p>[code lang="shell" title="Broadcast language=notification"]$ mfp adapter call<br />
+[?] Which endpoint do you want to use? PushAdapter/sendBroadcastNotification<br />
+[?] Enter the comma-separated parameters: &quot;NativeiOSTagNotifications&quot;,&quot;hello&quot;<br />
+[?] How should the procedure be called? GET[/code]</p>
+<p>Or:</p>
+<p>[code lang="shell" title="Tag language=notification"]$ mfp adapter call<br />
+[?] Which endpoint do you want to use? PushAdapter/sendTagNotification<br />
+[?] Enter the comma-separated parameters: &quot;NativeiOSTagNotifications&quot;,&quot;hello&quot;,&quot;sample-tag1,sample-tag2&quot;<br />
+[?] How should the procedure be called? GET<br />
+[/code]</li>
+</ol>

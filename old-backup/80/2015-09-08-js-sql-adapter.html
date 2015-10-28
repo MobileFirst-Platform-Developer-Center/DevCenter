@@ -1,0 +1,182 @@
+---
+layout: doc_page
+title: JavaScript SQL Adapter
+date: 2015-09-08 08:24:42.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 8-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="../../">Server-side development</a> &lt; <a href="../">JavaScript Adapters</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+<li class="android">Native Android</li>
+<li class="wp8">Native Windows Phone 8</li>
+<li class="wp8">Native Windows 8 Universal</li>
+<li class="hybrid">Hybrid</li>
+</ul></div>
+<ul>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters">Download MobileFirst project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>An IBM MobileFirst Platform Foundation SQL adapter is designed to communicate with any SQL data source.<br />
+You can use plain SQL queries or stored procedures.<br />
+As a developer, you must download the JDBC connector driver for the specific database type separately and add it to the <code>server\lib\</code> folder of a MobileFirst project.<br />
+You can download the JDBC connector driver from the appropriate vendor website.<br />
+In this tutorial and in the accompanying sample, you learn how to use a MobileFirst adapter to connect to a MySQL database.</p>
+<ul>
+<li><a href="#createAdapt">Creating the adapter</a></li>
+<li><a href="#xml">Adapter XML</a></li>
+<li><a href="#jsImpl">JavaScript implementation file</a></li>
+<li><a href="#results">Invocation results</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="createAdapt">Creating the adapter</h2>
+<h3>CLI</h3>
+<p>From the project's directory, use <code>mfp add adapter</code> and follow the interactive instructions.</p>
+<h3>Studio</h3>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_03_create-adapter.png"><img src="{{ site.baseurl }}/assets/04_03_create-adapter.png" alt="04_03_create-adapter" width="528" height="394" class="aligncenter size-full wp-image-3366" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_03-filestruct.png"><img src="{{ site.baseurl }}/assets/04_03-filestruct.png" alt="04_03-filestruct" width="201" height="122" class="alignright size-full wp-image-3367" /></a></p>
+<ol>
+<li>In MobileFirst Studio, create a MobileFirst adapter and choose the SQL adapter type.<br />
+A standard SQL adapter file structure is created.
+</li>
+<li>Save the downloaded JDBC connector file in the project <code>server\lib\</code> folder.<br />
+<br clear="all" />
+</li>
+</ol>
+<h2 id="xml">Adapter XML</h2>
+<p>Settings and metadata are stored in the adapter XML file.<br />
+You can use either the Design or the Source editor in the Studio, or use your favorite XML editor to modify the adapter XML file.<br />
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_03_visual-xml.png"><img src="{{ site.baseurl }}/assets/04_03_visual-xml.png" alt="04_03_visual-xml" width="1228" height="632" class="aligncenter size-full wp-image-3369" /></a></p>
+<ol>
+<li>In the adapter XML file, declare the following parameters:
+<p>- Driver Class<br />
+- Database URL<br />
+- Username<br />
+- Password</p>
+<p>[code lang="xml"]<br />
+  &lt;connectivity&gt;<br />
+    &lt;connectionPolicy xsi:type=&quot;sql:SQLConnectionPolicy&quot;&gt;<br />
+      &lt;dataSourceDefinition&gt;<br />
+        &lt;driverClass&gt;com.mysql.jdbc.Driver&lt;/driverClass&gt;<br />
+        &lt;url&gt;jdbc:mysql://localhost:3306/mobilefirst_training&lt;/url&gt;<br />
+          &lt;user&gt;mobilefirst&lt;/user&gt;<br />
+          &lt;password&gt;mobilefirst&lt;/password&gt;<br />
+      &lt;/dataSourceDefinition&gt;<br />
+    &lt;/connectionPolicy&gt;<br />
+  &lt;/connectivity&gt;<br />
+[/code]</p>
+</li>
+<li>Declare a procedure in the adapter XML file.
+<p>[code lang="xml"]<br />
+&lt;procedure name=&quot;getAccountTransactions1&quot;/&gt;<br />
+[/code]
+</li>
+</ol>
+<h2 id="jsImpl">JavaScript implementation file</h2>
+<p>The adapter JavaScript file is used to implement the procedure logic.</p>
+<p><strong>Important:</strong> The name that is declared in the XML file must be used for the procedure JavaScript function.</p>
+<p>There are two ways of running SQL statements:</p>
+<ul>
+<li>SQL statement query</li>
+<li>SQL stored procedure</li>
+</ul>
+<ol>
+<li>Use the <code>WL.Server.createSQLStatement</code> method to prepare a SQL query.<br />
+The <code>WL.Server.createSQLStatement</code> method must always be called outside the function.</li>
+<li>Add more parameters, if necessary.
+<p>[code lang="javascript"]<br />
+//Create SQL query<br />
+var getAccountsTransactionsStatement = WL.Server.createSQLStatement(<br />
+  &quot;SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType &quot; +<br />
+  &quot;FROM accounttransactions &quot; +<br />
+  &quot;WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? &quot; +<br />
+  &quot;ORDER BY transactionDate DESC &quot; +<br />
+  &quot;LIMIT 20;&quot;<br />
+);<br />
+[/code]
+</li>
+<li>Use the <code>WL.Server.invokeSQLStatement</code> method to call prepared queries.</li>
+<li>Return the result to the application or to another procedure.
+<p>[code lang="javascript"]<br />
+//Invoke prepared SQL query and return invocation result<br />
+function getAccountTransactions1(accountId){<br />
+  return WL.Server.invokeSQLStatement({<br />
+    preparedStatement : getAccountsTransactionsStatement,<br />
+    parameters : [accountId, accountId]<br />
+  });<br />
+}<br />
+[/code]
+</li>
+<li>To run a SQL stored procedure, use the <code>WL.Server.invokeSQLStoredProcedure</code> method.<br />
+Specify a SQL stored procedure name as an invocation parameter.</li>
+<li>Add more parameters, if necessary.</li>
+<li>Return the invocation result to the application or to another procedure.
+<p>[code lang="javascript"]<br />
+//Invoke stored SQL procedure and return invocation result<br />
+function getAccountTransactions2(accountId){<br />
+  return WL.Server.invokeSQLStoredProcedure({<br />
+    procedure : &quot;getAccountTransactions&quot;,<br />
+    parameters : [accountId]</p>
+<p>  });<br />
+}<br />
+[/code]
+</li>
+</ol>
+<h2 id="results">Invocation Results</h2>
+<p>[code lang="javascript"]<br />
+{<br />
+  &quot;isSuccessful&quot;: true,<br />
+  &quot;resultSet&quot;: [{<br />
+    &quot;fromAccount&quot;: &quot;12345&quot;,<br />
+    &quot;toAccount&quot;: &quot;54321&quot;,<br />
+    &quot;transactionAmount&quot;: 180.00,<br />
+    &quot;transactionDate&quot;: &quot;2009-03-11T11:08:39.000Z&quot;,<br />
+    &quot;transactionId&quot;: &quot;W06091500863&quot;,<br />
+    &quot;transactionType&quot;: &quot;Funds Transfer&quot;<br />
+  }, {<br />
+    &quot;fromAccount&quot;: &quot;12345&quot;,<br />
+    &quot;toAccount&quot;: null,<br />
+    &quot;transactionAmount&quot;: 130.00,<br />
+    &quot;transactionDate&quot;: &quot;2009-03-07T11:09:39.000Z&quot;,<br />
+    &quot;transactionId&quot;: &quot;W214122\/5337&quot;,<br />
+    &quot;transactionType&quot;: &quot;ATM Withdrawal&quot;<br />
+  }]<br />
+}<br />
+[/code]</p>
+<p>The result is retrieved as a JSON object.</p>
+<ul>
+<li>The <code>isSuccessful</code> property defines whether the invocation was successful.</li>
+<li>The <code>resultSet</code> object is an array of returned records.</li>
+<li>To access the <code>resultSet</code> object on the client-side: <code>result.invocationResult.resultSet</code></li>
+<li>To access the <code>resultSet</code> object on the server-side: <code>result.ResultSet</code></li>
+</ul>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p>The sample project contains an SQL adapter.</p>
+<ul>
+<li>To run the sample, execute the <code>mobilefirstTraining.sql</code> file (which you can find under the Server folder of the sample) on your local MySQL server.</li>
+<li>Make sure that the <code>mobilefirst@% user</code> has all access permissions assigned to it.</li>
+<li>Remember to download and set the MySQL Java Connector in your project.</li>
+</ul>

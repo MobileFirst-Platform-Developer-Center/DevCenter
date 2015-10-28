@@ -1,0 +1,89 @@
+---
+layout: doc_page
+title: Push Notifications in Native iOS Applications
+date: 2015-09-08 06:37:19.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 8-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="../../">Notifications</a>  &lt; <a href="../">Push Notifications Overview</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS
+      </li>
+</ul></div>
+</div>
+<h2>Overview</h2>
+<p>This tutorial explains how to configure a MobileFirst native iOS application to support push notifications.<br />
+Also mentioned are the addresses and ports that must be accessible for notifications to arrive to the supported Apple Push Notification Service vendor (APNS).</p>
+<p><strong>Prerequisite:</strong> Make sure to read the <a href="../../hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/" title="configure a native iOS application with the MobileFirst Platform SDK">Configuring a native iOS application with the MobileFirst Platform SDK</a> tutorial first.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#settingUpPushNotifications">Setting up push notifications</a></li>
+<li><a href="#anps">Apple Push Notifications Service</a></li>
+<li><a href="#additionalNotificationTypes">Notification types</a></li>
+</ul>
+<h2 id="settingUpPushNotifications">Setting up push notifications</h2>
+<p>To send push notifications to iOS devices, use the Apple Push Notifications Service (APNS).<br />
+You must be a registered Apple iOS Developer to obtain an APNS certificate for your application.<br />
+<strong>Note:</strong> APNS certificates must have a non-blank password.</p>
+<ul>
+<li>During the development phase, use the <code>apns-certificate-sandbox.p12</code> sandbox certificate file.</li>
+<li>During a production phase, use the <code>apns-certificate-production.p12</code> production certificate file.</li>
+</ul>
+<blockquote><p>To learn about setting up the certificates that are required for push notifications, see this blog post: <a href="https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en">Understanding and setting up certificates required to use iOS devices and Apple Push Notifications services (APNS)</a></p></blockquote>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/PushNotificationsNativeiOSProjectBaham.png"><img src="{{ site.baseurl }}/assets/PushNotificationsNativeiOSProjectBaham-300x282.png" alt="PushNotificationsNativeiOSProjectBaham" width="300" height="282" class="alignright size-medium wp-image-6281" /></a></p>
+<ol>
+<li>Create a MobileFirst project and add a MobileFirst iOS Native API.</li>
+<li>Place the Apple APNS certificate file at the root of the application folder.
+    </li>
+<li>In <code>application-descriptor.xml</code>, add the <code>pushSender</code> element under the nativeIOSApp environment. These settings are also editable with the Application Descriptor Editor in Design mode.
+<ul>
+<li>Replace the <strong><code>password</code></strong> value with the .p12 certificate password.</li>
+<li>Replace the <strong><code>bundleId</code></strong> value with your application <code>bundleId</code> value. Consult the Apple documentation about how to create a <code>bundleId</code> for Xcode projects.</li>
+<p>For example:<br />
+[code lang="xml" highlight="1,7"]<br />
+&lt;nativeIOSApp id=&quot;AppName&quot; bundleId=&quot;com.REPLACE-WITH-BUNDLE-ID&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot;<br />
+	version=&quot;1.0&quot; xmlns=&quot;http://www.worklight.com/native-ios-descriptor&quot;&gt;<br />
+	&lt;displayName&gt;AppName&lt;/displayName&gt;<br />
+	&lt;description&gt;AppName&lt;/description&gt;<br />
+	&lt;accessTokenExpiration&gt;3600&lt;/accessTokenExpiration&gt;<br />
+	&lt;userIdentityRealms&gt;&lt;/userIdentityRealms&gt;<br />
+	&lt;pushSender password=&quot;REPLACE-WITH-CERTIFICATE-PASSWORD&quot;/&gt;<br />
+&lt;/nativeIOSApp&gt;<br />
+[/code]
+</ul>
+</li>
+<li>Deploy the MobileFirst native API:<br />
+<h4>CLI</h4>
+<p>    Use <code>mfp deploy</code> from within the application folder.</p>
+<h4>Studio</h4>
+<p>    Right-click the Native API folder and select <strong>Run As > Deploy Native API</strong>.</li>
+</ol>
+<h2 id="anps">Apple Push Notifications Service</h2>
+<p>For push notifications to be sent, the following servers must be accessible from a MobileFirst Server instance:<br />
+<u>Sandbox servers:</u><br />
+gateway.sandbox.push.apple.com:2195<br />
+feedback.sandbox.push.apple.com:2196</p>
+<p><u>Production servers:</u><br />
+gateway.push.apple.com:2195<br />
+Feedback.push.apple.com:2196</p>
+<p>1-courier.push.apple.com 5223</p>
+<h2 id="additionalNotificationTypes">Notification types</h2>

@@ -1,0 +1,97 @@
+---
+layout: doc_page
+title: Android - Using native pages in hybrid applications
+date: 2015-09-08 06:06:38.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 8-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt;  <a href="../">Adding native functionality to hybrid applications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/NativePagesInHybridApp" target="_blank">Download MobileFirst project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial explains how to integre native and web "pages" in an Android application by using the <code>WL.NativePage.show()</code> API to open a native page from JavaScript.</p>
+<p>With this method, data can be sent from JavaScript to the opened native page. You can specify a callback to be called after the native page closes.</p>
+<p>This tutorial covers the following topics:</p>
+<ul>
+<li><a href="#connect">Connecting to the plugin from the JavaScript code</a></li>
+<li><a href="#create">Creating a native page</a></li>
+<li><a href="#control">Returning control to the web view</a></li>
+<li><a href="#sample">Sample application</a></li>
+</ul>
+<h2 id="connect">Connecting to the plugin from the JavaScript code</h2>
+<ol>
+<li> Implement the <code>WL.NativePage.show()</code> method to open the native page:
+<p>[code lang="js"]function openNativePage(){<br />
+    var params = {<br />
+        nameParam : $('#nameInput').val()<br />
+    };<br />
+    WL.NativePage.show(nativePageClassName, backFromNativePage, params);<br />
+}[/code]</p>
+<ul>
+<li><code>nativePageClassName</code>: The name of a native Android class to start.</li>
+<li><code>backFromNativePage</code>: A callback function to call when the native page closes.</li>
+<li><code>params</code>: An optional custom parameters object to pass to the native code.</li>
+</ul>
+</li>
+<li>To handle the callback function:
+<p>[code lang="js"]function backFromNativePage(data){<br />
+  alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
+}[/code]</p>
+<p>The <code>backFromNativePage(data)</code> function passes data back to the web part of an application after the native page closes.</li>
+</ol>
+<h2 id="create">Creating a native page</h2>
+<p>In Android, the native page must be implemented as an Android Activity, or extend an existing Activity.</p>
+<ol>
+<li>Declare the native page in the <code>AndroidManifest.xml</code> file, as you would any Activity. For example:<br />
+[code lang="xml"]&lt;activity android:name=&quot;.HelloNative&quot;&gt;&lt;/activity&gt;[/code]
+</li>
+<li>To retrieve custom data parameters that are passed from the web view, use an <code>Intent</code> object:<br />
+[code lang="java"]protected void onCreate(Bundle savedInstanceState) {<br />
+super.onCreate(savedInstanceState);</p>
+<p>String name = getIntent().getStringExtra(&quot;nameParam&quot;);[/code]
+</li>
+</ol>
+<h2 id="control">Returning control to the web view</h2>
+<p>When the native page switches back to the web view, the <code>finish()</code> function is called for the Activity.<br />
+You can pass data back to the web view by using an <code>Intent</code> object. For example:</p>
+<p>Java:<br />
+[code lang="java"]String phoneNumber = editText.getText().toString();<br />
+Intent phoneNumberInfo = new Intent();<br />
+phoneNumberInfo.putExtra(&quot;phoneNumber&quot;, phoneNumber);<br />
+setResult(RESULT_OK, phoneNumberInfo);<br />
+finish();<br />
+[/code]</p>
+<p>JavaScript:<br />
+[code lang="js"]function backFromNativePage(data){<br />
+    alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
+}[/code]</p>
+<h2 id="sample">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/NativePagesInHybridApp" target="_blank">Click to download</a> the MobileFirst project.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_04_sample_app.png"><img src="{{ site.baseurl }}/assets/07_04_sample_app.png" alt="07_04_sample_app" width="834" height="405" class="aligncenter size-full wp-image-882" /></a></p>
