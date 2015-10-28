@@ -22,150 +22,173 @@ author:
   last_name: Rheinheimer
 ---
 <p>Since you've read the <a href="https://developer.ibm.com/mobilefirstplatform/2015/10/01/mobilefirst-analytics-planning-for-production/">MobileFirst Analytics - Planning for Production</a> blog post, you're ready to get some practice setting up a cluster.</p>
-<p>Before we start, be sure you've noted and understood from the planning blog post that ElasticSearch is the underlying cluster manager.  You do not need to deploy your application servers in a cluster!  In fact, you should avoid doing so, because the configuration of the MobileFirst Analytics server is quite often unique per node.  If you clustered your application servers, the application server would share configuration information and the unique configuration you tried to apply would be overwritten.  You don't want that.</p>
+
+<p>Before we start, be sure you've noted and understood from the planning blog post that ElasticSearch is the underlying cluster manager. You do not need to deploy your application servers in a cluster! In fact, you should avoid doing so, because the configuration of the MobileFirst Analytics server is quite often unique per node.  If you clustered your application servers, the application server would share configuration information and the unique configuration you tried to apply would be overwritten. You don't want that.</p>
+
 <p>Grab a few computers and let's go!</p>
-<p><strong>Scenario One:  You have a VLAN</strong></p>
-<p>This is the recommended scenario!  Put all of your MobileFirst Analytics servers in the same private local area network (LAN) or <a href="https://en.wikipedia.org/wiki/Virtual_LAN">VLAN</a> dedicated to the job of hosting the cluster nodes.  That way you can safely use <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html">multicast zen discovery</a> to dynamically add and remove nodes from the cluster without having to know all of the IP addresses of all the nodes up front.  You can fit as many nodes in your cluster as your subnet mask allows.</p>
+
+<h4>Scenario One: You have a VLAN</h4>
+<p>This is the recommended scenario! Put all of your MobileFirst Analytics servers in the same private local area network (LAN) or <a href="https://en.wikipedia.org/wiki/Virtual_LAN">VLAN</a> dedicated to the job of hosting the cluster nodes.  That way you can safely use <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-discovery-zen.html">multicast zen discovery</a> to dynamically add and remove nodes from the cluster without having to know all of the IP addresses of all the nodes up front.  You can fit as many nodes in your cluster as your subnet mask allows.</p>
+
 <p>In this scenario, there is only one <em>required</em> JNDI properties:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>multicast</code></td>
-<td><code>true</code></td>
-<td>equivalent to ElasticSearch's <code>discovery.zen.ping.multicast.enabled</code></td>
-</tr>
-</tbody>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>multicast</code></td>
+            <td><code>true</code></td>
+            <td>equivalent to ElasticSearch's <code>discovery.zen.ping.multicast.enabled</code></td>
+        </tr>
+    </tbody>
 </table>
+
 <p>In WebSphere Liberty's <code>server.xml</code> file, the JNDI property looks like this:</p>
-<p><code>&lt;jndiEntry jndiName="analytics/multicast" value="true"/&gt;</code></p>
-<p>That's it?  Yeah, that's it!</p>
-<p>Bring up a MobileFirst Analytics server, visit the analytics console (to trigger the underlying technology stack to initialize ElasticSearch), and click over to the Administration page.  It will show you yellow status because no other node has been allocated to hold the replica shards.  Your cluster has only one node, and is therefore lacking redundancy and is at risk of going down.  Bring up a second server, visit the analytics console, and watch that status change to green!</p>
-<p><strong>Scenario Two:  You're Starting With a Fixed Number of Nodes</strong></p>
-<p>In some cases, you don't have a private LAN or VLAN, or have nodes spanning data centers.  In this case, you will be starting with a set of known hostnames or IP addresses, and perhaps sharing the LAN with other systems.  You may want to avoid multicast in this case.</p>
-<p>For this example, let's say we know the IP addresses of four nodes that will make up our initial cluster.  They are:</p>
+<code><jndiEntry jndiName="analytics/multicast" value="true"/></code>
+
+<p>That's it? Yeah, that's it!</p>
+
+<p>Bring up a MobileFirst Analytics server, visit the analytics console (to trigger the underlying technology stack to initialize ElasticSearch), and click over to the Administration page. It will show you yellow status because no other node has been allocated to hold the replica shards. Your cluster has only one node, and is therefore lacking redundancy and is at risk of going down. Bring up a second server, visit the analytics console, and watch that status change to green!</p>
+
+<h4>Scenario Two: You're Starting With a Fixed Number of Nodes</h4>
+<p>In some cases, you don't have a private LAN or VLAN, or have nodes spanning data centers. In this case, you will be starting with a set of known hostnames or IP addresses, and perhaps sharing the LAN with other systems. You may want to avoid multicast in this case.</p>
+
+<p>For this example, let's say we know the IP addresses of four nodes that will make up our initial cluster. They are:</p>
 <ul>
-<li>9.0.0.1</li>
-<li>9.0.0.2</li>
-<li>9.0.0.3</li>
-<li>9.0.0.4</li>
+    <li>9.0.0.1</li>
+    <li>9.0.0.2</li>
+    <li>9.0.0.3</li>
+    <li>9.0.0.4</li>
 </ul>
+
 <p>We'll consider each node to be master-eligible and have multicast turned off, which just means we'll be using the default configuration from MobileFirst Analytics.  Since multicast is off, ElasticSearch needs to be told about all the nodes initially making up the cluster.  I also recommend explicitly setting the transport port so your firewall rules can be hardened.  Here is the configuration:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>transportport</code></td>
-<td><code>9600</code></td>
-<td>equivalent to ElasticSearch's <code>transport.tcp.port</code></td>
-</tr>
-<tr>
-<td><code>masternodes</code></td>
-<td><code>9.0.0.1:9600,9.0.0.2:9600,9.0.0.3:9600,9.0.0.4:9600</code></td>
-<td>equivalent to ElasticSearch's <code>discovery.zen.ping.unicast.hosts</code></td>
-</tr>
-</tbody>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>transportport</code></td>
+            <td><code>9600</code></td>
+            <td>equivalent to ElasticSearch's <code>transport.tcp.port</code></td>
+        </tr>
+        <tr>
+            <td><code>masternodes</code></td>
+            <td><code>9.0.0.1:9600,9.0.0.2:9600,9.0.0.3:9600,9.0.0.4:9600</code></td>
+            <td>equivalent to ElasticSearch's <code>discovery.zen.ping.unicast.hosts</code></td>
+        </tr>
+    </tbody>
 </table>
+
 <p>It is safe to for a given node to list itself in the <code>masternodes</code>.</p>
-<p>That's it?  Yes!  Use the same steps as in scenario one to bring up your servers, and check that administration tab.</p>
-<p><strong>Required Setting</strong></p>
-<p>While the above scenarios are functionally complete, they are <em>not</em> safe!  You need to protect yourself from split brain (again, see the planning blog post).  Basically, the master-eligible nodes in a cluster need to reach a quorum to vote on who will be the master node, especially in node down situations where the node that went down was the master!  The rule is that you should set the <code>discover.zen.minimum_master_nodes</code> to <code>((number_of_master-eligible_nodes / 2) + 1)</code>.  So in each scenario you need the following property, and to set it you need to know how many master-eligible nodes are in the cluster.  By default, all MobileFirst Analytics servers are master-eligible, so in scenario two, it would be:</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>discovery.zen.minimum_master_nodes</code></td>
-<td><code>3</code></td>
-</tr>
-</tbody>
+<p>That's it? Yes! Use the same steps as in scenario one to bring up your servers, and check that administration tab.</p>
+
+<h4>Required Setting</h4>
+<p>While the above scenarios are functionally complete, they are <em>not</em> safe! You need to protect yourself from split brain (again, see the planning blog post). Basically, the master-eligible nodes in a cluster need to reach a quorum to vote on who will be the master node, especially in node down situations where the node that went down was the master!  The rule is that you should set the <code>discover.zen.minimum_master_nodes</code> to <code>((number_of_master-eligible_nodes / 2) + 1)</code>.  So in each scenario you need the following property, and to set it you need to know how many master-eligible nodes are in the cluster. By default, all MobileFirst Analytics servers are master-eligible, so in scenario two, it would be:</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><code>discovery.zen.minimum_master_nodes</code></td>
+            <td><code>3</code></td>
+        </tr>
+    </tbody>
 </table>
+
 <p>Since the configuration requires at least three master-eligible nodes to be available in your cluster before ElasticSearch will reply to queries, you'll need to bring up three analytics servers, visit each console to trigger the initialization, wait for ElasticSearch to establish a quorum and vote for a master, then you'll see green status.</p>
-<p><strong>(Nearly) Required Settings</strong></p>
+
+<h4>(Nearly) Required Settings</h4>
 <p>Remember all those times I said "yeah, that's it"?  Well, about that.  You are strongly recommended to set additional configuration.  Since you know what shards are and how the setting affects performance (you did read the <a href="https://developer.ibm.com/mobilefirstplatform/2015/10/01/mobilefirst-analytics-planning-for-production/">planning blog post</a>, right?), you really should set that property.  Also, you should consider setting the <code>nodename</code> so each node can be easily identified in the logs and Administration tab, and set the <code>datapath</code> so you know in which directory your data is stored.</p>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>shards</code></td>
-<td><code>12</code></td>
-<td>you got this number by using the capacity calculator; equivalent to ElasticSearch's <code>index.number_of_shards</code></td>
-</tr>
-<tr>
-<td><code>replicas</code></td>
-<td><code>2</code></td>
-<td>equivalent to ElasticSearch's <code>index.number_of_replicas</code></td>
-</tr>
-<tr>
-<td><code>nodename</code></td>
-<td><code>shrute</code></td>
-<td>set a unique name per node if you wish; equivalent to ElasticSearch's <code>node.name</code></td>
-</tr>
-<tr>
-<td><code>datapath</code></td>
-<td><code>/mfp_data_goes_here</code></td>
-<td>equivalent to ElasticSearch's <code>path.data</code></td>
-</tr>
-</tbody>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>shards</code></td>
+            <td><code>12</code></td>
+            <td>you got this number by using the capacity calculator; equivalent to ElasticSearch's <code>index.number_of_shards</code></td>
+        </tr>
+        <tr>
+            <td><code>replicas</code></td>
+            <td><code>2</code></td>
+            <td>equivalent to ElasticSearch's <code>index.number_of_replicas</code></td>
+        </tr>
+        <tr>
+            <td><code>nodename</code></td>
+            <td><code>shrute</code></td>
+            <td>set a unique name per node if you wish; equivalent to ElasticSearch's <code>node.name</code></td>
+        </tr>
+        <tr>
+            <td><code>datapath</code></td>
+            <td><code>/mfp_data_goes_here</code></td>
+            <td>equivalent to ElasticSearch's <code>path.data</code></td>
+        </tr>
+    </tbody>
 </table>
+
 <p>I would also recommend you consider setting a few nodes to be master-eligible only and all others to be data only.  That way the master nodes are solely responsible for cluster management and balance, and the data nodes are solely responsible for answering queries.  That way you never need to be concerned with updating the <code>discovery.zen.minimum_master_nodes</code>.</p>
+
 <p>For example, if you have an eight-node cluster, set four nodes with:</p>
 <table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>nodetype</code></td>
-<td><code>master</code></td>
-<td>equivalent to setting ElasticSearch's <code>node.master</code> to true and <code>node.data</code> to false</td>
-</tr>
-</tbody>
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>nodetype</code></td>
+            <td><code>master</code></td>
+            <td>equivalent to setting ElasticSearch's <code>node.master</code> to true and <code>node.data</code> to false</td>
+        </tr>
+    </tbody>
 </table>
+
 <p>And the rest of the nodes with:</p>
 <table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Value</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>nodetype</code></td>
-<td><code>data</code></td>
-<td>equivalent to setting ElasticSearch's <code>node.master</code> to false and <code>node.data</code> to true</td>
-</tr>
-</tbody>
+    <thead>
+        <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>nodetype</code></td>
+            <td><code>data</code></td>
+            <td>equivalent to setting ElasticSearch's <code>node.master</code> to false and <code>node.data</code> to true</td>
+        </tr>
+    </tbody>
 </table>
+
 <p>Then set <code>discovery.zen.minimum_master_nodes</code> to 3 and you won't ever need to update it because three is always a satisfactory quorum.</p>
-<p><strong>Conclusion</strong></p>
-<p>We could get into some much more complex scenarios like when your cluster spans more than one data center, and the latency between the two exceeds ElasticSearch's ping timeout tolerance, or when you need dedicated master nodes for failover or performance.  You can even set up nodes that hold no data, but simply offload some CPU burden when your cluster is extremely busy answering queries.  That sounds like another good article!</p>
-<p>Now you know how to quickly set up a MobileFirst Analytics cluster!  Go forth and practice!</p>
+
+<h4>Conclusion</h4>
+<p>We could get into some much more complex scenarios like when your cluster spans more than one data center, and the latency between the two exceeds ElasticSearch's ping timeout tolerance, or when you need dedicated master nodes for failover or performance. You can even set up nodes that hold no data, but simply offload some CPU burden when your cluster is extremely busy answering queries. That sounds like another good article!</p>
+
+<p>Now you know how to quickly set up a MobileFirst Analytics cluster! Go forth and practice!</p>
