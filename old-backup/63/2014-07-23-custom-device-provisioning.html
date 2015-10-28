@@ -46,11 +46,11 @@ With Custom device provisioning you can validate:</p>
 <p>It is vital to gain a solid understanding of the topics that are discussed in the <a title="Device provisioning concepts" href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/device-provisioning-concepts/">Device Provisioning Concepts tutorial</a> because this tutorial is fully based on those concepts.</p>
 <h2>Understanding custom device provisioning</h2>
 <h3>First Application Start</h3>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_14_flow_firststart.png"><img class="aligncenter wp-image-1078 size-full" src="{{ site.baseurl }}/assets/09_14_flow_firststart.png" alt="09_14_flow_firststart" width="1405" height="797" /></a><br />
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_14_flow_firststart.png"><img class="aligncenter wp-image-1078 size-full" src="{{ site.baseurl }}/assets/backup/09_14_flow_firststart.png" alt="09_14_flow_firststart" width="1405" height="797" /></a><br />
 Authenticity check is a proprietary IBM MobileFirst Platform Foundation technology that makes sure application is the authentic one and was not modified by anyone.<br />
 The main difference between auto and custom provisioning is two functions that you can perform custom validation of CSR during the provisioning process and custom validation of certificate during each application start.</p>
 <h3>Subsequent Application Starts</h3>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_14_flow_subsequent.png"><img class="aligncenter wp-image-1079 size-full" src="{{ site.baseurl }}/assets/09_14_flow_subsequent.png" alt="09_14_flow_subsequent" width="1402" height="578" /></a></p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_14_flow_subsequent.png"><img class="aligncenter wp-image-1079 size-full" src="{{ site.baseurl }}/assets/backup/09_14_flow_subsequent.png" alt="09_14_flow_subsequent" width="1402" height="578" /></a></p>
 <h3>keystore</h3>
 <p>By default, the MobileFirst Server uses its internal keystore to issue a certificate.<br />
 You can tell the server to use your own keystore by adjusting the <strong>worklight.properties</strong> file.<br />
@@ -273,4 +273,4 @@ customDevProvChallengeHandler.handleFailure = function(){<br />
 <p><em>handleFailure</em> function is called each time that the certificate fails validation. You can use it for UI manipulations and to notify the user that the application cannot connect to server.</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomDeviceProvisioningProject.zip">Click to download</a> the Studio project.</p>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_14_results.png"><img class="alignnone size-full wp-image-1084" src="{{ site.baseurl }}/assets/09_14_results.png" alt="09_14_results" width="944" height="550" /></a></p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_14_results.png"><img class="alignnone size-full wp-image-1084" src="{{ site.baseurl }}/assets/backup/09_14_results.png" alt="09_14_results" width="944" height="550" /></a></p>

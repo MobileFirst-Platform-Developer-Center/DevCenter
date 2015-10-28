@@ -50,7 +50,7 @@ The implementation can be modified to handle more of the status codes that are r
 The Cordova controller is then added as a child to the root view and displayed on the screen.</p>
 <p>If it is decided to implement a custom introduction screen as explained before, consider delaying the display the Cordova view until the user is done with the custom native screen.</p>
 <h2>Native SplashScreen sample</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/07_08_splashscreen_sample.png"><img src="{{ site.baseurl }}/assets/07_08_splashscreen_sample.png" alt="07_08_splashscreen_sample" width="891" height="369" class="aligncenter size-full wp-image-1069" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/07_08_splashscreen_sample.png"><img src="{{ site.baseurl }}/assets/backup/07_08_splashscreen_sample.png" alt="07_08_splashscreen_sample" width="891" height="369" class="aligncenter size-full wp-image-1069" /></a></p>
 <p>The NativeUIInHybrid project includes a hybrid application called NativeSplashScreen.<br />
 This example uses a Page View Controller to show a sliding introduction to the application. The user interface was created using a Storyboard in XCode.<br />
 Two classes, <span class="inline-code">PageViewController</span> and <span class="inline-code">PageContentViewController</span>, were created to handle the slides.</p>
@@ -146,7 +146,7 @@ For the action receiver to receive actions, it must first be registered. This sh
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
 [code lang="js"]WL.App.removeActionReceiver(&quot;MyActionReceiverId&quot;);[/code]</p>
 <h2>SendAction Sample</h2>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/07_08_screenshot.png"><img src="{{ site.baseurl }}/assets/07_08_screenshot.png" alt="07_08_screenshot" width="702" height="600" class="aligncenter size-full wp-image-1111" /></a></p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/07_08_screenshot.png"><img src="{{ site.baseurl }}/assets/backup/07_08_screenshot.png" alt="07_08_screenshot" width="702" height="600" class="aligncenter size-full wp-image-1111" /></a></p>
 <p><strong>Overview</strong><br />
 Download the NativeUIInHybrid project, which includes a hybrid application called SendAction.<br />
 Note: This sample requires the MapKit framework.</p>
@@ -187,7 +187,7 @@ When the button is clicked, the <span class="inline-code">sendActionToNative</sp
 The interface was designed with a Storyboard file. It features a generic view controller with the <span class="inline-code">ViewController</span> custom class (described later).</p>
 <p>The view controller contains a <span class="inline-code">MKMapView</span> object and a Container View.<br />
 The Container View contains a view controller, which is set to use the <span class="inline-code">HybridScreenViewController</span> class (described later).</p>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/07_08_storyboard.png"><img src="{{ site.baseurl }}/assets/07_08_storyboard.png" alt="07_08_storyboard" width="718" height="360" class="aligncenter size-full wp-image-1104" /></a></p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/07_08_storyboard.png"><img src="{{ site.baseurl }}/assets/backup/07_08_storyboard.png" alt="07_08_storyboard" width="718" height="360" class="aligncenter size-full wp-image-1104" /></a></p>
 <p><strong>HybridScreenViewController</strong><br />
 <span class="inline-code">HybridScreenViewController</span> extends <span class="inline-code">CDVViewController</span>, the Cordova web view provided by MobileFirst (<span class="inline-code">@interface HybridScreenViewController : CDVViewController</span>).</p>
 <p>The implementation of the class is almost empty, except for setting the startPage of the Cordova web view.</p>

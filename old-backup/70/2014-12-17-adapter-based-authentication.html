@@ -89,7 +89,7 @@ Remember the security test names. You must use them in subsequent steps.<br />
 [/code]</p>
 <h2 id="serverside">Creating the server-side authentication components</h2>
 <p>The following diagram illustrates the adapter-based authentication process:</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_05_flow_diagram.jpg"><img src="{{ site.baseurl }}/assets/09_05_flow_diagram.jpg" alt="09_05_flow_diagram" width="720" height="521" class="aligncenter size-full wp-image-15621" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_05_flow_diagram.jpg"><img src="{{ site.baseurl }}/assets/backup/09_05_flow_diagram.jpg" alt="09_05_flow_diagram" width="720" height="521" class="aligncenter size-full wp-image-15621" /></a></p>
 <h3>Adapter XML</h3>
 <p>The sample that is provided with this tutorial uses two applications and two adapters. The <code>SingleStepAuth</code> application and adapter are covered here. The <code>DoubleStepAuth</code> application and adapter are an extension of the same technique.</p>
 <p>Create an adapter that takes care of the authentication process. Name it <code>SingleStepAuthAdapter</code>.<br />
@@ -100,7 +100,7 @@ This adapter includes the following procedure:</p>
 <p>The <code>submitAuthentication</code> procedure takes care of the authentication process. Note that when the challenge handler invokes the <code>submitAuthentication</code> call, it is responsible for handling all the possible responses. In particular, if the <code>submitAuthentication</code> call returns a challenge, it is passed to the invocation callback, and is not processed by the security framework.</p>
 <p><strong>Note:</strong> It is required for the "submit" procedure to be unprotected by using the <code>wl_unprotected</code> security test.</p>
 <p>The following diagram shows the flow to implement:</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_05_flow_diagram2.jpg"><img src="{{ site.baseurl }}/assets/09_05_flow_diagram2.jpg" alt="09_05_flow_diagram2" width="720" height="440" class="aligncenter size-full wp-image-15616" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_05_flow_diagram2.jpg"><img src="{{ site.baseurl }}/assets/backup/09_05_flow_diagram2.jpg" alt="09_05_flow_diagram2" width="720" height="440" class="aligncenter size-full wp-image-15616" /></a></p>
 <h3>onAuthRequired</h3>
 <p>Whenever the framework detects an unauthenticated attempt to access a protected resource, the <code>onAuthRequired</code> function is called, as defined in the <code>authenticationConfig.xml</code> file.</p>
 <p>[code lang="javascript"]<br />

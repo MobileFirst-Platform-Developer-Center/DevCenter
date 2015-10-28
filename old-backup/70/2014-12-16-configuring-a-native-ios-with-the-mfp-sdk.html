@@ -50,7 +50,7 @@ author:
 <li>Build and deploy the application using <code>$ mfp bd</code>. <em>This action is required for MobileFirst Server to recognize the application if it attempts to connect.</em></li>
 </ol>
 <h3>Studio</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_native_ios_folder_structure.png"><img class="alignright wp-image-1407 size-full" src="{{ site.baseurl }}/assets/02_02_native_ios_folder_structure.png" alt="02_02_native_ios_folder_structure" width="290" height="296" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_native_ios_folder_structure.png"><img class="alignright wp-image-1407 size-full" src="{{ site.baseurl }}/assets/backup/02_02_native_ios_folder_structure.png" alt="02_02_native_ios_folder_structure" width="290" height="296" /></a></p>
 <ol>
 <h3>Create</h3>
 <li>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Native API.</li>
@@ -82,7 +82,7 @@ author:
 <li><code>wlPlatformVersion</code> – The MobileFirst SDK version.</li>
 </ul>
 <h2 id="configNativeApp">Configuring an iOS native application</h2>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/02_02_xcode-link-library.png"><img class="size-full alignright wp-image-455" src="{{ site.baseurl }}/assets/02_02_xcode-link-library.png" alt="02_02_xcode-link-library" width="331" height="346" /></a></p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/02_02_xcode-link-library.png"><img class="size-full alignright wp-image-455" src="{{ site.baseurl }}/assets/backup/02_02_xcode-link-library.png" alt="02_02_xcode-link-library" width="331" height="346" /></a></p>
 <ol>
 <li>Create an Xcode project or use an existing one.</li>
 <li>Copy the previously-created <code>WorklightAPI</code> folder and the <code>worklight.plist</code> file from Eclipse to the root of the native project in Xcode.</li>
@@ -117,16 +117,16 @@ author:
 <p>Because Apple Swift is designed to be compatible with Objective-C, you can use the MobileFirst SDK from within an iOS Swift project, too.</p>
 <ol>
 <li>Create a Swift project and follow the same steps, as described at the beginning of the tutorial, to install the MobileFirst SDK into an iOS native application.
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_new_swift.png"><img class="aligncenter wp-image-1409 size-full" src="{{ site.baseurl }}/assets/02_02_new_swift.png" alt="02_02_new_swift" width="731" height="432" /></a>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_new_swift.png"><img class="aligncenter wp-image-1409 size-full" src="{{ site.baseurl }}/assets/backup/02_02_new_swift.png" alt="02_02_new_swift" width="731" height="432" /></a>
 </li>
 <li>After all the normal steps for an iOS application, go to <strong>Build Settings &gt; Swift Compiler - Code Generation</strong>.
 <p>In <strong>Objective-C Bridging Header</strong>, add this path: <code>$(SRCROOT)/WorklightAPI/include/WLSwiftBridgingHeader.h</code><br />
 However, if you already have your own Bridging Header for other purposes, include the Worklight Bridging Header inside your own Bridging Header instead.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_swift-bridging.png"><img class="alignnone size-full wp-image-1265" src="{{ site.baseurl }}/assets/02_02_swift-bridging.png" alt="02_02_swift-bridging" width="734" height="200" /></a>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_swift-bridging.png"><img class="alignnone size-full wp-image-1265" src="{{ site.baseurl }}/assets/backup/02_02_swift-bridging.png" alt="02_02_swift-bridging" width="734" height="200" /></a>
 </li>
 </ol>
 <p>All the MobileFirst classes are now available from any of your Swift files.<br />
 XCode provides code autocompletion converted to the Swift style.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_swift-autocomplete.png"><img class="alignnone size-full wp-image-1266" src="{{ site.baseurl }}/assets/02_02_swift-autocomplete.png" alt="02_02_swift-autocomplete" width="402" height="68" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_swift-autocomplete.png"><img class="alignnone size-full wp-image-1266" src="{{ site.baseurl }}/assets/backup/02_02_swift-autocomplete.png" alt="02_02_swift-autocomplete" width="402" height="68" /></a></p>
 <h2 id="next">Tutorials to follow next</h2>
 <p>Now that your application contains the Native API library, you can follow the tutorials in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-7-0/">Native iOS development</a>  section to learn more about authentication and security, server-side development, advanced client-side development, notifications and more.</p>

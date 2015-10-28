@@ -58,7 +58,7 @@ Device provisioning is based on the device ID and supported on the Android and i
 The issued certificate contains device information that is obtained during the provisioning process.<br />
 Before a certificate is issued to a specific device, the server can perform extra validations on the received device credentials.<br />
 It is possible to configure your own CA keystore for the generation of the device provisioning certificate.<br />
-<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_13_understanding-flow.png"><img class="aligncenter wp-image-1071 size-full" src="{{ site.baseurl }}/assets/09_13_understanding-flow.png" alt="09_13_understanding-flow" width="1298" height="745" /></a></p>
+<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_13_understanding-flow.png"><img class="aligncenter wp-image-1071 size-full" src="{{ site.baseurl }}/assets/backup/09_13_understanding-flow.png" alt="09_13_understanding-flow" width="1298" height="745" /></a></p>
 <h2>No provisioning</h2>
 <p><strong>No provisioning</strong> is appropriate for development environments.<br />
 Using<strong> No provisioning</strong> means that the provisioning process is not triggered (requested) by the MobileFirst Server.<br />
@@ -83,9 +83,9 @@ The server collects the supplied device information and issues a certificate by 
 The certificate is issued to any device that requests it, therefore <strong>Auto provisioning</strong> makes sense only when it is used after a successful application authenticity check.</p>
 <h3>First Application Start</h3>
 <p>Authenticity check is a proprietary MobileFirst technology that makes sure the application is the authentic one and was not modified by anyone.<br />
-<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_13_autoprov-firststart.png"><img class="aligncenter wp-image-1072 size-full" src="{{ site.baseurl }}/assets/09_13_autoprov-firststart.png" alt="09_13_autoprov-firststart" width="1314" height="813" /></a></p>
+<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_13_autoprov-firststart.png"><img class="aligncenter wp-image-1072 size-full" src="{{ site.baseurl }}/assets/backup/09_13_autoprov-firststart.png" alt="09_13_autoprov-firststart" width="1314" height="813" /></a></p>
 <h3>Subsequent Application Starts</h3>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_13_autoprov-subsequent.png"><img class="aligncenter wp-image-1073 size-full" src="{{ site.baseurl }}/assets/09_13_autoprov-subsequent.png" alt="09_13_autoprov-subsequent" width="1276" height="616" /></a></p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_13_autoprov-subsequent.png"><img class="aligncenter wp-image-1073 size-full" src="{{ site.baseurl }}/assets/backup/09_13_autoprov-subsequent.png" alt="09_13_autoprov-subsequent" width="1276" height="616" /></a></p>
 <h3>Enabling auto provisioning</h3>
 <p>To enable <strong>Auto provisioning</strong>, add the following realms to your <strong>authentication-config.xml</strong> file.</p>
 <p>[code lang="xml" title="If 1=use 2=a 3=custom 4=security 5=test:" language="you"]<br />

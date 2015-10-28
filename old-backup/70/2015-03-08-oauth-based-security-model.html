@@ -49,10 +49,10 @@ author:
 <p>The new MobileFirst end-to-end authorization flow has two phases: the client acquires the token and then uses it to access a protected resource.</p>
 <h3>Acquiring a token</h3>
 <p>In this phase, the client undergoes security checks in order to receive an access token. These security checks use authorization entities, which are described in <a href="#authEntities">the next section</a>.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/MFP_Security_obtain_token.jpg"><img src="{{ site.baseurl }}/assets/MFP_Security_obtain_token.jpg" alt="MFP_Security_obtain_token" width="720" height="560" class="aligncenter size-full wp-image-8162" /></a></p>
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/MFP_Security_obtain_token.jpg"><img src="{{ site.baseurl }}/assets/backup/MFP_Security_obtain_token.jpg" alt="MFP_Security_obtain_token" width="720" height="560" class="aligncenter size-full wp-image-8162" /></a></p>
 <h3>Using a token to access a protected resource</h3>
 <p>It is possible to enforce MobileFirst security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/authentication-security/using-mobilefirst-server-authenticate-external-resources/" title="Using the MobileFirst Server to authenticate external resources">Using MobileFirst Server to authenticate external resources</a>.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/MFP_Security_protect_MFP_resources.jpg"><img src="{{ site.baseurl }}/assets/MFP_Security_protect_MFP_resources.jpg" alt="MFP_Security_protect_MFP_resources" width="720" height="560" class="aligncenter size-full wp-image-8163" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/MFP_Security_protect_MFP_resources.jpg"><img src="{{ site.baseurl }}/assets/backup/MFP_Security_protect_MFP_resources.jpg" alt="MFP_Security_protect_MFP_resources" width="720" height="560" class="aligncenter size-full wp-image-8163" /></a></p>
 <h2 id="authEntities">Authorization entities</h2>
 <p>You can protect MobileFirst resources such as adapter procedures from unauthorized access by specifying a <strong>scope</strong> that contains one or more <i>authentication realms</i>.</p>
 <p>An <strong>authentication realm</strong> defines the process to be used to authenticate users.</p>
@@ -98,7 +98,7 @@ A scope is a list of realm names - the realms that the user must authenticate ag
 <h2 id="define">Defining realms, authenticators, and login modules</h2>
 <p>You configure authentication settings in the MobileFirst project in the <code>server\conf\authenticationConfig.xml</code> file.</p>
 <p>You can modify the settings by using the Authentication Configuration Editor.<br />
-<a href="https://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_authentication_config_editor.png"><img class="aligncenter wp-image-884 size-full" src="{{ site.baseurl }}/assets/09_01_authentication_config_editor.png" alt="09_01_authentication_config_editor" width="960" height="453" /></a></p>
+<a href="https://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_authentication_config_editor.png"><img class="aligncenter wp-image-884 size-full" src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png" alt="09_01_authentication_config_editor" width="960" height="453" /></a></p>
 <p>Each realm takes a name, a <code>loginModule</code> specification, an authenticator implementation, and optional parameters.</p>
 <p>[code lang="xml"]<br />
 &lt;realms&gt;<br />

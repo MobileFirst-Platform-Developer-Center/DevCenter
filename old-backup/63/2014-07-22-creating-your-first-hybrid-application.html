@@ -45,15 +45,15 @@ author:
 <h2 id="creatingHybridMobileFirstApplication">Creating a hybrid MobileFirst application</h2>
 <ol>
 <li>In MobileFirst Studio, select <strong>File &gt; New &gt; MobileFirst Project</strong> to create a new MobileFirst Project from the top toolbar:<br />
- <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_toolbar_menu.png"><img class="aligncenter wp-image-1399 size-full" src="{{ site.baseurl }}/assets/02_01_toolbar_menu.png" alt="02_01_toolbar_menu" width="603" height="344" /></a></li>
+ <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_toolbar_menu.png"><img class="aligncenter wp-image-1399 size-full" src="{{ site.baseurl }}/assets/backup/02_01_toolbar_menu.png" alt="02_01_toolbar_menu" width="603" height="344" /></a></li>
 <li>Give your project a name, for example <em>HelloWorldProject</em>, and select the <strong>Hybrid Application</strong> template:<br />
- <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_new_project.png"><img class="aligncenter wp-image-1401 size-full" src="{{ site.baseurl }}/assets/02_01_new_project.png" alt="02_01_new_project" width="603" height="602" /></a></li>
+ <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_new_project.png"><img class="aligncenter wp-image-1401 size-full" src="{{ site.baseurl }}/assets/backup/02_01_new_project.png" alt="02_01_new_project" width="603" height="602" /></a></li>
 <li>Give the application a name, for example <em>HelloWorld</em>. JavaScript frameworks can be added to your project in this screen. Click <strong>Finish</strong> when done:<br />
- <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_new_application.png"><img class="aligncenter wp-image-1398 size-full" src="{{ site.baseurl }}/assets/02_01_new_application.png" alt="02_01_new_application" width="603" height="603" /></a></li>
+ <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_new_application.png"><img class="aligncenter wp-image-1398 size-full" src="{{ site.baseurl }}/assets/backup/02_01_new_application.png" alt="02_01_new_application" width="603" height="603" /></a></li>
 </ol>
 <p>To learn more about adding frameworks to applications, read the <em>Client-side development basics > Working with UI frameworks</em> tutorial.</p>
 <h2 id="structureOfNewApplication">Familiarizing with the application files and HTML structure</h2>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_project_structure.png"><img class="aligncenter wp-image-1402 size-full" src="{{ site.baseurl }}/assets/02_01_project_structure.png" alt="02_01_project_structure" width="603" height="439" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_project_structure.png"><img class="aligncenter wp-image-1402 size-full" src="{{ site.baseurl }}/assets/backup/02_01_project_structure.png" alt="02_01_project_structure" width="603" height="439" /></a></p>
 <h3>Environment files</h3>
 <h4>Common</h4>
 <p>The default environment is called <strong>common</strong>. The <strong>common</strong> environment contains all of the resources that are shared between environments:</p>
@@ -117,7 +117,7 @@ MobileFirst Studio deploys those artifacts to the embedded MobileFirst Developme
 <h2>application-descriptor.xml</h2>
 <p>The Application Descriptor is an XML file that stores the metadata for an application.<br />
 You can edit this file with the Design or Source editors.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_application_descriptor.png"><img class="aligncenter wp-image-1394 size-large" src="{{ site.baseurl }}/assets/02_01_application_descriptor-1024x568.png" alt="02_01_application_descriptor" width="603" height="543" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_application_descriptor.png"><img class="aligncenter wp-image-1394 size-large" src="{{ site.baseurl }}/assets/backup/02_01_application_descriptor-1024x568.png" alt="02_01_application_descriptor" width="603" height="543" /></a></p>
 <p>The file is based on the W3C Widget Packaging and Configuration standard and contains application properties that are used at build time.<br />
 You can specify the application description, details about the author, and the thumbnail image to be displayed in the MobileFirst Console.</p>
 <p>[code lang="xml"]<br />
@@ -163,7 +163,7 @@ You can specify the application description, details about the author, and the t
 This file can be edited with the Design or Source editors.</p>
 <p>By using minification on specific web resources, it is possible to reduce the size of JavaScript and CSS files in the application.<br />
 In addition, concatenation of the web resources can be used to improve the start time of the application.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_build_settings_Editor.png"><img class="aligncenter wp-image-1404 size-large" src="{{ site.baseurl }}/assets/02_01_build_settings_Editor-1024x430.png" alt="02_01_build_settings_Editor" width="603" height="411" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_build_settings_Editor.png"><img class="aligncenter wp-image-1404 size-large" src="{{ site.baseurl }}/assets/backup/02_01_build_settings_Editor-1024x430.png" alt="02_01_build_settings_Editor" width="603" height="411" /></a></p>
 <h2>index.html</h2>
 <p>During application runtime, the main HTML document cannot be replaced by another HTML document.<br />
 The default application HTML template complies with HTML5 standard markup, but any other DOCTYPE can be specified.</p>
@@ -224,13 +224,13 @@ function wlCommonInit(){<br />
 <p>To build an application, right-click the application name and select <strong>Run As > Run on MobileFirst Development Server</strong>.</p>
 <p>While the application is being built and deployed, the progress can be monitored in the Eclipse Console view.<br />
 After the build completes, the application is available for preview in the catalog tab of the MobileFirst Console.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_run_on_development_server.png"><img class="aligncenter wp-image-1396 size-full" src="{{ site.baseurl }}/assets/02_01_run_on_development_server.png" alt="02_01_run_on_development_server" width="603" height="872" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_run_on_development_server.png"><img class="aligncenter wp-image-1396 size-full" src="{{ site.baseurl }}/assets/backup/02_01_run_on_development_server.png" alt="02_01_run_on_development_server" width="603" height="872" /></a></p>
 <h2>MobileFirst Console</h2>
 <p>To view the MobileFirst Console, right-click the project name and select <strong>Open MobileFirst Console</strong>.<br />
 To view MobileFirst Console in an external browser window, from the top menu bar in Eclipse go to <strong>Window &gt; Preferences &gt; General &gt; Web Browser</strong> and select the “Use external web browser” radio button.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_open_mobilefirst_console.png"><img class="aligncenter wp-image-1393 size-full" src="{{ site.baseurl }}/assets/02_01_open_mobilefirst_console.png" alt="02_01_open_mobilefirst_)console" width="603" height="842" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_open_mobilefirst_console.png"><img class="aligncenter wp-image-1393 size-full" src="{{ site.baseurl }}/assets/backup/02_01_open_mobilefirst_console.png" alt="02_01_open_mobilefirst_)console" width="603" height="842" /></a></p>
 <p>To preview the application in its current form, click <strong>Preview as Common Resources</strong>.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_mobilefirst_console.png"><img class="aligncenter wp-image-1400 size-full" src="{{ site.baseurl }}/assets/02_01_mobilefirst_console.png" alt="02_01_mobilefirst_console" width="603" height="315" /></a></p>
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_mobilefirst_console.png"><img class="aligncenter wp-image-1400 size-full" src="{{ site.baseurl }}/assets/backup/02_01_mobilefirst_console.png" alt="02_01_mobilefirst_console" width="603" height="315" /></a></p>
 <h2>Single DOM Model</h2>
 <p>MobileFirst hybrid applications use a single DOM model.</p>
 <p>The single DOM model means that navigation between various HTML files must not be implemented by using hyperlinks or by changing the <code>window.location</code> property.<br />

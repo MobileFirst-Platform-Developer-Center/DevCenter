@@ -82,7 +82,7 @@ Remember the security test names. You must use them in subsequent steps.</p>
 [/code]</p>
 <h2>Creating the server-side authentication components</h2>
 <p>The following diagram illustrates the adapter-based authentication process:<br />
-<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_05_flow_diagram.png"><img class="aligncenter wp-image-972 size-full" src="{{ site.baseurl }}/assets/09_05_flow_diagram.png" alt="09_05_flow_diagram" width="1360" height="729" /></a></p>
+<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_05_flow_diagram.png"><img class="aligncenter wp-image-972 size-full" src="{{ site.baseurl }}/assets/backup/09_05_flow_diagram.png" alt="09_05_flow_diagram" width="1360" height="729" /></a></p>
 <h3>Adapter XML</h3>
 <p>The sample that is provided with this training module uses two applications and two adapters. The <span class="inline-code">SingleStepAuth</span> application and adapter will be covered here. The <span class="inline-code">DoubleStepAuth</span> application and adapter are an extension of the same technique.</p>
 <p>Create an adapter that takes care of the authentication process. Name it <strong>SingleStepAuthAdapter</strong>.<br />
@@ -98,7 +98,7 @@ The <strong>SingleStepAuthAdapter</strong> includes the following two procedures
 <li>The second procedure, however, is available to authenticated users only</li>
 </ul>
 <p>The following diagram shows the flow to implement:<br />
-<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_05_flow_diagram2.png"><img class="aligncenter wp-image-973 size-full" src="{{ site.baseurl }}/assets/09_05_flow_diagram2.png" alt="09_05_flow_diagram2" width="1340" height="679" /></a></p>
+<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_05_flow_diagram2.png"><img class="aligncenter wp-image-973 size-full" src="{{ site.baseurl }}/assets/backup/09_05_flow_diagram2.png" alt="09_05_flow_diagram2" width="1340" height="679" /></a></p>
 <h3>onAuthRequired</h3>
 <p>Whenever the framework detects an unauthenticated attempt to access a protected resource, the <span class="inline-code">onAuthRequired</span> function is called, as defined in the <strong>authenticationConfig.xml</strong> file.</p>
 <p>[code lang="javascript"]<br />

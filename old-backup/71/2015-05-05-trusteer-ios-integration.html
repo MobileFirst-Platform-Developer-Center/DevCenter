@@ -54,7 +54,7 @@ To learn more about installing an MobileFirst Application Component (*.WLC) see 
 In your XCode project (whether MobileFirst-generated Hybrid, or your own using MobileFirst Native API), drag the folder created above onto your project navigator.<br />
 Check “Copy items into destination group’s folder (if needed)”.<br />
 Select “Create folder references for any added folders”. Make sure your target is selected.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/trusteer-drag-ios.png"><img src="{{ site.baseurl }}/assets/trusteer-drag-ios.png" alt="trusteer-drag-ios" width="926" height="559" class="aligncenter size-full wp-image-8188" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/trusteer-drag-ios.png"><img src="{{ site.baseurl }}/assets/backup/trusteer-drag-ios.png" alt="trusteer-drag-ios" width="926" height="559" class="aligncenter size-full wp-image-8188" /></a></p>
 <p>Drag the “<strong>tas.license</strong>” file from the tas folder into the “<strong>Resources</strong>” folder.<br />
 Make sure the file contains your license information.<br />
 The format of the file should be:</p>
@@ -65,11 +65,11 @@ clientKey=YMAQAABNFUWS2L<br />
 [/code]</p>
 <h2>Link Trusteer Libraries</h2>
 <p>In <strong>Build Phases > Link Binary With Libraries</strong>, drag and drop <strong>libtas_full.a</strong> to link your project with the Trusteer library.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/trusteer-build-phases.png"><img src="{{ site.baseurl }}/assets/trusteer-build-phases.png" alt="trusteer-build-phases" width="656" height="290" class="aligncenter size-full wp-image-11889" /></a></p>
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/trusteer-build-phases.png"><img src="{{ site.baseurl }}/assets/backup/trusteer-build-phases.png" alt="trusteer-build-phases" width="656" height="290" class="aligncenter size-full wp-image-11889" /></a></p>
 <p>In <strong>Build Settings > Linking > Other Linker Flags</strong>, add:<code>-force_load "$(SRCROOT)/tas/libtas_full.a"</code>.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/TR_IOS_forceload.png"><img src="{{ site.baseurl }}/assets/TR_IOS_forceload.png" alt="TR_IOS_forceload" width="594" height="132" class="aligncenter size-full wp-image-1348" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/TR_IOS_forceload.png"><img src="{{ site.baseurl }}/assets/backup/TR_IOS_forceload.png" alt="TR_IOS_forceload" width="594" height="132" class="aligncenter size-full wp-image-1348" /></a></p>
 <p>In <strong>Build Settings > Linking > Dead Code Stripping</strong>, select <code>NO</code>.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/TR_IOS_deadcode.png"><img src="{{ site.baseurl }}/assets/TR_IOS_deadcode.png" alt="TR_IOS_deadcode" width="480" height="108" class="aligncenter size-full wp-image-1349" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/TR_IOS_deadcode.png"><img src="{{ site.baseurl }}/assets/backup/TR_IOS_deadcode.png" alt="TR_IOS_deadcode" width="480" height="108" class="aligncenter size-full wp-image-1349" /></a></p>
 <p><strong>Note :</strong> If the iOS project is native, please follow the standard MobileFirst native requirements are described in the MobileFirst documentation as well as the requirements described in the Trusteer documentation. For example, Trusteer requires CoreMotion.framework in addition to MobileFirst's standard requirements.</p>
 <h2>Access Risk Items in JavaScript</h2>
 <p>Optionally, you can access the client-side generated Trusteer data object using the following API:<br />

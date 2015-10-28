@@ -92,21 +92,21 @@ Rules are defined by a <strong>security test</strong> that contains one or more 
 <p>A developer can define the order in which authentication is processed, for example to request authentication in realm2 only after realm1 authentication succeeds.</p>
 <p>The MobileFirst framework provides definitions of default security tests for mobile and web environments, and the ability to create custom security tests.</p>
 <p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config.png"></p>
-<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config.png"><img class="aligncenter wp-image-869 size-full" src="{{ site.baseurl }}/assets/09_01_sample-security-config.png" alt="09_01_sample-security-config" width="819" height="232" /></a></p>
+<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config.png"><img class="aligncenter wp-image-869 size-full" src="{{ site.baseurl }}/assets/backup/09_01_sample-security-config.png" alt="09_01_sample-security-config" width="819" height="232" /></a></p>
 <p>In the example above, a resource - for example, an application or adapter procedure - can be protected by either of two security tests.</p>
 <ul>
 <li>Using <strong>Security test 1</strong> means that the user must authenticate in both <strong>Realm1</strong> and <strong>Realm2</strong>, each one with its own set of rules.</li>
 <li>Using <strong>Security test 2</strong> means that the user must authenticate in <strong>Realm3 only</strong>.<br />
 Each realm defines its own set of <strong>Authenticator</strong> and <strong>Login module</strong>, meaning that each realm has its own rules for collecting credentials and validating them.</li>
 <p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config-reuse.png"></p>
-<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config-reuse.png"><img class="aligncenter wp-image-874 size-full" src="{{ site.baseurl }}/assets/09_01_sample-security-config-reuse.png" alt="09_01_sample-security-config-reuse" width="816" height="228" /></a><br />
+<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config-reuse.png"><img class="aligncenter wp-image-874 size-full" src="{{ site.baseurl }}/assets/backup/09_01_sample-security-config-reuse.png" alt="09_01_sample-security-config-reuse" width="816" height="228" /></a><br />
 Realms, authenticators, and login modules can be reused.<br />
 On the updated configuration above, <strong>Realm2</strong> is reused.<br />
 Protecting a resource with <strong>Security test1</strong> means that the user must authenticate in both <strong>Realm1 and Realm2</strong>.<br />
 Protecting a resource with <strong>Security test2</strong> means the user must authenticate in <strong>Realm2 only</strong>.</p>
 <p>When a request is made to the protected entity, IBM MobileFirst Platform Foundation checks whether the session is already authenticated. If it is not, a process is automatically triggered to verify the user's identity.<br />
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_client-server-flow.png"></p>
-<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_client-server-flow.png"><img class="aligncenter wp-image-878 size-full" src="{{ site.baseurl }}/assets/09_01_client-server-flow.png" alt="09_01_client-server-flow" width="1341" height="691" /></a></p>
+<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_client-server-flow.png"><img class="aligncenter wp-image-878 size-full" src="{{ site.baseurl }}/assets/backup/09_01_client-server-flow.png" alt="09_01_client-server-flow" width="1341" height="691" /></a></p>
 <h3>Challenge handler</h3>
 <p>A challenge handler is a client-side entity that controls the authentication process. It is a piece of code (JavaScript, Objective-C, Java, etc.) that you write in your client-side project to handle a specific challenge. It is used to detect the authentication challenges in the server responses and handle them.</p>
 <p>Create a separate challenge handler instance for each realm that the application must authenticate in.</p>
@@ -117,7 +117,7 @@ Protecting a resource with <strong>Security test2</strong> means the user must a
 <p>Authentication settings are configured in the MobileFirst project in the <code>server\conf\authenticationConfig.xml</code> file.</p>
 <p>You can modify them by using the Authentication Configuration Editor.<br />
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_authentication_config_editor.png"></p>
-<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_authentication_config_editor.png"><img class="aligncenter wp-image-884 size-full" src="{{ site.baseurl }}/assets/09_01_authentication_config_editor.png" alt="09_01_authentication_config_editor" width="960" height="453" /></a></p>
+<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_authentication_config_editor.png"><img class="aligncenter wp-image-884 size-full" src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png" alt="09_01_authentication_config_editor" width="960" height="453" /></a></p>
 <p>Each realm has a name, a <strong>loginModule</strong> specification, a <strong><code>className</code></strong> of an authenticator implementation and optional parameters.</p>
 <p>[code lang="xml"]<br />
 &lt;realms&gt;<br />

@@ -53,7 +53,7 @@ This is required because the main application HTML file loads the MobileFirst cl
 <li>Single HTML file that contains all the application "pages"</li>
 <li>A separate HTML file for each application "page"</li>
 </ol>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_application_types.png"><img src="{{ site.baseurl }}/assets/03_02_application_types.png" alt="03_02_application_types" width="808" height="374" class="aligncenter size-full wp-image-700" /></a></p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_application_types.png"><img src="{{ site.baseurl }}/assets/backup/03_02_application_types.png" alt="03_02_application_types" width="808" height="374" class="aligncenter size-full wp-image-700" /></a></p>
 <p>A single HTML file is the preferred model for simpler applications, where the developer is responsible for showing the "current" page <span class="inline-code">DIV</span> and hiding the rest.</p>
 <p>However, larger applications present a challenge:</p>
 <ul>
@@ -113,7 +113,7 @@ To overcome the defect, consult the changes that need to be made in the .js file
 JavaScript (and CSS, if needed) references from the <strong>MainPage.html</strong> are loaded into the DOM.</p>
 <h2 id="implementPageNavigationHistory">Implementing page navigation with history</h2>
 <p>By using the previously described technique to load an external HTML file, it is possible to implement a navigation interface with history.</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_mutlipage_history.png"><img src="{{ site.baseurl }}/assets/03_02_mutlipage_history.png" alt="03_02_mutlipage_history" width="780" height="170" class="aligncenter size-full wp-image-704" /></a></p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_mutlipage_history.png"><img src="{{ site.baseurl }}/assets/backup/03_02_mutlipage_history.png" alt="03_02_mutlipage_history" width="780" height="170" class="aligncenter size-full wp-image-704" /></a></p>
 <p>The navigation history must be preserved as a stack in a global array object.<br />
 A reference to the currently loaded page must be preserved as well by using a global object variable.<br />
 A reference to the file path is needed for Windows Phone 8.</p>
@@ -121,7 +121,7 @@ A reference to the file path is needed for Windows Phone 8.</p>
 var currentPage = {};<br />
 var path = &quot;&quot;;[/code]</p>
 <h3>Implementing page navigation with history: Step 1</h3>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_navigation_history_1.png"><img src="{{ site.baseurl }}/assets/03_02_navigation_history_1.png" alt="03_02_navigation_history_1" width="500" height="127" class="aligncenter size-full wp-image-705" /></a></p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_navigation_history_1.png"><img src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_1.png" alt="03_02_navigation_history_1" width="500" height="127" class="aligncenter size-full wp-image-705" /></a></p>
 <ol>
 <li>On application launch, <strong>MainPage.html</strong> is loaded from the application code and injected into the <span class="inline-code">#pagePort DIV</span>.
 <p>[code lang="js"]<br />
@@ -148,7 +148,7 @@ currentPage.init = function() {<br />
 <li>When the MainPage.html loading completes, the currentPage.init method is called.</li>
 </ol>
 <h3>Implementing page navigation with history: Step 2</h3>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_navigation_history_2.png"><img src="{{ site.baseurl }}/assets/03_02_navigation_history_2.png" alt="03_02_navigation_history_2" width="500" height="126" class="aligncenter size-full wp-image-706" /></a></p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_navigation_history_2.png"><img src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_2.png" alt="03_02_navigation_history_2" width="500" height="126" class="aligncenter size-full wp-image-706" /></a></p>
 <ol>
 <li><strong>MainPage.html</strong> is pushed into <span class="inline-code">pagesHistory</span> stack.</li>
 <li><strong>Page1.html</strong> is loaded and injected into <span class="inline-code">#pagePort DIV</span>Page1.js is loaded as a part of <strong>Page1.html</strong>.</li>
@@ -163,7 +163,7 @@ currentPage.init = function(){<br />
 <p>When the loading of <strong>Page1.html</strong> completes, a new <span class="inline-code">currentPage.init</span> method is called.</p>
 </li>
 <h3>Implementing page navigation with history: Step 3</h3>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_navigation_history_3.png"><img src="{{ site.baseurl }}/assets/03_02_navigation_history_3.png" alt="03_02_navigation_history_3" width="501" height="128" class="aligncenter size-full wp-image-708" /></a></p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_navigation_history_3.png"><img src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_3.png" alt="03_02_navigation_history_3" width="501" height="128" class="aligncenter size-full wp-image-708" /></a></p>
 <ol>
 <li>The previous HTML file name is popped from the <span class="inline-code">PagesHistory</span> stack (<strong>MainPage.html</strong>).</li>
 <li>It is loaded and injected into <span class="inline-code">#pagePort DIV</span>.
@@ -198,6 +198,6 @@ currentPage.init = function(){<br />
           <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/BuildingMultiPageApplicationProject.zip">Download Studio project</a>
         </li>
 </ul>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_sample_app.png"><img src="{{ site.baseurl }}/assets/03_02_sample_app.png" alt="03_02_sample_app" width="895" height="414" class="aligncenter size-full wp-image-709" /></a></p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_02_sample_app.png"><img src="{{ site.baseurl }}/assets/backup/03_02_sample_app.png" alt="03_02_sample_app" width="895" height="414" class="aligncenter size-full wp-image-709" /></a></p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/BuildingMultiPageApplicationProject.zip">Click to download</a> the Studio project.</p>

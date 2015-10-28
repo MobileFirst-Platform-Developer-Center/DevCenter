@@ -36,8 +36,8 @@ author:
 <p>In this module, you learn how to add an Android environment to your shell component, test application, and inner application.</p>
 <h2>Adding an Android environment to a shell component</h2>
 <p>Start by adding a new Android environment to your shell component by following the same procedure as for a standard MobileFirst application.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_new-environment.png"><img src="{{ site.baseurl }}/assets/10_02_new-environment.png" alt="10_02_new-environment" width="501" height="394" class="aligncenter size-full wp-image-1198" /></a></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_env-structure.png"><img src="{{ site.baseurl }}/assets/10_02_env-structure.png" alt="10_02_env-structure" width="317" height="307" class="alignright size-full wp-image-1199" /></a><br />
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_new-environment.png"><img src="{{ site.baseurl }}/assets/backup/10_02_new-environment.png" alt="10_02_new-environment" width="501" height="394" class="aligncenter size-full wp-image-1198" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_env-structure.png"><img src="{{ site.baseurl }}/assets/backup/10_02_env-structure.png" alt="10_02_env-structure" width="317" height="307" class="alignright size-full wp-image-1199" /></a><br />
 The following folder structure is created:</p>
 <ul>
 <li><strong>css, images, fragments</strong> and <strong>js</strong> contain resources that override or extend resources from the shell component common folder.
@@ -48,7 +48,7 @@ The following folder structure is created:</p>
 </li>
 </ul>
 <p><br clear="all" /></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_native_structure.png"><img src="{{ site.baseurl }}/assets/10_02_native_structure.png" alt="10_02_native_structure" width="295" height="439" class="alignright size-full wp-image-1200" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_native_structure.png"><img src="{{ site.baseurl }}/assets/backup/10_02_native_structure.png" alt="10_02_native_structure" width="295" height="439" class="alignright size-full wp-image-1200" /></a><br />
 The files in the <strong>native</strong> folder are templates that are used to create the inner application Android project.<br />
 Some of the folder and file names contain placeholder elements that are populated during build.<br />
 For example</p>
@@ -61,7 +61,7 @@ For example</p>
 <p>Files with the <strong>.wluser</strong> extensions are template files that shell developers can modify.<br />
 <br clear="all" /></p>
 <h2>Adding custom Java code to a shell component</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_native_structure2.png"><img src="{{ site.baseurl }}/assets/10_02_native_structure2.png" alt="10_02_native_structure2" width="245" height="490" class="alignright size-full wp-image-1201" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_native_structure2.png"><img src="{{ site.baseurl }}/assets/backup/10_02_native_structure2.png" alt="10_02_native_structure2" width="245" height="490" class="alignright size-full wp-image-1201" /></a><br />
 Because the <em>android\native</em> folder of a shell component is not an Android project, Eclipse does not provide advanced features such as auto-complete when you work on it directly.<br />
 The solution is to use the Android environment to create, modify, and debug Java code.<br />
 The generated Android project is added to your workspace.<br />
@@ -91,16 +91,16 @@ public class MyShellTest extends WLDroidGap {<br />
 }<br />
 [/code]</p>
 <p>Run your application to see the implemented functions.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_java_results.png"><img src="{{ site.baseurl }}/assets/10_02_java_results.png" alt="10_02_java_results" width="1354" height="643" class="aligncenter size-full wp-image-1202" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_java_results.png"><img src="{{ site.baseurl }}/assets/backup/10_02_java_results.png" alt="10_02_java_results" width="1354" height="643" class="aligncenter size-full wp-image-1202" /></a></p>
 <p>Finally, copy your Java code from the Android project that you used to develop it back to the shell component.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_java_copy.png"><img src="{{ site.baseurl }}/assets/10_02_java_copy.png" alt="10_02_java_copy" width="1311" height="636" class="aligncenter size-full wp-image-1203" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_java_copy.png"><img src="{{ site.baseurl }}/assets/backup/10_02_java_copy.png" alt="10_02_java_copy" width="1311" height="636" class="aligncenter size-full wp-image-1203" /></a><br />
 The custom Java classes that were added to the Android project can be copied to keep the package structure intact.<br />
 Modifications that are made to the predefined files created by MobileFirst Studio, however, must be copied manually to the corresponding template files. In this specific case, a highlighted line from the <strong>MyShellTest.java</strong> must be copied to <strong>${appName}.java.wltemplate.wluser</strong>.</p>
 <p>The <strong>native</strong> folder of the test application is not being rebuilt from the shell component each time you build the Android application.<br />
 Doing so avoids overwriting the test application native code with the one in the shell component on each build, thus allowing shell developers to debug their code conveniently.<br />
 If you want your native folder to be fully re-created from a shell component, erase it in the test application, and then build and deploy the application.</p>
 <h2>Using the NativeEmptyApp Project</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_NativeEmptyApp-project.png"><img src="{{ site.baseurl }}/assets/10_02_NativeEmptyApp-project.png" alt="10_02_NativeEmptyApp-project" width="190" height="162" class="alignright size-full wp-image-1204" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_NativeEmptyApp-project.png"><img src="{{ site.baseurl }}/assets/backup/10_02_NativeEmptyApp-project.png" alt="10_02_NativeEmptyApp-project" width="190" height="162" class="alignright size-full wp-image-1204" /></a><br />
 <strong>NativeEmptyApp</strong> is a native application project that uses the Shell component, and that has an empty inner application.<br />
 This project can be built as an APK or IPA by a shell developer, and sent to inner application developers to use for debugging their applications.<br />
 After the NativeEmptyApp is installed on the device, an inner application developer can specify the URL of the MobileFirst Server from which to load the inner application.<br />
@@ -109,8 +109,8 @@ For example: to develop and test iPhone application without a Mac.<br />
 To use NativeEmptyApp, import its folder as a generic project in Eclipse.</p>
 <p>The native empty application is automatically recognized as an Android project.<br />
 When the application is built and deployed to an Android device, click Menu and go to Settings to change the URL from which this inner application content is loaded.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_nativeempty_settings.png"><img src="{{ site.baseurl }}/assets/10_02_nativeempty_settings.png" alt="10_02_nativeempty_settings" width="192" height="320" class="alignright size-full wp-image-1206" /></a><br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_nativeempty_app.png"><img src="{{ site.baseurl }}/assets/10_02_nativeempty_app.png" alt="10_02_nativeempty_app" width="192" height="320" class="alignnone size-full wp-image-1205" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_nativeempty_settings.png"><img src="{{ site.baseurl }}/assets/backup/10_02_nativeempty_settings.png" alt="10_02_nativeempty_settings" width="192" height="320" class="alignright size-full wp-image-1206" /></a><br />
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_nativeempty_app.png"><img src="{{ site.baseurl }}/assets/backup/10_02_nativeempty_app.png" alt="10_02_nativeempty_app" width="192" height="320" class="alignnone size-full wp-image-1205" /></a></p>
 <p><strong>Important:</strong><br />
 NativeEmptyApp cannot load a remote inner application that has the device provisioning enabled.<br />
 NativeEmptyApp can be used only in the development environment.</p>

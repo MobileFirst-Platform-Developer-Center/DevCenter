@@ -94,9 +94,9 @@ The user enrollment process relies on a dependent user realm to help it establis
 IBM MobileFirst Platform Foundation then provisions the device with the X.509 client certificate for use in subsequent connections to the server.<br />
 <br />
 The first time a user connects to the MobileFirst server, that user must authenticate through the dependent realm to initiate the enrollment process. After a user is enrolled into the User Certificate Authentication realm, subsequent connections to the server occur through the two way SSL/TLS handshake, where the client certificate is presented as the SSL client entity.<br /></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/UserEnrollFlow.jpg"><img src="{{ site.baseurl }}/assets/UserEnrollFlow.jpg" alt="UserEnrollFlow" width="720" height="560" class="aligncenter size-full wp-image-11609" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/UserEnrollFlow.jpg"><img src="{{ site.baseurl }}/assets/backup/UserEnrollFlow.jpg" alt="UserEnrollFlow" width="720" height="560" class="aligncenter size-full wp-image-11609" /></a></p>
 <p></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/ClientCertAuthFlow.jpg"><img src="{{ site.baseurl }}/assets/ClientCertAuthFlow.jpg" alt="ClientCertAuthFlow" width="720" height="400" class="aligncenter size-full wp-image-11610" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/ClientCertAuthFlow.jpg"><img src="{{ site.baseurl }}/assets/backup/ClientCertAuthFlow.jpg" alt="ClientCertAuthFlow" width="720" height="400" class="aligncenter size-full wp-image-11610" /></a></p>
 <h2 id="certificateAuthorities">X.509 certificate and certificate authorities (CAs)</h2>
 <p>For security reasons, during testing, it is not recommended to use an established CA that uses an embedded PKI in your infrastructure.<br />
 <br />
@@ -464,7 +464,7 @@ The following examples shows the updates made above.<br />
 <p>You must install the root CA that you generated in the previous steps onto your client devices for your devices to trust MobileFirst Server over SSL. Email or host the <code>root_ca.crt</code> file, and then open the file on your device. The iOS and Android devices ask for approval when you manually attempt to install certificates.<br />
 <br />
 <center><br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/iOSX509accept.png"><img src="{{ site.baseurl }}/assets/iOSX509accept-300x287.png" alt="iOSX509accept" width="300" height="287" class="alignnone size-medium wp-image-4242" /></a><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/AndroidX509accept.png"><img src="{{ site.baseurl }}/assets/AndroidX509accept-300x213.png" alt="AndroidX509accept" width="300" height="213" class="alignnone size-medium wp-image-4240" /></a><br />
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/iOSX509accept.png"><img src="{{ site.baseurl }}/assets/backup/iOSX509accept-300x287.png" alt="iOSX509accept" width="300" height="287" class="alignnone size-medium wp-image-4242" /></a><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/AndroidX509accept.png"><img src="{{ site.baseurl }}/assets/backup/AndroidX509accept-300x213.png" alt="AndroidX509accept" width="300" height="213" class="alignnone size-medium wp-image-4240" /></a><br />
 </center><br /></p>
 <h2 id="installApp">Installing and testing the application</h2>
 <ol>

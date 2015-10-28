@@ -41,7 +41,7 @@ author:
 </div>
 <h2 id="overview">Overview</h2>
 <p>Java adapters are based on the JAX-RS specification. In other words, a Java adapter is a JAX-RS service that can easily be deployed to a MobileFirst Server instance and has access to MobileFirst Server APIs.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter.jpg"><img src="{{ site.baseurl }}/assets/java-adapter.jpg" alt="java-adapter" width="960" height="683" class="aligncenter size-full wp-image-7212" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter.jpg"><img src="{{ site.baseurl }}/assets/backup/java-adapter.jpg" alt="java-adapter" width="960" height="683" class="aligncenter size-full wp-image-7212" /></a></p>
 <p>Each Java adapter has its own isolated sandbox, in which all its classes run without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "adapter mashup" possible.</p>
 <p>It is possible to include 3rd-party libraries required by the adapter code in the <code>adapter/lib</code> directory. The libraries that you include in this directory override any libraries that are provided by the application server or included in the <code>server/lib</code> folder.</p>
 <h3>Agenda</h3>
@@ -74,7 +74,7 @@ author:
 <li>Fill the adapter name and package name fields.</li>
 <li>Click <strong>Finish</strong>.</li>
 </ol>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-form.png"><img src="{{ site.baseurl }}/assets/java-adapter-form.png" alt="java-adapter-form" width="527" height="359" class="aligncenter size-full wp-image-7231" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-form.png"><img src="{{ site.baseurl }}/assets/backup/java-adapter-form.png" alt="java-adapter-form" width="527" height="359" class="aligncenter size-full wp-image-7231" /></a></p>
 <h3>By using MobileFirst CLI</h3>
 <ol>
 <li>Open the terminal.</li>
@@ -82,7 +82,7 @@ author:
 <li>Enter <code>mfp add adapter {name} --type java --package {package name}</code></li>
 </ol>
 <h2 id="filestructure">File structure</h2>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-files.png"><img src="{{ site.baseurl }}/assets/java-adapter-files.png" alt="java-adapter-files" width="301" height="225" class="aligncenter size-full wp-image-7226" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-files.png"><img src="{{ site.baseurl }}/assets/backup/java-adapter-files.png" alt="java-adapter-files" width="301" height="225" class="aligncenter size-full wp-image-7226" /></a></p>
 <h3>XML File</h3>
 <p>Java adapters have an XML configuration file such as all the other types of adapters. In this configuration file, configure the class name of the JAX-RS application for this adapter.<br />
 In our case: <code>com.sample.adapter.JavaAdapterApplication</code>.</p>
@@ -179,7 +179,7 @@ PushAPI pushApi = serverApi.getPushAPI();<br />
 <li>Select <strong>Run As > Call MobileFirst Adapter</strong>.
 </li>
 <li>Enter any required parameters and click <strong>Run</strong>.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-call.png"><img src="{{ site.baseurl }}/assets/java-adapter-call.png" alt="java-adapter-call" width="605" height="467" class="aligncenter size-full wp-image-7331" /></a></p>
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-call.png"><img src="{{ site.baseurl }}/assets/backup/java-adapter-call.png" alt="java-adapter-call" width="605" height="467" class="aligncenter size-full wp-image-7331" /></a></p>
 <h3>In the Command Line interface (CLI)</h3>
 <p>Enter <code>$ mfp adapter call</code>, then follow the prompts by using the arrow keys.</p>
 <blockquote><p>For more information, review the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/advanced-client-side-development/using-cli-create-build-manage-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>tutorial.</p></blockquote>
@@ -196,7 +196,7 @@ To receive a Test Token, make an HTTP <code>POST</code> request to <code>http(s)
 [/code]</p>
 <p>In your next requests to your adapter endpoints, add an HTTP header with the name "<code>Authorization</code>" and the value you received previously (starting with <code>Bearer</code>).</p>
 <p>The security framework now skips any security challenges protecting your resource.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-postman.png"><img src="{{ site.baseurl }}/assets/java-adapter-postman.png" alt="java-adapter-postman" width="751" height="497" class="aligncenter size-full wp-image-7339" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-postman.png"><img src="{{ site.baseurl }}/assets/backup/java-adapter-postman.png" alt="java-adapter-postman" width="751" height="497" class="aligncenter size-full wp-image-7339" /></a></p>
 <blockquote><p>See it in action in this video blog entry: <a href="https://developer.ibm.com/mobilefirstplatform/2015/03/24/getting-familiar-ibm-mobilefirst-platform-foundation-java-adapters/" title="Getting familiar with IBM MobileFirst Platform Foundation Java Adapters [Part 1]" target="_blank">Getting familiar with IBM MobileFirst Platform Foundation Java Adapters</a></p></blockquote>
 <h2 id="sample">Sample</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/MobileFirstAdaptersProject.zip">Click to download</a> the Studio project.</p>

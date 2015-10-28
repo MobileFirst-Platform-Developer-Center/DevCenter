@@ -54,7 +54,7 @@ author:
 <li><a href="#backendemul">Back-end emulator</a></li>
 <li><a href="#sampleApplication">Sample application</a></li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_example1.png"><img class="alignright size-medium wp-image-1333" src="{{ site.baseurl }}/assets/08_01_push_example1-200x300.png" alt="08_01_push_example" width="200" height="300" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_example1.png"><img class="alignright size-medium wp-image-1333" src="{{ site.baseurl }}/assets/backup/08_01_push_example1-200x300.png" alt="08_01_push_example" width="200" height="300" /></a></p>
 <h2 id="whatIsPushNotifications">What is push notification?</h2>
 <p>Push notification is the ability of a mobile device to receive messages that are "pushed" from a server.</p>
 <p>Notifications are received regardless of whether the application is currently running.<br />
@@ -88,10 +88,10 @@ An event source is declared in the MobileFirst adapter that is used by the appli
 <p>The end user must approve the push notification subscription.<br />
 After the subscription is approved, the device registers with an Apple, Google, or Microsoft push server to obtain a token that is used to identify the device (“Allow notifications for application X on device Y”), and sends a subscription request to the MobileFirst Server. <em>This operation is performed automatically by the MobileFirst framework.</em></p>
 <h3>Demonstration</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_subscription_1.png"><img class="alignright size-medium wp-image-1336" src="{{ site.baseurl }}/assets/08_01_subscription_1-300x229.png" alt="08_01_subscription_1" width="300" height="229" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_subscription_1.png"><img class="alignright size-medium wp-image-1336" src="{{ site.baseurl }}/assets/backup/08_01_subscription_1-300x229.png" alt="08_01_subscription_1" width="300" height="229" /></a><br />
 When the <code>subscribe</code> method is called, the device registers with a push service mediator and obtains a device token (done automatically by the framework).<br />
 <br clear="all" /></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_subscription_2.png"><img class="alignright size-medium wp-image-1337" src="{{ site.baseurl }}/assets/08_01_subscription_2-300x229.png" alt="08_01_subscription_2" width="300" height="229" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_subscription_2.png"><img class="alignright size-medium wp-image-1337" src="{{ site.baseurl }}/assets/backup/08_01_subscription_2-300x229.png" alt="08_01_subscription_2" width="300" height="229" /></a><br />
 When the token is obtained, the application subscribes to an event source. Both actions are done automatically by a single API method call, as described later.<br />
 <br clear="all" /></p>
 <h2 id="sendingNotifications">Sending notification</h2>
@@ -112,16 +112,16 @@ When the token is obtained, the application subscribes to an event source. Both 
 When a notification is retrieved by the adapter, it is processed and sent through the corresponding push service mediator (Apple, Google, or Microsoft).</p>
 <p>You can add custom logic in the adapter to preprocess notifications. The push service mediator receives the notification and sends it to a device.</p>
 <h3>Demonstration</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_1.png"><img class="alignright wp-image-1341" src="{{ site.baseurl }}/assets/08_01_sending_notification_1-300x165.png" alt="08_01_sending_notification_1" width="400" height="220" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_1.png"><img class="alignright wp-image-1341" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_1-300x165.png" alt="08_01_sending_notification_1" width="400" height="220" /></a><br />
 Notifications are retrieved by the MobileFirst adapter event source, they are either by polled from, or by pushed by, the back-end system.<br />
 <br clear="all" /></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_2.png"><img class="alignright wp-image-1339" src="{{ site.baseurl }}/assets/08_01_sending_notification_2-300x165.png" alt="08_01_sending_notification_2" width="400" height="220" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_2.png"><img class="alignright wp-image-1339" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_2-300x165.png" alt="08_01_sending_notification_2" width="400" height="220" /></a><br />
 The adapter processes the notification and sends it to a push service mediator.<br />
 <br clear="all" /></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_3.png"><img class="alignright wp-image-1338" src="{{ site.baseurl }}/assets/08_01_sending_notification_3-300x164.png" alt="08_01_sending_notification_3" width="400" height="220" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_3.png"><img class="alignright wp-image-1338" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_3-300x164.png" alt="08_01_sending_notification_3" width="400" height="220" /></a><br />
 The push service mediator sends a push notification to the device.<br />
 <br clear="all" /></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_4.png"><img class="alignright wp-image-1340" src="{{ site.baseurl }}/assets/08_01_sending_notification_4-300x178.png" alt="08_01_sending_notification_4" width="400" height="238" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_4.png"><img class="alignright wp-image-1340" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_4-300x178.png" alt="08_01_sending_notification_4" width="400" height="238" /></a><br />
 The device processes the received notification.<br />
 <br clear="all" /></p>
 <h2 id="subscriptionManagement">Subscription management</h2>
@@ -366,9 +366,9 @@ The source for the emulator can be found in the associated sample.</p>
 <p>The back-end emulator tries to connect to a MobileFirst Server and call a <span class="inline-code">submitNotification()</span> adapter procedure.<br />
 It outputs the invocation result to a command prompt console.</p>
 <h4>Success</h4>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_success.png"><img src="{{ site.baseurl }}/assets/08_01_push_success-1024x136.png" alt="08_01_push_success" width="600" class="aligncenter size-large wp-image-1380" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_success.png"><img src="{{ site.baseurl }}/assets/backup/08_01_push_success-1024x136.png" alt="08_01_push_success" width="600" class="aligncenter size-large wp-image-1380" /></a></p>
 <h4>Failure</h4>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_failure.png"><img src="{{ site.baseurl }}/assets/08_01_push_failure-1024x130.png" alt="08_01_push_failure" width="600" class="aligncenter size-large wp-image-1381" /></a></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_sample.png"><img class="aligncenter wp-image-1389 size-full" src="{{ site.baseurl }}/assets/08_01_push_sample.png" alt="08_01_push_sample" width="850" height="500" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_failure.png"><img src="{{ site.baseurl }}/assets/backup/08_01_push_failure-1024x130.png" alt="08_01_push_failure" width="600" class="aligncenter size-large wp-image-1381" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_sample.png"><img class="aligncenter wp-image-1389 size-full" src="{{ site.baseurl }}/assets/backup/08_01_push_sample.png" alt="08_01_push_sample" width="850" height="500" /></a></p>
 <h2 id="sampleApplication">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/PushNotificationsHybridProject.zip">Click to download</a> the Studio project.</p>

@@ -37,7 +37,7 @@ author:
 </ul>
 <h2 id="architecture">Architecture</h2>
 <p>Figure 1-1: Typical IBM MobileFirst Platform Foundation topology<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/hardware_and_sizing_topo_b2c_deploy_enterprise_cluster.jpg"><img src="{{ site.baseurl }}/assets/hardware_and_sizing_topo_b2c_deploy_enterprise_cluster.jpg" alt="hardware_and_sizing_topo_b2c_deploy_enterprise_cluster" width="560" height="420" class="aligncenter size-full wp-image-4129" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/hardware_and_sizing_topo_b2c_deploy_enterprise_cluster.jpg"><img src="{{ site.baseurl }}/assets/backup/hardware_and_sizing_topo_b2c_deploy_enterprise_cluster.jpg" alt="hardware_and_sizing_topo_b2c_deploy_enterprise_cluster" width="560" height="420" class="aligncenter size-full wp-image-4129" /></a></p>
 <p>The IBM MobileFirst Platform Foundation topology is based on the following principles:</p>
 <ul>
 <li>MobileFirst Server is installed in the organization LAN, connecting to various enterprise back-end systems.</li>
@@ -261,7 +261,7 @@ Server logs will have the least impact on the disk space sizing.</p>
 <p>Events are created by triggers and application code and include a snapshot of the device context at the time of their creation. Events are buffered on the client and are transmitted to the server periodically.</p>
 <p>To handle the events, the server uses IBM MobileFirst Platform Foundation adapter application code. This code sets up event handlers on the server, which filter event data and pass matching events to a callback function. The code also accesses the device context of the client, that is to say its location, and WiFi network information. It then sets an application context. Server activities and received events are logged, together with the device and application contexts, for future reporting and analytics.</p>
 <p>Figure 7-1: Location services architecture<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/hardware_and_sizing_location_services_architecture.jpg"><img src="{{ site.baseurl }}/assets/hardware_and_sizing_location_services_architecture.jpg" alt="hardware_and_sizing_location_services_architecture" width="561" height="370" class="aligncenter size-full wp-image-4133" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/hardware_and_sizing_location_services_architecture.jpg"><img src="{{ site.baseurl }}/assets/backup/hardware_and_sizing_location_services_architecture.jpg" alt="hardware_and_sizing_location_services_architecture" width="561" height="370" class="aligncenter size-full wp-image-4133" /></a></p>
 <h3>How Geolocation affects the server performance</h3>
 <h4>Analytics and reports</h4>
 <p>Additional entries go to analytics and reports. Entries are added each time an event handler is run.</p>

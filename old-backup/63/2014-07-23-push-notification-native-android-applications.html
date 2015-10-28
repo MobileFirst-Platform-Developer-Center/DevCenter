@@ -50,7 +50,7 @@ author:
 <li><a href="#sampleApplication">Sample application</a></li>
 </ul>
 <h2 id="settingupnativeandroid">Setting up your native Android application for push notification</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushAdapterExpanded.png"><img src="{{ site.baseurl }}/assets/NativeAndroidPushAdapterExpanded.png" alt="NativeAndroidPushAdapterExpanded" width="248" height="466" class="alignright size-full wp-image-3224" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushAdapterExpanded.png"><img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushAdapterExpanded.png" alt="NativeAndroidPushAdapterExpanded" width="248" height="466" class="alignright size-full wp-image-3224" /></a></p>
 <p>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Android Native API and HTTP adapter.</p>
 <p>The native API includes the following files:</p>
 <ul>
@@ -106,7 +106,7 @@ author:
 </table>
 </li>
 <li>After you copy the libraries, the native Android project appears as shown:
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/Androidjar.png"><img src="{{ site.baseurl }}/assets/Androidjar.png" alt="Androidjar" width="192" height="378" class="alignnone size-full wp-image-1510" /></a></li>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/Androidjar.png"><img src="{{ site.baseurl }}/assets/backup/Androidjar.png" alt="Androidjar" width="192" height="378" class="alignnone size-full wp-image-1510" /></a></li>
 </ul>
 <h3>Edit the wlclient.properties file.</h3>
 <p>Edit the wlclient.properties file in your native Android project and enter appropriate values for the following fields:</p>
@@ -116,7 +116,7 @@ author:
 <li>wlServerContext – Context root of your MobileFirst Server instance.</li>
 <li>GcmSenderId – The project number that you obtained through the Google API console.</li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/wlclient_properties.png"><img src="{{ site.baseurl }}/assets/wlclient_properties.png" alt="wlclient_properties" width="554" height="184" class="alignnone size-full wp-image-1727" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/wlclient_properties.png"><img src="{{ site.baseurl }}/assets/backup/wlclient_properties.png" alt="wlclient_properties" width="554" height="184" class="alignnone size-full wp-image-1727" /></a></p>
 <h3>Modifications to the native Android project</h3>
 <p>Add the following permissions to the AndroidManifest.xml file of your Android project:</p>
 <p>[code lang="xml"]&lt;permission android:name=&quot;com.imf.androidnativepush.permission.C2D_MESSAGE&quot; android:protectionLevel=&quot;signature&quot; /&gt;</p>
@@ -373,11 +373,11 @@ For a full list of message properties, see the user documentation.</p>
 -The <strong>AndroidNativePushProject.zip</strong> file contains a native Android application that uses a MobileFirst native API library to subscribe to push notifications and receive notifications from GCM.<br />
 Make sure to update the wlclient.properties file in AndroidNativePushProject with the relevant server settings.</p>
 <h4>To run the Android application, select <strong>Run As > Android Application</strong>.</h4>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushRun.png"><img src="{{ site.baseurl }}/assets/NativeAndroidPushRun.png" alt="NativeAndroidPushRun" width="1126" height="629" class="alignnone size-full wp-image-3035" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushRun.png"><img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushRun.png" alt="NativeAndroidPushRun" width="1126" height="629" class="alignnone size-full wp-image-3035" /></a></p>
 <h4>In MobileFirst Studio, right-click <strong>Push Adapter</strong> and select <strong>Run As > Invoke MobileFirst Procedure</strong>.</h4>
 <p>Call <code>submitNotification</code> to send a push notification.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSSendnotificationmobilefirst.png"><img src="{{ site.baseurl }}/assets/nativeiOSSendnotificationmobilefirst.png" alt="nativeiOSSendnotificationmobilefirst" width="596" height="389" class="alignnone size-full wp-image-3961" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSSendnotificationmobilefirst.png"><img src="{{ site.baseurl }}/assets/backup/nativeiOSSendnotificationmobilefirst.png" alt="nativeiOSSendnotificationmobilefirst" width="596" height="389" class="alignnone size-full wp-image-3961" /></a></p>
 <p><em>Push notification received - application in background</em><br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushNotificationReceivedAppBackground.png"><img src="{{ site.baseurl }}/assets/NativeAndroidPushNotificationReceivedAppBackground.png" alt="NativeAndroidPushNotificationReceivedAppBackground" width="373" height="30" class="alignnone size-full wp-image-2978" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushNotificationReceivedAppBackground.png"><img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushNotificationReceivedAppBackground.png" alt="NativeAndroidPushNotificationReceivedAppBackground" width="373" height="30" class="alignnone size-full wp-image-2978" /></a></p>
 <p><em>Push notification received - application in foreground</em></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushReceivedNotification.png"><img src="{{ site.baseurl }}/assets/NativeAndroidPushReceivedNotification.png" alt="NativeAndroidPushReceivedNotification" width="373" height="631" class="alignnone size-full wp-image-2980" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushReceivedNotification.png"><img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushReceivedNotification.png" alt="NativeAndroidPushReceivedNotification" width="373" height="631" class="alignnone size-full wp-image-2980" /></a></p>

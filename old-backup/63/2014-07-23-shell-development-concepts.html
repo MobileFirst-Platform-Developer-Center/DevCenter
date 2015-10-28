@@ -58,15 +58,15 @@ Make sure that you have a solid understanding of MobileFirst development princip
 </li>
 </ul>
 <h3>Shell Component</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_shell_component_mock.png"><img class="aligncenter wp-image-1185 size-full" src="{{ site.baseurl }}/assets/10_01_shell_component_mock.png" alt="10_01_shell_component_mock" width="537" height="731" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_shell_component_mock.png"><img class="aligncenter wp-image-1185 size-full" src="{{ site.baseurl }}/assets/backup/10_01_shell_component_mock.png" alt="10_01_shell_component_mock" width="537" height="731" /></a><br />
 A Shell component is a component to be used by inner applications as a code base wrapper. It usually consists of native classes and shell-specific web resources that are going to be used in inner applications. The shell component is implemented by shell developers and sent to inner application developers to use.</p>
 <h3>Inner Application</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_inner_app_mock.png"><img class="aligncenter wp-image-1186 size-full" src="{{ site.baseurl }}/assets/10_01_inner_app_mock.png" alt="10_01_inner_app_mock" width="502" height="723" /></a><br />
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_inner_app_mock.png"><img class="aligncenter wp-image-1186 size-full" src="{{ site.baseurl }}/assets/backup/10_01_inner_app_mock.png" alt="10_01_inner_app_mock" width="502" height="723" /></a><br />
 A Inner application is a set of web resources (HTML / JavaScript / CSS) that are run inside the shell component.</p>
 <h3>Test Application</h3>
 <p>The shell component is not executable by itself. After it is created, an inner application is automatically added to the project by MobileFirst Studio. This application is used by the shell developer to test the shell component functionality.</p>
 <h2 id="creatingAShellComponenet">Creating a shell component</h2>
-<p><img class="alignright wp-image-1187 size-full" src="{{ site.baseurl }}/assets/10_01_shell_component_project.png" alt="10_01_shell_component_project" width="424" height="717" /></p>
+<p><img class="alignright wp-image-1187 size-full" src="{{ site.baseurl }}/assets/backup/10_01_shell_component_project.png" alt="10_01_shell_component_project" width="424" height="717" /></p>
 <p>A shell component is a building block that is used to create inner applications.<br />
 Add a shell component to your project and name it <strong>MyShell</strong>.<br />
 Note that the <strong>MyShellTest</strong> application was automatically created for you; this application is a test application as described in the Concepts section. You can use it to test and debug the shell component.</p>
@@ -82,7 +82,7 @@ Note that the <strong>MyShellTest</strong> application was automatically created
 <p>The <strong>shell-descriptor.xml</strong> file contains shell component metadata and application-specific properties.<br />
 Application-specific properties that are set in the shell descriptor are used in all inner applications.<br />
 <strong>shell-descriptor.xml</strong> can be edited in either Design or Source mode.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_descriptor-design.png"><img class="aligncenter wp-image-1188 size-full" src="{{ site.baseurl }}/assets/10_01_descriptor-design.png" alt="10_01_descriptor-design" width="850" height="248" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_descriptor-design.png"><img class="aligncenter wp-image-1188 size-full" src="{{ site.baseurl }}/assets/backup/10_01_descriptor-design.png" alt="10_01_descriptor-design" width="850" height="248" /></a></p>
 <p>[code lang="xml"]<br />
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;<br />
 &lt;!-- Licensed Materials - Property of IBM<br />
@@ -121,16 +121,16 @@ function wlCommonInit(){<br />
 Build and deploy the <strong>MyShellTest</strong> application.<br />
 When your application is built and deployed, you find it in MobileFirst Console as a regular hybrid application.<br />
 Preview your <strong>MyShellTest</strong> application. Note that it contains web resources from both the shell component and the inner application.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_preview.png"><img class="aligncenter wp-image-1192 size-full" src="{{ site.baseurl }}/assets/10_01_preview.png" alt="10_01_preview" width="563" height="476" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_preview.png"><img class="aligncenter wp-image-1192 size-full" src="{{ site.baseurl }}/assets/backup/10_01_preview.png" alt="10_01_preview" width="563" height="476" /></a></p>
 <h2 id="creatingAndUsingAShellBundle">Creating and using a shell bundle in an inner application</h2>
 <p>When the shell developer builds a shell component a <strong>.wlshell</strong> file is created in the project <span class="inline-code">bin\</span> folder. This file is called a shell bundle and can be sent to inner application developers to use.<br />
 A shell developer who works with a test application is not required to explicitly create a shell bundle. The test application references the shell component source code directly from the location that is specified in its <span class="inline-code">application-descriptor.xml</span> file.<br />
 However, when the shell developer wants to send the shell component to the inner application developer it becomes necessary to create a shell bundle.</p>
-<p><img class="alignright wp-image-1193 size-full" src="{{ site.baseurl }}/assets/10_01_bundle-project.png" alt="10_01_bundle-project" width="180" height="56" />To create a shell bundle, right-click a shell component folder and select <strong>Run As &gt; Build Shell Component</strong>.<br />
+<p><img class="alignright wp-image-1193 size-full" src="{{ site.baseurl }}/assets/backup/10_01_bundle-project.png" alt="10_01_bundle-project" width="180" height="56" />To create a shell bundle, right-click a shell component folder and select <strong>Run As &gt; Build Shell Component</strong>.<br />
 The <strong>.wlshell</strong> file is created in the <span class="inline-code">bin\</span> folder of your project, as described previously.<br />
 The shell developer can send this file to inner application developers.</p>
 <p>The inner application developer must copy the shell bundle file to a MobileFirst project.<br />
 When inner application developers create a new inner application, they must specify the location of a shell bundle file.<br />
 If a new shell bundle file is received from shell component developers, inner application developers must replace the existing shell bundle file and rebuild their applications.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_bundle-flow.png"><img class="aligncenter wp-image-1194 size-full" src="{{ site.baseurl }}/assets/10_01_bundle-flow.png" alt="10_01_bundle-flow" width="341" height="686" /></a></p>
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_bundle-flow.png"><img class="aligncenter wp-image-1194 size-full" src="{{ site.baseurl }}/assets/backup/10_01_bundle-flow.png" alt="10_01_bundle-flow" width="341" height="686" /></a></p>
 <h2 id="environmentSpecific" class="noPrint">Environment Specific</h2>
