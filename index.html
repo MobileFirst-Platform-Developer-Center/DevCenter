@@ -92,20 +92,10 @@ custom_css:
 
 <div class="container">
     <div id="blogPosts">
-    <h3 class="blogPostsHeading">Recent Updates</h3>
-        <p class="postDate">August 19, 2015</p>
-        <p class="postTitle"><a href="#">Come chat with us!</a></p>
-
-        <p class="postDate">October 20, 2015</p>
-        <p class="postTitle"><a href="#">Hybrid Wallet lab series for MFP 7.1 has been released!</a></p>
-
-        <p class="postDate">October 13, 2015</p>
-        <p class="postTitle"><a href="#">JS errors in MFP Windows Universal apps when using AngularJS</a></p>
-
-        <p class="postDate">October 13, 2015</p>
-        <p class="postTitle"><a href="#">MQA plays nicely with Cordova</a></p>
-
-        <p class="postDate">October 13, 2015</p>
-        <p class="postTitle"><a href="#">Best Practice - Capturing Client Logs and Analytics</a></p>
+      <h3 class="blogPostsHeading">Recent Updates</h3>
+      {% for post in site.posts limit:5 %}
+        <p class="postDate">{{post.date}}</p>
+        <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+      {% endfor %}
     </div>
 </div>
