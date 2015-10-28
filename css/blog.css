@@ -5,3 +5,7 @@ h1, h4 {
 .page-header {
     margin-top: 0;
 }
+
+.label {
+    margin-right: 5px;
+}
