@@ -1,0 +1,189 @@
+---
+layout: doc_page
+title: JMS adapter - Communicating with JMS
+date: 2014-07-23 05:55:11.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/server-side-development/">Server-side development</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-6-3/">Native iOS</a>
+      </li>
+<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-6-3/">Native Android</a>
+      </li>
+<li class="wp8"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-WP8-development-6-3/">Native Windows Phone 8</a>
+      </li>
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a>
+      </li>
+</ul></div>
+<ul>
+<li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MobileFirstAdaptersProject.zip">Download Studio project</a>
+    </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>Java Message Service (JMS) is the standard messaging Java API.<br />
+With a JMS adapter, you can read and write messages from any messaging provider that supports the API.</p>
+<h2>Creating the adapter</h2>
+<p>In MobileFirst Platform Foundation Studio, create an adapter and select the <strong>JMS Adapter</strong> type. A standard JMS Adapter structure is created.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_05_new-adapter.png"><img src="{{ site.baseurl }}/assets/backup/04_05_new-adapter.png" alt="04_05_new-adapter" width="524" height="395" class="aligncenter size-full wp-image-3345" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_05-jms-fle-structure.png"><img src="{{ site.baseurl }}/assets/backup/04_05-jms-fle-structure.png" alt="04_05-jms-fle-structure" width="191" height="125" class="alignright size-full wp-image-3346" /></a><br />
+Public procedures are declared in the XML file while implemented in the JavaScript file. The procedure name in the JavaScript file must match the one declared in the XML file.<br />
+<br clear="all" /></p>
+<h3>Procedure implementation</h3>
+<p>Procedures are implemented in the adapter JavaScript file.<br />
+Procedure names in the JavaScript file must be the same as in the adapter XML file.</p>
+<h4>XML file</h4>
+<p>[code lang="xml" highlight="2"]<br />
+...<br />
+&lt;procedure name=&quot;writeMessage&quot;/&gt;<br />
+&lt;procedure name=&quot;readMessage&quot;/&gt;<br />
+&lt;procedure name=&quot;readAllMessages&quot;/&gt;<br />
+[/code]</p>
+<h4>JS file</h4>
+<p>[code lang="js" highlight="2"]<br />
+...<br />
+function writeMessage(messagebody) {<br />
+   ...<br />
+   ...<br />
+}<br />
+[/code]</p>
+<p>The <code>destination</code> parameter is the target for messages that are produced by the client, and the source for the messages that are used by the client.<br />
+[code lang="js" highlight="4"]<br />
+function writeMessage(messagebody) {</p>
+<p>	var inputData = {<br />
+			destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
+			message:{<br />
+				body: messagebody,<br />
+				properties:{<br />
+					MY_USER_PROPERTY:123456<br />
+				}<br />
+			}<br />
+		};</p>
+<p>	return WL.Server.writeJMSMessage(inputData);<br />
+}<br />
+[/code]</p>
+<h2>Connection properties</h2>
+<p>Connection properties are configured in the adapter XML file.</p>
+<ul>
+<li><code>namingConnection</code> – necessary only if you are using an external JNDI (Java™ Naming and Directory Interface) repository
+<ul>
+<li><code>url</code> - the URL to the JNDI repository</li>
+<li><code>initialContextFactory</code> - the <code>classname</code> for the factory that is used for the configuration of JNDI properties</li>
+<li><code>user, password</code> - the credentials as set up by the JNDI administrator</li>
+</ul>
+</li>
+<li><code>jmsConnection</code>
+<ul>
+<li><code>connectionFactory</code> - the <code>classname</code> for the JMS connection factory that contains JMS configuration properties</li>
+<li><code>user, password</code> - the credentials as set up by the JNDI administrator</li>
+</ul>
+</li>
+</ul>
+<p>[code lang="xml" highlight="7,8,9,10,11,12,13,14,15,16,17,18"]<br />
+&lt;wl:adapter name=&quot;JMSAdapter&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:wl=&quot;http://www.ibm.com/mfp/integration&quot; xmlns:jms=&quot;http://www.ibm.com/mfp/integration/jms&quot;&gt;</p>
+<p>  &lt;displayName&gt;JMSAdapter&lt;/displayName&gt;<br />
+  &lt;description&gt;JMSAdapter&lt;/description&gt;<br />
+  &lt;connectivity&gt;<br />
+    &lt;connectionPolicy xsi:type=&quot;jms:JMSConnectionPolicyType&quot;&gt;<br />
+      &lt;namingConnection<br />
+        url=&quot;tcp://9.148.225.169:61616&quot;<br />
+        initialContextFactory=&quot;org.apache.activemq.jndi.ActiveMQInitialContextFactory&quot;<br />
+        user=&quot;admin&quot;<br />
+        password=&quot;admin&quot;<br />
+        /&gt;</p>
+<p>      &lt;jmsConnection<br />
+        connectionFactory=&quot;ConnectionFactory&quot;<br />
+        user=&quot;admin&quot;<br />
+        password=&quot;admin&quot;<br />
+        /&gt;<br />
+    &lt;/connectionPolicy&gt;<br />
+  &lt;/connectivity&gt;</p>
+<p>  &lt;procedure name=&quot;writeMessage&quot; /&gt;<br />
+  &lt;procedure name=&quot;readMessage&quot; /&gt;<br />
+  &lt;procedure name=&quot;readAllMessages&quot; /&gt;<br />
+&lt;/wl:adapter&gt;<br />
+[/code]</p>
+<p>Copy the relevant external libraries to the project for it to use JMS classes.<br />
+If you use <strong>Apache ActiveMQ</strong>, copy the <strong>activemq-all-activemq_version_number.jar</strong> file to the <strong>server\lib</strong> directory.</p>
+<h2>JMS API</h2>
+<ul>
+<li><code>WL.Server.readSingleJMSMessage</code> - Reads a single message from the given destination</li>
+<li><code>WL.Server.readAllJMSMessages</code> - Reads all messages from the given destination</li>
+<li><code>WL.Server.writeJMSMessage</code> - Writes a single JMSText message to the given destination</li>
+<li><code>WL.Server.requestReplyJMSMessage</code> - Writes a single JMSText message to the given destination and waits for the response</li>
+</ul>
+<h3>readMessage</h3>
+<p>This method gets the next message from the destination.<br />
+It waits for timeout in milliseconds and returns a JMS message that contains the <code>body</code> and all available properties.</p>
+<p>[code lang="js"]<br />
+function readMessage() {<br />
+    var result = WL.Server.readSingleJMSMessage({<br />
+    	destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
+    	timeout: 60<br />
+    });</p>
+<p>    return result;<br />
+}<br />
+[/code]</p>
+<p>Result:<br />
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/jms_readmessage_result.png"><img src="{{ site.baseurl }}/assets/backup/jms_readmessage_result-300x169.png" alt="jms_readmessage_result" width="300" height="169" class="aligncenter size-medium wp-image-4539" /></a></p>
+<h3>readAllJMSMessages</h3>
+<p>This method takes the same parameters as the <code>readSingleJMSMessage</code> method.<br />
+It returns a list of JMS messages in the same format as the <code>readSingleJMSMessage</code> method. The result is contained in a “messages” object.</p>
+<p>To use this method, use an external server, <strong>not</strong> the one that MobileFirst Studio is using.</p>
+<p>Result:<br />
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/jms_readalljmsmessages_result.png"><img src="{{ site.baseurl }}/assets/backup/jms_readalljmsmessages_result-300x154.png" alt="jms_readalljmsmessages_result" width="300" height="154" class="aligncenter size-medium wp-image-4540" /></a></p>
+<h3>writeMessage</h3>
+<p>This method writes a JMSText message to the destination. It features user properties that can be set.<br />
+It returns the <code>JMSMessageID</code> of the sent message.</p>
+<p>[code lang="javascript"]<br />
+function writeMessage(messagebody) {</p>
+<p>  var inputData = {<br />
+    destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
+    message:{<br />
+      body: messagebody,<br />
+      properties:{<br />
+        MY_USER_PROPERTY:123456<br />
+      }<br />
+    }<br />
+  };</p>
+<p>  return WL.Server.writeJMSMessage(inputData);<br />
+}<br />
+[/code]</p>
+<p>Result:<br />
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/jms_writemessage_result.png"><img src="{{ site.baseurl }}/assets/backup/jms_writemessage_result-300x36.png" alt="jms_writemessage_result" width="300" height="36" class="aligncenter size-medium wp-image-4541" /></a></p>
+<h3>requestReplyJMSMessage</h3>
+<p>This method:</p>
+<ul>
+<li>Accepts the same parameters as the <code>writeJMSMessage</code> method.</li>
+<li>Writes a JMSText message to the destination.</li>
+<li>Waits for a response on a dynamic destination.</li>
+<li>Is designed for services that use the <code>replyTo</code> destination from the originating message.</li>
+<li>Returns a JMS message in the same format as the <code>readSingleJMSMessage</code> method.</li>
+</ul>
+<h2>Configurations for working with an external JMS provider</h2>
+<p>By using IBM MobileFirst Platform, you can configure access to several JMS providers. Configurations might vary depending on the selected provider.</p>
+<p>When you work with an external JMS provider, check its documentation to learn how to implement it.<br />
+Usually, such implementation requires that you copy JAR files to the <strong>server\lib</strong> directory of your MobileFirst project. Validate what the URL and port are.</p>
+<h2>Sample application</h2>
+<p>By using the attached sample, you can send and read messages to a JMS queue called <code>MobileFirst</code>. To run the sample, you need an external JMS library.</p>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MobileFirstAdaptersProject.zip">Click to download</a> the Studio project.</p>

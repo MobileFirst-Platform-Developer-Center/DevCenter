@@ -1,0 +1,205 @@
+---
+layout: doc_page
+title: Using Direct Update to quickly update your application
+date: 2014-07-23 06:08:30.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '9037'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/advanced-client-side-development/">Advanced client-side development</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomDirectUpdateProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>About Direct Update</h2>
+<p>With Direct Update, hybrid applications (for the Android, iOS and Windows Phone 8 environments)s can be updated "over-the-air" with updated/refreshed versions of the web resources.</p>
+<p>The topics covered, are:</p>
+<ul>
+<li><a href="#advantagesAndRestrictions">advantages and restrictions of using Direct Update</a></li>
+<li><a href="#underTheHood">Under the hood</a></li>
+<li><a href="#internalFunction">Internal function - how Direct Update works</a></li>
+<li><a href="#userExprience">User Experience</a></li>
+<li><a href="#distribution">Distribution - working with Direct Update in the field</a></li>
+<li><a href="#disablingApps">Disabling old application versions</a></li>
+<li><a href="#directUpdateAuthenticity">Direct Update authenticity</a></li>
+<li><a href="#sampleApplication">Sample application</a></li>
+</ul>
+<h2 id="advantagesAndRestrictions">Advantages</h2>
+<ul>
+<li>Using Direct Update, organizations can ensure that users always use the latest version of the application</li>
+<li>Better control of application versions, by notifying users of pending updates or preventing the use of obsolete versions</li>
+<li>Updates that are deployed to the MobileFirst Server are automatically pushed to user devices</li>
+<li>Possible to push an update silently without user interaction (requires creating a custom Direct Update -- see below)</li>
+</ul>
+<h2>Restrictions</h2>
+<ul>
+<li>The update is for the app web resources only</li>
+<li>To update native resources, a new app version must be uploaded to the respective app store</li>
+<li>Android: no restrictions</li>
+<li>Windows Phone 8: no restrictions</li>
+<li>iOS:
+<ul>
+<li>B2C: according to the terms of service of your company; usually at least bug fixes are allowed</li>
+<li>B2E: through the iOS Developer Enterprise Program</li>
+</ul>
+</li>
+</ul>
+<h2 id="underTheHood">Under the hood</h2>
+<p>Direct Update is based on the MobileFirst Authentication Framework. It comes with pre-defined authentication realm and challenge handler, and can be adjusted in <span class="inline-code">authenticationConfig.xml</span> to the following modes:</p>
+<ul>
+<li>perSession</li>
+<li>perRequest</li>
+<li>disabled</li>
+</ul>
+<p>The UI &amp; UX of the Direct Update process can be fully customized by using simple interfaces.</p>
+<h3>Server-side customization</h3>
+<p>By default, the <span class="inline-code">mobileSecurityTest</span> has Direct Update enabled in <span class="inline-code">perSession</span> mode:</p>
+<p>[code lang="xml"]&lt;mobileSecurityTest name=&quot;mobileTests&quot;&gt;<br />
+    &lt;testAppAuthenticity/&gt;<br />
+    &lt;testDeviceId provisioningType=&quot;none&quot; /&gt;<br />
+    &lt;testUser realm=&quot;myMobileLoginForm&quot; /&gt;<br />
+    &lt;testDirectUpdate mode=&quot;perSession&quot; /&gt;<br />
+&lt;/mobileSecurityTest&gt;[/code]</p>
+<p><br clear="all" /><br />
+To Disable Direct Update, change its mode to disabled, and similarly to override it to other modes.<br />
+[code lang="xml"]&lt;testDirectUpdate mode=“disabled&quot; /&gt;[/code]</p>
+<p><br clear="all" /><br />
+By default, the <span class="inline-code">customSecurityTest</span> does not have any realms.<br />
+To add a Direct Update realm to a custom security test, add a <span class="inline-code">test</span> element with the realm name <span class="inline-code">wl_directUpdateRealm</span> and define the required mode property:</p>
+<p>[code lang="xml"]&lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
+    &lt;test realm=&quot;wl_directUpdateRealm&quot; mode=&quot;perRequest&quot;/&gt;<br />
+&lt;/customSecurityTest&gt;[/code]</p>
+<p>For more information, review the “Direct Update as a security realm” user documentation topic.</p>
+<h2 id="internalFunction">Internal function</h2>
+<p>The application's Web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on available configuration (Per session or per request as explained above).</p>
+<p>The updated web resources are downloaded when necessary.<br />
+After a Direct Update, the application will no longer use pre-packaged resources but those resources in the application's sandbox.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_du_interal_function.png"><img src="{{ site.baseurl }}/assets/backup/05_05_du_interal_function.png" alt="05_05_du_interal_function" width="810" height="696" class="aligncenter size-full wp-image-1587" /></a></p>
+<h2 id="userExprience">User experience</h2>
+<h3>Default behavior</h3>
+<p>By default, once a Direct Update is received a pop-up dialog is displayed and the user is asked whether to begin the update process.<br />
+Once the user approves, a progress bar dialog is displayed and web resources are downloaded. The application is automatically reloaded once the update is complete.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_du_examples.png"><img src="{{ site.baseurl }}/assets/backup/05_05_du_examples.png" alt="05_05_du_examples" width="540" height="1185" class="aligncenter size-full wp-image-2365" /></a></p>
+<p><br clear="all" /></p>
+<h3>Differential direct update</h3>
+<p>With this feature it is no longer necessary for the client application to download the entire web resources on every update. Instead, only the resources that were changed will be downloaded and updated. This reduces download time, conserves bandwidth and improves overall user experience.</p>
+<p>It is important to note that a differential update is only possible if the client application's web resources are one version behind the currently deployed application on the server. Client applications that are more than one version behind the current deployed application (the application was deployed to the server at least twice since the client application was updated), will receive a full update, meaning the entire web resources will be downloaded and updated.</p>
+<p>There is no change in the behaviour of applications built with previous versions of IBM MobileFirst Platform Foundation.</p>
+<h3>Customizing the UI</h3>
+<p>It is possible to override the default UI and/or UX and create a custom Direct Update behavior altogether.</p>
+<p>To do so, override the <span class="inline-code">handleDirectUpdate</span> function:<br />
+[code lang="js"]wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {<br />
+    // custom Direct Update logic<br />
+};[/code]</p>
+<p><br clear="all" /><br />
+<span class="inline-code">directUpdateData</span> - A JSON object containing the&nbsp;<span class="inline-code">downloadSize</span>&nbsp;property that represents the files size in bytes of the&nbsp;update&nbsp;package to be downloaded from the MobileFirst Server.</p>
+<p><span class="inline-code">directUpdateContext</span> - A JavaScript object exposing&nbsp;<span class="inline-code">.start()</span>&nbsp;and&nbsp;<span class="inline-code">.stop()</span>&nbsp;functions that start and stop the&nbsp;Direct&nbsp;Update&nbsp;flow.</p>
+<h4>Example</h4>
+<p>In the example code below a custom Direct Update dialog is presented to user, allowing to either continue with the update process or dismiss it.<br />
+A customized new Direct Update UI can be, for example, either:</p>
+<ul>
+<li>A WL.SimpleDialog</li>
+<li>A dialog that is created by using a third-party JavaScript framework (such as Dojo or jQuery Mobile)</li>
+<li>Fully native UI by executing a Cordova plug-in</li>
+<li>An alternate HTML file that is presented to the user with options</li>
+<li>And so on…</li>
+</ul>
+<p>[code lang="js"]wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData,<br />
+directUpdateContext) {<br />
+    // custom WL.SimpleDialog for Direct Update<br />
+    var customDialogTitle = 'Custom Title Text';<br />
+    var customDialogMessage = 'Custom Message Text';<br />
+    var customButtonText1 = 'Update Application';<br />
+    var customButtonText2 = 'Not Now';</p>
+<p>    WL.SimpleDialog.show(customDialogTitle, customDialogMessage,<br />
+        [{<br />
+            text : customButtonText1,<br />
+            handler : function() {<br />
+                directUpdateContext.start();<br />
+            }<br />
+        },<br />
+        {<br />
+            text : customButtonText2,<br />
+            handler : function() {<br />
+                wl_directUpdateChallengeHandler.submitFailure();<br />
+            }<br />
+        }]<br />
+    );<br />
+};[/code]</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_custom_dialog.png"><img src="{{ site.baseurl }}/assets/backup/05_05_custom_dialog.png" alt="05_05_custom_dialog" width="847" height="462" class="aligncenter size-full wp-image-1595" /></a></p>
+<p>In the example code above, <span class="inline-code">submitFailure</span> was used to dismiss the Direct Update:<br />
+[code lang="js"]wl_directUpdateChallengeHandler.submitFailure();[/code]</p>
+<p>As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer.</p>
+<p>As such, it is important to call <span class="inline-code">submitFailure()</span> to notify the MobileFirst framework that the process completed with a “failure”. The MobileFirst framework in turn invokes the <span class="inline-code">onFailure</span> callback of the invocation that triggered the Direct Update. &nbsp;</p>
+<p>Because the update process did not take place, it will occur again the next time it is triggered.</p>
+<p>Optionally, a developer can also supply a Direct Update listener to fully control a Direct Update’s lifecycle. For more information, see the “Customizing the direct update interface” user documentation topic.<br />
+[code lang="js"]directUpdateContext.start(directUpdateCustomListener);[/code]</p>
+<h2 id="distribution">Distribution</h2>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_distribution.png"><img src="{{ site.baseurl }}/assets/backup/05_05_distribution.png" alt="05_05_distribution" width="826" height="289" class="aligncenter size-full wp-image-1596" /></a></p>
+<p>(*) During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.</p>
+<h2 id="disablingApps">Disabling old application versions</h2>
+<p>From the MobileFirst Console, it is possible to prevent users from using obsolete versions and to notify users about available updates.</p>
+<p>Clarification: The Remote Disable feature only prevents users from interacting with the MobileFirst Server; that is, it prevents the app from connecting to the server. The application itself is still accessible. Any action in the application that requires server connectivity is blocked.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_disable_older_versions.png"><img src="{{ site.baseurl }}/assets/backup/05_05_disable_older_versions.png" alt="05_05_disable_older_versions" width="725" height="537" class="aligncenter size-full wp-image-1597" /></a></p>
+<h2 id="directUpdateAuthenticity">Direct Update authenticity</h2>
+<p>Enabling Direct Update authenticity prevents altering the transmitted web resources from the server to the client application by a 3rd party attacker (i.e., when it is cached in a CDN).</p>
+<p>To enable Direct Update authenticity:</p>
+<ol>
+<li>Generate a certificate and place it in the MobileFirst project under the <span class="inline-code">server\conf folder</span></li>
+<li>Edit the MobileFirst Default Certificate section in <span class="inline-code">server\conf\worklight.properties</span> with the certificate’s keystore information, for example:[code lang="xml"]<br />
+wl.ca.keystore.path=conf/myCert.jks<br />
+wl.ca.keystore.type=jks<br />
+wl.ca.keystore.password=myStrongPassword<br />
+wl.ca.key.alias=certAlias<br />
+wl.ca.key.alias.password=myCertPassword[/code]</li>
+<li>Add the certificate’s public key using the Application Descriptor Editor view. To do so:
+<ul>
+<li>Right-click on the application folder and select Extract Public Signing Key</li>
+<li>Follow the on-screen instructions:</li>
+</ul>
+</li>
+<p> <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_du_authenticity_setup.png"><img src="{{ site.baseurl }}/assets/backup/05_05_du_authenticity_setup.png" alt="05_05_du_authenticity_setup" width="846" height="565" class="aligncenter size-full wp-image-1598" /></a></p>
+<p>You can find the public key on the Design view of the Application Descriptor Editor.</p>
+<p> <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_public_signing_key1.png"><img src="{{ site.baseurl }}/assets/backup/05_05_public_signing_key1-1024x477.png" alt="05_05_public_signing_key" width="980" height="456" class="aligncenter size-large wp-image-1600" /></a></p>
+<p>You can also find the public key in the Source view of the Application Descriptor Editor.</p>
+<p>[code lang="xml"]&lt;application&gt;<br />
+   …<br />
+   …<br />
+   …<br />
+   &lt;directUpdateAuthenticityPublicKey&gt;<br />
+      public keystore value<br />
+   &lt;/directUpdateAuthenticityPublicKey&gt;<br />
+&lt;/application&gt;[/code]
+</ol>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>It is highly suggested to enable Secure Direct Update.</li>
+<li>Secure Direct Update will not work on already-deployed applications.</li>
+<li>Secure Direct Update works on applications published with the above configuration</li>
+</ul>
+<blockquote><p>For more information, review the "Configuring and customizing direct update" user documentation topic.</p></blockquote>
+<h2 id="sampleApplication">Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomDirectUpdateProject.zip">Click to download</a> the Studio project.</p>

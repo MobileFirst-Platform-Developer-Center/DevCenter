@@ -1,0 +1,142 @@
+---
+layout: doc_page
+title: Two-way SMS communication
+date: 2014-07-23 06:22:22.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/notifications">Notifications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630SMS2WayProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>Two-way SMS communication enables communication between mobile phones and the IBM® MobileFirst® Server over an SMS channel. Mobile-originated SMS messages can be sent to the MobileFirst Server via the SMS gateway and the MobileFirst Server can send a response back.<br />
+Short codes or keywords are configured with an SMS gateway from an independent software vendor. The gateway must be configured to forward the requests to MobileFirst Server or to a reverse proxy URL, depending on the topology in your environment.<br />
+The SMS messages that are sent from mobile devices are forwarded to an adapter procedure on the MobileFirst Server side, as configured by the developer.<br />
+The adapter procedure includes the logic to process the request, or the procedure can forward the request to a back end for processing. The response is sent back through the MobileFirst notification framework.</p>
+<p>Topics covered, are:</p>
+<ul>
+<li><a href="#deviceSupport">Device support</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#api">API for two-way SMS</a></li>
+<li><a href="#setup">Setup</a></li>
+</ul>
+<h2 id="deviceSupport">Device support</h2>
+<p>IBM® MobileFirst Platform Foundation® supports two-way SMS communication on any mobile devices that support SMS functions.</p>
+<h2 id="architecture">Architecture</h2>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/SMS2WayArchitecture.jpg"><img src="{{ site.baseurl }}/assets/backup/SMS2WayArchitecture.jpg" alt="SMS2WayArchitecture" width="933" height="452" class="alignnone size-full wp-image-4171" /></a></p>
+<p>An adapter registers SMS event handlers on the MobileFirst Server. The event handler registration specifies what<br />
+adapter procedure callback is called.</p>
+<p>SMS messages are sent from mobile devices to the SMS gateway, which is configured with a MobileFirst project. The gateway details are specified in SMSConfig.xml, in the MobileFirst project.</p>
+<p>The SMS gateway forwards SMS messages to the configured MobileFirst URL. Configure the SMS gateway with the keyword and the MobileFirst Server URL to which it must forward the messages. For more information, refer to the specification of your gateway.</p>
+<p>An SMS servlet on the MobileFirst Server matches the parameters with filters as defined in SMS event handlers, and calls the adapter procedure callback.</p>
+<p>The adapter can process SMS messages and send them to a mobile device by using the SMS API. An adapter procedure can use the SMS server -side APIs for subscription and unsubscription. The procedure uses the SMS notification framework to send the response back to the mobile device.</p>
+<h2 id="api">API for two-way SMS</h2>
+<ul>
+<h3>Registering SMS event handlers</h3>
+</ul>
+<p>[code lang="js"]<br />
+WL.Server.setEventHandlers([<br />
+                            WL.Server.createSMSEventHandler(<br />
+                            		{keyword: WL.Server.configuration['sms.keyword.subscribe']},<br />
+                            		subscribeSMS,<br />
+                            		WL.Server.configuration['sms.gateway.id']<br />
+                            		),<br />
+                            WL.Server.createSMSEventHandler(<br />
+                            		{keyword: WL.Server.configuration['sms.keyword.unsubscribe']},<br />
+                            		unsubscribeSMS, WL.Server.configuration['sms.gateway.id']<br />
+                            		)<br />
+                            ]);<br />
+[/code]<br />
+The name-value parameters sent from the SMS gateway that match the filters are passed to handlerFunction. For example, if the SMS gateway is sending the following parameters:</p>
+<ul>
+<li>from: from number</li>
+<li>text: SMS text</li>
+<li>keyword: a keyword configured in the SMS gateway</li>
+</ul>
+<p>The filterparameter can be defined as {keyword:"myKey"}. In this case, when the MobileFirst Server receives a request from the SMS gateway, it looks for a keyword with myKeyas its value, and forwards the resulting request to handlerFunction.</p>
+<p>handlerFunctionreceives an SMS event that has all parameters sent from the SMS gateway.</p>
+<p>gatewayIDcorresponds to the SMS gateway that is configured in SMSConfig.xml. This gateway is used to receive SMS messages.</p>
+<ul>
+<h3>Server-side SMS API</h3>
+</ul>
+<p>The MobileFirst Server uses SMS notification to send SMS messages. Before SMS messages can be sent, the server must subscribe to a phone number.<br />
+[code lang="js"]<br />
+var subscription = WL.Server.subscribeSMS(eventSourceID, phoneNumber, gatewayID);<br />
+[/code]<br />
+This method takes the following parameters:</p>
+<ul>
+<li>eventSourceId:the event source to which the phone number is subscribing.</li>
+<li>phoneNumber:the user’s phone number</li>
+<li>gatewayID:the ID that identifies the gateway through which SMS messages are sent.</li>
+</ul>
+<p>The method returns an SMS subscription object. Along with the WL.Server.notifyDeviceSubscriptionmethod, this object can be used to send an SMS message to the specified phone number.</p>
+<p>If the phone number is already subscribed, get the subscription object and send an SMS message.<br />
+[code lang="js"]<br />
+function sendSMS(phoneNumber, smsText) {</p>
+<p>	var subscription = WL.Server.getSMSSubscription(eventSourceId, phoneNumber);</p>
+<p>	if (subscription == null) {<br />
+		return { result: &quot;No subscription found for user :: &quot; + phoneNumber };<br />
+	}</p>
+<p>	var notification = WL.Server.createDefaultNotification(smsText, 1, {});<br />
+	WL.Server.notifyDeviceSubscription(subscription, notification);</p>
+<p>	return { result: &quot;Notification sent to user :: &quot; + phoneNumber };<br />
+}<br />
+[/code]<br />
+A phone number can unsubscribe from the event source by a call to the following method:<br />
+[code lang="js"]<br />
+WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);<br />
+[/code]</p>
+<h2 id="setup">Setup</h2>
+<p>The SMSConfig.xmlfile specifies gateway details for both receiving and sending SMS messages.<br />
+[code lang="xml"]<br />
+&lt;gateway id=&quot;myGateway&quot; hostname=&quot;yourhostname.com&quot; port=&quot;80&quot; programName=&quot;backendProgram&quot; toParamName=&quot;to&quot; textParamName=&quot;text&quot; fromParamName=&quot;from&quot;&gt;<br />
+    &lt;parameter encode=&quot;false&quot; name=&quot;param1name&quot; value=&quot;param1value&quot;/&gt;<br />
+    &lt;parameter encode=&quot;false&quot; name=&quot;param2name&quot; value=&quot;param2value&quot;/&gt;<br />
+&lt;/gateway&gt;<br />
+[/code]</p>
+<p>You can externalize the keywords, gateway identifier, and other parameters that the SMS event handler uses to the worklight.properties configuration file.<br />
+[code lang="js"]<br />
+sms.keyword.subscribe=sub<br />
+sms.keyword.unsubscribe=unsub<br />
+sms.gateway.id=myGateway<br />
+[/code]</p>
+<p>By default, the SubscribeServletobject that receives the request from the gateway is protected by a security test. This security test takes a RejectingLoginModuleparameter which by default rejects any request. To enforce the security mechanism that is supported by your gateway, comment out or modify the default security test.<br />
+[code lang="xml"]<br />
+&lt;resource id=&quot;subscribeServlet&quot; securityTest=&quot;SubscribeServlet&quot;&gt;<br />
+	&lt;urlPatterns&gt;/subscribeSMS*;/receiveSMS*;/ussd*&lt;/urlPatterns&gt;<br />
+&lt;/resource&gt;<br />
+[/code]<br />
+If you are using a reverse proxy in front of the MobileFirst Server, you can specify a mapping to the reverse proxy to allow only requests from specific hosts or IP addresses (SMS gateway). If the application server that is running MobileFirst directly receives the request from a gateway, the application server needs to be configured to allow requests from the specific hosts or IP addresses.</p>
+<h2>Run the sample</h2>
+<ul>
+    <strong>1. </strong>A user subscribes for SMS notifications by sending the keyword subfrom his mobile device to the predefined short code or phone number that is registered with a gateway from an independent software vendor.<br />
+    <strong>2. </strong>The BookStoreAdapteradapter subscribes the phone number to receive notifications.<br />
+    <strong>3. </strong>The BookStoreAdapteradapter sends a notification to the user when there is a discount offer.<br />
+    <strong>4. </strong>The user can unsubscribe for SMS notifications by sending the unsubkeyword to the predefined short code or phone number.
+</ul>

@@ -1,0 +1,97 @@
+---
+layout: doc_page
+title: Creating your first native Android MobileFirst application
+date: 2014-07-23 05:44:18.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6637'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442501542;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:212;}i:1;a:1:{s:2:"id";i:10463;}i:2;a:1:{s:2:"id";i:5690;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/hello-world/">Hello World</a></p>
+<div id="samplesAndPersonas">
+<div>
+        Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-6-3/">Native Android</a></li>
+</ul></div>
+<ul>
+<li class="download-sample"><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/HelloWorldNativeProject.zip">Download Studio project</a></li>
+<li class="download-sample">
+        <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/AndroidHelloWorldNativeProject.zip">Download native project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>To serve a native Android application, MobileFirst Server must be aware of it. For this purpose, IBM MobileFirst Platform Foundation provides a Native API library, which contains a set of APIs and configuration files.</p>
+<p>This tutorial explains how to generate the Android Native API and how to integrate it with a native Android application. These steps are necessary so that you can use it later on to achieve tasks such as connecting to MobileFirst Server, invoking adapter procedures, implementing authentication methods, and so on.</p>
+<p><strong>Prerequisite</strong>: Developers must be proficient with using Google's developer tools.</p>
+<h2>Creating a MobileFirst Native API</h2>
+<p><img class="alignright wp-image-1413 size-full" src="{{ site.baseurl }}/assets/backup/02_03_android_native_folder_structure.png" alt="02_03_android_native_folder_structure" width="221" height="376" /></p>
+<ol>
+<li>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Native API.</li>
+<li>In the <strong>New MobileFirst Native API</strong> dialog, enter your application name and select <strong>Android</strong> for the <strong>Environment</strong> field.</li>
+<li>Right-click the generated NativeAPI folder (located in <code>your-projects/apps/your-nativeapi-app-name</code>) and select <strong>Run As &gt; Deploy Native API</strong>.<br />
+<em>This action is required for MobileFirst Server to recognize the application when a request reaches the server.</em></li>
+<p>The MobileFirst native API contains several components:</p>
+<ul>
+<li><em>wlclient.properties</em> contains the connectivity settings that a native Android application uses.</li>
+<li><em>worklight-android.jar</em> is the MobileFirst API library.</li>
+<li><em>gcm.jar</em> and <em>push.png</em> are for Google push notification services.</li>
+<li><em>JSONStore</em> folder is for optional JSONStore support in native applications.</li>
+<li><em>armabi</em>, <em>armabi-v7a</em>, <em>mips</em>, and <em>x86</em> folders are for optional Application Authenticity Protection in native applications.</li>
+<li>As with any MobileFirst project, you create the server configuration by modifying the files that are in the <strong>server\conf</strong> folder.</li>
+<li>You use the <em>application-descriptor.xml</em> file to define application metadata and to configure security settings that MobileFirst Server enforces.</li>
+</ul>
+</ol>
+<h2>wlclient.properties</h2>
+<p>The <em>wlclient.properties</em> file holds server configuration properties and is user-editable.</p>
+<ul>
+<li><em>wlServerProtocol</em> – The communication protocol to MobileFirst Server, which can be either http or https.</li>
+<li><em>wlServerHost</em> – The hostname of MobileFirst Server.</li>
+<li><em>wlServerPort</em> – The port of MobileFirst Server.</li>
+<li><em>wlServerContext</em> –The context root path of the application on the MobileFirst Server.</li>
+<li><em>wlAppId</em> – The application ID as defined in the <strong>application-descriptor.xml</strong> file.</li>
+<li><em>wlAppVersion</em> – The application version.</li>
+<li><em>wlEnvironment</em> – The target environment of the native application.</li>
+<li><em>wlUid</em> – The property used by MTWW to identify this as a MobileFirst application.</li>
+<li><em>wlPlatformVersion</em> – The MobileFirst Studio version.</li>
+<li><em>languagePreferences</em> – List of preferred locales.</li>
+<li><em>GcmSenderId</em> – This property defines the GCM Sender ID to be used for push notifications. By default, this property is commented out.</li>
+</ul>
+<h2>Creating and configuring an Android native application</h2>
+<ol>
+<li>Create a native Android application or use an existing one.</li>
+<li>Copy the <em>worklight-android.jar</em>, <em>uicandroid.jar</em>, <em>bcprov.jar</em>, and <em>android-async-http.jar</em> files from the WorklightAPI folder to the new native Android application, in the <em>/libs</em> directory.</li>
+<li>Copy the file <em>wlclient.properties</em> from the MobileFirst native API folder to the new native Android application, in the <em>/assets</em> directory.</li>
+<li>Add the following permissions to the <em>AndroidManifest.xml</em> file:
+<p>[code lang="xml"]&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;<br />
+&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;<br />
+&lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot;/&gt;[/code]</p>
+</li>
+<li>Add the MobileFirst UI activity:
+<p>[code lang="xml"]&lt;activity android:name=&quot;com.worklight.wlclient.ui.UIActivity&quot; /&gt;[/code]</p>
+</li>
+</ol>
+<blockquote><p>For more information, review the "Developing native applications for Android" user documentation topic</p></blockquote>
+<p><br clear="all" /><br />
+After the application is run in Eclipse, the final result is a native application that contains the MobileFirst API library.</p>
+<p>The provided Studio project contains a MobileFirst Studio project with the generated NativeAPI folder.<br />
+The provided Native project contains an Android application already setup with the MobileFirst NativeAPI.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_03_android_helloworld.png"><img class="aligncenter wp-image-1414" src="{{ site.baseurl }}/assets/backup/02_03_android_helloworld-168x300.png" alt="02_03_android_helloworld" width="250" height="446" /></a></p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/HelloWorldNativeProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/AndroidHelloWorldNativeProject.zip">Click to download</a> the Native project.</p>

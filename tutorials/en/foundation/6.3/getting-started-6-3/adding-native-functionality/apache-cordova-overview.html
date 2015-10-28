@@ -1,0 +1,102 @@
+---
+layout: doc_page
+title: Apache Cordova overview
+date: 2014-07-23 06:11:22.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _post_restored_from: a:3:{s:20:"restored_revision_id";i:813;s:16:"restored_by_user";i:6643;s:13:"restored_time";i:1411987000;}
+  _syntaxhighlighter_encoded: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442522701;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11226;}i:1;a:1:{s:2:"id";i:10530;}i:2;a:1:{s:2:"id";i:10521;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/adding-native-functionality/">Adding native functionality to hybrid applications</a></p>
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>In this tutorial, an overview about Apache Cordova will be provided: what it is, how it is used in MobileFirst applications and what can be done with it.</p>
+<h2>What is Apache Cordova</h2>
+<p>Apache Cordova is an open source framework for mobile development.<br />
+With the JavaScript API provided by Cordova, developers can access native mobile device features, and even execute native code by using JavaScript.</p>
+<p>The Cordova framework is integrated into all Mobile environments in IBM MobileFirst Platform Foundation (Android, BlackBerry 10, iOS, Windows Phone 8 and Windows 8).</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_cordova_documentation.png"><img src="{{ site.baseurl }}/assets/backup/07_01_cordova_documentation.png" alt="07_01_cordova_documentation" width="976" height="484" class="aligncenter size-full wp-image-814" /></a></p>
+<h2>Apache Cordova in MobileFirst Projects</h2>
+<p>The Cordova framework is automatically added to MobileFirst projects, for example in iOS and Android:</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_cordova_in_projet.png"><img src="{{ site.baseurl }}/assets/backup/07_01_cordova_in_projet.png" alt="07_01_cordova_in_projet" width="780" height="446" class="aligncenter size-full wp-image-817" /></a></p>
+<h2>Usage samples</h2>
+<p>Calling a native alert notification from JavaScript on iOS and Android devices:<br />
+[code lang="js"]navigator.notification.alert(&quot;I am a native alert dialog.&quot;);[/code]</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_usage_sample1.png"><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample1.png" alt="07_01_usage_sample1" width="661" height="430" class="aligncenter size-full wp-image-818" /></a></p>
+<p>Getting device hardware and software information:<br />
+[code lang="js"]var element = document.getElementById('deviceProperties');<br />
+    element.innerHTML = 'Device Model: '    + device.model    + '&lt;br /&gt;' +<br />
+                        'Device Cordova: '  + device.cordova  + '&lt;br /&gt;' +<br />
+                        'Device Platform: ' + device.platform + '&lt;br /&gt;' +<br />
+                        'Device UUID: '     + device.uuid     + '&lt;br /&gt;' +<br />
+                        'Device Version: '  + device.version  + '&lt;br /&gt;';[/code]</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_usage_sample2.png"><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample2.png" alt="07_01_usage_sample2" width="610" height="262" class="aligncenter size-full wp-image-819" /></a></p>
+<p>For detailed documentation and samples, see:</p>
+<ul>
+<li>Apache Cordova website - <a href="http://cordova.apache.org/">http://cordova.apache.org/</a></li>
+<li>Apache Cordova Wiki - <a href="http://wiki.apache.org/cordova/">http://wiki.apache.org/cordova/</a></li>
+</ul>
+<h2>Using native pages in hybrid applications</h2>
+<p>A lot can be done with web technologies only. However, there are still cases where web technologies are not enough. In such cases Apache Cordova provides greater flexibility, allowing JavaScript access to native phone features. For example:</p>
+<ul>
+<li>Augmented reality</li>
+<li>Barcode scanner</li>
+<li>Opening a native contacts page</li>
+</ul>
+<p>IBM MobileFirst Platform Foundation provides ways to augment your web application with native pages.<br />
+By using hybrid coding, the following actions can be performed:</p>
+<ul>
+<li>Navigate freely between web and native pages</li>
+<li>Share data between pages</li>
+<li>Share a single server session</li>
+<li>Implement your own functions by creating Apache Cordova plug-ins</li>
+</ul>
+<p>The ability to add native pages to a web application is readily available for the iOS, Android and Windows Phone 8 platforms.<br />
+A basic scenario then is:<br />
+A developer writes one or more native pages.<br />
+A developer writes one or more web pages.</p>
+<p>With the IBM MobileFirst Platform Foundation web API, it is possible to navigate between native and web pages, and data can be transferred back and forth.<br />
+Native API is provided to be able to communicate with the MobileFirst Server from the native page.<br />
+Cookies are shared between web and native, providing seamless client-server integration.</p>
+<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_native_pages.png"><img src="{{ site.baseurl }}/assets/backup/07_01_native_pages.png" alt="07_01_native_pages" width="628" height="185" class="aligncenter size-full wp-image-820" /></a></p>
+<p>JavaScript API to activate native page:<br />
+[code lang="js"]WL.NativePage.show(className, callback, data);[/code]</p>
+<p>The web page invokes the native class <span class="inline-code">className</span>, with the parameter <span class="inline-code">data</span>, and calls the callback function on return. Example:<br />
+[code lang="js"]WL.NativePage.show(&quot;com.demo.NativePage&quot;, function(data) {<br />
+       demoApplication.returnFromNative(data);<br />
+    },<br />
+    {<br />
+       inputData: &quot;Hello&quot;<br />
+    }<br />
+);[/code]</p>
+<p>The following tutorials explain how to integrate native pages in hybrid applications.</p>
+<h2>Extending hybrid functionality with Cordova plug-ins</h2>
+<p>In some cases, a native page is not required, but native actions are still required to be performed using native code.</p>
+<p>Examples might be:</p>
+<ul>
+<li>Retrieving device data that is not available on a JavaScript level, for example, certificates from a Java KeyStore</li>
+<li>Using a native third-party library that is embedded in the application</li>
+<li>Performing complex calculation or encryption that takes too much time in JavaScript</li>
+</ul>
+<p>The solution for such UI-less native functionality is to implement a Cordova plug-in.<br />
+The following tutorials explain how to add native functionality to hybrid applications.</p>

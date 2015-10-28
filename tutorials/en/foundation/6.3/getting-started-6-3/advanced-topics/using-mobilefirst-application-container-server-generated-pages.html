@@ -1,0 +1,126 @@
+---
+layout: doc_page
+title: Using MobileFirst application as a container for server-generated pages
+date: 2014-07-23 06:30:11.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/advanced-topics/">Advanced topics</a></p>
+<div id="samplesAndPersonas">
+<div>
+        Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-6-3/">Native iOS</a></li>
+<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-6-3/">Native Android</a></li>
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul></div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingWorklightApplicationAsAContainerProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Migrating applications to IBM MobileFirst Platform Foundation</h2>
+<ul>
+<li>By using mobile web technology, you can deploy applications to the widest variety of devices.</li>
+<li>The existence of public application stores, such as Apple iTunes and Google Play, changes the way applications are hosted and marketed. These changes make traditional methods of distribution less relevant.</li>
+<li>IBM MobileFirst Platform Foundation provides the solution to build cross-platform applications that can be distributed through the application stores by using the hybrid application programming model.</li>
+<li>In the hybrid model, developers typically package the application HTML, CSS, and JavaScript™ code as part of the application that is deployed to the application store.</li>
+<li>In this module, you see the remote loading of dynamic content capability, where the HTML, CSS, and JavaScript code is hosted externally from the natively packaged hybrid.</li>
+</ul>
+<h2>Creating IBM MobileFirst applications</h2>
+<ul>
+<li>
+    A project and applications are created by using the IBM MobileFirst Project wizard.<br />
+<img src="{{ site.baseurl }}/assets/backup/new-project-wizzard-1-300x300.png" alt="new-project-wizzard-1" width="300" height="300" class="alignnone size-medium wp-image-2565" />
+  </li>
+<li>
+    A project might host multiple applications. However, in this module, you use only one app: <strong>UsingApplicationAsAContainer</strong><br />
+<img src="{{ site.baseurl }}/assets/backup/new-project-wizzard-2-300x300.png" alt="new-project-wizzard-2" width="300" height="300" class="alignnone size-medium wp-image-2565" />
+  </li>
+<li>
+    Optionally the target environments can be set on the MobileFirst Project wizard or it could be done at a later time<br />
+<img src="{{ site.baseurl }}/assets/backup/new-project-wizzard-3-300x300.png" alt="new-project-wizzard-3" width="300" height="300" class="alignnone size-medium wp-image-2565" />
+  </li>
+</ul>
+<h2>IBM MobileFirst environments</h2>
+<ul>
+<li>IBM MobileFirst Foundation provides a model for organizing the application project structure for each targeted environment (for example, Android, iPhone, iPad).</li>
+<li>These targeted environments are selected through the MobileFirst Environment wizard.</li>
+</ul>
+<p><img src="{{ site.baseurl }}/assets/backup/environment-new-296x300.png" alt="environment-new" width="296" height="300" class="alignleft size-medium wp-image-2560" /><br />
+<img src="{{ site.baseurl }}/assets/backup/environments-300x264.png" alt="environments" width="300" height="264" class="alignleft size-medium wp-image-2561" /></p>
+<h3 class="clear">IBM MobileFirst Common environment</h3>
+<ul>
+<li>The simplest way to use IBM MobileFirst apps as containers for server generated pages is through the Common environment</li>
+<li>Open the <code>application-descriptor.xml</code> file and edit the <code>mainFile</code> tag to point to "<code>http://m.ibm.com</code>"</li>
+</ul>
+<p><img src="{{ site.baseurl }}/assets/backup/application-descriptor-300x276.png" alt="application-descriptor" width="300" height="276" class="alignnone size-medium wp-image-2559" /></p>
+<p>[code lang="xml" highlight="16"]<br />
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;<br />
+&lt;!-- Licensed Materials - Property of IBM<br />
+             5725-I43 (C) Copyright IBM Corp. 2006, 2013. All Rights Reserved.<br />
+             US Government Users Restricted Rights - Use, duplication or<br />
+             disclosure restricted by GSA ADP Schedule Contract with IBM Corp. --&gt;<br />
+&lt;!-- Attribute &quot;id&quot; must be identical to application folder name --&gt;<br />
+&lt;application xmlns=&quot;http://www.worklight.com/application-descriptor&quot; id=&quot;UsingApplicationAsAContainer&quot; platformVersion=&quot;6.3.0.00.20141003-1438&quot;&gt;<br />
+    &lt;displayName&gt;UsingApplicationAsAContainer&lt;/displayName&gt;<br />
+    &lt;description&gt;UsingApplicationAsAContainer&lt;/description&gt;<br />
+    &lt;author&gt;<br />
+        &lt;name&gt;application's author&lt;/name&gt;<br />
+        &lt;email&gt;application author's e-mail&lt;/email&gt;<br />
+        &lt;homepage&gt;http://mycompany.com&lt;/homepage&gt;<br />
+        &lt;copyright&gt;Copyright My Company&lt;/copyright&gt;<br />
+    &lt;/author&gt;<br />
+    &lt;mainFile&gt;http://m.ibm.com&lt;/mainFile&gt;<br />
+    &lt;features/&gt;<br />
+    &lt;thumbnailImage&gt;common/images/thumbnail.png&lt;/thumbnailImage&gt;<br />
+    &lt;iphone bundleId=&quot;com.UsingApplicationAsAContainer&quot; version=&quot;1.0&quot;&gt;<br />
+        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
+        &lt;security&gt;<br />
+            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
+            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
+        &lt;/security&gt;<br />
+    &lt;/iphone&gt;<br />
+    &lt;android version=&quot;1.0&quot;&gt;<br />
+        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
+        &lt;security&gt;<br />
+            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
+            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
+            &lt;publicSigningKey/&gt;<br />
+            &lt;packageName/&gt;<br />
+        &lt;/security&gt;<br />
+    &lt;/android&gt;<br />
+&lt;/application&gt;<br />
+[/code]</p>
+<h2>Running your application on the Android emulator</h2>
+<ul>
+<li>Build the Android environment, and then deploy the application. Right-click the generated Android project and click <strong>Run As</strong> > <strong>Android Application</strong>.</li>
+<li>You can see that http://m.ibm.com is rendered in your Android emulator.</li>
+</ul>
+<p><img src="{{ site.baseurl }}/assets/backup/android-splash-177x300.png" alt="android-splash" width="177" height="300" class="alignleft size-medium wp-image-2558" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/android-app-177x300.png" alt="android-app" width="177" height="300" class="alignleft size-medium wp-image-2557" /></p>
+<h2 class="clear">Running your Application on the iOS</h2>
+<ul>
+<li>Deploy the application to your iOS emulator. Right-click the IOS environment, and click <strong>Run As</strong> > <strong>Xcode project</strong>.</li>
+</ul>
+<p><img src="{{ site.baseurl }}/assets/backup/iphone-splash-150x300.png" alt="iphone-splash" width="150" height="300" class="alignleft size-medium wp-image-2563" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/iphone-app-150x300.png" alt="iphone-app" width="150" height="300" class="alignleft size-medium wp-image-2562" /><br />
+<br clear="all" /></p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingWorklightApplicationAsAContainerProject.zip">Click to download</a> the Studio project.</p>

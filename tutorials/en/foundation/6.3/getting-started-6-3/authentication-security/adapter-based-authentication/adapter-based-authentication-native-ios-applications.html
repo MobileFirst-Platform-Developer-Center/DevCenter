@@ -1,0 +1,126 @@
+---
+layout: doc_page
+title: Adapter-based authentication in native iOS applications
+date: 2014-10-02 14:49:08.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+&lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/">Authentication and security</a> &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/adapter-based-authentication/">Adapter-based authentication<br />
+</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-6-3/">Native iOS</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeAdapterBasedAuthProject.zip">Download Studio project</a>
+        </li>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iOSNativeAdapterBasedAuthProject.zip">Download native project</a>
+        </li>
+</ul>
+</div>
+<p><br clear="all" /><br />
+This is a continuation of the <a title="Adapter-based authentication" href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/adapter-based-authentication/">Adapter-based authentication</a> tutorial.</p>
+<h2>Creating the client-side authentication components</h2>
+<p>Create a native iOS application and add the MobileFirst native APIs following the documentation.</p>
+<h3>StoryBoard</h3>
+<p>In your storyboard, add a ViewController containing a login form.<br />
+<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_06_storyboard.png"><img class="aligncenter wp-image-987 size-full" src="{{ site.baseurl }}/assets/backup/09_06_storyboard.png" alt="09_06_storyboard" width="1067" height="583" /></a></p>
+<h3>ChallengeHandler</h3>
+<p>Create a <span class="inline-code">MyChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span><br />
+We will implement some of the <span class="inline-code">ChallengeHandler</span> methods to respond to the form-based challenge.</p>
+<p>[code lang="obj-c"]<br />
+@interface MyChallengeHandler : ChallengeHandler<br />
+@property ViewController* vc;</p>
+<p>//A convenient way of updating the View<br />
+-(id)initWithViewController: (ViewController*) vc;<br />
+@end<br />
+[/code]</p>
+<p>Before calling your protected adapter, make sure to register your challenge handler using <span class="inline-code">WLClient</span>’s <span class="inline-code">registerChallengeHandler</span>.</p>
+<p>[code lang="obj-c"]<br />
+[[WLClient sharedInstance] registerChallengeHandler:[[MyChallengeHandler alloc] initWithViewController:self] ];<br />
+[/code]</p>
+<p><br clear="all" /><br />
+The <span class="inline-code">isCustomResponse</span> method of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <span class="inline-code">true</span> or <span class="inline-code">false</span>.</p>
+<p>[code lang="obj-c"]<br />
+@implementation MyChallengeHandler<br />
+//...<br />
+-(BOOL) isCustomResponse:(WLResponse *)response {<br />
+    NSLog(@&quot;Inside isCustomResponse&quot;);<br />
+    if(response &amp;&amp; [response getResponseJson]){<br />
+        if ([[response getResponseJson] objectForKey:@&quot;authRequired&quot;]) {<br />
+            NSLog(@&quot;Detected adapter auth - return true&quot;);<br />
+            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@&quot;authRequired&quot;];<br />
+            return [authRequired boolValue]; //return if auth is required<br />
+        }<br />
+    }<br />
+    return false;<br />
+}<br />
+@end<br />
+[/code]</p>
+<p><br clear="all" /><br />
+If <span class="inline-code">isCustomResponse</span> returns <span class="inline-code">true</span>, the framework calls the <span class="inline-code">handleChallenge</span> method. This function is used to perform required actions, such as hide application screen and show login screen.</p>
+<p>[code lang="obj-c"]<br />
+@implementation MyChallengeHandler<br />
+//...<br />
+-(void) handleChallenge:(WLResponse *)response {<br />
+    NSLog(@&quot;Inside handleChallenge - need to show form on the screen&quot;);<br />
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@&quot;LoginViewController&quot;];<br />
+    loginController.challengeHandler = self;<br />
+    [self.vc.navigationController pushViewController:loginController animated:YES];<br />
+}<br />
+@end<br />
+[/code]</p>
+<p><br clear="all" /><br />
+<span class="inline-code">onSuccess</span> and <span class="inline-code">onFailure</span> get triggers when the authentication ends.<br />
+You need to call <span class="inline-code">submitSuccess</span> to inform the framework that the authentication process is over, and allow the invocation’s success handler to be called.</p>
+<p>[code lang="obj-c"]<br />
+@implementation MyChallengeHandler<br />
+//...<br />
+-(void) onSuccess:(WLResponse *)response {<br />
+    NSLog(@&quot;inside challenge success&quot;);<br />
+    [self.vc.navigationController popViewControllerAnimated:YES];<br />
+    [self submitSuccess:response];<br />
+}</p>
+<p>-(void) onFailure:(WLFailResponse *)response {<br />
+    NSLog(@&quot;inside challenge failure&quot;);<br />
+    [self submitFailure:response];<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /><br />
+In your <span class="inline-code">LoginViewController</span>, when the user clicks to submit his credentials, you need to call <span class="inline-code">submitAdapterAuthentication</span> to send the credentials to the the <span class="inline-code">submitAuthentication</span> procedure you wrote previously.</p>
+<p>[code lang="obj-c"]<br />
+@implementation LoginViewController<br />
+//***<br />
+- (IBAction)login:(id)sender {<br />
+    WLProcedureInvocationData *myInvocationData = [[WLProcedureInvocationData alloc]<br />
+initWithAdapterName:@&quot;NativeAdapterBasedAdapter&quot;<br />
+procedureName:@&quot;submitAuthentication&quot;];</p>
+<p>myInvocationData.parameters = @[self.username.text, self.password.text];<br />
+    [self.challengeHandler submitAdapterAuthentication:myInvocationData options:nil];<br />
+}<br />
+[/code]</p>
+<p><br clear="all" /></p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeAdapterBasedAuthProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iOSNativeAdapterBasedAuthProject.zip">Click to download</a> the Native project.</p>
+<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_06_results.png"><img class="aligncenter wp-image-991 size-full" src="{{ site.baseurl }}/assets/backup/09_06_results.png" alt="09_06_results" width="1351" height="707" /></a></p>

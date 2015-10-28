@@ -1,0 +1,131 @@
+---
+layout: doc_page
+title: 'NEW: Windows Phone 8 - Adding native UI elements to hybrid applications'
+date: 2014-12-08 11:57:19.000000000 +02:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags:
+- 6-3
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/adding-native-functionality/">Adding native functionality to hybrid applications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeUIInHybridProject.zip">Download Studio project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>While writing hybrid application can be done by using solely web technologies, IBM MobileFirst Platform Foundation also allows to mix &amp; match native code with web code as needed.</p>
+<p>For example, use native UI controls, use native elements, provide an animated native introduction screen, etc. In order to do so,  taking control of part of the application startup flow is needed. This tutorial assumes working knowledge of Windows Phone development (C#).</p>
+<h2>Send Action From JavaScript to Native</h2>
+<p>In MobileFirst applications, commands are sent with parameters from the web view (via JavaScript) to a native class (written in C#).<br />
+This feature can be used to trigger native code to be run in the background, to update the native UI, to use native-only features, etc.</p>
+<p><strong>Step 1</strong><br />
+In JavaScript, the following API is used:<br />
+<span class="inline-code">WL.App.sendActionToNative("doSomething", {customData: 12345});</span></p>
+<p><span class="inline-code">doSomething</span> is an arbitrary action name to be used in the native side (see the next slide), and the second parameter is a JSON object that contains any data.</p>
+<p><strong>Step 2</strong><br />
+The native class to receive the action must implement the <span class="inline-code">WLActionReceiver</span> protocol:<br />
+<span class="inline-code">public class action : WLActionReceiver</span></p>
+<p>The <span class="inline-code">WLActionReceiver</span> protocol requires an <span class="inline-code">onActionReceived</span> method in which the action name can be checked for and perform any native code that the action needs:</p>
+<p>[code lang="CSharp"]<br />
+public void onActionReceived(string action, JObject data)<br />
+  {<br />
+    if (action == &quot;displayAddress&quot;)<br />
+    {<br />
+      Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+      {<br />
+        // perform required actions<br />
+      });<br />
+    }<br />
+  }<br />
+[/code]</p>
+<p><strong>Step 3</strong><br />
+For the action receiver to receive actions from the MobileFirst Web View, it must be registered.<br />
+The registration can be done during the startup flow of the application to catch any actions early enough:<br />
+[code lang="CSharp" highlight="5"]<br />
+InitializeComponent();<br />
+WL.createInstance(); //Create the instance of the ActionSender API's<br />
+myReceiver = new Action();<br />
+Loaded += PhoneAppPage_Loaded;<br />
+WL.getInstance().addActionReceiver(myReceiver);<br />
+[/code]<br />
+You can later remove this ActionReceiver registration by using the following API:<br />
+[code lang="CSharp"]WL.getInstance().removeActionReceiver(myReceiver);[/code]</p>
+<h2>Send Action From Native to JavaScript</h2>
+<p>In MobileFirst applications, commands can be sent with parameters from native C# code to web view JavaScript code.<br />
+This feature can be used to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
+<p><strong>Step 1</strong><br />
+In C#, the following API is used:<br />
+[code lang="CSharp"]WL.getInstance().sendActionToJS(doSomething, data);[/code]</p>
+<p><span class="inline-code">doSomething</span> is an arbitrary action name to be used on the JavaScript side and the second parameter is a <span class="inline-code">JObject</span> that contains any data.</p>
+<p><strong>Step 2</strong><br />
+A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
+<p>[code lang="js"]function actionReceiver(received){<br />
+  if (received.action == &quot;doSomething&quot; &amp;&amp; received.data.someProperty == &quot;12345&quot;){<br />
+    //perform required actions, e.g., update web user interface<br />
+  }<br />
+}[/code]</p>
+<p><strong>Step 3</strong><br />
+For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function will handle those actions as early as possible.</p>
+<p>[code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, actionReceiver);[/code]</p>
+<p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
+[code lang="js"]WL.App.removeActionReceiver(&quot;MyActionReceiverId&quot;);[/code]</p>
+<h2>SendAction Sample</h2>
+<p>[caption id="attachment_5245" align="aligncenter" width="700"]<img src="{{ site.baseurl }}/assets/backup/WP8ActionSender.png" alt="Windows Phone 8 SendAction Sample" width="700" height="398" class="size-full wp-image-5245" /> Windows Phone 8 SendAction Sample[/caption]</p>
+<p>Download the NativeUIInHybrid project, which includes a hybrid application called SendAction.<br />
+In the first screen enter an address and press the "Display" button. This action will send this address to the native C# code and it will display a MessageBox that will display the address you entered. When pressing the OK button of the MessageBox the native SendAction method will be called and send a message back to the JS code that will be displayed using the actionReceiver method.</p>
+<p><strong>HTML</strong><br />
+The HTML page shows the following elements:</p>
+<ul>
+<li>A simple input field to enter an address</li>
+<li>A button to trigger validation</li>
+<li>An empty  line to show potential error messages (We use it to display the message we send from the native code to the JS code)</li>
+</ul>
+<p>[code lang="html"]&lt;p&gt;This is a MobileFirst WebView.&lt;/p&gt;<br />
+&lt;p&gt;Enter a valid address (requires Internet connection):&lt;br/&gt;<br />
+    	&lt;input type=&quot;text&quot; name=&quot;address&quot; id=&quot;address&quot;/&gt;<br />
+&lt;input type=&quot;button&quot; value=&quot;Display&quot; id=&quot;displayBtn&quot;/&gt;<br />
+ &lt;/p&gt;<br />
+ &lt;p id=&quot;errorMsg&quot; style=&quot;color:red;&quot;&gt;&lt;/p&gt;[/code]</p>
+<p><strong>JavaScript</strong><br />
+When the button is clicked, the <span class="inline-code">sendActionToNative</span> method is called to send the address to the native code.</p>
+<p>[code lang="js"]$('#displayBtn').on('click', function(){<br />
+	$('#errorMsg').empty();<br />
+	WL.App.sendActionToNative(&quot;displayAddress&quot;,<br />
+				{ address: $('#address').val()}<br />
+		);<br />
+	});[/code]</p>
+<p>The code also registers an action receiver to display potential error messages from the native code.<br />
+[code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, function actionReceiver(received){<br />
+		if(received.action == 'displayError'){<br />
+			$('#errorMsg').html(received.data.errorReason);<br />
+		}<br />
+	});[/code]</p>
+<h2>Shared Session</h2>
+<p>When you use both JavaScript and native code in the same application, you might need to make HTTP requests to MobileFirst Server (connect,  procedure invocation, etc.)</p>
+<p>HTTP requests are explained in other tutorials (both for hybrid and native applications).<br />
+IBM MobileFirst Platform Foundation 6.2 and later keeps your session (cookies and HTTP headers) automatically synchronized between the JavaScript client and the native client.</p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeUIInHybridProject.zip">Click to download</a> the Studio project.</p>

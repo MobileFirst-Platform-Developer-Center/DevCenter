@@ -1,0 +1,84 @@
+---
+layout: doc_page
+title: Creating your first native Windows Phone 8 MobileFirst application
+date: 2014-07-23 05:44:37.000000000 +03:00
+type: doc_page
+published: true
+status: publish
+categories: []
+tags: []
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6637'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/hello-world/">Hello World</a></p>
+<div id="samplesAndPersonas">
+<div>
+        Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="wp8"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-wp8-development-6-3/">Native Windows Phone 8</a></li>
+</ul></div>
+<ul>
+<li class="download-sample"><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/HelloWorldNativeProject.zip">Download Studio project</a></li>
+<li class="download-sample">
+        <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/WP8HelloWorldNativeProject.zip">Download native project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>To serve a native Windows Phone 8 application, MobileFirst Server must be aware of it. For this purpose, IBM MobileFirst Platform Foundation provides a Native API library, which contains a set of APIs and configuration files.</p>
+<p>This tutorial explains how to generate the Windows Phone 8 Native API and how to integrate it with a native Windows Phone 8 application. These steps are necessary for you to be able to use it later on for tasks such as connecting to MobileFirst Server, invoking adapter procedures, implementing authentication methods, and so on.</p>
+<p><strong>Prerequisite:</strong> Developers are expected to be proficient with Google's developer tools.</p>
+<h2>Creating a MobileFirst Native API</h2>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_04_wp8_native_folder_structure.png"><img class="alignright wp-image-1417 size-full" src="{{ site.baseurl }}/assets/backup/02_04_wp8_native_folder_structure.png" alt="02_04_wp8_native_folder_structure" width="238" height="224" /></a></p>
+<ul>
+<li>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Native API.</li>
+<li>In the <strong>New MobileFirst Native API</strong> dialog, enter your application name and select <strong>Windows Phone 8</strong> for the <strong>Environment</strong> field.</li>
+<li>Right-click the generated NativeAPI folder (located in <code>your-projects/apps/your-nativeapi-app-name</code>) and select <strong>Run As &gt; Deploy Native API</strong>.<br />
+<em>This action is required in order for MobileFirst Server to recognize the application if it attempts to connect.</em></li>
+</ul>
+<p>The MobileFirst native API contains several components:</p>
+<ul>
+<li><em>worklight-windowsphone8.dll</em> is a MobileFirst API library that you must copy to your native WP8 project.</li>
+<li><em>Newtonsoft.Json.dll</em> is a library that provides JSON support.</li>
+<li><em>application-descriptor.xml</em> defines application metadata and security settings that MobileFirst Server enforces.</li>
+<li><em>wlclient.properties</em> contains connectivity settings that a native Windows Phone 8 application uses. You must copy this file to your native Windows Phone 8 project.</li>
+<li>As with any MobileFirst project, you create the server configuration by modifying the files that are in the <em>server\conf</em> folder.</li>
+</ul>
+<h2>wlclient.properties</h2>
+<p>You can edit the <em>wlclient.properties</em> file to set connectivity information.</p>
+<ul>
+<li><em>wlServerProtocol</em> – The communication protocol to MobileFirst Server, which is either http or https.</li>
+<li><em>wlServerHost</em> – The host name of the MobileFirst Server instance.</li>
+<li><em>wlServerPort</em> – The port of the MobileFirst Server instance.</li>
+<li><em>wlServerContext</em> – The context root path of the application on MobileFirst Server.</li>
+<li><em>wlAppId</em> – The application ID as defined in the <em>application-descriptor.xml</em> file.</li>
+<li><em>wlAppVersion</em> – The application version.</li>
+<li><em>wlEnvironment</em> – The target environment of the native application.</li>
+<li><em>wlPlatformVersion</em> – The MobileFirst Studio version.</li>
+<li><em>languagePreferences</em> – The list of preferred locales.</li>
+</ul>
+<h2>Creating and configuring a Windows Phone 8 native application</h2>
+<ol>
+<li>Create a Windows Phone App project or use an existing one.</li>
+<li>Add as a <em>reference</em> the files<em> worklight-windowsphone8.dll</em> and <em>Newtonsoft.Json.dll</em>.</li>
+<li>Copy the <em>wlclient.properties</em> file to the root of the native project.</li>
+<li>In Visual Studio, open the <em>wlclient.properties</em> <strong>Properties</strong> window and set the <strong>Copy to Output Directory</strong> option to <strong>Copy always</strong>.</li>
+<li>Add the following capabilities to the <em>WMAppManifest.xml</em> file:<br />
+<em>ID_CAP_NETWORKING</em><br />
+<em>ID_CAP_IDENTITY_DEVICE</em></li>
+</ol>
+<blockquote><p>For more information, review the "developing native C# applications for Windows Phone 8" user documentation topic</p></blockquote>
+<p>After you run the application in Visual Studio, the final result is a native application that contains the MobileFirst API library.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_04_wp8_native_sample.png"><img class="aligncenter wp-image-1419" src="{{ site.baseurl }}/assets/backup/08_04_wp8_native_sample.png" alt="08_04_wp8_native_sample" width="250" height="417" /></a></p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/HelloWorldNativeProject.zip">Click to download</a> the Studio project.<br />
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/WP8HelloWorldNativeProject.zip">Click to download</a> the Native project.</p>
