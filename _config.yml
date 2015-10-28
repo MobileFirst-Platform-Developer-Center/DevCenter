@@ -8,8 +8,9 @@ defaults:
       type: "posts"
     values:
       category: blog
+      layout: blogpost
   -
     scope:
       path: "tutorials"
     values:
-      layout: tutorial  
+      layout: tutorial
