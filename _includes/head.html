@@ -3,8 +3,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-<meta name="description" content="">
-<meta name="author" content="">
+<link rel="alternate" type="application/atom+xml" title="IBM MobileFirst Platform &raquo; Feed" href="{{site.baseurl}}/feed.xml" />
+<meta name="description" content="{{site.description}}">
+<meta property="og:type" content="website" />
+<meta property="og:title" content="{{page.title}}" />
+<meta property="og:url" content="{{site.url}}{{site.baseurl}}" />
+<meta property="og:site_name" content="{{site.name}}" />
 <link rel="icon" href="favicon.ico">
 <!-- Bootstrap core CSS -->
 <link href="{{site.baseurl}}/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -14,9 +18,9 @@
 <link href="{{site.baseurl}}/css/syntax.css" rel="stylesheet">
 
 {% if page.title %}
-  <title>{{page.title}} - IBM MobileFirst Platform</title>
+  <title>{{page.title}} - {{site.name}}</title>
 {% else %}
-  <title>IBM MobileFirst Platform</title>
+  <title>{{site.name}}</title>
 {% endif %}
 
 
