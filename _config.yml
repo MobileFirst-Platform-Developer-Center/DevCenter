@@ -22,3 +22,9 @@ defaults:
     values:
       layout: tutorial
       show_breadcrumb: true
+  -
+    scope:
+      path: "product-integration"
+    values:
+      layout: tutorial
+      show_breadcrumb: true
