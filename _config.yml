@@ -1,4 +1,4 @@
-baseurl: /NATHANH
+baseurl: /MFPSamples
 permalink: pretty
 exclude: [old-backup]
 gems:
