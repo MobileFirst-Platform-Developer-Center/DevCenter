@@ -1,204 +1,166 @@
 ---
-layout: doc_page
+layout: product-integration
 title: Cloudant
-date: 2014-11-21 17:22:56.000000000 +02:00
-type: doc_page
-published: true
-status: publish
-categories: []
-tags: []
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _syntaxhighlighter_encoded: '1'
-author:
-  login: erikahoffman6@gmail.com
-  email: enhoffma@us.ibm.com
-  display_name: Erika Hoffman
-  first_name: ERIKA
-  last_name: HOFFMAN
 ---
-<br>
-<p class="breadcrumbs">
-&lt; ... <a href="http://developer.ibm.com/mobilefirstplatform/documentation/integration/">Product Integration</a></p>
-<div id="samplesAndPersonas">
-<div>
-        Relevant to:</p>
-<ul id="relevantForPersona">
-<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
-</ul></div>
 <ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CloudantAdapterDemoProject.zip">Download Studio project</a>
-        </li>
+    <li class="download-sample">
+        <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CloudantAdapterDemoProject.zip">Download Studio project</a>
+    </li>
 </ul>
-</div>
+
 <h2>What is Cloudant?</h2>
 <p>Cloudant is a NoSQL Database as a Service (DBaaS) that is based on CouchDB available from cloudant.com</p>
 <p>  The Cloudant API is documented at <a href="https://docs.cloudant.com/index.html" target="_top">https://docs.cloudant.com/index.html</a></p>
+
 <h2>Cloudant adapter</h2>
-<p>  You can create and use a MobileFirst adapter to communicate with Cloudant.</p>
-<p>  The adapter within the sample that is provided with this module is an<br />
+<p>You can create and use a MobileFirst adapter to communicate with Cloudant.</p>
+<p>The adapter within the sample that is provided with this module is an<br />
   HTTP adapter.</p>
+
 <ul>
-<li>This adapter implements a subset of the Cloudant API.</li>
-<li>You can extend it to implement more Cloudant API</li>
+    <li>This adapter implements a subset of the Cloudant API.</li>
+    <li>You can extend it to implement more Cloudant API</li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/integration_zone_cloudant-609x1024.png" alt="integration_zone_cloudant" width="200px" class="alignright size-large wp-image-4463" /></p>
+
+<img src="{{ site.baseurl }}/product-integration/6.3/cloudant/sample-app.png" class="img-responsive" />
 <h3>Sample Application</h3>
-<p>  The sample module contains an application that demonstrates the use of the adapter to store, list, and query a set of names and ages in a Cloudant-hosted database. A download link can be found at the bottom of this tutorial.</p>
-<h2 class="clear">Configuring the sample application</h2>
-<p>  First, download and import the sample module.</p>
-<p>  Then, open the <code>CloudantAdapterDemo/adapters/CloudantAdapter/CloudantAdapter.xml</code> file.</p>
-<p>  The adapter uses basic authentication to connect to the Cloudant database. Enter your database location and username and password into the <code>CloudantAdapter.xml</code> file. You can obtain this information from Cloudant.</p>
-<p>  To avoid exposing the user credentials in <code>CloudantAdapter.xml</code>, you can leverage Cloudant support for API keys and passwords.</p>
-<p>[code lang="xml"]<br />
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;<br />
-&lt;!--<br />
-COPYRIGHT LICENSE: This information contains sample code provided in source code form. You may copy, modify, and distribute<br />
-these sample programs in any form without payment to IBM® for the purposes of developing, using, marketing or distributing<br />
-application programs conforming to the application programming interface for the operating platform for which the sample code is written.<br />
-Notwithstanding anything to the contrary, IBM PROVIDES THE SAMPLE SOURCE CODE ON AN &quot;AS IS&quot; BASIS AND IBM DISCLAIMS ALL WARRANTIES,<br />
-EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OR CONDITIONS OF MERCHANTABILITY, SATISFACTORY QUALITY,<br />
-FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT. IBM SHALL NOT BE LIABLE FOR ANY DIRECT,<br />
-INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR OPERATION OF THE SAMPLE SOURCE CODE.<br />
-IBM HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS OR MODIFICATIONS TO THE SAMPLE SOURCE CODE.</p>
-<p>--&gt;<br />
-&lt;wl:adapter name=&quot;CloudantAdapter&quot;<br />
-xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br />
-xmlns:wl=&quot;http://www.ibm.com/mfp/integration&quot;<br />
-xmlns:http=&quot;http://www.ibm.com/mfp/integration/http&quot;&gt;</p>
-<p>  &lt;displayName&gt;CloudantAdapter&lt;/displayName&gt;<br />
-  &lt;description&gt;CloudantAdapter&lt;/description&gt;<br />
-  &lt;connectivity&gt;<br />
-    &lt;connectionPolicy xsi:type=&quot;http:HTTPConnectionPolicyType&quot;&gt;<br />
-        &lt;protocol&gt;https&lt;/protocol&gt;<br />
-        &lt;domain&gt;mylogin.cloudant.com&lt;/domain&gt;<br />
-        &lt;port&gt;443&lt;/port&gt;<br />
-        &lt;connectionTimeoutInMilliseconds&gt;30000&lt;/connectionTimeoutInMilliseconds&gt;<br />
-        &lt;socketTimeoutInMilliseconds&gt;30000&lt;/socketTimeoutInMilliseconds&gt;<br />
-        &lt;authentication&gt;<br />
-          &lt;basic/&gt;<br />
-          &lt;serverIdentity&gt;<br />
-            &lt;username&gt;mylogin&lt;/username&gt;<br />
-            &lt;password&gt;mypassword&lt;/password&gt;<br />
-          &lt;/serverIdentity&gt;<br />
-        &lt;/authentication&gt;<br />
-        &lt;maxConcurrentConnectionsPerNode&gt;4&lt;/maxConcurrentConnectionsPerNode&gt;<br />
-        &lt;!-- Following properties used by adapter's key manager for choosing specific certificate from key store<br />
-          &lt;sslCertificateAlias&gt;&lt;/sslCertificateAlias&gt;<br />
-          &lt;sslCertificatePassword&gt;&lt;/sslCertificatePassword&gt;<br />
-        --&gt;<br />
-    &lt;/connectionPolicy&gt;<br />
-  &lt;/connectivity&gt;</p>
-<p>  &lt;procedure name=&quot;createDB&quot;/&gt;<br />
-  &lt;procedure name=&quot;deleteDB&quot;/&gt;<br />
-  &lt;procedure name=&quot;getAllDocs&quot;/&gt;<br />
-  &lt;procedure name=&quot;updateDocs&quot;/&gt;<br />
-  &lt;procedure name=&quot;createDoc&quot;/&gt;<br />
-  &lt;procedure name=&quot;getDoc&quot;/&gt;<br />
-  &lt;procedure name=&quot;updateDoc&quot;/&gt;<br />
-  &lt;procedure name=&quot;deleteDoc&quot;/&gt;<br />
-  &lt;procedure name=&quot;createDesignDoc&quot;/&gt;<br />
-  &lt;procedure name=&quot;search&quot; /&gt;<br />
-  &lt;procedure name=&quot;getView&quot; /&gt;</p>
-<p>&lt;/wl:adapter&gt;<br />
-[/code]</p>
+<p>The sample module contains an application that demonstrates the use of the adapter to store, list, and query a set of names and ages in a Cloudant-hosted database. A download link can be found at the bottom of this tutorial.</p>
+
+<h2>Configuring the sample application</h2>
+<p>First, download and import the sample module.</p>
+<p>Then, open the <code>CloudantAdapterDemo/adapters/CloudantAdapter/CloudantAdapter.xml</code> file.</p>
+<p>The adapter uses basic authentication to connect to the Cloudant database. Enter your database location and username and password into the <code>CloudantAdapter.xml</code> file. You can obtain this information from Cloudant.</p>
+<p>To avoid exposing the user credentials in <code>CloudantAdapter.xml</code>, you can leverage Cloudant support for API keys and passwords.</p>
+
+{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8">
+<wl:adapter name="CloudantAdapter"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:wl="http://www.ibm.com/mfp/integration"
+xmlns:http="http://www.ibm.com/mfp/integration/http">
+<displayName>CloudantAdapter</displayName>
+  <description>CloudantAdapter</description>
+  <connectivity>
+    <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+        <protocol>https</protocol>
+        <domain>mylogin.cloudant.com</domain>
+        <port>443</port>
+        <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+        <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+        <authentication>
+          <basic/>
+          <serverIdentity>
+            <username>mylogin</username>
+            <password>mypassword</password>
+          </serverIdentity>
+        </authentication>
+        <maxConcurrentConnectionsPerNode>4</maxConcurrentConnectionsPerNode>
+        <!-- Following properties used by adapter's key manager for choosing specific certificate from key store
+          <sslCertificateAlias></sslCertificateAlias>
+          <sslCertificatePassword></sslCertificatePassword>
+        -->
+    </connectionPolicy>
+  </connectivity>
+  <procedure name="createDB"/>
+  <procedure name="deleteDB"/>
+  <procedure name="getAllDocs"/>
+  <procedure name="updateDocs"/>
+  <procedure name="createDoc"/>
+  <procedure name="getDoc"/>
+  <procedure name="updateDoc"/>
+  <procedure name="deleteDoc"/>
+  <procedure name="createDesignDoc"/>
+  <procedure name="search" />
+  <procedure name="getView" />
+</wl:adapter>
+{% endhighlight %}
+
 <h2>Starting the sample application and adapter</h2>
 <p>  Right-click adapters/CloudantAdapter and select <strong>Run As > Deploy MobileFirst Adapter</strong>.</p>
 <p>  Right-click apps/CloudantSampleApp and select <strong>Run As > Run on MobileFirst Development Server</strong>.</p>
 <p>  From the MobileFirst Platform Operations Console, select <strong>Preview as Common Resources</strong> (or view the app in the environment of your choice).</p>
+
 <h2>Cloudant adapter methods</h2>
 <ul>
-<li>
-    <code>createDB (name)</code><br />Returns JSON result statement
-  </li>
-<li>
-    <code>deleteDB (name)</code><br />Returns JSON result statement
-  </li>
-<li>
-    <code>getAllDocs (name, limit, include_docs)</code><br />
-    Arguments:</p>
-<ul>
-<li><code>name</code> - database name</li>
-<li><code>limit</code> - limit on the number of docs</li>
-<li><code>include_docs</code> - whether or not to include the full body of the docs in the return</li>
+    <li><code>createDB (name)</code><br />Returns JSON result statement</li>
+    <li><code>deleteDB (name)</code><br />Returns JSON result statement</li>
+    <li><code>getAllDocs (name, limit, include_docs)</code><br />
+        Arguments:
+        <ul>
+            <li><code>name</code> - database name</li>
+            <li><code>limit</code> - limit on the number of docs</li>
+            <li><code>include_docs</code> - whether or not to include the full body of the docs in the return</li>
+        </ul>
+        Returns JSON object with document information
+    </li>
+    <li><code>updateDocs (name, updates)</code><br />
+        Arguments:
+        <ul>
+            <li><code>name</code> - database name</li>
+            <li><code>updates</code> - list of objects to create or update</li>
+        </ul>
+        Returns JSON result statement
+    </li>
+    <li><code>createDoc (name, doc)</code><br />
+        Arguments:</p>
+        <ul>
+            <li><code>name</code> - database name</li>
+            <li><code>doc</code> - JSON document to create</li>
+        </ul>
+        Returns JSON result statement
+    </li>
+    <li><code>getDoc (name, docID)</code><br />
+        Arguments:</p>
+        <ul>
+            <li><code>name</code> - database name</li>
+            <li><code>docID</code> - document ID</li>
+        </ul>
+        Returns JSON document
+    </li>
+    <li><code>updateDoc (name, doc)</code><br />
+        Arguments:</p>
+        <ul>
+            <li><code>name</code> - database name</li>
+            <li><code>docID</code> - document to update</li>
+        </ul>
+        Returns JSON result statement
+    </li>
+    <li><code>createDesignDoc (name, docName, designDoc)</code><br />
+        Arguments:</p>
+        <ul>
+            <li><code>name</code> - database name</li>
+            <li><code>docName</code> - design doc name</li>
+            <li><code>designDoc</code> - JSON design document to create</li>
+        </ul>
+        Returns JSON result statement
+    </li>
+    <li><code>search (name, designDocName, viewName, limit, include_docs, query)</code><br />
+        Arguments:</p>
+        <ul>
+            <li><code>name</code> - database name</li>
+            <li><code>designDocName</code> - design doc name</li>
+            <li><code>viewName</code> - view name</li>
+            <li><code>limit</code> - limit on number of results</li>
+            <li><code>include_docs</code> - whether or not to include the full body of the docs in the return</li>
+            <li><code>query</code> - the query</li>
+        </ul>
+        Returns JSON document with results
+    </li>
+    <li><code>getView (name, designDocName, viewName, group)</code><br />
+        Arguments:</p>
+        <ul>
+            <li><code>name</code> - database name</li>
+            <li><code>designDocName</code> - design doc name</li>
+            <li><code>viewName</code> - view name</li>
+            <li><code>group</code> - if results must be grouped</li>
+        </ul>
+        Returns JSON documents from the view
+    </li>
 </ul>
-<p>    Returns JSON object with document information
-  </li>
-<li>
-    <code>updateDocs (name, updates)</code><br />
-    Arguments:</p>
-<ul>
-<li><code>name</code> - database name</li>
-<li><code>updates</code> - list of objects to create or update</li>
-</ul>
-<p>    Returns JSON result statement
-  </li>
-<li>
-    <code>createDoc (name, doc)</code><br />
-    Arguments:</p>
-<ul>
-<li><code>name</code> - database name</li>
-<li><code>doc</code> - JSON document to create</li>
-</ul>
-<p>    Returns JSON result statement
-  </li>
-<li>
-    <code>getDoc (name, docID)</code><br />
-    Arguments:</p>
-<ul>
-<li><code>name</code> - database name</li>
-<li><code>docID</code> - document ID</li>
-</ul>
-<p>    Returns JSON document
-  </li>
-<li>
-    <code>updateDoc (name, doc)</code><br />
-    Arguments:</p>
-<ul>
-<li><code>name</code> - database name</li>
-<li><code>docID</code> - document to update</li>
-</ul>
-<p>    Returns JSON result statement
-  </li>
-<li>
-    <code>createDesignDoc (name, docName, designDoc)</code><br />
-    Arguments:</p>
-<ul>
-<li><code>name</code> - database name</li>
-<li><code>docName</code> - design doc name</li>
-<li><code>designDoc</code> - JSON design document to create</li>
-</ul>
-<p>    Returns JSON result statement
-  </li>
-<li>
-    <code>search (name, designDocName, viewName, limit, include_docs, query)</code><br />
-    Arguments:</p>
-<ul>
-<li><code>name</code> - database name</li>
-<li><code>designDocName</code> - design doc name</li>
-<li><code>viewName</code> - view name</li>
-<li><code>limit</code> - limit on number of results</li>
-<li><code>include_docs</code> - whether or not to include the full body of the docs in the return</li>
-<li><code>query</code> - the query</li>
-</ul>
-<p>    Returns JSON document with results
-  </li>
-<li>
-    <code>getView (name, designDocName, viewName, group)</code><br />
-    Arguments:</p>
-<ul>
-<li><code>name</code> - database name</li>
-<li><code>designDocName</code> - design doc name</li>
-<li><code>viewName</code> - view name</li>
-<li><code>group</code> - if results must be grouped</li>
-</ul>
-<p>    Returns JSON documents from the view
-  </li>
-</ul>
+
 <h2>Using the Cloudant adapter in your app</h2>
-<p>  To use the adapter in your app, copy the <code>CloudantAdapter</code> folder to your MobileFirst app.</p>
-<p>  Extend the adapter as needed with the functionality for your app.</p>
+<p>To use the adapter in your app, copy the <code>CloudantAdapter</code> folder to your MobileFirst app.</p>
+<p>Extend the adapter as needed with the functionality for your app.</p>
+
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CloudantAdapterDemoProject.zip">Click to download</a> the Studio project.</p>
