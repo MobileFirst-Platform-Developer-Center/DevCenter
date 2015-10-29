@@ -51,10 +51,12 @@
             {% endfor %}
         </ul>
 
-        <form class="navbar-form hidden-md searchfield" role="search" action="https://www.google.com/search">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search" name="q">
-            </div>
+        <form id="form_site_search" class="navbar-form hidden-md searchfield" role="search" action="{{site.baseurl}}/search/" method="get">
+          <div class="input-group">
+              <input value="more:nextmobile" name="hq" type="hidden"/>
+              <input id="pnext-search-input-hidden" name="q" type="hidden"/>
+              <input id="pnext-search-input" type="text" class="form-control" placeholder="Search" name="visual_q"/>
+          </div>
         </form>
     </div>
     <!--/.nav-collapse -->
