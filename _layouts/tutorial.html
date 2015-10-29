@@ -14,7 +14,7 @@ custom_js:
     </div>
     <div class="col-sm-8">
       <h1>{{ page.title}}</h1>
-      {% include breadcrumb.html minLevel=3 %}
+      {% include breadcrumb.html %}
       {{ content }}
 
       {% assign documents = site.pages | sort: "weight" %}

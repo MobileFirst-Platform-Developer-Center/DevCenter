@@ -17,6 +17,8 @@
                 {% assign start = p.dir | append: "@" | remove: currentItem %}
                 {% include show-siblings.html docs=documents dir=start %}
               </li>
+            {% elsif p.hide_in_breadcrumb %}
+                {% comment %} don't show {% endcomment %}
             {% else %}
               <li><a href="{{site.baseurl}}{{p.url}}">{{ p.title }}</a></li>
             {% endif %}
