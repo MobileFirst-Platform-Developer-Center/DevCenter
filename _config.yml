@@ -1,5 +1,7 @@
 permalink: pretty
 exclude: [old-backup]
+gems:
+  - jekyll-redirect-from
 defaults:
   -
     scope:
