@@ -29,14 +29,14 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{subitem.name}}</a>
                         <ul class="dropdown-menu">
                           {% for subsubitem in subitem.children %}
-                            <li><a href="{{site.baseurl}}{{item.path}}{{subitem.path}}{{subsubitem.path}}">{{subsubitem.name}}</a></li>
+                            <li><a href="{{site.baseurl}}{{item.path}}{{subitem.path}}{{subsubitem.path}}/">{{subsubitem.name}}</a></li>
                             {% if forloop.last != true %}
                             <li role="separator" class="divider"></li>
                             {% endif %}
                           {% endfor %}
                         </ul>
                         {% else %}
-                        <a href="{{site.baseurl}}{{item.path}}{{subitem.path}}">{{subitem.name}}</a>
+                        <a href="{{site.baseurl}}{{item.path}}{{subitem.path}}/">{{subitem.name}}</a>
                         {% endif %}
                     </li>
                     {% if forloop.last != true %}
@@ -45,7 +45,7 @@
                     {% endfor %}
                 </ul>
                 {% else %}
-                <a href="{{site.baseurl}}{{item.path}}">{{item.name}}</a>
+                <a href="{{site.baseurl}}{{item.path}}/">{{item.name}}</a>
                 {% endif %}
               </li>
             {% endfor %}
