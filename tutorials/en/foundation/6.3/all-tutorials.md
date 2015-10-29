@@ -1,23 +1,6 @@
 ---
-layout: doc_page
+layout: tutorial
 title: All Tutorials
-date: 2014-12-04 15:32:50.000000000 +02:00
-type: doc_page
-published: true
-status: publish
-categories: []
-tags: []
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '9037'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442504919;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:9560;}i:1;a:1:{s:2:"id";i:9570;}i:2;a:1:{s:2:"id";i:5445;}}}}
-author:
-  login: iadar@il.ibm.com
-  email: IADAR@il.ibm.com
-  display_name: IdanAdar
-  first_name: IDAN
-  last_name: ADAR
 ---
 ### <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/setting-up-your-development-environment/">Setting up your development environment</a>
 <p>Set up your development environment to work with IBM MobileFirst Platform Foundation.</p>
