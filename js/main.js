@@ -6,4 +6,6 @@ $(function() {
         //$('#form_site_search').submit();
         return true;
     });
+
+    jQuery("abbr.timeago").timeago();
 });
