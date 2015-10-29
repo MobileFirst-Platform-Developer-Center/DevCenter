@@ -1,21 +1,23 @@
-{% assign minLevel = include.minLevel %}
-{% if minLevel == nil %}{% assign minLevel = 1 %}{% endif %}
+{% if page.show_breadcrumb %}
+  {% assign minLevel = include.minLevel %}
+  {% if minLevel == nil %}{% assign minLevel = 1 %}{% endif %}
 
-<div class="row outerbreadcrumb">
-  <div class="leftPart col-lg-8 col-xs-12">
-    <ol class="breadcrumb">
-      {% assign documents = site.pages | sort: "weight" %}
-      {% include get-parents.html page=page minLevel=minLevel docs=documents %}
-      <li class="active">{{ page.title }}</li>
-    </ol>
+  <div class="row outerbreadcrumb">
+    <div class="leftPart col-lg-8 col-xs-12">
+      <ol class="breadcrumb">
+        {% assign documents = site.pages | sort: "weight" %}
+        {% include get-parents.html page=page minLevel=minLevel docs=documents %}
+        <li class="active">{{ page.title }}</li>
+      </ol>
+    </div>
+    <div class="rightPart hidden-xs hidden-md hidden-sm col-lg-4">
+      {% if page.relevantTo %}
+      <ul class="relevantTo">
+        {% for persona in page.relevantTo %}
+          <li class="{{persona}}" title="{{persona}}">&nbsp;</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
   </div>
-  <div class="rightPart hidden-xs hidden-md hidden-sm col-lg-4">
-    {% if page.relevantTo %}
-    <ul class="relevantTo">
-      {% for persona in page.relevantTo %}
-        <li class="{{persona}}" title="{{persona}}">&nbsp;</li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  </div>
-</div>
+{% endif %}

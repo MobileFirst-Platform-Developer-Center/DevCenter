@@ -17,3 +17,4 @@ defaults:
       path: "tutorials"
     values:
       layout: tutorial
+      show_breadcrumb: true
