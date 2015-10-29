@@ -17,10 +17,12 @@ custom_js:
       {% include breadcrumb.html %}
       {{ content }}
 
-      {% assign documents = site.pages | sort: "weight" %}
-      {% assign level = page.dir | remove_first: "/" | split:"/" | size %}
-      {% assign childrenLevel = level | plus : 1 %}
-      {% include show-children.html docs=documents dir=page.dir level=childrenLevel %}
+      {% if page.show_children %}
+        {% assign documents = site.pages | sort: "weight" %}
+        {% assign level = page.dir | remove_first: "/" | split:"/" | size %}
+        {% assign childrenLevel = level | plus : 1 %}
+        {% include show-children.html docs=documents dir=page.dir level=childrenLevel %}
+      {% endif %}
     </div>
     <div class="hidden-xs col-sm-2">
 

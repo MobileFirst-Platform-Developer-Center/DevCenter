@@ -2,6 +2,7 @@
 layout: tutorial
 title: Hello World
 weight: 0
+show_children: true
 ---
 Home for Hello World
 
