@@ -1,4 +1,3 @@
-baseurl: /NATHANH
 permalink: pretty
 exclude: [old-backup]
 defaults:
