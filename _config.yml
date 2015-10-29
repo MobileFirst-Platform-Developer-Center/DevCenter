@@ -1,6 +1,7 @@
 baseurl: /MFPSamples
 permalink: pretty
 exclude: [old-backup]
+#exclude: [old-backup,tutorials/en/foundation/6.3,tutorials/en/foundation/7.0,tutorials/en/foundation/7.1,tutorials/en/foundation/8.0,product-integration/7.0,product-integration/8.0]
 gems:
   - jekyll-redirect-from
 defaults:

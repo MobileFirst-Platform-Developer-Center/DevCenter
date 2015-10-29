@@ -1,12 +1,11 @@
 ---
 layout: tutorial
-title: Foundation
+title: IBM MobileFirst Platform Foundation
 weight: 0
 ---
-IBM MobileFirst Platform Foundation represents a set of tools enabling enterprises to develop, test, secure, and manage native, hybrid, and mobile web applications.
+IBM MobileFirst Platform Foundation represents a set of tools enabling enterprises to develop, test, secure, and manage native, hybrid, and mobile web applications. These are: MobilFirst Studio, MobileFirst Operations Console, MobileFirst CLI and the MobileFirst Native &amp; Hybrid SDKs.
 
-Select from the list below the Foundation release you are and using to learn more about:
-MobilFirst Studio, MobileFirst CLI and MobileFirst Native and SDK APIs with tutorials and sample applications.
+To get started, select from the list below the Foundation release you are using:
 
 * [MobileFirst Platform Foundation 6.3]({{site.baseurl}}/tutorials/en/foundation/6.3/getting-started-all-tutorials-6-3/)
 * [MobileFirst Platform Foundation 7.0]({{site.baseurl}}/tutorials/en/foundation/7.0/getting-started-all-tutorials-7-0/)
