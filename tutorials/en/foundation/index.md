@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: IBM MobileFirst Platform Foundation
+title: Foundation
 weight: 0
 show_breadcrumb: false
 ---
