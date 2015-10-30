@@ -163,3 +163,27 @@ blockquote {
 		padding: 0;
 	}
 }
+
+// Download button
+.download-button {
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #337ab7;
+  padding: 5px 10px 5px 10px;
+  margin: 21px 0 5px 5px;
+  float: right;
+  border: none;
+}
+
+.download-button a, .download-button a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+
+.download-button:hover {
+  background: #3D96D2;
+  text-decoration: none;
+}
