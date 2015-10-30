@@ -182,8 +182,16 @@ blockquote {
     text-decoration: none;
 }
 
-
 .download-button:hover {
   background: #3D96D2;
   text-decoration: none;
+}
+
+.download-button a:active {
+	background: black;
+	color: white;
+}
+
+:focus {
+	outline: none;
 }
