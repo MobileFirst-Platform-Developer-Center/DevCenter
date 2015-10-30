@@ -170,21 +170,31 @@ blockquote {
   font-family: Arial;
   color: #ffffff;
   font-size: 13px;
-  background: #337ab7;
+  background-color: #337ab7;
   padding: 5px 10px 5px 10px;
   margin: 21px 0 5px 5px;
   float: right;
-  border: none;
+  border: 1px solid #304D84;
+  box-shadow: 0 1px #27496d;
 }
 
 .download-button a, .download-button a:hover {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
 .download-button:hover {
-  background: #3D96D2;
+  background-color: #3D96D2;
   text-decoration: none;
+}
+
+.download-button:active {
+  box-shadow: none;
+  margin-top: 22px;
+}
+
+.glyphicon-download-alt:before {
+    padding: 0 5px 0 0;
 }
 
 :focus {
