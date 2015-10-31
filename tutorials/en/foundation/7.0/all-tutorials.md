@@ -101,7 +101,7 @@ Use Apache Cordova with IBM MobileFirst Platform Foundation, and use native page
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/adding-native-functionality/windows-phone-8-adding-native-functionality-hybrid-application-apache-cordova-plugin/">Windows Phone 8 – Adding native functionality to hybrid application with Apache Cordova plugin</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/adding-native-functionality/windows-phone-8-adding-native-functionality-hybrid-application-apache-cordova-plugin/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
 
-### <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/">Notification</a>
+### <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/">Notifications</a>
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/push-notifications-hybrid-applications/">Push notifications in hybrid applications</a>

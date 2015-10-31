@@ -7,10 +7,6 @@
       "path": "",
       "children": [
         {
-          "name": "Overview",
-          "path": "/overview"
-        },
-        {
           "name": "Quick start",
           "path": "/hello-world"
         },
@@ -45,16 +41,6 @@
         {
           "name": "Moving to production",
           "path": "/moving-to-production",
-          "children": [
-            {
-              "name": "Moving from development environment to stand-alone QA and production servers",
-              "path": "/moving-production/moving-development-environment-stand-alone-qa-production-servers"
-            },
-            {
-              "name": "Distributing mobile applications with Application Center",
-              "path": "distributing-mobile-applications-with-application-center"
-            }
-          ]
         },
       ]
     },

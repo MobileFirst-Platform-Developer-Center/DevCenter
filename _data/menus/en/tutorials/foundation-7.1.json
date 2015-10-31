@@ -7,54 +7,48 @@
       "path": "",
       "children": [
         {
-          "name": "Overview",
-          "path": "/overview"
+          "name": "Setting up the development environment",
+          "path": "/setting-up-your-development-environment"
         },
         {
-          "name": "Quick start",
+          "name": "Hello World",
           "path": "/hello-world"
         },
         {
-          "name": "Setting up the development environment",
-          "path": "/xxx"
-        },
-        {
-          "name": "Adding the MobileFirst SDK",
-          "path": "/xxx"
-        },
-        {
           "name": "Client-side development",
-          "path": "/xxx"
+          "path": "/client-side-development-basics"
+        },
+        {
+          "name": "Advanced client-side development",
+          "path": "/advanced-client-side-development"
         },
         {
           "name": "Server-side development",
-          "path": "/xxx"
+          "path": "/server-side-development"
+        },
+        {
+          "name": "Data",
+          "path": "/data"
+        },
+        {
+          "name": "Adding native functionality",
+          "path": "adding-native-functionality"
         },
         {
           "name": "Notifications",
-          "path": "/xxx"
+          "path": "/notifications"
         },
         {
           "name": "Authentication and security",
-          "path": "/xxx"
+          "path": "/authentication-security"
         },
         {
-          "name": "Analytics",
-          "path": "/analytics"
+          "name": "Advanced topics",
+          "path": "/advanced-topics"
         },
         {
           "name": "Moving to production",
-          "path": "/moving-to-production",
-          "children": [
-            {
-              "name": "Moving from development environment to stand-alone QA and production servers",
-              "path": "/moving-production/moving-development-environment-stand-alone-qa-production-servers"
-            },
-            {
-              "name": "Distributing mobile applications with Application Center",
-              "path": "distributing-mobile-applications-with-application-center"
-            }
-          ]
+          "path": "/moving-production",
         },
       ]
     },
