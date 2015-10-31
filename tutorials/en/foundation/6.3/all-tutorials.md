@@ -91,7 +91,7 @@ title: All Tutorials
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/windows-phone-8-adding-native-functionality-hybrid-application-apache-cordova-plugin/">Windows Phone 8 – Adding native functionality to hybrid application with Apache Cordova plugin</a>
 * <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>
 * <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
-* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/wp8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
+* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/windows-phone-8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/notifications/">Notifications</a>
 <p>Send notifications to your mobile apps with IBM MobileFirst Platform Foundation</p>
