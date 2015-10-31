@@ -11,28 +11,28 @@
           "path": "/hello-world"
         },
         {
-          "name": "Setting up the development environment",
-          "path": "/xxx"
+          "name": "Setting up your development environment",
+          "path": "/setting-up-your-development-environment"
         },
         {
           "name": "Adding the MobileFirst SDK",
-          "path": "/xxx"
+          "path": "/adding-the-mobilefirst-sdk"
         },
         {
           "name": "Client-side development",
-          "path": "/xxx"
+          "path": "/client-side-development"
         },
         {
           "name": "Server-side development",
-          "path": "/xxx"
+          "path": "/server-side-development"
         },
         {
           "name": "Notifications",
-          "path": "/xxx"
+          "path": "/notifications"
         },
         {
           "name": "Authentication and security",
-          "path": "/xxx"
+          "path": "/authentication-and-security"
         },
         {
           "name": "Analytics",
@@ -62,7 +62,7 @@
         },
         {
           "name": "Sample application",
-          "path": "/sample"
+          "path": "/sample-application"
         },
       ]
     },

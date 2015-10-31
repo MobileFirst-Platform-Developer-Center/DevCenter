@@ -27,53 +27,53 @@
       },
       {
         "name": "Quick Start",
-        "path": "/foundation/8.0/hello-world",
+        "path": "",
         "children": [
           {
             "name": "Cordova",
-            "path": "/cordova"
+            "path": "/foundation/8.0/hello-world/cordova"
           },
           {
             "name": "iOS",
-            "path": "/ios"
+            "path": "/foundation/8.0/hello-world/ios"
           },
           {
             "name": "Android",
-            "path": "/android"
+            "path": "/foundation/8.0/hello-world/android"
           },
           {
             "name": "Windows Phone",
-            "path": "/windows-phone"
+            "path": "/foundation/8.0/hello-world/windows-phone"
           },
           {
             "name": "Windows",
-            "path": "/windows"
+            "path": "/foundation/8.0/hello-world/windows"
           },
         ]
       },
       {
         "name": "By Persona",
-        "path": "/persona",
+        "path": "",
         "children": [
           {
             "name": "Cordova",
-            "path": "/cordova"
+            "path": "/foundation/8.0/cordova-tutorials"
           },
           {
             "name": "iOS",
-            "path": "/ios"
+            "path": "/foundation/8.0/ios-tutorials"
           },
           {
             "name": "Android",
-            "path": "/android"
+            "path": "/foundation/8.0/android-tutorials"
           },
           {
             "name": "Windows Phone",
-            "path": "/windows-phone"
+            "path": "/foundation/8.0/windows-phone-tutorials"
           },
           {
             "name": "Windows",
-            "path": "/windows"
+            "path": "/foundation/8.0/windows-tutorials"
           },
         ]
       },
@@ -83,27 +83,23 @@
         "children": [
           {
             "name": "Foundation",
-            "path": "/foundation/8.0"
-          },
-          {
-            "name": "IBM Containers",
-            "path": ""
+            "path": "/foundation"
           },
           {
             "name": "Quality Assurance",
-            "path": ""
+            "path": "/quality-assurance"
           },
           {
             "name": "Cloudant Data Layer",
-            "path": ""
+            "path": "/cloudant"
           },
           {
             "name": "Application Scanning",
-            "path": ""
+            "path": "/application-scanning"
           },
           {
             "name": "Presence Insights",
-            "path": ""
+            "path": "/presence-insights"
           },
         ]
       },
