@@ -1,0 +1,56 @@
+{
+  "name": "Foundation 7.0",
+  "path": "/tutorials/en/foundation/7.0",
+  "children": [
+    {
+      "name": "Foundation",
+      "path": "",
+      "children": [
+        {
+          "name": "Setting up the development environment",
+          "path": "/setting-up-your-development-environment/"
+        },
+        {
+          "name": "Hello World",
+          "path": "/hello-world"
+        },
+        {
+          "name": "Client-side development",
+          "path": "/client-side-development-basics/"
+        },
+        {
+          "name": "Server-side development",
+          "path": "/server-side-development/"
+        },
+        {
+          "name": "Advanced client-side development",
+          "path": "/advanced-client-side-development/"
+        },
+        {
+          "name": "Data",
+          "path": "/data"
+        },
+        {
+          "name": "Adding native functionality",
+          "path": "/adding-native-functionality/"
+        },
+        {
+          "name": "Notifications",
+          "path": "/notifications"
+        },
+        {
+          "name": "Authentication and security",
+          "path": "/authentication-security"
+        },
+        {
+          "name": "Advanced topics",
+          "path": "/advanced-topics"
+        },
+        {
+          "name": "Moving to production",
+          "path": "/moving-production"
+        },
+      ]
+    }
+  ]
+}
