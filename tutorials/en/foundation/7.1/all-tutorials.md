@@ -159,9 +159,8 @@ weight: 1
 <p>Protect your applications and adapter procedures against unauthorized access by using authentication, login modules, and device provisioning.</p>
 
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/authentication-concepts/">Authentication concepts</a>
-
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/authentication-concepts/classic-security-model/" target="_blank">Classic security model</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/authentication-concepts/oauth-based-security-model/" target="_blank">OAuth-based security model</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/authentication-concepts/classic-security-model/" target="_blank">Classic security model</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/authentication-concepts/oauth-based-security-model/" target="_blank">OAuth-based security model</a>
 
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/">Form-based authentication</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-hybrid-applications/">Form-based authentication in hybrid applications</a>
