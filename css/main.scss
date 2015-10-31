@@ -44,7 +44,7 @@ hr {
 	left: auto;
 	margin: auto;
 }
-.btn {
+.custombtn {
 	display: block;
 	width: 300px;
 	background: $color_chambray_approx;
@@ -55,12 +55,16 @@ hr {
 	border: 1px solid $color_chambray_approx;
 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
 	border-radius: 0;
+	text-decoration: none;
+	text-shadow: none;
 	font-size: 70%;
 	font-family: $font_0, $font_1, $font_3, $font_2;
 	font-weight: 300;
 	&:hover {
 		background: $color_rhino_approx;
 		color: $white;
+		text-decoration: none;
+		border: 1px solid $color_chambray_approx;
 	}
 	&.containers {
 		width: 400px;
@@ -156,6 +160,8 @@ blockquote {
 
 .searchfield {
 	float:right;
+
+
 }
 
 @media(max-width: 768px) {
