@@ -53,7 +53,7 @@ title: All Tutorials
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/cast-iron-adapter-communicating-cast-iron/">Cast Iron adapter – Communicating with Cast Iron</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/jms-adapter-communicating-jms/">JMS adapter – Communicating with JMS</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-hybrid-client-applications/">Invoking adapter procedures from hybrid client applications</a>
-* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-native-ios-swift-applications/">Invoking adapter procedures from native iOS Swift applications</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-native-ios-swift-applications/">Invoking adapter procedures from native iOS Swift applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-native-ios-applications/">Invoking adapter procedures from native iOS applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-native-android-applications/">Invoking adapter procedures from native Android applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-native-windows-phone-8-applications/">Invoking adapter procedures from native Windows Phone 8 applications</a>
@@ -89,9 +89,9 @@ title: All Tutorials
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/android-adding-native-functionality-hybrid-application-apache-cordova-plugin/">Android – Adding native functionality to hybrid application with Apache Cordova plugin</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/windows-phone-8-using-native-pages-hybrid-applications/">Windows Phone 8 – Using native pages in hybrid applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/windows-phone-8-adding-native-functionality-hybrid-application-apache-cordova-plugin/">Windows Phone 8 – Adding native functionality to hybrid application with Apache Cordova plugin</a>
-* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>
-* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
-* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/windows-phone-8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/adding-native-functionality/windows-phone-8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/notifications/">Notifications</a>
 <p>Send notifications to your mobile apps with IBM MobileFirst Platform Foundation</p>
@@ -99,7 +99,7 @@ title: All Tutorials
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/notifications/push-notifications-hybrid-applications/">Push notifications in hybrid applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/notifications/push-notifications-native-ios-applications/">Push notifications in native iOS applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/notifications/push-notification-native-android-applications/">Push notifications in native Android applications</a>
-* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/notifications/push-notification-native-windows-phone-8-applications/">Push notifications in native Windows Phone 8 applications</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/notifications/push-notification-native-windows-phone-8-applications/">Push notifications in native Windows Phone 8 applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/notifications/sms-notifications/">SMS Notifications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/notifications/two-way-sms-communication/">Two-way SMS communication</a>
 
@@ -115,7 +115,7 @@ title: All Tutorials
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/device-provisioning-concepts/">Device provisioning concepts</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/custom-device-provisioning/">Custom device provisioning</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/application-authenticity-protection/">Application Authenticity Protection</a>
-* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/offline-authentication/">Offline Authentication</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/offline-authentication/">Offline Authentication</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/client-x-509-certificate-authentication-user-enrollment/">Client X.509 Certificate Authentication and User Enrollment</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a>
 
@@ -131,8 +131,8 @@ title: All Tutorials
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/advanced-topics/container-advanced-pages/">Container for advanced pages</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/advanced-topics/accelerating-application-development-reusing-resources/">Accelerating application development by reusing resources</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/advanced-topics/testing-mobilefirst-mobile-applications-mobile-test-workbench/">Testing MobileFirst Platform applications with IBM MobileFirst Platform Test Workbench</a>
-* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/advanced-topics/device-enrollment/">Device Enrollment</a>
-* <em><strong>NEW:</strong></em> <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/advanced-topics/working-with-ibeacons/">Working with iBeacons</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/advanced-topics/device-enrollment/">Device Enrollment</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/advanced-topics/working-with-ibeacons/">Working with iBeacons</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/moving-production/">Moving to production</a>
 <p>Move the apps that you create from your development environment to the production environment.</p>

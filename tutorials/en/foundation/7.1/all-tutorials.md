@@ -18,14 +18,14 @@ weight: 1
 <p>Create your first MobileFirst app and preview it in different mobile operating systems.</p>
 
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/your-first-hybrid-application/">Your first hybrid application</a>
-* <em>REVISED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/previewing-your-hybrid-application/">Previewing your hybrid application</a>
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Operations Console</a>
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/"> Configuring a native iOS application with the MobileFirst Platform SDK</a>
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/"> Configuring a native Android application with the MobileFirst Platform SDK</a>
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-windows-phone-8-application-with-the-mfp-sdk/">Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a>
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-windows-8-application-with-the-mfp-sdk/">Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK</a>
-* <em>NEW: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
-* <em>NEW:</em> <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/mobilefirstplatform/documentation/getting-started-7-1/hello-world/connecting-to-mobilefirst-server/">Connecting to MobileFirst Server</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/previewing-your-hybrid-application/">Previewing your hybrid application</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Operations Console</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/"> Configuring a native iOS application with the MobileFirst Platform SDK</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/"> Configuring a native Android application with the MobileFirst Platform SDK</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-windows-phone-8-application-with-the-mfp-sdk/">Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-windows-8-application-with-the-mfp-sdk/">Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/mobilefirstplatform/documentation/getting-started-7-1/hello-world/connecting-to-mobilefirst-server/">Connecting to MobileFirst Server</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/">Hybrid client-side development basics</a>
 <p>Use basic MobileFirst APIs to develop Hybrid your apps, build a multipage application, work with the user interface framework, and debug and optimize your apps.</p>
@@ -39,7 +39,7 @@ weight: 1
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/general-information-when-developing-for-android/">General information when developing for Android</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/general-information-when-developing-for-blackberry-10/">General information when developing for BlackBerry 10</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/general-information-when-developing-for-windows-phone-8/">General information when developing for Windows Phone 8</a>
-* <em>NEW:</em> <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/general-information-when-developing-for-windows-universal/">General information when developing for Windows 8 Universal</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/general-information-when-developing-for-windows-universal/">General information when developing for Windows 8 Universal</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/general-information-when-developing-mobile-web-applications/">General information when developing Mobile Web applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/client-side-development-basics/general-information-for-developing-desktop-applications/">General information when developing desktop applications</a>
 
@@ -51,8 +51,8 @@ weight: 1
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/supporting-multiple-form-factors-using-skins/">Supporting multiple form-factors using skins</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/enabling-translation/">Translation</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/using-direct-update-to-quickly-update-your-application/">Using Direct Update to quickly update your application</a>
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-native-android/" target="_blank">Logging in native Android (Java)</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-native-ios/" target="_blank">Logging in native iOS (Objective-C)</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-mobilefirst-hybrid-applications/" target="_blank">Logging in MobileFirst hybrid applications (JavaScript)</a>
@@ -86,8 +86,8 @@ weight: 1
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-ios-swift-applications/">Resource request from native iOS Swift applications</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-ios-applications/">Resource request from native iOS Objective-C applications</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-android-applications/">Resource request from native Android applications</a>
-    * <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-windows-phone-8-applications/">Resource request from native Windows Phone 8 applications</a>
-    * <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-windows-8-applications/">Resource request from native Windows 8 Universal applications</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-windows-phone-8-applications/">Resource request from native Windows Phone 8 applications</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-windows-8-applications/">Resource request from native Windows 8 Universal applications</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/">Invoking adapter procedures from native Java Platform, Micro Editions (Java ME) applications</a>
 
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a>
@@ -104,7 +104,7 @@ weight: 1
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/data/jsonstore/jsonstore-objective-c-api/">Using JSONStore in Native iOS applications</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/data/jsonstore/jsonstore-java-api/">Using JSONStore in Native Android applications</a>
 
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/data/working-with-cloudant-nosql-db-api/ios/">iOS – Cloudant NoSQL DB API</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/data/working-with-cloudant-nosql-db-api/android/">Android – Cloudant NoSQL DB API</a>
 
@@ -125,12 +125,12 @@ weight: 1
 * Adding native UI elements to hybrid applications
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/adding-native-functionality/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/adding-native-functionality/wp8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
-    * <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/adding-native-functionality/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/adding-native-functionality/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/">Notifications</a>
 <p>Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.</p>
 
-* <em>REVISED:</em> <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview">Push Notifications Overview</a>
+*  <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview">Push Notifications Overview</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/">Push notifications in hybrid applications</a>
         * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/event-source-notifications-in-hybrid-applications/">Event Source Notifications in Hybrid Applications</a>
         * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/tag-based-notifications-in-hybrid-applications/">Tag and Broadcast Notifications in Hybrid Applications</a>
@@ -187,21 +187,21 @@ weight: 1
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/websphere-ltpa-based-authentication/">WebSphere LTPA-based authentication</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/device-provisioning-concepts/">Device provisioning concepts</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/custom-device-provisioning/">Custom device provisioning</a>
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/application-authenticity-protection/">Application Authenticity Protection</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/application-authenticity-protection/">Application Authenticity Protection</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/application-authenticity-protection/application-authenticity-protection-hybrid-applications/">Application Authenticity Protection in Hybrid applications</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/application-authenticity-protection/application-authenticity-protection-native-ios/">Application Authenticity Protection in Native iOS applications</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/application-authenticity-protection/application-authenticity-protection-native-android-applications/">Application Authenticity Protection in Native Android applications</a>
     * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-universal-applications/">Application Authenticity Protection in Native Windows Universal applications</a>
 
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/client-x-509-certificate-authentication-user-enrollment/">Client X.509 Certificate Authentication and User Enrollment</a>
-* <em>UPDATED: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/">Advanced topics</a>
 <p>Tutorials showcasing "recipes" of advanced functionalities such as: "Remember Me", Offline authentication, device enrollment, remote loading of dynamic content and more.</p>
 
-* <em>NEW: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/ntlm-authentication/">NTLM Authentication</a>
-* <em>NEW: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/remember-me/">Remember Me</a>
-* <em>NEW: </em><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/two-step-adapter-authentication/">Two-Step adapter authentication</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/ntlm-authentication/">NTLM Authentication</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/remember-me/">Remember Me</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/two-step-adapter-authentication/">Two-Step adapter authentication</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/offline-authentication/">Offline Authentication</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/device-enrollment/">Device Enrollment</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/working-with-beacons/">Working with Beacons</a>
