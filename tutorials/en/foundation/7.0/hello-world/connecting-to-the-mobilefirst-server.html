@@ -28,28 +28,28 @@ WL.Client.connect(
 [[WLClient sharedInstance] wlConnectWithDelegate:myConnectListener];
 {% endhighlight %}
 
-Where <code>myConnectListener</code> is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.
+<p>Where <code>myConnectListener</code> is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 
 <h3>Swift</h3>
 {% highlight swift %}
 WLClient.sharedInstance().wlConnectWithDelegate(myConnectListener)
 {% endhighlight %}
 
-Where <code>myConnectListener</code> is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.
+<p>Where <code>myConnectListener</code> is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 
 <h3>Java</h3>
 {% highlight java %}
 WLClient.createInstance(this).connect(myConnectListener);
 {% endhighlight %}
 
-Where <code>myConnectListener</code> in an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.
+<p>Where <code>myConnectListener</code> in an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 
 <h3>C#</h3>
 {% highlight c# %}
 WLClient.getInstance().connect(myConnectListener);
 {% endhighlight %}
 
-Where <code>myConnectListener</code> in an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.
+<p>Where <code>myConnectListener</code> in an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 
 <blockquote>For detailed examples of connecting to the MobileFirst Server, <a href="/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/" title="Server-side development">see the Invoking Adapter Procedures tutorials</a>.</blockquote>
 
