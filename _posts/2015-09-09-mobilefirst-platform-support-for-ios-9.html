@@ -1,137 +1,160 @@
 ---
-
 title: IBM MobileFirst Platform Foundation support for iOS 9
 date: 2015-09-09 12:00:01.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Playground
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '9037'
-  _rawhtml_settings: '0,0,0,0'
-  _oembed_42e044bddeeaa0e11388196440817f0c: "{{unknown}}"
-  _oembed_c90cec6e0e44c6680c1ecc4442566a2d: "{{unknown}}"
-  _wpas_done_all: '1'
-  _wp_old_slug: mobilefirst-platform-support-for-ios-9-beta-1-status-report
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442502385;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:3550;}i:1;a:1:{s:2:"id";i:14955;}i:2;a:1:{s:2:"id";i:14774;}}}}
+- iOS 9
 author:
-  login: iadar@il.ibm.com
-  email: IADAR@il.ibm.com
-  display_name: IdanAdar
-  first_name: IDAN
-  last_name: ADAR
+  display_name: Idan Adar
 ---
 <blockquote><strong>Note:</strong> Apps that are built with IBM MobileFirst Platform Foundation v6.0 to v7.1 are supported on iOS 9 GM Seed build. </p></blockquote>
+
 <p>This blog details iOS 9 support in MobileFirst Platform v6.0 to v7.1, and the steps that developers and IT administrators might need to take.</p>
+
 <p><strong>Disclaimer:</strong><br />
 Some of the action items that are addressed in the list below are not under IBM’s control. Therefore, we expect developers and IT managers to ensure that their infrastructure is up-to-date according to Apple’s requirements.</p>
-<h2>Existing apps</h2>
+
+<h3>Existing apps</h3>
 <p>Existing apps that were created using MobileFirst Platform v6.0 or later will work on iOS9 as they did on previous versions of iOS.<br />
+
 There is one exception: If the app uses extended application authenticity protection, you must upgrade to Xcode 7 and apply an interim fix. <a href="#iFixes">Detailed steps here</a>.</p>
-<h2>Updating apps on the App Store (with Xcode 6.4)</h2>
+
+<h3>Updating apps on the App Store (with Xcode 6.4)</h3>
 <p>If you do not use extended application authenticity protection, you can opt to build apps with Xcode 6.4 and republish to the App Store.</p>
-<h2>Updating existing apps or submitting new apps on the App Store (with Xcode7 and iOS 9 features)</h2>
+
+<h3>Updating existing apps or submitting new apps on the App Store (with Xcode7 and iOS 9 features)</h3>
 <p>Review the following sections to learn what actions you need to take so that your app can support iOS 9.</p>
-<h3>Bitcode</h3>
+
+<h4>Bitcode</h4>
 <p>iOS9 introduces a new feature called <em>bitcode</em>, an intermediate code uploaded to the Apple App Store. Apple compiles the bitcode of the application to optimize it for each type of devices. To learn more about bitcode, see the Apple documentation.</p>
+
 <p>At this time, the IBM MobileFirst Platform SDK <strong>does not support bitcode</strong>. Your application will fail to build with Xcode 7 unless you disable bitcode. If bitcode is enabled, you will see an error message.</p>
-<h3>Action required</h3>
+
+<h4>Action required</h4>
 <p>Disable bitcode for your project: In Xcode, select <strong>Build Settings &gt; Build Options</strong> and set <strong>Enable Bitcode</strong> to <strong>No</strong>.</p>
-<h2>Application Transport Security (ATS)</h2>
+
+<h3>Application Transport Security (ATS)</h3>
 <p>Your application will not be able to communicate with the back end by using plain HTTP or older SSL/TLS protocols.</p>
-<h3>Details</h3>
+
+<h4>Details</h4>
 <p>The new Application Transport Security feature helps to ensure that the communication layer between your app and the server is protected in the best possible way. No client-side modifications are required to support this feature, however you should make sure that your server is protected by the latest Transport Layer Security technology called <a href="https://en.wikipedia.org/wiki/Transport_Layer_Security#TLS_1.2" target="_blank">TLS1.2</a> with <a href="https://en.wikipedia.org/wiki/Forward_secrecy" target="_blank">forward secrecy</a>.</p>
+
 <p>ATS is activated automatically if your application targets iOS 9. If your server does not meet Apple’s requirements, you might see the following message in the Xcode Console:</p>
-<blockquote><p>CFNetwork SSLHandshake failed (-9801)<br />
-Error Domain=NSURLErrorDomain Code=-1200 "An SSL error has occurred and a secure connection to the server cannot be made."  Application Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.</p></blockquote>
-<h3>Action required</h3>
+
+<blockquote>CFNetwork SSLHandshake failed (-9801)<br />
+Error Domain=NSURLErrorDomain Code=-1200 "An SSL error has occurred and a secure connection to the server cannot be made." Application Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.</blockquote>
+
+<h4>Action required</h4>
 <p>To handle ATS in MobileFirst Server or to work around the enforcement for development server, read this blog post: <a href="https://developer.ibm.com/mobilefirstplatform/2015/09/07/preparing-ibm-mobilefirst-platform-server-app-transport-security-ios-9/" target="_blank">How to enable App Transport Security for iOS 9 in IBM MobileFirst Platform Server</a>.</p>
-<h2>Extended application authenticity protection</h2>
+
+<h3>Extended application authenticity protection</h3>
 <p>Applications that are built with MobileFirst Platform Foundation v7.0 or v7.1 and configured with <em>extended app authenticity protection</em> might fail to connect to MobileFirst Server if you are running on an iOS 9 device.</p>
-<h3>Details</h3>
+
+<h4>Details</h4>
 <p>iOS apps that are uploaded to Apple App Store contain multiple binary slices for multiple device architectures. For devices running iOS 9, the required slices are downloaded, making the application significantly smaller than it is today.</p>
+
 <p>The MobileFirst extended app authenticity protection feature uses the <code>.ipa</code> file that is uploaded to the App Store and the application binary that is installed on the device.</p>
+
 <p>As a result of the changes done in iOS 9, the extended authenticity test might produce a false condition, thus not allowing the application to connect to the MobileFirst Server instance.</p>
-<h3 id="iFixes">Action required</h3>
+
+<h4 id="iFixes">Action required</h4>
 <p>Apply the following interim fixes to resolve the issue and continue to use extended authenticity protection with iOS 9.</p>
+
 <ul>
-<li>
-<a href="http://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%2Bsoftware&amp;product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&amp;release=7.0.0.0&amp;platform=All&amp;function=all" target="_blank">MobileFirst Platform v7.0.0.0</a></li>
-<li><a href="http://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%2Bsoftware&amp;product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&amp;release=7.1.0.0&amp;platform=All&amp;function=all" target="_blank">MobileFirst Platform v7.1.0.0</a></li>
+    <li><a href="http://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%2Bsoftware&amp;product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&amp;release=7.0.0.0&amp;platform=All&amp;function=all" target="_blank">MobileFirst Platform v7.0.0.0</a></li>
+    <li><a href="http://www.ibm.com/support/fixcentral/swg/selectFixes?parent=ibm~Other%2Bsoftware&amp;product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&amp;release=7.1.0.0&amp;platform=All&amp;function=all" target="_blank">MobileFirst Platform v7.1.0.0</a></li>
 </ul>
-<p><strong>Note:</strong><br />
-The Application Center client needs no modification for iOS 9.<br />
+
+<p><strong>Note:</strong> The Application Center client needs no modification for iOS 9.<br />
 The Application Center WAR files that are installed in the server need no modification for iOS 9.</p>
-<h2>IPv6 support</h2>
+
+<h3>IPv6 support</h3>
 <p>Apple requires IPv6 support for all iOS 9 applications. Support for IPv6 is one of the prerequisites for successfully passing App Store review. Currently, it looks like this requirement does not apply if you are not deploying your application through App Store, for example if you are using IBM Application Center or another means of enterprise distribution.</p>
-<h3>Details</h3>
+
+<h4>Details</h4>
 <p>You can watch the official announcement in this <a href="https://developer.apple.com/videos/wwdc/2015/?id=102" target="_blank">Platforms State of the Union</a> video (at <code>https://developer.apple.com/videos/wwdc/2015/?id=10</code>2, starting at 35:10). Some carriers across the globe are starting to deploy IPv6-only networks. If your application does not support IPv6, it will simply not work.</p>
+
 <p><strong>Action required</strong><br />
 Apple recommends to check the following points. You might need to modify your application code accordingly:</p>
+
 <ul>
-<li>Use the networking frameworks provided by Apple (for example, <code>NSURLSession</code>).</li>
-<li>Avoid using IPv4-specific APIs.</li>
-<li>Avoid hard-coding IP addresses.</li>
+    <li>Use the networking frameworks provided by Apple (for example, <code>NSURLSession</code>).</li>
+    <li>Avoid using IPv4-specific APIs.</li>
+    <li>Avoid hard-coding IP addresses.</li>
 </ul>
+
 <p><strong>Note:</strong> In most cases, no or minimal work is required to comply with this requirement. If you have applied best practices and used APIs provided by Apple, everything will continue to work. That said, it is important to distinguish the following cases:</p>
+
 <ul>
-<li>For using MobileFirst SDK APIs, no code change is necessary. However, you might need to make sure that your server is referred to by a DNS name and not an IPv4 address.</li>
-<li>If you make server requests by any means other than MobileFirst SDK, such as <code>NSURLSession</code>, <code>NSURLConnection</code>, <code>AFNetworking</code>, you might need to manually adjust those invocations according to Apple’s recommendations in order to support IPv6.</li>
+    <li>For using MobileFirst SDK APIs, no code change is necessary. However, you might need to make sure that your server is referred to by a DNS name and not an IPv4 address.</li>
+    <li>If you make server requests by any means other than MobileFirst SDK, such as <code>NSURLSession</code>, <code>NSURLConnection</code>, <code>AFNetworking</code>, you might need to manually adjust those invocations according to Apple’s recommendations in order to support IPv6.</li>
 </ul>
+
 <p>To help developers in testing IPv6 support in their apps, Apple provides a way to enable a WiFi hotspot on Mac. This facility works in IPv6-only mode. The topic of IPv6 support was discussed in more detail in a “Your App and Next Generation Networks” session. You can watch it here: <a href="https://developer.apple.com/videos/wwdc/2015/?id=719" target="_blank">WWDC 2015</a>.</p>
-<p><strong>Additional information:</strong><br />
-<a href="http://www.internetsociety.org/deploy360/blog/2015/06/apple-will-require-ipv6-support-for-all-ios-9-apps/" target="_blank"> Apple will require ipv6 support for all iOS9 apps</a> and <a href="http://www.internetsociety.org/deploy360/blog/2015/06/video-of-apple-wwdc-session-about-ipv6-and-ios-9-now-available-and-some-screenshots/" target="_blank"> WWDC 2015 ipv6 session</a>.</p>
-<h2>NSURLSession</h2>
+
+<p><strong>Additional information:</strong><br /> <a href="http://www.internetsociety.org/deploy360/blog/2015/06/apple-will-require-ipv6-support-for-all-ios-9-apps/" target="_blank"> Apple will require ipv6 support for all iOS9 apps</a> and <a href="http://www.internetsociety.org/deploy360/blog/2015/06/video-of-apple-wwdc-session-about-ipv6-and-ios-9-now-available-and-some-screenshots/" target="_blank"> WWDC 2015 ipv6 session</a>.</p>
+
+<h3>NSURLSession</h3>
 <p>The <code>NSURLConnection</code> API is <strong>deprecated</strong>.</p>
-<h3>Action required</h3>
+
+<h4>Action required</h4>
 <p>If you use the MobileFirst SDK for making requests to your server, you don't have to worry about it. However, if you use <code>NSURLConnection</code> in your application code, you might want to consider updating it to a newer version of the <code>NSURLSession</code> API.</p>
+
 <p><strong>Additional information</strong><br />
 <a href="https://developer.apple.com/videos/wwdc/2015/?id=711" target="_blank">WWDC 2015</a>.</p>
-<h2>Apps using Dojo </h2>
+
+<h3>Apps using Dojo </h3>
 <p>Apps that are built with Dojo 1.10.x and 1.9.x continue to work in iOS 9, except for some minor issues.</p>
-<h3>Action required</h3>
+
+<h4>Action required</h4>
 <p>The following minor issues have been observed:</p>
+
 <ul>
-<li>There is a theme detection issue, which hurts only when non-custom themes are used with 1.10.x, not 1.9.x. Details and a workaround are available on this <a href="https://bugs.dojotoolkit.org/ticket/18669" target="_blank">Dojo Toolkit</a> page, at <code>https://bugs.dojotoolkit.org/ticket/18669</code>.
- </li>
-<li>If you tap an item before the animation finishes, this action might cause an incorrect transition. Details and a workaround are available on this <a href="https://bugs.dojotoolkit.org/ticket/18681" target="_blank">Dojo Toolkit</a> page, at <code>https://bugs.dojotoolkit.org/ticket/18681</code>.</li>
+    <li>There is a theme detection issue, which hurts only when non-custom themes are used with 1.10.x, not 1.9.x. Details and a workaround are available on this <a href="https://bugs.dojotoolkit.org/ticket/18669" target="_blank">Dojo Toolkit</a> page, at <code>https://bugs.dojotoolkit.org/ticket/18669</code>.
+    </li>
+    <li>If you tap an item before the animation finishes, this action might cause an incorrect transition. Details and a workaround are available on this <a href="https://bugs.dojotoolkit.org/ticket/18681" target="_blank">Dojo Toolkit</a> page, at <code>https://bugs.dojotoolkit.org/ticket/18681</code>.</li>
 </ul>
-<h2>IBM Application Center</h2>
+
+<h3>IBM Application Center</h3>
 <p>IBM Application Center from MobileFirst Platform Foundation, versions 6.0 - 7.1 works with iOS 9 under the following conditions:</p>
+
 <ul>
-<li>
-<h4>Apache Tomcat server:</h4>
-<p>The server runs as expected with IBM Java 6, IBM Java 7, IBM Java 8, and Oracle Java 7.<br />
+    <li><h4>Apache Tomcat server:</h4>
+        <p>The server runs as expected with IBM Java 6, IBM Java 7, IBM Java 8, and Oracle Java 7.<br />
 TLS 1.2 is enabled in the web server/application server.<br />
 Oracle Java 6 is not supported in combination with iOS 9 because it does not support TLS 1.2.<br />
 Oracle Java 8 can be supported only with a modified Weak DH/LogJam vulnerability fix.
-</li>
-<li>
-<h4>Websphere Liberty Profile server:</h4>
-<p>The server runs as expected with IBM Java 6, IBM Java 7, IBM Java 8, Oracle Java 7, and Oracle Java 8.</p>
-<p>Among other protocols, TLS 1.2 is enabled. In practice, for older devices or non-iOS devices to be supported, you should also enable TLS 1 and TLS 1.1.</p>
-<p>If no firewall or web server is present, then Oracle Java is preferred because Android 5 devices work better with Oracle Java. iOS 9 can communicate with both IBM Java and Oracle Java.</li>
-<li>
-<h4>Websphere Full Profile Server:</h4>
-<p>The server runs as expected with IBM Java, included in WebSphere.</p>
-<p>Among other protocols, TLS 1.2 is enabled. In practice, for older devices or non-iOS devices to be supported, you should also enable TLS 1 and TLS 1.1.</li>
+    </li>
+    <li><h4>Websphere Liberty Profile server:</h4>
+        <p>The server runs as expected with IBM Java 6, IBM Java 7, IBM Java 8, Oracle Java 7, and Oracle Java 8.</p>
+        <p>Among other protocols, TLS 1.2 is enabled. In practice, for older devices or non-iOS devices to be supported, you should also enable TLS 1 and TLS 1.1.</p>
+        <p>If no firewall or web server is present, then Oracle Java is preferred because Android 5 devices work better with Oracle Java. iOS 9 can communicate with both IBM Java and Oracle Java.
+    </li>
+    <li><h4>Websphere Full Profile Server:</h4>
+        <p>The server runs as expected with IBM Java, included in WebSphere.</p>
+        <p>Among other protocols, TLS 1.2 is enabled. In practice, for older devices or non-iOS devices to be supported, you should also enable TLS 1 and TLS 1.1.
+    </li>
 </ul>
-<h2>IBM MobileFirst Test Workbench</h2>
+
+<h3>IBM MobileFirst Test Workbench</h3>
 <p>The MobileFirst Test Workbench plug-in currently does not support iOS 9 testing.</p>
-<h2>WatchOS 2</h2>
+
+<h3>WatchOS 2</h3>
 <p>Apple has released a beta preview of WatchOS 2, a new version of the Watch operating system for Apple Watch.</p>
-<h3>Details</h3>
+
+<h4>Details</h4>
 <p>In WatchOS 1, a WatchKit app had two parts:</p>
+
 <ul>
-<li>WatchKit app: Application storyboards and resources residing on an Apple Watch.</li>
-<li>WatchKit extension: Application code running on an iPhone</li>
+    <li>WatchKit app: Application storyboards and resources residing on an Apple Watch.</li>
+    <li>WatchKit extension: Application code running on an iPhone</li>
 </ul>
+
 <p>For more information, see the <a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/DesigningaWatchKitApp.html" target="_blank">WatchKit App Architecture</a> article in the Apple documentation.</p>
-<h3>Action required</h3>
+
+<h4>Action required</h4>
 <p>Starting with WatchOS 2, a new application model is introduced, called <strong>native Watch Applications</strong>, where application code directly runs in the Apple Watch. Though your WatchOS 1 apps might still be supported, our suggestion would be to upgrade your existing Watch apps to native watch application model for best application performance.</p>
 <p><strong>Note:</strong> At this time, the IBM MobileFirst Platform SDK does not support bitcode, therefore it does not support WatchOS 2 apps.</p>
-<h3> Additional information</h3>
+
+<h4> Additional information</h4>
 <p><a href="https://developer.apple.com/videos/wwdc/2015/?id=105" target="_blank">WWDC 2015</a>.</p>

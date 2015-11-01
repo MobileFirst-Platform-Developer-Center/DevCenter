@@ -1,44 +1,46 @@
 ---
-
 title: MobileFirst Platform support for Android Marshmallow
 date: 2015-08-28 15:34:10.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Playground
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '10919'
-  _rawhtml_settings: '0,0,0,0'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442502835;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:14955;}i:1;a:1:{s:2:"id";i:14774;}i:2;a:1:{s:2:"id";i:15481;}}}}
+- Android
+- Marshmallow
 author:
-  login: bhdevdas@in.ibm.com
-  email: bhdevdas@in.ibm.com
-  display_name: Bharat-Devdas
-  first_name: Bharat
-  last_name: Devdas
+  display_name: Bharat Devdas
 ---
 <blockquote>This blog post will be continuously updated with the latest updates from testing IBM MobileFirst Platform Foundation with Android Marshmallow</p></blockquote>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/android_m_hero_1200.jpg"><img src="{{ site.baseurl }}/assets/backup/android_m_hero_1200-300x166.jpg" alt="android_m_hero_1200" width="300" height="166" class="alignright size-medium wp-image-16875" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/android_m_hero_1200-300x166.jpg" class="img_responsive" />
+
 <p><a href="http://developer.android.com/preview/index.html">Android M</a> AKA "Marshmallow" aka Android 6.0 has been confirmed by Google and the <a href="http://developer.android.com/preview/download.html">final preview build</a> has also been released along with the Android 6.0 SDK. IBM is working on ensuring the MobileFirst Platform Foundation Android SDK is fully Android M compliant.</p>
+
 <p><a href="http://www-01.ibm.com/support/docview.wss?uid=swg27045489">IBM MobileFirst Platform Foundation currency support for a new version of a mobile operating system</a></p>
+
 <p>The following areas have been verified on final preview of Android M: Push Notifications, Server connectivity, Form-, Adapter- and Custom-based authentication flows, Offline storages - JSON store and Encrypted cache, Device Provisioning, Cordova plug-ins, Direct Update, Location-based Services, common UI Controls, Application authenticity and management and other Foundation features.</p>
+
 <p>All existing MobileFirst Applications will work fine on Android M Preview.</p>
+
 <h2>What to expect?</h2>
 <h3>New permissions model</h3>
 <p>Prior to Android M users were supposed to approve permissions the app required at install time. Starting with Android M some of the most sensitive permissions will require users to grant approval during runtime, when the permission is first required. A popup dialog will be displayed.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/app-permissions-1.jpg"><img src="{{ site.baseurl }}/assets/backup/app-permissions-1-1024x520.jpg" alt="app-permissions-1" width="980" height="498" class="alignnone size-large wp-image-16867" /></a></p>
+
+<p><img src="{{ site.baseurl }}/assets/backup/app-permissions-1-1024x520.jpg" class="img_responsive" />
+
 <p>You can always remove a granted permission from Settings -> App -> YourApplication -> Permissions. During runtime if for some reason you chose to deny permission, you will be prompted again when the application tries the same operation or you can change the permissions in the Permissions section of the Application in Settings.</p>
+
 <p>Cordova has a known issue with requesting permissions at runtime. Cordova team is working on resolving the issue. As long as the Android project is built with Target SDK Level less than 23, the application will continue to use the old permission model. The application will continue to work as expected even on an Android M device.</p>
+
 <p>Look out for more information about the Cordova resolution in this blog.</p>
+
 <h3>Apache HTTP Client Removal</h3>
 <p>Android M is removing support for the Apache HTTP client. MobileFirst Platform Android SDK uses the Apache HTTP client APIs.<br />
 Android M provides a HTTP client stub in the place of the apache HTTP client to support existing applications. All applications built with targetSdkVersion set to 22 or lower will continue to work as it is.</p>
+
 <p>IBM is working to ensure that MobileFirst Platform Android SDK HTTP connectivity is Android M compliant and works seamlessly as before. This blog post will be updated with further details.</p>
+
 <h3>Auto Backup for Apps</h3>
 <p>Auto Backup for Apps makes seamless app data backup and restore possible with zero lines of application code. This feature will be available on Android devices running the upcoming M release. All you need to do to enable it for your app is update the targetSdkVersion to 23.</p>
+
 <p>By default, all of the data files of an app are automatically copied out to a user’s Google Drive. MobileFirst Platform Android SDK doesn't allow the backup of application data.</p>
+
 <p>Images: Portions of this page are reproduced from work created and shared by the Android Open Source Project and used according to terms described in the <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons 2.5 Attribution License</a>.</p>

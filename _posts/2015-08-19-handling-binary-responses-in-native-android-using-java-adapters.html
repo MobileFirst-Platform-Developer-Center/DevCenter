@@ -1,133 +1,143 @@
 ---
-
 title: Handling binary responses in native Android using Java adapters
 date: 2015-08-19 11:06:49.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6637'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
+- Binary
+- Java
+- Adapters
+- Android
 author:
-  login: nathanh@il.ibm.com
-  email: NATHANH@il.ibm.com
   display_name: Nathan Hazout
-  first_name: NATHAN
-  last_name: HAZOUT
 ---
-<p>This is a follow up to <a href="https://developer.ibm.com/mobilefirstplatform/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">Handling binary responses in native iOS using Java adapters</a>.</p>
-<p>Starting with MobileFirst Platform 7.0, you can send and receive arbitrary data to your client’s device using <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/server-side-development-category/java-adapter/" target="_blank">Java Adapters</a>.</p>
-<h2>Overview</h2>
-<p>In this example, I will show a native Android application that can convert a string to a <a href="http://en.wikipedia.org/wiki/QR_code" target="_blank">QR code</a>.<br />
-The user will input a string (for example a URL), submit it to the Java Adapter, which will in turn send an image representing the QR code.<br />
-The Android application will handle the binary data and display the image.</p>
-<h2>Adapter code</h2>
-<p>This section is the same as the <a href="https://developer.ibm.com/mobilefirstplatform/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">iOS version</a>.<br />
-I've created a MobileFirst project called <code>BinaryResponse</code>. In it I've added a Java Adapter called <code>QR</code>.</p>
-<p>To make the QR generation easier, I am using the <a href="https://github.com/zxing/zxing" target="_blank">ZXing</a> library. I've copied <a href="http://repo1.maven.org/maven2/com/google/zxing/core/3.2.0/core-3.2.0.jar" target="_blank">core-3.2.0.jar</a> and <a href="http://repo1.maven.org/maven2/com/google/zxing/javase/3.2.0/javase-3.2.0.jar" target="_blank">javase-3.2.0.jar</a> into the <code>lib</code> folder of my adapter.</p>
-<p>I left <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRApplication.java" target="_blank"><code>QRApplication.java</code></a> as-is and wrote my code in <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRResource.java" target="_blank"><code>QRResource.java</code></a>.</p>
-<p>[code title="QRResource.java" lang="java"]<br />
-@Path(&quot;/&quot;)<br />
-public class QRResource {</p>
-<p>	//Define logger (Standard java.util.Logger)<br />
-	static Logger logger = Logger.getLogger(QRResource.class.getName());</p>
-<p>    //Define the server api to be able to perform server operations<br />
-    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();</p>
-<p>	@GET<br />
-	@Path(&quot;/{itemId}&quot;)<br />
-	@Produces(&quot;image/png&quot;)<br />
-	public Response getQR(@PathParam(value=&quot;itemId&quot;) String id) throws WriterException, IOException{<br />
-		QRCodeWriter writter = new QRCodeWriter();</p>
-<p>		ByteArrayOutputStream stream = new ByteArrayOutputStream();</p>
-<p>		BitMatrix bitMatrix = writter.encode(id, BarcodeFormat.QR_CODE, 200, 200);</p>
-<p>		MatrixToImageWriter.writeToStream(bitMatrix, &quot;png&quot;, stream);</p>
-<p>		return Response.ok(stream.toByteArray(), &quot;image/png&quot;).build();<br />
-	}</p>
-<p>}<br />
-[/code]</p>
-<p>I used <code>@Path("/")</code> at line 1 to define that the URL path for my resource should just be /adapters/adapterName.<br />
-The adapter resource file contains only one method, <code>getQR</code>, which can be accessed via <code>HTTP GET</code> using the path <code>@Path("/{itemId}")</code> at line 11, where <code>itemId</code> is the string provided by the user.</p>
-<p>The method uses <code>@Produces("image/png")</code> and automatically adds the <code>image/png</code> Content-Type in the response.</p>
-<p>The implementation details of this method are out of scope and can be understood from the ZXing documentation. All I did was use <code>QRCodeWriter</code> to encode the string to a 200 by 200 bar code. The resulting stream is returned in the response.</p>
-<h2>Android Studio Project</h2>
-<p>I've created a new Android project named <code>BinaryResponse</code> and <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/">configured it to use MobileFirst Platform</a>.</p>
-<p>The UI simply shows an <code>EditText</code> to enter the string, a <code>Button</code> to trigger the request and a <code>ImageView</code> to display the generated QRCode.</p>
-<p>[code lang="java" title="MainActivity.java"]<br />
-    @Override<br />
-    protected void onCreate(Bundle savedInstanceState) {<br />
-        super.onCreate(savedInstanceState);<br />
-        setContentView(R.layout.activity_main);</p>
-<p>        WLClient client = WLClient.createInstance(this);</p>
-<p>        buttonInvoke = (Button)findViewById(R.id.generate);<br />
-        codeInput = (EditText)findViewById(R.id.code);<br />
-        imageView = (ImageView)findViewById(R.id.imageView);<br />
-        final MainActivity activity = this;</p>
-<p>        buttonInvoke.setOnClickListener(new View.OnClickListener() {<br />
-            @Override<br />
-            public void onClick(View v) {<br />
-                try {<br />
-                    Editable input = codeInput.getText();<br />
-                    String code = URLEncoder.encode(input.toString(), &quot;utf-8&quot;);<br />
-                    URI adapterPath = new URI(&quot;/adapters/QR/&quot; + code);<br />
-                    WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
-                    request.send(new MyInvokeListener(activity));<br />
-                } catch (URISyntaxException e) {<br />
-                    e.printStackTrace();<br />
-                } catch (UnsupportedEncodingException e) {<br />
-                    e.printStackTrace();<br />
-                }</p>
-<p>            }<br />
-        });</p>
-<p>    }<br />
-[/code]</p>
-<p>Clicking on the Generate button creates a <code>WLResourceRequest</code> that points to the adapter URL, with the user provided string appended.</p>
-<p>I used <code>send(WLHttpResponseListener)</code> and created a new class called <code>MyInvokeListener</code> to handle the response.</p>
-<p><a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/android/BinaryResponse/app/src/main/java/com/sample/binaryresponse/MyInvokeListener.java" target="_blank"><code>MyInvokeListener</code></a> implements <code>WLHttpResponseListener</code>.</p>
-<p>[code lang="java" title="MyInvokeListener.java"]<br />
-    public MyInvokeListener(MainActivity activity) {<br />
-        Log.v(TAG, &quot;MyInvokeListener constructor&quot;);<br />
-        this.activity = activity;<br />
-    }</p>
-<p>    @Override<br />
-    public void onFailure(HttpResponse httpResponse, Exception e) {<br />
-        Log.v(TAG, &quot;onFailure&quot;);<br />
-    }</p>
-<p>    @Override<br />
-    public void onSuccess(HttpResponse httpResponse) {<br />
-        Log.v(TAG, &quot;onSuccess&quot;);<br />
-        HttpEntity entity = httpResponse.getEntity();<br />
-        try {<br />
-            InputStream content = entity.getContent();<br />
-            activity.setImage(content);</p>
-<p>        } catch (IOException e) {<br />
-            e.printStackTrace();<br />
-        }<br />
-    }<br />
-[/code]</p>
+This is a follow up to <a href="https://developer.ibm.com/mobilefirstplatform/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">Handling binary responses in native iOS using Java adapters</a>.
+
+Starting with MobileFirst Platform 7.0, you can send and receive arbitrary data to your client’s device using <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/server-side-development-category/java-adapter/" target="_blank">Java Adapters</a>.
+
+<h3>Overview</h3>
+In this example, I will show a native Android application that can convert a string to a <a href="http://en.wikipedia.org/wiki/QR_code" target="_blank">QR code</a>.
+The user will input a string (for example a URL), submit it to the Java Adapter, which will in turn send an image representing the QR code.
+The Android application will handle the binary data and display the image.
+
+<h3>Adapter code</h3>
+This section is the same as the <a href="https://developer.ibm.com/mobilefirstplatform/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">iOS version</a>.
+I've created a MobileFirst project called <code>BinaryResponse</code>. In it I've added a Java Adapter called <code>QR</code>.
+
+To make the QR generation easier, I am using the <a href="https://github.com/zxing/zxing" target="_blank">ZXing</a> library. I've copied <a href="http://repo1.maven.org/maven2/com/google/zxing/core/3.2.0/core-3.2.0.jar" target="_blank">core-3.2.0.jar</a> and <a href="http://repo1.maven.org/maven2/com/google/zxing/javase/3.2.0/javase-3.2.0.jar" target="_blank">javase-3.2.0.jar</a> into the <code>lib</code> folder of my adapter.
+
+I left <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRApplication.java" target="_blank"><code>QRApplication.java</code></a> as-is and wrote my code in <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRResource.java" target="_blank"><code>QRResource.java</code></a>.
+
+{% highlight java %}
+@Path("/")
+public class QRResource {
+	//Define logger (Standard java.util.Logger)
+	static Logger logger = Logger.getLogger(QRResource.class.getName());
+    //Define the server api to be able to perform server operations
+    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
+	@GET
+	@Path("/{itemId}")
+	@Produces("image/png")
+	public Response getQR(@PathParam(value="itemId") String id) throws WriterException, IOException{
+		QRCodeWriter writter = new QRCodeWriter();
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		BitMatrix bitMatrix = writter.encode(id, BarcodeFormat.QR_CODE, 200, 200);
+		MatrixToImageWriter.writeToStream(bitMatrix, "png", stream);
+		return Response.ok(stream.toByteArray(), "image/png").build();
+	}
+}
+{% endhighlight %}
+
+I used <code>@Path("/")</code> at line 1 to define that the URL path for my resource should just be /adapters/adapterName.
+The adapter resource file contains only one method, <code>getQR</code>, which can be accessed via <code>HTTP GET</code> using the path <code>@Path("/{itemId}")</code> at line 11, where <code>itemId</code> is the string provided by the user.
+
+The method uses <code>@Produces("image/png")</code> and automatically adds the <code>image/png</code> Content-Type in the response.
+
+The implementation details of this method are out of scope and can be understood from the ZXing documentation. All I did was use <code>QRCodeWriter</code> to encode the string to a 200 by 200 bar code. The resulting stream is returned in the response.
+
+<h3>Android Studio Project</h3>
+I've created a new Android project named <code>BinaryResponse</code> and <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/">configured it to use MobileFirst Platform</a>.
+
+The UI simply shows an <code>EditText</code> to enter the string, a <code>Button</code> to trigger the request and a <code>ImageView</code> to display the generated QRCode.
+
+{% highlight java %}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        WLClient client = WLClient.createInstance(this);
+        buttonInvoke = (Button)findViewById(R.id.generate);
+        codeInput = (EditText)findViewById(R.id.code);
+        imageView = (ImageView)findViewById(R.id.imageView);
+        final MainActivity activity = this;
+        buttonInvoke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Editable input = codeInput.getText();
+                    String code = URLEncoder.encode(input.toString(), "utf-8");
+                    URI adapterPath = new URI("/adapters/QR/" + code);
+                    WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
+                    request.send(new MyInvokeListener(activity));
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+{% endhighlight %}
+
+<p>Clicking on the Generate button creates a <code>WLResourceRequest</code> that points to the adapter URL, with the user provided string appended.<br/>
+I used <code>send(WLHttpResponseListener)</code> and created a new class called <code>MyInvokeListener</code> to handle the response.</p>
+
+<a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/android/BinaryResponse/app/src/main/java/com/sample/binaryresponse/MyInvokeListener.java" target="_blank"><code>MyInvokeListener</code></a> implements <code>WLHttpResponseListener</code>.
+
+{% highlight java %}
+    public MyInvokeListener(MainActivity activity) {
+        Log.v(TAG, "MyInvokeListener constructor");
+        this.activity = activity;
+    }
+    @Override
+    public void onFailure(HttpResponse httpResponse, Exception e) {
+        Log.v(TAG, "onFailure");
+    }
+    @Override
+    public void onSuccess(HttpResponse httpResponse) {
+        Log.v(TAG, "onSuccess");
+        HttpEntity entity = httpResponse.getEntity();
+        try {
+            InputStream content = entity.getContent();
+            activity.setImage(content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+{% endhighlight %}
+
 <p>The <code>onSuccess</code> method receives a raw <code>HttpResponse</code> object. The content is extracted as an <code>InputStream</code>.</p>
+
 <p>Back in the <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/android/BinaryResponse/app/src/main/java/com/sample/binaryresponse/MainActivity.java" target="_blank"><code>MainActivity</code></a> there is a method to take that <code>InputStream</code> and use it to display the image.</p>
-<p>[code lang="java" title="MainActivity.java"]<br />
-    public void setImage(final InputStream input){<br />
-        runOnUiThread(new Runnable() {<br />
-            @Override<br />
-            public void run() {<br />
-                imageView.setImageBitmap(BitmapFactory.decodeStream(input));<br />
-                try {<br />
-                    input.close();<br />
-                } catch (IOException e) {<br />
-                    e.printStackTrace();<br />
-                }</p>
-<p>            }<br />
-        });<br />
-    }<br />
-[/code]</p>
-<h2>Sample</h2>
+
+{% highlight java %}
+    public void setImage(final InputStream input){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                imageView.setImageBitmap(BitmapFactory.decodeStream(input));
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+{% endhighlight %}
+
+<h3>Sample</h3>
 <p>You can find the code for this example on <a href="https://github.com/nasht00/MFPBinaryResponse" target="_blank">GitHub</a>.</p>
+
 <p>For best results, make sure you use MobileFirst with the latest iFix available by checking for updates in Eclipse, or IBM Fix Central if you have installed a Studio version from there.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/Screen-Shot-2015-08-19-at-11.12.54-AM.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-08-19-at-11.12.54-AM.png" alt="Screen Shot 2015-08-19 at 11.12.54 AM" width="431" height="676" class="aligncenter size-full wp-image-16429" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-08-19-at-11.12.54-AM.png" class="img_responsive"/>

@@ -1,27 +1,13 @@
 ---
-
 title: How to enable App Transport Security for iOS 9 in IBM MobileFirst Platform
   Server
 date: 2015-09-07 17:29:06.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442502814;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:13793;}i:1;a:1:{s:2:"id";i:16516;}i:2;a:1:{s:2:"id";i:3550;}}}}
+- ATS
+- iOS 9
 author:
-  login: bhdevdas@in.ibm.com
-  email: bhdevdas@in.ibm.com
-  display_name: Bharat-Devdas
-  first_name: Bharat
-  last_name: Devdas
+  display_name: Bharat Devdas
 ---
 <p><strong>App Transport Security</strong> is one of the new features enforced by Apple to improve secure communications between App and Web Services. This feature is available from iOS 9 or  later. This post talks about how to enable transport security on IBM MobileFirst Platform Servers.</p>
 <p>App Transport Security, in simple words, mandates the application to communicate with a web service over TLS version 1.2 protocol and use connection ciphers that provide forward secrecy. This means the developer has to ensure that the web service to which his application is communicating is deployed on a web server that supports TLS version 1.2 and forward secrecy. For more information, see <a href="https://ibm.biz/BdX6Ha">Apple's Technote on App Transport Security</a></p>
@@ -60,56 +46,76 @@ author:
 <p>The Web Servers listed in the <a href="https://ibm.biz/BdX6Yp">IBM MobileFirst Platform requirements page</a> will work with the JDKs listed in this blog.</p>
 <h2>Server setup details</h2>
 <p>Ensure that the generated certificates as per requirements are ready. The following <code>ssl_cert.p12</code> is the keystore that has the personal certificate and <code>ca.crt</code> is the signing certificate.</p>
+
 <h3>IBM WebSphere Liberty and Tomcat</h3>
-<p>Add the below lines to the server.xml file.<br />
-[code lang="xml"]<br />
-    &lt;featureManager&gt;<br />
-        ... ...<br />
-        &lt;feature&gt;ssl-1.0&lt;/feature&gt;<br />
-        ...<br />
-        ...<br />
-    &lt;/featureManager&gt;</p>
-<p>    &lt;ssl id=&quot;defaultSSLConfig&quot; sslProtocol=&quot;TLSv1.2&quot; keyStoreRef=&quot;defaultKeyStore&quot; enabledCiphers=&quot;TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384&quot; /&gt;</p>
-<p>    &lt;keyStore id=&quot;defaultKeyStore&quot; location=&quot;/root/Certs/ssl_cert.p12&quot; password=&quot;*****&quot; type=&quot;PKCS12&quot;/&gt;<br />
-[/code]</p>
+<p>Add the below lines to the server.xml file.</p>
+{% highlight xml %}
+    <featureManager>
+        ... ...
+        <feature>ssl-1.0</feature>
+        ...
+        ...
+    </featureManager>
+    <ssl id="defaultSSLConfig" sslProtocol="TLSv1.2" keyStoreRef="defaultKeyStore" enabledCiphers="TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384" />
+    <keyStore id="defaultKeyStore" location="/root/Certs/ssl_cert.p12" password="*****" type="PKCS12"/>
+{% endhighlight %}
+
 <ul>
-<li>The <code>ssl-1.0</code> added as a feature in the feature manager enables the server to work with SSL communication</li>
-<li>In the <code>ssl</code> tag add <code>sslProtocol="TLSv1.2"</code>. This will mandate that the server communicates only on TLS version 1.2 protocol. More than one protocol can be added like: <code>sslProtocol="TLSv1+TLSv1.1+TLSv1.2"</code>. This ensures server can communicate on all 3 versions of TLS. So when iOS 9 application tries to communicate over TLS version 1.2, the server accepts.</li>
-<li>In the <code>ssl</code> tag add <code>enabledCiphers="TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"</code>. This tells the server to enforce communication using only that cipher. More ciphers can be added to the list. So when iOS 9 application tries to communicate over any of the 11 accepted ciphers, the server will communicate with the accepted cipher as long as it is in the list.</li>
-<li>The <code>keyStore</code> tag points the server to use the new certificates which are as per the above requirements.</li>
+    <li>The <code>ssl-1.0</code> added as a feature in the feature manager enables the server to work with SSL communication</li>
+    <li>In the <code>ssl</code> tag add <code>sslProtocol="TLSv1.2"</code>. This will mandate that the server communicates only on TLS version 1.2 protocol. More than one protocol can be added like: <code>sslProtocol="TLSv1+TLSv1.1+TLSv1.2"</code>. This ensures server can communicate on all 3 versions of TLS. So when iOS 9 application tries to communicate over TLS version 1.2, the server accepts.</li>
+    <li>In the <code>ssl</code> tag add <code>enabledCiphers="TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"</code>. This tells the server to enforce communication using only that cipher. More ciphers can be added to the list. So when iOS 9 application tries to communicate over any of the 11 accepted ciphers, the server will communicate with the accepted cipher as long as it is in the list.</li>
+    <li>The <code>keyStore</code> tag points the server to use the new certificates which are as per the above requirements.</li>
 </ul>
-<blockquote><p>IBM MobileFirst Platform versions 6.2 and 6.3 do not work if the server is forced to work with TLS version 1.2. Set sslProtocol to <code>SSL_TLSv2</code>. This protocol name is an alias and will work for SSLv3 and all 3 versions of TLS.</p></blockquote>
+
+<blockquote>IBM MobileFirst Platform versions 6.2 and 6.3 do not work if the server is forced to work with TLS version 1.2. Set sslProtocol to <code>SSL_TLSv2</code>. This protocol name is an alias and will work for SSLv3 and all 3 versions of TLS.</blockquote>
+
 <h3>WebSphere Application Server</h3>
 <p>Create a WebSphere Application Profile with Security enabled. Open WAS admin console -> Security -> SSL certificate and key management -> SSL configurations.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/Screenshot-2.png"><img src="{{ site.baseurl }}/assets/backup/Screenshot-2.png" alt="Screenshot-2" width="938" height="291" class="alignnone size-full wp-image-17201" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/Screenshot-2.png" class="img_responsive" />
+
 <p>Open NodeDefaultSSLSettings -> Key stores and certificates.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/Screenshot-3.png"><img src="{{ site.baseurl }}/assets/backup/Screenshot-3.png" alt="Screenshot-3" width="938" height="463" class="alignnone size-full wp-image-17202" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/Screenshot-3.png" class="img_responsive" />
+
 <p>Open NodeDefaultKeyStore -> Personal certificates and import the new certificate. Point to the ssl_cert.p12 and chose to import the certificate.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/Screenshot-4.png"><img src="{{ site.baseurl }}/assets/backup/Screenshot-4.png" alt="Screenshot-4" width="990" height="328" class="alignnone size-full wp-image-17204" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/Screenshot-4.png" class="img_responsive" />
+
 <p>Open NodeDefaultTrustStore -> Signer certificates and add the new certificate's signer certificate. Add the ca.crt as root1.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/Screenshot-5.png"><img src="{{ site.baseurl }}/assets/backup/Screenshot-5.png" alt="Screenshot-5" width="938" height="340" class="alignnone size-full wp-image-17205" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/Screenshot-5.png" class="img_responsive" />
+
 <p>Open NodeDefaultSSLSettings -> Quality of protection (QoP) settings. Choose Protocol as <code>SSL_TLSv2</code>. Choose Cipher suite groups as Custom and click on Update selected ciphers button. Use the Add and Remove button to make sure accepted ciphers are in the selected ciphers list. Apply the settings.</p>
-<blockquote><p>WebSphere Application Server's own services require other versions protocol for communication. Enforcing the server to work with only TLS version 1.2 will interfere with stopping and starting the server.</p></blockquote>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/Screenshot-6.png"><img src="{{ site.baseurl }}/assets/backup/Screenshot-6.png" alt="Screenshot-6" width="938" height="708" class="alignnone size-full wp-image-17217" /></a></p>
+
+<blockquote>WebSphere Application Server's own services require other versions protocol for communication. Enforcing the server to work with only TLS version 1.2 will interfere with stopping and starting the server.</blockquote>
+
+<img src="{{ site.baseurl }}/assets/backup/Screenshot-6.png" class="img_responsive" />
+
 <p><strong>Note:</strong> The string "SSL" is interchangeable with "TLS" and vice versa in the cipher names. For example, where SSL_RSA_WITH_AES_128_CBC_SHA is specified, TLS_RSA_WITH_AES_128_CBC_SHA also applies.</p>
+
 <p>Save all the settings. Open the <code>ssl.client.props</code> file. The file will be at <code>WASServerProfileDirectory/properties/ssl.client.props</code>. Uncomment the property <code>com.ibm.ssl.enabledCipherSuites=SSL_ECDHE_RSA_WITH_AES_128_CBC_SHA</code> and set it to one of the ciphers from the selected ciphers list.</p>
+
 <p>Restart the server.</p>
+
 <h3>IBM HTTP Server</h3>
 <p>In case the production environment has a HTTP server front ending, the App Transport Security configuration is required only on the HTTP server. At the HTTP server end point, the SSL can be offloaded. The App Transport Security needs to be configured only to the end point to which the iOS 9 application will connect. All communication beyond this end point can be unsecure or normal SSL as before.</p>
+
 <p>IBM HTTP Server provides a utility, ikeyman, short for IBM Key Management. Use this utility to create a new key database. Choose the key database type as CMS. Import the ca.crt under signer certificates. Import the personal certificate from ssl_cert.p12 into the key database and save it. Remember to choose to stash the password into a file.</p>
+
 <p>Open <code>HTTPServerInstalledDirectory/conf/httpd.conf</code> file to configure SSL.</p>
-<p>[code lang="xml"]<br />
-LoadModule ibm_ssl_module modules/mod_ibm_ssl.so<br />
-Listen 443<br />
-&lt;VirtualHost *:443&gt;<br />
-SSLEnable<br />
-&lt;/VirtualHost&gt;<br />
-KeyFile /opt/IBM/HTTPServer/key.kdb<br />
-SSLCipherSpec TLSv12 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br />
-[/code]</p>
-<p>Uncomment the Load Module to load the ibm_ssl_module as shown above.</p>
-<p>Point the KeyFile to the new kdb file, key database file created using ikeyman.</p>
-<p>SSLCipherSpec is set to TLSv12 and the cipher it should use. This ensures the HTTP Server communicates over TLS version 1.2 protocol using the specified cipher.</p>
+
+{% highlight xml %}
+LoadModule ibm_ssl_module modules/mod_ibm_ssl.so
+Listen 443
+<VirtualHost *:443>
+SSLEnable
+</VirtualHost>
+KeyFile /opt/IBM/HTTPServer/key.kdb
+SSLCipherSpec TLSv12 TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+{% endhighlight %}
+
+<p>Uncomment the Load Module to load the ibm_ssl_module as shown above.<br/>
+Point the KeyFile to the new kdb file, key database file created using ikeyman.<br/>
+SSLCipherSpec is set to TLSv12 and the cipher it should use. This ensures the HTTP Server communicates over TLS version 1.2 protocol using the specified cipher.</p>
+
 <p>Rest of the HTTP Server's proxy configuration or load balancing can remain the same.</p>
 <p><strong>App Transport Security configuration does not impact applications connecting from other mobile operating systems.</strong><br />
 Other mobile operating systems, though they do not mandate that servers have to communicate on this level of security, they will communicate with servers that are configured to App Transport Security.</p>
