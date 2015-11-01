@@ -1,524 +1,610 @@
 ---
-
 title: Try on Bluemix and migrate to on-prem MobileFirst Platform
 date: 2015-08-19 10:36:51.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '13001'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-  _yoast_wpseo_focuskw: bluemix, mfp, mobilefirst, onPrem
-  _wp_old_slug: b-to-mfpf
-  _yoast_wpseo_linkdex: '56'
+- Bluemix
+- IBM Containers
 author:
-  login: chethankumar.sn@in.ibm.com
-  email: chethankumar.sn@in.ibm.com
-  display_name: ChethanKumar
-  first_name: Chethan
-  last_name: Settipalli
+  display_name: Chethan Kumar
 ---
-<p>Contributed By : Chethan Kumar SN (chethankumar.sn@in.ibm.com) and Vittal Pai (vittalpai@in.ibm.com)</p>
-<p>With the release of MobileFirst Platform v7.1, one can now migrate any existing iOS app built for MobileServices on Bluemix to MobileFirst Platform with just a handful of simple steps.</p>
-<p>To elucidate the process, lets look at how to migrate a simple Bluemix iOS app.</p>
-<p>To migrate an existing iOS app built for MobileServices on Bluemix to run on MobileFirst Platform, follow the steps below.</p>
+Contributed By : Chethan Kumar SN (chethankumar.sn@in.ibm.com) and Vittal Pai (vittalpai@in.ibm.com)
+
+With the release of MobileFirst Platform v7.1, one can now migrate any existing iOS app built for MobileServices on Bluemix to MobileFirst Platform with just a handful of simple steps.
+
+To elucidate the process, lets look at how to migrate a simple Bluemix iOS app.
+
 <ul>
-<li><a href="#migrateexisting">Existing Bluemix Server Application</a></li>
-<li><a href="#migrateblu">Existing Bluemix Client Application</a></li>
-<li><a href="#configureclient">Migration of Client Application</a></li>
-<li><a href="#migratemfp">Migration of JAX-RS Application to JAVA Adapter</a></li>
-<li><a href="#configoauth">Configuring Custom-OAuth</a></li>
-<li><a href="#configurepush">Configuring Push Capability</a></li>
-<li><a href="#sample">Sample and Source Code</a></li>
+    <li><a href="#migrateexisting">Existing Bluemix Server Application</a></li>
+    <li><a href="#migrateblu">Existing Bluemix Client Application</a></li>
+    <li><a href="#configureclient">Migration of Client Application</a></li>
+    <li><a href="#migratemfp">Migration of JAX-RS Application to JAVA Adapter</a></li>
+    <li><a href="#configoauth">Configuring Custom-OAuth</a></li>
+    <li><a href="#configurepush">Configuring Push Capability</a></li>
+    <li><a href="#sample">Sample and Source Code</a></li>
 </ul>
-<h2 id="migrateexisting">Existing Bluemix Server Application</h2>
-<p>The Bluemix app has the following functionality:</p>
+
+<h3 id="migrateexisting">Existing Bluemix Server Application</h3>
+The Bluemix app has the following functionality:
 <ul>
-<li>On the client side, the application stores a list of items and provides a way to add more items to the list. Each item can able to store Name, Store, Price and image of the product. The App's are protected by Custom Authenticator via AMA security service provided by bluemix.</li>
-<li>On the server side, the App contains a JAX-RS class to store and manipulate the data. It also contains the server side AMA security implementation.</li>
+    <li>On the client side, the application stores a list of items and provides a way to add more items to the list. Each item can able to store Name, Store, Price and image of the product. The App's are protected by Custom Authenticator via AMA security service provided by bluemix.</li>
+    <li>On the server side, the App contains a JAX-RS class to store and manipulate the data. It also contains the server side AMA security implementation.</li>
 </ul>
-<p>On BlueMix we have application with the following configuration:</p>
+
+On BlueMix we have application with the following configuration:
 <ul>
-<li>Liberty Runtime : which used to run JAX-RS application on Bluemix</li>
-<li>Advance Mobile Access service : which gives mobile application security and monitoring functionality</li>
-<li>Push Service for iOS 8 : which provides the capability to use iOS Push features</li>
+    <li>Liberty Runtime : which used to run JAX-RS application on Bluemix</li>
+    <li>Advance Mobile Access service : which gives mobile application security and monitoring functionality</li>
+    <li>Push Service for iOS 8 : which provides the capability to use iOS Push features</li>
 </ul>
+
 <h3> Liberty Runtime </h3>
 <ul>
-<li>Liberty contains two projects with JAX-RS service (i.e Custom-oauth-java for Custom Authentication and LocalstoreAdapter for storing items). The service include the protected resource and the custom identity provider code. The liberty server is configured with TAI.
+    <li>Liberty contains two projects with JAX-RS service (i.e Custom-oauth-java for Custom Authentication and LocalstoreAdapter for storing items). The service include the protected resource and the custom identity provider code. The liberty server is configured with TAI.
+    </li>
+    <li>Trust Association Interface (TAI) is a service provider API that enables the integration of third-party security services with a Liberty profile server. For more info on TAI : <a href="http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_dev_custom_tai.html" target="_blank">click here</a>
+    </li>
+    <li>The custom identity provider authenticates a user by sending challenges to the client. However, custom identity providers do not communicate directly with clients. They send challenges and receive responses to the challenges by means of the Advanced Mobile Access service. When a custom identity provider successfully authenticates the user, it provides the user identity information to Advanced Mobile Access. For more information on custom authentication refer bluemix documentation : <a href="https://www.ng.bluemix.net/docs/services/mobileaccess/security/id_provs/index-gentopic2.html#custom_id_prov" target="_blank">click here</a>
+        The custom identity provider code is defined by two http API: <code>/startAutorization</code> and <code>/handleChallengeAnswer</code>
+
+        {% highlight java %}
+        @POST
+    	@Consumes ("application/json")
+    	@Path("/{tenantId}/customAuthRealm_3/startAuthorization")
+    	@Produces(MediaType.APPLICATION_JSON)
+    	public JSONObject startAuthorization(String payload,
+    			@PathParam("tenantId") String deviceId,
+    			@PathParam("realmName") String realmName) throws Exception {
+    		JSONObject returnJson = (JSONObject) JSON.parse(CHALLENGE_JSON);
+    		return returnJson;
+    	}
+    	@POST
+    	@Consumes ("application/json")
+    	@Path("/{tenantId}/customAuthRealm_3/handleChallengeAnswer")
+    	@Produces(MediaType.APPLICATION_JSON)
+    	public JSONObject handleChllengeAnswer(String payload,
+    			@PathParam("tenantId") String deviceId,
+    			@PathParam("realmName") String realmName) throws Exception {
+    		JSONObject userStoreJson = (JSONObject) JSON.parse(USER_STORE_JSON);
+    		JSONObject failedResponseJson = (JSONObject) JSON.parse(FAILURE_JSON);
+    		if(payload == null || payload.isEmpty()) {
+    			return failedResponseJson;
+    		}
+    		JSONObject payloadJson = (JSONObject) JSON.parse(payload);
+    		JSONObject challengeAnswer = (JSONObject) payloadJson.get("challengeAnswer");
+    		if (challengeAnswer == null ) {
+    			return failedResponseJson;
+    		}
+    		String userName = (String) challengeAnswer.get("userName");
+    		String password = (String) challengeAnswer.get("password");
+    		if (userName == null || userName.isEmpty() || password == null || password.isEmpty()) {
+    			return failedResponseJson;
+    		}
+    		if (userStoreJson.containsKey(userName)) {
+    			JSONObject userInfoJson = (JSONObject) userStoreJson.get(userName);
+    			String userPassword = (String) userInfoJson.get("password");
+    			String userDisplayName = (String) userInfoJson.get("displayName");
+    			if (password.equals(userPassword)) {
+    				JSONObject returnJson = new JSONObject();
+    				JSONObject userIdentityJson = new JSONObject();
+    				userIdentityJson.put("userName", userName);
+    				userIdentityJson.put("displayName", userDisplayName);
+    				returnJson.put("status", "success");
+    				returnJson.put("userIdentity", userIdentityJson);
+    				return returnJson;
+    			}
+    		}
+    		return failedResponseJson;
+    	}
+
+        {% endhighlight %}
+        The Localstore adapter contains few http API's to perform some basic operations like Add, Update, Create and Delete in client application.
+
+{% highlight java %}
+@GET
+	@Path("/getAllItems")
+	public String getAllItems() throws IOException{
+		init();
+		JsonArray jsonArray = new JsonArray();
+		for(Object key : props.keySet()){
+			jsonArray.add(parser.parse(props.getProperty((String) key)).getAsJsonObject());
+		}
+		return jsonArray.toString();
+	}
+	@PUT
+	@Path("/addItem")
+	public void addItem(String itemJson)
+			throws IOException, URISyntaxException{
+		try{
+			init();
+			int newKey = props.keySet().size()+1;
+			props.put(String.valueOf(newKey), itemJson);
+			URL url = this.getClass().getClassLoader().getResource("data.properties");
+			File file = new File(url.toURI().getPath());
+			FileOutputStream foStream = new FileOutputStream(file);
+			props.store(foStream, "saving new item");
+			foStream.close();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+	}
+	@POST
+	@Path("/addAllItems")
+	public String addAllItems(String itemsJson)
+			throws  URISyntaxException, IOException{
+		try{
+			init();
+			clearAllData();
+			JsonArray jsonArr = parser.parse(itemsJson).getAsJsonArray();
+			for(int i=0;i<jsonArr.size();i++){
+				props.put(String.valueOf(i+1), jsonArr.get(i).toString());
+			}
+			URL url = this.getClass().getClassLoader().getResource(&"data.properties");
+			File file = new File(url.toURI().getPath());
+			FileOutputStream foStream = new FileOutputStream(file);
+			props.store(foStream, "saving new item");
+			foStream.close();
+			return "true";
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		return "false";
+	}
+	@DELETE
+	@Path("/clearAll")
+	public String clearAllData()
+			throws MissingConfigurationOptionException, URISyntaxException, IOException{
+			init();
+			props.clear();
+			System.out.println("Size : "+props.size());
+			URL url = this.getClass().getClassLoader().getResource("data.properties");
+			File file = new File(url.toURI().getPath());
+			FileOutputStream foStream = new FileOutputStream(file);
+			props.store(foStream, "clearing all data");
+			foStream.close();
+			return "cleared";
+	}
+{% endhighlight %}
 </li>
-<li>Trust Association Interface (TAI) is a service provider API that enables the integration of third-party security services with a Liberty profile server. For more info on TAI : <a href="http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_dev_custom_tai.html" target="_blank">click here</a>
-</li>
-<li>The custom identity provider authenticates a user by sending challenges to the client. However, custom identity providers do not communicate directly with clients. They send challenges and receive responses to the challenges by means of the Advanced Mobile Access service. When a custom identity provider successfully authenticates the user, it provides the user identity information to Advanced Mobile Access. For more information on custom authentication refer bluemix documentation : <a href="https://www.ng.bluemix.net/docs/services/mobileaccess/security/id_provs/index-gentopic2.html#custom_id_prov" target="_blank">click here</a>
-<p>The custom identity provider code is defined by two http API:</p>
-<p>[code]/startAutorization[/code] and [code]/handleChallengeAnswer[/code]</p>
-<p>[code lang="java"] @POST<br />
-	@Consumes (&quot;application/json&quot;)<br />
-	@Path(&quot;/{tenantId}/customAuthRealm_3/startAuthorization&quot;)<br />
-	@Produces(MediaType.APPLICATION_JSON)<br />
-	public JSONObject startAuthorization(String payload,<br />
-			@PathParam(&quot;tenantId&quot;) String deviceId,<br />
-			@PathParam(&quot;realmName&quot;) String realmName) throws Exception {<br />
-		JSONObject returnJson = (JSONObject) JSON.parse(CHALLENGE_JSON);<br />
-		return returnJson;<br />
-	}</p>
-<p>	@POST<br />
-	@Consumes (&quot;application/json&quot;)<br />
-	@Path(&quot;/{tenantId}/customAuthRealm_3/handleChallengeAnswer&quot;)<br />
-	@Produces(MediaType.APPLICATION_JSON)<br />
-	public JSONObject handleChllengeAnswer(String payload,<br />
-			@PathParam(&quot;tenantId&quot;) String deviceId,<br />
-			@PathParam(&quot;realmName&quot;) String realmName) throws Exception {</p>
-<p>		JSONObject userStoreJson = (JSONObject) JSON.parse(USER_STORE_JSON);<br />
-		JSONObject failedResponseJson = (JSONObject) JSON.parse(FAILURE_JSON);</p>
-<p>		if(payload == null || payload.isEmpty()) {<br />
-			return failedResponseJson;<br />
-		}<br />
-		JSONObject payloadJson = (JSONObject) JSON.parse(payload);<br />
-		JSONObject challengeAnswer = (JSONObject) payloadJson.get(&quot;challengeAnswer&quot;);</p>
-<p>		if (challengeAnswer == null ) {<br />
-			return failedResponseJson;<br />
-		}</p>
-<p>		String userName = (String) challengeAnswer.get(&quot;userName&quot;);<br />
-		String password = (String) challengeAnswer.get(&quot;password&quot;);</p>
-<p>		if (userName == null || userName.isEmpty() || password == null || password.isEmpty()) {<br />
-			return failedResponseJson;<br />
-		}</p>
-<p>		if (userStoreJson.containsKey(userName)) {<br />
-			JSONObject userInfoJson = (JSONObject) userStoreJson.get(userName);<br />
-			String userPassword = (String) userInfoJson.get(&quot;password&quot;);<br />
-			String userDisplayName = (String) userInfoJson.get(&quot;displayName&quot;);</p>
-<p>			if (password.equals(userPassword)) {<br />
-				JSONObject returnJson = new JSONObject();<br />
-				JSONObject userIdentityJson = new JSONObject();<br />
-				userIdentityJson.put(&quot;userName&quot;, userName);<br />
-				userIdentityJson.put(&quot;displayName&quot;, userDisplayName);</p>
-<p>				returnJson.put(&quot;status&quot;, &quot;success&quot;);<br />
-				returnJson.put(&quot;userIdentity&quot;, userIdentityJson);<br />
-				return returnJson;<br />
-			}<br />
-		}</p>
-<p>		return failedResponseJson;<br />
-	}<br />
-[/code]</p>
-<p>The Localstore adapter contains few http API's to perform some basic operations like Add, Update, Create and Delete in client application.</p>
-<p>[code lang="java"] @GET<br />
-	@Path(&quot;/getAllItems&quot;)<br />
-	public String getAllItems() throws IOException{<br />
-		init();<br />
-		JsonArray jsonArray = new JsonArray();<br />
-		for(Object key : props.keySet()){<br />
-			jsonArray.add(parser.parse(props.getProperty((String) key)).getAsJsonObject());<br />
-		}<br />
-		return jsonArray.toString();<br />
-	}</p>
-<p>	@PUT<br />
-	@Path(&quot;/addItem&quot;)<br />
-	public void addItem(String itemJson)<br />
-			throws IOException, URISyntaxException{<br />
-		try{<br />
-			init();<br />
-			int newKey = props.keySet().size()+1;<br />
-			props.put(String.valueOf(newKey), itemJson);<br />
-			URL url = this.getClass().getClassLoader().getResource(&quot;data.properties&quot;);<br />
-			File file = new File(url.toURI().getPath());<br />
-			FileOutputStream foStream = new FileOutputStream(file);<br />
-			props.store(foStream, &quot;saving new item&quot;);<br />
-			foStream.close();</p>
-<p>		}catch(IOException ioe){<br />
-			ioe.printStackTrace();<br />
-		}</p>
-<p>	}</p>
-<p>	@POST<br />
-	@Path(&quot;/addAllItems&quot;)<br />
-	public String addAllItems(String itemsJson)<br />
-			throws  URISyntaxException, IOException{<br />
-		try{<br />
-			init();<br />
-			clearAllData();<br />
-			JsonArray jsonArr = parser.parse(itemsJson).getAsJsonArray();<br />
-			for(int i=0;i&amp;lt;jsonArr.size();i++){<br />
-				props.put(String.valueOf(i+1), jsonArr.get(i).toString());<br />
-			}<br />
-			URL url = this.getClass().getClassLoader().getResource(&amp;quot;data.properties&amp;quot;);<br />
-			File file = new File(url.toURI().getPath());<br />
-			FileOutputStream foStream = new FileOutputStream(file);<br />
-			props.store(foStream, &amp;quot;saving new item&amp;quot;);<br />
-			foStream.close();<br />
-			return &amp;quot;true&amp;quot;;<br />
-		}catch(IOException ioe){<br />
-			ioe.printStackTrace();<br />
-		}<br />
-		return &quot;false&quot;;<br />
-	}</p>
-<p>	@DELETE<br />
-	@Path(&quot;/clearAll&quot;)<br />
-	public String clearAllData()<br />
-			throws MissingConfigurationOptionException, URISyntaxException, IOException{<br />
-			init();<br />
-			props.clear();<br />
-			System.out.println(&quot;Size : &quot;+props.size());<br />
-			URL url = this.getClass().getClassLoader().getResource(&quot;data.properties&quot;);<br />
-			File file = new File(url.toURI().getPath());<br />
-			FileOutputStream foStream = new FileOutputStream(file);<br />
-			props.store(foStream, &quot;clearing all data&quot;);<br />
-			foStream.close();<br />
-			return &quot;cleared&quot;;<br />
-	}<br />
-[/code]</li>
-<li> Add TAI Extension in the following path of server directory server/usr/extensions<br />
+<li> Add TAI Extension in the following path of server directory server/usr/extensions
 TAI Extension Link : Download the extension.zip from <a href="https://hub.jazz.net/project/chethan/parkstore-bluemix-server/overview" target="_blank">here</a>
 </li>
-<li> Add TAI Security constraint in web.xml file for both the projects.<br />
-[code lang="xml"]&lt;security-constraint&gt;<br />
-   	&lt;web-resource-collection&gt;<br />
-      	   &lt;web-resource-name&gt;LocalstoreApplication&lt;/web-resource-name&gt;<br />
-      	   &lt;url-pattern&gt;/apps/*&lt;/url-pattern&gt;<br />
-   	&lt;/web-resource-collection&gt;<br />
-      	&lt;auth-constraint&gt;<br />
-           &lt;role-name&gt;TAIUserRole&lt;/role-name&gt;<br />
-      	&lt;/auth-constraint&gt;<br />
-&lt;/security-constraint&gt;<br />
-&lt;security-role id=&quot;SecurityRole_TAIUserRole&quot; &gt;<br />
-       &lt;role-name&gt;TAIUserRole&lt;/role-name&gt;<br />
-&lt;/security-role&gt;[/code]
+<li> Add TAI Security constraint in web.xml file for both the projects.
+{% highlight xml %}
+<security-constraint>
+   	<web-resource-collection>
+      	   <web-resource-name>LocalstoreApplication</web-resource-name>
+      	   <url-pattern>/apps/*</url-pattern>
+   	</web-resource-collection>
+      	<auth-constraint>
+           <role-name>TAIUserRole</role-name>
+      	</auth-constraint>
+</security-constraint>
+<security-role id="SecurityRole_TAIUserRole" >
+       <role-name>TAIUserRole</role-name>
+</security-role>
+{% endhighlight %}
 </li>
-<li> Add OAuthTai feature in server.xml<br />
-[code]&lt;feature&gt;usr:OAuthTai-1.0&lt;/feature&gt;[/code]
+<li> Add OAuthTai feature in server.xml
+{% highlight xml %}
+<feature>usr:OAuthTai-1.0</feature>
+{% endhighlight %}
 </li>
-<li> Protect the Url's using TAI by adding following code in server.xml<br />
-[code lang="xml"]  &lt;usr_OAuthTAI id=&quot;myOAuthTAI&quot; realmName=&quot;imfRealm&quot;&gt;<br />
-		&lt;securityConstraint httpMethods=&quot;GET, POST&quot; securedURLs=&quot;/LocalstoreAdapter/*&quot;/&gt;<br />
-		&lt;securityConstraint httpMethods=&quot;GET, POST&quot; securedURLs=&quot;/custom-oauth-java/*&quot;/&gt;<br />
-	&lt;/usr_OAuthTAI&gt; </p>
-<p>    &lt;webApplication id=&quot;custom-oauth-java&quot; location=&quot;custom-oauth-java.war&quot; name=&quot;custom-oauth-java&quot;&gt;<br />
-     &lt;application-bnd&gt;<br />
-		&lt;security-role name=&quot;TAIUserRole&quot;&gt;<br />
-			&lt;special-subject type=&quot;ALL_AUTHENTICATED_USERS&quot;/&gt;<br />
-		&lt;/security-role&gt;<br />
-	&lt;/application-bnd&gt;<br />
-	&lt;/webApplication&gt;<br />
-	  &lt;webApplication id=&quot;LocalstoreAdapter&quot; location=&quot;LocalstoreAdapter.war&quot; name=&quot;LocalstoreAdapter&quot;&gt;<br />
-        &lt;application-bnd&gt;<br />
-		&lt;security-role name=&quot;TAIUserRole&quot;&gt;<br />
-			&lt;special-subject type=&quot;ALL_AUTHENTICATED_USERS&quot;/&gt;<br />
-		&lt;/security-role&gt;<br />
-	&lt;/application-bnd&gt;<br />
-	&lt;/webApplication&gt;[/code]
+<li> Protect the Url's using TAI by adding following code in server.xml
+
+{% highlight xml %}
+<usr_OAuthTAI id="myOAuthTAI" realmName="imfRealm">
+		<securityConstraint httpMethods="GET, POST" securedURLs="/LocalstoreAdapter/*"/>
+		<securityConstraint httpMethods="GET, POST" securedURLs="/custom-oauth-java/*"/>
+	</usr_OAuthTAI>
+    <webApplication id="custom-oauth-java" location="custom-oauth-java.war" name="custom-oauth-java">
+     <application-bnd>
+		<security-role name="TAIUserRole">
+			<special-subject type="ALL_AUTHENTICATED_USERS"/>
+		</security-role>
+	</application-bnd>
+	</webApplication>
+	  <webApplication id="LocalstoreAdapter" location="LocalstoreAdapter.war" name="LocalstoreAdapter">
+        <application-bnd>
+		<security-role name="TAIUserRole">
+			<special-subject type="ALL_AUTHENTICATED_USERS"/>
+		</security-role>
+	</application-bnd>
+	</webApplication>
+    {% endhighlight %}
 </li>
-<li> Specify the IMF Auth Url inside Server.env file in liberty.<br />
-[code lang="xml"]imfServiceUrl=https://imf-authserver.ng.bluemix.net/imf-authserver[/code]
+<li> Specify the IMF Auth Url inside Server.env file in liberty.
+{% highlight xml %}
+imfServiceUrl=https://imf-authserver.ng.bluemix.net/imf-authserver
+{% endhighlight %}
 </li>
-<li> Create a server package which contains above two applications using following command.<br />
-[code]./server package ${server_name} --include=usr[/code]
+<li> Create a server package which contains above two applications using following command.
+{% highlight bash %}
+./server package ${server_name} --include=usr
+{% endhighlight %}
 </li>
-<li> Push the newly created server package to bluemix using following command.<br />
-[code]cf push ${app_name} -p ${path_to_server_package_zip}[/code]
+<li> Push the newly created server package to bluemix using following command.
+{% highlight bash %}
+cf push ${app_name} -p ${path_to_server_package_zip}
+{% endhighlight %}
 </li>
 </ul>
+
 <h3>Advance Mobile Access service</h3>
 <ul>
-<li> Bind the pushed application to Advance Mobile Access Service.
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/Screen-Shot-2015-07-17-at-3.28.04-pm.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-3.28.04-pm-1024x346.png" alt="Advance Mobile Access" width="980" height="331" class="alignnone size-large wp-image-14882" /></a>
-</li>
-<li> Register your client application in AMA dashboard. For more info refer documentation : <a href="https://www.ng.bluemix.net/docs/services/mobileaccess/index.html" target="_blank">click here</a>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/Screen-Shot-2015-07-17-at-3.42.32-pm.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-3.42.32-pm.png" alt="AMA Client Registration" width="935" height="452" class="alignnone size-full wp-image-14883" /></a>
-</li>
-<li> AMA provides Facebook, Google, or a custom identity provider to authenticate access to protected resources. Add Custom identity provider feature as it can be migrated to MFPF and specify the corresponding jax-rs custom authentication application url and realm name.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/Screen-Shot-2015-07-17-at-4.03.21-pm.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-4.03.21-pm.png" alt="Custom Auth AMA" width="955" height="375" class="alignnone size-full wp-image-14890" /></a>
-</li>
-<li> Add the following code inside didFinishLaunchingWithOptions function in AppDelegate of client application which will register the realm and initialize connection with Bluemix Application.
-<p>[code] IMFClient.sharedInstance().registerAuthenticationDelegate(customAuthDelegate, forRealm: &quot;customAuthRealm_3&quot;)<br />
-IMFClient.sharedInstance().initializeWithBackendRoute(&quot;https://parkstore.mybluemix.net&quot;, backendGUID: &quot;5e3ad88d-dd48-469d-b46f-2c4ad66b5345&quot;)[/code]
-</li>
-<li> The following is the sample code to invoke the Rest url's in client application.<br />
-[code]var request: IMFResourceRequest = IMFResourceRequest(path: &quot;https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems&quot;, method: &quot;GET&quot;)<br />
-        request.sendWithCompletionHandler { (wlResponse:IMFResponse!, err:NSError!) -&gt; Void in[/code]
-</li>
+    <li> Bind the pushed application to Advance Mobile Access Service.
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-3.28.04-pm-1024x346.png" class="img_responsive" />
+    </li>
+    <li> Register your client application in AMA dashboard. For more info refer documentation : <a href="https://www.ng.bluemix.net/docs/services/mobileaccess/index.html" target="_blank">click here</a>
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-3.42.32-pm.png" class="img_responsive" />
+    </li>
+    <li> AMA provides Facebook, Google, or a custom identity provider to authenticate access to protected resources. Add Custom identity provider feature as it can be migrated to MFPF and specify the corresponding jax-rs custom authentication application url and realm name.
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-4.03.21-pm.png" class="img_responsive" />
+    </li>
+    <li> Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register the realm and initialize connection with Bluemix Application.
+
+{% highlight java %}
+IMFClient.sharedInstance().registerAuthenticationDelegate(customAuthDelegate, forRealm: "customAuthRealm_3")
+IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluemix.net", backendGUID: "5e3ad88d-dd48-469d-b46f-2c4ad66b5345")
+{% endhighlight %}
+    </li>
+    <li> The following is the sample code to invoke the Rest url's in client application.
+        {% highlight java %}
+        var request: IMFResourceRequest = IMFResourceRequest(path: "https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems", method: "GET")
+        request.sendWithCompletionHandler { (wlResponse:IMFResponse!, err:NSError!) -> Void in
+    {% endhighlight %}
+    </li>
 </ul>
+
 <h3>Push Service for iOS 8</h3>
 <ul>
-<li> Bind the application with Push Service for iOS 8<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/Screen-Shot-2015-07-17-at-4.07.01-pm.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-4.07.01-pm-1024x367.png" alt="Push AMA" width="980" height="351" class="alignnone size-large wp-image-14891" /></a>
-</li>
-<li> Configure Apple Push Notification service (APNs) which requires Apple Developer Account and Generate pl2 certificates. Documentation link : <a href="https://www.ng.bluemix.net/docs/services/mobilepush/index.html#certificates" target="_blank">click here</a>
-</li>
-<li> Upload the generated pl2 certificate in Push service dashboard
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/Screen-Shot-2015-07-12-at-6.47.14-pm.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.47.14-pm-1024x377.png" alt="Push Service" width="980" height="361" class="alignnone size-large wp-image-14816" /></a>
-</li>
-<li>Add the following code inside didFinishLaunchingWithOptions function in AppDelegate of client application which will register notifications in client app.<br />
-[code]  let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound<br />
-        let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)</p>
-<p>        application.registerUserNotificationSettings(notificationSettings)<br />
-        application.registerForRemoteNotifications()[/code]
-</li>
-<li>Add the following code inside didRegisterForRemoteNotificationsWithDeviceToken  function in AppDelegate of client application which will register pushclient and subscribe to tag in client app.<br />
-[code]IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -&gt; Void in<br />
-            if error != nil {<br />
-                println(&quot;Error during device registration \(error.description)&quot;)<br />
-            }<br />
-            else {<br />
-                println(&quot;Response during device registration json: \(response.responseJson.description)&quot;)<br />
-                var tags = [&quot;parkstore&quot;]<br />
-                IMFPushClient.sharedInstance().subscribeToTags(tags, completionHandler: { (response:IMFResponse!, err:NSError!) -&gt; Void in<br />
-                    if err != nil {<br />
-                        println(&quot;There was an error while subscribing to tag&quot;)<br />
-                    }else{<br />
-                        println(&quot;Successfully subscribe to tag parkstore&quot;)<br />
-                    }<br />
-                })<br />
-            }[/code]
-</li>
-<li>Add the following function inside Appdelegate which triggers when push notification arrived in client app.<br />
-[code]func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {<br />
-        println(&quot;Got remote Notification. Data : \(userInfo.description)&quot;)<br />
-        let info = userInfo as NSDictionary<br />
-        let data = info.objectForKey(&quot;aps&quot;)?.objectForKey(&quot;alert&quot;) as! NSDictionary<br />
-        let userData = data.objectForKey(&quot;body&quot;) as! String<br />
-        let alertView = UIAlertView(title: &quot;WishList!&quot;, message: &quot;\(userData)&quot;, delegate: nil, cancelButtonTitle: &quot;OK&quot;)<br />
-        alertView.show()<br />
-       }<br />
-}[/code]
-</li>
+    <li> Bind the application with Push Service for iOS 8
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-4.07.01-pm-1024x367.png" class="img_responsive" />
+    </li>
+    <li> Configure Apple Push Notification service (APNs) which requires Apple Developer Account and Generate pl2 certificates. Documentation link : <a href="https://www.ng.bluemix.net/docs/services/mobilepush/index.html#certificates" target="_blank">click here</a>
+    </li>
+    <li> Upload the generated pl2 certificate in Push service dashboard
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.47.14-pm-1024x377.png" class="img_responsive" />
+    </li>
+    <li>Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register notifications in client app.
+        {% highlight swift %}
+        let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
+        let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
+        application.registerForRemoteNotifications()
+    {% endhighlight %}
+    </li>
+    <li>Add the following code inside <code>didRegisterForRemoteNotificationsWithDeviceToken</code>  function in <code>Appdelegate</code> of client application which will register pushclient and subscribe to tag in client app.
+
+        {% highlight swift %}IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -> Void in
+            if error != nil {
+                println("Error during device registration \(error.description)")
+            }
+            else {
+                println("Response during device registration json: \(response.responseJson.description)")
+                var tags = ["parkstore"]
+                IMFPushClient.sharedInstance().subscribeToTags(tags, completionHandler: { (response:IMFResponse!, err:NSError!) -> Void in
+                    if err != nil {
+                        println("There was an error while subscribing to tag")
+                    }else{
+                        println("Successfully subscribe to tag parkstore")
+                    }
+                })
+            }
+        {% endhighlight %}
+    </li>
+<li>Add the following function inside <code>Appdelegate</code> which triggers when push notification arrived in client app.
+        {% highlight swift %}
+        func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+            println("Got remote Notification. Data : \(userInfo.description)")
+            let info = userInfo as NSDictionary
+            let data = info.objectForKey("aps")?.objectForKey("alert") as! NSDictionary
+            let userData = data.objectForKey("body") as! String
+            let alertView = UIAlertView(title: "WishList!", message: "\(userData)", delegate: nil, cancelButtonTitle: "OK")
+            alertView.show()
+           }
+        }
+        {% endhighlight %}
+    </li>
 </ul>
-<h2 id="migrateblu">Existing Bluemix Client Application</h2>
+
+<h3 id="migrateblu">Existing Bluemix Client Application</h3>
 <p>Add the following Code snippets to the existing Bluemix Client Application and name the application with same name which you have registered in Advance Mobile Access Dashboard.</p>
+
 <ul>
-<li> Add the following code inside didFinishLaunchingWithOptions function in AppDelegate of client application which will register the realm and initialize connection with Bluemix Application.
-<p>[code] IMFClient.sharedInstance().registerAuthenticationDelegate(customAuthDelegate, forRealm: &quot;customAuthRealm_3&quot;)<br />
-IMFClient.sharedInstance().initializeWithBackendRoute(&quot;https://parkstore.mybluemix.net&quot;, backendGUID: &quot;5e3ad88d-dd48-469d-b46f-2c4ad66b5345&quot;)[/code]
-</li>
-<li> The following is the sample code to invoke the Rest url's in client application.<br />
-[code]var request: IMFResourceRequest = IMFResourceRequest(path: &quot;https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems&quot;, method: &quot;GET&quot;)<br />
-        request.sendWithCompletionHandler { (wlResponse:IMFResponse!, err:NSError!) -&gt; Void in[/code]
-</li>
-<li>Add the following code inside didFinishLaunchingWithOptions function in AppDelegate of client application which will register notifications in client app.<br />
-[code]  let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound<br />
-        let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)</p>
-<p>        application.registerUserNotificationSettings(notificationSettings)<br />
-        application.registerForRemoteNotifications()[/code]
-</li>
-<li>Add the following code inside didRegisterForRemoteNotificationsWithDeviceToken  function in AppDelegate of client application which will register pushclient and subscribe to tag in client app.<br />
-[code]IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -&gt; Void in<br />
-            if error != nil {<br />
-                println(&quot;Error during device registration \(error.description)&quot;)<br />
-            }<br />
-            else {<br />
-                println(&quot;Response during device registration json: \(response.responseJson.description)&quot;)<br />
-                var tags = [&quot;parkstore&quot;]<br />
-                IMFPushClient.sharedInstance().subscribeToTags(tags, completionHandler: { (response:IMFResponse!, err:NSError!) -&gt; Void in<br />
-                    if err != nil {<br />
-                        println(&quot;There was an error while subscribing to tag&quot;)<br />
-                    }else{<br />
-                        println(&quot;Successfully subscribe to tag parkstore&quot;)<br />
-                    }<br />
-                })<br />
-            }[/code]
-</li>
-<li>Add the following function inside Appdelegate which triggers when push notification arrived in client app.<br />
-[code]func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {<br />
-        println(&quot;Got remote Notification. Data : \(userInfo.description)&quot;)<br />
-        let info = userInfo as NSDictionary<br />
-        let data = info.objectForKey(&quot;aps&quot;)?.objectForKey(&quot;alert&quot;) as! NSDictionary<br />
-        let userData = data.objectForKey(&quot;body&quot;) as! String<br />
-        let alertView = UIAlertView(title: &quot;WishList!&quot;, message: &quot;\(userData)&quot;, delegate: nil, cancelButtonTitle: &quot;OK&quot;)<br />
-        alertView.show()<br />
-       }<br />
-}[/code]
-</li>
-<li>The following are the screenshots of client application.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/IMG_0020.jpg"><img src="{{ site.baseurl }}/assets/backup/IMG_0020-169x300.jpg" alt="IMG_0020" width="169" height="300" class="alignnone size-medium wp-image-14917" /></a><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/IMG_00211.jpg"><img src="{{ site.baseurl }}/assets/backup/IMG_00211-169x300.jpg" alt="IMG_0021" width="169" height="300" class="alignnone size-medium wp-image-14918" /></a><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/IMG_0025.jpg"><img src="{{ site.baseurl }}/assets/backup/IMG_0025-169x300.jpg" alt="IMG_0025" width="169" height="300" class="alignnone size-medium wp-image-14920" /></a><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/IMG_0024.jpg"><img src="{{ site.baseurl }}/assets/backup/IMG_0024-169x300.jpg" alt="IMG_0024" width="169" height="300" class="alignnone size-medium wp-image-14919" /></a><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/IMG_0026.jpg"><img src="{{ site.baseurl }}/assets/backup/IMG_0026-169x300.jpg" alt="IMG_0026" width="169" height="300" class="alignnone size-medium wp-image-14921" /></a>
-</li>
+    <li> Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register the realm and initialize connection with Bluemix Application.
+        {% highlight swift %}
+        IMFClient.sharedInstance().registerAuthenticationDelegate(customAuthDelegate, forRealm: "customAuthRealm_3")
+IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluemix.net", backendGUID: "5e3ad88d-dd48-469d-b46f-2c4ad66b5345")
+{% endhighlight %}
+    </li>
+    <li> The following is the sample code to invoke the Rest url's in client application.
+{% highlight swift %}
+var request: IMFResourceRequest = IMFResourceRequest(path: "https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems", method: "GET")
+        request.sendWithCompletionHandler { (wlResponse:IMFResponse!, err:NSError!) -> Void in
+            {% endhighlight %}
+    </li>
+    <li>Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register notifications in client app.
+
+{% highlight swift %}
+let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
+        let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
+        application.registerForRemoteNotifications()
+        {% endhighlight %}
+    </li>
+    <li>Add the following code inside <code>didRegisterForRemoteNotificationsWithDeviceToken</code>  function in <code>Appdelegate</code> of client application which will register pushclient and subscribe to tag in client app.
+{% highlight swift %}
+IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -> Void in
+            if error != nil {
+                println("Error during device registration \(error.description)")
+            }
+            else {
+                println("Response during device registration json: \(response.responseJson.description)")
+                var tags = ["parkstore"]
+                IMFPushClient.sharedInstance().subscribeToTags(tags, completionHandler: { (response:IMFResponse!, err:NSError!) -> Void in
+                    if err != nil {
+                        println("There was an error while subscribing to tag")
+                    }else{
+                        println("Successfully subscribe to tag parkstore")
+                    }
+                })
+            }
+            {% endhighlight %}
+        </li>
+        <li>Add the following function inside <code>Appdelegate</code> which triggers when push notification arrived in client app.
+{% highlight swift %}
+func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        println("Got remote Notification. Data : \(userInfo.description)")
+        let info = userInfo as NSDictionary
+        let data = info.objectForKey("aps")?.objectForKey("alert") as! NSDictionary
+        let userData = data.objectForKey("body") as! String
+        let alertView = UIAlertView(title: "WishList!", message: "\(userData)", delegate: nil, cancelButtonTitle: "OK")
+        alertView.show()
+       }
+}
+{% endhighlight %}
+    </li>
+    <li>The following are the screenshots of client application.
+        <img src="{{ site.baseurl }}/assets/backup/IMG_0020-169x300.jpg" class="img_responsive" />
+        <img src="{{ site.baseurl }}/assets/backup/IMG_00211-169x300.jpg" class="img_responsive" />
+        <img src="{{ site.baseurl }}/assets/backup/IMG_0025-169x300.jpg" class="img_responsive" />
+        <img src="{{ site.baseurl }}/assets/backup/IMG_0024-169x300.jpg" class="img_responsive" />
+        <img src="{{ site.baseurl }}/assets/backup/IMG_0026-169x300.jpg" class="img_responsive" />
+    </li>
 </ul>
+
 <h2>Migration to On-Prem</h2>
+
 <h3 id="configureclient">Migration of Client Application</h3>
-<p>Migration of Client Application includes following two steps</p>
-<li>Configuring Cocoapods</li>
-<li>Client App Migration</li>
-<h3 id="cocoapods">Configuring Cocoapods</h3>
-<p>If CocoaPods has not been installed on a specific computer:</p>
+Migration of Client Application includes following two steps
 <ul>
-<li>Follow the "Getting Started" guide for CocoaPods installation: http://guides.cocoapods.org/using/getting-started.html</li>
-<li>Open "Terminal" at the installation location and run the "pod init" command</li>
+    <li>Configuring Cocoapods</li>
+    <li>Client App Migration</li>
 </ul>
-<p>The following steps assume that the client application is working with CocoPods. If not, follow this "Using CocoaPods" documentation : <a href="http://guides.cocoapods.org/using/using-cocoapods.html" target="_blank">click here</a></p>
+
+<h4 id="cocoapods">Configuring Cocoapods</h4>
+    If CocoaPods has not been installed on a specific computer:
+    <ul>
+        <li>Follow the "Getting Started" guide for CocoaPods installation: http://guides.cocoapods.org/using/getting-started.html</li>
+        <li>Open "Terminal" at the installation location and run the "pod init" command</li>
+    </ul>
+
+<p>The following steps assume that the client application is working with CocoPods. If not, follow this "Using CocoaPods" documentation : <a href="http://guides.cocoapods.org/using/using-cocoapods.html" target="_blank">click here</a>.</p>
+
 <p>In both cases, the instructions below explain how to edit the "Podfile" file.</p>
 <ol>
-<li>Open the "Podfile" file located in the root of your XCode project in a favourite text editor.</li>
-<li>Comment out or remove the existing content.</li>
-<li>Add the following lines:<br />
-[code]source 'https://github.rtp.raleigh.ibm.com/imflocalsdks/imf-client-sdk-specs.git'<br />
-pod 'IMFCompatibility'[/code]
-</li>
-<li>Open "Terminal" at the location of "Podfile".</li>
-<li>Verify that the XCode project is closed.</li>
-<li>Run the "pod install" command.</li>
+    <li>Open the "Podfile" file located in the root of your XCode project in a favourite text editor.</li>
+    <li>Comment out or remove the existing content.</li>
+    <li>Add the following lines:
+        {% highlight xml %}
+        source 'https://github.rtp.raleigh.ibm.com/imflocalsdks/imf-client-sdk-specs.git'
+pod 'IMFCompatibility'
+{% endhighlight %}
+    </li>
+    <li>Open "Terminal" at the location of "Podfile".</li>
+    <li>Verify that the XCode project is closed.</li>
+    <li>Run the "pod install" command.</li>
 </ol>
-<p>Open the [MyProject].xcworkspace file in XCode. This file is located side by side with [MyProject].xcodeproj.<br />
-An usual CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies brought by the CocoaPods manager).</p>
-<p>In Xcode's Build Settings, search for "Other Linker Flags" and insert ${inherited} (if -ObjC is defined in this field, you can just delete it, since it is configured in the CocoaPod project).</p>
+
+<p>Open the <code>[MyProject].xcworkspace</code> file in XCode. This file is located side by side with <code>[MyProject].xcodeproj</code>.<br/>
+An usual CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies brought by the CocoaPods manager).<br>
+In Xcode's Build Settings, search for "Other Linker Flags" and insert <code>${inherited}</code> (if <code>-ObjC</code> is defined in this field, you can just delete it, since it is configured in the CocoaPod project).</p>
+
 <h3>Client App Migration</h3>
 <ol>
-<li>Search for bluemix dependency imports like<br />
-[code]#import &lt;IMFCore/IMFCore.h&gt;<br />
-#import &lt;IMFPush/IMFPush.h&gt;[/code]</p>
-<p>Replace the above imports with<br />
-[code]#import &lt;IMFCompatibility/IMFCompatibility.h&gt;[/code]</li>
-<li>Look for a call to the "initializeWithBackendRoute" method and replace the route URL with your on-premise server URL. For example:
-<p>[code]IMFClient.sharedInstance().initializeWithBackendRoute(&quot;https://parkstore.mybluemix.net&quot;, backendGUID: &quot;5e3ad88d-dd48-469d-b46f-2c4ad66b5345&quot;[/code]</p>
-<p>should be replaced with your on-premise MFP server URL</p>
-<p>[code]IMFClient.sharedInstance().initializeWithBackendRoute(&quot;http://localhost:10080/ParkStoreMFP&quot;, backendGUID: &quot;5e3ad88d-dd48-469d-b46f-2c4ad66b5345&quot;[/code]</p>
-<p>Note, that backendGUID parameter is ignored and can be empty. Look for all instantiations of IMFResourceRequest class and update it</li>
-<li>Look for all instantiations of IMFResourceRequest class and update the request URL with absolute or relative path to the resource. For example:
-<p> [code]var request: IMFResourceRequest = IMFResourceRequest(path: &quot;https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems&quot;, method: &quot;GET&quot;)[/code]</p>
-<p>should be replaced with</p>
-<p>[code]var request: IMFResourceRequest = IMFResourceRequest(path: &quot;http://localhost:10080/ParkStoreMFP/adapters/LocalstoreAdapter/localstore/getAllItems&quot;, method: &quot;GET&quot;)[/code]</li>
-<li>Add the following code inside didRegisterForRemoteNotificationsWithDeviceToken function in Appdelegate of Client application.<br />
-[code] WLPush.sharedInstance().tokenFromClient = deviceToken.description[/code]</li>
-<li>All on-premise applications require the "worklight.plist" file to be present in the application resources. In the <code>IBMMobileFirstPlatformFoundationNativeSDK</code> pod we supply a file named <strong>sample.worklight.plist</strong>.
-<ul>
-<li>Locate the "sample.worklight.plist" file in the ‘IBMMobileFirstPlatformFoundationNativeSDK’ pod.</li>
-<li>Copy this file to the parent (application) project and rename it to "worklight.plist".</li>
-<li>Edit the "worklight.plist" file by setting the "application id" key to the name of your application deployed to the on-premise MFPF server</li>
-</ul>
-</li>
-</ol>
+    <li>Search for bluemix dependency imports like
+{% highlight swift %}
+#import <IMFCore/IMFCore.h>
+#import <IMFPush/IMFPush.h>
+{% endhighlight %}
+
+Replace the above imports with
+{% highlight swift %}
+#import <IMFCompatibility/IMFCompatibility.h>
+{% endhighlight %}
+    </li>
+    <li>Look for a call to the <code>initializeWithBackendRoute</code> method and replace the route URL with your on-premise server URL. For example:
+         {% highlight swift%} IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluemix.net", backendGUID: "5e3ad88d-dd48-469d-b46f-2c4ad66b5345"
+         {% endhighlight %}
+
+    should be replaced with your on-premise MFP server URL:
+{% highlight swift%}
+IMFClient.sharedInstance().initializeWithBackendRoute("http://localhost:10080/ParkStoreMFP", backendGUID: "5e3ad88d-dd48-469d-b46f-2c4ad66b5345"
+{% endhighlight %}
+
+Note, that <code>backendGUID</code> parameter is ignored and can be empty. Look for all instantiations of IMFResourceRequest class and update it</li>
+    <li>Look for all instantiations of IMFResourceRequest class and update the request URL with absolute or relative path to the resource. For example:
+
+ {% highlight swift %}
+ var request: IMFResourceRequest = IMFResourceRequest(path: "https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems", method: "GET")
+ {% endhighlight %}
+
+should be replaced with
+{% highlight swift %}
+var request: IMFResourceRequest = IMFResourceRequest(path: "http://localhost:10080/ParkStoreMFP/adapters/LocalstoreAdapter/localstore/getAllItems", method: "GET")
+{% endhighlight %}</li>
+    <li>Add the following code inside <code>didRegisterForRemoteNotificationsWithDeviceToken</code> function in <code>Appdelegate</code> of Client application.
+        {% highlight swift %} WLPush.sharedInstance().tokenFromClient = deviceToken.description{% endhighlight %}</li>
+        <li>All on-premise applications require the "worklight.plist" file to be present in the application resources. In the <code>IBMMobileFirstPlatformFoundationNativeSDK</code> pod we supply a file named <strong>sample.worklight.plist</strong>.
+            <ul>
+                <li>Locate the "sample.worklight.plist" file in the ‘IBMMobileFirstPlatformFoundationNativeSDK’ pod.</li>
+                <li>Copy this file to the parent (application) project and rename it to "worklight.plist".</li>
+                <li>Edit the "worklight.plist" file by setting the "application id" key to the name of your application deployed to the on-premise MFPF server</li>
+            </ul>
+        </li>
+    </ol>
+
 <h3 id="migratemfp">Migration of JAX-RS Application to JAVA Adapter</h3>
 <ol>
-<li>To migrate JAX-RS application to on-prem (MobileFirst Foundation) server we need to do the following steps for server:
-<p>    Create MobileFirst Project --&gt; Create native API app for iOS<br />
-        ​​<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/Screen-Shot-2015-07-12-at-6.50.04-pm.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.50.04-pm.png" alt="Screen Shot 2015-07-12 at 6.50.04 pm" width="595" height="596" class="alignnone size-full wp-image-14817" /></a></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/Screen-Shot-2015-07-12-at-6.51.13-pm.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.51.13-pm.png" alt="Screen Shot 2015-07-12 at 6.51.13 pm" width="598" height="590" class="alignnone size-full wp-image-14818" /></a></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/Screen-Shot-2015-07-12-at-6.52.28-pm.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.52.28-pm.png" alt="Screen Shot 2015-07-12 at 6.52.28 pm" width="717" height="424" class="alignnone size-full wp-image-14819" /></a></li>
-<li>Add two adapters for Custom Authentication and Localstore and migrate the JAX-RS code as shown in the following example.</li>
+    <li>To migrate JAX-RS application to on-prem (MobileFirst Foundation) server we need to do the following steps for server:
+    Create MobileFirst Project --> Create native API app for iOS
+        ​​
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.50.04-pm.png" class="img_responsive" />
+
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.51.13-pm.png" class="img_responsive" />
+
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.52.28-pm.png" class="img_responsive" /></li>
+        <li>Add two adapters for Custom Authentication and Localstore and migrate the JAX-RS code as shown in the following example.</li>
 </ol>
-<p>Copy the JAX-RS BlueMix code and paste it in the newly created Localstore Java adapter JAX-RS file.</p>
-<p>Add and remove the following changes in your adapter code.</p>
+
+<p>Copy the JAX-RS BlueMix code and paste it in the newly created Localstore Java adapter JAX-RS file.
+Add and remove the following changes in your adapter code.</p>
+
 <ul>
-<li> remove <code>/{tenantId}/</code></li>
-<li> remove the <code>@PathParam -&gt; PathParam("tenantId") String deviceId</code> and <code>@PathParam("realmName") String realmName</code></li>
-<li> Add scope to the all http api resource <code>@OAuthSecurity (scope="customAuthRealm_3")</code></li>
+    <li> remove <code>/{tenantId}/</code></li>
+    <li> remove the <code>@PathParam -> PathParam("tenantId") String deviceId</code> and <code>@PathParam("realmName") String realmName</code></li>
+    <li> Add scope to the all http api resource <code>@OAuthSecurity (scope="customAuthRealm_3")</code></li>
 </ul>
-<p>The code looks like the following<br />
-[code]<br />
-	@GET<br />
-	@OAuthSecurity (scope=&quot;customAuthRealm_3&quot;)<br />
-	@Path(&quot;/getAllItems&quot;)<br />
-	public String getAllItems() throws MissingConfigurationOptionException{<br />
-		init();<br />
-		JsonArray jsonArray = new JsonArray();<br />
-		for(Object key : props.keySet()){<br />
-			jsonArray.add(parser.parse(props.getProperty((String) key)).getAsJsonObject());<br />
-		}<br />
-		return jsonArray.toString();<br />
-	}</p>
-<p>	@PUT<br />
-	@OAuthSecurity (scope=&quot;customAuthRealm_3&quot;)<br />
-	@Path(&quot;/addItem&quot;)<br />
-	public void addItem(String itemJson)<br />
-			throws MissingConfigurationOptionException, URISyntaxException, IOException{<br />
-		try{<br />
-			init();<br />
-			int newKey = props.keySet().size()+1;<br />
-			props.put(String.valueOf(newKey), itemJson);<br />
-			URL url = this.getClass().getClassLoader().getResource(&quot;data.properties&quot;);<br />
-			File file = new File(url.toURI().getPath());<br />
-			FileOutputStream foStream = new FileOutputStream(file);<br />
-			props.store(foStream, &quot;saving new item&quot;);<br />
-			foStream.close();</p>
-<p>		}catch(IOException ioe){<br />
-			ioe.printStackTrace();<br />
-		}</p>
-<p>	}</p>
-<p>	@POST<br />
-	@OAuthSecurity (scope=&quot;customAuthRealm_3&quot;)<br />
-	@Path(&quot;/addAllItems&quot;)<br />
-	public String addAllItems(String itemsJson)<br />
-			throws MissingConfigurationOptionException, URISyntaxException, IOException{<br />
-		try{<br />
-			init();<br />
-			clearAllData();<br />
-			JsonArray jsonArr = parser.parse(itemsJson).getAsJsonArray();<br />
-			for(int i=0;i&amp;lt;jsonArr.size();i++){<br />
-				props.put(String.valueOf(i+1), jsonArr.get(i).toString());<br />
-			}<br />
-			URL url = this.getClass().getClassLoader().getResource(&amp;quot;data.properties&amp;quot;);<br />
-			File file = new File(url.toURI().getPath());<br />
-			FileOutputStream foStream = new FileOutputStream(file);<br />
-			props.store(foStream, &amp;quot;saving new item&amp;quot;);<br />
-			foStream.close();<br />
-			return &amp;quot;true&amp;quot;;<br />
-		}catch(IOException ioe){<br />
-			ioe.printStackTrace();<br />
-		}<br />
-		return &amp;quot;false&amp;quot;;<br />
-	}</p>
-<p>	@DELETE<br />
-	@OAuthSecurity(enabled=false)<br />
-	@Path(&quot;/clearAll&quot;)<br />
-	public String clearAllData()<br />
-			throws MissingConfigurationOptionException, URISyntaxException, IOException{<br />
-			init();<br />
-			props.clear();<br />
-			System.out.println(&quot;Size : &quot;+props.size());<br />
-			URL url = this.getClass().getClassLoader().getResource(&quot;data.properties&quot;);<br />
-			File file = new File(url.toURI().getPath());<br />
-			FileOutputStream foStream = new FileOutputStream(file);<br />
-			props.store(foStream, &quot;clearing all data&quot;);<br />
-			foStream.close();<br />
-			return &quot;cleared&quot;;<br />
-	}<br />
-[/code]</p>
+
+The code looks like the following:
+{% highlight swift %}
+	@GET
+	@OAuthSecurity (scope="customAuthRealm_3")
+	@Path("/getAllItems")
+	public String getAllItems() throws MissingConfigurationOptionException{
+		init();
+		JsonArray jsonArray = new JsonArray();
+		for(Object key : props.keySet()){
+			jsonArray.add(parser.parse(props.getProperty((String) key)).getAsJsonObject());
+		}
+		return jsonArray.toString();
+	}
+	@PUT
+	@OAuthSecurity (scope="customAuthRealm_3")
+	@Path("/addItem")
+	public void addItem(String itemJson)
+			throws MissingConfigurationOptionException, URISyntaxException, IOException{
+		try{
+			init();
+			int newKey = props.keySet().size()+1;
+			props.put(String.valueOf(newKey), itemJson);
+			URL url = this.getClass().getClassLoader().getResource("data.properties");
+			File file = new File(url.toURI().getPath());
+			FileOutputStream foStream = new FileOutputStream(file);
+			props.store(foStream, "saving new item");
+			foStream.close();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+	}
+	@POST
+	@OAuthSecurity (scope="customAuthRealm_3")
+	@Path("/addAllItems")
+	public String addAllItems(String itemsJson)
+			throws MissingConfigurationOptionException, URISyntaxException, IOException{
+		try{
+			init();
+			clearAllData();
+			JsonArray jsonArr = parser.parse(itemsJson).getAsJsonArray();
+			for(int i=0;i<jsonArr.size();i++){
+				props.put(String.valueOf(i+1), jsonArr.get(i).toString());
+			}
+			URL url = this.getClass().getClassLoader().getResource("data.properties");
+			File file = new File(url.toURI().getPath());
+			FileOutputStream foStream = new FileOutputStream(file);
+			props.store(foStream, "saving new item");
+			foStream.close();
+			return &amp;"true";
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+		return &amp;"false&amp;";
+	}
+	@DELETE
+	@OAuthSecurity(enabled=false)
+	@Path("/clearAll")
+	public String clearAllData()
+			throws MissingConfigurationOptionException, URISyntaxException, IOException{
+			init();
+			props.clear();
+			System.out.println("Size : "+props.size());
+			URL url = this.getClass().getClassLoader().getResource("data.properties");
+			File file = new File(url.toURI().getPath());
+			FileOutputStream foStream = new FileOutputStream(file);
+			props.store(foStream, "clearing all data");
+			foStream.close();
+			return "cleared";
+	}
+
+{% endhighlight %}
+
 <h3 id="configoauth">Configuring Custom-OAuth</h3>
 <ul>
-<li>Add realm with same name you had on BlueMix and login module to the authenticationConfig.xml.
-<p>[code lang="xml"]&lt;realm name=&quot;customAuthRealm_3&quot; loginModule=&quot;customAuthLoginModule_3&quot;&gt;<br />
-&lt;className&gt;com.worklight.core.auth.ext.CustomIdentityAuthenticator&lt;/className&gt;<br />
-&lt;parameter name=&quot;providerUrl&quot; value=&quot;http://localhost:10080/ParkStoreMFP/adapters/Customauth&quot;/&gt;<br />
-&lt;/realm&gt;</p>
-<p>&lt;loginModule name=&quot;customAuthLoginModule_3&quot; expirationInSeconds=&quot;3600&quot;&gt;<br />
-&lt;className&gt;com.worklight.core.auth.ext.CustomIdentityLoginModule&lt;/className&gt;<br />
-&lt;/loginModule&gt;[/code]</li>
-<li>Add Custom-oauth Realm in userIdentityRealms in Application Descriptor file of iOS Native API
-<p>[code lang="xml"]&lt;userIdentityRealms&gt;customAuthRealm_3&lt;/userIdentityRealms&gt;[/code]</li>
+    <li>Add realm with same name you had on BlueMix and login module to the authenticationConfig.xml.
+    {% highlight xml %}
+    <realm name="customAuthRealm_3" loginModule="customAuthLoginModule_3">
+    <className>com.worklight.core.auth.ext.CustomIdentityAuthenticator</className>
+    <parameter name="providerUrl" value="http://localhost:10080/ParkStoreMFP/adapters/Customauth"/>
+    </realm>
+    <loginModule name="customAuthLoginModule_3" expirationInSeconds="3600">
+    <className>com.worklight.core.auth.ext.CustomIdentityLoginModule</className>
+    </loginModule>
+    {% endhighlight %}</li>
+        <li>Add Custom-oauth Realm in userIdentityRealms in Application Descriptor file of iOS Native API
+    {% highlight xml %}
+    <userIdentityRealms>customAuthRealm_3</userIdentityRealms>
+    {% endhighlight %}</li>
 </ul>
+
 <h3 id="configurepush">Configuring Push Capability</h3>
 <ul>
-<li> Add apns p12 certificate which is generated from Apple Developer Account under iOS Native API Folder
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/07/Screen-Shot-2015-07-12-at-6.58.03-pm.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.58.03-pm.png" alt="Screen Shot 2015-07-12 at 6.58.03 pm" width="286" height="171" class="alignnone size-full wp-image-14820" /></a>
-</li>
-<li> Add Push configuration in Application Descriptor file of iOS Native API and include the password of added apns certificate.
-<p>[code lang="xml"]&lt;pushSender password=&quot;password&quot;/&gt;<br />
-&lt;tags&gt;<br />
-  &lt;tag&gt;<br />
-    &lt;name&gt;parkstore&lt;/name&gt;<br />
-  &lt;/tag&gt;<br />
-&lt;/tags&gt;[/code]
-</li>
-<li> Create HTTP Push Adapter with following function code which will send the user push notification to the devices which is subscribed to tag "parkstore".
-<p>[code lang="xml"]function sendTagNotification(notificationText) {<br />
-    var notificationOptions = {};<br />
-    notificationOptions.message = {};<br />
-    notificationOptions.target = {};</p>
-<p>    notificationOptions.message.alert = notificationText;<br />
-    notificationOptions.target.tagNames = [&quot;parkstore&quot;];</p>
-<p>    WL.Server.sendMessage(&quot;ParkStoreMFP&quot;, notificationOptions);</p>
-<p>    return {<br />
-        result : &quot;Notification sent to users subscribed to the tag parkstore.&quot;<br />
-    };<br />
-}[/code]
-</li>
+    <li> Add apns p12 certificate which is generated from Apple Developer Account under iOS Native API Folder
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.58.03-pm.png" class="img_responsive" />
+    </li>
+    <li> Add Push configuration in Application Descriptor file of iOS Native API and include the password of added apns certificate.
+
+{% highlight xml %}
+<pushSender password="password"/>
+<tags>
+  <tag>
+    <name>parkstore</name>
+  </tag>
+</tags>
+{% endhighlight %}
+    </li>
+    <li> Create HTTP Push Adapter with following function code which will send the user push notification to the devices which is subscribed to tag "parkstore".
+
+    {% highlight javascript %}
+    function sendTagNotification(notificationText) {
+        var notificationOptions = {};
+        notificationOptions.message = {};
+        notificationOptions.target = {};
+        notificationOptions.message.alert = notificationText;
+        notificationOptions.target.tagNames = ["parkstore"];
+        WL.Server.sendMessage("ParkStoreMFP", notificationOptions);
+        return {
+            result : "Notification sent to users subscribed to the tag parkstore."
+        };
+    }
+{% endhighlight %}
+    </li>
 </ul>
+
 <p>By performing above steps one can easily run iOS app built for Bluemix on MobileFirst Platform and following are the links to samples.</p>
+
 <h3 id="sample">Sample and Source Code</h3>
-<p>Bluemix Server : <a href="https://hub.jazz.net/git/chethan/parkstore-bluemix-server">Parkstore bluemix server</a><br />
-Bluemix Client : <a href="https://hub.jazz.net/git/chethan/parkstore-bluemix">Parkstore bluemix</a><br />
-MFP Server     : <a href="https://hub.jazz.net/git/chethan/parkstore-mfp-server">Parkstore mfp server</a><br />
-MFP Client     : <a href="https://hub.jazz.net/git/chethan/parkstore-mfp">Parkstore mfp</a></p>
+Bluemix Server : <a href="https://hub.jazz.net/git/chethan/parkstore-bluemix-server">Parkstore bluemix server</a><br/>
+Bluemix Client : <a href="https://hub.jazz.net/git/chethan/parkstore-bluemix">Parkstore bluemix</a><br/>
+MFP Server     : <a href="https://hub.jazz.net/git/chethan/parkstore-mfp-server">Parkstore mfp server</a><br/>
+MFP Client     : <a href="https://hub.jazz.net/git/chethan/parkstore-mfp">Parkstore mfp</a>
