@@ -101,10 +101,18 @@ hr {
 }
 #blogPosts {
 	margin-bottom: 50px;
+
+	.twoColumns{
+		-webkit-columns: 2 200px;
+	  -moz-columns: 2 200px;
+	  columns: 2 200px;
+	}
+
+	.blogPostsHeading {
+		margin-top: 30px;
+	}
 }
-.blogPostsHeading {
-	margin-top: 30px;
-}
+
 .postDate {
 	font-size: 80%;
 	padding: 0;
