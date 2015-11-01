@@ -1,5 +1,5 @@
 ---
-layout: product-integration
+layout: tutorial
 title: Trusteer for iOS
 relevantTo: [ios]
 ---
