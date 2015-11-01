@@ -29,7 +29,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{subitem.name}}</a>
                         <ul class="dropdown-menu">
                           {% for subsubitem in subitem.children %}
-                            <li><a href="{{site.baseurl}}{{item.path}}{{subitem.path}}{{subsubitem.path}}/">{{subsubitem.name}}</a></li>
+                            {% if subsubitem.external %}
+                              <li><a href="{{subsubitem.path}}" target="_blank">{{subsubitem.name}} <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a></li>
+                            {% else %}
+                              <li><a href="{{site.baseurl}}{{item.path}}{{subitem.path}}{{subsubitem.path}}/">{{subsubitem.name}}</a></li>
+                            {% endif %}
                             {% if forloop.last != true %}
                             <li role="separator" class="divider"></li>
                             {% endif %}

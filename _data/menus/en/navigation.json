@@ -99,7 +99,8 @@
           },
           {
             "name": "Presence Insights",
-            "path": "/presence-insights"
+            "path": "https://presenceinsights.ng.bluemix.net/piui/",
+            "external": true
           },
         ]
       },
