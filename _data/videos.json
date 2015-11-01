@@ -12,63 +12,63 @@
     "tags": ["Development","Android"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "Continuous Integration",
+    "url": "//www.youtube.com/watch?v=FMTmOUPBhNI",
+    "thumbnail": "//img.youtube.com/vi/FMTmOUPBhNI/hqdefault.jpg",
+    "tags": ["integration"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "IBM MobileFirst Platform Foundation With Android ProGuard",
+    "url": "//www.youtube.com/watch?v=WrCmLJuIMuk",
+    "thumbnail": "//img.youtube.com/vi/WrCmLJuIMuk/hqdefault.jpg",
+    "tags": ["integration","Android"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "Operational Analytics for LOB",
+    "url": "//www.youtube.com/watch?v=euuvr9DaT5M",
+    "thumbnail": "//img.youtube.com/vi/euuvr9DaT5M/hqdefault.jpg",
+    "tags": ["Analytics"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "Operational Analytics console",
+    "url": "//www.youtube.com/watch?v=EQDpRF-9Smc",
+    "thumbnail": "//img.youtube.com/vi/EQDpRF-9Smc/hqdefault.jpg",
+    "tags": ["Analytics"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "Operational Analytics Custom Charts",
+    "url": "//www.youtube.com/watch?v=XtlJI4ZemZQ",
+    "thumbnail": "//img.youtube.com/vi/XtlJI4ZemZQ/hqdefault.jpg",
+    "tags": ["Analytics"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "Getting familiar with Java adapters - part 1",
+    "url": "//www.youtube.com/watch?v=cKM5480-6wI",
+    "thumbnail": "//img.youtube.com/vi/cKM5480-6wI/hqdefault.jpg",
+    "tags": ["java","adapters"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "Getting familiar with Java adapters - part 2",
+    "url": "//www.youtube.com/watch?v=Z2QUi33_a5k",
+    "thumbnail": "//img.youtube.com/vi/Z2QUi33_a5k/hqdefault.jpg",
+    "tags": ["java","adapter"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "OAuth security - part 1",
+    "url": "//www.youtube.com/watch?v=uyeGupYSZj4",
+    "thumbnail": "//img.youtube.com/vi/uyeGupYSZj4/hqdefault.jpg",
+    "tags": ["OAuth","security"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "OAuth security - part 2",
+    "url": "//www.youtube.com/watch?v=eeFBCptXLFU",
+    "thumbnail": "//img.youtube.com/vi/eeFBCptXLFU/hqdefault.jpg",
+    "tags": ["OAuth","security"]
   },
   {
-    "caption": "",
-    "url": "",
-    "thumbnail": "",
-    "tags": []
+    "caption": "Integrating IBM MobileFirst CLI with Grunt",
+    "url": "//www.youtube.com/watch?v=tFvogRMC4ss",
+    "thumbnail": "//img.youtube.com/vi/tFvogRMC4ss/hqdefault.jpg",
+    "tags": ["CLI","Integration"]
   },
 ]
