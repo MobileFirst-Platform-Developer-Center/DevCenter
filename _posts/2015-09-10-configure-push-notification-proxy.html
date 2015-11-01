@@ -1,106 +1,105 @@
 ---
-
 title: Configure Push notifications proxy for MobileFirst Server
 date: 2015-09-10 00:00:16.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '10914'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _oembed_a686bbe004490ada352e4a2abb3451d2: "{{unknown}}"
-  _wpas_done_all: '1'
-  _post_restored_from: a:3:{s:20:"restored_revision_id";i:17640;s:16:"restored_by_user";i:10914;s:13:"restored_time";i:1441830040;}
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442517586;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:16662;}i:1;a:1:{s:2:"id";i:16161;}i:2;a:1:{s:2:"id";i:6995;}}}}
+- Push notifications
+- Proxy
 author:
-  login: vivinkrishnan@in.ibm.com
-  email: vivinkrishnan@in.ibm.com
-  display_name: VivinKrishnan
-  first_name: VIVIN
-  last_name: KRISHNAN
+  display_name: Vivin Krishnan
 ---
 <p>There are cases where security guidelines / restrictions in the datacenter mandate that servers inside the datacenter cannot open outbound connections to the internet. The MobileFirst server needs to open outbound connections to the platform specific cloud push notification services like Apple Push Notification service (APNS), Google Cloud Messaging (GCM) or the Windows Notification service (WNS). In such cases, communicating via a proxy is a preferred option. A Proxy can be configured to contact the Push mediators and send out notifications, masking MFPF server identity.</p>
+
 <p>This article discusses how to configure and send Push notifications (to the mediator) via proxy and quickly test the feature.Currently, MFPF server supports push notification through proxy only for Android or iOS push.</p>
+
 <h3>Google Cloud Messaging (GCM)</h3>
 <p>Push notifications proxy for GCM requires only an HTTP/TCP proxy. A normal Forward Proxy configuration is sufficient to get GCM Push proxy working.You can use any HTTP/TCP proxy to configure this. For testing and illustration, we have used Apache Web server in Forward Proxy configuration. You can obtain Apache Webserver <a href="http://httpd.apache.org/download.cgi">here</a>.</p>
+
 <p>Once you have downloaded and installed Apache webserver, navigate to <code>httpd.conf</code> file under "conf" folder. In <code>httpd.conf</code>, load and enable proxy modules :</p>
-<p>[code lang="xml"]<br />
-LoadModule proxy_module modules/mod_proxy.so<br />
-LoadModule proxy_connect_module modules/mod_proxy_connect.so<br />
-LoadModule proxy_ftp_module modules/mod_proxy_ftp.so<br />
-LoadModule proxy_http_module modules/mod_proxy_http.so<br />
-[/code]</p>
-<p><br clear="all" /></p>
+
+{% highlight xml %}
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_connect_module modules/mod_proxy_connect.so
+LoadModule proxy_ftp_module modules/mod_proxy_ftp.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+{% endhighlight %}
+
 <p>In <code>httpd.conf</code> find the section on Proxy server directives .Configure Forward Proxy by making the following changes:</p>
-<p>[code lang="xml" highlight="2,7,9,10,12,13,15"]<br />
-# Proxy Server directives. Uncomment the following lines to enable the proxy server:<br />
-&lt;IfModule mod_proxy.c&gt;</p>
-<p>#Enable the forward proxy server. Note: Do not use the ProxyRequests directive if<br />
-#all you require is reverse proxy.</p>
-<p>ProxyRequests On</p>
-<p>&lt;Proxy *&gt;<br />
-    Order deny,allow<br />
-#    Deny from all<br />
-    Allow from all<br />
-&lt;/Proxy&gt;<br />
-...<br />
-&lt;/IfModule&gt;<br />
-[/code]</p>
+
+{% highlight xml %}
+# Proxy Server directives. Uncomment the following lines to enable the proxy server:
+<IfModule mod_proxy.c>
+#Enable the forward proxy server. Note: Do not use the ProxyRequests directive if
+#all you require is reverse proxy.
+ProxyRequests On
+<Proxy *>
+    Order deny,allow
+#    Deny from all
+    Allow from all
+</Proxy>
+...
+</IfModule>
+{% endhighlight %}
+
 <p>Start/restart your Apache Web server.</p>
-<p><br clear="all" /></p>
+
 <p>In the MFPF project ,edit your <code>worklight.properties</code> file to configure GCM notifications to be routed through the proxy:</p>
-<p>[code lang="xml" highlight="4,6,7,9"]<br />
-#########################################<br />
-#	Push GCM proxy settings<br />
-#########################################<br />
-push.gcm.proxy.enabled=true<br />
-# protocol may be either HTTPS or HTTPS<br />
-push.gcm.proxy.protocol=HTTP<br />
-push.gcm.proxy.host=&lt;proxy host&gt;<br />
-# negative value means default port<br />
-push.gcm.proxy.port=&lt;proxy port&gt;<br />
-# empty user means no authentication<br />
-#push.gcm.proxy.user=<br />
-#push.gcm.proxy.password=<br />
-[/code]</p>
-<p>Deploy the runtime war file to the application server.<br />
-<br clear="all" /></p>
+
+{% highlight xml %}
+#########################################
+#	Push GCM proxy settings
+#########################################
+push.gcm.proxy.enabled=true
+# protocol may be either HTTPS or HTTPS
+push.gcm.proxy.protocol=HTTP
+push.gcm.proxy.host=<proxy host>
+# negative value means default port
+push.gcm.proxy.port=<proxy port>
+# empty user means no authentication
+#push.gcm.proxy.user=
+#push.gcm.proxy.password=
+{% endhighlight %}
+
+<p>Deploy the runtime war file to the application server.</p>
+
 <p>With this, the notifications send out from MFPF server to GCM servers are routed through the proxy and not send directly.You can verify the notifications are indeed being dispatched through the proxy by observing the access logs or monitoring the interface at the proxy server machine-</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/HTTPServerAccesslogs.png"><img src="{{ site.baseurl }}/assets/backup/HTTPServerAccesslogs.png" alt="HTTPServerAccesslogs" width="1320" height="114" class="alignleft size-full wp-image-16371" /></a></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/GCMProxyServerWireshark.png"><img src="{{ site.baseurl }}/assets/backup/GCMProxyServerWireshark.png" alt="GCMProxyServerWireshark" width="1068" height="456" class="alignleft size-full wp-image-16372" /></a></p>
-<p><br clear="all" /></p>
+
+<img src="{{ site.baseurl }}/assets/backup/HTTPServerAccesslogs.png" "img_responsive" />
+
+<img src="{{ site.baseurl }}/assets/backup/GCMProxyServerWireshark.png" class="img_responsive" />
+
 <p>Stopping the proxy will prevent the notifications from reaching GCM.</p>
+
 <h3>Apple Push Notification Service (APNs)</h3>
 <p>In case of APNs notifications, MFPF server supports only SOCKS proxy. Both SOCK4 and SOCK5 protocol versions are supported. SOCKS5 comes with enhancements to SOCKS4 , including authentication support. As of version 7.1, SOCKS5 proxy with authentication is not supported by MFPF server.</p>
+
 <h4>Create a SOCK5 proxy:</h4>
 <p>Commonly available SOCKS 4/5 proxies can be used. For illustration, we have used a SOCKS5 proxy created using ssh. This is essentially a ssh tunneling proxy. Enabling ssh tunneling proxy creates a simple SOCKS5 proxy (or SOCKS4 depending on the version of the ssh client &amp; server). This does not require any additional software installation. On Windows systems "<a href="http://www.putty.org/">putty</a>" tool can be used to configure a SOCKS proxy.</p>
 <p>On the system where MFPF server is installed, execute the following command. This creates a tunnelling proxy to the ssh server.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/CreateSOCKS5ProxyGeneric.png"><img src="{{ site.baseurl }}/assets/backup/CreateSOCKS5ProxyGeneric.png" alt="CreateSOCKS5ProxyGeneric" width="1044" height="38" class="alignleft size-full wp-image-16393" /></a></p>
-<p><br clear="all" /></p>
+
+<img src="{{ site.baseurl }}/assets/backup/CreateSOCKS5ProxyGeneric.png" class="img_responsive" />
+
 <p>Verify the proxy server is listening for traffic at the specified port :</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/VerifySOCKS5Proxyuser.png"><img src="{{ site.baseurl }}/assets/backup/VerifySOCKS5Proxyuser.png" alt="VerifySOCKS5Proxyuser" width="970" height="124" class="alignleft size-full wp-image-16394" /></a></p>
-<p><br clear="all" /></p>
+<img src="{{ site.baseurl }}/assets/backup/VerifySOCKS5Proxyuser.png" class="img_responsive" />
+
 <p>Go to MFPF project and edit your worklight.properties file to configure APNs notifications to be routed through the SOCKS proxy:</p>
-<p>[code lang="xml"]<br />
-#############################################<br />
-#	Push APNS proxy settings<br />
-#############################################<br />
-push.apns.proxy.enabled=true<br />
-# only SOCKS proxy is supported at the moment<br />
-push.apns.proxy.type=SOCKS<br />
-push.apns.proxy.host=127.0.0.1<br />
-push.apns.proxy.port=1080</p>
-<p>[/code]</p>
-<p><br clear="all" /></p>
-<p>Verify if the proxy server has established a connection with APNS servers. Simple <code>netstat</code> command should show :</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/SOCKS5ProxyAPNSConnection.png"><img src="{{ site.baseurl }}/assets/backup/SOCKS5ProxyAPNSConnection.png" alt="SOCKS5ProxyAPNSConnection" width="1340" height="34" class="alignleft size-full wp-image-16376" /></a></p>
-<p><br clear="all" /></p>
+
+{% highlight xml %}
+#############################################
+#	Push APNS proxy settings
+#############################################
+push.apns.proxy.enabled=true
+# only SOCKS proxy is supported at the moment
+push.apns.proxy.type=SOCKS
+push.apns.proxy.host=127.0.0.1
+push.apns.proxy.port=1080
+{% endhighlight %}
+
+<p>Verify if the proxy server has established a connection with APNS servers. Simple <code>netstat</code> command should show:</p>
+
+<img src="{{ site.baseurl }}/assets/backup/SOCKS5ProxyAPNSConnection.png" class="img_responsive" />
+
 <p>Stop the SOCKS proxy to verify if the notifications can be sent. MFPF server log will show :</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/08/APNSErrorMessage.png"><img src="{{ site.baseurl }}/assets/backup/APNSErrorMessage-300x108.png" alt="APNSErrorMessage" width="300" height="108" class="alignleft size-medium wp-image-16377" /></a></p>
-<p><br clear="all" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/APNSErrorMessage-300x108.png" class="img_responsive" />
+
 <p>We have seen how MobileFirst server can be configured to route notifications to APNs through a proxy. Commonly available HTTP/TCP proxies can be configured and used for GCM and SOCKS proxy for connecting to APNs</p>
