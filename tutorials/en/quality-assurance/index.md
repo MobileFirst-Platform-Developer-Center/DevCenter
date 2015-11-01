@@ -4,11 +4,10 @@ title: Quality Assurance
 weight: 0
 show_breadcrumb: false
 ---
-INTRO FOR QUALITY ASSURANCE
+<br>
+<p>IBM MobileFirst Quality Assurance enables mobile app testing, user validation, and streamlined quality feedback with sentiment analysis, over-the-air build distribution, automated crash reporting, in-app bug reporting and user feedback.</p>
 
-To get started, select from the list below the Foundation release you are using:
+To get started, select from the list below the release you are using:
 
-* [MobileFirst Platform Foundation 6.3]({{site.baseurl}}/tutorials/en/foundation/6.3/all-tutorials)
-* [MobileFirst Platform Foundation 7.0]({{site.baseurl}}/tutorials/en/foundation/7.0/all-tutorials)
-* [MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/foundation/7.1/all-tutorials)
-* [MobileFirst Platform Foundation 8.0]({{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials)
+* [MobileFirst Quality Assurance 6.3](https://www-01.ibm.com/support/knowledgecenter/SSFRDS_6.3.0/com.ibm.mqa.uau.doc/mqa630_welcome.html)
+* [MobileFirst Quality Assurance as a Bluemix Service (for MobileFirst Platform 7.0 and above)]({{site.baseurl}}/tutorials/en/quality-assurance/7.1/)
