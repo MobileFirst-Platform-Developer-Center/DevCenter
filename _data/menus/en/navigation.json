@@ -108,7 +108,7 @@
   },
   {
     "name": "Product Integration",
-    "path": "/product-integration",
+    "path": "/tutorials/en/product-integration",
     "children": [
       {
         "name": "8.0",

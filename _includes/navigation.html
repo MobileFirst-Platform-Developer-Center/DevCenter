@@ -18,7 +18,12 @@
     <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
             {% for item in site.data.menus.en.navigation %}
-              {% capture classes %}{% if item.children %}dropdown{%endif%} {% if page.url contains item.path %}active{% endif%}{% endcapture %}
+              {% if item.name == "Tutorials" and page.url contains "product-integration" %}
+                {% comment %}Special case to avoid 2 active states{% endcomment %}
+                {% capture classes %}{% if item.children %}dropdown{%endif%}{% endcapture %}
+              {% else %}
+                {% capture classes %}{% if item.children %}dropdown{%endif%} {% if page.url contains item.path %}active{% endif%}{% endcapture %}
+              {% endif %}
               <li {% if classes %}class="{{classes}}"{%endif%}>
                 {% if item.children %}
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{item.name}}<span class="caret"></span></a>
