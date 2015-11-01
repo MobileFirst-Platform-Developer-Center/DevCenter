@@ -3,7 +3,7 @@ description: "Develop, test, manage, and secure your mobile web, native and hybr
 url: https://developer.ibm.com
 baseurl: /MFPSamples
 permalink: pretty
-exclude: [old-backup,tutorials/en/foundation,product-integration]
+exclude: [old-backup]
 
 gems:
   - jekyll-redirect-from
