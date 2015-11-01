@@ -2,7 +2,7 @@
   {% assign minLevel = include.minLevel %}
   {% if minLevel == nil %}{% assign minLevel = 1 %}{% endif %}
 
-  <div class="row outerbreadcrumb">
+  <div class="row outerbreadcrumb hidden-xs">
     <div class="leftPart col-lg-8 col-xs-12">
       <ol class="breadcrumb">
         {% assign documents = site.pages | sort: "weight" %}
