@@ -15,3 +15,12 @@ img {
     margin: 30px auto 30px auto;
     display: block;
 }
+
+#blogPosts {
+    margin-bottom: 0px;
+    padding-top: 10px;
+}
+
+.moreBlogs {
+    line-height: 2.0em;
+}

@@ -1,11 +1,12 @@
 ---
 layout: default
 title: MobileFirst Platform Blog
+custom_css:
+ - css/blog.css
 ---
 <div class="container">
     <h2>MobileFirst Platform Blog</h2>
     <div id="blogPosts" class="container">
-          <h3 class="blogPostsHeading">Recent Updates</h3>
           <div class="twoColumns">
             {% for post in paginator.posts %}
               <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
@@ -32,7 +33,7 @@ title: MobileFirst Platform Blog
 
     <hr>
     <h3>More blogs to follow</h3>
-    <ul>
+    <ul class="moreBlogs">
         <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobileblog/?lang=en" target="_blank">The Mobile Frontier</a></b> - Identify concepts and observations related to the re/evolution of mobile devices.</li>
         <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobile/?lang=en" target="_blank">Mobile Developmente</a></b> - Information and announcements for mobile developers, links to how-to content, technology primers,events, and other useful information for building mobile applications.</li>
         <li><b><a href="http://www.tricedesigns.com/tag/mobilefirst/" target="_blank">Andrew Trice’s blog</a></b></li>
