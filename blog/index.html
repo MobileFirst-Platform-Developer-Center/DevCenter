@@ -4,6 +4,32 @@ title: MobileFirst Platform Blog
 ---
 <div class="container">
     <h2>MobileFirst Platform Blog</h2>
+    <div id="blogPosts" class="container">
+          <h3 class="blogPostsHeading">Recent Updates</h3>
+          <div class="twoColumns">
+            {% for post in paginator.posts %}
+              <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
+              <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+            {% endfor %}
+          </div>
+    </div>
+
+    <!-- Pagination links -->
+    <nav>
+      <ul class="pagination">
+        <li {% if paginator.previous_page == null %}class="disabled"{% endif %}>
+          <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous" >
+            <span aria-hidden="true">Preview</span>
+          </a>
+        </li>
+        <li {% if paginator.next_page == null %}class="disabled"{% endif %}>
+          <a href="{% if paginator.next_page %}{{ paginator.next_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Next">
+            <span aria-hidden="true">Next</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
     <hr>
     <h3>More blogs to follow</h3>
     <ul>
