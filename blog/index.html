@@ -20,7 +20,7 @@ custom_css:
       <ul class="pagination">
         <li {% if paginator.previous_page == null %}class="disabled"{% endif %}>
           <a href="{% if paginator.previous_page %}{{ paginator.previous_page_path | prepend: site.baseurl}}{% else %}#{% endif %}" aria-label="Previous" >
-            <span aria-hidden="true">Preview</span>
+            <span aria-hidden="true">Previous</span>
           </a>
         </li>
         <li {% if paginator.next_page == null %}class="disabled"{% endif %}>

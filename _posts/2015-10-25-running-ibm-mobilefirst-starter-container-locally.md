@@ -1,30 +1,12 @@
 ---
-
 title: Running ibm-mobilefirst-starter container locally
 date: 2015-10-25 14:05:45.000000000 +02:00
-type: post
-published: true
-status: publish
-categories:
-- Mobile
 tags:
 - Bluemix
 - MobileFirst_Platform
 - IBM Containers
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _syntaxhighlighter_encoded: '1'
-  _rawhtml_settings: '0,0,0,0'
-  oasis_is_in_workflow: '0'
-  _wpas_done_all: '1'
-  oasis_current_revision: '18830'
 author:
-  login: srinivasan.nanduri@in.ibm.com
-  email: srinivasan.nanduri@in.ibm.com
-  display_name: SrinivasanNanduri
-  first_name: Srinivasan
-  last_name: Nanduri
+  display_name: Srinivasan Nanduri
 ---
 <blockquote><b>Disclaimer: </b>The solution discussed herein is from my own personal experience as a developer using the MobileFirst platform and do not represent IBM's view nor IBM's interest in supporting this officially.</blockquote>
 

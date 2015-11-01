@@ -1,93 +1,106 @@
 ---
-
 title: Ready-to-go Bluemix Web App to speed up MobileFirst Platform Foundation deployment
   to IBM Bluemix Containers
 date: 2015-10-02 16:16:32.000000000 +03:00
-type: post
-published: true
-status: publish
-categories:
-- Mobile
 tags:
-- bluemix
+- Bluemix
 - IBM Containers
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '23285'
-  _rawhtml_settings: '0,0,0,0'
-  _yoast_wpseo_metadesc: containers, mfpf, bluemix, deploy
-  oasis_is_in_workflow: '0'
-  _wpas_done_all: '1'
 author:
-  login: krckumar@in.ibm.com
-  email: krckumar@in.ibm.com
-  display_name: krckumar
-  first_name: Krishna
-  last_name: Kumar
+  display_name: Krishna Kumar
 ---
-<p>Have you tried deploying the MobileFirst Platform to IBM Containers before ? If yes, you would have used a bunch of command-line shell scripts which needs a list of prerequisites to set up the environment.<a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/run-foundation-on-bluemix/"> Refer the article - Run IBM MobileFirst Platform Foundation on IBM Containers</a>. If you wonder "why not a web user interface for performing the customization, build and deployment of the MobileFirst Image to Containers?", here is the Bluemix application that offers a wizard based web interface that helps you customize, build and deploy IBM MobileFirst project artifacts to Containers on IBM Bluemix.</p>
-<p><strong>IBM MobileFirst Platform Foundation Containers</strong> is a wizard based  web UI that allows you to deploy both IBM MobileFirst Server and Operational Analytics.</p>
+<p>Have you tried deploying the MobileFirst Platform to IBM Containers before? If yes, you would have used a bunch of command-line shell scripts which needs a list of prerequisites to set up the environment, <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/run-foundation-on-bluemix/"> refer the article - Run IBM MobileFirst Platform Foundation on IBM Containers</a>.</p>
+
+<p>If you wonder "why not a web user interface for performing the customization, build and deployment of the MobileFirst Image to Containers?", here is the Bluemix application that offers a wizard based web interface that helps you customize, build and deploy IBM MobileFirst project artifacts to Containers on IBM Bluemix.</p>
+
+<p><strong>IBM MobileFirst Platform Foundation Containers</strong> is a wizard-based web UI that allows you to deploy both IBM MobileFirst Server and Operational Analytics.</p>
+
 <h2>Pre-requisites</h2>
 <ul>
-<li><b>IBM Bluemix Account.</b> (minimum of CloudFoundry memory 1.5G &amp; 1G in Containers is required)</li>
-<li><b>IBM MobileFirst Platform for Containers</b> zip archive hosted on an internet accessible HTTP or FTP server.</li>
+    <li><b>IBM Bluemix Account.</b> (minimum of CloudFoundry memory 1.5G &amp; 1G in Containers is required)</li>
+    <li><b>IBM MobileFirst Platform for Containers</b> zip archive hosted on an internet accessible HTTP or FTP server.</li>
 </ul>
+
 <h2>Setup</h2>
 <p>To start, click on the <b>Deploy To Bluemix</b> button below.</p>
-<p><a href="https://bluemix.net/deploy?repository=https://hub.jazz.net/git/snanduri/mfp-containers-app" target="_blank"><img src="{{ site.baseurl }}/assets/backup/button.png" alt="Bluemix button" style="margin-bottom:0px" /></a></p>
+
+<img src="http://bluemix.net/deploy/button.png" class="img_responsive" />
+
 <ol>
-<li>Login with the IBM Bluemix Account credentials.</li>
-<li>Enter a unique App name.</li>
-<li>Choose the Organization and Space to which the app has to be deployed.[caption id="attachment_18047" align="aligncenter" width="450"]<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/deploy_to_bmx_ui-e1443089454760.png"><img src="{{ site.baseurl }}/assets/backup/deploy_to_bmx_ui-e1443089454760.png" alt="Fig.1 - Deploy to Bluemix" width="450" height="394" class="size-full wp-image-18047" /></a> Fig.1 - Deploy to Bluemix[/caption]</li>
-<li>Click on <b>DEPLOY</b> button to deploy the application. See the following image. Note: This step initiates the IBM Bluemix DevOps pipeline activities which involves the download of the base IBM MobileFirst Evaluation Archive. This archive is used by the app for customization and deployment to IBM Containers.</li>
-<li>On successful deployment, click on <b>VIEW YOUR APP</b> button to launch the app. See the following image.[caption id="attachment_18045" align="aligncenter" width="500"]<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/deploy_success-e1443102400521.png"><img src="{{ site.baseurl }}/assets/backup/deploy_success-e1443102400521.png" alt="Fig. 2 - Successful deployment of App" width="500" height="420" class="size-full wp-image-18045" /></a> Fig. 2 - Successful deployment of App[/caption]</li>
+    <li>Login with the IBM Bluemix Account credentials.</li>
+    <li>Enter a unique App name.</li>
+    <li>Choose the Organization and Space to which the app has to be deployed.
+        <img src="{{ site.baseurl }}/assets/backup/deploy_to_bmx_ui-e1443089454760.png" class="img_responsive">
+    </li>
+    <li>Click on <b>DEPLOY</b> button to deploy the application. See the following image. Note: This step initiates the IBM Bluemix DevOps pipeline activities which involves the download of the base IBM MobileFirst Evaluation Archive. This archive is used by the app for customization and deployment to IBM Containers.</li>
+    <li>On successful deployment, click on <b>VIEW YOUR APP</b> button to launch the app. See the following image.
+        <img src="{{ site.baseurl }}/assets/backup/deploy_success-e1443102400521.png" class="img_responsive" />
+    </li>
 </ol>
+
 <h2>How to use the Application</h2>
 <p>The wizard allows you to customize, build and deploy the IBM MobileFirst Containers without any CLI based scripts or other utilities.</p>
+
 <p>To deploy to IBM containers and Bluemix using this app, launch the application using a web browser and complete the following steps:</p>
+
 <ol>
-<li>Enter the location of IBM MobileFirst Platform for Containers zip for customization. Make sure this URL is internet accessible as the zip file will be downloaded to the IBM Bluemix servers by this application.<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/10/SetURLpage2.png"><img src="{{ site.baseurl }}/assets/backup/SetURLpage2-1024x383.png" alt="IBM MFPF for Containers zip Archive URL Input - Modal Dialog" width="980" height="367" class="aligncenter size-large wp-image-18233" /></a></li>
-<li><strong>Login to the Bluemix Container Service </strong>- Enter the IBM Bluemix Account credentials to log in followed by choosing the right Organization and Space for deploying the MobileFirst Containers.<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/10/App_Login_step_1.png"><img src="{{ site.baseurl }}/assets/backup/App_Login_step_1.png" alt="App_Login_step_1" width="864" height="376" class="aligncenter size-full wp-image-18215" /></a></li>
-<li><strong>Customize</strong> - the MFPF eval image archive is extracted and default values are loaded from the image to the UI. User is allowed to choose the component type for customization either Server or Analytics from the dropdown. This section consists of multiple sections for both Server &amp; Analytics container types. (Refer the <b>Help</b> in the app for more details on each section)<br />
-<br />Following screenshots show the customization of Analytics and Server component.<br /></p>
-<p class="wp-caption-text">Server Customization</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/App_Step_2.png"><img src="{{ site.baseurl }}/assets/backup/App_Step_2.png" alt="Server Customization" width="864" height="387" class="aligncenter size-full wp-image-18040" /></a></p>
-<p class="wp-caption-text">Analytics Customization</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/10/Analytics_customiztion1.png"><img src="{{ site.baseurl }}/assets/backup/Analytics_customiztion1-1024x554.png" alt="Analytics_customiztion" width="980" height="530" class="aligncenter size-large wp-image-18221" /></a>
-</li>
-<li><strong>Build &amp; Push</strong> - This is the step which takes the Image Tag Name as input with which the customized image will be pushed to the IBM Bluemix. Click Next to build the customized image and push the image.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/Build_Push1.png"><img src="{{ site.baseurl }}/assets/backup/Build_Push1.png" alt="Build &amp; Push" width="720" height="205" class="aligncenter size-full wp-image-18042" /></a></li>
-<li><strong>Deploy</strong> - Choose the runtime, either <b>container</b> or <b>container groups</b>".<br /></p>
-<p><b>Standalone Containers<br />
-<br /><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/deploy_c.png"><img src="{{ site.baseurl }}/assets/backup/deploy_c-1024x446.png" alt="Containers" width="980" height="427" class="aligncenter size-large wp-image-18043" /></a></b></p>
+    <li>Enter the location of IBM MobileFirst Platform for Containers zip for customization. Make sure this URL is internet accessible as the zip file will be downloaded to the IBM Bluemix servers by this application.
+        <img src="{{ site.baseurl }}/assets/backup/SetURLpage2-1024x383.png" class="img_responsive" />
+    </li>
+    <li><strong>Login to the Bluemix Container Service </strong>- Enter the IBM Bluemix Account credentials to log in followed by choosing the right Organization and Space for deploying the MobileFirst Containers.
+        <img src="{{ site.baseurl }}/assets/backup/App_Login_step_1.png"class="img_responsive" />
+    </li>
+    <li><strong>Customize</strong> - the MFPF eval image archive is extracted and default values are loaded from the image to the UI. User is allowed to choose the component type for customization either Server or Analytics from the dropdown. This section consists of multiple sections for both Server &amp; Analytics container types. (Refer the <b>Help</b> in the app for more details on each section)
+    <br /><br />
+    Following screenshots show the customization of Analytics and Server component.</li>
+
+    <b>Server Customization</b><br>
+    <img src="{{ site.baseurl }}/assets/backup/App_Step_2.png" class="img_responsive" />
+
+    <b>Analytics Customization</b><br>
+    <img src="{{ site.baseurl }}/assets/backup/Analytics_customiztion1-1024x554.png" class="img_responsive" />
+
+    <li><strong>Build &amp; Push</strong> - This is the step which takes the Image Tag Name as input with which the customized image will be pushed to the IBM Bluemix. Click Next to build the customized image and push the image.
+    <img src="{{ site.baseurl }}/assets/backup/Build_Push1.png" class="img_responsive" /></li>
+    <li><strong>Deploy</strong> - Choose the runtime, either <b>container</b> or <b>container groups</b>".</li>
+
+    <b>Standalone Containers</b><br>
+    <img src="{{ site.baseurl }}/assets/backup/deploy_c-1024x446.png" class="img_responsive" />
+
 <ol>
-<li>Choose the pushed image.</li>
-<li>Enter the container name.</li>
-<li>Select the Public IP from the dropdown.</li>
-<li>Choose the memory for the container. (default : 1024)</li>
+    <li>Choose the pushed image.</li>
+    <li>Enter the container name.</li>
+    <li>Select the Public IP from the dropdown.</li>
+    <li>Choose the memory for the container. (default : 1024)</li>
 </ol>
-<p><b>Container Groups<br /><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/deploy_cg.png"><img src="{{ site.baseurl }}/assets/backup/deploy_cg-1024x571.png" alt="deploy_cg" width="980" height="546" class="aligncenter size-large wp-image-18044" /></a></b></p>
+
+<b>Container Groups</b><br/>
+    <img src="{{ site.baseurl }}/assets/backup/deploy_cg-1024x571.png" class="img_responsive" />
+
 <ol>
-<li>Choose the pushed image.</li>
-<li>Enter a unique container group host name.</li>
-<li>Enter the minimum, desired and maximum number of instances.</li>
-<li>Choose the memory to be alloted per instance. (default : 1024)</li>
+    <li>Choose the pushed image.</li>
+    <li>Enter a unique container group host name.</li>
+    <li>Enter the minimum, desired and maximum number of instances.</li>
+    <li>Choose the memory to be alloted per instance. (default : 1024)</li>
 </ol>
-</li>
-</ol>
+
 <p>You can access the IBM MobileFirst Administration Console or Operational Analytics Console, upon successful deployment of the customized image. For example, see the following image.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/10/Success_Page.png"><img src="{{ site.baseurl }}/assets/backup/Success_Page-1024x418.png" alt="Success_Page" width="980" height="400" class="aligncenter size-large wp-image-18223" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/Success_Page-1024x418.png" class="img_responsive" />
+
 <p>Click the link to launch the IBM MobileFirst Operations or Analytics Console based on the deployment and refresh the app for another deployment.</p>
+
 <p>Note: Help section of the app can be accessed by clicking the <b>?</b> icon on the top-right corner of the page.</p>
+
 <h2>Contributors </h2>
 <p><a target="_blank" href="mailto:girishdhanak@in.ibm.com?subject=Support Question: IBM MobileFirst Foundation Plaform for Containers">Girish Dhanakshirur</a>, Senior Technical Staff Member, IBM Master Inventor - IBM MobileFirst Platform Development<br />
 <a target="_blank" href="mailto:krckumar@in.ibm.com?subject=Support Question: IBM MobileFirst Foundation Plaform for Containers">Krishna C Kumar</a>, Software Developer, IBM MobileFirst Platform Development Team.<br />
 <a target="_blank" href="mailto:mageorge@in.ibm.com?subject=Support Question: IBM MobileFirst Foundation Plaform for Containers">Manu T George</a>, Advisory Software Engineer, IBM MobileFirst Platform Development Team.<br />
 <a target="_blank" href="mailto:prashabh@in.ibm.com?subject=Support Question: IBM MobileFirst Foundation Plaform for Containers">Prashant Bhat</a>, Senior Staff Software Engineer, IBM MobileFirst Platform Development Team.<br />
 <a target="_blank" href="mailto:srinivasan.nanduri@in.ibm.com?subject=Support Question: IBM MobileFirst Foundation Plaform for Containers">Srinivasan Nanduri</a>, Senior Software Engineer, IBM MobileFirst Platform Development Team.</p>
-<h2>References </h2>
+
+<h2>References</h2>
 <ol>
-<li><a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.deploy.doc/deploy/c_deploy_cloud_container.html">IBM MobileFirst Platform Foundation on IBM Bluemix</a></li>
-<li><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/">Getting Started Tutorials &ndash; IBM MobileFirst Platform Foundation on IBM Bluemix</a></li>
+    <li><a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.deploy.doc/deploy/c_deploy_cloud_container.html">IBM MobileFirst Platform Foundation on IBM Bluemix</a></li>
+    <li><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/">Getting Started Tutorials &ndash; IBM MobileFirst Platform Foundation on IBM Bluemix</a></li>
 </ol>

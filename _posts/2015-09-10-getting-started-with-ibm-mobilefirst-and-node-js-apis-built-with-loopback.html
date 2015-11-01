@@ -1,197 +1,228 @@
 ---
-
 title: Getting Started With IBM MobileFirst and Node.js APIs built with LoopBack
 date: 2015-09-10 15:13:08.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
-- API
-- mobile
-- mobile_development
-- mobilefirst
+- LoopBack
 - MobileFirst_Platform
 - Node.js
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '15977'
-  _syntaxhighlighter_encoded: '1'
-  _rawhtml_settings: '0,0,0,0'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442503604;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:17164;}i:1;a:1:{s:2:"id";i:16161;}i:2;a:1:{s:2:"id";i:12439;}}}}
 author:
-  login: amtrice@us.ibm.com
-  email: amtrice@us.ibm.com
-  display_name: AndrewTrice
-  first_name: Andrew
-  last_name: Trice
+  display_name: Andrew Trice
 ---
 <p>IBM recently announced the acquisition of <a href="http://strongloop.com/" target="_blank">StrongLoop</a>, creators of the <a href="http://loopback.io/" target="_blank">LoopBack</a> enterprise Node.js framework and active contributors to the Node.js community.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/0-strongloop.jpg" alt="0-strongloop" width="222" height="66" class="aligncenter size-full wp-image-17660" /></p>
+
+<img src="{{ site.baseurl }}/assets/backup/0-strongloop.jpg" class="img_responsive" />
 <p>Developers need the ability to rapidly integrate data sources and build the API infrastructure required to deliver great app experiences.   The acquisition of StrongLoop helps IBM provide tools that enable rapid and efficient delivery on this ability. StrongLoop's LoopBack framework and composer tools enable developers to build APIs that expose data from back-end systems with minimal effort. Not only does it enable rapid API creation, but it also allows developers to tie into the rich Node.js ecosystem to leverage existing community code and assets to include in their projects.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/01-architecture.jpg" alt="01-architecture" width="464" height="494" class="aligncenter size-full wp-image-17662" /></p>
-<p>MobileFirst Platform Foundation Server has been able to <a href="https://ibm.biz/MFP-Node" target="_blank">manage APIs delivered on Node.js</a> since version 7.0, including both user authentication, app management, and analytics collection.   This gives developers the freedom to mix and match services across technologies, including the best each platform has to offer, all managed by the MobileFirst Platform Foundation infrastructure.  It also gives developers the option to reuse existing community, resources, and skills across two of most popular languages among developers.  <em><a href="http://githut.info/" target="_blank">Node.js and Java are the two most common languages on GitHub</a>.</em></p>
+
+<img src="{{ site.baseurl }}/assets/backup/01-architecture.jpg" class="img_responsive" />
+
+<p>MobileFirst Platform Foundation Server has been able to <a href="https://ibm.biz/MFP-Node" target="_blank">manage APIs delivered on Node.js</a> since version 7.0, including both user authentication, app management, and analytics collection.<br><br>
+
+This gives developers the freedom to mix and match services across technologies, including the best each platform has to offer, all managed by the MobileFirst Platform Foundation infrastructure.  It also gives developers the option to reuse existing community, resources, and skills across two of most popular languages among developers. <em><a href="http://githut.info/" target="_blank">Node.js and Java are the two most common languages on GitHub</a>.</em></p>
+
 <p>Put the two of these together, and it means that you are able to create and deliver secure and reliable applications faster, and more efficiently.</p>
+
 <h3>How it works</h3>
-<p>The mobile client application makes a request to the protected resource on the Node.js server.  The Node.js server will validate that the user's auth tokens are valid with the MobileFirst Platform Foundation server.  If the authenitcation is valid, the Node.js service will handle the request and return results as appropriate.  If the auth token is not valid, then the Node.js service returns a HTTP 401 Unauthorized response.</p>
+<p>The mobile client application makes a request to the protected resource on the Node.js server.  The Node.js server will validate that the user's auth tokens are valid with the MobileFirst Platform Foundation server.<br><br>If the authenitcation is valid, the Node.js service will handle the request and return results as appropriate.<br><br>If the auth token is not valid, then the Node.js service returns a HTTP 401 Unauthorized response.</p>
+
 <h3>Why</h3>
 <p>This gives you the ability to manage service interactions within your app in a single place - the MobileFirst Platform Foundation server. The MobileFirst integration provides authentication and app management, and also hooks into the same analytics engine used when invoking a MFP adapter. This gives you the flexibility to reuse resources from existing platforms and communities without compromise, plus you get the added bonus of shorter time from concept to delivery.</p>
+
 <h3>Setting Up The Server</h3>
 <p>This works on any Node.js resource, so you can protect an app built using the Express.js framework as easily has you can protect an API developed using StrongLoop's LoopBack framework.</p>
+
 <p>For an overview of StrongLoop's LoopBack framework, be sure to check out <a href="http://ibm.biz/Cloudant-LoopBack-Getting-Started" target="_blank">this related example that demonstrates how you can quickly and easily build a LoopBack API on top of IBM Cloudant</a>.</p>
+
 <p>The following assumes that you already have a LoopBack API in place on Node.js and a MFP server with authentication configured (based on the <a href="http://ibm.biz/Cloudant-LoopBack-Getting-Started" target="_blank">Cloudant sample</a> mentioned above). If you don't have a LoopBack API in place yet, <a href="http://ibm.biz/Cloudant-LoopBack-Getting-Started" target="_blank">start here</a>.  If you don't have authentication on a MobileFirst Platform Foundation Server, be sure to check out the "MobileFirst Authentication" section below.</p>
+
 <p>From a command line terminal cd into the directory containing your Node.js project, and use npm to install the  <a href="https://www.npmjs.com/package/passport-mfp-token-validation" target="_blank">Passport Strategy for IBM MobileFirst</a>.</p>
-<p>[bash]npm install passport-mfp-token-validation[/bash]</p>
+
+{% highlight bash %}
+npm install passport-mfp-token-validation
+{% endhighlight %}
+
 <p>Next, open up the LoopBack application's server/server.js file in a text/JavaScript editor.</p>
+
 <p>First you'll need to add the passport and MFP strategy for use within the server.js file.</p>
-<p>[js]var passport = require('passport-mfp-token-validation').Passport;<br />
-var mfpStrategy = require('passport-mfp-token-validation').Strategy;[/js]</p>
-<p>Next, configure and initialize passport for use with your existing LoopBack app.  The publicKeyServerUrl value is that of your MobileFirst Platform Foundation Server project.  The analytics url will be that of your MobileFirst analytics server, with the appropriate credentials.</p>
+
+{% highlight javascript %}
+var passport = require('passport-mfp-token-validation').Passport;
+var mfpStrategy = require('passport-mfp-token-validation').Strategy;
+{% endhighlight %}
+
+<p>Next, configure and initialize passport for use with your existing LoopBack app. The <code>publicKeyServerUrl</code> value is that of your MobileFirst Platform Foundation Server project.  The analytics URL will be that of your MobileFirst analytics server, with the appropriate credentials.</p>
+
 <p><em>In the sample below, I have a project called "MobileFirstLoopBack", which was created using the CLI command "mfp create MobileFirstLoopBack".</em></p>
-<p>[js]passport.use(new mfpStrategy({<br />
-    publicKeyServerUrl:'http://localhost:10080/MobileFirstLoopBack',<br />
-    analytics : { // The analytics item is optional and only required if you wish to log analytics events to MFP.<br />
-    	onpremise: {<br />
-    		url : 'http://localhost:10080/analytics-service/data',<br />
-    		username : 'admin',<br />
-    		password : 'admin'<br />
-		}<br />
-	}<br />
-}));<br />
-app.use(passport.initialize());[/js]</p>
+
+{% highlight javascript %}
+passport.use(new mfpStrategy({
+    publicKeyServerUrl:'http://localhost:10080/MobileFirstLoopBack',
+    analytics : { // The analytics item is optional and only required if you wish to log analytics events to MFP.
+    	onpremise: {
+    		url : 'http://localhost:10080/analytics-service/data',
+    		username : 'admin',
+    		password : 'admin'
+		}
+
+}));
+app.use(passport.initialize());
+{% endhighlight %}
+
 <p>Next, we'll add some helper functions to keep things simple.  The cont function is simply a callback to the LoopBack/Express.js next() function, which invokes the next step of the API request chain. Calling <a href="https://docs.strongloop.com/display/public/LB/Defining+middleware#Definingmiddleware-UsingtheExpressAPI" target="_blank">next()</a> after the authentication request is very important, otherwise the generated service endpoint will be overwritten.  The auth function is a helper function to simplify authentication of endpoints.  You pass in the security realm string to which you want to authenticate.</p>
-<p>[js]var cont = function(req, res){<br />
-    next();<br />
-};</p>
-<p>var auth = function(scope) {<br />
-    return passport.authenticate('mobilefirst-strategy', {<br />
-        session: false,<br />
-        scope: scope<br />
-    });<br />
-}[/js]</p>
+
+{% highlight javascript %}
+var cont = function(req, res){
+    next();
+};
+var auth = function(scope) {
+    return passport.authenticate('mobilefirst-strategy', {
+        session: false,
+        scope: scope
+    });
+}
+{% endhighlight %}
+
 <p>With these helper functions in place we are now ready to protect endpoints.  You can globally protect all api endpoints, or you have the flexibility to protect individual REST method endpoints with different authentication realms.</p>
-<p>[js]<br />
-//globally protect everything under &quot;/api&quot; with a single authentication realm<br />
-app.use('/api', auth('MyAuthRealm'), cont);</p>
-<p>//OR protectect all API endpoints for a particular path<br />
-//globally protect everything under &quot;/api&quot; with a single authentication realm<br />
+
+{% highlight javascript %}
+//globally protect everything under "/api" with a single authentication realm
+app.use('/api', auth('MyAuthRealm'), cont)
+//OR protectect all API endpoints for a particular path
+//globally protect everything under "/api" with a single authentication realm
+app.use('/api/Companies', auth('CompaniesRealm'), cont);
+//OR protect individual REST endpoints with different auth realms
+app.get('/api/Employees', auth('GetRealm'), cont);
+app.put('/api/Employees', auth('UpsertRealm'), cont);
+app.post('/api/Employees', auth('UpsertRealm'), cont);
+app.delete('/api/Employees/:id', auth('DeleteRealm'), cont);
+{% endhighlight %}
+
+Putting it all together, our srever.js file might look something like this:
+{% highlight javascript %}
+var loopback = require('loopback');
+var boot = require('loopback-boot');
+var passport = require('passport-mfp-token-validation').Passport;
+var mfpStrategy = require('passport-mfp-token-validation').Strategy;
+var app = module.exports = loopback();
+passport.use(new mfpStrategy({
+    publicKeyServerUrl:'http://localhost:10080/MobileFirstLoopBack',
+    analytics : { // The analytics item is optional and only required if you wish to log analytics events to MFP.
+    	onpremise: {
+    		url : 'http://localhost:10080/analytics-service/data',
+    		username : 'admin',
+    		password : 'admin'
+		}
+	}
+}));
+app.use(passport.initialize());
+// Helper functions
+var cont = function(req, res){
+    next();
+};
+var auth = function(scope) {
+    return passport.authenticate('mobilefirst-strategy', {
+        session: false,
+        scope: scope
+    });
+}
+//protect everything under "/api/Companies" with a single authentication realm
 app.use('/api/Companies', auth('CompaniesRealm'), cont);</p>
-<p>//OR protect individual REST endpoints with different auth realms<br />
-app.get('/api/Employees', auth('GetRealm'), cont);<br />
-app.put('/api/Employees', auth('UpsertRealm'), cont);<br />
-app.post('/api/Employees', auth('UpsertRealm'), cont);<br />
-app.delete('/api/Employees/:id', auth('DeleteRealm'), cont);[/js]</p>
-<p>Putting it all together, our srever.js file might look something like this:</p>
-<p>[js]var loopback = require('loopback');<br />
-var boot = require('loopback-boot');<br />
-var passport = require('passport-mfp-token-validation').Passport;<br />
-var mfpStrategy = require('passport-mfp-token-validation').Strategy;</p>
-<p>var app = module.exports = loopback();</p>
-<p>passport.use(new mfpStrategy({<br />
-    publicKeyServerUrl:'http://localhost:10080/MobileFirstLoopBack',<br />
-    analytics : { // The analytics item is optional and only required if you wish to log analytics events to MFP.<br />
-    	onpremise: {<br />
-    		url : 'http://localhost:10080/analytics-service/data',<br />
-    		username : 'admin',<br />
-    		password : 'admin'<br />
-		}<br />
-	}<br />
-}));<br />
-app.use(passport.initialize());</p>
-<p>// Helper functions<br />
-var cont = function(req, res){<br />
-    next();<br />
-};</p>
-<p>var auth = function(scope) {<br />
-    return passport.authenticate('mobilefirst-strategy', {<br />
-        session: false,<br />
-        scope: scope<br />
-    });<br />
-}</p>
-<p>//protect everything under &quot;/api/Companies&quot; with a single authentication realm<br />
-app.use('/api/Companies', auth('CompaniesRealm'), cont);</p>
-<p>//protect different REST endpoints with different authentication realms<br />
-app.get('/api/Employees', auth('GetRealm'), cont);<br />
-app.put('/api/Employees', auth('UpsertRealm'), cont);<br />
-app.post('/api/Employees', auth('UpsertRealm'), cont);<br />
+//protect different REST endpoints with different authentication realms
+app.get('/api/Employees', auth('GetRealm'), cont);
+app.put('/api/Employees', auth('UpsertRealm'), cont);
+app.post('/api/Employees', auth('UpsertRealm'), cont);
 app.delete('/api/Employees/:id', auth('DeleteRealm'), cont);</p>
-<p>app.start = function() {<br />
-  // start the web server<br />
-  return app.listen(function() {<br />
-    app.emit('started');<br />
-    console.log('Web server listening at: %s', app.get('url'));<br />
-  });<br />
-};</p>
-<p>// Bootstrap the application, configure models, datasources and middleware.<br />
-// Sub-apps like REST API are mounted via boot scripts.<br />
-boot(app, __dirname, function(err) {<br />
-  if (err) throw err;</p>
-<p>  // start the server if `$ node server.js`<br />
-  if (require.main === module)<br />
-    app.start();<br />
-});<br />
-[/js]<br />
-&nbsp;</p>
+app.start = function() {
+  // start the web server
+  return app.listen(function() {
+    app.emit('started');
+    console.log('Web server listening at: %s', app.get('url'));
+  });
+}
+// Bootstrap the application, configure models, datasources and middleware.
+// Sub-apps like REST API are mounted via boot scripts.
+boot(app, __dirname, function(err) {
+  if (err) throw err;
+  // start the server if `$ node server.js`
+  if (require.main === module)
+    app.start();
+});
+{% endhighlight %}
+
 <h3>Calling Protected APIs from the Client App</h3>
 <p>From the client-side mobile application, you can invoke these protected APIs the exact same way that you might invoke a call to a MobileFirst adapter. After authenticating a user, you make a request to the protected resource using the WLResourceRequest API.  The only difference is that you use the full URL to the proetected Node.js resource instead of a URL to a MobileFirst adapter.</p>
+
 <p>Again, If you don't have authentication on a MobileFirst Platform Foundation Server you will need it to call these protected services. Be sure to check out the "MobileFirst Authentication" section below to get started with MobileFirst authentication.</p>
+
 <p>In a HTML/Hybrid implementation, you would use the WLResourceRequest api:</p>
-<p>[js]var url = &quot;http://myserver/api/Companies&quot;;<br />
-var request = new WLResourceRequest(url, WLResourceRequest.GET);<br />
-request.send().then(<br />
-  function(response){<br />
-    //do something with successful response<br />
-  },<br />
-  function(error){<br />
-    //handle error<br />
-  }<br />
-);<br />
-[/js]</p>
-<p>For iOS applications, you call the WLResourceRequest sendWithURL method.  This can be done in either Objective-C or Swift.  An Objective-C snipped is shown below:</p>
-<p>[objc]NSURL* url = [NSURL URLWithString:@&quot;http://myserver/api/Companies&quot;];<br />
-WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
-[request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
-  if(error) {<br />
-    //handle error<br />
-  } else {<br />
-    //do something with successful response<br />
-  }<br />
-}];[/objc]</p>
+
+{% highlight javascript %}
+var url = "http://myserver/api/Companies";
+var request = new WLResourceRequest(url, WLResourceRequest.GET);
+request.send().then(
+  function(response){
+    //do something with successful response
+  },
+  function(error){
+    //handle error
+  }
+);
+{% endhighlight %}
+
+<p>For iOS applications, you call the WLResourceRequest sendWithURL method.  This can be done in either Objective-C or Swift. An Objective-C snipped is shown below:</p>
+
+{% highlight objc %}
+NSURL* url = [NSURL URLWithString:@"http://myserver/api/Companies"];
+WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+[request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+  if(error) {
+    //handle error
+  } else {
+    //do something with successful response
+  }
+}];
+{% endhighlight %}
+
 <p>For native Android applications, you would use the WLResourceRequest Java API, as shown in the next snippet:</p>
-<p>[java]WLResourceRequest req = new WLResourceRequest(new URI(&quot;http://myserver/api/Companies&quot;), WLResourceRequest.GET);<br />
-req.send(new WLResponseListener(){<br />
-  @Override<br />
- public void onSuccess(WLResponse response) {<br />
-    //do something with successful response<br />
-  }<br />
-  @Override<br />
-  public void onFailure(WLFailResponse response) {<br />
-    //handle error<br />
-  }});[/java]</p>
-<p>&nbsp;</p>
+
+{% highlight java %}
+WLResourceRequest req = new WLResourceRequest(new URI("http://myserver/api/Companies"), WLResourceRequest.GET);
+req.send(new WLResponseListener(){
+  @Override
+ public void onSuccess(WLResponse response) {
+    //do something with successful response
+  }
+  @Override
+  public void onFailure(WLFailResponse response) {
+    //handle error
+  }});
+{% endhighlight %}
+
 <h3>MobileFirst Authentication</h3>
 <p>If you aren't already familiar with setting up authentication realms here are a few resources to get started.</p>
+
 <ul>
-<li><a href="http://ibm.biz/MFP-auth-security" target="_blank">MobileFirst Authentication &amp; Security</a></li>
-<li><a href="http://ibm.biz/MFP-Form-based-auth" target="_blank">MobileFirst Form-based authentication</a>
-<ul>
-<li><a href="http://ibm.biz/MFP-form-auth-hybrid" target="_blank">MobileFirst form auth in hybrid apps</a></li>
-<li><a href="http://ibm.biz/MFP-form-auth-iOS" target="_blank">MobileFirst form auth in iOS apps</a></li>
-<li><a href="http://ibm.biz/MFP-form-auth-Android" target="_blank">MobileFirst form auth in Android apps</a></li>
-<li><a href="http://ibm.biz/MFP-form-auth-WinPhone" target="_blank">MobileFirst form auth in Windows Phone apps</a></li>
+    <li><a href="http://ibm.biz/MFP-auth-security" target="_blank">MobileFirst Authentication &amp; Security</a></li>
+    <li><a href="http://ibm.biz/MFP-Form-based-auth" target="_blank">MobileFirst Form-based authentication</a>
+        <ul>
+            <li><a href="http://ibm.biz/MFP-form-auth-hybrid" target="_blank">MobileFirst form auth in hybrid apps</a></li>
+            <li><a href="http://ibm.biz/MFP-form-auth-iOS" target="_blank">MobileFirst form auth in iOS apps</a></li>
+            <li><a href="http://ibm.biz/MFP-form-auth-Android" target="_blank">MobileFirst form auth in Android apps</a></li>
+            <li><a href="http://ibm.biz/MFP-form-auth-WinPhone" target="_blank">MobileFirst form auth in Windows Phone apps</a></li>
+        </ul>
+    </li>
+    <li><a href="http://ibm.biz/MFP-external-resources" target="_blank">Using the MobileFirst Server to authenticate external resourc</a>es</li>
 </ul>
-</li>
-<li><a href="http://ibm.biz/MFP-external-resources" target="_blank">Using the MobileFirst Server to authenticate external resourc</a>es</li>
-</ul>
+
 <p>The easiest way to setup and test user authentication for a Node.js service is to first setup a form-based authentication sample and make sure it is working for a MobileFirst Adapter on the MFP server.  Once you have guaranteed that authentication is working between the client application and the MFP server, then you can simply swap out the URL in the WLResourceRequest invocation with that of your protected resource on the Node.js server.</p>
-<p>&nbsp;</p>
+
+
 <h3>Related Content</h3>
 <p>For more information, be sure to check out these resources:</p>
+
 <ul>
-<li><a href="https://ibm.biz/MFP-Node" target="_blank">Protecting resources on Node.js servers</a></li>
-<li><a href="developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/using-mobilefirst-server-authenticate-external-resources/" target="_blank">Using the MobileFirst Server to authenticate external resources</a></li>
-<li><a href="http://ibm.biz/Cloudant-LoopBack-Getting-Started" target="_blank">Getting Started with Node.js LoopBack Framework and IBM Cloudant</a></li>
-<li><a href="http://ibm.biz/ibm-acquires-strongloop" target="_blank">Bluemix Blog: IBM Acquires StrongLoop</a></li>
-<li><a href="http://www-03.ibm.com/press/us/en/pressrelease/47577.wss" target="_blank">StrongLoop Acquisition Press Release</a></li>
+    <li><a href="https://ibm.biz/MFP-Node" target="_blank">Protecting resources on Node.js servers</a></li>
+    <li><a href="developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/using-mobilefirst-server-authenticate-external-resources/" target="_blank">Using the MobileFirst Server to authenticate external resources</a></li>
+    <li><a href="http://ibm.biz/Cloudant-LoopBack-Getting-Started" target="_blank">Getting Started with Node.js LoopBack Framework and IBM Cloudant</a></li>
+    <li><a href="http://ibm.biz/ibm-acquires-strongloop" target="_blank">Bluemix Blog: IBM Acquires StrongLoop</a></li>
+    <li><a href="http://www-03.ibm.com/press/us/en/pressrelease/47577.wss" target="_blank">StrongLoop Acquisition Press Release</a></li>
 </ul>

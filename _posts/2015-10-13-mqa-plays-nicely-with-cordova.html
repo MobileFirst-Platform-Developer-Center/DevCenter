@@ -1,26 +1,11 @@
 ---
-
 title: MQA plays nicely with Cordova
 date: 2015-10-13 13:28:39.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
 - MobileFirst Quality Assurance
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _syntaxhighlighter_encoded: '1'
-  _rawhtml_settings: '0,0,0,0'
-  _wpas_done_all: '1'
 author:
-  login: cdawson@us.ibm.com
-  email: cdawson@us.ibm.com
   display_name: Christopher Dawson
-  first_name: Christopher
-  last_name: Dawson
 ---
 <p>My brother and I never got along when we were kids. I suppose that happens with most siblings. I would want to watch a movie, while he preferred to read comic books. We quite simply didn’t mesh that well together.
 Similarly, IBM Mobile Quality Assurance (MQA) and Apache Cordova are great products by themselves, but they could never interact with each other. Until now. In this tutorial, I will show you just how easy it is to make them work together (much easier than for a parent of siblings).</p>
@@ -83,7 +68,7 @@ onDeviceReady: function() {
                 appKey: "your app key",
                 screenShotsFromGallery: true
             }
-            }, 
+            },
             {
                 success: function (params) {
                     console.log("MQA initialized", params);

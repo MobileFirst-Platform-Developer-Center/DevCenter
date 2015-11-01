@@ -1,32 +1,11 @@
 ---
-
 title: How to Customize Ionic Styles in MobileFirst Platform/Ionic Hybrid Application
 date: 2015-09-18 17:15:32.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - Ionic
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _rawhtml_settings: '0,0,0,0'
-  _yoast_wpseo_focuskw: mobilefirst platform
-  _yoast_wpseo_linkdex: '74'
-  _oembed_62b1a77d76f7359ea6134150a6d7b92c: "{{unknown}}"
-  _oembed_726530fafd0aa3e462c7915e3736d236: "{{unknown}}"
-  _oembed_e3d5fbb0119b0c5ef7f6ca3063226e92: "{{unknown}}"
-  _oembed_8c89715e1b4e6d0ed2e4d901cc4a06df: "{{unknown}}"
-  _oembed_aca06fd7cd9a76792f5f2c489bd9da6c: "{{unknown}}"
-  _wpas_done_all: '1'
 author:
-  login: sslukito@us.ibm.com
-  email: sslukito@us.ibm.com
   display_name: ShuSia
-  first_name: SHU
-  last_name: LUKITO
 ---
 <p>Before getting started, I would like to give the credit to my teammate Jeff Tennenbaum, who figured out how to get this working.</p>
 <p>When building hybrid mobile applications using <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started/">MobileFirst Platform</a> (MFP), part of the process is to choose a JavaScript framework to speed up the development of mobile applications (e.g., Ionic, jQuery Mobile, Dojo, etc.). In this blog, we will use <a href="http://ionicframework.com/">Ionic</a> for our hybrid application. One of the common things developers do is to add their custom styles. The recommended way of working with custom styles in Ionic is by using <a href="http://sass-lang.com/">Sass</a>, a powerful CSS language extension.</p>
@@ -43,14 +22,14 @@ $ npm install<br />
 $ mfp cordova emulate</p></blockquote>
 <p>The <code>npm install</code> will take care of running <code>bower install</code> this will download all the js dependencies in www/js/lib/</p>
 <p>While the emulator is loading, you can examine the file structure of your application.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/project.png"><img src="{{ site.baseurl }}/assets/backup/project-300x171.png" alt="project" width="300" height="171" class="alignnone size-medium wp-image-17860" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/project-300x171.png" class="img_responsive" /></p>
 <p>Note: You can create a plain Ionic project by using the <code>ionic start</code> command as described in the <a href="http://ionicframework.com/getting-started/">Ionic Getting Started Tutorial</a>.</p>
 <p>When prompted for what platform to run on, choose ios.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/cli1.png"><img src="{{ site.baseurl }}/assets/backup/cli1-300x47.png" alt="cli1" width="300" height="47" class="alignnone size-medium wp-image-17864" /></a><br />
+<img src="{{ site.baseurl }}/assets/backup/cli1-300x47.png" class="img_responsive" /><br />
 When prompted for target device, choose iPhone-6.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/cli2.png"><img src="{{ site.baseurl }}/assets/backup/cli2-300x169.png" alt="cli2" width="300" height="169" class="alignnone size-medium wp-image-17861" /></a><br />
+<img src="{{ site.baseurl }}/assets/backup/cli2-300x169.png" class="img_responsive" /><br />
 You can see the result running in iPhone 6 emulator, as depicted below.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/emulator-orig.png"><img src="{{ site.baseurl }}/assets/backup/emulator-orig-164x300.png" alt="emulator-orig" width="164" height="300" class="alignnone size-medium wp-image-17868" /></a><br />
+<img src="{{ site.baseurl }}/assets/backup/emulator-orig-164x300.png" class="img_responsive" /><br />
 This is an out of the box MFP/Ionic application using the <code>tab</code> template. Let’s proceed now with a simple customization.</p>
 <p><strong>Add Customization</strong></p>
 <p>Before starting on customizations, you need to make sure that Sass has been setup for your project. You can setup Sass by typing this command in the <code>myapp</code> directory.</p>
@@ -80,5 +59,5 @@ $stable:  #CBBEB5 !default;</p>
 @import "www/lib/ionic/scss/ionic";</p>
 </blockquote>
 <p>Run the <code>mfp cordova emulate</code> command again to see the changes. Your emulator should look similar to the screenshot below.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/09/emulator-final.png"><img src="{{ site.baseurl }}/assets/backup/emulator-final-164x300.png" alt="emulator-final" width="164" height="300" class="alignnone size-medium wp-image-17874" /></a><br />
+<img src="{{ site.baseurl }}/assets/backup/emulator-final-164x300.png" class="img_responsive" /><br />
 Congratulations! You have successfully customized the look and feel of an MFP/Ionic hybrid application. This is a very simple customization to get you started. For more information, you can check out <a href="http://learn.ionicframework.com/formulas/working-with-sass/">this tutorial</a> from the Ionic website on how to write a Sass theme.</p>
