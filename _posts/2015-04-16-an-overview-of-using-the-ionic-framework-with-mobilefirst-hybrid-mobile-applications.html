@@ -1,167 +1,175 @@
 ---
-
 title: An overview of using the Ionic Framework with MobileFirst Hybrid Mobile Applications
 date: 2015-04-16 18:56:40.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - Ionic
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442506660;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:13052;}i:1;a:1:{s:2:"id";i:17048;}i:2;a:1:{s:2:"id";i:16444;}}}}
 author:
-  login: rcamden@us.ibm.com
-  email: rcamden@us.ibm.com
   display_name: Raymond Camden
-  first_name: Raymond
-  last_name: Camden
 ---
 <p>For the past few weeks, I've been spending a lot of time exploring hybrid mobile applications with <a href="http://www.ibm.com/mobilefirst/us/en/">IBM MobileFirst</a>. I have a lot of experience with hybrid mobile applications using <a href="http://cordova.apache.org">Cordova</a>, but as a new IBMer, I'm still getting up to speed with MobileFirst. As part of exploration, I did some tests to see how difficult it would be to use the <a href="http://ionicframework.com">Ionic framework</a> with MobileFirst. If you have not yet heard of Ionic, I strongly urge you to check it out. Ionic provides numerous services that are useful for hybrid developers. These include:</p>
+
 <ul>
-<li>A UI framework to easily create mobile-friendly designs.
-</li>
-<li>A UX framework to easily add features common to mobile apps, like "pull to refresh."
-</li>
-<li>Debugging enhancements to more easily test your apps on devices.
-</li>
-<li>Visual design services with <a href="http://creator.ionic.io">Ionic Creator</a>.
-</li>
-<li>And more - head to <a href="http://ionicframework.com">ionicframework.com</a> for more.
-</li>
+    <li>A UI framework to easily create mobile-friendly designs.
+    </li>
+    <li>A UX framework to easily add features common to mobile apps, like "pull to refresh."
+    </li>
+    <li>Debugging enhancements to more easily test your apps on devices.
+    </li>
+    <li>Visual design services with <a href="http://creator.ionic.io">Ionic Creator</a>.
+    </li>
+    <li>And more - head to <a href="http://ionicframework.com">ionicframework.com</a> for more.
+    </li>
 </ul>
+
 <p>Ionic makes use of Angular, so some Angular experience is definitely required, but you don't need to be an expert. (In fact, I consider myself still somewhat poor at Angular. I'm trying to get better of course. But it has not impacted my use of Ionic!)</p>
+
 <p>So how do we make use of Ionic with a hybrid MobileFirst application? The process involves a few manual steps that I'll walk you through below, but note that fellow IBM Carlos Santana has created <a href="https://github.com/csantanapr/mfp-ionic-templates">starter templates</a> that you can use to skip this process entirely. I still recommend noting what's going on here (and Carlos and I do things a bit differently) just so you can be aware of the changes. You will also need to follow this manual process if you are porting an <i>existing</i> Ionic project to MobileFirst.</p>
+
 <p>I'm assuming you have an existing MobileFirst server set up and that you've created a new hybrid application. If you haven't done so, then go ahead and do that now. I'm also using the <a href="https://developer.ibm.com/mobilefirstplatform/install/#clui">MobileFirst command line</a> for this post.</p>
-<h2>Preparing the Folders</h2>
+
+<h3>Preparing the Folders</h3>
 <p>For your first step, go ahead and get rid of the <code>common</code> folder. You can delete it or rename it, it doesn't matter.</p>
 <p>Next, you need to create a new Ionic project. By default, Ionic creates a complete Cordova project, but we don't need that. You can tell Ionic to just create the web assets by passing <code>--no-cordova</code> at the command line. Here is an example:</p>
+
 <p><code>ionic start --no-cordova ioniccode blank</code></p>
 <p>Note that I told it to use a folder called <code>ioniccode</code> and that I asked it to use the blank template. Ionic ships with a few different templates but to keep this guide simpler, we'll use blank. I mentioned earlier that Carlos created templates you can use out of the box and his includes one for each of the default Ionic templates.</p>
+
 <p>Open the folder you just created and you'll see something like the following:</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/shot13.png"><img src="{{ site.baseurl }}/assets/backup/shot13.png" alt="shot13" width="238" height="170" class="alignnone size-full wp-image-11131" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/shot13.png" class="img_responsive" />
+
 <p>Even with telling Ionic not to create a "full" Cordova project, it will add some files that you won't need for your MobileFirst project. Simply take that <code>www</code> folder and copy it out as common. Your app directory may look something like this now:</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/shot22.png"><img src="{{ site.baseurl }}/assets/backup/shot22.png" alt="shot22" width="269" height="220" class="alignnone size-full wp-image-11132" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/shot22.png" class="img_responsive" />
 <p>In the shot above, <code>common-orig</code> was the folder MobileFirst created and <code>ioniccode</code> is the Ionic project we just made. (You can delete that.)</p>
-<h2>Updating the Code</h2>
+
+<h3>Updating the Code</h3>
 <p>Go ahead and open up your favorite editor and point it to your common folder. We're now going to make a few changes to the Ionic template to make it run properly as a MobileFirst project.</p>
-<p>First - remove this line from <code>index.html</code>:</p>
-<p><code>&lt;script src="cordova.js"&gt;&lt;/script&gt;</code></p>
+
+<p>First - remove this line from <code>index.html</code>: <code><script src="cordova.js"></script></code></p>
+
 <p>MobileFirst injects in the Cordova JavaScript file automatically.</p>
+
 <p>Next - you need to create a new script to include the MobileFirst initialization code. In theory, you don't need to create a new file, you could just modify Ionic's <code>app.js</code> file, but I like to keep things organized so I'm recommending you make a new file. I called mine <code>wlInit.js</code> to match the "wl" naming style used for most of the MobileFirst JavaScript API. Add a call to load this script in your <code>index.html</code> as well:</p>
-<p><code>&lt;script src="js/wlInit.js"&gt;&lt;/script&gt;</code></p>
-<p>Here is the completely updated <code>index.html</code> file:</p>
-<p>[code lang="html"]<br />
-&lt;!DOCTYPE html&gt;<br />
-&lt;html&gt;<br />
-  &lt;head&gt;<br />
-    &lt;meta charset=&quot;utf-8&quot;&gt;<br />
-    &lt;meta name=&quot;viewport&quot; content=&quot;initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width&quot;&gt;<br />
-    &lt;title&gt;&lt;/title&gt;</p>
-<p>    &lt;link href=&quot;lib/ionic/css/ionic.css&quot; rel=&quot;stylesheet&quot;&gt;<br />
-    &lt;link href=&quot;css/style.css&quot; rel=&quot;stylesheet&quot;&gt;</p>
-<p>    &lt;!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above<br />
-    &lt;link href=&quot;css/ionic.app.css&quot; rel=&quot;stylesheet&quot;&gt;<br />
-    --&gt;</p>
-<p>    &lt;!-- ionic/angularjs js --&gt;<br />
-    &lt;script src=&quot;lib/ionic/js/ionic.bundle.js&quot;&gt;&lt;/script&gt;</p>
-<p>    &lt;!-- cordova script (this will be a 404 during development) --&gt;<br />
-    &lt;!-- your app's js --&gt;<br />
-    &lt;script src=&quot;js/app.js&quot;&gt;&lt;/script&gt;<br />
-	&lt;script src=&quot;js/wlInit.js&quot;&gt;&lt;/script&gt;<br />
-  &lt;/head&gt;<br />
-  &lt;body ng-app=&quot;starter&quot;&gt;</p>
-<p>    &lt;ion-pane&gt;<br />
-      &lt;ion-header-bar class=&quot;bar-stable&quot;&gt;<br />
-        &lt;h1 class=&quot;title&quot;&gt;Ionic Blank Starter&lt;/h1&gt;<br />
-      &lt;/ion-header-bar&gt;<br />
-      &lt;ion-content&gt;<br />
-      &lt;/ion-content&gt;<br />
-    &lt;/ion-pane&gt;<br />
-  &lt;/body&gt;<br />
-&lt;/html&gt;<br />
-[/code]</p>
+
+<code><script src="js/wlInit.js"></script></code>
+Here is the completely updated <code>index.html</code> file:
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+	<script src="js/wlInit.js"></script>
+  </head>
+  <body ng-app="starter">
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Ionic Blank Starter</h1>
+      </ion-header-bar>
+      <ion-content>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
+{% endhighlight %}
+
 <p>Now open <code>style.css</code>. This is blank (except for a comment) in the Ionic template, but we need to add the following style declaration:</p>
-<p>[code lang="css"]<br />
-html, body {<br />
-    height: 100%;<br />
-}<br />
-[/code]</p>
+{% highlight css %}
+html, body {
+    height: 100%;
+}
+{% endhighlight %}
+
 <p>This is required because the application ends up with a 0% height when run under MobileFirst. Odd - but just go with it. (For more details, see this <a href="http://stackoverflow.com/questions/29227204/declaration-of-doctype-html-does-not-work-with-ionics-ion-nav-view-in-ibm-mo/29258958#29258958">StackOverflow post</a>.)</p>
+
 <p>Now open <code>app.js</code>. In the <code>run()</code> portion there is code that works with the Ionic keyword plugin. For now, we're going to simply disable it.</p>
-<p>[code lang="javascript"]<br />
-// Ionic Starter App</p>
-<p>// angular.module is a global place for creating, registering and retrieving Angular modules<br />
-// 'starter' is the name of this angular module example (also set in a &lt;body&gt; attribute in index.html)<br />
-// the 2nd parameter is an array of 'requires'<br />
-angular.module('starter', ['ionic'])</p>
-<p>.run(function($ionicPlatform) {<br />
-  $ionicPlatform.ready(function() {<br />
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard<br />
-    // for form inputs)<br />
-	  /*<br />
-    if(window.cordova &amp;&amp; window.cordova.plugins.Keyboard) {<br />
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);<br />
-    }<br />
-	*/<br />
-    if(window.StatusBar) {<br />
-      StatusBar.styleDefault();<br />
-    }<br />
-  });<br />
-})<br />
-[/code]</p>
+{% highlight javascript %}
+// Ionic Starter App
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+angular.module('starter', ['ionic'])
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+    // for form inputs)
+	  /*
+    if(window.cordova && window.cordova.plugins.Keyboard) {
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+	*/
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+})
+{% endhighlight %}
+
 <p>Ok, so for the last part, we need to create <code>wlInit.js</code>. As I said, this is code that handles initializing MobileFirst stuff.  You can copy and paste the contents of <code>initOptions.js</code> and <code>main.js</code> from the original <code>common</code> folder directly into your new file. (And again, this is a personal preference. If you want to keep them in two separate files, that's fine too, just be sure to include them both back in <code>index.html</code>.)</p>
+
 <p>We need to do two more small tweaks. When using Ionic and a "regular" Cordova project, there is a hook that applies a style for Android and iOS. We don't have those hooks under MobileFirst, so we have to do it by hand, but that's easy enough. The MobileFirst JavaScript API has a <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html%23getEnvironment">getEnvironment</a> function that returns information about the running environment. We can use that to sniff iPhone and iPad versus Android. (And again, credit for this goes to Carlos.) The next tweak applies to a styling issue with iOS7. We will modify <code>wlInitOptions</code> to include <code>showIOS7StatusBar</code>.</p>
 <p>Here is the entire file with these modifications within <code>wlCommonInit</code>.</p>
-<p>[code lang="javascript"]<br />
-// Uncomment the initialization options as required. For advanced initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center </p>
-<p> var wlInitOptions = {</p>
-<p>	showIOS7StatusBar: false<br />
-};</p>
-<p>if (window.addEventListener) {<br />
-	window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);<br />
-} else if (window.attachEvent) {<br />
-	window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });<br />
-}</p>
-<p>function wlCommonInit(){<br />
-	/*<br />
-	 * Use of WL.Client.connect() API before any connectivity to a MobileFirst Server is required.<br />
-	 * This API should be called only once, before any other WL.Client methods that communicate with the MobileFirst Server.<br />
-	 * Don't forget to specify and implement onSuccess and onFailure callback functions for WL.Client.connect(), e.g:<br />
-	 *<br />
-	 *    WL.Client.connect({<br />
-	 *    		onSuccess: onConnectSuccess,<br />
-	 *    		onFailure: onConnectFailure<br />
-	 *    });<br />
-	 *<br />
-	 */</p>
-<p>	// Common initialization code goes here<br />
-	var env = WL.Client.getEnvironment();<br />
-    if(env === WL.Environment.IPHONE || env === WL.Environment.IPAD){<br />
-        document.body.classList.add('platform-ios');<br />
-    } else if(env === WL.Environment.ANDROID){<br />
-        document.body.classList.add('platform-android');<br />
-    }<br />
-}<br />
-[/code]</p>
+
+{% highlight javascript %}
+// Uncomment the initialization options as required. For advanced initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center
+ var wlInitOptions = {
+	showIOS7StatusBar: false
+};
+if (window.addEventListener) {
+	window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+	window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+}
+function wlCommonInit(){
+	/*
+	 * Use of WL.Client.connect() API before any connectivity to a MobileFirst Server is required.
+	 * This API should be called only once, before any other WL.Client methods that communicate with the MobileFirst Server.
+	 * Don't forget to specify and implement onSuccess and onFailure callback functions for WL.Client.connect(), e.g:
+	 *
+	 *    WL.Client.connect({
+	 *    		onSuccess: onConnectSuccess,
+	 *    		onFailure: onConnectFailure
+	 *    });
+	 *
+	 */
+	// Common initialization code goes here
+	var env = WL.Client.getEnvironment();
+    if(env === WL.Environment.IPHONE || env === WL.Environment.IPAD){
+        document.body.classList.add('platform-ios');
+    } else if(env === WL.Environment.ANDROID){
+        document.body.classList.add('platform-android');
+    }
+}
+{% endhighlight %}
+
 <p>And that's basically it - for now. If you do a quick <code>mfp bd</code> and open your app in the console, you should see Ionic-awesomeness running within MobileFist-epicness.</p>
+
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/ionicconsole.png"><img src="{{ site.baseurl }}/assets/backup/ionicconsole.png" alt="ionicconsole" width="835" height="580" class="alignnone size-full wp-image-11145" /></a></p>
+
 <p>So, what next? Probably the biggest issue we haven't covered here is properly "bootstrapping" the application. By that I mean, creating a way to delay application logic until both Cordova'a <code>deviceReady</code> event has fired as well as MobileFirst's init process. I've covered that on my blog and will link to it below. Of course, you can skip worrying about that and just get Carlos' templates, but as I said above, you probably want to know a bit about the thinking behind <i>how</i> we do the bootstrapping as well. Of course, one of the biggest benefits of using MobileFirst is the ability to call different adapters. I've got demos showing two of them (Database and HTTP) within the Ionic framework.</p>
-<h2>Resources</h2>
+
+<h3>Resources</h3>
 <ul>
-<li><a href="http://www.raymondcamden.com/2015/03/24/working-with-ibm-mobilefirst-and-ionic-bootstraping">Working with IBM MobileFirst and Ionic – Bootstraping</a>
-</li>
-<li><a href="https://github.com/csantanapr/mfp-ionic-templates">Carlos Santana's Ionic/MobileFirst templates</a></li>
-<li><a href="http://www.raymondcamden.com/2015/03/31/using-remote-logging-with-ionic-and-ibm-mobilefirst">Using Remote Logging with Ionic and IBM MobileFirst</a>
-</li>
-<li><a href="http://www.raymondcamden.com/2015/04/02/using-mobilefirst-sql-adapters-with-an-ionic-application">Using MobileFirst SQL Adapters with an Ionic Application</a>
-</li>
-<li><a href="http://www.raymondcamden.com/2015/04/08/using-mobilefirst-http-adapters-with-an-ionic-application">Using MobileFirst HTTP Adapters with an Ionic Application</a>
-</li>
+    <li><a href="http://www.raymondcamden.com/2015/03/24/working-with-ibm-mobilefirst-and-ionic-bootstraping">Working with IBM MobileFirst and Ionic – Bootstraping</a>
+    </li>
+    <li><a href="https://github.com/csantanapr/mfp-ionic-templates">Carlos Santana's Ionic/MobileFirst templates</a></li>
+    <li><a href="http://www.raymondcamden.com/2015/03/31/using-remote-logging-with-ionic-and-ibm-mobilefirst">Using Remote Logging with Ionic and IBM MobileFirst</a>
+    </li>
+    <li><a href="http://www.raymondcamden.com/2015/04/02/using-mobilefirst-sql-adapters-with-an-ionic-application">Using MobileFirst SQL Adapters with an Ionic Application</a>
+    </li>
+    <li><a href="http://www.raymondcamden.com/2015/04/08/using-mobilefirst-http-adapters-with-an-ionic-application">Using MobileFirst HTTP Adapters with an Ionic Application</a>
+    </li>
 </ul>

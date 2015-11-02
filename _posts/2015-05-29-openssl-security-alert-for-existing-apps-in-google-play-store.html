@@ -1,43 +1,37 @@
 ---
-
 title: OpenSSL Security Alert for existing apps in Google Play Store
 date: 2015-05-29 17:43:02.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _wpas_done_all: '1'
-  _rawhtml_settings: '0,0,0,0'
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442507973;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:14955;}i:1;a:1:{s:2:"id";i:3550;}i:2;a:1:{s:2:"id";i:15486;}}}}
+- OpenSSL
+- Android
+- Vulnerability
 author:
-  login: iadar@il.ibm.com
-  email: IADAR@il.ibm.com
   display_name: IdanAdar
-  first_name: IDAN
-  last_name: ADAR
 ---
 <p>If you have a Worklight Foundation or MobileFirst Platform Foundation application deployed in the Google Play Store, you may soon receive the following warning issued by Google:</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/google-play-warning.jpg"><img src="{{ site.baseurl }}/assets/backup/google-play-warning-1024x255.jpg" alt="google-play-warning" width="980" height="244" class="aligncenter size-large wp-image-13037" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/google-play-warning-1024x255.jpg" class="img_responsive" />
+
 <p><strong>Note:</strong> This is only a warning; the applications at this time continue to work normally.</p>
+
 <p><strong>Note:</strong> In some cases this will <strong>not</strong> be related to Worklight/MobileFirst Platform:</p>
 <ul>
-<li>If you are using the FIPS feature provided by IBM - related to Worklight/MFP</li>
-<li>If you are using the FIPS & JSONStore features provided by IBM - related to Worklight/MFP</li>
-<li>If you are using the JSONStore feature provided by IBM - used OpenSSL is the one supplied by the device OS - be sure the device is patched to the latest version</li>
-<li>If you are using a 3rd party library containing OpenSSL - related to the library; be sure to update your 3rd party libraries</li>
+    <li>If you are using the FIPS feature provided by IBM - related to Worklight/MFP</li>
+    <li>If you are using the FIPS & JSONStore features provided by IBM - related to Worklight/MFP</li>
+    <li>If you are using the JSONStore feature provided by IBM - used OpenSSL is the one supplied by the device OS - be sure the device is patched to the latest version</li>
+    <li>If you are using a 3rd party library containing OpenSSL - related to the library; be sure to update your 3rd party libraries</li>
 </ul>
+
 <p>In case your are using the FIPS feature and you have received this warning, you only need to update the latest available iFix release for your Worklight/MobileFirst Platform version.</p>
+
 <p><strong>Note:</strong> the issue resides only on the client-side. No server change is required.</p>
 <p>Once you download the updated Studio/CLI you need to:</p>
 <ol>
-<li>Install the updated Studio plug-in/CLI</li>
-<li>Build your application (don't forget to update the version number in <code>application-descriptor.xml</code>)</li>
-<li>Generate the <code>.apk</code> file</li>
-<li>Upload the updated <code>.apk</code> to the Google Play Store</li>
+    <li>Install the updated Studio plug-in/CLI</li>
+    <li>Build your application (don't forget to update the version number in <code>application-descriptor.xml</code>)</li>
+    <li>Generate the <code>.apk</code> file</li>
+    <li>Upload the updated <code>.apk</code> to the Google Play Store</li>
 </ol>
+
 <p>The next time Google Play Store scans apps in their servers, the warning will disappear.</p>

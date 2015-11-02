@@ -1,371 +1,346 @@
 ---
-
 title: Using HTTP Adapters to access Watson Question and Answer service at IBM Bluemix
 date: 2015-04-29 15:41:33.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - bluemix
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '10335'
-  _rawhtml_settings: '0,0,0,0'
-  _oembed_e133cf0d21367e034bef2d26912095ec: "{{unknown}}"
-  _oembed_d15ee7a9e3ab201345f61bb527c4c052: "{{unknown}}"
-  _oembed_2510490683038963125d77313280d54c: "{{unknown}}"
-  _oembed_03123bf441327b9ec43188835534d128: "{{unknown}}"
-  _oembed_d9e9b39ec12614055efb03883ad8659a: "{{unknown}}"
-  _oembed_b2483ec59fa1103f95b3e3bab73a6905: "{{unknown}}"
-  _oembed_efa3d825daf234cde352bcbef373a771: "{{unknown}}"
-  _oembed_96339e309c50111af11fc2d2b925eb02: "{{unknown}}"
-  _oembed_609e94b9c1f80cc47f94121f5f2914ae: "{{unknown}}"
-  _oembed_3826c0f5086c3b002c5200ef93c17118: "{{unknown}}"
-  _oembed_2bee89260e8b1ba6d3cf988e72628a7b: "{{unknown}}"
-  _oembed_d77a5ac18124c2151493e35d1629c626: "{{unknown}}"
-  _oembed_2bf4f940e9cfa1c402cfb7c254283089: "{{unknown}}"
-  _oembed_840ef63c65324f68c1508fd741ce23ed: "{{unknown}}"
-  _oembed_24fb3e01e28e464368e08cd34dcb003f: "{{unknown}}"
-  _syntaxhighlighter_encoded: '1'
-  _oembed_28fb881ec4db3a2627381bafb4ca7422: "{{unknown}}"
-  _oembed_c405c6f4fccde39fa34dbd6f23b49ced: "{{unknown}}"
-  _oembed_10fe8e5a9462f1ebabdc1d5c334d6e82: "{{unknown}}"
-  _oembed_b5ff015c6675aa2050157ac8f03b67ac: "{{unknown}}"
-  _oembed_6a78badf31f1405c5f22c11e5165bc43: "{{unknown}}"
-  _oembed_ade8d4c86239c36db6700548f739c0f7: "{{unknown}}"
-  _yoast_wpseo_focuskw: watson question and answer bluemix mobilefirst
-  _yoast_wpseo_metadesc: This article presents how to create a MobileFirst HTTP Adapter
-    that communicates with the Watson Question and Answer service available in IBM
-    Bluemix.
-  _yoast_wpseo_linkdex: '61'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442511208;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:16476;}i:1;a:1:{s:2:"id";i:16662;}i:2;a:1:{s:2:"id";i:16161;}}}}
+- Watson
+- Adapters
+- HTTP
 author:
-  login: ldavid@br.ibm.com
-  email: ldavid@br.ibm.com
   display_name: Leandro Cordeiro David
-  first_name: LEANDRO
-  last_name: CORDEIRO DAVID
 ---
-<ul>
-<li class="download-sample">
-      <a href="https://github.com/leandrodvd/mfp70watsonqa">Download Studio project or fork it on Github</a>
-      </li>
-</ul>
-<h2>Introduction</h2>
-<p>The goal of this article is to present how to create adapters that communicate with the Watson Question and Answer service available in IBM Bluemix.</p>
-<p>Bluemix is the PaaS (Platform as a Service) environment from IBM that also provides a wide variety of micro services for developers and software development companies.</p>
-<p>Watson Question and Answer (<strong>WQ&amp;A</strong> for now on) is a powerful Q&amp;A service powered by the IBM Watson cognitive system and available at IBM Bluemix platform through a REST interface. A live demo of the WQ&amp;A capabilities is available at<br />
-<a href="http://watson-qa-demo.mybluemix.net/" title="watson-qa-demo.mybluemix.net/" target="_blank">http://watson-qa-demo.mybluemix.net/</a></p>
-<p>With the adapters presented in this article, it is possible to create cognitive Q&amp;A apps that uses natural language as the input.</p>
-<p>A Sample project with a hybrid app is also provided in this article to exemplify the usage of the proposed adapters but the details of the mobile app are omitted here to keep the focus on the server side (adapters).</p>
-<p><strong>WQ&amp;A</strong> is currently a Beta service and has only two knowledge domains (corpus) available - travel and healthcare - but it will increase with time and maturity of the service.</p>
-<p>We will use a simple HTTP Adapter to connect to WQ&amp;A API.</p>
-<h2>Watson Question and Answer API</h2>
-<p>The details of the service are available from Bluemix documentation at</p>
-<p><a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/question-answer.html" title="www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/question-answer.html" target="_blank">http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/question-answer.html</a></p>
-<p>The service is accessed with a REST API and the list of endpoints, request and response formats are available at<br />
-<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/question-and-answer" title="www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/question-and-answer" target="_blank">http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/question-and-answer</a></p>
-<p>The operations and endpoints available from the API are the following:</p>
+<a href="https://github.com/leandrodvd/mfp70watsonqa">Download Studio project or fork it on Github</a>
+
+<h3>Introduction</h3>
+<p>The goal of this article is to present how to create adapters that communicate with the Watson Question and Answer service available in IBM Bluemix.
+
+<p>Bluemix is the PaaS (Platform as a Service) environment from IBM that also provides a wide variety of micro services for developers and software development companies.
+
+<p>Watson Question and Answer (<strong>WQ&amp;A</strong> for now on) is a powerful Q&amp;A service powered by the IBM Watson cognitive system and available at IBM Bluemix platform through a REST interface. A live demo of the WQ&amp;A capabilities is available at
+<a href="http://watson-qa-demo.mybluemix.net/" title="watson-qa-demo.mybluemix.net/" target="_blank">http://watson-qa-demo.mybluemix.net/</a>
+
+<p>With the adapters presented in this article, it is possible to create cognitive Q&amp;A apps that uses natural language as the input.
+
+<p>A Sample project with a hybrid app is also provided in this article to exemplify the usage of the proposed adapters but the details of the mobile app are omitted here to keep the focus on the server side (adapters).
+
+<p><strong>WQ&amp;A</strong> is currently a Beta service and has only two knowledge domains (corpus) available - travel and healthcare - but it will increase with time and maturity of the service.
+
+<p>We will use a simple HTTP Adapter to connect to WQ&amp;A API.
+<h3>Watson Question and Answer API</h3>
+<p>The details of the service are available from Bluemix documentation at
+<p><a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/question-answer.html" title="www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/question-answer.html" target="_blank">http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/question-answer.html</a>
+<p>The service is accessed with a REST API and the list of endpoints, request and response formats are available at
+<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/question-and-answer" title="www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/question-and-answer" target="_blank">http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/question-and-answer</a>
+<p>The operations and endpoints available from the API are the following:
 <h3>GET - ping - path: /v1/ping</h3>
-<p>The ping endpoint returns the status of the service. The response is in the form of HTTP Status Code. Status 200 indicates that the service is properly available.</p>
+<p>The ping endpoint returns the status of the service. The response is in the form of HTTP Status Code. Status 200 indicates that the service is properly available.
 <h3>GET - services - path: /v1/services</h3>
-<p>The services endpoint lists the available corpus, the types of content/questions that the service is trained to answer. Initially the contents available are travel and healthcare so the service can answer travel questions like "How much should I tip a taxi in Argentina?" or healthcare questions like "What is HIV?"</p>
-<p>It's important to always get the services list dynamically as the corpus can increase with new knowledge areas available.<br />
-The response obtained is in the format of a json document like this:</p>
-<p>[code lang="js"]<br />
-{&quot;services&quot;: [&quot;travel&quot;,&quot;healthcare&quot;]}<br />
-[/code]</p>
+<p>The services endpoint lists the available corpus, the types of content/questions that the service is trained to answer. Initially the contents available are travel and healthcare so the service can answer travel questions like "How much should I tip a taxi in Argentina?" or healthcare questions like "What is HIV?"
+<p>It's important to always get the services list dynamically as the corpus can increase with new knowledge areas available.
+The response obtained is in the format of a json document like this:
+
+{% highlight javascript %}
+{"services": ["travel","healthcare"]}
+{% endhighlight %}
 <h3>POST - question - path: /v1/question/{id}</h3>
-<p>The question endpoint is used to send a question to be responded by Watson. The question is sent as a json document with several optional parameters. The following is an example of  json document with a question using only the required parameters.</p>
-<p>[code lang="js"]<br />
-{<br />
-&quot;question&quot;: {<br />
-   &quot;questionText&quot;:&quot;What is HIV?&quot;<br />
-    }<br />
-}[/code]</p>
-<p>The response is in the form of a json document containing:</p>
+<p>The question endpoint is used to send a question to be responded by Watson. The question is sent as a json document with several optional parameters. The following is an example of  json document with a question using only the required parameters.
+{% highlight javascript %}
+{
+"question": {
+   "questionText":"What is HIV?"
+    }
+}{% endhighlight %}
+
+<p>The response is in the form of a json document containing:
 <ul>
 <li>a list of answers with the confidence level of each answer </li>
 <li>the evidence list that support the given answers</li>
 <li>a set of metadata about the responses and evidence list obtained</li>
 </ul>
-<p>Following is an example of the response obtained:</p>
-<p>[code lang="js"]{<br />
-   &quot;array&quot;: [<br />
-  	{<br />
-     	&quot;question&quot;: {<br />
-        	&quot;answers&quot;: [<br />
-           	{<br />
-                  &quot;confidence&quot;: 0.46911,<br />
-                  &quot;id&quot;: 0,<br />
-                  &quot;pipeline&quot;: &quot;Descriptive,TAO&quot;,<br />
-                  &quot;text&quot;: &quot;472D471A96B201B99D8F1C200E7E242B - Get Tested for HIV : Get Tested for HIV : The Basics : What is HIV?&quot;<br />
-               },<br />
-           	&lt;other answers...&gt;<br />
-        	],<br />
-        	&quot;category&quot;: &quot;&quot;,<br />
-        	&quot;errorNotifications&quot;: [<br />
-        	],<br />
-        	&quot;evidenceRequest&quot;: {<br />
-           	&quot;items&quot;: -1,<br />
-           	&quot;profile&quot;: &quot;NO&quot;<br />
-        	},<br />
-        	&quot;evidencelist&quot;: [<br />
-           	{<br />
-                  &quot;copyright&quot;: &quot;No copyright specified for this supporting passage or document.&quot;,<br />
-                  &quot;document&quot;: &quot;http:\/\/10.110.76.161:8080\/instance\/67\/deepqa\/v1\/question\/document\/PB_472D471A96B201B91949C3B1C28D468B\/175\/256&quot;,<br />
-                  &quot;id&quot;: &quot;PB_472D471A96B201B91949C3B1C28D468B&quot;,<br />
-                  &quot;metadataMap&quot;: {<br />
-                     &quot;DOCNO&quot;: &quot;472D471A96B201B91949C3B1C28D468B&quot;,<br />
-                     &quot;abstract&quot;: &quot;Protect yourself and others from HIV and other STDs.&quot;,<br />
-                     &quot;corpusName&quot;: &quot;PB&quot;,<br />
-                     &quot;deepqaid&quot;: &quot;33598696&quot;,<br />
-                     &quot;description&quot;: &quot;Protect yourself and others from HIV and other STDs.&quot;,<br />
-                     &quot;fileName&quot;: &quot;\/watsondata\/ingestion\/201410032203\/eng\/di\/output\/trec\/intermediate\/xml-splitTrecTrim\/33598696.xml&quot;,<br />
-                     &quot;originalfile&quot;: &quot;Get Tested for HIV.html&quot;,<br />
-                     &quot;title&quot;: &quot;Get Tested for HIV : Get Tested for HIV : The Basics : What is HIV?&quot;<br />
-                  },<br />
-                  &quot;termsOfUse&quot;: &quot;No license specified for this supporting passage or document.&quot;,<br />
-                  &quot;text&quot;: &quot;HIV stands for human immunodeficiency virus. This is the virus that causes AIDS.&quot;,<br />
-                  &quot;title&quot;: &quot;Get Tested for HIV : Get Tested for HIV : The Basics : What is HIV?&quot;,<br />
-                  &quot;value&quot;: &quot;0.46911129355430603&quot;<br />
-               },<br />
-           	&lt; other evidence.....&lt;<br />
-        	],<br />
-        	{ OTHER METADATA }<br />
-     	}<br />
-  	}<br />
-   ]<br />
-}[/code]</p>
+<p>Following is an example of the response obtained:
+{% highlight javascript %}
+   "array": [
+  	{
+     	"question": {
+        	"answers": [
+           	{
+                  "confidence": 0.46911,
+                  "id": 0,
+                  "pipeline": "Descriptive,TAO",
+                  "text": "472D471A96B201B99D8F1C200E7E242B - Get Tested for HIV : Get Tested for HIV : The Basics : What is HIV?"
+               },
+           	<other answers...>
+        	],
+        	"category": "",
+        	"errorNotifications": [
+        	],
+        	"evidenceRequest": {
+           	"items": -1,
+           	"profile": "NO"
+        	},
+        	"evidencelist": [
+           	{
+                  "copyright": "No copyright specified for this supporting passage or document.",
+                  "document": "http:\/\/10.110.76.161:8080\/instance\/67\/deepqa\/v1\/question\/document\/PB_472D471A96B201B91949C3B1C28D468B\/175\/256",
+                  "id": "PB_472D471A96B201B91949C3B1C28D468B",
+                  "metadataMap": {
+                     "DOCNO": "472D471A96B201B91949C3B1C28D468B",
+                     "abstract": "Protect yourself and others from HIV and other STDs.",
+                     "corpusName": "PB",
+                     "deepqaid": "33598696",
+                     "description": "Protect yourself and others from HIV and other STDs.",
+                     "fileName": "\/watsondata\/ingestion\/201410032203\/eng\/di\/output\/trec\/intermediate\/xml-splitTrecTrim\/33598696.xml",
+                     "originalfile": "Get Tested for HIV.html",
+                     "title": "Get Tested for HIV : Get Tested for HIV : The Basics : What is HIV?"
+                  },
+                  "termsOfUse": "No license specified for this supporting passage or document.",
+                  "text": "HIV stands for human immunodeficiency virus. This is the virus that causes AIDS.",
+                  "title": "Get Tested for HIV : Get Tested for HIV : The Basics : What is HIV?",
+                  "value": "0.46911129355430603"
+               },
+           	< other evidence....>
+        	],
+        	{ OTHER METADATA }
+     	}
+  	}
+   ]
+}{%endhighlight%}
 <h3>PUT - feedback - path: /v1/feedback</h3>
-<p>The feedback endpoint is used to provide the user's feedback to Watson regarding the precision of the answers received. This information is used by Watson to continuously learn and improve next answers according the perception of end user (or someone that is actually teaching Watson in a new area).<br />
-Feedback is provided as a json document containning the informations about the original question, one of the received answers and the feedback, in the form of a number: -1,0,1 or 9, according to this rule:</p>
+<p>The feedback endpoint is used to provide the user's feedback to Watson regarding the precision of the answers received. This information is used by Watson to continuously learn and improve next answers according the perception of end user (or someone that is actually teaching Watson in a new area).
+Feedback is provided as a json document containning the informations about the original question, one of the received answers and the feedback, in the form of a number: -1,0,1 or 9, according to this rule:
 <ul>
 <li>-1=answers was irrelevant</li>
 <li>0=neutral feedback</li>
 <li>1=answer was relevant</li>
 <li>9=answer was partially relevant</li>
 </ul>
-<p>[code lang="js"]{<br />
-  &quot;questionId&quot;: &quot;1&quot;,<br />
-  &quot;questionText&quot;: &quot;What are the symptoms of diabetes?&quot;,<br />
-  &quot;answerId&quot;: &quot;0&quot;,<br />
-  &quot;answerText&quot;: &quot;Some people who have diabetic heart disease (DHD) may have no signs or symptoms of heart disease.&quot;,<br />
-  &quot;confidence&quot;: &quot;0.42134&quot;,<br />
-  &quot;shown&quot;: true,<br />
-  &quot;evidenceViewed&quot;: true,<br />
-  &quot;feedback&quot;: &quot;-1&quot;,<br />
-  &quot;comment&quot;: &quot;This is not a good answer&quot;<br />
-}[/code]</p>
-<p>Lets see how to access the REST API with HTTP Adapters:</p>
-<h2>Part 1 - Access and configure IBM Bluemix services</h2>
-<p>To access the WQ&amp;A service it is required to have an account in bluemix</p>
+{% highlight javascript %}
+  "questionId": "1",
+  "questionText": "What are the symptoms of diabetes?",
+  "answerId": "0",
+  "answerText": "Some people who have diabetic heart disease (DHD) may have no signs or symptoms of heart disease.",
+  "confidence": "0.42134",
+  "shown": true,
+  "evidenceViewed": true,
+  "feedback": "-1",
+  "comment": "This is not a good answer"
+}{%endhighlight%}
+<p>Lets see how to access the REST API with HTTP Adapters:
+
+<h3>Part 1 - Access and configure IBM Bluemix services</h3>
+<p>To access the WQ&amp;A service it is required to have an account in bluemix
+
 <h3>Create your account in Bluemix</h3>
 <ol>
-<li>Access <a href="https://bluemix.net" title="bluemix.net" target="_blank">bluemix.net</a> and create an account in the SIGN UP option.</li>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/1.1.png"><img src="{{ site.baseurl }}/assets/backup/1.1.png" alt="1.1" width="593" height="63" class="alignnone size-full wp-image-11539" /></a></p>
-<p><strong>Create a new bluemix application</strong></p>
-<li>After accessing Bluemix, select the option "CREATE AN APP"to create a new Bluemix App</li>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/1.2.png"><img src="{{ site.baseurl }}/assets/backup/1.2.png" alt="1.2" width="291" height="319" class="alignnone size-full wp-image-11541" /></a></p>
+    <li>Access <a href="https://bluemix.net" title="bluemix.net" target="_blank">bluemix.net</a> and create an account in the SIGN UP option.</li>
+
+<img src="{{ site.baseurl }}/assets/backup/1.1.png" class="img_responsive" />
+
+<p><strong>Create a new bluemix application</strong>
+    <li>After accessing Bluemix, select the option "CREATE AN APP"to create a new Bluemix App</li>
+
+<img src="{{ site.baseurl }}/assets/backup/1.2.png" class="img_responsive" />
+
 <li>Select the option to create a Runtime "Liberty for Java". A Runtime in Bluemix is an application server that will run on Bluemix platform. We will not actually use a Runtime in this app but it is required it in order to access your Watson credentials (all services in Bluemix must be attached to a Runtime of any type).
 </li>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/1.3.png"><img src="{{ site.baseurl }}/assets/backup/1.3.png" alt="1.3" width="335" height="181" class="alignnone size-full wp-image-11542" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/1.3.png" class="img_responsive" /></a>
 <li>Give a name to your app(example watson-qa-your-username).</li>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/1.4.png"><img src="{{ site.baseurl }}/assets/backup/1.4.png" alt="1.4" width="1282" height="382" class="alignnone size-full wp-image-11543" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/1.4.png" class="img_responsive" /></a>
 <li>Check the pricing options and select CREATE</li>
 <h3>Add the Watson Question and Answer service to the app</h3>
 <li>Click the option "Add a Service" and select the service "Watson Question and Answer"</li>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/1.6.png"><img src="{{ site.baseurl }}/assets/backup/1.6.png" alt="1.6" width="469" height="248" class="alignnone size-full wp-image-11544" /></a></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/1.6b.png"><img src="{{ site.baseurl }}/assets/backup/1.6b.png" alt="1.6b" width="1079" height="396" class="alignnone size-full wp-image-11545" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/1.6.png" class="img_responsive" /></a>
+<img src="{{ site.baseurl }}/assets/backup/1.6b.png" class="img_responsive" /></a>
 <li>Check the pricing options again and select CREATE</li>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/1.7.png"><img src="{{ site.baseurl }}/assets/backup/1.7.png" alt="1.7" width="1284" height="436" class="alignnone size-full wp-image-11547" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/1.7.png" class="img_responsive" /></a>
 <li>Now you already have a Bluemix App with the Watson Q&A service ready to be used.</li>
 <li>Verify the credetials generated to access the WQ&A service clicking at "Show Credentials". A JSON document similar to the following one will be presented.</li>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/1.9.png"><img src="{{ site.baseurl }}/assets/backup/1.9.png" alt="1.9" width="456" height="471" class="alignnone size-full wp-image-11548" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/1.9.png" class="img_responsive"/></a>
 <li>The important info here are the url, username and password. Those are the credentials to access the WQ&A service (the credentials in the image are just an example). We'll use the credentials in the adapter configuration.</li>
 <li>All set on Bluemix side, lets move to MobileFirst Platform</li>
 </ol>
-<h2>Part 2 - Creating the Adapters to access WQ&A</h2>
+
+<h3>Part 2 - Creating the Adapters to access WQ&A</h3>
 <ol>
 <li>Open IBM MobileFirst Platform Studio and create a new MobileFirst Project (File > New > MobileFirst Project) and them create a new MobileFirst HTTP Adapter (File > New > MobileFirst Adapter and select HTTP Adapter). Give a name to your adapter like WatsonQA.</li>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/2.3.png"><img src="{{ site.baseurl }}/assets/backup/2.3.png" alt="2.3" width="515" height="395" class="alignnone size-full wp-image-11549" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/2.3.png" class="img_responsive" />
 <li>Open the .xml configuration file of the adapter (adapters/WatsonQA/WatsonQA.xml)</li>
 <li>Change the <connectionpolicy> element according to the following example. Use the values of url, username and password obtained from Bluemix credentials earlier.</connectionpolicy></li>
-<p>[code lang="xml"]<br />
-&lt;connectionpolicy xsi:type=&quot;http:HTTPConnectionPolicyType&quot;&gt;<br />
-	&lt;protocol&gt;https&lt;/protocol&gt;<br />
-	&lt;domain&gt;gateway.watsonplatform.net&lt;/domain&gt;<br />
-	&lt;port&gt;443&lt;/port&gt;<br />
-	&lt;authentication&gt;<br />
-		&lt;basic&gt;&lt;/basic&gt;<br />
-		&lt;serveridentity&gt;<br />
-			&lt;username&gt;1721c34d8-bf3b-4583-8728-a5f10b7be9cc&lt;/username&gt;<br />
-   			&lt;password&gt;AqUM9nKvUCdr&lt;/password&gt;<br />
-   		&lt;/serveridentity&gt;<br />
-   	&lt;/authentication&gt;<br />
-&lt;/connectionpolicy&gt;<br />
-[/code]</p>
+{% highlight xml %}
+<connectionpolicy xsi:type="http:HTTPConnectionPolicyType">
+	<protocol>https</protocol>
+	<domain>gateway.watsonplatform.net</domain>
+	<port>443</port>
+	<authentication>
+		<basic></basic>
+		<serveridentity>
+			<username>1721c34d8-bf3b-4583-8728-a5f10b7be9cc</username>
+   			<password>AqUM9nKvUCdr</password>
+   		</serveridentity>
+   	</authentication>
+</connectionpolicy>
+[/code]
 <h3>Create the procedures to access the WQ&A service</h3>
 <li>Create the procedures to access WQ&A declaring it like the following in the .xml file</li>
-<p>[code lang="xml"]<br />
-&lt;procedure name=&quot;ping&quot;&gt;&lt;/procedure&gt;<br />
-&lt;procedure name=&quot;getServices&quot;&gt;&lt;/procedure&gt;<br />
-&lt;procedure name=&quot;postQuestion&quot;&gt;&lt;/procedure&gt;<br />
-&lt;procedure name=&quot;putFeedback&quot;&gt;&lt;/procedure&gt;<br />
-[/code]</p>
+<p>[code lang="xml"]
+<procedure name="ping"></procedure>
+<procedure name="getServices"></procedure>
+<procedure name="postQuestion"></procedure>
+<procedure name="putFeedback"></procedure>
+{%endhighlight%}
 <li>Open the file WatsonQA-impl.js and add the javascript functions ping, getServices, postQuestion e putFeedback according to the following code.</li>
-<p>[code lang="js"]<br />
-function ping(){<br />
-    var input = {<br />
-   	 	method : 'get',<br />
-   	 	returnedContentType : 'json',<br />
-   	 	path : '/qagw/service/v1/ping'<br />
-   	 };</p>
-<p>    return WL.Server.invokeHttp(input);<br />
-}</p>
-<p>function getServices(){<br />
-    var input = {<br />
-   	 	method : 'get',<br />
-   	 	returnedContentType : 'json',<br />
-   	 	path : '/qagw/service/v1/services'<br />
-   	 };<br />
-    return WL.Server.invokeHttp(input);<br />
-}</p>
-<p>function postQuestion(question_text,type){<br />
-    var input = {<br />
-   		 method : 'post',<br />
-   		 path: '/qagw/service/v1/question/'+type,<br />
-   		 returnedContentType: 'json',<br />
-   		 body: {<br />
-   			 contentType: 'application/json',<br />
-   			 content: {<br />
-   	   			 question: {<br />
-   	  				 questionText:question_text<br />
-   				 }<br />
-   			 }<br />
-   		 }<br />
-   	 };<br />
-    return WL.Server.invokeHttp(input);<br />
-}</p>
-<p>function putFeedback(_questionId,_questionText,<br />
-_answerId,_answerText,_confidence,_feedback){<br />
-    var input = {<br />
-   		 method : 'put',<br />
-   		 path: '/qagw/service/v1/feedback',<br />
-   		 returnedContentType: 'json',<br />
-   		 body: {<br />
-   			 contentType: 'application/json',<br />
-   			 content: {<br />
-   				   questionId: _questionId,<br />
-   				   questionText: _questionText,<br />
-   				   answerId: _answerId,<br />
-   				   answerText: _answerText,<br />
-   				   confidence: _confidence,<br />
-   				   shown: true,<br />
-   				   feedback: _feedback<br />
-   				 }<br />
-   			 }<br />
-   	 };<br />
-    return WL.Server.invokeHttp(input);<br />
-}<br />
-[/code]</p>
+{%highlight javascript %}
+function ping(){
+    var input = {
+   	 	method : 'get',
+   	 	returnedContentType : 'json',
+   	 	path : '/qagw/service/v1/ping'
+   	 };
+    return WL.Server.invokeHttp(input);
+}
+function getServices(){
+    var input = {
+   	 	method : 'get',
+   	 	returnedContentType : 'json',
+   	 	path : '/qagw/service/v1/services'
+   	 };
+    return WL.Server.invokeHttp(input);
+}
+function postQuestion(question_text,type){
+    var input = {
+   		 method : 'post',
+   		 path: '/qagw/service/v1/question/'+type,
+   		 returnedContentType: 'json',
+   		 body: {
+   			 contentType: 'application/json',
+   			 content: {
+   	   			 question: {
+   	  				 questionText:question_text
+   				 }
+   			 }
+   		 }
+   	 };
+    return WL.Server.invokeHttp(input);
+}
+function putFeedback(_questionId,_questionText,
+_answerId,_answerText,_confidence,_feedback){
+    var input = {
+   		 method : 'put',
+   		 path: '/qagw/service/v1/feedback',
+   		 returnedContentType: 'json',
+   		 body: {
+   			 contentType: 'application/json',
+   			 content: {
+   				   questionId: _questionId,
+   				   questionText: _questionText,
+   				   answerId: _answerId,
+   				   answerText: _answerText,
+   				   confidence: _confidence,
+   				   shown: true,
+   				   feedback: _feedback
+   				 }
+   			 }
+   	 };
+    return WL.Server.invokeHttp(input);
+}
+{%endhighlight%}
+
 <li>Right click on the adapters folder adapters/WatsonQA and select Run As > Deploy MobileFirst Adapter to deploy the adapter to your development server.</li>
 <li>Test your adapter procedures by running it from Run As > Invoke MobileFirst Procedure</li>
 </ol>
-<h2>Part 3 - Accessing the adapter procedures from a hybrid app</h2>
+<h3>Part 3 - Accessing the adapter procedures from a hybrid app</h3>
 <li>To access the procedures from a hybrid app, add the following code to the file apps/<appname>/common/js/main.js. </appname></li>
-<p>The functions getWatsonQAServices, postQuestion and putFeedback will access the equivalent adapter procedure and can be used in any ways you want in your application.<br />
-[code lang="js"]<br />
-/**<br />
- * getWatsonQAServices will call the procedure getServices to retrieve all the available<br />
- * question domains for the QA services<br />
- * @param onSuccessCallback - Callback function to run on success<br />
- * @param onFailCallback - Callback function to run on fail<br />
- */<br />
-function getWatsonQAServices(onSuccessCallback,onFailCallback){<br />
-    var invocationData = {<br />
-        	adapter : 'WatsonQA',<br />
-        	procedure : 'getServices',<br />
-        	parameters : []<br />
-    	};</p>
-<p>    var options = {<br />
-   	 onSuccess : onSuccessCallback,<br />
-   	 onFailure : onFailCallback,<br />
-    };</p>
-<p>    WL.Client.invokeProcedure(invocationData,options);<br />
-}</p>
-<p>/**<br />
- * Call the postQuestion procedure<br />
- * @param question - The question string to be sent. Example: &quot;What are the symptoms of diabetes?- Must be a question in English<br />
- * @param type - A string with the type of question, must be a service obtained with the<br />
- * getWatsonQAServices function. Examples: &quot;healthcare&quot; or &quot;travel<br />
- * @param onSuccessCallback - Callback function to run on success<br />
- * @param onFailCallback - Callback function to run on fail<br />
- */<br />
-function postQuestion(question, type, onSuccessCallback, onFailCallback){<br />
-    var invocationData = {<br />
-        	adapter : 'WatsonQA',<br />
-        	procedure : 'postQuestion',<br />
-        	parameters : [question,type]<br />
-    	};</p>
-<p>    var options = {<br />
-   	 onSuccess : onSuccessCallback,<br />
-   	 onFailure : onFailCallback,<br />
-    };</p>
-<p>    WL.Client.invokeProcedure(invocationData,options);<br />
-}</p>
-<p>/**<br />
- * this function receives a feedback index as a number between 0 and 4 and<br />
- * convert feedback to watson feedback standard like explained<br />
- * feedback (string, optional) = ['-1' or '0' or '1' or '9']:<br />
- * String representation of the feedback [-1 = answers was irrelevant,<br />
- * 0=neutral feedback,<br />
- * 1=answer was relevant,<br />
- * 9=answer was partially relevant],<br />
- * @param answerIndex - id of the answer that will receive feedback<br />
- * @param feedbackIndex - Feedback value- must be a number between 0 and 4<br />
- *  @param onSuccessCallback - Callback function to run on success<br />
- * @param onFailCallback - Callback function to run on fail<br />
- */<br />
-function putFeedback(answerIndex,feedbackIndex, onSuccessCallback, onFailCallback){</p>
-<p>    var watsonFeedbackIndex=0;<br />
-    if(feedbackIndex==1){<br />
-   	 watsonFeedbackIndex=-1;//irrelevant<br />
-    }<br />
-    else if(feedbackIndex==2){<br />
-   	 watsonFeedbackIndex=0;//neutral<br />
-    }<br />
-    else if(feedbackIndex==3){<br />
-   	 watsonFeedbackIndex=9;//partially relevant<br />
-    }<br />
-    else if(feedbackIndex==4){<br />
-   	 watsonFeedbackIndex=1;//relevant<br />
-    }</p>
-<p>    var invocationData = {<br />
-        	adapter : 'WatsonQA',<br />
-        	procedure : 'putFeedback',<br />
-      	//[_questionId,_questionText,_answerId,_answerText,_confidence,_feedback]<br />
-        	parameters : [question.id,<br />
-                      	question.questionText,<br />
-                      	answers[answerIndex].id,<br />
-                      	answers[answerIndex].text,<br />
-                      	answers[answerIndex].confidence,<br />
-                      	watsonFeedbackIndex]<br />
-    	};<br />
-    //alert(&quot;invocation parameters:&quot;+invocationData.parameters);<br />
-    var options = {<br />
-   	 onSuccess : onSuccessCallback,<br />
-   	 onFailure : onFailCallback,<br />
-    };</p>
-<p>    WL.Client.invokeProcedure(invocationData,options);<br />
-}<br />
-[/code]</p>
-<p>With the functions provided above, you can use the Watson Question and Answer service from any hybrid application.</p>
-<h2>Part 4 - Sample application</h2>
-<p>Attached to this blog post is a Sample MobileFirst project to access the Watson Q&amp;A service. To load and run the project follow the steps:</p>
+<p>The functions getWatsonQAServices, postQuestion and putFeedback will access the equivalent adapter procedure and can be used in any ways you want in your application.
+{%highlight javascript%}
+/**
+ * getWatsonQAServices will call the procedure getServices to retrieve all the available
+ * question domains for the QA services
+ * @param onSuccessCallback - Callback function to run on success
+ * @param onFailCallback - Callback function to run on fail
+ */
+function getWatsonQAServices(onSuccessCallback,onFailCallback){
+    var invocationData = {
+        	adapter : 'WatsonQA',
+        	procedure : 'getServices',
+        	parameters : []
+    	};
+    var options = {
+   	 onSuccess : onSuccessCallback,
+   	 onFailure : onFailCallback,
+    };
+    WL.Client.invokeProcedure(invocationData,options);
+}
+/**
+ * Call the postQuestion procedure
+ * @param question - The question string to be sent. Example: "What are the symptoms of diabetes?- Must be a question in English
+ * @param type - A string with the type of question, must be a service obtained with the
+ * getWatsonQAServices function. Examples: "healthcare" or "travel
+ * @param onSuccessCallback - Callback function to run on success
+ * @param onFailCallback - Callback function to run on fail
+ */
+function postQuestion(question, type, onSuccessCallback, onFailCallback){
+    var invocationData = {
+        	adapter : 'WatsonQA',
+        	procedure : 'postQuestion',
+        	parameters : [question,type]
+    	};
+    var options = {
+   	 onSuccess : onSuccessCallback,
+   	 onFailure : onFailCallback,
+    };
+    WL.Client.invokeProcedure(invocationData,options);
+}
+/**
+ * this function receives a feedback index as a number between 0 and 4 and
+ * convert feedback to watson feedback standard like explained
+ * feedback (string, optional) = ['-1' or '0' or '1' or '9']:
+ * String representation of the feedback [-1 = answers was irrelevant,
+ * 0=neutral feedback,
+ * 1=answer was relevant,
+ * 9=answer was partially relevant],
+ * @param answerIndex - id of the answer that will receive feedback
+ * @param feedbackIndex - Feedback value- must be a number between 0 and 4
+ *  @param onSuccessCallback - Callback function to run on success
+ * @param onFailCallback - Callback function to run on fail
+ */
+function putFeedback(answerIndex,feedbackIndex, onSuccessCallback, onFailCallback){
+    var watsonFeedbackIndex=0;
+    if(feedbackIndex==1){
+   	 watsonFeedbackIndex=-1;//irrelevant
+    }
+    else if(feedbackIndex==2){
+   	 watsonFeedbackIndex=0;//neutral
+    }
+    else if(feedbackIndex==3){
+   	 watsonFeedbackIndex=9;//partially relevant
+    }
+    else if(feedbackIndex==4){
+   	 watsonFeedbackIndex=1;//relevant
+    }
+    var invocationData = {
+        	adapter : 'WatsonQA',
+        	procedure : 'putFeedback',
+      	//[_questionId,_questionText,_answerId,_answerText,_confidence,_feedback]
+        	parameters : [question.id,
+                      	question.questionText,
+                      	answers[answerIndex].id,
+                      	answers[answerIndex].text,
+                      	answers[answerIndex].confidence,
+                      	watsonFeedbackIndex]
+    	};
+    //alert("invocation parameters:"+invocationData.parameters);
+    var options = {
+   	 onSuccess : onSuccessCallback,
+   	 onFailure : onFailCallback,
+    };
+    WL.Client.invokeProcedure(invocationData,options);
+}
+{%endhighlight%}
+<p>With the functions provided above, you can use the Watson Question and Answer service from any hybrid application.
+<h3>Part 4 - Sample application</h3>
+<p>Attached to this blog post is a Sample MobileFirst project to access the Watson Q&amp;A service. To load and run the project follow the steps:
 <ol>
 <li>Download the project or fork the sample project from github at <a href="https://github.com/leandrodvd/mfp70watsonqa">github.com/leandrodvd/mfp70watsonqa</a> that contains a MobileFirst Platform 7.0 project ready to be imported.</li>
 <li>Import the project WatsonQA - File > Import > Existing Projects and select the .zip downloaded</li>
@@ -379,36 +354,37 @@ function putFeedback(answerIndex,feedbackIndex, onSuccessCallback, onFailCallbac
 <li>Try to send some questions to test Watson skills</li>
 <li>The answers and evidence will be presented in the app body along with the confidence level for each answer and the option to provide feedback to Watson is available with the stars (4 stars means a relevant answer and 1 star is for an irrelevant answer)</li>
 <li>Remember that  Watson Services at Bluemix are in Beta stage so be gentle with Watson if you don't get amazing answers at first, give him some feedback and he will learn fast =)</li>
+
 <p>Following are some screenshots of the app</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/4.1.png"><img src="{{ site.baseurl }}/assets/backup/4.1.png" alt="4.1" width="720" height="1280" class="alignnone size-full wp-image-11551" /></a></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/4.2.png"><img src="{{ site.baseurl }}/assets/backup/4.2.png" alt="4.2" width="720" height="1280" class="alignnone size-full wp-image-11552" /></a></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/4.3.png"><img src="{{ site.baseurl }}/assets/backup/4.3.png" alt="4.3" width="720" height="1280" class="alignnone size-full wp-image-11553" /></a></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/4.4.png"><img src="{{ site.baseurl }}/assets/backup/4.4.png" alt="4.4" width="720" height="1280" class="alignnone size-full wp-image-11554" /></a></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/4.5.png"><img src="{{ site.baseurl }}/assets/backup/4.5.png" alt="4.5" width="720" height="1280" class="alignnone size-full wp-image-11555" /></a></p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/4.6.png"><img src="{{ site.baseurl }}/assets/backup/4.6.png" alt="4.6" width="720" height="1280" class="alignnone size-full wp-image-11556" /></a></p>
-<h2>Conclusion</h2>
-<p>In this post it was presented the step by step on how to use a MobileFirst Adapter to access Watson Question and Answer service in Bluemix.</p>
-<p>IBM Bluemix platform contains a wide variety of other services, including other Watson cognitive services that can be accessed in a very similar way that was presented in this post. Using IBM Bluemix services with IBM MobileFirst Platform allow developers to easily and quickly create mobile apps with complex feature, like cognitive question and answer apps, and with great value to the end users.</p>
-<p>The big question now is:<br />
--What is the next great cognitive app that YOU will create with Watson cognitive services and IBM MobileFirst Platform ?</p>
-<p>Let us know your thoughts in the comments section and lets keep the conversation flowing</p>
-<h2>References:</h2>
-<h3>IBM Watson:</h3>
-<p>Introduction to IBM Watson<br />
-<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/index.html">http://www.ibm.com/smarterplanet/us/en/ibmwatson/index.html</a></p>
-<p>IBM Watson Developer Cloud<br />
-<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/">http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/</a></p>
-<p>IBM Watson Question and Answer API Reference<br />
-<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/qaapi/">http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/qaapi/</a><br />
-and<a href=" http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/Question_Answer"><br />
-http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/Question_Answer</a></p>
-<h3>Bluemix:</h3>
-<p>Access Bluemix now at:<br />
-<a href="https://bluemix.net">https://bluemix.net</a></p>
-<p>More about Bluemix:<br />
-<a href="http://www.ibm.com/software/bluemix/">http://www.ibm.com/software/bluemix/</a></p>
-<p>Bluemix developers community<br />
-<a href="https://developer.ibm.com/bluemix/">https://developer.ibm.com/bluemix/</a></p>
+<img src="{{ site.baseurl }}/assets/backup/4.1.png" class="img_responsive" /></a>
+<img src="{{ site.baseurl }}/assets/backup/4.2.png" class="img_responsive" /></a>
+<img src="{{ site.baseurl }}/assets/backup/4.3.png" class="img_responsive" /></a>
+<img src="{{ site.baseurl }}/assets/backup/4.4.png" class="img_responsive" /></a>
+<img src="{{ site.baseurl }}/assets/backup/4.5.png" class="img_responsive" /></a>
+<img src="{{ site.baseurl }}/assets/backup/4.6.png" class="img_responsive" /></a>
+<h3>Conclusion</h3>
+<p>In this post it was presented the step by step on how to use a MobileFirst Adapter to access Watson Question and Answer service in Bluemix.
+<p>IBM Bluemix platform contains a wide variety of other services, including other Watson cognitive services that can be accessed in a very similar way that was presented in this post. Using IBM Bluemix services with IBM MobileFirst Platform allow developers to easily and quickly create mobile apps with complex feature, like cognitive question and answer apps, and with great value to the end users.
+<p>The big question now is:
+-What is the next great cognitive app that YOU will create with Watson cognitive services and IBM MobileFirst Platform ?
+<p>Let us know your thoughts in the comments section and lets keep the conversation flowing
+<h3>References:</h3>
+<h4>IBM Watson:</h4>
+<p>Introduction to IBM Watson
+<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/index.html">http://www.ibm.com/smarterplanet/us/en/ibmwatson/index.html</a>
+<p>IBM Watson Developer Cloud
+<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/">http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/</a>
+<p>IBM Watson Question and Answer API Reference
+<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/qaapi/">http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/qaapi/</a>
+and<a href=" http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/Question_Answer">
+http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/Question_Answer</a>
+<h4>Bluemix:</h4>
+<p>Access Bluemix now at:
+<a href="https://bluemix.net">https://bluemix.net</a>
+<p>More about Bluemix:
+<a href="http://www.ibm.com/software/bluemix/">http://www.ibm.com/software/bluemix/</a>
+<p>Bluemix developers community
+<a href="https://developer.ibm.com/bluemix/">https://developer.ibm.com/bluemix/</a>
 </ol>
 <ul>
 <li class="download-sample">

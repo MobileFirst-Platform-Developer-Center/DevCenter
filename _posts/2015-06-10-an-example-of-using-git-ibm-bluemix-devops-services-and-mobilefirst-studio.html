@@ -1,89 +1,99 @@
 ---
-
 title: An example of using Git, IBM BlueMix DevOps Services and MobileFirst Studio
 date: 2015-06-10 15:07:43.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _rawhtml_settings: '0,0,0,0'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442520929;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:16161;}i:1;a:1:{s:2:"id";i:16662;}i:2;a:1:{s:2:"id";i:16964;}}}}
+- Bluemix
+- Git
 author:
-  login: dennis.schultz@us.ibm.com
-  email: dennis.schultz@us.ibm.com
   display_name: Dennis Schultz
-  first_name: Dennis
-  last_name: Schultz
 ---
-<p>I introduced some basic concepts around using Git with IBM MobileFirst Platform in the <a href="http://wp.me/p5ntDa-3w9">last post</a>.  This post will build on that through an example using IBM Bluemix DevOps Services as the host for my repository.</p>
-<h1>Getting started</h1>
+<p>I introduced some basic concepts around using Git with IBM MobileFirst Platform in the <a href="{{site.baseurl}}/blog/2015-06-10-source-code-management-with-ibm-mobilefirst-platform">last post</a>. This post will build on that through an example using IBM Bluemix DevOps Services as the host for my repository.</p>
+
+<h3>Getting started</h3>
 <p>First, go to <a href="https://hub.jazz.net/">https://hub.jazz.net/</a>. If you don’t have a free account, create one using the SIGN UP button.</p>
-<p><a href="https://dennisschultz.files.wordpress.com/2015/06/sign-up-button.png"><img class="alignnone size-full wp-image-264" src="{{ site.baseurl }}/assets/backup/sign-up-button.png" alt="Sign Up Button" width="95" height="49" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/sign-up-button.png" class="img_responsive" />
+
 <p>Once logged in, you will see a screen showing you all the projects you have on DevOps Servcies. Create a new project.</p>
-<p><a href="https://dennisschultz.files.wordpress.com/2015/06/create-project.png"><img class="alignnone size-medium wp-image-262" src="{{ site.baseurl }}/assets/backup/create-project.png?w=300" alt="Create Project" width="300" height="130" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/create-project.png?" class="img_responsive" />
+
 <p>If you have code in a GitHub project already, you can just link to it. Let’s assume you do not, so click Create a new repository and choose Create a Git repo on Bluemix. Accept the defaults to create a private project with Scrum features and don’t make it a Bluemix project (that’s a discussion for another day).</p>
-<p><a href="https://dennisschultz.files.wordpress.com/2015/06/03-create-repo.png"><img class="alignnone size-medium wp-image-263" src="{{ site.baseurl }}/assets/backup/03-create-repo.png?w=267" alt="03 - create repo" width="267" height="300" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/03-create-repo.png" class="img_responsive" />
+
 <p>You now have a project on DevOps Services to contain your project. The Git URL needed to reference this repository can be copied from the Git URL link on the upper right corner of the Git view. Do that now because you will need it shortly.</p>
-<p><a href="https://dennisschultz.files.wordpress.com/2015/06/git-url.png"><img class="alignnone size-medium wp-image-265" src="{{ site.baseurl }}/assets/backup/git-url.png?w=300" alt="git url" width="300" height="97" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/git-url.png" class="img_responsive" />
+
 <p>The next steps are done from your local machine.</p>
-<h1>Adding a project to Git</h1>
+
+<h3>Adding a project to Git</h3>
 <p>From the client side, it is recommended to NOT store your projects within the Eclipse workspace. Unfortunately, the Studio New Project wizard doesn’t give you the option to create the project anywhere else. Fortunately, Eclipse projects are portable and can be moved around easily. The easiest way I have found to get started is to</p>
+
 <ol>
-<li>Create a local Git repo using MFP Studio</li>
-<li>Create a MobileFirst Platform project</li>
-<li>Move the project into the Git repository</li>
-<li>Create your .gitignore file</li>
-<li>Put everything under control</li>
-<li>Push your changes to the DevOps Services server</li>
+    <li>Create a local Git repo using MFP Studio</li>
+    <li>Create a MobileFirst Platform project</li>
+    <li>Move the project into the Git repository</li>
+    <li>Create your .gitignore file</li>
+    <li>Put everything under control</li>
+    <li>Push your changes to the DevOps Services server</li>
 </ol>
+
 <p>Let’s quickly walk through that.</p>
-<h2>Create a local Git repo</h2>
+
+<h4>Create a local Git repo</h4>
 <ol>
-<li>Open MF Studio to a new workspace.</li>
-<li>Open the Git Perspective</li>
-<li>In the Git Repositories view, choose <strong>Clone a Git repository</strong>.<br />
-<a href="https://dennisschultz.files.wordpress.com/2015/06/clone.png"><img class="alignnone size-medium wp-image-266" src="{{ site.baseurl }}/assets/backup/clone.png?w=300" alt="clone" width="300" height="110" /></a><br />
-When asked to select a destination, pick a spot on your file system where you will store Git repositories, say /git and then add a folder within it with the name of your project (i.e. /Users/dennis/git/mySampleProject). Now you have an empty Git repository that references the one on DevOps services as its “remote”.</li>
+    <li>Open MF Studio to a new workspace.</li>
+    <li>Open the Git Perspective</li>
+    <li>In the Git Repositories view, choose <strong>Clone a Git repository</strong>.<br />
+    <img src="{{ site.baseurl }}/assets/backup/clone.png" class="img_responsive" />
+
+    When asked to select a destination, pick a spot on your file system where you will store Git repositories, say /git and then add a folder within it with the name of your project (i.e. /Users/dennis/git/mySampleProject). Now you have an empty Git repository that references the one on DevOps services as its “remote”.</li>
 </ol>
-<h2>Create a MobileFirst Platform project</h2>
+
+<h4>Create a MobileFirst Platform project</h4>
 <ol>
-<li>Right-click on the Working Directory node in the Git Repositories view and select <strong>Import Projects</strong>. Select Use the New Projects wizard.</li>
-<li>Walk through the wizard to create a project named <strong>mySampleProject</strong> containing a hybrid app named <strong>mySampleApp</strong>, just as you normally would.<br />
-<a href="https://dennisschultz.files.wordpress.com/2015/06/create-project2.png"><img class="alignnone size-medium wp-image-267" src="{{ site.baseurl }}/assets/backup/create-project2.png?w=300" alt="create project2" width="300" height="300" /></a></li>
-<li>Create an <strong>Android environment</strong> in the mySampleApp project.</li>
+    <li>Right-click on the Working Directory node in the Git Repositories view and select <strong>Import Projects</strong>. Select Use the New Projects wizard.</li>
+    <li>Walk through the wizard to create a project named <strong>mySampleProject</strong> containing a hybrid app named <strong>mySampleApp</strong>, just as you normally would.<br />
+
+    <img src="{{ site.baseurl }}/assets/backup/create-project2.png" class="img_responsive" /></li>
+    <li>Create an <strong>Android environment</strong> in the mySampleApp project.</li>
 </ol>
-<h2>Move the project into the Git working directory</h2>
+
+<h4>Move the project into the Git working directory</h4>
 <p>Unfortunately, MFP Studio simply creates the project within the root of the workspace, which is not what you want. Fortunately, it is easy to move.</p>
+
 <ol>
-<li>Switch to another perspective such as J2EE or Design.</li>
-<li>Right-click the project and select <strong>Refactor &gt; Move</strong> to move it within your Git repository. Note that you cannot put it directly in the Git repository root. Create a subdirectory such as /Users/dennis/git/mySampleProject/mySampleProject.</li>
+    <li>Switch to another perspective such as J2EE or Design.</li>
+    <li>Right-click the project and select <strong>Refactor > Move</strong> to move it within your Git repository. Note that you cannot put it directly in the Git repository root. Create a subdirectory such as /Users/dennis/git/mySampleProject/mySampleProject.</li>
 </ol>
-<h2>Create your .gitignore file</h2>
+
+<h4>Create your .gitignore file</h4>
 <ol>
-<li>Switch back to the Git perspective and hit refresh in the Git Staging view. You should see that you have about 217 files staged, which means they are available to add to SCM. But remember we don’t necessarily want all of them in there.</li>
-<li>Go to <a href="https://github.com/andrewferrier/mfp-gitignore">https://github.com/andrewferrier/mfp-gitignore</a> and download the MFP_7.0.gitignore file.</li>
-<li>Rename the file to just .gitignore and place it at the root of your project.</li>
-<li>Go back to the Git Staging view, refresh, then drag the .gitignore file from Unstaged Changes to Staged Changes.</li>
-<li>Provide a commit message like “Setup .gitignore file”.</li>
-<li>You should see the Unstaged Changes file count drop to something like 109 because the .gitignore file is filtering out the stuff you don’t want committed.</li>
+    <li>Switch back to the Git perspective and hit refresh in the Git Staging view. You should see that you have about 217 files staged, which means they are available to add to SCM. But remember we don’t necessarily want all of them in there.</li>
+    <li>Go to <a href="https://github.com/andrewferrier/mfp-gitignore">https://github.com/andrewferrier/mfp-gitignore</a> and download the MFP_7.0.gitignore file.</li>
+    <li>Rename the file to just .gitignore and place it at the root of your project.</li>
+    <li>Go back to the Git Staging view, refresh, then drag the .gitignore file from Unstaged Changes to Staged Changes.</li>
+    <li>Provide a commit message like “Setup .gitignore file”.</li>
+    <li>You should see the Unstaged Changes file count drop to something like 109 because the .gitignore file is filtering out the stuff you don’t want committed.</li>
 </ol>
-<h2>Put everything under SCM control</h2>
+
+<h4>Put everything under SCM control</h4>
 <ol>
-<li>Select all files in Unstaged Changes and drag them to Staged Changes.</li>
-<li>Provide a commit message like “Project Load” and commit.</li>
+    <li>Select all files in Unstaged Changes and drag them to Staged Changes.</li>
+    <li>Provide a commit message like “Project Load” and commit.</li>
 </ol>
+
 <p>At this point, everything is under Git control, but only on your local repository.</p>
-<h2>Push your changes to DevOps Services</h2>
+
+<h4>Push your changes to DevOps Services</h4>
 <ol>
-<li>In the Git Repositories view, right-click mySampleProject/Branches/Local/master and select Push Branch.</li>
-<li>Accept all defaults. When the operation finishes, go back to your DevOps Services project and refresh the browser. You will now see your project on the master branch on the server.<br />
-<a href="https://dennisschultz.files.wordpress.com/2015/06/project-on-server.png"><img class="alignnone size-medium wp-image-268" src="{{ site.baseurl }}/assets/backup/project-on-server.png?w=300" alt="project on server" width="300" height="163" /></a></li>
+    <li>In the Git Repositories view, right-click mySampleProject/Branches/Local/master and select Push Branch.</li>
+    <li>Accept all defaults. When the operation finishes, go back to your DevOps Services project and refresh the browser. You will now see your project on the master branch on the server.<br />
+    <img src="{{ site.baseurl }}/assets/backup/project-on-server.png" class="img_responsive" /></li>
 </ol>
-<h1>Conclusion</h1>
+
+<h3>Conclusion</h3>
 <p>Managing source code is critical in any project including MobileFirst projects. It takes a few steps to get setup with Git, but it will pay you dividends quickly.</p>

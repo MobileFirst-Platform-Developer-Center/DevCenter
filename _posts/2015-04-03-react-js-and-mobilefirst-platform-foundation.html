@@ -1,263 +1,250 @@
 ---
-
 title: React.js and MobileFirst Platform Foundation
 date: 2015-04-03 14:43:50.000000000 +03:00
-type: post
-published: true
-status: publish
-categories:
-- Mobile
-- v7.0
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '10080'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
+- React.js
 author:
-  login: cshunger@us.ibm.com
-  email: cshunger@us.ibm.com
-  display_name: cshunger
-  first_name: Chevy
-  last_name: Hungerford
+  display_name: Chevy Hungerford
 ---
-<p>[embed]https://www.youtube.com/watch?v=1WIornOupQU[/embed]</p>
-<p>One thing I forgot to show in the video was the update (the little green checkmark). When pressed it dashes out the task like in the image below:</p>
-<div>
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/UpdateToDoList2.png"><img src="{{ site.baseurl }}/assets/backup/UpdateToDoList2.png" alt="UpdateToDoList2" width="898" height="412" class="alignnone size-full wp-image-10110" /></a>
+<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+    <iframe src="https://www.youtube.com/embed/1WIornOupQU"></iframe>
 </div>
-<p></p>
-<p>Here is my React.js code:<br />
-[code lang="javascript"]<br />
-var TaskRow = React.createClass({<br />
-	render: function(){<br />
-		return (<br />
-				&lt;ul className=&quot;taskRow&quot;&gt;<br />
-				&lt;li&gt;<br />
-					&lt;TextTag item={this.props.children}/&gt;<br />
-					&lt;MarkCompleteButton item={this.props.children}/&gt;<br />
-					&lt;DeleteButton item={this.props.children}/&gt;<br />
-				&lt;/li&gt;<br />
-				&lt;/ul&gt;<br />
-		);<br />
-	}<br />
-});</p>
-<p>var TextTag = React.createClass({<br />
-	  render: function() {<br />
-		  var pStyle = {<br />
-				  display:'inline',<br />
-				};<br />
-				  return (<br />
-						  &lt;p style={pStyle} className={this.props.item.completed}&gt;{this.props.item.task}&lt;/p&gt;<br />
-				  );<br />
-			  }<br />
-});</p>
-<p>var DeleteButton = React.createClass({<br />
-	getInitialState: function(){<br />
-		React.initializeTouchEvents(true);<br />
-		return {};<br />
-	},<br />
-	  handleClick: function(event) {<br />
-		  var resourceRequest = new WLResourceRequest(<br />
-					&quot;http://&lt;ip-address&gt;:10080/ToDoReact/adapters/ToDoAdapter/toListMethods/deleteTask/&quot;+this.props.item.id,<br />
-					WLResourceRequest.POST);<br />
-			resourceRequest.send().then();<br />
-	  },<br />
-	  render: function() {<br />
-		  var pStyle = {<br />
-				  display:'inline',<br />
-				};<br />
-	    return (<br />
-	      &lt;a style={pStyle} onClick={this.handleClick} className=&quot;redLink&quot;&gt;<br />
-	      	&lt;span className=&quot;glyphicon glyphicon-remove&quot;/&gt;<br />
-	      &lt;/a&gt;<br />
-	    );<br />
-	  }<br />
-});</p>
-<p>var MarkCompleteButton = React.createClass({<br />
-	getInitialState: function() {<br />
-		React.initializeTouchEvents(true);<br />
-	    	if(this.props.item.completed == &quot;false&quot;){<br />
-	    		return { active : false };<br />
-	    	}else{<br />
-	    		return { active: true };<br />
-	    	};</p>
-<p>	  },<br />
-	  handleClick: function(event) {<br />
-		  this.setState({active: !this.state.active});<br />
-		  var resourceRequest = new WLResourceRequest(<br />
-					&quot;http://&lt;ip-address&gt;:10080/ToDoReact/adapters/ToDoAdapter/toListMethods/tagDone/&quot;+this.props.item.id,<br />
-					WLResourceRequest.POST);<br />
-			resourceRequest.addHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);<br />
-			resourceRequest.send().then();<br />
-	  },<br />
-	  render: function() {<br />
-		  var pStyle = {<br />
-				  display:'inline',<br />
-				};<br />
-	    return (<br />
-	      &lt;a style={pStyle} onClick={this.handleClick} className=&quot;greenLink&quot;&gt;<br />
-	      &lt;span className=&quot;glyphicon glyphicon-ok&quot;&gt;&lt;/span&gt;<br />
-	      &lt;/a&gt;<br />
-	    );<br />
-	  }<br />
-});<br />
-var InputBox = React.createClass({<br />
-	handleSubmit: function(e){<br />
-		e.preventDefault();<br />
-		var text = this.refs.text.getDOMNode().value.trim();<br />
-		if (!text) {<br />
-		      return;<br />
-		}<br />
-		this.props.onTaskSubmit({task: text });<br />
-		this.refs.text.getDOMNode().value = '';<br />
-	    return;<br />
-	},<br />
-	render: function() {<br />
-		return (<br />
-				&lt;form className=&quot;inputBox&quot; onSubmit={this.handleSubmit}&gt;<br />
-		        &lt;input name=&quot;taskName&quot; type=&quot;text&quot; placeholder=&quot;Task...&quot; ref=&quot;text&quot;/&gt;<br />
-		        &lt;input type=&quot;submit&quot; value=&quot;Add Item&quot; /&gt;<br />
-				&lt;/form&gt;<br />
-		);<br />
-	}<br />
-});</p>
-<p>var ToDoListStaticName = React.createClass({<br />
-	render: function(){<br />
-		return (<br />
-				&lt;h4&gt;ToDo List!&lt;/h4&gt;<br />
-		);<br />
-	}<br />
-});</p>
-<p>var TaskList = React.createClass({<br />
-	render: function() {<br />
-		var toDoNodes = this.props.data.map(function (taskRow){<br />
-			return (<br />
-					&lt;TaskRow&gt;{taskRow}&lt;/TaskRow&gt;<br />
-			);<br />
-		});<br />
-		return (<br />
-				&lt;div className=&quot;taskList&quot;&gt;<br />
-					{toDoNodes}<br />
-				&lt;/div&gt;<br />
-		);<br />
-	}<br />
-});<br />
-var other;<br />
-var ToDoListContainer = React.createClass({<br />
-	loadTasksFromServer: function() {<br />
-		other = this;</p>
-<p>		var resourceRequest = new WLResourceRequest(this.props.url, WLResourceRequest.GET);<br />
-		resourceRequest.send().then(<br />
-				function(response){<br />
-					 other.updateState(JSON.parse(response.responseText));<br />
-				},<br />
-				function(error){</p>
-<p>				}<br />
-		).then(<br />
-				function(){<br />
-					other.setState<br />
-				}<br />
-		);</p>
-<p>	},<br />
-	updateState : function(state) {<br />
-		this.setState(state);<br />
-	},<br />
-	handleTaskSubmit: function(taskRow){<br />
-		var taskRows = this.state.data;<br />
-		var newTaskRows = taskRows.concat([taskRow]);</p>
-<p>		var resourceRequest = new WLResourceRequest(<br />
-				&quot;http://&lt;ip-address&gt;:10080/ToDoReact/adapters/ToDoAdapter/toListMethods/addTask/&quot;,<br />
-				WLResourceRequest.POST);<br />
-		resourceRequest.addHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);<br />
-		resourceRequest.send(&quot;taskName=&quot; + taskRow.task).then();<br />
-	},<br />
-	getInitialState: function(){<br />
-		return {<br />
-			data: []<br />
-		};<br />
-	},<br />
-	getCurrentState: function(){<br />
-		return this.state.data;<br />
-	},<br />
-	addToCurrentState: function(taskRow){<br />
-		var taskRows = this.state.data;<br />
-		var newTaskRows = taskRows.concat([taskRow]);<br />
-		this.setState({data: newTaskRows});<br />
-	},<br />
-	componentDidMount: function() {<br />
-	    this.loadTasksFromServer();<br />
-	    setInterval(this.loadTasksFromServer, this.props.pollInterval);<br />
-	  },<br />
-	render: function(){<br />
-		return (<br />
-				&lt;div className=&quot;toDoListContainer&quot;&gt;<br />
-					&lt;ToDoListStaticName /&gt;<br />
-					&lt;InputBox onTaskSubmit={this.handleTaskSubmit}/&gt;<br />
-					&lt;TaskList data={this.state.data} /&gt;<br />
-				&lt;/div&gt;<br />
-		);<br />
-	}<br />
-});</p>
-<p>function createNewState(oldState, newState){<br />
-	oldState.value = newState.value;<br />
-}</p>
-<p>React.render(<br />
-	&lt;ToDoListContainer url=&quot;http://&lt;ip-address&gt;:10080/ToDoReact/adapters/ToDoAdapter/toListMethods/getToDoList&quot; pollInterval={1000}/&gt;,<br />
-	document.getElementById('content')<br />
-);<br />
-[/code]</p>
-<p>Adapter code ToDoApdaterResource.java<br />
-[code lang="java"]</p>
-<p>@Path(&quot;/toListMethods&quot;)<br />
-@OAuthSecurity(enabled=false)<br />
-public class ToDoAdapterResource {</p>
-<p>	//Define logger (Standard java.util.Logger)<br />
-	static Logger logger = Logger.getLogger(ToDoAdapterResource.class.getName());</p>
-<p>    //Define the server api to be able to perform server operations<br />
-    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();</p>
-<p>    private static ArrayList&lt;TaskItem&gt; taskList = new ArrayList&lt;TaskItem&gt;();<br />
-    public static Integer id = 0;</p>
-<p>    @GET<br />
-    @Path(&quot;/getToDoList&quot;)<br />
-    public String getTasks(){<br />
-    	String taskString = &quot;{\&quot;data\&quot;: [&quot;;<br />
-    	for(int i = 0; i&lt;taskList.size(); i++){<br />
-    		if(taskList.size()-1 != i){<br />
-    			taskString+=taskList.get(i).returnJSON()+&quot;,&quot;;<br />
-    		}else{<br />
-    			taskString+=taskList.get(i).returnJSON();<br />
-    		}<br />
-    	}<br />
-    	taskString += &quot;]}&quot;;<br />
-		return taskString;<br />
-    }</p>
-<p>    @POST<br />
-    @Path(&quot;/addTask/&quot;)<br />
-    public void addTask(@FormParam(&quot;taskName&quot;) String task){<br />
-    	TaskItem newTaskItem = new TaskItem(task, id);<br />
-    	taskList.add(newTaskItem);<br />
-    	id++;</p>
-<p>    }</p>
-<p>    @POST<br />
-    @Path(&quot;/deleteTask/{id}&quot;)<br />
-    public void deleteTask(@PathParam(&quot;id&quot;) Integer id){<br />
-    	TaskItem newItem = new TaskItem(null, id);</p>
-<p>    	Integer index = taskList.indexOf(newItem);<br />
-    	if(index != -1){<br />
-    		taskList.remove(newItem);<br />
-    	}<br />
-    }</p>
-<p>    @POST<br />
-    @Path(&quot;/tagDone/{id}&quot;)<br />
-    public void tagDone(@PathParam(&quot;id&quot;) Integer id){<br />
-    	TaskItem newItem = new TaskItem(null, id);</p>
-<p>    	Integer index = taskList.indexOf(newItem);<br />
-    	if(index != -1){<br />
-    		taskList.get(index).toggleComplete();<br />
-    	}<br />
-    }<br />
-}</p>
-<p>[/code]</p>
+
+<p>One thing I forgot to show in the video was the update (the little green checkmark). When pressed it dashes out the task like in the image below:</p>
+
+<img src="{{ site.baseurl }}/assets/backup/UpdateToDoList2.png" class="img_responsive" />
+
+Here is my React.js code:
+{% highlight javascript %}
+var TaskRow = React.createClass({
+	render: function(){
+		return (
+				<ul className="taskRow">
+				<li>
+					<TextTag item={this.props.children}/>
+					<MarkCompleteButton item={this.props.children}/>
+					<DeleteButton item={this.props.children}/>
+				</li>
+				</ul>
+		);
+	}
+});
+var TextTag = React.createClass({
+	  render: function() {
+		  var pStyle = {
+				  display:'inline',
+				};
+				  return (
+						  <p style={pStyle} className={this.props.item.completed}>{this.props.item.task}</p>
+				  );
+			  }
+});
+var DeleteButton = React.createClass({
+	getInitialState: function(){
+		React.initializeTouchEvents(true);
+		return {};
+	},
+	  handleClick: function(event) {
+		  var resourceRequest = new WLResourceRequest(
+					"http://<ip-address>:10080/ToDoReact/adapters/ToDoAdapter/toListMethods/deleteTask/"+this.props.item.id,
+					WLResourceRequest.POST);
+			resourceRequest.send().then();
+	  },
+	  render: function() {
+		  var pStyle = {
+				  display:'inline',
+				};
+	    return (
+	      <a style={pStyle} onClick={this.handleClick} className="redLink">
+	      	<span className="glyphicon glyphicon-remove"/>
+	      </a>
+	    );
+	  }
+});
+var MarkCompleteButton = React.createClass({
+	getInitialState: function() {
+		React.initializeTouchEvents(true);
+	    	if(this.props.item.completed == "false"){
+	    		return { active : false };
+	    	}else{
+	    		return { active: true };
+	    	};
+	  },
+	  handleClick: function(event) {
+		  this.setState({active: !this.state.active});
+		  var resourceRequest = new WLResourceRequest(
+					"http://<ip-address>:10080/ToDoReact/adapters/ToDoAdapter/toListMethods/tagDone/"+this.props.item.id,
+					WLResourceRequest.POST);
+			resourceRequest.addHeader("Content-Type", "application/x-www-form-urlencoded");
+			resourceRequest.send().then();
+	  },
+	  render: function() {
+		  var pStyle = {
+				  display:'inline',
+				};
+	    return (
+	      <a style={pStyle} onClick={this.handleClick} className="greenLink">
+	      <span className="glyphicon glyphicon-ok"></span>
+	      </a>
+	    );
+	  }
+});
+var InputBox = React.createClass({
+	handleSubmit: function(e){
+		e.preventDefault();
+		var text = this.refs.text.getDOMNode().value.trim();
+		if (!text) {
+		      return;
+		}
+		this.props.onTaskSubmit({task: text });
+		this.refs.text.getDOMNode().value = '';
+	    return;
+	},
+	render: function() {
+		return (
+				<form className="inputBox" onSubmit={this.handleSubmit}>
+		        <input name="taskName" type="text" placeholder="Task..." ref="text"/>
+		        <input type="submit" value="Add Item" />
+				</form>
+		);
+	}
+});
+var ToDoListStaticName = React.createClass({
+	render: function(){
+		return (
+				<h4>ToDo List!</h4>
+		);
+	}
+});
+var TaskList = React.createClass({
+	render: function() {
+		var toDoNodes = this.props.data.map(function (taskRow){
+			return (
+					<TaskRow>{taskRow}</TaskRow>
+			);
+		});
+		return (
+				<div className="taskList">
+					{toDoNodes}
+				</div>
+		);
+	}
+});
+var other;
+var ToDoListContainer = React.createClass({
+	loadTasksFromServer: function() {
+		other = this;
+		var resourceRequest = new WLResourceRequest(this.props.url, WLResourceRequest.GET);
+		resourceRequest.send().then(
+				function(response){
+					 other.updateState(JSON.parse(response.responseText));
+				},
+				function(error){
+				}
+		).then(
+				function(){
+					other.setState
+				}
+		);
+	},
+	updateState : function(state) {
+		this.setState(state);
+	},
+	handleTaskSubmit: function(taskRow){
+		var taskRows = this.state.data;
+		var newTaskRows = taskRows.concat([taskRow]);
+		var resourceRequest = new WLResourceRequest(
+				"http://<ip-address>:10080/ToDoReact/adapters/ToDoAdapter/toListMethods/addTask/",
+				WLResourceRequest.POST);
+		resourceRequest.addHeader("Content-Type", "application/x-www-form-urlencoded");
+		resourceRequest.send("taskName=" + taskRow.task).then();
+	},
+	getInitialState: function(){
+		return {
+			data: []
+		};
+	},
+	getCurrentState: function(){
+		return this.state.data;
+	},
+	addToCurrentState: function(taskRow){
+		var taskRows = this.state.data;
+		var newTaskRows = taskRows.concat([taskRow]);
+		this.setState({data: newTaskRows});
+	},
+	componentDidMount: function() {
+	    this.loadTasksFromServer();
+	    setInterval(this.loadTasksFromServer, this.props.pollInterval);
+	  },
+	render: function(){
+		return (
+				<div className="toDoListContainer">
+					<ToDoListStaticName />
+					<InputBox onTaskSubmit={this.handleTaskSubmit}/>
+					<TaskList data={this.state.data} />
+				</div>
+		);
+	}
+});
+function createNewState(oldState, newState){
+	oldState.value = newState.value;
+}
+React.render(
+	<ToDoListContainer url="http://<ip-address>:10080/ToDoReact/adapters/ToDoAdapter/toListMethods/getToDoList" pollInterval={1000}/>,
+	document.getElementById('content')
+);
+{% endhighlight %}
+
+Adapter code ToDoApdaterResource.java
+{% highlight java %}
+@Path("/toListMethods")
+@OAuthSecurity(enabled=false)
+public class ToDoAdapterResource {
+	//Define logger (Standard java.util.Logger)
+	static Logger logger = Logger.getLogger(ToDoAdapterResource.class.getName());
+    //Define the server api to be able to perform server operations
+    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
+    private static ArrayList<TaskItem> taskList = new ArrayList<TaskItem>();
+    public static Integer id = 0;
+    @GET
+    @Path("/getToDoList")
+    public String getTasks(){
+    	String taskString = "{\"data\": [";
+    	for(int i = 0; i<taskList.size(); i++){
+    		if(taskList.size()-1 != i){
+    			taskString+=taskList.get(i).returnJSON()+",";
+    		}else{
+    			taskString+=taskList.get(i).returnJSON();
+    		}
+    	}
+    	taskString += "]}";
+		return taskString;
+    }
+    @POST
+    @Path("/addTask/")
+    public void addTask(@FormParam("taskName") String task){
+    	TaskItem newTaskItem = new TaskItem(task, id);
+    	taskList.add(newTaskItem);
+    	id++;
+    }
+    @POST
+    @Path("/deleteTask/{id}")
+    public void deleteTask(@PathParam("id") Integer id){
+    	TaskItem newItem = new TaskItem(null, id);
+    	Integer index = taskList.indexOf(newItem);
+    	if(index != -1){
+    		taskList.remove(newItem);
+    	}
+    }
+    @POST
+    @Path("/tagDone/{id}")
+    public void tagDone(@PathParam("id") Integer id){
+    	TaskItem newItem = new TaskItem(null, id);
+    	Integer index = taskList.indexOf(newItem);
+    	if(index != -1){
+    		taskList.get(index).toggleComplete();
+    	}
+    }
+}
+{% endhighlight %}

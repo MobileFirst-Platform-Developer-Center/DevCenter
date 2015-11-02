@@ -1,41 +1,30 @@
 ---
-
-title: Support for iPhone 6/6 Plus-compatible application resolution in MobileFirst
-  Platform v6.3 and earlier
+title: Support for iPhone 6/6 Plus-compatible application resolution in MobileFirst Platform v6.3 and earlier
 date: 2015-03-19 09:46:32.000000000 +02:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _rawhtml_settings: '0,0,0,0'
-  _wpas_done_all: '1'
-  _wp_old_slug: support-iphone-66-plus-compatible-launch-images-mobilefirst-platform-v6-3-earlier
+- iOS
+- Splash
 author:
-  login: liorbu@il.ibm.com
-  email: liorbu@il.ibm.com
-  display_name: LiorBu
-  first_name: Lior
-  last_name: Burg
+  display_name: Lior Burg
 ---
 <p><em><strong>The below is related only to MobileFirst Platform 6.3 and below.</strong></em></p>
 <p>In iOS, the application resolution is defined by the launch image provided in the application resources.<br />
 MobileFirst Studio creates a default launch image when creating a hybrid application with an iOS environment but it lacks support for iPhone 6/6 Plus resolution. Starting MFP v7.0, support is provided built-in.</p>
+
 <p>In order to support higher resolution, you need to make some adjustments to the Xcode project:</p>
 <ul>
-<li>Add high resolution image files for iPhone 6/6 Plus to the application resources.</li>
-<p>For example:<br />
-Default-667h.png - image for iPhone 6<br />
-Default-736h.png - image for iPhone 6 Plus.<br />
-Default-736h-Landscape.png - image for iPhone 6 Plus in landscape orientation</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/images.png"><img src="{{ site.baseurl }}/assets/backup/images.png" alt="images" width="301" height="76" class="aligncenter size-full wp-image-9211" /></a></p>
-<li>Add a <strong>UILaunchImages</strong> property to yourAppName-info.plist in order to add all images items (low and high resolution) as follows:</li>
-<p>   <strong>Note:</strong> The UILaunchImageName must be named exactly as the added and existing image files.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/Screen-Shot-2015-03-18-at-17.31.59.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-03-18-at-17.31.59.png" alt="Support for iPhone 6/6plus images" width="463" height="476" class="aligncenter size-full wp-image-9206" /></a>
+    <li>Add high resolution image files for iPhone 6/6 Plus to the application resources.
+    <p>For example:<br />
+        Default-667h.png - image for iPhone 6<br />
+        Default-736h.png - image for iPhone 6 Plus.<br />
+        Default-736h-Landscape.png - image for iPhone 6 Plus in landscape orientation</p>
+        <img src="{{ site.baseurl }}/assets/backup/images.png" class="img_responsive" /></li>
+
+        <li>Add a <strong>UILaunchImages</strong> property to yourAppName-info.plist in order to add all images items (low and high resolution) as follows:<br/>
+        <strong>Note:</strong> The UILaunchImageName must be named exactly as the added and existing image files.</p>
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-03-18-at-17.31.59.png" class="img_responsive" /></a></li>
 </ul>
+
 <h3>End result:</h3>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/Before-and-After-new.png"><img src="{{ site.baseurl }}/assets/backup/Before-and-After-new.png" alt="Before and After-new" width="700" height="600" class="aligncenter size-full wp-image-9277" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/Before-and-After-new.png" class="img_responsive" /></a>

@@ -1,192 +1,197 @@
 ---
-
 title: Saving and Retrieving Images using Cloudant with HTTP Adapters
 date: 2015-04-27 01:34:27.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
-- cloudant
+- Cloudant
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-  _wp_old_slug: using-cloudant-with-http-adapters
+- HTTP
+- Adapters
 author:
-  login: nanaus13@yahoo.com
-  email: nanaus13@yahoo.com
-  display_name: Namfo12
-  first_name: Nana
-  last_name: Amfo
+  display_name: Nana Amfo
 ---
-<h2>Overview</h2>
-<p>Cloudant is a DBaaS, Database-As-A-Service, that manages and scales fast growing data sets. Cloudant is built under Couchdb, a NoSQL database which uses dynamic schemas instead of predefined schemas seen in relational database. The user has the complete power to be create a very structured database or non structured database. In this blog post, I will create a Hybrid app that uses a Cordova Plugin to read raw data and store it into Cloudant. In addition, I will use a HTTP adapter to retrieve that content from Cloudant. The raw data will be an base64 encoded string of an image.<br />
-I will be using a sample cluster which you can view by going to this url : https://ibmdemo.cloudant.com. The account name is ibmdemo and the password is password123.</p>
-<h2>Create your database</h2>
-<p>In the ibmdemo cluster I have already created a database called demo. To create a database you can use the dashboard, use Cloudant's REST Services to generate a database or use any client library that is compatible with Cloudant</p>
-<p>[caption id="attachment_11362" align="alignnone" width="300"]<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Screen-Shot-2015-04-26-at-7.44.00-PM.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-04-26-at-7.44.00-PM-300x147.png" alt="Create a Cloudant Database" width="300" height="147" class="size-medium wp-image-11362" /></a> Create a Cloudant Database[/caption]</p>
-<h2>Save the image into your database</h2>
-<p>We can use a Cordova plugin to read an image file from an app then store this image into our Cloudant Database. In my example I am using iOS so I created two files, ReadFiles.m and ReadFiles.h, that are responsible for reading an image file from a sample app and converting it to a base64 string. This string will be sent to our Cloudant database called demo.</p>
+<h3>Overview</h3>
+<p>Cloudant is a DBaaS, Database-As-A-Service, that manages and scales fast growing data sets. Cloudant is built under Couchdb, a NoSQL database which uses dynamic schemas instead of predefined schemas seen in relational database. The user has the complete power to be create a very structured database or non structured database. In this blog post, I will create a Hybrid app that uses a Cordova Plugin to read raw data and store it into Cloudant. In addition, I will use a HTTP adapter to retrieve that content from Cloudant. The raw data will be an base64 encoded string of an image.
+I will be using a sample cluster which you can view by going to this url : https://ibmdemo.cloudant.com. The account name is ibmdemo and the password is password123.
+
+<h3>Create your database</h3>
+<p>In the ibmdemo cluster I have already created a database called demo. To create a database you can use the dashboard, use Cloudant's REST Services to generate a database or use any client library that is compatible with Cloudant
+
+<img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-04-26-at-7.44.00-PM-300x147.png" class="img_responsive" /></a>
+
+<h3>Save the image into your database</h3>
+<p>We can use a Cordova plugin to read an image file from an app then store this image into our Cloudant Database. In my example I am using iOS so I created two files, ReadFiles.m and ReadFiles.h, that are responsible for reading an image file from a sample app and converting it to a base64 string. This string will be sent to our Cloudant database called demo.
+
 <h3>ReadFiles.m</h3>
-<p>[code lang="c"]<br />
-#import &quot;ReadFiles.h&quot;</p>
-<p>@implementation ReadFiles</p>
-<p>- (void)readFile:(CDVInvokedUrlCommand *)command{</p>
-<p>    NSString *fileName = [command.arguments objectAtIndex:0];<br />
-    NSString *fullPath = [NSString stringWithFormat:@&quot;www/default/images/%@&quot;, fileName];<br />
-    NSString *path = [[NSBundle mainBundle] pathForResource:fullPath ofType:@&quot;png&quot;];<br />
-    NSData *myData = [NSData dataWithContentsOfFile:path];<br />
-    NSString *img = [myData base64EncodedStringWithOptions:0];</p>
-<p>    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:img];</p>
-<p>    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];</p>
-<p>}<br />
-@end<br />
-[/code]</p>
+{% highlight objc %}
+#import "ReadFiles.h"
+@implementation ReadFiles
+- (void)readFile:(CDVInvokedUrlCommand *)command{
+    NSString *fileName = [command.arguments objectAtIndex:0];
+    NSString *fullPath = [NSString stringWithFormat:@"www/default/images/%@", fileName];
+    NSString *path = [[NSBundle mainBundle] pathForResource:fullPath ofType:@"png"];
+    NSData *myData = [NSData dataWithContentsOfFile:path];
+    NSString *img = [myData base64EncodedStringWithOptions:0];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:img];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+@end
+{% endhighlight %}
+
 <h3>ReadFiles.h</h3>
-<p>[code lang="c"]<br />
-#import &lt;Foundation/Foundation.h&gt;<br />
-#import &lt;Cordova/CDV.h&gt;</p>
-<p>@interface ReadFiles : CDVPlugin</p>
-<p>- (void)readFile:(CDVInvokedUrlCommand*)command;</p>
-<p>@end[/code]</p>
-<p>Once we have the base64 string we will need to send a POST request to the database to store the document.</p>
-<p>[code lang="js"]<br />
-var getData = function(fileName) {<br />
-    var def = $.Deferred();<br />
-    cordova.exec(<br />
-                 function (result) {<br />
-                 setTimeout(function () {<br />
-                            def.resolve(result);<br />
-                            },0);<br />
-                 },<br />
-                 function (error) {<br />
-                 setTimeout(function () {<br />
-                            def.reject(error);<br />
-                            },0);<br />
-                 }, &quot;ReadFiles&quot;, &quot;readFile&quot;, [fileName]);</p>
-<p>    return def.promise();</p>
-<p>};</p>
-<p>function generateName(){<br />
-	var chars = &quot;abcdefghijklmnopqrstuvwxyz0123456789&quot;;<br />
-	var input = &quot;&quot;;<br />
-	for(var i = 0; i &lt; 5; i++){<br />
-		input+=chars[Math.floor(Math.random(10)*chars.length)];<br />
-	}<br />
-	return input;<br />
-}</p>
-<p>function sendRequest(res){<br />
-	var def = $.Deferred();<br />
-	name = generateName();<br />
-	var payload = {<br />
-			&quot;_id&quot; : name,<br />
-			&quot;payload&quot;: res<br />
-	};</p>
-<p>	$.ajax({<br />
-        url: 'https://ibmdemo.cloudant.com/demo',<br />
-        data : JSON.stringify(payload),<br />
-        contentType : &quot;application/json&quot;,<br />
-           headers : {&quot;Authorization&quot; : &quot;Basic &quot; + btoa(&quot;ibmdemo:password123&quot;)},<br />
-        dataType : &quot;json&quot;,<br />
-        type : &quot;POST&quot;,<br />
-        success : function(response) {<br />
-           console.log(&quot;OK &quot; + response);<br />
-     		WL.Logger.info(response);<br />
-     		def.resolve(response);<br />
-        },<br />
-        error : function(response) {<br />
-     	   WL.Logger.error(response);<br />
-     	   def.reject(response);<br />
-        }<br />
-    });</p>
-<p>	return def.promise();<br />
-}</p>
-<p>function saveToCloudant(){<br />
-		getData(&quot;icon&quot;)<br />
-			.then(function (res) {<br />
-				return sendRequest(res);<br />
-			})<br />
-			.then(function (res) {<br />
-				console.log(&quot;saved to cloudant&quot;);<br />
-			})<br />
-			.fail(function (err) {<br />
-				console.log(&quot;failed &quot;, err);<br />
-			});<br />
-}</p>
-<p>[/code]</p>
-<p>You may notice that I added an authorization header to my request by creating a base64 string comprised of the username and password concatenated by a colon. I do this because I am sending a through HTTPS. You may not need to do this if you are using HTTP but it is recommended that you send request through HTTPS. In addition, I will strongly suggest you <b>not</b> hardcode your username and password into your production code. There are other ways to securely send data into Cloudant, but this is beyond the scope of this post.</p>
-<p>After saving your image you can preview the document that you have created using the dashboard.</p>
-<p>[caption id="attachment_11373" align="alignnone" width="300"]<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Screen-Shot-2015-04-26-at-8.17.42-PM.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-04-26-at-8.17.42-PM-300x157.png" alt="Saved Document in Cloudant " width="300" height="157" class="size-medium wp-image-11373" /></a> Saved Document in Cloudant<br />[/caption]</p>
-<h2>Retrieve your image from Cloudant</h2>
-<p>Just as we did in storing the image into Cloudant we can use a GET request to retrieve our image. We will use an HTTP adapter to request the image. You will need to edit the .xml file and the -impl.js file.</p>
-<h3>cloudant.xml</h3>
-<p>[code lang="xml"]&lt;wl:adapter name=&quot;cloudant&quot;<br />
-	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br />
-	xmlns:wl=&quot;http://www.ibm.com/mfp/integration&quot;<br />
-	xmlns:http=&quot;http://www.ibm.com/mfp/integration/http&quot;&gt;</p>
-<p>	&lt;displayName&gt;cloudant&lt;/displayName&gt;<br />
-	&lt;description&gt;cloudant&lt;/description&gt;<br />
-	&lt;connectivity&gt;<br />
-		&lt;connectionPolicy xsi:type=&quot;http:HTTPConnectionPolicyType&quot;&gt;<br />
-			&lt;protocol&gt;https&lt;/protocol&gt;<br />
-			&lt;domain&gt;ibmdemo.cloudant.com&lt;/domain&gt;<br />
-			&lt;port&gt;443&lt;/port&gt;<br />
-			&lt;connectionTimeoutInMilliseconds&gt;30000&lt;/connectionTimeoutInMilliseconds&gt;<br />
-			&lt;socketTimeoutInMilliseconds&gt;30000&lt;/socketTimeoutInMilliseconds&gt;<br />
-			&lt;maxConcurrentConnectionsPerNode&gt;50&lt;/maxConcurrentConnectionsPerNode&gt;<br />
-			&lt;!-- Following properties used by adapter's key manager for choosing specific certificate from key store<br />
-			&lt;sslCertificateAlias&gt;&lt;/sslCertificateAlias&gt;<br />
-			&lt;sslCertificatePassword&gt;&lt;/sslCertificatePassword&gt;<br />
-			--&gt;<br />
-		&lt;/connectionPolicy&gt;<br />
-	&lt;/connectivity&gt;</p>
-<p>	&lt;procedure name=&quot;getImage&quot;/&gt;</p>
-<p>&lt;/wl:adapter&gt;<br />
-[/code]</p>
-<h3>cloudant-impl.js</h3>
-<p>[code lang="js"]function getImage(param) {</p>
-<p>	var config = JSON.parse(param);<br />
-	var input = {<br />
-	    method : 'get',<br />
-	    path : '/' + config.db + '/' + config.attachment,<br />
-	    headers : {<br />
-	    	Authorization : &quot;Basic &quot; + config.auth<br />
-	    }</p>
-<p>	};</p>
-<p>	return WL.Server.invokeHttp(input);<br />
-}<br />
-[/code]</p>
-<p>Just like when we sent a request to store our image we will need to include an authorization header to receive it. Please take note of the path; the path is /$DB_NAME/$DOCUMENT_ID. Finally, add the invokeProcedure request in your main.js file.</p>
-<p>[code lang="js"]function retrieveImageFromCloudant(){</p>
-<p>	var config = {<br />
-			db : &quot;demo&quot;,<br />
-			attachment : name,<br />
-			auth : btoa(&quot;ibmdemo:password123&quot;)<br />
-	};<br />
-	 WL.Client.invokeProcedure({<br />
-		adapter: 'cloudant',<br />
-		procedure: 'getImage',<br />
-		parameters: [JSON.stringify(config)],<br />
-		compressResponse : true<br />
-	})<br />
-		.then(function (res) {<br />
-              var responseJSON = JSON.parse(res.responseText);<br />
-              var data = JSON.parse(responseJSON.text);<br />
-			var img =document.getElementById('img');<br />
-			img.setAttribute(&quot;src&quot;, &quot;data:image/png;base64,&quot;+data.payload);<br />
-		})<br />
-		.fail(function (err) {<br />
-			console.log(&quot;Failed to read image&quot;);<br />
-		});<br />
-}[/code]</p>
-<h2>Putting it all together</h2>
-<p>For the UI I used two buttons, one button that will stored the image into Cloudant as a base64 string and the second button to retrieve the image using an HTTP adapter request. The final result should look like the following.</p>
-<p>[caption id="attachment_11374" align="alignnone" width="169"]<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/iOS-Simulator-Screen-Shot-Apr-26-2015-8.23.24-PM.png"><img src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Apr-26-2015-8.23.24-PM-169x300.png" alt="Cloudant Sample App" width="169" height="300" class="size-medium wp-image-11374" /></a> Cloudant Sample App[/caption]</p>
-<p>Hopefully, this blog post will show you how easy it is to use Cloudant as your DBaaS without too much effort.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/CloudantAdapter.zip">CloudantAdapter App</a></p>
+{% highlight objc %}
+#import <Foundation/Foundation.h>
+#import <Cordova/CDV.h>
+@interface ReadFiles : CDVPlugin
+- (void)readFile:(CDVInvokedUrlCommand*)command;
+@end[/code]
+Once we have the base64 string we will need to send a POST request to the database to store the document.
+[code lang="js"]
+var getData = function(fileName) {
+    var def = $.Deferred();
+    cordova.exec(
+                 function (result) {
+                 setTimeout(function () {
+                            def.resolve(result);
+                            },0);
+                 },
+                 function (error) {
+                 setTimeout(function () {
+                            def.reject(error);
+                            },0);
+                 }, "ReadFiles", "readFile", [fileName]);
+    return def.promise();
+};
+function generateName(){
+	var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+	var input = "";
+	for(var i = 0; i < 5; i++){
+		input+=chars[Math.floor(Math.random(10)*chars.length)];
+	}
+	return input;
+}
+function sendRequest(res){
+	var def = $.Deferred();
+	name = generateName();
+	var payload = {
+			"_id" : name,
+			"payload": res
+	};
+	$.ajax({
+        url: 'https://ibmdemo.cloudant.com/demo',
+        data : JSON.stringify(payload),
+        contentType : "application/json",
+           headers : {"Authorization" : "Basic " + btoa("ibmdemo:password123")},
+        dataType : "json",
+        type : "POST",
+        success : function(response) {
+           console.log("OK " + response);
+     		WL.Logger.info(response);
+     		def.resolve(response);
+        },
+        error : function(response) {
+     	   WL.Logger.error(response);
+     	   def.reject(response);
+        }
+    });
+	return def.promise();
+}
+function saveToCloudant(){
+		getData("icon")
+			.then(function (res) {
+				return sendRequest(res);
+			})
+			.then(function (res) {
+				console.log("saved to cloudant");
+			})
+			.fail(function (err) {
+				console.log("failed ", err);
+			});
+}
+{% endhighlight %}
+
+<p>You may notice that I added an authorization header to my request by creating a base64 string comprised of the username and password concatenated by a colon. I do this because I am sending a through HTTPS. You may not need to do this if you are using HTTP but it is recommended that you send request through HTTPS. In addition, I will strongly suggest you <b>not</b> hardcode your username and password into your production code. There are other ways to securely send data into Cloudant, but this is beyond the scope of this post.
+
+<p>After saving your image you can preview the document that you have created using the dashboard.
+<img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-04-26-at-8.17.42-PM-300x157.png" class="img_responsive" />
+
+<h3>Retrieve your image from Cloudant</h3>
+<p>Just as we did in storing the image into Cloudant we can use a GET request to retrieve our image. We will use an HTTP adapter to request the image. You will need to edit the .xml file and the -impl.js file.
+
+<h4>cloudant.xml</h4>
+{% highlight xml %}
+<wl:adapter name="cloudant"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:wl="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
+	<displayName>cloudant</displayName>
+	<description>cloudant</description>
+	<connectivity>
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+			<protocol>https</protocol>
+			<domain>ibmdemo.cloudant.com</domain>
+			<port>443</port>
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
+			<!-- Following properties used by adapter's key manager for choosing specific certificate from key store
+			<sslCertificateAlias></sslCertificateAlias>
+			<sslCertificatePassword></sslCertificatePassword>
+			-->
+		</connectionPolicy>
+	</connectivity>
+	<procedure name="getImage"/>
+</wl:adapter>
+{% endhighlight %}
+
+<h4>cloudant-impl.js</h4>
+{% highlight javascript %}
+function getImage(param) {
+	var config = JSON.parse(param);
+	var input = {
+	    method : 'get',
+	    path : '/' + config.db + '/' + config.attachment,
+	    headers : {
+	    	Authorization : "Basic " + config.auth
+	    }
+	};
+	return WL.Server.invokeHttp(input);
+}
+{% endhighlight %}
+
+<p>Just like when we sent a request to store our image we will need to include an authorization header to receive it. Please take note of the path; the path is <code>/$DB_NAME/$DOCUMENT_ID</code>. Finally, add the invokeProcedure request in your main.js file.</p>
+
+{% highlight javascript %}
+function retrieveImageFromCloudant(){
+	var config = {
+			db : "demo",
+			attachment : name,
+			auth : btoa("ibmdemo:password123")
+	};
+	 WL.Client.invokeProcedure({
+		adapter: 'cloudant',
+		procedure: 'getImage',
+		parameters: [JSON.stringify(config)],
+		compressResponse : true
+	})
+		.then(function (res) {
+              var responseJSON = JSON.parse(res.responseText);
+              var data = JSON.parse(responseJSON.text);
+			var img =document.getElementById('img');
+			img.setAttribute("src", "data:image/png;base64,"+data.payload);
+		})
+		.fail(function (err) {
+			console.log("Failed to read image");
+		});
+}
+{% endhighlight %}
+
+<h3>Putting it all together</h3>
+<p>For the UI I used two buttons, one button that will stored the image into Cloudant as a base64 string and the second button to retrieve the image using an HTTP adapter request. The final result should look like the following.
+
+<img src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Apr-26-2015-8.23.24-PM-169x300.png" class="img_responsive" />
+
+<p>Hopefully, this blog post will show you how easy it is to use Cloudant as your DBaaS without too much effort.
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/CloudantAdapter.zip">CloudantAdapter App</a>
 <h2>Resources</h2>
-<p><a href="https://github.com/cloudant/nodejs-cloudant" title="Official Cloudant JS Library">Official Cloudant JS Library</a><br />
-<a href="https://docs.cloudant.com/" title="Docs">Docs</a></p>
+<p><a href="https://github.com/cloudant/nodejs-cloudant" title="Official Cloudant JS Library">Official Cloudant JS Library</a>
+<a href="https://docs.cloudant.com/" title="Docs">Docs</a>
