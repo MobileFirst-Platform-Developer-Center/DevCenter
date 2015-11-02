@@ -1,3 +1,5 @@
+---
+---
 h1, h4 {
     margin-bottom: 0
 }
@@ -19,6 +21,16 @@ img {
 #blogPosts {
     margin-bottom: 0px;
     padding-top: 10px;
+
+    .postItem {
+      display: inline-block;
+      .postTitle {
+        margin-bottom: 0;
+      }
+      .postExcerpt {
+        font-size: 95%;
+      }
+    }
 }
 
 .moreBlogs {

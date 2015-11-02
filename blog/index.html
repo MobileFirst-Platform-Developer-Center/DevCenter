@@ -9,8 +9,11 @@ custom_css:
     <div id="blogPosts" class="container">
           <div class="twoColumns">
             {% for post in paginator.posts %}
+            <div class="postItem">
               <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
               <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+              <p class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | xml_escape | truncatewords: 20}}</p>
+            </div>
             {% endfor %}
           </div>
     </div>
