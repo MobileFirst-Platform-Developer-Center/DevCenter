@@ -3,7 +3,6 @@ description: "Develop, test, manage, and secure your mobile web, native and hybr
 url: https://developer.ibm.com
 baseurl: /MFPSamples
 permalink: pretty
-exclude: [old-backup]
 paginate: 10
 paginate_path: "/blog/:num/"
 
