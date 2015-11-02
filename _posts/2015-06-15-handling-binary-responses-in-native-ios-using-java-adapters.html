@@ -1,101 +1,105 @@
 ---
-
 title: Handling binary responses in native iOS using Java adapters
-date: 2015-06-15 10:34:48.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6637'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-  _wp_old_slug: handling-binary-responses-in-native-ios
+- Binary
+- Java
+- Adapters
 author:
-  login: nathanh@il.ibm.com
-  email: NATHANH@il.ibm.com
   display_name: Nathan Hazout
-  first_name: NATHAN
-  last_name: HAZOUT
 ---
-<p>Starting with MobileFirst Platform 7.0, you can send and receive arbitrary data to your client's device using <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/java-adapter/" title="Java Adapters" target="_blank">Java Adapters</a>.</p>
-<h2>Overview</h2>
-<p>In this example, I will show a native iOS (Swift) application that can convert a string to a <a href="http://en.wikipedia.org/wiki/QR_code" target="_blank">QR code</a>.<br />
-The user will input a string (for example a URL), submit it to the Java Adapter, which will in turn send an image representing the QR code.<br />
-The iOS application will handle the binary data and display the image.</p>
-<h2>Adapter code</h2>
-<p>I've created a MobileFirst project called <code>BinaryResponse</code>. In it I've added a Java Adapter called <code>QR</code>.</p>
-<p>To make the QR generation easier, I am using the <a href="https://github.com/zxing/zxing" target="_blank">ZXing</a> library. I've copied <a href="http://repo1.maven.org/maven2/com/google/zxing/core/3.2.0/core-3.2.0.jar" target="_blank">core-3.2.0.jar</a> and <a href="http://repo1.maven.org/maven2/com/google/zxing/javase/3.2.0/javase-3.2.0.jar" target="_blank">javase-3.2.0.jar</a> into the <code>lib</code> folder of my adapter.</p>
-<p>I left <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRApplication.java" target="_blank"><code>QRApplication.java</code></a> as-is and wrote my code in <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRResource.java" target="_blank"><code>QRResource.java</code></a>.</p>
-<p>[code title="QRResource.java" lang="java"]<br />
-@Path(&quot;/&quot;)<br />
-public class QRResource {</p>
-<p>	//Define logger (Standard java.util.Logger)<br />
-	static Logger logger = Logger.getLogger(QRResource.class.getName());</p>
-<p>    //Define the server api to be able to perform server operations<br />
-    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();</p>
-<p>	@GET<br />
-	@Path(&quot;/{itemId}&quot;)<br />
-	@Produces(&quot;image/png&quot;)<br />
-	public Response getQR(@PathParam(value=&quot;itemId&quot;) String id) throws WriterException, IOException{<br />
-		QRCodeWriter writter = new QRCodeWriter();</p>
-<p>		ByteArrayOutputStream stream = new ByteArrayOutputStream();</p>
-<p>		BitMatrix bitMatrix = writter.encode(id, BarcodeFormat.QR_CODE, 200, 200);</p>
-<p>		MatrixToImageWriter.writeToStream(bitMatrix, &quot;png&quot;, stream);</p>
-<p>		return Response.ok(stream.toByteArray(), &quot;image/png&quot;).build();<br />
-	}</p>
-<p>}<br />
-[/code]</p>
-<p>I used <code>@Path("/")</code> at line 1 to define that the URL path for my resource should just be /adapters/adapterName.<br />
-The adapter resource file contains only one method, <code>getQR</code>, which can be accessed via <code>HTTP GET</code> using the path <code>@Path("/{itemId}")</code> at line 11, where <code>itemId</code> is the string provided by the user.</p>
-<p>The method uses <code>@Produces("image/png")</code> and automatically adds the <code>image/png</code> Content-Type in the response.</p>
-<p>The implementation details of this method are out of scope and can be understood from the ZXing documentation. All I did was use <code>QRCodeWriter</code> to encode the string to a 200 by 200 bar code. The resulting stream is returned in the response.</p>
-<h2>Xcode Project</h2>
-<p>I've created a new Xcode (Swift) Project named <code>BinaryResponse</code> and <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/configuring-a-native-ios-with-the-mfp-sdk/" title="Configuring a native iOS application with the MobileFirst Platform SDK">configured it to use MobileFirst Platform</a>.</p>
-<p>The storyboard simply shows a text field to enter the string, a button to trigger the request and a 200px/200px <code>UIImageView</code> to display the generated QRCode.</p>
-<p>[code title="ViewController.swift" lang="swift"]<br />
-    @IBAction func generate(sender: UIButton) {</p>
-<p>        var escapedString = self.code.text.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())</p>
-<p>        if(escapedString != nil){<br />
-            let request = WLResourceRequest(URL: NSURL(string: &quot;/adapters/QR/&quot; + escapedString!), method: WLHttpMethodGet)<br />
-            var delegate = BinaryDelegate(imageView: self.imageView)<br />
-            request.sendWithDelegate(delegate)<br />
-        }</p>
-<p>    }<br />
-[/code]</p>
-<p>Clicking on the Generate button creates a <code>WLResourceRequest</code> that points to the adapter URL, with the user provided string appended.</p>
-<p>I used <code>sendWithDelegate</code> and created a new class called <code>BinaryDelegate</code> to handle the response.</p>
-<p><a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/ios/BinaryResponse/BinaryResponse/BinaryDelegate.swift" target="_blank"><code>BinaryDelegate</code></a> implements <code>NSURLConnectionDataDelegate</code>.</p>
-<p>[code title="BinaryDelegate.swift" lang="swift"]<br />
-class BinaryDelegate: NSObject, NSURLConnectionDataDelegate {</p>
-<p>    var responseData = NSMutableData()<br />
-    var imageView: UIImageView</p>
-<p>    init(imageView : UIImageView){<br />
-        self.imageView = imageView<br />
-    }</p>
-<p>    func connection(connection: NSURLConnection,<br />
-        didReceiveData data: NSData){<br />
-            NSLog(&quot;In didReceiveData&quot;);<br />
-            NSLog(&quot;%@&quot;, data)<br />
-            responseData.appendData(data)<br />
-    }</p>
-<p>    func connectionDidFinishLoading(connection: NSURLConnection){<br />
-        NSLog(&quot;In connectionDidFinishLoading&quot;)<br />
-        self.imageView.image = UIImage(data: self.responseData)<br />
-    }</p>
-<p>    func connection(connection: NSURLConnection, willSendRequest request: NSURLRequest, redirectResponse response: NSURLResponse?) -&gt; NSURLRequest? {<br />
-        NSLog(&quot;in willSendRequest&quot;)</p>
-<p>        return request;</p>
-<p>    }</p>
-<p>}<br />
-[/code]</p>
-<p>As data comes back from the request, I store it in a temporary <code>NSMutableData</code> object. On <code>connectionDidFinishLoading</code> I used the saved data to set the image in the user interface.</p>
-<p><code>willSendRequest</code> needs to be implemented and simply return the request, or the request will not be sent.</p>
-<h2>Sample</h2>
-<p>You can find the code for this example on <a href="https://github.com/nasht00/MFPBinaryResponse" target="_blank">GitHub</a>.</p>
+<p>Starting with MobileFirst Platform 7.0, you can send and receive arbitrary data to your client's device using <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/java-adapter/" title="Java Adapters" target="_blank">Java Adapters</a>.
+
+<h3>Overview</h3>
+<p>In this example, I will show a native iOS (Swift) application that can convert a string to a <a href="http://en.wikipedia.org/wiki/QR_code" target="_blank">QR code</a>.
+The user will input a string (for example a URL), submit it to the Java Adapter, which will in turn send an image representing the QR code.
+The iOS application will handle the binary data and display the image.
+
+<h3>Adapter code</h3>
+<p>I've created a MobileFirst project called <code>BinaryResponse</code>. In it I've added a Java Adapter called <code>QR</code>.
+<p>To make the QR generation easier, I am using the <a href="https://github.com/zxing/zxing" target="_blank">ZXing</a> library. I've copied <a href="http://repo1.maven.org/maven2/com/google/zxing/core/3.2.0/core-3.2.0.jar" target="_blank">core-3.2.0.jar</a> and <a href="http://repo1.maven.org/maven2/com/google/zxing/javase/3.2.0/javase-3.2.0.jar" target="_blank">javase-3.2.0.jar</a> into the <code>lib</code> folder of my adapter.
+
+<p>I left <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRApplication.java" target="_blank"><code>QRApplication.java</code></a> as-is and wrote my code in <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRResource.java" target="_blank"><code>QRResource.java</code></a>.
+
+{% highlight java %}
+@Path("/")
+public class QRResource {
+	//Define logger (Standard java.util.Logger)
+	static Logger logger = Logger.getLogger(QRResource.class.getName());
+    //Define the server api to be able to perform server operations
+    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
+	@GET
+	@Path("/{itemId}")
+	@Produces("image/png")
+	public Response getQR(@PathParam(value="itemId") String id) throws WriterException, IOException{
+		QRCodeWriter writter = new QRCodeWriter();
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		BitMatrix bitMatrix = writter.encode(id, BarcodeFormat.QR_CODE, 200, 200);
+		MatrixToImageWriter.writeToStream(bitMatrix, "png", stream);
+		return Response.ok(stream.toByteArray(), "image/png").build();
+	}
+}
+{% endhighlight %}
+
+<p>I used <code>@Path("/")</code> at line 1 to define that the URL path for my resource should just be /adapters/adapterName.
+The adapter resource file contains only one method, <code>getQR</code>, which can be accessed via <code>HTTP GET</code> using the path <code>@Path("/{itemId}")</code> at line 11, where <code>itemId</code> is the string provided by the user.
+
+<p>The method uses <code>@Produces("image/png")</code> and automatically adds the <code>image/png</code> Content-Type in the response.
+
+<p>The implementation details of this method are out of scope and can be understood from the ZXing documentation. All I did was use <code>QRCodeWriter</code> to encode the string to a 200 by 200 bar code. The resulting stream is returned in the response.
+
+<h3>Xcode Project</h3>
+<p>I've created a new Xcode (Swift) Project named <code>BinaryResponse</code> and <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/configuring-a-native-ios-with-the-mfp-sdk/" title="Configuring a native iOS application with the MobileFirst Platform SDK">configured it to use MobileFirst Platform</a>.
+
+<p>The storyboard simply shows a text field to enter the string, a button to trigger the request and a 200px/200px <code>UIImageView</code> to display the generated QRCode.
+
+{% highlight swift %}
+    @IBAction func generate(sender: UIButton) {
+        var escapedString = self.code.text.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+        if(escapedString != nil){
+            let request = WLResourceRequest(URL: NSURL(string: "/adapters/QR/" + escapedString!), method: WLHttpMethodGet)
+            var delegate = BinaryDelegate(imageView: self.imageView)
+            request.sendWithDelegate(delegate)
+        }
+    }
+{% endhighlight %}
+
+<p>Clicking on the Generate button creates a <code>WLResourceRequest</code> that points to the adapter URL, with the user provided string appended.
+
+<p>I used <code>sendWithDelegate</code> and created a new class called <code>BinaryDelegate</code> to handle the response.
+
+<p><a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/ios/BinaryResponse/BinaryResponse/BinaryDelegate.swift" target="_blank"><code>BinaryDelegate</code></a> implements <code>NSURLConnectionDataDelegate</code>.
+
+{% highlight swift %}
+class BinaryDelegate: NSObject, NSURLConnectionDataDelegate {
+    var responseData = NSMutableData()
+    var imageView: UIImageView
+    init(imageView : UIImageView){
+        self.imageView = imageView
+    }
+    func connection(connection: NSURLConnection,
+        didReceiveData data: NSData){
+            NSLog("In didReceiveData");
+            NSLog("%@", data)
+            responseData.appendData(data)
+    }
+    func connectionDidFinishLoading(connection: NSURLConnection){
+        NSLog("In connectionDidFinishLoading")
+        self.imageView.image = UIImage(data: self.responseData)
+    }
+    func connection(connection: NSURLConnection, willSendRequest request: NSURLRequest, redirectResponse response: NSURLResponse?) -> NSURLRequest? {
+        NSLog("in willSendRequest")
+        return request;
+    }
+}
+{% endhighlight %}
+
+<p>As data comes back from the request, I store it in a temporary <code>NSMutableData</code> object. On <code>connectionDidFinishLoading</code> I used the saved data to set the image in the user interface.
+
+<p><code>willSendRequest</code> needs to be implemented and simply return the request, or the request will not be sent.
+
+<h3>Sample</h3>
+<p>You can find the code for this example on <a href="https://github.com/nasht00/MFPBinaryResponse" target="_blank">GitHub</a>.
 <p>For best results, make sure you use MobileFirst with the latest iFix available by checking for updates in Eclipse, or IBM Fix Central if you have installed a Studio version from there.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/06/iOS-Simulator-Screen-Shot-Jun-3-2015-10.03.17-AM.png"><img src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Jun-3-2015-10.03.17-AM.png" alt="iOS Simulator Screen Shot Jun 3, 2015, 10.03.17 AM" width="750" height="1334" class="aligncenter size-full wp-image-13144" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Jun-3-2015-10.03.17-AM.png" class="img_responsive" /></a>

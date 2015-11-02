@@ -1,37 +1,25 @@
 ---
-
 title: Handling the Applicative State in MobileFirst Platform Foundation v7.1
 date: 2015-08-14 12:30:39.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '13020'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442512628;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:16161;}i:1;a:1:{s:2:"id";i:6942;}i:2;a:1:{s:2:"id";i:13793;}}}}
 author:
-  login: liorbu@il.ibm.com
-  email: liorbu@il.ibm.com
-  display_name: LiorBu
-  first_name: Lior
-  last_name: Burg
+  display_name: Lior Burg
 ---
 <p>In previous versions of MobileFirst Platform Foundation, the logged-in state of clients was wholly dependent on an HTTP session. After logging in, the end user remained logged in only as long as the HTTP session was alive. If either the application restarted, or the HTTP session ended, the end-user was automatically logged out.</p>
+
 <p>Starting with MobileFirst Platform Foundation 7.1, you can configure your applications to work in session-independent mode. The session-independent mode decouples the link between login and HTTP sessions, allowing communication between the application and the MobileFirst Server to no longer require to be session-dependent. This feature enables you to take down a server, without breaking user sessions.</p>
+
 <p>When writing server components, such as MobileFirst adapters, the applicative state was previously saved on the HTTP session either directly by using a session object or by using JavaScript global variables. You can no longer use HTTP sessions or global variables to persist data across requests. Instead, applications should use any third party persistency layer (e.g. database) to store applicative state. To help you with it, MobileFirst 7.1 also exposes a new API method <code>getClientId</code> that returns a unique identifier associated with the client. You can use it as a database key.</p>
 <p>Consider the following examples:</p>
+
 <ul>
-<li>Shopping Cart application in which the user can add, retrieve or remove items from a cart and save the decisions. The application can be implemented with an adapter that is using a third-party database to save the applicative state of the cart.</li>
-<li>An application that requires a registration process - think of an app with a registration process that includes a couple of steps in which the user needs to fill in details. You want to allow the user to stop at any step and continue later by temporarily save the application state. For example: any application with a payment system.</li>
-<li>Remember Me application - when a user is trying to access a protected resource, a login screen appears with a check box labeled "Remember Me". By selecting the check box, the user is trusted for a pre-defined period of time instead of having to log in every session.<br />
+    <li>Shopping Cart application in which the user can add, retrieve or remove items from a cart and save the decisions. The application can be implemented with an adapter that is using a third-party database to save the applicative state of the cart.</li>
+    <li>An application that requires a registration process - think of an app with a registration process that includes a couple of steps in which the user needs to fill in details. You want to allow the user to stop at any step and continue later by temporarily save the application state. For example: any application with a payment system.</li>
+    <li>Remember Me application - when a user is trying to access a protected resource, a login screen appears with a check box labeled "Remember Me". By selecting the check box, the user is trusted for a pre-defined period of time instead of having to log in every session.<br />
 You can find a sample application in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/advanced-topics/remember-me/" target="_blank">Remember Me</a> tutorial.</li>
-<li>Two-Step authentication application - an application where the user is required to answer two security questions. After the initial authentication that uses, for example, a username and a password, an additional authentication step is required, such as a login pin, a secret word, or similar identification.<br />
+    <li>Two-Step authentication application - an application where the user is required to answer two security questions. After the initial authentication that uses, for example, a username and a password, an additional authentication step is required, such as a login pin, a secret word, or similar identification.<br />
 You can find a sample application in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/advanced-topics/two-step-adapter-authentication/" target="_blank">Two-Step adapter authentication</a> tutorial. In this example, a secret word is implemented for the second authentication step.</li>
 </ul>
-<blockquote><p>To learn more about "Session-independent mode" review its topic in the <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html">user documentation</a></p></blockquote>
+
+<blockquote>To learn more about "Session-independent mode" review its topic in the <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html">user documentation</a></blockquote>

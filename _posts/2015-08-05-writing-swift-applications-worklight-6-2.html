@@ -1,122 +1,115 @@
 ---
-
 title: Writing Swift applications with Worklight 6.2 and below
 date: 2015-08-05 11:11:59.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6637'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
+- iOS
+- Swift
 author:
-  login: nathanh@il.ibm.com
-  email: NATHANH@il.ibm.com
   display_name: Nathan Hazout
-  first_name: NATHAN
-  last_name: HAZOUT
 ---
 <p>This article is for customers running Worklight 6.2 and below. For newer versions of Worklight/MobileFirst, see <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/hello-world/creating-first-native-ios-mobilefirst-application/#swift">6.3</a>, <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/configuring-a-native-ios-with-the-mfp-sdk/#configSwiftApp">7.0</a> or <a href="https://ibm.biz/BdXQRb">7.1</a>.</p>
+
 <p>The Worklight native iOS SDK is written in Objective-C. However, Swift is backward compatible with Objective-C, and allows you to use Objective-C APIs in your Swift project.</p>
+
 <p>To do so:</p>
 <ol>
-<li>Create a Swift project.</li>
-<li>Follow the steps to add the Worklight SDK to a native iOS application (see <a href="https://ibm.biz/BdFXA4" target="_blank">6.2 documentation</a>, or <a href="https://ibm.biz/BdXL2a" target="_blank">6.1</a>).</li>
-<li>Create a new file in your XCode project called <strong>MyBridgingHeader.h</strong>.</li>
-<li>Inside this file, <code>#include</code> all the Objective-C headers needed for your application. Those could be your own Objective-C classes, or classes provided by a third party library, such as Worklight.
-<p>To see the list of Objective-C headers provided by Worklight, look under the WorklightAPI/include folder of your native application.</p>
-<p>For example, in a Worklight 6.2 project, your bridging header may look like this:</p>
-<p>[code lang="objc" title="MyBridgingHeader.h"]<br />
-#import &quot;AbstractAcquisitionError.h&quot;<br />
-#import &quot;AbstractGeoAreaTrigger.h&quot;<br />
-#import &quot;AbstractGeoDwellTrigger.h&quot;<br />
-#import &quot;AbstractPosition.h&quot;<br />
-#import &quot;AbstractTrigger.h&quot;<br />
-#import &quot;AbstractWifiAreaTrigger.h&quot;<br />
-#import &quot;AbstractWifiDwellTrigger.h&quot;<br />
-#import &quot;AbstractWifiFilterTrigger.h&quot;<br />
-#import &quot;AcquisitionCallback.h&quot;<br />
-#import &quot;AcquisitionFailureCallback.h&quot;<br />
-#import &quot;BaseChallengeHandler.h&quot;<br />
-#import &quot;BaseDeviceAuthChallengeHandler.h&quot;<br />
-#import &quot;ChallengeHandler.h&quot;<br />
-#import &quot;JSONStore.h&quot;<br />
-#import &quot;JSONStoreAddOptions.h&quot;<br />
-#import &quot;JSONStoreCollection.h&quot;<br />
-#import &quot;JSONStoreOpenOptions.h&quot;<br />
-#import &quot;JSONStoreQueryOptions.h&quot;<br />
-#import &quot;JSONStoreQueryPart.h&quot;<br />
-#import &quot;OCLogger.h&quot;<br />
-#import &quot;WLAcquisitionFailureCallbacksConfiguration.h&quot;<br />
-#import &quot;WLAcquisitionPolicy.h&quot;<br />
-#import &quot;WLAnalytics.h&quot;<br />
-#import &quot;WLArea.h&quot;<br />
-#import &quot;WLCallbackFactory.h&quot;<br />
-#import &quot;WLChallengeHandler.h&quot;<br />
-#import &quot;WLCircle.h&quot;<br />
-#import &quot;WLClient.h&quot;<br />
-#import &quot;WLConfidenceLevel.h&quot;<br />
-#import &quot;WLCookieExtractor.h&quot;<br />
-#import &quot;WLCoordinate.h&quot;<br />
-#import &quot;WLDelegate.h&quot;<br />
-#import &quot;WLDevice.h&quot;<br />
-#import &quot;WLDeviceAuthManager.h&quot;<br />
-#import &quot;WLDeviceContext.h&quot;<br />
-#import &quot;WLEventSourceListener.h&quot;<br />
-#import &quot;WLEventTransmissionPolicy.h&quot;<br />
-#import &quot;WLFailResponse.h&quot;<br />
-#import &quot;WLGeoAcquisitionPolicy.h&quot;<br />
-#import &quot;WLGeoCallback.h&quot;<br />
-#import &quot;WLGeoDwellInsideTrigger.h&quot;<br />
-#import &quot;WLGeoDwellOutsideTrigger.h&quot;<br />
-#import &quot;WLGeoEnterTrigger.h&quot;<br />
-#import &quot;WLGeoError.h&quot;<br />
-#import &quot;WLGeoExitTrigger.h&quot;<br />
-#import &quot;WLGeoFailureCallback.h&quot;<br />
-#import &quot;WLGeoPosition.h&quot;<br />
-#import &quot;WLGeoPositionChangeTrigger.h&quot;<br />
-#import &quot;WLGeoTrigger.h&quot;<br />
-#import &quot;WLGeoUtils.h&quot;<br />
-#import &quot;WLLocationServicesConfiguration.h&quot;<br />
-#import &quot;WLOnReadyToSubscribeListener.h&quot;<br />
-#import &quot;WLPolygon.h&quot;<br />
-#import &quot;WLProcedureInvocationData.h&quot;<br />
-#import &quot;WLProcedureInvocationResult.h&quot;<br />
-#import &quot;WLPush.h&quot;<br />
-#import &quot;WLPushOptions.h&quot;<br />
-#import &quot;WLResponse.h&quot;<br />
-#import &quot;WLResponseListener.h&quot;<br />
-#import &quot;WLSecurityUtils.h&quot;<br />
-#import &quot;WLSimpleDataSharing.h&quot;<br />
-#import &quot;WLTriggerCallback.h&quot;<br />
-#import &quot;WLTriggersConfiguration.h&quot;<br />
-#import &quot;WLTrusteer.h&quot;<br />
-#import &quot;WLWifiAccessPoint.h&quot;<br />
-#import &quot;WLWifiAccessPointFilter.h&quot;<br />
-#import &quot;WLWifiAcquisitionCallback.h&quot;<br />
-#import &quot;WLWifiAcquisitionPolicy.h&quot;<br />
-#import &quot;WLWifiConnectTrigger.h&quot;<br />
-#import &quot;WLWifiConnectedCallback.h&quot;<br />
-#import &quot;WLWifiDisconnectTrigger.h&quot;<br />
-#import &quot;WLWifiDwellInsideTrigger.h&quot;<br />
-#import &quot;WLWifiDwellOutsideTrigger.h&quot;<br />
-#import &quot;WLWifiEnterTrigger.h&quot;<br />
-#import &quot;WLWifiError.h&quot;<br />
-#import &quot;WLWifiExitTrigger.h&quot;<br />
-#import &quot;WLWifiFailureCallback.h&quot;<br />
-#import &quot;WLWifiLocation.h&quot;<br />
-#import &quot;WLWifiTrigger.h&quot;<br />
-#import &quot;WLWifiVisibleAccessPointsChangeTrigger.h&quot;<br />
-[/code]<br />
-This file should also include any other Objective-C headers you need to use.</li>
-<li>Now, you need to tell XCode that <strong>MyBridgingHeader.h</strong> is the Swift bridging header to use.<br />
+    <li>Create a Swift project.</li>
+    <li>Follow the steps to add the Worklight SDK to a native iOS application (see <a href="https://ibm.biz/BdFXA4" target="_blank">6.2 documentation</a>, or <a href="https://ibm.biz/BdXL2a" target="_blank">6.1</a>).</li>
+    <li>Create a new file in your XCode project called <strong>MyBridgingHeader.h</strong>.</li>
+    <li>Inside this file, <code>#include</code> all the Objective-C headers needed for your application. Those could be your own Objective-C classes, or classes provided by a third party library, such as Worklight.
+        <p>To see the list of Objective-C headers provided by Worklight, look under the WorklightAPI/include folder of your native application.</p>
+        <p>For example, in a Worklight 6.2 project, your bridging header may look like this:</p>
+
+        {% highlight objc %}
+#import "AbstractAcquisitionError.h"
+#import "AbstractGeoAreaTrigger.h"
+#import "AbstractGeoDwellTrigger.h"
+#import "AbstractPosition.h"
+#import "AbstractTrigger.h"
+#import "AbstractWifiAreaTrigger.h"
+#import "AbstractWifiDwellTrigger.h"
+#import "AbstractWifiFilterTrigger.h"
+#import "AcquisitionCallback.h"
+#import "AcquisitionFailureCallback.h"
+#import "BaseChallengeHandler.h"
+#import "BaseDeviceAuthChallengeHandler.h"
+#import "ChallengeHandler.h"
+#import "JSONStore.h"
+#import "JSONStoreAddOptions.h"
+#import "JSONStoreCollection.h"
+#import "JSONStoreOpenOptions.h"
+#import "JSONStoreQueryOptions.h"
+#import "JSONStoreQueryPart.h"
+#import "OCLogger.h"
+#import "WLAcquisitionFailureCallbacksConfiguration.h"
+#import "WLAcquisitionPolicy.h"
+#import "WLAnalytics.h"
+#import "WLArea.h"
+#import "WLCallbackFactory.h"
+#import "WLChallengeHandler.h"
+#import "WLCircle.h"
+#import "WLClient.h"
+#import "WLConfidenceLevel.h"
+#import "WLCookieExtractor.h"
+#import "WLCoordinate.h"
+#import "WLDelegate.h"
+#import "WLDevice.h"
+#import "WLDeviceAuthManager.h"
+#import "WLDeviceContext.h"
+#import "WLEventSourceListener.h"
+#import "WLEventTransmissionPolicy.h"
+#import "WLFailResponse.h"
+#import "WLGeoAcquisitionPolicy.h"
+#import "WLGeoCallback.h"
+#import "WLGeoDwellInsideTrigger.h"
+#import "WLGeoDwellOutsideTrigger.h"
+#import "WLGeoEnterTrigger.h"
+#import "WLGeoError.h"
+#import "WLGeoExitTrigger.h"
+#import "WLGeoFailureCallback.h"
+#import "WLGeoPosition.h"
+#import "WLGeoPositionChangeTrigger.h"
+#import "WLGeoTrigger.h"
+#import "WLGeoUtils.h"
+#import "WLLocationServicesConfiguration.h"
+#import "WLOnReadyToSubscribeListener.h"
+#import "WLPolygon.h"
+#import "WLProcedureInvocationData.h"
+#import "WLProcedureInvocationResult.h"
+#import "WLPush.h"
+#import "WLPushOptions.h"
+#import "WLResponse.h"
+#import "WLResponseListener.h"
+#import "WLSecurityUtils.h"
+#import "WLSimpleDataSharing.h"
+#import "WLTriggerCallback.h"
+#import "WLTriggersConfiguration.h"
+#import "WLTrusteer.h"
+#import "WLWifiAccessPoint.h"
+#import "WLWifiAccessPointFilter.h"
+#import "WLWifiAcquisitionCallback.h"
+#import "WLWifiAcquisitionPolicy.h"
+#import "WLWifiConnectTrigger.h"
+#import "WLWifiConnectedCallback.h"
+#import "WLWifiDisconnectTrigger.h"
+#import "WLWifiDwellInsideTrigger.h"
+#import "WLWifiDwellOutsideTrigger.h"
+#import "WLWifiEnterTrigger.h"
+#import "WLWifiError.h"
+#import "WLWifiExitTrigger.h"
+#import "WLWifiFailureCallback.h"
+#import "WLWifiLocation.h"
+#import "WLWifiTrigger.h"
+#import "WLWifiVisibleAccessPointsChangeTrigger.h"
+{% endhighlight %}
+
+    This file should also include any other Objective-C headers you need to use.</li>
+    <li>Now, you need to tell XCode that <strong>MyBridgingHeader.h</strong> is the Swift bridging header to use.<br />
 Under <strong>Build Settings > Swift Compiler > Objective-C Bridging Header</strong>, set the path to your bridging header, such as <strong>$(SRCROOT)/MyApp/MyBridgingHeader.h</strong>.</li>
 </ol>
-<p>All the MobileFirst classes are now available from any of your Swift files.<br />
-XCode provides code autocompletion converted to the Swift style.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_swift-autocomplete.png"><img src="{{ site.baseurl }}/assets/backup/02_02_swift-autocomplete.png" alt="02_02_swift-autocomplete" width="402" height="68" class="aligncenter size-full wp-image-1266" /></a></p>
+
+<p>All the MobileFirst classes are now available from any of your Swift files.<br>
+XCode provides code autocompletion converted to the Swift style.</p>
+
+<img src="{{ site.baseurl }}/assets/backup/02_02_swift-autocomplete.png" class="img_responsive" />
