@@ -1,127 +1,122 @@
 ---
-
 title: Adapter Thread Pools - Removed!
 date: 2014-12-22 06:16:26.000000000 +02:00
-type: post
-published: true
-status: publish
-categories:
-- Integration
 tags:
 - MobileFirst_Platform
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '13312'
-  _rawhtml_settings: '0,0,0,0'
-  _yoast_wpseo_title: Adapter Thread Pools - Removed!
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
+- Adapters
+- Threads
 author:
-  login: issaharw@il.ibm.com
-  email: issaharw@il.ibm.com
   display_name: Jus Weiss
-  first_name: Jus
-  last_name: Weiss
 ---
-<h2>Overview</h2>
-<p>In Worklight 6.2 and earlier, the server uses designated thread pools to enforce timeouts and manage concurrency in adapter procedure invocation. This was achieved by running the backend invocation on a different thread, and controlling the run time of that thread. The number of available threads is actually the concurrency of backend invocation.<br />
+<h3>Overview</h3>
+<p>In Worklight 6.2 and earlier, the server uses designated thread pools to enforce timeouts and manage concurrency in adapter procedure invocation. This was achieved by running the backend invocation on a different thread, and controlling the run time of that thread. The number of available threads is actually the concurrency of backend invocation.
 These thread-pools, while helping to control the timeout and concurrency of backend calls, create several problems:</p>
+
 <ul>
-<li>WAS container security and monitoring can't be used, as it's incompatible with non-container-managed thread-pools</li>
-<li>Standard server-managed thread-pools configuration has no effect over the backend invocation concurrency</li>
-<li>The backend call does not adhere to the procedure timeout, and when the procedure times out the server might still wait for the backend</li>
-<li>Threads are valuable resources on a container, and each adapter uses two of them simultaneously</li>
+    <li>WAS container security and monitoring can't be used, as it's incompatible with non-container-managed thread-pools</li>
+    <li>Standard server-managed thread-pools configuration has no effect over the backend invocation concurrency</li>
+    <li>The backend call does not adhere to the procedure timeout, and when the procedure times out the server might still wait for the backend</li>
+    <li>Threads are valuable resources on a container, and each adapter uses two of them simultaneously</li>
 </ul>
+
 <p>To remedy the above problems, in IBM MobileFirst Platform 6.3 the use of designated thread-pools in adapters was removed. Now all backend invocations run on the original HTTP request thread.</p>
-<h2>Timeout and Concurrency Changes</h2>
+
+<h3>Timeout and Concurrency Changes</h3>
 <p>As a result of not using a thread to manage the timeout and concurrency, the ability to define a server side timeout on the overall execution of a procedure is now no longer supported. Instead, timeouts and concurrency are now enforced using the underlying back-end connection mechanisms in HTTP-based adapters (HTTP, SAP and Cast-Iron adapters). If such a timeout is needed it can be enforced on the client side by changing the default timeout (30 sec) in the call to WL.Client.invokeProcedure.</p>
 <p>In fact, the roles of the timeouts are now more distinct and well defined. The client side timeout makes sure the client request returns in a reasonable time, and server side timeouts protect against slow or misbehaving back-end systems.</p>
-<p>For HTTP, SAP, and Cast-Iron adapters, timeout and concurrency configuration is enforced by the HTTP framework. Instead of a single timeout on the entire procedure execution, the adapter support the standard HTTP timeouts: connection timeout (time until connection is established) and socket timeout (time between two consecutive packets) . The maximum concurrent connections setting is still applicable for these types of adapters, though it is specified in a different way (see below).</p>
+<p>For HTTP, SAP, and Cast-Iron adapters, timeout and concurrency configuration is enforced by the HTTP framework. Instead of a single timeout on the entire procedure execution, the adapter support the standard HTTP timeouts: connection timeout (time until connection is established) and socket timeout (time between two consecutive packets). The maximum concurrent connections setting is still applicable for these types of adapters, though it is specified in a different way (see below).</p>
+
 <p>For SQL and JMS adapters both concurrency and timeout settings may no longer be specified in the adapter xml. For SQL adapters, these values may be set by configuring the SQL connection pool using a JNDI reference.</p>
-<h2>XML Structure Changes</h2>
+
+<h3>XML Structure Changes</h3>
 <p>As a result of the changes mentioned above, the structure of the adapter xml file has changed:</p>
 <ul>
-<li>The 'procedure' element no longer has the 'requestTimeoutInSeconds' attribute.</li>
-<li>The 'loadConstraints' element was removed completely.</li>
-<li>For HTTP, SAP, and Cast-Iron adapters, there are 3 new elements under the 'connectionPolicy' element. These elements are: 'connectionTimeoutInMilliseconds', 'socketTimeoutInMilliseconds', and 'maxConcurrentConnectionsPerNode'.</li>
+    <li>The 'procedure' element no longer has the 'requestTimeoutInSeconds' attribute.</li>
+    <li>The 'loadConstraints' element was removed completely.</li>
+    <li>For HTTP, SAP, and Cast-Iron adapters, there are 3 new elements under the 'connectionPolicy' element. These elements are: 'connectionTimeoutInMilliseconds', 'socketTimeoutInMilliseconds', and 'maxConcurrentConnectionsPerNode'.</li>
 </ul>
+
 <p><strong>Note:</strong> timeouts are now specified in milliseconds instead of seconds.</p>
 <p>Take a look at the following old and and new adapter XMLs and notice the changes in the HTTP connection policy:</p>
-<h3>Old Adapter XML</h3>
-<p>[code lang="xml"]<br />
-&lt;wl:adapter name=&quot;HttpAdapter&quot;<br />
-	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br />
-	xmlns:wl=&quot;http://www.worklight.com/integration&quot;<br />
-	xmlns:http=&quot;http://www.worklight.com/integration/http&quot;&gt;</p>
-<p>	&lt;displayName&gt;HttpAdapter&lt;/displayName&gt;<br />
-	&lt;description&gt;HttpAdapter&lt;/description&gt;<br />
-	&lt;connectivity&gt;<br />
-		&lt;connectionPolicy xsi:type=&quot;http:HTTPConnectionPolicyType&quot;&gt;<br />
-			&lt;protocol&gt;http&lt;/protocol&gt;<br />
-			&lt;domain&gt;rss.cnn.com&lt;/domain&gt;<br />
-			&lt;port&gt;80&lt;/port&gt;<br />
-			&lt;!-- Following properties used by adapter's key manager for choosing specific certificate from key store<br />
-			&lt;sslCertificateAlias&gt;&lt;/sslCertificateAlias&gt;<br />
-			&lt;sslCertificatePassword&gt;&lt;/sslCertificatePassword&gt;<br />
-			--&gt;<br />
-		&lt;/connectionPolicy&gt;<br />
-		&lt;loadConstraints maxConcurrentConnectionsPerNode=&quot;2&quot; /&gt;<br />
-	&lt;/connectivity&gt;</p>
-<p>	&lt;procedure name=&quot;getStories&quot; requestTimeoutInSeconds=&quot;30&quot;/&gt;</p>
-<p>	&lt;procedure name=&quot;getStoriesFiltered&quot;/&gt;</p>
-<p>&lt;/wl:adapter&gt;<br />
-[/code]</p>
-<h3>New Adapter XML</h3>
-<p>[code lang="xml"]<br />
-&lt;wl:adapter name=&quot;HttpAdapter&quot;<br />
-	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br />
-	xmlns:wl=&quot;http://www.ibm.com/MFP/integration&quot;<br />
-	xmlns:http=&quot;http://www.ibm.com/MFP/integration/http&quot;&gt;  &lt;!-- Changes in the XML schema --&gt;</p>
-<p>	&lt;displayName&gt;HttpAdapter&lt;/displayName&gt;<br />
-	&lt;description&gt;HttpAdapter&lt;/description&gt;<br />
-	&lt;connectivity&gt;<br />
-		&lt;connectionPolicy xsi:type=&quot;http:HTTPConnectionPolicyType&quot;&gt;<br />
-			&lt;protocol&gt;http&lt;/protocol&gt;<br />
-			&lt;domain&gt;rss.cnn.com&lt;/domain&gt;<br />
-			&lt;port&gt;80&lt;/port&gt;<br />
-			&lt;connectionTimeoutInMilliseconds&gt;30000&lt;/connectionTimeoutInMilliseconds&gt; &lt;!-- Worklight's defaults --&gt;<br />
-			&lt;socketTimeoutInMilliseconds&gt;30000&lt;/socketTimeoutInMilliseconds&gt;<br />
-			&lt;maxConcurrentConnectionsPerNode&gt;50&lt;/maxConcurrentConnectionsPerNode&gt;<br />
-			&lt;!-- Following properties used by adapter's key manager for choosing specific certificate from key store<br />
-			&lt;sslCertificateAlias&gt;&lt;/sslCertificateAlias&gt;<br />
-			&lt;sslCertificatePassword&gt;&lt;/sslCertificatePassword&gt;<br />
-			--&gt;<br />
-		&lt;/connectionPolicy&gt;<br />
-	&lt;/connectivity&gt;</p>
-<p>	&lt;procedure name=&quot;getStories&quot; /&gt; &lt;!-- No requestTimeoutInSeconds at all --&gt;</p>
-<p>	&lt;procedure name=&quot;getStoriesFiltered&quot;/&gt;</p>
-<p>&lt;/wl:adapter&gt;<br />
-[/code]</p>
-<h2>Specifying Timeouts per Backend Invocation</h2>
+<h4>Old Adapter XML</h4>
+
+{% highlight xml %}
+<wl:adapter name="HttpAdapter"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:wl="http://www.worklight.com/integration"
+	xmlns:http="http://www.worklight.com/integration/http"></p>
+<displayName>HttpAdapter</displayName>
+	<description>HttpAdapter</description>
+	<connectivity>
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+			<protocol>http</protocol>
+			<domain>rss.cnn.com</domain>
+			<port>80</port>
+			<!-- Following properties used by adapter's key manager for choosing specific certificate from key store
+			<sslCertificateAlias></sslCertificateAlias>
+			<sslCertificatePassword></sslCertificatePassword>
+			-->
+		</connectionPolicy>
+		<loadConstraints maxConcurrentConnectionsPerNode="2" />
+	</connectivity></p>
+<procedure name="getStories" requestTimeoutInSeconds="30"/></p>
+<procedure name="getStoriesFiltered"/></p>
+</wl:adapter>
+{% endhighlight %}
+
+<h4>New Adapter XML</h4>
+{% highlight xml %}
+<wl:adapter name="HttpAdapter"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:wl="http://www.ibm.com/MFP/integration"
+	xmlns:http="http://www.ibm.com/MFP/integration/http">  <!-- Changes in the XML schema -->
+	<displayName>HttpAdapter</displayName>
+	<description>HttpAdapter</description>
+	<connectivity>
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+			<protocol>http</protocol>
+			<domain>rss.cnn.com</domain>
+			<port>80</port>
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds> <!-- Worklight's defaults -->
+			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
+			<!-- Following properties used by adapter's key manager for choosing specific certificate from key store
+			<sslCertificateAlias></sslCertificateAlias>
+			<sslCertificatePassword></sslCertificatePassword>
+			-->
+		</connectionPolicy>
+	</connectivity>
+	<procedure name="getStories" /> <!-- No requestTimeoutInSeconds at all -->
+	<procedure name="getStoriesFiltered"/>
+</wl:adapter>
+{% endhighlight %}
+
+<h3>Specifying Timeouts per Backend Invocation</h3>
 <p>The timeout values defined in the XML file are the default values that apply to all back-end connections in all of the procedures of the adapter. When a finer control is needed for specific backend invocation, these values may be overridden in the procedure's JavaScript code. Two optional parameters were added to the invokeHTTP method, connectionTimeoutInMilliseconds and socketTimeoutInMilliseconds. Explicitly specifying these values will override the defaults set in the adapter xml.</p>
-<p>An example of these paramteres in JavaScript:<br />
-[code lang="js"]<br />
-function getStories(interest) {<br />
-    var path = getPath(interest);<br />
-    var input = {<br />
-          method: 'get',<br />
-          path: path,<br />
-          connectionTimeoutInMilliseconds: 15000,<br />
-          socketTimeoutInMilliseconds: 25000<br />
-          };<br />
-    return WL.Server.invokeHTTP(input);<br />
-}<br />
-[/code]</p>
-<h2>Backwards Compatibility</h2>
+
+<p>An example of these paramteres in JavaScript:
+{% highlight javascript %}
+function getStories(interest) {
+    var path = getPath(interest);
+    var input = {
+          method: 'get',
+          path: path,
+          connectionTimeoutInMilliseconds: 15000,
+          socketTimeoutInMilliseconds: 25000
+          };
+    return WL.Server.invokeHTTP(input);
+}
+{% endhighlight %}
+<h3>Backwards Compatibility</h3>
 <p>Adapters from previous versions can be deployed to 6.3 server, also server that was migrated to 6.3 will continue to run already deployed adapters. However, in both cases these adapters will behave differently in regard to timeout and concurrency:</p>
 <ol>
 <li>Maximum concurrent connections will continue to be enforced by HTTP, SAP, and Cast-Iron adapters, and ignored by JMS and SQL adapters.</li>
 <li>Procedure timeouts will no longer be enforced. Instead, any value specified as procedure timeout will be treated as both socket and connection timeout on HTTP, SAP, and Cast-Iron adapters, and ignored by JMS and SQL adapters.</li>
 </ol>
 <p>A warning message will be logged whenever an old adapter is deployed, or when a server starts and detects that one or more of the deployed adapters are old.</p>
-<h2>Conclusion</h2>
-<p>To make MobileFirst server more robust, we removed the use of thread-pools in adapters backend invocations.<br />
-This removal changes the way the adapter handles timeout and concurrency: timeouts are now conforms to HTTP standard timeouts, while concurrency still applies, but only to HTTP adapters.<br />
-For more information see:<br />
-<a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_6.3.0/com.ibm.worklight.dev.doc/devref/c_adapter_timeout_concurrency.html" title="Adapter timeout and concurrency" target="_blank">Adapter timeout and concurrency</a><br />
-<a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_6.3.0/com.ibm.worklight.dev.doc/devref/r_the__connectionpolicy__element.html" title="The &lt;connectionPolicy&gt; element of the HTTP adapter " target="_blank">The &lt;connectionPolicy&gt; element of the HTTP adapter</a></p>
+<h3>Conclusion</h3>
+<p>To make MobileFirst server more robust, we removed the use of thread-pools in adapters backend invocations.
+This removal changes the way the adapter handles timeout and concurrency: timeouts are now conforms to HTTP standard timeouts, while concurrency still applies, but only to HTTP adapters.
+For more information see:
+<a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_6.3.0/com.ibm.worklight.dev.doc/devref/c_adapter_timeout_concurrency.html" title="Adapter timeout and concurrency" target="_blank">Adapter timeout and concurrency</a>
+<a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_6.3.0/com.ibm.worklight.dev.doc/devref/r_the__connectionpolicy__element.html" title="The &lt;connectionPolicy&gt; element of the HTTP adapter " target="_blank">The <code><connectionPolicy></code> element of the HTTP adapter</a></p>
