@@ -1,43 +1,32 @@
 ---
-
 title: Retargeting your MobileFirst Windows Phone apps to 8.1
 date: 2015-07-02 04:54:18.000000000 +03:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - jQuery
-- mobilefirst
-- retarget
-- windows-phone
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '12062'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:0:{}
+- MobileFirst_Platform
+- Windows Phone
 author:
-  login: skulkarni@in.ibm.com
-  email: skulkarni@in.ibm.com
-  display_name: SrihariKulkarni
-  first_name: Srihari
-  last_name: Kulkarni
+  display_name: Srihari Kulkarni
 ---
 <p>If you're developing Hybrid applications for Windows Phone, you might have noticed that Visual Studio allows you to retarget your apps to Windows Phone 8.1. If your using the Visual Studio 2013 Profession Edition (Update 2 or higher), you have the choice on whether your can retarget your app or not. However, if you are using the Express edition of Visual Studio, you will be forced to retarget your app.</p>
+
 <p>If you are one of those who has retargeted your MobileFirst Windows Phone app, you might find that the app is stuck and does not proceed beyond the splash screen. Read on to understand why...</p>
+
 <p><strong>So, what happens when you retarget your app ? </strong><br />
 Among other things, the underlying WebView control that runs your app's code is different - <a href="https://msdn.microsoft.com/en-us/library/windows/apps/windows.ui.xaml.controls.webview.aspx" target="_blank">it is now Internet Explorer 11 engine</a> instead of Internet Explorer 10.</p>
+
 <p>There is a <a href="http://bugs.jquery.com/ticket/14475">known incompatibility between jQuery and IE 11</a>. Although this issue has been fixed in a later version of jQuery, the jQuery that is shipped with MobileFirst apps have this bug. Due to this bug and the fact that retargeted apps use IE 11, retargeted MobileFirst apps can appear to be non-responsive.</p>
+
 <p><strong>So, what is the solution ?</strong><br />
 Here are some solutions to overcome this issue</p>
+
 <ul>
-<li><strong>Do not retarget</strong> - The simplest solution is not to retarget your app. This will keep your app compatible with both Windows Phone 8.0 and Windows Phone 8.1. </li>
-<li><strong>Use the IE 10 engine for your app</strong> - In the index.html page of your app, add this meta tag to ensure that the Windows Phone OS  runs your app on a WebView running the IE 10 engine instead of IE 11.<br />
+    <li><strong>Do not retarget</strong> - The simplest solution is not to retarget your app. This will keep your app compatible with both Windows Phone 8.0 and Windows Phone 8.1. </li>
+    <li><strong>Use the IE 10 engine for your app</strong> - In the index.html page of your app, add this meta tag to ensure that the Windows Phone OS  runs your app on a WebView running the IE 10 engine instead of IE 11.<br />
  [code lang="javascript"]&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=10&quot;&gt;[/code]
-</li>
-<li><strong>Back-port the jQuery fix</strong> - Another option is to backport the <a href="https://github.com/jquery/jquery/commit/9ca87af44c7c606e124ee4d2110cecf5d1ea5f5a">fix to the jQuery bug</a> into your MobileFirst application.
-</li>
+    </li>
+    <li><strong>Back-port the jQuery fix</strong> - Another option is to backport the <a href="https://github.com/jquery/jquery/commit/9ca87af44c7c606e124ee4d2110cecf5d1ea5f5a">fix to the jQuery bug</a> into your MobileFirst application.
+    </li>
 </ul>
+
 <p>Have you encountered this issue when you retargeted your apps to Windows Phone 8.1 ? If you have any comments about this, feel free to write about it below.</p>
