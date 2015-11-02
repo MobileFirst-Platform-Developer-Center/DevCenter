@@ -1,174 +1,194 @@
 ---
-
 title: iOS 8 Today Extension in a MobileFirst application
 date: 2014-12-09 13:11:09.000000000 +02:00
-type: post
-published: true
-status: publish
-categories: []
 tags:
 - MobileFirst_Playground
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6637'
-  _rawhtml_settings: '0,0,0,0'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"8f6677c9d6b0f903e98ad32ec61f8deb";a:2:{s:7:"expires";i:1442505768;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:13793;}i:1;a:1:{s:2:"id";i:17788;}i:2;a:1:{s:2:"id";i:15784;}}}}
+- iOS
+- Extensions
 author:
-  login: nathanh@il.ibm.com
-  email: NATHANH@il.ibm.com
   display_name: Nathan Hazout
-  first_name: NATHAN
-  last_name: HAZOUT
 ---
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/iOS-Simulator-Screen-Shot-Dec-4-2014-2.23.44-PM.png"><img src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Dec-4-2014-2.23.44-PM-575x1024.png" alt="iOS Simulator Screen Shot Dec 4, 2014, 2.23.44 PM" width="300" class="alignright wp-image-5205" /></a></p>
+
 <p>iOS 8 added support for <a href="https://ibm.biz/BdEbuf" target="_blank">App Extensions</a>, which lets you extend custom functionality and content outside of your application.</p>
-<p>One such extension is the <a href="https://ibm.biz/BdEbuP" target="_blank">Today Widget</a>. Today Widgets appear in the top drawer of the iOS screen, and show content for a quick glance.<br />
+
+<img src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Dec-4-2014-2.23.44-PM-575x1024.png" class="img_responsive"/>
+
+<p>One such extension is the <a href="https://ibm.biz/BdEbuP" target="_blank">Today Widget</a>. Today Widgets appear in the top drawer of the iOS screen, and show content for a quick glance.
 An example of a Today Widget is the Calendar Today Widget built-in iOS.</p>
+
 <p>In this example we’ll use the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/starter-application-samples/" target="_blank">Native iOS Starter Application</a>.</p>
+
 <p>We will be adding a Today Widget to the Starter Application, showing the latest news from the RSS feed in the Today View.</p>
 <p><strong>Note:</strong> Knowledge of Objective-C or Swift is required to develop your own Today Extension. Objective-C is used for this blog post.</p>
 <p><br clear="all" /></p>
+
 <h2>Add a Today Extension Target</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/todayext-wizard.png"><img src="{{ site.baseurl }}/assets/backup/todayext-wizard.png" alt="todayext-wizard" width="450" class="alignright size-full wp-image-5206" /></a></p>
-<p>In Xcode, while the project is open, go to <strong>File > New > Target</strong> .<br />
+<img src="{{ site.baseurl }}/assets/backup/todayext-wizard.png" class="img_responsive" />
+
+<p>In Xcode, while the project is open, go to <strong>File > New > Target</strong> .
 In the wizard, choose <strong>iOS > Application Extension > Today Extension</strong>.</p>
-<p>Choose a <strong>Product Name</strong> (“Today News” in my example) and any other setting required and click <strong>Finish</strong>.<br />
+
+<p>Choose a <strong>Product Name</strong> (“Today News” in my example) and any other setting required and click <strong>Finish</strong>.
 Xcode will generate a new folder in your project and a new target. This will provide a basic skeleton to design and code the extension.</p>
-<p><br clear="all" /></p>
+
 <h2>Design the Storyboard</h2>
-<p>The generated skeleton comes with a simple storyboard (<strong>MainInterface.storyboard</strong>) and a ViewController (<strong>TodayViewController.h</strong>).<br />
+<p>The generated skeleton comes with a simple storyboard (<strong>MainInterface.storyboard</strong>) and a ViewController (<strong>TodayViewController.h</strong>).
 You can design the visual interface just like in any other storyboard. In this example, I kept the storyboard as-is (just a <strong>Label</strong> centered inside the view). I’ve Control-Dragged the Label to <strong>TodayViewController.h</strong> to add an outlet.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/todayext-storyboard.png"><img src="{{ site.baseurl }}/assets/backup/todayext-storyboard.png" alt="todayext-storyboard" width="800" class="aligncenter size-full wp-image-5207" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/todayext-storyboard.png" class="img_responsive" /></a></p>
+
 <p>Because I also want to be able to capture taps on the widget, I’ve added a <strong>Tap Gesture Recognizer</strong> to my View.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/tag-gesture.png"><img src="{{ site.baseurl }}/assets/backup/tag-gesture.png" alt="tag-gesture" width="800" class="aligncenter size-full wp-image-5208" /></a></p>
-<p>I then linked it to an action in <strong>TodayViewController.m</strong>.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/tap-action.png"><img src="{{ site.baseurl }}/assets/backup/tap-action.png" alt="tap-action" width="800" class="aligncenter size-full wp-image-5210" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/tag-gesture.png" class="img_responsive" />
+<p>I then linked it to an action in <strong>TodayViewController.m</strong>.
+
+<img src="{{ site.baseurl }}/assets/backup/tap-action.png" class="img_responsive" />
 <p>In a real application, you will probably use a more complete design, however this is out of the scope of this article.</p>
 <h2>Link the MobileFirst (Worklight) Library</h2>
 <p>Because the Today Extension is a different target from your main application, it lives in its own sandbox - separate from your application sandbox, with its own lifecycle. This has important implications on the way you design and code your widget. You will not be able to share objects living in your application with your widget.</p>
+
 <p>If you plan to share some data between the two, there exist some workarounds which you can find online (<a href="http://tapadoo.com/2014/sharing-nsuserdefaults-between-your-app-and-a-today-extension-on-ios-8/" target="_blank">http://tapadoo.com/2014/sharing-nsuserdefaults-between-your-app-and-a-today-extension-on-ios-8/</a>).</p>
-<p>In this example, to get the latest news from the RSS adapter, I need access to the MobileFirst API from my widget.<br />
+
+<p>In this example, to get the latest news from the RSS adapter, I need access to the MobileFirst API from my widget.
 To setup the target with the MobileFirst API, you need to follow the same instructions provided by the documentation “<a href="https://ibm.biz/BdEpQm" target="_blank">Developing native applications for iOS</a>”. Make sure the <strong>worklight.plist</strong> also appears in the <strong>Copy Bundle Resources</strong>, and don’t forget to set the required <strong>Build Settings</strong>.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/link-binary.png"><img src="{{ site.baseurl }}/assets/backup/link-binary.png" alt="link-binary" width="800" class="aligncenter size-full wp-image-5211" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/link-binary.png" class="img_responsive" />
+
 <h2>Lifecycle</h2>
 <p>The generated <strong>TodayViewController.m</strong> contains a method called <code>widgetPerformUpdateWithCompletionHandler</code>. This method is called by iOS to give your widget an opportunity to update itself. This can happen in the background, or when the user pulls the Today view out.</p>
 <p>To see it in action, try to write a simple code that updates the label with the current date.</p>
-<p>[code lang="obj-c"]<br />
+
+{% highlight objc %}
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {</p>
-<p>    NSDate *today = [NSDate date];<br />
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];<br />
-    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];<br />
-    NSString *currentTime = [dateFormatter stringFromDate:today];</p>
-<p>    [self.label setText:currentTime];</p>
-<p>    completionHandler(NCUpdateResultNewData);<br />
-}<br />
-[/code]</p>
-<p>Look at the generated timestamp every time your open the widget.<br />
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
+    NSString *currentTime = [dateFormatter stringFromDate:today];
+    [self.label setText:currentTime];
+    completionHandler(NCUpdateResultNewData);
+}
+{% endhighlight %}
+
+<p>Look at the generated timestamp every time your open the widget.
 Also notice the <code>completionHandler</code> call. This important line lets iOS know that you are finished with the updates. A badly behaving widget may be rejected by Apple, or simply may be killed by iOS while running.</p>
+
 <p>While the ViewController also includes lifecycle methods such as <code>viewDidLoad</code>, it is important to note that your widget can have a very short and unpredictable lifecycle, independent from your main application lifecycle. It may be loaded just as the user opens the drawer and be unloaded right after, or it may load in the background for a few seconds.</p>
+
 <h2>Invoking Procedure</h2>
-<p>In this example the update being performed is to fetch new data from the RSS adapter.<br />
-[code lang="obj-c"]<br />
-- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {<br />
-    WLProcedureInvocationData *myInvocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@&quot;StarterApplicationAdapter&quot; procedureName:@&quot;getEngadgetFeeds&quot;];<br />
-    TodayInvoke *invokeListener = [[TodayInvoke alloc] initWithController:self andCompletionHandler:completionHandler];<br />
-    [[WLClient sharedInstance] invokeProcedure:myInvocationData withDelegate:invokeListener];</p>
-<p>}<br />
-[/code]</p>
+<p>In this example the update being performed is to fetch new data from the RSS adapter.</p>
+
+{% highlight objc %}
+- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
+    WLProcedureInvocationData *myInvocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@"StarterApplicationAdapter" procedureName:@"getEngadgetFeeds"];
+    TodayInvoke *invokeListener = [[TodayInvoke alloc] initWithController:self andCompletionHandler:completionHandler];
+    [[WLClient sharedInstance] invokeProcedure:myInvocationData withDelegate:invokeListener];
+}
+{% endhighlight %}
+
 <p>When initializing the invocation listener, I passed both the current ViewController and the completion handler. The ViewController is passed so that the listener is able to update the label in the view once it receives the data. The completion handler is passed so that the listener can inform the operating system when the operation is complete.</p>
-<p>[code lang="obj-c" title="TodayInvoke.h"]<br />
-#import &lt;Foundation/Foundation.h&gt;<br />
-#import &quot;WLClient.h&quot;<br />
-#import &quot;WLDelegate.h&quot;<br />
-#import &quot;TodayViewController.h&quot;<br />
-#import &lt;NotificationCenter/NotificationCenter.h&gt;</p>
-<p>@interface TodayInvoke : NSObject &lt;WLDelegate&gt;</p>
-<p>@property TodayViewController *vc;<br />
-@property (nonatomic, copy) void (^completionHandler)(NCUpdateResult completionHandler);</p>
-<p>- (id)initWithController: (TodayViewController *)mainView andCompletionHandler:(void (^)(NCUpdateResult))completionHandler;<br />
-@end<br />
-[/code]</p>
-<div style="height:10px;"> </div>
-<p>[code lang="obj-c" title="TodayInvoke.m"]<br />
-- (id)initWithController: (TodayViewController *)mainView andCompletionHandler:(void (^)(NCUpdateResult))completionHandler {<br />
-    if ( self = [super init] )<br />
-    {<br />
-        self.vc = mainView;<br />
-        self.completionHandler = completionHandler;<br />
-    }<br />
-    return self;<br />
-}<br />
-[/code]<br /></p>
+
+{% highlight objc %}
+#import <Foundation/Foundation.h>
+#import "WLClient.h"
+#import "WLDelegate.h"
+#import "TodayViewController.h"
+#import <NotificationCenter/NotificationCenter.h>
+@interface TodayInvoke : NSObject <WLDelegate>
+@property TodayViewController *vc;
+@property (nonatomic, copy) void (^completionHandler)(NCUpdateResult completionHandler);
+- (id)initWithController: (TodayViewController *)mainView andCompletionHandler:(void (^)(NCUpdateResult))completionHandler;
+@end
+{% endhighlight %}
+
+{% highlight objc %}
+- (id)initWithController: (TodayViewController *)mainView andCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
+    if ( self = [super init] )
+    {
+        self.vc = mainView;
+        self.completionHandler = completionHandler;
+    }
+    return self;
+}
+{% endhighlight %}
+
 <p>The <code>onSuccess</code> method will trigger the view updates. To make this example a bit more reactive, I am picking a news item at <strong>random</strong> instead of showing the truly "latest" news.</p>
-<p>[code lang="obj-c"]<br />
--(void)onSuccess:(WLResponse *)response{<br />
-    if(response &amp;&amp; response.invocationResult &amp;&amp; response.invocationResult.response &amp;&amp; response.invocationResult.response[@&quot;items&quot;]){</p>
-<p>        //Get random news item<br />
-        NSArray *newsItems = response.invocationResult.response[@&quot;items&quot;];<br />
-        NSUInteger rnd = arc4random_uniform((int)[newsItems count]);<br />
-        NSDictionary *randomObject = [newsItems objectAtIndex:rnd];</p>
-<p>        //Update the view<br />
-        [self.vc.label setText: randomObject[@&quot;title&quot;]];</p>
-<p>        //Cache result<br />
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];<br />
-        [userDefaults setObject:randomObject[@&quot;title&quot;] forKey:@&quot;latestNews&quot;];<br />
-        [userDefaults synchronize];</p>
-<p>        //Inform operating system<br />
-        if(self.completionHandler){<br />
-            self.completionHandler(NCUpdateResultNewData);<br />
-        }<br />
-    } else{<br />
-        //No news<br />
-        if(self.completionHandler){<br />
-            self.completionHandler(NCUpdateResultNoData);<br />
-        }<br />
-    }<br />
-}<br />
-[/code]</p>
-<p>You'll also notice that I am using <code>NSUserDefaults</code> to <em>cache</em> the results.<br />
+
+{% highlight objc %}
+-(void)onSuccess:(WLResponse *)response{
+    if(response && response.invocationResult && response.invocationResult.response && response.invocationResult.response[@"items"]){
+        //Get random news item
+        NSArray *newsItems = response.invocationResult.response[@"items"];
+        NSUInteger rnd = arc4random_uniform((int)[newsItems count]);
+        NSDictionary *randomObject = [newsItems objectAtIndex:rnd];
+        //Update the view
+        [self.vc.label setText: randomObject[@"title"]];
+        //Cache result
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:randomObject[@"title"] forKey:@"latestNews"];
+        [userDefaults synchronize];
+        //Inform operating system
+        if(self.completionHandler){
+            self.completionHandler(NCUpdateResultNewData);
+        }
+    } else{
+        //No news
+        if(self.completionHandler){
+            self.completionHandler(NCUpdateResultNoData);
+        }
+    }
+}
+{% endhighlight %}
+
+<p>You'll also notice that I am using <code>NSUserDefaults</code> to <em>cache</em> the results.
 This is because if the widget is pulled out of memory, or if the refresh fails, I still want to have the previous news item show, instead of staying empty.</p>
 <p>To do so, I've updated <code>viewDidLoad</code> to retrieve the latest cached version just in case.</p>
-<p>[code lang="obj-c" title="TodayViewController.m"]<br />
-- (void)viewDidLoad {<br />
-    [super viewDidLoad];<br />
-    // Do any additional setup after loading the view from its nib.<br />
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];<br />
-    if([userDefaults stringForKey:@&quot;latestNews&quot;]){<br />
-        [self.label setText:[userDefaults stringForKey:@&quot;latestNews&quot;]];<br />
-    }<br />
-}<br />
-[/code]</p>
+
+{% highlight objc %}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if([userDefaults stringForKey:@"latestNews"]){
+        [self.label setText:[userDefaults stringForKey:@"latestNews"]];
+    }
+}
+{% endhighlight %}
+
 <p>With all of this, you should be able to view your widget in action.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/today-ext-news.png"><img src="{{ site.baseurl }}/assets/backup/today-ext-news-575x1024.png" alt="today-ext-news" width="400" class="aligncenter size-large wp-image-5220" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/today-ext-news-575x1024.png" class="img_responsive" />
+
 <h2>Tap to open</h2>
 <p>Again, because the widget lives in a different sandbox, you cannot simply "segue" into your application. You need to open your application just like you would from the another application.</p>
 <p>The way to do this is via URL Schemes (Good read: <a href="http://iosdevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html" target="_blank">http://iosdevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html</a>).</p>
-<p>You first need to register your main application to respond to a specific <strong>URL scheme</strong>.<br />
+<p>You first need to register your main application to respond to a specific <strong>URL scheme</strong>.
 In the main application's <strong>Info.plist</strong>, add a <strong>URL types</strong> property, with a <strong>URL scheme</strong> and <strong>URL identifier</strong>. See above link for more details.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/infoplist.png"><img src="{{ site.baseurl }}/assets/backup/infoplist.png" alt="infoplist" width="1112" height="188" class="aligncenter size-full wp-image-5217" /></a></p>
-<p>[code lang="xml" title="StarterApplicationNativeiOS-Info.plist"]<br />
-	&lt;key&gt;CFBundleURLTypes&lt;/key&gt;<br />
-	&lt;array&gt;<br />
-		&lt;dict&gt;<br />
-			&lt;key&gt;CFBundleURLSchemes&lt;/key&gt;<br />
-			&lt;array&gt;<br />
-				&lt;string&gt;StarterApplication&lt;/string&gt;<br />
-			&lt;/array&gt;<br />
-			&lt;key&gt;CFBundleURLName&lt;/key&gt;<br />
-			&lt;string&gt;com.worklight.StarterApplicationNativeiOS&lt;/string&gt;<br />
-		&lt;/dict&gt;<br />
-	&lt;/array&gt;<br />
-[/code]</p>
+
+<img src="{{ site.baseurl }}/assets/backup/infoplist.png" class="img_responsive" />
+
+{% highlight xml %}
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>StarterApplication</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.worklight.StarterApplicationNativeiOS</string>
+		</dict>
+	</array>
+{% endhighlight %}
+
 <p>On the other side, from your widget code, you can use the <code>tap</code> action we added earlier to open a URL as defined here.</p>
-<p>[code lang="obj-c" title="TodayViewController.m"]<br />
-- (IBAction)tap:(id)sender {<br />
-    NSLog(@&quot;tapped!&quot;);<br />
-    NSURL *customURL = [NSURL URLWithString:@&quot;StarterApplication://&quot;];<br />
-    [self.extensionContext openURL:customURL completionHandler:nil];<br />
-}<br />
-[/code]</p>
+
+{% highlight objc %}
+- (IBAction)tap:(id)sender {
+    NSLog(@"tapped!");
+    NSURL *customURL = [NSURL URLWithString:@"StarterApplication://"];
+    [self.extensionContext openURL:customURL completionHandler:nil];
+}
+{% endhighlight %}
+
 <h2>Authentication Concepts</h2>
 <p>In some cases, your extension may need to reach protected resources. In general, this is handled by a Challenge Handler, showing a login form or other form of authentication.</p>
 <p>While most MobileFirst APIs can work in an extension in theory, extensions don't allow - or at least are not designed for - user inputs. This means you cannot ask your user to enter a username and password. In addition, because the lifecycle of the widget is unpredictable, this would lead to a subpar user experience.</p>
