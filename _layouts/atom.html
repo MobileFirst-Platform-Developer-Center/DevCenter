@@ -58,6 +58,8 @@
           <author>
             {% if post.author.name %}
               <name>{{ post.author.name | xml_escape }}</name>
+            {% elsif post.author.display_name %}
+              <name>{{ post.author.display_name | xml_escape }}</name>  
             {% else %}
               <name>{{ post.author | xml_escape }}</name>
             {% endif %}
