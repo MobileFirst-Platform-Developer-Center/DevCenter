@@ -1,0 +1,257 @@
+---
+layout: tutorial
+title: Event source-based notifications in native Windows 8 applications
+date: 2015-01-07 10:48:38.000000000 +02:00
+type: tutorial
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/notifications">Notifications</a> &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/notifications/push-notification-native-windows-8-applications/">Push notifications in native Windows 8 applications</a>
+</p>
+
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:
+    <ul id="relevantForPersona">
+        <li class="wp8">Native Windows 8</li>
+    </ul>
+</div>
+<ul>
+    <li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsNativeProject.zip">Download Studio project</a>
+    </li>
+    <li class="download-sample">
+      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/Windows8NativePushProject.zip">Download native project</a>
+    </li>
+  </ul>
+</div>
+
+<h2>Overview</h2>
+Event source notifications are notification messages that are targeted to devices with a user subscription.
+
+To learn more about the architecture and terminology of push notifications in IBM MobileFirst™ Platform Foundation, see the “<a href="/mobilefirstplatform/documentation/getting-started-7-0/notifications/push-notifications-hybrid-applications/event-source-based-notifications/">Event source-based notifications in hybrid applications</a>” tutorial.
+
+For more information about setting up push notifications in native Windows 8 applications, see the “<a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/notifications/push-notification-native-windows-8-applications/">Push notifications in native Windows 8 applications</a>” tutorial.
+
+Go to:
+<ul>
+    <li><a href="#serverSideApi">Notification API - Server-side</a></li>
+    <li><a href="#clientSideApi">Notification API - Client-side</a></li>
+    <li><a href="#sample">Sample application</a></li>
+</ul>
+
+<h2 id="serverSideApi">Notification API: Server-side</h2>
+
+<h3>Creating an event source</h3>
+Create a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).
+[code lang="js"]
+WL.Server.createEventSource({
+    name: 'PushEventSource',
+    onDeviceSubscribe: 'deviceSubscribeFunc',
+    onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
+    securityTest:'PushApplication-strong-mobile-securityTest'
+});
+[/code]
+
+<ul>
+<li><code>name</code> – A name by which the event source is referenced.</li>
+<li><code>onDeviceSubscribe</code> – An adapter function that is called when the request for user subscription is received.</li>
+<li><code>onDeviceUnsubscribe</code> – An adapter function that is called when the request for user unsubscription is received.</li>
+<li><code>securityTest</code> – A security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li></ul>
+
+<h3>Sending a notification</h3>
+
+Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
+
+[code lang="js"]function submitNotification(userId, notificationText) {
+    var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
+
+    if (userSubscription === null) {
+        return { result: "No subscription found for user :: " + userId };
+    }
+
+    var badgeDigit = 1;
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});
+
+        WL.Server.notifyAllDevices(userSubscription, notification);
+
+    return {
+        result: "Notification sent to user :: " + userId
+    };
+}[/code]
+
+<h2 id="clientSideApi">Notification API - Client-side</h2>
+
+The first step is to create an instance of the <code>WLClient</code> class:
+
+[code lang="csharp"]WLClient client = WLClient.getInstance();[/code]
+
+You derive all push notification operations from the <code>WLPush</code> class.
+
+<ul>
+<code>getPush</code>  –  Use this method to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.
+
+[code lang="csharp"]WLPush push = client.getPush();[/code]
+
+<code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the Google Cloud Messaging (GCM) server to receive push notifications.
+
+[code lang="csharp"]
+ OnReadyToSubscribeListener myOnReadyListener = new OnReadyToSubscribeListener();
+ push.onReadyToSubscribeListener = myOnReadyListener;
+[/code]
+
+The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.
+
+
+[code lang="csharp"]
+public void onReadyToSubscribe()
+{...}
+[/code]
+</ul>
+
+<h3><code>WLPush.registerEventSourceCallback</code></h3>
+
+To register an alias on a particular event source, use the <code>WLPush.registerEventSourceCallback</code> method.
+
+The API takes the following arguments:
+
+<ul>
+<span class="inline-code">alias</span> - An alias name.
+<span class="inline-code">Adaptername</span> - Adapter in which the event source is defined.
+<span class="inline-code">EventSourceName</span> - The event source on which the alias is called.
+</ul>
+
+Example:
+
+[code lang="csharp"]
+WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);
+[/code]
+
+Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.
+
+[code lang="csharp"]
+public void onReadyToSubscribe()
+{
+  WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter","PushEventSource", this);
+}[/code]
+
+<br clear="all"/>
+
+<h3>Subscribing to push notification</h3>
+
+To set up subscription to push notification, use the <code>WLPush.subscribe(alias, pushOptions, responseListener)</code> API.
+
+The API takes the following arguments:
+
+<ul>
+
+<code>alias</code> – The alias to which the device must subscribe.
+<code>pushOptions</code> – An object of type <code>WLPushOptions</code>.
+<code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when subscription completes.
+</ul>
+
+Example:
+
+[code lang="csharp"]
+WLPush push = WLClient.getInstance().getPush();
+MySubscribeListener mySubListener = new MySubscribeListener();
+push.subscribe("myPush", null, mySubListener);
+[/code]
+
+<code>MySubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:
+
+<ul>
+
+<code>onSuccess</code> – Called when subscription succeeds.
+<code>onFailure</code> – Called when subscription fails.
+
+</ul>
+
+<h3>Unsubscribing from push notifications</h3>
+
+To set up unsubscription from push notification, use the <code>WLPush.unsubscribe(alias, responseListener)</code> API.
+
+The API takes the following arguments:
+
+<ul>
+
+<code>alias</code> – The alias to which the device has subscribed.
+<code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when unsubscription completes.
+</ul>
+
+Example:
+
+[code lang="csharp"]
+WLPush push = WLClient.getInstance().getPush();
+MyUnsubscribeListener myUnsubListener = new MyUnsubscribeListener();
+push.unsubscribe("myPush", myUnsubListener);
+[/code]
+
+<code>MyUnsubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:
+
+<ul>
+
+<code>onSuccess</code> – Called when unsubscription succeeds.
+<code>onFailure</code> – Called when unsubscription fails.
+
+</ul>
+
+<h3>Additional client-side API methods</h3>
+
+<code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.
+
+[code lang="csharp"]
+WLClient.getInstance().getPush().isSubscribed("myPush");
+[/code]
+
+<h3>Receiving a push notification</h3>
+
+When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.
+
+[code lang="csharp"]
+class OnReadyToSubscribeListener : WLOnReadyToSubscribeListener, WLEventSourceListener{...}
+[/code]
+
+The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.
+
+[code lang="csharp"]
+WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);
+[/code]
+
+The <code>onReceive</code> method displays the received notification on the screen.
+
+[code lang="csharp"]
+public void onReceive(String props, String payload)
+{
+     Debug.WriteLine("Props: " + props);
+     Debug.WriteLine("Payload: " + payload);
+
+}
+[/code]
+
+<h2 id="sample">Sample application</h2>
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsNativeProject.zip">Click to download</a> the Studio project.
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/Windows8NativePushProject.zip">Click to download</a> the Native project.
+
+The sample contains two projects:
+
+<ul>
+    <li>The <code>PushNotificationsNativeProject.zip</code> file contains a <strong>MobileFirst native API</strong> that you can deploy to your MobileFirst Server instance.</li>
+    <li>The <code>Windows8NativePushProject.zip</code> file contains a <strong>native Windows 8 application</strong> that uses a MobileFirst native API library to subscribe to push notifications and receive notifications from Windows Notification Services (WNS).
+Make sure to update the <code>wlclient.properties</code> file in Windows8NativePushProject with the relevant server settings.</li>
+</ul>

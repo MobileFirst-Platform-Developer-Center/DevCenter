@@ -1,0 +1,318 @@
+---
+layout: tutorial
+title: Event source-based notifications in native Windows 8 applications
+date: 2015-01-07 10:48:38.000000000 +02:00
+type: tutorial
+published: true
+status: publish
+categories: []
+tags:
+- 7-0
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _wpas_done_all: '1'
+  _syntaxhighlighter_encoded: '1'
+author:
+  login: nathanh@il.ibm.com
+  email: NATHANH@il.ibm.com
+  display_name: Nathan Hazout
+  first_name: NATHAN
+  last_name: HAZOUT
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/notifications">Notifications</a> &lt; ... <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/notifications/push-notifications-hybrid-applications/">Push notifications in hybrid applications</a>
+</p>
+
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:
+    <ul id="relevantForPersona">
+        <li class="hybrid">Hybrid</li>
+    </ul>
+</div>
+    <ul>
+        <li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsHybridProject.zip">Download Studio project</a>
+        </li>
+    </ul>
+</div>
+
+<h2>Overview</h2>
+Event source notifications are notification messages that are targeted to devices with a user subscription.
+This tutorial explains the concept, API, and usage of push notifications in the context of hybrid applications.
+
+The following topics are covered:
+
+<ul>
+    <li><a href="#notificatioArchitecture">Notification architecture</a></li>
+    <li><a href="#sendingNotifications">Sending notifications</a></li>
+    <li><a href="#subscriptionManagement">Subscription management</a></li>
+    <li><a href="#notificationAPI">Notification API</a></li>
+    <li><a href="#backendEmulator">Back-end emulator</a></li>
+</ul>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_example1.png"><img class="alignright size-medium wp-image-1333" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_example1-200x300.png" alt="08_01_push_example" width="200" height="300" /></a>
+
+<h2 id="notificatioArchitecture">Notification architecture</h2>
+
+<h3>Terminology</h3>
+
+<h4>Event source</h4>
+
+A push notification channel to which mobile applications can register. An event source is defined within a MobileFirst adapter.
+
+<h4>Device token</h4>
+
+A unique identifier, obtained from the push mediator (Apple, Google, or Microsoft), which identifies the request of a specific mobile device to receive notifications from the MobileFirst Server.
+
+<h4>User ID</h4>
+
+A unique identifier for a user. Obtained through authentication or other unique identifier such as a persistent cookie.
+
+<h4>Application ID</h4>
+
+MobileFirst application ID. Identifies a specific MobileFirst application on the mobile market.
+
+<h3>Subscription</h3>
+
+To start receiving push notifications, an application must first subscribe to a push notification event source.
+An event source is declared in the MobileFirst adapter that is used by the application for push notification services.
+
+The end user must approve the push notification subscription.
+After the subscription is approved, the device registers with an Apple, Google, or Microsoft push server to obtain a token that is used to identify the device (“Allow notifications for application X on device Y”), and sends a subscription request to the MobileFirst Server. <em>This operation is performed automatically by the MobileFirst framework.</em>
+
+<h3>Demonstration</h3>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_subscription_1.png"><img class="alignright size-medium wp-image-1336" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_subscription_1-300x229.png" alt="08_01_subscription_1" width="300" height="229" /></a>
+When the <code>subscribe</code> API method is called, the device registers with a push service mediator and obtains a device token (done automatically by the framework).
+<br clear="all"/>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_subscription_2.png"><img class="alignright size-medium wp-image-1337" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_subscription_2-300x229.png" alt="08_01_subscription_2" width="300" height="229" /></a>
+When the token is obtained, the application subscribes to an event source. Both actions are done automatically by a single API method call as described later.
+<br clear="all"/>
+
+<h2 id="sendingNotifications">Sending notifications</h2>
+
+IBM MobileFirst Platform Foundation provides a unified API for push notification.
+
+Use the adapter API for the following actions:
+
+<ul>
+    <li>Managing subscriptions</li>
+    <li>Pushing and polling notifications from a back end</li>
+    <li>Sending push notifications to devices</li>
+</ul>
+
+Use the application API for the following actions:
+
+<ul>
+    <li>Subscribing to and unsubscribing from push-notification event sources</li>
+    <li>Handling incoming notifications</li>
+</ul>
+
+Before a notification can be sent, it must first be retrieved from the back end.
+
+An event source can either <strong>poll</strong> notifications from the back-end system, or wait for the back-end system to explicitly <strong>push</strong> a new notification.
+When a notification is retrieved by the adapter, it is processed and sent through the corresponding push service mediator (Apple, Google, or Microsoft).
+
+Some custom logic can be added in the adapter to preprocess notifications. The push service mediator receives the notification and sends it to a device.
+
+<h3>Demonstration</h3>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_1.png"><img class="alignright wp-image-1341" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_1-300x165.png" alt="08_01_sending_notification_1" width="400" height="220" /></a>
+Notifications are retrieved by the MobileFirst adapter event source, either by poll or by push from the back-end system.
+<br clear="all"/>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_2.png"><img class="alignright wp-image-1339" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_2-300x165.png" alt="08_01_sending_notification_2" width="400" height="220" /></a>
+The adapter processes the notification and sends it to a push service mediator.
+<br clear="all"/>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_3.png"><img class="alignright wp-image-1338" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_3-300x164.png" alt="08_01_sending_notification_3" width="400" height="220" /></a>
+The push service mediator sends a push notification to the device.
+<br clear="all"/>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_4.png"><img class="alignright wp-image-1340" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_sending_notification_4-300x178.png" alt="08_01_sending_notification_4" width="400" height="238" /></a>
+The device processes the received notification.
+<br clear="all"/>
+
+<h2 id="subscriptionManagement">Subscription management</h2>
+
+<h3>User subscription</h3>
+
+<h4>Subscription</h4>
+
+An entity that contains a user ID, a device ID, and an event source ID. It represents the intent of the user to receive notification from a specific event source.
+
+<h4>Creation</h4>
+
+The user subscription for an event source is created when the user first subscribes to the event source from any device.
+
+<h4>Deletion</h4>
+
+A user subscription is deleted when the user unsubscribes from the event source from all the user’s devices.
+
+<h4>Notification</h4>
+
+While the user subscription exists, the MobileFirst Server can produce push notifications for the subscribed user. These notifications can be delivered by the adapter code to all or some of the devices that the user subscribed from.
+
+<h3>Device subscription</h3>
+
+A device subscription belongs to a user subscription and exists in the scope of a specific user and event source. A user subscription can have several device subscriptions.
+
+The device subscription is created when the application on a device calls <span class="inline-code">WL.Client.Push.subscribe()</span>.
+The device subscription is deleted either by an application that calls <span class="inline-code">WL.Client.Push.unsubscribe()</span>, or when the push mediator informs the MobileFirst Server that the device is permanently not accessible.
+
+<h2 id="notificationAPI">Notification API - Server-side</h2>
+
+<h3>Creating an event source</h3>
+
+To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):
+
+[code lang="js"]WL.Server.createEventSource({
+    name: 'PushEventSource',
+    onDeviceSubscribe: 'deviceSubscribeFunc',
+    onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
+    securityTest:'PushApplication-strong-mobile-securityTest'
+});[/code]
+
+<ul>
+    <li><strong><span class="inline-code">name</span></strong> – a name by which the event source is referenced.</li>
+    <li><strong><span class="inline-code">onDeviceSubscribe</span></strong> – an adapter function that is invoked when the user subscription request is received.</li>
+    <li><strong><span class="inline-code">onDeviceUnsubscribe</span></strong> – an adapter function that is invoked when the user unsubscription request is received.</li>
+    <li><strong><span class="inline-code">securityTest</span></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
+</ul>
+
+An additional event source option:
+[code lang="js" firstline="6"]poll: {
+    interval: 3,
+    onPoll: 'getNotificationsFromBackend'
+}[/code]
+
+<ul>
+    <li><strong><span class="inline-code">poll</span></strong> – a method that is used for notification retrieval.
+The following parameters are required:
+<ul>
+    <li><strong><span class="inline-code">interval</span></strong> – the polling interval in seconds.</li>
+    <li><strong><span class="inline-code">onPoll</span></strong> – the polling implementation. An adapter function to be invoked at specified intervals.</li>
+</ul>
+</li>
+</ul>
+
+<br clear="all"/>
+
+<h3>Sending a notification</h3>
+
+As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <span class="inline-code">submitNotifications()</span> adapter function is invoked by a back-end system as an external API to send notifications.
+
+[code lang="js"]function submitNotification(userId, notificationText) {
+    var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
+
+    if (userSubscription === null) {
+        return { result: "No subscription found for user :: " + userId };
+    }
+
+    var badgeDigit = 1;
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});
+
+        WL.Server.notifyAllDevices(userSubscription, notification);
+
+    return {
+        result: "Notification sent to user :: " + userId
+    };
+}[/code]
+
+The <span class="inline-code">submitNotification</span> function receives the <span class="inline-code">userId</span> to send notification to and the <span class="inline-code">notificationText</span>.
+
+[code lang="js"]function submitNotification(userId, notificationText) {[/code]
+
+A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:
+
+[code lang="js" gutter="false"]{
+    userId: 'bjones',
+    state: {
+        customField: 3
+    },
+    getDeviceSubscriptions: function()[}
+};[/code]
+
+Next line:
+[code lang="js" firstline="2"]var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);[/code]
+
+If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.
+[code lang="js" firstline="4"]if (userSubscription === null) {
+        return { result: "No subscription found for user :: " + userId };
+    }[/code]
+
+The <span class="inline-code">WL.Server.createDefaultNotification</span> API method creates and returns a default notification JSON block for the supplied values.
+[code lang="js" firstline="8"]var badgeDigit = 1;
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});[/code]
+
+<ul>
+    <li><strong><span class="inline-code">notificationText</span></strong> - The text to be pushed to the device.</li>
+    <li><strong><span class="inline-code">Badge</span></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
+    <li><strong><span class="inline-code">custom</span></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
+</ul>
+
+The <span class="inline-code">WL.Server.notifyAllDevices</span> API method sends notification to all the devices that are subscribed to the user.
+
+[code lang="js" firstline="11"]WL.Server.notifyAllDevices(userSubscription, notification);[/code]
+
+<br clear="all"/>
+
+<h4>Several APIs exist for sending notifications:</h4>
+
+<ul>
+    <li><span class="inline-code">WL.Server.notifyAllDevices(userSubscription, options)</span> - to send notification to all user’s devices.</li>
+    <li><span class="inline-code">WL.Server.notifyDevice(userSubscription, device, options)</span> - to send notification to a specific device that belongs to a specific user subscription. </li>
+    <li><span class="inline-code">WL.Server.notifyDeviceSubscription(deviceSubscription, options)</span> - to send the notification to a specific device.</li>
+</ul>
+
+<h2>Notification API - Client-side</h2>
+
+Additional client-side API methods:
+
+<ul>
+    <li><span class="inline-code">WL.Client.Push.isPushSupported()</span> – returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.</li>
+    <li><span class="inline-code">WL.Client.Push.isSubscribed(alias)</span> – returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
+</ul>
+
+When a push notification is received by a device, the callback function defined in <span class="inline-code">WL.Client.Push.registerEventSourceCallback</span> is invoked:
+
+[code lang="js"]function pushNotificationReceived(props, payload) {
+    alert("pushNotificationReceived invoked");
+    alert("props :: " + JSON.stringify(props));
+    alert("payload :: " + JSON.stringify(payload));
+}[/code]
+
+If the application was in background mode (or inactive) when the push notification arrived, this callback function is invoked when the application returns to the foreground.
+
+<h2 id="backendEmulator">Back-end emulator</h2>
+
+The sample project for this tutorial is bundled with a back-end emulator which can be used to simulate push notification submissions by a back-end system. The source for the emulator can be found in the sample project.
+
+To run the back-end emulator, open the PushBackendEmulator folder of the sample project in a command prompt, and then run the supplied JAR file by using the following syntax:
+
+[code]java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>[/code]
+
+<span class="inline-code">userId</span> is the user name that you used to log in to the sample application.
+<span class="inline-code">contextRoot</span> is the context root of your MobileFirst project.
+
+<h3>Example</h3>
+
+[code]java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080[/code]
+
+The back-end emulator tries to connect to a MobileFirst Server and call a <span class="inline-code">submitNotification()</span> adapter procedure. It outputs the invocation result to a command prompt console.
+
+<h4>Success</h4>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_success.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_success-1024x136.png" alt="08_01_push_success" width="600" class="aligncenter size-large wp-image-1380" /></a>
+
+<h4>Failure</h4>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_failure.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_failure-1024x130.png" alt="08_01_push_failure" width="600" class="aligncenter size-large wp-image-1381" /></a>
+
+<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_sample.png"><img class="aligncenter wp-image-1389 size-full" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_sample.png" alt="08_01_push_sample" width="850" height="500" /></a>
+
+<h2>Sample application</h2>
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsHybridProject.zip">Click to download</a> the Studio project.
