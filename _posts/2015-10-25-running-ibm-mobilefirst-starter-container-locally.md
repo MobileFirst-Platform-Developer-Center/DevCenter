@@ -61,7 +61,8 @@ FROM registry.ng.bluemix.net/ibm-mobilefirst-starter:latest
 4. Create an XML file using the same project name (for example, HelloMFP.xml), and add the following code snippet (modified with the correct project name):
 
 <b>Contents of HelloMFP.xml</b>
-{% highlight xml %}
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="new server">
     <application context-root="/HelloMFP" id="HelloMFP" location="HelloMFP.war" name="HelloMFP" type="war">
@@ -81,7 +82,7 @@ FROM registry.ng.bluemix.net/ibm-mobilefirst-starter:latest
     <jndiEntry value="false" jndiName="HelloMFP/mfp.session.independent"/>
     <jndiEntry value="httpsession" jndiName="HelloMFP/mfp.attrStore.type"/>
  </server>
-{% endhighlight %}
+```
 
 5. Add the following to the Dockerfile created in (2). Ensure to replace the 'HelloMFP' with the name of your project.
 

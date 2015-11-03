@@ -5,6 +5,7 @@ baseurl: /MFPSamples
 permalink: pretty
 paginate: 10
 paginate_path: "/blog/:num/"
+markdown: redcarpet
 
 gems:
   - jekyll-redirect-from
