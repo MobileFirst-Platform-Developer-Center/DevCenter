@@ -106,9 +106,9 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/push-notifications-hybrid-applications/">Push notifications in hybrid applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/push-notifications-native-ios-applications/">Push notifications in native iOS applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/push-notification-native-android-applications/">Push notifications in native Android applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/push-notification-native-windows-phone-8-applications/">Push notifications in native Windows Phone 8 applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/push-notification-native-windows-8-applications/">Push notifications in native Windows 8 applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/push-notifications-native-android-applications/">Push notifications in native Android applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/push-notifications-native-windows-phone-8-applications/">Push notifications in native Windows Phone 8 applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/push-notifications-native-windows-8-applications/">Push notifications in native Windows 8 applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/sms-notifications/">SMS Notification</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/notifications/two-way-sms-communication/">Two-way SMS communication</a>
 
