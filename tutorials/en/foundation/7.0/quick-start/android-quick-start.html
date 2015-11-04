@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Broadcast notifications in native Windows 8 applications
+title: Android Quick Start demonstration
 ---
 <h2>Overview</h2>
 
@@ -21,14 +21,14 @@ title: Broadcast notifications in native Windows 8 applications
         <ul>
             <li><b>Create a new project and Android framework/server-side application entity</b>
                 {% highlight bash %}
-                mfp create MyProject
-                cd MyProject
-                mfp add api MyAndroidFramework -e android
+mfp create MyProject
+cd MyProject
+mfp add api MyAndroidFramework -e android
             {% endhighlight %}
             </li>
             <li><b>Add a HTTP adapter to the project</b>
                 {% highlight bash %}
-                mfp add adapter MyAdapter -t http
+mfp add adapter MyAdapter -t http
             {% endhighlight %}
             </li>
         </ul>
@@ -38,9 +38,9 @@ title: Broadcast notifications in native Windows 8 applications
         <ul>
             <li><b>Start the MobileFirst Server and deploy the server-side application entity and adapter</b>
                 {% highlight bash %}
-                mfp start
-                # Wait until a browser window is opened, displaying the MobileFirst Console
-                mfp deploy
+mfp start
+# Wait until a browser window is opened, displaying the MobileFirst Console
+mfp deploy
             {% endhighlight %}
             </li>
         </ul>
@@ -68,12 +68,12 @@ title: Broadcast notifications in native Windows 8 applications
         <ul>
             <li><b>Main Activity class</b>
                 Add imports:
-                {% highlight java %}import com.worklight.wlclient.api.*;
+{% highlight java %}import com.worklight.wlclient.api.*;
 import android.util.Log;{% endhighlight %}
 
                 Add the following to <code>onCreate</code>:
                 {% highlight java %}
-        super.onCreate(savedInstanceState);
+super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_main);
 
 final WLClient client = WLClient.createInstance(this);
@@ -95,7 +95,7 @@ client.connect(new WLResponseListener() {
         <li><b><code>MyInvokeListener</code> class</b>
                 Add a new <code>MyInvokeListener</code> class
                 Add imports:
-                {% highlight java %}import com.worklight.wlclient.api.*;
+{% highlight java %}import com.worklight.wlclient.api.*;
 import android.util.Log;{% endhighlight %}
 
                 Paste the following:
@@ -123,6 +123,6 @@ public class MyInvokeListener implements WLResponseListener {
     <li><h3>Click <strong>Run</strong></h3>
     Review the LogCat view for the data retrieved by the adapter request.
 
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Screen-Shot-2015-04-14-at-17.31.24.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Screen-Shot-2015-04-14-at-17.31.24-1024x586.png" alt="Screen Shot 2015-04-14 at 17.31.24" width="980" height="560" class="aligncenter size-large wp-image-10757" /></a>
+<img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Screen-Shot-2015-04-14-at-17.31.24-1024x586.png" class="img_responsive" /></a>
     </li>
 </ol>
