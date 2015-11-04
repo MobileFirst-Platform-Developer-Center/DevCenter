@@ -12,22 +12,23 @@ title: Broadcast notifications in native Windows 8 applications
     <li>MobileFirst Platform commandline tool (<a href="http://developer.ibm.com/mobilefirstplatform/install/#clui" target="_blank">download</a>)</li>
     <li>Xcode 6.x</li>
 </ul>
+
 <hr />
 
 <ol>
     <li>
         <h3>Create a MobileFirst project and adapter</h3>
         <ul>
-            <li><h4>Create a new project and iOS framework/server-side application entity</h4>
+            <li><b>Create a new project and iOS framework/server-side application entity</b>
                 {% highlight bash %}
-                mfp create MyProject
-                cd MyProject
-                mfp add api MyiOSFramework -e ios
+mfp create MyProject
+cd MyProject
+mfp add api MyiOSFramework -e ios
                 {% endhighlight %}
             </li>
-            <li><h4>Add a HTTP adapter to the project</h4>
+            <li><b>Add a HTTP adapter to the project</b>
                 {% highlight bash %}
-                mfp add adapter MyAdapter -t http
+mfp add adapter MyAdapter -t http
                 {% endhighlight %}
             </li>
         </ul>
@@ -35,12 +36,12 @@ title: Broadcast notifications in native Windows 8 applications
     <li>
         <h3>Deploy artifacts to the MobileFirst Server</h3>
         <ul>
-            <li><h4>Start the MobileFirst Server and deploy the server-side application entity and adapter</h4>
+            <li><b>Start the MobileFirst Server and deploy the server-side application entity and adapter</b>
                 {% highlight bash %}
-                mfp start
-                # Wait until a browser window is opened, displaying the MobileFirst Console
-                mfp build
-                mfp deploy
+mfp start
+# Wait until a browser window is opened, displaying the MobileFirst Console
+mfp build
+mfp deploy
                 {% endhighlight %}
             </li>
         </ul>
@@ -56,7 +57,7 @@ title: Broadcast notifications in native Windows 8 applications
             </li>
             <li>In <strong>Build Phases</strong> open <strong>Link Binary With Libraries</strong> and add:
                 <ul>
-                    <li><code>libWorklightStaticLibProjectNative.a (found in <strong>WorklightAPI</strong>)</li>
+                    <li><code>libWorklightStaticLibProjectNative.a</code> (found in <strong>WorklightAPI</strong>)</li>
                     <li><code>sqlcipher.framework</code> (found in <strong>WorklightAPI/Frameworks)</strong></li>
                     <li><code>SystemConfiguration.framework</code></li>
                     <li><code>MobileCoreServices.framework</code></li>
@@ -78,11 +79,11 @@ title: Broadcast notifications in native Windows 8 applications
     <li>
         <h3>Implement MobileFirst adapter invocation</h3>
         <ul>
-            <li><h4>AppDelegate.h</h4>
+            <li><b>AppDelegate.h</b>
                 Add the header:
                 {% highlight objc %}#import "WLResourceRequest.h"{% endhighlight %}
             </li>
-            <li style="margin-bottom:30px"><h4>AppDelegate.m</h4>
+            <li style="margin-bottom:30px"><b>AppDelegate.m</b>
                 Add the header:
                 {% highlight objc %}#import "WLResponse.h"{% endhighlight %}
 
