@@ -38,21 +38,24 @@
             "name": "Moving to production",
             "path": "/moving-production"
         }, ]
+    }, {
+        "name": "Tutorials by platform",
+        "path": "",
+        "children": [{
+            "name": "iOS",
+            "path": "/ios-tutorials"
+        }, {
+            "name": "Android",
+            "path": "/android-tutorials"
+        }, {
+            "name": "Windows Phone 8",
+            "path": "/windows-phone-8-tutorials"
+        }, {
+            "name": "Hybrid",
+            "path": "/hybrid-tutorials"
+        }, {
+            "name": "Server-side",
+            "path": "/server-side-tutorials"
+        }]
     }]
-},
-{
-    "name": "Platform",
-    "path": "tutorials/en/foundation/6.3/ios-tutorials"
-},
-{
-    "name": "Platform",
-    "path": "tutorials/en/foundation/6.3/android-tutorials"
-},
-{
-    "name": "Platform",
-    "path": "tutorials/en/foundation/6.3/windows-phone-8-tutorials"
-},
-{
-    "name": "Platform",
-    "path": "tutorials/en/foundation/6.3/hybrid-tutorials"
 }

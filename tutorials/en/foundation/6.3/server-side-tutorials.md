@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Server-side Development 6.3
+title: Server-side Development
 ---
 ### Server-side development
 <p><i>Multiple tutorials within</i></p>
