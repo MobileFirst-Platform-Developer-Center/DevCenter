@@ -10,7 +10,7 @@
             {% include get-parents.html page=p minLevel=minLevel docs=allDocs %}
             {% if p.use_dropdown %}
               <li class="dropdown">
-                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">{{ p.title }} <b class="caret"></b></a>
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">{% if p.breadcrumb_title %}{{p.breadcrumb_title}}{% else %}{{ p.title }}{% endif %}<b class="caret"></b></a>
                 {% assign documents = site.pages | sort: "weight" %}
 
                 {% assign currentItem = p.dir | split: "/" | last | append: "/@" %}
@@ -20,7 +20,7 @@
             {% elsif p.hide_in_breadcrumb %}
                 {% comment %} don't show {% endcomment %}
             {% else %}
-              <li><a href="{{site.baseurl}}{{p.url}}">{{ p.title }}</a></li>
+              <li><a href="{{site.baseurl}}{{p.url}}">{% if p.breadcrumb_title %}{{p.breadcrumb_title}}{% else %}{{ p.title }}{% endif %}</a></li>
             {% endif %}
         {% endif %}
     {% endfor %}

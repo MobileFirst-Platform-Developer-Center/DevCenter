@@ -7,7 +7,7 @@
       <ol class="breadcrumb">
         {% assign documents = site.pages | sort: "weight" %}
         {% include get-parents.html page=page minLevel=minLevel docs=documents %}
-        <li class="active">{{ page.title }}</li>
+        <li class="active">{% if page.breadcrumb_title %}{{page.breadcrumb_title}}{% else %}{{ page.title }}{% endif %}</li>
       </ol>
     </div>
     <div class="rightPart hidden-xs hidden-md hidden-sm col-lg-4">
