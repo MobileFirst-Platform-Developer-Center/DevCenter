@@ -52,32 +52,6 @@
         ]
       },
       {
-        "name": "By Persona",
-        "path": "",
-        "children": [
-          {
-            "name": "Cordova",
-            "path": "/foundation/8.0/cordova-tutorials"
-          },
-          {
-            "name": "iOS",
-            "path": "/foundation/8.0/ios-tutorials"
-          },
-          {
-            "name": "Android",
-            "path": "/foundation/8.0/android-tutorials"
-          },
-          {
-            "name": "Windows Phone",
-            "path": "/foundation/8.0/windows-phone-tutorials"
-          },
-          {
-            "name": "Windows",
-            "path": "/foundation/8.0/windows-tutorials"
-          },
-        ]
-      },
-      {
         "name": "By Product",
         "path": "",
         "children": [
