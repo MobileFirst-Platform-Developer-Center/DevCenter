@@ -132,10 +132,17 @@ $color_wild_sand_approx: #f5f5f5;
 		}
 		.leftPart {
 			padding-left: 0;
-		}
-		.breadcrumb {
-			margin-bottom: 0;
-			padding: 0;
+			.breadcrumb {
+				margin-bottom: 0;
+				padding: 0;
+
+				.dropdown-menu {
+					li:first-of-type:hover {
+						border-top-right-radius: 4px;
+						border-top-left-radius: 4px;
+					}
+				}
+			}
 		}
 	}
 }
