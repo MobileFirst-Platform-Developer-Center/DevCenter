@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Hybrid Development 6.3
+title: Hybrid Development
 ---
 ### Setting up your development environment
 <p><i>Multiple tutorials within</i></p>

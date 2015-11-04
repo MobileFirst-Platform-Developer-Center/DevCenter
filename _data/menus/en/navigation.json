@@ -1,139 +1,101 @@
-[
-  {
+[{
     "name": "Tutorials",
     "path": "/tutorials/en",
-    "children": [
-      {
+    "children": [{
         "name": "All Tutorials",
         "path": "",
-        "children": [
-          {
+        "children": [{
             "name": "8.0",
             "path": "/foundation/8.0/all-tutorials"
-          },
-          {
+        }, {
             "name": "7.1",
             "path": "/foundation/7.1/all-tutorials"
-          },
-          {
+        }, {
             "name": "7.0",
             "path": "/foundation/7.0/all-tutorials"
-          },
-          {
+        }, {
             "name": "6.3",
             "path": "/foundation/6.3/all-tutorials"
-        },
-        ]
-      },
-      {
+        }, ]
+    }, {
         "name": "Quick Start",
         "path": "",
-        "children": [
-          {
+        "children": [{
             "name": "Cordova",
             "path": "/foundation/8.0/hello-world/cordova"
-          },
-          {
+        }, {
             "name": "iOS",
             "path": "/foundation/8.0/hello-world/ios"
-          },
-          {
+        }, {
             "name": "Android",
             "path": "/foundation/8.0/hello-world/android"
-          },
-          {
+        }, {
             "name": "Windows Phone",
             "path": "/foundation/8.0/hello-world/windows-phone"
-          },
-          {
+        }, {
             "name": "Windows",
             "path": "/foundation/8.0/hello-world/windows"
-          },
-        ]
-      },
-      {
+        }, ]
+    }, {
         "name": "By Product",
         "path": "",
-        "children": [
-          {
+        "children": [{
             "name": "Foundation",
             "path": "/foundation"
-          },
-          {
+        }, {
             "name": "Quality Assurance",
             "path": "/quality-assurance"
-          },
-          {
+        }, {
             "name": "Cloudant Data Layer",
             "path": "/cloudant"
-          },
-          {
+        }, {
             "name": "Application Scanning",
             "path": "/application-scanning"
-          },
-          {
+        }, {
             "name": "Presence Insights",
             "path": "https://presenceinsights.ng.bluemix.net/piui/",
             "external": true
-          },
-        ]
-      },
-    ]
-  },
-  {
+        }, ]
+    }, ]
+}, {
     "name": "Product Integration",
     "path": "/tutorials/en/product-integration",
-    "children": [
-      {
+    "children": [{
         "name": "8.0",
         "path": "/8.0"
-      },
-      {
+    }, {
         "name": "7.1",
         "path": "/7.1"
-      },
-      {
+    }, {
         "name": "7.0",
         "path": "/7.0"
-      },
-      {
+    }, {
         "name": "6.3",
         "path": "/6.3"
-      },
-    ]
-  },
-  {
+    }, ]
+}, {
     "name": "Labs",
     "path": "/labs",
-    "children": [
-      {
+    "children": [{
         "name": "Welcome to Labs",
         "path": ""
-      },
-      {
+    }, {
         "name": "7.1 Labs",
         "path": "/7.1/setup"
-      },
-      {
+    }, {
         "name": "7.0 Labs",
         "path": "/7.0/setup"
-      },
-    ]
-  },
-  {
+    }, ]
+}, {
     "name": "Learn More",
     "path": "/learn-more",
-  },
-  {
+}, {
     "name": "Video Gallery",
     "path": "/video-gallery",
-  },
-  {
+}, {
     "name": "Blog",
     "path": "/blog",
-  },
-  {
+}, {
     "name": "Help",
     "path": "/help",
-  },
-]
+}, ]

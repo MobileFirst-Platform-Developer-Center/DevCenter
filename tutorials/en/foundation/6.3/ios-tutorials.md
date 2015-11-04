@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Native iOS Development 6.3
+title: Native iOS Development
 ---
 ### Setting up your development environment
 
@@ -34,7 +34,6 @@ title: Native iOS Development 6.3
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/form-based-authentication/">Form-based authentication - server configuration</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/">Form-based authentication - client implementation</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a>
-
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/adapter-based-authentication/adapter-based-authentication-native-ios-applications/">Adapter-based authentication - client implementation</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/custom-authenticator-login-module/">Custom authenticator and login module - server configuration</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/authentication-security/custom-authenticator-login-module/custom-authenticator-login-module-native-ios-applications/">Custom authenticator and login module - client implementation</a>
