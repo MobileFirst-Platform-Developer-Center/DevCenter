@@ -29,7 +29,8 @@ $font_7: sans-serif;
 	}
 	.item {
 		height: 330px;
-		background: linear-gradient($color_french_pass_approx, $white);
+		/*background: linear-gradient($color_french_pass_approx, $white);*/
+		background-color: #f4f4f4;
 		img {
 			height: 250px;
 			width: 450px;
@@ -50,7 +51,8 @@ $font_7: sans-serif;
 }
 .carousel-indicators {
 	bottom: -64px;
-	background-color: $color_cornflower_blue_approx;
+	/*background-color: $color_cornflower_blue_approx;*/
+	background-color: #75AED0;
 	padding: 10px;
 	width: 100%;
 	left: auto;

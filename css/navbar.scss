@@ -10,17 +10,45 @@ $white: #fff;
 body {
 	padding-top: 0;
 }
+
+/* NEW COLORS */
+.navbar-default {
+	background-color: #264a60;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: white;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus, .navbar-nav > .active > a:focus {
+background-color: #323232;
+color: white;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+background-color: #323232;
+color: white;
+
+}
+
+/* NEW COLORS */
+
 .navbar {
 	margin-bottom: 0;
 	.logo {
 		margin-top: -2px;
 		font-size: 140%;
-		color: $black;
+		/*color: $black;*/
+		color: white;
 		.mobilefirst {
 			font-weight: bold;
 		}
 		.dev {
-			color: $color_calypso_approx;
+			/*color: $color_calypso_approx;*/
+			color: white;
 		}
 	}
 	.navbar-header a:hover {
