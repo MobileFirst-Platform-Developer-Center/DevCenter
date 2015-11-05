@@ -12,8 +12,15 @@ body {
 }
 
 /* NEW COLORS */
+
+.navbar {
+	border-radius: 0;
+}
+
+
 .navbar-default {
 	background-color: #264a60;
+	border-color: #264a60;
 }
 
 .navbar-default .navbar-nav > li > a {
