@@ -73,6 +73,14 @@ body {
 	.container-fluid {
 		padding-right: 0;
 	}
+	.searchfield {
+		float: right;
+		padding-right: 0;
+		margin-right: 0;
+	}
+	#pnext-search-input {
+		border-radius: 4px 0 0 4px;
+	}
 }
 .dropdown-menu {
 	opacity: 0.97;
