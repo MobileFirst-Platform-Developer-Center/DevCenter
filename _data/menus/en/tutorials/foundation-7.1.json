@@ -40,7 +40,7 @@
         }]
     }, {
         "name": "IBM Countainers",
-        "path": "",
+        "path": "/ibm-containers",
         "children": [{
             "name": "Overview",
             "path": "/overview"
@@ -52,7 +52,7 @@
             "path": "/run"
         }, {
             "name": "Sample application",
-            "path": "/sample"
+            "path": "/sample-app"
         }]
     }, {
         "name": "Tutorials by platform",
