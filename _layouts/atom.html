@@ -37,10 +37,8 @@
     </author>
   {% endif %}
 
-  {% assign count = 0 %}
-  {% for post in site.posts %}
-    {% if page.filterByTag == null or post.tags contains page.filterByTag %}
-      {% assign count = count | plus:1 %}
+  {% if page.filterByTag %}{% assign posts = site.tags[page.filterByTag]%}{% else %}{% assign posts = site.posts %}{% endif %}
+  {% for post in posts | limit : 10 %}
       <entry>
         <title>{{ post.title | markdownify | strip_html | strip_newlines | xml_escape }}</title>
         <link href="{{ post.url | prepend: url_base }}" rel="alternate" type="text/html" title="{{ post.title | xml_escape }}" />
@@ -59,7 +57,7 @@
             {% if post.author.name %}
               <name>{{ post.author.name | xml_escape }}</name>
             {% elsif post.author.display_name %}
-              <name>{{ post.author.display_name | xml_escape }}</name>  
+              <name>{{ post.author.display_name | xml_escape }}</name>
             {% else %}
               <name>{{ post.author | xml_escape }}</name>
             {% endif %}
@@ -84,7 +82,5 @@
           <summary>{{ post.excerpt | markdownify | strip_html | strip_newlines | xml_escape }}</summary>
         {% endif %}
       </entry>
-    {% endif %}
-    {% if count == 10 %}{% break %}{% endif %}
   {% endfor %}
 </feed>
