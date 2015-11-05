@@ -10,62 +10,68 @@ $color_celeste_approx: #ccc;
 body {
 	padding-top: 0;
 }
-.navbar.navbar-default {
-	border-radius: 0;
-	margin-bottom: 0;
-	background-color: $color_rhino_approx;
-	border-color: $color_rhino_approx;
-	.logo {
-		margin-top: -2px;
-		font-size: 140%;
-		color: $white;
-		.mobilefirst {
-			font-weight: bold;
-		}
-		.dev {
+.navbar {
+	&.navbar-default {
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 0;
+		margin-bottom: 0;
+		background-color: $color_rhino_approx;
+		border-color: $color_rhino_approx;
+		.logo {
+			margin-top: -2px;
+			font-size: 140%;
 			color: $white;
-		}
-	}
-	.navbar-nav {
-		> li {
-			> a {
+			.mobilefirst {
+				font-weight: bold;
+			}
+			.dev {
 				color: $white;
-				&:hover {
+			}
+		}
+		.navbar-nav {
+			> li {
+				> a {
 					color: $white;
+					&:hover {
+						color: $white;
+					}
+				}
+				&.open > a {
+					background-color: $mine_shaft;
+					color: $white;
+					&:hover {
+						background-color: $mine_shaft;
+						color: $white;
+					}
+					&:focus {
+						background-color: $mine_shaft;
+						color: $white;
+					}
+				}
+				&.active > a {
+					background-color: $mine_shaft;
+					color: $white;
+					&:hover {
+						background-color: $mine_shaft;
+						color: $white;
+					}
+					&:focus {
+						background-color: $mine_shaft;
+						color: $white;
+					}
 				}
 			}
-			&.open > a {
+			> .active > a:focus {
 				background-color: $mine_shaft;
 				color: $white;
-				&:hover {
-					background-color: $mine_shaft;
-					color: $white;
-				}
-				&:focus {
-					background-color: $mine_shaft;
-					color: $white;
-				}
-			}
-			&.active > a {
-				background-color: $mine_shaft;
-				color: $white;
-				&:hover {
-					background-color: $mine_shaft;
-					color: $white;
-				}
-				&:focus {
-					background-color: $mine_shaft;
-					color: $white;
-				}
 			}
 		}
-		> .active > a:focus {
-			background-color: $mine_shaft;
-			color: $white;
+		.navbar-header a:hover {
+			text-decoration: none;
 		}
 	}
-	.navbar-header a:hover {
-		text-decoration: none;
+	.container-fluid {
+		padding-right: 0;
 	}
 }
 .dropdown-menu {
@@ -108,6 +114,7 @@ body {
 			> .dropdown-menu {
 				left: -100%;
 				margin-left: 10px;
+				//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
 				border-radius: 6px 0 6px 6px;
 			}
 		}
@@ -116,6 +123,7 @@ body {
 			left: 100%;
 			margin-top: -6px;
 			margin-left: -1px;
+			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
 			border-radius: 0 6px 6px 6px;
 			opacity: 0.97;
 		}
@@ -134,10 +142,13 @@ body {
 		}
 	}
 	li:last-of-type:hover {
+		//Instead of the line below you could use @include border-bottom-right-radius($radius)
 		border-bottom-right-radius: 4px;
+		//Instead of the line below you could use @include border-bottom-left-radius($radius)
 		border-bottom-left-radius: 4px;
 	}
 	ul li:first-of-type:hover {
+		//Instead of the line below you could use @include border-top-right-radius($radius)
 		border-top-right-radius: 4px;
 	}
 }

@@ -2,14 +2,17 @@
 ---
 //colors
 $black:  black;
-$color_chambray_approx: #325c80;
-$white: white;
 $color_rhino_approx: #264a60;
+$white: white;
+$color_chambray_approx: #325c80;
 $color_woodsmoke_approx: #111111;
 $color_shark_approx: #242528;
 $color_mine_shaft_approx: #313236;
 $color_mountain_mist_approx: #999;
 $color_alto_approx: #dddddd;
+$color_steel_blue_approx: #337ab7;
+$color_san_juan_approx: #27496d;
+$color_curious_blue_approx: #3d96d2;
 
 //fonts
 $font_0: Helvetica;
@@ -47,8 +50,7 @@ hr {
 .custombtn {
 	display: block;
 	width: 300px;
-	/*background: $color_chambray_approx;*/
-	background-color: #264a60;
+	background-color: $color_rhino_approx;
 	color: $white;
 	text-align: center;
 	padding: 7px 0;
@@ -57,6 +59,7 @@ hr {
 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
 	border-radius: 0;
 	text-decoration: none;
+	//Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 	text-shadow: none;
 	font-size: 70%;
 	font-family: $font_0, $font_1, $font_3, $font_2;
@@ -102,18 +105,14 @@ hr {
 }
 #blogPosts {
 	margin-bottom: 50px;
-
-	.twoColumns{
-		-webkit-columns: 2 200px;
-	  -moz-columns: 2 200px;
-	  columns: 2 200px;
+	.twoColumns {
+		//Instead of the line below you could use @include columns($width-and-count)
+		columns: 2 200px;
 	}
-
 	.blogPostsHeading {
 		margin-top: 30px;
 	}
 }
-
 .postDate {
 	font-size: 80%;
 	padding: 0;
@@ -165,61 +164,51 @@ blockquote {
 	background-color: $color_alto_approx;
 	font-size: 90%;
 }
-
 .searchfield {
-	float:right;
+	float: right;
 	padding-right: 0;
 	margin-right: 0;
 }
-
-.navbar .container-fluid {
-    padding-right: 0;
-}
-
 @media(max-width: 768px) {
 	footer ul {
 		padding: 0;
 	}
 }
-
-// Download button
 .download-button {
-  border-radius: 5px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 13px;
-  background-color: #337ab7;
-  padding: 5px 10px 5px 10px;
-  margin: 21px 0 5px 5px;
-  float: right;
-  border: 1px solid #304D84;
-  box-shadow: 0 1px #27496d;
-}
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	font-family: $font_1;
+	color: $white;
+	font-size: 13px;
+	background-color: $color_steel_blue_approx;
+	padding: 5px 10px;
+	margin: 21px 0 5px 5px;
+	float: right;
+	border: 1px solid $color_chambray_approx;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 1px $color_san_juan_approx;
+	a {
+		color: $white;
+		text-decoration: none;
+		&:hover {
+			color: $white;
+			text-decoration: none;
+		}
+		.glyphicon-download-alt:before {
+			padding: 0 5px 0 0;
+		}
+	}
+	&:hover {
+		background-color: $color_curious_blue_approx;
+		text-decoration: none;
+	}
+	&:active {
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: none;
+		margin-top: 22px;
+	}
 
-.download-button a, .download-button a:hover {
-  color: white;
-  text-decoration: none;
 }
-
-.download-button:hover {
-  background-color: #3D96D2;
-  text-decoration: none;
-}
-
-.download-button:active {
-  box-shadow: none;
-  margin-top: 22px;
-}
-
-.glyphicon-download-alt:before {
-    padding: 0 5px 0 0;
-}
-
-:focus {
+:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
 	outline: none;
-}
-
-h4.product-integration {
-	border-bottom: 2px solid $black;
-	padding-bottom: 10px;
 }
