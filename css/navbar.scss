@@ -1,83 +1,71 @@
 ---
 ---
 //colors
-$black: black;
-$color_calypso_approx: #236b8e;
+$color_rhino_approx: #264a60;
+$white: white;
+$mine_shaft: #323232;
 $color_wild_sand_approx: #f5f5f5;
 $color_celeste_approx: #ccc;
-$white: #fff;
 
 body {
 	padding-top: 0;
 }
-
-/* NEW COLORS */
-
-.navbar {
+.navbar.navbar-default {
 	border-radius: 0;
-}
-
-
-.navbar-default {
-	background-color: #264a60;
-	border-color: #264a60;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: white;
-}
-
-.navbar-default .navbar-nav > li > a:hover {
-    color: white;
-}
-.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus, .navbar-nav > .active > a:focus {
-background-color: #323232;
-color: white;
-}
-
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-background-color: #323232;
-color: white;
-
-}
-
-/* NEW COLORS */
-
-.navbar {
 	margin-bottom: 0;
+	background-color: $color_rhino_approx;
+	border-color: $color_rhino_approx;
 	.logo {
 		margin-top: -2px;
 		font-size: 140%;
-		/*color: $black;*/
-		color: white;
+		color: $white;
 		.mobilefirst {
 			font-weight: bold;
 		}
 		.dev {
-			/*color: $color_calypso_approx;*/
-			color: white;
+			color: $white;
+		}
+	}
+	.navbar-nav {
+		> li {
+			> a {
+				color: $white;
+				&:hover {
+					color: $white;
+				}
+			}
+			&.open > a {
+				background-color: $mine_shaft;
+				color: $white;
+				&:hover {
+					background-color: $mine_shaft;
+					color: $white;
+				}
+				&:focus {
+					background-color: $mine_shaft;
+					color: $white;
+				}
+			}
+			&.active > a {
+				background-color: $mine_shaft;
+				color: $white;
+				&:hover {
+					background-color: $mine_shaft;
+					color: $white;
+				}
+				&:focus {
+					background-color: $mine_shaft;
+					color: $white;
+				}
+			}
+		}
+		> .active > a:focus {
+			background-color: $mine_shaft;
+			color: $white;
 		}
 	}
 	.navbar-header a:hover {
 		text-decoration: none;
-	}
-}
-.navbar-wrapper {
-	position: absolute;
-	top: 0;
-	right: 0;
-	left: 0;
-	z-index: 20;
-	.navbar {
-		padding-right: 15px;
-		padding-left: 15px;
-		.container {
-			width: auto;
-		}
-	}
-	> .container {
-		padding-right: 0;
-		padding-left: 0;
 	}
 }
 .dropdown-menu {
@@ -103,55 +91,53 @@ color: white;
 	.divider {
 		margin: 0;
 	}
+	.dropdown-submenu {
+		position: relative;
+		padding-top: 0;
+		padding-bottom: 0;
+		&:hover {
+			> .dropdown-menu {
+				display: block;
+			}
+			> a:after {
+				border-left-color: $white;
+			}
+		}
+		&.pull-left {
+			float: none;
+			> .dropdown-menu {
+				left: -100%;
+				margin-left: 10px;
+				border-radius: 6px 0 6px 6px;
+			}
+		}
+		> .dropdown-menu {
+			top: 0;
+			left: 100%;
+			margin-top: -6px;
+			margin-left: -1px;
+			border-radius: 0 6px 6px 6px;
+			opacity: 0.97;
+		}
+		> a:after {
+			display: block;
+			content: " ";
+			float: right;
+			width: 0;
+			height: 0;
+			border-color: transparent;
+			border-style: solid;
+			border-width: 5px 0 5px 5px;
+			border-left-color: $color_celeste_approx;
+			margin-top: 5px;
+			margin-right: -10px;
+		}
+	}
 	li:last-of-type:hover {
 		border-bottom-right-radius: 4px;
 		border-bottom-left-radius: 4px;
 	}
 	ul li:first-of-type:hover {
 		border-top-right-radius: 4px;
-	}
-}
-.dropdown-submenu {
-	position: relative;
-	padding-top: 0;
-	padding-bottom: 0;
-	&:hover {
-		> .dropdown-menu {
-			display: block;
-		}
-		> a:after {
-			border-left-color: $white;
-		}
-	}
-	&.pull-left {
-		float: none;
-		> .dropdown-menu {
-			left: -100%;
-			margin-left: 10px;
-			//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-			border-radius: 6px 0 6px 6px;
-		}
-	}
-	> .dropdown-menu {
-		top: 0;
-		left: 100%;
-		margin-top: -6px;
-		margin-left: -1px;
-		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-		border-radius: 0 6px 6px 6px;
-		opacity: 0.97;
-	}
-	> a:after {
-		display: block;
-		content: " ";
-		float: right;
-		width: 0;
-		height: 0;
-		border-color: transparent;
-		border-style: solid;
-		border-width: 5px 0 5px 5px;
-		border-left-color: $color_celeste_approx;
-		margin-top: 5px;
-		margin-right: -10px;
 	}
 }
