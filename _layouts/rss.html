@@ -6,16 +6,14 @@
 {% else %}
   {% assign url_base = site.github.url %}
 {% endif %}
-{% assign count = 0 %}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 	<channel>
 		<title>{{ site.name | xml_escape }}</title>
 		<description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
 		<link>{{ url_base}}/</link>
 		<atom:link href="{{ url_base }}{{page.url}}" rel="self" type="application/rss+xml" />
-		{% for post in site.posts %}
-      {% if page.filterByTag == null or post.tags contains page.filterByTag %}
-        {% assign count = count | plus:1 %}
+    {% if page.filterByTag %}{% assign posts = site.tags[page.filterByTag]%}{% else %}{% assign posts = site.posts %}{% endif %}
+		{% for post in posts | limit: 10 %}
   			<item>
   				<title>{{ post.title | xml_escape }}</title>
   				{% if post.author.name %}
@@ -41,8 +39,6 @@
           {% endfor %}
   				<guid isPermaLink="true">{{ url_base }}{{ post.url }}</guid>
   			</item>
-      {% endif %}
-      {% if count == 10 %}{% break %}{% endif %}
 		{% endfor %}
 	</channel>
 </rss>
