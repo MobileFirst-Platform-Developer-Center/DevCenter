@@ -45,26 +45,21 @@
       ]
     },
     {
-      "name": "IBM Countainers",
-      "path": "/ibm-containers",
-      "children": [
-        {
-          "name": "Overview",
-          "path": "/overview"
-        },
-        {
-          "name": "Evaluate",
-          "path": "/evaluate"
-        },
-        {
-          "name": "Run",
-          "path": "/run"
-        },
-        {
-          "name": "Sample application",
-          "path": "/sample-application"
-        },
-      ]
+        "name": "IBM Countainers",
+        "path": "/ibm-containers",
+        "children": [{
+            "name": "Overview",
+            "path": "/overview"
+        }, {
+            "name": "Evaluate",
+            "path": "/evaluate"
+        }, {
+            "name": "Run",
+            "path": "/run"
+        }, {
+            "name": "Sample application",
+            "path": "/sample-app"
+        }]
     },
 
   ]
