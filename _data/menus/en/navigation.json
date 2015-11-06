@@ -98,4 +98,7 @@
 }, {
     "name": "Help",
     "path": "/help",
-}, ]
+}, {
+    "name": "Downloads",
+    "path": "/downloads",
+} ]
