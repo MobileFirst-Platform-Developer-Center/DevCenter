@@ -212,3 +212,11 @@ blockquote {
 :focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
 	outline: none;
 }
+
+.btn, .btn:focus {
+	background-color: #264a60;
+}
+
+.btn:hover {
+	background-color: #1d3649;
+}
