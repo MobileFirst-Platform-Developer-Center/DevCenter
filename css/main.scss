@@ -10,10 +10,9 @@ $color_shark_approx: #242528;
 $color_mine_shaft_approx: #313236;
 $color_mountain_mist_approx: #999;
 $color_alto_approx: #dddddd;
-$color_steel_blue_approx: #337ab7;
-$color_san_juan_approx: #27496d;
-$color_curious_blue_approx: #3d96d2;
-
+$color_steel_blue_approx: #264a60;
+$color_san_juan_approx: #D6D5D5;
+$color_curious_blue_approx: #1d3649;
 //fonts
 $font_0: Helvetica;
 $font_1: Arial;
@@ -183,7 +182,7 @@ blockquote {
 	float: right;
 	border: 1px solid $color_chambray_approx;
 	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-	box-shadow: 0 1px $color_san_juan_approx;
+	box-shadow: 0 2px $color_san_juan_approx;
 	a {
 		color: $white;
 		text-decoration: none;
