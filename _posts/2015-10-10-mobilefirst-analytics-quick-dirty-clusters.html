@@ -136,7 +136,7 @@ author:
 <p>I would also recommend you consider setting a few nodes to be master-eligible only and all others to be data only.  That way the master nodes are solely responsible for cluster management and balance, and the data nodes are solely responsible for answering queries.  That way you never need to be concerned with updating the <code>discovery.zen.minimum_master_nodes</code>.</p>
 
 <p>For example, if you have an eight-node cluster, set four nodes with:</p>
-<table>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Key</th>
@@ -154,7 +154,7 @@ author:
 </table>
 
 <p>And the rest of the nodes with:</p>
-<table>
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Key</th>
