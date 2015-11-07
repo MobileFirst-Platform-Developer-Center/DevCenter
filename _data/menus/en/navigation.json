@@ -72,7 +72,7 @@
     }, {
         "name": "6.3",
         "path": "/6.3"
-    }, ]
+    }]
 }, {
     "name": "Labs",
     "path": "/labs",
@@ -85,7 +85,7 @@
     }, {
         "name": "7.0 Labs",
         "path": "/7.0/setup"
-    }, ]
+    }]
 }, {
     "name": "Learn More",
     "path": "/learn-more",
@@ -101,4 +101,4 @@
 }, {
     "name": "Downloads",
     "path": "/downloads",
-} ]
+}]
