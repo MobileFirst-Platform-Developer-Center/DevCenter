@@ -67,27 +67,27 @@ weight: 1
 ### <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/">Server-side development</a>
 <p>Develop the server code (adapters) that your mobile app requires to integrate with enterprise back-end applications and cloud services.</p>
 
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/adapter-framework-overview/">Adapters overview</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/javascript-adapters/">JavaScript adapters</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/java-adapter/">Java Adapters</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/java-adapter/java-http-adapter/">Java HTTP adapter</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/java-adapter/java-sql-adapter/">Java SQL adapter</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/adapter-framework-overview/">Adapters overview</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/">JavaScript adapters</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/">Java Adapters</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/java-http-adapter/">Java HTTP adapter</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/java-sql-adapter/">Java SQL adapter</a>
 * Invoking adapter procedures
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-hybrid-client-applications/">Resource request from hybrid client applications</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-ios-swift-applications/">Resource request from native iOS Swift applications</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-ios-applications/">Resource request from native iOS Objective-C applications</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-android-applications/">Resource request from native Android applications</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-windows-phone-8-applications/">Resource request from native Windows Phone 8 applications</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-windows-8-applications/">Resource request from native Windows 8 Universal applications</a>
-    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/">Invoking adapter procedures from native Java Platform, Micro Editions (Java ME) applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/debugging-adapters/">Debugging adapters</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development-category/cloudant/">Integrating with Cloudant by using an adapter</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/invoking-adapter-procedures-hybrid-client-applications/">Resource request from hybrid client applications</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/invoking-adapter-procedures-native-ios-swift-applications/">Resource request from native iOS Swift applications</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/invoking-adapter-procedures-native-ios-applications/">Resource request from native iOS Objective-C applications</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/invoking-adapter-procedures-native-android-applications/">Resource request from native Android applications</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/invoking-adapter-procedures-native-windows-phone-8-applications/">Resource request from native Windows Phone 8 applications</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/invoking-adapter-procedures-native-windows-8-applications/">Resource request from native Windows 8 Universal applications</a>
+    * <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/">Invoking adapter procedures from native Java Platform, Micro Editions (Java ME) applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/debugging-adapters/">Debugging adapters</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/cloudant/">Integrating with Cloudant by using an adapter</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/data/">Data</a>
 <p>Add data-related functionality to your applications. Create apps that can run offline.</p>

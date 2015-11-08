@@ -1,24 +1,224 @@
 ---
 layout: tutorial
-title: Using MobileFirst Platform SDK in Native Windows Phone 8 Applications
-date: 2015-03-23 06:53:41.000000000 +02:00
-type: tutorial
-published: true
-status: publish
-categories: []
-tags:
-- 7-1
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '9037'
-  _wpas_done_all: '1'
-author:
-  login: iadar@il.ibm.com
-  email: IADAR@il.ibm.com
-  display_name: IdanAdar
-  first_name: IDAN
-  last_name: ADAR
+title: Developing for Windows Phone 8
 ---
+<br>
+<p>Review curated tutorials for the Windows Phone 8 platform.</p>
+<br>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="quickstart">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseQuickstart" aria-expanded="true" aria-controls="collapseQuickstart">Quick Start</a>
+            </h4>
+        </div>
+
+        <div id="collapseQuickstart" class="panel-collapse collapse" role="tabpanel" aria-labelledby="quickstart">
+            <div class="panel-body">
+                <ul>
+                <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/quick-start/windows-phone-8-quick-start">End-to-end flow demonstration</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="settingUpYourDevelopmentEnvironment">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesettingUpYourDevelopmentEnvironment" aria-expanded="true" aria-controls="settingUpYourDevelopmentEnvironment">Setting up your development environment</a>
+            </h4>
+        </div>
+
+        <div id="collapsesettingUpYourDevelopmentEnvironment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="settingUpYourDevelopmentEnvironment">
+            <div class="panel-body">
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/setting-up-your-development-environment/setting-up-the-windows-phone-8development-environment/">Setting up the Windows Phone 8 development environment</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="helloWorld">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseHelloWorld" aria-expanded="true" aria-controls="helloWorld">Hello World</a>
+            </h4>
+        </div>
+
+        <div id="collapseHelloWorld" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hellowWorld">
+            <div class="panel-body">
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-windows-phone-8application-with-the-mfp-sdk/">Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Console</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/connecting-to-mobilefirst-server/">Connecting to MobileFirst Server</a></li>
+                    <li> <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="adapters">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAdapters" aria-expanded="true" aria-controls="adapters">Adapters</a>
+            </h4>
+        </div>
+
+        <div id="collapseAdapters" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapters">
+            <div class="panel-body">
+                <b>Required reading</b>
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/adapter-framework-overview/">Adapters overview</a></li>
+                    <li> <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/invoking-adapter-procedures-native-windows-phone-8applications/">Invoking adapter procedures from native Windows Phone 8 applications</a></li>
+                </ul>
+
+                <b>Further reading</b>
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/">JavaScript adapters</a>
+                        <ul>
+                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a></li>
+                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
+                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a></li>
+                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a></li>
+                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/">Java Adapter</a>
+                        <ul>
+                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/java-http-adapter/">Java HTTP adapter</a></li>
+                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/java-sql-adapter/">Java SQL adapter</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/debugging-adapters/">Debugging adapters</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/cloudant/">Integrating with Cloudant using an adapter</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="workingWithData">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseWorkingWithData" aria-expanded="true" aria-controls="workingWithData">Working with data</a>
+            </h4>
+        </div>
+
+        <div id="collapseWorkingWithData" class="panel-collapse collapse" role="tabpanel" aria-labelledby="workingWithData">
+            <div class="panel-body">
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/data/jsonstore">JSONStore</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote-controlled Client-side log collection</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="AuthenticationSecurity">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAuthenticationSecurity" aria-expanded="true" aria-controls="AuthenticationSecurity">Authentication and security</a>
+            </h4>
+        </div>
+
+        <div id="collapseAuthenticationSecurity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AuthenticationSecurity">
+            <div class="panel-body">
+                <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/authentication-concepts/">Authentication concepts</a>
+
+                <h4>Form-based authentication</h4>
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/">Form-based authentication - server configuration</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-native-windows-phone-8applications/">Form-based authentication - client implementation</a></li>
+                </ul>
+
+                <h4>Adapter-based authentication</h4>
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-phone-8applications/">Adapter-based authentication - client implementation</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/two-step-adapter-authentication/">Two-Step authentication</a></li>
+                </ul>
+
+                <h4>Custom authentication</h4>
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/custom-authentication/">Custom authentication - server configuration</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/custom-authentication/custom-authentication-in-native-windows-phone-8applications/">Custom authentication - client implementation</a></li>
+                </ul>
+
+
+                <h4>Application Authenticity Protection</h4>
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/application-authenticity-protection/">Application Authenticity Protection</a></li>
+                </ul>
+
+                <h4>Authenticating external resources</h4>
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="AdvancedTopics">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAdvancedTopics" aria-expanded="true" aria-controls="AdvancedTopics">Advanced topics</a>
+            </h4>
+        </div>
+
+        <div id="collapseAdvancedTopics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AdvancedTopics">
+            <div class="panel-body">
+                <h4>Push Notifications<h4>
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview">Push Notifications Overview</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/push-notification-native-windows-phone-8applications/">Push notifications in native Windows Phone 8 applications</a></li>
+                </ul>
+
+                <h4>Location Services and Beacons</h4>
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/location-services-native-windows-phone-8applications/">Location services in native Android</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/working-with-beacons/">Working with Beacons</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="MovingToProduction">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMovingToProduction" aria-expanded="true" aria-controls="MovingToProduction">Mving to Production</a>
+            </h4>
+        </div>
+
+        <div id="collapseMovingToProduction" class="panel-collapse collapse" role="tabpanel" aria-labelledby="MovingToProduction">
+            <div class="panel-body">
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/moving-production/moving-development-environment-stand-alone-qa-production-servers/">Moving from development environment to stand-alone QA and production servers</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="ReportsAndAnalytics">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReportsAndAnalytics" aria-expanded="true" aria-controls="ReportsAndAnalytics">Reports and analytics</a>
+            </h4>
+        </div>
+
+        <div id="collapseReportsAndAnalytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ReportsAndAnalytics">
+            <div class="panel-body">
+                <ul>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/moving-production/operational-analytics/">Operational Analytics</a></li>
+                    <li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/moving-production/reports-analytics/">Reports and analytics</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 <p>Listed below is a collection of tutorials that cover client- and server-side capabilities of IBM MobileFirst Platform Foundation development in Native Windows Phone 8 applications.</p>
 <p><strong>Recommended:</strong> If you haven't done so yet, <a href="/mobilefirstplatform/get-introduced">Get Introduced</a> to IBM MobileFirst Platform Foundation!</p>
 <hr />
@@ -31,16 +231,16 @@ author:
 <p>[/collapse]<br />
 [collapse label="Setting up your development environment"]
 <ul>
-<li><a href="../../setting-up-the-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
-<li><a href="../../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-phone-8-development-environment/">Setting up the Windows Phone 8 development environment</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/setting-up-the-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/setting-up-your-development-environment/setting-up-the-windows-8-and-windows-phone-8-development-environment/">Setting up the Windows Phone 8 development environment</a></li>
 </ul>
 <p>[/collapse]<br />
 [collapse label="Hello World"]</p>
 <ul>
-<li><a href="../../hello-world/configuring-a-native-windows-phone-8-application-with-the-mfp-sdk/">Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a></li>
-<li><a href="../../hello-world/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Console</a></li>
-<li><a href="../../hello-world/connecting-to-mobilefirst-server/">Connecting to MobileFirst Server</a></li>
-<li> <a href="../../advanced-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-windows-phone-8-application-with-the-mfp-sdk/">Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Console</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/connecting-to-mobilefirst-server/">Connecting to MobileFirst Server</a></li>
+<li> <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a></li>
 </ul>
 <p>[/collapse]
 </p></div>
@@ -50,56 +250,56 @@ author:
 <ul>
     </ul>
 <h4>Required reading</h4>
-<li><a href="../../server-side-development-category/adapter-framework-overview/">Adapters overview</a></li>
-<li><a href="../../server-side-development-category/invoking-adapter-procedures-native-windows-phone-8-applications/">Invoking adapter procedures from native Windows Phone 8 applications</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/adapter-framework-overview/">Adapters overview</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/invoking-adapter-procedures-native-windows-phone-8-applications/">Invoking adapter procedures from native Windows Phone 8 applications</a></li>
 <ul>
     </ul>
 <h4>Further reading</h4>
-<li><a href="../../server-side-development-category/javascript-adapters/">JavaScript adapters</a>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/">JavaScript adapters</a>
 <ul>
-<li><a href="../../server-side-development-category/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a></li>
-<li><a href="../../server-side-development-category/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-<li><a href="../../server-side-development-category/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a></li>
-<li><a href="../../server-side-development-category/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a></li>
-<li><a href="../../server-side-development-category/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a></li>
 </ul>
 </li>
-<li><a href="../../server-side-development-category/java-adapter/">Java Adapter</a>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/">Java Adapter</a>
 <ul>
-<li><a href="../../server-side-development-category/java-adapter/java-http-adapter/">Java HTTP adapter</a></li>
-<li><a href="../../server-side-development-category/java-adapter/java-sql-adapter/">Java SQL adapter</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/java-http-adapter/">Java HTTP adapter</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/java-sql-adapter/">Java SQL adapter</a></li>
 </ul>
 </li>
-<li><a href="../../server-side-development-category/debugging-adapters/">Debugging adapters</a></li>
-<li><a href="../../server-side-development-category/cloudant/">Integrating with Cloudant using an adapter</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/debugging-adapters/">Debugging adapters</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/cloudant/">Integrating with Cloudant using an adapter</a></li>
 <p>[/collapse]
 </p></div>
 <h2>Authentication and Security</h2>
 <div class="collapsed-topics">
-<h4><a href="../../authentication-security/authentication-concepts/">Authentication concepts</a></h4>
+<h4><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/authentication-concepts/">Authentication concepts</a></h4>
 <p>[collapse label="Form-based authentication"]</p>
 <ul>
-<li><a href="../../authentication-security/form-based-authentication/">Form-based authentication - server configuration</a></li>
-<li><a href="../../authentication-security/form-based-authentication/form-based-authentication-native-windows-phone-8-applications/">Form-based authentication - client implementation</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/">Form-based authentication - server configuration</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/form-based-authentication/form-based-authentication-native-windows-phone-8-applications/">Form-based authentication - client implementation</a></li>
 </ul>
 <p>[/collapse]<br />
 [collapse label="Adapter-based authentication"]</p>
 <ul>
-<li><a href="../../authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a>
 </li>
-<li><a href="../../authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-phone-8-applications/">Adapter-based authentication - client implementation</a></li>
-<li><a href="../../advanced-topics/two-step-adapter-authentication">Two-Step authentication</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-phone-8-applications/">Adapter-based authentication - client implementation</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/advanced-topics/two-step-adapter-authentication">Two-Step authentication</a></li>
 </ul>
 <p>[/collapse]<br />
 [collapse label="Custom authentication"]</p>
 <ul>
-<li><a href="../../authentication-security/custom-authentication/">Custom authentication - server configuration</a></li>
-<li><a href="../../authentication-security/custom-authentication/custom-authentication-in-native-windows-phone-8-applications/">Custom authentication - client implementation</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/custom-authentication/">Custom authentication - server configuration</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/custom-authentication/custom-authentication-in-native-windows-phone-8-applications/">Custom authentication - client implementation</a></li>
 </ul>
 <p>[/collapse]<br />
 [collapse label="Application Authenticity Protection"]</p>
 <ul>
-<li><a href="../../authentication-security/application-authenticity-protection/">Application Authenticity Protection</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/authentication-security/application-authenticity-protection/">Application Authenticity Protection</a></li>
 </ul>
 <p>[/collapse]
 </p></div>
@@ -107,8 +307,8 @@ author:
 <div class="collapsed-topics">
 [collapse label="Push Notifications"]</p>
 <ul>
-<li><a href="../../notifications/push-notifications-overview">Push Notifications Overview</a></li>
-<li><a href="../../notifications/push-notifications-overview/push-notifications-native-windows-phone-8-applications/">Push notifications in native Windows Phone 8 applications</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview">Push Notifications Overview</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/push-notifications-native-windows-phone-8-applications/">Push notifications in native Windows Phone 8 applications</a></li>
 </ul>
 <p>[/collapse]
 </p></div>
@@ -116,14 +316,14 @@ author:
 <div class="collapsed-topics">
 [collapse label="Moving to Production and Application Center"]</p>
 <ul>
-<li><a href="../../moving-production/moving-development-environment-stand-alone-qa-production-servers/">Moving from development environment to stand-alone QA and production servers</a></li>
-<li><a href="../../moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/moving-production/moving-development-environment-stand-alone-qa-production-servers/">Moving from development environment to stand-alone QA and production servers</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a></li>
 </ul>
 <p>[/collapse]<br />
 [collapse label="Operational Analytics and Reports"]</p>
 <ul>
-<li><a href="../../moving-production/operational-analytics/">Operational Analytics</a></li>
-<li><a href="../../moving-production/reports-analytics/">Reports and analytics</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/moving-production/operational-analytics/">Operational Analytics</a></li>
+<li><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/moving-production/reports-analytics/">Reports and analytics</a></li>
 </ul>
 <p>[/collapse]
 </p></div>
