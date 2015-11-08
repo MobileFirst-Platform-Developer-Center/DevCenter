@@ -5,7 +5,7 @@
           {% if page.url contains version.path %}
             {% for category in version.children %}
               {% capture combined_path %}{{version.path}}{{category.path}}{% endcapture %}
-              <li {% if page.url contains combined_path %} class="open" {% endif %}>
+              <li class="open">
                 <a href="#" class="navmenu-brand dropdown-toggle" data-toggle="dropdown">{{category.name}}</a>
                 <ul class="dropdown-menu navmenu-nav" role="menu">
                   {% for topic in category.children %}
