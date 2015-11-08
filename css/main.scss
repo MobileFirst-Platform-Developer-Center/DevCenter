@@ -234,13 +234,18 @@ blockquote {
 		outline: none;
 	}
 }
+.btn-color {
+	color: white;
+}
 .container .btn {
 	background-color: $color_rhino_approx;
 	&:focus {
 		background-color: $color_rhino_approx;
+		color: white;
 	}
 	&:hover {
 		background-color: $color_nile_blue_approx;
+		color: white;
 	}
 }
 
