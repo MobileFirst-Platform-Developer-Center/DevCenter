@@ -7,18 +7,21 @@ h1, h4 {
     margin-bottom: 0
 }
 
-.page-header {
-    margin-top: 0;
-}
-
-.label {
-    margin-right: 5px;
-}
-
-img {
-    max-width: 100%;
-    margin: 30px auto 30px auto;
-    display: block;
+.blogpost {
+  .page-header {
+      margin-top: 0;
+      .label {
+          margin-right: 5px;
+      }
+      a:hover {
+        text-decoration: none;
+      }
+  }
+  img {
+      max-width: 100%;
+      margin: 30px auto 30px auto;
+      display: block;
+  }
 }
 
 #blogPosts {
@@ -26,7 +29,10 @@ img {
     padding-top: 10px;
 
     .postItem {
-      display: inline-block;
+      margin-bottom: 10px;
+      &.inline{
+        display: inline-block;
+      }
       .postTitle {
         margin-bottom: 0;
       }
@@ -36,10 +42,8 @@ img {
     }
 }
 
-.moreBlogs {
-    line-height: 2.0em;
-}
-
-.postItem {
-    margin-bottom: 10px
+.blogIndex {
+  .moreBlogs {
+      line-height: 2.0em;
+  }
 }

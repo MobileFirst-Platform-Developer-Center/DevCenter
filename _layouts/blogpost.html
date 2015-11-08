@@ -14,9 +14,11 @@ custom_css:
                 {% if page.tags %}
 
                   {% for tag in page.tags %}
-                    <span class="label label-info">
-                    {{tag}}
-                    </span>
+                    <a href="{{site.baseurl}}/blog/tag/{{tag}}/">
+                      <span class="label label-info">
+                      {{tag}}
+                      </span>
+                    </a>
                   {% endfor %}
 
                 {% endif %}

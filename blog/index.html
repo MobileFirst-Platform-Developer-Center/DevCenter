@@ -4,12 +4,12 @@ title: MobileFirst Platform Blog
 custom_css:
  - css/blog.css
 ---
-<div class="container">
+<div class="container blogIndex">
     <h2>MobileFirst Platform Blog</h2>
     <div id="blogPosts" class="container">
           <div class="twoColumns">
             {% for post in paginator.posts %}
-            <div class="postItem">
+            <div class="postItem inline">
               <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
               <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
               <p class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | xml_escape | truncatewords: 20}}</p>
