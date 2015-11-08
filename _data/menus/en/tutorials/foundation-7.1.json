@@ -70,12 +70,6 @@
             "name": "Windows 8",
             "path": "/windows-8-tutorials"
         }, {
-            "name": "Windows Phone 10",
-            "path": "/windows-phone-10-tutorials"
-        }, {
-            "name": "Windows 10",
-            "path": "/windows-10-tutorials"
-        }, {
             "name": "Hybrid",
             "path": "/hybrid-tutorials"
         }, {
