@@ -3,17 +3,16 @@
 //colors
 $black:  black;
 $color_rhino_approx: #264a60;
-$color_rhino_approx_hover: #1d3649;
 $white: white;
 $color_chambray_approx: #325c80;
+$color_nile_blue_approx: #1d3649;
 $color_woodsmoke_approx: #111111;
 $color_shark_approx: #242528;
 $color_mine_shaft_approx: #313236;
 $color_mountain_mist_approx: #999;
 $color_alto_approx: #dddddd;
-$color_steel_blue_approx: #264a60;
-$color_san_juan_approx: #D6D5D5;
-$color_curious_blue_approx: #1d3649;
+$color_quill_gray_approx: #d6d5d5;
+
 //fonts
 $font_0: Helvetica;
 $font_1: Arial;
@@ -68,7 +67,7 @@ hr {
 	font-family: $font_0, $font_1, $font_3, $font_2;
 	font-weight: 300;
 	&:hover {
-		background: $color_rhino_approx_hover;
+		background: $color_nile_blue_approx;
 		color: $white;
 		text-decoration: none;
 		border: 1px solid $color_chambray_approx;
@@ -81,7 +80,7 @@ hr {
 		color: $color_chambray_approx;
 		margin-top: -10px;
 		&:hover {
-			background: $color_rhino_approx_hover;
+			background: $color_nile_blue_approx;
 			color: $white;
 		}
 	}
@@ -110,7 +109,8 @@ hr {
 	margin-bottom: 50px;
 	.twoColumns {
 		-webkit-columns: 2 200px;
-	  -moz-columns: 2 200px;
+		-moz-columns: 2 200px;
+		//Instead of the line below you could use @include columns($width-and-count)
 		columns: 2 200px;
 	}
 	.blogPostsHeading {
@@ -168,7 +168,6 @@ blockquote {
 	background-color: $color_alto_approx;
 	font-size: 90%;
 }
-
 @media(max-width: 768px) {
 	footer ul {
 		padding: 0;
@@ -180,13 +179,13 @@ blockquote {
 	font-family: $font_1;
 	color: $white;
 	font-size: 13px;
-	background-color: $color_steel_blue_approx;
+	background-color: $color_rhino_approx;
 	padding: 5px 10px;
 	margin: 21px 0 5px 5px;
 	float: right;
 	border: 1px solid $color_chambray_approx;
 	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-	box-shadow: 0 2px $color_san_juan_approx;
+	box-shadow: 0 2px $color_quill_gray_approx;
 	a {
 		color: $white;
 		text-decoration: none;
@@ -199,7 +198,7 @@ blockquote {
 		}
 	}
 	&:hover {
-		background-color: $color_curious_blue_approx;
+		background-color: $color_nile_blue_approx;
 		text-decoration: none;
 	}
 	&:active {
@@ -207,16 +206,40 @@ blockquote {
 		box-shadow: none;
 		margin-top: 22px;
 	}
-
 }
-:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+:focus {
 	outline: none;
 }
-
-.btn, .btn:focus {
-	background-color: #264a60;
+.btn {
+	&:focus {
+		outline: none;
+	}
+	&:active {
+		&:focus {
+			outline: none;
+		}
+		&.focus {
+			outline: none;
+		}
+	}
+	&.active {
+		&:focus {
+			outline: none;
+		}
+		&.focus {
+			outline: none;
+		}
+	}
+	&.focus {
+		outline: none;
+	}
 }
-
-.btn:hover {
-	background-color: #1d3649;
+.container .btn {
+	background-color: $color_rhino_approx;
+	&:focus {
+		background-color: $color_rhino_approx;
+	}
+	&:hover {
+		background-color: $color_nile_blue_approx;
+	}
 }
