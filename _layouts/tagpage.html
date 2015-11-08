@@ -5,7 +5,7 @@ custom_css:
 ---
 {% if page.filterByTag %}{% assign posts = site.tags[page.filterByTag]%}{% else %}{% assign posts = site.posts %}{% endif %}
 <div class="container tagpage">
-  <h1>{{page.title}}</h1>
+  <h1>Blog posts about <small>{{page.title}}</small></h1>
   <div id="blogPosts">
     {% for post in posts %}
     <div class="postItem">
