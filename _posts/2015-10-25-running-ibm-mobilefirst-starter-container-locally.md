@@ -4,7 +4,7 @@ date: 2015-10-25 14:05:45.000000000 +02:00
 tags:
 - Bluemix
 - MobileFirst_Platform
-- IBM Containers
+- IBM_Containers
 author:
   display_name: Srinivasan Nanduri
 ---
