@@ -5,14 +5,26 @@ custom_css:
 ---
 {% if page.filterByTag %}{% assign posts = site.tags[page.filterByTag]%}{% else %}{% assign posts = site.posts %}{% endif %}
 <div class="container tagpage">
-  <h1>Blog posts about <small>{{page.title}}</small></h1>
-  <div id="blogPosts">
-    {% for post in posts %}
-    <div class="postItem">
-      <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
-      <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
-      <p class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | xml_escape | truncatewords: 20}}</p>
+    <div class="row">
+        <div class="hidden-xs col-sm-2">
+        </div>
+
+        <div class="col-sm-8">
+            <h1>Blog posts about
+                <small>{{page.title}}</small>
+            </h1>
+            <div id="blogPosts">
+                {% for post in posts %}
+                <div class="postItem">
+                    <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
+                    <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+                    <p class="postExcerpt">{{ post.excerpt | markdownify | strip_html | strip_newlines | xml_escape | truncatewords: 20}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="hidden-xs col-sm-2">
+        </div>
     </div>
-    {% endfor %}
-  </div>
 </div>
