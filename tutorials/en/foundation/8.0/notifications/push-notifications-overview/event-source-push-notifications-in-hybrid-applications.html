@@ -1,0 +1,56 @@
+---
+layout: tutorial
+title: Event Source Push Notifications in Hybrid Applications
+show_children: true
+---
+<p class="breadcrumbs">
+ &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/notifications">Notifications</a> &lt; ... <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/notifications/event-source-push-notifications/">Event Source Push Notifications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul>
+</div>
+<ul>
+<li class="download-sample">
+          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsHybridProject.zip">Download sample</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial expends on the implementation of event source push notification client-side API, and covers the following topics:</p>
+<ul>
+<li>Sending the token and initializing the <code>WLPush</code> class</li>
+<li>Registering the event source</li>
+<li>Subscribing to/unsubscribing from the event source</li>
+</ul>
+<h2>Notification API - Client-side</h2>
+<h3>Methods</h3>
+<ul>
+<li><span class="inline-code">WL.Client.Push.isPushSupported()</span> – returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.</li>
+<li><span class="inline-code">WL.Client.Push.isSubscribed(alias)</span> – returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
+</ul>
+<p>When a push notification is received by a device, the callback function defined in <span class="inline-code">WL.Client.Push.registerEventSourceCallback</span> is invoked:</p>
+<p>[code lang="js"]function pushNotificationReceived(props, payload) {<br />
+    alert(&quot;pushNotificationReceived invoked&quot;);<br />
+    alert(&quot;props :: &quot; + JSON.stringify(props));<br />
+    alert(&quot;payload :: &quot; + JSON.stringify(payload));<br />
+}[/code]</p>
+<p>If the application was in background mode (or inactive) when the push notification arrived, this callback function is invoked when the application returns to the foreground.</p>
+<h2 id="backendEmulator">Back-end emulator</h2>
+<p>The sample project for this tutorial is bundled with a back-end emulator which can be used to simulate push notification submissions by a back-end system. The source for the emulator can be found in the sample project.</p>
+<p>To run the back-end emulator, open the PushBackendEmulator folder of the sample project in a command prompt, and then run the supplied JAR file by using the following syntax:</p>
+<p>[code]java –jar PushBackendEmulator.jar &lt;userId&gt; &lt;message&gt; &lt;contextRoot&gt; &lt;port&gt;[/code]</p>
+<p><span class="inline-code">userId</span> is the user name that you used to log in to the sample application.<br />
+<span class="inline-code">contextRoot</span> is the context root of your MobileFirst project.</p>
+<h3>Example</h3>
+<p>[code]java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080[/code]</p>
+<p>The back-end emulator tries to connect to a MobileFirst Server and call a <span class="inline-code">submitNotification()</span> adapter procedure. It outputs the invocation result to a command prompt console.</p>
+<h4>Success</h4>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_success.png"><img src="{{ site.baseurl }}/assets/backup/08_01_push_success-1024x136.png" alt="08_01_push_success" width="600" class="aligncenter size-large wp-image-1380" /></a></p>
+<h4>Failure</h4>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_failure.png"><img src="{{ site.baseurl }}/assets/backup/08_01_push_failure-1024x130.png" alt="08_01_push_failure" width="600" class="aligncenter size-large wp-image-1381" /></a></p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_sample.png"><img class="aligncenter wp-image-1389 size-full" src="{{ site.baseurl }}/assets/backup/08_01_push_sample.png" alt="08_01_push_sample" width="850" height="500" /></a></p>
+<h2>Sample application</h2>
+<p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsHybridProject.zip">Click to download</a> the sample application.</p>

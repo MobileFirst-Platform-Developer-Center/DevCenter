@@ -1,0 +1,117 @@
+---
+layout: tutorial
+title: Interactive and Silent Notifications in Native iOS Applications
+date: 2015-05-04 11:47:04.000000000 +03:00
+type: tutorial
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6637'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442505392;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:5730;}i:1;a:1:{s:2:"id";i:11194;}i:2;a:1:{s:2:"id";i:322;}}}}
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+ &lt; <a href="../../../">Notifications</a> &lt; <a href="../../">Push Notifications Overview</a> &lt; <a href="../">Push notifications in native iOS applications</a></p>
+<div id="samplesAndPersonas">
+<div>
+    Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="ios">Native iOS</li>
+</ul>
+</div>
+</div>
+<p><br clear="all" /><br />
+<strong>Prerequisite:</strong> Make sure that you read the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/notifications/push-notifications-native-ios-applications/">Push notifications in native iOS applications</a> tutorial first.</p>
+<h2>Silent Notifications</h2>
+<p>iOS 7 and above.</p>
+<p>Silent notifications is a feature allowing to send notifications without disturbing the user. Notifications are not shown in the notification center or notification bar.<br />
+Callback methods are executed even when the application is running in the background.</p>
+<blockquote><p>For more information, refer to the "silent notifications" topics in the MobileFirst Platform user documentation, and in Apple's user documentation.</p></blockquote>
+<h4>Server API for silent notification</h4>
+<p>To send silent notification, set a string to indicate the type. Create a notification object by using the <code>WL.Server.createDefaultNotification</code> API and set the type as below:<br />
+[code lang="obj-c"]notification.APNS.type = &quot;DEFAULT&quot; | &quot;SILENT&quot; | &quot;MIXED&quot;; [/code]</p>
+<ul>
+<li><code>DEFAULT</code> means normal notification, which shows the alert and is kept in the notification center if the application is running in the background.</li>
+<li><code>SILENT</code> means silent notification, which does not show any alert or the message is not placed in the notification center. In the silent type, the aps tag of push notification contains only content-available.</li>
+<li><code>MIXED</code> means a combination of the above: This option invokes the callback method silently and shows the alert.</li>
+</ul>
+<h4>Client-side API for silent notification</h4>
+<p>To handle silent notification on the client-side:</p>
+<ul>
+<li>Enable the application capability to perform background tasks on receiving the remote notifications<br />
+To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes, like Remote notifications and Background fetch.
+</li>
+<li>Implement a new callback method in the <code>AppDelegate</code> <span class="inline-code">(application: didReceiveRemoteNotification:fetchCompletionHandler:)</span> to receive silent notifications when the application is running in the background.</li>
+<li>In the callback, check whether the notification is silent by checking that the key content-available is set to 1.</li>
+<li>Call the <span class="inline-code">fetchCompletionHandler</span> block method at the end of the notification handler.</li>
+</ul>
+<h2>Interactive Notifications</h2>
+<p>iOS 8 and above.</p>
+<p>Interactive notifications enable users to take actions when a notification is received without the application being open.<br />
+When an interactive notification is received, the device shows action buttons along with the notification message.</p>
+<blockquote><p>For more information, refer to the "interactive notifications" topics in the MobileFirst Platform user documentation, and in Apple's user documentation.</p></blockquote>
+<h4>Server API for interactive notification</h4>
+<p>To send interactive notification, set a string to indicate the category.<br />
+Categories describe a custom type of notification that your application sends and contains actions that a user can perform in response.</p>
+<ul>
+<li>For event-source notifications, create a notification object and set the category as below:<br />
+        [code lang="obj-c"]notification.APNS.category = &quot;poll&quot;; [/code]</li>
+<li>For broadcast/tag-based notifications, create a notification object and set the category as below:<br />
+        [code lang="obj-c"]notification.settings.apns.category = &quot;poll&quot;; [/code]</li>
+<li>The category name must be same as the one used on the client side.</li>
+</ul>
+<h4>Client-side steps for interactive notification</h4>
+<p>To handle interactive notification on the client-side:</p>
+<ul>
+<li>Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.<br />
+To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes like Remote notifications and Background fetch.</li>
+<li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>didRegisterForRemoteNotificationsWithDeviceToken</code> method in the <code>AppDelegate</code> class.
+<p>    [code lang="obj-c"]<br />
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{<br />
+    NSLog(@&quot;APNS Token : %@&quot;, deviceToken);<br />
+    if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){<br />
+        UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;</p>
+<p>        UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];<br />
+        acceptAction.identifier = @&quot;OK&quot;;<br />
+        acceptAction.title = @&quot;OK&quot;;</p>
+<p>        UIMutableUserNotificationAction *rejetAction = [[UIMutableUserNotificationAction alloc] init];<br />
+        rejetAction.identifier = @&quot;Cancel&quot;;<br />
+        rejetAction.title = @&quot;Cancel&quot;;<br />
+        [rejetAction setActivationMode:UIUserNotificationActivationModeBackground];</p>
+<p>        UIMutableUserNotificationCategory *cateogory = [[UIMutableUserNotificationCategory alloc] init];<br />
+        cateogory.identifier = @&quot;poll&quot;;<br />
+        [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextDefault];<br />
+        [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextMinimal];</p>
+<p>        NSSet *catgories = [NSSet setWithObject:cateogory];<br />
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:catgories]];<br />
+    }<br />
+    [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];<br />
+}<br />
+[/code]</li>
+<li>To handle the actions the user selects, use the <code>handleActionWithIdentifier</code> method of the <code>UIApplicationDelegate</code> protocol:<br />
+    [code lang="obj-c"]<br />
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {<br />
+    if ([identifier isEqualToString:@&quot;OK&quot;]) {</p>
+<p>        NSLog(@&quot;OK was tapped&quot;);<br />
+    }<br />
+    else if ([identifier isEqualToString:@&quot;Cancel&quot;]) {</p>
+<p>        NSLog(@&quot;Cancel was tapped&quot;);</p>
+<p>    }<br />
+    if (completionHandler) {</p>
+<p>        completionHandler();<br />
+    }<br />
+}<br />
+[/code]</p>
+<p>Make sure to call the <code>completionHandler</code>.</li>
+</ul>

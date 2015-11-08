@@ -1,0 +1,371 @@
+---
+layout: tutorial
+title: Two-Step adapter authentication
+date: 2015-04-28 06:58:28.000000000 +03:00
+type: tutorial
+published: true
+status: publish
+categories: []
+tags:
+- 7-1
+meta:
+  _wpcom_is_markdown: '1'
+  _edit_last: '6643'
+  _syntaxhighlighter_encoded: '1'
+  _wpas_done_all: '1'
+author:
+  login: iadar@il.ibm.com
+  email: IADAR@il.ibm.com
+  display_name: IdanAdar
+  first_name: IDAN
+  last_name: ADAR
+---
+<p class="breadcrumbs">
+&lt; <a href="../">Advanced Topics</a></p>
+<div id="samplesAndPersonas">
+<div>
+        Relevant to:</p>
+<ul id="relevantForPersona">
+<li class="hybrid">Hybrid</li>
+</ul></div>
+<ul>
+<li class="download-sample">
+  <a href="https://github.com/MobileFirst-Platform-Developer-Center/TwoStepAuth" target="_blank">Download MobileFirst project</a>
+        </li>
+</ul>
+</div>
+<h2>Overview</h2>
+<p>This tutorial demonstrates how to implement "Two-Step" adapter-based authentication.</p>
+<p><em>Two-Step</em> means that after the initial authentication that uses, for example, a username and a password, an additional authentication step is required, such as a login pin, a secret word, or similar identification. In this example, a secret word is implemented for the second authentication step. The code snippets and sample application in this tutorial are based on the <a href="../../authentication-security/adapter-based-authentication/">existing adapter-based authentication sample</a>. The changes extend the application from <em>single-step</em> to <em>Two-Step</em>.</p>
+<h3>Session-independent mode</h3>
+<p>By default, MobileFirst Platform Foundation 7.1 applications run in a session-independent mode, meaning that you can no longer use HTTP sessions or global variables to persist data across requests. Instead, MobileFirst apps must use a third-party database to store applicative states.</p>
+<blockquote><p>To learn more about the session-independent mode, see its topic in the user documentation.</p></blockquote>
+<p>To demonstrate how to store user data, the tutorial uses the <code>WL.Server.getClientId</code> API and a Cloudant database.</p>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#cloudant">Prerequisite - Creating an IBM Cloudant account</a></li>
+<li><a href="#config">Configuring the authenticationConfig.xml file</a></li>
+<li><a href="#serverside">Creating the server-side authentication components</a></li>
+<li><a href="#creatingTheClientsideAuthenticationComponents">Creating the client-side authentication components</a></li>
+<li><a href="#sampleApplication">Sample application</a></li>
+</ul>
+<h2 id="cloudant">Prerequisite - Creating an IBM Cloudant account</h2>
+<p>This sample uses IBM Cloudant Database to save user data. To run the sample and understand how to work with Cloudant, first <a href="https://cloudant.com/sign-up/" target="_blank">sign up for a free account</a> and create a database.<br />
+Then proceed as follows:</p>
+<ul>
+<li>Change the database permissions - Follow the instructions in the <a href="https://cloudant.com/changing-database-permissions-tutorial/" target="_blank">Changing Database Permissions</a> tutorial.</li>
+<li>Basic authentication - The basic authentication value is passed as part of every request to the database. Instead of using your username and password to identify, use base-64 encoding to generate a string that is created by concatenating the API <code>key</code> and <code>password</code>, separated by a column character in the following manner: <code>key:password</code>. You use it later to send requests to the database.<br />
+For more information, read the Cloudant <a href="https://docs.cloudant.com/authentication.html#basic-authentication">Basic Authentication</a> documentation.</li>
+</ul>
+<h2 id="config">Configuring the authenticationConfig.xml file</h2>
+<h3>Realms</h3>
+<p>Add a realm or replace the existing <code>AuthLoginModule</code> realm in the <code>realms</code> section of the <code>authenticationConfig.xml</code> file:<br />
+[code lang="xml"]<br />
+  &lt;realm loginModule=&quot;AuthLoginModule&quot; name=&quot;TwoStepAuthRealm&quot;&gt;<br />
+    &lt;className&gt;com.worklight.integration.auth.AdapterAuthenticator&lt;/className&gt;<br />
+      &lt;parameter name=&quot;login-function&quot; value=&quot;AuthAdapter.onAuthRequired&quot;/&gt;<br />
+      &lt;parameter name=&quot;logout-function&quot; value=&quot;AuthAdapter.onLogout&quot;/&gt;<br />
+  &lt;/realm&gt;<br />
+[/code]</p>
+<h3>Security tests</h3>
+<p>Add a security test or replace the existing <code>AuthSecurityTest</code> in the <code>securityTests</code> section of the <code>authenticationConfig.xml</code> file:<br />
+[code lang="xml"]<br />
+  &lt;customSecurityTest name=&quot;TwoStepAuthAdapter-securityTest&quot;&gt;<br />
+      &lt;test isInternalUserID=&quot;true&quot; realm=&quot;TwoStepAuthRealm&quot;/&gt;<br />
+  &lt;/customSecurityTest&gt;<br />
+[/code]</p>
+<blockquote><p>To review the remaining/existing sample components, see the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/authentication-security/adapter-based-authentication/">Adapter-based authentication</a> tutorial.</p></blockquote>
+<h2 id="serverside">Creating the server-side authentication components</h2>
+<p>To put in place the Two-Step authentication process, several changes are necessary to the adapter file (whether XML or JavaScript) and to the database.</p>
+<h3>Adapter XML file</h3>
+<p>Edit the <code>AuthAdapter.xml</code> file:</p>
+<ol>
+<li>Change the domain name to your Cloudant domain:<br />
+[code lang="xml"]<br />
+&lt;domain&gt;$USERNAME.cloudant.com&lt;/domain&gt;[/code]
+</li>
+<li>Add the following procedure:
+<p>[code lang="xml"]<br />
+&lt;procedure name=&quot;submitAuthenticationStep2&quot; securityTest=&quot;wl_unprotected&quot;/&gt;<br />
+[/code]
+</li>
+<li>Protect the <code>getSecretData</code> method with the new <code>TwoStepAuthAdapter-securityTest<br />
+</code></li>
+</ol>
+<h3>Adapter JavaScript file</h3>
+<p>Edit the <code>AuthAdapter-impl.js</code> file:</p>
+<ol>
+<li>Create a variable to save the basic authentication encoded string you have generated before:<br />
+[code lang="js"]<br />
+var auth = &quot;Basic REPLASE_ME_WITH_THE_BASE-64_ENCODED_STRING&quot;;;<br />
+[/code]
+</li>
+<li>Create a variable to save your database name:<br />
+[code lang="js"]<br />
+var dbName = &quot;REPLACE_ME_WITH_THE_DATABASE_NAME&quot;;<br />
+[/code]
+</li>
+<li>Update the <code>onAuthRequired</code> function to return that authentication step 1 is required:<br />
+[code lang="js" highlight="5"]<br />
+function onAuthRequired(headers, errorMessage){<br />
+	errorMessage = errorMessage ? errorMessage : null;<br />
+	return {<br />
+		authRequired: true,<br />
+		authStep: 1,<br />
+		errorMessage: errorMessage<br />
+	};<br />
+}[/code]</li>
+<li>Update the <code>submitAuthenticationStep1</code> function:
+<ul>
+<li>Add the following line to get the client ID:<br />
+[code lang="js" highlight="4"]<br />
+function submitAuthenticationStep1(username, password){<br />
+	if (username === &quot;user&quot; &amp;&amp; password === &quot;password&quot;){<br />
+		WL.Logger.debug(&quot;Step 1 :: SUCCESS&quot;);<br />
+		var clientId = WL.Server.getClientId();<br />
+		var userIdentity = {<br />
+				userId: username,<br />
+				displayName: username,<br />
+				attributes: {}<br />
+		};<br />
+[/code]
+</li>
+<li>To save the <code>userIdentity</code> for the next authentication step, write it to the database. Use the <code>clientId</code> variable as the document <code>_id</code> key:<br />
+[code lang="js" highlight="14" firstline="10"]<br />
+		//Validate that the DB doesn't already contains the ClientId<br />
+		var response = deleteUserIdentityFromDB(dbName, null);</p>
+<p>		//Write ClientId to DB<br />
+		var response = writeUserIdentityToDB(dbName, {_id:clientId, &quot;userIdentity&quot;:userIdentity});<br />
+[/code]
+</li>
+<li>If step 1 authentication was successful, return that step 2 is required:<br />
+[code lang="js" highlight="18,19" firstline="15"]<br />
+		if (response){<br />
+			return {<br />
+				authRequired: true,<br />
+				authStep: 2,<br />
+				question: &quot;What is your pet's name?&quot;,<br />
+				errorMessage : &quot;&quot;<br />
+			};<br />
+		} else {<br />
+			return onAuthRequired(null, &quot;Database ERROR&quot;);<br />
+		}</p>
+<p>	} else{<br />
+		WL.Logger.debug(&quot;Step 1 :: FAILURE&quot;);<br />
+		return onAuthRequired(null, &quot;Invalid login credentials&quot;);<br />
+	}<br />
+}<br />
+[/code]
+</li>
+</ul>
+</li>
+<li>Add <code>submitAuthenticationStep2</code> function to handle the second authentication step:
+<ul>
+<li>Get the client ID and read it from the database:<br />
+[code lang="js"]<br />
+function submitAuthenticationStep2(answer){<br />
+	var clientId = WL.Server.getClientId();<br />
+	var response = readUserIdentityFromDB(dbName, clientId);<br />
+[/code]
+</li>
+<li>If step 2 authentication was successful, delete the client document from database:<br />
+[code lang="js" highlight="12" firstline="4"]<br />
+	if (response){<br />
+		if (answer === &quot;Lassie&quot;){<br />
+			var doc = JSON.parse(response.text);<br />
+			var userIdentity = doc.userIdentity;<br />
+			WL.Logger.debug(&quot;Step 2 :: SUCCESS&quot;);<br />
+			WL.Server.setActiveUser(&quot;TwoStepAuthRealm&quot;, userIdentity);<br />
+			WL.Logger.debug(&quot;Authorized access granted&quot;);</p>
+<p>			var response = deleteUserIdentityFromDB(dbName, doc);</p>
+<p>			return {<br />
+				authRequired: false<br />
+			};<br />
+		} else{<br />
+			WL.Logger.debug(&quot;Step 2 :: FAILURE&quot;);<br />
+			return onAuthRequired(null, &quot;Wrong security question answer&quot;);<br />
+		}<br />
+	} else {<br />
+		WL.Logger.debug(&quot;Step 1 :: FAILURE&quot;);<br />
+		return onAuthRequired(null, &quot;Database ERROR&quot;);<br />
+	}</p>
+<p>}<br />
+[/code]
+</li>
+</ul>
+</li>
+</ol>
+<h3>Database actions</h3>
+<p>To handle the database actions, use the <code>WL.Server.invokeHttp</code> method and Cloudant REST API.</p>
+<ul>
+<li>Write to the database:<br />
+[code lang="js"]<br />
+function writeUserIdentityToDB(db, document){<br />
+	   var input = {<br />
+			   	method : 'post',<br />
+		        returnedContentType : 'plain',<br />
+		        path : db,<br />
+		        headers: {<br />
+		        	&quot;Authorization&quot;:auth<br />
+		        },<br />
+		        body:{<br />
+		        	contentType:'application/json; charset=UTF-8',<br />
+		        	content:JSON.stringify(document)<br />
+		    }};</p>
+<p>		 var response = WL.Server.invokeHttp(input);<br />
+		 var responseString = &quot;&quot; + response.statusCode;</p>
+<p>		//Checking if the invocation was successful - status code = 2xx<br />
+		 if (responseString.indexOf('2') === 0){<br />
+			 return response;<br />
+		 }<br />
+		 return null;<br />
+}<br />
+[/code]
+</li>
+<li>Read from database:<br />
+[code lang="js"]<br />
+function readUserIdentityFromDB(db, key){<br />
+	 var input = {<br />
+		        method : 'get',<br />
+		        returnedContentType : 'plain',<br />
+		        path : db + &quot;/&quot; + key,<br />
+		        headers: {<br />
+		        	&quot;Authorization&quot;:auth<br />
+		        	}<br />
+		    };<br />
+	 var response = WL.Server.invokeHttp(input);<br />
+	 var responseString = &quot;&quot; + response.statusCode;</p>
+<p>	 //Checking if the invocation was successful - status code = 2xx<br />
+	 if (responseString.indexOf('2') === 0){<br />
+		 return response;<br />
+	 }<br />
+	 return null;<br />
+}<br />
+[/code]
+</li>
+<li>Delete from the database:<br />
+[code lang="js"]<br />
+function deleteUserIdentityFromDB(db, document){<br />
+	var doc = document;<br />
+	if (!doc){<br />
+		var clientId = WL.Server.getClientId();<br />
+		var response = readUserIdentityFromDB(dbName, clientId);<br />
+		if(!response){<br />
+			return;<br />
+		} else {<br />
+			doc = JSON.parse(response.text);<br />
+		}<br />
+	}<br />
+	var id = doc._id; // The id of the doc to remove<br />
+	var rev = doc._rev; // The rev of the doc to remove<br />
+	var input = {<br />
+		        method : 'delete',<br />
+		        returnedContentType : 'plain',<br />
+		        path : db + &quot;/&quot; + id + &quot;?rev=&quot; + rev,<br />
+		        headers: {<br />
+		        	&quot;Authorization&quot;:auth<br />
+		        	}<br />
+		    };<br />
+	 return WL.Server.invokeHttp(input);<br />
+}<br />
+[/code]
+</li>
+</ul>
+<blockquote><p>To learn more about IBM Cloudant REST API, see the Cloudant documentation.</p></blockquote>
+<h2 id="creatingTheClientsideAuthenticationComponents">Creating the client-side authentication components</h2>
+<ol>
+<li>In <code>index.html</code>, use the <code>TwoStepAuthRealm</code> instead of the existing realm:
+<p>[code lang="javascript" highlight="3"]<br />
+&lt;div id=&quot;AppDiv&quot;&gt;<br />
+      ...<br />
+      &lt;input type=&quot;button&quot; class=&quot;appButton&quot; value=&quot;Logout&quot; onclick=&quot;WL.Client.logout('TwoStepAuthRealm', {onSuccess:WL.Client.reloadApp})&quot; /&gt;<br />
+      &lt;div id=&quot;ResponseDiv&quot;&gt;&lt;/div&gt;<br />
+&lt;/div&gt;<br />
+[/code]</li>
+<li>Add a second authentication screen:
+<p>[code lang="html"]<br />
+&lt;div id=&quot;AuthStep2Div&quot;&gt;<br />
+    &lt;h3&gt;Authentication Step 2&lt;/h3&gt;<br />
+    &lt;p id=&quot;AuthQuestion&quot;&gt;&lt;/p&gt;<br />
+    &lt;input type=&quot;text&quot; placeholder=&quot;Enter answer&quot; id=&quot;AuthAnswer&quot;/&gt;&lt;br /&gt;<br />
+    &lt;input type=&quot;button&quot; class=&quot;formButton&quot; value=&quot;Submit&quot; id=&quot;AuthStep2Submit&quot; /&gt;&lt;input type=&quot;button&quot; class=&quot;AuthCancelButton&quot; value=&quot;Cancel&quot; /&gt;<br />
+&lt;/div&gt;[/code]</li>
+<li>Finally, update the challenge handler accordingly.<br />
+In this example, a new challenge handler (a new <code>.js</code> file), called <code>TwoStepAuthRealmChallengeProcessor.js</code>, is created for this purpose.</p>
+<ul>
+<li>The response is checked as in the original sample application:
+<p>[code lang="js"]<br />
+var TwoStepAuthRealmChallengeHandler = WL.Client.createChallengeHandler(&quot;TwoStepAuthRealm&quot;);</p>
+<p>TwoStepAuthRealmChallengeHandler.isCustomResponse = function(response) {<br />
+	if (!response || !response.responseJSON	|| response.responseText === null) {<br />
+		return false;<br />
+	}<br />
+	if (typeof(response.responseJSON.authRequired) !== 'undefined'){<br />
+		return true;<br />
+	} else {<br />
+		return false;<br />
+	}<br />
+};[/code]</li>
+<li>Add another case for the second authentication step:<br />
+[code lang="js" firstline="13"]<br />
+TwoStepAuthRealmChallengeHandler.handleChallenge = function(response){<br />
+	var authRequired = response.responseJSON.authRequired;</p>
+<p>	if (authRequired == true){<br />
+		$(&quot;#AppDiv&quot;).hide();<br />
+		$(&quot;#AuthDiv&quot;).show();<br />
+		$(&quot;#AuthInfo&quot;).empty();</p>
+<p>		$(&quot;#AuthStep1Div&quot;).hide();<br />
+		$(&quot;#AuthStep2Div&quot;).hide();<br />
+		switch (response.responseJSON.authStep) {<br />
+			case 1:<br />
+				$(&quot;#AuthStep1Div&quot;).show();<br />
+				$(&quot;#AuthPassword&quot;).val('');<br />
+				break;<br />
+			case 2:<br />
+				$(&quot;#AuthStep2Div&quot;).show();<br />
+				$(&quot;#AuthAnswer&quot;).val('');<br />
+				$(&quot;#AuthQuestion&quot;).html(response.responseJSON.question);<br />
+				break;<br />
+		}</p>
+<p>		if (response.responseJSON.errorMessage)<br />
+			$(&quot;#AuthInfo&quot;).html(response.responseJSON.errorMessage);</p>
+<p>	} else if (authRequired == false){<br />
+		$(&quot;#AppDiv&quot;).show();<br />
+		$(&quot;#AuthDiv&quot;).hide();<br />
+		TwoStepAuthRealmChallengeHandler.submitSuccess();<br />
+	}<br />
+};[/code]</li>
+<li>Perform the second authentication step:<br />
+[code lang="js" firstline="44"]<br />
+$(&quot;#AuthStep1Submit&quot;).bind('click', function () {<br />
+	var username = $(&quot;#AuthUsername&quot;).val();<br />
+	var password = $(&quot;#AuthPassword&quot;).val();</p>
+<p>	var invocationData = {<br />
+		adapter : &quot;AuthAdapter&quot;,<br />
+		procedure : &quot;submitAuthenticationStep1&quot;,<br />
+		parameters : [ username, password ]<br />
+	};</p>
+<p>	TwoStepAuthRealmChallengeHandler.submitAdapterAuthentication(invocationData, {});<br />
+});</p>
+<p>$(&quot;#AuthStep2Submit&quot;).bind('click', function () {<br />
+	var answer = $(&quot;#AuthAnswer&quot;).val();</p>
+<p>	var invocationData = {<br />
+		adapter : &quot;AuthAdapter&quot;,<br />
+		procedure : &quot;submitAuthenticationStep2&quot;,<br />
+		parameters : [ answer ]<br />
+	};</p>
+<p>	TwoStepAuthRealmChallengeHandler.submitAdapterAuthentication(invocationData, {});<br />
+});</p>
+<p>$(&quot;.AuthCancelButton&quot;).bind('click', function () {<br />
+	$(&quot;#AppDiv&quot;).show();<br />
+	$(&quot;#AuthDiv&quot;).hide();<br />
+	TwoStepAuthRealmChallengeHandler.submitFailure();<br />
+});<br />
+[/code]</li>
+</ul>
+</li>
+</ol>
+<p><br clear="all" /></p>
+<blockquote><p>To review the remaining/existing sample client-side implementation, see the <a href="../../authentication-security/adapter-based-authentication/adapter-based-authentication-hybrid-applications/">Adapter-based authentication in hybrid applications</a>  tutorial.</p></blockquote>
+<h2 id="sampleApplication">Sample application</h2>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/TwoStepAuth">Click to download</a> the sample application.</p>
