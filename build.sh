@@ -16,7 +16,6 @@ bundle exec jekyll build
 rm -rf ../mfpsamples.github.ibm.com.generated
 
 #clone `master' branch of the repository using encrypted GH_TOKEN for authentification
-git clone <url> --branch <branch> --single-branch
 git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --branch generated --single-branch ../mfpsamples.github.ibm.com.generated
 # copy generated HTML site to `master' branch
 cp -R _site/* ../mfpsamples.github.ibm.com.generated
