@@ -10,6 +10,7 @@ exclude: [vendor,old-backup,build.sh,Gemfile,Gemfile.lock,README.md]
 
 gems:
   - jekyll-feed
+  - jekyll-paginate
 defaults:
   -
     scope:
