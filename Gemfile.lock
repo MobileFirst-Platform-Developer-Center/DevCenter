@@ -10,7 +10,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.3.8)
     blankslate (2.1.2.4)
-    classifier-reborn (2.0.3)
+    classifier-reborn (2.0.4)
       fast-stemmer (~> 1.0)
     coffee-script (2.4.1)
       coffee-script-source
@@ -88,7 +88,7 @@ GEM
     json (1.8.3)
     kramdown (1.5.0)
     liquid (2.6.2)
-    listen (3.0.3)
+    listen (3.0.4)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     maruku (0.7.0)

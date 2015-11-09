@@ -9,7 +9,6 @@ markdown: redcarpet
 exclude: [vendor,old-backup,build.sh,Gemfile,Gemfile.lock,README.md]
 
 gems:
-  - jekyll-redirect-from
   - jekyll-feed
 defaults:
   -
