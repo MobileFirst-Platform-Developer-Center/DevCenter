@@ -27,4 +27,4 @@ git config user.email "nathanh@il.ibm.com"
 git config user.name "Nathan Hazout Travis"
 git add -A .
 git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
-git push --quiet origin master
+git push --quiet origin generated
