@@ -11,6 +11,7 @@ set -e
 
 # build site with jekyll, by default to `_site' folder
 bundle exec jekyll build --verbose
+rm -r _site/*.log
 
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.master
