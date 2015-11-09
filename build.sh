@@ -23,6 +23,8 @@ cp -R _site/* ../mfpsamples.github.ibm.com.generated
 # commit and push generated content to `master' branch
 # since repository was cloned in write mode with token auth - we can push there
 cd ../mfpsamples.github.ibm.com.generated
+git config user.email "nathanh@il.ibm.com"
+git config user.name "Nathan Hazout Travis"
 git add -A .
 git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --quiet origin master > /dev/null 2>&1
