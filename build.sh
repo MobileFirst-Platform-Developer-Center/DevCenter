@@ -10,7 +10,7 @@ fi
 set -e
 
 # build site with jekyll, by default to `_site' folder
-bundle exec jekyll build -V
+travis_wait bundle exec jekyll build -V
 
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.master
