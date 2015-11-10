@@ -1,5 +1,5 @@
 language: ruby
-script: "travis_wait ./build.sh" # execute this script on each commit
+script: "./build.sh" # execute this script on each commit
 branches:
   only:
   - jekyll # only take into account `jekyll' branch

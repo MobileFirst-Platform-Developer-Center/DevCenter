@@ -10,7 +10,7 @@ fi
 set -e
 
 # build site with jekyll, by default to `_site' folder
-bundle exec jekyll build --profile
+bundle exec jekyll build --profile --verbose
 rm -f _site/*.log
 
 # cleanup
