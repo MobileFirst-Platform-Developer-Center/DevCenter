@@ -1,7 +1,5 @@
 ---
 layout: default
-custom_css:
- - css/blog.css
 ---
 {% if page.filterByTag %}{% assign posts = site.tags[page.filterByTag]%}{% else %}{% assign posts = site.posts %}{% endif %}
 <div class="container-fluid tagpage">

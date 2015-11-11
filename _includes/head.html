@@ -13,24 +13,10 @@
 <!-- Bootstrap core CSS -->
 <link href="{{site.baseurl}}/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
 <!-- Custom styles for this template -->
-<link href="{{site.baseurl}}/css/main.css" rel="stylesheet">
-<link href="{{site.baseurl}}/css/navbar.css" rel="stylesheet">
-<link href="{{site.baseurl}}/css/syntax.css" rel="stylesheet">
+<link href="{{site.baseurl}}/css/combined.css" rel="stylesheet">
 
 {% if page.title %}
   <title>{{page.title}} - {{site.name}}</title>
 {% else %}
   <title>{{site.name}}</title>
-{% endif %}
-
-
-{% if page.custom_css %}
-  {% for stylesheet in page.custom_css %}
-    <link rel="stylesheet" href="{{site.baseurl}}/{{ stylesheet }}" media="screen" type="text/css">
-  {% endfor %}
-{% endif %}
-{% if layout.custom_css %}
-  {% for stylesheet in layout.custom_css %}
-    <link rel="stylesheet" href="{{site.baseurl}}/{{ stylesheet }}" media="screen" type="text/css">
-  {% endfor %}
 {% endif %}
