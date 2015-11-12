@@ -11,9 +11,7 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'tagpage.html')
       self.data['tag'] = tag
 
-      # category_title_prefix = site.config['category_title_prefix'] || 'Category: '
-      # self.data['title'] = "#{category_title_prefix}#{category}"
-      self.data['title'] = "#{tag}"
+      self.data['title'] = tag.dup.gsub! '_', ' '
       self.data['filterByTag'] = "#{tag}"
     end
   end
@@ -29,8 +27,6 @@ module Jekyll
       self.read_yaml(File.join(base, '_layouts'), 'atom.html')
       self.data['tag'] = tag
 
-      # category_title_prefix = site.config['category_title_prefix'] || 'Category: '
-      # self.data['title'] = "#{category_title_prefix}#{category}"
       self.data['title'] = "#{tag}"
       self.data['filterByTag'] = "#{tag}"
     end
