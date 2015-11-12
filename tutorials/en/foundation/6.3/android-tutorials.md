@@ -37,7 +37,7 @@ title: Native Android Development
 * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-android-applications/">Adapter-based authentication - client implementation</a>
 * <a href="../authentication-security/custom-authenticator-login-module/">Custom authenticator and login module - server configuration</a>
 * <a href="../authentication-security/custom-authenticator-login-module/custom-authenticator-login-module-native-android-applications/">Custom authenticator and login module - client implementation</a>
-* <a href="../authentication-security/application-authenticity-protection-native-android/">Application Authenticity Protection in Native Android applications</a>
+* <a href="../authentication-security/application-authenticity-protection/application-authenticity-protection-native-android/">Application Authenticity Protection in Native Android applications</a>
 
 ### Advanced topics
 

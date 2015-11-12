@@ -28,7 +28,3 @@ title: Native Windows Phone 8 Development
 <p><i>Multiple tutorials within</i></p>
 
 * <a href="../moving-production/">Moving to production</a>
-
-<h2>Sample applications</h2>
-
-* <a href="../starter-application-samples/">Download the Starter Application sample project</a>

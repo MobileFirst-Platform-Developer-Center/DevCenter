@@ -5,7 +5,7 @@ title: Native iOS Development
 ### Setting up your development environment
 
 * <a href=" ../setting-up-your-development-environment/setting-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
-* <a href=" ../setting-up-your-development-environment/setting-ios-development-environment/">Setting up your iOS development environment</a>
+* <a href=" ../setting-up-your-development-environment/setting-ios-development-environment">Setting up your iOS development environment</a>
 
 ### Hello World
 
@@ -37,7 +37,7 @@ title: Native iOS Development
 * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-ios-applications/">Adapter-based authentication - client implementation</a>
 * <a href="../authentication-security/custom-authenticator-login-module/">Custom authenticator and login module - server configuration</a>
 * <a href="../authentication-security/custom-authenticator-login-module/custom-authenticator-login-module-native-ios-applications/">Custom authenticator and login module - client implementation</a>
-* <a href="../authentication-security/application-authenticity-protection-native-ios/">Application Authenticity Protection in Native iOS applications</a>
+* <a href="../authentication-security/application-authenticity-protection/application-authenticity-protection-native-ios/">Application Authenticity Protection in Native iOS applications</a>
 
 ### Advanced topics
 
