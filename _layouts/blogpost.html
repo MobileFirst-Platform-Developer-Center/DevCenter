@@ -8,7 +8,11 @@ layout: default
         <div class="col-sm-8">
             <h1>{{page.title}}</h1>
             <div class="page-header">
-                <h4>{{page.author.display_name}} <small>{{ page.date | date: '%B %d, %Y' }}</small></h4>
+                <h4>
+                  {{page.author.display_name}}
+                  <small>{{ page.date | date: '%B %d, %Y' }}</small>
+                  <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
+                </h4>
                 {% if page.tags %}
 
                   {% for tag in page.tags %}
@@ -22,6 +26,8 @@ layout: default
                 {% endif %}
             </div>
             {{content}}
+
+            {% include disqus.html %}
         </div>
         <div class="hidden-xs col-sm-2">
         </div>
