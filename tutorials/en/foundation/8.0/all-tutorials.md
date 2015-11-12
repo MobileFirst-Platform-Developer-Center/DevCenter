@@ -2,6 +2,7 @@
 layout: tutorial
 title: All Tutorials
 weight: 1
+show_disqus: false
 ---
 
 ### <a href="../hello-world/">Hello World</a>

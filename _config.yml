@@ -19,9 +19,11 @@ defaults:
     values:
       category: blog
       layout: blogpost
+      show_disqus: true
   -
     scope:
       path: "tutorials"
     values:
       layout: tutorial
       show_breadcrumb: true
+      show_disqus: true
