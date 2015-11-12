@@ -32,8 +32,6 @@ custom_js:
         {% assign childrenLevel = level | plus : 1 %}
         {% include show-children.html docs=documents dir=page.dir level=childrenLevel %}
       {% endif %}
-
-      {% include disqus.html %}
     </div>
     <div class="hidden-xs col-sm-2">
 
