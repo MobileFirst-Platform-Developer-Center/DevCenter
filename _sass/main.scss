@@ -65,10 +65,20 @@ hr {
 	font-family: $font_0, $font_1, $font_3, $font_2;
 	font-weight: 300;
 	&:hover {
-		background: $color_nile_blue_approx;
+		background-color: $color_nile_blue_approx;
 		color: $white;
 		text-decoration: none;
 		border: 1px solid $color_chambray_approx;
+	}
+	&:visited {
+		background-color: $color_rhino_approx;
+		color: $white;
+		text-decoration: none;
+	}
+	&:active {
+		background-color: $color_rhino_approx;
+		color: $white;
+		text-decoration: none;
 	}
 	&.containers {
 		width: 400px;
