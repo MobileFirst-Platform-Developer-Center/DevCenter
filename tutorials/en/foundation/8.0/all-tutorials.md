@@ -65,32 +65,32 @@ Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; nati
 *  <a href="../advanced-topics/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/">Using MobileFirst application as a container for server-generated pages</a>
 *  <a href="../advanced-topics/container-advanced-pages/">Container for advanced pages</a>
 
-### <a href="../server-side-development-category/">Server-side development</a>
+### <a href="../server-side-development/">Server-side development</a>
 Develop the server code (adapters) that your mobile app requires to integrate with enterprise back-end applications and cloud services.
 
-* <a href="../server-side-development-category/adapters-framework-overview/">Adapters overview</a>
-* <a href="../server-side-development-category/javascript-adapters/">JavaScript adapters</a>
-    * <a href="../server-side-development-category/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
-    * <a href="../server-side-development-category/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a>
-    * <a href="../server-side-development-category/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a>
-    * <a href="../server-side-development-category/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a>
-    * <a href="../server-side-development-category/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a>
-* <a href="../server-side-development-category/java-adapter/">Java Adapters</a>
-    * <a href="../server-side-development-category/java-adapter/java-http-adapter/">Java HTTP adapter</a>
-    * <a href="../server-side-development-category/java-adapter/java-sql-adapter/">Java SQL adapter</a>
+* <a href="../server-side-development/adapters-framework-overview/">Adapters overview</a>
+* <a href="../server-side-development/javascript-adapters/">JavaScript adapters</a>
+    * <a href="../server-side-development/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
+    * <a href="../server-side-development/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a>
+    * <a href="../server-side-development/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a>
+    * <a href="../server-side-development/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a>
+    * <a href="../server-side-development/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a>
+* <a href="../server-side-development/java-adapter/">Java Adapters</a>
+    * <a href="../server-side-development/java-adapter/java-http-adapter/">Java HTTP adapter</a>
+    * <a href="../server-side-development/java-adapter/java-sql-adapter/">Java SQL adapter</a>
 
 
 * Invoking adapter procedures
-    * <a href="../server-side-development-category/invoking-adapter-procedures-hybrid-client-applications/">Invoking adapter procedures from hybrid client applications</a>
-    * <a href="../server-side-development-category/invoking-adapter-procedures-native-ios-swift-applications/">Invoking adapter procedures from native iOS Swift applications</a>
-    * <a href="../server-side-development-category/invoking-adapter-procedures-native-ios-applications/">Invoking adapter procedures from native iOS Objective-C applications</a>
-    * <a href="../server-side-development-category/invoking-adapter-procedures-native-android-applications/">Invoking adapter procedures from native Android applications</a>
-    * <a href="../server-side-development-category/invoking-adapter-procedures-native-windows-phone-8-applications/">Invoking adapter procedures from native Windows Phone 8 applications</a>
-    * <a href="../server-side-development-category/invoking-adapter-procedures-native-windows-8-applications/">Invoking adapter procedures from native Windows 8 Universal applications</a>
-    * <a href="../server-side-development-category/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/">Invoking adapter procedures from native Java Platform, Micro Editions (Java ME) applications</a>
-* <a href="../server-side-development-category/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a>
-* <a href="../server-side-development-category/debugging-adapters/">Debugging adapters</a>
-* <a href="../server-side-development-category/cloudant/">Integrating with Cloudant by using an adapter</a>
+    * <a href="../server-side-development/invoking-adapter-procedures-hybrid-client-applications/">Invoking adapter procedures from hybrid client applications</a>
+    * <a href="../server-side-development/invoking-adapter-procedures-native-ios-swift-applications/">Invoking adapter procedures from native iOS Swift applications</a>
+    * <a href="../server-side-development/invoking-adapter-procedures-native-ios-applications/">Invoking adapter procedures from native iOS Objective-C applications</a>
+    * <a href="../server-side-development/invoking-adapter-procedures-native-android-applications/">Invoking adapter procedures from native Android applications</a>
+    * <a href="../server-side-development/invoking-adapter-procedures-native-windows-phone-8-applications/">Invoking adapter procedures from native Windows Phone 8 applications</a>
+    * <a href="../server-side-development/invoking-adapter-procedures-native-windows-8-applications/">Invoking adapter procedures from native Windows 8 Universal applications</a>
+    * <a href="../server-side-development/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/">Invoking adapter procedures from native Java Platform, Micro Editions (Java ME) applications</a>
+* <a href="../server-side-development/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a>
+* <a href="../server-side-development/debugging-adapters/">Debugging adapters</a>
+* <a href="../server-side-development/cloudant/">Integrating with Cloudant by using an adapter</a>
 
 ### <a href="../data/">Data</a>
 Add data-related functionality to your applications. Create apps that can run offline.

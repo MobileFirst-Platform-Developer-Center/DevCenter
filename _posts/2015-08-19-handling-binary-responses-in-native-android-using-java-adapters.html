@@ -10,9 +10,9 @@ tags:
 author:
   display_name: Nathan Hazout
 ---
-This is a follow up to <a href="https://developer.ibm.com/mobilefirstplatform/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">Handling binary responses in native iOS using Java adapters</a>.
+This is a follow up to <a href="https://developer.ibm.com/mobilefirstplatform/blog/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">Handling binary responses in native iOS using Java adapters</a>.
 
-Starting with MobileFirst Platform 7.0, you can send and receive arbitrary data to your client’s device using <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/server-side-development-category/java-adapter/" target="_blank">Java Adapters</a>.
+Starting with MobileFirst Platform 7.0, you can send and receive arbitrary data to your client’s device using <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/" target="_blank">Java Adapters</a>.
 
 <h3>Overview</h3>
 In this example, I will show a native Android application that can convert a string to a <a href="http://en.wikipedia.org/wiki/QR_code" target="_blank">QR code</a>.
@@ -55,7 +55,7 @@ The method uses <code>@Produces("image/png")</code> and automatically adds the <
 The implementation details of this method are out of scope and can be understood from the ZXing documentation. All I did was use <code>QRCodeWriter</code> to encode the string to a 200 by 200 bar code. The resulting stream is returned in the response.
 
 <h3>Android Studio Project</h3>
-I've created a new Android project named <code>BinaryResponse</code> and <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/">configured it to use MobileFirst Platform</a>.
+I've created a new Android project named <code>BinaryResponse</code> and <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/configuring-a-native-android-application-with-the-mfp-sdk/">configured it to use MobileFirst Platform</a>.
 
 The UI simply shows an <code>EditText</code> to enter the string, a <code>Button</code> to trigger the request and a <code>ImageView</code> to display the generated QRCode.
 

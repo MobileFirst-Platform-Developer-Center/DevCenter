@@ -10,7 +10,7 @@ author:
 ---
 <blockquote><b>Disclaimer: </b>The solution discussed herein is from my own personal experience as a developer using the MobileFirst platform and do not represent IBM's view nor IBM's interest in supporting this officially.</blockquote>
 
-If you have tried an evaluation of MobileFirst Platform Foundation using the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/evaluate-foundation-on-bluemix">ibm-mobilefirst-starter</a> image on <a href="https://www.ng.bluemix.net/docs/">IBM Bluemix</a>, you might have wondered:
+If you have tried an evaluation of MobileFirst Platform Foundation using the <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/ibm-containers/evaluate">ibm-mobilefirst-starter</a> image on <a href="https://www.ng.bluemix.net/docs/">IBM Bluemix</a>, you might have wondered:
 
 * How do I run the container locally on my computer?
 * How do I add and run my own projects?
