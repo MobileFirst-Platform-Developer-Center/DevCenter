@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Native iOS Development
+show_disqus: false
 ---
 <br>
 ### Quick Start

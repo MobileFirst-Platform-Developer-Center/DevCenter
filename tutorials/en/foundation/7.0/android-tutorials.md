@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Native Android Development
+show_disqus: false
 ---
 <br>
 ### Quick Start

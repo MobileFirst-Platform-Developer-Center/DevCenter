@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Native Windows Phone 8 Development
+show_disqus: false
 ---
 ### Setting up your development environment
 

@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Native Android Development
+show_disqus: false
 ---
 ### Setting up your development environment
 

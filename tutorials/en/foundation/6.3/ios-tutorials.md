@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Native iOS Development
+show_disqus: false
 ---
 ### Setting up your development environment
 

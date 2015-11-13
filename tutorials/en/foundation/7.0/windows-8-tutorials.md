@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Native Windows 8 Development
+show_disqus: false
 ---
 <br>
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>

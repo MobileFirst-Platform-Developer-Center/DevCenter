@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: All Tutorials
+show_disqus: false
 ---
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
 <p>Set up your development environment to work with IBM MobileFirst Platform Foundation.</p>

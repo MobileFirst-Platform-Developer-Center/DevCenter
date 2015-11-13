@@ -2,6 +2,7 @@
 layout: tutorial
 title: All Tutorials
 weight: 1
+show_disqus: false
 ---
 
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>

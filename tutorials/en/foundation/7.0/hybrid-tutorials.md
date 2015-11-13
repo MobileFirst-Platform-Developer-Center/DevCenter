@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Hybrid Development
+show_disqus: false
 ---
 <br>
 ### <a href="/mobilefirstplatform/documentation/getting-started-7-0/setting-up-your-development-environment/">Setting up your development environment</a>
