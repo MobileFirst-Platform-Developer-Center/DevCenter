@@ -70,16 +70,6 @@ hr {
 		text-decoration: none;
 		border: 1px solid $color_chambray_approx;
 	}
-	&:visited {
-		background-color: $color_rhino_approx;
-		color: $white;
-		text-decoration: none;
-	}
-	&:active {
-		background-color: $color_rhino_approx;
-		color: $white;
-		text-decoration: none;
-	}
 	&.containers {
 		width: 400px;
 	}
