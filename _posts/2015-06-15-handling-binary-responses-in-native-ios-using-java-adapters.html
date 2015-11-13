@@ -8,7 +8,7 @@ tags:
 author:
   display_name: Nathan Hazout
 ---
-<p>Starting with MobileFirst Platform 7.0, you can send and receive arbitrary data to your client's device using <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/java-adapter/" title="Java Adapters" target="_blank">Java Adapters</a>.
+<p>Starting with MobileFirst Platform 7.0, you can send and receive arbitrary data to your client's device using <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/server-side-development/java-adapter/" title="Java Adapters" target="_blank">Java Adapters</a>.
 
 <h3>Overview</h3>
 <p>In this example, I will show a native iOS (Swift) application that can convert a string to a <a href="http://en.wikipedia.org/wiki/QR_code" target="_blank">QR code</a>.
@@ -49,7 +49,7 @@ The adapter resource file contains only one method, <code>getQR</code>, which ca
 <p>The implementation details of this method are out of scope and can be understood from the ZXing documentation. All I did was use <code>QRCodeWriter</code> to encode the string to a 200 by 200 bar code. The resulting stream is returned in the response.
 
 <h3>Xcode Project</h3>
-<p>I've created a new Xcode (Swift) Project named <code>BinaryResponse</code> and <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/hello-world/configuring-a-native-ios-with-the-mfp-sdk/" title="Configuring a native iOS application with the MobileFirst Platform SDK">configured it to use MobileFirst Platform</a>.
+<p>I've created a new Xcode (Swift) Project named <code>BinaryResponse</code> and <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/hello-world/configuring-a-native-ios-with-the-mfp-sdk/" title="Configuring a native iOS application with the MobileFirst Platform SDK">configured it to use MobileFirst Platform</a>.
 
 <p>The storyboard simply shows a text field to enter the string, a button to trigger the request and a 200px/200px <code>UIImageView</code> to display the generated QRCode.
 

@@ -20,8 +20,6 @@ author:
   first_name: NATHAN
   last_name: HAZOUT
 ---
-<p class="breadcrumbs">
- &lt; <a href="../../">Server-side development</a> &lt; <a href="../">Java Adapter</a></p>
 <div id="samplesAndPersonas">
 <div>
     Relevant to:</p>
@@ -39,7 +37,7 @@ author:
 </ul>
 </div>
 <h2>Overview</h2>
-<p>This tutorial is a continuation of the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/java-adapter/" title="Java Adapter">Java adapters</a> tutorial and assumes previous knowledge of the concepts that are described there.</p>
+<p>This tutorial is a continuation of the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/server-side-development/java-adapter/" title="Java Adapter">Java adapters</a> tutorial and assumes previous knowledge of the concepts that are described there.</p>
 <p>Java adapters gives you control over connectivity to your back end. It is therefore your responsibility to ensure best practices regarding performance and other implementation details.</p>
 <p>This tutorial shows an example of a Java adapter that connects to an RSS feed by using a Java <code>HttpClient</code>, and covers the following topics:</p>
 <ul>
@@ -129,7 +127,7 @@ public class RSSAdapterResource {<br />
 </ul>
 <p>If <code>RSSResponse</code> is not <code>200 OK</code>, the status code and reason are written in the response instead.</p>
 <h2 id="results">Results</h2>
-<p>Use the testing techniques as described in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/java-adapter/#testing" title="Java Adapters">Java adapter</a> tutorial to test your work.</p>
+<p>Use the testing techniques as described in the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/server-side-development/java-adapter/#testing" title="Java Adapters">Java adapter</a> tutorial to test your work.</p>
 <p>The adapter should return the RSS feed converted to JSON.</p>
 <p>[code lang="javascript"]<br />
 {<br />

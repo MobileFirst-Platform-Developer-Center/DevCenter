@@ -3,8 +3,6 @@ layout: tutorial
 title: Remote controlled client-side log collection
 show_children: true
 ---
-<p class="breadcrumbs">
- &lt; <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/advanced-client-side-development/">Advanced client-side development</a></p>
 <div>
     Relevant to:</p>
 <ul id="relevantForPersona">
@@ -51,7 +49,7 @@ Capture is on by default but can be turned off.</p>
 <blockquote><p>For more information on installing Analytics in a production environment, review the "Installing the IBM MobileFirst Platform Operational Analytics" topic in the user documentation.</p></blockquote>
 <p>If you do not wish to use the Analytics Platform, you can still collect and process client logs by creating an adapter. By default, the MobileFirst Platform is configured to forward client logs to an adapter named "WLClientLogReceiver" that exposes a method called "log".</p>
 <p>If the Analytics Platform and the adapter have both been configured, the MobileFirst Platform will send logs to both endpoints. Using both may be useful if you'd like to take advantage of the Analytics Platform's log searching capabilities, but also wish to do some custom operations on client logs using your own adapter.</p>
-<p><strong>Note:</strong> Installation and configuration of Analytics Platform and development of adapters is beyond the scope of this Getting Started tutorial. For more information, see the "Installing the MobileFirst Platform Operational Analytics" topic in the user documentation, and the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-0/server-side-development/adapter-framework-overview/">Adapters overview tutorial</a>.</p>
+<p><strong>Note:</strong> Installation and configuration of Analytics Platform and development of adapters is beyond the scope of this Getting Started tutorial. For more information, see the "Installing the MobileFirst Platform Operational Analytics" topic in the user documentation, and the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/server-side-development/adapter-framework-overview/">Adapters overview tutorial</a>.</p>
 <h2 id="adminControl">Admin control of client log capture</h2>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/comsole-project-buttons.png"><img src="{{ site.baseurl }}/assets/backup/comsole-project-buttons.png" alt="comsole-project-buttons" width="701" height="353" class="aligncenter size-full wp-image-6376" /></a></p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/client-log-profiles.png"><img src="{{ site.baseurl }}/assets/backup/client-log-profiles.png" alt="client-log-profiles" width="692" height="405" class="aligncenter size-full wp-image-6372" /></a></p>
