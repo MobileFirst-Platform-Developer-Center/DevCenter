@@ -33,7 +33,7 @@ show_disqus: false
 
 ### <a href="../notifications/">Notifications</a>
 
-* <a href="../notifications/push-notification-native-windows-8-applications/">Push notifications in native Windows 8 applications</a>
+* <a href="../notifications/push-notifications-native-windows-8-applications/">Push notifications in native Windows 8 applications</a>
 
 ### <a href="../authentication-security/">Authentication and security</a>
 
@@ -41,7 +41,6 @@ show_disqus: false
 * <a href="../authentication-security/form-based-authentication/">Form-based authentication - server configuration</a>
 * <a href="../authentication-security/form-based-authentication/form-based-authentication-in-native-windows-8-applications/">Form-based authentication - client implementation</a>
 * <a href="../authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a>
-
 * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-8-applications/">Adapter-based authentication - client implementation</a>
 * <a href="../authentication-security/custom-authenticator-login-module/">Custom authenticator and login module - server configuration</a>
 * <a href="../authentication-security/custom-authenticator-login-module/custom-authenticator-login-module-native-windows-8-applications/">Custom authenticator and login module - client implementation</a>

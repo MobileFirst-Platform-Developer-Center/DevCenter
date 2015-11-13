@@ -22,8 +22,6 @@ show_disqus: false
 
 ### <a href="../server-side-development/">Server-side development</a>
 
-
-
 * <a href="../server-side-development/adapter-framework-overview/">Adapters overview</a>
 * <a href="../server-side-development/js-http-adapter/">JavaScript HTTP Adapter</a>
 * <a href="../server-side-development/js-sql-adapter/">JavaScript SQL Adapter</a>
@@ -46,7 +44,7 @@ show_disqus: false
 
 ### <a href="../notifications/">Notifications</a>
 
-* <a href="../notifications/push-notification-native-android-applications/">Push notifications in native Android applications</a>
+* <a href="../notifications/push-notifications-native-android-applications/">Push notifications in native Android applications</a>
 
 ### <a href="../authentication-security/">Authentication and security</a>
 
@@ -54,18 +52,16 @@ show_disqus: false
 * <a href="../authentication-security/form-based-authentication/">Form-based authentication - server configuration</a>
 * <a href="../authentication-security/form-based-authentication/form-based-authentication-native-android-applications/">Form-based authentication - client implementation</a>
 * <a href="../authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a>
-
 * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-android-applications/">Adapter-based authentication - client implementation</a>
 * <a href="../authentication-security/custom-authenticator-login-module/">Custom authenticator and login module - server configuration</a>
-* <a href="../authentication-security/custom-authenticator-login-module/custom-authenticator-login-module-native-android-applications/">Custom authenticator and login module - client implementation</a>
-* <a href="http://developer.ibm.com../authentication-security/application-authenticity-protection/application-authenticity-protection-native-android/">Application Authenticity Protection in Native Android applications</a>
+* <a href="../authentication-security/custom-authenticator-login-module/custom-authenticator-and-login-module-in-native-android-applications/">Custom authenticator and login module - client implementation</a>
+* <a href="../authentication-security/application-authenticity-protection/application-authenticity-protection-native-android/">Application Authenticity Protection in Native Android applications</a>
 * <a href="../authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a>
 
 ### <a href="../advanced-topics/">Advanced topics</a>
 
 * <a href="../advanced-topics/location-services-native-android-applications/">Location services in native Android</a>
 * <a href="http://developer.ibm.com../advanced-topics/working-with-beacons/">Working with Beacons</a>
-* <a href="../advanced-topics/working-bluxmix-data-api/">Working with Bluemix Data API</a>
 
 ### <a href="../moving-production/">Moving to production</a>
 

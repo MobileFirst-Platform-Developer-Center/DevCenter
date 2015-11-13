@@ -4,7 +4,7 @@ title: Hybrid Development
 show_disqus: false
 ---
 <br>
-### <a href="/mobilefirstplatform/documentation/getting-started-7-0/setting-up-your-development-environment/">Setting up your development environment</a>
+### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
 
 * <a href="../setting-up-your-development-environment/setting-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
 * <a href="../setting-up-your-development-environment/setting-ios-development-environment/">Setting up your iOS development environment</a>
@@ -12,7 +12,7 @@ show_disqus: false
 * <a href="../setting-up-your-development-environment/setting-blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>
 * <a href="../setting-up-your-development-environment/setting-windows-phone-8-development-environment/">Setting up your Windows Phone 8 development environment</a>
 
-### <a href="/mobilefirstplatform/documentation/getting-started-7-0/hello-world/">Hello World</a>
+### <a href="../hello-world/">Hello World</a>
 
 * <a href="../hello-world/creating-your-first-hybrid-application/">Creating your first hybrid application</a>
 * <a href="../hello-world/connecting-to-the-mobilefirst-server/">Connecting to the MobileFirst Server</a>
@@ -33,13 +33,13 @@ show_disqus: false
 * <a href="../client-side-development-basics/general-information-developing-mobile-web-applications/">General information when developing Mobile Web applications</a>
 * <a href="../client-side-development-basics/general-information-developing-desktop-applications/">General information when developing desktop applications</a>
 
-### <a href="../erver-side-development/">Server-side development</a>
+### <a href="../server-side-development/">Server-side development</a>
 
 * <a href="../server-side-development/adapter-framework-overview/">Adapters overview</a>
-* <a href="../server-side-development/http-adapter-communicating-http-back-end-systems/">HTTP adapter – Communicating with HTTP back-end systems</a>
-* <a href="../server-side-development/sql-adapter-communicating-sql-database/">SQL adapter – Communicating with SQL database</a>
-* <a href="../server-side-development/cast-iron-adapter-communicating-cast-iron/">Cast Iron adapter – Communicating with Cast Iron</a>
-* <a href="../server-side-development/jms-adapter-communicating-jms/">JMS adapter – Communicating with JMS</a>
+* <a href="../server-side-development/js-http-adapter/">HTTP adapter – Communicating with HTTP back-end systems</a>
+* <a href="../server-side-development/js-sql-adapter/">SQL adapter – Communicating with SQL database</a>
+* <a href="../server-side-development/js-cast-iron-adapter/">Cast Iron adapter – Communicating with Cast Iron</a>
+* <a href="../server-side-development/js-jms-adapter/">JMS adapter – Communicating with JMS</a>
 * <a href="../server-side-development/java-adapter/">Java adapters</a>
 * <a href="../server-side-development/invoking-adapter-procedures-hybrid-client-applications/">Invoking adapter procedures from hybrid client applications</a>
 * <a href="../server-side-development/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a>
@@ -47,7 +47,7 @@ show_disqus: false
 * <a href="../server-side-development/debugging-adapters/">Debugging adapters</a>
 * <a href="../server-side-development/cloudant/">Integrating with Cloudant using an adapter</a>
 
-### <a href="../dvanced-client-side-development/">Advanced client-side development</a>
+### <a href="../advanced-client-side-development/">Advanced client-side development</a>
 
 * <a href="../advanced-client-side-development/overview-client-technologies/">Overview of client technologies</a>
 * <a href="../advanced-client-side-development/common-ui-controls/">Common UI controls</a>
@@ -57,13 +57,13 @@ show_disqus: false
 * <a href="../advanced-client-side-development/using-cli-create-build-manage-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
 * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
 
-### <a href="/mobilefirstplatform/documentation/getting-started-7-0/data/">Data</a>
+### <a href="../data/">Data</a>
 
 * <a href="../data/working-offline/">Working offline</a>
 * <a href="../data/jsonstore/jsonstore-javascript-api/">JSONStore - JavaScript API</a>
 * <a href="https://developer.ibm.com/mobilefirstplatform/documentation/integration-7-0/cloudant/">Integrating with Cloudant using an adapter</a>
 
-### <a href="../dding-native-functionality/">Adding native functionality to hybrid applications</a>
+### <a href="../adding-native-functionality/">Adding native functionality to hybrid applications</a>
 
 * <a href="../adding-native-functionality/apache-cordova-overview/">Apache Cordova overview</a>
 * <a href="../adding-native-functionality/ios-using-native-pages-hybrid-applications/">iOS – Using native pages in hybrid applications</a>
@@ -74,9 +74,9 @@ show_disqus: false
 * <a href="../adding-native-functionality/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
 * <a href="../adding-native-functionality/windows-phone-8-using-native-pages-hybrid-applications/">Windows Phone 8 – Using native pages in hybrid applications</a>
 * <a href="../adding-native-functionality/windows-phone-8-adding-native-functionality-hybrid-application-apache-cordova-plugin/">Windows Phone 8 – Adding native functionality to hybrid application with Apache Cordova plugin</a>
-* <a href="../adding-native-functionality/wp8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
+* <a href="../adding-native-functionality/windows-phone-8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
 
-### <a href="/mobilefirstplatform/documentation/getting-started-7-0/notifications/">Notifications</a>
+### <a href="../notifications/">Notifications</a>
 
 * <a href="../notifications/push-notifications-hybrid-applications/">Push notifications in hybrid applications</a>
 * <a href="../notifications/sms-notifications/">SMS notifications</a>
@@ -97,7 +97,7 @@ show_disqus: false
 * <a href="../authentication-security/client-x-509-certificate-authentication-user-enrollment/">Client X.509 Certificate Authentication and User Enrollment</a>
 * <a href="../authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a>
 
-### <a href="../dvanced-topics/">Advanced topics</a>
+### <a href="../advanced-topics/">Advanced topics</a>
 
 * <a href="../advanced-topics/shell-development-concepts/">Shell development concepts</a>
 * <a href="../advanced-topics/location-services-hybrid-applications/">Location services in hybrid applications</a>
@@ -108,7 +108,7 @@ show_disqus: false
 * <a href="../advanced-topics/testing-mobilefirst-platform-applications-mobile-test-workbench/">Testing MobileFirst Platform applications with the Mobile Test Workbench</a>
 * <a href="../advanced-topics/device-enrollment/">Device Enrollment</a>
 
-### <a href="/mobilefirstplatform/documentation/getting-started-7-0/moving-production/">Moving to production</a>
+### <a href="../moving-production/">Moving to production</a>
 
 * <a href="../moving-production/moving-development-environment-stand-alone-qa-production-servers/">Moving from development environment to stand-alone QA and production servers</a>
 * <a href="../moving-production/operational-analytics/">Operational Analytics</a>

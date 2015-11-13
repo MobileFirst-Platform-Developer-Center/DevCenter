@@ -22,11 +22,9 @@ show_disqus: false
 
 ### <a href="../server-side-development/">Server-side development</a>
 
-#### Required reading
 * <a href="../server-side-development/adapter-framework-overview/">Adapters overview</a>
 * <a href="../server-side-development/invoking-adapter-procedures-native-ios-applications/">Invoking adapter procedures from native iOS applications</a>
 * <a href="../server-side-development/invoking-adapter-procedures-native-ios-swift-applications/">Invoking adapter procedures from native iOS Swift applications</a>
-#### Further reading
 * <a href="../server-side-development/js-http-adapter/">JavaScript HTTP Adapter</a>
 * <a href="../server-side-development/js-sql-adapter/">JavaScript SQL Adapter</a>
 * <a href="../server-side-development/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a>
@@ -43,7 +41,7 @@ show_disqus: false
 ### <a href="../data/">Data</a>
 
 * <a href="../data/jsonstore/jsonstore-objective-c-api/">JSONStore - Objective-C API</a>
-* <a href="../advanced-topics/cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
+* <a href="../data/cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
 
 ### <a href="../notifications/">Notifications</a>
 
@@ -55,7 +53,6 @@ show_disqus: false
 * <a href="../authentication-security/form-based-authentication/">Form-based authentication - server configuration</a>
 * <a href="../authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/">Form-based authentication - client implementation</a>
 * <a href="../authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a>
-
 * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-ios-applications/">Adapter-based authentication - client implementation</a>
 * <a href="../authentication-security/custom-authenticator-login-module/">Custom authenticator and login module - server configuration</a>
 * <a href="../authentication-security/custom-authenticator-login-module/custom-authenticator-login-module-native-ios-applications/">Custom authenticator and login module - client implementation</a>
