@@ -1,37 +1,8 @@
 ---
 layout: tutorial
 title: OAuth-based security model
-date: 2015-04-16 09:48:47.000000000 +03:00
-type: tutorial
-published: true
-status: publish
-categories: []
-tags:
-- 7-1
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _wpas_done_all: '1'
-  _syntaxhighlighter_encoded: '1'
-  _jetpack_related_posts_cache: a:1:{s:32:"984a002a47179f5ee40a1e2a09fbfe45";a:2:{s:7:"expires";i:1442504263;s:7:"payload";a:3:{i:0;a:1:{s:2:"id";i:11126;}i:1;a:1:{s:2:"id";i:10655;}i:2;a:1:{s:2:"id";i:8149;}}}}
-author:
-  login: nathanh@il.ibm.com
-  email: NATHANH@il.ibm.com
-  display_name: Nathan Hazout
-  first_name: NATHAN
-  last_name: HAZOUT
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 ---
-<div id="samplesAndPersonas">
-<div>
-        Relevant to:</p>
-<ul id="relevantForPersona">
-<li class="ios">Native iOS</li>
-<li class="android">Native Android</li>
-<li class="wp8">Native Windows Phone 8</li>
-<li class="wp8">Native Windows 8 Universal</li>
-<li class="hybrid">Hybrid</li>
-</ul></div>
-</div>
 <h2>Overview</h2>
 <p>The <a href="http://oauth.net/" target="_blank">OAuth 2.0</a> protocol is based on the acquisition of an access token, which encapsulates the authorization that is granted to the client. In that context, IBM MobileFirst Platform Server serves as an authorization server and is able to generate such tokens. The client can then use these tokens to access resources on a resource server, which can be either MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. This separation between resource server and authorization server in the new OAuth-based model allows you to enforce MobileFirst security on resources that are running outside MobileFirst Server.</p>
 <p>To support backward compatibility, <a href="../../authentication-security/authentication-concepts/classic-security-model/" title="Classic security model">the classic (pre-V7.0) MobileFirst security model</a> is still used in the flows that are based on the existing MobileFirst APIs (for example, <code>invokeProcedure</code> in Java). The new client APIs trigger flows that conform to the OAuth-based security model. IBM MobileFirst Platform Foundation V7.0 provides seamless integration between the two security models. The platform allows you to mix classic and new APIs in the same application, while keeping a consistent security context on the server side.</p>
