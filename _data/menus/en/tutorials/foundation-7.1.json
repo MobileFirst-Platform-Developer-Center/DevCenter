@@ -24,7 +24,7 @@
             "path": "/data"
         }, {
             "name": "Adding native functionality",
-            "path": "adding-native-functionality"
+            "path": "/adding-native-functionality" 
         }, {
             "name": "Notifications",
             "path": "/notifications"

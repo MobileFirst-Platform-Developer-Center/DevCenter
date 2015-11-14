@@ -6,13 +6,13 @@
             "path": "",
             "children": [{
                 "name": "Quick start",
-                "path": "/hello-world"
+                "path": "/quick-start"
             }, {
                 "name": "Setting up your development environment",
                 "path": "/setting-up-your-development-environment"
             }, {
-                "name": "Adding the MobileFirst SDK",
-                "path": "/adding-the-mobilefirst-sdk"
+                "name": "Configuring the MobileFirst SDK",
+                "path": "/configuring-the-mfp-sdk" 
             }, {
                 "name": "Client-side development",
                 "path": "/client-side-development"
