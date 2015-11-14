@@ -11,8 +11,8 @@
                 "name": "Setting up your development environment",
                 "path": "/setting-up-your-development-environment"
             }, {
-                "name": "Configuring the MobileFirst SDK",
-                "path": "/configuring-the-mfp-sdk" 
+                "name": "Configuring the MobileFirst Platform Foundation SDK",
+                "path": "/configuring-the-mfpf-sdk"
             }, {
                 "name": "Client-side development",
                 "path": "/client-side-development"

@@ -8,9 +8,9 @@ show_disqus: false
 * <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/setting-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
 * <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/setting-android-development-environment/">Setting up your Android development environment</a>
 
-### Hello World
+### Quick Start
 
-* <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/hello-world/creating-first-native-android-mobilefirst-application/">Creating your first native Android application</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/creating-first-native-android-mobilefirst-application/">Creating your first native Android application</a>
 
 ### Server-side development
 <p><i>Multiple tutorials within</i></p>

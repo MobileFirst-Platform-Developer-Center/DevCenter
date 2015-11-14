@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Native Windows Phone 8 Development 6.3
+title: Native Windows Phone 10 Development
 show_disqus: false
 ---
 ### Setting up your development environment

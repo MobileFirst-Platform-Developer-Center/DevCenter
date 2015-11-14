@@ -5,15 +5,15 @@ weight: 1
 show_disqus: false
 ---
 
-### <a href="../hello-world/">Hello World</a>
+### <a href="../quick-start/">Quick Start</a>
 Get a feel of the MobileFirst SDK with these fast-tracked demos.
 
 * <a href="../hello-world/ios/">Quick start with iOS</a>
 * <a href="../hello-world/android/">Quick start with Android</a>
-* <a href="../hello-world/windows8/">Quick start with Windows 8</a>
-* <a href="../hello-world/windowsphone8/">Quick start with Windows Phone 8</a>
-* <a href="../hello-world/windows10/">Quick start with Windows 10</a>
-* <a href="../hello-world/windowsphone10/">Quick start with Windows Phone 10</a>
+* <a href="../hello-world/windows-8/">Quick start with Windows 8</a>
+* <a href="../hello-world/windows-phone-8/">Quick start with Windows Phone 8</a>
+* <a href="../hello-world/windows-10/">Quick start with Windows 10</a>
+* <a href="../hello-world/windows-phone-10/">Quick start with Windows Phone 10</a>
 * <a href="../hello-world/cordova/">Quick start with Cordova</a>
 
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
