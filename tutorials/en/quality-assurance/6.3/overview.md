@@ -1,7 +1,6 @@
 ---
 layout: tutorial
 title: MobileFirst Quality Assurance
-weight: 0
 show_breadcrumb: true
 ---
 <br>

@@ -170,21 +170,23 @@ Move the apps that you create from your development environment to the productio
 ### <a href="../ibm-containers">IBM Containers</a>
 Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 
-* <a href="../ibm-containers/evaluate-foundation-on-ibm-containers">Evaluate</a>
-* <a href="../ibm-containers/run-foundation-on-ibm-containers">Run</a>
+* <a href="../ibm-containers/overview">Overview</a>
+* <a href="../ibm-containers/evaluate">Evaluate</a>
+* <a href="../ibm-containers/run">Run</a>
 * <a href="../ibm-containers/ibm-containers-ample-application">Sample application</a>
 
-### <a href="../quality-assurance">Integrate with MobileFirst Quality Assurance</a>
+### <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview">Integrate with MobileFirst Quality Assurance</a>
 Add testing capabilities to your application.
 
-* <a href="../quality-assurance/mqa-in-cordova-applications">MobileFirst Quality Assurance in Cordova applications</a>
-* <a href="../quality-assurance/mqa-in-ios-applications">MobileFirst Quality Assurance in iOS applications</a>
-* <a href="../quality-assurance/mqa-in-android-applications">MobileFirst Quality Assurance in Android applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova">MobileFirst Quality Assurance in Cordova applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/hybrid">MobileFirst Quality Assurance in Hybrid applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios">MobileFirst Quality Assurance in iOS applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/android">MobileFirst Quality Assurance in Android applications</a>
 
-### <a href="../application-scanning">Application Scanning</a>
+### <a href="{{site.baseurl}}/tutorials/en/application-scanning">Application Scanning</a>
 Scan your application for potential harming code.
 
-* <a href="../application-scanning/mobilefirst-platform-application-scanning/">MobileFirst application scanning</a>
+* <a href="{{site.baseurl}}/tutorials/en/application-scanning/">MobileFirst application scanning</a>
 
 ### <a href="../cloundant-local-data-layer">Cloudant Data Layer</a>
 Scalable database management for your MobileFirst projects.

@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: 7.1
+title: 8.0
 use_dropdown: true
 use_dropdown_home: overview/
 weight: 1
 show_disqus: false
 ---
-Home for 7.1
+Home for 8.0
