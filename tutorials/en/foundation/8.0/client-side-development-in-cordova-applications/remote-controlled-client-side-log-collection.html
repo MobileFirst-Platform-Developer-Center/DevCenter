@@ -1,23 +1,7 @@
 ---
-layout: doc_page
+layout: tutorial
 title: Remote controlled client-side log collection
-date: 2015-08-26 16:24:15.000000000 +03:00
-type: doc_page
-published: true
-status: publish
-categories: []
-tags:
-- 8-0
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _wpas_done_all: '1'
-author:
-  login: iadar@il.ibm.com
-  email: IADAR@il.ibm.com
-  display_name: IdanAdar
-  first_name: IDAN
-  last_name: ADAR
+show_children: true
 ---
 <div>
     Relevant to:</p>
@@ -48,7 +32,8 @@ author:
 Capture is on by default but can be turned off.</p>
 <p>Logging defaults to DEBUG level in development, and to FATAL in production. You can control levels, and therefore verbosity, with API calls that are specific to your environment.</p>
 <h2 id="serverPrep">Server preparation (in production)</h2>
-<p>It is useless to persistently capture log output in browsers and devices in production unless that captured data can be sent for diagnostic inspection. You can send captured data by calling the <code>WL.Logger.send()</code> method explicitly in your application.</p>
+<p>It is useless to persistently capture log output in browsers and devices in production unless that captured data can be sent for diagnostic inspection. You can send captured data by calling the send method explicitly in your application.</p>
+<p>You can turn the automatic behavior on or off with API calls that are specific to your environment, or by calling the <code>send</code> method explicitly in your application.</p>
 <h3>How to receive and process logs at the server?</h3>
 <p>There are two ways to receive client logs on MobileFirst Server:</p>
 <ol>
@@ -59,12 +44,11 @@ Capture is on by default but can be turned off.</p>
 <blockquote><p>For more information about installing MobileFirst Operational Analytics in a production environment, see the topic about installing MobileFirst Operational Analytics, in the user documentation.</p></blockquote>
 <p>If you do not wish to use MobileFirst Operational Analytics, you can still collect and process client logs by creating an adapter. By default, MobileFirst Platform Foundation is configured to forward client logs to an adapter named <code>WLClientLogReceiver</code>, which exposes a method called <code>log</code>.</p>
 <p>If MobileFirst Operational Analytics and the adapter have both been configured, MobileFirst Platform Foudation sends logs to both endpoints. Using both may be useful if you want to take benefit of MobileFirst Operational Analytics log searching capabilities AND do some custom operations on client logs by using your own adapter.</p>
-<p><strong>Note:</strong> Installation and configuration of MobileFirst Operational Analytics and development of adapters is beyond the scope of this Getting Started tutorial. For more information, see the topic about installing MobileFirst Operational Analytics, in the user documentation, and the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/server-side-development/adapter-framework-overview/">Adapters overview tutorial</a>.</p>
+<p><strong>Note:</strong> Installation and configuration of MobileFirst Operational Analytics and development of adapters is beyond the scope of this Getting Started tutorial. For more information, see the topic about installing MobileFirst Operational Analytics, in the user documentation, and the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/server-side-development/adapter-framework-overview/">Adapters overview tutorial</a>.</p>
 <h2 id="adminControl">Admin control of client log capture</h2>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/comsole-project-buttons1.png"><img src="{{ site.baseurl }}/assets/backup/comsole-project-buttons1.png" alt="comsole-project-buttons" width="2880" height="812" class="aligncenter size-full wp-image-14068" /></a></p>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/client-log-profiles.png"><img src="{{ site.baseurl }}/assets/backup/client-log-profiles.png" alt="client-log-profiles" width="2880" height="838" class="aligncenter size-full wp-image-14069" /></a></p>
 <p>To configure log capture preferences for applications in production, use the MobileFirst Operations Console. Administrators can control the MobileFirst client SDK log capture and levels from the MobileFirst Operations Console.</p>
-<p>To update your client logger config, use the updateConfigFromServer method in your respective Logger SDK.</p>
 <h2 id="crashCapture">Crash capture</h2>
 <p>The MobileFirst client SDK, on Android and iOS, captures a stack trace upon application crash and logs it at FATAL level. This type of crash is a true crash where the UI disappears from the user's view.</p>
 <p>The MobileFirst client SDK, in JavaScript, captures JavaScript global errors and if possible, a JavaScript call stack, and logs it at FATAL level. This type of crash is not a crash event, and might or might not have any adverse consequences to the user experience at run time.</p>
