@@ -30,17 +30,11 @@
             "name": "Android",
             "path": "/foundation/8.0/quick-start/android"
         }, {
-            "name": "Windows Phone 8",
-            "path": "/foundation/8.0/quick-start/windows-phone-8"
+            "name": "Windows Phone",
+            "path": "/foundation/8.0/quick-start/windows-phone"
         }, {
-            "name": "Windows Phone 10",
-            "path": "/foundation/8.0/quick-start/windows-phone-10"
-        }, {
-            "name": "Windows 8",
-            "path": "/foundation/8.0/quick-start/windows-8"
-        }, {
-            "name": "Windows 10",
-            "path": "/foundation/8.0/quick-start/windows-10"
+            "name": "Windows",
+            "path": "/foundation/8.0/quick-start/windows"
         } ]
     }, {
         "name": "By Product",
