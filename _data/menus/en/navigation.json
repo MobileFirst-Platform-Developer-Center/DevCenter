@@ -22,20 +22,26 @@
         "path": "",
         "children": [{
             "name": "Cordova",
-            "path": "/foundation/8.0/hello-world/cordova"
+            "path": "/foundation/8.0/quick-start/cordova"
         }, {
             "name": "iOS",
-            "path": "/foundation/8.0/hello-world/ios"
+            "path": "/foundation/8.0/quick-start/ios"
         }, {
             "name": "Android",
-            "path": "/foundation/8.0/hello-world/android"
+            "path": "/foundation/8.0/quick-start/android"
         }, {
-            "name": "Windows Phone",
-            "path": "/foundation/8.0/hello-world/windows-phone"
+            "name": "Windows Phone 8",
+            "path": "/foundation/8.0/quick-start/windows-phone-8"
         }, {
-            "name": "Windows",
-            "path": "/foundation/8.0/hello-world/windows"
-        }, ]
+            "name": "Windows Phone 10",
+            "path": "/foundation/8.0/quick-start/windows-phone-10"
+        }, {
+            "name": "Windows 8",
+            "path": "/foundation/8.0/quick-start/windows-8"
+        }, {
+            "name": "Windows 10",
+            "path": "/foundation/8.0/quick-start/windows-10"
+        } ]
     }, {
         "name": "By Product",
         "path": "",
