@@ -4,6 +4,9 @@ title: All Tutorials
 weight: 1
 show_disqus: false
 ---
+<br>
+Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 **DevOps**.
+<a href="{{site.baseurl}}/tutorials/en/foundation/7.1/all-tutorials">Looking for Foundation 8.0 tutorials</a>?
 
 ### <a href="../quick-start/">Quick Start</a>
 Get a feel of the MobileFirst SDK with these fast-tracked demos.

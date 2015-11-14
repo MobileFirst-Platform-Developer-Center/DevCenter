@@ -5,4 +5,5 @@ weight: 0
 show_children: true
 show_disqus: false
 ---
-description text for quick start 
+<br>
+Experience MobileFirst Platform Foundation DevOps work flows with these tutorials:
