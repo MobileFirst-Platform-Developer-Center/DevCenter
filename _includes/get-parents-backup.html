@@ -9,7 +9,14 @@
         {% if pPageLevel == parentLevel and currentPage.dir contains p.dir %}
             {% include get-parents.html page=p minLevel=minLevel docs=allDocs %}
             {% if p.use_dropdown %}
-              <li><a href="{{site.baseurl}}{{p.url}}">{% if p.breadcrumb_title %}{{p.breadcrumb_title}}{% else %}{{ p.title }}{% endif %}</a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">{% if p.breadcrumb_title %}{{p.breadcrumb_title}}{% else %}{{ p.title }}{% endif %}<b class="caret"></b></a>
+                {% assign documents = site.pages | sort: "weight" %}
+
+                {% assign currentItem = p.dir | split: "/" | last | append: "/@" %}
+                {% assign start = p.dir | append: "@" | remove: currentItem %}
+                {% include show-siblings.html docs=documents dir=start %}
+              </li>
             {% elsif p.hide_in_breadcrumb %}
                 {% comment %} don't show {% endcomment %}
             {% else %}

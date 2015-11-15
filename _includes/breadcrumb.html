@@ -1,23 +1,31 @@
 {% if page.show_breadcrumb %}
-  {% assign minLevel = include.minLevel %}
-  {% if minLevel == nil %}{% assign minLevel = 1 %}{% endif %}
-
-  <div class="row outerbreadcrumb hidden-xs">
-    <div class="leftPart col-lg-8 col-xs-12">
-      <ol class="breadcrumb">
-        {% assign documents = site.pages | sort: "weight" %}
-        {% include get-parents.html page=page minLevel=minLevel docs=documents %}
-        <li class="active">{% if page.breadcrumb_title %}{{page.breadcrumb_title}}{% else %}{{ page.title }}{% endif %}</li>
-      </ol>
-    </div>
-    <div class="rightPart hidden-xs hidden-md hidden-sm col-lg-4">
-      {% if page.relevantTo %}
-      <ul class="relevantTo">
-        {% for persona in page.relevantTo %}
-          <li class="{{persona}}" title="{{persona}}">&nbsp;</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    </div>
+<div class="row outerbreadcrumb hidden-xs">
+  <div class="leftPart col-lg-8 col-xs-12">
+    <ol class="breadcrumb">
+      {% assign crumbs = page.url | split: '/' %}
+        {% for crumb in crumbs offset: 1 %}
+         {% if forloop.last %}
+             <li class="active">{{ page.title }}</li>
+         {% else %}
+             {% if forloop.index > 2 %}
+               {% capture crumb_url %}{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}{% endcapture %}
+               <li><a href="{{site.baseurl}}{{crumb_url}}">
+                 {% page_by_url crumb_url %}
+               </a></li>
+             {% endif %}
+         {% endif %}
+       {% endfor %}
+    </ol>
   </div>
+  <div class="rightPart hidden-xs hidden-md hidden-sm col-lg-4">
+    {% if page.relevantTo %}
+    <ul class="relevantTo">
+      {% for persona in page.relevantTo %}
+        <li class="{{persona}}" title="{{persona}}">&nbsp;</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+
+</div>
 {% endif %}
