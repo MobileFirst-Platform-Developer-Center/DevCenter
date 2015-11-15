@@ -25,13 +25,12 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * <a href="../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up the MobileFirst development environment</a>
 * <a href="../setting-up-your-development-environment/setting-up-the-ios-development-environment/">Setting up the iOS development environment</a>
 * <a href="../setting-up-your-development-environment/setting-up-the-android-development-environment/">Setting up the Android development environment</a>
-* <a href="../setting-up-your-development-environment/setting-up-the-windows-universal-and-windows-phone-8-development-environment/">Setting up the Windows Phone 8 development environment</a>
-* <a href="../setting-up-your-development-environment/setting-up-the-windows-universal-and-windows-phone-8-development-environment/">Setting up the Windows 8 Universal development environment</a>
+* <a href="../setting-up-your-development-environment/setting-up-the-windows-universal-and-windows-phone-8-10-development-environment/">Setting up the Windows Phone 8 &amp; 10 development environment</a>
+* <a href="../setting-up-your-development-environment/setting-up-the-windows-universal-and-windows-phone-8-10-development-environment/">Setting up the Windows 8 &amp; 10 Universal development environment</a>
 * <a href="../hello-world/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Operations Console</a>
 
 ### <a href="../adding-mfpf-sdk/">Adding the MobileFirst SDK</a>
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows/Phone application.
-
 
 * <a href="../configuring-mfpf-sdk/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
 * <a href="../configuring-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/"> Configuring a native iOS application with the MobileFirst Platform SDK</a>
@@ -41,10 +40,8 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * <a href="../configuring-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/">Configuring a native Windows 10 Universal application with the MobileFirst Platform SDK</a>
 * <a href="../configuring-mfpf-sdk/configuring-a-native-windows-phone-10-application-with-the-mfp-sdk/">Configuring a native Windows Phone 10 Universal application with the MobileFirst Platform SDK</a>
 
-
 ### <a href="../client-side-development-in-cordova-applications/">Client-side development in Cordova applications</a>
 Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; native interactions.
-
 
 * <a href="../client-side-development-in-cordova-applications/intro-mfpf-cordova/">Introduction - MobileFirst SDK development in Cordova applications</a>
 * <a href="../client-side-development-in-cordova-applications/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
@@ -56,7 +53,6 @@ Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; nati
     * <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/logging-in-native-android/">Logging in native Android</a>
     * <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/logging-in-native-ios/">Logging in native iOS</a>
     * <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/">Logging in MobileFirst hybrid applications</a>
-
 * Adding native UI elements to hybrid applications
     * <a href="../client-side-development-in-cordova-applications/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>
     * <a href="../client-side-development-in-cordova-applications/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
@@ -81,7 +77,6 @@ Develop the server code (adapters) that your mobile app requires to integrate wi
 * <a href="../server-side-development/java-adapters/">Java Adapters</a>
     * <a href="../server-side-development/java-adapters/java-http-adapter/">Java HTTP adapter</a>
     * <a href="../server-side-development/java-adapters/java-sql-adapter/">Java SQL adapter</a>
-
 
 * Invoking adapter procedures
     * <a href="../server-side-development/invoking-adapter-procedures-hybrid-client-applications/">Invoking adapter procedures from hybrid client applications</a>

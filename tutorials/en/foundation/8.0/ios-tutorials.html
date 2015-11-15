@@ -1,13 +1,29 @@
 ---
 layout: tutorial
-title: Developing Hybrid apps
+title: Developing for iOS
 show_disqus: false
 ---
 <br>
-<p>Review curated tutorials for Hybrid apps.</p>
+<p>Review curated tutorials for the iOS platform.</p>
 <br>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="quickstart">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseQuickstart" aria-expanded="true" aria-controls="collapseQuickstart">Quick Start</a>
+            </h4>
+        </div>
+
+        <div id="collapseQuickstart" class="panel-collapse collapse" role="tabpanel" aria-labelledby="quickstart">
+            <div class="panel-body">
+                <ul>
+                <li><a href="../quick-start/ios-quick-start">End-to-end flow demonstration</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="settingUpYourDevelopmentEnvironment">
             <h4 class="panel-title">
@@ -18,11 +34,8 @@ show_disqus: false
         <div id="collapsesettingUpYourDevelopmentEnvironment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="settingUpYourDevelopmentEnvironment">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up the MobileFirst development environment</a></li>
+                    <li><a href="../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
                     <li><a href="../setting-up-your-development-environment/setting-up-the-ios-development-environment/">Setting up the iOS development environment</a></li>
-                    <li><a href="../setting-up-your-development-environment/setting-up-the-android-development-environment/">Setting up the Android development environment</a></li>
-                    <li><a href="../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-phone-10-development-environment/">Setting up the Windows Phone 8 development environment</a></li>
-                    <li><a href="../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-phone-10-development-environment/">Setting up the Windows 8 development environment</a></li>
                 </ul>
             </div>
         </div>
@@ -38,10 +51,10 @@ show_disqus: false
         <div id="collapseHelloWorld" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hellowWorld">
             <div class="panel-body">
                 <ul>
+                    <li><a href="../hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/">Configuring a native iOS application with the MobileFirst Platform SDK</a></li>
                     <li><a href="../hello-world/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Console</a></li>
                     <li><a href="../hello-world/connecting-to-mobilefirst-server/">Connecting to MobileFirst Server</a></li>
                     <li> <a href="../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a></li>
-                    <li><a href="../hello-world/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a></li>
                 </ul>
             </div>
         </div>
@@ -57,10 +70,9 @@ show_disqus: false
         <div id="collapseAdapters" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapters">
             <div class="panel-body">
                 <b>Required reading</b>
-                <br>
                 <ul>
                     <li><a href="../server-side-development/adapter-framework-overview/">Adapters overview</a></li>
-                    <li> <a href="../server-side-development/invoking-adapter-procedures-hybrid-client-applications/">Invoking adapter procedures from Hybrid applications</a></li>
+                    <li> <a href="../server-side-development/invoking-adapter-procedures-native-ios-applications/">Invoking adapter procedures from native iOS applications</a></li>
                 </ul>
 
                 <b>Further reading</b>
@@ -88,32 +100,6 @@ show_disqus: false
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="clientSideDev">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseclientSideDev" aria-expanded="true" aria-controls="clientSideDev">Client-side development</a>
-            </h4>
-        </div>
-
-        <div id="collapseclientSideDev" class="panel-collapse collapse" role="tabpanel" aria-labelledby="clientSideDev">
-            <div class="panel-body">
-
-                <ul>
-                    <li><a href="../client-side-development/debugging-applications/">Debugging applications</a></li>
-                    <li><a href="../client-side-development/common-ui-controls/">Common UI controls</a></li>
-                    <li><a href="../client-side-development/enabling-translation/">Enabling translation</a></li>
-                    <li><a href="../client-side-development/using-direct-update-to-quickly-update-your-application/">Using Direct Update to quickly update your application</a></li>
-                    <li><a href="../client-side-development/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a></li>
-                    <li><a href="../client-side-development/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a></li>
-                    <li><a href="../client-side-development/windows-phone-8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a></li>
-
-                    <li><a href="../client-side-development/integrating-server-generated-pages-hybrid-applications/">Integrating server-generated pages in hybrid applications</a></li>
-                    <li><a href="../client-side-development/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/">Using MobileFirst application as a container for server-generated pages</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="workingWithData">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseWorkingWithData" aria-expanded="true" aria-controls="workingWithData">Working with data</a>
@@ -124,8 +110,8 @@ show_disqus: false
             <div class="panel-body">
                 <ul>
                     <li><a href="../data/jsonstore">JSONStore</a></li>
-                    <li><a href="../data/working-offline/">Working Offline</a></li>
-                    <li><a href="../client-side-development/remote-controlled-client-side-log-collection/">Remote-controlled Client-side log collection</a></li>
+                    <li><a href="../data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a></li>
+                    <li><a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote-controlled Client-side log collection</a></li>
                 </ul>
             </div>
         </div>
@@ -140,31 +126,35 @@ show_disqus: false
 
         <div id="collapseAuthenticationSecurity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AuthenticationSecurity">
             <div class="panel-body">
-                security samples
+                <a href="../authentication-security/authentication-concepts/">Authentication concepts</a>
+                <br><br>
+                <h4>Form-based authentication</h4>
+                <ul>
+                    <li><a href="../authentication-security/form-based-authentication/">Form-based authentication - server configuration</a></li>
+                    <li><a href="../authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/">Form-based authentication - client implementation</a></li>
+                </ul>
 
-                <b>Application Authenticity Protection</b>
+                <h4>Adapter-based authentication</h4>
+                <ul>
+                    <li><a href="../authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a></li>
+                    <li><a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-ios-applications/">Adapter-based authentication - client implementation</a></li>
+                    <li><a href="../advanced-topics/two-step-adapter-authentication/">Two-Step authentication</a></li>
+                </ul>
+
+                <h4>Custom authentication</h4>
+                <ul>
+                    <li><a href="../authentication-security/custom-authentication/">Custom authentication - server configuration</a></li>
+                    <li><a href="../authentication-security/custom-authentication/custom-authentication-in-native-ios-applications/">Custom authentication - client implementation</a></li>
+                </ul>
+
+                <h4>Application Authenticity Protection</h4>
                 <ul>
                     <li><a href="../authentication-security/application-authenticity-protection/">Application Authenticity Protection</a></li>
                 </ul>
 
-                <b>Authenticating external resources</b>
+                <h4>Authenticating external resources</h4>
                 <ul>
                     <li><a href="../authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a></li>
-                </ul>
-
-                <b>LDAP, LTPA and X.509 Certificate</b>
-                <ul>
-                    <li><a href="../authentication-security/using-ldap-login-module-to-authenticate-users-with-ldap-server-in-hybrid-applications/">Using LDAP Login Module to authenticate users with LDAP server in hybrid applications</a></li>
-                    <li><a href="../authentication-security/websphere-ltpa-based-authentication/">WebSphere LTPA-based authentication</a></li>
-                    <li><a href="../authentication-security/client-x-509-certificate-authentication-user-enrollment/">Client X.509 Certificate Authentication and User Enrollment</a></li>
-                </ul>
-
-                <b>Advanced topics</b>
-                <ul>
-                    <li><a href="../advanced-topics/device-enrollment/">Device Enrollment</a></li>
-                    <li><a href="../advanced-topics/offline-authentication/">Offline Authentication</a></li>
-                    <li><a href="../advanced-topics/remember-me/">Remember Me</a></li>
-                    <li><a href="../advanced-topics/ntlm-authentication/">NTLM Authentication</a></li>
                 </ul>
             </div>
         </div>
@@ -173,17 +163,22 @@ show_disqus: false
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="AdvancedTopics">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAdvancedTopics" aria-expanded="true" aria-controls="AdvancedTopics">Push Notifications</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAdvancedTopics" aria-expanded="true" aria-controls="AdvancedTopics">Advanced topics</a>
             </h4>
         </div>
 
         <div id="collapseAdvancedTopics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AdvancedTopics">
             <div class="panel-body">
+                <b>Push Notifications</b>
                 <ul>
                     <li><a href="../notifications/push-notifications-overview">Push Notifications Overview</a></li>
-                    <li><a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/">Push notifications in hybrid applications</a></li>
-                    <li><a href="../notifications/sms-notifications/">SMS notifications</a></li>
-                    <li><a href="../notifications/two-way-sms-communication/">2-Way SMS notifications</a></li>
+                    <li><a href="../notifications/push-notifications-overview/push-notifications-native-ios-applications/">Push notifications in native iOS applications</a></li>
+                </ul>
+
+                <b>Location Services and Beacons</b>
+                <ul>
+                    <li><a href="../advanced-client-side-development/location-services-native-ios-applications/">Location services in native Android</a></li>
+                    <li><a href="../advanced-topics/working-with-beacons/">Working with Beacons</a></li>
                 </ul>
             </div>
         </div>
