@@ -57,9 +57,9 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
 * <a href="../advanced-client-side-development/using-direct-update-to-quickly-update-your-application/">Using Direct Update to quickly update your application</a>
 * <a href="../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
 * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
-    * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-native-android/" target="_blank">Logging in native Android (Java)</a>
-    * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-native-ios/" target="_blank">Logging in native iOS (Objective-C)</a>
-    * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-mobilefirst-hybrid-applications/" target="_blank">Logging in MobileFirst hybrid applications (JavaScript)</a>
+    * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-native-android/" >Logging in native Android (Java)</a>
+    * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-native-ios/" >Logging in native iOS (Objective-C)</a>
+    * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-mobilefirst-hybrid-applications/" >Logging in MobileFirst hybrid applications (JavaScript)</a>
 * <a href="../advanced-client-side-development/shell-development-concepts/">Shell development concepts</a>
     * <a href="../advanced-client-side-development/shell-development-concepts/ios-shell-development/">iOS shell development</a>
     * <a href="../advanced-client-side-development/shell-development-concepts/android-shell-development/">Android shell development</a>
@@ -150,8 +150,8 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
 <p>Protect your applications and adapter procedures against unauthorized access by using authentication, login modules, and device provisioning.</p>
 
 * <a href="../authentication-security/authentication-concepts/">Authentication concepts</a>
-    * <a href="../authentication-security/authentication-concepts/classic-security-model/" target="_blank">Classic security model</a>
-    * <a href="../authentication-security/authentication-concepts/oauth-based-security-model/" target="_blank">OAuth-based security model</a>
+    * <a href="../authentication-security/authentication-concepts/classic-security-model/" >Classic security model</a>
+    * <a href="../authentication-security/authentication-concepts/oauth-based-security-model/" >OAuth-based security model</a>
 * <a href="../authentication-security/form-based-authentication/">Form-based authentication</a>
     * <a href="../authentication-security/form-based-authentication/form-based-authentication-hybrid-applications/">Form-based authentication in hybrid applications</a>
     * <a href="../authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/"> Form-based authentication in native iOS applications</a>
@@ -162,7 +162,7 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
     * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-hybrid-applications/">Adapter-based authentication in hybrid applications</a>
     * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-ios-applications/">Adapter-based authentication in native iOS applications</a>
     * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-android-applications/">Adapter-based authentication in native Android applications</a>
-    * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-phone-8-applications/">Adapter-based authentication in native Windows Phone 8 applications</a>
+    * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-phone-8-applications/"">Adapter-based authentication in native Windows Phone 8 applications</a>
     * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-8-applications/">Adapter-based authentication in native Windows 8 applications</a>
 * <a href="../authentication-security/custom-authentication/">Custom Authentication</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-hybrid-applications/">Custom authentication in hybrid applications</a>
@@ -207,21 +207,21 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
 * <a href="../moving-production/reports-analytics/">Reports and analytics</a>
 * <a href="../moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
 
-### <a href="../ibm-containers/">IBM Containers</a>
+### <a href="../ibm-containers/overview/">IBM Containers</a>
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
 
-* <a href="../ibm-containers/overview">Overview</a>
-* <a href="../ibm-containers/evaluate">Evaluate</a>
-* <a href="../ibm-containers/run">Run</a>
-* <a href="../ibm-containers/sample-app">Sample application</a>
+* <a href="../ibm-containers/overview/">Overview</a>
+* <a href="../ibm-containers/evaluate/">Evaluate</a>
+* <a href="../ibm-containers/run/">Run</a>
+* <a href="../ibm-containers/sample-app/">Sample application</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview">Integrate with MobileFirst Quality Assurance</a>
 Add testing capabilities to your application.
 
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/cordova">MobileFirst Quality Assurance in Cordova applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/hybrid">MobileFirst Quality Assurance in Hybrid applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/ios">MobileFirst Quality Assurance in iOS applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/android">MobileFirst Quality Assurance in Android applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/cordova/">MobileFirst Quality Assurance in Cordova applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/hybrid/">MobileFirst Quality Assurance in Hybrid applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/ios/">MobileFirst Quality Assurance in iOS applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/android/">MobileFirst Quality Assurance in Android applications</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/application-scanning/">Application Scanning</a>
 Scan your application for potential harming code.

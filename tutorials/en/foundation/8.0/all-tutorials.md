@@ -126,7 +126,7 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 Protect your applications and adapter procedures against unauthorized access by using authentication, login modules, and device provisioning.
 
 * <a href="../authentication-and-security/authentication-concepts/">Authentication concepts</a>
-* <a href="../authentication-and-security/authentication-concepts/oauth-based-security-model/" target="_blank">OAuth-based security model</a>
+* <a href="../authentication-and-security/authentication-concepts/oauth-based-security-model/">OAuth-based security model</a>
 * <a href="../authentication-and-security/custom-authentication/">Custom Authentication</a>
 	* <a href="../authentication-and-security/custom-authentication/custom-authentication-hybrid-applications/">Custom authentication in hybrid applications</a>
 	* <a href="../authentication-and-security/custom-authentication/custom-authentication-native-ios-applications/"> Custom authentication in native iOS applications</a>
@@ -163,21 +163,21 @@ Move the apps that you create from your development environment to the productio
 * <a href="../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/">Moving from development environment to stand-alone QA and production servers</a>
 * <a href="../moving-to-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
 
-### <a href="../ibm-containers/">IBM Containers</a>
+### <a href="../ibm-containers/overview/">IBM Containers</a>
 Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 
-* <a href="../ibm-containers/overview">Overview</a>
-* <a href="../ibm-containers/evaluate">Evaluate</a>
-* <a href="../ibm-containers/run">Run</a>
-* <a href="../ibm-containers/sample-app">Sample application</a>
+* <a href="../ibm-containers/overview/">Overview</a>
+* <a href="../ibm-containers/evaluate/">Evaluate</a>
+* <a href="../ibm-containers/run/">Run</a>
+* <a href="../ibm-containers/sample-app/">Sample application</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview">Integrate with MobileFirst Quality Assurance</a>
 Add testing capabilities to your application.
 
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova">MobileFirst Quality Assurance in Cordova applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/hybrid">MobileFirst Quality Assurance in Hybrid applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios">MobileFirst Quality Assurance in iOS applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/android">MobileFirst Quality Assurance in Android applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/">MobileFirst Quality Assurance in Cordova applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/hybrid/">MobileFirst Quality Assurance in Hybrid applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/">MobileFirst Quality Assurance in iOS applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/">MobileFirst Quality Assurance in Android applications</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/application-scanning">Application Scanning</a>
 Scan your application for potential harming code.
