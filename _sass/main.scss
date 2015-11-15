@@ -204,7 +204,7 @@ blockquote {
 		margin-top: 22px;
 	}
 }
-:focus {
+:focus, a:focus {
 	outline: none;
 }
 .btn {
