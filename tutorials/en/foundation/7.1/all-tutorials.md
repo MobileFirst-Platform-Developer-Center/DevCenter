@@ -208,7 +208,7 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
 * <a href="../moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
 
 ### <a href="../ibm-containers">IBM Containers</a>
-Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
+Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
 
 * <a href="../ibm-containers/overview">Overview</a>
 * <a href="../ibm-containers/evaluate">Evaluate</a>
@@ -228,7 +228,7 @@ Scan your application for potential harming code.
 
 * <a href="{{site.baseurl}}/tutorials/en/application-scanning/">MobileFirst application scanning</a>
 
-### <a href="../../cloundant">Cloudant Data Layer</a>
+### <a href="../../../cloundant">Cloudant Data Layer</a>
 Scalable database management for your MobileFirst projects.
 
 * <a href="../data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
