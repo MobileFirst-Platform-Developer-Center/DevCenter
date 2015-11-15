@@ -12,7 +12,7 @@ set -e
 # build site with jekyll, by default to `_site' folder
 bundle exec jekyll build --profile --verbose
 rm -f _site/*.log
- bundle exec htmlproof ./_site --disable-external --href-ignore '#' --checks-to-ignore "ScriptCheck","ImageCheck" --disable-external --href-swap \/MFPSamples:
+#bundle exec htmlproof ./_site --disable-external --href-ignore '#' --checks-to-ignore "ScriptCheck","ImageCheck" --disable-external --href-swap \/MFPSamples:
 
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.master

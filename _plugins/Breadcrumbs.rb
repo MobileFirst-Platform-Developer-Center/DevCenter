@@ -12,6 +12,11 @@ def getPageByUrl(url,site)
 end
 
 def GetSiblings(url,site)
+  if !site['siblings']
+    site['siblings'] = {}
+  elsif site['siblings'] && site['siblings']["#{url}"]
+    return site['siblings'][url]
+  end
   parts = url.split('/')
   target_level = parts.count
   parts.pop()
@@ -48,6 +53,7 @@ def GetSiblings(url,site)
 
   siblings = siblings.sort {|x,y| x['weight'] <=> y['weight'] }
   # binding.pry
+  site['siblings']["#{url}"] = siblings
   return siblings
 end
 
