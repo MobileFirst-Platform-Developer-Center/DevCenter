@@ -5,7 +5,7 @@ weight: 1
 show_disqus: false
 ---
 <br>
-Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 &amp; 8.0**.  
+Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 &amp; 8.0**.
 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials">Looking for Foundation 8.0 **DevOps** tutorials</a>?
 
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
@@ -207,7 +207,7 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
 * <a href="../moving-production/reports-analytics/">Reports and analytics</a>
 * <a href="../moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
 
-### <a href="../ibm-containers">IBM Containers</a>
+### <a href="../ibm-containers/">IBM Containers</a>
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
 
 * <a href="../ibm-containers/overview">Overview</a>
@@ -228,7 +228,7 @@ Scan your application for potential harming code.
 
 * <a href="{{site.baseurl}}/tutorials/en/application-scanning/">MobileFirst application scanning</a>
 
-### <a href="../../../cloudant">Cloudant Data Layer</a>
+### <a href="../../../cloudant/">Cloudant Data Layer</a>
 Scalable database management for your MobileFirst projects.
 
 * <a href="../data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
