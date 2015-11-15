@@ -5,7 +5,7 @@ weight: 1
 show_disqus: false
 ---
 <br>
-Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 **DevOps**.  
+Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 **DevOps**.
 <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/all-tutorials">Looking for Foundation 8.0 tutorials</a>?
 
 ### <a href="../quick-start/">Quick Start</a>
@@ -71,16 +71,16 @@ Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; nati
 ### <a href="../server-side-development/">Server-side development</a>
 Develop the server code (adapters) that your mobile app requires to integrate with enterprise back-end applications and cloud services.
 
-* <a href="../server-side-development/adapters-framework-overview/">Adapters overview</a>
+* <a href="../server-side-development/overview/">Adapters overview</a>
 * <a href="../server-side-development/javascript-adapters/">JavaScript adapters</a>
     * <a href="../server-side-development/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
     * <a href="../server-side-development/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a>
     * <a href="../server-side-development/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a>
     * <a href="../server-side-development/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a>
     * <a href="../server-side-development/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a>
-* <a href="../server-side-development/java-adapter/">Java Adapters</a>
-    * <a href="../server-side-development/java-adapter/java-http-adapter/">Java HTTP adapter</a>
-    * <a href="../server-side-development/java-adapter/java-sql-adapter/">Java SQL adapter</a>
+* <a href="../server-side-development/java-adapters/">Java Adapters</a>
+    * <a href="../server-side-development/java-adapters/java-http-adapter/">Java HTTP adapter</a>
+    * <a href="../server-side-development/java-adapters/java-sql-adapter/">Java SQL adapter</a>
 
 
 * Invoking adapter procedures
