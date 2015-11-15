@@ -6,7 +6,7 @@ permalink: pretty
 paginate: 10
 paginate_path: "/blog/:num/"
 markdown: redcarpet
-exclude: [vendor,old-backup,build.sh,Gemfile,Gemfile.lock,README.md]
+exclude: [vendor,build.sh,Gemfile,Gemfile.lock,README.md]
 
 gems:
   - jekyll-feed
