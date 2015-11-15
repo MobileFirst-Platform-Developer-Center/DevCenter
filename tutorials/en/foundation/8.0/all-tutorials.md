@@ -25,8 +25,7 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * <a href="../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up the MobileFirst development environment</a>
 * <a href="../setting-up-your-development-environment/setting-up-the-ios-development-environment/">Setting up the iOS development environment</a>
 * <a href="../setting-up-your-development-environment/setting-up-the-android-development-environment/">Setting up the Android development environment</a>
-* <a href="../setting-up-your-development-environment/setting-up-the-windows-universal-and-windows-phone-8-10-development-environment/">Setting up the Windows Phone 8 &amp; 10 development environment</a>
-* <a href="../setting-up-your-development-environment/setting-up-the-windows-universal-and-windows-phone-8-10-development-environment/">Setting up the Windows 8 &amp; 10 Universal development environment</a>
+* <a href="../setting-up-your-development-environment/setting-up-the-windows-and-windows-phone-development-environment/">Setting up the Windows & Windows Phone development environments</a>
 * <a href="../hello-world/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Operations Console</a>
 
 ### <a href="../adding-mfpf-sdk/">Adding the MobileFirst SDK</a>
