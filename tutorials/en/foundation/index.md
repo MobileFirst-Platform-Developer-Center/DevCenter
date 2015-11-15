@@ -13,3 +13,15 @@ To get started and learn about MobileFirst Studio, MobileFirst Operations Consol
 * [MobileFirst Platform Foundation 7.0]({{site.baseurl}}/tutorials/en/foundation/7.0/all-tutorials)
 * [MobileFirst Platform Foundation 7.1/8.0]({{site.baseurl}}/tutorials/en/foundation/7.1/all-tutorials)
 * [MobileFirst Platform Foundation 8.0 DevOps]({{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials)
+
+**Note:**
+IBM MobileFirst Platform Foundation 8.0 comes in two "flavors": Foundation and DevOps.
+
+The Foundation flavor is based on MobileFirst Platform Foundation 7.1 with enhanced functionalities, and consists of:
+* MobileFirst Studio - the Eclipse plug-in
+* MobileFirst CLI - for working from the command line
+* MobileFirst Mobile Test Workbench - to automate functional testing
+
+The DevOps flavor enables simplified, community-driven experiences and work flows for both the developer and the administrator, and consists of:
+* MobileFirst Developer and Operations Console
+* MobileFirst CLI
