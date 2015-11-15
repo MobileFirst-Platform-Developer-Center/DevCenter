@@ -2,11 +2,17 @@
 <div class="row outerbreadcrumb hidden-xs">
   <div class="leftPart col-lg-8 col-xs-12">
     <ol class="breadcrumb">
-        {% for crumb in page.breadcrumbs %}
+      {% assign crumbs = page.url | split: '/' %}
+        {% for crumb in crumbs offset: 1 %}
          {% if forloop.last %}
-             <li class="active">{{ crumb.title }}</li>
+             <li class="active">{{ page.title }}</li>
          {% else %}
-            <li><a href="{{site.baseurl}}{{crumb.url}}">{{crumb.title}}</a></li>
+             {% if forloop.index > 2 %}
+               {% capture crumb_url %}{% assign crumb_limit = forloop.index | plus: 1 %}{% for crumb in crumbs limit: crumb_limit %}{{ crumb | append: '/' }}{% endfor %}{% endcapture %}
+               <li><a href="{{site.baseurl}}{{crumb_url}}">
+                 {% page_by_url crumb_url %}
+               </a></li>
+             {% endif %}
          {% endif %}
        {% endfor %}
     </ol>
