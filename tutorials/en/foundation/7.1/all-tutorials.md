@@ -228,7 +228,7 @@ Scan your application for potential harming code.
 
 * <a href="{{site.baseurl}}/tutorials/en/application-scanning/">MobileFirst application scanning</a>
 
-### <a href="../working-with-cloundant-local-data-layer">Cloudant Data Layer</a>
+### <a href="../../cloundant">Cloudant Data Layer</a>
 Scalable database management for your MobileFirst projects.
 
 * <a href="../data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
