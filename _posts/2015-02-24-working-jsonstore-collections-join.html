@@ -166,7 +166,7 @@ WL.JSONStore.get('orders').findAll({filter : ['customer_id', 'order_id', 'order_
 {% endhighlight %}
 
 <h2>Merge the collections together</h2>
-<p>There are many ways in which you can merge these collections together. What you are merging is simply arrays of JSON objects. I used the merge method in <a>lodash</a>.</p>
+<p>There are many ways in which you can merge these collections together. What you are merging is simply arrays of JSON objects. I used the merge method in <code>lodash</code>.</p>
 
 {% highlight javascript %}
 var shared_index = 'customer_id';
