@@ -1,37 +1,14 @@
 ---
 layout: tutorial
 title: Integrating with Cloudant by using an adapter
-date: 2015-04-16 08:24:01.000000000 +03:00
-type: tutorial
-published: true
-status: publish
-categories: []
-tags:
-- 7-1
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '13020'
-  _wpas_done_all: '1'
-  _syntaxhighlighter_encoded: '1'
-author:
-  login: nathanh@il.ibm.com
-  email: NATHANH@il.ibm.com
-  display_name: Nathan Hazout
-  first_name: NATHAN
-  last_name: HAZOUT
+relevantTo: [hybrid]
 ---
-<div id="samplesAndPersonas">
-<div>
-        Relevant to:</p>
-<ul id="relevantForPersona">
-<li class="hybrid">Hybrid</li>
-</ul></div>
 <ul>
 <li class="download-sample">
 <a href="https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter" target="_blank">Download MobileFirst project</a>
         </li>
 </ul>
-</div>
+
 <h2 id="cloudant">Overview</h2>
 <p>Cloudant is a NoSQL Database based on CouchDB, which is included with the product as a component called IBM MobileFirst Cloudant Local Data Layer Edition. Cloudant is also available as a stand-alone installed product and as a Database-as-a-Service (DBaaS) on IBM Bluemix and <code>cloudant.com</code>.</p>
 <p>As described in the Cloudant documentation:</p>
@@ -39,7 +16,7 @@ author:
 <p>All documents must have two fields: a unique <code>_id</code> field, and a <code>_rev</code> field. The <code>_id</code> field is either created by you, or generated automatically as a UUID by Cloudant. The <code>_rev</code> field is a revision number, and is essential to the Cloudant replication protocol. In addition to these two mandatory fields, documents can contain any other content expressed as JSON.</p></blockquote>
 <p>The Cloudant API is documented on the <a href="https://docs.cloudant.com/index.html">IBM Cloudant Documentation</a> site.</p>
 <p>You can use IBM MobileFirst Platform adapters to communicate with a remote Cloudant database. This tutorial shows you some examples.</p>
-<p>This tutorial assumes that you are comfortable with adapters. See <a href="../../server-side-development/javascript-adapters/js-http-adapter/" target="_blank">JavaScript HTTP Adapters</a> or <a href="../../server-side-development/java-adapters/" target="_blank">Java Adapters</a>.</p>
+<p>This tutorial assumes that you are comfortable with adapters. See <a href="../../server-side-development/javascript-adapters/js-http-adapter/" target="_blank">JavaScript HTTP Adapters</a> or <a href="../../server-side-development/java-adapter/" target="_blank">Java Adapters</a>.</p>
 <p>Topics:</p>
 <ul>
 <li><a href="#js-adapter">JavaScript HTTP adapter</a></li>

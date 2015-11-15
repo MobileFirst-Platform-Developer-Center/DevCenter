@@ -1,61 +1,37 @@
 ---
 layout: tutorial
-title: Event Source Notifications in Native Windows 8 Applications
-date: 2015-04-19 06:52:17.000000000 +03:00
-type: tutorial
-published: true
-status: publish
-categories: []
-tags:
-- 7-1
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '6643'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-author:
-  login: iadar@il.ibm.com
-  email: IADAR@il.ibm.com
-  display_name: IdanAdar
-  first_name: IDAN
-  last_name: ADAR
+title: Event Source Notifications in Native Android Applications
+relevantTo: [android]
 ---
-<div id="samplesAndPersonas">
-<div>
-    Relevant to:</p>
-<ul id="relevantForPersona">
-<li class="wp8">Native Windows 8 Universal</li>
-</ul>
-</div>
 <ul>
 <li class="download-sample">
 <a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotifications" target="_blank">Download MobileFirst project</a>
         </li>
 <li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotificationsWin8" target="_blank">Download Native project</a>
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotificationsAndroid" target="_blank">Download Native project</a>
         </li>
 </ul>
-</div>
+
 <h2>Overview</h2>
-<p><strong>Prerequisite:</strong> Make sure that you read the <a href="../../notifications/push-notifications-overview/push-notification-native-windows-8-applications/" title="Push notifications in native Windows 8 applications">Push notifications in native Windows 8 applications</a> tutorial first.</p>
+<p><strong>Prerequisite:</strong> Make sure that you read the <a href="../../push-notifications-native-android-applications/" title="Push notifications in native Android applications">Push notifications in native Android applications</a> tutorial first.</p>
 <p>Event source notifications are notification messages that are targeted to devices with a user subscription.<br />
 While the user subscription exists, MobileFirst Server can produce push notifications for the subscribed user. These notifications can be delivered by the adapter code to all or some of the devices from which the user subscribed.</p>
-<p>To learn more about the architecture and terminology of event-source push notifications refer to the <a href="../../notifications/push-notifications-overview/#notificationTypes" title="Push notification overview">Push notification overview</a> tutorial.</p>
+<p>To learn more about the architecture and terminology of event-source push notifications refer to the <a href="../../../push-notifications-overview/#notificationTypes" title="Push notification overview">Push notification overview</a> tutorial.</p>
 <p>Implementation of the push notification API consists of the following main steps:</p>
 <h4>On the server side:</h4>
 <ul>
-<li><em>Creating an event source</em></li>
-<li><em>Sending notification</em></li>
+<li>Creating an event source</li>
+<li>Sending notification</li>
 </ul>
 <h4>On the client side:</h4>
 <ul>
-<li><em>Sending the token and initializing the </em><code>WLPush</code><em> class</em></li>
-<li><em>Registering the event source</em></li>
-<li><em>Subscribing to/unsubscribing from the event source</em></li>
+<li>Sending the token and initializing the <code>WLPush</code> class</li>
+<li>Registering the event source</li>
+<li>Subscribing to/unsubscribing from the event source</li>
 </ul>
 <h3>Agenda</h3>
 <ul>
-<li><a href="#serverSidenotificationAPI">Notification API - Server-side</a></li>
+<li><a href="#serverSidenotificationAPI">Notification API - server-side</a></li>
 <li><a href="#clientSideApi">Notification API - Client-side</a></li>
 <li><a href="#sample">Sample application</a></li>
 </ul>
@@ -138,43 +114,72 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 </ul>
 <h2 id="clientSideApi">Notification API - Client-side</h2>
 <p>The first step is to create an instance of the <code>WLClient</code> class:</p>
-<p>[code lang="csharp"]WLClient client = WLClient.getInstance();[/code]</p>
+<p>[code lang="java"]final WLClient client = WLClient.createInstance(this);[/code]</p>
 <p>You derive all push notification operations from the <code>WLPush</code> class.</p>
 <ul>
 <code>getPush</code>  –  Use this method to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.</p>
-<p>[code lang="csharp"]WLPush push = client.getPush();[/code]</p>
-<p><code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the Google Cloud Messaging (GCM) server to receive push notifications.</p>
-<p>[code lang="csharp"]<br />
- OnReadyToSubscribeListener myOnReadyListener = new OnReadyToSubscribeListener();<br />
- push.onReadyToSubscribeListener = myOnReadyListener;<br />
+<p>[code lang="java"]WLPush push = client.getPush();[/code]</p>
+<p><code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the GCM server to receive push notifications.</p>
+<p>[code lang="java"]<br />
+client.getPush().setOnReadyToSubscribeListener(listener);<br />
+client.connect(listener);<br />
 [/code]</p>
 <p>The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.</p>
-<p>[code lang="csharp"]<br />
-public void onReadyToSubscribe()<br />
-{...}<br />
+<p>[code lang="java"]<br />
+@Override<br />
+public void onReadyToSubscribe() {.....}<br />
 [/code]
 </ul>
 <h3><code>WLPush.registerEventSourceCallback</code></h3>
 <p>To register an alias on a particular event source, use the <code>WLPush.registerEventSourceCallback</code> method.</p>
 <p>The API takes the following arguments:</p>
 <ul>
-<span class="inline-code">alias</span> - An alias name.<br />
-<span class="inline-code">Adaptername</span> - Adapter in which the event source is defined.<br />
-<span class="inline-code">EventSourceName</span> - The event source on which the alias is called.
+<code>alias</code> - An alias name.<br />
+<code>Adaptername</code> - Adapter in which the event source is defined.<br />
+<code>EventSourceName</code> - The event source on which the alias is called.
 </ul>
 <p>Example:</p>
-<p>[code lang="csharp"]<br />
-WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myPush&quot;, &quot;PushAdapter&quot;, &quot;PushEventSource&quot;, this);<br />
+<p>[code lang="java"]<br />
+WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myAndroid&quot;,&quot;PushAdapter&quot;,&quot;PushEventSource&quot;,this);<br />
 [/code]</p>
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
-<p>[code lang="csharp"]<br />
-public void onReadyToSubscribe()<br />
-{<br />
-  WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myPush&quot;, &quot;PushAdapter&quot;,&quot;PushEventSource&quot;, this);<br />
+<p>[code lang="java"]@Override<br />
+public void onReadyToSubscribe() {<br />
+   WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myAndroid&quot;,&quot;PushAdapter&quot;,&quot;PushEventSource&quot;,this);<br />
 }[/code]</p>
 <p><br clear="all" /></p>
-<h3>Subscribing to push notification</h3>
-<p>To set up subscription to push notification, use the <code>WLPush.subscribe(alias, pushOptions, responseListener)</code> API.</p>
+<h4>In the Android activity class, override the methods that define the Android activity life cycle as follows:</h4>
+<ul>
+<p><code>onPause()</code> must call the <code>setForeground(false)</code> method of the <code>WLPush</code> instance to receive the notification in the notification bar when the application is paused.</p>
+<p>[code lang="java"]<br />
+@Override<br />
+protected void onPause() {<br />
+    super.onPause();<br />
+    if (push != null)<br />
+    push.setForeground(false);<br />
+}<br />
+[/code]</p>
+<p><code>onResume()</code> must call the <code>setForeground(true)</code> method of the <code>WLPush</code> instance to receive the notification in the callback of the application.</p>
+<p>[code lang="java"]<br />
+@Override<br />
+protected void onResume() {<br />
+    super.onResume();<br />
+    if (push != null)<br />
+    push.setForeground(true);<br />
+}<br />
+[/code]</p>
+<p><code>onDestroy()</code> must call the <code>unregisterReceivers</code> method of the <code>WLPush</code> instance to avoid leak exceptions from the receiver when the application exits.</p>
+<p>[code lang="java"]<br />
+@Override<br />
+protected void onDestroy() {<br />
+    super.onDestroy();<br />
+    if (push != null)<br />
+    push.unregisterReceivers();<br />
+}<br />
+[/code]
+</ul>
+<h3>Subscribing to push notifications</h3>
+<p>To set up subscription to push notifications, use the <code>WLPush.subscribe(alias, pushOptions, responseListener)</code> API.</p>
 <p>The API takes the following arguments:</p>
 <ul>
 <p><code>alias</code> – The alias to which the device must subscribe.<br />
@@ -182,64 +187,69 @@ public void onReadyToSubscribe()<br />
 <code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when subscription completes.
 </ul>
 <p>Example:</p>
-<p>[code lang="csharp"]<br />
-WLPush push = WLClient.getInstance().getPush();<br />
-MySubscribeListener mySubListener = new MySubscribeListener();<br />
-push.subscribe(&quot;myPush&quot;, null, mySubListener);<br />
+<p>[code lang="java"]<br />
+WLClient client = WLClient.getInstance();<br />
+client.getPush().subscribe(&quot;myAndroid&quot;,new WLPushOptions(), new MyListener(MyListener.MODE_SUBSCRIBE));<br />
 [/code]</p>
-<p><code>MySubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
+<p>MyListener Implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
 <p><code>onSuccess</code> – Called when subscription succeeds.<br />
 <code>onFailure</code> – Called when subscription fails.</p>
 </ul>
 <h3>Unsubscribing from push notifications</h3>
-<p>To set up unsubscription from push notification, use the <code>WLPush.unsubscribe(alias, responseListener)</code> API.</p>
+<p>To set up unsubscription from push notifications, use the <code>WLPush.unsubscribe(alias, responseListener)</code> API.</p>
 <p>The API takes the following arguments:</p>
 <ul>
 <p><code>alias</code> – The alias to which the device has subscribed.<br />
 <code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when unsubscription completes.
 </ul>
 <p>Example:</p>
-<p>[code lang="csharp"]<br />
-WLPush push = WLClient.getInstance().getPush();<br />
-MyUnsubscribeListener myUnsubListener = new MyUnsubscribeListener();<br />
-push.unsubscribe(&quot;myPush&quot;, myUnsubListener);<br />
+<p>[code lang="java"]<br />
+WLClient client = WLClient.getInstance();<br />
+client.getPush().unsubscribe(&quot;myAndroid&quot;,new MyListener(MyListener.MODE_UNSUBSCRIBE));<br />
 [/code]</p>
-<p><code>MyUnsubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
+<p>MyListener Implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
 <p><code>onSuccess</code> – Called when unsubscription succeeds.<br />
 <code>onFailure</code> – Called when unsubscription fails.</p>
 </ul>
-<h3>Additional client-side API methods</h3>
+<h3>Additional client-side API methods:</h3>
+<p><code>isPushSupported()</code> - Indicates whether push notifications are supported by the device.</p>
+<p>[code lang="java"]<br />
+WLClient client = WLClient.getInstance();<br />
+boolean supported = client.getPush().isPushSupported();<br />
+[/code]</p>
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
-<p>[code lang="csharp"]<br />
-WLClient.getInstance().getPush().isSubscribed(&quot;myPush&quot;);<br />
+<p>[code lang="java"]<br />
+WLClient client = WLClient.getInstance();<br />
+boolean isSubscribed = client.getPush().isSubscribed(&quot;myAndroid&quot;);<br />
 [/code]</p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
-<p>[code lang="csharp"]<br />
-class OnReadyToSubscribeListener : WLOnReadyToSubscribeListener, WLEventSourceListener{...}<br />
+<p>[code lang="java"]<br />
+public class MyListener implements WLOnReadyToSubscribeListener, WLResponseListener, WLEventSourceListener{<br />
 [/code]</p>
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
-<p>[code lang="csharp"]<br />
-WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myPush&quot;, &quot;PushAdapter&quot;, &quot;PushEventSource&quot;, this);<br />
+<p>[code lang="java"]<br />
+WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myAndroid&quot;, &quot;PushAdapter&quot;,&quot;PushEventSource&quot;, this );<br />
 [/code]</p>
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
-<p>[code lang="csharp"]<br />
-public void onReceive(String props, String payload)<br />
-{<br />
-     Debug.WriteLine(&quot;Props: &quot; + props);<br />
-     Debug.WriteLine(&quot;Payload: &quot; + payload);</p>
-<p>}<br />
+<p>[code lang="java"]<br />
+@Override<br />
+public void onReceive(String arg0, String arg1) {<br />
+    AndroidNativePush.updateTextView(&quot;Notification received  &quot; + arg0);<br />
+}<br />
 [/code]</p>
+<p>If the application is not running, the notification icon appears on the notification bar at the top of the screen.</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotifications" target="_blank">Click to download</a> the MobileFirst project.</p>
-<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotificationsWin8" target="_blank">Click to download</a> the Native project.</p>
+<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotificationsAndroid" target="_blank">Click to download</a> the Native project.</p>
 <ul>
 <li>The <code>EventSourceNotifications</code> project contains a MobileFirst native API that you can deploy to your MobileFirst Server instance.</li>
-<li>The <code>EventSourceNotificationsWin8</code> project contains a native Windows 8 Universal application that uses a MobileFirst native API library to subscribe to push notifications and receive notifications from Windows Notification Services (WNS).</li>
+<li>The <code>EventSourceNotificationsAndroid</code> project contains a native android application that uses a MobileFirst native API library to subscribe to push notifications and receive notifications from GCM.</li>
 <li>Make sure to update the <code>wlclient.properties</code> file in the native project with the relevant server settings.</li>
 </ul>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushRun.png"><img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushRun.png" alt="NativeAndroidPushRun" width="1126" height="629" class="alignnone size-full wp-image-3035" /></a></p>
 <h3>Sending a notification</h3>
 <p>To test the application is able to receive a push notification you can perform one of the following:</p>
 <ol>

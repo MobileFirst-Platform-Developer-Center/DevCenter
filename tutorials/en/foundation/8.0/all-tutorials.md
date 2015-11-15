@@ -11,13 +11,13 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 **
 ### <a href="../quick-start/">Quick Start</a>
 Get a feel of the MobileFirst SDK with these fast-tracked demos.
 
-* <a href="../hello-world/ios/">Quick start with iOS</a>
-* <a href="../hello-world/android/">Quick start with Android</a>
-* <a href="../hello-world/windows-8/">Quick start with Windows 8</a>
-* <a href="../hello-world/windows-phone-8/">Quick start with Windows Phone 8</a>
-* <a href="../hello-world/windows-10/">Quick start with Windows 10</a>
-* <a href="../hello-world/windows-phone-10/">Quick start with Windows Phone 10</a>
-* <a href="../hello-world/cordova/">Quick start with Cordova</a>
+* <a href="../quick-start/ios/">Quick start with iOS</a>
+* <a href="../quick-start/android/">Quick start with Android</a>
+* <a href="../quick-start/windows-8/">Quick start with Windows 8</a>
+* <a href="../quick-start/windows-phone-8/">Quick start with Windows Phone 8</a>
+* <a href="../quick-start/windows-10/">Quick start with Windows 10</a>
+* <a href="../quick-start/windows-phone-10/">Quick start with Windows Phone 10</a>
+* <a href="../quick-start/cordova/">Quick start with Cordova</a>
 
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
@@ -26,18 +26,18 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * <a href="../setting-up-your-development-environment/setting-up-the-ios-development-environment/">Setting up the iOS development environment</a>
 * <a href="../setting-up-your-development-environment/setting-up-the-android-development-environment/">Setting up the Android development environment</a>
 * <a href="../setting-up-your-development-environment/setting-up-the-windows-and-windows-phone-development-environment/">Setting up the Windows & Windows Phone development environments</a>
-* <a href="../hello-world/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Operations Console</a>
+* <a href="../quick-start/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Operations Console</a>
 
-### <a href="../adding-mfpf-sdk/">Adding the MobileFirst SDK</a>
+### <a href="../configuring-the-mfpf-sdk/">Configuring the MobileFirst SDK</a>
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows/Phone application.
 
-* <a href="../configuring-mfpf-sdk/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
-* <a href="../configuring-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/"> Configuring a native iOS application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/"> Configuring a native Android application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-mfpf-sdk/configuring-a-native-windows-phone-8-application-with-the-mfp-sdk/">Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/">Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/">Configuring a native Windows 10 Universal application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-mfpf-sdk/configuring-a-native-windows-phone-10-application-with-the-mfp-sdk/">Configuring a native Windows Phone 10 Universal application with the MobileFirst Platform SDK</a>
+* <a href="../configuring-the-mfpf-sdk/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
+* <a href="../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/"> Configuring a native iOS application with the MobileFirst Platform SDK</a>
+* <a href="../configuring-the-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/"> Configuring a native Android application with the MobileFirst Platform SDK</a>
+* <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-phone-8-application-with-the-mfp-sdk/">Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a>
+* <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/">Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK</a>
+* <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/">Configuring a native Windows 10 Universal application with the MobileFirst Platform SDK</a>
+* <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-phone-10-application-with-the-mfp-sdk/">Configuring a native Windows Phone 10 Universal application with the MobileFirst Platform SDK</a>
 
 ### <a href="../client-side-development-in-cordova-applications/">Client-side development in Cordova applications</a>
 Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; native interactions.

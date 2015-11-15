@@ -2,20 +2,10 @@
 layout: tutorial
 title: Java Adapters
 show_children: true
+relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 ---
-<div id="samplesAndPersonas">
-<div>
-    Relevant to:</p>
-<ul id="relevantForPersona">
-<li class="ios">Native iOS</li>
-<li class="android">Native Android</li>
-<li class="wp8">Native Windows Phone 8</li>
-<li class="wp8">Native Windows 8 Universal</li>
-<li class="hybrid">Hybrid</li>
-</ul></div>
-</div>
 <h2>Overview</h2>
-<p><strong>Prerequisite</strong>: Make sure to read the <a href="../../server-side-development/overview/">Adapters Overview</a> tutorial first.</p>
+<p><strong>Prerequisite</strong>: Make sure to read the <a href="../../server-side-development/adapter-framework-overview/">Adapters Overview</a> tutorial first.</p>
 <p>Java adapters are based on the JAX-RS specification. In other words, a Java adapter is a JAX-RS service that can easily be deployed to a MobileFirst Server instance and has access to MobileFirst Server APIs.</p>
 <p>In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource. The only exception is if the client sending the request supports GZip, then the returned content encoding of the Java adapter is compressed by GZip. All operations on the returned content are done and owned by the developer.</p>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter.jpg"><img src="{{ site.baseurl }}/assets/backup/java-adapter.jpg" alt="java-adapter" width="960" height="683" class="aligncenter size-full wp-image-7212" /></a></p>
@@ -162,7 +152,7 @@ PushAPI pushApi = serverApi.getPushAPI();<br />
 <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-call.png"><img src="{{ site.baseurl }}/assets/backup/java-adapter-call.png" alt="java-adapter-call" width="605" height="467" class="aligncenter size-full wp-image-7331" /></a></p>
 <h3>In the Command Line interface (CLI)</h3>
 <p>Enter <code>$ mfp adapter call</code>, then follow the prompts by using the arrow keys.</p>
-<blockquote><p>For more information, see the <a href="../../advanced-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a> tutorial.</p></blockquote>
+<blockquote><p>For more information, see the <a href="../../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a> tutorial.</p></blockquote>
 <h3>In Postman</h3>
 <p>MobileFirst Java adapters are available via a REST interface. This means that if you know the URL of a resource/procedure, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.</p>
 <p>If your resource is protected by a security scope (see <a href="../../authentication-security/authentication-concepts/oauth-based-security-model/#protectAdapt" title="Protecting Java adapters" target="_blank">Protecting Java adapters</a>), the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.</p>
