@@ -2,7 +2,7 @@
 layout: tutorial
 title: Run IBM MobileFirst Platform Foundation on IBM Containers
 breadcrumb_title: Prepare and run on IBM Containers
-relevantTo: [ios,android,windows8,windowsphone10,hybrid]
+relevantTo: [ios,android,windows8,windowsphone8,hybrid]
 ---
 <h2>Overview</h2>
 <p>This tutorial demonstrates how to take a locally developed IBM MobileFirst Platform Foundation project and run it on Bluemix. To achieve this result, you go through the following steps: set up your host computer with the required tools (MobileFirst CLI, Docker, and IBM Containers Extension (ICE) CLI), set up your Bluemix environment, build a MobileFirst Platform Foundation Server image, deploy your project runtime and push it to the Bluemix repository. Finally, you run the image on an IBM Container and update it with the MobileFirst project application and adapter.</p>
@@ -10,7 +10,7 @@ relevantTo: [ios,android,windows8,windowsphone10,hybrid]
 <p><strong>Note:</strong> Windows OS is currently not supported.<br />
 <strong>Note:</strong> The MobileFirst Server Configuration Tools cannot be used for deployments to IBM Containers.</p>
 
-<p><strong>Prerequisite:</strong> Make sure to read the <a href="../../bluemix/introduction-to-foundation-on-bluemix/" target="_blank">Introduction to IBM MobileFirst Platform Foundation on IBM Containers</a> tutorial.</p>
+<p><strong>Prerequisite:</strong> Make sure to read the <a href="../overview">Introduction to IBM MobileFirst Platform Foundation on IBM Containers</a> tutorial.</p>
 
 <h3>Topics</h3>
 <ul>
@@ -20,7 +20,7 @@ relevantTo: [ios,android,windows8,windowsphone10,hybrid]
 </ul>
 
 <h2 id="registerAccount">Register an account at Bluemix</h2>
-<p>If you do not yet have an account, visit the <a href="http://www.bluemix.net">Bluemix website</a> and click <strong>Get Started Free</strong> or <strong>Sign Up</strong>. You'll need to fill up a registration form before you can move on to the next step.</p><br>
+<p>If you do not yet have an account, visit the <a href="http://www.bluemix.net" target="_blank">Bluemix website</a> and click <strong>Get Started Free</strong> or <strong>Sign Up</strong>. You'll need to fill up a registration form before you can move on to the next step.</p><br>
 
 <h4>The Bluemix Dashboard</h4>
 <p>After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix <strong>space</strong>. By default, this work area  receives the name "dev". You can create multiple work areas/spaces if needed.</p>
@@ -29,7 +29,7 @@ relevantTo: [ios,android,windows8,windowsphone10,hybrid]
 <p>To manage containers and images, you need to install the following tools: IBM MobileFirst Platform Foundation CLI, Docker, and IBM Containers Extension (ICE) CLI.</p>
 
 <h3>MobileFirst Platform Foundation CLI</h3>
-<p>Follow the <a href="../../advanced-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/" target="_blank">Using CLI to create, build, and manage MobileFirst project artifacts</a> tutorial to install the MobileFirst Command Line Interface.</p>
+<p>Follow the <a href="../../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a> tutorial to install the MobileFirst Command Line Interface.</p>
 
 <h3>Docker</h3>
 <p>Go to the <a href="https://docs.docker.com/" target="_blank">Docker Documentation</a> > on the left menu, select <strong>Install > Docker Engine</strong>, select your OS type and follow the instructions to install the Docker Toolbox.<br />

@@ -111,15 +111,15 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
     * <a href="../notifications/push-notifications-overview/push-notifications-native-ios-applications/event-source-based-notifications-in-native-ios-applications/">Event Source Notifications in Native iOS Applications</a>
 	* <a href="../notifications/push-notifications-overview/push-notifications-native-ios-applications/tag-based-notifications-in-native-ios-applications/">Tag and Broadcast Notifications in Native iOS Applications</a>
 	* <a href="../notifications/push-notifications-overview/push-notifications-native-ios-applications/interactive-and-silent-notifications-in-native-ios-applications/">Interactive and Silent Notifications in Native iOS Applications</a>
-* <a href="../notifications/push-notifications-overview/push-notification-native-android-applications/">Push notifications in native Android applications</a>
-    * <a href="../notifications/push-notifications-overview/push-notification-native-android-applications/event-source-based-notifications-in-native-android-applications/">Event Source Notifications in Native Android Applications</a>
-	* <a href="../notifications/push-notifications-overview/push-notification-native-android-applications/tag-based-notifications-in-native-android-applications/">Tag and Broadcast Notifications in Native Android Applications</a>
+* <a href="../notifications/push-notifications-overview/push-notifications-native-android-applications/">Push notifications in native Android applications</a>
+    * <a href="../notifications/push-notifications-overview/push-notifications-native-android-applications/event-source-based-notifications-in-native-android-applications/">Event Source Notifications in Native Android Applications</a>
+	* <a href="../notifications/push-notifications-overview/push-notifications-native-android-applications/tag-based-notifications-in-native-android-applications/">Tag and Broadcast Notifications in Native Android Applications</a>
 * <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/">Push notifications in native Windows Phone 8 applications</a>
     * <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/event-source-based-notifications-in-native-windows-phone-8-applications/">Event Source Notifications in Native Windows Phone 8 Applications</a>
 	* <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/tag-based-notifications-in-native-windows-phone-8-applications/">Tag and Broadcast Notifications in Native Windows Phone 8 Applications</a>
-* <a href="../notifications/push-notifications-overview/push-notification-native-windows-8-applications/">Push notifications in native Windows 8 Universal applications</a>
-	* <a href="../notifications/push-notifications-overview/push-notification-native-windows-8-applications/event-source-based-notifications-in-native-windows-8-applications/">Event Source Notifications in Native Windows 8 Applications</a>
-	* <a href="../notifications/push-notifications-overview/push-notification-native-windows-8-applications/tag-based-notifications-in-native-windows-8-applications/">Tag and Broadcast Notifications in Native Windows 8 Applications</a>
+* <a href="../notifications/push-notifications-overview/push-notifications-native-windows-8-applications/">Push notifications in native Windows 8 Universal applications</a>
+	* <a href="../notifications/push-notifications-overview/push-notifications-native-windows-8-applications/event-source-based-notifications-in-native-windows-8-applications/">Event Source Notifications in Native Windows 8 Applications</a>
+	* <a href="../notifications/push-notifications-overview/push-notifications-native-windows-8-applications/tag-based-notifications-in-native-windows-8-applications/">Tag and Broadcast Notifications in Native Windows 8 Applications</a>
 * <a href="../notifications/sms-notifications/">SMS Notification</a>
 * <a href="../notifications/two-way-sms-communication/">Two-way SMS communication</a>
 
@@ -155,14 +155,14 @@ Protect your applications and adapter procedures against unauthorized access by 
 
 ### <a href="../analytics">Analytics</a>
 
-* <a href="../moving-production/operational-analytics/">Operational Analytics</a>
-* <a href="../moving-production/reports-analytics/">Reports and analytics</a>
+* <a href="../analytics/operational-analytics/">Operational Analytics</a>
+* <a href="../analytics/reports-analytics/">Reports and analytics</a>
 
-### <a href="../moving-production/">Moving to production</a>
+### <a href="../moving-to-production/">Moving to production</a>
 Move the apps that you create from your development environment to the production environment.
 
-* <a href="../moving-production/moving-development-environment-stand-alone-qa-production-servers/">Moving from development environment to stand-alone QA and production servers</a>
-* <a href="../moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
+* <a href="../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/">Moving from development environment to stand-alone QA and production servers</a>
+* <a href="../moving-to-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
 
 ### <a href="../ibm-containers">IBM Containers</a>
 Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
