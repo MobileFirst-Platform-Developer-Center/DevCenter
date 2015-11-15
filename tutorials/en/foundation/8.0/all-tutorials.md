@@ -103,9 +103,9 @@ Add data-related functionality to your applications. Create apps that can run of
 ### <a href="../notifications/">Notifications</a>
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 
-* <a href="../notifications/push-notifications-overview">Push Notifications Overview</a>
+* <a href="../notifications/push-notifications-overview/">Push Notifications Overview</a>
 * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/">Push notifications in hybrid applications</a>
-    * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/event-source-notifications-in-hybrid-applications/">Event Source Notifications in Hybrid Applications</a>
+    * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/event-source/">Event Source Notifications in Hybrid Applications</a>
     * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/tag-based/">Tag and Broadcast Notifications in Hybrid Applications</a>
 * <a href="../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/">Push notifications in native iOS applications</a>
     * <a href="../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/event-source/">Event Source Notifications in Native iOS Applications</a>
