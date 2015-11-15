@@ -40,7 +40,7 @@ show_disqus: false
 ### <a href="../data/">Data</a>
 
 * <a href="../data/jsonstore/jsonstore-java-api/">JSONStore - Java API</a>
-* <a href="../advanced-topics/cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
+* <a href="../data/cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
 
 ### <a href="../notifications/">Notifications</a>
 
@@ -55,7 +55,7 @@ show_disqus: false
 * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-android-applications/">Adapter-based authentication - client implementation</a>
 * <a href="../authentication-security/custom-authenticator-login-module/">Custom authenticator and login module - server configuration</a>
 * <a href="../authentication-security/custom-authenticator-login-module/custom-authenticator-and-login-module-in-native-android-applications/">Custom authenticator and login module - client implementation</a>
-* <a href="../authentication-security/application-authenticity-protection/application-authenticity-protection-native-android/">Application Authenticity Protection in Native Android applications</a>
+* <a href="../authentication-security/application-authenticity-protection/application-authenticity-protection-native-android-applications/">Application Authenticity Protection in Native Android applications</a>
 * <a href="../authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a>
 
 ### <a href="../advanced-topics/">Advanced topics</a>

@@ -16,9 +16,9 @@ relevantTo: [ios]
 </ul>
 <br>
 This tutorial explains how to implement the client side of a custom authentication in native iOS.<br />
-<strong>Prerequisite:</strong> Make sure that you read the <a title="Custom Authentication" href="../../authentication-security/custom-authentication/">Custom Authentication</a> tutorial first.</p>
+<strong>Prerequisite:</strong> Make sure that you read the <a title="Custom Authentication" href="../">Custom Authentication</a> tutorial first.</p>
 <h2>Implementing client-side authentication</h2>
-<p>Create a native iOS application and add the MobileFirst native APIs as explained in the <a href="../../hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/">Configuring a native iOS application with the MobileFirst Platform SDK</a> tutorial.</p>
+<p>Create a native iOS application and add the MobileFirst native APIs as explained in the <a href="../../../hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/">Configuring a native iOS application with the MobileFirst Platform SDK</a> tutorial.</p>
 <h3>Storyboard</h3>
 <p>In your storyboard, add a ViewController that contains a login form.<br />
 <a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_09_storyboard.png"><img class="aligncenter wp-image-1043 size-full" src="{{ site.baseurl }}/assets/backup/09_09_storyboard.png" alt="09_09_storyboard" width="1000" height="586" /></a></p>
@@ -137,7 +137,7 @@ The protected procedure invocation triggers MobileFirst Server to send the chall
 <li>Instead of <code>submitLoginForm</code>, use <code>submitChallengeAnswer</code> to send your challenge response as a JSON object.</li>
 <li>You do not need to call <code>submitSuccess</code> or <code>submitFailure</code> because the framework will do it for you.</li>
 </ul>
-<blockquote><p>For an example that uses <code>WorklightProtocolAuthenticator</code>, see the <a href="../../advanced-topics/remember-me/" title="Remember Me">Remember Me</a> tutorial or <a href="https://developer.ibm.com/mobilefirstplatform/2015/05/29/ibm-mobilefirst-platform-foundation-custom-authenticators-and-login-modules/" target="_blank">this video blog post</a>.
+<blockquote><p>For an example that uses <code>WorklightProtocolAuthenticator</code>, see the <a href="../../../advanced-topics/remember-me/" title="Remember Me">Remember Me</a> tutorial or <a href="https://developer.ibm.com/mobilefirstplatform/blog/2015/05/29/ibm-mobilefirst-platform-foundation-custom-authenticators-and-login-modules/" target="_blank">this video blog post</a>.
 </p></blockquote>
 <h2>Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/CustomAuth" target="_blank">Click to download</a> the MobileFirst project.<br />

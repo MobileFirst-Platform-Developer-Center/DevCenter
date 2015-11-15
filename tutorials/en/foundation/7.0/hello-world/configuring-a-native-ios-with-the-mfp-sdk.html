@@ -18,7 +18,7 @@ relevantTo: [ios]
 <h2 id="nativeAPI">Creating and Deploying a MobileFirst native API</h2>
 <h3>CLI</h3>
 <ol>
-<li>In the terminal with the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/advanced-client-side-development/using-cli-create-build-manage-project-artifacts/" title="Updated: Using CLI to create, build, and manage MobileFirst project artifacts">CLI</a> installed, create a new MobileFirst project using: <code>$ mfp create HelloWorldNative</code>.</li>
+<li>In the terminal with the <a href="../../advanced-client-side-development/using-cli-create-build-manage-project-artifacts/" title="Updated: Using CLI to create, build, and manage MobileFirst project artifacts">CLI</a> installed, create a new MobileFirst project using: <code>$ mfp create HelloWorldNative</code>.</li>
 <li>Go to the newly created project directory: <code>$ cd HelloWorldNative/</code>.</li>
 <li>Add a new iOS native API using <code>$ mfp add api iOSHelloWorld -e ios</code>.</li>
 <li>Build and deploy the application using <code>$ mfp bd</code>. <em>This action is required for MobileFirst Server to recognize the application if it attempts to connect.</em></li>
@@ -52,7 +52,7 @@ relevantTo: [ios]
 <li><code>application id</code> – The application ID as defined in the <code>application-descriptor.xml</code> file.</li>
 <li><code>application version</code> – The application version.</li>
 <li><code>environment</code> – The target environment of the native application (“iOSnative”).</li>
-<li><code>wlUid</code> – This property is used by MTW <a href="../advanced-topics/testing-mobilefirst-platform-applications-mobile-test-workbench">(Mobile Test Workbench, an Eclipse plug-in</a>), the test workbench, to identify this as a MobileFirst application.</li>
+<li><code>wlUid</code> – This property is used by MTW <a href="../../advanced-topics/testing-mobilefirst-platform-applications-mobile-test-workbench">(Mobile Test Workbench, an Eclipse plug-in</a>), the test workbench, to identify this as a MobileFirst application.</li>
 <li><code>wlPlatformVersion</code> – The MobileFirst SDK version.</li>
 </ul>
 <h2 id="configNativeApp">Configuring an iOS native application</h2>
@@ -103,4 +103,4 @@ However, if you already have your own Bridging Header for other purposes, includ
 XCode provides code autocompletion converted to the Swift style.<br />
 <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_swift-autocomplete.png"><img class="alignnone size-full wp-image-1266" src="{{ site.baseurl }}/assets/backup/02_02_swift-autocomplete.png" alt="02_02_swift-autocomplete" width="402" height="68" /></a></p>
 <h2 id="next">Tutorials to follow next</h2>
-<p>Now that your application contains the Native API library, you can follow the tutorials in the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-7-0/">Native iOS development</a>  section to learn more about authentication and security, server-side development, advanced client-side development, notifications and more.</p>
+<p>Now that your application contains the Native API library, you can follow the tutorials in the <a href="../ios-tutorials/">Native iOS development</a>  section to learn more about authentication and security, server-side development, advanced client-side development, notifications and more.</p>
