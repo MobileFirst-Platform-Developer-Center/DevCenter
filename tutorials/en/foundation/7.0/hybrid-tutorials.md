@@ -19,7 +19,7 @@ show_disqus: false
 * <a href="../hello-world/mobilefirst-console/">Introduction to MobileFirst Console</a>
 * <a href="../hello-world/">Previewing your application</a>
 
-### <a href="/mobilefirstplatform/documentation/getting-started-7-0/client-side-development-basics/">Client-side development basics</a>
+### <a href="../client-side-development-basics/">Client-side development basics</a>
 
 * <a href="../client-side-development-basics/learning-mobilefirst-hybrid-client-side-api/">Learning MobileFirst hybrid client-side API</a>
 * <a href="../client-side-development-basics/building-multi-page-application/">Building a multi-page application</a>
@@ -61,7 +61,7 @@ show_disqus: false
 
 * <a href="../data/working-offline/">Working offline</a>
 * <a href="../data/jsonstore/jsonstore-javascript-api/">JSONStore - JavaScript API</a>
-* <a href="https://developer.ibm.com/mobilefirstplatform/documentation/integration-7-0/cloudant/">Integrating with Cloudant using an adapter</a>
+* <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/data/cloudant-nosql-db-api">Integrating with Cloudant using an adapter</a>
 
 ### <a href="../adding-native-functionality/">Adding native functionality to hybrid applications</a>
 

@@ -6,7 +6,7 @@ show_disqus: false
 ### Setting up your development environment
 
 * <a href=" ../setting-up-your-development-environment/setting-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
-* <a href=" ../setting-up-your-development-environment/setting-ios-development-environment">Setting up your iOS development environment</a>
+* <a href=" ../setting-up-your-development-environment/setting-ios-development-environment/">Setting up your iOS development environment</a>
 
 ### Hello World
 
