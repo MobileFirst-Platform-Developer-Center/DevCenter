@@ -130,7 +130,7 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
     * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/">Push notifications in hybrid applications</a>
         * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/event-source-notifications-in-hybrid-applications/">Event Source Notifications in Hybrid Applications</a>
         * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/tag-based-notifications-in-hybrid-applications/">Tag and Broadcast Notifications in Hybrid Applications</a>
-    * <a href="../notifications/push-notifications-overview/push-notification-native-ios-applications/">Push notifications in native iOS applications</a>
+    * <a href="../notifications/push-notifications-overview/push-notifications-native-ios-applications/">Push notifications in native iOS applications</a>
         * <a href="../notifications/push-notifications-overview/push-notification-native-ios-applications/event-source-based-notifications-in-native-ios-applications/">Event Source Notifications in Native iOS Applications</a>
         * <a href="../notifications/push-notifications-overview/push-notification-native-ios-applications/tag-based-notifications-in-native-ios-applications/">Tag and Broadcast Notifications in Native iOS Applications</a>
         * <a href="../notifications/push-notifications-overview/push-notification-native-ios-applications/interactive-and-silent-notifications-in-native-ios-applications/">Interactive and Silent Notifications in Native iOS Applications</a>
@@ -213,7 +213,7 @@ Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 * <a href="../ibm-containers/overview">Overview</a>
 * <a href="../ibm-containers/evaluate">Evaluate</a>
 * <a href="../ibm-containers/run">Run</a>
-* <a href="../ibm-containers/ibm-containers-sample-application">Sample application</a>
+* <a href="../ibm-containers/sample-app">Sample application</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview">Integrate with MobileFirst Quality Assurance</a>
 Add testing capabilities to your application.

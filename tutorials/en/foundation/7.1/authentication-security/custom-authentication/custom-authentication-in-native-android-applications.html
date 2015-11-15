@@ -13,10 +13,10 @@ relevantTo: [android]
 </ul>
 <br>
 This tutorial explains how to implement the client side of a custom authentication in native Android.<br />
-<strong>Prerequisite:</strong> Make sure that you read the <a title="Custom Authentication" href="../../authentication-security/custom-authentication/">Custom Authentication</a> tutorial first.</p>
+<strong>Prerequisite:</strong> Make sure that you read the <a title="Custom Authentication" href="../">Custom Authentication</a> tutorial first.</p>
 <h2>Implementing the client-side authentication</h2>
 <ul>
-<li>Create a native Android application and add the MobileFirst native APIs as explained in the <a href="../../hello-world/configuring-a-native-android-application-with-the-mfp-sdk/" target="_blank">Configuring a native Android application with the MobileFirst Platform SDK</a> tutorial.
+<li>Create a native Android application and add the MobileFirst native APIs as explained in the <a href="../../../hello-world/configuring-a-native-android-application-with-the-mfp-sdk/">Configuring a native Android application with the MobileFirst Platform SDK</a> tutorial.
 </li>
 <li>Add an activity which handles and presents a login form.
 <p></p>
@@ -140,7 +140,7 @@ request.send(new MyResponseListener());<br />
 <li>Instead of <code>submitLoginForm</code>, use <code>submitChallengeAnswer</code> to send your challenge response as a JSON.</li>
 <li>There is no need to call <code>submitSuccess</code> or <code>submitFailure</code> as the framework will do it for you.</li>
 </ul>
-<blockquote><p>For an example that uses <code>WorklightProtocolAuthenticator</code>, see the <a href="../../advanced-topics/remember-me/" title="Remember Me">Remember Me</a> tutorial or <a href="https://developer.ibm.com/mobilefirstplatform/2015/05/29/ibm-mobilefirst-platform-foundation-custom-authenticators-and-login-modules/" target="_blank">this video blog post</a>.
+<blockquote><p>For an example that uses <code>WorklightProtocolAuthenticator</code>, see the <a href="../../../advanced-topics/remember-me/" title="Remember Me">Remember Me</a> tutorial or <a href="https://developer.ibm.com/mobilefirstplatform/blog/2015/05/29/ibm-mobilefirst-platform-foundation-custom-authenticators-and-login-modules/" target="_blank">this video blog post</a>.
 </p></blockquote>
 <h2>Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/CustomAuth" target="_blank">Click to download</a> the MobileFirst project.<br />

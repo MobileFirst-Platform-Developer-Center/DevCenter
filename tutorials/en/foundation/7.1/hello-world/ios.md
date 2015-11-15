@@ -42,9 +42,9 @@ mfp push
 
 #### Add the MobileFirst iOS SDK to the Xcode project
 
-If [CocoaPods](http://guides.cocoapods.org/) is not installed in your development environment, <a href="#cocoapods-instructions" data-toggle="collapse" href="#cocoapods-install" aria-expanded="false" aria-controls="cocoapods-install">click to learn how to install it</a>.
+If [CocoaPods](http://guides.cocoapods.org/) is not installed in your development environment, <a href="#cocoapods-instructions" data-toggle="collapse" href="#cocoapods-instructions" aria-expanded="false" aria-controls="cocoapods-install">click to learn how to install it</a>.
 
-<div id="cocoapods-install" class="collapse" markdown="1">
+<div id="cocoapods-instructions" class="collapse" markdown="1">
 - Open **Terminal**
 - Run the command `sudo gem install cocoapods`
 - Run the command `pod setup` – Note that this command might take several minutes to complete

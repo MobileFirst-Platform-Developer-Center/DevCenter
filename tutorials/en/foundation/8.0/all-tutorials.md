@@ -176,7 +176,7 @@ Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 * <a href="../ibm-containers/overview">Overview</a>
 * <a href="../ibm-containers/evaluate">Evaluate</a>
 * <a href="../ibm-containers/run">Run</a>
-* <a href="../ibm-containers/ibm-containers-ample-application">Sample application</a>
+* <a href="../ibm-containers/sample-app">Sample application</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview">Integrate with MobileFirst Quality Assurance</a>
 Add testing capabilities to your application.
