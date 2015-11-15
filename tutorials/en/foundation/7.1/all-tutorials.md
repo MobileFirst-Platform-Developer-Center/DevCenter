@@ -5,7 +5,7 @@ weight: 1
 show_disqus: false
 ---
 <br>
-Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 &amp; 8.0**.  
+Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 &amp; 8.0**.
 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials">Looking for Foundation 8.0 **DevOps** tutorials</a>?
 
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
@@ -29,7 +29,7 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
 * <a href="../hello-world/configuring-a-native-windows-phone-8-application-with-the-mfp-sdk/">Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a>
 * <a href="../hello-world/configuring-a-native-windows-8-application-with-the-mfp-sdk/">Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK</a>
 * <a href="../hello-world/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
-* <a href="../mobilefirstplatform/documentation/getting-started-7-1/hello-world/connecting-to-mobilefirst-server/">Connecting to MobileFirst Server</a>
+* <a href="../hello-world/connecting-to-mobilefirst-server/">Connecting to MobileFirst Server</a>
 
 ### <a href="../client-side-development-basics/">Hybrid client-side development basics</a>
 <p>Use basic MobileFirst APIs to develop Hybrid your apps, build a multipage application, work with the user interface framework, and debug and optimize your apps.</p>
@@ -55,7 +55,7 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
 * <a href="../advanced-client-side-development/supporting-multiple-form-factors-using-skins/">Supporting multiple form-factors using skins</a>
 * <a href="../advanced-client-side-development/enabling-translation/">Translation</a>
 * <a href="../advanced-client-side-development/using-direct-update-to-quickly-update-your-application/">Using Direct Update to quickly update your application</a>
-* <a href="../advanced-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
+* <a href="../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
 * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
     * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-native-android/" target="_blank">Logging in native Android (Java)</a>
     * <a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/logging-in-native-ios/" target="_blank">Logging in native iOS (Objective-C)</a>
@@ -120,7 +120,7 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
     * <a href="../adding-native-functionality/windows-phone-8-adding-native-functionality-hybrid-application-apache-cordova-plugin/">Windows Phone 8 – Adding native functionality to hybrid application with an Apache Cordova plugin</a>
 * Adding native UI elements to hybrid applications
     * <a href="../adding-native-functionality/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>
-    * <a href="../adding-native-functionality/wp8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
+    * <a href="../adding-native-functionality/windows-phone-8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
     * <a href="../adding-native-functionality/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
 
 ### <a href="../notifications/">Notifications</a>
@@ -130,10 +130,10 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
     * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/">Push notifications in hybrid applications</a>
         * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/event-source-notifications-in-hybrid-applications/">Event Source Notifications in Hybrid Applications</a>
         * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/tag-based-notifications-in-hybrid-applications/">Tag and Broadcast Notifications in Hybrid Applications</a>
-    * <a href="../notifications/push-notifications-overview/push-notifications-native-ios-applications/">Push notifications in native iOS applications</a>
-        * <a href="../notifications/push-notifications-overview/push-notifications-native-ios-applications/event-source-based-notifications-in-native-ios-applications/">Event Source Notifications in Native iOS Applications</a>
-        * <a href="../notifications/push-notifications-overview/push-notifications-native-ios-applications/tag-based-notifications-in-native-ios-applications/">Tag and Broadcast Notifications in Native iOS Applications</a>
-        * <a href="../notifications/push-notifications-overview/push-notifications-native-ios-applications/interactive-and-silent-notifications-in-native-ios-applications/">Interactive and Silent Notifications in Native iOS Applications</a>
+    * <a href="../notifications/push-notifications-overview/push-notification-native-ios-applications/">Push notifications in native iOS applications</a>
+        * <a href="../notifications/push-notifications-overview/push-notification-native-ios-applications/event-source-based-notifications-in-native-ios-applications/">Event Source Notifications in Native iOS Applications</a>
+        * <a href="../notifications/push-notifications-overview/push-notification-native-ios-applications/tag-based-notifications-in-native-ios-applications/">Tag and Broadcast Notifications in Native iOS Applications</a>
+        * <a href="../notifications/push-notifications-overview/push-notification-native-ios-applications/interactive-and-silent-notifications-in-native-ios-applications/">Interactive and Silent Notifications in Native iOS Applications</a>
     * <a href="../notifications/push-notifications-overview/push-notification-native-android-applications/">Push notifications in native Android applications</a>
         * <a href="../notifications/push-notifications-overview/push-notification-native-android-applications/event-source-based-notifications-in-native-android-applications/">Event Source Notifications in Native Android Applications</a>
         * <a href="../notifications/push-notifications-overview/push-notification-native-android-applications/tag-based-notifications-in-native-android-applications/">Tag and Broadcast Notifications in Native Android Applications</a>
@@ -166,7 +166,7 @@ Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 
     * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-8-applications/">Adapter-based authentication in native Windows 8 applications</a>
 * <a href="../authentication-security/custom-authentication/">Custom Authentication</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-hybrid-applications/">Custom authentication in hybrid applications</a>
-    * <a href="../authentication-security/custom-authentication/custom-authentication-native-ios-applications/"> Custom authentication in native iOS applications</a>
+    * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-ios-applications/"> Custom authentication in native iOS applications</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-android-applications/">Custom authentication in native Android applications</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-windows-phone-8-applications/">Custom authentication in native Windows Phone 8 applications</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-windows-8-applications/">Custom authentication in native Windows 8 applications</a>
@@ -213,7 +213,7 @@ Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 * <a href="../ibm-containers/overview">Overview</a>
 * <a href="../ibm-containers/evaluate">Evaluate</a>
 * <a href="../ibm-containers/run">Run</a>
-* <a href="../ibm-containers/ibm-containers-ample-application">Sample application</a>
+* <a href="../ibm-containers/ibm-containers-sample-application">Sample application</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview">Integrate with MobileFirst Quality Assurance</a>
 Add testing capabilities to your application.
@@ -228,7 +228,7 @@ Scan your application for potential harming code.
 
 * <a href="{{site.baseurl}}/tutorials/en/application-scanning/">MobileFirst application scanning</a>
 
-### <a href="../cloundant-local-data-layer">Cloudant Data Layer</a>
+### <a href="../working-with-cloundant-local-data-layer">Cloudant Data Layer</a>
 Scalable database management for your MobileFirst projects.
 
 * <a href="../data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
