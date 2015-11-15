@@ -27,3 +27,9 @@ defaults:
       layout: tutorial
       show_breadcrumb: true
       show_disqus: true
+  -
+    scope:
+      path: "labs"
+    values:
+      layout: labs
+      show_disqus: true
