@@ -29,7 +29,7 @@ show_disqus: false
 * <a href="../hello-world/previewing-application-windows-8/">Previewing your application in Windows 8</a>
 * <a href="../hello-world/previewing-application-mobile-web-desktop-browser/">Previewing your application on Mobile Web and Desktop Browser</a>
 
-### <a href="../client-side-development-basics/">Client-side development basics</a>
+### <a href="../client-side-development/">Client-side development</a>
 <p>Use basic MobileFirst APIs to develop your apps, build a multi-page application, work with the user interface framework, and debug and optimize your apps.</p>
 
 * <a href="../client-side-development-basics/learning-mobilefirst-hybrid-client-side-api/">Learning MobileFirst hybrid client-side API</a>

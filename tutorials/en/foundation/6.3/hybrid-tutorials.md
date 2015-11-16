@@ -6,17 +6,17 @@ show_disqus: false
 ### Setting up your development environment
 <p><i>Multiple tutorials within</i></p>
 
-* <a href="../setting-up-your-development-environment/">Setting up your development environment(s)</a>
+* <a href="../development-environment/">Setting up your development environment(s)</a>
 
 ### Hello World
 
 * <a href="../hello-world/creating-your-first-hybrid-application/">Creating your first hybrid application</a>
 * <a href="../hello-world/">Previewing your application</a>
 
-### Client-side development basics
+### Client-side development
 <p><i>Multiple tutorials within</i></p>
 
-* <a href="../client-side-development-basics/">Client-side development basics</a>
+* <a href="../client-side-development/">Client-side development</a>
 
 ### Server-side development
 <p><i>Multiple tutorials within</i></p>
