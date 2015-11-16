@@ -3,15 +3,15 @@ layout: tutorial
 title: All Tutorials
 show_disqus: false
 ---
-### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
+### <a href="../development-environment/">Setting up your development environment</a>
 <p>Set up your development environment to work with IBM MobileFirst Platform Foundation.</p>
 
-* <a href="../setting-up-your-development-environment/setting-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
-* <a href="../setting-up-your-development-environment/setting-ios-development-environment/">Setting up your iOS development environment</a>
-* <a href="../setting-up-your-development-environment/setting-android-development-environment/">Setting up your Android development environment</a>
-* <a href="../setting-up-your-development-environment/setting-blackberry-6-7-development-environment/">Setting up your BlackBerry 6 and 7 development environment</a>
-* <a href="../setting-up-your-development-environment/setting-blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>
-* <a href="../setting-up-your-development-environment/setting-windows-phone-8-development-environment/">Setting up your Windows Phone 8 development environment</a>
+* <a href="../development-environment/mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
+* <a href="../development-environment/ios-development-environment/">Setting up your iOS development environment</a>
+* <a href="../development-environment/android-development-environment/">Setting up your Android development environment</a>
+* <a href="../development-environment/blackberry-6-7-development-environment/">Setting up your BlackBerry 6 and 7 development environment</a>
+* <a href="../development-environment/blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>
+* <a href="../development-environment/windows-phone-8-development-environment/">Setting up your Windows Phone 8 development environment</a>
 
 ### <a href="../hello-world/">Hello World</a>
 <p>Create your first MobileFirst app and preview it in different mobile operating systems.</p>
