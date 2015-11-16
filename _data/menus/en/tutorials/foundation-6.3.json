@@ -6,13 +6,13 @@
         "path": "",
         "children": [{
             "name": "Setting up your development environment",
-            "path": "/setting-up-your-development-environment"
+            "path": "/development-environment"
         }, {
             "name": "Hello World",
             "path": "/hello-world"
         }, {
             "name": "Client-side development",
-            "path": "/client-side-development-basics"
+            "path": "/client-side-development"
         }, {
             "name": "Server-side development",
             "path": "/server-side-development"
