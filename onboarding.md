@@ -30,17 +30,17 @@ If you are unable to access it, request access to GitHub Enterprise from Nathan 
 
 ### Setup Jekyll and test locally
 
-Jekyll is software that takes the Developer Center source files and compiles them into the static HTML files that you see when visiting the site. Follow the below to setup Jekyll locally in order test your changes before pushing them to your repository in GHE, and from there to the master branch. [Wiki page with instructions](https://github.ibm.com/MFPSamples/mfpsamples.github.ibm.com/wiki/Testing-locally).
+Jekyll is software that takes the Developer Center source files and compiles them into the static HTML files that you see when visiting the site. Follow the below to setup Jekyll locally in order test your changes before pushing them to your repository in GHE, and from there back to the website by the admins. [Wiki page with instructions](https://github.ibm.com/MFPSamples/mfpsamples.github.ibm.com/wiki/Testing-locally).
 
 #### Prerequisites
 
-- Git: https://github.ibm.com/MFPSamples/Utils/wiki/Learn-Git,-GitHub-and-Git-clients
-- Ruby: If you have a Mac, you've most likely already got Ruby. If you open up the Terminal application, and run the command ruby --version you can confirm this. Your Ruby version should be at least 2.0.0. If you've got that, you're all set. Otherwise, follow these instructions to install Ruby.
-- Bundler: If you don't already have Bundler installed, you can install it by running the command gem install bundler.
+- **Git**: [https://github.ibm.com/MFPSamples/Utils/wiki/Learn-Git,-GitHub-and-Git-clients](https://github.ibm.com/MFPSamples/Utils/wiki/Learn-Git,-GitHub-and-Git-clients)
+- **Ruby**: If you have a Mac, you've most likely already got Ruby. If you open up the Terminal application, and run the command `ruby --version` you can confirm this. Your Ruby version should be at least 2.0.0. If you've got that, you're all set. Otherwise, follow these instructions to install Ruby.
+- **Bundler**: If you don't already have Bundler installed, you can install it by running the command gem install bundler.
 
 #### Steps
 
-1. Open Terminal and go to the root of the repository
+1. Open Terminal and navigate to the root of the repository
 2. Run `bundle install` (You may get errors the first time, read it, it may ask you to install other prerequisites)
 3. Run `bundle exec jekyll server`
 4. Wait... wait... wait...
@@ -51,7 +51,8 @@ Jekyll is software that takes the Developer Center source files and compiles the
 
  Sync often. **Make sure your locally repository is always up-to-date!**
 
-1. After changes are made you can commit them to the Jekyll branch with a descriptive text.
+1. After changes are made you can commit them to your forked Jekyll branch with a descriptive text.
     <img src="{{site.baseurl}}/assets/onboarding/commit.png" width="500px"/>
 
-
+2. Make a new pull request in GHE so that the admins will merge your changes, from your forked repository back into the Jekyll branch of the Developer Center's repository and from there to the live website (the master branch).
+    <img src="{{site.baseurl}}/assets/onboarding/pull.png" width="500px"/>
