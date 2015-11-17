@@ -101,8 +101,11 @@ $color_wild_sand_approx: #f5f5f5;
 		.rightPart {
 			text-align: right;
 			padding-right: 0;
+			width: 130px;
+			float: right;
 			ul.relevantTo {
 				margin-bottom: 0;
+				-webkit-padding-start: 0;
 				li {
 					display: inline-block;
 					background-repeat: no-repeat;
@@ -138,6 +141,9 @@ $color_wild_sand_approx: #f5f5f5;
 		}
 		.leftPart {
 			padding-left: 0;
+			float: none;
+			width: auto;
+    	overflow: hidden;
 			.breadcrumb {
 				margin-bottom: 0;
 				padding: 0;
