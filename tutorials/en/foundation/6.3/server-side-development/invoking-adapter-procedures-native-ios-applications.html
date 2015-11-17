@@ -20,21 +20,21 @@ To create and configure an iOS native project, first follow the "<a href="http:/
 </li>
 <li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.<br />
 For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 MyConnectListener *connectListener = [[MyConnectListener alloc] initWithController:self];<br />
 [[WLClient sharedInstance] wlConnectWithDelegate:connectListener];<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><strong>Note:</strong> Remember to import <strong>WLClient.h</strong> and <strong>WLDelegate.h</strong> in your header file.</p>
 <p>You must supply a connection delegate (listener) to the MobileFirst invocation methods.
 </li>
 <li>Create a delegate to be used in the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server. Name the class <code>MyConnectListener</code>.<br />
 The header file must specify that it implements the <code>WLDelegate</code> protocol.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @interface MyConnectListener : NSObject <WLDelegate> {<br />
     @private<br />
     ViewController *vc;<br />
 }</p>
-<p>[/code]</p>
+<p>{% endhighlight %}</p>
 <p>The <code>WLDelegate</code> protocol specifies that the class implements the following methods:<br />
 - The <strong>onSuccess</strong> method: <code>(WLResponse *)response</code><br />
 - The <strong>onFailure</strong> method: <code>(WLFailResponse *)response</code></p>
@@ -42,7 +42,7 @@ The header file must specify that it implements the <code>WLDelegate</code> prot
 In both cases, the response object is sent as an argument.
 </li>
 <li>Use this object to operate data that is retrieved from the server.
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 -(void)onSuccess:(WLResponse *)response{<br />
     NSLog(@"\nConnection Success: %@", response);<br />
     NSString *resultText = @"Connection success. ";</p>
@@ -58,20 +58,20 @@ In both cases, the response object is sent as an argument.
     }<br />
     [vc updateView:resultText];<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Invoking an adapter procedure</h2>
 <p>To invoke a procedure, create a <code>WLProcedureInvocationData</code> object and specify the adapter name and the procedure name.<br />
 Invoke the procedure by using the shared instance of the <code>WLClient</code>.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
     WLProcedureInvocationData *myInvocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@"RSSReader" procedureName:@"getStories"];<br />
     MyInvokeListener *invokeListener = [[MyInvokeListener alloc] initWithController: self];<br />
     [[WLClient sharedInstance] invokeProcedure:myInvocationData withDelegate:invokeListener];<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>As previously stated, you must supply a delegate object to manage the retrieved data.</p>
 <h2>Receiving a procedure response</h2>
 <p>When the procedure invocation is complete, a delegate method of <code>MyInvokeListener</code> class instance is called.<br />
 Any delegate header file must specify that it complies with a <code>WLDelegate</code> protocol.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @interface MyInvokeListener : NSObject <WLDelegate> {<br />
 @private<br />
     ViewController *vc;<br />
@@ -79,11 +79,11 @@ Any delegate header file must specify that it complies with a <code>WLDelegate</
 }</p>
 <p>- (id)initWithController: (ViewController *) mainView;</p>
 <p>@end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>After the procedure invocation finishes, the <code>onSuccess</code> method or the <code>onFailure</code> method of the supplied <code>MyInvokeListener</code> instance is called.<br />
 In both cases, a response object is sent as an argument.<br />
 Use this object to operate data that is retrieved from the server.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 -(void)onSuccess:(WLResponse *)response {<br />
     NSLog(@"Invocation Success: %@", response);<br />
     NSString *resultText = @"Invocation success. ";</p>
@@ -100,7 +100,7 @@ Use this object to operate data that is retrieved from the server.</p>
     }<br />
     [vc updateView:resultText];<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Sample application</h2>
 <p>The sample contains two projects:<br />
 - The <strong>InvokingAdapterProceduresNativeProject.zip</strong> file contains a MobileFirst native API that you can deploy to your MobileFirst server.<br />

@@ -38,13 +38,13 @@ relevantTo: [ios]
 </li>
 <li>In <strong>application-descriptor.xml</strong>, add the <code>pushSender</code> tag with the <code>password</code> attribute. Use the .p12 keystore as the password value.
 <p>For example :<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 <nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0"><br />
 	<displayName>iOSNativePush</displayName><br />
 	<description>iOSNativePush</description><br />
 	<pushSender password="apns-certificate-p12 password"/><br />
 </nativeIOSApp><br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 <li>To deploy the MobileFirst native API, right-click the native API and select <strong>"Run As >  Deploy Native API"</strong>.
 </li>
@@ -66,14 +66,14 @@ relevantTo: [ios]
 <h2 id="notificationapiserver">Notification API: Server side</h2>
 <h3>Creating an event source</h3>
 <p>This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).<br />
-[code lang="js"]<br />
+{% highlight js %}<br />
 WL.Server.createEventSource({<br />
     name: 'PushEventSource',<br />
     onDeviceSubscribe: 'deviceSubscribeFunc',<br />
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',<br />
     securityTest:'PushApplication-strong-mobile-securityTest'<br />
 });<br />
-[/code]</p>
+{% endhighlight %}</p>
 <ul>
 <li><code>name </code>– A name by which the event source is referenced.</li>
 <li><code>onDeviceSubscribe</code> – An adapter function that is called when the request for user subscription is received.</li>
@@ -82,7 +82,7 @@ WL.Server.createEventSource({<br />
 </ul>
 <h3>Sending a notification</h3>
 <p>Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-<p>[code lang="js"]function submitNotification(userId, notificationText) {<br />
+<p>{% highlight js %}function submitNotification(userId, notificationText) {<br />
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>    if (userSubscription === null) {<br />
         return { result: "No subscription found for user :: " + userId };<br />
@@ -93,7 +93,7 @@ WL.Server.createEventSource({<br />
 <p>    return {<br />
         result: "Notification sent to user :: " + userId<br />
     };<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h2 id="notificationapiclient">Notification API: Client side </h2>
 <p>A device subscription belongs to a user subscription and exists in the scope of a specific user and event source. A user subscription can have several device subscriptions.</p>
 <p>The device subscription is created when the application on a device calls the <code>[[WLPush sharedInstance]subscribe]</code> method.</p>
@@ -103,45 +103,45 @@ WL.Server.createEventSource({<br />
 <p>
 </li>
 <li>Create an instance of <code>onReadyToSubscribeListener</code>.
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener alloc] initWithController:self];<br />
 	readyToSubscribeListener.alias = self.alias;<br />
 	readyToSubscribeListener.adapterName = self.adapterName;<br />
 	readyToSubscribeListener.eventSourceName = self.eventSourceName;<br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 <li>Set the <code>onReadyToSubscribeListener</code> on <code>WLPush</code>.
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];<br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 <li>Pass the token to <span class="inline-code">WLPush</span>.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];<br />
-[/code]
+{% endhighlight %}
 </li>
 </ol>
 <h3>Sending token to client and initializing <code>WLPush</code></h3>
 <p>The user must initialize the <code>WLPush</code> <code>sharedInstance</code> in the app <code>ViewController</code> load method.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];<br />
 	appDelegate.appDelegateVC = self;<br />
 [[WLPush sharedInstance]init];<br />
-[/code]<br />
+{% endhighlight %}<br />
 The user must add this method to the app delegate to get the token.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The token that is received by this method must be passed to the WLPush method.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>Registering the event source</h3>
 <p>IBM MobileFirst Platform Foundation provides the customizable <code>onReadyToSubscribe</code> function, which is used to register an event source.<br />
 Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.</p>
 <p>This function is called when authentication finishes.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 #import "ReadyToSubscribeListener.h"<br />
 #import "MyEventSourceListener.h"</p>
 <p>@implementation ReadyToSubscribeListener</p>
@@ -160,18 +160,18 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 	[vc updateMessage:@"Ready to subscribe..."];<br />
 }</p>
 <p>@end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>Subscribing to the event source</h3>
 <p><strong>Prerequisite:</strong> To subscribe, a user must authenticate.</p>
 <p>To set up subscription to the event source, use the following API:<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 - (IBAction)subscribe:(id)sender {<br />
     self.console.text=@"Trying to subscribe ...";<br />
 	MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];<br />
 	[[WLPush sharedInstance]subscribe:self.alias :nil :mySubscribeListener];</p>
 <p>}<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><span class="inline-code">[[WLPush sharedInstance] subscribe]</span> takes the following parameters:</p>
 <ul>
 <li>An alias, as declared in <code>[[WLPush sharedInstance] registerEventSourceCallback]</code></li>
@@ -181,13 +181,13 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <p>Delegates receive a response object if one is required.</p>
 <h3>Unsubscribing  from an event source</h3>
 <p>To set up unsubscription from an event source, use the following API:<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 - (IBAction)unsubscribe:(id)sender {<br />
     self.console.text = @"Trying to unsubscribe ... ";<br />
 	MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];<br />
 	[[WLPush sharedInstance]unsubscribe:self.alias :myUnsubscribelistener];<br />
 }<br />
-[/code]<br />
+{% endhighlight %}<br />
 <span class="inline-code">[[WLPush sharedInstance] unsubscribe]</span> takes the following parameters:</p>
 <ul>
 <li>An alias, as declared in <code>[[WLPush sharedInstance] registerEventSourceCallback]</code></li>
@@ -199,19 +199,19 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <p><span class="inline-code">[[WLPush sharedInstance]isPushSupported]</span> – Returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.<br />
 <span class="inline-code">[[WLPush sharedInstance]isSubscribed:alias]</span> – Returns whether the currently logged-in user is subscribed to a specified event source alias.<br />
 When a push notification is received by a device, the <span class="inline-code">didReceiveRemoteNotification</span> method  is called in the app delegate.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
     NSLog(@"Received Notification %@",userInfo.description);<br />
     _appDelegateVC.console.text=userInfo.description;<br />
 }<br />
-[/code]<br />
+{% endhighlight %}<br />
 If the application was in background mode (or inactive) when the push notification arrived, this callback is called when the application returns to the foreground.</p>
 <h2 id="notificationapitag">Tag-based notification</h2>
 <p>Tags represent topics of interest to the user and provide users the ability to receive notifications according to the chosen interest.<br />
 This notification type enables devices to send and receive messages that are filtered by tags.<br />
 To start receiving tag-based notifications, the device must first subscribe to a push notification tag in an application.<br />
 Tags are defined in the <strong>application-descriptor.xml</strong> file:<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 <tags><br />
     <tag><br />
         <name>PushTag1</name><br />
@@ -222,7 +222,7 @@ Tags are defined in the <strong>application-descriptor.xml</strong> file:<br />
         <description>About pushTag2</description><br />
     </tag><br />
 </tags><br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Such notification is targeted to all devices that are subscribed to a tag in an application.</p>
 <p>Client-side methods:</p>
 <ul>
@@ -239,12 +239,12 @@ Broadcast notification can be disabled by unsubscribing to the reserved tag <cod
 <h3>Common API for tag-based and broadcast notifications</h3>
 <h4>Client-side API:</h4>
 <p>When a notification is received by a device, the <span class="inline-code">didReceiveRemoteNotification</span> method in the app delegate is called.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
     NSLog(@"Received Notification %@",userInfo.description);<br />
     _appDelegateVC.console.text=userInfo.description;<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <ul>
 <li>userInfo - A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
 </ul>
@@ -299,7 +299,7 @@ The category name must be same as the one used on the client side.</ul>
 <li>Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.
 </li>
 <li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>(application: didRegisterForRemoteNotificationsWithDeviceTokenapplication:)</code> method in <code>AppDelegate</code> class.
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){<br />
   UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;</p>
 <p>  UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];<br />
@@ -315,12 +315,12 @@ if([application respondsToSelector:@selector(registerUserNotificationSettings:)]
 <p>  NSSet *catgories = [NSSet setWithObject:cateogory];<br />
   [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:catgories]];<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 <li>Implement the new callback method:
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (ˆ)())completionHandler<br />
-[/code]<br />
+{% endhighlight %}<br />
 This new callback method is invoked when the user clicks the action button.</p>
 <p>The implementation of this method must perform the action that is associated with the specified identifier and execute the block in the <span class="inline-code">completionHandler</span> parameter.</li>
 </ul>

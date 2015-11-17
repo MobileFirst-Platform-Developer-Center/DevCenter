@@ -44,7 +44,7 @@ relevantTo: [hybrid,ios,android]
 <li>Open the <code>application-descriptor.xml</code> file and edit the <code>mainFile</code> tag to point to "<code>http://m.ibm.com</code>"</li>
 </ul>
 <p><img src="{{ site.baseurl }}/assets/backup/application-descriptor-300x276.png" alt="application-descriptor" width="300" height="276" class="alignnone size-medium wp-image-2559" /></p>
-<p>[code lang="xml" highlight="16"]<br />
+<p>{% highlight xml %}<br />
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><br />
 <!-- Licensed Materials - Property of IBM<br />
              5725-I43 (C) Copyright IBM Corp. 2006, 2013. All Rights Reserved.<br />
@@ -80,7 +80,7 @@ relevantTo: [hybrid,ios,android]
         </security><br />
     </android><br />
 </application><br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Running your application on the Android emulator</h2>
 <ul>
 <li>Build the Android environment, and then deploy the application. Right-click the generated Android project and click <strong>Run As</strong> > <strong>Android Application</strong>.</li>

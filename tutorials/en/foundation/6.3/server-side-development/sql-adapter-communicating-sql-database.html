@@ -36,7 +36,7 @@ You can use either the Design or the Source editor to modify the adapter XML fil
 - Database URL<br />
 - Username<br />
 - Password</p>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 	<connectivity><br />
 		<connectionPolicy xsi:type="sql:SQLConnectionPolicy"><br />
 			<dataSourceDefinition><br />
@@ -47,12 +47,12 @@ You can use either the Design or the Source editor to modify the adapter XML fil
 			</dataSourceDefinition><br />
 		</connectionPolicy><br />
 	</connectivity><br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 <li>Declare a procedure in the adapter XML file.
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 <procedure name="getAccountTransactions1"/><br />
-[/code]
+{% endhighlight %}
 </li>
 </ol>
 <h2>JavaScript Implementation File</h2>
@@ -66,7 +66,7 @@ You can use either the Design or the Source editor to modify the adapter XML fil
 <p>Use the <code>WL.Server.createSQLStatement</code> method to prepare a SQL query.<br />
 The <code>WL.Server.createSQLStatement</code> method must always be called outside the function.<br />
 Add more parameters, if necessary.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 //Create SQL query<br />
 var getAccountsTransactionsStatement = WL.Server.createSQLStatement(<br />
 	"SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +<br />
@@ -75,10 +75,10 @@ var getAccountsTransactionsStatement = WL.Server.createSQLStatement(<br />
 	"ORDER BY transactionDate DESC " +<br />
 	"LIMIT 20;"<br />
 );<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Use the <code>WL.Server.invokeSQLStatement</code> method to call prepared queries.<br />
 Return the result to the application or to another procedure.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 //Invoke prepared SQL query and return invocation result<br />
 function getAccountTransactions1(accountId){<br />
 	return WL.Server.invokeSQLStatement({<br />
@@ -86,12 +86,12 @@ function getAccountTransactions1(accountId){<br />
 		parameters : [accountId, accountId]<br />
 	});<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>To run a SQL stored procedure, use the <code>WL.Server.invokeSQLStoredProcedure</code> method.<br />
 Specify a SQL stored procedure name as an invocation parameter.<br />
 Add more parameters, if necessary.<br />
 Return the invocation result to the application or to another procedure.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 //Invoke stored SQL procedure and return invocation result<br />
 function getAccountTransactions2(accountId){<br />
 	return WL.Server.invokeSQLStoredProcedure({<br />
@@ -99,9 +99,9 @@ function getAccountTransactions2(accountId){<br />
 		parameters : [accountId]</p>
 <p>	});<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Invocation Results</h2>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 {<br />
   "isSuccessful": true,<br />
   "resultSet": [{<br />
@@ -120,7 +120,7 @@ function getAccountTransactions2(accountId){<br />
     "transactionType": "ATM Withdrawal"<br />
   }]<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The result is retrieved as a JSON object.<br />
 The <code>isSuccessful</code> property defines whether the invocation was successful.<br />
 The <code>resultSet</code> object is an array of returned records.<br />

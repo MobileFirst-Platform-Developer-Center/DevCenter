@@ -65,7 +65,7 @@ Note that the <strong>MyShellTest</strong> application was automatically created
 Application-specific properties that are set in the shell descriptor are used in all inner applications.<br />
 <strong>shell-descriptor.xml</strong> can be edited in either Design or Source mode.<br />
 <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_descriptor-design.png"><img class="aligncenter wp-image-1188 size-full" src="{{ site.baseurl }}/assets/backup/10_01_descriptor-design.png" alt="10_01_descriptor-design" width="850" height="248" /></a></p>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><br />
 <!-- Licensed Materials - Property of IBM<br />
 			 5725-I43 (C) Copyright IBM Corp. 2006, 2013. All Rights Reserved.<br />
@@ -77,28 +77,28 @@ Application-specific properties that are set in the shell descriptor are used in
     <android version="1.0"/><br />
     <features/><br />
 </shell><br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2 id="usingAShellComponentInATestApplication">Using a shell component in a test application</h2>
 <p>Follow these instructions to develop a functioning shell component.<br />
 Create a myshell.js file in the <span class="inline-code">MyShell\common\js</span> folder.<br />
 Add the following function to it:</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function sayHelloFromShell(){<br />
 	alert("Hello from Shell");<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Modify the <strong>body-top.wlfragment</strong> file and add the following lines to it:</p>
-<p>[code lang="html"]<br />
+<p>{% highlight html %}<br />
 <h1>This is a header that will be visible in all inner applications that use this Shell</h1><br />
 <script src="js/myshell.js"></script><br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Modify the <strong>main.js</strong> file in the <span class="inline-code">apps/MyShellTest/common/js</span> folder.<br />
 Invoke the function that you previously added in the shell component.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function wlCommonInit(){<br />
 	sayHelloFromShell();<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Note that the <span class="inline-code">sayHelloFromShell()</span> function is not a part of the inner application, but is from the shell component.<br />
 Build and deploy the <strong>MyShellTest</strong> application.<br />
 When your application is built and deployed, you find it in MobileFirst Console as a regular hybrid application.<br />

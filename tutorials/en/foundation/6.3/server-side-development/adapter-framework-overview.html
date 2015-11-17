@@ -80,7 +80,7 @@ To run a procedure test:</p>
 <p><img src="{{ site.baseurl }}/assets/backup/04_01-invoke-options.png"/></li>
 </ol>
 <h2>Adapter XML structure</h2>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 <wl:adapter name="HelloWorld"><br />
 	<displayName /><br />
 	<description /><br />
@@ -92,7 +92,7 @@ To run a procedure test:</p>
 	<procedure /><br />
 	...<br />
 </wl:adapter><br />
-[/code]</p>
+{% endhighlight %}</p>
 <ul>
 <li> <code>name: Mandatory. The name of the adapter.</code></li>
 <li><code>displayName</code>: Optional. The name that is displayed in MobileFirst Console</li>
@@ -105,18 +105,18 @@ To run a procedure test:</p>
 </li>
 <li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
 </ul>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 <procedure name="procedure1"></procedure><br />
 <procedure name="procedure2"></procedure><br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Adapter JavaScript structure</h2>
 <p>Each procedure declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
 <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function procedure1(param) {<br />
   return WL.Server.invokeSQLStatement({<br />
     preparedStatement: procedure1Statement,<br />
     parameters: [param]<br />
   });<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>

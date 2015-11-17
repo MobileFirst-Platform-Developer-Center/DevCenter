@@ -21,20 +21,20 @@ This is a continuation of the <a title="Adapter-based authentication" href="http
 <h3>ChallengeHandler</h3>
 <p>Create a <span class="inline-code">MyChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span><br />
 We will implement some of the <span class="inline-code">ChallengeHandler</span> methods to respond to the form-based challenge.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @interface MyChallengeHandler : ChallengeHandler<br />
 @property ViewController* vc;</p>
 <p>//A convenient way of updating the View<br />
 -(id)initWithViewController: (ViewController*) vc;<br />
 @end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Before calling your protected adapter, make sure to register your challenge handler using <span class="inline-code">WLClient</span>’s <span class="inline-code">registerChallengeHandler</span>.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 [[WLClient sharedInstance] registerChallengeHandler:[[MyChallengeHandler alloc] initWithViewController:self] ];<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 The <span class="inline-code">isCustomResponse</span> method of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <span class="inline-code">true</span> or <span class="inline-code">false</span>.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
@@ -49,10 +49,10 @@ The <span class="inline-code">isCustomResponse</span> method of the challenge ha
     return false;<br />
 }<br />
 @end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 If <span class="inline-code">isCustomResponse</span> returns <span class="inline-code">true</span>, the framework calls the <span class="inline-code">handleChallenge</span> method. This function is used to perform required actions, such as hide application screen and show login screen.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
@@ -62,11 +62,11 @@ If <span class="inline-code">isCustomResponse</span> returns <span class="inline
     [self.vc.navigationController pushViewController:loginController animated:YES];<br />
 }<br />
 @end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 <span class="inline-code">onSuccess</span> and <span class="inline-code">onFailure</span> get triggers when the authentication ends.<br />
 You need to call <span class="inline-code">submitSuccess</span> to inform the framework that the authentication process is over, and allow the invocation’s success handler to be called.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) onSuccess:(WLResponse *)response {<br />
@@ -78,10 +78,10 @@ You need to call <span class="inline-code">submitSuccess</span> to inform the fr
     NSLog(@"inside challenge failure");<br />
     [self submitFailure:response];<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 In your <span class="inline-code">LoginViewController</span>, when the user clicks to submit his credentials, you need to call <span class="inline-code">submitAdapterAuthentication</span> to send the credentials to the the <span class="inline-code">submitAuthentication</span> procedure you wrote previously.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @implementation LoginViewController<br />
 //***<br />
 - (IBAction)login:(id)sender {<br />
@@ -91,7 +91,7 @@ procedureName:@"submitAuthentication"];</p>
 <p>myInvocationData.parameters = @[self.username.text, self.password.text];<br />
     [self.challengeHandler submitAdapterAuthentication:myInvocationData options:nil];<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeAdapterBasedAuthProject.zip">Click to download</a> the Studio project.<br />

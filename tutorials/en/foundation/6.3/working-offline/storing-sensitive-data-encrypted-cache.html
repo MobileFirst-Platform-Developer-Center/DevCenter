@@ -43,11 +43,11 @@ Mobile devices HTML5 web storage support chart:</p>
 <li><span class="inline-code">onComplete</span> – a callback function to be invoked when cache opening/creating is complete</li>
 <li><span class="inline-code">onError</span> - a callback function to be invoked when cache is not successfully opened/created</li>
 </ul>
-<p>[code lang="js"]WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
+<p>{% highlight js %}WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
 function onOpenComplete(status){<br />
     busyIndicator.hide();<br />
     alert("Encrypted cache succesfully opened");<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <p>Note: The application must be able to connect to the MobileFirst Server to create a new encrypted cache.</p>
 <p>A callback function can receive one of the following statuses:</p>
 <ul>
@@ -59,7 +59,7 @@ function onOpenComplete(status){<br />
 <li><span class="inline-code">WL.EncryptedCache.ERROR_KEY_CREATION_IN_PROGRESS</span> – an open() or changeCredentials() request is already running</li>
 </ul>
 <h4>Example</h4>
-<p>[code lang="js"]WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
+<p>{% highlight js %}WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
 function onOpenComplete(status){<br />
     busyIndicator.hide();<br />
     alert("Encrypted cache succesfully opened");<br />
@@ -85,47 +85,47 @@ function onOpenComplete(status){<br />
         default:<br />
             alert("AN ERROR HAS OCCURED. STATUS :: " + status);<br />
     }<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h2>Reading, Writing and Removing data using Encrypted Cache</h2>
 <p>When the encrypted cache is open, operations such as reading, writing and removing data can be performed.</p>
 <p>To store data in encrypted cache, use the following API:</p>
 <h3><span class="inline-code">WL.EncryptedCache.write(key, value, onSuccess, onFailure);</span></h3>
 <h4>Example:</h4>
-<p>[code lang="js"]WL.EncryptedCache.write(key, value, onWriteSuccess, onWriteFailure);<br />
+<p>{% highlight js %}WL.EncryptedCache.write(key, value, onWriteSuccess, onWriteFailure);<br />
 function onWriteSuccess(status){<br />
     alert("Succesfully encrypted into cache.");<br />
 }<br />
 function onWriteFailure(status){<br />
     if (status == WL.EncryptedCache.ERROR_EOC_CLOSED)<br />
         alert("Encrypted cache closed, write failed. error code= "+ status);<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <p>To read data from the encrypted cache, use the following API:</p>
 <h3><span class="inline-code">WL.EncryptedCache.read(key, onSuccess, onFailure);</span></h3>
 <h4>Example</h4>
-<p>[code lang="js"]WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);<br />
+<p>{% highlight js %}WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);<br />
 function onDecryptReadSuccess(value){<br />
     alert("Read success. Retrieved value :: " + key + " = " + value);<br />
 }<br />
 function onDecryptReadFailure(status){<br />
     alert("Encrypted cache closed, reading failed");<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <p>To remove data from the encrypted cache, use the following API:</p>
 <h3><span class="inline-code">WL.EncryptedCache.remove(key, onSuccess, onFailure);</span></h3>
 <h4>Example:</h4>
-<p>[code lang="js"]WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);<br />
+<p>{% highlight js %}WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);<br />
 function onRemoveSuccess(status){<br />
     alert("Succesfully removed from cache.");<br />
 }<br />
 function onRemoveFailure(status){<br />
     alert("Encrypted cache closed, remove failed");<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h2>Closing and destroying Encrypted Cache</h2>
 <p>To avoid possible undesired access to Encrypted Cache, close it.<br />
 After an encrypted cache is closed, access to its data is not possible without the encryption key that was used to create it.</p>
 <p>To close the encrypted cache, use the following API:</p>
 <h3><span class="inline-code">WL.EncryptedCache.close(onComplete, onFailure);</span></h3>
 <h4>Example:</h4>
-<p>[code lang="js"]function destroyCacheClicked(){<br />
+<p>{% highlight js %}function destroyCacheClicked(){<br />
     WL.EncryptedCache.destroy(onDestroyCompleteHandler,<br />
     onDestroyErrorHandler);<br />
 }<br />
@@ -134,7 +134,7 @@ function onDestroyCompleteHandler(status){<br />
 }<br />
 function onDestroyErrorHandler(status){<br />
     alert("Error destroying Encrypted cache");<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h2>Changing the encryption key</h2>
 <p>While Encrypted Cache is in the open state, it is possible to change the encryption key.<br />
 To do so, use the following API:</p>

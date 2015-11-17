@@ -29,7 +29,7 @@ This package name can be interpreted as folders: <strong>java\com\sample\customc
 </li>
 <li>Add methods to your <strong>Calculator.java</strong> class.<br />
 Here is an example of a static method (does not require a new instance) and of an instance method.</p>
-<p>[code lang="java" title="Calculator.java"]<br />
+<p>{% highlight java %}<br />
 package com.sample.customcode;</p>
 <p>public class Calculator {</p>
 <p>	// Add two integers.<br />
@@ -41,7 +41,7 @@ package com.sample.customcode;</p>
 		return first - second;<br />
 	}<br />
 }<br />
-[/code]
+{% endhighlight %}
 </li>
 <li>If your Java code has additional dependencies, put the required JAR files in the <strong>server\lib</strong> folder of your MobileFirst project.
 </li>
@@ -49,21 +49,21 @@ package com.sample.customcode;</p>
 <h2>Invoking custom Java classes from the adapter</h2>
 <p>After your custom Java code is created and any required JAR files are added, you can reference it from your MobileFirst Adapter JavaScript as if it were written in Java.</p>
 <p>Invoke the static Java method as shown, and use the full class name to reference it directly.<br />
-[code lang="javascript" title="UsingJavaInAdapter-impl.js"]<br />
+{% highlight javascript %}<br />
 function addTwoIntegers(a,b){<br />
 	return {<br />
 		result: com.sample.customcode.Calculator.addTwoIntegers(a,b)<br />
 	};<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>To use the instance method, create a class instance and invoke the instance method from it.</p>
-<p>[code lang="javascript" title="UsingJavaInAdapter-impl.js"]<br />
+<p>{% highlight javascript %}<br />
 function subtractTwoIntegers(a,b){<br />
 	var calcInstance = new com.worklight.customcode.Calculator();<br />
 	return {<br />
 		result : calcInstance.subtractTwoIntegers(a,b)<br />
 	};<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MobileFirstAdaptersProject.zip">Click to download</a> the Studio project.</p>

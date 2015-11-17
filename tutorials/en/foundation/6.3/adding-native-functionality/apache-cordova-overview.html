@@ -19,16 +19,16 @@ With the JavaScript API provided by Cordova, developers can access native mobile
 
 <h2>Usage samples</h2>
 <p>Calling a native alert notification from JavaScript on iOS and Android devices:<br />
-[code lang="js"]navigator.notification.alert("I am a native alert dialog.");[/code]</p>
+{% highlight js %}navigator.notification.alert("I am a native alert dialog.");{% endhighlight %}</p>
 <p><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample1.png"/></p>
 
 <p>Getting device hardware and software information:<br />
-[code lang="js"]var element = document.getElementById('deviceProperties');<br />
+{% highlight js %}var element = document.getElementById('deviceProperties');<br />
     element.innerHTML = 'Device Model: '    + device.model    + '<br />' +<br />
                         'Device Cordova: '  + device.cordova  + '<br />' +<br />
                         'Device Platform: ' + device.platform + '<br />' +<br />
                         'Device UUID: '     + device.uuid     + '<br />' +<br />
-                        'Device Version: '  + device.version  + '<br />';[/code]</p>
+                        'Device Version: '  + device.version  + '<br />';{% endhighlight %}</p>
 
 <p><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample2.png"/></p>
 
@@ -69,16 +69,16 @@ Cookies are shared between web and native, providing seamless client-server inte
 <p><img src="{{ site.baseurl }}/assets/backup/07_01_native_pages.png"/></p>
 
 <p>JavaScript API to activate native page:<br />
-[code lang="js"]WL.NativePage.show(className, callback, data);[/code]</p>
+{% highlight js %}WL.NativePage.show(className, callback, data);{% endhighlight %}</p>
 
 <p>The web page invokes the native class <span class="inline-code">className</span>, with the parameter <span class="inline-code">data</span>, and calls the callback function on return. Example:<br />
-[code lang="js"]WL.NativePage.show("com.demo.NativePage", function(data) {<br />
+{% highlight js %}WL.NativePage.show("com.demo.NativePage", function(data) {<br />
        demoApplication.returnFromNative(data);<br />
     },<br />
     {<br />
        inputData: "Hello"<br />
     }<br />
-);[/code]</p>
+);{% endhighlight %}</p>
 
 <p>The following tutorials explain how to integrate native pages in hybrid applications.</p>
 

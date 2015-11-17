@@ -23,31 +23,31 @@ UTF-8.<br />
 <img src="{{ site.baseurl }}/assets/backup/05_05_encoding.png"/></p>
 <h2>Enabling translation of application strings</h2>
 <p>You can find the <em>messages.js</em> file, which is intended for application strings, in the <em>common\js</em> folder.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 Messages = {<br />
 	headerText: "Default header",<br />
 	actionsLabel: "Default action label",<br />
 	sampleText: "Default sample text",<br />
 };<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Application messages that are stored in the <em>messages.js</em> file can be referenced in two ways:<br />
 As a JavaScript object property, for example: <em>Messages.headerText</em> or as an ID of an HTML element with <code>class="translate"</code>.<br />
-[code lang="html" title="A 1=that 2=is 3=defined 4=in 5=Messages.headerText 6=is 7=automatically 8=used 9=here." language="string"]<br />
+{% highlight html %}<br />
 <h1 id="headerText" class="translate"></h1><br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Enabling translation of system messages</h2>
 <p>It is also possible to translate system messages that the application shows, for example "Internet connection is not available" or "Invalid username or password".<br />
 System messages are stored in the <em>WL.ClientMessages</em> object.<br />
 You can find a full list of system messages in the <em>www\default\worklight\messages\messages.json</em> file, which is inside the generated projects (iOS, Android, Windows Phone 8, and so on,…).<br />
 To enable the translation of a system message, override it in your JavaScript application.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.</p>
 <h2>Multilanguage translation</h2>
 <p>Using JavaScript, you can implement multilanguage translation for your applications.<br />
 Set up the default application strings in the <em>messages.js</em> file.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 Messages = {<br />
 	headerText: "Default header",<br />
 	actionsLabel: "Default action label",<br />
@@ -57,19 +57,19 @@ Messages = {<br />
 	russianLanguage : "Russian",<br />
 	hebrewLanguage : "Hebrew"<br />
 };<br />
-[/code]<br />
+{% endhighlight %}<br />
 Override specific strings when required.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 function setFrench(){<br />
 	Messages.headerText = "Traduction";<br />
 	Messages.actionsLabel = "Sélectionnez langue:";<br />
 	Messages.sampleText = "ceci est un exemple de texte en français.";<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Update GUI components with the new strings.<br />
 You can perform more tasks, such as setting text direction for right-to-left languages such as Hebrew or Arabic.<br />
 Each time that an element is updated, it is updated with different strings according to the active language.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function languageChanged(lang) {<br />
 	if (typeof(lang)!="string")<br />
 		lang = $("#languages").val();</p>
@@ -95,16 +95,16 @@ function languageChanged(lang) {<br />
     $("#headerText").html(Messages.headerText);<br />
     $("#actionsLabel").html(Messages.actionsLabel);<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Detecting the device locale and language</h2>
 <p>It is possible to detect the locale and the language of the device.<br />
 Use the <em>WL.App.getDeviceLocale()</em> and <em>WL.App.getDeviceLanguage()</em> functions to detect the current locale.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 var locale = WL.App.getDeviceLocale();<br />
 var lang = WL.App.getDeviceLanguage();<br />
 WL.Logger.debug(">> Detected locale: " + locale);<br />
 WL.Logger.debug(">> Detected language: " + lang);<br />
-[/code]<br />
+{% endhighlight %}<br />
 <img src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png"/></p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/EnablingTranslationProject.zip">Click to download</a> the Studio project.</p>

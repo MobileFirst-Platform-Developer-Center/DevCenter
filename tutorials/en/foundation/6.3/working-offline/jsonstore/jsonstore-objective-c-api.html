@@ -21,7 +21,7 @@ relevantTo: [ios]
 </ol>
 <blockquote class="clear"><p><strong>Note:</strong> The code sample uses the built-in Unit Test framework of the Xcode IDE. Explaining how this framework works is beyond the scope of this tutorial.</p></blockquote>
 <h3>Code Sample Walkthough</h3>
-<p>[code lang="objc" title="Basic.m" firstline="23"]<br />
+<p>{% highlight objc %}<br />
     NSError* error = nil;</p>
 <p>    [[JSONStore sharedInstance] destroyDataAndReturnError:&amp;error];</p>
 <p>    JSONStoreCollection* people = [[JSONStoreCollection alloc]<br />
@@ -46,7 +46,7 @@ relevantTo: [ios]
 <p>      @{ @"_id" : @2,<br />
          @"json" : @{@"name" : @"mike",   @"age" : @30}}];</p>
 <p>    XCTAssertEqualObjects(actualResults, expectedResults);<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>If an error occurs, the error variable contains information about the error, such as the error code. Otherwise, it remains <code>nil</code>.</p>
 <p>The <code>destroy</code> API removes all JSONStore content from the application. It is used here to start with no data. Doing it this way ensures that the output is predictable in the code sample.</p>
 <p>To persist data, you must first define at least one collection. These collections are entities that hold data. You can see here the definition of a collection that is called <code>people</code>.</p>

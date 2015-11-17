@@ -6,7 +6,7 @@ relevantTo: [ios]
 <br>
 <h2 id="loggingIOS">Logging example for native iOS (Objective-C)</h2>
 <h3>Outputs to Xcode console:</h3>
-<p>[code lang="objc"]<br />
+<p>{% highlight objc %}<br />
 #import "OCLoggerMacros.h"<br />
 #import "OCLogger+Constants.h"</p>
 <p>+ (int) sum:(int) a with:(int) b{<br />
@@ -14,7 +14,7 @@ relevantTo: [ios]
 <p>  OCLoggerDebugWithPackage(@"MathUtils", @"sum called with args %d and %d. Returning %d", a, b, sum);</p>
 <p>  return sum;<br />
 }</p>
-<p>[/code]</p>
+<p>{% endhighlight %}</p>
 <h2>API calls for specific tasks</h2>
 <h3>Turn log capture on or off:</h3>
 <p><code>OCLogger.setCapture(boolean)</code></p>

@@ -20,7 +20,7 @@ Remember to add this Activity to the <span class="inline-code">AndroidManifest.x
 <h3>MyChallengeHandler</h3>
 <p>Create a <span class="inline-code">MyChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span>.<br />
 <span class="inline-code">MyChallengeHandler</span> should implement <span class="inline-code">isCustomResponse</span> which checks every custom response received from MobileFirst Server to see if this is the challenge we are expecting.<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 public boolean isCustomResponse(WLResponse response) {<br />
 	if (response == null || response.getResponseText() == null ||<br />
 			response.getResponseText().indexOf("j_security_check") == -1) {<br />
@@ -28,11 +28,11 @@ public boolean isCustomResponse(WLResponse response) {<br />
 	}<br />
 	return true;<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 <span class="inline-code">handleChallenge</span> is called after the <span class="inline-code">isCustomResponse</span> method returned true.<br />
 Here we use this method to present our login form.<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 public void handleChallenge(WLResponse response){<br />
 	if (!isCustomResponse(response)) {<br />
 		submitSuccess(response);<br />
@@ -42,10 +42,10 @@ public void handleChallenge(WLResponse response){<br />
 		parentActivity.startActivityForResult(login, 1);<br />
 	}<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 <span class="inline-code">submitLogin</span> is called by the login form. If the user asked to abort this action we use  <span class="inline-code">submitFailure()</span> method, otherwise we use <span class="inline-code">submitLoginForm()</span> method to send our input data to the authenticator.<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 public void submitLogin(int resultCode, String userName, String password, boolean back){<br />
 	if (resultCode != Activity.RESULT_OK || back) {<br />
 		submitFailure(cachedResponse);<br />
@@ -56,12 +56,12 @@ public void submitLogin(int resultCode, String userName, String password, boolea
 		submitLoginForm("/j_security_check", params, null, 0, "post");<br />
 	}<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>Main Activity</h3>
 <p>In the Main Activity class connect to MobileFirst server, register your <span class="inline-code">challengeHandler</span> and invoke the protected adapter procedure.<br />
 The procedure invocation will trigger MobileFirst server to send a challenge that will trigger our <span class="inline-code">challengeHandler</span>.<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 final WLClient client = WLClient.createInstance(this);</p>
 <p>client.connect(new MyConnectionListener());</p>
 <p>challengeHandler = new AndroidChallengeHandler(this, realm);<br />
@@ -77,7 +77,7 @@ invokeBtn.setOnClickListener(new View.OnClickListener() {</p>
 		client.invokeProcedure(invocationData, new MyResponseListener(), options);<br />
 	}</p>
 <p>});<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeFormBasedAuthProject.zip">Click to download</a> the Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/AndroidNativeFormBasedAuthProject.zip">Click to download</a> the Native project.</p>

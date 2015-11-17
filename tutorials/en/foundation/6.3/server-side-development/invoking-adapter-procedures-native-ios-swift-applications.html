@@ -16,26 +16,26 @@ Make sure that you follow the extra steps for Swift-based applications.</p>
 <li>Access the <code>WLClient</code> functionality by calling the <code>WLClient.sharedInstance</code> method anywhere in your application.</li>
 <li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.<br />
 For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:</p>
-<p>[code]<br />
+<p>{% highlight swift %}<br />
 let connectListener = MyConnectListener(vc: self)<br />
 WLClient.sharedInstance().wlConnectWithDelegate(connectListener)<br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 <li>Make sure that your Bridging Header includes <strong>WLSwiftBridgingHeader.h</strong> for access to MobileFirst APIs.</li>
 <li>To specify the delegate object, create a delegate for the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server instance. Name the class <code>MyConnectListener</code>.For your <code>MyConnectListener</code> class, the header file must specify that it implements the <code>WLDelegate</code> protocol.
 <p><strong>Note</strong>: To avoid a compiler error raising that your delegate does not conform to <code>NSObjectProtocol</code>, make your class a subclass of <code>NSObject</code>.</p>
-<p>[code]<br />
+<p>{% highlight swift %}<br />
 class MyConnectListener: NSObject, WLDelegate{<br />
 //...<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>WLDelegate</code> protocol specifies that the class implements the following methods:<br />
 - The <strong>onSuccess</strong> method: <code>func onSuccess(response: WLResponse!)</code><br />
 - The <strong>onFailure</strong> method: <code>func onFailure(response: WLFailResponse!)</code></p>
 <p>After <code>wlConnectWithDelegate</code> finishes, the <code>onSuccess</code> method or the <code>onFailure</code> method of the supplied <code>MyConnectListener</code> instance is called.<br />
 In both cases, the response object is sent as an argument.</li>
 <li>Use this object to operate data that is retrieved from the server.
-<p>[code]<br />
+<p>{% highlight swift %}<br />
 func onSuccess(response: WLResponse!) {<br />
     var resultText = "Connection success. "<br />
     if(response != nil){<br />
@@ -50,32 +50,32 @@ func onSuccess(response: WLResponse!) {<br />
     }<br />
     self.vc.updateView(resultText)<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 </ol>
 <h2>Calling an adapter procedure</h2>
 <ol>
 <li>To call a procedure, create a <code>WLProcedureInvocationData</code> object and specify the adapter name and the procedure name.
-<p>[code]<br />
+<p>{% highlight swift %}<br />
 let invocationData = WLProcedureInvocationData(adapterName: "RSSReader", procedureName: "getStories")<br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 <li>Call the procedure by using the shared instance of <code>WLClient</code>. As previously stated, supply a delegate object to manage the retrieved data.
-<p>[code]<br />
+<p>{% highlight swift %}<br />
 let invokeListener = MyInvokeListener(vc: self)<br />
 WLClient.sharedInstance().invokeProcedure(invocationData, withDelegate: invokeListener)<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Receiving a procedure response</h2>
 <p>When the procedure call is complete, a delegate method of the <code>MyInvokeListener</code> instance is called.<br />
 Any delegate header file must specify that it complies with a <code>WLDelegate</code> protocol.</p>
-<p>[code]<br />
+<p>{% highlight swift %}<br />
 class MyInvokeListener: NSObject, WLDelegate{<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>After the procedure call finishes, the <code>onSuccess</code> method or the <code>onFailure</code> method of the supplied <code>MyInvokeListener</code> instance is called.<br />
 In both cases, a response object is sent as an argument.</li>
 <li>Use this object to operate data that is retrieved from the server.
-<p>[code]<br />
+<p>{% highlight swift %}<br />
 func onSuccess(response: WLResponse!) {<br />
     var resultText = "Invocation success. "<br />
     if(response != nil){<br />
@@ -90,7 +90,7 @@ func onSuccess(response: WLResponse!) {<br />
     }<br />
     self.vc.updateView(resultText)<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 </ol>
 <h2>Sample application</h2>

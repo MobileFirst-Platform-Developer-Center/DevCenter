@@ -47,16 +47,16 @@ Use it to work with your Java code.<br />
 <p>Add the <strong>com.mycustomcode</strong> package to the generated Android project.<br />
 Add <strong>MyCustomToaster.java</strong> class under this package.<br />
 Add a static method to this class:<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 public class MyCustomToaster {<br />
   public static void showToastAlert(Activity context, String text) {<br />
     Toast.makeText(context, text, 2000).show();<br />
   }<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Open your main application activity.<br />
 Start <em>MyCustomToast.showToastAlert()</em>:<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 public class MyShellTest extends WLDroidGap {<br />
   @Override<br />
   public void onCreate(Bundle savedInstanceState){<br />
@@ -66,7 +66,7 @@ public class MyShellTest extends WLDroidGap {<br />
     MyCustomToaster.showToastAlert(this, "Hello from Android Shell");<br />
   }<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Run your application to see the implemented functions.<br />
 <img src="{{ site.baseurl }}/assets/backup/10_02_java_results.png"/></p>
 <p>Finally, copy your Java code from the Android project that you used to develop it back to the shell component.</p>

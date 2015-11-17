@@ -114,12 +114,13 @@ The device subscription is deleted either by an application that calls the <span
 <h2 id="notifserver">Notification API - Server side</h2>
 <h3>Creating an event source</h3>
 <p>To create an event source, declare it in the adapter JavaScript code at a global level (outside any JavaScript function):</p>
-<p>[code lang="js"]WL.Server.createEventSource({<br />
+<p>{% highlight javascript %}WL.Server.createEventSource({<br />
 	name: 'PushEventSource',<br />
 	onDeviceSubscribe: 'deviceSubscribeFunc',<br />
 	onDeviceUnsubscribe: 'deviceUnsubscribeFunc',<br />
 	securityTest:'PushApplication-strong-mobile-securityTest'<br />
-});[/code]</p>
+});
+{% endhighlight %}</p>
 <ul>
 <li><strong><span class="inline-code">name</span></strong>: The name by which the event source is referenced</li>
 <li><strong><span class="inline-code">onDeviceSubscribe</span></strong>: The adapter function that is invoked when the user subscription request is received</li>
@@ -127,10 +128,11 @@ The device subscription is deleted either by an application that calls the <span
 <li><strong><span class="inline-code">securityTest</span></strong>: A security test from the <code>authenticationConfig.xml</code> file that is used to protect the event source</li>
 </ul>
 <p>An additional event source option:<br />
-[code lang="js" firstline="6"]poll: {<br />
+{% highlight javascript %}poll: {<br />
     interval: 3,<br />
     onPoll: 'getNotificationsFromBackend'<br />
-}[/code]</p>
+}
+{% endhighlight %}</p>
 <ul>
 <li><strong><span class="inline-code">poll</span></strong>: A method that is used for notification retrieval.<br />
 The following parameters are mandatory:</p>
@@ -143,7 +145,7 @@ The following parameters are mandatory:</p>
 <p><br clear="all" /></p>
 <h3>Sending notification</h3>
 <p>As described previously, notifications can be either polled from the back-end system, or pushed by one. In this example, a <span class="inline-code">submitNotifications()</span> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-<p>[code lang="js"]function submitNotification(userId, notificationText) {<br />
+<p>{% highlight javascript %}function submitNotification(userId, notificationText) {<br />
 	var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>	if (userSubscription === null) {<br />
 		return { result: "No subscription found for user :: " + userId };<br />
@@ -154,38 +156,42 @@ The following parameters are mandatory:</p>
 <p>	return {<br />
 		result: "Notification sent to user :: " + userId<br />
 	};<br />
-}[/code]</p>
+}
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 The <span class="inline-code">submitNotification</span> function takes the recipient user identifier and the notification text as parameters.</p>
-<p>[code lang="js"]function submitNotification(userId, notificationText) {[/code]</p>
+<p>{% highlight javascript %}function submitNotification(userId, notificationText) {
+    {% endhighlight %}</p>
 <p><br clear="all" /><br />
 A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
-<p>[code lang="js" gutter="false"]{<br />
+<p>{% highlight javascript %}
+    {<br />
     userId: 'bjones',<br />
     state: {<br />
         customField: 3<br />
     },<br />
     getDeviceSubscriptions: function()[}<br />
-};[/code]</p>
+};
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 Next line:<br />
-[code lang="js" firstline="2"]var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);[/code]</p>
+{% highlight javascript %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
 <p><br clear="all" /><br />
 If the user has no subscriptions for the specified event source, a <code>null</code> object is returned.<br />
-[code lang="js" firstline="4"]if (userSubscription === null) {<br />
+{% highlight javascript %}if (userSubscription === null) {<br />
 		return { result: "No subscription found for user :: " + userId };<br />
-	}[/code]</p>
+	}{% endhighlight %}</p>
 <p><br clear="all" /><br />
 The <span class="inline-code">WL.Server.createDefaultNotification</span> method creates and returns a default notification JSON block for the supplied values.<br />
-[code lang="js" firstline="8"]var badgeDigit = 1;<br />
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});[/code]</p>
+{% highlight javascript %}var badgeDigit = 1;<br />
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %}</p>
 <ul>
 <li><strong><span class="inline-code">notificationText</span></strong>: The text to be pushed to the device</li>
 <li><strong><span class="inline-code">Badge</span></strong> (number): A number that is displayed on the application icon or tile (in environments that support it)</li>
 <li><strong><span class="inline-code">custom</span></strong>: The <code>custom</code> argument, or payload, is a JSON object that is transferred to the application and can contain custom properties.</li>
 </ul>
 <p>The <span class="inline-code">WL.Server.notifyAllDevices</span> method sends notification to all the devices that are subscribed to the user.</p>
-<p>[code lang="js" firstline="11"]WL.Server.notifyAllDevices(userSubscription, notification);[/code]</p>
+<p>{% highlight javascript %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h4>Several APIs exist for sending notifications:</h4>
 <ul>
@@ -200,11 +206,12 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <li><span class="inline-code">WL.Client.Push.isSubscribed(alias)</span>: Returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
 </ul>
 <p>When a push notification is received by a device, the callback function defined in <span class="inline-code">WL.Client.Push.registerEventSourceCallback</span> is invoked. It takes the following arguments:</p>
-<p>[code lang="js"]function pushNotificationReceived(props, payload) {<br />
+<p>{% highlight javascript %}function pushNotificationReceived(props, payload) {<br />
 	alert("pushNotificationReceived invoked");<br />
 	alert("props :: " + JSON.stringify(props));<br />
 	alert("payload :: " + JSON.stringify(payload));<br />
-}[/code]</p>
+}
+{% endhighlight %}</p>
 <p>If the application was in background mode (or inactive) when the push notification arrived, this callback function is invoked when the application returns to the foreground.</p>
 <h2 id="notifinteractive">Notification API - Interactive notification</h2>
 <p><strong>Note:</strong> Supported by iOS 8 only.</p>
@@ -214,7 +221,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <p>By using this notification type, you can enable messages to be sent and received depending on tags.<br />
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.</p>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:<br />
-[code lang="xml"]<tags><br />
+{% highlight xml %}<tags><br />
     <tag><br />
         <name>PushTag1</name><br />
         <description>About pushTag1</description><br />
@@ -223,7 +230,7 @@ Tags represent topics of interest to the user and provide the ability to receive
         <name>PushTag2</name><br />
         <description>About pushTag2</description><br />
     </tag><br />
-</tags>[/code]</p>
+</tags>{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>Client-side API methods</h3>
 <ul>
@@ -242,10 +249,11 @@ You can disable broadcast notification by unsubscribing from the reserved tag <s
 <p><span class="inline-code">WL.Client.Push.onMessage (props, payload)</span><br />
 <strong>props</strong>: A JSON block that contains the notifications properties of the platform.<br />
 <strong>payload</strong>: A JSON block that contains other data that is sent from the MobileFirst Server. The JSON block also contains the tag name for tag and broadcast notification. The tag name appears in the <code><tag></tag></code> element. For broadcast notification, the default tag name is <span class="inline-code">Push.ALL</span>.</p>
-<p>[code lang="js"]WL.Client.Push.onMessage = function (props, payload) {<br />
+<p>{% highlight javascript %}WL.Client.Push.onMessage = function (props, payload) {<br />
     alert("Provider notification data: " + Object.toJSON(props));<br />
     alert("Application notification data: " + Object.toJSON(payload));<br />
-}[/code]</p>
+}
+{% endhighlight %}</p>
 <p>A callback function that is invoked when a push notification is received by the device.<br />
 Set this function at a global JavaScript level. The tag name <span class="inline-code">Push.ALL</span> is sent back in the <code>payload</code> parameter.</p>
 <h4>Server-side API</h4>
@@ -307,35 +315,35 @@ You can also modify these settings with the Application Descriptor Editor in Des
 <li>Place the <strong>API Key</strong> value instead of <strong>GCM_Key</strong>.</li>
 <li>Place the <strong>Project Number</strong> value instead of <strong>senderId</strong>.</li>
 </ul>
-<p>[code lang="xml"]<android securityTest="PushApplication-strong-mobile-securityTest" version="1.0"><br />
-        <pushSender key="GCM_key" senderId="GCM_ID"/>[/code]</p>
+<p>{% highlight xml %}<android securityTest="PushApplication-strong-mobile-securityTest" version="1.0"><br />
+        <pushSender key="GCM_key" senderId="GCM_ID"/>{% endhighlight %}</p>
 <h3>iOS</h3>
 <p>Place the Apple APNS certificate file at the root of the application folder or at the root of the environment folder.<br />
 Replace <code>certificate password</code> with your actual certificate password.<br />
 Replace <code>com.PushNotifications</code> with the <code>bundleId</code> of your application. Consult the Apple documentation about how to create <code>bundleId</code> for Xcode projects.</p>
-<p>[code lang="xml"]<iphone bundleId="com.PushNotifications" version="1.0"><br />
-    	<pushSender password=""/>[/code]</p>
+<p>{% highlight xml %}<iphone bundleId="com.PushNotifications" version="1.0"><br />
+    	<pushSender password=""/>{% endhighlight %}</p>
 <h3>Windows Phone 8</h3>
 <p>To set up non-authenticated push:<br />
-[code lang="xml"] <windowsPhone8 version="1.0"><br />
+{% highlight xml %} <windowsPhone8 version="1.0"><br />
         <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid><br />
-        <pushSender/>[/code]</p>
+        <pushSender/>{% endhighlight %}</p>
 <p>To set up authenticated push:<br />
-[code lang="xml"] <windowsPhone8 version="1.0"><br />
+{% highlight xml %} <windowsPhone8 version="1.0"><br />
         <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid><br />
         <pushSender><br />
-        <authenticatedPush serviceName=" ... " keyAlias=" ... " keyAliasPassword=" ... "/></pushSender>[/code]</p>
+        <authenticatedPush serviceName=" ... " keyAlias=" ... " keyAliasPassword=" ... "/></pushSender>{% endhighlight %}</p>
 <blockquote><p>For more information about using the certificate file, see the topic about setting up push notification for Windows Phone 8, in the user documentation.
 </p></blockquote>
 <h2 id="backendemul">Back-end emulator</h2>
 <p>The sample project for this tutorial is bundled with a back-end emulator. You can use it to simulate push notification submissions by a back-end system.<br />
 The source for the emulator can be found in the associated sample.</p>
 <p>To run the back-end emulator, open the <code>PushBackendEmulator</code> folder of the sample project in a command prompt, and then run the supplied JAR file by using the following syntax:</p>
-<p>[code]java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>[/code]</p>
+<p>{% highlight java %}java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>{% endhighlight %}</p>
 <p><span class="inline-code">userId</span> is the user name that you used to log in to the sample application.<br />
 <span class="inline-code">contextRoot</span> is the context root of your MobileFirst project.</p>
 <h3>Example</h3>
-<p>[code]java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080[/code]</p>
+<p>{% highlight java %}java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080{% endhighlight %}</p>
 <p>The back-end emulator tries to connect to a MobileFirst Server and call a <span class="inline-code">submitNotification()</span> adapter procedure.<br />
 It outputs the invocation result to a command prompt console.</p>
 <h4>Success</h4>

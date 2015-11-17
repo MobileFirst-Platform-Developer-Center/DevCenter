@@ -29,7 +29,7 @@ To create new code and styling, use different filenames than those in of the def
 <p>A special, developer-controlled JavaScript file is run at app startup.<br />
 It determines which skin to load.<br />
 The default <em>skinLoader.js</em> contains examples of code.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function getSkinName() {<br />
 	var skinName = "default";<br />
 	if (device.version == "2.2" || device.version == "2.1") {<br />
@@ -37,13 +37,13 @@ function getSkinName() {<br />
 	}<br />
 	return skinName;<br />
 }<br />
-[/code]<br />
+{% endhighlight %}<br />
 <br clear="all" /></p>
 <h2>Skin Registration</h2>
 <p>Skins are automatically registered in <em>application-descriptor.xml</em>.<br />
 Registration determines the ordering of hierarchy between the common folder, environment, and skin.<br />
 If you remove a skin from the project, <em>application-decsriptor.xml</em> must be manually modified.</p>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
     <android version="1.0"><br />
         <skins><br />
             <skin name="default"><br />
@@ -69,4 +69,4 @@ If you remove a skin from the project, <em>application-decsriptor.xml</em> must 
             <packageName>Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in AndroidManifest.xml file.</packageName><br />
         </security><br />
     </android><br />
-[/code]</p>
+{% endhighlight %}</p>

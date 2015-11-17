@@ -53,7 +53,7 @@ relevantTo: [hybrid]
 <p>The <strong>Token Endpoint</strong> is a REST API exposed under the path <code>/oauth/token</code>.</p>
 <p><strong>MobileFirst Server</strong> uses the authentication infrastructure to issue an access token for the requested scope (MobileFirst security test).</p>
 <h3>Overview of token format</h3>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 {<br />
   version: "1.0 (of token)",<br />
   scope: "<the security test that the token authenticated>",<br />
@@ -64,7 +64,7 @@ relevantTo: [hybrid]
     application_id: "<identity of the app>"<br />
   }<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The token is signed by the MobileFirst Server instance.</p>
 <p>Clarification for the <code>data</code> field:</p>
 <ul>
@@ -108,13 +108,13 @@ relevantTo: [hybrid]
 <li>
     <strong>After all relevant realms are authenticated, MobileFirst Server returns an access token to the client.</strong></p>
 <p>      The <strong>MobileFirst Server</strong> returns a JSON object with the following format:</p>
-<p>    [code lang="javascript"]<br />
+<p>    {% highlight javascript %}<br />
     {<br />
       scope: "<actual scope *>",<br />
       token_type: "Bearer",<br />
       access_token: "<encrypted token string>"<br />
     }<br />
-    [/code]<br />
+    {% endhighlight %}<br />
     <strong>*</strong> different than given scope only if default scope requested
   </li>
 <li>
@@ -133,13 +133,13 @@ relevantTo: [hybrid]
 <p>The default lifetime for each token is 60 seconds. You can override this timeout by adding the AccessTokenExpirationSec attribute to the security test.</p>
 <p>For example, if you want to configure a security test, called SampleSecurityTest, with a lifetime of 15 seconds, edit the <code>authenticationConfig.xml</code> as follows</p>
 <p><strong>From the source view:</strong></p>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 <securityTests><br />
   <customSecurityTest name="SampleSecurityTest" AccessTokenExpirationSec="15"><br />
     <test realm="SampleRealm" isInternalUserID="true"/><br />
   </customSecurityTest><br />
 </securityTests><br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><strong>From the design view:</strong></p>
 <p><img src="{{ site.baseurl }}/assets/backup/security-test-design-view.png" alt="security-test-design-view" class="aligncenter size-full wp-image-3647" /></p>
 <h2 id="mobilefirst_configuration_keystore">MobileFirst project configuration - Keystore</h2>
@@ -173,7 +173,7 @@ relevantTo: [hybrid]
 <li><strong>CertificatePath</strong> = <code>certificateLib/WorklightServerCertificate.cert</code> "The path to the certificate of MobileFirst Server, relative to the WEB-INF folder."</li>
 </ul>
 <p>In addition to the previous parameters, write the following code for the web.xml file of your external server:</p>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
     <web-app ...><br />
       ...<br />
       <filter><br />
@@ -194,15 +194,15 @@ relevantTo: [hybrid]
       </filter-mapping><br />
       ...<br />
     </web-app><br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>After successful validation, the filter updates the <code>ClientContext</code> object that the service can use to access user, application, or device identities that are contained in the access token.</p>
 <p>Example of <code>ClientContext</code> usage:</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
   ClientContext context = ClientContext.getInstance();<br />
   String appId = context.getApplication();<br />
   String userId = context.getUser();<br />
   String deviceId = context.getDevice();<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2 id="use_of_the_client_side_api">Use of the client-side API: which methods are allowed</h2>
 <p>The MobileFirst <code>WL.Client</code> API provides built-in support for using MobileFirst access tokens for the following platforms:</p>
 <ul>
@@ -228,7 +228,7 @@ relevantTo: [hybrid]
 <p>In JavaScript, this method is called <strong>getLastAccessToken</strong>.</p>
 <p>The <code>WL.Client</code> instance returns the last access token for a certain scope as a string. Alternatively, if no scope is specified, the last obtained token is returned. This capability is useful when an application is using one scope <strong>only</strong>.</p>
 <p>Add a header named "Authorization" and for the header content, add "Bearer", followed by the token. For example, when issuing an Ajax request, you can write the following code:</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
   var token = WL.Client.getLastAccessToken();<br />
   $.ajax({<br />
       type: "GET",<br />
@@ -237,7 +237,7 @@ relevantTo: [hybrid]
           "Authorization": "Bearer " + token<br />
       }<br />
   });<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>Getting the required scope from the external service response</h3>
 <p>In JavaScript, this method is called <strong>getRequiredAccessTokenScope</strong>.</p>
 <p>When a request to the external service fails, the <code>WL.Client</code> instance can identify the cause of the failure.</p>
@@ -245,7 +245,7 @@ relevantTo: [hybrid]
 <p>If the error is not related to access token issues, the method returns <code>null</code>.</p>
 <h3>Use of the client-side API: JavaScript example</h3>
 <p>This JavaScript example shows how to use the client-side API for access to an external service.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function callProtectedRestAPI(retries) {<br />
     // You must be able to call this method<br />
     // recursively, because in some cases it is<br />
@@ -286,6 +286,6 @@ function callProtectedRestAPI(retries) {<br />
         showErrorResult(response);<br />
     };<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MobileFirstAsAuthorizationServer.zip">Click to download</a> the Studio project.</p>

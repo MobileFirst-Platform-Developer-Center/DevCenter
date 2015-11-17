@@ -15,21 +15,21 @@ relevantTo: [windowsphone8]
 <h2>Overview</h2>
 <p>To create and configure a Windows Phone 8 native project, first follow the "<a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/hello-world/creating-first-native-windows-phone-8-mobilefirst-application/" title="Creating your first native Windows Phone 8 MobileFirst application">Creating your first Native WP8 MobileFirst application</a>" tutorial.</p>
 <h2>Initializing WLClient</h2>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 WLClient client = WLClient.getInstance();<br />
-[/code]</p>
+{% endhighlight %}</p>
 <ol>
 <li>To establish a connection to MobileFirst Server, use the <code>connect</code> method by specifying the <code>MyConnectResponseListener</code> class instance as a parameter.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %}<br />
 client.connect(new MyConnectResponseListener(this));<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server instance according to the properties of the <strong>wlclient.properties</strong> file.<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectResponseListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectResponseListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 public class MyConnectResponseListener : WLResponseListener<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>WLResponseListener</code> interface defines two methods:<br />
 - <code>public void </code><code>onSuccess (WLResponse response) { }</code><br />
 - <code>public void </code><code>onFailure (WLFailResponse response) { }</code>
@@ -47,28 +47,28 @@ public class MyConnectResponseListener : WLResponseListener<br />
 <li>Get the existing <code>WLClient</code> instance and use it to invoke an adapter procedure.
 </li>
 <li>Specify the <code>MyInvokeListener</code> class instance as a parameter.
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 WLProcedureInvocationData invocationData = new WLProcedureInvocationData("RSSReader", "getStories");<br />
 invocationData.setParameters(new Object[]{});<br />
 String myContextObject = "InvokingAdapterProceduresWP8";<br />
 WLRequestOptions options = new WLRequestOptions();<br />
 options.setInvocationContext(myContextObject);<br />
 WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);<br />
-[/code]
+{% endhighlight %}
 </li>
 </ol>
 <h2>Receiving a procedure response</h2>
 <p>After the procedure invocation is completed, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
 As before, you must specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 using IBM.Worklight;<br />
 namespace InvokingAdapterProceduresWP8{<br />
 	public class MyInvokeListener : WLResponseListener<br />
     { }<br />
 {<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>onSuccess</code> and <code>onFailure</code> methods are invoked by the <code>WLClient</code>. The response object contains the response data. You can use its methods and properties to retrieve the required information.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 public void onSuccess(WLResponse response)<br />
 {<br />
     WLProcedureInvocationResult invocationResponse = ((WLProcedureInvocationResult) response);<br />
@@ -96,7 +96,7 @@ public void onSuccess(WLResponse response)<br />
         myMainPage.AddTextToReceivedTextBlock("Response failed: " + response.ToString());<br />
     });<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Sample application</h2>
 <p>The sample contains two projects:<br />
 - The <strong>InvokingAdapterProceduresNativeProject.zip</strong> file contains a MobileFirst Native API to deploy to MobileFirst Server.<br />
