@@ -76,11 +76,11 @@ This method takes the following parameters:</p>
 function sendSMS(phoneNumber, smsText) {</p>
 <p>	var subscription = WL.Server.getSMSSubscription(eventSourceId, phoneNumber);</p>
 <p>	if (subscription == null) {<br />
-		return { result: &quot;No subscription found for user :: &quot; + phoneNumber };<br />
+		return { result: "No subscription found for user :: " + phoneNumber };<br />
 	}</p>
 <p>	var notification = WL.Server.createDefaultNotification(smsText, 1, {});<br />
 	WL.Server.notifyDeviceSubscription(subscription, notification);</p>
-<p>	return { result: &quot;Notification sent to user :: &quot; + phoneNumber };<br />
+<p>	return { result: "Notification sent to user :: " + phoneNumber };<br />
 }<br />
 [/code]<br />
 A phone number can unsubscribe from the event source by a call to the following method:<br />
@@ -90,9 +90,9 @@ WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);<br />
 <h2 id="setup">Setup</h2>
 <p>The SMSConfig.xmlfile specifies gateway details for both receiving and sending SMS messages.<br />
 [code lang="xml"]<br />
-&lt;gateway id=&quot;myGateway&quot; hostname=&quot;yourhostname.com&quot; port=&quot;80&quot; programName=&quot;backendProgram&quot; toParamName=&quot;to&quot; textParamName=&quot;text&quot; fromParamName=&quot;from&quot;&gt;<br />
-    &lt;parameter encode=&quot;false&quot; name=&quot;param1name&quot; value=&quot;param1value&quot;/&gt;<br />
-    &lt;parameter encode=&quot;false&quot; name=&quot;param2name&quot; value=&quot;param2value&quot;/&gt;<br />
+&lt;gateway id="myGateway" hostname="yourhostname.com" port="80" programName="backendProgram" toParamName="to" textParamName="text" fromParamName="from"&gt;<br />
+    &lt;parameter encode="false" name="param1name" value="param1value"/&gt;<br />
+    &lt;parameter encode="false" name="param2name" value="param2value"/&gt;<br />
 &lt;/gateway&gt;<br />
 [/code]</p>
 <p>You can externalize the keywords, gateway identifier, and other parameters that the SMS event handler uses to the worklight.properties configuration file.<br />
@@ -103,7 +103,7 @@ sms.gateway.id=myGateway<br />
 [/code]</p>
 <p>By default, the SubscribeServletobject that receives the request from the gateway is protected by a security test. This security test takes a RejectingLoginModuleparameter which by default rejects any request. To enforce the security mechanism that is supported by your gateway, comment out or modify the default security test.<br />
 [code lang="xml"]<br />
-&lt;resource id=&quot;subscribeServlet&quot; securityTest=&quot;SubscribeServlet&quot;&gt;<br />
+&lt;resource id="subscribeServlet" securityTest="SubscribeServlet"&gt;<br />
 	&lt;urlPatterns&gt;/subscribeSMS*;/receiveSMS*;/ussd*&lt;/urlPatterns&gt;<br />
 &lt;/resource&gt;<br />
 [/code]<br />

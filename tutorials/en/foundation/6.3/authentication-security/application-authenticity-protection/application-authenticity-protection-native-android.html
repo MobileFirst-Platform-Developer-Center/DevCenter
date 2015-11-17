@@ -11,7 +11,7 @@ This is a continuation of the <a title="Application Authenticity Protection" hre
 <h4>Adding the security test</h4>
 <p>Modify the <code>application-descriptor.xml</code> file of your application.<br />
 Add the <em>securityTest</em> attribute to the Android or iPhone/iPad environment element. For example:</p>
-<p>[code lang="xml"]&lt;iphone bundleId=&quot;com.worklight.MyBankApp&quot; applicationId=&quot;MyBankApp&quot; securityTest=&quot;customTests&quot; version=&quot;1.0“&gt;[/code]</p>
+<p>[code lang="xml"]&lt;iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0“&gt;[/code]</p>
 <p>&nbsp;</p>
 <h4>Adding the public signing key</h4>
 <p><strong>Extract the public signing key of the certificate that is used to sign application bundle (<em>.apk</em> file). </strong></p>
@@ -35,12 +35,12 @@ To use the wizard:</p>
 If you decide to change the value to another, verify that you change it in both locations.</p>
 <p>The <code>application-descriptor.xml</code> file can also be edited directly to add the <em>packageName</em>:</p>
 <p>[code lang="xml" highlight="8"]<br />
-&lt;android version=&quot;1.0&quot; securityTest=&quot;customTests&quot;&gt;<br />
-     &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
+&lt;android version="1.0" securityTest="customTests"&gt;<br />
+     &lt;worklightSettings include="false"/&gt;<br />
      &lt;security&gt;<br />
-         &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-         &lt;testWebResourcesChecksum enabled=&quot;false&quot;<br />
-             ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
+         &lt;encryptWebResources enabled="false"/&gt;<br />
+         &lt;testWebResourcesChecksum enabled="false"<br />
+             ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/&gt;<br />
          &lt;publicSigningKey&gt;MIGfM …&lt;/publicSigningKey&gt;<br />
          &lt;packageName&gt;com.MyBankApp&lt;/packageName&gt;<br />
      &lt;/security&gt;<br />

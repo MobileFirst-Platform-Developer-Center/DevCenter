@@ -59,8 +59,8 @@ The dialog is closed when any of the buttons is pressed.</p>
 <li><strong>handler</strong> – the function to invoke if the button is pressed.</li>
 </ul>
 <p>[code lang="javascript"]<br />
-var dialogTitle = &quot;CommonControls&quot;;<br />
-var dialogText = &quot;This is simple dialog text; take a look at the console&quot;;</p>
+var dialogTitle = "CommonControls";<br />
+var dialogText = "This is simple dialog text; take a look at the console";</p>
 <p>WL.SimpleDialog.show(dialogTitle, dialogText, [<br />
     {<br />
         text : 'I am button 1',<br />
@@ -116,11 +116,11 @@ WL.TabBar.addItem(id, callback, title, options);<br />
 </li>
 </ul>
 <p>[code lang="javascript"]<br />
-WL.TabBar.addItem(&quot;item1&quot;,<br />
-    function(){ alert(&quot;item 1 pressed&quot;); },<br />
-    &quot;Item 1&quot;,{<br />
-        image: &quot;tabButton:Search&quot;,<br />
-        //image: &quot;images/tabImage.png&quot;,}<br />
+WL.TabBar.addItem("item1",<br />
+    function(){ alert("item 1 pressed"); },<br />
+    "Item 1",{<br />
+        image: "tabButton:Search",<br />
+        //image: "images/tabImage.png",}<br />
 );<br />
 [/code]</p>
 <h3>Android Options</h3>
@@ -129,10 +129,10 @@ WL.TabBar.addItem(&quot;item1&quot;,<br />
 <li>imageSelected – file name of an image to use for a selected state.</li>
 </ul>
 <p>[code lang="javascript"]<br />
-WL.TabBar.addItem(&quot;item1&quot;,<br />
-    function(){ alert(&quot;item 1 pressed&quot;); },<br />
-    &quot;Item 1&quot;,{<br />
-    image: &quot;images/tabImage.png&quot;,}<br />
+WL.TabBar.addItem("item1",<br />
+    function(){ alert("item 1 pressed"); },<br />
+    "Item 1",{<br />
+    image: "images/tabImage.png",}<br />
 );<br />
 [/code]</p>
 <h3>Other API Signatures</h3>
@@ -182,10 +182,10 @@ WL.OptionsMenu.addItem(id, callbackFunction, title, options);<br />
 </li>
 </ul>
 <p>[code lang="javascript"]<br />
-WL.OptionsMenu.addItem(&quot;item2&quot;,<br />
-    function(){ alert(&quot;item 2 pressed&quot;);},<br />
-    &quot;Contacts&quot;, {<br />
-    image: &quot;contacts.png&quot;}<br />
+WL.OptionsMenu.addItem("item2",<br />
+    function(){ alert("item 2 pressed");},<br />
+    "Contacts", {<br />
+    image: "contacts.png"}<br />
 );<br />
 [/code]</p>
 <p>Paths to image files must not be given; instead, place the files at the following locations:</p>

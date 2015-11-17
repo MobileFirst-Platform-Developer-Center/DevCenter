@@ -303,16 +303,16 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 <p>The following example shows the updated SSL configuration:<br />
 [code lang="xml"]<br />
 &lt;!-- default SSL configuration is defaultSSLSettings --&gt;<br />
-&lt;sslDefault sslRef=&quot;defaultSSLSettings&quot;/&gt;<br />
-&lt;ssl clientAuthenticationSupported=&quot;true&quot; id=&quot;defaultSSLSettings&quot; keyStoreRef=&quot;defaultKeyStore&quot; trustStoreRef=&quot;defaultTrustStore&quot;/&gt;<br />
-&lt;keyStore id=&quot;defaultKeyStore&quot; location=&quot;server.p12&quot; password=&quot;passServerP12&quot; type=&quot;PKCS12&quot; /&gt;<br />
-&lt;keyStore id=&quot;defaultTrustStore&quot; location=&quot;signing_ca.p12&quot; password=&quot;passSigningP12&quot; type=&quot;PKCS12&quot;/&gt;<br />
+&lt;sslDefault sslRef="defaultSSLSettings"/&gt;<br />
+&lt;ssl clientAuthenticationSupported="true" id="defaultSSLSettings" keyStoreRef="defaultKeyStore" trustStoreRef="defaultTrustStore"/&gt;<br />
+&lt;keyStore id="defaultKeyStore" location="server.p12" password="passServerP12" type="PKCS12" /&gt;<br />
+&lt;keyStore id="defaultTrustStore" location="signing_ca.p12" password="passSigningP12" type="PKCS12"/&gt;<br />
 [/code]<br /></p>
 <h2 id="authConfig">Configure authenticationConfig.xml</h2>
 <p>Uncomment the UserCertificate Login Module section of the <code>authenticationConfig.xml</code> file, as shown below.<br />
 [code lang="xml"]<br />
 &lt;!-- Login Module for User Certificate Authentication --&gt;<br />
-&lt;loginModule name=&quot;WLUSERCertificateLoginModule&quot;&gt;<br />
+&lt;loginModule name="WLUSERCertificateLoginModule"&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.UserCertificateLoginModule&lt;/className&gt;<br />
 &lt;/loginModule&gt;<br />
 [/code]<br />
@@ -320,10 +320,10 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 Uncomment the <code>wl_userCertificateAuthRealm</code> section, as shown below.<br />
 [code lang="xml"]<br />
 &lt;!-- Login Module for User Certificate Authentication --&gt;<br />
-&lt;realm name=&quot;wl_userCertificateAuthRealm&quot; loginModule=&quot;WLUserCertificateLoginModule&quot;&gt;<br />
+&lt;realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule"&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.UserCertificateAuthenticator&lt;/className&gt;<br />
-   &lt;parameter name=&quot;dependent-user-auth-realm&quot; value=&quot;SampleAppRealm&quot;/&gt;<br />
-   &lt;parameter name=&quot;pki-bridge-class&quot; value=&quot;com.worklight.core.auth.ext.UserCertificateEmbeddedPKI&quot;/&gt;<br />
+   &lt;parameter name="dependent-user-auth-realm" value="SampleAppRealm"/&gt;<br />
+   &lt;parameter name="pki-bridge-class" value="com.worklight.core.auth.ext.UserCertificateEmbeddedPKI"/&gt;<br />
 &lt;/realm&gt;<br />
 [/code]<br />
 Update the value of the <code>embedded-pki-bridge-ca-p12-file-path</code> element to the full path of your signing CA <code>.p12</code> file.<br />
@@ -337,24 +337,24 @@ The realm name(<code>wl_userCertificateAuthRealm</code>) cannot be changed.<br /
 The following examples shows the updates made above.<br />
 [code lang="xml"]<br />
 &lt;!--For User Certificate Authentication --&gt;<br />
-&lt;realm name=&quot;wl_userCertificateAuthRealm&quot; loginModule=&quot;WLUserCertificateLoginModule&quot;&gt;<br />
+&lt;realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule"&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.UserCertificateAuthenticator&lt;/className&gt;<br />
-   &lt;parameter name=&quot;dependent-user-auth-realm&quot; value=&quot;SampleAppRealm&quot;/&gt;<br />
-   &lt;parameter name=&quot;pki-bridge-class&quot; value=&quot;com.worklight.core.auth.ext.UserCertificateEmbeddedPKI&quot;/&gt;<br />
-   &lt;parameter name=&quot;embedded-pki-bridge-ca-p12-file-path&quot; value=&quot;YOUR_BASE_DIRECTORY/signing_ca.p12&quot;/&gt;<br />
-   &lt;parameter name=&quot;embedded-pki-bridge-ca-p12-password&quot; calue=&quot;passSigningP12&quot;/&gt;<br />
+   &lt;parameter name="dependent-user-auth-realm" value="SampleAppRealm"/&gt;<br />
+   &lt;parameter name="pki-bridge-class" value="com.worklight.core.auth.ext.UserCertificateEmbeddedPKI"/&gt;<br />
+   &lt;parameter name="embedded-pki-bridge-ca-p12-file-path" value="YOUR_BASE_DIRECTORY/signing_ca.p12"/&gt;<br />
+   &lt;parameter name="embedded-pki-bridge-ca-p12-password" calue="passSigningP12"/&gt;<br />
 &lt;/realm&gt;<br />
 [/code]<br />
 <br />
 Define a security test that uses <code>wl_userCertificateAuthRealm</code>.<br />
 [code lang="xml"]<br />
 &lt;!--For User Certificate Authentication --&gt;<br />
-&lt;customSecurityTest name=&quot;customx509Tests&quot;&gt;<br />
-   &lt;test realm=&quot;wl_antiXSRFRealm&quot; step=&quot;1&quot;/&gt;<br />
-   &lt;test realm=&quot;wl_authenticityRealm&quot; step=&quot;1&quot;/&gt;<br />
-   &lt;test realm=&quot;wl_directUpdateRealm&quot; mode=&quot;perSession&quot; step=&quot;1&quot;/&gt;<br />
-   &lt;test realm=&quot;wl_userCertificateAuthRealm&quot; isInternalUserID=&quot;true&quot; step=&quot;1&quot;/&gt;<br />
-   &lt;test realm=&quot;wl_deviceNoProvisioningRealm&quot; isInternalUserID=&quot;true&quot; step=&quot;2&quot;/&gt;<br />
+&lt;customSecurityTest name="customx509Tests"&gt;<br />
+   &lt;test realm="wl_antiXSRFRealm" step="1"/&gt;<br />
+   &lt;test realm="wl_authenticityRealm" step="1"/&gt;<br />
+   &lt;test realm="wl_directUpdateRealm" mode="perSession" step="1"/&gt;<br />
+   &lt;test realm="wl_userCertificateAuthRealm" isInternalUserID="true" step="1"/&gt;<br />
+   &lt;test realm="wl_deviceNoProvisioningRealm" isInternalUserID="true" step="2"/&gt;<br />
 &lt;/customSecurityTest&gt;<br />
 [/code]<br /></p>
 <h2 id="appDescriptor">Configure application-descriptor.xml</h2>
@@ -363,8 +363,8 @@ Define a security test that uses <code>wl_userCertificateAuthRealm</code>.<br />
 Protect your application or environment with your custom security test.<br />
 [code lang="xml"]<br />
 &lt;!--For User Certificate Authentication --&gt;<br />
-&lt;android securityTest=&quot;customx509Tests&quot; version=&quot;1.0&quot;&gt;<br />
-&lt;iPhone bundleId=&quot;com.SampleApp&quot; securityTest=&quot;customx509Tests&quot; version=&quot;1.0&quot;&gt;<br />
+&lt;android securityTest="customx509Tests" version="1.0"&gt;<br />
+&lt;iPhone bundleId="com.SampleApp" securityTest="customx509Tests" version="1.0"&gt;<br />
 [/code]<br />
 <br />
 Build and deploy your application and adapters to the MobileFirst Platform server.</p>

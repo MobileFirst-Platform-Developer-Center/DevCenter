@@ -26,20 +26,20 @@ Beacons can be registered / updated / deleted using REST APIs. For detailed info
 <p>Register the following beacons using the Beacons (PUT) REST API<br />
 [code lang="js"]<br />
 {<br />
-    &quot;uuid&quot;: &quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;,<br />
-    &quot;major&quot;: 1,<br />
-    &quot;minor&quot;: 4417,<br />
-    &quot;customData&quot;: {<br />
-        &quot;branchName&quot;: &quot;Indiranagar, Bangalore&quot;<br />
+    "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",<br />
+    "major": 1,<br />
+    "minor": 4417,<br />
+    "customData": {<br />
+        "branchName": "Indiranagar, Bangalore"<br />
     }<br />
 }[/code]</p>
 <p>[code lang="js"]<br />
 {<br />
-    &quot;uuid&quot;: &quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;,<br />
-    &quot;major&quot;: 2,<br />
-    &quot;minor&quot;: 4417,<br />
-    &quot;customData&quot;: {<br />
-        &quot;branchName&quot;: &quot;Koramangala, Bangalore&quot;<br />
+    "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",<br />
+    "major": 2,<br />
+    "minor": 4417,<br />
+    "customData": {<br />
+        "branchName": "Koramangala, Bangalore"<br />
     }<br />
 }[/code]</p>
 <h2 id="registeringbeacontriggers">Registering Beacon Triggers</h2>
@@ -95,32 +95,32 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <p>Register the following beacon triggers using the Beacon Triggers (POST) REST API.</p>
 <p>[code lang="js"]<br />
 {<br />
-    &quot;triggerName&quot;: &quot;entryIntoBranch&quot;,<br />
-     &quot;triggerType&quot;: &quot;Enter&quot;,<br />
-     &quot;proximityState&quot;: &quot;Near&quot;,<br />
-     &quot;actionPayload&quot;: {<br />
-        &quot;alert&quot;: &quot;Welcome to $branchName branch of IMF Bank&quot;<br />
+    "triggerName": "entryIntoBranch",<br />
+     "triggerType": "Enter",<br />
+     "proximityState": "Near",<br />
+     "actionPayload": {<br />
+        "alert": "Welcome to $branchName branch of IMF Bank"<br />
      }<br />
  }[/code]</p>
 <p><br clear="all" /></p>
 <p>[code lang="js"]<br />
 {<br />
-    &quot;triggerName&quot;: &quot;dwellInsideBank&quot;,<br />
-     &quot;triggerType&quot;: &quot;DwellInside&quot;,<br />
-     &quot;dwellingTime&quot;: 5000,<br />
-     &quot;proximityState&quot;: &quot;Near&quot;,<br />
-     &quot;actionPayload&quot;: {<br />
-        &quot;alert&quot;: &quot;You will be assisted soon by our staff.&quot;<br />
+    "triggerName": "dwellInsideBank",<br />
+     "triggerType": "DwellInside",<br />
+     "dwellingTime": 5000,<br />
+     "proximityState": "Near",<br />
+     "actionPayload": {<br />
+        "alert": "You will be assisted soon by our staff."<br />
      }<br />
  }[/code]</p>
 <p><br clear="all" /></p>
 <p>[code lang="js"]<br />
 {<br />
-    &quot;triggerName&quot;: &quot;exitFromBranch&quot;,<br />
-     &quot;triggerType&quot;: &quot;Exit&quot;,<br />
-     &quot;proximityState&quot;: &quot;Far&quot;,<br />
-     &quot;actionPayload&quot;: {<br />
-        &quot;alert&quot;: &quot;Thank you for visiting our $branchName branch. Have a nice day!&quot;<br />
+    "triggerName": "exitFromBranch",<br />
+     "triggerType": "Exit",<br />
+     "proximityState": "Far",<br />
+     "actionPayload": {<br />
+        "alert": "Thank you for visiting our $branchName branch. Have a nice day!"<br />
      }<br />
  }[/code]</p>
 <h2 id="associatingbeacons">Associating Beacons and Beacon Triggers</h2>
@@ -128,23 +128,23 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <p>Creating the association between beacons and triggers for an application can be achieved using the Associate beacons and triggers (PUT) REST API:<br />
 [code lang="js"]<br />
 {<br />
-    &quot;beacons&quot;: [<br />
+    "beacons": [<br />
         {<br />
-            &quot;uuid&quot;: &quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;,<br />
-            &quot;major&quot;: 1,<br />
-            &quot;minor&quot;: 4417<br />
+            "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",<br />
+            "major": 1,<br />
+            "minor": 4417<br />
         },<br />
         {<br />
-            &quot;uuid&quot;: &quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;,<br />
-            &quot;major&quot;: 2,<br />
-            &quot;minor&quot;: 4417<br />
+            "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",<br />
+            "major": 2,<br />
+            "minor": 4417<br />
         }<br />
     ],<br />
-    &quot;triggers&quot;: [<br />
+    "triggers": [<br />
         {<br />
-            &quot;triggerName&quot;: &quot;entryIntoBranch&quot;,<br />
-            &quot;triggerName&quot;: &quot;exitFromBranch&quot;,<br />
-            &quot;triggerName&quot;: &quot;dwellInsideBank&quot;<br />
+            "triggerName": "entryIntoBranch",<br />
+            "triggerName": "exitFromBranch",<br />
+            "triggerName": "dwellInsideBank"<br />
         }<br />
     ]<br />
 }[/code]</p>
@@ -196,7 +196,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <h3>Loading beacons and triggers from server</h3>
 <p>Loading beacons information, triggers and their associations from server and storing it in the application JSONStore can be achieved by:<br />
 [code lang="obj-c"]<br />
-[[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@&quot;iBeaconsAdapter&quot; withProcedure:@&quot;getBeaconsAndTriggers&quot; withCompletionHandler:^(bool success, NSString *error) {<br />
+[[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@"iBeaconsAdapter" withProcedure:@"getBeaconsAndTriggers" withCompletionHandler:^(bool success, NSString *error) {<br />
 	if (success) {<br />
 		[self showBeaconsAndTriggers];<br />
 	} else {<br />
@@ -217,7 +217,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <h3>Turn the device to an iBeacon</h3>
 <p>Turning the device into an an iBeacon can be achieved using:</p>
 <p>[code lang="obj-c"]<br />
-	NSString *uuidString = @&quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;;<br />
+	NSString *uuidString = @"3d402cf0-3691-4bd9-97ff-0b0a93a160ef";<br />
 	int major = 1;<br />
 	int minor = 4417;<br />
 	[[WLBeaconsLocationManager sharedInstance] turnIntoiBeaconWithUuid:uuidString withMajor:major withMinor:minor withStatusHandler:^(NSString *turnIntoiBeaconStatusDetails) {<br />
@@ -260,8 +260,8 @@ This increases the running time of the application up to 3 minutes from the defa
 }</p>
 <p>- (void)processLocalNotification:(UILocalNotification *)notification<br />
 {<br />
-	NSString *alertMessage = [notification.userInfo objectForKey:@&quot;alertMessage&quot;];<br />
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Received local notification&quot; message:alertMessage delegate:nil cancelButtonTitle:@&quot;OK&quot; otherButtonTitles:nil, nil];<br />
+	NSString *alertMessage = [notification.userInfo objectForKey:@"alertMessage"];<br />
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Received local notification" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];<br />
 	[alert show];<br />
 }[/code]</p>
 <h2 id="sampleresult">Sample application</h2>

@@ -24,9 +24,9 @@ Procedure names in the JavaScript file must be the same as in the adapter XML fi
 <h4>XML file</h4>
 <p>[code lang="xml" highlight="2"]<br />
 ...<br />
-&lt;procedure name=&quot;writeMessage&quot;/&gt;<br />
-&lt;procedure name=&quot;readMessage&quot;/&gt;<br />
-&lt;procedure name=&quot;readAllMessages&quot;/&gt;<br />
+&lt;procedure name="writeMessage"/&gt;<br />
+&lt;procedure name="readMessage"/&gt;<br />
+&lt;procedure name="readAllMessages"/&gt;<br />
 [/code]</p>
 <h4>JS file</h4>
 <p>[code lang="js" highlight="2"]<br />
@@ -40,7 +40,7 @@ function writeMessage(messagebody) {<br />
 [code lang="js" highlight="4"]<br />
 function writeMessage(messagebody) {</p>
 <p>	var inputData = {<br />
-			destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
+			destination: "dynamicQueues/MobileFirst",<br />
 			message:{<br />
 				body: messagebody,<br />
 				properties:{<br />
@@ -69,27 +69,27 @@ function writeMessage(messagebody) {</p>
 </li>
 </ul>
 <p>[code lang="xml" highlight="7,8,9,10,11,12,13,14,15,16,17,18"]<br />
-&lt;wl:adapter name=&quot;JMSAdapter&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:wl=&quot;http://www.ibm.com/mfp/integration&quot; xmlns:jms=&quot;http://www.ibm.com/mfp/integration/jms&quot;&gt;</p>
+&lt;wl:adapter name="JMSAdapter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wl="http://www.ibm.com/mfp/integration" xmlns:jms="http://www.ibm.com/mfp/integration/jms"&gt;</p>
 <p>  &lt;displayName&gt;JMSAdapter&lt;/displayName&gt;<br />
   &lt;description&gt;JMSAdapter&lt;/description&gt;<br />
   &lt;connectivity&gt;<br />
-    &lt;connectionPolicy xsi:type=&quot;jms:JMSConnectionPolicyType&quot;&gt;<br />
+    &lt;connectionPolicy xsi:type="jms:JMSConnectionPolicyType"&gt;<br />
       &lt;namingConnection<br />
-        url=&quot;tcp://9.148.225.169:61616&quot;<br />
-        initialContextFactory=&quot;org.apache.activemq.jndi.ActiveMQInitialContextFactory&quot;<br />
-        user=&quot;admin&quot;<br />
-        password=&quot;admin&quot;<br />
+        url="tcp://9.148.225.169:61616"<br />
+        initialContextFactory="org.apache.activemq.jndi.ActiveMQInitialContextFactory"<br />
+        user="admin"<br />
+        password="admin"<br />
         /&gt;</p>
 <p>      &lt;jmsConnection<br />
-        connectionFactory=&quot;ConnectionFactory&quot;<br />
-        user=&quot;admin&quot;<br />
-        password=&quot;admin&quot;<br />
+        connectionFactory="ConnectionFactory"<br />
+        user="admin"<br />
+        password="admin"<br />
         /&gt;<br />
     &lt;/connectionPolicy&gt;<br />
   &lt;/connectivity&gt;</p>
-<p>  &lt;procedure name=&quot;writeMessage&quot; /&gt;<br />
-  &lt;procedure name=&quot;readMessage&quot; /&gt;<br />
-  &lt;procedure name=&quot;readAllMessages&quot; /&gt;<br />
+<p>  &lt;procedure name="writeMessage" /&gt;<br />
+  &lt;procedure name="readMessage" /&gt;<br />
+  &lt;procedure name="readAllMessages" /&gt;<br />
 &lt;/wl:adapter&gt;<br />
 [/code]</p>
 <p>Copy the relevant external libraries to the project for it to use JMS classes.<br />
@@ -107,7 +107,7 @@ It waits for timeout in milliseconds and returns a JMS message that contains the
 <p>[code lang="js"]<br />
 function readMessage() {<br />
     var result = WL.Server.readSingleJMSMessage({<br />
-    	destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
+    	destination: "dynamicQueues/MobileFirst",<br />
     	timeout: 60<br />
     });</p>
 <p>    return result;<br />
@@ -127,7 +127,7 @@ It returns the <code>JMSMessageID</code> of the sent message.</p>
 <p>[code lang="javascript"]<br />
 function writeMessage(messagebody) {</p>
 <p>  var inputData = {<br />
-    destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
+    destination: "dynamicQueues/MobileFirst",<br />
     message:{<br />
       body: messagebody,<br />
       properties:{<br />

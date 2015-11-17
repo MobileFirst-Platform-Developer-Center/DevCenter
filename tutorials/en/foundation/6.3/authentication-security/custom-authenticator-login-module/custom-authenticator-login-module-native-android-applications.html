@@ -31,7 +31,7 @@ public boolean isCustomResponse(WLResponse response) {<br />
 	if (response == null || response.getResponseJSON() == null) {<br />
 		return false;<br />
 	}<br />
-	if(response.toString().indexOf(&quot;authStatus&quot;) &gt; -1){<br />
+	if(response.toString().indexOf("authStatus") &gt; -1){<br />
 		return true;<br />
 	}<br />
 	else{<br />
@@ -45,7 +45,7 @@ Here we use this method to present our login form.</p>
 <p>[code lang="java"]<br />
 public void handleChallenge(WLResponse response){<br />
 	try {<br />
-		if(response.getResponseJSON().getString(&quot;authStatus&quot;) == &quot;complete&quot;){<br />
+		if(response.getResponseJSON().getString("authStatus") == "complete"){<br />
 			submitSuccess(response);<br />
 		}<br />
 		else {<br />
@@ -66,9 +66,9 @@ public void submitLogin(int resultCode, String userName, String password, boolea
 		submitFailure(cachedResponse);<br />
 	} else {<br />
 		HashMap&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();<br />
-		params.put(&quot;username&quot;, userName);<br />
-		params.put(&quot;password&quot;, password);<br />
-		submitLoginForm(&quot;/my_custom_auth_request_url&quot;, params, null, 0, &quot;post&quot;);<br />
+		params.put("username", userName);<br />
+		params.put("password", password);<br />
+		submitLoginForm("/my_custom_auth_request_url", params, null, 0, "post");<br />
 	}<br />
 }<br />
 [/code]</p>
@@ -84,7 +84,7 @@ invokeBtn = (Button) findViewById(R.id.invoke);<br />
 invokeBtn.setOnClickListener(new View.OnClickListener() {<br />
 	@Override<br />
 	public void onClick(View v) {<br />
-		WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;DummyAdapter&quot;, &quot;getSecretData&quot;);<br />
+		WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");<br />
 		WLRequestOptions options = new WLRequestOptions();<br />
 		options.setTimeout(30000);<br />
 		client.invokeProcedure(invocationData, new MyResponseListener(), options);<br />

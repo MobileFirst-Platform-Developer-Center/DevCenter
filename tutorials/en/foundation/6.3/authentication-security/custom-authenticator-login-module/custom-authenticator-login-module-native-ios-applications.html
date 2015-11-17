@@ -37,10 +37,10 @@ We will implement some of the <em>ChallengeHandler</em> methods to respond to th
 //...<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
     if(response &amp;&amp; [response getResponseJson]){<br />
-        if ([[response getResponseJson] objectForKey:@&quot;authStatus&quot;]) {<br />
-            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@&quot;authStatus&quot;];<br />
+        if ([[response getResponseJson] objectForKey:@"authStatus"]) {<br />
+            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@"authStatus"];<br />
             	//return if auth is required<br />
-return ([authRequired compare:@&quot;required&quot;] == NSOrderedSame);<br />
+return ([authRequired compare:@"required"] == NSOrderedSame);<br />
         }<br />
     }<br />
     return false;<br />
@@ -52,8 +52,8 @@ return ([authRequired compare:@&quot;required&quot;] == NSOrderedSame);<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
-    NSLog(@&quot;Inside handleChallenge - need to show form on the screen&quot;);<br />
-    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@&quot;LoginViewController&quot;];<br />
+    NSLog(@"Inside handleChallenge - need to show form on the screen");<br />
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];<br />
     loginController.challengeHandler = self;<br />
     [self.vc.navigationController pushViewController:loginController animated:YES];<br />
 }<br />
@@ -65,12 +65,12 @@ You need to call <em>submitSuccess</em> to inform the framework that the authent
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) onSuccess:(WLResponse *)response {<br />
-    NSLog(@&quot;inside challenge success&quot;);<br />
+    NSLog(@"inside challenge success");<br />
     [self.vc.navigationController popViewControllerAnimated:YES];<br />
     [self submitSuccess:response];<br />
 }</p>
 <p>-(void) onFailure:(WLFailResponse *)response {<br />
-    NSLog(@&quot;inside challenge failure&quot;);<br />
+    NSLog(@"inside challenge failure");<br />
     [self submitFailure:response];<br />
 }<br />
 [/code]</p>
@@ -80,11 +80,11 @@ You need to call <em>submitSuccess</em> to inform the framework that the authent
 //***<br />
 - (IBAction)login:(id)sender {<br />
     [self.challengeHandler<br />
-         submitLoginForm:@&quot;/my_custom_auth_request_url&quot;<br />
-         requestParameters:@{@&quot;username&quot;: self.username.text, @&quot;password&quot;: self.password.text}<br />
+         submitLoginForm:@"/my_custom_auth_request_url"<br />
+         requestParameters:@{@"username": self.username.text, @"password": self.password.text}<br />
          requestHeaders:nil<br />
          requestTimeoutInMilliSeconds:0<br />
-         requestMethod:@&quot;POST&quot;];<br />
+         requestMethod:@"POST"];<br />
 }<br />
 [/code]</p>
 <h2>Sample application</h2>

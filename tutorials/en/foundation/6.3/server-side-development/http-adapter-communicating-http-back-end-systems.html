@@ -33,14 +33,14 @@ You can use either the <strong>Design</strong> or <strong>Source</strong> editor
 </ul>
 <p>Declare the required procedures below the connectivity element.</p>
 <p>[code lang="xml"]<br />
-&lt;wl:adapter name=&quot;HTTPAdapter&quot;<br />
-	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br />
-	xmlns:wl=&quot;http://www.ibm.com/mfp/integration&quot;<br />
-	xmlns:http=&quot;http://www.ibm.com/mfp/integration/http&quot;&gt;</p>
+&lt;wl:adapter name="HTTPAdapter"<br />
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br />
+	xmlns:wl="http://www.ibm.com/mfp/integration"<br />
+	xmlns:http="http://www.ibm.com/mfp/integration/http"&gt;</p>
 <p>	&lt;displayName&gt;HTTPAdapter&lt;/displayName&gt;<br />
 	&lt;description&gt;HTTPAdapter&lt;/description&gt;<br />
 	&lt;connectivity&gt;<br />
-		&lt;connectionPolicy xsi:type=&quot;http:HTTPConnectionPolicyType&quot;&gt;<br />
+		&lt;connectionPolicy xsi:type="http:HTTPConnectionPolicyType"&gt;<br />
 			&lt;protocol&gt;http&lt;/protocol&gt;<br />
 			&lt;domain&gt;rss.cnn.com&lt;/domain&gt;<br />
 			&lt;port&gt;80&lt;/port&gt;<br />
@@ -53,8 +53,8 @@ You can use either the <strong>Design</strong> or <strong>Source</strong> editor
 			--&gt;<br />
 		&lt;/connectionPolicy&gt;<br />
 	&lt;/connectivity&gt;</p>
-<p>	&lt;procedure name=&quot;getStories&quot;/&gt;</p>
-<p>	&lt;procedure name=&quot;getStoriesFiltered&quot;/&gt;</p>
+<p>	&lt;procedure name="getStories"/&gt;</p>
+<p>	&lt;procedure name="getStoriesFiltered"/&gt;</p>
 <p>&lt;/wl:adapter&gt;<br />
 [/code]</p>
 <h2>JavaScript implementation</h2>
@@ -79,7 +79,7 @@ function getFeeds() {<br />
 	var input = {<br />
 	    method : 'get',<br />
 	    returnedContentType : 'xml',<br />
-	    path : &quot;rss.xml&quot;<br />
+	    path : "rss.xml"<br />
 	};</p>
 <p>	return WL.Server.invokeHttp(input);<br />
 }<br />
@@ -105,7 +105,7 @@ function getFeedsFiltered() {</p>
 <p>	var input = {<br />
 	    method : 'get',<br />
 	    returnedContentType : 'xml',<br />
-	    path : &quot;rss.xml&quot;,<br />
+	    path : "rss.xml",<br />
 	    transformation : {<br />
 		    type : 'xslFile',<br />
 		    xslFile : 'filtered.xsl'<br />
@@ -123,9 +123,9 @@ Click <strong>Project > Properties > Builders</strong> and clear <strong>JavaScr
 <p>Use JavaScript to create a SOAP Envelope. It is possible to insert JavaScript code and variables into SOAP XML. Such additional code is evaluated at run time.</p>
 <p>[code lang="javascript"]<br />
 var request =<br />
-	&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;<br />
+	&lt;soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;<br />
 		&lt;soap:Body&gt;<br />
-			&lt;CelsiusToFahrenheit xmlns=&quot;http://www.w3schools.com/webservices/&quot;&gt;<br />
+			&lt;CelsiusToFahrenheit xmlns="http://www.w3schools.com/webservices/"&gt;<br />
 				&lt;Celsius&gt;{celsiusTemp}&lt;/Celsius&gt;<br />
 			&lt;/CelsiusToFahrenheit&gt;<br />
 		&lt;/soap:Body&gt;<br />

@@ -89,8 +89,8 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
 <p>In a new class, <strong>WebViewOverlayPlugin.java</strong>, the actions the plug-in supports are declared.</p>
 <p>[code lang="java"]<br />
 public class WebViewOverlayPlugin extends CordovaPlugin {<br />
-    private final String ACTION_OPEN_URL = &quot;open&quot;;<br />
-    private final String ACTION_CLOSE_WEBVIEWOVERLAY = &quot;close&quot;;<br />
+    private final String ACTION_OPEN_URL = "open";<br />
+    private final String ACTION_CLOSE_WEBVIEWOVERLAY = "close";<br />
     …<br />
 [/code]</p>
 <p><br clear="all" /><br />
@@ -104,7 +104,7 @@ if (action.equals(ACTION_OPEN_URL)) {<br />
 IncludeExternalPages.thisapp.runOnUiThread(new Runnable() {<br />
 public void run() {<br />
 IncludeExternalPages.clearWebViewOverlayHistory();<br />
-IncludeExternalPages.loadWebViewOverlay(&quot;http://m.ibm.com/&quot;);<br />
+IncludeExternalPages.loadWebViewOverlay("http://m.ibm.com/");<br />
 IncludeExternalPages.setWebViewOverlayVisibility(View.VISIBLE);<br />
 IncludeExternalPages.requestWebViewOverlayFocus();<br />
 IncludeExternalPages.clearWebViewOverlayHistory();<br />
@@ -122,7 +122,7 @@ public class WebViewOverlayPlugin extends CordovaPlugin {<br />
     } else if (action.equals(ACTION_CLOSE_WEBVIEWOVERLAY)) {<br />
         IncludeExternalPages.thisapp.runOnUiThread(new Runnable() {<br />
             public void run() {<br />
-                IncludeExternalPages.loadWebViewOverlayContent(&quot;&quot;);<br />
+                IncludeExternalPages.loadWebViewOverlayContent("");<br />
                 IncludeExternalPages.setWebViewOverlayVisibility(View.INVISIBLE);<br />
                 IncludeExternalPages.clearWebViewOverlayHistory();<br />
             }<br />
@@ -150,21 +150,21 @@ The clicked tab ID is analyzed and either shows or hides the <strong>webViewOver
 Loading external content can take time, so adding a Busy Indicator to improve the user experience should be considered.</p>
 <p>[code lang="javascript"]<br />
 function tabClicked(id){<br />
-    WL.Logger.debug(&quot;tabClicked &gt;&gt; id :: &quot; + id);<br />
-    $(&quot;.tab&quot;).addClass('hidden');<br />
-    if (id==&quot;3&quot;){<br />
+    WL.Logger.debug("tabClicked &gt;&gt; id :: " + id);<br />
+    $(".tab").addClass('hidden');<br />
+    if (id=="3"){<br />
         openWebViewOverlay();<br />
     } else {<br />
-        $(&quot;#tab&quot; + id).removeClass('hidden');<br />
+        $("#tab" + id).removeClass('hidden');<br />
         closeWebViewOverlay();<br />
     }<br />
 }</p>
 <p>function openWebViewOverlay(){<br />
-    WL.Logger.debug(&quot;openWebViewOverlay&quot;);<br />
+    WL.Logger.debug("openWebViewOverlay");<br />
     window.webViewOverlay.open();<br />
 }</p>
 <p>function closeWebViewOverlay(){<br />
-    WL.Logger.debug(&quot;closeWebViewOverlay&quot;);<br />
+    WL.Logger.debug("closeWebViewOverlay");<br />
     window.webViewOverlay.close();<br />
 }<br />
 [/code]</p>

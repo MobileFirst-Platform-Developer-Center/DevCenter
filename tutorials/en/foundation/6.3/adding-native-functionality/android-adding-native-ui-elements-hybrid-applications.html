@@ -40,16 +40,16 @@ startAppBtn = (Button) findViewById(R.id.StartApp);[/code]</p>
 });[/code]</p>
 <p>The text view and the button are also added to the activity layout file:<br />
 [code lang="xml"]&lt;TextView<br />
-        android:layout_width=&quot;wrap_content&quot;<br />
-        android:layout_height=&quot;wrap_content&quot;<br />
-        android:text=&quot;@string/InitiativeActivityText&quot; /&gt;</p>
+        android:layout_width="wrap_content"<br />
+        android:layout_height="wrap_content"<br />
+        android:text="@string/InitiativeActivityText" /&gt;</p>
 <p>&lt;Button<br />
-    	android:id=&quot;@+id/StartApp&quot;<br />
-        android:layout_width=&quot;wrap_content&quot;<br />
-        android:layout_height=&quot;wrap_content&quot;<br />
-        android:layout_centerHorizontal=&quot;true&quot;<br />
-        android:layout_marginTop=&quot;150dp&quot;<br />
-        android:text=&quot;@string/InitiativeButtonText&quot; /&gt;[/code]</p>
+    	android:id="@+id/StartApp"<br />
+        android:layout_width="wrap_content"<br />
+        android:layout_height="wrap_content"<br />
+        android:layout_centerHorizontal="true"<br />
+        android:layout_marginTop="150dp"<br />
+        android:text="@string/InitiativeButtonText" /&gt;[/code]</p>
 <p>It is also required to add an Intent to the <code>MainActivity</code> before the call to the <span class="inline-code">initializeWebFramework</span> method. The intent loads the newly created activity instead of opening the default MobileFirst splash screen.</p>
 <p>[code lang="java"]WL.createInstance(this);</p>
 <p>Intent intent = new Intent(this, InitiativeActivity.class);<br />
@@ -68,7 +68,7 @@ You can use this feature to trigger native code to be run in the background, to 
 <p>}[/code]</p>
 <p>The <span class="inline-code">WLActionReceiver</span> protocol requires an <span class="inline-code">onActionReceived</span> method in which the action name can be checked for and perform any native code that the action needs:<br />
 [code lang="java"]public void onActionReceived(String action, JSONObject data){<br />
-	if (action.equals(&quot;doSomething&quot;)){<br />
+	if (action.equals("doSomething")){<br />
 		// Write your code here...<br />
 	}<br />
 }[/code]</p>
@@ -81,21 +81,21 @@ You can use this feature to receive responses from a native method, notify the w
 <h3>Step 1</h3>
 <p>In Java, the following API is used:<br />
 [code lang="java"]JSONObject data = new JSONObject();<br />
-	data.put(&quot;someProperty&quot;, 12345);<br />
-	WL.getInstance().sendActionToJS(&quot;doSomething&quot;, data);[/code]</p>
+	data.put("someProperty", 12345);<br />
+	WL.getInstance().sendActionToJS("doSomething", data);[/code]</p>
 <p>The <span class="inline-code">doSomething</span> parameter is an arbitrary action name to be used on the JavaScript side and the second parameter is an <span class="inline-code">JSONObject</span> instance that contains any data.</p>
 <h3>Step 2</h3>
 <p>A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
 <p>[code lang="js"]function actionReceiver(received){<br />
-  if (received.action == &quot;doSomething&quot; &amp;&amp; received.data.someProperty == &quot;12345&quot;){<br />
+  if (received.action == "doSomething" &amp;&amp; received.data.someProperty == "12345"){<br />
     //perform required actions, e.g., update web user interface<br />
   }<br />
 }[/code]</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function handles those actions as early as possible.</p>
-<p>[code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, actionReceiver);[/code]</p>
+<p>[code lang="js"]WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);[/code]</p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-[code lang="js"]WL.App.removeActionReceiver(&quot;MyActionReceiverId&quot;);[/code]</p>
+[code lang="js"]WL.App.removeActionReceiver("MyActionReceiverId");[/code]</p>
 <h2 id="sendSample">SendAction sample</h2>
 <p><img src="{{ site.baseurl }}/assets/backup/07_09_sendaction.png"/></p>
 <h3>Overview</h3>
@@ -113,20 +113,20 @@ This sample includes an additional <span class="inline-code">FragmentActivity</s
 </ul>
 <p>[code lang="html"]&lt;p&gt;This is a MobileFirst WebView.&lt;/p&gt;<br />
 &lt;p&gt;Enter a valid address (requires Internet connection):&lt;br/&gt;<br />
-    	&lt;input type=&quot;text&quot; name=&quot;address&quot; id=&quot;address&quot;/&gt;<br />
-&lt;input type=&quot;button&quot; value=&quot;Display&quot; id=&quot;displayBtn&quot;/&gt;<br />
+    	&lt;input type="text" name="address" id="address"/&gt;<br />
+&lt;input type="button" value="Display" id="displayBtn"/&gt;<br />
  &lt;/p&gt;<br />
- &lt;p id=&quot;errorMsg&quot; style=&quot;color:red;&quot;&gt;&lt;/p&gt;[/code]</p>
+ &lt;p id="errorMsg" style="color:red;"&gt;&lt;/p&gt;[/code]</p>
 <h3>JavaScript</h3>
 <p>When the button is clicked, the <span class="inline-code">sendActionToNative</span> method is called to send the address to the native code.<br />
 [code lang="js"]$('#displayBtn').on('click', function(){<br />
 	$('#errorMsg').empty();<br />
-	WL.App.sendActionToNative(&quot;displayAddress&quot;,<br />
+	WL.App.sendActionToNative("displayAddress",<br />
 				{ address: $('#address').val()}<br />
 		);<br />
 	});[/code]</p>
 <p>The code also registers an action receiver to display potential error messages from the native code.<br />
-    [code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, function actionReceiver(received){<br />
+    [code lang="js"]WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received){<br />
 		if(received.action == 'displayError'){<br />
 			$('#errorMsg').html(received.data.errorReason);<br />
 		}<br />
@@ -144,14 +144,14 @@ Before using this new class, call the <span class="inline-code">addActionReceive
 	}[/code]</p>
 <p>The <span class="inline-code">ActionReceiver</span> class implements the <span class="inline-code">onActionReceived</span> method. This  method is used to receive the address that was passed in the JavaScript code.</p>
 <p>[code lang="java"]public void onActionReceived(String action, JSONObject data){<br />
-	if (action.equals(&quot;displayAddress&quot;)){<br />
+	if (action.equals("displayAddress")){<br />
 		try {<br />
-			mAddress = data.getString(&quot;address&quot;);<br />
+			mAddress = data.getString("address");<br />
 		} catch (JSONException e) {<br />
 			e.printStackTrace();<br />
 		}</p>
 <p>		Intent intent = new Intent(parentActivity,DisplayMap.class);<br />
-		intent.putExtra(&quot;RECEIVED_ADDRESS&quot;, mAddress);<br />
+		intent.putExtra("RECEIVED_ADDRESS", mAddress);<br />
 		parentActivity.startActivity(intent);<br />
 	}<br />
 }[/code]</p>

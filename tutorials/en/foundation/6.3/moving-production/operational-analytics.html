@@ -67,21 +67,21 @@ relevantTo: [ios,android,windowsphone8,hybrid]
 <p>The following APIs are available to create client logs that are then forwarded to the MobileFirst Operational Analytics where they can be searched and downloaded.</p>
 <p>[code lang="javascript"]<br />
 // Set the log level to trace so all logs are captured<br />
-WL.Logger.config({&quot;level&quot;: &quot;TRACE&quot;});</p>
+WL.Logger.config({"level": "TRACE"});</p>
 <p>// Create a client side log that is persisted locally until sent to the server<br />
-WL.Logger.trace(&quot;Create a client log at the TRACE level.&quot;);<br />
-WL.Logger.debug(&quot;Create a client log at the DEBUG level.&quot;);<br />
-WL.Logger.info(&quot;Create a client log at the INFO level.&quot;);<br />
-WL.Logger.warn(&quot;Create a client log at the WARN level.&quot;);<br />
-WL.Logger.error(&quot;Create a client log at the ERROR level.&quot;);<br />
-WL.Logger.fatal(&quot;Create a client log at the FATAL level.&quot;);[/code]</p>
+WL.Logger.trace("Create a client log at the TRACE level.");<br />
+WL.Logger.debug("Create a client log at the DEBUG level.");<br />
+WL.Logger.info("Create a client log at the INFO level.");<br />
+WL.Logger.warn("Create a client log at the WARN level.");<br />
+WL.Logger.error("Create a client log at the ERROR level.");<br />
+WL.Logger.fatal("Create a client log at the FATAL level.");[/code]</p>
 <h2 id="analyticsLogs">Analytics Logs</h2>
 <p>Client-side logs are captured based on the logging level that is set on the client. If you want to create analytics logs that are always captured regardless of the logging level, you can use the <code>WL.Analytics</code> API.</p>
 <p>[code lang="javascript"]<br />
 // Create an analytics log message<br />
-WL.Analytics.log(&quot;Analytics log message&quot;);</p>
+WL.Analytics.log("Analytics log message");</p>
 <p>// Create a custom activity<br />
-WL.Analytics.log({_activity: &quot;customActivity&quot;});[/code]</p>
+WL.Analytics.log({_activity: "customActivity"});[/code]</p>
 <h2>Sending data</h2>
 <p>Logs that are captured by the client-side logging APIs and the <code>WL.Analytics</code> APIs are sent to the server automatically upon a successful server connection or a successful adapter call.</p>
 <p>[code lang="javascript"]</p>

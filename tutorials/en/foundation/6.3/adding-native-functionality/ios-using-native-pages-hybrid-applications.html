@@ -27,7 +27,7 @@ relevantTo: [hybrid]
 </ul>
 <p>To handle the callback function:</p>
 <p>[code lang="js"]function backFromNativePage(data){<br />
-	alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
+	alert("Received phone number is: " + data.phoneNumber);<br />
 }[/code]</p>
 <ul>
 <li><span class="inline-code">backFromNativePage(data)</span>: After the native closes, it can pass data back to the web part of an application.</li>
@@ -42,7 +42,7 @@ Placing the .m and .h files only in the <span class="inline-code">iphone\native\
 <h4>Step 2</h4>
 <p>To retrieve custom data parameters that are passed from the web view, the <span class="inline-code">setDataFromWebView:(NSDictionary*)data</span> method should be used:</p>
 <p>[code lang="obj-c"]-(void)setDataFromWebView:(NSDictionary*)data{<br />
-    self.nameParam = (NSString*)[data valueForKey:@&quot;nameParam&quot;];<br />
+    self.nameParam = (NSString*)[data valueForKey:@"nameParam"];<br />
 }[/code]</p>
 <h2>Returning control to the web view</h2>
 <p>When the native page switches back to the web view, a <span class="inline-code">[NativePage showWebView:]</span> method should be called.<br />
@@ -50,13 +50,13 @@ To pass data back to the web view can be done by using the <span class="inline-c
 <h4>Objective-C:</h4>
 <p>[code lang="obj-c"]-(IBAction)returnClicked:(id)sender{<br />
     NSString *phone = [phoneNumber text];<br />
-    NSDictionary *returnedData = [NSDictionary dictionaryWithObject:phone forKey:@&quot;phoneNumber&quot;];<br />
+    NSDictionary *returnedData = [NSDictionary dictionaryWithObject:phone forKey:@"phoneNumber"];<br />
     [NativePage showWebView:returnedData];<br />
 }[/code]</p>
 <p><br clear="all" /></p>
 <h4>JavaScript:</h4>
 <p>[code lang="js"]function backFromNativePage(data){<br />
-    alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
+    alert("Received phone number is: " + data.phoneNumber);<br />
 }[/code]</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingNativePagesInHybridAppsProject.zip">Click to download</a> the Studio project.</p>

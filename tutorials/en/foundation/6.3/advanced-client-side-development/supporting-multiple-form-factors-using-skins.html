@@ -31,9 +31,9 @@ It determines which skin to load.<br />
 The default <em>skinLoader.js</em> contains examples of code.</p>
 <p>[code lang="javascript"]<br />
 function getSkinName() {<br />
-	var skinName = &quot;default&quot;;<br />
-	if (device.version == &quot;2.2&quot; || device.version == &quot;2.1&quot;) {<br />
-		skinName = &quot;android.HTML5&quot;;<br />
+	var skinName = "default";<br />
+	if (device.version == "2.2" || device.version == "2.1") {<br />
+		skinName = "android.HTML5";<br />
 	}<br />
 	return skinName;<br />
 }<br />
@@ -44,27 +44,27 @@ function getSkinName() {<br />
 Registration determines the ordering of hierarchy between the common folder, environment, and skin.<br />
 If you remove a skin from the project, <em>application-decsriptor.xml</em> must be manually modified.</p>
 <p>[code lang="xml"]<br />
-    &lt;android version=&quot;1.0&quot;&gt;<br />
+    &lt;android version="1.0"&gt;<br />
         &lt;skins&gt;<br />
-            &lt;skin name=&quot;default&quot;&gt;<br />
-                &lt;folder name=&quot;common&quot;/&gt;<br />
-                &lt;folder name=&quot;android&quot;/&gt;<br />
+            &lt;skin name="default"&gt;<br />
+                &lt;folder name="common"/&gt;<br />
+                &lt;folder name="android"/&gt;<br />
             &lt;/skin&gt;<br />
-            &lt;skin name=&quot;android.tablet&quot;&gt;<br />
-                &lt;folder name=&quot;common&quot;/&gt;<br />
-                &lt;folder name=&quot;android&quot;/&gt;<br />
-                &lt;folder name=&quot;android.tablet&quot;/&gt;<br />
+            &lt;skin name="android.tablet"&gt;<br />
+                &lt;folder name="common"/&gt;<br />
+                &lt;folder name="android"/&gt;<br />
+                &lt;folder name="android.tablet"/&gt;<br />
             &lt;/skin&gt;<br />
-            &lt;skin name=&quot;android.phone&quot;&gt;<br />
-                &lt;folder name=&quot;common&quot;/&gt;<br />
-                &lt;folder name=&quot;android&quot;/&gt;<br />
-                &lt;folder name=&quot;android.phone&quot;/&gt;<br />
+            &lt;skin name="android.phone"&gt;<br />
+                &lt;folder name="common"/&gt;<br />
+                &lt;folder name="android"/&gt;<br />
+                &lt;folder name="android.phone"/&gt;<br />
             &lt;/skin&gt;<br />
         &lt;/skins&gt;<br />
-        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
+        &lt;worklightSettings include="false"/&gt;<br />
         &lt;security&gt;<br />
-            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
+            &lt;encryptWebResources enabled="false"/&gt;<br />
+            &lt;testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/&gt;<br />
             &lt;publicSigningKey&gt;Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.&lt;/publicSigningKey&gt;<br />
             &lt;packageName&gt;Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in AndroidManifest.xml file.&lt;/packageName&gt;<br />
         &lt;/security&gt;<br />

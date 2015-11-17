@@ -23,7 +23,7 @@ Remember to add this Activity to the <span class="inline-code">AndroidManifest.x
 [code lang="java"]<br />
 public boolean isCustomResponse(WLResponse response) {<br />
 	if (response == null || response.getResponseText() == null ||<br />
-			response.getResponseText().indexOf(&quot;j_security_check&quot;) == -1) {<br />
+			response.getResponseText().indexOf("j_security_check") == -1) {<br />
 		return false;<br />
 	}<br />
 	return true;<br />
@@ -51,9 +51,9 @@ public void submitLogin(int resultCode, String userName, String password, boolea
 		submitFailure(cachedResponse);<br />
 	} else {<br />
 		HashMap&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();<br />
-		params.put(&quot;j_username&quot;, userName);<br />
-		params.put(&quot;j_password&quot;, password);<br />
-		submitLoginForm(&quot;/j_security_check&quot;, params, null, 0, &quot;post&quot;);<br />
+		params.put("j_username", userName);<br />
+		params.put("j_password", password);<br />
+		submitLoginForm("/j_security_check", params, null, 0, "post");<br />
 	}<br />
 }<br />
 [/code]</p>
@@ -70,8 +70,8 @@ client.registerChallengeHandler(challengeHandler);</p>
 invokeBtn.setOnClickListener(new View.OnClickListener() {</p>
 <p>	@Override<br />
 	public void onClick(View v) {<br />
-		//setMainText(&quot;Invoking...&quot;);<br />
-		WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;DummyAdapter&quot;, &quot;getSecretData&quot;);<br />
+		//setMainText("Invoking...");<br />
+		WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");<br />
 		WLRequestOptions options = new WLRequestOptions();<br />
 		options.setTimeout(30000);<br />
 		client.invokeProcedure(invocationData, new MyResponseListener(), options);<br />

@@ -118,10 +118,10 @@ Step 2: Configuring <code>authenticationConfig.xml</code><br />
 Find the <code>authenticationConfig.xml</code> file in for your application, located in: <code>{WAS_HOME}/profiles/{your_profile}/installedApps/{your_node}/{MFP_EAR}/{MFP_WAR}/WEB-INF/classes/conf</code> (if you are in the development environment, this is located in <code>{MFP_Porject_Path}/server/conf</code>)</p>
 <p>Uncomment the realm:<br />
 [code lang="xml"] &lt;!-- For websphere --&gt;<br />
-&lt;realm name=&quot;WASLTPARealm&quot; loginModule=&quot;WASLTPAModule&quot;&gt;<br />
+&lt;realm name="WASLTPARealm" loginModule="WASLTPAModule"&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.WebSphereFormBasedAuthenticator&lt;/className&gt;<br />
-   &lt;parameter name=&quot;login-page&quot; value=&quot;/login.html&quot;/&gt;<br />
-   &lt;parameter name=&quot;error-page&quot; value=&quot;/loginError.html&quot;/&gt;<br />
+   &lt;parameter name="login-page" value="/login.html"/&gt;<br />
+   &lt;parameter name="error-page" value="/loginError.html"/&gt;<br />
 &lt;/realm&gt;<br />
 [/code]<br />
 <br />
@@ -130,7 +130,7 @@ Optionally, you can include the parameters <code>cookie-domain</code>, <code>coo
 In the same <code>authenticationConfig.xml</code>, uncomment the login module:<br />
 [code lang="xml"]<br />
 &lt;!-- For websphere --&gt;<br />
-&lt;loginModule name=&quot;WASLTPAModule&quot;&gt;<br />
+&lt;loginModule name="WASLTPAModule"&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.WebSphereLoginModule&lt;/className&gt;<br />
 &lt;/loginModule&gt;<br />
 [/code]<br />
@@ -144,13 +144,13 @@ Add security test to the <code>authenticationConfig.xml</code> as appropriate.</
 <p>[code lang="xml"]<br />
 &lt;!-- For websphere --&gt;<br />
 &lt;securityTest&gt;<br />
-   &lt;webSecurityTest name=&quot;wasWebSecurity&quot;&gt;<br />
-      &lt;testUser real=&quot;WASLTPARealm&quot;/&gt;<br />
+   &lt;webSecurityTest name="wasWebSecurity"&gt;<br />
+      &lt;testUser real="WASLTPARealm"/&gt;<br />
    &lt;/webSecurityTest&gt;</p>
-<p>   &lt;mobileSecurityTest name=&quot;WAS-securityTest&quot;&gt;<br />
+<p>   &lt;mobileSecurityTest name="WAS-securityTest"&gt;<br />
       &lt;testAppAuthenticity/&gt;<br />
-      &lt;testDeviceId provisioningType=&quot;none&quot;/&gt;<br />
-      &lt;testUser realm=&quot;WASLTPARealm&quot;/&gt;<br />
+      &lt;testDeviceId provisioningType="none"/&gt;<br />
+      &lt;testUser realm="WASLTPARealm"/&gt;<br />
    &lt;/mobileSecurityTest&gt;<br />
 &lt;/securityTest&gt;<br />
 [/code]<br /></p>
@@ -163,10 +163,10 @@ If you decide to create your own <code>login.html</code> make sure the form cont
 &lt;html&gt;<br />
    &lt;head&gt;&lt;/head&gt;<br />
    &lt;body&gt;<br />
-      &lt;form action=&quot;j_security_check&quot; method=&quot;post&quot;&gt;<br />
-      Username: &lt;input type=&quot;text&quot; name=&quot;j_username&quot; size=&quot;20&quot;&gt;&lt;br&gt;<br />
-      Password: &lt;input type=&quot;password&quot; name=&quot;j_password&quot; size=&quot;20&quot;&gt;&lt;br&gt;<br />
-      &lt;input type=&quot;submit&quot; value=&quot;Login&quot;&gt;<br />
+      &lt;form action="j_security_check" method="post"&gt;<br />
+      Username: &lt;input type="text" name="j_username" size="20"&gt;&lt;br&gt;<br />
+      Password: &lt;input type="password" name="j_password" size="20"&gt;&lt;br&gt;<br />
+      &lt;input type="submit" value="Login"&gt;<br />
       &lt;/form&gt;<br />
    &lt;/body&gt;<br />
 &lt;/html&gt;<br />
@@ -191,23 +191,23 @@ Locate the <code>web.xml</code> file: <code>{WAS_HOME}/profiles/{your profile}/i
 Inside the root tag, add the tags as shown in the code sample below. These tags pass to WebSphere Application Server the configuration that the WAR file expects.<br />
 Note: Tailor this code block to fit your needs. This is just one example of setting the configuration.<br />
 [code lang="xml"]<br />
-&lt;security-constraint id=&quot;SecurityConstraint_1&quot;&gt;<br />
-   &lt;web-resource-collection id=&quot;WebResourceCollection_1&quot;&gt;<br />
+&lt;security-constraint id="SecurityConstraint_1"&gt;<br />
+   &lt;web-resource-collection id="WebResourceCollection_1"&gt;<br />
       &lt;web-resource-name&gt;Servlet&lt;/web-resource-name&gt;<br />
       &lt;description&gt;Protection area for Servlet.&lt;/description&gt;<br />
       &lt;url-pattern&gt;/*&lt;/url-pattern&gt;<br />
       &lt;http-method&gt;GET&lt;/http-method&gt;<br />
       &lt;http-method&gt;POST&lt;/http-method&gt;<br />
    &lt;/web-resource-collection&gt;<br />
-   &lt;auth-constraint id=&quot;AuthConstraint_1&quot;&gt;<br />
+   &lt;auth-constraint id="AuthConstraint_1"&gt;<br />
       &lt;description&gt;Servlet Security:+:All Authenticated users for Servlet.&lt;/description&gt;<br />
       &lt;role-name&gt;Role 3&lt;/role-name&gt;<br />
    &lt;/auth-constraint&gt;<br />
-   &lt;user-data-constraint id=&quot;UserDataConstraint_1&quot;&gt;<br />
+   &lt;user-data-constraint id="UserDataConstraint_1"&gt;<br />
       &lt;transport-guarantee&gt;NONE&lt;/transport-guarantee&gt;<br />
    &lt;/user-data-constraint&gt;<br />
 &lt;/security-constraint&gt;</p>
-<p>&lt;security-role id=&quot;SecurityRole_1&quot;&gt;<br />
+<p>&lt;security-role id="SecurityRole_1"&gt;<br />
    &lt;description&gt;All Authenticated Users Role.&lt;/description&gt;<br />
    &lt;role-name&gt;Role 3&lt;/role-name&gt;<br />
 &lt;/security-role&gt;</p>
@@ -227,7 +227,7 @@ Note: Tailor this code block to fit your needs. This is just one example of sett
 <p>[code lang="xml"]<br />
 &lt;!-- Uncomment the next element to protect the Worklight console and the first section in securityTests below. --&gt;<br />
 &lt;staticResources&gt;<br />
-   &lt;resource id=&quot;mobileFirstPlatformConsole&quot; securityTest=&quot;MobileFirstPlatformConsole&quot;&gt;<br />
+   &lt;resource id="mobileFirstPlatformConsole" securityTest="MobileFirstPlatformConsole"&gt;<br />
       &lt;urlPatterns&gt;/console*&lt;/urlPatterns&gt;<br />
    &lt;/resource&gt;<br />
 &lt;/staticResources&gt;<br />
@@ -237,8 +237,8 @@ Note: Tailor this code block to fit your needs. This is just one example of sett
 </ul>
 <p>[code lang="xml"]<br />
 &lt;securityTests&gt;<br />
-   &lt;customSecurityTest name=&quot;WorklightConsole&quot;&gt;<br />
-      &lt;test realm=&quot;WASLTPARealm&quot; isInternalUserID=&quot;true&quot;/&gt;<br />
+   &lt;customSecurityTest name="WorklightConsole"&gt;<br />
+      &lt;test realm="WASLTPARealm" isInternalUserID="true"/&gt;<br />
    &lt;/customSecurityTest&gt;<br />
 &lt;/securityTests&gt;<br />
 [/code]<br /></p>
@@ -246,21 +246,21 @@ Note: Tailor this code block to fit your needs. This is just one example of sett
 <p>Using an existing MobileFirst Platform application from one of the Authentication modules.<br />
 To implement security for an app, follow the same methods as for any other type of realm, and then configure the challenge handler to use your realm:<br />
 [code lang="javascript"]<br />
-var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler(&quot;WASLTPARealm&quot;);<br />
+var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler("WASLTPARealm");<br />
 [/code]<br />
 <br />
 In the <code>applicationDescriptor.xml</code> file, specify the security test that your app must use for the appropriate environments.<br />
 For example:<br />
 [code lang="xml"]<br />
-&lt;common securityTest=&quot;wasWebSecurity&quot;/&gt;<br />
-&lt;android version=&quot;1.0&quot; securityTest=&quot;WAS-securityTest&quot;&gt;<br />
-   &lt;pushSender key= &quot;keyTest&quot; senderId=&quot;senderIdTest&quot;/&gt;<br />
+&lt;common securityTest="wasWebSecurity"/&gt;<br />
+&lt;android version="1.0" securityTest="WAS-securityTest"&gt;<br />
+   &lt;pushSender key= "keyTest" senderId="senderIdTest"/&gt;<br />
 &lt;/android&gt;<br />
-&lt;iphone bundleId=&quot;{IPhone_bundle_Id}&quot; applicationId=&quot;{IPhone_application_Id}&quot; version=&quot;1.0&quot; securityTest=&quot;WAS-securityTest&quot;&gt;<br />
-   &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
+&lt;iphone bundleId="{IPhone_bundle_Id}" applicationId="{IPhone_application_Id}" version="1.0" securityTest="WAS-securityTest"&gt;<br />
+   &lt;worklightSettings include="false"/&gt;<br />
    &lt;security&gt;<br />
-      &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-      &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
+      &lt;encryptWebResources enabled="false"/&gt;<br />
+      &lt;testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/&gt;<br />
    &lt;/security&gt;<br />
 &lt;/iphone&gt;<br />
 [/code]<br />

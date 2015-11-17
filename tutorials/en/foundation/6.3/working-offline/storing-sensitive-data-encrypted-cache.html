@@ -46,7 +46,7 @@ Mobile devices HTML5 web storage support chart:</p>
 <p>[code lang="js"]WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
 function onOpenComplete(status){<br />
     busyIndicator.hide();<br />
-    alert(&quot;Encrypted cache succesfully opened&quot;);<br />
+    alert("Encrypted cache succesfully opened");<br />
 }[/code]</p>
 <p>Note: The application must be able to connect to the MobileFirst Server to create a new encrypted cache.</p>
 <p>A callback function can receive one of the following statuses:</p>
@@ -62,28 +62,28 @@ function onOpenComplete(status){<br />
 <p>[code lang="js"]WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
 function onOpenComplete(status){<br />
     busyIndicator.hide();<br />
-    alert(&quot;Encrypted cache succesfully opened&quot;);<br />
+    alert("Encrypted cache succesfully opened");<br />
 }</p>
 <p>function onOpenError(status){<br />
     busyIndicator.hide();<br />
     switch(status){<br />
         case WL.EncryptedCache.ERROR_KEY_CREATION_IN_PROGRESS:<br />
-            alert(&quot;ERROR: KEY CREATION IN PROGRESS&quot;);<br />
+            alert("ERROR: KEY CREATION IN PROGRESS");<br />
             break;<br />
         case WL.EncryptedCache.ERROR_LOCAL_STORAGE_NOT_SUPPORTED:<br />
-            alert(&quot;ERROR: LOCAL STORAGE NOT SUPPORTED&quot;);<br />
+            alert("ERROR: LOCAL STORAGE NOT SUPPORTED");<br />
             break;<br />
         case WL.EncryptedCache.ERROR_NO_EOC:<br />
-            alert(&quot;ERROR: NO EOC&quot;);<br />
+            alert("ERROR: NO EOC");<br />
             break;<br />
         case WL.EncryptedCache.ERROR_COULD_NOT_GENERATE_KEY:<br />
-            alert(&quot;ERROR: COULD NOT GENERATE KEY&quot;);<br />
+            alert("ERROR: COULD NOT GENERATE KEY");<br />
             break;<br />
         case WL.EncryptedCache.ERROR_CREDENTIALS_MISMATCH:<br />
-            alert(&quot;ERROR: CREDENTIALS MISMATCH&quot;);<br />
+            alert("ERROR: CREDENTIALS MISMATCH");<br />
             break;<br />
         default:<br />
-            alert(&quot;AN ERROR HAS OCCURED. STATUS :: &quot; + status);<br />
+            alert("AN ERROR HAS OCCURED. STATUS :: " + status);<br />
     }<br />
 }[/code]</p>
 <h2>Reading, Writing and Removing data using Encrypted Cache</h2>
@@ -93,31 +93,31 @@ function onOpenComplete(status){<br />
 <h4>Example:</h4>
 <p>[code lang="js"]WL.EncryptedCache.write(key, value, onWriteSuccess, onWriteFailure);<br />
 function onWriteSuccess(status){<br />
-    alert(&quot;Succesfully encrypted into cache.&quot;);<br />
+    alert("Succesfully encrypted into cache.");<br />
 }<br />
 function onWriteFailure(status){<br />
     if (status == WL.EncryptedCache.ERROR_EOC_CLOSED)<br />
-        alert(&quot;Encrypted cache closed, write failed. error code= &quot;+ status);<br />
+        alert("Encrypted cache closed, write failed. error code= "+ status);<br />
 }[/code]</p>
 <p>To read data from the encrypted cache, use the following API:</p>
 <h3><span class="inline-code">WL.EncryptedCache.read(key, onSuccess, onFailure);</span></h3>
 <h4>Example</h4>
 <p>[code lang="js"]WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);<br />
 function onDecryptReadSuccess(value){<br />
-    alert(&quot;Read success. Retrieved value :: &quot; + key + &quot; = &quot; + value);<br />
+    alert("Read success. Retrieved value :: " + key + " = " + value);<br />
 }<br />
 function onDecryptReadFailure(status){<br />
-    alert(&quot;Encrypted cache closed, reading failed&quot;);<br />
+    alert("Encrypted cache closed, reading failed");<br />
 }[/code]</p>
 <p>To remove data from the encrypted cache, use the following API:</p>
 <h3><span class="inline-code">WL.EncryptedCache.remove(key, onSuccess, onFailure);</span></h3>
 <h4>Example:</h4>
 <p>[code lang="js"]WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);<br />
 function onRemoveSuccess(status){<br />
-    alert(&quot;Succesfully removed from cache.&quot;);<br />
+    alert("Succesfully removed from cache.");<br />
 }<br />
 function onRemoveFailure(status){<br />
-    alert(&quot;Encrypted cache closed, remove failed&quot;);<br />
+    alert("Encrypted cache closed, remove failed");<br />
 }[/code]</p>
 <h2>Closing and destroying Encrypted Cache</h2>
 <p>To avoid possible undesired access to Encrypted Cache, close it.<br />
@@ -130,10 +130,10 @@ After an encrypted cache is closed, access to its data is not possible without t
     onDestroyErrorHandler);<br />
 }<br />
 function onDestroyCompleteHandler(status){<br />
-    alert(&quot;Encrypted cache destroyed&quot;);<br />
+    alert("Encrypted cache destroyed");<br />
 }<br />
 function onDestroyErrorHandler(status){<br />
-    alert(&quot;Error destroying Encrypted cache&quot;);<br />
+    alert("Error destroying Encrypted cache");<br />
 }[/code]</p>
 <h2>Changing the encryption key</h2>
 <p>While Encrypted Cache is in the open state, it is possible to change the encryption key.<br />

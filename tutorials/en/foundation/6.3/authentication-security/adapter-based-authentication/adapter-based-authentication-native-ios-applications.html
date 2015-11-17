@@ -38,11 +38,11 @@ The <span class="inline-code">isCustomResponse</span> method of the challenge ha
 @implementation MyChallengeHandler<br />
 //...<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
-    NSLog(@&quot;Inside isCustomResponse&quot;);<br />
+    NSLog(@"Inside isCustomResponse");<br />
     if(response &amp;&amp; [response getResponseJson]){<br />
-        if ([[response getResponseJson] objectForKey:@&quot;authRequired&quot;]) {<br />
-            NSLog(@&quot;Detected adapter auth - return true&quot;);<br />
-            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@&quot;authRequired&quot;];<br />
+        if ([[response getResponseJson] objectForKey:@"authRequired"]) {<br />
+            NSLog(@"Detected adapter auth - return true");<br />
+            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@"authRequired"];<br />
             return [authRequired boolValue]; //return if auth is required<br />
         }<br />
     }<br />
@@ -56,8 +56,8 @@ If <span class="inline-code">isCustomResponse</span> returns <span class="inline
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
-    NSLog(@&quot;Inside handleChallenge - need to show form on the screen&quot;);<br />
-    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@&quot;LoginViewController&quot;];<br />
+    NSLog(@"Inside handleChallenge - need to show form on the screen");<br />
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];<br />
     loginController.challengeHandler = self;<br />
     [self.vc.navigationController pushViewController:loginController animated:YES];<br />
 }<br />
@@ -70,12 +70,12 @@ You need to call <span class="inline-code">submitSuccess</span> to inform the fr
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) onSuccess:(WLResponse *)response {<br />
-    NSLog(@&quot;inside challenge success&quot;);<br />
+    NSLog(@"inside challenge success");<br />
     [self.vc.navigationController popViewControllerAnimated:YES];<br />
     [self submitSuccess:response];<br />
 }</p>
 <p>-(void) onFailure:(WLFailResponse *)response {<br />
-    NSLog(@&quot;inside challenge failure&quot;);<br />
+    NSLog(@"inside challenge failure");<br />
     [self submitFailure:response];<br />
 }<br />
 [/code]</p>
@@ -86,8 +86,8 @@ In your <span class="inline-code">LoginViewController</span>, when the user clic
 //***<br />
 - (IBAction)login:(id)sender {<br />
     WLProcedureInvocationData *myInvocationData = [[WLProcedureInvocationData alloc]<br />
-initWithAdapterName:@&quot;NativeAdapterBasedAdapter&quot;<br />
-procedureName:@&quot;submitAuthentication&quot;];</p>
+initWithAdapterName:@"NativeAdapterBasedAdapter"<br />
+procedureName:@"submitAuthentication"];</p>
 <p>myInvocationData.parameters = @[self.username.text, self.password.text];<br />
     [self.challengeHandler submitAdapterAuthentication:myInvocationData options:nil];<br />
 }<br />

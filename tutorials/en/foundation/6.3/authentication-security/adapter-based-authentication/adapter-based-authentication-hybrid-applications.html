@@ -20,21 +20,21 @@ This is a continuation of the <a title="Adapter-based authentication" href="http
 When authentication is complete, it does the opposite.</p>
 <h3>AppDiv</h3>
 <p>[code lang="javascript"]<br />
-&lt;div id=&quot;AppDiv&quot;&gt;<br />
-      &lt;input type=&quot;button&quot; id=&quot;getSecretDataButton&quot; value=&quot;Get secret data&quot; onclick=&quot;getSecretData()&quot; /&gt;<br />
-      &lt;input type=&quot;button&quot; class=&quot;appButton&quot; value=&quot;Logout&quot; onclick=&quot;WL.Client.logout('SingleStepAuthRealm', {onSuccess:WL.Client.reloadApp})&quot; /&gt;<br />
-      &lt;div id=&quot;ResponseDiv&quot;&gt;&lt;/div&gt;<br />
+&lt;div id="AppDiv"&gt;<br />
+      &lt;input type="button" id="getSecretDataButton" value="Get secret data" onclick="getSecretData()" /&gt;<br />
+      &lt;input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('SingleStepAuthRealm', {onSuccess:WL.Client.reloadApp})" /&gt;<br />
+      &lt;div id="ResponseDiv"&gt;&lt;/div&gt;<br />
 &lt;/div&gt;<br />
 [/code]</p>
 <p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.<br />
 The <code>ResponseDiv</code> element is used to display the <code>getSecretData</code> response.</p>
 <h3>AuthDiv</h3>
 <p>[code lang="javascript"]<br />
-&lt;div id=&quot;AuthDiv&quot; style=&quot;display:none&quot;&gt;<br />
-    &lt;p id=&quot;AuthInfo&quot;&gt;&lt;/p&gt;<br />
-        &lt;input type=&quot;text&quot; placeholder=&quot;Enter username&quot; id=&quot;AuthUsername&quot;/&gt;&lt;br /&gt;<br />
-        &lt;input type=&quot;password&quot; placeholder=&quot;Enter password&quot; id=&quot;AuthPassword&quot;/&gt;&lt;br /&gt;<br />
-        &lt;input type=&quot;button&quot; class=&quot;formButton&quot; value=&quot;Submit&quot; id=&quot;AuthSubmitButton&quot; /&gt;&lt;input type=&quot;button&quot; class=&quot;formButton&quot; value=&quot;Cancel&quot; id=&quot;AuthCancelButton&quot; /&gt;<br />
+&lt;div id="AuthDiv" style="display:none"&gt;<br />
+    &lt;p id="AuthInfo"&gt;&lt;/p&gt;<br />
+        &lt;input type="text" placeholder="Enter username" id="AuthUsername"/&gt;&lt;br /&gt;<br />
+        &lt;input type="password" placeholder="Enter password" id="AuthPassword"/&gt;&lt;br /&gt;<br />
+        &lt;input type="button" class="formButton" value="Submit" id="AuthSubmitButton" /&gt;&lt;input type="button" class="formButton" value="Cancel" id="AuthCancelButton" /&gt;<br />
 &lt;/div&gt;<br />
 [/code]</p>
 <p><code>AuthInfo</code> displays error messages.<br />
@@ -45,7 +45,7 @@ The <code>AuthDiv</code> element is styled as <code>display:none</code> because 
 <p>Use the <code>WL.Client.createChallengeHandler</code> method to create a challenge handler object.<br />
 Supply a realm name as a parameter.</p>
 <p>[code lang="javascript"]<br />
-var singleStepAuthRealmChallengeHandler = WL.Client.createChallengeHandler(&quot;SingleStepAuthRealm&quot;);<br />
+var singleStepAuthRealmChallengeHandler = WL.Client.createChallengeHandler("SingleStepAuthRealm");<br />
 [/code]</p>
 <p>The <code>isCustomResponse</code> function of the challenge handler is called each time a response is received from the server. That function is used to detect whether the response contains data that is related to this challenge handler.<br />
 The function returns <code>true</code> or <code>false</code>.</p>
@@ -66,15 +66,15 @@ singleStepAuthRealmChallengeHandler.isCustomResponse = function(response) {<br /
 singleStepAuthRealmChallengeHandler.handleChallenge = function(response){<br />
     var authRequired = response.responseJSON.authRequired;</p>
 <p>    if (authRequired == true){<br />
-        $(&quot;#AppDiv&quot;).hide();<br />
-        $(&quot;#AuthDiv&quot;).show();<br />
-        $(&quot;#AuthPassword&quot;).empty();<br />
-        $(&quot;#AuthInfo&quot;).empty();</p>
+        $("#AppDiv").hide();<br />
+        $("#AuthDiv").show();<br />
+        $("#AuthPassword").empty();<br />
+        $("#AuthInfo").empty();</p>
 <p>        if (response.responseJSON.errorMessage)<br />
-            $(&quot;#AuthInfo&quot;).html(response.responseJSON.errorMessage);</p>
+            $("#AuthInfo").html(response.responseJSON.errorMessage);</p>
 <p>    } else if (authRequired == false){<br />
-        $(&quot;#AppDiv&quot;).show();<br />
-        $(&quot;#AuthDiv&quot;).hide();<br />
+        $("#AppDiv").show();<br />
+        $("#AuthDiv").hide();<br />
         singleStepAuthRealmChallengeHandler.submitSuccess();<br />
     }<br />
 };<br />
@@ -90,12 +90,12 @@ If <code>authRequired</code> is <code>false</code>, it shows <code>AppDiv</code>
 <p><strong>* Note: You must attach each of these functions to its object. For example: <code>myChallengeHandler.submitSuccess()</code> </strong></p>
 <p>Clicking the submit button triggers the function that collects the user name and the password from the HTML input fields and submits them to the adapter. Note the use of the <code>submitAdapterAuthentication</code> method.</p>
 <p>[code lang="javascript"]<br />
-$(&quot;#AuthSubmitButton&quot;).bind('click', function () {<br />
-    var username = $(&quot;#AuthUsername&quot;).val();<br />
-    var password = $(&quot;#AuthPassword&quot;).val();</p>
+$("#AuthSubmitButton").bind('click', function () {<br />
+    var username = $("#AuthUsername").val();<br />
+    var password = $("#AuthPassword").val();</p>
 <p>    var invocationData = {<br />
-        adapter : &quot;SingleStepAuthAdapter&quot;,<br />
-        procedure : &quot;submitAuthentication&quot;,<br />
+        adapter : "SingleStepAuthAdapter",<br />
+        procedure : "submitAuthentication",<br />
         parameters : [ username, password ]<br />
     };</p>
 <p>    singleStepAuthRealmChallengeHandler.submitAdapterAuthentication(invocationData, {});<br />

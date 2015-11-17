@@ -51,20 +51,20 @@ relevantTo: [hybrid]
 <p>The UI &amp; UX of the Direct Update process can be fully customized by using simple interfaces.</p>
 <h3>Server-side customization</h3>
 <p>By default, the <span class="inline-code">mobileSecurityTest</span> has Direct Update enabled in <span class="inline-code">perSession</span> mode:</p>
-<p>[code lang="xml"]&lt;mobileSecurityTest name=&quot;mobileTests&quot;&gt;<br />
+<p>[code lang="xml"]&lt;mobileSecurityTest name="mobileTests"&gt;<br />
     &lt;testAppAuthenticity/&gt;<br />
-    &lt;testDeviceId provisioningType=&quot;none&quot; /&gt;<br />
-    &lt;testUser realm=&quot;myMobileLoginForm&quot; /&gt;<br />
-    &lt;testDirectUpdate mode=&quot;perSession&quot; /&gt;<br />
+    &lt;testDeviceId provisioningType="none" /&gt;<br />
+    &lt;testUser realm="myMobileLoginForm" /&gt;<br />
+    &lt;testDirectUpdate mode="perSession" /&gt;<br />
 &lt;/mobileSecurityTest&gt;[/code]</p>
 <p><br clear="all" /><br />
 To Disable Direct Update, change its mode to disabled, and similarly to override it to other modes.<br />
-[code lang="xml"]&lt;testDirectUpdate mode=“disabled&quot; /&gt;[/code]</p>
+[code lang="xml"]&lt;testDirectUpdate mode=“disabled" /&gt;[/code]</p>
 <p><br clear="all" /><br />
 By default, the <span class="inline-code">customSecurityTest</span> does not have any realms.<br />
 To add a Direct Update realm to a custom security test, add a <span class="inline-code">test</span> element with the realm name <span class="inline-code">wl_directUpdateRealm</span> and define the required mode property:</p>
-<p>[code lang="xml"]&lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
-    &lt;test realm=&quot;wl_directUpdateRealm&quot; mode=&quot;perRequest&quot;/&gt;<br />
+<p>[code lang="xml"]&lt;customSecurityTest name="customTests"&gt;<br />
+    &lt;test realm="wl_directUpdateRealm" mode="perRequest"/&gt;<br />
 &lt;/customSecurityTest&gt;[/code]</p>
 <p>For more information, review the “Direct Update as a security realm” user documentation topic.</p>
 <h2 id="internalFunction">Internal function</h2>

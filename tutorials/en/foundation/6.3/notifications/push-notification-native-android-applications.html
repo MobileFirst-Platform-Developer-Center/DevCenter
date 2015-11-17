@@ -42,8 +42,8 @@ relevantTo: [android]
 <li>Your project's number is the <code>senderId</code></li>
 <li>Your Android key is the GCM <code>key</code> (can be generated in <strong>API &amp; Auth > Credentials</strong>)</li>
 </ul>
-<p>[code lang="xml"]&lt;nativeAndroidApp xmlns=&quot;http://www.worklight.com/native-android-descriptor&quot; id=&quot;AndroidNativePush&quot; platformVersion=&quot;6.3.0.00.20141105-0943&quot; securityTest=&quot;MySecurityTest&quot; version=&quot;1.0&quot;&gt;<br />
-	&lt;pushSender key=&quot;SOME-GCM-KEY&quot; senderId=&quot;SOME-GCM-ID&quot;/&gt;<br />
+<p>[code lang="xml"]&lt;nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="AndroidNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0"&gt;<br />
+	&lt;pushSender key="SOME-GCM-KEY" senderId="SOME-GCM-ID"/&gt;<br />
 &lt;/nativeAndroidApp&gt;[/code]
 </li>
 </ul>
@@ -93,40 +93,40 @@ relevantTo: [android]
 <p><img src="{{ site.baseurl }}/assets/backup/wlclient_properties.png"/></p>
 <h3>Modifications to the native Android project</h3>
 <p>Add the following permissions to the AndroidManifest.xml file of your Android project:</p>
-<p>[code lang="xml"]&lt;permission android:name=&quot;com.imf.androidnativepush.permission.C2D_MESSAGE&quot; android:protectionLevel=&quot;signature&quot; /&gt;</p>
-<p> &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot;/&gt;<br />
- &lt;uses-permission android:name=&quot;com.worklight.androidnativepush.permission.C2D_MESSAGE&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;com.google.android.c2dm.permission.RECEIVE&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.GET_ACCOUNTS&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.USE_CREDENTIALS&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;[/code]</p>
+<p>[code lang="xml"]&lt;permission android:name="com.imf.androidnativepush.permission.C2D_MESSAGE" android:protectionLevel="signature" /&gt;</p>
+<p> &lt;uses-permission android:name="android.permission.INTERNET" /&gt;<br />
+ &lt;uses-permission android:name="android.permission.GET_TASKS"/&gt;<br />
+ &lt;uses-permission android:name="com.worklight.androidnativepush.permission.C2D_MESSAGE" /&gt;<br />
+ &lt;uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /&gt;<br />
+ &lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;<br />
+ &lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;<br />
+ &lt;uses-permission android:name="android.permission.USE_CREDENTIALS" /&gt;<br />
+ &lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;<br />
+ &lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/&gt;[/code]</p>
 <p>Add the <code>launchMode</code> attribute to the main <code>AndroidNativePush</code> activity. Set its value to <code>singleTask</code>.</p>
 <p>[code lang="xml"]<br />
 &lt;activity<br />
-    android:name=&quot;com.worklight.androidnativepush.AndroidNativePush&quot;<br />
-    android:label=&quot;@string/app_name&quot;<br />
-    android:theme=&quot;@android:style/Theme.Black.NoTitleBar&quot;<br />
-    android:launchMode=&quot;singleTask&quot;&gt;[/code]</p>
+    android:name="com.worklight.androidnativepush.AndroidNativePush"<br />
+    android:label="@string/app_name"<br />
+    android:theme="@android:style/Theme.Black.NoTitleBar"<br />
+    android:launchMode="singleTask"&gt;[/code]</p>
 <p>Add an intent-filter to the main <code>AndroidNativePush</code> activity for notifications.</p>
 <p>[code lang="xml"]<br />
 &lt;intent-filter&gt;<br />
-   &lt;action android:name=&quot;com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION&quot; /&gt;<br />
-   &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;<br />
+   &lt;action android:name="com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION" /&gt;<br />
+   &lt;category android:name="android.intent.category.DEFAULT" /&gt;<br />
 &lt;/intent-filter&gt;[/code]</p>
 <p>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</p>
 <p>[code lang="xml"]<br />
-&lt;service android:name=&quot;com.worklight.wlclient.push.GCMIntentService&quot; /&gt;<br />
-&lt;receiver android:name=&quot;com.worklight.wlclient.push.WLBroadcastReceiver&quot; android:permission=&quot;com.google.android.c2dm.permission.SEND&quot;&gt;<br />
+&lt;service android:name="com.worklight.wlclient.push.GCMIntentService" /&gt;<br />
+&lt;receiver android:name="com.worklight.wlclient.push.WLBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND"&gt;<br />
    &lt;intent-filter&gt;<br />
-       &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;<br />
-       &lt;category android:name=&quot;com.worklight.androidnativepush&quot; /&gt;<br />
+       &lt;action android:name="com.google.android.c2dm.intent.RECEIVE" /&gt;<br />
+       &lt;category android:name="com.worklight.androidnativepush" /&gt;<br />
    &lt;/intent-filter&gt;<br />
    &lt;intent-filter&gt;<br />
-       &lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;<br />
-       &lt;category android:name=&quot;com.worklight.androidnativepush&quot; /&gt;<br />
+       &lt;action android:name="com.google.android.c2dm.intent.REGISTRATION" /&gt;<br />
+       &lt;category android:name="com.worklight.androidnativepush" /&gt;<br />
    &lt;/intent-filter&gt;<br />
 &lt;/receiver&gt;[/code]</p>
 <h2 id="notificationapiforserver">Notification API: Server side</h2>
@@ -151,13 +151,13 @@ WL.Server.createEventSource({<br />
 <p>[code lang="js"]function submitNotification(userId, notificationText) {<br />
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>    if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }</p>
 <p>    var badgeDigit = 1;<br />
-    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});</p>
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});</p>
 <p>        WL.Server.notifyAllDevices(userSubscription, notification);</p>
 <p>    return {<br />
-        result: &quot;Notification sent to user :: &quot; + userId<br />
+        result: "Notification sent to user :: " + userId<br />
     };<br />
 }[/code]</p>
 <h2 id="notificationAPIClient">Notification API - Client side</h2>
@@ -188,12 +188,12 @@ public void onReadyToSubscribe() {.....}<br />
 </ul>
 <p>Example:</p>
 <p>[code lang="java"]<br />
-WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myAndroid&quot;,&quot;PushAdapter&quot;,&quot;PushEventSource&quot;,this);<br />
+WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);<br />
 [/code]</p>
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
 <p>[code lang="java"]@Override<br />
 public void onReadyToSubscribe() {<br />
-   WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myAndroid&quot;,&quot;PushAdapter&quot;,&quot;PushEventSource&quot;,this);<br />
+   WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);<br />
 }[/code]</p>
 <p><br clear="all" /></p>
 <h4>In the Android activity class, override the methods that define the Android activity life cycle as follows:</h4>
@@ -237,7 +237,7 @@ protected void onDestroy() {<br />
 <p>Example:</p>
 <p>[code lang="java"]<br />
 WLClient client = WLClient.getInstance();<br />
-client.getPush().subscribe(&quot;myAndroid&quot;,new WLPushOptions(), new MyListener(MyListener.MODE_SUBSCRIBE));<br />
+client.getPush().subscribe("myAndroid",new WLPushOptions(), new MyListener(MyListener.MODE_SUBSCRIBE));<br />
 [/code]</p>
 <p>MyListener Implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
@@ -254,7 +254,7 @@ client.getPush().subscribe(&quot;myAndroid&quot;,new WLPushOptions(), new MyList
 <p>Example:</p>
 <p>[code lang="java"]<br />
 WLClient client = WLClient.getInstance();<br />
-client.getPush().unsubscribe(&quot;myAndroid&quot;,new MyListener(MyListener.MODE_UNSUBSCRIBE));<br />
+client.getPush().unsubscribe("myAndroid",new MyListener(MyListener.MODE_UNSUBSCRIBE));<br />
 [/code]</p>
 <p>MyListener Implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
@@ -270,7 +270,7 @@ boolean supported = client.getPush().isPushSupported();<br />
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
 <p>[code lang="java"]<br />
 WLClient client = WLClient.getInstance();<br />
-boolean bIsSubscribed = client.getPush().isSubscribed(&quot;myAndroid&quot;);<br />
+boolean bIsSubscribed = client.getPush().isSubscribed("myAndroid");<br />
 [/code]</p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
@@ -279,13 +279,13 @@ public class MyListener implements WLOnReadyToSubscribeListener, WLResponseListe
 [/code]</p>
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
 <p>[code lang="java"]<br />
-WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myAndroid&quot;, &quot;PushAdapter&quot;,&quot;PushEventSource&quot;, this );<br />
+WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid", "PushAdapter","PushEventSource", this );<br />
 [/code]</p>
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
 <p>[code lang="java"]<br />
 @Override<br />
 public void onReceive(String arg0, String arg1) {<br />
-    AndroidNativePush.updateTextView(&quot;Notification received  &quot; + arg0);<br />
+    AndroidNativePush.updateTextView("Notification received  " + arg0);<br />
 }<br />
 [/code]</p>
 <p>If the application is not running, the notification icon appears on the notification bar at the top of the screen</p>

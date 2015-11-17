@@ -226,38 +226,38 @@ A new http Adapter was added at /Users/CLIUser/CLIexample/projectName/adapters/t
 ~/CLIexample/projectName/adapters/myHttpAdapter $ mfp invoke<br />
 [?] Which adapter do you want to use? myHttpAdapter<br />
 [?] Which procedure do you want to invoke? getStories<br />
-[?] Enter the comma-separated parameters: &quot;world&quot;<br />
+[?] Enter the comma-separated parameters: "world"<br />
 Invoking %s...<br />
 Arguments:<br />
 [<br />
-  &quot;world&quot;<br />
+  "world"<br />
 ]<br />
 Invocation result:<br />
 {<br />
-  &quot;statusCode&quot;: 200,<br />
-  &quot;errors&quot;: [],<br />
-  &quot;isSuccessful&quot;: true,<br />
-  &quot;statusReason&quot;: &quot;OK&quot;,<br />
-  &quot;rss&quot;: {<br />
-    &quot;feedburner&quot;: &quot;http://rssnamespace.org/feedburner/ext/1.0&quot;,<br />
-    &quot;channel&quot;: {<br />
-      &quot;pubDate&quot;: &quot;Thu, 30 Oct 2014 16:30:19 EDT&quot;,<br />
-      &quot;title&quot;: &quot;CNN.com - World&quot;,</p>
+  "statusCode": 200,<br />
+  "errors": [],<br />
+  "isSuccessful": true,<br />
+  "statusReason": "OK",<br />
+  "rss": {<br />
+    "feedburner": "http://rssnamespace.org/feedburner/ext/1.0",<br />
+    "channel": {<br />
+      "pubDate": "Thu, 30 Oct 2014 16:30:19 EDT",<br />
+      "title": "CNN.com - World",</p>
 <p>...<br />
 [/code]</p>
 <p><code>mfp invoke adapterName:function [parameter1[,parameter2...]]</code> - direct mode<br />
 [code]<br />
-~/CLIexample/projectName/adapters/myHttpAdapter $ mfp invoke myHttpAdapter:getStories \&quot;world\&quot;<br />
+~/CLIexample/projectName/adapters/myHttpAdapter $ mfp invoke myHttpAdapter:getStories \"world\"<br />
 {<br />
-  &quot;statusCode&quot;: 200,<br />
-  &quot;errors&quot;: [],<br />
-  &quot;isSuccessful&quot;: true,<br />
-  &quot;statusReason&quot;: &quot;OK&quot;,<br />
-  &quot;rss&quot;: {<br />
-    &quot;feedburner&quot;: &quot;http://rssnamespace.org/feedburner/ext/1.0&quot;,<br />
-    &quot;channel&quot;: {<br />
-      &quot;pubDate&quot;: &quot;Tue, 04 Nov 2014 09:45:37 EST&quot;,<br />
-      &quot;title&quot;: &quot;CNN.com - World&quot;,</p>
+  "statusCode": 200,<br />
+  "errors": [],<br />
+  "isSuccessful": true,<br />
+  "statusReason": "OK",<br />
+  "rss": {<br />
+    "feedburner": "http://rssnamespace.org/feedburner/ext/1.0",<br />
+    "channel": {<br />
+      "pubDate": "Tue, 04 Nov 2014 09:45:37 EST",<br />
+      "title": "CNN.com - World",</p>
 <p>...<br />
 [/code]</p>
 <h2 id="export">Using the Export command</h2>

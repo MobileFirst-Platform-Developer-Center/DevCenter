@@ -39,10 +39,10 @@ relevantTo: [ios]
 <li>In <strong>application-descriptor.xml</strong>, add the <code>pushSender</code> tag with the <code>password</code> attribute. Use the .p12 keystore as the password value.
 <p>For example :<br />
 [code lang="xml"]<br />
-&lt;nativeIOSApp xmlns=&quot;http://www.worklight.com/native-ios-descriptor&quot; bundleId=&quot;com.iOSNativePush&quot; id=&quot;iOSNativePush&quot; platformVersion=&quot;6.3.0.00.20141105-0943&quot; securityTest=&quot;MySecurityTest&quot; version=&quot;1.0&quot;&gt;<br />
+&lt;nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0"&gt;<br />
 	&lt;displayName&gt;iOSNativePush&lt;/displayName&gt;<br />
 	&lt;description&gt;iOSNativePush&lt;/description&gt;<br />
-	&lt;pushSender password=&quot;apns-certificate-p12 password&quot;/&gt;<br />
+	&lt;pushSender password="apns-certificate-p12 password"/&gt;<br />
 &lt;/nativeIOSApp&gt;<br />
 [/code]</p>
 </li>
@@ -85,13 +85,13 @@ WL.Server.createEventSource({<br />
 <p>[code lang="js"]function submitNotification(userId, notificationText) {<br />
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>    if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }</p>
 <p>    var badgeDigit = 1;<br />
-    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});</p>
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});</p>
 <p>        WL.Server.notifyAllDevices(userSubscription, notification);</p>
 <p>    return {<br />
-        result: &quot;Notification sent to user :: &quot; + userId<br />
+        result: "Notification sent to user :: " + userId<br />
     };<br />
 }[/code]</p>
 <h2 id="notificationapiclient">Notification API: Client side </h2>
@@ -142,8 +142,8 @@ The user must add this method to the app delegate to get the token.<br />
 Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.</p>
 <p>This function is called when authentication finishes.<br />
 [code lang="obj-c"]<br />
-#import &quot;ReadyToSubscribeListener.h&quot;<br />
-#import &quot;MyEventSourceListener.h&quot;</p>
+#import "ReadyToSubscribeListener.h"<br />
+#import "MyEventSourceListener.h"</p>
 <p>@implementation ReadyToSubscribeListener</p>
 <p>- (id)initWithController: (ViewController *) mainView{<br />
     if ( self = [super init] )<br />
@@ -153,11 +153,11 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
     return self;<br />
 }</p>
 <p>-(void)OnReadyToSubscribe{<br />
-	[vc updateMessage:@&quot;\nPreparing to subscribe&quot;];<br />
+	[vc updateMessage:@"\nPreparing to subscribe"];<br />
 	MyEventSourceListener *eventSourceListener=[[MyEventSourceListener alloc]init];<br />
 	[[WLPush sharedInstance] registerEventSourceCallback:self.alias :self.adapterName<br />
 														:self.eventSourceName :eventSourceListener];<br />
-	[vc updateMessage:@&quot;Ready to subscribe...&quot;];<br />
+	[vc updateMessage:@"Ready to subscribe..."];<br />
 }</p>
 <p>@end<br />
 [/code]</p>
@@ -167,7 +167,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <p>To set up subscription to the event source, use the following API:<br />
 [code lang="obj-c"]<br />
 - (IBAction)subscribe:(id)sender {<br />
-    self.console.text=@&quot;Trying to subscribe ...&quot;;<br />
+    self.console.text=@"Trying to subscribe ...";<br />
 	MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];<br />
 	[[WLPush sharedInstance]subscribe:self.alias :nil :mySubscribeListener];</p>
 <p>}<br />
@@ -183,7 +183,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <p>To set up unsubscription from an event source, use the following API:<br />
 [code lang="obj-c"]<br />
 - (IBAction)unsubscribe:(id)sender {<br />
-    self.console.text = @&quot;Trying to unsubscribe ... &quot;;<br />
+    self.console.text = @"Trying to unsubscribe ... ";<br />
 	MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];<br />
 	[[WLPush sharedInstance]unsubscribe:self.alias :myUnsubscribelistener];<br />
 }<br />
@@ -201,7 +201,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 When a push notification is received by a device, the <span class="inline-code">didReceiveRemoteNotification</span> method  is called in the app delegate.<br />
 [code lang="obj-c"]<br />
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
-    NSLog(@&quot;Received Notification %@&quot;,userInfo.description);<br />
+    NSLog(@"Received Notification %@",userInfo.description);<br />
     _appDelegateVC.console.text=userInfo.description;<br />
 }<br />
 [/code]<br />
@@ -241,7 +241,7 @@ Broadcast notification can be disabled by unsubscribing to the reserved tag <cod
 <p>When a notification is received by a device, the <span class="inline-code">didReceiveRemoteNotification</span> method in the app delegate is called.<br />
 [code lang="obj-c"]<br />
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
-    NSLog(@&quot;Received Notification %@&quot;,userInfo.description);<br />
+    NSLog(@"Received Notification %@",userInfo.description);<br />
     _appDelegateVC.console.text=userInfo.description;<br />
 }<br />
 [/code]</p>
@@ -303,13 +303,13 @@ The category name must be same as the one used on the client side.</ul>
 if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){<br />
   UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;</p>
 <p>  UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];<br />
-  acceptAction.identifier = @&quot;OK&quot;;<br />
-  acceptAction.title = @&quot;OK&quot;;</p>
+  acceptAction.identifier = @"OK";<br />
+  acceptAction.title = @"OK";</p>
 <p>  UIMutableUserNotificationAction *rejetAction = [[UIMutableUserNotificationAction alloc] init];<br />
-  rejetAction.identifier = @&quot;NOK&quot;;<br />
-  rejetAction.title = @&quot;NOK&quot;;</p>
+  rejetAction.identifier = @"NOK";<br />
+  rejetAction.title = @"NOK";</p>
 <p>  UIMutableUserNotificationCategory *cateogory = [[UIMutableUserNotificationCategory alloc] init];<br />
-  cateogory.identifier = @&quot;poll&quot;;<br />
+  cateogory.identifier = @"poll";<br />
   [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextDefault];<br />
   [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextMinimal];</p>
 <p>  NSSet *catgories = [NSSet setWithObject:cateogory];<br />

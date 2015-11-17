@@ -28,25 +28,25 @@ relevantTo: [android]
 <p>            WLJSONStore.getInstance(ctx).destroy();</p>
 <p>            List&lt;JSONStoreCollection&gt; collections =<br />
                     new LinkedList&lt;JSONStoreCollection&gt;();<br />
-            JSONStoreCollection people = new JSONStoreCollection(&quot;people&quot;);<br />
-            people.setSearchField(&quot;name&quot;, SearchFieldType.STRING);<br />
-            people.setSearchField(&quot;age&quot;, SearchFieldType.INTEGER);<br />
+            JSONStoreCollection people = new JSONStoreCollection("people");<br />
+            people.setSearchField("name", SearchFieldType.STRING);<br />
+            people.setSearchField("age", SearchFieldType.INTEGER);<br />
             collections.add(people);</p>
 <p>            WLJSONStore.getInstance(ctx).openCollections(collections);</p>
-<p>            JSONObject data1 = new JSONObject(&quot;{age: 20, name: 'carlos'}&quot;);<br />
-            JSONObject data2 = new JSONObject(&quot;{age: 30, name: 'mike'}&quot;);</p>
+<p>            JSONObject data1 = new JSONObject("{age: 20, name: 'carlos'}");<br />
+            JSONObject data2 = new JSONObject("{age: 30, name: 'mike'}");</p>
 <p>            people.addData(data1);<br />
             people.addData(data2);</p>
 <p>            List&lt;JSONObject&gt; results = people.findAllDocuments();</p>
 <p>            assertEquals(<br />
-                new JSONObject(&quot;{_id: 1, &quot;<br />
-                        + &quot;json: {'name' : 'carlos', 'age' : 20}}&quot;)<br />
+                new JSONObject("{_id: 1, "<br />
+                        + "json: {'name' : 'carlos', 'age' : 20}}")<br />
                     .toString(),<br />
                 results.get(0)<br />
                     .toString());</p>
 <p>            assertEquals(<br />
-                new JSONObject(&quot;{_id: 2, &quot;<br />
-                        + &quot;json: {name: 'mike', age: 30}}&quot;)<br />
+                new JSONObject("{_id: 2, "<br />
+                        + "json: {name: 'mike', age: 30}}")<br />
                     .toString(),<br />
                 results.get(1)<br />
                     .toString());<br />

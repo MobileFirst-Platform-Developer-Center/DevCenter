@@ -39,13 +39,13 @@ Use it to work with your Objective C code.</p>
 Add an Objective C <strong>MyCustomAlert</strong> class in the <strong>Classes</strong> folder.<br />
 Add a method signature to <strong>MyCustomAlert.h</strong>, and method implementation to <strong>MyCustomAlert.m</strong> files:</p>
 <p>[code lang="obj-c"]<br />
-#import &quot;MyCustomAlert.h&quot;</p>
+#import "MyCustomAlert.h"</p>
 <p>@implementation MyCustomAlert<br />
 +(void)showUIAlert:(NSString *)text{<br />
-  UIAlertView *alert = [[UIAlert alloc] initWithTitle:@&quot;Native Alert&quot;<br />
+  UIAlertView *alert = [[UIAlert alloc] initWithTitle:@"Native Alert"<br />
                                         message:text<br />
                                         delegate:nil<br />
-                                        cancelButtonTitle:@&quot;Close&quot;<br />
+                                        cancelButtonTitle:@"Close"<br />
                                         otherButtonTitles:nil];<br />
   [alert show];<br />
   [alert release];<br />
@@ -57,7 +57,7 @@ Add a method signature to <strong>MyCustomAlert.h</strong>, and method implement
 - (void)viewDidLoaad<br />
 {<br />
   [super viewDidLoad];<br />
-  [MyCustomAlert showUIAlert:@&quot;Hello from native iOS Shell&quot;];<br />
+  [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];<br />
 }<br />
 [/code]</p>
 <p>Run your application to see the implemented functions.<br />

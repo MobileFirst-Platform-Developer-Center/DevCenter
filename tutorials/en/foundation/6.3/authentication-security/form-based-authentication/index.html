@@ -23,21 +23,21 @@ In this tutorial, you implement a simple form-based authentication mechanism tha
 <h2>Configuring the authenticationConfig.xml</h2>
 <p>The default <strong>authenticationConfig.xml</strong> file already contains a sample realm that is configured to use a form-based authenticator.</p>
 <p>[code lang="xml"]<br />
-&lt;realm name=&quot;SampleAppRealm&quot; loginModule=&quot;StrongDummy&quot;&gt;<br />
+&lt;realm name="SampleAppRealm" loginModule="StrongDummy"&gt;<br />
   &lt;className&gt;com.worklight.core.auth.ext.FormBasedAuthenticator&lt;/className&gt;<br />
 &lt;/realm&gt;<br />
 [/code]</p>
 <p>Notice the <strong>StrongDummy</strong> login module that is used for this realm.</p>
 <p>[code lang="xml"]<br />
-&lt;loginModule name=&quot;StrongDummy&quot;&gt;<br />
+&lt;loginModule name="StrongDummy"&gt;<br />
   &lt;className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule&lt;/className&gt;<br />
 &lt;/loginModule&gt;<br />
 [/code]</p>
 <p><strong>NonValidatingLoginModule</strong> means that the user credentials are not validated. In other words: any combination of user name and password is valid.</p>
 <p>Define a security test that uses the SampleAppRealm. Remember the security test name, to use it in the subsequent steps.</p>
 <p>[code lang="xml"]<br />
-&lt;customSecurityTest name=&quot;DummyAdapter-securityTest&quot;&gt;<br />
-  &lt;test isInternalUserID=&quot;true&quot; realm=&quot;SampleAppRealm&quot; /&gt;<br />
+&lt;customSecurityTest name="DummyAdapter-securityTest"&gt;<br />
+  &lt;test isInternalUserID="true" realm="SampleAppRealm" /&gt;<br />
 &lt;/customSecurityTest&gt;<br />
 [/code]</p>
 <h2>Creating the server-side authentication components</h2>
@@ -45,7 +45,7 @@ In this tutorial, you implement a simple form-based authentication mechanism tha
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_02_flow_diagram.png"><img class="aligncenter wp-image-912 size-full" src="{{ site.baseurl }}/assets/backup/09_02_flow_diagram.png" alt="09_02_flow_diagram" width="1354" height="738" /></a><br />
 Create an adapter and name it <strong>DummyAdapter</strong>.<br />
 Add a <strong>getSecretData</strong> procedure and protect it with the security test that you created in previous slides.</p>
-<p>[code lang="xml"]&lt;procedure name=&quot;getSecretData&quot; securityTest=&quot;DummyAdapter-securityTest&quot;/&gt;[/code]</p>
+<p>[code lang="xml"]&lt;procedure name="getSecretData" securityTest="DummyAdapter-securityTest"/&gt;[/code]</p>
 <p>In this module, the <strong>getSecretData</strong> procedure returns some hardcoded value:</p>
 <p>[code lang="javascript"]<br />
 function getSecretData(){<br />

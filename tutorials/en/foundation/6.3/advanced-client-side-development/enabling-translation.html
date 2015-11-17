@@ -25,15 +25,15 @@ UTF-8.<br />
 <p>You can find the <em>messages.js</em> file, which is intended for application strings, in the <em>common\js</em> folder.<br />
 [code lang="javascript"]<br />
 Messages = {<br />
-	headerText: &quot;Default header&quot;,<br />
-	actionsLabel: &quot;Default action label&quot;,<br />
-	sampleText: &quot;Default sample text&quot;,<br />
+	headerText: "Default header",<br />
+	actionsLabel: "Default action label",<br />
+	sampleText: "Default sample text",<br />
 };<br />
 [/code]</p>
 <p>Application messages that are stored in the <em>messages.js</em> file can be referenced in two ways:<br />
 As a JavaScript object property, for example: <em>Messages.headerText</em> or as an ID of an HTML element with <code>class="translate"</code>.<br />
 [code lang="html" title="A 1=that 2=is 3=defined 4=in 5=Messages.headerText 6=is 7=automatically 8=used 9=here." language="string"]<br />
-&lt;h1 id=&quot;headerText&quot; class=&quot;translate&quot;&gt;&lt;/h1&gt;<br />
+&lt;h1 id="headerText" class="translate"&gt;&lt;/h1&gt;<br />
 [/code]</p>
 <h2>Enabling translation of system messages</h2>
 <p>It is also possible to translate system messages that the application shows, for example "Internet connection is not available" or "Invalid username or password".<br />
@@ -41,7 +41,7 @@ System messages are stored in the <em>WL.ClientMessages</em> object.<br />
 You can find a full list of system messages in the <em>www\default\worklight\messages\messages.json</em> file, which is inside the generated projects (iOS, Android, Windows Phone 8, and so on,…).<br />
 To enable the translation of a system message, override it in your JavaScript application.<br />
 [code lang="javascript"]<br />
-WL.ClienMessages.loading = &quot;Application HelloWorld is loading... please wait.&quot;;<br />
+WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";<br />
 [/code]</p>
 <p>Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.</p>
 <h2>Multilanguage translation</h2>
@@ -49,21 +49,21 @@ WL.ClienMessages.loading = &quot;Application HelloWorld is loading... please wai
 Set up the default application strings in the <em>messages.js</em> file.<br />
 [code lang="javascript"]<br />
 Messages = {<br />
-	headerText: &quot;Default header&quot;,<br />
-	actionsLabel: &quot;Default action label&quot;,<br />
-	sampleText: &quot;Default sample text&quot;,<br />
-	englishLanguage : &quot;English&quot;,<br />
-	frenchLanguage : &quot;French&quot;,<br />
-	russianLanguage : &quot;Russian&quot;,<br />
-	hebrewLanguage : &quot;Hebrew&quot;<br />
+	headerText: "Default header",<br />
+	actionsLabel: "Default action label",<br />
+	sampleText: "Default sample text",<br />
+	englishLanguage : "English",<br />
+	frenchLanguage : "French",<br />
+	russianLanguage : "Russian",<br />
+	hebrewLanguage : "Hebrew"<br />
 };<br />
 [/code]<br />
 Override specific strings when required.<br />
 [code lang="javascript"]<br />
 function setFrench(){<br />
-	Messages.headerText = &quot;Traduction&quot;;<br />
-	Messages.actionsLabel = &quot;Sélectionnez langue:&quot;;<br />
-	Messages.sampleText = &quot;ceci est un exemple de texte en français.&quot;;<br />
+	Messages.headerText = "Traduction";<br />
+	Messages.actionsLabel = "Sélectionnez langue:";<br />
+	Messages.sampleText = "ceci est un exemple de texte en français.";<br />
 }<br />
 [/code]</p>
 <p>Update GUI components with the new strings.<br />
@@ -71,29 +71,29 @@ You can perform more tasks, such as setting text direction for right-to-left lan
 Each time that an element is updated, it is updated with different strings according to the active language.</p>
 <p>[code lang="javascript"]<br />
 function languageChanged(lang) {<br />
-	if (typeof(lang)!=&quot;string&quot;)<br />
-		lang = $(&quot;#languages&quot;).val();</p>
+	if (typeof(lang)!="string")<br />
+		lang = $("#languages").val();</p>
 <p>    switch (lang){<br />
-    	case &quot;english&quot;:<br />
+    	case "english":<br />
     		setEnglish();<br />
     		break;<br />
-    	case &quot;french&quot;:<br />
+    	case "french":<br />
     		setFrench();<br />
     		break;<br />
-    	case &quot;russian&quot;:<br />
+    	case "russian":<br />
     		setRussian();<br />
     		break;<br />
-    	case &quot;hebrew&quot;:<br />
+    	case "hebrew":<br />
     		setHebrew();<br />
     		break;<br />
     }</p>
-<p>    if ($(&quot;#languages&quot;).val()==&quot;hebrew&quot;)<br />
-    	$(&quot;#wrapper&quot;).css({direction: 'rtl'});<br />
+<p>    if ($("#languages").val()=="hebrew")<br />
+    	$("#wrapper").css({direction: 'rtl'});<br />
     else<br />
-    	$(&quot;#wrapper&quot;).css({direction: 'ltr'});</p>
-<p>    $(&quot;#sampleText&quot;).html(Messages.sampleText);<br />
-    $(&quot;#headerText&quot;).html(Messages.headerText);<br />
-    $(&quot;#actionsLabel&quot;).html(Messages.actionsLabel);<br />
+    	$("#wrapper").css({direction: 'ltr'});</p>
+<p>    $("#sampleText").html(Messages.sampleText);<br />
+    $("#headerText").html(Messages.headerText);<br />
+    $("#actionsLabel").html(Messages.actionsLabel);<br />
 }<br />
 [/code]</p>
 <h2>Detecting the device locale and language</h2>
@@ -102,8 +102,8 @@ Use the <em>WL.App.getDeviceLocale()</em> and <em>WL.App.getDeviceLanguage()</em
 [code lang="javascript"]<br />
 var locale = WL.App.getDeviceLocale();<br />
 var lang = WL.App.getDeviceLanguage();<br />
-WL.Logger.debug(&quot;&gt;&gt; Detected locale: &quot; + locale);<br />
-WL.Logger.debug(&quot;&gt;&gt; Detected language: &quot; + lang);<br />
+WL.Logger.debug("&gt;&gt; Detected locale: " + locale);<br />
+WL.Logger.debug("&gt;&gt; Detected language: " + lang);<br />
 [/code]<br />
 <img src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png"/></p>
 <h2>Sample application</h2>

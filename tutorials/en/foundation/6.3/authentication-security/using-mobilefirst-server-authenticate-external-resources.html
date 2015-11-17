@@ -55,13 +55,13 @@ relevantTo: [hybrid]
 <h3>Overview of token format</h3>
 <p>[code lang="javascript"]<br />
 {<br />
-  version: &quot;1.0 (of token)&quot;,<br />
-  scope: &quot;&lt;the security test that the token authenticated&gt;&quot;,<br />
-  expiration: &quot;&lt;time in msec since epoch&gt;&quot;,<br />
+  version: "1.0 (of token)",<br />
+  scope: "&lt;the security test that the token authenticated&gt;",<br />
+  expiration: "&lt;time in msec since epoch&gt;",<br />
   data: {<br />
-    user_id: &quot;&lt;authenticated user, for example, shachor@il.ibm.com&gt;&quot;,<br />
-    device_id: &quot;&lt;device id as known by MobileFirst server&gt;&quot;,<br />
-    application_id: &quot;&lt;identity of the app&gt;&quot;<br />
+    user_id: "&lt;authenticated user, for example, shachor@il.ibm.com&gt;",<br />
+    device_id: "&lt;device id as known by MobileFirst server&gt;",<br />
+    application_id: "&lt;identity of the app&gt;"<br />
   }<br />
 }<br />
 [/code]</p>
@@ -110,9 +110,9 @@ relevantTo: [hybrid]
 <p>      The <strong>MobileFirst Server</strong> returns a JSON object with the following format:</p>
 <p>    [code lang="javascript"]<br />
     {<br />
-      scope: &quot;&lt;actual scope *&gt;&quot;,<br />
-      token_type: &quot;Bearer&quot;,<br />
-      access_token: &quot;&lt;encrypted token string&gt;&quot;<br />
+      scope: "&lt;actual scope *&gt;",<br />
+      token_type: "Bearer",<br />
+      access_token: "&lt;encrypted token string&gt;"<br />
     }<br />
     [/code]<br />
     <strong>*</strong> different than given scope only if default scope requested
@@ -135,8 +135,8 @@ relevantTo: [hybrid]
 <p><strong>From the source view:</strong></p>
 <p>[code lang="xml"]<br />
 &lt;securityTests&gt;<br />
-  &lt;customSecurityTest name=&quot;SampleSecurityTest&quot; AccessTokenExpirationSec=&quot;15&quot;&gt;<br />
-    &lt;test realm=&quot;SampleRealm&quot; isInternalUserID=&quot;true&quot;/&gt;<br />
+  &lt;customSecurityTest name="SampleSecurityTest" AccessTokenExpirationSec="15"&gt;<br />
+    &lt;test realm="SampleRealm" isInternalUserID="true"/&gt;<br />
   &lt;/customSecurityTest&gt;<br />
 &lt;/securityTests&gt;<br />
 [/code]</p>
@@ -231,10 +231,10 @@ relevantTo: [hybrid]
 <p>[code lang="javascript"]<br />
   var token = WL.Client.getLastAccessToken();<br />
   $.ajax({<br />
-      type: &quot;GET&quot;,<br />
+      type: "GET",<br />
       url: MY_URL,<br />
       headers: {<br />
-          &quot;Authorization&quot;: &quot;Bearer &quot; + token<br />
+          "Authorization": "Bearer " + token<br />
       }<br />
   });<br />
 [/code]</p>
@@ -258,10 +258,10 @@ function callProtectedRestAPI(retries) {<br />
     // On the first call, the token can be null.<br />
     var token = WL.Client.getLastAccessToken();<br />
     var headersObject = (token != null) ? {<br />
-        &quot;Authorization&quot;: &quot;Bearer &quot; + token<br />
+        "Authorization": "Bearer " + token<br />
     } : {};</p>
 <p>    $.ajax({<br />
-        type: &quot;GET&quot;,<br />
+        type: "GET",<br />
         url: MY_EXTERNAL_SERVER_URL,<br />
         headers: headersObject<br />
     }).done(function(response) {<br />
@@ -269,13 +269,13 @@ function callProtectedRestAPI(retries) {<br />
     }).fail(function(response) {<br />
         // Need to extract this header from<br />
         // the response to know the scope.<br />
-        var header = response.getResponseHeader(&quot;WWW- Authenticate&quot;);<br />
+        var header = response.getResponseHeader("WWW- Authenticate");<br />
         var scope = WL.Client.getRequiredAccessTokenScope(response.status, header);<br />
         if (scope != null) {<br />
             // The failure is related to the access token. Get a new one.<br />
             WL.Client.obtainAccessToken(scope, getTokenSuccess, getTokenFailure);<br />
         } else {<br />
-            showErrorResult(&quot;request failed&quot;);<br />
+            showErrorResult("request failed");<br />
         }<br />
     });</p>
 <p>    function getTokenSuccess(response) {<br />

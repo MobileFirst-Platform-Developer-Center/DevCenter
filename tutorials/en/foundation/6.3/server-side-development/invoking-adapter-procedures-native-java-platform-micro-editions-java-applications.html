@@ -68,8 +68,8 @@ private WLClient client;</p>
 <p>[code lang="java"]<br />
 public void commandAction(Command command, Item item) {<br />
     StringItem itemName = (StringItem)item;<br />
-    if(itemName.getText().equals(&quot;1.Connect&quot;)) {<br />
-  updateTextView(&quot;\nConnecting...&quot;);<br />
+    if(itemName.getText().equals("1.Connect")) {<br />
+  updateTextView("\nConnecting...");<br />
   client.connect(new MyConnectListener());<br />
 [/code]
 </li>
@@ -88,10 +88,10 @@ The <code>MyConnectListener</code> class implements the <code>WLResponseListener
 <ol>
 <li>Create a <code>WLProcedureInvocationData</code> object with the adapter and procedure names.
 <p>[code lang="java"]<br />
-else if(itemName.getText().equals(&quot;2.Invoke Procedure&quot;)) {<br />
-     updateTextView(&quot;\nInvoking procedure...&quot;);<br />
-     String adapterName = &quot;RSSReader&quot;;<br />
-     String procedureName = &quot;getStoriesFiltered&quot;;</p>
+else if(itemName.getText().equals("2.Invoke Procedure")) {<br />
+     updateTextView("\nInvoking procedure...");<br />
+     String adapterName = "RSSReader";<br />
+     String procedureName = "getStoriesFiltered";</p>
 <p>     WLProcedureInvocationData invocationData = new WLProcedureInvocationData(adapterName, procedureName);<br />
 }[/code]</p>
 <p>After the connection is established with a MobileFirst Server, you can use the <code>WLClient</code> instance to call the adapter procedures.
@@ -118,11 +118,11 @@ import com.worklight.wlclient.api.WLResponseListener;</p>
 <p>public class MyInvokeListener implements WLResponseListener {<br />
   public void onSuccess(WLResponse response) {<br />
     String responseText = response.getResponseText();<br />
-    MainMidlet.updateTextView(&quot;Adapter Procedure Invoked Successfuly\n&quot;+ responseText);<br />
+    MainMidlet.updateTextView("Adapter Procedure Invoked Successfuly\n"+ responseText);<br />
   }<br />
   public void onFailure(WLFailResponse response) {<br />
     String responseText = response.getResponseText();<br />
-    MainMidlet.updateTextView(&quot;Failed to Invoke Adapter Procedure\n&quot;+ responseText);<br />
+    MainMidlet.updateTextView("Failed to Invoke Adapter Procedure\n"+ responseText);<br />
   }<br />
 }<br />
 [/code]</p>

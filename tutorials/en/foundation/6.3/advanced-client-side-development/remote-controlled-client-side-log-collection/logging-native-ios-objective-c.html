@@ -7,11 +7,11 @@ relevantTo: [ios]
 <h2 id="loggingIOS">Logging example for native iOS (Objective-C)</h2>
 <h3>Outputs to Xcode console:</h3>
 <p>[code lang="objc"]<br />
-#import &quot;OCLoggerMacros.h&quot;<br />
-#import &quot;OCLogger+Constants.h&quot;</p>
+#import "OCLoggerMacros.h"<br />
+#import "OCLogger+Constants.h"</p>
 <p>+ (int) sum:(int) a with:(int) b{<br />
   int sum = a + b;</p>
-<p>  OCLoggerDebugWithPackage(@&quot;MathUtils&quot;, @&quot;sum called with args %d and %d. Returning %d&quot;, a, b, sum);</p>
+<p>  OCLoggerDebugWithPackage(@"MathUtils", @"sum called with args %d and %d. Returning %d", a, b, sum);</p>
 <p>  return sum;<br />
 }</p>
 <p>[/code]</p>

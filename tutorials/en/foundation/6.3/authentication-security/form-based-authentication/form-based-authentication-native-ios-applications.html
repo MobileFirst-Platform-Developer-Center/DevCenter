@@ -33,8 +33,8 @@ The default login form that is returned from the MobileFirst server contains the
 //...<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
     if(response &amp;&amp; response.responseText){<br />
-        if ([response.responseText rangeOfString:@&quot;j_security_check&quot; options:NSCaseInsensitiveSearch].location != NSNotFound) {<br />
-            NSLog(@&quot;Detected login form - return true&quot;);<br />
+        if ([response.responseText rangeOfString:@"j_security_check" options:NSCaseInsensitiveSearch].location != NSNotFound) {<br />
+            NSLog(@"Detected login form - return true");<br />
             return true;<br />
         }<br />
     }<br />
@@ -48,8 +48,8 @@ If <span class="inline-code">isCustomResponse</span> returns <span class="inline
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
-    NSLog(@&quot;Inside handleChallenge - need to show form on the screen&quot;);<br />
-    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@&quot;LoginViewController&quot;];<br />
+    NSLog(@"Inside handleChallenge - need to show form on the screen");<br />
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];<br />
     loginController.challengeHandler = self;<br />
     [self.vc.navigationController pushViewController:loginController animated:YES];<br />
 }<br />
@@ -62,12 +62,12 @@ You need to call <span class="inline-code">submitSuccess</span> to inform the fr
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) onSuccess:(WLResponse *)response {<br />
-    NSLog(@&quot;inside challenge success&quot;);<br />
+    NSLog(@"inside challenge success");<br />
     [self.vc.navigationController popViewControllerAnimated:YES];<br />
     [self submitSuccess:response];<br />
 }</p>
 <p>-(void) onFailure:(WLFailResponse *)response {<br />
-    NSLog(@&quot;inside challenge failure&quot;);<br />
+    NSLog(@"inside challenge failure");<br />
     [self submitFailure:response];<br />
 }<br />
 @end<br />
@@ -78,11 +78,11 @@ In your <span class="inline-code">LoginViewController</span>, when the user clic
 @implementation LoginViewController<br />
 //***<br />
 - (IBAction)login:(id)sender {<br />
-    [self.challengeHandler submitLoginForm:@&quot;j_security_check&quot;<br />
-         requestParameters:@{@&quot;j_username&quot;: self.username.text, @&quot;j_password&quot;: self.password.text}<br />
+    [self.challengeHandler submitLoginForm:@"j_security_check"<br />
+         requestParameters:@{@"j_username": self.username.text, @"j_password": self.password.text}<br />
          requestHeaders:nil<br />
          requestTimeoutInMilliSeconds:0<br />
-         requestMethod:@&quot;POST&quot;];<br />
+         requestMethod:@"POST"];<br />
 }<br />
 @end<br />
 [/code]</p>

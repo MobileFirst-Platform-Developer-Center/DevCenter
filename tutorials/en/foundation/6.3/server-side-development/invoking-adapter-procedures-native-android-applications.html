@@ -42,15 +42,15 @@ public class MyConnectListener implements WLResponseListener  {<br />
 <ol>
 <li>Create a <code>WLProcedureInvocationData</code> object with the adapter and procedure names.<br />
 [code lang="java"]<br />
-String adapterName = &quot;RSSReader&quot;;<br />
-String procedureName = &quot;getStoriesFiltered&quot;;</p>
+String adapterName = "RSSReader";<br />
+String procedureName = "getStoriesFiltered";</p>
 <p>WLProcedureInvocationData invocationData =<br />
 new WLProcedureInvocationData(adapterName, procedureName);<br />
 [/code]</p>
 </li>
 <li>Add the required parameters as an object array and set request options (for example: <code>timeout</code>).<br />
 [code lang="java"]<br />
-Object[] parameters = new Object[] {&quot;world&quot;};<br />
+Object[] parameters = new Object[] {"world"};<br />
 invocationData.setParameters(parameters);</p>
 <p>WLRequestOptions options = new WLRequestOptions();<br />
 options.setTimeout(30000);<br />
@@ -80,11 +80,11 @@ You can use its methods and properties to retrieve the required information.</p>
 <p>[code lang="java"]<br />
 public void onSuccess(WLResponse response) {<br />
       String responseText = response.getResponseText();<br />
-      AndroidNativeApp.updateTextView(&quot;Adapter Procedure Invoked Successfuly\n&quot; + responseText);<br />
+      AndroidNativeApp.updateTextView("Adapter Procedure Invoked Successfuly\n" + responseText);<br />
 }</p>
 <p>public void onFailure(WLFailResponse response) {<br />
      String responseText = response.getResponseText();<br />
-     AndroidNativeApp.updateTextView(&quot;Failed to Invoke Adapter Procedure\n&quot; + responseText);<br />
+     AndroidNativeApp.updateTextView("Failed to Invoke Adapter Procedure\n" + responseText);<br />
 }<br />
 [/code]
 </li>

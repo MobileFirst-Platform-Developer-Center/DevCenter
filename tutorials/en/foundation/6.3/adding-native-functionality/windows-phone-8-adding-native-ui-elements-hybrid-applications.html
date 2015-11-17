@@ -26,7 +26,7 @@ The native class to receive the action must implement the <span class="inline-co
 <p>[code lang="CSharp"]<br />
 public void onActionReceived(string action, JObject data)<br />
   {<br />
-    if (action == &quot;displayAddress&quot;)<br />
+    if (action == "displayAddress")<br />
     {<br />
       Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
       {<br />
@@ -57,15 +57,15 @@ In C#, the following API is used:<br />
 <p><strong>Step 2</strong><br />
 A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
 <p>[code lang="js"]function actionReceiver(received){<br />
-  if (received.action == &quot;doSomething&quot; &amp;&amp; received.data.someProperty == &quot;12345&quot;){<br />
+  if (received.action == "doSomething" &amp;&amp; received.data.someProperty == "12345"){<br />
     //perform required actions, e.g., update web user interface<br />
   }<br />
 }[/code]</p>
 <p><strong>Step 3</strong><br />
 For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function will handle those actions as early as possible.</p>
-<p>[code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, actionReceiver);[/code]</p>
+<p>[code lang="js"]WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);[/code]</p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-[code lang="js"]WL.App.removeActionReceiver(&quot;MyActionReceiverId&quot;);[/code]</p>
+[code lang="js"]WL.App.removeActionReceiver("MyActionReceiverId");[/code]</p>
 <h2>SendAction Sample</h2>
 <p>[caption id="attachment_5245" align="aligncenter" width="700"]<img src="{{ site.baseurl }}/assets/backup/WP8ActionSender.png" alt="Windows Phone 8 SendAction Sample" width="700" height="398" class="size-full wp-image-5245" /> Windows Phone 8 SendAction Sample[/caption]</p>
 <p>Download the NativeUIInHybrid project, which includes a hybrid application called SendAction.<br />
@@ -79,20 +79,20 @@ The HTML page shows the following elements:</p>
 </ul>
 <p>[code lang="html"]&lt;p&gt;This is a MobileFirst WebView.&lt;/p&gt;<br />
 &lt;p&gt;Enter a valid address (requires Internet connection):&lt;br/&gt;<br />
-    	&lt;input type=&quot;text&quot; name=&quot;address&quot; id=&quot;address&quot;/&gt;<br />
-&lt;input type=&quot;button&quot; value=&quot;Display&quot; id=&quot;displayBtn&quot;/&gt;<br />
+    	&lt;input type="text" name="address" id="address"/&gt;<br />
+&lt;input type="button" value="Display" id="displayBtn"/&gt;<br />
  &lt;/p&gt;<br />
- &lt;p id=&quot;errorMsg&quot; style=&quot;color:red;&quot;&gt;&lt;/p&gt;[/code]</p>
+ &lt;p id="errorMsg" style="color:red;"&gt;&lt;/p&gt;[/code]</p>
 <p><strong>JavaScript</strong><br />
 When the button is clicked, the <span class="inline-code">sendActionToNative</span> method is called to send the address to the native code.</p>
 <p>[code lang="js"]$('#displayBtn').on('click', function(){<br />
 	$('#errorMsg').empty();<br />
-	WL.App.sendActionToNative(&quot;displayAddress&quot;,<br />
+	WL.App.sendActionToNative("displayAddress",<br />
 				{ address: $('#address').val()}<br />
 		);<br />
 	});[/code]</p>
 <p>The code also registers an action receiver to display potential error messages from the native code.<br />
-[code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, function actionReceiver(received){<br />
+[code lang="js"]WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received){<br />
 		if(received.action == 'displayError'){<br />
 			$('#errorMsg').html(received.data.errorReason);<br />
 		}<br />

@@ -24,15 +24,15 @@ show_children: true
 <h3>Realms</h3>
 <p>Add two authentication realms to the <span class="inline-code">realms</span> section of the <strong>authenticationConfig.xml</strong> file.</p>
 <p>[code lang="xml"]<br />
-  &lt;realm loginModule=&quot;AuthLoginModule&quot; name=&quot;SingleStepAuthRealm&quot;&gt;<br />
+  &lt;realm loginModule="AuthLoginModule" name="SingleStepAuthRealm"&gt;<br />
 	&lt;className&gt;com.worklight.integration.auth.AdapterAuthenticator&lt;/className&gt;<br />
-  	&lt;parameter name=&quot;login-function&quot; value=&quot;SingleStepAuthAdapter.onAuthRequired&quot;/&gt;<br />
-  	&lt;parameter name=&quot;logout-function&quot; value=&quot;SingleStepAuthAdapter.onLogout&quot;/&gt;<br />
+  	&lt;parameter name="login-function" value="SingleStepAuthAdapter.onAuthRequired"/&gt;<br />
+  	&lt;parameter name="logout-function" value="SingleStepAuthAdapter.onLogout"/&gt;<br />
   &lt;/realm&gt;<br />
-  &lt;realm loginModule=&quot;AuthLoginModule&quot; name=&quot;DoubleStepAuthRealm&quot;&gt;<br />
+  &lt;realm loginModule="AuthLoginModule" name="DoubleStepAuthRealm"&gt;<br />
   	&lt;className&gt;com.worklight.integration.auth.AdapterAuthenticator&lt;/className&gt;<br />
-  	&lt;parameter name=&quot;login-function&quot; value=&quot;DoubleStepAuthAdapter.onAuthRequired&quot;/&gt;<br />
-  	&lt;parameter name=&quot;logout-function&quot; value=&quot;DoubleStepAuthAdapter.onLogout&quot;/&gt;<br />
+  	&lt;parameter name="login-function" value="DoubleStepAuthAdapter.onAuthRequired"/&gt;<br />
+  	&lt;parameter name="logout-function" value="DoubleStepAuthAdapter.onLogout"/&gt;<br />
   &lt;/realm&gt;<br />
 [/code]</p>
 <p>These realms use the <span class="inline-code">AuthLoginModule</span> login module, which is defined later.<br />
@@ -43,7 +43,7 @@ In both cases, the parameter value syntax is <span class="inline-code">adapterNa
 <h3>LoginModule</h3>
 <p>Add a login module to the <span class="inline-code">loginModules</span> section of the <strong>authenticationConfig.xml</strong> file and call it <span class="inline-code">AuthLoginModule</span>.</p>
 <p>[code lang="xml"]<br />
-&lt;loginModule name=&quot;AuthLoginModule&quot;&gt;<br />
+&lt;loginModule name="AuthLoginModule"&gt;<br />
     &lt;className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule&lt;/className&gt;<br />
 &lt;/loginModule&gt;<br />
 [/code]</p>
@@ -54,11 +54,11 @@ Because all authentication-related actions are done in the adapter code, using <
 You must use this security test to protect the adapter procedure, so use the <span class="inline-code">customSecurityTest</span> element.<br />
 Remember the security test names. You must use them in subsequent steps.</p>
 <p>[code lang="xml"]<br />
-  &lt;customSecurityTest name=&quot;SingleStepAuthAdapter-securityTest&quot;&gt;<br />
-      &lt;test isInternalUserID=&quot;true&quot; realm=&quot;SingleStepAuthRealm&quot;/&gt;<br />
+  &lt;customSecurityTest name="SingleStepAuthAdapter-securityTest"&gt;<br />
+      &lt;test isInternalUserID="true" realm="SingleStepAuthRealm"/&gt;<br />
   &lt;/customSecurityTest&gt;<br />
-  &lt;customSecurityTest name=&quot;DoubleStepAuthAdapter-securityTest&quot;&gt;<br />
-      &lt;test isInternalUserID=&quot;true&quot; realm=&quot;DoubleStepAuthRealm&quot;/&gt;<br />
+  &lt;customSecurityTest name="DoubleStepAuthAdapter-securityTest"&gt;<br />
+      &lt;test isInternalUserID="true" realm="DoubleStepAuthRealm"/&gt;<br />
   &lt;/customSecurityTest&gt;<br />
 [/code]</p>
 <h2>Creating the server-side authentication components</h2>
@@ -69,8 +69,8 @@ Remember the security test names. You must use them in subsequent steps.</p>
 <p>Create an adapter that takes care of the authentication process. Name it <strong>SingleStepAuthAdapter</strong>.<br />
 The <strong>SingleStepAuthAdapter</strong> includes the following two procedures:</p>
 <p>[code lang="xml"]<br />
-&lt;procedure name=&quot;submitAuthentication&quot; securityTest=&quot;wl_unprotected&quot;/&gt;<br />
-&lt;procedure name=&quot;getSecretData&quot; securityTest=&quot;SingleStepAuthAdapter-securityTest&quot;/&gt;<br />
+&lt;procedure name="submitAuthentication" securityTest="wl_unprotected"/&gt;<br />
+&lt;procedure name="getSecretData" securityTest="SingleStepAuthAdapter-securityTest"/&gt;<br />
 [/code]</p>
 <ul>
 <li>The submitAuthentication procedure takes care of the authentication process. Note that when the challenge handler invokes the <code>submitAuthentication</code> call, it is responsible for handling all the possible responses. In particular, if the <code>submitAuthentication</code> call returns a challenge, it is passed to the invocation callback, and is not processed by the security framework.<br />
@@ -98,20 +98,20 @@ This function receives the request headers and an optional <span class="inline-c
 <p>The <span class="inline-code">submitAuthentication</span> function is called by a client application to validate the user name and password.</p>
 <p>[code lang="javascript"]<br />
 function submitAuthentication(username, password){<br />
-	if (username===&quot;user&quot; &amp;&amp; password === &quot;user&quot;){</p>
+	if (username==="user" &amp;&amp; password === "user"){</p>
 <p>		var userIdentity = {<br />
 				userId: username,<br />
 				displayName: username,<br />
 				attributes: {<br />
-					foo: &quot;bar&quot;<br />
+					foo: "bar"<br />
 				}<br />
 		};</p>
-<p>		WL.Server.setActiveUser(&quot;SingleStepAuthRealm&quot;, userIdentity);</p>
+<p>		WL.Server.setActiveUser("SingleStepAuthRealm", userIdentity);</p>
 <p>		return {<br />
 			authRequired: false<br />
 		};<br />
 	}</p>
-<p>	return onAuthRequired(null, &quot;Invalid login credentials&quot;);<br />
+<p>	return onAuthRequired(null, "Invalid login credentials");<br />
 }<br />
 [/code]</p>
 <p>The user name and password are received from the application as parameters. In this sample, the credentials are validated against some hardcoded values, but any other validation mode is valid, for example by using SQL or web services.<br />
@@ -123,7 +123,7 @@ If the credentials validation fails, an object that is built by the <span class=
 <p>[code lang="javascript"]<br />
 function getSecretData(){<br />
 	return {<br />
-		secretData: &quot;Very very very very secret data&quot;<br />
+		secretData: "Very very very very secret data"<br />
 	};<br />
 }<br />
 [/code]</p>
@@ -131,7 +131,7 @@ function getSecretData(){<br />
 <p>The <span class="inline-code">onLogout</span> function is defined in the <strong>authenticationConfig.xml</strong> file to be called automatically after a logout, for example to perform a cleanup. This step is optional.</p>
 <p>[code lang="javascript"]<br />
 function onLogout(){<br />
-	WL.Logger.debug(&quot;Logged out&quot;);<br />
+	WL.Logger.debug("Logged out");<br />
 }<br />
 [/code]</p>
 <h2 id="creatingTheClientsideAuthenticationComponents" class="noPrint">Creating the client-side authentication components</h2>

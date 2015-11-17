@@ -44,10 +44,10 @@ No provisioning is the default setting for mobile applications.<br />
 If you are use the default security settings, you do not have to enable <strong>No provisioning</strong> manually.</p>
 <p>If you use a custom security test to protect a resource that requires device identity and you want to use <strong>No provisioning</strong>, add the realm to your security test. For example:</p>
 <p>[code lang="xml" highlight="4"]<br />
-&lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
+&lt;customSecurityTest name="customTests"&gt;<br />
   ...<br />
-  &lt;test realm=&quot;wl_anonymousUserRealm&quot; isInternalUserID=&quot;true&quot; /&gt;<br />
-  &lt;test realm=&quot;wl_deviceNoProvisioningRealm&quot; isInternalDeviceID=&quot;true&quot; /&gt;<br />
+  &lt;test realm="wl_anonymousUserRealm" isInternalUserID="true" /&gt;<br />
+  &lt;test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" /&gt;<br />
 &lt;/customSecurityTest&gt;<br />
 [/code]</p>
 <h2>Auto provisioning</h2>
@@ -64,17 +64,17 @@ The certificate is issued to any device that requests it, therefore <strong>Auto
 <h3>Enabling auto provisioning</h3>
 <p>To enable <strong>Auto provisioning</strong>, add the following realms to your <strong>authentication-config.xml</strong> file.</p>
 <p>[code lang="xml" title="If 1=use 2=a 3=custom 4=security 5=test:" language="you"]<br />
-&lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
+&lt;customSecurityTest name="customTests"&gt;<br />
   …<br />
-  &lt;test realm=&quot;wl_authenticityRealm&quot; /&gt;<br />
-  &lt;test realm=&quot;wl_deviceAutoProvisioningRealm&quot; isInternalDeviceID=&quot;true&quot; /&gt;<br />
+  &lt;test realm="wl_authenticityRealm" /&gt;<br />
+  &lt;test realm="wl_deviceAutoProvisioningRealm" isInternalDeviceID="true" /&gt;<br />
 &lt;/customSecurityTest&gt;<br />
 [/code]</p>
 <p>[code lang="xml" title="If 1=use 2=a 3=mobile 4=security 5=test:" language="you"]<br />
-&lt;mobileSecurityTest name=&quot;mobileTests&quot;&gt;<br />
+&lt;mobileSecurityTest name="mobileTests"&gt;<br />
   ...<br />
   &lt;testAppAuthenticity/&gt;<br />
-  &lt;testDeviceId provisioningType=&quot;auto&quot; /&gt;<br />
+  &lt;testDeviceId provisioningType="auto" /&gt;<br />
 &lt;/mobileSecurityTest&gt;<br />
 [/code]</p>
 <h3>keystore</h3>
@@ -88,7 +88,7 @@ Note: The <em>wl.ca.keystore.path</em> property value can be either relative to 
 # You can change the default behavior with regard to CA certificates. You can also implement custom provisioning.<br />
 # If you want to change the auto-provisioning mechanism to use different granularity (application, device or group) or a<br />
 # different list of pre-required realms, you can create your own customized authenticator, login module and challenge handler.<br />
-# For more information, see the &quot;Custom Authenticator and Login Module&quot; Getting Started training module.</p>
+# For more information, see the "Custom Authenticator and Login Module" Getting Started training module.</p>
 <p>#The path to the keystore, relative to the server folder in the Worklight Project, for example: conf/my-cert.jks<br />
 #wl.ca.keystore.path=<br />
 #The type of the keystore file. Valid values are jks or pkcs12.<br />

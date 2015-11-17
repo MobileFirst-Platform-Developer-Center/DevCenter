@@ -25,8 +25,8 @@ Remember to add this Activity to the <span class="inline-code">AndroidManifest.x
 		try {<br />
 			if(response!= null &amp;&amp;<br />
 					response.getResponseJSON()!=null &amp;&amp;<br />
-					response.getResponseJSON().isNull(&quot;authRequired&quot;) != true &amp;&amp;<br />
-					response.getResponseJSON().getBoolean(&quot;authRequired&quot;) == true){<br />
+					response.getResponseJSON().isNull("authRequired") != true &amp;&amp;<br />
+					response.getResponseJSON().getBoolean("authRequired") == true){<br />
 				return true;<br />
 			}<br />
 		} catch (JSONException e) {<br />
@@ -53,7 +53,7 @@ public void submitLogin(int resultCode, String userName, String password, boolea
 		submitFailure(cachedResponse);<br />
 	} else {<br />
 		Object[] parameters = new Object[]{userName, password};<br />
-		WLProcedureInvocationData invocationData = new  WLProcedureInvocationData(&quot;NativeAdapterBasedAdapter&quot;, &quot;submitAuthentication&quot;);<br />
+		WLProcedureInvocationData invocationData = new  WLProcedureInvocationData("NativeAdapterBasedAdapter", "submitAuthentication");<br />
 		invocationData.setParameters(parameters);<br />
 		WLRequestOptions options = new WLRequestOptions();<br />
 		options.setTimeout(30000);<br />
@@ -73,7 +73,7 @@ invokeBtn = (Button) findViewById(R.id.invoke);<br />
 invokeBtn.setOnClickListener(new View.OnClickListener() {<br />
 	@Override<br />
 	public void onClick(View v) {<br />
-		WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;DummyAdapter&quot;, &quot;getSecretData&quot;);<br />
+		WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");<br />
 		WLRequestOptions options = new WLRequestOptions();<br />
 		options.setTimeout(30000);<br />
 		client.invokeProcedure(invocationData, new MyResponseListener(), options);<br />

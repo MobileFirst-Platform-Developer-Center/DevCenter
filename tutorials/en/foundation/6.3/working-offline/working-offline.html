@@ -85,7 +85,7 @@ document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED, disconnectDetecte
 <h2>Foreground event</h2>
 <p>When a MobileFirst application returns to the foreground, the Cordova <span class="inline-code">resume</span> event is fired.<br />
 The developer can add a listener for this event and specify the callback function that handles it. For example:</p>
-<p>[code lang="js"]document.addEventListener(&quot;resume&quot;, function() {<br />
+<p>[code lang="js"]document.addEventListener("resume", function() {<br />
     WL.Device.getNetworkInfo( function(networkInfo) {<br />
         if (networkInfo.isNetworkConnected) {<br />
             // Perform client or server actions.<br />
@@ -103,12 +103,12 @@ MyApp.connectionFailure, false);<br />
 MyApp.connectionFailure = function() {<br />
     WL.Client.connect({<br />
         onSuccess: function() {<br />
-            WL.Logger.debug(&quot;online&quot;);<br />
+            WL.Logger.debug("online");<br />
             MyApp.onlineRestored();<br />
         },<br />
         onFailure: function() {<br />
-            WL.Logger.debug(&quot;Still offline... Trying to connect again in 5<br />
-            seconds.&quot;);<br />
+            WL.Logger.debug("Still offline... Trying to connect again in 5<br />
+            seconds.");<br />
             window.setTimeout(MyApp.connectionFailure, 5000);<br />
         }<br />
     });<br />

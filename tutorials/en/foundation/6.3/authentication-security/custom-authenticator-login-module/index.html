@@ -43,22 +43,22 @@ For example: When credentials validation must be customized for a specific enter
 <p>In the <code>realms</code> section of <strong>authenticationConfig.xml</strong>, define a realm called <strong><code>CustomAuthenticatorRealm</code></strong>.<br />
 Make sure that it uses <strong><code>CustomLoginModule</code></strong>. Specify <code>MyCustomAuthenticator</code> as the class name, which will be implemented later.</p>
 <p>[code lang="xml"]<br />
-&lt;realm name=&quot;CustomAuthenticatorRealm&quot; loginModule=&quot;CustomLoginModule&quot;&gt;<br />
+&lt;realm name="CustomAuthenticatorRealm" loginModule="CustomLoginModule"&gt;<br />
   &lt;className&gt;com.mypackage.MyCustomAuthenticator&lt;/className&gt;<br />
 &lt;/realm&gt;<br />
 [/code]</p>
 <p>In the <code>loginModules</code> section, add a <strong><code>loginModule</code></strong> called <strong><code>CustomLoginModule</code></strong>.<br />
 Specify <code>MyCustomLoginModule</code> as the class name, which will be implemented later.</p>
 <p>[code lang="xml"]<br />
-&lt;loginModule name=&quot;CustomLoginModule&quot;&gt;<br />
+&lt;loginModule name="CustomLoginModule"&gt;<br />
   &lt;className&gt;com.mypackage.MyCustomLoginModule&lt;/className&gt;<br />
 &lt;/loginModule&gt;<br />
 [/code]</p>
 <p>In the <code>securityTests</code> section, add a security test.<br />
 Later, this security test will be used to protect the adapter procedure. Therefore, use a <code>customSecurityTest</code> element. Remember the security test name because it will used later.</p>
 <p>[code lang="xml"]<br />
-&lt;customSecurityTest name=&quot;DummyAdapter-securityTest&quot;&gt;<br />
-  &lt;test isInternalUserID=&quot;true&quot; realm=&quot;CustomAuthenticatorRealm&quot; /&gt;<br />
+&lt;customSecurityTest name="DummyAdapter-securityTest"&gt;<br />
+  &lt;test isInternalUserID="true" realm="CustomAuthenticatorRealm" /&gt;<br />
 &lt;/customSecurityTest&gt;<br />
 [/code]</p>
 <h2>Creating a custom Java authenticator</h2>
@@ -113,7 +113,7 @@ private Map&lt;String, Object&gt; authenticationData = null;<br />
 <p>The <code>init</code> method is called when the authenticator is created. As its parameter, this method takes the map of options that is specified in a realm definition in the <strong>authenticationConfig.xml</strong> file.</p>
 <p>[code lang="java"]<br />
 public void init(Map&lt;String, String&gt; options) throws MissingConfigurationOptionException {<br />
-	logger.info(&quot;MyCustomAuthenticator initialized&quot;);<br />
+	logger.info("MyCustomAuthenticator initialized");<br />
 }<br />
 [/code]</p>
 <p>The <code>clone</code> method of the authenticator creates a deep copy of the object members.</p>
@@ -128,26 +128,26 @@ public WorkLightAuthenticator clone() throws CloneNotSupportedException {<br />
 <p>The <code>processRequest</code> method is called for each unauthenticated request to collect credentials.</p>
 <p>[code lang="java"]<br />
 public AuthenticationResult processRequest(HttpServletRequest request, HttpServletResponse response, boolean isAccessToProtectedResource) throws IOException,	ServletException {<br />
-	if (request.getRequestURI().contains(&quot;my_custom_auth_request_url&quot;)){<br />
-		String username = request.getParameter(&quot;username&quot;);<br />
-		String password = request.getParameter(&quot;password&quot;);</p>
+	if (request.getRequestURI().contains("my_custom_auth_request_url")){<br />
+		String username = request.getParameter("username");<br />
+		String password = request.getParameter("password");</p>
 <p>		if (null != username &amp;&amp; null != password &amp;&amp; username.length() &gt; 0 &amp;&amp; password.length() &gt; 0){<br />
 			authenticationData = new HashMap&lt;String, Object&gt;();<br />
-			authenticationData.put(&quot;username&quot;, username);<br />
-			authenticationData.put(&quot;password&quot;, password);<br />
+			authenticationData.put("username", username);<br />
+			authenticationData.put("password", password);<br />
 			return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);<br />
 		} else {<br />
-			response.setContentType(&quot;application/json; charset=UTF-8&quot;);<br />
-			response.setHeader(&quot;Cache-Control&quot;, &quot;no-cache, must-revalidate&quot;);<br />
-			response.getWriter().print(&quot;{\&quot;authStatus\&quot;:\&quot;required\&quot;, \&quot;errorMessage\&quot;:\&quot;Please enter username and password\&quot;}&quot;);<br />
+			response.setContentType("application/json; charset=UTF-8");<br />
+			response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
+			response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"Please enter username and password\"}");<br />
 			return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
 		}<br />
 	}</p>
 <p>	if (!isAccessToProtectedResource)<br />
 		return AuthenticationResult.createFrom(AuthenticationStatus.REQUEST_NOT_RECOGNIZED);</p>
-<p>	response.setContentType(&quot;application/json; charset=UTF-8&quot;);<br />
-	response.setHeader(&quot;Cache-Control&quot;, &quot;no-cache, must-revalidate&quot;);<br />
-	response.getWriter().print(&quot;{\&quot;authStatus\&quot;:\&quot;required\&quot;}&quot;);<br />
+<p>	response.setContentType("application/json; charset=UTF-8");<br />
+	response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
+	response.getWriter().print("{\"authStatus\":\"required\"}");<br />
 	return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
 }<br />
 [/code]</p>
@@ -158,29 +158,29 @@ public AuthenticationResult processRequest(HttpServletRequest request, HttpServl
 [/code]</p>
 <p>The application sends an authentication request to a specific URL. This request URL contains a <code>my_custom_auth_request_url</code> component, which is used by the <code>authenticator</code> to make sure that this request is an authentication request. It is recommended to have a different URL component in every <code>authenticator</code>.</p>
 <p>[code lang="java"]<br />
-if (request.getRequestURI().contains(&quot;my_custom_auth_request_url&quot;)){<br />
+if (request.getRequestURI().contains("my_custom_auth_request_url")){<br />
 [/code]</p>
 <p>The <code>authenticator</code> retrieves the username and password that are passed as request parameters.</p>
 <p>[code lang="java"]<br />
-String username = request.getParameter(&quot;username&quot;);<br />
-String password = request.getParameter(&quot;password&quot;);<br />
+String username = request.getParameter("username");<br />
+String password = request.getParameter("password");<br />
 [/code]</p>
 <p>The <code>authenticator</code> checks the credentials for basic validity, creates an <code>authenticationData</code> object, and returns <strong><code>SUCCESS</code></strong>.<br />
 <strong><code>SUCCESS</code></strong> means only that the credentials were successfully collected; after that, the <code>login module</code> is called to validate the credentials.</p>
 <p>[code lang="java"]<br />
 if (null != username &amp;&amp; null != password &amp;&amp; username.length() &gt; 0 &amp;&amp; password.length() &gt; 0){<br />
 	authenticationData = new HashMap&lt;String, Object&gt;();<br />
-	authenticationData.put(&quot;username&quot;, username);<br />
-	authenticationData.put(&quot;password&quot;, password);<br />
+	authenticationData.put("username", username);<br />
+	authenticationData.put("password", password);<br />
 	return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);<br />
 }<br />
 [/code]</p>
 <p>If a problem occurs with the received credentials, the <code>authenticator</code> adds an error message to the response and returns <strong><code>CLIENT_INTERACTION_REQUIRED</code></strong>. The client must still supply authentication data.</p>
 <p>[code lang="java"]<br />
 else {<br />
-	response.setContentType(&quot;application/json; charset=UTF-8&quot;);<br />
-	response.setHeader(&quot;Cache-Control&quot;, &quot;no-cache, must-revalidate&quot;);<br />
-	response.getWriter().print(&quot;{\&quot;authStatus\&quot;:\&quot;required\&quot;, \&quot;errorMessage\&quot;:\&quot;Please enter username and password\&quot;}&quot;);<br />
+	response.setContentType("application/json; charset=UTF-8");<br />
+	response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
+	response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"Please enter username and password\"}");<br />
 	return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
 }<br />
 [/code]</p>
@@ -192,16 +192,16 @@ if (!isAccessToProtectedResource)<br />
 [/code]</p>
 <p>If the request made to a protected resource does not contain authentication data, the <code>authenticator</code> adds an <code>authStatus:required</code> property to the response, and also returns a <strong><code>CLIENT_INTERACTION_REQUIRED</code></strong> status.</p>
 <p>[code lang="java"]<br />
-response.setContentType(&quot;application/json; charset=UTF-8&quot;);<br />
-response.setHeader(&quot;Cache-Control&quot;, &quot;no-cache, must-revalidate&quot;);<br />
-response.getWriter().print(&quot;{\&quot;authStatus\&quot;:\&quot;required\&quot;}&quot;);<br />
+response.setContentType("application/json; charset=UTF-8");<br />
+response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
+response.getWriter().print("{\"authStatus\":\"required\"}");<br />
 return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
 [/code]</p>
 <p>The <code>authenticator</code>'s <code>getAuthenticationData</code> method is used by a <code>login module</code> to get collected credentials.<br />
 After the authenticated session is established, all requests are transported through the <code>changeResponseOnSuccess</code> and <code>processRequestAlreadyAuthenticated</code> methods. You can use these methods to retrieve data from requests and to update responses.</p>
 <p>[code lang="java"]<br />
 public Map&lt;String, Object&gt; getAuthenticationData() {<br />
-	logger.info(&quot;getAuthenticationData&quot;);<br />
+	logger.info("getAuthenticationData");<br />
 	return authenticationData;<br />
 }<br />
 [/code]</p>
@@ -211,10 +211,10 @@ You can use this method to modify the response before you return it to the clien
 Use it to notify a client application about the authentication success.</p>
 <p>[code lang="java"]<br />
 public boolean changeResponseOnSuccess(HttpServletRequest request, HttpServletResponse response) throws IOException {<br />
-	if (request.getRequestURI().contains(&quot;my_custom_auth_request_url&quot;)){<br />
-		response.setContentType(&quot;application/json; charset=UTF-8&quot;);<br />
-		response.setHeader(&quot;Cache-Control&quot;, &quot;no-cache, must-revalidate&quot;);<br />
-		response.getWriter().print(&quot;{\&quot;authStatus\&quot;:\&quot;complete\&quot;}&quot;);<br />
+	if (request.getRequestURI().contains("my_custom_auth_request_url")){<br />
+		response.setContentType("application/json; charset=UTF-8");<br />
+		response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
+		response.getWriter().print("{\"authStatus\":\"complete\"}");<br />
 		return true;<br />
 	}<br />
 	return false;<br />
@@ -230,9 +230,9 @@ public AuthenticationResult processRequestAlreadyAuthenticated(HttpServletReques
 <p>[code lang="java"]<br />
 public AuthenticationResult processAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,<br />
 		String errorMessage) throws IOException, ServletException {</p>
-<p>	response.setContentType(&quot;application/json; charset=UTF-8&quot;);<br />
-	response.setHeader(&quot;Cache-Control&quot;, &quot;no-cache, must-revalidate&quot;);<br />
-	response.getWriter().print(&quot;{\&quot;authStatus\&quot;:\&quot;required\&quot;, \&quot;errorMessage\&quot;:\&quot;&quot; + errorMessage + &quot;\&quot;}&quot;);<br />
+<p>	response.setContentType("application/json; charset=UTF-8");<br />
+	response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
+	response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"" + errorMessage + "\"}");<br />
 	return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
 }<br />
 [/code]</p>
@@ -286,19 +286,19 @@ When called, the <code>login</code> method gets an <strong><code>authenticationD
 <p>If the validation fails, the <code>login</code> method can either return <code>false</code> or throw a <code>RuntimeException</code>. The exception string is returned to the <code>authenticator</code> as an <code>errorMessage</code> parameter.</p>
 <p>[code lang="java"]<br />
 public boolean login(Map&lt;String, Object&gt; authenticationData) {<br />
-	USERNAME = (String) authenticationData.get(&quot;username&quot;);<br />
-	PASSWORD = (String) authenticationData.get(&quot;password&quot;);</p>
-<p>	if (USERNAME.equals(&quot;user&quot;) &amp;&amp; PASSWORD.equals(&quot;12345&quot;))<br />
+	USERNAME = (String) authenticationData.get("username");<br />
+	PASSWORD = (String) authenticationData.get("password");</p>
+<p>	if (USERNAME.equals("user") &amp;&amp; PASSWORD.equals("12345"))<br />
 		return true;<br />
 	else<br />
-		throw new RuntimeException(&quot;Invalid credentials&quot;);<br />
+		throw new RuntimeException("Invalid credentials");<br />
 }<br />
 [/code]</p>
 <p>The <code>createIdentity</code> method is called when the <code>login</code> method returns <code>true</code>. It is used to create a <code>UserIdentity</code> object. You can store your own custom attributes in it to use later in Java or adapter code.</p>
 <p>[code lang="java"]<br />
 public UserIdentity createIdentity(String loginModule) {<br />
 	HashMap&lt;String, Object&gt; customAttributes = new HashMap&lt;String, Object&gt;();<br />
-	customAttributes.put(&quot;AuthenticationDate&quot;, new Date());</p>
+	customAttributes.put("AuthenticationDate", new Date());</p>
 <p>	UserIdentity identity = new UserIdentity(loginModule, USERNAME, null, null, customAttributes, PASSWORD);<br />
 	return identity;<br />
 }<br />
