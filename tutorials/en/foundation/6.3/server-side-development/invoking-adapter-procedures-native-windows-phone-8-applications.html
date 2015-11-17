@@ -76,14 +76,14 @@ public void onSuccess(WLResponse response)<br />
     try<br />
     {<br />
         items = invocationResponse.getResponseJSON();<br />
-        Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+        Deployment.Current.Dispatcher.BeginInvoke(() =><br />
         {<br />
             myMainPage.AddTextToReceivedTextBlock("Response Success: " + items.ToString());<br />
         });<br />
     }<br />
     catch (JsonReaderException e)<br />
     {<br />
-        Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+        Deployment.Current.Dispatcher.BeginInvoke(() =><br />
         {<br />
             myMainPage.AddTextToReceivedTextBlock("JSONException : " + e.Message);<br />
         });<br />
@@ -91,7 +91,7 @@ public void onSuccess(WLResponse response)<br />
 }</p>
 <p>public void onFailure(WLFailResponse response)<br />
 {<br />
-    Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+    Deployment.Current.Dispatcher.BeginInvoke(() =><br />
     {<br />
         myMainPage.AddTextToReceivedTextBlock("Response failed: " + response.ToString());<br />
     });<br />

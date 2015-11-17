@@ -36,26 +36,26 @@ You can use either the <strong>Design</strong> or <strong>Source</strong> editor
 <wl:adapter name="HTTPAdapter"<br />
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br />
 	xmlns:wl="http://www.ibm.com/mfp/integration"<br />
-	xmlns:http="http://www.ibm.com/mfp/integration/http"&gt;</p>
-<p>	<displayName&gt;HTTPAdapter</displayName&gt;<br />
-	<description&gt;HTTPAdapter</description&gt;<br />
-	<connectivity&gt;<br />
-		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType"&gt;<br />
-			<protocol&gt;http</protocol&gt;<br />
-			<domain&gt;rss.cnn.com</domain&gt;<br />
-			<port&gt;80</port&gt;<br />
-			<connectionTimeoutInMilliseconds&gt;30000</connectionTimeoutInMilliseconds&gt;<br />
-			<socketTimeoutInMilliseconds&gt;30000</socketTimeoutInMilliseconds&gt;<br />
-			<maxConcurrentConnectionsPerNode&gt;50</maxConcurrentConnectionsPerNode&gt;<br />
+	xmlns:http="http://www.ibm.com/mfp/integration/http"></p>
+<p>	<displayName>HTTPAdapter</displayName><br />
+	<description>HTTPAdapter</description><br />
+	<connectivity><br />
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType"><br />
+			<protocol>http</protocol><br />
+			<domain>rss.cnn.com</domain><br />
+			<port>80</port><br />
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds><br />
+			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds><br />
+			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode><br />
 			<!-- The following properties are used by the adapter's key manager for choosing specific certificate from the keystore.<br />
-			<sslCertificateAlias&gt;</sslCertificateAlias&gt;<br />
-			<sslCertificatePassword&gt;</sslCertificatePassword&gt;<br />
-			--&gt;<br />
-		</connectionPolicy&gt;<br />
-	</connectivity&gt;</p>
-<p>	<procedure name="getStories"/&gt;</p>
-<p>	<procedure name="getStoriesFiltered"/&gt;</p>
-<p></wl:adapter&gt;<br />
+			<sslCertificateAlias></sslCertificateAlias><br />
+			<sslCertificatePassword></sslCertificatePassword><br />
+			--><br />
+		</connectionPolicy><br />
+	</connectivity></p>
+<p>	<procedure name="getStories"/></p>
+<p>	<procedure name="getStoriesFiltered"/></p>
+<p></wl:adapter><br />
 [/code]</p>
 <h2>JavaScript implementation</h2>
 <p>Procedures are implemented in the adapter JavaScript file.<br />
@@ -123,13 +123,13 @@ Click <strong>Project > Properties > Builders</strong> and clear <strong>JavaScr
 <p>Use JavaScript to create a SOAP Envelope. It is possible to insert JavaScript code and variables into SOAP XML. Such additional code is evaluated at run time.</p>
 <p>[code lang="javascript"]<br />
 var request =<br />
-	<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;<br />
-		<soap:Body&gt;<br />
-			<CelsiusToFahrenheit xmlns="http://www.w3schools.com/webservices/"&gt;<br />
-				<Celsius&gt;{celsiusTemp}</Celsius&gt;<br />
-			</CelsiusToFahrenheit&gt;<br />
-		</soap:Body&gt;<br />
-	</soap:Envelope&gt;;</p>
+	<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><br />
+		<soap:Body><br />
+			<CelsiusToFahrenheit xmlns="http://www.w3schools.com/webservices/"><br />
+				<Celsius>{celsiusTemp}</Celsius><br />
+			</CelsiusToFahrenheit><br />
+		</soap:Body><br />
+	</soap:Envelope>;</p>
 <p>[/code]</p>
 <p>The<code> WL.Server.invokeHttp(options)</code> method is used to call a request for a SOAP service.</p>
 <p>The Options object must include the following properties:</p>

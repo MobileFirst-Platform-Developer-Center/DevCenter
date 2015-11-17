@@ -214,16 +214,16 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <p>By using this notification type, you can enable messages to be sent and received depending on tags.<br />
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.</p>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:<br />
-[code lang="xml"]<tags&gt;<br />
-    <tag&gt;<br />
-        <name&gt;PushTag1</name&gt;<br />
-        <description&gt;About pushTag1</description&gt;<br />
-    </tag&gt;<br />
-    <tag&gt;<br />
-        <name&gt;PushTag2</name&gt;<br />
-        <description&gt;About pushTag2</description&gt;<br />
-    </tag&gt;<br />
-</tags&gt;[/code]</p>
+[code lang="xml"]<tags><br />
+    <tag><br />
+        <name>PushTag1</name><br />
+        <description>About pushTag1</description><br />
+    </tag><br />
+    <tag><br />
+        <name>PushTag2</name><br />
+        <description>About pushTag2</description><br />
+    </tag><br />
+</tags>[/code]</p>
 <p><br clear="all" /></p>
 <h3>Client-side API methods</h3>
 <ul>
@@ -307,31 +307,31 @@ You can also modify these settings with the Application Descriptor Editor in Des
 <li>Place the <strong>API Key</strong> value instead of <strong>GCM_Key</strong>.</li>
 <li>Place the <strong>Project Number</strong> value instead of <strong>senderId</strong>.</li>
 </ul>
-<p>[code lang="xml"]<android securityTest="PushApplication-strong-mobile-securityTest" version="1.0"&gt;<br />
-        <pushSender key="GCM_key" senderId="GCM_ID"/&gt;[/code]</p>
+<p>[code lang="xml"]<android securityTest="PushApplication-strong-mobile-securityTest" version="1.0"><br />
+        <pushSender key="GCM_key" senderId="GCM_ID"/>[/code]</p>
 <h3>iOS</h3>
 <p>Place the Apple APNS certificate file at the root of the application folder or at the root of the environment folder.<br />
 Replace <code>certificate password</code> with your actual certificate password.<br />
 Replace <code>com.PushNotifications</code> with the <code>bundleId</code> of your application. Consult the Apple documentation about how to create <code>bundleId</code> for Xcode projects.</p>
-<p>[code lang="xml"]<iphone bundleId="com.PushNotifications" version="1.0"&gt;<br />
-    	<pushSender password=""/&gt;[/code]</p>
+<p>[code lang="xml"]<iphone bundleId="com.PushNotifications" version="1.0"><br />
+    	<pushSender password=""/>[/code]</p>
 <h3>Windows Phone 8</h3>
 <p>To set up non-authenticated push:<br />
-[code lang="xml"] <windowsPhone8 version="1.0"&gt;<br />
-        <uuid&gt;e446f9d1-8d04-4198-be53-9fb44ae47548</uuid&gt;<br />
-        <pushSender/&gt;[/code]</p>
+[code lang="xml"] <windowsPhone8 version="1.0"><br />
+        <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid><br />
+        <pushSender/>[/code]</p>
 <p>To set up authenticated push:<br />
-[code lang="xml"] <windowsPhone8 version="1.0"&gt;<br />
-        <uuid&gt;e446f9d1-8d04-4198-be53-9fb44ae47548</uuid&gt;<br />
-        <pushSender&gt;<br />
-        <authenticatedPush serviceName=" ... " keyAlias=" ... " keyAliasPassword=" ... "/&gt;</pushSender&gt;[/code]</p>
+[code lang="xml"] <windowsPhone8 version="1.0"><br />
+        <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid><br />
+        <pushSender><br />
+        <authenticatedPush serviceName=" ... " keyAlias=" ... " keyAliasPassword=" ... "/></pushSender>[/code]</p>
 <blockquote><p>For more information about using the certificate file, see the topic about setting up push notification for Windows Phone 8, in the user documentation.
 </p></blockquote>
 <h2 id="backendemul">Back-end emulator</h2>
 <p>The sample project for this tutorial is bundled with a back-end emulator. You can use it to simulate push notification submissions by a back-end system.<br />
 The source for the emulator can be found in the associated sample.</p>
 <p>To run the back-end emulator, open the <code>PushBackendEmulator</code> folder of the sample project in a command prompt, and then run the supplied JAR file by using the following syntax:</p>
-<p>[code]java –jar PushBackendEmulator.jar <userId&gt; <message&gt; <contextRoot&gt; <port&gt;[/code]</p>
+<p>[code]java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>[/code]</p>
 <p><span class="inline-code">userId</span> is the user name that you used to log in to the sample application.<br />
 <span class="inline-code">contextRoot</span> is the context root of your MobileFirst project.</p>
 <h3>Example</h3>

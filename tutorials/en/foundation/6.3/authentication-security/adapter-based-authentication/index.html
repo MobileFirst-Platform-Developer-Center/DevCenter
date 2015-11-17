@@ -24,16 +24,16 @@ show_children: true
 <h3>Realms</h3>
 <p>Add two authentication realms to the <span class="inline-code">realms</span> section of the <strong>authenticationConfig.xml</strong> file.</p>
 <p>[code lang="xml"]<br />
-  <realm loginModule="AuthLoginModule" name="SingleStepAuthRealm"&gt;<br />
-	<className&gt;com.worklight.integration.auth.AdapterAuthenticator</className&gt;<br />
-  	<parameter name="login-function" value="SingleStepAuthAdapter.onAuthRequired"/&gt;<br />
-  	<parameter name="logout-function" value="SingleStepAuthAdapter.onLogout"/&gt;<br />
-  </realm&gt;<br />
-  <realm loginModule="AuthLoginModule" name="DoubleStepAuthRealm"&gt;<br />
-  	<className&gt;com.worklight.integration.auth.AdapterAuthenticator</className&gt;<br />
-  	<parameter name="login-function" value="DoubleStepAuthAdapter.onAuthRequired"/&gt;<br />
-  	<parameter name="logout-function" value="DoubleStepAuthAdapter.onLogout"/&gt;<br />
-  </realm&gt;<br />
+  <realm loginModule="AuthLoginModule" name="SingleStepAuthRealm"><br />
+	<className>com.worklight.integration.auth.AdapterAuthenticator</className><br />
+  	<parameter name="login-function" value="SingleStepAuthAdapter.onAuthRequired"/><br />
+  	<parameter name="logout-function" value="SingleStepAuthAdapter.onLogout"/><br />
+  </realm><br />
+  <realm loginModule="AuthLoginModule" name="DoubleStepAuthRealm"><br />
+  	<className>com.worklight.integration.auth.AdapterAuthenticator</className><br />
+  	<parameter name="login-function" value="DoubleStepAuthAdapter.onAuthRequired"/><br />
+  	<parameter name="logout-function" value="DoubleStepAuthAdapter.onLogout"/><br />
+  </realm><br />
 [/code]</p>
 <p>These realms use the <span class="inline-code">AuthLoginModule</span> login module, which is defined later.<br />
 Using the <span class="inline-code">com.worklight.integration.auth.AdapterAuthenticator</span> class means that the server-side part of the authenticator is defined in the adapter.<br />
@@ -43,9 +43,9 @@ In both cases, the parameter value syntax is <span class="inline-code">adapterNa
 <h3>LoginModule</h3>
 <p>Add a login module to the <span class="inline-code">loginModules</span> section of the <strong>authenticationConfig.xml</strong> file and call it <span class="inline-code">AuthLoginModule</span>.</p>
 <p>[code lang="xml"]<br />
-<loginModule name="AuthLoginModule"&gt;<br />
-    <className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule</className&gt;<br />
-</loginModule&gt;<br />
+<loginModule name="AuthLoginModule"><br />
+    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
+</loginModule><br />
 [/code]</p>
 <p>Using a <span class="inline-code">NonValidatingLoginModule</span> class name means that no additional validation is performed by the MobileFirst platform, and the developer takes responsibility for the validation of credentials within the adapter.<br />
 Because all authentication-related actions are done in the adapter code, using <span class="inline-code">NonValidatingLoginModule</span> is mandatory for adapter-based authentication.</p>
@@ -54,12 +54,12 @@ Because all authentication-related actions are done in the adapter code, using <
 You must use this security test to protect the adapter procedure, so use the <span class="inline-code">customSecurityTest</span> element.<br />
 Remember the security test names. You must use them in subsequent steps.</p>
 <p>[code lang="xml"]<br />
-  <customSecurityTest name="SingleStepAuthAdapter-securityTest"&gt;<br />
-      <test isInternalUserID="true" realm="SingleStepAuthRealm"/&gt;<br />
-  </customSecurityTest&gt;<br />
-  <customSecurityTest name="DoubleStepAuthAdapter-securityTest"&gt;<br />
-      <test isInternalUserID="true" realm="DoubleStepAuthRealm"/&gt;<br />
-  </customSecurityTest&gt;<br />
+  <customSecurityTest name="SingleStepAuthAdapter-securityTest"><br />
+      <test isInternalUserID="true" realm="SingleStepAuthRealm"/><br />
+  </customSecurityTest><br />
+  <customSecurityTest name="DoubleStepAuthAdapter-securityTest"><br />
+      <test isInternalUserID="true" realm="DoubleStepAuthRealm"/><br />
+  </customSecurityTest><br />
 [/code]</p>
 <h2>Creating the server-side authentication components</h2>
 <p>The following diagram illustrates the adapter-based authentication process:<br />
@@ -69,8 +69,8 @@ Remember the security test names. You must use them in subsequent steps.</p>
 <p>Create an adapter that takes care of the authentication process. Name it <strong>SingleStepAuthAdapter</strong>.<br />
 The <strong>SingleStepAuthAdapter</strong> includes the following two procedures:</p>
 <p>[code lang="xml"]<br />
-<procedure name="submitAuthentication" securityTest="wl_unprotected"/&gt;<br />
-<procedure name="getSecretData" securityTest="SingleStepAuthAdapter-securityTest"/&gt;<br />
+<procedure name="submitAuthentication" securityTest="wl_unprotected"/><br />
+<procedure name="getSecretData" securityTest="SingleStepAuthAdapter-securityTest"/><br />
 [/code]</p>
 <ul>
 <li>The submitAuthentication procedure takes care of the authentication process. Note that when the challenge handler invokes the <code>submitAuthentication</code> call, it is responsible for handling all the possible responses. In particular, if the <code>submitAuthentication</code> call returns a challenge, it is passed to the invocation callback, and is not processed by the security framework.<br />

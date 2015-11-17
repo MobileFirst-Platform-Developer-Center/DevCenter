@@ -150,7 +150,7 @@ The clicked tab ID is analyzed and either shows or hides the <strong>webViewOver
 Loading external content can take time, so adding a Busy Indicator to improve the user experience should be considered.</p>
 <p>[code lang="javascript"]<br />
 function tabClicked(id){<br />
-    WL.Logger.debug("tabClicked &gt;&gt; id :: " + id);<br />
+    WL.Logger.debug("tabClicked >> id :: " + id);<br />
     $(".tab").addClass('hidden');<br />
     if (id=="3"){<br />
         openWebViewOverlay();<br />

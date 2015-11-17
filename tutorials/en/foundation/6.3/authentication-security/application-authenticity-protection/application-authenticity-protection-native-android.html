@@ -11,7 +11,7 @@ This is a continuation of the <a title="Application Authenticity Protection" hre
 <h4>Adding the security test</h4>
 <p>Modify the <code>application-descriptor.xml</code> file of your application.<br />
 Add the <em>securityTest</em> attribute to the Android or iPhone/iPad environment element. For example:</p>
-<p>[code lang="xml"]<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0“&gt;[/code]</p>
+<p>[code lang="xml"]<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0“>[/code]</p>
 <p>&nbsp;</p>
 <h4>Adding the public signing key</h4>
 <p><strong>Extract the public signing key of the certificate that is used to sign application bundle (<em>.apk</em> file). </strong></p>
@@ -35,14 +35,14 @@ To use the wizard:</p>
 If you decide to change the value to another, verify that you change it in both locations.</p>
 <p>The <code>application-descriptor.xml</code> file can also be edited directly to add the <em>packageName</em>:</p>
 <p>[code lang="xml" highlight="8"]<br />
-<android version="1.0" securityTest="customTests"&gt;<br />
-     <worklightSettings include="false"/&gt;<br />
-     <security&gt;<br />
-         <encryptWebResources enabled="false"/&gt;<br />
+<android version="1.0" securityTest="customTests"><br />
+     <worklightSettings include="false"/><br />
+     <security><br />
+         <encryptWebResources enabled="false"/><br />
          <testWebResourcesChecksum enabled="false"<br />
-             ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/&gt;<br />
-         <publicSigningKey&gt;MIGfM …</publicSigningKey&gt;<br />
-         <packageName&gt;com.MyBankApp</packageName&gt;<br />
-     </security&gt;<br />
-</android&gt;<br />
+             ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
+         <publicSigningKey>MIGfM …</publicSigningKey><br />
+         <packageName>com.MyBankApp</packageName><br />
+     </security><br />
+</android><br />
 [/code]</p>

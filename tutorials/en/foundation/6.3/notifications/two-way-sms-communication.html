@@ -90,10 +90,10 @@ WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);<br />
 <h2 id="setup">Setup</h2>
 <p>The SMSConfig.xmlfile specifies gateway details for both receiving and sending SMS messages.<br />
 [code lang="xml"]<br />
-<gateway id="myGateway" hostname="yourhostname.com" port="80" programName="backendProgram" toParamName="to" textParamName="text" fromParamName="from"&gt;<br />
-    <parameter encode="false" name="param1name" value="param1value"/&gt;<br />
-    <parameter encode="false" name="param2name" value="param2value"/&gt;<br />
-</gateway&gt;<br />
+<gateway id="myGateway" hostname="yourhostname.com" port="80" programName="backendProgram" toParamName="to" textParamName="text" fromParamName="from"><br />
+    <parameter encode="false" name="param1name" value="param1value"/><br />
+    <parameter encode="false" name="param2name" value="param2value"/><br />
+</gateway><br />
 [/code]</p>
 <p>You can externalize the keywords, gateway identifier, and other parameters that the SMS event handler uses to the worklight.properties configuration file.<br />
 [code lang="js"]<br />
@@ -103,9 +103,9 @@ sms.gateway.id=myGateway<br />
 [/code]</p>
 <p>By default, the SubscribeServletobject that receives the request from the gateway is protected by a security test. This security test takes a RejectingLoginModuleparameter which by default rejects any request. To enforce the security mechanism that is supported by your gateway, comment out or modify the default security test.<br />
 [code lang="xml"]<br />
-<resource id="subscribeServlet" securityTest="SubscribeServlet"&gt;<br />
-	<urlPatterns&gt;/subscribeSMS*;/receiveSMS*;/ussd*</urlPatterns&gt;<br />
-</resource&gt;<br />
+<resource id="subscribeServlet" securityTest="SubscribeServlet"><br />
+	<urlPatterns>/subscribeSMS*;/receiveSMS*;/ussd*</urlPatterns><br />
+</resource><br />
 [/code]<br />
 If you are using a reverse proxy in front of the MobileFirst Server, you can specify a mapping to the reverse proxy to allow only requests from specific hosts or IP addresses (SMS gateway). If the application server that is running MobileFirst directly receives the request from a gateway, the application server needs to be configured to allow requests from the specific hosts or IP addresses.</p>
 <h2>Run the sample</h2>

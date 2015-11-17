@@ -81,17 +81,17 @@ To run a procedure test:</p>
 </ol>
 <h2>Adapter XML structure</h2>
 <p>[code lang="xml"]<br />
-<wl:adapter name="HelloWorld"&gt;<br />
-	<displayName /&gt;<br />
-	<description /&gt;<br />
-	<connectivity&gt;<br />
-		<connectionPolicy&gt;<br />
-		<loadConstraints&gt;<br />
-	</connectivity&gt;<br />
-	<procedure /&gt;<br />
-	<procedure /&gt;<br />
+<wl:adapter name="HelloWorld"><br />
+	<displayName /><br />
+	<description /><br />
+	<connectivity><br />
+		<connectionPolicy><br />
+		<loadConstraints><br />
+	</connectivity><br />
+	<procedure /><br />
+	<procedure /><br />
 	...<br />
-</wl:adapter&gt;<br />
+</wl:adapter><br />
 [/code]</p>
 <ul>
 <li> <code>name: Mandatory. The name of the adapter.</code></li>
@@ -106,8 +106,8 @@ To run a procedure test:</p>
 <li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
 </ul>
 <p>[code lang="xml"]<br />
-<procedure name="procedure1"&gt;</procedure&gt;<br />
-<procedure name="procedure2"&gt;</procedure&gt;<br />
+<procedure name="procedure1"></procedure><br />
+<procedure name="procedure2"></procedure><br />
 [/code]</p>
 <h2>Adapter JavaScript structure</h2>
 <p>Each procedure declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />

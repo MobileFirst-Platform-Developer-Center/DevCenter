@@ -51,21 +51,21 @@ relevantTo: [hybrid]
 <p>The UI &amp; UX of the Direct Update process can be fully customized by using simple interfaces.</p>
 <h3>Server-side customization</h3>
 <p>By default, the <span class="inline-code">mobileSecurityTest</span> has Direct Update enabled in <span class="inline-code">perSession</span> mode:</p>
-<p>[code lang="xml"]<mobileSecurityTest name="mobileTests"&gt;<br />
-    <testAppAuthenticity/&gt;<br />
-    <testDeviceId provisioningType="none" /&gt;<br />
-    <testUser realm="myMobileLoginForm" /&gt;<br />
-    <testDirectUpdate mode="perSession" /&gt;<br />
-</mobileSecurityTest&gt;[/code]</p>
+<p>[code lang="xml"]<mobileSecurityTest name="mobileTests"><br />
+    <testAppAuthenticity/><br />
+    <testDeviceId provisioningType="none" /><br />
+    <testUser realm="myMobileLoginForm" /><br />
+    <testDirectUpdate mode="perSession" /><br />
+</mobileSecurityTest>[/code]</p>
 <p><br clear="all" /><br />
 To Disable Direct Update, change its mode to disabled, and similarly to override it to other modes.<br />
-[code lang="xml"]<testDirectUpdate mode=“disabled" /&gt;[/code]</p>
+[code lang="xml"]<testDirectUpdate mode=“disabled" />[/code]</p>
 <p><br clear="all" /><br />
 By default, the <span class="inline-code">customSecurityTest</span> does not have any realms.<br />
 To add a Direct Update realm to a custom security test, add a <span class="inline-code">test</span> element with the realm name <span class="inline-code">wl_directUpdateRealm</span> and define the required mode property:</p>
-<p>[code lang="xml"]<customSecurityTest name="customTests"&gt;<br />
-    <test realm="wl_directUpdateRealm" mode="perRequest"/&gt;<br />
-</customSecurityTest&gt;[/code]</p>
+<p>[code lang="xml"]<customSecurityTest name="customTests"><br />
+    <test realm="wl_directUpdateRealm" mode="perRequest"/><br />
+</customSecurityTest>[/code]</p>
 <p>For more information, review the “Direct Update as a security realm” user documentation topic.</p>
 <h2 id="internalFunction">Internal function</h2>
 <p>The application's Web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on available configuration (Per session or per request as explained above).</p>
@@ -159,14 +159,14 @@ wl.ca.key.alias.password=myCertPassword[/code]</li>
 <p>You can find the public key on the Design view of the Application Descriptor Editor.</p>
 <p> <img src="{{ site.baseurl }}/assets/backup/05_05_public_signing_key1-1024x477.png"/></p>
 <p>You can also find the public key in the Source view of the Application Descriptor Editor.</p>
-<p>[code lang="xml"]<application&gt;<br />
+<p>[code lang="xml"]<application><br />
    …<br />
    …<br />
    …<br />
-   <directUpdateAuthenticityPublicKey&gt;<br />
+   <directUpdateAuthenticityPublicKey><br />
       public keystore value<br />
-   </directUpdateAuthenticityPublicKey&gt;<br />
-</application&gt;[/code]
+   </directUpdateAuthenticityPublicKey><br />
+</application>[/code]
 </ol>
 <p><strong>Notes:</strong></p>
 <ul>

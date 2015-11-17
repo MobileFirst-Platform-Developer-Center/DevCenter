@@ -19,25 +19,25 @@ When authentication is required, the application hides <span class="inline-code"
 When authentication is complete, it does the opposite.</p>
 <h3>AppDiv</h3>
 <p>[code lang="html"]<br />
-<div id="AppDiv"&gt;<br />
-  <input type="button" id="getSecretDataButton" value="Call protected adapter procedure" onclick="getSecretData()" /&gt;<br />
-  <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('SampleAppRealm', {onSuccess:  WL.Client.reloadApp});" /&gt;<br />
-  <div id="ResponseDiv"&gt;</div&gt;<br />
-</div&gt;<br />
+<div id="AppDiv"><br />
+  <input type="button" id="getSecretDataButton" value="Call protected adapter procedure" onclick="getSecretData()" /><br />
+  <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('SampleAppRealm', {onSuccess:  WL.Client.reloadApp});" /><br />
+  <div id="ResponseDiv"></div><br />
+</div><br />
 [/code]</p>
 <p>The buttons are used to call the <strong>getSecretData</strong> procedure and to log-out.</p>
 <h3>AuthDiv</h3>
 <p>[code lang="html"]<br />
-<div id="AuthDiv" style="display: none"&gt;<br />
-  <div id="loginForm"&gt;<br />
-    <input type="text" placeholder="Enter username" id="AuthUsername" /&gt;<br />
-    <br /&gt;<br />
-    <input type="password" placeholder="Enter password" id="AuthPassword" /&gt;<br />
-    <br/&gt;<br />
-    <input type="button" class="formButton" id="AuthSubmitButton" value="Login" /&gt;<br />
-    <input type="button" class="formButton" id="AuthCancelButton" value="Cancel" /&gt;<br />
-  </div&gt;<br />
-</div&gt;<br />
+<div id="AuthDiv" style="display: none"><br />
+  <div id="loginForm"><br />
+    <input type="text" placeholder="Enter username" id="AuthUsername" /><br />
+    <br /><br />
+    <input type="password" placeholder="Enter password" id="AuthPassword" /><br />
+    <br/><br />
+    <input type="button" class="formButton" id="AuthSubmitButton" value="Login" /><br />
+    <input type="button" class="formButton" id="AuthCancelButton" value="Cancel" /><br />
+  </div><br />
+</div><br />
 [/code]</p>
 <p>The AuthDiv element is styled as display:none because it must not be displayed before authentication is requested by the server.</p>
 <h3>Challenge Handler</h3>
@@ -71,7 +71,7 @@ sampleAppRealmChallengeHandler.isCustomResponse = function(response) {<br />
         return false;<br />
     }<br />
     var indicatorIdx = response.responseText.search('j_security_check');</p>
-<p>    if (indicatorIdx &gt;= 0){<br />
+<p>    if (indicatorIdx >= 0){<br />
 		return true;<br />
 	}<br />
 	return false;<br />

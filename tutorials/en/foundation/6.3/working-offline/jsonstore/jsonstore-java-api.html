@@ -26,8 +26,8 @@ relevantTo: [android]
         try {<br />
             Context ctx = getContext();</p>
 <p>            WLJSONStore.getInstance(ctx).destroy();</p>
-<p>            List<JSONStoreCollection&gt; collections =<br />
-                    new LinkedList<JSONStoreCollection&gt;();<br />
+<p>            List<JSONStoreCollection> collections =<br />
+                    new LinkedList<JSONStoreCollection>();<br />
             JSONStoreCollection people = new JSONStoreCollection("people");<br />
             people.setSearchField("name", SearchFieldType.STRING);<br />
             people.setSearchField("age", SearchFieldType.INTEGER);<br />
@@ -37,7 +37,7 @@ relevantTo: [android]
             JSONObject data2 = new JSONObject("{age: 30, name: 'mike'}");</p>
 <p>            people.addData(data1);<br />
             people.addData(data2);</p>
-<p>            List<JSONObject&gt; results = people.findAllDocuments();</p>
+<p>            List<JSONObject> results = people.findAllDocuments();</p>
 <p>            assertEquals(<br />
                 new JSONObject("{_id: 1, "<br />
                         + "json: {'name' : 'carlos', 'age' : 20}}")<br />

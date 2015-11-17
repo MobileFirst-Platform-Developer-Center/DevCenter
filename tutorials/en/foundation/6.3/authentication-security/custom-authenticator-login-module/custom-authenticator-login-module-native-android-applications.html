@@ -31,7 +31,7 @@ public boolean isCustomResponse(WLResponse response) {<br />
 	if (response == null || response.getResponseJSON() == null) {<br />
 		return false;<br />
 	}<br />
-	if(response.toString().indexOf("authStatus") &gt; -1){<br />
+	if(response.toString().indexOf("authStatus") > -1){<br />
 		return true;<br />
 	}<br />
 	else{<br />
@@ -65,7 +65,7 @@ public void submitLogin(int resultCode, String userName, String password, boolea
 	if (resultCode != Activity.RESULT_OK || back) {<br />
 		submitFailure(cachedResponse);<br />
 	} else {<br />
-		HashMap<String, String&gt; params = new HashMap<String, String&gt;();<br />
+		HashMap<String, String> params = new HashMap<String, String>();<br />
 		params.put("username", userName);<br />
 		params.put("password", password);<br />
 		submitLoginForm("/my_custom_auth_request_url", params, null, 0, "post");<br />

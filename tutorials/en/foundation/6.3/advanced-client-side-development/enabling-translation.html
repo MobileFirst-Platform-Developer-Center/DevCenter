@@ -33,7 +33,7 @@ Messages = {<br />
 <p>Application messages that are stored in the <em>messages.js</em> file can be referenced in two ways:<br />
 As a JavaScript object property, for example: <em>Messages.headerText</em> or as an ID of an HTML element with <code>class="translate"</code>.<br />
 [code lang="html" title="A 1=that 2=is 3=defined 4=in 5=Messages.headerText 6=is 7=automatically 8=used 9=here." language="string"]<br />
-<h1 id="headerText" class="translate"&gt;</h1&gt;<br />
+<h1 id="headerText" class="translate"></h1><br />
 [/code]</p>
 <h2>Enabling translation of system messages</h2>
 <p>It is also possible to translate system messages that the application shows, for example "Internet connection is not available" or "Invalid username or password".<br />
@@ -102,8 +102,8 @@ Use the <em>WL.App.getDeviceLocale()</em> and <em>WL.App.getDeviceLanguage()</em
 [code lang="javascript"]<br />
 var locale = WL.App.getDeviceLocale();<br />
 var lang = WL.App.getDeviceLanguage();<br />
-WL.Logger.debug("&gt;&gt; Detected locale: " + locale);<br />
-WL.Logger.debug("&gt;&gt; Detected language: " + lang);<br />
+WL.Logger.debug(">> Detected locale: " + locale);<br />
+WL.Logger.debug(">> Detected language: " + lang);<br />
 [/code]<br />
 <img src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png"/></p>
 <h2>Sample application</h2>

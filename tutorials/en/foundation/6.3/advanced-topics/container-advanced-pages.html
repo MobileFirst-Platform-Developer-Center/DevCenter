@@ -70,48 +70,48 @@ You cannot use the sample that is associated with this tutorial as is with the f
 <h3 id="mobileViews">Mobile views</h3>
 <p>Dojo provides mobile widgets that developers can use to quickly generate mobile views.</p>
 <p>[code lang="html" title="location.jsp" firstline="53"]<br />
-<div id="locations" dojoType="dojox.mobile.ScrollableView" selected="true"&gt;<br />
-    <h1 dojoType="dojox.mobile.Heading" label="Locations" fixed="top"&gt;</h1&gt;<br />
-    <div class="list-category" dojoType="dojox.mobile.RoundRectCategory"&gt;USA</div&gt;<br />
-    <ul dojoType="dojox.mobile.RoundRectList"&gt;<br />
-        <c:forEach var="location" items="${applicationScope.locationRegistryList['usa']}"&gt;<br />
+<div id="locations" dojoType="dojox.mobile.ScrollableView" selected="true"><br />
+    <h1 dojoType="dojox.mobile.Heading" label="Locations" fixed="top"></h1><br />
+    <div class="list-category" dojoType="dojox.mobile.RoundRectCategory">USA</div><br />
+    <ul dojoType="dojox.mobile.RoundRectList"><br />
+        <c:forEach var="location" items="${applicationScope.locationRegistryList['usa']}"><br />
             <li dojoType="dojox.mobile.ListItem" class="mblVariableHeight"<br />
             url="./conferences.jsp?locationId=${location}"<br />
-            urlTarget="conferences" transition="slide"&gt;<br />
-                <div class="list-detail"&gt;<br />
-                    <div&gt;${locationMap[location].city}, ${locationMap[location].state}</div&gt;<br />
-                </div&gt;<br />
-            </li&gt;<br />
-        </c:forEach&gt;<br />
-    </ul&gt;<br />
-</div&gt;<br />
+            urlTarget="conferences" transition="slide"><br />
+                <div class="list-detail"><br />
+                    <div>${locationMap[location].city}, ${locationMap[location].state}</div><br />
+                </div><br />
+            </li><br />
+        </c:forEach><br />
+    </ul><br />
+</div><br />
 [/code]</p>
 <p>JSTL provides a simple API for iterating over lists to generate Dojox Mobile list items dynamically on the server.</p>
 <h3 id="formClient">Form-based authentication - client</h3>
 <p>IBM Mobile Conference application requires users to be registered and authenticated with the enterprise that is hosting the application. The application is protected by a form-based login, by using a mobile web form that is contained within a Dojox Mobile view.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/login1.png"/></p>
 <p>[code lang="html" title="logon.jsp" firstline="50"]<br />
-<div dojoType="dojox.mobile.View"&gt;<br />
+<div dojoType="dojox.mobile.View"><br />
         <c:set var="conferences" scope="session"<br />
-            value=""&gt;</c:set&gt;<br />
-        <!-- a sample heading --&gt;<br />
-        <h1 style="text-align: center;" dojoType="dojox.mobile.Heading"&gt;IBM Mobile Conference App</h1&gt;<br />
-        <form action="j_security_check" method="post" name="loginForm"&gt;<br />
-            <div class="logonClass"&gt;<br />
-                <div&gt;<br />
-                    <span&gt;Username </code&gt; <input id="username" dojoType="dojox.mobile.TextBox"<br />
-                        name="j_username" /&gt;<br />
-                </div&gt;<br />
-                <div&gt;<br />
-                    <span&gt;Password </code&gt; <input id="password" type=password name="j_password"<br />
-                        dojoType="dojox.mobile.TextBox"&gt; </input&gt;</p>
-<p>                </div&gt;<br />
-                <div style="text-align: center;"&gt;<br />
-                    <input id="login" type="submit" class="mblButton" value="Login"/&gt;<br />
-                </div&gt;<br />
-            </div&gt;<br />
-        </form&gt;<br />
-</div&gt;<br />
+            value=""></c:set><br />
+        <!-- a sample heading --><br />
+        <h1 style="text-align: center;" dojoType="dojox.mobile.Heading">IBM Mobile Conference App</h1><br />
+        <form action="j_security_check" method="post" name="loginForm"><br />
+            <div class="logonClass"><br />
+                <div><br />
+                    <span>Username </code> <input id="username" dojoType="dojox.mobile.TextBox"<br />
+                        name="j_username" /><br />
+                </div><br />
+                <div><br />
+                    <span>Password </code> <input id="password" type=password name="j_password"<br />
+                        dojoType="dojox.mobile.TextBox"> </input></p>
+<p>                </div><br />
+                <div style="text-align: center;"><br />
+                    <input id="login" type="submit" class="mblButton" value="Login"/><br />
+                </div><br />
+            </div><br />
+        </form><br />
+</div><br />
 [/code]</p>
 <h3 id="formServer">Form-based authentication - server</h3>
 <p>The IBM Mobile Conference application is configured to use Java Enterprise Edition Role Support.</p>
@@ -120,107 +120,107 @@ You cannot use the sample that is associated with this tutorial as is with the f
 <li>Support for logout in addition to Java Enterprise Edition standard logout functionality</li>
 </ul>
 <p>[code lang="xml" title="web.xml" firstline="29" highlight="30,41,42,43,46"]<br />
-<security-role&gt;<br />
-    <role-name&gt;worklightadmin</role-name&gt;<br />
-</security-role&gt;<br />
-<security-constraint&gt;<br />
-    <display-name&gt;SecurityConstraint</display-name&gt;<br />
-    <web-resource-collection&gt;<br />
-        <web-resource-name&gt;Conference</web-resource-name&gt;<br />
-        <url-pattern&gt;/common/location.jsp</url-pattern&gt;<br />
-        <url-pattern&gt;/common/confs.jsp</url-pattern&gt;<br />
-        <url-pattern&gt;/common/presenter.jsp</url-pattern&gt;<br />
-        <url-pattern&gt;/common/sessions.jsp</url-pattern&gt;<br />
-    </web-resource-collection&gt;<br />
-    <auth-constraint&gt;<br />
-        <role-name&gt;worklightadmin</role-name&gt;<br />
-    </auth-constraint&gt;<br />
-</security-constraint&gt;<br />
-<login-config&gt;<br />
-    <auth-method&gt;FORM</auth-method&gt;<br />
-    <form-login-config&gt;<br />
-        <form-login-page&gt;/common/logon.jsp</form-login-page&gt;<br />
-        <form-error-page&gt;/common/logonError.jsp</form-error-page&gt;<br />
-    </form-login-config&gt;<br />
-</login-config&gt;<br />
+<security-role><br />
+    <role-name>worklightadmin</role-name><br />
+</security-role><br />
+<security-constraint><br />
+    <display-name>SecurityConstraint</display-name><br />
+    <web-resource-collection><br />
+        <web-resource-name>Conference</web-resource-name><br />
+        <url-pattern>/common/location.jsp</url-pattern><br />
+        <url-pattern>/common/confs.jsp</url-pattern><br />
+        <url-pattern>/common/presenter.jsp</url-pattern><br />
+        <url-pattern>/common/sessions.jsp</url-pattern><br />
+    </web-resource-collection><br />
+    <auth-constraint><br />
+        <role-name>worklightadmin</role-name><br />
+    </auth-constraint><br />
+</security-constraint><br />
+<login-config><br />
+    <auth-method>FORM</auth-method><br />
+    <form-login-config><br />
+        <form-login-page>/common/logon.jsp</form-login-page><br />
+        <form-error-page>/common/logonError.jsp</form-error-page><br />
+    </form-login-config><br />
+</login-config><br />
 [/code]</p>
 <p>[code lang="html" title="location.jsp" firstline="114" highlight="115,118"]<br />
-<div style="position: relative; float: left;"&gt;<br />
-    <form method="post" action="conferenceLogout.jsp" name="logout"&gt;<br />
+<div style="position: relative; float: left;"><br />
+    <form method="post" action="conferenceLogout.jsp" name="logout"><br />
         <span data-dojo-type="dojox.mobile.ToolBarButton"<br />
             data-dojo-props='onClick:function(){<br />
                 document.forms["logout"].submit();<br />
             },<br />
-            transition:"slide"'&gt;Logout</code&gt;<br />
-        <input type="hidden" name="logoutExitPage" value="/"&gt;<br />
-    </form&gt;<br />
-</div&gt;<br />
+            transition:"slide"'>Logout</code><br />
+        <input type="hidden" name="logoutExitPage" value="/"><br />
+    </form><br />
+</div><br />
 [/code]</p>
 <h3 id="registry">Simplified user registry and role configuration</h3>
 <p>Make these changes in your <strong>server.xml</strong> file, depending which server you use:</p>
 <p>MobileFirst Development Server (Liberty):</p>
 <p>[code lang="xml" title="server.xml" highlight="9,25-31,35-39"]<br />
-<server description="new server"&gt;<br />
-    <featureManager&gt;<br />
-        <feature&gt;servlet-3.0</feature&gt;<br />
-        <feature&gt;jndi-1.0</feature&gt;<br />
-        <feature&gt;jdbc-4.0</feature&gt;<br />
-        <feature&gt;localConnector-1.0</feature&gt;<br />
-        <feature&gt;restConnector-1.0</feature&gt;<br />
-        <feature&gt;jsp-2.2</feature&gt;<br />
-        <feature&gt;appSecurity-1.0</feature&gt;<br />
-        <feature&gt;ssl-1.0</feature&gt;<br />
-    </featureManager&gt;</p>
+<server description="new server"><br />
+    <featureManager><br />
+        <feature>servlet-3.0</feature><br />
+        <feature>jndi-1.0</feature><br />
+        <feature>jdbc-4.0</feature><br />
+        <feature>localConnector-1.0</feature><br />
+        <feature>restConnector-1.0</feature><br />
+        <feature>jsp-2.2</feature><br />
+        <feature>appSecurity-1.0</feature><br />
+        <feature>ssl-1.0</feature><br />
+    </featureManager></p>
 <p>    ...</p>
-<p>    <httpEndpoint host="*" httpPort="10080" httpsPort="10443" id="defaultHttpEndpoint"&gt;<br />
-        <tcpOptions soReuseAddr="true"/&gt;</p>
-<p>    </httpEndpoint&gt;</p>
+<p>    <httpEndpoint host="*" httpPort="10080" httpsPort="10443" id="defaultHttpEndpoint"><br />
+        <tcpOptions soReuseAddr="true"/></p>
+<p>    </httpEndpoint></p>
 <p>    ...<br />
-    <applicationMonitor updateTrigger="mbean"/&gt;</p>
+    <applicationMonitor updateTrigger="mbean"/></p>
 <p>    ...</p>
-<p>    <basicRegistry id="worklight" realm="worklightRealm"&gt;<br />
-        <user name="demo" password="demo"/&gt;<br />
-        <user name="monitor" password="demo"/&gt;<br />
-        <user name="deployer" password="demo"/&gt;<br />
-        <user name="operator" password="demo"/&gt;<br />
-        <user name="admin" password="admin"/&gt;<br />
-    </basicRegistry&gt;</p>
+<p>    <basicRegistry id="worklight" realm="worklightRealm"><br />
+        <user name="demo" password="demo"/><br />
+        <user name="monitor" password="demo"/><br />
+        <user name="deployer" password="demo"/><br />
+        <user name="operator" password="demo"/><br />
+        <user name="admin" password="admin"/><br />
+    </basicRegistry></p>
 <p>    ...<br />
-    <webApplication contextRoot="conference" id="ContainerForAdvancedPagesWar" location="module_45_1_IntegrateExistingWebContentWar.war" name="ContainerForAdvancedPagesWar"&gt;<br />
-        <application-bnd&gt;<br />
-            <security-role name="worklightadmin"&gt;<br />
-                <user name="admin"/&gt;<br />
-            </security-role&gt;<br />
-        </application-bnd&gt;<br />
-    </webApplication&gt;</p>
-<p>    <application context-root="/ContainerForAdvancedPages" id="ContainerForAdvancedPages" location="ContainerForAdvancedPages.war" name="ContainerForAdvancedPages" type="war"&gt;<br />
-        <classloader commonLibraryRef="worklight-6.3.0"&gt;<br />
-            <privateLibrary&gt;<br />
-                <fileset dir="${wlp.user.dir}/shared/resources" includes="org.hsqldb.hsqldb_2.2.5.jar"/&gt;<br />
-            </privateLibrary&gt;<br />
-        </classloader&gt;<br />
-    </application&gt;</p>
+    <webApplication contextRoot="conference" id="ContainerForAdvancedPagesWar" location="module_45_1_IntegrateExistingWebContentWar.war" name="ContainerForAdvancedPagesWar"><br />
+        <application-bnd><br />
+            <security-role name="worklightadmin"><br />
+                <user name="admin"/><br />
+            </security-role><br />
+        </application-bnd><br />
+    </webApplication></p>
+<p>    <application context-root="/ContainerForAdvancedPages" id="ContainerForAdvancedPages" location="ContainerForAdvancedPages.war" name="ContainerForAdvancedPages" type="war"><br />
+        <classloader commonLibraryRef="worklight-6.3.0"><br />
+            <privateLibrary><br />
+                <fileset dir="${wlp.user.dir}/shared/resources" includes="org.hsqldb.hsqldb_2.2.5.jar"/><br />
+            </privateLibrary><br />
+        </classloader><br />
+    </application></p>
 <p>    ...<br />
-</server&gt;</p>
+</server></p>
 <p>[/code]</p>
 <p>Tomcat server:</p>
 <p>[code lang="xml" title="server.xml" highlight="9"]<br />
-<GlobalNamingResources&gt;<br />
+<GlobalNamingResources><br />
 <!-- Editable user database that can also be used by<br />
      UserDatabaseRealm to authenticate users<br />
---&gt;<br />
+--><br />
 <Resource auth="Container"<br />
     description="User database that can be updated and saved"<br />
     factory="org.apache.catalina.users.MemoryUserDatabaseFactory"<br />
     name="UserDatabase"<br />
     pathname="conf/tomcat-users.xml"<br />
-    type="org.apache.catalina.UserDatabase"/&gt;<br />
-</GlobalNamingResources&gt;<br />
+    type="org.apache.catalina.UserDatabase"/><br />
+</GlobalNamingResources><br />
 [/code]</p>
 <p>Add role and user in <strong>tomcat-users.xml</strong>:</p>
 <p>[code lang="xml" title="tomcat-users.xml"]<br />
-<role rolename="worklightadmin"/&gt;<br />
-<user username="tomcat" password="tomcat" roles="worklightadmin"/&gt;<br />
+<role rolename="worklightadmin"/><br />
+<user username="tomcat" password="tomcat" roles="worklightadmin"/><br />
 [/code]</p>
 <h2 id="migrate">Migrating applications to IBM MobileFirst Platform</h2>
 <p>By using mobile web technology, you can deploy applications to the widest variety of devices.<br />
@@ -289,25 +289,25 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <p>When the IBM Mobile Conference application completes the authentication process, the mobile device client initializes the device with the server by using <code>WL.Client.init()</code>. This provides a flexible model for application integrity validation, application updates, and other features.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/platformstructure-155x300.png"/></p>
 <p>[code lang="html" title="location.jsp" firstline="39" highlight="42,46, language=51"]<br />
-<c:choose&gt;<br />
-    <c:when test="${fn:contains(iOSClient, 'Android')}"&gt;<br />
+<c:choose><br />
+    <c:when test="${fn:contains(iOSClient, 'Android')}"><br />
         <link rel="stylesheet" type="text/css"<br />
-            href="dojox/mobile/themes/android/android.css"&gt;</link&gt;<br />
-    </c:when&gt;<br />
-    <c:otherwise&gt;<br />
+            href="dojox/mobile/themes/android/android.css"></link><br />
+    </c:when><br />
+    <c:otherwise><br />
         <link rel="stylesheet" type="text/css"<br />
-            href="dojox/mobile/themes/iphone/iphone.css"&gt;</link&gt;<br />
-    </c:otherwise&gt;<br />
-</c:choose&gt;<br />
-</head&gt;</p>
-<p><body id="content" onload="WL.Client.init({onSuccess:function success(){ console.info('WL init success...'); }, connectOnStartup:false});"&gt;<br />
-    <c:set var="locationMap" value='${applicationScope.locationRegistry}' scope="session"/&gt;</p>
+            href="dojox/mobile/themes/iphone/iphone.css"></link><br />
+    </c:otherwise><br />
+</c:choose><br />
+</head></p>
+<p><body id="content" onload="WL.Client.init({onSuccess:function success(){ console.info('WL init success...'); }, connectOnStartup:false});"><br />
+    <c:set var="locationMap" value='${applicationScope.locationRegistry}' scope="session"/></p>
 <p>...</p>
 <p>[/code]</p>
 <p>[code lang="javascript" htmlscript="true" title="location.jsp" firstline="132"]<br />
-<c:choose&gt;<br />
-    <c:when test="${fn:contains(iOSClient, 'Android')}"&gt;</p>
-<p>    <script&gt;<br />
+<c:choose><br />
+    <c:when test="${fn:contains(iOSClient, 'Android')}"></p>
+<p>    <script><br />
         // Define WL namespace.<br />
         var WL = WL ? WL : {};<br />
         /**<br />
@@ -325,11 +325,11 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
    "WORKLIGHT_PLATFORM_VERSION": "6.3.0.0",<br />
    "WORKLIGHT_ROOT_URL": "\/apps\/services\/api\/AdvancedPages\/android\/"<br />
 };<br />
-</script&gt;</p>
+</script></p>
 <p>...<br />
-    </c:when&gt;<br />
-    <c:otherwise&gt;</p>
-<p>     <script&gt;<br />
+    </c:when><br />
+    <c:otherwise></p>
+<p>     <script><br />
         // Define WL namespace.<br />
         var WL = WL ? WL : {};<br />
         /**<br />
@@ -347,10 +347,10 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
    "WORKLIGHT_PLATFORM_VERSION": "6.3.0.0",<br />
    "WORKLIGHT_ROOT_URL": "\/apps\/services\/api\/AdvancedPages\/iphone\/"<br />
 };<br />
-</script&gt;<br />
+</script><br />
 ...</p>
-<p>    </c:otherwise&gt;<br />
-</c:choose&gt;<br />
+<p>    </c:otherwise><br />
+</c:choose><br />
 [/code]</p>
 <h3 id="encrypt">Encrypted Cache</h3>
 <p>The Encrypted Offline Cache (EOC) API is used for securely storing data by using HTML5 local cache. The Conference app uses EOC to save a list of favorite sessions in a secure way.</p>

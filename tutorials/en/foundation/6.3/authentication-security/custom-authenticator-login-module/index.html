@@ -43,28 +43,28 @@ For example: When credentials validation must be customized for a specific enter
 <p>In the <code>realms</code> section of <strong>authenticationConfig.xml</strong>, define a realm called <strong><code>CustomAuthenticatorRealm</code></strong>.<br />
 Make sure that it uses <strong><code>CustomLoginModule</code></strong>. Specify <code>MyCustomAuthenticator</code> as the class name, which will be implemented later.</p>
 <p>[code lang="xml"]<br />
-<realm name="CustomAuthenticatorRealm" loginModule="CustomLoginModule"&gt;<br />
-  <className&gt;com.mypackage.MyCustomAuthenticator</className&gt;<br />
-</realm&gt;<br />
+<realm name="CustomAuthenticatorRealm" loginModule="CustomLoginModule"><br />
+  <className>com.mypackage.MyCustomAuthenticator</className><br />
+</realm><br />
 [/code]</p>
 <p>In the <code>loginModules</code> section, add a <strong><code>loginModule</code></strong> called <strong><code>CustomLoginModule</code></strong>.<br />
 Specify <code>MyCustomLoginModule</code> as the class name, which will be implemented later.</p>
 <p>[code lang="xml"]<br />
-<loginModule name="CustomLoginModule"&gt;<br />
-  <className&gt;com.mypackage.MyCustomLoginModule</className&gt;<br />
-</loginModule&gt;<br />
+<loginModule name="CustomLoginModule"><br />
+  <className>com.mypackage.MyCustomLoginModule</className><br />
+</loginModule><br />
 [/code]</p>
 <p>In the <code>securityTests</code> section, add a security test.<br />
 Later, this security test will be used to protect the adapter procedure. Therefore, use a <code>customSecurityTest</code> element. Remember the security test name because it will used later.</p>
 <p>[code lang="xml"]<br />
-<customSecurityTest name="DummyAdapter-securityTest"&gt;<br />
-  <test isInternalUserID="true" realm="CustomAuthenticatorRealm" /&gt;<br />
-</customSecurityTest&gt;<br />
+<customSecurityTest name="DummyAdapter-securityTest"><br />
+  <test isInternalUserID="true" realm="CustomAuthenticatorRealm" /><br />
+</customSecurityTest><br />
 [/code]</p>
 <h2>Creating a custom Java authenticator</h2>
 <p>The <code>WorkLightAuthenticator</code> API includes the following methods:</p>
 <p>[code lang="java" gutter="false"]<br />
-void init(Map<String, String&gt; options)<br />
+void init(Map<String, String> options)<br />
 [/code]</p>
 <p>The <code>init</code> method of the <code>authenticator</code> is called when the <code>authenticator</code> instance is created. It takes the parameters that are specified in the definition of the realm in the <strong>authenticationConfig.xml</strong> file.</p>
 <p>[code lang="java" gutter="false"]<br />
@@ -80,7 +80,7 @@ AuthenticationResult processRequestAlreadyAuthenticated(HttpServletRequest reque
 [/code]</p>
 <p>The <code>processRequestAlreadyAuthenticated</code> method is called for each request from an already authenticated session.</p>
 <p>[code lang="java" gutter="false"]<br />
-Map<String, Object&gt; getAuthenticationData()<br />
+Map<String, Object> getAuthenticationData()<br />
 [/code]</p>
 <p>The <code>getAuthenticationData</code> method is used by a login module to get the credentials that are collected by an <code>authenticator</code>.</p>
 <p>[code lang="java" gutter="false"]<br />
@@ -99,7 +99,7 @@ public class MyCustomAuthenticator implements WorkLightAuthenticator{<br />
 <p>Add the <code>authenticationData</code> map to your authenticator to hold the credentials information.<br />
 This object is retrieved and used by a login module.</p>
 <p>[code lang="java" gutter="false"]<br />
-private Map<String, Object&gt; authenticationData = null;<br />
+private Map<String, Object> authenticationData = null;<br />
 [/code]</p>
 <p>You must add a dependency on server runtime libraries to use server-related classes, for example, <strong>HttpServletRequest</strong>.</p>
 <ol>
@@ -112,7 +112,7 @@ private Map<String, Object&gt; authenticationData = null;<br />
 </ol>
 <p>The <code>init</code> method is called when the authenticator is created. As its parameter, this method takes the map of options that is specified in a realm definition in the <strong>authenticationConfig.xml</strong> file.</p>
 <p>[code lang="java"]<br />
-public void init(Map<String, String&gt; options) throws MissingConfigurationOptionException {<br />
+public void init(Map<String, String> options) throws MissingConfigurationOptionException {<br />
 	logger.info("MyCustomAuthenticator initialized");<br />
 }<br />
 [/code]</p>
@@ -120,7 +120,7 @@ public void init(Map<String, String&gt; options) throws MissingConfigurationOpti
 <p>[code lang="java"]<br />
 public WorkLightAuthenticator clone() throws CloneNotSupportedException {<br />
     MyCustomAuthenticator otherAuthenticator = (MyCustomAuthenticator) super.clone();<br />
-    otherAuthenticator.authenticationData = new HashMap<String, Object&gt;(authenticationData);<br />
+    otherAuthenticator.authenticationData = new HashMap<String, Object>(authenticationData);<br />
     return otherAuthenticator;<br />
 }<br />
 [/code]</p>
@@ -131,8 +131,8 @@ public AuthenticationResult processRequest(HttpServletRequest request, HttpServl
 	if (request.getRequestURI().contains("my_custom_auth_request_url")){<br />
 		String username = request.getParameter("username");<br />
 		String password = request.getParameter("password");</p>
-<p>		if (null != username &amp;&amp; null != password &amp;&amp; username.length() &gt; 0 &amp;&amp; password.length() &gt; 0){<br />
-			authenticationData = new HashMap<String, Object&gt;();<br />
+<p>		if (null != username &amp;&amp; null != password &amp;&amp; username.length() > 0 &amp;&amp; password.length() > 0){<br />
+			authenticationData = new HashMap<String, Object>();<br />
 			authenticationData.put("username", username);<br />
 			authenticationData.put("password", password);<br />
 			return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);<br />
@@ -168,8 +168,8 @@ String password = request.getParameter("password");<br />
 <p>The <code>authenticator</code> checks the credentials for basic validity, creates an <code>authenticationData</code> object, and returns <strong><code>SUCCESS</code></strong>.<br />
 <strong><code>SUCCESS</code></strong> means only that the credentials were successfully collected; after that, the <code>login module</code> is called to validate the credentials.</p>
 <p>[code lang="java"]<br />
-if (null != username &amp;&amp; null != password &amp;&amp; username.length() &gt; 0 &amp;&amp; password.length() &gt; 0){<br />
-	authenticationData = new HashMap<String, Object&gt;();<br />
+if (null != username &amp;&amp; null != password &amp;&amp; username.length() > 0 &amp;&amp; password.length() > 0){<br />
+	authenticationData = new HashMap<String, Object>();<br />
 	authenticationData.put("username", username);<br />
 	authenticationData.put("password", password);<br />
 	return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);<br />
@@ -200,7 +200,7 @@ return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_R
 <p>The <code>authenticator</code>'s <code>getAuthenticationData</code> method is used by a <code>login module</code> to get collected credentials.<br />
 After the authenticated session is established, all requests are transported through the <code>changeResponseOnSuccess</code> and <code>processRequestAlreadyAuthenticated</code> methods. You can use these methods to retrieve data from requests and to update responses.</p>
 <p>[code lang="java"]<br />
-public Map<String, Object&gt; getAuthenticationData() {<br />
+public Map<String, Object> getAuthenticationData() {<br />
 	logger.info("getAuthenticationData");<br />
 	return authenticationData;<br />
 }<br />
@@ -239,11 +239,11 @@ public AuthenticationResult processAuthenticationFailure(HttpServletRequest requ
 <h2>Creating a custom Java login module</h2>
 <p>The <strong>WorkLightAuthLoginModule</strong> API includes the following methods:</p>
 <p>[code lang="java"]<br />
-void init(Map<String, String&gt; options)<br />
+void init(Map<String, String> options)<br />
 [/code]</p>
 <p>The <code>init</code> method of the <code>login module</code> is called when the <code>login module</code> instance is created. This method receives the options that are specified in the <code>login module</code>'s definition of the <strong>authenticationConfig.xml</strong> file.</p>
 <p>[code lang="java"]<br />
-boolean login(Map<String, Object&gt; authenticationData)<br />
+boolean login(Map<String, Object> authenticationData)<br />
 [/code]</p>
 <p>The <code>login</code> method of the login module is used to validate the credentials that are collected by the <code>authenticator</code>.</p>
 <p>[code lang="java"]<br />
@@ -270,7 +270,7 @@ private String PASSWORD;<br />
 [/code]</p>
 <p>The <code>init</code> method is called when the <code>login module</code> instance is created. As its parameter, it takes the map of options that are specified in a login module definition in the <strong>authenticationConfig.xml</strong> file.</p>
 <p>[code lang="java"]<br />
-public void init(Map<String, String&gt; options) throws MissingConfigurationOptionException {<br />
+public void init(Map<String, String> options) throws MissingConfigurationOptionException {<br />
 }<br />
 [/code]</p>
 <p>The <code>clone</code> method of the <code>login module </code>creates a deep copy of the object members.</p>
@@ -285,7 +285,7 @@ When called, the <code>login</code> method gets an <strong><code>authenticationD
 <p>In this example, the <code>login module</code> validates the credentials against hardcoded values. You can implement your own validation rules. The <code>login</code> method returns <code>true</code> if the credentials are valid.</p>
 <p>If the validation fails, the <code>login</code> method can either return <code>false</code> or throw a <code>RuntimeException</code>. The exception string is returned to the <code>authenticator</code> as an <code>errorMessage</code> parameter.</p>
 <p>[code lang="java"]<br />
-public boolean login(Map<String, Object&gt; authenticationData) {<br />
+public boolean login(Map<String, Object> authenticationData) {<br />
 	USERNAME = (String) authenticationData.get("username");<br />
 	PASSWORD = (String) authenticationData.get("password");</p>
 <p>	if (USERNAME.equals("user") &amp;&amp; PASSWORD.equals("12345"))<br />
@@ -297,7 +297,7 @@ public boolean login(Map<String, Object&gt; authenticationData) {<br />
 <p>The <code>createIdentity</code> method is called when the <code>login</code> method returns <code>true</code>. It is used to create a <code>UserIdentity</code> object. You can store your own custom attributes in it to use later in Java or adapter code.</p>
 <p>[code lang="java"]<br />
 public UserIdentity createIdentity(String loginModule) {<br />
-	HashMap<String, Object&gt; customAttributes = new HashMap<String, Object&gt;();<br />
+	HashMap<String, Object> customAttributes = new HashMap<String, Object>();<br />
 	customAttributes.put("AuthenticationDate", new Date());</p>
 <p>	UserIdentity identity = new UserIdentity(loginModule, USERNAME, null, null, customAttributes, PASSWORD);<br />
 	return identity;<br />
@@ -308,8 +308,8 @@ public UserIdentity createIdentity(String loginModule) {<br />
 public UserIdentity(String loginModule,<br />
 		String name,<br />
 		String displayName,<br />
-		Set<String&gt; roles,<br />
-		Map<String, Object&gt; attributes,<br />
+		Set<String> roles,<br />
+		Map<String, Object> attributes,<br />
 		Object credentials)<br />
 [/code]</p>
 <p>The <code>logout</code> and <code>abort</code> methods are used to clean up class members after the user logs out or aborts the authentication flow.</p>

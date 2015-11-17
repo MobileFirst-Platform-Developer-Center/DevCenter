@@ -39,11 +39,11 @@ relevantTo: [ios]
 <li>In <strong>application-descriptor.xml</strong>, add the <code>pushSender</code> tag with the <code>password</code> attribute. Use the .p12 keystore as the password value.
 <p>For example :<br />
 [code lang="xml"]<br />
-<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0"&gt;<br />
-	<displayName&gt;iOSNativePush</displayName&gt;<br />
-	<description&gt;iOSNativePush</description&gt;<br />
-	<pushSender password="apns-certificate-p12 password"/&gt;<br />
-</nativeIOSApp&gt;<br />
+<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0"><br />
+	<displayName>iOSNativePush</displayName><br />
+	<description>iOSNativePush</description><br />
+	<pushSender password="apns-certificate-p12 password"/><br />
+</nativeIOSApp><br />
 [/code]</p>
 </li>
 <li>To deploy the MobileFirst native API, right-click the native API and select <strong>"Run As >  Deploy Native API"</strong>.
@@ -212,16 +212,16 @@ This notification type enables devices to send and receive messages that are fil
 To start receiving tag-based notifications, the device must first subscribe to a push notification tag in an application.<br />
 Tags are defined in the <strong>application-descriptor.xml</strong> file:<br />
 [code lang="xml"]<br />
-<tags&gt;<br />
-    <tag&gt;<br />
-        <name&gt;PushTag1</name&gt;<br />
-        <description&gt;About pushTag1</description&gt;<br />
-    </tag&gt;<br />
-    <tag&gt;<br />
-        <name&gt;PushTag2</name&gt;<br />
-        <description&gt;About pushTag2</description&gt;<br />
-    </tag&gt;<br />
-</tags&gt;<br />
+<tags><br />
+    <tag><br />
+        <name>PushTag1</name><br />
+        <description>About pushTag1</description><br />
+    </tag><br />
+    <tag><br />
+        <name>PushTag2</name><br />
+        <description>About pushTag2</description><br />
+    </tag><br />
+</tags><br />
 [/code]</p>
 <p>Such notification is targeted to all devices that are subscribed to a tag in an application.</p>
 <p>Client-side methods:</p>

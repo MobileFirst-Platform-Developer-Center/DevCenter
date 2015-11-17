@@ -28,9 +28,9 @@ The code extracts below are based on the sample application, which is provided a
 <h2>Declaring a plug-in</h2>
 <p>The plug-in needs to be declared in the project, so that Cordova can detect it.<br />
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the native folder of the iOS environment.</p>
-<p>[code lang="xml"]<feature name=“sayHelloPlugin"&gt;<br />
-	<param name="ios-package" value=“sayHelloPlugin" /&gt;<br />
-</feature&gt;[/code]</p>
+<p>[code lang="xml"]<feature name=“sayHelloPlugin"><br />
+	<param name="ios-package" value=“sayHelloPlugin" /><br />
+</feature>[/code]</p>
 <h2>Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
 [code lang="js"]function sayHello() {<br />
@@ -65,8 +65,8 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
 <li>Add a new Cocoa Touch Class file, make sure that it is a subclass of <code>UIViewController</code>, and save it in the <code>Classes</code> folder of the Xcode project.</li>
 <li>Import the <code>Cordova/CDV.h</code> and inherit the <code>CDVPlugin</code> class.</li>
 <li>Declare the <code>SayHelloPlugin</code> signature.
-<p>    [code lang="obj-c"]#import <Foundation/Foundation.h&gt;<br />
-#import <Cordova/CDV.h&gt;</p>
+<p>    [code lang="obj-c"]#import <Foundation/Foundation.h><br />
+#import <Cordova/CDV.h></p>
 <p>@interface SayHelloPlugin : CDVPlugin<br />
 - (void)sayHello:(CDVInvokedUrlCommand*)command;<br />
 @end[/code]</li>

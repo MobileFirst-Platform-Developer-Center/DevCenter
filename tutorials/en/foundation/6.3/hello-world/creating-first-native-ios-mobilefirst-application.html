@@ -23,7 +23,7 @@ downloads:
 <ol>
     <li>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Native API.</li>
     <li>In the <b>New MobileFirst Native API</b> dialog, enter your application name and select <b>iOS</b> for the <b>Environment</b> field.</li>
-    <li>Right-click the generated NativeAPI folder (located in <code>your-projects/apps/your-nativeapi-app-name</code>) and select <b>Run As &gt; Deploy Native API</b>.<br />
+    <li>Right-click the generated NativeAPI folder (located in <code>your-projects/apps/your-nativeapi-app-name</code>) and select <b>Run As > Deploy Native API</b>.<br />
     <em>This action is required in order for MobileFirst Server to recognize the application if it attempts to connect.</em></li>
 </ol>
 
@@ -91,7 +91,7 @@ Create a Swift project and follow the same steps, as described at the beginning 
 
 <img class="responsive_img" src="{{ site.baseurl }}/assets/backup/02_02_new_swift.png"/>
 
-<p>After all the normal steps for an iOS application, go to <b>Build Settings &gt; Swift Compiler - Code Generation</b>.<br />
+<p>After all the normal steps for an iOS application, go to <b>Build Settings > Swift Compiler - Code Generation</b>.<br />
 In <b>Objective-C Bridging Header</b>, add <b>$(SRCROOT)/WorklightAPI/include/WLSwiftBridgingHeader.h</b><br />
 However, if you already have your own Bridging Header for other purposes, include the Worklight Bridging Header inside your own Bridging Header instead.</p>
 

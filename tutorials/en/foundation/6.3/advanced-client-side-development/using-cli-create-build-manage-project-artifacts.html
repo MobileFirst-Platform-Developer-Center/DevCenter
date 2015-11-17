@@ -43,11 +43,11 @@ A MobileFirst Project was successfully created at /Users/CLIUser/CLIexample/proj
 NAME<br />
      mobilefirst -- IBM MobileFirst Platform Command Line Interface (CLI).</p>
 <p>SYNOPSIS<br />
-     mfp <command&gt; [options]</p>
+     mfp <command> [options]</p>
 <p>DESCRIPTION<br />
      Command-line interface to create and manage the applications for IBM MobileFirst Platform.</p>
 <p>Global Commands</p>
-<p>     config [%lt;setting%gt;] [<value&gt;]<br />
+<p>     config [%lt;setting%gt;] [<value>]<br />
      This command allows you to set your configuration preferences.</p>
 <p>     console<br />
      This command opens the MobileFirst console in your default browser for the<br />
@@ -66,13 +66,13 @@ NAME<br />
 <p>     stop<br />
      This command stops the local test server.</p>
 <p>Project-Level Commands<br />
-     add adapter [<name&gt; --type|-t <adaptertype&gt; [--jsonstore|-j] [--ussd|-u]]<br />
+     add adapter [<name> --type|-t <adaptertype> [--jsonstore|-j] [--ussd|-u]]<br />
      This command creates a new adapter that is generated into the adapters<br />
      folder of the current project.</p>
-<p>     add api [<name&gt; --environment|-e <environment&gt;]<br />
+<p>     add api [<name> --environment|-e <environment>]<br />
      This command creates a new Native API that is generated into the apps<br />
      folder of the current project.</p>
-<p>     add environment [<type&gt;[,...] [--app|-a <app&gt;]]<br />
+<p>     add environment [<type>[,...] [--app|-a <app>]]<br />
      This command adds a platform specific environment to a hybrid application.<br />
      You can run mfp add environment (without any arguments). Prompts then<br />
      request the environments that will be generated.</p>
@@ -112,7 +112,7 @@ A new iOS API was added at /Users/CLIUser/CLIexample/projectName/apps/apiName<br
 [/code]</p>
 <h2 id="hybridApps">Creating hybrid applications</h2>
 <h3>Add a hybrid application from the CLI</h3>
-<p><code>mobilefirst add hybrid [<name&gt;]</code> – Creates a new hybrid application, which is generated into the <strong>/apps</strong> folder of the current project.</p>
+<p><code>mobilefirst add hybrid [<name>]</code> – Creates a new hybrid application, which is generated into the <strong>/apps</strong> folder of the current project.</p>
 <p>[code]<br />
 ~/CLIexample $ cd projectName<br />
 ~/CLIexample/projectName $ mfp add hybrid myApp<br />
@@ -128,7 +128,7 @@ A new hybrid app was added at /Users/CLIUser/CLIexample/projectName/apps/myApp<b
 <p>Interactive mode allows you to select one or more environments to add.</p>
 <p>[code]<br />
 ~/CLIexample/projectName/apps/myApp $ mfp add environment<br />
-[?] :What environments do you want to add to the hybrid app? (Press <space&gt; to select)<br />
+[?] :What environments do you want to add to the hybrid app? (Press <space> to select)<br />
 ❯⬡ iPhone<br />
  ⬡ iPad<br />
  ⬡ Android phone and tablets<br />
@@ -150,7 +150,7 @@ A new iphone Environment was added at /Users/CLIUser/CLIexample/myProject/apps/m
 <p>[code]<br />
 ~/CLIexample/projectName/apps/myApp $ mfp add skin<br />
 [?] What platform do you want to target? Android phone and tablets<br />
-[?] What do you want to be your skin name suffix? Your skin folder name will be 'platform.<suffix&gt;' tablets<br />
+[?] What do you want to be your skin name suffix? Your skin folder name will be 'platform.<suffix>' tablets<br />
 A new android Skin was added at /Users/CLIUser/CLIexample/projectName/apps/myApp<br />
 [/code]</p>
 <p>Direct mode:<br />
@@ -272,7 +272,7 @@ The resulting compressed file is intended to be shared with other MobileFirst de
 Project successfully exported to /Users/CLIUser/Desktop/projectName.zip<br />
 [/code]</p>
 <h3>Direct Mode project export</h3>
-<p><code>mfp export [<path to zip file&gt;]</code> - If run from the root folder of the project, direct mode takes one additional argument, which is the full path to the compressed file to create.</p>
+<p><code>mfp export [<path to zip file>]</code> - If run from the root folder of the project, direct mode takes one additional argument, which is the full path to the compressed file to create.</p>
 <p>[code]<br />
 ~/CLIexample/projectName $ mfp export /Users/CLIUser/Desktop/myProject.zip<br />
 Project successfully exported to /Users/CLIUser/Desktop/myProject.zip<br />

@@ -17,27 +17,27 @@ The <em>AuthDiv</em> element is used for authentication forms.<br />
 When authentication is required, the application hides <em>AppDiv</em> and shows <em>AuthDiv</em>. When authentication is complete, it does the opposite.</p>
 <h3>AppDiv</h3>
 <p>[code lang="html"]<br />
-<div id="AppDiv"&gt;<br />
-  <input type="button" id="getSecretDataButton" value="Call protected adapter proc" onclick="getSecretData()" /&gt;<br />
-  <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('CustomAuthenticatorRealm',{onSuccess: WL.Client.reloadApp})" /&gt;<br />
-  <div id="ResponseDiv"&gt;</div&gt;<br />
-</div&gt;<br />
+<div id="AppDiv"><br />
+  <input type="button" id="getSecretDataButton" value="Call protected adapter proc" onclick="getSecretData()" /><br />
+  <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('CustomAuthenticatorRealm',{onSuccess: WL.Client.reloadApp})" /><br />
+  <div id="ResponseDiv"></div><br />
+</div><br />
 [/code]</p>
 <p>Buttons are used to call the <em>getSecretData</em> procedure and to log out.</p>
 <h3>AuthDiv</h3>
 <p>[code lang="html"]<br />
-<div id="AuthDiv" style="display: none"&gt;<br />
-  <p id="AuthInfo"&gt;</p&gt;<br />
-  <div id="loginForm"&gt;<br />
-    <input type="text" id="AuthUsername" placeholder="Enter username" /&gt;<br />
-    <br/&gt;<br />
-    <br/&gt;<br />
-    <input type="password" id="AuthPassword" placeholder="Enter password" /&gt;<br />
-    <br/&gt;<br />
-    <input type="button" id="AuthSubmitButton" class="formButton" value="Login" /&gt;<br />
-    <input type="button" id="AuthCancelButton" class="formButton" value="Cancel" /&gt;<br />
-  </div&gt;<br />
-</div&gt;<br />
+<div id="AuthDiv" style="display: none"><br />
+  <p id="AuthInfo"></p><br />
+  <div id="loginForm"><br />
+    <input type="text" id="AuthUsername" placeholder="Enter username" /><br />
+    <br/><br />
+    <br/><br />
+    <input type="password" id="AuthPassword" placeholder="Enter password" /><br />
+    <br/><br />
+    <input type="button" id="AuthSubmitButton" class="formButton" value="Login" /><br />
+    <input type="button" id="AuthCancelButton" class="formButton" value="Cancel" /><br />
+  </div><br />
+</div><br />
 [/code]</p>
 <p><em>AuthDiv</em> is styled with <em>display:none</em> because it must not be displayed before the server requests the authentication.</p>
 <h3>Challenge Handler</h3>
