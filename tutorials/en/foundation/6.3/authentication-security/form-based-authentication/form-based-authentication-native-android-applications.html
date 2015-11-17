@@ -50,7 +50,7 @@ public void submitLogin(int resultCode, String userName, String password, boolea
 	if (resultCode != Activity.RESULT_OK || back) {<br />
 		submitFailure(cachedResponse);<br />
 	} else {<br />
-		HashMap&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();<br />
+		HashMap<String, String&gt; params = new HashMap<String, String&gt;();<br />
 		params.put("j_username", userName);<br />
 		params.put("j_password", password);<br />
 		submitLoginForm("/j_security_check", params, null, 0, "post");<br />

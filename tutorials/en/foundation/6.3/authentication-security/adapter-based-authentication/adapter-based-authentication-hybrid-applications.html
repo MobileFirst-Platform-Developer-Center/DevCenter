@@ -20,22 +20,22 @@ This is a continuation of the <a title="Adapter-based authentication" href="http
 When authentication is complete, it does the opposite.</p>
 <h3>AppDiv</h3>
 <p>[code lang="javascript"]<br />
-&lt;div id="AppDiv"&gt;<br />
-      &lt;input type="button" id="getSecretDataButton" value="Get secret data" onclick="getSecretData()" /&gt;<br />
-      &lt;input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('SingleStepAuthRealm', {onSuccess:WL.Client.reloadApp})" /&gt;<br />
-      &lt;div id="ResponseDiv"&gt;&lt;/div&gt;<br />
-&lt;/div&gt;<br />
+<div id="AppDiv"&gt;<br />
+      <input type="button" id="getSecretDataButton" value="Get secret data" onclick="getSecretData()" /&gt;<br />
+      <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('SingleStepAuthRealm', {onSuccess:WL.Client.reloadApp})" /&gt;<br />
+      <div id="ResponseDiv"&gt;</div&gt;<br />
+</div&gt;<br />
 [/code]</p>
 <p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.<br />
 The <code>ResponseDiv</code> element is used to display the <code>getSecretData</code> response.</p>
 <h3>AuthDiv</h3>
 <p>[code lang="javascript"]<br />
-&lt;div id="AuthDiv" style="display:none"&gt;<br />
-    &lt;p id="AuthInfo"&gt;&lt;/p&gt;<br />
-        &lt;input type="text" placeholder="Enter username" id="AuthUsername"/&gt;&lt;br /&gt;<br />
-        &lt;input type="password" placeholder="Enter password" id="AuthPassword"/&gt;&lt;br /&gt;<br />
-        &lt;input type="button" class="formButton" value="Submit" id="AuthSubmitButton" /&gt;&lt;input type="button" class="formButton" value="Cancel" id="AuthCancelButton" /&gt;<br />
-&lt;/div&gt;<br />
+<div id="AuthDiv" style="display:none"&gt;<br />
+    <p id="AuthInfo"&gt;</p&gt;<br />
+        <input type="text" placeholder="Enter username" id="AuthUsername"/&gt;<br /&gt;<br />
+        <input type="password" placeholder="Enter password" id="AuthPassword"/&gt;<br /&gt;<br />
+        <input type="button" class="formButton" value="Submit" id="AuthSubmitButton" /&gt;<input type="button" class="formButton" value="Cancel" id="AuthCancelButton" /&gt;<br />
+</div&gt;<br />
 [/code]</p>
 <p><code>AuthInfo</code> displays error messages.<br />
 <code>AuthUsername</code> and <code>AuthPassword</code> are used to enter credentials.<br />

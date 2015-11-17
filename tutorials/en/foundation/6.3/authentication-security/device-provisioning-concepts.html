@@ -44,11 +44,11 @@ No provisioning is the default setting for mobile applications.<br />
 If you are use the default security settings, you do not have to enable <strong>No provisioning</strong> manually.</p>
 <p>If you use a custom security test to protect a resource that requires device identity and you want to use <strong>No provisioning</strong>, add the realm to your security test. For example:</p>
 <p>[code lang="xml" highlight="4"]<br />
-&lt;customSecurityTest name="customTests"&gt;<br />
+<customSecurityTest name="customTests"&gt;<br />
   ...<br />
-  &lt;test realm="wl_anonymousUserRealm" isInternalUserID="true" /&gt;<br />
-  &lt;test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" /&gt;<br />
-&lt;/customSecurityTest&gt;<br />
+  <test realm="wl_anonymousUserRealm" isInternalUserID="true" /&gt;<br />
+  <test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" /&gt;<br />
+</customSecurityTest&gt;<br />
 [/code]</p>
 <h2>Auto provisioning</h2>
 <p><strong>Auto provisioning</strong> is an automated one-time process during which a certificate is issued by the MobileFirst Server and sent to the client application.<br />
@@ -64,18 +64,18 @@ The certificate is issued to any device that requests it, therefore <strong>Auto
 <h3>Enabling auto provisioning</h3>
 <p>To enable <strong>Auto provisioning</strong>, add the following realms to your <strong>authentication-config.xml</strong> file.</p>
 <p>[code lang="xml" title="If 1=use 2=a 3=custom 4=security 5=test:" language="you"]<br />
-&lt;customSecurityTest name="customTests"&gt;<br />
+<customSecurityTest name="customTests"&gt;<br />
   …<br />
-  &lt;test realm="wl_authenticityRealm" /&gt;<br />
-  &lt;test realm="wl_deviceAutoProvisioningRealm" isInternalDeviceID="true" /&gt;<br />
-&lt;/customSecurityTest&gt;<br />
+  <test realm="wl_authenticityRealm" /&gt;<br />
+  <test realm="wl_deviceAutoProvisioningRealm" isInternalDeviceID="true" /&gt;<br />
+</customSecurityTest&gt;<br />
 [/code]</p>
 <p>[code lang="xml" title="If 1=use 2=a 3=mobile 4=security 5=test:" language="you"]<br />
-&lt;mobileSecurityTest name="mobileTests"&gt;<br />
+<mobileSecurityTest name="mobileTests"&gt;<br />
   ...<br />
-  &lt;testAppAuthenticity/&gt;<br />
-  &lt;testDeviceId provisioningType="auto" /&gt;<br />
-&lt;/mobileSecurityTest&gt;<br />
+  <testAppAuthenticity/&gt;<br />
+  <testDeviceId provisioningType="auto" /&gt;<br />
+</mobileSecurityTest&gt;<br />
 [/code]</p>
 <h3>keystore</h3>
 <p>By default, the MobileFirst Server uses its internal keystore to issue a certificate.<br />

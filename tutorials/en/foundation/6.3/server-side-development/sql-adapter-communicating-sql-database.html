@@ -37,21 +37,21 @@ You can use either the Design or the Source editor to modify the adapter XML fil
 - Username<br />
 - Password</p>
 <p>[code lang="xml"]<br />
-	&lt;connectivity&gt;<br />
-		&lt;connectionPolicy xsi:type="sql:SQLConnectionPolicy"&gt;<br />
-			&lt;dataSourceDefinition&gt;<br />
-				&lt;driverClass&gt;com.mysql.jdbc.Driver&lt;/driverClass&gt;<br />
-				&lt;url&gt;jdbc:mysql://localhost:3306/mobilefirst_training&lt;/url&gt;<br />
-			    &lt;user&gt;mobilefirst&lt;/user&gt;<br />
-    			&lt;password&gt;mobilefirst&lt;/password&gt;<br />
-			&lt;/dataSourceDefinition&gt;<br />
-		&lt;/connectionPolicy&gt;<br />
-	&lt;/connectivity&gt;<br />
+	<connectivity&gt;<br />
+		<connectionPolicy xsi:type="sql:SQLConnectionPolicy"&gt;<br />
+			<dataSourceDefinition&gt;<br />
+				<driverClass&gt;com.mysql.jdbc.Driver</driverClass&gt;<br />
+				<url&gt;jdbc:mysql://localhost:3306/mobilefirst_training</url&gt;<br />
+			    <user&gt;mobilefirst</user&gt;<br />
+    			<password&gt;mobilefirst</password&gt;<br />
+			</dataSourceDefinition&gt;<br />
+		</connectionPolicy&gt;<br />
+	</connectivity&gt;<br />
 [/code]</p>
 </li>
 <li>Declare a procedure in the adapter XML file.
 <p>[code lang="xml"]<br />
-&lt;procedure name="getAccountTransactions1"/&gt;<br />
+<procedure name="getAccountTransactions1"/&gt;<br />
 [/code]
 </li>
 </ol>

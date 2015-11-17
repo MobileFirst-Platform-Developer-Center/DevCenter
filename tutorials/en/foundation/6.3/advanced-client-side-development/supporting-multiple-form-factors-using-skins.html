@@ -44,29 +44,29 @@ function getSkinName() {<br />
 Registration determines the ordering of hierarchy between the common folder, environment, and skin.<br />
 If you remove a skin from the project, <em>application-decsriptor.xml</em> must be manually modified.</p>
 <p>[code lang="xml"]<br />
-    &lt;android version="1.0"&gt;<br />
-        &lt;skins&gt;<br />
-            &lt;skin name="default"&gt;<br />
-                &lt;folder name="common"/&gt;<br />
-                &lt;folder name="android"/&gt;<br />
-            &lt;/skin&gt;<br />
-            &lt;skin name="android.tablet"&gt;<br />
-                &lt;folder name="common"/&gt;<br />
-                &lt;folder name="android"/&gt;<br />
-                &lt;folder name="android.tablet"/&gt;<br />
-            &lt;/skin&gt;<br />
-            &lt;skin name="android.phone"&gt;<br />
-                &lt;folder name="common"/&gt;<br />
-                &lt;folder name="android"/&gt;<br />
-                &lt;folder name="android.phone"/&gt;<br />
-            &lt;/skin&gt;<br />
-        &lt;/skins&gt;<br />
-        &lt;worklightSettings include="false"/&gt;<br />
-        &lt;security&gt;<br />
-            &lt;encryptWebResources enabled="false"/&gt;<br />
-            &lt;testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/&gt;<br />
-            &lt;publicSigningKey&gt;Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.&lt;/publicSigningKey&gt;<br />
-            &lt;packageName&gt;Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in AndroidManifest.xml file.&lt;/packageName&gt;<br />
-        &lt;/security&gt;<br />
-    &lt;/android&gt;<br />
+    <android version="1.0"&gt;<br />
+        <skins&gt;<br />
+            <skin name="default"&gt;<br />
+                <folder name="common"/&gt;<br />
+                <folder name="android"/&gt;<br />
+            </skin&gt;<br />
+            <skin name="android.tablet"&gt;<br />
+                <folder name="common"/&gt;<br />
+                <folder name="android"/&gt;<br />
+                <folder name="android.tablet"/&gt;<br />
+            </skin&gt;<br />
+            <skin name="android.phone"&gt;<br />
+                <folder name="common"/&gt;<br />
+                <folder name="android"/&gt;<br />
+                <folder name="android.phone"/&gt;<br />
+            </skin&gt;<br />
+        </skins&gt;<br />
+        <worklightSettings include="false"/&gt;<br />
+        <security&gt;<br />
+            <encryptWebResources enabled="false"/&gt;<br />
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/&gt;<br />
+            <publicSigningKey&gt;Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.</publicSigningKey&gt;<br />
+            <packageName&gt;Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in AndroidManifest.xml file.</packageName&gt;<br />
+        </security&gt;<br />
+    </android&gt;<br />
 [/code]</p>

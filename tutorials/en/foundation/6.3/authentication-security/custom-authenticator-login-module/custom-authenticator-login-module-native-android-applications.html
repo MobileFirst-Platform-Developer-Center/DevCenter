@@ -65,7 +65,7 @@ public void submitLogin(int resultCode, String userName, String password, boolea
 	if (resultCode != Activity.RESULT_OK || back) {<br />
 		submitFailure(cachedResponse);<br />
 	} else {<br />
-		HashMap&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();<br />
+		HashMap<String, String&gt; params = new HashMap<String, String&gt;();<br />
 		params.put("username", userName);<br />
 		params.put("password", password);<br />
 		submitLoginForm("/my_custom_auth_request_url", params, null, 0, "post");<br />

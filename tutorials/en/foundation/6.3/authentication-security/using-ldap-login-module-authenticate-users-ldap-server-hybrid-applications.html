@@ -20,31 +20,31 @@ For more information about how to implement <strong>UsernamePasswordAuthenticato
 Use <strong>FormBasedAuthenticator</strong> in the <code>className</code> element because it implements the required <strong>UsernamePasswordAuthenticator</strong> interface.<br />
 This realm uses <strong>LDAPLoginModule</strong> as a login module, which will be defined later.</p>
 <p>[code lang="xml"]<br />
-&lt;realm loginModule="LDAPLoginModule" name="LDAPRealm"&gt;<br />
-  &lt;className&gt;com.worklight.core.auth.ext.FormBasedAuthenticator&lt;/className&gt;<br />
-&lt;/realm&gt;<br />
+<realm loginModule="LDAPLoginModule" name="LDAPRealm"&gt;<br />
+  <className&gt;com.worklight.core.auth.ext.FormBasedAuthenticator</className&gt;<br />
+</realm&gt;<br />
 [/code]</p>
 <p>To protect a specific resource add the <code>onLoginUrl</code> element as follow:<br />
 [code lang="xml"]<br />
-&lt;realm loginModule="LDAPLoginModule" name="LDAPRealm"&gt;<br />
-  &lt;className&gt;com.worklight.core.auth.ext.FormBasedAuthenticator&lt;/className&gt;<br />
-  &lt;onLoginUrl&gt;/console&lt;/onLoginUrl&gt;<br />
-&lt;/realm&gt;<br />
+<realm loginModule="LDAPLoginModule" name="LDAPRealm"&gt;<br />
+  <className&gt;com.worklight.core.auth.ext.FormBasedAuthenticator</className&gt;<br />
+  <onLoginUrl&gt;/console</onLoginUrl&gt;<br />
+</realm&gt;<br />
 [/code]<br />
 <br clear="all" /></p>
 <h3>Login Module</h3>
 <p>Add a login module to the <code>loginModules</code> section and call it <strong>LDAPLoginModule</strong>.</p>
 <p>[code lang="xml"]<br />
-&lt;loginModule name="LDAPLoginModule"&gt;<br />
-  &lt;className&gt;com.worklight.core.auth.ext.LdapLoginModule&lt;/className&gt;<br />
-  &lt;parameter name="ldapProviderUrl" value="ldap://10.0.1.2" /&gt;<br />
-  &lt;parameter name="ldapTimeoutMs" value="2000" /&gt;<br />
-  &lt;parameter name="ldapSecurityAuthentication" value="simple" /&gt;<br />
-  &lt;parameter name="validationType" value="searchPattern" /&gt;<br />
-  &lt;parameter name="ldapSecurityPrincipalPattern" value="{username}@myserver.com" /&gt;<br />
-  &lt;parameter name="ldapSearchFilterPattern" value="(&amp;amp;(objectClass=user)(sAMAccountName={username})(memberof=CN=Sales,OU=Groups,OU=MyCompany,DC=myserver,DC=com))" /&gt;<br />
-  &lt;parameter name="ldapSearchBase" value="dc=myserver,dc=com" /&gt;<br />
-&lt;/loginModule&gt;<br />
+<loginModule name="LDAPLoginModule"&gt;<br />
+  <className&gt;com.worklight.core.auth.ext.LdapLoginModule</className&gt;<br />
+  <parameter name="ldapProviderUrl" value="ldap://10.0.1.2" /&gt;<br />
+  <parameter name="ldapTimeoutMs" value="2000" /&gt;<br />
+  <parameter name="ldapSecurityAuthentication" value="simple" /&gt;<br />
+  <parameter name="validationType" value="searchPattern" /&gt;<br />
+  <parameter name="ldapSecurityPrincipalPattern" value="{username}@myserver.com" /&gt;<br />
+  <parameter name="ldapSearchFilterPattern" value="(&amp;amp;(objectClass=user)(sAMAccountName={username})(memberof=CN=Sales,OU=Groups,OU=MyCompany,DC=myserver,DC=com))" /&gt;<br />
+  <parameter name="ldapSearchBase" value="dc=myserver,dc=com" /&gt;<br />
+</loginModule&gt;<br />
 [/code]</p>
 <p>Use <strong>com.worklight.core.auth.ext.LdapLoginModule</strong> in the <code>className</code> element.<br />
 The <strong>ldapProviderUrl</strong> parameter is mandatory. It defines the URL of your LDAP server.<br />
@@ -65,15 +65,15 @@ The <strong>ldapSearchFilterPattern</strong> and <strong>ldapSearchBase</strong>
 You use this security test to protect the adapter procedure. Therefore, use the <code>customSecurityTest</code> element.<br />
 Remember the security test name as it will be needed later.</p>
 <p>[code lang="xml"]<br />
-&lt;customSecurityTest name="LDAPSecurityTest"&gt;<br />
-  &lt;test realm="wl_directUpdateRealm" step="1" /&gt;<br />
-  &lt;test isInternalUserID="true" realm="LDAPRealm" /&gt;<br />
-&lt;/customSecurityTest&gt;<br />
+<customSecurityTest name="LDAPSecurityTest"&gt;<br />
+  <test realm="wl_directUpdateRealm" step="1" /&gt;<br />
+  <test isInternalUserID="true" realm="LDAPRealm" /&gt;<br />
+</customSecurityTest&gt;<br />
 [/code]</p>
 <h2>Protecting a JavaScript Adapter</h2>
 <p>Create an adapter and name it <strong>DummyAdapter</strong>.<br />
 Add a <code>getSecretData</code> procedure and protect it with the security test that you created in previously.</p>
-<p>[code lang="xml"]&lt;procedure name="getSecretData" securityTest="LDAPSecurityTest"/&gt;[/code]</p>
+<p>[code lang="xml"]<procedure name="getSecretData" securityTest="LDAPSecurityTest"/&gt;[/code]</p>
 <p>In this module, the <code>getSecretData</code> procedure returns some hardcoded value:</p>
 <p>[code lang="javascript"]<br />
 function getSecretData(){<br />
@@ -96,7 +96,7 @@ function getSecretData(){<br />
 [/code]</p>
 <p>To set our new realm as the default user identity for the application, in the application descriptor, add this option:<br />
 [code lang="xml"]<br />
-&lt;userIdentityRealms&gt;LDAPRealm&lt;/userIdentityRealms&gt;<br />
+<userIdentityRealms&gt;LDAPRealm</userIdentityRealms&gt;<br />
 [/code]</p>
 <h2>Creating the client-side authentication components</h2>
 <p>The application consists of two main <code>div</code> elements:<br />
@@ -105,24 +105,24 @@ The <code>AuthDiv</code> element is used for authentication forms.<br />
 When authentication is required, the application hides the <code>AppDiv</code> element and shows the <code>AuthDiv</code> element.<br />
 When authentication is complete, it does the opposite.</p>
 <p>[code lang="html"]<br />
-&lt;div id="AppDiv"&gt;<br />
-  &lt;input type="button" class="appButton" value="Call protected adapter proc" onclick="getSecretData()" /&gt;<br />
-  &lt;input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('LDAPRealm',{onSuccess: WL.Client.reloadApp})" /&gt;<br />
-  &lt;p id="resultDiv"&gt;&lt;/p&gt;<br />
-&lt;/div&gt;<br />
+<div id="AppDiv"&gt;<br />
+  <input type="button" class="appButton" value="Call protected adapter proc" onclick="getSecretData()" /&gt;<br />
+  <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('LDAPRealm',{onSuccess: WL.Client.reloadApp})" /&gt;<br />
+  <p id="resultDiv"&gt;</p&gt;<br />
+</div&gt;<br />
 [/code]</p>
 <p>The buttons are used to call the <strong>getSecretData</strong> procedure and to log out.</p>
 <p>[code lang="html"]<br />
-&lt;div id="AuthDiv" style="display:none"&gt;<br />
-  &lt;div id="loginForm"&gt;<br />
-    &lt;input type="text" id="usernameInputField" placeholder="Enter username" /&gt;<br />
-    &lt;br /&gt;<br />
-    &lt;input type="password" placeholder="Enter password" id="passwordInputField" /&gt;<br />
-    &lt;br/&gt;<br />
-    &lt;input type="button" class="formButton" id="loginButton" value="Login" /&gt;<br />
-    &lt;input type="button" class="formButton" id="cancelButton" value="Cancel" /&gt;<br />
-  &lt;/div&gt;<br />
-&lt;/div&gt;<br />
+<div id="AuthDiv" style="display:none"&gt;<br />
+  <div id="loginForm"&gt;<br />
+    <input type="text" id="usernameInputField" placeholder="Enter username" /&gt;<br />
+    <br /&gt;<br />
+    <input type="password" placeholder="Enter password" id="passwordInputField" /&gt;<br />
+    <br/&gt;<br />
+    <input type="button" class="formButton" id="loginButton" value="Login" /&gt;<br />
+    <input type="button" class="formButton" id="cancelButton" value="Cancel" /&gt;<br />
+  </div&gt;<br />
+</div&gt;<br />
 [/code]</p>
 <p>The <strong>AuthDiv</strong> is styled as <code>display:none</code>, because it must not be displayed before authentication is requested by server.</p>
 <h3>Challenge Handler</h3>

@@ -77,12 +77,12 @@ The HTML page shows the following elements:</p>
 <li>A button to trigger validation</li>
 <li>An empty  line to show potential error messages (We use it to display the message we send from the native code to the JS code)</li>
 </ul>
-<p>[code lang="html"]&lt;p&gt;This is a MobileFirst WebView.&lt;/p&gt;<br />
-&lt;p&gt;Enter a valid address (requires Internet connection):&lt;br/&gt;<br />
-    	&lt;input type="text" name="address" id="address"/&gt;<br />
-&lt;input type="button" value="Display" id="displayBtn"/&gt;<br />
- &lt;/p&gt;<br />
- &lt;p id="errorMsg" style="color:red;"&gt;&lt;/p&gt;[/code]</p>
+<p>[code lang="html"]<p&gt;This is a MobileFirst WebView.</p&gt;<br />
+<p&gt;Enter a valid address (requires Internet connection):<br/&gt;<br />
+    	<input type="text" name="address" id="address"/&gt;<br />
+<input type="button" value="Display" id="displayBtn"/&gt;<br />
+ </p&gt;<br />
+ <p id="errorMsg" style="color:red;"&gt;</p&gt;[/code]</p>
 <p><strong>JavaScript</strong><br />
 When the button is clicked, the <span class="inline-code">sendActionToNative</span> method is called to send the address to the native code.</p>
 <p>[code lang="js"]$('#displayBtn').on('click', function(){<br />

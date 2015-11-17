@@ -36,27 +36,27 @@ relevantTo: [hybrid]
 <p>For a username/password security test, a simple adapter-based realm is used.</p>
 <h3>Login Module</h3>
 <p>[code lang="xml" title="authenticationConfig.xml"]<br />
-&lt;loginModule name="UsernamePasswordModule"&gt;<br />
-      &lt;className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule&lt;/className&gt;<br />
-&lt;/loginModule&gt;<br />
+<loginModule name="UsernamePasswordModule"&gt;<br />
+      <className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule</className&gt;<br />
+</loginModule&gt;<br />
 [/code]<br />
 This simple <code>NonValidatingLoginModule</code> lets the adapter-based authenticator handle the validation.</p>
 <h3>Realm</h3>
 <p>[code lang="xml" title="authenticationConfig.xml"]<br />
-&lt;realm name="UsernamePasswordRealm" loginModule="UsernamePasswordModule"&gt;<br />
-&lt;className&gt;com.worklight.integration.auth.AdapterAuthenticator&lt;/className&gt;<br />
-&lt;parameter name="login-function" value="MyAdapter.UsernamePasswordRequired" /&gt;<br />
-&lt;/realm&gt;<br />
+<realm name="UsernamePasswordRealm" loginModule="UsernamePasswordModule"&gt;<br />
+<className&gt;com.worklight.integration.auth.AdapterAuthenticator</className&gt;<br />
+<parameter name="login-function" value="MyAdapter.UsernamePasswordRequired" /&gt;<br />
+</realm&gt;<br />
 [/code]<br />
 By using <code>AdapterAuthenticator</code>, you can write the login logic in an adapter. The login-function is used to trigger a challenge.</p>
 <h3>Security Test</h3>
 <p>[code lang="xml" title="authenticationConfig.xml"]<br />
-&lt;customSecurityTest name="UsernamePasswordAuthentication"&gt;<br />
-      &lt;test realm="wl_directUpdateRealm" step="1" /&gt;<br />
-      &lt;test isInternalDeviceID="true" realm="wl_deviceNoProvisioningRealm" step="1" /&gt;<br />
-      &lt;test realm="wl_antiXSRFRealm" step="1" /&gt;<br />
-      &lt;test isInternalUserID="true" realm="UsernamePasswordRealm" step="1" /&gt;<br />
-&lt;/customSecurityTest&gt;<br />
+<customSecurityTest name="UsernamePasswordAuthentication"&gt;<br />
+      <test realm="wl_directUpdateRealm" step="1" /&gt;<br />
+      <test isInternalDeviceID="true" realm="wl_deviceNoProvisioningRealm" step="1" /&gt;<br />
+      <test realm="wl_antiXSRFRealm" step="1" /&gt;<br />
+      <test isInternalUserID="true" realm="UsernamePasswordRealm" step="1" /&gt;<br />
+</customSecurityTest&gt;<br />
 [/code]<br />
 <code>UsernamePasswordRealm</code> is used as the internal user ID, while the built-in <code>wl_deviceNoProvisioningRealm</code> helps get the device ID automatically from the device. The direct update and anti-XSRF realms are additional internal realms that are not specific to this scenario.</p>
 <h3>Adapter Code</h3>
@@ -124,17 +124,17 @@ The login function uses the <code>submitAdapterAuthentication</code> API (which 
 <p>Enrolled devices need to be saved in a database of trusted devices that are associated with their user account.</p>
 <h3>LoginModule</h3>
 <p>[code lang="xml" title="authenticationConfig.xml"]<br />
-&lt;loginModule name="EnrollmentModule"&gt;<br />
-      &lt;className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule&lt;/className&gt;<br />
- &lt;/loginModule&gt;<br />
+<loginModule name="EnrollmentModule"&gt;<br />
+      <className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule</className&gt;<br />
+ </loginModule&gt;<br />
 [/code]<br />
 This non-validating login module leaves the responsibility of validating the data to you.</p>
 <h3>Realm</h3>
 <p>[code lang="xml" title="authenticationConfig.xml"]<br />
-&lt;realm name="EnrollmentRealm" loginModule="EnrollmentModule"&gt;<br />
-      &lt;className&gt;com.worklight.integration.auth.AdapterAuthenticator&lt;/className&gt;<br />
-      &lt;parameter name="login-function" value="MyAdapter.enrollmentRequired" /&gt;<br />
- &lt;/realm&gt;<br />
+<realm name="EnrollmentRealm" loginModule="EnrollmentModule"&gt;<br />
+      <className&gt;com.worklight.integration.auth.AdapterAuthenticator</className&gt;<br />
+      <parameter name="login-function" value="MyAdapter.enrollmentRequired" /&gt;<br />
+ </realm&gt;<br />
 [/code]<br />
 Again, an <code>AdapterAuthenticator</code> is used to check the enrollment.</p>
 <p>In the adapter, this procedure is defined to let the client know that a given resource requires enrollment.<br />
@@ -147,12 +147,12 @@ function enrollmentRequired() {<br />
 [/code]</p>
 <h3>SecurityTest</h3>
 <p>[code lang="xml" title="authenticationConfig.xml"]<br />
-&lt;customSecurityTest name="EnrolledDevice"&gt;<br />
-      &lt;test realm="wl_directUpdateRealm" step="1" /&gt;<br />
-      &lt;test isInternalDeviceID="true" realm="wl_deviceNoProvisioningRealm" step="1" /&gt;<br />
-      &lt;test realm="wl_antiXSRFRealm" step="1" /&gt;<br />
-      &lt;test isInternalUserID="true" realm="EnrollmentRealm" step="1" /&gt;<br />
- &lt;/customSecurityTest&gt;<br />
+<customSecurityTest name="EnrolledDevice"&gt;<br />
+      <test realm="wl_directUpdateRealm" step="1" /&gt;<br />
+      <test isInternalDeviceID="true" realm="wl_deviceNoProvisioningRealm" step="1" /&gt;<br />
+      <test realm="wl_antiXSRFRealm" step="1" /&gt;<br />
+      <test isInternalUserID="true" realm="EnrollmentRealm" step="1" /&gt;<br />
+ </customSecurityTest&gt;<br />
 [/code]<br />
 Similar to the previous security test, this security test uses some predefined realms in addition to our <code>EnrollmentRealm</code>.</p>
 <h3>Storage</h3>
@@ -181,7 +181,7 @@ function enroll(pin) {<br />
 For a device to be enrolled, the currently used device ID and the currently logged-in user need to be retrieved. Together with a PIN code provided by the user, this information is saved in the enrolled devices storage.</p>
 <p>Because only logged-in users can enroll, this procedure is protected by the username/password realm.<br />
 [code lang="xml" title="MyAdapter.xml"]<br />
-&lt;procedure name="getTransactions" securityTest="PinCode"/&gt;<br />
+<procedure name="getTransactions" securityTest="PinCode"/&gt;<br />
 [/code]</p>
 <h3>Check Enrollment</h3>
 <p>[code lang="javascript" title="MyAdapter-impl.js"]<br />
@@ -276,20 +276,20 @@ enrollmentRealm.handleChallenge = function(response) {<br />
 <h2>PIN Code Protection</h2>
 <p>Some resources can be protected with the PIN code. In this sample, the <code>getTransactions</code> procedure is protected by a PIN code.<br />
 [code lang="xml" title="MyAdapter.xml"]<br />
-&lt;procedure name="getTransactions" securityTest="PinCode"/&gt;<br />
+<procedure name="getTransactions" securityTest="PinCode"/&gt;<br />
 [/code]</p>
 <h3>LoginModule</h3>
 <p>[code lang="xml" title="authenticationConfig.xml"]<br />
-&lt;loginModule name="PinCodeModule"&gt;<br />
-      &lt;className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule&lt;/className&gt;<br />
- &lt;/loginModule&gt;<br />
+<loginModule name="PinCodeModule"&gt;<br />
+      <className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule</className&gt;<br />
+ </loginModule&gt;<br />
 [/code]</p>
 <h3>Realm</h3>
 <p>[code lang="xml" title="authenticationConfig.xml"]<br />
-&lt;realm name="PinCodeRealm" loginModule="PinCodeModule"&gt;<br />
-      &lt;className&gt;com.worklight.integration.auth.AdapterAuthenticator&lt;/className&gt;<br />
-      &lt;parameter name="login-function" value="MyAdapter.pinCodeRequired" /&gt;<br />
- &lt;/realm&gt;<br />
+<realm name="PinCodeRealm" loginModule="PinCodeModule"&gt;<br />
+      <className&gt;com.worklight.integration.auth.AdapterAuthenticator</className&gt;<br />
+      <parameter name="login-function" value="MyAdapter.pinCodeRequired" /&gt;<br />
+ </realm&gt;<br />
 [/code]</p>
 <p>[code lang="javascript" title="MyAdapter-impl.js"]<br />
 function pinCodeRequired() {<br />
@@ -300,13 +300,13 @@ function pinCodeRequired() {<br />
 [/code]</p>
 <h3>SecurityTest</h3>
 <p>[code lang="xml" title="authenticationConfig.xml"]<br />
-&lt;customSecurityTest name="PinCode"&gt;<br />
-      &lt;test realm="wl_directUpdateRealm" step="1" /&gt;<br />
-      &lt;test isInternalDeviceID="true" realm="wl_deviceNoProvisioningRealm" step="1" /&gt;<br />
-      &lt;test realm="wl_antiXSRFRealm" step="1" /&gt;<br />
-      &lt;test realm="EnrollmentRealm" step="1" /&gt;<br />
-      &lt;test isInternalUserID="true" realm="PinCodeRealm" step="2" /&gt;<br />
-&lt;/customSecurityTest&gt;<br />
+<customSecurityTest name="PinCode"&gt;<br />
+      <test realm="wl_directUpdateRealm" step="1" /&gt;<br />
+      <test isInternalDeviceID="true" realm="wl_deviceNoProvisioningRealm" step="1" /&gt;<br />
+      <test realm="wl_antiXSRFRealm" step="1" /&gt;<br />
+      <test realm="EnrollmentRealm" step="1" /&gt;<br />
+      <test isInternalUserID="true" realm="PinCodeRealm" step="2" /&gt;<br />
+</customSecurityTest&gt;<br />
 [/code]<br />
 Accessing a PIN-protected resource requires both the <code>PinCodeRealm</code> and the <code>EnrollmentRealm</code> realms.</p>
 <h3>ChallengeHandler</h3>

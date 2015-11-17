@@ -39,11 +39,11 @@ startAppBtn = (Button) findViewById(R.id.StartApp);[/code]</p>
 	}<br />
 });[/code]</p>
 <p>The text view and the button are also added to the activity layout file:<br />
-[code lang="xml"]&lt;TextView<br />
+[code lang="xml"]<TextView<br />
         android:layout_width="wrap_content"<br />
         android:layout_height="wrap_content"<br />
         android:text="@string/InitiativeActivityText" /&gt;</p>
-<p>&lt;Button<br />
+<p><Button<br />
     	android:id="@+id/StartApp"<br />
         android:layout_width="wrap_content"<br />
         android:layout_height="wrap_content"<br />
@@ -111,12 +111,12 @@ This sample includes an additional <span class="inline-code">FragmentActivity</s
 <li>A button to trigger validation</li>
 <li>An empty  line to show potential error messages</li>
 </ul>
-<p>[code lang="html"]&lt;p&gt;This is a MobileFirst WebView.&lt;/p&gt;<br />
-&lt;p&gt;Enter a valid address (requires Internet connection):&lt;br/&gt;<br />
-    	&lt;input type="text" name="address" id="address"/&gt;<br />
-&lt;input type="button" value="Display" id="displayBtn"/&gt;<br />
- &lt;/p&gt;<br />
- &lt;p id="errorMsg" style="color:red;"&gt;&lt;/p&gt;[/code]</p>
+<p>[code lang="html"]<p&gt;This is a MobileFirst WebView.</p&gt;<br />
+<p&gt;Enter a valid address (requires Internet connection):<br/&gt;<br />
+    	<input type="text" name="address" id="address"/&gt;<br />
+<input type="button" value="Display" id="displayBtn"/&gt;<br />
+ </p&gt;<br />
+ <p id="errorMsg" style="color:red;"&gt;</p&gt;[/code]</p>
 <h3>JavaScript</h3>
 <p>When the button is clicked, the <span class="inline-code">sendActionToNative</span> method is called to send the address to the native code.<br />
 [code lang="js"]$('#displayBtn').on('click', function(){<br />

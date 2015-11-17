@@ -107,7 +107,7 @@ function getCityWeather(woeid){<br />
 <p>[code lang="javascript"]<br />
 function getCitiesWeather(){<br />
 	var cityList = getCitiesList();<br />
-	for (var i = 0; i &lt; cityList.resultSet.length; i++) {<br />
+	for (var i = 0; i < cityList.resultSet.length; i++) {<br />
 		var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);</p>
 <p>		if (yahooWeatherData.isSuccessful)<br />
 			cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;<br />

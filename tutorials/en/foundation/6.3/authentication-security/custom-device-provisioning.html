@@ -65,10 +65,10 @@ Use the auto provisioning authenticator <em>className</em> parameter.<br />
 Add a <strong>validate-csr-function</strong> parameter.<br />
 The value of this parameter points to an Adapter function that performs CSR validation.</p>
 <p>[code lang="xml"]<br />
-&lt;realm name="CustomDeviceProvisioningRealm" loginModule="CustomDeviceProvisioningLoginModule"&gt;<br />
-  &lt;className&gt;com.worklight.core.auth.ext.DeviceAutoProvisioningAuthenticator&lt;/className&gt;<br />
-  &lt;parameter name="validate-csr-function" value="ProvisioningAdapter.validateCSR" /&gt;<br />
-&lt;/realm&gt;<br />
+<realm name="CustomDeviceProvisioningRealm" loginModule="CustomDeviceProvisioningLoginModule"&gt;<br />
+  <className&gt;com.worklight.core.auth.ext.DeviceAutoProvisioningAuthenticator</className&gt;<br />
+  <parameter name="validate-csr-function" value="ProvisioningAdapter.validateCSR" /&gt;<br />
+</realm&gt;<br />
 [/code]</p>
 <h3>Login Module</h3>
 <p>Add <strong>CustomDeviceProvisioningLoginModule</strong>.<br />
@@ -76,10 +76,10 @@ Use the auto provisioning login module <em>className</em> parameter.<br />
 Add a <strong>validate-certificate-function</strong> parameter.<br />
 The value of this parameter points to an Adapter function that performs certificate validation.</p>
 <p>[code lang="xml"]<br />
-&lt;loginModule name="CustomDeviceProvisioningLoginModule"&gt;<br />
-  &lt;className&gt;com.worklight.core.auth.ext.DeviceAutoProvisioningLoginModule&lt;/className&gt;<br />
-  &lt;parameter name="validate-certificate-function" value="ProvisioningAdapter.validateCertificate" /&gt;<br />
-&lt;/loginModule&gt;<br />
+<loginModule name="CustomDeviceProvisioningLoginModule"&gt;<br />
+  <className&gt;com.worklight.core.auth.ext.DeviceAutoProvisioningLoginModule</className&gt;<br />
+  <parameter name="validate-certificate-function" value="ProvisioningAdapter.validateCertificate" /&gt;<br />
+</loginModule&gt;<br />
 [/code]</p>
 <h3>Security Test</h3>
 <p>Create a <strong>mobileSecurityTest</strong>.<br />
@@ -88,10 +88,10 @@ Add a mandatory <em>testDeviceId</em> test.<br />
 Specify <em>provisioningType="custom"</em>.<br />
 Specify <em>realm="CustomDeviceProvisioningRealm"</em>.</p>
 <p>[code lang="xml"]<br />
-&lt;mobileSecurityTest name="CustomDeviceProvisioningSecurityTest"&gt;<br />
-  &lt;testAppAuthenticity/&gt;<br />
-  &lt;testDeviceId provisioningType="custom" realm="CustomDeviceProvisioningRealm" /&gt;<br />
-&lt;/mobileSecurityTest&gt;<br />
+<mobileSecurityTest name="CustomDeviceProvisioningSecurityTest"&gt;<br />
+  <testAppAuthenticity/&gt;<br />
+  <testDeviceId provisioningType="custom" realm="CustomDeviceProvisioningRealm" /&gt;<br />
+</mobileSecurityTest&gt;<br />
 [/code]</p>
 <h2>Implementing server-side components</h2>
 <p>Create an adapter that is named <strong>ProvisioningAdapter</strong>.<br />
@@ -149,13 +149,13 @@ Returning <em>isSuccessful:false</em> means that application cannot operate and 
 <h3>Application Descriptor</h3>
 <p>Add security test that is created in previous steps to protect created environment.</p>
 <p>[code lang="xml"]<br />
-&lt;iphone applicationId="CustomDeviceProvisioning" bundleId="com.CustomDeviceProvisioning" securityTest="CustomDeviceProvisioningSecurityTest" version="1.0"&gt;<br />
-  &lt;worklightSettings include="false" /&gt;<br />
-  &lt;security&gt;<br />
-    &lt;encryptWebResources enabled="false" /&gt;<br />
-    &lt;testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" /&gt;<br />
-  &lt;/security&gt;<br />
-&lt;/iphone&gt;<br />
+<iphone applicationId="CustomDeviceProvisioning" bundleId="com.CustomDeviceProvisioning" securityTest="CustomDeviceProvisioningSecurityTest" version="1.0"&gt;<br />
+  <worklightSettings include="false" /&gt;<br />
+  <security&gt;<br />
+    <encryptWebResources enabled="false" /&gt;<br />
+    <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" /&gt;<br />
+  </security&gt;<br />
+</iphone&gt;<br />
 [/code]</p>
 <p>In case it is required, configure your application for Application Authenticity test as described in the <a title="Application Authenticity Protection" href="../../authentication-security/application-authenticity-protection/">Application Authenticity Protection</a> training module.</p>
 <h3>HTML</h3>
@@ -163,21 +163,21 @@ Returning <em>isSuccessful:false</em> means that application cannot operate and 
 The <em>ProvBody</em> element holds device provisioning-related content.<br />
 Note the <em>connectToServerButton</em> in <em>AppBody</em>.</p>
 <p>[code lang="html" highlight="2,11,7"]<br />
-&lt;div id="wrapper"&gt;<br />
-  &lt;div id="AppBody"&gt;<br />
-    &lt;p id="beforeProv"&gt;<br />
+<div id="wrapper"&gt;<br />
+  <div id="AppBody"&gt;<br />
+    <p id="beforeProv"&gt;<br />
       Tap the connect button to authenticate using custom device provisioning.<br />
-    &lt;/p&gt;</p>
-<p>    &lt;input type="button" id="connectToServerButton" class="appButton" value="Connect to MobileFirst Server" /&gt;<br />
-    &lt;p id="provisioningError" style="display: none"&gt;&lt;/p&gt;<br />
-  &lt;/div&gt;</p>
-<p>  &lt;div id="ProvBody" style="display: none"&gt;<br />
-    &lt;p id="provisioningError"&gt;<br />
-      &lt;input id="provisioningCode" placeholder="Enter code" type="text" /&gt;<br />
-      &lt;input type="button" id="submitProvCodeButton" class="formButton" value="Send" /&gt;<br />
-    &lt;/p&gt;<br />
-  &lt;/div&gt;<br />
-&lt;/div&gt;<br />
+    </p&gt;</p>
+<p>    <input type="button" id="connectToServerButton" class="appButton" value="Connect to MobileFirst Server" /&gt;<br />
+    <p id="provisioningError" style="display: none"&gt;</p&gt;<br />
+  </div&gt;</p>
+<p>  <div id="ProvBody" style="display: none"&gt;<br />
+    <p id="provisioningError"&gt;<br />
+      <input id="provisioningCode" placeholder="Enter code" type="text" /&gt;<br />
+      <input type="button" id="submitProvCodeButton" class="formButton" value="Send" /&gt;<br />
+    </p&gt;<br />
+  </div&gt;<br />
+</div&gt;<br />
 [/code]</p>
 <h3>main.js</h3>
 <p>Add listener to <strong>connectToServerButton</strong>.<br />
@@ -232,7 +232,7 @@ customDevProvChallengeHandler.processSuccess = function(identity) {<br />
 	$("#connectToServerButton").hide();<br />
 	$("#AppBody").show();<br />
 	$("#ProvBody").hide();<br />
-	$("#AppBody").html("&lt;p&gt;Device authentication with custom device provisioning was successfully completed.&lt;/p&gt;");<br />
+	$("#AppBody").html("<p&gt;Device authentication with custom device provisioning was successfully completed.</p&gt;");<br />
 };<br />
 [/code]</p>
 <p><em>processSuccess</em> function is called each time the certificate successfully passes validation. You can use it for UI manipulations.</p>

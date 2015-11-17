@@ -38,12 +38,12 @@ relevantTo: [windowsphone8]
 <h4>Edit the application-descriptor.xml file</h4>
 <p>Add the "<strong>pushSender</strong>" tag to the application-descriptor.xml file. -<br />
 [code lang="xml"]<br />
-&lt;nativeWindowsPhone8App id="WindowsPhone8NativePush" platformVersion="6.3.0.00.20141111-0731"<br />
+<nativeWindowsPhone8App id="WindowsPhone8NativePush" platformVersion="6.3.0.00.20141111-0731"<br />
 version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" securityTest="MySecurityTest"&gt;</p>
-<p> &lt;displayName&gt;WindowsPhone8NativePush&lt;/displayName&gt;<br />
- &lt;description&gt;WindowsPhone8NativePush&lt;/description&gt;<br />
- &lt;pushSender/&gt;</p>
-<p>&lt;/nativeWindowsPhone8App&gt; [/code]<br />
+<p> <displayName&gt;WindowsPhone8NativePush</displayName&gt;<br />
+ <description&gt;WindowsPhone8NativePush</description&gt;<br />
+ <pushSender/&gt;</p>
+<p></nativeWindowsPhone8App&gt; [/code]<br />
 <br clear="all" /></p>
 <h4>Deploy the native API and the adapter.</h4>
 <h4>Copy the libraries from the MobileFirst native API to the Windows Phone 8 project.</h4>
@@ -86,8 +86,8 @@ version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" s
 <h4>Modifications to the native Windows Phone 8 project</h4>
 <p>Edit the Properties\WMAppManifest.xml file and add the following capabilities:<br />
 [code lang="xml"]<br />
-&lt;Capability Name="ID_CAP_PUSH_NOTIFICATION" /&gt;<br />
-&lt;Capability Name="ID_CAP_IDENTITY_DEVICE" /&gt;<br />
+<Capability Name="ID_CAP_PUSH_NOTIFICATION" /&gt;<br />
+<Capability Name="ID_CAP_IDENTITY_DEVICE" /&gt;<br />
 [/code]</p>
 <h2 id="notificationapiserver">Notification API: Server side</h2>
 <h3>Creating an event source.</h3>
@@ -226,16 +226,16 @@ public void onReceive(String props, String payload) {<br />
 <h2 id="notificationAPITag">Notification API - Tag-based notification</h2>
 <p>This notification type enables sending and receiving messages by tags. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. Tags are defined in the application-descriptor.xml file.</p>
 <p>[code lang="xml"]<br />
-&lt;tags&gt;<br />
-    &lt;tag&gt;<br />
-        &lt;name&gt;PushTag1&lt;/name&gt;<br />
-        &lt;description&gt;About pushTag1&lt;/description&gt;<br />
-    &lt;/tag&gt;<br />
-    &lt;tag&gt;<br />
-        &lt;name&gt;PushTag2&lt;/name&gt;<br />
-        &lt;description&gt;About pushTag2&lt;/description&gt;<br />
-    &lt;/tag&gt;<br />
-&lt;/tags&gt;<br />
+<tags&gt;<br />
+    <tag&gt;<br />
+        <name&gt;PushTag1</name&gt;<br />
+        <description&gt;About pushTag1</description&gt;<br />
+    </tag&gt;<br />
+    <tag&gt;<br />
+        <name&gt;PushTag2</name&gt;<br />
+        <description&gt;About pushTag2</description&gt;<br />
+    </tag&gt;<br />
+</tags&gt;<br />
  [/code]</p>
 <h4>Client-side API:</h4>
 <ul>

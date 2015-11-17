@@ -42,9 +42,9 @@ relevantTo: [android]
 <li>Your project's number is the <code>senderId</code></li>
 <li>Your Android key is the GCM <code>key</code> (can be generated in <strong>API &amp; Auth > Credentials</strong>)</li>
 </ul>
-<p>[code lang="xml"]&lt;nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="AndroidNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0"&gt;<br />
-	&lt;pushSender key="SOME-GCM-KEY" senderId="SOME-GCM-ID"/&gt;<br />
-&lt;/nativeAndroidApp&gt;[/code]
+<p>[code lang="xml"]<nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="AndroidNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0"&gt;<br />
+	<pushSender key="SOME-GCM-KEY" senderId="SOME-GCM-ID"/&gt;<br />
+</nativeAndroidApp&gt;[/code]
 </li>
 </ul>
 <h3>Deploy the native API and the adapter.</h3>
@@ -93,42 +93,42 @@ relevantTo: [android]
 <p><img src="{{ site.baseurl }}/assets/backup/wlclient_properties.png"/></p>
 <h3>Modifications to the native Android project</h3>
 <p>Add the following permissions to the AndroidManifest.xml file of your Android project:</p>
-<p>[code lang="xml"]&lt;permission android:name="com.imf.androidnativepush.permission.C2D_MESSAGE" android:protectionLevel="signature" /&gt;</p>
-<p> &lt;uses-permission android:name="android.permission.INTERNET" /&gt;<br />
- &lt;uses-permission android:name="android.permission.GET_TASKS"/&gt;<br />
- &lt;uses-permission android:name="com.worklight.androidnativepush.permission.C2D_MESSAGE" /&gt;<br />
- &lt;uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /&gt;<br />
- &lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;<br />
- &lt;uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;<br />
- &lt;uses-permission android:name="android.permission.USE_CREDENTIALS" /&gt;<br />
- &lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;<br />
- &lt;uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/&gt;[/code]</p>
+<p>[code lang="xml"]<permission android:name="com.imf.androidnativepush.permission.C2D_MESSAGE" android:protectionLevel="signature" /&gt;</p>
+<p> <uses-permission android:name="android.permission.INTERNET" /&gt;<br />
+ <uses-permission android:name="android.permission.GET_TASKS"/&gt;<br />
+ <uses-permission android:name="com.worklight.androidnativepush.permission.C2D_MESSAGE" /&gt;<br />
+ <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /&gt;<br />
+ <uses-permission android:name="android.permission.WAKE_LOCK" /&gt;<br />
+ <uses-permission android:name="android.permission.GET_ACCOUNTS" /&gt;<br />
+ <uses-permission android:name="android.permission.USE_CREDENTIALS" /&gt;<br />
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /&gt;<br />
+ <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/&gt;[/code]</p>
 <p>Add the <code>launchMode</code> attribute to the main <code>AndroidNativePush</code> activity. Set its value to <code>singleTask</code>.</p>
 <p>[code lang="xml"]<br />
-&lt;activity<br />
+<activity<br />
     android:name="com.worklight.androidnativepush.AndroidNativePush"<br />
     android:label="@string/app_name"<br />
     android:theme="@android:style/Theme.Black.NoTitleBar"<br />
     android:launchMode="singleTask"&gt;[/code]</p>
 <p>Add an intent-filter to the main <code>AndroidNativePush</code> activity for notifications.</p>
 <p>[code lang="xml"]<br />
-&lt;intent-filter&gt;<br />
-   &lt;action android:name="com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION" /&gt;<br />
-   &lt;category android:name="android.intent.category.DEFAULT" /&gt;<br />
-&lt;/intent-filter&gt;[/code]</p>
+<intent-filter&gt;<br />
+   <action android:name="com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION" /&gt;<br />
+   <category android:name="android.intent.category.DEFAULT" /&gt;<br />
+</intent-filter&gt;[/code]</p>
 <p>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</p>
 <p>[code lang="xml"]<br />
-&lt;service android:name="com.worklight.wlclient.push.GCMIntentService" /&gt;<br />
-&lt;receiver android:name="com.worklight.wlclient.push.WLBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND"&gt;<br />
-   &lt;intent-filter&gt;<br />
-       &lt;action android:name="com.google.android.c2dm.intent.RECEIVE" /&gt;<br />
-       &lt;category android:name="com.worklight.androidnativepush" /&gt;<br />
-   &lt;/intent-filter&gt;<br />
-   &lt;intent-filter&gt;<br />
-       &lt;action android:name="com.google.android.c2dm.intent.REGISTRATION" /&gt;<br />
-       &lt;category android:name="com.worklight.androidnativepush" /&gt;<br />
-   &lt;/intent-filter&gt;<br />
-&lt;/receiver&gt;[/code]</p>
+<service android:name="com.worklight.wlclient.push.GCMIntentService" /&gt;<br />
+<receiver android:name="com.worklight.wlclient.push.WLBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND"&gt;<br />
+   <intent-filter&gt;<br />
+       <action android:name="com.google.android.c2dm.intent.RECEIVE" /&gt;<br />
+       <category android:name="com.worklight.androidnativepush" /&gt;<br />
+   </intent-filter&gt;<br />
+   <intent-filter&gt;<br />
+       <action android:name="com.google.android.c2dm.intent.REGISTRATION" /&gt;<br />
+       <category android:name="com.worklight.androidnativepush" /&gt;<br />
+   </intent-filter&gt;<br />
+</receiver&gt;[/code]</p>
 <h2 id="notificationapiforserver">Notification API: Server side</h2>
 <h3>Creating an event source.</h3>
 <p>This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).<br />
@@ -293,16 +293,16 @@ public void onReceive(String arg0, String arg1) {<br />
 <p>This notification type enables sending and receiving messages by tags.<br />
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.</p>
 <p>Tags are defined in application-descriptor.xml:<br />
-[code lang="xml"]&lt;tags&gt;<br />
-    &lt;tag&gt;<br />
-        &lt;name&gt;PushTag1&lt;/name&gt;<br />
-        &lt;description&gt;About pushTag1&lt;/description&gt;<br />
-    &lt;/tag&gt;<br />
-    &lt;tag&gt;<br />
-        &lt;name&gt;PushTag2&lt;/name&gt;<br />
-        &lt;description&gt;About pushTag2&lt;/description&gt;<br />
-    &lt;/tag&gt;<br />
-&lt;/tags&gt;[/code]</p>
+[code lang="xml"]<tags&gt;<br />
+    <tag&gt;<br />
+        <name&gt;PushTag1</name&gt;<br />
+        <description&gt;About pushTag1</description&gt;<br />
+    </tag&gt;<br />
+    <tag&gt;<br />
+        <name&gt;PushTag2</name&gt;<br />
+        <description&gt;About pushTag2</description&gt;<br />
+    </tag&gt;<br />
+</tags&gt;[/code]</p>
 <p><br clear="all" /></p>
 <h3>Client-side API methods:</h3>
 <ul>

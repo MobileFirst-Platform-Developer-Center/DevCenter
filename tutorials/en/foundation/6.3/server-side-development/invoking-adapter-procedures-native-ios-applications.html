@@ -30,7 +30,7 @@ MyConnectListener *connectListener = [[MyConnectListener alloc] initWithControll
 <li>Create a delegate to be used in the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server. Name the class <code>MyConnectListener</code>.<br />
 The header file must specify that it implements the <code>WLDelegate</code> protocol.</p>
 <p>[code lang="obj-c"]<br />
-@interface MyConnectListener : NSObject &lt;WLDelegate&gt; {<br />
+@interface MyConnectListener : NSObject <WLDelegate&gt; {<br />
     @private<br />
     ViewController *vc;<br />
 }</p>
@@ -72,7 +72,7 @@ Invoke the procedure by using the shared instance of the <code>WLClient</code>.<
 <p>When the procedure invocation is complete, a delegate method of <code>MyInvokeListener</code> class instance is called.<br />
 Any delegate header file must specify that it complies with a <code>WLDelegate</code> protocol.</p>
 <p>[code lang="obj-c"]<br />
-@interface MyInvokeListener : NSObject &lt;WLDelegate&gt; {<br />
+@interface MyInvokeListener : NSObject <WLDelegate&gt; {<br />
 @private<br />
     ViewController *vc;<br />
     NSString *strResponse;<br />
