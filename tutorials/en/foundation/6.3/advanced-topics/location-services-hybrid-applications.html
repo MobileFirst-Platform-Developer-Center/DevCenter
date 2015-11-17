@@ -9,7 +9,7 @@ relevantTo: [hybrid]
         </li>
 </ul>
 <h2>Architecture</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/location_service_diagram.jpg"><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg" alt="location_service_diagram" width="650" height="404" class="aligncenter size-full wp-image-5171" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg"/></p>
 <p>The application code on the mobile device, in the form of an acquisition policy, controls the collection of data from device sensors.</p>
 <p>The collected data is referred to as the device context.</p>
 <p>When a change occurs in the device context, such as a change in the geolocation of the device or the fact that it entered a WiFi zone, triggers can be activated.</p>
@@ -93,7 +93,7 @@ In the above example, the acquisition policy:</p>
 <li>Differentiates "Net2" access points by MAC address.
 </li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_wifi-policy-example.png"><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.png" alt="10_04_wifi-policy-example" width="505" height="470" class="aligncenter size-full wp-image-1482" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.png"/></p>
 <blockquote><p>For more information, see the topic "Setting an acquisition policy" of the user documentation.</p></blockquote>
 <h2>Triggers</h2>
 <p>[code lang="javascript"]<br />
@@ -163,16 +163,16 @@ WL.Server.setEventHandlers([...]);<br />
 The <strong>Mobile Browser Simulator</strong> provides capabilities to simulate sensor data and errors.<br />
 This can be accessed by right-clicking an application environment, and selecting the <strong>Preview</strong> option under the <strong>Run As</strong> menu.</p>
 <h3>Geo testing</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_geotesting.png"><img src="{{ site.baseurl }}/assets/backup/10_04_geotesting.png" alt="10_04_geotesting" width="397" height="566" class="aligncenter size-full wp-image-1489" /></a><br />
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_geotesting.png"/><br />
 The Geolocation widget can be used to set a specific position through manual entry, or by clicking on the map.</p>
 <p>A simple simulation mode is also provided by using the <strong>Step</strong> and <strong>Play</strong> buttons, which move the position in the simulated device at the given speed and in the direction of the given heading.</p>
 <p>You can also simulate the generation of errors.</p>
 <h3>WiFi Testing</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_wifitesting.png"><img src="{{ site.baseurl }}/assets/backup/10_04_wifitesting.png" alt="10_04_wifitesting" width="415" height="391" class="aligncenter size-full wp-image-1490" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_wifitesting.png" class="responsive_img"/></p>
 <p>The Network widget can be used to define simulated access points, configure their signal strengths, and simulate the connection or disconnection to an access point.<br />
 You can also simulate the generation of errors.</p>
 <h3>Scenarios</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_scenarios.png"><img src="{{ site.baseurl }}/assets/backup/10_04_scenarios.png" alt="10_04_scenarios" width="420" height="418" class="aligncenter size-full wp-image-1491" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_scenarios.png"/></p>
 <p>The Scenario widget can be used to automatically simulate a user moving through an environment in a complex way.<br />
 A scenario consists of:</p>
 <ul>
@@ -184,20 +184,20 @@ A scenario consists of:</p>
 </li>
 </ul>
 <p>To open the scenario editor, use the <strong>Edit</strong> button.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_scenario-edit-mode.png"><img src="{{ site.baseurl }}/assets/backup/10_04_scenario-edit-mode.png" alt="10_04_scenario-edit-mode" width="920" height="657" class="aligncenter size-full wp-image-1493" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_scenario-edit-mode.png"/></p>
 <p>Enter a geolocation directly to move the map, or use the arrows to pan and +/- track to zoom.</p>
-<p>Click <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_path-icon.png"><img src="{{ site.baseurl }}/assets/backup/10_04_path-icon.png" alt="10_04_path-icon" width="35" height="36" class="alignnone size-full wp-image-1494 inline-image" /></a> to define the path of the user.</p>
+<p>Click <img src="{{ site.baseurl }}/assets/backup/10_04_path-icon.png"/> to define the path of the user.</p>
 <p>Click on the map to add each path point; double-click to add the last point.<br />
 You can drag points to new locations.<br />
 Click on a point to set the user's arrival time to that point, or to delete the whole path.</p>
-<p>Click <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_wifi-icon.png"><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-icon.png" alt="10_04_wifi-icon" width="38" height="39" class="alignnone size-full wp-image-1496 inline-image" /></a> to add Wifi access points.</p>
+<p>Click <img src="{{ site.baseurl }}/assets/backup/10_04_wifi-icon.png"/> to add Wifi access points.</p>
 <p>Click on the map and drag to set the area covered by the access point.<br />
 Click an existing access point to change its SSID and MAC.<br />
 After clicking, drag to move or resize.</p>
-<p>Click <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_zone-icon.png"><img src="{{ site.baseurl }}/assets/backup/10_04_zone-icon.png" alt="10_04_zone-icon" width="38" height="37" class="alignnone size-full wp-image-1497 inline-image" /></a> to add no-GPS zones.</p>
+<p>Click <img src="{{ site.baseurl }}/assets/backup/10_04_zone-icon.png"/> to add no-GPS zones.</p>
 <p>Click on the map to add each vertex of the zone; double-click to add the last point.<br />
 After clicking an existing zone, you can drag to move, resize, or rotate.</p>
-<p>When playing a scenario, the position of the user is displayed on the map ( <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_user-icon.png"><img src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png" alt="10_04_user-icon" width="24" height="24" class="alignnone size-full wp-image-1498 inline-image" /></a> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and will not change when in a no-GPS zone).<br />
+<p>When playing a scenario, the position of the user is displayed on the map ( <img src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png"/> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and will not change when in a no-GPS zone).<br />
 WiFi access point visibility and signal strengths are automatically updated. These updates can be seen in the Network widget.<br />
 Scenarios can be imported and exported to support test reuse.</p>
 <h2>Sample</h2>
@@ -216,4 +216,4 @@ Scenarios can be imported and exported to support test reuse.</p>
 </ul>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesProject.zip">Click to download</a> the Studio project.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_sample.png"><img src="{{ site.baseurl }}/assets/backup/10_04_sample.png" alt="10_04_sample" width="338" height="600" class="aligncenter size-full wp-image-1500" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_sample.png" alt="10_04_sample" width="338" height="600" class="aligncenter size-full wp-image-1500" class="responsive_img"/></p>
