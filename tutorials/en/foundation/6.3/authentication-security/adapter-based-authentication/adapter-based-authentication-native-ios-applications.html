@@ -19,8 +19,8 @@ This is a continuation of the <a title="Adapter-based authentication" href="http
 <p>In your storyboard, add a ViewController containing a login form.<br />
 <a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_06_storyboard.png"><img class="aligncenter wp-image-987 size-full" src="{{ site.baseurl }}/assets/backup/09_06_storyboard.png" alt="09_06_storyboard" width="1067" height="583" /></a></p>
 <h3>ChallengeHandler</h3>
-<p>Create a <span class="inline-code">MyChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span><br />
-We will implement some of the <span class="inline-code">ChallengeHandler</span> methods to respond to the form-based challenge.</p>
+<p>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code><br />
+We will implement some of the <code>ChallengeHandler</code> methods to respond to the form-based challenge.</p>
 <p>{% highlight obj-c %}<br />
 @interface MyChallengeHandler : ChallengeHandler<br />
 @property ViewController* vc;</p>
@@ -28,12 +28,12 @@ We will implement some of the <span class="inline-code">ChallengeHandler</span> 
 -(id)initWithViewController: (ViewController*) vc;<br />
 @end<br />
 {% endhighlight %}</p>
-<p>Before calling your protected adapter, make sure to register your challenge handler using <span class="inline-code">WLClient</span>’s <span class="inline-code">registerChallengeHandler</span>.</p>
+<p>Before calling your protected adapter, make sure to register your challenge handler using <code>WLClient</code>’s <code>registerChallengeHandler</code>.</p>
 <p>{% highlight obj-c %}<br />
 [[WLClient sharedInstance] registerChallengeHandler:[[MyChallengeHandler alloc] initWithViewController:self] ];<br />
 {% endhighlight %}</p>
 <p><br clear="all" /><br />
-The <span class="inline-code">isCustomResponse</span> method of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <span class="inline-code">true</span> or <span class="inline-code">false</span>.</p>
+The <code>isCustomResponse</code> method of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <code>true</code> or <code>false</code>.</p>
 <p>{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
@@ -51,7 +51,7 @@ The <span class="inline-code">isCustomResponse</span> method of the challenge ha
 @end<br />
 {% endhighlight %}</p>
 <p><br clear="all" /><br />
-If <span class="inline-code">isCustomResponse</span> returns <span class="inline-code">true</span>, the framework calls the <span class="inline-code">handleChallenge</span> method. This function is used to perform required actions, such as hide application screen and show login screen.</p>
+If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hide application screen and show login screen.</p>
 <p>{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
@@ -64,8 +64,8 @@ If <span class="inline-code">isCustomResponse</span> returns <span class="inline
 @end<br />
 {% endhighlight %}</p>
 <p><br clear="all" /><br />
-<span class="inline-code">onSuccess</span> and <span class="inline-code">onFailure</span> get triggers when the authentication ends.<br />
-You need to call <span class="inline-code">submitSuccess</span> to inform the framework that the authentication process is over, and allow the invocation’s success handler to be called.</p>
+<code>onSuccess</code> and <code>onFailure</code> get triggers when the authentication ends.<br />
+You need to call <code>submitSuccess</code> to inform the framework that the authentication process is over, and allow the invocation’s success handler to be called.</p>
 <p>{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
@@ -80,7 +80,7 @@ You need to call <span class="inline-code">submitSuccess</span> to inform the fr
 }<br />
 {% endhighlight %}</p>
 <p><br clear="all" /><br />
-In your <span class="inline-code">LoginViewController</span>, when the user clicks to submit his credentials, you need to call <span class="inline-code">submitAdapterAuthentication</span> to send the credentials to the the <span class="inline-code">submitAuthentication</span> procedure you wrote previously.</p>
+In your <code>LoginViewController</code>, when the user clicks to submit his credentials, you need to call <code>submitAdapterAuthentication</code> to send the credentials to the the <code>submitAuthentication</code> procedure you wrote previously.</p>
 <p>{% highlight obj-c %}<br />
 @implementation LoginViewController<br />
 //***<br />

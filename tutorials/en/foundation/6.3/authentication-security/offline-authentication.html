@@ -51,7 +51,7 @@ The associated sample project demonstrates an end-to-end scenario. However, ther
 <h2 id="implementingAuthenticationFlows">Implementing the authentication flows</h2>
 <p>Keep in mind that some of the implementation code relates to the application UI.<br />
 You can find the rest of the application code (HTML, CSS, additional JavaScript) in the provided sample application.</p>
-<p>The <span class="inline-code">username</span>, <span class="inline-code">password</span> and <span class="inline-code">offlineLoggedIn</span> global variables help determine the user’s login state, whether connected or not connected to the Internet.<br />
+<p>The <code>username</code>, <code>password</code> and <code>offlineLoggedIn</code> global variables help determine the user’s login state, whether connected or not connected to the Internet.<br />
 {% highlight javascript %}<br />
 var username = null, password = null;<br />
 var offlineLoggedIn = false;<br />
@@ -76,8 +76,8 @@ function goToSecuredArea() {<br />
 <ol>
 <li>The online authentication flow uses the same code as provided in the <a href="../../authentication-security/adapter-based-authentication/" title="Adapter-based authentication">single-step adapter authentication sample application</a>.
 </li>
-<li>In order to simulate a back-end of multiple users, a valid login is considered one where the <span class="inline-code">username == password</span>, no matter what the username is.
-<p>The <span class="inline-code">submitAuthentication</span> function in the adapter's <span class="inline-code">*-impl.js</span> file is therefore modified to:<br />
+<li>In order to simulate a back-end of multiple users, a valid login is considered one where the <code>username == password</code>, no matter what the username is.
+<p>The <code>submitAuthentication</code> function in the adapter's <code>*-impl.js</code> file is therefore modified to:<br />
 {% highlight javascript %}<br />
 function submitAuthentication (username, password){<br />
     if (username == password) {<br />
@@ -85,7 +85,7 @@ function submitAuthentication (username, password){<br />
 </ol>
 <h4>JSONStore</h4>
 <p>Because the authentication simulates multiple users, usage of multiple JSONStores is required as well, in order to accommodate for the many users.</p>
-<p>Thus, in <span class="inline-code">WL.JSONStore.init</span>, the username is passed as a parameter for a new JSONStore to be opened for each authenticated user. For this, declare a collection to define the structure of the JSONStore:<br />
+<p>Thus, in <code>WL.JSONStore.init</code>, the username is passed as a parameter for a new JSONStore to be opened for each authenticated user. For this, declare a collection to define the structure of the JSONStore:<br />
 {% highlight javascript %}<br />
 var collectionName = "userCredentials";<br />
 var collections = {<br />
@@ -139,8 +139,8 @@ function onlineAuthentication() {<br />
 {% endhighlight %}</p>
 <p><br clear="all" /><br />
 <i>Check whether the user is already authenticated<br />
-If <span class="inline-code">true</span>, display the secured area.<br />
-If <span class="inline-code">false</span>, display the login form and start authentication via the challenge handler.</i></p>
+If <code>true</code>, display the secured area.<br />
+If <code>false</code>, display the login form and start authentication via the challenge handler.</i></p>
 <p>{% highlight javascript %}<br />
 function onlineAuthentication() {<br />
   if (WL.Client.isUserAuthenticated("myCustomRealm")) {<br />
@@ -251,7 +251,7 @@ function onlineAuthenticationSuccess() {<br />
 <li>First-time log-in when offline</li>
 <li>Already authenticated users</li>
 </ul>
-<p>In online authentication, if <span class="inline-code">username != password</span>, the authentication process stops. In contrast, during offline authentication in JSONStore, the following cases must be addressed:</p>
+<p>In online authentication, if <code>username != password</code>, the authentication process stops. In contrast, during offline authentication in JSONStore, the following cases must be addressed:</p>
 <ul>
 <li>Empty username and password fields destroy your JSONStore. As a result, users can no longer log in offline until the next online authentication, where the JSONStore is created again if it does not exist.</li>
 <li>First-time log-in cannot happen because there is no JSONStore yet.</li>

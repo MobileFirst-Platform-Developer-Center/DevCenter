@@ -17,12 +17,12 @@ relevantTo: [hybrid]
 This feature can be used to trigger native code to be run in the background, to update the native UI, to use native-only features, etc.</p>
 <p><strong>Step 1</strong><br />
 In JavaScript, the following API is used:<br />
-<span class="inline-code">WL.App.sendActionToNative("doSomething", {customData: 12345});</span></p>
-<p><span class="inline-code">doSomething</span> is an arbitrary action name to be used in the native side (see the next slide), and the second parameter is a JSON object that contains any data.</p>
+<code>WL.App.sendActionToNative("doSomething", {customData: 12345});</code></p>
+<p><code>doSomething</code> is an arbitrary action name to be used in the native side (see the next slide), and the second parameter is a JSON object that contains any data.</p>
 <p><strong>Step 2</strong><br />
-The native class to receive the action must implement the <span class="inline-code">WLActionReceiver</span> protocol:<br />
-<span class="inline-code">public class action : WLActionReceiver</span></p>
-<p>The <span class="inline-code">WLActionReceiver</span> protocol requires an <span class="inline-code">onActionReceived</span> method in which the action name can be checked for and perform any native code that the action needs:</p>
+The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
+<code>public class action : WLActionReceiver</code></p>
+<p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:</p>
 <p>{% highlight CSharp %}<br />
 public void onActionReceived(string action, JObject data)<br />
   {<br />
@@ -53,7 +53,7 @@ This feature can be used to receive responses from a native method, notify the w
 <p><strong>Step 1</strong><br />
 In C#, the following API is used:<br />
 {% highlight CSharp %}WL.getInstance().sendActionToJS(doSomething, data);{% endhighlight %}</p>
-<p><span class="inline-code">doSomething</span> is an arbitrary action name to be used on the JavaScript side and the second parameter is a <span class="inline-code">JObject</span> that contains any data.</p>
+<p><code>doSomething</code> is an arbitrary action name to be used on the JavaScript side and the second parameter is a <code>JObject</code> that contains any data.</p>
 <p><strong>Step 2</strong><br />
 A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
 <p>{% highlight js %}function actionReceiver(received){<br />
@@ -84,7 +84,7 @@ The HTML page shows the following elements:</p>
  </p><br />
  <p id="errorMsg" style="color:red;"></p>{% endhighlight %}</p>
 <p><strong>JavaScript</strong><br />
-When the button is clicked, the <span class="inline-code">sendActionToNative</span> method is called to send the address to the native code.</p>
+When the button is clicked, the <code>sendActionToNative</code> method is called to send the address to the native code.</p>
 <p>{% highlight js %}$('#displayBtn').on('click', function(){<br />
 	$('#errorMsg').empty();<br />
 	WL.App.sendActionToNative("displayAddress",<br />

@@ -39,12 +39,12 @@ To declare the plug-in, add a reference to the <code>config.xml</code> file, loc
 }
 {% endhighlight %}</p>
 <p><br clear="all" /><br />
-<span class="inline-code">sayHelloSuccess</span> - Success callback<br />
-<span class="inline-code">sayHelloFailure</span> - Failure callback<br />
-<span class="inline-code">SayHelloPlugin</span> - Plug-in name as declared in config.xml<br />
-<span class="inline-code">sayHello</span> - Action name<br />
-<span class="inline-code">[name]</span> - Parameters array</p>
-<p>The plug-in calls the <span class="inline-code">success</span> and <span class="inline-code">failure</span> callbacks.<br />
+<code>sayHelloSuccess</code> - Success callback<br />
+<code>sayHelloFailure</code> - Failure callback<br />
+<code>SayHelloPlugin</code> - Plug-in name as declared in config.xml<br />
+<code>sayHello</code> - Action name<br />
+<code>[name]</code> - Parameters array</p>
+<p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks.<br />
 {% highlight javascript %}<br />
 function sayHelloSuccess(data){<br />
     WL.SimpleDialog.show(<br />
@@ -76,7 +76,7 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
 {% endhighlight %}</li>
 <p><strong>Step 2</strong></p>
 <ul>
-<li>Implement the method. The <span class="inline-code">command</span> argument contains references to the parameters that are sent from JavaScript and callbacks:<br />
+<li>Implement the method. The <code>command</code> argument contains references to the parameters that are sent from JavaScript and callbacks:<br />
     {% highlight objc %}
     #import “SayHelloPlugin.h"</p>
 <p>@implementation SayHelloPlugin<br />
@@ -87,11 +87,11 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
     {% highlight objc %}NSString *responseString = [NSString stringWithFormat:@"Hello %@", [command.arguments objectAtIndex:0]];
     {% endhighlight %}</li>
 <p><br clear="all" /></p>
-<li>The <span class="inline-code">pluginResult</span> object is created with data retrieved from JavaScript. The <span class="inline-code">CDVCommandStatus</span> parameter defines whether the plug-in call was successful or not.<br />
+<li>The <code>pluginResult</code> object is created with data retrieved from JavaScript. The <code>CDVCommandStatus</code> parameter defines whether the plug-in call was successful or not.<br />
     {% highlight objc %}CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:responseString];
     {% endhighlight %}</li>
 <p><br clear="all" /></p>
-<li>The <span class="inline-code">sendPluginResult</span> method is used to return a response back to JavaScript (invoke callback).<br />
+<li>The <code>sendPluginResult</code> method is used to return a response back to JavaScript (invoke callback).<br />
     {% highlight objc %}[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];<br />
 }<br />
 @end

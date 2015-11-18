@@ -71,7 +71,7 @@ Cookies are shared between web and native, providing seamless client-server inte
 <p>JavaScript API to activate native page:<br />
 {% highlight js %}WL.NativePage.show(className, callback, data);{% endhighlight %}</p>
 
-<p>The web page invokes the native class <span class="inline-code">className</span>, with the parameter <span class="inline-code">data</span>, and calls the callback function on return. Example:<br />
+<p>The web page invokes the native class <code>className</code>, with the parameter <code>data</code>, and calls the callback function on return. Example:<br />
 {% highlight js %}WL.NativePage.show("com.demo.NativePage", function(data) {<br />
        demoApplication.returnFromNative(data);<br />
     },<br />

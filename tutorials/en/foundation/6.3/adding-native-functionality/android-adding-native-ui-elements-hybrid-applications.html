@@ -24,14 +24,14 @@ relevantTo: [hybrid]
 <p>When you create a hybrid application, MobileFirst Studio generates a main <code>CordovaActivity</code> class (<code>appname.java</code>) which handles various stages of the application startup flow.</p>
 <p>The <code>showSplashScreen</code> method is called to display a simple splash screen while resources are being loaded. You can modify the location with any native introduction screen.</p>
 <p>To initialize the MobileFirst framework and prepare web resources, the <code>initializeWebFramework</code> method is called.<br />
-As soon as the web framework finishes initializing and all resources are ready, the <span class="inline-code">onInitWebFrameworkComplete</span> method is called. The value of <span class="inline-code">WLInitWebFrameworkResult</span> can be checked and the application can be started.</p>
+As soon as the web framework finishes initializing and all resources are ready, the <code>onInitWebFrameworkComplete</code> method is called. The value of <code>WLInitWebFrameworkResult</code> can be checked and the application can be started.</p>
 <h2 id="splashSample">Native SplashScreen sample</h2>
 <p>The <code>NativeUIInHybrid</code> project includes a hybrid application called <code>NativeSplashScreen</code>.</p>
-<p>The application contains an <span class="inline-code">InitiativeActivity</span> activity. This activity is used to show a simple text view and a button as our customized splash screen:</p>
-<p>In the <span class="inline-code">onCreate</span> method:<br />
+<p>The application contains an <code>InitiativeActivity</code> activity. This activity is used to show a simple text view and a button as our customized splash screen:</p>
+<p>In the <code>onCreate</code> method:<br />
 {% highlight java %}setContentView(R.layout.activity_initiative);<br />
 startAppBtn = (Button) findViewById(R.id.StartApp);{% endhighlight %}</p>
-<p>And in the <span class="inline-code">onClickListener</span> method:<br />
+<p>And in the <code>onClickListener</code> method:<br />
 {% highlight java %}startAppBtn.setOnClickListener(new View.OnClickListener() {<br />
 	public void onClick(View v) {<br />
 		setResult(Activity.RESULT_OK);<br />
@@ -50,7 +50,7 @@ startAppBtn = (Button) findViewById(R.id.StartApp);{% endhighlight %}</p>
         android:layout_centerHorizontal="true"<br />
         android:layout_marginTop="150dp"<br />
         android:text="@string/InitiativeButtonText" />{% endhighlight %}</p>
-<p>It is also required to add an Intent to the <code>MainActivity</code> before the call to the <span class="inline-code">initializeWebFramework</span> method. The intent loads the newly created activity instead of opening the default MobileFirst splash screen.</p>
+<p>It is also required to add an Intent to the <code>MainActivity</code> before the call to the <code>initializeWebFramework</code> method. The intent loads the newly created activity instead of opening the default MobileFirst splash screen.</p>
 <p>{% highlight java %}WL.createInstance(this);</p>
 <p>Intent intent = new Intent(this, InitiativeActivity.class);<br />
 startActivity(intent);</p>
@@ -60,13 +60,13 @@ startActivity(intent);</p>
 You can use this feature to trigger native code to be run in the background, to update the native UI, to use native-only features, etc.</p>
 <h3>Step 1</h3>
 <p>In JavaScript, the following API is used:<br />
-<span class="inline-code">WL.App.sendActionToNative("doSomething", {customData: 12345});</span></p>
-<p>The <span class="inline-code">doSomething</span> parameter is an arbitrary action name to be used in the native side (see Step 2). The second parameter is a JSON object that contains any data.</p>
+<code>WL.App.sendActionToNative("doSomething", {customData: 12345});</code></p>
+<p>The <code>doSomething</code> parameter is an arbitrary action name to be used in the native side (see Step 2). The second parameter is a JSON object that contains any data.</p>
 <h3>Step 2</h3>
-<p>The native class to receive the action must implement the <span class="inline-code">WLActionReceiver</span> protocol:<br />
+<p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
 {% highlight java %}public class ActionReceiver implements WLActionReceiver{</p>
 <p>}{% endhighlight %}</p>
-<p>The <span class="inline-code">WLActionReceiver</span> protocol requires an <span class="inline-code">onActionReceived</span> method in which the action name can be checked for and perform any native code that the action needs:<br />
+<p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:<br />
 {% highlight java %}public void onActionReceived(String action, JSONObject data){<br />
 	if (action.equals("doSomething")){<br />
 		// Write your code here...<br />
@@ -83,7 +83,7 @@ You can use this feature to receive responses from a native method, notify the w
 {% highlight java %}JSONObject data = new JSONObject();<br />
 	data.put("someProperty", 12345);<br />
 	WL.getInstance().sendActionToJS("doSomething", data);{% endhighlight %}</p>
-<p>The <span class="inline-code">doSomething</span> parameter is an arbitrary action name to be used on the JavaScript side and the second parameter is an <span class="inline-code">JSONObject</span> instance that contains any data.</p>
+<p>The <code>doSomething</code> parameter is an arbitrary action name to be used on the JavaScript side and the second parameter is an <code>JSONObject</code> instance that contains any data.</p>
 <h3>Step 2</h3>
 <p>A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
 <p>{% highlight js %}function actionReceiver(received){<br />
@@ -103,7 +103,7 @@ You can use this feature to receive responses from a native method, notify the w
 This sample uses the MapView and the Google Maps services.</p>
 <p><strong>Note</strong>: This sample will <strong>NOT</strong> work without the following extra steps to install the MapView.</p>
 <p>For more information about the MapView and Google Maps services, see the Google Map Android page at <a href="https://developers.google.com/maps/documentation/android/">https://developers.google.com/maps/documentation/android/</a><br />
-This sample includes an additional <span class="inline-code">FragmentActivity</span> (DisplayMap) to display the requested map.</p>
+This sample includes an additional <code>FragmentActivity</code> (DisplayMap) to display the requested map.</p>
 <h3>HTML</h3>
 <p>The HTML page shows the following elements:</p>
 <ul>
@@ -118,7 +118,7 @@ This sample includes an additional <span class="inline-code">FragmentActivity</s
  </p><br />
  <p id="errorMsg" style="color:red;"></p>{% endhighlight %}</p>
 <h3>JavaScript</h3>
-<p>When the button is clicked, the <span class="inline-code">sendActionToNative</span> method is called to send the address to the native code.<br />
+<p>When the button is clicked, the <code>sendActionToNative</code> method is called to send the address to the native code.<br />
 {% highlight js %}$('#displayBtn').on('click', function(){<br />
 	$('#errorMsg').empty();<br />
 	WL.App.sendActionToNative("displayAddress",<br />
@@ -132,8 +132,8 @@ This sample includes an additional <span class="inline-code">FragmentActivity</s
 		}<br />
 	});{% endhighlight %}</p>
 <h3>Action receiver</h3>
-<p>A new class is required. It implements <span class="inline-code">WLActionReceiver</span>.<br />
-Before using this new class, call the <span class="inline-code">addActionReceiver</span> method to register <span class="inline-code">ActionReceiver</span> in the main activity after the initialization process is complete.</p>
+<p>A new class is required. It implements <code>WLActionReceiver</code>.<br />
+Before using this new class, call the <code>addActionReceiver</code> method to register <code>ActionReceiver</code> in the main activity after the initialization process is complete.</p>
 <p>{% highlight java %}public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {<br />
 		if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {<br />
 			super.loadUrl(WL.getInstance().getMainHtmlFilePath());<br />
@@ -142,7 +142,7 @@ Before using this new class, call the <span class="inline-code">addActionReceive
 		}<br />
 		WL.getInstance().addActionReceiver(new ActionReceiver(this));<br />
 	}{% endhighlight %}</p>
-<p>The <span class="inline-code">ActionReceiver</span> class implements the <span class="inline-code">onActionReceived</span> method. This  method is used to receive the address that was passed in the JavaScript code.</p>
+<p>The <code>ActionReceiver</code> class implements the <code>onActionReceived</code> method. This  method is used to receive the address that was passed in the JavaScript code.</p>
 <p>{% highlight java %}public void onActionReceived(String action, JSONObject data){<br />
 	if (action.equals("displayAddress")){<br />
 		try {<br />

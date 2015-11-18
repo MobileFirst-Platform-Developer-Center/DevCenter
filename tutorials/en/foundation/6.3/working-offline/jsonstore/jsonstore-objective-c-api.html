@@ -2,18 +2,14 @@
 layout: tutorial
 title: JSONStore - Objective-C API
 relevantTo: [ios]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPIBasicsProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPINativeiOSNativeProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPIBasicsProject.zip">Download Studio project</a>
-        </li>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPINativeiOSNativeProject.zip">Download native project</a>
-        </li>
-</ul>
-
 <h2>Follow along with the code sample:</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/JSONStore-Native-iOS-Basic-300x217.png" alt="JSONStore-Native-iOS-Basic" width="300" height="217" class="alignright size-medium wp-image-1637" /></p>
+<img src="{{ site.baseurl }}/assets/backup/JSONStore-Native-iOS-Basic-300x217.png" />
 <ol>
 <li>Download the compressed file with the code sample that is associated with this tutorial.</li>
 <li>Open the <strong>Basic.m</strong> file at <code>JSONStoreAPINativeiOS/Examples/Basic.m</code>. The sample image provides context.</li>
@@ -21,32 +17,32 @@ relevantTo: [ios]
 </ol>
 <blockquote class="clear"><p><strong>Note:</strong> The code sample uses the built-in Unit Test framework of the Xcode IDE. Explaining how this framework works is beyond the scope of this tutorial.</p></blockquote>
 <h3>Code Sample Walkthough</h3>
-<p>{% highlight objc %}<br />
-    NSError* error = nil;</p>
-<p>    [[JSONStore sharedInstance] destroyDataAndReturnError:&amp;error];</p>
-<p>    JSONStoreCollection* people = [[JSONStoreCollection alloc]<br />
-                                   initWithName:@"people"];</p>
-<p>    [people setSearchField:@"name"<br />
-                  withType:JSONStore_String];</p>
-<p>    [people setSearchField:@"age"<br />
-                  withType:JSONStore_Integer];</p>
-<p>    [[JSONStore sharedInstance] openCollections:@[people]<br />
-                                    withOptions:nil<br />
-                                          error:nil];</p>
-<p>    NSArray* data = @[@{@"name" : @"carlos", @"age" : @20},<br />
-                      @{@"name" : @"mike", @"age" : @30}];</p>
-<p>    [people addData:data andMarkDirty:NO<br />
-        withOptions:nil<br />
-              error:nil];</p>
-<p>    NSArray *actualResults = [people findAllWithOptions:nil<br />
-                                                  error:nil];</p>
-<p>    NSArray* expectedResults =<br />
-    @[@{ @"_id" : @1,<br />
-         @"json" : @{@"name" : @"carlos", @"age" : @20}},</p>
-<p>      @{ @"_id" : @2,<br />
-         @"json" : @{@"name" : @"mike",   @"age" : @30}}];</p>
-<p>    XCTAssertEqualObjects(actualResults, expectedResults);<br />
-{% endhighlight %}</p>
+{% highlight objc %}
+    NSError* error = nil;
+    [[JSONStore sharedInstance] destroyDataAndReturnError:&error];
+    JSONStoreCollection* people = [[JSONStoreCollection alloc]
+                                   initWithName:@"people"];
+    [people setSearchField:@"name"
+                  withType:JSONStore_String];
+    [people setSearchField:@"age"
+                  withType:JSONStore_Integer];
+    [[JSONStore sharedInstance] openCollections:@[people]
+                                    withOptions:nil
+                                          error:nil];
+    NSArray* data = @[@{@"name" : @"carlos", @"age" : @20},
+                      @{@"name" : @"mike", @"age" : @30}];
+    [people addData:data andMarkDirty:NO
+        withOptions:nil
+              error:nil];
+    NSArray *actualResults = [people findAllWithOptions:nil
+                                                  error:nil];
+    NSArray* expectedResults =
+    @[@{ @"_id" : @1,
+         @"json" : @{@"name" : @"carlos", @"age" : @20}},
+      @{ @"_id" : @2,
+         @"json" : @{@"name" : @"mike",   @"age" : @30}}];
+    XCTAssertEqualObjects(actualResults, expectedResults);
+{% endhighlight %}
 <p>If an error occurs, the error variable contains information about the error, such as the error code. Otherwise, it remains <code>nil</code>.</p>
 <p>The <code>destroy</code> API removes all JSONStore content from the application. It is used here to start with no data. Doing it this way ensures that the output is predictable in the code sample.</p>
 <p>To persist data, you must first define at least one collection. These collections are entities that hold data. You can see here the definition of a collection that is called <code>people</code>.</p>
@@ -68,7 +64,7 @@ The easiest way, and the way that is shown here, is by using the <code>findAll</
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPIBasicsProject.zip">Click to download</a> Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/JSONStoreAPINativeiOSNativeProject.zip">Click to download</a> Native project.</p>
 <h2>Expected Output</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/JSONStore-Native-iOS-Expected-Results-300x126.png" alt="JSONStore-Native-iOS-Expected-Results" width="300" height="126" class="alignright size-medium wp-image-1638" /></p>
+<img src="{{ site.baseurl }}/assets/backup/JSONStore-Native-iOS-Expected-Results-300x126.png"/>
 <p>To execute the tests, select <strong>Product</strong> > <strong>Test</strong>.<br />
 When the tests are executed, the output looks similar to the sample image.<br />
 The green check mark next to the test indicates that everything is working as expected.</p>
