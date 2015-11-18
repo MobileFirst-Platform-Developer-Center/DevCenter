@@ -43,13 +43,13 @@ The certificate is not issued and not requested at any stage.<br />
 No provisioning is the default setting for mobile applications.<br />
 If you are use the default security settings, you do not have to enable <strong>No provisioning</strong> manually.</p>
 <p>If you use a custom security test to protect a resource that requires device identity and you want to use <strong>No provisioning</strong>, add the realm to your security test. For example:</p>
-<p>[code lang="xml" highlight="4"]<br />
-&lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
+<p>{% highlight xml %}<br />
+<customSecurityTest name="customTests"><br />
   ...<br />
-  &lt;test realm=&quot;wl_anonymousUserRealm&quot; isInternalUserID=&quot;true&quot; /&gt;<br />
-  &lt;test realm=&quot;wl_deviceNoProvisioningRealm&quot; isInternalDeviceID=&quot;true&quot; /&gt;<br />
-&lt;/customSecurityTest&gt;<br />
-[/code]</p>
+  <test realm="wl_anonymousUserRealm" isInternalUserID="true" /><br />
+  <test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" /><br />
+</customSecurityTest><br />
+{% endhighlight %}</p>
 <h2>Auto provisioning</h2>
 <p><strong>Auto provisioning</strong> is an automated one-time process during which a certificate is issued by the MobileFirst Server and sent to the client application.<br />
 <strong>Auto provisioning</strong> is triggered by a server when it requests a provisioned device identity.<br />
@@ -63,32 +63,32 @@ The certificate is issued to any device that requests it, therefore <strong>Auto
 <p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_13_autoprov-subsequent.png"><img class="aligncenter wp-image-1073 size-full" src="{{ site.baseurl }}/assets/backup/09_13_autoprov-subsequent.png" alt="09_13_autoprov-subsequent" width="1276" height="616" /></a></p>
 <h3>Enabling auto provisioning</h3>
 <p>To enable <strong>Auto provisioning</strong>, add the following realms to your <strong>authentication-config.xml</strong> file.</p>
-<p>[code lang="xml" title="If 1=use 2=a 3=custom 4=security 5=test:" language="you"]<br />
-&lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
+<p>{% highlight xml %}<br />
+<customSecurityTest name="customTests"><br />
   …<br />
-  &lt;test realm=&quot;wl_authenticityRealm&quot; /&gt;<br />
-  &lt;test realm=&quot;wl_deviceAutoProvisioningRealm&quot; isInternalDeviceID=&quot;true&quot; /&gt;<br />
-&lt;/customSecurityTest&gt;<br />
-[/code]</p>
-<p>[code lang="xml" title="If 1=use 2=a 3=mobile 4=security 5=test:" language="you"]<br />
-&lt;mobileSecurityTest name=&quot;mobileTests&quot;&gt;<br />
+  <test realm="wl_authenticityRealm" /><br />
+  <test realm="wl_deviceAutoProvisioningRealm" isInternalDeviceID="true" /><br />
+</customSecurityTest><br />
+{% endhighlight %}</p>
+<p>{% highlight xml %}<br />
+<mobileSecurityTest name="mobileTests"><br />
   ...<br />
-  &lt;testAppAuthenticity/&gt;<br />
-  &lt;testDeviceId provisioningType=&quot;auto&quot; /&gt;<br />
-&lt;/mobileSecurityTest&gt;<br />
-[/code]</p>
+  <testAppAuthenticity/><br />
+  <testDeviceId provisioningType="auto" /><br />
+</mobileSecurityTest><br />
+{% endhighlight %}</p>
 <h3>keystore</h3>
 <p>By default, the MobileFirst Server uses its internal keystore to issue a certificate.<br />
 You can tell the server to use your own keystore by adjusting the <strong>worklight.properties</strong> file.<br />
 Note: The <em>wl.ca.keystore.path</em> property value can be either relative to the <em>/server/</em> folder of the MobileFirst project or absolute to the file system.</p>
-<p>[code lang="bash" firstline="137"]<br />
+<p>{% highlight bash %}<br />
 #######################################################################################################################<br />
 #    Worklight Default Certificate (For device provisioning)<br />
 #######################################################################################################################<br />
 # You can change the default behavior with regard to CA certificates. You can also implement custom provisioning.<br />
 # If you want to change the auto-provisioning mechanism to use different granularity (application, device or group) or a<br />
 # different list of pre-required realms, you can create your own customized authenticator, login module and challenge handler.<br />
-# For more information, see the &quot;Custom Authenticator and Login Module&quot; Getting Started training module.</p>
+# For more information, see the "Custom Authenticator and Login Module" Getting Started training module.</p>
 <p>#The path to the keystore, relative to the server folder in the Worklight Project, for example: conf/my-cert.jks<br />
 #wl.ca.keystore.path=<br />
 #The type of the keystore file. Valid values are jks or pkcs12.<br />
@@ -108,7 +108,7 @@ ssl.keystore.path=conf/default.keystore<br />
 ssl.keystore.type=jks<br />
 #SSL certificate keystore password.<br />
 ssl.keystore.password=worklight<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><strong>Auto provisioning</strong> must be used together with the <strong>application authenticity</strong> protection.<br />
 For more information, see <a title="Application Authenticity Protection" href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/application-authenticity-protection/">Application Authenticity Protection</a></p>
 <h2>Custom provisioning</h2>

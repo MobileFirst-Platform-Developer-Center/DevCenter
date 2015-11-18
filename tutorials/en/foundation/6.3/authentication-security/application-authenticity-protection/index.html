@@ -28,23 +28,23 @@ Only the developers or the enterprise who have the original private key that was
 <h4>authenticationConfig.xml</h4>
 <p>Add the relevant authentication realm to a security test.</p>
 <p>If mobileSecurityTest is used, the testAppAuthenticity child-element must be added to it:<br />
-[code lang="xml" highlight="2"]&lt;mobileSecurityTest name=&quot;mobileTests&quot;&gt;<br />
-			&lt;testAppAuthenticity/&gt;<br />
-			&lt;testDeviceId provisioningType=&quot;none&quot; /&gt;<br />
-			&lt;testUser realm=&quot;myMobileLoginForm&quot; /&gt;<br />
-			&lt;testDirectUpdate mode=&quot;perSession&quot; /&gt;<br />
-		&lt;/mobileSecurityTest&gt;<br />
-[/code]</p>
+{% highlight xml %}<mobileSecurityTest name="mobileTests"><br />
+			<testAppAuthenticity/><br />
+			<testDeviceId provisioningType="none" /><br />
+			<testUser realm="myMobileLoginForm" /><br />
+			<testDirectUpdate mode="perSession" /><br />
+		</mobileSecurityTest><br />
+{% endhighlight %}</p>
 <p>If customSecurityTest is used, the wl_authenticityRealm realm must be added to it:<br />
-[code lang="xml" highlight="3"]&lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
-        	&lt;test realm=&quot;wl_antiXSRFRealm&quot; step=&quot;1&quot;/&gt;<br />
-        	&lt;test realm=&quot;wl_authenticityRealm&quot; step=&quot;1&quot;/&gt;<br />
-        	&lt;test realm=&quot;wl_remoteDisableRealm&quot; step=&quot;1&quot;/&gt;<br />
-        	&lt;test realm=&quot;wl_directUpdateRealm&quot; mode=&quot;perSession&quot; step=&quot;1&quot;/&gt;<br />
-            &lt;test realm=&quot;wl_anonymousUserRealm&quot; isInternalUserID=&quot;true&quot; step=&quot;1&quot;/&gt;<br />
-			&lt;test realm=&quot;wl_deviceNoProvisioningRealm&quot; isInternalDeviceID=&quot;true&quot; step=&quot;2&quot;/&gt;<br />
-       	&lt;/customSecurityTest&gt;<br />
-[/code]</p>
+{% highlight xml %}<customSecurityTest name="customTests"><br />
+        	<test realm="wl_antiXSRFRealm" step="1"/><br />
+        	<test realm="wl_authenticityRealm" step="1"/><br />
+        	<test realm="wl_remoteDisableRealm" step="1"/><br />
+        	<test realm="wl_directUpdateRealm" mode="perSession" step="1"/><br />
+            <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"/><br />
+			<test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" step="2"/><br />
+       	</customSecurityTest><br />
+{% endhighlight %}</p>
 <h2>Controlling application authenticity from MobileFirst Console</h2>
 <p>IBM MobileFirst Platform Foundation Console provides means for enabling and disabling application authenticity realm.<br />
 You can set three modes:</p>

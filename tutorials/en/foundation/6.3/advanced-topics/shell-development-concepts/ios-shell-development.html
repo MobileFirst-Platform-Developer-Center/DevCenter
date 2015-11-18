@@ -38,28 +38,28 @@ Use it to work with your Objective C code.</p>
 <p>Open the generated iOS project in Xcode.<br />
 Add an Objective C <strong>MyCustomAlert</strong> class in the <strong>Classes</strong> folder.<br />
 Add a method signature to <strong>MyCustomAlert.h</strong>, and method implementation to <strong>MyCustomAlert.m</strong> files:</p>
-<p>[code lang="obj-c"]<br />
-#import &quot;MyCustomAlert.h&quot;</p>
+<p>{% highlight obj-c %}<br />
+#import "MyCustomAlert.h"</p>
 <p>@implementation MyCustomAlert<br />
 +(void)showUIAlert:(NSString *)text{<br />
-  UIAlertView *alert = [[UIAlert alloc] initWithTitle:@&quot;Native Alert&quot;<br />
+  UIAlertView *alert = [[UIAlert alloc] initWithTitle:@"Native Alert"<br />
                                         message:text<br />
                                         delegate:nil<br />
-                                        cancelButtonTitle:@&quot;Close&quot;<br />
+                                        cancelButtonTitle:@"Close"<br />
                                         otherButtonTitles:nil];<br />
   [alert show];<br />
   [alert release];<br />
 }<br />
 @end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Import <strong>MyCustomAlert.h</strong> and call this method from the <strong>viewDidLoad</strong> method of the application <strong>ViewController</strong>:</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 - (void)viewDidLoaad<br />
 {<br />
   [super viewDidLoad];<br />
-  [MyCustomAlert showUIAlert:@&quot;Hello from native iOS Shell&quot;];<br />
+  [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Run your application to see the implemented functions.<br />
 <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_03_objc-result.png"><img class="aligncenter size-full wp-image-1211" src="{{ site.baseurl }}/assets/backup/10_03_objc-result.png" alt="10_03_objc-result" width="370" height="719" /></a></p>
 <p>Finally, copy your Objective C code from the iPhone project that you used to develop it back to the shell component.<br />

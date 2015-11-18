@@ -26,7 +26,7 @@ Two options are available to support WebSphere LTPA-based authentication for Mob
 <h2 id="understanding">Understanding the server-side authentication options</h2>
 <p>The diagram below illustrates the WebSphere LTPA based authentication process.</p>
 <div id="contentBox" style="margin-bottom:10px;width:100%;float:left;">
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/ServerSideAuthDiagram.png"><img src="{{ site.baseurl }}/assets/backup/ServerSideAuthDiagram.png" alt="ServerSideAuthDiagram" width="934" height="488" class="alignleft size-full wp-image-4416" /></a>
+<img src="{{ site.baseurl }}/assets/backup/ServerSideAuthDiagram.png"/>
 </div>
 <p></p>
 <h2>Option 1</h2>
@@ -48,20 +48,20 @@ Secure the web resources in the MobileFirst Platform project WAR file by specify
 <div class="column" style="float: left;margin:0;width: 33%;">
     Option 1: Authentication is enforced by WebSphere Application Server<br />
 <br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/Option1.png"><img src="{{ site.baseurl }}/assets/backup/Option1-232x300.png" alt="Option1" width="232" height="300" class="alignleft size-medium wp-image-4380" /></a>
+<img src="{{ site.baseurl }}/assets/backup/Option1-232x300.png"/>
   </div>
 <div class="column" style="float:right;margin:0;width:33%;">
     Option 2: MobileFirst Platform Server enforces the authentication by relying on the WebSphere Application Server configuration<br />
 <br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/Option2.png"><img src="{{ site.baseurl }}/assets/backup/Option2-223x300.png" alt="Option2" width="223" height="300" class="alignleft size-medium wp-image-4381" /></a>
+<img src="{{ site.baseurl }}/assets/backup/Option2-223x300.png"/>
   </div>
 </div>
 <p>
 Option 1:<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/Option1LTPAWAS.png"><img src="{{ site.baseurl }}/assets/backup/Option1LTPAWAS-1024x575.png" alt="Option1LTPAWAS" width="980" height="550" class="aligncenter size-large wp-image-4394" /></a><br />
+<img src="{{ site.baseurl }}/assets/backup/Option1LTPAWAS-1024x575.png"/><br />
 <br />
 Option 2:<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/OPTION2LTPAWAS.png"><img src="{{ site.baseurl }}/assets/backup/OPTION2LTPAWAS-1024x615.png" alt="OPTION2LTPAWAS" width="980" height="588" class="aligncenter size-large wp-image-4395" /></a><br /></p>
+<img src="{{ site.baseurl }}/assets/backup/OPTION2LTPAWAS-1024x615.png"/><br /></p>
 <div id="contentBox" style="margin-bottom:10px;width:100%;float:left;">
 <div class="column" style="float:left;margin:0;width: 11%;">
   <br />
@@ -117,23 +117,23 @@ Step 2: Configuring <code>authenticationConfig.xml</code><br />
 <br />
 Find the <code>authenticationConfig.xml</code> file in for your application, located in: <code>{WAS_HOME}/profiles/{your_profile}/installedApps/{your_node}/{MFP_EAR}/{MFP_WAR}/WEB-INF/classes/conf</code> (if you are in the development environment, this is located in <code>{MFP_Porject_Path}/server/conf</code>)</p>
 <p>Uncomment the realm:<br />
-[code lang="xml"] &lt;!-- For websphere --&gt;<br />
-&lt;realm name=&quot;WASLTPARealm&quot; loginModule=&quot;WASLTPAModule&quot;&gt;<br />
-   &lt;className&gt;com.worklight.core.auth.ext.WebSphereFormBasedAuthenticator&lt;/className&gt;<br />
-   &lt;parameter name=&quot;login-page&quot; value=&quot;/login.html&quot;/&gt;<br />
-   &lt;parameter name=&quot;error-page&quot; value=&quot;/loginError.html&quot;/&gt;<br />
-&lt;/realm&gt;<br />
-[/code]<br />
+{% highlight xml %} <!-- For websphere --><br />
+<realm name="WASLTPARealm" loginModule="WASLTPAModule"><br />
+   <className>com.worklight.core.auth.ext.WebSphereFormBasedAuthenticator</className><br />
+   <parameter name="login-page" value="/login.html"/><br />
+   <parameter name="error-page" value="/loginError.html"/><br />
+</realm><br />
+{% endhighlight %}<br />
 <br />
 Optionally, you can include the parameters <code>cookie-domain</code>, <code>cookie-name</code>, and <code>httponly-cookie</code>. For more information, see the section about the LTPA authenticator in the product documentation.<br />
 <br />
 In the same <code>authenticationConfig.xml</code>, uncomment the login module:<br />
-[code lang="xml"]<br />
-&lt;!-- For websphere --&gt;<br />
-&lt;loginModule name=&quot;WASLTPAModule&quot;&gt;<br />
-   &lt;className&gt;com.worklight.core.auth.ext.WebSphereLoginModule&lt;/className&gt;<br />
-&lt;/loginModule&gt;<br />
-[/code]<br />
+{% highlight xml %}<br />
+<!-- For websphere --><br />
+<loginModule name="WASLTPAModule"><br />
+   <className>com.worklight.core.auth.ext.WebSphereLoginModule</className><br />
+</loginModule><br />
+{% endhighlight %}<br />
 Note: The login module might already be uncommented.<br />
 <br />
 Add security test to the <code>authenticationConfig.xml</code> as appropriate.</p>
@@ -141,48 +141,48 @@ Add security test to the <code>authenticationConfig.xml</code> as appropriate.</
 <li>Add webSecurityTest if you plan to develop for web environments</li>
 <li>Add mobileSecurityTest if you plan to develop for mobile environments</li>
 </ul>
-<p>[code lang="xml"]<br />
-&lt;!-- For websphere --&gt;<br />
-&lt;securityTest&gt;<br />
-   &lt;webSecurityTest name=&quot;wasWebSecurity&quot;&gt;<br />
-      &lt;testUser real=&quot;WASLTPARealm&quot;/&gt;<br />
-   &lt;/webSecurityTest&gt;</p>
-<p>   &lt;mobileSecurityTest name=&quot;WAS-securityTest&quot;&gt;<br />
-      &lt;testAppAuthenticity/&gt;<br />
-      &lt;testDeviceId provisioningType=&quot;none&quot;/&gt;<br />
-      &lt;testUser realm=&quot;WASLTPARealm&quot;/&gt;<br />
-   &lt;/mobileSecurityTest&gt;<br />
-&lt;/securityTest&gt;<br />
-[/code]<br /></p>
+<p>{% highlight xml %}<br />
+<!-- For websphere --><br />
+<securityTest><br />
+   <webSecurityTest name="wasWebSecurity"><br />
+      <testUser real="WASLTPARealm"/><br />
+   </webSecurityTest></p>
+<p>   <mobileSecurityTest name="WAS-securityTest"><br />
+      <testAppAuthenticity/><br />
+      <testDeviceId provisioningType="none"/><br />
+      <testUser realm="WASLTPARealm"/><br />
+   </mobileSecurityTest><br />
+</securityTest><br />
+{% endhighlight %}<br /></p>
 <p>Step 3: Creating login.html and loginError.html<br />
 <br />
 Create a file that is named <code>login.html</code> or use the <code>login.html</code> that MFP provides you in the <code>{MFP_Project_Path}/server</code> directory. Save the login.html to the root of your WAR file: <code>{WAS_HOME}/profiles/{your profile}/installedApps/{your node}/{MobileFirst Platform WAR}</code>, if you are working in the development server this is the WAR file located in <code>{MFP_Project_Path}/bin</code>. Unzip that WAR and copy paste the login.html, rezip the project and change the .zip to .war.<br />
 <br />
 If you decide to create your own <code>login.html</code> make sure the form contents are set like the following form:<br />
-[code lang="html"]<br />
-&lt;html&gt;<br />
-   &lt;head&gt;&lt;/head&gt;<br />
-   &lt;body&gt;<br />
-      &lt;form action=&quot;j_security_check&quot; method=&quot;post&quot;&gt;<br />
-      Username: &lt;input type=&quot;text&quot; name=&quot;j_username&quot; size=&quot;20&quot;&gt;&lt;br&gt;<br />
-      Password: &lt;input type=&quot;password&quot; name=&quot;j_password&quot; size=&quot;20&quot;&gt;&lt;br&gt;<br />
-      &lt;input type=&quot;submit&quot; value=&quot;Login&quot;&gt;<br />
-      &lt;/form&gt;<br />
-   &lt;/body&gt;<br />
-&lt;/html&gt;<br />
-[/code]</p>
+{% highlight html %}<br />
+<html><br />
+   <head></head><br />
+   <body><br />
+      <form action="j_security_check" method="post"><br />
+      Username: <input type="text" name="j_username" size="20"><br><br />
+      Password: <input type="password" name="j_password" size="20"><br><br />
+      <input type="submit" value="Login"><br />
+      </form><br />
+   </body><br />
+</html><br />
+{% endhighlight %}</p>
 <p>
 Create the <code>loginError.html</code> error page and place it in the root of your WAR file: <code>{WAS_HOME}/profiles/{your profile}/installedApps/{your node}/{MobileFirst Platform WAR}</code>. The <code>loginError.html</code> page is used when login fails.<br />
 <br />
 Set its contents as follows:<br />
-[code lang="html"]<br />
-&lt;html&gt;<br />
-   &lt;head&gt;&lt;/head&gt;<br />
-   &lt;body&gt;<br />
+{% highlight html %}<br />
+<html><br />
+   <head></head><br />
+   <body><br />
       Login invalid.<br />
-   &lt;/body&gt;<br />
-&lt;/html&gt;<br />
-[/code]<br />
+   </body><br />
+</html><br />
+{% endhighlight %}<br />
 <br />
 Step 4: Configuring web.xml - This step is optional for option 2, but mandatory for option 1.<br />
 <br />
@@ -190,83 +190,83 @@ Locate the <code>web.xml</code> file: <code>{WAS_HOME}/profiles/{your profile}/i
 <br />
 Inside the root tag, add the tags as shown in the code sample below. These tags pass to WebSphere Application Server the configuration that the WAR file expects.<br />
 Note: Tailor this code block to fit your needs. This is just one example of setting the configuration.<br />
-[code lang="xml"]<br />
-&lt;security-constraint id=&quot;SecurityConstraint_1&quot;&gt;<br />
-   &lt;web-resource-collection id=&quot;WebResourceCollection_1&quot;&gt;<br />
-      &lt;web-resource-name&gt;Servlet&lt;/web-resource-name&gt;<br />
-      &lt;description&gt;Protection area for Servlet.&lt;/description&gt;<br />
-      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;<br />
-      &lt;http-method&gt;GET&lt;/http-method&gt;<br />
-      &lt;http-method&gt;POST&lt;/http-method&gt;<br />
-   &lt;/web-resource-collection&gt;<br />
-   &lt;auth-constraint id=&quot;AuthConstraint_1&quot;&gt;<br />
-      &lt;description&gt;Servlet Security:+:All Authenticated users for Servlet.&lt;/description&gt;<br />
-      &lt;role-name&gt;Role 3&lt;/role-name&gt;<br />
-   &lt;/auth-constraint&gt;<br />
-   &lt;user-data-constraint id=&quot;UserDataConstraint_1&quot;&gt;<br />
-      &lt;transport-guarantee&gt;NONE&lt;/transport-guarantee&gt;<br />
-   &lt;/user-data-constraint&gt;<br />
-&lt;/security-constraint&gt;</p>
-<p>&lt;security-role id=&quot;SecurityRole_1&quot;&gt;<br />
-   &lt;description&gt;All Authenticated Users Role.&lt;/description&gt;<br />
-   &lt;role-name&gt;Role 3&lt;/role-name&gt;<br />
-&lt;/security-role&gt;</p>
-<p>&lt;login-config&gt;<br />
-   &lt;auth-method&gt;FORM&lt;/auth-method&gt;<br />
-   &lt;form-login-config&gt;<br />
-      &lt;form-login-page&gt;/login.html&lt;/form-login-page&gt;<br />
-      &lt;form-error-page&gt;/loginError.html&lt;/form-error-page&gt;<br />
-   &lt;/form-login-config&gt;<br />
-&lt;/login-config&gt;<br />
-[/code]<br /></p>
+{% highlight xml %}<br />
+<security-constraint id="SecurityConstraint_1"><br />
+   <web-resource-collection id="WebResourceCollection_1"><br />
+      <web-resource-name>Servlet</web-resource-name><br />
+      <description>Protection area for Servlet.</description><br />
+      <url-pattern>/*</url-pattern><br />
+      <http-method>GET</http-method><br />
+      <http-method>POST</http-method><br />
+   </web-resource-collection><br />
+   <auth-constraint id="AuthConstraint_1"><br />
+      <description>Servlet Security:+:All Authenticated users for Servlet.</description><br />
+      <role-name>Role 3</role-name><br />
+   </auth-constraint><br />
+   <user-data-constraint id="UserDataConstraint_1"><br />
+      <transport-guarantee>NONE</transport-guarantee><br />
+   </user-data-constraint><br />
+</security-constraint></p>
+<p><security-role id="SecurityRole_1"><br />
+   <description>All Authenticated Users Role.</description><br />
+   <role-name>Role 3</role-name><br />
+</security-role></p>
+<p><login-config><br />
+   <auth-method>FORM</auth-method><br />
+   <form-login-config><br />
+      <form-login-page>/login.html</form-login-page><br />
+      <form-error-page>/loginError.html</form-error-page><br />
+   </form-login-config><br />
+</login-config><br />
+{% endhighlight %}<br /></p>
 <h3 id="optional">Optional steps for protecting the MobileFirst Platform Console</h3>
 <p>To protect the MobileFirst Platform Console with WebSphere Application Server authentication credentials, modify the <code>authenticationConfig.xml</code> file as follows:</p>
 <ul>
-<li>Uncomment the <code>&lt;staticResources&gt;</code> element to enable protection of static resources:</li>
+<li>Uncomment the <code><staticResources></code> element to enable protection of static resources:</li>
 </ul>
-<p>[code lang="xml"]<br />
-&lt;!-- Uncomment the next element to protect the Worklight console and the first section in securityTests below. --&gt;<br />
-&lt;staticResources&gt;<br />
-   &lt;resource id=&quot;mobileFirstPlatformConsole&quot; securityTest=&quot;MobileFirstPlatformConsole&quot;&gt;<br />
-      &lt;urlPatterns&gt;/console*&lt;/urlPatterns&gt;<br />
-   &lt;/resource&gt;<br />
-&lt;/staticResources&gt;<br />
-[/code]</p>
+<p>{% highlight xml %}<br />
+<!-- Uncomment the next element to protect the Worklight console and the first section in securityTests below. --><br />
+<staticResources><br />
+   <resource id="mobileFirstPlatformConsole" securityTest="MobileFirstPlatformConsole"><br />
+      <urlPatterns>/console*</urlPatterns><br />
+   </resource><br />
+</staticResources><br />
+{% endhighlight %}</p>
 <ul>
-<li>Add a <code>&lt;customSecurityTest&gt;</code> element to your existing security test:</li>
+<li>Add a <code><customSecurityTest></code> element to your existing security test:</li>
 </ul>
-<p>[code lang="xml"]<br />
-&lt;securityTests&gt;<br />
-   &lt;customSecurityTest name=&quot;WorklightConsole&quot;&gt;<br />
-      &lt;test realm=&quot;WASLTPARealm&quot; isInternalUserID=&quot;true&quot;/&gt;<br />
-   &lt;/customSecurityTest&gt;<br />
-&lt;/securityTests&gt;<br />
-[/code]<br /></p>
+<p>{% highlight xml %}<br />
+<securityTests><br />
+   <customSecurityTest name="WorklightConsole"><br />
+      <test realm="WASLTPARealm" isInternalUserID="true"/><br />
+   </customSecurityTest><br />
+</securityTests><br />
+{% endhighlight %}<br /></p>
 <h2 id="clientSide">Creating client-side authentication components</h2>
 <p>Using an existing MobileFirst Platform application from one of the Authentication modules.<br />
 To implement security for an app, follow the same methods as for any other type of realm, and then configure the challenge handler to use your realm:<br />
-[code lang="javascript"]<br />
-var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler(&quot;WASLTPARealm&quot;);<br />
-[/code]<br />
+{% highlight javascript %}<br />
+var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler("WASLTPARealm");<br />
+{% endhighlight %}<br />
 <br />
 In the <code>applicationDescriptor.xml</code> file, specify the security test that your app must use for the appropriate environments.<br />
 For example:<br />
-[code lang="xml"]<br />
-&lt;common securityTest=&quot;wasWebSecurity&quot;/&gt;<br />
-&lt;android version=&quot;1.0&quot; securityTest=&quot;WAS-securityTest&quot;&gt;<br />
-   &lt;pushSender key= &quot;keyTest&quot; senderId=&quot;senderIdTest&quot;/&gt;<br />
-&lt;/android&gt;<br />
-&lt;iphone bundleId=&quot;{IPhone_bundle_Id}&quot; applicationId=&quot;{IPhone_application_Id}&quot; version=&quot;1.0&quot; securityTest=&quot;WAS-securityTest&quot;&gt;<br />
-   &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
-   &lt;security&gt;<br />
-      &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-      &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
-   &lt;/security&gt;<br />
-&lt;/iphone&gt;<br />
-[/code]<br />
+{% highlight xml %}<br />
+<common securityTest="wasWebSecurity"/><br />
+<android version="1.0" securityTest="WAS-securityTest"><br />
+   <pushSender key= "keyTest" senderId="senderIdTest"/><br />
+</android><br />
+<iphone bundleId="{IPhone_bundle_Id}" applicationId="{IPhone_application_Id}" version="1.0" securityTest="WAS-securityTest"><br />
+   <worklightSettings include="false"/><br />
+   <security><br />
+      <encryptWebResources enabled="false"/><br />
+      <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
+   </security><br />
+</iphone><br />
+{% endhighlight %}<br />
 <br />
 Deploy and test the application by using Option 2. The authentication requires a valid user name and password from the underlying user registry that the WebSphere Application Server is configured against. When the authentication is successful, the MobileFirst Platform app is authenticated.</p>
 <h2 id="result">Examining the result</h2>
 <div id="contentBox" style="margin-bottom:10px;width:100%;float:left;">
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/LTPAExaminingResult.png"><img src="{{ site.baseurl }}/assets/backup/LTPAExaminingResult.png" alt="LTPAExaminingResult" width="2002" height="1140" class="alignleft size-full wp-image-4413" /></a>
+<img src="{{ site.baseurl }}/assets/backup/LTPAExaminingResult.png"/>
 </div>

@@ -1,30 +1,30 @@
 ---
 layout: tutorial
 title: Invoking adapter procedures from hybrid client applications
+breadcrumb_title: Invoking adapter procedures
 relevantTo: [hybrid]
+weight: 6
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresHybridProject.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresHybridProject.zip">Download Studio project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
 <p>MobileFirst applications can adapt procedures to communicate with any data source without being subjected to same-origin constraints.</p>
 <h2>Basic API</h2>
 <p>Adapter procedures can be called from the client-side JavaScript:</p>
-<p>[code lang="javascript"]<br />
- WL.Client.invokeProcedure(invocationData, options);<br />
-[/code]</p>
+<p>{% highlight javascript %}
+ WL.Client.invokeProcedure(invocationData, options);
+{% endhighlight %}
+
 <h2>invocationData</h2>
 <p>The first step to invoke an adapter procedure in JavaScript is to create an <code>invocationData</code> object. The <code>invocationData</code> object is used to provide invocation configuration and procedure parameters. It consists of a JSON block of properties.</p>
-<p>[code lang="javascript"]<br />
-var invocationData = {<br />
-    adapter : 'RSSReader',<br />
-    procedure : 'getFeedsFiltered',<br />
-    parameters : []<br />
-};<br />
-[/code]</p>
+{% highlight javascript %}
+var invocationData = {
+    adapter : 'RSSReader',
+    procedure : 'getFeedsFiltered',
+    parameters : []
+};
+{% endhighlight %}
 <p>The properties are:</p>
 <ul>
 <li><strong>adapter</strong> (mandatory): A string that contains the name of the adapter as specified in the adapter XML file.</li>
@@ -33,13 +33,13 @@ var invocationData = {<br />
 </ul>
 <h2>Options</h2>
 <p>The second step is to define failure and success behaviors in the <code>options</code> object.</p>
-<p>[code lang="javascript"]<br />
-var options = {<br />
-    onSuccess : loadFeedsSuccess,<br />
-    onFailure : loadFeedsFailure,<br />
-    invocationContext: {}<br />
-};<br />
-[/code]</p>
+{% highlight javascript %}
+var options = {
+    onSuccess : loadFeedsSuccess,
+    onFailure : loadFeedsFailure,
+    invocationContext: {}
+};
+{% endhighlight %}
 <p>The <code>options</code> object must be passed for all asynchronous calls to MobileFirst Server.</p>
 <h3>onSuccess</h3>
 <p>The <code>onSuccess</code> function is to be invoked on successful completion of the asynchronous call.</p>
@@ -64,49 +64,50 @@ The <code>response</code> typically contains the following properties:</p>
 <h2>Invocation Results</h2>
 <p><code>invocationResult</code> is a JSON object that is returned. It contains the data and more information about the procedure invocation.<br />
 The object is returned to a corresponding success/failure handler.</p>
-<p>[code lang="javascript" highlight="2,3,4,5,13"]<br />
-{<br />
-  &quot;errors&quot;: [],<br />
-  &quot;info&quot;: [],<br />
-  &quot;warnings&quot;: [],<br />
-  &quot;isSuccessful&quot;: true,<br />
-  &quot;responseHeaders&quot;: {<br />
-    &quot;Cache-Control&quot;: &quot;no-cache, must-revalidate, post-check=0, pre-check=0&quot;<br />
-  },<br />
-  &quot;responseTime&quot;: 491,<br />
-  &quot;statusCode&quot;: 200,<br />
-  &quot;statusReason&quot;: &quot;OK&quot;,<br />
-  &quot;totalTime&quot;: 592,<br />
-  &quot;Items&quot;: [{<br />
-    &quot;creator&quot;: &quot;Jon Fingas&quot;,<br />
-    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated&quot;,<br />
-    &quot;pubDate&quot;: &quot;Mon, 10 Nov 2014 02:21:00 -0500&quot;,<br />
-    &quot;title&quot;: &quot;Harvard used cameras to track attendance without telling students&quot;<br />
-  }, {<br />
-    &quot;creator&quot;: &quot;Jon Fingas&quot;,<br />
-    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/10\/bmw-ev-charging-street-lights\/?ncid=rss_truncated&quot;,<br />
-    &quot;pubDate&quot;: &quot;Mon, 10 Nov 2014 00:10:00 -0500&quot;,<br />
-    &quot;title&quot;: &quot;BMW's new street lights will charge your electric car&quot;<br />
-  }, {<br />
-    &quot;creator&quot;: &quot;Daniel Cooper&quot;,<br />
-    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/09\/hwyc-lumia-925\/?ncid=rss_truncated&quot;,<br />
-    &quot;pubDate&quot;: &quot;Sun, 09 Nov 2014 22:43:00 -0500&quot;,<br />
-    &quot;title&quot;: &quot;How would you change Nokia's Lumia 925?&quot;<br />
-  }]<br />
-}<br />
-[/code]</p>
+{% highlight javascript %}
+{
+  "errors": [],
+  "info": [],
+  "warnings": [],
+  "isSuccessful": true,
+  "responseHeaders": {
+    "Cache-Control": "no-cache, must-revalidate, post-check=0, pre-check=0"
+  },
+  "responseTime": 491,
+  "statusCode": 200,
+  "statusReason": "OK",
+  "totalTime": 592,
+  "Items": [{
+    "creator": "Jon Fingas",
+    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated",
+    "pubDate": "Mon, 10 Nov 2014 02:21:00 -0500",
+    "title": "Harvard used cameras to track attendance without telling students"
+  }, {
+    "creator": "Jon Fingas",
+    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/bmw-ev-charging-street-lights\/?ncid=rss_truncated",
+    "pubDate": "Mon, 10 Nov 2014 00:10:00 -0500",
+    "title": "BMW's new street lights will charge your electric car"
+  }, {
+    "creator": "Daniel Cooper",
+    "link": "http:\/\/www.engadget.com\/2014\/11\/09\/hwyc-lumia-925\/?ncid=rss_truncated",
+    "pubDate": "Sun, 09 Nov 2014 22:43:00 -0500",
+    "title": "How would you change Nokia's Lumia 925?"
+  }]
+}
+{% endhighlight %}
 <p><code>errors</code>, <code>info</code>, and <code>warnings</code> are optional arrays of strings that contain messages.</p>
 <p>The <code>isSuccessful</code> property is set to <code>true</code> if the procedure invocation succeeded (even if no data was retrieved), to <code>false</code> otherwise.</p>
 <p>The response can contain other metadata such as <code>responseHeaders</code>, <code>responseTime</code>, <code>statusCode</code>, <code>statusReason</code>, and <code>totalTime</code>.</p>
 <p>The rest of the invocation result depends on what was retrieved from the back-end system. In this example, the <code>Items</code> element is a JSON representation of the XML code that was received from the back-end, after applying the rules in the XSL file.</p>
-<p>[code lang="javascript"]<br />
-function loadFeedsSuccess(result){<br />
-    WL.Logger.debug(&quot;Feed retrieve success&quot;);<br />
-    if (result.invocationResult.Items.length&gt;0)<br />
-        displayFeeds(result.invocationResult.Items);<br />
-}<br />
-[/code]</p>
+{% highlight javascript %}
+function loadFeedsSuccess(result){
+    WL.Logger.debug("Feed retrieve success");
+    if (result.invocationResult.Items.length>0)
+        displayFeeds(result.invocationResult.Items);
+}
+{% endhighlight %}
+
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresHybridProject.zip">Click to download</a> the Studio project.</p>
 <p>The attached sample uses the HTTP adapter created in the <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/server-side-development/http-adapter-communicating-http-back-end-systems/" title="HTTP adapter – Communicating with HTTP back-end systems">HTTP Adapter tutorial</a>.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_06_results.png"><img src="{{ site.baseurl }}/assets/backup/04_06_results.png" alt="04_06_results" width="316" height="413" class="aligncenter size-full wp-image-3341" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_06_results.png"/></p>

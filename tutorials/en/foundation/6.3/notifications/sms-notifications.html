@@ -45,7 +45,7 @@ relevantTo: [hybrid]
 <li>Send push notifications to devices</li>
 </ul>
 <p>With the application API, you can subscribe to, and unsubscribe from, push notification event sources. To send a notification, you must first retrieve it from the back-end system. An event source can either poll notifications from the back-end system, or wait for the back-end system to explicitly push a new notification. When a notification is retrieved by the adapter, it is processed and sent through a preconfigured SMS gateway. Extra custom logic can be added to the adapter to preprocess notifications. The SMS gateway receives the notification and sends it to a device.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/Notification.jpg"><img src="{{ site.baseurl }}/assets/backup/Notification.jpg" alt="Notification" width="947" height="589" class="alignnone size-full wp-image-3790" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/Notification.jpg"/></p>
 <ul>
     <strong>1. </strong>Notifications are retrieved by the MobileFirst adapter eventsource, by either poll or push from the back-end system.<br />
     <strong>2. </strong>A MobileFirst adapter processes the notification and sends it to an SMS gateway.<br />
@@ -70,7 +70,7 @@ relevantTo: [hybrid]
 <h3>Server side</h3>
 <p>Start by creating an event source:<br />
 Declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function).<br />
-[code lang="js"]<br />
+{% highlight js %}<br />
 WL.Server.createEventSource({<br />
         name: 'SMSEventSource',<br />
         onDeviceSubscribe: 'onDeviceSubscribeCallback',<br />
@@ -81,7 +81,7 @@ WL.Server.createEventSource({<br />
                 onPoll: getNotificationFromBackend<br />
         }<br />
 });<br />
-[/code]</p>
+{% endhighlight %}</p>
 <ul>
 <li>name–name by which the event source is referenced</li>
 <li>onDeviceSubscribe–adapter function that is called when the user subscription request is received</li>
@@ -92,21 +92,21 @@ WL.Server.createEventSource({<br />
         &nbsp;&nbsp;&nbsp;&nbsp;<strong>-</strong>onPoll: polling implementation: an adapter function to be invoked at specified intervals
 </ul>
 <p>Send a notification:<br />
-[code lang="js"]<br />
+{% highlight js %}<br />
 function sendSMS(userId, smsText){<br />
         var userSubscription = WL.Server.getUserNotificationSubscription('SMSAdapter.SMSEventSource', userId);<br />
         if (userSubscription==null){<br />
-                return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+                return { result: "No subscription found for user :: " + userId };<br />
         }<br />
         var badgeDigit = 1;<br />
         var notification = WL.Server.createDefaultNotification(smsText, badgeDigit, {});<br />
-        WL.Logger.debug(&quot;sendSMS &gt;&gt; userId :: &quot; + userId + &quot;, text :: &quot; + smsText);<br />
+        WL.Logger.debug("sendSMS >> userId :: " + userId + ", text :: " + smsText);<br />
         WL.Server.notifyAllDevices(userSubscription, notification);<br />
         return {<br />
-                result: &quot;Notification sent to user :: &quot; + userId<br />
+                result: "Notification sent to user :: " + userId<br />
         };<br />
 }<br />
-[/code]<br />
+{% endhighlight %}<br />
 Notifications can be either polled from or pushed by the back-end system. In this example, a <code>sendSMS()</code>adapter function is called by a back-end system as an external API to send notifications.<br />
 Retrieve the active user and use it to get the user subscription data.<br />
 Obtain notification data: The <code>sendSMS()</code> method takes the user ID to send the notification to, and the SMS text as arguments.<br />
@@ -142,9 +142,9 @@ These arguments are provided by the back-end system that calls this function.</p
 <p>Subscribing to SMS notifications can be achieved using a Subscribe SMS servlet. Subscribing to SMS notifications can be achieved without an application on the device, by making HTTP GET calls to the servlet.</p>
 <p>The Subscribe SMS servlet supports both subscribe and unsubscribe options. An application and event source within an adapter must be deployed to the MobileFirst Server before making the servlet call.</p>
 <h4>Subscribe URL:</h4>
-<p><strong>http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/subscribeSMS?alias=&lt;aliasname&gt;&amp;appId=&lt;appid&gt;&amp;eventSource=&lt;eventsourcename&gt;&amp;username=&lt;username&gt;&amp;phoneNumber=&lt;number&gt;</strong></p>
+<p><strong>http://<host>:<port>/<context>/subscribeSMS?alias=<aliasname>&amp;appId=<appid>&amp;eventSource=<eventsourcename>&amp;username=<username>&amp;phoneNumber=<number></strong></p>
 <h4>Unsubscribe URL:</h4>
-<p><strong>http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/subscribeSMS?option=unsubscribe&amp;eventSource=&lt;eventsourcename&gt;&amp;userName=&lt;username&gt;&amp;phoneNumber=&lt;phonenumber&gt;</strong></p>
+<p><strong>http://<host>:<port>/<context>/subscribeSMS?option=unsubscribe&amp;eventSource=<eventsourcename>&amp;userName=<username>&amp;phoneNumber=<phonenumber></strong></p>
 <table style="width:100%">
 <tr>
 <td style="width:20%; text-align:center">URL parameter</td>
@@ -179,48 +179,48 @@ These arguments are provided by the back-end system that calls this function.</p
 <h3>Security</h3>
 <p>By default, the Subscribe SMS servlet is protected as a static resource. By default, the authenticationConfig.xml file is configured to reject all requests to the Subscribe SMS servlet by using a rejecting login module. To allow access to the Subscribe SMS servlet, an administrator must modify the authenticationConfig.xml file with appropriate authenticator and login modules.</p>
 <p>By default, authenticationConfig.xml is configured to reject all requests to the Subscribe SMS servlet:<br />
-[code lang="xml"]<br />
-&lt;resource id=&quot;subscribeServlet&quot; securityTest=&quot;SubscribeServlet&quot;&gt;<br />
-        &lt;urlPatterns&gt;/subscribeSMS*&lt;/urlPatterns&gt;<br />
-&lt;/resource&gt;</p>
-<p>&lt;customSecurityTest name=&quot;SubscribeServlet&quot;&gt;<br />
-        &lt;test realm=&quot;SubscribeServlet&quot; isInternalUserID=&quot;true&quot;/&gt;<br />
-&lt;/customSecurityTest&gt;</p>
-<p>&lt;realm name=&quot;SubscribeServlet&quot; loginModule=&quot;rejectAll&quot;&gt;<br />
-        &lt;className&gt;com.worklight.core.auth.ext.HeaderAuthenticator&lt;/className&gt;<br />
-&lt;/realm&gt;</p>
-<p>&lt;loginModule name=&quot;rejectAll&quot;&gt;<br />
-        &lt;className&gt;com.worklight.core.auth.ext.RejectingLoginModule&lt;/className&gt;<br />
-&lt;/loginModule&gt;<br />
-[/code]</p>
+{% highlight xml %}<br />
+<resource id="subscribeServlet" securityTest="SubscribeServlet"><br />
+        <urlPatterns>/subscribeSMS*</urlPatterns><br />
+</resource></p>
+<p><customSecurityTest name="SubscribeServlet"><br />
+        <test realm="SubscribeServlet" isInternalUserID="true"/><br />
+</customSecurityTest></p>
+<p><realm name="SubscribeServlet" loginModule="rejectAll"><br />
+        <className>com.worklight.core.auth.ext.HeaderAuthenticator</className><br />
+</realm></p>
+<p><loginModule name="rejectAll"><br />
+        <className>com.worklight.core.auth.ext.RejectingLoginModule</className><br />
+</loginModule><br />
+{% endhighlight %}</p>
 <p>An administrator can change authenticationConfig.xml to allow access to the Subscribe SMS servlet:<br />
-[code lang="xml"]<br />
-&lt;resource id=&quot;subscribeServlet&quot; securityTest=&quot;SubscribeServlet&quot;&gt;<br />
-        &lt;urlPatterns&gt;/subscribeSMS*&lt;/urlPatterns&gt;<br />
-&lt;/resource&gt;</p>
-<p>&lt;customSecurityTest name=&quot;SubscribeServlet&quot;&gt;<br />
-        &lt;test realm=&quot;SMSRealm&quot; isInternalUserID=&quot;true&quot;/&gt;<br />
-&lt;/customSecurityTest&gt;</p>
-<p>&lt;realm name=&quot;SMSRealm&quot; loginModule=&quot;smsHeader&quot;&gt;<br />
-        &lt;className&gt;com.worklight.core.auth.ext.HeaderAuthenticator&lt;/className&gt;<br />
-&lt;/realm&gt;</p>
-<p>&lt;loginModule name=&quot;smsHeader&quot;&gt;<br />
-        &lt;className&gt;com.worklight.core.auth.ext.HeaderLoginModule&lt;/className&gt;<br />
-&lt;/loginModule&gt;<br />
-[/code]</p>
+{% highlight xml %}<br />
+<resource id="subscribeServlet" securityTest="SubscribeServlet"><br />
+        <urlPatterns>/subscribeSMS*</urlPatterns><br />
+</resource></p>
+<p><customSecurityTest name="SubscribeServlet"><br />
+        <test realm="SMSRealm" isInternalUserID="true"/><br />
+</customSecurityTest></p>
+<p><realm name="SMSRealm" loginModule="smsHeader"><br />
+        <className>com.worklight.core.auth.ext.HeaderAuthenticator</className><br />
+</realm></p>
+<p><loginModule name="smsHeader"><br />
+        <className>com.worklight.core.auth.ext.HeaderLoginModule</className><br />
+</loginModule><br />
+{% endhighlight %}</p>
 <h2 id="setup">Setup</h2>
 <h3>SMSConfig.xml</h3>
 <p>To send SMS notifications, define in the SMSConfig.xml file the third-party gateway services that are supported by the MobileFirst Server.<br />
-[code lang="xml"]<br />
-&lt;gateway id=&quot;myGateway&quot; hostname=&quot;yourhostname.com&quot; port=&quot;80&quot; programName=&quot;backendProgram&quot; toParamName=&quot;to&quot; textParamName=&quot;text&quot;&gt;<br />
-&lt;parameter encode=&quot;false&quot; name=&quot;param1name&quot; value=&quot;param1value&quot;/&gt;<br />
-&lt;parameter encode=&quot;false&quot; name=&quot;param2name&quot; value=&quot;param2value&quot;/&gt;<br />
-[/code]</p>
+{% highlight xml %}<br />
+<gateway id="myGateway" hostname="yourhostname.com" port="80" programName="backendProgram" toParamName="to" textParamName="text"><br />
+<parameter encode="false" name="param1name" value="param1value"/><br />
+<parameter encode="false" name="param2name" value="param2value"/><br />
+{% endhighlight %}</p>
 <h3>application-descriptor.xml</h3>
-<p>For an application to use SMS notifications, specify the SMS gateway to use by adding an &lt;smsGateway id=“…”/&gt; element to the application-descriptor.xml file.<br />
-[code lang="xml"]<br />
-&lt;smsGateway id=“myGateway”/&gt;<br />
-[/code]</p>
+<p>For an application to use SMS notifications, specify the SMS gateway to use by adding an <smsGateway id=“…”/> element to the application-descriptor.xml file.<br />
+{% highlight xml %}<br />
+<smsGateway id=“myGateway”/><br />
+{% endhighlight %}</p>
 <p>The gateway ID in the SMSConfig.xml file must correspond to the SMS gateway ID in the application-descriptor.xml file.</p>
 <h2>Back-end emulator</h2>
 <p>The sample for this training module comes with a back-end system emulator that you can use to simulate SMS notification submission by a back-end system.<br />
@@ -229,7 +229,7 @@ To run the back-end system emulator:</p>
     <strong>1. </strong>Open a command prompt.<br />
     <strong>2. </strong>Go to the SMSBackendEmulatorfolder of the sample project.<br />
     <strong>3. </strong>Enter the following command to run the supplied SMSBackendEmulator.jar file:<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;<strong>java –jar SMSBackendEmulator.jar &lt;userId&gt; &lt;notificationText&gt; &lt;serverPort&gt;</strong><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;<strong>java –jar SMSBackendEmulator.jar <userId> <notificationText> <serverPort></strong><br />
     &nbsp;&nbsp;&nbsp;&nbsp;where 'userID' is the user name that you used to log into the sample application.
 </ul>
 <p>The back-end system emulator tries to connect to a MobileFirst Server and call the sendSMS()adapter procedure. It then produces the invocation result to a command prompt console.</p>

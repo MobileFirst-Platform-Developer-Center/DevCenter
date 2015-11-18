@@ -12,7 +12,7 @@ relevantTo: [android]
         </li>
 </ul>
 <h2>Architecture</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/location_service_diagram.jpg"><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg" alt="location_service_diagram" width="650" height="404" class="aligncenter size-full wp-image-5171" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg"/></p>
 <p>The application code on the mobile device, in the form of an acquisition policy, controls the collection of data from device sensors.</p>
 <p>The collected data is referred to as the device context.</p>
 <p>When a change occurs in the device context, such as a change in the geolocation of the device or the fact that it entered a WiFi zone, triggers can be activated.</p>
@@ -27,19 +27,19 @@ relevantTo: [android]
 <p>Server activities and received events are logged, together with the device and application contexts, for future reporting and analytics.</p>
 <h2>Acquisition policy</h2>
 <p>An acquisition policy defines how acquisition takes place.</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 WLAcquisitionPolicy policy = new WLAcquisitionPolicy();<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>Geo Acquisition policy</h3>
 <p>To enable geolocation, make sure to update your AndroidManifest.xml file to enable the following permissions:<br />
-[code lang="xml" title="AndroidManifest.xml"]<br />
-&lt;uses-permission android:name=&quot;com.google.android.c2dm.permission.ACCESS_COARSE_LOCATION&quot;/&gt;<br />
-&lt;uses-permission android:name=&quot;com.google.android.c2dm.permission.ACCESS_FINE_LOCATION&quot;/&gt;<br />
-[/code]</p>
+{% highlight xml %}<br />
+<uses-permission android:name="com.google.android.c2dm.permission.ACCESS_COARSE_LOCATION"/><br />
+<uses-permission android:name="com.google.android.c2dm.permission.ACCESS_FINE_LOCATION"/><br />
+{% endhighlight %}</p>
 <p>Then in your Java code:<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 policy.setGeoPolicy(WLGeoAcquisitionPolicy.getLiveTrackingProfile());<br />
-[/code]<br />
+{% endhighlight %}<br />
 LiveTracking is a preset profile that uses the most accurate settings to track the device.<br />
 Additional configuration options include:</p>
 <ul>
@@ -50,22 +50,22 @@ Additional configuration options include:</p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy in the user documentation.</p></blockquote>
 <h3>Wifi Acquisition policy</h3>
 <p>To enable Wifi tracking, make sure to update your AndroidManifest.xml file to enable the following permissions:<br />
-[code lang="xml" title="AndroidManifest.xml"]<br />
-&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;<br />
-&lt;uses-permission android:name=&quot;android.permission.CHANGE_WIFI_STATE&quot;/&gt;<br />
-[/code]</p>
+{% highlight xml %}<br />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br />
+<uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/><br />
+{% endhighlight %}</p>
 <p>Then in your Java code:<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 policy.setWifiPolicy(new WLWifiAcquisitionPolicy()<br />
                      .setInterval(10000)<br />
                      .setAccessPointFilters(<br />
                              Arrays.asList(<br />
-                                     new WLWifiAccessPointFilter(&quot;Net1&quot;),<br />
-                                     new WLWifiAccessPointFilter(&quot;Net2&quot;,&quot;*&quot;)<br />
+                                     new WLWifiAccessPointFilter("Net1"),<br />
+                                     new WLWifiAccessPointFilter("Net2","*")<br />
                                      )<br />
                              )<br />
                      );<br />
-[/code]<br />
+{% endhighlight %}<br />
 <span class="inline-code">interval</span> is the polling interval, in milliseconds. WiFi polling is performed at each interval.</p>
 <p><span class="inline-code">accessPointFilters</span> are access points of interest.<br />
 In the above example, the acquisition policy:</p>
@@ -77,7 +77,7 @@ In the above example, the acquisition policy:</p>
 <li>Differentiates "Net2" access points by MAC address.
 </li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_wifi-policy-example.png"><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.png" alt="10_04_wifi-policy-example" width="505" height="470" class="aligncenter size-full wp-image-1482" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.png"/></p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy in the user documentation.</p></blockquote>
 <h2>Triggers</h2>
 <p>You can set up triggers for</p>
@@ -86,43 +86,43 @@ In the above example, the acquisition policy:</p>
 <li>Movement (Geo: <span class="inline-code">PositionChange</span>, WiFi: <span class="inline-code">VisibleAccessPointsChange</span>)</li>
 <li>WiFi <span class="inline-code">Connect</span> / <span class="inline-code">Disconnect</span></li>
 </ul>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 WLTriggersConfiguration triggers = new WLTriggersConfiguration();<br />
 triggers.getGeoTriggers().put(<br />
-        &quot;trigger1&quot;,<br />
+        "trigger1",<br />
         new WLGeoEnterTrigger()<br />
         .setArea(new WLCircle(new WLCoordinate(40.68917,-74.04444),100))<br />
         .setCallback(libertyAtLast)<br />
-        .setEvent(new JSONObject().put(&quot;bring&quot;,&quot;me&quot;).put(&quot;your&quot;,&quot;huddledMasses&quot;))<br />
+        .setEvent(new JSONObject().put("bring","me").put("your","huddledMasses"))<br />
         );<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>In the above example, <span class="inline-code">trigger1</span> is an <strong>Enter</strong> trigger which is activated when the device enters the defined circle (longitude, latitude, and radius).</p>
 <p>When a trigger activates, it can call a callback function and/or create an event to be sent to the server.</p>
 <blockquote><p>For more information, see the topic about triggers in the user documentation.</p></blockquote>
 <h2>Start Acquisition</h2>
 <p>Use the <span class="inline-code">policy</span> and <span class="inline-code">triggers</span> defined above to start the acquisition.<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 WLLocationServicesConfiguration config = new WLLocationServicesConfiguration();<br />
 config.setPolicy(policy);<br />
 config.setTriggers(triggers);</p>
 <p>WLClient.getInstance().getWLDevice().startAcquisition(config);<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Events</h2>
 <h3>Client Side</h3>
 <p>Events are generated by triggers (as explained above).<br />
-[code lang="java" firstline="7"]<br />
-        .setEvent(new JSONObject().put(&quot;bring&quot;,&quot;me&quot;).put(&quot;your&quot;,&quot;huddledMasses&quot;))<br />
-[/code]</p>
+{% highlight java %}<br />
+        .setEvent(new JSONObject().put("bring","me").put("your","huddledMasses"))<br />
+{% endhighlight %}</p>
 <p>Events can also be generated manually by calls to the API:<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 WLClient.getInstance().transmitEvent(event,immediate)<br />
-[/code]<br />
+{% endhighlight %}<br />
 Where <strong>event</strong> is a <span class="inline-code">JSONObject</span> and <strong>immediate</strong> is a <span class="inline-code">boolean</span>.</p>
 <h3>Server side</h3>
 <p>In the adapter code, create event handlers by using:<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 WL.Server.createEventHandler(filter, handlerFunction);<br />
-[/code]<br />
+{% endhighlight %}<br />
 Events that match the filter are passed to <span class="inline-code">handlerFunction</span>.<br />
 Filter examples:</p>
 <ul>
@@ -131,9 +131,9 @@ Filter examples:</p>
 <li><span class="inline-code">{}</span> – all events</li>
 </ul>
 <p>Register the event handlers by using:<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 WL.Server.setEventHandlers([...]);<br />
-[/code]</p>
+{% endhighlight %}</p>
 <blockquote><p>For more information, see the topic about working with geofences and triggers in the user documentation.</p></blockquote>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesProject.zip">Click to download</a> the Studio project.<br />
@@ -151,4 +151,4 @@ WL.Server.setEventHandlers([...]);<br />
 <li>Ongoing acquisition
 </li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_sample.png"><img src="{{ site.baseurl }}/assets/backup/10_04_sample.png" alt="10_04_sample" width="338" height="600" class="aligncenter size-full wp-image-1500" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_sample.png"/></p>

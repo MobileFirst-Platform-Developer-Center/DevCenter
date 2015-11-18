@@ -1,7 +1,9 @@
 ---
 layout: tutorial
 title: HTTP adapter - Communicating with HTTP back-end systems
+breadcrumb_title: HTTP adater
 relevantTo: [ios,android,windowsphone8,hybrid]
+weight: 2
 ---
 <ul>
 <li class="download-sample">
@@ -11,20 +13,20 @@ relevantTo: [ios,android,windowsphone8,hybrid]
 
 <h2>Overview</h2>
 <p>By using IBM MobileFirst Platform Foundation HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services and can read structured HTTP sources such as RSS feeds.</p>
-<p>You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary.<br />
+<p>You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary.
 The retrieved data can be in XML, HTML, JSON, or plain text format.</p>
-<p>The adapter is configured with XML to define the adapter properties and procedures.<br />
+<p>The adapter is configured with XML to define the adapter properties and procedures.
 Optional: It uses XSL to filter received records and fields.</p>
 <h2>Creating the adapter</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_02_creating-adapter.png"><img src="{{ site.baseurl }}/assets/backup/04_02_creating-adapter.png" alt="04_02_creating-adapter" width="525" height="395" class="aligncenter size-full wp-image-3502" /></a></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_02_adapter-filestruct.png"><img src="{{ site.baseurl }}/assets/backup/04_02_adapter-filestruct.png" alt="04_02_adapter-filestruct" width="199" height="138" class="alignright size-full wp-image-3504" /></a><br />
-In MobileFirst Studio, create an adapter and select the <strong>HTTP Adapter</strong> type.<br />
+<p><img src="{{ site.baseurl }}/assets/backup/04_02_creating-adapter.png"/></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_02_adapter-filestruct.png"/>
+In MobileFirst Studio, create an adapter and select the <strong>HTTP Adapter</strong> type.
 A standard HTTP adapter structure is created.</p>
 <p><br clear="all" /></p>
 <h2>Adapter XML</h2>
-<p>Settings and metadata are stored in the adapter XML file.<br />
-You can use either the <strong>Design</strong> or <strong>Source</strong> editor to modify the adapter XML file.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_02_design-editor.png"><img src="{{ site.baseurl }}/assets/backup/04_02_design-editor.png" alt="04_02_design-editor" width="1229" height="631" class="aligncenter size-full wp-image-3506" /></a></p>
+<p>Settings and metadata are stored in the adapter XML file.
+You can use either the <strong>Design</strong> or <strong>Source</strong> editor to modify the adapter XML file.
+<img src="{{ site.baseurl }}/assets/backup/04_02_design-editor.png"/></p>
 <p>To edit the adapter XML file, you must:</p>
 <ul>
 <li>Set the protocol to HTTP or HTTPS</li>
@@ -32,35 +34,35 @@ You can use either the <strong>Design</strong> or <strong>Source</strong> editor
 <li>Set the TCP Port</li>
 </ul>
 <p>Declare the required procedures below the connectivity element.</p>
-<p>[code lang="xml"]<br />
-&lt;wl:adapter name=&quot;HTTPAdapter&quot;<br />
-	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br />
-	xmlns:wl=&quot;http://www.ibm.com/mfp/integration&quot;<br />
-	xmlns:http=&quot;http://www.ibm.com/mfp/integration/http&quot;&gt;</p>
-<p>	&lt;displayName&gt;HTTPAdapter&lt;/displayName&gt;<br />
-	&lt;description&gt;HTTPAdapter&lt;/description&gt;<br />
-	&lt;connectivity&gt;<br />
-		&lt;connectionPolicy xsi:type=&quot;http:HTTPConnectionPolicyType&quot;&gt;<br />
-			&lt;protocol&gt;http&lt;/protocol&gt;<br />
-			&lt;domain&gt;rss.cnn.com&lt;/domain&gt;<br />
-			&lt;port&gt;80&lt;/port&gt;<br />
-			&lt;connectionTimeoutInMilliseconds&gt;30000&lt;/connectionTimeoutInMilliseconds&gt;<br />
-			&lt;socketTimeoutInMilliseconds&gt;30000&lt;/socketTimeoutInMilliseconds&gt;<br />
-			&lt;maxConcurrentConnectionsPerNode&gt;50&lt;/maxConcurrentConnectionsPerNode&gt;<br />
-			&lt;!-- The following properties are used by the adapter's key manager for choosing specific certificate from the keystore.<br />
-			&lt;sslCertificateAlias&gt;&lt;/sslCertificateAlias&gt;<br />
-			&lt;sslCertificatePassword&gt;&lt;/sslCertificatePassword&gt;<br />
-			--&gt;<br />
-		&lt;/connectionPolicy&gt;<br />
-	&lt;/connectivity&gt;</p>
-<p>	&lt;procedure name=&quot;getStories&quot;/&gt;</p>
-<p>	&lt;procedure name=&quot;getStoriesFiltered&quot;/&gt;</p>
-<p>&lt;/wl:adapter&gt;<br />
-[/code]</p>
+{% highlight xml %}
+<wl:adapter name="HTTPAdapter"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:wl="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http"></p>
+	<displayName>HTTPAdapter</displayName>
+	<description>HTTPAdapter</description>
+	<connectivity>
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+			<protocol>http</protocol>
+			<domain>rss.cnn.com</domain>
+			<port>80</port>
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
+			<!-- The following properties are used by the adapter's key manager for choosing specific certificate from the keystore.
+			<sslCertificateAlias></sslCertificateAlias>
+			<sslCertificatePassword></sslCertificatePassword>
+			-->
+		</connectionPolicy>
+	</connectivity></p>
+	<procedure name="getStories"/></p>
+	<procedure name="getStoriesFiltered"/></p>
+</wl:adapter>
+{% endhighlight %}
 <h2>JavaScript implementation</h2>
-<p>Procedures are implemented in the adapter JavaScript file.<br />
+<p>Procedures are implemented in the adapter JavaScript file.
 The service URL is used for procedure invocations.</p>
-<p>Some parts of the URL are constant; for example, http://example.com/. They are declared in the XML file.<br />
+<p>Some parts of the URL are constant; for example, http://example.com/. They are declared in the XML file.
 Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the MobileFirst procedure.</p>
 <p>The following URL parts can be parameterized.</p>
 <ul>
@@ -71,20 +73,20 @@ Other parts of the URL can be parameterized; that is, substituted at run time by
 <blockquote><p>See the "The connectionPolicy element of the HTTP adapter" user documentation topic for advanced options for adapters, such as cookies, headers, and encoding.
 </p></blockquote>
 <p><br clear="all" /></p>
-<p>In the JavaScript file, use the same procedure name as in the XML file.<br />
-The mandatory parameters to call the procedure are <code>method</code>, <code>path</code>, and <code>returnedContentType</code>.<br />
+<p>In the JavaScript file, use the same procedure name as in the XML file.
+The mandatory parameters to call the procedure are <code>method</code>, <code>path</code>, and <code>returnedContentType</code>.
 The procedure can be parameterized at run time.</p>
-<p>[code lang="javascript"]<br />
-function getFeeds() {<br />
-	var input = {<br />
-	    method : 'get',<br />
-	    returnedContentType : 'xml',<br />
-	    path : &quot;rss.xml&quot;<br />
-	};</p>
-<p>	return WL.Server.invokeHttp(input);<br />
-}<br />
-[/code]</p>
-<p>To call an HTTP request, use the <code>WL.Server.invokeHttp</code> method.<br />
+{% highlight javascript %}
+function getFeeds() {
+	var input = {
+	    method : 'get',
+	    returnedContentType : 'xml',
+	    path : "rss.xml"
+	};
+return WL.Server.invokeHttp(input);
+}
+{% endhighlight %}
+<p>To call an HTTP request, use the <code>WL.Server.invokeHttp</code> method.
 Provide an input parameters object, which must specify:</p>
 <ul>
 <li>The HTTP method: <code>GET</code>,<code>POST</code>, <code>PUT</code>, <code>DELETE</code> </li>
@@ -98,39 +100,39 @@ Provide an input parameters object, which must specify:</p>
 </p></blockquote>
 <p><br clear="all" /></p>
 <h2>XSL transformation filtering</h2>
-<p>You can apply XSL transformation to the received data, for example to filter the data.<br />
+<p>You can apply XSL transformation to the received data, for example to filter the data.
 To apply XSL transformation, specify the transformation options in the input parameters of the procedure invocation.</p>
-<p>[code lang="javascript"]<br />
-function getFeedsFiltered() {</p>
-<p>	var input = {<br />
-	    method : 'get',<br />
-	    returnedContentType : 'xml',<br />
-	    path : &quot;rss.xml&quot;,<br />
-	    transformation : {<br />
-		    type : 'xslFile',<br />
-		    xslFile : 'filtered.xsl'<br />
-	    }<br />
-	};</p>
-<p>	return WL.Server.invokeHttp(input);<br />
-}<br />
-[/code]</p>
+{% highlight javascript %}
+function getFeedsFiltered() {
+	var input = {
+	    method : 'get',
+	    returnedContentType : 'xml',
+	    path : "rss.xml",
+	    transformation : {
+		    type : 'xslFile',
+		    xslFile : 'filtered.xsl'
+	    }
+	};
+return WL.Server.invokeHttp(input);
+}
+{% endhighlight %}</p>
 <h2>Creating a SOAP-based service request</h2>
 <p>You can use the <code>WL.Server.invokeHttp</code> method to create a <strong>SOAP</strong> envelope, which can be sent directly.</p>
-<p>To call a SOAP-based service in an HTTP adapter, you must encode the SOAP XML envelope within the request body.<br />
+<p>To call a SOAP-based service in an HTTP adapter, you must encode the SOAP XML envelope within the request body.
 Encoding XML within JavaScript is simple: just use <strong>E4X</strong>, which is officially part of JavaScript 1.6. You can use this technology to encode any type of XML document, not only SOAP envelopes.</p>
-<p>If you receive error messages for SOAP envelopes, disable the JavaScript validator.<br />
+<p>If you receive error messages for SOAP envelopes, disable the JavaScript validator.
 Click <strong>Project > Properties > Builders</strong> and clear <strong>JavaScript Validator</strong>.</p>
 <p>Use JavaScript to create a SOAP Envelope. It is possible to insert JavaScript code and variables into SOAP XML. Such additional code is evaluated at run time.</p>
-<p>[code lang="javascript"]<br />
-var request =<br />
-	&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;<br />
-		&lt;soap:Body&gt;<br />
-			&lt;CelsiusToFahrenheit xmlns=&quot;http://www.w3schools.com/webservices/&quot;&gt;<br />
-				&lt;Celsius&gt;{celsiusTemp}&lt;/Celsius&gt;<br />
-			&lt;/CelsiusToFahrenheit&gt;<br />
-		&lt;/soap:Body&gt;<br />
-	&lt;/soap:Envelope&gt;;</p>
-<p>[/code]</p>
+{% highlight xml %}
+var request =
+	<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+		<soap:Body>
+			<CelsiusToFahrenheit xmlns="http://www.w3schools.com/webservices/">
+				<Celsius>{celsiusTemp}</Celsius>
+			</CelsiusToFahrenheit>
+		</soap:Body>
+	</soap:Envelope>;
+{% endhighlight %}
 <p>The<code> WL.Server.invokeHttp(options)</code> method is used to call a request for a SOAP service.</p>
 <p>The Options object must include the following properties:</p>
 <ul>
@@ -139,26 +141,26 @@ var request =<br />
 <li>A <code>path</code> property: a service path</li>
 <li>A <code>body</code> property: <code>content</code> (SOAP XML as a string) and <code>contentType</code></li>
 </ul>
-<p>[code lang="javascript"]<br />
-var input = {<br />
-	    method: 'post',<br />
-	    returnedContentType: 'xml',<br />
-	    path: '/webservices/tempconvert.asmx',<br />
-	    body: {<br />
-	    	content: request.toString(),<br />
-	    	contentType: 'text/xml; charset=utf-8',<br />
-	    },<br />
-	};</p>
-<p>	var result = WL.Server.invokeHttp(input);<br />
-[/code]</p>
+{% highlight javascript %}
+var input = {
+	    method: 'post',
+	    returnedContentType: 'xml',
+	    path: '/webservices/tempconvert.asmx',
+	    body: {
+	    	content: request.toString(),
+	    	contentType: 'text/xml; charset=utf-8',
+	    },
+	};
+	var result = WL.Server.invokeHttp(input);
+{% endhighlight %}
 <h2>Back-end service discovery</h2>
 <p>If you are developing HTTP adapters for SOAP (or SAP) services, you can reduce development time by using the Discover Back-end Services tool to autogenerate the adapter with procedures that are based on the provided WSDL.</p>
-<p>Right-click the services folder in a MobileFirst project and choose <strong>Discover back-end services</strong>.<br />
+<p>Right-click the services folder in a MobileFirst project and choose <strong>Discover back-end services</strong>.
 Select the type of service: SAP or SOAP.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_02_discovery.png"><img src="{{ site.baseurl }}/assets/backup/04_02_discovery.png" alt="04_02_discovery" width="716" height="608" class="aligncenter size-full wp-image-3513" /></a></p>
-<p>Add the services location to use and select the service that you want to add to the adapter.<br />
+<p><img src="{{ site.baseurl }}/assets/backup/04_02_discovery.png"/></p>
+<p>Add the services location to use and select the service that you want to add to the adapter.
 Repeat for each service that you want to add. The service will be added to the same adapter.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_02-discovery2.png"><img src="{{ site.baseurl }}/assets/backup/04_02-discovery2.png" alt="04_02-discovery2" width="716" height="608" class="aligncenter size-full wp-image-3514" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_02-discovery2.png"/></p>
 <p>MobileFirst Studio will then auto-generate an adapter.</p>
 <blockquote><p>For more information, review the "Generating adapters with the services discovery wizard" user documentation topic.</p></blockquote>
 <h2>Sample application</h2>

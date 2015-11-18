@@ -1,5 +1,6 @@
 module Jekyll
 
+  # This generates a Page showing all blog posts for a specific tag
   class TagPage < Page
     def initialize(site, base, dir, tag)
       @site = site
@@ -16,6 +17,7 @@ module Jekyll
     end
   end
 
+  # This generates an Atom feed for a specific tag
   class TagAtom < Page
     def initialize(site, base, dir, tag)
       @site = site
@@ -35,6 +37,7 @@ module Jekyll
   class TagPageGenerator < Generator
     safe true
 
+    # Generate tag page and atom feed for each tag used in the blogs
     def generate(site)
       if site.layouts.key? 'tagpage'
         site.tags.each_key do |tag|

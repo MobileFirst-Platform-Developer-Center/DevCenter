@@ -19,7 +19,7 @@ examples/basic.js" file. The sample image provides context.</li>
 </ol>
 <blockquote class="clear"><p><strong>Note:</strong> The code sample uses a JavaScript™ Unit Test framework that is called QUnit (qunitjs.com). Explaining how it works is beyond the scope of this tutorial.</p></blockquote>
 <p><strong>Code Sample Walkthough</strong></p>
-<p>[code lang="javascript" title="basic.js" firstline="16"]<br />
+<p>{% highlight javascript %}<br />
     WL.JSONStore.destroy()</p>
 <p>    .then(function () {</p>
 <p>        var collections = {<br />
@@ -46,7 +46,7 @@ examples/basic.js" file. The sample image provides context.</li>
         ok(false, 'Got failure: ' + err.toString());<br />
         start();<br />
     });<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>destroy</code> API removes all JSONStore content from the application. It is used here to start with no data. Doing it this way ensures that the output is predictable in the code sample.</p>
 <p>To persist data, you must first define at least one collection. These collections are entities that hold data. Shown here is the definition of a collection that is called <code>people</code>.</p>
 <p>Search fields are fields that are indexed inside a collection. You can use those fields when you search for data that is inside a collection. You can see here the definition of two search fields:</p>

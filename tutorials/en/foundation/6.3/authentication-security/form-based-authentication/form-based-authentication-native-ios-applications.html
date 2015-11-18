@@ -19,73 +19,73 @@ In your storyboard, add a ViewController containing a login form.<br />
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/10/09_03_storyboard.png"><img class="aligncenter wp-image-932 size-full" src="{{ site.baseurl }}/assets/backup/09_03_storyboard.png" alt="09_03_storyboard" width="1154" height="588" /></a></p>
 <p>Create a <span class="inline-code">MyChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span><br />
 We will implement some of the <span class="inline-code">ChallengeHandler</span> methods to respond to the form-based challenge.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @interface MyChallengeHandler : ChallengeHandler<br />
 @property ViewController* vc;</p>
 <p>//A convenient way of updating the View<br />
 -(id)initWithViewController: (ViewController*) vc;<br />
 @end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <span class="inline-code">isCustomResponse</span> method of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either true or false.<br />
 The default login form that is returned from the MobileFirst server contains the <span class="inline-code">j_security_check</span> string. If the challenge handler detects it in the response, return true.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
     if(response &amp;&amp; response.responseText){<br />
-        if ([response.responseText rangeOfString:@&quot;j_security_check&quot; options:NSCaseInsensitiveSearch].location != NSNotFound) {<br />
-            NSLog(@&quot;Detected login form - return true&quot;);<br />
+        if ([response.responseText rangeOfString:@"j_security_check" options:NSCaseInsensitiveSearch].location != NSNotFound) {<br />
+            NSLog(@"Detected login form - return true");<br />
             return true;<br />
         }<br />
     }<br />
     return false;<br />
 }<br />
 @end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 If <span class="inline-code">isCustomResponse</span> returns <span class="inline-code">true</span>, the framework calls the <span class="inline-code">handleChallenge</span> method. This function is used to perform required actions, such as hide application screen and show login screen.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
-    NSLog(@&quot;Inside handleChallenge - need to show form on the screen&quot;);<br />
-    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@&quot;LoginViewController&quot;];<br />
+    NSLog(@"Inside handleChallenge - need to show form on the screen");<br />
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];<br />
     loginController.challengeHandler = self;<br />
     [self.vc.navigationController pushViewController:loginController animated:YES];<br />
 }<br />
 @end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 <span class="inline-code">onSuccess</span> and <span class="inline-code">>onFailure</span> get triggered when the authentication ends.<br />
 You need to call <span class="inline-code">submitSuccess</span> to inform the framework that the authentication process is over, and allow the invocation’s success handler to be called.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) onSuccess:(WLResponse *)response {<br />
-    NSLog(@&quot;inside challenge success&quot;);<br />
+    NSLog(@"inside challenge success");<br />
     [self.vc.navigationController popViewControllerAnimated:YES];<br />
     [self submitSuccess:response];<br />
 }</p>
 <p>-(void) onFailure:(WLFailResponse *)response {<br />
-    NSLog(@&quot;inside challenge failure&quot;);<br />
+    NSLog(@"inside challenge failure");<br />
     [self submitFailure:response];<br />
 }<br />
 @end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 In your <span class="inline-code">LoginViewController</span>, when the user clicks to submit his credentials, you need to call <span class="inline-code">submitLoginForm</span> to send the credentials to the MobileFirst Server.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @implementation LoginViewController<br />
 //***<br />
 - (IBAction)login:(id)sender {<br />
-    [self.challengeHandler submitLoginForm:@&quot;j_security_check&quot;<br />
-         requestParameters:@{@&quot;j_username&quot;: self.username.text, @&quot;j_password&quot;: self.password.text}<br />
+    [self.challengeHandler submitLoginForm:@"j_security_check"<br />
+         requestParameters:@{@"j_username": self.username.text, @"j_password": self.password.text}<br />
          requestHeaders:nil<br />
          requestTimeoutInMilliSeconds:0<br />
-         requestMethod:@&quot;POST&quot;];<br />
+         requestMethod:@"POST"];<br />
 }<br />
 @end<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/NativeFormBasedAuthProject.zip">Click to download</a> the Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/iOSNativeFormBasedAuthProject.zip">Click to download</a> the Native project.</p>

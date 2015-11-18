@@ -53,18 +53,18 @@ relevantTo: [hybrid]
 <p>The <strong>Token Endpoint</strong> is a REST API exposed under the path <code>/oauth/token</code>.</p>
 <p><strong>MobileFirst Server</strong> uses the authentication infrastructure to issue an access token for the requested scope (MobileFirst security test).</p>
 <h3>Overview of token format</h3>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 {<br />
-  version: &quot;1.0 (of token)&quot;,<br />
-  scope: &quot;&lt;the security test that the token authenticated&gt;&quot;,<br />
-  expiration: &quot;&lt;time in msec since epoch&gt;&quot;,<br />
+  version: "1.0 (of token)",<br />
+  scope: "<the security test that the token authenticated>",<br />
+  expiration: "<time in msec since epoch>",<br />
   data: {<br />
-    user_id: &quot;&lt;authenticated user, for example, shachor@il.ibm.com&gt;&quot;,<br />
-    device_id: &quot;&lt;device id as known by MobileFirst server&gt;&quot;,<br />
-    application_id: &quot;&lt;identity of the app&gt;&quot;<br />
+    user_id: "<authenticated user, for example, shachor@il.ibm.com>",<br />
+    device_id: "<device id as known by MobileFirst server>",<br />
+    application_id: "<identity of the app>"<br />
   }<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The token is signed by the MobileFirst Server instance.</p>
 <p>Clarification for the <code>data</code> field:</p>
 <ul>
@@ -87,8 +87,8 @@ relevantTo: [hybrid]
 <li>
     <strong>If the request does not have a token, or the token is not valid, Resource Server returns 401/403 via the supplied lib.</strong></p>
 <p>      The response has the <strong>"WWW- Authenticate"</strong> header with the following format:</p>
-<p>      <strong>Bearer scope = "&lt;scope&gt;"</strong></p>
-<p>      The <code>&lt;scope&gt;</code> is the security test that protects the resource.</p>
+<p>      <strong>Bearer scope = "<scope>"</strong></p>
+<p>      The <code><scope></code> is the security test that protects the resource.</p>
 </li>
 <li>
     <strong>The application developer parses the response and obtains the access token by using MobileFirst SDK.</strong></p>
@@ -108,13 +108,13 @@ relevantTo: [hybrid]
 <li>
     <strong>After all relevant realms are authenticated, MobileFirst Server returns an access token to the client.</strong></p>
 <p>      The <strong>MobileFirst Server</strong> returns a JSON object with the following format:</p>
-<p>    [code lang="javascript"]<br />
+<p>    {% highlight javascript %}<br />
     {<br />
-      scope: &quot;&lt;actual scope *&gt;&quot;,<br />
-      token_type: &quot;Bearer&quot;,<br />
-      access_token: &quot;&lt;encrypted token string&gt;&quot;<br />
+      scope: "<actual scope *>",<br />
+      token_type: "Bearer",<br />
+      access_token: "<encrypted token string>"<br />
     }<br />
-    [/code]<br />
+    {% endhighlight %}<br />
     <strong>*</strong> different than given scope only if default scope requested
   </li>
 <li>
@@ -129,17 +129,17 @@ relevantTo: [hybrid]
 </li>
 </ol>
 <h2 id="mobile_first_project_configuration">MobileFirst project configuration - Configuring the scope for the access token</h2>
-<p>The scope of an access token must be a predefined security test in a MobileFirst project. You configure it in this file: <code>&lt;MobileFirst_Project&gt;/server/conf/authenticationConfig.xml</code>.</p>
+<p>The scope of an access token must be a predefined security test in a MobileFirst project. You configure it in this file: <code><MobileFirst_Project>/server/conf/authenticationConfig.xml</code>.</p>
 <p>The default lifetime for each token is 60 seconds. You can override this timeout by adding the AccessTokenExpirationSec attribute to the security test.</p>
 <p>For example, if you want to configure a security test, called SampleSecurityTest, with a lifetime of 15 seconds, edit the <code>authenticationConfig.xml</code> as follows</p>
 <p><strong>From the source view:</strong></p>
-<p>[code lang="xml"]<br />
-&lt;securityTests&gt;<br />
-  &lt;customSecurityTest name=&quot;SampleSecurityTest&quot; AccessTokenExpirationSec=&quot;15&quot;&gt;<br />
-    &lt;test realm=&quot;SampleRealm&quot; isInternalUserID=&quot;true&quot;/&gt;<br />
-  &lt;/customSecurityTest&gt;<br />
-&lt;/securityTests&gt;<br />
-[/code]</p>
+<p>{% highlight xml %}<br />
+<securityTests><br />
+  <customSecurityTest name="SampleSecurityTest" AccessTokenExpirationSec="15"><br />
+    <test realm="SampleRealm" isInternalUserID="true"/><br />
+  </customSecurityTest><br />
+</securityTests><br />
+{% endhighlight %}</p>
 <p><strong>From the design view:</strong></p>
 <p><img src="{{ site.baseurl }}/assets/backup/security-test-design-view.png" alt="security-test-design-view" class="aligncenter size-full wp-image-3647" /></p>
 <h2 id="mobilefirst_configuration_keystore">MobileFirst project configuration - Keystore</h2>
@@ -153,8 +153,8 @@ relevantTo: [hybrid]
 <li><code>worklight-access-token-validator.jar</code> - Java lib</li>
 <li><code>worklight-access-token-validator.tgz</code> - node.js module</li>
 </ul>
-<p>For MobileFirst Server installation - You can find the libraries in: <br /><code>&lt;installation dir&gt;/MobileFirstServer/external-server-libraries</code></p>
-<p>For the MobileFirst Studio - When you create a new project, you can find the libraries in: <br /><code>&lt;project dir&gt;/externalServerLibraries</code></p>
+<p>For MobileFirst Server installation - You can find the libraries in: <br /><code><installation dir>/MobileFirstServer/external-server-libraries</code></p>
+<p>For the MobileFirst Studio - When you create a new project, you can find the libraries in: <br /><code><project dir>/externalServerLibraries</code></p>
 <h3>External service configuration - Using Java</h3>
 <p>The purpose of this module is to enable offline validation of access tokens that are generated by MobileFirst Server for Java web applications.</p>
 <p>Validation of access tokens that are generated by MobileFirst Server is also possible for <code>node.js</code> servers.</p>
@@ -173,36 +173,36 @@ relevantTo: [hybrid]
 <li><strong>CertificatePath</strong> = <code>certificateLib/WorklightServerCertificate.cert</code> "The path to the certificate of MobileFirst Server, relative to the WEB-INF folder."</li>
 </ul>
 <p>In addition to the previous parameters, write the following code for the web.xml file of your external server:</p>
-<p>[code lang="xml"]<br />
-    &lt;web-app ...&gt;<br />
+<p>{% highlight xml %}<br />
+    <web-app ...><br />
       ...<br />
-      &lt;filter&gt;<br />
-            &lt;filter-name&gt;FilterName&lt;/filter-name&gt;<br />
-            &lt;filter-class&gt;com.worklight.security.WLAccessTokenValidationFilter&lt;/filter-class&gt;<br />
-            &lt;init-param&gt;<br />
-                &lt;param-name&gt;worklightCertificateFile&lt;/param-name&gt;<br />
-                &lt;param-value&gt;certificateLib/WorklightServerCertificate.cert&lt;/param-value&gt;<br />
-            &lt;/init-param&gt;<br />
-            &lt;init-param&gt;<br />
-                &lt;param-name&gt;scope&lt;/param-name&gt;<br />
-                &lt;param-value&gt;securityTestName&lt;/param-value&gt;<br />
-            &lt;/init-param&gt;<br />
-      &lt;/filter&gt;<br />
-      &lt;filter-mapping&gt;<br />
-            &lt;filter-name&gt;FilterName&lt;/filter-name&gt;<br />
-            &lt;url-pattern&gt;/some/protected/url&lt;/url-pattern&gt;<br />
-      &lt;/filter-mapping&gt;<br />
+      <filter><br />
+            <filter-name>FilterName</filter-name><br />
+            <filter-class>com.worklight.security.WLAccessTokenValidationFilter</filter-class><br />
+            <init-param><br />
+                <param-name>worklightCertificateFile</param-name><br />
+                <param-value>certificateLib/WorklightServerCertificate.cert</param-value><br />
+            </init-param><br />
+            <init-param><br />
+                <param-name>scope</param-name><br />
+                <param-value>securityTestName</param-value><br />
+            </init-param><br />
+      </filter><br />
+      <filter-mapping><br />
+            <filter-name>FilterName</filter-name><br />
+            <url-pattern>/some/protected/url</url-pattern><br />
+      </filter-mapping><br />
       ...<br />
-    &lt;/web-app&gt;<br />
-[/code]</p>
+    </web-app><br />
+{% endhighlight %}</p>
 <p>After successful validation, the filter updates the <code>ClientContext</code> object that the service can use to access user, application, or device identities that are contained in the access token.</p>
 <p>Example of <code>ClientContext</code> usage:</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
   ClientContext context = ClientContext.getInstance();<br />
   String appId = context.getApplication();<br />
   String userId = context.getUser();<br />
   String deviceId = context.getDevice();<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2 id="use_of_the_client_side_api">Use of the client-side API: which methods are allowed</h2>
 <p>The MobileFirst <code>WL.Client</code> API provides built-in support for using MobileFirst access tokens for the following platforms:</p>
 <ul>
@@ -228,16 +228,16 @@ relevantTo: [hybrid]
 <p>In JavaScript, this method is called <strong>getLastAccessToken</strong>.</p>
 <p>The <code>WL.Client</code> instance returns the last access token for a certain scope as a string. Alternatively, if no scope is specified, the last obtained token is returned. This capability is useful when an application is using one scope <strong>only</strong>.</p>
 <p>Add a header named "Authorization" and for the header content, add "Bearer", followed by the token. For example, when issuing an Ajax request, you can write the following code:</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
   var token = WL.Client.getLastAccessToken();<br />
   $.ajax({<br />
-      type: &quot;GET&quot;,<br />
+      type: "GET",<br />
       url: MY_URL,<br />
       headers: {<br />
-          &quot;Authorization&quot;: &quot;Bearer &quot; + token<br />
+          "Authorization": "Bearer " + token<br />
       }<br />
   });<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>Getting the required scope from the external service response</h3>
 <p>In JavaScript, this method is called <strong>getRequiredAccessTokenScope</strong>.</p>
 <p>When a request to the external service fails, the <code>WL.Client</code> instance can identify the cause of the failure.</p>
@@ -245,7 +245,7 @@ relevantTo: [hybrid]
 <p>If the error is not related to access token issues, the method returns <code>null</code>.</p>
 <h3>Use of the client-side API: JavaScript example</h3>
 <p>This JavaScript example shows how to use the client-side API for access to an external service.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function callProtectedRestAPI(retries) {<br />
     // You must be able to call this method<br />
     // recursively, because in some cases it is<br />
@@ -258,10 +258,10 @@ function callProtectedRestAPI(retries) {<br />
     // On the first call, the token can be null.<br />
     var token = WL.Client.getLastAccessToken();<br />
     var headersObject = (token != null) ? {<br />
-        &quot;Authorization&quot;: &quot;Bearer &quot; + token<br />
+        "Authorization": "Bearer " + token<br />
     } : {};</p>
 <p>    $.ajax({<br />
-        type: &quot;GET&quot;,<br />
+        type: "GET",<br />
         url: MY_EXTERNAL_SERVER_URL,<br />
         headers: headersObject<br />
     }).done(function(response) {<br />
@@ -269,13 +269,13 @@ function callProtectedRestAPI(retries) {<br />
     }).fail(function(response) {<br />
         // Need to extract this header from<br />
         // the response to know the scope.<br />
-        var header = response.getResponseHeader(&quot;WWW- Authenticate&quot;);<br />
+        var header = response.getResponseHeader("WWW- Authenticate");<br />
         var scope = WL.Client.getRequiredAccessTokenScope(response.status, header);<br />
         if (scope != null) {<br />
             // The failure is related to the access token. Get a new one.<br />
             WL.Client.obtainAccessToken(scope, getTokenSuccess, getTokenFailure);<br />
         } else {<br />
-            showErrorResult(&quot;request failed&quot;);<br />
+            showErrorResult("request failed");<br />
         }<br />
     });</p>
 <p>    function getTokenSuccess(response) {<br />
@@ -286,6 +286,6 @@ function callProtectedRestAPI(retries) {<br />
         showErrorResult(response);<br />
     };<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MobileFirstAsAuthorizationServer.zip">Click to download</a> the Studio project.</p>

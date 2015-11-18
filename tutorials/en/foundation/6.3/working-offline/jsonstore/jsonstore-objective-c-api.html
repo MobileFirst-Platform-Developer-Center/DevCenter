@@ -21,32 +21,32 @@ relevantTo: [ios]
 </ol>
 <blockquote class="clear"><p><strong>Note:</strong> The code sample uses the built-in Unit Test framework of the Xcode IDE. Explaining how this framework works is beyond the scope of this tutorial.</p></blockquote>
 <h3>Code Sample Walkthough</h3>
-<p>[code lang="objc" title="Basic.m" firstline="23"]<br />
+<p>{% highlight objc %}<br />
     NSError* error = nil;</p>
 <p>    [[JSONStore sharedInstance] destroyDataAndReturnError:&amp;error];</p>
 <p>    JSONStoreCollection* people = [[JSONStoreCollection alloc]<br />
-                                   initWithName:@&quot;people&quot;];</p>
-<p>    [people setSearchField:@&quot;name&quot;<br />
+                                   initWithName:@"people"];</p>
+<p>    [people setSearchField:@"name"<br />
                   withType:JSONStore_String];</p>
-<p>    [people setSearchField:@&quot;age&quot;<br />
+<p>    [people setSearchField:@"age"<br />
                   withType:JSONStore_Integer];</p>
 <p>    [[JSONStore sharedInstance] openCollections:@[people]<br />
                                     withOptions:nil<br />
                                           error:nil];</p>
-<p>    NSArray* data = @[@{@&quot;name&quot; : @&quot;carlos&quot;, @&quot;age&quot; : @20},<br />
-                      @{@&quot;name&quot; : @&quot;mike&quot;, @&quot;age&quot; : @30}];</p>
+<p>    NSArray* data = @[@{@"name" : @"carlos", @"age" : @20},<br />
+                      @{@"name" : @"mike", @"age" : @30}];</p>
 <p>    [people addData:data andMarkDirty:NO<br />
         withOptions:nil<br />
               error:nil];</p>
 <p>    NSArray *actualResults = [people findAllWithOptions:nil<br />
                                                   error:nil];</p>
 <p>    NSArray* expectedResults =<br />
-    @[@{ @&quot;_id&quot; : @1,<br />
-         @&quot;json&quot; : @{@&quot;name&quot; : @&quot;carlos&quot;, @&quot;age&quot; : @20}},</p>
-<p>      @{ @&quot;_id&quot; : @2,<br />
-         @&quot;json&quot; : @{@&quot;name&quot; : @&quot;mike&quot;,   @&quot;age&quot; : @30}}];</p>
+    @[@{ @"_id" : @1,<br />
+         @"json" : @{@"name" : @"carlos", @"age" : @20}},</p>
+<p>      @{ @"_id" : @2,<br />
+         @"json" : @{@"name" : @"mike",   @"age" : @30}}];</p>
 <p>    XCTAssertEqualObjects(actualResults, expectedResults);<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>If an error occurs, the error variable contains information about the error, such as the error code. Otherwise, it remains <code>nil</code>.</p>
 <p>The <code>destroy</code> API removes all JSONStore content from the application. It is used here to start with no data. Doing it this way ensures that the output is predictable in the code sample.</p>
 <p>To persist data, you must first define at least one collection. These collections are entities that hold data. You can see here the definition of a collection that is called <code>people</code>.</p>

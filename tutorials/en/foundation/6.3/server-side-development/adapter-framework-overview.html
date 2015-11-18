@@ -2,11 +2,12 @@
 layout: tutorial
 title: Adapters overview
 relevantTo: [ios,android,windowsphone8,hybrid]
+weight: 1
 ---
 <h2>Overview</h2>
 <p>This tutorial presents how to develop server-side code (adapters) that is used for integrating between the client application, through the MobileFirst Platform, with enterprise back-end applications and cloud services.</p>
 <p>The tutorial is followed by explanations and examples for HTTP, SQL, Cast Iron, and JMS adapters. It also shows how to invoke adapter procedures from hybrid and native applications, advanced adapter usage, and how to use Java in adapters.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_01_Adapter_Creation1.png"><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation1.png" alt="04_01_Adapter_Creation" width="442" height="556" class="aligncenter size-full wp-image-1371" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation1.png"/></p>
 <h2>Benefits</h2>
 <h3>Universality</h3>
 <ul>
@@ -47,13 +48,13 @@ Usually, adapter procedures are implemented in JavaScript, but because an adapte
 <h2>Adapter creation</h2>
 <ol>
 <li>In Eclipse, click the MobileFirst icon that is located in the toolbar and select <strong>MobileFirst Adapter</strong>.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_01_Adapter_Creation2.png"><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation2.png" alt="04_01_Adapter_Creation" width="427" height="323" class="aligncenter size-full wp-image-1377" /></a></li>
+<img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation2.png"/></li>
 <li>Select a MobileFirst project and an adapter type.
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_01_Adapter_Creation_21.png"><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_21.png" alt="04_01_Adapter_Creation_2" width="525" height="472" class="aligncenter size-full wp-image-1379" /></a></li>
+<p><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_21.png"/></li>
 <li>Select an adapter type and type an adapter name. Applications use this name to access the adapter.</li>
 <li>Click <strong>Finish</strong>.</li>
 </ol>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_01_Adapter_Creation_41.png"><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_41.png" alt="04_01_Adapter_Creation_4" width="196" height="133" class="alignright size-full wp-image-1384" /></a><br />
+<p><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_41.png"/><br />
 This generates both an XML file, which declares procedures and connection properties, and a JavaScript file, which defines procedures and the adapter logic.<br />
 <br clear="all" /></p>
 <h2>Adapter deployment</h2>
@@ -61,38 +62,38 @@ This generates both an XML file, which declares procedures and connection proper
 <li>Select an adapter to deploy.
 </li>
 <li>Right-click the adapter and select <strong>Run As > Deploy MobileFirst Adapter</strong>.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_01_Adapter_Creation_51.png"><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_51.png" alt="04_01_Adapter_Creation_5" width="776" height="107" class="aligncenter size-full wp-image-1386" /></a>
+<img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_51.png"/>
 </li>
 </ol>
 <p>MobileFirst Studio archives the adapter code and deploys it to the MobileFirst Server instance.<br />
 You can see the deployed adapter in the MobileFirst Console.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_01-console.png"><img src="{{ site.baseurl }}/assets/backup/04_01-console.png" alt="04_01-console" width="356" height="180" class="aligncenter size-full wp-image-3529" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/04_01-console.png"/></p>
 <h2>Testing adapter procedures</h2>
 <p>MobileFirst Studio can be used to test the adapter procedures.<br />
 To run a procedure test:</p>
 <ol>
 <li>Select <strong>Run As > Invoke MobileFirst Procedure</strong>.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_01_invoke-menu.png"><img src="{{ site.baseurl }}/assets/backup/04_01_invoke-menu.png" alt="04_01_invoke-menu" width="717" height="119" class="aligncenter size-full wp-image-3531" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/04_01_invoke-menu.png"/></p>
 </li>
 <li>Select the procedure that you want to test.
 </li>
 <li>Enter comma-separated procedure parameters and click <strong>Run</strong>.
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_01-invoke-options.png"><img src="{{ site.baseurl }}/assets/backup/04_01-invoke-options.png" alt="04_01-invoke-options" width="598" height="419" class="aligncenter size-full wp-image-3532" /></a></li>
+<p><img src="{{ site.baseurl }}/assets/backup/04_01-invoke-options.png"/></li>
 </ol>
 <h2>Adapter XML structure</h2>
-<p>[code lang="xml"]<br />
-&lt;wl:adapter name=&quot;HelloWorld&quot;&gt;<br />
-	&lt;displayName /&gt;<br />
-	&lt;description /&gt;<br />
-	&lt;connectivity&gt;<br />
-		&lt;connectionPolicy&gt;<br />
-		&lt;loadConstraints&gt;<br />
-	&lt;/connectivity&gt;<br />
-	&lt;procedure /&gt;<br />
-	&lt;procedure /&gt;<br />
-	...<br />
-&lt;/wl:adapter&gt;<br />
-[/code]</p>
+<p>{% highlight xml %}
+<wl:adapter name="HelloWorld">
+	<displayName />
+	<description />
+	<connectivity>
+		<connectionPolicy>
+		<loadConstraints>
+	</connectivity>
+	<procedure />
+	<procedure />
+	...
+</wl:adapter>
+{% endhighlight %}</p>
 <ul>
 <li> <code>name: Mandatory. The name of the adapter.</code></li>
 <li><code>displayName</code>: Optional. The name that is displayed in MobileFirst Console</li>
@@ -105,18 +106,18 @@ To run a procedure test:</p>
 </li>
 <li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
 </ul>
-<p>[code lang="xml"]<br />
-&lt;procedure name=&quot;procedure1&quot;&gt;&lt;/procedure&gt;<br />
-&lt;procedure name=&quot;procedure2&quot;&gt;&lt;/procedure&gt;<br />
-[/code]</p>
+{% highlight xml %}
+<procedure name="procedure1"></procedure>
+<procedure name="procedure2"></procedure>
+{% endhighlight %}
 <h2>Adapter JavaScript structure</h2>
 <p>Each procedure declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
 <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
-<p>[code lang="javascript"]<br />
-function procedure1(param) {<br />
-  return WL.Server.invokeSQLStatement({<br />
-    preparedStatement: procedure1Statement,<br />
-    parameters: [param]<br />
-  });<br />
-}<br />
-[/code]</p>
+<p>{% highlight javascript %}
+function procedure1(param) {
+  return WL.Server.invokeSQLStatement({
+    preparedStatement: procedure1Statement,
+    parameters: [param]
+  });
+}
+{% endhighlight %}</p>
