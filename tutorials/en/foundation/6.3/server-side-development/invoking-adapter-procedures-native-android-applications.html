@@ -2,34 +2,30 @@
 layout: tutorial
 title: Invoking adapter procedures from native Android applications
 relevantTo: [android]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresAndroidProject.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresNativeProject.zip">Download Studio project</a>
-    </li>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresAndroidProject.zip">Download native project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
-<p>To create and configure an Android native project, first follow the "<a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/hello-world/creating-first-native-android-mobilefirst-application/" title="Creating your first native Android MobileFirst application">Creating your first Native Android MobileFirst application</a>" tutorial.</p>
+<p>To create and configure an Android native project, first follow the "<a href="../../hello-world/creating-first-native-android-mobilefirst-application/" title="Creating your first native Android MobileFirst application">Creating your first Native Android MobileFirst application</a>" tutorial.</p>
 <h2>Initializing WLClient</h2>
 <ol>
 <li>Create an instance of the <code>WLClient</code> class.<br />
 The <code>WLClient</code> instance requires a reference to the activity in which it is running.</p>
-<p>{% highlight java %}<br />
-WLClient client = WLClient.createInstance(context);<br />
-{% endhighlight %}</p>
+{% highlight java %}
+WLClient client = WLClient.createInstance(context);
+{% endhighlight %}
 </li>
 <li>To establish a connection to the MobileFirst Server instance, use the <code>connect</code> method by specifying the <code>MyConnectListener</code> class instance as a parameter.
 <p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server according to the properties of the <strong>wlclient.properties</strong> file.<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>{% highlight java %}<br />
-public class MyConnectListener implements WLResponseListener  {<br />
-{% endhighlight %}</p>
+{% highlight java %}
+public class MyConnectListener implements WLResponseListener  {
+{% endhighlight %}
 <p>The <code>WLResponseListener</code> interface defines two methods:<br />
 - <code>public void onSuccess (WLResponse response) { }</code><br />
 - <code>public void onFailure (WLFailResponse response) { }</code>
@@ -41,27 +37,27 @@ public class MyConnectListener implements WLResponseListener  {<br />
 <p>After the connection is established with a MobileFirst Server, you can use the <code>WLClient</code> instance to invoke adapter procedures.</p>
 <ol>
 <li>Create a <code>WLProcedureInvocationData</code> object with the adapter and procedure names.<br />
-{% highlight java %}<br />
-String adapterName = "RSSReader";<br />
-String procedureName = "getStoriesFiltered";</p>
-<p>WLProcedureInvocationData invocationData =<br />
-new WLProcedureInvocationData(adapterName, procedureName);<br />
-{% endhighlight %}</p>
+{% highlight java %}
+String adapterName = "RSSReader";
+String procedureName = "getStoriesFiltered";
+WLProcedureInvocationData invocationData =
+new WLProcedureInvocationData(adapterName, procedureName);
+{% endhighlight %}
 </li>
 <li>Add the required parameters as an object array and set request options (for example: <code>timeout</code>).<br />
-{% highlight java %}<br />
-Object[] parameters = new Object[] {"world"};<br />
-invocationData.setParameters(parameters);</p>
-<p>WLRequestOptions options = new WLRequestOptions();<br />
-options.setTimeout(30000);<br />
-{% endhighlight %}</p>
+{% highlight java %}
+Object[] parameters = new Object[] {"world"};
+invocationData.setParameters(parameters);
+WLRequestOptions options = new WLRequestOptions();
+options.setTimeout(30000);
+{% endhighlight %}
 </li>
 <li>Get the existing <code>WLClient</code> instance and use it to invoke an adapter procedure.<br />
 Specify the <code>MyInvokeListener</code> class instance as a parameter.<br />
 You learn how to define this class instance in the next section.</p>
-<p>{% highlight java %}<br />
-WLClient client = WLClient.getInstance();<br />
-client.invokeProcedure(invocationData, new MyInvokeListener(), options);<br />
+{% highlight java %}
+WLClient client = WLClient.getInstance();
+client.invokeProcedure(invocationData, new MyInvokeListener(), options);
 {% endhighlight %}
 </li>
 </ol>
@@ -69,23 +65,23 @@ client.invokeProcedure(invocationData, new MyInvokeListener(), options);<br />
 <p>After the procedure invocation is completed, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.</p>
 <ol>
 <li>Specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>{% highlight java %}<br />
-public class MyInvokeListener implements WLResponseListener {<br />
-{% endhighlight %}</p>
+{% highlight java %}
+public class MyInvokeListener implements WLResponseListener {
+{% endhighlight %}
 <p>The <code>WLClient</code> instance invokes the <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 <p>If the procedure invocation is successful, the <code>onSuccess</code> method of <code>MyInvokeListener</code> is invoked.
 </li>
 <li>Use that method to get the data that is retrieved from the adapter. The <code>response</code> object contains the response data.<br />
 You can use its methods and properties to retrieve the required information.</p>
-<p>{% highlight java %}<br />
-public void onSuccess(WLResponse response) {<br />
-      String responseText = response.getResponseText();<br />
-      AndroidNativeApp.updateTextView("Adapter Procedure Invoked Successfuly\n" + responseText);<br />
-}</p>
-<p>public void onFailure(WLFailResponse response) {<br />
-     String responseText = response.getResponseText();<br />
-     AndroidNativeApp.updateTextView("Failed to Invoke Adapter Procedure\n" + responseText);<br />
-}<br />
+{% highlight java %}
+public void onSuccess(WLResponse response) {
+      String responseText = response.getResponseText();
+      AndroidNativeApp.updateTextView("Adapter Procedure Invoked Successfuly\n" + responseText);
+}
+public void onFailure(WLFailResponse response) {
+     String responseText = response.getResponseText();
+     AndroidNativeApp.updateTextView("Failed to Invoke Adapter Procedure\n" + responseText);
+}
 {% endhighlight %}
 </li>
 </ol>
