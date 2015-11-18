@@ -9,17 +9,17 @@ downloads:
     url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresSwiftProject.zip
 ---
 <h2>Overview</h2>
-<p>To create and configure an iOS native project, first follow the "<a title="Creating your first native iOS MobileFirst application" href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/hello-world/creating-first-native-ios-mobilefirst-application/">Creating your first Native iOS MobileFirst application</a>" tutorial.<br />
+<p>To create and configure an iOS native project, first follow the "<a title="Creating your first native iOS MobileFirst application" href="../../hello-world/creating-first-native-ios-mobilefirst-application/">Creating your first Native iOS MobileFirst application</a>" tutorial.<br />
 Make sure that you follow the extra steps for Swift-based applications.</p>
 <h2>Initializing WLClient</h2>
 <ol>
 <li>Access the <code>WLClient</code> functionality by calling the <code>WLClient.sharedInstance</code> method anywhere in your application.</li>
 <li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.<br />
 For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:</p>
-<p>{% highlight swift %}<br />
-let connectListener = MyConnectListener(vc: self)<br />
-WLClient.sharedInstance().wlConnectWithDelegate(connectListener)<br />
-{% endhighlight %}</p>
+{% highlight swift %}
+let connectListener = MyConnectListener(vc: self)
+WLClient.sharedInstance().wlConnectWithDelegate(connectListener)
+{% endhighlight %}
 </li>
 <li>Make sure that your Bridging Header includes <strong>WLSwiftBridgingHeader.h</strong> for access to MobileFirst APIs.</li>
 <li>To specify the delegate object, create a delegate for the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server instance. Name the class <code>MyConnectListener</code>.For your <code>MyConnectListener</code> class, the header file must specify that it implements the <code>WLDelegate</code> protocol.

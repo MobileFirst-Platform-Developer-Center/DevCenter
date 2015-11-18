@@ -3,16 +3,12 @@ layout: tutorial
 title: Invoking adapter procedures from native Java Platform, Micro Editions (Java
   ME) applications
 relevantTo: [javame]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresJavaMEProject.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresNativeProject.zip">Download Studio project</a>
-    </li>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/InvokingAdapterProceduresJavaMEProject.zip">Download native project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
 <p>IBM MobileFirst Platform Foundation provides the ability for Java™  Platform, Micro Edition (Java ME) applications to communicate with MobileFirst Server by using a MobileFirst Native API library.</p>
 <h2>Creating a MobileFirst native API</h2>
@@ -58,19 +54,19 @@ The MobileFirst native API folder serves two purposes:</p>
 <h2>Initializing WLClient</h2>
 <ol>
 <li>Create an instance of <code>WLClient</code>.
-<p>{% highlight java %}<br />
-private WLClient client;</p>
-<p>public MainMidlet() {<br />
-   client = WLClient.createInstance(this);<br />
-{% endhighlight %}</p>
+{% highlight java %}
+private WLClient client;
+public MainMidlet() {
+   client = WLClient.createInstance(this);
+{% endhighlight %}
 </li>
 <li>To establish the connection to a MobileFirst Server instance, use the <code>connect</code> method and specify a <code>MyConnectListener</code> class instance as the parameter.
-<p>{% highlight java %}<br />
-public void commandAction(Command command, Item item) {<br />
-    StringItem itemName = (StringItem)item;<br />
-    if(itemName.getText().equals("1.Connect")) {<br />
-  updateTextView("\nConnecting...");<br />
-  client.connect(new MyConnectListener());<br />
+{% highlight java %}
+public void commandAction(Command command, Item item) {
+    StringItem itemName = (StringItem)item;
+    if(itemName.getText().equals("1.Connect")) {
+  updateTextView("\nConnecting...");
+  client.connect(new MyConnectListener());
 {% endhighlight %}
 </li>
 </ol>
@@ -87,21 +83,21 @@ The <code>MyConnectListener</code> class implements the <code>WLResponseListener
 <p>After the connection is established with a MobileFirst Server, you can use the <code>WLClient</code> instance to call the adapter procedures:</p>
 <ol>
 <li>Create a <code>WLProcedureInvocationData</code> object with the adapter and procedure names.
-<p>{% highlight java %}<br />
-else if(itemName.getText().equals("2.Invoke Procedure")) {<br />
-     updateTextView("\nInvoking procedure...");<br />
-     String adapterName = "RSSReader";<br />
-     String procedureName = "getStoriesFiltered";</p>
-<p>     WLProcedureInvocationData invocationData = new WLProcedureInvocationData(adapterName, procedureName);<br />
-}{% endhighlight %}</p>
+{% highlight java %}
+else if(itemName.getText().equals("2.Invoke Procedure")) {
+     updateTextView("\nInvoking procedure...");
+     String adapterName = "RSSReader";
+     String procedureName = "getStoriesFiltered";
+     WLProcedureInvocationData invocationData = new WLProcedureInvocationData(adapterName, procedureName);
+}{% endhighlight %}
 <p>After the connection is established with a MobileFirst Server, you can use the <code>WLClient</code> instance to call the adapter procedures.
 </li>
 <li>Add the required parameters as an object array and set the request options.
-<p>{% highlight java %}<br />
-Object[] parameters = new Object[] {};<br />
-invocationData.setParameters(parameters);</p>
-<p>WLRequestOptions options = new WLRequestOptions();<br />
-{% endhighlight %}</p>
+{% highlight java %}
+Object[] parameters = new Object[] {};
+invocationData.setParameters(parameters);
+WLRequestOptions options = new WLRequestOptions();
+{% endhighlight %}
 </li>
 <li>Specify a <code>MyInvokeListener</code> class instance as a parameter.
 <p>{% highlight java %}client.invokeProcedure(invocationData, new MyInvokeListener(), options);{% endhighlight %}</p>
@@ -111,21 +107,22 @@ The <code>WLClient</code> calls its <code>onSuccess</code> or <code>onFailure</c
 <p>If the procedure call is successful, the <code>onSuccess</code> method of the <code>MyInvokeListener</code> instance is called.
 </li>
 <li>Use it to get the data that is retrieved from the adapter.
-<p>{% highlight java %}<br />
-import com.worklight.wlclient.api.WLFailResponse;<br />
-import com.worklight.wlclient.api.WLResponse;<br />
+{% highlight java %}
+import com.worklight.wlclient.api.WLFailResponse;
+import com.worklight.wlclient.api.WLResponse;
 import com.worklight.wlclient.api.WLResponseListener;</p>
-<p>public class MyInvokeListener implements WLResponseListener {<br />
-  public void onSuccess(WLResponse response) {<br />
-    String responseText = response.getResponseText();<br />
-    MainMidlet.updateTextView("Adapter Procedure Invoked Successfuly\n"+ responseText);<br />
-  }<br />
-  public void onFailure(WLFailResponse response) {<br />
-    String responseText = response.getResponseText();<br />
-    MainMidlet.updateTextView("Failed to Invoke Adapter Procedure\n"+ responseText);<br />
-  }<br />
-}<br />
-{% endhighlight %}</p>
+
+public class MyInvokeListener implements WLResponseListener {
+  public void onSuccess(WLResponse response) {
+    String responseText = response.getResponseText();
+    MainMidlet.updateTextView("Adapter Procedure Invoked Successfuly\n"+ responseText);
+  }
+  public void onFailure(WLFailResponse response) {
+    String responseText = response.getResponseText();
+    MainMidlet.updateTextView("Failed to Invoke Adapter Procedure\n"+ responseText);
+  }
+}
+{% endhighlight %}
 <p>The response object contains the response data.<br />
 You can use its methods and properties to retrieve the required information.</p>
 <h2>Sample application</h2>
