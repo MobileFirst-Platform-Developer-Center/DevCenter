@@ -6,15 +6,15 @@ relevantTo: [ios]
 <br>
 <h2 id="loggingIOS">Logging example for native iOS (Objective-C)</h2>
 <h3>Outputs to Xcode console:</h3>
-<p>{% highlight objc %}<br />
-#import "OCLoggerMacros.h"<br />
-#import "OCLogger+Constants.h"</p>
-<p>+ (int) sum:(int) a with:(int) b{<br />
-  int sum = a + b;</p>
-<p>  OCLoggerDebugWithPackage(@"MathUtils", @"sum called with args %d and %d. Returning %d", a, b, sum);</p>
-<p>  return sum;<br />
-}</p>
-<p>{% endhighlight %}</p>
+{% highlight objc %}
+#import "OCLoggerMacros.h"
+#import "OCLogger+Constants.h"
++ (int) sum:(int) a with:(int) b{
+  int sum = a + b;
+  OCLoggerDebugWithPackage(@"MathUtils", @"sum called with args %d and %d. Returning %d", a, b, sum);
+ return sum;
+}
+{% endhighlight %}
 <h2>API calls for specific tasks</h2>
 <h3>Turn log capture on or off:</h3>
 <p><code>OCLogger.setCapture(boolean)</code></p>
