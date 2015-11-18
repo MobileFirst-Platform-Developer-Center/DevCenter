@@ -2,10 +2,13 @@
 layout: tutorial
 title: Advanced adapter usage and mashup
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/AdapterMashUpProject.zip
 ---
 <ul>
 <li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/AdapterMashUpProject.zip">Download Studio project</a>
+      <a href="">Download Studio project</a>
     </li>
 </ul>
 
@@ -17,7 +20,7 @@ However, writing this logic on the server-side could be faster and cleaner.</p>
 <p>At the heart of this mashup scenario is the <code>WL.Server.invokeProcedure(invocationData)</code> API. Almost identical to its client-side counterpart, it enables you to invoke a procedure on any of your adapters.</p>
 <p>The <code>invocationData</code> parameter has the same format as the client-side API.<br />
 {% highlight javascript %}<br />
-WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });<br />
+WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
 {% endhighlight %}</p>
 <p>However, while the client-side <code>invokeProcedure</code> uses a success handler, the server-side one returns the result object itself.</p>
 <h2>Data Mashup Sample</h2>
@@ -52,19 +55,19 @@ The HTTP request has the following parameters:</p>
 </ul>
 </li>
 <li>Create the <code>getYahooWeather</code> function in the <strong>HTTPWeather-impl.js</strong> file and use it to retrieve and return the weather data by using the Yahoo! Weather API:
-<p>{% highlight javascript %}<br />
-function getYahooWeather(woeid) {</p>
-<p>	var input = {<br />
-	    method : 'get',<br />
-	    returnedContentType : 'xml',<br />
-	    path : 'forecastrss',<br />
-		parameters : {<br />
-			'w' : woeid,<br />
-			'u' : 'c' //celsius<br />
-		}<br />
-	};</p>
-<p>	return WL.Server.invokeHttp(input);<br />
-}<br />
+{% highlight javascript %}
+function getYahooWeather(woeid) {
+	var input = {
+	    method : 'get',
+	    returnedContentType : 'xml',
+	    path : 'forecastrss',
+		parameters : {
+			'w' : woeid,
+			'u' : 'c' //celsius
+		}
+	};
+	return WL.Server.invokeHttp(input);
+}
 {% endhighlight %}
 </li>
 </ol>
@@ -91,30 +94,30 @@ function getCitiesList() {<br />
 {% endhighlight %}</p>
 </li>
 <li>Create a <code>getCityWeather</code> function in the <strong>SQLAdapter-impl.js</strong> file and use it to retrieve and return the weather data from the HTTPWeather adapter:<br />
-{% highlight javascript %}<br />
-function getCityWeather(woeid){<br />
-	return WL.Server.invokeProcedure({<br />
-		adapter : 'HTTPWeather',<br />
-		procedure : 'getYahooWeather',<br />
-		parameters : [woeid]<br />
-	});<br />
-}<br />
-{% endhighlight %}</p>
+{% highlight javascript %}
+function getCityWeather(woeid){
+	return WL.Server.invokeProcedure({
+		adapter : 'HTTPWeather',
+		procedure : 'getYahooWeather',
+		parameters : [woeid]
+	});
+}
+{% endhighlight %}
 </li>
 <li>In the SQL adapter, extract a city identifier from the city list that was retrieved earlier and use it to call the <code>getYahooWeather</code> procedure of the HTTPWeather adapter.
 </li>
 <li>Repeat for each city, attaching the received data to the city object.
-<p>{% highlight javascript %}<br />
-function getCitiesWeather(){<br />
-	var cityList = getCitiesList();<br />
-	for (var i = 0; i < cityList.resultSet.length; i++) {<br />
-		var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);</p>
-<p>		if (yahooWeatherData.isSuccessful)<br />
-			cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;<br />
-	}<br />
-	return cityList;<br />
-}<br />
-{% endhighlight %}</p>
+{% highlight javascript %}
+function getCitiesWeather(){
+	var cityList = getCitiesList();
+	for (var i = 0; i < cityList.resultSet.length; i++) {
+		var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);
+	if (yahooWeatherData.isSuccessful)
+			cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;
+	}
+	return cityList;
+}
+{% endhighlight %}
 </li>
 <li>Return the mashed-up data to the application, which you can process in client-side code.
 </li>
