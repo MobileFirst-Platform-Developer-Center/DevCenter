@@ -1,6 +1,7 @@
-#require 'pry'
-#require 'pry-byebug'
+# require 'pry'
+# require 'pry-byebug'
 
+# This helper method is used to get the page object given a URL
 def getPageByUrl(url,site)
   site['pages'].each do |page|
 
@@ -11,21 +12,29 @@ def getPageByUrl(url,site)
   return nil
 end
 
+# This helper method gives an array of pages that are on the same level (URL-wise)
 def GetSiblings(url,site)
+
+  # Caching mechanism
   if !site['siblings']
     site['siblings'] = {}
   elsif site['siblings'] && site['siblings']["#{url}"]
     return site['siblings'][url]
   end
+
+  # Break down URL
   parts = url.split('/')
   target_level = parts.count
   parts.pop()
   parent_url = parts.join('/') + '/'
 
+  # Array to be returned
   siblings = []
 
+  # Loop over all the pages, performance improvements welcomed
   site['pages'].each do |page|
     level = page.url.split('/').count
+    # Look for URLs of the same level (number of /) and sharing the same parent.
     if (level == target_level) && (page.url.include? parent_url)
       element = {}
 
@@ -52,14 +61,33 @@ def GetSiblings(url,site)
   end
 
   siblings = siblings.sort {|x,y| x['weight'] <=> y['weight'] }
-  # binding.pry
+
+  # Caching
   site['siblings']["#{url}"] = siblings
   return siblings
 end
 
+# The actual hook
 Jekyll::Hooks.register :pages, :pre_render do |page, payload|
+  # This hook only handles pages with a show_breadcrumb flag
   if page.data["show_breadcrumb"]
 
+    # Remove duplicate relevantTo (windows)
+    if page.data["relevantTo"] && (page.data["relevantTo"].length > 1)
+      # binding.pry
+      payload["page"]["relevantTo"].map!{ |x|
+        if x == "windows8" || x == "windows10" || x == "windowsphone8" || x == "windowsphone10"
+          "windows"
+        else
+          x
+        end
+      }
+      payload["page"]["relevantTo"].uniq!
+      # binding.pry
+    end
+
+    
+    # Build the breadcrumbs
     parts = page.url.split('/')
     aggregated = ''
     breadcrumbs = []
