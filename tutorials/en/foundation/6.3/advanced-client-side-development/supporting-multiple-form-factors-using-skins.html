@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Supporting multiple form-factors using skins
+breadcrumb_titile: Skins
 relevantTo: [hybrid]
 ---
 <h2>Overview</h2>
@@ -8,65 +9,71 @@ relevantTo: [hybrid]
 Skins are a sub-variant of an environment.<br />
 Skins are packaged together in one application.<br />
 The decision on which skin to use is made automatically at run time.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_03_use_cases.png"><img class="alignncenter size-full wp-image-1312" src="{{ site.baseurl }}/assets/backup/05_03_use_cases.png" alt="05_03_use_cases" width="1291" height="646" /></a></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_03_iphoneVsiPad.png"><img class="aligncenter size-full wp-image-1313" src="{{ site.baseurl }}/assets/backup/05_03_iphoneVsiPad.png" alt="05_03_iphoneVsiPad" width="1255" height="558" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/05_03_use_cases.png" />
+
+<img src="{{ site.baseurl }}/assets/backup/05_03_iphoneVsiPad.png" />
+
 <h2>Skin creation</h2>
 <p>Skins are created by using the IBM MobileFirst Platform Foundation Application Skin wizard.<br />
 The skins are placed in directories that are next to the corresponding environment directory.<br />
 Before a skin can be added, first add the environment for which you want to create the skin.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_03_skin-creation.png"><img class="aligncenter size-full wp-image-1315" src="{{ site.baseurl }}/assets/backup/05_03_skin-creation.png" alt="05_03_skin-creation" width="618" height="387" /></a><br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_01_skins.png"><img class="alignnright size-full wp-image-1282" src="{{ site.baseurl }}/assets/backup/05_01_skins.png" alt="05_01_skins" width="239" height="204" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/05_03_skin-creation.png" />
+
+<img src="{{ site.baseurl }}/assets/backup/05_01_skins.png" />
 <p>A skin folder contains the following folders: <em>images</em>, <em>CSS</em>, and <em>js</em>.<br />
 Create new <em>.css</em> and <em>.js</em> files in the corresponding folders.<br />
 To extend existing code and styling from the default skin, use the same filenames as those of the default skin.<br />
 To create new code and styling, use different filenames than those in of the default skin. When you choose this option, you need to copy the HTML file to the skin folder. You must also change the reference to the <em>.js</em> and <em>.css</em> files in the HEAD element of the HTML file.<br />
 <br clear="all" /></p>
+
 <h2>Skin packaging</h2>
 <p>All skins for a specific environment are packaged within the app.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_03_skin-package.png"><img class="aligncenter size-full wp-image-1317" src="{{ site.baseurl }}/assets/backup/05_03_skin-package.png" alt="05_03_skin-package" width="286" height="432" /></a></p>
+
+<img src="{{ site.baseurl }}/assets/backup/05_03_skin-package.png" />
 <h2>Applying skins at run time</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_03_skinLoader-location.png"><img class="alignright size-full wp-image-1319" src="{{ site.baseurl }}/assets/backup/05_03_skinLoader-location.png" alt="05_03_skinLoader-location" width="287" height="455" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/05_03_skinLoader-location.png"  />
 <p>A special, developer-controlled JavaScript file is run at app startup.<br />
 It determines which skin to load.<br />
 The default <em>skinLoader.js</em> contains examples of code.</p>
-<p>{% highlight javascript %}<br />
-function getSkinName() {<br />
-	var skinName = "default";<br />
-	if (device.version == "2.2" || device.version == "2.1") {<br />
-		skinName = "android.HTML5";<br />
-	}<br />
-	return skinName;<br />
-}<br />
-{% endhighlight %}<br />
+
+{% highlight javascript %}
+function getSkinName() {
+	var skinName = "default";
+	if (device.version == "2.2" || device.version == "2.1") {
+		skinName = "android.HTML5";<
+	}
+	return skinName;
+}
+{% endhighlight %}
 <br clear="all" /></p>
 <h2>Skin Registration</h2>
 <p>Skins are automatically registered in <em>application-descriptor.xml</em>.<br />
 Registration determines the ordering of hierarchy between the common folder, environment, and skin.<br />
 If you remove a skin from the project, <em>application-decsriptor.xml</em> must be manually modified.</p>
-<p>{% highlight xml %}<br />
-    <android version="1.0"><br />
-        <skins><br />
-            <skin name="default"><br />
-                <folder name="common"/><br />
-                <folder name="android"/><br />
-            </skin><br />
-            <skin name="android.tablet"><br />
-                <folder name="common"/><br />
-                <folder name="android"/><br />
-                <folder name="android.tablet"/><br />
-            </skin><br />
-            <skin name="android.phone"><br />
-                <folder name="common"/><br />
-                <folder name="android"/><br />
-                <folder name="android.phone"/><br />
-            </skin><br />
-        </skins><br />
-        <worklightSettings include="false"/><br />
-        <security><br />
-            <encryptWebResources enabled="false"/><br />
-            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
-            <publicSigningKey>Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.</publicSigningKey><br />
-            <packageName>Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in AndroidManifest.xml file.</packageName><br />
-        </security><br />
-    </android><br />
-{% endhighlight %}</p>
+{% highlight xml %}
+    <android version="1.0">
+        <skins>
+            <skin name="default">
+                <folder name="common"/>
+                <folder name="android"/>
+            </skin>
+            <skin name="android.tablet">
+                <folder name="common"/>
+                <folder name="android"/>
+                <folder name="android.tablet"/>
+            </skin>
+            <skin name="android.phone">
+                <folder name="common"/>
+                <folder name="android"/>
+                <folder name="android.phone"/>
+            </skin>
+        </skins>
+        <worklightSettings include="false"/>
+        <security>
+            <encryptWebResources enabled="false"/>
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+            <publicSigningKey>Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.</publicSigningKey>
+            <packageName>Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in AndroidManifest.xml file.</packageName>
+        </security>
+    </android>
+{% endhighlight %}

@@ -2,12 +2,11 @@
 layout: tutorial
 title: Common UI controls
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CommonUIControlsProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CommonUIControlsProject.zip">Download Studio project</a>
-        </li>
-</ul>
+
 <h2>Overview</h2>
 <p>Some controls are common to most hybrid environments, such as modal pop-up windows, loading screens, and tab bars.</p>
 <p>With IBM MobileFirst Platform Foundation, you can use a JavaScript API to invoke these controls regardless of the environment. This API automatically renders these<br />
@@ -21,14 +20,14 @@ controls in a native way for each mobile platform.</p>
 <li><a href="#sample">Sample application</a></li>
 </ul>
 <h2 id="busyindicator">WL.BusyIndicator</h2>
-<p><span class="inline-code">WL.BusyIndicator</span> implements a common API to display a modal activity indicator.<br />
+<p><code>WL.BusyIndicator</code> implements a common API to display a modal activity indicator.<br />
 It uses native implementation on the following platforms: Android, iOS, BlackBerry 10, and Windows Phone 8.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_02_busyind.png"><img class="aligncenter wp-image-1288 size-full" src="{{ site.baseurl }}/assets/backup/05_02_busyind.png" alt="05_02_busyind" width="974" height="544" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/05_02_busyind.png"/>
 <p>It must be initialized before use.</p>
-<p>{% highlight javascript %}<br />
-busyIndicator = new WL.BusyIndicator( null, {text : 'Loading...'});<br />
-{% endhighlight %}</p>
-<p>The first parameter, the parent element ID for <span class="inline-code">WL.BusyIndicator</span>, is ignored in iOS, Android, Windows Phone, and BlackBerry environments. It only applies to the web environment.<br />
+{% highlight javascript %}
+busyIndicator = new WL.BusyIndicator( null, {text : 'Loading...'});
+{% endhighlight %}
+<p>The first parameter, the parent element ID for <code>WL.BusyIndicator</code>, is ignored in iOS, Android, Windows Phone, and BlackBerry environments. It only applies to the web environment.<br />
 In the second parameter, available options are:</p>
 <ul>
 <li><strong>text</strong> – set the modal text.</li>
@@ -36,59 +35,59 @@ In the second parameter, available options are:</p>
 <li><strong>fullScreen</strong> – should modal message be displayed full screen (iOS only).</li>
 </ul>
 <p>For more information about the options, see the MobileFirst user documentation.<br />
-<span class="inline-code">WL.BusyIndicator</span> provides the following API:</p>
+<code>WL.BusyIndicator</code> provides the following API:</p>
 <ul>
-<li><span class="inline-code">void myBusyIndicator.show()</span> – displays busy indicator.</li>
-<li><span class="inline-code">void myBusyIndicator.hide()</span> – hides busy indicator.</li>
-<li><span class="inline-code">boolean myBusyIndicator.isVisible()</span> – returns whether the busy indicator is visible.</li>
+<li><code>void myBusyIndicator.show()</code> – displays busy indicator.</li>
+<li><code>void myBusyIndicator.hide()</code> – hides busy indicator.</li>
+<li><code>boolean myBusyIndicator.isVisible()</code> – returns whether the busy indicator is visible.</li>
 </ul>
 <h2 id="simpledialog">WL.SimpleDialog</h2>
-<p>The <span class="inline-code">WL.SimpleDialog</span> implements a common API for showing a modal dialog window with buttons.<br />
+<p>The <code>WL.SimpleDialog</code> implements a common API for showing a modal dialog window with buttons.<br />
 It uses a native implementation on the following platforms: Android, iOS, Windows Phone 8, and BlackBerry 10.<br />
 Adobe Air, BlackBerry 6/7, Desktop webpage, and Mobile Web use a JS-based implementation.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_02_simpledialog.png"><img class="aligncenter wp-image-1290 size-full" src="{{ site.baseurl }}/assets/backup/05_02_simpledialog.png" alt="05_02_simpledialog" width="1301" height="545" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/05_02_simpledialog.png" />
 <p>The invocation syntax is:</p>
-<p>{% highlight javascript %}<br />
-WL.SimpleDialog.show(title, text, buttons, options);<br />
-{% endhighlight %}</p>
-<p>Parameters are <span class="inline-code">title</span>, <span class="inline-code">text</span>, and <span class="inline-code">buttons</span> as an array of button objects.<br />
+{% highlight javascript %}
+WL.SimpleDialog.show(title, text, buttons, options);
+{% endhighlight %}
+<p>Parameters are <code>title</code>, <code>text</code>, and <code>buttons</code> as an array of button objects.<br />
 The dialog is closed when any of the buttons is pressed.</p>
 <p>Each button object has two properties:</p>
 <ul>
 <li><strong>text</strong> – the text that displayed on the button.</li>
 <li><strong>handler</strong> – the function to invoke if the button is pressed.</li>
 </ul>
-<p>{% highlight javascript %}<br />
-var dialogTitle = "CommonControls";<br />
-var dialogText = "This is simple dialog text; take a look at the console";</p>
-<p>WL.SimpleDialog.show(dialogTitle, dialogText, [<br />
-    {<br />
-        text : 'I am button 1',<br />
-        handler : simpleDialogButton1Click<br />
-    }, {<br />
-        text : 'I am button 2',<br />
-        handler : simpleDialogButton2Click<br />
-    }<br />
-]);<br />
-{% endhighlight %}</p>
+{% highlight javascript %}
+var dialogTitle = "CommonControls";
+var dialogText = "This is simple dialog text; take a look at the console";
+WL.SimpleDialog.show(dialogTitle, dialogText, [
+    {
+        text : 'I am button 1',
+        handler : simpleDialogButton1Click
+    }, {
+        text : 'I am button 2',
+        handler : simpleDialogButton2Click
+    }
+]);
+{% endhighlight %}
 <h3>Limitations</h3>
 <ul>
-<li>In <strong>Windows Phone 8</strong>, you can use at most four buttons in each instance of <span class="inline-code">WL.SimpleDialog</span></li>
-<li>In <strong>Android</strong>, you can use at most three buttons in each instance of <span class="inline-code">WL.SimpleDialog</span></li>
+<li>In <strong>Windows Phone 8</strong>, you can use at most four buttons in each instance of <code>WL.SimpleDialog</code></li>
+<li>In <strong>Android</strong>, you can use at most three buttons in each instance of <code>WL.SimpleDialog</code></li>
 <li>Only 1 SimpleDialog can be open at a time</li>
 </ul>
 <h2 id="tabbar">WL.TabBar</h2>
-<p><span class="inline-code">Wl.TabBar</span> provides application navigation with a tab bar component.<br />
+<p><code>Wl.TabBar</code> provides application navigation with a tab bar component.<br />
 Supported environments are Android and iOS.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_02_tabbar.png"><img class="aligncenter wp-image-1292 size-full" src="{{ site.baseurl }}/assets/backup/05_02_tabbar.png" alt="05_02_tabbar" width="626" height="549" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/05_02_tabbar.png"/>
 <p>The iOS implementation uses a native component, but Android uses an HTML-generated tab bar.<br />
 The syntax is similar, though with some minor differences.<br />
 <code>WL.TabBar</code> must be initialized before it can be used.</p>
 <p>Because <code>WL.TabBar</code> is only available for Android and iOS, it is recommended to initialize it at the environment level (<code>android\js\main.js</code> and <code>iphone-or-ipad\js\main.js</code>) and not in the common folder (<code>common\js\main.js</code>).</p>
-<p>Use the following syntax to add a tab bar item:</p>
-<p>{% highlight javascript %}<br />
-WL.TabBar.addItem(id, callback, title, options);<br />
-{% endhighlight %}</p>
+<p>Use the following syntax to add a tab bar item:
+{% highlight javascript %}
+WL.TabBar.addItem(id, callback, title, options);
+{% endhighlight %}
 <ul>
 <li><strong>itemID</strong> – Internal reference for this tab.</li>
 <li><strong>callback</strong> – JavaScript function to run when a tab item is pressed.</li>
@@ -115,61 +114,61 @@ WL.TabBar.addItem(id, callback, title, options);<br />
 </ul>
 </li>
 </ul>
-<p>{% highlight javascript %}<br />
-WL.TabBar.addItem("item1",<br />
-    function(){ alert("item 1 pressed"); },<br />
-    "Item 1",{<br />
-        image: "tabButton:Search",<br />
-        //image: "images/tabImage.png",}<br />
-);<br />
-{% endhighlight %}</p>
+{% highlight javascript %}
+WL.TabBar.addItem("item1",
+    function(){ alert("item 1 pressed"); },
+    "Item 1",{
+        image: "tabButton:Search",
+        //image: "images/tabImage.png",}
+);
+{% endhighlight %}
 <h3>Android Options</h3>
 <ul>
 <li>image – file name of an image to use for an unselected state.</li>
 <li>imageSelected – file name of an image to use for a selected state.</li>
 </ul>
-<p>{% highlight javascript %}<br />
-WL.TabBar.addItem("item1",<br />
-    function(){ alert("item 1 pressed"); },<br />
-    "Item 1",{<br />
-    image: "images/tabImage.png",}<br />
-);<br />
-{% endhighlight %}</p>
+{% highlight javascript %}
+WL.TabBar.addItem("item1",
+    function(){ alert("item 1 pressed"); },
+    "Item 1",{
+    image: "images/tabImage.png",}
+);
+{% endhighlight %}
 <h3>Other API Signatures</h3>
 <ul>
-<li><span class="inline-code">WL.TabBar.init()</span></li>
-<li><span class="inline-code">WL.TabBar.addItem (returns WL.TabBarItem)</span></li>
-<li><span class="inline-code">WL.TabBar.removeAllItems (iOS only)</span></li>
-<li><span class="inline-code">WL.TabBar.setParentDivId (Android only)</span></li>
-<li><span class="inline-code">WL.TabBar.setVisible(true/false)</span></li>
-<li><span class="inline-code">WL.TabBar.setSelectedItem(itemID)</span></li>
-<li><span class="inline-code">WL.TabBar.setEnabled (true/false)</span></li>
-<li><span class="inline-code">WL.TabBarItem.setEnabled(true/false)</span></li>
-<li><span class="inline-code">WL.TabBarItem.updateBadge(string) (iOS only)</span></li>
+<li><code>WL.TabBar.init()</code></li>
+<li><code>WL.TabBar.addItem (returns WL.TabBarItem)</code></li>
+<li><code>WL.TabBar.removeAllItems (iOS only)</code></li>
+<li><code>WL.TabBar.setParentDivId (Android only)</code></li>
+<li><code>WL.TabBar.setVisible(true/false)</code></li>
+<li><code>WL.TabBar.setSelectedItem(itemID)</code></li>
+<li><code>WL.TabBar.setEnabled (true/false)</code></li>
+<li><code>WL.TabBarItem.setEnabled(true/false)</code></li>
+<li><code>WL.TabBarItem.updateBadge(string) (iOS only)</code></li>
 </ul>
 <h2 id="optionsmenu">WL.OptionsMenu</h2>
 <p>Supported environments: Android 2.x, Windows 8, and Windows Phone 8.<br />
-<span class="inline-code">WL.OptionsMenu</span> allows to display a menu of options.<br />
+<code>WL.OptionsMenu</code> allows to display a menu of options.<br />
 In Windows Phone 8 this also functions as a tab bar.<br />
 Note: If your application targets Android 3.0 (API level 11) or higher, WL.OptionsMenu might have no effect, depending on the device. For more information, see the MobileFirst user documentation.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_02_optionsmenu.png"><img class="aligncenter wp-image-1297 size-full" src="{{ site.baseurl }}/assets/backup/05_02_optionsmenu.png" alt="05_02_optionsmenu" width="645" height="546" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/05_02_optionsmenu.png" />
 <p>Because WL.OptionsMenu is only available for Android 2.x, Windows 8 and Windows Phone 8, it is recommended to initialize it at the environment level (<code>android\js\main.js</code>, <code>windows8\js\main.js</code>, <code>windowsphone8\js\main.js</code>) and not in the common folder (<code>common\js\main.js</code>).</p>
 <p>WL.OptionsMenu must be initialized before use.<br />
 Here are the API signatures:</p>
 <ul>
-<li><span class="inline-code">WL.OptionsMenu.init()</span></li>
-<li><span class="inline-code">WL.OptionsMenu.addItem</span> (return reference to a new options item)</li>
-<li><span class="inline-code">WL.OptionsMenu.getItem(itemID)</span></li>
-<li><span class="inline-code">WL.OptionsMenu.getItem(itemID).setEnabled (true / false)</span></li>
-<li><span class="inline-code">WL.OptionsMenu.setVisible (true / false)</span></li>
-<li><span class="inline-code">WL.OptionsMenu.setEnabled (true / false)</span></li>
-<li><span class="inline-code">WL.OptionsMenu.removeItem (itemID)</span></li>
-<li><span class="inline-code">WL.OptionsMenu.removeItems()</span></li>
+<li><code>WL.OptionsMenu.init()</code></li>
+<li><code>WL.OptionsMenu.addItem</code> (return reference to a new options item)</li>
+<li><code>WL.OptionsMenu.getItem(itemID)</code></li>
+<li><code>WL.OptionsMenu.getItem(itemID).setEnabled (true / false)</code></li>
+<li><code>WL.OptionsMenu.setVisible (true / false)</code></li>
+<li><code>WL.OptionsMenu.setEnabled (true / false)</code></li>
+<li><code>WL.OptionsMenu.removeItem (itemID)</code></li>
+<li><code>WL.OptionsMenu.removeItems()</code></li>
 </ul>
 <p>Use the following syntax to add an option of a menu:</p>
-<p>{% highlight javascript %}<br />
-WL.OptionsMenu.addItem(id, callbackFunction, title, options);<br />
-{% endhighlight %}</p>
+{% highlight javascript %}
+WL.OptionsMenu.addItem(id, callbackFunction, title, options);
+{% endhighlight %}<
 <ul>
 <li><strong>itemID</strong> – Internal reference for this menu option</li>
 <li><strong>callback</strong> – JavaScript function to run when the menu option is pressed.</li>
@@ -181,13 +180,13 @@ WL.OptionsMenu.addItem(id, callbackFunction, title, options);<br />
 </ul>
 </li>
 </ul>
-<p>{% highlight javascript %}<br />
-WL.OptionsMenu.addItem("item2",<br />
-    function(){ alert("item 2 pressed");},<br />
-    "Contacts", {<br />
-    image: "contacts.png"}<br />
-);<br />
-{% endhighlight %}</p>
+{% highlight javascript %}
+WL.OptionsMenu.addItem("item2",
+    function(){ alert("item 2 pressed");},
+    "Contacts", {
+    image: "contacts.png"}
+);
+{% endhighlight %}
 <p>Paths to image files must not be given; instead, place the files at the following locations:</p>
 <ul>
 <li><strong>Android</strong>: nativeResouces\drawable-*</li>
@@ -196,7 +195,7 @@ WL.OptionsMenu.addItem("item2",<br />
 </ul>
 <h2 id="splashscreen">Splash Screen</h2>
 <p>Supported environments: Android, iOS and WP8.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_02_splash.png"><img class="aligncenter wp-image-1299 size-full" src="{{ site.baseurl }}/assets/backup/05_02_splash.png" alt="05_02_splash" width="282" height="500" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/05_02_splash.png"/>
 <p>The framework provides a default splash screen loading behavior.<br />
 The splash screen is shown once the application launches.<br />
 This is done in</p>
@@ -211,39 +210,39 @@ For more information, see the user documentation topic: “Managing the splash s
 <p>As mentioned, you can handle when the splash screen to be hidden by using MobileFirst framework. To do so:<br />
 Uncomment the <strong>autoHideSplash</strong> option the <strong>initOptions.js</strong> file.<br />
 Use the following API method in at the point in the JavaScript code where you want the splash screen to be hidden. For example:</p>
-<p>{% highlight javascript %}<br />
-function wlCommonInit() {<br />
-      WL.App.hideSplashScreen();<br />
-}<br />
-{% endhighlight %}</p>
+{% highlight javascript %}
+function wlCommonInit() {
+      WL.App.hideSplashScreen();
+}
+{% endhighlight %}
 <p>If an application requires extra processing time while it launches, the splash screen duration can, for example, be extended by implementing custom JavaScript code that does so.<br />
 This might happen when waiting for data from a backend, or while loading of more frameworks.</p>
-<p>{% highlight javascript %}<br />
-function wlCommonInit(){<br />
-    // Custom app logic...<br />
-        customLogicCallback();<br />
-}<br />
-function customLogicCallback() {<br />
-    WL.App.hideSplashScreen();<br />
-}<br />
-{% endhighlight %}</p>
-<p>Similarly, the splash screen can be manually displayed again by using the JavaScript API method:</p>
-<p>{% highlight javascript %}<br />
-WL.App.showSplashScreen();<br />
-{% endhighlight %}</p>
-<p>In this example we wish to force a reload of the application.</p>
-<p>{% highlight javascript %}<br />
-function wlCommonInit() {<br />
-    WL.App.hideSplashscreen();<br />
-    // Custom app logic…<br />
-    reloadApplication();<br />
-}<br />
-function reloadApplication() {<br />
-    WL.App.showSplashScreen();<br />
-    // More custom app code…<br />
-    WL.Client.reloadApp();<br />
-}<br />
-{% endhighlight %}</p>
+{% highlight javascript %}
+function wlCommonInit(){
+    // Custom app logic...
+        customLogicCallback();
+}
+function customLogicCallback() {
+    WL.App.hideSplashScreen();
+}
+{% endhighlight %}
+Similarly, the splash screen can be manually displayed again by using the JavaScript API method:
+{% highlight javascript %}
+WL.App.showSplashScreen();
+{% endhighlight %}
+In this example we wish to force a reload of the application.
+{% highlight javascript %}
+function wlCommonInit() {
+    WL.App.hideSplashscreen();
+    // Custom app logic…
+    reloadApplication();
+}
+function reloadApplication() {
+    WL.App.showSplashScreen();
+    // More custom app code…
+    WL.Client.reloadApp();
+}
+{% endhighlight %}
 <p>By default, the splash screen that is used in a MobileFirst application is a static image.<br />
 To use a different image, replace the following with another image:</p>
 <ul>
