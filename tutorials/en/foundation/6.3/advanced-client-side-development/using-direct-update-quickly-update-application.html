@@ -1,13 +1,12 @@
 ---
 layout: tutorial
 title: Using Direct Update to quickly update your application
+breadcrumb_title: Direct Update
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomDirectUpdateProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomDirectUpdateProject.zip">Download Studio project</a>
-        </li>
-</ul>
 <h2>About Direct Update</h2>
 <p>With Direct Update, hybrid applications (for the Android, iOS and Windows Phone 8 environments)s can be updated "over-the-air" with updated/refreshed versions of the web resources.</p>
 <p>The topics covered, are:</p>
@@ -42,7 +41,7 @@ relevantTo: [hybrid]
 </li>
 </ul>
 <h2 id="underTheHood">Under the hood</h2>
-<p>Direct Update is based on the MobileFirst Authentication Framework. It comes with pre-defined authentication realm and challenge handler, and can be adjusted in <span class="inline-code">authenticationConfig.xml</span> to the following modes:</p>
+<p>Direct Update is based on the MobileFirst Authentication Framework. It comes with pre-defined authentication realm and challenge handler, and can be adjusted in <code>authenticationConfig.xml</code> to the following modes:</p>
 <ul>
 <li>perSession</li>
 <li>perRequest</li>
@@ -50,23 +49,31 @@ relevantTo: [hybrid]
 </ul>
 <p>The UI &amp; UX of the Direct Update process can be fully customized by using simple interfaces.</p>
 <h3>Server-side customization</h3>
-<p>By default, the <span class="inline-code">mobileSecurityTest</span> has Direct Update enabled in <span class="inline-code">perSession</span> mode:</p>
-<p>{% highlight xml %}<mobileSecurityTest name="mobileTests"><br />
-    <testAppAuthenticity/><br />
-    <testDeviceId provisioningType="none" /><br />
-    <testUser realm="myMobileLoginForm" /><br />
-    <testDirectUpdate mode="perSession" /><br />
-</mobileSecurityTest>{% endhighlight %}</p>
-<p><br clear="all" /><br />
-To Disable Direct Update, change its mode to disabled, and similarly to override it to other modes.<br />
-{% highlight xml %}<testDirectUpdate mode=“disabled" />{% endhighlight %}</p>
-<p><br clear="all" /><br />
-By default, the <span class="inline-code">customSecurityTest</span> does not have any realms.<br />
-To add a Direct Update realm to a custom security test, add a <span class="inline-code">test</span> element with the realm name <span class="inline-code">wl_directUpdateRealm</span> and define the required mode property:</p>
-<p>{% highlight xml %}<customSecurityTest name="customTests"><br />
-    <test realm="wl_directUpdateRealm" mode="perRequest"/><br />
-</customSecurityTest>{% endhighlight %}</p>
+<p>By default, the <code>mobileSecurityTest</code> has Direct Update enabled in <code>perSession</code> mode:</p>
+{% highlight xml %}
+<mobileSecurityTest name="mobileTests">
+    <testAppAuthenticity/>
+    <testDeviceId provisioningType="none" />
+    <testUser realm="myMobileLoginForm" />
+    <testDirectUpdate mode="perSession" />
+</mobileSecurityTest>
+{% endhighlight %}
+
+<p>To Disable Direct Update, change its mode to disabled, and similarly to override it to other modes.</p>
+{% highlight xml %}
+<testDirectUpdate mode="disabled" />
+{% endhighlight %}
+
+<p>By default, the <code>customSecurityTest</code> does not have any realms.<br />
+To add a Direct Update realm to a custom security test, add a <code>test</code> element with the realm name <code>wl_directUpdateRealm</code> and define the required mode property:</p>
+{% highlight xml %}
+<customSecurityTest name="customTests">
+    <test realm="wl_directUpdateRealm" mode="perRequest"/>
+</customSecurityTest>
+{% endhighlight %}
+
 <p>For more information, review the “Direct Update as a security realm” user documentation topic.</p>
+
 <h2 id="internalFunction">Internal function</h2>
 <p>The application's Web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on available configuration (Per session or per request as explained above).</p>
 <p>The updated web resources are downloaded when necessary.<br />
@@ -84,13 +91,13 @@ Once the user approves, a progress bar dialog is displayed and web resources are
 <p>There is no change in the behaviour of applications built with previous versions of IBM MobileFirst Platform Foundation.</p>
 <h3>Customizing the UI</h3>
 <p>It is possible to override the default UI and/or UX and create a custom Direct Update behavior altogether.</p>
-<p>To do so, override the <span class="inline-code">handleDirectUpdate</span> function:<br />
+<p>To do so, override the <code>handleDirectUpdate</code> function:<br />
 {% highlight js %}wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {<br />
     // custom Direct Update logic<br />
 };{% endhighlight %}</p>
 <p><br clear="all" /><br />
-<span class="inline-code">directUpdateData</span> - A JSON object containing the&nbsp;<span class="inline-code">downloadSize</span>&nbsp;property that represents the files size in bytes of the&nbsp;update&nbsp;package to be downloaded from the MobileFirst Server.</p>
-<p><span class="inline-code">directUpdateContext</span> - A JavaScript object exposing&nbsp;<span class="inline-code">.start()</span>&nbsp;and&nbsp;<span class="inline-code">.stop()</span>&nbsp;functions that start and stop the&nbsp;Direct&nbsp;Update&nbsp;flow.</p>
+<code>directUpdateData</code> - A JSON object containing the <code>downloadSize</code> property that represents the files size in bytes of the update package to be downloaded from the MobileFirst Server.</p>
+<p><code>directUpdateContext</code> - A JavaScript object exposing <code>.start()</code> and <code>.stop()</code> functions that start and stop the Direct Update flow.</p>
 <h4>Example</h4>
 <p>In the example code below a custom Direct Update dialog is presented to user, allowing to either continue with the update process or dismiss it.<br />
 A customized new Direct Update UI can be, for example, either:</p>
@@ -101,33 +108,34 @@ A customized new Direct Update UI can be, for example, either:</p>
 <li>An alternate HTML file that is presented to the user with options</li>
 <li>And so on…</li>
 </ul>
-<p>{% highlight js %}wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData,<br />
-directUpdateContext) {<br />
-    // custom WL.SimpleDialog for Direct Update<br />
-    var customDialogTitle = 'Custom Title Text';<br />
-    var customDialogMessage = 'Custom Message Text';<br />
-    var customButtonText1 = 'Update Application';<br />
+{% highlight js %}
+wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData,
+directUpdateContext) {
+    // custom WL.SimpleDialog for Direct Update
+    var customDialogTitle = 'Custom Title Text';
+    var customDialogMessage = 'Custom Message Text';
+    var customButtonText1 = 'Update Application';
     var customButtonText2 = 'Not Now';</p>
-<p>    WL.SimpleDialog.show(customDialogTitle, customDialogMessage,<br />
-        [{<br />
-            text : customButtonText1,<br />
-            handler : function() {<br />
-                directUpdateContext.start();<br />
-            }<br />
-        },<br />
-        {<br />
-            text : customButtonText2,<br />
-            handler : function() {<br />
-                wl_directUpdateChallengeHandler.submitFailure();<br />
-            }<br />
-        }]<br />
-    );<br />
-};{% endhighlight %}</p>
+    WL.SimpleDialog.show(customDialogTitle, customDialogMessage,
+        [{
+            text : customButtonText1,
+            handler : function() {
+                directUpdateContext.start();
+            }
+        },
+        {
+            text : customButtonText2,
+            handler : function() {
+                wl_directUpdateChallengeHandler.submitFailure();
+            }
+        }]
+    );
+};{% endhighlight %}
 <p><img src="{{ site.baseurl }}/assets/backup/05_05_custom_dialog.png"/></p>
-<p>In the example code above, <span class="inline-code">submitFailure</span> was used to dismiss the Direct Update:<br />
+<p>In the example code above, <code>submitFailure</code> was used to dismiss the Direct Update:<br />
 {% highlight js %}wl_directUpdateChallengeHandler.submitFailure();{% endhighlight %}</p>
 <p>As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer.</p>
-<p>As such, it is important to call <span class="inline-code">submitFailure()</span> to notify the MobileFirst framework that the process completed with a “failure”. The MobileFirst framework in turn invokes the <span class="inline-code">onFailure</span> callback of the invocation that triggered the Direct Update. &nbsp;</p>
+<p>As such, it is important to call <code>submitFailure()</code> to notify the MobileFirst framework that the process completed with a “failure”. The MobileFirst framework in turn invokes the <code>onFailure</code> callback of the invocation that triggered the Direct Update.  </p>
 <p>Because the update process did not take place, it will occur again the next time it is triggered.</p>
 <p>Optionally, a developer can also supply a Direct Update listener to fully control a Direct Update’s lifecycle. For more information, see the “Customizing the direct update interface” user documentation topic.<br />
 {% highlight js %}directUpdateContext.start(directUpdateCustomListener);{% endhighlight %}</p>
@@ -142,13 +150,16 @@ directUpdateContext) {<br />
 <p>Enabling Direct Update authenticity prevents altering the transmitted web resources from the server to the client application by a 3rd party attacker (i.e., when it is cached in a CDN).</p>
 <p>To enable Direct Update authenticity:</p>
 <ol>
-<li>Generate a certificate and place it in the MobileFirst project under the <span class="inline-code">server\conf folder</span></li>
-<li>Edit the MobileFirst Default Certificate section in <span class="inline-code">server\conf\worklight.properties</span> with the certificate’s keystore information, for example:{% highlight xml %}<br />
-wl.ca.keystore.path=conf/myCert.jks<br />
-wl.ca.keystore.type=jks<br />
-wl.ca.keystore.password=myStrongPassword<br />
-wl.ca.key.alias=certAlias<br />
-wl.ca.key.alias.password=myCertPassword{% endhighlight %}</li>
+<li>Generate a certificate and place it in the MobileFirst project under the <code>server\conf folder</code></li>
+<li>Edit the MobileFirst Default Certificate section in <code>server\conf\worklight.properties</code> with the certificate’s keystore information, for example:
+{% highlight xml %}
+wl.ca.keystore.path=conf/myCert.jks
+wl.ca.keystore.type=jks
+wl.ca.keystore.password=myStrongPassword
+wl.ca.key.alias=certAlias
+wl.ca.key.alias.password=myCertPassword
+{% endhighlight %}
+
 <li>Add the certificate’s public key using the Application Descriptor Editor view. To do so:
 <ul>
 <li>Right-click on the application folder and select Extract Public Signing Key</li>
@@ -159,14 +170,16 @@ wl.ca.key.alias.password=myCertPassword{% endhighlight %}</li>
 <p>You can find the public key on the Design view of the Application Descriptor Editor.</p>
 <p> <img src="{{ site.baseurl }}/assets/backup/05_05_public_signing_key1-1024x477.png"/></p>
 <p>You can also find the public key in the Source view of the Application Descriptor Editor.</p>
-<p>{% highlight xml %}<application><br />
-   …<br />
-   …<br />
-   …<br />
-   <directUpdateAuthenticityPublicKey><br />
-      public keystore value<br />
-   </directUpdateAuthenticityPublicKey><br />
-</application>{% endhighlight %}
+{% highlight xml %}
+<application>
+   …
+   …
+   …
+   <directUpdateAuthenticityPublicKey>
+      public keystore value
+   </directUpdateAuthenticityPublicKey>
+</application>
+{% endhighlight %}
 </ol>
 <p><strong>Notes:</strong></p>
 <ul>
