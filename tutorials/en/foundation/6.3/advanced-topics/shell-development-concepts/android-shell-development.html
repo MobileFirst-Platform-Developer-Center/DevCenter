@@ -2,33 +2,34 @@
 layout: tutorial
 title: Android shell development
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ShellDevelopmentProject.zip
 ---
-<ul>
-<li class="download-sample"><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ShellDevelopmentProject.zip">Download Studio project</a></li>
-</ul>
-
+<h2>Overview</h2>
 <p>This module is a continuation of the tutorial <a href="../">Shell Development Concepts</a>.</p>
 
-<h2>Overview</h2>
 <p>In this module, you learn how to add an Android environment to your shell component, test application, and inner application.</p>
 <h2>Adding an Android environment to a shell component</h2>
 <p>Start by adding a new Android environment to your shell component by following the same procedure as for a standard MobileFirst application.<br />
+
 <img src="{{ site.baseurl }}/assets/backup/10_02_new-environment.png"/></p>
-<p><img src="{{ site.baseurl }}/assets/backup/10_02_env-structure.png"/><br />
 The following folder structure is created:</p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_02_env-structure.png"/><br />
 <ul>
 <li><strong>css, images, fragments</strong> and <strong>js</strong> contain resources that override or extend resources from the shell component common folder.
 </li>
 <li>The <strong>native</strong> folder contains an application template to be used when you create an Android project from an inner application.
 </li>
-<li>The <strong>nativeEmptyApp</strong> folder contains application that is built from the shell component and an empty inner application as described in the <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/advanced-topics/shell-development-concepts/" title="Shell development concepts">Shell Development Concepts</a> tutorial.
+<li>The <strong>nativeEmptyApp</strong> folder contains application that is built from the shell component and an empty inner application as described in the <a href="../../advanced-topics/shell-development-concepts/" title="Shell development concepts">Shell Development Concepts</a> tutorial.
 </li>
 </ul>
 <p><br clear="all" /></p>
-<p><img src="{{ site.baseurl }}/assets/backup/10_02_native_structure.png"/><br />
+
 The files in the <strong>native</strong> folder are templates that are used to create the inner application Android project.<br />
 Some of the folder and file names contain placeholder elements that are populated during build.<br />
-For example</p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_02_native_structure.png"/><br />
+For example:</p>
 <ul>
 <li>The <strong>${packageDirectory}</strong> placeholder is populated with a package name used in the application.
 </li>
@@ -38,34 +39,34 @@ For example</p>
 <p>Files with the <strong>.wluser</strong> extensions are template files that shell developers can modify.<br />
 <br clear="all" /></p>
 <h2>Adding custom Java code to a shell component</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/10_02_native_structure2.png"/><br />
+<p><img src="{{ site.baseurl }}/assets/backup/10_02_native_structure2.png" style="float:right"/><br />
 Because the <em>android\native</em> folder of a shell component is not an Android project, Eclipse does not provide advanced features such as auto-complete when you work on it directly.<br />
 The solution is to use the Android environment to create, modify, and debug Java code.<br />
 The generated Android project is added to your workspace.<br />
 Use it to work with your Java code.<br />
-<br clear="all" /></p>
+
 <p>Add the <strong>com.mycustomcode</strong> package to the generated Android project.<br />
 Add <strong>MyCustomToaster.java</strong> class under this package.<br />
 Add a static method to this class:<br />
-{% highlight java %}<br />
-public class MyCustomToaster {<br />
-  public static void showToastAlert(Activity context, String text) {<br />
-    Toast.makeText(context, text, 2000).show();<br />
-  }<br />
-}<br />
-{% endhighlight %}</p>
+{% highlight java %}
+public class MyCustomToaster {
+  public static void showToastAlert(Activity context, String text) {
+    Toast.makeText(context, text, 2000).show();
+  }
+}
+{% endhighlight %}
 <p>Open your main application activity.<br />
 Start <em>MyCustomToast.showToastAlert()</em>:<br />
-{% highlight java %}<br />
-public class MyShellTest extends WLDroidGap {<br />
-  @Override<br />
-  public void onCreate(Bundle savedInstanceState){<br />
-    super.onCreate(savedInstanceState);<br />
-    //DeviceAuthManager.getInstance().setProvisioningDelegate(<replace with...>)<br />
-    super.loadUrl(getWebMainFilePath());<br />
-    MyCustomToaster.showToastAlert(this, "Hello from Android Shell");<br />
-  }<br />
-}<br />
+{% highlight java %}
+public class MyShellTest extends WLDroidGap {
+  @Override
+  public void onCreate(Bundle savedInstanceState){
+    super.onCreate(savedInstanceState);
+    //DeviceAuthManager.getInstance().setProvisioningDelegate(<replace with...>)
+    super.loadUrl(getWebMainFilePath());
+    MyCustomToaster.showToastAlert(this, "Hello from Android Shell");
+  }
+}
 {% endhighlight %}</p>
 <p>Run your application to see the implemented functions.<br />
 <img src="{{ site.baseurl }}/assets/backup/10_02_java_results.png"/></p>
@@ -85,9 +86,11 @@ Doing so helps inner application developers to test their code without the need 
 For example: to develop and test iPhone application without a Mac.<br />
 To use NativeEmptyApp, import its folder as a generic project in Eclipse.</p>
 <p>The native empty application is automatically recognized as an Android project.<br />
+    <img src="{{ site.baseurl }}/assets/backup/10_02_nativeempty_app.png"/></p>
 When the application is built and deployed to an Android device, click Menu and go to Settings to change the URL from which this inner application content is loaded.<br />
 <img src="{{ site.baseurl }}/assets/backup/10_02_nativeempty_settings.png"/><br />
-<img src="{{ site.baseurl }}/assets/backup/10_02_nativeempty_app.png"/></p>
+
+
 <p><strong>Important:</strong><br />
 NativeEmptyApp cannot load a remote inner application that has the device provisioning enabled.<br />
 NativeEmptyApp can be used only in the development environment.</p>
