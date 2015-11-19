@@ -23,33 +23,33 @@ relevantTo: [hybrid]
 <h2 id="creatingHybridMobileFirstApplication">Creating a hybrid MobileFirst application</h2>
 <h3>Using the CLI</h3>
 <ol>
-<li>If you have installed the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/advanced-client-side-development/using-cli-create-build-manage-project-artifacts/" title="Updated: Using CLI to create, build, and manage MobileFirst project artifacts">CLI</a>, in the terminal, create a project named <code>HelloWorldProject</code>.<br />
-[code]<br />
+<li>If you have installed the <a href="../../advanced-client-side-development/using-cli-create-build-manage-project-artifacts/" title="Updated: Using CLI to create, build, and manage MobileFirst project artifacts">CLI</a>, in the terminal, create a project named <code>HelloWorldProject</code>.<br />
+{% highlight bash %}<br />
 $ mfp create HelloWorldProject<br />
 A MobileFirst Project was successfully created at /Users/MyUser/Dev/HelloWorldProject<br />
-[/code]</li>
+ {% endhighlight %} </li>
 <li>Go to the context of your newly created project.<br />
-[code]<br />
+{% highlight bash %}<br />
 $ cd HelloWorldProject/<br />
-[/code]</li>
+ {% endhighlight %} </li>
 <li>Define a hybrid application named <code>HelloWorld</code>.<br />
-[code]<br />
+{% highlight bash %}<br />
 $ mfp add hybrid HelloWorld<br />
 A new Hybrid App was added at /Users/MyUser/Dev/HelloWorldProject/apps/HelloWorld<br />
-[/code]</li>
+ {% endhighlight %} </li>
 </ol>
 <h3>Using the Studio</h3>
 <ol>
-<li>In MobileFirst Studio, select <strong>File &gt; New &gt; MobileFirst Project</strong> to create a new MobileFirst Project from the top toolbar.<br />
- <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_toolbar_menu.png"><img class="aligncenter wp-image-1399 size-full" src="{{ site.baseurl }}/assets/backup/02_01_toolbar_menu.png" alt="02_01_toolbar_menu" width="603" height="344" /></a></li>
+<li>In MobileFirst Studio, select <strong>File > New > MobileFirst Project</strong> to create a new MobileFirst Project from the top toolbar.<br />
+<img src="{{ site.baseurl }}/assets/backup/02_01_toolbar_menu.png" /></li>
 <li>Give your project a name, for example <em>HelloWorldProject</em>, and select the <strong>Hybrid Application</strong> template.<br />
- <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_new_project.png"><img class="aligncenter wp-image-1401 size-full" src="{{ site.baseurl }}/assets/backup/02_01_new_project.png" alt="02_01_new_project" width="603" height="602" /></a></li>
+<img src="{{ site.baseurl }}/assets/backup/02_01_new_project.png"/></li>
 <li>Give the application a name, for example <em>HelloWorld</em>. You can add JavaScript frameworks to your project in this screen. Click <strong>Finish</strong> when done.<br />
- <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_new_application.png"><img class="aligncenter wp-image-1398 size-full" src="{{ site.baseurl }}/assets/backup/02_01_new_application.png" alt="02_01_new_application" width="603" height="603" /></a></li>
+<img src="{{ site.baseurl }}/assets/backup/02_01_new_application.png"/></li>
 </ol>
-<p>To learn more about adding frameworks to applications, read the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/client-side-development-basics/working-ui-frameworks/">Client-side development basics > Working with UI frameworks</a> tutorial.</p>
+<p>To learn more about adding frameworks to applications, read the <a href="../../client-side-development-basics/working-ui-frameworks/">Client-side development basics > Working with UI frameworks</a> tutorial.</p>
 <h2 id="structureOfNewApplication">Structure of the new application</h2>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/02_01_project_structure.jpg"><img src="{{ site.baseurl }}/assets/backup/02_01_project_structure.jpg" alt="02_01_project_structure" width="720" height="621" class="aligncenter size-full wp-image-13826" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/02_01_project_structure.jpg"/></p>
 <h3>Environment files</h3>
 <h4>Common</h4>
 <p>The default environment is called <strong>common</strong>. The <strong>common</strong> environment contains all the resources that are shared between environments:</p>
@@ -73,7 +73,7 @@ A new Hybrid App was added at /Users/MyUser/Dev/HelloWorldProject/apps/HelloWorl
 <li><strong>build-settings.xml</strong>: Contains configuration options for minification and concatenation.</li>
 </ul>
 <h4>Other environments</h4>
-<p>To add an environment, right-click the apps folder and select <strong>New &gt; MobileFirst environment</strong>, or use the top toolbar icon.<br />
+<p>To add an environment, right-click the apps folder and select <strong>New > MobileFirst environment</strong>, or use the top toolbar icon.<br />
 The resources of the new environment have the following relationship with the common resources:</p>
 <ul>
 <li><strong>images</strong> – Overrides the common images when both have the same name.</li>
@@ -112,84 +112,84 @@ MobileFirst Studio deploys those artifacts to the embedded MobileFirst Developme
 <h3>The application-descriptor.xml file</h3>
 <p>The application descriptor is an XML file that stores the metadata for an application.<br />
 You can edit this file in the Design or Source editors (in Studio), or with your preferred editor if you use the CLI.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_application_descriptor.png"><img class="aligncenter wp-image-1394 size-large" src="{{ site.baseurl }}/assets/backup/02_01_application_descriptor-1024x568.png" alt="02_01_application_descriptor" width="603" height="543" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/02_01_application_descriptor-1024x568.png" />
 <p>The file is based on the W3C Widget Packaging and Configuration standard and contains application properties that are used at build time.<br />
 You can specify the application description, details about the author, and the thumbnail image to be displayed in the MobileFirst Operations Console.</p>
-<p>[code lang="xml"]<br />
-    &lt;!-- Attribute &quot;id&quot; must be identical to application folder name --&gt;<br />
-    &lt;application id=&quot;HelloWorld&quot; platformVersion=&quot;6.2.0.00.20140701-1500&quot;<br />
-    xmlns=&quot;http://www.worklight.com/application-descriptor&quot;<br />
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;</p>
-<p>        &lt;displayName&gt;HelloWorld&lt;/displayName&gt;<br />
-        &lt;description&gt;HelloWorld&lt;/description&gt;<br />
-        &lt;author&gt;<br />
-            &lt;name&gt;application's author&lt;/name&gt;<br />
-            &lt;email&gt;application author's e-mail&lt;/email&gt;<br />
-            &lt;copyright&gt;Copyright My Company&lt;/copyright&gt;<br />
-            &lt;homepage&gt;http://mycompany.com&lt;/homepage&gt;<br />
-        &lt;/author&gt;<br />
-        &lt;mainFile&gt;index.html&lt;/mainFile&gt;<br />
-        &lt;thumbnailImage&gt;common/images/thumbnail.png&lt;/thumbnailImage&gt;<br />
-        &lt;features&gt;<br />
-        &lt;/features&gt;<br />
-    &lt;/application&gt;<br />
-    [/code]</p>
+<p>{% highlight xml %} <br />
+    <!-- Attribute "id" must be identical to application folder name --><br />
+    <application id="HelloWorld" platformVersion="6.2.0.00.20140701-1500"<br />
+    xmlns="http://www.worklight.com/application-descriptor"<br />
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></p>
+<p>        <displayName>HelloWorld</displayName><br />
+        <description>HelloWorld</description><br />
+        <author><br />
+            <name>application's author</name><br />
+            <email>application author's e-mail</email><br />
+            <copyright>Copyright My Company</copyright><br />
+            <homepage>http://mycompany.com</homepage><br />
+        </author><br />
+        <mainFile>index.html</mainFile><br />
+        <thumbnailImage>common/images/thumbnail.png</thumbnailImage><br />
+        <features><br />
+        </features><br />
+    </application><br />
+     {% endhighlight %} </p>
 <p>Environment-specific information is inserted automatically as new environments are added to the MobileFirst project:</p>
-<p>[code lang="xml"]<br />
-    &lt;iphone bundleId=&quot;com.HelloWorld&quot; version=&quot;1.0&quot;&gt;<br />
-        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
-        &lt;security&gt;<br />
-            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
-        &lt;/security&gt;<br />
-    &lt;/iphone&gt;<br />
-    &lt;android version=&quot;1.0&quot;&gt;<br />
-        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
-        &lt;security&gt;<br />
-            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
-            &lt;publicSigningKey/&gt;<br />
-            &lt;packageName/&gt;<br />
-        &lt;/security&gt;<br />
-    &lt;/android&gt;<br />
-    [/code]</p>
+<p>{% highlight xml %} <br />
+    <iphone bundleId="com.HelloWorld" version="1.0"><br />
+        <worklightSettings include="false"/><br />
+        <security><br />
+            <encryptWebResources enabled="false"/><br />
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
+        </security><br />
+    </iphone><br />
+    <android version="1.0"><br />
+        <worklightSettings include="false"/><br />
+        <security><br />
+            <encryptWebResources enabled="false"/><br />
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
+            <publicSigningKey/><br />
+            <packageName/><br />
+        </security><br />
+    </android><br />
+     {% endhighlight %} </p>
 <h3>The build-settings.xml file</h3>
 <p>The build settings file is an XML file that contains configuration options for minification and concatenation of the Desktop Browser and Mobile Web environment web resources.<br />
 You can edit this file in the Design or Source editors (in Studio), or with your preferred editor if you use the CLI.</p>
 <p>By using minification on specific web resources, you can reduce the size of JavaScript and CSS files in the application.<br />
 In addition, you can use concatenation of the web resources to improve the start time of the application.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_build_settings_Editor.png"><img class="aligncenter wp-image-1404 size-large" src="{{ site.baseurl }}/assets/backup/02_01_build_settings_Editor-1024x430.png" alt="02_01_build_settings_Editor" width="603" height="411" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/02_01_build_settings_Editor-1024x430.png" />
 <h3>The index.html file</h3>
 <p>At application run time, the main HTML document cannot be replaced by another HTML document.<br />
 The default application HTML template complies with HTML5 standard markup, but any other DOCTYPE can be specified.</p>
 <p>The MobileFirst client-side framework uses the jQuery library for internal functions. By default, the <code>$</code> char is assigned to the internal jQuery in the main HTML file (see below). If a different jQuery version is required or if jQuery is not required in the application, this line (#12) can be removed.</p>
 <p>The MobileFirst client framework initialization is bound to the <code>onload</code> event specified in the <code>initOptions.js</code> file. For more information about initialization options, see the user documentation.</p>
-<p>[code lang="html"]<br />
-    &lt;!DOCTYPE HTML&gt;<br />
-    &lt;html&gt;<br />
-            &lt;head&gt;<br />
-                &lt;meta charset=&quot;UTF-8&quot;&gt;<br />
-                &lt;title&gt;HelloWorld&lt;/title&gt;<br />
-                &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0&quot;&gt;<br />
-                &lt;!--<br />
-                    &lt;link rel=&quot;shortcut icon&quot; href=&quot;images/favicon.png&quot;&gt;<br />
-                    &lt;link rel=&quot;apple-touch-icon&quot; href=&quot;images/apple-touch-icon.png&quot;&gt;<br />
-                --&gt;<br />
-                &lt;link rel=&quot;stylesheet&quot; href=&quot;css/main.css&quot;&gt;<br />
-                &lt;script&gt;window.$ = window.jQuery = WLJQ;&lt;/script&gt;<br />
-            &lt;/head&gt;<br />
-            &lt;body style=&quot;display: none;&quot;&gt;<br />
-                &lt;!--application UI goes here--&gt;<br />
+<p>{% highlight html %} <br />
+    <!DOCTYPE HTML><br />
+    <html><br />
+            <head><br />
+                <meta charset="UTF-8"><br />
+                <title>HelloWorld</title><br />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"><br />
+                <!--<br />
+                    <link rel="shortcut icon" href="images/favicon.png"><br />
+                    <link rel="apple-touch-icon" href="images/apple-touch-icon.png"><br />
+                --><br />
+                <link rel="stylesheet" href="css/main.css"><br />
+                <script>window.$ = window.jQuery = WLJQ;</script><br />
+            </head><br />
+            <body style="display: none;"><br />
+                <!--application UI goes here--><br />
                 Hello World<br />
-                &lt;script src=&quot;js/initOptions.js&quot;&gt;&lt;/script&gt;<br />
-                &lt;script src=&quot;js/main.js&quot;&gt;&lt;/script&gt;<br />
-                &lt;script src=&quot;js/messages.js&quot;&gt;&lt;/script&gt;<br />
-            &lt;/body&gt;<br />
-    &lt;/html&gt;<br />
-    [/code]</p>
+                <script src="js/initOptions.js"></script><br />
+                <script src="js/main.js"></script><br />
+                <script src="js/messages.js"></script><br />
+            </body><br />
+    </html><br />
+     {% endhighlight %} </p>
 <h3>The initOptions.js file</h3>
 <p>The initialization options file contains MobileFirst framework initialization settings.<br />
-It is also responsible for initializing the MobileFirst framework after the <code>&lt;body&gt;</code> element finishes loading.</p>
+It is also responsible for initializing the MobileFirst framework after the <code><body></code> element finishes loading.</p>
 <p>By default, the MobileFirst application starts in offline mode (the application does not attempt to connect to MobileFirst Server).<br />
 To connect to MobileFirst Server, use <code>WL.Client.connect()</code>.</p>
 <p>Some default initialization options are documented in the file itself. The entire set of options is documented in the Reference topic for the API method "<code>WL.Client.init</code>", in the user documentation.</p>
@@ -199,7 +199,7 @@ It contains a <code>wlCommonInit()</code> function which is invoked automaticall
 <p>This function is used in environment-specific JavaScript files to have a common initialization starting point. Additional details are provided in subsequent tutorials.</p>
 <p>As discussed previously, the MobileFirst application starts in offline mode by default.<br />
 To begin communicating with MobileFirst Server, follow the instructions provided in the default <code>wlCommonInit()</code> function:</p>
-<p>[code lang="js"]<br />
+<p>{% highlight js %} <br />
 function wlCommonInit(){<br />
     /*<br />
      * Use of WL.Client.connect() API before any connectivity to MobileFirst Server is required.<br />
@@ -214,7 +214,7 @@ function wlCommonInit(){<br />
      */</p>
 <p>    // Common initialization code goes here</p>
 <p>}<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h3 id="singleDOM">Single DOM model</h3>
 <p>MobileFirst hybrid applications use a single DOM model.</p>
 <p>The single DOM model means that navigation between various HTML files must not be implemented by using hyperlinks or by changing the <code>window.location</code> property.<br />
@@ -231,7 +231,7 @@ After the build completes, the application is available for preview in the Mobil
 <p>To build an application from the Studio, right-click the application name and select <strong>Run As > Run on MobileFirst Development Server</strong>.</p>
 <p>While the application is being built and deployed, you can monitor the progress in the Eclipse Console view.<br />
 After the build completes, the application is available for preview in the MobileFirst Operations Console.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_01_run_on_development_server.png"><img class="aligncenter wp-image-1396 size-full" src="{{ site.baseurl }}/assets/backup/02_01_run_on_development_server.png" alt="02_01_run_on_development_server" width="603" height="872" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/02_01_run_on_development_server.png" />
 <h3>MobileFirst Operations Console</h3>
 <p>Learn about the MobileFirst Operations Console from the <a href="../../hello-world/mobilefirst-console/" title="Introduction to MobileFirst Platform Console">Introduction to MobileFirst Operations Console</a> tutorial.</p>
 <h2 id="previewingAnApplication">Previewing an Application</h2>
@@ -244,7 +244,7 @@ After the build completes, the application is available for preview in the Mobil
 </ul>
 <p>If you are presented with a login screen, use admin/admin as the username/password.</p>
 <p>Learn more about previewing from the <a href="../../hello-world/previewing-applications-web-resources/" title="Previewing your application’s web resources">Previewing the web resources of your application</a> tutorial.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/common-preview.png"><img src="{{ site.baseurl }}/assets/backup/common-preview.png" alt="common-preview" width="653" height="717" class="aligncenter size-full wp-image-6349" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/common-preview.png"/></p>
 <h2 id="sampleApplication">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/HelloWorldHybridProject.zip">Click to download</a> the Studio project.<br />
 The sample application at this time is intended only for you to review the structure of an application; you are not required at all to use it.</p>

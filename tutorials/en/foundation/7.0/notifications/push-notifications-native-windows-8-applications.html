@@ -19,29 +19,29 @@ To create and configure a Windows 8 native project, first follow these tutorials
 </ul>
 <h2 id="settingUpPushNotifications">Setting up push notification</h2>
 <h3>Server side</h3>
-<p>In the <code>application-descriptor.xml</code> file, for <em>windows8</em>, set the following attributes to the <span class="inline-code">pushSender</span> element.</p>
+<p>In the <code>application-descriptor.xml</code> file, for <em>windows8</em>, set the following attributes to the <code>pushSender</code> element.</p>
 <p><em>packageSID</em> - Unique identifier of your Windows Store app</p>
 <p><em>clientSecret</em> - Secret key</p>
-<p>[code lang="xml"]<br />
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;<br />
-&lt;nativeWindows8App xmlns=&quot;http://www.worklight.com/native-windows8-descriptor&quot; id=&quot;Windows8NativePush&quot; platformVersion=&quot;7.0.0.00.20150227-0916&quot; securityTest=&quot;MySecurityTest&quot; version=&quot;1.0&quot;&gt;</p>
-<p>   &lt;displayName&gt;Windows8NativePush&lt;/displayName&gt;<br />
-   &lt;description&gt;Windows8NativePush&lt;/description&gt;</p>
-<p>   &lt;pushSender clientSecret=&quot;WNS_SECRET_KEY&quot; packageSID=&quot;WNS_UNIQUE_IDENTIFIER&quot;/&gt;</p>
-<p>&lt;/nativeWindows8App&gt;</p>
-<p>[/code]</p>
+<p>{% highlight xml %} <br />
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><br />
+<nativeWindows8App xmlns="http://www.worklight.com/native-windows8-descriptor" id="Windows8NativePush" platformVersion="7.0.0.00.20150227-0916" securityTest="MySecurityTest" version="1.0"></p>
+<p>   <displayName>Windows8NativePush</displayName><br />
+   <description>Windows8NativePush</description></p>
+<p>   <pushSender clientSecret="WNS_SECRET_KEY" packageSID="WNS_UNIQUE_IDENTIFIER"/></p>
+<p></nativeWindows8App></p>
+<p> {% endhighlight %} </p>
 <h3>Client side</h3>
 <p>Set the Identity Name and Publisher values manually in the package manifest or associate your native project with the application in the Windows Store by right-clicking the project and selecting <strong>Store->Associate App with the Store</strong>.</p>
-<p>If you want your app to support toast notification, add the <code>ToastCapable="true"</code> attribute to the <span class="inline-code">VisualElements</span> element in the package manifest.</p>
-<p>[code lang="xml"]<br />
-   &lt;Applications&gt;<br />
-        &lt;Application Id=&quot;App&quot; ....&gt;<br />
-            &lt;VisualElements  .. ... ToastCapable=&quot;true&quot;&gt;<br />
+<p>If you want your app to support toast notification, add the <code>ToastCapable="true"</code> attribute to the <code>VisualElements</code> element in the package manifest.</p>
+<p>{% highlight xml %} <br />
+   <Applications><br />
+        <Application Id="App" ....><br />
+            <VisualElements  .. ... ToastCapable="true"><br />
              ....<br />
-            &lt;/VisualElements&gt;<br />
-        &lt;/Application&gt;<br />
-   &lt;/Applications&gt;<br />
-[/code]</p>
+            </VisualElements><br />
+        </Application><br />
+   </Applications><br />
+ {% endhighlight %} </p>
 <blockquote><p>For more information about setting up your native Windows 8 application for push notification, see the topic about "Setting up push notifications for Windows 8" in the user documentation.</p></blockquote>
 <h2 id="NotificationTypes">Notification types</h2>
 <h3>Event source notification</h3>

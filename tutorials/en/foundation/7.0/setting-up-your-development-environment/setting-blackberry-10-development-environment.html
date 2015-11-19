@@ -12,12 +12,12 @@ To create a BlackBerry 10 application, first define the WEBWORKS_HOME environmen
 <h3>BlackBerry SDK</h3>
 <p>The BlackBerry SDK is used to package applications.<br />
 To download and install this SDK, visit <a href="http://developer.blackberry.com/html5/downloads/">http://developer.blackberry.com/html5/downloads/</a>.<br />
-<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/01_05_bb10_sdk-e1406115452618.png"><img src="{{ site.baseurl }}/assets/backup/01_05_bb10_sdk-e1406115452618.png" alt="01_05_bb10_sdk" width="600" height="254" class="aligncenter size-full wp-image-433" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/01_05_bb10_sdk-e1406115452618.png"/></p>
 <h3>BlackBerry Simulator</h3>
 <p>Use the BlackBerry Simulator to preview and debug your application in a simulated device environment.<br />
 Download the simulator that is relevant to your development environment.<br />
 For a list of simulators, visit <a href="http://us.blackberry.com/sites/developers/resources/simulators.html">http://us.blackberry.com/sites/developers/resources/simulators.html</a>.<br />
-<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/01_05_bb10_installing_simulator-e1406115543377.png"><img src="{{ site.baseurl }}/assets/backup/01_05_bb10_installing_simulator-e1406115543377.png" alt="01_05_bb10_installing_simulator" width="600" height="367" class="aligncenter size-full wp-image-434" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/01_05_bb10_installing_simulator-e1406115543377.png"/></p>
 <h2>WebWorks development</h2>
 <p>For more information about the BlackBerry WebWorks development process, see the <a href="https://developer.blackberry.com/html5/documentation/v2_1/getting_started.html">Getting Started section of the BlackBerry documentation</a>.</p>
 <p><strong>Important note:</strong> With BlackBerry 6 and 7, the performance of hybrid mobile applications might not be on par with the latest BlackBerry 10 OS, because of older embedded browser technologies and hardware. You might want to use prototypes to validate that applications meet performance targets on BlackBerry 6 and 7. When advanced performance is needed, native development is preferred.</p>
@@ -32,7 +32,7 @@ For a list of simulators, visit <a href="http://us.blackberry.com/sites/develope
 <li>Replace the <code>{new project}/{new app}/blackberry10/css</code>, <code>{new app}/blackberry10/images</code>, <code>{new app}/blackberry10/js</code>, and <code>{new_app}/common</code> folders with the corresponding folders from the old project.</li>
 <li>Modify the <code>{new project}/{new app}/blackberry10/native/www/webresources/default/index.html</code> file as follows:
 <ol>
-<li>Remove the <code>&lt;script&gt;&lt;/script&gt;</code> tag pair which encloses the <code>webworks.js</code> file name.</li>
+<li>Remove the <code><script></script></code> tag pair which encloses the <code>webworks.js</code> file name.</li>
 <li>Change <code>src="worklight/cordova.js"</code> to <code>src="../../cordova.js"</code>.
 </li>
 <p>This will point to </ol>

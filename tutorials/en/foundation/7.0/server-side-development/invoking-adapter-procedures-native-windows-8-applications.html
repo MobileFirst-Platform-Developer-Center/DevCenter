@@ -14,21 +14,21 @@ relevantTo: [windows8]
 <br>
 To create and configure a Windows 8 native project, first follow Tutorial <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/hello-world/creating-first-native-windows-8-mobilefirst-application/" title="Creating your first native Windows 8 MobileFirst application">Creating your first Native Windows 8 MobileFirst application</a>.</p>
 <h2>Initializing WLClient</h2>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %} <br />
 WLClient client = WLClient.getInstance();<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <ol>
 <li>To establish a connection to MobileFirst Server, use the <code>connect</code> method by specifying the <code>MyConnectResponseListener</code> class instance as a parameter.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %} <br />
 client.connect(new MyConnectResponseListener(this));<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server instance according to the properties of the <code>wlclient.properties</code> file.<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectResponseListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectResponseListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %} <br />
 public class MyConnectResponseListener : WLResponseListener<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>The <code>WLResponseListener</code> interface defines two methods:<br />
 - <code>public void onSuccess (WLResponse response) { }</code><br />
 - <code>public void onFailure (WLFailResponse response) { }</code>
@@ -46,28 +46,28 @@ public class MyConnectResponseListener : WLResponseListener<br />
 <li>Get the existing <code>WLClient</code> instance and use it to invoke an adapter procedure.
 </li>
 <li>Specify the <code>MyInvokeListener</code> class instance as a parameter.
-<p>[code lang="csharp"]<br />
-WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;RSSReader&quot;, &quot;getStories&quot;);<br />
+<p>{% highlight csharp %} <br />
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData("RSSReader", "getStories");<br />
 invocationData.setParameters(new Object[]{});<br />
-String myContextObject = &quot;InvokingAdapterProceduresWin8&quot;;<br />
+String myContextObject = "InvokingAdapterProceduresWin8";<br />
 WLRequestOptions options = new WLRequestOptions();<br />
 options.setInvocationContext(myContextObject);<br />
 WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);<br />
-[/code]
+ {% endhighlight %} 
 </li>
 </ol>
 <h2>Receiving a procedure response</h2>
 <p>After the procedure invocation is completed, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
 As before, you must specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %} <br />
 using IBM.Worklight;<br />
 namespace InvokingAdapterProceduresWin8{<br />
     public class MyInvokeListener : WLResponseListener<br />
     { }<br />
 {<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>The <code>onSuccess</code> and <code>onFailure</code> methods are invoked by the <code>WLClient</code> instance. The response object contains the response data. You can use its methods and properties to retrieve the required information.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %} <br />
 public void onSuccess(WLResponse response)<br />
 {<br />
     WLProcedureInvocationResult invocationResponse = ((WLProcedureInvocationResult) response);<br />
@@ -75,24 +75,24 @@ public void onSuccess(WLResponse response)<br />
     try<br />
     {<br />
         items = invocationResponse.getResponseJSON();<br />
-        await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =&gt;<br />
+        await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =><br />
         {<br />
-            myMainPage.AddTextToReceivedTextBlock(&quot;Response Success: &quot; + items.ToString());<br />
+            myMainPage.AddTextToReceivedTextBlock("Response Success: " + items.ToString());<br />
         });<br />
     }<br />
     catch (JsonReaderException e)<br />
     {<br />
-          Debug.WriteLine(&quot;JSONException : &quot; + e.Message);<br />
+          Debug.WriteLine("JSONException : " + e.Message);<br />
     }<br />
 }</p>
 <p>public void onFailure(WLFailResponse response)<br />
 {<br />
-    await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =&gt;<br />
+    await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =><br />
     {<br />
-        myMainPage.AddTextToReceivedTextBlock(&quot;Response failed: &quot; + response.ToString());<br />
+        myMainPage.AddTextToReceivedTextBlock("Response failed: " + response.ToString());<br />
     });<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Click to download</a> the Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWin8Project.zip">Click to download</a> the Native project.</p>
@@ -100,4 +100,4 @@ public void onSuccess(WLResponse response)<br />
 - The <code>InvokingAdapterProceduresNativeProject.zip</code> file contains a <strong>MobileFirst Native API</strong> to deploy to MobileFirst Server.<br />
 - The <code>InvokingAdapterProceduresWin8project.zip</code> file contains a <strong>native Windows 8 application</strong> that uses a MobileFirst native API library to communicate with a MobileFirst Server instance.</p>
 <p>Make sure to update the <code>wlclient.properties</code> file in <strong>InvokingAdapterProceduresWin8</strong> with the relevant server settings.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/InvokeProcedureWin8Native.png"><img src="{{ site.baseurl }}/assets/backup/InvokeProcedureWin8Native.png" alt="InvokeProcedureWin8Native" width="936" height="577" class="aligncenter size-full wp-image-6250" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/InvokeProcedureWin8Native.png"/></p>

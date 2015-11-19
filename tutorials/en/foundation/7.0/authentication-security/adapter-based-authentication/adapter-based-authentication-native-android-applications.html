@@ -21,13 +21,13 @@ This tutorial illustrates the native Android client-side authentication componen
 <li>Remember to add this activity to the <code>AndroidManifest.xml</code> file, too.</li>
 <li>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.
 <p>The <code>isCustomResponse</code> method checks every custom response received from MobileFirst Server to verify whether it is the expected challenge. In the sample adapter code, a <code>authRequired</code> variable is sent for this purpose.</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %} <br />
 	public boolean isCustomResponse(WLResponse response) {<br />
 		try {<br />
 			if(response!= null &amp;&amp;<br />
 					response.getResponseJSON()!=null &amp;&amp;<br />
-					response.getResponseJSON().isNull(&quot;authRequired&quot;) != true &amp;&amp;<br />
-					response.getResponseJSON().getBoolean(&quot;authRequired&quot;) == true){<br />
+					response.getResponseJSON().isNull("authRequired") != true &amp;&amp;<br />
+					response.getResponseJSON().getBoolean("authRequired") == true){<br />
 				return true;<br />
 			}<br />
 		} catch (JSONException e) {<br />
@@ -35,40 +35,40 @@ This tutorial illustrates the native Android client-side authentication componen
 		}<br />
 		return false;<br />
 	}<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p><br clear="all" /><br />
 The <code>handleChallenge</code> method  is called after the <code>isCustomResponse</code> method returns <code>true</code>.
 </li>
 <li>Use this method to present the login form.
-<p>[code lang="java"]<br />
+<p>{% highlight java %} <br />
 public void handleChallenge(WLResponse response){<br />
     cachedResponse = response;<br />
     Intent login = new Intent(parentActivity, LoginAdapterBasedAuth.class);<br />
     parentActivity.startActivityForResult(login, 1);<br />
 }<br />
-[/code]
+ {% endhighlight %} 
 </li>
 <p><br clear="all" /></p>
 <li>In the <code>submitLogin</code> method, if the user asked to abort this action, use the <code>submitFailure()</code> method, otherwise invoke the adapter authentication procedure by using the <code>submitAdapterAuthentication()</code> method.
-<p>[code lang="java"]<br />
+<p>{% highlight java %} <br />
 public void submitLogin(int resultCode, String userName, String password, boolean back){<br />
     if (resultCode != Activity.RESULT_OK || back) {<br />
         submitFailure(cachedResponse);<br />
     } else {<br />
         Object[] parameters = new Object[]{userName, password};<br />
-        WLProcedureInvocationData invocationData = new  WLProcedureInvocationData(&quot;NativeAdapterBasedAdapter&quot;, &quot;submitAuthentication&quot;);<br />
+        WLProcedureInvocationData invocationData = new  WLProcedureInvocationData("NativeAdapterBasedAdapter", "submitAuthentication");<br />
         invocationData.setParameters(parameters);<br />
         WLRequestOptions options = new WLRequestOptions();<br />
         options.setTimeout(30000);<br />
         submitAdapterAuthentication(invocationData, options);<br />
     }<br />
 }<br />
-[/code]
+ {% endhighlight %} 
 </li>
 <p><br clear="all" /></p>
 <li>In the main activity class, connect to MobileFirst Server, register your <code>challengeHandler</code> method, and invoke the protected adapter procedure.<br />
 The procedure invocation triggers MobileFirst Server to send a challenge that will trigger the <code>challengeHandler</code>.<br />
-[code lang="java"]<br />
+{% highlight java %} <br />
 final WLClient client = WLClient.createInstance(this);<br />
 client.connect(new MyConnectionListener());<br />
 challengeHandler = new AndroidChallengeHandler(this, realm);<br />
@@ -77,16 +77,16 @@ invokeBtn = (Button) findViewById(R.id.invoke);<br />
 invokeBtn.setOnClickListener(new View.OnClickListener() {<br />
     @Override<br />
     public void onClick(View v) {<br />
-        WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;DummyAdapter&quot;, &quot;getSecretData&quot;);<br />
+        WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");<br />
         WLRequestOptions options = new WLRequestOptions();<br />
         options.setTimeout(30000);<br />
         client.invokeProcedure(invocationData, new MyResponseListener(), options);<br />
     }<br />
 });<br />
-[/code]
+ {% endhighlight %} 
 </li>
 </ol>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeAdapterBasedAuthProject.zip">Click to download</a> the Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeAdapterBasedAuthProject.zip">Click to download</a> the Native project.</p>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_07_result.png"><img src="{{ site.baseurl }}/assets/backup/09_07_result.png" alt="09_07_result" width="1296" height="668" class="aligncenter size-full wp-image-1018" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/09_07_result.png"/></p>

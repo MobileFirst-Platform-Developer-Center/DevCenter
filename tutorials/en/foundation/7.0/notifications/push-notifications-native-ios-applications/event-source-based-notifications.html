@@ -47,14 +47,14 @@ Implementation of the push notification API consists of the following main steps
 
 <h3>Creating an event source</h3>
 This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).
-[code lang="js"]
+{% highlight js %} 
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
     securityTest:'PushApplication-strong-mobile-securityTest'
 });
-[/code]
+ {% endhighlight %} 
 
 <ul>
 <li><code>name </code>– A name by which the event source is referenced.</li>
@@ -66,7 +66,7 @@ WL.Server.createEventSource({
 
 Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-[code lang="js"]function submitNotification(userId, notificationText) {
+{% highlight js %} function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
     if (userSubscription === null) {
@@ -81,7 +81,7 @@ Notifications can be either polled from, or pushed by, the back-end system. In t
     return {
         result: "Notification sent to user :: " + userId
     };
-}[/code]
+} {% endhighlight %} 
 
 <h2 id="clientSideApi">Notification API: Client-side </h2>
 A device subscription belongs to a user subscription and exists in the scope of a specific user and event source. A user subscription can have several device subscriptions.
@@ -96,42 +96,42 @@ The device subscription is deleted either by an application that calls <code>[[W
 <br />
 </li><li>Create an instance of <code>onReadyToSubscribeListener</code> and set values for alias, adaptername and eventsource.
 
-[code lang="obj-c"]
+{% highlight objc %} 
 ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener alloc] initWithController:self];
   readyToSubscribeListener.alias = self.alias;
   readyToSubscribeListener.adapterName = self.adapterName;
   readyToSubscribeListener.eventSourceName = self.eventSourceName;
-[/code]
+ {% endhighlight %} 
 
 </li><li>Set the <code>onReadyToSubscribeListener</code> on <code>WLPush</code>.
 
-[code lang="obj-c"]
+{% highlight objc %} 
 [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];
-[/code]
+ {% endhighlight %} 
 
-</li><li>Pass the token to <span class="inline-code">WLPush</span>.
-[code lang="obj-c"]
+</li><li>Pass the token to <code>WLPush</code>.
+{% highlight objc %} 
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
-[/code]
+ {% endhighlight %} 
 </li></ol>
 
 <h3>Sending token to client and initializing <code>WLPush</code></h3>
 
 The user must initialize the <code>WLPush sharedInstance</code> in the application's <code>ViewController</code> load method.
-[code lang="obj-c"]
+{% highlight objc %} 
 AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
 [[WLPush sharedInstance]init];
-[/code]
+ {% endhighlight %} 
 The user must add this method to the app delegate to get the token.
-[code lang="obj-c"]
+{% highlight objc %} 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
 }
-[/code]
+ {% endhighlight %} 
 
 The token that is received by this method must be passed to the WLPush method.
-[code lang="obj-c"]
+{% highlight objc %} 
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
-[/code]
+ {% endhighlight %} 
 
 <h3>Registering the event source</h3>
 
@@ -139,7 +139,7 @@ IBM MobileFirst Platform Foundation provides the customizable <code>onReadyToSub
 Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.
 
 This function is called when authentication finishes.
-[code lang="obj-c"]
+{% highlight objc %} 
 #import "ReadyToSubscribeListener.h"
 #import "MyEventSourceListener.h"
 
@@ -152,7 +152,7 @@ This function is called when authentication finishes.
 }
 
 @end
-[/code]
+ {% endhighlight %} 
 
 <br clear="all"/>
 
@@ -161,14 +161,14 @@ This function is called when authentication finishes.
 <strong>Prerequisite:</strong> To subscribe, a user must authenticate.
 
 To set up subscription to the event source, use the following API:
-[code lang="obj-c"]
+{% highlight objc %} 
 - (IBAction)subscribe:(id)sender {
   MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];
   [[WLPush sharedInstance]subscribe:self.alias :nil :mySubscribeListener];
 }
-[/code]
+ {% endhighlight %} 
 
-<span class="inline-code">[[WLPush sharedInstance] subscribe]</span> takes the following parameters:
+<code>[[WLPush sharedInstance] subscribe]</code> takes the following parameters:
 
 <ul>
     <li>An alias, as declared in <code>[[WLPush sharedInstance] registerEventSourceCallback]</code></li>
@@ -183,13 +183,13 @@ Delegates receive a response object if one is required.
 <h3>Unsubscribing  from an event source</h3>
 
 To set up unsubscription from an event source, use the following API:
-[code lang="obj-c"]
+{% highlight objc %} 
 - (IBAction)unsubscribe:(id)sender {
   MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];
   [[WLPush sharedInstance]unsubscribe:self.alias :myUnsubscribelistener];
 }
-[/code]
-<span class="inline-code">[[WLPush sharedInstance] unsubscribe]</span> takes the following parameters:
+ {% endhighlight %} 
+<code>[[WLPush sharedInstance] unsubscribe]</code> takes the following parameters:
 
 <ul>
 <li>An alias, as declared in <code>[[WLPush sharedInstance] registerEventSourceCallback]</code></li>
@@ -202,16 +202,16 @@ Delegates receive a response object if one is required.
 
 <h3>Additional client-side APIs</h3>
 
-<span class="inline-code">[[WLPush sharedInstance]isPushSupported]</span> – Returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.
-<span class="inline-code">[[WLPush sharedInstance]isSubscribed:alias]</span> – Returns whether the currently logged-in user is subscribed to a specified event source alias.
+<code>[[WLPush sharedInstance]isPushSupported]</code> – Returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.
+<code>[[WLPush sharedInstance]isSubscribed:alias]</code> – Returns whether the currently logged-in user is subscribed to a specified event source alias.
 <br clear="all"/>
-When a push notification is received by a device, the <span class="inline-code">didReceiveRemoteNotification</span> method  is called in the app delegate. Logic to handle the notification should be defined here.
+When a push notification is received by a device, the <code>didReceiveRemoteNotification</code> method  is called in the app delegate. Logic to handle the notification should be defined here.
 
-[code lang="obj-c"]
+{% highlight objc %} 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }
-[/code]
+ {% endhighlight %} 
 If the application was in background mode (or inactive) when the push notification arrived, this callback is called when the application returns to the foreground.
 
 <h2 id="sample">Sample application</h2>
@@ -224,8 +224,8 @@ The sample contains two projects:
     <li><strong>iOSNativePushProject.zip</strong> file contains a native iOS application that uses a MobileFirst native API library to subscribe for push notification and receive notifications from APNS. Make sure to update the <strong>worklight.plist</strong> file in iOSNativePush with the relevant server settings.</li>
 </ul>
 
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSSampleRunmobilefirst.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSSampleRunmobilefirst.png" alt="nativeiOSSampleRunmobilefirst" width="1294" height="762" class="alignnone size-full wp-image-3960" /></a>
+<img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSSampleRunmobilefirst.png"/>
 
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/nativeiOSSendNotificationEventSource.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/nativeiOSSendNotificationEventSource.png" alt="nativeiOSSendNotificationEventSource" width="1188" height="684" class="alignleft size-full wp-image-6276" /></a>
+<img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/nativeiOSSendNotificationEventSource.png"/>
 
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSPushAppRun2.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSPushAppRun2.png" alt="nativeiOSPushAppRun2" width="1300" height="765" class="alignnone size-full wp-image-3838" /></a>
+<img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSPushAppRun2.png"/>

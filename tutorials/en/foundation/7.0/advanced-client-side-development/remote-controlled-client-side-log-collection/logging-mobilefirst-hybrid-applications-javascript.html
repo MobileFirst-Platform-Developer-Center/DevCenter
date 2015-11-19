@@ -5,7 +5,7 @@ relevantTo: [hybrid]
 ---
 <h2 id="loggingJS">Logging example for hybrid applications (JavaScript)</h2>
 <h3>Outputs to a browser JavaScript console, LogCat, or Xcode console</h3>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %} <br />
 var MathUtils = function(){</p>
 <p>  var logger = WL.Logger.create({pkg: 'MathUtils'});</p>
 <p>  var sum = function(a, b){</p>
@@ -14,7 +14,7 @@ var MathUtils = function(){</p>
 <p>  return sum;<br />
   };<br />
 }();<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2>API calls for specific tasks</h2>
 <h3>Log capture is enabled by default. To turn log capture on or off:</h3>
 <p><code>WL.Logger.config({capture: false})</code></p>

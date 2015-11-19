@@ -22,7 +22,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h2>Setting up tags</h2>
 Tags are defined in the <code>application-descriptor.xml</code> file:
 
-[code lang="xml"]<nativeWindows8App xmlns="http://www.worklight.com/native-windows8-descriptor" id="NativeWin8TagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
+{% highlight xml %} <nativeWindows8App xmlns="http://www.worklight.com/native-windows8-descriptor" id="NativeWin8TagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
 
 <pushSender clientSecret="WNS_CLIENT_SECRET" packageSID="WNS_PACKAGE_SID"/>
 ...
@@ -37,18 +37,18 @@ Tags are defined in the <code>application-descriptor.xml</code> file:
         <name>my tag 2</name>
         <description>About my tag 2</description>
     </tag>
-</tags>[/code]
+</tags> {% endhighlight %} 
 
 <h2>Tag-based notifications API methods</h2>
 
 <h3>Client-side API methods</h3>
 
 <ul>
-    <li><span class="inline-code">WLPush.subscribeTag(tagName,options)</span> - Subscribes the device to the specified tag name.</li>
+    <li><code>WLPush.subscribeTag(tagName,options)</code> - Subscribes the device to the specified tag name.</li>
 
-    <li><span class="inline-code">WLPush.unsubscribeTag(tagName,options)</span> - Unsubscribes the device from the specified tag name.</li>
+    <li><code>WLPush.unsubscribeTag(tagName,options)</code> - Unsubscribes the device from the specified tag name.</li>
 
-    <li><span class="inline-code">WLPush.isTagSubscribed(tagName)</span> - Returns whether the device is subscribed to a specified tag name.</li>
+    <li><code>WLPush.isTagSubscribed(tagName)</code> - Returns whether the device is subscribed to a specified tag name.</li>
 </ul>
 
 <h2>Common API methods for tag-based and broadcast notifications</h2>
@@ -68,7 +68,7 @@ Tags are defined in the <code>application-descriptor.xml</code> file:
 
     <ul>
         <li><strong>props</strong> - A JSON block that contains the notifications properties of the platform.</li>
-        <li><strong>payload</strong> - A JSON block that contains other data that is sent from MobileFirst Server. The JSON block also contains the tag name for tag-based or broadcast notification. The tag name appears in the "tag" element. For broadcast notification, the default tag name is <span class="inline-code">Push.ALL</span>.</li>
+        <li><strong>payload</strong> - A JSON block that contains other data that is sent from MobileFirst Server. The JSON block also contains the tag name for tag-based or broadcast notification. The tag name appears in the "tag" element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
     </ul>
 </li></ul>
 

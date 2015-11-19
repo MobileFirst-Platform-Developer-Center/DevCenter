@@ -46,96 +46,96 @@ relevantTo: [android]
 <p>Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.</p>
 <p>If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.</p>
 <p>For optional features that you can enable at initialization time, see <strong>Security, Multiple User Support,</strong> and <strong>MobileFirst Adapter Integration</strong> in the second part of this module</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {<br />
-  JSONStoreCollection people = new JSONStoreCollection(&quot;people&quot;);<br />
-  people.setSearchField(&quot;name&quot;, SearchFieldType.STRING);<br />
-  people.setSearchField(&quot;age&quot;, SearchFieldType.INTEGER);</p>
-<p>  List&lt;JSONStoreCollection&gt; collections = new LinkedList&lt;JSONStoreCollection&gt;();<br />
+  JSONStoreCollection people = new JSONStoreCollection("people");<br />
+  people.setSearchField("name", SearchFieldType.STRING);<br />
+  people.setSearchField("age", SearchFieldType.INTEGER);</p>
+<p>  List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();<br />
   collections.add(people);</p>
 <p>  WLJSONStore.getInstance(context).openCollections(collections);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="get">Get</h2>
 <p>Use <code>getCollectionByName</code> to create an accessor to the collection. You must call <code>openCollections</code> before you call <code>getCollectionByName</code>.</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>The variable <code>collection</code> can now be used to perform operations on the <code>people</code> collection such as <code>add</code>, <code>find</code>, and <code>replace</code></p>
 <h2 id="add">Add</h2>
 <p>Use <code>addData</code> to store data as documents inside a collection</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;</p>
+  String collectionName = "people";</p>
 <p>  JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
 <p>  //Add options.<br />
   JSONStoreAddOptions options = new JSONStoreAddOptions();<br />
   options.setMarkDirty(true);</p>
-<p>  JSONObject data = new JSONObject(&quot;{age: 23, name: 'yoel'}&quot;)<br />
+<p>  JSONObject data = new JSONObject("{age: 23, name: 'yoel'}")<br />
   collection.addData(data, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="find">Find</h2>
 <p>Use <code>findDocuments</code> to locate a document inside a collection by using a query. Use <code>findAllDocuments</code> to retrieve all the documents inside a collection. Use <code>findDocumentById</code> to search by the document unique identifier.</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {</p>
-<p>  String collectionName = &quot;people&quot;;</p>
+<p>  String collectionName = "people";</p>
 <p>  JSONStoreQueryPart queryPart = new JSONStoreQueryPart();<br />
   // fuzzy search LIKE<br />
-  queryPart.addLike(&quot;name&quot;, name);</p>
+  queryPart.addLike("name", name);</p>
 <p>  JSONStoreQueryParts query = new JSONStoreQueryParts();<br />
   query.addQueryPart(queryPart);</p>
 <p>  JSONStoreFindOptions options = new JSONStoreFindOptions();<br />
   // returns a maximum of 10 documents, default: returns every document<br />
   options.setLimit(10);</p>
 <p>  JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
-<p>  List&lt;JSONObject&gt; results = collection.findDocuments(query, options);<br />
+<p>  List<JSONObject> results = collection.findDocuments(query, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="replace">Replace</h2>
 <p>Use <code>replaceDocument</code> to modify documents inside a collection. The field that you use to perform the replacement is <code>_id,</code> the document unique identifier.</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
 <p>  JSONStoreReplaceOptions options = new JSONStoreReplaceOptions();<br />
   // mark data as dirty<br />
   options.setMarkDirty(true);</p>
-<p>  JSONStore replacement = new JSONObject(&quot;{_id: 1, json: {age: 23, name: 'chevy'}}&quot;);</p>
+<p>  JSONStore replacement = new JSONObject("{_id: 1, json: {age: 23, name: 'chevy'}}");</p>
 <p>  collection.replaceDocument(replacement, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>This examples assumes that the document <code>{_id: 1, json: {name: 'yoel', age: 23} }</code> is in the collection</p>
 <h2 id="remove">Remove</h2>
 <p>Use <code>removeDocumentById</code> to delete a document from a collection.</p>
 <p>Documents are not erased from the collection until you call <code>markDocumentClean</code>. For more information, see the <strong>MobileFirst Adapter Integration</strong> section later in this tutorial</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {</p>
-<p>  String collectionName = &quot;people&quot;;<br />
+<p>  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
 <p>  JSONStoreRemoveOptions options = new JSONStoreRemoveOptions();<br />
   // Mark data as dirty<br />
@@ -145,20 +145,20 @@ Context context = getContext();</p>
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="remove-collection">Remove Collection</h2>
 <p>Use <code>removeCollection</code> to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
 <p>  collection.removeCollection();<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="destroy">Destroy</h2>
 <p>Use <code>destroy</code> to remove the following data:</p>
 <ul>
@@ -167,7 +167,7 @@ Context context = getContext();</p>
 <li>All Stores "See <strong>Multiple User Support</strong> later in this tutorial"</li>
 <li>All JSONStore metadata and security artifacts "See <strong>Security</strong> later in this tutorial"</li>
 </ul>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {<br />
   WLJSONStore.getInstance(context).destroy();<br />
@@ -175,53 +175,53 @@ Context context = getContext();</p>
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="security">Security</h2>
 <p>You can secure all the collections in a store by passing a <code>JSONStoreInitOptions</code> object with a password to the <code>openCollections</code> function. If no password is passed, the documents of all the collections in the store are not encrypted.</p>
 <p>Some security metadata is stored in shared preferences (Android);</p>
 <p>The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).</p>
 <p>Use <code>closeAll</code> to lock access to all the collections until you call <code>openCollections</code> again. If you think of <code>openCollections</code> as a login function you can think of <code>closeAll</code> as the corresponding logout function.</p>
 <p>Use <code>changePassword</code> to change the password.</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {<br />
-  JSONStoreCollection people = new JSONStoreCollection(&quot;people&quot;);<br />
-  people.setSearchField(&quot;name&quot;, SearchFieldType.STRING);<br />
-  people.setSearchField(&quot;age&quot;, SearchFieldType.INTEGER);</p>
-<p>  List&lt;JSONStoreCollection&gt; collections = new LinkedList&lt;JSONStoreCollection&gt;();<br />
+  JSONStoreCollection people = new JSONStoreCollection("people");<br />
+  people.setSearchField("name", SearchFieldType.STRING);<br />
+  people.setSearchField("age", SearchFieldType.INTEGER);</p>
+<p>  List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();<br />
   collections.add(people);</p>
 <p>  JSONStoreInitOptions options = new JSONStoreInitOptions();<br />
-  options.setPassword(&quot;123&quot;);</p>
+  options.setPassword("123");</p>
 <p>  WLJSONStore.getInstance(context).openCollections(collections, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="multi-user">Multiple User Support</h2>
 <p>You can create multiple stores that contain different collections in a single MobileFirst application. The <code>openCollections</code> function can take an options object with a username. If no username is given, the default username is <strong>jsonstore</strong></p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context context = getContext();</p>
 <p>try {<br />
-  JSONStoreCollection people = new JSONStoreCollection(&quot;people&quot;);<br />
-  people.setSearchField(&quot;name&quot;, SearchFieldType.STRING);<br />
-  people.setSearchField(&quot;age&quot;, SearchFieldType.INTEGER);</p>
-<p>  List&lt;JSONStoreCollection&gt; collections = new LinkedList&lt;JSONStoreCollection&gt;();<br />
+  JSONStoreCollection people = new JSONStoreCollection("people");<br />
+  people.setSearchField("name", SearchFieldType.STRING);<br />
+  people.setSearchField("age", SearchFieldType.INTEGER);</p>
+<p>  List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();<br />
   collections.add(people);</p>
 <p>  JSONStoreInitOptions options = new JSONStoreInitOptions();<br />
-  options.setUsername(&quot;yoel&quot;);</p>
+  options.setUsername("yoel");</p>
 <p>  WLJSONStore.getInstance(context).openCollections(collections, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="adapter">MobileFirst Adapter Integration</h2>
 <p>This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.</p>
 <p>You can achieve these goals by using functions such as <code>WLClient.invokeProcedure</code> or your own instance of an <code>HttpClient</code> if you need more flexibility.</p>
 <h3>Adapter Implementation</h3>
 <p>Create a MobileFirst adapter and name it "<strong>People</strong>". Define it's procedures <code>addPerson</code>, <code>getPeople</code>, <code>pushPeople</code>, <code>removePerson</code>, and <code>replacePerson</code>.</p>
-<p>[code language="javascript"]<br />
+{% highlight javascript %}<br />
 function getPeople() {<br />
 	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };</p>
 <p>	WL.Logger.debug('Adapter: people, procedure: getPeople called.');<br />
@@ -248,10 +248,10 @@ function getPeople() {<br />
 	WL.Logger.debug('Got data from JSONStore to REPLACE: ' + data);</p>
 <p>	return;<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h3>Load data from MobileFirst Adapter</h3>
 <p>To load data from a MobileFirst Adapter use <code>WLClient.invokeProcedure</code>.</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 WLResponseListener responseListener = new WLResponseListener() {<br />
   @Override<br />
   public void onFailure(final WLFailResponse response) {<br />
@@ -260,34 +260,34 @@ WLResponseListener responseListener = new WLResponseListener() {<br />
 <p>  @Override<br />
   public void onSuccess(WLResponse response) {</p>
 <p>    try {<br />
-      JSONArray loadedDocuments = response.getResponseJSON().getJSONArray(&quot;peopleList&quot;);<br />
+      JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");<br />
     } catch(Exception e) {<br />
       // error decoding JSON data<br />
     }<br />
   }<br />
 };</p>
-<p>WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;People&quot;, &quot;getPeople&quot;);</p>
+<p>WLProcedureInvocationData invocationData = new WLProcedureInvocationData("People", "getPeople");</p>
 <p>Context context = getContext();<br />
 WLClient client = WLClient.createInstance(context);<br />
 client.invokeProcedure(invocationData, responseListener);<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h3>Get Push Required (Dirty Documents)</h3>
 <p>Calling <code>findAllDirtyDocuments</code> returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 Context  context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
-<p>  List&lt;JSONObject&gt; dirtyDocs = collection.findAllDirtyDocuments();<br />
+<p>  List<JSONObject> dirtyDocs = collection.findAllDirtyDocuments();<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>To prevent JSONStore from marking the documents as "dirty", pass the option <code>options.setMarkDirty(false)</code> to <code>add</code>, <code>replace</code>, and <code>remove</code></p>
 <h3>Push</h3>
 <p>To push changes to a MobileFirst adapter, call the <code>findAllDirtyDocuments</code> to get a list of documents with modifications and then use <code>WLClient.invokeProcedure</code>. After the data is sent and a successful response is received make sure you call <code>markDocumentsClean</code>.</p>
-<p>[code language="java"]<br />
+{% highlight java %}<br />
 WLResponseListener responseListener = new WLResponseListener() {<br />
   @Override<br />
   public void onFailure(final WLFailResponse response) {<br />
@@ -301,16 +301,16 @@ WLResponseListener responseListener = new WLResponseListener() {<br />
 <p>Context context = getContext();<br />
 WLClient client = WLClient.createInstance(context);</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
-<p>  List&lt;JSONObject&gt; dirtyDocuments = people.findAllDirtyDocuments();</p>
-<p>  WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;People&quot;, &quot;pushPeople&quot;);</p>
+<p>  List<JSONObject> dirtyDocuments = people.findAllDirtyDocuments();</p>
+<p>  WLProcedureInvocationData invocationData = new WLProcedureInvocationData("People", "pushPeople");</p>
 <p>  invocationData.setParameters(new Object[]{dirtyDocuments});<br />
   client.invokeProcedure(invocationData, responseListener);</p>
 <p>} catch(JSONStoreException e) {<br />
   // handle failure<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p><img src="{{ site.baseurl }}/assets/backup/android-native-screen_framed-605x1024.png" alt="android-native-screen_framed" width="220" height="339" class="alignright size-large wp-image-9402" /></p>
 <h2 id="sample">Sample application</h2>
 <p>Click to download the <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/JSONStoreAPIBasicsProject.zip">Studio project</a> and <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/JSONStoreAPINativeAndroidNativeProject.zip">Native Android project</a></p>

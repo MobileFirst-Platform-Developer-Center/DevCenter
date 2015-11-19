@@ -22,13 +22,13 @@ However, writing this logic on the server side could be faster and cleaner.</p>
 <h2 id="invoke">invokeProcedure</h2>
 <p>At the heart of this mashup scenario is the <code>WL.Server.invokeProcedure(invocationData)</code> API. Almost identical to its client-side counterpart, it enables you to invoke a procedure on any of your adapters.</p>
 <p>The <code>invocationData</code> parameter has the same format as the client-side API.<br />
-[code lang="javascript"]<br />
-WL.Server.invokeProcedure({ adapter : &quot;AcmeBank&quot;, procedure : &quot; getTransactions&quot;, parameters : [accountId, fromDate, toDate], });<br />
-[/code]</p>
+{% highlight javascript %} <br />
+WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });<br />
+ {% endhighlight %} </p>
 <p>However, while the client-side <code>invokeProcedure</code> uses a success handler, the server-side one returns the result object itself.</p>
 <h2 id="dataMashup">Data mashup example</h2>
 <p>The following example shows how to mash up data from two data sources and to return the data stream to the application as a single <code>invocationResult</code> object.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/04_12_flow.jpg"><img src="{{ site.baseurl }}/assets/backup/04_12_flow.jpg" alt="04_12_flow" width="720" height="500" class="aligncenter size-full wp-image-12203" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_12_flow.jpg"/></p>
 <p>Data mashup can be implemented in the same way for any number of data sources and across different adapter types.<br />
 As an example, mash up data from the following sources:</p>
 <ul>
@@ -58,7 +58,7 @@ The HTTP request has the following parameters:</p>
 </ul>
 </li>
 <li>Create the <code>getYahooWeather</code> function in the <code>HTTPWeather-impl.js</code> file and use it to retrieve and return the weather data by using the Yahoo! Weather API:
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %} <br />
 function getYahooWeather(woeid) {</p>
 <p>  var input = {<br />
       method : 'get',<br />
@@ -71,7 +71,7 @@ function getYahooWeather(woeid) {</p>
   };</p>
 <p>  return WL.Server.invokeHttp(input);<br />
 }<br />
-[/code]
+ {% endhighlight %} 
 </li>
 </ol>
 <h3>SQL Adapter</h3>
@@ -86,18 +86,18 @@ function getYahooWeather(woeid) {</p>
 Remember that SQL adapters require a JDBC connector driver, which must be downloaded separately by the developer and added to the <code>server/lib</code> folder of the project.</p>
 </li>
 <li>Create a <code>getCitiesList</code> function in the <code>SQLAdapter-impl.js</code> file and use it to retrieve and return the city list from the SQL database.<br />
-[code lang="javascript"]<br />
-var getCitiesListStatement = WL.Server.createSQLStatement(&quot;select city, identifier, summary from weather;&quot;);<br />
+{% highlight javascript %} <br />
+var getCitiesListStatement = WL.Server.createSQLStatement("select city, identifier, summary from weather;");<br />
 function getCitiesList() {<br />
   return WL.Server.invokeSQLStatement({<br />
     preparedStatement : getCitiesListStatement,<br />
     parameters : []<br />
   });<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 </li>
 <li>Create a <code>getCityWeather</code> function in the <code>SQLAdapter-impl.js</code> file and use it to retrieve and return the weather data from the HTTPWeather adapter:<br />
-[code lang="javascript"]<br />
+{% highlight javascript %} <br />
 function getCityWeather(woeid){<br />
   return WL.Server.invokeProcedure({<br />
     adapter : 'HTTPWeather',<br />
@@ -105,26 +105,26 @@ function getCityWeather(woeid){<br />
     parameters : [woeid]<br />
   });<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 </li>
 <li>In the SQL adapter, extract a city identifier from the city list that was retrieved earlier and use it to call the <code>getYahooWeather</code> procedure of the HTTPWeather adapter.
 </li>
 <li>Repeat for each city, attaching the received data to the city object.
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %} <br />
 function getCitiesWeather(){<br />
   var cityList = getCitiesList();<br />
-  for (var i = 0; i &lt; cityList.resultSet.length; i++) {<br />
+  for (var i = 0; i < cityList.resultSet.length; i++) {<br />
     var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);</p>
 <p>    if (yahooWeatherData.isSuccessful)<br />
       cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;<br />
   }<br />
   return cityList;<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 </li>
 <li>Return the mashed-up data to the application, which you can process in client-side code.
 </li>
 </ol>
 <h2 id="sample">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AdapterMashUpProject.zip">Click to download</a> the Studio project.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_12_results.png"><img src="{{ site.baseurl }}/assets/backup/04_12_results.png" alt="04_12_results" width="319" height="545" class="aligncenter size-full wp-image-3275" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_12_results.png"/></p>

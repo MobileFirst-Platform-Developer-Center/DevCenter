@@ -102,8 +102,8 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <ol>
 <li>Replace <strong>GCM_Key</strong> with the <strong>API Key</strong> value.</li>
 <li>Replace <strong>senderId</strong> with the <strong>Project Number</strong> value.<br />
-    [code lang="xml"]&lt;android securityTest=&quot;PushApplication-strong-mobile-securityTest&quot; version=&quot;1.0&quot;&gt;<br />
-            &lt;pushSender key=&quot;GCM_key&quot; senderId=&quot;GCM_ID&quot;/&gt;[/code]</li>
+    {% highlight xml %} <android securityTest="PushApplication-strong-mobile-securityTest" version="1.0"><br />
+            <pushSender key="GCM_key" senderId="GCM_ID"/> {% endhighlight %} </li>
 </ol>
 <p><br clear="all" /></p>
 <h4>Add Google Play Services</h4>
@@ -122,10 +122,10 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <li>Click <strong>Apply</strong> and <strong>OK</strong> in the Properties window.</li>
 </ol>
 </li>
-<li>Add a reference to the google-play-services version in the <code><em>your-app</em>\android\native\AndroidManifest.xml</code> file, as the first child of the <code>&lt;application&gt;</code> element:
-<p>[code lang="xml"]&lt;meta-data<br />
-    android:name=&quot;com.google.android.gms.version&quot;<br />
-    android:value=&quot;@integer/google_play_services_version&quot; /&gt;[/code]</li>
+<li>Add a reference to the google-play-services version in the <code><em>your-app</em>\android\native\AndroidManifest.xml</code> file, as the first child of the <code><application></code> element:
+<p>{% highlight xml %} <meta-data<br />
+    android:name="com.google.android.gms.version"<br />
+    android:value="@integer/google_play_services_version" /> {% endhighlight %} </li>
 </ol>
 <h3>iOS</h3>
 <ol>
@@ -133,18 +133,18 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <li>Replace <strong>certificate password</strong> with your actual certificate password.</li>
 <li>Replace <code>com.PushNotifications</code> with the <code>bundleId</code> of your application. Consult the Apple documentation about how to create a <code>bundleId</code> for Xcode projects.</li>
 </ol>
-<p>[code lang="xml"]&lt;iphone bundleId=&quot;com.PushNotifications&quot; version=&quot;1.0&quot;&gt;<br />
-        &lt;pushSender password=&quot;&quot;/&gt;[/code]</p>
+<p>{% highlight xml %} <iphone bundleId="com.PushNotifications" version="1.0"><br />
+        <pushSender password=""/> {% endhighlight %} </p>
 <h3>Windows Phone 8</h3>
 <h4>Non-authenticated push</h4>
-<p>[code lang="xml"] &lt;windowsPhone8 version=&quot;1.0&quot;&gt;<br />
-        &lt;uuid&gt;e446f9d1-8d04-4198-be53-9fb44ae47548&lt;/uuid&gt;<br />
-        &lt;pushSender/&gt;[/code]</p>
+<p>{% highlight xml %}  <windowsPhone8 version="1.0"><br />
+        <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid><br />
+        <pushSender/> {% endhighlight %} </p>
 <h4>Authenticated push</h4>
-<p>[code lang="xml"] &lt;windowsPhone8 version=&quot;1.0&quot;&gt;<br />
-        &lt;uuid&gt;e446f9d1-8d04-4198-be53-9fb44ae47548&lt;/uuid&gt;<br />
-        &lt;pushSender&gt;<br />
-        &lt;authenticatedPush serviceName=&quot; ... &quot; keyAlias=&quot; ... &quot; keyAliasPassword=&quot; ... &quot;/&gt;&lt;/pushSender&gt;[/code]</p>
+<p>{% highlight xml %}  <windowsPhone8 version="1.0"><br />
+        <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid><br />
+        <pushSender><br />
+        <authenticatedPush serviceName=" ... " keyAlias=" ... " keyAliasPassword=" ... "/></pushSender> {% endhighlight %} </p>
 <p><br clear="all" /></p>
 <blockquote><p>For more information about using the certificate file, see the topic about setting up push notifications for Windows Phone 8, in the user documentation..
 </p></blockquote>
@@ -156,6 +156,6 @@ You can also edit these settings with the Application Descriptor Editor in Desig
 <li>Enter the package security identifier in <code>packageSID</code>.</li>
 <li>Enter the secret key in <code>clientSecret</code>.</li>
 </ol>
-<p>[code lang="xml"]&lt;windows8 version=&quot;1.0&quot;&gt;<br />
-   	&lt;pushSender clientSecret=&quot;...&quot; packageSID=&quot;...&quot; appIdentityName=&quot;...&quot; appIdentityPublisher=&quot;...&quot;/&gt;[/code]</p>
+<p>{% highlight xml %} <windows8 version="1.0"><br />
+   	<pushSender clientSecret="..." packageSID="..." appIdentityName="..." appIdentityPublisher="..."/> {% endhighlight %} </p>
 <h2 id="selectNotificationType">Select a notification type</h2>
