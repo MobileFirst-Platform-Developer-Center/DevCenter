@@ -27,7 +27,7 @@ defaults:
       layout: tutorial
       show_breadcrumb: true
       show_disqus: true
-      print_pdf: false
+      print_pdf: true
   -
     scope:
       path: "labs"
