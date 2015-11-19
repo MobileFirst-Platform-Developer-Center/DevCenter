@@ -19,7 +19,7 @@ In your storyboard, add a ViewController containing a login form.<br />
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/10/09_03_storyboard.png"><img class="aligncenter wp-image-932 size-full" src="{{ site.baseurl }}/assets/backup/09_03_storyboard.png" alt="09_03_storyboard" width="1154" height="588" /></a></p>
 <p>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code><br />
 We will implement some of the <code>ChallengeHandler</code> methods to respond to the form-based challenge.</p>
-<p>{% highlight obj-c %}<br />
+<p>{% highlight objc %}<br />
 @interface MyChallengeHandler : ChallengeHandler<br />
 @property ViewController* vc;</p>
 <p>//A convenient way of updating the View<br />
@@ -28,7 +28,7 @@ We will implement some of the <code>ChallengeHandler</code> methods to respond t
 {% endhighlight %}</p>
 <p>The <code>isCustomResponse</code> method of the challenge handler is invoked each time that a response is received from the server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either true or false.<br />
 The default login form that is returned from the MobileFirst server contains the <code>j_security_check</code> string. If the challenge handler detects it in the response, return true.</p>
-<p>{% highlight obj-c %}<br />
+<p>{% highlight objc %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
@@ -44,7 +44,7 @@ The default login form that is returned from the MobileFirst server contains the
 {% endhighlight %}</p>
 <p><br clear="all" /><br />
 If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hide application screen and show login screen.</p>
-<p>{% highlight obj-c %}<br />
+<p>{% highlight objc %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
@@ -58,7 +58,7 @@ If <code>isCustomResponse</code> returns <code>true</code>, the framework calls 
 <p><br clear="all" /><br />
 <code>onSuccess</code> and <code>>onFailure</code> get triggered when the authentication ends.<br />
 You need to call <code>submitSuccess</code> to inform the framework that the authentication process is over, and allow the invocation’s success handler to be called.</p>
-<p>{% highlight obj-c %}<br />
+<p>{% highlight objc %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(void) onSuccess:(WLResponse *)response {<br />
@@ -74,7 +74,7 @@ You need to call <code>submitSuccess</code> to inform the framework that the aut
 {% endhighlight %}</p>
 <p><br clear="all" /><br />
 In your <code>LoginViewController</code>, when the user clicks to submit his credentials, you need to call <code>submitLoginForm</code> to send the credentials to the MobileFirst Server.</p>
-<p>{% highlight obj-c %}<br />
+<p>{% highlight objc %}<br />
 @implementation LoginViewController<br />
 //***<br />
 - (IBAction)login:(id)sender {<br />

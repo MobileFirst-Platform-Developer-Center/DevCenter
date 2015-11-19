@@ -27,7 +27,7 @@ The Cordova controller is then added as a child to the root view and displayed o
 This example uses a Page View Controller to show a sliding introduction to the application. The user interface was created using a Storyboard in XCode.<br />
 Two classes, <code>PageViewController</code> and <code>PageContentViewController</code>, were created to handle the slides.</p>
 <p>In the <code>MyAppDelegate.didFinishLaunchingWithOptions</code> method, the window is initialized and the PageViewController instance is set as the root of the window.</p>
-<p>{% highlight obj-c %}
+<p>{% highlight objc %}
 @implementation MyAppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -43,7 +43,7 @@ Two classes, <code>PageViewController</code> and <code>PageContentViewController
 <p>The <code>initializeWebFrameworkWithDelegate</code> method is called from within the <code>didFinishLaunchingWithOptions</code> method.<br />
 This method initializes the MobileFirst framework in the background and calls the <code>wlInitWebFrameworkDidCompleteWithResult</code> method once the framework is initialized.</p>
 
-<p>{% highlight obj-c %}
+<p>{% highlight objc %}
 @implementation MyAppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -58,7 +58,7 @@ This method initializes the MobileFirst framework in the background and calls th
 <p>Inside the <code>wlInitWebFrameworkDidCompleteWithResult</code>, method, different scenarios handled depending on the statusCode value of the <code>WLWebFrameworkInitResult</code> object.<br />
 In this sample, only the common case of the <code>WLWebFrameworkInitResultSuccess</code> value is modified.</p>
 
-{% highlight obj-c %}
+{% highlight objc %}
 -(void)wlInitWebFrameworkDidCompleteWithResult:(WLWebFrameworkInitResult *)result
 {
     if ([result statusCode] == WLWebFrameworkInitResultSuccess) {
@@ -72,7 +72,7 @@ In this sample, only the common case of the <code>WLWebFrameworkInitResultSucces
 <p>In <code>wlInitDidCompleteSuccessfully</code>, a Cordova controller is being prepared but is not displayed yet.<br />
 Optionally, the frame can be set to itself so that the web view initializes in the background if initialization of the JavaScript code is required to start in the background.</p>
 
-{% highlight obj-c %}-(void)wlInitDidCompleteSuccessfully
+{% highlight objc %}-(void)wlInitDidCompleteSuccessfully
 {
     // Create a Cordova View Controller
     self.cordovaViewController = [[CDVViewController alloc] init];
@@ -85,7 +85,7 @@ Optionally, the frame can be set to itself so that the web view initializes in t
 <p>In this sample, the <code>PageViewController</code> instance ends with a button that triggers a custom method called <code>onSplashScreenDone</code> in the AppDelegate.<br />
 The <code>onSplashScreen</code> custom method resumes where the flow was interrupted and displays the previously initialized Cordova view.</p>
 
-{% highlight obj-c %}
+{% highlight objc %}
 -(void)onSplashScreenDone {
     UIViewController* rootViewController = [[UIViewController alloc] init];
     [self.window setRootViewController:rootViewController];
@@ -209,7 +209,7 @@ The Container View contains a view controller, which is set to use the <code>Hyb
 <p><strong>HybridScreenViewController</strong><br />
 <code>HybridScreenViewController</code> extends <code>CDVViewController</code>, the Cordova web view provided by MobileFirst (<code>@interface HybridScreenViewController : CDVViewController</code>).</p>
 <p>The implementation of the class is almost empty, except for setting the startPage of the Cordova web view.</p>
-{% highlight obj-c %}
+{% highlight objc %}
 @implementation HybridScreenViewController
 - (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -228,7 +228,7 @@ This class:</p>
 <li>Contains a reference to a <code>CLGeocoder</code> object to enable geocoding addresses</li>
 </ul>
 
-<p>{% highlight obj-c %}
+<p>{% highlight objc %}
 @interface ViewController ()<MKMapViewDelegate, WLActionReceiver>
 @property (weak, nonatomic) IBOutlet MKMapView *map;
 @property CLGeocoder* geocoder;
@@ -240,7 +240,7 @@ The geocoder is initialized.<br />
 The map delegate is set.<br />
 ViewController is registered as an action receiver for MobileFirst.</p>
 
-{% highlight obj-c %}
+{% highlight objc %}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -253,7 +253,7 @@ ViewController is registered as an action receiver for MobileFirst.</p>
 <p>The <code>onActionReceived</code> method is called when the user submits the form. The action name is checked and the entered address is retrieved.<br />
 The geocoder is given the address.</p>
 
-{% highlight obj-c %}
+{% highlight objc %}
 -(void) onActionReceived:(NSString *)action withData:(NSDictionary *) data {
     if ([action isEqualToString:@"displayAddress"]
         &amp;&amp; [data objectForKey:@"address"]){
@@ -266,7 +266,7 @@ The geocoder is given the address.</p>
 }
 {% endhighlight %}
 <p>If a location is found, the region is centered and a new <code>MKPlacemark</code> is added to the map</p>
-{% highlight obj-c %}
+{% highlight objc %}
 completionHandler:^(NSArray* placemarks, NSError* error){
     if([placemarks count]){
         CLPlacemark *topResult = [placemarks objectAtIndex:0];
@@ -283,7 +283,7 @@ completionHandler:^(NSArray* placemarks, NSError* error){
 }
 {% endhighlight %}
 <p>If the search fails or no location is found, the <code>sendActionToJS</code> method is called to transmit the error to the web view.</p>
-{% highlight obj-c %}
+{% highlight objc %}
 completionHandler:^(NSArray* placemarks, NSError* error){
     if([placemarks count]){
         //...
@@ -300,7 +300,7 @@ completionHandler:^(NSArray* placemarks, NSError* error){
 <li>The <code>wlInitDidCompleteSuccessfully</code> status code is modified to load the <code>ViewController</code> object from the Storyboard instead of loading the <code>CDVViewController</code> object directly</li>
 <li>The splash screen is hidden in native code because JavaScript has not started yet</li>
 </ul>
-{% highlight obj-c %}
+{% highlight objc %}
 -(void)wlInitDidCompleteSuccessfully
 {
     UINavigationController* rootViewController = self.window.rootViewController;

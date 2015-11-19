@@ -1,17 +1,13 @@
 ---
 layout: tutorial
-title: 'NEW: Push notifications in native Windows Phone 8 applications'
+title: Push notifications in native Windows Phone 8 applications
 relevantTo: [windowsphone8]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/PushNotificationsNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/WP8NativePushProject.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/PushNotificationsNativeProject.zip">Download Studio project</a>
-    </li>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/WP8NativePushProject.zip">Download native project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
 <p>In this tutorial, the concept, API, and usage of push notifications are explained, in the context of Native Windows Phone 8 applications.</p>
 <p>The following topics are covered:</p>
@@ -37,13 +33,15 @@ relevantTo: [windowsphone8]
 <p><br clear="all" /></p>
 <h4>Edit the application-descriptor.xml file</h4>
 <p>Add the "<strong>pushSender</strong>" tag to the application-descriptor.xml file. -<br />
-{% highlight xml %}<br />
-<nativeWindowsPhone8App id="WindowsPhone8NativePush" platformVersion="6.3.0.00.20141111-0731"<br />
-version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" securityTest="MySecurityTest"></p>
-<p> <displayName>WindowsPhone8NativePush</displayName><br />
- <description>WindowsPhone8NativePush</description><br />
- <pushSender/></p>
-<p></nativeWindowsPhone8App> {% endhighlight %}<br />
+{% highlight xml %}
+<nativeWindowsPhone8App id="WindowsPhone8NativePush" platformVersion="6.3.0.00.20141111-0731"
+version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" securityTest="MySecurityTest">
+    <displayName>WindowsPhone8NativePush</displayName>
+    <description>WindowsPhone8NativePush</description>
+    <pushSender/>
+</nativeWindowsPhone8App> 
+{% endhighlight %}
+
 <br clear="all" /></p>
 <h4>Deploy the native API and the adapter.</h4>
 <h4>Copy the libraries from the MobileFirst native API to the Windows Phone 8 project.</h4>
@@ -51,7 +49,7 @@ version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" s
 <li>Create a Visual Studio project for the Windows Phone 8 app that you are building.
 </li>
 <li>Copy the following files from the MobileFirst project to the Windows Phone 8 project.<br />
-<table border="2" style="width:100%">
+<table class="table table-striped">
 <tr>
 <td>MobileFirst project</td>
 <td>Windows Phone 8  project</td>
@@ -85,72 +83,85 @@ version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" s
 <p><img src="{{ site.baseurl }}/assets/backup/nativeWP8Pushwlclientproperties.png"/></p>
 <h4>Modifications to the native Windows Phone 8 project</h4>
 <p>Edit the Properties\WMAppManifest.xml file and add the following capabilities:<br />
-{% highlight xml %}<br />
-<Capability Name="ID_CAP_PUSH_NOTIFICATION" /><br />
-<Capability Name="ID_CAP_IDENTITY_DEVICE" /><br />
-{% endhighlight %}</p>
+{% highlight xml %}
+<Capability Name="ID_CAP_PUSH_NOTIFICATION" />
+<Capability Name="ID_CAP_IDENTITY_DEVICE" />
+{% endhighlight %}
+
 <h2 id="notificationapiserver">Notification API: Server side</h2>
 <h3>Creating an event source.</h3>
 <p>This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).<br />
-{% highlight js %}<br />
-WL.Server.createEventSource({<br />
-    name: 'PushEventSource',<br />
-    onDeviceSubscribe: 'deviceSubscribeFunc',<br />
-    onDeviceUnsubscribe: 'deviceUnsubscribeFunc',<br />
-    securityTest:'PushApplication-strong-mobile-securityTest'<br />
-});<br />
-{% endhighlight %}</p>
+{% highlight js %}
+WL.Server.createEventSource({
+    name: 'PushEventSource',
+    onDeviceSubscribe: 'deviceSubscribeFunc',
+    onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
+    securityTest:'PushApplication-strong-mobile-securityTest'
+});
+{% endhighlight %}
+
 <ul>
 <li><code>name</code> – A name by which the event source is referenced.</li>
 <li><code>onDeviceSubscribe</code> – An adapter function that is called when the request for user subscription is received.</li>
 <li><code>onDeviceUnsubscribe</code> – An adapter function that is called when the request for user unsubscription is received.</li>
 <li><code>securityTest</code> – A security test from the authenticationConfig.xml file, which is used to protect the event source.</li>
 </ul>
+
 <h3>Sending a notification</h3>
 <p>Notifications can be either pulled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications. Windows Phone 8 supports Raw, Tile, and Toast notifications. To set up Toast notifications to Windows Phone 8 devices, set the appropriate JSON object to the response of <code>WL.Server.createDefaultNotification()</code> API.</p>
-<p>{% highlight js %}function submitNotification(userId, notificationText) {<br />
-    var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
-<p>    if (userSubscription === null) {<br />
-        return { result: "No subscription found for user :: " + userId };<br />
-    }</p>
-<p>    var badgeDigit = 1;<br />
-    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});</p>
-<p>    //Sending Toast notifications to Windows Phone 8 devices can be achieved by setting the appropriate JSON<br />
+
+{% highlight js %}
+function submitNotification(userId, notificationText) {
+    var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
+   if (userSubscription === null) {
+        return { result: "No subscription found for user :: " + userId };
+    }
+    var badgeDigit = 1;
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});
+    //Sending Toast notifications to Windows Phone 8 devices can be achieved by setting the appropriate JSON
 	//to the response of WL.Server.createDefaultNotification() API.<br />
-	 /*<br />
-    notification.MPNS.toast = {<br />
-       text1: 'Meeting ',<br />
-       text2 : "Your meeting starts in 5 minutes"<br />
-    }; */</p>
-<p>	//Send Tile notifications</p>
-<p>    /*<br />
-    notification.MPNS.tile = {<br />
-	title : "Meeting in 5 ",<br />
-	count : 1<br />
-    };*/</p>
-<p>    notification.MPNS.raw = {<br />
-	payload : {payload : "You have a meeting in 5 minutes"}<br />
-    };</p>
-<p>    WL.Server.notifyAllDevices(userSubscription, notification);</p>
-<p>    return {<br />
-        result: "Notification sent to user :: " + userId<br />
-    };<br />
-}{% endhighlight %}</p>
+	 /*
+    notification.MPNS.toast = {
+       text1: 'Meeting ',
+       text2 : "Your meeting starts in 5 minutes"
+    }; */
+	//Send Tile notifications
+    /*
+    notification.MPNS.tile = {
+	title : "Meeting in 5 ",
+	count : 1
+    };*/
+    notification.MPNS.raw = {
+	payload : {payload : "You have a meeting in 5 minutes"}
+    };
+    WL.Server.notifyAllDevices(userSubscription, notification);
+    return {
+        result: "Notification sent to user :: " + userId
+    };
+}{% endhighlight %}
 <h2 id="notificationAPIClient"> Notification API - Client side </h2>
 <p>The first step is to create an instance of the <code>WLClient</code> class:</p>
-<p>{% highlight java %} WLClient client = WLClient.getInstance();{% endhighlight %}</p>
+{% highlight java %} WLClient client = WLClient.getInstance();{% endhighlight %}
 <p>You derive all push notification operations from the <code>WLPush</code> class.</p>
 <ul>
 <code>getPush</code> - This method is used to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.</p>
-<p>{% highlight java %}WLPush push = client.getPush();{% endhighlight %}<br />
+{% highlight java %}WLPush push = client.getPush();{% endhighlight %}
 <code>onReadyToSubscribeListener</code> - When connecting to a MobileFirst Server instance, the application attempts to register itself with the MPNS server to receive push notifications.</p>
-<p>{% highlight java %} push.onReadyToSubscribeListener = onReadyListener;<br />
-client.connect(connectListener); {% endhighlight %}</p>
+{% highlight java %}
+push.onReadyToSubscribeListener = onReadyListener;
+client.connect(connectListener);
+{% endhighlight %}
+
 <p><code>notificationListener</code> - Then the app receives the notification.</p>
-<p>{% highlight java %} push.notificationListener = notificationListener;<br />
-client.connect(connectListener); {% endhighlight %}</p>
+{% highlight java %}
+push.notificationListener = notificationListener;
+client.connect(connectListener);
+{% endhighlight %}
 <p>The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when registration is complete.</p>
-<p>{% highlight java %} public void onReadyToSubscribe() { ..... } {% endhighlight %}
+
+{% highlight java %}
+public void onReadyToSubscribe() { ..... }
+{% endhighlight %}
 </ul>
 <h3><code>WLPush.registerEventSourceCallback</code></h3>
 <p>To register an alias on a particular event source, use the <code>WLPush.registerEventSourceCallback</code> method. The API takes the following arguments:</p>
@@ -160,13 +171,16 @@ Adaptername - The adapter in which the event source is defined.<br />
 EventSourceName - The event source on which the alias is called.</p>
 </ul>
 <p>Example:<br />
-{% highlight java %}  WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter", "PushEventSource", this); {% endhighlight %}</p>
-<p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
-<p>{% highlight java %}<br />
-public void onReadyToSubscribe() {<br />
-      WLClient.getInstance().getPush().registerEventSourceCallback("newalias","PushAdapter","PushEventSource",this);<br />
-}<br />
+{% highlight java %}
+WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter", "PushEventSource", this);
 {% endhighlight %}</p>
+<p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
+{% highlight java %}
+public void onReadyToSubscribe() {
+    WLClient.getInstance().getPush().registerEventSourceCallback("newalias","PushAdapter","PushEventSource",this);
+}
+{% endhighlight %}
+
 <p><br clear="all" /></p>
 <h3>Subscribing to push notifications</h3>
 <p>To set up subscription to push notifications, use the <code>WLPush.subscribe(alias, pushOptions, responseListener)</code> API.</p>
@@ -177,23 +191,27 @@ public void onReadyToSubscribe() {<br />
 <code>responseListener</code> - An object of type <code>WLResponseListener</code>, which is called when subscription completes.
 </ul>
 <p>Example:<br />
-{% highlight java %}<br />
-WLClient client = WLClient.getInstance(); client.getPush().subscribe("newalias",new WLPushOptions(), new MyListener());<br />
-{% endhighlight %}</p>
+
+{% highlight java %}
+WLClient client = WLClient.getInstance(); client.getPush().subscribe("newalias",new WLPushOptions(), new MyListener());
+{% endhighlight %}
 <p><code>MyListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
 <p><code>onSuccess</code> - Called when subscription succeeds.<br />
 <code>onFailure</code> - Called when subscription fails.
 </ul>
+
 <h3>Unsubscribing from push notifications</h3>
 <p>To set up unsubscription from push notifications, use the <code>WLPush.unsubscribe(alias, responseListener)</code> API.<br />
 The API takes the following arguments:</p>
 <ul>
 <code>alias</code> - The alias to which the device has subscribed.<br />
 <code>responseListener</code> - An object of type <code>WLResponseListener</code>, which is called when unsubscription completes. </ul>
-<p>{% highlight java %}<br />
-WLClient client = WLClient.getInstance(); client.getPush().unsubscribe("newalias",new MyListener());<br />
-{% endhighlight %}</p>
+
+{% highlight java %}
+WLClient client = WLClient.getInstance(); client.getPush().unsubscribe("newalias",new MyListener());
+{% endhighlight %}
+
 <p><code>MyListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
 <code>onSuccess</code> - Called when unsubscription succeeds.<br />
@@ -201,42 +219,51 @@ WLClient client = WLClient.getInstance(); client.getPush().unsubscribe("newalias
 </ul>
 <h3>Additional client-side API methods:</h3>
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
-<p>{% highlight java %}<br />
-WLClient client = WLClient.getInstance(); boolean bIsSubscribed = client.getPush().isSubscribed("newalias");<br />
-{% endhighlight %}</p>
+
+{% highlight java %}
+WLClient client = WLClient.getInstance(); boolean bIsSubscribed = client.getPush().isSubscribed("newalias");
+{% endhighlight %}
 <p><br clear="all" /></p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
-<p>{% highlight java %}<br />
-class MyListener : WLOnReadyToSubscribeListener , WLEventSourceListener<br />
-{ {% endhighlight %}</p>
+
+{% highlight java %}
+class MyListener : WLOnReadyToSubscribeListener , WLEventSourceListener
+{ {% endhighlight %}
+
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
-<p>{% highlight java %} WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter","PushEventSource", this );<br />
-{% endhighlight %}</p>
+{% highlight java %}
+WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter","PushEventSource", this );
+{% endhighlight %}
+
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
-<p>{% highlight java %}<br />
-public void onReceive(String props, String payload) {<br />
-   Deployment.Current.Dispatcher.BeginInvoke(() =><br />
-   {<br />
-       MessageBox.Show("Push notification received " + payload);<br />
-   });<br />
-}<br />
-{% endhighlight %}</p>
+
+{% highlight java %}
+public void onReceive(String props, String payload) {
+   Deployment.Current.Dispatcher.BeginInvoke(() =>
+   {
+       MessageBox.Show("Push notification received " + payload);
+   });
+}
+{% endhighlight %}
+
 <p>If the application is not running, the notification icon appears on the notification bar at the top of the screen.</p>
 <h2 id="notificationAPITag">Notification API - Tag-based notification</h2>
 <p>This notification type enables sending and receiving messages by tags. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. Tags are defined in the application-descriptor.xml file.</p>
-<p>{% highlight xml %}<br />
-<tags><br />
-    <tag><br />
-        <name>PushTag1</name><br />
-        <description>About pushTag1</description><br />
-    </tag><br />
-    <tag><br />
-        <name>PushTag2</name><br />
-        <description>About pushTag2</description><br />
-    </tag><br />
-</tags><br />
- {% endhighlight %}</p>
+
+{% highlight xml %}
+<tags>
+    <tag>
+        <name>PushTag1</name>
+        <description>About pushTag1</description>
+    </tag>
+    <tag>
+        <name>PushTag2</name>
+        <description>About pushTag2</description>
+    </tag>
+</tags>
+ {% endhighlight %}
+ 
 <h4>Client-side API:</h4>
 <ul>
 <li><code>WLPush.subscribeTag(tagName,options)</code> - Subscribes the device to the specified tag name.</li>
@@ -249,7 +276,10 @@ public void onReceive(String props, String payload) {<br />
 <h3>Common APIs for tag-based and broadcast notifications</h3>
 <h4>Client-side API:</h4>
 <p><code>WLNotificationListener</code> defines the callback method to be notified when the notification arrives.</p>
-<p>{% highlight java %}client.getPush().setWLNotificationListener(listener){% endhighlight %}</p>
+
+{% highlight java %}
+client.getPush().setWLNotificationListener(listener)
+{% endhighlight %}
 <p>The <code>onMessage(props,payload)</code> method of <code>WLNotificationListener</code> is called when a push notification is received by the device.</p>
 <ul>
 <strong>props</strong> - A JSON block that contains the notifications properties of the platform.<br />
