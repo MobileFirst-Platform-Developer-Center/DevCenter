@@ -1,51 +1,32 @@
----
-layout: default
-title: Downloads
----
+--- 
+layout: default 
+title: Downloads 
+--- 
 <div class="container">
     <h2>Downloads</h2>
-
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">Overview</a></li>
-        <li role="presentation"><a href="#installclassic" aria-controls="classic" role="tab" data-toggle="tab">IBM MobileFirst Platform Foundation</a></li>
-        <li role="presentation"><a href="#installdevops" aria-controls="devops" role="tab" data-toggle="tab">IBM MobileFirst Platform Foundation DevOps</a></li>
+        <li role="presentation" class="active"><a href="#installFoundation" aria-controls="foundation" role="tab" data-toggle="tab">IBM MobileFirst Platform Foundation</a></li>
+        <li role="presentation"><a href="#downloadPreviousReleases" aria-controls="previousReleases" role="tab" data-toggle="tab">Previous releases</a></li>
     </ul>
 
-    <br>
-
-    <!-- Tab panes -->
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="overview">
-            <p>IBM MobileFirst Platform Foundation 8.0 comes in two "flavors": <b>Foundation</b> and <b>DevOps</b>.</p>
+        <div role="tabpanel" class="tab-pane active" id="installFoundation">
+            <p>IBM MobileFirst Platform Foundation 8.0 enables simplified, community-driven experiences and work flows for both the developer and the administrator, and consists of MobileFirst Developer and Operations Console, and the MobileFirst CLI.</p>
 
-            <ul class="downloads">
-                <li>The <b>Foundation</b> flavor is based on MobileFirst Platform Foundation 7.1 with enhanced functionalities, and consists of:
-                    <ul>
-                        <li>MobileFirst Studio - the Eclipse plug-in</li>
-                        <li>MobileFirst CLI - for working from the command line</li>
-                        <li>MobileFirst Mobile Test Workbench - to automate functional testing</li>
-                    </ul>
-                </li>
-                <li>The <b>DevOps</b> flavor enables simplified, community-driven experiences and work flows for both the developer and the administrator, and consists of:
-                    <ul>
-                        <li>MobileFirst Developer and Operations Console</li>
-                        <li>MobileFirst CLI</li>
-                    </ul>
-                </li>
+            <p>Download MobileFirst Platform Foundation artifacts:</p>
+            <ul>
+                <li><a href="#">MobileFirst CLI</a></li>
             </ul>
-
-            <p>Select a flavor in the tab bar to continue.</p>
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="installclassic">
-            <p>To get started with the Foundation flavor locally in your developer workstation, select either the Studio or CLI components below.
-                <br/> Once installed continue to the Tutorials section.</p>
+        <div role="tabpanel" class="tab-pane" id="installPreviousReleases">
+            <p>Below are installation instruction for previous releases of IBM Worklight/MobileFirst Platform Foundation.</p>
 
-            <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="studio">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseStudio" aria-expanded="true" aria-controls="collapseStudio">Installing MobileFirst Studio</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseStudio" aria-expanded="true" aria-controls="collapseStudio">Installing MobileFirst Studio</a>
                         </h4>
                     </div>
 
@@ -84,7 +65,8 @@ title: Downloads
                                 <li>If your Eclipse workbench has IBM Rational Team Concert™ V4.0 Eclipse Client already installed, you might need to clean the Eclipse environment before you use Studio.</li>
                             </ol>
 
-                            <p><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
+                            <p>
+                                <strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -92,7 +74,7 @@ title: Downloads
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="cli">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseCli" aria-expanded="true" aria-controls="cli">Installing MobileFirst CLI</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCli" aria-expanded="true" aria-controls="cli">Installing MobileFirst CLI</a>
                         </h4>
                     </div>
 
@@ -130,7 +112,9 @@ title: Downloads
                                 <li>On completion of the installation, log out from the OS, and then log back in. This action ensures that the appropriate commands are on your system path.</li>
                             </ol>
 
-                            <p><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
+                            <p>
+                                <strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -138,14 +122,14 @@ title: Downloads
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="workbench">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseWorkbench" aria-expanded="true" aria-controls="workbench">Installing MobileFirst Mobile Test Workbench</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseWorkbench" aria-expanded="true" aria-controls="workbench">Installing MobileFirst Mobile Test Workbench</a>
                         </h4>
                     </div>
 
                     <div id="collapseWorkbench" class="panel-collapse collapse" role="tabpanel" aria-labelledby="workbench">
                         <div class="panel-body">
                             <ol>
-                                <li>Make sure that you have installed <a href="https://developer.ibm.com/mobilefirstplatform/install/#studio">MobileFirst Studio</a> on a supported version of Eclipse.</li>
+                                <li>Make sure that you have installed MobileFirst Studio on a supported version of Eclipse.</li>
                                 <li>Start Eclipse, and then select
                                     <strong>Help > Eclipse Marketplace</strong>.</li>
                                 <li>In the
@@ -164,57 +148,8 @@ title: Downloads
                                     <strong>Window > Preferences > Java > Installed JREs</strong>, and set it as the default JRE by selecting its corresponding check box.</li>
                             </ol>
 
-                            <p><strong>Next:</strong> Start testing your apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div role="tabpanel" class="tab-pane" id="installdevops">
-            <p>To get started with the DevOps flavor locally in your developer workstation you need to download the MobileFirst CLI.<br/>
-                Once installed continue to the Tutorials section.</p>
-
-            <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" id="devopscli">
-                        <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseDevopscli" aria-expanded="true" aria-controls="devopscli">Installing MobileFirst Studio</a>
-                        </h4>
-                    </div>
-
-                    <div id="collapseDevopscli" class="panel-collapse collapse" role="tabpanel" aria-labelledby="devopscli">
-                        <div class="panel-body">
-                            <p>To use the CLI, you must have the Java Developer Kit (JDK) installed on your machine. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
-
-                            <p>You must have the <code>JAVA_HOME</code> environment variable set to your JDK directory. For example:</p>
-
-                            <ul>
-                                <li> Windows: C:Program FilesJavajdk1.7.0_60</li>
-                                <li> Mac OSX: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
-                            </ul>
-
-                            <ol>
-                                <li>Download the CLI package for the required release version:
-                                    <ul>
-                                        <li><a href="#">MobileFirst Platform Foundation CLI v8.0</a> (?????)</li>
-                                    </ul>
-                                </li>
-                                <li>Open your command-line terminal and change the directory to the folder where your CLI package is located.</li>
-                                <li>Unzip the downloaded file. The CLI is packaged as a single compressed file, which contains installation executable files for each platform:
-                                    <ul>
-                                        <li>install_linux.bin</li>
-                                        <li>install_mac.app/</li>
-                                        <li>install_windows.exe</li>
-                                        <li>resources/</li>
-                                    </ul>
-                                </li>
-                                <li>Select and run the installer that is appropriate for your platform. For example, when you run
-                                    <em>$ install_linux.bin</em>, a GUI appears and guides you through the installation of Command Line Interface. Follow the instructions to complete your installation.</li>
-                                <li>On completion of the installation, log out from the OS, and then log back in. This action ensures that the appropriate commands are on your system path.</li>
-                            </ol>
-
-                            <p><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
+                            <p>
+                                <strong>Next:</strong> Start testing your apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
                         </div>
                     </div>
                 </div>
