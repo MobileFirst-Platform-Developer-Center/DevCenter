@@ -7,48 +7,48 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdapterMashup
 ---
 <h2>Overview</h2>
-Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
+<p>Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).</p>
 
-In theory, from the client side, you could make several requests successively, one depending on the other.
-However, writing this logic on the server side could be faster and cleaner.
+<p>In theory, from the client side, you could make several requests successively, one depending on the other.
+However, writing this logic on the server side could be faster and cleaner.</p>
 
-This tutorial covers the following topics:
+<p>This tutorial covers the following topics:</p>
 
 <ul>
-    <li><a href="#JSAPI">Javascript adapter API</a></li>
+    <li><a href="#JSAPI">JavaScript adapter API</a></li>
     <li><a href="#JavaAPI">Java adapter API</a></li>
     <li><a href="#dataMashup">Data mashup example</a></li>
     <li><a href="#sample">Sample application</a></li>
 </ul>
 
-<h2 id="JSAPI">Javascript API</h2>
-<h3 id="invoke">Calling a Javascript adapter procedure from a Javascript adapter</h3>
-When calling a Javascript adapter procedure from another Javascript adapter use the <code>WL.Server.invokeProcedure(invocationData)</code> API.
+<h2 id="JSAPI">JavaScript API</h2>
+<h3 id="invoke">Calling a JavaScript adapter procedure from a JavaScript adapter</h3>
+When calling a JavaScript adapter procedure from another JavaScript adapter use the <code>WL.Server.invokeProcedure(invocationData)</code> API.
 This API is almost identical to its client-side counterpart, it enables you to invoke a procedure on any of your adapters.
 
 The <code>invocationData</code> parameter has the same format as the client-side API.
-<p>{% highlight Javascript %}
+<p>{% highlight javascript %}
 WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
 {% endhighlight %}</p>
 
 However, while the client-side <code>invokeProcedure</code> uses a success handler, the server-side only returns the result object itself.
 
-<blockquote>Calling a Java adapter from a Javascript adapter is not supported</blockquote>
+<blockquote>Calling a Java adapter from a JavaScript adapter is not supported</blockquote>
 
 <h2 id="JavaAPI">Java API</h2>
 <h3 id="executeAdapterRequest">Calling a Java adapter from a Java adapter</h3>
 When calling an adapter procedure from a Java adapter use the <code>executeAdapterRequest</code> API.
 This call returns an HttpResponse object.
-<p>{% highlight Java %}
+<p>{% highlight java %}
 HttpUriRequest req = new HttpGet(MyAdapterProcedureURL);
 org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
 JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
 {% endhighlight %}</p>
 <br clear="all"/>
 
-<h3 id="createJavascriptAdapterRequest">Calling a Javascript adapter procedure from a Java adapter</h3>
-When calling a Javascript adapter procedure from a Java adapter use both the <code>executeAdapterRequest</code> API and the <code>createJavascriptAdapterRequest</code> API that creates an HttpUriRequest to pass as a parameter to the <code>executeAdapterRequest</code> call.
-<p>{% highlight java hl_lines="2" %}
+<h3 id="createJavaScriptAdapterRequest">Calling a JavaScript adapter procedure from a Java adapter</h3>
+When calling a JavaScript adapter procedure from a Java adapter use both the <code>executeAdapterRequest</code> API and the <code>createJavascriptAdapterRequest</code> API that creates an HttpUriRequest to pass as a parameter to the <code>executeAdapterRequest</code> call.
+<p>{% highlight java %}
 HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
 org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
 JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
@@ -80,23 +80,23 @@ Afterward, the mashed-up data is returned to the application for display.
 
 <img src="AdapterMashupDiagram.jpg" alt="Adapter Mashup Diagram" />
 
-The sample provided with this tutorial demonstrates the implementation of this scenario using 3 different mashup types. In each one of them the names of the adapters are slightly different. Here is a list of the mashup types and the corresponding adapter names:
+The provided sample in this tutorial demonstrates the implementation of this scenario using 3 different mashup types. In each one of them the names of the adapters are slightly different. Here is a list of the mashup types and the corresponding adapter names:
 <ol>
-  <li><strong>Javascript</strong> adapter -> <strong>Javascript</strong> adapter
+  <li><strong>JavaScript</strong> adapter -> <strong>JavaScript</strong> adapter
       <ul>
-        <li>Cities adapter   = getCitiesLisJS</li>
+        <li>Cities adapter   = getCitiesListJS</li>
         <li>Weather adapter  = getCityWeatherJS</li>
       </ul>
   </li>
-  <li><strong>Java</strong> adapter -> <strong>Javascript</strong> adapter<br />
+  <li><strong>Java</strong> adapter -> <strong>JavaScript</strong> adapter<br />
       <ul>
-        <li>Cities adapter   = getCitiesListJavatoJS</li>
+        <li>Cities adapter   = getCitiesListJavaToJS</li>
         <li>Weather adapter  = getCityWeatherJS</li>
       </ul>
   </li>
   <li><strong>Java</strong> adapter -> <strong>Java</strong> adapter<br />
       <ul>
-        <li>Cities adapter   = getCitiesLisJava</li>
+        <li>Cities adapter   = getCitiesListJava</li>
         <li>Weather adapter  = getCityWeatherJava</li>
       </ul>
   </li>
