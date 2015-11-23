@@ -5,8 +5,7 @@ weight: 1
 show_disqus: false
 ---
 <br>
-Below are all available tutorials for IBM MobileFirst Platform **Foundation 7.1 &amp; 8.0**.  
-<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials">Looking for Foundation 8.0 **DevOps** tutorials</a>?
+Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
 
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
 <p>Set up your development environment to work with IBM MobileFirst Platform Foundation.</p>

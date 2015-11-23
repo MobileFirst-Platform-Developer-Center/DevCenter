@@ -5,8 +5,7 @@ weight: 1
 show_disqus: false
 ---
 <br>
-Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 **DevOps**.  
-<a href="{{site.baseurl}}/tutorials/en/foundation/7.1/all-tutorials">Looking for Foundation 8.0 tutorials</a>?
+Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
 
 ### <a href="../quick-start/">Quick Start</a>
 Get a feel of the MobileFirst SDK with these fast-tracked demos.
@@ -66,7 +65,7 @@ Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; nati
 ### <a href="../server-side-development/">Server-side development</a>
 Develop the server code (adapters) that your mobile app requires to integrate with enterprise back-end applications and cloud services.
 
-* <a href="../server-side-development/overview/">Adapters overview</a>
+* <a href="../server-side-development/adapter-framework-overview/">Adapters overview</a>
 * <a href="../server-side-development/javascript-adapters/">JavaScript adapters</a>
     * <a href="../server-side-development/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
     * <a href="../server-side-development/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a>
