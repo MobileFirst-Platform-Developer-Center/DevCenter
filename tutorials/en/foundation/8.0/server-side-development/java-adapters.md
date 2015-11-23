@@ -9,28 +9,6 @@ Java adapters are based on the JAX-RS specification. In other words, a Java adap
 
 **Prerequisite:** Make sure to read the [Adapters Overview](../adapters-overview) tutorial first.
 
-<!--
-<h3>Agenda</h3>
-<ul>
-<li><a href="#benefits">Benefits of Java adapters</a></li>
-<li><a href="#createadapter">Creating a Java adapter</a></li>
-<li><a href="#filestructure">File structure</a></li>
-<li><a href="#jaxrsapplication">The JAX-RS application class</a></li>
-<li><a href="#jaxrsresource">Implementing a JAX-RS resource</a></li>
-<li><a href="#serverapi">MobileFirst server-side API</a></li>
-<li><a href="#testing">Testing MobileFirst Adapter</a></li>
-<li><a href="#morelinks">HTTP &amp; SQL best practices</a></li>
-</ul> -->
-
-<!-- <h3>By using MobileFirst CLI</h3>
-<ol>
-<li>Open the terminal.</li>
-<li>Go to the MobileFirst project folder.</li>
-<li>Enter `mfp add adapter {name} --type java --package {package name}`</li>
-</ol>
-<h2 id="filestructure">File structure</h2>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-files.png"><img src="{{ site.baseurl }}/assets/backup/java-adapter-files.png" alt="java-adapter-files" width="301" height="225" class="aligncenter size-full wp-image-7226" /></a></p> -->
-
 ### File structure
 
 <span style="color:red">Image</span>
@@ -97,7 +75,8 @@ The `MFPJAXRSApplication` class scans the package for JAX-RS resources and autom
 
 ### Implementing a JAX-RS resource
 JAX-RS resource is a POJO (Plain Old Java Object) which is mapped to a root URL and has Java methods for serving requests to this root URL and its child URLs. Any resource can have a separate set of URLs.
-```java
+
+{% highlight java %}
 package com.sample.adapter;
 
 import java.util.logging.Logger;
@@ -119,7 +98,7 @@ public class JavaAdapterResource {
     WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
 
 
-    /* Path for method: "<server address>/Adapters/adapters/JavaAdapter/{username}" */
+    //Path for method: "<server address>/Adapters/adapters/JavaAdapter/{username}"
     @GET
     @Path("/{username}")
     public String helloUser(@PathParam("username") String name){
@@ -127,7 +106,8 @@ public class JavaAdapterResource {
     }
 
 }
-```
+{% endhighlight %}
+
 `@Path("/")` before the class definition determines the root path of this resource. If you have multiple resource classes, you should set each resource a different path.  
 
 For example, if you have a `UserResource` with `@Path("/users")` to manage users of a blog, that resource is accessible via `http(s)://host:port/ProjectName/adapters/AdapterName/<em>users</em>/`.
@@ -144,8 +124,7 @@ Another example is `@Path("/{username}")`, which defines the path to access this
 [https://jsr311.java.net/nonav/releases/1.1/javax/ws/rs/package-summary.html](https://jsr311.java.net/nonav/releases/1.1/javax/ws/rs/package-summary.html)
 
 ### HTTP Session
-Depending on your infrastructure and configuration, your MobileFirst server may be running with `SessionIndependent` set to true, where each request can reach a different node and HTTP sessions are not used.  
-In such cases you should not rely on Java's HttpSession to persist​ data from one request to the next.
+Depending on your infrastructure and configuration, your MobileFirst server may be running with `SessionIndependent` set to true, where each request can reach a different node and HTTP sessions are not used. In such cases you should not rely on Java's HttpSession to persist​ data from one request to the next.
 
 ### MobileFirst server-side API
 Java adapters can use the MobileFirst server-side Java API to perform operations that are related to MobileFirst Server, such as calling other adapters, submitting push notifications, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
