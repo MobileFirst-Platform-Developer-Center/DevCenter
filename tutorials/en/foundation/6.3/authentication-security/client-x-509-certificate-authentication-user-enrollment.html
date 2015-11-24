@@ -1,15 +1,14 @@
 ---
 layout: tutorial
 title: Client X.509 Certificate Authentication and User Enrollment
+breadcrumb_title: Client X.509 Certificate
 relevantTo: [hybrid]
+weight: 11
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UserCertificateAuthenticationProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UserCertificateAuthenticationProject.zip">Download Studio project</a>
-        </li>
-</ul>
-</div>
-<p><br clear="all" /><br />
+<br>
 Topics covered in this tutorial:</p>
 <ul>
 <li><a href="#overview">Overview</a></li>
@@ -288,11 +287,11 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 <p></p>
 <h2 id="configureWAS">Configure IBM WebSphere Application Server Liberty profile (Liberty)</h2>
 <p>Enable the <code>ssl-1.0</code> and <code>appSecurity-2.0</code> features in the <code>server.xml</code> file:<br />
-{% highlight xml %}<br />
-<featureManager><br />
-   <feature>ssl-1.0</feature><br />
-   <feature>appSecurity-2.0</feature><br />
-</featureManager><br />
+{% highlight xml %}
+<featureManager>
+   <feature>ssl-1.0</feature>
+   <feature>appSecurity-2.0</feature>
+</featureManager>
 {% endhighlight %}</p>
 <p>Liberty requires setting up the keystore and truststore to establish trust for the generated client certificates. Click <a href="http://pic.dhe.ibm.com/infocenter/wasinfo/v8r5/index.jsp?topic=/com.i bm.websphere.wlp.nd.doc/ae/rwlp_ssl.html">here</a> for more information.</p>
 <ul>
@@ -301,30 +300,30 @@ openssl req -new -key server\server_key.pem -out server\server.csr -config opens
 <li>Configure your server's HTTP endpoint and allow (but not require) client-side certificates. This configuration is available by using the <code>clientAuthenticationSupported="true"</code> property in the Liberty SSL element.</li>
 </ul>
 <p>The following example shows the updated SSL configuration:<br />
-{% highlight xml %}<br />
-<!-- default SSL configuration is defaultSSLSettings --><br />
-<sslDefault sslRef="defaultSSLSettings"/><br />
-<ssl clientAuthenticationSupported="true" id="defaultSSLSettings" keyStoreRef="defaultKeyStore" trustStoreRef="defaultTrustStore"/><br />
-<keyStore id="defaultKeyStore" location="server.p12" password="passServerP12" type="PKCS12" /><br />
-<keyStore id="defaultTrustStore" location="signing_ca.p12" password="passSigningP12" type="PKCS12"/><br />
+{% highlight xml %}
+<!-- default SSL configuration is defaultSSLSettings -->
+<sslDefault sslRef="defaultSSLSettings"/>
+<ssl clientAuthenticationSupported="true" id="defaultSSLSettings" keyStoreRef="defaultKeyStore" trustStoreRef="defaultTrustStore"/>
+<keyStore id="defaultKeyStore" location="server.p12" password="passServerP12" type="PKCS12" />
+<keyStore id="defaultTrustStore" location="signing_ca.p12" password="passSigningP12" type="PKCS12"/>
 {% endhighlight %}<br /></p>
 <h2 id="authConfig">Configure authenticationConfig.xml</h2>
 <p>Uncomment the UserCertificate Login Module section of the <code>authenticationConfig.xml</code> file, as shown below.<br />
-{% highlight xml %}<br />
-<!-- Login Module for User Certificate Authentication --><br />
-<loginModule name="WLUSERCertificateLoginModule"><br />
-   <className>com.worklight.core.auth.ext.UserCertificateLoginModule</className><br />
-</loginModule><br />
+{% highlight xml %}
+<!-- Login Module for User Certificate Authentication -->
+<loginModule name="WLUSERCertificateLoginModule">
+   <className>com.worklight.core.auth.ext.UserCertificateLoginModule</className>
+</loginModule>
 {% endhighlight %}<br />
 <br />
 Uncomment the <code>wl_userCertificateAuthRealm</code> section, as shown below.<br />
-{% highlight xml %}<br />
-<!-- Login Module for User Certificate Authentication --><br />
-<realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule"><br />
-   <className>com.worklight.core.auth.ext.UserCertificateAuthenticator</className><br />
-   <parameter name="dependent-user-auth-realm" value="SampleAppRealm"/><br />
-   <parameter name="pki-bridge-class" value="com.worklight.core.auth.ext.UserCertificateEmbeddedPKI"/><br />
-</realm><br />
+{% highlight xml %}
+<!-- Login Module for User Certificate Authentication -->
+<realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule">
+   <className>com.worklight.core.auth.ext.UserCertificateAuthenticator</className>
+   <parameter name="dependent-user-auth-realm" value="SampleAppRealm"/>
+   <parameter name="pki-bridge-class" value="com.worklight.core.auth.ext.UserCertificateEmbeddedPKI"/>
+</realm>
 {% endhighlight %}<br />
 Update the value of the <code>embedded-pki-bridge-ca-p12-file-path</code> element to the full path of your signing CA <code>.p12</code> file.<br />
 <br />
@@ -335,45 +334,45 @@ Update the value of the <code>dependent-user-auth-realm</code> to the dependent 
 The realm name(<code>wl_userCertificateAuthRealm</code>) cannot be changed.<br />
 <br />
 The following examples shows the updates made above.<br />
-{% highlight xml %}<br />
-<!--For User Certificate Authentication --><br />
-<realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule"><br />
-   <className>com.worklight.core.auth.ext.UserCertificateAuthenticator</className><br />
-   <parameter name="dependent-user-auth-realm" value="SampleAppRealm"/><br />
-   <parameter name="pki-bridge-class" value="com.worklight.core.auth.ext.UserCertificateEmbeddedPKI"/><br />
-   <parameter name="embedded-pki-bridge-ca-p12-file-path" value="YOUR_BASE_DIRECTORY/signing_ca.p12"/><br />
-   <parameter name="embedded-pki-bridge-ca-p12-password" calue="passSigningP12"/><br />
-</realm><br />
+{% highlight xml %}
+<!--For User Certificate Authentication -->
+<realm name="wl_userCertificateAuthRealm" loginModule="WLUserCertificateLoginModule">
+   <className>com.worklight.core.auth.ext.UserCertificateAuthenticator</className>
+   <parameter name="dependent-user-auth-realm" value="SampleAppRealm"/>
+   <parameter name="pki-bridge-class" value="com.worklight.core.auth.ext.UserCertificateEmbeddedPKI"/>
+   <parameter name="embedded-pki-bridge-ca-p12-file-path" value="YOUR_BASE_DIRECTORY/signing_ca.p12"/>
+   <parameter name="embedded-pki-bridge-ca-p12-password" calue="passSigningP12"/>
+</realm>
 {% endhighlight %}<br />
 <br />
 Define a security test that uses <code>wl_userCertificateAuthRealm</code>.<br />
-{% highlight xml %}<br />
-<!--For User Certificate Authentication --><br />
-<customSecurityTest name="customx509Tests"><br />
-   <test realm="wl_antiXSRFRealm" step="1"/><br />
-   <test realm="wl_authenticityRealm" step="1"/><br />
-   <test realm="wl_directUpdateRealm" mode="perSession" step="1"/><br />
-   <test realm="wl_userCertificateAuthRealm" isInternalUserID="true" step="1"/><br />
-   <test realm="wl_deviceNoProvisioningRealm" isInternalUserID="true" step="2"/><br />
-</customSecurityTest><br />
+{% highlight xml %}
+<!--For User Certificate Authentication -->
+<customSecurityTest name="customx509Tests">
+   <test realm="wl_antiXSRFRealm" step="1"/>
+   <test realm="wl_authenticityRealm" step="1"/>
+   <test realm="wl_directUpdateRealm" mode="perSession" step="1"/>
+   <test realm="wl_userCertificateAuthRealm" isInternalUserID="true" step="1"/>
+   <test realm="wl_deviceNoProvisioningRealm" isInternalUserID="true" step="2"/>
+</customSecurityTest>
 {% endhighlight %}<br /></p>
 <h2 id="appDescriptor">Configure application-descriptor.xml</h2>
 <p>Ensure that you added iOS or Android environments to your MobileFirst Platform application<br />
 <br />
 Protect your application or environment with your custom security test.<br />
-{% highlight xml %}<br />
-<!--For User Certificate Authentication --><br />
-<android securityTest="customx509Tests" version="1.0"><br />
-<iPhone bundleId="com.SampleApp" securityTest="customx509Tests" version="1.0"><br />
+{% highlight xml %}
+<!--For User Certificate Authentication -->
+<android securityTest="customx509Tests" version="1.0">
+<iPhone bundleId="com.SampleApp" securityTest="customx509Tests" version="1.0">
 {% endhighlight %}<br />
 <br />
 Build and deploy your application and adapters to the MobileFirst Platform server.</p>
 <h2 id="installCA">Install root CA on iOS and Android</h2>
 <p>You must install the root CA that you generated in the previous steps onto your client devices for your devices to trust your MobileFirst Platform server over SSL. Email or host the <code>root_ca.crt</code> file, and then open the file on your device. The iOS and Android devices ask for approval when you manually attempt to install certificates.<br />
 <br />
-<center><br />
+<img src="{{ site.baseurl }}/assets/backup/iOSX509accept-300x287.png"/><br />
 <img src="{{ site.baseurl }}/assets/backup/AndroidX509accept-300x213.png"/><br />
-</center><br /></p>
+
 <h2 id="installApp">Install application and test</h2>
 <ol>
 <li>Deploy your application to the MobileFirst Platform server

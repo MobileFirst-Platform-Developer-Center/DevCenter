@@ -2,15 +2,9 @@
 layout: tutorial
 title: Adapter-based authentication
 show_children: true
+relevantTo: [ios,android,hybrid]
+weight: 8
 ---
-<div>
-    Relevant to:</p>
-<ul id="relevantForPersona">
-<li class="ios"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-6-3/">Native iOS</a></li>
-<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-6-3/">Native Android</a></li>
-<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
-</ul>
-</div>
 <h2>Overview</h2>
 <p>Adapter-based authentication is the most flexible type of authentication to implement and contains all the benefits of the IBM MobileFirst Platform Foundation Server authentication framework.</p>
 <p>When you use adapter-based authentication, you can implement the entire authentication logic, including validation of the credentials, in an adapter by using plain JavaScript.</p>
@@ -23,17 +17,17 @@ show_children: true
 <h2>Configuring the authenticationConfig.xml file</h2>
 <h3>Realms</h3>
 <p>Add two authentication realms to the <code>realms</code> section of the <strong>authenticationConfig.xml</strong> file.</p>
-<p>{% highlight xml %}<br />
-  <realm loginModule="AuthLoginModule" name="SingleStepAuthRealm"><br />
-	<className>com.worklight.integration.auth.AdapterAuthenticator</className><br />
-  	<parameter name="login-function" value="SingleStepAuthAdapter.onAuthRequired"/><br />
-  	<parameter name="logout-function" value="SingleStepAuthAdapter.onLogout"/><br />
-  </realm><br />
-  <realm loginModule="AuthLoginModule" name="DoubleStepAuthRealm"><br />
-  	<className>com.worklight.integration.auth.AdapterAuthenticator</className><br />
-  	<parameter name="login-function" value="DoubleStepAuthAdapter.onAuthRequired"/><br />
-  	<parameter name="logout-function" value="DoubleStepAuthAdapter.onLogout"/><br />
-  </realm><br />
+<p>{% highlight xml %}
+  <realm loginModule="AuthLoginModule" name="SingleStepAuthRealm">
+	<className>com.worklight.integration.auth.AdapterAuthenticator</className>
+  	<parameter name="login-function" value="SingleStepAuthAdapter.onAuthRequired"/>
+  	<parameter name="logout-function" value="SingleStepAuthAdapter.onLogout"/>
+  </realm>
+  <realm loginModule="AuthLoginModule" name="DoubleStepAuthRealm">
+  	<className>com.worklight.integration.auth.AdapterAuthenticator</className>
+  	<parameter name="login-function" value="DoubleStepAuthAdapter.onAuthRequired"/>
+  	<parameter name="logout-function" value="DoubleStepAuthAdapter.onLogout"/>
+  </realm>
 {% endhighlight %}</p>
 <p>These realms use the <code>AuthLoginModule</code> login module, which is defined later.<br />
 Using the <code>com.worklight.integration.auth.AdapterAuthenticator</code> class means that the server-side part of the authenticator is defined in the adapter.<br />
@@ -42,10 +36,10 @@ When logout is detected (explicit or session timeout), a <strong>logout-function
 In both cases, the parameter value syntax is <code>adapterName.functionName</code>.</p>
 <h3>LoginModule</h3>
 <p>Add a login module to the <code>loginModules</code> section of the <strong>authenticationConfig.xml</strong> file and call it <code>AuthLoginModule</code>.</p>
-<p>{% highlight xml %}<br />
-<loginModule name="AuthLoginModule"><br />
-    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
-</loginModule><br />
+<p>{% highlight xml %}
+<loginModule name="AuthLoginModule">
+    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+</loginModule>
 {% endhighlight %}</p>
 <p>Using a <code>NonValidatingLoginModule</code> class name means that no additional validation is performed by the MobileFirst platform, and the developer takes responsibility for the validation of credentials within the adapter.<br />
 Because all authentication-related actions are done in the adapter code, using <code>NonValidatingLoginModule</code> is mandatory for adapter-based authentication.</p>
@@ -53,13 +47,13 @@ Because all authentication-related actions are done in the adapter code, using <
 <p>Add security tests to the <code>securityTests</code> section of the <strong>authenticationConfig.xml</strong> file.<br />
 You must use this security test to protect the adapter procedure, so use the <code>customSecurityTest</code> element.<br />
 Remember the security test names. You must use them in subsequent steps.</p>
-<p>{% highlight xml %}<br />
-  <customSecurityTest name="SingleStepAuthAdapter-securityTest"><br />
-      <test isInternalUserID="true" realm="SingleStepAuthRealm"/><br />
-  </customSecurityTest><br />
-  <customSecurityTest name="DoubleStepAuthAdapter-securityTest"><br />
-      <test isInternalUserID="true" realm="DoubleStepAuthRealm"/><br />
-  </customSecurityTest><br />
+<p>{% highlight xml %}
+  <customSecurityTest name="SingleStepAuthAdapter-securityTest">
+      <test isInternalUserID="true" realm="SingleStepAuthRealm"/>
+  </customSecurityTest>
+  <customSecurityTest name="DoubleStepAuthAdapter-securityTest">
+      <test isInternalUserID="true" realm="DoubleStepAuthRealm"/>
+  </customSecurityTest>
 {% endhighlight %}</p>
 <h2>Creating the server-side authentication components</h2>
 <p>The following diagram illustrates the adapter-based authentication process:<br />
@@ -68,9 +62,9 @@ Remember the security test names. You must use them in subsequent steps.</p>
 <p>The sample that is provided with this training module uses two applications and two adapters. The <code>SingleStepAuth</code> application and adapter will be covered here. The <code>DoubleStepAuth</code> application and adapter are an extension of the same technique.</p>
 <p>Create an adapter that takes care of the authentication process. Name it <strong>SingleStepAuthAdapter</strong>.<br />
 The <strong>SingleStepAuthAdapter</strong> includes the following two procedures:</p>
-<p>{% highlight xml %}<br />
-<procedure name="submitAuthentication" securityTest="wl_unprotected"/><br />
-<procedure name="getSecretData" securityTest="SingleStepAuthAdapter-securityTest"/><br />
+<p>{% highlight xml %}
+<procedure name="submitAuthentication" securityTest="wl_unprotected"/>
+<procedure name="getSecretData" securityTest="SingleStepAuthAdapter-securityTest"/>
 {% endhighlight %}</p>
 <ul>
 <li>The submitAuthentication procedure takes care of the authentication process. Note that when the challenge handler invokes the <code>submitAuthentication</code> call, it is responsible for handling all the possible responses. In particular, if the <code>submitAuthentication</code> call returns a challenge, it is passed to the invocation callback, and is not processed by the security framework.<br />
@@ -82,37 +76,37 @@ The <strong>SingleStepAuthAdapter</strong> includes the following two procedures
 <a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_05_flow_diagram2.png"><img class="aligncenter wp-image-973 size-full" src="{{ site.baseurl }}/assets/backup/09_05_flow_diagram2.png" alt="09_05_flow_diagram2" width="1340" height="679" /></a></p>
 <h3>onAuthRequired</h3>
 <p>Whenever the framework detects an unauthenticated attempt to access a protected resource, the <code>onAuthRequired</code> function is called, as defined in the <strong>authenticationConfig.xml</strong> file.</p>
-<p>{% highlight javascript %}<br />
-function onAuthRequired(headers, errorMessage){<br />
-	errorMessage = errorMessage ? errorMessage : null;</p>
-<p>	return {<br />
-		authRequired: true,<br />
-		errorMessage: errorMessage<br />
-	};<br />
-}<br />
+<p>{% highlight javascript %}
+function onAuthRequired(headers, errorMessage){
+	errorMessage = errorMessage ? errorMessage : null;
+	return {
+		authRequired: true,
+		errorMessage: errorMessage
+	};
+}
 {% endhighlight %}</p>
 <p>The returned object is a <strong>custom</strong> challenge object that is sent to the application.<br />
 This function receives the request headers and an optional <code>errorMessage</code> parameter. The object that is returned by this function is sent to the client application.<br />
 <strong>Note:</strong> In the sample, the <code>authRequired:true</code> property in the challenge handler detects that the server is requesting authentication.</p>
 <h3>submitAuthentication</h3>
 <p>The <code>submitAuthentication</code> function is called by a client application to validate the user name and password.</p>
-<p>{% highlight javascript %}<br />
-function submitAuthentication(username, password){<br />
-	if (username==="user" &amp;&amp; password === "user"){</p>
-<p>		var userIdentity = {<br />
-				userId: username,<br />
-				displayName: username,<br />
-				attributes: {<br />
-					foo: "bar"<br />
-				}<br />
-		};</p>
-<p>		WL.Server.setActiveUser("SingleStepAuthRealm", userIdentity);</p>
-<p>		return {<br />
-			authRequired: false<br />
-		};<br />
-	}</p>
-<p>	return onAuthRequired(null, "Invalid login credentials");<br />
-}<br />
+<p>{% highlight javascript %}
+function submitAuthentication(username, password){
+	if (username==="user" && password === "user"){
+		var userIdentity = {
+				userId: username,
+				displayName: username,
+				attributes: {
+					foo: "bar"
+				}
+		};
+		WL.Server.setActiveUser("SingleStepAuthRealm", userIdentity);</p>
+		return {
+			authRequired: false
+		};
+	}
+	return onAuthRequired(null, "Invalid login credentials");
+}
 {% endhighlight %}</p>
 <p>The user name and password are received from the application as parameters. In this sample, the credentials are validated against some hardcoded values, but any other validation mode is valid, for example by using SQL or web services.<br />
 If the validation passed successfully, the <code>WL.Server.setActiveUser</code> method is called to create an authenticated session for the <code>SingleStepAuthRealm</code>, with user data stored in a <code>userIdentity</code> object. You can add your own custom properties to the user identity attributes.<br />
@@ -120,18 +114,18 @@ An object (<code>{authRequired: false}</code>) is sent to the application, stati
 If the credentials validation fails, an object that is built by the <code>onAuthRequired</code> function is returned to the application with a suitable error message.</p>
 <h3>getSecretData</h3>
 <p>For training purposes, the <code>getSecretData</code> function returns a hardcoded value. Keep in mind that <code>getSecretData</code> is protected by a security test, as defined in the adapter XML.</p>
-<p>{% highlight javascript %}<br />
-function getSecretData(){<br />
-	return {<br />
-		secretData: "Very very very very secret data"<br />
-	};<br />
-}<br />
+<p>{% highlight javascript %}
+function getSecretData(){
+	return {
+		secretData: "Very very very very secret data"
+	};
+}
 {% endhighlight %}</p>
 <h3>onLogout</h3>
 <p>The <code>onLogout</code> function is defined in the <strong>authenticationConfig.xml</strong> file to be called automatically after a logout, for example to perform a cleanup. This step is optional.</p>
-<p>{% highlight javascript %}<br />
-function onLogout(){<br />
-	WL.Logger.debug("Logged out");<br />
-}<br />
+<p>{% highlight javascript %}
+function onLogout(){
+	WL.Logger.debug("Logged out");
+}
 {% endhighlight %}</p>
 <h2 id="creatingTheClientsideAuthenticationComponents" class="noPrint">Creating the client-side authentication components</h2>
