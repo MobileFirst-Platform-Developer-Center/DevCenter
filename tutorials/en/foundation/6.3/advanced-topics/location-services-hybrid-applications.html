@@ -2,12 +2,10 @@
 layout: tutorial
 title: Location services in hybrid applications
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesProject.zip">Download Studio project</a>
-        </li>
-</ul>
 <h2>Architecture</h2>
 <p><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg"/></p>
 <p>The application code on the mobile device, in the form of an acquisition policy, controls the collection of data from device sensors.</p>
@@ -24,9 +22,9 @@ relevantTo: [hybrid]
 <p>Server activities and received events are logged, together with the device and application contexts, for future reporting and analytics.</p>
 <h2>Basic API</h2>
 <h3>Client JavaScript</h3>
-<p>Note: The following functions should be called after the IBM MobileFirst Platform Foundation framework is initialized (within or after the <code>wlCommonInit()</code> function).<br />
-{% highlight javascript %}<br />
-WL.Device.startAcquisition(policy, triggers, onFailure)<br />
+<p>Note: The following functions should be called after the IBM MobileFirst Platform Foundation framework is initialized (within or after the <code>wlCommonInit()</code> function).
+{% highlight javascript %}
+WL.Device.startAcquisition(policy, triggers, onFailure)
 {% endhighlight %}</p>
 <ul>
 <li><strong>policy</strong>: how do you acquire the sensor data?</li>
@@ -34,33 +32,33 @@ WL.Device.startAcquisition(policy, triggers, onFailure)<br />
 <li><strong>onFailure</strong>: how do you handle acquisition failures?</li>
 </ul>
 <h3>Server JavaScript</h3>
-<p>{% highlight javascript %}<br />
-WL.Server.setEventHandlers(eventHandlers);<br />
+<p>{% highlight javascript %}
+WL.Server.setEventHandlers(eventHandlers);
 {% endhighlight %}</p>
 <p><strong>eventHandlers</strong>: what events do you act on and how?</p>
 <h2>Acquisition Policy</h2>
-<p>An acquisition policy defines how acquisition takes place.<br />
-{% highlight javascript %}<br />
-var policy = {<br />
-  Geo: WL.Device.Geo.Profiles.LiveTracking(),<br />
-  Wifi: {<br />
-    interval: 10000,<br />
-    accessPointFilters: {<br />
-      [{<br />
-        SSID: "Net1"<br />
-      }, {<br />
-        SSID: "Net2",<br />
-        MAC: "*"<br />
-      }]<br />
-    }<br />
-  }<br />
-};<br />
+<p>An acquisition policy defines how acquisition takes place.
+{% highlight javascript %}
+var policy = {
+  Geo: WL.Device.Geo.Profiles.LiveTracking(),
+  Wifi: {
+    interval: 10000,
+    accessPointFilters: {
+      [{
+        SSID: "Net1"
+      }, {
+        SSID: "Net2",
+        MAC: "*"
+      }]
+    }
+  }
+};
 {% endhighlight %}</p>
 <h3>Geo Acquisition Policy</h3>
-<p>{% highlight javascript %}<br />
-  Geo: WL.Device.Geo.Profiles.LiveTracking(),<br />
-{% endhighlight %}<br />
-<code>LiveTracking</code> is a preset profile that uses the most accurate settings to track the device.<br />
+<p>{% highlight javascript %}
+  Geo: WL.Device.Geo.Profiles.LiveTracking(),
+{% endhighlight %}
+<code>LiveTracking</code> is a preset profile that uses the most accurate settings to track the device.
 Additional configuration options include:</p>
 <ul>
 <li><code>RoughTracking</code></li>
@@ -69,21 +67,21 @@ Additional configuration options include:</p>
 </ul>
 <blockquote><p>For more information, see the topic "Setting an acquisition policy" of the user documentation.</p></blockquote>
 <h3>Wifi Acquisition Policy</h3>
-<p>{% highlight javascript %}<br />
-  Wifi: {<br />
-    interval: 10000,<br />
-    accessPointFilters: {<br />
-      [{<br />
-        SSID: "Net1"<br />
-      }, {<br />
-        SSID: "Net2",<br />
-        MAC: "*"<br />
-      }]<br />
-    }<br />
-  }<br />
+<p>{% highlight javascript %}
+  Wifi: {
+    interval: 10000,
+    accessPointFilters: {
+      [{
+        SSID: "Net1"
+      }, {
+        SSID: "Net2",
+        MAC: "*"
+      }]
+    }
+  }
 {% endhighlight %}</p>
 <p><code>interval</code> is the polling interval, in milliseconds; WiFi polling is performed each interval.</p>
-<p><code>accessPointFilters</code> are access points of interest.<br />
+<p><code>accessPointFilters</code> are access points of interest.
 In the above example, the acquisition policy:</p>
 <ul>
 <li>Ignores everything except "Net1" and "Net2" – doing so assists in dynamic environments, such as when there are mobile hotspots.
@@ -96,26 +94,26 @@ In the above example, the acquisition policy:</p>
 <p><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.png"/></p>
 <blockquote><p>For more information, see the topic "Setting an acquisition policy" of the user documentation.</p></blockquote>
 <h2>Triggers</h2>
-<p>{% highlight javascript %}<br />
-var triggers = {<br />
-  Geo: {<br />
-    trigger1: {<br />
-      type: "Enter",<br />
-      circle: {<br />
-        longitude: -74.04444,<br />
-        latitude: 40.689167,<br />
-        radius: 100<br />
-      },<br />
-      callback: libertyAtLast,<br />
-      eventToTransmit: {<br />
-        event: {<br />
-          bring: "me",<br />
-          your: "huddledMasses"<br />
-        }<br />
-      }<br />
-    }<br />
-  }<br />
-};<br />
+<p>{% highlight javascript %}
+var triggers = {
+  Geo: {
+    trigger1: {
+      type: "Enter",
+      circle: {
+        longitude: -74.04444,
+        latitude: 40.689167,
+        radius: 100
+      },
+      callback: libertyAtLast,
+      eventToTransmit: {
+        event: {
+          bring: "me",
+          your: "huddledMasses"
+        }
+      }
+    }
+  }
+};
 {% endhighlight %}</p>
 <p>You can setup triggers for</p>
 <ul>
@@ -128,52 +126,52 @@ var triggers = {<br />
 <blockquote><p>For more information, see the topic "Triggers" of user documentation.</p></blockquote>
 <h2>Events</h2>
 <h3>Client Side</h3>
-<p>Events are generated by triggers (as explained above).<br />
-{% highlight javascript %}<br />
-      eventToTransmit: {<br />
-        event: {<br />
-          bring: "me",<br />
-          your: "huddledMasses"<br />
-        }<br />
-      }<br />
+<p>Events are generated by triggers (as explained above).
+{% highlight javascript %}
+      eventToTransmit: {
+        event: {
+          bring: "me",
+          your: "huddledMasses"
+        }
+      }
 {% endhighlight %}</p>
-<p>Events can also be generated manually by calling the API:<br />
-{% highlight javascript %}<br />
-WL.Client.transmitEvent(event,immediate);<br />
+<p>Events can also be generated manually by calling the API:
+{% highlight javascript %}
+WL.Client.transmitEvent(event,immediate);
 {% endhighlight %}</p>
 <h3>Server-side</h3>
-<p>In the adapter code, create event handlers by using:<br />
-{% highlight javascript %}<br />
-WL.Server.createEventHandler(filter, handlerFunction);<br />
-{% endhighlight %}<br />
-Events that match filter will be passed to <code>handlerFunction</code>.<br />
+<p>In the adapter code, create event handlers by using:
+{% highlight javascript %}
+WL.Server.createEventHandler(filter, handlerFunction);
+{% endhighlight %}
+Events that match filter will be passed to <code>handlerFunction</code>.
 Filter examples:</p>
 <ul>
 <li><code>{status: "platinum"}</code> – handle platinum members only</li>
 <li><code>{hotel: { country: "USA" } }</code> – hotels in the USA</li>
 <li><code>{}</code> – all events</li>
 </ul>
-<p>Register the event handlers by using:<br />
-{% highlight javascript %}<br />
-WL.Server.setEventHandlers([...]);<br />
+<p>Register the event handlers by using:
+{% highlight javascript %}
+WL.Server.setEventHandlers([...]);
 {% endhighlight %}</p>
 <blockquote><p>For more information, see the topic "Working with geofences and triggers" of the user documentation.</p></blockquote>
 <h2>Testing hybrid applications</h2>
-<p>In order to test your application you might need to test the various triggers and error handling logic that your application uses.<br />
-The <strong>Mobile Browser Simulator</strong> provides capabilities to simulate sensor data and errors.<br />
+<p>In order to test your application you might need to test the various triggers and error handling logic that your application uses.
+The <strong>Mobile Browser Simulator</strong> provides capabilities to simulate sensor data and errors.
 This can be accessed by right-clicking an application environment, and selecting the <strong>Preview</strong> option under the <strong>Run As</strong> menu.</p>
 <h3>Geo testing</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_geotesting.png"/><br />
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_geotesting.png"/>
 The Geolocation widget can be used to set a specific position through manual entry, or by clicking on the map.</p>
 <p>A simple simulation mode is also provided by using the <strong>Step</strong> and <strong>Play</strong> buttons, which move the position in the simulated device at the given speed and in the direction of the given heading.</p>
 <p>You can also simulate the generation of errors.</p>
 <h3>WiFi Testing</h3>
 <p><img src="{{ site.baseurl }}/assets/backup/10_04_wifitesting.png" /></p>
-<p>The Network widget can be used to define simulated access points, configure their signal strengths, and simulate the connection or disconnection to an access point.<br />
+<p>The Network widget can be used to define simulated access points, configure their signal strengths, and simulate the connection or disconnection to an access point.
 You can also simulate the generation of errors.</p>
 <h3>Scenarios</h3>
 <p><img src="{{ site.baseurl }}/assets/backup/10_04_scenarios.png"/></p>
-<p>The Scenario widget can be used to automatically simulate a user moving through an environment in a complex way.<br />
+<p>The Scenario widget can be used to automatically simulate a user moving through an environment in a complex way.
 A scenario consists of:</p>
 <ul>
 <li>The path of the user, and the point when the user reaches each path point
@@ -187,18 +185,18 @@ A scenario consists of:</p>
 <p><img src="{{ site.baseurl }}/assets/backup/10_04_scenario-edit-mode.png"/></p>
 <p>Enter a geolocation directly to move the map, or use the arrows to pan and +/- track to zoom.</p>
 <p>Click <img src="{{ site.baseurl }}/assets/backup/10_04_path-icon.png"/> to define the path of the user.</p>
-<p>Click on the map to add each path point; double-click to add the last point.<br />
-You can drag points to new locations.<br />
+<p>Click on the map to add each path point; double-click to add the last point.
+You can drag points to new locations.
 Click on a point to set the user's arrival time to that point, or to delete the whole path.</p>
 <p>Click <img src="{{ site.baseurl }}/assets/backup/10_04_wifi-icon.png"/> to add Wifi access points.</p>
-<p>Click on the map and drag to set the area covered by the access point.<br />
-Click an existing access point to change its SSID and MAC.<br />
+<p>Click on the map and drag to set the area covered by the access point.
+Click an existing access point to change its SSID and MAC.
 After clicking, drag to move or resize.</p>
 <p>Click <img src="{{ site.baseurl }}/assets/backup/10_04_zone-icon.png"/> to add no-GPS zones.</p>
-<p>Click on the map to add each vertex of the zone; double-click to add the last point.<br />
+<p>Click on the map to add each vertex of the zone; double-click to add the last point.
 After clicking an existing zone, you can drag to move, resize, or rotate.</p>
-<p>When playing a scenario, the position of the user is displayed on the map ( <img src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png"/> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and will not change when in a no-GPS zone).<br />
-WiFi access point visibility and signal strengths are automatically updated. These updates can be seen in the Network widget.<br />
+<p>When playing a scenario, the position of the user is displayed on the map ( <img src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png"/> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and will not change when in a no-GPS zone).
+WiFi access point visibility and signal strengths are automatically updated. These updates can be seen in the Network widget.
 Scenarios can be imported and exported to support test reuse.</p>
 <h2>Sample</h2>
 <p>The LocationServices sample demonstrates:</p>
