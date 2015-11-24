@@ -81,6 +81,139 @@ Here is a list of the mashup types and the corresponding adapter names:
   * Cities adapter   = getCitiesListJava
   * Weather adapter  = getCityWeatherJava
 
+###Mashup Sample Flow
+**Create a procedure / adapter call that create a request to Yahoo! Weather Service for each city and retrieves the corresponding data:**  
+
+(getCitiesListJS adapter)
+{% highlight xml %}
+<XML>:
+<connectivity>
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+			<protocol>http</protocol>
+			<domain>weather.yahooapis.com</domain>
+			<port>80</port>
+      ...
+
+<JavaScript>:
+function getYahooWeather(woeid) {
+
+	var input = {
+	    method : 'get',
+	    returnedContentType : 'xml',
+	    path : 'forecastrss',
+		parameters : {
+			'w' : woeid,
+			'u' : 'c' //celcius
+		}
+	};
+
+	return WL.Server.invokeHttp(input);
+}
+{% endhighlight %}  
+
+(getCityWeatherJava adapter)
+{% highlight java %}
+@GET
+	@Produces("application/json")
+	public String get(@Context HttpServletResponse response, @QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+		String returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"), response);
+		return returnValue;
+	}
+
+  private String execute(HttpUriRequest req, HttpServletResponse resultResponse) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+		String strOut = null;
+		HttpResponse RSSResponse = client.execute(host, req);
+		ServletOutputStream os = resultResponse.getOutputStream();
+    ...
+    (Convert the retrieved XML to JSON here...)
+  {% endhighlight %}  
+
+**Create an SQL query and fetch the cities records from the database:**
+
+(getCitiesListJS adapter)
+{% highlight javascript %}
+var getCitiesListStatement = WL.Server.createSQLStatement("select city, identifier, summary from weather;");
+function getCitiesList() {
+	return WL.Server.invokeSQLStatement({
+		preparedStatement : getCitiesListStatement,
+		parameters : []
+	});
+}
+{% endhighlight %}  
+
+(getCitiesListJava, getCitiesListJavaToJs adapters)
+{% highlight java %}
+PreparedStatement getAllCities = getSQLConnection().prepareStatement("select city, identifier, summary from weather");
+ResultSet rs = getAllCities.executeQuery();
+{% endhighlight %}  
+
+**Loop through the cities records and fetch the weather info for each city from Yahoo! Weather Service:**
+
+(getCitiesListJS adapter)
+{% highlight javascript %}
+for (var i = 0; i < cityList.resultSet.length; i++) {
+		var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);
+...
+
+function getCityWeather(woeid){
+	return WL.Server.invokeProcedure({
+		adapter : 'getCityWeatherJS',
+		procedure : 'getYahooWeather',
+		parameters : [woeid]
+	});
+}
+{% endhighlight %}  
+
+(getCitiesListJava adapter)
+{% highlight java %}
+while (rs.next()) {
+			getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
+			HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
+			org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
+			JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
+      ...
+{% endhighlight %}  
+
+(getCitiesListJavaToJs adapter)
+{% highlight java %}
+while (rs.next()) {
+			HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather", URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
+			org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
+			JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
+      ...
+{% endhighlight %}  
+
+**Iterating through the retrieved rss feed to fetch only the weather description,   
+put this values in a resultSet / JSONArray object and return it to the application:**
+
+(getCitiesListJS adapter)
+{% highlight javascript %}
+  ...
+  if (yahooWeatherData.isSuccessful)
+			cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;
+	}
+	return cityList;
+{% endhighlight %}  
+
+(getCitiesListJava, getCitiesListJavaToJs adapters)
+{% highlight java %}
+  JSONObject rss = (JSONObject) jsonWeather.get("rss");
+  JSONObject channel = (JSONObject) rss.get("channel");
+  JSONObject item = (JSONObject) channel.get("item");
+  String cityWeatherSummary = (String) item.get("description");
+
+  JSONObject jsonObj = new JSONObject();
+  jsonObj.put("city", rs.getString("city"));
+  jsonObj.put("identifier", rs.getString("identifier"));
+  jsonObj.put("summary", rs.getString("summary"));
+  jsonObj.put("weather", cityWeatherSummary);
+
+  jsonArr.add(jsonObj);
+}
+conn.close();
+return jsonArr.toString();
+{% endhighlight %}  
+
 > An example of city list in SQL is provided with the attached sample, under `server/mobilefirstTraining.sql`.
 Remember that SQL adapters require a JDBC connector driver, which must be downloaded separately by the developer and added to the `server/lib` folder of the project.
 
