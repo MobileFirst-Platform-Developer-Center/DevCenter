@@ -23,15 +23,16 @@ However, writing this logic on the server side could be faster and cleaner.</p>
 
 <h2 id="JSAPI">JavaScript API</h2>
 <h3 id="invoke">Calling a JavaScript adapter procedure from a JavaScript adapter</h3>
-When calling a JavaScript adapter procedure from another JavaScript adapter use the <code>WL.Server.invokeProcedure(invocationData)</code> API.
-This API is almost identical to its client-side counterpart, it enables you to invoke a procedure on any of your adapters.
+When calling a JavaScript adapter procedure from another JavaScript adapter use the <code>WL.Server.invokeProcedure(invocationData)</code> API.<br />
+This API enables to invoke a procedure on any of your adapters. <code>WL.Server.invokeProcedure(invocationData)</code> returns the result object
+retrieved from the called procedure.<br /><br />
 
-The <code>invocationData</code> parameter has the same format as the client-side API.
+The <code>invocationData</code> API format is:<br />
+<code>WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})</code>
+
 <p>{% highlight javascript %}
 WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
 {% endhighlight %}</p>
-
-However, while the client-side <code>invokeProcedure</code> uses a success handler, the server-side only returns the result object itself.
 
 <blockquote>Calling a Java adapter from a JavaScript adapter is not supported</blockquote>
 
