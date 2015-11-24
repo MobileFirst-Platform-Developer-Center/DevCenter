@@ -82,7 +82,7 @@ Here is a list of the mashup types and the corresponding adapter names:
   * Weather adapter  = getCityWeatherJava
 
 ###Mashup Sample Flow
-**Create a procedure / adapter call that create a request to Yahoo! Weather Service for each city and retrieves the corresponding data:**  
+**1. Create a procedure / adapter call that create a request to Yahoo! Weather Service for each city and retrieves the corresponding data:**  
 
 (getCitiesListJS adapter)
 {% highlight xml %}
@@ -128,7 +128,7 @@ function getYahooWeather(woeid) {
     (Convert the retrieved XML to JSON here...)
   {% endhighlight %}  
 
-**Create an SQL query and fetch the cities records from the database:**
+**2. Create an SQL query and fetch the cities records from the database:**
 
 (getCitiesListJS adapter)
 {% highlight javascript %}
@@ -147,7 +147,7 @@ PreparedStatement getAllCities = getSQLConnection().prepareStatement("select cit
 ResultSet rs = getAllCities.executeQuery();
 {% endhighlight %}  
 
-**Loop through the cities records and fetch the weather info for each city from Yahoo! Weather Service:**
+**3. Loop through the cities records and fetch the weather info for each city from Yahoo! Weather Service:**
 
 (getCitiesListJS adapter)
 {% highlight javascript %}
@@ -183,7 +183,7 @@ while (rs.next()) {
       ...
 {% endhighlight %}  
 
-**Iterating through the retrieved rss feed to fetch only the weather description,   
+**4. Iterating through the retrieved rss feed to fetch only the weather description,   
 put this values in a resultSet / JSONArray object and return it to the application:**
 
 (getCitiesListJS adapter)
