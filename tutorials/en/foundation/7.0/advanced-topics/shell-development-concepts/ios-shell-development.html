@@ -48,28 +48,28 @@ Use it to work with your Objective-C code.</p>
 <li>Open the generated iOS project in Xcode.</li>
 <li>Add an Objective-C<code> MyCustomAlert</code> class in the <code>Classes</code> folder.</li>
 <li>Add a method signature to the <code>MyCustomAlert.h</code> file and a method implementation to the <code>MyCustomAlert.m</code> file:
-<p>[code lang="obj-c"]<br />
-#import &quot;MyCustomAlert.h&quot;</p>
+<p>{% highlight objc %} <br />
+#import "MyCustomAlert.h"</p>
 <p>@implementation MyCustomAlert<br />
 +(void)showUIAlert:(NSString *)text{<br />
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Native Alert&quot;<br />
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Native Alert"<br />
                                         message:text<br />
                                         delegate:nil<br />
-                                        cancelButtonTitle:@&quot;Close&quot;<br />
+                                        cancelButtonTitle:@"Close"<br />
                                         otherButtonTitles:nil];<br />
   [alert show];<br />
 }<br />
 @end<br />
-[/code]
+ {% endhighlight %} 
 </li>
 <li>Import <code>MyCustomAlert.h</code> and call this method from the <code>viewDidLoad</code> method of the application <code>ViewController</code> instance:
-<p>[code lang="obj-c"]<br />
+<p>{% highlight objc %} <br />
 - (void)viewDidLoaad<br />
 {<br />
   [super viewDidLoad];<br />
-  [MyCustomAlert showUIAlert:@&quot;Hello from native iOS Shell&quot;];<br />
+  [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];<br />
 }<br />
-[/code]
+ {% endhighlight %} 
 </li>
 <li>Run your application to see the implemented functions.<br />
 <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_03_objc-result.png"><img class="aligncenter size-full wp-image-1211" src="{{ site.baseurl }}/assets/backup/10_03_objc-result.png" alt="10_03_objc-result" width="370" height="719" /></a>

@@ -27,7 +27,7 @@ The tutorial also explores the debugging of MobileFirst adapters and the tools t
 <h2 id="debugging_on_a_desktop_browser">Debugging on a desktop browser</h2>
 <p>Modern browsers, such as Chrome, Firefox, Safari, or Opera, provide an easy and convenient way to debug web apps.<br />
 As seen in the previous tutorials, during development you can preview applications in a desktop browser by using the <a href="../../hello-world/mobilefirst-console/" title="Introduction to MobileFirst Operations Console">MobileFirst Operations Console</a>.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/preview-common.png"><img src="{{ site.baseurl }}/assets/backup/preview-common.png" alt="preview-common" width="512" height="276" class="aligncenter size-full wp-image-6360" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/preview-common.png"/></p>
 <p>Many web tools for debugging are available on various desktop browsers, for example:</p>
 <ul>
 <li>FireBug</li>
@@ -43,7 +43,7 @@ You can also preview changes to HTML and CSS in real time by modifying the value
 <h2 id="debugging_with_mobile_browser_simulator">Debugging with the Mobile Browser Simulator</h2>
 <p>You can also use the Mobile Browser Simulator to preview and debug MobileFirst applications.<br />
 To access it, click the <strong>Preview</strong> button in the MobileFirst Operations Console.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/preview-buttons.png"><img src="{{ site.baseurl }}/assets/backup/preview-buttons.png" alt="preview-buttons" width="620" height="619" class="aligncenter size-full wp-image-6353" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/preview-buttons.png"/></p>
 <p>The Mobile Browser Simulator has several added values over <strong>Preview</strong> as <strong>Common Resources</strong>, for example:</p>
 <ul>
 <li>Preview environment-specific resources</li>
@@ -54,14 +54,14 @@ To access it, click the <strong>Preview</strong> button in the MobileFirst Opera
 <p><a name="debugging_with_ios_remote_web_inspector"></a></p>
 <h2 id="debugging_ios_remote_web_inspector">Debugging with iOS Remote Web Inspector</h2>
 <p>Starting in iOS 6, Apple introduced a remote web inspector for debugging web applications on iOS devices. To debug, make sure that the device (or simulator) has the <strong>Private Browsing</strong> option turned off.</p>
-<p>To enable Web Inspector on the device, click <strong>Settings &gt; Safari &gt; Advanced &gt; Web Inspector</strong>.<br />
+<p>To enable Web Inspector on the device, click <strong>Settings > Safari > Advanced > Web Inspector</strong>.<br />
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_ios_web_inspector.png"><img class="aligncenter size-full wp-image-730" src="{{ site.baseurl }}/assets/backup/03_04_ios_web_inspector.png" alt="03_04_ios_web_inspector" width="662" height="330" /></a></p>
 <ol>
 <li>To start debugging, connect the iOS device to a Mac, or start the simulator. Safari 6.0 or higher is required.<br />
-In Safari, go to <strong>Preferences &gt; Advanced</strong>, and select the <strong>Show Develop menu in menu bar</strong> checkbox.</p>
+In Safari, go to <strong>Preferences > Advanced</strong>, and select the <strong>Show Develop menu in menu bar</strong> checkbox.</p>
 <p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_safari_developer_menu.png"><img class="aligncenter size-full wp-image-731" src="{{ site.baseurl }}/assets/backup/03_04_safari_developer_menu.png" alt="03_04_safari_developer_menu" width="668" height="444" /></a>
 </li>
-<li>Now in Safari, select <strong>Develop &gt; [<em>your device ID</em>] &gt; [<em>your application HTML file</em>]</strong>.<br />
+<li>Now in Safari, select <strong>Develop > [<em>your device ID</em>] > [<em>your application HTML file</em>]</strong>.<br />
 The DOM can now be inspected. It is also possible to alter the CSS and run JavaScript commands, just as in the desktop inspector.</p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_safari_debugging.png"><img class="aligncenter wp-image-1507 size-large" src="{{ site.baseurl }}/assets/backup/03_04_safari_debugging-1024x725.png" alt="03_04_safari_debugging" width="980" height="693" /></a>
 </li>
@@ -92,7 +92,7 @@ You can find instructions to install Weinre on the <a href="http://people.apache
 <p>This command starts a Weinre server. The default port is <code>8888</code> but you can change it.</p>
 <h3>Target</h3>
 <p>The Weinre server must be accessible from the device that will be used for debugging. To make it accessible, add the following code line to the web application:</p>
-<p>[code lang="js"]&lt;script src=&quot;http://a.b.c:8888/target/target-script-min.js&quot;&gt;&lt;/script&gt;[/code]</p>
+<p>{% highlight js %} <script src="http://a.b.c:8888/target/target-script-min.js"></script> {% endhighlight %} </p>
 <p>Where a.b.c is the hostname or IP of the Weinre server.</p>
 <h3>Client</h3>
 <p>Before you can start debugging, make sure that the application is open and loaded on the browser with this URL:</p>
@@ -113,7 +113,7 @@ These APIs are multiplatform. The output destination changes according to the pl
 <p>You can test adapter procedures by using MobileFirst Studio.<br />
 To test a procedure:</p>
 <ol>
-<li>Right-click an adapter folder and select <strong>Run As &gt; Invoke MobileFirst Procedure</strong>.
+<li>Right-click an adapter folder and select <strong>Run As > Invoke MobileFirst Procedure</strong>.
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_deploy_mobilefirst_adapter.png"><img class="aligncenter wp-image-1509 size-full" src="{{ site.baseurl }}/assets/backup/03_04_deploy_mobilefirst_adapter.png" alt="03_04_deploy_mobilefirst_adapter" width="738" height="124" /></a></p>
 <p>The adapter and procedure are selected. </li>
 <li>Optionally, enter comma-separated parameters.

@@ -52,22 +52,22 @@ Extended authenticity protection requires additional steps, as explained in the 
 <li>Add the relevant authentication realm to a security test.
 <ul>
 <li>If a <code>mobileSecurityTest</code> is used, add the <code>testAppAuthenticity</code> child element to it:<br />
-[code lang="xml" highlight="2"]<br />
-&lt;mobileSecurityTest name=&quot;MyMobileAuthenticityTest&quot;&gt;<br />
-  &lt;testAppAuthenticity/&gt;<br />
-  &lt;testDeviceId provisioningType=&quot;none&quot; /&gt;<br />
-  &lt;testUser realm=&quot;myMobileLoginForm&quot; /&gt;<br />
-&lt;/mobileSecurityTest&gt;<br />
-[/code]
+{% highlight xml %} <br />
+<mobileSecurityTest name="MyMobileAuthenticityTest"><br />
+  <testAppAuthenticity/><br />
+  <testDeviceId provisioningType="none" /><br />
+  <testUser realm="myMobileLoginForm" /><br />
+</mobileSecurityTest><br />
+ {% endhighlight %} 
 </li>
 <li>If a <code>customSecurityTest</code> is used, add the <code>wl_authenticityRealm</code> realm to it:<br />
-[code lang="xml" highlight="2"]<br />
-&lt;customSecurityTest name=&quot;MyCustomAuthenticityTest&quot; &gt;<br />
-  &lt;test realm=&quot;wl_authenticityRealm&quot; step=&quot;1&quot;/&gt;<br />
-  &lt;test realm=&quot;wl_anonymousUserRealm&quot; isInternalUserID=&quot;true&quot; step=&quot;1&quot;/&gt;<br />
-  &lt;test realm=&quot;wl_deviceNoProvisioningRealm&quot; step=&quot;2&quot; isInternalDeviceID=&quot;true&quot;/&gt;<br />
-&lt;/customSecurityTest&gt;<br />
-[/code]
+{% highlight xml %} <br />
+<customSecurityTest name="MyCustomAuthenticityTest" ><br />
+  <test realm="wl_authenticityRealm" step="1"/><br />
+  <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"/><br />
+  <test realm="wl_deviceNoProvisioningRealm" step="2" isInternalDeviceID="true"/><br />
+</customSecurityTest><br />
+ {% endhighlight %} 
 </li>
 </ul>
 </li>
@@ -80,9 +80,9 @@ Extended authenticity protection requires additional steps, as explained in the 
 <ul>
 <li><strong>By using the <code>wladm</code> program</strong><br />
 Use the <code>wladm</code> program (provided in the MobileFirst installation directory) to run the <code>enable extended-authenticity</code> command:<br />
-[code lang="Java"]<br />
-wladm enable extended-authenticity src-wlapp-file device-file &gt; dest-wlapp-file<br />
-[/code]<br />
+{% highlight Java %} <br />
+wladm enable extended-authenticity src-wlapp-file device-file > dest-wlapp-file<br />
+ {% endhighlight %} <br />
 <em>src-wlapp-file</em>  => Original binary app file (.wlapp)<br />
 <em>device-file</em>     => Binary mobile app file (.apk, .ipa, or .xap)<br />
 <em>dest-wlapp-file</em> => Output binary app file (.wlapp)</p>
@@ -90,11 +90,11 @@ wladm enable extended-authenticity src-wlapp-file device-file &gt; dest-wlapp-fi
 </li>
 <li><strong>By using the <code>wladm</code> Ant task</strong><br />
 Use the <code>wladm</code> Ant task (provided in the MobileFirst installation directory) to run the <code>enable-extended-authenticity</code> command:<br />
-[code lang="XML"]<br />
-&lt;enable-extended-authenticity srcwlappfile=&quot;original-.wlapp-file&quot;<br />
-    devicefile=&quot;device file(.apk, .ipa, or .xap)&quot;<br />
-    destwlappfile=&quot;output-.wlapp-file&quot;/&gt;<br />
-[/code]
+{% highlight XML %} <br />
+<enable-extended-authenticity srcwlappfile="original-.wlapp-file"<br />
+    devicefile="device file(.apk, .ipa, or .xap)"<br />
+    destwlappfile="output-.wlapp-file"/><br />
+ {% endhighlight %} 
   </li>
 </ul>
 <li>After running the <code>wladm</code> command or Ant task, deploy the output file to MobileFirst Server instance.</li>
@@ -102,7 +102,7 @@ Use the <code>wladm</code> Ant task (provided in the MobileFirst installation di
 </ol>
 <h3 id="checkAuthenticityLevel">Check the application authenticity level by using the MobileFirst Operations Console</h3>
 <p>You can use the MobileFirst Operations Console to see the authenticity level of an application.<br />
-[caption id="attachment_7552" align="aligncenter" width="1000"]<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/ExtendedAuthenticityIMG2.png"><img src="{{ site.baseurl }}/assets/backup/ExtendedAuthenticityIMG2.png" alt="Check authenticity level through MobileFirst Console" width="1000" height="342" class="size-full wp-image-7552" /></a> Check authenticity level through MobileFirst Console[/caption]</p>
+[caption id="attachment_7552" align="aligncenter" width="1000"]<img src="{{ site.baseurl }}/assets/backup/ExtendedAuthenticityIMG2.png"/> Check authenticity level through MobileFirst Console[/caption]</p>
 
 <h2 id="environmentSpecific">Environment-specific setup</h2>
 <p>For basic authenticity, the following steps are required.<br />

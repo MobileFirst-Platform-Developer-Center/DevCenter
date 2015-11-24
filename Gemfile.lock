@@ -32,14 +32,15 @@ GEM
       listen (~> 3.0)
     kramdown (1.9.0)
     liquid (3.0.6)
-    listen (3.0.4)
+    listen (3.0.5)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     mercenary (0.3.5)
     mini_portile (0.6.2)
-    nokogiri (1.6.6.3)
+    nokogiri (1.6.6.4)
       mini_portile (~> 0.6.0)
     parallel (1.6.1)
+    pdfkit (0.8.2)
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -49,6 +50,7 @@ GEM
     sass (3.4.19)
     typhoeus (0.8.0)
       ethon (>= 0.8.0)
+    wkhtmltopdf-binary (0.9.9.3)
     yell (2.0.5)
 
 PLATFORMS
@@ -59,7 +61,9 @@ DEPENDENCIES
   jekyll
   jekyll-feed
   jekyll-paginate
+  pdfkit
   redcarpet
+  wkhtmltopdf-binary
 
 BUNDLED WITH
    1.10.6

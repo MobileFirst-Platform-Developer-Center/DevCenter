@@ -32,14 +32,14 @@ Go to:
 
 <h3>Creating an event source</h3>
 Create a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).
-[code lang="js"]
+{% highlight js %} 
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
     securityTest:'PushApplication-strong-mobile-securityTest'
 });
-[/code]
+ {% endhighlight %} 
 
 <ul>
 <li><code>name</code> – A name by which the event source is referenced.</li>
@@ -51,7 +51,7 @@ WL.Server.createEventSource({
 
 Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-[code lang="js"]function submitNotification(userId, notificationText) {
+{% highlight js %} function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
     if (userSubscription === null) {
@@ -66,35 +66,35 @@ Notifications can be either polled from, or pushed by, the back-end system. In t
     return {
         result: "Notification sent to user :: " + userId
     };
-}[/code]
+} {% endhighlight %} 
 
 <h2 id="clientSideApi">Notification API - Client-side</h2>
 
 The first step is to create an instance of the <code>WLClient</code> class:
 
-[code lang="csharp"]WLClient client = WLClient.getInstance();[/code]
+{% highlight csharp %} WLClient client = WLClient.getInstance(); {% endhighlight %} 
 
 You derive all push notification operations from the <code>WLPush</code> class.
 
 <ul>
 <code>getPush</code>  –  Use this method to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.
 
-[code lang="csharp"]WLPush push = client.getPush();[/code]
+{% highlight csharp %} WLPush push = client.getPush(); {% endhighlight %} 
 
 <code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the Google Cloud Messaging (GCM) server to receive push notifications.
 
-[code lang="csharp"]
+{% highlight csharp %} 
  OnReadyToSubscribeListener myOnReadyListener = new OnReadyToSubscribeListener();
  push.onReadyToSubscribeListener = myOnReadyListener;
-[/code]
+ {% endhighlight %} 
 
 The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.
 
 
-[code lang="csharp"]
+{% highlight csharp %} 
 public void onReadyToSubscribe()
 {...}
-[/code]
+ {% endhighlight %} 
 </ul>
 
 <h3><code>WLPush.registerEventSourceCallback</code></h3>
@@ -104,24 +104,24 @@ To register an alias on a particular event source, use the <code>WLPush.register
 The API takes the following arguments:
 
 <ul>
-<span class="inline-code">alias</span> - An alias name.
-<span class="inline-code">Adaptername</span> - Adapter in which the event source is defined.
-<span class="inline-code">EventSourceName</span> - The event source on which the alias is called.
+<code>alias</code> - An alias name.
+<code>Adaptername</code> - Adapter in which the event source is defined.
+<code>EventSourceName</code> - The event source on which the alias is called.
 </ul>
 
 Example:
 
-[code lang="csharp"]
+{% highlight csharp %} 
 WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);
-[/code]
+ {% endhighlight %} 
 
 Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.
 
-[code lang="csharp"]
+{% highlight csharp %} 
 public void onReadyToSubscribe()
 {
   WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter","PushEventSource", this);
-}[/code]
+} {% endhighlight %} 
 
 <br clear="all"/>
 
@@ -140,11 +140,11 @@ The API takes the following arguments:
 
 Example:
 
-[code lang="csharp"]
+{% highlight csharp %} 
 WLPush push = WLClient.getInstance().getPush();
 MySubscribeListener mySubListener = new MySubscribeListener();
 push.subscribe("myPush", null, mySubListener);
-[/code]
+ {% endhighlight %} 
 
 <code>MySubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:
 
@@ -169,11 +169,11 @@ The API takes the following arguments:
 
 Example:
 
-[code lang="csharp"]
+{% highlight csharp %} 
 WLPush push = WLClient.getInstance().getPush();
 MyUnsubscribeListener myUnsubListener = new MyUnsubscribeListener();
 push.unsubscribe("myPush", myUnsubListener);
-[/code]
+ {% endhighlight %} 
 
 <code>MyUnsubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:
 
@@ -188,34 +188,34 @@ push.unsubscribe("myPush", myUnsubListener);
 
 <code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.
 
-[code lang="csharp"]
+{% highlight csharp %} 
 WLClient.getInstance().getPush().isSubscribed("myPush");
-[/code]
+ {% endhighlight %} 
 
 <h3>Receiving a push notification</h3>
 
 When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.
 
-[code lang="csharp"]
+{% highlight csharp %} 
 class OnReadyToSubscribeListener : WLOnReadyToSubscribeListener, WLEventSourceListener{...}
-[/code]
+ {% endhighlight %} 
 
 The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.
 
-[code lang="csharp"]
+{% highlight csharp %} 
 WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);
-[/code]
+ {% endhighlight %} 
 
 The <code>onReceive</code> method displays the received notification on the screen.
 
-[code lang="csharp"]
+{% highlight csharp %} 
 public void onReceive(String props, String payload)
 {
      Debug.WriteLine("Props: " + props);
      Debug.WriteLine("Payload: " + payload);
 
 }
-[/code]
+ {% endhighlight %} 
 
 <h2 id="sample">Sample application</h2>
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsNativeProject.zip">Click to download</a> the Studio project.

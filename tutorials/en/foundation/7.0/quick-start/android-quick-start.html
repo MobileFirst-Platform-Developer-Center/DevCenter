@@ -55,10 +55,10 @@ mfp deploy
             <li>Right-click on any of the added <code>.jar</code> files and select <strong>Add as library</strong> to add all libraries</li>
             <li>Create an <strong>assets</strong> folder under <strong>src\main</strong> and paste into it the <code>wlclient.properties</code> file</li>
             <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:
-[code lang="xml"]
+{% highlight xml %} 
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-<uses-permission android:name="android.permission.GET_TASKS" />[/code]
+<uses-permission android:name="android.permission.GET_TASKS" /> {% endhighlight %} 
             </li>
             <li>Add the MobileFirst UI activity in the <code>AndroidManifest.xml</code> file:
 {% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %}</li>

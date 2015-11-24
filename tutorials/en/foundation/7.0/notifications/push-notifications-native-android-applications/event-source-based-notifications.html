@@ -30,14 +30,14 @@ Go to:
 
 <h3>Creating an event source</h3>
 Create a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).
-[code lang="js"]
+{% highlight js %} 
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
     securityTest:'PushApplication-strong-mobile-securityTest'
 });
-[/code]
+ {% endhighlight %} 
 
 <ul>
 <li><code>name</code> – A name by which the event source is referenced.</li>
@@ -49,7 +49,7 @@ WL.Server.createEventSource({
 
 Notifications can be either pulled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-[code lang="js"]function submitNotification(userId, notificationText) {
+{% highlight js %} function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
     if (userSubscription === null) {
@@ -64,35 +64,35 @@ Notifications can be either pulled from, or pushed by, the back-end system. In t
     return {
         result: "Notification sent to user :: " + userId
     };
-}[/code]
+} {% endhighlight %} 
 
 <h2 id="clientSideApi">Notification API - Client-side</h2>
 
 The first step is to create an instance of the <code>WLClient</code> class:
 
-[code lang="java"]final WLClient client = WLClient.createInstance(this);[/code]
+{% highlight java %} final WLClient client = WLClient.createInstance(this); {% endhighlight %} 
 
 You derive all push notification operations from the <code>WLPush</code> class.
 
 <ul>
 <code>getPush</code>  –  Use this method to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.
 
-[code lang="java"]WLPush push = client.getPush();[/code]
+{% highlight java %} WLPush push = client.getPush(); {% endhighlight %} 
 
 <code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the GCM server to receive push notifications.
 
-[code lang="java"]
+{% highlight java %} 
 client.getPush().setOnReadyToSubscribeListener(listener);
 client.connect(listener);
-[/code]
+ {% endhighlight %} 
 
 The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.
 
 
-[code lang="java"]
+{% highlight java %} 
 @Override
 public void onReadyToSubscribe() {.....}
-[/code]
+ {% endhighlight %} 
 </ul>
 
 <h3><code>WLPush.registerEventSourceCallback</code></h3>
@@ -109,16 +109,16 @@ The API takes the following arguments:
 
 Example:
 
-[code lang="java"]
+{% highlight java %} 
 WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);
-[/code]
+ {% endhighlight %} 
 
 Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.
 
-[code lang="java"]@Override
+{% highlight java %} @Override
 public void onReadyToSubscribe() {
    WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);
-}[/code]
+} {% endhighlight %} 
 
 <br clear="all"/>
 
@@ -129,36 +129,36 @@ public void onReadyToSubscribe() {
 
 <code>onPause()</code> must call the <code>setForeground(false)</code> method of the <code>WLPush</code> instance to receive the notification in the notification bar when the application is paused.
 
-[code lang="java"]
+{% highlight java %} 
 @Override
 protected void onPause() {
     super.onPause();
     if (push != null)
     push.setForeground(false);
 }
-[/code]
+ {% endhighlight %} 
 
 <code>onResume()</code> must call the <code>setForeground(true)</code> method of the <code>WLPush</code> instance to receive the notification in the callback of the application.
 
-[code lang="java"]
+{% highlight java %} 
 @Override
 protected void onResume() {
     super.onResume();
     if (push != null)
     push.setForeground(true);
 }
-[/code]
+ {% endhighlight %} 
 
 <code>onDestroy()</code> must call the <code>unregisterReceivers</code> method of the <code>WLPush</code> instance to avoid leak exceptions from the receiver when the application exits.
 
-[code lang="java"]
+{% highlight java %} 
 @Override
 protected void onDestroy() {
     super.onDestroy();
     if (push != null)
     push.unregisterReceivers();
 }
-[/code]
+ {% endhighlight %} 
 </ul>
 
 <h3>Subscribing to push notifications</h3>
@@ -176,10 +176,10 @@ The API takes the following arguments:
 
 Example:
 
-[code lang="java"]
+{% highlight java %} 
 WLClient client = WLClient.getInstance();
 client.getPush().subscribe("myAndroid",new WLPushOptions(), new MyListener(MyListener.MODE_SUBSCRIBE));
-[/code]
+ {% endhighlight %} 
 
 MyListener Implements <code>WLResponseListener</code> and provides the following callback functions:
 
@@ -204,10 +204,10 @@ The API takes the following arguments:
 
 Example:
 
-[code lang="java"]
+{% highlight java %} 
 WLClient client = WLClient.getInstance();
 client.getPush().unsubscribe("myAndroid",new MyListener(MyListener.MODE_UNSUBSCRIBE));
-[/code]
+ {% endhighlight %} 
 
 MyListener Implements <code>WLResponseListener</code> and provides the following callback functions:
 
@@ -222,40 +222,40 @@ MyListener Implements <code>WLResponseListener</code> and provides the following
 
 <code>isPushSupported()</code> - Indicates whether push notifications are supported by the device.
 
-[code lang="java"]
+{% highlight java %} 
 WLClient client = WLClient.getInstance();
 boolean supported = client.getPush().isPushSupported();
-[/code]
+ {% endhighlight %} 
 
 <code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.
 
-[code lang="java"]
+{% highlight java %} 
 WLClient client = WLClient.getInstance();
 boolean bIsSubscribed = client.getPush().isSubscribed("myAndroid");
-[/code]
+ {% endhighlight %} 
 
 <h3>Receiving a push notification</h3>
 
 When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.
 
-[code lang="java"]
+{% highlight java %} 
 public class MyListener implements WLOnReadyToSubscribeListener, WLResponseListener, WLEventSourceListener{
-[/code]
+ {% endhighlight %} 
 
 The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.
 
-[code lang="java"]
+{% highlight java %} 
 WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid", "PushAdapter","PushEventSource", this );
-[/code]
+ {% endhighlight %} 
 
 The <code>onReceive</code> method displays the received notification on the screen.
 
-[code lang="java"]
+{% highlight java %} 
 @Override
 public void onReceive(String arg0, String arg1) {
     AndroidNativePush.updateTextView("Notification received  " + arg0);
 }
-[/code]
+ {% endhighlight %} 
 
 If the application is not running, the notification icon appears on the notification bar at the top of the screen.
 
@@ -272,17 +272,17 @@ The sample contains two projects:
 Make sure to update the <code>wlclient.properties</code> file in AndroidNativePushProject with the relevant server settings.</li>
 </ul>
 
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushRun.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushRun.png" alt="NativeAndroidPushRun" width="1126" height="629" class="alignnone size-full wp-image-3035" /></a>
+<img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushRun.png"/>
 
 In MobileFirst Studio, right-click <strong>Push Adapter</strong> and select <strong>Run As > Invoke MobileFirst Procedure</strong>.
 
 Call <code>submitNotification</code> to send a push notification.
 
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSSendnotificationmobilefirst.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSSendnotificationmobilefirst.png" alt="nativeiOSSendnotificationmobilefirst" width="596" height="389" class="alignnone size-full wp-image-3961" /></a>
+<img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/nativeiOSSendnotificationmobilefirst.png"/>
 
 <em>Push notification received - application in background</em>
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushNotificationReceivedAppBackground.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushNotificationReceivedAppBackground.png" alt="NativeAndroidPushNotificationReceivedAppBackground" width="373" height="30" class="alignnone size-full wp-image-2978" /></a>
+<img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushNotificationReceivedAppBackground.png"/>
 
 <em>Push notification received - application in foreground</em>
 
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushReceivedNotification.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushReceivedNotification.png" alt="NativeAndroidPushReceivedNotification" width="373" height="631" class="alignnone size-full wp-image-2980" /></a>
+<img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/NativeAndroidPushReceivedNotification.png"/>

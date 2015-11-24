@@ -1,6 +1,6 @@
 ---
 title: Please take part in our Mobile Developers' Survey
-date: 2015-11-06 19:54:36.000000000 +02:00
+date: 2015-11-17
 tags:
 - Survey
 - MobileFirst_Platform

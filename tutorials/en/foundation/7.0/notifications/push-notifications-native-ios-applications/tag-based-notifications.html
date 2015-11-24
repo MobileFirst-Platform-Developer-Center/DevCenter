@@ -24,7 +24,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h2>Setting up tags</h2>
 Tags are defined in the <code>application-descriptor.xml</code> file:
 
-[code lang="xml"]<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.REPLACE-WITH-BUNDLE-ID" id="NativeiOSTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
+{% highlight xml %} <nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.REPLACE-WITH-BUNDLE-ID" id="NativeiOSTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
 ...
 ...
 ...
@@ -37,7 +37,7 @@ Tags are defined in the <code>application-descriptor.xml</code> file:
         <name>my tag 2</name>
         <description>About my tag 2</description>
     </tag>
-</tags>[/code]
+</tags> {% endhighlight %} 
 
 <h2>Tag-based notifications API methods</h2>
 <h4>Client-side methods:</h4>
@@ -58,17 +58,17 @@ Tags are defined in the <code>application-descriptor.xml</code> file:
 
 When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is called. The logic to handle the notification should be defined here.
 
-[code lang="obj-c"]
+{% highlight objc %} 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }
-[/code]
+ {% endhighlight %} 
 
 <ul>
     <li>userInfo - A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
 </ul>
 
-[code lang="obj-c"][[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];[/code]
+{% highlight objc %} [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener]; {% endhighlight %} 
 <ul>
 <li>This method registers a listener to be used for push notifications. This listener should implement the OnReadyToSubscribe() method.</li>
 </ul>

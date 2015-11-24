@@ -47,13 +47,14 @@ relevantTo: [ios,android,windowsphone8,hybrid]
 <ul>
 <li>The following API call results in a session hit that is visualized on the MobileFirst Operational Analytics:
     </li>
-<p>    {% highlight javascript %}</p>
-<p>	// a 'session hit' will be recorded upon a successful connection<br />
-	WL.Client.connect();{% endhighlight %}</p>
+   {% highlight javascript %}
+	// a 'session hit' will be recorded upon a successful connection
+	WL.Client.connect();{% endhighlight %}
 <li>The following API call results in an adapter hit that is visualized on the MobileFirst Operational Analytics:</li>
-<p>    {% highlight javascript %}</p>
-<p>	// an 'adapter hit' will be recorded upon a successful adapter invocation<br />
-	WL.Client.invokeProcedure({...});{% endhighlight %}</p>
+   {% highlight javascript %}
+// an 'adapter hit' will be recorded upon a successful adapter invocation
+	WL.Client.invokeProcedure({...});
+    {% endhighlight %}
 </ul>
 <h2 id="notificationActivities">Capturing data - Notification Activities</h2>
 <p>When a push notification occurs, the event is captured automatically and forwarded to the MobileFirst Operational Analytics.</p>
@@ -65,37 +66,43 @@ relevantTo: [ios,android,windowsphone8,hybrid]
 <h2 id="clientLogs">Capturing data - Client Logs</h2>
 <p>A MobileFirst application can be instrumented with client logs to record client debugging information and events.</p>
 <p>The following APIs are available to create client logs that are then forwarded to the MobileFirst Operational Analytics where they can be searched and downloaded.</p>
-<p>{% highlight javascript %}<br />
-// Set the log level to trace so all logs are captured<br />
-WL.Logger.config({"level": "TRACE"});</p>
-<p>// Create a client side log that is persisted locally until sent to the server<br />
-WL.Logger.trace("Create a client log at the TRACE level.");<br />
-WL.Logger.debug("Create a client log at the DEBUG level.");<br />
-WL.Logger.info("Create a client log at the INFO level.");<br />
-WL.Logger.warn("Create a client log at the WARN level.");<br />
-WL.Logger.error("Create a client log at the ERROR level.");<br />
-WL.Logger.fatal("Create a client log at the FATAL level.");{% endhighlight %}</p>
+<p>{% highlight javascript %}
+// Set the log level to trace so all logs are captured
+WL.Logger.config({"level": "TRACE"});
+// Create a client side log that is persisted locally until sent to the server
+WL.Logger.trace("Create a client log at the TRACE level.");
+WL.Logger.debug("Create a client log at the DEBUG level.");
+WL.Logger.info("Create a client log at the INFO level.");
+WL.Logger.warn("Create a client log at the WARN level.");
+WL.Logger.error("Create a client log at the ERROR level.");
+WL.Logger.fatal("Create a client log at the FATAL level.");
+{% endhighlight %}
+
 <h2 id="analyticsLogs">Analytics Logs</h2>
 <p>Client-side logs are captured based on the logging level that is set on the client. If you want to create analytics logs that are always captured regardless of the logging level, you can use the <code>WL.Analytics</code> API.</p>
-<p>{% highlight javascript %}<br />
-// Create an analytics log message<br />
-WL.Analytics.log("Analytics log message");</p>
-<p>// Create a custom activity<br />
-WL.Analytics.log({_activity: "customActivity"});{% endhighlight %}</p>
+{% highlight javascript %}
+// Create an analytics log message
+WL.Analytics.log("Analytics log message");
+// Create a custom activity
+WL.Analytics.log({_activity: "customActivity"});
+{% endhighlight %}
+
 <h2>Sending data</h2>
 <p>Logs that are captured by the client-side logging APIs and the <code>WL.Analytics</code> APIs are sent to the server automatically upon a successful server connection or a successful adapter call.</p>
-<p>{% highlight javascript %}</p>
-<p>// Logs sent upon successful connection<br />
-WL.Client.connect();</p>
-<p>// Logs sent upon successful adapter invocation<br />
-WL.Client.invokeProcedure({...});{% endhighlight %}</p>
-<p>This automatic behavior can be disabled by using the following call:</p>
-<p>{% highlight javascript %}</p>
-<p>// Disable automatic sending of client and analytics logs<br />
-WL.Logger.config({autoSendLogs: false});{% endhighlight %}</p>
-<p>If you want to send this data more frequently, you can use the following API calls:</p>
-<p>{% highlight javascript %}</p>
-<p>// Send client debug logs<br />
-WL.Logger.send();</p>
-<p>// Send analytics logs<br />
-WL.Analytics.send();{% endhighlight %}</p>
+{% highlight javascript %}
+// Logs sent upon successful connection
+WL.Client.connect();
+// Logs sent upon successful adapter invocation
+WL.Client.invokeProcedure({...});
+{% endhighlight %}</p>
+This automatic behavior can be disabled by using the following call:</p>
+{% highlight javascript %}
+// Disable automatic sending of client and analytics logs
+WL.Logger.config({autoSendLogs: false});
+{% endhighlight %}
+If you want to send this data more frequently, you can use the following API calls:
+{% highlight javascript %}
+// Send client debug logs
+WL.Logger.send();
+// Send analytics logs
+WL.Analytics.send();{% endhighlight %}

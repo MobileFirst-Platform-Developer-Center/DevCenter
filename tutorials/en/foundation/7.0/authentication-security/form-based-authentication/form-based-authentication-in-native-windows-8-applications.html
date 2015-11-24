@@ -23,13 +23,13 @@ relevantTo: [windowsphone8]
 <h2 id="createClientSide">Creating the client-side authentication components</h2>
 <p>Create a native Windows 8 application and add the MobileFirst native APIs as explained in the documentation.</p>
 <h3>FormChallengeHandler</h3>
-<p>Create a <span class="inline-code">FormChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span>.<br />
-Your <span class="inline-code">FormChallengeHandler</span> class must implement the <span class="inline-code">isCustomResponse</span> and <span class="inline-code">handleChallenge</span> methods.</p>
-<p>The <span class="inline-code">isCustomResponse</span> method checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
-[code lang="csharp"]<br />
+<p>Create a <code>FormChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
+Your <code>FormChallengeHandler</code> class must implement the <code>isCustomResponse</code> and <code>handleChallenge</code> methods.</p>
+<p>The <code>isCustomResponse</code> method checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
+{% highlight csharp %} <br />
 public override bool isCustomResponse(WLResponse response)<br />
 {<br />
-    if (response == null || response.getResponseText() == null || !response.getResponseText().Contains(&quot;j_security_check&quot;))<br />
+    if (response == null || response.getResponseText() == null || !response.getResponseText().Contains("j_security_check"))<br />
     {<br />
         return false;<br />
     }<br />
@@ -38,50 +38,50 @@ public override bool isCustomResponse(WLResponse response)<br />
         return true;<br />
     }<br />
 }<br />
-[/code]</p>
-<p>The <span class="inline-code">handleChallenge</span> method is called after the <span class="inline-code">isCustomResponse</span> method returns <code>true</code>.<br />
+ {% endhighlight %} </p>
+<p>The <code>handleChallenge</code> method is called after the <code>isCustomResponse</code> method returns <code>true</code>.<br />
 Within this method, present your login form. Different approaches are available.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %} <br />
 public override void handleChallenge(JObject response)<br />
 {<br />
   CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,<br />
-async () =&gt;<br />
+async () =><br />
   {<br />
      MainPage._this.LoginGrid.Visibility = Visibility.Visible;<br />
   });<br />
 }<br />
-[/code]</p>
-<p>From the login form , credentials are passed to the <span class="inline-code">FormChallengeHandler</span> class. Use the <span class="inline-code">submitLoginForm()</span> method to send input data to the authenticator.<br />
-[code lang="csharp"]<br />
+ {% endhighlight %} </p>
+<p>From the login form , credentials are passed to the <code>FormChallengeHandler</code> class. Use the <code>submitLoginForm()</code> method to send input data to the authenticator.<br />
+{% highlight csharp %} <br />
 public void sendResponse(String username, String password)<br />
 {<br />
-   Dictionary&lt;String, String&gt; parms = new Dictionary&lt;String, String&gt;();</p>
-<p>   parms.Add(&quot;j_username&quot;, username);<br />
-   parms.Add(&quot;j_password&quot;, password);</p>
-<p>   submitLoginForm(&quot;j_security_check&quot;, parms, null, 0, &quot;post&quot;);<br />
+   Dictionary<String, String> parms = new Dictionary<String, String>();</p>
+<p>   parms.Add("j_username", username);<br />
+   parms.Add("j_password", password);</p>
+<p>   submitLoginForm("j_security_check", parms, null, 0, "post");<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p><br clear="all" /></p>
 <h3>MainPage</h3>
-<p>Within the <code>MainPage</code> class, connect to MobileFirst Server, register your <span class="inline-code">challengeHandler</span> and invoke the protected adapter procedure.<br />
+<p>Within the <code>MainPage</code> class, connect to MobileFirst Server, register your <code>challengeHandler</code> and invoke the protected adapter procedure.<br />
 The procedure invocation triggers MobileFirst Server to send a challenge that will trigger our challenge handler.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %} <br />
 WLClient wlClient = WLClient.getInstance();</p>
 <p>FormChallengeHandler ch = new FormChallengeHandler();<br />
-wlClient.registerChallengeHandler((BaseChallengeHandler&lt;JObject&gt;)ch);</p>
+wlClient.registerChallengeHandler((BaseChallengeHandler<JObject>)ch);</p>
 <p>MyResponseListener mylistener = new MyResponseListener(this);<br />
 wlClient.connect(mylistener);</p>
-<p>[/code]</p>
+<p> {% endhighlight %} </p>
 <p>Because the native API not protected by a defined security test, no login form is presented during server connection.<br />
-Invoke the protected adapter procedure. The login form is presented by the <span class="inline-code">challengeHandler</span>.<br />
-[code lang="csharp"]<br />
-WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;DummyAdapter&quot;, &quot;getSecretData&quot;);<br />
+Invoke the protected adapter procedure. The login form is presented by the <code>challengeHandler</code>.<br />
+{% highlight csharp %} <br />
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");<br />
 Object[] parameters = { 0 };<br />
 invocationData.setParameters(parameters);<br />
 MyInvokeListener listener = new MyInvokeListener(this);<br />
 WLClient.getInstance().invokeProcedure(invocationData, listener, new WLRequestOptions());<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="sample">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeFormBasedAuthProject.zip">Click to download</a> the Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/Win8NativeFormBasedAuthProject.zip">Click to download</a> the Native project.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/01/Win8FormBasedAuthSample.png"><img src="{{ site.baseurl }}/assets/backup/Win8FormBasedAuthSample.png" alt="Win8FormBasedAuthSample" width="2014" height="512" class="aligncenter size-full wp-image-7544" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/Win8FormBasedAuthSample.png"/></p>

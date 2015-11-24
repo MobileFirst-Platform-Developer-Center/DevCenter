@@ -2,24 +2,22 @@
 layout: tutorial
 title: iOS shell development
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ShellDevelopmentProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ShellDevelopmentProject.zip">Download Studio project</a>
-        </li>
-</ul>
 <h2>Overview</h2>
 <p>In this tutorial, you learn how to add an iOS environment to your shell component, test application, and inner application.</p>
 <h2>Adding an iOS environment to a shell component</h2>
 <p>Start by adding an iPhone environment to your shell component by following the same procedure as for a standard IBM MobileFirst Platform Foundation application.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_new-environment.png"><br />
-<img class="aligncenter wp-image-1198 size-full" src="{{ site.baseurl }}/assets/backup/10_02_new-environment.png" alt="10_02_new-environment" width="501" height="394" /></a></p>
-<p><img class="alignright wp-image-1209 size-full" src="{{ site.baseurl }}/assets/backup/10_03_project-structure.png" alt="10_03_project-structure" width="381" height="505" /></p>
+<img src="{{ site.baseurl }}/assets/backup/10_02_new-environment.png" />
+
+<img src="{{ site.baseurl }}/assets/backup/10_03_project-structure.png" style="float:right"/>
 <p>The following folder structure is created:</p>
 <ul>
 <li><strong>css, images, fragments</strong> and <strong>js</strong> contain resources that override or extend resources from the Shell component <strong>common</strong> folder.</li>
 <li>The <strong>native</strong> folder contains an application template to be used when you create an iOS project from an inner application.</li>
-<li>The <strong>nativeEmptyApp</strong> folder contains an application that is built from the shell component and an empty inner application as described in the <a title="Shell development concepts" href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started/advanced-topics/shell-development-concepts/">Shell Development Concepts</a> module.</li>
+<li>The <strong>nativeEmptyApp</strong> folder contains an application that is built from the shell component and an empty inner application as described in the <a title="Shell development concepts" href="../../advanced-topics/shell-development-concepts/">Shell Development Concepts</a> module.</li>
 </ul>
 <p>The files in the <strong>native</strong> folder are templates that are used to create the inner application iOS project.<br />
 Some of the folder and file names contain placeholder elements that are populated during the build.<br />
@@ -38,32 +36,32 @@ Use it to work with your Objective C code.</p>
 <p>Open the generated iOS project in Xcode.<br />
 Add an Objective C <strong>MyCustomAlert</strong> class in the <strong>Classes</strong> folder.<br />
 Add a method signature to <strong>MyCustomAlert.h</strong>, and method implementation to <strong>MyCustomAlert.m</strong> files:</p>
-<p>{% highlight obj-c %}<br />
-#import "MyCustomAlert.h"</p>
-<p>@implementation MyCustomAlert<br />
-+(void)showUIAlert:(NSString *)text{<br />
-  UIAlertView *alert = [[UIAlert alloc] initWithTitle:@"Native Alert"<br />
-                                        message:text<br />
-                                        delegate:nil<br />
-                                        cancelButtonTitle:@"Close"<br />
-                                        otherButtonTitles:nil];<br />
-  [alert show];<br />
-  [alert release];<br />
-}<br />
-@end<br />
-{% endhighlight %}</p>
-<p>Import <strong>MyCustomAlert.h</strong> and call this method from the <strong>viewDidLoad</strong> method of the application <strong>ViewController</strong>:</p>
-<p>{% highlight obj-c %}<br />
-- (void)viewDidLoaad<br />
-{<br />
-  [super viewDidLoad];<br />
-  [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];<br />
-}<br />
+<p>{% highlight objc %}
+#import "MyCustomAlert.h"
+<p>@implementation MyCustomAlert
++(void)showUIAlert:(NSString *)text{
+  UIAlertView *alert = [[UIAlert alloc] initWithTitle:@"Native Alert"
+    message:text
+    delegate:nil
+    cancelButtonTitle:@"Close"
+    otherButtonTitles:nil];
+  [alert show];
+  [alert release];
+}
+@end
+{% endhighlight %}
+<p>Import <strong>MyCustomAlert.h</strong> and call this method from the <strong>viewDidLoad</strong> method of the application <strong>ViewController</strong>:
+<p>{% highlight objc %}
+- (void)viewDidLoaad
+{
+  [super viewDidLoad];
+  [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];
+}
 {% endhighlight %}</p>
 <p>Run your application to see the implemented functions.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_03_objc-result.png"><img class="aligncenter size-full wp-image-1211" src="{{ site.baseurl }}/assets/backup/10_03_objc-result.png" alt="10_03_objc-result" width="370" height="719" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/10_03_objc-result.png"/>
 <p>Finally, copy your Objective C code from the iPhone project that you used to develop it back to the shell component.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_03_copy_files.png"><img class="aligncenter size-full wp-image-1212" src="{{ site.baseurl }}/assets/backup/10_03_copy_files.png" alt="10_03_copy_files" width="1316" height="686" /></a><br />
+<img src="{{ site.baseurl }}/assets/backup/10_03_copy_files.png"/>
 The custom Objective C classes added to the iPhone project can be copied, to keep the folder structure intact.<br />
 Xcode stores its own project structure in a <strong>project.pbxproj</strong> file. Therefore, the content of this file must also be copied from the test application to the shell component.</p>
 <p>The <strong>native</strong> folder of the test application is not being rebuilt from the shell component each time you build the iOS application.<br />
@@ -77,7 +75,7 @@ Doing so helps inner application developers to test their code without the need 
 For example: to develop and test an iPhone application without a Mac.<br />
 To use the NativeEmptyApp, open it as an Xcode project.</p>
 <p>When the application is built and deployed to an iOS device, go to Settings to change the URL from which this inner application content is loaded.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_03_ios_settings.png"><img class="aligncenter size-full wp-image-1213" src="{{ site.baseurl }}/assets/backup/10_03_ios_settings.png" alt="10_03_ios_settings" width="770" height="683" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/10_03_ios_settings.png" />
 <p><strong>Important</strong>:<br />
 NativeEmptyApp cannot load a remote inner application that has the device provisioning enabled.<br />
 NativeEmptyApp can be used only in the development environment.</p>

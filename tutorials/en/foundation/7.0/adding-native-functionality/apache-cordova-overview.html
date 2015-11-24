@@ -17,22 +17,22 @@ relevantTo: [hybrid]
 <p>Apache Cordova is an open source framework for mobile development.<br />
 With the JavaScript API provided by Cordova, developers can access native mobile device features and even execute native code by using JavaScript.</p>
 <p>The Cordova framework is integrated into all Mobile environments in IBM MobileFirst Platform Foundation (Android, BlackBerry 10, iOS, Windows Phone 8, and Windows 8).</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_cordova_documentation.png"><img src="{{ site.baseurl }}/assets/backup/07_01_cordova_documentation.png" alt="07_01_cordova_documentation" width="976" height="484" class="aligncenter size-full wp-image-814" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/07_01_cordova_documentation.png"/></p>
 <h2 id="projects">Apache Cordova in MobileFirst projects</h2>
 <p>The Cordova framework is automatically added to MobileFirst projects, for example in iOS and Android:</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_cordova_in_projet.png"><img src="{{ site.baseurl }}/assets/backup/07_01_cordova_in_projet.png" alt="07_01_cordova_in_projet" width="780" height="446" class="aligncenter size-full wp-image-817" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/07_01_cordova_in_projet.png"/></p>
 <h2 id="examples">Usage examples</h2>
 <h3>Calling a native alert notification from JavaScript on iOS and Android devices</h3>
-<p>[code lang="js"]navigator.notification.alert(&quot;I am a native alert dialog.&quot;);[/code]</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_usage_sample1.png"><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample1.png" alt="07_01_usage_sample1" width="661" height="430" class="aligncenter size-full wp-image-818" /></a></p>
+<p>{% highlight js %} navigator.notification.alert("I am a native alert dialog."); {% endhighlight %} </p>
+<p><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample1.png"/></p>
 <h3>Getting device hardware and software information</h3>
-<p>[code lang="js"]var element = document.getElementById('deviceProperties');<br />
-    element.innerHTML = 'Device Model: '    + device.model    + '&lt;br /&gt;' +<br />
-                        'Device Cordova: '  + device.cordova  + '&lt;br /&gt;' +<br />
-                        'Device Platform: ' + device.platform + '&lt;br /&gt;' +<br />
-                        'Device UUID: '     + device.uuid     + '&lt;br /&gt;' +<br />
-                        'Device Version: '  + device.version  + '&lt;br /&gt;';[/code]</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_usage_sample2.png"><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample2.png" alt="07_01_usage_sample2" width="610" height="262" class="aligncenter size-full wp-image-819" /></a></p>
+<p>{% highlight js %} var element = document.getElementById('deviceProperties');<br />
+    element.innerHTML = 'Device Model: '    + device.model    + '<br />' +<br />
+                        'Device Cordova: '  + device.cordova  + '<br />' +<br />
+                        'Device Platform: ' + device.platform + '<br />' +<br />
+                        'Device UUID: '     + device.uuid     + '<br />' +<br />
+                        'Device Version: '  + device.version  + '<br />'; {% endhighlight %} </p>
+<p><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample2.png"/></p>
 <p>For detailed documentation and samples, see:</p>
 <ul>
 <li><a href="http://cordova.apache.org/">Apache Cordova website</a></li>
@@ -62,17 +62,17 @@ A basic scenario then is:</p>
 <p>With the MobileFirst web API, it is possible to navigate between native and web pages, and data can be transferred back and forth.<br />
 Native API is provided to enable communication with MobileFirst Server from the native page.<br />
 Cookies are shared between web and native, providing seamless client-server integration.</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_01_native_pages.png"><img src="{{ site.baseurl }}/assets/backup/07_01_native_pages.png" alt="07_01_native_pages" width="628" height="185" class="aligncenter size-full wp-image-820" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/07_01_native_pages.png"/></p>
 <p>JavaScript API to activate native page:<br />
-[code lang="js"]WL.NativePage.show(className, callback, data);[/code]</p>
+{% highlight js %} WL.NativePage.show(className, callback, data); {% endhighlight %} </p>
 <p>The web page invokes the native class <code>className</code>, with the parameter <code>data</code> and calls the callback function on return. Example:<br />
-[code lang="js"]WL.NativePage.show(&quot;com.demo.NativePage&quot;, function(data) {<br />
+{% highlight js %} WL.NativePage.show("com.demo.NativePage", function(data) {<br />
        demoApplication.returnFromNative(data);<br />
     },<br />
     {<br />
-       inputData: &quot;Hello&quot;<br />
+       inputData: "Hello"<br />
     }<br />
-);[/code]</p>
+); {% endhighlight %} </p>
 <h2 id="extending">Extending hybrid functionality with Cordova plug-ins</h2>
 <p>In some cases, a native page is not required, but native actions still need native code for their execution.</p>
 <p>Examples:</p>

@@ -25,11 +25,11 @@ relevantTo: [android]
 <li>Build and deploy the application using <code>$ mfp bd</code>. <em>This action is required for MobileFirst Server to recognize the application if it attempts to connect.</em></li>
 </ol>
 <h3>Studio</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/02_03_android_native_folder_structure-7-0.png"><img src="{{ site.baseurl }}/assets/backup/02_03_android_native_folder_structure-7-0.png" alt="02_03_android_native_folder_structure-7-0" width="226" height="375" class="alignright size-full wp-image-5966" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/02_03_android_native_folder_structure-7-0.png"/></p>
 <ol>
 <li>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Native API.</li>
 <li>In the <strong>New MobileFirst Native API</strong> dialog, enter your application name and select <strong>Android</strong> for the <strong>Environment</strong> field.</li>
-<li>Right-click the generated NativeAPI folder (located in <code><em>your-projects</em>/apps/<em>your-nativeapi-app-name</em></code>) and select <strong>Run As &gt; Deploy Native API</strong>.<br />
+<li>Right-click the generated NativeAPI folder (located in <code><em>your-projects</em>/apps/<em>your-nativeapi-app-name</em></code>) and select <strong>Run As > Deploy Native API</strong>.<br />
 <em><strong>Note:</strong> This action is required for MobileFirst Server to recognize the application when a request reaches the server.</em></li>
 </ol>
 <p>The MobileFirst native API contains the following components:</p>
@@ -64,11 +64,11 @@ relevantTo: [android]
 <li>Copy the <code>worklight-android.jar</code>, <code>uicandroid.jar</code>, <code>bcprov.jar</code>, and <code>android-async-http.jar</code> files from the generated NativeAPI folder to the new native Android application, in the <code>/libs</code> directory.</li>
 <li>Copy the <code>wlclient.properties</code> file from the MobileFirst native API folder to the new native Android application, in the <code>/assets</code> directory.</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:
-<p>[code lang="xml"]&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;<br />
-&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;[/code]</p>
+<p>{% highlight xml %} <uses-permission android:name="android.permission.INTERNET"/><br />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> {% endhighlight %} </p>
 </li>
 <li>Add the MobileFirst UI activity:
-<p>[code lang="xml"]&lt;activity android:name=&quot;com.worklight.wlclient.ui.UIActivity&quot; /&gt;[/code]</p>
+<p>{% highlight xml %} <activity android:name="com.worklight.wlclient.ui.UIActivity" /> {% endhighlight %} </p>
 </li>
 </ol>
 <blockquote><p>For more information, see the topic about developing native applications for Android, in the user documentation.</p></blockquote>

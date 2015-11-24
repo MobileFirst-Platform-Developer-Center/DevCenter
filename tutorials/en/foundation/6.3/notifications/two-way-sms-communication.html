@@ -2,13 +2,12 @@
 layout: tutorial
 title: Two-way SMS communication
 relevantTo: [hybrid]
----
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630SMS2WayProject.zip">Download Studio project</a>
-        </li>
-</ul>
+weight: 6
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630SMS2WayProject.zip
 
+---
 <h2>Overview</h2>
 <p>Two-way SMS communication enables communication between mobile phones and the IBM® MobileFirst® Server over an SMS channel. Mobile-originated SMS messages can be sent to the MobileFirst Server via the SMS gateway and the MobileFirst Server can send a response back.<br />
 Short codes or keywords are configured with an SMS gateway from an independent software vendor. The gateway must be configured to forward the requests to MobileFirst Server or to a reverse proxy URL, depending on the topology in your environment.<br />
@@ -35,19 +34,19 @@ adapter procedure callback is called.</p>
 <ul>
 <h3>Registering SMS event handlers</h3>
 </ul>
-<p>{% highlight js %}<br />
-WL.Server.setEventHandlers([<br />
-                            WL.Server.createSMSEventHandler(<br />
-                            		{keyword: WL.Server.configuration['sms.keyword.subscribe']},<br />
-                            		subscribeSMS,<br />
-                            		WL.Server.configuration['sms.gateway.id']<br />
-                            		),<br />
-                            WL.Server.createSMSEventHandler(<br />
-                            		{keyword: WL.Server.configuration['sms.keyword.unsubscribe']},<br />
-                            		unsubscribeSMS, WL.Server.configuration['sms.gateway.id']<br />
-                            		)<br />
-                            ]);<br />
-{% endhighlight %}<br />
+<p>{% highlight js %}
+WL.Server.setEventHandlers([
+                            WL.Server.createSMSEventHandler(
+                            		{keyword: WL.Server.configuration['sms.keyword.subscribe']},
+                            		subscribeSMS,
+                            		WL.Server.configuration['sms.gateway.id']
+                            		),
+                            WL.Server.createSMSEventHandler(
+                            		{keyword: WL.Server.configuration['sms.keyword.unsubscribe']},
+                            		unsubscribeSMS, WL.Server.configuration['sms.gateway.id']
+                            		)
+                            ]);
+{% endhighlight %}
 The name-value parameters sent from the SMS gateway that match the filters are passed to handlerFunction. For example, if the SMS gateway is sending the following parameters:</p>
 <ul>
 <li>from: from number</li>
@@ -61,9 +60,9 @@ The name-value parameters sent from the SMS gateway that match the filters are p
 <h3>Server-side SMS API</h3>
 </ul>
 <p>The MobileFirst Server uses SMS notification to send SMS messages. Before SMS messages can be sent, the server must subscribe to a phone number.<br />
-{% highlight js %}<br />
-var subscription = WL.Server.subscribeSMS(eventSourceID, phoneNumber, gatewayID);<br />
-{% endhighlight %}<br />
+{% highlight js %}
+var subscription = WL.Server.subscribeSMS(eventSourceID, phoneNumber, gatewayID);
+{% endhighlight %}
 This method takes the following parameters:</p>
 <ul>
 <li>eventSourceId:the event source to which the phone number is subscribing.</li>
@@ -72,40 +71,40 @@ This method takes the following parameters:</p>
 </ul>
 <p>The method returns an SMS subscription object. Along with the WL.Server.notifyDeviceSubscriptionmethod, this object can be used to send an SMS message to the specified phone number.</p>
 <p>If the phone number is already subscribed, get the subscription object and send an SMS message.<br />
-{% highlight js %}<br />
-function sendSMS(phoneNumber, smsText) {</p>
-<p>	var subscription = WL.Server.getSMSSubscription(eventSourceId, phoneNumber);</p>
-<p>	if (subscription == null) {<br />
-		return { result: "No subscription found for user :: " + phoneNumber };<br />
-	}</p>
-<p>	var notification = WL.Server.createDefaultNotification(smsText, 1, {});<br />
-	WL.Server.notifyDeviceSubscription(subscription, notification);</p>
-<p>	return { result: "Notification sent to user :: " + phoneNumber };<br />
+{% highlight js %}
+function sendSMS(phoneNumber, smsText) {
+var subscription = WL.Server.getSMSSubscription(eventSourceId, phoneNumber);
+if (subscription == null) {
+		return { result: "No subscription found for user :: " + phoneNumber };
+	}
+	var notification = WL.Server.createDefaultNotification(smsText, 1, {});
+	WL.Server.notifyDeviceSubscription(subscription, notification);
+	return { result: "Notification sent to user :: " + phoneNumber };
 }<br />
 {% endhighlight %}<br />
 A phone number can unsubscribe from the event source by a call to the following method:<br />
-{% highlight js %}<br />
-WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);<br />
+{% highlight js %}
+WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);
 {% endhighlight %}</p>
 <h2 id="setup">Setup</h2>
 <p>The SMSConfig.xmlfile specifies gateway details for both receiving and sending SMS messages.<br />
-{% highlight xml %}<br />
-<gateway id="myGateway" hostname="yourhostname.com" port="80" programName="backendProgram" toParamName="to" textParamName="text" fromParamName="from"><br />
-    <parameter encode="false" name="param1name" value="param1value"/><br />
-    <parameter encode="false" name="param2name" value="param2value"/><br />
-</gateway><br />
+{% highlight xml %}
+<gateway id="myGateway" hostname="yourhostname.com" port="80" programName="backendProgram" toParamName="to" textParamName="text" fromParamName="from">
+    <parameter encode="false" name="param1name" value="param1value"/>
+    <parameter encode="false" name="param2name" value="param2value"/>
+</gateway>
 {% endhighlight %}</p>
 <p>You can externalize the keywords, gateway identifier, and other parameters that the SMS event handler uses to the worklight.properties configuration file.<br />
-{% highlight js %}<br />
-sms.keyword.subscribe=sub<br />
-sms.keyword.unsubscribe=unsub<br />
-sms.gateway.id=myGateway<br />
+{% highlight js %}
+sms.keyword.subscribe=sub
+sms.keyword.unsubscribe=unsub
+sms.gateway.id=myGateway
 {% endhighlight %}</p>
 <p>By default, the SubscribeServletobject that receives the request from the gateway is protected by a security test. This security test takes a RejectingLoginModuleparameter which by default rejects any request. To enforce the security mechanism that is supported by your gateway, comment out or modify the default security test.<br />
 {% highlight xml %}<br />
-<resource id="subscribeServlet" securityTest="SubscribeServlet"><br />
-	<urlPatterns>/subscribeSMS*;/receiveSMS*;/ussd*</urlPatterns><br />
-</resource><br />
+<resource id="subscribeServlet" securityTest="SubscribeServlet">
+	<urlPatterns>/subscribeSMS*;/receiveSMS*;/ussd*</urlPatterns>
+</resource>
 {% endhighlight %}<br />
 If you are using a reverse proxy in front of the MobileFirst Server, you can specify a mapping to the reverse proxy to allow only requests from specific hosts or IP addresses (SMS gateway). If the application server that is running MobileFirst directly receives the request from a gateway, the application server needs to be configured to allow requests from the specific hosts or IP addresses.</p>
 <h2>Run the sample</h2>

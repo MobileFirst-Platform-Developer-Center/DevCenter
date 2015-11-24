@@ -43,8 +43,8 @@ policy.setGeoPolicy(WLGeoAcquisitionPolicy.getLiveTrackingProfile());<br />
 LiveTracking is a preset profile that uses the most accurate settings to track the device.<br />
 Additional configuration options include:</p>
 <ul>
-<li><span class="inline-code">RoughTracking</span></li>
-<li><span class="inline-code">PowerSaving</span></li>
+<li><code>RoughTracking</code></li>
+<li><code>PowerSaving</code></li>
 <li>Custom settings</li>
 </ul>
 <blockquote><p>For more information, see the topic about setting an acquisition policy in the user documentation.</p></blockquote>
@@ -66,8 +66,8 @@ policy.setWifiPolicy(new WLWifiAcquisitionPolicy()<br />
                              )<br />
                      );<br />
 {% endhighlight %}<br />
-<span class="inline-code">interval</span> is the polling interval, in milliseconds. WiFi polling is performed at each interval.</p>
-<p><span class="inline-code">accessPointFilters</span> are access points of interest.<br />
+<code>interval</code> is the polling interval, in milliseconds. WiFi polling is performed at each interval.</p>
+<p><code>accessPointFilters</code> are access points of interest.<br />
 In the above example, the acquisition policy:</p>
 <ul>
 <li>Ignores everything except "Net1" and "Net2" – Helpful in dynamic environments, such as mobile hotspots.
@@ -82,9 +82,9 @@ In the above example, the acquisition policy:</p>
 <h2>Triggers</h2>
 <p>You can set up triggers for</p>
 <ul>
-<li>Geo/Wifi fences (<span class="inline-code">Enter</span>, <span class="inline-code">Exit</span>, <span class="inline-code">Dwell Inside</span>, <span class="inline-code">Dwell Outside</span>)</li>
-<li>Movement (Geo: <span class="inline-code">PositionChange</span>, WiFi: <span class="inline-code">VisibleAccessPointsChange</span>)</li>
-<li>WiFi <span class="inline-code">Connect</span> / <span class="inline-code">Disconnect</span></li>
+<li>Geo/Wifi fences (<code>Enter</code>, <code>Exit</code>, <code>Dwell Inside</code>, <code>Dwell Outside</code>)</li>
+<li>Movement (Geo: <code>PositionChange</code>, WiFi: <code>VisibleAccessPointsChange</code>)</li>
+<li>WiFi <code>Connect</code> / <code>Disconnect</code></li>
 </ul>
 <p>{% highlight java %}<br />
 WLTriggersConfiguration triggers = new WLTriggersConfiguration();<br />
@@ -96,11 +96,11 @@ triggers.getGeoTriggers().put(<br />
         .setEvent(new JSONObject().put("bring","me").put("your","huddledMasses"))<br />
         );<br />
 {% endhighlight %}</p>
-<p>In the above example, <span class="inline-code">trigger1</span> is an <strong>Enter</strong> trigger which is activated when the device enters the defined circle (longitude, latitude, and radius).</p>
+<p>In the above example, <code>trigger1</code> is an <strong>Enter</strong> trigger which is activated when the device enters the defined circle (longitude, latitude, and radius).</p>
 <p>When a trigger activates, it can call a callback function and/or create an event to be sent to the server.</p>
 <blockquote><p>For more information, see the topic about triggers in the user documentation.</p></blockquote>
 <h2>Start Acquisition</h2>
-<p>Use the <span class="inline-code">policy</span> and <span class="inline-code">triggers</span> defined above to start the acquisition.<br />
+<p>Use the <code>policy</code> and <code>triggers</code> defined above to start the acquisition.<br />
 {% highlight java %}<br />
 WLLocationServicesConfiguration config = new WLLocationServicesConfiguration();<br />
 config.setPolicy(policy);<br />
@@ -117,18 +117,18 @@ config.setTriggers(triggers);</p>
 {% highlight java %}<br />
 WLClient.getInstance().transmitEvent(event,immediate)<br />
 {% endhighlight %}<br />
-Where <strong>event</strong> is a <span class="inline-code">JSONObject</span> and <strong>immediate</strong> is a <span class="inline-code">boolean</span>.</p>
+Where <strong>event</strong> is a <code>JSONObject</code> and <strong>immediate</strong> is a <code>boolean</code>.</p>
 <h3>Server side</h3>
 <p>In the adapter code, create event handlers by using:<br />
 {% highlight javascript %}<br />
 WL.Server.createEventHandler(filter, handlerFunction);<br />
 {% endhighlight %}<br />
-Events that match the filter are passed to <span class="inline-code">handlerFunction</span>.<br />
+Events that match the filter are passed to <code>handlerFunction</code>.<br />
 Filter examples:</p>
 <ul>
-<li><span class="inline-code">{status: "platinum"}</span> – handle platinum members only</li>
-<li><span class="inline-code">{hotel: { country: "USA" } }</span> – hotels in the USA</li>
-<li><span class="inline-code">{}</span> – all events</li>
+<li><code>{status: "platinum"}</code> – handle platinum members only</li>
+<li><code>{hotel: { country: "USA" } }</code> – hotels in the USA</li>
+<li><code>{}</code> – all events</li>
 </ul>
 <p>Register the event handlers by using:<br />
 {% highlight javascript %}<br />

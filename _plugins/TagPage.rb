@@ -1,5 +1,4 @@
 module Jekyll
-
   # This generates a Page showing all blog posts for a specific tag
   class TagPage < Page
     def initialize(site, base, dir, tag)
@@ -8,12 +7,12 @@ module Jekyll
       @dir = dir
       @name = 'index.html'
 
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tagpage.html')
-      self.data['tag'] = tag
+      process(@name)
+      read_yaml(File.join(base, '_layouts'), 'tagpage.html')
+      data['tag'] = tag
 
-      self.data['title'] = tag.dup.gsub! '_', ' '
-      self.data['filterByTag'] = "#{tag}"
+      data['title'] = tag.dup.tr! '_', ' '
+      data['filterByTag'] = "#{tag}"
     end
   end
 
@@ -25,12 +24,12 @@ module Jekyll
       @dir = dir
       @name = "#{tag}.xml"
 
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'atom.html')
-      self.data['tag'] = tag
+      process(@name)
+      read_yaml(File.join(base, '_layouts'), 'atom.html')
+      data['tag'] = tag
 
-      self.data['title'] = "#{tag}"
-      self.data['filterByTag'] = "#{tag}"
+      data['title'] = "#{tag}"
+      data['filterByTag'] = "#{tag}"
     end
   end
 
@@ -47,5 +46,4 @@ module Jekyll
       end
     end
   end
-
 end

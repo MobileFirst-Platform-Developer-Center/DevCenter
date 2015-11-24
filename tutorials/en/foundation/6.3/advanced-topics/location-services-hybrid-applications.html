@@ -60,11 +60,11 @@ var policy = {<br />
 <p>{% highlight javascript %}<br />
   Geo: WL.Device.Geo.Profiles.LiveTracking(),<br />
 {% endhighlight %}<br />
-<span class="inline-code">LiveTracking</span> is a preset profile that uses the most accurate settings to track the device.<br />
+<code>LiveTracking</code> is a preset profile that uses the most accurate settings to track the device.<br />
 Additional configuration options include:</p>
 <ul>
-<li><span class="inline-code">RoughTracking</span></li>
-<li><span class="inline-code">PowerSaving</span></li>
+<li><code>RoughTracking</code></li>
+<li><code>PowerSaving</code></li>
 <li>Custom settings</li>
 </ul>
 <blockquote><p>For more information, see the topic "Setting an acquisition policy" of the user documentation.</p></blockquote>
@@ -82,8 +82,8 @@ Additional configuration options include:</p>
     }<br />
   }<br />
 {% endhighlight %}</p>
-<p><span class="inline-code">interval</span> is the polling interval, in milliseconds; WiFi polling is performed each interval.</p>
-<p><span class="inline-code">accessPointFilters</span> are access points of interest.<br />
+<p><code>interval</code> is the polling interval, in milliseconds; WiFi polling is performed each interval.</p>
+<p><code>accessPointFilters</code> are access points of interest.<br />
 In the above example, the acquisition policy:</p>
 <ul>
 <li>Ignores everything except "Net1" and "Net2" – doing so assists in dynamic environments, such as when there are mobile hotspots.
@@ -119,9 +119,9 @@ var triggers = {<br />
 {% endhighlight %}</p>
 <p>You can setup triggers for</p>
 <ul>
-<li>Geo/Wifi fences (<span class="inline-code">Enter</span>, <span class="inline-code">Exit</span>, <span class="inline-code">Dwell Inside</span>, <span class="inline-code">Dwell Outside</span>)</li>
-<li>Movement (Geo: <span class="inline-code">PositionChange</span>, WiFi: <span class="inline-code">VisibleAccessPointsChange</span>)</li>
-<li>WiFi <span class="inline-code">Connect</span> / <span class="inline-code">Disconnect</span></li>
+<li>Geo/Wifi fences (<code>Enter</code>, <code>Exit</code>, <code>Dwell Inside</code>, <code>Dwell Outside</code>)</li>
+<li>Movement (Geo: <code>PositionChange</code>, WiFi: <code>VisibleAccessPointsChange</code>)</li>
+<li>WiFi <code>Connect</code> / <code>Disconnect</code></li>
 </ul>
 <p>In the above example <em>trigger1</em> is an <strong>Enter</strong> trigger which is activated when entering the defined circle (longitude, latitude and radius).</p>
 <p>When a trigger activates, it can call a callback function and/or create an event to be sent to the server.</p>
@@ -146,12 +146,12 @@ WL.Client.transmitEvent(event,immediate);<br />
 {% highlight javascript %}<br />
 WL.Server.createEventHandler(filter, handlerFunction);<br />
 {% endhighlight %}<br />
-Events that match filter will be passed to <span class="inline-code">handlerFunction</span>.<br />
+Events that match filter will be passed to <code>handlerFunction</code>.<br />
 Filter examples:</p>
 <ul>
-<li><span class="inline-code">{status: "platinum"}</span> – handle platinum members only</li>
-<li><span class="inline-code">{hotel: { country: "USA" } }</span> – hotels in the USA</li>
-<li><span class="inline-code">{}</span> – all events</li>
+<li><code>{status: "platinum"}</code> – handle platinum members only</li>
+<li><code>{hotel: { country: "USA" } }</code> – hotels in the USA</li>
+<li><code>{}</code> – all events</li>
 </ul>
 <p>Register the event handlers by using:<br />
 {% highlight javascript %}<br />

@@ -27,7 +27,7 @@ To create and configure an Android native project, first follow these tutorials:
 <p>For more information, <a href="#selectNotificationType">select a notification type</a>.</p>
 <h2 id="settingUpTheProject">Setting up the project</h2>
 <ol>
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/NativeAndroidPushAdapterExpanded-70.png"><img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushAdapterExpanded-70.png" alt="NativeAndroidPushAdapterExpanded-70" width="300" height="500" class="alignright size-full wp-image-6220" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushAdapterExpanded-70.png"/></p>
 <li>
 <h3>Create a MobileFirst project and add a MobileFirst Android Native API.</h3>
 <p>    In this tutorial and the accompanying sample, the application is called "androidnativepush". Be sure to replace this value with your own application name.</p>
@@ -44,9 +44,9 @@ To create and configure an Android native project, first follow these tutorials:
 <li>Your project number is the <code>senderId</code>.</li>
 <li>Your Android key is the GCM <code>key</code>. You can generate it in <strong>API &amp; Auth > Credentials</strong>.</li>
 </ul>
-<p>[code lang="xml"]<br />
-&lt;pushSender key=&quot;GCM-KEY&quot; senderId=&quot;GCM-ID&quot;/&gt;<br />
-[/code]
+<p>{% highlight xml %} <br />
+<pushSender key="GCM-KEY" senderId="GCM-ID"/><br />
+ {% endhighlight %} 
         </li>
 </ul>
 </li>
@@ -59,7 +59,7 @@ To create and configure an Android native project, first follow these tutorials:
 <li>wlServerContext – The context root of your MobileFirst Server instance.</li>
 <li>GcmSenderId – The project number that you obtained through the Google API console.</li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/wlclient_properties.png"><img src="{{ site.baseurl }}/assets/backup/wlclient_properties.png" alt="wlclient_properties" width="554" height="184" class="alignnone size-full wp-image-1727" /></a>
+<p><img src="{{ site.baseurl }}/assets/backup/wlclient_properties.png"/>
     </li>
 <li>
 <h3>Add Google Play Services (optional)</h3>
@@ -79,50 +79,50 @@ google-play-services_lib project @ <code><em>android_sdk_location</em>\extras\g
 </ol>
 </li>
 <li>Add a reference to the google-play-services version in <code>your-app\android\native\AndroidManifest.xml</code> as the first child of the <code>application</code> element:
-<p>[code lang="xml"]&lt;meta-data<br />
-    android:name=&quot;com.google.android.gms.version&quot;<br />
-    android:value=&quot;@integer/google_play_services_version&quot; /&gt;[/code]</li>
+<p>{% highlight xml %} <meta-data<br />
+    android:name="com.google.android.gms.version"<br />
+    android:value="@integer/google_play_services_version" /> {% endhighlight %} </li>
 </ul>
 <p><br clear="all" /></li>
 <li>
 <h3>Modify the native Android project.</h3>
 <h4>Verify that the following permissions exist in the <code>AndroidManifest.xml</code> file of your Android project.</h4>
-<p>[code lang="xml"]&lt;permission android:name=&quot;com.imf.androidnativepush.permission.C2D_MESSAGE&quot; android:protectionLevel=&quot;signature&quot; /&gt;</p>
-<p> &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot;/&gt;<br />
- &lt;uses-permission android:name=&quot;com.worklight.androidnativepush.permission.C2D_MESSAGE&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;com.google.android.c2dm.permission.RECEIVE&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.GET_ACCOUNTS&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.USE_CREDENTIALS&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;[/code]</p>
+<p>{% highlight xml %} <permission android:name="com.imf.androidnativepush.permission.C2D_MESSAGE" android:protectionLevel="signature" /></p>
+<p> <uses-permission android:name="android.permission.INTERNET" /><br />
+ <uses-permission android:name="android.permission.GET_TASKS"/><br />
+ <uses-permission android:name="com.worklight.androidnativepush.permission.C2D_MESSAGE" /><br />
+ <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /><br />
+ <uses-permission android:name="android.permission.WAKE_LOCK" /><br />
+ <uses-permission android:name="android.permission.GET_ACCOUNTS" /><br />
+ <uses-permission android:name="android.permission.USE_CREDENTIALS" /><br />
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><br />
+ <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/> {% endhighlight %} </p>
 <h4>Add the <code>launchMode</code> attribute to the main <code>AndroidNativePush</code> activity. Set its value to <code>singleTask</code>.</h4>
-<p>[code lang="xml"]<br />
-&lt;activity<br />
-    android:name=&quot;com.worklight.androidnativepush.AndroidNativePush&quot;<br />
-    android:label=&quot;@string/app_name&quot;<br />
-    android:theme=&quot;@android:style/Theme.Black.NoTitleBar&quot;<br />
-    android:launchMode=&quot;singleTask&quot;&gt;[/code]</p>
+<p>{% highlight xml %} <br />
+<activity<br />
+    android:name="com.worklight.androidnativepush.AndroidNativePush"<br />
+    android:label="@string/app_name"<br />
+    android:theme="@android:style/Theme.Black.NoTitleBar"<br />
+    android:launchMode="singleTask"> {% endhighlight %} </p>
 <h4>Add an intent-filter to the main <code>AndroidNativePush</code> activity for notifications.</h4>
-<p>[code lang="xml"]<br />
-&lt;intent-filter&gt;<br />
-   &lt;action android:name=&quot;com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION&quot; /&gt;<br />
-   &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;<br />
-&lt;/intent-filter&gt;[/code]</p>
+<p>{% highlight xml %} <br />
+<intent-filter><br />
+   <action android:name="com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION" /><br />
+   <category android:name="android.intent.category.DEFAULT" /><br />
+</intent-filter> {% endhighlight %} </p>
 <h4>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</h4>
-<p>[code lang="xml"]<br />
-&lt;service android:name=&quot;com.worklight.wlclient.push.GCMIntentService&quot; /&gt;<br />
-&lt;receiver android:name=&quot;com.worklight.wlclient.push.WLBroadcastReceiver&quot; android:permission=&quot;com.google.android.c2dm.permission.SEND&quot;&gt;<br />
-   &lt;intent-filter&gt;<br />
-       &lt;action android:name=&quot;com.google.android.c2dm.intent.RECEIVE&quot; /&gt;<br />
-       &lt;category android:name=&quot;com.worklight.androidnativepush&quot; /&gt;<br />
-   &lt;/intent-filter&gt;<br />
-   &lt;intent-filter&gt;<br />
-       &lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;<br />
-       &lt;category android:name=&quot;com.worklight.androidnativepush&quot; /&gt;<br />
-   &lt;/intent-filter&gt;<br />
-&lt;/receiver&gt;[/code]</p>
+<p>{% highlight xml %} <br />
+<service android:name="com.worklight.wlclient.push.GCMIntentService" /><br />
+<receiver android:name="com.worklight.wlclient.push.WLBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND"><br />
+   <intent-filter><br />
+       <action android:name="com.google.android.c2dm.intent.RECEIVE" /><br />
+       <category android:name="com.worklight.androidnativepush" /><br />
+   </intent-filter><br />
+   <intent-filter><br />
+       <action android:name="com.google.android.c2dm.intent.REGISTRATION" /><br />
+       <category android:name="com.worklight.androidnativepush" /><br />
+   </intent-filter><br />
+</receiver> {% endhighlight %} </p>
 </li>
 </ol>
 <h2 id="selectNotificationType">Select a notification type</h2>

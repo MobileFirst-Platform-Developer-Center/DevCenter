@@ -23,25 +23,25 @@ relevantTo: [android]
 <h2 id="createClientSide">Creating the client-side authentication components</h2>
 <ol>
 <li>Create a native Android application and add the MobileFirst native APIs as explained in the documentation.</li>
-<li>Add an activity, <span class="inline-code">LoginFormBasedAuth</span>, which handles and presents the login form.</li>
-<li>Remember to add this activity to the <span class="inline-code">AndroidManifest.xml</span> file, too.</li>
+<li>Add an activity, <code>LoginFormBasedAuth</code>, which handles and presents the login form.</li>
+<li>Remember to add this activity to the <code>AndroidManifest.xml</code> file, too.</li>
 </ol>
 <h3>MyChallengeHandler</h3>
-<p>Create a <span class="inline-code">MyChallengeHandler</span> class as a subclass of <span class="inline-code">ChallengeHandler</span>.<br />
-Your <span class="inline-code">MyChallengeHandler</span> class must implement <span class="inline-code">isCustomResponse</span>, which checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
-[code lang="java"]<br />
+<p>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
+Your <code>MyChallengeHandler</code> class must implement <code>isCustomResponse</code>, which checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
+{% highlight java %} <br />
 public boolean isCustomResponse(WLResponse response) {<br />
     if (response == null || response.getResponseText() == null ||<br />
-            response.getResponseText().indexOf(&quot;j_security_check&quot;) == -1) {<br />
+            response.getResponseText().indexOf("j_security_check") == -1) {<br />
         return false;<br />
     }<br />
     return true;<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p><br clear="all" /><br />
-The <span class="inline-code">handleChallenge</span> method is called after the <span class="inline-code">isCustomResponse</span> method returns <code>true</code>.<br />
+The <code>handleChallenge</code> method is called after the <code>isCustomResponse</code> method returns <code>true</code>.<br />
 Here this method presents the login form.<br />
-[code lang="java"]<br />
+{% highlight java %} <br />
 public void handleChallenge(WLResponse response){<br />
     if (!isCustomResponse(response)) {<br />
         submitSuccess(response);<br />
@@ -51,26 +51,26 @@ public void handleChallenge(WLResponse response){<br />
         parentActivity.startActivityForResult(login, 1);<br />
     }<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p><br clear="all" /><br />
-The <span class="inline-code">submitLogin</span> method is called by the login form. If the user asked to abort this action, use the <span class="inline-code">submitFailure()</span> method, otherwise use the <span class="inline-code">submitLoginForm()</span> method to send input data to the authenticator.<br />
-[code lang="java"]<br />
+The <code>submitLogin</code> method is called by the login form. If the user asked to abort this action, use the <code>submitFailure()</code> method, otherwise use the <code>submitLoginForm()</code> method to send input data to the authenticator.<br />
+{% highlight java %} <br />
 public void submitLogin(int resultCode, String userName, String password, boolean back){<br />
     if (resultCode != Activity.RESULT_OK || back) {<br />
         submitFailure(cachedResponse);<br />
     } else {<br />
-        HashMap&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();<br />
-        params.put(&quot;j_username&quot;, userName);<br />
-        params.put(&quot;j_password&quot;, password);<br />
-        submitLoginForm(&quot;/j_security_check&quot;, params, null, 0, &quot;post&quot;);<br />
+        HashMap<String, String> params = new HashMap<String, String>();<br />
+        params.put("j_username", userName);<br />
+        params.put("j_password", password);<br />
+        submitLoginForm("/j_security_check", params, null, 0, "post");<br />
     }<br />
 }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p><br clear="all" /></p>
 <h3>Main activity</h3>
-<p>In the <code>MainActivity</code> class, connect to MobileFirst Server, register your <span class="inline-code">challengeHandler</span> object, and invoke the protected adapter procedure.<br />
+<p>In the <code>MainActivity</code> class, connect to MobileFirst Server, register your <code>challengeHandler</code> object, and invoke the protected adapter procedure.<br />
 The procedure invocation triggers MobileFirst Server to send a challenge that will trigger the challenge handler.<br />
-[code lang="java"]<br />
+{% highlight java %} <br />
 final WLClient client = WLClient.createInstance(this);</p>
 <p>client.connect(new MyConnectionListener());</p>
 <p>challengeHandler = new AndroidChallengeHandler(this, realm);<br />
@@ -79,15 +79,15 @@ client.registerChallengeHandler(challengeHandler);</p>
 invokeBtn.setOnClickListener(new View.OnClickListener() {</p>
 <p>    @Override<br />
     public void onClick(View v) {<br />
-        //setMainText(&quot;Invoking...&quot;);<br />
-        WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;DummyAdapter&quot;, &quot;getSecretData&quot;);<br />
+        //setMainText("Invoking...");<br />
+        WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");<br />
         WLRequestOptions options = new WLRequestOptions();<br />
         options.setTimeout(30000);<br />
         client.invokeProcedure(invocationData, new MyResponseListener(), options);<br />
     }</p>
 <p>});<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h2 id="sample">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeFormBasedAuthProject.zip">Click to download</a> the Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeFormBasedAuthProject.zip">Click to download</a> the Native project.</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/10/09_04_results.png"><img src="{{ site.baseurl }}/assets/backup/09_04_results.png" alt="09_04_results" width="1359" height="702" class="aligncenter size-full wp-image-947" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/09_04_results.png"/></p>

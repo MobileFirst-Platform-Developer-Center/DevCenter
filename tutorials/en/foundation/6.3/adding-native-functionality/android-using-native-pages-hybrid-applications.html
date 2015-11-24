@@ -2,9 +2,11 @@
 layout: tutorial
 title: Android - Using native pages
 relevantTo: [hybrid]
+weight: 4
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingNativePagesInHybridAppsProject.zip
 ---
-<button class="download-button"><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/UsingNativePagesInHybridAppsProject.zip">Download Studio project</a></button>
-
 <h2>Overview</h2>
 In this tutorial, integration of native and web "pages" in an Android application will be explained by using the <code>WL.NativePage.show()</code> API to open a native page from JavaScript.
 
@@ -65,7 +67,7 @@ String name = getIntent().getStringExtra("nameParam");
 When the native page switches back to the web view, the <code>finish()</code> function is called for the Activity.
 To pass data back to the web view can be done by using an <code>Intent</code> object. For example:
 
-Java:
+<b>Java:</b>
 {% highlight java %}
 String phoneNumber = editText.getText().toString();
 Intent phoneNumberInfo = new Intent();
@@ -74,7 +76,7 @@ setResult(RESULT_OK, phoneNumberInfo);
 finish();
 {% endhighlight %}
 
-JavaScript:
+<b>JavaScript:</b>
 {% highlight javascript %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);

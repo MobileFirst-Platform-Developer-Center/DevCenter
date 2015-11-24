@@ -19,7 +19,7 @@ To create and configure an iOS native project, first follow these tutorials:</p>
 <li><a href="#selectNotificationType">Select a notification type</a></li>
 </ul>
 <h2 id="settingUpPushNotifications">Setting up push notifications</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/PushNotificationsNativeiOSProjectBaham.png"><img src="{{ site.baseurl }}/assets/backup/PushNotificationsNativeiOSProjectBaham-300x282.png" alt="PushNotificationsNativeiOSProjectBaham" width="300" height="282" class="alignright size-medium wp-image-6281" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/PushNotificationsNativeiOSProjectBaham-300x282.png"/></p>
 <ol>
 <li>Create a MobileFirst project and add a MobileFirst iOS Native API.
 </li>
@@ -29,13 +29,13 @@ To create and configure an iOS native project, first follow these tutorials:</p>
 </li>
 <li>In <strong>application-descriptor.xml</strong>, add the <code>pushSender</code> tag with the <code>password</code> attribute. Use the .p12 keystore as the password value.
 <p>For example :<br />
-[code lang="xml"]<br />
-&lt;nativeIOSApp xmlns=&quot;http://www.worklight.com/native-ios-descriptor&quot; bundleId=&quot;com.iOSNativePush&quot; id=&quot;iOSNativePush&quot; platformVersion=&quot;6.3.0.00.20141105-0943&quot; securityTest=&quot;MySecurityTest&quot; version=&quot;1.0&quot;&gt;<br />
-  &lt;displayName&gt;iOSNativePush&lt;/displayName&gt;<br />
-  &lt;description&gt;iOSNativePush&lt;/description&gt;<br />
-  &lt;pushSender password=&quot;replace-with-certificate-password&quot;/&gt;<br />
-&lt;/nativeIOSApp&gt;<br />
-[/code]</p>
+{% highlight xml %} <br />
+<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0"><br />
+  <displayName>iOSNativePush</displayName><br />
+  <description>iOSNativePush</description><br />
+  <pushSender password="replace-with-certificate-password"/><br />
+</nativeIOSApp><br />
+ {% endhighlight %} </p>
 </li>
 <li>Deploy the MobileFirst native API. In MobileFirst Studio, right-click the native API and select <strong>"Run As >  Deploy Native API"</strong>. With the CLI, use <code>mfp deploy</code> from within the application folder.
 </li>
@@ -56,7 +56,7 @@ Callback methods are executed even when the application is running in the backgr
 <blockquote><p>For more information, refer to the "silent notifications" topics in the MobileFirst Platform user documentation, and in Apple's user documentation.</p></blockquote>
 <h4>Server API for silent notification</h4>
 <p>To implement silent notification in the case of event source/broadcast/tag-based notifications, create a notification object by using the <code>WL.Server.createDefaultNotification</code> API and set the type as below:</p>
-<p><span class="inline-code">notification.APNS.type = "DEFAULT" | "SILENT" | "MIXED"; </span></p>
+<p><code>notification.APNS.type = "DEFAULT" | "SILENT" | "MIXED"; </code></p>
 <ul>
 <li><code>DEFAULT</code> means normal notification, which shows the alert and is kept in the notification center if the application is running in the background.</li>
 <li><code>SILENT</code> means silent notification, which does not show any alert or the message is not placed in the notification center. In the silent type, the aps tag of push notification contains only content-available.</li>
@@ -68,9 +68,9 @@ Callback methods are executed even when the application is running in the backgr
 <li>Enable the application capability to perform background tasks on receiving the remote notifications<br />
 To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes, like Remote notifications and Background fetch.
 </li>
-<li>Implement a new callback method in the <code>AppDelegate</code> <span class="inline-code">(application: didReceiveRemoteNotification:fetchCompletionHandler:)</span> to receive silent notifications when the application is running in the background.</li>
+<li>Implement a new callback method in the <code>AppDelegate</code> <code>(application: didReceiveRemoteNotification:fetchCompletionHandler:)</code> to receive silent notifications when the application is running in the background.</li>
 <li>In the callback, check whether the notification is silent by checking that the key content-available is set to 1.</li>
-<li>Call the <span class="inline-code">fetchCompletionHandler</span> block method at the end of the notification handler.</li>
+<li>Call the <code>fetchCompletionHandler</code> block method at the end of the notification handler.</li>
 </ol>
 <h3 id="notificationapiinteractive">Interactive notifications</h3>
 <p>iOS 8 and above.</p>
@@ -82,9 +82,9 @@ When an interactive notification is received, the device shows action buttons al
 Categories describe a custom type of notification that your application sends and contains actions that a user can perform in response.</p>
 <ul>
 <li>For event-source notifications, create a notification object and set type as below:<br />
-        <span class="inline-code">notification.APNS.category = “poll"; </span></li>
+        <code>notification.APNS.category = “poll"; </code></li>
 <li>For broadcast/tag-based notifications, create a notification object and set the type as below:<br />
-        <span class="inline-code">notification.settings.apns.category = “poll"; </span></li>
+        <code>notification.settings.apns.category = “poll"; </code></li>
 <li>The category name must be same as the one used on the client side.</li>
 </ul>
 <h4>Client-side steps for interactive notification</h4>
@@ -93,29 +93,29 @@ Categories describe a custom type of notification that your application sends an
 <li>Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.<br />
 To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes like Remote notifications and Background fetch.</li>
 <li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>(application: didRegisterForRemoteNotificationsWithDeviceTokenapplication:)</code> method in <code>AppDelegate</code> class.
-<p>    [code lang="obj-c"]<br />
+<p>    {% highlight objc %} <br />
 if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){<br />
   UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;</p>
 <p>  UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];<br />
-  acceptAction.identifier = @&quot;OK&quot;;<br />
-  acceptAction.title = @&quot;OK&quot;;</p>
+  acceptAction.identifier = @"OK";<br />
+  acceptAction.title = @"OK";</p>
 <p>  UIMutableUserNotificationAction *rejetAction = [[UIMutableUserNotificationAction alloc] init];<br />
-  rejetAction.identifier = @&quot;NOK&quot;;<br />
-  rejetAction.title = @&quot;NOK&quot;;</p>
+  rejetAction.identifier = @"NOK";<br />
+  rejetAction.title = @"NOK";</p>
 <p>  UIMutableUserNotificationCategory *cateogory = [[UIMutableUserNotificationCategory alloc] init];<br />
-  cateogory.identifier = @&quot;poll&quot;;<br />
+  cateogory.identifier = @"poll";<br />
   [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextDefault];<br />
   [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextMinimal];</p>
 <p>  NSSet *catgories = [NSSet setWithObject:cateogory];<br />
   [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:catgories]];<br />
 }<br />
-[/code]</li>
+ {% endhighlight %} </li>
 <li>Implement the new callback method:<br />
-    [code lang="obj-c"]<br />
+    {% highlight objc %} <br />
 (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (ˆ)())completionHandler<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>This new callback method is invoked when the user clicks the action button.</p>
-<p>The implementation of this method must perform the action that is associated with the specified identifier and execute the block in the <span class="inline-code">completionHandler</span> parameter.</li>
+<p>The implementation of this method must perform the action that is associated with the specified identifier and execute the block in the <code>completionHandler</code> parameter.</li>
 </ul>
 </h2>
 <h2 id="selectNotificationType">Select a notification type</h2>

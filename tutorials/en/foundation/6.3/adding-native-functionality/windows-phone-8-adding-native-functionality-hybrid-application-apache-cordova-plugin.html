@@ -1,15 +1,12 @@
 ---
 layout: tutorial
-title: Android - Implementing Cordova plug-ins
+title: Windows Phone 8 - Implementing Cordova plug-ins
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ApacheCordovaPluginsProject.zip
+weight: 8
 ---
-<ul>
-        <li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/ApacheCordovaPluginsProject.zip">Download Studio project</a>
-        </li>
-    </ul>
-</div>
-
 <h2>Overview</h2>
 
 In some cases, developers of a MobileFirst application might have to use a specific third-party native library or a device function that is not yet available in Apache Cordova.
@@ -20,9 +17,9 @@ In this tutorial, a simple Apache Cordova plug-in creation and integration for W
 
 <h3>Note:</h3>
 
-In Cordova-based applications, developers must check for the <span class="inline-code">deviceready</span> event before they use the Cordova API set. In a MobileFirst application, however, this check is done internally.
+In Cordova-based applications, developers must check for the <code>deviceready</code> event before they use the Cordova API set. In a MobileFirst application, however, this check is done internally.
 
-Instead of implementing this check, implementation code can be placed in the <span class="inline-code">wlCommonInit()</span> function in <span class="inline-code">common\js\main.js</span>.
+Instead of implementing this check, implementation code can be placed in the <code>wlCommonInit()</code> function in <code>common\js\main.js</code>.
 
 <br />
 The below code blocks are based on the sample application, provided at the bottom of this tutorial.
@@ -31,9 +28,9 @@ The below code blocks are based on the sample application, provided at the botto
 
 <ul>
     <li>Declare the plug-in in the config.xml file</li>
-    <li>Use the <span class="inline-code">cordova.exec()</span> API in the JavaScript code</li>
+    <li>Use the <code>cordova.exec()</code> API in the JavaScript code</li>
     <li>Create the plug-in class that will run natively in Windows Phone 8</li>
-    <li>The plug-in performs the required action and calls a JavaScript callback method that is specified during the call to <span class="inline-code">cordova.exec()</span></li>
+    <li>The plug-in performs the required action and calls a JavaScript callback method that is specified during the call to <code>cordova.exec()</code></li>
 </ul>
 
 <img src="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/07_07_overview.png"/>
@@ -49,20 +46,20 @@ To declare the plug-in, add a reference to the config.xml file, located in the n
 
 <h2>Implementing cordova.exec() in JavaScript</h2>
 
-From the JavaScript code of the application, use <span class="inline-code">cordova.exec()</span> to call the Cordova plug-in:
+From the JavaScript code of the application, use <code>cordova.exec()</code> to call the Cordova plug-in:
 {% highlight js %}function sayHello() {
     var name = $("#NameInput").val();
     cordova.exe(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
 }{% endhighlight %}
 
 <br clear="all"/>
-<span class="inline-code">sayHelloSuccess</span> - Success callback
-<span class="inline-code">sayHelloFailure</span> - Failure callback
-<span class="inline-code">SayHelloPlugin</span> - Plug-in name as declared in config.xml
-<span class="inline-code">sayHello</span> - Action name
-<span class="inline-code">[name]</span> - Parameters array
+<code>sayHelloSuccess</code> - Success callback
+<code>sayHelloFailure</code> - Failure callback
+<code>SayHelloPlugin</code> - Plug-in name as declared in config.xml
+<code>sayHello</code> - Action name
+<code>[name]</code> - Parameters array
 
-The plug-in calls the <span class="inline-code">success</span> and <span class="inline-code">failure</span> callbacks.
+The plug-in calls the <code>success</code> and <code>failure</code> callbacks.
 {% highlight js %}
 function sayHelloSuccess(data){
     WL.SimpleDialog.show(
@@ -107,7 +104,7 @@ namespace Cordova.Extension.Commands
 
 <h4>Step 2</h4>
 
-Implement the <span class="inline-code">SayHelloPlugin</span> class and the <span class="inline-code">sayHello</span> method.
+Implement the <code>SayHelloPlugin</code> class and the <code>sayHello</code> method.
 
 <ul>
     <li>The JavaScript wrapper calls the sayHello method and passes a single parameter. It returns a string back to JavaScript.

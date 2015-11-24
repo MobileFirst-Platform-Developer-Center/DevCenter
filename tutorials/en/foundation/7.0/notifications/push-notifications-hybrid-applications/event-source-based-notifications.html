@@ -133,8 +133,8 @@ While the user subscription exists, the MobileFirst Server can produce push noti
 
 A device subscription belongs to a user subscription and exists in the scope of a specific user and event source. A user subscription can have several device subscriptions.
 
-The device subscription is created when the application on a device calls <span class="inline-code">WL.Client.Push.subscribe()</span>.
-The device subscription is deleted either by an application that calls <span class="inline-code">WL.Client.Push.unsubscribe()</span>, or when the push mediator informs the MobileFirst Server that the device is permanently not accessible.
+The device subscription is created when the application on a device calls <code>WL.Client.Push.subscribe()</code>.
+The device subscription is deleted either by an application that calls <code>WL.Client.Push.unsubscribe()</code>, or when the push mediator informs the MobileFirst Server that the device is permanently not accessible.
 
 <h2 id="notificationAPI">Notification API - Server-side</h2>
 
@@ -142,32 +142,32 @@ The device subscription is deleted either by an application that calls <span cla
 
 To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):
 
-[code lang="js"]WL.Server.createEventSource({
+{% highlight js %} WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
     securityTest:'PushApplication-strong-mobile-securityTest'
-});[/code]
+}); {% endhighlight %} 
 
 <ul>
-    <li><strong><span class="inline-code">name</span></strong> – a name by which the event source is referenced.</li>
-    <li><strong><span class="inline-code">onDeviceSubscribe</span></strong> – an adapter function that is invoked when the user subscription request is received.</li>
-    <li><strong><span class="inline-code">onDeviceUnsubscribe</span></strong> – an adapter function that is invoked when the user unsubscription request is received.</li>
-    <li><strong><span class="inline-code">securityTest</span></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
+    <li><strong><code>name</code></strong> – a name by which the event source is referenced.</li>
+    <li><strong><code>onDeviceSubscribe</code></strong> – an adapter function that is invoked when the user subscription request is received.</li>
+    <li><strong><code>onDeviceUnsubscribe</code></strong> – an adapter function that is invoked when the user unsubscription request is received.</li>
+    <li><strong><code>securityTest</code></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
 </ul>
 
 An additional event source option:
-[code lang="js" firstline="6"]poll: {
+{% highlight js %} poll: {
     interval: 3,
     onPoll: 'getNotificationsFromBackend'
-}[/code]
+} {% endhighlight %} 
 
 <ul>
-    <li><strong><span class="inline-code">poll</span></strong> – a method that is used for notification retrieval.
+    <li><strong><code>poll</code></strong> – a method that is used for notification retrieval.
 The following parameters are required:
 <ul>
-    <li><strong><span class="inline-code">interval</span></strong> – the polling interval in seconds.</li>
-    <li><strong><span class="inline-code">onPoll</span></strong> – the polling implementation. An adapter function to be invoked at specified intervals.</li>
+    <li><strong><code>interval</code></strong> – the polling interval in seconds.</li>
+    <li><strong><code>onPoll</code></strong> – the polling implementation. An adapter function to be invoked at specified intervals.</li>
 </ul>
 </li>
 </ul>
@@ -176,9 +176,9 @@ The following parameters are required:
 
 <h3>Sending a notification</h3>
 
-As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <span class="inline-code">submitNotifications()</span> adapter function is invoked by a back-end system as an external API to send notifications.
+As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-[code lang="js"]function submitNotification(userId, notificationText) {
+{% highlight js %} function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
     if (userSubscription === null) {
@@ -193,52 +193,52 @@ As described previously, notifications can be either polled from the back-end sy
     return {
         result: "Notification sent to user :: " + userId
     };
-}[/code]
+} {% endhighlight %} 
 
-The <span class="inline-code">submitNotification</span> function receives the <span class="inline-code">userId</span> to send notification to and the <span class="inline-code">notificationText</span>.
+The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.
 
-[code lang="js"]function submitNotification(userId, notificationText) {[/code]
+{% highlight js %} function submitNotification(userId, notificationText) { {% endhighlight %} 
 
 A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:
 
-[code lang="js" gutter="false"]{
+{% highlight js %} {
     userId: 'bjones',
     state: {
         customField: 3
     },
     getDeviceSubscriptions: function()[}
-};[/code]
+}; {% endhighlight %} 
 
 Next line:
-[code lang="js" firstline="2"]var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);[/code]
+{% highlight js %} var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId); {% endhighlight %} 
 
 If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.
-[code lang="js" firstline="4"]if (userSubscription === null) {
+{% highlight js %} if (userSubscription === null) {
         return { result: "No subscription found for user :: " + userId };
-    }[/code]
+    } {% endhighlight %} 
 
-The <span class="inline-code">WL.Server.createDefaultNotification</span> API method creates and returns a default notification JSON block for the supplied values.
-[code lang="js" firstline="8"]var badgeDigit = 1;
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});[/code]
+The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.
+{% highlight js %} var badgeDigit = 1;
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"}); {% endhighlight %} 
 
 <ul>
-    <li><strong><span class="inline-code">notificationText</span></strong> - The text to be pushed to the device.</li>
-    <li><strong><span class="inline-code">Badge</span></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
-    <li><strong><span class="inline-code">custom</span></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
+    <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
+    <li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
+    <li><strong><code>custom</code></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
 </ul>
 
-The <span class="inline-code">WL.Server.notifyAllDevices</span> API method sends notification to all the devices that are subscribed to the user.
+The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.
 
-[code lang="js" firstline="11"]WL.Server.notifyAllDevices(userSubscription, notification);[/code]
+{% highlight js %} WL.Server.notifyAllDevices(userSubscription, notification); {% endhighlight %} 
 
 <br clear="all"/>
 
 <h4>Several APIs exist for sending notifications:</h4>
 
 <ul>
-    <li><span class="inline-code">WL.Server.notifyAllDevices(userSubscription, options)</span> - to send notification to all user’s devices.</li>
-    <li><span class="inline-code">WL.Server.notifyDevice(userSubscription, device, options)</span> - to send notification to a specific device that belongs to a specific user subscription. </li>
-    <li><span class="inline-code">WL.Server.notifyDeviceSubscription(deviceSubscription, options)</span> - to send the notification to a specific device.</li>
+    <li><code>WL.Server.notifyAllDevices(userSubscription, options)</code> - to send notification to all user’s devices.</li>
+    <li><code>WL.Server.notifyDevice(userSubscription, device, options)</code> - to send notification to a specific device that belongs to a specific user subscription. </li>
+    <li><code>WL.Server.notifyDeviceSubscription(deviceSubscription, options)</code> - to send the notification to a specific device.</li>
 </ul>
 
 <h2>Notification API - Client-side</h2>
@@ -246,17 +246,17 @@ The <span class="inline-code">WL.Server.notifyAllDevices</span> API method sends
 Additional client-side API methods:
 
 <ul>
-    <li><span class="inline-code">WL.Client.Push.isPushSupported()</span> – returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.</li>
-    <li><span class="inline-code">WL.Client.Push.isSubscribed(alias)</span> – returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
+    <li><code>WL.Client.Push.isPushSupported()</code> – returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.</li>
+    <li><code>WL.Client.Push.isSubscribed(alias)</code> – returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
 </ul>
 
-When a push notification is received by a device, the callback function defined in <span class="inline-code">WL.Client.Push.registerEventSourceCallback</span> is invoked:
+When a push notification is received by a device, the callback function defined in <code>WL.Client.Push.registerEventSourceCallback</code> is invoked:
 
-[code lang="js"]function pushNotificationReceived(props, payload) {
+{% highlight js %} function pushNotificationReceived(props, payload) {
     alert("pushNotificationReceived invoked");
     alert("props :: " + JSON.stringify(props));
     alert("payload :: " + JSON.stringify(payload));
-}[/code]
+} {% endhighlight %} 
 
 If the application was in background mode (or inactive) when the push notification arrived, this callback function is invoked when the application returns to the foreground.
 
@@ -266,24 +266,24 @@ The sample project for this tutorial is bundled with a back-end emulator which c
 
 To run the back-end emulator, open the PushBackendEmulator folder of the sample project in a command prompt, and then run the supplied JAR file by using the following syntax:
 
-[code]java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>[/code]
+{% highlight bash %} java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port> {% endhighlight %} 
 
-<span class="inline-code">userId</span> is the user name that you used to log in to the sample application.
-<span class="inline-code">contextRoot</span> is the context root of your MobileFirst project.
+<code>userId</code> is the user name that you used to log in to the sample application.
+<code>contextRoot</code> is the context root of your MobileFirst project.
 
 <h3>Example</h3>
 
-[code]java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080[/code]
+{% highlight bash %} java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080 {% endhighlight %} 
 
-The back-end emulator tries to connect to a MobileFirst Server and call a <span class="inline-code">submitNotification()</span> adapter procedure. It outputs the invocation result to a command prompt console.
+The back-end emulator tries to connect to a MobileFirst Server and call a <code>submitNotification()</code> adapter procedure. It outputs the invocation result to a command prompt console.
 
 <h4>Success</h4>
 
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_success.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_success-1024x136.png" alt="08_01_push_success" width="600" class="aligncenter size-large wp-image-1380" /></a>
+<img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_success-1024x136.png"/>
 
 <h4>Failure</h4>
 
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_failure.png"><img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_failure-1024x130.png" alt="08_01_push_failure" width="600" class="aligncenter size-large wp-image-1381" /></a>
+<img src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_failure-1024x130.png"/>
 
 <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_sample.png"><img class="aligncenter wp-image-1389 size-full" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_sample.png" alt="08_01_push_sample" width="850" height="500" /></a>
 

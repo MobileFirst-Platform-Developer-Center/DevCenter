@@ -21,7 +21,7 @@ relevantTo: [hybrid]
 <li><a href="#sample">Sample application</a></li>
 </ul>
 <h2 id="architecture">Architecture</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/location_service_diagram.jpg"><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg" alt="location_service_diagram" width="650" height="404" class="aligncenter size-full wp-image-5171" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg"/></p>
 <p>The application code on the mobile device, in the form of an acquisition policy, controls the collection of data from device sensors.</p>
 <p>The collected data is referred to as the device context.</p>
 <p>When a change occurs in the device context, such as a change in the geolocation of the device or the fact that it entered a Wi-Fi zone, triggers can be activated.</p>
@@ -37,41 +37,41 @@ relevantTo: [hybrid]
 <h2 id="basicAPI">Basic API</h2>
 <h3>Client JavaScript</h3>
 <p><strong>Note:</strong> Call the following functions after the IBM MobileFirst Platform Foundation framework is initialized (within or after the <code>wlCommonInit()</code> function).</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %} <br />
 WL.Device.startAcquisition(policy, triggers, onFailure)<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <ul>
 <li><code>policy</code>: How do you acquire the sensor data?</li>
 <li><code>triggers</code>: What do you act on and how?</li>
 <li><code>onFailure</code>: How do you handle acquisition failures?</li>
 </ul>
 <h3>Server JavaScript code</h3>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %} <br />
 WL.Server.setEventHandlers(eventHandlers);<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p><code>eventHandlers</code>: What events do you act on and how?</p>
 <h2 id="acquisitionPolicy">Acquisition policy</h2>
 <p>An acquisition policy defines how acquisition takes place.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %} <br />
 var policy = {<br />
   Geo: WL.Device.Geo.Profiles.LiveTracking(),<br />
   Wifi: {<br />
     interval: 10000,<br />
     accessPointFilters: {<br />
       [{<br />
-        SSID: &quot;Net1&quot;<br />
+        SSID: "Net1"<br />
       }, {<br />
-        SSID: &quot;Net2&quot;,<br />
-        MAC: &quot;*&quot;<br />
+        SSID: "Net2",<br />
+        MAC: "*"<br />
       }]<br />
     }<br />
   }<br />
 };<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h3>Geo acquisition policy</h3>
-<p>[code lang="javascript" firstline="2"]<br />
+<p>{% highlight javascript %} <br />
   Geo: WL.Device.Geo.Profiles.LiveTracking(),<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p><code>LiveTracking</code> is a preset profile that uses the most accurate settings to track the device.<br />
 Additional configuration options:</p>
 <ul>
@@ -81,19 +81,19 @@ Additional configuration options:</p>
 </ul>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h3>Wi-Fi acquisition policy</h3>
-<p>[code lang="javascript" firstline="3"]<br />
+<p>{% highlight javascript %} <br />
   Wifi: {<br />
     interval: 10000,<br />
     accessPointFilters: {<br />
       [{<br />
-        SSID: &quot;Net1&quot;<br />
+        SSID: "Net1"<br />
       }, {<br />
-        SSID: &quot;Net2&quot;,<br />
-        MAC: &quot;*&quot;<br />
+        SSID: "Net2",<br />
+        MAC: "*"<br />
       }]<br />
     }<br />
   }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>The <code>interval</code> parameter is the polling interval, in milliseconds; Wi-Fi polling is performed at each interval.</p>
 <p>The <code>accessPointFilters</code> parameter are access points of interest.</p>
 <p>In the example above, the acquisition policy works as follows:</p>
@@ -105,14 +105,14 @@ Additional configuration options:</p>
 <li>Differentiates <code>Net2</code> access points by their MAC address.
 </li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_wifi-policy-example.png"><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.png" alt="10_04_wifi-policy-example" width="505" height="470" class="aligncenter size-full wp-image-1482" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.png"/></p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h2 id="triggers">Triggers</h2>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %} <br />
 var triggers = {<br />
   Geo: {<br />
     trigger1: {<br />
-      type: &quot;Enter&quot;,<br />
+      type: "Enter",<br />
       circle: {<br />
         longitude: -74.04444,<br />
         latitude: 40.689167,<br />
@@ -121,14 +121,14 @@ var triggers = {<br />
       callback: libertyAtLast,<br />
       eventToTransmit: {<br />
         event: {<br />
-          bring: &quot;me&quot;,<br />
-          your: &quot;huddledMasses&quot;<br />
+          bring: "me",<br />
+          your: "huddledMasses"<br />
         }<br />
       }<br />
     }<br />
   }<br />
 };<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>You can setup triggers for the following effects:</p>
 <ul>
 <li>Geo/Wi-Fi fences: <code>Enter</code>, <code>Exit</code>, <code>Dwell Inside</code>, <code>Dwell Outside</code></li>
@@ -141,23 +141,23 @@ var triggers = {<br />
 <h2 id="events">Events</h2>
 <h3>Client side</h3>
 <p>Events are generated by triggers (as explained in section <a href="#triggers">Triggers</a>).<br />
-[code lang="javascript" firstline="11"]<br />
+{% highlight javascript %} <br />
       eventToTransmit: {<br />
         event: {<br />
-          bring: &quot;me&quot;,<br />
-          your: &quot;huddledMasses&quot;<br />
+          bring: "me",<br />
+          your: "huddledMasses"<br />
         }<br />
       }<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>You can also generate events manually by calling this API:<br />
-[code lang="javascript"]<br />
+{% highlight javascript %} <br />
 WL.Client.transmitEvent(event,immediate);<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <h3>Server side</h3>
 <p>In the adapter code, create event handlers:</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %} <br />
 WL.Server.createEventHandler(filter, handlerFunction);<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <p>Events that match the <code>filter</code> parameter are passed to <code>handlerFunction</code>.<br />
 Filter examples:</p>
 <ul>
@@ -166,25 +166,25 @@ Filter examples:</p>
 <li><code>{}</code> – All events</li>
 </ul>
 <p>Register the event handlers:<br />
-[code lang="javascript"]<br />
+{% highlight javascript %} <br />
 WL.Server.setEventHandlers([...]);<br />
-[/code]</p>
+ {% endhighlight %} </p>
 <blockquote><p>For more information, see the topic about working with geofences and triggers, in the user documentation.</p></blockquote>
 <h2 id="testingHybrid">Testing hybrid applications</h2>
 <p>To test your application, you might want to test the various triggers and the error handling logic that your application uses.<br />
 The <strong>Mobile Browser Simulator</strong> provides capabilities to simulate sensor data and errors.<br />
 To access it, right-click an application environment and select <strong>Run As</strong> > <strong>Preview</strong>.</p>
 <h3>Geo testing</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_geotesting.png"><img src="{{ site.baseurl }}/assets/backup/10_04_geotesting.png" alt="10_04_geotesting" width="397" height="566" class="aligncenter size-full wp-image-1489" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_geotesting.png"/></p>
 <p>You can use the Geolocation widget to set a specific position through a manual entry or by a click on the map.</p>
 <p>A simple simulation mode is also provided by the <strong>Step</strong> and <strong>Play</strong> buttons, which move the position in the simulated device at the given speed and in the direction of the given heading.</p>
 <p>You can also simulate the generation of errors.</p>
 <h3>Wi-Fi testing</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_wifitesting.png"><img src="{{ site.baseurl }}/assets/backup/10_04_wifitesting.png" alt="10_04_wifitesting" width="415" height="391" class="aligncenter size-full wp-image-1490" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_wifitesting.png"/></p>
 <p>You can use the Network widget to define simulated access points, configure their signal strengths, and simulate the connection or disconnection to an access point.<br />
 You can also simulate the generation of errors.</p>
 <h3>Scenarios</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_scenarios.png"><img src="{{ site.baseurl }}/assets/backup/10_04_scenarios.png" alt="10_04_scenarios" width="420" height="418" class="aligncenter size-full wp-image-1491" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_scenarios.png"/></p>
 <p>You can use the Scenario widget to automatically simulate a user moving through an environment in a complex way.<br />
 A scenario consists of:</p>
 <ul>
@@ -196,33 +196,33 @@ A scenario consists of:</p>
 </li>
 </ul>
 <p>To open the scenario editor, click <strong>Edit</strong>.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_scenario-edit-mode.png"><img src="{{ site.baseurl }}/assets/backup/10_04_scenario-edit-mode.png" alt="10_04_scenario-edit-mode" width="920" height="657" class="aligncenter size-full wp-image-1493" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_scenario-edit-mode.png"/></p>
 <p>Enter a geolocation directly to move the map, or use the arrows to pan and +/- track to zoom.</p>
 <ul>
-<li>Click <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_path-icon.png"><img src="{{ site.baseurl }}/assets/backup/10_04_path-icon.png" alt="10_04_path-icon" width="35" height="36" class="alignnone size-full wp-image-1494 inline-image" /></a> to define the path of the user.
+<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_path-icon.png"/> to define the path of the user.
 </li>
 <li>Click on the map to add each path point. Double-click to add the last point.<br />
 You can drag points to new locations.
 </li>
 <li>Click on a point to set the user's arrival time to that point, or to delete the whole path.</li>
-<li>Click <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_wifi-icon.png"><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-icon.png" alt="10_04_wifi-icon" width="38" height="39" class="alignnone size-full wp-image-1496 inline-image" /></a> to add Wi-Fi access points.
+<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_wifi-icon.png"/> to add Wi-Fi access points.
 </li>
 <li>Click on the map and drag to set the area covered by the access point.</li>
 <li>Click an existing access point to change its SSID and MAC.<br />
 After clicking, drag to move or resize.
 </li>
-<li>Click <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_zone-icon.png"><img src="{{ site.baseurl }}/assets/backup/10_04_zone-icon.png" alt="10_04_zone-icon" width="38" height="37" class="alignnone size-full wp-image-1497 inline-image" /></a> to add no-GPS zones.
+<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_zone-icon.png"/> to add no-GPS zones.
 </li>
 <li>Click on the map to add each vertex of the zone. Double-click to add the last point.<br />
 After clicking an existing zone, you can drag to move, resize, or rotate.
 </li>
 </ul>
-<p>When a scenario is played, the position of the user is displayed on the map ( <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_user-icon.png"><img src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png" alt="10_04_user-icon" width="24" height="24" class="alignnone size-full wp-image-1498 inline-image" /></a> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and does not change in a no-GPS zone).<br />
+<p>When a scenario is played, the position of the user is displayed on the map ( <img src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png"/> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and does not change in a no-GPS zone).<br />
 Wi-Fi access point visibility and signal strengths are automatically updated. You can see these updates in the Network widget.<br />
 You can import and export scenarios to support test reuse.</p>
 <h2 id="androidPermissions">Location Services permissions in Android</h2>
 <p>Android Marshmallow requires user permissions to be granted at runtime. Since runtime code written in Javascript does not have access to the Android api, these permissions must be requested and checked by the native code before launching the Cordova Web Framework. The file [application name].java in the native folder is responsible for loading the web resources. The code for requesting and checking permissions for Location Services should be called within this file, for example in onInitWebFrameworkComplete.</p>
-<p>[code lang="java"]public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {<br />
+<p>{% highlight java %} public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {<br />
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {<br />
 	super.loadUrl(WL.getInstance().getMainHtmlFilePath());<br />
     } else {<br />
@@ -231,7 +231,7 @@ You can import and export scenarios to support test reuse.</p>
 <p>    if (!(WLClient.getInstance().getContext().checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)){<br />
 	requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);<br />
     }<br />
-}[/code]</p>
+} {% endhighlight %} </p>
 <p>This code requests permission if the permission has not already been granted.<br />
 If the permission is not subsequently granted all requests for location services from the Web Framework will fail.<br />
 for more information, please refer to https://developer.android.com/preview/features/runtime-permissions.html</p>
@@ -250,4 +250,4 @@ for more information, please refer to https://developer.android.com/preview/feat
 <li>Ongoing acquisition
 </li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_04_sample.png"><img src="{{ site.baseurl }}/assets/backup/10_04_sample.png" alt="10_04_sample" width="338" height="600" class="aligncenter size-full wp-image-1500" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_sample.png"/></p>
