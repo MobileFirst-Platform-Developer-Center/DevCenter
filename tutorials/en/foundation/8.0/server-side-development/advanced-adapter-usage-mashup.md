@@ -22,21 +22,20 @@ This tutorial covers the following topics:
 ## JavaScript adapter API
 ### Calling a JavaScript adapter procedure from a JavaScript adapter
 When calling a JavaScript adapter procedure from another JavaScript adapter use the `WL.Server.invokeProcedure(invocationData)` API.
-This API is almost identical to its client-side counterpart, it enables you to invoke a procedure on any of your adapters.
+This API enables to invoke a procedure on any of your adapters. `WL.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
 
-The `invocationData` parameter has the same format as the client-side API.
+The invocationData API format is:  
+`WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
 {% highlight javascript %}
 WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
 {% endhighlight %}
-
-However, while the client-side `invokeProcedure` uses a success handler, the server-side only returns the result object itself.
 
 > Calling a Java adapter from a JavaScript adapter is not supported
 
 ## Java adapter API
 ### Calling a Java adapter from a Java adapter
 When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
-This call returns an HttpResponse object.
+This call returns an `HttpResponse` object.
 {% highlight java %}
 HttpUriRequest req = new HttpGet(MyAdapterProcedureURL);
 org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
@@ -44,7 +43,7 @@ JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
 {% endhighlight %}
 
 ### Calling a JavaScript adapter procedure from a Java adapter
-When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an HttpUriRequest to pass as a parameter to the `executeAdapterRequest` call.
+When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an `HttpUriRequest` to pass as a parameter to the `executeAdapterRequest` call.
 {% highlight java %}
 HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
 org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
@@ -70,6 +69,12 @@ Afterward, the mashed-up data is returned to the application for display.
 The provided sample in this tutorial demonstrates the implementation of this scenario using 3 different mashup types.  
 In each one of them the names of the adapters are slightly different.  
 Here is a list of the mashup types and the corresponding adapter names:
+
+|Scenario                                  |Cities Adapter name      |Weather Adapter name     |
+|:----------------------------------------:|:-----------------------:|:-----------------------:|
+| JavaScript adapter -> JavaScript adapter |getCitiesListJS          |getCityWeatherJS         |
+| Java adapter -> JavaScript adapter       |getCitiesListJavaToJS    |getCityWeatherJS         |
+| Java adapter -> Java adapter             |getCitiesListJava        |getCityWeatherJava       |
 
 1. **JavaScript** adapter -> **JavaScript** adapter
   * Cities adapter   = getCitiesListJS
