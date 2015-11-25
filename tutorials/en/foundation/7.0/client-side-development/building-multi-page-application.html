@@ -2,13 +2,11 @@
 layout: tutorial
 title: Building a multipage application
 relevantTo: [hybrid]
+weight: 2
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/BuildingMultiPageApplicationProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/BuildingMultiPageApplicationProject.zip">Download Studio project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>This tutorial covers the following topics:</p>
 <ul>
@@ -52,13 +50,17 @@ This is required because the main application HTML file loads the MobileFirst cl
 <li>When you implement multipage navigation in the Windows Phone 8 environment, you <strong>must</strong> change the URL each time you use the jQuery <code>load()</code> API method. <em>The example project for this training module demonstrates this task in detail.</em>
 <p>Add <code>/www/default/</code> at the beginning of the URL path string. For example:<br />
 Change<br />
-{% highlight js %} $("#pagePort").load("pages/MainPage.html", function(){<br />
-    (currentPage.init);<br />
-}); {% endhighlight %} </p>
+{% highlight js %}
+$("#pagePort").load("pages/MainPage.html", function(){
+    (currentPage.init);
+});
+{% endhighlight %}
 <p>To<br />
-{% highlight js %} $("#pagePort").load("/www/default/pages/MainPage.html", function(){<br />
-    (currentPage.init);<br />
-}); {% endhighlight %} </li>
+{% highlight js %}
+$("#pagePort").load("/www/default/pages/MainPage.html", function(){
+    (currentPage.init);
+});
+{% endhighlight %} </li>
 <li>When you implement multipage navigation for the Windows Phone 8 environment, and jQuery Mobile is used with the <code>changePage()</code> API method, a jQuery Mobile defect prevents it from properly working.<br />
 To overcome the defect, consult the changes that need to be made in the <code>.js</code> file of jQuery Mobile, as described in the following Stack Overflow question: <a href="http://stackoverflow.com/questions/17965560/ibm-worklight-v-5-0-6-cant-navigate-multipages-on-windows-phone-7-5-environme">IBM Worklight v 5.0.6 - Can't navigate multipages on Windows Phone 7.5 environment</a></li>
 </ul>
@@ -77,12 +79,14 @@ To overcome the defect, consult the changes that need to be made in the <code>.j
 <code>callbackFunction</code> - A JavaScript function to run when the loading completes.</p>
 <h3>Example</h3>
 <h4>JavaScript</h4>
-<p>{% highlight js %} $("#pagePort").load(path + "pages/MainPage.html", function(){<br />
-    $.getScript(path + "js/MainPage.js", function() {<br />
-        if (currentPage.init) {<br />
-            currentPage.init();<br />
-        }<br />
-    });<br />
+<p>
+{% highlight js %}
+$("#pagePort").load(path + "pages/MainPage.html", function(){
+$.getScript(path + "js/MainPage.js", function() {
+    if (currentPage.init) {
+        currentPage.init();
+    }
+});
 }); {% endhighlight %} </p>
 <h4>HTML</h4>
 <p>{% highlight html %} <!-- This is a placeholder for dynamic page content --><br />
@@ -102,23 +106,27 @@ var path = ""; {% endhighlight %} </p>
 <p><img src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_1.jpg"/></p>
 <ol>
 <li>On application start, the <code>MainPage.html</code> file is loaded from the application code and injected into the <code>#pagePort DIV</code>.
-<p>{% highlight js %} <br />
-function wlCommonInit() {<br />
-    // Special case for Windows Phone 8 only.<br />
-    if (WL.Client.getEnvironment() == WL.Environment.WINDOWS_PHONE_8) {<br />
-        path = "/www/default/";<br />
-    }</p>
-<p>    $("#pagePort").load("pages/MainPage.html",function(){<br />
-       if (currentPage.init) {<br />
-           currentPage.init();<br />
-       }<br />
-    });<br />
-} {% endhighlight %} </li>
+<p>
+{% highlight js %}
+function wlCommonInit() {
+    // Special case for Windows Phone 8 only.
+    if (WL.Client.getEnvironment() == WL.Environment.WINDOWS_PHONE_8) {
+        path = "/www/default/";
+    }
+    $("#pagePort").load("pages/MainPage.html",function(){
+       if (currentPage.init) {
+           currentPage.init();
+       }
+    });
+}
+{% endhighlight %} </li>
 <li>The <code>MainPage.js</code> file is loaded as a part of <code>MainPage.html</code>.
-<p>{% highlight js %} currentPage = {};<br />
-currentPage.init = function() {<br />
-    WL.Logger.debug("MainPage :: init");<br />
-}; {% endhighlight %} </li>
+<p>
+{% highlight js %} currentPage = {};
+currentPage.init = function() {
+    WL.Logger.debug("MainPage :: init");
+};
+{% endhighlight %} </li>
 <li>The currentPage object is declared.</li>
 <li>The <code>currentPage.init</code> function is declared.</li>
 <li>When the <code>MainPage.html</code> file is loaded, the <code>currentPage.init</code> method is called.</li>
@@ -130,10 +138,13 @@ currentPage.init = function() {<br />
 <li><code>Page1.html</code> is loaded and injected into <code>#pagePort DIV</code>. <code>Page1.js</code> is loaded as a part of <code>Page1.html</code>.</li>
 <li>The <code>currentPage</code> object is declared and overrides the old one.</li>
 <li>The <code>currentPage.init</code> function is declared.
-<p>{% highlight js %} currentPage = {};<br />
-currentPage.init = function(){<br />
-    WL.Logger.debug(“page1 :: init");<br />
-}; {% endhighlight %} </li>
+<p>
+{% highlight js %}
+currentPage = {};
+currentPage.init = function(){
+    WL.Logger.debug(“page1 :: init");
+};
+{% endhighlight %} </li>
 <li>When the loading of <code>Page1.html</code> completes, a new <code>currentPage.init</code> method is called.</li>
 </ol>
 <h3>Implementing page navigation with history: Step 3</h3>
@@ -141,22 +152,28 @@ currentPage.init = function(){<br />
 <ol>
 <li>The previous HTML file name is retrieved from the <code>PagesHistory</code> stack (<code>MainPage.html</code>).</li>
 <li>It is loaded and injected into <code>#pagePort DIV</code>.
-<p>{% highlight js %} currentPage.back = function(){<br />
-    WL.Logger.debug("Page1 :: back");<br />
-    $("#pagePort").load(pagesHistory.pop(),<br />
-        function() {<br />
-            if (currentPage.init) {<br />
-               currentPage.init();<br />
-            }<br />
-    });<br />
-}; {% endhighlight %} </li>
+<p>
+{% highlight js %}
+currentPage.back = function(){
+    WL.Logger.debug("Page1 :: back");
+    $("#pagePort").load(pagesHistory.pop(),
+        function() {
+            if (currentPage.init) {
+               currentPage.init();
+            }
+    });
+};
+{% endhighlight %} </li>
 <li><code>MainPage.js</code> is loaded as a part of <code>MainPage.html</code>.</li>
 <li>The <code>currentPage</code> object is declared and overrides the old one.</li>
 <li>The <code>currentPage.init</code> function is declared.
-<p>{% highlight js %} currentPage = {};<br />
-currentPage.init = function(){<br />
-    WL.Logger.debug("MainPage :: init");<br />
-}; {% endhighlight %} </li>
+<p>
+{% highlight js %}
+currentPage = {};
+currentPage.init = function(){
+    WL.Logger.debug("MainPage :: init");
+};
+{% endhighlight %} </li>
 <li>When the <code>MainPage.html</code> file is loaded, the <code>currentPage.init</code> method is called.</li>
 </ol>
 <h2 id="sampleApplication">Sample application</h2>
