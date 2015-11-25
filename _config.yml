@@ -8,7 +8,7 @@ paginate_path: "/blog/:num/"
 markdown: redcarpet
 exclude: [vendor,build.sh,Gemfile,Gemfile.lock,README.md]
 redcarpet:
-    extensions: [with_toc_data]
+    extensions: ["with_toc_data", "tables"]
 gems:
   - jekyll-feed
   - jekyll-paginate
