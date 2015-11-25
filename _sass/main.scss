@@ -31,6 +31,7 @@ body {
 	height: 100%;
 	padding-top: 0;
 	font-family: $font_0, $font_1, $font_2;
+	-webkit-print-color-adjust:exact;
 }
 #wrap {
 	min-height: 100%;
