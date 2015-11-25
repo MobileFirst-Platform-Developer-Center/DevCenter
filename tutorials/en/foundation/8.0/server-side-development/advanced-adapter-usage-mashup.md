@@ -24,8 +24,10 @@ This tutorial covers the following topics:
 When calling a JavaScript adapter procedure from another JavaScript adapter use the `WL.Server.invokeProcedure(invocationData)` API.
 This API enables to invoke a procedure on any of your adapters. `WL.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
 
-The invocationData API format is:  
+The <code>invocationData</code> function signature is:  
 `WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
+
+For example:
 {% highlight javascript %}
 WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
 {% endhighlight %}
@@ -86,29 +88,28 @@ Here is a list of the mashup types and the corresponding adapter names:
 (getCitiesListJS adapter) XML:
 {% highlight xml %}
 <connectivity>
-  <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
-    <protocol>http</protocol>
-    <domain>weather.yahooapis.com</domain>
-    <port>80</port>
-    ...
-  </connectionPolicy>
+    <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+        <protocol>http</protocol>
+        <domain>weather.yahooapis.com</domain>
+        <port>80</port>
+        ...
+    </connectionPolicy>
 </connectivity>
 {% endhighlight %}
 
 (getCitiesListJS adapter) JavaScript:
 {% highlight javascript %}
 function getYahooWeather(woeid) {
-
-  var input = {
-    method : 'get',
-    returnedContentType : 'xml',
-    path : 'forecastrss',
-    parameters : {
-      'w' : woeid,
-      'u' : 'c' //celcius
+    var input = {
+        method : 'get',
+        returnedContentType : 'xml',
+        path : 'forecastrss',
+        parameters : {
+          'w' : woeid,
+          'u' : 'c' //celcius
     }
-  };
-	return WL.Server.invokeHttp(input);
+};
+return WL.Server.invokeHttp(input);
 }  
 {% endhighlight %}
 
@@ -116,18 +117,18 @@ function getYahooWeather(woeid) {
 {% highlight java %}
 @GET
 @Produces("application/json")
-public String get(@Context HttpServletResponse response, @QueryParam("cityId") String cityId)
-                throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-  String returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"), response);
-  return returnValue;
+public String get(@Context HttpServletResponse response, @QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+    String returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"), response);
+    return returnValue;
 }
 
-private String execute(HttpUriRequest req, HttpServletResponse resultResponse)
-                throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-  String strOut = null;
-  HttpResponse RSSResponse = client.execute(host, req);
-  ServletOutputStream os = resultResponse.getOutputStream();
-  ...(Convert the retrieved XML to JSON here...)
+private String execute(HttpUriRequest req, HttpServletResponse resultResponse) throws ClientProtocolException, IOException, IllegalStateException, SAXException { 
+    String strOut = null;
+    HttpResponse RSSResponse = client.execute(host, req);
+    ServletOutputStream os = resultResponse.getOutputStream();
+
+...
+// (Convert the retrieved XML to JSON)
 }
 {% endhighlight %}  
 
@@ -155,7 +156,7 @@ ResultSet rs = getAllCities.executeQuery();
 (getCitiesListJS adapter)
 {% highlight javascript %}
 for (var i = 0; i < cityList.resultSet.length; i++) {
-		var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);
+	var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);
 ...
 
 function getCityWeather(woeid){
@@ -170,20 +171,20 @@ function getCityWeather(woeid){
 (getCitiesListJava adapter)
 {% highlight java %}
 while (rs.next()) {
-			getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
-			HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
-			org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-			JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
-      ...
+	getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
+    HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);	
+    org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);	
+    JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
+    ...
 {% endhighlight %}  
 
 (getCitiesListJavaToJs adapter)
 {% highlight java %}
-while (rs.next()) {
-			HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather", URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
-			org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-			JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
-      ...
+    while (rs.next()) {
+        HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather", URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
+        org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
+        JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
+        ...
 {% endhighlight %}  
 
 **4. Iterating through the retrieved rss feed to fetch only the weather description,   
@@ -191,27 +192,27 @@ put this values in a resultSet / JSONArray object and return it to the applicati
 
 (getCitiesListJS adapter)
 {% highlight javascript %}
-  ...
-  if (yahooWeatherData.isSuccessful)
-			cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;
-	}
-	return cityList;
+...
+if (yahooWeatherData.isSuccessful)
+	cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;
+}
+return cityList;
 {% endhighlight %}  
 
 (getCitiesListJava, getCitiesListJavaToJs adapters)
 {% highlight java %}
-  JSONObject rss = (JSONObject) jsonWeather.get("rss");
-  JSONObject channel = (JSONObject) rss.get("channel");
-  JSONObject item = (JSONObject) channel.get("item");
-  String cityWeatherSummary = (String) item.get("description");
+    JSONObject rss = (JSONObject) jsonWeather.get("rss");
+    JSONObject channel = (JSONObject) rss.get("channel");
+    JSONObject item = (JSONObject) channel.get("item");
+    String cityWeatherSummary = (String) item.get("description");
 
-  JSONObject jsonObj = new JSONObject();
-  jsonObj.put("city", rs.getString("city"));
-  jsonObj.put("identifier", rs.getString("identifier"));
-  jsonObj.put("summary", rs.getString("summary"));
-  jsonObj.put("weather", cityWeatherSummary);
+    JSONObject jsonObj = new JSONObject();
+    jsonObj.put("city", rs.getString("city"));
+    jsonObj.put("identifier", rs.getString("identifier"));
+    jsonObj.put("summary", rs.getString("summary"));
+    jsonObj.put("weather", cityWeatherSummary);
 
-  jsonArr.add(jsonObj);
+    jsonArr.add(jsonObj);
 }
 conn.close();
 return jsonArr.toString();
