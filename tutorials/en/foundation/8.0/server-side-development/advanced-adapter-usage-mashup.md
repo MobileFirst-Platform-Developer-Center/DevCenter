@@ -224,4 +224,6 @@ Remember that SQL adapters require a JDBC connector driver, which must be downlo
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdapterMashup) the MobileFirst project.
 
+Note: the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
+
 ![Adapter Mashup sample](AdaptersMashupSample.png)
