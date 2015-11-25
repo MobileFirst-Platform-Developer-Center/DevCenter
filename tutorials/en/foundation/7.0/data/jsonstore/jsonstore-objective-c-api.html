@@ -2,18 +2,14 @@
 layout: tutorial
 title: JSONStore - Objective-C API
 relevantTo: [ios]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/JSONStoreAPIBasicsProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/JSONStoreAPINativeiOSNativeProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/JSONStoreAPIBasicsProject.zip">Download Studio project</a>
-        </li>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/JSONStoreAPINativeiOSNativeProject.zip">Download native project</a>
-        </li>
-</ul>
-
 <p>This tutorial covers the following topics<br />
-<img src="{{ site.baseurl }}/assets/backup/jsonstote-nativeios-project.png" alt="jsonstote-nativeios-project" width="160" height="300" class="alignright size-medium wp-image-9411" /></p>
+<img src="{{ site.baseurl }}/assets/backup/jsonstote-nativeios-project.png" style="float:right;width:25%"/>
 <ul>
 <li><a href="#what-is">What is JSONStore?</a></li>
 <li>Basic Usage
@@ -45,55 +41,64 @@ relevantTo: [ios]
 <p>Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.</p>
 <p>If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.</p>
 <p>For optional features that you can enable at initialization time, see <strong>Security, Multiple User Support,</strong> and <strong>MobileFirst Adapter Integration</strong> in the second part of this module</p>
-<p>{% highlight objc %}<br />
-NSError *error = nil;</p>
-<p>JSONStoreCollection* collection = [[JSONStoreCollection alloc] initWithName:@"people"];<br />
-[collection setSearchField:@"name" withType:JSONStore_String];<br />
-[collection setSearchField:@"age" withType:JSONStore_Integer];</p>
-<p>[[JSONStore sharedInstance] openCollections:@[collection] withOptions:nil error:&amp;error];<br />
- {% endhighlight %} </p>
+<p>
+{% highlight objc %}
+NSError *error = nil;
+JSONStoreCollection* collection = [[JSONStoreCollection alloc] initWithName:@"people"];
+[collection setSearchField:@"name" withType:JSONStore_String];
+[collection setSearchField:@"age" withType:JSONStore_Integer];
+[[JSONStore sharedInstance] openCollections:@[collection] withOptions:nil error:&error];
+{% endhighlight %} </p>
 <h2 id="get">Get</h2>
 <p>Use <code>getCollectionWithName</code> to create an accessor to the collection. You must call <code>openCollections</code> before you call <code>getCollectionWithName</code>.</p>
-<p>{% highlight objc %}<br />
-NSString *collectionName = @"people";<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];<br />
- {% endhighlight %} </p>
+<p>
+{% highlight objc %}
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+{% endhighlight %} </p>
+
 <p>The variable <code>collection</code> can now be used to perform operations on the <code>people</code> collection such as <code>add</code>, <code>find</code>, and <code>replace</code></p>
 <h2 id="add">Add</h2>
 <p>Use <code>addData</code> to store data as documents inside a collection</p>
-<p>{% highlight objc %}<br />
-NSError *error = nil;</p>
-<p>NSString *collectionName = @"people";<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>NSDictionary *data = @{@"name" : @"yoel", @"age" : @23};</p>
-<p>[[collection addData:@[data] andMarkDirty:YES withOptions:nil error:&amp;error] intValue];<br />
- {% endhighlight %} </p>
+<p>
+{% highlight objc %}
+NSError *error = nil;
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+NSDictionary *data = @{@"name" : @"yoel", @"age" : @23};
+[[collection addData:@[data] andMarkDirty:YES withOptions:nil error:&error] intValue];
+{% endhighlight %} </p>
 <h2 id="find">Find</h2>
 <p>Use <code>findWithQueryParts</code> to locate a document inside a collection by using a query. Use <code>findAllWithOptions</code> to retrieve all the documents inside a collection. Use <code>findWithIds</code> to search by the document unique identifier.</p>
-<p>{% highlight objc %}<br />
-NSError *error = nil;</p>
-<p>NSString *collectionName = @"people";<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>//Build a query part.<br />
-JSONStoreQueryPart *query = [[JSONStoreQueryPart alloc] init];<br />
-[query searchField:@"name" like:@"yoel"];</p>
-<p>JSONStoreQueryOptions *options = [[JSONStoreQueryOptions alloc] init];<br />
-// returns a maximum of 10 documents, default: retuns every document<br />
-[options setLimit:@10];</p>
-<p>// Count using the query part built above.<br />
-NSArray *results = [collection findWithQueryParts:@[query] andOptions:options error:&amp;error];<br />
- {% endhighlight %} </p>
+<p>
+{% highlight objc %}
+NSError *error = nil;
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+//Build a query part.<br />
+JSONStoreQueryPart *query = [[JSONStoreQueryPart alloc] init];
+[query searchField:@"name" like:@"yoel"];
+JSONStoreQueryOptions *options = [[JSONStoreQueryOptions alloc] init];
+// returns a maximum of 10 documents, default: retuns every document
+[options setLimit:@10];
+// Count using the query part built above.
+NSArray *results = [collection findWithQueryParts:@[query] andOptions:options error:&error];
+{% endhighlight %} </p>
+
 <h2 id="replace">Replace</h2>
 <p>Use <code>replaceDocuments</code> to modify documents inside a collection. The field that you use to perform the replacement is <code>_id,</code> the document unique identifier.</p>
-<p>{% highlight objc %}<br />
-NSError *error = nil;</p>
-<p>NSString *collectionName = @"people";<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>//Replacing name 'carlos' with name 'carlitos'.<br />
-NSDictionary *replacement = @{@"_id": @1, @"json" : @{@"name" : @"chevy", @"age" : @23}};<br />
-[collection replaceDocuments:@[replacement] andMarkDirty:YES error:&amp;error];<br />
- {% endhighlight %} </p>
+<p>
+{% highlight objc %}
+NSError *error = nil;
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+//Replacing name 'carlos' with name 'carlitos'.
+NSDictionary *replacement = @{@"_id": @1, @"json" : @{@"name" : @"chevy", @"age" : @23}};
+[collection replaceDocuments:@[replacement] andMarkDirty:YES error:&error];
+{% endhighlight %} </p>
+
 <p>This examples assumes that the document <code>{_id: 1, json: {name: 'yoel', age: 23} }</code> is in the collection</p>
+
 <h2 id="remove">Remove</h2>
 <p>Use <code>removeWithIds</code> to delete a document from a collection.</p>
 <p>Documents are not erased from the collection until you call <code>markDocumentClean</code>. For more information, see the <strong>MobileFirst Adapter Integration</strong> section later in this tutorial</p>
@@ -101,7 +106,7 @@ NSDictionary *replacement = @{@"_id": @1, @"json" : @{@"name" : @"chevy", @"age"
 NSError *error = nil;</p>
 <p>NSString *collectionName = @"people";<br />
 JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>[collection removeWithIds:@[@1] andMarkDirty:YES error:&amp;error];<br />
+<p>[collection removeWithIds:@[@1] andMarkDirty:YES error:&error];<br />
  {% endhighlight %} </p>
 <h2 id="remove-collection">Remove Collection</h2>
 <p>Use <code>removeCollectionWithError</code> to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms</p>
@@ -109,7 +114,7 @@ JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithN
 NSError *error = nil;</p>
 <p>NSString *collectionName = @"people";<br />
 JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>BOOL removeCollectionWorked = [collection removeCollectionWithError:&amp;error];<br />
+<p>BOOL removeCollectionWorked = [collection removeCollectionWithError:&error];<br />
  {% endhighlight %} </p>
 <h2 id="destroy">Destroy</h2>
 <p>Use <code>destroyDataAndReturnError</code> to remove the following data:</p>
@@ -121,7 +126,7 @@ JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithN
 </ul>
 <p>{% highlight objc %}<br />
 NSError *error = nil;</p>
-<p>[[JSONStore sharedInstance] destroyDataAndReturnError:&amp;error];<br />
+<p>[[JSONStore sharedInstance] destroyDataAndReturnError:&error];<br />
  {% endhighlight %} </p>
 <h2 id="security">Security</h2>
 <p>You can secure all the collections in a store by passing a <code>JSONStoreOpenOptions</code> object with a password to the <code>openCollections</code> function. If no password is passed, the documents of all the collections in the store are not encrypted.</p>
@@ -136,7 +141,7 @@ NSError *error = nil;</p>
 [collection setSearchField:@"age" withType:JSONStore_Integer];</p>
 <p>JSONStoreOpenOptions *options = [JSONStoreOpenOptions new];<br />
 [options setPassword:@"123"];</p>
-<p>[[JSONStore sharedInstance] openCollections:@[collection] withOptions:options error:&amp;error];<br />
+<p>[[JSONStore sharedInstance] openCollections:@[collection] withOptions:options error:&error];<br />
  {% endhighlight %} </p>
 <h2 id="multi-user">Multiple User Support</h2>
 <p>You can create multiple stores that contain different collections in a single MobileFirst application. The <code>openCollections</code> function can take an options object with a username. If no username is given, the default username is <strong>jsonstore</strong></p>
@@ -147,7 +152,7 @@ NSError *error = nil;</p>
 [collection setSearchField:@"age" withType:JSONStore_Integer];</p>
 <p>JSONStoreOpenOptions *options = [JSONStoreOpenOptions new];<br />
 [options setUsername:@"yoel"];</p>
-<p>[[JSONStore sharedInstance] openCollections:@[collection] withOptions:options error:&amp;error];<br />
+<p>[[JSONStore sharedInstance] openCollections:@[collection] withOptions:options error:&error];<br />
  {% endhighlight %} </p>
 <h2 id="adapter">MobileFirst Adapter Integration</h2>
 <p>This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.</p>
@@ -210,7 +215,7 @@ function getPeople() {<br />
 NSError* error = nil;</p>
 <p>NSString *collectionName = @"people";<br />
 JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>NSArray *dirtyDocs = [collection allDirtyAndReturnError:&amp;error];<br />
+<p>NSArray *dirtyDocs = [collection allDirtyAndReturnError:&error];<br />
  {% endhighlight %} </p>
 <p>To prevent JSONStore from marking the documents as "dirty", pass the option <code>andMarkDirty:NO</code> to <code>add</code>, <code>replace</code>, and <code>remove</code></p>
 <h3>Push</h3>
@@ -231,7 +236,7 @@ JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithN
 <p>NSError* error = nil;</p>
 <p>NSString *collectionName = @"people";<br />
 JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>NSArray *dirtyDocs = [collection allDirtyAndReturnError:&amp;error];</p>
+<p>NSArray *dirtyDocs = [collection allDirtyAndReturnError:&error];</p>
 <p>WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@"People" procedureName:@"pushPeople"];<br />
 [invocationData setParameters:@[dirtyDocs]];</p>
 <p>PushToAdapter *pushDelegate =  [[PushToAdapter alloc] init];</p>
