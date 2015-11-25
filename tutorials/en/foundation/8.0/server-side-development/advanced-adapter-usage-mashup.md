@@ -70,12 +70,6 @@ The provided sample in this tutorial demonstrates the implementation of this sce
 In each one of them the names of the adapters are slightly different.  
 Here is a list of the mashup types and the corresponding adapter names:
 
-|Scenario                                  |Cities Adapter name      |Weather Adapter name     |
-|:----------------------------------------:|:-----------------------:|:-----------------------:|
-| JavaScript adapter -> JavaScript adapter |getCitiesListJS          |getCityWeatherJS         |
-| Java adapter -> JavaScript adapter       |getCitiesListJavaToJS    |getCityWeatherJS         |
-| Java adapter -> Java adapter             |getCitiesListJava        |getCityWeatherJava       |
-
 1. **JavaScript** adapter -> **JavaScript** adapter
   * Cities adapter   = getCitiesListJS
   * Weather adapter  = getCityWeatherJS
@@ -89,49 +83,53 @@ Here is a list of the mashup types and the corresponding adapter names:
 ###Mashup Sample Flow
 **1. Create a procedure / adapter call that create a request to Yahoo! Weather Service for each city and retrieves the corresponding data:**  
 
-(getCitiesListJS adapter)
+(getCitiesListJS adapter) XML:
 {% highlight xml %}
-<XML>:
 <connectivity>
-		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
-			<protocol>http</protocol>
-			<domain>weather.yahooapis.com</domain>
-			<port>80</port>
-      ...
+  <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+    <protocol>http</protocol>
+    <domain>weather.yahooapis.com</domain>
+    <port>80</port>
+    ...
+  </connectionPolicy>
+</connectivity>
+{% endhighlight %}
 
-<JavaScript>:
+(getCitiesListJS adapter) JavaScript:
+{% highlight javascript %}
 function getYahooWeather(woeid) {
 
-	var input = {
-	    method : 'get',
-	    returnedContentType : 'xml',
-	    path : 'forecastrss',
-		parameters : {
-			'w' : woeid,
-			'u' : 'c' //celcius
-		}
-	};
-
+  var input = {
+    method : 'get',
+    returnedContentType : 'xml',
+    path : 'forecastrss',
+    parameters : {
+      'w' : woeid,
+      'u' : 'c' //celcius
+    }
+  };
 	return WL.Server.invokeHttp(input);
-}
-{% endhighlight %}  
+}  
+{% endhighlight %}
 
 (getCityWeatherJava adapter)
 {% highlight java %}
 @GET
-	@Produces("application/json")
-	public String get(@Context HttpServletResponse response, @QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-		String returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"), response);
-		return returnValue;
-	}
+@Produces("application/json")
+public String get(@Context HttpServletResponse response, @QueryParam("cityId") String cityId)
+                throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+  String returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"), response);
+  return returnValue;
+}
 
-  private String execute(HttpUriRequest req, HttpServletResponse resultResponse) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-		String strOut = null;
-		HttpResponse RSSResponse = client.execute(host, req);
-		ServletOutputStream os = resultResponse.getOutputStream();
-    ...
-    (Convert the retrieved XML to JSON here...)
-  {% endhighlight %}  
+private String execute(HttpUriRequest req, HttpServletResponse resultResponse)
+                throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+  String strOut = null;
+  HttpResponse RSSResponse = client.execute(host, req);
+  ServletOutputStream os = resultResponse.getOutputStream();
+  ...(Convert the retrieved XML to JSON here...)
+}
+{% endhighlight %}  
 
 **2. Create an SQL query and fetch the cities records from the database:**
 
