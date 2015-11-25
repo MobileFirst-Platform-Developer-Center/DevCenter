@@ -8,7 +8,7 @@
       "children": [
         {
           "name": "Setting up your development environment",
-          "path": "/setting-up-your-development-environment/"
+          "path": "/development-environment"
         },
         {
           "name": "Hello World",
@@ -16,15 +16,15 @@
         },
         {
           "name": "Client-side development",
-          "path": "/client-side-development-basics/"
+          "path": "/client-side-development"
         },
         {
           "name": "Server-side development",
-          "path": "/server-side-development/"
+          "path": "/server-side-development"
         },
         {
           "name": "Advanced client-side development",
-          "path": "/advanced-client-side-development/"
+          "path": "/advanced-client-side-development"
         },
         {
           "name": "Data",
@@ -32,7 +32,7 @@
         },
         {
           "name": "Adding native functionality",
-          "path": "/adding-native-functionality/"
+          "path": "/adding-native-functionality"
         },
         {
           "name": "Notifications",

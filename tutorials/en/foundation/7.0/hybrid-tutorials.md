@@ -19,19 +19,19 @@ show_disqus: false
 * <a href="../hello-world/mobilefirst-console/">Introduction to MobileFirst Console</a>
 * <a href="../hello-world/">Previewing your application</a>
 
-### <a href="../client-side-development-basics/">Client-side development basics</a>
+### <a href="../client-side-development/">Client-side development basics</a>
 
-* <a href="../client-side-development-basics/learning-mobilefirst-hybrid-client-side-api/">Learning MobileFirst hybrid client-side API</a>
-* <a href="../client-side-development-basics/building-multi-page-application/">Building a multi-page application</a>
-* <a href="../client-side-development-basics/working-ui-frameworks/">Working with UI frameworks</a>
-* <a href="../client-side-development-basics/debugging-applications/">Debugging applications</a>
-* <a href="../client-side-development-basics/optimizing-application-various-environments/">Optimizing your application for various environments</a>
-* <a href="../client-side-development-basics/general-information-developing-ios/">General information when developing for iOS</a>
-* <a href="../client-side-development-basics/general-information-developing-android/">General information when developing for Android</a>
-* <a href="../client-side-development-basics/general-information-developing-blackberry-10/">General information when developing for BlackBerry 10</a>
-* <a href="../client-side-development-basics/general-information-developing-windows-phone-8/">General information when developing for Windows Phone 8</a>
-* <a href="../client-side-development-basics/general-information-developing-mobile-web-applications/">General information when developing Mobile Web applications</a>
-* <a href="../client-side-development-basics/general-information-developing-desktop-applications/">General information when developing desktop applications</a>
+* <a href="../client-side-development/learning-mobilefirst-hybrid-client-side-api/">Learning MobileFirst hybrid client-side API</a>
+* <a href="../client-side-development/building-multi-page-application/">Building a multi-page application</a>
+* <a href="../client-side-development/working-ui-frameworks/">Working with UI frameworks</a>
+* <a href="../client-side-development/debugging-applications/">Debugging applications</a>
+* <a href="../client-side-development/optimizing-application-various-environments/">Optimizing your application for various environments</a>
+* <a href="../client-side-development/general-information-developing-ios/">General information when developing for iOS</a>
+* <a href="../client-side-development/general-information-developing-android/">General information when developing for Android</a>
+* <a href="../client-side-development/general-information-developing-blackberry-10/">General information when developing for BlackBerry 10</a>
+* <a href="../client-side-development/general-information-developing-windows-phone-8/">General information when developing for Windows Phone 8</a>
+* <a href="../client-side-development/general-information-developing-mobile-web-applications/">General information when developing Mobile Web applications</a>
+* <a href="../client-side-development/general-information-developing-desktop-applications/">General information when developing desktop applications</a>
 
 ### <a href="../server-side-development/">Server-side development</a>
 
