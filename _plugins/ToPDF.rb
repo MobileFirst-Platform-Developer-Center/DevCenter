@@ -8,16 +8,16 @@ PDFKit.configure do |config|
     page_size: 'A4',
     print_media_type: true
   }
-  # Use only if your external hostname is unavailable on the server.
-  # config.root_url = "http://localhost"
-  # config.verbose = false
+  config.root_url = 'https://pages.github.ibm.com'
+  config.verbose = true
 end
 
 Jekyll::Hooks.register :site, :post_write do |site|
   site.pages.each do |page|
     next unless page.data['print_pdf']
+    # next unless page.url == '/tutorials/en/foundation/6.3/hello-world/previewing-application-mobile-web-desktop-browser/'
     # binding.pry
-    prefix_folder = './_site/pdf'
+    prefix_folder = site.config['destination'] + '/pdf'
     # binding.pry
     # Create the directory if not exists
     parts = page.url.split('/')
@@ -29,8 +29,8 @@ Jekyll::Hooks.register :site, :post_write do |site|
     file_name = prefix_folder + page.url.chomp('/') + '.pdf'
 
     # Generate the PDF
-    kit = PDFKit.new(page.output)
-    kit.stylesheets << '_site/css/combined.css'
+    kit = PDFKit.new('https://pages.github.ibm.com/MFPSamples' + page.url + 'index.html')
+    # kit.stylesheets << site.config['destination'] + '/css/combined.css'
     file = kit.to_file(file_name)
   end
 end
