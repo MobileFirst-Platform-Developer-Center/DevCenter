@@ -2,6 +2,7 @@
 layout: tutorial
 title: Creating your first native Android MobileFirst application
 relevantTo: [android]
+weight: 3
 ---
 <h2>Overview</h2>
 <p>To serve a native Android application, MobileFirst Server must be aware of it. For this purpose, IBM MobileFirst Platform Foundation provides a Native API library, which contains a set of APIs and configuration files.</p>
@@ -19,13 +20,13 @@ relevantTo: [android]
 <h2 id="nativeAPI">Creating a MobileFirst native API</h2>
 <h3>CLI</h3>
 <ol>
-<li>In the terminal with the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/advanced-client-side-development/using-cli-create-build-manage-project-artifacts/" title="Updated: Using CLI to create, build, and manage MobileFirst project artifacts">CLI</a> installed, create a new MobileFirst project using: <code>$ mfp create HelloWorldNative</code>.</li>
+<li>In the terminal with the <a href="../../advanced-client-side-development/using-cli-create-build-manage-project-artifacts/" title="Updated: Using CLI to create, build, and manage MobileFirst project artifacts">CLI</a> installed, create a new MobileFirst project using: <code>$ mfp create HelloWorldNative</code>.</li>
 <li>Go to the newly created project directory: <code>$ cd HelloWorldNative/</code>.</li>
 <li>Add a new Android native API using <code>$ mfp add api AndroidHelloWorld -e android</code>.</li>
 <li>Build and deploy the application using <code>$ mfp bd</code>. <em>This action is required for MobileFirst Server to recognize the application if it attempts to connect.</em></li>
 </ol>
 <h3>Studio</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/02_03_android_native_folder_structure-7-0.png"/></p>
+<p><img src="{{ site.baseurl }}/assets/backup/02_03_android_native_folder_structure-7-0.png" style="float:right;width: 25%"/></p>
 <ol>
 <li>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Native API.</li>
 <li>In the <strong>New MobileFirst Native API</strong> dialog, enter your application name and select <strong>Android</strong> for the <strong>Environment</strong> field.</li>

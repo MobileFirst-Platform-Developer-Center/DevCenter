@@ -2,6 +2,7 @@
 layout: tutorial
 title: Previewing the web resources of your application
 relevantTo: [hybrid]
+weight: 14
 ---
 <h2>Overview</h2>
 <p>This tutorial covers the following topics.</p>
@@ -14,20 +15,20 @@ relevantTo: [hybrid]
 <h2 id="addingEnvironment">Adding an environment to the MobileFirst project</h2>
 <p>To add an environment:</p>
 <h3>CLI</h3>
-<p>From a terminal window, navigate to the application's folder and run the following <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/advanced-client-side-development/using-cli-create-build-manage-project-artifacts/">CLI</a> command: <code>mfp add environment</code>. An interactive menu will be displayed.</p>
+<p>From a terminal window, navigate to the application's folder and run the following <a href="../../advanced-client-side-development/using-cli-create-build-manage-project-artifacts/">CLI</a> command: <code>mfp add environment</code>. An interactive menu will be displayed.</p>
 <h3>Studio</h3>
 <ol>
 <li>Click the MobileFirst icon in the menubar and select <strong>MobileFirst Environment</strong>.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/09/08_05_adding_an_environment.png"><img class="aligncenter wp-image-1422 size-full" src="{{ site.baseurl }}/assets/backup/08_05_adding_an_environment.png" alt="08_05_adding_an_environment" width="822" height="440" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/08_05_adding_an_environment.png"/>
 </li>
 <li>Select the application to which you would like to add an environment and select one or more environments.
 </li>
 <li>Click <strong>Finish</strong>. A new folder with the environmen name is added to the project structure.
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/09/08_05_selecting_an_environment.png"><img class="aligncenter wp-image-1424 size-full" src="{{ site.baseurl }}/assets/backup/08_05_selecting_an_environment.png" alt="08_05_selecting_an_environment" width="529" height="533" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/08_05_selecting_an_environment.png"/>
 </li>
 </ol>
 <h2 id="reviewStructure">Reviewing the folder structure</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/09/08_05_environment_folder_structure.png"><img class="alignright size-medium wp-image-1421" src="{{ site.baseurl }}/assets/backup/08_05_environment_folder_structure-196x300.png" alt="08_05_environment_folder_structure" width="196" height="300" /></a><br />
+<img src="{{ site.baseurl }}/assets/backup/08_05_environment_folder_structure-196x300.png"/>
 <em>The screen shot to the right depicts the iPhone environment, but the explanation below applies to any mobile environment (iPhone, iPad, Android, BlackBerry, Windows Phone 8, Windows 8).</em></p>
 <p>The mobile environment includes the following folders:</p>
 <ul>
@@ -60,5 +61,5 @@ Files in the <code>native\www</code> folder are regenerated each time the applic
 <p><img src="{{ site.baseurl }}/assets/backup/preview-buttons.png"/></p>
 <p>You can use the Mobile Browser Simulator to emulate Cordova or preview your application with different device skins.<br />
 <em>Limitation about Mobile Browser Simulator:</em> To preview an application that contains security tests that rely on the device (such as autoprovisioning or authenticity), you must temporarily change the security tests so that they do not use the device identification.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/09/08_05_mbs_preview.png"><img class="aligncenter wp-image-1425" src="{{ site.baseurl }}/assets/backup/08_05_mbs_preview-1024x712.png" alt="08_05_mbs_preview" width="700" height="487" /></a></li>
+<img src="{{ site.baseurl }}/assets/backup/08_05_mbs_preview-1024x712.png"/></li>
 </ol>

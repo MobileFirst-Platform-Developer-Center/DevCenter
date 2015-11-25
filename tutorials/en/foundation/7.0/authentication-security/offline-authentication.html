@@ -36,7 +36,7 @@ The associated sample project demonstrates an end-to-end scenario. However, ther
 <p>Before either online or offline authentication occurs, the availability of an Internet connection is checked first. Depending on the result, the appropriate authentication flow is used.</p>
 <h3>Online authentication</h3>
 <h4>Steps 2 and 3</h4>
-<p>The online authentication flow is implemented as explained in the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/authentication-security/adapter-based-authentication/adapter-based-authentication-hybrid-applications/" title="Adapter-based authentication in hybrid applications">adapter-based authentication in hybrid applications</a> tutorial.</p>
+<p>The online authentication flow is implemented as explained in the <a href="../../authentication-security/adapter-based-authentication/adapter-based-authentication-hybrid-applications/" title="Adapter-based authentication in hybrid applications">adapter-based authentication in hybrid applications</a> tutorial.</p>
 <h4>Steps 4 and 5</h4>
 <p>After successful login, a JSONStore is created by using the end-user’s username and encrypted by using the user's password.</p>
 <h4>Step 6</h4>
@@ -73,7 +73,7 @@ function goToSecuredArea() {<br />
 <h3>Implementation notes</h3>
 <h4>Single-Step authentication</h4>
 <ol>
-<li>The online authentication flow uses the same code as the one provided in the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/authentication-security/adapter-based-authentication/" title="Adapter-based authentication">single-step adapter authentication sample application</a>.</li>
+<li>The online authentication flow uses the same code as the one provided in the <a href="../../authentication-security/adapter-based-authentication/" title="Adapter-based authentication">single-step adapter authentication sample application</a>.</li>
 <li>To simulate a back end of multiple users, a login is considered valid when <code>username == password</code>, no matter what <code>username</code> is.
 <p>The <code>submitAuthentication</code> function in the adapter <code>*-impl.js</code> file is therefore modified to:<br />
 {% highlight javascript %} <br />
