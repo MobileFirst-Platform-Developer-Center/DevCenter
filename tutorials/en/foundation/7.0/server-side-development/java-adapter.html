@@ -153,10 +153,10 @@ PushAPI pushApi = serverApi.getPushAPI();<br />
 <img src="{{ site.baseurl }}/assets/backup/java-adapter-call.png"/></p>
 <h3>In the Command Line interface (CLI)</h3>
 <p>Enter <code>$ mfp adapter call</code>, then follow the prompts by using the arrow keys.</p>
-<blockquote><p>For more information, review the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/advanced-client-side-development/using-cli-create-build-manage-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>tutorial.</p></blockquote>
+<blockquote><p>For more information, review the <a href="../../advanced-client-side-development/using-cli-create-build-manage-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>tutorial.</p></blockquote>
 <h3>In Postman</h3>
 <p>MobileFirst Java adapters are available via a REST interface. This means that if you know the URL of a resource/procedure, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.</p>
-<p>If your resource is protected by a security scope (see <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/authentication-security/" title="Authentication and security" target="_blank">Authentication and Security</a>), the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.</p>
+<p>If your resource is protected by a security scope (see <a href="../../authentication-security/" title="Authentication and security" target="_blank">Authentication and Security</a>), the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.</p>
 <p>For you to work around this during your development stage, the development version of the MobileFirst server includes a test token endpoint.<br />
 To receive a Test Token, make an HTTP <code>POST</code> request to <code>http(s)://{server_ip}:{server_port}/{project_name}/authorization/v1/testtoken</code> with your HTTP client (Postman).</p>
 <p>You receive a JSON object with a temporary valid authorization token:</p>

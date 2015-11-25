@@ -4,13 +4,13 @@ title: Hybrid Development
 show_disqus: false
 ---
 <br>
-### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
+### <a href="../development-environment/">Setting up your development environment</a>
 
-* <a href="../setting-up-your-development-environment/setting-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
-* <a href="../setting-up-your-development-environment/setting-ios-development-environment/">Setting up your iOS development environment</a>
-* <a href="../setting-up-your-development-environment/setting-android-development-environment/">Setting up your Android development environment</a>
-* <a href="../setting-up-your-development-environment/setting-blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>
-* <a href="../setting-up-your-development-environment/setting-windows-phone-8-development-environment/">Setting up your Windows Phone 8 development environment</a>
+* <a href="../development-environment/mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
+* <a href="../development-environment/ios-development-environment/">Setting up your iOS development environment</a>
+* <a href="../development-environment/android-development-environment/">Setting up your Android development environment</a>
+* <a href="../development-environment/blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>
+* <a href="../development-environment/windows-phone-8-development-environment/">Setting up your Windows Phone 8 development environment</a>
 
 ### <a href="../hello-world/">Hello World</a>
 
@@ -61,7 +61,7 @@ show_disqus: false
 
 * <a href="../data/working-offline/">Working offline</a>
 * <a href="../data/jsonstore/jsonstore-javascript-api/">JSONStore - JavaScript API</a>
-* <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/data/cloudant-nosql-db-api">Integrating with Cloudant using an adapter</a>
+* <a href="../../data/cloudant-nosql-db-api">Integrating with Cloudant using an adapter</a>
 
 ### <a href="../adding-native-functionality/">Adding native functionality to hybrid applications</a>
 

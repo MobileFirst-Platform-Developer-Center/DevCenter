@@ -2,16 +2,13 @@
 layout: tutorial
 title: Location services in native iOS applications
 relevantTo: [ios]
+weight: 4
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesNativeiOSProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesProject.zip">Download Studio project</a>
-        </li>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/LocationServicesNativeiOSProject.zip">Download native project</a>
-        </li>
-</ul>
-
 <h2>Architecture</h2>
 <p><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg"/></p>
 <p>The application code on the mobile device, in the form of an acquisition policy, controls the collection of data from device sensors.</p>
@@ -28,8 +25,8 @@ relevantTo: [ios]
 <p>Server activities and received events are logged, together with the device and application contexts, for future reporting and analytics.</p>
 <h2>Acquisition policy</h2>
 <p>An acquisition policy defines how acquisition takes place.</p>
-<p>{% highlight objc %}<br />
-WLAcquisitionPolicy* policy = [[WLAcquisitionPolicy alloc] init];<br />
+<p>{% highlight objc %}
+WLAcquisitionPolicy* policy = [[WLAcquisitionPolicy alloc] init];
 {% endhighlight %}</p>
 <h3>Geo Acquisition policy</h3>
 <p>Add a <code>UIRequiredDeviceCapabilities</code> node in <strong>yourAppName-info.plist</strong> with items:</p>
@@ -39,9 +36,9 @@ WLAcquisitionPolicy* policy = [[WLAcquisitionPolicy alloc] init];<br />
 </ul>
 <p><img src="{{ site.baseurl }}/assets/backup/10_04_ios_geo.png"/></p>
 <p>Then in your code you can use:<br />
-{% highlight objc %}<br />
-WLGeoAcquisitionPolicy* geoPolicy = [WLGeoAcquisitionPolicy getLiveTrackingProfile];<br />
-[policy setGeoPolicy:geoPolicy];<br />
+{% highlight objc %}
+WLGeoAcquisitionPolicy* geoPolicy = [WLGeoAcquisitionPolicy getLiveTrackingProfile];
+[policy setGeoPolicy:geoPolicy];
 {% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>If using iOS 8</h3>
@@ -63,13 +60,13 @@ Additional configuration options include:</p>
 <p>Add <strong>wifi</strong> to your <code>UIRequiredDeviceCapabilities</code> node in <strong>yourAppName-info.plist</strong>.<br />
 <img src="{{ site.baseurl }}/assets/backup/10_04_ios_wifi.png"/><br />
 Then in your code you can use:<br />
-{% highlight objc %}<br />
-WLWifiAcquisitionPolicy* wifiPolicy = [[WLWifiAcquisitionPolicy alloc] init];<br />
-WLWifiAccessPointFilter* filter1 = [[WLWifiAccessPointFilter alloc] init:@"Net1"];<br />
-WLWifiAccessPointFilter* filter2 = [[WLWifiAccessPointFilter alloc] initWithSSID:@"Net2" MAC:@"*"];</p>
-<p>[wifiPolicy setInterval:10000];<br />
-[wifiPolicy setAccessPointFilters:[NSMutableArray arrayWithObjects:filter1, filter2, nil]];</p>
-<p>[policy setWifiPolicy:wifiPolicy];<br />
+{% highlight objc %}
+WLWifiAcquisitionPolicy* wifiPolicy = [[WLWifiAcquisitionPolicy alloc] init];
+WLWifiAccessPointFilter* filter1 = [[WLWifiAccessPointFilter alloc] init:@"Net1"];
+WLWifiAccessPointFilter* filter2 = [[WLWifiAccessPointFilter alloc] initWithSSID:@"Net2" MAC:@"*"];
+[wifiPolicy setInterval:10000];
+[wifiPolicy setAccessPointFilters:[NSMutableArray arrayWithObjects:filter1, filter2, nil]];
+[policy setWifiPolicy:wifiPolicy];
 {% endhighlight %}<br />
 <code>interval</code> is the polling interval, in milliseconds. WiFi polling is performed at each interval.</p>
 <p><code>accessPointFilters</code> are access points of interest.<br />
@@ -91,52 +88,52 @@ In the above example, the acquisition policy:</p>
 <li>Movement (Geo: <code>PositionChange</code>, WiFi: <code>VisibleAccessPointsChange</code>)</li>
 <li>WiFi <code>Connect</code> / <code>Disconnect</code></li>
 </ul>
-<p>{% highlight objc %}<br />
-//Init<br />
-WLTriggersConfiguration* triggers = [[WLTriggersConfiguration alloc] init];<br />
-//Center of circle<br />
-WLCoordinate* center = [[WLCoordinate alloc] initWithLatitude:40.689167 longitude:-74.044444];<br />
-//Circle<br />
-WLCircle* circle = [[WLCircle alloc] initWithCenter:center radius:100];<br />
-//Event<br />
-NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"me", @"bring", @"huddledMasses", @"your", nil];<br />
-//Geo Trigger<br />
-WLGeoEnterTrigger* enterTrigger = [[WLGeoEnterTrigger alloc] init];<br />
-[enterTrigger setArea:circle];<br />
-[enterTrigger setCallback:nil]; //out of scope, see documentation<br />
-[enterTrigger setEvent:event];<br />
-[[triggers getGeoTriggers] setObject:enterTrigger forKey:@"trigger1"];<br />
+<p>{% highlight objc %}
+//Init
+WLTriggersConfiguration* triggers = [[WLTriggersConfiguration alloc] init];
+//Center of circle
+WLCoordinate* center = [[WLCoordinate alloc] initWithLatitude:40.689167 longitude:-74.044444];
+//Circle
+WLCircle* circle = [[WLCircle alloc] initWithCenter:center radius:100];
+//Event
+NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"me", @"bring", @"huddledMasses", @"your", nil];
+//Geo Trigger
+WLGeoEnterTrigger* enterTrigger = [[WLGeoEnterTrigger alloc] init];
+[enterTrigger setArea:circle];
+[enterTrigger setCallback:nil]; //out of scope, see documentation
+[enterTrigger setEvent:event];
+[[triggers getGeoTriggers] setObject:enterTrigger forKey:@"trigger1"];
 {% endhighlight %}</p>
 <p>In the above example, <code>trigger1</code> is an <strong>Enter</strong> trigger which is activated when the device enters the defined circle (longitude, latitude and radius).</p>
 <p>When a trigger activates, it can call a callback function and/or create an event to be sent to the server.</p>
 <blockquote><p>For more information, see the topic about triggers in the user documentation.</p></blockquote>
 <h2>Start Acquisition</h2>
 <p>Use the <code>policy</code> and <code>triggers</code> defined above to start the acquisition.<br />
-{% highlight objc %}<br />
-WLLocationServicesConfiguration* config = [[WLLocationServicesConfiguration alloc] init];<br />
-[config setPolicy:policy];<br />
-[config setTriggers:triggers];<br />
-[config setFailureCallbacks:nil];//see documentation</p>
-<p>[[[WLClient sharedInstance] getWLDevice] startAcquisition:config];<br />
+{% highlight objc %}
+WLLocationServicesConfiguration* config = [[WLLocationServicesConfiguration alloc] init];
+[config setPolicy:policy];
+[config setTriggers:triggers];
+[config setFailureCallbacks:nil];//see documentation
+[[[WLClient sharedInstance] getWLDevice] startAcquisition:config];
 {% endhighlight %}</p>
 <h2>Events</h2>
 <h3>Client Side</h3>
 <p>Events are generated by triggers (as explained above).<br />
-{% highlight objc %}<br />
-NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"me", @"bring", @"huddledMasses", @"your", nil];<br />
-[enterTrigger setEvent:event];<br />
-{% endhighlight %}</p>
-<p>Events can also be generated manually by calls to the API:<br />
-{% highlight java %}<br />
-[[WLClient sharedInstance] transmitEvent:event immediately:YES];</p>
-<p>{% endhighlight %}<br />
+{% highlight objc %}
+NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"me", @"bring", @"huddledMasses", @"your", nil];
+[enterTrigger setEvent:event];
+{% endhighlight %}
+Events can also be generated manually by calls to the API:
+{% highlight java %}
+[[WLClient sharedInstance] transmitEvent:event immediately:YES];
+{% endhighlight %}<br />
 Where <strong>event</strong> is a <code>NSDictionary</code> and <strong>immediate</strong> is a <code>boolean</code>.</p>
 <h3>Server-side</h3>
 <p>In the adapter code, create event handlers by using:<br />
-{% highlight javascript %}<br />
-WL.Server.createEventHandler(filter, handlerFunction);<br />
-{% endhighlight %}<br />
-The events that match the filter are passed to <code>handlerFunction</code>.<br />
+{% highlight javascript %}
+WL.Server.createEventHandler(filter, handlerFunction);
+{% endhighlight %}
+The events that match the filter are passed to <code>handlerFunction</code>.
 Filter examples:</p>
 <ul>
 <li><code>{status: "platinum"}</code> – handle platinum members only</li>
@@ -144,8 +141,8 @@ Filter examples:</p>
 <li><code>{}</code> – all events</li>
 </ul>
 <p>Register the event handlers by using:<br />
-{% highlight javascript %}<br />
-WL.Server.setEventHandlers([...]);<br />
+{% highlight javascript %}
+WL.Server.setEventHandlers([...]);
 {% endhighlight %}</p>
 <blockquote><p>For more information, see the topic about working with geofences and triggers in the user documentation.</p></blockquote>
 <h2>Sample application</h2>
