@@ -2,16 +2,13 @@
 layout: tutorial
 title: Invoking adapter procedures from native Windows Phone 8 applications
 relevantTo: [windowsphone8]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWP8Project.zip
+
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Download Studio project</a>
-    </li>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWP8Project.zip">Download native project</a>
-    </li>
-</ul>
-<br>
 To create and configure a Windows Phone 8 native project, first follow the <a href="../../hello-world/creating-first-native-windows-phone-8-mobilefirst-application/" title="Creating your first native Windows Phone 8 MobileFirst application">Creating your first Native WP8 MobileFirst application</a> tutorial.</p>
 <p>This tutorial covers the following topics:</p>
 <ul>
@@ -62,7 +59,7 @@ String myContextObject = "InvokingAdapterProceduresWP8";<br />
 WLRequestOptions options = new WLRequestOptions();<br />
 options.setInvocationContext(myContextObject);<br />
 WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 </ol>
 <h2 id="response">Receiving a procedure response</h2>

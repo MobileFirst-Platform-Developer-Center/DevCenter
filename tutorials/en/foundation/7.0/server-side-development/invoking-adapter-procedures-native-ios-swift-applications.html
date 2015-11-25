@@ -2,17 +2,12 @@
 layout: tutorial
 title: Invoking adapter procedures from native iOS Swift applications
 relevantTo: [ios]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresSwiftProject.zip
 ---
-<div id="samplesAndPersonas">
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Download Studio project</a>
-    </li>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresSwiftProject.zip">Download native project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
 <p>To create and configure an iOS native project, first follow the “<a href="../../hello-world/configuring-a-native-ios-with-the-mfp-sdk/" title="Configuring a native iOS application with the MobileFirst Platform SDK">Configuring a native iOS application with the MobileFirst Platform SDK</a>” tutorial.</p>
 <p>If you are developing Swift-based applications, make sure that you follow the additional steps.</p>
@@ -26,7 +21,7 @@ For most actions, you must specify a delegate object, such as a <code>MyConnectL
 {% highlight bash %} <br />
 let connectListener = MyConnectListener(vc: self)<br />
 WLClient.sharedInstance().wlConnectWithDelegate(connectListener)<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>Make sure that your Bridging Header includes the <code>WLSwiftBridgingHeader.h</code> file for access to MobileFirst APIs.
 </li>
@@ -60,7 +55,7 @@ func onSuccess(response: WLResponse!) {<br />
     }<br />
     self.vc.updateView(resultText)<br />
 }<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 </ol>
 <h2>Calling an adapter procedure</h2>
@@ -69,20 +64,20 @@ func onSuccess(response: WLResponse!) {<br />
 <li>To call a procedure, create a <code>WLResourceRequest</code> object and specify the path to the adapter and the HTTP method.<br />
 {% highlight bash %} <br />
 let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getStories"), method: WLHttpMethodGet)<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name to set an array of parameters.<br />
 {% highlight bash %} <br />
 request.setQueryParameterValue("['technology']", forName: "params")<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameterValue</code> for each parameter.<br />
 {% highlight bash %} <br />
 request.setQueryParameterValue("value1", forName: "param1")<br />
 request.setQueryParameterValue("value2", forName: "param2")<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 </ul>
 </li>

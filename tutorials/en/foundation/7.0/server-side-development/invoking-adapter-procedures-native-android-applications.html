@@ -2,15 +2,12 @@
 layout: tutorial
 title: Invoking adapter procedures from native Android applications
 relevantTo: [android]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresAndroidProject.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Download Studio project</a>
-    </li>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresAndroidProject.zip">Download native project</a>
-    </li>
-</ul>
 <br>
 To create and configure an Android native project, first follow the “<a href="../../hello-world/creating-first-native-android-mobilefirst-application/" title="Creating your first native Android MobileFirst application">Creating your first Native Android MobileFirst application</a>” tutorial.</p>
 <h2>Overview</h2>
@@ -44,7 +41,7 @@ public class MyConnectListener implements WLResponseListener  {<br />
 <li> Define the URI of the resource. For a JavaScript HTTP adapter: <code>/adapters/{AdapterName}/{ProcedureName}</code><br />
 {% highlight java %} <br />
 URI adapterPath = new URI("/adapters/RSSReader/getStoriesFiltered");<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>Create a <code>WLResourceRequest</code> object and choose the HTPP Method (GET, POST, etc).<br />
 {% highlight java %} <br />
@@ -56,13 +53,13 @@ WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name  to set an array of parameters.<br />
 {% highlight java %} <br />
 request.setQueryParameter("params","['technology']");<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameter</code> for each parameter.<br />
 {% highlight java %} <br />
 request.setQueryParameter("param1","value1");<br />
 request.setQueryParameter("param2","value2");<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>Trigger the request with <code>.send()</code>.<br />
 Specify a <code>MyInvokeListener</code> class instance as a parameter.<br />
@@ -96,7 +93,7 @@ public void onSuccess(WLResponse response) {<br />
      String responseText = response.getResponseText();<br />
      AndroidNativeApp.updateTextView("Failed to Invoke Adapter Procedure\n" + responseText);<br />
 }<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 </ol>
 <h2>Sample application</h2>

@@ -2,13 +2,10 @@
 layout: tutorial
 title: Using Java in JavaScript adapters
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/MobileFirstAdaptersProject.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/MobileFirstAdaptersProject.zip">Download Studio project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
 <p>To learn more about adapters in general, start with the <a href="../adapter-framework-overview/" title="Adapters overview">Adapters Overview</a> tutorial.</p>
 <p>When JavaScript is not sufficient to implement required functionality, or if a Java class already exists, you can use Java code as an extension for the JavaScript adapter.</p>
@@ -45,7 +42,7 @@ package com.sample.customcode;</p>
     return first - second;<br />
   }<br />
 }<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>If your Java code has additional dependencies, put the required JAR files in the <code>server\lib</code> folder of your MobileFirst project.
 </li>
@@ -60,7 +57,7 @@ function addTwoIntegers(a,b){<br />
     result: com.sample.customcode.Calculator.addTwoIntegers(a,b)<br />
   };<br />
 }<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>To use the instance method, create a class instance and invoke the instance method from it.
 <p>{% highlight javascript %} <br />
@@ -70,7 +67,7 @@ function subtractTwoIntegers(a,b){<br />
     result : calcInstance.subtractTwoIntegers(a,b)<br />
   };<br />
 }<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 </ol>
 <h2 id="sample">Sample application</h2>

@@ -2,17 +2,12 @@
 layout: tutorial
 title: Invoking adapter procedures from native Java Platform, Micro Editions (Java ME) applications
 relevantTo: [javame]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresJavaMEProject.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Download Studio project</a>
-    </li>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresJavaMEProject.zip">Download native project</a>
-    </li>
-</ul>
-<br>
-
 IBM MobileFirst Platform Foundation provides the ability for Java™  Platform, Micro Edition (Java ME) applications to communicate with MobileFirst Server by using a MobileFirst Native API library.</p>
 <p>This tutorial covers the following topics:</p>
 <ul>
@@ -80,7 +75,7 @@ public void commandAction(Command command, Item item) {<br />
     if(itemName.getText().equals("1.Connect")) {<br />
   updateTextView("\nConnecting...");<br />
   client.connect(new MyConnectListener());<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 </ol>
 <h2 id="myConnectListener">MyConnectListener</h2>
