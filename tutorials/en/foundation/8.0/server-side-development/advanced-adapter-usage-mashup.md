@@ -72,15 +72,13 @@ The provided sample in this tutorial demonstrates the implementation of this sce
 In each one of them the names of the adapters are slightly different.  
 Here is a list of the mashup types and the corresponding adapter names:
 
-1. **JavaScript** adapter -> **JavaScript** adapter
-  * Cities adapter   = getCitiesListJS
-  * Weather adapter  = getCityWeatherJS
-2. **Java** adapter -> **JavaScript** adapter
-  * Cities adapter   = getCitiesListJavaToJS
-  * Weather adapter  = getCityWeatherJS
-3. **Java** adapter -> **Java** adapter
-  * Cities adapter   = getCitiesListJava
-  * Weather adapter  = getCityWeatherJava
+| Scenario                                         |      Cities Adapter name     |  Weather Adapter name |  
+|--------------------------------------------------|------------------------------|-----------------------|
+| **JavaScript** adapter -> **JavaScript** adapter | getCitiesListJS              | getCityWeatherJS      |  
+| **Java** adapter -> **JavaScript** adapter       | getCitiesListJavaToJS        | getCityWeatherJS      |  
+| **Java** adapter -> **Java** adapter             | getCitiesListJava            | getCityWeatherJava    |
+
+
 
 ###Mashup Sample Flow
 **1. Create a procedure / adapter call that create a request to Yahoo! Weather Service for each city and retrieves the corresponding data:**  
@@ -122,7 +120,7 @@ public String get(@Context HttpServletResponse response, @QueryParam("cityId") S
     return returnValue;
 }
 
-private String execute(HttpUriRequest req, HttpServletResponse resultResponse) throws ClientProtocolException, IOException, IllegalStateException, SAXException { 
+private String execute(HttpUriRequest req, HttpServletResponse resultResponse) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
     String strOut = null;
     HttpResponse RSSResponse = client.execute(host, req);
     ServletOutputStream os = resultResponse.getOutputStream();
@@ -172,8 +170,8 @@ function getCityWeather(woeid){
 {% highlight java %}
 while (rs.next()) {
 	getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
-    HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);	
-    org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);	
+    HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
+    org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
     JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
     ...
 {% endhighlight %}  
