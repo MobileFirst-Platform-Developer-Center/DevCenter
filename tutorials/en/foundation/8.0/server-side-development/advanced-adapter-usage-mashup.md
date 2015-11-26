@@ -216,7 +216,7 @@ conn.close();
 return jsonArr.toString();
 {% endhighlight %}  
 
-> An example of city list in SQL is provided with the attached sample, under `server/mobilefirstTraining.sql`.
+> An example of city list in SQL is provided with the attached sample, under `utils/mobilefirstTraining.sql`.
 Remember that SQL adapters require a JDBC connector driver, which must be downloaded separately by the developer and added to the `server/lib` folder of the project.
 
 ## Sample application
