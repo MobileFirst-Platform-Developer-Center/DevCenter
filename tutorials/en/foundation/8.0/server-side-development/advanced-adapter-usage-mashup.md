@@ -217,7 +217,7 @@ return jsonArr.toString();
 {% endhighlight %}  
 
 > An example of city list in SQL is available in the provided adapter maven project, under `utils/mobilefirstTraining.sql`.
-Remember that SQL adapters require a JDBC connector driver. [Follow this instructions to add the JDBC connector dependency](http://blog.valdaris.com/post/custom-jar/) .
+Remember that SQL adapters require a JDBC connector driver. [Follow these instructions to add the JDBC connector dependency](http://blog.valdaris.com/post/custom-jar/) .
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdapterMashup) the MobileFirst project.
