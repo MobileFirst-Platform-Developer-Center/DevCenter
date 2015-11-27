@@ -5,16 +5,18 @@ relevantTo: [hybrid]
 ---
 <h2 id="loggingJS">Logging example for hybrid applications (JavaScript)</h2>
 <h3>Outputs to a browser JavaScript console, LogCat, or Xcode console</h3>
-<p>{% highlight javascript %} <br />
-var MathUtils = function(){</p>
-<p>  var logger = WL.Logger.create({pkg: 'MathUtils'});</p>
-<p>  var sum = function(a, b){</p>
-<p>  var sum = a + b;</p>
-<p>  logger.debug('sum called with args ' + a + ' and ' + b + '. Returning ' + sum);</p>
-<p>  return sum;<br />
-  };<br />
-}();<br />
- {% endhighlight %} </p>
+<p>{% highlight javascript %}
+var MathUtils = function(){
+    var logger = WL.Logger.create({pkg: 'MathUtils'});
+    var sum = function(a, b){
+        var sum = a + b;
+        logger.debug('sum called with args ' + a + ' and ' + b + '. Returning ' + sum);
+        
+        return sum;
+    };
+}();
+{% endhighlight %} </p>
+
 <h2>API calls for specific tasks</h2>
 <h3>Log capture is enabled by default. To turn log capture on or off:</h3>
 <p><code>WL.Logger.config({capture: false})</code></p>
