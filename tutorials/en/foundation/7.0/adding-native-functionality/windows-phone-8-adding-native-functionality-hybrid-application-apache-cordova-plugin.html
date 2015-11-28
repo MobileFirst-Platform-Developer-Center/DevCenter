@@ -1,7 +1,11 @@
 ---
 layout: tutorial
-title: Windows Phone 8 - Adding native UI elements
+title: Windows Phone 8 - Implementing Apache Cordova plugin
 relevantTo: [windowsphone8]
+weight: 8
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/UsingNativePagesInHybridAppsProject.zip
 ---
 <h2>Overview</h2>
 <p>In some cases, developers of a MobileFirst application might have to use a specific third-party native library or a device function that is not yet available in Apache Cordova.</p>
@@ -37,8 +41,8 @@ The plug-in performs the required action and calls a JavaScript callback method 
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the native folder of the Windows Phone 8 environment.</p>
 
 {% highlight xml %}
-<feature name=“sayHelloPlugin">
-  <param name="wp-package" value=“sayHelloPlugin" />
+<feature name="sayHelloPlugin">
+    <param name="wp-package" value="sayHelloPlugin" />
 </feature>
 {% endhighlight %}
 
@@ -48,7 +52,8 @@ From the JavaScript code of the application, use the <code>cordova.exec()</code>
 function sayHello() {
     var name = $("#NameInput").val();
     cordova.exe(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
-}{% endhighlight %}
+}
+{% endhighlight %}
 
 <ul>
     <li><code>sayHelloSuccess</code> - Success callback</li>
@@ -62,15 +67,17 @@ function sayHello() {
 {% highlight javascript %}
 function sayHelloSuccess(data){
     WL.SimpleDialog.show(
-        "Response from plug-in", data,
-  [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]
+        "Response from plug-in", 
+        data,
+        [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]
     );
 }
 
 function sayHelloFailure(data){
     WL.SimpleDialog.show(
-  "Response from plug-in", data,
-  [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]
+      "Response from plug-in",
+      data,
+      [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]
     );
 }
 {% endhighlight %}
@@ -84,23 +91,19 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
     <li>Create a new C# class.</li>
     <li>Add the new class to your project namespace and add the required import statements.
 
-    {% highlight c# %}
-    using System;
+{% highlight csharp %}
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using WPCordovaClassLib.Cordova;
 using WPCordovaClassLib.Cordova.Commands;
 using WPCordovaClassLib.Cordova.JSON;
 
-namespace Cordova.Extension.Commands
-{
-    public class SayHelloPlugin : BaseCommand
-    {
-
-    {% endhighlight %}
+namespace Cordova.Extension.Commands {
+    public class SayHelloPlugin : BaseCommand {
+{% endhighlight %}
     </li>
 </ol>
 
@@ -109,31 +112,30 @@ namespace Cordova.Extension.Commands
 <ol>
     <li>The JavaScript wrapper calls the <code>sayHello</code> method and passes a single parameter. It returns a string back to JavaScript.
 
-    {% highlight c# %}public void sayHello(string options)
-        {
+{% highlight csharp %}
+        public void sayHello(string options) {
             string optVal = null;
+        
             try {
                 optVal = JsonHelper.Deserialize<string[]>(options)[0];
             }
             catch (Exception) {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "SayHelloPlugin signaled an error"));
             }
-            {% endhighlight %}
+    {% endhighlight %}
     </li>
 
     <li>The <code>DispatchCommandResult</code> method returns the result to JavaScript, whether success or failure.
-{% highlight c# %}
-if (optVal == null)
-            {
+{% highlight csharp %}
+            if (optVal == null) {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Got null value as input"));
-            }
-            else
-            {
+            } else {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.OK, "Hello " + optVal));
             }
         }
     }
-}{% endhighlight %}
+}
+{% endhighlight %}
 </li>
 </ol>
 

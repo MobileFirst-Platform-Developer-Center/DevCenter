@@ -1,14 +1,12 @@
 ---
 layout: tutorial
-title: iOS - Using native pages in hybrid applications
+title: iOS - Using native pages
 relevantTo: [hybrid]
+weight: 2
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/UsingNativePagesInHybridAppsProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/UsingNativePagesInHybridAppsProject.zip">Download Studio project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>This tutorial explains how to integrate native and web "pages" in an iOS application by using the <code>WL.NativePage.show()</code> API to open a native page from JavaScript.</p>
 <p>With this method, you can have data sent from JavaScript to the open native page, and specify a callback to be called after the native page closes.</p>
@@ -22,12 +20,14 @@ relevantTo: [hybrid]
 <h2 id="connect">Connecting to the plugin from the JavaScript code</h2>
 <ol>
 <li>Implement the <code>WL.NativePage.show()</code> method to open the native page:
-<p>{% highlight js %} function openNativePage(){<br />
-    var params = {<br />
-        nameParam : $('#nameInput').val()<br />
-    };<br />
-    WL.NativePage.show(nativePageClassName, backFromNativePage, params);<br />
-} {% endhighlight %} </p>
+<p>{% highlight js %}
+function openNativePage() {
+    var params = {
+        nameParam : $('#nameInput').val()
+    };
+    WL.NativePage.show(nativePageClassName, backFromNativePage, params);
+}
+{% endhighlight %} </p>
 <ul>
 <li><code>nativePageClassName</code>: The name of a native iOS <code>UIViewController</code> instance to start.</li>
 <li><code>backFromNativePage</code>: A callback function to call when the native page closes.</li>
@@ -35,9 +35,12 @@ relevantTo: [hybrid]
 </ul>
 </li>
 <li>To handle the callback function, write the following code:
-<p>{% highlight js %} function backFromNativePage(data){<br />
-  alert("Received phone number is: " + data.phoneNumber);<br />
-} {% endhighlight %} </p>
+<p>
+{% highlight js %}
+function backFromNativePage(data){
+    alert("Received phone number is: " + data.phoneNumber);
+}
+{% endhighlight %} </p>
 <p>The <code>backFromNativePage(data)</code> parameter can pass data back to the web part of an application after the native closes.
 </li>
 </ol>
@@ -51,25 +54,31 @@ If you work with existing <code>.m</code> and <code>.h</code> files, reference t
 Placing the <code>.m</code> and <code>.h</code> files only in the <code>iphone\native\Classes</code> folder in Eclipse is not sufficient, because these files are not referenced in the Xcode project unless they have been added in Xcode.</p>
 </li>
 <li>To retrieve custom data parameters that are passed from the web view, use the <code>setDataFromWebView:(NSDictionary*)data</code> method:
-<p>{% highlight objc %} -(void)setDataFromWebView:(NSDictionary*)data{<br />
-    self.nameParam = (NSString*)[data valueForKey:@"nameParam"];<br />
-} {% endhighlight %} 
+<p>{% highlight objc %}
+-(void)setDataFromWebView:(NSDictionary*)data {
+    self.nameParam = (NSString*)[data valueForKey:@"nameParam"];
+}
+{% endhighlight %} 
 </li>
 </ol>
 <h2 id="control">Returning control to the web view</h2>
 <p>When the native page switches back to the web view, a call to the <code>[NativePage showWebView:]</code> method is necessary.<br />
 To pass data back to the web view, use the <code>NSDictionary</code> object. For example:</p>
 <h4>Objective-C</h4>
-<p>{% highlight objc %} -(IBAction)returnClicked:(id)sender{<br />
-    NSString *phone = [phoneNumber text];<br />
-    NSDictionary *returnedData = [NSDictionary dictionaryWithObject:phone forKey:@"phoneNumber"];<br />
-    [NativePage showWebView:returnedData];<br />
-} {% endhighlight %} </p>
+<p>{% highlight objc %}
+-(IBAction)returnClicked:(id)sender {
+    NSString *phone = [phoneNumber text];
+    NSDictionary *returnedData = [NSDictionary dictionaryWithObject:phone forKey:@"phoneNumber"];
+    [NativePage showWebView:returnedData];
+}
+{% endhighlight %} </p>
 <p><br clear="all" /></p>
 <h4>JavaScript</h4>
-<p>{% highlight js %} function backFromNativePage(data){<br />
-    alert("Received phone number is: " + data.phoneNumber);<br />
-} {% endhighlight %} </p>
+<p>{% highlight js %}
+function backFromNativePage(data){
+    alert("Received phone number is: " + data.phoneNumber);
+}
+{% endhighlight %} </p>
 <h2 id="sample">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/UsingNativePagesInHybridAppsProject.zip">Click to download</a> the Studio project.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/07_02_ios_sample_app.png"/></p>
