@@ -2,12 +2,12 @@
 layout: tutorial
 title: Beacons in iOS
 relevantTo: [ios]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/BeaconsNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativeiBeaconsProject.zip
 ---
-<ul>
-<li class="download-sample"><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/BeaconsNativeProject.zip">Download Studio project</a></li>
-<li class="download-sample"><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativeiBeaconsProject.zip">Download native project</a></li>
-</ul>
-
 <h2>Overview</h2>
 <p>This tutorial discusses the client-side API for working with beacons in iOS.<br />
 This tutorial is a continuation of <a href="../">Working with Beacons</a> (introduction, setup, and server-side API).</p>
@@ -24,81 +24,87 @@ This tutorial is a continuation of <a href="../">Working with Beacons</a> (intro
 </li>
 <li>Copy the <code>iOSNativeiBeaconsLibrary</code> folder of the iOSNativeiBeacons project into your native iOS application. That folder contains the library that provides the simplified set of APIs for ranging/monitoring iBeacons.
 <p>To request permission to use location services and local/push notifications, write the following code:</p>
-<p>{% highlight objc %} <br />
-- (void) viewDidLoad {<br />
-	[super viewDidLoad];<br />
-	...<br />
-	[[WLBeaconsLocationManager sharedInstance] requestPermissionToUseLocationServices];<br />
-	[[WLBeaconsLocationManager sharedInstance] requestPermissionToUseNotifications];<br />
-} {% endhighlight %} </p>
+<p>{% highlight objc %}
+- (void) viewDidLoad {
+	[super viewDidLoad];
+	...
+	[[WLBeaconsLocationManager sharedInstance] requestPermissionToUseLocationServices];
+	[[WLBeaconsLocationManager sharedInstance] requestPermissionToUseNotifications];
+}
+{% endhighlight %} </p>
 <h2 id="simplifiedapis">Simplified APIs for ranging/monitoring iBeacons</h2>
 <h3>Loading beacons and triggers from the server</h3>
 <p>To load information pertaining to beacons, triggers, and their associations from the server and storing it in the application JSONStore, write the following code:<br />
-{% highlight objc %} <br />
-[[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@"BeaconsAdapter" withProcedure:@"getBeaconsAndTriggers" withCompletionHandler:^(bool success, NSString *error) {<br />
-	if (success) {<br />
-		[self showBeaconsAndTriggers];<br />
-	} else {<br />
-		[self updateView:error];<br />
-	}<br />
-}]; {% endhighlight %} </p>
+{% highlight objc %}
+[[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@"BeaconsAdapter" withProcedure:@"getBeaconsAndTriggers" withCompletionHandler:^(bool success, NSString *error) {
+	if (success) {
+		[self showBeaconsAndTriggers];
+	} else {
+		[self updateView:error];
+	}
+}];
+{% endhighlight %} </p>
 <p><br clear="all" /></p>
 <h3>Triggering actions</h3>
 <p>To set the monitoring/ranging of iBeacons and to fire trigger actions, write the following code:</p>
-<p>{% highlight objc %} <br />
-	[[WLBeaconsLocationManager sharedInstance] startMonitoring]; {% endhighlight %} </p>
+<p>{% highlight objc %}
+[[WLBeaconsLocationManager sharedInstance] startMonitoring];
+{% endhighlight %}
 <p>To let the user opt out of iBeacon monitoring, write the following code:</p>
-<p>{% highlight objc %} <br />
-	[[WLBeaconsLocationManager sharedInstance] stopMonitoring];<br />
-	// Optionally reset monioring/ranging state<br />
-	[[WLBeaconsLocationManager sharedInstance] resetMonitoringRangingState];  {% endhighlight %} </p>
+<p>{% highlight objc %}
+[[WLBeaconsLocationManager sharedInstance] stopMonitoring];
+// Optionally reset monioring/ranging state<br />
+[[WLBeaconsLocationManager sharedInstance] resetMonitoringRangingState];
+{% endhighlight %} </p>
 <p><br clear="all" /></p>
 <h3>Turning the device into an iBeacon</h3>
 <p>To turn a device into an iBeacon, write the following code:</p>
-<p>{% highlight objc %} <br />
-	NSString *uuidString = @"3d402cf0-3691-4bd9-97ff-0b0a93a160ef";<br />
-	int major = 1;<br />
-	int minor = 4417;<br />
-	[[WLBeaconsLocationManager sharedInstance] turnIntoiBeaconWithUuid:uuidString withMajor:major withMinor:minor withStatusHandler:^(NSString *turnIntoiBeaconStatusDetails) {<br />
-		[self updateView:turnIntoiBeaconStatusDetails];<br />
-	}]; {% endhighlight %} </p>
+<p>{% highlight objc %}
+NSString *uuidString = @"3d402cf0-3691-4bd9-97ff-0b0a93a160ef";
+int major = 1;
+int minor = 4417;
+[[WLBeaconsLocationManager sharedInstance] turnIntoiBeaconWithUuid:uuidString withMajor:major withMinor:minor withStatusHandler:^(NSString *turnIntoiBeaconStatusDetails) {
+	[self updateView:turnIntoiBeaconStatusDetails];
+}];
+{% endhighlight %} </p>
 <p>Generally, use this feature for testing and development purposes. The UUID string must match the UUID of the beacons that are registered on server.</p>
 <h3>Increasing the application running time</h3>
 <p>To increase the running time of the application when it runs in background (as part of iBeacon monitoring), write the following code:</p>
-<p>{% highlight objc %} <br />
-- (void)applicationDidEnterBackground:(UIApplication *)application {<br />
-	...<br />
-	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidEnterBackground];<br />
-}</p>
-<p>- (void)applicationDidBecomeActive:(UIApplication *)application {<br />
-	...<br />
-	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidBecomeActive];<br />
-}<br />
- {% endhighlight %} <br />
+<p>{% highlight objc %}
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+	...
+	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidEnterBackground];
+}
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+	...
+	[[WLBeaconsLocationManager sharedInstance] notifyApplicationDidBecomeActive];
+}
+{% endhighlight %} <br />
 This code increases the running time of the application up to 3 minutes from the default 10 seconds.</p>
 <h3>Handling local notifications</h3>
 <p>To handle local notifications that originate from the application, write the following code:<br />
-{% highlight objc %} <br />
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {<br />
-	...<br />
-	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];<br />
-	if (localNotif) {<br />
-		application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1;<br />
-		[self processLocalNotification:localNotif];<br />
-	}<br />
-	return YES;<br />
-}</p>
-<p>- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification<br />
-{<br />
-	application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1;<br />
-	[self processLocalNotification:notification];<br />
-}</p>
-<p>- (void)processLocalNotification:(UILocalNotification *)notification<br />
-{<br />
-	NSString *alertMessage = [notification.userInfo objectForKey:@"alertMessage"];<br />
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Received local notification" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];<br />
-	[alert show];<br />
-} {% endhighlight %} </p>
+{% highlight objc %}
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	...
+	UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+	if (localNotif) {
+		application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1;
+		[self processLocalNotification:localNotif];
+	}
+	return YES;
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+	application.applicationIconBadgeNumber = application.applicationIconBadgeNumber - 1;
+	[self processLocalNotification:notification];
+}
+
+- (void)processLocalNotification:(UILocalNotification *)notification {
+	NSString *alertMessage = [notification.userInfo objectForKey:@"alertMessage"];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Received local notification" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+	[alert show];
+}
+{% endhighlight %} </p>
 <h2 id="sampleresult">Running the sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/BeaconsNativeProject.zip">Click to download</a> the Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativeiBeaconsProject.zip">Click to download</a> the Native project.</p>
