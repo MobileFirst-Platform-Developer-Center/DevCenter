@@ -6,7 +6,7 @@ show_disqus: false
 ### Setting up your development environment
 <p><i>Multiple tutorials within</i></p>
 
-* <a href="../development-environment/">Setting up your development environment(s)</a>
+* <a href="../setting-up-your-development-environment/">Setting up your development environment(s)</a>
 
 ### Hello World
 
@@ -16,7 +16,7 @@ show_disqus: false
 ### Client-side development
 <p><i>Multiple tutorials within</i></p>
 
-* <a href="../client-side-development/">Client-side development</a>
+* <a href="../client-side-development-basics/">Client-side development</a>
 
 ### Server-side development
 <p><i>Multiple tutorials within</i></p>

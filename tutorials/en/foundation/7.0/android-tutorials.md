@@ -11,8 +11,8 @@ show_disqus: false
 
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
 
-* <a href="../setting-up-your-development-environment/setting-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
-* <a href="../setting-up-your-development-environment/setting-android-development-environment/">Setting up your Android development environment</a>
+* <a href="../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
+* <a href="../setting-up-your-development-environment/setting-up-the-android-development-environment/">Setting up your Android development environment</a>
 
 ### <a href="../hello-world/">Hello World</a>
 

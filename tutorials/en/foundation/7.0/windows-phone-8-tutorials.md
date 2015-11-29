@@ -4,10 +4,10 @@ title: Native Windows Phone 8 Development
 show_disqus: false
 ---
 <br>
-### <a href="../development-environment/">Setting up your development environment</a>
+### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
 
-* <a href="../development-environment/mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
-* <a href="../development-environment/windows-phone-8-development-environment">Setting up your Windows Phone 8 development environment</a>
+* <a href="../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
+* <a href="../setting-up-your-development-environment/setting-up-the-windows-phone-8-development-environment">Setting up your Windows Phone 8 development environment</a>
 
 ### <a href="../hello-world/">Hello World</a>
 
