@@ -22,7 +22,7 @@ relevantTo: [hybrid]
 <li>JSONStore</li>
 </ul>
 <p>The following table shows how some features provided by encrypted cache compare with other technologies.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/06_02_cache_table.png"><img src="{{ site.baseurl }}/assets/backup/06_02_cache_table.png" alt="06_02_cache_table" width="1392" height="611" class="aligncenter size-full wp-image-1608" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/06_02_cache_table.png" /></p>
 <p>(1): These features are further described in the <a href="../jsonstore/">JSONStore</a> tutorial.<br />
 (2): Reliable storage means that your data is not deleted unless the application is removed from the device or one of the methods that removes data is called.<br />
 (3): "Dev. Only means that it is designed only for development. There are no security features and a ~5 MB storage space limit.</p>
@@ -38,8 +38,8 @@ relevantTo: [hybrid]
 <h2 id="supported">Supported browsers and devices</h2>
 <p>You implement encrypted cache by using HTML5 web storage technology.<br />
 The following table shows which browsers support web storage for mobile devices.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/06_02_support_table.png"><img src="{{ site.baseurl }}/assets/backup/06_02_support_table.png" alt="06_02_support_table" width="1456" height="343" class="aligncenter size-full wp-image-1609" /></a></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/06_02_support_table_legend.png"><img src="{{ site.baseurl }}/assets/backup/06_02_support_table_legend-300x24.png" alt="06_02_support_table_legend" width="300" height="24" class="aligncenter size-medium wp-image-1610" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/06_02_support_table.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/06_02_support_table_legend-300x24.png" /></p>
 <p>For more information, see the <a href="http://caniuse.com">Can I use</a> page.</p>
 <h2 id="create">Creating and opening encrypted cache</h2>
 <p>To create or open previously created encrypted cache, use the following API:</p>
@@ -50,11 +50,11 @@ The following table shows which browsers support web storage for mobile devices.
 <li><code>onComplete</code> – A callback function to be invoked when cache opening/creating is complete.</li>
 <li><code>onError</code> - A callback function to be invoked when cache is not successfully opened/created.</li>
 </ul>
-<p>[code lang="js"]WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
+<p>{% highlight js %}WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
 function onOpenComplete(status){<br />
     busyIndicator.hide();<br />
-    alert(&quot;Encrypted cache succesfully opened&quot;);<br />
-}[/code]</p>
+    alert("Encrypted cache succesfully opened");<br />
+}{% endhighlight %}</p>
 <p><strong>Note:</strong> Before you create a new encrypted cache, make sure that the application can connect to the MobileFirst Server instance.</p>
 <p>A callback function can receive one of the following statuses:</p>
 <ul>
@@ -66,85 +66,85 @@ function onOpenComplete(status){<br />
 <li><code>WL.EncryptedCache.ERROR_KEY_CREATION_IN_PROGRESS</code> – An <code>open()</code> or <code>changeCredentials()</code> request is already running.</li>
 </ul>
 <h4>Example</h4>
-<p>[code lang="js"]WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
+<p>{% highlight js %}WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
 function onOpenComplete(status){<br />
     busyIndicator.hide();<br />
-    alert(&quot;Encrypted cache succesfully opened&quot;);<br />
+    alert("Encrypted cache succesfully opened");<br />
 }</p>
 <p>function onOpenError(status){<br />
     busyIndicator.hide();<br />
     switch(status){<br />
         case WL.EncryptedCache.ERROR_KEY_CREATION_IN_PROGRESS:<br />
-            alert(&quot;ERROR: KEY CREATION IN PROGRESS&quot;);<br />
+            alert("ERROR: KEY CREATION IN PROGRESS");<br />
             break;<br />
         case WL.EncryptedCache.ERROR_LOCAL_STORAGE_NOT_SUPPORTED:<br />
-            alert(&quot;ERROR: LOCAL STORAGE NOT SUPPORTED&quot;);<br />
+            alert("ERROR: LOCAL STORAGE NOT SUPPORTED");<br />
             break;<br />
         case WL.EncryptedCache.ERROR_NO_EOC:<br />
-            alert(&quot;ERROR: NO EOC&quot;);<br />
+            alert("ERROR: NO EOC");<br />
             break;<br />
         case WL.EncryptedCache.ERROR_COULD_NOT_GENERATE_KEY:<br />
-            alert(&quot;ERROR: COULD NOT GENERATE KEY&quot;);<br />
+            alert("ERROR: COULD NOT GENERATE KEY");<br />
             break;<br />
         case WL.EncryptedCache.ERROR_CREDENTIALS_MISMATCH:<br />
-            alert(&quot;ERROR: CREDENTIALS MISMATCH&quot;);<br />
+            alert("ERROR: CREDENTIALS MISMATCH");<br />
             break;<br />
         default:<br />
-            alert(&quot;AN ERROR HAS OCCURED. STATUS :: &quot; + status);<br />
+            alert("AN ERROR HAS OCCURED. STATUS :: " + status);<br />
     }<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h2 id="reading">Reading, writing, and removing data by using encrypted cache</h2>
 <p>When the encrypted cache is open, operations such as reading, writing, and removing data can be performed.</p>
 <h3>Storing data</h3>
 <p>To store data in encrypted cache, use the following API:<br />
 <code>WL.EncryptedCache.write(key, value, onSuccess, onFailure);</code></p>
 <h4>Example</h4>
-<p>[code lang="js"]WL.EncryptedCache.write(key, value, onWriteSuccess, onWriteFailure);<br />
+<p>{% highlight js %}WL.EncryptedCache.write(key, value, onWriteSuccess, onWriteFailure);<br />
 function onWriteSuccess(status){<br />
-    alert(&quot;Succesfully encrypted into cache.&quot;);<br />
+    alert("Succesfully encrypted into cache.");<br />
 }<br />
 function onWriteFailure(status){<br />
     if (status == WL.EncryptedCache.ERROR_EOC_CLOSED)<br />
-        alert(&quot;Encrypted cache closed, write failed. error code= &quot;+ status);<br />
-}[/code]</p>
+        alert("Encrypted cache closed, write failed. error code= "+ status);<br />
+}{% endhighlight %}</p>
 <h3>Reading data</h3>
 <p>To read data from the encrypted cache, use the following API:<br />
 <code>WL.EncryptedCache.read(key, onSuccess, onFailure);</code></p>
 <h4>Example</h4>
-<p>[code lang="js"]WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);<br />
+<p>{% highlight js %}WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);<br />
 function onDecryptReadSuccess(value){<br />
-    alert(&quot;Read success. Retrieved value :: &quot; + key + &quot; = &quot; + value);<br />
+    alert("Read success. Retrieved value :: " + key + " = " + value);<br />
 }<br />
 function onDecryptReadFailure(status){<br />
-    alert(&quot;Encrypted cache closed, reading failed&quot;);<br />
-}[/code]</p>
+    alert("Encrypted cache closed, reading failed");<br />
+}{% endhighlight %}</p>
 <h3>Removing data</h3>
 <p>To remove data from the encrypted cache, use the following API:</p>
 <p><code>WL.EncryptedCache.remove(key, onSuccess, onFailure);</code></p>
 <h4>Example</h4>
-<p>[code lang="js"]WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);<br />
+<p>{% highlight js %}WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);<br />
 function onRemoveSuccess(status){<br />
-    alert(&quot;Succesfully removed from cache.&quot;);<br />
+    alert("Succesfully removed from cache.");<br />
 }<br />
 function onRemoveFailure(status){<br />
-    alert(&quot;Encrypted cache closed, remove failed&quot;);<br />
-}[/code]</p>
+    alert("Encrypted cache closed, remove failed");<br />
+}{% endhighlight %}</p>
 <h2 id="closing">Closing and destroying encrypted cache</h2>
 <p>To avoid possible unwanted access to encrypted cache, close it.<br />
 After an encrypted cache is closed, access to its data is not possible without the encryption key that was used to create it.</p>
 <p>To close the encrypted cache, use the following API:</p>
 <p><code>WL.EncryptedCache.close(onComplete, onFailure);</code></p>
 <h4>Example</h4>
-<p>[code lang="js"]function destroyCacheClicked(){<br />
+<p>{% highlight js %}function destroyCacheClicked(){<br />
     WL.EncryptedCache.destroy(onDestroyCompleteHandler,<br />
     onDestroyErrorHandler);<br />
 }<br />
 function onDestroyCompleteHandler(status){<br />
-    alert(&quot;Encrypted cache destroyed&quot;);<br />
+    alert("Encrypted cache destroyed");<br />
 }<br />
 function onDestroyErrorHandler(status){<br />
-    alert(&quot;Error destroying Encrypted cache&quot;);<br />
-}[/code]</p>
+    alert("Error destroying Encrypted cache");<br />
+}{% endhighlight %}</p>
 <h2 id="changingKey">Changing the encryption key</h2>
 <p>While encrypted cache is in the open state, you can change the encryption key.<br />
 To do so, use the following API:</p>
@@ -157,4 +157,4 @@ To do so, use the following API:</p>
 <p>Each parameter is a callback and receives a status object as its response. The available statuses for the <code>changeCredentials</code> method are the same as the statuses for the <code>WL.EncryptedCache.open</code> method (see <a href="#create">Creating and opening encrypted cache</a>).</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EncryptedCache" target="_blank">Click to download</a> the MobileFirst project.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/06_02_sample.png"><img src="{{ site.baseurl }}/assets/backup/06_02_sample.png" alt="06_02_sample" width="772" height="373" class="aligncenter size-full wp-image-1625" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/06_02_sample.png" /></p>

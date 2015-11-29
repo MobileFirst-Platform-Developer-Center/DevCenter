@@ -22,7 +22,7 @@ relevantTo: [ios]
 <li><a href="#sample">Sample application</a></li>
 </ul>
 <h2 id="architecture">Architecture</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/location_service_diagram.jpg"><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg" alt="location_service_diagram" width="650" height="404" class="aligncenter size-full wp-image-5171" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg" /></p>
 <p>The application code on the mobile device, in the form of an acquisition policy, controls the collection of data from device sensors.</p>
 <p>The collected data is referred to as the device context.</p>
 <p>When a change occurs in the device context, such as a change in the geolocation of the device or the fact that it entered a Wi-Fi zone, triggers can be activated.</p>
@@ -37,21 +37,21 @@ relevantTo: [ios]
 <p>Server activities and received events are logged, together with the device and application contexts, for future reporting and analytics.</p>
 <h2 id="acquisitionPolicy">Acquisition policy</h2>
 <p>An acquisition policy defines how acquisition takes place.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 WLAcquisitionPolicy* policy = [[WLAcquisitionPolicy alloc] init];<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>Geo acquisition policy</h3>
 <p>Add a <code>UIRequiredDeviceCapabilities</code> node in <code>yourAppName-info.plist</code> with items:</p>
 <ul>
 <li><code>location-services</code></li>
 <li><code>gps</code> (when <code>enableHighAccuracy=true</code>)</li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/10_04_ios_geo.png"><img src="{{ site.baseurl }}/assets/backup/10_04_ios_geo.png" alt="10_04_ios_geo" width="500" height="64" class="aligncenter size-full wp-image-1614" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_ios_geo.png" /></p>
 <p>Then in your code, you can use:<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 WLGeoAcquisitionPolicy* geoPolicy = [WLGeoAcquisitionPolicy getLiveTrackingProfile];<br />
 [policy setGeoPolicy:geoPolicy];<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>iOS 8</h3>
 <p>Add the following nodes to <code>yourAppName-info.plist</code>:</p>
@@ -59,7 +59,7 @@ WLGeoAcquisitionPolicy* geoPolicy = [WLGeoAcquisitionPolicy getLiveTrackingProfi
 <li><code>NSLocationWhenInUseUsageDescription</code></li>
 <li><code>NSLocationAlwaysUsageDescription</code></li>
 </ul>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/Screen-Shot-2015-03-12-at-14.03.17.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-03-12-at-14.03.17.png" alt="NSLocation Permissions" width="500" height="64" class="aligncenter size-full wp-image-8378" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-03-12-at-14.03.17.png" /></p>
 <p>LiveTracking is a preset profile that uses the most accurate settings to track the device.<br />
 Additional configuration options:</p>
 <ul>
@@ -70,16 +70,16 @@ Additional configuration options:</p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h3>Wi-Fi acquisition policy</h3>
 <p>Add <code>wifi</code> to your <code>UIRequiredDeviceCapabilities</code> node in <code>yourAppName-info.plist</code>.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/10_04_ios_wifi.png"><img src="{{ site.baseurl }}/assets/backup/10_04_ios_wifi.png" alt="10_04_ios_wifi" width="500" height="87" class="aligncenter size-full wp-image-1616" /></a><br />
+<img src="{{ site.baseurl }}/assets/backup/10_04_ios_wifi.png" /><br />
 Then in your code, you can use:<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 WLWifiAcquisitionPolicy* wifiPolicy = [[WLWifiAcquisitionPolicy alloc] init];<br />
-WLWifiAccessPointFilter* filter1 = [[WLWifiAccessPointFilter alloc] init:@&quot;Net1&quot;];<br />
-WLWifiAccessPointFilter* filter2 = [[WLWifiAccessPointFilter alloc] initWithSSID:@&quot;Net2&quot; MAC:@&quot;*&quot;];</p>
+WLWifiAccessPointFilter* filter1 = [[WLWifiAccessPointFilter alloc] init:@"Net1"];<br />
+WLWifiAccessPointFilter* filter2 = [[WLWifiAccessPointFilter alloc] initWithSSID:@"Net2" MAC:@"*"];</p>
 <p>[wifiPolicy setInterval:10000];<br />
 [wifiPolicy setAccessPointFilters:[NSMutableArray arrayWithObjects:filter1, filter2, nil]];</p>
 <p>[policy setWifiPolicy:wifiPolicy];<br />
-[/code]<br />
+{% endhighlight %}<br />
 The <code>interval</code> parameter is the polling interval, in milliseconds. Wi-Fi polling is performed at each interval.</p>
 <p>the <code>accessPointFilters</code> parameter lists access points of interest.<br />
 In the above example, the acquisition policy works as follows:</p>
@@ -91,7 +91,7 @@ In the above example, the acquisition policy works as follows:</p>
 <li>Differentiates <code>Net2</code> access points by MAC address.
 </li>
 </ul>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/10_04_wifi-policy-example.jpg"><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.jpg" alt="10_04_wifi-policy-example" width="460" height="280" class="aligncenter size-full wp-image-15988" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.jpg" /></p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h2 id="triggers">Triggers</h2>
 <p>You can setup triggers:</p>
@@ -100,7 +100,7 @@ In the above example, the acquisition policy works as follows:</p>
 <li>Movement: Geo: <code>PositionChange</code>, Wi-Fi: <code>VisibleAccessPointsChange</code></li>
 <li>Wi-Fi: <code>Connect</code> / <code>Disconnect</code></li>
 </ul>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 //Init<br />
 WLTriggersConfiguration* triggers = [[WLTriggersConfiguration alloc] init];<br />
 //Center of circle<br />
@@ -108,43 +108,43 @@ WLCoordinate* center = [[WLCoordinate alloc] initWithLatitude:40.689167 longitud
 //Circle<br />
 WLCircle* circle = [[WLCircle alloc] initWithCenter:center radius:100];<br />
 //Event<br />
-NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;me&quot;, @&quot;bring&quot;, @&quot;huddledMasses&quot;, @&quot;your&quot;, nil];<br />
+NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"me", @"bring", @"huddledMasses", @"your", nil];<br />
 //Geo Trigger<br />
 WLGeoEnterTrigger* enterTrigger = [[WLGeoEnterTrigger alloc] init];<br />
 [enterTrigger setArea:circle];<br />
 [enterTrigger setCallback:nil]; //out of scope, see documentation<br />
 [enterTrigger setEvent:event];<br />
-[[triggers getGeoTriggers] setObject:enterTrigger forKey:@&quot;trigger1&quot;];<br />
-[/code]</p>
+[[triggers getGeoTriggers] setObject:enterTrigger forKey:@"trigger1"];<br />
+{% endhighlight %}</p>
 <p>In this example, <code>trigger1</code> is an <code>Enter</code> trigger which is activated when the device enters the defined circle (longitude, latitude, and radius).</p>
 <p>When a trigger activates, it can call a callback function and/or create an event to be sent to the server.</p>
 <blockquote><p>For more information, see the topic about triggers, in the user documentation.</p></blockquote>
 <h2 id="startAcq">Start acquisition</h2>
 <p>Use the policy that you defined in section <a href="#acquisitionPolicy">Acquisition policy</a> and the triggers that you defined in section <a href="#triggers">Triggers</a> to start the acquisition.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 WLLocationServicesConfiguration* config = [[WLLocationServicesConfiguration alloc] init];<br />
 [config setPolicy:policy];<br />
 [config setTriggers:triggers];<br />
 [config setFailureCallbacks:nil];//see documentation</p>
 <p>[[[WLClient sharedInstance] getWLDevice] startAcquisition:config];<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2 id="events">Events</h2>
 <h3>Client side</h3>
 <p>Events are generated by triggers, as explained in section <a href="#triggers">Triggers</a>.<br />
-[code lang="obj-c"]<br />
-NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@&quot;me&quot;, @&quot;bring&quot;, @&quot;huddledMasses&quot;, @&quot;your&quot;, nil];<br />
+{% highlight obj-c %}<br />
+NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"me", @"bring", @"huddledMasses", @"your", nil];<br />
 [enterTrigger setEvent:event];<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Events can also be generated manually by calls to the API:<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 [[WLClient sharedInstance] transmitEvent:event immediately:YES];</p>
-<p>[/code]<br />
+<p>{% endhighlight %}<br />
 Where <code>event</code> is a <code>NSDictionary</code> object and <code>immediately</code> is a <code>boolean</code> value.</p>
 <h3>Server side</h3>
 <p>In the adapter code, create event handlers:<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 WL.Server.createEventHandler(filter, handlerFunction);<br />
-[/code]<br />
+{% endhighlight %}<br />
 The events that match the filter are passed to <code>handlerFunction</code>.<br />
 Filter examples:</p>
 <ul>
@@ -153,9 +153,9 @@ Filter examples:</p>
 <li><code>{} – All events</code></li>
 </ul>
 <p>Register the event handlers:<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 WL.Server.setEventHandlers([...]);<br />
-[/code]</p>
+{% endhighlight %}</p>
 <blockquote><p>For more information, see the topic about working with geofences and triggers, in the user documentation.</p></blockquote>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/LocationServices" target="_blank">Click to download</a> the MobileFirst project.</p>
@@ -173,4 +173,4 @@ WL.Server.setEventHandlers([...]);<br />
 <li>Ongoing acquisition
 </li>
 </ul>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Screen-Shot-Location-iOS.png"><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-Location-iOS.png" alt="Screen Shot Location iOS" width="380" height="625" class="aligncenter size-full wp-image-16455" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-Location-iOS.png" /></p>

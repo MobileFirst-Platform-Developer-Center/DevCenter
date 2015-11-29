@@ -1,37 +1,35 @@
 ---
 layout: tutorial
 title: Tag-based notifications in native Windows 8 applications
-relevantTo: [windows8]
+relevantTo: [windowsphone8]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/Win8NativeTagNotificationsProject.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip">Download Studio project</a>
-    </li>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/Win8NativeTagNotificationsProject.zip">Download native project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
 <p>Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.<br />
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.</p>
 <h2>Setting up tags</h2>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
-<p>{% highlight xml %} <nativeWindows8App xmlns="http://www.worklight.com/native-windows8-descriptor" id="NativeWin8TagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0"></p>
-<p><pushSender clientSecret="WNS_CLIENT_SECRET" packageSID="WNS_PACKAGE_SID"/><br />
-...<br />
-...<br />
-...<br />
-<tags><br />
-    <tag><br />
-        <name>my tag 1</name><br />
-        <description>About my tag 1</description><br />
-    </tag><br />
-    <tag><br />
-        <name>my tag 2</name><br />
-        <description>About my tag 2</description><br />
-    </tag><br />
-</tags> {% endhighlight %} </p>
+<p>{% highlight xml %}
+<nativeWindows8App xmlns="http://www.worklight.com/native-windows8-descriptor" id="NativeWin8TagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
+<pushSender clientSecret="WNS_CLIENT_SECRET" packageSID="WNS_PACKAGE_SID"/>
+...
+...
+...
+<tags>
+    <tag>
+        <name>my tag 1</name>
+        <description>About my tag 1</description>
+    </tag>
+    <tag>
+        <name>my tag 2</name>
+        <description>About my tag 2</description>
+    </tag>
+</tags>
+{% endhighlight %} </p>
 <h2>Tag-based notifications API methods</h2>
 <h3>Client-side API methods</h3>
 <ul>

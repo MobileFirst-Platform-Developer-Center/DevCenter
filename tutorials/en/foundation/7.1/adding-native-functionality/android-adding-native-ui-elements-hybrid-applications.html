@@ -34,32 +34,32 @@ relevantTo: [hybrid]
 <p>The NativeUIInHybrid project includes a hybrid application called NativeSplashScreen.</p>
 <p>The application contains an Activity, <code>InitiativeActivity</code>. This Activity is used to show a simple TextView and a Button as our customized splash screen:</p>
 <p>In <code>onCreate</code>:<br />
-[code lang="java"]setContentView(R.layout.activity_initiative);<br />
-startAppBtn = (Button) findViewById(R.id.StartApp);[/code]</p>
+{% highlight java %}setContentView(R.layout.activity_initiative);<br />
+startAppBtn = (Button) findViewById(R.id.StartApp);{% endhighlight %}</p>
 <p>The <code>onClickListener</code> method:<br />
-[code lang="java"]startAppBtn.setOnClickListener(new View.OnClickListener() {<br />
+{% highlight java %}startAppBtn.setOnClickListener(new View.OnClickListener() {<br />
   public void onClick(View v) {<br />
     setResult(Activity.RESULT_OK);<br />
     finish();<br />
   }<br />
-});[/code]</p>
+});{% endhighlight %}</p>
 <p>The <code>TextView</code> and <code>Button</code> objects are also added to the Activity's layout file:<br />
-[code lang="xml"]&lt;TextView<br />
-        android:layout_width=&quot;wrap_content&quot;<br />
-        android:layout_height=&quot;wrap_content&quot;<br />
-        android:text=&quot;@string/InitiativeActivityText&quot; /&gt;</p>
-<p>&lt;Button<br />
-      android:id=&quot;@+id/StartApp&quot;<br />
-        android:layout_width=&quot;wrap_content&quot;<br />
-        android:layout_height=&quot;wrap_content&quot;<br />
-        android:layout_centerHorizontal=&quot;true&quot;<br />
-        android:layout_marginTop=&quot;150dp&quot;<br />
-        android:text=&quot;@string/InitiativeButtonText&quot; /&gt;[/code]</p>
+{% highlight xml %}<TextView<br />
+        android:layout_width="wrap_content"<br />
+        android:layout_height="wrap_content"<br />
+        android:text="@string/InitiativeActivityText" /></p>
+<p><Button<br />
+      android:id="@+id/StartApp"<br />
+        android:layout_width="wrap_content"<br />
+        android:layout_height="wrap_content"<br />
+        android:layout_centerHorizontal="true"<br />
+        android:layout_marginTop="150dp"<br />
+        android:text="@string/InitiativeButtonText" />{% endhighlight %}</p>
 <p>It is also required to add an <code>Intent</code> object to the MainActivity before the call to the <code>initializeWebFramework</code> method. The intent loads the newly created Activity instead of opening the default MobileFirst splash screen.</p>
-<p>[code lang="java"]WL.createInstance(this);</p>
+<p>{% highlight java %}WL.createInstance(this);</p>
 <p>Intent intent = new Intent(this, InitiativeActivity.class);<br />
 startActivity(intent);</p>
-<p>WL.getInstance().initializeWebFramework(getApplicationContext(), this);[/code]</p>
+<p>WL.getInstance().initializeWebFramework(getApplicationContext(), this);{% endhighlight %}</p>
 <h2 id="jsToNative">Sending commands from JavaScript code to native code</h2>
 <p>In MobileFirst applications, commands are sent with parameters from the web view (via JavaScript) to an Android native class (written in Java).<br />
 You can use this feature to trigger native code to be run in the background, to update the native UI, to use native-only features, etc.</p>
@@ -69,40 +69,40 @@ You can use this feature to trigger native code to be run in the background, to 
 <p>The <code>doSomething</code> parameter is an arbitrary action name to be used in the native side (see the next step), and the second parameter is a JSON object that contains any data.</p>
 <h3>Step 2</h3>
 <p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
-[code lang="java"]public class ActionReceiver implements WLActionReceiver{</p>
-<p>}[/code]</p>
+{% highlight java %}public class ActionReceiver implements WLActionReceiver{</p>
+<p>}{% endhighlight %}</p>
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:<br />
-[code lang="java"]public void onActionReceived(String action, JSONObject data){<br />
-  if (action.equals(&quot;doSomething&quot;)){<br />
+{% highlight java %}public void onActionReceived(String action, JSONObject data){<br />
+  if (action.equals("doSomething")){<br />
     // Write your code here...<br />
   }<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions from the MobileFirst web view, it must be registered. The registration can be done during the startup flow of the application to catch any actions early enough:<br />
-[code lang="java"]WL.getInstance().addActionReceiver(new ActionReceiver(this));[/code]</p>
+{% highlight java %}WL.getInstance().addActionReceiver(new ActionReceiver(this));{% endhighlight %}</p>
 <h2 id="nativeToJs">Sending commands from native code to JavaScript code</h2>
 <p>In MobileFirst applications, commands can be sent with parameters from native Android code to web view JavaScript code.<br />
 You can use this feature to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
 <h3>Step 1</h3>
 <p>In Java, the following API is used:<br />
-[code lang="java"]JSONObject data = new JSONObject();<br />
-  data.put(&quot;someProperty&quot;, 12345);<br />
-  WL.getInstance().sendActionToJS(&quot;doSomething&quot;, data);[/code]</p>
+{% highlight java %}JSONObject data = new JSONObject();<br />
+  data.put("someProperty", 12345);<br />
+  WL.getInstance().sendActionToJS("doSomething", data);{% endhighlight %}</p>
 <p><code>doSomething</code> is an arbitrary action name to be used on the JavaScript side and the second parameter is a <code>JSONObject</code> object that contains any data.</p>
 <h3>Step 2</h3>
 <p>A JavaScript function verifies the action name and implements any JavaScript code.</p>
-<p>[code lang="js"]function actionReceiver(received){<br />
-  if (received.action == &quot;doSomething&quot; &amp;&amp; received.data.someProperty == &quot;12345&quot;){<br />
+<p>{% highlight js %}function actionReceiver(received){<br />
+  if (received.action == "doSomething" &amp;&amp; received.data.someProperty == "12345"){<br />
     //perform required actions, e.g., update web user interface<br />
   }<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function can handle those actions as early as possible.</p>
-<p>[code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, actionReceiver);[/code]</p>
+<p>{% highlight js %}WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);{% endhighlight %}</p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-[code lang="js"]WL.App.removeActionReceiver(&quot;MyActionReceiverId&quot;);[/code]</p>
+{% highlight js %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %}</p>
 <h2 id="sendaction">SendAction sample</h2>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/SendAction-Android.jpg"><img src="{{ site.baseurl }}/assets/backup/SendAction-Android.jpg" alt="SendAction-Android" width="640" height="480" class="aligncenter size-full wp-image-13687" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/SendAction-Android.jpg" /></p>
 <h3>Overview</h3>
 <p>Download the NativeUIInHybrid project, which includes a hybrid application called SendAction.</p>
 <h3>HTML</h3>
@@ -112,11 +112,11 @@ You can use this feature to receive responses from a native method, notify the w
 <li>A button that triggers the send action to native function</li>
 <li>A div that shows the MobileFirst server connectivity status (ConnectionStatusDiv)</li>
 </ul>
-<p>[code lang="html"]<br />
-&lt;div id=&quot;currentServerURLDiv&quot;&gt;&lt;/div&gt;&lt;br /&gt;<br />
-&lt;input type=&quot;button&quot; value=&quot;Change Server URL&quot; id=&quot;changeServerURL&quot; /&gt;<br />
-&lt;div id=&quot;ConnectionStatusDiv&quot;&gt;&lt;/div&gt;<br />
-[/code]</p>
+<p>{% highlight html %}<br />
+<div id="currentServerURLDiv"></div><br /><br />
+<input type="button" value="Change Server URL" id="changeServerURL" /><br />
+<div id="ConnectionStatusDiv"></div><br />
+{% endhighlight %}</p>
 <h3>JavaScript</h3>
 <p>First we call the <code>getServerURL()</code> function that uses the <code>WL.App.getServerUrl()</code> API<br />
 To get the current server URL.<br />
@@ -126,49 +126,49 @@ And use it's <code>onSuccess/onFailure</code> callbacks to update the <code>Conn
 <p>When the button is clicked, the <code>sendActionToNative</code> method is called.<br />
 This method has 2 parameters - the first is the requested action - in this case "displayNativeScreen".<br />
 The second parameter is a JSON Object to pass data to the native code.<br />
-[code lang="js"]<br />
+{% highlight js %}<br />
 $('#changeServerURL').on('click', function(){<br />
-    WL.App.sendActionToNative(&quot;displayNativeScreen&quot;, { requestedNativeScreen: 'ServerURL'});<br />
+    WL.App.sendActionToNative("displayNativeScreen", { requestedNativeScreen: 'ServerURL'});<br />
 });<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The code also registers an action receiver to reload the application<br />
 After changing the server URL from the native code.<br />
-[code lang="js"]<br />
-WL.App.addActionReceiver (&quot;BackFromNative&quot;, function actionReceiver(received){<br />
-	if(received.action == &quot;refreshView&quot;){<br />
+{% highlight js %}<br />
+WL.App.addActionReceiver ("BackFromNative", function actionReceiver(received){<br />
+	if(received.action == "refreshView"){<br />
 		WL.Client.reloadApp();<br />
 	}<br />
 });<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>Action Receiver</h3>
 <p>A new class is required, which implements <code>WLActionReceiver</code>.<br />
 Before the new class, the <code>addActionReceiver</code> method is called to register <code>ActionReceiver</code> in the main Activity after the initialization process is complete.</p>
-<p>[code lang="java" highlight="7"]public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {<br />
+<p>{% highlight java %}public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {<br />
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {<br />
       super.loadUrl(WL.getInstance().getMainHtmlFilePath());<br />
     } else {<br />
       handleWebFrameworkInitFailure(result);<br />
     }<br />
     WL.getInstance().addActionReceiver(new ActionReceiver(this));<br />
-  }[/code]</p>
+  }{% endhighlight %}</p>
 <p>The <code>ActionReceiver</code> class implements the <code>onActionReceived</code> method. This method is used to receive the requested action (displayNativeScreen) that was passed in the JavaScript code. We used the JSON object that we passed from the JavaScript code to indicate which native screen do we want to open,<br />
 In case we have a few.<br />
-[code lang="java" highlight="3,9"]<br />
+{% highlight java %}<br />
 public void onActionReceived(String action, JSONObject data){<br />
 	// Display Settings Screen<br />
-	if(action.equals(&quot;displayNativeScreen&quot;)){<br />
+	if(action.equals("displayNativeScreen")){<br />
 		try {<br />
-			requestedScreen = data.getString(&quot;requestedNativeScreen&quot;);<br />
+			requestedScreen = data.getString("requestedNativeScreen");<br />
 		} catch (JSONException e) {<br />
 			e.printStackTrace();<br />
 		}<br />
-		if(requestedScreen.equals(&quot;ServerURL&quot;)){<br />
+		if(requestedScreen.equals("ServerURL")){<br />
 			Intent intent = new Intent(parentActivity, serverurlActivity.class);<br />
 			parentActivity.startActivityForResult(intent, 1);<br />
 		}<br />
 	}<br />
 }<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h3>Changing the server URL</h3>
 <p>The server URL screen (<code>serverurlActivity</code>) includes an EditText, which displays the current server URL that you can edit, and a button to save the new server URL. After you press the button, this activity finishes and the <code>onActivityResult()</code> method in the Main Activity (SendAction) is called. This method sets the new server URL by using <code>setServerUrl()</code> API and sends action to JavaScript to reload the application by using the <code>sendActionToJS()</code> API.</p>
 <h2 id="shared">Shared session</h2>

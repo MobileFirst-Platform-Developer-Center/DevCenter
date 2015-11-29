@@ -2,18 +2,12 @@
 layout: tutorial
 title: Tag-based notifications in native Windows 8 applications
 relevantTo: [android]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeTagNotificationsProject.zip
 ---
-
-<ul>
-    <li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip">Download Studio project</a>
-    </li>
-    <li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeTagNotificationsProject.zip">Download native project</a>
-    </li>
-  </ul>
-
-
 <h2>Overview</h2>
 Tag notifications are notification messages that are targeted to all subscribed devices to a particular tag.
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
@@ -22,7 +16,8 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h2>Setting up tags</h2>
 Tags are defined in application-descriptor.xml:
 
-{% highlight xml %} <nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="NativeAndroidTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
+{% highlight xml %}
+<nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="NativeAndroidTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
 
 <pushSender key="API_KEY" senderId="PROJECT_NUMBER"/>
 ...
@@ -37,7 +32,8 @@ Tags are defined in application-descriptor.xml:
         <name>my tag 2</name>
         <description>About my tag 2</description>
     </tag>
-</tags> {% endhighlight %} 
+</tags>
+{% endhighlight %} 
 
 <h2>Tag-based notifications API methods</h2>
 

@@ -39,16 +39,16 @@ The developer is responsible for maintaining the offline or online state within 
 <p>To add connectivity failure detection in either location, add the <code>onConnectionFailure</code> property and specify a callback function to invoke if connectivity fails.</p>
 <h3>By using JavaScript</h3>
 <h4>initOptions.js</h4>
-<p>[code lang="js" highlight="3"]var wlInitOptions = {<br />
+<p>{% highlight js %}var wlInitOptions = {<br />
     onConnectionFailure: function (data){<br />
     connectionFailure(data);<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h4>Implementation JS file</h4>
-<p>[code lang="js" highlight="3"]WL.Client.invokeProcedure(invocationData, {<br />
+<p>{% highlight js %}WL.Client.invokeProcedure(invocationData, {<br />
     onSuccess: successHandlerFunction,<br />
     onConnectionFailure: connectionFailure,<br />
     timeout: 1000<br />
-});[/code]</p>
+});{% endhighlight %}</p>
 <h2 id="passive">Passive detection</h2>
 <h3>Offline and online events</h3>
 <p>Each time the MobileFirst framework attempts to access MobileFirst Server, it might detect that the application switched from offline to online status or conversely.</p>
@@ -60,8 +60,8 @@ The developer is responsible for maintaining the offline or online state within 
 </li>
 </ul>
 <p>The developer can also add event listeners to the above events and specify the callback functions to handle them.</p>
-<p>[code lang="js"]document.addEventListener(WL.Events.WORKLIGHT_IS_CONNECTED, connectDetected, false);<br />
-document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED, disconnectDetected, false);[/code]</p>
+<p>{% highlight js %}document.addEventListener(WL.Events.WORKLIGHT_IS_CONNECTED, connectDetected, false);<br />
+document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED, disconnectDetected, false);{% endhighlight %}</p>
 <p><strong>Note:</strong> <code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> and <code>WL.Events.WORKLIGHT_IS_CONNECTED</code> are namespace constants, not strings.</p>
 <h2 id="moreMethods">Additional methods</h2>
 <p>More methods are provided by the MobileFirst framework to simplify online and offline development:</p>
@@ -99,21 +99,21 @@ You can use the heartbeat to periodically make sure that the application remains
 <p>Both the <code>WL.Events.WORKLIGHT_IS_CONNECTED</code> and <code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> events can be fired by the heartbeat in designated cases.</p>
 <p>A developer can specify the heartbeat interval by using the <code>WL.Client.setHeartBeatInterval(intervalSeconds)</code> API method.</p>
 <p>The following sample shows an offline and online detection mechanism.<br />
-[code lang="js" highlight="2,4,6,12"]document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED,<br />
+{% highlight js %}document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED,<br />
 MyApp.connectionFailure, false);<br />
 MyApp.connectionFailure = function() {<br />
     WL.Client.connect({<br />
         onSuccess: function() {<br />
-            WL.Logger.debug(&quot;online&quot;);<br />
+            WL.Logger.debug("online");<br />
             MyApp.onlineRestored();<br />
         },<br />
         onFailure: function() {<br />
-            WL.Logger.debug(&quot;Still offline... Trying to connect again in 5<br />
-            seconds.&quot;);<br />
+            WL.Logger.debug("Still offline... Trying to connect again in 5<br />
+            seconds.");<br />
             window.setTimeout(MyApp.connectionFailure, 5000);<br />
         }<br />
     });<br />
-};[/code]</p>
+};{% endhighlight %}</p>
 <ol>
 <li>An event listener for a <code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> event is added to the document. <code>MyApp.connectionFailure()</code> is invoked when the event fires.</li>
 <li><code>WL.Client.connect()</code> tries to establish a server connection.</li>
@@ -122,4 +122,4 @@ MyApp.connectionFailure = function() {<br />
 </ol>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/WorkingOffline" target="_blank">Click to download</a> the MobileFirst project.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/06_01_sample.png"><img src="{{ site.baseurl }}/assets/backup/06_01_sample.png" alt="06_01_sample" width="320" height="590" class="aligncenter size-full wp-image-9839" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/06_01_sample.png" /></p>

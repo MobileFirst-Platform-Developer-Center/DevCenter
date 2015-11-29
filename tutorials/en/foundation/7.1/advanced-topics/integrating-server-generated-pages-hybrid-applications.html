@@ -27,12 +27,12 @@ Some of those companies already have mobile-facing websites (mobile web).</p>
 <p>The <strong>WebViewOverlay</strong> approach allows the reuse and integration of existing mobile websites within a mobile application.<br />
 Navigation is smooth and seamless between components that are internal in the mobile application and the external content on the external mobile website.</p>
 <h3>Web resources that are bundled inside the application</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_07_bundled_resources.png"><img src="{{ site.baseurl }}/assets/backup/10_07_bundled_resources.png" alt="10_07_bundled_resources" width="281" height="500" class="aligncenter size-full wp-image-1218" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_07_bundled_resources.png" /></p>
 <h3>External web content</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_07_external_content.png"><img src="{{ site.baseurl }}/assets/backup/10_07_external_content.png" alt="10_07_external_content" width="281" height="500" class="aligncenter size-full wp-image-1219" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_07_external_content.png" /></p>
 <p>This tutorial demonstrates an application implementation for the Android environment.<br />
 The application contains three tab items. The first two tabs contain internal content. The third tab shows an external IBM mobile website.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_07_3d-phones.png"><img src="{{ site.baseurl }}/assets/backup/10_07_3d-phones.png" alt="10_07_3d-phones" width="1276" height="555" class="aligncenter size-full wp-image-1222" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_07_3d-phones.png" /></p>
 <p><strong>WebViewOverlay</strong> is implemented through Apache Cordova plug-ins.<br />
 Developers can easily create their own protocol between internal web components and the <strong>WebViewOverlay</strong> control. Use the provided MobileFirst project to understand the concepts of <strong>WebViewOverlay</strong>.</p>
 <p><strong>Prerequisite:</strong> Before you proceed, you must be proficient with <a href="../../adding-native-functionality/" title="Adding native functionality to hybrid applications with Apache Cordova">implementing Cordova plug-ins</a>.</p>
@@ -41,15 +41,15 @@ Developers can easily create their own protocol between internal web components 
 <p>In Java, the sample implements the page integration as follows:</p>
 <ol>
 <li>In the application main class,  a <code>webViewOverlay</code> object is declared to display the external content. Static references are used for simplicity.
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 public class IncludeExternalPages extends CordovaActivity implements WLInitWebFrameworkListener {<br />
     private static WebView webViewOverlay;<br />
     public static Activity thisapp;<br />
-[/code]
+{% endhighlight %}
 </li>
 <li>The object is created, its layout properties are set, and it is added as a view to the root element. It is invisible initially. The <code>setMargins</code> method positions the <code>webViewOverlay</code> component in the screen.
 <p><strong>Note:</strong> Android 4.4 introduces a new version of <code>WebView</code> that is based on Chromium and affects the <code>WebView</code> margins. For more information about this issue, see <a href="http://developer.android.com/guide/webapps/migrating.html" target="_blank">Migrating to WebView in Android 4.4</a>.</p>
-<p>[code lang="java" highlight="13,14,15,16,17,18,19,20,21,22"]<br />
+<p>{% highlight java %}<br />
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {<br />
         super.loadUrl(WL.getInstance().getMainHtmlFilePath());</p>
@@ -73,14 +73,14 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
             webViewOverlay.getSettings().setJavaScriptEnabled(true);<br />
         …<br />
         …<br />
-[/code]</li>
+{% endhighlight %}</li>
 <li> A <code>RelativeLayout</code> object is created.
 <ul>
 <li>The <code>RelativeLayout</code> object works as a root layout.</li>
 <li>The current root view is removed from its original parent. Instead, the <code>root</code> and <code>webViewOverlay</code> objects are added to the <code>rootRelativeLayout</code> object.</li>
 <li>The content view is set to <code>rootRelativeLayout</code>.</li>
 </ul>
-<p>[code lang="java" highlight="5,6,7,8,9,10"]<br />
+<p>{% highlight java %}<br />
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
      …<br />
     webViewOverlay.getSettings().setJavaScriptEnabled(true);</p>
@@ -90,20 +90,20 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
     rootRelativeLayout.addView(webViewOverlay);<br />
     setContentView(rootRelativeLayout);<br />
      …<br />
-[/code]
+{% endhighlight %}
 </li>
 </ol>
 <h3>Implementing the Java code of the Cordova plug-in</h3>
 <ol>
 <li>In a new class, <code>WebViewOverlayPlugin.java</code>, the actions that the plug-in supports are declared.
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 public class WebViewOverlayPlugin extends CordovaPlugin {<br />
-    private final String ACTION_OPEN_URL = &quot;open&quot;;<br />
-    private final String ACTION_CLOSE_WEBVIEWOVERLAY = &quot;close&quot;;<br />
+    private final String ACTION_OPEN_URL = "open";<br />
+    private final String ACTION_CLOSE_WEBVIEWOVERLAY = "close";<br />
     …<br />
-[/code]</li>
+{% endhighlight %}</li>
 <li>If an <code>open</code> request is received from the web part of the application, the external content is loaded and makes the <code>webViewOverlay</code> visible.
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 public class WebViewOverlayPlugin extends CordovaPlugin {<br />
     …<br />
 @Override<br />
@@ -112,24 +112,24 @@ if (action.equals(ACTION_OPEN_URL)) {<br />
 IncludeExternalPages.thisapp.runOnUiThread(new Runnable() {<br />
 public void run() {<br />
 IncludeExternalPages.clearWebViewOverlayHistory();<br />
-IncludeExternalPages.loadWebViewOverlay(&quot;http://m.ibm.com/&quot;);<br />
+IncludeExternalPages.loadWebViewOverlay("http://m.ibm.com/");<br />
 IncludeExternalPages.setWebViewOverlayVisibility(View.VISIBLE);<br />
 IncludeExternalPages.requestWebViewOverlayFocus();<br />
 IncludeExternalPages.clearWebViewOverlayHistory();<br />
 }<br />
 });<br />
 return true;<br />
-[/code]</li>
+{% endhighlight %}</li>
 <li>If a <code>close</code> request is received from the web part of the application, the <code>webViewOverlay</code> is cleaned up and hidden.<br />
 UI-related actions occur on a dedicated UI thread.<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 public class WebViewOverlayPlugin extends CordovaPlugin {<br />
     …<br />
     …<br />
     } else if (action.equals(ACTION_CLOSE_WEBVIEWOVERLAY)) {<br />
         IncludeExternalPages.thisapp.runOnUiThread(new Runnable() {<br />
             public void run() {<br />
-                IncludeExternalPages.loadWebViewOverlayContent(&quot;&quot;);<br />
+                IncludeExternalPages.loadWebViewOverlayContent("");<br />
                 IncludeExternalPages.setWebViewOverlayVisibility(View.INVISIBLE);<br />
                 IncludeExternalPages.clearWebViewOverlayHistory();<br />
             }<br />
@@ -139,13 +139,13 @@ public class WebViewOverlayPlugin extends CordovaPlugin {<br />
         return false;<br />
     }<br />
 }<br />
-[/code]</li>
+{% endhighlight %}</li>
 </ol>
 <h2 id="js">JavaScript implementation</h2>
 <p>In JavaScript, the sample implements the page integration as follows.</p>
 <ol>
 <li>A <code>WebViewOverlayPlugin</code> object is created and populated with the required methods.
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function WebViewOverlayPlugin() {};<br />
 WebViewOverlayPlugin.prototype.open = function() {<br />
     cordova.exec(null, null, 'WebViewOverlayPlugin', 'open', []);<br />
@@ -154,30 +154,30 @@ WebViewOverlayPlugin.prototype.close = function() {<br />
     cordova.exec(null, null, 'WebViewOverlayPlugin', 'close', []);<br />
 };<br />
 window.webViewOverlay = new WebViewOverlayPlugin();<br />
-[/code]</li>
+{% endhighlight %}</li>
 <li>The clicked tab ID is analyzed and either shows or hides the <code>webViewOverlay</code> accordingly.<br />
 Loading external content can take time, so adding a Busy Indicator to improve the user experience should be considered.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function tabClicked(id){<br />
-    WL.Logger.debug(&quot;tabClicked &gt;&gt; id :: &quot; + id);<br />
-    $(&quot;.tab&quot;).addClass('hidden');<br />
-    if (id==&quot;3&quot;){<br />
+    WL.Logger.debug("tabClicked >> id :: " + id);<br />
+    $(".tab").addClass('hidden');<br />
+    if (id=="3"){<br />
         openWebViewOverlay();<br />
     } else {<br />
-        $(&quot;#tab&quot; + id).removeClass('hidden');<br />
+        $("#tab" + id).removeClass('hidden');<br />
         closeWebViewOverlay();<br />
     }<br />
 }</p>
 <p>function openWebViewOverlay(){<br />
-    WL.Logger.debug(&quot;openWebViewOverlay&quot;);<br />
+    WL.Logger.debug("openWebViewOverlay");<br />
     window.webViewOverlay.open();<br />
 }</p>
 <p>function closeWebViewOverlay(){<br />
-    WL.Logger.debug(&quot;closeWebViewOverlay&quot;);<br />
+    WL.Logger.debug("closeWebViewOverlay");<br />
     window.webViewOverlay.close();<br />
 }<br />
-[/code]</li>
+{% endhighlight %}</li>
 </ol>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/IncludeExternalPages">Click to download</a> the MobileFirst project.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_07_end_result.png"><img src="{{ site.baseurl }}/assets/backup/10_07_end_result.png" alt="10_07_end_result" width="564" height="500" class="aligncenter size-full wp-image-2359" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_07_end_result.png" /></p>

@@ -17,17 +17,17 @@ relevantTo: [windowsphone8]
 <ul>
 <li>
 <h4>Create a new project and Windows Phone 8 framework/server-side application entity.</h4>
-<p>                [code lang="shell"]<br />
+<p>                {% highlight bash %}<br />
                 mfp create MyProject<br />
                 cd MyProject<br />
                 mfp add api MyWindowsPhone8 -e windowsphone8<br />
-                [/code]
+                {% endhighlight %}
             </li>
 <li>
 <h4>Add an HTTP adapter to the project.</h4>
-<p>                [code firstline="4" lang="shell"]<br />
+<p>                {% highlight bash %}<br />
                 mfp add adapter MyAdapter -t http<br />
-                [/code]
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -36,10 +36,10 @@ relevantTo: [windowsphone8]
 <ul>
 <li>
 <h4>Start the MobileFirst Server and deploy the server-side application entity and adapter.</h4>
-<p>                [code firstline="5" lang="shell"]<br />
+<p>                {% highlight bash %}<br />
                 mfp start<br />
                 mfp push<br />
-                [/code]
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -57,13 +57,13 @@ relevantTo: [windowsphone8]
 <h3>Implement the MobileFirst adapter invocation.</h3>
 <ul>
 <li>The following code invokes an adapter:<br />
-[code lang="csharp"]<br />
-WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;MyAdapter&quot;, &quot;getStories&quot;);<br />
+{% highlight csharp %}<br />
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData("MyAdapter", "getStories");<br />
 invocationData.setParameters(new Object[]{});<br />
-String myContextObject = &quot;InvokingAdapterProceduresWP8&quot;;<br />
+String myContextObject = "InvokingAdapterProceduresWP8";<br />
 WLRequestOptions options = new WLRequestOptions();<br />
 options.setInvocationContext(myContextObject);<br />
-WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);[/code]
+WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -89,4 +89,4 @@ WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this
 <p>Review the Visual Studio console for the data retrieved by the adapter request.</p>
 </li>
 </ol>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/VisualStudioConsole.png"><img src="{{ site.baseurl }}/assets/backup/VisualStudioConsole-1024x405.png" alt="VisualStudioConsole" width="980" height="388" class="aligncenter size-large wp-image-14788" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/VisualStudioConsole-1024x405.png" /></p>

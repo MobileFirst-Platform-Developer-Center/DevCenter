@@ -2,15 +2,10 @@
 layout: tutorial
 title: Event source-based notifications in native Windows 8 applications
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsHybridProject.zip
 ---
-
-    <ul>
-        <li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsHybridProject.zip">Download Studio project</a>
-        </li>
-    </ul>
-
-
 <h2>Overview</h2>
 Event source notifications are notification messages that are targeted to devices with a user subscription.
 This tutorial explains the concept, API, and usage of push notifications in the context of hybrid applications.
@@ -142,12 +137,14 @@ The device subscription is deleted either by an application that calls <code>WL.
 
 To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):
 
-{% highlight js %} WL.Server.createEventSource({
+{% highlight js %}
+WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
     securityTest:'PushApplication-strong-mobile-securityTest'
-}); {% endhighlight %} 
+});
+{% endhighlight %} 
 
 <ul>
     <li><strong><code>name</code></strong> – a name by which the event source is referenced.</li>
@@ -157,10 +154,12 @@ To create an event source, you declare a notification event source in the adapte
 </ul>
 
 An additional event source option:
-{% highlight js %} poll: {
+{% highlight js %}
+poll: {
     interval: 3,
     onPoll: 'getNotificationsFromBackend'
-} {% endhighlight %} 
+}
+{% endhighlight %} 
 
 <ul>
     <li><strong><code>poll</code></strong> – a method that is used for notification retrieval.
@@ -178,7 +177,8 @@ The following parameters are required:
 
 As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-{% highlight js %} function submitNotification(userId, notificationText) {
+{% highlight js %} 
+function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
     if (userSubscription === null) {
@@ -193,7 +193,8 @@ As described previously, notifications can be either polled from the back-end sy
     return {
         result: "Notification sent to user :: " + userId
     };
-} {% endhighlight %} 
+}
+{% endhighlight %} 
 
 The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.
 
@@ -201,21 +202,27 @@ The <code>submitNotification</code> function receives the <code>userId</code> to
 
 A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:
 
-{% highlight js %} {
+{% highlight js %}
+{
     userId: 'bjones',
     state: {
         customField: 3
     },
     getDeviceSubscriptions: function()[}
-}; {% endhighlight %} 
+};
+{% endhighlight %} 
 
 Next line:
-{% highlight js %} var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId); {% endhighlight %} 
+{% highlight js %} 
+var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId); 
+{% endhighlight %} 
 
 If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.
-{% highlight js %} if (userSubscription === null) {
-        return { result: "No subscription found for user :: " + userId };
-    } {% endhighlight %} 
+{% highlight js %}
+if (userSubscription === null) {
+    return { result: "No subscription found for user :: " + userId };
+}
+{% endhighlight %} 
 
 The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.
 {% highlight js %} var badgeDigit = 1;
@@ -252,11 +259,13 @@ Additional client-side API methods:
 
 When a push notification is received by a device, the callback function defined in <code>WL.Client.Push.registerEventSourceCallback</code> is invoked:
 
-{% highlight js %} function pushNotificationReceived(props, payload) {
+{% highlight js %}
+function pushNotificationReceived(props, payload) {
     alert("pushNotificationReceived invoked");
     alert("props :: " + JSON.stringify(props));
     alert("payload :: " + JSON.stringify(payload));
-} {% endhighlight %} 
+}
+{% endhighlight %} 
 
 If the application was in background mode (or inactive) when the push notification arrived, this callback function is invoked when the application returns to the foreground.
 
@@ -273,7 +282,9 @@ To run the back-end emulator, open the PushBackendEmulator folder of the sample 
 
 <h3>Example</h3>
 
-{% highlight bash %} java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080 {% endhighlight %} 
+{% highlight bash %}
+java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080
+{% endhighlight %} 
 
 The back-end emulator tries to connect to a MobileFirst Server and call a <code>submitNotification()</code> adapter procedure. It outputs the invocation result to a command prompt console.
 

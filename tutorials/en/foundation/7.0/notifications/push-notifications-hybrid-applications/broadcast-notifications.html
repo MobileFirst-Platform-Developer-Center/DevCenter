@@ -2,14 +2,10 @@
 layout: tutorial
 title: Broadcast notifications in native Windows 8 applications
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip
 ---
-    <ul>
-        <li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip">Download Studio project</a>
-        </li>
-    </ul>
-
-
 <h2>Overview</h2>
 Broadcast notification are in fact tag-based notification, where a subscription to a reserved tag, <code>Push.ALL</code>, is auto-created for every device. Broadcast notifications are thus notification messages that are targeted to all subscribed devices.
 
@@ -27,10 +23,12 @@ This ability can be disabled by by unsubscribing from the reserved <code>Push.AL
     <li><strong>payload</strong>&nbsp;- A JSON block that contains other data that is sent from the MobileFirst Server. It also contains the tag name for tag and broadcast notification. The tag name appears in the "tag" element. For broadcast notification, default tag name is <code>Push.ALL</code>.</li>
 </ul>
 
-{% highlight js %} WL.Client.Push.onMessage = function (props, payload) {
+{% highlight js %}
+WL.Client.Push.onMessage = function (props, payload) {
     alert("Provider notification data: " + Object.toJSON(props));
     alert("Application notification data: " + Object.toJSON(payload));
-} {% endhighlight %} 
+}
+{% endhighlight %} 
 
 A callback function that is invoked when a push notification is received by the device.
 Set this function on a global JavaScript level. The Tag name <code>Push.ALL</code> is sent back in the payload parameter.

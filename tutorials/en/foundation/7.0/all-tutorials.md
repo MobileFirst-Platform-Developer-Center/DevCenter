@@ -4,15 +4,15 @@ title: All Tutorials
 show_disqus: false
 ---
 
-### <a href="../development-environment/">Setting up your development environment</a>
+### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
-* <a href="../development-environment/mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
-* <a href="../development-environment/ios-development-environment/">Setting up your iOS development environment</a>
-* <a href="../development-environment/android-development-environment/">Setting up your Android development environment</a>
-* <a href="../development-environment/blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>
-* <a href="../development-environment/windows-phone-8-development-environment/">Setting up your Windows Phone 8 development environment</a>
-* <a href="../development-environment/windows-phone-8-development-environment/">Setting up your Windows 8 development environment</a>
+* <a href="../setting-up-your-development-environment/setting-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
+* <a href="../setting-up-your-development-environment/setting-ios-development-environment/">Setting up your iOS development environment</a>
+* <a href="../setting-up-your-development-environment/setting-android-development-environment/">Setting up your Android development environment</a>
+* <a href="../setting-up-your-development-environment/setting-blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>
+* <a href="../setting-up-your-development-environment/setting-windows-phone-8-development-environment/">Setting up your Windows Phone 8 development environment</a>
+* <a href="../setting-up-your-development-environment/setting-windows-phone-8-development-environment/">Setting up your Windows 8 development environment</a>
 
 ### <a href="../hello-world/">Hello World</a>
 Create your first MobileFirst app and preview it in different mobile operating systems.
@@ -33,20 +33,20 @@ Create your first MobileFirst app and preview it in different mobile operating s
 * <a href="../hello-world/previewing-application-windows-8/">Previewing your application in Windows 8</a>
 * <a href="../hello-world/previewing-application-mobile-web-desktop-browser/">Previewing your application on Mobile Web and Desktop Browser</a>
 
-### <a href="../client-side-development/">Client-side development basics</a>
+### <a href="../client-side-development-basics/">Client-side development basics</a>
 Use basic MobileFirst APIs to develop your apps, build a multipage application, work with the user interface framework, and debug and optimize your apps.
 
-* <a href="../client-side-development/learning-mobilefirst-hybrid-client-side-api/">Learning MobileFirst hybrid client-side API</a>
-* <a href="../client-side-development/building-multi-page-application/">Building a multi-page application</a>
-* <a href="../client-side-development/working-ui-frameworks/">Working with UI frameworks</a>
-* <a href="../client-side-development/debugging-applications/">Debugging applications</a>
-* <a href="../client-side-development/optimizing-application-various-environments/">Optimizing your application for various environments</a>
-* <a href="../client-side-development/general-information-developing-ios/">General information when developing for iOS</a>
-* <a href="../client-side-development/general-information-developing-android/">General information when developing for Android</a>
-* <a href="../client-side-development/general-information-developing-blackberry-10/">General information when developing for BlackBerry 10</a>
-* <a href="../client-side-development/general-information-developing-windows-phone-8/">General information when developing for Windows Phone 8</a>
-* <a href="../client-side-development/general-information-developing-mobile-web-applications/">General information when developing Mobile Web applications</a>
-* <a href="../client-side-development/general-information-developing-desktop-applications/">General information when developing desktop applications</a>
+* <a href="../client-side-development-basics/learning-mobilefirst-hybrid-client-side-api/">Learning MobileFirst hybrid client-side API</a>
+* <a href="../client-side-development-basics/building-multi-page-application/">Building a multi-page application</a>
+* <a href="../client-side-development-basics/working-ui-frameworks/">Working with UI frameworks</a>
+* <a href="../client-side-development-basics/debugging-applications/">Debugging applications</a>
+* <a href="../client-side-development-basics/optimizing-application-various-environments/">Optimizing your application for various environments</a>
+* <a href="../client-side-development-basics/general-information-developing-ios/">General information when developing for iOS</a>
+* <a href="../client-side-development-basics/general-information-developing-android/">General information when developing for Android</a>
+* <a href="../client-side-development-basics/general-information-developing-blackberry-10/">General information when developing for BlackBerry 10</a>
+* <a href="../client-side-development-basics/general-information-developing-windows-phone-8/">General information when developing for Windows Phone 8</a>
+* <a href="../client-side-development-basics/general-information-developing-mobile-web-applications/">General information when developing Mobile Web applications</a>
+* <a href="../client-side-development-basics/general-information-developing-desktop-applications/">General information when developing desktop applications</a>
 
 ### <a href="../server-side-development/">Server-side development</a>
 Develop the server code (adapters) that your mobile app requires to integrate with enterprise back-end applications and cloud services.

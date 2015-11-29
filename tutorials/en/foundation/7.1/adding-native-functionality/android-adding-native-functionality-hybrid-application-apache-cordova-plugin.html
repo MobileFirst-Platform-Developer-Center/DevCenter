@@ -28,20 +28,22 @@ relevantTo: [hybrid]
 <li>Use the <code>cordova.exec()</code> API in the JavaScript code.</li>
 <li>Create the plug-in class that will run natively in Android.<br />
 The plug-in performs the required action and calls a JavaScript callback method that is specified during the call to <code>cordova.exec()</code>.</li>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/07_05_overview.jpg"><img src="{{ site.baseurl }}/assets/backup/07_05_overview.jpg" alt="07_05_overview" width="580" height="180" class="aligncenter size-full wp-image-15379" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/07_05_overview.jpg" /></p>
 </ol>
 <h2 id="declare">Declaring a plug-in</h2>
 <p>You must declare the plug-in in the project, so that Cordova can detect it.<br />
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the <code>native\res\xml</code> folder in the Android environment.</p>
-<p>[code lang="xml"]&lt;feature name=“sayHelloPlugin&quot;&gt;<br />
-  &lt;param name=&quot;android-package&quot; value=“sayHelloPlugin&quot; /&gt;<br />
-&lt;/feature&gt;[/code]</p>
+<p>{% highlight xml %}<feature name="sayHelloPlugin"><br />
+  <param name="android-package" value="sayHelloPlugin" /><br />
+</feature>{% endhighlight %}</p>
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
-[code lang="js"]function sayHello() {<br />
-    var name = $(&quot;#NameInput&quot;).val();<br />
-    cordova.exec(sayHelloSuccess, sayHelloFailure, &quot;SayHelloPlugin&quot;, &quot;sayHello&quot;, [name]);<br />
-}[/code]</p>
+{% highlight js %}
+function sayHello() {<br />
+    var name = $("#NameInput").val();<br />
+    cordova.exec(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);<br />
+}
+{% endhighlight %}</p>
 <p><br clear="all" /><br />
 <code>sayHelloSuccess</code> - Success callback<br />
 <code>sayHelloFailure</code> - Failure callback<br />
@@ -49,49 +51,53 @@ To declare the plug-in, add a reference to the <code>config.xml</code> file, loc
 <code>sayHello</code> - Action name<br />
 <code>[name]</code> - Parameters array</p>
 <p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks.<br />
-[code lang="js" firstline="5"]<br />
+{% highlight js %}<br />
 function sayHelloSuccess(data){<br />
     WL.SimpleDialog.show(<br />
-        &quot;Response from plug-in&quot;, data,<br />
-  [{text: &quot;OK&quot;, handler: function() {WL.Logger.debug(&quot;Ok button pressed&quot;);}}]<br />
+        "Response from plug-in", data,<br />
+  [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]<br />
     );<br />
 }</p>
 <p>function sayHelloFailure(data){<br />
     WL.SimpleDialog.show(<br />
-  &quot;Response from plug-in&quot;, data,<br />
-  [{text: &quot;OK&quot;, handler: function() {WL.Logger.debug(&quot;Ok button pressed&quot;);}}]<br />
+  "Response from plug-in", data,<br />
+  [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]<br />
     );<br />
-}[/code]</p>
+}
+{% endhighlight %}</p>
 <h2 id="java">Implementing the Java code of a Cordova plug-in</h2>
 <p>After you have declared the plug-in and the JavaScript implementation is ready, you can implement the Cordova plug-in.</p>
 <ol>
 <li>Add a new Java class file.</li>
 <li>Extend the <code>org.apache.cordova.CordovaPlugin</code> class and add the required import statements.<br />
-     [code lang="java"]public class SayHelloPlugin extends CordovaPlugin {[/code]
+{% highlight java %}public class SayHelloPlugin extends CordovaPlugin {
+{% endhighlight %}
 </li>
 <li>Implement an <code>execute</code> method.
 <ul>
 <li>The arguments contain information that is required by a plug-in, such as action, arguments array, and callback context.<br />
-    [code lang="java" firstline="2"]public boolean execute(String action, JSONArray args, CallbackContext callbackContext)<br />
-  throws JSONException {[/code]</li>
+    {% highlight java %}public boolean execute(String action, JSONArray args, CallbackContext callbackContext)<br />
+  throws JSONException {
+{% endhighlight %}</li>
 </ul>
 <p><br clear="all" />
     </li>
 <li>If the supplied action is <code>sayHello</code>, retrieve the first argument from the <code>args</code> array, prepare a <code>responseText</code> string and, by using the <code>callbackContext</code> argument, call the <code>success</code> callback with this <code>responseText</code> string as the argument.<br />
-    [code lang="java" firstline="4"]if (action.equals(&quot;sayHello&quot;)){<br />
+    {% highlight java %}if (action.equals("sayHello")){<br />
     try {<br />
-      String responseText = &quot;Hello &quot; + args.getString(0);<br />
+      String responseText = "Hello " + args.getString(0);<br />
       callbackContext.success(responseText);<br />
     } catch (JSONException e){<br />
-      callbackContext.error(&quot;Failed to parse parameters&quot;);<br />
+      callbackContext.error("Failed to parse parameters");<br />
     }<br />
     return true;<br />
-  }[/code]</li>
+  }{% endhighlight %}</li>
 <p><br clear="all" /></p>
 <li>Returning <code>false</code> means that the action that is supplied from JavaScript was not recognized.<br />
-    [code lang="java" firstline="13"]return false;<br />
-}[/code]</li>
+    {% highlight java %}return false;<br />
+}
+{% endhighlight %}</li>
 </ol>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/ApacheCordovaPlugins" target="_blank">Click to download</a> the MobileFirst project.</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_05_sample_app.png"><img src="{{ site.baseurl }}/assets/backup/07_05_sample_app.png" alt="07_05_sample_app" width="650" height="386" class="aligncenter size-full wp-image-900" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/07_05_sample_app.png" /></p>

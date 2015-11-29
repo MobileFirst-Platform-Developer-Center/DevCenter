@@ -23,21 +23,21 @@ This tutorial explains how to use the <code>WLResourceRequest</code> API with an
 </li>
 <li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.<br />
 For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:<br />
-[code lang="swift"]<br />
+{% highlight swift %}<br />
 let connectListener = MyConnectListener(vc: self)<br />
 WLClient.sharedInstance().wlConnectWithDelegate(connectListener)<br />
-[/code]
+{% endhighlight %}
 </li>
 <li>Make sure that your Bridging Header includes the <code>WLSwiftBridgingHeader.h</code> file for access to MobileFirst APIs.
 </li>
 <li>To specify the delegate object, create a delegate for the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server instance. Name the class <code>MyConnectListener</code>.
 <p>For your <code>MyConnectListener</code> class, the header file must specify that it implements the <code>WLDelegate</code> protocol.</p>
 <p><strong>Note</strong>: To avoid a compiler error raising that your delegate does not conform to <code>NSObjectProtocol</code>, make your class a subclass of <code>NSObject</code>.</p>
-<p>[code lang="swift"]<br />
+<p>{% highlight swift %}<br />
 class MyConnectListener: NSObject, WLDelegate{<br />
 //...<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>WLDelegate</code> protocol specifies that the class implements the following methods:<br />
 - The <strong>onSuccess</strong> method: <code>func onSuccess(response: WLResponse!)</code><br />
 - The <strong>onFailure</strong> method: <code>func onFailure(response: WLFailResponse!)</code></p>
@@ -45,62 +45,62 @@ class MyConnectListener: NSObject, WLDelegate{<br />
 In both cases, the response object is passed as an argument.
 </li>
 <li>Use this object to operate data that is retrieved from the server.
-<p>[code lang="swift"]<br />
+<p>{% highlight swift %}<br />
 func onSuccess(response: WLResponse!) {<br />
-    var resultText = &quot;Connection success. &quot;<br />
+    var resultText = "Connection success. "<br />
     if(response != nil){<br />
         resultText += response.responseText<br />
     }<br />
     self.vc.updateView(resultText)<br />
 }</p>
 <p>func onFailure(response: WLFailResponse!) {<br />
-    var resultText = &quot;Connection failure. &quot;<br />
+    var resultText = "Connection failure. "<br />
     if(response != nil){<br />
         resultText += response.errorMsg<br />
     }<br />
     self.vc.updateView(resultText)<br />
 }<br />
-[/code]
+{% endhighlight %}
 </li>
 </ol>
 <h2>Calling an adapter procedure</h2>
 <p>The <code>WLResourceRequest</code> class handles resource requests to MobileFirst adapters or external resources.</p>
 <ol>
 <li>To call a procedure, create a <code>WLResourceRequest</code> object and specify the path to the adapter and the HTTP method.<br />
-[code lang="swift"]<br />
-let request = WLResourceRequest(URL: NSURL(string: &quot;/adapters/RSSReader/getFeed&quot;), method: WLHttpMethodGet)<br />
-[/code]
+{% highlight swift %}<br />
+let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getFeed"), method: WLHttpMethodGet)<br />
+{% endhighlight %}
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name to set an array of parameters.<br />
-[code lang="swift"]<br />
-request.setQueryParameterValue(&quot;['MobileFirst_Platform']&quot;, forName: &quot;params&quot;)<br />
-[/code]
+{% highlight swift %}<br />
+request.setQueryParameterValue("['MobileFirst_Platform']", forName: "params")<br />
+{% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameterValue</code> for each parameter.<br />
-[code lang="swift"]<br />
-request.setQueryParameterValue(&quot;value1&quot;, forName: &quot;param1&quot;)<br />
-request.setQueryParameterValue(&quot;value2&quot;, forName: &quot;param2&quot;)<br />
-[/code]
+{% highlight swift %}<br />
+request.setQueryParameterValue("value1", forName: "param1")<br />
+request.setQueryParameterValue("value2", forName: "param2")<br />
+{% endhighlight %}
 </li>
 </ul>
 </li>
 <li>Call the procedure by using the <code>sendWithCompletionHandler</code> method. Supply a completion handler to manage the retrieved data.
-<p>[code lang="swift"]<br />
-        request.sendWithCompletionHandler { (WLResponse response, NSError error) -&gt; Void in<br />
-            var resultText = &quot;&quot;<br />
+<p>{% highlight swift %}<br />
+        request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in<br />
+            var resultText = ""<br />
             if(error != nil){<br />
-                resultText = &quot;Invocation failure. &quot;<br />
+                resultText = "Invocation failure. "<br />
                 resultText += error.description<br />
             }<br />
             else if(response != nil){<br />
-                resultText = &quot;Invocation success. &quot;<br />
+                resultText = "Invocation success. "<br />
                 resultText += response.responseText<br />
             }<br />
             self.updateView(resultText)<br />
         }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>For more granular management of the retrieved data (such as non-text responses, PDF, etc), you can use the <code>sendWithDelegate</code> method and provide a delegate that conforms to both the <code>NSURLConnectionDataDelegate</code> and <code>NSURLConnectionDelegate</code> protocols.</p>
 <p>Other signatures, which are not covered in this tutorial, exist for the <code>send</code> method. Those signatures enable you to set parameters in the body instead of the query, or to handle the response with a delegate instead of a completion handler. See the user documentation to learn more.</p>
 <blockquote><p>Learn more about <code>WLResourceRequest</code> in the user documentation.</p></blockquote>
@@ -110,4 +110,4 @@ request.setQueryParameterValue(&quot;value2&quot;, forName: &quot;param2&quot;)<
 <p>- The <code>InvokingAdapterProcedures</code> project contains a <strong>MobileFirst native API</strong> that you can deploy to your MobileFirst Server instance.</li>
 <p>- The <code>InvokingAdapterProceduresSwift</code> project contains a <strong>native iOS Swift application</strong> that uses a MobileFirst native API library to communicate with the MobileFirst Server instance.<br />
 - Make sure to update the <code>worklight.plist</code> file in <strong>NativeiOSInvoking</strong> with the relevant server settings.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/04_08_results_swift.pptx_.png"><img src="{{ site.baseurl }}/assets/backup/04_08_results_swift.pptx_.png" alt="04_08_results_swift.pptx" width="363" height="712" class="aligncenter size-full wp-image-3316" /></a></ol>
+<p><img src="{{ site.baseurl }}/assets/backup/04_08_results_swift.pptx_.png" /></ol>

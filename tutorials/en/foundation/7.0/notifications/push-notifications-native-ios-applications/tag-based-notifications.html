@@ -2,20 +2,12 @@
 layout: tutorial
 title: Tag-based notifications in native Windows 8 applications
 relevantTo: [ios]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativeTagNotificationsProject.zip
 ---
-
-    <ul>
-        <li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip">Download Studio project</a>
-        </li>
-
-        <li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativeTagNotificationsProject.zip">Download Native project</a>
-        </li>
-
-    </ul>
-
-
 <h2>Overview</h2>
 Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
@@ -24,7 +16,8 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h2>Setting up tags</h2>
 Tags are defined in the <code>application-descriptor.xml</code> file:
 
-{% highlight xml %} <nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.REPLACE-WITH-BUNDLE-ID" id="NativeiOSTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
+{% highlight xml %}
+<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.REPLACE-WITH-BUNDLE-ID" id="NativeiOSTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0">
 ...
 ...
 ...
@@ -62,7 +55,7 @@ When a notification is received by a device, the <code>didReceiveRemoteNotificat
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }
- {% endhighlight %} 
+{% endhighlight %} 
 
 <ul>
     <li>userInfo - A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>

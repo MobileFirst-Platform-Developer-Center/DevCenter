@@ -2,6 +2,7 @@
 layout: tutorial
 title: Device provisioning concepts
 relevantTo: [hybrid]
+weight: 7
 ---
 <h2>Overview</h2>
 <p>Device provisioning is one of the most advanced and complex security features that IBM MobileFirst Platform Foundation provides.<br />
@@ -53,13 +54,13 @@ No provisioning is the default setting for mobile applications.</p>
 <ul>
 <li>If you use the default security settings, you do not have to enable <strong>No provisioning</strong> manually.</li>
 <li>If you use a custom security test to protect a resource that requires device identity and you want to use <strong>No provisioning</strong>, add the realm to your security test. For example:
-<p>{% highlight xml %} <br />
-<customSecurityTest name="customTests"><br />
-  ...<br />
-  <test realm="wl_anonymousUserRealm" isInternalUserID="true" /><br />
-  <test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" /><br />
-</customSecurityTest><br />
- {% endhighlight %} 
+<p>{% highlight xml %}
+<customSecurityTest name="customTests">
+    ...
+    <test realm="wl_anonymousUserRealm" isInternalUserID="true" />
+    <test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" />
+</customSecurityTest>
+{% endhighlight %} 
 </li>
 </ul>
 <h2 id="auto">Auto provisioning</h2>
@@ -75,51 +76,50 @@ The certificate is issued to any device that requests it, therefore <strong>Auto
 <p><img src="{{ site.baseurl }}/assets/backup/09_13_autoprov-subsequent.png"/></p>
 <h3>Enabling auto provisioning</h3>
 <p>To enable <strong>Auto provisioning</strong>, add the following realms to your <code>authentication-config.xml</code> file.</p>
-<p>{% highlight xml %} <br />
-<customSecurityTest name="customTests"><br />
-  …<br />
-  <test realm="wl_authenticityRealm" /><br />
-  <test realm="wl_deviceAutoProvisioningRealm" isInternalDeviceID="true" /><br />
-</customSecurityTest><br />
- {% endhighlight %} </p>
-<p>{% highlight xml %} <br />
-<mobileSecurityTest name="mobileTests"><br />
-  ...<br />
-  <testAppAuthenticity/><br />
-  <testDeviceId provisioningType="auto" /><br />
-</mobileSecurityTest><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<customSecurityTest name="customTests">
+    ...
+    <test realm="wl_authenticityRealm" />
+    <test realm="wl_deviceAutoProvisioningRealm" isInternalDeviceID="true" />
+</customSecurityTest>
+
+<mobileSecurityTest name="mobileTests">
+    ...
+    <testAppAuthenticity/>
+    <testDeviceId provisioningType="auto" />
+</mobileSecurityTest>
+{% endhighlight %} </p>
 <h3>Keystore</h3>
 <p>By default, MobileFirst Server uses its internal keystore to issue a certificate.<br />
 You can tell the server to use your own keystore by adjusting the <code>worklight.properties</code> file.<br />
 <strong>Note:</strong> The <code>wl.ca.keystore.path</code> property value can be either relative to the <code>/server/</code> folder of the MobileFirst project or absolute to the file system.</p>
-<p>{% highlight bash %} <br />
-#######################################################################################################################<br />
-#    Worklight Default Certificate (For device provisioning)<br />
-#######################################################################################################################<br />
-# You can change the default behavior with regard to CA certificates. You can also implement custom provisioning.<br />
-# If you want to change the auto-provisioning mechanism to use different granularity (application, device or group) or a<br />
-# different list of pre-required realms, you can create your own customized authenticator, login module and challenge handler.<br />
+<p>{% highlight bash %}
+#######################################################################################################################
+#    Worklight Default Certificate (For device provisioning)
+#######################################################################################################################
+# You can change the default behavior with regard to CA certificates. You can also implement custom provisioning.
+# If you want to change the auto-provisioning mechanism to use different granularity (application, device or group) or a
+# different list of pre-required realms, you can create your own customized authenticator, login module and challenge handler.
 # For more information, see the "Custom Authenticator and Login Module" Getting Started training module.</p>
-<p>#The path to the keystore, relative to the server folder in the Worklight Project, for example: conf/my-cert.jks<br />
-#wl.ca.keystore.path=<br />
-#The type of the keystore file. Valid values are jks or pkcs12.<br />
-#wl.ca.keystore.type=<br />
-#The password to the keystore file.<br />
-#wl.ca.keystore.password=<br />
-#The alias of the entry where the private key and certificate are stored, in the keystore.<br />
-#wl.ca.key.alias=<br />
-#The password to the alias in the keystore.<br />
-#wl.ca.key.alias.password=</p>
-<p>#######################################################################################################################<br />
-#    Worklight SSL keystore<br />
-#######################################################################################################################<br />
-#SSL certificate keystore location.<br />
-ssl.keystore.path=conf/default.keystore<br />
-#SSL certificate keystore type (jks or PKCS12)<br />
-ssl.keystore.type=jks<br />
-#SSL certificate keystore password.<br />
-ssl.keystore.password=worklight<br />
+<p>#The path to the keystore, relative to the server folder in the Worklight Project, for example: conf/my-cert.jks
+#wl.ca.keystore.path=
+#The type of the keystore file. Valid values are jks or pkcs12.
+#wl.ca.keystore.type=
+#The password to the keystore file.
+#wl.ca.keystore.password=
+#The alias of the entry where the private key and certificate are stored, in the keystore.
+#wl.ca.key.alias=
+#The password to the alias in the keystore.
+#wl.ca.key.alias.password=
+#######################################################################################################################
+#    Worklight SSL keystore
+#######################################################################################################################
+#SSL certificate keystore location.
+ssl.keystore.path=conf/default.keystore
+#SSL certificate keystore type (jks or PKCS12)
+ssl.keystore.type=jks
+#SSL certificate keystore password.
+ssl.keystore.password=worklight
  {% endhighlight %} </p>
 <p>You must use <strong>Auto provisioning</strong> together with <em>application authenticity</em> protection.<br />
 For more information, see <a title="Application Authenticity Protection" href="../../authentication-security/application-authenticity-protection/">Application Authenticity Protection</a>.</p>

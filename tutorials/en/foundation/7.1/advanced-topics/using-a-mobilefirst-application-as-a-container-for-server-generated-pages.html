@@ -28,16 +28,16 @@ This tutorial covers the following topics:</p>
 <h3>Creating MobileFirst applications</h3>
 <h4>CLI</h4>
 <p>From a terminal window, use the following CLI commands to add a project and application:<br />
-[code]<br />
+{% highlight bash %}<br />
 mfp create UsingApplicationAsAContainer<br />
 cd UsingApplicationAsAContainer<br />
 mfp add hybrid UsingApplicationAsAContainer<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Next, add a required environment, for example Android:<br />
-[code]<br />
+{% highlight bash %}<br />
 cd UsingApplicationAsAContainer<br />
 mfp add environment android<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h4>Studio</h4>
 <p>In MobileFirst Studio, create a new project, "UsingApplicationAsAContainer"<br />
 <img src="{{ site.baseurl }}/assets/backup/new-project-wizzard-1-300x300.png" alt="new-project-wizzard-1" width="300" height="300" class="alignnone size-medium wp-image-2565" /></p>
@@ -58,38 +58,38 @@ mfp add environment android<br />
 <li>Open the <code>application-descriptor.xml</code> file and edit the <code>mainFile</code> tag to point to <code>http://m.ibm.com</code>.</li>
 </ul>
 <p><img src="{{ site.baseurl }}/assets/backup/application-descriptor-300x276.png" alt="application-descriptor" width="300" height="276" class="alignnone size-medium wp-image-2559" /></p>
-<p>[code lang="xml" highlight="11"]<br />
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;<br />
-&lt;application xmlns=&quot;http://www.worklight.com/application-descriptor&quot; id=&quot;UsingApplicationAsAContainer&quot; platformVersion=&quot;6.3.0.00.20141003-1438&quot;&gt;<br />
-    &lt;displayName&gt;UsingApplicationAsAContainer&lt;/displayName&gt;<br />
-    &lt;description&gt;UsingApplicationAsAContainer&lt;/description&gt;<br />
-    &lt;author&gt;<br />
-        &lt;name&gt;application's author&lt;/name&gt;<br />
-        &lt;email&gt;application author's e-mail&lt;/email&gt;<br />
-        &lt;homepage&gt;http://mycompany.com&lt;/homepage&gt;<br />
-        &lt;copyright&gt;Copyright My Company&lt;/copyright&gt;<br />
-    &lt;/author&gt;<br />
-    &lt;mainFile&gt;http://m.ibm.com&lt;/mainFile&gt;<br />
-    &lt;features/&gt;<br />
-    &lt;thumbnailImage&gt;common/images/thumbnail.png&lt;/thumbnailImage&gt;<br />
-    &lt;iphone bundleId=&quot;com.UsingApplicationAsAContainer&quot; version=&quot;1.0&quot;&gt;<br />
-        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
-        &lt;security&gt;<br />
-            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
-        &lt;/security&gt;<br />
-    &lt;/iphone&gt;<br />
-    &lt;android version=&quot;1.0&quot;&gt;<br />
-        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
-        &lt;security&gt;<br />
-            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
-            &lt;publicSigningKey/&gt;<br />
-            &lt;packageName/&gt;<br />
-        &lt;/security&gt;<br />
-    &lt;/android&gt;<br />
-&lt;/application&gt;<br />
-[/code]</p>
+<p>{% highlight xml %}<br />
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><br />
+<application xmlns="http://www.worklight.com/application-descriptor" id="UsingApplicationAsAContainer" platformVersion="6.3.0.00.20141003-1438"><br />
+    <displayName>UsingApplicationAsAContainer</displayName><br />
+    <description>UsingApplicationAsAContainer</description><br />
+    <author><br />
+        <name>application's author</name><br />
+        <email>application author's e-mail</email><br />
+        <homepage>http://mycompany.com</homepage><br />
+        <copyright>Copyright My Company</copyright><br />
+    </author><br />
+    <mainFile>http://m.ibm.com</mainFile><br />
+    <features/><br />
+    <thumbnailImage>common/images/thumbnail.png</thumbnailImage><br />
+    <iphone bundleId="com.UsingApplicationAsAContainer" version="1.0"><br />
+        <worklightSettings include="false"/><br />
+        <security><br />
+            <encryptWebResources enabled="false"/><br />
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
+        </security><br />
+    </iphone><br />
+    <android version="1.0"><br />
+        <worklightSettings include="false"/><br />
+        <security><br />
+            <encryptWebResources enabled="false"/><br />
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
+            <publicSigningKey/><br />
+            <packageName/><br />
+        </security><br />
+    </android><br />
+</application><br />
+{% endhighlight %}</p>
 <h2 id="android">Running your application on the Android emulator</h2>
 <ol>
 <li>Build the Android environment.</li>
