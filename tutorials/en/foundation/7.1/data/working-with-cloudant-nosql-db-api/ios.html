@@ -207,14 +207,14 @@ if(replicationError){<br />
 <li>Make sure that you have correctly installed and set up CocoaPods. If you have not done so, complete the following:
 <ol>
 <li>Install CocoaPods by entering the following terminal command:<br />
-[code]$ sudo gem install cocoapods {% endhighlight %}
+{% highlight bash %}$ sudo gem install cocoapods {% endhighlight %}
 </li>
 <li>Set up CocoaPods by entering the following terminal command:<br />
-[code]$ pod setup {% endhighlight %}
+{% highlight bash %}$ pod setup {% endhighlight %}
 </li>
 <p>The next step is to download and install the required dependencies for this project by using the provided </ol>
 <p><code>Podfile</code>. If you want to create or have your own <code>podfile</code>, include the following content:</p>
-<p>[code]<br />
+<p>{% highlight bash %}<br />
 source 'https://github.com/CocoaPods/Specs.git'<br />
 platform :ios, '7.0'<br />
 pod 'IMFDataLocal', '1.0.0'<br />
@@ -222,7 +222,7 @@ pod 'IMFDataLocal', '1.0.0'<br />
 </li>
 </ol>
 <li>To install the dependencies as defined in a <code>podfile</code>, navigate to the Xcode project directory in terminal (in the sample: <code>/BlueList-On-Premise/iOS/objective-c/</code>) and run the following command:
-<p>[code] $ pod install {% endhighlight %}</p>
+<p>{% highlight bash %} $ pod install {% endhighlight %}</p>
 <p><strong>Note:</strong> For the <code>pod install</code> command to work correctly, your <code>podfile</code> must be named <code>Podfile</code> or <code>podfile</code>.
 </li>
 <li>After the dependencies are installed, open the <code>bluelist-objective-c.xcworkspace</code> file. When using CocoaPods, you must use the <code>.xcworkspace</code> file instead of the <code>.xcodeproject</code> file because of how the dependencies are configured. This pod installation will also pull in the <code>IBMMobileFirstPlatformFoundation</code> framework as it is a required dependency of <code>IMFDataLocal</code>.
@@ -238,13 +238,13 @@ pod 'IMFDataLocal', '1.0.0'<br />
 <p>It is possible to encrypt the local data stores in order to secure data that is being stored on the device.</p>
 <p><strong>Prerequisite:</strong> To use the encryption functionality as explained here, you must have the <code>IMFDataLocal/SQLCipher</code> pod installed.</p>
 <p>To begin the process of encrypting the local databases, you must first edit the <code>podfile</code> to include the <code>IMFDataLocal/SQLCipher</code> pod. This pod replaces the IMFDataLocal reference in the current <code>podfile</code>. Here is an example of the modified <code>podfile</code>:</p>
-<p>[code]<br />
+<p>{% highlight bash %}<br />
 source 'https://github.com/CocoaPods/Specs.git'<br />
 platform :ios, '7.0'<br />
 pod 'IMFDataLocal/SQLCipher'<br />
 {% endhighlight %}</p>
 <p>A <code>pod install</code> must be completed after these changes have been made in order to have the correct encryption dependencies configured. To accomplish this, navigate to the Xcode project directory in terminal (in the sample: <code>/BlueList-On-Premise/iOS/objective-c/</code>) and run the following command:</p>
-<p>[code] $ pod install {% endhighlight %}</p>
+<p>{% highlight bash %} $ pod install {% endhighlight %}</p>
 <p>Now the project has the dependencies that are required to encrypt the local databases correctly. To encrypt these databases in your client-side code, first create an <code>CDTEncryptionKeyProvider</code> and then create a local data store with this <code>keyProvider</code>:</p>
 <p>{% highlight obj-c %}<br />
 //Initialize a key provider<br />

@@ -33,8 +33,8 @@ The plug-in performs the required action and calls a JavaScript callback method 
 <h2 id="declare">Declaring a plug-in</h2>
 <p>You must declare the plug-in in the project, so that Cordova can detect it.<br />
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the <code>native\res\xml</code> folder in the Android environment.</p>
-<p>{% highlight xml %}<feature name=“sayHelloPlugin"><br />
-  <param name="android-package" value=“sayHelloPlugin" /><br />
+<p>{% highlight xml %}<feature name="sayHelloPlugin"><br />
+  <param name="android-package" value="sayHelloPlugin" /><br />
 </feature>{% endhighlight %}</p>
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
@@ -70,14 +70,15 @@ function sayHelloSuccess(data){<br />
 <ol>
 <li>Add a new Java class file.</li>
 <li>Extend the <code>org.apache.cordova.CordovaPlugin</code> class and add the required import statements.<br />
-     {% highlight java %}public class SayHelloPlugin extends CordovaPlugin {
-         {% endhighlight %}
+{% highlight java %}public class SayHelloPlugin extends CordovaPlugin {
+{% endhighlight %}
 </li>
 <li>Implement an <code>execute</code> method.
 <ul>
 <li>The arguments contain information that is required by a plug-in, such as action, arguments array, and callback context.<br />
     {% highlight java %}public boolean execute(String action, JSONArray args, CallbackContext callbackContext)<br />
-  throws JSONException {{% endhighlight %}</li>
+  throws JSONException {
+{% endhighlight %}</li>
 </ul>
 <p><br clear="all" />
     </li>

@@ -19,16 +19,16 @@ relevantTo: [hybrid]
 <h3>Using the command-line interface (CLI)</h3>
 <ol>
 <li>If you have installed the <a href="../../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">CLI</a>, in the terminal, create a project named <code>HelloWorldProject</code>.<br />
-[code]<br />
+{% highlight bash %}<br />
 $ mfp create HelloWorldProject<br />
 A MobileFirst Project was successfully created at /Users/MyUser/Dev/HelloWorldProject<br />
 {% endhighlight %}</li>
 <li>Go to the context of your newly created project.<br />
-[code]<br />
+{% highlight bash %}<br />
 $ cd HelloWorldProject/<br />
 {% endhighlight %}</li>
 <li>Define a hybrid application named <code>HelloWorld</code>.<br />
-[code]<br />
+{% highlight bash %}<br />
 $ mfp add hybrid HelloWorld<br />
 A new Hybrid App was added at /Users/MyUser/Dev/HelloWorldProject/apps/HelloWorld<br />
 {% endhighlight %}</li>
@@ -54,7 +54,7 @@ A new Hybrid App was added at /Users/MyUser/Dev/HelloWorldProject/apps/HelloWorl
 <p>To add an environment:</p>
 <h3>Using the command-line interface (CLI)</h3>
 <p>Navigate to the Hybrid application and add an environment:<br />
-[code]<br />
+{% highlight bash %}<br />
 cd apps/HelloWorld<br />
 mfp add environment<br />
 {% endhighlight %}</p>
@@ -257,7 +257,7 @@ function wlCommonInit(){<br />
 <h2 id="buildingAnApplication">Building an application</h2>
 <h3>Using the command-line interface (CLI)</h3>
 <p>Navigate to the application folder and use the <code>push</code> command to build and deploy the application to the MobileFirst Server.<br />
-[code]mfp push{% endhighlight %}</p>
+{% highlight bash %}mfp push{% endhighlight %}</p>
 <h3>Using MobileFirst Studio</h3>
 <p>To build an application, right-click the application name and select <strong>Run As > Run on MobileFirst Development Server</strong>.</p>
 <p>While the application is being built and deployed, you can monitor the progress in the Eclipse Console view.<br />
@@ -276,7 +276,7 @@ Principles of multipage applications that are built with a single DOM model are 
 <h2 id="previewingAnApplication">Previewing an Application</h2>
 <h3>Using the command-line interface (CLI)</h3>
 <p>From the application preview, use the <code>preview</code> command, and select preview mode: Simple preview or MBS.<br />
-[code]mfp preview{% endhighlight %}.</p>
+{% highlight bash %}mfp preview{% endhighlight %}.</p>
 <h3>Using MobileFirst Studio</h3>
 <ul>
 <li>To preview the application's common resources from the CLI, go to the common folder:<br />
