@@ -3,6 +3,7 @@ layout: tutorial
 title: Quick Start demonstration
 relevantTo: [windowsphone8]
 ---
+<br>
 <p>The purpose of this demonstration is to make you experience an end-to-end flow where the MobileFirst Platform Foundation SDK for Windows Phone 8 (Silverlight) is integrated into a Visual Studio project and used to retrieve data by using a MobileFirst adapter.</p>
 <p>To learn more about creating projects and applications, using adapters, and lots more, <a href="../">visit the Native Windows Phone 8 Development</a> landing page.</p>
 <p><strong>Prerequisite:</strong> Make sure that you have installed the following software:</p>
@@ -17,17 +18,19 @@ relevantTo: [windowsphone8]
 <ul>
 <li>
 <h4>Create a new project and Windows Phone 8 framework/server-side application entity.</h4>
-<p>                {% highlight bash %}<br />
-                mfp create MyProject<br />
-                cd MyProject<br />
-                mfp add api MyWindowsPhone8 -e windowsphone8<br />
-                {% endhighlight %}
+<p>                
+{% highlight bash %}
+mfp create MyProject
+cd MyProject
+mfp add api MyWindowsPhone8 -e windowsphone8
+{% endhighlight %}
             </li>
 <li>
 <h4>Add an HTTP adapter to the project.</h4>
-<p>                {% highlight bash %}<br />
-                mfp add adapter MyAdapter -t http<br />
-                {% endhighlight %}
+<p>                
+{% highlight bash %}
+mfp add adapter MyAdapter -t http
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -36,10 +39,11 @@ relevantTo: [windowsphone8]
 <ul>
 <li>
 <h4>Start the MobileFirst Server and deploy the server-side application entity and adapter.</h4>
-<p>                {% highlight bash %}<br />
-                mfp start<br />
-                mfp push<br />
-                {% endhighlight %}
+<p>                
+{% highlight bash %}
+mfp start
+mfp push
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -57,13 +61,14 @@ relevantTo: [windowsphone8]
 <h3>Implement the MobileFirst adapter invocation.</h3>
 <ul>
 <li>The following code invokes an adapter:<br />
-{% highlight csharp %}<br />
-WLProcedureInvocationData invocationData = new WLProcedureInvocationData("MyAdapter", "getStories");<br />
-invocationData.setParameters(new Object[]{});<br />
-String myContextObject = "InvokingAdapterProceduresWP8";<br />
-WLRequestOptions options = new WLRequestOptions();<br />
-options.setInvocationContext(myContextObject);<br />
-WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);{% endhighlight %}
+{% highlight csharp %}
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData("MyAdapter", "getStories");
+invocationData.setParameters(new Object[]{});
+String myContextObject = "InvokingAdapterProceduresWP8";
+WLRequestOptions options = new WLRequestOptions();
+options.setInvocationContext(myContextObject);
+WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);
+{% endhighlight %}
             </li>
 </ul>
 </li>

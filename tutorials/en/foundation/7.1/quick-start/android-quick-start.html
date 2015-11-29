@@ -3,6 +3,7 @@ layout: tutorial
 title: Quick Start demonstration
 relevantTo: [android]
 ---
+<br>
 <p>The purpose of this demonstration is to make you experience an end-to-end flow where IBM MobileFirst Platform Foundation SDK for Android is integrated into an Android project and used to retrieve data by using a MobileFirst adapter.</p>
 <p>To learn more about creating projects and applications, using adapters and lots more, <a href="../">visit the Native Android Development</a> landing page.</p>
 <p><strong>Prerequisite:</strong> Make sure that you have installed the following software:</p>
@@ -17,16 +18,18 @@ relevantTo: [android]
 <ul>
 <li>
 <h4>Create a back-end project in a location of your choice.</h4>
-<p>                {% highlight bash %}<br />
-                mfp create MyProject<br />
-                cd MyProject<br />
-                {% endhighlight %}
+<p>
+{% highlight bash %}
+mfp create MyProject
+cd MyProject
+{% endhighlight %}
             </li>
 <li>
 <h4>Add an HTTP adapter to the project.</h4>
-<p>                {% highlight bash %}<br />
-                mfp add adapter MyAdapter -t http<br />
-                {% endhighlight %}
+<p>
+{% highlight bash %}
+mfp add adapter MyAdapter -t http
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -35,10 +38,11 @@ relevantTo: [android]
 <ul>
 <li>
 <h4>Start the MobileFirst Server and deploy the adapter.</h4>
-<p>                {% highlight bash %}<br />
-                mfp start<br />
-                mfp push<br />
-                {% endhighlight %}
+<p>
+{% highlight bash %}
+mfp start
+mfp push
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -50,33 +54,42 @@ relevantTo: [android]
 <ul>
 <li>In <strong>Project > Gradle scripts</strong>, select <strong>build.gradle (Module: app)</strong>.</li>
 <li>After <code>apply plugin: 'com.android.application'</code>, add the following line:<br />
-        {% highlight xml %}repositories{<br />
-    jcenter()<br />
-}{% endhighlight %}
+{% highlight xml %}
+repositories {
+    jcenter()
+}
+{% endhighlight %}
     </li>
 <li>Inside <code>android</code>, add the following lines:<br />
-{% highlight xml %}packagingOptions {<br />
-    pickFirst 'META-INF/ASL2.0'<br />
-    pickFirst 'META-INF/LICENSE'<br />
-    pickFirst 'META-INF/NOTICE'<br />
-}{% endhighlight %}</li>
+{% highlight xml %}
+packagingOptions {
+    pickFirst 'META-INF/ASL2.0'
+    pickFirst 'META-INF/LICENSE'
+    pickFirst 'META-INF/NOTICE'
+}
+{% endhighlight %}</li>
 <li>Inside <code>dependencies</code>, add the following lines:<br />
-{% highlight xml %}compile group: 'com.ibm.mobile.foundation',<br />
-    name: 'ibmmobilefirstplatformfoundation',<br />
-    version: '7.1.0.0',<br />
-    ext: 'aar',<br />
-    transitive: true{% endhighlight %}</li>
+{% highlight xml %}
+compile group: 'com.ibm.mobile.foundation',
+    name: 'ibmmobilefirstplatformfoundation',
+    version: '7.1.0.0',
+    ext: 'aar',
+    transitive: true
+{% endhighlight %}</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:<br />
-{% highlight xml %}<br />
-<uses-permission android:name="android.permission.INTERNET"/><br />
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br />
-<uses-permission android:name="android.permission.GET_TASKS" /><br />
+{% highlight xml %}
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+<uses-permission android:name="android.permission.GET_TASKS" />
 {% endhighlight %}</li>
 <li>Add the MobileFirst UI activity:<br />
-{% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %}</li>
+{% highlight xml %}
+<activity android:name="com.worklight.wlclient.ui.UIActivity" />
+{% endhighlight %}</li>
 <li>In Terminal, navigate to the root of the Android Studio project and add the required configuration files by running this command:<br />
-{% highlight xml %}<br />
-mfp push{% endhighlight %}
+{% highlight xml %}
+mfp push
+{% endhighlight %}
 </li>
 <li>
 <h3>Implement MobileFirst adapter invocation.</h3>
@@ -84,55 +97,61 @@ mfp push{% endhighlight %}
 <li>
 <h4>Main <code>Activity</code> class</h4>
 <p>                Make sure that your MainActivity class extends the <code>Activity</code> class:<br />
-{% highlight java %}<br />
-public class MainActivity extends Activity {<br />
-...<br />
+{% highlight java %}
+public class MainActivity extends Activity {
+...
 {% endhighlight %}<br />
                 Add the following <code>import</code> statements:<br />
-                {% highlight java %}import com.worklight.wlclient.api.*;<br />
-import android.util.Log;<br />
-import java.net.URI;<br />
-import java.net.URISyntaxException;{% endhighlight %}</p>
+{% highlight java %}
+import com.worklight.wlclient.api.*;
+import android.util.Log;
+import java.net.URI;
+import java.net.URISyntaxException;
+{% endhighlight %}</p>
 <p>                Add the following lines to the <code>onCreate</code> method:<br />
-                {% highlight java %}<br />
-super.onCreate(savedInstanceState);<br />
-setContentView(R.layout.activity_main);</p>
-<p>final WLClient client = WLClient.createInstance(this);</p>
-<p>client.connect(new WLResponseListener() {</p>
-<p>    @Override<br />
-    public void onSuccess(WLResponse wlResponse) {<br />
-        URI adapterPath = null;<br />
-        try {<br />
-           adapterPath = new URI("/adapters/MyAdapter/getFeed");<br />
-        } catch (URISyntaxException e) {<br />
-           e.printStackTrace();<br />
-        }<br />
-        WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
-        request.send(new MyInvokeListener());<br />
-    }</p>
-<p>    @Override<br />
-    public void onFailure(WLFailResponse wlFailResponse) {<br />
-        Log.i("MFPMyProject","Failed connecting to the MobileFirst Server: " + wlFailResponse.getErrorMsg());<br />
-    }<br />
-});{% endhighlight %}</li>
+{% highlight java %}
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+final WLClient client = WLClient.createInstance(this);
+client.connect(new WLResponseListener() {
+    @Override
+    public void onSuccess(WLResponse wlResponse) {
+        URI adapterPath = null;
+        try {
+           adapterPath = new URI("/adapters/MyAdapter/getFeed");
+        } catch (URISyntaxException e) {
+           e.printStackTrace();
+        }
+        WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
+        request.send(new MyInvokeListener());
+    }
+    @Override
+    public void onFailure(WLFailResponse wlFailResponse) {
+        Log.i("MFPMyProject","Failed connecting to the MobileFirst Server: " + wlFailResponse.getErrorMsg());
+    }
+});
+{% endhighlight %}</li>
 <li>
 <h4><code>MyInvokeListener</code> class</h4>
 <p>                Add a new <code>MyInvokeListener</code> class.<br />
                 Add the following <code>import</code> statements:<br />
-                {% highlight java %}import com.worklight.wlclient.api.*;<br />
-import android.util.Log;{% endhighlight %}</p>
+{% highlight java %}
+import com.worklight.wlclient.api.*;
+import android.util.Log;
+{% endhighlight %}</p>
 <p>                Paste the following lines:<br />
-        {% highlight java %}<br />
-public class MyInvokeListener implements WLResponseListener {</p>
-<p>    @Override<br />
-    public void onSuccess(WLResponse wlResponse) {<br />
-        Log.i("MFPMyProject","Adapter invocation response: " + wlResponse.getResponseJSON());<br />
-    }</p>
-<p>    @Override<br />
-    public void onFailure(WLFailResponse wlFailResponse) {<br />
-        Log.i("MFPMyProject", "Adapter invocation response: " + wlFailResponse.getErrorMsg());<br />
-    }<br />
-}{% endhighlight %}</li>
+{% highlight java %}
+public class MyInvokeListener implements WLResponseListener {
+    @Override
+    public void onSuccess(WLResponse wlResponse) {
+        Log.i("MFPMyProject","Adapter invocation response: " + wlResponse.getResponseJSON());
+    }
+    @Override
+    public void onFailure(WLFailResponse wlFailResponse) {
+        Log.i("MFPMyProject", "Adapter invocation response: " + wlFailResponse.getErrorMsg());
+    }
+}
+{% endhighlight %}</li>
 </ul>
 </li>
 <li>
