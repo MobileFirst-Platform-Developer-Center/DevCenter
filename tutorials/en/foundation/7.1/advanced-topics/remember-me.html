@@ -64,7 +64,7 @@ You might need to adapt it to your specific needs.</p>
 			<className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
 		</loginModule><br />
 	</loginModules><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>In previous versions of IBM MobileFirst Platform Foundation, the logged-in state of clients was entirely dependent on an HTTP session. After logging in, the end user remained logged in only as long as the HTTP session was alive. If either the client restarted, or the HTTP session ended, the end user was automatically logged out.<br />
 In version 7.1 and later, the session-independent mode decouples the link between the logged-in state and HTTP sessions, so that interaction between client and MobileFirst Server is no longer session-dependent. This feature enables you to take down a server without breaking user sessions.</p>
 <p>The <code>expirationInSeconds</code> parameter is a built-in setting to determine how long the user session is valid. In this example, the value of this parameter is the default expiration when the user does <strong>not</strong> select <strong>Remember Me</strong>. To make testing easier, the expiration value is set to 30 seconds here, but in a real application you would probably want to use a longer expiration time, such as one hour...</p>
@@ -77,7 +77,7 @@ In version 7.1 and later, the session-independent mode decouples the link betwee
 			<parameter name="rememberMeExpirationInDays" value="3"/><br />
 		</realm><br />
 	</realms><br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The <code>realm</code> uses the <code>loginModule</code> that was defined in the <a href="#login">Login Module</a> section and the class that you will define in the <a href="#CustomAuthenticator">Custom authenticator</a> section.<br />
 A custom parameter called <code>rememberMeExpirationInDays</code> defines how long the client is remembered if that user selects <strong>Remember Me</strong>.</p>
 <h3>Security test</h3>
@@ -90,7 +90,7 @@ A custom parameter called <code>rememberMeExpirationInDays</code> defines how lo
 			<test realm="CustomRealm" isInternalUserID="true" /><br />
 		</customSecurityTest><br />
 	</securityTests><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The security test uses some standard realms, and uses the <code>CustomRealm</code> as a user realm.</p>
 <h2 id="adapter">Adapter code</h2>
 <p>Create a simple Java adapter with a single <code>hello</code> method. Protect it with the realm that you created in the <a href="#realm">Realm</a> section.<br />
@@ -104,7 +104,7 @@ A custom parameter called <code>rememberMeExpirationInDays</code> defines how lo
         logger.info("Logging info message...");</p>
 <p>		return "Hello from the Java REST adapter";<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="cloudant">Cloudant</h2>
 <p>Storing in Cloudant is optional, you can choose any database you want for this part.</p>
 <h3>cloudant-client</h3>
@@ -123,7 +123,7 @@ A custom parameter called <code>rememberMeExpirationInDays</code> defines how lo
 cloudant.domain=myCloudantUser<br />
 cloudant.key=myAPIKey<br />
 cloudant.password=myAPIPassword<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="RememberedClient">RememberedClient.java</h2>
 <p>Cloudant uses JSON notation to store documents. To make it easier in Java, create a simple <code><a href="https://en.wikipedia.org/wiki/Plain_Old_Java_Object" target="_blank">POJO</a></code> to represent a "remembered client id".</p>
 <p>{% highlight java %}<br />
@@ -132,7 +132,7 @@ public class RememberedClient {<br />
 	private Date expiration;<br />
 //insert getters and setters<br />
 }<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 For convenience, this class also includes a getter/setter pair to map <code>ClientID</code> to the <code>_id</code> property.<br />
 {% highlight java %}<br />
 	public String getClientID() {<br />
@@ -141,13 +141,13 @@ For convenience, this class also includes a getter/setter pair to map <code>Clie
 <p>	public void setClientID(String clientID) {<br />
 		set_id(clientID);<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="CustomAuthenticator">CustomAuthenticator.java</h2>
 <p>The authenticator extends <code>WorklightProtocolAuthenticator</code> to inherit the simplifications provided by the <em>Worklight protocol</em>.<br />
 {% highlight java %}<br />
 public class CustomAuthenticator extends WorklightProtocolAuthenticator {<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>init</h3>
 <p>This example uses the <code>init</code> method to load the configurations from the <code>authenticatorConfig.xml</code> and from the <code>worklight.properties</code> files. The CloudantClient and database are initialized here, too.</p>
 <p>{% highlight java %}<br />
@@ -166,7 +166,7 @@ public class CustomAuthenticator extends WorklightProtocolAuthenticator {<br />
 <p>		cloudant = new CloudantClient(cloudantDomain,cloudantKey,cloudantPassword);<br />
 		db = cloudant.database(CLOUDANT_DB, false);<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3 id="cloudantHelper">Cloudant helper methods</h3>
 <p>Create methods to create, read, and delete remembered clients from the <em>cloudant</em> database.</p>
 <ul>
@@ -186,7 +186,7 @@ public class CustomAuthenticator extends WorklightProtocolAuthenticator {<br />
 		authenticationResult.setJson(challengeObj);<br />
 		return authenticationResult;<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>processRequest</h3>
 <p>The <code>processRequest</code> method is where the main logic happens. This is the method that the framework calls to access a protected resource.<br />
 The <code>processRequest</code> method first checks whether the client exists in the database.
@@ -213,7 +213,7 @@ The <code>processRequest</code> method first checks whether the client exists in
 			logger.info("CustomAuthenticator :: SUCCESS from ClientID");<br />
 			return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);<br />
 		}<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>If the client was not found and the current request does not already contain a challenge response, the request generates a challenge and sends it.
 <p>{% highlight java %}<br />
@@ -221,7 +221,7 @@ The <code>processRequest</code> method first checks whether the client exists in
 <p>		if (null == challengeResponse){<br />
 			return generateChallenge("Please enter username and password");<br />
 		}<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>If the current request already contains the response from the challenge, it verifies the credentials (in this example, no real verification happens). It then saves the client in the database and returns <code>SUCCESS</code>.<br />
 {% highlight java %}<br />
@@ -241,7 +241,7 @@ The <code>processRequest</code> method first checks whether the client exists in
 			logger.info("CustomAuthenticator :: SUCCESS");<br />
 			return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);<br />
 		}<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 <h3>getAuthenticationData</h3>
@@ -255,12 +255,12 @@ The <code>processRequest</code> method first checks whether the client exists in
 		authData.put(PASSWORD_KEY, password);<br />
 		return authData;<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="challengeHandler">Challenge handler</h2>
 <p>Because the <code>authenticator</code> uses the <em>Worklight protocol</em>, use the <code>createWLChallengeHandler</code> method to create the challenge handler.<br />
 {% highlight javascript %}<br />
 var challengeHandler = WL.Client.createWLChallengeHandler("CustomRealm");<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The challenge handler hides and shows the login parts of the application when required. It uses the <code>submitChallengeAnswer</code> method to send the credentials and the <strong>Remember Me</strong> checkbox. See the sample code for implementation details.</p>
 <p>The client side can be adapted to a native environment.</p>
 <h2 id="logout">Logout</h2>
@@ -276,7 +276,7 @@ The challenge handler hides and shows the login parts of the application when re
 		CustomAuthenticator.forgetClient(AuthenticationContext.getCurrentClientId());<br />
 		return Response.ok().build();<br />
 	}<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>From the client code, make sure that you call this method before using the standard logout feature.
 <p>{% highlight javascript %}<br />
@@ -289,7 +289,7 @@ function logout(){<br />
 			}<br />
 	);<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="sample">Sample application</h2>

@@ -22,16 +22,16 @@ relevantTo: [hybrid]
 [code]<br />
 $ mfp create HelloWorldProject<br />
 A MobileFirst Project was successfully created at /Users/MyUser/Dev/HelloWorldProject<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Go to the context of your newly created project.<br />
 [code]<br />
 $ cd HelloWorldProject/<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Define a hybrid application named <code>HelloWorld</code>.<br />
 [code]<br />
 $ mfp add hybrid HelloWorld<br />
 A new Hybrid App was added at /Users/MyUser/Dev/HelloWorldProject/apps/HelloWorld<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 </ol>
 <h3>Using the Studio</h3>
 <ol>
@@ -57,7 +57,7 @@ A new Hybrid App was added at /Users/MyUser/Dev/HelloWorldProject/apps/HelloWorl
 [code]<br />
 cd apps/HelloWorld<br />
 mfp add environment<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Using the Studio</h3>
 <ol>
 <li>Click the MobileFirst icon in the menu bar and select <strong>MobileFirst Environment</strong>.<br />
@@ -170,7 +170,7 @@ You can specify the application description, details about the author, the thumb
         </features><br />
         <targetCategory>UNDEFINED</targetCategory><br />
     </application><br />
-    {% endhighlight %</p>
+    {% endhighlight %}</p>
 <p>Environment-specific information is inserted automatically as new environments are added to the MobileFirst project:</p>
 <p>{% highlight xml %}<br />
     <iphone bundleId="com.HelloWorld" version="1.0"><br />
@@ -189,7 +189,7 @@ You can specify the application description, details about the author, the thumb
             <packageName/><br />
         </security><br />
     </android><br />
-    {% endhighlight %</p>
+    {% endhighlight %}</p>
 <blockquote><p>Learn more about the <code>application-descriptor.xml</code> file in the user documentation.</p></blockquote>
 <h3>The build-settings.xml file</h3>
 <p>The build settings file is an XML file that contains configuration options for minification and concatenation of the Desktop Browser and Mobile Web environment web resources.<br />
@@ -224,7 +224,7 @@ The default application HTML template complies with HTML5 standard markup, but a
                 <script src="js/messages.js"></script><br />
             </body><br />
     </html><br />
-    {% endhighlight %</p>
+    {% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>The initOptions.js file</h3>
 <p>The initialization options file contains MobileFirst framework initialization settings.<br />
@@ -253,11 +253,11 @@ function wlCommonInit(){<br />
      */</p>
 <p>    // Common initialization code goes here</p>
 <p>}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="buildingAnApplication">Building an application</h2>
 <h3>Using the command-line interface (CLI)</h3>
 <p>Navigate to the application folder and use the <code>push</code> command to build and deploy the application to the MobileFirst Server.<br />
-[code]mfp push{% endhighlight %</p>
+[code]mfp push{% endhighlight %}</p>
 <h3>Using MobileFirst Studio</h3>
 <p>To build an application, right-click the application name and select <strong>Run As > Run on MobileFirst Development Server</strong>.</p>
 <p>While the application is being built and deployed, you can monitor the progress in the Eclipse Console view.<br />
@@ -276,7 +276,7 @@ Principles of multipage applications that are built with a single DOM model are 
 <h2 id="previewingAnApplication">Previewing an Application</h2>
 <h3>Using the command-line interface (CLI)</h3>
 <p>From the application preview, use the <code>preview</code> command, and select preview mode: Simple preview or MBS.<br />
-[code]mfp preview{% endhighlight %.</p>
+[code]mfp preview{% endhighlight %}.</p>
 <h3>Using MobileFirst Studio</h3>
 <ul>
 <li>To preview the application's common resources from the CLI, go to the common folder:<br />

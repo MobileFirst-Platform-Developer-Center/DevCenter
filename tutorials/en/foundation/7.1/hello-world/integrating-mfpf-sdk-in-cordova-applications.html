@@ -64,7 +64,7 @@ NAME<br />
      $ cd myapp<br />
      $ mfp cordova preview<br />
      $ mfp cordova emulate --platform android<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="creatingCordovaProject">Creating a Cordova project</h2>
 <p>To create a Cordova application, run the command: <code>mfp cordova create</code>.<br />
 You can use either the Interactive Mode as detailed below, or the Direct Mode (see <code>mfp help cordova create</code>).</p>
@@ -77,7 +77,7 @@ You can use either the Interactive Mode as detailed below, or the Direct Mode (s
 [?] Select platforms to be supported by your app: (Press <space> to select)<br />
  ❯⬢ android<br />
   ⬢ ios<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <li>A default set of Cordova plug-ins, including <code>cordova-plugin-mfp</code>, are automatically added to the application. You can also add additional standard Cordova plug-ins.</li>
 <p>[code]<br />
 [?] The following plugins are automatically added to your app:<br />
@@ -105,11 +105,11 @@ org.apache.cordova.network-information</p>
   ⬡ org.apache.cordova.splashscreen<br />
   ⬡ org.apache.cordova.statusbar<br />
   ⬡ org.apache.cordova.vibration<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <li>You can use an application template for your project. The CLI provides the default template <em>cordova-hello-world-mfp</em>. You can create your own repository of app templates to speed up your development process and point the path to the application template that you want to use.</li>
 <p>[code]<br />
 [?] Enter a path to an app template to be added: (cordova-hello-world-mfp)<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <blockquote><p>To learn more about Cordova application templates, see the topic about developing Cordova client apps, in the user documentation.</p></blockquote>
 <li>The Cordova project is generated with the selected platforms and plug-ins.</li>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/06/cordova-app.png"><img src="{{ site.baseurl }}/assets/backup/cordova-app-1024x560.png" alt="cordova-app" width="980" height="536" class="aligncenter size-large wp-image-14871" /></a></p>
@@ -171,7 +171,7 @@ function wlCommonInit(){<br />
     }<br />
 };</p>
 <p>app.initialize();<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="previewWebResources">Previewing the applications web resources</h2>
 <p>You might want to preview the web resources of your application outside any specific platform, for example to debug common JavaScript logic.</p>
 <p>Before you can preview application web resources, you must have a MobileFirst Development Server running. If a MobileFirst Server instance is not yet available, use the <code>mfp create</code> command to setup a new MobileFirst back-end project, followed by the <code>mfp start</code> command to initialize MobileFirst Server.</p>
@@ -179,7 +179,7 @@ function wlCommonInit(){<br />
 mfp create MyMFPProject<br />
 cd MyMFPProject<br />
 mfp start<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>When previewing the Cordova app, you can make selections by using either the MobileFirst Operations Console Simple Browser Rendering, or Mobile Browser Simulator.<br />
 After MobileFirst Server is started, navigate to the Cordova application folder and use the <code>mfp cordova preview</code> command to preview the application:</p>
 <p>[code]<br />
@@ -190,18 +190,18 @@ mfp cordova preview<br />
 <p>[?] Select platform(s) to be previewed: (Press <space> to select)<br />
 ❯⬡ ios<br />
  ⬡ android<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="testingAnApplication">Testing an application on an emulator or device</h2>
 <p>To run the application by using the Android Emulator or the iOS Simulator, use the <code>emulate</code> command:<br />
-[code]mfp cordova emulate{% endhighlight %</p>
+[code]mfp cordova emulate{% endhighlight %}</p>
 <p>Alternately, you can plug a device into your computer and test the app directly on it by using the <code>run</code> command:<br />
-[code]mfp cordova run{% endhighlight %</p>
+[code]mfp cordova run{% endhighlight %}</p>
 <p><strong>Note:</strong> If you do not have a device plugged and execute the <code>run</code> command, this command starts an emulator/simulator, so that the behavior is the same as that of the <code>emulate</code> command.</p>
 <p>[code]<br />
 [?] What platforms do you want to run on? (Use arrow keys)<br />
    android<br />
  ❯ ios<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/06/cordova-preview-e1437034704442.jpg"><img src="{{ site.baseurl }}/assets/backup/cordova-preview-e1437034704442.jpg" alt="cordova-preview" width="253" height="500" class="aligncenter size-full wp-image-14832" /></a></p>
 <h2 id="managingCordovaPlatforms">Managing Cordova platforms</h2>
 <p>You can manage the available platforms in the Cordova project by using the <code>platform</code> command: <code>mfp cordova platform [option]</code>.</p>
@@ -211,24 +211,24 @@ mfp cordova preview<br />
 [?] Select platforms to be supported by your app: (Press <space> to select)<br />
  ❯⬡ android<br />
   ⬡ ios<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>List available platforms in Cordova app: <code>mfp cordova platform list</code><br />
 [code]mfp cordova platform list<br />
 Installed Platforms: ios 3.7.0<br />
 Available Platforms: android<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Remove a platform: <code>mfp cordova platform remove</code><br />
 [code]mfp cordova platform remove<br />
 [?] Select the configured platform(s) to remove from this app: (Press <space> to select)<br />
  ❯⬡ ios 3.7.0<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Update Cordova assets for each platform in Cordova app: <code>mfp cordova platform update</code></li>
 </ul>
 <h2 id="managingCordovaPlugins">Managing Cordova plug-ins</h2>
 <p>You can manage the plug-ins used in the Cordova project by running the command:</p>
-<p>[code]mfp cordova plugin [option]{% endhighlight %</p>
+<p>[code]mfp cordova plugin [option]{% endhighlight %}</p>
 <ul>
 <li>Add<br />
         [code]<br />
@@ -248,7 +248,7 @@ Available Platforms: android<br />
   ⬡ org.apache.cordova.statusbar<br />
   ⬡ org.apache.cordova.vibration<br />
   ⬡ Add 3rd party plugin<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>List<br />
 [code]<br />
 cordova-plugin-mfp 7.1.0 "IBM MobileFirst Platform Foundation"<br />
@@ -258,24 +258,24 @@ org.apache.cordova.geolocation 0.3.11 "Geolocation"<br />
 org.apache.cordova.globalization 0.3.3 "Globalization"<br />
 org.apache.cordova.inappbrowser 0.5.4 "InAppBrowser"<br />
 org.apache.cordova.network-information 0.2.14 "Network Information"<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Remove<br />
 [code]<br />
 mfp cordova plugin remove org.apache.cordova.camera<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Search<br />
 [code]<br />
 mfp cordova plugin search barcode<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Update<br />
 [code]<br />
 mfp cordova plugin update<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 </ul>
 <h2 id="registeringApplications">Registering applications</h2>
 <h3>Registering applications to a local development server</h3>
 <p>The <code>mfp push</code> command is used to register client applications and deploy required application and adapter assets to MobileFirst Server.<br />
-[code]mfp push{% endhighlight %</p>
+[code]mfp push{% endhighlight %}</p>
 <p>If you are previewing an app in the Browser, you can refresh the browser after the <code>push</code> command to preview the new version pushed.</p>
 <h3>Registering applications to a remote development server</h3>
 <p>It is also possible to register an application to an existing remote MobileFirst Server, such as a QA, UAT, preproduction or production server. The <code>mfp push</code> command can be used with the remote server name specified.</p>
@@ -288,7 +288,7 @@ You are prompted to provide a name, a fully qualified server address (<code>prot
 [?] Enter the MFP admin password: *****<br />
 [?] Save admin password for this server?: No<br />
 [?] Enter the context root of the MobileFirst administration services: worklightadmin<br />
-[?] Make this server the default?: (Y/n) n{% endhighlight %</p>
+[?] Make this server the default?: (Y/n) n{% endhighlight %}</p>
 <p>To push to the newly defined remote server, run the command: <code> mfp push <em>myserver</em></code>.<br />
 The <code>push</code> command connects to the server and retrieves the list of available back-end projects to be selected.</p>
 <p>After pushing an application to the remote server, the application configuration (w<code>orklight.plist</code>/<code>wlclient.properties</code>, <code>config.xml</code> files) are updated to point to the remote server as the back-end server for the app.</p>
@@ -355,7 +355,7 @@ The <code>push</code> command connects to the server and retrieves the list of a
 <p>[code]<br />
 mfp cordova plugin add org.apache.cordova.vibration<br />
 mfp cordova plugin add org.apache.cordova.camera<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 Optionally, you can run the interactive command <code>mfp cordova plugin add</code> and select the vibration and camera plugins from the list presented.</p>
 <li>
 <h4>Edit the index.html file</h4>
@@ -374,7 +374,7 @@ Optionally, you can run the interactive command <code>mfp cordova plugin add</co
         </div><br />
       </div><br />
 </body><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <li>
 <h4>Edit the index.css file</h4>
 <p>Edit the file <code><em>your-app-name</em>/www/css/index.css</code> to update the visual of the app.</p>
@@ -475,7 +475,7 @@ li {<br />
     max-height: 400px;<br />
   }<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 </li>
 <li>
 <h4>Edit the index.js file</h4>
@@ -558,7 +558,7 @@ function wlCommonInit(){<br />
     }<br />
 };</p>
 <p>app.initialize();<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <li>
 <h4>Create a MobileFirst Project and adapter</h4>
 <p>For the RSS feed, it is necessary to create a MobileFirst adapter procedure that returns a JSON object containing a retrieved data.</p>

@@ -29,14 +29,14 @@ relevantTo: [android]
 <li>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
 {% highlight java %}<br />
 public class AndroidChallengeHandler extends ChallengeHandler<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Call the <code>super</code> method:<br />
 {% highlight java %}<br />
 	public AndroidChallengeHandler(String realm) {<br />
 		super(realm);<br />
 	}<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Add an implementation of the following <code>ChallengeHandler</code> methods to handle the form-based challenge:
 <ol>
@@ -51,7 +51,7 @@ public boolean isCustomResponse(WLResponse response) {<br />
     }<br />
     return true;<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li><strong><code>handleChallenge</code> method:</strong><br />
 If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hiding the application screen and showing the login screen.<br />
@@ -65,7 +65,7 @@ public void handleChallenge(WLResponse response){<br />
         parentActivity.startActivityForResult(login, 1);<br />
     }<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li><strong><code>onSuccess</code> and <code>onFailure</code> methods: </strong><br />
 At the end of the authentication flow, <code>onSuccess</code> or <code>onFailure</code> will be triggered<br />
@@ -78,7 +78,7 @@ Call the <code>submitFailure</code> method in order to inform the framework that
 <p>	public void onSuccess(WLResponse response) {<br />
 		submitSuccess(response);<br />
 	}<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 </li>
@@ -98,7 +98,7 @@ public void submitLogin(int resultCode, String userName, String password, boolea
         submitLoginForm("/j_security_check", params, null, 0, "post");<br />
     }<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>The Main Activity</h3>
 <p>In the sample project, in order to trigger the challenge handler we use the <code>WLClient invokeProcedure</code> method.<br />
@@ -108,20 +108,20 @@ The protected procedure invocation triggers MobileFirst Server to send the chall
 {% highlight java %}<br />
 final WLClient client = WLClient.createInstance(this);<br />
 client.connect(new MyConnectionListener());<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>In order to listen to incoming challenges, make sure to register the challenge handler by using the <code>registerChallengeHandler</code> method:<br />
 {% highlight java %}<br />
 challengeHandler = new AndroidChallengeHandler(this, realm);<br />
 client.registerChallengeHandler(challengeHandler);<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Invoke the protected adapter procedure:<br />
 {% highlight java %}<br />
 URI adapterPath = new URI("/adapters/AuthAdapter/getSecretData");<br />
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
 request.send(new MyResponseListener());<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 <h2 id="sample">Sample application</h2>

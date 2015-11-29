@@ -43,7 +43,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
     onDeviceSubscribe: 'deviceSubscribeFunc',<br />
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',<br />
     securityTest:'PushApplication-strong-mobile-securityTest'<br />
-});{% endhighlight %</p>
+});{% endhighlight %}</p>
 <ul>
 <li><strong><code>name</code></strong> – a name by which the event source is referenced.</li>
 <li><strong><code>onDeviceSubscribe</code></strong> – an adapter function that is invoked when the user subscription request is received.</li>
@@ -54,7 +54,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
 {% highlight js %}poll: {<br />
     interval: 3,<br />
     onPoll: 'getNotificationsFromBackend'<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <ul>
 <li><strong><code>poll</code></strong> – a method that is used for notification retrieval.<br />
 The following parameters are required:</p>
@@ -77,9 +77,9 @@ The following parameters are required:</p>
 <p>    return {<br />
         result: "Notification sent to user :: " + userId<br />
     };<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
-<p>{% highlight js %}function submitNotification(userId, notificationText) {{% endhighlight %</p>
+<p>{% highlight js %}function submitNotification(userId, notificationText) {{% endhighlight %}</p>
 <p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
 <p>{% highlight js %}{<br />
     userId: 'bjones',<br />
@@ -87,23 +87,23 @@ The following parameters are required:</p>
         customField: 3<br />
     },<br />
     getDeviceSubscriptions: function()[}<br />
-};{% endhighlight %</p>
+};{% endhighlight %}</p>
 <p>Next line:<br />
-{% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %</p>
+{% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
 {% highlight js %}if (userSubscription === null) {<br />
         return { result: "No subscription found for user :: " + userId };<br />
-    }{% endhighlight %</p>
+    }{% endhighlight %}</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
 {% highlight js %}var badgeDigit = 1;<br />
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %</p>
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %}</p>
 <ul>
 <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
 <li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
 <li><strong><code>custom</code></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
 </ul>
 <p>The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.</p>
-<p>{% highlight js %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %</p>
+<p>{% highlight js %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h4>Several APIs exist for sending notifications:</h4>
 <ul>
@@ -125,17 +125,17 @@ ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener 
   readyToSubscribeListener.alias = self.alias;<br />
   readyToSubscribeListener.adapterName = self.adapterName;<br />
   readyToSubscribeListener.eventSourceName = self.eventSourceName;<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 </li>
 <li>Set the <code>onReadyToSubscribeListener</code> on <code>WLPush</code>.
 <p>{% highlight obj-c %}<br />
 [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 </li>
 <li>Pass the token to <code>WLPush</code>.<br />
 {% highlight obj-c %}<br />
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h3>Sending token to client and initializing <code>WLPush</code></h3>
@@ -143,16 +143,16 @@ ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener 
 {% highlight obj-c %}<br />
 AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];<br />
 [[WLPush sharedInstance]init];<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The user must add this method to the app delegate to get the token.<br />
 {% highlight obj-c %}<br />
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The token that is received by this method must be passed to the WLPush method.<br />
 {% highlight obj-c %}<br />
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Registering the event source</h3>
 <p>IBM MobileFirst Platform Foundation provides the customizable <code>onReadyToSubscribe</code> function, which is used to register an event source.<br />
 Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.</p>
@@ -167,7 +167,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
   :self.eventSourceName :eventSourceListener];<br />
 }</p>
 <p>@end<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>Subscribing to the event source</h3>
 <p><strong>Prerequisite:</strong> To subscribe, a user must authenticate.</p>
@@ -177,7 +177,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
   MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];<br />
   [[WLPush sharedInstance]subscribe:self.alias :nil :mySubscribeListener];<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><code>[[WLPush sharedInstance] subscribe]</code> takes the following parameters:</p>
 <ul>
 <li>An alias, as declared in <code>[[WLPush sharedInstance] registerEventSourceCallback]</code></li>
@@ -192,7 +192,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
   MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];<br />
   [[WLPush sharedInstance]unsubscribe:self.alias :myUnsubscribelistener];<br />
 }<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 <code>[[WLPush sharedInstance] unsubscribe]</code> takes the following parameters:</p>
 <ul>
 <li>An alias, as declared in <code>[[WLPush sharedInstance] registerEventSourceCallback]</code></li>
@@ -208,7 +208,7 @@ When a push notification is received by a device, the <code>didReceiveRemoteNoti
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
     NSLog(@"Received Notification %@",userInfo.description);<br />
 }<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 If the application was in background mode (or inactive) when the push notification arrived, this callback is called when the application returns to the foreground.</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotifications" target="_blank">Click to download</a> the MobileFirst project.</p>
@@ -227,5 +227,5 @@ If the application was in background mode (or inactive) when the push notificati
 {% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/submitNotification<br />
 [?] Enter the comma-separated parameters: "the-user-name", "hello!"<br />
-[?] How should the procedure be called? GET{% endhighlight %</li>
+[?] How should the procedure be called? GET{% endhighlight %}</li>
 </ol>

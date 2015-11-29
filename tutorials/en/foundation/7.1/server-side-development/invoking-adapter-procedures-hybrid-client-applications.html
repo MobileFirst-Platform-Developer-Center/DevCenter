@@ -20,7 +20,7 @@ var resourceRequest = new WLResourceRequest(<br />
     "/adapters/RSSReader/getFeedFiltered",<br />
     WLResourceRequest.GET<br />
 );<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>WLResourceRequest</code> class handles resource requests to MobileFirst adapters or external resources.</p>
 <p>The parameters for the constructor are:</p>
 <ul>
@@ -33,7 +33,7 @@ var resourceRequest = new WLResourceRequest(<br />
 <h4>setQueryParameter</h4>
 <p>{% highlight js %}<br />
 resourceRequest.setQueryParameter("params", "['MobileFirst_Platform']");<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>By using the <code>setQueryParameter</code> method, you can include query (URL) parameters in the REST request.</p>
 <ul>
 <li>In MobileFirst JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name <code>params</code>.
@@ -42,7 +42,7 @@ resourceRequest.setQueryParameter("params", "['MobileFirst_Platform']");<br />
 {% highlight js %}<br />
 resourceRequest.setQueryParameter("param1", "value1");<br />
 resourceRequest.setQueryParameter("param2", "value2");<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 <p><br clear="all" /></p>
@@ -52,7 +52,7 @@ resourceRequest.send().then(<br />
 	onSuccess,<br />
 	onFailure<br />
 );<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>send()</code> method triggers the request.<br />
 Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFailure</code> functions.</p>
 <p>The <code>send</code> method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.</p>
@@ -97,7 +97,7 @@ Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFai
     "title": "How would you change Nokia's Lumia 925?"<br />
   }]<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ul>
 <li><code>errors</code>, <code>info</code>, and <code>warnings</code> are optional arrays of strings that contain messages.</li>
 <li>The <code>isSuccessful</code> property is set to <code>true</code> if the procedure invocation succeeded (even if no data was retrieved), or to <code>false</code> otherwise.</li>
@@ -111,7 +111,7 @@ function loadFeedsSuccess(result){<br />
     if (result.responseJSON.Items.length > 0)<br />
         displayFeeds(result.responseJSON.Items);<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures" target="_blank">Click to download</a> the MobileFirst project.</p>
 <p>The sample uses the HTTP adapter created in the <a href="../javascript-adapters/js-http-adapter">HTTP Adapter tutorial</a>.</p>

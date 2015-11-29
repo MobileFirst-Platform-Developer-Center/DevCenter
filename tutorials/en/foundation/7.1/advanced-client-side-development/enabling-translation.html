@@ -34,14 +34,14 @@ Messages = {<br />
   actionsLabel: "Default action label",<br />
   sampleText: "Default sample text",<br />
 };<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Application messages that are stored in the <code>messages.js</code> file can be referenced in two ways:</p>
 <ul>
 <li>As a JavaScript object property. For example: <code>Messages.headerText</code></li>
 <li>As an ID of an HTML element with <code>class="translate"</code>.<br />
 {% highlight html %}<br />
 <h1 id="headerText" class="translate"></h1><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 <h2 id="system">Enabling translation of system messages</h2>
@@ -51,7 +51,7 @@ You can find a full list of system messages in the <code>www\default\worklight\m
 To enable the translation of a system message, override it in your JavaScript application.<br />
 {% highlight javascript %}<br />
 WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.</p>
 <h2 id="multilang">Multilanguage translation</h2>
 <p>Using JavaScript, you can implement multilanguage translation for your applications.</p>
@@ -67,7 +67,7 @@ Messages = {<br />
   russianLanguage : "Russian",<br />
   hebrewLanguage : "Hebrew"<br />
 };<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 </li>
 <li>Override specific strings when required.<br />
 {% highlight javascript %}<br />
@@ -76,7 +76,7 @@ function setFrench(){<br />
   Messages.actionsLabel = "Sélectionnez une langue:";<br />
   Messages.sampleText = "Ceci est un exemple de texte en français.";<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Update the GUI components with the new strings.<br />
 You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic.<br />
@@ -107,7 +107,7 @@ function languageChanged(lang) {<br />
     $("#headerText").html(Messages.headerText);<br />
     $("#actionsLabel").html(Messages.actionsLabel);<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="detectLocale">Detecting the device locale and language</h2>
@@ -118,7 +118,7 @@ var locale = WL.App.getDeviceLocale();<br />
 var lang = WL.App.getDeviceLanguage();<br />
 WL.Logger.debug(">> Detected locale: " + locale);<br />
 WL.Logger.debug(">> Detected language: " + lang);<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_detected-logs.png"><img src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png" alt="05_05_detected-logs" width="505" height="65" class="alignnone size-full wp-image-1327" /></a></p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/Translation" target="_blank">Click to download</a> the MobileFirst project.</p>

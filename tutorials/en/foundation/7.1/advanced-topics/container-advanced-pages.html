@@ -72,7 +72,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
         </c:forEach><br />
     </ul><br />
 </div><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>JSTL provides a simple API for iterating over lists to generate Dojox Mobile list items dynamically on the server.</p>
 <h3 id="formClient">Form-based authentication - client</h3>
 <p>IBM Mobile Conference application requires users to be registered and authenticated with the enterprise that is hosting the application. The application is protected by a form-based login, by using a mobile web form that is contained within a Dojox Mobile view.</p>
@@ -99,7 +99,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
             </div><br />
         </form><br />
 </div><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3 id="formServer">Form-based authentication - server</h3>
 <p>IBM Mobile Conference application is configured to use Java Enterprise Edition Role Support.</p>
 <ul>
@@ -130,7 +130,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
         <form-error-page>/common/logonError.jsp</form-error-page><br />
     </form-login-config><br />
 </login-config><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>{% highlight html %}<br />
 <div style="position: relative; float: left;"><br />
     <form method="post" action="conferenceLogout.jsp" name="logout"><br />
@@ -142,7 +142,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
         <input type="hidden" name="logoutExitPage" value="/"><br />
     </form><br />
 </div><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3 id="registry">Simplified user registry and role configuration</h3>
 <ol>
 <li>Modify the <code>server.xml</code> file as follows, depending on which application server you use:
@@ -191,7 +191,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
     </application></p>
 <p>    ...<br />
 </server></p>
-<p>{% endhighlight %
+<p>{% endhighlight %}
 </li>
 <li><strong>Tomcat</strong>
 <p>{% highlight xml %}<br />
@@ -206,7 +206,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
     pathname="conf/tomcat-users.xml"<br />
     type="org.apache.catalina.UserDatabase"/><br />
 </GlobalNamingResources><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 </li>
@@ -214,7 +214,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 <p>{% highlight xml %}<br />
 <role rolename="worklightadmin"/><br />
 <user username="tomcat" password="tomcat" roles="worklightadmin"/><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="migrate">Migrating applications to IBM MobileFirst Platform Foundation</h2>
@@ -237,7 +237,7 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
         handleWebFrameworkInitFailure(result);<br />
     }<br />
 }</p>
-<p>{% endhighlight %
+<p>{% endhighlight %}
 </li>
 <li>If the application is running on a Tomcat application server, change the port to <code>8080</code>.</li>
 <li>If the application is running on an actual Android device, replace <code>localhost</code> with the public IP address of your computer. Make sure that the device and your server are on the same network.</li>
@@ -270,7 +270,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
                                                         NSURLRequest* request= [NSURLRequest requestWithURL:remoteURL];<br />
                                                         [cordovaViewController.webView loadRequest:request];<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>If the application is running on a Tomcat application server, change the port to <code>8080</code>.</li>
 <li>Right-click the WAR file and select <strong>Run As > Run on Server</strong>, and then select the MobileFirst Development Server.</li>
@@ -300,7 +300,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <p><body id="content" onload="WL.Client.init({onSuccess:function success(){ console.info('WL init success...'); }, connectOnStartup:false});"><br />
     <c:set var="locationMap" value='${applicationScope.locationRegistry}' scope="session"/></p>
 <p>...</p>
-<p>{% endhighlight %</p>
+<p>{% endhighlight %}</p>
 <p>{% highlight javascript %}<br />
 <c:choose><br />
     <c:when test="${fn:contains(iOSClient, 'Android')}"></p>
@@ -348,7 +348,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 ...</p>
 <p>    </c:otherwise><br />
 </c:choose><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3 id="encrypt">Encrypted Cache</h3>
 <p>The Encrypted Offline Cache (EOC) API is used for securely storing data by using HTML5 local cache. The Conference app uses EOC to save a list of favorite sessions in a secure way.</p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/eoc.jpg"><img src="{{ site.baseurl }}/assets/backup/eoc.jpg" alt="eoc" width="600" height="489" class="alignnone size-full wp-image-3710" /></a></p>
@@ -374,7 +374,7 @@ function saveToCache(key, value) {</p>
         });<br />
     }<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3 id="camera">Camera support</h3>
 <p>Use the IBM MobileFirst Client API to extend the application to take photos of the conference. The application has a social aspect, where users can view photos from the other conference attendees.</p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/photo1.jpg"><img src="{{ site.baseurl }}/assets/backup/photo1.jpg" alt="photo" width="600" height="358" class="alignnone size-full wp-image-3701" /></a></p>

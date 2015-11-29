@@ -52,7 +52,7 @@ Two classes, <code>PageViewController</code> and <code>PageContentViewController
     [self.window setRootViewController:pageViewController];<br />
     [self.window makeKeyAndVisible];</p>
 <p>    //..<br />
-}{% endhighlight %
+}{% endhighlight %}
 </li>
 <li>The <code>initializeWebFrameworkWithDelegate</code> method is called from within the <code>didFinishLaunchingWithOptions</code> method.<br />
 This method initializes the MobileFirst framework in the background and calls the <code>wlInitWebFrameworkDidCompleteWithResult</code> method after the framework is initialized.</p>
@@ -64,7 +64,7 @@ This method initializes the MobileFirst framework in the background and calls th
     [self.window makeKeyAndVisible];<br />
     [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];<br />
     return result;<br />
-}{% endhighlight %
+}{% endhighlight %}
 </li>
 <li>Inside the <code>wlInitWebFrameworkDidCompleteWithResult</code> method, different scenarios are handled depending on the <code>statusCode</code> value of the <code>WLWebFrameworkInitResult</code> object.<br />
 In this sample, only the common case of the <code>WLWebFrameworkInitResultSuccess</code> value is modified.</p>
@@ -75,7 +75,7 @@ In this sample, only the common case of the <code>WLWebFrameworkInitResultSucces
     } else {<br />
         [self wlInitDidFailWithResult:result];<br />
     }<br />
-}{% endhighlight %
+}{% endhighlight %}
 </li>
 <li>In the <code>wlInitDidCompleteSuccessfully</code> method, a Cordova controller is being prepared but is not displayed yet.<br />
 Optionally, you can set the frame to itself so that the web view initializes in the background if initialization of the JavaScript code is required to start in the background.</p>
@@ -86,7 +86,7 @@ Optionally, you can set the frame to itself so that the web view initializes in 
     self.cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];</p>
 <p>    //This will trigger initialization in the background, optional<br />
     self.cordovaViewController.view.frame = self.cordovaViewController.view.frame;<br />
-}{% endhighlight %
+}{% endhighlight %}
 </li>
 <li>In this sample, the <code>PageViewController</code> instance ends with a button that triggers a custom method called <code>onSplashScreenDone</code> in the AppDelegate.<br />
 The <code>onSplashScreenDone</code> custom method resumes where the flow was interrupted and displays the previously initialized Cordova view.</p>
@@ -97,7 +97,7 @@ The <code>onSplashScreenDone</code> custom method resumes where the flow was int
 <p>    self.cordovaViewController.view.frame = rootViewController.view.bounds;</p>
 <p>    [rootViewController addChildViewController:self.cordovaViewController];<br />
     [rootViewController.view addSubview:self.cordovaViewController.view];<br />
-}{% endhighlight %
+}{% endhighlight %}
 </li>
 </ol>
 <h2 id="jsToNative">Sending commands from JavaScript code to native code</h2>
@@ -112,23 +112,23 @@ You can use this feature to trigger native code to be run in the background, to 
 </ul>
 <h3>Step 2</h3>
 <p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
-[code gutter="false"]@interface MyReceiver: NSObject <WLActionReceiver>{% endhighlight %</p>
+[code gutter="false"]@interface MyReceiver: NSObject <WLActionReceiver>{% endhighlight %}</p>
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:</p>
 <p>{% highlight obj-c %}-(void) onActionReceived:(NSString *)action withData:(NSDictionary *) data {<br />
     if ([action isEqualToString:@"doSomething"]){<br />
        // perform required actions, e.g., update native user interface<br />
     }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions from the MobileFirst web view, it must be registered. The registration can be done during the startup flow of the application to catch any actions early enough:<br />
-{% highlight obj-c %}[[WL sharedInstance] addActionReceiver:[[myReceiver alloc] init]]{% endhighlight %</p>
+{% highlight obj-c %}[[WL sharedInstance] addActionReceiver:[[myReceiver alloc] init]]{% endhighlight %}</p>
 <h2 id="nativeToJs">Sending commands from native code to JavaScript code</h2>
 <p>In MobileFirst applications, commands can be sent with parameters from native Objective-C code to the JavaScript code of web views.<br />
 You can use this feature to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
 <h3>Step 1</h3>
 <p>In Objective-C, the following API is used:<br />
 {% highlight obj-c %}NSDictionary *data = @{@"someProperty": @"12345"};<br />
-[[WL sharedInstance] sendActionToJS:@"doSomething" withData:data];{% endhighlight %</p>
+[[WL sharedInstance] sendActionToJS:@"doSomething" withData:data];{% endhighlight %}</p>
 <ul>
 <li><code>doSomething</code> is an arbitrary action name to be used on the JavaScript side.</li>
 <li>The second parameter is an <code>NSDictionary</code> object that contains any data.</li>
@@ -139,12 +139,12 @@ You can use this feature to receive responses from a native method, notify the w
   if (received.action == "doSomething" &amp;&amp; received.data.someProperty == "12345"){<br />
     //perform required actions, e.g., update web user interface<br />
   }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function can handle those actions as early as possible.</p>
-<p>{% highlight js %}WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);{% endhighlight %</p>
+<p>{% highlight js %}WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);{% endhighlight %}</p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-{% highlight js %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %</p>
+{% highlight js %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %}</p>
 <h2 id="sendaction">The SendAction sample</h2>
 <p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/07_08_screenshot.png"><img src="{{ site.baseurl }}/assets/backup/07_08_screenshot.png" alt="07_08_screenshot" width="702" height="600" class="aligncenter size-full wp-image-1111" /></a></p>
 <h3>Overview</h3>
@@ -167,7 +167,7 @@ You can use this feature to receive responses from a native method, notify the w
       <input type="text" name="address" id="address"/><br />
 <input type="button" value="Display" id="displayBtn"/><br />
  </p><br />
- <p id="errorMsg" style="color:red;"></p>{% endhighlight %</p>
+ <p id="errorMsg" style="color:red;"></p>{% endhighlight %}</p>
 <h3>JavaScript</h3>
 <p>When the button is clicked, the <code>sendActionToNative</code> method is called to send the address to the native code.</p>
 <p>{% highlight js %}$('#displayBtn').on('click', function(){<br />
@@ -175,13 +175,13 @@ You can use this feature to receive responses from a native method, notify the w
   WL.App.sendActionToNative("displayAddress",<br />
         { address: $('#address').val()}<br />
     );<br />
-  });{% endhighlight %</p>
+  });{% endhighlight %}</p>
 <p>The code also registers an action receiver to display potential error messages from the native code.<br />
 {% highlight js %}WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received){<br />
     if(received.action == 'displayError'){<br />
       $('#errorMsg').html(received.data.errorReason);<br />
     }<br />
-  });{% endhighlight %</p>
+  });{% endhighlight %}</p>
 <h3>Storyboard</h3>
 <p>The interface was designed with a Storyboard file. It features a generic view controller with the <code>ViewController</code> custom class (described later).</p>
 <p>The view controller contains a <code>MKMapView</code> object and a Container View.<br />
@@ -196,7 +196,7 @@ The Container View contains a view controller, which is set to use the <code>Hyb
     self.startPage = [[WL sharedInstance] mainHtmlFilePath];<br />
     return self;<br />
 }<br />
-//...{% endhighlight %</p>
+//...{% endhighlight %}</p>
 <h3>ViewController</h3>
 <p>The <code>ViewController</code> class extends <code>UIViewController</code>.<br />
 This class:</p>
@@ -209,7 +209,7 @@ This class:</p>
 <p>{% highlight obj-c %}@interface ViewController ()<MKMapViewDelegate, WLActionReceiver><br />
 @property (weak, nonatomic) IBOutlet MKMapView *map;<br />
 @property CLGeocoder* geocoder;<br />
-@end{% endhighlight %</p>
+@end{% endhighlight %}</p>
 <p>The title of the controller is set to be displayed as part of a <code>UINavigationController</code> object.<br />
 The geocoder is initialized.<br />
 The map delegate is set.<br />
@@ -221,7 +221,7 @@ The <code>ViewController</code> object is registered as an action receiver for M
     self.geocoder = [[CLGeocoder alloc] init];<br />
     [self.map setDelegate:self];<br />
     [[WL sharedInstance] addActionReceiver:self];<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>The <code>onActionReceived</code> method is called when the user submits the form. The action name is checked and the entered address is retrieved.<br />
 The geocoder is given the address.</p>
 <p>{% highlight obj-c %}-(void) onActionReceived:(NSString *)action withData:(NSDictionary *) data {<br />
@@ -233,7 +233,7 @@ The geocoder is given the address.</p>
                               //DO STUFF - next slide...</p>
 <p>                    }];<br />
     }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>If a location is found, the region is centered and a new <code>MKPlacemark</code> is added to the map.</p>
 <p>{% highlight obj-c %}completionHandler:^(NSArray* placemarks, NSError* error){<br />
     if([placemarks count]){<br />
@@ -248,7 +248,7 @@ The geocoder is given the address.</p>
 <p>        MKPlacemark *placemark = [[MKPlacemark alloc]initWithPlacemark:topResult];<br />
         [self.map addAnnotation:placemark];<br />
     }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>If the search fails or no location is found, the <code>sendActionToJS</code> method is called to transmit the error to the web view.</p>
 <p>{% highlight obj-c %}completionHandler:^(NSArray* placemarks, NSError* error){<br />
     if([placemarks count]){<br />
@@ -259,7 +259,7 @@ The geocoder is given the address.</p>
                             withData:@{@"errorReason": [error localizedDescription]}<br />
          ];<br />
     }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h3>MyAppDelegate</h3>
 <ul>
 <li>The <code>didFinishLaunchingWithOptions</code> method of the app delegate is generated by MobileFirst Platform and is left unchanged in this example.</li>
@@ -272,7 +272,7 @@ The geocoder is given the address.</p>
     ViewController* viewController = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];<br />
     [rootViewController pushViewController:viewController animated:YES];<br />
     [[WL sharedInstance] hideSplashScreen];<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h2 id="shared">Shared session</h2>
 <p>When you use both JavaScript and native code in the same application, you might need to make HTTP requests to MobileFirst Server (connection,  procedure invocation, etc.)</p>
 <p>HTTP requests are explained in other tutorials about authentication, application authenticity, and HTTP adapters (both for hybrid and native applications).<br />

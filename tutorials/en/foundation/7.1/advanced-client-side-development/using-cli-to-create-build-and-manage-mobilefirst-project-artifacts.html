@@ -36,7 +36,7 @@ The CLI Installer adds the installation folder to your <strong>path</strong> env
 <p>{% highlight xml %}<br />
 ~/projects $ mfp create MyProject<br />
 A MobileFirst project was successfully created at /Users/cli-user/projects/MyProject<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="managingServers">Managing MobileFirst Server instances</h2>
 <p>The instance of the Liberty development server is created in the default user directory. For example:<br />
 <code>/Users/cli-user/.ibm/mobilefirst/7.1.0.00-build-number/server</code>.</p>
@@ -76,7 +76,7 @@ To create a hybrid application, use the <code>mfp add hybrid <name></code> comma
 ~/projects $ cd MyProject<br />
 ~/projects/MyProject $ mfp add hybrid MyHybridApp<br />
 A new hybrid app was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Environments</h3>
 <p>Use the <code>mfp add environment</code> command to add an environment to the application. You can use this command in the project directory if the project contains only one app. Otherwise, select which app to add the environment to, or call the command from inside the directory of the hybrid app to which the environment should be added.</p>
 <p>{% highlight xml %}<br />
@@ -84,7 +84,7 @@ A new hybrid app was added at /Users/cli-user/projects/MyProject/apps/MyHybridAp
 [?] To which hybrid app would you want to add environments? (Use the arrow keys.)<br />
 ❯ MyHybridApp<br />
   OtherHybridApp<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>By using the <strong>Interactive Mode</strong>, you can select one or more environments to add:</p>
 <p>{% highlight xml %}<br />
 ~/projects/MyProject/apps/MyHybridApp $ mfp add environment<br />
@@ -97,13 +97,13 @@ A new hybrid app was added at /Users/cli-user/projects/MyProject/apps/MyHybridAp
  ⬡ Windows Phone Silverlight 8<br />
  ⬡ Windows Universal<br />
 (Move up and down to reveal more choices.)<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>To add environments in <strong>Direct Mode</strong>:</p>
 <p>{% highlight xml %}<br />
 ~/projects/MyProject $ mfp add environment iphone,android --app MyHybridApp<br />
 A new android environment was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp/android<br />
 A new iphone environment was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp/iphone<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Application skins</h3>
 <p>To add an application skin from the CLI, use the <code>mfp add skin</code> command.</p>
 <p><strong>Interactive Mode</strong> prompts for the platform to target and name. The current working directory must be under an existing hybrid application, and at least one environment must already be added to this app.</p>
@@ -114,9 +114,9 @@ A new iphone environment was added at /Users/cli-user/projects/MyProject/apps/My
   iPhone<br />
 [?] What do you want to be your skin name suffix? Your skin folder name will be 'platform.<em><suffix></em>'<br />
 A new android skin was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>To add a skin in <strong>Direct Mode</strong>:<br />
-{% highlight xml %}mfp add skin [--environment|-e android|blackberry|blackberry10|iphone|ipad &amp;lt;name&amp;gt;]{% endhighlight %</p>
+{% highlight xml %}mfp add skin [--environment|-e android|blackberry|blackberry10|iphone|ipad &amp;lt;name&amp;gt;]{% endhighlight %}</p>
 <h3>Adding optional features</h3>
 <p>To add optional features to a hybrid application from the CLI, use the <code>mfp add feature</code> command.</p>
 <p><strong>Interactive mode</strong> prompts for the features to add:<br />
@@ -127,13 +127,13 @@ A new android skin was added at /Users/cli-user/projects/MyProject/apps/MyHybrid
   IBM Tealeaf SDK<br />
 ❯ JSONStore</p>
 <p>A new JSONstore feature was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>In <strong>Direct Mode</strong>, you explicitly mention the feature:<br />
 {% highlight xml %}<br />
 ~/projects/MyProject $ cd apps/MyHybridApp/<br />
 ~/projects/MyProject/apps/MyHybridApp $ mfp add feature jsonstore<br />
 A new JSONStore feature was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>To remove optional features from a hybrid application by using the CLI, use the <code>mfp remove feature</code> command.<br />
 <strong>Interactive mode</strong> prompts for the features to remove:</p>
 <p>{% highlight xml %}<br />
@@ -141,20 +141,20 @@ A new JSONStore feature was added at /Users/cli-user/projects/MyProject/apps/MyH
 [?] What feature do you want to uninstall from this application? NOTE: Features you have already uninstalled are not shown: (Use arrow keys)<br />
 ❯ JSONStore<br />
 A JSONStore feature was removed from /Users/cli-user/projects/MyProject/apps/MyHybridApp<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>In <strong>Direct Mode</strong> you explicitly mention the feature:<br />
-{% highlight xml %}mfp remove feature [fips|jsonstore|tealeaf]{% endhighlight %</p>
+{% highlight xml %}mfp remove feature [fips|jsonstore|tealeaf]{% endhighlight %}</p>
 <h3>Concatenation and minification</h3>
 <p>Applicable only for hybrid applications.</p>
 <p>Concatenation is the process of merging web resources such as <code>.js</code> and <code>.css</code> files to reduce the amount of files in the application, while minification is process of <em>obfuscating</em> code, making it less readable and more secure.</p>
 <p>To concatenate the web resources of a hybrid application, run the command:<br />
 {% highlight xml %}<br />
 ~/projects/MyProject/apps/MyHybridApp $ mfp push --concatenate|-c<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>To minify the web resources of a hybrid application, run the command:<br />
 {% highlight xml %}<br />
 ~/projects/MyProject/apps/MyHybridApp $ mfp push --minify|-m<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="addingNativeSDK">Adding MobileFirst Native SDKs</h2>
 <p>The MobileFirst Native SDK is available for the following environments: iOS, Android, Windows Universal, and Windows Phone Silverlight.<br />
 Adding the Native SDK is possible by using either locally generated artifacts or CocoaPods and Gradle specifically for iOS and Android respectively.</p>
@@ -165,7 +165,7 @@ This "app" is used in the server as a way to identify the client application.
 <li>
 If you choose to add the Native SDK by using CocoaPods or Gradle, first follow the tutorials in the <a href="../../hello-world/"> Hello World</a> category.</li>
 <p>After the SDK is added, navigate to the root of the native project and run the command: <code>mfp push</code>.<br />
-{% highlight xml %}~/projects/myNativeiOSProject $ mfp push{% endhighlight %</p>
+{% highlight xml %}~/projects/myNativeiOSProject $ mfp push{% endhighlight %}</p>
 <p>Depending on the native project, different artifacts are created:
 </ul>
 <ul>
@@ -185,13 +185,13 @@ Run <code>mfp push --nosend|-n</code> to create the artifacts without also regis
 [?] Create procedures for offline JSONStore? No<br />
 [?] Create procedures for USSD enablement? No<br />
 A new HTTP adapter was added at /Users/cli-user/projects/MyProject/adapters/MyHttpAdapter<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><strong>Direct Mode</strong>:<br />
 <code>mfp adapter add --type http <adapter-name></code>, or <code>-t</code> for type. The types of adapters that can be added are HTTP, SQL, Cast Iron, SAP Netweaver Gateway, JMS, SAP Jco, and Java.</p>
 <p>{% highlight xml %}<br />
 ~/projects/MyProject $ mfp adapter add --type http TestAdapter<br />
 A new http adapter was added at /Users/cli-user/projects/MyProject/adapters/TestAdapter<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Calling an adapter</h3>
 <p>Use <code>mfp adapter call</code> for <strong>Interactive Mode</strong>:</p>
 <p>{% highlight xml %}<br />
@@ -214,7 +214,7 @@ A new http adapter was added at /Users/cli-user/projects/MyProject/adapters/Test
       "title": "CNN.com - World",<br />
       "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",<br />
 ...<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Or to call an adapter in <strong>Direct Mode</strong>:<br />
 <code>mfp invoke [<adapter>:<procedure>[\"<json array>\"| --file|-f <path-to-json-array-file>]]</code></p>
 <p>{% highlight xml %}<br />
@@ -231,7 +231,7 @@ A new http adapter was added at /Users/cli-user/projects/MyProject/adapters/Test
       "title": "CNN.com - World",<br />
       "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",<br />
 ...<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="importExport">Exporting and importing MobileFirst projects</h2>
 <h3>Exporting</h3>
 <p>By using the <code>export</code> command, you can create a compressed file, which contains the entire MobileFirst project, or the optimized hybrid assets to use in a native application.</p>
@@ -243,13 +243,13 @@ The resulting compressed file is intended to be shared with other MobileFirst de
 [?] Where do you want to export the project? /Users/cli-user/Desktop<br />
 [?] What do you want to name your zip project? MyProject<br />
 Project successfully exported to /Users/cli-user/Desktop/MyProject.zip<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><strong>Exporting a project in Direct Mode</strong><br />
 <code>mfp export [<path-to-zip-file>]</code> - If run from the root folder of the project, direct mode takes one additional argument, which is the full path to the compressed file to create.</p>
 <p>{% highlight xml %}<br />
 ~/projects/MyProject $ mfp export /Users/cli-user/Documents/MyProject.zip<br />
 Project successfully exported to /Users/cli-user/Documents/MyProject.zip<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><strong>Exporting hybrid assets in Interactive Mode</strong></p>
 <ol>
 <li>First run the <code>mfp build</code> command to make sure that the app is built.
@@ -263,13 +263,13 @@ The native libraries are built files. Native application IDEs need to ensure tha
 [?] Where do you want to export the project? /Users/cli-user/Documents<br />
 [?] What do you want to name your zip project? MyiOSHybridApp<br />
 Project successfully exported to /Users/cli-user/Documents/MyiOSHybridApp.zip<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><strong>Exporting hybrid assets in Direct Mode</strong><br />
 <code>mfp export [<path-to-zip-file>] [-i | --includeNativeLibs]</code> - In direct mode, provide the full path to export hybrid assets. If the arguments <code>-i</code> or <code>--includeNativeLibs</code> are supplied, the native libraries are included.</p>
 <p>{% highlight xml %}<br />
 ~/projects/MyProject/apps/MyHybridApp/iphone $ mfp export /Users/cli-user/Documents/MyiOSHybridApp.zip -i<br />
 Project successfully exported to /Users/cli-user/Documents/MyiOSHybridApp.zip<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Importing CLI-generated projects into MobileFirst Studio</h3>
 <ol>
 <li>From Eclipse, select <strong>File > Import > General > Existing Projects into Workspace</strong> and click <strong>Next</strong>.</li>

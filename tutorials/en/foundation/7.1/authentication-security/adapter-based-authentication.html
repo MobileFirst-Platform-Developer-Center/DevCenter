@@ -24,7 +24,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
       <parameter name="login-function" value="AuthAdapter.onAuthRequired"/><br />
       <parameter name="logout-function" value="AuthAdapter.onLogout"/><br />
   </realm><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>This realm uses the <code>AuthLoginModule</code> login module, which is defined in the <a href="#loginmodule">LoginModule</a> section.<br />
 Using the <code>com.worklight.integration.auth.AdapterAuthenticator</code> class means that the server-side part of the authenticator is defined in the adapter.<br />
 Whenever the MobileFirst authentication framework detects an attempt to access a protected resource, an adapter function that is defined in a <code>login-function</code> parameter is called automatically.<br />
@@ -36,7 +36,7 @@ In both cases, the parameter value syntax is <code>adapterName.functionName</cod
 <loginModule name="AuthLoginModule"><br />
     <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
 </loginModule><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Using a <code>NonValidatingLoginModule</code> class name means that no additional validation is performed by the MobileFirst platform, and the developer takes responsibility for the validation of credentials within the adapter.<br />
 Because all authentication-related actions are done in the adapter code, using <code>NonValidatingLoginModule</code> is mandatory for adapter-based authentication.</p>
 <h3>Security tests</h3>
@@ -48,7 +48,7 @@ Remember the security test names. You must use them in subsequent steps.<br />
   <customSecurityTest name="AuthSecurityTest"><br />
       <test isInternalUserID="true" realm="AuthRealm"/><br />
   </customSecurityTest><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="serverside">Creating the server-side authentication components</h2>
 <p>The following diagram illustrates the adapter-based authentication process:</p>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_05_flow_diagram.jpg"><img src="{{ site.baseurl }}/assets/backup/09_05_flow_diagram.jpg" alt="09_05_flow_diagram" width="720" height="521" class="aligncenter size-full wp-image-15621" /></a></p>
@@ -57,7 +57,7 @@ Remember the security test names. You must use them in subsequent steps.<br />
 This adapter includes the following procedure:</p>
 <p>{% highlight xml %}<br />
 <procedure name="submitAuthentication" securityTest="wl_unprotected"/><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>submitAuthentication</code> procedure takes care of the authentication process. Note that when the challenge handler invokes the <code>submitAuthentication</code> call, it is responsible for handling all the possible responses. In particular, if the <code>submitAuthentication</code> call returns a challenge, it is passed to the invocation callback, and is not processed by the security framework.<br />
 <br />
 Note: It is required for the "submit" procedure to be unprotected by using the <code>wl_unprotected</code> security test.<br />
@@ -73,7 +73,7 @@ function onAuthRequired(headers, errorMessage){<br />
         errorMessage: errorMessage<br />
     };<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The returned object is a <em>custom</em> challenge object that is sent to the application.<br />
 This function receives the request headers and an optional <code>errorMessage</code> parameter. The object that is returned by this function is sent to the client application.<br />
 <strong>Note:</strong> In the sample, the <code>authRequired:true</code> property in the challenge handler detects that the server is requesting authentication.</p>
@@ -96,7 +96,7 @@ function submitAuthentication(username, password){<br />
     }</p>
 <p>    return onAuthRequired(null, "Invalid login credentials");<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The user name and password are received from the application as parameters. In this sample, the credentials are validated against some hardcoded values, but any other validation mode is valid, for example by using SQL or web services.<br />
 If the validation passed successfully, the <code>WL.Server.setActiveUser</code> method is called to create an authenticated session for the <code>AuthRealm</code>, with user data stored in a <code>userIdentity</code> object. You can add your own custom properties to the user identity attributes.<br />
 An object (<code>{authRequired: false}</code>) is sent to the application, stating that the authentication screen is no longer required.<br />
@@ -107,12 +107,12 @@ If credentials validation fails, an object that is built by the <code>onAuthRequ
 function onLogout(){<br />
     WL.Logger.debug("Logged out");<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="protectJsAdapt">Protecting a Javascript adapter</h2>
 <p>Create a new adapter or add the following procedure to the XML code of your existing adapter:<br />
 {% highlight xml %}<br />
 <procedure name="getSecretData" securityTest="AuthSecurityTest"/><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>For training purposes, the <code>getSecretData</code> function returns a hardcoded value. Keep in mind that <code>getSecretData</code> is protected by a security test, as defined in the adapter XML.</p>
 <p>{% highlight javascript %}<br />
 function getSecretData(){<br />
@@ -120,7 +120,7 @@ function getSecretData(){<br />
         secretData: "Very very very very secret data"<br />
     };<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="protectJavaAdapt">Protecting a Java adapter</h2>
 <p>The adapter responsible for authenticating the user needs to be a JavaScript-based adapter. However, you can still use adapter-based authentication to protect other resources such as Java adapters.</p>
 <ol>
@@ -134,12 +134,12 @@ function getSecretData(){<br />
 		result.put("secretData", "123456");</p>
 <p>		return result;<br />
 	}<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>To set our new realm as the default user identity for the application, add this option in the application descriptor:<br />
 {% highlight xml %}<br />
 <userIdentityRealms>AuthRealm</userIdentityRealms><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <blockquote><p>To learn more about application descriptor properties, see the user documentation.</p></blockquote>

@@ -54,7 +54,7 @@ The following table shows which browsers support web storage for mobile devices.
 function onOpenComplete(status){<br />
     busyIndicator.hide();<br />
     alert("Encrypted cache succesfully opened");<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p><strong>Note:</strong> Before you create a new encrypted cache, make sure that the application can connect to the MobileFirst Server instance.</p>
 <p>A callback function can receive one of the following statuses:</p>
 <ul>
@@ -92,7 +92,7 @@ function onOpenComplete(status){<br />
         default:<br />
             alert("AN ERROR HAS OCCURED. STATUS :: " + status);<br />
     }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h2 id="reading">Reading, writing, and removing data by using encrypted cache</h2>
 <p>When the encrypted cache is open, operations such as reading, writing, and removing data can be performed.</p>
 <h3>Storing data</h3>
@@ -106,7 +106,7 @@ function onWriteSuccess(status){<br />
 function onWriteFailure(status){<br />
     if (status == WL.EncryptedCache.ERROR_EOC_CLOSED)<br />
         alert("Encrypted cache closed, write failed. error code= "+ status);<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h3>Reading data</h3>
 <p>To read data from the encrypted cache, use the following API:<br />
 <code>WL.EncryptedCache.read(key, onSuccess, onFailure);</code></p>
@@ -117,7 +117,7 @@ function onDecryptReadSuccess(value){<br />
 }<br />
 function onDecryptReadFailure(status){<br />
     alert("Encrypted cache closed, reading failed");<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h3>Removing data</h3>
 <p>To remove data from the encrypted cache, use the following API:</p>
 <p><code>WL.EncryptedCache.remove(key, onSuccess, onFailure);</code></p>
@@ -128,7 +128,7 @@ function onRemoveSuccess(status){<br />
 }<br />
 function onRemoveFailure(status){<br />
     alert("Encrypted cache closed, remove failed");<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h2 id="closing">Closing and destroying encrypted cache</h2>
 <p>To avoid possible unwanted access to encrypted cache, close it.<br />
 After an encrypted cache is closed, access to its data is not possible without the encryption key that was used to create it.</p>
@@ -144,7 +144,7 @@ function onDestroyCompleteHandler(status){<br />
 }<br />
 function onDestroyErrorHandler(status){<br />
     alert("Error destroying Encrypted cache");<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h2 id="changingKey">Changing the encryption key</h2>
 <p>While encrypted cache is in the open state, you can change the encryption key.<br />
 To do so, use the following API:</p>

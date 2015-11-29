@@ -45,7 +45,7 @@ Developers can easily create their own protocol between internal web components 
 public class IncludeExternalPages extends CordovaActivity implements WLInitWebFrameworkListener {<br />
     private static WebView webViewOverlay;<br />
     public static Activity thisapp;<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>The object is created, its layout properties are set, and it is added as a view to the root element. It is invisible initially. The <code>setMargins</code> method positions the <code>webViewOverlay</code> component in the screen.
 <p><strong>Note:</strong> Android 4.4 introduces a new version of <code>WebView</code> that is based on Chromium and affects the <code>WebView</code> margins. For more information about this issue, see <a href="http://developer.android.com/guide/webapps/migrating.html" target="_blank">Migrating to WebView in Android 4.4</a>.</p>
@@ -73,7 +73,7 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
             webViewOverlay.getSettings().setJavaScriptEnabled(true);<br />
         …<br />
         …<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li> A <code>RelativeLayout</code> object is created.
 <ul>
 <li>The <code>RelativeLayout</code> object works as a root layout.</li>
@@ -90,7 +90,7 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
     rootRelativeLayout.addView(webViewOverlay);<br />
     setContentView(rootRelativeLayout);<br />
      …<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h3>Implementing the Java code of the Cordova plug-in</h3>
@@ -101,7 +101,7 @@ public class WebViewOverlayPlugin extends CordovaPlugin {<br />
     private final String ACTION_OPEN_URL = "open";<br />
     private final String ACTION_CLOSE_WEBVIEWOVERLAY = "close";<br />
     …<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>If an <code>open</code> request is received from the web part of the application, the external content is loaded and makes the <code>webViewOverlay</code> visible.
 <p>{% highlight java %}<br />
 public class WebViewOverlayPlugin extends CordovaPlugin {<br />
@@ -119,7 +119,7 @@ IncludeExternalPages.clearWebViewOverlayHistory();<br />
 }<br />
 });<br />
 return true;<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>If a <code>close</code> request is received from the web part of the application, the <code>webViewOverlay</code> is cleaned up and hidden.<br />
 UI-related actions occur on a dedicated UI thread.<br />
 {% highlight java %}<br />
@@ -139,7 +139,7 @@ public class WebViewOverlayPlugin extends CordovaPlugin {<br />
         return false;<br />
     }<br />
 }<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 </ol>
 <h2 id="js">JavaScript implementation</h2>
 <p>In JavaScript, the sample implements the page integration as follows.</p>
@@ -154,7 +154,7 @@ WebViewOverlayPlugin.prototype.close = function() {<br />
     cordova.exec(null, null, 'WebViewOverlayPlugin', 'close', []);<br />
 };<br />
 window.webViewOverlay = new WebViewOverlayPlugin();<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>The clicked tab ID is analyzed and either shows or hides the <code>webViewOverlay</code> accordingly.<br />
 Loading external content can take time, so adding a Busy Indicator to improve the user experience should be considered.</p>
 <p>{% highlight javascript %}<br />
@@ -176,7 +176,7 @@ function tabClicked(id){<br />
     WL.Logger.debug("closeWebViewOverlay");<br />
     window.webViewOverlay.close();<br />
 }<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 </ol>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/IncludeExternalPages">Click to download</a> the MobileFirst project.</p>

@@ -68,7 +68,7 @@ You can use either the <strong>Design</strong> or <strong>Source</strong> editor
 <p>  <procedure name="getStories"/></p>
 <p>  <procedure name="getStoriesFiltered"/></p>
 <p></wl:adapter><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="javaScriptImplementation">JavaScript implementation</h2>
 <p>Procedures are implemented in the adapter JavaScript file.<br />
 The service URL is used for procedure invocations.</p>
@@ -95,7 +95,7 @@ function getFeeds() {<br />
   };</p>
 <p>  return WL.Server.invokeHttp(input);<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>To call an HTTP request, use the <code>WL.Server.invokeHttp</code> method.<br />
 Provide an input parameter object, which must specify:</p>
 <ul>
@@ -125,7 +125,7 @@ function getFeedsFiltered() {</p>
   };</p>
 <p>  return WL.Server.invokeHttp(input);<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="creatingSoapServiceRequest">Creating a SOAP-based service request</h2>
 <p>You can use the <code>WL.Server.invokeHttp</code> method to create a <strong>SOAP</strong> envelope, which can be sent directly.</p>
 <p>To call a SOAP-based service in an HTTP adapter, you must encode the SOAP XML envelope within the request body.<br />
@@ -142,7 +142,7 @@ var request =<br />
       </CelsiusToFahrenheit><br />
     </soap:Body><br />
   </soap:Envelope>;</p>
-<p>{% endhighlight %</p>
+<p>{% endhighlight %}</p>
 <p>The<code> WL.Server.invokeHttp(options)</code> method is used to call a request for a SOAP service.</p>
 <p>The Options object must include the following properties:</p>
 <ul>
@@ -162,7 +162,7 @@ var input = {<br />
       },<br />
   };</p>
 <p>  var result = WL.Server.invokeHttp(input);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="servicesDiscoveryWizard">Services discovery wizard</h2>
 <p>With MobileFirst Studio, you can reduce development time by using the Discover Back-end Services tool in order to autogenerate adapters from the following services:</p>
 <ul>

@@ -51,13 +51,13 @@ relevantTo: [hybrid]
 <loginModule name="StrongDummy" expirationInSeconds="1800"><br />
      <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
 </loginModule><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>If you want to configure a realm called <code>SampleAppRealm</code> that is associated with <code>StrongDummy</code>, edit the <code>authenticationConfig.xml</code> file in the realm section as follows:</p>
 <p>{% highlight xml %}<br />
 <realm name="SampleAppRealm" loginModule="StrongDummy"><br />
 	<className>com.worklight.core.auth.ext.FormBasedAuthenticator</className><br />
 </realm><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="mobilefirst_configuration_keystore">Configuring MobileFirst Server to use a keystore</h2>
 <p>To use this feature, preferably use or create your own keystore and configure MobileFirst Server to use it.</p>
 <p>For an example in an unrelated context, see the topic about configuring device auto provisioning, in the product documentation.</p>
@@ -106,7 +106,7 @@ where <code>URL_to_authorization_server</code> is:<br />
    <description>This is the role that MFP OAuthTAI uses to protect the resource, and it is required to be mapped to 'All Authenticated in Application' in WAS and 'ALL_AUTHENTICATED_USERS' in Liberty</description><br />
    <role-name>TAIUserRole</role-name><br />
 </security-role><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>You must modify the external server <code>server.xml</code> file, too. Configure the feature manager to include these features:<br />
 {% highlight xml %}<br />
@@ -117,7 +117,7 @@ where <code>URL_to_authorization_server</code> is:<br />
    <feature>servlet-3.0</feature><br />
    <feature>jndi-1.0</feature><br />
 </featureManager><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>In your application, add a security role:<br />
 {% highlight xml %}<br />
@@ -129,14 +129,14 @@ where <code>URL_to_authorization_server</code> is:<br />
       </security-role><br />
    </application-bnd><br />
 </application><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Configure OAuthTAI, where you set which URLs are to be protected:<br />
 {% highlight xml %}<br />
 <usr_OAuthTAI id="myOAuthTAI"><br />
    <securityconstraint httpMethods="GET POST" scope="SampleAppRealm" securedURLs="/REST-Server/api/protected"></securityconstraint><br />
 </usr_OAuthTAI><br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The scopes that you provide are all defined in the <code>authenticationConfig.xml</code> file of the MobileFirst Project. You can provide multiple scopes.
 </li>
 </ol>
@@ -164,7 +164,7 @@ function callProtectedRestAPI() {<br />
 			}<br />
 	);<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="reporting_analytics">Reporting analytics</h2>
 <h3>Java</h3>
 <p>The <strong>TAI</strong> library is capable of reporting analytic events to IBM MobileFirst Platform Operational Analytics. To do this, you must configure the Resource Server that contains the <strong>TAI</strong> with your Analytics URL and credentials.</p>
@@ -176,7 +176,7 @@ function callProtectedRestAPI() {<br />
 <li>If your Resource Server is running on Liberty, you must configure these properties by using JNDI. You can do this by adding entries to your <code>server.xml</code> file. For example:
 <p>[code]<br />
 <jndiEntry jndiName="imf.analytics.username" value="admin"/><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>If your Resource Server is running on WebSphere Application Server, configure these properties as environment entries.<br />
 To do this, navigate from the WebSphere Application Server administration console to <strong>Servers > Server Type > WebSphere application servers</strong> > <em>{your_server}</em> > <strong>Server Infrastructure</strong> > <strong>Java and Process Management</strong> > <strong>Process Definition</strong> > <strong>Additional Properties</strong> > <strong>Environment Entries</strong> > <strong>New</strong>.<br />
@@ -210,7 +210,7 @@ This is where you had to set <code>publicKeyServerUrl</code> when you set up OAu
             }<br />
         );</p>
 <p>    app.listen(3000);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>To start this example, issue the following commands:<br />
 <code><br />
 $ npm install express<br />

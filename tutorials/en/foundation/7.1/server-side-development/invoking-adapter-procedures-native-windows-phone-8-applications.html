@@ -19,19 +19,19 @@ This tutorial explains how to use the <code>WLResourceRequest</code> API with an
 <h2 id="initialize">Initializing WLClient</h2>
 <p>{% highlight csharp %}<br />
 WLClient client = WLClient.getInstance();<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ol>
 <li>To establish a connection to MobileFirst Server, use the <code>connect</code> method by specifying the <code>MyConnectResponseListener</code> class instance as a parameter.<br />
 {% highlight csharp %}<br />
 client.connect(new MyConnectResponseListener(this));<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server instance according to the properties of the <code>wlclient.properties</code> file.<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectResponseListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectResponseListener</code> class implements the <code>WLResponseListener</code> interface.
 <p>{% highlight csharp %}<br />
 public class MyConnectResponseListener : WLResponseListener<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>WLResponseListener</code> interface defines two methods:</p>
 <ul>
 <li><code>public void </code><code>onSuccess (WLResponse response) { }</code></li>
@@ -58,7 +58,7 @@ String myContextObject = "InvokingAdapterProceduresWP8";<br />
 WLRequestOptions options = new WLRequestOptions();<br />
 options.setInvocationContext(myContextObject);<br />
 WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="response">Receiving a procedure response</h2>
@@ -70,7 +70,7 @@ namespace InvokingAdapterProceduresWP8{<br />
   public class MyInvokeListener : WLResponseListener<br />
     { }<br />
 {<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>onSuccess</code> and <code>onFailure</code> methods are invoked by the <code>WLClient</code>. The response object contains the response data. You can use its methods and properties to retrieve the required information.</p>
 <p>{% highlight csharp %}<br />
 public void onSuccess(WLResponse response)<br />
@@ -100,7 +100,7 @@ public void onSuccess(WLResponse response)<br />
         myMainPage.AddTextToReceivedTextBlock("Response failed: " + response.ToString());<br />
     });<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures" target="_blank">Click to download</a> the MobileFirst project.</p>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresWP8" target="_blank">Click to download</a> the Native project.</p>

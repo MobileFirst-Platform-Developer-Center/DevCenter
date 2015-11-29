@@ -41,14 +41,14 @@ For more information, read the Cloudant <a href="https://docs.cloudant.com/authe
       <parameter name="login-function" value="AuthAdapter.onAuthRequired"/><br />
       <parameter name="logout-function" value="AuthAdapter.onLogout"/><br />
   </realm><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Security tests</h3>
 <p>Add a security test or replace the existing <code>AuthSecurityTest</code> in the <code>securityTests</code> section of the <code>authenticationConfig.xml</code> file:<br />
 {% highlight xml %}<br />
   <customSecurityTest name="TwoStepAuthAdapter-securityTest"><br />
       <test isInternalUserID="true" realm="TwoStepAuthRealm"/><br />
   </customSecurityTest><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <blockquote><p>To review the remaining/existing sample components, see the <a href="../../authentication-security/adapter-based-authentication/">Adapter-based authentication</a> tutorial.</p></blockquote>
 <h2 id="serverside">Creating the server-side authentication components</h2>
 <p>To put in place the Two-Step authentication process, several changes are necessary to the adapter file (whether XML or JavaScript) and to the database.</p>
@@ -57,12 +57,12 @@ For more information, read the Cloudant <a href="https://docs.cloudant.com/authe
 <ol>
 <li>Change the domain name to your Cloudant domain:<br />
 {% highlight xml %}<br />
-<domain>$USERNAME.cloudant.com</domain>{% endhighlight %
+<domain>$USERNAME.cloudant.com</domain>{% endhighlight %}
 </li>
 <li>Add the following procedure:
 <p>{% highlight xml %}<br />
 <procedure name="submitAuthenticationStep2" securityTest="wl_unprotected"/><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Protect the <code>getSecretData</code> method with the new <code>TwoStepAuthAdapter-securityTest<br />
 </code></li>
@@ -73,12 +73,12 @@ For more information, read the Cloudant <a href="https://docs.cloudant.com/authe
 <li>Create a variable to save the basic authentication encoded string you have generated before:<br />
 {% highlight js %}<br />
 var auth = "Basic REPLASE_ME_WITH_THE_BASE-64_ENCODED_STRING";;<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Create a variable to save your database name:<br />
 {% highlight js %}<br />
 var dbName = "REPLACE_ME_WITH_THE_DATABASE_NAME";<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Update the <code>onAuthRequired</code> function to return that authentication step 1 is required:<br />
 {% highlight js %}<br />
@@ -89,7 +89,7 @@ function onAuthRequired(headers, errorMessage){<br />
 		authStep: 1,<br />
 		errorMessage: errorMessage<br />
 	};<br />
-}{% endhighlight %</li>
+}{% endhighlight %}</li>
 <li>Update the <code>submitAuthenticationStep1</code> function:
 <ul>
 <li>Add the following line to get the client ID:<br />
@@ -103,7 +103,7 @@ function submitAuthenticationStep1(username, password){<br />
 				displayName: username,<br />
 				attributes: {}<br />
 		};<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>To save the <code>userIdentity</code> for the next authentication step, write it to the database. Use the <code>clientId</code> variable as the document <code>_id</code> key:<br />
 {% highlight js %}<br />
@@ -111,7 +111,7 @@ function submitAuthenticationStep1(username, password){<br />
 		var response = deleteUserIdentityFromDB(dbName, null);</p>
 <p>		//Write ClientId to DB<br />
 		var response = writeUserIdentityToDB(dbName, {_id:clientId, "userIdentity":userIdentity});<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>If step 1 authentication was successful, return that step 2 is required:<br />
 {% highlight js %}<br />
@@ -130,7 +130,7 @@ function submitAuthenticationStep1(username, password){<br />
 		return onAuthRequired(null, "Invalid login credentials");<br />
 	}<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 </li>
@@ -141,7 +141,7 @@ function submitAuthenticationStep1(username, password){<br />
 function submitAuthenticationStep2(answer){<br />
 	var clientId = WL.Server.getClientId();<br />
 	var response = readUserIdentityFromDB(dbName, clientId);<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>If step 2 authentication was successful, delete the client document from database:<br />
 {% highlight js %}<br />
@@ -165,7 +165,7 @@ function submitAuthenticationStep2(answer){<br />
 		return onAuthRequired(null, "Database ERROR");<br />
 	}</p>
 <p>}<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 </li>
@@ -195,7 +195,7 @@ function writeUserIdentityToDB(db, document){<br />
 		 }<br />
 		 return null;<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Read from database:<br />
 {% highlight js %}<br />
@@ -216,7 +216,7 @@ function readUserIdentityFromDB(db, key){<br />
 	 }<br />
 	 return null;<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Delete from the database:<br />
 {% highlight js %}<br />
@@ -243,7 +243,7 @@ function deleteUserIdentityFromDB(db, document){<br />
 		    };<br />
 	 return WL.Server.invokeHttp(input);<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 <blockquote><p>To learn more about IBM Cloudant REST API, see the Cloudant documentation.</p></blockquote>
@@ -256,7 +256,7 @@ function deleteUserIdentityFromDB(db, document){<br />
       <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('TwoStepAuthRealm', {onSuccess:WL.Client.reloadApp})" /><br />
       <div id="ResponseDiv"></div><br />
 </div><br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Add a second authentication screen:
 <p>{% highlight html %}<br />
 <div id="AuthStep2Div"><br />
@@ -264,7 +264,7 @@ function deleteUserIdentityFromDB(db, document){<br />
     <p id="AuthQuestion"></p><br />
     <input type="text" placeholder="Enter answer" id="AuthAnswer"/><br /><br />
     <input type="button" class="formButton" value="Submit" id="AuthStep2Submit" /><input type="button" class="AuthCancelButton" value="Cancel" /><br />
-</div>{% endhighlight %</li>
+</div>{% endhighlight %}</li>
 <li>Finally, update the challenge handler accordingly.<br />
 In this example, a new challenge handler (a new <code>.js</code> file), called <code>TwoStepAuthRealmChallengeProcessor.js</code>, is created for this purpose.</p>
 <ul>
@@ -280,7 +280,7 @@ var TwoStepAuthRealmChallengeHandler = WL.Client.createChallengeHandler("TwoStep
 	} else {<br />
 		return false;<br />
 	}<br />
-};{% endhighlight %</li>
+};{% endhighlight %}</li>
 <li>Add another case for the second authentication step:<br />
 {% highlight js %}<br />
 TwoStepAuthRealmChallengeHandler.handleChallenge = function(response){<br />
@@ -309,7 +309,7 @@ TwoStepAuthRealmChallengeHandler.handleChallenge = function(response){<br />
 		$("#AuthDiv").hide();<br />
 		TwoStepAuthRealmChallengeHandler.submitSuccess();<br />
 	}<br />
-};{% endhighlight %</li>
+};{% endhighlight %}</li>
 <li>Perform the second authentication step:<br />
 {% highlight js %}<br />
 $("#AuthStep1Submit").bind('click', function () {<br />
@@ -336,7 +336,7 @@ $("#AuthStep1Submit").bind('click', function () {<br />
 	$("#AuthDiv").hide();<br />
 	TwoStepAuthRealmChallengeHandler.submitFailure();<br />
 });<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 </ul>
 </li>
 </ol>

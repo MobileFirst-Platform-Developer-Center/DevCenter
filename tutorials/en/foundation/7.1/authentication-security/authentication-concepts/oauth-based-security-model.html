@@ -79,7 +79,7 @@ A scope is a list of realm names - the realms that the user must authenticate ag
     <className>com.worklight.core.auth.ext.HeaderAuthenticator</className><br />
   </realm><br />
 </realms><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Each login module takes a name, a login module implementation, and optional parameters.</p>
 <p>{% highlight xml %}<br />
 <loginModules><br />
@@ -93,13 +93,13 @@ A scope is a list of realm names - the realms that the user must authenticate ag
     <className>com.worklight.core.auth.ext.RejectingLoginModule</className><br />
   </loginModule><br />
 </loginModules><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>User Identity</h3>
 <p>Although user authorization can include authorization with several realms, only one of these realms is defined as the <em>user identity realm</em>, and that realm determines the user identity. In an OAuth-based flow, the user identity realm is set according to the <code>userIdentityRealms</code> definition in the <strong>application descriptor</strong>. This is the user identity that will appear in the Devices tab of the console.</p>
 <p><strong>Note:</strong> In the classic (pre-V7.0) flows, the user identity realm is selected according to the definition in the security test. In OAuth-based flows, information about the user identity, which is set by the <code>userIdentityRealms</code> attribute, is part of the data contained in the ID token.</p>
 <p>{% highlight xml %}<br />
 <userIdentityRealms>SampleAppRealm</userIdentityRealms><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="protectAdapt">Protecting adapters</h2>
 <h3>Java adapters</h3>
 <p>MobileFirst Java adapters come ready with OAuth capabilities. See <a href="../../../server-side-development/java-adapter/" title="Java Adapter">Java Adapters</a>.</p>
@@ -111,7 +111,7 @@ A scope is a list of realm names - the realms that the user must authenticate ag
     public void deleteUser(@PathParam("userId") String userId){<br />
         ...<br />
     }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>In this example, the <code>deleteUser</code> procedure uses the annotation <code>@OAuthSecurity(scope="adminRealm")</code>, which means that it is protected by a scope containing the realm <code>adminRealm</code>.</p>
 <p>A scope can be made of several realms, space-separated: <code>@OAuthSecurity(scope="realm1 realm2 realm3")</code>.</p>
 <p>If you do not specify the <code>@OAuthSecurity</code> annotation, the procedure is protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security test protecting the application also applies here.</p>

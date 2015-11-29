@@ -57,12 +57,12 @@ You can use either the Design or the Source editor in the Studio, or use your fa
       </dataSourceDefinition><br />
     </connectionPolicy><br />
   </connectivity><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 </li>
 <li>Declare a procedure in the adapter XML file.
 <p>{% highlight xml %}<br />
 <procedure name="getAccountTransactions1"/><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="jsImpl">JavaScript implementation file</h2>
@@ -86,7 +86,7 @@ var getAccountsTransactionsStatement = WL.Server.createSQLStatement(<br />
   "ORDER BY transactionDate DESC " +<br />
   "LIMIT 20;"<br />
 );<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Use the <code>WL.Server.invokeSQLStatement</code> method to call prepared queries.</li>
 <li>Return the result to the application or to another procedure.
@@ -98,7 +98,7 @@ function getAccountTransactions1(accountId){<br />
     parameters : [accountId, accountId]<br />
   });<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>To run a SQL stored procedure, use the <code>WL.Server.invokeSQLStoredProcedure</code> method.<br />
 Specify a SQL stored procedure name as an invocation parameter.</li>
@@ -112,7 +112,7 @@ function getAccountTransactions2(accountId){<br />
     parameters : [accountId]</p>
 <p>  });<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="results">Invocation Results</h2>
@@ -135,7 +135,7 @@ function getAccountTransactions2(accountId){<br />
     "transactionType": "ATM Withdrawal"<br />
   }]<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The result is retrieved as a JSON object.</p>
 <ul>
 <li>The <code>isSuccessful</code> property defines whether the invocation was successful.</li>

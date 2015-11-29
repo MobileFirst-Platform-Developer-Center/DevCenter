@@ -17,26 +17,26 @@ WL.Client.connect(<br />
     onFailure: failureCallback<br />
   }<br />
 );<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Objective-C</h3>
 <p>{% highlight objc %}<br />
 [[WLClient sharedInstance] wlConnectWithDelegate:myConnectListener];<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The <code>myConnectListener</code> argument is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 <h3>Swift</h3>
 <p>[code]<br />
 WLClient.sharedInstance().wlConnectWithDelegate(myConnectListener)<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The <code>myConnectListener</code> argument is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 <h3>Java</h3>
 <p>{% highlight java %}<br />
 WLClient.createInstance(this).connect(myConnectListener);<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The <code>myConnectListener</code> argument is an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 <h3>C#</h3>
 <p>{% highlight c-sharp %}<br />
 WLClient.getInstance().connect(myConnectListener);<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The <code>myConnectListener</code> argument is an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 <blockquote><p>For detailed examples of connecting to the MobileFirst Server, see the <a href="../../server-side-development/" title="Server-side development">Invoking adapter procedures</a> tutorials.</p></blockquote>
 <h2>When to use the <code>WL.Client.connect</code> API</h2>

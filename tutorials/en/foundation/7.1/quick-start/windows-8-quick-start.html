@@ -21,13 +21,13 @@ relevantTo: [windows8]
                 mfp create MyProject<br />
                 cd MyProject<br />
                 mfp add api MyWin8Universal -e windows8<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 <li>
 <h4>Add an HTTP adapter to the project.</h4>
 <p>                [code firstline="4" lang="shell"]<br />
                 mfp add adapter MyAdapter -t http<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -39,7 +39,7 @@ relevantTo: [windows8]
 <p>                [code firstline="5" lang="shell"]<br />
                 mfp start<br />
                 mfp push<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -63,7 +63,7 @@ WLResourceRequest request = new WLResourceRequest("/adapters/MyAdapter/getStorie
 request.setQueryParameter("params","technology");<br />
 MyInvokeListener listener = new MyInvokeListener();<br />
 request.send(listener);<br />
-{% endhighlight %
+{% endhighlight %}
             </li>
 </ul>
 </li>

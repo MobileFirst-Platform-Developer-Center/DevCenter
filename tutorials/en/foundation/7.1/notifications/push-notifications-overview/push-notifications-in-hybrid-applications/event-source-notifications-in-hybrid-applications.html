@@ -41,7 +41,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
     onDeviceSubscribe: 'deviceSubscribeFunc',<br />
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',<br />
     securityTest:'PushApplication-strong-mobile-securityTest'<br />
-});{% endhighlight %</p>
+});{% endhighlight %}</p>
 <ul>
 <li><strong><code>name</code></strong> – a name by which the event source is referenced.</li>
 <li><strong><code>onDeviceSubscribe</code></strong> – an adapter function that is invoked when the user subscription request is received.</li>
@@ -52,7 +52,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
 {% highlight js %}poll: {<br />
     interval: 3,<br />
     onPoll: 'getNotificationsFromBackend'<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <ul>
 <li><strong><code>poll</code></strong> – a method that is used for notification retrieval.<br />
 The following parameters are required:</p>
@@ -82,9 +82,9 @@ The following parameters are required:</p>
 <p>    return {<br />
         result: "Notification sent to user :: " + userId<br />
     };<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
-<p>{% highlight js %}function submitNotification(userId, notificationText) {{% endhighlight %</p>
+<p>{% highlight js %}function submitNotification(userId, notificationText) {{% endhighlight %}</p>
 <p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
 <p>{% highlight js %}{<br />
     userId: 'bjones',<br />
@@ -92,16 +92,16 @@ The following parameters are required:</p>
         customField: 3<br />
     },<br />
     getDeviceSubscriptions: function()[}<br />
-};{% endhighlight %</p>
+};{% endhighlight %}</p>
 <p>Next line:<br />
-{% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %</p>
+{% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
 {% highlight js %}if (userSubscription === null) {<br />
         return { result: "No subscription found for user :: " + userId };<br />
-    }{% endhighlight %</p>
+    }{% endhighlight %}</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
 {% highlight js %}var badgeDigit = 1;<br />
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %</p>
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %}</p>
 <ul>
 <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
 <li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (available only in iOS and Windows Phone).</li>
@@ -112,12 +112,12 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <p>{% highlight js %}<br />
 notification.MPNS.toast={};<br />
 notification.MPNS.toast.text1 = "Toast title";<br />
-notification.MPNS.toast.text2 = "Toast content";{% endhighlight %</p>
+notification.MPNS.toast.text2 = "Toast content";{% endhighlight %}</p>
 <blockquote><p>
 For more details refer to user documentation on WL.Server.createDefaultNotification API
 </p></blockquote>
 <p>The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.</p>
-<p>{% highlight js %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %</p>
+<p>{% highlight js %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h4>Several APIs exist for sending notifications:</h4>
 <ul>
@@ -135,7 +135,7 @@ For more details refer to user documentation on WL.Server.createDefaultNotificat
     alert("pushNotificationReceived invoked");<br />
     alert("props :: " + JSON.stringify(props));<br />
     alert("payload :: " + JSON.stringify(payload));<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>If the application was in background mode (or inactive) when the push notification arrived, this callback function is invoked when the application returns to the foreground.</p>
 <h2 id="sampleApplication">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotifications" target="_blank">Click to download</a> the MobileFirst project.</p>
@@ -148,14 +148,14 @@ For more details refer to user documentation on WL.Server.createDefaultNotificat
 {% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/submitNotification<br />
 [?] Enter the comma-separated parameters: "the-user-name", "hello!"<br />
-[?] How should the procedure be called? GET{% endhighlight %</li>
+[?] How should the procedure be called? GET{% endhighlight %}</li>
 <li>The sample application for this tutorial is also bundled with a back-end emulator which can be used to simulate push notification submissions by a back-end system. The source for the emulator is also bundled.
 <p>To use the back-end emulator: open the PushBackendEmulator folder in a command prompt/terminal and run the supplied JAR file by using the following syntax.</p>
-<p>[code]java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>{% endhighlight %</p>
+<p>[code]java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>{% endhighlight %}</p>
 <p><code>userId</code> is the user name that you used to log in to the sample application.<br />
 <code>contextRoot</code> is the context root of your MobileFirst project.</p>
 <h3>Example</h3>
-<p>[code]java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080{% endhighlight %</p>
+<p>[code]java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080{% endhighlight %}</p>
 <p>The back-end emulator tries to connect to a MobileFirst Server and call a <code>submitNotification()</code> adapter procedure. It outputs the invocation result to a command prompt console.</p>
 <h4>Success</h4>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_success.png"><img src="{{ site.baseurl }}/assets/backup/08_01_push_success-1024x136.png" alt="08_01_push_success" width="600" class="aligncenter size-large wp-image-1380" /></a></p>

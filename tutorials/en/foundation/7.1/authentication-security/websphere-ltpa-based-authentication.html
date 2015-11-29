@@ -118,7 +118,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
    <parameter name="login-page" value="/login.html"/><br />
    <parameter name="error-page" value="/loginError.html"/><br />
 </realm><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Optionally, include the <code>cookie-domain</code>, <code>cookie-name</code>, and <code>httponly-cookie</code> parameters. For more information, see the topic about the LTPA authenticator in the product documentation.
 </li>
@@ -128,7 +128,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 <loginModule name="WASLTPAModule"><br />
    <className>com.worklight.core.auth.ext.WebSphereLoginModule</className><br />
 </loginModule><br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 <strong>Note:</strong> The login module might already be uncommented.
 </li>
 <li>Add a security test to the <code>authenticationConfig.xml</code> as appropriate.
@@ -148,7 +148,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
       <testUser realm="WASLTPARealm"/><br />
    </mobileSecurityTest><br />
 </securityTest><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h3 id="option1">Additional steps for Option 1</h3>
@@ -169,7 +169,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
       </form><br />
    </body><br />
 </html><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <p></p>
@@ -186,7 +186,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
       Login invalid.<br />
    </body><br />
 </html><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <p></p>
@@ -224,7 +224,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
       <form-error-page>/loginError.html</form-error-page><br />
    </form-login-config><br />
 </login-config><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h3 id="signCA">Optional steps for protecting the MobileFirst Operations Console</h3>
@@ -238,7 +238,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
       <urlPatterns>/console*</urlPatterns><br />
    </resource><br />
 </staticResources><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Add a <code><customSecurityTest></code> element to your existing security test:<br />
 {% highlight xml %}<br />
@@ -247,7 +247,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
       <test realm="WASLTPARealm" isInternalUserID="true"/><br />
    </customSecurityTest><br />
 </securityTests><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="clientSide">Creating client-side authentication components</h2>
@@ -255,7 +255,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 To implement security for an app, follow the same methods as for any other type of realm, and then configure the challenge handler to use your realm:<br />
 {% highlight javascript %}<br />
 var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler("WASLTPARealm");<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ol>
 <li>In the <code>applicationDescriptor.xml</code> file, specify the security test that your app must use for the appropriate environments.<br />
 For example:<br />
@@ -264,7 +264,7 @@ For example:<br />
 <android version="1.0" securityTest="WAS-securityTest"><br />
    <pushSender key= "keyTest" senderId="senderIdTest"/><br />
 </android><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Deploy and test the application by using <a href="#option2">Option 2</a>. The authentication process requires a valid user name and password from the underlying user registry against which the WebSphere Application Server is configured. When authentication is successful, the MobileFirst app is authenticated.
 </li>

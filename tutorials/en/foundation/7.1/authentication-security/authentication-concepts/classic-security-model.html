@@ -97,7 +97,7 @@ Protecting a resource with <strong>Security test2</strong> means the user must a
     <className>com.worklight.core.auth.ext.HeaderAuthenticator</className><br />
   </realm><br />
 </realms><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Each login module has a name, a <strong><code>className</code></strong> of the implementation and optional parameters.</p>
 <p>{% highlight xml %}<br />
 <loginModules><br />
@@ -111,7 +111,7 @@ Protecting a resource with <strong>Security test2</strong> means the user must a
     <className>com.worklight.core.auth.ext.RejectingLoginModule</className><br />
   </loginModule><br />
 </loginModules><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="security">Defining security tests</h2>
 <p>With IBM MobileFirst Platform Foundation, you can set up multiple realms for a security test.</p>
 <p>As part of the security test setup, you must set which realms are considered a <strong>user realm</strong> and which are considered a <strong>device realm</strong>.<br />
@@ -134,7 +134,7 @@ This realm is considered a <strong>user realm</strong>.</p>
 <webSecurityTest name="SampleWebSecurityTest"><br />
   <testUser realm="SampleRealm" /><br />
 </webSecurityTest><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>mobileSecurityTest</h3>
 <p>Use the <strong>mobileSecurityTest</strong> to protect mobile applications.<br />
 By default, the <strong>mobileSecurityTest</strong> includes:</p>
@@ -149,7 +149,7 @@ This realm is considered a <strong>user realm</strong>.</p>
 <mobileSecurityTest name="SampleMobileSecurityTest"><br />
   <testUser realm="SampleRealm" /><br />
 </mobileSecurityTest><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>customSecurityTest</h3>
 <p>Use the <strong>customSecurityTest</strong> to dictate your own security preferences.<br />
 Unlike the mobile and web security tests, the <strong>customSecurityTest</strong> does not include any predefined authentication realms. It includes only the tests that are defined by the developer.<br />
@@ -162,7 +162,7 @@ You can define the order of realms that the user must authenticate in.</p>
   <test realm="SampleRealm2" step="2"/><br />
   <test realm="SampleRealm3" step="3" isInternalUserID="true"/><br />
 </webSecurityTest><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="protectApp">Protecting applications</h2>
 <p>Protecting an application means that authentication is required immediately when the application tries to connect to the MobileFirst Server instance.</p>
 <p>A separate <strong>securityTest</strong> can be defined for each application environment in the <code>application-descriptor.xml</code> file.</p>
@@ -170,7 +170,7 @@ You can define the order of realms that the user must authenticate in.</p>
 <android version="1.0" securityTest="SampleMobileSecurityTest"><br />
   ...<br />
 </android><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>If no security test is defined for a specific environment, only a minimal set of default platform tests are carried out.</p>
 <h2 id="protectAdapters">Protecting adapters</h2>
 <p>Protecting an adapter procedure means that authentication is required when this adapter procedure is called by a client application.<br />
@@ -192,7 +192,7 @@ A separate <strong>securityTest</strong> can be defined for each adapter procedu
     </connectivity><br />
     <procedure name="getSecretData" securityTest="DummyAdapter-securityTest"/><br />
 </wl:adapter><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="protectStatic">Protecting static resources</h2>
 <p>A static resource is a URL that is loaded from the MobileFirst Server instance, for example: the console or mobile web application.</p>
 <p>Protecting a static resource means that MobileFirst Server requires authentication at any attempt to browse to the specified URL.<br />
@@ -203,4 +203,4 @@ The static resources and their protection can be defined in the <code>authentica
     <urlPatterns>/console*</urlPatterns><br />
   </resource><br />
 </staticResources><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>

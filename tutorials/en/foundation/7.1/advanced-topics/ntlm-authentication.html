@@ -26,7 +26,7 @@ This is the MobileFirst Server default behavior.</p>
 <p>For a procedure to be connected as "end user", you must declare it with a <code>connectAs="endUser"</code> attribute in the adapter XML file:<br />
 {% highlight xml %}<br />
 <procedure name="MyProcedure" connectAs="endUser"/><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <blockquote><p>For more information about the <code>connectAs</code> attribute, read the blog post about <a href="https://www.ibm.com/developerworks/community/blogs/worklight/entry/configuring_http_adapters_for_stateless_stateful_backend_connectivity_and_user_identity_propagation?lang=en" target="_blank">Configuring HTTP adapters for stateless/stateful back-end connectivity and user identity propagation</a>.</p></blockquote>
 <h2 id="NTLM-as-Server">Using NTLM authentication with <code>ServerIdentity</code></h2>
 <p>When you use a procedure to connect to a back-end server that uses NTLM protocol without specifying the <code>connectAs</code> attribute, use the <code><serveridentity></code> element of the adapter XML file as child element of the <code><authentication></code> element. Also add the <code><ntlm workstation></code> child element, so that MobileFirst Server knows which authentication method to use when connecting to the back end.</p>
@@ -49,7 +49,7 @@ This is the MobileFirst Server default behavior.</p>
     <maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode><br />
   </connectionPolicy><br />
 </connectivity><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <blockquote><p>
 <strong>Note:</strong> When the NTLM protocol is used, the user name is always specified in the <em>{server-name/user-name}</em> format.
@@ -62,7 +62,7 @@ This is the MobileFirst Server default behavior.</p>
 <customSecurityTest name="NTLMSecurityTest"><br />
   <test isInternalUserID="true" realm="NTLMAuthRealm"/><br />
 </customSecurityTest><br />
-{% endhighlight %
+{% endhighlight %}
   </li>
 <li>Use <code>BasicAuthenticator</code>, <code>AdapterBasedAuthenticator</code>, or any other authenticator that handles <code>userIdentity</code>, as the class for the realm used by the security test:<br />
 {% highlight xml %}<br />
@@ -71,14 +71,14 @@ This is the MobileFirst Server default behavior.</p>
   <parameter name="login-function" value="MyAdapter.onAuthRequired"/><br />
   <parameter name="logout-function" value="MyAdapter.onLogout"/><br />
 </realm><br />
-{% endhighlight %
+{% endhighlight %}
   </li>
 <li>Add some login module to create and store user identities to be used by this realm:<br />
 {% highlight xml %}<br />
 <loginModule name="AuthLoginModule"><br />
   <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
 </loginModule><br />
-{% endhighlight %
+{% endhighlight %}
   </li>
 <li>Add the <code><authentication></code> element and its <code><ntlm workstation></code> child element to the adapter XML file, so that MobileFirst Server knows which authentication method to use when connecting to the back end:<br />
 {% highlight xml %}<br />
@@ -95,12 +95,12 @@ This is the MobileFirst Server default behavior.</p>
     <maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode><br />
   </connectionPolicy><br />
 </connectivity><br />
-{% endhighlight %
+{% endhighlight %}
   </li>
 <li>Assign this security test to the procedure that is used to connect to the back end protected by NTLM protocol, and add <code>connectAs="endUser"</code> to the procedure declaration in the adapter XML file:<br />
 {% highlight xml %}<br />
 <procedure name="getNTLMData" securityTest="NTLMSecurityTest" connectAs="endUser"/><br />
-{% endhighlight %
+{% endhighlight %}
   </li>
 </ol>
 <p><br clear="all" /></p>
@@ -116,7 +116,7 @@ function submitAuthentication(username, password){<br />
   WL.Server.setActiveUser("NTLMAuthRealm", userIdentity);<br />
   ...<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Create an http request to the NTLM protected back end:<br />
 {% highlight JavaScript %}<br />
 function getSecretData(){<br />
@@ -127,4 +127,4 @@ function getSecretData(){<br />
   };<br />
   return WL.Server.invokeHttp(input);<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>

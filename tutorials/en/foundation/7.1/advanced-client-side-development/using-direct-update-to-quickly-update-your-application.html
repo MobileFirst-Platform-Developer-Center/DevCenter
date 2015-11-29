@@ -67,14 +67,14 @@ relevantTo: [hybrid]
     <testDeviceId provisioningType="none" /><br />
     <testUser realm="myMobileLoginForm" /><br />
     <testDirectUpdate mode="perSession" /><br />
-</mobileSecurityTest>{% endhighlight %</p>
+</mobileSecurityTest>{% endhighlight %}</p>
 <p>To disable Direct Update, change its mode to <code>disabled</code>, and similarly to override it to other modes.<br />
-{% highlight xml %}<testDirectUpdate mode=“disabled" />{% endhighlight %</p>
+{% highlight xml %}<testDirectUpdate mode=“disabled" />{% endhighlight %}</p>
 <p>Also by default, the <code>customSecurityTest</code> does not have any realms.<br />
 To add a Direct Update realm to a custom security test, add a <code>test</code> element with the realm name <code>wl_directUpdateRealm</code> and define the required mode property:</p>
 <p>{% highlight xml %}<customSecurityTest name="customTests"><br />
     <test realm="wl_directUpdateRealm" mode="perSession"/><br />
-</customSecurityTest>{% endhighlight %</p>
+</customSecurityTest>{% endhighlight %}</p>
 <blockquote><p>For more information, see the topic about Direct Update as a security realm, in the user documentation.</p></blockquote>
 <h2 id="internalFunction">Internal function - How Direct Update works</h2>
 <p>The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on available configurations (per session or per request, as explained above).</p>
@@ -102,7 +102,7 @@ After a Direct Update, the application no longer uses prepackaged resources but 
 <p>To do so, override the <code>handleDirectUpdate</code> function:<br />
 {% highlight js %}wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {<br />
     // custom Direct Update logic<br />
-};{% endhighlight %</p>
+};{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <ul>
 <li><code>directUpdateData</code> - A JSON object containing the <code>downloadSize</code> property that represents the file size (in bytes) of the update package to be downloaded from MobileFirst Server.
@@ -141,15 +141,15 @@ directUpdateContext) {<br />
             }<br />
         }]<br />
     );<br />
-};{% endhighlight %</p>
+};{% endhighlight %}</p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_custom_dialog.png"><img src="{{ site.baseurl }}/assets/backup/05_05_custom_dialog.png" alt="05_05_custom_dialog" width="847" height="462" class="aligncenter size-full wp-image-1595" /></a></p>
 <p>In the example above, the <code>submitFailure</code> API is used to dismiss the Direct Update:<br />
-{% highlight js %}wl_directUpdateChallengeHandler.submitFailure();{% endhighlight %</p>
+{% highlight js %}wl_directUpdateChallengeHandler.submitFailure();{% endhighlight %}</p>
 <p>As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer.</p>
 <p>As such, it is important to call <code>submitFailure()</code> to notify the MobileFirst framework that the process completed with a "failure". The MobileFirst framework in turn invokes the <code>onFailure</code> callback of the invocation that triggered the Direct Update. &nbsp;</p>
 <p>Because the update process did not take place, it will occur again the next time it is triggered.</p>
 <p>Optionally, a developer can also supply a Direct Update listener to fully control a Direct Update lifecycle. For more information, see the topic about customizing the direct update interface, in the user documentation.<br />
-{% highlight js %}directUpdateContext.start(directUpdateCustomListener);{% endhighlight %</p>
+{% highlight js %}directUpdateContext.start(directUpdateCustomListener);{% endhighlight %}</p>
 <h2 id="distribution">Distribution - Working with Direct Update in the field</h2>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/05_05_distribution.jpg"><img src="{{ site.baseurl }}/assets/backup/05_05_distribution.jpg" alt="05_05_distribution" width="800" height="360" class="aligncenter size-full wp-image-15746" /></a></p>
 <p>(*) During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.</p>
@@ -169,7 +169,7 @@ wl.ca.keystore.path=conf/myCert.jks<br />
 wl.ca.keystore.type=jks<br />
 wl.ca.keystore.password=myStrongPassword<br />
 wl.ca.key.alias=certAlias<br />
-wl.ca.key.alias.password=myCertPassword{% endhighlight %</li>
+wl.ca.key.alias.password=myCertPassword{% endhighlight %}</li>
 <li>Add the certificate public key using the Application Descriptor Design view. To do so:
 <ol>
 <li>Right-click the application folder and select <strong>Extract Public Signing Key</strong>.</li>
@@ -187,7 +187,7 @@ wl.ca.key.alias.password=myCertPassword{% endhighlight %</li>
    <directUpdateAuthenticityPublicKey><br />
       public keystore value<br />
    </directUpdateAuthenticityPublicKey><br />
-</application>{% endhighlight %
+</application>{% endhighlight %}
 </ol>
 <p><strong>Notes:</strong></p>
 <ul>

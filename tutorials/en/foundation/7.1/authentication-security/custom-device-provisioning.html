@@ -68,7 +68,7 @@ ssl.keystore.path=conf/default.keystore<br />
 ssl.keystore.type=jks<br />
 #SSL certificate keystore password.<br />
 ssl.keystore.password=worklight<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="config">Configuring the authenticationConfig.xml file</h2>
 <h3>Realm</h3>
 <ol>
@@ -82,7 +82,7 @@ ssl.keystore.password=worklight<br />
   <className>com.worklight.core.auth.ext.DeviceAutoProvisioningAuthenticator</className><br />
   <parameter name="validate-csr-function" value="ProvisioningAdapter.validateCSR" /><br />
 </realm><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 </ol>
 <h3>Login module</h3>
 <ol>
@@ -95,7 +95,7 @@ ssl.keystore.password=worklight<br />
   <className>com.worklight.core.auth.ext.DeviceAutoProvisioningLoginModule</className><br />
   <parameter name="validate-certificate-function" value="ProvisioningAdapter.validateCertificate" /><br />
 </loginModule><br />
-{% endhighlight %
+{% endhighlight %}
 </ol>
 <h3 id="security">Security test</h3>
 <ol>
@@ -109,7 +109,7 @@ ssl.keystore.password=worklight<br />
   <testAppAuthenticity/><br />
   <testDeviceId provisioningType="custom" realm="CustomDeviceProvisioningRealm" /><br />
 </mobileSecurityTest><br />
-{% endhighlight %
+{% endhighlight %}
 </ol>
 <h2 id="serverside">Implementing server-side components</h2>
 <ol>
@@ -147,7 +147,7 @@ function validateCSR(clientDN, csrContent){<br />
     }</p>
 <p>    return response;<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>csrContent.activationCode</code> property is a custom property that you add to CSR on the client side.<br />
 You can use adapter functionality, such as access to http web services, to validate CSR information. For simplicity, the <code>activationCode</code> is checked against a predefined hardcoded string.</p>
 <ul>
@@ -166,7 +166,7 @@ function validateCertificate(certificate,customAttributes){<br />
         isSuccessful: true<br />
     };<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>You can perform certificate validations according to your custom rules here. You can use adapter functionality, such as access to http web services, to validate the certificate. If the certificate is valid, the function must return <code>isSuccessful:true</code>.<br />
 The <code>isSuccessful:false</code> return value means that the application cannot operate and the only thing that can be done is to reinstall the application so that it can be provisioned again.</p>
 <h2 id="clientside">Implementing client-side components</h2>
@@ -182,7 +182,7 @@ The <code>isSuccessful:false</code> return value means that the application cann
     <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" /><br />
   </security><br />
 </iphone><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>If required, configure your application for an application authenticity test as described in <a title="Application Authenticity Protection" href="../../authentication-security/application-authenticity-protection/">Application Authenticity Protection</a>.</li>
 </ol>
@@ -206,7 +206,7 @@ The <code>ProvBody</code> element holds device provisioning-related content.<br 
     </p><br />
   </div><br />
 </div><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>main.js</h3>
 <ol>
 <li>Add a listener to the <code>connectToServerButton</code> object.</li>
@@ -219,7 +219,7 @@ function wlCommonInit(){<br />
         });<br />
     });<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </ol>
 <h3>Challenge handler</h3>
 <ol>
@@ -233,7 +233,7 @@ For a challenge handler for device provisioning, implement the following methods
 <p>{% highlight javascript %}<br />
 var customDevProvChallengeHandler =<br />
     WL.Client.createProvisioningChallengeHandler("CustomDeviceProvisioningRealm");<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Create a device provisioning challenge handler by using the <code>WL.Client.createProvisioningChallengeHandler()</code> API. Specify a realm name as parameter.
 <p>{% highlight javascript %}<br />
@@ -254,7 +254,7 @@ customDevProvChallengeHandler.createCustomCsr = function(challenge){<br />
         customDevProvChallengeHandler.submitCustomCsr(customCsrProperties, challenge);<br />
     });<br />
 };<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>When MobileFirst Server triggers device provisioning, the <code>createCustomCsr</code> function is invoked.<br />
 Use it to manipulate your UI, for example to hide the application screen and show device provisioning-related components.<br />
@@ -269,7 +269,7 @@ customDevProvChallengeHandler.processSuccess = function(identity) {<br />
     $("#ProvBody").hide();<br />
     $("#AppBody").html("<p>Device authentication with custom device provisioning was successfully completed.</p>");<br />
 };<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>The <code>processSuccess</code> function is called each time the certificate successfully passes validation. You can use it for UI manipulations.
 <p>{% highlight javascript %}<br />
@@ -279,7 +279,7 @@ customDevProvChallengeHandler.handleFailure = function(){<br />
     $("#ProvBody").hide();<br />
     $("#wrapper").text("MobileFirst Server rejected your device. You will need to re-install the application and perform device provisioning again.");<br />
 };<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>The <code>handleFailure</code> function is called each time that the certificate fails validation. You can use it for UI manipulations and to notify the user that the application cannot connect to the server.
 </li>

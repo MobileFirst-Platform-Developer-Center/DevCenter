@@ -24,7 +24,7 @@ This ability can be disabled by by unsubscribing from the reserved <code>Push.AL
 <p>{% highlight js %}WL.Client.Push.onMessage = function (props, payload) {<br />
     alert("Provider notification data: " + Object.toJSON(props));<br />
     alert("Application notification data: " + Object.toJSON(payload));<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>A callback function that is invoked when a push notification is received by the device.<br />
 Set this function on a global JavaScript level. The Tag name <code>Push.ALL</code> is sent back in the payload parameter.</p>
 <h4>Server-side API:</h4>

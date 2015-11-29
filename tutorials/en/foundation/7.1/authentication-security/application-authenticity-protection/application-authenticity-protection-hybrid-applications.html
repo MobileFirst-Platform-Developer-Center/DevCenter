@@ -7,7 +7,7 @@ relevantTo: [hybrid]
 This tutorial is a continuation of the <a title="Application Authenticity Protection" href="../">Application Authenticity Protection</a> tutorial.</p>
 <h3>The application-descriptor.xml file</h3>
 <p>Add the <code>securityTest</code> attribute to the relevant environment element. For example:</p>
-<p>{% highlight xml %}<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0“>{% endhighlight %</p>
+<p>{% highlight xml %}<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0“>{% endhighlight %}</p>
 <p>Next, you must make modifications that are specific to each environment.</p>
 <h3>iOS</h3>
 <p>To enable application authenticity protection check for the iPhone/iPad environment, specify the following identifiers in the <code>application-descriptor.xml</code> file.</p>
@@ -16,11 +16,11 @@ This tutorial is a continuation of the <a title="Application Authenticity Protec
 <li>Specify the <code>bundleId</code> value of the application exactly as it is defined in the <strong>Apple Developer portal</strong>.<img src="{{ site.baseurl }}/assets/backup/09_10_appId.png" />You can add the value either in the Application Description Design view:
 <p><img src="{{ site.baseurl }}/assets/backup/09_15_application_descriptor_ios.png" /></p>
 <p>Or in the Application Descriptor Source view:</p>
-<p>{% highlight xml %}<iphone bundleId="com.worklight.MyBankApp" version="1.0">{% endhighlight %</p>
+<p>{% highlight xml %}<iphone bundleId="com.worklight.MyBankApp" version="1.0">{% endhighlight %}</p>
 </li>
 <li>Specify the <code>applicationId</code> value. The application identifier must match the value of the <code>application id</code> property, which is located in the <code>native\worklight.plist</code> file. You can add the value either in the Application Description Design view:<img src="{{ site.baseurl }}/assets/backup/09_10_applicationId.png" />
 <p>Or in the Application Descriptor Source view:</p>
-<p>{% highlight xml %}<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0“>{% endhighlight %</p>
+<p>{% highlight xml %}<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0“>{% endhighlight %}</p>
 </li>
 <li>In Xcode, verify that the following value exists in the <strong>Other Linker Flags</strong> field: <code>-ObjC</code></li>
 </ol>
@@ -55,7 +55,7 @@ If you decide to change the value, make sure that you change it in both location
             <publicSigningKey>MIGff ...</publicSigningKey><br />
             <packageName>com.MyBankApp</packageName><br />
         </security><br />
-</android>{% endhighlight %</p>
+</android>{% endhighlight %}</p>
 </li>
 </ol>
 </li>
@@ -75,7 +75,7 @@ If you decide to change the value, make sure that you change it in both location
             <productId>fca81480-7b4a-4ed0-b387-178e8fa0c3d5</productId><br />
             <applicationId>HelloWorld</applicationId><br />
         </security><br />
-    </windowsPhone8>{% endhighlight %</li>
+    </windowsPhone8>{% endhighlight %}</li>
 </ul>
 <h3>Windows 8 - Universal</h3>
 <p>To enable application authenticity check for the Windows 8 Hybrid Universal applications, modify the <code>application-descriptor.xml</code> file as follows.</p>
@@ -87,6 +87,6 @@ If you decide to change the value, make sure that you change it in both location
         <security><br />
         	<packageName></packageName><br />
         </security><br />
-    </windowsphoneuniversal>{% endhighlight %</li>
+    </windowsphoneuniversal>{% endhighlight %}</li>
 <li>You can find the <code>packageName</code> value in the <code>native project\environment(Win8 or WinPh8)\package.appxmanifest</code> file:<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/06/PackageNameWinUniv.png"><img src="{{ site.baseurl }}/assets/backup/PackageNameWinUniv.png" alt="PackageNameWinUniv" width="1003" height="478" class="alignnone size-full wp-image-14646" /></a></li>
 </ul>

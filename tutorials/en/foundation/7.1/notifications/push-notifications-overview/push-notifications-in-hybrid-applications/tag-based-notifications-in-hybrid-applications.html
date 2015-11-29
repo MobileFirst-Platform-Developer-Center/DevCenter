@@ -37,7 +37,7 @@ Tags represent topics of interest to the user and provide the ability to receive
         <name>my tag 2</name><br />
         <description>About my tag 2</description><br />
     </tag><br />
-</tags>{% endhighlight %</p>
+</tags>{% endhighlight %}</p>
 <h2 id="notificationsAPI">Notifications API</h2>
 <h3>API methods for tag notifications</h3>
 <h4>Client-side API</h4>
@@ -54,7 +54,7 @@ This method is called when a push notification is received by the device.<br />
 {% highlight js %}WL.Client.Push.onMessage = function (props, payload) {<br />
     alert("Provider notification data: " + Object.toJSON(props));<br />
     alert("Application notification data: " + Object.toJSON(payload));<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <ul>
 <li><strong>props</strong> - A JSON block that contains the notification properties of the platform.</li>
 <li><strong>payload</strong> - A JSON block that contains other data that is sent from MobileFirst Server. The JSON block also contains the tag name for tag-based or broadcast notification. The tag name appears in the "tag" element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
@@ -77,18 +77,18 @@ The sample also demonstrates how to send notifications to two predefined tags, s
 <ul>
 <li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
 <li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
-<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml %}<application ... id="HybridTagNotifications" ...>{% endhighlight %</li>
+<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml %}<application ... id="HybridTagNotifications" ...>{% endhighlight %}</li>
 </ul>
 </li>
 <li>If using the CLI:
 <p>{% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/sendBroadcastNotification<br />
 [?] Enter the comma-separated parameters: "HybridTagNotifications","hello"<br />
-[?] How should the procedure be called? GET{% endhighlight %</p>
+[?] How should the procedure be called? GET{% endhighlight %}</p>
 <p>Or:</p>
 <p>{% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/sendTagNotification<br />
 [?] Enter the comma-separated parameters: "HybridTagNotifications","hello","sample-tag1,sample-tag2"<br />
 [?] How should the procedure be called? GET<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 </ol>

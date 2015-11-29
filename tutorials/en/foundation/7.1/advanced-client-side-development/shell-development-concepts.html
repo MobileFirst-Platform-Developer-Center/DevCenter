@@ -69,7 +69,7 @@ You can edit the <code>shell-descriptor.xml</code> file in Design mode or Source
     <android version="1.0"/><br />
     <features/><br />
 </shell><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="usingAShellComponentInATestApplication">Using a shell component in a test application</h2>
 <p>Follow these instructions to develop a functioning shell component.</p>
 <ol>
@@ -79,13 +79,13 @@ You can edit the <code>shell-descriptor.xml</code> file in Design mode or Source
 function sayHelloFromShell(){<br />
     alert("Hello from Shell");<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Modify the <code>body-top.wlfragment</code> file and add the following lines to it:
 <p>{% highlight html %}<br />
 <h1>This is a header that will be visible in all inner applications that use this Shell</h1><br />
 <script src="js/myshell.js"></script><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Modify the <code>main.js</code> file in the <code>apps/MyShellTest/common/js</code> folder.<br />
 Invoke the function that you previously added in the shell component.</p>
@@ -93,7 +93,7 @@ Invoke the function that you previously added in the shell component.</p>
 function wlCommonInit(){<br />
     sayHelloFromShell();<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><strong>Note:</strong> The <code>sayHelloFromShell()</code> function is not a part of the inner application, but is from the shell component.
 </li>
 <li>Build and deploy the <code>MyShellTest</code> application.<br />

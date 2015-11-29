@@ -26,7 +26,7 @@ relevantTo: [ios]
     "customData": {<br />
         "branchName": "Indiranagar, Bangalore"<br />
     }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>{% highlight js %}<br />
 {<br />
     "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",<br />
@@ -35,7 +35,7 @@ relevantTo: [ios]
     "customData": {<br />
         "branchName": "Koramangala, Bangalore"<br />
     }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h2 id="registeringbeacontriggers">Registering beacon triggers</h2>
 <p>Beacon triggers are represented as <code>BeaconTrigger</code> objects in IBM MobileFirst Platform Foundation. Beacon triggers are identified by the following parameters: <code>triggerName</code>, <code>triggerType</code>, <code>proximityState</code>, <code>dwellingTime</code> (optional), and <code>actionPayload</code>.</p>
 <ul>
@@ -101,7 +101,7 @@ You can register, update, or delete beacon triggers by using REST APIs. For deta
      "actionPayload": {<br />
         "alert": "Welcome to $branchName branch of IMF Bank"<br />
      }<br />
- }{% endhighlight %</p>
+ }{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <p>{% highlight js %}<br />
 {<br />
@@ -111,7 +111,7 @@ You can register, update, or delete beacon triggers by using REST APIs. For deta
     "actionPayload": {<br />
         "alert": "Welcome to the Loan processing section. You will be assisted soon by our staff."<br />
     }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <p>{% highlight js %}<br />
 {<br />
@@ -121,7 +121,7 @@ You can register, update, or delete beacon triggers by using REST APIs. For deta
      "actionPayload": {<br />
         "alert": "Thank you for visiting our $branchName branch. Have a nice day!"<br />
      }<br />
- }{% endhighlight %</p>
+ }{% endhighlight %}</p>
 <h2 id="associatingbeacons">Associating beacons and beacon triggers</h2>
 <p>An association between a beacon and a beacon trigger is represented as a <code>BeaconTriggerAssociation</code> object in IBM MobileFirst Platform Foundation. You create, update, or delete associations by using REST APIs. For detailed information about REST APIs, see the Reference part of the user documentation.</p>
 <p>To create associations between beacons and triggers for an application, use the Associate beacons and triggers (PUT) REST API:<br />
@@ -146,7 +146,7 @@ You can register, update, or delete beacon triggers by using REST APIs. For deta
             "triggerName": "entryIntoLoanSection"<br />
         }<br />
     ]<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <h2 id="retrievingbeacons">Using the server-side API to retrieve beacons and triggers</h2>
 <p>You can retrieve beacons, triggers, and their associations by using the<br />
 <code>WL.Server.getBeaconsAndTriggers(applicationName, beaconsOfInterest)</code> API.</p>

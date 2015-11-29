@@ -27,13 +27,13 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 		RSSAdapterResource.init();<br />
 		logger.info("Adapter initialized!");<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="RSSAdapterResource">RSSAdapterResource</h2>
 <p>{% highlight java %}<br />
 @Path("/")<br />
 public class RSSAdapterResource {<br />
 }<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 <code>RSSAdapterResource</code> is where we handle the requests to your adapter.</p>
 <p><code>@Path("/")</code> means that the resources will be available at the URL <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code>.</p>
 <h3>HTTP Client</h3>
@@ -44,7 +44,7 @@ public class RSSAdapterResource {<br />
 		client = HttpClients.createDefault();<br />
 		host = new HttpHost("developer.ibm.com");<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Because every request to your resource will create a new instance of <code>RSSAdapterResource</code>, it is important to reuse objects that may impact performance. In this example we made the Http client a <code>static</code> object and initialized it in a static <code>init()</code> method, which gets called by the <code>init()</code> of <code>RSSAdapterApplication</code> as described above.</p>
 <h3>Procedure resource</h3>
 <p>{% highlight java %}<br />
@@ -59,7 +59,7 @@ public class RSSAdapterResource {<br />
 			execute(new HttpGet("/mobilefirstplatform/feed"), response);<br />
 		}</p>
 <p>	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Our adapter exposes just one resource URL which allows to retrieve the RSS feed from the backend service.</p>
 <ul>
 <li><code>@GET</code> means that this procedure only responds to <code>HTTP GET</code> requests.</li>
@@ -89,7 +89,7 @@ public class RSSAdapterResource {<br />
 		os.flush();<br />
 		os.close();<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ul>
 <li><code>HttpResponse RSSResponse = client.execute(host, req)</code>. We use our static HTTP client to execute the HTTP request and store the response.</li>
 <li><code>ServletOutputStream os = resultResponse.getOutputStream()</code>. This is the output stream to write a response to the client.</li>
@@ -173,7 +173,7 @@ public class RSSAdapterResource {<br />
       "version": "2.0"<br />
    }<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2>Sample</h2>
 <p>The <a href="https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters" target="_blank">attached sample</a> includes an adapter called <code>RSSAdapter</code> and a hybrid application called <code>RSSReader</code> to test the adapter inside an application.</p>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/java-http-app.png"><img src="{{ site.baseurl }}/assets/backup/java-http-app.png" alt="java-http-app" width="750" height="1334" class="aligncenter size-full wp-image-17469" /></a></p>

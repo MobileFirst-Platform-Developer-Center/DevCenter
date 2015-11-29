@@ -20,13 +20,13 @@ relevantTo: [android]
 <p>                {% highlight shell %}<br />
                 mfp create MyProject<br />
                 cd MyProject<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 <li>
 <h4>Add an HTTP adapter to the project.</h4>
 <p>                {% highlight shell %}<br />
                 mfp add adapter MyAdapter -t http<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -38,7 +38,7 @@ relevantTo: [android]
 <p>                {% highlight shell %}<br />
                 mfp start<br />
                 mfp push<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -52,31 +52,31 @@ relevantTo: [android]
 <li>After <code>apply plugin: 'com.android.application'</code>, add the following line:<br />
         {% highlight xml %}repositories{<br />
     jcenter()<br />
-}{% endhighlight %
+}{% endhighlight %}
     </li>
 <li>Inside <code>android</code>, add the following lines:<br />
 {% highlight xml %}packagingOptions {<br />
     pickFirst 'META-INF/ASL2.0'<br />
     pickFirst 'META-INF/LICENSE'<br />
     pickFirst 'META-INF/NOTICE'<br />
-}{% endhighlight %</li>
+}{% endhighlight %}</li>
 <li>Inside <code>dependencies</code>, add the following lines:<br />
 {% highlight xml %}compile group: 'com.ibm.mobile.foundation',<br />
     name: 'ibmmobilefirstplatformfoundation',<br />
     version: '7.1.0.0',<br />
     ext: 'aar',<br />
-    transitive: true{% endhighlight %</li>
+    transitive: true{% endhighlight %}</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:<br />
 {% highlight xml %}<br />
 <uses-permission android:name="android.permission.INTERNET"/><br />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br />
 <uses-permission android:name="android.permission.GET_TASKS" /><br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Add the MobileFirst UI activity:<br />
-{% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %</li>
+{% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %}</li>
 <li>In Terminal, navigate to the root of the Android Studio project and add the required configuration files by running this command:<br />
 {% highlight xml %}<br />
-mfp push{% endhighlight %
+mfp push{% endhighlight %}
 </li>
 <li>
 <h3>Implement MobileFirst adapter invocation.</h3>
@@ -87,12 +87,12 @@ mfp push{% endhighlight %
 {% highlight java %}<br />
 public class MainActivity extends Activity {<br />
 ...<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
                 Add the following <code>import</code> statements:<br />
                 {% highlight java %}import com.worklight.wlclient.api.*;<br />
 import android.util.Log;<br />
 import java.net.URI;<br />
-import java.net.URISyntaxException;{% endhighlight %</p>
+import java.net.URISyntaxException;{% endhighlight %}</p>
 <p>                Add the following lines to the <code>onCreate</code> method:<br />
                 {% highlight java %}<br />
 super.onCreate(savedInstanceState);<br />
@@ -114,13 +114,13 @@ setContentView(R.layout.activity_main);</p>
     public void onFailure(WLFailResponse wlFailResponse) {<br />
         Log.i("MFPMyProject","Failed connecting to the MobileFirst Server: " + wlFailResponse.getErrorMsg());<br />
     }<br />
-});{% endhighlight %</li>
+});{% endhighlight %}</li>
 <li>
 <h4><code>MyInvokeListener</code> class</h4>
 <p>                Add a new <code>MyInvokeListener</code> class.<br />
                 Add the following <code>import</code> statements:<br />
                 {% highlight java %}import com.worklight.wlclient.api.*;<br />
-import android.util.Log;{% endhighlight %</p>
+import android.util.Log;{% endhighlight %}</p>
 <p>                Paste the following lines:<br />
         {% highlight java %}<br />
 public class MyInvokeListener implements WLResponseListener {</p>
@@ -132,7 +132,7 @@ public class MyInvokeListener implements WLResponseListener {</p>
     public void onFailure(WLFailResponse wlFailResponse) {<br />
         Log.i("MFPMyProject", "Adapter invocation response: " + wlFailResponse.getErrorMsg());<br />
     }<br />
-}{% endhighlight %</li>
+}{% endhighlight %}</li>
 </ul>
 </li>
 <li>

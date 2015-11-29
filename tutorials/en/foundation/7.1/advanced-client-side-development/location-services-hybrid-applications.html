@@ -39,7 +39,7 @@ relevantTo: [hybrid]
 <p><strong>Note:</strong> Call the following functions after the IBM MobileFirst Platform Foundation framework is initialized (within or after the <code>wlCommonInit()</code> function).</p>
 <p>{% highlight javascript %}<br />
 WL.Device.startAcquisition(policy, triggers, onFailure)<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ul>
 <li><code>policy</code>: How do you acquire the sensor data?</li>
 <li><code>triggers</code>: What do you act on and how?</li>
@@ -48,7 +48,7 @@ WL.Device.startAcquisition(policy, triggers, onFailure)<br />
 <h3>Server JavaScript code</h3>
 <p>{% highlight javascript %}<br />
 WL.Server.setEventHandlers(eventHandlers);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><code>eventHandlers</code>: What events do you act on and how?</p>
 <h2 id="acquisitionPolicy">Acquisition policy</h2>
 <p>An acquisition policy defines how acquisition takes place.<br />
@@ -67,11 +67,11 @@ var policy = {<br />
     }<br />
   }<br />
 };<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Geo acquisition policy</h3>
 <p>{% highlight javascript %}<br />
   Geo: WL.Device.Geo.Profiles.LiveTracking(),<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><code>LiveTracking</code> is a preset profile that uses the most accurate settings to track the device.<br />
 Additional configuration options:</p>
 <ul>
@@ -93,7 +93,7 @@ Additional configuration options:</p>
       }]<br />
     }<br />
   }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>interval</code> parameter is the polling interval, in milliseconds; Wi-Fi polling is performed at each interval.</p>
 <p>The <code>accessPointFilters</code> parameter are access points of interest.</p>
 <p>In the example above, the acquisition policy works as follows:</p>
@@ -128,7 +128,7 @@ var triggers = {<br />
     }<br />
   }<br />
 };<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>You can setup triggers for the following effects:</p>
 <ul>
 <li>Geo/Wi-Fi fences: <code>Enter</code>, <code>Exit</code>, <code>Dwell Inside</code>, <code>Dwell Outside</code></li>
@@ -148,16 +148,16 @@ var triggers = {<br />
           your: "huddledMasses"<br />
         }<br />
       }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>You can also generate events manually by calling this API:<br />
 {% highlight javascript %}<br />
 WL.Client.transmitEvent(event,immediate);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Server side</h3>
 <p>In the adapter code, create event handlers:</p>
 <p>{% highlight javascript %}<br />
 WL.Server.createEventHandler(filter, handlerFunction);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Events that match the <code>filter</code> parameter are passed to <code>handlerFunction</code>.<br />
 Filter examples:</p>
 <ul>
@@ -168,7 +168,7 @@ Filter examples:</p>
 <p>Register the event handlers:<br />
 {% highlight javascript %}<br />
 WL.Server.setEventHandlers([...]);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <blockquote><p>For more information, see the topic about working with geofences and triggers, in the user documentation.</p></blockquote>
 <h2 id="testingHybrid">Testing hybrid applications</h2>
 <p>To test your application, you might want to test the various triggers and the error handling logic that your application uses.<br />
@@ -231,7 +231,7 @@ You can import and export scenarios to support test reuse.</p>
 <p>    if (!(WLClient.getInstance().getContext().checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)){<br />
 	requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);<br />
     }<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>This code requests permission if the permission has not already been granted.<br />
 If the permission is not subsequently granted all requests for location services from the Web Framework will fail.<br />
 for more information, please refer to https://developer.android.com/preview/features/runtime-permissions.html</p>

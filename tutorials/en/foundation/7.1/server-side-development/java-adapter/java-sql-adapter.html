@@ -38,7 +38,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
               serverName="localhost"<br />
               user="root" /><br />
 </dataSource><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ul>
 <li>The <code>library</code> tag specifies where to find the <code>MySQL .jar</code> file. In most cases, <code>${shared.resource.dir}</code> is <strong>shared/resources</strong> under the Liberty server root folder.
 <p>In MobileFirst Studio for Eclipse, select <strong>Project Explorer > MobileFirst Development Server > shared > resources</strong>.</li>
@@ -52,13 +52,13 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 		UserAdapterResource.init();<br />
 		logger.info("Adapter initialized!");<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="UserAdapterResource">UserAdapterResource</h2>
 <p>{% highlight java %}<br />
 @Path("/")<br />
 public class UserAdapterResource {<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><code>UserAdapterResource</code> is where requests to the adapter are handled.</p>
 <p><code>@Path("/")</code> means that the resources will be available at the URL <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code>.</p>
 <h3>Using DataSource</h3>
@@ -69,7 +69,7 @@ public class UserAdapterResource {<br />
     	ctx = new InitialContext();<br />
         ds = (DataSource)ctx.lookup("jdbc/mobilefirst_training");<br />
     }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>DataSource</code> is set as <code>static</code> so that it can be shared across all requests to the adapter. It is initialized in the <code>init()</code> method, which is called by the <code>init()</code> method of <code>UserAdapterApplication</code>, as described above.</p>
 <p>The previously defined <code>jndiName</code> parameter is used to find the database configuration.</p>
 <h3>Create User</h3>
@@ -101,7 +101,7 @@ public class UserAdapterResource {<br />
 			con.close();<br />
 		}<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Because this method does not have any <code>@Path</code>, it is accessible as the root URL of the resource. Because it uses <code>@POST</code>, it is accessible via <code>HTTP POST</code> only.</p>
 <p>The method has a series of <code>@FormParam</code> arguments, which means that those can be sent in the HTTP body as <code>x-www-form-urlencoded</code> parameters.</p>
 <p>It is also possible to pass the parameters in the HTTP body as JSON objects, by using <code>@Consumes(MediaType.APPLICATION_JSON)</code>, in which case the method needs a <code>JSONObject</code> argument, or a simple Java object with properties that match the JSON property names.</p>
@@ -137,7 +137,7 @@ public class UserAdapterResource {<br />
 			con.close();<br />
 		}</p>
 <p>	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>This method uses <code>@GET</code> with a <code>@Path("/{userId}")</code>, which means that it is available via <code>HTTP GET /adapters/UserAdapter/{userId}</code>, and the <code>{userId}</code> is retrieved by the <code>@PathParam("userId")</code> argument of the method.</p>
 <p>If the user is not found, the <code>404 NOT FOUND</code> error code is returned.<br />
 If the user is found, a response is built from the generated JSON object.</p>
@@ -164,7 +164,7 @@ If the user is found, a response is built from the generated JSON object.</p>
 		con.close();</p>
 <p>		return Response.ok(results).build();<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Update user</h3>
 <p>{% highlight java %}<br />
 	@PUT<br />
@@ -198,7 +198,7 @@ If the user is found, a response is built from the generated JSON object.</p>
 			con.close();<br />
 		}</p>
 <p>	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>When updating an existing resource, it is standard practice to use <code>@PUT</code> (for <code>HTTP PUT</code>) and to use the resource ID in the <code>@Path</code>.</p>
 <h3>Delete user</h3>
 <p>{% highlight java %}<br />
@@ -226,7 +226,7 @@ If the user is found, a response is built from the generated JSON object.</p>
 			con.close();<br />
 		}</p>
 <p>	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><code>@DELETE</code> (for <code>HTTP DELETE</code>) is used together with the resource ID in the <code>@Path</code>, to delete a user.</p>
 <h2 id="results">Results</h2>
 <p>Use the testing techniques described in <a href="../../../server-side-development/java-adapter/" title="Java Adapter">Java Adapter</a> to test your work.</p>

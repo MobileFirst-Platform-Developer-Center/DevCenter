@@ -35,7 +35,7 @@ Also mentioned are the addresses and ports that are required for notifications t
 	<userIdentityRealms></userIdentityRealms><br />
 	<pushSender key="" senderId=""/><br />
 </nativeAndroidApp><br />
-{% endhighlight %
+{% endhighlight %}
         </li>
 </ul>
 </li>
@@ -60,7 +60,7 @@ wlPlatformVersion = 7.1.0.0<br />
 #languagePreferences = Add locales in order of preference (e.g. en, fr, fr-CA)<br />
 #For Push Notifications,uncomment below line and assign value to it<br />
 GcmSenderId =<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>
 <h3>Add Google Play Services (optional)</h3>
 <p> For instructions about how to setup Google Play Services review the <a href="http://developer.android.com/google/play-services/setup.html" target="_blank">Setting Up Google Play Services</a> topic at the Android Developer website.
@@ -78,7 +78,7 @@ GcmSenderId =<br />
  <uses-permission android:name="android.permission.GET_ACCOUNTS" /><br />
  <uses-permission android:name="android.permission.USE_CREDENTIALS" /><br />
  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><br />
- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>{% endhighlight %</p>
+ <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>{% endhighlight %}</p>
 <p>Replace all <strong>com.example.project</strong> with your Android project package name.</p>
 <h4>Add the <code>launchMode</code> attribute to the <code>application</code> element. Set its value to <code>singleTask</code>.</h4>
 <p>{% highlight xml %}<br />
@@ -88,7 +88,7 @@ GcmSenderId =<br />
         android:label="@string/app_name"<br />
         android:theme="@style/AppTheme"<br />
         android:launchMode="singleTask" ><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h4>Add an <code>intent-filter</code> to the <code>activity</code> element for notifications.</h4>
 <p>{% highlight xml %}<br />
 <activity<br />
@@ -98,7 +98,7 @@ GcmSenderId =<br />
      <action android:name="com.example.project.app_name.NOTIFICATION" /><br />
      <category android:name="android.intent.category.DEFAULT" /><br />
   </intent-filter><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Replace the <strong>com.example.project.app_name</strong> with your Android project package name and the <code>app_name</code> string as it appears in the <code>res/values/string.xml</code> file. For example: com.sample.notifications.NativeAndroidNotifications.</p>
 <h4>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</h4>
 <p>{% highlight xml %}<br />
@@ -112,7 +112,7 @@ GcmSenderId =<br />
        <action android:name="com.google.android.c2dm.intent.REGISTRATION" /><br />
        <category android:name="com.example.project" /><br />
    </intent-filter><br />
-</receiver>{% endhighlight %</p>
+</receiver>{% endhighlight %}</p>
 <p>Replace all <strong>com.example.project</strong> with your Android project package name.
 </li>
 </ol>

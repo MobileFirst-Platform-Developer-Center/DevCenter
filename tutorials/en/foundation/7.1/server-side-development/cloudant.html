@@ -52,7 +52,7 @@ relevantTo: [hybrid]
 			--><br />
 		</connectionPolicy><br />
 	</connectivity><br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 <br clear="all" /></p>
 <h3>Procedures</h3>
 <p>Your adapter procedures use the <code>invokeHttp</code> method to send an HTTP request to one of the URLs that are defined by Cloudant.<br />
@@ -74,7 +74,7 @@ function addEntry(entry){</p>
 	}<br />
 	return response;</p>
 <p>}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The same idea can be applied to all Cloudant functions. See the Cloudant documentation about documents at <a href="https://docs.cloudant.com/document.html" target="_blank">https://docs.cloudant.com/document.html</a>.</p>
 <h2 id="java-adapter">Java adapter</h2>
 <p>Cloudant provides a <a href="https://github.com/cloudant/java-cloudant" target="_blank">Java client library</a> for you to easily use all the features of Cloudant.</p>
@@ -83,7 +83,7 @@ function addEntry(entry){</p>
 <p>{% highlight java %}<br />
 		cloudant = new CloudantClient(cloudantDomain,cloudantKey,cloudantPassword);<br />
 		db = cloudant.database(CLOUDANT_DB, false);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Using <a href="https://en.wikipedia.org/wiki/Plain_Old_Java_Object" target="_blank">Plain Old Java Objects</a> and standard Java API for RESTful Web Services (JAX-RS), you can create a new document on Cloudant in just a few lines, by sending a JSON representation of the document in the HTTP request.</p>
 <p>{% highlight java %}<br />
 	@POST<br />
@@ -97,7 +97,7 @@ function addEntry(entry){</p>
 			return Response.status(418).build();<br />
 		}<br />
 	}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="sample">Sample</h2>
 <p>The sample contains two adapters, one in JavaScript and one in Java.</p>
 <ol>

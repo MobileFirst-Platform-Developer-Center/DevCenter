@@ -46,7 +46,7 @@ relevantTo: [ios]
          [code]<br />
              source 'https://github.com/CocoaPods/Specs.git'<br />
              pod 'IBMMobileFirstPlatformFoundation'<br />
-         {% endhighlight %
+         {% endhighlight %}
       </li>
 <li>Run the command: <code>pod install</code>. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.<br />
 <strong>Note:</strong> This command may take several minutes to complete.</li>
@@ -58,7 +58,7 @@ relevantTo: [ios]
 <li>Whenever you want to use the MobileFirst Native SDK, make sure that you import the framework:<br />
     {% highlight objc %}<br />
         #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h><br />
-    {% endhighlight %
+    {% endhighlight %}
     </li>
 </ol>
 <blockquote><p>If you use Xcode 7 and iOS 9, read the <a href="https://developer.ibm.com/mobilefirstplatform/blog/2015/09/09/ats-and-bitcode-in-ios9/">ATS and Bitcode</a> page.</p></blockquote>
@@ -68,7 +68,7 @@ relevantTo: [ios]
 <p>In <strong>Terminal</strong>, navigate to the location where you want to create the MobileFirst Backend project and run the following commands:</p>
 <p>{% highlight xml %}mfp create your-project-name-here<br />
 cd your-project-name<br />
-mfp start{% endhighlight %</p>
+mfp start{% endhighlight %}</p>
 <p>After the project is created and the server is running, the server-side entity can be created and deployed to the server.<br />
 The next step adds the following files to the native project, as explained in section <a href="#insideNativeApp">Inside a native application containing the MobileFirst Native SDK</a>: <code>worklight.plist</code>, <code>application-descriptor.xml</code>, <code>mobilefirst</code> folder.</p>
 <h3>Deploying the server-side entity</h3>

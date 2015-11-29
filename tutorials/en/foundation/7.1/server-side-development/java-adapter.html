@@ -65,7 +65,7 @@ In our case: <code>com.sample.adapter.JavaAdapterApplication</code>.</p>
 	</connectivity></p>
 <p>	<JAXRSApplicationClass>com.sample.adapter.JavaAdapterApplication</JAXRSApplicationClass><br />
 </wl:adapter><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Note that the connection policy type is <code>NullConnectionPolicy</code>, which means that the XML configuration file is not used to define the connectivity of the adapter. In Java adapters, this is the only allowed connectivity type. The MobileFirst Server leaves setting up the connectivity policy to the developer of the adapter. For example, an adapter can contain code that uses an Apache HTTP client to connect to a back-end system.</p>
 <h3>The <code>src</code> folder</h3>
 <p>In this folder, put the Java sources of the JAX-RS service. JAX-RS services are composed of an application class (which extends <code>com.worklight.wink.extensions.MFPJAXRSApplication</code>) and resources classes.</p>
@@ -92,7 +92,7 @@ import com.worklight.wink.extensions.MFPJAXRSApplication;</p>
 		return getClass().getPackage().getName();<br />
 	}<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>MFPJAXRSApplication</code> class scans the package for JAX-RS resources and automatically creates a list. Additionally, its <code>init</code> method is called by MobileFirst Server as soon as the adapter is deployed (before it starts serving) and when the MobileFirst runtime starts up.</p>
 <h2 id="jaxrsresource">Implementing a JAX-RS resource</h2>
 <p>JAX-RS resource is a POJO (Plain Old Java Object) which is mapped to a root URL and has Java methods for serving requests to this root URL and its child URLs. Any resource can have a separate set of URLs.</p>
@@ -117,7 +117,7 @@ public class JavaAdapterResource {</p>
 		return "Hello " + name;<br />
 	}</p>
 <p>}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><code>@Path("/")</code> before the class definition determines the root path of this resource. If you have multiple resource classes, you should set each resource a different path.</p>
 <p>For example, if you have a <code>UserResource</code> with <code>@Path("/users")</code> to manage users of a blog, that resource is accessible via <code>http(s)://host:port/ProjectName/adapters/AdapterName/<em>users</em>/</code>.</p>
 <p>That same adapter may contain another resource <code>PostResource</code> with <code>@Path("/posts")</code> to manage posts of a blog. It is accessible via the <code>http(s)://host:port/ProjectName/adapters/AdapterName/<em>posts</em>/</code> URL.</p>
@@ -133,12 +133,12 @@ In such cases you should not rely on Java's HttpSession to persist​ data from 
 <p>To get the server API interface, use the following code:<br />
 {% highlight java %}<br />
 WLServerAPI api = WLServerAPIProvider.getWLServerAPI();<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>WLServerAPI</code> interface is the parent of all the API categories: (Analytics, Configuration, Push, Adapters, Authentication).</p>
 <p>If you want, for example, to use the push API, you can write:</p>
 <p>{% highlight java %}<br />
 PushAPI pushApi = serverApi.getPushAPI();<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <blockquote><p>For more information, review the Server-side API topics in the user documentation.</p></blockquote>
 <h2 id="testing">Testing MobileFirst adapters</h2>
 <h3>In MobileFirst Studio</h3>
@@ -163,7 +163,7 @@ To receive a Test Token, make an HTTP <code>POST</code> request to <code>http(s)
 {<br />
 "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImpwayI6eyJhbGciOiJSU0EiLCJleHAiOiJBUUFCIiwibW9kIjoiQU0wRGQ3eEFkdjZILXlnTDdyOHFDTGRFLTNJMm2FPZUlxb2UtckpBMHVadXcyckhoWFozV1ZDZUtlelJWY0NPWXNRTi1tUUswbWZ6NV8zby1ldjBVWXdYa1NPd0JCbDFFaHFJd1ZEd09pZWcySk1HbDBFWHNQWmZrTlpJLUhVNG9NaWktVHJOTHp..."<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>In your next requests to your adapter endpoints, add an HTTP header with the name "<code>Authorization</code>" and the value you received previously (starting with <code>Bearer</code>).</p>
 <p>The security framework now skips any security challenges protecting your resource.</p>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-postman.png"><img src="{{ site.baseurl }}/assets/backup/java-adapter-postman.png" alt="java-adapter-postman" width="751" height="497" class="aligncenter size-full wp-image-7339" /></a></p>

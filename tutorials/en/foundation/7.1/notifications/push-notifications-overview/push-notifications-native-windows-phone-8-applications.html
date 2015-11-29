@@ -31,7 +31,7 @@ Also mentioned are the addresses and ports that are required for notifications t
 	<description>AppName</description><br />
 	<pushSender /><br />
 </nativeWindowsPhone8App><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>Authenticated push<br />
 {% highlight xml %}<br />
@@ -43,7 +43,7 @@ Also mentioned are the addresses and ports that are required for notifications t
              <authenticatedPush serviceName="" keyAlias="" keyAliasPassword=""/><br />
         </pushSender><br />
 </nativeWindowsPhone8App><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ul>
 <li>Replace <strong>serviceName</strong> value with the service name.</li>
 <li>Replace <strong>keyAlias</strong> value with the certificate alias.</li>
@@ -73,14 +73,14 @@ wlAppVersion = 1.0<br />
 wlEnvironment = WindowsPhone8native<br />
 wlPlatformVersion = 7.0.0.0<br />
 #languagePreferences = Add locales in order of preference (e.g. fr, en, pt-BR)<br />
-wlMPNSServiceName = Add the MPNS service name for authenticated push.{% endhighlight %</li>
+wlMPNSServiceName = Add the MPNS service name for authenticated push.{% endhighlight %}</li>
 <li>
 <h3>Modify the native Windows Phone 8 project.</h3>
 <p>    Edit the <code>Properties\WMAppManifest.xml</code> file and add the following capabilities:<br />
 {% highlight xml %}<br />
 <Capability Name="ID_CAP_PUSH_NOTIFICATION" /><br />
 <Capability Name="ID_CAP_IDENTITY_DEVICE" /><br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 </ol>
 <h2>Windows Phone 8 Push Notifications Service</h2>
 <p>No specific port needs to be open in your server configuration.<br />

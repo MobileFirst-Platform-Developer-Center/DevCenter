@@ -21,13 +21,13 @@ relevantTo: [ios]
                 mfp create MyProject<br />
                 cd MyProject<br />
                 mfp add api MyiOSFramework -e ios<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 <li>
 <h4>Add a HTTP adapter to the project</h4>
 <p>                [code firstline="4" lang="shell"]<br />
                 mfp add adapter MyAdapter -t http<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -41,7 +41,7 @@ relevantTo: [ios]
                 # Wait until a browser window is opened, displaying the MobileFirst Console<br />
                 mfp build<br />
                 mfp deploy<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -83,12 +83,12 @@ relevantTo: [ios]
 <li>
 <h4>AppDelegate.h</h4>
 <p>                Add the header:<br />
-                {% highlight objc %}#import "WLResourceRequest.h"{% endhighlight %
+                {% highlight objc %}#import "WLResourceRequest.h"{% endhighlight %}
             </li>
 <li style="margin-bottom:30px">
 <h4>AppDelegate.m</h4>
 <p>                Add the header:<br />
-                {% highlight objc %}#import "WLResponse.h"{% endhighlight %</p>
+                {% highlight objc %}#import "WLResponse.h"{% endhighlight %}</p>
 <p>                Add the following to <code>didFinishLaunchingWithOptions</code>:<br />
 {% highlight objc %}- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {<br />
     NSURL* url = [NSURL URLWithString:@"/adapters/MyAdapter/getFeed"];<br />
@@ -103,7 +103,7 @@ relevantTo: [ios]
         }<br />
     }];</p>
 <p>    return YES;<br />
-}{% endhighlight %
+}{% endhighlight %}
             </li>
 </ul>
 </li>

@@ -21,13 +21,13 @@ relevantTo: [windowsphone8]
                 mfp create MyProject<br />
                 cd MyProject<br />
                 mfp add api MyWindowsPhone8 -e windowsphone8<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 <li>
 <h4>Add an HTTP adapter to the project.</h4>
 <p>                [code firstline="4" lang="shell"]<br />
                 mfp add adapter MyAdapter -t http<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -39,7 +39,7 @@ relevantTo: [windowsphone8]
 <p>                [code firstline="5" lang="shell"]<br />
                 mfp start<br />
                 mfp push<br />
-                {% endhighlight %
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -63,7 +63,7 @@ invocationData.setParameters(new Object[]{});<br />
 String myContextObject = "InvokingAdapterProceduresWP8";<br />
 WLRequestOptions options = new WLRequestOptions();<br />
 options.setInvocationContext(myContextObject);<br />
-WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);{% endhighlight %
+WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);{% endhighlight %}
             </li>
 </ul>
 </li>

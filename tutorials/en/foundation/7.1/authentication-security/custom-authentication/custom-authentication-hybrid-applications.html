@@ -22,7 +22,7 @@ When authentication is required, the application hides <em>AppDiv</em> and shows
   <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('CustomAuthenticatorRealm',{onSuccess: WL.Client.reloadApp})" /><br />
   <div id="ResponseDiv"></div><br />
 </div><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Buttons are used to call the <em>getSecretData</em> procedure and to log out.</p>
 <h3>AuthDiv</h3>
 <p>{% highlight html %}<br />
@@ -38,22 +38,22 @@ When authentication is required, the application hides <em>AppDiv</em> and shows
     <input type="button" id="AuthCancelButton" class="formButton" value="Cancel" /><br />
   </div><br />
 </div><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><em>AuthDiv</em> is styled with <em>display:none</em> because it must not be displayed before the server requests the authentication.</p>
 <h3>Challenge Handler</h3>
 <p>Use <em>WL.Client.createChallengeHandler</em> to create a challenge handler object. Supply a realm name as a parameter.</p>
 <p>{% highlight javascript %}<br />
 var customAuthenticatorRealmChallengeHandler = WL.Client.createChallengeHandler("CustomAuthenticatorRealm");<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <em>isCustomResponse</em> function of the challenge handler is called each time a response is received from the server.<br />
 It is used to detect whether the response contains data that is related to this challenge handler. It must return <strong>true</strong> or <strong>false</strong>.</p>
 <p>{% highlight javascript %}<br />
 customAuthenticatorRealmChallengeHandler.isCustomResponse = function(response) {}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>If <em>isCustomResponse</em> returns true, the framework calls the <em>handleChallenge</em> function. This function is used to perform required actions, such as hide application screen and show login screen.</p>
 <p>{% highlight javascript %}<br />
 customAuthenticatorRealmChallengeHandler.handleChallenge = function(response){}<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>In addition to the methods that the developer must implement, the challenge handler contains functionality that the developer might want to use:</p>
 <ul>
 <li><em>submitLoginForm</em> to send collected credentials to a specific URL. The developer can also specify request parameters, headers, and callback.</li>
@@ -73,7 +73,7 @@ customAuthenticatorRealmChallengeHandler.isCustomResponse = function(response) {
     else<br />
         return false;<br />
 };<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>handleChallenge</h3>
 <p>If the <em>authStatus</em> property equals “required”, show the login form, clean up the password input field, and display the error message if applicable.<br />
 if <em>authStatus</em> equals “complete”, hide the login screen, return to the application, and notify the framework that authentication completed successfully.</p>
@@ -94,7 +94,7 @@ customAuthenticatorRealmChallengeHandler.handleChallenge = function(response){<b
         customAuthenticatorRealmChallengeHandler.submitSuccess();<br />
     }<br />
 };<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Clicking the <strong>login</strong> button triggers the function that collects the user name and password from HTML input fields and submits them to server. You can set request headers here and specify callback functions.</p>
 <p>{% highlight javascript %}<br />
 $('#AuthSubmitButton').bind('click', function () {<br />
@@ -107,7 +107,7 @@ $('#AuthSubmitButton').bind('click', function () {<br />
     options.headers = {};<br />
     customAuthenticatorRealmChallengeHandler.submitLoginForm(reqURL, options, customAuthenticatorRealmChallengeHandler.submitLoginFormCallback);<br />
 });<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>Clicking the <strong>cancel</strong> button hides <em>AuthDiv</em>, shows <em>AppDiv</em> and notifies the framework that authentication failed.</p>
 <p>{% highlight javascript %}<br />
 $('#AuthCancelButton').bind('click', function () {<br />
@@ -115,7 +115,7 @@ $('#AuthCancelButton').bind('click', function () {<br />
     $('#AuthDiv').hide();<br />
     customAuthenticatorRealmChallengeHandler.submitFailure();<br />
 });<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <strong>submitLoginFormCallback</strong> function checks the response for the containing server challenge once again. If the challenge is found, the <em>handleChallenge</em> function is called again.</p>
 <p>{% highlight javascript %}<br />
 customAuthenticatorRealmChallengeHandler.submitLoginFormCallback = function(response) {<br />
@@ -124,7 +124,7 @@ customAuthenticatorRealmChallengeHandler.submitLoginFormCallback = function(resp
         customAuthenticatorRealmChallengeHandler.handleChallenge(response);<br />
     }<br />
 };<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2>Worklight Protocol</h2>
 <p>If your custom authenticator uses <code>WorklightProtocolAuthenticator</code>, some simplifications can be made:</p>
 <ul>

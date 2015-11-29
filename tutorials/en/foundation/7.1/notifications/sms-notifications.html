@@ -85,7 +85,7 @@ WL.Server.createEventSource({<br />
                 onPoll: getNotificationFromBackend<br />
         }<br />
 });<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ul>
 <li><code>name</code> – The name by which the event source is referenced.</li>
 <li><code>onDeviceSubscribe</code> – The adapter function that is called when the user subscription request is received.</li>
@@ -114,7 +114,7 @@ function sendSMS(userId, smsText){<br />
                 result: "Notification sent to user :: " + userId<br />
         };<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 </li>
@@ -210,7 +210,7 @@ These arguments are provided by the back-end system that calls this function.
 <p><loginModule name="rejectAll"><br />
         <className>com.worklight.core.auth.ext.RejectingLoginModule</className><br />
 </loginModule><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>An administrator can change the <code>authenticationConfig.xml</code> file to allow access to the Subscribe SMS servlet:<br />
 {% highlight xml %}<br />
 <resource id="subscribeServlet" securityTest="SubscribeServlet"><br />
@@ -225,7 +225,7 @@ These arguments are provided by the back-end system that calls this function.
 <p><loginModule name="smsHeader"><br />
         <className>com.worklight.core.auth.ext.HeaderLoginModule</className><br />
 </loginModule><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="setup">Setup</h2>
 <h3>SMSConfig.xml</h3>
 <p>To send SMS notifications, define in the <code>SMSConfig.xml</code> file the third-party gateway services that are supported by MobileFirst Server.<br />
@@ -233,12 +233,12 @@ These arguments are provided by the back-end system that calls this function.
 <gateway id="myGateway" hostname="yourhostname.com" port="80" programName="backendProgram" toParamName="to" textParamName="text"><br />
 <parameter encode="false" name="param1name" value="param1value"/><br />
 <parameter encode="false" name="param2name" value="param2value"/><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>application-descriptor.xml</h3>
 <p>For an application to use SMS notifications, specify the SMS gateway to use by adding an <code><smsGateway id=“…”/></code> element to the <code>application-descriptor.xml</code> file.<br />
 {% highlight xml %}<br />
 <smsGateway id=“myGateway”/><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The gateway ID in the <code>SMSConfig.xml</code> file must correspond to the SMS gateway ID in the <code>application-descriptor.xml</code> file.</p>
 <h2 id="emulator">Back-end emulator</h2>
 <p>The sample for this tutorial comes with a back-end system emulator, which you can use to simulate SMS notification submission by a back-end system.<br />

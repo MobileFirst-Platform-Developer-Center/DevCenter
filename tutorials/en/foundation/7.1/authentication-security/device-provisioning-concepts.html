@@ -58,7 +58,7 @@ No provisioning is the default setting for mobile applications.</p>
   <test realm="wl_anonymousUserRealm" isInternalUserID="true" /><br />
   <test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" /><br />
 </customSecurityTest><br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 <h2 id="auto">Auto provisioning</h2>
@@ -80,14 +80,14 @@ The certificate is issued to any device that requests it, therefore <strong>Auto
   <test realm="wl_authenticityRealm" /><br />
   <test realm="wl_deviceAutoProvisioningRealm" isInternalDeviceID="true" /><br />
 </customSecurityTest><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>{% highlight xml %}<br />
 <mobileSecurityTest name="mobileTests"><br />
   ...<br />
   <testAppAuthenticity/><br />
   <testDeviceId provisioningType="auto" /><br />
 </mobileSecurityTest><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Keystore</h3>
 <p>By default, MobileFirst Server uses its internal keystore to issue a certificate.<br />
 You can tell the server to use your own keystore by adjusting the <code>worklight.properties</code> file.<br />
@@ -119,7 +119,7 @@ ssl.keystore.path=conf/default.keystore<br />
 ssl.keystore.type=jks<br />
 #SSL certificate keystore password.<br />
 ssl.keystore.password=worklight<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>You must use <strong>Auto provisioning</strong> together with <em>application authenticity</em> protection.<br />
 For more information, see <a title="Application Authenticity Protection" href="../../authentication-security/application-authenticity-protection/">Application Authenticity Protection</a>.</p>
 <h2 id="custom">Custom provisioning</h2>

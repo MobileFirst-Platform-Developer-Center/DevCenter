@@ -43,7 +43,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
     onDeviceSubscribe: 'deviceSubscribeFunc',<br />
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',<br />
     securityTest:'PushApplication-strong-mobile-securityTest'<br />
-});{% endhighlight %</p>
+});{% endhighlight %}</p>
 <ul>
 <li><strong><code>name</code></strong> – a name by which the event source is referenced.</li>
 <li><strong><code>onDeviceSubscribe</code></strong> – an adapter function that is invoked when the user subscription request is received.</li>
@@ -54,7 +54,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
 {% highlight js %}poll: {<br />
     interval: 3,<br />
     onPoll: 'getNotificationsFromBackend'<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <ul>
 <li><strong><code>poll</code></strong> – a method that is used for notification retrieval.<br />
 The following parameters are required:</p>
@@ -84,9 +84,9 @@ The following parameters are required:</p>
 <p>    return {<br />
         result: "Notification sent to user :: " + userId<br />
     };<br />
-}{% endhighlight %</p>
+}{% endhighlight %}</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
-<p>{% highlight js %}function submitNotification(userId, notificationText) {{% endhighlight %</p>
+<p>{% highlight js %}function submitNotification(userId, notificationText) {{% endhighlight %}</p>
 <p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
 <p>{% highlight js %}{<br />
     userId: 'bjones',<br />
@@ -94,16 +94,16 @@ The following parameters are required:</p>
         customField: 3<br />
     },<br />
     getDeviceSubscriptions: function()[}<br />
-};{% endhighlight %</p>
+};{% endhighlight %}</p>
 <p>Next line:<br />
-{% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %</p>
+{% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
 {% highlight js %}if (userSubscription === null) {<br />
         return { result: "No subscription found for user :: " + userId };<br />
-    }{% endhighlight %</p>
+    }{% endhighlight %}</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
 {% highlight js %}var badgeDigit = 1;<br />
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %</p>
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %}</p>
 <ul>
 <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
 <li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
@@ -114,12 +114,12 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <p>{% highlight js %}<br />
 notification.MPNS.toast={};<br />
 notification.MPNS.toast.text1 = "Toast title";<br />
-notification.MPNS.toast.text2 = "Toast content";{% endhighlight %</p>
+notification.MPNS.toast.text2 = "Toast content";{% endhighlight %}</p>
 <blockquote><p>
 For more details refer to user documentation on WL.Server.createDefaultNotification API
 </p></blockquote>
 <p>The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.</p>
-<p>{% highlight js %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %</p>
+<p>{% highlight js %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h4>Several APIs exist for sending notifications:</h4>
 <ul>
@@ -130,21 +130,21 @@ For more details refer to user documentation on WL.Server.createDefaultNotificat
 <h2 id="clientSideApi"> Notification API - Client-side</h2>
 <ol>
 <li>Create an instance of the <code>WLClient</code> class.
-<p>{% highlight java %} WLClient client = WLClient.getInstance();{% endhighlight %</p>
+<p>{% highlight java %} WLClient client = WLClient.getInstance();{% endhighlight %}</p>
 </li>
 <li>Use the methods of the <code>WLPush</code> class.
 <ul>
 </ul>
 <p><code>getPush</code> - This method retrieves an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.</p>
-<p>{% highlight java %}WLPush push = client.getPush();{% endhighlight %<br />
+<p>{% highlight java %}WLPush push = client.getPush();{% endhighlight %}<br />
 <code>onReadyToSubscribeListener</code> - When connecting to a MobileFirst Server instance, the application attempts to register itself with the MPNS server to receive push notifications.</p>
 <p>{% highlight java %} push.onReadyToSubscribeListener = onReadyListener;<br />
-client.connect(connectListener); {% endhighlight %</p>
+client.connect(connectListener); {% endhighlight %}</p>
 <p><code>notificationListener</code> - Then the app receives the notification.</p>
 <p>{% highlight java %} push.notificationListener = notificationListener;<br />
-client.connect(connectListener); {% endhighlight %</p>
+client.connect(connectListener); {% endhighlight %}</p>
 <p>The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when registration is complete.</p>
-<p>{% highlight java %} public void onReadyToSubscribe() { ..... } {% endhighlight %</p>
+<p>{% highlight java %} public void onReadyToSubscribe() { ..... } {% endhighlight %}</p>
 </li>
 <li>To register an alias on a particular event source, use the <code>WLPush.registerEventSourceCallback</code> method. The API takes the following arguments:
 <ul>
@@ -153,13 +153,13 @@ client.connect(connectListener); {% endhighlight %</p>
 <code>Adaptername</code> - The adapter in which the event source is defined.<br />
 <code>EventSourceName</code> - The event source on which the alias is called.</p>
 <p>Example:<br />
-{% highlight java %}  WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter", "PushEventSource", this); {% endhighlight %</p>
+{% highlight java %}  WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter", "PushEventSource", this); {% endhighlight %}</p>
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
 <p>{% highlight java %}<br />
 public void onReadyToSubscribe() {<br />
       WLClient.getInstance().getPush().registerEventSourceCallback("newalias","PushAdapter","PushEventSource",this);<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <p><br clear="all" /></p>
@@ -174,7 +174,7 @@ public void onReadyToSubscribe() {<br />
 <p>Example:<br />
 {% highlight java %}<br />
 WLClient client = WLClient.getInstance(); client.getPush().subscribe("newalias",new WLPushOptions(), new MyListener());<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><code>MyListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
 <p><code>onSuccess</code> - Called when subscription succeeds.<br />
@@ -188,7 +188,7 @@ The API takes the following arguments:</p>
 <code>responseListener</code> - An object of type <code>WLResponseListener</code>, which is called when unsubscription completes. </ul>
 <p>{% highlight java %}<br />
 WLClient client = WLClient.getInstance(); client.getPush().unsubscribe("newalias",new MyListener());<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><code>MyListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
 <code>onSuccess</code> - Called when unsubscription succeeds.<br />
@@ -198,16 +198,16 @@ WLClient client = WLClient.getInstance(); client.getPush().unsubscribe("newalias
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
 <p>{% highlight java %}<br />
 WLClient client = WLClient.getInstance(); boolean bIsSubscribed = client.getPush().isSubscribed("newalias");<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
 <p>{% highlight java %}<br />
 class MyListener : WLOnReadyToSubscribeListener , WLEventSourceListener<br />
-{ {% endhighlight %</p>
+{ {% endhighlight %}</p>
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
 <p>{% highlight java %} WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter","PushEventSource", this );<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
 <p>{% highlight java %}<br />
 public void onReceive(String props, String payload) {<br />
@@ -216,7 +216,7 @@ public void onReceive(String props, String payload) {<br />
        MessageBox.Show("Push notification received " + payload);<br />
    });<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>If the application is not running, the notification icon appears on the notification bar at the top of the screen.</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotifications" target="_blank">Click to download</a> the MobileFirst project.</p>
@@ -235,5 +235,5 @@ public void onReceive(String props, String payload) {<br />
 {% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/submitNotification<br />
 [?] Enter the comma-separated parameters: "the-user-name", "hello!"<br />
-[?] How should the procedure be called? GET{% endhighlight %</li>
+[?] How should the procedure be called? GET{% endhighlight %}</li>
 </ol>

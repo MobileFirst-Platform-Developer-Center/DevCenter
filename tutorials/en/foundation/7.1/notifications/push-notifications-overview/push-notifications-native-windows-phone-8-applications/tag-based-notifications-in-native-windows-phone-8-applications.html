@@ -41,7 +41,7 @@ Tags represent topics of interest to the user and provide the ability to receive
         <name>my tag 2</name><br />
         <description>About my tag 2</description><br />
     </tag><br />
-</tags>{% endhighlight %</p>
+</tags>{% endhighlight %}</p>
 <h2 id="notificationsAPI">Notifications API</h2>
 <h3>API methods for tag notifications</h3>
 <h4>Client-side API</h4>
@@ -58,7 +58,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <ul>
 <li><code>WLNotificationListener</code><br />
     Defines the callback method to be notified when the notification arrives.</p>
-<p>{% highlight java %}client.getPush().setWLNotificationListener(listener){% endhighlight %</li>
+<p>{% highlight java %}client.getPush().setWLNotificationListener(listener){% endhighlight %}</li>
 <li>The <code>onMessage(props,payload)</code> method of <code>WLNotificationListener</code> is called when a push notification is received by the device.
 <ul>
 <li><code>props</code> - A JSON block that contains the notification properties of the platform.</li>
@@ -89,18 +89,18 @@ Tags represent topics of interest to the user and provide the ability to receive
 <ul>
 <li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
 <li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
-<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml %}<application ... id="NativeWP8TagNotifications" ...>{% endhighlight %</li>
+<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml %}<application ... id="NativeWP8TagNotifications" ...>{% endhighlight %}</li>
 </ul>
 </li>
 <li>If using the CLI:
 <p>{% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/sendBroadcastNotification<br />
 [?] Enter the comma-separated parameters: "NativeWP8TagNotifications","hello"<br />
-[?] How should the procedure be called? GET{% endhighlight %</p>
+[?] How should the procedure be called? GET{% endhighlight %}</p>
 <p>Or:</p>
 <p>{% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/sendTagNotification<br />
 [?] Enter the comma-separated parameters: "NativeWP8TagNotifications","hello","sample-tag1"<br />
 [?] How should the procedure be called? GET<br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 </ol>

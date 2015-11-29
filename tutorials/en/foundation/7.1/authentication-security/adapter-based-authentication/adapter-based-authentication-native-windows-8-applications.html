@@ -39,7 +39,7 @@ public override bool isCustomResponse(WLResponse response)<br />
         return true;<br />
     }<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 </li>
 <li>The <code>handleChallenge</code> method is called after the <code>isCustomResponse</code> method returns <code>true</code>.<br />
 Use this method to present the login form. Different approaches are available.<br />
@@ -52,7 +52,7 @@ async () =><br />
      MainPage._this.LoginGrid.Visibility = Visibility.Visible;<br />
   });<br />
 }<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ul>
 <p>From the login form, credentials are passed to the <code>CustomAdapterChallengeHandler</code> class. The <code>submitAdapterAuthentication()</code> method is used to send input data to the authenticator.<br />
@@ -63,7 +63,7 @@ public void sendResponse(String username, String password)<br />
    invData.setParameters(new Object[] { username, password });<br />
    submitAdapterAuthentication(invData, new WLRequestOptions());<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>MainPage</h3>
 <p>Within the <code>MainPage</code> class, connect to MobileFirst Server, register your <code>challengeHandler</code> class, and invoke the protected adapter procedure.<br />
@@ -74,14 +74,14 @@ WLClient wlClient = WLClient.getInstance();</p>
 wlClient.registerChallengeHandler((BaseChallengeHandler<JObject>)ch);</p>
 <p>MyResponseListener mylistener = new MyResponseListener(this);<br />
 wlClient.connect(mylistener);</p>
-<p>{% endhighlight %</p>
+<p>{% endhighlight %}</p>
 <p>Because the native API is not protected by a defined security test, no login form is presented during server connection.<br />
 Invoke the protected adapter procedure. The login form is presented by the  challenge handler.<br />
 {% highlight csharp %}<br />
  WLResourceRequest adapter = new WLResourceRequest("/adapters/AuthAdapter/getSecretData", "GET");<br />
  MyInvokeListener listener = new MyInvokeListener(this);<br />
  adapter.send(listener);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth" target="_blank">Click to download</a> the MobileFirst project.</p>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuthWin8" target="_blank">Click to download</a> the Native project.</p>

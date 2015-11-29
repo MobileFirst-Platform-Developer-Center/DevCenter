@@ -26,7 +26,7 @@ When authentication is complete, it does the opposite.</p>
       <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('AuthRealm', {onSuccess:WL.Client.reloadApp})" /><br />
       <div id="ResponseDiv"></div><br />
 </div><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.<br />
 The <code>ResponseDiv</code> element is used to display the <code>getSecretData</code> response.</p>
 <h3>AuthDiv</h3>
@@ -37,7 +37,7 @@ The <code>ResponseDiv</code> element is used to display the <code>getSecretData<
         <input type="password" placeholder="Enter password" id="AuthPassword"/><br /><br />
         <input type="button" class="formButton" value="Submit" id="AuthSubmitButton" /><input type="button" class="formButton" value="Cancel" id="AuthCancelButton" /><br />
 </div><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ul>
 <li>The <code>AuthInfo</code> element displays error messages.</li>
 <li>The <code>AuthUsername</code> and <code>AuthPassword</code> elements are used to enter credentials.</li>
@@ -49,7 +49,7 @@ The <code>ResponseDiv</code> element is used to display the <code>getSecretData<
 Supply a realm name as a parameter.</p>
 <p>{% highlight javascript %}<br />
 var AuthRealmChallengeHandler = WL.Client.createChallengeHandler("AuthRealm");<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>The <code>isCustomResponse</code> function of the challenge handler is called each time a response is received from the server. That function is used to detect whether the response contains data that is related to this challenge handler. The function returns <code>true</code> or <code>false</code>.</p>
 <p>{% highlight javascript %}<br />
 AuthRealmChallengeHandler.isCustomResponse = function(response) {<br />
@@ -62,7 +62,7 @@ AuthRealmChallengeHandler.isCustomResponse = function(response) {<br />
 		return false;<br />
 	}<br />
 };<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>If the <code>isCustomResponse</code> function returns <code>true</code>, the framework calls the <code>handleChallenge</code> function. This function is used to perform required actions, such as hide the application screen or show the login screen.</p>
 <p>{% highlight javascript %}<br />
 AuthRealmChallengeHandler.handleChallenge = function(response){<br />
@@ -80,7 +80,7 @@ AuthRealmChallengeHandler.handleChallenge = function(response){<br />
 		AuthRealmChallengeHandler.submitSuccess();<br />
 	}<br />
 };<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <ul>
 <li>If <code>authStatus</code> value is <code>credentialsRequired</code>, the function shows the login screen, cleans up the password field, and shows an error message (if applicable).</li>
 <li>If <code>authStatus</code> value is <code>complete</code>, the function shows <code>AppDiv</code>, hides <code>AuthDiv</code>, and notifies the framework that authentication completed successfully.</li>
@@ -104,7 +104,7 @@ $("#AuthSubmitButton").bind('click', function () {<br />
     };</p>
 <p>    AuthRealmChallengeHandler.submitAdapterAuthentication(invocationData, {});<br />
 });<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth" target="_blank">Click to download</a> the MobileFirst project.</p>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/AdapterAuth1.png"><img src="{{ site.baseurl }}/assets/backup/AdapterAuth1-1024x586.png" alt="AdapterAuth" width="1365" height="724" class="aligncenter size-large wp-image-11510" /></a></p>

@@ -29,7 +29,7 @@ relevantTo: [android]
 <p>{% highlight java %}<br />
 // Initialize the IMFDataManager<br />
 DataManager manager = DataManager.initialize(context, new URL(CLOUDANT_PROXY_URL));<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The value for <code>cloudantProxyUrl</code> is the URL of the MobileFirst Data Proxy which was configured during installation. The URL includes the IP address, host, and context root that you have defined.<br />
 For example: <code>http://localhost:10080/imf-data-proxy</code>.<br />
 In the native Android sample that comes with this tutorial, the value for the <code>cloudantProxyUrl</code> is set in the <code>bluelist.properties</code> file.</p>
@@ -52,7 +52,7 @@ storeTask.continueWith(new Continuation<Store, Void>() {<br />
         return null;<br />
     }<br />
 });<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="creatingRemote">Creating remote data stores</h2>
 <p>You can also create a Store object to allow your application to access a remote database.</p>
 <p>{% highlight java %}<br />
@@ -72,7 +72,7 @@ storeTask.continueWith(new Continuation<Store, Void>() {<br />
         return null;<br />
     }<br />
 });<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="permissions">Setting user permissions for remote stores</h2>
 <p>You can set specific permissions for users to access remote stores.</p>
 <p>{% highlight java %}<br />
@@ -89,13 +89,13 @@ Task<Boolean> permissionsTask = manager.setCurrentUserPermissions(DataManager.DB
         return null;<br />
     }<br />
 });<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 <strong>Note:</strong> In the sample, the user is authenticated via OAuth. OAuth has been configured through adapter-based authentication. You can find further instructions on setting up access with OAuth capabilities and the MobileFirst Data Proxy in the topic about configuring OAuth security, in the user documentation.</p>
 <h2 id="modeling">Modeling data for Android applications</h2>
 <p>In Android applications, you can use the <code>DataObjectMapper</code> class to map native objects to JSON document format. When you create a data store with the <code>DataManager</code> API, you can create a new <code>DataObjectMapper</code> to set on the <code>Store</code> object.<br />
 {% highlight java %}<br />
 localStore.setMapper(new DataObjectMapper());<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 In the sample, a custom <code>TodoItem</code> class allows you to store custom data as objects in our application. When creating a custom <code>DataObjectMapper</code> class, make sure that it meets the following requirements:</p>
 <ul>
 <li>Conform to the IMFDataObject protocol.</li>
@@ -126,12 +126,12 @@ public class TodoItem implements DataObject {</p>
         this.metadata = metadata;<br />
     }<br />
 }</p>
-<p>{% endhighlight %</p>
+<p>{% endhighlight %}</p>
 <p>You must then register the class and data type with the <code>DataObjectMapper</code>. In the sample, the <code>DataStoreManager</code> instance does that after the store is created.<br />
 {% highlight java %}<br />
 //using the existing store with mapper<br />
 localStore.getMapper().setDataTypeForClassName("TodoItem", TodoItem.class.getCanonicalName());<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="creating">Creating and updating data</h2>
 <p>Using the same operation, you can save new objects and save changes to existing objects in the local data store.</p>
 <h3>Creating, saving, and updating Todo Items</h3>
@@ -158,7 +158,7 @@ saveTask.continueWith(new Continuation<Object, Void>() {<br />
         return null;<br />
     }<br />
 });<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 <strong>Note:</strong> When saving an object, it is good practice to use the new object that is returned by the <code>task.getResult()</code> method, to avoid errors caused by stale objects and to maintain a consistent experience.</p>
 <h3>Deleting data</h3>
 <p>To delete an object in a data store, pass the object to the <span class="inline-code">LocalStore.delete(<em>objecttodelete</em>)</span> method.</p>
@@ -181,7 +181,7 @@ deleteTask.continueWith(new Continuation<String, Void>() {<br />
         return null;<br />
     }<br />
 });</p>
-<p>{% endhighlight %</p>
+<p>{% endhighlight %}</p>
 <h3>Querying data</h3>
 <p>You can query for objects that have an object mapper. To run a query for objects, create a Cloudant query with the query filters on data type. Run the query against a Store object. For more information about query and related operations, see the topics about querying, in the user documentation.</p>
 <h2 id="sync">Supporting synchronization and offline storage</h2>
@@ -208,7 +208,7 @@ pullTask.continueWith(new Continuation<PullReplication, Object>() {<br />
         return null;<br />
     }<br />
 });<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h3>Push replication</h3>
 <p>When push replication runs, the data from the local database within the mobile device is sent to the remote database.<br />
 {% highlight java %}<br />
@@ -231,7 +231,7 @@ pushTask.continueWith(new Continuation<PushReplication, Object>() {<br />
         return null;<br />
     }<br />
 });<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p><strong>Note:</strong> The code snippets above might be different from the code that you can see in the sample. These snippets have been created to give the clearest and most understandable outline of the APIs and how they are used. For the sample to be easier to use, all the implementation for the above operations can be found in <code>DataStoreManager</code> and <code>MainActivity</code>.</p>
 <h2 id="running">Running the Android sample</h2>
 <p>Make sure that you have properly configured and started the following instances:</p>
@@ -286,7 +286,7 @@ storeTask.continueWith(new Continuation<Store, Void>() {<br />
         return null;<br />
      }<br />
 });<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 <li>When replicating with an encrypted local store, you must pass a <code>KeyProvider</code> into <code>pullReplicationForStore()</code> or <code>pushReplicationForStore()</code>.<br />
 {% highlight java %}<br />
@@ -298,7 +298,7 @@ KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"passw0rd","user")
 Task<PushReplication> pullTask = manager.pullReplicationForStore(name, keyProvider);</p>
 <p>// push replication<br />
 Task<PushReplication> pushTask = manager.pushReplicationForStore(name, keyProvider);<br />
-{% endhighlight %
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="flow">BlueList application flow</h2>
@@ -306,7 +306,7 @@ Task<PushReplication> pushTask = manager.pushReplicationForStore(name, keyProvid
 <p>{% highlight java %}<br />
     WLClient client = WLClient.createInstance(context);<br />
     client.registerChallengeHandler(blueListChallengeHandler);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>For simplicity, the sample silently logs in a user by calling <code>CloudantAuthenticationAdapter</code> with correct user name and password parameters. This is completed in the <code>BlueListChallengeHandler</code>.</p>
 <p>{% highlight java %}<br />
 @Override<br />
@@ -318,7 +318,7 @@ public void handleChallenge(WLResponse wlResponse) {<br />
     options.setTimeout(30000);<br />
     submitAdapterAuthentication(invocationData, options);<br />
 }<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>After authentication, the database is configured in the <code>DataStoreManager</code> <code>init</code> method. This database configuration consists of the following steps:</p>
 <ul>
 <li>Initializing the SDK</li>

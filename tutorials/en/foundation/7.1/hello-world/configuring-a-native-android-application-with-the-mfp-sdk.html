@@ -29,27 +29,27 @@ relevantTo: [android]
 <li>Add the following lines below <code>apply plugin: 'com.android.application'</code>:<br />
         {% highlight xml %}repositories{<br />
     jcenter()<br />
-}{% endhighlight %</li>
+}{% endhighlight %}</li>
 <li>Add the following inside <code>android</code>:<br />
         {% highlight xml %}packagingOptions {<br />
         pickFirst 'META-INF/ASL2.0'<br />
         pickFirst 'META-INF/LICENSE'<br />
         pickFirst 'META-INF/NOTICE'<br />
-}{% endhighlight %</li>
+}{% endhighlight %}</li>
 <li>Add the following lines inside <code>dependencies</code>:<br />
 {% highlight xml %}compile group: 'com.ibm.mobile.foundation',<br />
     name: 'ibmmobilefirstplatformfoundation',<br />
     version: '7.1.0.0',<br />
     ext: 'aar',<br />
-    transitive: true{% endhighlight %</li>
+    transitive: true{% endhighlight %}</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:<br />
 {% highlight xml %}<br />
 <uses-permission android:name="android.permission.INTERNET"/><br />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br />
 <uses-permission android:name="android.permission.GET_TASKS" /><br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Add the MobileFirst UI activity:<br />
-{% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %</li>
+{% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %}</li>
 </ol>
 <h2 id="serverEntity">Deploying the server-side entity to MobileFirst Server</h2>
 <p>Now that the native application is set up with the MobileFirst Native SDK, it is also required that MobileFirst Server recognize it after the SDK is used in the application. For this, you need a MobileFirst Server instance and a MobileFirst project:</p>
@@ -57,7 +57,7 @@ relevantTo: [android]
 <p>In <strong>Terminal</strong>, navigate to the location where you want to create the MobileFirst Backend project and run the following commands:</p>
 <p>{% highlight xml %}mfp create your-project-name-here<br />
 cd your-project-name<br />
-mfp start{% endhighlight %</p>
+mfp start{% endhighlight %}</p>
 <p>After the project is created and the server is running, the server-side entity can be created and deployed to the server.<br />
 The next step adds the following files to the native project, as explained in <a href="#insideNativeApp">Inside a native application containing the MobileFirst Native SDK</a>: <code>wlclient.properties</code>, <code>application-descriptor.xml</code>, <code>mobilefirst</code> folder.</p>
 <h3>Deploying the server-side entity</h3>
@@ -122,9 +122,9 @@ The next step adds the following files to the native project, as explained in <a
 <uses-permission android:name="android.permission.INTERNET"/><br />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br />
 <uses-permission android:name="android.permission.GET_TASKS" /><br />
-{% endhighlight %</li>
+{% endhighlight %}</li>
 <li>Add the MobileFirst UI activity:<br />
-{% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %</li>
+{% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %}</li>
 </ol>
 <p>The NativeAPI contains the following components:</p>
 <ul>

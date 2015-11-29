@@ -46,7 +46,7 @@ WL.Server.setEventHandlers([<br />
                                 unsubscribeSMS, WL.Server.configuration['sms.gateway.id']<br />
                                 )<br />
                             ]);<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 The name-value parameters sent from the SMS gateway that match the filters are passed to <code>handlerFunction</code>. For example, if the SMS gateway is sending the following parameters:</p>
 <ul>
 <li><code>from</code>: The number that sends the SMS</li>
@@ -60,7 +60,7 @@ The name-value parameters sent from the SMS gateway that match the filters are p
 <p>MobileFirst Server uses SMS notification to send SMS messages. Before SMS messages can be sent, the server must subscribe to a phone number.<br />
 {% highlight js %}<br />
 var subscription = WL.Server.subscribeSMS(eventSourceID, phoneNumber, gatewayID);<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 This method takes the following parameters:</p>
 <ul>
 <li><code>eventSourceId</code>: The event source to which the phone number is subscribing.</li>
@@ -79,11 +79,11 @@ function sendSMS(phoneNumber, smsText) {</p>
   WL.Server.notifyDeviceSubscription(subscription, notification);</p>
 <p>  return { result: "Notification sent to user :: " + phoneNumber };<br />
 }<br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 A phone number can unsubscribe from the event source by a call to the following method:<br />
 {% highlight js %}<br />
 WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <h2 id="setup">Setup</h2>
 <p>The <code>SMSConfig.xml</code> file specifies gateway details for both receiving and sending SMS messages.<br />
 {% highlight xml %}<br />
@@ -91,19 +91,19 @@ WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);<br />
     <parameter encode="false" name="param1name" value="param1value"/><br />
     <parameter encode="false" name="param2name" value="param2value"/><br />
 </gateway><br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>You can externalize the keywords, gateway identifier, and other parameters that the SMS event handler uses in the <code>worklight.properties</code> configuration file.<br />
 {% highlight js %}<br />
 sms.keyword.subscribe=sub<br />
 sms.keyword.unsubscribe=unsub<br />
 sms.gateway.id=myGateway<br />
-{% endhighlight %</p>
+{% endhighlight %}</p>
 <p>By default, the <code>SubscribeServlet</code> object that receives the request from the gateway is protected by a security test. This security test takes a <code>RejectingLoginModule</code> parameter which by default rejects any request. To enforce the security mechanism that is supported by your gateway, comment out, or modify the default security test.<br />
 {% highlight xml %}<br />
 <resource id="subscribeServlet" securityTest="SubscribeServlet"><br />
   <urlPatterns>/subscribeSMS*;/receiveSMS*;/ussd*</urlPatterns><br />
 </resource><br />
-{% endhighlight %<br />
+{% endhighlight %}<br />
 If you are using a reverse proxy in front of MobileFirst Server, you can specify a mapping to the reverse proxy to allow only requests from specific hosts or IP addresses (SMS gateway). If the application server that is running MobileFirst directly receives the request from a gateway, the application server needs to be configured to allow requests from the specific hosts or IP addresses.</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/SMS2WayProject" target="_blank">Click to download</a> the MobileFirst project.</p>
