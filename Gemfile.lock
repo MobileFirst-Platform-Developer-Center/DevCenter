@@ -2,6 +2,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.8)
+    byebug (8.2.1)
+    coderay (1.1.0)
     colorator (0.1)
     colored (1.2)
     ethon (0.8.0)
@@ -36,11 +38,19 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     mercenary (0.3.5)
+    method_source (0.8.2)
     mini_portile (0.6.2)
     nokogiri (1.6.6.4)
       mini_portile (~> 0.6.0)
     parallel (1.6.1)
     pdfkit (0.8.2)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
     rb-fsevent (0.9.6)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -48,6 +58,7 @@ GEM
     rouge (1.10.1)
     safe_yaml (1.0.4)
     sass (3.4.19)
+    slop (3.6.0)
     typhoeus (0.8.0)
       ethon (>= 0.8.0)
     wkhtmltopdf-binary (0.9.9.3)
@@ -62,6 +73,8 @@ DEPENDENCIES
   jekyll-feed
   jekyll-paginate
   pdfkit
+  pry
+  pry-byebug
   redcarpet
   wkhtmltopdf-binary
 
