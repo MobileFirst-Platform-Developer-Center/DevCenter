@@ -1,5 +1,3 @@
-require 'pry'
-require 'pry-byebug'
 module Jekyll
   # This generates a Page showing redirecting to new_url
   class RedirectPage < Page
@@ -32,6 +30,12 @@ module Jekyll
           old_url = old_url.sub '/tutorials/en/product-integration/7.1/', 'documentation/integration-7-1/'
           old_url = old_url.sub '/tutorials/en/product-integration/7.0/', 'documentation/integration-7-0/'
           old_url = old_url.sub '/tutorials/en/product-integration/6.3/', 'documentation/integration-6-3/'
+
+          old_url = old_url.sub '/learn-more/7.1/scalability-and-hardware-sizing/', 'additional-documentation/scalability-hardware-sizing-7-1/'
+          old_url = old_url.sub '/learn-more/7.0/scalability-and-hardware-sizing/', 'additional-documentation/scalability-hardware-sizing-7-0/'
+          old_url = old_url.sub '/learn-more/6.3/scalability-and-hardware-sizing/', 'additional-documentation/scalability-hardware-sizing-6-3/'
+
+
           next unless old_url != page.url
           new_url = site.baseurl + page.url
           site.pages << RedirectPage.new(site, site.source, File.join(old_url), new_url)
