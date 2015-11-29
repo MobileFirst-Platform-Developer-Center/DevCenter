@@ -52,11 +52,11 @@ This is required because the main application HTML file loads the MobileFirst cl
 <li>When you implement multipage navigation in the Windows Phone 8 environment, you <strong>must</strong> change the URL each time you use the jQuery <code>load()</code> API method. <em>The example project for this training module demonstrates this task in detail.</em>
 <p>Add <code>/www/default/</code> at the beginning of the URL path string. For example:<br />
 Change<br />
-{% highlight js %}$(&quot;#pagePort&quot;).load(&quot;pages/MainPage.html&quot;, function(){<br />
+{% highlight js %}$("#pagePort").load("pages/MainPage.html", function(){<br />
     (currentPage.init);<br />
 });{% endhighlight %</p>
 <p>To<br />
-{% highlight js %}$(&quot;#pagePort&quot;).load(&quot;/www/default/pages/MainPage.html&quot;, function(){<br />
+{% highlight js %}$("#pagePort").load("/www/default/pages/MainPage.html", function(){<br />
     (currentPage.init);<br />
 });{% endhighlight %</li>
 <li>When you implement multipage navigation for the Windows Phone 8 environment, and jQuery Mobile is used with the <code>changePage()</code> API method, a jQuery Mobile defect prevents it from properly working.<br />
@@ -77,16 +77,16 @@ To overcome the defect, consult the changes that need to be made in the <code>.j
 <code>callbackFunction</code> - A JavaScript function to run when the loading completes.</p>
 <h3>Example</h3>
 <h4>JavaScript</h4>
-<p>{% highlight js %}$(&quot;#pagePort&quot;).load(path + &quot;pages/MainPage.html&quot;, function(){<br />
-    $.getScript(path + &quot;js/MainPage.js&quot;, function() {<br />
+<p>{% highlight js %}$("#pagePort").load(path + "pages/MainPage.html", function(){<br />
+    $.getScript(path + "js/MainPage.js", function() {<br />
         if (currentPage.init) {<br />
             currentPage.init();<br />
         }<br />
     });<br />
 });{% endhighlight %</p>
 <h4>HTML</h4>
-<p>{% highlight html %}&lt;!-- This is a placeholder for dynamic page content --&gt;<br />
-&lt;div id=&quot;pagePort&quot;&gt;&lt;/div&gt;{% endhighlight %</p>
+<p>{% highlight html %}<!-- This is a placeholder for dynamic page content --><br />
+<div id="pagePort"></div>{% endhighlight %</p>
 <p>This code loads the <code>MainPage.html</code> file and inserts its content into the <code>pagePort DIV</code> element.<br />
 JavaScript (and CSS, if needed) references from the <code>MainPage.html</code> are loaded into the DOM.</p>
 <h2 id="implementPageNavigationHistory">Implementing page navigation with history</h2>
@@ -97,7 +97,7 @@ A reference to the currently loaded page must be preserved, too, by using a glob
 A reference to the file path is needed for Windows Phone 8.</p>
 <p>{% highlight js %}var pagesHistory = [];<br />
 var currentPage = {};<br />
-var path = &quot;&quot;;{% endhighlight %</p>
+var path = "";{% endhighlight %</p>
 <h3>Implementing page navigation with history: Step 1</h3>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/03_02_navigation_history_1.jpg"><img src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_1.jpg" alt="03_02_navigation_history_1" width="400" height="180" class="aligncenter size-full wp-image-14707" /></a></p>
 <ol>
@@ -106,9 +106,9 @@ var path = &quot;&quot;;{% endhighlight %</p>
 function wlCommonInit() {<br />
     // Special case for Windows Phone 8 only.<br />
     if (WL.Client.getEnvironment() == WL.Environment.WINDOWS_PHONE_8) {<br />
-        path = &quot;/www/default/&quot;;<br />
+        path = "/www/default/";<br />
     }</p>
-<p>    $(&quot;#pagePort&quot;).load(path + &quot;pages/MainPage.html&quot;,function(){<br />
+<p>    $("#pagePort").load(path + "pages/MainPage.html",function(){<br />
        if (currentPage.init) {<br />
            currentPage.init();<br />
        }<br />
@@ -117,7 +117,7 @@ function wlCommonInit() {<br />
 <li>The <code>MainPage.js</code> file is loaded as a part of <code>MainPage.html</code>.
 <p>{% highlight js %}currentPage = {};<br />
 currentPage.init = function() {<br />
-    WL.Logger.debug(&quot;MainPage :: init&quot;);<br />
+    WL.Logger.debug("MainPage :: init");<br />
 };{% endhighlight %</li>
 <li>The currentPage object is declared.</li>
 <li>The <code>currentPage.init</code> function is declared.</li>
@@ -132,7 +132,7 @@ currentPage.init = function() {<br />
 <li>The <code>currentPage.init</code> function is declared.
 <p>{% highlight js %}currentPage = {};<br />
 currentPage.init = function(){<br />
-    WL.Logger.debug(“page1 :: init&quot;);<br />
+    WL.Logger.debug(“page1 :: init");<br />
 };{% endhighlight %</li>
 <li>When the loading of <code>Page1.html</code> completes, a new <code>currentPage.init</code> method is called.</li>
 </ol>
@@ -142,8 +142,8 @@ currentPage.init = function(){<br />
 <li>The previous HTML file name is retrieved from the <code>PagesHistory</code> stack (<code>MainPage.html</code>).</li>
 <li>It is loaded and injected into <code>#pagePort DIV</code>.
 <p>{% highlight js %}currentPage.back = function(){<br />
-    WL.Logger.debug(&quot;Page1 :: back&quot;);<br />
-    $(&quot;#pagePort&quot;).load(pagesHistory.pop(),<br />
+    WL.Logger.debug("Page1 :: back");<br />
+    $("#pagePort").load(pagesHistory.pop(),<br />
         function() {<br />
             if (currentPage.init) {<br />
                currentPage.init();<br />
@@ -155,7 +155,7 @@ currentPage.init = function(){<br />
 <li>The <code>currentPage.init</code> function is declared.
 <p>{% highlight js %}currentPage = {};<br />
 currentPage.init = function(){<br />
-    WL.Logger.debug(&quot;MainPage :: init&quot;);<br />
+    WL.Logger.debug("MainPage :: init");<br />
 };{% endhighlight %</li>
 <li>When the <code>MainPage.html</code> file is loaded, the <code>currentPage.init</code> method is called.</li>
 </ol>

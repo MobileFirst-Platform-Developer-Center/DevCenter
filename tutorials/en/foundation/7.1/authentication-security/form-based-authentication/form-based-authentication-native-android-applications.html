@@ -46,7 +46,7 @@ The default login form that returns from the MobileFirst Server contains the <co
 {% highlight java %}<br />
 public boolean isCustomResponse(WLResponse response) {<br />
     if (response == null || response.getResponseText() == null ||<br />
-            response.getResponseText().indexOf(&quot;j_security_check&quot;) == -1) {<br />
+            response.getResponseText().indexOf("j_security_check") == -1) {<br />
         return false;<br />
     }<br />
     return true;<br />
@@ -92,10 +92,10 @@ public void submitLogin(int resultCode, String userName, String password, boolea
     if (resultCode != Activity.RESULT_OK || back) {<br />
         submitFailure(cachedResponse);<br />
     } else {<br />
-        HashMap&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();<br />
-        params.put(&quot;j_username&quot;, userName);<br />
-        params.put(&quot;j_password&quot;, password);<br />
-        submitLoginForm(&quot;/j_security_check&quot;, params, null, 0, &quot;post&quot;);<br />
+        HashMap<String, String> params = new HashMap<String, String>();<br />
+        params.put("j_username", userName);<br />
+        params.put("j_password", password);<br />
+        submitLoginForm("/j_security_check", params, null, 0, "post");<br />
     }<br />
 }<br />
 {% endhighlight %</p>
@@ -118,7 +118,7 @@ client.registerChallengeHandler(challengeHandler);<br />
 </li>
 <li>Invoke the protected adapter procedure:<br />
 {% highlight java %}<br />
-URI adapterPath = new URI(&quot;/adapters/AuthAdapter/getSecretData&quot;);<br />
+URI adapterPath = new URI("/adapters/AuthAdapter/getSecretData");<br />
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
 request.send(new MyResponseListener());<br />
 {% endhighlight %

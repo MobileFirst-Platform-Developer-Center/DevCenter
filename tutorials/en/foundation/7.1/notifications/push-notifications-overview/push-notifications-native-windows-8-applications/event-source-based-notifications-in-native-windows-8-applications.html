@@ -70,13 +70,13 @@ The following parameters are required:</p>
 <p>{% highlight js %}function submitNotification(userId, notificationText) {<br />
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>    if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }</p>
 <p>    var badgeDigit = 1;<br />
-    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});</p>
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});</p>
 <p>        WL.Server.notifyAllDevices(userSubscription, notification);</p>
 <p>    return {<br />
-        result: &quot;Notification sent to user :: &quot; + userId<br />
+        result: "Notification sent to user :: " + userId<br />
     };<br />
 }{% endhighlight %</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
@@ -93,11 +93,11 @@ The following parameters are required:</p>
 {% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
 {% highlight js %}if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }{% endhighlight %</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
 {% highlight js %}var badgeDigit = 1;<br />
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});{% endhighlight %</p>
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %</p>
 <ul>
 <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
 <li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
@@ -140,13 +140,13 @@ public void onReadyToSubscribe()<br />
 </ul>
 <p>Example:</p>
 <p>{% highlight csharp %}<br />
-WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myPush&quot;, &quot;PushAdapter&quot;, &quot;PushEventSource&quot;, this);<br />
+WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);<br />
 {% endhighlight %</p>
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
 <p>{% highlight csharp %}<br />
 public void onReadyToSubscribe()<br />
 {<br />
-  WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myPush&quot;, &quot;PushAdapter&quot;,&quot;PushEventSource&quot;, this);<br />
+  WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter","PushEventSource", this);<br />
 }{% endhighlight %</p>
 <p><br clear="all" /></p>
 <h3>Subscribing to push notification</h3>
@@ -161,7 +161,7 @@ public void onReadyToSubscribe()<br />
 <p>{% highlight csharp %}<br />
 WLPush push = WLClient.getInstance().getPush();<br />
 MySubscribeListener mySubListener = new MySubscribeListener();<br />
-push.subscribe(&quot;myPush&quot;, null, mySubListener);<br />
+push.subscribe("myPush", null, mySubListener);<br />
 {% endhighlight %</p>
 <p><code>MySubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
@@ -179,7 +179,7 @@ push.subscribe(&quot;myPush&quot;, null, mySubListener);<br />
 <p>{% highlight csharp %}<br />
 WLPush push = WLClient.getInstance().getPush();<br />
 MyUnsubscribeListener myUnsubListener = new MyUnsubscribeListener();<br />
-push.unsubscribe(&quot;myPush&quot;, myUnsubListener);<br />
+push.unsubscribe("myPush", myUnsubListener);<br />
 {% endhighlight %</p>
 <p><code>MyUnsubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
@@ -189,7 +189,7 @@ push.unsubscribe(&quot;myPush&quot;, myUnsubListener);<br />
 <h3>Additional client-side API methods</h3>
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
 <p>{% highlight csharp %}<br />
-WLClient.getInstance().getPush().isSubscribed(&quot;myPush&quot;);<br />
+WLClient.getInstance().getPush().isSubscribed("myPush");<br />
 {% endhighlight %</p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
@@ -198,14 +198,14 @@ class OnReadyToSubscribeListener : WLOnReadyToSubscribeListener, WLEventSourceLi
 {% endhighlight %</p>
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
 <p>{% highlight csharp %}<br />
-WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myPush&quot;, &quot;PushAdapter&quot;, &quot;PushEventSource&quot;, this);<br />
+WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);<br />
 {% endhighlight %</p>
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
 <p>{% highlight csharp %}<br />
 public void onReceive(String props, String payload)<br />
 {<br />
-     Debug.WriteLine(&quot;Props: &quot; + props);<br />
-     Debug.WriteLine(&quot;Payload: &quot; + payload);</p>
+     Debug.WriteLine("Props: " + props);<br />
+     Debug.WriteLine("Payload: " + payload);</p>
 <p>}<br />
 {% endhighlight %</p>
 <h2 id="sample">Sample application</h2>
@@ -223,6 +223,6 @@ public void onReceive(String props, String payload)<br />
 <li>If using the CLI, for example:<br />
 {% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/submitNotification<br />
-[?] Enter the comma-separated parameters: &quot;the-user-name&quot;, &quot;hello!&quot;<br />
+[?] Enter the comma-separated parameters: "the-user-name", "hello!"<br />
 [?] How should the procedure be called? GET{% endhighlight %</li>
 </ol>

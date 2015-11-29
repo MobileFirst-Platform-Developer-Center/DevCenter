@@ -48,15 +48,15 @@ relevantTo: [hybrid]
 <p>The expiration period of a scope token (realm name) is defined by the expiration attribute of the login module that is associated with the realm.</p>
 <p>If you want to configure a login module called <code>StrongDummy</code> with an expiration attribute, edit the <code>authenticationConfig.xml</code> file in the login module section as follows::</p>
 <p>{% highlight xml %}<br />
-&lt;loginModule name=&quot;StrongDummy&quot; expirationInSeconds=&quot;1800&quot;&gt;<br />
-     &lt;className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule&lt;/className&gt;<br />
-&lt;/loginModule&gt;<br />
+<loginModule name="StrongDummy" expirationInSeconds="1800"><br />
+     <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
+</loginModule><br />
 {% endhighlight %</p>
 <p>If you want to configure a realm called <code>SampleAppRealm</code> that is associated with <code>StrongDummy</code>, edit the <code>authenticationConfig.xml</code> file in the realm section as follows:</p>
 <p>{% highlight xml %}<br />
-&lt;realm name=&quot;SampleAppRealm&quot; loginModule=&quot;StrongDummy&quot;&gt;<br />
-	&lt;className&gt;com.worklight.core.auth.ext.FormBasedAuthenticator&lt;/className&gt;<br />
-&lt;/realm&gt;<br />
+<realm name="SampleAppRealm" loginModule="StrongDummy"><br />
+	<className>com.worklight.core.auth.ext.FormBasedAuthenticator</className><br />
+</realm><br />
 {% endhighlight %</p>
 <h2 id="mobilefirst_configuration_keystore">Configuring MobileFirst Server to use a keystore</h2>
 <p>To use this feature, preferably use or create your own keystore and configure MobileFirst Server to use it.</p>
@@ -90,52 +90,52 @@ relevantTo: [hybrid]
 <li> Add following entry in environment variables of your deployment. One of the ways is to add it into server.env, which locates in the same directory of your server.xml.<br />
 <code>publicKeyServerUrl=URL_to_authorization_server</code><br />
 where <code>URL_to_authorization_server</code> is:<br />
-<code>http://&lt;ip-address-to-MobileFirst-server&gt;:&lt;port-number&gt;/&lt;project-context-root&gt;</code></li>
+<code>http://<ip-address-to-MobileFirst-server>:<port-number>/<project-context-root></code></li>
 <li>Add a security constraint and a security role to the <code>web.xml</code> file of your external server, as shown below:
 <p>{% highlight xml %}<br />
-&lt;security-constraint&gt;<br />
-   &lt;web-resource-collection&gt;<br />
-      &lt;web-resource-name&gt;RESTServlet&lt;/web-resource-name&gt;<br />
-      &lt;url-pattern&gt;/api/protected&lt;/url-pattern&gt;<br />
-   &lt;/web-resource-collection&gt;<br />
-   &lt;auth-constraint&gt;<br />
-      &lt;role-name&gt;TAIUserRole&lt;/role-name&gt;<br />
-   &lt;/auth-constraint&gt;<br />
-&lt;/security-constraint&gt;</p>
-<p>&lt;security-role id=&quot;SecurityRole_TAIUserRole&quot; &gt;<br />
-   &lt;description&gt;This is the role that MFP OAuthTAI uses to protect the resource, and it is required to be mapped to 'All Authenticated in Application' in WAS and 'ALL_AUTHENTICATED_USERS' in Liberty&lt;/description&gt;<br />
-   &lt;role-name&gt;TAIUserRole&lt;/role-name&gt;<br />
-&lt;/security-role&gt;<br />
+<security-constraint><br />
+   <web-resource-collection><br />
+      <web-resource-name>RESTServlet</web-resource-name><br />
+      <url-pattern>/api/protected</url-pattern><br />
+   </web-resource-collection><br />
+   <auth-constraint><br />
+      <role-name>TAIUserRole</role-name><br />
+   </auth-constraint><br />
+</security-constraint></p>
+<p><security-role id="SecurityRole_TAIUserRole" ><br />
+   <description>This is the role that MFP OAuthTAI uses to protect the resource, and it is required to be mapped to 'All Authenticated in Application' in WAS and 'ALL_AUTHENTICATED_USERS' in Liberty</description><br />
+   <role-name>TAIUserRole</role-name><br />
+</security-role><br />
 {% endhighlight %
 </li>
 <li>You must modify the external server <code>server.xml</code> file, too. Configure the feature manager to include these features:<br />
 {% highlight xml %}<br />
-&lt;featureManager&gt;<br />
-   &lt;feature&gt;jsp-2.2&lt;/feature&gt;<br />
-   &lt;feature&gt;appSecurity-2.0&lt;/feature&gt;<br />
-   &lt;feature&gt;usr:OAuthTai-1.0&lt;/feature&gt;<br />
-   &lt;feature&gt;servlet-3.0&lt;/feature&gt;<br />
-   &lt;feature&gt;jndi-1.0&lt;/feature&gt;<br />
-&lt;/featureManager&gt;<br />
+<featureManager><br />
+   <feature>jsp-2.2</feature><br />
+   <feature>appSecurity-2.0</feature><br />
+   <feature>usr:OAuthTai-1.0</feature><br />
+   <feature>servlet-3.0</feature><br />
+   <feature>jndi-1.0</feature><br />
+</featureManager><br />
 {% endhighlight %
 </li>
 <li>In your application, add a security role:<br />
 {% highlight xml %}<br />
-&lt;application ...&gt;<br />
+<application ...><br />
    ...<br />
-   &lt;application-bnd&gt;<br />
-      &lt;security-role name=&quot;TAIUserRole&quot;&gt;<br />
-         &lt;special-subject type=&quot;ALL_AUTHENTICATED_USERS&quot;/&gt;<br />
-      &lt;/security-role&gt;<br />
-   &lt;/application-bnd&gt;<br />
-&lt;/application&gt;<br />
+   <application-bnd><br />
+      <security-role name="TAIUserRole"><br />
+         <special-subject type="ALL_AUTHENTICATED_USERS"/><br />
+      </security-role><br />
+   </application-bnd><br />
+</application><br />
 {% endhighlight %
 </li>
 <li>Configure OAuthTAI, where you set which URLs are to be protected:<br />
 {% highlight xml %}<br />
-&lt;usr_OAuthTAI id=&quot;myOAuthTAI&quot;&gt;<br />
-   &lt;securityconstraint httpMethods=&quot;GET POST&quot; scope=&quot;SampleAppRealm&quot; securedURLs=&quot;/REST-Server/api/protected&quot;&gt;&lt;/securityconstraint&gt;<br />
-&lt;/usr_OAuthTAI&gt;<br />
+<usr_OAuthTAI id="myOAuthTAI"><br />
+   <securityconstraint httpMethods="GET POST" scope="SampleAppRealm" securedURLs="/REST-Server/api/protected"></securityconstraint><br />
+</usr_OAuthTAI><br />
 {% endhighlight %<br />
 The scopes that you provide are all defined in the <code>authenticationConfig.xml</code> file of the MobileFirst Project. You can provide multiple scopes.
 </li>
@@ -160,7 +160,7 @@ function callProtectedRestAPI() {<br />
 				showResult(response.responseJSON.description);<br />
 			},<br />
 			function(error){<br />
-				showErrorResult(&quot;failed to get scope!&quot;);<br />
+				showErrorResult("failed to get scope!");<br />
 			}<br />
 	);<br />
 }<br />
@@ -175,7 +175,7 @@ function callProtectedRestAPI() {<br />
 <ul>
 <li>If your Resource Server is running on Liberty, you must configure these properties by using JNDI. You can do this by adding entries to your <code>server.xml</code> file. For example:
 <p>[code]<br />
-&lt;jndiEntry jndiName=&quot;imf.analytics.username&quot; value=&quot;admin&quot;/&gt;<br />
+<jndiEntry jndiName="imf.analytics.username" value="admin"/><br />
 {% endhighlight %
 </li>
 <li>If your Resource Server is running on WebSphere Application Server, configure these properties as environment entries.<br />

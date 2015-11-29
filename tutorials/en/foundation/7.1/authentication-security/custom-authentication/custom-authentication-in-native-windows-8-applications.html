@@ -27,7 +27,7 @@ relevantTo: [windowsphone8]
 {% highlight csharp %}<br />
 public override bool isCustomResponse(WLResponse response)<br />
 {<br />
-    if (!(response.getResponseJSON()[&quot;authStatus&quot;] == null) &amp;&amp; response.getResponseJSON()[&quot;authStatus&quot;].ToString().CompareTo(&quot;required&quot;) == 0)<br />
+    if (!(response.getResponseJSON()["authStatus"] == null) &amp;&amp; response.getResponseJSON()["authStatus"].ToString().CompareTo("required") == 0)<br />
     {<br />
        return true;<br />
     }<br />
@@ -43,7 +43,7 @@ Within this method we present our login form. Different approaches may be adopte
 public override void handleChallenge(JObject response)<br />
 {<br />
   CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,<br />
-async () =&gt;<br />
+async () =><br />
   {<br />
      MainPage._this.LoginGrid.Visibility = Visibility.Visible;<br />
   });<br />
@@ -53,10 +53,10 @@ async () =&gt;<br />
 {% highlight csharp %}<br />
 public void sendResponse(String username, String password)<br />
 {<br />
-   Dictionary&lt;String, String&gt; parms = new Dictionary&lt;String, String&gt;();</p>
-<p>   parms.Add(&quot;username&quot;, username);<br />
-   parms.Add(&quot;password&quot;, password);</p>
-<p>   submitLoginForm(&quot;/my_custom_auth_request_url&quot;, parms, null, 0, &quot;post&quot;);<br />
+   Dictionary<String, String> parms = new Dictionary<String, String>();</p>
+<p>   parms.Add("username", username);<br />
+   parms.Add("password", password);</p>
+<p>   submitLoginForm("/my_custom_auth_request_url", parms, null, 0, "post");<br />
 }<br />
 {% endhighlight %</p>
 <p><br clear="all" /></p>
@@ -66,14 +66,14 @@ The procedure invocation will trigger MobileFirst server to send a challenge tha
 {% highlight csharp %}<br />
 WLClient wlClient = WLClient.getInstance();</p>
 <p>CustomChallengeHandler ch = new CustomChallengeHandler();<br />
-wlClient.registerChallengeHandler((BaseChallengeHandler&lt;JObject&gt;)ch);</p>
+wlClient.registerChallengeHandler((BaseChallengeHandler<JObject>)ch);</p>
 <p>MyResponseListener mylistener = new MyResponseListener(this);<br />
 wlClient.connect(mylistener);</p>
 <p>{% endhighlight %</p>
 <p>Since the native API not protected by a defined security test, there is no login form presented during server connection.<br />
 Invoke the protected adapter procedure and the login form is presented by the <code>challengeHandler</code>.<br />
 {% highlight csharp %}<br />
- WLResourceRequest adapter = new WLResourceRequest(&quot;/adapters/AuthAdapter/getSecretData&quot;, &quot;GET&quot;);<br />
+ WLResourceRequest adapter = new WLResourceRequest("/adapters/AuthAdapter/getSecretData", "GET");<br />
  MyInvokeListener listener = new MyInvokeListener(this);<br />
  adapter.send(listener);<br />
 {% endhighlight %</p>

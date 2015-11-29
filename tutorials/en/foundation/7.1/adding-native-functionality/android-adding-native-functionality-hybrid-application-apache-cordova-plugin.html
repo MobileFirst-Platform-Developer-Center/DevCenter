@@ -33,14 +33,14 @@ The plug-in performs the required action and calls a JavaScript callback method 
 <h2 id="declare">Declaring a plug-in</h2>
 <p>You must declare the plug-in in the project, so that Cordova can detect it.<br />
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the <code>native\res\xml</code> folder in the Android environment.</p>
-<p>{% highlight xml %}&lt;feature name=“sayHelloPlugin&quot;&gt;<br />
-  &lt;param name=&quot;android-package&quot; value=“sayHelloPlugin&quot; /&gt;<br />
-&lt;/feature&gt;{% endhighlight %</p>
+<p>{% highlight xml %}<feature name=“sayHelloPlugin"><br />
+  <param name="android-package" value=“sayHelloPlugin" /><br />
+</feature>{% endhighlight %</p>
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
 {% highlight js %}function sayHello() {<br />
-    var name = $(&quot;#NameInput&quot;).val();<br />
-    cordova.exec(sayHelloSuccess, sayHelloFailure, &quot;SayHelloPlugin&quot;, &quot;sayHello&quot;, [name]);<br />
+    var name = $("#NameInput").val();<br />
+    cordova.exec(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);<br />
 }{% endhighlight %</p>
 <p><br clear="all" /><br />
 <code>sayHelloSuccess</code> - Success callback<br />
@@ -52,14 +52,14 @@ To declare the plug-in, add a reference to the <code>config.xml</code> file, loc
 {% highlight js %}<br />
 function sayHelloSuccess(data){<br />
     WL.SimpleDialog.show(<br />
-        &quot;Response from plug-in&quot;, data,<br />
-  [{text: &quot;OK&quot;, handler: function() {WL.Logger.debug(&quot;Ok button pressed&quot;);}}]<br />
+        "Response from plug-in", data,<br />
+  [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]<br />
     );<br />
 }</p>
 <p>function sayHelloFailure(data){<br />
     WL.SimpleDialog.show(<br />
-  &quot;Response from plug-in&quot;, data,<br />
-  [{text: &quot;OK&quot;, handler: function() {WL.Logger.debug(&quot;Ok button pressed&quot;);}}]<br />
+  "Response from plug-in", data,<br />
+  [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]<br />
     );<br />
 }{% endhighlight %</p>
 <h2 id="java">Implementing the Java code of a Cordova plug-in</h2>
@@ -78,12 +78,12 @@ function sayHelloSuccess(data){<br />
 <p><br clear="all" />
     </li>
 <li>If the supplied action is <code>sayHello</code>, retrieve the first argument from the <code>args</code> array, prepare a <code>responseText</code> string and, by using the <code>callbackContext</code> argument, call the <code>success</code> callback with this <code>responseText</code> string as the argument.<br />
-    {% highlight java %}if (action.equals(&quot;sayHello&quot;)){<br />
+    {% highlight java %}if (action.equals("sayHello")){<br />
     try {<br />
-      String responseText = &quot;Hello &quot; + args.getString(0);<br />
+      String responseText = "Hello " + args.getString(0);<br />
       callbackContext.success(responseText);<br />
     } catch (JSONException e){<br />
-      callbackContext.error(&quot;Failed to parse parameters&quot;);<br />
+      callbackContext.error("Failed to parse parameters");<br />
     }<br />
     return true;<br />
   }{% endhighlight %</li>

@@ -31,27 +31,27 @@ relevantTo: [hybrid]
 <p>In your adapter XML file, specify the <code>domain</code> for your Cloudant instance, the <code>port</code>, and add an <code>authentication</code> element of type <code>basic</code>. The framework will use those credentials to generate an <code>Authorization: Basic</code> HTTP header.</p>
 <p><strong>Note:</strong> With Cloudant, you can generate unique API keys to use instead of your real username and password.</p>
 <p>{% highlight xml %}<br />
-	&lt;connectivity&gt;<br />
-		&lt;connectionPolicy xsi:type=&quot;http:HTTPConnectionPolicyType&quot;&gt;<br />
-			&lt;protocol&gt;https&lt;/protocol&gt;<br />
-			&lt;domain&gt;mysubdomain.cloudant.com&lt;/domain&gt;<br />
-			&lt;port&gt;443&lt;/port&gt;<br />
-			&lt;connectionTimeoutInMilliseconds&gt;30000&lt;/connectionTimeoutInMilliseconds&gt;<br />
-			&lt;socketTimeoutInMilliseconds&gt;30000&lt;/socketTimeoutInMilliseconds&gt;<br />
-			&lt;authentication&gt;<br />
-				&lt;basic/&gt;<br />
-					&lt;serverIdentity&gt;<br />
-						&lt;username&gt;foribloster5er5engthesce&lt;/username&gt;<br />
-						&lt;password&gt;c2a8c830f3eertyert0729c786644b0badc1&lt;/password&gt;<br />
-					&lt;/serverIdentity&gt;<br />
-			&lt;/authentication&gt;<br />
-			&lt;maxConcurrentConnectionsPerNode&gt;50&lt;/maxConcurrentConnectionsPerNode&gt;<br />
-			&lt;!-- Following properties used by adapter's key manager for choosing specific certificate from key store<br />
-			&lt;sslCertificateAlias&gt;&lt;/sslCertificateAlias&gt;<br />
-			&lt;sslCertificatePassword&gt;&lt;/sslCertificatePassword&gt;<br />
-			--&gt;<br />
-		&lt;/connectionPolicy&gt;<br />
-	&lt;/connectivity&gt;<br />
+	<connectivity><br />
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType"><br />
+			<protocol>https</protocol><br />
+			<domain>mysubdomain.cloudant.com</domain><br />
+			<port>443</port><br />
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds><br />
+			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds><br />
+			<authentication><br />
+				<basic/><br />
+					<serverIdentity><br />
+						<username>foribloster5er5engthesce</username><br />
+						<password>c2a8c830f3eertyert0729c786644b0badc1</password><br />
+					</serverIdentity><br />
+			</authentication><br />
+			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode><br />
+			<!-- Following properties used by adapter's key manager for choosing specific certificate from key store<br />
+			<sslCertificateAlias></sslCertificateAlias><br />
+			<sslCertificatePassword></sslCertificatePassword><br />
+			--><br />
+		</connectionPolicy><br />
+	</connectivity><br />
 {% endhighlight %<br />
 <br clear="all" /></p>
 <h3>Procedures</h3>

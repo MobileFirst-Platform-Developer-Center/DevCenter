@@ -48,7 +48,7 @@ Two classes, <code>PageViewController</code> and <code>PageContentViewController
 {<br />
     //...<br />
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];</p>
-<p>    PageViewController* pageViewController = [[UIStoryboard storyboardWithName:@&quot;Storyboard&quot; bundle: nil] instantiateViewControllerWithIdentifier:@&quot;PageViewController&quot;];<br />
+<p>    PageViewController* pageViewController = [[UIStoryboard storyboardWithName:@"Storyboard" bundle: nil] instantiateViewControllerWithIdentifier:@"PageViewController"];<br />
     [self.window setRootViewController:pageViewController];<br />
     [self.window makeKeyAndVisible];</p>
 <p>    //..<br />
@@ -112,10 +112,10 @@ You can use this feature to trigger native code to be run in the background, to 
 </ul>
 <h3>Step 2</h3>
 <p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
-[code gutter="false"]@interface MyReceiver: NSObject &lt;WLActionReceiver&gt;{% endhighlight %</p>
+[code gutter="false"]@interface MyReceiver: NSObject <WLActionReceiver>{% endhighlight %</p>
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:</p>
 <p>{% highlight obj-c %}-(void) onActionReceived:(NSString *)action withData:(NSDictionary *) data {<br />
-    if ([action isEqualToString:@&quot;doSomething&quot;]){<br />
+    if ([action isEqualToString:@"doSomething"]){<br />
        // perform required actions, e.g., update native user interface<br />
     }<br />
 }{% endhighlight %</p>
@@ -127,8 +127,8 @@ You can use this feature to trigger native code to be run in the background, to 
 You can use this feature to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
 <h3>Step 1</h3>
 <p>In Objective-C, the following API is used:<br />
-{% highlight obj-c %}NSDictionary *data = @{@&quot;someProperty&quot;: @&quot;12345&quot;};<br />
-[[WL sharedInstance] sendActionToJS:@&quot;doSomething&quot; withData:data];{% endhighlight %</p>
+{% highlight obj-c %}NSDictionary *data = @{@"someProperty": @"12345"};<br />
+[[WL sharedInstance] sendActionToJS:@"doSomething" withData:data];{% endhighlight %</p>
 <ul>
 <li><code>doSomething</code> is an arbitrary action name to be used on the JavaScript side.</li>
 <li>The second parameter is an <code>NSDictionary</code> object that contains any data.</li>
@@ -136,15 +136,15 @@ You can use this feature to receive responses from a native method, notify the w
 <h3>Step 2</h3>
 <p>A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
 <p>{% highlight js %}function actionReceiver(received){<br />
-  if (received.action == &quot;doSomething&quot; &amp;&amp; received.data.someProperty == &quot;12345&quot;){<br />
+  if (received.action == "doSomething" &amp;&amp; received.data.someProperty == "12345"){<br />
     //perform required actions, e.g., update web user interface<br />
   }<br />
 }{% endhighlight %</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function can handle those actions as early as possible.</p>
-<p>{% highlight js %}WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, actionReceiver);{% endhighlight %</p>
+<p>{% highlight js %}WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);{% endhighlight %</p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-{% highlight js %}WL.App.removeActionReceiver(&quot;MyActionReceiverId&quot;);{% endhighlight %</p>
+{% highlight js %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %</p>
 <h2 id="sendaction">The SendAction sample</h2>
 <p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/07_08_screenshot.png"><img src="{{ site.baseurl }}/assets/backup/07_08_screenshot.png" alt="07_08_screenshot" width="702" height="600" class="aligncenter size-full wp-image-1111" /></a></p>
 <h3>Overview</h3>
@@ -162,22 +162,22 @@ You can use this feature to receive responses from a native method, notify the w
 <li>A button to trigger validation</li>
 <li>An empty  line to show potential error messages</li>
 </ul>
-<p>{% highlight html %}&lt;p&gt;This is a MobileFirst WebView.&lt;/p&gt;<br />
-&lt;p&gt;Enter a valid address (requires Internet connection):&lt;br/&gt;<br />
-      &lt;input type=&quot;text&quot; name=&quot;address&quot; id=&quot;address&quot;/&gt;<br />
-&lt;input type=&quot;button&quot; value=&quot;Display&quot; id=&quot;displayBtn&quot;/&gt;<br />
- &lt;/p&gt;<br />
- &lt;p id=&quot;errorMsg&quot; style=&quot;color:red;&quot;&gt;&lt;/p&gt;{% endhighlight %</p>
+<p>{% highlight html %}<p>This is a MobileFirst WebView.</p><br />
+<p>Enter a valid address (requires Internet connection):<br/><br />
+      <input type="text" name="address" id="address"/><br />
+<input type="button" value="Display" id="displayBtn"/><br />
+ </p><br />
+ <p id="errorMsg" style="color:red;"></p>{% endhighlight %</p>
 <h3>JavaScript</h3>
 <p>When the button is clicked, the <code>sendActionToNative</code> method is called to send the address to the native code.</p>
 <p>{% highlight js %}$('#displayBtn').on('click', function(){<br />
   $('#errorMsg').empty();<br />
-  WL.App.sendActionToNative(&quot;displayAddress&quot;,<br />
+  WL.App.sendActionToNative("displayAddress",<br />
         { address: $('#address').val()}<br />
     );<br />
   });{% endhighlight %</p>
 <p>The code also registers an action receiver to display potential error messages from the native code.<br />
-{% highlight js %}WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, function actionReceiver(received){<br />
+{% highlight js %}WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received){<br />
     if(received.action == 'displayError'){<br />
       $('#errorMsg').html(received.data.errorReason);<br />
     }<br />
@@ -206,7 +206,7 @@ This class:</p>
 <li>Adheres to the <code>WLActionReceiver</code> protocol to receive actions from the MobileFirst web view.</li>
 <li>Contains a reference to a <code>CLGeocoder</code> object to enable geocoding addresses.</li>
 </ul>
-<p>{% highlight obj-c %}@interface ViewController ()&lt;MKMapViewDelegate, WLActionReceiver&gt;<br />
+<p>{% highlight obj-c %}@interface ViewController ()<MKMapViewDelegate, WLActionReceiver><br />
 @property (weak, nonatomic) IBOutlet MKMapView *map;<br />
 @property CLGeocoder* geocoder;<br />
 @end{% endhighlight %</p>
@@ -217,7 +217,7 @@ The <code>ViewController</code> object is registered as an action receiver for M
 <p>{% highlight obj-c %}- (void)viewDidLoad<br />
 {<br />
     [super viewDidLoad];<br />
-    self.title = @&quot;This is a native header&quot;;<br />
+    self.title = @"This is a native header";<br />
     self.geocoder = [[CLGeocoder alloc] init];<br />
     [self.map setDelegate:self];<br />
     [[WL sharedInstance] addActionReceiver:self];<br />
@@ -225,9 +225,9 @@ The <code>ViewController</code> object is registered as an action receiver for M
 <p>The <code>onActionReceived</code> method is called when the user submits the form. The action name is checked and the entered address is retrieved.<br />
 The geocoder is given the address.</p>
 <p>{% highlight obj-c %}-(void) onActionReceived:(NSString *)action withData:(NSDictionary *) data {<br />
-    if ([action isEqualToString:@&quot;displayAddress&quot;]<br />
-        &amp;&amp; [data objectForKey:@&quot;address&quot;]){<br />
-        NSString* address = (NSString*) [data objectForKey:@&quot;address&quot;];<br />
+    if ([action isEqualToString:@"displayAddress"]<br />
+        &amp;&amp; [data objectForKey:@"address"]){<br />
+        NSString* address = (NSString*) [data objectForKey:@"address"];<br />
         [self.geocoder geocodeAddressString:address<br />
                     completionHandler:^(NSArray* placemarks, NSError* error){<br />
                               //DO STUFF - next slide...</p>
@@ -255,8 +255,8 @@ The geocoder is given the address.</p>
         //...<br />
     }<br />
     else{<br />
-        [[WL sharedInstance] sendActionToJS:@&quot;displayError&quot;<br />
-                            withData:@{@&quot;errorReason&quot;: [error localizedDescription]}<br />
+        [[WL sharedInstance] sendActionToJS:@"displayError"<br />
+                            withData:@{@"errorReason": [error localizedDescription]}<br />
          ];<br />
     }<br />
 }{% endhighlight %</p>
@@ -269,7 +269,7 @@ The geocoder is given the address.</p>
 <p>{% highlight obj-c %}-(void)wlInitDidCompleteSuccessfully<br />
 {<br />
     UINavigationController* rootViewController = self.window.rootViewController;<br />
-    ViewController* viewController = [[UIStoryboard storyboardWithName:@&quot;Storyboard&quot; bundle:nil] instantiateViewControllerWithIdentifier:@&quot;ViewController&quot;];<br />
+    ViewController* viewController = [[UIStoryboard storyboardWithName:@"Storyboard" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];<br />
     [rootViewController pushViewController:viewController animated:YES];<br />
     [[WL sharedInstance] hideSplashScreen];<br />
 }{% endhighlight %</p>

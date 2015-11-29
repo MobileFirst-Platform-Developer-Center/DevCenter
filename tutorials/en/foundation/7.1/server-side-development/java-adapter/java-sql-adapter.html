@@ -27,17 +27,17 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <p>To connect to a database, Java code needs a JDBC driver. For MySQL, the latest driver can be found on the <a href="http://dev.mysql.com/downloads/connector/j/" target="_blank">Download Connector/J</a> MySQL page, at <code>http://dev.mysql.com/downloads/connector/j/</code>.</p>
 <p>This example uses the embedded application server of MobileFirst Studio.</p>
 <p>{% highlight xml %}<br />
-&lt;library id=&quot;MySQLLib&quot;&gt;<br />
-  &lt;fileset dir=&quot;${shared.resource.dir}&quot; includes=&quot;mysql-*.jar&quot; /&gt;<br />
-&lt;/library&gt;</p>
-<p>&lt;dataSource jndiName=&quot;jdbc/mobilefirst_training&quot;&gt;<br />
-  &lt;jdbcDriver libraryRef=&quot;MySQLLib&quot; /&gt;<br />
-  &lt;properties databaseName=&quot;mobilefirst_training&quot;<br />
-              password=&quot;&quot;<br />
-              portNumber=&quot;3306&quot;<br />
-              serverName=&quot;localhost&quot;<br />
-              user=&quot;root&quot; /&gt;<br />
-&lt;/dataSource&gt;<br />
+<library id="MySQLLib"><br />
+  <fileset dir="${shared.resource.dir}" includes="mysql-*.jar" /><br />
+</library></p>
+<p><dataSource jndiName="jdbc/mobilefirst_training"><br />
+  <jdbcDriver libraryRef="MySQLLib" /><br />
+  <properties databaseName="mobilefirst_training"<br />
+              password=""<br />
+              portNumber="3306"<br />
+              serverName="localhost"<br />
+              user="root" /><br />
+</dataSource><br />
 {% endhighlight %</p>
 <ul>
 <li>The <code>library</code> tag specifies where to find the <code>MySQL .jar</code> file. In most cases, <code>${shared.resource.dir}</code> is <strong>shared/resources</strong> under the Liberty server root folder.
@@ -50,12 +50,12 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 	@Override<br />
 	protected void init() throws Exception {<br />
 		UserAdapterResource.init();<br />
-		logger.info(&quot;Adapter initialized!&quot;);<br />
+		logger.info("Adapter initialized!");<br />
 	}<br />
 {% endhighlight %</p>
 <h2 id="UserAdapterResource">UserAdapterResource</h2>
 <p>{% highlight java %}<br />
-@Path(&quot;/&quot;)<br />
+@Path("/")<br />
 public class UserAdapterResource {<br />
 }<br />
 {% endhighlight %</p>
@@ -67,7 +67,7 @@ public class UserAdapterResource {<br />
     static Context ctx = null;</p>
 <p>    public static void init() throws NamingException {<br />
     	ctx = new InitialContext();<br />
-        ds = (DataSource)ctx.lookup(&quot;jdbc/mobilefirst_training&quot;);<br />
+        ds = (DataSource)ctx.lookup("jdbc/mobilefirst_training");<br />
     }<br />
 {% endhighlight %</p>
 <p>The <code>DataSource</code> is set as <code>static</code> so that it can be shared across all requests to the adapter. It is initialized in the <code>init()</code> method, which is called by the <code>init()</code> method of <code>UserAdapterApplication</code>, as described above.</p>
@@ -75,13 +75,13 @@ public class UserAdapterResource {<br />
 <h3>Create User</h3>
 <p>{% highlight java %}<br />
 	@POST<br />
-	public Response createUser(@FormParam(&quot;userId&quot;) String userId,<br />
-								@FormParam(&quot;firstName&quot;) String firstName,<br />
-								@FormParam(&quot;lastName&quot;) String lastName,<br />
-								@FormParam(&quot;password&quot;) String password)<br />
+	public Response createUser(@FormParam("userId") String userId,<br />
+								@FormParam("firstName") String firstName,<br />
+								@FormParam("lastName") String lastName,<br />
+								@FormParam("password") String password)<br />
 										throws SQLException{</p>
 <p>		Connection con = ds.getConnection();<br />
-		PreparedStatement insertUser = con.prepareStatement(&quot;INSERT INTO users (userId, firstName, lastName, password) VALUES (?,?,?,?)&quot;);</p>
+		PreparedStatement insertUser = con.prepareStatement("INSERT INTO users (userId, firstName, lastName, password) VALUES (?,?,?,?)");</p>
 <p>		try{<br />
 			insertUser.setString(1, userId);<br />
 			insertUser.setString(2, firstName);<br />
@@ -112,23 +112,23 @@ public class UserAdapterResource {<br />
 <h3>Get User</h3>
 <p>{% highlight java %}<br />
 	@GET<br />
-	@Produces(&quot;application/json&quot;)<br />
-	@Path(&quot;/{userId}&quot;)<br />
-	public Response getUser(@PathParam(&quot;userId&quot;) String userId) throws SQLException{<br />
+	@Produces("application/json")<br />
+	@Path("/{userId}")<br />
+	public Response getUser(@PathParam("userId") String userId) throws SQLException{<br />
 		Connection con = ds.getConnection();<br />
-		PreparedStatement getUser = con.prepareStatement(&quot;SELECT * FROM users WHERE userId = ?&quot;);</p>
+		PreparedStatement getUser = con.prepareStatement("SELECT * FROM users WHERE userId = ?");</p>
 <p>		try{<br />
 			JSONObject result = new JSONObject();</p>
 <p>			getUser.setString(1, userId);<br />
 			ResultSet data = getUser.executeQuery();</p>
 <p>			if(data.first()){<br />
-				result.put(&quot;userId&quot;, data.getString(&quot;userId&quot;));<br />
-				result.put(&quot;firstName&quot;, data.getString(&quot;firstName&quot;));<br />
-				result.put(&quot;lastName&quot;, data.getString(&quot;lastName&quot;));<br />
-				result.put(&quot;password&quot;, data.getString(&quot;password&quot;));<br />
+				result.put("userId", data.getString("userId"));<br />
+				result.put("firstName", data.getString("firstName"));<br />
+				result.put("lastName", data.getString("lastName"));<br />
+				result.put("password", data.getString("password"));<br />
 				return Response.ok(result).build();</p>
 <p>			} else{<br />
-				return Response.status(Status.NOT_FOUND).entity(&quot;User not found...&quot;).build();<br />
+				return Response.status(Status.NOT_FOUND).entity("User not found...").build();<br />
 			}</p>
 <p>		}<br />
 		finally{<br />
@@ -146,18 +146,18 @@ If the user is found, a response is built from the generated JSON object.</p>
 <p>This method is similar to <code>getUser</code>, except for the loop over the <code>ResultSet</code>.</p>
 <p>{% highlight java %}<br />
 	@GET<br />
-	@Produces(&quot;application/json&quot;)<br />
+	@Produces("application/json")<br />
 	public Response getAllUsers() throws SQLException{<br />
 		JSONArray results = new JSONArray();<br />
 		Connection con = ds.getConnection();<br />
-		PreparedStatement getAllUsers = con.prepareStatement(&quot;SELECT * FROM users&quot;);<br />
+		PreparedStatement getAllUsers = con.prepareStatement("SELECT * FROM users");<br />
 		ResultSet data = getAllUsers.executeQuery();</p>
 <p>		while(data.next()){<br />
 			JSONObject item = new JSONObject();<br />
-			item.put(&quot;userId&quot;, data.getString(&quot;userId&quot;));<br />
-			item.put(&quot;firstName&quot;, data.getString(&quot;firstName&quot;));<br />
-			item.put(&quot;lastName&quot;, data.getString(&quot;lastName&quot;));<br />
-			item.put(&quot;password&quot;, data.getString(&quot;password&quot;));</p>
+			item.put("userId", data.getString("userId"));<br />
+			item.put("firstName", data.getString("firstName"));<br />
+			item.put("lastName", data.getString("lastName"));<br />
+			item.put("password", data.getString("password"));</p>
 <p>			results.add(item);<br />
 		}</p>
 <p>		getAllUsers.close();<br />
@@ -168,19 +168,19 @@ If the user is found, a response is built from the generated JSON object.</p>
 <h3>Update user</h3>
 <p>{% highlight java %}<br />
 	@PUT<br />
-	@Path(&quot;/{userId}&quot;)<br />
-	public Response updateUser(@PathParam(&quot;userId&quot;) String userId,<br />
-								@FormParam(&quot;firstName&quot;) String firstName,<br />
-								@FormParam(&quot;lastName&quot;) String lastName,<br />
-								@FormParam(&quot;password&quot;) String password)<br />
+	@Path("/{userId}")<br />
+	public Response updateUser(@PathParam("userId") String userId,<br />
+								@FormParam("firstName") String firstName,<br />
+								@FormParam("lastName") String lastName,<br />
+								@FormParam("password") String password)<br />
 										throws SQLException{<br />
 		Connection con = ds.getConnection();<br />
-		PreparedStatement getUser = con.prepareStatement(&quot;SELECT * FROM users WHERE userId = ?&quot;);</p>
+		PreparedStatement getUser = con.prepareStatement("SELECT * FROM users WHERE userId = ?");</p>
 <p>		try{<br />
 			getUser.setString(1, userId);<br />
 			ResultSet data = getUser.executeQuery();</p>
 <p>			if(data.first()){<br />
-				PreparedStatement updateUser = con.prepareStatement(&quot;UPDATE users SET firstName = ?, lastName = ?, password = ? WHERE userId = ?&quot;);</p>
+				PreparedStatement updateUser = con.prepareStatement("UPDATE users SET firstName = ?, lastName = ?, password = ? WHERE userId = ?");</p>
 <p>				updateUser.setString(1, firstName);<br />
 				updateUser.setString(2, lastName);<br />
 				updateUser.setString(3, password);<br />
@@ -189,7 +189,7 @@ If the user is found, a response is built from the generated JSON object.</p>
 				updateUser.close();<br />
 				return Response.ok().build();</p>
 <p>			} else{<br />
-				return Response.status(Status.NOT_FOUND).entity(&quot;User not found...&quot;).build();<br />
+				return Response.status(Status.NOT_FOUND).entity("User not found...").build();<br />
 			}<br />
 		}<br />
 		finally{<br />
@@ -203,21 +203,21 @@ If the user is found, a response is built from the generated JSON object.</p>
 <h3>Delete user</h3>
 <p>{% highlight java %}<br />
 	@DELETE<br />
-	@Path(&quot;/{userId}&quot;)<br />
-	public Response deleteUser(@PathParam(&quot;userId&quot;) String userId) throws SQLException{<br />
+	@Path("/{userId}")<br />
+	public Response deleteUser(@PathParam("userId") String userId) throws SQLException{<br />
 		Connection con = ds.getConnection();<br />
-		PreparedStatement getUser = con.prepareStatement(&quot;SELECT * FROM users WHERE userId = ?&quot;);</p>
+		PreparedStatement getUser = con.prepareStatement("SELECT * FROM users WHERE userId = ?");</p>
 <p>		try{<br />
 			getUser.setString(1, userId);<br />
 			ResultSet data = getUser.executeQuery();</p>
 <p>			if(data.first()){<br />
-				PreparedStatement deleteUser = con.prepareStatement(&quot;DELETE FROM users WHERE userId = ?&quot;);<br />
+				PreparedStatement deleteUser = con.prepareStatement("DELETE FROM users WHERE userId = ?");<br />
 				deleteUser.setString(1, userId);<br />
 				deleteUser.executeUpdate();<br />
 				deleteUser.close();<br />
 				return Response.ok().build();</p>
 <p>			} else{<br />
-				return Response.status(Status.NOT_FOUND).entity(&quot;User not found...&quot;).build();<br />
+				return Response.status(Status.NOT_FOUND).entity("User not found...").build();<br />
 			}<br />
 		}<br />
 		finally{<br />

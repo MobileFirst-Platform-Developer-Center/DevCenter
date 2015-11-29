@@ -39,46 +39,46 @@ The tutorial covers the following topics:</p>
 <li><a href="#info">For more information</a></li>
 </ul>
 <h2 id="add-feature">Add JSONStore Feature</h2>
-<p>To add JSONStore to your hybrid environment open the <code>application-descriptor.xml</code> simply add <code>&lt;JSONStore/&gt;</code> under the <code>&lt;features&gt;&lt;/features&gt;</code> element.</p>
+<p>To add JSONStore to your hybrid environment open the <code>application-descriptor.xml</code> simply add <code><JSONStore/></code> under the <code><features></features></code> element.</p>
 <p>{% highlight xml %}<br />
-&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;<br />
-&lt;application xmlns=&quot;http://www.worklight.com/application-descriptor&quot; id=&quot;JSONStoreAPI&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot;&gt;<br />
-    &lt;displayName&gt;JSONStoreAPI&lt;/displayName&gt;<br />
-    &lt;description&gt;JSONStoreAPI&lt;/description&gt;<br />
-    &lt;author&gt;<br />
-        &lt;name&gt;application's author&lt;/name&gt;<br />
-        &lt;email&gt;application author's e-mail&lt;/email&gt;<br />
-        &lt;homepage&gt;http://mycompany.com&lt;/homepage&gt;<br />
-        &lt;copyright&gt;Copyright My Company&lt;/copyright&gt;<br />
-    &lt;/author&gt;<br />
-    &lt;mainFile&gt;index.html&lt;/mainFile&gt;<br />
-    &lt;features&gt;<br />
-        &lt;JSONStore/&gt;<br />
-    &lt;/features&gt;<br />
-    &lt;thumbnailImage&gt;common/images/thumbnail.png&lt;/thumbnailImage&gt;<br />
-    &lt;iphone bundleId=&quot;com.JSONStoreAPI&quot; version=&quot;1.0&quot;&gt;<br />
-        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
-        &lt;security&gt;<br />
-            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
-        &lt;/security&gt;<br />
-    &lt;/iphone&gt;<br />
-    &lt;android version=&quot;1.0&quot;&gt;<br />
-        &lt;worklightSettings include=&quot;false&quot;/&gt;<br />
-        &lt;security&gt;<br />
-            &lt;encryptWebResources enabled=&quot;false&quot;/&gt;<br />
-            &lt;testWebResourcesChecksum enabled=&quot;false&quot; ignoreFileExtensions=&quot;png, jpg, jpeg, gif, mp4, mp3&quot;/&gt;<br />
-            &lt;publicSigningKey&gt;Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.&lt;/publicSigningKey&gt;<br />
-            &lt;packageName&gt;Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in AndroidManifest.xml file.&lt;/packageName&gt;<br />
-        &lt;/security&gt;<br />
-    &lt;/android&gt;<br />
-    &lt;windowsPhone8 version=&quot;1.0&quot;&gt;<br />
-        &lt;uuid&gt;e5eeea5c-4c80-40d4-b250-c8f2e8698138&lt;/uuid&gt;<br />
-    &lt;/windowsPhone8&gt;<br />
-    &lt;windows8 version=&quot;1.0&quot;&gt;<br />
-        &lt;uuid&gt;802f8287-a3f7-4dc5-ac17-1da638074763&lt;/uuid&gt;<br />
-    &lt;/windows8&gt;<br />
-&lt;/application&gt;<br />
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><br />
+<application xmlns="http://www.worklight.com/application-descriptor" id="JSONStoreAPI" platformVersion="7.0.0.00.20150312-0731"><br />
+    <displayName>JSONStoreAPI</displayName><br />
+    <description>JSONStoreAPI</description><br />
+    <author><br />
+        <name>application's author</name><br />
+        <email>application author's e-mail</email><br />
+        <homepage>http://mycompany.com</homepage><br />
+        <copyright>Copyright My Company</copyright><br />
+    </author><br />
+    <mainFile>index.html</mainFile><br />
+    <features><br />
+        <JSONStore/><br />
+    </features><br />
+    <thumbnailImage>common/images/thumbnail.png</thumbnailImage><br />
+    <iphone bundleId="com.JSONStoreAPI" version="1.0"><br />
+        <worklightSettings include="false"/><br />
+        <security><br />
+            <encryptWebResources enabled="false"/><br />
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
+        </security><br />
+    </iphone><br />
+    <android version="1.0"><br />
+        <worklightSettings include="false"/><br />
+        <security><br />
+            <encryptWebResources enabled="false"/><br />
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
+            <publicSigningKey>Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.</publicSigningKey><br />
+            <packageName>Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in AndroidManifest.xml file.</packageName><br />
+        </security><br />
+    </android><br />
+    <windowsPhone8 version="1.0"><br />
+        <uuid>e5eeea5c-4c80-40d4-b250-c8f2e8698138</uuid><br />
+    </windowsPhone8><br />
+    <windows8 version="1.0"><br />
+        <uuid>802f8287-a3f7-4dc5-ac17-1da638074763</uuid><br />
+    </windows8><br />
+</application><br />
 {% endhighlight %</p>
 <p>Alternatively, you can use the <strong>Application Descriptor Editor</strong> click <strong>Optional Features > Add > JSONStore > OK</strong></p>
 <p><img src="{{ site.baseurl }}/assets/backup/jsonstore-hybrid-optional-features.png" alt="jsonstore-hybrid-optional-features" width="600" class="aligncenter size-medium wp-image-10002" /></p>

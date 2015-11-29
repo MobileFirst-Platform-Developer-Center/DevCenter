@@ -34,14 +34,14 @@ You must be a registered Apple iOS Developer to obtain an APNS certificate for y
 <li>Replace the <strong><code>bundleId</code></strong> value with your application <code>bundleId</code> value. Consult the Apple documentation about how to create a <code>bundleId</code> for Xcode projects.</li>
 <p>For example:<br />
 {% highlight xml %}<br />
-&lt;nativeIOSApp id=&quot;AppName&quot; bundleId=&quot;com.REPLACE-WITH-BUNDLE-ID&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot;<br />
-	version=&quot;1.0&quot; xmlns=&quot;http://www.worklight.com/native-ios-descriptor&quot;&gt;<br />
-	&lt;displayName&gt;AppName&lt;/displayName&gt;<br />
-	&lt;description&gt;AppName&lt;/description&gt;<br />
-	&lt;accessTokenExpiration&gt;3600&lt;/accessTokenExpiration&gt;<br />
-	&lt;userIdentityRealms&gt;&lt;/userIdentityRealms&gt;<br />
-	&lt;pushSender password=&quot;REPLACE-WITH-CERTIFICATE-PASSWORD&quot;/&gt;<br />
-&lt;/nativeIOSApp&gt;<br />
+<nativeIOSApp id="AppName" bundleId="com.REPLACE-WITH-BUNDLE-ID" platformVersion="7.0.0.00.20150312-0731"<br />
+	version="1.0" xmlns="http://www.worklight.com/native-ios-descriptor"><br />
+	<displayName>AppName</displayName><br />
+	<description>AppName</description><br />
+	<accessTokenExpiration>3600</accessTokenExpiration><br />
+	<userIdentityRealms></userIdentityRealms><br />
+	<pushSender password="REPLACE-WITH-CERTIFICATE-PASSWORD"/><br />
+</nativeIOSApp><br />
 {% endhighlight %
 </ul>
 </li>

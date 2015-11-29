@@ -18,7 +18,7 @@ Sometimes it is better to use the existing JavaScript™ UI frameworks.</p>
 <h2 id="jQuery">Using jQuery in a MobileFirst application</h2>
 <p>jQuery is a fast and concise JavaScript framework that simplifies HTML document flow, event handling, animating, and Ajax interactions for rapid web development.</p>
 <p>The MobileFirst client-side framework uses the jQuery library for internal functionality. By default, the <code>$</code> character is assigned to the internal jQuery in the main HTML file of the application, in the HEAD element:</p>
-<p>{% highlight js %}&lt;script&gt;window.$ = window.jQuery = WLJQ;&lt;/script&gt;{% endhighlight %</p>
+<p>{% highlight js %}<script>window.$ = window.jQuery = WLJQ;</script>{% endhighlight %</p>
 <p>If the application does not require jQuery, or if you want to use a different version of jQuery, you can remove this line.<br />
 For more information, see <a href="http://jquery.com/">jQuery</a>.</p>
 <p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_jquery_mobile_ui-e1411375701917.png"><img src="{{ site.baseurl }}/assets/backup/03_03_jquery_mobile_ui-e1411375701917.png" alt="03_03_jquery_mobile_ui" width="388" height="500" class="alignright size-full wp-image-712" /></a></p>
@@ -36,11 +36,11 @@ The main HTML file of the application is created with references to the <code>.c
 <p><br clear="all" /></p>
 <h3>Basic structure of a screen</h3>
 <p>The basic structure of a screen in a jQuery Mobile application is as follows:<br />
-{% highlight js %}&lt;div data-role=&quot;page&quot;&gt;<br />
-    &lt;div data-role=&quot;header&quot;&gt; ... &lt;/div&gt;<br />
-    &lt;div data-role=&quot;content&quot;&gt; ... &lt;/div&gt;<br />
-    &lt;div data-role=&quot;footer&quot;&gt; ... &lt;/div&gt;<br />
-&lt;/div&gt;{% endhighlight %</p>
+{% highlight js %}<div data-role="page"><br />
+    <div data-role="header"> ... </div><br />
+    <div data-role="content"> ... </div><br />
+    <div data-role="footer"> ... </div><br />
+</div>{% endhighlight %</p>
 <ul>
 <li>The header and footer elements are optional.</li>
 <li>The page is rendered by a jQuery Mobile at run time.</li>
@@ -50,12 +50,12 @@ The main HTML file of the application is created with references to the <code>.c
 <p>A WYSIWYG editor is provided for jQuery Mobile widgets for developer convenience.<br />
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_RPE.png"><img src="{{ site.baseurl }}/assets/backup/03_03_RPE.png" alt="03_03_RPE" width="1084" height="683" class="aligncenter size-full wp-image-715" /></a></p>
 <p>By using jQuery Mobile, you can create mobile application screens with only a few lines of code.<br />
-{% highlight js %}&lt;div data-role=&quot;page&quot;&gt;<br />
-    &lt;div data-role=&quot;header&quot;&gt;<br />
-        &lt;h2&gt;My Application&lt;/h2&gt;<br />
-    &lt;/div&gt;<br />
-    &lt;div data-role=&quot;content&quot;&gt; This is the application body &lt;/div&gt;<br />
-&lt;/div&gt;{% endhighlight %<br />
+{% highlight js %}<div data-role="page"><br />
+    <div data-role="header"><br />
+        <h2>My Application</h2><br />
+    </div><br />
+    <div data-role="content"> This is the application body </div><br />
+</div>{% endhighlight %<br />
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_jquery_sample.png"><img src="{{ site.baseurl }}/assets/backup/03_03_jquery_sample-300x182.png" alt="03_03_jquery_sample" width="300" height="182" class="aligncenter size-medium wp-image-716" /></a></p>
 <p>For more information, see the <a href="http://jquerymobile.com/demos">jQuery Mobile demos</a>.</p>
 <p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_03_adding_dojo.png"><img src="{{ site.baseurl }}/assets/backup/03_03_adding_dojo.png" alt="03_03_adding_dojo" width="375" height="500" class="alignright size-full wp-image-717" /></a></p>

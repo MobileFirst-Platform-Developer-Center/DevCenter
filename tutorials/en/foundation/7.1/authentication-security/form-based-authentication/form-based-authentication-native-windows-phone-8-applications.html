@@ -30,7 +30,7 @@ public override bool isCustomResponse(WLResponse response)<br />
 {<br />
     if (response == null ||<br />
         response.getResponseText() == null ||<br />
-        !response.getResponseText().Contains(&quot;j_security_check&quot;))<br />
+        !response.getResponseText().Contains("j_security_check"))<br />
     {<br />
         return false;<br />
     }<br />
@@ -45,9 +45,9 @@ Within this method, present the login form. Different approaches are available.<
 {% highlight csharp %}<br />
 public override void handleChallenge(JObject response)<br />
 {<br />
-    Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+    Deployment.Current.Dispatcher.BeginInvoke(() =><br />
     {<br />
-        MainPage._this.NavigationService.Navigate(new Uri(&quot;/LoginPage.xaml&quot;, UriKind.Relative));<br />
+        MainPage._this.NavigationService.Navigate(new Uri("/LoginPage.xaml", UriKind.Relative));<br />
     });<br />
 }<br />
 {% endhighlight %</p>
@@ -55,10 +55,10 @@ public override void handleChallenge(JObject response)<br />
 {% highlight csharp %}<br />
 public void submit(string username, string password)<br />
 {<br />
-    Dictionary&lt;String, String&gt; parms = new Dictionary&lt;String, String&gt;();<br />
-    parms.Add(&quot;j_username&quot;, username);<br />
-    parms.Add(&quot;j_password&quot;, password);<br />
-    submitLoginForm(&quot;j_security_check&quot;, parms, null, 10000, &quot;post&quot;);<br />
+    Dictionary<String, String> parms = new Dictionary<String, String>();<br />
+    parms.Add("j_username", username);<br />
+    parms.Add("j_password", password);<br />
+    submitLoginForm("j_security_check", parms, null, 10000, "post");<br />
 }<br />
 {% endhighlight %</p>
 <h3>MainPage</h3>
@@ -68,13 +68,13 @@ The procedure invocation triggers MobileFirst Server to send a challenge that wi
     WLClient client;<br />
     client = WLClient.getInstance();<br />
     challengeHandler = new WindowsChallengeHandler();<br />
-    client.registerChallengeHandler((BaseChallengeHandler&lt;JObject&gt;)challengeHandler);<br />
+    client.registerChallengeHandler((BaseChallengeHandler<JObject>)challengeHandler);<br />
     client.connect(new MyConnectResponseListener(this));<br />
 {% endhighlight %</p>
 <p>Because the native API is not protected by a defined security test,  no login form is presented during server connection.<br />
 Invoke the protected adapter procedure. The login form is presented by the <code>challengeHandler</code>.<br />
 {% highlight csharp %}<br />
-    WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;AuthAdapter&quot;, &quot;getSecretData&quot;);<br />
+    WLProcedureInvocationData invocationData = new WLProcedureInvocationData("AuthAdapter", "getSecretData");<br />
     invocationData.setParameters(new Object[] { });<br />
     WLRequestOptions options = new WLRequestOptions();<br />
     WLClient.getInstance().invokeProcedure(invocationData, new MyResponseListener(this), options);<br />

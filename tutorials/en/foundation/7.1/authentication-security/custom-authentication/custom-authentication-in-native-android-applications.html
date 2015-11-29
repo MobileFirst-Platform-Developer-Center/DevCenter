@@ -46,7 +46,7 @@ The <code>isCustomResponse</code> method is invoked each time a response is rece
 		if (response == null || response.getResponseJSON() == null) {<br />
 			return false;<br />
 		}<br />
-		if(response.toString().indexOf(&quot;authStatus&quot;) &gt; -1){<br />
+		if(response.toString().indexOf("authStatus") > -1){<br />
 			return true;<br />
 		}<br />
 		else{<br />
@@ -60,7 +60,7 @@ If <code>isCustomResponse</code> returns <code>true</code>, the framework calls 
 {% highlight java %}<br />
 	public void handleChallenge(WLResponse response){<br />
 		try {<br />
-			if(response.getResponseJSON().getString(&quot;authStatus&quot;) == &quot;complete&quot;){<br />
+			if(response.getResponseJSON().getString("authStatus") == "complete"){<br />
 				submitSuccess(response);<br />
 			}<br />
 			else {<br />
@@ -99,10 +99,10 @@ For example, in here we implemented a <code>submitLogin method</code> that calle
 		if (resultCode != Activity.RESULT_OK || back) {<br />
 			submitFailure(cachedResponse);<br />
 		} else {<br />
-			HashMap&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();<br />
-			params.put(&quot;username&quot;, userName);<br />
-			params.put(&quot;password&quot;, password);<br />
-			submitLoginForm(&quot;/my_custom_auth_request_url&quot;, params, null, 0, &quot;post&quot;);<br />
+			HashMap<String, String> params = new HashMap<String, String>();<br />
+			params.put("username", userName);<br />
+			params.put("password", password);<br />
+			submitLoginForm("/my_custom_auth_request_url", params, null, 0, "post");<br />
 		}<br />
 	}<br />
 {% endhighlight %</p>
@@ -125,7 +125,7 @@ client.registerChallengeHandler(challengeHandler);<br />
 </li>
 <li>Invoke the protected adapter procedure:<br />
 {% highlight java %}<br />
-URI adapterPath = new URI(&quot;/adapters/AuthAdapter/getSecretData&quot;);<br />
+URI adapterPath = new URI("/adapters/AuthAdapter/getSecretData");<br />
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
 request.send(new MyResponseListener());<br />
 {% endhighlight %

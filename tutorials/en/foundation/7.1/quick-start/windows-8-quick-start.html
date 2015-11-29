@@ -59,8 +59,8 @@ relevantTo: [windows8]
 <ul>
 <li>The following code invokes an adapter:<br />
 {% highlight csharp %}<br />
-WLResourceRequest request = new WLResourceRequest(&quot;/adapters/MyAdapter/getStories&quot;, &quot;GET&quot;);<br />
-request.setQueryParameter(&quot;params&quot;,&quot;technology&quot;);<br />
+WLResourceRequest request = new WLResourceRequest("/adapters/MyAdapter/getStories", "GET");<br />
+request.setQueryParameter("params","technology");<br />
 MyInvokeListener listener = new MyInvokeListener();<br />
 request.send(listener);<br />
 {% endhighlight %

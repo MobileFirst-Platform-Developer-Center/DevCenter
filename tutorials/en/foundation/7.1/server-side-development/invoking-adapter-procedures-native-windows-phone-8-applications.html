@@ -52,9 +52,9 @@ public class MyConnectResponseListener : WLResponseListener<br />
 </li>
 <li>Specify the <code>MyInvokeListener</code> class instance as a parameter.
 <p>{% highlight csharp %}<br />
-WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;RSSReader&quot;, &quot;getFeed&quot;);<br />
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData("RSSReader", "getFeed");<br />
 invocationData.setParameters(new Object[]{});<br />
-String myContextObject = &quot;InvokingAdapterProceduresWP8&quot;;<br />
+String myContextObject = "InvokingAdapterProceduresWP8";<br />
 WLRequestOptions options = new WLRequestOptions();<br />
 options.setInvocationContext(myContextObject);<br />
 WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);<br />
@@ -80,24 +80,24 @@ public void onSuccess(WLResponse response)<br />
     try<br />
     {<br />
         items = invocationResponse.getResponseJSON();<br />
-        Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+        Deployment.Current.Dispatcher.BeginInvoke(() =><br />
         {<br />
-            myMainPage.AddTextToReceivedTextBlock(&quot;Response Success: &quot; + items.ToString());<br />
+            myMainPage.AddTextToReceivedTextBlock("Response Success: " + items.ToString());<br />
         });<br />
     }<br />
     catch (JsonReaderException e)<br />
     {<br />
-        Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+        Deployment.Current.Dispatcher.BeginInvoke(() =><br />
         {<br />
-            myMainPage.AddTextToReceivedTextBlock(&quot;JSONException : &quot; + e.Message);<br />
+            myMainPage.AddTextToReceivedTextBlock("JSONException : " + e.Message);<br />
         });<br />
     }<br />
 }</p>
 <p>public void onFailure(WLFailResponse response)<br />
 {<br />
-    Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+    Deployment.Current.Dispatcher.BeginInvoke(() =><br />
     {<br />
-        myMainPage.AddTextToReceivedTextBlock(&quot;Response failed: &quot; + response.ToString());<br />
+        myMainPage.AddTextToReceivedTextBlock("Response failed: " + response.ToString());<br />
     });<br />
 }<br />
 {% endhighlight %</p>

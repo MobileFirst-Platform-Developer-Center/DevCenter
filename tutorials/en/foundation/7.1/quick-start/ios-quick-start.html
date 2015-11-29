@@ -83,23 +83,23 @@ relevantTo: [ios]
 <li>
 <h4>AppDelegate.h</h4>
 <p>                Add the header:<br />
-                {% highlight objc %}#import &quot;WLResourceRequest.h&quot;{% endhighlight %
+                {% highlight objc %}#import "WLResourceRequest.h"{% endhighlight %
             </li>
 <li style="margin-bottom:30px">
 <h4>AppDelegate.m</h4>
 <p>                Add the header:<br />
-                {% highlight objc %}#import &quot;WLResponse.h&quot;{% endhighlight %</p>
+                {% highlight objc %}#import "WLResponse.h"{% endhighlight %</p>
 <p>                Add the following to <code>didFinishLaunchingWithOptions</code>:<br />
 {% highlight objc %}- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {<br />
-    NSURL* url = [NSURL URLWithString:@&quot;/adapters/MyAdapter/getFeed&quot;];<br />
+    NSURL* url = [NSURL URLWithString:@"/adapters/MyAdapter/getFeed"];<br />
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
-    [request setQueryParameterValue:@&quot;['technology']&quot; forName:@&quot;params&quot;];</p>
+    [request setQueryParameterValue:@"['technology']" forName:@"params"];</p>
 <p>    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
         if(error != nil){<br />
-             NSLog(@&quot;%@&quot;,error.description);<br />
+             NSLog(@"%@",error.description);<br />
         }<br />
         else{<br />
-            NSLog(@&quot;%@&quot;,response.responseJSON);<br />
+            NSLog(@"%@",response.responseJSON);<br />
         }<br />
     }];</p>
 <p>    return YES;<br />

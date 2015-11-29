@@ -46,8 +46,8 @@ public boolean isCustomResponse(WLResponse response) {<br />
 	try {<br />
 		if(response!= null &amp;&amp;<br />
 				response.getResponseJSON()!=null &amp;&amp;<br />
-				!response.getResponseJSON().isNull(&quot;authStatus&quot;) &amp;&amp;<br />
-				response.getResponseJSON().getString(&quot;authStatus&quot;) != &quot;&quot;){<br />
+				!response.getResponseJSON().isNull("authStatus") &amp;&amp;<br />
+				response.getResponseJSON().getString("authStatus") != ""){<br />
 			return true;<br />
 		}<br />
 	} catch (JSONException e) {<br />
@@ -63,12 +63,12 @@ If <code>isCustomResponse</code> returns <code>true</code>, the framework calls 
 public void handleChallenge(WLResponse response){<br />
 	cachedResponse = response;<br />
 	try {<br />
-		if(response.getResponseJSON().getString(&quot;authStatus&quot;).equals(&quot;credentialsRequired&quot;)){<br />
-			MainAdapterBasedAuth.setMainText(&quot;handleChallenge-&gt;credentialsRequired&quot;);<br />
+		if(response.getResponseJSON().getString("authStatus").equals("credentialsRequired")){<br />
+			MainAdapterBasedAuth.setMainText("handleChallenge->credentialsRequired");<br />
 			Intent login = new Intent(parentActivity, LoginAdapterBasedAuth.class);<br />
 			parentActivity.startActivityForResult(login, 1);<br />
 		}<br />
-		else if(response.getResponseJSON().getString(&quot;authStatus&quot;).equals(&quot;complete&quot;)){<br />
+		else if(response.getResponseJSON().getString("authStatus").equals("complete")){<br />
 			submitSuccess(cachedResponse);<br />
 		}<br />
 	} catch (JSONException e) {<br />
@@ -104,7 +104,7 @@ For example, in here we implemented a <code>submitLogin method</code> that calle
 			submitFailure(cachedResponse);<br />
 		} else {<br />
 			Object[] parameters = new Object[]{userName, password};<br />
-			WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;AuthAdapter&quot;, &quot;submitAuthentication&quot;);<br />
+			WLProcedureInvocationData invocationData = new WLProcedureInvocationData("AuthAdapter", "submitAuthentication");<br />
 			invocationData.setParameters(parameters);<br />
 			WLRequestOptions options = new WLRequestOptions();<br />
 			options.setTimeout(30000);<br />
@@ -131,7 +131,7 @@ client.registerChallengeHandler(challengeHandler);<br />
 </li>
 <li>Invoke the protected adapter procedure:<br />
 {% highlight java %}<br />
-URI adapterPath = new URI(&quot;/adapters/AuthAdapter/getSecretData&quot;);<br />
+URI adapterPath = new URI("/adapters/AuthAdapter/getSecretData");<br />
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
 request.send(new MyResponseListener());<br />
 {% endhighlight %

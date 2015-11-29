@@ -34,7 +34,7 @@ This tutorial explains how to implement the client side of a custom authenticati
 @implementation MyChallengeHandler<br />
 //...<br />
 -(id)init:{<br />
-    self = [self initWithRealm:@&quot;CustomAuthenticatorRealm&quot;];<br />
+    self = [self initWithRealm:@"CustomAuthenticatorRealm"];<br />
     return self;<br />
 }<br />
 {% endhighlight %
@@ -46,9 +46,9 @@ The <code>isCustomResponse</code> method is invoked each time a response is rece
 <p>{% highlight obj-c %}<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
     if(response &amp;&amp; [response getResponseJson]){<br />
-        if ([[response getResponseJson] objectForKey:@&quot;authStatus&quot;]) {<br />
-            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@&quot;authStatus&quot;];<br />
-            return ([authRequired compare:@&quot;required&quot;] == NSOrderedSame);<br />
+        if ([[response getResponseJson] objectForKey:@"authStatus"]) {<br />
+            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@"authStatus"];<br />
+            return ([authRequired compare:@"required"] == NSOrderedSame);<br />
         }<br />
     }<br />
     return false;<br />
@@ -59,8 +59,8 @@ The <code>isCustomResponse</code> method is invoked each time a response is rece
 If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hiding the application screen and showing the login screen.</p>
 <p>{% highlight obj-c %}<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
-    NSLog(@&quot;A login form should appear&quot;);<br />
-    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@&quot;LoginViewController&quot;];<br />
+    NSLog(@"A login form should appear");<br />
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];<br />
     loginController.challengeHandler = self;<br />
     [self.vc.navigationController pushViewController:loginController animated:YES];<br />
 }<br />
@@ -74,12 +74,12 @@ At the end of the authentication flow, calls to the <code>onSuccess</code> or <c
 </ul>
 <p>{% highlight obj-c %}<br />
 -(void) onSuccess:(WLResponse *)response {<br />
-    NSLog(@&quot;Challenge succeeded&quot;);<br />
+    NSLog(@"Challenge succeeded");<br />
     [self.vc.navigationController popViewControllerAnimated:YES];<br />
     [self submitSuccess:response];<br />
 }</p>
 <p>-(void) onFailure:(WLFailResponse *)response {<br />
-    NSLog(@&quot;Challenge failed&quot;);<br />
+    NSLog(@"Challenge failed");<br />
     [self submitFailure:response];<br />
 }<br />
 {% endhighlight %
@@ -95,11 +95,11 @@ At the end of the authentication flow, calls to the <code>onSuccess</code> or <c
 //...<br />
 - (IBAction)login:(id)sender {<br />
     [self.challengeHandler<br />
-         submitLoginForm:@&quot;/my_custom_auth_request_url&quot;<br />
-         requestParameters:@{@&quot;username&quot;: self.username.text, @&quot;password&quot;: self.password.text}<br />
+         submitLoginForm:@"/my_custom_auth_request_url"<br />
+         requestParameters:@{@"username": self.username.text, @"password": self.password.text}<br />
          requestHeaders:nil<br />
          requestTimeoutInMilliSeconds:0<br />
-         requestMethod:@&quot;POST&quot;];<br />
+         requestMethod:@"POST"];<br />
 }<br />
 {% endhighlight %</p>
 <p><br clear="all" /></p>
@@ -120,7 +120,7 @@ The protected procedure invocation triggers MobileFirst Server to send the chall
 </li>
 <li>Invoke the protected adapter procedure:<br />
 {% highlight obj-c %}<br />
-    NSURL* url = [NSURL URLWithString:@&quot;/adapters/AuthAdapter/getSecretData&quot;];<br />
+    NSURL* url = [NSURL URLWithString:@"/adapters/AuthAdapter/getSecretData"];<br />
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
     [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
     ...<br />

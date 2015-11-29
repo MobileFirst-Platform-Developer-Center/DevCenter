@@ -49,13 +49,13 @@ Use it to work with your Objective-C code.</p>
 <li>Add an Objective-C<code> MyCustomAlert</code> class in the <code>Classes</code> folder.</li>
 <li>Add a method signature to the <code>MyCustomAlert.h</code> file and a method implementation to the <code>MyCustomAlert.m</code> file:
 <p>{% highlight obj-c %}<br />
-#import &quot;MyCustomAlert.h&quot;</p>
+#import "MyCustomAlert.h"</p>
 <p>@implementation MyCustomAlert<br />
 +(void)showUIAlert:(NSString *)text{<br />
-  UIAlertView *alert = [[UIAlert alloc] initWithTitle:@&quot;Native Alert&quot;<br />
+  UIAlertView *alert = [[UIAlert alloc] initWithTitle:@"Native Alert"<br />
                                         message:text<br />
                                         delegate:nil<br />
-                                        cancelButtonTitle:@&quot;Close&quot;<br />
+                                        cancelButtonTitle:@"Close"<br />
                                         otherButtonTitles:nil];<br />
   [alert show];<br />
   [alert release];<br />
@@ -68,7 +68,7 @@ Use it to work with your Objective-C code.</p>
 - (void)viewDidLoaad<br />
 {<br />
   [super viewDidLoad];<br />
-  [MyCustomAlert showUIAlert:@&quot;Hello from native iOS Shell&quot;];<br />
+  [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];<br />
 }<br />
 {% endhighlight %
 </li>

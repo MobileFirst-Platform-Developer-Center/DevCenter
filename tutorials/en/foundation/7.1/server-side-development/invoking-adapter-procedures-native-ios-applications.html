@@ -27,12 +27,12 @@ For most actions, you must specify a delegate object, such as a <code>MyConnectL
 MyConnectListener *connectListener = [[MyConnectListener alloc] initWithController:self];<br />
 [[WLClient sharedInstance] wlConnectWithDelegate:connectListener];<br />
 {% endhighlight %</p>
-<p><strong>Note:</strong> Remember to <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code> when using the MobileFirst SDK.</p>
+<p><strong>Note:</strong> Remember to <code>#import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h></code> when using the MobileFirst SDK.</p>
 </li>
 <li>Create a delegate to be used in the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server instance. Name the class <code>MyConnectListener</code>.<br />
 The header file must specify that it implements the <code>WLDelegate</code> protocol.</p>
 <p>{% highlight obj-c %}<br />
-@interface MyConnectListener : NSObject &lt;WLDelegate&gt; {<br />
+@interface MyConnectListener : NSObject <WLDelegate> {<br />
     @private<br />
     ViewController *vc;<br />
 }</p>
@@ -46,15 +46,15 @@ In both cases, the response object is sent as an argument.
 <li>Use this object to operate data that is retrieved from the server.
 <p>{% highlight obj-c %}<br />
 -(void)onSuccess:(WLResponse *)response{<br />
-    NSLog(@&quot;\nConnection Success: %@&quot;, response);<br />
-    NSString *resultText = @&quot;Connection success. &quot;;</p>
+    NSLog(@"\nConnection Success: %@", response);<br />
+    NSString *resultText = @"Connection success. ";</p>
 <p>    if ([response responseText] != nil){<br />
         resultText = [resultText stringByAppendingString:[response responseText]];<br />
     }<br />
     [vc updateView:resultText];<br />
 }</p>
 <p>-(void)onFailure:(WLFailResponse *)response{<br />
-    NSString *resultText = @&quot;Connection failure. &quot;;</p>
+    NSString *resultText = @"Connection failure. ";</p>
 <p>    if ([response responseText] != nil){<br />
         resultText = [resultText stringByAppendingString:[response responseText]];<br />
     }<br />
@@ -67,7 +67,7 @@ In both cases, the response object is sent as an argument.
 <ol>
 <li> Define the URI of the resource. For a JavaScript HTTP adapter: <code>/adapters/{AdapterName}/{ProcedureName}</code><br />
 {% highlight obj-c %}<br />
-NSURL* url = [NSURL URLWithString:@&quot;/adapters/RSSReader/getFeed&quot;];<br />
+NSURL* url = [NSURL URLWithString:@"/adapters/RSSReader/getFeed"];<br />
 {% endhighlight %
 </li>
 <li>Create a <code>WLResourceRequest</code> object and choose the HTTP method (GET, POST, etc).<br />
@@ -79,13 +79,13 @@ WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttp
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name to set an array of parameters.<br />
 {% highlight obj-c %}<br />
-[request setQueryParameterValue:@&quot;['MobileFirst_Platform']&quot; forName:@&quot;params&quot;];<br />
+[request setQueryParameterValue:@"['MobileFirst_Platform']" forName:@"params"];<br />
 {% endhighlight %
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameterValue</code> for each parameter.<br />
 {% highlight obj-c %}<br />
-[request setQueryParameterValue:@&quot;value1&quot; forName:@&quot;param1&quot;];<br />
-[request setQueryParameterValue:@&quot;value2&quot; forName:@&quot;param2&quot;];<br />
+[request setQueryParameterValue:@"value1" forName:@"param1"];<br />
+[request setQueryParameterValue:@"value2" forName:@"param2"];<br />
 {% endhighlight %
 </li>
 </ul>
@@ -96,11 +96,11 @@ Specify a <code>completionHandler</code> instance.</p>
     [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
         NSString* resultText;<br />
         if(error != nil){<br />
-            resultText = @&quot;Invocation failure.&quot;;<br />
+            resultText = @"Invocation failure.";<br />
             resultText = [resultText stringByAppendingString: error.description];<br />
         }<br />
         else{<br />
-            resultText = @&quot;Invocation success.&quot;;<br />
+            resultText = @"Invocation success.";<br />
             resultText = [resultText stringByAppendingString:response.responseText];<br />
         }<br />
         [self updateView:resultText];<br />

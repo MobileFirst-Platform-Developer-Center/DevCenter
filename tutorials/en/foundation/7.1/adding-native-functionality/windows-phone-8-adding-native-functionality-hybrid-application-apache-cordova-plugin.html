@@ -33,14 +33,14 @@ The plug-in performs the required action and calls a JavaScript callback method 
 <h2 id="declare">Declaring a plug-in</h2>
 <p>You must declare the plug-in in the project, so that Cordova can detect it.<br />
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the native folder of the Windows Phone 8 environment.</p>
-<p>{% highlight xml %}&lt;feature name=“sayHelloPlugin&quot;&gt;<br />
-  &lt;param name=&quot;wp-package&quot; value=“sayHelloPlugin&quot; /&gt;<br />
-&lt;/feature&gt;{% endhighlight %</p>
+<p>{% highlight xml %}<feature name=“sayHelloPlugin"><br />
+  <param name="wp-package" value=“sayHelloPlugin" /><br />
+</feature>{% endhighlight %</p>
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
 {% highlight js %}function sayHello() {<br />
-    var name = $(&quot;#NameInput&quot;).val();<br />
-    cordova.exe(sayHelloSuccess, sayHelloFailure, &quot;SayHelloPlugin&quot;, &quot;sayHello&quot;, [name]);<br />
+    var name = $("#NameInput").val();<br />
+    cordova.exe(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);<br />
 }{% endhighlight %</p>
 <p><br clear="all" /><br />
 <code>sayHelloSuccess</code> - Success callback<br />
@@ -52,14 +52,14 @@ To declare the plug-in, add a reference to the <code>config.xml</code> file, loc
 {% highlight js %}<br />
 function sayHelloSuccess(data){<br />
     WL.SimpleDialog.show(<br />
-        &quot;Response from plug-in&quot;, data,<br />
-  [{text: &quot;OK&quot;, handler: function() {WL.Logger.debug(&quot;Ok button pressed&quot;);}}]<br />
+        "Response from plug-in", data,<br />
+  [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]<br />
     );<br />
 }</p>
 <p>function sayHelloFailure(data){<br />
     WL.SimpleDialog.show(<br />
-  &quot;Response from plug-in&quot;, data,<br />
-  [{text: &quot;OK&quot;, handler: function() {WL.Logger.debug(&quot;Ok button pressed&quot;);}}]<br />
+  "Response from plug-in", data,<br />
+  [{text: "OK", handler: function() {WL.Logger.debug("Ok button pressed");}}]<br />
     );<br />
 }{% endhighlight %</p>
 <h2 id="csharp">Implementing the C# code of a Cordova plug-in</h2>
@@ -91,20 +91,20 @@ using WPCordovaClassLib.Cordova.JSON;</p>
         {<br />
             string optVal = null;<br />
             try {<br />
-                optVal = JsonHelper.Deserialize&lt;string[]&gt;(options)[0];<br />
+                optVal = JsonHelper.Deserialize<string[]>(options)[0];<br />
             }<br />
             catch (Exception) {<br />
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, &quot;SayHelloPlugin signaled an error&quot;));<br />
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "SayHelloPlugin signaled an error"));<br />
             }{% endhighlight %</li>
 <p><br clear="all" /></p>
 <li>The <code>DispatchCommandResult</code> method returns the result to JavaScript, whether success or failure.<br />
 {% highlight csharp %}if (optVal == null)<br />
             {<br />
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, &quot;Got null value as input&quot;));<br />
+                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Got null value as input"));<br />
             }<br />
             else<br />
             {<br />
-                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, &quot;Hello &quot; + optVal));<br />
+                DispatchCommandResult(new PluginResult(PluginResult.Status.OK, "Hello " + optVal));<br />
             }<br />
         }<br />
     }<br />

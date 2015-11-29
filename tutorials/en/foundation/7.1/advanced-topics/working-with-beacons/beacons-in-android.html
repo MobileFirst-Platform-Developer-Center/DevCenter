@@ -40,27 +40,27 @@ This is a continuation of <a href="../">Working with Beacons</a> (introduction, 
 <h3>Android Manifest configuration</h3>
 <ul>
 <li>Specify minSdkVersion as 18 (Android 4.3).<br />
- {% highlight xml %}android:minSdkVersion=&quot;18&quot;{% endhighlight %</p>
+ {% highlight xml %}android:minSdkVersion="18"{% endhighlight %</p>
 </li>
 <li>Specify permissions for BLUETOOTH and BLUETOOTH_ADMIN.<br />
 {% highlight xml %}<br />
-    &lt;uses-permission android:name=&quot;android.permission.BLUETOOTH&quot; /&gt;<br />
-    &lt;uses-permission android:name=&quot;android.permission.BLUETOOTH_ADMIN&quot; /&gt;<br />
+    <uses-permission android:name="android.permission.BLUETOOTH" /><br />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /><br />
 {% endhighlight %</p>
 </li>
 <li>This is in addition to the following standard Worklight permissions:
 <p>{% highlight xml %}<br />
-    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;<br />
-    &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;<br />
-    &lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot; /&gt;<br />
+    <uses-permission android:name="android.permission.INTERNET" /><br />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /><br />
+    <uses-permission android:name="android.permission.GET_TASKS" /><br />
 {% endhighlight %</p>
 </li>
 <li>Specify <code>com.worklight.wlclient.api.WLBeaconsMonitoringApplication</code> as the application name.<br />
 {% highlight xml %}<br />
-&lt;application<br />
-    android:name=&quot;com.worklight.wlclient.api.WLBeaconsMonitoringApplication&quot;&gt;<br />
+<application<br />
+    android:name="com.worklight.wlclient.api.WLBeaconsMonitoringApplication"><br />
     ...<br />
-&lt;/application&gt;<br />
+</application><br />
 {% endhighlight %
 </li>
 </ul>
@@ -75,8 +75,8 @@ protected void onCreate(Bundle savedInstanceState) {<br />
 <h3>Loading beacons and triggers from the server</h3>
 <p>To load information pertaining to beacons, triggers, and their associations from the server and storing it in the application JSONStore, write the following code:</p>
 <p>{% highlight java %}<br />
-String adapterName = &quot;BeaconsAdapter&quot;;<br />
-String procedureName = &quot;getBeaconsAndTriggers&quot;;<br />
+String adapterName = "BeaconsAdapter";<br />
+String procedureName = "getBeaconsAndTriggers";<br />
 WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers(adapterName, procedureName,<br />
 	new WLResponseListener() {<br />
 		@Override<br />
@@ -86,7 +86,7 @@ WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers
 <p>		@Override<br />
 		public void onFailure(WLFailResponse response) {<br />
 			// Failed to fetch beacons, triggers and associations from server<br />
-			String responseText = &quot;WLBeaconsAndTriggersJSONStoreManager.loadBeaconsAndTriggers() failed:\n&quot;<br />
+			String responseText = "WLBeaconsAndTriggersJSONStoreManager.loadBeaconsAndTriggers() failed:\n"<br />
 					+ response.getResponseText();<br />
 			Log.d(TAG, responseText);<br />
 		}<br />

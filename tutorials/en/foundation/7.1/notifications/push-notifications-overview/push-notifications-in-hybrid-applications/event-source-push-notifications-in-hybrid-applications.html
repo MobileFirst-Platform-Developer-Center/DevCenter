@@ -25,15 +25,15 @@ relevantTo: [hybrid]
 </ul>
 <p>When a push notification is received by a device, the callback function defined in <code>WL.Client.Push.registerEventSourceCallback</code> is invoked:</p>
 <p>{% highlight js %}function pushNotificationReceived(props, payload) {<br />
-    alert(&quot;pushNotificationReceived invoked&quot;);<br />
-    alert(&quot;props :: &quot; + JSON.stringify(props));<br />
-    alert(&quot;payload :: &quot; + JSON.stringify(payload));<br />
+    alert("pushNotificationReceived invoked");<br />
+    alert("props :: " + JSON.stringify(props));<br />
+    alert("payload :: " + JSON.stringify(payload));<br />
 }{% endhighlight %</p>
 <p>If the application was in background mode (or inactive) when the push notification arrived, this callback function is invoked when the application returns to the foreground.</p>
 <h2 id="backendEmulator">Back-end emulator</h2>
 <p>The sample project for this tutorial is bundled with a back-end emulator which can be used to simulate push notification submissions by a back-end system. The source for the emulator can be found in the sample project.</p>
 <p>To run the back-end emulator, open the PushBackendEmulator folder of the sample project in a command prompt, and then run the supplied JAR file by using the following syntax:</p>
-<p>[code]java –jar PushBackendEmulator.jar &lt;userId&gt; &lt;message&gt; &lt;contextRoot&gt; &lt;port&gt;{% endhighlight %</p>
+<p>[code]java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>{% endhighlight %</p>
 <p><code>userId</code> is the user name that you used to log in to the sample application.<br />
 <code>contextRoot</code> is the context root of your MobileFirst project.</p>
 <h3>Example</h3>

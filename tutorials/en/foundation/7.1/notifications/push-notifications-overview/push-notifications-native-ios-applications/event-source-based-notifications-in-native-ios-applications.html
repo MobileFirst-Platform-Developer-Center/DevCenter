@@ -69,13 +69,13 @@ The following parameters are required:</p>
 <p>{% highlight js %}function submitNotification(userId, notificationText) {<br />
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>    if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }</p>
 <p>    var badgeDigit = 1;<br />
-    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});</p>
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});</p>
 <p>        WL.Server.notifyAllDevices(userSubscription, notification);</p>
 <p>    return {<br />
-        result: &quot;Notification sent to user :: &quot; + userId<br />
+        result: "Notification sent to user :: " + userId<br />
     };<br />
 }{% endhighlight %</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
@@ -92,11 +92,11 @@ The following parameters are required:</p>
 {% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
 {% highlight js %}if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }{% endhighlight %</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
 {% highlight js %}var badgeDigit = 1;<br />
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});{% endhighlight %</p>
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %</p>
 <ul>
 <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
 <li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
@@ -158,8 +158,8 @@ The user must add this method to the app delegate to get the token.<br />
 Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.</p>
 <p>This function is called when authentication finishes.<br />
 {% highlight obj-c %}<br />
-#import &quot;ReadyToSubscribeListener.h&quot;<br />
-#import &quot;MyEventSourceListener.h&quot;</p>
+#import "ReadyToSubscribeListener.h"<br />
+#import "MyEventSourceListener.h"</p>
 <p>@implementation ReadyToSubscribeListener</p>
 <p>-(void)OnReadyToSubscribe{<br />
   MyEventSourceListener *eventSourceListener=[[MyEventSourceListener alloc]init];<br />
@@ -206,7 +206,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 When a push notification is received by a device, the <code>didReceiveRemoteNotification</code> method  is called in the app delegate. Logic to handle the notification should be defined here.</p>
 <p>{% highlight obj-c %}<br />
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
-    NSLog(@&quot;Received Notification %@&quot;,userInfo.description);<br />
+    NSLog(@"Received Notification %@",userInfo.description);<br />
 }<br />
 {% endhighlight %<br />
 If the application was in background mode (or inactive) when the push notification arrived, this callback is called when the application returns to the foreground.</p>
@@ -226,6 +226,6 @@ If the application was in background mode (or inactive) when the push notificati
 <li>If using the CLI, for example:<br />
 {% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/submitNotification<br />
-[?] Enter the comma-separated parameters: &quot;the-user-name&quot;, &quot;hello!&quot;<br />
+[?] Enter the comma-separated parameters: "the-user-name", "hello!"<br />
 [?] How should the procedure be called? GET{% endhighlight %</li>
 </ol>

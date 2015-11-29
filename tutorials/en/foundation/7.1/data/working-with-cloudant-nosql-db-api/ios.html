@@ -38,15 +38,15 @@ In the native iOS sample that comes with this tutorial, the value for the <code>
 <p>{% highlight obj-c %}<br />
 //Get reference to IMFDataManager<br />
 IMFDataManager *manager = [IMFDataManager sharedInstance];<br />
-NSString *dbname=@&quot;todosdb&quot;;<br />
+NSString *dbname=@"todosdb";<br />
 NSError *error = nil;</p>
 <p>//Create local store<br />
 CDTStore *datastore = [manager localStore:dbname error:&amp;error];<br />
 if (error) {<br />
-        [NSException raise:@&quot;DBCreationFailure&quot; format: @&quot;Could not create DB with name %@&quot;, dbname];<br />
+        [NSException raise:@"DBCreationFailure" format: @"Could not create DB with name %@", dbname];<br />
     }<br />
     else{<br />
-        NSLog(@&quot;Local data store created successfully&quot;);<br />
+        NSLog(@"Local data store created successfully");<br />
     }<br />
 {% endhighlight %</p>
 <h2 id="creatingRemote">Creating remote data stores</h2>
@@ -54,21 +54,21 @@ if (error) {<br />
 <p>{% highlight obj-c %}<br />
 // Get reference to data manager<br />
 IMFDataManager *manager = [IMFDataManager sharedInstance];<br />
-NSString *dbname = @&quot;todosdb&quot;;</p>
+NSString *dbname = @"todosdb";</p>
 <p>// Create remote store<br />
 [manager remoteStore:dbname completionHandler:^(CDTStore *store, NSError *error) {<br />
     if(error){<br />
         // Handle error<br />
     }else{<br />
         CDTStore *remotedatastore = store;<br />
-        NSLog(@&quot;Successfully created store);<br />
+        NSLog(@"Successfully created store);<br />
     }<br />
 }];<br />
 {% endhighlight %</p>
 <h2 id="permissions">Setting user permissions for remote stores</h2>
 <p>You can set specific permissions for users to access remote stores.</p>
 <p>{% highlight obj-c %}<br />
-[manager setCurrentUserPermissions: DB_ACCESS_GROUP_MEMBERS forStoreName: @&quot;todosdb&quot; completionHander:^(BOOL success, NSError *error) {<br />
+[manager setCurrentUserPermissions: DB_ACCESS_GROUP_MEMBERS forStoreName: @"todosdb" completionHander:^(BOOL success, NSError *error) {<br />
     if(error){<br />
         // Handle error<br />
     }else{<br />
@@ -86,7 +86,7 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
 </ul>
 <h3>TodoItem implementation (<code>TodoItem.h</code>)</h3>
 <p>{% highlight obj-c %}<br />
-@interface TodoItem : NSObject &lt;CDTDataObject&gt;<br />
+@interface TodoItem : NSObject <CDTDataObject><br />
 @property NSString *name;<br />
 @property NSNumber *priority;<br />
 //Required by the IMFDataObject protocol<br />
@@ -96,7 +96,7 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
 <p>You must then register the class and data type with the <code>CDTDataObjectMapper</code>. In the sample, the <code>TableViewController</code> does that after the store is created.<br />
 {% highlight obj-c %}<br />
 //using the existing store<br />
- [self.datastore.mapper setDataType:@&quot;TodoItem&quot; forClassName:NSStringFromClass([TodoItem class])];<br />
+ [self.datastore.mapper setDataType:@"TodoItem" forClassName:NSStringFromClass([TodoItem class])];<br />
 {% endhighlight %</p>
 <h2 id="creating">Creating and updating data</h2>
 <p>Using the same operation, you can save new objects and save changes to existing objects in a data store.</p>
@@ -108,7 +108,7 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
     //save will perform a create because the item object does not exist yet in the DB.<br />
     [self.datastore save:item completionHandler:^(NSObject *object, NSError *error) {<br />
         if (error) {<br />
-            NSLog(@&quot;createItem failed with error: %@&quot;, error);<br />
+            NSLog(@"createItem failed with error: %@", error);<br />
         } else {<br />
             [self listItems:nil];<br />
         }</p>
@@ -123,7 +123,7 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
     //save will perform a create because the CDTDocumentRevision already exists.<br />
     [self.datastore save:item completionHandler:^(NSObject *object, NSError *error) {<br />
         if (error) {<br />
-            NSLog(@&quot;updateItem failed with error: %@&quot;, error);<br />
+            NSLog(@"updateItem failed with error: %@", error);<br />
         } else {<br />
             [self listItems:nil];<br />
         }</p>
@@ -138,7 +138,7 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
 {<br />
     [self.datastore delete:item completionHandler:^(NSString *deletedObjectId, NSString *deletedRevisionId, NSError *error) {<br />
         if (error != nil) {<br />
-            NSLog(@&quot;deleteItem failed with error: %@&quot;, error);<br />
+            NSLog(@"deleteItem failed with error: %@", error);<br />
         } else {<br />
             [self listItems:nil];<br />
         }<br />
@@ -248,7 +248,7 @@ pod 'IMFDataLocal/SQLCipher'<br />
 <p>Now the project has the dependencies that are required to encrypt the local databases correctly. To encrypt these databases in your client-side code, first create an <code>CDTEncryptionKeyProvider</code> and then create a local data store with this <code>keyProvider</code>:</p>
 <p>{% highlight obj-c %}<br />
 //Initialize a key provider<br />
-id&lt;CDTEncryptionKeyProvider&gt; keyProvider = [CDTEncryptionKeychainProvider providerWithPassword:@&quot;password&quot; forIdentifier:@&quot;user&quot;];<br />
+id<CDTEncryptionKeyProvider> keyProvider = [CDTEncryptionKeychainProvider providerWithPassword:@"password" forIdentifier:@"user"];<br />
 //Initialize a local store<br />
 self.datastore = [manager localStore:dbname withEncryptionKeyProvider:keyProvider error:&amp;dbCreateError];<br />
 {% endhighlight %</p>
@@ -275,9 +275,9 @@ self.pushReplication   = [[IMFDataManager sharedInstance] pushReplicationForStor
 <p>{% highlight obj-c %}<br />
 -(void) handleChallenge:(WLResponse *)response<br />
 {<br />
-    NSLog(@&quot;Inside handleChallenge - silently loggin in&quot;);<br />
-    WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc]     initWithAdapterName:@&quot;CloudantAuthenticationAdapter&quot; procedureName:@&quot;submitAuthentication&quot;];<br />
-    invocationData.parameters = @[@&quot;james&quot;, @&quot;42&quot;];</p>
+    NSLog(@"Inside handleChallenge - silently loggin in");<br />
+    WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc]     initWithAdapterName:@"CloudantAuthenticationAdapter" procedureName:@"submitAuthentication"];<br />
+    invocationData.parameters = @[@"james", @"42"];</p>
 <p>    [self submitAdapterAuthentication: invocationData options: nil];<br />
 }<br />
 {% endhighlight %</p>

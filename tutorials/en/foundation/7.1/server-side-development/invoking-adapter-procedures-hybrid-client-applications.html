@@ -17,7 +17,7 @@ The REST API works with all adapters and <a href="../../authentication-security/
 <h2>WLResourceRequest</h2>
 <p>{% highlight js %}<br />
 var resourceRequest = new WLResourceRequest(<br />
-    &quot;/adapters/RSSReader/getFeedFiltered&quot;,<br />
+    "/adapters/RSSReader/getFeedFiltered",<br />
     WLResourceRequest.GET<br />
 );<br />
 {% endhighlight %</p>
@@ -32,7 +32,7 @@ var resourceRequest = new WLResourceRequest(<br />
 <p><br clear="all" /></p>
 <h4>setQueryParameter</h4>
 <p>{% highlight js %}<br />
-resourceRequest.setQueryParameter(&quot;params&quot;, &quot;['MobileFirst_Platform']&quot;);<br />
+resourceRequest.setQueryParameter("params", "['MobileFirst_Platform']");<br />
 {% endhighlight %</p>
 <p>By using the <code>setQueryParameter</code> method, you can include query (URL) parameters in the REST request.</p>
 <ul>
@@ -40,8 +40,8 @@ resourceRequest.setQueryParameter(&quot;params&quot;, &quot;['MobileFirst_Platfo
 </li>
 <li>In Java adapters or external resources, use <code>setQueryParameter</code> for each parameter.<br />
 {% highlight js %}<br />
-resourceRequest.setQueryParameter(&quot;param1&quot;, &quot;value1&quot;);<br />
-resourceRequest.setQueryParameter(&quot;param2&quot;, &quot;value2&quot;);<br />
+resourceRequest.setQueryParameter("param1", "value1");<br />
+resourceRequest.setQueryParameter("param2", "value2");<br />
 {% endhighlight %
 </li>
 </ul>
@@ -69,32 +69,32 @@ Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFai
 <p><br clear="all" /><br />
 {% highlight javascript %}<br />
 {<br />
-  &quot;errors&quot;: [],<br />
-  &quot;info&quot;: [],<br />
-  &quot;warnings&quot;: [],<br />
-  &quot;isSuccessful&quot;: true,<br />
-  &quot;responseHeaders&quot;: {<br />
-    &quot;Cache-Control&quot;: &quot;no-cache, must-revalidate, post-check=0, pre-check=0&quot;<br />
+  "errors": [],<br />
+  "info": [],<br />
+  "warnings": [],<br />
+  "isSuccessful": true,<br />
+  "responseHeaders": {<br />
+    "Cache-Control": "no-cache, must-revalidate, post-check=0, pre-check=0"<br />
   },<br />
-  &quot;responseTime&quot;: 491,<br />
-  &quot;statusCode&quot;: 200,<br />
-  &quot;statusReason&quot;: &quot;OK&quot;,<br />
-  &quot;totalTime&quot;: 592,<br />
-  &quot;Items&quot;: [{<br />
-    &quot;creator&quot;: &quot;Jon Fingas&quot;,<br />
-    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated&quot;,<br />
-    &quot;pubDate&quot;: &quot;Mon, 10 Nov 2014 02:21:00 -0500&quot;,<br />
-    &quot;title&quot;: &quot;Harvard used cameras to track attendance without telling students&quot;<br />
+  "responseTime": 491,<br />
+  "statusCode": 200,<br />
+  "statusReason": "OK",<br />
+  "totalTime": 592,<br />
+  "Items": [{<br />
+    "creator": "Jon Fingas",<br />
+    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated",<br />
+    "pubDate": "Mon, 10 Nov 2014 02:21:00 -0500",<br />
+    "title": "Harvard used cameras to track attendance without telling students"<br />
   }, {<br />
-    &quot;creator&quot;: &quot;Jon Fingas&quot;,<br />
-    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/10\/bmw-ev-charging-street-lights\/?ncid=rss_truncated&quot;,<br />
-    &quot;pubDate&quot;: &quot;Mon, 10 Nov 2014 00:10:00 -0500&quot;,<br />
-    &quot;title&quot;: &quot;BMW's new street lights will charge your electric car&quot;<br />
+    "creator": "Jon Fingas",<br />
+    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/bmw-ev-charging-street-lights\/?ncid=rss_truncated",<br />
+    "pubDate": "Mon, 10 Nov 2014 00:10:00 -0500",<br />
+    "title": "BMW's new street lights will charge your electric car"<br />
   }, {<br />
-    &quot;creator&quot;: &quot;Daniel Cooper&quot;,<br />
-    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/09\/hwyc-lumia-925\/?ncid=rss_truncated&quot;,<br />
-    &quot;pubDate&quot;: &quot;Sun, 09 Nov 2014 22:43:00 -0500&quot;,<br />
-    &quot;title&quot;: &quot;How would you change Nokia's Lumia 925?&quot;<br />
+    "creator": "Daniel Cooper",<br />
+    "link": "http:\/\/www.engadget.com\/2014\/11\/09\/hwyc-lumia-925\/?ncid=rss_truncated",<br />
+    "pubDate": "Sun, 09 Nov 2014 22:43:00 -0500",<br />
+    "title": "How would you change Nokia's Lumia 925?"<br />
   }]<br />
 }<br />
 {% endhighlight %</p>
@@ -107,8 +107,8 @@ Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFai
 <p>The rest of the invocation result depends on what was retrieved from the back-end system. In this example, the <code>Items</code> element is a JSON representation of the XML code that was received from the back end, after the rules in the XSL file were applied.</p>
 <p>{% highlight javascript %}<br />
 function loadFeedsSuccess(result){<br />
-    WL.Logger.debug(&quot;Feed retrieve success&quot;);<br />
-    if (result.responseJSON.Items.length &gt; 0)<br />
+    WL.Logger.debug("Feed retrieve success");<br />
+    if (result.responseJSON.Items.length > 0)<br />
         displayFeeds(result.responseJSON.Items);<br />
 }<br />
 {% endhighlight %</p>

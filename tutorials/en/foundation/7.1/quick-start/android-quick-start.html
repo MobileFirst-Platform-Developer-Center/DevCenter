@@ -68,12 +68,12 @@ relevantTo: [android]
     transitive: true{% endhighlight %</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:<br />
 {% highlight xml %}<br />
-&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;<br />
-&lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;<br />
-&lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot; /&gt;<br />
+<uses-permission android:name="android.permission.INTERNET"/><br />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/><br />
+<uses-permission android:name="android.permission.GET_TASKS" /><br />
 {% endhighlight %</li>
 <li>Add the MobileFirst UI activity:<br />
-{% highlight xml %}&lt;activity android:name=&quot;com.worklight.wlclient.ui.UIActivity&quot; /&gt;{% endhighlight %</li>
+{% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %</li>
 <li>In Terminal, navigate to the root of the Android Studio project and add the required configuration files by running this command:<br />
 {% highlight xml %}<br />
 mfp push{% endhighlight %
@@ -103,7 +103,7 @@ setContentView(R.layout.activity_main);</p>
     public void onSuccess(WLResponse wlResponse) {<br />
         URI adapterPath = null;<br />
         try {<br />
-           adapterPath = new URI(&quot;/adapters/MyAdapter/getFeed&quot;);<br />
+           adapterPath = new URI("/adapters/MyAdapter/getFeed");<br />
         } catch (URISyntaxException e) {<br />
            e.printStackTrace();<br />
         }<br />
@@ -112,7 +112,7 @@ setContentView(R.layout.activity_main);</p>
     }</p>
 <p>    @Override<br />
     public void onFailure(WLFailResponse wlFailResponse) {<br />
-        Log.i(&quot;MFPMyProject&quot;,&quot;Failed connecting to the MobileFirst Server: &quot; + wlFailResponse.getErrorMsg());<br />
+        Log.i("MFPMyProject","Failed connecting to the MobileFirst Server: " + wlFailResponse.getErrorMsg());<br />
     }<br />
 });{% endhighlight %</li>
 <li>
@@ -126,11 +126,11 @@ import android.util.Log;{% endhighlight %</p>
 public class MyInvokeListener implements WLResponseListener {</p>
 <p>    @Override<br />
     public void onSuccess(WLResponse wlResponse) {<br />
-        Log.i(&quot;MFPMyProject&quot;,&quot;Adapter invocation response: &quot; + wlResponse.getResponseJSON());<br />
+        Log.i("MFPMyProject","Adapter invocation response: " + wlResponse.getResponseJSON());<br />
     }</p>
 <p>    @Override<br />
     public void onFailure(WLFailResponse wlFailResponse) {<br />
-        Log.i(&quot;MFPMyProject&quot;, &quot;Adapter invocation response: &quot; + wlFailResponse.getErrorMsg());<br />
+        Log.i("MFPMyProject", "Adapter invocation response: " + wlFailResponse.getErrorMsg());<br />
     }<br />
 }{% endhighlight %</li>
 </ul>

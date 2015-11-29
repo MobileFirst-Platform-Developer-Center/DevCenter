@@ -70,13 +70,13 @@ The following parameters are required:</p>
 <p>{% highlight js %}function submitNotification(userId, notificationText) {<br />
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>    if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }</p>
 <p>    var badgeDigit = 1;<br />
-    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});</p>
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});</p>
 <p>        WL.Server.notifyAllDevices(userSubscription, notification);</p>
 <p>    return {<br />
-        result: &quot;Notification sent to user :: &quot; + userId<br />
+        result: "Notification sent to user :: " + userId<br />
     };<br />
 }{% endhighlight %</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
@@ -93,11 +93,11 @@ The following parameters are required:</p>
 {% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
 {% highlight js %}if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }{% endhighlight %</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
 {% highlight js %}var badgeDigit = 1;<br />
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});{% endhighlight %</p>
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %</p>
 <ul>
 <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
 <li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
@@ -140,12 +140,12 @@ public void onReadyToSubscribe() {.....}<br />
 </ul>
 <p>Example:</p>
 <p>{% highlight java %}<br />
-WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myAndroid&quot;,&quot;PushAdapter&quot;,&quot;PushEventSource&quot;,this);<br />
+WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);<br />
 {% endhighlight %</p>
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
 <p>{% highlight java %}@Override<br />
 public void onReadyToSubscribe() {<br />
-   WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myAndroid&quot;,&quot;PushAdapter&quot;,&quot;PushEventSource&quot;,this);<br />
+   WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid","PushAdapter","PushEventSource",this);<br />
 }{% endhighlight %</p>
 <p><br clear="all" /></p>
 <h4>In the Android activity class, override the methods that define the Android activity life cycle as follows:</h4>
@@ -189,7 +189,7 @@ protected void onDestroy() {<br />
 <p>Example:</p>
 <p>{% highlight java %}<br />
 WLClient client = WLClient.getInstance();<br />
-client.getPush().subscribe(&quot;myAndroid&quot;,new WLPushOptions(), new MyListener(MyListener.MODE_SUBSCRIBE));<br />
+client.getPush().subscribe("myAndroid",new WLPushOptions(), new MyListener(MyListener.MODE_SUBSCRIBE));<br />
 {% endhighlight %</p>
 <p>MyListener Implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
@@ -206,7 +206,7 @@ client.getPush().subscribe(&quot;myAndroid&quot;,new WLPushOptions(), new MyList
 <p>Example:</p>
 <p>{% highlight java %}<br />
 WLClient client = WLClient.getInstance();<br />
-client.getPush().unsubscribe(&quot;myAndroid&quot;,new MyListener(MyListener.MODE_UNSUBSCRIBE));<br />
+client.getPush().unsubscribe("myAndroid",new MyListener(MyListener.MODE_UNSUBSCRIBE));<br />
 {% endhighlight %</p>
 <p>MyListener Implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
@@ -222,7 +222,7 @@ boolean supported = client.getPush().isPushSupported();<br />
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
 <p>{% highlight java %}<br />
 WLClient client = WLClient.getInstance();<br />
-boolean isSubscribed = client.getPush().isSubscribed(&quot;myAndroid&quot;);<br />
+boolean isSubscribed = client.getPush().isSubscribed("myAndroid");<br />
 {% endhighlight %</p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
@@ -231,13 +231,13 @@ public class MyListener implements WLOnReadyToSubscribeListener, WLResponseListe
 {% endhighlight %</p>
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
 <p>{% highlight java %}<br />
-WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myAndroid&quot;, &quot;PushAdapter&quot;,&quot;PushEventSource&quot;, this );<br />
+WLClient.getInstance().getPush().registerEventSourceCallback("myAndroid", "PushAdapter","PushEventSource", this );<br />
 {% endhighlight %</p>
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
 <p>{% highlight java %}<br />
 @Override<br />
 public void onReceive(String arg0, String arg1) {<br />
-    AndroidNativePush.updateTextView(&quot;Notification received  &quot; + arg0);<br />
+    AndroidNativePush.updateTextView("Notification received  " + arg0);<br />
 }<br />
 {% endhighlight %</p>
 <p>If the application is not running, the notification icon appears on the notification bar at the top of the screen.</p>
@@ -257,6 +257,6 @@ public void onReceive(String arg0, String arg1) {<br />
 <li>If using the CLI, for example:<br />
 {% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/submitNotification<br />
-[?] Enter the comma-separated parameters: &quot;the-user-name&quot;, &quot;hello!&quot;<br />
+[?] Enter the comma-separated parameters: "the-user-name", "hello!"<br />
 [?] How should the procedure be called? GET{% endhighlight %</li>
 </ol>

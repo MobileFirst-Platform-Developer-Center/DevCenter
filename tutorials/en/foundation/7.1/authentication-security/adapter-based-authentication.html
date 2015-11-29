@@ -19,11 +19,11 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <h3>Realm</h3>
 <p>Add an authentication realm to the <code>realm</code> section of the <code>authenticationConfig.xml</code> file.</p>
 <p>{% highlight xml %}<br />
-  &lt;realm loginModule=&quot;AuthLoginModule&quot; name=&quot;AuthRealm&quot;&gt;<br />
-    &lt;className&gt;com.worklight.integration.auth.AdapterAuthenticator&lt;/className&gt;<br />
-      &lt;parameter name=&quot;login-function&quot; value=&quot;AuthAdapter.onAuthRequired&quot;/&gt;<br />
-      &lt;parameter name=&quot;logout-function&quot; value=&quot;AuthAdapter.onLogout&quot;/&gt;<br />
-  &lt;/realm&gt;<br />
+  <realm loginModule="AuthLoginModule" name="AuthRealm"><br />
+    <className>com.worklight.integration.auth.AdapterAuthenticator</className><br />
+      <parameter name="login-function" value="AuthAdapter.onAuthRequired"/><br />
+      <parameter name="logout-function" value="AuthAdapter.onLogout"/><br />
+  </realm><br />
 {% endhighlight %</p>
 <p>This realm uses the <code>AuthLoginModule</code> login module, which is defined in the <a href="#loginmodule">LoginModule</a> section.<br />
 Using the <code>com.worklight.integration.auth.AdapterAuthenticator</code> class means that the server-side part of the authenticator is defined in the adapter.<br />
@@ -33,9 +33,9 @@ In both cases, the parameter value syntax is <code>adapterName.functionName</cod
 <h3 id="loginmodule">LoginModule</h3>
 <p>Add a login module to the <code>loginModules</code> section of the <code>authenticationConfig.xml</code> file and call it <code>AuthLoginModule</code>.</p>
 <p>{% highlight xml %}<br />
-&lt;loginModule name=&quot;AuthLoginModule&quot;&gt;<br />
-    &lt;className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule&lt;/className&gt;<br />
-&lt;/loginModule&gt;<br />
+<loginModule name="AuthLoginModule"><br />
+    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
+</loginModule><br />
 {% endhighlight %</p>
 <p>Using a <code>NonValidatingLoginModule</code> class name means that no additional validation is performed by the MobileFirst platform, and the developer takes responsibility for the validation of credentials within the adapter.<br />
 Because all authentication-related actions are done in the adapter code, using <code>NonValidatingLoginModule</code> is mandatory for adapter-based authentication.</p>
@@ -45,9 +45,9 @@ You must use this security test to protect the adapter procedure, so use the <co
 Remember the security test names. You must use them in subsequent steps.<br />
 <strong>Note:</strong> If you use Java adapters, this step is not required.</p>
 <p>{% highlight xml %}<br />
-  &lt;customSecurityTest name=&quot;AuthSecurityTest&quot;&gt;<br />
-      &lt;test isInternalUserID=&quot;true&quot; realm=&quot;AuthRealm&quot;/&gt;<br />
-  &lt;/customSecurityTest&gt;<br />
+  <customSecurityTest name="AuthSecurityTest"><br />
+      <test isInternalUserID="true" realm="AuthRealm"/><br />
+  </customSecurityTest><br />
 {% endhighlight %</p>
 <h2 id="serverside">Creating the server-side authentication components</h2>
 <p>The following diagram illustrates the adapter-based authentication process:</p>
@@ -56,7 +56,7 @@ Remember the security test names. You must use them in subsequent steps.<br />
 <p>Create an adapter that takes care of the authentication process. Name it <code>AuthAdapter</code>.<br />
 This adapter includes the following procedure:</p>
 <p>{% highlight xml %}<br />
-&lt;procedure name=&quot;submitAuthentication&quot; securityTest=&quot;wl_unprotected&quot;/&gt;<br />
+<procedure name="submitAuthentication" securityTest="wl_unprotected"/><br />
 {% endhighlight %</p>
 <p>The <code>submitAuthentication</code> procedure takes care of the authentication process. Note that when the challenge handler invokes the <code>submitAuthentication</code> call, it is responsible for handling all the possible responses. In particular, if the <code>submitAuthentication</code> call returns a challenge, it is passed to the invocation callback, and is not processed by the security framework.<br />
 <br />
@@ -81,20 +81,20 @@ This function receives the request headers and an optional <code>errorMessage</c
 <p>The <code>submitAuthentication</code> function is called by a client application to validate the user name and password.</p>
 <p>{% highlight javascript %}<br />
 function submitAuthentication(username, password){<br />
-    if (username===&quot;user&quot; &amp;&amp; password === &quot;password&quot;){</p>
+    if (username==="user" &amp;&amp; password === "password"){</p>
 <p>        var userIdentity = {<br />
                 userId: username,<br />
                 displayName: username,<br />
                 attributes: {<br />
-                    foo: &quot;bar&quot;<br />
+                    foo: "bar"<br />
                 }<br />
         };</p>
-<p>        WL.Server.setActiveUser(&quot;AuthRealm&quot;, userIdentity);</p>
+<p>        WL.Server.setActiveUser("AuthRealm", userIdentity);</p>
 <p>        return {<br />
             authRequired: false<br />
         };<br />
     }</p>
-<p>    return onAuthRequired(null, &quot;Invalid login credentials&quot;);<br />
+<p>    return onAuthRequired(null, "Invalid login credentials");<br />
 }<br />
 {% endhighlight %</p>
 <p>The user name and password are received from the application as parameters. In this sample, the credentials are validated against some hardcoded values, but any other validation mode is valid, for example by using SQL or web services.<br />
@@ -105,19 +105,19 @@ If credentials validation fails, an object that is built by the <code>onAuthRequ
 <p>The <code>onLogout</code> function is defined in the <code>authenticationConfig.xml</code> file to be called automatically after a logout, for example to perform a cleanup. This step is optional.</p>
 <p>{% highlight javascript %}<br />
 function onLogout(){<br />
-    WL.Logger.debug(&quot;Logged out&quot;);<br />
+    WL.Logger.debug("Logged out");<br />
 }<br />
 {% endhighlight %</p>
 <h2 id="protectJsAdapt">Protecting a Javascript adapter</h2>
 <p>Create a new adapter or add the following procedure to the XML code of your existing adapter:<br />
 {% highlight xml %}<br />
-&lt;procedure name=&quot;getSecretData&quot; securityTest=&quot;AuthSecurityTest&quot;/&gt;<br />
+<procedure name="getSecretData" securityTest="AuthSecurityTest"/><br />
 {% endhighlight %</p>
 <p>For training purposes, the <code>getSecretData</code> function returns a hardcoded value. Keep in mind that <code>getSecretData</code> is protected by a security test, as defined in the adapter XML.</p>
 <p>{% highlight javascript %}<br />
 function getSecretData(){<br />
     return {<br />
-        secretData: &quot;Very very very very secret data&quot;<br />
+        secretData: "Very very very very secret data"<br />
     };<br />
 }<br />
 {% endhighlight %</p>
@@ -127,18 +127,18 @@ function getSecretData(){<br />
 <li>Create a Java adapter. Add a <code>getSecretData</code> method and protect it with the realm you created previously. In this module, the <code>getSecretData</code> procedure returns some hardcoded value:
 <p>{% highlight java %}<br />
 	@GET<br />
-	@Produces(&quot;application/json&quot;)<br />
-	@OAuthSecurity(scope=&quot;AuthRealm&quot;)<br />
+	@Produces("application/json")<br />
+	@OAuthSecurity(scope="AuthRealm")<br />
 	public JSONObject getSecretData(){<br />
 		JSONObject result = new JSONObject();<br />
-		result.put(&quot;secretData&quot;, &quot;123456&quot;);</p>
+		result.put("secretData", "123456");</p>
 <p>		return result;<br />
 	}<br />
 {% endhighlight %
 </li>
 <li>To set our new realm as the default user identity for the application, add this option in the application descriptor:<br />
 {% highlight xml %}<br />
-&lt;userIdentityRealms&gt;AuthRealm&lt;/userIdentityRealms&gt;<br />
+<userIdentityRealms>AuthRealm</userIdentityRealms><br />
 {% endhighlight %
 </li>
 </ol>

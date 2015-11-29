@@ -15,12 +15,12 @@ As a developer, you need to register your app with Windows Store through the Win
 <h3>Server side</h3>
 <p>In the <code>application-descriptor.xml</code> file, Add the <strong>pushSender</strong> element under the nativeWindows8App environment (these settings are also editable with the Application Descriptor Editor in Design mode).</p>
 <p>{% highlight xml %}<br />
-&lt;nativeWindows8App id=&quot;AppName&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot;<br />
-	version=&quot;1.0&quot; xmlns=&quot;http://www.worklight.com/native-windows8-descriptor&quot;&gt;<br />
-	&lt;displayName&gt;AppName&lt;/displayName&gt;<br />
-	&lt;description&gt;AppName&lt;/description&gt;<br />
-	&lt;pushSender clientSecret=&quot;&quot; packageSID=&quot;&quot;/&gt;<br />
-&lt;/nativeWindows8App&gt;<br />
+<nativeWindows8App id="AppName" platformVersion="7.0.0.00.20150312-0731"<br />
+	version="1.0" xmlns="http://www.worklight.com/native-windows8-descriptor"><br />
+	<displayName>AppName</displayName><br />
+	<description>AppName</description><br />
+	<pushSender clientSecret="" packageSID=""/><br />
+</nativeWindows8App><br />
 {% endhighlight %</p>
 <p>Use the values that you previously generated in the Windows Store Dashboard:</p>
 <ul>
@@ -31,13 +31,13 @@ As a developer, you need to register your app with Windows Store through the Win
 <p>Set the Identity Name and Publisher values manually in the package manifest or associate your native project with the application in the Windows Store by right-clicking the project and selecting <strong>Store->Associate App with the Store</strong>.</p>
 <p>If you want your app to support toast notification, add the <code>ToastCapable="true"</code> attribute to the <code>VisualElements</code> element in the package manifest.</p>
 <p>{% highlight xml %}<br />
-   &lt;Applications&gt;<br />
-        &lt;Application Id=&quot;App&quot; ....&gt;<br />
-            &lt;VisualElements  .. ... ToastCapable=&quot;true&quot;&gt;<br />
+   <Applications><br />
+        <Application Id="App" ....><br />
+            <VisualElements  .. ... ToastCapable="true"><br />
              ....<br />
-            &lt;/VisualElements&gt;<br />
-        &lt;/Application&gt;<br />
-   &lt;/Applications&gt;<br />
+            </VisualElements><br />
+        </Application><br />
+   </Applications><br />
 {% endhighlight %</p>
 <blockquote><p>For more information about setting up your native Windows Universal application for push notification, see the topic about "Setting up push notifications for Windows Universal" in the user documentation.</p></blockquote>
 <h2>Windows Universal Push Notifications Service</h2>

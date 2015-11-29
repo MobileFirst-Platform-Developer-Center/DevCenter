@@ -62,19 +62,19 @@ relevantTo: [hybrid]
 <p>The UI &amp; UX of the Direct Update process can be fully customized by using simple interfaces.</p>
 <h3>Server-side customization</h3>
 <p>By default, the <code>mobileSecurityTest</code> has Direct Update enabled in <code>perSession</code> mode:</p>
-<p>{% highlight xml %}&lt;mobileSecurityTest name=&quot;mobileTests&quot;&gt;<br />
-    &lt;testAppAuthenticity/&gt;<br />
-    &lt;testDeviceId provisioningType=&quot;none&quot; /&gt;<br />
-    &lt;testUser realm=&quot;myMobileLoginForm&quot; /&gt;<br />
-    &lt;testDirectUpdate mode=&quot;perSession&quot; /&gt;<br />
-&lt;/mobileSecurityTest&gt;{% endhighlight %</p>
+<p>{% highlight xml %}<mobileSecurityTest name="mobileTests"><br />
+    <testAppAuthenticity/><br />
+    <testDeviceId provisioningType="none" /><br />
+    <testUser realm="myMobileLoginForm" /><br />
+    <testDirectUpdate mode="perSession" /><br />
+</mobileSecurityTest>{% endhighlight %</p>
 <p>To disable Direct Update, change its mode to <code>disabled</code>, and similarly to override it to other modes.<br />
-{% highlight xml %}&lt;testDirectUpdate mode=“disabled&quot; /&gt;{% endhighlight %</p>
+{% highlight xml %}<testDirectUpdate mode=“disabled" />{% endhighlight %</p>
 <p>Also by default, the <code>customSecurityTest</code> does not have any realms.<br />
 To add a Direct Update realm to a custom security test, add a <code>test</code> element with the realm name <code>wl_directUpdateRealm</code> and define the required mode property:</p>
-<p>{% highlight xml %}&lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
-    &lt;test realm=&quot;wl_directUpdateRealm&quot; mode=&quot;perSession&quot;/&gt;<br />
-&lt;/customSecurityTest&gt;{% endhighlight %</p>
+<p>{% highlight xml %}<customSecurityTest name="customTests"><br />
+    <test realm="wl_directUpdateRealm" mode="perSession"/><br />
+</customSecurityTest>{% endhighlight %</p>
 <blockquote><p>For more information, see the topic about Direct Update as a security realm, in the user documentation.</p></blockquote>
 <h2 id="internalFunction">Internal function - How Direct Update works</h2>
 <p>The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on available configurations (per session or per request, as explained above).</p>
@@ -180,14 +180,14 @@ wl.ca.key.alias.password=myCertPassword{% endhighlight %</li>
 <p>The public key can then be found in the Application Descriptor Design view:</p>
 <p> <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_public_signing_key1.png"><img src="{{ site.baseurl }}/assets/backup/05_05_public_signing_key1-1024x477.png" alt="05_05_public_signing_key" width="980" height="456" class="aligncenter size-large wp-image-1600" /></a></p>
 <p>The public key can also be found in the Application Descriptor Editor view:<br />
-{% highlight xml %}&lt;application&gt;<br />
+{% highlight xml %}<application><br />
    …<br />
    …<br />
    …<br />
-   &lt;directUpdateAuthenticityPublicKey&gt;<br />
+   <directUpdateAuthenticityPublicKey><br />
       public keystore value<br />
-   &lt;/directUpdateAuthenticityPublicKey&gt;<br />
-&lt;/application&gt;{% endhighlight %
+   </directUpdateAuthenticityPublicKey><br />
+</application>{% endhighlight %
 </ol>
 <p><strong>Notes:</strong></p>
 <ul>

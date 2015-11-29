@@ -39,7 +39,7 @@ This tutorial is a continuation of <a href="../">Working with Beacons</a> (intro
 <h3>Loading beacons and triggers from the server</h3>
 <p>To load information pertaining to beacons, triggers, and their associations from the server and storing it in the application JSONStore, write the following code:<br />
 {% highlight obj-c %}<br />
-[[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@&quot;BeaconsAdapter&quot; withProcedure:@&quot;getBeaconsAndTriggers&quot; withCompletionHandler:^(bool success, NSString *error) {<br />
+[[WLBeaconsAndTriggersJSONStoreManager sharedInstance] loadBeaconsAndTriggersFromAdapter:@"BeaconsAdapter" withProcedure:@"getBeaconsAndTriggers" withCompletionHandler:^(bool success, NSString *error) {<br />
 	if (success) {<br />
 		[self showBeaconsAndTriggers];<br />
 	} else {<br />
@@ -60,7 +60,7 @@ This tutorial is a continuation of <a href="../">Working with Beacons</a> (intro
 <h3>Turning the device into an iBeacon</h3>
 <p>To turn a device into an iBeacon, write the following code:</p>
 <p>{% highlight obj-c %}<br />
-	NSString *uuidString = @&quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;;<br />
+	NSString *uuidString = @"3d402cf0-3691-4bd9-97ff-0b0a93a160ef";<br />
 	int major = 1;<br />
 	int minor = 4417;<br />
 	[[WLBeaconsLocationManager sharedInstance] turnIntoiBeaconWithUuid:uuidString withMajor:major withMinor:minor withStatusHandler:^(NSString *turnIntoiBeaconStatusDetails) {<br />
@@ -99,8 +99,8 @@ This code increases the running time of the application up to 3 minutes from the
 }</p>
 <p>- (void)processLocalNotification:(UILocalNotification *)notification<br />
 {<br />
-	NSString *alertMessage = [notification.userInfo objectForKey:@&quot;alertMessage&quot;];<br />
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@&quot;Received local notification&quot; message:alertMessage delegate:nil cancelButtonTitle:@&quot;OK&quot; otherButtonTitles:nil, nil];<br />
+	NSString *alertMessage = [notification.userInfo objectForKey:@"alertMessage"];<br />
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Received local notification" message:alertMessage delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];<br />
 	[alert show];<br />
 }{% endhighlight %</p>
 <h2 id="sampleresult">Running the sample application</h2>

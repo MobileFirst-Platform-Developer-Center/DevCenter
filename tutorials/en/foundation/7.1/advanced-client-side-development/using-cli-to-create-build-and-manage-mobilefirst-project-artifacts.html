@@ -30,8 +30,8 @@ The CLI Installer adds the installation folder to your <strong>path</strong> env
 <h2 id="creatingProjects">Creating MobileFirst back-end projects</h2>
 <p>Back-end projects are used for managing hybrid applications, adapters, and other server-side entities. Create a MobileFirst back-end project by using either of these commands:</p>
 <ul>
-<li><code>mobilefirst create &lt;project-name&gt;</code></li>
-<li><code>mfp create &lt;project-name&gt;</code></li>
+<li><code>mobilefirst create <project-name></code></li>
+<li><code>mfp create <project-name></code></li>
 </ul>
 <p>{% highlight xml %}<br />
 ~/projects $ mfp create MyProject<br />
@@ -47,7 +47,7 @@ A MobileFirst project was successfully created at /Users/cli-user/projects/MyPro
 <li><code>mfp stop</code> - Stops the server.</li>
 <li><code>mfp status</code> - Gives the status of the server, whether it is running or not, its process ID, and the used port number.</li>
 <li><code>mfp config</code> - Prompts you to select which configuration setting to change. Available options: default browser, preview type (simple or Mobile Browser Simulator), and more.</li>
-<li><code>mfp preview [&lt;environments&gt; --noshell|-n]</code>  - Displays a preview of the current application or environment in your default browser.</li>
+<li><code>mfp preview [<environments> --noshell|-n]</code>  - Displays a preview of the current application or environment in your default browser.</li>
 <li><code>mfp restart</code> - Restarts the local test server.</li>
 <li><code>mfp console</code> - Opens the MobileFirst Operations Console in your default web browser.</li>
 </ul>
@@ -71,7 +71,7 @@ A MobileFirst project was successfully created at /Users/cli-user/projects/MyPro
 <h2 id="creatingHybridApps">Creating hybrid applications and environments</h2>
 <h3>Hybrid applications</h3>
 <p>Before creating the hybrid application, first navigate to the MobileFirst project directory: <code>cd MyProject</code>.<br />
-To create a hybrid application, use the <code>mfp add hybrid &lt;name&gt;</code> command. The generated hybrid application is placed inside the <strong>apps</strong> folder of the current project.</p>
+To create a hybrid application, use the <code>mfp add hybrid <name></code> command. The generated hybrid application is placed inside the <strong>apps</strong> folder of the current project.</p>
 <p>{% highlight xml %}<br />
 ~/projects $ cd MyProject<br />
 ~/projects/MyProject $ mfp add hybrid MyHybridApp<br />
@@ -112,7 +112,7 @@ A new iphone environment was added at /Users/cli-user/projects/MyProject/apps/My
 [?] What platform do you want to target? (Use arrow keys)<br />
 ❯ Android phone and tablets<br />
   iPhone<br />
-[?] What do you want to be your skin name suffix? Your skin folder name will be 'platform.&lt;em&gt;&lt;suffix&gt;&lt;/em&gt;'<br />
+[?] What do you want to be your skin name suffix? Your skin folder name will be 'platform.<em><suffix></em>'<br />
 A new android skin was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp<br />
 {% endhighlight %</p>
 <p>To add a skin in <strong>Direct Mode</strong>:<br />
@@ -187,7 +187,7 @@ Run <code>mfp push --nosend|-n</code> to create the artifacts without also regis
 A new HTTP adapter was added at /Users/cli-user/projects/MyProject/adapters/MyHttpAdapter<br />
 {% endhighlight %</p>
 <p><strong>Direct Mode</strong>:<br />
-<code>mfp adapter add --type http &lt;adapter-name&gt;</code>, or <code>-t</code> for type. The types of adapters that can be added are HTTP, SQL, Cast Iron, SAP Netweaver Gateway, JMS, SAP Jco, and Java.</p>
+<code>mfp adapter add --type http <adapter-name></code>, or <code>-t</code> for type. The types of adapters that can be added are HTTP, SQL, Cast Iron, SAP Netweaver Gateway, JMS, SAP Jco, and Java.</p>
 <p>{% highlight xml %}<br />
 ~/projects/MyProject $ mfp adapter add --type http TestAdapter<br />
 A new http adapter was added at /Users/cli-user/projects/MyProject/adapters/TestAdapter<br />
@@ -198,38 +198,38 @@ A new http adapter was added at /Users/cli-user/projects/MyProject/adapters/Test
 ~/projects/MyProject $ mfp adapter call<br />
 [?] Which adapter do you want to use? MyHttpAdapter<br />
 [?] Which endpoint do you want to use? MyHttpAdapter/getStories<br />
-[?] Enter the comma-separated parameters: &quot;world&quot;<br />
+[?] Enter the comma-separated parameters: "world"<br />
 [?] How should the procedure be called? GET</p>
-<p>Calling GET '/MyProject/adapters/MyHttpAdapter/getStories?params=[&quot;world&quot;]'</p>
+<p>Calling GET '/MyProject/adapters/MyHttpAdapter/getStories?params=["world"]'</p>
 <p>Response:<br />
 {<br />
-  &quot;statusCode&quot;: 200,<br />
-  &quot;errors&quot;: [],<br />
-  &quot;isSuccessful&quot;: true,<br />
-  &quot;statusReason&quot;: &quot;OK&quot;,<br />
-  &quot;rss&quot;: {<br />
-    &quot;feedburner&quot;: &quot;http://rssnamespace.org/feedburner/ext/1.0&quot;,<br />
-    &quot;channel&quot;: {<br />
-      &quot;pubDate&quot;: &quot;Thu, 26 Mar 2015 12:36:00 EDT&quot;,<br />
-      &quot;title&quot;: &quot;CNN.com - World&quot;,<br />
-      &quot;description&quot;: &quot;CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.&quot;,<br />
+  "statusCode": 200,<br />
+  "errors": [],<br />
+  "isSuccessful": true,<br />
+  "statusReason": "OK",<br />
+  "rss": {<br />
+    "feedburner": "http://rssnamespace.org/feedburner/ext/1.0",<br />
+    "channel": {<br />
+      "pubDate": "Thu, 26 Mar 2015 12:36:00 EDT",<br />
+      "title": "CNN.com - World",<br />
+      "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",<br />
 ...<br />
 {% endhighlight %</p>
 <p>Or to call an adapter in <strong>Direct Mode</strong>:<br />
-<code>mfp invoke [&lt;adapter&gt;:&lt;procedure&gt;[\"&lt;json array&gt;\"| --file|-f &lt;path-to-json-array-file&gt;]]</code></p>
+<code>mfp invoke [<adapter>:<procedure>[\"<json array>\"| --file|-f <path-to-json-array-file>]]</code></p>
 <p>{% highlight xml %}<br />
-~/projects/MyProject $ mfp invoke MyHttpAdapter:getStories \&quot;world\&quot;<br />
+~/projects/MyProject $ mfp invoke MyHttpAdapter:getStories \"world\"<br />
 {<br />
-  &quot;statusCode&quot;: 200,<br />
-  &quot;errors&quot;: [],<br />
-  &quot;isSuccessful&quot;: true,<br />
-  &quot;statusReason&quot;: &quot;OK&quot;,<br />
-  &quot;rss&quot;: {<br />
-    &quot;feedburner&quot;: &quot;http://rssnamespace.org/feedburner/ext/1.0&quot;,<br />
-    &quot;channel&quot;: {<br />
-      &quot;pubDate&quot;: &quot;Thu, 26 Mar 2015 12:36:00 EDT&quot;,<br />
-      &quot;title&quot;: &quot;CNN.com - World&quot;,<br />
-      &quot;description&quot;: &quot;CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.&quot;,<br />
+  "statusCode": 200,<br />
+  "errors": [],<br />
+  "isSuccessful": true,<br />
+  "statusReason": "OK",<br />
+  "rss": {<br />
+    "feedburner": "http://rssnamespace.org/feedburner/ext/1.0",<br />
+    "channel": {<br />
+      "pubDate": "Thu, 26 Mar 2015 12:36:00 EDT",<br />
+      "title": "CNN.com - World",<br />
+      "description": "CNN.com delivers up-to-the-minute news and information on the latest top stories, weather, entertainment, politics and more.",<br />
 ...<br />
 {% endhighlight %</p>
 <h2 id="importExport">Exporting and importing MobileFirst projects</h2>
@@ -245,7 +245,7 @@ The resulting compressed file is intended to be shared with other MobileFirst de
 Project successfully exported to /Users/cli-user/Desktop/MyProject.zip<br />
 {% endhighlight %</p>
 <p><strong>Exporting a project in Direct Mode</strong><br />
-<code>mfp export [&lt;path-to-zip-file&gt;]</code> - If run from the root folder of the project, direct mode takes one additional argument, which is the full path to the compressed file to create.</p>
+<code>mfp export [<path-to-zip-file>]</code> - If run from the root folder of the project, direct mode takes one additional argument, which is the full path to the compressed file to create.</p>
 <p>{% highlight xml %}<br />
 ~/projects/MyProject $ mfp export /Users/cli-user/Documents/MyProject.zip<br />
 Project successfully exported to /Users/cli-user/Documents/MyProject.zip<br />
@@ -265,7 +265,7 @@ The native libraries are built files. Native application IDEs need to ensure tha
 Project successfully exported to /Users/cli-user/Documents/MyiOSHybridApp.zip<br />
 {% endhighlight %</p>
 <p><strong>Exporting hybrid assets in Direct Mode</strong><br />
-<code>mfp export [&lt;path-to-zip-file&gt;] [-i | --includeNativeLibs]</code> - In direct mode, provide the full path to export hybrid assets. If the arguments <code>-i</code> or <code>--includeNativeLibs</code> are supplied, the native libraries are included.</p>
+<code>mfp export [<path-to-zip-file>] [-i | --includeNativeLibs]</code> - In direct mode, provide the full path to export hybrid assets. If the arguments <code>-i</code> or <code>--includeNativeLibs</code> are supplied, the native libraries are included.</p>
 <p>{% highlight xml %}<br />
 ~/projects/MyProject/apps/MyHybridApp/iphone $ mfp export /Users/cli-user/Documents/MyiOSHybridApp.zip -i<br />
 Project successfully exported to /Users/cli-user/Documents/MyiOSHybridApp.zip<br />

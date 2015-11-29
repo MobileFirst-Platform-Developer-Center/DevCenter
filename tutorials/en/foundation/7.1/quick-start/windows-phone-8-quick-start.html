@@ -58,9 +58,9 @@ relevantTo: [windowsphone8]
 <ul>
 <li>The following code invokes an adapter:<br />
 {% highlight csharp %}<br />
-WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;MyAdapter&quot;, &quot;getStories&quot;);<br />
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData("MyAdapter", "getStories");<br />
 invocationData.setParameters(new Object[]{});<br />
-String myContextObject = &quot;InvokingAdapterProceduresWP8&quot;;<br />
+String myContextObject = "InvokingAdapterProceduresWP8";<br />
 WLRequestOptions options = new WLRequestOptions();<br />
 options.setInvocationContext(myContextObject);<br />
 WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);{% endhighlight %

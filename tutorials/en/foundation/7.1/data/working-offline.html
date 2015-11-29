@@ -104,12 +104,12 @@ MyApp.connectionFailure, false);<br />
 MyApp.connectionFailure = function() {<br />
     WL.Client.connect({<br />
         onSuccess: function() {<br />
-            WL.Logger.debug(&quot;online&quot;);<br />
+            WL.Logger.debug("online");<br />
             MyApp.onlineRestored();<br />
         },<br />
         onFailure: function() {<br />
-            WL.Logger.debug(&quot;Still offline... Trying to connect again in 5<br />
-            seconds.&quot;);<br />
+            WL.Logger.debug("Still offline... Trying to connect again in 5<br />
+            seconds.");<br />
             window.setTimeout(MyApp.connectionFailure, 5000);<br />
         }<br />
     });<br />

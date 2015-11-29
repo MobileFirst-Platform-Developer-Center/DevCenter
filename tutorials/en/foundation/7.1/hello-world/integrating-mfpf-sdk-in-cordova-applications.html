@@ -39,7 +39,7 @@ The tutorial also explains the initialization flow of IBM MobileFirst Platform F
 NAME<br />
      mobilefirst cordova</p>
 <p>SYNOPSIS<br />
-     mfp cordova &lt;command&gt; [options]</p>
+     mfp cordova <command> [options]</p>
 <p>DESCRIPTION<br />
      IBM MobileFirst Platform Command Line Interface (CLI) for Cordova specific<br />
      actions.</p>
@@ -74,7 +74,7 @@ You can use either the Interactive Mode as detailed below, or the Direct Mode (s
 [?] Enter name of app: MyCordovaApp<br />
 [?] Enter the package ID: (com.ibm.MyCordovaApp)<br />
 [?] Enter the app version: (1.0.0)<br />
-[?] Select platforms to be supported by your app: (Press &lt;space&gt; to select)<br />
+[?] Select platforms to be supported by your app: (Press <space> to select)<br />
  ❯⬢ android<br />
   ⬢ ios<br />
 {% endhighlight %</p>
@@ -142,7 +142,7 @@ var Messages = {<br />
 <p>// Called automatically after MFP framework initialization by WL.Client.init(wlInitOptions).<br />
 function wlCommonInit(){<br />
 	// Common initialization code goes here<br />
-    document.getElementById('app_version').innerText = WL.Client.getAppProperty(&quot;APP_VERSION&quot;);<br />
+    document.getElementById('app_version').innerText = WL.Client.getAppProperty("APP_VERSION");<br />
     document.getElementById('mobilefirst').setAttribute('style', 'display:block;');<br />
 }</p>
 <p>var app = {<br />
@@ -187,7 +187,7 @@ mfp cordova preview<br />
 [?] Select how to preview your app: (Use arrow keys)<br />
 ❯ browser: Simple browser rendering<br />
   mbs: Mobile Browser Simulator</p>
-<p>[?] Select platform(s) to be previewed: (Press &lt;space&gt; to select)<br />
+<p>[?] Select platform(s) to be previewed: (Press <space> to select)<br />
 ❯⬡ ios<br />
  ⬡ android<br />
 {% endhighlight %</p>
@@ -208,7 +208,7 @@ mfp cordova preview<br />
 <ul>
 <li>Add a new platform to Cordova app: <code>mfp cordova platform add</code><br />
 [code]mfp cordova platform add<br />
-[?] Select platforms to be supported by your app: (Press &lt;space&gt; to select)<br />
+[?] Select platforms to be supported by your app: (Press <space> to select)<br />
  ❯⬡ android<br />
   ⬡ ios<br />
 {% endhighlight %
@@ -220,7 +220,7 @@ Available Platforms: android<br />
 {% endhighlight %</li>
 <li>Remove a platform: <code>mfp cordova platform remove</code><br />
 [code]mfp cordova platform remove<br />
-[?] Select the configured platform(s) to remove from this app: (Press &lt;space&gt; to select)<br />
+[?] Select the configured platform(s) to remove from this app: (Press <space> to select)<br />
  ❯⬡ ios 3.7.0<br />
 {% endhighlight %
 </li>
@@ -232,7 +232,7 @@ Available Platforms: android<br />
 <ul>
 <li>Add<br />
         [code]<br />
-[?] Select plugins(s) to be added to your app: (Press &lt;space&gt; to select)<br />
+[?] Select plugins(s) to be added to your app: (Press <space> to select)<br />
  ❯⬡ cordova-plugin-mfp-jsonstore<br />
   ⬡ org.apache.cordova.battery-status<br />
   ⬡ org.apache.cordova.camera<br />
@@ -251,13 +251,13 @@ Available Platforms: android<br />
 {% endhighlight %</li>
 <li>List<br />
 [code]<br />
-cordova-plugin-mfp 7.1.0 &quot;IBM MobileFirst Platform Foundation&quot;<br />
-org.apache.cordova.device 0.2.13 &quot;Device&quot;<br />
-org.apache.cordova.dialogs 0.2.11 &quot;Notification&quot;<br />
-org.apache.cordova.geolocation 0.3.11 &quot;Geolocation&quot;<br />
-org.apache.cordova.globalization 0.3.3 &quot;Globalization&quot;<br />
-org.apache.cordova.inappbrowser 0.5.4 &quot;InAppBrowser&quot;<br />
-org.apache.cordova.network-information 0.2.14 &quot;Network Information&quot;<br />
+cordova-plugin-mfp 7.1.0 "IBM MobileFirst Platform Foundation"<br />
+org.apache.cordova.device 0.2.13 "Device"<br />
+org.apache.cordova.dialogs 0.2.11 "Notification"<br />
+org.apache.cordova.geolocation 0.3.11 "Geolocation"<br />
+org.apache.cordova.globalization 0.3.3 "Globalization"<br />
+org.apache.cordova.inappbrowser 0.5.4 "InAppBrowser"<br />
+org.apache.cordova.network-information 0.2.14 "Network Information"<br />
 {% endhighlight %</li>
 <li>Remove<br />
 [code]<br />
@@ -362,18 +362,18 @@ Optionally, you can run the interactive command <code>mfp cordova plugin add</co
 </li>
 <p>Edit the <code><em>your-app-name</em>/www/index.html</code> file to add the three buttons: <strong>VIBRATE</strong>, <strong>CAMERA</strong>, and <strong>RSS FEED</strong>, a list to present the results from RSS FEED, and an image to present the result from the camera plug-in:</p>
 <p>{% highlight html %}<br />
-&lt;body&gt;<br />
-     &lt;div id=&quot;menu&quot; &gt;<br />
-        &lt;img id=&quot;image&quot; /&gt;<br />
-        &lt;a onclick=&quot;app.vibrate()&quot;&gt;VIBRATE&lt;/a&gt;<br />
-        &lt;a onclick=&quot;app.getPicture()&quot;&gt;CAMERA&lt;/a&gt;<br />
-        &lt;a onclick=&quot;app.getRSSFeed()&quot;&gt;RSS FEED&lt;/a&gt;<br />
-        &lt;div id=&quot;div_rss&quot;&gt;<br />
-          &lt;h1&gt;RSS FEED ITEMS&lt;/h1&gt;<br />
-          &lt;ul id=&quot;list_rss&quot;&gt;&lt;/ul&gt;<br />
-        &lt;/div&gt;<br />
-      &lt;/div&gt;<br />
-&lt;/body&gt;<br />
+<body><br />
+     <div id="menu" ><br />
+        <img id="image" /><br />
+        <a onclick="app.vibrate()">VIBRATE</a><br />
+        <a onclick="app.getPicture()">CAMERA</a><br />
+        <a onclick="app.getRSSFeed()">RSS FEED</a><br />
+        <div id="div_rss"><br />
+          <h1>RSS FEED ITEMS</h1><br />
+          <ul id="list_rss"></ul><br />
+        </div><br />
+      </div><br />
+</body><br />
 {% endhighlight %</p>
 <li>
 <h4>Edit the index.css file</h4>
@@ -384,7 +384,7 @@ body {<br />
   height: 100%;<br />
   width: 100%;<br />
   text-align: right;<br />
-  font-family: &quot;HelveticaNeue-Light&quot;, &quot;Helvetica Neue Light&quot;, &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;<br />
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;<br />
   font-weight: 300;<br />
   background: url(../img/bg-portrait.png);<br />
   background-size: cover;<br />
@@ -521,7 +521,7 @@ function wlCommonInit(){<br />
     },<br />
     // Trigger the vibration<br />
     vibrate: function(){<br />
-        WL.Logger.info(&quot;vibrating&quot;);<br />
+        WL.Logger.info("vibrating");<br />
         navigator.vibrate(3000);<br />
     },<br />
     // Trigger the camera<br />
@@ -531,30 +531,30 @@ function wlCommonInit(){<br />
     },<br />
     // Receive the result from the camera<br />
     getPictureSuccess: function(imageURI){<br />
-        WL.Logger.info(&quot;getPicture success &quot;+imageURI);<br />
-        document.getElementById(&quot;image&quot;).src=imageURI;<br />
+        WL.Logger.info("getPicture success "+imageURI);<br />
+        document.getElementById("image").src=imageURI;<br />
     },<br />
     // Called when some error occur with the camera<br />
     getPictureFail: function(){<br />
-        WL.Logger.error(&quot;getPicture failed&quot;);<br />
+        WL.Logger.error("getPicture failed");<br />
     },<br />
     // Execute a request to RSSAdapter/getStories<br />
     getRSSFeed: function(){<br />
         var resourceRequest = new WLResourceRequest(<br />
-                    &quot;/adapters/RSSAdapter/getStories&quot;,<br />
+                    "/adapters/RSSAdapter/getStories",<br />
                     WLResourceRequest.GET);<br />
         resourceRequest.send().then(app.getRSSFeedSuccess,app.getRSSFeedError);<br />
     },<br />
     // Receive the response from RSSAdapter<br />
     getRSSFeedSuccess:function(response){<br />
-        WL.Logger.info(&quot;getRSSFeedsSuccess&quot;);<br />
+        WL.Logger.info("getRSSFeedsSuccess");<br />
         //The response.responseJSON element contains the data received from the back-end<br />
-        alert(&quot;Total RSS Feed items received:&quot;+response.responseJSON.rss.channel.item.length);<br />
+        alert("Total RSS Feed items received:"+response.responseJSON.rss.channel.item.length);<br />
     },<br />
     // Called when some error occurs during the request to RSSAdapter<br />
     getRSSFeedError:function(response){<br />
-        WL.Logger.error(&quot;Response ERROR:&quot;+JSON.stringify(response));<br />
-        alert(&quot;Response ERROR:&quot;+JSON.stringify(response));<br />
+        WL.Logger.error("Response ERROR:"+JSON.stringify(response));<br />
+        alert("Response ERROR:"+JSON.stringify(response));<br />
     }<br />
 };</p>
 <p>app.initialize();<br />

@@ -36,7 +36,7 @@ relevantTo: [hybrid]
 </li>
 <li>To handle the callback function:
 <p>{% highlight js %}function backFromNativePage(data){<br />
-  alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
+  alert("Received phone number is: " + data.phoneNumber);<br />
 }{% endhighlight %</p>
 <p>The <code>backFromNativePage(data)</code> parameter can pass data back to the web part of an application after the native closes.</li>
 </ol>
@@ -56,9 +56,9 @@ using Newtonsoft.Json;</p>
 <p>{% highlight csharp %}InitializeComponent();<br />
             if (WLNativePage.Data != null)<br />
             {<br />
-                Dictionary&lt;string, string&gt; data = JsonConvert.DeserializeObject&lt;Dictionary&lt;string, string&gt;&gt;(WLNativePage.Data);<br />
-                NameReceivedTextBlock.Text = &quot;Hello &quot; + data[&quot;nameParam&quot;];<br />
-                tb_returnValue.Text = &quot;1234567890&quot;;<br />
+                Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(WLNativePage.Data);<br />
+                NameReceivedTextBlock.Text = "Hello " + data["nameParam"];<br />
+                tb_returnValue.Text = "1234567890";<br />
             }{% endhighlight %</p>
 <h2 id="control">Returning control to the web view</h2>
 <p>When the native page needs to switch back to the web view, it calls the <code>WLNativePage.backFromNative</code> method.<br />
@@ -66,9 +66,9 @@ Data can be passed back to the web view as parameters to the call.</p>
 <h3>Objective-C</h3>
 <p>{% highlight csharp %}    void DoneButton_Click(object sender, RoutedEventArgs e)<br />
         {<br />
-            Dictionary&lt;string, string&gt; data = new Dictionary&lt;string, string&gt;<br />
+            Dictionary<string, string> data = new Dictionary<string, string><br />
             {<br />
-                { &quot;phoneNumber&quot;, tb_returnValue.Text }<br />
+                { "phoneNumber", tb_returnValue.Text }<br />
             };</p>
 <p>            string json = JsonConvert.SerializeObject(data, Formatting.Indented);<br />
             WLNativePage.backFromNative(this, json);<br />
@@ -77,7 +77,7 @@ Data can be passed back to the web view as parameters to the call.</p>
 }{% endhighlight %</p>
 <h3>JavaScript</h3>
 <p>{% highlight js %}function backFromNativePage(data){<br />
-    alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
+    alert("Received phone number is: " + data.phoneNumber);<br />
 }{% endhighlight %</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/NativePagesInHybridApp" target="_blank">Click to download</a> the MobileFirst project.</p>

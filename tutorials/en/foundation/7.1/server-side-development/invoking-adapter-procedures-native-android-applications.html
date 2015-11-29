@@ -44,7 +44,7 @@ public class MyConnectListener implements WLResponseListener  {<br />
 <ol>
 <li> Define the URI of the resource. For a JavaScript HTTP adapter: <code>/adapters/{AdapterName}/{ProcedureName}</code><br />
 {% highlight java %}<br />
-URI adapterPath = new URI(&quot;/adapters/RSSReader/getFeed&quot;);<br />
+URI adapterPath = new URI("/adapters/RSSReader/getFeed");<br />
 {% endhighlight %
 </li>
 <li>Create a <code>WLResourceRequest</code> object and choose the HTPP Method (GET, POST, etc).<br />
@@ -56,13 +56,13 @@ WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name  to set an array of parameters.<br />
 {% highlight java %}<br />
-request.setQueryParameter(&quot;params&quot;,&quot;['MobileFirst_Platform']&quot;);<br />
+request.setQueryParameter("params","['MobileFirst_Platform']");<br />
 {% endhighlight %
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameter</code> for each parameter.<br />
 {% highlight java %}<br />
-request.setQueryParameter(&quot;param1&quot;,&quot;value1&quot;);<br />
-request.setQueryParameter(&quot;param2&quot;,&quot;value2&quot;);<br />
+request.setQueryParameter("param1","value1");<br />
+request.setQueryParameter("param2","value2");<br />
 {% endhighlight %
 </li>
 <li>Trigger the request with <code>.send()</code>.<br />
@@ -91,11 +91,11 @@ You can use its methods and properties to retrieve the required information.</p>
 <p>{% highlight java %}<br />
 public void onSuccess(WLResponse response) {<br />
       String responseText = response.getResponseText();<br />
-      AndroidNativeApp.updateTextView(&quot;Adapter Procedure Invoked Successfuly\n&quot; + responseText);<br />
+      AndroidNativeApp.updateTextView("Adapter Procedure Invoked Successfuly\n" + responseText);<br />
 }</p>
 <p>public void onFailure(WLFailResponse response) {<br />
      String responseText = response.getResponseText();<br />
-     AndroidNativeApp.updateTextView(&quot;Failed to Invoke Adapter Procedure\n&quot; + responseText);<br />
+     AndroidNativeApp.updateTextView("Failed to Invoke Adapter Procedure\n" + responseText);<br />
 }<br />
 {% endhighlight %
 </li>

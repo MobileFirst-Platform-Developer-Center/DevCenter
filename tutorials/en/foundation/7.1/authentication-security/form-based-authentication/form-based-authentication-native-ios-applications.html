@@ -35,7 +35,7 @@ This tutorial explains how to implement the client-side of form-based authentica
 @implementation MyChallengeHandler<br />
 //...<br />
 -(id)init:{<br />
-    self = [self initWithRealm:@&quot;SampleAppRealm&quot;];<br />
+    self = [self initWithRealm:@"SampleAppRealm"];<br />
     return self;<br />
 }<br />
 {% endhighlight %
@@ -48,8 +48,8 @@ The default login form that returns from the MobileFirst Server contains the <co
 {% highlight obj-c %}<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
     if(response &amp;&amp; response.responseText){<br />
-        if ([response.responseText rangeOfString:@&quot;j_security_check&quot; options:NSCaseInsensitiveSearch].location != NSNotFound) {<br />
-            NSLog(@&quot;Detected j_security_check string - returns true&quot;);<br />
+        if ([response.responseText rangeOfString:@"j_security_check" options:NSCaseInsensitiveSearch].location != NSNotFound) {<br />
+            NSLog(@"Detected j_security_check string - returns true");<br />
             return true;<br />
         }<br />
     }<br />
@@ -61,8 +61,8 @@ The default login form that returns from the MobileFirst Server contains the <co
 If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hiding the application screen and showing the login screen.</p>
 <p>{% highlight obj-c %}<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
-    NSLog(@&quot;A login form should appear&quot;);<br />
-    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@&quot;LoginViewController&quot;];<br />
+    NSLog(@"A login form should appear");<br />
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];<br />
     loginController.challengeHandler = self;<br />
     [self.vc.navigationController pushViewController:loginController animated:YES];<br />
 }<br />
@@ -74,12 +74,12 @@ Call the <code>submitSuccess</code> method in order to inform the framework that
 Call the <code>submitFailure</code> method in order to inform the framework that the authentication process failed and for the <code>onFailure</code> handler of the invocation to be called.</p>
 <p>{% highlight obj-c %}<br />
 -(void) onSuccess:(WLResponse *)response {<br />
-    NSLog(@&quot;Challenge succeeded&quot;);<br />
+    NSLog(@"Challenge succeeded");<br />
     [self.vc.navigationController popViewControllerAnimated:YES];<br />
     [self submitSuccess:response];<br />
 }</p>
 <p>-(void) onFailure:(WLFailResponse *)response {<br />
-    NSLog(@&quot;Challenge failed&quot;);<br />
+    NSLog(@"Challenge failed");<br />
     [self submitFailure:response];<br />
 }<br />
 {% endhighlight %</p>
@@ -94,11 +94,11 @@ Call the <code>submitFailure</code> method in order to inform the framework that
 @implementation LoginViewController<br />
 //...<br />
 - (IBAction)login:(id)sender {<br />
-    [self.challengeHandler submitLoginForm:@&quot;j_security_check&quot;<br />
-         requestParameters:@{@&quot;j_username&quot;: self.username.text, @&quot;j_password&quot;: self.password.text}<br />
+    [self.challengeHandler submitLoginForm:@"j_security_check"<br />
+         requestParameters:@{@"j_username": self.username.text, @"j_password": self.password.text}<br />
          requestHeaders:nil<br />
          requestTimeoutInMilliSeconds:0<br />
-         requestMethod:@&quot;POST&quot;];<br />
+         requestMethod:@"POST"];<br />
 }<br />
 @end<br />
 {% endhighlight %</p>
@@ -120,7 +120,7 @@ The protected procedure invocation triggers MobileFirst Server to send the chall
 </li>
 <li>Invoke the protected adapter procedure:<br />
 {% highlight obj-c %}<br />
-    NSURL* url = [NSURL URLWithString:@&quot;/adapters/AuthAdapter/getSecretData&quot;];<br />
+    NSURL* url = [NSURL URLWithString:@"/adapters/AuthAdapter/getSecretData"];<br />
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
     [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
     ...<br />

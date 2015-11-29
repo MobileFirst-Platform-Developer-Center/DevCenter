@@ -37,9 +37,9 @@ Procedure names in the JavaScript file must be the same as in the adapter XML fi
 <h4>XML file</h4>
 <p>{% highlight xml %}<br />
 ...<br />
-&lt;procedure name=&quot;writeMessage&quot;/&gt;<br />
-&lt;procedure name=&quot;readMessage&quot;/&gt;<br />
-&lt;procedure name=&quot;readAllMessages&quot;/&gt;<br />
+<procedure name="writeMessage"/><br />
+<procedure name="readMessage"/><br />
+<procedure name="readAllMessages"/><br />
 {% endhighlight %</p>
 <h4>JS file</h4>
 <p>{% highlight js %}<br />
@@ -53,7 +53,7 @@ function writeMessage(messagebody) {<br />
 {% highlight js %}<br />
 function writeMessage(messagebody) {</p>
 <p>  var inputData = {<br />
-      destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
+      destination: "dynamicQueues/MobileFirst",<br />
       message:{<br />
         body: messagebody,<br />
         properties:{<br />
@@ -67,13 +67,13 @@ function writeMessage(messagebody) {</p>
 <h2 id="serverxml">Enable JMS in Server.xml</h2>
 <p>Enable JMS on your Liberty profile ND server.</p>
 <p>{% highlight xml %}<br />
-&lt;!-- Enable features --&gt;<br />
-&lt;featureManager&gt;<br />
-  &lt;feature&gt;jsp-2.2&lt;/feature&gt;<br />
-  &lt;feature&gt;wasJmsServer-1.0&lt;/feature&gt;<br />
-  &lt;feature&gt;wasJmsClient-1.1&lt;/feature&gt;<br />
-  &lt;feature&gt;jndi-1.0&lt;/feature&gt;<br />
-&lt;/featureManager&gt;<br />
+<!-- Enable features --><br />
+<featureManager><br />
+  <feature>jsp-2.2</feature><br />
+  <feature>wasJmsServer-1.0</feature><br />
+  <feature>wasJmsClient-1.1</feature><br />
+  <feature>jndi-1.0</feature><br />
+</featureManager><br />
 {% endhighlight %</p>
 <h2 id="connectProp">Connection properties</h2>
 <p>Connection properties are configured in the adapter XML file.</p>
@@ -93,28 +93,28 @@ function writeMessage(messagebody) {</p>
 </li>
 </ul>
 <p>{% highlight xml %}<br />
-&lt;wl:adapter name=&quot;JMSAdapter&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:wl=&quot;http://www.ibm.com/mfp/integration&quot; xmlns:jms=&quot;http://www.ibm.com/mfp/integration/jms&quot;&gt;</p>
-<p>  &lt;displayName&gt;JMSAdapter&lt;/displayName&gt;<br />
-  &lt;description&gt;JMSAdapter&lt;/description&gt;<br />
-  &lt;connectivity&gt;<br />
-    &lt;connectionPolicy xsi:type=&quot;jms:JMSConnectionPolicyType&quot;&gt;<br />
-      &lt;namingConnection<br />
-        url=&quot;tcp://9.148.225.169:61616&quot;<br />
-        initialContextFactory=&quot;org.apache.activemq.jndi.ActiveMQInitialContextFactory&quot;<br />
-        user=&quot;admin&quot;<br />
-        password=&quot;admin&quot;<br />
-        /&gt;</p>
-<p>      &lt;jmsConnection<br />
-        connectionFactory=&quot;ConnectionFactory&quot;<br />
-        user=&quot;admin&quot;<br />
-        password=&quot;admin&quot;<br />
-        /&gt;<br />
-    &lt;/connectionPolicy&gt;<br />
-  &lt;/connectivity&gt;</p>
-<p>  &lt;procedure name=&quot;writeMessage&quot; /&gt;<br />
-  &lt;procedure name=&quot;readMessage&quot; /&gt;<br />
-  &lt;procedure name=&quot;readAllMessages&quot; /&gt;<br />
-&lt;/wl:adapter&gt;<br />
+<wl:adapter name="JMSAdapter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wl="http://www.ibm.com/mfp/integration" xmlns:jms="http://www.ibm.com/mfp/integration/jms"></p>
+<p>  <displayName>JMSAdapter</displayName><br />
+  <description>JMSAdapter</description><br />
+  <connectivity><br />
+    <connectionPolicy xsi:type="jms:JMSConnectionPolicyType"><br />
+      <namingConnection<br />
+        url="tcp://9.148.225.169:61616"<br />
+        initialContextFactory="org.apache.activemq.jndi.ActiveMQInitialContextFactory"<br />
+        user="admin"<br />
+        password="admin"<br />
+        /></p>
+<p>      <jmsConnection<br />
+        connectionFactory="ConnectionFactory"<br />
+        user="admin"<br />
+        password="admin"<br />
+        /><br />
+    </connectionPolicy><br />
+  </connectivity></p>
+<p>  <procedure name="writeMessage" /><br />
+  <procedure name="readMessage" /><br />
+  <procedure name="readAllMessages" /><br />
+</wl:adapter><br />
 {% endhighlight %</p>
 <p>Copy the relevant external libraries to the project for it to use JMS classes.<br />
 If you use <strong>Apache ActiveMQ</strong>, copy the <code>activemq-all-activemq_version_number.jar</code> file to the <code>server\lib</code> directory.</p>
@@ -131,7 +131,7 @@ It waits for timeout in milliseconds and returns a JMS message that contains the
 <p>{% highlight js %}<br />
 function readMessage() {<br />
     var result = WL.Server.readSingleJMSMessage({<br />
-      destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
+      destination: "dynamicQueues/MobileFirst",<br />
       timeout: 60<br />
     });</p>
 <p>    return result;<br />
@@ -151,7 +151,7 @@ It returns the <code>JMSMessageID</code> of the sent message.</p>
 <p>{% highlight javascript %}<br />
 function writeMessage(messagebody) {</p>
 <p>  var inputData = {<br />
-    destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
+    destination: "dynamicQueues/MobileFirst",<br />
     message:{<br />
       body: messagebody,<br />
       properties:{<br />

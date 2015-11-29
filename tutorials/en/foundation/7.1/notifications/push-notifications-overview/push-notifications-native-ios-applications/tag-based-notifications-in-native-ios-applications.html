@@ -26,20 +26,20 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h3>Tag Notifications configuration</h3>
 <h4>Setting up tags</h4>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
-<p>{% highlight xml %}&lt;nativeIOSApp xmlns=&quot;http://www.worklight.com/native-ios-descriptor&quot; bundleId=&quot;com.REPLACE-WITH-BUNDLE-ID&quot; id=&quot;NativeiOSTagNotifications&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot; version=&quot;1.0&quot;&gt;<br />
+<p>{% highlight xml %}<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.REPLACE-WITH-BUNDLE-ID" id="NativeiOSTagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0"><br />
 ...<br />
 ...<br />
 ...<br />
-&lt;tags&gt;<br />
-    &lt;tag&gt;<br />
-        &lt;name&gt;my tag 1&lt;/name&gt;<br />
-        &lt;description&gt;About my tag 1&lt;/description&gt;<br />
-    &lt;/tag&gt;<br />
-    &lt;tag&gt;<br />
-        &lt;name&gt;my tag 2&lt;/name&gt;<br />
-        &lt;description&gt;About my tag 2&lt;/description&gt;<br />
-    &lt;/tag&gt;<br />
-&lt;/tags&gt;{% endhighlight %</p>
+<tags><br />
+    <tag><br />
+        <name>my tag 1</name><br />
+        <description>About my tag 1</description><br />
+    </tag><br />
+    <tag><br />
+        <name>my tag 2</name><br />
+        <description>About my tag 2</description><br />
+    </tag><br />
+</tags>{% endhighlight %</p>
 <h2 id="notificationsAPI">Notifications API</h2>
 <h3>API methods for tag notifications</h3>
 <h4>Client-side API</h4>
@@ -58,7 +58,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is   called. The logic to handle the notification should be defined here.</p>
 <p>{% highlight obj-c %}<br />
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
-    NSLog(@&quot;Received Notification %@&quot;,userInfo.description);<br />
+    NSLog(@"Received Notification %@",userInfo.description);<br />
 }<br />
 {% endhighlight %</p>
 <ul>
@@ -93,18 +93,18 @@ This method registers a listener to be used for push notifications. This listene
 <ul>
 <li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
 <li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
-<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml %}&lt;application ... id=&quot;NativeiOSTagNotifications&quot; ...&gt;{% endhighlight %</li>
+<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml %}<application ... id="NativeiOSTagNotifications" ...>{% endhighlight %</li>
 </ul>
 </li>
 <li>If using the CLI:
 <p>{% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/sendBroadcastNotification<br />
-[?] Enter the comma-separated parameters: &quot;NativeiOSTagNotifications&quot;,&quot;hello&quot;<br />
+[?] Enter the comma-separated parameters: "NativeiOSTagNotifications","hello"<br />
 [?] How should the procedure be called? GET{% endhighlight %</p>
 <p>Or:</p>
 <p>{% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/sendTagNotification<br />
-[?] Enter the comma-separated parameters: &quot;NativeiOSTagNotifications&quot;,&quot;hello&quot;,&quot;sample-tag1,sample-tag2&quot;<br />
+[?] Enter the comma-separated parameters: "NativeiOSTagNotifications","hello","sample-tag1,sample-tag2"<br />
 [?] How should the procedure be called? GET<br />
 {% endhighlight %</li>
 </ol>

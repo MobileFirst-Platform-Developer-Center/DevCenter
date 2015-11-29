@@ -37,12 +37,12 @@ In the native Android sample that comes with this tutorial, the value for the <c
 <p>You can create a Store object to allow your application to access a local database, which can be used even when the application is offline.</p>
 <p>{% highlight java %}<br />
 // Using reference to IMFDataManager that you initialized above, create a local store using a bolts task<br />
-String name = &quot;todosdb&quot;;<br />
+String name = "todosdb";<br />
 // Create local store<br />
-Task&lt;Store&gt; storeTask = manager.localStore(name);<br />
-storeTask.continueWith(new Continuation&lt;Store, Void&gt;() {<br />
+Task<Store> storeTask = manager.localStore(name);<br />
+storeTask.continueWith(new Continuation<Store, Void>() {<br />
     @Override<br />
-    public Void then(Task&lt;Store&gt; task) throws Exception {<br />
+    public Void then(Task<Store> task) throws Exception {<br />
         if(task.isFaulted()){<br />
             // Handle error<br />
         }else{<br />
@@ -57,12 +57,12 @@ storeTask.continueWith(new Continuation&lt;Store, Void&gt;() {<br />
 <p>You can also create a Store object to allow your application to access a remote database.</p>
 <p>{% highlight java %}<br />
 // Create remote store<br />
-String name = &quot;todosdb&quot;;<br />
+String name = "todosdb";<br />
 // Using reference to IMFDataManager that you initialized above, create a remote store using a bolts task<br />
-Task&lt;Store&gt; storeTask = manager.remoteStore(name);<br />
-storeTask.continueWith(new Continuation&lt;Store, Void&gt;() {<br />
+Task<Store> storeTask = manager.remoteStore(name);<br />
+storeTask.continueWith(new Continuation<Store, Void>() {<br />
     @Override<br />
-    public Void then(Task&lt;Store&gt; task) throws Exception {<br />
+    public Void then(Task<Store> task) throws Exception {<br />
         if(task.isFaulted()){<br />
             // Handle error<br />
         }else{<br />
@@ -77,10 +77,10 @@ storeTask.continueWith(new Continuation&lt;Store, Void&gt;() {<br />
 <p>You can set specific permissions for users to access remote stores.</p>
 <p>{% highlight java %}<br />
 // Using reference to IMFDataManager that you initialized above, set the user permissions for the remote store<br />
-Task&lt;Boolean&gt; permissionsTask = manager.setCurrentUserPermissions(DataManager.DB_ACCESS_GROUP_MEMBERS, &quot;todosdb&quot;);</p>
-<p>permissionsTask.continueWith(new Continuation&lt;Boolean, Object&gt;() {<br />
+Task<Boolean> permissionsTask = manager.setCurrentUserPermissions(DataManager.DB_ACCESS_GROUP_MEMBERS, "todosdb");</p>
+<p>permissionsTask.continueWith(new Continuation<Boolean, Object>() {<br />
     @Override<br />
-    public Object then(Task&lt;Boolean&gt; task) throws Exception {<br />
+    public Object then(Task<Boolean> task) throws Exception {<br />
         if(task.isFaulted()){<br />
             // Handle error<br />
         }else{<br />
@@ -110,7 +110,7 @@ public class TodoItem implements DataObject {</p>
     private Integer priority;</p>
 <p>    // NOTE: If you use a constructor with arguments, you will need to supply an empty constructor for the mapper to function properly<br />
     public TodoItem(){<br />
-        this.name = &quot;&quot;;<br />
+        this.name = "";<br />
         this.priority = 0;<br />
     }</p>
 <p>    public TodoItem(String name, Integer priority){<br />
@@ -130,21 +130,21 @@ public class TodoItem implements DataObject {</p>
 <p>You must then register the class and data type with the <code>DataObjectMapper</code>. In the sample, the <code>DataStoreManager</code> instance does that after the store is created.<br />
 {% highlight java %}<br />
 //using the existing store with mapper<br />
-localStore.getMapper().setDataTypeForClassName(&quot;TodoItem&quot;, TodoItem.class.getCanonicalName());<br />
+localStore.getMapper().setDataTypeForClassName("TodoItem", TodoItem.class.getCanonicalName());<br />
 {% endhighlight %</p>
 <h2 id="creating">Creating and updating data</h2>
 <p>Using the same operation, you can save new objects and save changes to existing objects in the local data store.</p>
 <h3>Creating, saving, and updating Todo Items</h3>
 <p>{% highlight java %}<br />
 // You can create a new TodoItem to save here, or you can use an existing object from the localStore that you have made changes to<br />
-TodoItem todoItem = new TodoItem(&quot;Buy Groceries&quot;, 2);</p>
+TodoItem todoItem = new TodoItem("Buy Groceries", 2);</p>
 <p>// Use an existing store<br />
 Store store = localStore;</p>
 <p>// Save automobile to store<br />
-Task&lt;Object&gt; saveTask = store.save(automobile);<br />
-saveTask.continueWith(new Continuation&lt;Object, Void&gt;() {<br />
+Task<Object> saveTask = store.save(automobile);<br />
+saveTask.continueWith(new Continuation<Object, Void>() {<br />
     @Override<br />
-    public Void then(Task&lt;Object&gt; task) throws Exception {<br />
+    public Void then(Task<Object> task) throws Exception {<br />
         if (task.isFaulted()) {<br />
             // save was not successful, task.getError() contains the error<br />
         } else {<br />
@@ -168,10 +168,10 @@ Store store = localStore;<br />
 // Pass the Item you'd like to delete from the local Data Store as the parameter<br />
 TodoItem todoItem = existingTodoItem;</p>
 <p>// Delete the TodoItem from the store<br />
-Task&lt;String&gt; deleteTask = store.delete(todoItem);<br />
-deleteTask.continueWith(new Continuation&lt;String, Void&gt;() {<br />
+Task<String> deleteTask = store.delete(todoItem);<br />
+deleteTask.continueWith(new Continuation<String, Void>() {<br />
     @Override<br />
-    public Void then(Task&lt;String&gt; task) throws Exception {<br />
+    public Void then(Task<String> task) throws Exception {<br />
         if (task.isFaulted()) {<br />
             // delete was not successful, task.getError() contains the error<br />
         } else {<br />
@@ -193,10 +193,10 @@ deleteTask.continueWith(new Continuation&lt;String, Void&gt;() {<br />
 Store store = localStore;</p>
 <p>// create a pull replication task<br />
 // name is the database name of the store being replicated<br />
-Task&lt;PullReplication&gt; pullTask = manager.pullReplicationForStore(store.getName());<br />
-pullTask.continueWith(new Continuation&lt;PullReplication, Object&gt;() {<br />
+Task<PullReplication> pullTask = manager.pullReplicationForStore(store.getName());<br />
+pullTask.continueWith(new Continuation<PullReplication, Object>() {<br />
     @Override<br />
-    public Object then(Task&lt;PullReplication&gt; task) throws Exception {<br />
+    public Object then(Task<PullReplication> task) throws Exception {<br />
         if(task.isFaulted()){<br />
             // Handle error<br />
         }else{<br />
@@ -216,10 +216,10 @@ pullTask.continueWith(new Continuation&lt;PullReplication, Object&gt;() {<br />
 Store store = localStore;</p>
 <p>// create a push replication task<br />
 // name is the database name of the store being replicated<br />
-Task&lt;PushReplication&gt; pushTask = manager.pushReplicationForStore(store.getName());<br />
-pushTask.continueWith(new Continuation&lt;PushReplication, Object&gt;() {<br />
+Task<PushReplication> pushTask = manager.pushReplicationForStore(store.getName());<br />
+pushTask.continueWith(new Continuation<PushReplication, Object>() {<br />
     @Override<br />
-    public Object then(Task&lt;PushReplication&gt; task) throws Exception {<br />
+    public Object then(Task<PushReplication> task) throws Exception {<br />
         if(task.isFaulted()){<br />
             // Handle error<br />
         }else{<br />
@@ -270,13 +270,13 @@ Android Studio then prompts you for a <code>GRADLE_HOME</code> variable.
 <li>Initialize your local store for encryption with a key provider.<br />
 {% highlight java %}<br />
 // Initalize a key provider<br />
-KeyProvider keyProvider = new AndroidKeyProvider(getContext(),&quot;passw0rd&quot;,&quot;user&quot;);</p>
+KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"passw0rd","user");</p>
 <p>// Create local store using reference to IMFDataManager that you initialized above<br />
-String name = &quot;todosdb&quot;;<br />
-Task&lt;Store&gt; storeTask = manager.localStore(name, keyProvider);<br />
-storeTask.continueWith(new Continuation&lt;Store, Void&gt;() {<br />
+String name = "todosdb";<br />
+Task<Store> storeTask = manager.localStore(name, keyProvider);<br />
+storeTask.continueWith(new Continuation<Store, Void>() {<br />
     @Override<br />
-    public Void then(Task&lt;Store&gt; task) throws Exception {<br />
+    public Void then(Task<Store> task) throws Exception {<br />
         if (task.isFaulted()) {<br />
             // Handle error<br />
         } else {<br />
@@ -291,13 +291,13 @@ storeTask.continueWith(new Continuation&lt;Store, Void&gt;() {<br />
 <li>When replicating with an encrypted local store, you must pass a <code>KeyProvider</code> into <code>pullReplicationForStore()</code> or <code>pushReplicationForStore()</code>.<br />
 {% highlight java %}<br />
 // Using reference to IMFDataManager that you initialized above<br />
-String name = &quot;todosdb&quot;;</p>
+String name = "todosdb";</p>
 <p>// Initalize a key provider<br />
-KeyProvider keyProvider = new AndroidKeyProvider(getContext(),&quot;passw0rd&quot;,&quot;user&quot;);</p>
+KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"passw0rd","user");</p>
 <p>// pull replication<br />
-Task&lt;PushReplication&gt; pullTask = manager.pullReplicationForStore(name, keyProvider);</p>
+Task<PushReplication> pullTask = manager.pullReplicationForStore(name, keyProvider);</p>
 <p>// push replication<br />
-Task&lt;PushReplication&gt; pushTask = manager.pushReplicationForStore(name, keyProvider);<br />
+Task<PushReplication> pushTask = manager.pushReplicationForStore(name, keyProvider);<br />
 {% endhighlight %
 </li>
 </ol>
@@ -312,7 +312,7 @@ Task&lt;PushReplication&gt; pushTask = manager.pushReplicationForStore(name, key
 @Override<br />
 public void handleChallenge(WLResponse wlResponse) {<br />
     Object[] parameters = new Object[]{UserName,UserPassword};<br />
-    WLProcedureInvocationData invocationData = new  WLProcedureInvocationData(AdapterName, &quot;submitAuthentication&quot;);<br />
+    WLProcedureInvocationData invocationData = new  WLProcedureInvocationData(AdapterName, "submitAuthentication");<br />
     invocationData.setParameters(parameters);<br />
     WLRequestOptions options = new WLRequestOptions();<br />
     options.setTimeout(30000);<br />

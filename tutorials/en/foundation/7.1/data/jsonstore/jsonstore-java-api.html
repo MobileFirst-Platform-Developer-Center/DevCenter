@@ -31,10 +31,10 @@ The tutorial covers the following topics:</p>
 <p>[code language="java"]<br />
 Context context = getContext();</p>
 <p>try {<br />
-  JSONStoreCollection people = new JSONStoreCollection(&quot;people&quot;);<br />
-  people.setSearchField(&quot;name&quot;, SearchFieldType.STRING);<br />
-  people.setSearchField(&quot;age&quot;, SearchFieldType.INTEGER);</p>
-<p>  List&lt;JSONStoreCollection&gt; collections = new LinkedList&lt;JSONStoreCollection&gt;();<br />
+  JSONStoreCollection people = new JSONStoreCollection("people");<br />
+  people.setSearchField("name", SearchFieldType.STRING);<br />
+  people.setSearchField("age", SearchFieldType.INTEGER);</p>
+<p>  List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();<br />
   collections.add(people);</p>
 <p>  WLJSONStore.getInstance(context).openCollections(collections);<br />
   // handle success<br />
@@ -47,7 +47,7 @@ Context context = getContext();</p>
 <p>[code language="java"]<br />
 Context context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
@@ -60,12 +60,12 @@ Context context = getContext();</p>
 <p>[code language="java"]<br />
 Context context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;</p>
+  String collectionName = "people";</p>
 <p>  JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
 <p>  //Add options.<br />
   JSONStoreAddOptions options = new JSONStoreAddOptions();<br />
   options.setMarkDirty(true);</p>
-<p>  JSONObject data = new JSONObject(&quot;{age: 23, name: 'yoel'}&quot;)<br />
+<p>  JSONObject data = new JSONObject("{age: 23, name: 'yoel'}")<br />
   collection.addData(data, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
@@ -77,17 +77,17 @@ Context context = getContext();</p>
 <p>[code language="java"]<br />
 Context context = getContext();</p>
 <p>try {</p>
-<p>  String collectionName = &quot;people&quot;;</p>
+<p>  String collectionName = "people";</p>
 <p>  JSONStoreQueryPart queryPart = new JSONStoreQueryPart();<br />
   // fuzzy search LIKE<br />
-  queryPart.addLike(&quot;name&quot;, name);</p>
+  queryPart.addLike("name", name);</p>
 <p>  JSONStoreQueryParts query = new JSONStoreQueryParts();<br />
   query.addQueryPart(queryPart);</p>
 <p>  JSONStoreFindOptions options = new JSONStoreFindOptions();<br />
   // returns a maximum of 10 documents, default: returns every document<br />
   options.setLimit(10);</p>
 <p>  JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
-<p>  List&lt;JSONObject&gt; results = collection.findDocuments(query, options);<br />
+<p>  List<JSONObject> results = collection.findDocuments(query, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
@@ -98,12 +98,12 @@ Context context = getContext();</p>
 <p>[code language="java"]<br />
 Context context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
 <p>  JSONStoreReplaceOptions options = new JSONStoreReplaceOptions();<br />
   // mark data as dirty<br />
   options.setMarkDirty(true);</p>
-<p>  JSONStore replacement = new JSONObject(&quot;{_id: 1, json: {age: 23, name: 'chevy'}}&quot;);</p>
+<p>  JSONStore replacement = new JSONObject("{_id: 1, json: {age: 23, name: 'chevy'}}");</p>
 <p>  collection.replaceDocument(replacement, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
@@ -117,7 +117,7 @@ Context context = getContext();</p>
 <p>[code language="java"]<br />
 Context context = getContext();</p>
 <p>try {</p>
-<p>  String collectionName = &quot;people&quot;;<br />
+<p>  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
 <p>  JSONStoreRemoveOptions options = new JSONStoreRemoveOptions();<br />
   // Mark data as dirty<br />
@@ -133,7 +133,7 @@ Context context = getContext();</p>
 <p>[code language="java"]<br />
 Context context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
 <p>  collection.removeCollection();<br />
   // handle success<br />
@@ -168,13 +168,13 @@ Context context = getContext();</p>
 <p>[code language="java"]<br />
 Context context = getContext();</p>
 <p>try {<br />
-  JSONStoreCollection people = new JSONStoreCollection(&quot;people&quot;);<br />
-  people.setSearchField(&quot;name&quot;, SearchFieldType.STRING);<br />
-  people.setSearchField(&quot;age&quot;, SearchFieldType.INTEGER);</p>
-<p>  List&lt;JSONStoreCollection&gt; collections = new LinkedList&lt;JSONStoreCollection&gt;();<br />
+  JSONStoreCollection people = new JSONStoreCollection("people");<br />
+  people.setSearchField("name", SearchFieldType.STRING);<br />
+  people.setSearchField("age", SearchFieldType.INTEGER);</p>
+<p>  List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();<br />
   collections.add(people);</p>
 <p>  JSONStoreInitOptions options = new JSONStoreInitOptions();<br />
-  options.setPassword(&quot;123&quot;);</p>
+  options.setPassword("123");</p>
 <p>  WLJSONStore.getInstance(context).openCollections(collections, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
@@ -186,13 +186,13 @@ Context context = getContext();</p>
 <p>[code language="java"]<br />
 Context context = getContext();</p>
 <p>try {<br />
-  JSONStoreCollection people = new JSONStoreCollection(&quot;people&quot;);<br />
-  people.setSearchField(&quot;name&quot;, SearchFieldType.STRING);<br />
-  people.setSearchField(&quot;age&quot;, SearchFieldType.INTEGER);</p>
-<p>  List&lt;JSONStoreCollection&gt; collections = new LinkedList&lt;JSONStoreCollection&gt;();<br />
+  JSONStoreCollection people = new JSONStoreCollection("people");<br />
+  people.setSearchField("name", SearchFieldType.STRING);<br />
+  people.setSearchField("age", SearchFieldType.INTEGER);</p>
+<p>  List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();<br />
   collections.add(people);</p>
 <p>  JSONStoreInitOptions options = new JSONStoreInitOptions();<br />
-  options.setUsername(&quot;yoel&quot;);</p>
+  options.setUsername("yoel");</p>
 <p>  WLJSONStore.getInstance(context).openCollections(collections, options);<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
@@ -243,13 +243,13 @@ WLResponseListener responseListener = new WLResponseListener() {<br />
 <p>  @Override<br />
   public void onSuccess(WLResponse response) {</p>
 <p>    try {<br />
-      JSONArray loadedDocuments = response.getResponseJSON().getJSONArray(&quot;peopleList&quot;);<br />
+      JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");<br />
     } catch(Exception e) {<br />
       // error decoding JSON data<br />
     }<br />
   }<br />
 };</p>
-<p>WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;People&quot;, &quot;getPeople&quot;);</p>
+<p>WLProcedureInvocationData invocationData = new WLProcedureInvocationData("People", "getPeople");</p>
 <p>Context context = getContext();<br />
 WLClient client = WLClient.createInstance(context);<br />
 client.invokeProcedure(invocationData, responseListener);<br />
@@ -259,9 +259,9 @@ client.invokeProcedure(invocationData, responseListener);<br />
 <p>[code language="java"]<br />
 Context  context = getContext();</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
-<p>  List&lt;JSONObject&gt; dirtyDocs = collection.findAllDirtyDocuments();<br />
+<p>  List<JSONObject> dirtyDocs = collection.findAllDirtyDocuments();<br />
   // handle success<br />
 } catch(JSONStoreException e) {<br />
   // handle failure<br />
@@ -284,10 +284,10 @@ WLResponseListener responseListener = new WLResponseListener() {<br />
 <p>Context context = getContext();<br />
 WLClient client = WLClient.createInstance(context);</p>
 <p>try {<br />
-  String collectionName = &quot;people&quot;;<br />
+  String collectionName = "people";<br />
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);</p>
-<p>  List&lt;JSONObject&gt; dirtyDocuments = people.findAllDirtyDocuments();</p>
-<p>  WLProcedureInvocationData invocationData = new WLProcedureInvocationData(&quot;People&quot;, &quot;pushPeople&quot;);</p>
+<p>  List<JSONObject> dirtyDocuments = people.findAllDirtyDocuments();</p>
+<p>  WLProcedureInvocationData invocationData = new WLProcedureInvocationData("People", "pushPeople");</p>
 <p>  invocationData.setParameters(new Object[]{dirtyDocuments});<br />
   client.invokeProcedure(invocationData, responseListener);</p>
 <p>} catch(JSONStoreException e) {<br />

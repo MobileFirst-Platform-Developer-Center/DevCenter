@@ -34,7 +34,7 @@ This tutorial explains how to implement the client-side of adapter-based authent
 @implementation MyChallengeHandler<br />
 //...<br />
 -(id)init:{<br />
-    self = [self initWithRealm:@&quot;AuthRealm&quot;];<br />
+    self = [self initWithRealm:@"AuthRealm"];<br />
     return self;<br />
 }<br />
 {% endhighlight %
@@ -46,7 +46,7 @@ The <code>isCustomResponse</code> method is invoked each time a response is rece
 <p>{% highlight obj-c %}<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
     if(response &amp;&amp; response.responseJSON){<br />
-        if ([response.responseJSON objectForKey:@&quot;authStatus&quot;] != nil) {<br />
+        if ([response.responseJSON objectForKey:@"authStatus"] != nil) {<br />
             return true;<br />
         }<br />
     }<br />
@@ -58,8 +58,8 @@ The <code>isCustomResponse</code> method is invoked each time a response is rece
 If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hiding the application screen and showing the login screen.</p>
 <p>{% highlight obj-c %}<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
-    NSString* authStatus = (NSString*) [response.responseJSON objectForKey:@&quot;authStatus&quot;];</p>
-<p>    if([authStatus isEqual:@&quot;complete&quot;]){<br />
+    NSString* authStatus = (NSString*) [response.responseJSON objectForKey:@"authStatus"];</p>
+<p>    if([authStatus isEqual:@"complete"]){<br />
         [self.vc.navigationController popViewControllerAnimated:YES];<br />
         [self submitSuccess:response];<br />
     }</p>
@@ -72,7 +72,7 @@ If <code>isCustomResponse</code> returns <code>true</code>, the framework calls 
             });<br />
         }<br />
         else{<br />
-            [self.vc performSegueWithIdentifier:@&quot;showLogin&quot; sender:self.vc];<br />
+            [self.vc performSegueWithIdentifier:@"showLogin" sender:self.vc];<br />
             dispatch_async(dispatch_get_main_queue(), ^(void){<br />
                 LoginViewController*  loginController = (LoginViewController*) self.vc.navigationController.visibleViewController;<br />
                 loginController.challengeHandler = self;<br />
@@ -89,12 +89,12 @@ Call the <code>submitSuccess</code> method in order to inform the framework that
 Call the <code>submitFailure</code> method in order to inform the framework that the authentication process failed and for the <code>onFailure</code> handler of the invocation to be called.</p>
 <p>{% highlight obj-c %}<br />
 -(void) onSuccess:(WLResponse *)response {<br />
-    NSLog(@&quot;Challenge succeeded&quot;);<br />
+    NSLog(@"Challenge succeeded");<br />
     [self.vc.navigationController popViewControllerAnimated:YES];<br />
     [self submitSuccess:response];<br />
 }</p>
 <p>-(void) onFailure:(WLFailResponse *)response {<br />
-    NSLog(@&quot;Challenge failed&quot;);<br />
+    NSLog(@"Challenge failed");<br />
     [self submitFailure:response];<br />
 }<br />
 {% endhighlight %
@@ -110,8 +110,8 @@ Call the <code>submitFailure</code> method in order to inform the framework that
 //...<br />
 - (IBAction)login:(id)sender {<br />
     WLProcedureInvocationData *myInvocationData = [[WLProcedureInvocationData alloc]<br />
-                               initWithAdapterName:@&quot;AuthAdapter&quot;<br />
-                               procedureName:@&quot;submitAuthentication&quot;];<br />
+                               initWithAdapterName:@"AuthAdapter"<br />
+                               procedureName:@"submitAuthentication"];<br />
     myInvocationData.parameters = @[self.username.text, self.password.text];<br />
     [self.challengeHandler submitAdapterAuthentication:myInvocationData options:nil];<br />
 }<br />
@@ -134,7 +134,7 @@ The protected procedure invocation triggers MobileFirst Server to send the chall
 </li>
 <li>Invoke the protected adapter procedure:<br />
 {% highlight obj-c %}<br />
-    NSURL* url = [NSURL URLWithString:@&quot;/adapters/AuthAdapter/getSecretData&quot;];<br />
+    NSURL* url = [NSURL URLWithString:@"/adapters/AuthAdapter/getSecretData"];<br />
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
     [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
     ...<br />

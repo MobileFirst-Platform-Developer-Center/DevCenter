@@ -68,19 +68,19 @@ The following parameters are required:</p>
 <p>{% highlight js %}function submitNotification(userId, notificationText) {<br />
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>    if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }</p>
 <p>    var notification={};<br />
     notification.MPNS={};<br />
     var badgeDigit = 1;<br />
-    notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});</p>
+    notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});</p>
 <p>    //Set Toast notification for MPNS<br />
     notification.MPNS.toast={};<br />
-    notification.MPNS.toast.text1 = &quot;Toast title&quot;;<br />
-    notification.MPNS.toast.text2 = &quot;Toast content&quot;;</p>
+    notification.MPNS.toast.text1 = "Toast title";<br />
+    notification.MPNS.toast.text2 = "Toast content";</p>
 <p>    WL.Server.notifyAllDevices(userSubscription, notification);</p>
 <p>    return {<br />
-        result: &quot;Notification sent to user :: &quot; + userId<br />
+        result: "Notification sent to user :: " + userId<br />
     };<br />
 }{% endhighlight %</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
@@ -97,11 +97,11 @@ The following parameters are required:</p>
 {% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
 {% highlight js %}if (userSubscription === null) {<br />
-        return { result: &quot;No subscription found for user :: &quot; + userId };<br />
+        return { result: "No subscription found for user :: " + userId };<br />
     }{% endhighlight %</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
 {% highlight js %}var badgeDigit = 1;<br />
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});{% endhighlight %</p>
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %</p>
 <ul>
 <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
 <li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (available only in iOS and Windows Phone).</li>
@@ -111,8 +111,8 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <p>The default notification JSON block returned by <code>WL.Server.createDefaultNotification</code> API method contains notification JSON for Raw and Tile. To send Toast notifications, add the JSON block for Toast notifications:</p>
 <p>{% highlight js %}<br />
 notification.MPNS.toast={};<br />
-notification.MPNS.toast.text1 = &quot;Toast title&quot;;<br />
-notification.MPNS.toast.text2 = &quot;Toast content&quot;;{% endhighlight %</p>
+notification.MPNS.toast.text1 = "Toast title";<br />
+notification.MPNS.toast.text2 = "Toast content";{% endhighlight %</p>
 <blockquote><p>
 For more details refer to user documentation on WL.Server.createDefaultNotification API
 </p></blockquote>
@@ -132,9 +132,9 @@ For more details refer to user documentation on WL.Server.createDefaultNotificat
 </ul>
 <p>When a push notification is received by a device, the callback function defined in <code>WL.Client.Push.registerEventSourceCallback</code> is invoked:</p>
 <p>{% highlight js %}function pushNotificationReceived(props, payload) {<br />
-    alert(&quot;pushNotificationReceived invoked&quot;);<br />
-    alert(&quot;props :: &quot; + JSON.stringify(props));<br />
-    alert(&quot;payload :: &quot; + JSON.stringify(payload));<br />
+    alert("pushNotificationReceived invoked");<br />
+    alert("props :: " + JSON.stringify(props));<br />
+    alert("payload :: " + JSON.stringify(payload));<br />
 }{% endhighlight %</p>
 <p>If the application was in background mode (or inactive) when the push notification arrived, this callback function is invoked when the application returns to the foreground.</p>
 <h2 id="sampleApplication">Sample application</h2>
@@ -147,11 +147,11 @@ For more details refer to user documentation on WL.Server.createDefaultNotificat
 <li>If using the CLI, for example:<br />
 {% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/submitNotification<br />
-[?] Enter the comma-separated parameters: &quot;the-user-name&quot;, &quot;hello!&quot;<br />
+[?] Enter the comma-separated parameters: "the-user-name", "hello!"<br />
 [?] How should the procedure be called? GET{% endhighlight %</li>
 <li>The sample application for this tutorial is also bundled with a back-end emulator which can be used to simulate push notification submissions by a back-end system. The source for the emulator is also bundled.
 <p>To use the back-end emulator: open the PushBackendEmulator folder in a command prompt/terminal and run the supplied JAR file by using the following syntax.</p>
-<p>[code]java –jar PushBackendEmulator.jar &lt;userId&gt; &lt;message&gt; &lt;contextRoot&gt; &lt;port&gt;{% endhighlight %</p>
+<p>[code]java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>{% endhighlight %</p>
 <p><code>userId</code> is the user name that you used to log in to the sample application.<br />
 <code>contextRoot</code> is the context root of your MobileFirst project.</p>
 <h3>Example</h3>

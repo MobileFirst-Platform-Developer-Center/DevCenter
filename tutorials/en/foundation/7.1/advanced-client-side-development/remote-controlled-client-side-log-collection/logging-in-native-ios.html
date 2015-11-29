@@ -6,11 +6,11 @@ relevantTo: [ios]
 <h2 id="loggingIOS">Logging example for native iOS (Objective-C)</h2>
 <h3>Outputs to Xcode console</h3>
 <p>{% highlight objc %}<br />
-#import &quot;OCLogger.h&quot;</p>
+#import "OCLogger.h"</p>
 <p>+ (int) sum:(int) a with:(int) b{<br />
     int sum = a + b;</p>
-<p>    OCLogger* mathLogger = [OCLogger getInstanceWithPackage:@&quot;MathUtils&quot;];<br />
-    NSString* logMessage = [NSString stringWithFormat:@&quot;sum called with args %d and %d. Returning %d&quot;, a, b, sum];<br />
+<p>    OCLogger* mathLogger = [OCLogger getInstanceWithPackage:@"MathUtils"];<br />
+    NSString* logMessage = [NSString stringWithFormat:@"sum called with args %d and %d. Returning %d", a, b, sum];<br />
     [mathLogger debug:logMessage];</p>
 <p>    return sum;<br />
 }</p>
