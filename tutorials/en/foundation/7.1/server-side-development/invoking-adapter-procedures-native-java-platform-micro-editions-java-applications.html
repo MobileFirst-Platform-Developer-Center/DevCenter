@@ -87,7 +87,8 @@ public void commandAction(Command command, Item item) {<br />
 <p>The <code>WLClient</code> instance first connects to MobileFirst Server, according to the properties of the <code>wlclient.properties</code> file.<br />
 After the connection is established, it calls one of the methods of the <code>MyConnectListener</code> class.<br />
 The <code>MyConnectListener</code> class implements the <code>WLResponseListener</code> interface.</p>
-<p>{% highlight java %}public class MyConnectListener implements WLResponseListener  {{% endhighlight %}</p>
+<p>{% highlight java %}public class MyConnectListener implements WLResponseListener  {
+{% endhighlight %}</p>
 <p>The <code>WLResponseListener</code> interface specifies the following methods:</p>
 <p>{% highlight java %}public void onSuccess (WLResponse response) { }{% endhighlight %}</p>
 <p>{% highlight java %}public void onFailure (WLFailResponse response) { } {% endhighlight %}</p>

@@ -49,7 +49,8 @@ using Newtonsoft.Json;</p>
 <p>namespace NativePagesInHybridApp<br />
 {<br />
     public partial class HelloNative : UserControl<br />
-    {{% endhighlight %}</p>
+    {
+{% endhighlight %}</p>
 <h3>Step 2</h3>
 <p>To retrieve custom data parameters that are passed from the web view, use the <code>WLNativePage.Data:(NSDictionary*)data</code> method.</p>
 <p>In the example below, the data is sent as a JSON string. For this purpose, the external <code>JSON.NET</code> library is used to convert the incoming JSON string to a native dictionary. For more information, see the <a href="http://json.codeplex.com/">JSON.NET</a> page.</p>
