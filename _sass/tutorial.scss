@@ -45,7 +45,11 @@ $color_wild_sand_approx: #f5f5f5;
 		display: block;
 	}
 	blockquote {
-		background-color: $color_alto_approx;
+		background: #f9f9f9;
+		border-left: 10px solid #ccc;
+		margin: 1.5em 10px;
+		padding: 0.5em 10px;
+		font-size: 110%;
 	}
 	.col-sm-2 {
 		padding: 23px 0 0 7px;
