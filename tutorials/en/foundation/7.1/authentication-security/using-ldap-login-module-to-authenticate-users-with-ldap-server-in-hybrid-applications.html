@@ -169,7 +169,7 @@ LDAPRealmChallengeHandler.isCustomResponse = function(response) {<br />
 <h3>handleChallenge</h3>
 <p>If the <code>isCustomResponse</code> method returns <code>true</code>, the framework calls the <code>handleChallenge</code> function. This function is used to perform required actions, such as hide the application screen or show the login screen.<br />
 After the client application detects that the server sent a login form, which means that the server is requesting authentication, the application hides the <code>AppDiv</code>, shows the <code>AuthDiv</code>, and cleans up the <code>passwordInputField</code> element.</p>
-<p>[code language="javascript"]<br />
+<p>{% highlight javascript %}<br />
 LDAPRealmChallengeHandler.handleChallenge = function(response){<br />
         $('#AppDiv').hide();<br />
         $('#AuthDiv').show();<br />
