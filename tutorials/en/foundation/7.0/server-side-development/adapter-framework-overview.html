@@ -2,6 +2,7 @@
 layout: tutorial
 title: 'Updated: Adapters overview'
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+weight: 1
 ---
 <h2>Overview</h2>
 <p>This tutorial presents how to develop server-side code (adapters) that is used to transfer and retrieve information from back-end systems to client applications and cloud services. MobileFirst Server processes the information and handles security. You can write adapters in JavaScript or Java.</p>
@@ -67,21 +68,22 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 You can apply more filtering to retrieved data by using simple XSLT code.</p>
 <p>JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to use Java in the adapter code.</p>
 <h3>XML structure of JavaScript adapters</h3>
-<p>{% highlight xml %} <br />
-<wl:adapter name="HelloWorld"><br />
-  <displayName /><br />
-  <description /><br />
-  <connectivity><br />
-    <connectionPolicy><br />
-    ...</p>
-<p>    <loadConstraints><br />
-    ...<br />
-  </connectivity><br />
-  <procedure /><br />
-  <procedure /><br />
-  ...<br />
-</wl:adapter><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %} 
+<wl:adapter name="HelloWorld">
+    <displayName />
+    <description />
+    <connectivity>
+        <connectionPolicy>
+            ...
+            <loadConstraints>
+                ...
+    </connectivity>
+
+    <procedure />
+    <procedure />
+    ...
+</wl:adapter>
+{% endhighlight %} </p>
 <ul>
 <li><code>name: Mandatory. The name of the adapter</code></li>
 <li><code>displayName</code>: Optional. The name that is displayed in the MobileFirst Console</li>
@@ -94,21 +96,22 @@ You can apply more filtering to retrieved data by using simple XSLT code.</p>
 </li>
 <li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
 </ul>
-<p>{% highlight xml %} <br />
-<procedure name="procedure1"></procedure><br />
-<procedure name="procedure2"></procedure><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<procedure name="procedure1"></procedure>
+<procedure name="procedure2"></procedure>
+{% endhighlight %} </p>
 <h3>Structure of a JavaScript adapter procedure</h3>
 <p>Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
 The <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
-<p>{% highlight javascript %} <br />
-function procedure1(param) {<br />
-  return WL.Server.invokeSQLStatement({<br />
-    preparedStatement: procedure1Statement,<br />
-    parameters: [param]<br />
-  });<br />
-}<br />
- {% endhighlight %} </p>
+<p>
+{% highlight javascript %}
+function procedure1(param) {
+    return WL.Server.invokeSQLStatement({
+        preparedStatement: procedure1Statement,
+        parameters: [param]
+    });
+}
+{% endhighlight %} </p>
 <h2 id="JavaAdapters">Java adapters</h2>
 <p>Java adapters expose a full REST API to the client and are written in Java. This type of adapters is based on the <a href="https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html">JAX-RS specification</a>.</p>
 <p>In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource.<br />
@@ -123,14 +126,16 @@ The only exception is if the client sending the request supports GZip, then the 
 </ul>
 <h3>XML structure of a Java adapter </h3>
 <p>The XML configuration file configures the class name of the JAX-RS application for the adapter.</p>
-<p>{% highlight xml %} <wl:adapter name="HelloWorld"<br />
-    <displayName /><br />
-    <description /><br />
-    <connectivity><br />
-        <connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy><br />
+<p>{% highlight xml %}
+<wl:adapter name="HelloWorld"
+    <displayName />
+    <description />
+    <connectivity>
+        <connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy>
     </connectivity></p>
-<p>    <JAXRSApplicationClass>com.acme.HelloWorldAdapterApp</JAXRSApplicationClass><br />
-</wl:adapter> {% endhighlight %} </p>
+    <JAXRSApplicationClass>com.acme.HelloWorldAdapterApp</JAXRSApplicationClass>
+</wl:adapter>
+{% endhighlight %}
 <ul>
 <li><code>connectivity</code>:
 <ul>
