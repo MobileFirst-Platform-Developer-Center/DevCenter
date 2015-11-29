@@ -29,7 +29,7 @@ Procedure names in the JavaScript file must be the same as in the XML file.<br /
 The mandatory invocation parameters are <code>method</code>, <code>appName</code>, <code>requestType</code>, <code>path</code>, and <code>returnedContentType</code>.<br />
 The <code>transformation</code> parameter is optional and takes the <code>type</code> and <code>xslfile</code> subparameters.<br />
 Procedures can be parameterized at run time.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function startOrchestration(orchestrationName) {</p>
 <p>  var input = {<br />
     method: 'get',<br />
@@ -44,7 +44,7 @@ function startOrchestration(orchestrationName) {</p>
 <p>  };<br />
   return WL.Server.invokeCastIron(input);<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>To invoke a Cast Iron request, use the <code>WL.Server.invokeCastIron</code> API method.<br />
 Provide an input parameters object with the following properties:</p>
 <ul>

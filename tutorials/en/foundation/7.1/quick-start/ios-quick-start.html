@@ -17,17 +17,17 @@ relevantTo: [ios]
 <ul>
 <li>
 <h4>Create a new project and iOS framework/server-side application entity</h4>
-<p>                [code lang="shell"]<br />
+<p>                {% highlight shell %}<br />
                 mfp create MyProject<br />
                 cd MyProject<br />
                 mfp add api MyiOSFramework -e ios<br />
-                [/code]
+                {% endhighlight %
             </li>
 <li>
 <h4>Add a HTTP adapter to the project</h4>
 <p>                [code firstline="4" lang="shell"]<br />
                 mfp add adapter MyAdapter -t http<br />
-                [/code]
+                {% endhighlight %
             </li>
 </ul>
 </li>
@@ -41,7 +41,7 @@ relevantTo: [ios]
                 # Wait until a browser window is opened, displaying the MobileFirst Console<br />
                 mfp build<br />
                 mfp deploy<br />
-                [/code]
+                {% endhighlight %
             </li>
 </ul>
 </li>
@@ -83,14 +83,14 @@ relevantTo: [ios]
 <li>
 <h4>AppDelegate.h</h4>
 <p>                Add the header:<br />
-                [code lang="objc"]#import &quot;WLResourceRequest.h&quot;[/code]
+                {% highlight objc %}#import &quot;WLResourceRequest.h&quot;{% endhighlight %
             </li>
 <li style="margin-bottom:30px">
 <h4>AppDelegate.m</h4>
 <p>                Add the header:<br />
-                [code lang="objc"]#import &quot;WLResponse.h&quot;[/code]</p>
+                {% highlight objc %}#import &quot;WLResponse.h&quot;{% endhighlight %</p>
 <p>                Add the following to <code>didFinishLaunchingWithOptions</code>:<br />
-[code lang="objc"]- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {<br />
+{% highlight objc %}- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {<br />
     NSURL* url = [NSURL URLWithString:@&quot;/adapters/MyAdapter/getFeed&quot;];<br />
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
     [request setQueryParameterValue:@&quot;['technology']&quot; forName:@&quot;params&quot;];</p>
@@ -103,7 +103,7 @@ relevantTo: [ios]
         }<br />
     }];</p>
 <p>    return YES;<br />
-}[/code]
+}{% endhighlight %
             </li>
 </ul>
 </li>

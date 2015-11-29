@@ -22,12 +22,12 @@ relevantTo: [hybrid]
 <h2 id="connect">Connecting to the plugin from the JavaScript code</h2>
 <ol>
 <li>Implement the <code>WL.NativePage.show()</code> method to open the native page:
-<p>[code lang="js"]function openNativePage(){<br />
+<p>{% highlight js %}function openNativePage(){<br />
     var params = {<br />
         nameParam : $('#nameInput').val()<br />
     };<br />
     WL.NativePage.show(nativePageClassName, backFromNativePage, params);<br />
-}[/code]</p>
+}{% endhighlight %</p>
 <ul>
 <li><code>nativePageClassName</code>: The name of a native iOS <code>UIViewController</code> instance to start.</li>
 <li><code>backFromNativePage</code>: A callback function to call when the native page closes.</li>
@@ -35,9 +35,9 @@ relevantTo: [hybrid]
 </ul>
 </li>
 <li>To handle the callback function, write the following code:
-<p>[code lang="js"]function backFromNativePage(data){<br />
+<p>{% highlight js %}function backFromNativePage(data){<br />
   alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
-}[/code]</p>
+}{% endhighlight %</p>
 <p>The <code>backFromNativePage(data)</code> parameter can pass data back to the web part of an application after the native closes.
 </li>
 </ol>
@@ -51,25 +51,25 @@ If you work with existing <code>.m</code> and <code>.h</code> files, reference t
 Placing the <code>.m</code> and <code>.h</code> files only in the <code>iphone\native\Classes</code> folder in Eclipse is not sufficient, because these files are not referenced in the Xcode project unless they have been added in Xcode.</p>
 </li>
 <li>To retrieve custom data parameters that are passed from the web view, use the <code>setDataFromWebView:(NSDictionary*)data</code> method:
-<p>[code lang="obj-c"]-(void)setDataFromWebView:(NSDictionary*)data{<br />
+<p>{% highlight obj-c %}-(void)setDataFromWebView:(NSDictionary*)data{<br />
     self.nameParam = (NSString*)[data valueForKey:@&quot;nameParam&quot;];<br />
-}[/code]
+}{% endhighlight %
 </li>
 </ol>
 <h2 id="control">Returning control to the web view</h2>
 <p>When the native page switches back to the web view, a call to the <code>[NativePage showWebView:]</code> method is necessary.<br />
 To pass data back to the web view, use the <code>NSDictionary</code> object. For example:</p>
 <h4>Objective-C</h4>
-<p>[code lang="obj-c"]-(IBAction)returnClicked:(id)sender{<br />
+<p>{% highlight obj-c %}-(IBAction)returnClicked:(id)sender{<br />
     NSString *phone = [phoneNumber text];<br />
     NSDictionary *returnedData = [NSDictionary dictionaryWithObject:phone forKey:@&quot;phoneNumber&quot;];<br />
     [NativePage showWebView:returnedData];<br />
-}[/code]</p>
+}{% endhighlight %</p>
 <p><br clear="all" /></p>
 <h4>JavaScript</h4>
-<p>[code lang="js"]function backFromNativePage(data){<br />
+<p>{% highlight js %}function backFromNativePage(data){<br />
     alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
-}[/code]</p>
+}{% endhighlight %</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/NativePagesInHybridApp" target="_blank">Click to download</a> the MobileFirst project.</p>
 <p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/07_02_ios_sample_app.png"><img src="{{ site.baseurl }}/assets/backup/07_02_ios_sample_app.png" alt="07_02_ios_sample_app" width="662" height="360" class="aligncenter size-full wp-image-853" /></a></p>

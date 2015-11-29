@@ -26,16 +26,16 @@ relevantTo: [ios]
 </ul>
 <h2 id="imfdata">Using the IMFData SDK</h2>
 <p>After the IMFData SDK is installed, you can begin to initialize and use the SDK in your native iOS application.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 // Initialize the IMFDataManager<br />
 IMFDataManager *manager = [IMFDataManager initializeWithUrl:cloudantProxyUrl];<br />
-[/code]<br />
+{% endhighlight %<br />
 The value for <code>cloudantProxyUrl</code> is the URL of the MobileFirst Data Proxy as it was configured during installation. The URL includes the IP address, host, and context root that you defined.<br />
 For example: <code>http://localhost:10080/imf-data-proxy</code><br />
 In the native iOS sample that comes with this tutorial, the value for the <code>cloudantProxyUrl</code> is set in the <code>bluelist.plist</code> file.</p>
 <h2 id="creatingLocal">Creating local data stores</h2>
 <p>You can create a Store object to allow your application to access a local database, which can be used even when the application is offline.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 //Get reference to IMFDataManager<br />
 IMFDataManager *manager = [IMFDataManager sharedInstance];<br />
 NSString *dbname=@&quot;todosdb&quot;;<br />
@@ -48,10 +48,10 @@ if (error) {<br />
     else{<br />
         NSLog(@&quot;Local data store created successfully&quot;);<br />
     }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="creatingRemote">Creating remote data stores</h2>
 <p>You can also create a Store object to allow your application to access a remote database.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 // Get reference to data manager<br />
 IMFDataManager *manager = [IMFDataManager sharedInstance];<br />
 NSString *dbname = @&quot;todosdb&quot;;</p>
@@ -64,10 +64,10 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
         NSLog(@&quot;Successfully created store);<br />
     }<br />
 }];<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="permissions">Setting user permissions for remote stores</h2>
 <p>You can set specific permissions for users to access remote stores.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 [manager setCurrentUserPermissions: DB_ACCESS_GROUP_MEMBERS forStoreName: @&quot;todosdb&quot; completionHander:^(BOOL success, NSError *error) {<br />
     if(error){<br />
         // Handle error<br />
@@ -75,7 +75,7 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
         // setting permissions was successful<br />
     }<br />
 }];<br />
-[/code]<br />
+{% endhighlight %<br />
 <strong>Note:</strong> In the sample, the user is authenticated via OAuth. OAuth has been configured through adapter-based authentication. You can find further instructions on setting up access with OAuth capabilities and the MobileFirst Data Proxy in <a href="http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_cloudantsec.html%23oauth?lang=en">configuring OAuth security documentation.</a></p>
 <h2 id="modeling">Modeling data for iOS applications</h2>
 <p>In iOS applications, you can use the <code>CDTDataObjectMapper</code> class to map native objects to the JSON document format.  When you create a data store with the <code>IMFDataManager</code> API, a <code>CDTDataObjectMapper</code> is created automatically and is set on the <code>CDTStore</code> object. In the sample, a custom <code>TodoItem</code> class enables you to store custom data as objects in the application. When you create a custom <code>CDTDataObjectMapper</code> class, make sure that it meets the following requirements:</p>
@@ -85,23 +85,23 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
 <li>Extend <code>NSObject</code>.</li>
 </ul>
 <h3>TodoItem implementation (<code>TodoItem.h</code>)</h3>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 @interface TodoItem : NSObject &lt;CDTDataObject&gt;<br />
 @property NSString *name;<br />
 @property NSNumber *priority;<br />
 //Required by the IMFDataObject protocol<br />
 @property (strong, nonatomic, readwrite) CDTDataObjectMetadata *metadata;<br />
 @end<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>You must then register the class and data type with the <code>CDTDataObjectMapper</code>. In the sample, the <code>TableViewController</code> does that after the store is created.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 //using the existing store<br />
  [self.datastore.mapper setDataType:@&quot;TodoItem&quot; forClassName:NSStringFromClass([TodoItem class])];<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="creating">Creating and updating data</h2>
 <p>Using the same operation, you can save new objects and save changes to existing objects in a data store.</p>
 <h3>Creating Todo Items</h3>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 //using a store that was created previously<br />
 - (void) createItem: (TodoItem*) item<br />
 {<br />
@@ -114,9 +114,9 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
         }</p>
 <p>    }];<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3>Updating Todo Items</h3>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 //using a store that was created previously<br />
 - (void) updateItem: (TodoItem*) item<br />
 {<br />
@@ -129,10 +129,10 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
         }</p>
 <p>    }];<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3>Deleting data</h3>
 <p>To delete an object in a data store, pass the object to the <code>delete: completionHandler</code> method:</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 //using a store that was created previously<br />
 -(void) deleteItem: (TodoItem*) item<br />
 {<br />
@@ -144,14 +144,14 @@ NSString *dbname = @&quot;todosdb&quot;;</p>
         }<br />
     }];<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3>Querying data</h3>
 <p>You can query for objects that have an object mapper. The Cloudant query API provides convenient methods for querying with <code>NSPredicate</code> and for querying by data type. For more information about these functions, see <a href="http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_sdk_query.html">Querying data</a> in the user documentation.</p>
 <h2 id="sync">Supporting synchronization and offline storage</h2>
 <p>By using the data manager API, you can synchronize data between local storage on the device and remote stored instances.</p>
 <h3>Pull replication</h3>
 <p>When pull replication runs, the local database within the mobile device is updated with what exists in the remote database.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 - (void)pullItems<br />
 {<br />
 // store is an existing CDTStore object created using IMFDataManager remoteStore<br />
@@ -170,10 +170,10 @@ if(replicationError){<br />
     // replicator start was successful<br />
 }<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3>Push replication</h3>
 <p>When push replication runs, the data from the local database within the mobile device is sent to the remote database.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 - (void)pushItems<br />
 {<br />
 // store is an existing CDTStore object created using IMFDataManager localStore<br />
@@ -192,7 +192,7 @@ if(replicationError){<br />
     // replicator start was successful<br />
 }<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><strong>Note:</strong> The code snippets above might be different from the code that you can see in the sample. These snippets have been created to give the clearest and most understandable outline of the APIs and how they are used. For the sample to be easier to use, all the implementation for the above operations can be found in the <code>TableViewController</code>.</p>
 <h2 id="running">Running the iOS sample</h2>
 <p>Make sure that you have properly configured and started the following instances:</p>
@@ -207,10 +207,10 @@ if(replicationError){<br />
 <li>Make sure that you have correctly installed and set up CocoaPods. If you have not done so, complete the following:
 <ol>
 <li>Install CocoaPods by entering the following terminal command:<br />
-[code]$ sudo gem install cocoapods [/code]
+[code]$ sudo gem install cocoapods {% endhighlight %
 </li>
 <li>Set up CocoaPods by entering the following terminal command:<br />
-[code]$ pod setup [/code]
+[code]$ pod setup {% endhighlight %
 </li>
 <p>The next step is to download and install the required dependencies for this project by using the provided </ol>
 <p><code>Podfile</code>. If you want to create or have your own <code>podfile</code>, include the following content:</p>
@@ -218,11 +218,11 @@ if(replicationError){<br />
 source 'https://github.com/CocoaPods/Specs.git'<br />
 platform :ios, '7.0'<br />
 pod 'IMFDataLocal', '1.0.0'<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 <li>To install the dependencies as defined in a <code>podfile</code>, navigate to the Xcode project directory in terminal (in the sample: <code>/BlueList-On-Premise/iOS/objective-c/</code>) and run the following command:
-<p>[code] $ pod install [/code]</p>
+<p>[code] $ pod install {% endhighlight %</p>
 <p><strong>Note:</strong> For the <code>pod install</code> command to work correctly, your <code>podfile</code> must be named <code>Podfile</code> or <code>podfile</code>.
 </li>
 <li>After the dependencies are installed, open the <code>bluelist-objective-c.xcworkspace</code> file. When using CocoaPods, you must use the <code>.xcworkspace</code> file instead of the <code>.xcodeproject</code> file because of how the dependencies are configured. This pod installation will also pull in the <code>IBMMobileFirstPlatformFoundation</code> framework as it is a required dependency of <code>IMFDataLocal</code>.
@@ -242,27 +242,27 @@ pod 'IMFDataLocal', '1.0.0'<br />
 source 'https://github.com/CocoaPods/Specs.git'<br />
 platform :ios, '7.0'<br />
 pod 'IMFDataLocal/SQLCipher'<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>A <code>pod install</code> must be completed after these changes have been made in order to have the correct encryption dependencies configured. To accomplish this, navigate to the Xcode project directory in terminal (in the sample: <code>/BlueList-On-Premise/iOS/objective-c/</code>) and run the following command:</p>
-<p>[code] $ pod install [/code]</p>
+<p>[code] $ pod install {% endhighlight %</p>
 <p>Now the project has the dependencies that are required to encrypt the local databases correctly. To encrypt these databases in your client-side code, first create an <code>CDTEncryptionKeyProvider</code> and then create a local data store with this <code>keyProvider</code>:</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 //Initialize a key provider<br />
 id&lt;CDTEncryptionKeyProvider&gt; keyProvider = [CDTEncryptionKeychainProvider providerWithPassword:@&quot;password&quot; forIdentifier:@&quot;user&quot;];<br />
 //Initialize a local store<br />
 self.datastore = [manager localStore:dbname withEncryptionKeyProvider:keyProvider error:&amp;dbCreateError];<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>You must also use the <code>CDTEncryptionKeyProvider</code> that you defined when you created <code>CDTPullReplication</code> and <code>CDTPushReplication</code>:<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 //pull replication<br />
 self.pullReplication   = [[IMFDataManager sharedInstance] pullReplicationForStore:dbname withEncryptionKeyProvider:keyProvider];<br />
 //push replication<br />
 self.pushReplication   = [[IMFDataManager sharedInstance] pushReplicationForStore:dbname withEncryptionKeyProvider:keyProvider];<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>In the sample application, the encryption code is already provided in the <code>TableViewController</code>. By default, encryption is not enabled until an <code>encryptionPassword</code> is provided in the <code>bluelist.plist</code> file. After <code>encryptionPassword</code> is configured, the application uses this password to encrypt the local data store by using the above mechanisms. If <code>encryptionPassword</code> is left blank in the <code>bluelist.plist</code> file, encryption does not occur.</p>
 <h2 id="flow">BlueList application flow</h2>
 <p>When the application starts, the <code>AppDelegate</code> instance initializes the connection to MobileFirst Server. After initialization, the application creates and registers the <code>BlueListChallangeHandler</code> handler.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {<br />
     WLClient *wlClient = [WLClient sharedInstance];</p>
 <p>    // Register the Challenge Handler<br />
@@ -270,9 +270,9 @@ self.pushReplication   = [[IMFDataManager sharedInstance] pushReplicationForStor
     [wlClient registerChallengeHandler: challengeHandler];</p>
 <p>    return YES;<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The sample silently authenticates a user by calling <code>CloudantAutheticationAdapter</code> with the correct username and password parameters. This is completed in the <code>BlueListChallengeHandler</code>.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 -(void) handleChallenge:(WLResponse *)response<br />
 {<br />
     NSLog(@&quot;Inside handleChallenge - silently loggin in&quot;);<br />
@@ -280,7 +280,7 @@ self.pushReplication   = [[IMFDataManager sharedInstance] pushReplicationForStor
     invocationData.parameters = @[@&quot;james&quot;, @&quot;42&quot;];</p>
 <p>    [self submitAdapterAuthentication: invocationData options: nil];<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>After authentication, the database is configured in the <code>setupIMFDatabase</code> method in the <code>TableViewController</code>. This database configuration consists of the following steps:</p>
 <ol>
 <li>Initializing the SDK</li>

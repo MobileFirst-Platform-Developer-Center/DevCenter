@@ -33,15 +33,15 @@ The plug-in performs the required action and calls a JavaScript callback method 
 <h2 id="declare">Declaring a plug-in</h2>
 <p>You must declare the plug-in in the project, so that Cordova can detect it.<br />
 To declare the plug-in, add a reference to the <code>config.xml</code> file, located in the native folder of the Windows Phone 8 environment.</p>
-<p>[code lang="xml"]&lt;feature name=“sayHelloPlugin&quot;&gt;<br />
+<p>{% highlight xml %}&lt;feature name=“sayHelloPlugin&quot;&gt;<br />
   &lt;param name=&quot;wp-package&quot; value=“sayHelloPlugin&quot; /&gt;<br />
-&lt;/feature&gt;[/code]</p>
+&lt;/feature&gt;{% endhighlight %</p>
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
-[code lang="js"]function sayHello() {<br />
+{% highlight js %}function sayHello() {<br />
     var name = $(&quot;#NameInput&quot;).val();<br />
     cordova.exe(sayHelloSuccess, sayHelloFailure, &quot;SayHelloPlugin&quot;, &quot;sayHello&quot;, [name]);<br />
-}[/code]</p>
+}{% endhighlight %</p>
 <p><br clear="all" /><br />
 <code>sayHelloSuccess</code> - Success callback<br />
 <code>sayHelloFailure</code> - Failure callback<br />
@@ -49,7 +49,7 @@ To declare the plug-in, add a reference to the <code>config.xml</code> file, loc
 <code>sayHello</code> - Action name<br />
 <code>[name]</code> - Parameters array</p>
 <p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks.<br />
-[code lang="js" firstline="5"]<br />
+{% highlight js %}<br />
 function sayHelloSuccess(data){<br />
     WL.SimpleDialog.show(<br />
         &quot;Response from plug-in&quot;, data,<br />
@@ -61,7 +61,7 @@ function sayHelloSuccess(data){<br />
   &quot;Response from plug-in&quot;, data,<br />
   [{text: &quot;OK&quot;, handler: function() {WL.Logger.debug(&quot;Ok button pressed&quot;);}}]<br />
     );<br />
-}[/code]</p>
+}{% endhighlight %</p>
 <h2 id="csharp">Implementing the C# code of a Cordova plug-in</h2>
 <p>After you have declared the plug-in and the JavaScript implementation is ready, you can implement the Cordova plug-in.<br />
 For this purpose, ensure that the project is built in Eclipse and opened in the Visual Studio IDE.</p>
@@ -69,7 +69,7 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
 <ol>
 <li>Create a new C# class.</li>
 <li>Add the new class to your project namespace and add the required import statements.
-<p>    [code lang="csharp"]using System;<br />
+<p>    {% highlight csharp %}using System;<br />
 using System.Collections.Generic;<br />
 using System.Linq;<br />
 using System.Text;<br />
@@ -80,14 +80,14 @@ using WPCordovaClassLib.Cordova.JSON;</p>
 <p>namespace Cordova.Extension.Commands<br />
 {<br />
     public class SayHelloPlugin : BaseCommand<br />
-    {[/code]
+    {{% endhighlight %
 </li>
 </ol>
 <h3>Step 2</h3>
 <p>Implement the <code>SayHelloPlugin</code> class and the <code>sayHello</code> method.</p>
 <ol>
 <li>The JavaScript wrapper calls the <code>sayHello</code> method and passes a single parameter. It returns a string back to JavaScript.<br />
-    [code lang="csharp" firstline="15"]public void sayHello(string options)<br />
+    {% highlight csharp %}public void sayHello(string options)<br />
         {<br />
             string optVal = null;<br />
             try {<br />
@@ -95,10 +95,10 @@ using WPCordovaClassLib.Cordova.JSON;</p>
             }<br />
             catch (Exception) {<br />
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, &quot;SayHelloPlugin signaled an error&quot;));<br />
-            }[/code]</li>
+            }{% endhighlight %</li>
 <p><br clear="all" /></p>
 <li>The <code>DispatchCommandResult</code> method returns the result to JavaScript, whether success or failure.<br />
-[code lang="csharp" firstline="24"]if (optVal == null)<br />
+{% highlight csharp %}if (optVal == null)<br />
             {<br />
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, &quot;Got null value as input&quot;));<br />
             }<br />
@@ -108,7 +108,7 @@ using WPCordovaClassLib.Cordova.JSON;</p>
             }<br />
         }<br />
     }<br />
-}[/code]</li>
+}{% endhighlight %</li>
 </ol>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/ApacheCordovaPlugins" target="_blank">Click to download</a> the MobileFirst project.</p>

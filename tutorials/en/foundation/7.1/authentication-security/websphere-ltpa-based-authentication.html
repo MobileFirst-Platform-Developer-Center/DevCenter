@@ -111,24 +111,24 @@ Enable application security
 <li>Find the <code>authenticationConfig.xml</code> file in this directory:<br />
 <code><em>{WAS_HOME}</em>/profiles/<em>{your profile}</em>/installedApps/<em>{your node}</em>/<em>{MobileFirst Platform EAR}</em>/<em>{MobileFirst Platform WAR}</em>/WEB-INF/classes/conf</code><br />
 and uncomment the realm under the <code>For websphere</code> comment to obtain the following text:<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;!-- For websphere --&gt;<br />
 &lt;realm name=&quot;WASLTPARealm&quot; loginModule=&quot;WASLTPAModule&quot;&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.WebSphereFormBasedAuthenticator&lt;/className&gt;<br />
    &lt;parameter name=&quot;login-page&quot; value=&quot;/login.html&quot;/&gt;<br />
    &lt;parameter name=&quot;error-page&quot; value=&quot;/loginError.html&quot;/&gt;<br />
 &lt;/realm&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Optionally, include the <code>cookie-domain</code>, <code>cookie-name</code>, and <code>httponly-cookie</code> parameters. For more information, see the topic about the LTPA authenticator in the product documentation.
 </li>
 <li>Uncomment the login module under the <code>For websphere</code> comment:<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;!-- For websphere --&gt;<br />
 &lt;loginModule name=&quot;WASLTPAModule&quot;&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.WebSphereLoginModule&lt;/className&gt;<br />
 &lt;/loginModule&gt;<br />
-[/code]<br />
+{% endhighlight %<br />
 <strong>Note:</strong> The login module might already be uncommented.
 </li>
 <li>Add a security test to the <code>authenticationConfig.xml</code> as appropriate.
@@ -136,7 +136,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 <li>Use <code>webSecurityTest</code> if you plan to develop for web environments.</li>
 <li>Use <code>mobileSecurityTest</code> if you plan to develop for mobile environments.</li>
 </ul>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 &lt;!-- For websphere --&gt;<br />
 &lt;securityTest&gt;<br />
    &lt;webSecurityTest name=&quot;wasWebSecurity&quot;&gt;<br />
@@ -148,7 +148,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
       &lt;testUser realm=&quot;WASLTPARealm&quot;/&gt;<br />
    &lt;/mobileSecurityTest&gt;<br />
 &lt;/securityTest&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 <h3 id="option1">Additional steps for Option 1</h3>
@@ -158,7 +158,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 <li>Create a file that is named <code>login.html</code> and save it to the root of your WAR file: <code><em>{WAS_HOME}</em>/profiles/<em>{your profile}</em>/installedApps/<em>{your node}</em>/<em>{MobileFirst WAR}</em></code>
 </li>
 <li>Set its contents as follows:<br />
-[code lang="html"]<br />
+{% highlight html %}<br />
 &lt;html&gt;<br />
    &lt;head&gt;&lt;/head&gt;<br />
    &lt;body&gt;<br />
@@ -169,7 +169,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
       &lt;/form&gt;<br />
    &lt;/body&gt;<br />
 &lt;/html&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 <p></p>
@@ -179,14 +179,14 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 <li>Create the <code>loginError.html</code> error page and place it in the root of your WAR file: <code><em>{WAS_HOME}</em>/profiles/<em>{your profile}</em>/installedApps/<em>{your node}</em>/<em>{MobileFirst WAR}</em></code>. The <code>loginError.html</code> page is used when log-in fails.
 </li>
 <li>Set its contents as follows:<br />
-[code lang="html"]<br />
+{% highlight html %}<br />
 &lt;html&gt;<br />
    &lt;head&gt;&lt;/head&gt;<br />
    &lt;body&gt;<br />
       Login invalid.<br />
    &lt;/body&gt;<br />
 &lt;/html&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 <p></p>
@@ -196,7 +196,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 <li>Locate the <code>web.xml</code> file: <code><em>{WAS_HOME}</em>/profiles/<em>{your profile}</em>/installedApps/<em>{your node}</em>/<em>{MobileFirst EAR}</em>/<em>{MobileFirst WAR}</em>/WEB-INF/web.xml</code>
 </li>
 <li>Inside the root tag, add the tags as shown in the code sample. These tags pass to WebSphere Application Server the configuration that the WAR file expects.<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;security-constraint id=&quot;SecurityConstraint_1&quot;&gt;<br />
    &lt;web-resource-collection id=&quot;WebResourceCollection_1&quot;&gt;<br />
       &lt;web-resource-name&gt;Snoop Servlet&lt;/web-resource-name&gt;<br />
@@ -224,47 +224,47 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
       &lt;form-error-page&gt;/loginError.html&lt;/form-error-page&gt;<br />
    &lt;/form-login-config&gt;<br />
 &lt;/login-config&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 <h3 id="signCA">Optional steps for protecting the MobileFirst Operations Console</h3>
 <p>To protect the MobileFirst Operations Console with WebSphere Application Server authentication credentials, modify the <code>authenticationConfig.xml</code> file as follows:</p>
 <ol>
 <li>Uncomment the <code>&lt;staticResources&gt;</code> element to enable protection of static resources:
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 &lt;!-- Uncomment the next element to protect the worklight console and the first section in securityTests below. --&gt;<br />
 &lt;staticResources&gt;<br />
    &lt;resource id=&quot;mobileFirstPlatformConsole&quot; securityTest=&quot;MobileFirstPlatformConsole&quot;&gt;<br />
       &lt;urlPatterns&gt;/console*&lt;/urlPatterns&gt;<br />
    &lt;/resource&gt;<br />
 &lt;/staticResources&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Add a <code>&lt;customSecurityTest&gt;</code> element to your existing security test:<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;securityTests&gt;<br />
    &lt;customSecurityTest name=&quot;WorklightConsole&quot;&gt;<br />
       &lt;test realm=&quot;WASLTPARealm&quot; isInternalUserID=&quot;true&quot;/&gt;<br />
    &lt;/customSecurityTest&gt;<br />
 &lt;/securityTests&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 <h2 id="clientSide">Creating client-side authentication components</h2>
 <p>The tutorial uses an existing MobileFirst application from one of the <a href="../../authentication-security/">Authentication</a> tutorials.<br />
 To implement security for an app, follow the same methods as for any other type of realm, and then configure the challenge handler to use your realm:<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler(&quot;WASLTPARealm&quot;);<br />
-[/code]</p>
+{% endhighlight %</p>
 <ol>
 <li>In the <code>applicationDescriptor.xml</code> file, specify the security test that your app must use for the appropriate environments.<br />
 For example:<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;common securityTest=&quot;WAS-securityTest&quot;/&gt;<br />
 &lt;android version=&quot;1.0&quot; securityTest=&quot;WAS-securityTest&quot;&gt;<br />
    &lt;pushSender key= &quot;keyTest&quot; senderId=&quot;senderIdTest&quot;/&gt;<br />
 &lt;/android&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Deploy and test the application by using <a href="#option2">Option 2</a>. The authentication process requires a valid user name and password from the underlying user registry against which the WebSphere Application Server is configured. When authentication is successful, the MobileFirst app is authenticated.
 </li>

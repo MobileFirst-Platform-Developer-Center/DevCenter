@@ -35,22 +35,22 @@ Public procedures are declared in the XML file while implemented in the JavaScri
 <p>Procedures are implemented in the adapter JavaScript file.<br />
 Procedure names in the JavaScript file must be the same as in the adapter XML file.</p>
 <h4>XML file</h4>
-<p>[code lang="xml" highlight="2"]<br />
+<p>{% highlight xml %}<br />
 ...<br />
 &lt;procedure name=&quot;writeMessage&quot;/&gt;<br />
 &lt;procedure name=&quot;readMessage&quot;/&gt;<br />
 &lt;procedure name=&quot;readAllMessages&quot;/&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <h4>JS file</h4>
-<p>[code lang="js" highlight="2"]<br />
+<p>{% highlight js %}<br />
 ...<br />
 function writeMessage(messagebody) {<br />
    ...<br />
    ...<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The <code>destination</code> parameter is the target for messages that are produced by the client, and the source for the messages that are used by the client.<br />
-[code lang="js" highlight="4"]<br />
+{% highlight js %}<br />
 function writeMessage(messagebody) {</p>
 <p>  var inputData = {<br />
       destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
@@ -63,10 +63,10 @@ function writeMessage(messagebody) {</p>
     };</p>
 <p>  return WL.Server.writeJMSMessage(inputData);<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="serverxml">Enable JMS in Server.xml</h2>
 <p>Enable JMS on your Liberty profile ND server.</p>
-<p>[code lang="xml" title="server.xml"]<br />
+<p>{% highlight xml %}<br />
 &lt;!-- Enable features --&gt;<br />
 &lt;featureManager&gt;<br />
   &lt;feature&gt;jsp-2.2&lt;/feature&gt;<br />
@@ -74,7 +74,7 @@ function writeMessage(messagebody) {</p>
   &lt;feature&gt;wasJmsClient-1.1&lt;/feature&gt;<br />
   &lt;feature&gt;jndi-1.0&lt;/feature&gt;<br />
 &lt;/featureManager&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="connectProp">Connection properties</h2>
 <p>Connection properties are configured in the adapter XML file.</p>
 <ul>
@@ -92,7 +92,7 @@ function writeMessage(messagebody) {</p>
 </ul>
 </li>
 </ul>
-<p>[code lang="xml" highlight="7,8,9,10,11,12,13,14,15,16,17,18"]<br />
+<p>{% highlight xml %}<br />
 &lt;wl:adapter name=&quot;JMSAdapter&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:wl=&quot;http://www.ibm.com/mfp/integration&quot; xmlns:jms=&quot;http://www.ibm.com/mfp/integration/jms&quot;&gt;</p>
 <p>  &lt;displayName&gt;JMSAdapter&lt;/displayName&gt;<br />
   &lt;description&gt;JMSAdapter&lt;/description&gt;<br />
@@ -115,7 +115,7 @@ function writeMessage(messagebody) {</p>
   &lt;procedure name=&quot;readMessage&quot; /&gt;<br />
   &lt;procedure name=&quot;readAllMessages&quot; /&gt;<br />
 &lt;/wl:adapter&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Copy the relevant external libraries to the project for it to use JMS classes.<br />
 If you use <strong>Apache ActiveMQ</strong>, copy the <code>activemq-all-activemq_version_number.jar</code> file to the <code>server\lib</code> directory.</p>
 <h2 id="jmsapi">JMS API</h2>
@@ -128,7 +128,7 @@ If you use <strong>Apache ActiveMQ</strong>, copy the <code>activemq-all-activem
 <h3>readMessage</h3>
 <p>This method gets the next message from the destination.<br />
 It waits for timeout in milliseconds and returns a JMS message that contains the <code>body</code> and all available properties.</p>
-<p>[code lang="js"]<br />
+<p>{% highlight js %}<br />
 function readMessage() {<br />
     var result = WL.Server.readSingleJMSMessage({<br />
       destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
@@ -136,7 +136,7 @@ function readMessage() {<br />
     });</p>
 <p>    return result;<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Result:<br />
 <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/jms_readmessage_result.png"><img src="{{ site.baseurl }}/assets/backup/jms_readmessage_result-300x169.png" alt="jms_readmessage_result" width="300" height="169" class="aligncenter size-medium wp-image-4539" /></a></p>
 <h3>readAllJMSMessages</h3>
@@ -148,7 +148,7 @@ It returns a list of JMS messages in the same format as the <code>readSingleJMSM
 <h3>writeMessage</h3>
 <p>This method writes a JMSText message to the destination. It features user properties that can be set.<br />
 It returns the <code>JMSMessageID</code> of the sent message.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function writeMessage(messagebody) {</p>
 <p>  var inputData = {<br />
     destination: &quot;dynamicQueues/MobileFirst&quot;,<br />
@@ -161,7 +161,7 @@ function writeMessage(messagebody) {</p>
   };</p>
 <p>  return WL.Server.writeJMSMessage(inputData);<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Result:<br />
 <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/jms_writemessage_result.png"><img src="{{ site.baseurl }}/assets/backup/jms_writemessage_result-300x36.png" alt="jms_writemessage_result" width="300" height="36" class="aligncenter size-medium wp-image-4541" /></a></p>
 <h3>requestReplyJMSMessage</h3>

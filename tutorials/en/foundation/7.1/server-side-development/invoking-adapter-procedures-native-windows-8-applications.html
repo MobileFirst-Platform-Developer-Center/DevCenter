@@ -17,21 +17,21 @@ relevantTo: [windows8]
 <p>MobileFirst applications can access resources using the <code>WLResourceRequest</code> REST API.<br />
 This tutorial explains how to use the <code>WLResourceRequest</code> API with an HTTP adapter.</p>
 <h2 id="initializeWLClient">Initializing WLClient</h2>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 WLClient client = WLClient.getInstance();<br />
-[/code]</p>
+{% endhighlight %</p>
 <ol>
 <li>To establish a connection to MobileFirst Server, use the <code>connect</code> method by specifying the <code>MyConnectResponseListener</code> class instance as a parameter.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %}<br />
 client.connect(new MyConnectResponseListener(this));<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server instance according to the properties of the <code>wlclient.properties</code> file.<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectResponseListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectResponseListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 public class MyConnectResponseListener : WLResponseListener<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The <code>WLResponseListener</code> interface defines two methods:<br />
 - <code>public void onSuccess (WLResponse response) { }</code><br />
 - <code>public void onFailure (WLFailResponse response) { }</code>
@@ -43,34 +43,34 @@ public class MyConnectResponseListener : WLResponseListener<br />
 <p>After the connection is established with a MobileFirst Server instance, you can use the <code>WLResourceRequest</code> class to invoke adapter procedures or call any REST resources.</p>
 <ol>
 <li> Define the URI of the resource. For a JavaScript HTTP adapter: <code>/adapters/<em>{AdapterName}</em>/<em>{ProcedureName}</em></code><br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 URI adapterPath = new URI(&quot;/adapters/RSSReader/getFeed&quot;);<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create a <code>WLResourceRequest</code> object and choose the HTTP Method (GET, POST, etc).<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
-[/code]</p>
+{% endhighlight %</p>
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name  to set an array of parameters.<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 request.setQueryParameter(&quot;params&quot;,&quot;['MobileFirst_Platform']&quot;);<br />
-[/code]
+{% endhighlight %
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameter</code> for each parameter.<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 request.setQueryParameter(&quot;param1&quot;,&quot;value1&quot;);<br />
 request.setQueryParameter(&quot;param2&quot;,&quot;value2&quot;);<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Trigger the request with <code>.send()</code>.<br />
 Specify a <code>MyInvokeListener</code> class instance as a parameter.<br />
 You learn how to define this class instance in <a href="#receiveResponse">the next section</a>.</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 request.send(new MyInvokeListener());<br />
-[/code]
+{% endhighlight %
 </li>
 </ul>
 </li>
@@ -78,15 +78,15 @@ request.send(new MyInvokeListener());<br />
 <h2 id="receiveResponse">Receiving a procedure response</h2>
 <p>After the procedure invocation is completed, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
 As before, you must specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 using IBM.Worklight;<br />
 namespace InvokingAdapterProceduresWin8{<br />
     public class MyInvokeListener : WLResponseListener<br />
     { }<br />
 {<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The <code>onSuccess</code> and <code>onFailure</code> methods are invoked by the <code>WLClient</code> instance. The response object contains the response data. You can use its methods and properties to retrieve the required information.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 public void onSuccess(WLResponse response)<br />
 {<br />
     WLProcedureInvocationResult invocationResponse = ((WLProcedureInvocationResult) response);<br />
@@ -111,7 +111,7 @@ public void onSuccess(WLResponse response)<br />
         myMainPage.AddTextToReceivedTextBlock(&quot;Response failed: &quot; + response.ToString());<br />
     });<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures" target="_blank">Click to download</a> the MobileFirst project.</p>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresWin8" target="_blank">Click to download</a> the Native project.</p>

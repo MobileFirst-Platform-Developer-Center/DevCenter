@@ -24,7 +24,7 @@ Also mentioned are the addresses and ports that are required for notifications t
 <p>    These settings are also editable with the Application Descriptor Editor in Design mode.</p>
 <ul>
 <li>Add the <code>pushSender</code> child-element inside the <code>nativeAndroidApp</code> element . Replace the <code>key</code> and <code>senderId</code> values with your API key and project number respectively. In case you do not have these, you can get them from the <a href="https://console.developers.google.com">Google Developer Console</a>.
-<p>[code lang="xml" highlight="9"]<br />
+<p>{% highlight xml %}<br />
 &lt;nativeAndroidApp id=&quot;AppName&quot; platformVersion=&quot;7.1.0.00.20150812-0731&quot;<br />
 	version=&quot;1.0&quot; xmlns=&quot;http://www.worklight.com/native-android-descriptor&quot;&gt;<br />
 	&lt;displayName&gt;AppName&lt;/displayName&gt;<br />
@@ -35,7 +35,7 @@ Also mentioned are the addresses and ports that are required for notifications t
 	&lt;userIdentityRealms&gt;&lt;/userIdentityRealms&gt;<br />
 	&lt;pushSender key=&quot;&quot; senderId=&quot;&quot;/&gt;<br />
 &lt;/nativeAndroidApp&gt;<br />
-[/code]
+{% endhighlight %
         </li>
 </ul>
 </li>
@@ -47,7 +47,7 @@ Also mentioned are the addresses and ports that are required for notifications t
 <li>wlServerPort – The port on which MobileFirst Server is listening. </li>
 <li>GcmSenderId – The project number that you obtained through the Google API console.</li>
 </ul>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 wlServerProtocol = http<br />
 wlServerHost =<br />
 wlServerPort = 10080<br />
@@ -60,7 +60,7 @@ wlPlatformVersion = 7.1.0.0<br />
 #languagePreferences = Add locales in order of preference (e.g. en, fr, fr-CA)<br />
 #For Push Notifications,uncomment below line and assign value to it<br />
 GcmSenderId =<br />
-[/code]</li>
+{% endhighlight %</li>
 <li>
 <h3>Add Google Play Services (optional)</h3>
 <p> For instructions about how to setup Google Play Services review the <a href="http://developer.android.com/google/play-services/setup.html" target="_blank">Setting Up Google Play Services</a> topic at the Android Developer website.
@@ -68,7 +68,7 @@ GcmSenderId =<br />
 <li>
 <h3>Modify the native Android project.</h3>
 <h4>Verify that the following permissions exist in the <code>AndroidManifest.xml</code> file of your Android project.</h4>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 &lt;permission android:name=&quot;com.example.project.permission.C2D_MESSAGE&quot; android:protectionLevel=&quot;signature&quot; /&gt;</p>
 <p> &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;<br />
  &lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot;/&gt;<br />
@@ -78,19 +78,19 @@ GcmSenderId =<br />
  &lt;uses-permission android:name=&quot;android.permission.GET_ACCOUNTS&quot; /&gt;<br />
  &lt;uses-permission android:name=&quot;android.permission.USE_CREDENTIALS&quot; /&gt;<br />
  &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;<br />
- &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;[/code]</p>
+ &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;{% endhighlight %</p>
 <p>Replace all <strong>com.example.project</strong> with your Android project package name.</p>
 <h4>Add the <code>launchMode</code> attribute to the <code>application</code> element. Set its value to <code>singleTask</code>.</h4>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
     &lt;application<br />
         android:allowBackup=&quot;true&quot;<br />
         android:icon=&quot;@drawable/ic_launcher&quot;<br />
         android:label=&quot;@string/app_name&quot;<br />
         android:theme=&quot;@style/AppTheme&quot;<br />
         android:launchMode=&quot;singleTask&quot; &gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <h4>Add an <code>intent-filter</code> to the <code>activity</code> element for notifications.</h4>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 &lt;activity<br />
   android:name=&quot;.ActivityName&quot;<br />
   android:label=&quot;@string/app_name&quot; &gt;<br />
@@ -98,10 +98,10 @@ GcmSenderId =<br />
      &lt;action android:name=&quot;com.example.project.app_name.NOTIFICATION&quot; /&gt;<br />
      &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;<br />
   &lt;/intent-filter&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Replace the <strong>com.example.project.app_name</strong> with your Android project package name and the <code>app_name</code> string as it appears in the <code>res/values/string.xml</code> file. For example: com.sample.notifications.NativeAndroidNotifications.</p>
 <h4>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</h4>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 &lt;service android:name=&quot;com.worklight.wlclient.push.GCMIntentService&quot; /&gt;<br />
 &lt;receiver android:name=&quot;com.worklight.wlclient.push.WLBroadcastReceiver&quot; android:permission=&quot;com.google.android.c2dm.permission.SEND&quot;&gt;<br />
    &lt;intent-filter&gt;<br />
@@ -112,7 +112,7 @@ GcmSenderId =<br />
        &lt;action android:name=&quot;com.google.android.c2dm.intent.REGISTRATION&quot; /&gt;<br />
        &lt;category android:name=&quot;com.example.project&quot; /&gt;<br />
    &lt;/intent-filter&gt;<br />
-&lt;/receiver&gt;[/code]</p>
+&lt;/receiver&gt;{% endhighlight %</p>
 <p>Replace all <strong>com.example.project</strong> with your Android project package name.
 </li>
 </ol>

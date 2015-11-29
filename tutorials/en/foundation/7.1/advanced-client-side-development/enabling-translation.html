@@ -28,20 +28,20 @@ In Eclipse, navigate to <strong>Window > Preferences > General > Workspace</stro
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_encoding.png"><img src="{{ site.baseurl }}/assets/backup/05_05_encoding.png" alt="05_05_encoding" width="825" height="624" class="aligncenter size-full wp-image-1323" /></a></p>
 <h2 id="strings">Enabling translation of application strings</h2>
 <p>You can find the <code>messages.js</code> file, which is intended for application strings, in the <code>common\js</code> folder.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 Messages = {<br />
   headerText: &quot;Default header&quot;,<br />
   actionsLabel: &quot;Default action label&quot;,<br />
   sampleText: &quot;Default sample text&quot;,<br />
 };<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Application messages that are stored in the <code>messages.js</code> file can be referenced in two ways:</p>
 <ul>
 <li>As a JavaScript object property. For example: <code>Messages.headerText</code></li>
 <li>As an ID of an HTML element with <code>class="translate"</code>.<br />
-[code lang="html" title="A 1=that 2=is 3=defined 4=in 5=Messages.headerText 6=is 7=automatically 8=used 9=here." language="string"]<br />
+{% highlight html %}<br />
 &lt;h1 id=&quot;headerText&quot; class=&quot;translate&quot;&gt;&lt;/h1&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ul>
 <h2 id="system">Enabling translation of system messages</h2>
@@ -49,15 +49,15 @@ Messages = {<br />
 System messages are stored in the <code>WL.ClientMessages</code> object.<br />
 You can find a full list of system messages in the <code>www\default\worklight\messages\messages.json</code> file, which is inside the generated projects (iOS, Android, Windows Phone 8, and so on,…).<br />
 To enable the translation of a system message, override it in your JavaScript application.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 WL.ClienMessages.loading = &quot;Application HelloWorld is loading... please wait.&quot;;<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.</p>
 <h2 id="multilang">Multilanguage translation</h2>
 <p>Using JavaScript, you can implement multilanguage translation for your applications.</p>
 <ol>
 <li>Set up the default application strings in the <code>messages.js</code> file.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 Messages = {<br />
   headerText: &quot;Default header&quot;,<br />
   actionsLabel: &quot;Default action label&quot;,<br />
@@ -67,21 +67,21 @@ Messages = {<br />
   russianLanguage : &quot;Russian&quot;,<br />
   hebrewLanguage : &quot;Hebrew&quot;<br />
 };<br />
-[/code]</p>
+{% endhighlight %</p>
 </li>
 <li>Override specific strings when required.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 function setFrench(){<br />
   Messages.headerText = &quot;Traduction&quot;;<br />
   Messages.actionsLabel = &quot;Sélectionnez une langue:&quot;;<br />
   Messages.sampleText = &quot;Ceci est un exemple de texte en français.&quot;;<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Update the GUI components with the new strings.<br />
 You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic.<br />
 Each time that an element is updated, it is updated with different strings according to the active language.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function languageChanged(lang) {<br />
   if (typeof(lang)!=&quot;string&quot;)<br />
     lang = $(&quot;#languages&quot;).val();</p>
@@ -107,18 +107,18 @@ function languageChanged(lang) {<br />
     $(&quot;#headerText&quot;).html(Messages.headerText);<br />
     $(&quot;#actionsLabel&quot;).html(Messages.actionsLabel);<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 <h2 id="detectLocale">Detecting the device locale and language</h2>
 <p>It is possible to detect the locale and the language of the device.<br />
 Use the <code>WL.App.getDeviceLocale()</code> and <code>WL.App.getDeviceLanguage()</code> functions to detect the current locale.<br />
-[code lang="javascript"]<br />
+{% highlight javascript %}<br />
 var locale = WL.App.getDeviceLocale();<br />
 var lang = WL.App.getDeviceLanguage();<br />
 WL.Logger.debug(&quot;&gt;&gt; Detected locale: &quot; + locale);<br />
 WL.Logger.debug(&quot;&gt;&gt; Detected language: &quot; + lang);<br />
-[/code]<br />
+{% endhighlight %<br />
 <a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_detected-logs.png"><img src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png" alt="05_05_detected-logs" width="505" height="65" class="alignnone size-full wp-image-1327" /></a></p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/Translation" target="_blank">Click to download</a> the MobileFirst project.</p>

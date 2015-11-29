@@ -109,11 +109,11 @@ To run a procedure test:</p>
 <p>For you to work around this during your development stage, the development version of the MobileFirst server includes a test token endpoint.<br />
 To receive a Test Token, make an HTTP <code>POST</code> request to <code>http(s)://{server_ip}:{server_port}/{project_name}/authorization/v1/testtoken</code> with your HTTP client (Postman).</p>
 <p>You receive a JSON object with a temporary valid authorization token:</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 {<br />
 &quot;Authorization&quot;: &quot;Bearer eyJhbGciOiJSUzI1NiIsImpwayI6eyJhbGciOiJSU0EiLCJleHAiOiJBUUFCIiwibW9kIjoiQU0wRGQ3eEFkdjZILXlnTDdyOHFDTGRFLTNJMm2FPZUlxb2UtckpBMHVadXcyckhoWFozV1ZDZUtlelJWY0NPWXNRTi1tUUswbWZ6NV8zby1ldjBVWXdYa1NPd0JCbDFFaHFJd1ZEd09pZWcySk1HbDBFWHNQWmZrTlpJLUhVNG9NaWktVHJOTHp...&quot;<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>In your next requests to your adapter endpoints, add an HTTP header with the name "<code>Authorization</code>" and the value you received previously (starting with <code>Bearer</code>).</p>
 <p>The security framework now skips any security challenges protecting your resource.</p>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/java-adapter-postman.png"><img src="{{ site.baseurl }}/assets/backup/java-adapter-postman.png" alt="java-adapter-postman" width="751" height="497" class="aligncenter size-full wp-image-7339" /></a></p>

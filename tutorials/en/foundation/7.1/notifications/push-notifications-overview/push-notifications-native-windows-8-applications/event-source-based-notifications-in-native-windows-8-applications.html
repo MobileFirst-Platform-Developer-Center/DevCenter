@@ -38,36 +38,36 @@ While the user subscription exists, MobileFirst Server can produce push notifica
 <h2 id="serverSidenotificationAPI">Notification API - Server-side</h2>
 <h3>Creating an event source</h3>
 <p>To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):</p>
-<p>[code lang="js"]WL.Server.createEventSource({<br />
+<p>{% highlight js %}WL.Server.createEventSource({<br />
     name: 'PushEventSource',<br />
     onDeviceSubscribe: 'deviceSubscribeFunc',<br />
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',<br />
     securityTest:'PushApplication-strong-mobile-securityTest'<br />
-});[/code]</p>
+});{% endhighlight %</p>
 <ul>
-<li><strong><span class="inline-code">name</span></strong> – a name by which the event source is referenced.</li>
-<li><strong><span class="inline-code">onDeviceSubscribe</span></strong> – an adapter function that is invoked when the user subscription request is received.</li>
-<li><strong><span class="inline-code">onDeviceUnsubscribe</span></strong> – an adapter function that is invoked when the user unsubscription request is received.</li>
-<li><strong><span class="inline-code">securityTest</span></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
+<li><strong><code>name</code></strong> – a name by which the event source is referenced.</li>
+<li><strong><code>onDeviceSubscribe</code></strong> – an adapter function that is invoked when the user subscription request is received.</li>
+<li><strong><code>onDeviceUnsubscribe</code></strong> – an adapter function that is invoked when the user unsubscription request is received.</li>
+<li><strong><code>securityTest</code></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
 </ul>
 <p>An additional event source option:<br />
-[code lang="js" firstline="6"]poll: {<br />
+{% highlight js %}poll: {<br />
     interval: 3,<br />
     onPoll: 'getNotificationsFromBackend'<br />
-}[/code]</p>
+}{% endhighlight %</p>
 <ul>
-<li><strong><span class="inline-code">poll</span></strong> – a method that is used for notification retrieval.<br />
+<li><strong><code>poll</code></strong> – a method that is used for notification retrieval.<br />
 The following parameters are required:</p>
 <ul>
-<li><strong><span class="inline-code">interval</span></strong> – the polling interval in seconds.</li>
-<li><strong><span class="inline-code">onPoll</span></strong> – the polling implementation. An adapter function to be invoked at specified intervals.</li>
+<li><strong><code>interval</code></strong> – the polling interval in seconds.</li>
+<li><strong><code>onPoll</code></strong> – the polling implementation. An adapter function to be invoked at specified intervals.</li>
 </ul>
 </li>
 </ul>
 <p><br clear="all" /></p>
 <h3>Sending a notification</h3>
-<p>As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <span class="inline-code">submitNotifications()</span> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-<p>[code lang="js"]function submitNotification(userId, notificationText) {<br />
+<p>As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
+<p>{% highlight js %}function submitNotification(userId, notificationText) {<br />
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>    if (userSubscription === null) {<br />
         return { result: &quot;No subscription found for user :: &quot; + userId };<br />
@@ -78,76 +78,76 @@ The following parameters are required:</p>
 <p>    return {<br />
         result: &quot;Notification sent to user :: &quot; + userId<br />
     };<br />
-}[/code]</p>
-<p>The <span class="inline-code">submitNotification</span> function receives the <span class="inline-code">userId</span> to send notification to and the <span class="inline-code">notificationText</span>.</p>
-<p>[code lang="js"]function submitNotification(userId, notificationText) {[/code]</p>
+}{% endhighlight %</p>
+<p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
+<p>{% highlight js %}function submitNotification(userId, notificationText) {{% endhighlight %</p>
 <p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
-<p>[code lang="js" gutter="false"]{<br />
+<p>{% highlight js %}{<br />
     userId: 'bjones',<br />
     state: {<br />
         customField: 3<br />
     },<br />
     getDeviceSubscriptions: function()[}<br />
-};[/code]</p>
+};{% endhighlight %</p>
 <p>Next line:<br />
-[code lang="js" firstline="2"]var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);[/code]</p>
+{% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
-[code lang="js" firstline="4"]if (userSubscription === null) {<br />
+{% highlight js %}if (userSubscription === null) {<br />
         return { result: &quot;No subscription found for user :: &quot; + userId };<br />
-    }[/code]</p>
-<p>The <span class="inline-code">WL.Server.createDefaultNotification</span> API method creates and returns a default notification JSON block for the supplied values.<br />
-[code lang="js" firstline="8"]var badgeDigit = 1;<br />
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});[/code]</p>
+    }{% endhighlight %</p>
+<p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
+{% highlight js %}var badgeDigit = 1;<br />
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});{% endhighlight %</p>
 <ul>
-<li><strong><span class="inline-code">notificationText</span></strong> - The text to be pushed to the device.</li>
-<li><strong><span class="inline-code">Badge</span></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
-<li><strong><span class="inline-code">custom</span></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
+<li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
+<li><strong><code>Badge</code></strong> (number) - A number that is displayed on the application icon or tile (in environments that support it).</li>
+<li><strong><code>custom</code></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
 </ul>
-<p>The <span class="inline-code">WL.Server.notifyAllDevices</span> API method sends notification to all the devices that are subscribed to the user.</p>
-<p>[code lang="js" firstline="11"]WL.Server.notifyAllDevices(userSubscription, notification);[/code]</p>
+<p>The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.</p>
+<p>{% highlight js %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %</p>
 <p><br clear="all" /></p>
 <h4>Several APIs exist for sending notifications:</h4>
 <ul>
-<li><span class="inline-code">WL.Server.notifyAllDevices(userSubscription, options)</span> - to send notification to all user’s devices.</li>
-<li><span class="inline-code">WL.Server.notifyDevice(userSubscription, device, options)</span> - to send notification to a specific device that belongs to a specific user subscription. </li>
-<li><span class="inline-code">WL.Server.notifyDeviceSubscription(deviceSubscription, options)</span> - to send the notification to a specific device.</li>
+<li><code>WL.Server.notifyAllDevices(userSubscription, options)</code> - to send notification to all user’s devices.</li>
+<li><code>WL.Server.notifyDevice(userSubscription, device, options)</code> - to send notification to a specific device that belongs to a specific user subscription. </li>
+<li><code>WL.Server.notifyDeviceSubscription(deviceSubscription, options)</code> - to send the notification to a specific device.</li>
 </ul>
 <h2 id="clientSideApi">Notification API - Client-side</h2>
 <p>The first step is to create an instance of the <code>WLClient</code> class:</p>
-<p>[code lang="csharp"]WLClient client = WLClient.getInstance();[/code]</p>
+<p>{% highlight csharp %}WLClient client = WLClient.getInstance();{% endhighlight %</p>
 <p>You derive all push notification operations from the <code>WLPush</code> class.</p>
 <ul>
 <code>getPush</code>  –  Use this method to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.</p>
-<p>[code lang="csharp"]WLPush push = client.getPush();[/code]</p>
+<p>{% highlight csharp %}WLPush push = client.getPush();{% endhighlight %</p>
 <p><code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the Google Cloud Messaging (GCM) server to receive push notifications.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
  OnReadyToSubscribeListener myOnReadyListener = new OnReadyToSubscribeListener();<br />
  push.onReadyToSubscribeListener = myOnReadyListener;<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 public void onReadyToSubscribe()<br />
 {...}<br />
-[/code]
+{% endhighlight %
 </ul>
 <h3><code>WLPush.registerEventSourceCallback</code></h3>
 <p>To register an alias on a particular event source, use the <code>WLPush.registerEventSourceCallback</code> method.</p>
 <p>The API takes the following arguments:</p>
 <ul>
-<span class="inline-code">alias</span> - An alias name.<br />
-<span class="inline-code">Adaptername</span> - Adapter in which the event source is defined.<br />
-<span class="inline-code">EventSourceName</span> - The event source on which the alias is called.
+<code>alias</code> - An alias name.<br />
+<code>Adaptername</code> - Adapter in which the event source is defined.<br />
+<code>EventSourceName</code> - The event source on which the alias is called.
 </ul>
 <p>Example:</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myPush&quot;, &quot;PushAdapter&quot;, &quot;PushEventSource&quot;, this);<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 public void onReadyToSubscribe()<br />
 {<br />
   WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myPush&quot;, &quot;PushAdapter&quot;,&quot;PushEventSource&quot;, this);<br />
-}[/code]</p>
+}{% endhighlight %</p>
 <p><br clear="all" /></p>
 <h3>Subscribing to push notification</h3>
 <p>To set up subscription to push notification, use the <code>WLPush.subscribe(alias, pushOptions, responseListener)</code> API.</p>
@@ -158,11 +158,11 @@ public void onReadyToSubscribe()<br />
 <code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when subscription completes.
 </ul>
 <p>Example:</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 WLPush push = WLClient.getInstance().getPush();<br />
 MySubscribeListener mySubListener = new MySubscribeListener();<br />
 push.subscribe(&quot;myPush&quot;, null, mySubListener);<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><code>MySubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
 <p><code>onSuccess</code> – Called when subscription succeeds.<br />
@@ -176,11 +176,11 @@ push.subscribe(&quot;myPush&quot;, null, mySubListener);<br />
 <code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when unsubscription completes.
 </ul>
 <p>Example:</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 WLPush push = WLClient.getInstance().getPush();<br />
 MyUnsubscribeListener myUnsubListener = new MyUnsubscribeListener();<br />
 push.unsubscribe(&quot;myPush&quot;, myUnsubListener);<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><code>MyUnsubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
 <ul>
 <p><code>onSuccess</code> – Called when unsubscription succeeds.<br />
@@ -188,26 +188,26 @@ push.unsubscribe(&quot;myPush&quot;, myUnsubListener);<br />
 </ul>
 <h3>Additional client-side API methods</h3>
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 WLClient.getInstance().getPush().isSubscribed(&quot;myPush&quot;);<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 class OnReadyToSubscribeListener : WLOnReadyToSubscribeListener, WLEventSourceListener{...}<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 WLClient.getInstance().getPush().registerEventSourceCallback(&quot;myPush&quot;, &quot;PushAdapter&quot;, &quot;PushEventSource&quot;, this);<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
-<p>[code lang="csharp"]<br />
+<p>{% highlight csharp %}<br />
 public void onReceive(String props, String payload)<br />
 {<br />
      Debug.WriteLine(&quot;Props: &quot; + props);<br />
      Debug.WriteLine(&quot;Payload: &quot; + payload);</p>
 <p>}<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotifications" target="_blank">Click to download</a> the MobileFirst project.</p>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/EventSourceNotificationsWin8" target="_blank">Click to download</a> the Native project.</p>
@@ -221,8 +221,8 @@ public void onReceive(String props, String payload)<br />
 <ol>
 <li>Right-click the adapter in MobileFirst Studio and select <strong>Call MobileFirst Adapter</strong></li>
 <li>If using the CLI, for example:<br />
-[code lang="shell"]$ mfp adapter call<br />
+{% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/submitNotification<br />
 [?] Enter the comma-separated parameters: &quot;the-user-name&quot;, &quot;hello!&quot;<br />
-[?] How should the procedure be called? GET[/code]</li>
+[?] How should the procedure be called? GET{% endhighlight %</li>
 </ol>

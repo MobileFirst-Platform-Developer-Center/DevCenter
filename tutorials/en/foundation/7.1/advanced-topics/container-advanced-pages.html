@@ -56,7 +56,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 </ul>
 <h3 id="mobileViews">Mobile views</h3>
 <p>Dojo provides mobile widgets that developers can use to quickly generate mobile views.</p>
-<p>[code lang="html" title="location.jsp" firstline="53"]<br />
+<p>{% highlight html %}<br />
 &lt;div id=&quot;locations&quot; dojoType=&quot;dojox.mobile.ScrollableView&quot; selected=&quot;true&quot;&gt;<br />
     &lt;h1 dojoType=&quot;dojox.mobile.Heading&quot; label=&quot;Locations&quot; fixed=&quot;top&quot;&gt;&lt;/h1&gt;<br />
     &lt;div class=&quot;list-category&quot; dojoType=&quot;dojox.mobile.RoundRectCategory&quot;&gt;USA&lt;/div&gt;<br />
@@ -72,12 +72,12 @@ You cannot use the sample that is associated with this tutorial as is with the f
         &lt;/c:forEach&gt;<br />
     &lt;/ul&gt;<br />
 &lt;/div&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>JSTL provides a simple API for iterating over lists to generate Dojox Mobile list items dynamically on the server.</p>
 <h3 id="formClient">Form-based authentication - client</h3>
 <p>IBM Mobile Conference application requires users to be registered and authenticated with the enterprise that is hosting the application. The application is protected by a form-based login, by using a mobile web form that is contained within a Dojox Mobile view.</p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/login1.png"><img src="{{ site.baseurl }}/assets/backup/login1.png" alt="login" width="400" height="186" class="alignnone size-full wp-image-3682" /></a></p>
-<p>[code lang="html" title="logon.jsp" firstline="50"]<br />
+<p>{% highlight html %}<br />
 &lt;div dojoType=&quot;dojox.mobile.View&quot;&gt;<br />
         &lt;c:set var=&quot;conferences&quot; scope=&quot;session&quot;<br />
             value=&quot;&quot;&gt;&lt;/c:set&gt;<br />
@@ -99,14 +99,14 @@ You cannot use the sample that is associated with this tutorial as is with the f
             &lt;/div&gt;<br />
         &lt;/form&gt;<br />
 &lt;/div&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3 id="formServer">Form-based authentication - server</h3>
 <p>IBM Mobile Conference application is configured to use Java Enterprise Edition Role Support.</p>
 <ul>
 <li>White list or pattern-based URIs of secured resources</li>
 <li>Support for logout in addition to Java Enterprise Edition standard logout functionality</li>
 </ul>
-<p>[code lang="xml" title="web.xml" firstline="29" highlight="30,41,42,43,46"]<br />
+<p>{% highlight xml %}<br />
 &lt;security-role&gt;<br />
     &lt;role-name&gt;worklightadmin&lt;/role-name&gt;<br />
 &lt;/security-role&gt;<br />
@@ -130,8 +130,8 @@ You cannot use the sample that is associated with this tutorial as is with the f
         &lt;form-error-page&gt;/common/logonError.jsp&lt;/form-error-page&gt;<br />
     &lt;/form-login-config&gt;<br />
 &lt;/login-config&gt;<br />
-[/code]</p>
-<p>[code lang="html" title="location.jsp" firstline="114" highlight="115,118"]<br />
+{% endhighlight %</p>
+<p>{% highlight html %}<br />
 &lt;div style=&quot;position: relative; float: left;&quot;&gt;<br />
     &lt;form method=&quot;post&quot; action=&quot;conferenceLogout.jsp&quot; name=&quot;logout&quot;&gt;<br />
         &lt;span data-dojo-type=&quot;dojox.mobile.ToolBarButton&quot;<br />
@@ -142,13 +142,13 @@ You cannot use the sample that is associated with this tutorial as is with the f
         &lt;input type=&quot;hidden&quot; name=&quot;logoutExitPage&quot; value=&quot;/&quot;&gt;<br />
     &lt;/form&gt;<br />
 &lt;/div&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3 id="registry">Simplified user registry and role configuration</h3>
 <ol>
 <li>Modify the <code>server.xml</code> file as follows, depending on which application server you use:
 <ul>
 <li><strong>MobileFirst Development Server</strong> (Liberty)
-<p>[code lang="xml" title="server.xml" highlight="9,25-31,35-39"]<br />
+<p>{% highlight xml %}<br />
 &lt;server description=&quot;new server&quot;&gt;<br />
     &lt;featureManager&gt;<br />
         &lt;feature&gt;servlet-3.0&lt;/feature&gt;<br />
@@ -191,10 +191,10 @@ You cannot use the sample that is associated with this tutorial as is with the f
     &lt;/application&gt;</p>
 <p>    ...<br />
 &lt;/server&gt;</p>
-<p>[/code]
+<p>{% endhighlight %
 </li>
 <li><strong>Tomcat</strong>
-<p>[code lang="xml" title="server.xml" highlight="9"]<br />
+<p>{% highlight xml %}<br />
 &lt;GlobalNamingResources&gt;<br />
 &lt;!-- Editable user database that can also be used by<br />
      UserDatabaseRealm to authenticate users<br />
@@ -206,15 +206,15 @@ You cannot use the sample that is associated with this tutorial as is with the f
     pathname=&quot;conf/tomcat-users.xml&quot;<br />
     type=&quot;org.apache.catalina.UserDatabase&quot;/&gt;<br />
 &lt;/GlobalNamingResources&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ul>
 </li>
 <li>Add the role and user in the <code>tomcat-users.xml</code> file:
-<p>[code lang="xml" title="tomcat-users.xml"]<br />
+<p>{% highlight xml %}<br />
 &lt;role rolename=&quot;worklightadmin&quot;/&gt;<br />
 &lt;user username=&quot;tomcat&quot; password=&quot;tomcat&quot; roles=&quot;worklightadmin&quot;/&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 <h2 id="migrate">Migrating applications to IBM MobileFirst Platform Foundation</h2>
@@ -227,7 +227,7 @@ In the hybrid model, developers typically package the application HTML, CSS, and
 <h3 id="android">Running the sample on an Android environment</h3>
 <ol>
 <li>Make the following changes to the <code>AdvancedPages/android/nativeResources/src/com/AdvancedPages/AdvancedPages.java</code> file:
-<p>[code lang="java" title="AdvancedPages.java" firstline="45" highlight="48"]<br />
+<p>{% highlight java %}<br />
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {<br />
         WL.getInstance().hideSplashScreen();<br />
@@ -237,7 +237,7 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
         handleWebFrameworkInitFailure(result);<br />
     }<br />
 }</p>
-<p>[/code]
+<p>{% endhighlight %
 </li>
 <li>If the application is running on a Tomcat application server, change the port to <code>8080</code>.</li>
 <li>If the application is running on an actual Android device, replace <code>localhost</code> with the public IP address of your computer. Make sure that the device and your server are on the same network.</li>
@@ -252,7 +252,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <h3 id="iphone">Running the sample on an iPhone environment</h3>
 <ol>
 <li>Make the following changes to the <code>AdvancedPages/iphone/nativeResources/Classes/AdvancedPages.m</code> file:
-<p>[code lang="objc" title="AdvancedPages.m" firstline="63" highlight="83"]<br />
+<p>{% highlight objc %}<br />
 -(void)wlInitDidCompleteSuccessfully<br />
 {</p>
 <p>    [[WL sharedInstance] hideSplashScreen];</p>
@@ -270,7 +270,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
                                                         NSURLRequest* request= [NSURLRequest requestWithURL:remoteURL];<br />
                                                         [cordovaViewController.webView loadRequest:request];<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 <li>If the application is running on a Tomcat application server, change the port to <code>8080</code>.</li>
 <li>Right-click the WAR file and select <strong>Run As > Run on Server</strong>, and then select the MobileFirst Development Server.</li>
@@ -285,7 +285,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <p>IBM MobileFirst Platform provides client libraries for hybrid application development. Although the APIs are platform-neutral, they are often backed by platform-specific implementations. Because the conference app is served remotely, these client-side libraries must be packaged with the conference app (WAR). Each platform-specific implementation is in its own folder structure in the web application.</p>
 <p>When the IBM Mobile Conference application completes the authentication process, the mobile device client initializes the device with the server by using <code>WL.Client.init()</code>. This provides a flexible model for application integrity validation, application updates, and other features.</p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/platformstructure.png"><img src="{{ site.baseurl }}/assets/backup/platformstructure-155x300.png" alt="platformstructure" width="155" height="300" class="alignnone size-medium wp-image-3684" /></a></p>
-<p>[code lang="html" title="location.jsp" firstline="39" highlight="42,46, language=51"]<br />
+<p>{% highlight html %}<br />
 &lt;c:choose&gt;<br />
     &lt;c:when test=&quot;${fn:contains(iOSClient, 'Android')}&quot;&gt;<br />
         &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;<br />
@@ -300,8 +300,8 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <p>&lt;body id=&quot;content&quot; onload=&quot;WL.Client.init({onSuccess:function success(){ console.info('WL init success...'); }, connectOnStartup:false});&quot;&gt;<br />
     &lt;c:set var=&quot;locationMap&quot; value='${applicationScope.locationRegistry}' scope=&quot;session&quot;/&gt;</p>
 <p>...</p>
-<p>[/code]</p>
-<p>[code lang="javascript" htmlscript="true" title="location.jsp" firstline="132"]<br />
+<p>{% endhighlight %</p>
+<p>{% highlight javascript %}<br />
 &lt;c:choose&gt;<br />
     &lt;c:when test=&quot;${fn:contains(iOSClient, 'Android')}&quot;&gt;</p>
 <p>    &lt;script&gt;<br />
@@ -348,11 +348,11 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 ...</p>
 <p>    &lt;/c:otherwise&gt;<br />
 &lt;/c:choose&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3 id="encrypt">Encrypted Cache</h3>
 <p>The Encrypted Offline Cache (EOC) API is used for securely storing data by using HTML5 local cache. The Conference app uses EOC to save a list of favorite sessions in a secure way.</p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/eoc.jpg"><img src="{{ site.baseurl }}/assets/backup/eoc.jpg" alt="eoc" width="600" height="489" class="alignnone size-full wp-image-3710" /></a></p>
-<p>[code lang="javascript" title="conference.js" firstline="35"]<br />
+<p>{% highlight javascript %}<br />
 function __writeEOC(mykey, mydata, callback) {<br />
     WL.EncryptedCache.write(mykey, mydata, function() {<br />
         callback();<br />
@@ -374,7 +374,7 @@ function saveToCache(key, value) {</p>
         });<br />
     }<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3 id="camera">Camera support</h3>
 <p>Use the IBM MobileFirst Client API to extend the application to take photos of the conference. The application has a social aspect, where users can view photos from the other conference attendees.</p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/photo1.jpg"><img src="{{ site.baseurl }}/assets/backup/photo1.jpg" alt="photo" width="600" height="358" class="alignnone size-full wp-image-3701" /></a></p>

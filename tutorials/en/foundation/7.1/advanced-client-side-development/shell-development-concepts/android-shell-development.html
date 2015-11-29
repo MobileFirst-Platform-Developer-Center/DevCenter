@@ -56,17 +56,17 @@ Use it to work with your Java code.<br />
 <li>Add the <code>com.mycustomcode</code> package to the generated Android project.</li>
 <li>Add the <code>MyCustomToaster.java</code> class under this package.</li>
 <li>Add a static method to this class:<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 public class MyCustomToaster {<br />
   public static void showToastAlert(Activity context, String text) {<br />
     Toast.makeText(context, text, 2000).show();<br />
   }<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Open your main application activity.</li>
 <li>Start <code>MyCustomToast.showToastAlert()</code>:<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 public class MyShellTest extends WLDroidGap {<br />
   @Override<br />
   public void onCreate(Bundle savedInstanceState){<br />
@@ -76,7 +76,7 @@ public class MyShellTest extends WLDroidGap {<br />
     MyCustomToaster.showToastAlert(this, &quot;Hello from Android Shell&quot;);<br />
   }<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Run your application to see the implemented functions.
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/10_02_java_results.jpg"><img src="{{ site.baseurl }}/assets/backup/10_02_java_results.jpg" alt="10_02_java_results" width="800" height="540" class="aligncenter size-full wp-image-15985" /></a></p>

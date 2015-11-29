@@ -61,46 +61,46 @@ Add a shell component to your project and name it <code>MyShell</code>.<br />
 <p>The <code>shell-descriptor.xml</code> file contains shell component metadata and application-specific properties.<br />
 Application-specific properties that are set in the shell descriptor are used in all inner applications.<br />
 You can edit the <code>shell-descriptor.xml</code> file in Design mode or Source mode.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_descriptor-design.png"><img class="aligncenter wp-image-1188 size-full" src="{{ site.baseurl }}/assets/backup/10_01_descriptor-design.png" alt="10_01_descriptor-design" width="850" height="248" /></a></p>
-<p>[code lang="xml"]<br />
+<img src="{{ site.baseurl }}/assets/backup/10_01_descriptor-design.png" /></p>
+<p>{% highlight xml %}<br />
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;<br />
 &lt;shell xmlns=&quot;http://www.worklight.com/shell-descriptor&quot; id=&quot;MyShell&quot; platformVersion=&quot;7.0.0.00&quot; version=&quot;1.0&quot;&gt;<br />
     &lt;iphone version=&quot;1.0&quot;/&gt;<br />
     &lt;android version=&quot;1.0&quot;/&gt;<br />
     &lt;features/&gt;<br />
 &lt;/shell&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="usingAShellComponentInATestApplication">Using a shell component in a test application</h2>
 <p>Follow these instructions to develop a functioning shell component.</p>
 <ol>
 <li>Create a <code>myshell.js</code> file in the <code>MyShell\common\js</code> folder.</li>
 <li>Add the following function to it:
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function sayHelloFromShell(){<br />
     alert(&quot;Hello from Shell&quot;);<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Modify the <code>body-top.wlfragment</code> file and add the following lines to it:
-<p>[code lang="html"]<br />
+<p>{% highlight html %}<br />
 &lt;h1&gt;This is a header that will be visible in all inner applications that use this Shell&lt;/h1&gt;<br />
 &lt;script src=&quot;js/myshell.js&quot;&gt;&lt;/script&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Modify the <code>main.js</code> file in the <code>apps/MyShellTest/common/js</code> folder.<br />
 Invoke the function that you previously added in the shell component.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function wlCommonInit(){<br />
     sayHelloFromShell();<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><strong>Note:</strong> The <code>sayHelloFromShell()</code> function is not a part of the inner application, but is from the shell component.
 </li>
 <li>Build and deploy the <code>MyShellTest</code> application.<br />
 When your application is built and deployed, you find it in the MobileFirst Operations Console as a regular hybrid application.
 </li>
 <li>Preview your <code>MyShellTest</code> application. Note that it contains web resources from both the shell component and the inner application.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_01_preview.png"><img class="aligncenter wp-image-1192 size-full" src="{{ site.baseurl }}/assets/backup/10_01_preview.png" alt="10_01_preview" width="563" height="476" /></a>
+<img src="{{ site.baseurl }}/assets/backup/10_01_preview.png" />
 </li>
 </ol>
 <h2 id="creatingAndUsingAShellBundle">Creating and using a shell bundle in an inner application</h2>

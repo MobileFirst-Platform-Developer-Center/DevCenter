@@ -40,7 +40,7 @@ The tutorial covers the following topics:</p>
 </ul>
 <h2 id="add-feature">Add JSONStore Feature</h2>
 <p>To add JSONStore to your hybrid environment open the <code>application-descriptor.xml</code> simply add <code>&lt;JSONStore/&gt;</code> under the <code>&lt;features&gt;&lt;/features&gt;</code> element.</p>
-<p>[code lang="xml" highlight="24"]<br />
+<p>{% highlight xml %}<br />
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;<br />
 &lt;application xmlns=&quot;http://www.worklight.com/application-descriptor&quot; id=&quot;JSONStoreAPI&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot;&gt;<br />
     &lt;displayName&gt;JSONStoreAPI&lt;/displayName&gt;<br />
@@ -79,7 +79,7 @@ The tutorial covers the following topics:</p>
         &lt;uuid&gt;802f8287-a3f7-4dc5-ac17-1da638074763&lt;/uuid&gt;<br />
     &lt;/windows8&gt;<br />
 &lt;/application&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Alternatively, you can use the <strong>Application Descriptor Editor</strong> click <strong>Optional Features > Add > JSONStore > OK</strong></p>
 <p><img src="{{ site.baseurl }}/assets/backup/jsonstore-hybrid-optional-features.png" alt="jsonstore-hybrid-optional-features" width="600" class="aligncenter size-medium wp-image-10002" /></p>
 <p><img src="{{ site.baseurl }}/assets/backup/jsonstore-hybrid-feature.png" alt="jsonstore-hybrid-feature" width="300" height="297" class="aligncenter size-medium wp-image-10001" /></p>
@@ -89,7 +89,7 @@ The tutorial covers the following topics:</p>
 <p>Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.</p>
 <p>If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.</p>
 <p>For optional features that you can enable at initialization time, see <strong>Security, Multiple User Support,</strong> and <strong>MobileFirst Adapter Integration</strong> in the second part of this module</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 var collections = {<br />
   people : {<br />
     searchFields: {name: 'string', age: 'integer'}<br />
@@ -100,13 +100,13 @@ var collections = {<br />
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="get">Get</h2>
 <p>Use <code>get</code> to create an accessor to the collection. You must call <code>init</code> before you call get otherwise the result of get is undefined</p>
 <p>[code language="javascript"]<br />
 var collectionName = 'people';</p>
 <p>var people = WL.JSONStore.get(collectionName);<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The variable <code>people</code> can now be used to perform operations on the <code>people</code> collection such as <code>add</code>, <code>find</code>, and <code>replace</code></p>
 <h2 id="add">Add</h2>
 <p>Use <code>add</code> to store data as documents inside a collection</p>
@@ -119,7 +119,7 @@ var options = {};</p>
 }).fail(function (error) {<br />
  // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="find">Find</h2>
 <p>Use <code>find</code> to locate a document inside a collection by using a query. Use <code>findAll</code> to retrieve all the documents inside a collection. Use <code>findById</code> to search by the document unique identifier. The default behavior for find is to do a "fuzzy" search</p>
 <p>[code language="javascript"]</p>
@@ -134,7 +134,7 @@ var options = {};</p>
 }).fail(function (error) {<br />
   // handle failure<br />
 });</p>
-<p>[/code]</p>
+<p>{% endhighlight %</p>
 <h2 id="replace">Replace</h2>
 <p>Use <code>replace</code> to modify documents inside a collection. The field that you use to perform the replacement is <code>_id,</code> the document unique identifier.</p>
 <p>[code language="javascript"]</p>
@@ -148,7 +148,7 @@ var options = {};</p>
 }).fail(function (error) {<br />
   // handle failure<br />
 });</p>
-<p>[/code]</p>
+<p>{% endhighlight %</p>
 <p>This examples assumes that the document <code>{_id: 1, json: {name: 'yoel', age: 23} }</code> is in the collection</p>
 <h2 id="remove">Remove</h2>
 <p>Use <code>remove</code> to delete a document from a collection</p>
@@ -162,7 +162,7 @@ var query = {_id: 1};</p>
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="remove-collection">Remove Collection</h2>
 <p>Use <code>removeCollection</code> to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms</p>
 <p>[code language="javascript"]<br />
@@ -172,7 +172,7 @@ WL.JSONStore.get(collectionName).removeCollection().then(function (removeCollect
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="destroy">Destroy</h2>
 <p>Use <code>destroy</code> to remove the following data:</p>
 <ul>
@@ -188,7 +188,7 @@ WL.JSONStore.destroy().then(function () {<br />
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="security">Security</h2>
 <p>You can secure all the collections in a store by passing a password to the <code>init</code> function. If no password is passed, the documents of all the collections in the store are not encrypted.</p>
 <p>Data encryption is only available on Android, iOS, Windows Phone 8, and Windows 8 environments.</p>
@@ -208,7 +208,7 @@ var collections = {<br />
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="multi-user">Multiple User Support</h2>
 <p>You can create multiple stores that contain different collections in a single MobileFirst application. The <code>init</code> function can take an options object with a username. If no username is given, the default username is <strong>jsonstore</strong></p>
 <p>[code language="javascript"]<br />
@@ -223,7 +223,7 @@ var collections = {<br />
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="adapter">MobileFirst Adapter Integration</h2>
 <p>This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.</p>
 <p>You can achieve these goals by using functions such as <code>WL.Client.invokeProcedure</code> or <code>jQuery.ajax</code> if you need more flexibility.</p>
@@ -256,7 +256,7 @@ function getPeople() {<br />
 	WL.Logger.debug('Got data from JSONStore to REPLACE: ' + data);</p>
 <p>	return;<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3>Initialize a collection linked to a MobileFirst adapter</h3>
 <p>[code language="javascript"]<br />
 var collections = {<br />
@@ -281,7 +281,7 @@ var collections = {<br />
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3>Load data from MobileFirst Adapter</h3>
 <p>When <code>load</code> is called, JSONStore uses some metadata about the adapter (<strong>name</strong> and <strong>procedure</strong>), which you previously passed to <code>init</code>, to determine what data to get from the adapter and eventually store it.</p>
 <p>[code language="javascript"]<br />
@@ -291,7 +291,7 @@ var collectionName = 'people';</p>
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3> Get Push Required (Dirty Documents)</h3>
 <p>Calling <code>getPushRequired</code> returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system. These documents are sent to the MobileFirst adapter when <code>push</code> is called.</p>
 <p>[code language="javascript"]<br />
@@ -301,7 +301,7 @@ var collectionName = 'people';</p>
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>To prevent JSONStore from marking the documents as "dirty", pass the option <code>{markDirty:false}</code> to <code>add</code>, <code>replace</code>, and <code>remove</code></p>
 <h3>Push</h3>
 <p><code>push</code> sends the documents that changed to the correct MobileFirst adapter procedure (i.e., <code>addPerson</code> is called with a document that was added locally). This mechanism is based on the last operation that is associated with the document that changed and the adapter metadata that is passed to <code>init</code>.</p>
@@ -314,7 +314,7 @@ var collectionName = 'people';</p>
 }).fail(function (error) {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="enhance">Enhance</h2>
 <p>Use <code>enhance</code> to extend the core API to fit your needs, by adding functions to a collection prototype.</p>
 <p>This example shows how to use <code>enhance</code> to adde the function <code>getValue</code> that works on the <code>keyvalue</code> collection. It takes a <code>key</code> (string) as it's only parameter and returns a single result.</p>
@@ -335,7 +335,7 @@ var key = 'myKey';</p>
 }).fail(function () {<br />
   // handle failure<br />
 });<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><img class="alignright size-medium wp-image-9249" src="{{ site.baseurl }}/assets/backup/jsonstore-hybridscreen-605x1024.png" alt="jsonstore-hybridscreen" width="220" height="339" /></p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStore" target="_blank">Click to download</a> the MobileFirst project.</p>

@@ -26,7 +26,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <p>The MobileFirst Server needs to be configured to connect to the MySQL server. Those configurations can be stored in the <code>server.xml</code> file.</p>
 <p>To connect to a database, Java code needs a JDBC driver. For MySQL, the latest driver can be found on the <a href="http://dev.mysql.com/downloads/connector/j/" target="_blank">Download Connector/J</a> MySQL page, at <code>http://dev.mysql.com/downloads/connector/j/</code>.</p>
 <p>This example uses the embedded application server of MobileFirst Studio.</p>
-<p>[code lang="xml" title="server.xml"]<br />
+<p>{% highlight xml %}<br />
 &lt;library id=&quot;MySQLLib&quot;&gt;<br />
   &lt;fileset dir=&quot;${shared.resource.dir}&quot; includes=&quot;mysql-*.jar&quot; /&gt;<br />
 &lt;/library&gt;</p>
@@ -38,7 +38,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
               serverName=&quot;localhost&quot;<br />
               user=&quot;root&quot; /&gt;<br />
 &lt;/dataSource&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <ul>
 <li>The <code>library</code> tag specifies where to find the <code>MySQL .jar</code> file. In most cases, <code>${shared.resource.dir}</code> is <strong>shared/resources</strong> under the Liberty server root folder.
 <p>In MobileFirst Studio for Eclipse, select <strong>Project Explorer > MobileFirst Development Server > shared > resources</strong>.</li>
@@ -46,34 +46,34 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 </ul>
 <h2 id="UserAdapterApplication">UserAdapterApplication</h2>
 <p><code>UserAdapterApplication</code> extends <code>MFPJAXRSApplication</code> and is a good place to trigger any initialization required by the adapter application.</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 	@Override<br />
 	protected void init() throws Exception {<br />
 		UserAdapterResource.init();<br />
 		logger.info(&quot;Adapter initialized!&quot;);<br />
 	}<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="UserAdapterResource">UserAdapterResource</h2>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 @Path(&quot;/&quot;)<br />
 public class UserAdapterResource {<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><code>UserAdapterResource</code> is where requests to the adapter are handled.</p>
 <p><code>@Path("/")</code> means that the resources will be available at the URL <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code>.</p>
 <h3>Using DataSource</h3>
-<p>[code lang="java" title="UserAdapterResource"]<br />
+<p>{% highlight java %}<br />
     static DataSource ds = null;<br />
     static Context ctx = null;</p>
 <p>    public static void init() throws NamingException {<br />
     	ctx = new InitialContext();<br />
         ds = (DataSource)ctx.lookup(&quot;jdbc/mobilefirst_training&quot;);<br />
     }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>The <code>DataSource</code> is set as <code>static</code> so that it can be shared across all requests to the adapter. It is initialized in the <code>init()</code> method, which is called by the <code>init()</code> method of <code>UserAdapterApplication</code>, as described above.</p>
 <p>The previously defined <code>jndiName</code> parameter is used to find the database configuration.</p>
 <h3>Create User</h3>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 	@POST<br />
 	public Response createUser(@FormParam(&quot;userId&quot;) String userId,<br />
 								@FormParam(&quot;firstName&quot;) String firstName,<br />
@@ -101,7 +101,7 @@ public class UserAdapterResource {<br />
 			con.close();<br />
 		}<br />
 	}<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Because this method does not have any <code>@Path</code>, it is accessible as the root URL of the resource. Because it uses <code>@POST</code>, it is accessible via <code>HTTP POST</code> only.</p>
 <p>The method has a series of <code>@FormParam</code> arguments, which means that those can be sent in the HTTP body as <code>x-www-form-urlencoded</code> parameters.</p>
 <p>It is also possible to pass the parameters in the HTTP body as JSON objects, by using <code>@Consumes(MediaType.APPLICATION_JSON)</code>, in which case the method needs a <code>JSONObject</code> argument, or a simple Java object with properties that match the JSON property names.</p>
@@ -110,7 +110,7 @@ public class UserAdapterResource {<br />
 <p>If the insertion was successful, the <code>return Response.ok().build()</code> method is used to send a <code>200 OK</code> back to the client. If there was an error, a different <code>Response</code> object can be built with a specific HTTP status code. In this example, a <code>409 Conflict</code> error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.</p>
 <p><strong>Important:</strong> Make sure to close resources, such as prepared statements and connections.</p>
 <h3>Get User</h3>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 	@GET<br />
 	@Produces(&quot;application/json&quot;)<br />
 	@Path(&quot;/{userId}&quot;)<br />
@@ -137,14 +137,14 @@ public class UserAdapterResource {<br />
 			con.close();<br />
 		}</p>
 <p>	}<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>This method uses <code>@GET</code> with a <code>@Path("/{userId}")</code>, which means that it is available via <code>HTTP GET /adapters/UserAdapter/{userId}</code>, and the <code>{userId}</code> is retrieved by the <code>@PathParam("userId")</code> argument of the method.</p>
 <p>If the user is not found, the <code>404 NOT FOUND</code> error code is returned.<br />
 If the user is found, a response is built from the generated JSON object.</p>
 <p>Prepending the method with <code>@Produces("application/json")</code> makes sure that the <code>Content-Type</code> of the output is correct.</p>
 <h3>Get all users</h3>
 <p>This method is similar to <code>getUser</code>, except for the loop over the <code>ResultSet</code>.</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 	@GET<br />
 	@Produces(&quot;application/json&quot;)<br />
 	public Response getAllUsers() throws SQLException{<br />
@@ -164,9 +164,9 @@ If the user is found, a response is built from the generated JSON object.</p>
 		con.close();</p>
 <p>		return Response.ok(results).build();<br />
 	}<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3>Update user</h3>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 	@PUT<br />
 	@Path(&quot;/{userId}&quot;)<br />
 	public Response updateUser(@PathParam(&quot;userId&quot;) String userId,<br />
@@ -198,10 +198,10 @@ If the user is found, a response is built from the generated JSON object.</p>
 			con.close();<br />
 		}</p>
 <p>	}<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>When updating an existing resource, it is standard practice to use <code>@PUT</code> (for <code>HTTP PUT</code>) and to use the resource ID in the <code>@Path</code>.</p>
 <h3>Delete user</h3>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 	@DELETE<br />
 	@Path(&quot;/{userId}&quot;)<br />
 	public Response deleteUser(@PathParam(&quot;userId&quot;) String userId) throws SQLException{<br />
@@ -226,7 +226,7 @@ If the user is found, a response is built from the generated JSON object.</p>
 			con.close();<br />
 		}</p>
 <p>	}<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><code>@DELETE</code> (for <code>HTTP DELETE</code>) is used together with the resource ID in the <code>@Path</code>, to delete a user.</p>
 <h2 id="results">Results</h2>
 <p>Use the testing techniques described in <a href="../../../server-side-development/java-adapter/" title="Java Adapter">Java Adapter</a> to test your work.</p>

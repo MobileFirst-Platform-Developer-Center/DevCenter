@@ -33,7 +33,7 @@ You must be a registered Apple iOS Developer to obtain an APNS certificate for y
 <li>Replace the <strong><code>password</code></strong> value with the .p12 certificate password.</li>
 <li>Replace the <strong><code>bundleId</code></strong> value with your application <code>bundleId</code> value. Consult the Apple documentation about how to create a <code>bundleId</code> for Xcode projects.</li>
 <p>For example:<br />
-[code lang="xml" highlight="1,7"]<br />
+{% highlight xml %}<br />
 &lt;nativeIOSApp id=&quot;AppName&quot; bundleId=&quot;com.REPLACE-WITH-BUNDLE-ID&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot;<br />
 	version=&quot;1.0&quot; xmlns=&quot;http://www.worklight.com/native-ios-descriptor&quot;&gt;<br />
 	&lt;displayName&gt;AppName&lt;/displayName&gt;<br />
@@ -42,7 +42,7 @@ You must be a registered Apple iOS Developer to obtain an APNS certificate for y
 	&lt;userIdentityRealms&gt;&lt;/userIdentityRealms&gt;<br />
 	&lt;pushSender password=&quot;REPLACE-WITH-CERTIFICATE-PASSWORD&quot;/&gt;<br />
 &lt;/nativeIOSApp&gt;<br />
-[/code]
+{% endhighlight %
 </ul>
 </li>
 <li>Deploy the MobileFirst native API:<br />

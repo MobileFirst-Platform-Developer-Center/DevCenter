@@ -52,13 +52,13 @@ No provisioning is the default setting for mobile applications.</p>
 <ul>
 <li>If you use the default security settings, you do not have to enable <strong>No provisioning</strong> manually.</li>
 <li>If you use a custom security test to protect a resource that requires device identity and you want to use <strong>No provisioning</strong>, add the realm to your security test. For example:
-<p>[code lang="xml" highlight="4"]<br />
+<p>{% highlight xml %}<br />
 &lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
   ...<br />
   &lt;test realm=&quot;wl_anonymousUserRealm&quot; isInternalUserID=&quot;true&quot; /&gt;<br />
   &lt;test realm=&quot;wl_deviceNoProvisioningRealm&quot; isInternalDeviceID=&quot;true&quot; /&gt;<br />
 &lt;/customSecurityTest&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ul>
 <h2 id="auto">Auto provisioning</h2>
@@ -74,25 +74,25 @@ The certificate is issued to any device that requests it, therefore <strong>Auto
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_13_autoprov-subsequent.jpg"><img src="{{ site.baseurl }}/assets/backup/09_13_autoprov-subsequent.jpg" alt="09_13_autoprov-subsequent" width="720" height="440" class="aligncenter size-full wp-image-15642" /></a></p>
 <h3>Enabling auto provisioning</h3>
 <p>To enable <strong>Auto provisioning</strong>, add the following realms to your <code>authentication-config.xml</code> file.</p>
-<p>[code lang="xml" title="If 1=a 2=custom 3=security 4=test" language="using"]<br />
+<p>{% highlight xml %}<br />
 &lt;customSecurityTest name=&quot;customTests&quot;&gt;<br />
   …<br />
   &lt;test realm=&quot;wl_authenticityRealm&quot; /&gt;<br />
   &lt;test realm=&quot;wl_deviceAutoProvisioningRealm&quot; isInternalDeviceID=&quot;true&quot; /&gt;<br />
 &lt;/customSecurityTest&gt;<br />
-[/code]</p>
-<p>[code lang="xml" title="If 1=a 2=mobile 3=security 4=test" language="using"]<br />
+{% endhighlight %</p>
+<p>{% highlight xml %}<br />
 &lt;mobileSecurityTest name=&quot;mobileTests&quot;&gt;<br />
   ...<br />
   &lt;testAppAuthenticity/&gt;<br />
   &lt;testDeviceId provisioningType=&quot;auto&quot; /&gt;<br />
 &lt;/mobileSecurityTest&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <h3>Keystore</h3>
 <p>By default, MobileFirst Server uses its internal keystore to issue a certificate.<br />
 You can tell the server to use your own keystore by adjusting the <code>worklight.properties</code> file.<br />
 <strong>Note:</strong> The <code>wl.ca.keystore.path</code> property value can be either relative to the <code>/server/</code> folder of the MobileFirst project or absolute to the file system.</p>
-<p>[code lang="bash" firstline="137"]<br />
+<p>{% highlight bash %}<br />
 #######################################################################################################################<br />
 #    Worklight Default Certificate (For device provisioning)<br />
 #######################################################################################################################<br />
@@ -119,7 +119,7 @@ ssl.keystore.path=conf/default.keystore<br />
 ssl.keystore.type=jks<br />
 #SSL certificate keystore password.<br />
 ssl.keystore.password=worklight<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>You must use <strong>Auto provisioning</strong> together with <em>application authenticity</em> protection.<br />
 For more information, see <a title="Application Authenticity Protection" href="../../authentication-security/application-authenticity-protection/">Application Authenticity Protection</a>.</p>
 <h2 id="custom">Custom provisioning</h2>

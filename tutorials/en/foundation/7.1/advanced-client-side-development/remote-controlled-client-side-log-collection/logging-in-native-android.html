@@ -7,7 +7,7 @@ relevantTo: [android]
 <p>Android MobileFirst Platform SDK cannot persistently capture log data until the <code>com.worklight.common.Logger.setContext(Context)</code> method is called.</p>
 <h2 id="loggingAndroid">Logging example for native Android (Java):</h2>
 <h3>Outputs to LogCat</h3>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 import com.worklight.common.Logger;</p>
 <p>public class MathUtils{</p>
 <p>  private static final Logger logger = Logger.getInstance(MathUtils.class.getName());</p>
@@ -17,7 +17,7 @@ import com.worklight.common.Logger;</p>
 <p>  return sum;<br />
   }<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2>API calls for specific tasks</h2>
 <h3>Log capture is enabled by default. To turn log capture on or off:</h3>
 <p><code>Logger.setCapture(false)</code></p>

@@ -21,29 +21,29 @@ This tutorial explains how to implement the client side of a custom authenticati
 <p>Create a native iOS application and add the MobileFirst native APIs as explained in the <a href="../../../hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/">Configuring a native iOS application with the MobileFirst Platform SDK</a> tutorial.</p>
 <h3>Storyboard</h3>
 <p>In your storyboard, add a ViewController that contains a login form.<br />
-<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_09_storyboard.png"><img class="aligncenter wp-image-1043 size-full" src="{{ site.baseurl }}/assets/backup/09_09_storyboard.png" alt="09_09_storyboard" width="1000" height="586" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/09_09_storyboard.png" /></p>
 <h3>Challenge handler</h3>
 <ol>
 <li>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 @interface MyChallengeHandler : ChallengeHandler<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Call the <code>initWithRealm</code> method:<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
 @implementation MyChallengeHandler<br />
 //...<br />
 -(id)init:{<br />
     self = [self initWithRealm:@&quot;CustomAuthenticatorRealm&quot;];<br />
     return self;<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Add the implementation of the following <code>ChallengeHandler</code> methods to handle the custom authenticator and login module challenge:
 <ol>
 <li> <strong><code>isCustomResponse</code> method:</strong><br />
 The <code>isCustomResponse</code> method is invoked each time a response is received from the MobileFirst Server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <code>true</code> or <code>false</code>.</p>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 -(BOOL) isCustomResponse:(WLResponse *)response {<br />
     if(response &amp;&amp; [response getResponseJson]){<br />
         if ([[response getResponseJson] objectForKey:@&quot;authStatus&quot;]) {<br />
@@ -53,18 +53,18 @@ The <code>isCustomResponse</code> method is invoked each time a response is rece
     }<br />
     return false;<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 <li> <strong><code>handleChallenge</code> method:</strong><br />
-If <code>isCustomResponse</code> returns <span class="inline-code">true</span>, the framework calls the <span class="inline-code">handleChallenge</span> method. This function is used to perform required actions, such as hiding the application screen and showing the login screen.</p>
-<p>[code lang="obj-c"]<br />
+If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hiding the application screen and showing the login screen.</p>
+<p>{% highlight obj-c %}<br />
 -(void) handleChallenge:(WLResponse *)response {<br />
     NSLog(@&quot;A login form should appear&quot;);<br />
     LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@&quot;LoginViewController&quot;];<br />
     loginController.challengeHandler = self;<br />
     [self.vc.navigationController pushViewController:loginController animated:YES];<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 <li><strong><code>onSuccess</code> and <code>onFailure</code> methods: </strong><br />
 At the end of the authentication flow, calls to the <code>onSuccess</code> or <code>onFailure</code> methods are triggered.</p>
@@ -72,7 +72,7 @@ At the end of the authentication flow, calls to the <code>onSuccess</code> or <c
 <li>Call the <code>submitSuccess</code> method to inform the framework that the authentication process completed successfully, so that the <code>onSuccess</code> handler of the invocation is called.</li>
 <li>Call the <code>submitFailure</code> method to inform the framework that the authentication process failed, so that the <code>onFailure</code> handler of the invocation is called.</li>
 </ul>
-<p>[code lang="obj-c"]<br />
+<p>{% highlight obj-c %}<br />
 -(void) onSuccess:(WLResponse *)response {<br />
     NSLog(@&quot;Challenge succeeded&quot;);<br />
     [self.vc.navigationController popViewControllerAnimated:YES];<br />
@@ -82,15 +82,15 @@ At the end of the authentication flow, calls to the <code>onSuccess</code> or <c
     NSLog(@&quot;Challenge failed&quot;);<br />
     [self submitFailure:response];<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
 </ol>
 <p><br clear="all" /></p>
 <h4>submitLoginForm</h4>
-<p>In your login View Controller, when the user types to submit the credentials, call the <span class="inline-code">submitLoginForm</span> method to send the credentials to the MobileFirst Server.</p>
-<p>[code lang="obj-c"]<br />
+<p>In your login View Controller, when the user types to submit the credentials, call the <code>submitLoginForm</code> method to send the credentials to the MobileFirst Server.</p>
+<p>{% highlight obj-c %}<br />
 @implementation LoginViewController<br />
 //...<br />
 - (IBAction)login:(id)sender {<br />
@@ -101,31 +101,31 @@ At the end of the authentication flow, calls to the <code>onSuccess</code> or <c
          requestTimeoutInMilliSeconds:0<br />
          requestMethod:@&quot;POST&quot;];<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><br clear="all" /></p>
 <h3>The Main ViewController</h3>
 <p>In the sample project, in order to trigger the challenge handler we use the <code>WLClient invokeProcedure</code> method.<br />
 The protected procedure invocation triggers MobileFirst Server to send the challenge.</p>
 <ul>
 <li>Create a <code>WLClient</code> instance and use the <code>connect</code> method to connect to the MobileFirst Server:<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
     MyConnectListener *connectListener = [[MyConnectListener alloc] init];<br />
     [[WLClient sharedInstance] wlConnectWithDelegate:connectListener];<br />
-[/code]
+{% endhighlight %
 </li>
 <li>In order to listen to incoming challenges, make sure to register the challenge handler by using the <code>registerChallengeHandler</code> method:<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
     [[WLClient sharedInstance] registerChallengeHandler:[[MyChallengeHandler alloc] initWithViewController:self] ];<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Invoke the protected adapter procedure:<br />
-[code lang="obj-c"]<br />
+{% highlight obj-c %}<br />
     NSURL* url = [NSURL URLWithString:@&quot;/adapters/AuthAdapter/getSecretData&quot;];<br />
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
     [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
     ...<br />
     }];<br />
-[/code]
+{% endhighlight %
 </li>
 </ul>
 <h2>Worklight Protocol</h2>

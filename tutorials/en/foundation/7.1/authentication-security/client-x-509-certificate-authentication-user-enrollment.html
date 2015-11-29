@@ -116,15 +116,15 @@ policy             = policy_match</pre>
 <li>Create the folder structure and requirements for the root CA:
 <ol>
 <li>Create a root CA certificate directory structure:<br />
-            [code lang="xml" gutter="true"]<br />
+            {% highlight xml %}<br />
 mkdir rootca<br />
 mkdir rootca/certs rootca/crl rootca/newcerts<br />
 touch rootca/serial<br />
 export HEXOUT=0123456789ABCDEF<br />
-            [/code]
+            {% endhighlight %
 </li>
 <li>Create a serial list of random numbers:<br />
-            [code lang="xml" gutter="true"]<br />
+            {% highlight xml %}<br />
 for y in {1..2048}<br />
 do<br />
 export output=&quot;&quot;;<br />
@@ -135,10 +135,10 @@ do<br />
 done<br />
 echo &quot;$output&quot; &gt;&gt; rootca/serial<br />
 done<br />
-[/code]<br />
-            [code lang="xml" gutter="true" firstline="11"]<br />
+{% endhighlight %<br />
+            {% highlight xml %}<br />
 touch rootca/index.txt<br />
-            [/code]
+            {% endhighlight %
 </li>
 </ol>
 </li>
@@ -147,15 +147,15 @@ The password must remain secure, even for a test environment. For the following 
 <ol>
 <li>Create the RSA key pair:<br />
 The parameter, <em>2048</em>, represents the key length.<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 openssl genrsa -des3 -out rootca\root_ca_key.pem -passout pass:passRoot 2048<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Sign a certificate with the key pair:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 export ROOT_CA_SUBJECT=&quot;Development Root CA&quot;<br />
 openssl req -new -x509 -nodes -sha1 -days 365 -key rootca/root_ca_key.pem -out rootca/root_ca.crt -config openssl.cnf -subj &quot;/CN=$ROOT_CA_SUBJECT&quot; -extensions root_authority -passin pass:passRoot<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
@@ -166,22 +166,22 @@ openssl req -new -x509 -nodes -sha1 -days 365 -key rootca/root_ca_key.pem -out r
 <li>Create the folder structure and requirements for the root CA:
 <ol>
 <li>Create a root CA certificate directory structure:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 MKDIR rootca<br />
 MKDIR rootca\certs<br />
 MKDIR rootca\crl<br />
 MKDIR rootca\newcerts<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create a serial list of random numbers:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 openssl rand -hex -out rootca\serial 8<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create an index for the root CA:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 COPY NUL rootca\index.txt<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
@@ -190,14 +190,14 @@ The password must remain secure, even for a test environment. For the following 
 <ol>
 <li>Create the RSA key pair:<br />
 The parameter, <em>2048</em>, represents the key length.<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 openssl genrsa -des3 -out rootca\root_ca_key.pem -passout pass:passRoot 2048<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Sign a certificate with the key pair:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 openssl req -new -x509 -nodes -sha1 -days 365 -key rootca\root_ca_key.pem -out rootca\root_ca.cert -config openssl.cnf -subj &quot;/CN=Development Root CA&quot; -extensions root_authority -passin pass:passRoot<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
@@ -228,15 +228,15 @@ email_in_dn    = false</pre>
 Run these commands from the base directory.</p>
 <ol>
 <li>Create a signing CA certificate directory structure:
-<p>[code lang="xml" gutter="true"]<br />
+<p>{% highlight xml %}<br />
 mkdir signingca<br />
 mkdir signingca/certs signingca/crl signingca/newcerts<br />
 touch signingca/serial<br />
 export HEXOUT=0123456789ABCDEF<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create a serial list of random numbers:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 for y in {1..2048}<br />
 do<br />
 export output=&quot;&quot;;<br />
@@ -247,21 +247,21 @@ do<br />
 done<br />
 echo &quot;$output&quot; &gt;&gt; signingca/serial<br />
 done<br />
-[/code]<br />
-            [code lang="xml" gutter="true" firstline="11"]<br />
+{% endhighlight %<br />
+            {% highlight xml %}<br />
 touch signingca/index.txt<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
 <li>Generate an RSA key pair and then sign a signing CA CSR with the root CA:<br />
 For this example, the password is <em>passSigning</em>.</p>
-<p>[code lang="xml" gutter="true"]<br />
+<p>{% highlight xml %}<br />
 export SIGNING_CA_SUBJECT=&quot;Development Signing CA&quot;<br />
 openssl genrsa -des3 -out signingca/signing_ca_key.pem -passout pass:passSigning 2048<br />
 openssl req -new -key signingca/signing_ca_key.pem -out signingca/signing_ca.csr -config openssl.cnf -subj &quot;/CN=$SIGNING_CA_SUBJECT&quot; -passin pass:passSigning<br />
 openssl ca -in signingca/signing_ca.csr -out signingca/signing_ca.crt -keyfile rootca/root_ca_key.pem -cert rootca/root_ca.crt -config openssl.cnf -name root_authority_ca_config -extensions signing_authority -md sha512 -days 365 -passin pass:passRoot<br />
-[/code]
+{% endhighlight %
 </li>
 </ul>
 <p>[/collapse]</p>
@@ -271,32 +271,32 @@ openssl ca -in signingca/signing_ca.csr -out signingca/signing_ca.crt -keyfile r
 Run these commands from the base directory.</p>
 <ol>
 <li>Create a signing CA certificate directory structure:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 MKDIR signingca<br />
 MKDIR signingca\certs<br />
 MKDIR signingca\crl<br />
 MKDIR signingca\newcerts<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create a serial list of random numbers for the signing CA:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 openssl rand -hex -out signingca\serial 8<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create index for signing CA:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 COPY NUL signingca\index.txt<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
 <li>Generate an RSA key pair and then sign a signing CA CSR with the root CA.<br />
 For this example, the password is <em>passSigning</em>. Run these commands from the base directory.</p>
-<p>[code lang="xml" gutter="true"]<br />
+<p>{% highlight xml %}<br />
 openssl genrsa -des3 -out signingca\signing_ca_key.pem -passout pass:passSigning 2048<br />
 openssl req -new -key signingca\signing_ca_key.pem -out signingca\signing_ca.csr -config openssl.cnf -subj &quot;/CN=Development Signing CA&quot; -passin pass:passSigning<br />
 openssl ca -in signing_ca.csr -out signingca\signing_ca.crt -keyfile rootca\root_ca_key.pem -cert rootca\root_ca.crt -config openssl.cnf -name root_authority_ca_config -extensions signing_authority -md sha512 -days 365 -passin pass:passRoot<br />
-[/code]</p>
+{% endhighlight %</p>
 </li>
 </ul>
 <p>[/collapse]</p>
@@ -313,21 +313,21 @@ authorityKeyIdentifier  = keyid:always;issuer:always</pre>
 This certificate is your server identity certificate. The example uses <em>passServer</em> as the password. Run these commands from the base directory.</p>
 <ol>
 <li>Use the full host name of your MobileFirst Platform server (if you don't provide a full host name or use an IP address - SSL will break):<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 export SERVER_FULL_HOSTNAME=dev.yourcompany.com<br />
 mkdir server<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create the RSA key pair and generate a CSR:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 openssl genrsa -des3 -out server/server_key.pem -passout pass:passServer 2048<br />
 openssl req -new -key server/server_key.pem -out server/server.csr -config openssl.cnf -subj &quot;/CN=$SERVER_FULL_HOSTNAME&quot; -passin pass:passServer<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Sign the CSR with the signing CA:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 openssl ca -in server/server.csr -out server/server.crt -keyfile signingca/signing_ca_key.pem -cert signingca/signing_ca.crt -config openssl.cnf -name signing_authority_ca_config -extensions server_identity -md sha512 -days 365 -passin pass:passSigning<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
@@ -339,20 +339,20 @@ openssl ca -in server/server.csr -out server/server.crt -keyfile signingca/signi
 This certificate is your server identity certificate. The example uses <em>passServer</em> as the password. Run these commands from the base directory.</p>
 <ol>
 <li>Use the full host name of your MobileFirst Platform server (if you don't provide a full host name or use an IP address - SSL will break):<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 REM mkdir server<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create the RSA key pair and generate a CSR:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 REM openssl genrsa -des3 -out server\server_key.pem -passout pass:passServer 2048<br />
 openssl req -new -key server\server_key.pem -out server\server.csr -config openssl.cnf -subj &quot;/CN=%HOSTNAME%&quot; -passin pass:passServer<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Sign the CSR with the signing CA:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 REM openssl ca -in server\server.csr -out server\server.crt -keyfile signingca\signing_ca_key.pem -cert signingca\signing_ca.crt -config openssl.cnf -name signing_authority_ca_config -extensions server_identity -md sha512 -days 365 -passin pass:passSigning<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
@@ -366,14 +366,14 @@ REM openssl ca -in server\server.csr -out server\server.crt -keyfile signingca\s
 You can concatenate the certificate files to the trust anchor (root CA).</p>
 <ol>
 <li>Create a chain for the signing CA:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 cat signingca/signing_ca.crt rootca/root_ca.crt &gt; signing_ca_chain.crt<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create a chain for the server certificate:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 cat server/server.crt signingca/signing_ca.crt rootca/root_ca.crt &gt; server_chain.crt<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
@@ -385,14 +385,14 @@ cat server/server.crt signingca/signing_ca.crt rootca/root_ca.crt &gt; server_ch
 You can concatenate the certificate files to the trust anchor (root CA).</p>
 <ol>
 <li>Create a chain for the signing CA:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 copy rootca\root_ca.crt+signingca\signing_ca.crt signing_ca_chain.crt<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Create a chain for the server certificate:<br />
-[code lang="xml" gutter="true"]<br />
+{% highlight xml %}<br />
 copy rootca\root_ca.crt+signingca\signing_ca.crt+server\server.crt server_chain.crt<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 </li>
@@ -401,24 +401,24 @@ copy rootca\root_ca.crt+signingca\signing_ca.crt+server\server.crt server_chain.
 <p><br clear="all" /></p>
 <h3 id="signPKCS12">Export a PKCS12 file for the signing CA</h3>
 <p>Export the private key and certificate for the signing CA into a <code>.p12</code> keystore file so that the embedded PKI can sign the user certificates with the signing CA.</p>
-<p>[code lang="xml" gutter="true"]<br />
+<p>{% highlight xml %}<br />
 openssl pkcs12 -export -in signingca/signing_ca.crt -inkey signingca/signing_ca_key.pem -out signingca/signing_ca.p12 -passin pass:passSigning -passout pass:passSigningP12<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><br clear="all" /></p>
 <h3 id="serverPKCS12">Export a PKCS12 file for the server certificate</h3>
 <p>Export the private key and certificate for the server into a <code>.p12</code> keystore file so that the server can send the client a valid server certificate.</p>
-<p>[code lang="xml" gutter="true"]<br />
+<p>{% highlight xml %}<br />
 openssl pkcs12 -export -in server_chain.crt -inkey server/server_key.pem -out server/server.p12 -passout pass:passServerP12 -passin pass:passServer<br />
-[/code]</p>
+{% endhighlight %</p>
 <p></p>
 <h2 id="configureWAS">Configuring IBM WebSphere Application Server Liberty profile (Liberty)</h2>
 <p>Enable the <code>ssl-1.0</code> and <code>appSecurity-2.0</code> features in the <code>server.xml</code> file:<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;featureManager&gt;<br />
    &lt;feature&gt;ssl-1.0&lt;/feature&gt;<br />
    &lt;feature&gt;appSecurity-2.0&lt;/feature&gt;<br />
 &lt;/featureManager&gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>Liberty requires setting up the keystore and truststore to establish trust for the generated client certificates. For more information, see the <a href="http://pic.dhe.ibm.com/infocenter/wasinfo/v8r5/index.jsp?topic=/com.i bm.websphere.wlp.nd.doc/ae/rwlp_ssl.html">WebSphere Application Server Network Deployment documentation</a>.</p>
 <ol>
 <li>Set up your server keystore to use the <code>server.p12</code> file that was generated earlier.</li>
@@ -426,32 +426,32 @@ openssl pkcs12 -export -in server_chain.crt -inkey server/server_key.pem -out se
 <li>Configure your server HTTP endpoint and allow (but do not require) client-side certificates. To make this configuration available, set the <code>clientAuthenticationSupported="true"</code> property in the Liberty SSL element.</li>
 </ol>
 <p>The following example shows the updated SSL configuration:<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;!-- default SSL configuration is defaultSSLSettings --&gt;<br />
 &lt;sslDefault sslRef=&quot;defaultSSLSettings&quot;/&gt;<br />
 &lt;ssl clientAuthenticationSupported=&quot;true&quot; id=&quot;defaultSSLSettings&quot; keyStoreRef=&quot;defaultKeyStore&quot; trustStoreRef=&quot;defaultTrustStore&quot;/&gt;<br />
 &lt;keyStore id=&quot;defaultKeyStore&quot; location=&quot;server.p12&quot; password=&quot;passServerP12&quot; type=&quot;PKCS12&quot; /&gt;<br />
 &lt;keyStore id=&quot;defaultTrustStore&quot; location=&quot;signing_ca.p12&quot; password=&quot;passSigningP12&quot; type=&quot;PKCS12&quot;/&gt;<br />
-[/code]<br /></p>
+{% endhighlight %<br /></p>
 <h2 id="authConfig">Configuring the authenticationConfig.xml file</h2>
 <ol>
 <li>Uncomment the <code>UserCertificate Login Module</code> section of the <code>authenticationConfig.xml</code> file, as shown below.<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;!-- Login Module for User Certificate Authentication --&gt;<br />
 &lt;loginModule name=&quot;WLUSERCertificateLoginModule&quot;&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.UserCertificateLoginModule&lt;/className&gt;<br />
 &lt;/loginModule&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Uncomment the <code>wl_userCertificateAuthRealm</code> section, as shown below.<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;!-- Login Module for User Certificate Authentication --&gt;<br />
 &lt;realm name=&quot;wl_userCertificateAuthRealm&quot; loginModule=&quot;WLUserCertificateLoginModule&quot;&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.UserCertificateAuthenticator&lt;/className&gt;<br />
    &lt;parameter name=&quot;dependent-user-auth-realm&quot; value=&quot;SampleAppRealm&quot;/&gt;<br />
    &lt;parameter name=&quot;pki-bridge-class&quot; value=&quot;com.worklight.core.auth.ext.UserCertificateEmbeddedPKI&quot;/&gt;<br />
 &lt;/realm&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Update the value of the <code>embedded-pki-bridge-ca-p12-file-path</code> element to the full path of your signing CA <code>.p12</code> file.
 </li>
@@ -461,7 +461,7 @@ openssl pkcs12 -export -in server_chain.crt -inkey server/server_key.pem -out se
 <p>You cannot change the realm name (<code>wl_userCertificateAuthRealm</code>).<br />
 <br />
 The following examples shows the updates made above.<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;!--For User Certificate Authentication --&gt;<br />
 &lt;realm name=&quot;wl_userCertificateAuthRealm&quot; loginModule=&quot;WLUserCertificateLoginModule&quot;&gt;<br />
    &lt;className&gt;com.worklight.core.auth.ext.UserCertificateAuthenticator&lt;/className&gt;<br />
@@ -470,10 +470,10 @@ The following examples shows the updates made above.<br />
    &lt;parameter name=&quot;embedded-pki-bridge-ca-p12-file-path&quot; value=&quot;YOUR_BASE_DIRECTORY/signing_ca.p12&quot;/&gt;<br />
    &lt;parameter name=&quot;embedded-pki-bridge-ca-p12-password&quot; calue=&quot;passSigningP12&quot;/&gt;<br />
 &lt;/realm&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Define a security test that uses <code>wl_userCertificateAuthRealm</code>.<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;!--For User Certificate Authentication --&gt;<br />
 &lt;customSecurityTest name=&quot;customx509Tests&quot;&gt;<br />
    &lt;test realm=&quot;wl_antiXSRFRealm&quot; step=&quot;1&quot;/&gt;<br />
@@ -482,7 +482,7 @@ The following examples shows the updates made above.<br />
    &lt;test realm=&quot;wl_userCertificateAuthRealm&quot; isInternalUserID=&quot;true&quot; step=&quot;1&quot;/&gt;<br />
    &lt;test realm=&quot;wl_deviceNoProvisioningRealm&quot; isInternalUserID=&quot;true&quot; step=&quot;2&quot;/&gt;<br />
 &lt;/customSecurityTest&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 </ol>
 <h2 id="appDescriptor">Configuring the application-descriptor.xml file</h2>
@@ -490,11 +490,11 @@ The following examples shows the updates made above.<br />
 <li>Ensure that you added the iOS or Android environment to your MobileFirst application.
 </li>
 <li>Protect your application or environment with your custom security test.<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;!--For User Certificate Authentication --&gt;<br />
 &lt;android securityTest=&quot;customx509Tests&quot; version=&quot;1.0&quot;&gt;<br />
 &lt;iPhone bundleId=&quot;com.SampleApp&quot; securityTest=&quot;customx509Tests&quot; version=&quot;1.0&quot;&gt;<br />
-[/code]
+{% endhighlight %
 </li>
 <li>Build and deploy your application and adapters to MobileFirst Server.</li>
 </ol>
@@ -502,7 +502,7 @@ The following examples shows the updates made above.<br />
 <p>You must install the root CA that you generated in the previous steps onto your client devices for your devices to trust MobileFirst Server over SSL. Email or host the <code>root_ca.crt</code> file, and then open the file on your device. The iOS and Android devices ask for approval when you manually attempt to install certificates.<br />
 <br />
 <center><br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/iOSX509accept.png"><img src="{{ site.baseurl }}/assets/backup/iOSX509accept-300x287.png" alt="iOSX509accept" width="300" height="287" class="alignnone size-medium wp-image-4242" /></a><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/AndroidX509accept.png"><img src="{{ site.baseurl }}/assets/backup/AndroidX509accept-300x213.png" alt="AndroidX509accept" width="300" height="213" class="alignnone size-medium wp-image-4240" /></a><br />
+<img src="{{ site.baseurl }}/assets/backup/AndroidX509accept-300x213.png" /><br />
 </center><br /></p>
 <h2 id="installApp">Installing and testing the application</h2>
 <ol>

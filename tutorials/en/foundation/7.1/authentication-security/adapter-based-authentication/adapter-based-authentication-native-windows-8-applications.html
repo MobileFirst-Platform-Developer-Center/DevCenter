@@ -20,11 +20,11 @@ relevantTo: [windows8]
 <h3>CustomAdapterChallengeHandler</h3>
 <p>Create a <code>CustomAdapterChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
 Your <code>CustomAdapterChallengeHandler</code> class must implement the <code>isCustomResponse</code> and <code>handleChallenge</code> methods.<br />
-<span class="inline-code"></span></p>
-<p><span class="inline-code"></span></p>
+<code></code></p>
+<p><code></code></p>
 <ul>
 <li>The <code>isCustomResponse</code> method checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %}<br />
 public override bool isCustomResponse(WLResponse response)<br />
 {<br />
     JObject responseJSON = response.getResponseJSON();<br />
@@ -39,11 +39,11 @@ public override bool isCustomResponse(WLResponse response)<br />
         return true;<br />
     }<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 </li>
 <li>The <code>handleChallenge</code> method is called after the <code>isCustomResponse</code> method returns <code>true</code>.<br />
 Use this method to present the login form. Different approaches are available.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %}<br />
 public override void handleChallenge(JObject response)<br />
 {<br />
   CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal,<br />
@@ -52,36 +52,36 @@ async () =&gt;<br />
      MainPage._this.LoginGrid.Visibility = Visibility.Visible;<br />
   });<br />
 }<br />
-[/code]
+{% endhighlight %
 </li>
 </ul>
 <p>From the login form, credentials are passed to the <code>CustomAdapterChallengeHandler</code> class. The <code>submitAdapterAuthentication()</code> method is used to send input data to the authenticator.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %}<br />
 public void sendResponse(String username, String password)<br />
 {<br />
    WLProcedureInvocationData invData = new WLProcedureInvocationData(&quot;NativeAdapterBasedAdapter&quot;, &quot;submitAuthentication&quot;);<br />
    invData.setParameters(new Object[] { username, password });<br />
    submitAdapterAuthentication(invData, new WLRequestOptions());<br />
 }<br />
-[/code]</p>
+{% endhighlight %</p>
 <p><br clear="all" /></p>
 <h3>MainPage</h3>
 <p>Within the <code>MainPage</code> class, connect to MobileFirst Server, register your <code>challengeHandler</code> class, and invoke the protected adapter procedure.<br />
 The procedure invocation triggers MobileFirst Server to send a challenge that will trigger our <code>challengeHandler</code>.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %}<br />
 WLClient wlClient = WLClient.getInstance();</p>
 <p>CustomAdapterChallengeHandler ch = new CustomAdapterChallengeHandler();<br />
 wlClient.registerChallengeHandler((BaseChallengeHandler&lt;JObject&gt;)ch);</p>
 <p>MyResponseListener mylistener = new MyResponseListener(this);<br />
 wlClient.connect(mylistener);</p>
-<p>[/code]</p>
+<p>{% endhighlight %</p>
 <p>Because the native API is not protected by a defined security test, no login form is presented during server connection.<br />
 Invoke the protected adapter procedure. The login form is presented by the  challenge handler.<br />
-[code lang="csharp"]<br />
+{% highlight csharp %}<br />
  WLResourceRequest adapter = new WLResourceRequest(&quot;/adapters/AuthAdapter/getSecretData&quot;, &quot;GET&quot;);<br />
  MyInvokeListener listener = new MyInvokeListener(this);<br />
  adapter.send(listener);<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2>Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth" target="_blank">Click to download</a> the MobileFirst project.</p>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuthWin8" target="_blank">Click to download</a> the Native project.</p>

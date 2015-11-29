@@ -17,16 +17,16 @@ relevantTo: [android]
 <ul>
 <li>
 <h4>Create a back-end project in a location of your choice.</h4>
-<p>                [code lang="shell"]<br />
+<p>                {% highlight shell %}<br />
                 mfp create MyProject<br />
                 cd MyProject<br />
-                [/code]
+                {% endhighlight %
             </li>
 <li>
 <h4>Add an HTTP adapter to the project.</h4>
-<p>                [code lang="shell"]<br />
+<p>                {% highlight shell %}<br />
                 mfp add adapter MyAdapter -t http<br />
-                [/code]
+                {% endhighlight %
             </li>
 </ul>
 </li>
@@ -35,10 +35,10 @@ relevantTo: [android]
 <ul>
 <li>
 <h4>Start the MobileFirst Server and deploy the adapter.</h4>
-<p>                [code lang="shell"]<br />
+<p>                {% highlight shell %}<br />
                 mfp start<br />
                 mfp push<br />
-                [/code]
+                {% endhighlight %
             </li>
 </ul>
 </li>
@@ -50,33 +50,33 @@ relevantTo: [android]
 <ul>
 <li>In <strong>Project > Gradle scripts</strong>, select <strong>build.gradle (Module: app)</strong>.</li>
 <li>After <code>apply plugin: 'com.android.application'</code>, add the following line:<br />
-        [code lang="xml"]repositories{<br />
+        {% highlight xml %}repositories{<br />
     jcenter()<br />
-}[/code]
+}{% endhighlight %
     </li>
 <li>Inside <code>android</code>, add the following lines:<br />
-[code lang="xml"]packagingOptions {<br />
+{% highlight xml %}packagingOptions {<br />
     pickFirst 'META-INF/ASL2.0'<br />
     pickFirst 'META-INF/LICENSE'<br />
     pickFirst 'META-INF/NOTICE'<br />
-}[/code]</li>
+}{% endhighlight %</li>
 <li>Inside <code>dependencies</code>, add the following lines:<br />
-[code lang="xml"]compile group: 'com.ibm.mobile.foundation',<br />
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',<br />
     name: 'ibmmobilefirstplatformfoundation',<br />
     version: '7.1.0.0',<br />
     ext: 'aar',<br />
-    transitive: true[/code]</li>
+    transitive: true{% endhighlight %</li>
 <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:<br />
-[code lang="xml"]<br />
+{% highlight xml %}<br />
 &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;<br />
 &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;/&gt;<br />
 &lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot; /&gt;<br />
-[/code]</li>
+{% endhighlight %</li>
 <li>Add the MobileFirst UI activity:<br />
-[code lang="xml"]&lt;activity android:name=&quot;com.worklight.wlclient.ui.UIActivity&quot; /&gt;[/code]</li>
+{% highlight xml %}&lt;activity android:name=&quot;com.worklight.wlclient.ui.UIActivity&quot; /&gt;{% endhighlight %</li>
 <li>In Terminal, navigate to the root of the Android Studio project and add the required configuration files by running this command:<br />
-[code lang="xml"]<br />
-mfp push[/code]
+{% highlight xml %}<br />
+mfp push{% endhighlight %
 </li>
 <li>
 <h3>Implement MobileFirst adapter invocation.</h3>
@@ -84,17 +84,17 @@ mfp push[/code]
 <li>
 <h4>Main <code>Activity</code> class</h4>
 <p>                Make sure that your MainActivity class extends the <code>Activity</code> class:<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 public class MainActivity extends Activity {<br />
 ...<br />
-[/code]<br />
+{% endhighlight %<br />
                 Add the following <code>import</code> statements:<br />
-                [code lang="java"]import com.worklight.wlclient.api.*;<br />
+                {% highlight java %}import com.worklight.wlclient.api.*;<br />
 import android.util.Log;<br />
 import java.net.URI;<br />
-import java.net.URISyntaxException;[/code]</p>
+import java.net.URISyntaxException;{% endhighlight %</p>
 <p>                Add the following lines to the <code>onCreate</code> method:<br />
-                [code lang="java"]<br />
+                {% highlight java %}<br />
 super.onCreate(savedInstanceState);<br />
 setContentView(R.layout.activity_main);</p>
 <p>final WLClient client = WLClient.createInstance(this);</p>
@@ -114,15 +114,15 @@ setContentView(R.layout.activity_main);</p>
     public void onFailure(WLFailResponse wlFailResponse) {<br />
         Log.i(&quot;MFPMyProject&quot;,&quot;Failed connecting to the MobileFirst Server: &quot; + wlFailResponse.getErrorMsg());<br />
     }<br />
-});[/code]</li>
+});{% endhighlight %</li>
 <li>
 <h4><code>MyInvokeListener</code> class</h4>
 <p>                Add a new <code>MyInvokeListener</code> class.<br />
                 Add the following <code>import</code> statements:<br />
-                [code lang="java"]import com.worklight.wlclient.api.*;<br />
-import android.util.Log;[/code]</p>
+                {% highlight java %}import com.worklight.wlclient.api.*;<br />
+import android.util.Log;{% endhighlight %</p>
 <p>                Paste the following lines:<br />
-        [code lang="java"]<br />
+        {% highlight java %}<br />
 public class MyInvokeListener implements WLResponseListener {</p>
 <p>    @Override<br />
     public void onSuccess(WLResponse wlResponse) {<br />
@@ -132,7 +132,7 @@ public class MyInvokeListener implements WLResponseListener {</p>
     public void onFailure(WLFailResponse wlFailResponse) {<br />
         Log.i(&quot;MFPMyProject&quot;, &quot;Adapter invocation response: &quot; + wlFailResponse.getErrorMsg());<br />
     }<br />
-}[/code]</li>
+}{% endhighlight %</li>
 </ul>
 </li>
 <li>

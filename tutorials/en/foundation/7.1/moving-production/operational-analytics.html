@@ -36,10 +36,10 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li style="float : left; width: 100%;">
 
 <div style="width: 100%;">You can set these two properties in the <code>server.xml</code> file:</p>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml %}<br />
 &amp;amp;amp;amp;lt;jndiEntry jndiName=&amp;amp;amp;amp;quot;AppName/wl.analytics.url&amp;amp;amp;amp;quot; value=&amp;amp;amp;amp;quot;http://localhost:10080/analytics-service/data&amp;amp;amp;amp;quot;/&amp;amp;amp;amp;gt;<br />
 &amp;amp;amp;amp;lt;jndiEntry jndiName=&amp;amp;amp;amp;quot;AppName/wl.analytics.console.url&amp;amp;amp;amp;quot; value=&amp;amp;amp;amp;quot;http://localhost:10080/analytics/console&amp;amp;amp;amp;quot;/&amp;amp;amp;amp;gt;<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>After the property is set, the <strong>Analytics Dashboard</strong> link appears in the MobileFirst Operations Console.</div>
 <div style="width: 100%;">
 <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/71ConsoleAnalytics.png"><img src="{{ site.baseurl }}/assets/backup/71ConsoleAnalytics.png" alt="71ConsoleAnalytics" width="2570" height="484" class="aligncenter size-full wp-image-13930" /></a>
@@ -79,13 +79,13 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <ul>
 <li>The following API call results in a <em>session hit</em> that is visualized on MobileFirst Operational Analytics:
     </li>
-<p>    [code lang="javascript"]</p>
+<p>    {% highlight javascript %}</p>
 <p>    // a 'session hit' will be recorded upon a successful connection<br />
-    WL.Client.connect();[/code]</p>
+    WL.Client.connect();{% endhighlight %</p>
 <li>The following API call results in an <em>adapter hit</em> and a <em>session hit</em> that are visualized on the MobileFirst Operational Analytics dashboard:</li>
-<p>    [code lang="javascript"]</p>
+<p>    {% highlight javascript %}</p>
 <p>    // an 'adapter hit' and a 'session hit' will be recorded upon a successful adapter invocation<br />
-    WLResourceRequest.send();[/code]</p>
+    WLResourceRequest.send();{% endhighlight %</p>
 </ul>
 <div style="width: 100%;">
 <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/71AnalyticsOnlySessions.png"><img src="{{ site.baseurl }}/assets/backup/71AnalyticsOnlySessions.png" alt="71AnalyticsOnlySessions" width="1906" height="1034" class="aligncenter size-full wp-image-13983" /></a>
@@ -104,7 +104,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <h2 id="clientLogs">Capturing data - Client Logs</h2>
 <p>You can instrument a MobileFirst application with client logs to record client debugging information and events.</p>
 <p>You can use the following APIs to create client logs which are then forwarded to the MobileFirst Operational Analytics server, where they can be searched and downloaded.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 // Set the log level to trace so that all logs are captured<br />
 WL.Logger.config({&amp;amp;amp;amp;quot;level&amp;amp;amp;amp;quot;: &amp;amp;amp;amp;quot;TRACE&amp;amp;amp;amp;quot;});</p>
 <p>// Create a client side log that is persisted locally until it is sent to the server<br />
@@ -113,34 +113,34 @@ WL.Logger.debug(&amp;amp;amp;amp;quot;Create a client log at the DEBUG level.&am
 WL.Logger.info(&amp;amp;amp;amp;quot;Create a client log at the INFO level.&amp;amp;amp;amp;quot;);<br />
 WL.Logger.warn(&amp;amp;amp;amp;quot;Create a client log at the WARN level.&amp;amp;amp;amp;quot;);<br />
 WL.Logger.error(&amp;amp;amp;amp;quot;Create a client log at the ERROR level.&amp;amp;amp;amp;quot;);<br />
-WL.Logger.fatal(&amp;amp;amp;amp;quot;Create a client log at the FATAL level.&amp;amp;amp;amp;quot;);[/code]</p>
+WL.Logger.fatal(&amp;amp;amp;amp;quot;Create a client log at the FATAL level.&amp;amp;amp;amp;quot;);{% endhighlight %</p>
 <h2 id="analyticsLogs">Analytics Logs</h2>
 <p>Client-side logs are captured based on the logging level that is set on the client. If you want to create analytics logs that are always captured regardless of the logging level, you can use the <code>WL.Analytics</code> API.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 // Create an analytics log message<br />
 WL.Analytics.log(&amp;amp;amp;amp;quot;Analytics log message&amp;amp;amp;amp;quot;);</p>
 <p>// Create a custom activity<br />
 WL.Analytics.log({_activity: &amp;amp;amp;amp;quot;customActivity&amp;amp;amp;amp;quot;});</p>
 <p>// Create a custom activity with a log message<br />
 WL.Analytics.log({_activity: &amp;amp;amp;amp;quot;customActivity&amp;amp;amp;amp;quot;}, &amp;amp;amp;amp;quot;Analytics log message&amp;amp;amp;amp;quot;);<br />
-[/code]</p>
+{% endhighlight %</p>
 <h2 id="sendingData">Sending data</h2>
 <p>Logs that are captured by the client-side logging APIs and the <code>WL.Analytics</code> APIs are sent to the server automatically upon a successful server connection or a successful adapter call.</p>
-<p>[code lang="javascript"]</p>
+<p>{% highlight javascript %}</p>
 <p>// Logs sent upon successful connection<br />
 WL.Client.connect();</p>
 <p>// Logs sent upon successful adapter invocation<br />
-WLResourceRequest.send();[/code]</p>
+WLResourceRequest.send();{% endhighlight %</p>
 <p>You can disable this automatic behavior by using the following call:</p>
-<p>[code lang="javascript"]</p>
+<p>{% highlight javascript %}</p>
 <p>// Disable automatic sending of client and analytics logs<br />
-WL.Logger.config({autoSendLogs: false});[/code]</p>
+WL.Logger.config({autoSendLogs: false});{% endhighlight %</p>
 <p>If you want to send this data more frequently, you can use the following API calls:</p>
-<p>[code lang="javascript"]</p>
+<p>{% highlight javascript %}</p>
 <p>// Send client debug logs<br />
 WL.Logger.send();</p>
 <p>// Send analytics logs<br />
-WL.Analytics.send();[/code]</p>
+WL.Analytics.send();{% endhighlight %</p>
 <h2 id="customCharts">Custom charts</h2>
 <p>Custom charts are a new feature of MobileFirst Platform Operational Analytics 7.0 and later. By using custom charts, you can take data that is already collected, like device ID, device model, device OS, etc., or log your own custom data and create charts. To understand how to log and send data, see <a href="#analyticsLogs">Analytics logs</a> and <a href="#sendingData">Sending data</a>.</p>
 <h3>Chart types</h3>
@@ -155,11 +155,11 @@ WL.Analytics.send();[/code]</p>
 <h2 id="creatingCustomChart">Creating a custom chart</h2>
 <p>Creating a custom chart is simple. The following example walks you through creating a pie chart, based on the user pressing three buttons.</p>
 <p>The messages that are logged to the Operational Analytics server in this example are hard-coded buttons. Those messages look like this:</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 WL.Analytics.log({buttonPress: &amp;amp;amp;amp;quot;buttonA&amp;amp;amp;amp;quot;}, &amp;amp;amp;amp;quot;press&amp;amp;amp;amp;quot;);<br />
 WL.Analytics.log({buttonPress: &amp;amp;amp;amp;quot;buttonB&amp;amp;amp;amp;quot;}, &amp;amp;amp;amp;quot;press&amp;amp;amp;amp;quot;);<br />
 WL.Analytics.log({buttonPress: &amp;amp;amp;amp;quot;buttonC&amp;amp;amp;amp;quot;}, &amp;amp;amp;amp;quot;press&amp;amp;amp;amp;quot;);<br />
-[/code]</p>
+{% endhighlight %</p>
 <p>To create a chart, follow these steps.</p>
 <ol>
 <li>Go to the <strong>Custom Charts</strong> tab and click <strong>Create Chart</strong>.<br />
