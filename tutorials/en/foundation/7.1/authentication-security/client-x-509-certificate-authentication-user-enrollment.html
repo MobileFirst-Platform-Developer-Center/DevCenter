@@ -50,9 +50,9 @@ It is assumed that you follow these instructions by using an application that cu
 <p>IBM MobileFirst Platform Foundation then provisions the device with the X.509 client certificate for use in subsequent connections to the server.</p>
 <p>The first time a user connects to the MobileFirst server, that user must authenticate through the dependent realm to initiate the enrolment process. After a user is enrolled into the User Certificate Authentication realm, subsequent connections to the server occur through the two way SSL/TLS handshake, where the client certificate is presented as the SSL client entity.</p>
 <h3>User enrollment flow</h3>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/UserEnrollFlow1.jpg"><img src="{{ site.baseurl }}/assets/backup/UserEnrollFlow1.jpg" alt="UserEnrollFlow" width="740" height="470" class="aligncenter size-full wp-image-16064" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/UserEnrollFlow1.jpg" /></p>
 <h3>Client certificate authentication flow</h3>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/CleintCertAuthFlow.jpg"><img src="{{ site.baseurl }}/assets/backup/CleintCertAuthFlow.jpg" alt="CleintCertAuthFlow" width="740" height="320" class="aligncenter size-full wp-image-16065" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/CleintCertAuthFlow.jpg" /></p>
 <h2 id="certificateAuthorities">X.509 certificate and certificate authorities (CAs)</h2>
 <p>For security reasons, during testing, it is not recommended to use an established CA that uses an embedded PKI in your infrastructure. It is possible to create a self-signed CA that can sign both a server certificate and user certificates.</p>
 <p>This module uses the OpenSSL command-line utility.<br />

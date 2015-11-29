@@ -27,8 +27,8 @@ With a JMS adapter, you can read and write messages from any messaging provider 
 <p>From the project's directory, use <code>mfp add adapter</code> and follow the interactive instructions.</p>
 <h3>Studio</h3>
 <p>In MobileFirst Platform Foundation Studio, create an adapter and select the <strong>JMS Adapter</strong> type. A standard JMS Adapter structure is created.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_05_new-adapter.png"><img src="{{ site.baseurl }}/assets/backup/04_05_new-adapter.png" alt="04_05_new-adapter" width="524" height="395" class="aligncenter size-full wp-image-3345" /></a></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_05-jms-fle-structure.png"><img src="{{ site.baseurl }}/assets/backup/04_05-jms-fle-structure.png" alt="04_05-jms-fle-structure" width="191" height="125" class="alignright size-full wp-image-3346" /></a><br />
+<p><img src="{{ site.baseurl }}/assets/backup/04_05_new-adapter.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_05-jms-fle-structure.png" /><br />
 Public procedures are declared in the XML file while implemented in the JavaScript file. The procedure name in the JavaScript file must match the one declared in the XML file.<br />
 <br clear="all" /></p>
 <h3>Procedure implementation</h3>
@@ -138,13 +138,13 @@ function readMessage() {<br />
 }<br />
 {% endhighlight %}</p>
 <p>Result:<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/jms_readmessage_result.png"><img src="{{ site.baseurl }}/assets/backup/jms_readmessage_result-300x169.png" alt="jms_readmessage_result" width="300" height="169" class="aligncenter size-medium wp-image-4539" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/jms_readmessage_result-300x169.png" /></p>
 <h3>readAllJMSMessages</h3>
 <p>This method takes the same parameters as the <code>readSingleJMSMessage</code> method.<br />
 It returns a list of JMS messages in the same format as the <code>readSingleJMSMessage</code> method. The result is contained in a <code>messages</code> object.</p>
 <p>To use this method, use an external server, <strong>not</strong> the one that MobileFirst Studio uses.</p>
 <p>Result:<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/jms_readalljmsmessages_result.png"><img src="{{ site.baseurl }}/assets/backup/jms_readalljmsmessages_result-300x154.png" alt="jms_readalljmsmessages_result" width="300" height="154" class="aligncenter size-medium wp-image-4540" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/jms_readalljmsmessages_result-300x154.png" /></p>
 <h3>writeMessage</h3>
 <p>This method writes a JMSText message to the destination. It features user properties that can be set.<br />
 It returns the <code>JMSMessageID</code> of the sent message.</p>
@@ -163,7 +163,7 @@ function writeMessage(messagebody) {</p>
 }<br />
 {% endhighlight %}</p>
 <p>Result:<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/jms_writemessage_result.png"><img src="{{ site.baseurl }}/assets/backup/jms_writemessage_result-300x36.png" alt="jms_writemessage_result" width="300" height="36" class="aligncenter size-medium wp-image-4541" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/jms_writemessage_result-300x36.png" /></p>
 <h3>requestReplyJMSMessage</h3>
 <p>This method:</p>
 <ul>
