@@ -17,17 +17,17 @@ relevantTo: [windows8]
 <ul>
 <li>
 <h4>Create a new project and Windows 8 Universal framework/server-side application entity.</h4>
-<p>                [code lang="shell"]<br />
+<p>                {% highlight shell %}<br />
                 mfp create MyProject<br />
                 cd MyProject<br />
                 mfp add api MyWin8Universal -e windows8<br />
-                [/code]
+                {% endhighlight %}
             </li>
 <li>
 <h4>Add an HTTP adapter to the project.</h4>
 <p>                [code firstline="4" lang="shell"]<br />
                 mfp add adapter MyAdapter -t http<br />
-                [/code]
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -39,7 +39,7 @@ relevantTo: [windows8]
 <p>                [code firstline="5" lang="shell"]<br />
                 mfp start<br />
                 mfp push<br />
-                [/code]
+                {% endhighlight %}
             </li>
 </ul>
 </li>
@@ -58,12 +58,12 @@ relevantTo: [windows8]
 <h3>Implement the MobileFirst adapter invocation.</h3>
 <ul>
 <li>The following code invokes an adapter:<br />
-[code lang="csharp"]<br />
-WLResourceRequest request = new WLResourceRequest(&quot;/adapters/MyAdapter/getStories&quot;, &quot;GET&quot;);<br />
-request.setQueryParameter(&quot;params&quot;,&quot;technology&quot;);<br />
+{% highlight csharp %}<br />
+WLResourceRequest request = new WLResourceRequest("/adapters/MyAdapter/getStories", "GET");<br />
+request.setQueryParameter("params","technology");<br />
 MyInvokeListener listener = new MyInvokeListener();<br />
 request.send(listener);<br />
-[/code]
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -90,4 +90,4 @@ Private Networks (Client and Server)</h4>
 <p>Review the Visual Studio console for the data retrieved by the adapter request.</p>
 </li>
 </ol>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/VisualStudioConsole.png"><img src="{{ site.baseurl }}/assets/backup/VisualStudioConsole-1024x405.png" alt="VisualStudioConsole" width="980" height="388" class="aligncenter size-large wp-image-14788" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/VisualStudioConsole-1024x405.png" /></p>

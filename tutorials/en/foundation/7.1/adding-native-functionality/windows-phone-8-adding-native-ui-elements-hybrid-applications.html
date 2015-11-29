@@ -32,51 +32,51 @@ You can use this feature to trigger native code to be run in the background, to 
 <p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
 <code>public class action : WLActionReceiver</code></p>
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:</p>
-<p>[code lang="CSharp"]<br />
+<p>{% highlight CSharp %}<br />
 public void onActionReceived(string action, JObject data)<br />
   {<br />
-    if (action == &quot;displayAddress&quot;)<br />
+    if (action == "displayAddress")<br />
     {<br />
-      Deployment.Current.Dispatcher.BeginInvoke(() =&gt;<br />
+      Deployment.Current.Dispatcher.BeginInvoke(() =><br />
       {<br />
         // perform required actions<br />
       });<br />
     }<br />
   }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions from the MobileFirst Web View, it must be registered.<br />
 The registration can be done during the startup flow of the application to catch any actions early enough:<br />
-[code lang="CSharp" highlight="5"]<br />
+{% highlight CSharp %}<br />
 InitializeComponent();<br />
 WL.createInstance(); //Create the instance of the ActionSender API's<br />
 myReceiver = new Action();<br />
 Loaded += PhoneAppPage_Loaded;<br />
 WL.getInstance().addActionReceiver(myReceiver);<br />
-[/code]<br />
+{% endhighlight %}<br />
 You can later remove this <code>ActionReceiver</code> registration by using the following API:<br />
-[code lang="CSharp"]WL.getInstance().removeActionReceiver(myReceiver);[/code]</p>
+{% highlight CSharp %}WL.getInstance().removeActionReceiver(myReceiver);{% endhighlight %}</p>
 <h2 id="nativeToJs">Sending commands from native code to JavaScript code</h2>
 <p>In MobileFirst applications, commands can be sent with parameters from native C# code to web view JavaScript code.<br />
 You can use this feature to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
 <h3>Step 1</h3>
 <p>In C#, the following API is used:<br />
-[code lang="CSharp"]WL.getInstance().sendActionToJS(doSomething, data);[/code]</p>
+{% highlight CSharp %}WL.getInstance().sendActionToJS(doSomething, data);{% endhighlight %}</p>
 <p>The <code>doSomething</code> parameter is an arbitrary action name to be used on the JavaScript side and the second parameter is a <code>JObject</code> that contains any data.</p>
 <h3>Step 2</h3>
 <p>A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
-<p>[code lang="js"]function actionReceiver(received){<br />
-  if (received.action == &quot;doSomething&quot; &amp;&amp; received.data.someProperty == &quot;12345&quot;){<br />
+<p>{% highlight js %}function actionReceiver(received){<br />
+  if (received.action == "doSomething" &amp;&amp; received.data.someProperty == "12345"){<br />
     //perform required actions, e.g., update web user interface<br />
   }<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function can handle those actions as early as possible.</p>
-<p>[code lang="js"]WL.App.addActionReceiver (&quot;MyActionReceiverId&quot;, actionReceiver);[/code]</p>
+<p>{% highlight js %}WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);{% endhighlight %}</p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-[code lang="js"]WL.App.removeActionReceiver(&quot;MyActionReceiverId&quot;);[/code]</p>
+{% highlight js %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %}</p>
 <h2 id="sendaction">The SendAction Sample</h2>
-<p>[caption id="attachment_5245" align="aligncenter" width="710"]<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/NativeUIInHybridPage.jpg"><img src="{{ site.baseurl }}/assets/backup/NativeUIInHybridPage.jpg" alt="NativeUIInHybridPage" width="1444" height="800" class="alignnone size-full wp-image-16275" /></a>[/caption]</p>
+<p>[caption id="attachment_5245" align="aligncenter" width="710"]<img src="{{ site.baseurl }}/assets/backup/NativeUIInHybridPage.jpg" />[/caption]</p>
 <ol>
 <li>Download the NativeUIInHybrid project, which includes a hybrid application called SendAction.</li>
 <li>In the first screen, you will see the current server URL to which the application will try connect. You will also see a <strong>Change ServerURL</strong> button.<br />
@@ -88,21 +88,21 @@ This action sends this action to the native C# code and it displays a <code>Text
 <li>The current server URL to which it will connect</li>
 <li>A button to trigger a modify to the URL in Native Page</li>
 </ul>
-<p>[code lang="html"]&lt;p&gt;This is a MobileFirst WebView.&lt;/p&gt;<br />
-&lt;div id=&quot;currentServerURLDiv&quot;&gt;&lt;/div&gt;<br />
-&lt;input class=&quot;formButton&quot; id=&quot;changeServerURL&quot; type=&quot;button&quot; value=&quot;Change Server URL&quot;&gt;<br />
-&lt;div id=&quot;ConnectionStatusDiv&quot;&gt;&lt;/div&gt;[/code]</p>
+<p>{% highlight html %}<p>This is a MobileFirst WebView.</p><br />
+<div id="currentServerURLDiv"></div><br />
+<input class="formButton" id="changeServerURL" type="button" value="Change Server URL"><br />
+<div id="ConnectionStatusDiv"></div>{% endhighlight %}</p>
 <h3>JavaScript</h3>
-<p>When the button is clicked, the <span class="inline-code">sendActionToNative</span> method is called to send the address to the native code.</p>
-<p>[code lang="js"]$('#changeServerURL').on('click', function(){<br />
-    WL.App.sendActionToNative(&quot;displayNativeScreen&quot;, { });<br />
-});[/code]</p>
+<p>When the button is clicked, the <code>sendActionToNative</code> method is called to send the address to the native code.</p>
+<p>{% highlight js %}$('#changeServerURL').on('click', function(){<br />
+    WL.App.sendActionToNative("displayNativeScreen", { });<br />
+});{% endhighlight %}</p>
 <p>The code also registers an action receiver to display potential error messages from the native code.<br />
-[code lang="js"]WL.App.addActionReceiver (&quot;BackFromNative&quot;, function actionReceiver(received){<br />
+{% highlight js %}WL.App.addActionReceiver ("BackFromNative", function actionReceiver(received){<br />
     if(received.action == 'refreshView'){<br />
       WL.Client.reloadApp();<br />
     }<br />
-  });[/code]</p>
+  });{% endhighlight %}</p>
 <h2 id="shared">Shared session</h2>
 <p>When you use both JavaScript and native code in the same application, you might need to make HTTP requests to MobileFirst Server (connection,  procedure invocation, etc.)</p>
 <p>HTTP requests are explained in other tutorials about authentication, application authenticity, and HTTP adapters (both for hybrid and native applications).<br />

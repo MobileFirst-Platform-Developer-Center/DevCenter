@@ -23,7 +23,7 @@ You must be a registered Apple iOS Developer to obtain an APNS certificate for y
 <li>During a production phase, use the <code>apns-certificate-production.p12</code> production certificate file.</li>
 </ul>
 <blockquote><p>To learn about setting up the certificates that are required for push notifications, see this blog post: <a href="https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en">Understanding and setting up certificates required to use iOS devices and Apple Push Notifications services (APNS)</a></p></blockquote>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/PushNotificationsNativeiOSProjectBaham.png"><img src="{{ site.baseurl }}/assets/backup/PushNotificationsNativeiOSProjectBaham-300x282.png" alt="PushNotificationsNativeiOSProjectBaham" width="300" height="282" class="alignright size-medium wp-image-6281" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/PushNotificationsNativeiOSProjectBaham-300x282.png" /></p>
 <ol>
 <li>Create a MobileFirst project and add a MobileFirst iOS Native API.</li>
 <li>Place the Apple APNS certificate file at the root of the application folder.
@@ -33,16 +33,16 @@ You must be a registered Apple iOS Developer to obtain an APNS certificate for y
 <li>Replace the <strong><code>password</code></strong> value with the .p12 certificate password.</li>
 <li>Replace the <strong><code>bundleId</code></strong> value with your application <code>bundleId</code> value. Consult the Apple documentation about how to create a <code>bundleId</code> for Xcode projects.</li>
 <p>For example:<br />
-[code lang="xml" highlight="1,7"]<br />
-&lt;nativeIOSApp id=&quot;AppName&quot; bundleId=&quot;com.REPLACE-WITH-BUNDLE-ID&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot;<br />
-	version=&quot;1.0&quot; xmlns=&quot;http://www.worklight.com/native-ios-descriptor&quot;&gt;<br />
-	&lt;displayName&gt;AppName&lt;/displayName&gt;<br />
-	&lt;description&gt;AppName&lt;/description&gt;<br />
-	&lt;accessTokenExpiration&gt;3600&lt;/accessTokenExpiration&gt;<br />
-	&lt;userIdentityRealms&gt;&lt;/userIdentityRealms&gt;<br />
-	&lt;pushSender password=&quot;REPLACE-WITH-CERTIFICATE-PASSWORD&quot;/&gt;<br />
-&lt;/nativeIOSApp&gt;<br />
-[/code]
+{% highlight xml %}<br />
+<nativeIOSApp id="AppName" bundleId="com.REPLACE-WITH-BUNDLE-ID" platformVersion="7.0.0.00.20150312-0731"<br />
+	version="1.0" xmlns="http://www.worklight.com/native-ios-descriptor"><br />
+	<displayName>AppName</displayName><br />
+	<description>AppName</description><br />
+	<accessTokenExpiration>3600</accessTokenExpiration><br />
+	<userIdentityRealms></userIdentityRealms><br />
+	<pushSender password="REPLACE-WITH-CERTIFICATE-PASSWORD"/><br />
+</nativeIOSApp><br />
+{% endhighlight %}
 </ul>
 </li>
 <li>Deploy the MobileFirst native API:<br />

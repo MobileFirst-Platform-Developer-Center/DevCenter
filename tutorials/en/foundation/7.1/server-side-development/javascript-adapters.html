@@ -33,21 +33,21 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 You can apply more filtering to retrieved data by using simple XSLT code.</p>
 <p>JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to use Java in the adapter code.</p>
 <h2 id="xmlStructure">XML structure of JavaScript adapters</h2>
-<p>[code lang="xml"]<br />
-&lt;wl:adapter name=&quot;HelloWorld&quot;&gt;<br />
-  &lt;displayName /&gt;<br />
-  &lt;description /&gt;<br />
-  &lt;connectivity&gt;<br />
-    &lt;connectionPolicy&gt;<br />
+<p>{% highlight xml %}<br />
+<wl:adapter name="HelloWorld"><br />
+  <displayName /><br />
+  <description /><br />
+  <connectivity><br />
+    <connectionPolicy><br />
     ...</p>
-<p>    &lt;loadConstraints&gt;<br />
+<p>    <loadConstraints><br />
     ...<br />
-  &lt;/connectivity&gt;<br />
-  &lt;procedure /&gt;<br />
-  &lt;procedure /&gt;<br />
+  </connectivity><br />
+  <procedure /><br />
+  <procedure /><br />
   ...<br />
-&lt;/wl:adapter&gt;<br />
-[/code]</p>
+</wl:adapter><br />
+{% endhighlight %}</p>
 <ul>
 <li><code>name:</code> Mandatory. The name of the adapter</li>
 <li><code>displayName</code>: Optional. The name that is displayed in the MobileFirst Console</li>
@@ -60,21 +60,21 @@ You can apply more filtering to retrieved data by using simple XSLT code.</p>
 </li>
 <li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
 </ul>
-<p>[code lang="xml"]<br />
-&lt;procedure name=&quot;procedure1&quot;&gt;&lt;/procedure&gt;<br />
-&lt;procedure name=&quot;procedure2&quot;&gt;&lt;/procedure&gt;<br />
-[/code]</p>
+<p>{% highlight xml %}<br />
+<procedure name="procedure1"></procedure><br />
+<procedure name="procedure2"></procedure><br />
+{% endhighlight %}</p>
 <h2 id="procedureStructure">Structure of a JavaScript adapter procedure</h2>
 <p>Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
 The <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function procedure1(param) {<br />
   return WL.Server.invokeSQLStatement({<br />
     preparedStatement: procedure1Statement,<br />
     parameters: [param]<br />
   });<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2 id="globalvars">Using global variables</h2>
 <p>Depending on your infrastructure and configuration, your MobileFirst server may be running with <code>SessionIndependent</code> set to true, where each request may reach a different node and HTTP sessions are not used.<br />
 In such cases you should not rely on global variables to keep data from one request to the next.</p>

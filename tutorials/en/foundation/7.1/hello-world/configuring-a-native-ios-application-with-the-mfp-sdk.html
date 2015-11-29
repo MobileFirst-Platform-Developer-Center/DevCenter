@@ -43,10 +43,10 @@ relevantTo: [ios]
 <li>Using your favorite editor, open the <code>Podfile</code> file, located at the root of the project.</li>
 <li>Comment out or remove the contents of the file.</li>
 <li>Add the following lines and save the changes:<br />
-         [code]<br />
+         {% highlight bash %}<br />
              source 'https://github.com/CocoaPods/Specs.git'<br />
              pod 'IBMMobileFirstPlatformFoundation'<br />
-         [/code]
+         {% endhighlight %}
       </li>
 <li>Run the command: <code>pod install</code>. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.<br />
 <strong>Note:</strong> This command may take several minutes to complete.</li>
@@ -56,9 +56,9 @@ relevantTo: [ios]
 <li>Open the Xcode project by double-clicking the <strong>.xcworkspace</strong> file.</li>
 <li>Right-click the project and select <strong>Add Files To [ProjectName]</strong>, select the <code>worklight.plist</code>, located in the root folder of the Xcode project.</li>
 <li>Whenever you want to use the MobileFirst Native SDK, make sure that you import the framework:<br />
-    [code lang="objc"]<br />
-        #import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;<br />
-    [/code]
+    {% highlight objc %}<br />
+        #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h><br />
+    {% endhighlight %}
     </li>
 </ol>
 <blockquote><p>If you use Xcode 7 and iOS 9, read the <a href="https://developer.ibm.com/mobilefirstplatform/blog/2015/09/09/ats-and-bitcode-in-ios9/">ATS and Bitcode</a> page.</p></blockquote>
@@ -66,9 +66,9 @@ relevantTo: [ios]
 <p>Now that the native application is set up with the MobileFirst Native SDK, it is also required that MobileFirst Server recognize it after the SDK is used in the application. For this, a MobileFirst Server instance and a MobileFirst project are needed.</p>
 <h3>Creating a project and server instance</h3>
 <p>In <strong>Terminal</strong>, navigate to the location where you want to create the MobileFirst Backend project and run the following commands:</p>
-<p>[code lang="xml"]mfp create your-project-name-here<br />
+<p>{% highlight xml %}mfp create your-project-name-here<br />
 cd your-project-name<br />
-mfp start[/code]</p>
+mfp start{% endhighlight %}</p>
 <p>After the project is created and the server is running, the server-side entity can be created and deployed to the server.<br />
 The next step adds the following files to the native project, as explained in section <a href="#insideNativeApp">Inside a native application containing the MobileFirst Native SDK</a>: <code>worklight.plist</code>, <code>application-descriptor.xml</code>, <code>mobilefirst</code> folder.</p>
 <h3>Deploying the server-side entity</h3>
@@ -101,7 +101,7 @@ The next step adds the following files to the native project, as explained in se
 <p>Because Apple Swift is designed to be compatible with Objective-C, you can use the MobileFirst SDK from within an iOS Swift project, too.</p>
 <ol>
 <li>Create a Swift project and follow the same steps, as described at the beginning of the tutorial, to install the MobileFirst SDK into an iOS native application.
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_new_swift.png"><img class="aligncenter wp-image-1409 size-full" src="{{ site.baseurl }}/assets/backup/02_02_new_swift.png" alt="02_02_new_swift" width="731" height="432" /></a>
+<p><img src="{{ site.baseurl }}/assets/backup/02_02_new_swift.png" />
 </li>
 <li>
 Use <code>import "IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h"</code> in any class that needs to use the MobileFirst SDK.
@@ -109,20 +109,20 @@ Use <code>import "IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundat
 </ol>
 <p>All the MobileFirst classes are now available from any of your Swift files.<br />
 XCode provides code autocompletion, converted to the Swift style.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/02_02_swift-autocomplete.png"><img class="alignnone size-full wp-image-1266" src="{{ site.baseurl }}/assets/backup/02_02_swift-autocomplete.png" alt="02_02_swift-autocomplete" width="402" height="68" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/02_02_swift-autocomplete.png" /></p>
 <h2 id="next">Tutorials to follow next</h2>
 <p>Now that your application contains the Native API library, you can follow the tutorials in the <a href="../../ios-tutorials">Native iOS development</a> category to learn more about authentication and security, server-side development, advanced client-side development, notifications, and more.</p>
 <h2 id="localMethod">"Classic" local method to add the MobileFirst Native SDK to an application</h2>
 <p>If you use the local method, SDK files are generated from the existing local resources in the installed version of MobileFirst Platform Foundation. In the "Classic" method, the SDK files are referred to as "NativeAPI". Follow the instructions below for either the MobileFirst Studio plug-in for Eclipse or the MobileFirst CLI.</p>
 <p>Using either Studio or CLI, create and deploy the NativeAPI server-side entity:<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/native-ios-folder-structure.png"><img src="{{ site.baseurl }}/assets/backup/native-ios-folder-structure.png" alt="native-ios-folder-structure" width="222" height="224" class="alignright size-full wp-image-11664" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/native-ios-folder-structure.png" /></p>
 <ol>
 <li>
 <h3>Studio</h3>
 <ol>
 <li>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Native API.</li>
 <li>In the <strong>New MobileFirst Native API</strong> dialog, enter your application name and select <strong>iOS</strong> for the <strong>Environment</strong> field.</li>
-<li>Right-click the generated <code>NativeAPI</code> folder (located in <code><em>your-projects</em>/apps/<em>your-nativeapi-app-name</em></code>) and select <strong>Run As &gt; Deploy Native API</strong>.<br />
+<li>Right-click the generated <code>NativeAPI</code> folder (located in <code><em>your-projects</em>/apps/<em>your-nativeapi-app-name</em></code>) and select <strong>Run As > Deploy Native API</strong>.<br />
 <em>This action is required for MobileFirst Server to recognize the application if it attempts to connect.</em></li>
 </ol>
 </li>
@@ -139,7 +139,7 @@ XCode provides code autocompletion, converted to the Swift style.<br />
 <li>Copy the files to the native iOS application:
 <ol>
 <li>Copy the previously-created <code>WorklightAPI</code> folder and the <code>worklight.plist</code> file from Eclipse or the CLI-generated folder to the root of the native project in Xcode.<br />
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/xcode-link-libraries.png"><img src="{{ site.baseurl }}/assets/backup/xcode-link-libraries-300x216.png" alt="xcode-link-libraries" width="300" height="216" class="alignright size-medium wp-image-11667" /></a></li>
+<img src="{{ site.baseurl }}/assets/backup/xcode-link-libraries-300x216.png" /></li>
 <li>In the Xcode Build Phases section, link the following libraries in your native iOS application:
 <ul>
 <li>SystemConfiguration.framework</li>

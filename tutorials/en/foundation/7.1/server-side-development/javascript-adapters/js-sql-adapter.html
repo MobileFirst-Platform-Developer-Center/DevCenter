@@ -26,8 +26,8 @@ In this tutorial and in the accompanying sample, you learn how to use a MobileFi
 <h3>CLI</h3>
 <p>From the project's directory, use <code>mfp add adapter</code> and follow the interactive instructions.</p>
 <h3>Studio</h3>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_03_create-adapter.png"><img src="{{ site.baseurl }}/assets/backup/04_03_create-adapter.png" alt="04_03_create-adapter" width="528" height="394" class="aligncenter size-full wp-image-3366" /></a></p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_03-filestruct.png"><img src="{{ site.baseurl }}/assets/backup/04_03-filestruct.png" alt="04_03-filestruct" width="201" height="122" class="alignright size-full wp-image-3367" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_03_create-adapter.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_03-filestruct.png" /></p>
 <ol>
 <li>In MobileFirst Studio, create a MobileFirst adapter and choose the SQL adapter type.<br />
 A standard SQL adapter file structure is created.
@@ -39,30 +39,30 @@ A standard SQL adapter file structure is created.
 <h2 id="xml">Adapter XML</h2>
 <p>Settings and metadata are stored in the adapter XML file.<br />
 You can use either the Design or the Source editor in the Studio, or use your favorite XML editor to modify the adapter XML file.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_03_visual-xml.png"><img src="{{ site.baseurl }}/assets/backup/04_03_visual-xml.png" alt="04_03_visual-xml" width="1228" height="632" class="aligncenter size-full wp-image-3369" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/04_03_visual-xml.png" /></p>
 <ol>
 <li>In the adapter XML file, declare the following parameters:
 <p>- Driver Class<br />
 - Database URL<br />
 - Username<br />
 - Password</p>
-<p>[code lang="xml"]<br />
-  &lt;connectivity&gt;<br />
-    &lt;connectionPolicy xsi:type=&quot;sql:SQLConnectionPolicy&quot;&gt;<br />
-      &lt;dataSourceDefinition&gt;<br />
-        &lt;driverClass&gt;com.mysql.jdbc.Driver&lt;/driverClass&gt;<br />
-        &lt;url&gt;jdbc:mysql://localhost:3306/mobilefirst_training&lt;/url&gt;<br />
-          &lt;user&gt;mobilefirst&lt;/user&gt;<br />
-          &lt;password&gt;mobilefirst&lt;/password&gt;<br />
-      &lt;/dataSourceDefinition&gt;<br />
-    &lt;/connectionPolicy&gt;<br />
-  &lt;/connectivity&gt;<br />
-[/code]</p>
+<p>{% highlight xml %}<br />
+  <connectivity><br />
+    <connectionPolicy xsi:type="sql:SQLConnectionPolicy"><br />
+      <dataSourceDefinition><br />
+        <driverClass>com.mysql.jdbc.Driver</driverClass><br />
+        <url>jdbc:mysql://localhost:3306/mobilefirst_training</url><br />
+          <user>mobilefirst</user><br />
+          <password>mobilefirst</password><br />
+      </dataSourceDefinition><br />
+    </connectionPolicy><br />
+  </connectivity><br />
+{% endhighlight %}</p>
 </li>
 <li>Declare a procedure in the adapter XML file.
-<p>[code lang="xml"]<br />
-&lt;procedure name=&quot;getAccountTransactions1&quot;/&gt;<br />
-[/code]
+<p>{% highlight xml %}<br />
+<procedure name="getAccountTransactions1"/><br />
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="jsImpl">JavaScript implementation file</h2>
@@ -77,20 +77,20 @@ You can use either the Design or the Source editor in the Studio, or use your fa
 <li>Use the <code>WL.Server.createSQLStatement</code> method to prepare a SQL query.<br />
 The <code>WL.Server.createSQLStatement</code> method must always be called outside the function.</li>
 <li>Add more parameters, if necessary.
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 //Create SQL query<br />
 var getAccountsTransactionsStatement = WL.Server.createSQLStatement(<br />
-  &quot;SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType &quot; +<br />
-  &quot;FROM accounttransactions &quot; +<br />
-  &quot;WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? &quot; +<br />
-  &quot;ORDER BY transactionDate DESC &quot; +<br />
-  &quot;LIMIT 20;&quot;<br />
+  "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +<br />
+  "FROM accounttransactions " +<br />
+  "WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? " +<br />
+  "ORDER BY transactionDate DESC " +<br />
+  "LIMIT 20;"<br />
 );<br />
-[/code]
+{% endhighlight %}
 </li>
 <li>Use the <code>WL.Server.invokeSQLStatement</code> method to call prepared queries.</li>
 <li>Return the result to the application or to another procedure.
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 //Invoke prepared SQL query and return invocation result<br />
 function getAccountTransactions1(accountId){<br />
   return WL.Server.invokeSQLStatement({<br />
@@ -98,44 +98,44 @@ function getAccountTransactions1(accountId){<br />
     parameters : [accountId, accountId]<br />
   });<br />
 }<br />
-[/code]
+{% endhighlight %}
 </li>
 <li>To run a SQL stored procedure, use the <code>WL.Server.invokeSQLStoredProcedure</code> method.<br />
 Specify a SQL stored procedure name as an invocation parameter.</li>
 <li>Add more parameters, if necessary.</li>
 <li>Return the invocation result to the application or to another procedure.
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 //Invoke stored SQL procedure and return invocation result<br />
 function getAccountTransactions2(accountId){<br />
   return WL.Server.invokeSQLStoredProcedure({<br />
-    procedure : &quot;getAccountTransactions&quot;,<br />
+    procedure : "getAccountTransactions",<br />
     parameters : [accountId]</p>
 <p>  });<br />
 }<br />
-[/code]
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="results">Invocation Results</h2>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 {<br />
-  &quot;isSuccessful&quot;: true,<br />
-  &quot;resultSet&quot;: [{<br />
-    &quot;fromAccount&quot;: &quot;12345&quot;,<br />
-    &quot;toAccount&quot;: &quot;54321&quot;,<br />
-    &quot;transactionAmount&quot;: 180.00,<br />
-    &quot;transactionDate&quot;: &quot;2009-03-11T11:08:39.000Z&quot;,<br />
-    &quot;transactionId&quot;: &quot;W06091500863&quot;,<br />
-    &quot;transactionType&quot;: &quot;Funds Transfer&quot;<br />
+  "isSuccessful": true,<br />
+  "resultSet": [{<br />
+    "fromAccount": "12345",<br />
+    "toAccount": "54321",<br />
+    "transactionAmount": 180.00,<br />
+    "transactionDate": "2009-03-11T11:08:39.000Z",<br />
+    "transactionId": "W06091500863",<br />
+    "transactionType": "Funds Transfer"<br />
   }, {<br />
-    &quot;fromAccount&quot;: &quot;12345&quot;,<br />
-    &quot;toAccount&quot;: null,<br />
-    &quot;transactionAmount&quot;: 130.00,<br />
-    &quot;transactionDate&quot;: &quot;2009-03-07T11:09:39.000Z&quot;,<br />
-    &quot;transactionId&quot;: &quot;W214122\/5337&quot;,<br />
-    &quot;transactionType&quot;: &quot;ATM Withdrawal&quot;<br />
+    "fromAccount": "12345",<br />
+    "toAccount": null,<br />
+    "transactionAmount": 130.00,<br />
+    "transactionDate": "2009-03-07T11:09:39.000Z",<br />
+    "transactionId": "W214122\/5337",<br />
+    "transactionType": "ATM Withdrawal"<br />
   }]<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The result is retrieved as a JSON object.</p>
 <ul>
 <li>The <code>isSuccessful</code> property defines whether the invocation was successful.</li>

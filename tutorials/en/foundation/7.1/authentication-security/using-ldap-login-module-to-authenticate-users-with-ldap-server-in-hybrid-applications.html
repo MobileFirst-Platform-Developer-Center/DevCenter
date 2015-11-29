@@ -27,30 +27,30 @@ For more information about how to implement the <code>UsernamePasswordAuthentica
 <li>Add an authentication realm to the <code>realms</code> section of the <code>authenticationConfig.xml</code> file and call it <code>LDAPRealm</code>.</li>
 <li>Use <code>FormBasedAuthenticator</code> in the <code>className</code> element because it implements the required <code>UsernamePasswordAuthenticator</code> interface.</li>
 <p>This realm uses <code>LDAPLoginModule</code> as a login module, which you define <a href="#login">in the Login module section</a>.</p>
-<p>[code lang="xml"]<br />
-&lt;realm loginModule=&quot;LDAPLoginModule&quot; name=&quot;LDAPRealm&quot;&gt;<br />
-  &lt;className&gt;com.worklight.core.auth.ext.FormBasedAuthenticator&lt;/className&gt;<br />
-  &lt;onLoginUrl&gt;/console&lt;/onLoginUrl&gt;<br />
-&lt;/realm&gt;<br />
-[/code]</p>
+<p>{% highlight xml %}<br />
+<realm loginModule="LDAPLoginModule" name="LDAPRealm"><br />
+  <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className><br />
+  <onLoginUrl>/console</onLoginUrl><br />
+</realm><br />
+{% endhighlight %}</p>
 </ol>
 <h3 id="login">Login module</h3>
 <ol>
 <li>Add a login module to the <code>loginModules</code> section and call it <code>LDAPLoginModule</code>.
-<p>[code lang="xml"]<br />
-&lt;loginModule name=&quot;LDAPLoginModule&quot;&gt;<br />
-  &lt;className&gt;com.worklight.core.auth.ext.LdapLoginModule&lt;/className&gt;<br />
-  &lt;parameter name=&quot;ldapProviderUrl&quot; value=&quot;ldap://10.0.1.2&quot; /&gt;<br />
-  &lt;parameter name=&quot;ldapTimeoutMs&quot; value=&quot;2000&quot; /&gt;<br />
-  &lt;parameter name=&quot;ldapSecurityAuthentication&quot; value=&quot;simple&quot; /&gt;<br />
-  &lt;parameter name=&quot;validationType&quot; value=&quot;searchPattern&quot; /&gt;<br />
-  &lt;parameter name=&quot;ldapSecurityPrincipalPattern&quot; value=&quot;{username}@myserver.com&quot; /&gt;<br />
-  &lt;parameter name=&quot;ldapSearchFilterPattern&quot; value=&quot;(&amp;amp;(objectClass=user)(sAMAccountName={username})(memberof=CN=Sales,OU=Groups,OU=MyCompany,DC=myserver,DC=com))&quot; /&gt;<br />
-  &lt;parameter name=&quot;ldapSearchBase&quot; value=&quot;dc=myserver,dc=com&quot; /&gt;</p>
-<p>  &lt;!-- Optional LDAP parameter &quot;REFERRAL&quot;, available values are: ignore, follow, throw --&gt;<br />
-  &lt;parameter name=&quot;ldapReferral&quot; value=&quot;ignore&quot; /&gt;<br />
-&lt;/loginModule&gt;<br />
-[/code]
+<p>{% highlight xml %}<br />
+<loginModule name="LDAPLoginModule"><br />
+  <className>com.worklight.core.auth.ext.LdapLoginModule</className><br />
+  <parameter name="ldapProviderUrl" value="ldap://10.0.1.2" /><br />
+  <parameter name="ldapTimeoutMs" value="2000" /><br />
+  <parameter name="ldapSecurityAuthentication" value="simple" /><br />
+  <parameter name="validationType" value="searchPattern" /><br />
+  <parameter name="ldapSecurityPrincipalPattern" value="{username}@myserver.com" /><br />
+  <parameter name="ldapSearchFilterPattern" value="(&amp;amp;(objectClass=user)(sAMAccountName={username})(memberof=CN=Sales,OU=Groups,OU=MyCompany,DC=myserver,DC=com))" /><br />
+  <parameter name="ldapSearchBase" value="dc=myserver,dc=com" /></p>
+<p>  <!-- Optional LDAP parameter "REFERRAL", available values are: ignore, follow, throw --><br />
+  <parameter name="ldapReferral" value="ignore" /><br />
+</loginModule><br />
+{% endhighlight %}
 </li>
 <li>Use <code>com.worklight.core.auth.ext.LdapLoginModule</code> in the <code>className</code> element.
 <ul>
@@ -75,46 +75,46 @@ For more information about how to implement the <code>UsernamePasswordAuthentica
 <p>Add a security test to the <code>securityTests</code> section of the <code>authenticationConfig.xml</code> file.<br />
 You use this security test to protect the adapter procedure. Therefore, use the <code>customSecurityTest</code> element.<br />
 Remember the security test name because you will reuse it to protect adapters.</p>
-<p>[code lang="xml"]<br />
-&lt;customSecurityTest name=&quot;LDAPSecurityTest&quot;&gt;<br />
-  &lt;test realm=&quot;wl_directUpdateRealm&quot; step=&quot;1&quot; /&gt;<br />
-  &lt;test isInternalUserID=&quot;true&quot; realm=&quot;LDAPRealm&quot; /&gt;<br />
-&lt;/customSecurityTest&gt;<br />
-[/code]</p>
+<p>{% highlight xml %}<br />
+<customSecurityTest name="LDAPSecurityTest"><br />
+  <test realm="wl_directUpdateRealm" step="1" /><br />
+  <test isInternalUserID="true" realm="LDAPRealm" /><br />
+</customSecurityTest><br />
+{% endhighlight %}</p>
 <h2 id="protectJsAdapt">Protecting a JavaScript adapter</h2>
 <ol>
 <li>Create an adapter and name it <strong>DummyAdapter</strong>.</li>
 <li>Add a <code>getSecretData</code> procedure and protect it with the security test that you created previously.</li>
-<p>[code lang="xml"]&lt;procedure name=&quot;getSecretData&quot; securityTest=&quot;LDAPSecurityTest&quot;/&gt;[/code]</p>
+<p>{% highlight xml %}<procedure name="getSecretData" securityTest="LDAPSecurityTest"/>{% endhighlight %}</p>
 <p>In this module, the <code>getSecretData</code> procedure returns some hardcoded value:</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 function getSecretData(){<br />
     return {<br />
         secretData: '123456'<br />
     };<br />
 }<br />
-[/code]
+{% endhighlight %}
 </ol>
 <h2 id="protectJavaAdapt">Protecting a Java adapter</h2>
 <ol>
 <li>Create a Java adapter. </li>
 <li>Add a <code>getSecretData</code> method and protect it with the realm that you created previously.<br />
 In this module, the <code>getSecretData</code> procedure returns some hardcoded value:</p>
-<p>[code lang="java" highlight="3"]<br />
+<p>{% highlight java %}<br />
 	@GET<br />
-	@Produces(&quot;application/json&quot;)<br />
-	@OAuthSecurity(scope=&quot;LDAPRealm&quot;)<br />
+	@Produces("application/json")<br />
+	@OAuthSecurity(scope="LDAPRealm")<br />
 	public JSONObject getSecretData(){<br />
 		JSONObject result = new JSONObject();<br />
-		result.put(&quot;secretData&quot;, &quot;123456&quot;);</p>
+		result.put("secretData", "123456");</p>
 <p>		return result;<br />
 	}<br />
-[/code]
+{% endhighlight %}
 </li>
 <li>To set the new realm as the default user identity for the application, in the application descriptor, add this option:<br />
-[code lang="xml"]<br />
-&lt;userIdentityRealms&gt;LDAPRealm&lt;/userIdentityRealms&gt;<br />
-[/code]
+{% highlight xml %}<br />
+<userIdentityRealms>LDAPRealm</userIdentityRealms><br />
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="client">Creating the client-side authentication components</h2>
@@ -125,47 +125,47 @@ In this module, the <code>getSecretData</code> procedure returns some hardcoded 
 </ul>
 <p>When authentication is required, the application hides the <code>AppDiv</code> element and shows the <code>AuthDiv</code> element.<br />
 When authentication is complete, it does the opposite.</p>
-<p>[code lang="html"]<br />
-&lt;div id=&quot;AppDiv&quot;&gt;<br />
-  &lt;input type=&quot;button&quot; class=&quot;appButton&quot; value=&quot;Call protected adapter proc&quot; onclick=&quot;getSecretData()&quot; /&gt;<br />
-  &lt;input type=&quot;button&quot; class=&quot;appButton&quot; value=&quot;Logout&quot; onclick=&quot;WL.Client.logout('LDAPRealm',{onSuccess: WL.Client.reloadApp})&quot; /&gt;<br />
-  &lt;p id=&quot;resultDiv&quot;&gt;&lt;/p&gt;<br />
-&lt;/div&gt;<br />
-[/code]</p>
+<p>{% highlight html %}<br />
+<div id="AppDiv"><br />
+  <input type="button" class="appButton" value="Call protected adapter proc" onclick="getSecretData()" /><br />
+  <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('LDAPRealm',{onSuccess: WL.Client.reloadApp})" /><br />
+  <p id="resultDiv"></p><br />
+</div><br />
+{% endhighlight %}</p>
 <p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.</p>
-<p>[code lang="html"]<br />
-&lt;div id=&quot;AuthDiv&quot; style=&quot;display:none&quot;&gt;<br />
-  &lt;div id=&quot;loginForm&quot;&gt;<br />
-    &lt;input type=&quot;text&quot; id=&quot;usernameInputField&quot; placeholder=&quot;Enter username&quot; /&gt;<br />
-    &lt;br /&gt;<br />
-    &lt;input type=&quot;password&quot; placeholder=&quot;Enter password&quot; id=&quot;passwordInputField&quot; /&gt;<br />
-    &lt;br/&gt;<br />
-    &lt;input type=&quot;button&quot; class=&quot;formButton&quot; id=&quot;loginButton&quot; value=&quot;Login&quot; /&gt;<br />
-    &lt;input type=&quot;button&quot; class=&quot;formButton&quot; id=&quot;cancelButton&quot; value=&quot;Cancel&quot; /&gt;<br />
-  &lt;/div&gt;<br />
-&lt;/div&gt;<br />
-[/code]</p>
+<p>{% highlight html %}<br />
+<div id="AuthDiv" style="display:none"><br />
+  <div id="loginForm"><br />
+    <input type="text" id="usernameInputField" placeholder="Enter username" /><br />
+    <br /><br />
+    <input type="password" placeholder="Enter password" id="passwordInputField" /><br />
+    <br/><br />
+    <input type="button" class="formButton" id="loginButton" value="Login" /><br />
+    <input type="button" class="formButton" id="cancelButton" value="Cancel" /><br />
+  </div><br />
+</div><br />
+{% endhighlight %}</p>
 <p>The <code>AuthDiv</code> element is styled as <code>display:none</code> because it must not be displayed before authentication is requested by server.</p>
 <h3>Challenge handler</h3>
 <p>Use the <code>WL.Client.createChallengeHandler</code> method to create a challenge handler object. Supply a realm name as a parameter.</p>
-<p>[code lang="javascript"]<br />
-var LDAPRealmChallengeHandler = WL.Client.createChallengeHandler(&quot;LDAPRealm&quot;);<br />
-[/code]</p>
+<p>{% highlight javascript %}<br />
+var LDAPRealmChallengeHandler = WL.Client.createChallengeHandler("LDAPRealm");<br />
+{% endhighlight %}</p>
 <h3>isCustomResponse</h3>
 <p>The <code>isCustomResponse</code> function of the challenge handler is called each time a response is received from the server. That function is used to detect whether the response contains data that are related to this challenge handler. It must return <code>true</code> or <code>false</code>.<br />
 The default login form that is returned from the MobileFirst server contains the <code>j_security_check</code> string. If the challenge handler detects it in the response, it returns <code>true</code>.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 LDAPRealmChallengeHandler.isCustomResponse = function(response) {<br />
     if (!response || !response.responseText) {<br />
         return false;<br />
     }</p>
-<p>    var idx = response.responseText.indexOf(&quot;j_security_check&quot;);</p>
-<p>    if (idx &gt;= 0){<br />
+<p>    var idx = response.responseText.indexOf("j_security_check");</p>
+<p>    if (idx >= 0){<br />
         return true;<br />
     }<br />
     return false;</p>
 <p>};<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>handleChallenge</h3>
 <p>If the <code>isCustomResponse</code> method returns <code>true</code>, the framework calls the <code>handleChallenge</code> function. This function is used to perform required actions, such as hide the application screen or show the login screen.<br />
 After the client application detects that the server sent a login form, which means that the server is requesting authentication, the application hides the <code>AppDiv</code>, shows the <code>AuthDiv</code>, and cleans up the <code>passwordInputField</code> element.</p>
@@ -175,7 +175,7 @@ LDAPRealmChallengeHandler.handleChallenge = function(response){<br />
         $('#AuthDiv').show();<br />
         $('#passwordInputField').val('');<br />
 };<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>Other methods</h3>
 <p>In addition to the methods that the developer must implement, the challenge handler contains functionality that the developer might want to use:</p>
 <ul>
@@ -188,7 +188,7 @@ LDAPRealmChallengeHandler.handleChallenge = function(response){<br />
 <p>A click on a <strong>Login</strong> button triggers a function that collects the user name and password from the HTML input fields and submits them to the server.<br />
 It is possible to set request headers here, and to specify callbacks.<br />
 The form-based authenticator uses the hardcoded <code>j_security_check</code> URL component. You cannot have more than one instance of it.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 $('#loginButton').bind('click', function () {<br />
     var reqURL = '/j_security_check';<br />
     var options = {};<br />
@@ -199,20 +199,20 @@ $('#loginButton').bind('click', function () {<br />
     options.headers = {};<br />
     LDAPRealmChallengeHandler.submitLoginForm(reqURL, options, LDAPRealmChallengeHandler.submitLoginFormCallback);<br />
 });<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>Cancel button</h3>
 <p>A click on a <strong>Cancel</strong> button hides <code>AuthDiv</code>, shows <code>AppDiv</code>, and notifies the framework that authentication failed.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 $('#cancelButton').bind('click', function () {<br />
     $('#AppDiv').show();<br />
     $('#AuthDiv').hide();<br />
     LDAPRealmChallengeHandler.submitFailure();<br />
 });<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h3>submitLoginFormCallback</h3>
 <p>The callback function checks the response for the containing server challenge again. If a challenge is found, the <code>handleChallenge</code> function is called again.<br />
 No challenge in the server response means that authentication completed successfully. In this case, <code>AppDiv</code> is shown, <code>AuthDiv</code> is hidden, and the framework is notified about authentication success.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript %}<br />
 LDAPRealmChallengeHandler.submitLoginFormCallback = function(response) {<br />
     var isLoginFormResponse = LDAPRealmChallengeHandler.isCustomResponse(response);<br />
     if (isLoginFormResponse){<br />
@@ -223,7 +223,7 @@ LDAPRealmChallengeHandler.submitLoginFormCallback = function(response) {<br />
         LDAPRealmChallengeHandler.submitSuccess();<br />
     }<br />
 };<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/LDAPLoginModule" target="_blank">Click to download</a> the MobileFirst project.</p>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_11_results.png"><img class="aligncenter wp-image-1065 size-full" src="{{ site.baseurl }}/assets/backup/09_11_results.png" alt="09_11_results" width="1033" height="596" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/09_11_results.png" /></p>

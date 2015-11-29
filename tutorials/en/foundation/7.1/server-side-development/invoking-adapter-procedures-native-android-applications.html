@@ -20,18 +20,18 @@ This tutorial explains how to use the <code>WLResourceRequest</code> API with an
 <ol>
 <li>Create an instance of the <code>WLClient</code> class.<br />
 The <code>WLClient</code> instance requires a reference to the activity in which it is running.</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 WLClient client = WLClient.createInstance(context);<br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 <li>To establish a connection to the MobileFirst Server instance, use the <code>connect</code> method by specifying the <code>MyConnectListener</code> class instance as a parameter.
 <p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server according to the properties of the <code>wlclient.properties</code> file.<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 public class MyConnectListener implements WLResponseListener  {<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>WLResponseListener</code> interface defines two methods:<br />
 - <code>public void onSuccess (WLResponse response) { }</code><br />
 - <code>public void onFailure (WLFailResponse response) { }</code>
@@ -43,34 +43,34 @@ public class MyConnectListener implements WLResponseListener  {<br />
 <p>After the connection is established with a MobileFirst Server instance, you can use the <code>WLResourceRequest</code> class to invoke adapter procedures or call any REST resources.</p>
 <ol>
 <li> Define the URI of the resource. For a JavaScript HTTP adapter: <code>/adapters/{AdapterName}/{ProcedureName}</code><br />
-[code lang="java"]<br />
-URI adapterPath = new URI(&quot;/adapters/RSSReader/getFeed&quot;);<br />
-[/code]
+{% highlight java %}<br />
+URI adapterPath = new URI("/adapters/RSSReader/getFeed");<br />
+{% endhighlight %}
 </li>
 <li>Create a <code>WLResourceRequest</code> object and choose the HTPP Method (GET, POST, etc).<br />
-[code lang="java"]<br />
+{% highlight java %}<br />
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
-[/code]</p>
+{% endhighlight %}</p>
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name  to set an array of parameters.<br />
-[code lang="java"]<br />
-request.setQueryParameter(&quot;params&quot;,&quot;['MobileFirst_Platform']&quot;);<br />
-[/code]
+{% highlight java %}<br />
+request.setQueryParameter("params","['MobileFirst_Platform']");<br />
+{% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameter</code> for each parameter.<br />
-[code lang="java"]<br />
-request.setQueryParameter(&quot;param1&quot;,&quot;value1&quot;);<br />
-request.setQueryParameter(&quot;param2&quot;,&quot;value2&quot;);<br />
-[/code]
+{% highlight java %}<br />
+request.setQueryParameter("param1","value1");<br />
+request.setQueryParameter("param2","value2");<br />
+{% endhighlight %}
 </li>
 <li>Trigger the request with <code>.send()</code>.<br />
 Specify a <code>MyInvokeListener</code> class instance as a parameter.<br />
 You learn how to define this class instance in the next section.</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 request.send(new MyInvokeListener());<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Other signatures, which are not covered in this tutorial, exist for the <code>send</code> method. Those signatures enable you to set parameters in the body instead of the query, or to handle the response with a delegate instead of a completion handler. See the user documentation to learn more.
 </li>
 </ul>
@@ -80,24 +80,24 @@ request.send(new MyInvokeListener());<br />
 <p>After the procedure invocation is completed, the framework calls one of the methods of the <code>MyInvokeListener</code> class.</p>
 <ol>
 <li>Specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 public class MyInvokeListener implements WLResponseListener {<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>WLClient</code> instance invokes the <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 <p>If the procedure invocation is successful, the <code>onSuccess</code> method of <code>MyInvokeListener</code> is invoked.
 </li>
 <li>Use that method to get the data that is retrieved from the adapter. The <code>response</code> object contains the response data.<br />
 You can use its methods and properties to retrieve the required information.</p>
-<p>[code lang="java"]<br />
+<p>{% highlight java %}<br />
 public void onSuccess(WLResponse response) {<br />
       String responseText = response.getResponseText();<br />
-      AndroidNativeApp.updateTextView(&quot;Adapter Procedure Invoked Successfuly\n&quot; + responseText);<br />
+      AndroidNativeApp.updateTextView("Adapter Procedure Invoked Successfuly\n" + responseText);<br />
 }</p>
 <p>public void onFailure(WLFailResponse response) {<br />
      String responseText = response.getResponseText();<br />
-     AndroidNativeApp.updateTextView(&quot;Failed to Invoke Adapter Procedure\n&quot; + responseText);<br />
+     AndroidNativeApp.updateTextView("Failed to Invoke Adapter Procedure\n" + responseText);<br />
 }<br />
-[/code]
+{% endhighlight %}
 </li>
 </ol>
 <h2>Sample application</h2>
@@ -106,4 +106,4 @@ public void onSuccess(WLResponse response) {<br />
 <p>– The <code>InvokingAdapterProcedures</code> project contains a MobileFirst Native API to deploy to your MobileFirst Server instance.<br />
 – The <code>InvokingAdapterProceduresAndroid</code> project contains a native Android application that uses a MobileFirst native API library to communicate with MobileFirst Server.<br />
 - Make sure to update the <code>wlclient.properties</code> file in the native Android project with the required server settings.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_09_results.png"><img src="{{ site.baseurl }}/assets/backup/04_09_results.png" alt="04_09_results" width="360" height="640" class="aligncenter size-full wp-image-3296" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_09_results.png" /></p>

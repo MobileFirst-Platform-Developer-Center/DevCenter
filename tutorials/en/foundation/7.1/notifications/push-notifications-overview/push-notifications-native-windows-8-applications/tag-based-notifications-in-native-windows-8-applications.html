@@ -27,28 +27,28 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h3>Tag Notifications configuration</h3>
 <h4>Setting up tags</h4>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
-<p>[code lang="xml"]&lt;nativeWindows8App xmlns=&quot;http://www.worklight.com/native-windows8-descriptor&quot; id=&quot;NativeWin8TagNotifications&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot; version=&quot;1.0&quot;&gt;</p>
-<p>&lt;pushSender clientSecret=&quot;WNS_CLIENT_SECRET&quot; packageSID=&quot;WNS_PACKAGE_SID&quot;/&gt;<br />
+<p>{% highlight xml %}<nativeWindows8App xmlns="http://www.worklight.com/native-windows8-descriptor" id="NativeWin8TagNotifications" platformVersion="7.0.0.00.20150312-0731" version="1.0"></p>
+<p><pushSender clientSecret="WNS_CLIENT_SECRET" packageSID="WNS_PACKAGE_SID"/><br />
 ...<br />
 ...<br />
 ...<br />
-&lt;tags&gt;<br />
-    &lt;tag&gt;<br />
-        &lt;name&gt;my tag 1&lt;/name&gt;<br />
-        &lt;description&gt;About my tag 1&lt;/description&gt;<br />
-    &lt;/tag&gt;<br />
-    &lt;tag&gt;<br />
-        &lt;name&gt;my tag 2&lt;/name&gt;<br />
-        &lt;description&gt;About my tag 2&lt;/description&gt;<br />
-    &lt;/tag&gt;<br />
-&lt;/tags&gt;[/code]</p>
+<tags><br />
+    <tag><br />
+        <name>my tag 1</name><br />
+        <description>About my tag 1</description><br />
+    </tag><br />
+    <tag><br />
+        <name>my tag 2</name><br />
+        <description>About my tag 2</description><br />
+    </tag><br />
+</tags>{% endhighlight %}</p>
 <h2 id="notificationsAPI">Notifications API</h2>
 <h3>API methods for tag notifications</h3>
 <h4>Client-side API</h4>
 <ul>
-<li><span class="inline-code">WLPush.subscribeTag(tagName,options)</span> - Subscribes the device to the specified tag name.</li>
-<li><span class="inline-code">WLPush.unsubscribeTag(tagName,options)</span> - Unsubscribes the device from the specified tag name.</li>
-<li><span class="inline-code">WLPush.isTagSubscribed(tagName)</span> - Returns whether the device is subscribed to a specified tag name.</li>
+<li><code>WLPush.subscribeTag(tagName,options)</code> - Subscribes the device to the specified tag name.</li>
+<li><code>WLPush.unsubscribeTag(tagName,options)</code> - Unsubscribes the device from the specified tag name.</li>
+<li><code>WLPush.isTagSubscribed(tagName)</code> - Returns whether the device is subscribed to a specified tag name.</li>
 </ul>
 <h3>Common API methods for tag and broadcast notifications</h3>
 <h4>Client-side API</h4>
@@ -62,7 +62,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <li>The <code>onMessage(props,payload)</code> method of <code>WLNotificationListener</code> is called when a push notification is received by the device.
 <ul>
 <li><strong>props</strong> - A JSON block that contains the notifications properties of the platform.</li>
-<li><strong>payload</strong> - A JSON block that contains other data that is sent from MobileFirst Server. The JSON block also contains the tag name for tag-based or broadcast notification. The tag name appears in the "tag" element. For broadcast notification, the default tag name is <span class="inline-code">Push.ALL</span>.</li>
+<li><strong>payload</strong> - A JSON block that contains other data that is sent from MobileFirst Server. The JSON block also contains the tag name for tag-based or broadcast notification. The tag name appears in the "tag" element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
 </ul>
 </li>
 </ul>
@@ -82,7 +82,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <li>The <code>TagNotificationsWin8</code> project contains a native Windows 8 Universal application that uses a MobileFirst native API library to subscribe to push notifications and receive notifications from Windows Notification Services (WNS).</li>
 <li>Make sure to update the <code>wlclient.properties</code> file in the native project with the relevant server settings.</li>
 </ul>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/TagNotificationsWin8.png"><img src="{{ site.baseurl }}/assets/backup/TagNotificationsWin8-300x161.png" alt="TagNotificationsWin8" width="300" height="161" class="aligncenter size-medium wp-image-16966" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/TagNotificationsWin8-300x161.png" /></p>
 <h3>Sending a notification</h3>
 <p>To test the application is able to receive a push notification you can perform one of the following:</p>
 <ol>
@@ -90,18 +90,18 @@ Tags represent topics of interest to the user and provide the ability to receive
 <ul>
 <li>If selecting the "sendBroadcastNotification" procedure, provide the application ID and notification text in quotation marks.</li>
 <li>If selecting the "sendTagNotification" procedure, provide the application ID, notification text and tag name in quotation marks.</li>
-<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: [code lang="xml"]&lt;application ... id=&quot;NativeWin8TagNotifications&quot; ...&gt;[/code]</li>
+<li>The application ID can be determined from the <code>id</code> attribute in <code>application-descriptor.xml</code>: {% highlight xml %}<application ... id="NativeWin8TagNotifications" ...>{% endhighlight %}</li>
 </ul>
 </li>
 <li>If using the CLI:
-<p>[code lang="shell" title="Broadcast language=notification"]$ mfp adapter call<br />
+<p>{% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/sendBroadcastNotification<br />
-[?] Enter the comma-separated parameters: &quot;NativeWin8TagNotifications&quot;,&quot;hello&quot;<br />
-[?] How should the procedure be called? GET[/code]</p>
+[?] Enter the comma-separated parameters: "NativeWin8TagNotifications","hello"<br />
+[?] How should the procedure be called? GET{% endhighlight %}</p>
 <p>Or:</p>
-<p>[code lang="shell" title="Tag language=notification"]$ mfp adapter call<br />
+<p>{% highlight shell %}$ mfp adapter call<br />
 [?] Which endpoint do you want to use? PushAdapter/sendTagNotification<br />
-[?] Enter the comma-separated parameters: &quot;NativeWin8TagNotifications&quot;,&quot;hello&quot;,&quot;sample-tag1&quot;<br />
+[?] Enter the comma-separated parameters: "NativeWin8TagNotifications","hello","sample-tag1"<br />
 [?] How should the procedure be called? GET<br />
-[/code]</li>
+{% endhighlight %}</li>
 </ol>

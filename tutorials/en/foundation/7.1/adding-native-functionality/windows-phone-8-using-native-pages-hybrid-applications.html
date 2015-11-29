@@ -22,12 +22,12 @@ relevantTo: [hybrid]
 <h2 id="connect">Connecting to the plugin from the JavaScript code</h2>
 <ol>
 <li>Implement the <code>WL.NativePage.show()</code> to open the native page.
-<p>[code lang="js"]function openNativePage(){<br />
+<p>{% highlight js %}function openNativePage(){<br />
     var params = {<br />
         nameParam : $('#nameInput').val()<br />
     };<br />
     WL.NativePage.show(nativePageClassName, backFromNativePage, params);<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <ul>
 <li><code>nativePageClassName</code>: The name of a native Windows Phone 8 class to start.</li>
 <li><code>backFromNativePage</code>: A callback function to call when the native page closes.</li>
@@ -35,50 +35,51 @@ relevantTo: [hybrid]
 </ul>
 </li>
 <li>To handle the callback function:
-<p>[code lang="js"]function backFromNativePage(data){<br />
-  alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
-}[/code]</p>
+<p>{% highlight js %}function backFromNativePage(data){<br />
+  alert("Received phone number is: " + data.phoneNumber);<br />
+}{% endhighlight %}</p>
 <p>The <code>backFromNativePage(data)</code> parameter can pass data back to the web part of an application after the native closes.</li>
 </ol>
 <h2 id="create">Creating a native page</h2>
 <p>For Windows Phone 8, implement the native page as a Windows Phone User Control, or extend an existing one.</p>
 <h3>Step 1</h3>
 <p>In the new User Control, add <code>using Cordova.Extension.Commands;</code> to the <code>.cs</code> file, and use the same package and class name as in the <code>WL.NativePage</code> API call in the JavaScript:</p>
-<p>[code lang="csharp"]using Cordova.Extension.Commands;<br />
+<p>{% highlight csharp %}using Cordova.Extension.Commands;<br />
 using Newtonsoft.Json;</p>
 <p>namespace NativePagesInHybridApp<br />
 {<br />
     public partial class HelloNative : UserControl<br />
-    {[/code]</p>
+    {
+{% endhighlight %}</p>
 <h3>Step 2</h3>
 <p>To retrieve custom data parameters that are passed from the web view, use the <code>WLNativePage.Data:(NSDictionary*)data</code> method.</p>
 <p>In the example below, the data is sent as a JSON string. For this purpose, the external <code>JSON.NET</code> library is used to convert the incoming JSON string to a native dictionary. For more information, see the <a href="http://json.codeplex.com/">JSON.NET</a> page.</p>
-<p>[code lang="csharp" firstline="8"]InitializeComponent();<br />
+<p>{% highlight csharp %}InitializeComponent();<br />
             if (WLNativePage.Data != null)<br />
             {<br />
-                Dictionary&lt;string, string&gt; data = JsonConvert.DeserializeObject&lt;Dictionary&lt;string, string&gt;&gt;(WLNativePage.Data);<br />
-                NameReceivedTextBlock.Text = &quot;Hello &quot; + data[&quot;nameParam&quot;];<br />
-                tb_returnValue.Text = &quot;1234567890&quot;;<br />
-            }[/code]</p>
+                Dictionary<string, string> data = JsonConvert.DeserializeObject<Dictionary<string, string>>(WLNativePage.Data);<br />
+                NameReceivedTextBlock.Text = "Hello " + data["nameParam"];<br />
+                tb_returnValue.Text = "1234567890";<br />
+            }{% endhighlight %}</p>
 <h2 id="control">Returning control to the web view</h2>
 <p>When the native page needs to switch back to the web view, it calls the <code>WLNativePage.backFromNative</code> method.<br />
 Data can be passed back to the web view as parameters to the call.</p>
 <h3>Objective-C</h3>
-<p>[code lang="csharp"]    void DoneButton_Click(object sender, RoutedEventArgs e)<br />
+<p>{% highlight csharp %}    void DoneButton_Click(object sender, RoutedEventArgs e)<br />
         {<br />
-            Dictionary&lt;string, string&gt; data = new Dictionary&lt;string, string&gt;<br />
+            Dictionary<string, string> data = new Dictionary<string, string><br />
             {<br />
-                { &quot;phoneNumber&quot;, tb_returnValue.Text }<br />
+                { "phoneNumber", tb_returnValue.Text }<br />
             };</p>
 <p>            string json = JsonConvert.SerializeObject(data, Formatting.Indented);<br />
             WLNativePage.backFromNative(this, json);<br />
         }<br />
     }<br />
-}[/code]</p>
+}{% endhighlight %}</p>
 <h3>JavaScript</h3>
-<p>[code lang="js"]function backFromNativePage(data){<br />
-    alert(&quot;Received phone number is: &quot; + data.phoneNumber);<br />
-}[/code]</p>
+<p>{% highlight js %}function backFromNativePage(data){<br />
+    alert("Received phone number is: " + data.phoneNumber);<br />
+}{% endhighlight %}</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/NativePagesInHybridApp" target="_blank">Click to download</a> the MobileFirst project.</p>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/07_06_sample_app.png"><img src="{{ site.baseurl }}/assets/backup/07_06_sample_app.png" alt="07_06_sample_app" width="786" height="381" class="aligncenter size-full wp-image-1037" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/07_06_sample_app.png" /></p>
