@@ -2,18 +2,12 @@
 layout: tutorial
 title: Event source-based notifications in native Windows 8 applications
 relevantTo: [ios]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativePushProject.zip
 ---
-
-    <ul>
-    <li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsNativeProject.zip">Download Studio project</a>
-    </li>
-    <li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativePushProject.zip">Download native project</a>
-    </li>
-</ul>
-
-
 <h2>Overview</h2>
 Event source notifications are notification messages that are targeted to devices with a user subscription.
 
@@ -54,7 +48,7 @@ WL.Server.createEventSource({
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
     securityTest:'PushApplication-strong-mobile-securityTest'
 });
- {% endhighlight %} 
+{% endhighlight %} 
 
 <ul>
 <li><code>name </code>– A name by which the event source is referenced.</li>
@@ -66,7 +60,8 @@ WL.Server.createEventSource({
 
 Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-{% highlight js %} function submitNotification(userId, notificationText) {
+{% highlight js %} 
+function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
     if (userSubscription === null) {
@@ -81,7 +76,8 @@ Notifications can be either polled from, or pushed by, the back-end system. In t
     return {
         result: "Notification sent to user :: " + userId
     };
-} {% endhighlight %} 
+} 
+{% endhighlight %} 
 
 <h2 id="clientSideApi">Notification API: Client-side </h2>
 A device subscription belongs to a user subscription and exists in the scope of a specific user and event source. A user subscription can have several device subscriptions.
@@ -101,18 +97,18 @@ ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener 
   readyToSubscribeListener.alias = self.alias;
   readyToSubscribeListener.adapterName = self.adapterName;
   readyToSubscribeListener.eventSourceName = self.eventSourceName;
- {% endhighlight %} 
+{% endhighlight %} 
 
 </li><li>Set the <code>onReadyToSubscribeListener</code> on <code>WLPush</code>.
 
 {% highlight objc %} 
 [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];
- {% endhighlight %} 
+{% endhighlight %} 
 
 </li><li>Pass the token to <code>WLPush</code>.
 {% highlight objc %} 
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
- {% endhighlight %} 
+{% endhighlight %} 
 </li></ol>
 
 <h3>Sending token to client and initializing <code>WLPush</code></h3>
@@ -121,17 +117,17 @@ The user must initialize the <code>WLPush sharedInstance</code> in the applicati
 {% highlight objc %} 
 AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
 [[WLPush sharedInstance]init];
- {% endhighlight %} 
+{% endhighlight %} 
 The user must add this method to the app delegate to get the token.
 {% highlight objc %} 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
 }
- {% endhighlight %} 
+{% endhighlight %} 
 
 The token that is received by this method must be passed to the WLPush method.
 {% highlight objc %} 
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
- {% endhighlight %} 
+{% endhighlight %} 
 
 <h3>Registering the event source</h3>
 
@@ -152,7 +148,7 @@ This function is called when authentication finishes.
 }
 
 @end
- {% endhighlight %} 
+{% endhighlight %} 
 
 <br clear="all"/>
 
@@ -166,7 +162,7 @@ To set up subscription to the event source, use the following API:
   MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];
   [[WLPush sharedInstance]subscribe:self.alias :nil :mySubscribeListener];
 }
- {% endhighlight %} 
+{% endhighlight %} 
 
 <code>[[WLPush sharedInstance] subscribe]</code> takes the following parameters:
 
@@ -188,7 +184,7 @@ To set up unsubscription from an event source, use the following API:
   MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];
   [[WLPush sharedInstance]unsubscribe:self.alias :myUnsubscribelistener];
 }
- {% endhighlight %} 
+{% endhighlight %} 
 <code>[[WLPush sharedInstance] unsubscribe]</code> takes the following parameters:
 
 <ul>
@@ -211,7 +207,7 @@ When a push notification is received by a device, the <code>didReceiveRemoteNoti
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }
- {% endhighlight %} 
+{% endhighlight %} 
 If the application was in background mode (or inactive) when the push notification arrived, this callback is called when the application returns to the foreground.
 
 <h2 id="sample">Sample application</h2>

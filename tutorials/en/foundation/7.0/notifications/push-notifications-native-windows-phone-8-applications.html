@@ -3,6 +3,7 @@ layout: tutorial
 title: Push notifications in native Windows Phone 8 applications
 show_children: true
 relevantTo: [windowsphone8]
+weight: 4
 ---
 <h2>Overview</h2>
 <p>IBM MobileFirst Platform Foundation provides a unified set of API methods to send, or push, notifications to devices where the MobileFirst application is installed. It is possible to send a notification in 3 distinct types: event source notification, broadcast notification, and tag notification.</p>
@@ -30,17 +31,17 @@ To create and configure a Windows Phone 8 native project, first follow these tut
 <ol>
 <li>
 <h3>Create a MobileFirst project.</h3>
-<p>        Add a MobileFirst Windows Phone 8 native API. The native API project provides the files that are necessary to build a Windows Phone 8 app.</li>
+<p>Add a MobileFirst Windows Phone 8 native API. The native API project provides the files that are necessary to build a Windows Phone 8 app.</li>
 <li>
 <h3>Edit the <code>application-descriptor.xml</code> file.</h3>
-<p>        Add the "<strong>pushSender</strong>" tag to the <code>application-descriptor.xml</code> file.</p>
-<p>{% highlight xml %} <br />
-<nativeWindowsPhone8App id="WindowsPhone8NativePush" platformVersion="6.3.0.00.20141111-0731"<br />
-version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" securityTest="MySecurityTest"></p>
-<p> <displayName>WindowsPhone8NativePush</displayName><br />
- <description>WindowsPhone8NativePush</description><br />
- <pushSender></pushSender></p>
-<p></nativeWindowsPhone8App>  {% endhighlight %} 
+<p>Add the "<strong>pushSender</strong>" tag to the <code>application-descriptor.xml</code> file.</p>
+<p>{% highlight xml %}
+<nativeWindowsPhone8App id="WindowsPhone8NativePush" platformVersion="6.3.0.00.20141111-0731" version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" securityTest="MySecurityTest">
+    <displayName>WindowsPhone8NativePush</displayName>
+    <description>WindowsPhone8NativePush</description>
+    <pushSender></pushSender></p>
+</nativeWindowsPhone8App>
+{% endhighlight %} 
     </li>
 <li>
 <h4>Edit the <code>wlclient.properties</code> file.</h4>
@@ -54,9 +55,9 @@ version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" s
 <li>
 <h4>Modify the native Windows Phone 8 project.</h4>
 <p>    Edit the <code>Properties\WMAppManifest.xml</code> file and add the following capabilities:<br />
-{% highlight xml %} <br />
-<Capability Name="ID_CAP_PUSH_NOTIFICATION" /><br />
-<Capability Name="ID_CAP_IDENTITY_DEVICE" /><br />
- {% endhighlight %} </li>
+{% highlight xml %}
+<Capability Name="ID_CAP_PUSH_NOTIFICATION" />
+<Capability Name="ID_CAP_IDENTITY_DEVICE" />
+{% endhighlight %} </li>
 <h2 id="selectNotificationType">Select a notification type</h2>
 </ol>

@@ -2,15 +2,10 @@
 layout: tutorial
 title: Tag-based notifications in native Windows 8 applications
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip
 ---
-
-    <ul>
-        <li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip">Download Studio project</a>
-        </li>
-    </ul>
-
-
 <h2>Overview</h2>
 Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
@@ -18,7 +13,8 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h2>Setting up tags</h2>
 Tags are defined in the <code>application-descriptor.xml</code> file:
 
-{% highlight xml %} <application xmlns="http://www.worklight.com/application-descriptor" id="HybridTagNotifications" platformVersion="7.0.0.00.20150312-0731">
+{% highlight xml %}
+<application xmlns="http://www.worklight.com/application-descriptor" id="HybridTagNotifications" platformVersion="7.0.0.00.20150312-0731">
 ...
 ...
 ...
@@ -31,7 +27,8 @@ Tags are defined in the <code>application-descriptor.xml</code> file:
         <name>my tag 2</name>
         <description>About my tag 2</description>
     </tag>
-</tags> {% endhighlight %} 
+</tags>
+{% endhighlight %} 
 
 <h2>API methods for tag-based notification</h2>
 <h3>Client-side API methods:</h3>
