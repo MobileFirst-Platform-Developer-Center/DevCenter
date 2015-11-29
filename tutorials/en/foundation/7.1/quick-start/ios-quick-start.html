@@ -17,7 +17,7 @@ relevantTo: [ios]
 <ul>
 <li>
 <h4>Create a new project and iOS framework/server-side application entity</h4>
-<p>                {% highlight shell %}<br />
+<p>                {% highlight bash %}<br />
                 mfp create MyProject<br />
                 cd MyProject<br />
                 mfp add api MyiOSFramework -e ios<br />
@@ -25,7 +25,7 @@ relevantTo: [ios]
             </li>
 <li>
 <h4>Add a HTTP adapter to the project</h4>
-<p>                [code firstline="4" lang="shell"]<br />
+<p>                {% highlight bash %}<br />
                 mfp add adapter MyAdapter -t http<br />
                 {% endhighlight %}
             </li>
@@ -36,7 +36,7 @@ relevantTo: [ios]
 <ul>
 <li>
 <h4>Start the MobileFirst Server and deploy the server-side application entity and adapter</h4>
-<p>                [code firstline="5" lang="shell"]<br />
+<p>                {% highlight bash %}<br />
                 mfp start<br />
                 # Wait until a browser window is opened, displaying the MobileFirst Console<br />
                 mfp build<br />
