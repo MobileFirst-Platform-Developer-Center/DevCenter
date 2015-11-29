@@ -2,18 +2,12 @@
 layout: tutorial
 title: Event source-based notifications in native Windows 8 applications
 relevantTo: [windowsphone8]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/Windows8NativePushProject.zip
 ---
-
-<ul>
-    <li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsNativeProject.zip">Download Studio project</a>
-    </li>
-    <li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/Windows8NativePushProject.zip">Download native project</a>
-    </li>
-  </ul>
-
-
 <h2>Overview</h2>
 Event source notifications are notification messages that are targeted to devices with a user subscription.
 
@@ -39,7 +33,7 @@ WL.Server.createEventSource({
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
     securityTest:'PushApplication-strong-mobile-securityTest'
 });
- {% endhighlight %} 
+{% endhighlight %} 
 
 <ul>
 <li><code>name</code> – A name by which the event source is referenced.</li>
@@ -51,7 +45,8 @@ WL.Server.createEventSource({
 
 Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-{% highlight js %} function submitNotification(userId, notificationText) {
+{% highlight js %}
+function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
     if (userSubscription === null) {
@@ -66,7 +61,8 @@ Notifications can be either polled from, or pushed by, the back-end system. In t
     return {
         result: "Notification sent to user :: " + userId
     };
-} {% endhighlight %} 
+} 
+{% endhighlight %} 
 
 <h2 id="clientSideApi">Notification API - Client-side</h2>
 
@@ -86,7 +82,7 @@ You derive all push notification operations from the <code>WLPush</code> class.
 {% highlight csharp %} 
  OnReadyToSubscribeListener myOnReadyListener = new OnReadyToSubscribeListener();
  push.onReadyToSubscribeListener = myOnReadyListener;
- {% endhighlight %} 
+{% endhighlight %} 
 
 The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.
 
@@ -94,7 +90,7 @@ The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener
 {% highlight csharp %} 
 public void onReadyToSubscribe()
 {...}
- {% endhighlight %} 
+{% endhighlight %} 
 </ul>
 
 <h3><code>WLPush.registerEventSourceCallback</code></h3>
@@ -113,7 +109,7 @@ Example:
 
 {% highlight csharp %} 
 WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);
- {% endhighlight %} 
+{% endhighlight %} 
 
 Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.
 
@@ -121,7 +117,8 @@ Typically, this method is called in the <code>onReadyToSubscribe</code> callback
 public void onReadyToSubscribe()
 {
   WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter","PushEventSource", this);
-} {% endhighlight %} 
+} 
+{% endhighlight %} 
 
 <br clear="all"/>
 
@@ -173,7 +170,7 @@ Example:
 WLPush push = WLClient.getInstance().getPush();
 MyUnsubscribeListener myUnsubListener = new MyUnsubscribeListener();
 push.unsubscribe("myPush", myUnsubListener);
- {% endhighlight %} 
+{% endhighlight %} 
 
 <code>MyUnsubscribeListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:
 
@@ -190,7 +187,7 @@ push.unsubscribe("myPush", myUnsubListener);
 
 {% highlight csharp %} 
 WLClient.getInstance().getPush().isSubscribed("myPush");
- {% endhighlight %} 
+{% endhighlight %} 
 
 <h3>Receiving a push notification</h3>
 
@@ -198,24 +195,23 @@ When a push notification is received, the <code>onReceive</code> method is calle
 
 {% highlight csharp %} 
 class OnReadyToSubscribeListener : WLOnReadyToSubscribeListener, WLEventSourceListener{...}
- {% endhighlight %} 
+{% endhighlight %} 
 
 The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.
 
 {% highlight csharp %} 
 WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);
- {% endhighlight %} 
+{% endhighlight %} 
 
 The <code>onReceive</code> method displays the received notification on the screen.
 
 {% highlight csharp %} 
 public void onReceive(String props, String payload)
 {
-     Debug.WriteLine("Props: " + props);
-     Debug.WriteLine("Payload: " + payload);
-
+    Debug.WriteLine("Props: " + props);
+    Debug.WriteLine("Payload: " + payload);
 }
- {% endhighlight %} 
+{% endhighlight %} 
 
 <h2 id="sample">Sample application</h2>
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/PushNotificationsNativeProject.zip">Click to download</a> the Studio project.

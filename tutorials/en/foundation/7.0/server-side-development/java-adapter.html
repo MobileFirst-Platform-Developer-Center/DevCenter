@@ -2,13 +2,12 @@
 layout: tutorial
 title: Java Adapters
 show_children: true
+weight: 6
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 downloads:
   - name: Download Studio project
     url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/MobileFirstAdaptersProject.zip
-
 ---
-
 <h2 id="overview">Overview</h2>
 <p>Java adapters are based on the JAX-RS specification. In other words, a Java adapter is a JAX-RS service that can easily be deployed to a MobileFirst Server instance and has access to MobileFirst Server APIs.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/java-adapter.jpg"/></p>
@@ -56,20 +55,20 @@ downloads:
 <h3>XML File</h3>
 <p>Java adapters have an XML configuration file such as all the other types of adapters. In this configuration file, configure the class name of the JAX-RS application for this adapter.<br />
 In our case: <code>com.sample.adapter.JavaAdapterApplication</code>.</p>
-<p>{% highlight xml %} <br />
-<?xml version="1.0" encoding="UTF-8"?><br />
-<wl:adapter name="JavaAdapter"<br />
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br />
-	xmlns:wl="http://www.ibm.com/mfp/integration"<br />
-	xmlns:http="http://www.ibm.com/mfp/integration/http"></p>
-<p>	<displayName>JavaAdapter</displayName><br />
-	<description>JavaAdapter</description><br />
-	<connectivity><br />
-		<connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy><br />
-	</connectivity></p>
-<p>	<JAXRSApplicationClass>com.sample.adapter.JavaAdapterApplication</JAXRSApplicationClass><br />
-</wl:adapter><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8"?>
+<wl:adapter name="JavaAdapter"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:wl="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
+	<displayName>JavaAdapter</displayName>
+	<description>JavaAdapter</description>
+	<connectivity>
+		<connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy>
+	</connectivity>
+	<JAXRSApplicationClass>com.sample.adapter.JavaAdapterApplication</JAXRSApplicationClass>
+</wl:adapter>
+{% endhighlight %} </p>
 <p>Note that the connection policy type is <code>NullConnectionPolicy</code>, which means that the XML configuration file is not used to define the connectivity of the adapter. In Java adapters, this is the only allowed connectivity type. The MobileFirst Server leaves setting up the connectivity policy to the developer of the adapter. For example, an adapter can contain code that uses an Apache HTTP client to connect to a back-end system.</p>
 <h3>The <code>src</code> folder</h3>
 <p>In this folder, put the Java sources of the JAX-RS service. JAX-RS services are composed of an application class (which extends <code>com.worklight.wink.extensions.MFPJAXRSApplication</code>) and resources classes.</p>
@@ -79,48 +78,48 @@ In our case: <code>com.sample.adapter.JavaAdapterApplication</code>.</p>
 <p>In the <code>lib</code> folder you can put JAR library files that will be available in the adapter's class path at run time. Note that these JAR files are loaded in the private class loader of the adapter as <code>parent last</code>. This setting means that the JAR files override any libraries provided by the container.</p>
 <h2 id="jaxrsapplication">JAX-RS application class</h2>
 <p>The JAX-RS application class tells the JAX-RS framework which resources are included in the application.</p>
-<p>{% highlight java %} <br />
-package com.sample.adapter;</p>
-<p>import java.util.logging.Logger;<br />
-import com.worklight.wink.extensions.MFPJAXRSApplication;</p>
-<p>public class JavaAdapterApplication extends MFPJAXRSApplication{</p>
-<p>	static Logger logger = Logger.getLogger(JavaAdapterApplication.class.getName());</p>
-<p>	@Override<br />
-	protected void init() throws Exception {<br />
-		logger.info("Adapter initialized!");<br />
-	}</p>
-<p>	@Override<br />
-	protected String getPackageToScan() {<br />
-		//The package of this class will be scanned (recursively) to find JAX-RS resources.<br />
-		return getClass().getPackage().getName();<br />
-	}<br />
-}<br />
- {% endhighlight %} </p>
+<p>{% highlight java %}
+package com.sample.adapter;
+<p>import java.util.logging.Logger;
+import com.worklight.wink.extensions.MFPJAXRSApplication;
+public class JavaAdapterApplication extends MFPJAXRSApplication{
+	static Logger logger = Logger.getLogger(JavaAdapterApplication.class.getName());
+	@Override
+	protected void init() throws Exception {
+		logger.info("Adapter initialized!");
+	}
+	@Override
+	protected String getPackageToScan() {
+		//The package of this class will be scanned (recursively) to find JAX-RS resources.
+		return getClass().getPackage().getName();
+	}
+}
+{% endhighlight %} </p>
 <p>The <code>MFPJAXRSApplication</code> class scans the package for JAX-RS resources and automatically creates a list. Additionally, its <code>init</code> method is called by MobileFirst Server as soon as the adapter is deployed (before it starts serving) and when the MobileFirst runtime starts up.</p>
 <h2 id="jaxrsresource">Implementing a JAX-RS resource</h2>
 <p>JAX-RS resource is a POJO (Plain Old Java Object) which is mapped to a root URL and has Java methods for serving requests to this root URL and its child URLs. Any resource can have a separate set of URLs.</p>
-<p>{% highlight java %} <br />
-package com.sample.adapter;</p>
-<p>import java.util.logging.Logger;</p>
-<p>import javax.ws.rs.GET;<br />
-import javax.ws.rs.Path;<br />
-import javax.ws.rs.PathParam;</p>
-<p>import com.worklight.adapters.rest.api.WLServerAPI;<br />
-import com.worklight.adapters.rest.api.WLServerAPIProvider;</p>
-<p>@Path("/")<br />
-public class JavaAdapterResource {</p>
-<p>	//Define logger (Standard java.util.Logger)<br />
-	static Logger logger = Logger.getLogger(JavaAdapterResource.class.getName());</p>
-<p>    //Define the server api to be able to perform server operations<br />
-    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();</p>
-<p>	/* Path for method: "<server address>/Adapters/adapters/JavaAdapter/{username}" */<br />
-	@GET<br />
-	@Path("/{username}")<br />
-	public String helloUser(@PathParam("username") String name){<br />
-		return "Hello " + name;<br />
-	}</p>
-<p>}<br />
- {% endhighlight %} </p>
+<p>{% highlight java %}
+package com.sample.adapter;
+import java.util.logging.Logger;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import com.worklight.adapters.rest.api.WLServerAPI;
+import com.worklight.adapters.rest.api.WLServerAPIProvider;
+@Path("/")
+public class JavaAdapterResource {<
+	//Define logger (Standard java.util.Logger)
+	static Logger logger = Logger.getLogger(JavaAdapterResource.class.getName());
+    //Define the server api to be able to perform server operations
+    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
+	/* Path for method: "<server address>/Adapters/adapters/JavaAdapter/{username}" */
+	@GET
+	@Path("/{username}")
+	public String helloUser(@PathParam("username") String name){
+		return "Hello " + name;
+	}
+}
+{% endhighlight %} </p>
 <p><code>@Path("/")</code> before the class definition determines the root path of this resource. If you have multiple resource classes, you should set each resource a different path.</p>
 <p>For example, if you have a <code>UserResource</code> with <code>@Path("/users")</code> to manage users of a blog, that resource is accessible via <code>http(s)://host:port/ProjectName/adapters/AdapterName/<em>users</em>/</code>.</p>
 <p>That same adapter may contain another resource <code>PostResource</code> with <code>@Path("/posts")</code> to manage posts of a blog. It is accessible via the <code>http(s)://host:port/ProjectName/adapters/AdapterName/<em>posts</em>/</code> URL.</p>
@@ -131,14 +130,14 @@ public class JavaAdapterResource {</p>
 <h2 id="serverapi">MobileFirst server-side API</h2>
 <p>Java adapters can use the MobileFirst server-side Java API to perform operations that are related to MobileFirst Server, such as calling other adapters, submitting push notifications, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.</p>
 <p>To get the server API interface, use the following code:<br />
-{% highlight java %} <br />
-WLServerAPI api = WLServerAPIProvider.getWLServerAPI();<br />
- {% endhighlight %} </p>
+{% highlight java %}
+WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
+{% endhighlight %} </p>
 <p>The <code>WLServerAPI</code> interface is the parent of all the API categories: (Analytics, Configuration, Push, Adapters, Authentication).</p>
 <p>If you want, for example, to use the push API, you can write:</p>
-<p>{% highlight java %} <br />
-PushAPI pushApi = serverApi.getPushAPI();<br />
- {% endhighlight %} </p>
+<p>{% highlight java %}
+PushAPI pushApi = serverApi.getPushAPI();
+{% endhighlight %} </p>
 <blockquote><p>For more information review the Server-side APIs in the user documentation.</p></blockquote>
 <h2 id="testing">Testing MobileFirst adapters</h2>
 <h3>In MobileFirst Studio</h3>
@@ -159,11 +158,11 @@ PushAPI pushApi = serverApi.getPushAPI();<br />
 <p>For you to work around this during your development stage, the development version of the MobileFirst server includes a test token endpoint.<br />
 To receive a Test Token, make an HTTP <code>POST</code> request to <code>http(s)://{server_ip}:{server_port}/{project_name}/authorization/v1/testtoken</code> with your HTTP client (Postman).</p>
 <p>You receive a JSON object with a temporary valid authorization token:</p>
-<p>{% highlight javascript %} <br />
-{<br />
-"Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImpwayI6eyJhbGciOiJSU0EiLCJleHAiOiJBUUFCIiwibW9kIjoiQU0wRGQ3eEFkdjZILXlnTDdyOHFDTGRFLTNJMm2FPZUlxb2UtckpBMHVadXcyckhoWFozV1ZDZUtlelJWY0NPWXNRTi1tUUswbWZ6NV8zby1ldjBVWXdYa1NPd0JCbDFFaHFJd1ZEd09pZWcySk1HbDBFWHNQWmZrTlpJLUhVNG9NaWktVHJOTHp..."<br />
-}<br />
- {% endhighlight %} </p>
+<p>{% highlight javascript %}
+{
+"Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImpwayI6eyJhbGciOiJSU0EiLCJleHAiOiJBUUFCIiwibW9kIjoiQU0wRGQ3eEFkdjZILXlnTDdyOHFDTGRFLTNJMm2FPZUlxb2UtckpBMHVadXcyckhoWFozV1ZDZUtlelJWY0NPWXNRTi1tUUswbWZ6NV8zby1ldjBVWXdYa1NPd0JCbDFFaHFJd1ZEd09pZWcySk1HbDBFWHNQWmZrTlpJLUhVNG9NaWktVHJOTHp..."
+}
+{% endhighlight %} </p>
 <p>In your next requests to your adapter endpoints, add an HTTP header with the name "<code>Authorization</code>" and the value you received previously (starting with <code>Bearer</code>).</p>
 <p>The security framework now skips any security challenges protecting your resource.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/java-adapter-postman.png"/></p>

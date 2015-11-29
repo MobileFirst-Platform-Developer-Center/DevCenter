@@ -88,30 +88,30 @@ Protecting a resource with <strong>Security test2</strong> means the user must a
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_authentication_config_editor.png"></p>
 <p></a><img src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png"/></p>
 <p>Each realm has a name, a <strong>loginModule</strong> specification, a <strong><code>className</code></strong> of an authenticator implementation and optional parameters.</p>
-<p>{% highlight xml %} <br />
-<realms><br />
-  <realm name="SampleAppRealm" loginModule="StrongDummy"><br />
-    <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className><br />
-  </realm></p>
-<p>  <realm name="SubscribeServlet" loginModule="rejectAll"><br />
-    <className>com.worklight.core.auth.ext.HeaderAuthenticator</className><br />
-  </realm><br />
-</realms><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<realms>
+    <realm name="SampleAppRealm" loginModule="StrongDummy">
+        <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
+    </realm>
+    <realm name="SubscribeServlet" loginModule="rejectAll">
+        <className>com.worklight.core.auth.ext.HeaderAuthenticator</className>
+    </realm>
+</realms>
+{% endhighlight %} </p>
 <p>Each login module has a name, a <strong><code>className</code></strong> of the implementation and optional parameters.</p>
-<p>{% highlight xml %} <br />
-<loginModules><br />
-  <loginModule name="StrongDummy"><br />
-    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
-  </loginModule></p>
-<p>  <loginModule name="requireLogin"><br />
-    <className>com.worklight.core.auth.ext.SingleIdentityLoginModule</className><br />
-  </loginModule></p>
-<p>  <loginModule name="rejectAll"><br />
-    <className>com.worklight.core.auth.ext.RejectingLoginModule</className><br />
-  </loginModule><br />
-</loginModules><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<loginModules>
+    <loginModule name="StrongDummy">
+        <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+    </loginModule>
+    <loginModule name="requireLogin">
+        <className>com.worklight.core.auth.ext.SingleIdentityLoginModule</className>
+    </loginModule>
+    <loginModule name="rejectAll">
+        <className>com.worklight.core.auth.ext.RejectingLoginModule</className>
+    </loginModule>
+</loginModules>
+{% endhighlight %} </p>
 <h2 id="security">Defining security tests</h2>
 <p>With IBM MobileFirst Platform Foundation, you can set up multiple realms for a security test.</p>
 <p>As part of the security test setup, you must set which realms are considered a <strong>user realm</strong> and which are considered a <strong>device realm</strong>.<br />
@@ -130,11 +130,11 @@ Three types of security tests can be defined in the <code>authenticationConfig.x
 By default, the <strong>webSecurityTest</strong> includes a protection against XSRF attacks. For more information about this protection, see the user documentation.<br />
 Each <strong>webSecurityTest</strong> must contain one <strong>testUser</strong> element with a realm definition.<br />
 This realm is considered a <strong>user realm</strong>.</p>
-<p>{% highlight xml %} <br />
-<webSecurityTest name="SampleWebSecurityTest"><br />
-  <testUser realm="SampleRealm" /><br />
-</webSecurityTest><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<webSecurityTest name="SampleWebSecurityTest">
+    <testUser realm="SampleRealm" />
+</webSecurityTest>
+{% endhighlight %} </p>
 <h3>mobileSecurityTest</h3>
 <p>Use the <strong>mobileSecurityTest</strong> to protect mobile applications.<br />
 By default, the <strong>mobileSecurityTest</strong> includes:</p>
@@ -145,62 +145,62 @@ By default, the <strong>mobileSecurityTest</strong> includes:</p>
 </ul>
 <p>Each <strong>mobileSecurityTest</strong> must contain one <strong>testUser</strong> element with realm definition.<br />
 This realm is considered a <strong>user realm</strong>.</p>
-<p>{% highlight xml %} <br />
-<mobileSecurityTest name="SampleMobileSecurityTest"><br />
-  <testUser realm="SampleRealm" /><br />
-</mobileSecurityTest><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<mobileSecurityTest name="SampleMobileSecurityTest">
+    <testUser realm="SampleRealm" />
+</mobileSecurityTest>
+{% endhighlight %} </p>
 <h3>customSecurityTest</h3>
 <p>Use the <strong>customSecurityTest</strong> to dictate your own security preferences.<br />
 Unlike the mobile and web security tests, the <strong>customSecurityTest</strong> does not include any predefined authentication realms. It includes only the tests that are defined by the developer.<br />
 Any number of tests can be defined within the <strong>customSecurityTest</strong>.<br />
 You can define which realm to be used as a user realm by adding the <code>isInternalUserId=“true”</code> property.<br />
 You can define the order of realms that the user must authenticate in.</p>
-<p>{% highlight xml %} <br />
-<customSecurityTest name="SampleCustomSecurityTest"><br />
-  <test realm="SampleRealm1" step="1"/><br />
-  <test realm="SampleRealm2" step="2"/><br />
-  <test realm="SampleRealm3" step="3" isInternalUserID="true"/><br />
-</webSecurityTest><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<customSecurityTest name="SampleCustomSecurityTest">
+    <test realm="SampleRealm1" step="1"/>
+    <test realm="SampleRealm2" step="2"/>
+    <test realm="SampleRealm3" step="3" isInternalUserID="true"/>
+</webSecurityTest>
+{% endhighlight %} </p>
 <h2 id="protectApp">Protecting applications</h2>
 <p>Protecting an application means that authentication is required immediately when the application tries to connect to the MobileFirst Server instance.</p>
 <p>A separate <strong>securityTest</strong> can be defined for each application environment in the <code>application-descriptor.xml</code> file.</p>
-<p>{% highlight xml %} <br />
-<android version="1.0" securityTest="SampleMobileSecurityTest"><br />
-  ...<br />
-</android><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<android version="1.0" securityTest="SampleMobileSecurityTest">
+  ...
+</android>
+{% endhighlight %} </p>
 <p>If no security test is defined for a specific environment, only a minimal set of default platform tests are carried out.</p>
 <h2 id="protectAdapters">Protecting adapters</h2>
 <p>Protecting an adapter procedure means that authentication is required when this adapter procedure is called by a client application.<br />
 A separate <strong>securityTest</strong> can be defined for each adapter procedure in the adapter XML file.</p>
-<p>{% highlight xml %} <br />
-<wl:adapter name="DummyAdapter"<br />
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br />
-    xmlns:wl="http://www.worklight.com/integration"<br />
-    xmlns:http="http://www.worklight.com/integration/http"></p>
-<p>    <displayName>DummyAdapter</displayName><br />
-    <description>DummyAdapter</description><br />
-    <connectivity><br />
-        <connectionPolicy xsi:type="http:HTTPConnectionPolicyType"><br />
-            <protocol>http</protocol><br />
-            <domain>rss.cnn.com</domain><br />
-            <port>80</port><br />
-        </connectionPolicy><br />
-        <loadConstraints maxConcurrentConnectionsPerNode="2" /><br />
-    </connectivity><br />
-    <procedure name="getSecretData" securityTest="DummyAdapter-securityTest"/><br />
-</wl:adapter><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<wl:adapter name="DummyAdapter"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:wl="http://www.worklight.com/integration"
+    xmlns:http="http://www.worklight.com/integration/http"><
+    <displayName>DummyAdapter</displayName>
+    <description>DummyAdapter</description>
+    <connectivity>
+        <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+            <protocol>http</protocol>
+            <domain>rss.cnn.com</domain>
+            <port>80</port>
+        </connectionPolicy>
+        <loadConstraints maxConcurrentConnectionsPerNode="2" />
+    </connectivity>
+    <procedure name="getSecretData" securityTest="DummyAdapter-securityTest"/>
+</wl:adapter>
+{% endhighlight %} </p>
 <h2 id="protectStatic">Protecting static resources</h2>
 <p>A static resource is a URL that is loaded from the MobileFirst Server instance, for example: the console or mobile web application.</p>
 <p>Protecting a static resource means that MobileFirst Server requires authentication at any attempt to browse to the specified URL.<br />
 The static resources and their protection can be defined in the <code>authenticationConfig.xml</code> file.</p>
-<p>{% highlight xml %} <br />
-<staticResources><br />
-  <resource id="mobileFirstConsole" securityTest="SubscribeServlet"><br />
-    <urlPatterns>/console*</urlPatterns><br />
-  </resource><br />
-</staticResources><br />
- {% endhighlight %} </p>
+<p>{% highlight xml %}
+<staticResources>
+    <resource id="mobileFirstConsole" securityTest="SubscribeServlet">
+        <urlPatterns>/console*</urlPatterns>
+    </resource>
+</staticResources>
+{% endhighlight %} </p>
