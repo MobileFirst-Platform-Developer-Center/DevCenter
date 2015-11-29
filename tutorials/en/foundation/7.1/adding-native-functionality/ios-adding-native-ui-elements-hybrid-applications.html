@@ -112,7 +112,7 @@ You can use this feature to trigger native code to be run in the background, to 
 </ul>
 <h3>Step 2</h3>
 <p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
-[code gutter="false"]@interface MyReceiver: NSObject <WLActionReceiver>{% endhighlight %}</p>
+{% highlight bash %}@interface MyReceiver: NSObject <WLActionReceiver>{% endhighlight %}</p>
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:</p>
 <p>{% highlight obj-c %}-(void) onActionReceived:(NSString *)action withData:(NSDictionary *) data {<br />
     if ([action isEqualToString:@"doSomething"]){<br />
