@@ -35,6 +35,8 @@ module Jekyll
           old_url = old_url.sub '/learn-more/7.0/scalability-and-hardware-sizing/', 'additional-documentation/scalability-hardware-sizing-7-0/'
           old_url = old_url.sub '/learn-more/6.3/scalability-and-hardware-sizing/', 'additional-documentation/scalability-hardware-sizing-6-3/'
 
+          old_url = old_url.sub '/downloads/', 'install/'
+
           next unless old_url != page.url
           new_url = site.baseurl + page.url
           site.pages << RedirectPage.new(site, site.source, File.join(old_url), new_url)
