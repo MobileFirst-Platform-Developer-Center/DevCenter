@@ -170,7 +170,7 @@ request.send().then(
 
 <p>For iOS applications, you call the WLResourceRequest sendWithURL method.  This can be done in either Objective-C or Swift. An Objective-C snipped is shown below:</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 NSURL* url = [NSURL URLWithString:@"http://myserver/api/Companies"];
 WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
 [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {

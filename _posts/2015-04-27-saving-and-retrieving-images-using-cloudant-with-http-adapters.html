@@ -22,7 +22,7 @@ I will be using a sample cluster which you can view by going to this url : https
 <p>We can use a Cordova plugin to read an image file from an app then store this image into our Cloudant Database. In my example I am using iOS so I created two files, ReadFiles.m and ReadFiles.h, that are responsible for reading an image file from a sample app and converting it to a base64 string. This string will be sent to our Cloudant database called demo.
 
 <h3>ReadFiles.m</h3>
-{% highlight objc %}
+{% highlight objc linenos %}
 #import "ReadFiles.h"
 @implementation ReadFiles
 - (void)readFile:(CDVInvokedUrlCommand *)command{
@@ -38,7 +38,7 @@ I will be using a sample cluster which you can view by going to this url : https
 {% endhighlight %}
 
 <h3>ReadFiles.h</h3>
-{% highlight objc %}
+{% highlight objc linenos %}
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 @interface ReadFiles : CDVPlugin

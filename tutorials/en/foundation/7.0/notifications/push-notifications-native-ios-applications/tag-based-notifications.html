@@ -51,7 +51,7 @@ Tags are defined in the <code>application-descriptor.xml</code> file:
 
 When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is called. The logic to handle the notification should be defined here.
 
-{% highlight objc %} 
+{% highlight objc linenos %} 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }
@@ -61,7 +61,7 @@ When a notification is received by a device, the <code>didReceiveRemoteNotificat
     <li>userInfo - A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
 </ul>
 
-{% highlight objc %} [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener]; {% endhighlight %} 
+{% highlight objc linenos %} [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener]; {% endhighlight %} 
 <ul>
 <li>This method registers a listener to be used for push notifications. This listener should implement the OnReadyToSubscribe() method.</li>
 </ul>

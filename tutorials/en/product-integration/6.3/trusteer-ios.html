@@ -83,12 +83,12 @@ function onSuccess(result) {
 <h2>Access Risk Items in Objective-C</h2>
 <p>Optionally, you can access the client-side generated Trusteer data object using the following API:
 
-{% highlight objc %}
+{% highlight objc linenos %}
 #import “WLTrusteer.h”
 NSDictionary* risks =[[WLTrusteer sharedInstance] riskAssessment];<br />
 {% endhighlight %}
 This returns an <code>NSDictionary</code> of all the data processed by Truster. See Trusteer documentation to get information on each risk item.<br />
-{% highlight objc %}
+{% highlight objc linenos %}
 //See in the logs what the full result looks like
 NSLog(@"%@",risks);
 //Check for a specific flag
@@ -185,19 +185,19 @@ trusteerChallengeHandler.processSuccess = function(identity) {
 <p>Assuming you’ve added a Trusteer realm to your server’s authentication configuration file, you can register a challenge handler to receive the responses from the authenticator.</p>
 
 <p>Create a class that extends <code>WLChallengeHandler</code>:</p>
-{% highlight objc %}
+{% highlight objc linenos %}
 #import "WLChallengeHandler.h"
 @interface TrusteerChallengeHandler : WLChallengeHandler
 @end
 {% endhighlight %}
 
 <p>Register your newly created challenge handler for your Trusteer realm:</p>
-{% highlight objc %}
+{% highlight objc linenos %}
 [[WLClient sharedInstance] registerChallengeHandler:[[TrusteerChallengeHandler alloc] initWithRealm:@"wl_basicTrusteerFraudDetectionRealm"]];
 {% endhighlight %}
 
 <p>If you have set one of your realm options to <code>block</code>, a blocking event will trigger <code>handleFailure</code>.</p>
-{% highlight objc %}
+{% highlight objc linenos %}
 @implementation TrusteerChallengeHandler
 //...
 -(void) handleFailure: (NSDictionary *)failure {
@@ -220,7 +220,7 @@ trusteerChallengeHandler.processSuccess = function(identity) {
 
 <p>If your have set one of your realm options to <code>alert</code>, you can catch the alert event by implementing the <code>handleSuccess</code> method.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 @implementation TrusteerChallengeHandler
 //...
 -(void) handleSuccess:(NSDictionary *)success{

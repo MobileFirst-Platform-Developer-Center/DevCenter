@@ -77,7 +77,7 @@ function sayHelloFailure(data) {
     <li>Import the <code>Cordova/CDV.h</code> header file and inherit the <code>CDVPlugin</code> class.</li>
     <li>Declare the <code>SayHelloPlugin</code> signature.
 <p>
-{% highlight objc %}
+{% highlight objc linenos %}
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 
@@ -90,7 +90,7 @@ function sayHelloFailure(data) {
 <h3>Step 2</h3>
 <ol>
 <li>Implement the method. The <code>command</code> argument contains references to the parameters that are sent from JavaScript and callbacks:<br />
-{% highlight objc %}
+{% highlight objc linenos %}
 #import “SayHelloPlugin.h"
 
 @implementation SayHelloPlugin
@@ -99,18 +99,18 @@ function sayHelloFailure(data) {
 
 <p><br clear="all" /></p>
 <li>Write this statement to retrieve the parameters that are sent from JavaScript.<br />
-{% highlight objc %}
+{% highlight objc linenos %}
 NSString *responseString = [NSString stringWithFormat:@"Hello %@", [command.arguments objectAtIndex:0]];
 {% endhighlight %} </li>
 <p><br clear="all" /></p>
 <li>The <code>pluginResult</code> object is created with data retrieved from JavaScript. The <code>CDVCommandStatus</code> parameter defines whether the plug-in call was successful or not.<br />
-{% highlight objc %}
+{% highlight objc linenos %}
 CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:responseString];
 {% endhighlight %} </li>
 <p><br clear="all" /></p>
 
 <li>Use the <code>sendPluginResult</code> method to return a response back to JavaScript (invoke callback).<br />
-{% highlight objc %}
+{% highlight objc linenos %}
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 @end

@@ -43,7 +43,7 @@ If working with existing .m and .h files, the files must be referenced while in 
 Placing the .m and .h files only in the <code>iphone\native\Classes></code> folder in Eclipse is not sufficient, as these files will not be referenced in the Xcode project unless added in Xcode.</p>
 <h4>Step 2</h4>
 <p>To retrieve custom data parameters that are passed from the web view, the <code>setDataFromWebView:(NSDictionary*)data</code> method should be used:</p>
-<p>{% highlight objc %}
+<p>{% highlight objc linenos %}
 -(void)setDataFromWebView:(NSDictionary*)data{
     self.nameParam = (NSString*)[data valueForKey:@"nameParam"];
 }{% endhighlight %}
@@ -52,7 +52,7 @@ Placing the .m and .h files only in the <code>iphone\native\Classes></code> fold
 <p>When the native page switches back to the web view, a <code>[NativePage showWebView:]</code> method should be called.<br />
 To pass data back to the web view can be done by using the <code>NSDictionary</code> object. For example:</p>
 <h4>Objective-C:</h4>
-{% highlight objc %}-(IBAction)returnClicked:(id)sender{
+{% highlight objc linenos %}-(IBAction)returnClicked:(id)sender{
     NSString *phone = [phoneNumber text];
     NSDictionary *returnedData = [NSDictionary dictionaryWithObject:phone forKey:@"phoneNumber"];
     [NativePage showWebView:returnedData];

@@ -71,7 +71,7 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
 <li>Add a new Cocoa Touch Class file, make sure that it is a subclass of <code>UIViewController</code>, and save it in the <code>Classes</code> folder of the Xcode project.</li>
 <li>Import the <code>Cordova/CDV.h</code> and inherit the <code>CDVPlugin</code> class.</li>
 <li>Declare the <code>SayHelloPlugin</code> signature.
-{% highlight objc %}
+{% highlight objc linenos %}
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 <p>@interface SayHelloPlugin : CDVPlugin
@@ -81,22 +81,22 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
 <p><strong>Step 2</strong></p>
 <ul>
 <li>Implement the method. The <code>command</code> argument contains references to the parameters that are sent from JavaScript and callbacks:<br />
-{% highlight objc %}
+{% highlight objc linenos %}
 #import “SayHelloPlugin.h"
 @implementation SayHelloPlugin
 - (void)sayHello:(CDVInvokedUrlCommand*)command {
 {% endhighlight %}
 <p><br clear="all" /></p>
 <li>This statement retrieves the parameters that are sent from JavaScript.<br />
-{% highlight objc %}NSString *responseString = [NSString stringWithFormat:@"Hello %@", [command.arguments objectAtIndex:0]];
+{% highlight objc linenos %}NSString *responseString = [NSString stringWithFormat:@"Hello %@", [command.arguments objectAtIndex:0]];
 {% endhighlight %}</li>
 <p><br clear="all" /></p>
 <li>The <code>pluginResult</code> object is created with data retrieved from JavaScript. The <code>CDVCommandStatus</code> parameter defines whether the plug-in call was successful or not.<br />
-{% highlight objc %}CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:responseString];
+{% highlight objc linenos %}CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:responseString];
     {% endhighlight %}</li>
 <p><br clear="all" /></p>
 <li>The <code>sendPluginResult</code> method is used to return a response back to JavaScript (invoke callback).<br />
-{% highlight objc %}[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+{% highlight objc linenos %}[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 @end
 {% endhighlight %}</li>
