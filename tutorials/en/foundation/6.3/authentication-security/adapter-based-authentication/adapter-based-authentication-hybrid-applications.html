@@ -18,7 +18,7 @@ This is a continuation of the <a title="Adapter-based authentication" href="../.
 <p>When authentication is required, the application hides the <code>AppDiv</code> element and shows the <code>AuthDiv</code> element.<br />
 When authentication is complete, it does the opposite.</p>
 <h3>AppDiv</h3>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <div id="AppDiv">
       <input type="button" id="getSecretDataButton" value="Get secret data" onclick="getSecretData()" />
       <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('SingleStepAuthRealm', {onSuccess:WL.Client.reloadApp})" />
@@ -28,7 +28,7 @@ When authentication is complete, it does the opposite.</p>
 <p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.<br />
 The <code>ResponseDiv</code> element is used to display the <code>getSecretData</code> response.</p>
 <h3>AuthDiv</h3>
-<p>{% highlight html %}/>
+<p>{% highlight html linenos %}/>
 <div id="AuthDiv" style="display:none">
     <p id="AuthInfo"></p>
         <input type="text" placeholder="Enter username" id="AuthUsername"/>

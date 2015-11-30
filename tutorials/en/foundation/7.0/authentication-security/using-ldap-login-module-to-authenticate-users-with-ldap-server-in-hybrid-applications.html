@@ -123,7 +123,7 @@ In this module, the <code>getSecretData</code> procedure returns some hardcoded 
 </ul>
 <p>When authentication is required, the application hides the <code>AppDiv</code> element and shows the <code>AuthDiv</code> element.<br />
 When authentication is complete, it does the opposite.</p>
-<p>{% highlight html %} <br />
+<p>{% highlight html linenos %} <br />
 <div id="AppDiv">
     <input type="button" class="appButton" value="Call protected adapter proc" onclick="getSecretData()" />
     <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('LDAPRealm',{onSuccess: WL.Client.reloadApp})" />
@@ -131,7 +131,7 @@ When authentication is complete, it does the opposite.</p>
 </div>
 {% endhighlight %} </p>
 <p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.</p>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <div id="AuthDiv" style="display:none">
     <div id="loginForm">
         <input type="text" id="usernameInputField" placeholder="Enter username" />

@@ -161,7 +161,7 @@ Add security test to the <code>authenticationConfig.xml</code> as appropriate.</
 Create a file that is named <code>login.html</code> or use the <code>login.html</code> that MFP provides you in the <code>{MFP_Project_Path}/server</code> directory. Save the login.html to the root of your WAR file: <code>{WAS_HOME}/profiles/{your profile}/installedApps/{your node}/{MobileFirst Platform WAR}</code>, if you are working in the development server this is the WAR file located in <code>{MFP_Project_Path}/bin</code>. Unzip that WAR and copy paste the login.html, rezip the project and change the .zip to .war.<br />
 <br />
 If you decide to create your own <code>login.html</code> make sure the form contents are set like the following form:<br />
-{% highlight html %}
+{% highlight html linenos %}
 <html>
    <head></head>
    <body>
@@ -177,7 +177,7 @@ If you decide to create your own <code>login.html</code> make sure the form cont
 Create the <code>loginError.html</code> error page and place it in the root of your WAR file: <code>{WAS_HOME}/profiles/{your profile}/installedApps/{your node}/{MobileFirst Platform WAR}</code>. The <code>loginError.html</code> page is used when login fails.<br />
 <br />
 Set its contents as follows:<br />
-{% highlight html %}
+{% highlight html linenos %}
 <html>
    <head></head>
    <body>

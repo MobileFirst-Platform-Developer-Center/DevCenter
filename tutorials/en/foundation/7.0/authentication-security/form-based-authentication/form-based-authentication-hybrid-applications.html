@@ -23,7 +23,7 @@ downloads:
 <p>When authentication is required, the application hides <code>AppDiv</code> and shows <code>AuthDiv</code>.<br />
 When authentication is complete, it does the opposite.</p>
 <h3>AppDiv</h3>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <div id="AppDiv">
     <input type="button" id="getSecretDataButton" value="Call protected adapter procedure" onclick="getSecretData()" />
     <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('SampleAppRealm', {onSuccess:  WL.Client.reloadApp});" />
@@ -32,7 +32,7 @@ When authentication is complete, it does the opposite.</p>
 {% endhighlight %} </p>
 <p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.</p>
 <h3>AuthDiv</h3>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <div id="AuthDiv" style="display: none">
     <div id="loginForm">
         <input type="text" placeholder="Enter username" id="AuthUsername" />

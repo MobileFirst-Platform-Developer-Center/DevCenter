@@ -102,7 +102,7 @@ The <code>AppDiv</code> element is used to display the application content.<br /
 The <code>AuthDiv</code> element is used for authentication forms.<br />
 When authentication is required, the application hides the <code>AppDiv</code> element and shows the <code>AuthDiv</code> element.<br />
 When authentication is complete, it does the opposite.</p>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <div id="AppDiv">
   <input type="button" class="appButton" value="Call protected adapter proc" onclick="getSecretData()" />
   <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('LDAPRealm',{onSuccess: WL.Client.reloadApp})" />
@@ -110,7 +110,7 @@ When authentication is complete, it does the opposite.</p>
 </div>
 {% endhighlight %}</p>
 <p>The buttons are used to call the <strong>getSecretData</strong> procedure and to log out.</p>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <div id="AuthDiv" style="display:none">
   <div id="loginForm">
     <input type="text" id="usernameInputField" placeholder="Enter username" />

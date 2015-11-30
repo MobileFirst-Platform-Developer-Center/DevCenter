@@ -67,7 +67,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 </ul>
 <h3 id="mobileViews">Mobile views</h3>
 <p>Dojo provides mobile widgets that developers can use to quickly generate mobile views.</p>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <div id="locations" dojoType="dojox.mobile.ScrollableView" selected="true">
     <h1 dojoType="dojox.mobile.Heading" label="Locations" fixed="top"></h1>
     <div class="list-category" dojoType="dojox.mobile.RoundRectCategory">USA</div>
@@ -88,7 +88,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 <h3 id="formClient">Form-based authentication - client</h3>
 <p>IBM Mobile Conference application requires users to be registered and authenticated with the enterprise that is hosting the application. The application is protected by a form-based login, by using a mobile web form that is contained within a Dojox Mobile view.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/login1.png"/></p>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <div dojoType="dojox.mobile.View">
         <c:set var="conferences" scope="session" value=""></c:set>
         <h1 style="text-align: center;" dojoType="dojox.mobile.Heading">IBM Mobile Conference App</h1>
@@ -140,7 +140,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
     </form-login-config>
 </login-config>
 {% endhighlight %}</p>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <div style="position: relative; float: left;">
     <form method="post" action="conferenceLogout.jsp" name="logout">
         <span data-dojo-type="dojox.mobile.ToolBarButton"
@@ -284,7 +284,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <p>IBM MobileFirst Platform provides client libraries for hybrid application development. Although the APIs are platform-neutral, they are often backed by platform-specific implementations. Because the conference app is served remotely, these client-side libraries must be packaged with the conference app (WAR). Each platform-specific implementation is in its own folder structure in the web application.</p>
 <p>When the IBM Mobile Conference application completes the authentication process, the mobile device client initializes the device with the server by using <code>WL.Client.init()</code>. This provides a flexible model for application integrity validation, application updates, and other features.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/platformstructure-155x300.png"/></p>
-<p>{% highlight html %}
+<p>{% highlight html linenos %}
 <c:choose>
     <c:when test="${fn:contains(iOSClient, 'Android')}">
         <link rel="stylesheet" type="text/css"
