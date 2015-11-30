@@ -12,7 +12,9 @@ With Cast Iron Studio, you create an integration project that contains one or mo
 IBM MobileFirst Platform Foundation provides a **Cast Iron Adapter** type to integrate with WebSphere Cast Iron.
 A MobileFirst Cast Iron adapter initiates orchestrations in Cast Iron to retrieve and return data to mobile clients.
 
-![adapter_overview](castiron.jpg)
+**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+
+![castiron](castiron.jpg)
 
 >For more information about Cast Iron, see:  
 [http://www.redbooks.ibm.com/redpapers/pdfs/redp4840.pdf](http://www.redbooks.ibm.com/redpapers/pdfs/redp4840.pdf)  

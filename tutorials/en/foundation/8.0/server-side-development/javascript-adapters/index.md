@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: JavaScript adapters
+title: JavaScript Adapters
 show_children: true
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 ---

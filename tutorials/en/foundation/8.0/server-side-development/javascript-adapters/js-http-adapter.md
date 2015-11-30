@@ -2,13 +2,10 @@
 layout: tutorial
 title: JavaScript HTTP Adapters
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters
 ---
-<!-- <ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters" target="_blank">Download MobileFirst project</a>
-        </li>
-</ul> -->
-
 ### Overview
 By using IBM MobileFirst Platform Foundation HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
 
@@ -16,6 +13,8 @@ You can easily customize HTTP adapters with simple server-side JavaScript code. 
 
 The adapter is configured with XML to define the adapter properties and procedures.  
 Optionally, it is also possible to use XSL to filter received records and fields.
+
+**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
 ### The `XML` File
 The XML file contains settings and metadata.  
@@ -158,4 +157,4 @@ var input = {
 ```
 
 ### Sample application
-<!-- <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters" target="_blank">Click to download</a> the MobileFirst project.</p> -->
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.
