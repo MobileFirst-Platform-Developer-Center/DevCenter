@@ -30,6 +30,6 @@ $(function() {
     }, 500);
   });
 
-  $('.tutorial table').addClass("table table-striped");
+  $('.tutorial table').not('.highlight table').addClass("table table-striped");
 
 });
