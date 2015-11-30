@@ -71,7 +71,7 @@ All of the data I am displaying is simulated. I'm not actively pulling from a re
 
 I exposed two pretty basic procedures on the MobileFirst server: getList - which returns a stripped down list of data, and getDetail - which returns complete data for a stock symbol:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function getList() {
   simulateData();
   var items = [];
@@ -103,7 +103,7 @@ Once these are deployed to the server using the CLI "<a href="https://ibm.biz/Mo
 <h3>Consuming the Data</h3>
 OK, now we're back to the native iOS project.  In either <a href="https://ibm.biz/MobileFirst-InvokeAdapter-iOS" target="_blank">Objective-C</a> or <a href="https://ibm.biz/MobileFirst-InvokeAdapter-Swift" target="_blank">Swift</a> you can invoke an adapter directly using the <a href="https://ibm.biz/MFP-WLResourceRequest" target="_blank">WLResourceRequest</a> or <a href="https://ibm.biz/MFP-WLResourceRequest" target="_blank">invokeProcedure</a> mechanisms.  In my sample I used the WLResoruceRequest API so that I could leverage <a href="https://ibm.biz/MFP-WLResourceRequest" target="_blank">code blocks</a> to define the response/failure handlers directly inline in my code.  So, in my code, I invoke the adapters like so:</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 [objc]-(void) getList:(void (^)(NSArray*))callback{
   NSURL* url = [NSURL URLWithString:@"/adapters/StockAdapter/getList"];
   WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];</p>
@@ -123,7 +123,7 @@ OK, now we're back to the native iOS project.  In either <a href="https://ibm.b
 Once you have the data within the WatchKit extension, we can use it to update the user interface.</p>
 For the data table implementation, you simply need to set the number of rows, and then loop over the data to set values for each row based on the <a href="https://developer.apple.com/library/ios/documentation/WatchKit/Reference/WKInterfaceTable_class/index.html#//apple_ref/occ/cl/WKInterfaceTable" target="_blank">WKInterfaceTable</a> specification.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
     [self.dataTable setNumberOfRows:[self.stocks count] withRowType:@"stockTableRow"];
 for (NSInteger i = 0; i < self.dataTable.numberOfRows; i++) {
   StockTableRow* row = [self.dataTable rowControllerAtIndex:i];
@@ -149,7 +149,7 @@ for (NSInteger i = 0; i < self.dataTable.numberOfRows; i++) {
 
 <p>For the detail screen we're also doing things even more straightforward.  When the screen is initialized, we request detail data from the server.  Once we receive that data, we're simply assigning label values based upon the data that was returned.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 [self.nameLabel setText:[stockData objectForKey:@"name"]];
 NSNumber *change = [stockData objectForKey:@"change"];
 NSNumber *price = [stockData objectForKey:@"price"];

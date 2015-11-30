@@ -44,7 +44,7 @@ npm install passport-mfp-token-validation
 
 <p>First you'll need to add the passport and MFP strategy for use within the server.js file.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var passport = require('passport-mfp-token-validation').Passport;
 var mfpStrategy = require('passport-mfp-token-validation').Strategy;
 {% endhighlight %}
@@ -53,7 +53,7 @@ var mfpStrategy = require('passport-mfp-token-validation').Strategy;
 
 <p><em>In the sample below, I have a project called "MobileFirstLoopBack", which was created using the CLI command "mfp create MobileFirstLoopBack".</em></p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 passport.use(new mfpStrategy({
     publicKeyServerUrl:'http://localhost:10080/MobileFirstLoopBack',
     analytics : { // The analytics item is optional and only required if you wish to log analytics events to MFP.
@@ -69,7 +69,7 @@ app.use(passport.initialize());
 
 <p>Next, we'll add some helper functions to keep things simple.  The cont function is simply a callback to the LoopBack/Express.js next() function, which invokes the next step of the API request chain. Calling <a href="https://docs.strongloop.com/display/public/LB/Defining+middleware#Definingmiddleware-UsingtheExpressAPI" target="_blank">next()</a> after the authentication request is very important, otherwise the generated service endpoint will be overwritten.  The auth function is a helper function to simplify authentication of endpoints.  You pass in the security realm string to which you want to authenticate.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var cont = function(req, res){
     next();
 };
@@ -83,7 +83,7 @@ var auth = function(scope) {
 
 <p>With these helper functions in place we are now ready to protect endpoints.  You can globally protect all api endpoints, or you have the flexibility to protect individual REST method endpoints with different authentication realms.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 //globally protect everything under "/api" with a single authentication realm
 app.use('/api', auth('MyAuthRealm'), cont)
 //OR protectect all API endpoints for a particular path
@@ -97,7 +97,7 @@ app.delete('/api/Employees/:id', auth('DeleteRealm'), cont);
 {% endhighlight %}
 
 Putting it all together, our srever.js file might look something like this:
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 var passport = require('passport-mfp-token-validation').Passport;
@@ -155,7 +155,7 @@ boot(app, __dirname, function(err) {
 
 <p>In a HTML/Hybrid implementation, you would use the WLResourceRequest api:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var url = "http://myserver/api/Companies";
 var request = new WLResourceRequest(url, WLResourceRequest.GET);
 request.send().then(
@@ -170,7 +170,7 @@ request.send().then(
 
 <p>For iOS applications, you call the WLResourceRequest sendWithURL method.  This can be done in either Objective-C or Swift. An Objective-C snipped is shown below:</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 NSURL* url = [NSURL URLWithString:@"http://myserver/api/Companies"];
 WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
 [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
@@ -184,7 +184,7 @@ WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttp
 
 <p>For native Android applications, you would use the WLResourceRequest Java API, as shown in the next snippet:</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 WLResourceRequest req = new WLResourceRequest(new URI("http://myserver/api/Companies"), WLResourceRequest.GET);
 req.send(new WLResponseListener(){
   @Override

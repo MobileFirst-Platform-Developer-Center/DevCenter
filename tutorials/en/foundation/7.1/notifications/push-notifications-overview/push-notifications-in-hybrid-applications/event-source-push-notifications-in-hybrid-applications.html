@@ -24,7 +24,7 @@ relevantTo: [hybrid]
 <li><code>WL.Client.Push.isSubscribed(alias)</code> – returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
 </ul>
 <p>When a push notification is received by a device, the callback function defined in <code>WL.Client.Push.registerEventSourceCallback</code> is invoked:</p>
-<p>{% highlight js %}function pushNotificationReceived(props, payload) {<br />
+<p>{% highlight js linenos %}function pushNotificationReceived(props, payload) {<br />
     alert("pushNotificationReceived invoked");<br />
     alert("props :: " + JSON.stringify(props));<br />
     alert("payload :: " + JSON.stringify(payload));<br />

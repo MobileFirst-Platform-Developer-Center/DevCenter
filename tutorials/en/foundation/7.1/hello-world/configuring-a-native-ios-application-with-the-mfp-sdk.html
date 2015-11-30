@@ -56,7 +56,7 @@ relevantTo: [ios]
 <li>Open the Xcode project by double-clicking the <strong>.xcworkspace</strong> file.</li>
 <li>Right-click the project and select <strong>Add Files To [ProjectName]</strong>, select the <code>worklight.plist</code>, located in the root folder of the Xcode project.</li>
 <li>Whenever you want to use the MobileFirst Native SDK, make sure that you import the framework:<br />
-    {% highlight objc %}<br />
+    {% highlight objc linenos %}<br />
         #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h><br />
     {% endhighlight %}
     </li>
@@ -66,7 +66,7 @@ relevantTo: [ios]
 <p>Now that the native application is set up with the MobileFirst Native SDK, it is also required that MobileFirst Server recognize it after the SDK is used in the application. For this, a MobileFirst Server instance and a MobileFirst project are needed.</p>
 <h3>Creating a project and server instance</h3>
 <p>In <strong>Terminal</strong>, navigate to the location where you want to create the MobileFirst Backend project and run the following commands:</p>
-<p>{% highlight xml %}mfp create your-project-name-here<br />
+<p>{% highlight xml linenos %}mfp create your-project-name-here<br />
 cd your-project-name<br />
 mfp start{% endhighlight %}</p>
 <p>After the project is created and the server is running, the server-side entity can be created and deployed to the server.<br />

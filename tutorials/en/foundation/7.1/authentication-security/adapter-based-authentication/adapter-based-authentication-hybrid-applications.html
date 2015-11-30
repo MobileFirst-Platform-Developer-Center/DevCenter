@@ -20,7 +20,7 @@ This tutorial illustrates the client-side authentication components for adapter-
 <p>When authentication is required, the application hides the <code>AppDiv</code> element and shows the <code>AuthDiv</code> element.<br />
 When authentication is complete, it does the opposite.</p>
 <h3>AppDiv</h3>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 <div id="AppDiv"><br />
       <input type="button" id="getSecretDataButton" value="Get secret data" onclick="getSecretData()" /><br />
       <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('AuthRealm', {onSuccess:WL.Client.reloadApp})" /><br />
@@ -30,7 +30,7 @@ When authentication is complete, it does the opposite.</p>
 <p>The buttons are used to call the <code>getSecretData</code> procedure and to log out.<br />
 The <code>ResponseDiv</code> element is used to display the <code>getSecretData</code> response.</p>
 <h3>AuthDiv</h3>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 <div id="AuthDiv" style="display:none"><br />
     <p id="AuthInfo"></p><br />
         <input type="text" placeholder="Enter username" id="AuthUsername"/><br /><br />
@@ -47,11 +47,11 @@ The <code>ResponseDiv</code> element is used to display the <code>getSecretData<
 <h3>Challenge handler</h3>
 <p>Use the <code>WL.Client.createChallengeHandler</code> method to create a challenge handler object.<br />
 Supply a realm name as a parameter.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 var AuthRealmChallengeHandler = WL.Client.createChallengeHandler("AuthRealm");<br />
 {% endhighlight %}</p>
 <p>The <code>isCustomResponse</code> function of the challenge handler is called each time a response is received from the server. That function is used to detect whether the response contains data that is related to this challenge handler. The function returns <code>true</code> or <code>false</code>.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 AuthRealmChallengeHandler.isCustomResponse = function(response) {<br />
 	if (!response || !response.responseJSON	|| response.responseText === null) {<br />
 		return false;<br />
@@ -64,7 +64,7 @@ AuthRealmChallengeHandler.isCustomResponse = function(response) {<br />
 };<br />
 {% endhighlight %}</p>
 <p>If the <code>isCustomResponse</code> function returns <code>true</code>, the framework calls the <code>handleChallenge</code> function. This function is used to perform required actions, such as hide the application screen or show the login screen.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 AuthRealmChallengeHandler.handleChallenge = function(response){<br />
 	var authStatus = response.responseJSON.authStatus;</p>
 <p>	if (authStatus == "credentialsRequired"){<br />
@@ -93,7 +93,7 @@ AuthRealmChallengeHandler.handleChallenge = function(response){<br />
 </ul>
 <p><strong>Important:</strong> You <strong>must</strong> attach each of these functions to its object. For example: <code>myChallengeHandler.submitSuccess()</code></p>
 <p>Clicking the submit button triggers the function that collects the user name and the password from the HTML input fields and submits them to the adapter. Note the use of the <code>submitAdapterAuthentication</code> method.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 $("#AuthSubmitButton").bind('click', function () {<br />
     var username = $("#AuthUsername").val();<br />
     var password = $("#AuthPassword").val();</p>

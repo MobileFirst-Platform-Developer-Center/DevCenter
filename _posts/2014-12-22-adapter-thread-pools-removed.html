@@ -40,7 +40,7 @@ These thread-pools, while helping to control the timeout and concurrency of back
 <p>Take a look at the following old and and new adapter XMLs and notice the changes in the HTTP connection policy:</p>
 <h4>Old Adapter XML</h4>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <wl:adapter name="HttpAdapter"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:wl="http://www.worklight.com/integration"
@@ -65,7 +65,7 @@ These thread-pools, while helping to control the timeout and concurrency of back
 {% endhighlight %}
 
 <h4>New Adapter XML</h4>
-{% highlight xml %}
+{% highlight xml linenos %}
 <wl:adapter name="HttpAdapter"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:wl="http://www.ibm.com/MFP/integration"
@@ -95,7 +95,7 @@ These thread-pools, while helping to control the timeout and concurrency of back
 <p>The timeout values defined in the XML file are the default values that apply to all back-end connections in all of the procedures of the adapter. When a finer control is needed for specific backend invocation, these values may be overridden in the procedure's JavaScript code. Two optional parameters were added to the invokeHTTP method, connectionTimeoutInMilliseconds and socketTimeoutInMilliseconds. Explicitly specifying these values will override the defaults set in the adapter xml.</p>
 
 <p>An example of these paramteres in JavaScript:
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function getStories(interest) {
     var path = getPath(interest);
     var input = {

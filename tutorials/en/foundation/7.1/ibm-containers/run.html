@@ -67,29 +67,29 @@ export DOCKER_MACHINE_NAME="default"
 [collapse label="Instructions for Windows"]</p>
 <ol>
 <li>Launch Boot2Docker and run:<br />
-        {% highlight xml %}<br />
+        {% highlight xml linenos %}<br />
         $ boot2docker ssh<br />
         {% endhighlight %}
     </li>
 <li>Install Python:<br />
-        {% highlight xml %}<br />
+        {% highlight xml linenos %}<br />
         $ wget http://www.tinycorelinux.net/5.x/x86/tcz/python.tcz &amp;&amp; tce-load -i python.tcz &amp;&amp; rm -f python.tcz<br />
         {% endhighlight %}
     </li>
 <li>Install Python pip:<br />
-        {% highlight xml %}<br />
+        {% highlight xml linenos %}<br />
         $ curl -O https://bootstrap.pypa.io/get-pip.py<br />
         $ sudo python get-pip.py<br />
         {% endhighlight %}
     </li>
 <li>Follow the <a href="https://pypi.python.org/pypi/setuptools" target="_blank">Python Setuptools installation instructions</a> to install Python Setuptools.</li>
 <li>Download the Cloud Foundry CLI:<br />
-        {% highlight xml %}<br />
+        {% highlight xml linenos %}<br />
         $ wget -O cf.tgz http://cli.run.pivotal.io/stable?release=linux32-binary<br />
         {% endhighlight %}
     </li>
 <li>Install the Cloud Foundry CLI:<br />
-        {% highlight xml %}<br />
+        {% highlight xml linenos %}<br />
         $ sudo tar -zxvf cf.tgz -C /usr/bin/<br />
         {% endhighlight %}
     </li>
@@ -130,7 +130,7 @@ Note: If Boot2Docker was installed in OS X, remember to run the Docker<code>save
 
 <h3>Structure of the ibm-mfpf-container-7.1.0.0-eval.zip archive</h3>
 
-<img src="{{ site.baseurl }}/assets/backup/cutomizationZip.png" class="img_responsive" />
+<img src="{{ site.baseurl }}/assets/backup/cutomizationZip.png"  />
 
 <p>The extracted ZIP file contains the files for building an image (<code>dependencies</code> and <code>mfpf-libs</code>), the files for building and deploying an IBM MobileFirst Platform Foundation Operational Analytics Container (<code>mfpf-analytics</code>), and files for configuring an IBM MobileFirst Platform Server Container <code>(mfpf-server</code>). This tutorial does not cover the analytics part.</p>
 
@@ -355,7 +355,7 @@ $ ./startserver.sh args/startserver.properties
             <li>You can now run your application to verify that it successfully connects to the MobileFirst Server, running on IBM Containers.</li>
         </ul>
 
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-06-22-at-15.47.14-1024x493.png" class="img_responsive" />
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-06-22-at-15.47.14-1024x493.png"  />
     </li>
 </ol>
 
@@ -364,28 +364,28 @@ $ ./startserver.sh args/startserver.properties
 <ul>
 <li>Part of the image building process is loading the image into your local docker repository.<br />
 To view all available images in your local docker repository run:<br />
-            {% highlight xml %}<br />
+            {% highlight xml linenos %}<br />
             $ docker images<br />
             {% endhighlight %}<br />
 The list contains the image repository, tag, ID, date of creation and virtual size.</li>
 <li>To delete an image from your local docker repository run:<br />
-            {% highlight xml %}<br />
+            {% highlight xml linenos %}<br />
             $ docker rmi <image ID><br />
             {% endhighlight %}</li>
 <li>To start your image on a local container run:<br />
-            {% highlight xml %}<br />
+            {% highlight xml linenos %}<br />
             $ docker run -d -p 9080:9080 -p 9443:9443 <image ID><br />
             {% endhighlight %}</li>
 <li>To view all available containers in your local docker repository run:<br />
-            {% highlight xml %}<br />
+            {% highlight xml linenos %}<br />
             $ docker ps<br />
             {% endhighlight %}</li>
 <li>To stop a running container run:<br />
-            {% highlight xml %}<br />
+            {% highlight xml linenos %}<br />
             $ docker stop <container ID><br />
             {% endhighlight %}</li>
 <li>To delete a container from your local docker repository run:<br />
-            {% highlight xml %}<br />
+            {% highlight xml linenos %}<br />
             $ docker rm <container ID><br />
             {% endhighlight %}</li>
 <li>To verify that the image is properly configured and the MobileFirst project runtime is available, launch the MobileFirst Console by loading the following URL: http://192.168.59.103:9080/worklightconsole. </li>

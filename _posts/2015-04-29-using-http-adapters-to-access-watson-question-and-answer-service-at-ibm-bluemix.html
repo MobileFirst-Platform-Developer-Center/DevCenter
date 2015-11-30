@@ -40,12 +40,12 @@ author:
 <p>It's important to always get the services list dynamically as the corpus can increase with new knowledge areas available.
 The response obtained is in the format of a json document like this:
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 {"services": ["travel","healthcare"]}
 {% endhighlight %}
 <h3>POST - question - path: /v1/question/{id}</h3>
 <p>The question endpoint is used to send a question to be responded by Watson. The question is sent as a json document with several optional parameters. The following is an example of  json document with a question using only the required parameters.
-{% highlight javascript %}
+{% highlight javascript linenos %}
 {
 "question": {
    "questionText":"What is HIV?"
@@ -59,7 +59,7 @@ The response obtained is in the format of a json document like this:
 <li>a set of metadata about the responses and evidence list obtained</li>
 </ul>
 <p>Following is an example of the response obtained:
-{% highlight javascript %}
+{% highlight javascript linenos %}
    "array": [
   	{
      	"question": {
@@ -115,7 +115,7 @@ Feedback is provided as a json document containning the informations about the o
 <li>1=answer was relevant</li>
 <li>9=answer was partially relevant</li>
 </ul>
-{% highlight javascript %}
+{% highlight javascript linenos %}
   "questionId": "1",
   "questionText": "What are the symptoms of diabetes?",
   "answerId": "0",
@@ -168,7 +168,7 @@ Feedback is provided as a json document containning the informations about the o
 <img src="{{ site.baseurl }}/assets/backup/2.3.png" class="img_responsive" />
 <li>Open the .xml configuration file of the adapter (adapters/WatsonQA/WatsonQA.xml)</li>
 <li>Change the <connectionpolicy> element according to the following example. Use the values of url, username and password obtained from Bluemix credentials earlier.</connectionpolicy></li>
-{% highlight xml %}
+{% highlight xml linenos %}
 <connectionpolicy xsi:type="http:HTTPConnectionPolicyType">
 	<protocol>https</protocol>
 	<domain>gateway.watsonplatform.net</domain>

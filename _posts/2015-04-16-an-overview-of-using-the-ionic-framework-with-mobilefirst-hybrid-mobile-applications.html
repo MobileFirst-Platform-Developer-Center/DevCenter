@@ -55,7 +55,7 @@ author:
 
 <code><script src="js/wlInit.js"></script></code>
 Here is the completely updated <code>index.html</code> file:
-{% highlight html %}
+{% highlight html linenos %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -87,7 +87,7 @@ Here is the completely updated <code>index.html</code> file:
 {% endhighlight %}
 
 <p>Now open <code>style.css</code>. This is blank (except for a comment) in the Ionic template, but we need to add the following style declaration:</p>
-{% highlight css %}
+{% highlight css linenos %}
 html, body {
     height: 100%;
 }
@@ -96,7 +96,7 @@ html, body {
 <p>This is required because the application ends up with a 0% height when run under MobileFirst. Odd - but just go with it. (For more details, see this <a href="http://stackoverflow.com/questions/29227204/declaration-of-doctype-html-does-not-work-with-ionics-ion-nav-view-in-ibm-mo/29258958#29258958">StackOverflow post</a>.)</p>
 
 <p>Now open <code>app.js</code>. In the <code>run()</code> portion there is code that works with the Ionic keyword plugin. For now, we're going to simply disable it.</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 // Ionic Starter App
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
@@ -123,7 +123,7 @@ angular.module('starter', ['ionic'])
 <p>We need to do two more small tweaks. When using Ionic and a "regular" Cordova project, there is a hook that applies a style for Android and iOS. We don't have those hooks under MobileFirst, so we have to do it by hand, but that's easy enough. The MobileFirst JavaScript API has a <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html%23getEnvironment">getEnvironment</a> function that returns information about the running environment. We can use that to sniff iPhone and iPad versus Android. (And again, credit for this goes to Carlos.) The next tweak applies to a styling issue with iOS7. We will modify <code>wlInitOptions</code> to include <code>showIOS7StatusBar</code>.</p>
 <p>Here is the entire file with these modifications within <code>wlCommonInit</code>.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 // Uncomment the initialization options as required. For advanced initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center
  var wlInitOptions = {
 	showIOS7StatusBar: false

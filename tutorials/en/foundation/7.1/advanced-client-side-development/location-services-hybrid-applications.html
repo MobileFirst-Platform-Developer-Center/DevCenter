@@ -2,13 +2,11 @@
 layout: tutorial
 title: Location services in hybrid applications
 relevantTo: [hybrid]
+weight: 9
+downloads: 
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/LocationServices
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/LocationServices" target="_blank">Download MobileFirst project</a>
-        </li>
-</ul>
-
 <p>This tutorial covers the following topics:</p>
 <ul>
 <li><a href="#architecture">Architecture</a></li>
@@ -37,8 +35,8 @@ relevantTo: [hybrid]
 <h2 id="basicAPI">Basic API</h2>
 <h3>Client JavaScript</h3>
 <p><strong>Note:</strong> Call the following functions after the IBM MobileFirst Platform Foundation framework is initialized (within or after the <code>wlCommonInit()</code> function).</p>
-<p>{% highlight javascript %}<br />
-WL.Device.startAcquisition(policy, triggers, onFailure)<br />
+<p>{% highlight javascript linenos %}
+WL.Device.startAcquisition(policy, triggers, onFailure)
 {% endhighlight %}</p>
 <ul>
 <li><code>policy</code>: How do you acquire the sensor data?</li>
@@ -46,31 +44,31 @@ WL.Device.startAcquisition(policy, triggers, onFailure)<br />
 <li><code>onFailure</code>: How do you handle acquisition failures?</li>
 </ul>
 <h3>Server JavaScript code</h3>
-<p>{% highlight javascript %}<br />
-WL.Server.setEventHandlers(eventHandlers);<br />
+<p>{% highlight javascript linenos %}
+WL.Server.setEventHandlers(eventHandlers);
 {% endhighlight %}</p>
 <p><code>eventHandlers</code>: What events do you act on and how?</p>
 <h2 id="acquisitionPolicy">Acquisition policy</h2>
 <p>An acquisition policy defines how acquisition takes place.<br />
-{% highlight javascript %}<br />
-var policy = {<br />
-  Geo: WL.Device.Geo.Profiles.LiveTracking(),<br />
-  Wifi: {<br />
-    interval: 10000,<br />
-    accessPointFilters: {<br />
-      [{<br />
-        SSID: "Net1"<br />
-      }, {<br />
-        SSID: "Net2",<br />
-        MAC: "*"<br />
-      }]<br />
-    }<br />
-  }<br />
-};<br />
+{% highlight javascript linenos %}
+var policy = {
+    Geo: WL.Device.Geo.Profiles.LiveTracking(),
+    Wifi: {
+        interval: 10000,
+        accessPointFilters: {
+            [{
+                SSID: "Net1"
+            }, {
+                SSID: "Net2",
+                MAC: "*"
+            }]
+        }
+    }
+};
 {% endhighlight %}</p>
 <h3>Geo acquisition policy</h3>
-<p>{% highlight javascript %}<br />
-  Geo: WL.Device.Geo.Profiles.LiveTracking(),<br />
+<p>{% highlight javascript linenos %}
+  Geo: WL.Device.Geo.Profiles.LiveTracking(),
 {% endhighlight %}</p>
 <p><code>LiveTracking</code> is a preset profile that uses the most accurate settings to track the device.<br />
 Additional configuration options:</p>
@@ -81,18 +79,18 @@ Additional configuration options:</p>
 </ul>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h3>Wi-Fi acquisition policy</h3>
-<p>{% highlight javascript %}<br />
-  Wifi: {<br />
-    interval: 10000,<br />
-    accessPointFilters: {<br />
-      [{<br />
-        SSID: "Net1"<br />
-      }, {<br />
-        SSID: "Net2",<br />
-        MAC: "*"<br />
-      }]<br />
-    }<br />
-  }<br />
+<p>{% highlight javascript linenos %}
+Wifi: {
+    interval: 10000,
+    accessPointFilters: {
+        [{
+            SSID: "Net1"
+        }, {
+            SSID: "Net2",
+            MAC: "*"
+        }]
+    }
+}
 {% endhighlight %}</p>
 <p>The <code>interval</code> parameter is the polling interval, in milliseconds; Wi-Fi polling is performed at each interval.</p>
 <p>The <code>accessPointFilters</code> parameter are access points of interest.</p>
@@ -108,26 +106,26 @@ Additional configuration options:</p>
 <p><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.jpg" /></p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h2 id="triggers">Triggers</h2>
-<p>{% highlight javascript %}<br />
-var triggers = {<br />
-  Geo: {<br />
-    trigger1: {<br />
-      type: "Enter",<br />
-      circle: {<br />
-        longitude: -74.04444,<br />
-        latitude: 40.689167,<br />
-        radius: 100<br />
-      },<br />
-      callback: libertyAtLast,<br />
-      eventToTransmit: {<br />
-        event: {<br />
-          bring: "me",<br />
-          your: "huddledMasses"<br />
-        }<br />
-      }<br />
-    }<br />
-  }<br />
-};<br />
+<p>{% highlight javascript linenos %}
+var triggers = {
+    Geo: {
+        trigger1: {
+            type: "Enter",
+            circle: {
+                longitude: -74.04444,
+                latitude: 40.689167,
+                radius: 100
+            },
+            callback: libertyAtLast,
+            eventToTransmit: {
+                event: {
+                    bring: "me",
+                    your: "huddledMasses"
+                }
+            }
+        }
+    }
+};
 {% endhighlight %}</p>
 <p>You can setup triggers for the following effects:</p>
 <ul>
@@ -141,22 +139,22 @@ var triggers = {<br />
 <h2 id="events">Events</h2>
 <h3>Client side</h3>
 <p>Events are generated by triggers (as explained in section <a href="#triggers">Triggers</a>).<br />
-{% highlight javascript %}<br />
-      eventToTransmit: {<br />
-        event: {<br />
-          bring: "me",<br />
-          your: "huddledMasses"<br />
-        }<br />
-      }<br />
+{% highlight javascript linenos %}
+eventToTransmit: {
+    event: {
+        bring: "me",
+        your: "huddledMasses"
+    }
+}
 {% endhighlight %}</p>
 <p>You can also generate events manually by calling this API:<br />
-{% highlight javascript %}<br />
-WL.Client.transmitEvent(event,immediate);<br />
+{% highlight javascript linenos %}
+WL.Client.transmitEvent(event,immediate);
 {% endhighlight %}</p>
 <h3>Server side</h3>
 <p>In the adapter code, create event handlers:</p>
-<p>{% highlight javascript %}<br />
-WL.Server.createEventHandler(filter, handlerFunction);<br />
+<p>{% highlight javascript linenos %}
+WL.Server.createEventHandler(filter, handlerFunction);
 {% endhighlight %}</p>
 <p>Events that match the <code>filter</code> parameter are passed to <code>handlerFunction</code>.<br />
 Filter examples:</p>
@@ -166,8 +164,8 @@ Filter examples:</p>
 <li><code>{}</code> – All events</li>
 </ul>
 <p>Register the event handlers:<br />
-{% highlight javascript %}<br />
-WL.Server.setEventHandlers([...]);<br />
+{% highlight javascript linenos %}
+WL.Server.setEventHandlers([...]);
 {% endhighlight %}</p>
 <blockquote><p>For more information, see the topic about working with geofences and triggers, in the user documentation.</p></blockquote>
 <h2 id="testingHybrid">Testing hybrid applications</h2>
@@ -196,42 +194,45 @@ A scenario consists of:</p>
 </li>
 </ul>
 <p>To open the scenario editor, click <strong>Edit</strong>.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_scenario-edit-mode.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/10_04_scenario-edit-mode.png" style="width:55%"/></p>
 <p>Enter a geolocation directly to move the map, or use the arrows to pan and +/- track to zoom.</p>
 <ul>
-<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_path-icon.png" /> to define the path of the user.
+<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_path-icon.png" style="display:inline" /> to define the path of the user.
 </li>
 <li>Click on the map to add each path point. Double-click to add the last point.<br />
 You can drag points to new locations.
 </li>
 <li>Click on a point to set the user's arrival time to that point, or to delete the whole path.</li>
-<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_wifi-icon.png" /> to add Wi-Fi access points.
+<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_wifi-icon.png" style="display:inline" /> to add Wi-Fi access points.
 </li>
 <li>Click on the map and drag to set the area covered by the access point.</li>
 <li>Click an existing access point to change its SSID and MAC.<br />
 After clicking, drag to move or resize.
 </li>
-<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_zone-icon.png" /> to add no-GPS zones.
+<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_zone-icon.png" style="display:inline" /> to add no-GPS zones.
 </li>
 <li>Click on the map to add each vertex of the zone. Double-click to add the last point.<br />
 After clicking an existing zone, you can drag to move, resize, or rotate.
 </li>
 </ul>
-<p>When a scenario is played, the position of the user is displayed on the map ( <img src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png" /> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and does not change in a no-GPS zone).<br />
+<p>When a scenario is played, the position of the user is displayed on the map ( <img src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png" style="display:inline"/> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and does not change in a no-GPS zone).<br />
 Wi-Fi access point visibility and signal strengths are automatically updated. You can see these updates in the Network widget.<br />
 You can import and export scenarios to support test reuse.</p>
 <h2 id="androidPermissions">Location Services permissions in Android</h2>
 <p>Android Marshmallow requires user permissions to be granted at runtime. Since runtime code written in Javascript does not have access to the Android api, these permissions must be requested and checked by the native code before launching the Cordova Web Framework. The file [application name].java in the native folder is responsible for loading the web resources. The code for requesting and checking permissions for Location Services should be called within this file, for example in onInitWebFrameworkComplete.</p>
-<p>{% highlight java %}public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {<br />
-    if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {<br />
-	super.loadUrl(WL.getInstance().getMainHtmlFilePath());<br />
-    } else {<br />
-	handleWebFrameworkInitFailure(result);<br />
-    }</p>
-<p>    if (!(WLClient.getInstance().getContext().checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)){<br />
-	requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);<br />
-    }<br />
-}{% endhighlight %}</p>
+<p>{% highlight java linenos %}
+public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {
+    if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
+	    super.loadUrl(WL.getInstance().getMainHtmlFilePath());
+    } else {
+	    handleWebFrameworkInitFailure(result);
+    }
+    
+    if (!(WLClient.getInstance().getContext().checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED)) {
+	    requestPermissions(new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+    }
+}
+{% endhighlight %}</p>
 <p>This code requests permission if the permission has not already been granted.<br />
 If the permission is not subsequently granted all requests for location services from the Web Framework will fail.<br />
 for more information, please refer to https://developer.android.com/preview/features/runtime-permissions.html</p>

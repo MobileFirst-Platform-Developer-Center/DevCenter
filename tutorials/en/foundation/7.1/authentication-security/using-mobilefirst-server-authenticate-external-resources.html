@@ -47,13 +47,13 @@ relevantTo: [hybrid]
 <p>Configuring the MobileFirst project consists in configuring the scope for the access token. The scope of an access token must be a predefined realm in a MobileFirst project. You configure realms in the <code><em>MobileFirst_project</em>/server/conf/authenticationConfig.xml</code> file.</p>
 <p>The expiration period of a scope token (realm name) is defined by the expiration attribute of the login module that is associated with the realm.</p>
 <p>If you want to configure a login module called <code>StrongDummy</code> with an expiration attribute, edit the <code>authenticationConfig.xml</code> file in the login module section as follows::</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <loginModule name="StrongDummy" expirationInSeconds="1800"><br />
      <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
 </loginModule><br />
 {% endhighlight %}</p>
 <p>If you want to configure a realm called <code>SampleAppRealm</code> that is associated with <code>StrongDummy</code>, edit the <code>authenticationConfig.xml</code> file in the realm section as follows:</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <realm name="SampleAppRealm" loginModule="StrongDummy"><br />
 	<className>com.worklight.core.auth.ext.FormBasedAuthenticator</className><br />
 </realm><br />
@@ -92,7 +92,7 @@ relevantTo: [hybrid]
 where <code>URL_to_authorization_server</code> is:<br />
 <code>http://<ip-address-to-MobileFirst-server>:<port-number>/<project-context-root></code></li>
 <li>Add a security constraint and a security role to the <code>web.xml</code> file of your external server, as shown below:
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <security-constraint><br />
    <web-resource-collection><br />
       <web-resource-name>RESTServlet</web-resource-name><br />
@@ -109,7 +109,7 @@ where <code>URL_to_authorization_server</code> is:<br />
 {% endhighlight %}
 </li>
 <li>You must modify the external server <code>server.xml</code> file, too. Configure the feature manager to include these features:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <featureManager><br />
    <feature>jsp-2.2</feature><br />
    <feature>appSecurity-2.0</feature><br />
@@ -120,7 +120,7 @@ where <code>URL_to_authorization_server</code> is:<br />
 {% endhighlight %}
 </li>
 <li>In your application, add a security role:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <application ...><br />
    ...<br />
    <application-bnd><br />
@@ -132,7 +132,7 @@ where <code>URL_to_authorization_server</code> is:<br />
 {% endhighlight %}
 </li>
 <li>Configure OAuthTAI, where you set which URLs are to be protected:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <usr_OAuthTAI id="myOAuthTAI"><br />
    <securityconstraint httpMethods="GET POST" scope="SampleAppRealm" securedURLs="/REST-Server/api/protected"></securityconstraint><br />
 </usr_OAuthTAI><br />
@@ -151,7 +151,7 @@ The scopes that you provide are all defined in the <code>authenticationConfig.xm
 </ul>
 <h3>Use of WLResourceRequest: JavaScript example</h3>
 <p>This JavaScript example shows how to use the client-side API for access to an external service.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function callProtectedRestAPI() {<br />
 	var url = EXTERNAL_SERVER_URL + REST_CONTEXT_ROOT+PATH_PROTECTED;<br />
 	var request = new WLResourceRequest(url, WLResourceRequest.GET);<br />
@@ -189,7 +189,7 @@ This is where you had to set <code>publicKeyServerUrl</code> when you set up OAu
 <p>You can protect your resources that are running on <code>Node.js</code> servers with OAuth-based MobileFirst security. Like the Java implementation, the MobileFirst Operational Analytics server is protected by basic authentication. You must configure the <strong>Resource Server</strong> by connecting the <code>passport-mfp-token-validation</code> module to the Analytics server.</p>
 <p>The <code>passport-mfp-token-validation</code> npm module provides passport validation strategy and a verification function to validate access tokens and ID tokens that are issued by the MobileFirst Server.</p>
 <p>The following example shows how to use <code>mfpStrategy</code> in a node application:<br />
-{% highlight javascript %}<br />
+{% highlight javascript linenos %}<br />
     var express = require('express'),<br />
     passport = require('passport-mfp-token-validation').Passport,<br />
     mfpStrategy = require('passport-mfp-token-validation').Strategy;<br />

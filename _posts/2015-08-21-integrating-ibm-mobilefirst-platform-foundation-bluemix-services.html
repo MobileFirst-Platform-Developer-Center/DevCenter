@@ -26,7 +26,7 @@ author:
 <p><b>Building the adapter: <code>VCAP_SERVICES</code> to the rescue</b></p>
 The <a href="https://www.ng.bluemix.net/docs/services/SQLDB/index.html#vcap">VCAP_SERVICES</a> environment variable provides the adapter with the information of the SQLDB service bound to the IBM MobileFirst Platform Foundation Container running on Bluemix. The following code illustrates parsing the VCAP_SERVICES environment variable to retrieve the details of the SQLDB service bound to the container.</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 String user = null;
 String password = null;
 String jdbcurl = null;
@@ -53,7 +53,7 @@ if (VCAP_SERVICES != null) {
 
 <p>Now we can use the standard JDBC programming model to connect to the SQLDB instance and perform SQL operations</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 Class.forName("com.ibm.db2.jcc.DB2Driver");
 Connection conn = DriverManager.getConnection(jdbcurl, user, password);
 Statement stmt = db.createStatement();

@@ -40,23 +40,23 @@ This is a continuation of <a href="../">Working with Beacons</a> (introduction, 
 <h3>Android Manifest configuration</h3>
 <ul>
 <li>Specify minSdkVersion as 18 (Android 4.3).<br />
- {% highlight xml %}android:minSdkVersion="18"{% endhighlight %}</p>
+ {% highlight xml linenos %}android:minSdkVersion="18"{% endhighlight %}</p>
 </li>
 <li>Specify permissions for BLUETOOTH and BLUETOOTH_ADMIN.<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
     <uses-permission android:name="android.permission.BLUETOOTH" /><br />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /><br />
 {% endhighlight %}</p>
 </li>
 <li>This is in addition to the following standard Worklight permissions:
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
     <uses-permission android:name="android.permission.INTERNET" /><br />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /><br />
     <uses-permission android:name="android.permission.GET_TASKS" /><br />
 {% endhighlight %}</p>
 </li>
 <li>Specify <code>com.worklight.wlclient.api.WLBeaconsMonitoringApplication</code> as the application name.<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <application<br />
     android:name="com.worklight.wlclient.api.WLBeaconsMonitoringApplication"><br />
     ...<br />
@@ -65,7 +65,7 @@ This is a continuation of <a href="../">Working with Beacons</a> (introduction, 
 </li>
 </ul>
 <h3>Enable the library to show alerts</h3>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 @Override<br />
 protected void onCreate(Bundle savedInstanceState) {<br />
     ((WLBeaconsMonitoringApplication) this.getApplication()).setAlertHandler(new WLAlertHandler(this));<br />
@@ -74,7 +74,7 @@ protected void onCreate(Bundle savedInstanceState) {<br />
 <h2 id="simplifiedAPIs">Simplified APIs for monitoring/ranging beacons</h2>
 <h3>Loading beacons and triggers from the server</h3>
 <p>To load information pertaining to beacons, triggers, and their associations from the server and storing it in the application JSONStore, write the following code:</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 String adapterName = "BeaconsAdapter";<br />
 String procedureName = "getBeaconsAndTriggers";<br />
 WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers(adapterName, procedureName,<br />
@@ -94,11 +94,11 @@ WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers
 );{% endhighlight %}</p>
 <h3>Triggering action</h3>
 <p>To start the monitoring/ranging of Beacons and to fire trigger actions, write the following code:<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 	((WLBeaconsMonitoringApplication) this.getApplication()).startMonitoring();<br />
 {% endhighlight %}</p>
 <p>To let the user opt out of Beacon monitoring, write the following code:<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 	((WLBeaconsMonitoringApplication) this.getApplication()).stopMonitoring();<br />
 {% endhighlight %}</p>
 <h2 id="sampleresult">Running the sample application</h2>

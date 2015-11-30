@@ -13,7 +13,7 @@ author:
 <h2>Create the collections</h2>
 <p>Assuming you know the basics of creating collections in JSONStore, you will know that you can create a collection with search fields that are not part of the collection.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var OrdersCollection = {
 	      orders: {
 	        searchFields: {
@@ -44,7 +44,7 @@ var OrdersCollection = {
 <h2>Adding data using additional search fields</h2>
 <p>Since additional search fields are not part of the data you will need to specify it when adding each new data to your collection.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var data = [
 			                {order_id : 462, order_date : '1-1-2000'},
 			                {order_id: 608, order_date : '2-2-2001'},
@@ -140,7 +140,7 @@ var data = [
 
 <p>I would like to add that the concurrency of the operation queue is set to one because the JavaScript-only implementation of the JSONStore API which is only meant for development expects synchronous operations. However, all the production ready implementation of the JSONStore API (i.e. Android, iOS, WP8 and W8) support the execution of various operations in parallel hence you may increase that number if desired without adverse consequences. Here's some code that should work everywhere:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var env = WL.Client.getEnvironment();
     var CONCURRENCY = 1;
     if (env === WL.Environment.IPHONE ||
@@ -158,7 +158,7 @@ var env = WL.Client.getEnvironment();
 <h2>Grab documents for merging</h2>
 <p>Make sure to retrieve the documents from your collection filtering out the search fields and additional search fields you will need to merge. You can see how I do this above or you can look below.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 WL.JSONStore.get('orders').findAll({filter : ['customer_id', 'order_id', 'order_date']})
 			    		.then(function (res) {
 			    			ordersCollectionData = res;
@@ -168,7 +168,7 @@ WL.JSONStore.get('orders').findAll({filter : ['customer_id', 'order_id', 'order_
 <h2>Merge the collections together</h2>
 <p>There are many ways in which you can merge these collections together. What you are merging is simply arrays of JSON objects. I used the merge method in <code>lodash</code>.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var shared_index = 'customer_id';
 	var mergedCollection = [];
 	mergedCollection =_.merge(customerCollectionData, ordersCollectionData, function(a, b){

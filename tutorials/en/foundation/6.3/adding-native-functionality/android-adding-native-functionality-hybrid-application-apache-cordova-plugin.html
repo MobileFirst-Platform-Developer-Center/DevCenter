@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Android - Implementing Cordova plug-ins
+breadcrumb_title: Implementing Cordova plug-ins
 relatedTo: [hybrid]
 weight: 2
 downloads:
@@ -37,7 +38,7 @@ The below code blocks are based on the sample application, provided at the botto
 The plug-in needs to be declared in the project, so that Cordova can detect it.
 To declare the plug-in, add a reference to the config.xml file, located in the <code>nativeresxml</code> folder in the Android environment.
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <feature name=“sayHelloPlugin">
 	<param name="android-package" value=“sayHelloPlugin">
 </feature>
@@ -47,7 +48,7 @@ To declare the plug-in, add a reference to the config.xml file, located in the <
 
 From the JavaScript code of the application, use <code>cordova.exec()</code> to call the Cordova plug-in:
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function sayHello() {
     var name = $("#NameInput").val();
     cordova.exec(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
@@ -61,7 +62,7 @@ function sayHello() {
 <code>[name]</code> - Parameters array
 
 The plug-in calls the <code>success</code> and <code>failure</code> callbacks.
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function sayHelloSuccess(data){
     WL.SimpleDialog.show(
         "Response from plug-in", data,
@@ -86,7 +87,7 @@ After the plug-in is declared, and the JavaScript implementation is ready, the C
 <ul>
     <li>Add a new Java class file</li>
     <li>Extend the <code>org.apache.cordova.CordovaPlugin</code> class and add the required <code>import</code> statements
-{% highlight java %}
+{% highlight java linenos %}
 public class SayHelloPlugin extends CordovaPlugin {
 {% endhighlight %}</li>
 </ul>
@@ -97,14 +98,14 @@ Implement an <code>execute</code> method.
 
 <ul>
     <li>The arguments contain information that is required by a plug-in, such as action, arguments array, and callback context
-{% highlight java %}
+{% highlight java linenos %}
 public boolean execute(String action, JSONArray args, CallbackContext callbackContext)
 throws JSONException {
 {% endhighlight %}
     </li>
 
     <li>If the supplied action is <code>sayHello</code>, retrieve the first argument from the <code>args</code> array, prepares a <code>responseText</code> string and, by using the <code>callbackContext</code> argument, calls the <code>success</code> callback with this <code>responseText</code> string as the argument.
-{% highlight java %}
+{% highlight java linenos %}
 if (action.equals("sayHello")){
 	try {
 		String responseText = "Hello " + args.getString(0);
@@ -118,7 +119,7 @@ if (action.equals("sayHello")){
     </li>
 
     <li>Returning <code>false</code> means that the action that is supplied from JavaScript was not recognized.
-{% highlight java %}
+{% highlight java linenos %}
     return false;
 }
     {% endhighlight %}

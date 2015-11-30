@@ -13,7 +13,7 @@ author:
 <h3>Encryption</h3>
 <p>To encrypt data you can use the <code>WL.SecurityUtils.encrypt</code> method. This method requires the key and the text that you wish to encrypt. It is recommended that you secure your key so that no one else can use it. In this blog I am hardcoding the key for simplicity.
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function sendRequest(res){
 	var def = $.Deferred();
 	name = generateName();
@@ -56,7 +56,7 @@ function sendRequest(res){
 <p>The response from <code>WL.SecurityUtils.encrypt</code> are as follows : <code>CT</code>, <code>IV</code>, and <code>V</code>. <code>CT</code> is the cipher text or the encrypted text. <code>IV</code> is the initialization vector which is unique to the encrypted data. <code>V</code> is the version number which is generally <code>1</code>. If you have an astute eye you may have noticed that I included a property called src before sending the payload to Cloudant. We will be using src later when decrypted the text.
 
 <h3>Decrypting</h3>
-{% highlight javascript %}
+{% highlight javascript linenos %}
     function retrieveImageFromCloudant(){
 	var config = {
 			db : "demo",

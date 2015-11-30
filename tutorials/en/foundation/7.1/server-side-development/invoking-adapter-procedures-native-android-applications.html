@@ -20,7 +20,7 @@ This tutorial explains how to use the <code>WLResourceRequest</code> API with an
 <ol>
 <li>Create an instance of the <code>WLClient</code> class.<br />
 The <code>WLClient</code> instance requires a reference to the activity in which it is running.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 WLClient client = WLClient.createInstance(context);<br />
 {% endhighlight %}</p>
 </li>
@@ -29,7 +29,7 @@ WLClient client = WLClient.createInstance(context);<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 public class MyConnectListener implements WLResponseListener  {<br />
 {% endhighlight %}</p>
 <p>The <code>WLResponseListener</code> interface defines two methods:<br />
@@ -43,24 +43,24 @@ public class MyConnectListener implements WLResponseListener  {<br />
 <p>After the connection is established with a MobileFirst Server instance, you can use the <code>WLResourceRequest</code> class to invoke adapter procedures or call any REST resources.</p>
 <ol>
 <li> Define the URI of the resource. For a JavaScript HTTP adapter: <code>/adapters/{AdapterName}/{ProcedureName}</code><br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 URI adapterPath = new URI("/adapters/RSSReader/getFeed");<br />
 {% endhighlight %}
 </li>
 <li>Create a <code>WLResourceRequest</code> object and choose the HTPP Method (GET, POST, etc).<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
 {% endhighlight %}</p>
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name  to set an array of parameters.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 request.setQueryParameter("params","['MobileFirst_Platform']");<br />
 {% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameter</code> for each parameter.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 request.setQueryParameter("param1","value1");<br />
 request.setQueryParameter("param2","value2");<br />
 {% endhighlight %}
@@ -68,7 +68,7 @@ request.setQueryParameter("param2","value2");<br />
 <li>Trigger the request with <code>.send()</code>.<br />
 Specify a <code>MyInvokeListener</code> class instance as a parameter.<br />
 You learn how to define this class instance in the next section.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 request.send(new MyInvokeListener());<br />
 {% endhighlight %}</p>
 <p>Other signatures, which are not covered in this tutorial, exist for the <code>send</code> method. Those signatures enable you to set parameters in the body instead of the query, or to handle the response with a delegate instead of a completion handler. See the user documentation to learn more.
@@ -80,7 +80,7 @@ request.send(new MyInvokeListener());<br />
 <p>After the procedure invocation is completed, the framework calls one of the methods of the <code>MyInvokeListener</code> class.</p>
 <ol>
 <li>Specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 public class MyInvokeListener implements WLResponseListener {<br />
 {% endhighlight %}</p>
 <p>The <code>WLClient</code> instance invokes the <code>onSuccess</code> and <code>onFailure</code> methods.</p>
@@ -88,7 +88,7 @@ public class MyInvokeListener implements WLResponseListener {<br />
 </li>
 <li>Use that method to get the data that is retrieved from the adapter. The <code>response</code> object contains the response data.<br />
 You can use its methods and properties to retrieve the required information.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 public void onSuccess(WLResponse response) {<br />
       String responseText = response.getResponseText();<br />
       AndroidNativeApp.updateTextView("Adapter Procedure Invoked Successfuly\n" + responseText);<br />

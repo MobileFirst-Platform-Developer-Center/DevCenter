@@ -2,6 +2,7 @@
 layout: tutorial
 title: Supporting multiple form-factors using skins
 relevantTo: [hybrid]
+weight: 3
 ---
 <h2>Overview</h2>
 <p>Skins provide support for multiple form factors in a single executable file for devices of the same OS family. They are a sub-variant of an environment and are packaged together in one application. The decision on which skin to use is made automatically at run time.</p>
@@ -36,44 +37,44 @@ Follow the on interactive instructions to complete the process.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/05_03_skinLoader-location.png" /></p>
 <p>A special, developer-controlled JavaScript file, <code>skinLoader.js</code>, is run when the app starts in order to determine which skin to load.<br />
 The default <code>skinLoader.js</code> file contains examples of code.</p>
-<p>{% highlight javascript %}<br />
-function getSkinName() {<br />
-  var skinName = "default";<br />
-  if (device.version == "2.2" || device.version == "2.1") {<br />
-    skinName = "android.HTML5";<br />
-  }<br />
-  return skinName;<br />
-}<br />
+<p>{% highlight javascript linenos %}
+function getSkinName() {
+  var skinName = "default";
+  if (device.version == "2.2" || device.version == "2.1") {
+    skinName = "android.HTML5";
+  }
+  return skinName;
+}
 {% endhighlight %}<br />
 <br clear="all" /></p>
 <h2 id="register">Skin registration</h2>
 <p>Skins are automatically registered in the <code>application-descriptor.xml</code> file.<br />
 Registration determines the hierarchical order between the <code>common</code> folder, environment, and skin.<br />
 If you remove a skin from the project, you must modify the <code>application-decsriptor.xml</code> file manually.</p>
-<p>{% highlight xml %}<br />
-    <android version="1.0"><br />
-        <skins><br />
-            <skin name="default"><br />
-                <folder name="common"/><br />
-                <folder name="android"/><br />
-            </skin><br />
-            <skin name="android.tablet"><br />
-                <folder name="common"/><br />
-                <folder name="android"/><br />
-                <folder name="android.tablet"/><br />
-            </skin><br />
-            <skin name="android.phone"><br />
-                <folder name="common"/><br />
-                <folder name="android"/><br />
-                <folder name="android.phone"/><br />
-            </skin><br />
-        </skins><br />
-        <worklightSettings include="false"/><br />
-        <security><br />
-            <encryptWebResources enabled="false"/><br />
-            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
-            <publicSigningKey>Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.</publicSigningKey><br />
-            <packageName>Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in the AndroidManifest.xml file.</packageName><br />
-        </security><br />
-    </android><br />
+<p>{% highlight xml linenos %}
+<android version="1.0">
+    <skins>
+        <skin name="default">
+            <folder name="common"/>
+            <folder name="android"/>
+        </skin>
+        <skin name="android.tablet">
+            <folder name="common"/>
+            <folder name="android"/>
+            <folder name="android.tablet"/>
+        </skin>
+        <skin name="android.phone">
+            <folder name="common"/>
+            <folder name="android"/>
+            <folder name="android.phone"/>
+        </skin>
+    </skins>
+    <worklightSettings include="false"/>
+    <security>
+        <encryptWebResources enabled="false"/>
+        <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+        <publicSigningKey>Replace this text with the actual public signing key of the certificate used to sign the APK, available by using the 'Extract public signing key' wizard.</publicSigningKey>
+        <packageName>Replace this text with the actual package name of the application, which is the value of the 'package' attribute in the 'manifest' element in the AndroidManifest.xml file.</packageName>
+    </security>
+</android>
 {% endhighlight %}</p>

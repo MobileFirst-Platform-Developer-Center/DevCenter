@@ -58,7 +58,7 @@ downloads:
 
 <h4>Connect</h4>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function connect() {
    client = new Messaging.Client(hostname, port, clientId);
    client.onMessageArrived = onMsgCallback;
@@ -68,7 +68,7 @@ function connect() {
 {% endhighlight %}
 
 <h4>Publish</h4>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function publish(topic, data) {
    var msg = new Messaging.Message(data);
    msg.destinationName = topic;
@@ -77,14 +77,14 @@ function publish(topic, data) {
 {% endhighlight %}
 
 <h4>Subscribe</h4>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function subscribe(topic) {
    client.subscribe(topic);
 }
 {% endhighlight %}
 
 <h4>Receive</h4>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function onMsgCallback(msg) {
    var topic = msg.destinationName;
    var data = msg.payloadString;
@@ -140,7 +140,7 @@ and MQ Telemetry Transport that lets users draw on a shared canvas in real time.
 
 <b>index.html</b>
 
-{% highlight HTML %}
+{% highlight html linenos %}
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -165,7 +165,7 @@ and MQ Telemetry Transport that lets users draw on a shared canvas in real time.
 {% endhighlight %}
 
 <b>main.css</b>
-{% highlight css %}
+{% highlight css linenos %}
 /* Reset CSS */
 a, abbr, address, article, aside, ......... {
     margin: 0;
@@ -180,7 +180,7 @@ canvas {
 {% endhighlight %}
 
 <b>main.js</b>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function wlCommonInit(){
     window.app = new WhiteboardApp();
     $("#whiteboard").on("vmousemove", function(event) {
@@ -217,7 +217,7 @@ var resize = function() {
 {% endhighlight %}
 
 <b>Whiteboard.js</b>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var Colors = [
     "rgb(255,0,0)", "rgb(0,170,0)", "rgb(0,0,255)",
     "rgb(0,0,0)", "rgb(0,255,255)", "rgb(127,255,212)",
@@ -293,7 +293,7 @@ WhiteboardApp.prototype.clear = function() {
 </ul>
 
 <p>Load the .js file in <code>index.html</code>:</p>
-{% highlight html %}
+{% highlight html linenos %}
 &<html>
     <head>
         ...
@@ -308,7 +308,7 @@ WhiteboardApp.prototype.clear = function() {
 
 <p>On application load, invoke connect the client:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function wlCommonInit(){
     window.app = new WhiteboardApp();
     app.connect();
@@ -325,7 +325,7 @@ When you initialize and connect the MQTT client, specify the following configura
 <p>If you do not have an MQTT broker available, see Connecting to an MQTT broker later in this tutorial for details about how to find your own broker.</p>
 
 <b>Whiteboard.js</b>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function WhiteboardApp() {
     ...
     this.host = "<My MQTT broker IP>";
@@ -366,7 +366,7 @@ WhiteboardApp.prototype.connect = function() {
 <p>For the actions that you initiate, publish an MQTT message. If you receive the action from an MQTT message, do not republish this action as a new message.</p>
 
 <b>Whiteboard.js</b>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 WhiteboardApp.prototype.onConn = function() {
     this.client.subscribe("whiteboard/+");
 }
@@ -420,7 +420,7 @@ QoS 2 = "exactly once"</p>
 
 <p>A retained message is retained on the MQTT server and transmitted to new subscribers to the message topic.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 WhiteboardApp.prototype.publishClear = function() {
     var topic = "whiteboard/" + this.uuid;
     var data = JSON.stringify({type: "clear"});

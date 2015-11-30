@@ -21,7 +21,7 @@ The iOS application will handle the binary data and display the image.
 
 <p>I left <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRApplication.java" target="_blank"><code>QRApplication.java</code></a> as-is and wrote my code in <a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/studio/BinaryResponse/adapters/QR/src/com/sample/QRResource.java" target="_blank"><code>QRResource.java</code></a>.
 
-{% highlight java %}
+{% highlight java linenos %}
 @Path("/")
 public class QRResource {
 	//Define logger (Standard java.util.Logger)
@@ -53,7 +53,7 @@ The adapter resource file contains only one method, <code>getQR</code>, which ca
 
 <p>The storyboard simply shows a text field to enter the string, a button to trigger the request and a 200px/200px <code>UIImageView</code> to display the generated QRCode.
 
-{% highlight swift %}
+{% highlight swift linenos %}
     @IBAction func generate(sender: UIButton) {
         var escapedString = self.code.text.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         if(escapedString != nil){
@@ -70,7 +70,7 @@ The adapter resource file contains only one method, <code>getQR</code>, which ca
 
 <p><a href="https://github.com/nasht00/MFPBinaryResponse/blob/master/ios/BinaryResponse/BinaryResponse/BinaryDelegate.swift" target="_blank"><code>BinaryDelegate</code></a> implements <code>NSURLConnectionDataDelegate</code>.
 
-{% highlight swift %}
+{% highlight swift linenos %}
 class BinaryDelegate: NSObject, NSURLConnectionDataDelegate {
     var responseData = NSMutableData()
     var imageView: UIImageView

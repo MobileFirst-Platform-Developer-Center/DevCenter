@@ -2,13 +2,11 @@
 layout: tutorial
 title: Android shell development
 relevantTo: [hybrid]
+breadcrumb_title: Android
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ShellDevelopment
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/ShellDevelopment" target="_blank">Download MobileFirst project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>This tutorial complements <a title="Shell development concepts" href="../">Shell Development Concepts</a>.</p>
 <p>In this tutorial, you learn how to add an Android environment to your shell component, test application, and inner application.</p>
@@ -56,26 +54,26 @@ Use it to work with your Java code.<br />
 <li>Add the <code>com.mycustomcode</code> package to the generated Android project.</li>
 <li>Add the <code>MyCustomToaster.java</code> class under this package.</li>
 <li>Add a static method to this class:<br />
-{% highlight java %}<br />
-public class MyCustomToaster {<br />
-  public static void showToastAlert(Activity context, String text) {<br />
-    Toast.makeText(context, text, 2000).show();<br />
-  }<br />
-}<br />
+{% highlight java linenos %}
+public class MyCustomToaster {
+    public static void showToastAlert(Activity context, String text) {
+        Toast.makeText(context, text, 2000).show();
+    }
+}
 {% endhighlight %}
 </li>
 <li>Open your main application activity.</li>
 <li>Start <code>MyCustomToast.showToastAlert()</code>:<br />
-{% highlight java %}<br />
-public class MyShellTest extends WLDroidGap {<br />
-  @Override<br />
-  public void onCreate(Bundle savedInstanceState){<br />
-    super.onCreate(savedInstanceState);<br />
-    //DeviceAuthManager.getInstance().setProvisioningDelegate(<replace with...>)<br />
-    super.loadUrl(getWebMainFilePath());<br />
-    MyCustomToaster.showToastAlert(this, "Hello from Android Shell");<br />
-  }<br />
-}<br />
+{% highlight java linenos %}
+public class MyShellTest extends WLDroidGap {
+    @Override
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        //DeviceAuthManager.getInstance().setProvisioningDelegate(<replace with...>)
+        super.loadUrl(getWebMainFilePath());
+        MyCustomToaster.showToastAlert(this, "Hello from Android Shell");
+    }
+}
 {% endhighlight %}
 </li>
 <li>Run your application to see the implemented functions.

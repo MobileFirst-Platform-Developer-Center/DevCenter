@@ -27,7 +27,7 @@ author:
 <h3>Whitelist</h3>
 <p>You can configure a list of hostnames with exceptions.
 For example, to allow HTTP (no SSL) for localhost, add the following entries to your Info.plist:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <key>NSAppTransportSecurity</key>
 <dict>
   <key>NSExceptionDomains</key>
@@ -49,7 +49,7 @@ For example, to allow HTTP (no SSL) for localhost, add the following entries to 
 <h3>Disable ATS</h3>
 <p>At your own risk, you can also disable the ATS features completely, by adding this entry to your <strong>Info.plist</strong>:
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <key>NSAppTransportSecurity</key>
 <dict>
   <key>NSAllowsArbitraryLoads</key>
