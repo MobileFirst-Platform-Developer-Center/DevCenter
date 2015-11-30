@@ -267,7 +267,7 @@ IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluem
         <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.47.14-pm-1024x377.png" class="img_responsive" />
     </li>
     <li>Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register notifications in client app.
-        {% highlight swift %}
+        {% highlight swift linenos %}
         let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
         let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         application.registerUserNotificationSettings(notificationSettings)
@@ -276,7 +276,7 @@ IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluem
     </li>
     <li>Add the following code inside <code>didRegisterForRemoteNotificationsWithDeviceToken</code>  function in <code>Appdelegate</code> of client application which will register pushclient and subscribe to tag in client app.
 
-        {% highlight swift %}IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -> Void in
+        {% highlight swift linenos %}IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -> Void in
             if error != nil {
                 println("Error during device registration \(error.description)")
             }
@@ -294,7 +294,7 @@ IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluem
         {% endhighlight %}
     </li>
 <li>Add the following function inside <code>Appdelegate</code> which triggers when push notification arrived in client app.
-        {% highlight swift %}
+        {% highlight swift linenos %}
         func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
             println("Got remote Notification. Data : \(userInfo.description)")
             let info = userInfo as NSDictionary
@@ -313,20 +313,20 @@ IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluem
 
 <ul>
     <li> Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register the realm and initialize connection with Bluemix Application.
-        {% highlight swift %}
+        {% highlight swift linenos %}
         IMFClient.sharedInstance().registerAuthenticationDelegate(customAuthDelegate, forRealm: "customAuthRealm_3")
 IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluemix.net", backendGUID: "5e3ad88d-dd48-469d-b46f-2c4ad66b5345")
 {% endhighlight %}
     </li>
     <li> The following is the sample code to invoke the Rest url's in client application.
-{% highlight swift %}
+{% highlight swift linenos %}
 var request: IMFResourceRequest = IMFResourceRequest(path: "https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems", method: "GET")
         request.sendWithCompletionHandler { (wlResponse:IMFResponse!, err:NSError!) -> Void in
             {% endhighlight %}
     </li>
     <li>Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register notifications in client app.
 
-{% highlight swift %}
+{% highlight swift linenos %}
 let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
         let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         application.registerUserNotificationSettings(notificationSettings)
@@ -334,7 +334,7 @@ let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | U
         {% endhighlight %}
     </li>
     <li>Add the following code inside <code>didRegisterForRemoteNotificationsWithDeviceToken</code>  function in <code>Appdelegate</code> of client application which will register pushclient and subscribe to tag in client app.
-{% highlight swift %}
+{% highlight swift linenos %}
 IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -> Void in
             if error != nil {
                 println("Error during device registration \(error.description)")
@@ -353,7 +353,7 @@ IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandle
             {% endhighlight %}
         </li>
         <li>Add the following function inside <code>Appdelegate</code> which triggers when push notification arrived in client app.
-{% highlight swift %}
+{% highlight swift linenos %}
 func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         println("Got remote Notification. Data : \(userInfo.description)")
         let info = userInfo as NSDictionary
@@ -414,13 +414,13 @@ In Xcode's Build Settings, search for "Other Linker Flags" and insert <code>${in
 <h3>Client App Migration</h3>
 <ol>
     <li>Search for bluemix dependency imports like
-{% highlight swift %}
+{% highlight swift linenos %}
 #import <IMFCore/IMFCore.h>
 #import <IMFPush/IMFPush.h>
 {% endhighlight %}
 
 Replace the above imports with
-{% highlight swift %}
+{% highlight swift linenos %}
 #import <IMFCompatibility/IMFCompatibility.h>
 {% endhighlight %}
     </li>
@@ -436,16 +436,16 @@ IMFClient.sharedInstance().initializeWithBackendRoute("http://localhost:10080/Pa
 Note, that <code>backendGUID</code> parameter is ignored and can be empty. Look for all instantiations of IMFResourceRequest class and update it</li>
     <li>Look for all instantiations of IMFResourceRequest class and update the request URL with absolute or relative path to the resource. For example:
 
- {% highlight swift %}
+ {% highlight swift linenos %}
  var request: IMFResourceRequest = IMFResourceRequest(path: "https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems", method: "GET")
  {% endhighlight %}
 
 should be replaced with
-{% highlight swift %}
+{% highlight swift linenos %}
 var request: IMFResourceRequest = IMFResourceRequest(path: "http://localhost:10080/ParkStoreMFP/adapters/LocalstoreAdapter/localstore/getAllItems", method: "GET")
 {% endhighlight %}</li>
     <li>Add the following code inside <code>didRegisterForRemoteNotificationsWithDeviceToken</code> function in <code>Appdelegate</code> of Client application.
-        {% highlight swift %} WLPush.sharedInstance().tokenFromClient = deviceToken.description{% endhighlight %}</li>
+        {% highlight swift linenos %} WLPush.sharedInstance().tokenFromClient = deviceToken.description{% endhighlight %}</li>
         <li>All on-premise applications require the "worklight.plist" file to be present in the application resources. In the <code>IBMMobileFirstPlatformFoundationNativeSDK</code> pod we supply a file named <strong>sample.worklight.plist</strong>.
             <ul>
                 <li>Locate the "sample.worklight.plist" file in the ‘IBMMobileFirstPlatformFoundationNativeSDK’ pod.</li>
@@ -478,7 +478,7 @@ Add and remove the following changes in your adapter code.</p>
 </ul>
 
 The code looks like the following:
-{% highlight swift %}
+{% highlight swift linenos %}
 	@GET
 	@OAuthSecurity (scope="customAuthRealm_3")
 	@Path("/getAllItems")

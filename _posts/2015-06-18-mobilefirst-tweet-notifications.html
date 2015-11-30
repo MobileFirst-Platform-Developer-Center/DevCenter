@@ -34,7 +34,7 @@ So, add those 3 items to the storyboard. We're also going to have a label for th
 
 Create IBActions for the buttons and IBOutlets for the buttons and table view:
 
-{% highlight swift %}
+{% highlight swift linenos %}
 class ViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var tweetsTable: UITableView!
@@ -97,7 +97,7 @@ Now we're going to integrate the MobileFirst SDK into the iOS application:
 Now it's time for the fun stuff!
 The next step is to establish a connection to the server. To do this, we need our ViewController to implement <code>WLDelegate</code> protocol. So, add that to the class definition:
 
-{% highlight swift %}
+{% highlight swift linenos %}
 class ViewController: UIViewController, WLDelegate {
 ...
 }
@@ -132,7 +132,7 @@ Now we will get an error saying that ViewController does not conform to protocol
 {% endhighlight %}
 
 Now we can add those methods in Swift. We'll also print to the console in both methods just to show where we are:
-{% highlight swift %}
+{% highlight swift linenos %}
 func onSuccess(response: WLResponse!) {
     NSLog("onSuccess")
 }
@@ -143,7 +143,7 @@ func onFailure(response: WLFailResponse!) {
 
 Now that we conform to the WLDelegate protocol, we can use the <strong>WLClient</strong> API to connect to the server. Add the following line to the <code>viewDidLoad()</code> method:</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 override func viewDidLoad() {
         super.viewDidLoad()
         WLClient.sharedInstance().wlConnectWithDelegate(self)
@@ -194,7 +194,7 @@ Inside the <strong>application-descriptor.xml</strong> file, provide the certifi
 
 Next is implementing the iOS portion of the subscription. In the same way we had to use <code>WLDelegate</code> to connect to the server, we'll need to use <code>WLOnReadyToSubscribeListener</code> to subscribe to the tag. To conform to its protocol, we have to implement the <code>OnReadyToSubscribe()</code> method. When we reach that method, we'll know that the application is ready to subscribe, so we can enable the subscribe button in there. Prior to that, it should be disabled. We will also need to initialize the <code>WLPush</code> instance inside the <code>viewDidLoad()</code> method:</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 class ViewController: UIViewController, WLDelegate, WLOnReadyToSubscribeListener {
     ...
     override func viewDidLoad() {
@@ -220,7 +220,7 @@ class ViewController: UIViewController, WLDelegate, WLOnReadyToSubscribeListener
 
 We also have to make changes to the <code>AppDelegate</code>. Inside the <code>didFinishLaunchingWithOptions</code> method, we need to initialize the push instance. We also need to implement the <code>didRegisterForRemoteNotificationsWithDeviceToken</code> method to set the device token:</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
@@ -237,7 +237,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 To test that the app is ready to subscribe, run the app on a device, and make sure the subscribe button becomes enabled. Also make sure the console contains the "ready to subscribe" log.</p>
 
 Next, we need to implement the actual subscribing. Inside the <code>toggleSubscription</code> method, we'll use the <code>WLPush</code> API to subscribe to (and unsubscribe from) the tag:</p>
-{% highlight swift %}
+{% highlight swift linenos %}
 @IBAction func toggleSubscription(sender: AnyObject) {
     if (!isSubscribed){
         WLPush.sharedInstance().subscribeTag("sample-tag1", nil, self)
@@ -394,7 +394,7 @@ WL.Server.createEventSource({
 You should see a ton of JSON output, but if you look closely you will see that the tweets are there. You can put the output into a JSON prettifier and see it more clearly.<br>
 The next step is to get the tweets into the TableView in our iOS app in the ViewController. We're going to add variables for a cell identifier and a tweets array:</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 @IBOutlet weak var refreshButton: UIButton!
 @IBOutlet weak var tweetsTable: UITableView!
 @IBOutlet weak var toggleSubscriptionButton: UIButton!
@@ -406,7 +406,7 @@ var tweets = []
 <p>To use the TableView, we need to conform to the <code>UITableViewDelegate</code> and <code>UITableViewDataSource</code> protocols.
 For the <code>cellForRowAtIndexPath</code> method, we're going to display only the main content of the tweet, which has the key "text" within the tweets array (you can see this key in the JSON output from invoking the adapter procedure).</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 class ViewController: UIViewController, WLDelegate, WLOnReadyToSubscribeListener, UITableViewDelegate, UITableViewDataSource {
     ...
     let textCellIdentifier = "cell"
@@ -449,7 +449,7 @@ class ViewController: UIViewController, WLDelegate, WLOnReadyToSubscribeListener
 
 <p>Add an IBOutlet for the label. You will need to add the <code>import WatchKit</code> statement.</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 import WatchKit
 class FeedRowController: NSObject {
     @IBOutlet weak var labelText: WKInterfaceLabel!
@@ -458,7 +458,7 @@ class FeedRowController: NSObject {
 
 <p>In the <code>InterfaceController</code>, add an IBOutlet for the table.</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 class InterfaceController: NSObject {
     @IBOutlet weak var tweetsTable: WKInterfaceTable!
 }
@@ -469,7 +469,7 @@ class InterfaceController: NSObject {
 
 <p>Since we are making an adapter request, the RequestManager class will need to conform to the <code>WLDelegate</code> protocol and implement <code>onSuccess</code> and <code>onFailure</code> methods. We aren't going to do anything inside these methods except print to the console so we know that we've reached those methods.</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 class RequestManager: NSObject, WLDelegate {
     class func retrieveTweets(completionHandler:(AnyObject)->Void){
         var url = NSURL(string: "/adapters/TwitterAdapter/getTweets")
@@ -497,7 +497,7 @@ class RequestManager: NSObject, WLDelegate {
 
 <p>The <code>openParentApplication</code> method will be called inside <code>willActivate</code>. We will create a dictionary specifying the action we want to take which will be passed to the iOS app. The tweets will be received in the <code>reply</code> block and used to populate the table.</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 class InterfaceController: NSObject {
     @IBOutlet weak var tweetsTable: WKInterfaceTable!
     ...
@@ -525,7 +525,7 @@ class InterfaceController: NSObject {
 
 <p>The <code>handleWatchKitExtensionRequest</code> method will be implemented inside the AppDelegate. This method is going to identify the action we specified in the dictionary that is passed through the <code>userInfo</code> parameter and respond accordingly by calling the <code>retreiveTweets</code> method and sending the results to the WatchKit app through the <code>reply</code> block.</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([ NSObject : AnyObject]!) -> Void)!){
     let userInfoDict = userInfo as? Dictionary<String, String>
     let action = userInfoDict?["action"]
@@ -547,7 +547,7 @@ func application(application: UIApplication, handleWatchKitExtensionRequest user
 
 <p>We're going to add a <code>loadTweets</code> method in <code>ViewController</code> that will call the <code>retreiveTweets</code> method and reload the table data. This method will be called on two occasions: when a successful connection is established and when the refresh button is tapped:</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 func loadTweets(){
     RequestManager.retrieveTweets { (retrievedTweets) -> Void in
         self.tweets = retrievedTweets["tweets"] as! NSArray
@@ -567,7 +567,7 @@ func onSuccess(response: WLResponse!) {
 
 <p>The last thing we need to do is ensure that our WatchKit app can handle receiving notifications. To do this, we just have to uncomment the <code>didReceiveRemoteNotification</code> method inside <code>NotificationController</code>:</p>
 
-{% highlight swift %}
+{% highlight swift linenos %}
 override func didReceiveRemoteNotification(remoteNotification: [NSObject : AnyObject], withCompletion completionHandler: ((WKUserNotificationInterfaceType) -> Void)) {
     // This method is called when a remote notification needs to be presented.
     // Implement it if you use a dynamic notification interface.
