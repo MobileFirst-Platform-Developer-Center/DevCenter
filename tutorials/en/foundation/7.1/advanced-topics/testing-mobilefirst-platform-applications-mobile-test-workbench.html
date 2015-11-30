@@ -2,6 +2,7 @@
 layout: tutorial
 title: Testing MobileFirst Platform applications with the Mobile Test Workbench
 relevantTo: [hybrid]
+weight: 11
 ---
 <h2>Overview</h2>
 <p>IBM Mobile Test Workbench v7.8.0.1 for IBM MobileFirst Platform Foundation provides several unique resources to test MobileFirst applications.</p>
@@ -54,13 +55,13 @@ When you locate the IBM Mobile Test Workbench, click <strong>Install</strong>.</
 <p>With the mobile client application, you can record tests, run test playbacks, and view reports on the mobile device.<br />
 The mobile client application must be installed on a real device or on a simulator/emulator.</p>
 <p>The mobile client communicates with the test workbench to install applications, store test scripts, and test results. <strong>Important:</strong> Note the Workbench URL in the Mobile Devices view:</p>
-<p><img src="{{ site.baseurl }}/assets/backup/mtw_mobiledevices_view.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/mtw_mobiledevices_view.png" style="width:55%" /></p>
 <h3 id="installingTheAndroidMobileClient">Installing the Android mobile client</h3>
 <p>To install the mobile client on an Android device or on an emulator:</p>
 <ol>
 <li>Use the QR code that is available in the Mobile Devices view to open an installation page on the device.<br />
 On the device, the QR code opens a page that displays installation instructions. </li>
-<p><img src="{{ site.baseurl }}/assets/backup/mtw_qr_code.png" /><br />
+<p><img src="{{ site.baseurl }}/assets/backup/mtw_qr_code.png" style="width:55%" /><br />
 <br clear="all" /></p>
 <li>Follow the instructions to download and install the mobile application on your Android device.<br />
 <img src="{{ site.baseurl }}/assets/backup/mtw_install_android_app-168x300.png" />
@@ -85,10 +86,10 @@ Workbench IP address. Safari silently disables pop-up windows and Google Chrome 
 <p>You create a test project in one of two ways:</p>
 <ul>
 <li>After creating the MobileFirst application, and before clicking on <strong>Finish</strong>, select <strong>IBM Mobile Test Workbench</strong>:
-<p><img src="{{ site.baseurl }}/assets/backup/mtw_create_a_test_project-1024x1022.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/mtw_create_a_test_project-1024x1022.png" style="width:55%" /></p>
 </li>
 <li>You can also select <strong>File > New > Test Workbench Project</strong>.
-<p><img src="{{ site.baseurl }}/assets/backup/mtw_new_test_project_2-1024x971.png" />
+<p><img src="{{ site.baseurl }}/assets/backup/mtw_new_test_project_2-1024x971.png" style="width:55%" />
 </li>
 </ul>
 <h3 id="preparingTheApplication">Preparing an application for testing</h3>
@@ -97,9 +98,9 @@ Workbench IP address. Safari silently disables pop-up windows and Google Chrome 
 <li>Build and deploy your project by right-clicking the project name and selecting <strong>Run As > Run on MobileFirst Development Server</strong>, to ensure that the native project is built and the application is deployed to the server.</li>
 <li>If you build for iOS to test on a physical device, make sure that the appropriate certificate is specified in Xcode.</li>
 <li>Right-click the Android, iPhone, or iPad environment in your MobileFirst application and click <strong>Run As > Test with IBM Mobile Test Workbench</strong>.
-<p> <img src="{{ site.baseurl }}/assets/backup/mtw_run_test_project.png" /></p>
+<p> <img src="{{ site.baseurl }}/assets/backup/mtw_run_test_project.png" style="width:55%" /></p>
 <p>You can now see the test-ready application in the Mobile Applications view in the test workbench and in the mobile client.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/mtw_ready_app_for_testing-1024x474.png" /></li>
+<p><img src="{{ site.baseurl }}/assets/backup/mtw_ready_app_for_testing-1024x474.png" style="width:55%" /></li>
 <li>Set the state of the application to <strong>Available</strong> in the Mobile Applications view before you start recording a test.</li>
 </ol>
 <h3 id="creatingAtest">Creating a test</h3>
@@ -110,8 +111,8 @@ Workbench IP address. Safari silently disables pop-up windows and Google Chrome 
 <li><strong>On the iOS web client</strong>, select the application in the list of managed apps, install the app on the device by clicking <strong>Install</strong>. When the installation is complete, click <strong>Record</strong>.
 <p>If you are using an iOS 7.1 or later, it is not possible to click the <strong>Install</strong> button.<br />
 Instead, you can install the application from the Mobile Devices view:</p>
-<p><img src="{{ site.baseurl }}/assets/backup/mtw_install_on_ios.png" /></p>
-<p><img src="{{ site.baseurl }}/assets/backup/mtw_record_test-1024x853.png" />
+<p><img src="{{ site.baseurl }}/assets/backup/mtw_install_on_ios.png" style="width:55%" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/mtw_record_test-1024x853.png" style="width:55%" />
 </li>
 </ul>
 <p>Everything that you do with the application is recorded and sent to the test workbench. For example, the script records when you press a button or when you enter text in an entry field.

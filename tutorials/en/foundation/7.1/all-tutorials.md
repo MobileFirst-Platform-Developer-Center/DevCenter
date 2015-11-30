@@ -206,10 +206,10 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
 * <a href="../moving-production/reports-analytics/">Reports and analytics</a>
 * <a href="../moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
 
-### <a href="../ibm-containers/overview/">IBM Containers</a>
+### <a href="../ibm-containers/">IBM Containers</a>
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
 
-* <a href="../ibm-containers/overview/">Overview</a>
+* <a href="../ibm-containers/">Overview</a>
 * <a href="../ibm-containers/evaluate/">Evaluate</a>
 * <a href="../ibm-containers/run/">Run</a>
 * <a href="../ibm-containers/sample-app/">Sample application</a>

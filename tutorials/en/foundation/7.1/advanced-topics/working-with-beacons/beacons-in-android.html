@@ -2,16 +2,12 @@
 layout: tutorial
 title: Beacons in Android
 relevantTo: [android]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Beacons
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/BeaconsAndroid
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/Beacons" target="_blank">Download MobileFirst project</a>
-    </li>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/BeaconsAndroid" target="_blank">Download Native project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
 <p>This tutorial discusses the client-side API for working with beacons in Android.<br />
 This is a continuation of <a href="../">Working with Beacons</a> (introduction, setup, and server side API).</p>
@@ -43,63 +39,64 @@ This is a continuation of <a href="../">Working with Beacons</a> (introduction, 
  {% highlight xml linenos %}android:minSdkVersion="18"{% endhighlight %}</p>
 </li>
 <li>Specify permissions for BLUETOOTH and BLUETOOTH_ADMIN.<br />
-{% highlight xml linenos %}<br />
-    <uses-permission android:name="android.permission.BLUETOOTH" /><br />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /><br />
+{% highlight xml linenos %}
+<uses-permission android:name="android.permission.BLUETOOTH" />
+<uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 {% endhighlight %}</p>
 </li>
 <li>This is in addition to the following standard Worklight permissions:
-<p>{% highlight xml linenos %}<br />
-    <uses-permission android:name="android.permission.INTERNET" /><br />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /><br />
-    <uses-permission android:name="android.permission.GET_TASKS" /><br />
+<p>{% highlight xml linenos %}
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.GET_TASKS" />
 {% endhighlight %}</p>
 </li>
 <li>Specify <code>com.worklight.wlclient.api.WLBeaconsMonitoringApplication</code> as the application name.<br />
-{% highlight xml linenos %}<br />
-<application<br />
-    android:name="com.worklight.wlclient.api.WLBeaconsMonitoringApplication"><br />
-    ...<br />
-</application><br />
+{% highlight xml linenos %}
+<application
+    android:name="com.worklight.wlclient.api.WLBeaconsMonitoringApplication">
+    ...
+</application>
 {% endhighlight %}
 </li>
 </ul>
 <h3>Enable the library to show alerts</h3>
-<p>{% highlight java linenos %}<br />
-@Override<br />
-protected void onCreate(Bundle savedInstanceState) {<br />
-    ((WLBeaconsMonitoringApplication) this.getApplication()).setAlertHandler(new WLAlertHandler(this));<br />
-    ...<br />
-}{% endhighlight %}</p>
+<p>{% highlight java linenos %}
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    ((WLBeaconsMonitoringApplication) this.getApplication()).setAlertHandler(new WLAlertHandler(this));
+    ...
+}
+{% endhighlight %}</p>
 <h2 id="simplifiedAPIs">Simplified APIs for monitoring/ranging beacons</h2>
 <h3>Loading beacons and triggers from the server</h3>
 <p>To load information pertaining to beacons, triggers, and their associations from the server and storing it in the application JSONStore, write the following code:</p>
-<p>{% highlight java linenos %}<br />
-String adapterName = "BeaconsAdapter";<br />
-String procedureName = "getBeaconsAndTriggers";<br />
-WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers(adapterName, procedureName,<br />
-	new WLResponseListener() {<br />
-		@Override<br />
-		public void onSuccess(WLResponse arg0) {<br />
-			// Successfully fetched beacons, triggers and associations from server and saved in JSONStore.<br />
-		}</p>
-<p>		@Override<br />
-		public void onFailure(WLFailResponse response) {<br />
-			// Failed to fetch beacons, triggers and associations from server<br />
-			String responseText = "WLBeaconsAndTriggersJSONStoreManager.loadBeaconsAndTriggers() failed:\n"<br />
-					+ response.getResponseText();<br />
-			Log.d(TAG, responseText);<br />
-		}<br />
-	}<br />
-);{% endhighlight %}</p>
+<p>{% highlight java linenos %}
+String adapterName = "BeaconsAdapter";
+String procedureName = "getBeaconsAndTriggers";
+
+WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers(adapterName, procedureName, new WLResponseListener() {
+    @Override
+    public void onSuccess(WLResponse arg0) {
+        // Successfully fetched beacons, triggers and associations from server and saved in JSONStore.
+    }
+    
+    @Override
+    public void onFailure(WLFailResponse response) {
+        // Failed to fetch beacons, triggers and associations from server
+        String responseText = "WLBeaconsAndTriggersJSONStoreManager.loadBeaconsAndTriggers() failed:\n" + response.getResponseText();
+        Log.d(TAG, responseText);
+    }
+}
+{% endhighlight %}</p>
 <h3>Triggering action</h3>
 <p>To start the monitoring/ranging of Beacons and to fire trigger actions, write the following code:<br />
-{% highlight java linenos %}<br />
-	((WLBeaconsMonitoringApplication) this.getApplication()).startMonitoring();<br />
+{% highlight java linenos %}
+((WLBeaconsMonitoringApplication) this.getApplication()).startMonitoring();
 {% endhighlight %}</p>
 <p>To let the user opt out of Beacon monitoring, write the following code:<br />
-{% highlight java linenos %}<br />
-	((WLBeaconsMonitoringApplication) this.getApplication()).stopMonitoring();<br />
+{% highlight java linenos %}
+((WLBeaconsMonitoringApplication) this.getApplication()).stopMonitoring();
 {% endhighlight %}</p>
 <h2 id="sampleresult">Running the sample application</h2>
 <p>Download the <a href="https://github.com/MobileFirst-Platform-Developer-Center/Beacons" target="_blank">MobileFirst project</a> and the <a href="https://github.com/MobileFirst-Platform-Developer-Center/BeaconsAndroid" target="_blank">native project</a>.</p>
@@ -123,5 +120,5 @@ WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers
 <h3> Detecting Beacons After application is killed</h3>
 <p>Application can be configured to detect Beacons even after being killed.</p>
 <blockquote><p>For details refer - http://altbeacon.github.io/android-beacon-library/resume-after-terminate.html</p></blockquote>
-<p><img src="{{ site.baseurl }}/assets/backup/AndroidNativeBeaconsampleRangingMonitoring.png" /></p>
-<p><img src="{{ site.baseurl }}/assets/backup/AndroidNativeBeaconsampleNotifications.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/AndroidNativeBeaconsampleRangingMonitoring.png" style="width:55%"/></p>
+<p><img src="{{ site.baseurl }}/assets/backup/AndroidNativeBeaconsampleNotifications.png" style="width:55%"/></p>
