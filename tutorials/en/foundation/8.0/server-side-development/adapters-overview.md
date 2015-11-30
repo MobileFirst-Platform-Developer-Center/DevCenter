@@ -31,10 +31,10 @@ You can write adapters in JavaScript or Java.
 * <span style="color:red">Easy and fast development and testing by using the command-line interface (CLI)</span>
 * Ability to test the adapter by using a 3rd-party tool such as Postman
 * Easy and fast deployment to a running MobileFirst Server instance with no compromise on performance and no downtime
-* <span style="color:red">Security integration with the MobileFirst security model with no additional customization, by using simple annotations in the source code</span>  
+* Security integration with the MobileFirst security model with no additional customization, by using simple annotations in the source code
 
 ### JavaScript adapters
-JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, Cast Iron, SAP JCo, and SAP Netweaver.  
+JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, Cast Iron, <span style="color:red">SAP JCo, and SAP Netweaver</span>.  
 JavaScript adapter provides a set of services, called procedures. Mobile apps invoke procedures by issuing Ajax requests.
 The procedure retrieves information from the back-end application that returns data in some format:
 
@@ -43,6 +43,7 @@ The procedure retrieves information from the back-end application that returns d
 
 The JavaScript implementation of the procedure receives the JSON data, performs any additional processing, and returns it to the calling app.
 
+<span style="color:red">UPDATE THE IMAGE</span>
 ![javascript_adapters](javascript_adapters.jpg)
 
 ### Java adapters
@@ -53,7 +54,4 @@ In Java adapters, it is up to the developer to define the returned content and i
 
 ![java-adapter](java-adapter.jpg)
 
-<span style="color:red">TESTING</span>
-
-### For more information
-See the topic about "MobileFirst adapters overview" in the user documentation.
+> For more information see the topic about "MobileFirst adapters overview" in the user documentation.

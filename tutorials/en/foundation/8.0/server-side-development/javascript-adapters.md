@@ -5,7 +5,7 @@ show_children: true
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 ---
 ### Overview
-JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, Cast Iron, SAP JCo, and SAP Netweaver.  
+JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, Cast Iron, <span style="color:red">SAP JCo, and SAP Netweaver</span>.  
 **Prerequisite:** Make sure to read the [Adapters Overview](../adapters-overview) tutorial first.
 
 ### File structure

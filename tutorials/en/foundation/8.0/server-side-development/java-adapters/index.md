@@ -76,7 +76,7 @@ The `MFPJAXRSApplication` class scans the package for JAX-RS resources and autom
 ### Implementing a JAX-RS resource
 JAX-RS resource is a POJO (Plain Old Java Object) which is mapped to a root URL and has Java methods for serving requests to this root URL and its child URLs. Any resource can have a separate set of URLs.
 
-{% highlight java %}
+```java
 package com.sample.adapter;
 
 import java.util.logging.Logger;
@@ -106,7 +106,7 @@ public class JavaAdapterResource {
     }
 
 }
-{% endhighlight %}
+```
 
 `@Path("/")` before the class definition determines the root path of this resource. If you have multiple resource classes, you should set each resource a different path.  
 
@@ -148,4 +148,4 @@ See this video blog entry:
 [Getting familiar with IBM MobileFirst Platform Foundation Java Adapters](https://developer.ibm.com/mobilefirstplatform/2015/03/24/getting-familiar-ibm-mobilefirst-platform-foundation-java-adapter/)
 
 
-<span style="color:red">For examples of Java adapters communicating with an HTTP or SQL back end, see:</span>
+### For examples of Java adapters communicating with an HTTP or SQL back end, see:

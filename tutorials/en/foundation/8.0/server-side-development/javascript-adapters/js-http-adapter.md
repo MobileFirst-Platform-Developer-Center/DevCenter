@@ -58,10 +58,7 @@ Declare the required procedures below the connectivity element:
 ```
 
 ### JavaScript implementation
-Procedures are implemented in the adapter JavaScript file.
-The service URL is used for procedure invocations.
-
-Some parts of the URL are constant; for example, http://example.com/. They are declared in the XML file.  
+A service URL is used for procedure invocations. Some parts of the URL are constant; for example, http://example.com/.  
 Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the MobileFirst procedure.
 
 The following URL parts can be parameterized.
@@ -72,9 +69,15 @@ The following URL parts can be parameterized.
 
 >See the topic about "The connectionPolicy element of the HTTP adapter" in the user documentation for advanced options for adapters, such as cookies, headers, and encoding.  
 
-In the JavaScript file, use the same procedure name as in the XML file.    
-The mandatory parameters to call the procedure are `method`, `path`, and `returnedContentType`.  
-The procedure can be parameterized at run time.
+To call an HTTP request, use the `WL.Server.invokeHttp` method.  
+Provide an input parameter object, which must specify:
+
+* The HTTP method: `GET`,`POST`, `PUT`, `DELETE`
+* The returned content type: `XML`, `JSON`, `HTML`, or `plain`
+* The service `path`
+* The query parameters (optional)
+* The request body (optional)
+* The transformation type (optional)
 
 ```js
 function getFeeds() {
@@ -88,15 +91,6 @@ function getFeeds() {
   return WL.Server.invokeHttp(input);
 }
 ```
-To call an HTTP request, use the `WL.Server.invokeHttp` method.  
-Provide an input parameter object, which must specify:
-
-* The HTTP method: `GET`,`POST`, `PUT`, `DELETE`
-* The returned content type: `XML`, `JSON`, `HTML`, or `plain`
-* The service `path`
-* The query parameters (optional)
-* The request body (optional)
-* The transformation type (optional)
 
 >See the topic about "WL.Server.invokeHttp" in the user documentation for a complete list of options.
 
