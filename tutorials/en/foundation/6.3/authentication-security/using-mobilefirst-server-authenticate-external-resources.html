@@ -227,7 +227,7 @@ downloads:
 <p>In JavaScript, this method is called <strong>getLastAccessToken</strong>.</p>
 <p>The <code>WL.Client</code> instance returns the last access token for a certain scope as a string. Alternatively, if no scope is specified, the last obtained token is returned. This capability is useful when an application is using one scope <strong>only</strong>.</p>
 <p>Add a header named "Authorization" and for the header content, add "Bearer", followed by the token. For example, when issuing an Ajax request, you can write the following code:</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
   var token = WL.Client.getLastAccessToken();
   $.ajax({
       type: "GET",
@@ -244,7 +244,7 @@ downloads:
 <p>If the error is not related to access token issues, the method returns <code>null</code>.</p>
 <h3>Use of the client-side API: JavaScript example</h3>
 <p>This JavaScript example shows how to use the client-side API for access to an external service.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function callProtectedRestAPI(retries) {
     // You must be able to call this method
     // recursively, because in some cases it is

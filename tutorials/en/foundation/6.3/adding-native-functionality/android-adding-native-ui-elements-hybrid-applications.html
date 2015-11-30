@@ -87,16 +87,16 @@ You can use this feature to receive responses from a native method, notify the w
 <p>The <code>doSomething</code> parameter is an arbitrary action name to be used on the JavaScript side and the second parameter is an <code>JSONObject</code> instance that contains any data.</p>
 <h3>Step 2</h3>
 <p>A JavaScript function, which verifies the action name and implements any JavaScript code.</p>
-<p>{% highlight js %}function actionReceiver(received){
+<p>{% highlight js linenos %}function actionReceiver(received){
   if (received.action == "doSomething" &amp;&amp; received.data.someProperty == "12345"){
     //perform required actions, e.g., update web user interface
   }
 }{% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function handles those actions as early as possible.</p>
-<p>{% highlight js %}WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);{% endhighlight %}</p>
+<p>{% highlight js linenos %}WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);{% endhighlight %}</p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-{% highlight js %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %}</p>
+{% highlight js linenos %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %}</p>
 <h2 id="sendSample">SendAction sample</h2>
 <p><img src="{{ site.baseurl }}/assets/backup/07_09_sendaction.png"/></p>
 <h3>Overview</h3>
@@ -120,14 +120,14 @@ This sample includes an additional <code>FragmentActivity</code> (DisplayMap) to
  <p id="errorMsg" style="color:red;"></p>{% endhighlight %}
 <h3>JavaScript</h3>
 <p>When the button is clicked, the <code>sendActionToNative</code> method is called to send the address to the native code.<br />
-{% highlight js %}$('#displayBtn').on('click', function(){
+{% highlight js linenos %}$('#displayBtn').on('click', function(){
 	$('#errorMsg').empty();
 	WL.App.sendActionToNative("displayAddress",
 				{ address: $('#address').val()}
 		);
 	});{% endhighlight %}
 <p>The code also registers an action receiver to display potential error messages from the native code.</p>
-    {% highlight js %}WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received){
+    {% highlight js linenos %}WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received){
 		if(received.action == 'displayError'){
 			$('#errorMsg').html(received.data.errorReason);
 		}

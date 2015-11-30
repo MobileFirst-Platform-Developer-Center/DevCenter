@@ -159,7 +159,7 @@ NSError *error = nil;</p>
 <p>You can achieve these goals by using functions such as <code>WLClient invokeProcedure</code> or your own instance of an <code>NSURLConnection</code> if you need more flexibility.</p>
 <h3>Adapter Implementation</h3>
 <p>Create a MobileFirst adapter and name it "<strong>People</strong>". Define it's procedures <code>addPerson</code>, <code>getPeople</code>, <code>pushPeople</code>, <code>removePerson</code>, and <code>replacePerson</code>.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function getPeople() {<br />
 	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };</p>
 <p>	WL.Logger.debug('Adapter: people, procedure: getPeople called.');<br />

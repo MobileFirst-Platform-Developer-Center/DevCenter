@@ -298,7 +298,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
     <c:set var="locationMap" value='${applicationScope.locationRegistry}' scope="session"/>
 ...
 {% endhighlight %}</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 <c:choose>
     <c:when test="${fn:contains(iOSClient, 'Android')}">
     <script>
@@ -349,7 +349,7 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <h3 id="encrypt">Encrypted Cache</h3>
 <p>The Encrypted Offline Cache (EOC) API is used for securely storing data by using HTML5 local cache. The Conference app uses EOC to save a list of favorite sessions in a secure way.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/eoc.jpg" /></p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function __writeEOC(mykey, mydata, callback) {
     WL.EncryptedCache.write(mykey, mydata, function() {
         callback();

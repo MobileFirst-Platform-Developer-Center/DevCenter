@@ -41,7 +41,7 @@ Implementation of the push notification API consists of the following main steps
 
 <h3>Creating an event source</h3>
 This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).
-{% highlight js %} 
+{% highlight js linenos %} 
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -60,7 +60,7 @@ WL.Server.createEventSource({
 
 Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-{% highlight js %} 
+{% highlight js linenos %} 
 function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 

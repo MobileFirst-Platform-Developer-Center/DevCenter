@@ -37,7 +37,7 @@ Follow the on interactive instructions to complete the process.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/05_03_skinLoader-location.png" /></p>
 <p>A special, developer-controlled JavaScript file, <code>skinLoader.js</code>, is run when the app starts in order to determine which skin to load.<br />
 The default <code>skinLoader.js</code> file contains examples of code.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function getSkinName() {
   var skinName = "default";
   if (device.version == "2.2" || device.version == "2.1") {

@@ -142,7 +142,7 @@ UI-related actions occur on a dedicated UI thread.<br />
 <p>In JavaScript, the sample implements the page integration as follows.</p>
 <ol>
 <li>A <code>WebViewOverlayPlugin</code> object is created and populated with the required methods.
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function WebViewOverlayPlugin() {};
 WebViewOverlayPlugin.prototype.open = function() {
     cordova.exec(null, null, 'WebViewOverlayPlugin', 'open', []);
@@ -154,7 +154,7 @@ window.webViewOverlay = new WebViewOverlayPlugin();
 {% endhighlight %} </li>
 <li>The clicked tab ID is analyzed and either shows or hides the <code>webViewOverlay</code> accordingly.<br />
 Loading external content can take time, so adding a Busy Indicator to improve the user experience should be considered.</p>
-<p>{% highlight javascript %} 
+<p>{% highlight javascript linenos %} 
 function tabClicked(id){
     WL.Logger.debug("tabClicked >> id :: " + id);
     $(".tab").addClass('hidden');

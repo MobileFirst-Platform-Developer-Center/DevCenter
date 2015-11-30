@@ -45,13 +45,13 @@ RCT_EXPORT_METHOD(getJavaAdapter:(NSString *)path results:(RCTResponseSenderBloc
 
 <p>It is important that you use require to import the module from the MobileFirst iOS SDK into the React Native javascript. Take note that the 'NativeModule' that is being imported is the name of the class above.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var ResourceRequest = require('NativeModules').ResourceRequest;
 {% endhighlight %}
 
 <p>After importing it is simple to use a method from that class inside the <code>index.ios.js</code> file. Below is the invocation of the MobileFirst Adapter from the React Native iOS javascript. The success call of this adapter invocation is going to populate a native <code>ListView</code> with movies from the JSON that is returned.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
     ResourceRequest.getJavaAdapter("cart", (error, result) => {
               if(error){
                 alert("No Dice");

@@ -109,7 +109,7 @@ To run a procedure test:</p>
 <p>For you to work around this during your development stage, the development version of the MobileFirst server includes a test token endpoint.<br />
 To receive a Test Token, make an HTTP <code>POST</code> request to <code>http(s)://{server_ip}:{server_port}/{project_name}/authorization/v1/testtoken</code> with your HTTP client (Postman).</p>
 <p>You receive a JSON object with a temporary valid authorization token:</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 {<br />
 "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImpwayI6eyJhbGciOiJSU0EiLCJleHAiOiJBUUFCIiwibW9kIjoiQU0wRGQ3eEFkdjZILXlnTDdyOHFDTGRFLTNJMm2FPZUlxb2UtckpBMHVadXcyckhoWFozV1ZDZUtlelJWY0NPWXNRTi1tUUswbWZ6NV8zby1ldjBVWXdYa1NPd0JCbDFFaHFJd1ZEd09pZWcySk1HbDBFWHNQWmZrTlpJLUhVNG9NaWktVHJOTHp..."<br />
 }<br />

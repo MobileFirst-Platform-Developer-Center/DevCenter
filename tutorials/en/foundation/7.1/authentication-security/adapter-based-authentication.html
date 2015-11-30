@@ -65,7 +65,7 @@ The following diagram shows the flow to implement:</p>
 <p><img src="{{ site.baseurl }}/assets/backup/09_05_flow_diagram2.jpg" /></p>
 <h3>onAuthRequired</h3>
 <p>Whenever the framework detects an unauthenticated attempt to access a protected resource, the <code>onAuthRequired</code> function is called, as defined in the <code>authenticationConfig.xml</code> file.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function onAuthRequired(headers, errorMessage){<br />
     errorMessage = errorMessage ? errorMessage : null;</p>
 <p>    return {<br />
@@ -79,7 +79,7 @@ This function receives the request headers and an optional <code>errorMessage</c
 <strong>Note:</strong> In the sample, the <code>authRequired:true</code> property in the challenge handler detects that the server is requesting authentication.</p>
 <h3>submitAuthentication</h3>
 <p>The <code>submitAuthentication</code> function is called by a client application to validate the user name and password.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function submitAuthentication(username, password){<br />
     if (username==="user" &amp;&amp; password === "password"){</p>
 <p>        var userIdentity = {<br />
@@ -103,7 +103,7 @@ An object (<code>{authRequired: false}</code>) is sent to the application, stati
 If credentials validation fails, an object that is built by the <code>onAuthRequired</code> function is returned to the application with a suitable error message.</p>
 <h3>onLogout</h3>
 <p>The <code>onLogout</code> function is defined in the <code>authenticationConfig.xml</code> file to be called automatically after a logout, for example to perform a cleanup. This step is optional.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function onLogout(){<br />
     WL.Logger.debug("Logged out");<br />
 }<br />
@@ -114,7 +114,7 @@ function onLogout(){<br />
 <procedure name="getSecretData" securityTest="AuthSecurityTest"/><br />
 {% endhighlight %}</p>
 <p>For training purposes, the <code>getSecretData</code> function returns a hardcoded value. Keep in mind that <code>getSecretData</code> is protected by a security test, as defined in the adapter XML.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function getSecretData(){<br />
     return {<br />
         secretData: "Very very very very secret data"<br />

@@ -106,7 +106,7 @@ This is the MobileFirst Server default behavior.</p>
 <p><br clear="all" /></p>
 <h3>Adapter JavaScript code</h3>
 <p>Create a <code>UserIdentity</code> that contains a user identifier and credentials properties. Format the <code>userId</code> as <code><em>servername/username</em></code>:<br />
-{% highlight JavaScript %}<br />
+{% highlight javascript linenos %}<br />
 function submitAuthentication(username, password){<br />
   var userIdentity = {<br />
     userId: "MyServerName\/"+ username,<br />
@@ -118,7 +118,7 @@ function submitAuthentication(username, password){<br />
 }<br />
 {% endhighlight %}</p>
 <p>Create an http request to the NTLM protected back end:<br />
-{% highlight JavaScript %}<br />
+{% highlight javascript linenos %}<br />
 function getSecretData(){<br />
   var input = {<br />
     method : 'get',<br />

@@ -38,13 +38,13 @@ These examples miss one step that is explained below - using Ant tasks to re-int
     <li>The plug-in's JavaScript implementation must be surrounded with the following:
         <ul>
             <li>At the top add:
-                {% highlight javascript %}
+                {% highlight javascript linenos %}
                 cordova.define("nl.x-services.plugins.replace-with-JS-filename", function(require, exports, module) {
                 {% endhighlight %}
             </li>
             <li>At the bottom add:
 
-                {% highlight javascript %}
+                {% highlight javascript linenos %}
                 });
                 {% endhighlight %}
             </li>
@@ -54,7 +54,7 @@ These examples miss one step that is explained below - using Ant tasks to re-int
     <li>The plug-in definition needs to be added to the <code>cordova_plugins.js</code> file. This is where we're hit with a problem; this file is considered a framework file and because of that, it gets auto-regenerated with each build performed in Worklight/MobileFirst Studio, and so any change that we do in it will be lost, rendering the plug-in not working. But first, find the <code>cordova_plugins.js</code> file in the <code>your-environment\native\www\default\worklight</code> folder, and:
         <ul>
             <li>Add a Cordova plug-in definition
-            {% highlight javascript %}
+            {% highlight javascript linenos %}
             {
                 "file": "../js/replace-with-JS-filename.js",
                 "id": "nl.x-services.plugins.replace-with-JS-filename",

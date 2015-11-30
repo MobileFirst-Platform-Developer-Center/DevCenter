@@ -107,7 +107,7 @@ WL.getInstance().sendActionToJS("doSomething", data);
 <p><code>doSomething</code> is an arbitrary action name to be used on the JavaScript side and the second parameter is a <code>JSONObject</code> object that contains any data.</p>
 <h3>Step 2</h3>
 <p>A JavaScript function verifies the action name and implements any JavaScript code.</p>
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 function actionReceiver(received){<br />
     if (received.action == "doSomething" && received.data.someProperty == "12345"){
         //perform required actions, e.g., update web user interface
@@ -115,11 +115,11 @@ function actionReceiver(received){<br />
 }{% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions, it must first be registered. This should be done early enough in the JavaScript code so that the function can handle those actions as early as possible.</p>
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 WL.App.addActionReceiver ("MyActionReceiverId", actionReceiver);
 {% endhighlight %}</p>
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
-{% highlight js %}
+{% highlight js linenos %}
 WL.App.removeActionReceiver("MyActionReceiverId");
 {% endhighlight %}</p>
 <h2 id="sendaction">SendAction sample</h2>
@@ -147,14 +147,14 @@ And use it's <code>onSuccess/onFailure</code> callbacks to update the <code>Conn
 <p>When the button is clicked, the <code>sendActionToNative</code> method is called.<br />
 This method has 2 parameters - the first is the requested action - in this case "displayNativeScreen".<br />
 The second parameter is a JSON Object to pass data to the native code.<br />
-{% highlight js %}
+{% highlight js linenos %}
 $('#changeServerURL').on('click', function(){
     WL.App.sendActionToNative("displayNativeScreen", { requestedNativeScreen: 'ServerURL'});
 });
 {% endhighlight %}</p>
 <p>The code also registers an action receiver to reload the application<br />
 After changing the server URL from the native code.<br />
-{% highlight js %}
+{% highlight js linenos %}
 WL.App.addActionReceiver ("BackFromNative", function actionReceiver(received){
 	if(received.action == "refreshView"){
 		WL.Client.reloadApp();

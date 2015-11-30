@@ -76,7 +76,7 @@ Other parts of the URL can be parameterized; that is, substituted at run time by
 <p>In the JavaScript file, use the same procedure name as in the XML file.
 The mandatory parameters to call the procedure are <code>method</code>, <code>path</code>, and <code>returnedContentType</code>.
 The procedure can be parameterized at run time.</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function getFeeds() {
 	var input = {
 	    method : 'get',
@@ -102,7 +102,7 @@ Provide an input parameters object, which must specify:</p>
 <h2>XSL transformation filtering</h2>
 <p>You can apply XSL transformation to the received data, for example to filter the data.
 To apply XSL transformation, specify the transformation options in the input parameters of the procedure invocation.</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function getFeedsFiltered() {
 	var input = {
 	    method : 'get',
@@ -141,7 +141,7 @@ var request =
 <li>A <code>path</code> property: a service path</li>
 <li>A <code>body</code> property: <code>content</code> (SOAP XML as a string) and <code>contentType</code></li>
 </ul>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var input = {
 	    method: 'post',
 	    returnedContentType: 'xml',

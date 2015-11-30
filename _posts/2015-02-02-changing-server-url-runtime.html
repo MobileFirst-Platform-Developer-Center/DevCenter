@@ -41,7 +41,7 @@ For API documentation visit this <a href="http://www-01.ibm.com/support/knowledg
 <h4>Step 2</h4>
 <p>To find out what is the URL of the current server the application is intended to connect to, <code>WL.App.getServerUrl</code> is used:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function getServerURL() {
     WL.App.getServerUrl(getServerURLSuccess, getServerURLFailure)
 }
@@ -70,7 +70,7 @@ function getServerURLSuccess(serverURL) {
     <li>You name it</li>
 </ul>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function setServerURL() {
     // Get the URL from the text field.
     var serverURL = $("#serverURL").val();

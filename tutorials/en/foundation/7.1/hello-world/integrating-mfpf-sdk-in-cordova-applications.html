@@ -129,7 +129,7 @@ org.apache.cordova.network-information</p>
 <h2 id="mobileFirstPlatformInitializationFlow">MobileFirst Platform initialization flow</h2>
 <p>The initialization flow is similar to the flow of a MobileFirst Hybrid app. During initialization, the MobileFirst Cordova Plugin runs <code>WL.Client.init(wlInitOptions)</code>. After initialization completes, the function <code>wlCommonInit()</code> is called.</p>
 <p>The <code>wlInitOptions</code> object and the <code>wlCommonInit</code> function are available inside the <code>index.js</code> file, which is part of the <em>cordova-hello-world-mfp</em> template. You can use the standard Cordova <code>deviceready</code> event to handle Cordova initialization, but the function <code>wlCommonInit</code> is the recommended way to identify that MobileFirst features are ready to be used.</p>
-<p>{% highlight js %}<br />
+<p>{% highlight js linenos %}<br />
 var Messages = {<br />
     // Add here your messages for the default language.<br />
     // Generate a similar file with a language suffix containing the translated messages.<br />
@@ -486,7 +486,7 @@ li {<br />
 <li>For the <strong>CAMERA</strong> button, use the function <code>navigator.camera.getPicture(onSuccess,onFailure,options)</code> to open the camera.</li>
 <li>For the <strong>RSS FEED</strong> button, use the <code>WLResourceRequest</code> API method to call the adapter procedure <code>getStories</code>, as described in the <a href="../../server-side-development/invoking-adapter-procedures-hybrid-client-applications/" target="_blank">Invoking adapter procedures from hybrid client applications</a> tutorial.</li>
 </ul>
-<p>{% highlight js %}<br />
+<p>{% highlight js linenos %}<br />
 var Messages = {<br />
     // Add here your messages for the default language.<br />
     // Generate a similar file with a language suffix containing the translated messages.<br />

@@ -144,7 +144,7 @@ function saveToCloudant(){
 {% endhighlight %}
 
 <h4>cloudant-impl.js</h4>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function getImage(param) {
 	var config = JSON.parse(param);
 	var input = {
@@ -160,7 +160,7 @@ function getImage(param) {
 
 <p>Just like when we sent a request to store our image we will need to include an authorization header to receive it. Please take note of the path; the path is <code>/$DB_NAME/$DOCUMENT_ID</code>. Finally, add the invokeProcedure request in your main.js file.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function retrieveImageFromCloudant(){
 	var config = {
 			db : "demo",

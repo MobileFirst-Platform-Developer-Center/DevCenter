@@ -51,7 +51,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h4>Client-side API</h4>
 <p><code>WL.Client.Push.onMessage (props, payload)</code><br />
 This method is called when a push notification is received by the device.<br />
-{% highlight js %}WL.Client.Push.onMessage = function (props, payload) {<br />
+{% highlight js linenos %}WL.Client.Push.onMessage = function (props, payload) {<br />
     alert("Provider notification data: " + Object.toJSON(props));<br />
     alert("Application notification data: " + Object.toJSON(payload));<br />
 }{% endhighlight %}</p>

@@ -92,7 +92,7 @@ version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" s
 <h2 id="notificationapiserver">Notification API: Server side</h2>
 <h3>Creating an event source.</h3>
 <p>This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).<br />
-{% highlight js %}
+{% highlight js linenos %}
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -111,7 +111,7 @@ WL.Server.createEventSource({
 <h3>Sending a notification</h3>
 <p>Notifications can be either pulled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications. Windows Phone 8 supports Raw, Tile, and Toast notifications. To set up Toast notifications to Windows Phone 8 devices, set the appropriate JSON object to the response of <code>WL.Server.createDefaultNotification()</code> API.</p>
 
-{% highlight js %}
+{% highlight js linenos %}
 function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
    if (userSubscription === null) {

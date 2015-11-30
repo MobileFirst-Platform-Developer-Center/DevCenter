@@ -123,7 +123,7 @@ ssl.keystore.password=worklight<br />
 </li>
 </ol>
 <h3>validateCSR</h3>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function validateCSR(clientDN, csrContent){<br />
     WL.Logger.info("validateCSR :: clientDN :: " + JSON.stringify(clientDN));<br />
     WL.Logger.info("validateCSR :: csrContent :: " + JSON.stringify(csrContent));</p>
@@ -157,7 +157,7 @@ You can use adapter functionality, such as access to http web services, to valid
 <li>If CSR validation fails, the function must return <code>isSuccessful:false</code> and supply an error message.</li>
 </ul>
 <h3 id="validateCertificate">validateCertificate</h3>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function validateCertificate(certificate,customAttributes){<br />
     WL.Logger.info("validateCertificate :: certificate :: " + JSON.stringify(certificate));<br />
     WL.Logger.info("validateCertificate :: customAttributes :: " + JSON.stringify(customAttributes));</p>
@@ -211,7 +211,7 @@ The <code>ProvBody</code> element holds device provisioning-related content.<br 
 <ol>
 <li>Add a listener to the <code>connectToServerButton</code> object.</li>
 <li>Use the <code>WL.Client.connect()</code> API to connect to MobileFirst Server.</li>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function wlCommonInit(){<br />
     $("#connectToServerButton").click(function(){<br />
         WL.Client.connect({<br />
@@ -230,13 +230,13 @@ For a challenge handler for device provisioning, implement the following methods
 <li><code>handler.processSuccess(identity)</code> – This method is invoked when certificate validation is successfully completed by  the <code>validateCertificate</code> adapter function that you implemented in the <a href="#validateCertificate">validateCertificate</a> section.</li>
 <li><code>handler.handleFailure()</code> – This method is invoked when certificate validation fails and the <code>validateCertificate</code> function returns <code>isSuccessful:false</code>.</li>
 </ul>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 var customDevProvChallengeHandler =<br />
     WL.Client.createProvisioningChallengeHandler("CustomDeviceProvisioningRealm");<br />
 {% endhighlight %}
 </li>
 <li>Create a device provisioning challenge handler by using the <code>WL.Client.createProvisioningChallengeHandler()</code> API. Specify a realm name as parameter.
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 customDevProvChallengeHandler.createCustomCsr = function(challenge){<br />
     WL.Logger.debug("createCustomCsr :: " + JSON.stringify(challenge));</p>
 <p>    $("#AppBody").hide();<br />
@@ -261,7 +261,7 @@ Use it to manipulate your UI, for example to hide the application screen and sho
 You can use information that is returned in the authentication challenge, for example, error messages.</li>
 <li>When the required custom properties are collected, invoke the <code>submitCustomCsr()</code> API.<br />
 Adding custom properties to CSR is optional. If you do not want to add custom properties, supply an empty JSON object as a parameter.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 customDevProvChallengeHandler.processSuccess = function(identity) {<br />
     WL.Logger.debug("processSuccess :: " + JSON.stringify(identity));<br />
     $("#connectToServerButton").hide();<br />
@@ -272,7 +272,7 @@ customDevProvChallengeHandler.processSuccess = function(identity) {<br />
 {% endhighlight %}
 </li>
 <li>The <code>processSuccess</code> function is called each time the certificate successfully passes validation. You can use it for UI manipulations.
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 customDevProvChallengeHandler.handleFailure = function(){<br />
     WL.Logger.debug("handleFailure");<br />
     $("#AppBody").show();<br />

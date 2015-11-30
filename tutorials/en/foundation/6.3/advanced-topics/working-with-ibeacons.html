@@ -26,7 +26,7 @@ downloads:
 Beacon objects also contains a field <code>customData</code> which is a JSON payload representing customer-specific data representing the beacon. For example, the store/location where the beacon is deployed.
 Beacons can be registered / updated / deleted using REST APIs. For detailed information on the REST APIs, refer the REST Services API in the IBM MobileFirst user documentation topics.</p>
 <p>Register the following beacons using the Beacons (PUT) REST API
-{% highlight js %}
+{% highlight js linenos %}
 {
     "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
     "major": 1,
@@ -35,7 +35,7 @@ Beacons can be registered / updated / deleted using REST APIs. For detailed info
         "branchName": "Indiranagar, Bangalore"
     }
 }{% endhighlight %}</p>
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 {
     "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
     "major": 2,
@@ -95,7 +95,7 @@ Beacons can be registered / updated / deleted using REST APIs. For detailed info
 <p>
 Beacon triggers can be registered / updated / deleted using REST APIs. For detailed information on the REST APIs, refer the REST Services API in the IBM MobileFirst user documentation topics.</p>
 <p>Register the following beacon triggers using the Beacon Triggers (POST) REST API.</p>
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 {
     "triggerName": "entryIntoBranch",
      "triggerType": "Enter",
@@ -105,7 +105,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
      }
  }{% endhighlight %}</p>
 
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 {
     "triggerName": "dwellInsideBank",
      "triggerType": "DwellInside",
@@ -116,7 +116,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
      }
  }{% endhighlight %}</p>
 
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 {
     "triggerName": "exitFromBranch",
      "triggerType": "Exit",
@@ -128,7 +128,7 @@ Beacon triggers can be registered / updated / deleted using REST APIs. For detai
 <h2 id="associatingbeacons">Associating Beacons and Beacon Triggers</h2>
 <p>An association between a beacon and a beacon trigger is represented as <code>BeaconTriggerAssociation</code> object in IBM MobileFirst Platform. The association can be created / updated / deleted using REST APIs. For detailed information on the REST APIs, refer the REST Services API in the user documentation topics</p>
 <p>Creating the association between beacons and triggers for an application can be achieved using the Associate beacons and triggers (PUT) REST API:
-{% highlight js %}
+{% highlight js linenos %}
 {
     "beacons": [
         {

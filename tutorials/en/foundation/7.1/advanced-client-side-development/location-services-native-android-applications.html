@@ -129,7 +129,7 @@ WLClient.getInstance().transmitEvent(event,immediate)
 Where the <code>event</code> parameter is a <code>JSONObject</code> and the <code>immediate</code> parameter is a <code>boolean</code> value.</p>
 <h3>Server side</h3>
 <p>In the adapter code, create event handler:</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 WL.Server.createEventHandler(filter, handlerFunction);
 {% endhighlight %}<br />
 Events that match the <code>filter</code> value are passed to <code>handlerFunction</code>.<br />
@@ -140,7 +140,7 @@ Filter examples:</p>
 <li><code>{}</code> – All events</li>
 </ul>
 <p>Register the event handlers:</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 WL.Server.setEventHandlers([...]);
 {% endhighlight %}</p>
 <blockquote><p>For more information, see the topic about working with geofences and triggers, in the user documentation.</p></blockquote>

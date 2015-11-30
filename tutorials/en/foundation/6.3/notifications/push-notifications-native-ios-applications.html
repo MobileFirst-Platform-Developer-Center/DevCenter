@@ -64,7 +64,7 @@ downloads:
 <h2 id="notificationapiserver">Notification API: Server side</h2>
 <h3>Creating an event source</h3>
 <p>This can be achieved by creating a notification event source in the adapter JavaScript™ code at a global level (outside any JavaScript function).</p>
-{% highlight js %}
+{% highlight js linenos %}
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -80,7 +80,7 @@ WL.Server.createEventSource({
 </ul>
 <h3>Sending a notification</h3>
 <p>Notifications can be either polled from, or pushed by, the back-end system. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-{% highlight js %}function submitNotification(userId, notificationText) {
+{% highlight js linenos %}function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
     if (userSubscription === null) {
         return { result: "No subscription found for user :: " + userId };

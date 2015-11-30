@@ -66,7 +66,7 @@ By using <code>AdapterAuthenticator</code>, you can write the login logic in an 
 {% endhighlight %} <br />
 <code>UsernamePasswordRealm</code> is used as the internal user ID, while the built-in <code>wl_deviceNoProvisioningRealm</code> helps get the device ID automatically from the device. The direct update and anti-XSRF realms are additional internal realms that are not specific to this scenario.</p>
 <h3>Adapter code</h3>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function UsernamePasswordRequired() {
     return {
         usernamePasswordRequired: true,
@@ -74,7 +74,7 @@ function UsernamePasswordRequired() {
 }
 {% endhighlight %} <br />
 This procedure notifies the client that the given resource requires username/password authentication. You must implement a  challenge handler to react to this flag.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function verifyUsernamePassword(username, password) {
     if (username && password && username == password) {
         WL.Server.setActiveUser("UsernamePasswordRealm", {
@@ -94,14 +94,14 @@ function verifyUsernamePassword(username, password) {
 {% endhighlight %} </p>
 <p>This procedure checks the validity of the user name and password and, if they are validated, sets the current user in the session. In this example, a "correct" username/password combination is any 2 strings that are exactly the same. In the real world, of course, the combination is verified by a database or a back-end service.</p>
 <h3>Challenge handler</h3>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 var usernamePasswordRealm = WL.Client.createChallengeHandler("UsernamePasswordRealm");
 usernamePasswordRealm.isCustomResponse = function(response) {
     return response && response.responseJSON && response.responseJSON.usernamePasswordRequired;
 };
 {% endhighlight %} <br />
 The challenge handler needs to be registered. The <code>usernamePasswordRequired</code> check in the response determines whether the challenge needs to be handled.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 usernamePasswordRealm.handleChallenge = function(response) {
     $('.section').hide();
     $('#loginBody').show();
@@ -111,7 +111,7 @@ usernamePasswordRealm.handleChallenge = function(response) {
 };
 {% endhighlight %} <br />
 If the challenge needs to be handled, simply show an HTML login form (and show errors if any). The submit button of this form is linked to the <code>login()</code> function below.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function login() {
     usernamePasswordRealm.submitAdapterAuthentication({
         adapter: 'MyAdapter',
@@ -144,7 +144,7 @@ This non-validating login module leaves the responsibility of validating the dat
  {% endhighlight %} <br />
 Again, an <code>AdapterAuthenticator</code> object is used to check the enrollment.</p>
 <p>In the adapter, this procedure is defined to let the client know that a given resource requires enrollment.<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function enrollmentRequired() {
     return {
         enrollmentRequired: true
@@ -164,11 +164,11 @@ Similar to the previous security test, this security test uses some predefined r
 <h3>Storage</h3>
 <p>In your application, you might want to use an external database or a back-end service to safely store the list of enrolled devices. This sample includes a Java class that emulates storage of JSON objects for a given ID string. The implementation of this class is not important and its public API features 3 methods: <code>getInfo(id)</code>, <code>setInfo(id, info)</code>, <code>removeInfo(id)</code>, where <code>info</code> is an arbitrary JSON object.</p>
 <p>In the adapter code, a reference to this class is declared:<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var enrolledDevices = com.ibm.sample.EnrolledDeviceStore;
 {% endhighlight %} </p>
 <h3>Enroll device</h3>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function enroll(pin) {
     var deviceId = WL.Server.getCurrentDeviceIdentity().deviceId;
     var userId = WL.Server.getCurrentUserIdentity().userId;
@@ -190,7 +190,7 @@ For a device to be enrolled, the current device ID and the currently logged-in u
 <procedure name="getTransactions" securityTest="PinCode"/>
 {% endhighlight %} </p>
 <h3>Check enrollment</h3>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function checkEnrollment() {
     var deviceId = WL.Server.getCurrentDeviceIdentity().deviceId;
     var enrollInfo = enrolledDevices.getInfo(deviceId);
@@ -207,7 +207,7 @@ function checkEnrollment() {
 This adapter procedure retrieves the current device ID and checks it against the enrolled list. If the device is enrolled, the user is logged in to the enrollment realm.</p>
 <h3>Remove device</h3>
 <p>To make testing easier, a procedure is added so that you can remove the current device from the list of devices and log out from all realms.<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function removeDevice() {
     var deviceId = WL.Server.getCurrentDeviceIdentity().deviceId;
     enrolledDevices.removeInfo(deviceId);
@@ -219,7 +219,7 @@ function removeDevice() {
 <h3>Pre-emptive login and enrollment</h3>
 <p>While you could wait for a challenge, you can also write client logic to pre-emptively trigger a login or enrollment.<br />
 In this sample, when the application starts, the following method is called.<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function checkEnrollment() {
     if (WL.Client.isUserAuthenticated("EnrollmentRealm")) {
         getBalance();
@@ -250,7 +250,7 @@ function checkEnrollment() {
 {% endhighlight %} </p>
 <p>This code checks whether the device is already enrolled. If it is, the account balance is shown. If the device is not enrolled, the code triggers the username/password authentication. Upon success, it shows the actual enrollment form, which requires to set up a PIN code.<br />
 Submitting this form triggers the <code>setPinCode()</code> function, then allows the user to see the balance.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function setPinCode() {
     if ($('#newPin').val() != "" && $('#newPin').val() == $('#repeatPin').val()) {
         WL.Client.invokeProcedure({
@@ -269,7 +269,7 @@ function setPinCode() {
 }
 {% endhighlight %} </p>
 <p>Because device enrollment is triggered pre-emptively by the client, the challenge handler for the <code>EnrollmentRealm</code> should not occur. To catch a rare case, a simple challenge handler could reload the application when it happens.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 var enrollmentRealm = WL.Client.createChallengeHandler("EnrollmentRealm");
 enrollmentRealm.isCustomResponse = function(response) {
     return response && response.responseJSON && response.responseJSON.enrollmentRequired;<
@@ -297,7 +297,7 @@ enrollmentRealm.handleChallenge = function(response) {
     <parameter name="login-function" value="MyAdapter.pinCodeRequired" />
  </realm>
 {% endhighlight %} </p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function pinCodeRequired() {
     return {
         pinCodeRequired: true
@@ -316,7 +316,7 @@ function pinCodeRequired() {
 {% endhighlight %} <br />
 Accessing a PIN-protected resource requires both <code>PinCodeRealm</code> and <code>EnrollmentRealm</code>.</p>
 <h3>Challenge handler</h3>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 var pinCodeRealm = WL.Client.createChallengeHandler("PinCodeRealm");
 pinCodeRealm.isCustomResponse = function(response) {
     return response && response.responseJSON && response.responseJSON.pinCodeRequired;
@@ -330,7 +330,7 @@ pinCodeRealm.handleChallenge = function(response) {
 };
 {% endhighlight %} </p>
 <p>When a resource is protected by a <code>PinCodeRealm</code> realm, the challenge handler is called. It shows a form that prompts the user to enter the valid PIN code. Clicking the button triggers the <code>verifyPinCode</code> function.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function verifyPinCode() {
     pinCodeRealm.submitAdapterAuthentication({
         adapter: 'MyAdapter',
@@ -347,7 +347,7 @@ function verifyPinCode() {
 }
 {% endhighlight %} </p>
 <p>This function sends the PIN code attempt to the adapter for verification.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function verifyPinCode(pin) {
     var userId = WL.Server.getCurrentUserIdentity().userId;
     var deviceId = WL.Server.getCurrentDeviceIdentity().deviceId;

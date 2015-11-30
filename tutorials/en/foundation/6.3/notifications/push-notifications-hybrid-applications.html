@@ -112,7 +112,7 @@ The device subscription is deleted either by an application that calls the <code
 <h2 id="notifserver">Notification API - Server side</h2>
 <h3>Creating an event source</h3>
 <p>To create an event source, declare it in the adapter JavaScript code at a global level (outside any JavaScript function):</p>
-{% highlight javascript %}WL.Server.createEventSource({
+{% highlight javascript linenos %}WL.Server.createEventSource({
 	name: 'PushEventSource',
 	onDeviceSubscribe: 'deviceSubscribeFunc',
 	onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
@@ -143,7 +143,7 @@ The following parameters are mandatory:</p>
 <p><br clear="all" /></p>
 <h3>Sending notification</h3>
 <p>As described previously, notifications can be either polled from the back-end system, or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function submitNotification(userId, notificationText) {
 	var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 	if (userSubscription === null) {
@@ -159,7 +159,7 @@ return {
 {% endhighlight %}
 <p><br clear="all" /><br />
 The <code>submitNotification</code> function takes the recipient user identifier and the notification text as parameters.</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function submitNotification(userId, notificationText) {
 {% endhighlight %}
 <p><br clear="all" /><br />
@@ -175,19 +175,19 @@ A user subscription object contains the information about all of the user’s su
 {% endhighlight %}
 <p><br clear="all" /><br />
 Next line:<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 {% endhighlight %}
 <p><br clear="all" /><br />
 If the user has no subscriptions for the specified event source, a <code>null</code> object is returned.<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 if (userSubscription === null) {
 	return { result: "No subscription found for user :: " + userId };
 }
 {% endhighlight %}
 <p><br clear="all" /><br />
 The <code>WL.Server.createDefaultNotification</code> method creates and returns a default notification JSON block for the supplied values.<br />
-{% highlight javascript %}var badgeDigit = 1;<br />
+{% highlight javascript linenos %}var badgeDigit = 1;<br />
 var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %}</p>
 <ul>
 <li><strong><code>notificationText</code></strong>: The text to be pushed to the device</li>
@@ -195,7 +195,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <li><strong><code>custom</code></strong>: The <code>custom</code> argument, or payload, is a JSON object that is transferred to the application and can contain custom properties.</li>
 </ul>
 <p>The <code>WL.Server.notifyAllDevices</code> method sends notification to all the devices that are subscribed to the user.</p>
-<p>{% highlight javascript %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
+<p>{% highlight javascript linenos %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h4>Several APIs exist for sending notifications:</h4>
 <ul>
@@ -210,7 +210,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <li><code>WL.Client.Push.isSubscribed(alias)</code>: Returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
 </ul>
 <p>When a push notification is received by a device, the callback function defined in <code>WL.Client.Push.registerEventSourceCallback</code> is invoked. It takes the following arguments:</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function pushNotificationReceived(props, payload) {
 	alert("pushNotificationReceived invoked");
 	alert("props :: " + JSON.stringify(props));
@@ -257,7 +257,7 @@ You can disable broadcast notification by unsubscribing from the reserved tag <c
 <strong>props</strong>: A JSON block that contains the notifications properties of the platform.<br />
 <strong>payload</strong>: A JSON block that contains other data that is sent from the MobileFirst Server. The JSON block also contains the tag name for tag and broadcast notification. The tag name appears in the <code><tag></tag></code> element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</p>
 
-{% highlight javascript %}WL.Client.Push.onMessage = function (props, payload) {
+{% highlight javascript linenos %}WL.Client.Push.onMessage = function (props, payload) {
     alert("Provider notification data: " + Object.toJSON(props));
     alert("Application notification data: " + Object.toJSON(payload));
 }

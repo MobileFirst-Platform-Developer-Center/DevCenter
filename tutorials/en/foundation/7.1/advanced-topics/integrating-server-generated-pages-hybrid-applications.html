@@ -145,7 +145,7 @@ public class WebViewOverlayPlugin extends CordovaPlugin {<br />
 <p>In JavaScript, the sample implements the page integration as follows.</p>
 <ol>
 <li>A <code>WebViewOverlayPlugin</code> object is created and populated with the required methods.
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function WebViewOverlayPlugin() {};<br />
 WebViewOverlayPlugin.prototype.open = function() {<br />
     cordova.exec(null, null, 'WebViewOverlayPlugin', 'open', []);<br />
@@ -157,7 +157,7 @@ window.webViewOverlay = new WebViewOverlayPlugin();<br />
 {% endhighlight %}</li>
 <li>The clicked tab ID is analyzed and either shows or hides the <code>webViewOverlay</code> accordingly.<br />
 Loading external content can take time, so adding a Busy Indicator to improve the user experience should be considered.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function tabClicked(id){<br />
     WL.Logger.debug("tabClicked >> id :: " + id);<br />
     $(".tab").addClass('hidden');<br />

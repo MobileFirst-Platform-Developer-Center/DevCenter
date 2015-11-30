@@ -93,7 +93,7 @@ Once the user approves, a progress bar dialog is displayed and web resources are
 <h3>Customizing the UI</h3>
 <p>It is possible to override the default UI and/or UX and create a custom Direct Update behavior altogether.</p>
 <p>To do so, override the <code>handleDirectUpdate</code> function:<br />
-{% highlight js %}wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {<br />
+{% highlight js linenos %}wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {<br />
     // custom Direct Update logic<br />
 };{% endhighlight %}</p>
 <p><br clear="all" /><br />
@@ -109,7 +109,7 @@ A customized new Direct Update UI can be, for example, either:</p>
 <li>An alternate HTML file that is presented to the user with options</li>
 <li>And so on…</li>
 </ul>
-{% highlight js %}
+{% highlight js linenos %}
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData,
 directUpdateContext) {
     // custom WL.SimpleDialog for Direct Update
@@ -134,12 +134,12 @@ directUpdateContext) {
 };{% endhighlight %}
 <p><img src="{{ site.baseurl }}/assets/backup/05_05_custom_dialog.png"/></p>
 <p>In the example code above, <code>submitFailure</code> was used to dismiss the Direct Update:<br />
-{% highlight js %}wl_directUpdateChallengeHandler.submitFailure();{% endhighlight %}</p>
+{% highlight js linenos %}wl_directUpdateChallengeHandler.submitFailure();{% endhighlight %}</p>
 <p>As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer.</p>
 <p>As such, it is important to call <code>submitFailure()</code> to notify the MobileFirst framework that the process completed with a “failure”. The MobileFirst framework in turn invokes the <code>onFailure</code> callback of the invocation that triggered the Direct Update.  </p>
 <p>Because the update process did not take place, it will occur again the next time it is triggered.</p>
 <p>Optionally, a developer can also supply a Direct Update listener to fully control a Direct Update’s lifecycle. For more information, see the “Customizing the direct update interface” user documentation topic.<br />
-{% highlight js %}directUpdateContext.start(directUpdateCustomListener);{% endhighlight %}</p>
+{% highlight js linenos %}directUpdateContext.start(directUpdateCustomListener);{% endhighlight %}</p>
 <h2 id="distribution">Distribution</h2>
 <p><img src="{{ site.baseurl }}/assets/backup/05_05_distribution.png"/></p>
 <p>(*) During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.</p>

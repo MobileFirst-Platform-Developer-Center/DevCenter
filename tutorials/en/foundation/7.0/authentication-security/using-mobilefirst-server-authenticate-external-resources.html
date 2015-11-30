@@ -148,7 +148,7 @@ The scopes that you provide are all defined in the <code>authenticationConfig.xm
 </ul>
 <h3>Use of WLResourceRequest: JavaScript example</h3>
 <p>This JavaScript example shows how to use the client-side API for access to an external service.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function callProtectedRestAPI() {
 	var url = EXTERNAL_SERVER_URL + REST_CONTEXT_ROOT+PATH_PROTECTED;
 	var request = new WLResourceRequest(url, WLResourceRequest.GET);
@@ -186,7 +186,7 @@ This is where you had to set <code>publicKeyServerUrl</code> when you set up OAu
 <p>You can protect your resources that are running on <code>Node.js</code> servers with OAuth-based MobileFirst security. Like the Java implementation, the MobileFirst Operational Analytics server is protected by basic authentication. You must configure the <strong>Resource Server</strong> by connecting the <code>passport-mfp-token-validation</code> module to the Analytics server.</p>
 <p>The <code>passport-mfp-token-validation</code> npm module provides passport validation strategy and a verification function to validate access tokens and ID tokens that are issued by the MobileFirst Server.</p>
 <p>The following example shows how to use <code>mfpStrategy</code> in a node application:<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
     var express = require('express'),
     passport = require('passport-mfp-token-validation').Passport,
     mfpStrategy = require('passport-mfp-token-validation').Strategy;

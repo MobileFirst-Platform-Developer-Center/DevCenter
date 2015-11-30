@@ -38,7 +38,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
 <h2 id="serverSidenotificationAPI">Notification API - Server-side</h2>
 <h3>Creating an event source</h3>
 <p>To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):</p>
-<p>{% highlight js %}WL.Server.createEventSource({<br />
+<p>{% highlight js linenos %}WL.Server.createEventSource({<br />
     name: 'PushEventSource',<br />
     onDeviceSubscribe: 'deviceSubscribeFunc',<br />
     onDeviceUnsubscribe: 'deviceUnsubscribeFunc',<br />
@@ -51,7 +51,7 @@ While the user subscription exists, MobileFirst Server can produce push notifica
 <li><strong><code>securityTest</code></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
 </ul>
 <p>An additional event source option:<br />
-{% highlight js %}poll: {<br />
+{% highlight js linenos %}poll: {<br />
     interval: 3,<br />
     onPoll: 'getNotificationsFromBackend'<br />
 }{% endhighlight %}</p>
@@ -66,7 +66,7 @@ The following parameters are required:</p>
 </ul>
 <h3>Sending a notification</h3>
 <p>As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.</p>
-<p>{% highlight js %}function submitNotification(userId, notificationText) {<br />
+<p>{% highlight js linenos %}function submitNotification(userId, notificationText) {<br />
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</p>
 <p>    if (userSubscription === null) {<br />
         return { result: "No subscription found for user :: " + userId };<br />
@@ -79,10 +79,10 @@ The following parameters are required:</p>
     };<br />
 }{% endhighlight %}</p>
 <p>The <code>submitNotification</code> function receives the <code>userId</code> to send notification to and the <code>notificationText</code>.</p>
-<p>{% highlight js %}function submitNotification(userId, notificationText) {
+<p>{% highlight js linenos %}function submitNotification(userId, notificationText) {
 {% endhighlight %}</p>
 <p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
-<p>{% highlight js %}{<br />
+<p>{% highlight js linenos %}{<br />
     userId: 'bjones',<br />
     state: {<br />
         customField: 3<br />
@@ -90,13 +90,13 @@ The following parameters are required:</p>
     getDeviceSubscriptions: function()[}<br />
 };{% endhighlight %}</p>
 <p>Next line:<br />
-{% highlight js %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
+{% highlight js linenos %}var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);{% endhighlight %}</p>
 <p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.<br />
-{% highlight js %}if (userSubscription === null) {<br />
+{% highlight js linenos %}if (userSubscription === null) {<br />
         return { result: "No subscription found for user :: " + userId };<br />
     }{% endhighlight %}</p>
 <p>The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.<br />
-{% highlight js %}var badgeDigit = 1;<br />
+{% highlight js linenos %}var badgeDigit = 1;<br />
 var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %}</p>
 <ul>
 <li><strong><code>notificationText</code></strong> - The text to be pushed to the device.</li>
@@ -104,7 +104,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <li><strong><code>custom</code></strong> - Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
 </ul>
 <p>The <code>WL.Server.notifyAllDevices</code> API method sends notification to all the devices that are subscribed to the user.</p>
-<p>{% highlight js %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
+<p>{% highlight js linenos %}WL.Server.notifyAllDevices(userSubscription, notification);{% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h4>Several APIs exist for sending notifications:</h4>
 <ul>

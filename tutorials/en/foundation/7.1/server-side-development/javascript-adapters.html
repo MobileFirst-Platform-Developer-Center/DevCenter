@@ -67,7 +67,7 @@ You can apply more filtering to retrieved data by using simple XSLT code.</p>
 <h2 id="procedureStructure">Structure of a JavaScript adapter procedure</h2>
 <p>Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
 The <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function procedure1(param) {<br />
   return WL.Server.invokeSQLStatement({<br />
     preparedStatement: procedure1Statement,<br />

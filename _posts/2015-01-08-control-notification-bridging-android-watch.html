@@ -19,7 +19,7 @@ author:
 <p>You can now include a new optional field in GCM properties of notification options when the notification is sent from the Adapter.</p>
 <p>For broadcast and tag based notification :</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function sendNotification(applicationId, notification, notificationText) {
    notification.message = {};
    notification.message.alert = notificationText;
@@ -32,7 +32,7 @@ function sendNotification(applicationId, notification, notificationText) {
 {% endhighlight %}
 
 <p>For Event Source notifications:</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function submitNotification(userId, notificationText){
    var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
    if (userSubscription==null){

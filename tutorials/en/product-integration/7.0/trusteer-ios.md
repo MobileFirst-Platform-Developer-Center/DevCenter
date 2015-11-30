@@ -61,14 +61,14 @@ CoreMotion.framework in addition to MobileFirst's standard requirements.
 ### Access Risk Items in JavaScript
 Optionally, you can access the client-side generated Trusteer data object using the following API:
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 WL.Trusteer.getRiskAssessment(onSuccess, onFailure);
 {% endhighlight %}
 
 Where <code>onSuccess</code> is a function that will receive a
 <code>JSON</code> object containing all the data processed by Trusteer. See Trusteer documentation to get information on each risk item.
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function onSuccess(result) {
     //See in the logs what the full result looks like
     WL.Logger.debug(JSON.stringify(result));
@@ -144,7 +144,7 @@ The possible values are: <code>block</code>, <code>alert</code> or <code>accept<
 ### JavaScript Challenge Handler
 Assuming you’ve added a Trusteer <code>realm</code> to your server’s authentication configuration file, you can register a challenge handler to receive the responses from the authenticator.
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var trusteerChallengeHandler = WL.Client.createWLChallengeHandler("wl_basicTrusteerFraudDetectionRealm");
 {% endhighlight %}
 
@@ -153,7 +153,7 @@ Notice that you are registering a <code>WLChallengeHandler</code> and not a <cod
 
 If you have set one of your <code>realm</code> options to <code>block</code>, a blocking event will trigger the <code>handleFailure</code>.
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 trusteerChallengeHandler.handleFailure = function(error) {
     WL.SimpleDialog.show("Error", "Operation failed. Please contact customer support (reason code: " + error.reason + ")", [{text:"OK"}]); };
 {% endhighlight %}
@@ -185,7 +185,7 @@ trusteerChallengeHandler.handleFailure = function(error) {
 
 If your have set one of your <code>realm</code> options to <code>alert</code>, you can catch the alert event by implementing the <code>processSuccess</code> method.
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 trusteerChallengeHandler.processSuccess = function(identity) {
     var alerts = identity.attributes.alerts; //Array of alerts codes
     if (alerts.length > 0) {

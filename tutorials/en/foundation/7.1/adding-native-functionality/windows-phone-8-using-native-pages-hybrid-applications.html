@@ -22,7 +22,7 @@ downloads:
 <h2 id="connect">Connecting to the plugin from the JavaScript code</h2>
 <ol>
 <li>Implement the <code>WL.NativePage.show()</code> to open the native page.
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 function openNativePage(){
     var params = {
         nameParam : $('#nameInput').val()
@@ -37,7 +37,7 @@ function openNativePage(){
 </ul>
 </li>
 <li>To handle the callback function:
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 function backFromNativePage(data){
   alert("Received phone number is: " + data.phoneNumber);
 }
@@ -86,7 +86,7 @@ void DoneButton_Click(object sender, RoutedEventArgs e)
 }
 {% endhighlight %}</p>
 <h3>JavaScript</h3>
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }

@@ -21,7 +21,7 @@ downloads:
 <h2 id="connect">Connecting to the plugin from the JavaScript code</h2>
 <ol>
 <li>Implement the <code>WL.NativePage.show()</code> method to open the native page:
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 function openNativePage(){
     var params = {
         nameParam : $('#nameInput').val()
@@ -36,7 +36,7 @@ function openNativePage(){
 </ul>
 </li>
 <li>To handle the callback function, write the following code:
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }
@@ -74,7 +74,7 @@ To pass data back to the web view, use the <code>NSDictionary</code> object. For
 {% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h4>JavaScript</h4>
-<p>{% highlight js %}
+<p>{% highlight js linenos %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }

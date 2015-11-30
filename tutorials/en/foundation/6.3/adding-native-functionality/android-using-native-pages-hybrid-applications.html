@@ -17,7 +17,7 @@ With this method, data can be sent from JavaScript to the opened native page, an
 
 As a first step, <code>WL.NativePage.show()</code> needs to be implemented in order to open the native page:
 
-{% highlight javascript %}function openNativePage(){
+{% highlight javascript linenos %}function openNativePage(){
     var params = {
         nameParam : $('#nameInput').val()
     };
@@ -33,7 +33,7 @@ As a first step, <code>WL.NativePage.show()</code> needs to be implemented in or
 
 To handle the callback function:
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function backFromNativePage(data){
 	alert("Received phone number is: " + data.phoneNumber);
 }
@@ -78,7 +78,7 @@ finish();
 {% endhighlight %}
 
 <b>JavaScript:</b>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }

@@ -140,7 +140,7 @@ NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@
 Where <code>event</code> is a <code>NSDictionary</code> object and <code>immediately</code> is a <code>boolean</code> value.</p>
 <h3>Server side</h3>
 <p>In the adapter code, create event handlers:<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 WL.Server.createEventHandler(filter, handlerFunction);
 {% endhighlight %}<br />
 The events that match the filter are passed to <code>handlerFunction</code>.<br />
@@ -151,7 +151,7 @@ Filter examples:</p>
 <li><code>{} – All events</code></li>
 </ul>
 <p>Register the event handlers:<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 WL.Server.setEventHandlers([...]);
 {% endhighlight %}</p>
 <blockquote><p>For more information, see the topic about working with geofences and triggers, in the user documentation.</p></blockquote>

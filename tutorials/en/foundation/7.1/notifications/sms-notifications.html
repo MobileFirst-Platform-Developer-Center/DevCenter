@@ -74,7 +74,7 @@ relevantTo: [hybrid]
 <ol>
 <li>Start by creating an event source:<br />
 Declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function).<br />
-{% highlight js %}<br />
+{% highlight js linenos %}<br />
 WL.Server.createEventSource({<br />
         name: 'SMSEventSource',<br />
         onDeviceSubscribe: 'onDeviceSubscribeCallback',<br />
@@ -100,7 +100,7 @@ WL.Server.createEventSource({<br />
 </ul>
 </li>
 <li>Send a notification:<br />
-{% highlight js %}<br />
+{% highlight js linenos %}<br />
 function sendSMS(userId, smsText){<br />
         var userSubscription = WL.Server.getUserNotificationSubscription('SMSAdapter.SMSEventSource', userId);<br />
         if (userSubscription==null){<br />

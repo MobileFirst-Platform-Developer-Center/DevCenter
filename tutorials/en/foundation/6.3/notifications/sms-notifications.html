@@ -69,7 +69,7 @@ downloads:
 <h3>Server side</h3>
 <p>Start by creating an event source:<br />
 Declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function).<br />
-{% highlight js %}
+{% highlight js linenos %}
 WL.Server.createEventSource({
         name: 'SMSEventSource',
         onDeviceSubscribe: 'onDeviceSubscribeCallback',
@@ -91,7 +91,7 @@ WL.Server.createEventSource({
         &nbsp;&nbsp;&nbsp;&nbsp;<strong>-</strong>onPoll: polling implementation: an adapter function to be invoked at specified intervals
 </ul>
 <p>Send a notification:<br />
-{% highlight js %}
+{% highlight js linenos %}
 function sendSMS(userId, smsText){
         var userSubscription = WL.Server.getUserNotificationSubscription('SMSAdapter.SMSEventSource', userId);
         if (userSubscription==null){

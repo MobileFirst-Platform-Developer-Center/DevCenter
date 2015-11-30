@@ -78,7 +78,7 @@ Application-specific properties that are set in the shell descriptor are used in
 <p>Follow these instructions to develop a functioning shell component.<br />
 Create a myshell.js file in the <code>MyShell\common\js</code> folder.<br />
 Add the following function to it:</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function sayHelloFromShell(){
 	alert("Hello from Shell");
 }
@@ -90,7 +90,7 @@ function sayHelloFromShell(){
 {% endhighlight %}</p>
 <p>Modify the <strong>main.js</strong> file in the <code>apps/MyShellTest/common/js</code> folder.<br />
 Invoke the function that you previously added in the shell component.</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function wlCommonInit(){
 	sayHelloFromShell();
 }

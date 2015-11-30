@@ -41,7 +41,7 @@ Create an adapter and name it <strong>DummyAdapter</strong>.<br />
 Add a <strong>getSecretData</strong> procedure and protect it with the security test that you created in previous slides.</p>
 <p>{% highlight xml linenos %}<procedure name="getSecretData" securityTest="DummyAdapter-securityTest"/>{% endhighlight %}</p>
 <p>In this module, the <strong>getSecretData</strong> procedure returns some hardcoded value:</p>
-<p>{% highlight javascript %}
+<p>{% highlight javascript linenos %}
 function getSecretData(){
 	return {
 		secretData: '123456'

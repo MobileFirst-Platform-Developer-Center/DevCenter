@@ -15,7 +15,7 @@ The REST API works with all adapters and <a href="../../authentication-security/
 <p>If your application supports other hybrid environments such as BlackBerry, Mobile Web, or Desktop Browser, see the tutorial for <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-hybrid-client-applications/">IBM MobileFirst Platform Foundation 6.3</a>.</p>
 <p>This tutorial explains how to use the <code>WLResourceRequest</code> API with an HTTP adapter.</p>
 <h2>WLResourceRequest</h2>
-<p>{% highlight js %}<br />
+<p>{% highlight js linenos %}<br />
 var resourceRequest = new WLResourceRequest(<br />
     "/adapters/RSSReader/getFeedFiltered",<br />
     WLResourceRequest.GET<br />
@@ -31,7 +31,7 @@ var resourceRequest = new WLResourceRequest(<br />
 </ul>
 <p><br clear="all" /></p>
 <h4>setQueryParameter</h4>
-<p>{% highlight js %}<br />
+<p>{% highlight js linenos %}<br />
 resourceRequest.setQueryParameter("params", "['MobileFirst_Platform']");<br />
 {% endhighlight %}</p>
 <p>By using the <code>setQueryParameter</code> method, you can include query (URL) parameters in the REST request.</p>
@@ -39,7 +39,7 @@ resourceRequest.setQueryParameter("params", "['MobileFirst_Platform']");<br />
 <li>In MobileFirst JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name <code>params</code>.
 </li>
 <li>In Java adapters or external resources, use <code>setQueryParameter</code> for each parameter.<br />
-{% highlight js %}<br />
+{% highlight js linenos %}<br />
 resourceRequest.setQueryParameter("param1", "value1");<br />
 resourceRequest.setQueryParameter("param2", "value2");<br />
 {% endhighlight %}
@@ -47,7 +47,7 @@ resourceRequest.setQueryParameter("param2", "value2");<br />
 </ul>
 <p><br clear="all" /></p>
 <h4>send(body)</h4>
-<p>{% highlight js %}<br />
+<p>{% highlight js linenos %}<br />
 resourceRequest.send().then(<br />
 	onSuccess,<br />
 	onFailure<br />
@@ -67,7 +67,7 @@ Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFai
 </ul>
 <p>The object is returned to a corresponding success/failure handler.</p>
 <p><br clear="all" /><br />
-{% highlight javascript %}<br />
+{% highlight javascript linenos %}<br />
 {<br />
   "errors": [],<br />
   "info": [],<br />
@@ -105,7 +105,7 @@ Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFai
 </ul>
 <h3>Handling the result</h3>
 <p>The rest of the invocation result depends on what was retrieved from the back-end system. In this example, the <code>Items</code> element is a JSON representation of the XML code that was received from the back end, after the rules in the XSL file were applied.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function loadFeedsSuccess(result){<br />
     WL.Logger.debug("Feed retrieve success");<br />
     if (result.responseJSON.Items.length > 0)<br />

@@ -230,7 +230,7 @@ try {
 <h3>Adapter Implementation</h3>
 <p>Create a MobileFirst adapter and name it "<strong>People</strong>". Define it's procedures <code>addPerson</code>, <code>getPeople</code>, <code>pushPeople</code>, <code>removePerson</code>, and <code>replacePerson</code>.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function getPeople() {
 	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
 	WL.Logger.debug('Adapter: people, procedure: getPeople called.');

@@ -22,7 +22,7 @@ downloads:
 <ol>
 <li> Implement the <code>WL.NativePage.show()</code> method to open the native page:
 <p>
-{% highlight js %}
+{% highlight js linenos %}
 function openNativePage() {
     var params = {
         nameParam : $('#nameInput').val()
@@ -38,7 +38,7 @@ function openNativePage() {
 </li>
 <li>To handle the callback function:
 <p>
-{% highlight js %}
+{% highlight js linenos %}
 function backFromNativePage(data) {
     alert("Received phone number is: " + data.phoneNumber);
 }
@@ -76,7 +76,7 @@ finish();
 {% endhighlight %} </p>
 
 <p>JavaScript:<br />
-{% highlight js %}
+{% highlight js linenos %}
 function backFromNativePage(data) {
     alert("Received phone number is: " + data.phoneNumber);
 }

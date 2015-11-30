@@ -57,7 +57,7 @@ downloads:
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function sayHello() {
     var name = $("#NameInput").val();
     cordova.exec(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
@@ -77,7 +77,7 @@ function sayHello() {
     <code>[name]</code> - Parameters array</p>
 
 <p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks:</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function sayHelloSuccess(data){
     WL.SimpleDialog.show(
         "Response from plug-in", data,

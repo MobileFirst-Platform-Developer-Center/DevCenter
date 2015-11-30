@@ -57,7 +57,7 @@ relevantTo: [hybrid]
 <h3>Procedures</h3>
 <p>Your adapter procedures use the <code>invokeHttp</code> method to send an HTTP request to one of the URLs that are defined by Cloudant.<br />
 For example, you can create a new document by sending a <code>POST</code> request to <code>/{<em>your-database</em>}/</code> with the body being a JSON representation of the document that you wish to store.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function addEntry(entry){</p>
 <p>	var input = {<br />
 		    method : 'post',<br />

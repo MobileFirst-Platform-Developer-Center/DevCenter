@@ -34,7 +34,7 @@ adapter procedure callback is called.</p>
 <p>The adapter can process SMS messages and send them to a mobile device by using the SMS API. An adapter procedure can use the SMS server-side APIs for subscription and unsubscription. The procedure uses the SMS notification framework to send the response back to the mobile device.</p>
 <h2 id="api">API for two-way SMS</h2>
 <h3>Registering SMS event handlers</h3>
-<p>{% highlight js %}<br />
+<p>{% highlight js linenos %}<br />
 WL.Server.setEventHandlers([<br />
                             WL.Server.createSMSEventHandler(<br />
                                 {keyword: WL.Server.configuration['sms.keyword.subscribe']},<br />
@@ -58,7 +58,7 @@ The name-value parameters sent from the SMS gateway that match the filters are p
 <p><code>gatewayID</code> corresponds to the SMS gateway that is configured in the <code>SMSConfig.xml</code> file. This gateway is used to receive SMS messages.</p>
 <h3>Server-side SMS API</h3>
 <p>MobileFirst Server uses SMS notification to send SMS messages. Before SMS messages can be sent, the server must subscribe to a phone number.<br />
-{% highlight js %}<br />
+{% highlight js linenos %}<br />
 var subscription = WL.Server.subscribeSMS(eventSourceID, phoneNumber, gatewayID);<br />
 {% endhighlight %}<br />
 This method takes the following parameters:</p>
@@ -69,7 +69,7 @@ This method takes the following parameters:</p>
 </ul>
 <p>The method returns an SMS subscription object. Along with the <code>WL.Server.notifyDeviceSubscription</code> method, this object can be used to send an SMS message to the specified phone number.</p>
 <p>If the phone number is already subscribed, get the subscription object and send an SMS message.<br />
-{% highlight js %}<br />
+{% highlight js linenos %}<br />
 function sendSMS(phoneNumber, smsText) {</p>
 <p>  var subscription = WL.Server.getSMSSubscription(eventSourceId, phoneNumber);</p>
 <p>  if (subscription == null) {<br />
@@ -81,7 +81,7 @@ function sendSMS(phoneNumber, smsText) {</p>
 }<br />
 {% endhighlight %}<br />
 A phone number can unsubscribe from the event source by a call to the following method:<br />
-{% highlight js %}<br />
+{% highlight js linenos %}<br />
 WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);<br />
 {% endhighlight %}</p>
 <h2 id="setup">Setup</h2>
@@ -93,7 +93,7 @@ WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);<br />
 </gateway><br />
 {% endhighlight %}</p>
 <p>You can externalize the keywords, gateway identifier, and other parameters that the SMS event handler uses in the <code>worklight.properties</code> configuration file.<br />
-{% highlight js %}<br />
+{% highlight js linenos %}<br />
 sms.keyword.subscribe=sub<br />
 sms.keyword.unsubscribe=unsub<br />
 sms.gateway.id=myGateway<br />

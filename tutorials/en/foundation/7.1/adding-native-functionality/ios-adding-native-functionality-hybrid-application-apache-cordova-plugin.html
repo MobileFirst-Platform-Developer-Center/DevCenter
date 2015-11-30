@@ -39,7 +39,7 @@ To declare the plug-in, add a reference to the <code>config.xml</code> file, loc
 {% endhighlight %}</p>
 <h2 id="exec">Implementing cordova.exec() in JavaScript</h2>
 <p>From the JavaScript code of the application, use the <code>cordova.exec()</code> method to call the Cordova plug-in:<br />
-{% highlight js %}
+{% highlight js linenos %}
 function sayHello() {
     var name = $("#NameInput").val();
     cordova.exe(sayHelloSuccess, sayHelloFailure, "SayHelloPlugin", "sayHello", [name]);
@@ -51,7 +51,7 @@ function sayHello() {
 <code>sayHello</code> - Action name<br />
 <code>[name]</code> - Parameters array</p>
 <p>The plug-in calls the <code>success</code> and <code>failure</code> callbacks.<br />
-{% highlight js %}
+{% highlight js linenos %}
 function sayHelloSuccess(data) {
     WL.SimpleDialog.show(
         "Response from plug-in", data,

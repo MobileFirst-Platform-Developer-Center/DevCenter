@@ -258,7 +258,7 @@ The <code>processRequest</code> method first checks whether the client exists in
 {% endhighlight %}</p>
 <h2 id="challengeHandler">Challenge handler</h2>
 <p>Because the <code>authenticator</code> uses the <em>Worklight protocol</em>, use the <code>createWLChallengeHandler</code> method to create the challenge handler.<br />
-{% highlight javascript %}<br />
+{% highlight javascript linenos %}<br />
 var challengeHandler = WL.Client.createWLChallengeHandler("CustomRealm");<br />
 {% endhighlight %}<br />
 The challenge handler hides and shows the login parts of the application when required. It uses the <code>submitChallengeAnswer</code> method to send the credentials and the <strong>Remember Me</strong> checkbox. See the sample code for implementation details.</p>
@@ -279,7 +279,7 @@ The challenge handler hides and shows the login parts of the application when re
 {% endhighlight %}
 </li>
 <li>From the client code, make sure that you call this method before using the standard logout feature.
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 function logout(){<br />
 	busyIndicator.show();<br />
 	var resourceRequest = new WLResourceRequest("/adapters/Content/forgetMe", WLResourceRequest.POST, 30000);<br />

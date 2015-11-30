@@ -47,7 +47,7 @@ public class Calculator {
 <h2>Invoking custom Java classes from the adapter</h2>
 <p>After your custom Java code is created and any required JAR files are added, you can reference it from your MobileFirst Adapter JavaScript as if it were written in Java.</p>
 <p>Invoke the static Java method as shown, and use the full class name to reference it directly.<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function addTwoIntegers(a,b){
 	return {
 		result: com.sample.customcode.Calculator.addTwoIntegers(a,b)
@@ -55,7 +55,7 @@ function addTwoIntegers(a,b){
 }
 {% endhighlight %}
 <p>To use the instance method, create a class instance and invoke the instance method from it.</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function subtractTwoIntegers(a,b){
 	var calcInstance = new com.worklight.customcode.Calculator();
 	return {

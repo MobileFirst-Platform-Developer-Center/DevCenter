@@ -79,11 +79,11 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <ul>
 <li>The following API call results in a <em>session hit</em> that is visualized on MobileFirst Operational Analytics:
     </li>
-<p>    {% highlight javascript %}</p>
+<p>    {% highlight javascript linenos %}</p>
 <p>    // a 'session hit' will be recorded upon a successful connection<br />
     WL.Client.connect();{% endhighlight %}</p>
 <li>The following API call results in an <em>adapter hit</em> and a <em>session hit</em> that are visualized on the MobileFirst Operational Analytics dashboard:</li>
-<p>    {% highlight javascript %}</p>
+<p>    {% highlight javascript linenos %}</p>
 <p>    // an 'adapter hit' and a 'session hit' will be recorded upon a successful adapter invocation<br />
     WLResourceRequest.send();{% endhighlight %}</p>
 </ul>
@@ -104,7 +104,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <h2 id="clientLogs">Capturing data - Client Logs</h2>
 <p>You can instrument a MobileFirst application with client logs to record client debugging information and events.</p>
 <p>You can use the following APIs to create client logs which are then forwarded to the MobileFirst Operational Analytics server, where they can be searched and downloaded.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 // Set the log level to trace so that all logs are captured<br />
 WL.Logger.config({&amp;amp;amp;amp;quot;level&amp;amp;amp;amp;quot;: &amp;amp;amp;amp;quot;TRACE&amp;amp;amp;amp;quot;});</p>
 <p>// Create a client side log that is persisted locally until it is sent to the server<br />
@@ -116,7 +116,7 @@ WL.Logger.error(&amp;amp;amp;amp;quot;Create a client log at the ERROR level.&am
 WL.Logger.fatal(&amp;amp;amp;amp;quot;Create a client log at the FATAL level.&amp;amp;amp;amp;quot;);{% endhighlight %}</p>
 <h2 id="analyticsLogs">Analytics Logs</h2>
 <p>Client-side logs are captured based on the logging level that is set on the client. If you want to create analytics logs that are always captured regardless of the logging level, you can use the <code>WL.Analytics</code> API.</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 // Create an analytics log message<br />
 WL.Analytics.log(&amp;amp;amp;amp;quot;Analytics log message&amp;amp;amp;amp;quot;);</p>
 <p>// Create a custom activity<br />
@@ -126,17 +126,17 @@ WL.Analytics.log({_activity: &amp;amp;amp;amp;quot;customActivity&amp;amp;amp;am
 {% endhighlight %}</p>
 <h2 id="sendingData">Sending data</h2>
 <p>Logs that are captured by the client-side logging APIs and the <code>WL.Analytics</code> APIs are sent to the server automatically upon a successful server connection or a successful adapter call.</p>
-<p>{% highlight javascript %}</p>
+<p>{% highlight javascript linenos %}</p>
 <p>// Logs sent upon successful connection<br />
 WL.Client.connect();</p>
 <p>// Logs sent upon successful adapter invocation<br />
 WLResourceRequest.send();{% endhighlight %}</p>
 <p>You can disable this automatic behavior by using the following call:</p>
-<p>{% highlight javascript %}</p>
+<p>{% highlight javascript linenos %}</p>
 <p>// Disable automatic sending of client and analytics logs<br />
 WL.Logger.config({autoSendLogs: false});{% endhighlight %}</p>
 <p>If you want to send this data more frequently, you can use the following API calls:</p>
-<p>{% highlight javascript %}</p>
+<p>{% highlight javascript linenos %}</p>
 <p>// Send client debug logs<br />
 WL.Logger.send();</p>
 <p>// Send analytics logs<br />
@@ -155,7 +155,7 @@ WL.Analytics.send();{% endhighlight %}</p>
 <h2 id="creatingCustomChart">Creating a custom chart</h2>
 <p>Creating a custom chart is simple. The following example walks you through creating a pie chart, based on the user pressing three buttons.</p>
 <p>The messages that are logged to the Operational Analytics server in this example are hard-coded buttons. Those messages look like this:</p>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 WL.Analytics.log({buttonPress: &amp;amp;amp;amp;quot;buttonA&amp;amp;amp;amp;quot;}, &amp;amp;amp;amp;quot;press&amp;amp;amp;amp;quot;);<br />
 WL.Analytics.log({buttonPress: &amp;amp;amp;amp;quot;buttonB&amp;amp;amp;amp;quot;}, &amp;amp;amp;amp;quot;press&amp;amp;amp;amp;quot;);<br />
 WL.Analytics.log({buttonPress: &amp;amp;amp;amp;quot;buttonC&amp;amp;amp;amp;quot;}, &amp;amp;amp;amp;quot;press&amp;amp;amp;amp;quot;);<br />

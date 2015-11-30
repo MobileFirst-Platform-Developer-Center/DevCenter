@@ -77,7 +77,7 @@ You can use either the Design or the Source editor in the Studio, or use your fa
 <li>Use the <code>WL.Server.createSQLStatement</code> method to prepare a SQL query.<br />
 The <code>WL.Server.createSQLStatement</code> method must always be called outside the function.</li>
 <li>Add more parameters, if necessary.
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 //Create SQL query<br />
 var getAccountsTransactionsStatement = WL.Server.createSQLStatement(<br />
   "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +<br />
@@ -90,7 +90,7 @@ var getAccountsTransactionsStatement = WL.Server.createSQLStatement(<br />
 </li>
 <li>Use the <code>WL.Server.invokeSQLStatement</code> method to call prepared queries.</li>
 <li>Return the result to the application or to another procedure.
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 //Invoke prepared SQL query and return invocation result<br />
 function getAccountTransactions1(accountId){<br />
   return WL.Server.invokeSQLStatement({<br />
@@ -104,7 +104,7 @@ function getAccountTransactions1(accountId){<br />
 Specify a SQL stored procedure name as an invocation parameter.</li>
 <li>Add more parameters, if necessary.</li>
 <li>Return the invocation result to the application or to another procedure.
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 //Invoke stored SQL procedure and return invocation result<br />
 function getAccountTransactions2(accountId){<br />
   return WL.Server.invokeSQLStoredProcedure({<br />
@@ -116,7 +116,7 @@ function getAccountTransactions2(accountId){<br />
 </li>
 </ol>
 <h2 id="results">Invocation Results</h2>
-<p>{% highlight javascript %}<br />
+<p>{% highlight javascript linenos %}<br />
 {<br />
   "isSuccessful": true,<br />
   "resultSet": [{<br />

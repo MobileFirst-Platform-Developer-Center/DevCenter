@@ -28,7 +28,7 @@ The <code>invocationData</code> function signature is:
 `WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
 
 For example:
-{% highlight javascript %}
+{% highlight javascript linenos %}
 WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
 {% endhighlight %}
 
@@ -96,7 +96,7 @@ Here is a list of the mashup types and the corresponding adapter names:
 {% endhighlight %}
 
 (getCitiesListJS adapter) JavaScript:
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function getYahooWeather(woeid) {
     var input = {
         method : 'get',
@@ -133,7 +133,7 @@ private String execute(HttpUriRequest req, HttpServletResponse resultResponse) t
 **2. Create an SQL query and fetch the cities records from the database:**
 
 (getCitiesListJS adapter)
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var getCitiesListStatement = WL.Server.createSQLStatement("select city, identifier, summary from weather;");
 function getCitiesList() {
 	return WL.Server.invokeSQLStatement({
@@ -152,7 +152,7 @@ ResultSet rs = getAllCities.executeQuery();
 **3. Loop through the cities records and fetch the weather info for each city from Yahoo! Weather Service:**
 
 (getCitiesListJS adapter)
-{% highlight javascript %}
+{% highlight javascript linenos %}
 for (var i = 0; i < cityList.resultSet.length; i++) {
 	var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);
 ...
@@ -189,7 +189,7 @@ while (rs.next()) {
 put this values in a resultSet / JSONArray object and return it to the application:**
 
 (getCitiesListJS adapter)
-{% highlight javascript %}
+{% highlight javascript linenos %}
 ...
 if (yahooWeatherData.isSuccessful)
 	cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;

@@ -64,12 +64,12 @@ clientKey=YMAQAABNFUWS2
 
 <h2>Access Risk Items in JavaScript</h2>
 <p>Optionally, you can access the client-side generated Trusteer data object using the following API:<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 WL.Trusteer.getRiskAssessment(onSuccess, onFailure);
 {% endhighlight %}
 
 Where onSuccess is a function that will receive a <code>JSON</code> object containing all the data processed by Trusteer. See Trusteer documentation to get information on each risk item.<br />
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function onSuccess(result) {
   //See in the logs what the full result looks like
   WL.Logger.debug(JSON.stringify(result));
@@ -144,7 +144,7 @@ if([rooted intValue]!= 0){
 <h2>JavaScript Challenge Handler</h2>
 <p>Assuming you’ve added a Trusteer realm to your server’s authentication configuration file, you can register a challenge handler to receive the responses from the authenticator.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var trusteerChallengeHandler = WL.Client.createWLChallengeHandler("wl_basicTrusteerFraudDetectionRealm");
 {% endhighlight %}
 
@@ -152,7 +152,7 @@ Notice that you are registering a <code>WLChallengeHandler</code> and not a <cod
 
 <p>If you have set one of your realm options to <code>block</code>, a blocking event will trigger <code>handleFailure</code>.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 trusteerChallengeHandler.handleFailure = function(error) {
       WL.SimpleDialog.show("Error", "Operation failed. Please contact customer support (reason code: " + error.reason + ")",  [{text:"OK"}]);<br />
 };
@@ -170,7 +170,7 @@ trusteerChallengeHandler.handleFailure = function(error) {
 </ul>
 
 <p>If your have set one of your realm options to alert, you can catch the alert event by implementing the <code>processSuccess</code> method.</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 trusteerChallengeHandler.processSuccess = function(identity) {
   var alerts = identity.attributes.alerts; //Array of alerts codes
   if (alerts.length > 0) {

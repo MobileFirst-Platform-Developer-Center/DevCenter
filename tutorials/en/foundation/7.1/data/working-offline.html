@@ -39,12 +39,12 @@ The developer is responsible for maintaining the offline or online state within 
 <p>To add connectivity failure detection in either location, add the <code>onConnectionFailure</code> property and specify a callback function to invoke if connectivity fails.</p>
 <h3>By using JavaScript</h3>
 <h4>initOptions.js</h4>
-<p>{% highlight js %}var wlInitOptions = {<br />
+<p>{% highlight js linenos %}var wlInitOptions = {<br />
     onConnectionFailure: function (data){<br />
     connectionFailure(data);<br />
 }{% endhighlight %}</p>
 <h4>Implementation JS file</h4>
-<p>{% highlight js %}WL.Client.invokeProcedure(invocationData, {<br />
+<p>{% highlight js linenos %}WL.Client.invokeProcedure(invocationData, {<br />
     onSuccess: successHandlerFunction,<br />
     onConnectionFailure: connectionFailure,<br />
     timeout: 1000<br />
@@ -60,7 +60,7 @@ The developer is responsible for maintaining the offline or online state within 
 </li>
 </ul>
 <p>The developer can also add event listeners to the above events and specify the callback functions to handle them.</p>
-<p>{% highlight js %}document.addEventListener(WL.Events.WORKLIGHT_IS_CONNECTED, connectDetected, false);<br />
+<p>{% highlight js linenos %}document.addEventListener(WL.Events.WORKLIGHT_IS_CONNECTED, connectDetected, false);<br />
 document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED, disconnectDetected, false);{% endhighlight %}</p>
 <p><strong>Note:</strong> <code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> and <code>WL.Events.WORKLIGHT_IS_CONNECTED</code> are namespace constants, not strings.</p>
 <h2 id="moreMethods">Additional methods</h2>
@@ -99,7 +99,7 @@ You can use the heartbeat to periodically make sure that the application remains
 <p>Both the <code>WL.Events.WORKLIGHT_IS_CONNECTED</code> and <code>WL.Events.WORKLIGHT_IS_DISCONNECTED</code> events can be fired by the heartbeat in designated cases.</p>
 <p>A developer can specify the heartbeat interval by using the <code>WL.Client.setHeartBeatInterval(intervalSeconds)</code> API method.</p>
 <p>The following sample shows an offline and online detection mechanism.<br />
-{% highlight js %}document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED,<br />
+{% highlight js linenos %}document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED,<br />
 MyApp.connectionFailure, false);<br />
 MyApp.connectionFailure = function() {<br />
     WL.Client.connect({<br />
