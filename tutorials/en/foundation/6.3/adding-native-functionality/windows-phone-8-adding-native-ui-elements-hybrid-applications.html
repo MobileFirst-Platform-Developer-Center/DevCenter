@@ -23,7 +23,7 @@ The native class to receive the action must implement the <code>WLActionReceiver
 <code>public class action : WLActionReceiver</code></p>
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:</p>
 
-{% highlight CSharp %}
+{% highlight csharp linenos %}
 public void onActionReceived(string action, JObject data)
   {
     if (action == "displayAddress")
@@ -40,7 +40,7 @@ public void onActionReceived(string action, JObject data)
 For the action receiver to receive actions from the MobileFirst Web View, it must be registered.<br />
 The registration can be done during the startup flow of the application to catch any actions early enough:<br />
 
-{% highlight CSharp %}
+{% highlight csharp linenos %}
 InitializeComponent();
 WL.createInstance(); //Create the instance of the ActionSender API's
 myReceiver = new Action();
@@ -49,13 +49,13 @@ WL.getInstance().addActionReceiver(myReceiver);
 {% endhighlight %}
 
 You can later remove this ActionReceiver registration by using the following API:<br />
-{% highlight CSharp %}WL.getInstance().removeActionReceiver(myReceiver);{% endhighlight %}</p>
+{% highlight csharp linenos %}WL.getInstance().removeActionReceiver(myReceiver);{% endhighlight %}</p>
 <h2>Send Action From Native to JavaScript</h2>
 <p>In MobileFirst applications, commands can be sent with parameters from native C# code to web view JavaScript code.<br />
 This feature can be used to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
 <p><strong>Step 1</strong><br />
 In C#, the following API is used:<br />
-{% highlight CSharp %}WL.getInstance().sendActionToJS(doSomething, data);{% endhighlight %}
+{% highlight csharp linenos %}WL.getInstance().sendActionToJS(doSomething, data);{% endhighlight %}
 <p><code>doSomething</code> is an arbitrary action name to be used on the JavaScript side and the second parameter is a <code>JObject</code> that contains any data.</p>
 <p><strong>Step 2</strong><br />
 A JavaScript function, which verifies the action name and implements any JavaScript code.</p>

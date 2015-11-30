@@ -87,7 +87,7 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
     <li>Create a new C# class</li>
     <li>Add the new class to your project namespace and add the required import statements.</li>
 
-    {% highlight csharp %}using System;
+    {% highlight csharp linenos %}using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -109,7 +109,7 @@ Implement the <code>SayHelloPlugin</code> class and the <code>sayHello</code> me
 
 <ul>
     <li>The JavaScript wrapper calls the sayHello method and passes a single parameter. It returns a string back to JavaScript.
-    {% highlight csharp %}public void sayHello(string options)
+    {% highlight csharp linenos %}public void sayHello(string options)
         {
             string optVal = null;
             try {
@@ -121,7 +121,7 @@ Implement the <code>SayHelloPlugin</code> class and the <code>sayHello</code> me
 
 <br clear="all"/>
     <li>The DispatchCommandResult method returns the result to JavaScript, whether success or failure.
-{% highlight csharp %}if (optVal == null)
+{% highlight csharp linenos %}if (optVal == null)
             {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Got null value as input"));
             }

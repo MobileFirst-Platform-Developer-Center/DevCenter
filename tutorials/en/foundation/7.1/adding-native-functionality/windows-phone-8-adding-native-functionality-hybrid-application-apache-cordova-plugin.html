@@ -76,7 +76,7 @@ For this purpose, ensure that the project is built in Eclipse and opened in the 
 <li>Create a new C# class.</li>
 <li>Add the new class to your project namespace and add the required import statements.
 <p>
-{% highlight csharp %}
+{% highlight csharp linenos %}
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,7 +95,7 @@ namespace Cordova.Extension.Commands {
 <p>Implement the <code>SayHelloPlugin</code> class and the <code>sayHello</code> method.</p>
 <ol>
 <li>The JavaScript wrapper calls the <code>sayHello</code> method and passes a single parameter. It returns a string back to JavaScript.<br />
-{% highlight csharp %}
+{% highlight csharp linenos %}
         public void sayHello(string options) {
             string optVal = null;
             try {
@@ -107,7 +107,7 @@ namespace Cordova.Extension.Commands {
 {% endhighlight %}</li>
 <p><br clear="all" /></p>
 <li>The <code>DispatchCommandResult</code> method returns the result to JavaScript, whether success or failure.<br />
-{% highlight csharp %}
+{% highlight csharp linenos %}
             if (optVal == null) {
                 DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "Got null value as input"));
             }

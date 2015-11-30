@@ -31,7 +31,7 @@ You can use this feature to trigger native code to be run in the background, to 
 <p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
 <code>public class action : WLActionReceiver</code></p>
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:</p>
-<p>{% highlight CSharp %}
+<p>{% highlight csharp linenos %}
 public void onActionReceived(string action, JObject data) {
     if (action == "displayAddress") {
         Deployment.Current.Dispatcher.BeginInvoke(() => {
@@ -43,7 +43,7 @@ public void onActionReceived(string action, JObject data) {
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions from the MobileFirst Web View, it must be registered.<br />
 The registration can be done during the startup flow of the application to catch any actions early enough:<br />
-{% highlight CSharp %}
+{% highlight csharp linenos %}
 InitializeComponent();
 WL.createInstance(); //Create the instance of the ActionSender API's
 myReceiver = new Action();
@@ -51,7 +51,7 @@ Loaded += PhoneAppPage_Loaded;
 WL.getInstance().addActionReceiver(myReceiver);
 {% endhighlight %} <br />
 You can later remove this <code>ActionReceiver</code> registration by using the following API:<br />
-{% highlight CSharp %}
+{% highlight csharp linenos %}
 WL.getInstance().removeActionReceiver(myReceiver);
 {% endhighlight %} </p>
 <h2 id="nativeToJs">Sending commands from native code to JavaScript code</h2>
@@ -59,7 +59,7 @@ WL.getInstance().removeActionReceiver(myReceiver);
 You can use this feature to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
 <h3>Step 1</h3>
 <p>In C#, the following API is used:<br />
-{% highlight CSharp %}
+{% highlight csharp linenos %}
 WL.getInstance().sendActionToJS(doSomething, data);
 {% endhighlight %} </p>
 <p>The <code>doSomething</code> parameter is an arbitrary action name to be used on the JavaScript side and the second parameter is a <code>JObject</code> that contains any data.</p>

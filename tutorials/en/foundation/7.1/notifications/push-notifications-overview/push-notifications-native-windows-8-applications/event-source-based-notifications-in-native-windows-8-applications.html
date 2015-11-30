@@ -115,18 +115,18 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 </ul>
 <h2 id="clientSideApi">Notification API - Client-side</h2>
 <p>The first step is to create an instance of the <code>WLClient</code> class:</p>
-<p>{% highlight csharp %}WLClient client = WLClient.getInstance();{% endhighlight %}</p>
+<p>{% highlight csharp linenos %}WLClient client = WLClient.getInstance();{% endhighlight %}</p>
 <p>You derive all push notification operations from the <code>WLPush</code> class.</p>
 <ul>
 <code>getPush</code>  –  Use this method to retrieve an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.</p>
-<p>{% highlight csharp %}WLPush push = client.getPush();{% endhighlight %}</p>
+<p>{% highlight csharp linenos %}WLPush push = client.getPush();{% endhighlight %}</p>
 <p><code>WLOnReadyToSubscribeListener</code> – When connecting to MobileFirst Server, the application attempts to register itself with the Google Cloud Messaging (GCM) server to receive push notifications.</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
  OnReadyToSubscribeListener myOnReadyListener = new OnReadyToSubscribeListener();<br />
  push.onReadyToSubscribeListener = myOnReadyListener;<br />
 {% endhighlight %}</p>
 <p>The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when the registration is complete.</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
 public void onReadyToSubscribe()<br />
 {...}<br />
 {% endhighlight %}
@@ -140,11 +140,11 @@ public void onReadyToSubscribe()<br />
 <code>EventSourceName</code> - The event source on which the alias is called.
 </ul>
 <p>Example:</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
 WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);<br />
 {% endhighlight %}</p>
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
 public void onReadyToSubscribe()<br />
 {<br />
   WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter","PushEventSource", this);<br />
@@ -159,7 +159,7 @@ public void onReadyToSubscribe()<br />
 <code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when subscription completes.
 </ul>
 <p>Example:</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
 WLPush push = WLClient.getInstance().getPush();<br />
 MySubscribeListener mySubListener = new MySubscribeListener();<br />
 push.subscribe("myPush", null, mySubListener);<br />
@@ -177,7 +177,7 @@ push.subscribe("myPush", null, mySubListener);<br />
 <code>responseListener</code> – An object of type <code>WLResponseListener</code>, which is called when unsubscription completes.
 </ul>
 <p>Example:</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
 WLPush push = WLClient.getInstance().getPush();<br />
 MyUnsubscribeListener myUnsubListener = new MyUnsubscribeListener();<br />
 push.unsubscribe("myPush", myUnsubListener);<br />
@@ -189,20 +189,20 @@ push.unsubscribe("myPush", myUnsubListener);<br />
 </ul>
 <h3>Additional client-side API methods</h3>
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
 WLClient.getInstance().getPush().isSubscribed("myPush");<br />
 {% endhighlight %}</p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
 class OnReadyToSubscribeListener : WLOnReadyToSubscribeListener, WLEventSourceListener{...}<br />
 {% endhighlight %}</p>
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
 WLClient.getInstance().getPush().registerEventSourceCallback("myPush", "PushAdapter", "PushEventSource", this);<br />
 {% endhighlight %}</p>
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
-<p>{% highlight csharp %}<br />
+<p>{% highlight csharp linenos %}<br />
 public void onReceive(String props, String payload)<br />
 {<br />
      Debug.WriteLine("Props: " + props);<br />
