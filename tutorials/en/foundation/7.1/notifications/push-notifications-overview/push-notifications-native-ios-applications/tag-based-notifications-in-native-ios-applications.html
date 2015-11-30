@@ -56,7 +56,7 @@ Tags represent topics of interest to the user and provide the ability to receive
 <ul>
 <li><code>didReceiveRemoteNotification</code><br />
 When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is   called. The logic to handle the notification should be defined here.</p>
-<p>{% highlight obj-c %}<br />
+<p>{% highlight objc %}<br />
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
     NSLog(@"Received Notification %@",userInfo.description);<br />
 }<br />
@@ -67,7 +67,7 @@ When a notification is received by a device, the <code>didReceiveRemoteNotificat
 </li>
 <li><code>setOnReadyToSubscribeListener</code><br />
 This method registers a listener to be used for push notifications. This listener should implement the OnReadyToSubscribe() method.<br />
-{% highlight obj-c %}[[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];{% endhighlight %}</li>
+{% highlight objc %}[[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];{% endhighlight %}</li>
 </ul>
 <h4>Server-side API</h4>
 <p><code>WL.Server.sendMessage(applicationId,notificationOptions)</code><br />

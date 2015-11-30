@@ -121,7 +121,7 @@ var notification = WL.Server.createDefaultNotification(notificationText, badgeDi
 <p>
 </li>
 <li>Create an instance of <code>onReadyToSubscribeListener</code> and set values for alias, adaptername and eventsource.
-<p>{% highlight obj-c %}<br />
+<p>{% highlight objc %}<br />
 ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener alloc] initWithController:self];<br />
   readyToSubscribeListener.alias = self.alias;<br />
   readyToSubscribeListener.adapterName = self.adapterName;<br />
@@ -129,36 +129,36 @@ ReadyToSubscribeListener *readyToSubscribeListener = [[ReadyToSubscribeListener 
 {% endhighlight %}</p>
 </li>
 <li>Set the <code>onReadyToSubscribeListener</code> on <code>WLPush</code>.
-<p>{% highlight obj-c %}<br />
+<p>{% highlight objc %}<br />
 [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];<br />
 {% endhighlight %}</p>
 </li>
 <li>Pass the token to <code>WLPush</code>.<br />
-{% highlight obj-c %}<br />
+{% highlight objc %}<br />
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];<br />
 {% endhighlight %}
 </li>
 </ol>
 <h3>Sending token to client and initializing <code>WLPush</code></h3>
 <p>The user must initialize the <code>WLPush sharedInstance</code> in the application's <code>ViewController</code> load method.<br />
-{% highlight obj-c %}<br />
+{% highlight objc %}<br />
 AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];<br />
 [[WLPush sharedInstance]init];<br />
 {% endhighlight %}<br />
 The user must add this method to the app delegate to get the token.<br />
-{% highlight obj-c %}<br />
+{% highlight objc %}<br />
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{<br />
 }<br />
 {% endhighlight %}</p>
 <p>The token that is received by this method must be passed to the WLPush method.<br />
-{% highlight obj-c %}<br />
+{% highlight objc %}<br />
 [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];<br />
 {% endhighlight %}</p>
 <h3>Registering the event source</h3>
 <p>IBM MobileFirst Platform Foundation provides the customizable <code>onReadyToSubscribe</code> function, which is used to register an event source.<br />
 Set up your <code>onReadyToSubscribe</code> function in Listener, which implements <code>WLOnReadyToSubscribeListener</code>.</p>
 <p>This function is called when authentication finishes.<br />
-{% highlight obj-c %}<br />
+{% highlight objc %}<br />
 #import "ReadyToSubscribeListener.h"<br />
 #import "MyEventSourceListener.h"</p>
 <p>@implementation ReadyToSubscribeListener</p>
@@ -173,7 +173,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <h3>Subscribing to the event source</h3>
 <p><strong>Prerequisite:</strong> To subscribe, a user must authenticate.</p>
 <p>To set up subscription to the event source, use the following API:<br />
-{% highlight obj-c %}<br />
+{% highlight objc %}<br />
 - (IBAction)subscribe:(id)sender {<br />
   MySubscribeListener *mySubscribeListener = [[MySubscribeListener alloc] initWithController:self];<br />
   [[WLPush sharedInstance]subscribe:self.alias :nil :mySubscribeListener];<br />
@@ -188,7 +188,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <p>Delegates receive a response object if one is required.</p>
 <h3>Unsubscribing  from an event source</h3>
 <p>To set up unsubscription from an event source, use the following API:<br />
-{% highlight obj-c %}<br />
+{% highlight objc %}<br />
 - (IBAction)unsubscribe:(id)sender {<br />
   MyUnsubscribeListener *myUnsubscribelistener = [[MyUnsubscribeListener alloc]initWithController:self];<br />
   [[WLPush sharedInstance]unsubscribe:self.alias :myUnsubscribelistener];<br />
@@ -205,7 +205,7 @@ Set up your <code>onReadyToSubscribe</code> function in Listener, which implemen
 <code>[[WLPush sharedInstance]isSubscribed:alias]</code> – Returns whether the currently logged-in user is subscribed to a specified event source alias.<br />
 <br clear="all" /><br />
 When a push notification is received by a device, the <code>didReceiveRemoteNotification</code> method  is called in the app delegate. Logic to handle the notification should be defined here.</p>
-<p>{% highlight obj-c %}<br />
+<p>{% highlight objc %}<br />
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{<br />
     NSLog(@"Received Notification %@",userInfo.description);<br />
 }<br />
