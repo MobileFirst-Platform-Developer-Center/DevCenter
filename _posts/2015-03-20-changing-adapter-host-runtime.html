@@ -28,7 +28,7 @@ The application has a dropdown to choose a topic from the CNN site.</p>
 <p>This sample will be adapted to replace the concept of "topic" by one of "host".</p>
 
 <h3>Initialization</h3>
-{% highlight java %}
+{% highlight java linenos %}
 	private static CloseableHttpClient client;
 	private static HashMap<String, HttpHost> hosts;
 	private static HashMap<String, String> paths;
@@ -50,7 +50,7 @@ As with the original sample, I've set the HTTP Client and the HTTP Hosts as <str
 <blockquote>If your application can connect to a longer list of backends, you could set this list in an array instead of a list of variables.</blockquote>
 
 <h3>execute</h3>
-{% highlight java %}
+{% highlight java linenos %}
 	public void execute(HttpUriRequest req, HttpServletResponse resultResponse, HttpHost host)
 			throws ClientProtocolException, IOException,
 			IllegalStateException, SAXException {
@@ -74,7 +74,7 @@ As with the original sample, I've set the HTTP Client and the HTTP Hosts as <str
 The difference here is I pass a <code>HttpHost</code> since it will be different for each request.</p>
 
 <h3>GET procedure</h3>
-{% highlight java %}
+{% highlight java linenos %}
 	@GET
 	@Produces("application/json")
 	public void get(@Context HttpServletResponse response, @QueryParam("host") String hostKeyword)

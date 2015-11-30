@@ -26,7 +26,7 @@ Open “src/com/yourapplication/GCMIntentService.java”.
 
 Override the default notify methods by adding your own.
 
-{% highlight java %}
+{% highlight java linenos %}
 @Override
     public void notify(Context context, String alert, int badge, String sound,
             Intent intent) {
@@ -78,7 +78,7 @@ Override the default notify methods by adding your own.
 
 Implement the createNotification method in which you will define your notifications to be of BigText style:
 
-{% highlight java %}
+{% highlight java linenos %}
 private Notification createNotification(Context context, String ticker, String title, String msg, int badge, boolean bridge, int priority, Intent intent) {
     int icon = RES_PUSH_NOTIFICATION_ICON;
     long when = System.currentTimeMillis();    

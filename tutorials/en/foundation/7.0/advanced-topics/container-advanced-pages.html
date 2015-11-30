@@ -221,7 +221,7 @@ In the hybrid model, developers typically package the application HTML, CSS, and
 <h3 id="android">Running the sample on an Android environment</h3>
 <ol>
 <li>Make the following changes to the <code>AdvancedPages/android/nativeResources/src/com/AdvancedPages/AdvancedPages.java</code> file:
-<p>{% highlight java %}
+<p>{% highlight java linenos %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
         WL.getInstance().hideSplashScreen();

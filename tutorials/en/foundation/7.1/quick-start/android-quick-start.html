@@ -97,19 +97,19 @@ mfp push
 <li>
 <h4>Main <code>Activity</code> class</h4>
 <p>                Make sure that your MainActivity class extends the <code>Activity</code> class:<br />
-{% highlight java %}
+{% highlight java linenos %}
 public class MainActivity extends Activity {
 ...
 {% endhighlight %}<br />
                 Add the following <code>import</code> statements:<br />
-{% highlight java %}
+{% highlight java linenos %}
 import com.worklight.wlclient.api.*;
 import android.util.Log;
 import java.net.URI;
 import java.net.URISyntaxException;
 {% endhighlight %}</p>
 <p>                Add the following lines to the <code>onCreate</code> method:<br />
-{% highlight java %}
+{% highlight java linenos %}
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_main);
 final WLClient client = WLClient.createInstance(this);
@@ -135,12 +135,12 @@ client.connect(new WLResponseListener() {
 <h4><code>MyInvokeListener</code> class</h4>
 <p>                Add a new <code>MyInvokeListener</code> class.<br />
                 Add the following <code>import</code> statements:<br />
-{% highlight java %}
+{% highlight java linenos %}
 import com.worklight.wlclient.api.*;
 import android.util.Log;
 {% endhighlight %}</p>
 <p>                Paste the following lines:<br />
-{% highlight java %}
+{% highlight java linenos %}
 public class MyInvokeListener implements WLResponseListener {
     @Override
     public void onSuccess(WLResponse wlResponse) {

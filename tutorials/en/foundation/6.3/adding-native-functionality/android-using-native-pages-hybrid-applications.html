@@ -56,7 +56,7 @@ As with any Activity, it must be declared in the <code>AndroidManifest.xml</code
 <strong>Step 2</strong>
 To retrieve custom data parameters that are passed from the web view, an <code>intent</code> should be used:
 
-{% highlight java %}
+{% highlight java linenos %}
 protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
 
@@ -69,7 +69,7 @@ When the native page switches back to the web view, the <code>finish()</code> fu
 To pass data back to the web view can be done by using an <code>Intent</code> object. For example:
 
 <b>Java:</b>
-{% highlight java %}
+{% highlight java linenos %}
 String phoneNumber = editText.getText().toString();
 Intent phoneNumberInfo = new Intent();
 phoneNumberInfo.putExtra("phoneNumber", phoneNumber);

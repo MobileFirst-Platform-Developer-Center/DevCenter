@@ -196,7 +196,7 @@ downloads:
 {% endhighlight %}</p>
 <p>After successful validation, the filter updates the <code>ClientContext</code> object that the service can use to access user, application, or device identities that are contained in the access token.</p>
 <p>Example of <code>ClientContext</code> usage:</p>
-<p>{% highlight java %}
+<p>{% highlight java linenos %}
   ClientContext context = ClientContext.getInstance();
   String appId = context.getApplication();
   String userId = context.getUser();

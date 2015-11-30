@@ -47,7 +47,7 @@ On BlueMix we have application with the following configuration:
     <li>The custom identity provider authenticates a user by sending challenges to the client. However, custom identity providers do not communicate directly with clients. They send challenges and receive responses to the challenges by means of the Advanced Mobile Access service. When a custom identity provider successfully authenticates the user, it provides the user identity information to Advanced Mobile Access. For more information on custom authentication refer bluemix documentation : <a href="https://www.ng.bluemix.net/docs/services/mobileaccess/security/id_provs/index-gentopic2.html#custom_id_prov" target="_blank">click here</a>
         The custom identity provider code is defined by two http API: <code>/startAutorization</code> and <code>/handleChallengeAnswer</code>
 
-        {% highlight java %}
+        {% highlight java linenos %}
         @POST
     	@Consumes ("application/json")
     	@Path("/{tenantId}/customAuthRealm_3/startAuthorization")
@@ -100,7 +100,7 @@ On BlueMix we have application with the following configuration:
         {% endhighlight %}
         The Localstore adapter contains few http API's to perform some basic operations like Add, Update, Create and Delete in client application.
 
-{% highlight java %}
+{% highlight java linenos %}
 @GET
 	@Path("/getAllItems")
 	public String getAllItems() throws IOException{
@@ -243,13 +243,13 @@ cf push ${app_name} -p ${path_to_server_package_zip}
     </li>
     <li> Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register the realm and initialize connection with Bluemix Application.
 
-{% highlight java %}
+{% highlight java linenos %}
 IMFClient.sharedInstance().registerAuthenticationDelegate(customAuthDelegate, forRealm: "customAuthRealm_3")
 IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluemix.net", backendGUID: "5e3ad88d-dd48-469d-b46f-2c4ad66b5345")
 {% endhighlight %}
     </li>
     <li> The following is the sample code to invoke the Rest url's in client application.
-        {% highlight java %}
+        {% highlight java linenos %}
         var request: IMFResourceRequest = IMFResourceRequest(path: "https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems", method: "GET")
         request.sendWithCompletionHandler { (wlResponse:IMFResponse!, err:NSError!) -> Void in
     {% endhighlight %}

@@ -38,7 +38,7 @@ First, you will need a native Android application with the IBM MobileFirst SDK i
 Next, let's create the challenge handler and response listener, <code>MyRemoteDisableChallengeHandler</code> and <code>MyResponseListener</code> respectively.
 
 <b>MyRemoteDisableChallengeHandler
-{% highlight java %}
+{% highlight java linenos %}
 package com.ibm.mobilefirst.android.challengehandler;
 import com.ibm.mobilefirst.android.MainActivity;
 import com.worklight.wlclient.api.challengehandler.WLChallengeHandler;
@@ -129,7 +129,7 @@ public class MyRemoteDisableChallengeHandler extends WLChallengeHandler {
 {% endhighlight %}
 
 <b>MyResponseListener</b>
-{% highlight java %}
+{% highlight java linenos %}
 package com.ibm.mobilefirst.android.listener;
 import com.ibm.mobilefirst.android.MainActivity;
 import com.worklight.wlclient.api.WLFailResponse;
@@ -155,7 +155,7 @@ public class MyResponseListener implements WLResponseListener {
 
 Now, let's modify our main activity. We will create an instance of WLClient, register our <code>MyRemoteDisableChallengeHandler</code>, and follow with a connection to the MobileFirst server.
 
-{% highlight java %}
+{% highlight java linenos %}
 package com.ibm.mobilefirst.android;
 import android.app.Activity;
 import android.app.AlertDialog;

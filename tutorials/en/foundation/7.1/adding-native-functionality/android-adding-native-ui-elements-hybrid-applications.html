@@ -33,12 +33,12 @@ downloads:
 <p>The NativeUIInHybrid project includes a hybrid application called NativeSplashScreen.</p>
 <p>The application contains an Activity, <code>InitiativeActivity</code>. This Activity is used to show a simple TextView and a Button as our customized splash screen:</p>
 <p>In <code>onCreate</code>:<br />
-{% highlight java %}
+{% highlight java linenos %}
 setContentView(R.layout.activity_initiative);
 startAppBtn = (Button) findViewById(R.id.StartApp);
 {% endhighlight %}</p>
 <p>The <code>onClickListener</code> method:<br />
-{% highlight java %}
+{% highlight java linenos %}
 startAppBtn.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
         setResult(Activity.RESULT_OK);
@@ -61,7 +61,7 @@ startAppBtn.setOnClickListener(new View.OnClickListener() {
     android:text="@string/InitiativeButtonText" />
 {% endhighlight %}</p>
 <p>It is also required to add an <code>Intent</code> object to the MainActivity before the call to the <code>initializeWebFramework</code> method. The intent loads the newly created Activity instead of opening the default MobileFirst splash screen.</p>
-<p>{% highlight java %}
+<p>{% highlight java linenos %}
 WL.createInstance(this);
 Intent intent = new Intent(this, InitiativeActivity.class);
 startActivity(intent);
@@ -76,13 +76,13 @@ You can use this feature to trigger native code to be run in the background, to 
 <p>The <code>doSomething</code> parameter is an arbitrary action name to be used in the native side (see the next step), and the second parameter is a JSON object that contains any data.</p>
 <h3>Step 2</h3>
 <p>The native class to receive the action must implement the <code>WLActionReceiver</code> protocol:<br />
-{% highlight java %}
+{% highlight java linenos %}
 public class ActionReceiver implements WLActionReceiver{
 
 }
 {% endhighlight %}</p>
 <p>The <code>WLActionReceiver</code> protocol requires an <code>onActionReceived</code> method in which the action name can be checked for and perform any native code that the action needs:<br />
-{% highlight java %}
+{% highlight java linenos %}
 public void onActionReceived(String action, JSONObject data){
     if (action.equals("doSomething")){
         // Write your code here...
@@ -91,7 +91,7 @@ public void onActionReceived(String action, JSONObject data){
 {% endhighlight %}</p>
 <h3>Step 3</h3>
 <p>For the action receiver to receive actions from the MobileFirst web view, it must be registered. The registration can be done during the startup flow of the application to catch any actions early enough:<br />
-{% highlight java %}
+{% highlight java linenos %}
 WL.getInstance().addActionReceiver(new ActionReceiver(this));
 {% endhighlight %}</p>
 <h2 id="nativeToJs">Sending commands from native code to JavaScript code</h2>
@@ -99,7 +99,7 @@ WL.getInstance().addActionReceiver(new ActionReceiver(this));
 You can use this feature to receive responses from a native method, notify the web view when background code finished running, have a native UI control the content of the web view, etc.</p>
 <h3>Step 1</h3>
 <p>In Java, the following API is used:<br />
-{% highlight java %}
+{% highlight java linenos %}
 JSONObject data = new JSONObject();
 data.put("someProperty", 12345);
 WL.getInstance().sendActionToJS("doSomething", data);
@@ -164,7 +164,7 @@ WL.App.addActionReceiver ("BackFromNative", function actionReceiver(received){
 <h3>Action Receiver</h3>
 <p>A new class is required, which implements <code>WLActionReceiver</code>.<br />
 Before the new class, the <code>addActionReceiver</code> method is called to register <code>ActionReceiver</code> in the main Activity after the initialization process is complete.</p>
-<p>{% highlight java %}
+<p>{% highlight java linenos %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
         super.loadUrl(WL.getInstance().getMainHtmlFilePath());
@@ -176,7 +176,7 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {
 {% endhighlight %}</p>
 <p>The <code>ActionReceiver</code> class implements the <code>onActionReceived</code> method. This method is used to receive the requested action (displayNativeScreen) that was passed in the JavaScript code. We used the JSON object that we passed from the JavaScript code to indicate which native screen do we want to open,<br />
 In case we have a few.<br />
-{% highlight java %}
+{% highlight java linenos %}
 public void onActionReceived(String action, JSONObject data) {
 	// Display Settings Screen
 	if(action.equals("displayNativeScreen")){

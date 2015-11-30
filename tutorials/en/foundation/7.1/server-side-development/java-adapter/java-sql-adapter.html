@@ -46,7 +46,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 </ul>
 <h2 id="UserAdapterApplication">UserAdapterApplication</h2>
 <p><code>UserAdapterApplication</code> extends <code>MFPJAXRSApplication</code> and is a good place to trigger any initialization required by the adapter application.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 	@Override<br />
 	protected void init() throws Exception {<br />
 		UserAdapterResource.init();<br />
@@ -54,7 +54,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 	}<br />
 {% endhighlight %}</p>
 <h2 id="UserAdapterResource">UserAdapterResource</h2>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 @Path("/")<br />
 public class UserAdapterResource {<br />
 }<br />
@@ -62,7 +62,7 @@ public class UserAdapterResource {<br />
 <p><code>UserAdapterResource</code> is where requests to the adapter are handled.</p>
 <p><code>@Path("/")</code> means that the resources will be available at the URL <code>http(s)://host:port/ProjectName/adapters/AdapterName/</code>.</p>
 <h3>Using DataSource</h3>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
     static DataSource ds = null;<br />
     static Context ctx = null;</p>
 <p>    public static void init() throws NamingException {<br />
@@ -73,7 +73,7 @@ public class UserAdapterResource {<br />
 <p>The <code>DataSource</code> is set as <code>static</code> so that it can be shared across all requests to the adapter. It is initialized in the <code>init()</code> method, which is called by the <code>init()</code> method of <code>UserAdapterApplication</code>, as described above.</p>
 <p>The previously defined <code>jndiName</code> parameter is used to find the database configuration.</p>
 <h3>Create User</h3>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 	@POST<br />
 	public Response createUser(@FormParam("userId") String userId,<br />
 								@FormParam("firstName") String firstName,<br />
@@ -110,7 +110,7 @@ public class UserAdapterResource {<br />
 <p>If the insertion was successful, the <code>return Response.ok().build()</code> method is used to send a <code>200 OK</code> back to the client. If there was an error, a different <code>Response</code> object can be built with a specific HTTP status code. In this example, a <code>409 Conflict</code> error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.</p>
 <p><strong>Important:</strong> Make sure to close resources, such as prepared statements and connections.</p>
 <h3>Get User</h3>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 	@GET<br />
 	@Produces("application/json")<br />
 	@Path("/{userId}")<br />
@@ -144,7 +144,7 @@ If the user is found, a response is built from the generated JSON object.</p>
 <p>Prepending the method with <code>@Produces("application/json")</code> makes sure that the <code>Content-Type</code> of the output is correct.</p>
 <h3>Get all users</h3>
 <p>This method is similar to <code>getUser</code>, except for the loop over the <code>ResultSet</code>.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 	@GET<br />
 	@Produces("application/json")<br />
 	public Response getAllUsers() throws SQLException{<br />
@@ -166,7 +166,7 @@ If the user is found, a response is built from the generated JSON object.</p>
 	}<br />
 {% endhighlight %}</p>
 <h3>Update user</h3>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 	@PUT<br />
 	@Path("/{userId}")<br />
 	public Response updateUser(@PathParam("userId") String userId,<br />
@@ -201,7 +201,7 @@ If the user is found, a response is built from the generated JSON object.</p>
 {% endhighlight %}</p>
 <p>When updating an existing resource, it is standard practice to use <code>@PUT</code> (for <code>HTTP PUT</code>) and to use the resource ID in the <code>@Path</code>.</p>
 <h3>Delete user</h3>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 	@DELETE<br />
 	@Path("/{userId}")<br />
 	public Response deleteUser(@PathParam("userId") String userId) throws SQLException{<br />

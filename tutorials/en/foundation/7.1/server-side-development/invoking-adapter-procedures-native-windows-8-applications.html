@@ -43,24 +43,24 @@ public class MyConnectResponseListener : WLResponseListener<br />
 <p>After the connection is established with a MobileFirst Server instance, you can use the <code>WLResourceRequest</code> class to invoke adapter procedures or call any REST resources.</p>
 <ol>
 <li> Define the URI of the resource. For a JavaScript HTTP adapter: <code>/adapters/<em>{AdapterName}</em>/<em>{ProcedureName}</em></code><br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 URI adapterPath = new URI("/adapters/RSSReader/getFeed");<br />
 {% endhighlight %}
 </li>
 <li>Create a <code>WLResourceRequest</code> object and choose the HTTP Method (GET, POST, etc).<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);<br />
 {% endhighlight %}</p>
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name  to set an array of parameters.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 request.setQueryParameter("params","['MobileFirst_Platform']");<br />
 {% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameter</code> for each parameter.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 request.setQueryParameter("param1","value1");<br />
 request.setQueryParameter("param2","value2");<br />
 {% endhighlight %}
@@ -68,7 +68,7 @@ request.setQueryParameter("param2","value2");<br />
 <li>Trigger the request with <code>.send()</code>.<br />
 Specify a <code>MyInvokeListener</code> class instance as a parameter.<br />
 You learn how to define this class instance in <a href="#receiveResponse">the next section</a>.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 request.send(new MyInvokeListener());<br />
 {% endhighlight %}
 </li>

@@ -227,7 +227,7 @@ In the hybrid model, developers typically package the application HTML, CSS, and
 <p><img src="{{ site.baseurl }}/assets/backup/projectstructure-300x295.png"/></p>
 <h3 id="android">Running the sample on an Android environment</h3>
 <p>Make the following changes in <strong>AdvancedPages/android/nativeResources/src/com/AdvancedPages/AdvancedPages.java</strong>:</p>
-<p>{% highlight java %}
+<p>{% highlight java linenos %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
         WL.getInstance().hideSplashScreen();

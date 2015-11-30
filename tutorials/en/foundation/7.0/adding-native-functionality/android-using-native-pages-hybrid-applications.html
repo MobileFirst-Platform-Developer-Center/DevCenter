@@ -55,7 +55,7 @@ function backFromNativePage(data) {
 {% endhighlight %} 
 </li>
 <li>To retrieve custom data parameters that are passed from the web view, use an <code>Intent</code> object:<br />
-{% highlight java %}
+{% highlight java linenos %}
 protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     String name = getIntent().getStringExtra("nameParam");
@@ -67,7 +67,7 @@ protected void onCreate(Bundle savedInstanceState) {
 <p>When the native page switches back to the web view, the <code>finish()</code> function is called for the Activity.<br />
 You can pass data back to the web view by using an <code>Intent</code> object. For example:</p>
 <p>Java:<br />
-{% highlight java %}
+{% highlight java linenos %}
 String phoneNumber = editText.getText().toString();
 Intent phoneNumberInfo = new Intent();
 phoneNumberInfo.putExtra("phoneNumber", phoneNumber);

@@ -99,14 +99,14 @@ function sayHelloFailure(data){
 <ol>
     <li>Add a new Java class file.</li>
     <li>Extend the <code>org.apache.cordova.CordovaPlugin</code> class and add the required import statements.
-{% highlight java %}
+{% highlight java linenos %}
     public class SayHelloPlugin extends CordovaPlugin {
 {% endhighlight %}
     </li>
     <li>Implement an <code>execute</code> method.
         <ul>
             <li>The arguments contain information that is required by a plug-in, such as action, arguments array, and callback context.
-{% highlight java %}
+{% highlight java linenos %}
 public boolean execute(String action, JSONArray args, CallbackContext callbackContext)
     throws JSONException {
 {% endhighlight %}
@@ -114,7 +114,7 @@ public boolean execute(String action, JSONArray args, CallbackContext callbackCo
         </ul>
     </li>
     <li>If the supplied action is <code>sayHello</code>, retrieve the first argument from the <code>args</code> array, prepare a <code>responseText</code> string and, by using the <code>callbackContext</code> argument, call the <code>success</code> callback with this <code>responseText</code> string as the argument.
-{% highlight java %}
+{% highlight java linenos %}
 if (action.equals("sayHello")){
     try {
         String responseText = "Hello " + args.getString(0);
@@ -127,7 +127,7 @@ if (action.equals("sayHello")){
 {% endhighlight %}
     </li>
     <li>Returning <code>false</code> means that the action that is supplied from JavaScript was not recognized.
-{% highlight java %}
+{% highlight java linenos %}
     return false;
 }
 {% endhighlight %}

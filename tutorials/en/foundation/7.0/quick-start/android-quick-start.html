@@ -69,11 +69,11 @@ mfp deploy
         <ul>
             <li><b>Main Activity class</b>
                 Add imports:
-{% highlight java %}import com.worklight.wlclient.api.*;
+{% highlight java linenos %}import com.worklight.wlclient.api.*;
 import android.util.Log;{% endhighlight %}
 
                 Add the following to <code>onCreate</code>:
-                {% highlight java %}
+                {% highlight java linenos %}
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_main);
 
@@ -96,11 +96,11 @@ client.connect(new WLResponseListener() {
         <li><b><code>MyInvokeListener</code> class</b>
                 Add a new <code>MyInvokeListener</code> class
                 Add imports:
-{% highlight java %}import com.worklight.wlclient.api.*;
+{% highlight java linenos %}import com.worklight.wlclient.api.*;
 import android.util.Log;{% endhighlight %}
 
                 Paste the following:
-        {% highlight java %}
+        {% highlight java linenos %}
 public class MyInvokeListener implements WLResponseListener {
 
     @Override

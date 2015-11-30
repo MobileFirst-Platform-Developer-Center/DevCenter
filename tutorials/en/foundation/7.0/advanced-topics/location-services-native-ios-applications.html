@@ -136,7 +136,7 @@ NSMutableDictionary* event = [NSMutableDictionary dictionaryWithObjectsAndKeys:@
 [enterTrigger setEvent:event];
 {% endhighlight %} </p>
 <p>Events can also be generated manually by calls to the API:<br />
-{% highlight java %}
+{% highlight java linenos %}
 [[WLClient sharedInstance] transmitEvent:event immediately:YES];
 {% endhighlight %} <br />
 Where <code>event</code> is a <code>NSDictionary</code> object and <code>immediately</code> is a <code>boolean</code> value.</p>

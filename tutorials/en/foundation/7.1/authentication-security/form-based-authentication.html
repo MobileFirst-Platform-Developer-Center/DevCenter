@@ -57,7 +57,7 @@ function getSecretData(){<br />
 <ol>
 <li>Create a Java adapter. </li>
 <li>Add a <code>getSecretData</code> method and protect it with the realm that you created previously. In this module, the <code>getSecretData</code> procedure returns some hardcoded value:
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 	@GET<br />
 	@Produces("application/json")<br />
 	@OAuthSecurity(scope="SampleAppRealm")<br />

@@ -73,7 +73,7 @@ backend.password=password
 <p>Our <code>ConfiguredIdentityLoginModule</code> class is responsible for comparing the credentials collected by authenticator to the credentials stored in the properties file. If you prefer to store/retrieve the credentials some other way, you can modify this code.</p>
 <p>To see the full code for this class: <a href="https://ibm.biz/BdETCd" target="_blank">https://ibm.biz/BdETLK</a></p>
 
-{% highlight java %}
+{% highlight java linenos %}
 @Override
 public void init(Map<String, String> options) throws MissingConfigurationOptionException {
   String usernameProperty = options.remove(USERNAME_PROPERTY_CONF);

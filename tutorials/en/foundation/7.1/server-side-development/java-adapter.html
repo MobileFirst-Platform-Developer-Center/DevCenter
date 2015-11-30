@@ -76,7 +76,7 @@ In our case: <code>com.sample.adapter.JavaAdapterApplication</code>.</p>
 <!-- If using Maven to create Java adapter, see the dependencies part in the LINK_TO_TUTORIAL tutorial. --></p>
 <h2 id="jaxrsapplication">JAX-RS application class</h2>
 <p>The JAX-RS application class tells the JAX-RS framework which resources are included in the application.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 package com.sample.adapter;</p>
 <p>import java.util.logging.Logger;<br />
 import com.worklight.wink.extensions.MFPJAXRSApplication;</p>
@@ -96,7 +96,7 @@ import com.worklight.wink.extensions.MFPJAXRSApplication;</p>
 <p>The <code>MFPJAXRSApplication</code> class scans the package for JAX-RS resources and automatically creates a list. Additionally, its <code>init</code> method is called by MobileFirst Server as soon as the adapter is deployed (before it starts serving) and when the MobileFirst runtime starts up.</p>
 <h2 id="jaxrsresource">Implementing a JAX-RS resource</h2>
 <p>JAX-RS resource is a POJO (Plain Old Java Object) which is mapped to a root URL and has Java methods for serving requests to this root URL and its child URLs. Any resource can have a separate set of URLs.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 package com.sample.adapter;</p>
 <p>import java.util.logging.Logger;</p>
 <p>import javax.ws.rs.GET;<br />
@@ -131,12 +131,12 @@ In such cases you should not rely on Java's HttpSession to persist​ data from 
 <h2 id="serverapi">MobileFirst server-side API</h2>
 <p>Java adapters can use the MobileFirst server-side Java API to perform operations that are related to MobileFirst Server, such as calling other adapters, submitting push notifications, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.</p>
 <p>To get the server API interface, use the following code:<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 WLServerAPI api = WLServerAPIProvider.getWLServerAPI();<br />
 {% endhighlight %}</p>
 <p>The <code>WLServerAPI</code> interface is the parent of all the API categories: (Analytics, Configuration, Push, Adapters, Authentication).</p>
 <p>If you want, for example, to use the push API, you can write:</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 PushAPI pushApi = serverApi.getPushAPI();<br />
 {% endhighlight %}</p>
 <blockquote><p>For more information, review the Server-side API topics in the user documentation.</p></blockquote>

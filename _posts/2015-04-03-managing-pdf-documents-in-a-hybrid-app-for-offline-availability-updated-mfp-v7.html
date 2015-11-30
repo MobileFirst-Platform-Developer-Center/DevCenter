@@ -19,7 +19,7 @@ author:
 
 <p>For the purpose of this demonstration, we have implemented a Java adapter service that reads files from a root directory:
 
-{% highlight java %}
+{% highlight java linenos %}
 @Path("/docs")
 public class DocumentReaderResource {
 	static final String rootDirectory = "/users/enoiret/mydocs"; // Root path where documents are stored
@@ -228,7 +228,7 @@ function downloadDocuments() {
 <p>In case option 1 is not possible, this option gives you the opportunity to get access to the files from the MFP server directly. I'd personally not recommend this way of doing since, as you'll see, it requires to encode and decode the documents which will lead to lower performance as their size increases. If the client app was a native app, then we could return directly a binary stream from the Java adapter. But Javascript in our case doesn't really gives the opportunity to work with binary data.</p>
 
 <p>The adapter service is quite simple:</p>
-{% highlight java %}
+{% highlight java linenos %}
 	@GET
 	@Produces(MediaType.TEXT_PLAIN)
 	@Path("/getDocContent/{documentId}")

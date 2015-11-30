@@ -184,7 +184,7 @@ WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttp
 
 <p>For native Android applications, you would use the WLResourceRequest Java API, as shown in the next snippet:</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 WLResourceRequest req = new WLResourceRequest(new URI("http://myserver/api/Companies"), WLResourceRequest.GET);
 req.send(new WLResponseListener(){
   @Override

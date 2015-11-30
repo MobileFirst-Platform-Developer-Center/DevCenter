@@ -224,7 +224,7 @@ Wi-Fi access point visibility and signal strengths are automatically updated. Yo
 You can import and export scenarios to support test reuse.</p>
 <h2 id="androidPermissions">Location Services permissions in Android</h2>
 <p>Android Marshmallow requires user permissions to be granted at runtime. Since runtime code written in Javascript does not have access to the Android api, these permissions must be requested and checked by the native code before launching the Cordova Web Framework. The file [application name].java in the native folder is responsible for loading the web resources. The code for requesting and checking permissions for Location Services should be called within this file, for example in onInitWebFrameworkComplete.</p>
-<p>{% highlight java %}
+<p>{% highlight java linenos %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result) {
     if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
 	    super.loadUrl(WL.getInstance().getMainHtmlFilePath());

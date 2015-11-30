@@ -139,7 +139,7 @@ function getSecretData(){
 <p>The adapter responsible for authenticating the user needs to be a JavaScript-based adapter. However, you can still use adapter-based authentication to protect other resources such as Java adapters.</p>
 <ol>
 <li>Create a Java adapter. Add a <code>getSecretData</code> method and protect it with the realm you created previously. In this module, the <code>getSecretData</code> procedure returns some hardcoded value:
-<p>{% highlight java %}
+<p>{% highlight java linenos %}
 	@GET<
 	@Produces("application/json")
 	@OAuthSecurity(scope="SingleStepAuthRealm")

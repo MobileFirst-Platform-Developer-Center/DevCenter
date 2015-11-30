@@ -360,14 +360,14 @@ Replace <code>com.PushNotifications</code> with the <code>bundleId</code> of you
 <p>The sample project for this tutorial is bundled with a back-end emulator. You can use it to simulate push notification submissions by a back-end system.<br />
 The source for the emulator can be found in the associated sample.</p>
 <p>To run the back-end emulator, open the <code>PushBackendEmulator</code> folder of the sample project in a command prompt, and then run the supplied JAR file by using the following syntax:</p>
-{% highlight java %}
+{% highlight java linenos %}
 java –jar PushBackendEmulator.jar <userId> <message> <contextRoot> <port>
 {% endhighlight %}
 <p><code>userId</code> is the user name that you used to log in to the sample application.<br />
 <code>contextRoot</code> is the context root of your MobileFirst project.</p>
 <h3>Example</h3>
 
-{% highlight java %}
+{% highlight java linenos %}
 java –jar PushBackendEmulator.jar JohnDoe “My first push notification” myContextRoot 10080
 {% endhighlight %}
 <p>The back-end emulator tries to connect to a MobileFirst Server and call a <code>submitNotification()</code> adapter procedure.<br />

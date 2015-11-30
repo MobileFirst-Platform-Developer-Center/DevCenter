@@ -65,7 +65,7 @@ This is a continuation of <a href="../">Working with Beacons</a> (introduction, 
 </li>
 </ul>
 <h3>Enable the library to show alerts</h3>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 @Override<br />
 protected void onCreate(Bundle savedInstanceState) {<br />
     ((WLBeaconsMonitoringApplication) this.getApplication()).setAlertHandler(new WLAlertHandler(this));<br />
@@ -74,7 +74,7 @@ protected void onCreate(Bundle savedInstanceState) {<br />
 <h2 id="simplifiedAPIs">Simplified APIs for monitoring/ranging beacons</h2>
 <h3>Loading beacons and triggers from the server</h3>
 <p>To load information pertaining to beacons, triggers, and their associations from the server and storing it in the application JSONStore, write the following code:</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 String adapterName = "BeaconsAdapter";<br />
 String procedureName = "getBeaconsAndTriggers";<br />
 WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers(adapterName, procedureName,<br />
@@ -94,11 +94,11 @@ WLBeaconsAndTriggersJSONStoreManager.getInstance(context).loadBeaconsAndTriggers
 );{% endhighlight %}</p>
 <h3>Triggering action</h3>
 <p>To start the monitoring/ranging of Beacons and to fire trigger actions, write the following code:<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 	((WLBeaconsMonitoringApplication) this.getApplication()).startMonitoring();<br />
 {% endhighlight %}</p>
 <p>To let the user opt out of Beacon monitoring, write the following code:<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 	((WLBeaconsMonitoringApplication) this.getApplication()).stopMonitoring();<br />
 {% endhighlight %}</p>
 <h2 id="sampleresult">Running the sample application</h2>

@@ -38,7 +38,7 @@ WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions"
 ### Calling a Java adapter from a Java adapter
 When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
 This call returns an `HttpResponse` object.
-{% highlight java %}
+{% highlight java linenos %}
 HttpUriRequest req = new HttpGet(MyAdapterProcedureURL);
 org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
 JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
@@ -46,7 +46,7 @@ JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
 
 ### Calling a JavaScript adapter procedure from a Java adapter
 When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an `HttpUriRequest` to pass as a parameter to the `executeAdapterRequest` call.
-{% highlight java %}
+{% highlight java linenos %}
 HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
 org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
 JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
@@ -112,7 +112,7 @@ return WL.Server.invokeHttp(input);
 {% endhighlight %}
 
 (getCityWeatherJava adapter)
-{% highlight java %}
+{% highlight java linenos %}
 @GET
 @Produces("application/json")
 public String get(@Context HttpServletResponse response, @QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
@@ -144,7 +144,7 @@ function getCitiesList() {
 {% endhighlight %}  
 
 (getCitiesListJava, getCitiesListJavaToJs adapters)
-{% highlight java %}
+{% highlight java linenos %}
 PreparedStatement getAllCities = getSQLConnection().prepareStatement("select city, identifier, summary from weather");
 ResultSet rs = getAllCities.executeQuery();
 {% endhighlight %}  
@@ -167,7 +167,7 @@ function getCityWeather(woeid){
 {% endhighlight %}  
 
 (getCitiesListJava adapter)
-{% highlight java %}
+{% highlight java linenos %}
 while (rs.next()) {
 	getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
     HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
@@ -177,7 +177,7 @@ while (rs.next()) {
 {% endhighlight %}  
 
 (getCitiesListJavaToJs adapter)
-{% highlight java %}
+{% highlight java linenos %}
     while (rs.next()) {
         HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather", URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
         org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
@@ -198,7 +198,7 @@ return cityList;
 {% endhighlight %}  
 
 (getCitiesListJava, getCitiesListJavaToJs adapters)
-{% highlight java %}
+{% highlight java linenos %}
     JSONObject rss = (JSONObject) jsonWeather.get("rss");
     JSONObject channel = (JSONObject) rss.get("channel");
     JSONObject item = (JSONObject) channel.get("item");

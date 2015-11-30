@@ -90,7 +90,7 @@ Complete the procedure for production mode when the app is publicly available an
     <li>Configure MQA to start a new Mobile Quality Assurance session each time your app starts in the Java file:
         <ol>
             <li>Ensure that Mobile Quality Assurance is imported by verifying that your code includes the following lines:
-                {% highlight java %}
+                {% highlight java linenos %}
                 import com.ibm.mqa.MQA;
                 import com.ibm.mqa.MQA.Mode;
                 import com.ibm.mqa.config.Configuration;
@@ -98,7 +98,7 @@ Complete the procedure for production mode when the app is publicly available an
             </li>
             <li>Build a configuration object that specifies how Mobile Quality Assurance behaves.</li>
             <li>Call the <code>MQA.startNewSession()</code> method in the <code>onCreate</code> event of your main activity.
-                {% highlight java %}
+                {% highlight java linenos %}
                 public class MainActivity extends Activity {
                     public static final String APP_KEY = "Your-Application-Key-Goes-Here";
 

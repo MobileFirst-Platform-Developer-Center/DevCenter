@@ -94,7 +94,7 @@ A custom parameter called <code>rememberMeExpirationInDays</code> defines how lo
 <p>The security test uses some standard realms, and uses the <code>CustomRealm</code> as a user realm.</p>
 <h2 id="adapter">Adapter code</h2>
 <p>Create a simple Java adapter with a single <code>hello</code> method. Protect it with the realm that you created in the <a href="#realm">Realm</a> section.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 	@GET<br />
 	@Path("/hello")<br />
 	@Produces("application/xml")<br />
@@ -126,7 +126,7 @@ cloudant.password=myAPIPassword<br />
 {% endhighlight %}</p>
 <h2 id="RememberedClient">RememberedClient.java</h2>
 <p>Cloudant uses JSON notation to store documents. To make it easier in Java, create a simple <code><a href="https://en.wikipedia.org/wiki/Plain_Old_Java_Object" target="_blank">POJO</a></code> to represent a "remembered client id".</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 public class RememberedClient {<br />
 	private String username, _id, _rev;<br />
 	private Date expiration;<br />
@@ -134,7 +134,7 @@ public class RememberedClient {<br />
 }<br />
 {% endhighlight %}<br />
 For convenience, this class also includes a getter/setter pair to map <code>ClientID</code> to the <code>_id</code> property.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 	public String getClientID() {<br />
 		return get_id();<br />
 	}</p>
@@ -144,13 +144,13 @@ For convenience, this class also includes a getter/setter pair to map <code>Clie
 {% endhighlight %}</p>
 <h2 id="CustomAuthenticator">CustomAuthenticator.java</h2>
 <p>The authenticator extends <code>WorklightProtocolAuthenticator</code> to inherit the simplifications provided by the <em>Worklight protocol</em>.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 public class CustomAuthenticator extends WorklightProtocolAuthenticator {<br />
 }<br />
 {% endhighlight %}</p>
 <h3>init</h3>
 <p>This example uses the <code>init</code> method to load the configurations from the <code>authenticatorConfig.xml</code> and from the <code>worklight.properties</code> files. The CloudantClient and database are initialized here, too.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 	@Override<br />
 	public void init(Map<String, String> options) throws MissingConfigurationOptionException {<br />
 		logger.info("CustomAuthenticator :: Initializing. options :: " + options.toString());<br />
@@ -176,7 +176,7 @@ public class CustomAuthenticator extends WorklightProtocolAuthenticator {<br />
 <p>See the sample code for implementation details.</p>
 <h3>generateChallenge</h3>
 <p>The <code>generateChallenge</code> method is a helper method to create a JSON challenge that the client can interpret in its challenge handler.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 	private AuthenticationResult generateChallenge(String errorMessage){<br />
 		logger.info("CustomAuthenticator :: generateChallenge");<br />
 		AuthenticationResult authenticationResult = AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
@@ -193,7 +193,7 @@ The <code>processRequest</code> method first checks whether the client exists in
 </ul>
 <ul>
 <li>If the request finds the client, it sends a <code>SUCCESS</code> result to the framework.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 	@Override<br />
 	public AuthenticationResult processRequest(HttpServletRequest request,<br />
 			HttpServletResponse response, boolean isAccessToProtectedResource)<br />
@@ -216,7 +216,7 @@ The <code>processRequest</code> method first checks whether the client exists in
 {% endhighlight %}
 </li>
 <li>If the client was not found and the current request does not already contain a challenge response, the request generates a challenge and sends it.
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 		JSONObject challengeResponse = (JSONObject) getChallengeResponse(request);</p>
 <p>		if (null == challengeResponse){<br />
 			return generateChallenge("Please enter username and password");<br />
@@ -224,7 +224,7 @@ The <code>processRequest</code> method first checks whether the client exists in
 {% endhighlight %}
 </li>
 <li>If the current request already contains the response from the challenge, it verifies the credentials (in this example, no real verification happens). It then saves the client in the database and returns <code>SUCCESS</code>.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 		username = (String) challengeResponse.get("username");<br />
 		password = (String) challengeResponse.get("password");<br />
 		rememberMe = (Boolean) challengeResponse.get("rememberMe");<br />
@@ -246,7 +246,7 @@ The <code>processRequest</code> method first checks whether the client exists in
 </ul>
 <h3>getAuthenticationData</h3>
 <p>The <code>getAuthenticationData</code> method is called by the framework to provide login credentials to the <code>login module</code>. In this example, the <code>login module</code> is non-validating, therefore the password can be ignored. The <code>login module</code> is used only to create a <code>user identity</code> in the framework.<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 	@Override<br />
 	public Map<String, Object> getAuthenticationData() {<br />
 		logger.info("CustomAuthenticator :: getAuthenticationData");<br />
@@ -268,7 +268,7 @@ The challenge handler hides and shows the login parts of the application when re
 <p>To work around this issue, clear the <code>clientId</code> from the remote storage before logging out.</p>
 <ol>
 <li>In your Java adapter, add a method that uses the static <code>forgetClient</code> method that you created in <a href="#cloudantHelper">Cloudant helper methods</a>.
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 	@POST<br />
 	@Path("/forgetMe")<br />
 	@OAuthSecurity(scope="CustomRealm")<br />

@@ -29,7 +29,7 @@ WLClient.sharedInstance().wlConnectWithDelegate(myConnectListener)<br />
 {% endhighlight %}<br />
 The <code>myConnectListener</code> argument is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 <h3>Java</h3>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 WLClient.createInstance(this).connect(myConnectListener);<br />
 {% endhighlight %}<br />
 The <code>myConnectListener</code> argument is an instance of a class that implements <code>WLResponseListener</code>, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>

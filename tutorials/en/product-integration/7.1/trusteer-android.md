@@ -50,14 +50,14 @@ function onSuccess(result) {
 ### Access Risk Items in Java
 Optionally, you can access the client-side generated Trusteer data object using the following API:
 
-{% highlight java %}
+{% highlight java linenos %}
 WLTrusteer trusteer = WLTrusteer.getInstance();
 JSONObject risks = trusteer.getRiskAssessment();
 {% endhighlight %}
 
 This returns an <code>JSONObject</code> of all the data processed by Truster. See Trusteer documentation to get information on each risk item.
 
-{% highlight java %}
+{% highlight java linenos %}
 JSONObject rooted = (JSONObject) risks.get("os.rooted");
 if(rooted.getInt("value") > 0){
 	//device is rooted
@@ -154,7 +154,7 @@ Assuming you’ve added a Trusteer realm to your server’s authentication confi
 
 Create a class that extends <code>WLChallengeHandler</code>:
 
-{% highlight java %}
+{% highlight java linenos %}
 public class TrusteerChallengeHandler extends WLChallengeHandler{
 //...
 }
@@ -162,7 +162,7 @@ public class TrusteerChallengeHandler extends WLChallengeHandler{
 
 In your application code, register your newly created challenge handler for your Trusteer realm:
 
-{% highlight java %}
+{% highlight java linenos %}
 WLClient.getInstance().registerChallenge(
   new TrusteerChallengeHandler("wl_basicTrusteerFraudDetectionRealm");
 );
@@ -170,7 +170,7 @@ WLClient.getInstance().registerChallenge(
 
 If you have set one of your realm options to block, a blocking event will trigger <code>handleFailure</code>.
 
-{% highlight java %}
+{% highlight java linenos %}
 public class TrusteerChallengeHandler extends WLChallengeHandler {
 //...
   public void handleFailure(JSONObject error){
@@ -194,7 +194,7 @@ public class TrusteerChallengeHandler extends WLChallengeHandler {
 
 If your have set one of your realm options to alert, you can catch the alert event by implementing the <code>handleSuccess</code> method.
 
-{% highlight java %}
+{% highlight java linenos %}
 public class TrusteerChallengeHandler extends WLChallengeHandler{
 //…
   public void handleSuccess(JSONObject identity){

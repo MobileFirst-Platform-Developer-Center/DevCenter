@@ -131,21 +131,21 @@ For more details refer to user documentation on WL.Server.createDefaultNotificat
 <h2 id="clientSideApi"> Notification API - Client-side</h2>
 <ol>
 <li>Create an instance of the <code>WLClient</code> class.
-<p>{% highlight java %} WLClient client = WLClient.getInstance();{% endhighlight %}</p>
+<p>{% highlight java linenos %} WLClient client = WLClient.getInstance();{% endhighlight %}</p>
 </li>
 <li>Use the methods of the <code>WLPush</code> class.
 <ul>
 </ul>
 <p><code>getPush</code> - This method retrieves an instance of the <code>WLPush</code> class from the <code>WLClient</code> instance.</p>
-<p>{% highlight java %}WLPush push = client.getPush();{% endhighlight %}<br />
+<p>{% highlight java linenos %}WLPush push = client.getPush();{% endhighlight %}<br />
 <code>onReadyToSubscribeListener</code> - When connecting to a MobileFirst Server instance, the application attempts to register itself with the MPNS server to receive push notifications.</p>
-<p>{% highlight java %} push.onReadyToSubscribeListener = onReadyListener;<br />
+<p>{% highlight java linenos %} push.onReadyToSubscribeListener = onReadyListener;<br />
 client.connect(connectListener); {% endhighlight %}</p>
 <p><code>notificationListener</code> - Then the app receives the notification.</p>
-<p>{% highlight java %} push.notificationListener = notificationListener;<br />
+<p>{% highlight java linenos %} push.notificationListener = notificationListener;<br />
 client.connect(connectListener); {% endhighlight %}</p>
 <p>The <code>onReadyToSubscribe</code> method of <code>WLOnReadyToSubscribeListener</code> is called when registration is complete.</p>
-<p>{% highlight java %} public void onReadyToSubscribe() { ..... } {% endhighlight %}</p>
+<p>{% highlight java linenos %} public void onReadyToSubscribe() { ..... } {% endhighlight %}</p>
 </li>
 <li>To register an alias on a particular event source, use the <code>WLPush.registerEventSourceCallback</code> method. The API takes the following arguments:
 <ul>
@@ -154,9 +154,9 @@ client.connect(connectListener); {% endhighlight %}</p>
 <code>Adaptername</code> - The adapter in which the event source is defined.<br />
 <code>EventSourceName</code> - The event source on which the alias is called.</p>
 <p>Example:<br />
-{% highlight java %}  WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter", "PushEventSource", this); {% endhighlight %}</p>
+{% highlight java linenos %}  WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter", "PushEventSource", this); {% endhighlight %}</p>
 <p>Typically, this method is called in the <code>onReadyToSubscribe</code> callback function.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 public void onReadyToSubscribe() {<br />
       WLClient.getInstance().getPush().registerEventSourceCallback("newalias","PushAdapter","PushEventSource",this);<br />
 }<br />
@@ -173,7 +173,7 @@ public void onReadyToSubscribe() {<br />
 <code>responseListener</code> - An object of type <code>WLResponseListener</code>, which is called when subscription completes.
 </ul>
 <p>Example:<br />
-{% highlight java %}<br />
+{% highlight java linenos %}<br />
 WLClient client = WLClient.getInstance(); client.getPush().subscribe("newalias",new WLPushOptions(), new MyListener());<br />
 {% endhighlight %}</p>
 <p><code>MyListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
@@ -187,7 +187,7 @@ The API takes the following arguments:</p>
 <ul>
 <code>alias</code> - The alias to which the device has subscribed.<br />
 <code>responseListener</code> - An object of type <code>WLResponseListener</code>, which is called when unsubscription completes. </ul>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 WLClient client = WLClient.getInstance(); client.getPush().unsubscribe("newalias",new MyListener());<br />
 {% endhighlight %}</p>
 <p><code>MyListener</code> implements <code>WLResponseListener</code> and provides the following callback functions:</p>
@@ -197,20 +197,20 @@ WLClient client = WLClient.getInstance(); client.getPush().unsubscribe("newalias
 </ul>
 <h3>Additional client-side API methods:</h3>
 <p><code>isSubscribed()</code> - Indicates whether the device is subscribed to push notifications.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 WLClient client = WLClient.getInstance(); boolean bIsSubscribed = client.getPush().isSubscribed("newalias");<br />
 {% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>Receiving a push notification</h3>
 <p>When a push notification is received, the <code>onReceive</code> method is called on an <code>WLEventSourceListener</code> instance.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 class MyListener : WLOnReadyToSubscribeListener , WLEventSourceListener<br />
 { {% endhighlight %}</p>
 <p>The <code>WLEventSourceListener</code> instance is registered during the <code>registerEventSourceCallback</code> callback.</p>
-<p>{% highlight java %} WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter","PushEventSource", this );<br />
+<p>{% highlight java linenos %} WLClient.getInstance().getPush().registerEventSourceCallback("newalias", "PushAdapter","PushEventSource", this );<br />
 {% endhighlight %}</p>
 <p>The <code>onReceive</code> method displays the received notification on the screen.</p>
-<p>{% highlight java %}<br />
+<p>{% highlight java linenos %}<br />
 public void onReceive(String props, String payload) {<br />
    Deployment.Current.Dispatcher.BeginInvoke(() =><br />
    {<br />
