@@ -2,13 +2,10 @@
 layout: tutorial
 title: Two-Step adapter authentication
 relevantTo: [hybrid]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/TwoStepAuth
 ---
-<ul>
-<li class="download-sample">
-  <a href="https://github.com/MobileFirst-Platform-Developer-Center/TwoStepAuth" target="_blank">Download MobileFirst project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>This tutorial demonstrates how to implement "Two-Step" adapter-based authentication.</p>
 <p><em>Two-Step</em> means that after the initial authentication that uses, for example, a username and a password, an additional authentication step is required, such as a login pin, a secret word, or similar identification. In this example, a secret word is implemented for the second authentication step. The code snippets and sample application in this tutorial are based on the <a href="../../authentication-security/adapter-based-authentication/">existing adapter-based authentication sample</a>. The changes extend the application from <em>single-step</em> to <em>Two-Step</em>.</p>
@@ -35,19 +32,19 @@ For more information, read the Cloudant <a href="https://docs.cloudant.com/authe
 <h2 id="config">Configuring the authenticationConfig.xml file</h2>
 <h3>Realms</h3>
 <p>Add a realm or replace the existing <code>AuthLoginModule</code> realm in the <code>realms</code> section of the <code>authenticationConfig.xml</code> file:<br />
-{% highlight xml linenos %}<br />
-  <realm loginModule="AuthLoginModule" name="TwoStepAuthRealm"><br />
-    <className>com.worklight.integration.auth.AdapterAuthenticator</className><br />
-      <parameter name="login-function" value="AuthAdapter.onAuthRequired"/><br />
-      <parameter name="logout-function" value="AuthAdapter.onLogout"/><br />
-  </realm><br />
+{% highlight xml linenos %}
+<realm loginModule="AuthLoginModule" name="TwoStepAuthRealm">
+    <className>com.worklight.integration.auth.AdapterAuthenticator</className>
+    <parameter name="login-function" value="AuthAdapter.onAuthRequired"/>
+    <parameter name="logout-function" value="AuthAdapter.onLogout"/>
+</realm>
 {% endhighlight %}</p>
 <h3>Security tests</h3>
 <p>Add a security test or replace the existing <code>AuthSecurityTest</code> in the <code>securityTests</code> section of the <code>authenticationConfig.xml</code> file:<br />
-{% highlight xml linenos %}<br />
-  <customSecurityTest name="TwoStepAuthAdapter-securityTest"><br />
-      <test isInternalUserID="true" realm="TwoStepAuthRealm"/><br />
-  </customSecurityTest><br />
+{% highlight xml linenos %}
+<customSecurityTest name="TwoStepAuthAdapter-securityTest">
+    <test isInternalUserID="true" realm="TwoStepAuthRealm"/><
+</customSecurityTest><br />
 {% endhighlight %}</p>
 <blockquote><p>To review the remaining/existing sample components, see the <a href="../../authentication-security/adapter-based-authentication/">Adapter-based authentication</a> tutorial.</p></blockquote>
 <h2 id="serverside">Creating the server-side authentication components</h2>
@@ -56,12 +53,13 @@ For more information, read the Cloudant <a href="https://docs.cloudant.com/authe
 <p>Edit the <code>AuthAdapter.xml</code> file:</p>
 <ol>
 <li>Change the domain name to your Cloudant domain:<br />
-{% highlight xml linenos %}<br />
-<domain>$USERNAME.cloudant.com</domain>{% endhighlight %}
+{% highlight xml linenos %}
+<domain>$USERNAME.cloudant.com</domain>
+{% endhighlight %}
 </li>
 <li>Add the following procedure:
-<p>{% highlight xml linenos %}<br />
-<procedure name="submitAuthenticationStep2" securityTest="wl_unprotected"/><br />
+<p>{% highlight xml linenos %}
+<procedure name="submitAuthenticationStep2" securityTest="wl_unprotected"/>
 {% endhighlight %}
 </li>
 <li>Protect the <code>getSecretData</code> method with the new <code>TwoStepAuthAdapter-securityTest<br />
@@ -71,65 +69,65 @@ For more information, read the Cloudant <a href="https://docs.cloudant.com/authe
 <p>Edit the <code>AuthAdapter-impl.js</code> file:</p>
 <ol>
 <li>Create a variable to save the basic authentication encoded string you have generated before:<br />
-{% highlight js linenos %}<br />
-var auth = "Basic REPLASE_ME_WITH_THE_BASE-64_ENCODED_STRING";;<br />
+{% highlight js linenos %}
+var auth = "Basic REPLASE_ME_WITH_THE_BASE-64_ENCODED_STRING";
 {% endhighlight %}
 </li>
 <li>Create a variable to save your database name:<br />
-{% highlight js linenos %}<br />
-var dbName = "REPLACE_ME_WITH_THE_DATABASE_NAME";<br />
+{% highlight js linenos %}
+var dbName = "REPLACE_ME_WITH_THE_DATABASE_NAME";
 {% endhighlight %}
 </li>
 <li>Update the <code>onAuthRequired</code> function to return that authentication step 1 is required:<br />
-{% highlight js linenos %}<br />
-function onAuthRequired(headers, errorMessage){<br />
-	errorMessage = errorMessage ? errorMessage : null;<br />
-	return {<br />
-		authRequired: true,<br />
-		authStep: 1,<br />
-		errorMessage: errorMessage<br />
-	};<br />
-}{% endhighlight %}</li>
+{% highlight js linenos %}
+function onAuthRequired(headers, errorMessage){
+	errorMessage = errorMessage ? errorMessage : null;
+	return {
+		authRequired: true,
+		authStep: 1,
+		errorMessage: errorMessage
+	};
+}{% endhighlight %}
 <li>Update the <code>submitAuthenticationStep1</code> function:
 <ul>
 <li>Add the following line to get the client ID:<br />
-{% highlight js linenos %}<br />
-function submitAuthenticationStep1(username, password){<br />
-	if (username === "user" &amp;&amp; password === "password"){<br />
-		WL.Logger.debug("Step 1 :: SUCCESS");<br />
-		var clientId = WL.Server.getClientId();<br />
-		var userIdentity = {<br />
-				userId: username,<br />
-				displayName: username,<br />
-				attributes: {}<br />
-		};<br />
+{% highlight js linenos %}
+function submitAuthenticationStep1(username, password){
+	if (username === "user" && password === "password"){
+		WL.Logger.debug("Step 1 :: SUCCESS");
+		var clientId = WL.Server.getClientId();
+		var userIdentity = {
+				userId: username,
+				displayName: username,
+				attributes: {}
+		};
 {% endhighlight %}
 </li>
 <li>To save the <code>userIdentity</code> for the next authentication step, write it to the database. Use the <code>clientId</code> variable as the document <code>_id</code> key:<br />
-{% highlight js linenos %}<br />
-		//Validate that the DB doesn't already contains the ClientId<br />
-		var response = deleteUserIdentityFromDB(dbName, null);</p>
-<p>		//Write ClientId to DB<br />
-		var response = writeUserIdentityToDB(dbName, {_id:clientId, "userIdentity":userIdentity});<br />
+{% highlight js linenos %}
+		//Validate that the DB doesn't already contains the ClientId
+		var response = deleteUserIdentityFromDB(dbName, null);
+		//Write ClientId to DB
+		var response = writeUserIdentityToDB(dbName, {_id:clientId, "userIdentity":userIdentity});
 {% endhighlight %}
 </li>
 <li>If step 1 authentication was successful, return that step 2 is required:<br />
-{% highlight js linenos %}<br />
-		if (response){<br />
-			return {<br />
-				authRequired: true,<br />
-				authStep: 2,<br />
-				question: "What is your pet's name?",<br />
-				errorMessage : ""<br />
-			};<br />
-		} else {<br />
-			return onAuthRequired(null, "Database ERROR");<br />
-		}</p>
-<p>	} else{<br />
-		WL.Logger.debug("Step 1 :: FAILURE");<br />
-		return onAuthRequired(null, "Invalid login credentials");<br />
-	}<br />
-}<br />
+{% highlight js linenos %}
+		if (response){
+			return {
+				authRequired: true,
+				authStep: 2,
+				question: "What is your pet's name?",
+				errorMessage : ""
+			};
+		} else {
+			return onAuthRequired(null, "Database ERROR");
+		}
+	} else{
+		WL.Logger.debug("Step 1 :: FAILURE");
+		return onAuthRequired(null, "Invalid login credentials");
+	}
+}
 {% endhighlight %}
 </li>
 </ul>
@@ -137,34 +135,34 @@ function submitAuthenticationStep1(username, password){<br />
 <li>Add <code>submitAuthenticationStep2</code> function to handle the second authentication step:
 <ul>
 <li>Get the client ID and read it from the database:<br />
-{% highlight js linenos %}<br />
-function submitAuthenticationStep2(answer){<br />
-	var clientId = WL.Server.getClientId();<br />
-	var response = readUserIdentityFromDB(dbName, clientId);<br />
+{% highlight js linenos %}
+function submitAuthenticationStep2(answer){
+	var clientId = WL.Server.getClientId();
+	var response = readUserIdentityFromDB(dbName, clientId);
 {% endhighlight %}
 </li>
 <li>If step 2 authentication was successful, delete the client document from database:<br />
-{% highlight js linenos %}<br />
-	if (response){<br />
-		if (answer === "Lassie"){<br />
-			var doc = JSON.parse(response.text);<br />
-			var userIdentity = doc.userIdentity;<br />
-			WL.Logger.debug("Step 2 :: SUCCESS");<br />
-			WL.Server.setActiveUser("TwoStepAuthRealm", userIdentity);<br />
-			WL.Logger.debug("Authorized access granted");</p>
-<p>			var response = deleteUserIdentityFromDB(dbName, doc);</p>
-<p>			return {<br />
-				authRequired: false<br />
-			};<br />
-		} else{<br />
-			WL.Logger.debug("Step 2 :: FAILURE");<br />
-			return onAuthRequired(null, "Wrong security question answer");<br />
-		}<br />
-	} else {<br />
-		WL.Logger.debug("Step 1 :: FAILURE");<br />
-		return onAuthRequired(null, "Database ERROR");<br />
-	}</p>
-<p>}<br />
+{% highlight js linenos %}
+	if (response){
+		if (answer === "Lassie"){
+			var doc = JSON.parse(response.text);
+			var userIdentity = doc.userIdentity;
+			WL.Logger.debug("Step 2 :: SUCCESS");
+			WL.Server.setActiveUser("TwoStepAuthRealm", userIdentity);
+			WL.Logger.debug("Authorized access granted");
+		    var response = deleteUserIdentityFromDB(dbName, doc);
+			return {
+				authRequired: false
+			};
+		} else{
+			WL.Logger.debug("Step 2 :: FAILURE");
+			return onAuthRequired(null, "Wrong security question answer");
+		}
+	} else {
+		WL.Logger.debug("Step 1 :: FAILURE");
+		return onAuthRequired(null, "Database ERROR");
+	}
+}
 {% endhighlight %}
 </li>
 </ul>
@@ -174,75 +172,83 @@ function submitAuthenticationStep2(answer){<br />
 <p>To handle the database actions, use the <code>WL.Server.invokeHttp</code> method and Cloudant REST API.</p>
 <ul>
 <li>Write to the database:<br />
-{% highlight js linenos %}<br />
-function writeUserIdentityToDB(db, document){<br />
-	   var input = {<br />
-			   	method : 'post',<br />
-		        returnedContentType : 'plain',<br />
-		        path : db,<br />
-		        headers: {<br />
-		        	"Authorization":auth<br />
-		        },<br />
-		        body:{<br />
-		        	contentType:'application/json; charset=UTF-8',<br />
-		        	content:JSON.stringify(document)<br />
-		    }};</p>
-<p>		 var response = WL.Server.invokeHttp(input);<br />
-		 var responseString = "" + response.statusCode;</p>
-<p>		//Checking if the invocation was successful - status code = 2xx<br />
-		 if (responseString.indexOf('2') === 0){<br />
-			 return response;<br />
-		 }<br />
-		 return null;<br />
-}<br />
+{% highlight js linenos %}
+function writeUserIdentityToDB(db, document){
+    var input = {
+        method : 'post',
+        returnedContentType : 'plain',
+        path : db,
+        headers: {
+            "Authorization":auth
+        },
+        body:{
+            contentType:'application/json; charset=UTF-8',
+            content:JSON.stringify(document)
+        }
+    };
+		
+    var response = WL.Server.invokeHttp(input);
+    var responseString = "" + response.statusCode;
+	
+    //Checking if the invocation was successful - status code = 2xx
+    if (responseString.indexOf('2') === 0){
+        return response;
+    }
+    return null;
+}
 {% endhighlight %}
 </li>
 <li>Read from database:<br />
-{% highlight js linenos %}<br />
-function readUserIdentityFromDB(db, key){<br />
-	 var input = {<br />
-		        method : 'get',<br />
-		        returnedContentType : 'plain',<br />
-		        path : db + "/" + key,<br />
-		        headers: {<br />
-		        	"Authorization":auth<br />
-		        	}<br />
-		    };<br />
-	 var response = WL.Server.invokeHttp(input);<br />
-	 var responseString = "" + response.statusCode;</p>
-<p>	 //Checking if the invocation was successful - status code = 2xx<br />
-	 if (responseString.indexOf('2') === 0){<br />
-		 return response;<br />
-	 }<br />
-	 return null;<br />
-}<br />
+{% highlight js linenos %}
+function readUserIdentityFromDB(db, key){
+    var input = {
+        method : 'get',
+        returnedContentType : 'plain',
+        path : db + "/" + key,
+        headers: {
+            "Authorization":auth
+        }
+    };
+    
+    var response = WL.Server.invokeHttp(input);
+    var responseString = "" + response.statusCode;</p>
+
+    //Checking if the invocation was successful - status code = 2xx
+    if (responseString.indexOf('2') === 0){
+        return response;
+    }
+    return null;
+}
 {% endhighlight %}
 </li>
 <li>Delete from the database:<br />
-{% highlight js linenos %}<br />
-function deleteUserIdentityFromDB(db, document){<br />
-	var doc = document;<br />
-	if (!doc){<br />
-		var clientId = WL.Server.getClientId();<br />
-		var response = readUserIdentityFromDB(dbName, clientId);<br />
-		if(!response){<br />
-			return;<br />
-		} else {<br />
-			doc = JSON.parse(response.text);<br />
-		}<br />
-	}<br />
-	var id = doc._id; // The id of the doc to remove<br />
-	var rev = doc._rev; // The rev of the doc to remove<br />
-	var input = {<br />
-		        method : 'delete',<br />
-		        returnedContentType : 'plain',<br />
-		        path : db + "/" + id + "?rev=" + rev,<br />
-		        headers: {<br />
-		        	"Authorization":auth<br />
-		        	}<br />
-		    };<br />
-	 return WL.Server.invokeHttp(input);<br />
-}<br />
+{% highlight js linenos %}
+function deleteUserIdentityFromDB(db, document){
+    var doc = document;
+    
+    if (!doc){
+        var clientId = WL.Server.getClientId();
+        var response = readUserIdentityFromDB(dbName, clientId);
+        
+        if(!response){
+            return;
+        } else {
+            doc = JSON.parse(response.text);
+        }
+    }
+    
+    var id = doc._id; // The id of the doc to remove
+    var rev = doc._rev; // The rev of the doc to remove
+    var input = {
+        method : 'delete',
+        returnedContentType : 'plain',
+        path : db + "/" + id + "?rev=" + rev,
+        headers: {
+            "Authorization":auth
+        }
+    };
+    return WL.Server.invokeHttp(input);
+}
 {% endhighlight %}
 </li>
 </ul>
@@ -250,92 +256,106 @@ function deleteUserIdentityFromDB(db, document){<br />
 <h2 id="creatingTheClientsideAuthenticationComponents">Creating the client-side authentication components</h2>
 <ol>
 <li>In <code>index.html</code>, use the <code>TwoStepAuthRealm</code> instead of the existing realm:
-<p>{% highlight javascript linenos %}<br />
-<div id="AppDiv"><br />
-      ...<br />
-      <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('TwoStepAuthRealm', {onSuccess:WL.Client.reloadApp})" /><br />
-      <div id="ResponseDiv"></div><br />
-</div><br />
+<p>{% highlight javascript linenos %}
+<div id="AppDiv">
+    ...
+    <input type="button" class="appButton" value="Logout" onclick="WL.Client.logout('TwoStepAuthRealm', {onSuccess:WL.Client.reloadApp})" />
+    <div id="ResponseDiv"></div>
+    </div>
 {% endhighlight %}</li>
 <li>Add a second authentication screen:
-<p>{% highlight html linenos %}<br />
-<div id="AuthStep2Div"><br />
-    <h3>Authentication Step 2</h3><br />
-    <p id="AuthQuestion"></p><br />
-    <input type="text" placeholder="Enter answer" id="AuthAnswer"/><br /><br />
-    <input type="button" class="formButton" value="Submit" id="AuthStep2Submit" /><input type="button" class="AuthCancelButton" value="Cancel" /><br />
-</div>{% endhighlight %}</li>
+<p>{% highlight html linenos %}
+<div id="AuthStep2Div">
+    <h3>Authentication Step 2</h3>
+    <p id="AuthQuestion"></p>
+    <input type="text" placeholder="Enter answer" id="AuthAnswer"/><br />
+    <input type="button" class="formButton" value="Submit" id="AuthStep2Submit" /><input type="button" class="AuthCancelButton" value="Cancel" />
+</div>
+{% endhighlight %}</li>
 <li>Finally, update the challenge handler accordingly.<br />
 In this example, a new challenge handler (a new <code>.js</code> file), called <code>TwoStepAuthRealmChallengeProcessor.js</code>, is created for this purpose.</p>
 <ul>
 <li>The response is checked as in the original sample application:
-<p>{% highlight js linenos %}<br />
-var TwoStepAuthRealmChallengeHandler = WL.Client.createChallengeHandler("TwoStepAuthRealm");</p>
-<p>TwoStepAuthRealmChallengeHandler.isCustomResponse = function(response) {<br />
-	if (!response || !response.responseJSON	|| response.responseText === null) {<br />
-		return false;<br />
-	}<br />
-	if (typeof(response.responseJSON.authRequired) !== 'undefined'){<br />
-		return true;<br />
-	} else {<br />
-		return false;<br />
-	}<br />
-};{% endhighlight %}</li>
-<li>Add another case for the second authentication step:<br />
-{% highlight js linenos %}<br />
-TwoStepAuthRealmChallengeHandler.handleChallenge = function(response){<br />
-	var authRequired = response.responseJSON.authRequired;</p>
-<p>	if (authRequired == true){<br />
-		$("#AppDiv").hide();<br />
-		$("#AuthDiv").show();<br />
-		$("#AuthInfo").empty();</p>
-<p>		$("#AuthStep1Div").hide();<br />
-		$("#AuthStep2Div").hide();<br />
-		switch (response.responseJSON.authStep) {<br />
-			case 1:<br />
-				$("#AuthStep1Div").show();<br />
-				$("#AuthPassword").val('');<br />
-				break;<br />
-			case 2:<br />
-				$("#AuthStep2Div").show();<br />
-				$("#AuthAnswer").val('');<br />
-				$("#AuthQuestion").html(response.responseJSON.question);<br />
-				break;<br />
-		}</p>
-<p>		if (response.responseJSON.errorMessage)<br />
-			$("#AuthInfo").html(response.responseJSON.errorMessage);</p>
-<p>	} else if (authRequired == false){<br />
-		$("#AppDiv").show();<br />
-		$("#AuthDiv").hide();<br />
-		TwoStepAuthRealmChallengeHandler.submitSuccess();<br />
-	}<br />
-};{% endhighlight %}</li>
-<li>Perform the second authentication step:<br />
-{% highlight js linenos %}<br />
-$("#AuthStep1Submit").bind('click', function () {<br />
-	var username = $("#AuthUsername").val();<br />
-	var password = $("#AuthPassword").val();</p>
-<p>	var invocationData = {<br />
-		adapter : "AuthAdapter",<br />
-		procedure : "submitAuthenticationStep1",<br />
-		parameters : [ username, password ]<br />
-	};</p>
-<p>	TwoStepAuthRealmChallengeHandler.submitAdapterAuthentication(invocationData, {});<br />
-});</p>
-<p>$("#AuthStep2Submit").bind('click', function () {<br />
-	var answer = $("#AuthAnswer").val();</p>
-<p>	var invocationData = {<br />
-		adapter : "AuthAdapter",<br />
-		procedure : "submitAuthenticationStep2",<br />
-		parameters : [ answer ]<br />
-	};</p>
-<p>	TwoStepAuthRealmChallengeHandler.submitAdapterAuthentication(invocationData, {});<br />
-});</p>
-<p>$(".AuthCancelButton").bind('click', function () {<br />
-	$("#AppDiv").show();<br />
-	$("#AuthDiv").hide();<br />
-	TwoStepAuthRealmChallengeHandler.submitFailure();<br />
-});<br />
+<p>{% highlight js linenos %}
+var TwoStepAuthRealmChallengeHandler = WL.Client.createChallengeHandler("TwoStepAuthRealm");
+
+TwoStepAuthRealmChallengeHandler.isCustomResponse = function(response) {
+    if (!response || !response.responseJSON	|| response.responseText === null) {
+        return false;
+    }
+
+    if (typeof(response.responseJSON.authRequired) !== 'undefined'){
+        return true;
+    } else {
+        return false;
+    }
+};
+{% endhighlight %}</li>
+<li>Add another case for the second authentication step:
+{% highlight js linenos %}
+TwoStepAuthRealmChallengeHandler.handleChallenge = function(response){
+var authRequired = response.responseJSON.authRequired;</p>
+
+if (authRequired == true){
+    $("#AppDiv").hide();
+    $("#AuthDiv").show();
+    $("#AuthInfo").empty();
+    $("#AuthStep1Div").hide();
+    $("#AuthStep2Div").hide();
+
+    switch (response.responseJSON.authStep) {
+        case 1:
+            $("#AuthStep1Div").show();
+            $("#AuthPassword").val('');
+            break;
+        case 2:
+            $("#AuthStep2Div").show();
+            $("#AuthAnswer").val('');
+            $("#AuthQuestion").html(response.responseJSON.question);
+            break;
+    }
+    
+    if (response.responseJSON.errorMessage)
+        $("#AuthInfo").html(response.responseJSON.errorMessage);
+    } else if (authRequired == false){
+        $("#AppDiv").show();
+        $("#AuthDiv").hide();
+
+        TwoStepAuthRealmChallengeHandler.submitSuccess();
+    }
+};
+{% endhighlight %}</li>
+<li>Perform the second authentication step:
+{% highlight js linenos %}
+$("#AuthStep1Submit").bind('click', function () {
+    var username = $("#AuthUsername").val();
+    var password = $("#AuthPassword").val();
+    var invocationData = {
+        adapter : "AuthAdapter",
+        procedure : "submitAuthenticationStep1",
+        parameters : [ username, password ]
+    };
+	
+    TwoStepAuthRealmChallengeHandler.submitAdapterAuthentication(invocationData, {});
+});
+
+$("#AuthStep2Submit").bind('click', function () {
+    var answer = $("#AuthAnswer").val();
+    var invocationData = {
+        adapter : "AuthAdapter",
+        procedure : "submitAuthenticationStep2",
+        parameters : [ answer ]
+    };
+	
+    TwoStepAuthRealmChallengeHandler.submitAdapterAuthentication(invocationData, {});
+});
+
+$(".AuthCancelButton").bind('click', function () {
+    $("#AppDiv").show();
+    $("#AuthDiv").hide();
+    
+    TwoStepAuthRealmChallengeHandler.submitFailure();
+});
 {% endhighlight %}</li>
 </ul>
 </li>
