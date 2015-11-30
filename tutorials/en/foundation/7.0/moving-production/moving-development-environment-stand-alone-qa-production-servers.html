@@ -2,6 +2,7 @@
 layout: tutorial
 title: Moving from development environment to stand-alone QA and production servers
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+weight: 1
 ---
 <br>
 <p>This tutorial covers the following topics:</p>
@@ -63,16 +64,16 @@ All the files that are mentioned above are compiled to the <code><em>project-nam
 <p> Multiple MobileFirst project files can coexist on an application server. Each is deployed as a WAR file. Each is configured to communicate with a different schema in the database.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/11_01_installation3.jpg"/></p>
 <li>Edit the application server configuration file with additional MobileFirst properties.
-    {% highlight xml linenos %}
-    <configureapplicationserver shortcutsDir="${shortcuts.dir}">
-        <project warfile="${worklight.project.war.file}"/>
-        <!-- Specify some JNDI properties. -->
-        <property name="publicWorkLightHostname" value="my.company.name"/>
-        <property name="publicWorkLightPort" value="80"/>
-        <property name="publicWorkLightProtocol" value="HTTP"/>
-        <property name="serverSessionTimeout" value="10"/>
-        <applicationserver>
-    {% endhighlight %}
+{% highlight xml linenos %}
+<configureapplicationserver shortcutsDir="${shortcuts.dir}">
+    <project warfile="${worklight.project.war.file}"/>
+    <!-- Specify some JNDI properties. -->
+    <property name="publicWorkLightHostname" value="my.company.name"/>
+    <property name="publicWorkLightPort" value="80"/>
+    <property name="publicWorkLightProtocol" value="HTTP"/>
+    <property name="serverSessionTimeout" value="10"/>
+    <applicationserver>
+{% endhighlight %}
 
 </li>
 </ol>
