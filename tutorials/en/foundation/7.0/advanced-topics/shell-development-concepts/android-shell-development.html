@@ -2,16 +2,13 @@
 layout: tutorial
 title: Android shell development
 relevantTo: [hybrid]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/ShellDevelopmentProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/ShellDevelopmentProject.zip">Download Studio project</a>
-        </li>
-</ul>
-
+<h2>Overview</h2>
 <p>This module is a continuation of the tutorial <a href="../" title="Shell development concepts">Shell Development Concepts</a>.</p>
 
-<h2>Overview</h2>
 <p>In this tutorial, you learn how to add an Android environment to your shell component, test application, and inner application.</p>
 <p>This tutorial covers the following topics.</p>
 <ul>
@@ -57,27 +54,27 @@ Use it to work with your Java code.<br />
 <li>Add the <code>com.mycustomcode</code> package to the generated Android project.</li>
 <li>Add the <code>MyCustomToaster.java</code> class under this package.</li>
 <li>Add a static method to this class:<br />
-{% highlight java %} <br />
-public class MyCustomToaster {<br />
-  public static void showToastAlert(Activity context, String text) {<br />
-    Toast.makeText(context, text, 2000).show();<br />
-  }<br />
-}<br />
- {% endhighlight %} 
+{% highlight java linenos %}
+public class MyCustomToaster {
+    public static void showToastAlert(Activity context, String text) {
+        Toast.makeText(context, text, 2000).show();
+    }
+}
+{% endhighlight %} 
 </li>
 <li>Open your main application activity.</li>
 <li>Start <code>MyCustomToast.showToastAlert()</code>:<br />
-{% highlight java %} <br />
-public class MyShellTest extends WLDroidGap {<br />
-  @Override<br />
-  public void onCreate(Bundle savedInstanceState){<br />
-    super.onCreate(savedInstanceState);<br />
-    //DeviceAuthManager.getInstance().setProvisioningDelegate(<replace with...>)<br />
-    super.loadUrl(getWebMainFilePath());<br />
-    MyCustomToaster.showToastAlert(this, "Hello from Android Shell");<br />
-  }<br />
-}<br />
- {% endhighlight %} 
+{% highlight java linenos %}
+public class MyShellTest extends WLDroidGap {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //DeviceAuthManager.getInstance().setProvisioningDelegate(<replace with...>)
+        super.loadUrl(getWebMainFilePath());
+        MyCustomToaster.showToastAlert(this, "Hello from Android Shell");
+    }
+}
+{% endhighlight %} 
 </li>
 <li>Run your application to see the implemented functions.<br />
 <img src="{{ site.baseurl }}/assets/backup/10_02_java_results.jpg"/>

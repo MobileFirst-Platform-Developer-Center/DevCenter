@@ -2,6 +2,7 @@
 layout: tutorial
 title: Apache Cordova overview
 relevantTo: [hybrid]
+weight: 1
 ---
 <h2>Overview</h2>
 <p>This tutorial provides an overview of what you can do with Apache Cordova in your MobileFirst applications.</p>
@@ -23,15 +24,21 @@ With the JavaScript API provided by Cordova, developers can access native mobile
 <p><img src="{{ site.baseurl }}/assets/backup/07_01_cordova_in_projet.png"/></p>
 <h2 id="examples">Usage examples</h2>
 <h3>Calling a native alert notification from JavaScript on iOS and Android devices</h3>
-<p>{% highlight js %} navigator.notification.alert("I am a native alert dialog."); {% endhighlight %} </p>
+<p>
+{% highlight js linenos %}
+    navigator.notification.alert("I am a native alert dialog.");
+{% endhighlight %} </p>
 <p><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample1.png"/></p>
 <h3>Getting device hardware and software information</h3>
-<p>{% highlight js %} var element = document.getElementById('deviceProperties');<br />
-    element.innerHTML = 'Device Model: '    + device.model    + '<br />' +<br />
-                        'Device Cordova: '  + device.cordova  + '<br />' +<br />
-                        'Device Platform: ' + device.platform + '<br />' +<br />
-                        'Device UUID: '     + device.uuid     + '<br />' +<br />
-                        'Device Version: '  + device.version  + '<br />'; {% endhighlight %} </p>
+<p>
+{% highlight js linenos %}
+var element = document.getElementById('deviceProperties');
+    element.innerHTML = 'Device Model: '    + device.model    + '<br />' +
+                        'Device Cordova: '  + device.cordova  + '<br />' +
+                        'Device Platform: ' + device.platform + '<br />' +
+                        'Device UUID: '     + device.uuid     + '<br />' +
+                        'Device Version: '  + device.version  + '<br />';
+{% endhighlight %} </p>
 <p><img src="{{ site.baseurl }}/assets/backup/07_01_usage_sample2.png"/></p>
 <p>For detailed documentation and samples, see:</p>
 <ul>
@@ -64,15 +71,14 @@ Native API is provided to enable communication with MobileFirst Server from the 
 Cookies are shared between web and native, providing seamless client-server integration.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/07_01_native_pages.png"/></p>
 <p>JavaScript API to activate native page:<br />
-{% highlight js %} WL.NativePage.show(className, callback, data); {% endhighlight %} </p>
+{% highlight js linenos %}
+WL.NativePage.show(className, callback, data);
+{% endhighlight %} </p>
 <p>The web page invokes the native class <code>className</code>, with the parameter <code>data</code> and calls the callback function on return. Example:<br />
-{% highlight js %} WL.NativePage.show("com.demo.NativePage", function(data) {<br />
-       demoApplication.returnFromNative(data);<br />
-    },<br />
-    {<br />
-       inputData: "Hello"<br />
-    }<br />
-); {% endhighlight %} </p>
+{% highlight js linenos %}
+WL.NativePage.show("com.demo.NativePage", function(data) { demoApplication.returnFromNative(data); }, { inputData: "Hello" });
+{% endhighlight %} </p>
+
 <h2 id="extending">Extending hybrid functionality with Cordova plug-ins</h2>
 <p>In some cases, a native page is not required, but native actions still need native code for their execution.</p>
 <p>Examples:</p>

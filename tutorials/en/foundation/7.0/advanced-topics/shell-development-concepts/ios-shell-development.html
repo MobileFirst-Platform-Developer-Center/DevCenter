@@ -2,15 +2,14 @@
 layout: tutorial
 title: iOS shell development
 relevantTo: [hybrid]
----
-<p>This tutorial complements <a title="Shell development concepts" href="../">Shell Development Concepts</a>.</p>
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/ShellDevelopmentProject.zip">Download Studio project</a>
-        </li>
-</ul>
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/ShellDevelopmentProject.zip
 
+---
 <h2>Overview</h2>
+<p>This module is a continuation of the tutorial <a href="../" title="Shell development concepts">Shell Development Concepts</a>.</p>
+
 <p>In this tutorial, you learn how to add an iOS environment to your shell component, test application, and inner application.</p>
 <p>This tutorial covers the following topics.</p>
 <ul>
@@ -21,9 +20,9 @@ relevantTo: [hybrid]
 </ul>
 <h2 id="addingIOSEnv">Adding an iOS environment to a shell component</h2>
 <p>Start by adding an iPhone environment to your shell component. Follow the same procedure as for a standard IBM MobileFirst Platform Foundation application.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_02_new-environment.png"><br />
-<img class="aligncenter wp-image-1198 size-full" src="{{ site.baseurl }}/assets/backup/10_02_new-environment.png" alt="10_02_new-environment" width="501" height="394" /></a></p>
-<p><img class="alignright wp-image-1209 size-full" src="{{ site.baseurl }}/assets/backup/10_03_project-structure.png" alt="10_03_project-structure" width="381" height="505" /></p>
+<img src="{{ site.baseurl }}/assets/backup/10_02_new-environment.png"/>
+<img src="{{ site.baseurl }}/assets/backup/10_03_project-structure.png" /></p>
+
 <p>The following folder structure is created:</p>
 <ul>
 <li>The <strong><code>css</code>, <code>images</code>, <code>fragments</code></strong>, and <strong><code>js</code></strong> folders contain resources that override or extend resources from the shell component <code>common</code> folder.</li>
@@ -35,7 +34,7 @@ Some of the folder and file names contain placeholder elements that are populate
 For example:</p>
 <ul>
 <li>The placeholder <em>${xcodeProjectName}.xcodeproj.wluser</em> is populated with a package name used in the application.</li>
-<li>The <em>${xcodeProjectName}-Info.plist.wltemplate.wluser</em> is populated with the application name, thus creating the main application <code>plist</code> file.</li>
+<li>The placeholder <em>${xcodeProjectName}-Info.plist.wltemplate.wluser</em> is populated with the application name, thus creating the main application <code>plist</code> file.</li>
 </ul>
 <p>Files with the <code>.wluser</code> name extension are template files that shell developers can modify.<br />
 <br clear="all" /></p>
@@ -48,34 +47,34 @@ Use it to work with your Objective-C code.</p>
 <li>Open the generated iOS project in Xcode.</li>
 <li>Add an Objective-C<code> MyCustomAlert</code> class in the <code>Classes</code> folder.</li>
 <li>Add a method signature to the <code>MyCustomAlert.h</code> file and a method implementation to the <code>MyCustomAlert.m</code> file:
-<p>{% highlight objc %} <br />
-#import "MyCustomAlert.h"</p>
-<p>@implementation MyCustomAlert<br />
-+(void)showUIAlert:(NSString *)text{<br />
-  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Native Alert"<br />
-                                        message:text<br />
-                                        delegate:nil<br />
-                                        cancelButtonTitle:@"Close"<br />
-                                        otherButtonTitles:nil];<br />
-  [alert show];<br />
-}<br />
-@end<br />
- {% endhighlight %} 
+<p>{% highlight objc linenos %}
+#import "MyCustomAlert.h"
+
+@implementation MyCustomAlert
++(void)showUIAlert:(NSString *)text {
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Native Alert"
+        message:text
+        delegate:nil
+        cancelButtonTitle:@"Close"
+        otherButtonTitles:nil];
+  [alert show];
+}
+@end
+{% endhighlight %} 
 </li>
 <li>Import <code>MyCustomAlert.h</code> and call this method from the <code>viewDidLoad</code> method of the application <code>ViewController</code> instance:
-<p>{% highlight objc %} <br />
-- (void)viewDidLoaad<br />
-{<br />
-  [super viewDidLoad];<br />
-  [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];<br />
-}<br />
- {% endhighlight %} 
+<p>{% highlight objc linenos %}
+- (void)viewDidLoaad {
+  [super viewDidLoad];
+  [MyCustomAlert showUIAlert:@"Hello from native iOS Shell"];
+}
+{% endhighlight %} 
 </li>
 <li>Run your application to see the implemented functions.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_03_objc-result.png"><img class="aligncenter size-full wp-image-1211" src="{{ site.baseurl }}/assets/backup/10_03_objc-result.png" alt="10_03_objc-result" width="370" height="719" /></a>
+<img src="{{ site.baseurl }}/assets/backup/10_03_objc-result.png"/>
 </li>
 <li>Finally, copy your Objective-C code from the iPhone project that you used to develop it back to the shell component.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_03_copy_files.png"><img class="aligncenter size-full wp-image-1212" src="{{ site.baseurl }}/assets/backup/10_03_copy_files.png" alt="10_03_copy_files" width="1316" height="686" /></a>
+<img src="{{ site.baseurl }}/assets/backup/10_03_copy_files.png"/>
 </li>
 </ol>
 <p>You can copy the custom Objective-C classes added to the iPhone project to keep the folder structure intact.<br />
@@ -90,7 +89,7 @@ After the <code>NativeEmptyApp</code> project is installed on the device, an inn
 Doing so helps inner application developers to test their code without having native SDKs installed. For example: to develop and test an iPhone application without a Mac.<br />
 To use the <code>NativeEmptyApp</code> project, open it as an Xcode project.</p>
 <p>When the application is built and deployed to an iOS device, go to <strong>Settings</strong> to change the URL from which this inner application content is loaded.<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/10_03_ios_settings.png"><img class="aligncenter size-full wp-image-1213" src="{{ site.baseurl }}/assets/backup/10_03_ios_settings.png" alt="10_03_ios_settings" width="770" height="683" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/10_03_ios_settings.png"/></p>
 <p><strong>Important</strong>:<br />
 <code>NativeEmptyApp</code> cannot load a remote inner application that has device provisioning enabled.<br />
 <code>NativeEmptyApp</code> can be used only in the development environment.</p>

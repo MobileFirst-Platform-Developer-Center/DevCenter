@@ -2,15 +2,9 @@
 layout: tutorial
 title: Custom Authenticator and Login Module
 show_children: true
+weight: 4
+relevantTo: [ios,android,hybrid]
 ---
-<div>
-    Relevant to:</p>
-<ul id="relevantForPersona">
-<li class="ios"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-ios-development-6-3/">Native iOS</a></li>
-<li class="android"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-6-3/">Native Android</a></li>
-<li class="hybrid"><a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-hybrid-development-6-3/">Hybrid</a></li>
-</ul>
-</div>
 <h2>Overview</h2>
 <p>This tutorial covers how to create a custom <code>authenticator</code> and a <code>login module</code>.<br />
 The following topics will be covered:</p>
@@ -33,7 +27,7 @@ This process can involve a single-step (a simple user name/password form) or mul
 <li>A login module is a server entity that validates the retrieved user credentials and builds the user identity</li>
 </ul>
 <p>Authentication settings such as <code>realms</code>, <code>authenticators</code>, and <code>login modules</code> are configured in the <em>authenticationConfig.xml</em> file that is generated for every MobileFirst project.</p>
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/10/09_08_intro-flow.png"><img class="aligncenter wp-image-1027 size-full" src="{{ site.baseurl }}/assets/backup/09_08_intro-flow.png" alt="09_08_intro-flow" width="512" height="1010" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/09_08_intro-flow.png" />
 <p>The <code>authenticator</code>, <code>login module</code>, and <code>user identity</code> instances are stored in a session scope. Therefore they exist as long as the session is alive.</p>
 <p>You can write custom login modules and authenticators when the default provided ones do not match your requirements.<br />
 In previous tutorials, form-based authentication was implemented using a non-validating login module. Adapter-based authentication was also implemented without having to add login modules, and credentials validation was manually ran.</p>
@@ -42,64 +36,64 @@ For example: When credentials validation must be customized for a specific enter
 <h2>Configuring authenticationConfig.xml</h2>
 <p>In the <code>realms</code> section of <strong>authenticationConfig.xml</strong>, define a realm called <strong><code>CustomAuthenticatorRealm</code></strong>.<br />
 Make sure that it uses <strong><code>CustomLoginModule</code></strong>. Specify <code>MyCustomAuthenticator</code> as the class name, which will be implemented later.</p>
-<p>{% highlight xml %}<br />
-<realm name="CustomAuthenticatorRealm" loginModule="CustomLoginModule"><br />
-  <className>com.mypackage.MyCustomAuthenticator</className><br />
-</realm><br />
+<p>{% highlight xml linenos %}
+<realm name="CustomAuthenticatorRealm" loginModule="CustomLoginModule">
+  <className>com.mypackage.MyCustomAuthenticator</className>
+</realm>
 {% endhighlight %}</p>
 <p>In the <code>loginModules</code> section, add a <strong><code>loginModule</code></strong> called <strong><code>CustomLoginModule</code></strong>.<br />
 Specify <code>MyCustomLoginModule</code> as the class name, which will be implemented later.</p>
-<p>{% highlight xml %}<br />
-<loginModule name="CustomLoginModule"><br />
-  <className>com.mypackage.MyCustomLoginModule</className><br />
-</loginModule><br />
+<p>{% highlight xml linenos %}
+<loginModule name="CustomLoginModule">
+  <className>com.mypackage.MyCustomLoginModule</className>
+</loginModule>
 {% endhighlight %}</p>
 <p>In the <code>securityTests</code> section, add a security test.<br />
 Later, this security test will be used to protect the adapter procedure. Therefore, use a <code>customSecurityTest</code> element. Remember the security test name because it will used later.</p>
-<p>{% highlight xml %}<br />
-<customSecurityTest name="DummyAdapter-securityTest"><br />
-  <test isInternalUserID="true" realm="CustomAuthenticatorRealm" /><br />
-</customSecurityTest><br />
+<p>{% highlight xml linenos %}
+<customSecurityTest name="DummyAdapter-securityTest">
+  <test isInternalUserID="true" realm="CustomAuthenticatorRealm" />
+</customSecurityTest>
 {% endhighlight %}</p>
 <h2>Creating a custom Java authenticator</h2>
 <p>The <code>WorkLightAuthenticator</code> API includes the following methods:</p>
-<p>{% highlight java %}<br />
-void init(Map<String, String> options)<br />
+<p>{% highlight java linenos %}
+void init(Map<String, String> options)
 {% endhighlight %}</p>
 <p>The <code>init</code> method of the <code>authenticator</code> is called when the <code>authenticator</code> instance is created. It takes the parameters that are specified in the definition of the realm in the <strong>authenticationConfig.xml</strong> file.</p>
-<p>{% highlight java %}<br />
-AuthenticationResult processRequest(HttpServletRequest request, HttpServletResponse response, boolean isAccessToProtectedResource)<br />
+<p>{% highlight java linenos %}
+AuthenticationResult processRequest(HttpServletRequest request, HttpServletResponse response, boolean isAccessToProtectedResource)
 {% endhighlight %}</p>
 <p>The <code>processRequest</code> method is called for each request from an unauthenticated session.</p>
-<p>{% highlight java %}<br />
-AuthenticationResult processAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, String errorMessage)<br />
+<p>{% highlight java linenos %}
+AuthenticationResult processAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, String errorMessage)
 {% endhighlight %}</p>
 <p>The <code>processAuthenticationFailure</code> method is called if the <code>login module</code> returns a failure of credentials validation.</p>
-<p>{% highlight java %}<br />
-AuthenticationResult processRequestAlreadyAuthenticated(HttpServletRequest request, HttpServletResponse response)<br />
+<p>{% highlight java linenos %}
+AuthenticationResult processRequestAlreadyAuthenticated(HttpServletRequest request, HttpServletResponse response)
 {% endhighlight %}</p>
 <p>The <code>processRequestAlreadyAuthenticated</code> method is called for each request from an already authenticated session.</p>
-<p>{% highlight java %}<br />
-Map<String, Object> getAuthenticationData()<br />
+<p>{% highlight java linenos %}
+Map<String, Object> getAuthenticationData()
 {% endhighlight %}</p>
 <p>The <code>getAuthenticationData</code> method is used by a login module to get the credentials that are collected by an <code>authenticator</code>.</p>
-<p>{% highlight java %}<br />
-Boolean changeResponseOnSuccess (HttpServletRequest request, HttpServletResponse response)<br />
+<p>{% highlight java linenos %}
+Boolean changeResponseOnSuccess (HttpServletRequest request, HttpServletResponse response)
 {% endhighlight %}</p>
 <p>The <code>changeResponseOnSuccess</code> method is called after authentication success. It is used to add data to the response after the authentication is successful.</p>
-<p>{% highlight java %}<br />
-WorkLightAuthenticator clone()<br />
+<p>{% highlight java linenos %}
+WorkLightAuthenticator clone()
 {% endhighlight %}</p>
 <p>The <code>clone</code> method is used to create a deep copy of class members.</p>
 <p>Create a <code>MyCustomAuthenticator</code> class in the <strong>server\java</strong> folder.<br />
 Make sure that this class implements the <code>WorkLightAuthenticator</code> interface.</p>
-<p>{% highlight java %}<br />
-public class MyCustomAuthenticator implements WorkLightAuthenticator{<br />
+<p>{% highlight java linenos %}
+public class MyCustomAuthenticator implements WorkLightAuthenticator{
 {% endhighlight %}</p>
 <p>Add the <code>authenticationData</code> map to your authenticator to hold the credentials information.<br />
 This object is retrieved and used by a login module.</p>
-<p>{% highlight java %}<br />
-private Map<String, Object> authenticationData = null;<br />
+<p>{% highlight java linenos %}
+private Map<String, Object> authenticationData = null;
 {% endhighlight %}</p>
 <p>You must add a dependency on server runtime libraries to use server-related classes, for example, <strong>HttpServletRequest</strong>.</p>
 <ol>
@@ -111,216 +105,216 @@ private Map<String, Object> authenticationData = null;<br />
 <li>Click <strong>OK</strong></li>
 </ol>
 <p>The <code>init</code> method is called when the authenticator is created. As its parameter, this method takes the map of options that is specified in a realm definition in the <strong>authenticationConfig.xml</strong> file.</p>
-<p>{% highlight java %}<br />
-public void init(Map<String, String> options) throws MissingConfigurationOptionException {<br />
-	logger.info("MyCustomAuthenticator initialized");<br />
-}<br />
+<p>{% highlight java linenos %}
+public void init(Map<String, String> options) throws MissingConfigurationOptionException {
+	logger.info("MyCustomAuthenticator initialized");
+}
 {% endhighlight %}</p>
 <p>The <code>clone</code> method of the authenticator creates a deep copy of the object members.</p>
-<p>{% highlight java %}<br />
-public WorkLightAuthenticator clone() throws CloneNotSupportedException {<br />
-    MyCustomAuthenticator otherAuthenticator = (MyCustomAuthenticator) super.clone();<br />
-    otherAuthenticator.authenticationData = new HashMap<String, Object>(authenticationData);<br />
-    return otherAuthenticator;<br />
-}<br />
+<p>{% highlight java linenos %}
+public WorkLightAuthenticator clone() throws CloneNotSupportedException {
+    MyCustomAuthenticator otherAuthenticator = (MyCustomAuthenticator) super.clone();
+    otherAuthenticator.authenticationData = new HashMap<String, Object>(authenticationData);
+    return otherAuthenticator;
+}
 {% endhighlight %}</p>
 <h3>processRequest</h3>
 <p>The <code>processRequest</code> method is called for each unauthenticated request to collect credentials.</p>
-<p>{% highlight java %}<br />
-public AuthenticationResult processRequest(HttpServletRequest request, HttpServletResponse response, boolean isAccessToProtectedResource) throws IOException,	ServletException {<br />
-	if (request.getRequestURI().contains("my_custom_auth_request_url")){<br />
-		String username = request.getParameter("username");<br />
-		String password = request.getParameter("password");</p>
-<p>		if (null != username &amp;&amp; null != password &amp;&amp; username.length() > 0 &amp;&amp; password.length() > 0){<br />
-			authenticationData = new HashMap<String, Object>();<br />
-			authenticationData.put("username", username);<br />
-			authenticationData.put("password", password);<br />
-			return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);<br />
-		} else {<br />
-			response.setContentType("application/json; charset=UTF-8");<br />
-			response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
-			response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"Please enter username and password\"}");<br />
-			return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
-		}<br />
-	}</p>
-<p>	if (!isAccessToProtectedResource)<br />
-		return AuthenticationResult.createFrom(AuthenticationStatus.REQUEST_NOT_RECOGNIZED);</p>
-<p>	response.setContentType("application/json; charset=UTF-8");<br />
-	response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
-	response.getWriter().print("{\"authStatus\":\"required\"}");<br />
-	return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
-}<br />
+<p>{% highlight java linenos %}
+public AuthenticationResult processRequest(HttpServletRequest request, HttpServletResponse response, boolean isAccessToProtectedResource) throws IOException,	ServletException {
+	if (request.getRequestURI().contains("my_custom_auth_request_url")){
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		if (null != username && null != password && username.length() > 0 && password.length() > 0){
+			authenticationData = new HashMap<String, Object>();
+			authenticationData.put("username", username);
+			authenticationData.put("password", password);
+			return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);
+		} else {
+			response.setContentType("application/json; charset=UTF-8");
+			response.setHeader("Cache-Control", "no-cache, must-revalidate");
+			response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"Please enter username and password\"}");
+			return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);
+		}
+	}
+	if (!isAccessToProtectedResource)
+		return AuthenticationResult.createFrom(AuthenticationStatus.REQUEST_NOT_RECOGNIZED);
+	response.setContentType("application/json; charset=UTF-8");
+	response.setHeader("Cache-Control", "no-cache, must-revalidate");
+	response.getWriter().print("{\"authStatus\":\"required\"}");
+	return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);
+}
 {% endhighlight %}</p>
 <p>The <code>processRequest()</code> method takes the <code>request</code>, <code>response</code>, and <code>isAccessToProtectedResource</code> arguments. The method might retrieve data from a request and write data to a response, and must return a specific <code>AuthenticationResult</code> status as described later.<br />
 <strong>Reminder</strong>: the <code>authenticator</code> collects the credentials for a <code>login module</code>; it <strong>does not</strong> validate them.</p>
-<p>{% highlight java %}<br />
-public AuthenticationResult processRequest(HttpServletRequest request, HttpServletResponse response, boolean isAccessToProtectedResource) throws IOException,	ServletException {<br />
+<p>{% highlight java linenos %}
+public AuthenticationResult processRequest(HttpServletRequest request, HttpServletResponse response, boolean isAccessToProtectedResource) throws IOException, ServletException {
 {% endhighlight %}</p>
 <p>The application sends an authentication request to a specific URL. This request URL contains a <code>my_custom_auth_request_url</code> component, which is used by the <code>authenticator</code> to make sure that this request is an authentication request. It is recommended to have a different URL component in every <code>authenticator</code>.</p>
-<p>{% highlight java %}<br />
-if (request.getRequestURI().contains("my_custom_auth_request_url")){<br />
+<p>{% highlight java linenos %}
+if (request.getRequestURI().contains("my_custom_auth_request_url")){
 {% endhighlight %}</p>
 <p>The <code>authenticator</code> retrieves the username and password that are passed as request parameters.</p>
-<p>{% highlight java %}<br />
-String username = request.getParameter("username");<br />
-String password = request.getParameter("password");<br />
+<p>{% highlight java linenos %}
+String username = request.getParameter("username");
+String password = request.getParameter("password");
 {% endhighlight %}</p>
 <p>The <code>authenticator</code> checks the credentials for basic validity, creates an <code>authenticationData</code> object, and returns <strong><code>SUCCESS</code></strong>.<br />
 <strong><code>SUCCESS</code></strong> means only that the credentials were successfully collected; after that, the <code>login module</code> is called to validate the credentials.</p>
-<p>{% highlight java %}<br />
-if (null != username &amp;&amp; null != password &amp;&amp; username.length() > 0 &amp;&amp; password.length() > 0){<br />
-	authenticationData = new HashMap<String, Object>();<br />
-	authenticationData.put("username", username);<br />
-	authenticationData.put("password", password);<br />
-	return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);<br />
-}<br />
+<p>{% highlight java linenos %}
+if (null != username && null != password && username.length() > 0 && password.length() > 0){
+	authenticationData = new HashMap<String, Object>();
+	authenticationData.put("username", username);
+	authenticationData.put("password", password);
+	return AuthenticationResult.createFrom(AuthenticationStatus.SUCCESS);
+}
 {% endhighlight %}</p>
 <p>If a problem occurs with the received credentials, the <code>authenticator</code> adds an error message to the response and returns <strong><code>CLIENT_INTERACTION_REQUIRED</code></strong>. The client must still supply authentication data.</p>
-<p>{% highlight java %}<br />
-else {<br />
-	response.setContentType("application/json; charset=UTF-8");<br />
-	response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
-	response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"Please enter username and password\"}");<br />
-	return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
-}<br />
+<p>{% highlight java linenos %}
+else {
+	response.setContentType("application/json; charset=UTF-8");
+	response.setHeader("Cache-Control", "no-cache, must-revalidate");
+	response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"Please enter username and password\"}");
+	return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);
+}
 {% endhighlight %}</p>
 <p>The <code>isAccessToProtectedResource</code> argument specifies whether an access attempt was made to a protected resource.<br />
 If not, the method returns <strong><code>REQUEST_NOT_RECOGNIZED</code></strong>, which means that the <code>authenticator</code> treatment is not required, and can proceed with the request as is.</p>
-<p>{% highlight java %}<br />
-if (!isAccessToProtectedResource)<br />
-	return AuthenticationResult.createFrom(AuthenticationStatus.REQUEST_NOT_RECOGNIZED);<br />
+<p>{% highlight java linenos %}
+if (!isAccessToProtectedResource)
+	return AuthenticationResult.createFrom(AuthenticationStatus.REQUEST_NOT_RECOGNIZED);
 {% endhighlight %}</p>
 <p>If the request made to a protected resource does not contain authentication data, the <code>authenticator</code> adds an <code>authStatus:required</code> property to the response, and also returns a <strong><code>CLIENT_INTERACTION_REQUIRED</code></strong> status.</p>
-<p>{% highlight java %}<br />
-response.setContentType("application/json; charset=UTF-8");<br />
-response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
-response.getWriter().print("{\"authStatus\":\"required\"}");<br />
-return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
+<p>{% highlight java linenos %}
+response.setContentType("application/json; charset=UTF-8");
+response.setHeader("Cache-Control", "no-cache, must-revalidate");
+response.getWriter().print("{\"authStatus\":\"required\"}");
+return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);
 {% endhighlight %}</p>
 <p>The <code>authenticator</code>'s <code>getAuthenticationData</code> method is used by a <code>login module</code> to get collected credentials.<br />
 After the authenticated session is established, all requests are transported through the <code>changeResponseOnSuccess</code> and <code>processRequestAlreadyAuthenticated</code> methods. You can use these methods to retrieve data from requests and to update responses.</p>
-<p>{% highlight java %}<br />
-public Map<String, Object> getAuthenticationData() {<br />
-	logger.info("getAuthenticationData");<br />
-	return authenticationData;<br />
-}<br />
+<p>{% highlight java linenos %}
+public Map<String, Object> getAuthenticationData() {
+	logger.info("getAuthenticationData");
+	return authenticationData;
+}
 {% endhighlight %}</p>
 <p>The <code>changeResponseOnSuccess</code> method is called after credentials are successfully validated by the <code>login module</code>.<br />
 You can use this method to modify the response before you return it to the client.</p>
 <p>This method must return <code>true</code> if the response was modified, otherwise <code>false</code> is returned.<br />
 Use it to notify a client application about the authentication success.</p>
-<p>{% highlight java %}<br />
-public boolean changeResponseOnSuccess(HttpServletRequest request, HttpServletResponse response) throws IOException {<br />
-	if (request.getRequestURI().contains("my_custom_auth_request_url")){<br />
-		response.setContentType("application/json; charset=UTF-8");<br />
-		response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
-		response.getWriter().print("{\"authStatus\":\"complete\"}");<br />
-		return true;<br />
-	}<br />
-	return false;<br />
-}<br />
+<p>{% highlight java linenos %}
+public boolean changeResponseOnSuccess(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	if (request.getRequestURI().contains("my_custom_auth_request_url")){
+		response.setContentType("application/json; charset=UTF-8");
+		response.setHeader("Cache-Control", "no-cache, must-revalidate");
+		response.getWriter().print("{\"authStatus\":\"complete\"}");
+		return true;
+	}
+	return false;
+}
 {% endhighlight %}</p>
 <p>The <code>processRequestAlreadyAuthenticated</code> method returns <strong><code>AuthenticationResult</code></strong> objects for authenticated requests.</p>
-<p>{% highlight java %}<br />
-public AuthenticationResult processRequestAlreadyAuthenticated(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {<br />
-	return AuthenticationResult.createFrom(AuthenticationStatus.REQUEST_NOT_RECOGNIZED);<br />
-}<br />
+<p>{% highlight java linenos %}
+public AuthenticationResult processRequestAlreadyAuthenticated(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	return AuthenticationResult.createFrom(AuthenticationStatus.REQUEST_NOT_RECOGNIZED);
+}
 {% endhighlight %}</p>
 <p>If the <code>login module</code> returns an authentication failure, the <code>processAuthenticationFailure</code> method is called. This method writes an error message to a response body, and returns the <strong><code>CLIENT_INTERACTION_REQUIRED</code></strong> status.</p>
-<p>{% highlight java %}<br />
-public AuthenticationResult processAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,<br />
-		String errorMessage) throws IOException, ServletException {</p>
-<p>	response.setContentType("application/json; charset=UTF-8");<br />
-	response.setHeader("Cache-Control", "no-cache, must-revalidate");<br />
-	response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"" + errorMessage + "\"}");<br />
-	return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);<br />
-}<br />
+<p>{% highlight java linenos %}
+public AuthenticationResult processAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+		String errorMessage) throws IOException, ServletException {
+    response.setContentType("application/json; charset=UTF-8");
+	response.setHeader("Cache-Control", "no-cache, must-revalidate");
+	response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"" + errorMessage + "\"}");
+	return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);
+}
 {% endhighlight %}</p>
 <h2>Creating a custom Java login module</h2>
 <p>The <strong>WorkLightAuthLoginModule</strong> API includes the following methods:</p>
-<p>{% highlight java %}<br />
-void init(Map<String, String> options)<br />
+<p>{% highlight java linenos %}
+void init(Map<String, String> options)
 {% endhighlight %}</p>
 <p>The <code>init</code> method of the <code>login module</code> is called when the <code>login module</code> instance is created. This method receives the options that are specified in the <code>login module</code>'s definition of the <strong>authenticationConfig.xml</strong> file.</p>
-<p>{% highlight java %}<br />
-boolean login(Map<String, Object> authenticationData)<br />
+<p>{% highlight java linenos %}
+boolean login(Map<String, Object> authenticationData)
 {% endhighlight %}</p>
 <p>The <code>login</code> method of the login module is used to validate the credentials that are collected by the <code>authenticator</code>.</p>
-<p>{% highlight java %}<br />
-UserIdentity createIdentity(String loginModule)<br />
+<p>{% highlight java linenos %}
+UserIdentity createIdentity(String loginModule)
 {% endhighlight %}</p>
 <p>The <code>createIdentity</code> method of the <code>login module</code> is used to create a <code>userIdentity</code> object after validation of the credentials succeeds.</p>
-<p>{% highlight java %}<br />
-void logout()<br />
-void abort()<br />
+<p>{% highlight java linenos %}
+void logout()
+void abort()
 {% endhighlight %}</p>
 <p>The <code>logout</code> and <code>abort</code> methods are used to clean up cached data after a logout or authentication aborts.</p>
-<p>{% highlight java %}<br />
-WorkLightLoginModule clone()<br />
+<p>{% highlight java linenos %}
+WorkLightLoginModule clone()
 {% endhighlight %}</p>
 <p>The <code>clone</code> method is used to create a deep copy of the class members.</p>
 <p>Create a <strong><code>MyCustomLoginModule</code></strong> class in the <strong>server\java</strong> folder. Make sure that this class implements the <strong><code>WorkLightAuthLoginModule</code></strong> interface.</p>
-<p>{% highlight java %}<br />
-public class MyCustomLoginModule implements WorkLightAuthLoginModule {<br />
+<p>{% highlight java linenos %}
+public class MyCustomLoginModule implements WorkLightAuthLoginModule {
 {% endhighlight %}</p>
 <p>Add two private class members, <code>USERNAME</code> and <code>PASSWORD</code>, to hold the user credentials.</p>
-<p>{% highlight java %}<br />
-private String USERNAME;<br />
-private String PASSWORD;<br />
+<p>{% highlight java linenos %}
+private String USERNAME;
+private String PASSWORD;
 {% endhighlight %}</p>
 <p>The <code>init</code> method is called when the <code>login module</code> instance is created. As its parameter, it takes the map of options that are specified in a login module definition in the <strong>authenticationConfig.xml</strong> file.</p>
-<p>{% highlight java %}<br />
-public void init(Map<String, String> options) throws MissingConfigurationOptionException {<br />
-}<br />
+<p>{% highlight java linenos %}
+public void init(Map<String, String> options) throws MissingConfigurationOptionException {
+}
 {% endhighlight %}</p>
 <p>The <code>clone</code> method of the <code>login module </code>creates a deep copy of the object members.</p>
-<p>{% highlight java %}<br />
-public MyCustomLoginModule clone() throws CloneNotSupportedException {<br />
-    return (MyCustomLoginModule) super.clone();<br />
-}<br />
+<p>{% highlight java linenos %}
+public MyCustomLoginModule clone() throws CloneNotSupportedException {
+    return (MyCustomLoginModule) super.clone();
+}
 {% endhighlight %}</p>
 <p>The <code>login</code> method is called after the <code>authenticator</code> returns the <strong><code>SUCCESS</code></strong> status.<br />
 When called, the <code>login</code> method gets an <strong><code>authenticationData</code></strong> object from the authenticator.</p>
 <p>The <code>login</code> method retrieves the username and password that the <code>authenticator</code> previously stored.</p>
 <p>In this example, the <code>login module</code> validates the credentials against hardcoded values. You can implement your own validation rules. The <code>login</code> method returns <code>true</code> if the credentials are valid.</p>
 <p>If the validation fails, the <code>login</code> method can either return <code>false</code> or throw a <code>RuntimeException</code>. The exception string is returned to the <code>authenticator</code> as an <code>errorMessage</code> parameter.</p>
-<p>{% highlight java %}<br />
-public boolean login(Map<String, Object> authenticationData) {<br />
-	USERNAME = (String) authenticationData.get("username");<br />
-	PASSWORD = (String) authenticationData.get("password");</p>
-<p>	if (USERNAME.equals("user") &amp;&amp; PASSWORD.equals("12345"))<br />
-		return true;<br />
-	else<br />
-		throw new RuntimeException("Invalid credentials");<br />
-}<br />
+<p>{% highlight java linenos %}
+public boolean login(Map<String, Object> authenticationData) {
+	USERNAME = (String) authenticationData.get("username");
+	PASSWORD = (String) authenticationData.get("password");
+    if (USERNAME.equals("user") && PASSWORD.equals("12345"))
+		return true;
+	else
+		throw new RuntimeException("Invalid credentials");
+}
 {% endhighlight %}</p>
 <p>The <code>createIdentity</code> method is called when the <code>login</code> method returns <code>true</code>. It is used to create a <code>UserIdentity</code> object. You can store your own custom attributes in it to use later in Java or adapter code.</p>
-<p>{% highlight java %}<br />
-public UserIdentity createIdentity(String loginModule) {<br />
-	HashMap<String, Object> customAttributes = new HashMap<String, Object>();<br />
-	customAttributes.put("AuthenticationDate", new Date());</p>
-<p>	UserIdentity identity = new UserIdentity(loginModule, USERNAME, null, null, customAttributes, PASSWORD);<br />
-	return identity;<br />
-}<br />
+<p>{% highlight java linenos %}
+public UserIdentity createIdentity(String loginModule) {
+	HashMap<String, Object> customAttributes = new HashMap<String, Object>();
+	customAttributes.put("AuthenticationDate", new Date());
+	UserIdentity identity = new UserIdentity(loginModule, USERNAME, null, null, customAttributes, PASSWORD);
+	return identity;
+}
 {% endhighlight %}</p>
 <p>The <code>UserIdentity</code> object contains user information. Its constructor is:</p>
-<p>{% highlight java %}<br />
-public UserIdentity(String loginModule,<br />
-		String name,<br />
-		String displayName,<br />
-		Set<String> roles,<br />
-		Map<String, Object> attributes,<br />
-		Object credentials)<br />
+<p>{% highlight java linenos %}
+public UserIdentity(String loginModule,
+		String name,
+		String displayName,
+		Set<String> roles,
+		Map<String, Object> attributes,
+		Object credentials)
 {% endhighlight %}</p>
 <p>The <code>logout</code> and <code>abort</code> methods are used to clean up class members after the user logs out or aborts the authentication flow.</p>
-<p>{% highlight java %}<br />
-public void logout() {<br />
-	USERNAME = null;<br />
-	PASSWORD = null;<br />
-}</p>
-<p>public void abort() {<br />
-	USERNAME = null;<br />
-	PASSWORD = null;<br />
-}<br />
+<p>{% highlight java linenos %}
+public void logout() {
+	USERNAME = null;
+	PASSWORD = null;
+}
+public void abort() {
+	USERNAME = null;
+	PASSWORD = null;
+}
 {% endhighlight %}</p>
 <h2 id="creatingTheClientsideAuthenticationComponents" class="noPrint">Creating the client-side authentication components</h2>

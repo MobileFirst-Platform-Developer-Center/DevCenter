@@ -2,6 +2,7 @@
 layout: tutorial
 title: Android -  Cloudant NoSQL DB API
 relevantTo: [android]
+breadcrumb_title: Android
 ---
 <h2>Overview</h2>
 <p>This tutorial shows how to apply technology available in IBM MobileFirst Platform Foundation to store data for Android mobile applications. By using Cloudant NoSQL DB APIs, you can complete specific database operations, such as creating, reading, updating, deleting, and synchronizing data between local and remote databases. This tutorial provides a basic overview of these APIs and explains how to configure and run the sample, in the following topics:</p>
@@ -19,76 +20,83 @@ relevantTo: [android]
 </ul>
 <h2 id="initializing">Using the IMFData SDK</h2>
 <p>After the IMFData SDK is installed, you can begin to initialize and use the SDK in your native Android application.</p>
-<p>{% highlight java %} <br />
-// Initialize the IMFDataManager<br />
-DataManager manager = DataManager.initialize(context, new URL(CLOUDANT_PROXY_URL));<br />
- {% endhighlight %} <br />
+<p>
+{% highlight java linenos %}
+// Initialize the IMFDataManager
+DataManager manager = DataManager.initialize(context, new URL(CLOUDANT_PROXY_URL));
+{% endhighlight %} <br />
 The value for <code>cloudantProxyUrl</code> is the URL of the MobileFirst Data Proxy which was configured during installation. The URL includes the IP address, host, and context root that you have defined.<br />
 For example: <code>http://localhost:10080/imf-data-proxy</code>.<br />
 In the native Android sample that comes with this tutorial, the value for the <code>cloudantProxyUrl</code> is set in the <code>bluelist.properties</code> file.</p>
 <h2 id="creatingLocal">Creating local data stores</h2>
 <p>You can create a Store object to allow your application to access a local database, which can be used even when the application is offline.</p>
-<p>{% highlight java %} <br />
-// Using reference to IMFDataManager that you initialized above, create a local store using a bolts task<br />
-String name = "todosdb";<br />
-// Create local store<br />
-Task<Store> storeTask = manager.localStore(name);<br />
-storeTask.continueWith(new Continuation<Store, Void>() {<br />
-    @Override<br />
-    public Void then(Task<Store> task) throws Exception {<br />
-        if(task.isFaulted()){<br />
-            // Handle error<br />
-        }else{<br />
-            // Newly created store<br />
-            Store localStore = task.getResult();<br />
-        }<br />
-        return null;<br />
-    }<br />
-});<br />
- {% endhighlight %} </p>
+<p>
+{% highlight java linenos %}
+// Using reference to IMFDataManager that you initialized above, create a local store using a bolts task
+String name = "todosdb";
+// Create local store
+Task<Store> storeTask = manager.localStore(name);
+storeTask.continueWith(new Continuation<Store, Void>() {
+    @Override
+    public Void then(Task<Store> task) throws Exception {
+        if(task.isFaulted()){
+            // Handle error
+        }else{
+            // Newly created store
+            Store localStore = task.getResult();
+        }
+        return null;
+    }
+});
+{% endhighlight %} </p>
+
 <h2 id="creatingRemote">Creating remote data stores</h2>
 <p>You can also create a Store object to allow your application to access a remote database.</p>
-<p>{% highlight java %} <br />
-// Create remote store<br />
-String name = "todosdb";<br />
-// Using reference to IMFDataManager that you initialized above, create a remote store using a bolts task<br />
-Task<Store> storeTask = manager.remoteStore(name);<br />
-storeTask.continueWith(new Continuation<Store, Void>() {<br />
-    @Override<br />
-    public Void then(Task<Store> task) throws Exception {<br />
-        if(task.isFaulted()){<br />
-            // Handle error<br />
-        }else{<br />
-            // Newly created store<br />
-            Store remoteStore = task.getResult();<br />
-        }<br />
-        return null;<br />
-    }<br />
-});<br />
- {% endhighlight %} </p>
+<p>
+{% highlight java linenos %}
+// Create remote store
+String name = "todosdb";
+// Using reference to IMFDataManager that you initialized above, create a remote store using a bolts task
+Task<Store> storeTask = manager.remoteStore(name);
+storeTask.continueWith(new Continuation<Store, Void>() {
+    @Override
+    public Void then(Task<Store> task) throws Exception {
+        if(task.isFaulted()){
+            // Handle error
+        }else{
+            // Newly created store
+            Store remoteStore = task.getResult();
+        }
+        return null;
+    }
+});
+{% endhighlight %} </p>
+
 <h2 id="permissions">Setting user permissions for remote stores</h2>
 <p>You can set specific permissions for users to access remote stores.</p>
-<p>{% highlight java %} <br />
-// Using reference to IMFDataManager that you initialized above, set the user permissions for the remote store<br />
-Task<Boolean> permissionsTask = manager.setCurrentUserPermissions(DataManager.DB_ACCESS_GROUP_MEMBERS, "todosdb");</p>
-<p>permissionsTask.continueWith(new Continuation<Boolean, Object>() {<br />
-    @Override<br />
-    public Object then(Task<Boolean> task) throws Exception {<br />
-        if(task.isFaulted()){<br />
-            // Handle error<br />
-        }else{<br />
-           // setting permissions was successful<br />
-        }<br />
-        return null;<br />
-    }<br />
-});<br />
- {% endhighlight %} <br />
+<p>
+{% highlight java linenos %}
+// Using reference to IMFDataManager that you initialized above, set the user permissions for the remote store
+Task<Boolean> permissionsTask = manager.setCurrentUserPermissions(DataManager.DB_ACCESS_GROUP_MEMBERS, "todosdb");
+permissionsTask.continueWith(new Continuation<Boolean, Object>() {
+    @Override
+    public Object then(Task<Boolean> task) throws Exception {
+        if(task.isFaulted()){
+            // Handle error
+        }else{
+           // setting permissions was successful
+        }
+        return null;
+    }
+});
+{% endhighlight %} <br />
+
 <strong>Note:</strong> In the sample, the user is authenticated via OAuth. OAuth has been configured through adapter-based authentication. You can find further instructions on setting up access with OAuth capabilities and the MobileFirst Data Proxy in <a href="https://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_cloudantsec.html%23oauth">configuring OAuth security</a>, in the user documentation.</p>
 <h2 id="modeling">Modeling data for Android applications</h2>
 <p>In Android applications, you can use the <code>DataObjectMapper</code> class to map native objects to JSON document format. When you create a data store with the <code>DataManager</code> API, you can create a new <code>DataObjectMapper</code> to set on the <code>Store</code> object.<br />
-{% highlight java %} <br />
-localStore.setMapper(new DataObjectMapper());<br />
- {% endhighlight %} <br />
+{% highlight java linenos %}
+localStore.setMapper(new DataObjectMapper());
+{% endhighlight %} <br />
 In the sample, a custom <code>TodoItem</code> class allows you to store custom data as objects in our application. When creating a custom <code>DataObjectMapper</code> class, make sure that it meets the following requirements:</p>
 <ul>
 <li>Conform to the IMFDataObject protocol.</li>
@@ -96,135 +104,141 @@ In the sample, a custom <code>TodoItem</code> class allows you to store custom d
 <li>Implements <code>DataObject</code>.</li>
 </ul>
 <h3>TodoItem implementation (<code>TodoItem.java</code>)</h3>
-<p>{% highlight java %} <br />
-public class TodoItem implements DataObject {</p>
-<p>    private Metadata metadata = null;<br />
-    private String name;<br />
-    private Integer priority;</p>
-<p>    // NOTE: If you use a constructor with arguments, you will need to supply an empty constructor for the mapper to function properly<br />
-    public TodoItem(){<br />
-        this.name = "";<br />
-        this.priority = 0;<br />
-    }</p>
-<p>    public TodoItem(String name, Integer priority){<br />
-        this.name = name;<br />
-        this.priority = priority;<br />
-    }</p>
-<p>    @Override<br />
-    public Metadata getMetadata() {<br />
-        return metadata;<br />
-    }</p>
-<p>    @Override<br />
-    public void setMetadata(Metadata metadata) {<br />
-        this.metadata = metadata;<br />
-    }<br />
-}</p>
-<p> {% endhighlight %} </p>
+<p>{% highlight java linenos %}
+public class TodoItem implements DataObject {
+    private Metadata metadata = null;
+    private String name;
+    private Integer priority;
+    // NOTE: If you use a constructor with arguments, you will need to supply an empty constructor for the mapper to function properly
+    public TodoItem(){
+        this.name = "";
+        this.priority = 0;
+    }
+    public TodoItem(String name, Integer priority){
+        this.name = name;
+        this.priority = priority;
+    }
+    @Override
+    public Metadata getMetadata() {
+        return metadata;
+    }
+    @Override
+    public void setMetadata(Metadata metadata) {
+        this.metadata = metadata;
+    }
+}
+{% endhighlight %} </p>
+
 <p>You must then register the class and data type with the <code>DataObjectMapper</code>. In the sample, the <code>DataStoreManager</code> instance does that after the store is created.<br />
-{% highlight java %} <br />
-//using the existing store with mapper<br />
-localStore.getMapper().setDataTypeForClassName("TodoItem", TodoItem.class.getCanonicalName());<br />
- {% endhighlight %} </p>
+{% highlight java linenos %}
+//using the existing store with mapper
+localStore.getMapper().setDataTypeForClassName("TodoItem", TodoItem.class.getCanonicalName());
+{% endhighlight %} </p>
+
 <h2 id="creating">Creating and updating data</h2>
 <p>Using the same operation, you can save new objects and save changes to existing objects in the local data store.</p>
 <h3>Creating, saving, and updating Todo Items</h3>
-<p>{% highlight java %} <br />
-// You can create a new TodoItem to save here, or you can use an existing object from the localStore that you have made changes to<br />
-TodoItem todoItem = new TodoItem("Buy Groceries", 2);</p>
-<p>// Use an existing store<br />
-Store store = localStore;</p>
-<p>// Save automobile to store<br />
-Task<Object> saveTask = store.save(automobile);<br />
-saveTask.continueWith(new Continuation<Object, Void>() {<br />
-    @Override<br />
-    public Void then(Task<Object> task) throws Exception {<br />
-        if (task.isFaulted()) {<br />
-            // save was not successful, task.getError() contains the error<br />
-        } else {<br />
-            // use the result<br />
-            TodoItem savedTodoItem = (TodoItem) task.getResult();<br />
-            // Manipulate new item/add to your UI/whatever else you're doing with your data<br />
-            .<br />
-            .<br />
-            .<br />
-        }<br />
-        return null;<br />
-    }<br />
-});<br />
- {% endhighlight %} <br />
+<p>{% highlight java linenos %}
+// You can create a new TodoItem to save here, or you can use an existing object from the localStore that you have made changes to
+TodoItem todoItem = new TodoItem("Buy Groceries", 2);
+// Use an existing store
+Store store = localStore;
+// Save automobile to store
+Task<Object> saveTask = store.save(automobile);
+saveTask.continueWith(new Continuation<Object, Void>() {
+    @Override
+    public Void then(Task<Object> task) throws Exception {
+        if (task.isFaulted()) {
+            // save was not successful, task.getError() contains the error
+        } else {
+            // use the result
+            TodoItem savedTodoItem = (TodoItem) task.getResult();
+            // Manipulate new item/add to your UI/whatever else you're doing with your data
+            .
+            .
+            .
+        }
+        return null;
+    }
+});
+{% endhighlight %} <br />
+
 <strong>Note:</strong> When saving an object, it is good practice to use the new object that is returned by the <code>task.getResult()</code> method, to avoid errors caused by stale objects and to maintain a consistent experience.</p>
 <h3>Deleting data</h3>
 <p>To delete an object in a data store, pass the object to the <span class="inline-code">LocalStore.delete(<em>objecttodelete</em>)</span> method.</p>
-<p>{% highlight java %} <br />
-// Use an existing store and TodoItem<br />
-Store store = localStore;<br />
-// Pass the Item you'd like to delete from the local Data Store as the parameter<br />
-TodoItem todoItem = existingTodoItem;</p>
-<p>// Delete the TodoItem from the store<br />
-Task<String> deleteTask = store.delete(todoItem);<br />
-deleteTask.continueWith(new Continuation<String, Void>() {<br />
-    @Override<br />
-    public Void then(Task<String> task) throws Exception {<br />
-        if (task.isFaulted()) {<br />
-            // delete was not successful, task.getError() contains the error<br />
-        } else {<br />
-            // use the result<br />
-            String deletedTodoItemId = task.getResult();<br />
-        }<br />
-        return null;<br />
-    }<br />
-});</p>
-<p> {% endhighlight %} </p>
+<p>{% highlight java linenos %}
+// Use an existing store and TodoItem
+Store store = localStore;
+// Pass the Item you'd like to delete from the local Data Store as the parameter
+TodoItem todoItem = existingTodoItem;
+// Delete the TodoItem from the store
+Task<String> deleteTask = store.delete(todoItem);
+deleteTask.continueWith(new Continuation<String, Void>() {
+    @Override
+    public Void then(Task<String> task) throws Exception {
+        if (task.isFaulted()) {
+            // delete was not successful, task.getError() contains the error
+        } else {
+            // use the result
+            String deletedTodoItemId = task.getResult();
+        }
+        return null;
+    }
+});
+{% endhighlight %} </p>
+
 <h3>Querying data</h3>
 <p>You can query for objects that have an object mapper. To run a query for objects, create a Cloudant query with the query filters on data type. Run the query against a Store object. For more information about query and related operations, see the topics about querying, in the user documentation.</p>
 <h2 id="sync">Supporting synchronization and offline storage</h2>
 <p>By using the data manager API, you can synchronize data between local storage on the device and remote store instances.</p>
 <h3>Pull replication</h3>
 <p>When pull replication runs, the local database within the mobile device is updated with what exists in the remote database.<br />
-{% highlight java %} <br />
-// Use an existing store<br />
-Store store = localStore;</p>
-<p>// create a pull replication task<br />
-// name is the database name of the store being replicated<br />
-Task<PullReplication> pullTask = manager.pullReplicationForStore(store.getName());<br />
-pullTask.continueWith(new Continuation<PullReplication, Object>() {<br />
-    @Override<br />
-    public Object then(Task<PullReplication> task) throws Exception {<br />
-        if(task.isFaulted()){<br />
-            // Handle error<br />
-        }else{<br />
-            // Start the replication<br />
-            PullReplication pull = task.getResult();<br />
-            Replicator replicator = ReplicatorFactory.oneway(pull);<br />
-            replicator.start();<br />
-        }<br />
-        return null;<br />
-    }<br />
-});<br />
- {% endhighlight %} </p>
+{% highlight java linenos %}
+// Use an existing store
+Store store = localStore;
+// create a pull replication task
+// name is the database name of the store being replicated
+Task<PullReplication> pullTask = manager.pullReplicationForStore(store.getName());
+pullTask.continueWith(new Continuation<PullReplication, Object>() {
+    @Override
+    public Object then(Task<PullReplication> task) throws Exception {
+        if(task.isFaulted()){
+            // Handle error
+        }else{
+            // Start the replication
+            PullReplication pull = task.getResult();
+            Replicator replicator = ReplicatorFactory.oneway(pull);
+            replicator.start();
+        }
+        return null;
+    }
+});
+{% endhighlight %} </p>
+
 <h3>Push replication</h3>
 <p>When push replication runs, the data from the local database within the mobile device is sent to the remote database.<br />
-{% highlight java %} <br />
-// Use an existing store<br />
-Store store = localStore;</p>
-<p>// create a push replication task<br />
-// name is the database name of the store being replicated<br />
-Task<PushReplication> pushTask = manager.pushReplicationForStore(store.getName());<br />
-pushTask.continueWith(new Continuation<PushReplication, Object>() {<br />
-    @Override<br />
-    public Object then(Task<PushReplication> task) throws Exception {<br />
-        if(task.isFaulted()){<br />
-            // Handle error<br />
-        }else{<br />
-            // Start the replication<br />
-            PushReplication push = task.getResult();<br />
-            Replicator replicator = ReplicatorFactory.oneway(push);<br />
-            replicator.start();<br />
-        }<br />
-        return null;<br />
-    }<br />
-});<br />
- {% endhighlight %} </p>
+{% highlight java linenos %}
+// Use an existing store
+Store store = localStore;
+// create a push replication task
+// name is the database name of the store being replicated
+Task<PushReplication> pushTask = manager.pushReplicationForStore(store.getName());
+pushTask.continueWith(new Continuation<PushReplication, Object>() {
+    @Override
+    public Object then(Task<PushReplication> task) throws Exception {
+        if(task.isFaulted()){
+            // Handle error
+        }else{
+            // Start the replication
+            PushReplication push = task.getResult();
+            Replicator replicator = ReplicatorFactory.oneway(push);
+            replicator.start();
+        }
+        return null;
+    }
+});
+{% endhighlight %} </p>
+
 <p><strong>Note:</strong> The code snippets above might be different from the code that you can see in the sample. These snippets have been created to give the clearest and most understandable outline of the APIs and how they are used. For the sample to be easier to use, all the implementation for the above operations can be found in <code>DataStoreManager</code> and <code>MainActivity</code>.</p>
 <h2 id="running">Running the Android sample</h2>
 <p>Make sure that you have properly configured and started the following instances:</p>
@@ -250,22 +264,24 @@ pushTask.continueWith(new Continuation<PushReplication, Object>() {<br />
 <p>Now, you can run the sample on the simulators provided by Android or a supported Android device.</p>
 <h2 id="flow">BlueList application flow</h2>
 <p>When the application starts, the <code>DataStoreManager</code> instance initiates the connection to the MobileFirst Server instance and creates and registers the <code>BlueListChallengeHandler</code> instance.</p>
-<p>{% highlight java %} <br />
-    WLClient client = WLClient.createInstance(context);<br />
-    client.registerChallengeHandler(blueListChallengeHandler);<br />
- {% endhighlight %} </p>
+<p>{% highlight java linenos %}
+    WLClient client = WLClient.createInstance(context);
+    client.registerChallengeHandler(blueListChallengeHandler);
+{% endhighlight %} </p>
+
 <p>For simplicity, the sample silently logs in a user by calling <code>CloudantAuthenticationAdapter</code> with correct user name and password parameters. This is completed in the <code>BlueListChallengeHandler</code>.</p>
-<p>{% highlight java %} <br />
-@Override<br />
-public void handleChallenge(WLResponse wlResponse) {<br />
-    Object[] parameters = new Object[]{UserName,UserPassword};<br />
-    WLProcedureInvocationData invocationData = new  WLProcedureInvocationData(AdapterName, "submitAuthentication");<br />
-    invocationData.setParameters(parameters);<br />
-    WLRequestOptions options = new WLRequestOptions();<br />
-    options.setTimeout(30000);<br />
-    submitAdapterAuthentication(invocationData, options);<br />
-}<br />
- {% endhighlight %} </p>
+<p>{% highlight java linenos %}
+@Override
+public void handleChallenge(WLResponse wlResponse) {
+    Object[] parameters = new Object[]{UserName,UserPassword};
+    WLProcedureInvocationData invocationData = new  WLProcedureInvocationData(AdapterName, "submitAuthentication");
+    invocationData.setParameters(parameters);
+    WLRequestOptions options = new WLRequestOptions();
+    options.setTimeout(30000);
+    submitAdapterAuthentication(invocationData, options);
+}
+{% endhighlight %} </p>
+
 <p>After authentication, the database is configured in the <code>DataStoreManager</code> <code>init</code> method. This database configuration consists of the following steps:</p>
 <ul>
 <li>Initializing the SDK</li>

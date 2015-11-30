@@ -2,20 +2,12 @@
 layout: tutorial
 title: Broadcast notifications in native Windows 8 applications
 relevantTo: [ios]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativeTagNotificationsProject.zip
 ---
-
-    <ul>
-        <li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TagBasedPushNotificationsProject.zip">Download Studio project</a>
-        </li>
-
-        <li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/iOSNativeTagNotificationsProject.zip">Download Native project</a>
-        </li>
-
-    </ul>
-
-
 <h2>Overview</h2>
 Broadcast notification are in fact tag-based notification, where a subscription to a reserved tag, Push.ALL, is auto-created for every device. Broadcast notifications are thus notification messages that are targeted to all subscribed devices.
 
@@ -29,17 +21,19 @@ This ability can be disabled by unsubscribing the device from the reserved Push.
 
 When a notification is received by a device, the <code>didReceiveRemoteNotification</code> method in the app delegate is called. The logic to handle the notification should be defined here.
 
-{% highlight objc %} 
+{% highlight objc linenos %} 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     NSLog(@"Received Notification %@",userInfo.description);
 }
- {% endhighlight %} 
+{% endhighlight %} 
 
 <ul>
     <li>userInfo - A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is <code>Push.ALL</code>.</li>
 </ul>
 
-{% highlight objc %} [[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener]; {% endhighlight %} 
+{% highlight objc linenos %} 
+[[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];
+{% endhighlight %} 
 <ul>
 <li>This method registers a listener to be used for push notifications. This listener should implement the OnReadyToSubscribe() method.</li>
 </ul>

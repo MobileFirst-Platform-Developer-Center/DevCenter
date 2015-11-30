@@ -86,7 +86,7 @@ FROM registry.ng.bluemix.net/ibm-mobilefirst-starter:latest
 
 5. Add the following to the Dockerfile created in (2). Ensure to replace the 'HelloMFP' with the name of your project.
 
-        {% highlight xml %}
+        {% highlight xml linenos %}
 COPY HelloMFP.xml /opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides/
 COPY HelloMFP.war /opt/ibm/wlp/usr/servers/defaultServer/apps/
 {% endhighlight %}
@@ -95,7 +95,7 @@ COPY HelloMFP.war /opt/ibm/wlp/usr/servers/defaultServer/apps/
 
 6. If you wish to remove the MobileFirstStarter project, add the following to the Dockerfile created in (2).
 
-        {% highlight xml %}
+        {% highlight xml linenos %}
 RUN rm /opt/ibm/wlp/usr/servers/defaultServer/configDropins/overrides/MobileFirstStarter.xml
 RUN rm /opt/ibm/wlp/usr/servers/defaultServer/apps/MobileFirstStarter.war
 {% endhighlight %}

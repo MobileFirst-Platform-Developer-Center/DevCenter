@@ -24,7 +24,7 @@ Resolution: If you're using the MobileFirst Application Center, then this APAR f
     <li><strong>Dojo</strong> </li>
     <p>MobileFirst Hybrid applications will require some changes to the Windows Phone 8 environment. If you have any of your dojo code in your HTML  tags, move it to your js files.</p>
     <p>For example, if you had the following code in your html</p>
-    {% highlight javascript %}
+    {% highlight javascript linenos %}
 require([
 			"dojo/_base/connect",
 			"dojo/ready",
@@ -53,7 +53,7 @@ require([
 {% endhighlight %}
 
 <p>Then, move it to your <code>js/main.js</code> .</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function wlCommonInit(){
 	require([ "layers/core-web-layer", "layers/mobile-ui-layer" ], dojoInit);
 }

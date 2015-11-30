@@ -113,7 +113,7 @@ author:
 
 <p>In this case, you'd always capture, but only send if the user has agreed to it. Your configuration is:</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 Logger.setAutoSendLogs(false);  // only send on-demand, and only if the user agreed to it
 Logger.setCapture(true);
 Logger.setLevel(Logger.LEVEL.FATAL);  // user agreed to "crash reports" only
@@ -121,7 +121,7 @@ WLAnalytics.setCapture(true);
 {% endhighlight %}
 
 <p>Then of course you'd send any captured data from the device up to the server periodically:</p>
-{% highlight java %}
+{% highlight java linenos %}
 if (userAgreed) {
     Logger.send();
     WLAnalytics.send();
@@ -136,7 +136,7 @@ if (userAgreed) {
 <img src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-01-21-31-13-169x300.png"  class="img-responsive" />
 
 <p>The configuration is very similar, except for the logger level:</p>
-{% highlight java %}
+{% highlight java linenos %}
 Logger.setAutoSendLogs(false);  // only send on-demand, and only if the user agreed to it
 Logger.setCapture(true);
 Logger.setLevel(Logger.LEVEL.ERROR);  // user agreed to error and crash, and like any logger, the ERROR level is "error and above"
@@ -152,14 +152,14 @@ WLAnalytics.setCapture(true);
 
 <p>The text strongly hints that Tasker is recording at debug level, but only when the user agrees, so their initial configuration would be:</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 Logger.setLevel(Logger.LEVEL.DEBUG);  // always record at high verbosity
 Logger.setCapture(false);
 {% endhighlight %}
 
 <p>Once the user presses the button that turns on logging, your configuration changes.  In the button press callback:</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 Logger.setCapture(true);
 {% endhighlight %}
 
@@ -173,7 +173,7 @@ Logger.setCapture(true);
 
 <p>Notice that Evernote uses the phrase "activity log" and "error log".  To the end user, this may be confusing.  Is it my activity or just application errors?  It's not completely clear what the end user is sending when they use this button.  So, the configuration is:</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 Logger.setAutoSendLogs(false);  // only send on-demand, and only if the user agreed to it
 Logger.setCapture(true);
 Logger.setLevel(Logger.LEVEL.ERROR);  // user agreed to error, and like any logger, the ERROR level is "error and above"
@@ -182,7 +182,7 @@ WLAnalytics.setCapture(false);  // remember our assumption!
 
 <p>The send strategy is to only send upon end user demand:</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 // inside the button on-click callback:
 Logger.send();  // but not WLAnalytics.send() because of our assumption
 {% endhighlight %}

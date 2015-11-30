@@ -2,12 +2,11 @@
 layout: tutorial
 title: Integrating server-generated pages in hybrid applications
 relevantTo: [hybrid]
+weight: 5
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/IncludeExternalPagesProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/IncludeExternalPagesProject.zip">Download Studio project</a>
-        </li>
-</ul>
 <h2>Overview</h2>
 <p>Many enterprises today decide to develop their own customer or employee-facing mobile applications.<br />
 Some of those companies already have mobile-facing websites (mobile web).</p>
@@ -28,145 +27,145 @@ The application contains three tab items.</p>
 <img src="{{ site.baseurl }}/assets/backup/10_07_3d-phones.png"/></p>
 <p><strong>WebViewOverlay</strong> is implemented by using the Apache Cordova plug-ins functionality.<br />
 Developers can easily create their own protocol between internal web components and the <strong>WebViewOverlay</strong> control. The provided MobileFirst project can be to understand the concepts of <strong>WebViewOverlay</strong>.</p>
-<p>Before proceeding, proficient with <a href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/adding-native-functionality/" title="Adding native functionality to hybrid applications with Apache Cordova">implementing Cordova plug-ins</a> is advised.</p>
+<p>Before proceeding, proficient with <a href="../../adding-native-functionality/" title="Adding native functionality to hybrid applications with Apache Cordova">implementing Cordova plug-ins</a> is advised.</p>
 <h2>Java implementation</h2>
 <h4>Implementing the webViewOverlay</h4>
 <p>First, in the application main class, a <strong>webViewOverlay</strong> object is declared, to be used to display the external content. Static references are used for simplicity.</p>
-<p>{% highlight java %}<br />
-public class IncludeExternalPages extends CordovaActivity implements WLInitWebFrameworkListener {<br />
-    private static WebView webViewOverlay;<br />
-    public static Activity thisapp;<br />
+<p>{% highlight java linenos %}
+public class IncludeExternalPages extends CordovaActivity implements WLInitWebFrameworkListener {
+    private static WebView webViewOverlay;
+    public static Activity thisapp;
 {% endhighlight %}</p>
-<p><br clear="all" /><br />
+<p>
 The object is created and its layout properties are set, and it is added as a view to the root element. It is invisible initially.<br />
 Note the <em>setMargins</em> API. This API can be used to position your <strong>webViewOverlay</strong> component in the screen.</p>
 <p><strong>Note:</strong> Android 4.4 introduces a new version of WebView that is based on Chromium and that affects the WebView margins. More information about this issue can be found here: <a href="http://developer.android.com/guide/webapps/migrating.html" target="_blank">http://developer.android.com/guide/webapps/migrating.html</a></p>
-<p>{% highlight java %}<br />
-public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
-    if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {<br />
-        super.loadUrl(WL.getInstance().getMainHtmlFilePath());</p>
-<p>        thisapp = this;<br />
-        WebViewClient webViewClient = new WebViewClient() {<br />
-            @Override<br />
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {<br />
-                view.loadUrl(url);<br />
-                return true;<br />
-            }<br />
-        };<br />
-        webViewOverlay = new WebView(this);<br />
-        webViewOverlay.setVisibility(View.INVISIBLE);<br />
-        webViewOverlay.setWebViewClient(webViewClient);<br />
-        RelativeLayout.LayoutParams webViewOverlayLayoutParams = new<br />
-        RelativeLayout.LayoutParams(<br />
-            RelativeLayout.LayoutParams.MATCH_PARENT,<br />
-            RelativeLayout.LayoutParams.MATCH_PARENT);<br />
-            webViewOverlayLayoutParams.setMargins(0, 120, 0, 196);<br />
-            webViewOverlay.setLayoutParams(webViewOverlayLayoutParams);<br />
-            webViewOverlay.getSettings().setJavaScriptEnabled(true);<br />
-        …<br />
-        …<br />
+<p>{% highlight java linenos %}
+public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
+    if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
+        super.loadUrl(WL.getInstance().getMainHtmlFilePath());
+        thisapp = this;
+        WebViewClient webViewClient = new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        };
+        webViewOverlay = new WebView(this);
+        webViewOverlay.setVisibility(View.INVISIBLE);
+        webViewOverlay.setWebViewClient(webViewClient);
+        RelativeLayout.LayoutParams webViewOverlayLayoutParams = new
+        RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.MATCH_PARENT,
+            RelativeLayout.LayoutParams.MATCH_PARENT);
+            webViewOverlayLayoutParams.setMargins(0, 120, 0, 196);
+            webViewOverlay.setLayoutParams(webViewOverlayLayoutParams);
+            webViewOverlay.getSettings().setJavaScriptEnabled(true);
+        …
+        …
 {% endhighlight %}</p>
-<p><br clear="all" /><br />
+<p>
 Next, setting up the content view.</p>
 <ul>
 <li>A <strong>RelativeLayout</strong> object is created that functions as a root layout.</li>
 <li>The current root view is removed from its original parent. Instead, the <strong>root</strong> and <strong>webViewOverlay</strong> are added to the <strong>rootRelativeLayout</strong>.</li>
 <li>The content view is set to <strong>rootRelativeLayout</strong>.</li>
 </ul>
-<p>{% highlight java %}<br />
-public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
-     …<br />
-    webViewOverlay.getSettings().setJavaScriptEnabled(true);</p>
-<p>    RelativeLayout rootRelativeLayout = new RelativeLayout(this);</p>
-<p>    ((FrameLayout)root.getParent()).removeAllViews();<br />
-    rootRelativeLayout.addView(root);<br />
-    rootRelativeLayout.addView(webViewOverlay);<br />
-    setContentView(rootRelativeLayout);<br />
-     …<br />
+<p>{% highlight java linenos %}
+public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
+     …
+    webViewOverlay.getSettings().setJavaScriptEnabled(true);
+    RelativeLayout rootRelativeLayout = new RelativeLayout(this);
+    ((FrameLayout)root.getParent()).removeAllViews();
+    rootRelativeLayout.addView(root);
+    rootRelativeLayout.addView(webViewOverlay);
+    setContentView(rootRelativeLayout);
+     …
 {% endhighlight %}</p>
-<p><br clear="all" /></p>
+<p>
 <h4>Implementing the Java code of the Cordova plug-in</h4>
 <p>In a new class, <strong>WebViewOverlayPlugin.java</strong>, the actions the plug-in supports are declared.</p>
-<p>{% highlight java %}<br />
-public class WebViewOverlayPlugin extends CordovaPlugin {<br />
-    private final String ACTION_OPEN_URL = "open";<br />
-    private final String ACTION_CLOSE_WEBVIEWOVERLAY = "close";<br />
-    …<br />
+<p>{% highlight java linenos %}
+public class WebViewOverlayPlugin extends CordovaPlugin {
+    private final String ACTION_OPEN_URL = "open";
+    private final String ACTION_CLOSE_WEBVIEWOVERLAY = "close";
+    …
 {% endhighlight %}</p>
-<p><br clear="all" /><br />
+<p>
 If an “open” request was received from the web part of the application, load the external content and render the <strong>webViewOverlay</strong> visible.</p>
-<p>{% highlight java %}<br />
-public class WebViewOverlayPlugin extends CordovaPlugin {<br />
-    …<br />
-@Override<br />
-public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {<br />
-if (action.equals(ACTION_OPEN_URL)) {<br />
-IncludeExternalPages.thisapp.runOnUiThread(new Runnable() {<br />
-public void run() {<br />
-IncludeExternalPages.clearWebViewOverlayHistory();<br />
-IncludeExternalPages.loadWebViewOverlay("http://m.ibm.com/");<br />
-IncludeExternalPages.setWebViewOverlayVisibility(View.VISIBLE);<br />
-IncludeExternalPages.requestWebViewOverlayFocus();<br />
-IncludeExternalPages.clearWebViewOverlayHistory();<br />
-}<br />
-});<br />
-return true;<br />
+<p>{% highlight java linenos %}
+public class WebViewOverlayPlugin extends CordovaPlugin {
+    ...
+@Override
+public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
+if (action.equals(ACTION_OPEN_URL)) {
+IncludeExternalPages.thisapp.runOnUiThread(new Runnable() {
+public void run() {
+IncludeExternalPages.clearWebViewOverlayHistory();
+IncludeExternalPages.loadWebViewOverlay("http://m.ibm.com/");
+IncludeExternalPages.setWebViewOverlayVisibility(View.VISIBLE);
+IncludeExternalPages.requestWebViewOverlayFocus();
+IncludeExternalPages.clearWebViewOverlayHistory();
+}
+});
+return true;
 {% endhighlight %}</p>
-<p><br clear="all" /><br />
+<p>
 If receive a “close” request from the web part of the application, clean the <strong>webViewOverlay</strong> and hide it.<br />
 UI-related actions are performed on a dedicated UI thread.<br />
-{% highlight java %}<br />
-public class WebViewOverlayPlugin extends CordovaPlugin {<br />
-    …<br />
-    …<br />
-    } else if (action.equals(ACTION_CLOSE_WEBVIEWOVERLAY)) {<br />
-        IncludeExternalPages.thisapp.runOnUiThread(new Runnable() {<br />
-            public void run() {<br />
-                IncludeExternalPages.loadWebViewOverlayContent("");<br />
-                IncludeExternalPages.setWebViewOverlayVisibility(View.INVISIBLE);<br />
-                IncludeExternalPages.clearWebViewOverlayHistory();<br />
-            }<br />
-        });<br />
-        return true;<br />
-    } else<br />
-        return false;<br />
-    }<br />
-}<br />
+{% highlight java linenos %}
+public class WebViewOverlayPlugin extends CordovaPlugin {
+    …
+    …
+    } else if (action.equals(ACTION_CLOSE_WEBVIEWOVERLAY)) {
+        IncludeExternalPages.thisapp.runOnUiThread(new Runnable() {
+            public void run() {
+                IncludeExternalPages.loadWebViewOverlayContent("");
+                IncludeExternalPages.setWebViewOverlayVisibility(View.INVISIBLE);
+                IncludeExternalPages.clearWebViewOverlayHistory();
+            }
+        });
+        return true;
+    } else
+        return false;
+    }
+}
 {% endhighlight %}</p>
 <h2>JavaScript implementation</h2>
 <p>In JavaScript, a <strong>WebViewOverlayPlugin</strong> object is created and populated with the required methods.</p>
-<p>{% highlight javascript %}<br />
-function WebViewOverlayPlugin() {};<br />
-WebViewOverlayPlugin.prototype.open = function() {<br />
-    cordova.exec(null, null, 'WebViewOverlayPlugin', 'open', []);<br />
-};<br />
-WebViewOverlayPlugin.prototype.close = function() {<br />
-    cordova.exec(null, null, 'WebViewOverlayPlugin', 'close', []);<br />
-};<br />
-window.webViewOverlay = new WebViewOverlayPlugin();<br />
+<p>{% highlight javascript linenos %}
+function WebViewOverlayPlugin() {};
+WebViewOverlayPlugin.prototype.open = function() {
+    cordova.exec(null, null, 'WebViewOverlayPlugin', 'open', []);
+};
+WebViewOverlayPlugin.prototype.close = function() {
+    cordova.exec(null, null, 'WebViewOverlayPlugin', 'close', []);
+};
+window.webViewOverlay = new WebViewOverlayPlugin();
 {% endhighlight %}</p>
-<p><br clear="all" /><br />
+<p>
 The clicked tab ID is analyzed and either shows or hides the <strong>webViewOverlay</strong> accordingly.<br />
 Loading external content can take time, so adding a Busy Indicator to improve the user experience should be considered.</p>
-<p>{% highlight javascript %}<br />
-function tabClicked(id){<br />
-    WL.Logger.debug("tabClicked >> id :: " + id);<br />
-    $(".tab").addClass('hidden');<br />
-    if (id=="3"){<br />
-        openWebViewOverlay();<br />
-    } else {<br />
-        $("#tab" + id).removeClass('hidden');<br />
-        closeWebViewOverlay();<br />
-    }<br />
-}</p>
-<p>function openWebViewOverlay(){<br />
-    WL.Logger.debug("openWebViewOverlay");<br />
-    window.webViewOverlay.open();<br />
-}</p>
-<p>function closeWebViewOverlay(){<br />
-    WL.Logger.debug("closeWebViewOverlay");<br />
-    window.webViewOverlay.close();<br />
-}<br />
+<p>{% highlight javascript linenos %}
+function tabClicked(id){
+    WL.Logger.debug("tabClicked >> id :: " + id);
+    $(".tab").addClass('hidden');
+    if (id=="3"){
+        openWebViewOverlay();
+    } else {
+        $("#tab" + id).removeClass('hidden');
+        closeWebViewOverlay();
+    }
+}
+function openWebViewOverlay(){
+    WL.Logger.debug("openWebViewOverlay");
+    window.webViewOverlay.open();
+}
+function closeWebViewOverlay(){
+    WL.Logger.debug("closeWebViewOverlay");
+    window.webViewOverlay.close();
+}
 {% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/IncludeExternalPagesProject.zip">Click to download</a> the Studio project.</p>

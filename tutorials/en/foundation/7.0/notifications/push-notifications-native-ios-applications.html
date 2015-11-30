@@ -3,6 +3,7 @@ layout: tutorial
 title: Push notifications in native iOS applications
 show_children: true
 relevantTo: [ios]
+weight: 2
 ---
 <h2>Overview</h2>
 <p>IBM MobileFirst Platform Foundation provides a unified set of API methods to send, or push, notifications to devices where the MobileFirst application is installed in. It is possible to send a notification in 3 distinct types: event source notifications, broadcast notifications and tag notifications.</p>
@@ -29,13 +30,13 @@ To create and configure an iOS native project, first follow these tutorials:</p>
 </li>
 <li>In <strong>application-descriptor.xml</strong>, add the <code>pushSender</code> tag with the <code>password</code> attribute. Use the .p12 keystore as the password value.
 <p>For example :<br />
-{% highlight xml %} <br />
-<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0"><br />
-  <displayName>iOSNativePush</displayName><br />
-  <description>iOSNativePush</description><br />
-  <pushSender password="replace-with-certificate-password"/><br />
-</nativeIOSApp><br />
- {% endhighlight %} </p>
+{% highlight xml linenos %}
+<nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0">
+    <displayName>iOSNativePush</displayName>
+    <description>iOSNativePush</description>
+    <pushSender password="replace-with-certificate-password"/>
+</nativeIOSApp>
+{% endhighlight %} </p>
 </li>
 <li>Deploy the MobileFirst native API. In MobileFirst Studio, right-click the native API and select <strong>"Run As >  Deploy Native API"</strong>. With the CLI, use <code>mfp deploy</code> from within the application folder.
 </li>
@@ -93,27 +94,28 @@ Categories describe a custom type of notification that your application sends an
 <li>Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.<br />
 To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes like Remote notifications and Background fetch.</li>
 <li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>(application: didRegisterForRemoteNotificationsWithDeviceTokenapplication:)</code> method in <code>AppDelegate</code> class.
-<p>    {% highlight objc %} <br />
-if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){<br />
-  UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;</p>
-<p>  UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];<br />
-  acceptAction.identifier = @"OK";<br />
-  acceptAction.title = @"OK";</p>
-<p>  UIMutableUserNotificationAction *rejetAction = [[UIMutableUserNotificationAction alloc] init];<br />
-  rejetAction.identifier = @"NOK";<br />
-  rejetAction.title = @"NOK";</p>
-<p>  UIMutableUserNotificationCategory *cateogory = [[UIMutableUserNotificationCategory alloc] init];<br />
-  cateogory.identifier = @"poll";<br />
-  [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextDefault];<br />
-  [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextMinimal];</p>
-<p>  NSSet *catgories = [NSSet setWithObject:cateogory];<br />
-  [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:catgories]];<br />
-}<br />
- {% endhighlight %} </li>
+<p>    
+{% highlight objc linenos %}
+if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){
+  UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;
+  UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
+  acceptAction.identifier = @"OK";
+  acceptAction.title = @"OK";
+  UIMutableUserNotificationAction *rejetAction = [[UIMutableUserNotificationAction alloc] init];
+  rejetAction.identifier = @"NOK";
+  rejetAction.title = @"NOK";
+  UIMutableUserNotificationCategory *cateogory = [[UIMutableUserNotificationCategory alloc] init];
+  cateogory.identifier = @"poll";
+  [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextDefault];
+  [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextMinimal];
+  NSSet *catgories = [NSSet setWithObject:cateogory];
+  [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:catgories]];
+}
+{% endhighlight %} </li>
 <li>Implement the new callback method:<br />
-    {% highlight objc %} <br />
-(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (ˆ)())completionHandler<br />
- {% endhighlight %} </p>
+{% highlight objc linenos %}
+(void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (ˆ)())completionHandler
+{% endhighlight %} </p>
 <p>This new callback method is invoked when the user clicks the action button.</p>
 <p>The implementation of this method must perform the action that is associated with the specified identifier and execute the block in the <code>completionHandler</code> parameter.</li>
 </ul>

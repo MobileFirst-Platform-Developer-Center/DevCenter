@@ -62,7 +62,7 @@ $ npm install passport-mfp-token-validation
 
 <p>The following code example shows how to use an MFP Strategy in a StrongLoop application to initiate Analytics logging and to protect APIs. The code changes are done in the <code>server/server.js</code> file.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var passport = require('passport-mfp-token-validation').Passport,
     mfpStrategy = require('passport-mfp-token-validation').Strategy;
 passport.use(new mfpStrategy({
@@ -92,7 +92,7 @@ var auth = function(scopes) {
 
 <p>Then, for every API you would like to protect, add the following lines to the same file:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 //protect the GET CoffeeShops API with MFP strategy using scope 'Realm1'
 app.get('/api/CoffeeShops', auth('Realm1'), cont);
 //protect the PUT CoffeeShop API with MFP strategy using scope 'Realm2'
@@ -114,7 +114,7 @@ app.put('/api/CoffeeShops/:id', auth('Realm2'), cont);
 <h3>Use of WLResourceRequest</h3>
 <p>This JavaScript example shows how to use the client-side API for access an external REST service.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function callProtectedRestAPI() {
     var url = EXTERNAL_SERVER_URL + REST_CONTEXT_ROOT + PATH_PROTECTED;
     var request = new WLResourceRequest(url, WLResourceRequest.GET);

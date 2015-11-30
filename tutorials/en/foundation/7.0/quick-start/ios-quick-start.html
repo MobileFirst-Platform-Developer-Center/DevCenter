@@ -6,11 +6,11 @@ relevantTo: [ios]
 <h2>Overview</h2>
 <p>The purpose of this demonstration is to experience an end-to-end flow where the MobileFirst Platform Foundation SDK for iOS is integrated into a Xcode project and used to retrieve data using a MobileFirst adapter.</p>
 
-<p>To learn more about creating projects and applications, using adapters and lots more, <a href="../">visit the Native iOS Development</a> landing page.</p>
+<p>To learn more about creating projects and applications, using adapters and lots more, <a href="../../ios-tutorials/">visit the Native iOS Development</a> landing page.</p>
 
 <b>Required installed:</b>
 <ul>
-    <li>MobileFirst Platform commandline tool (<a href="http://developer.ibm.com/mobilefirstplatform/install/#clui" target="_blank">download</a>)</li>
+    <li>MobileFirst Platform commandline tool (<a href="{{site.baseurl}}/downloads/">download</a>)</li>
     <li>Xcode 6.x</li>
 </ul>
 
@@ -82,14 +82,14 @@ mfp deploy
         <ul>
             <li><b>AppDelegate.h</b>
                 Add the header:
-                {% highlight objc %}#import "WLResourceRequest.h"{% endhighlight %}
+                {% highlight objc linenos %}#import "WLResourceRequest.h"{% endhighlight %}
             </li>
             <li style="margin-bottom:30px"><b>AppDelegate.m</b>
                 Add the header:
-                {% highlight objc %}#import "WLResponse.h"{% endhighlight %}
+                {% highlight objc linenos %}#import "WLResponse.h"{% endhighlight %}
 
                 Add the following to <code>didFinishLaunchingWithOptions</code>:
-{% highlight objc %}- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+{% highlight objc linenos %}- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     NSURL* url = [NSURL URLWithString:@"/adapters/MyAdapter/getFeed"];
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
     [request setQueryParameterValue:@"['technology']" forName:@"params"];
@@ -116,6 +116,6 @@ mfp deploy
     <li><h3>Click <strong>Run</strong></h3>
     Review the Xcode console for the data retrieved by the adapter request.
 
-<img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/ios-quick-start-result-1024x574.png" class="img_responsive" /></a>
+<img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/ios-quick-start-result-1024x574.png" /></a>
     </li>
 </ol>

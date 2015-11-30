@@ -5,16 +5,19 @@ relevantTo: [ios]
 ---
 <h2 id="loggingIOS">Logging example for native iOS (Objective-C)</h2>
 <h3>Outputs to Xcode console</h3>
-<p>{% highlight objc %} <br />
-#import "OCLogger.h"</p>
-<p>+ (int) sum:(int) a with:(int) b{<br />
-    int sum = a + b;</p>
-<p>    OCLogger* mathLogger = [OCLogger getInstanceWithPackage:@"MathUtils"];<br />
-    NSString* logMessage = [NSString stringWithFormat:@"sum called with args %d and %d. Returning %d", a, b, sum];<br />
-    [mathLogger debug:logMessage];</p>
-<p>    return sum;<br />
-}<br />
- {% endhighlight %} </p>
+<p>{% highlight objc linenos %}
+#import "OCLogger.h"
+
++ (int) sum:(int) a with:(int) b{
+    int sum = a + b;
+    OCLogger* mathLogger = [OCLogger getInstanceWithPackage:@"MathUtils"];
+    NSString* logMessage = [NSString stringWithFormat:@"sum called with args %d and %d. Returning %d", a, b, sum];
+    [mathLogger debug:logMessage];
+    
+    return sum;
+}
+{% endhighlight %} </p>
+
 <h2>API calls for specific tasks</h2>
 <h3>Log capture is enabled by default. To turn log capture on or off:</h3>
 <p><code>OCLogger.setCapture(NO)</code></p>

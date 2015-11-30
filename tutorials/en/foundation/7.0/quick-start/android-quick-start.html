@@ -7,11 +7,11 @@ relevantTo: [android]
 
 <p>The purpose of this demonstration is to experience an end-to-end flow where the MobileFirst Platform Foundation SDK for Android is integrated into an Android project and used to retrieve data using a MobileFirst adapter.</p>
 
-<p>To learn more about creating projects and applications, using adapters and lots more, <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-native-android-development-7-0/">visit the Native Android Development</a> landing page.</p>
+<p>To learn more about creating projects and applications, using adapters and lots more, <a href="../../android-tutorials/">visit the Native Android Development</a> landing page.</p>
 
 <b>Required installed:</b>
 <ul>
-    <li>MobileFirst Platform commandline tool (<a href="http://developer.ibm.com/mobilefirstplatform/install/#clui" target="_blank">download</a>)</li>
+    <li>MobileFirst Platform commandline tool (<a href="{{site.baseurl}}/downloads/">download</a>)</li>
     <li>Android Studio</li>
 </ul>
 <hr />
@@ -55,13 +55,13 @@ mfp deploy
             <li>Right-click on any of the added <code>.jar</code> files and select <strong>Add as library</strong> to add all libraries</li>
             <li>Create an <strong>assets</strong> folder under <strong>src\main</strong> and paste into it the <code>wlclient.properties</code> file</li>
             <li>Add the following permissions to the <code>AndroidManifest.xml</code> file:
-{% highlight xml %} 
+{% highlight xml linenos %} 
 <uses-permission android:name="android.permission.INTERNET"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.GET_TASKS" /> {% endhighlight %} 
             </li>
             <li>Add the MobileFirst UI activity in the <code>AndroidManifest.xml</code> file:
-{% highlight xml %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %}</li>
+{% highlight xml linenos %}<activity android:name="com.worklight.wlclient.ui.UIActivity" />{% endhighlight %}</li>
         </ul>
     </li>
     <li>
@@ -69,11 +69,11 @@ mfp deploy
         <ul>
             <li><b>Main Activity class</b>
                 Add imports:
-{% highlight java %}import com.worklight.wlclient.api.*;
+{% highlight java linenos %}import com.worklight.wlclient.api.*;
 import android.util.Log;{% endhighlight %}
 
                 Add the following to <code>onCreate</code>:
-                {% highlight java %}
+                {% highlight java linenos %}
 super.onCreate(savedInstanceState);
 setContentView(R.layout.activity_main);
 
@@ -96,11 +96,11 @@ client.connect(new WLResponseListener() {
         <li><b><code>MyInvokeListener</code> class</b>
                 Add a new <code>MyInvokeListener</code> class
                 Add imports:
-{% highlight java %}import com.worklight.wlclient.api.*;
+{% highlight java linenos %}import com.worklight.wlclient.api.*;
 import android.util.Log;{% endhighlight %}
 
                 Paste the following:
-        {% highlight java %}
+        {% highlight java linenos %}
 public class MyInvokeListener implements WLResponseListener {
 
     @Override
@@ -124,6 +124,6 @@ public class MyInvokeListener implements WLResponseListener {
     <li><h3>Click <strong>Run</strong></h3>
     Review the LogCat view for the data retrieved by the adapter request.
 
-<img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Screen-Shot-2015-04-14-at-17.31.24-1024x586.png" class="img_responsive" /></a>
+<img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Screen-Shot-2015-04-14-at-17.31.24-1024x586.png" /></a>
     </li>
 </ol>

@@ -10,7 +10,7 @@ relevantTo: [ios,android,windows8,windowsphone8,hybrid]
 <p><strong>Note:</strong> Windows OS is currently not supported.<br />
 <strong>Note:</strong> The MobileFirst Server Configuration Tools cannot be used for deployments to IBM Containers.</p>
 
-<p><strong>Prerequisite:</strong> Make sure to read the <a href="../overview">Introduction to IBM MobileFirst Platform Foundation on IBM Containers</a> tutorial.</p>
+<p><strong>Prerequisite:</strong> Make sure to read the <a href="../">Introduction to IBM MobileFirst Platform Foundation on IBM Containers</a> tutorial.</p>
 
 <h3>Topics</h3>
 <ul>
@@ -67,31 +67,31 @@ export DOCKER_MACHINE_NAME="default"
 [collapse label="Instructions for Windows"]</p>
 <ol>
 <li>Launch Boot2Docker and run:<br />
-        [code lang="xml" gutter="false"]<br />
+        {% highlight xml linenos %}<br />
         $ boot2docker ssh<br />
-        [/code]
+        {% endhighlight %}
     </li>
 <li>Install Python:<br />
-        [code lang="xml" gutter="false"]<br />
+        {% highlight xml linenos %}<br />
         $ wget http://www.tinycorelinux.net/5.x/x86/tcz/python.tcz &amp;&amp; tce-load -i python.tcz &amp;&amp; rm -f python.tcz<br />
-        [/code]
+        {% endhighlight %}
     </li>
 <li>Install Python pip:<br />
-        [code lang="xml" gutter="false"]<br />
+        {% highlight xml linenos %}<br />
         $ curl -O https://bootstrap.pypa.io/get-pip.py<br />
         $ sudo python get-pip.py<br />
-        [/code]
+        {% endhighlight %}
     </li>
 <li>Follow the <a href="https://pypi.python.org/pypi/setuptools" target="_blank">Python Setuptools installation instructions</a> to install Python Setuptools.</li>
 <li>Download the Cloud Foundry CLI:<br />
-        [code lang="xml" gutter="false"]<br />
+        {% highlight xml linenos %}<br />
         $ wget -O cf.tgz http://cli.run.pivotal.io/stable?release=linux32-binary<br />
-        [/code]
+        {% endhighlight %}
     </li>
 <li>Install the Cloud Foundry CLI:<br />
-        [code lang="xml" gutter="false"]<br />
+        {% highlight xml linenos %}<br />
         $ sudo tar -zxvf cf.tgz -C /usr/bin/<br />
-        [/code]
+        {% endhighlight %}
     </li>
 <p>[/collapse]<br />
 -->
@@ -130,7 +130,7 @@ Note: If Boot2Docker was installed in OS X, remember to run the Docker<code>save
 
 <h3>Structure of the ibm-mfpf-container-7.1.0.0-eval.zip archive</h3>
 
-<img src="{{ site.baseurl }}/assets/backup/cutomizationZip.png" class="img_responsive" />
+<img src="{{ site.baseurl }}/assets/backup/cutomizationZip.png"  />
 
 <p>The extracted ZIP file contains the files for building an image (<code>dependencies</code> and <code>mfpf-libs</code>), the files for building and deploying an IBM MobileFirst Platform Foundation Operational Analytics Container (<code>mfpf-analytics</code>), and files for configuring an IBM MobileFirst Platform Server Container <code>(mfpf-server</code>). This tutorial does not cover the analytics part.</p>
 
@@ -178,7 +178,7 @@ You can choose to run the scripts interactively or by pre-configuring the config
 <li><code><strong>boot2docker start</strong></code> - If you are running on Linux, skip this step.
 <p>To run the scripts and use Docker commands, you must first launch your Boot2Docker machine.<br />
 On Windows or OS X, run:<br />
-[code gutter="false"]$ boot2docker start[/code]<br />
+{% highlight bash %}$ boot2docker start{% endhighlight %}<br />
 -->
     <li>Make sure that the <code>namespace</code> for container registry is set. The <code>namespace</code> is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned once for an organization and cannot be changed.<br />
 Choose a namespace according to following rules:</p>
@@ -355,7 +355,7 @@ $ ./startserver.sh args/startserver.properties
             <li>You can now run your application to verify that it successfully connects to the MobileFirst Server, running on IBM Containers.</li>
         </ul>
 
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-06-22-at-15.47.14-1024x493.png" class="img_responsive" />
+        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-06-22-at-15.47.14-1024x493.png"  />
     </li>
 </ol>
 
@@ -364,30 +364,30 @@ $ ./startserver.sh args/startserver.properties
 <ul>
 <li>Part of the image building process is loading the image into your local docker repository.<br />
 To view all available images in your local docker repository run:<br />
-            [code lang="xml" gutter="false"]<br />
+            {% highlight xml linenos %}<br />
             $ docker images<br />
-            [/code]<br />
+            {% endhighlight %}<br />
 The list contains the image repository, tag, ID, date of creation and virtual size.</li>
 <li>To delete an image from your local docker repository run:<br />
-            [code lang="xml" gutter="false"]<br />
-            $ docker rmi &lt;image ID&gt;<br />
-            [/code]</li>
+            {% highlight xml linenos %}<br />
+            $ docker rmi <image ID><br />
+            {% endhighlight %}</li>
 <li>To start your image on a local container run:<br />
-            [code lang="xml" gutter="false"]<br />
-            $ docker run -d -p 9080:9080 -p 9443:9443 &lt;image ID&gt;<br />
-            [/code]</li>
+            {% highlight xml linenos %}<br />
+            $ docker run -d -p 9080:9080 -p 9443:9443 <image ID><br />
+            {% endhighlight %}</li>
 <li>To view all available containers in your local docker repository run:<br />
-            [code lang="xml" gutter="false"]<br />
+            {% highlight xml linenos %}<br />
             $ docker ps<br />
-            [/code]</li>
+            {% endhighlight %}</li>
 <li>To stop a running container run:<br />
-            [code lang="xml" gutter="false"]<br />
-            $ docker stop &lt;container ID&gt;<br />
-            [/code]</li>
+            {% highlight xml linenos %}<br />
+            $ docker stop <container ID><br />
+            {% endhighlight %}</li>
 <li>To delete a container from your local docker repository run:<br />
-            [code lang="xml" gutter="false"]<br />
-            $ docker rm &lt;container ID&gt;<br />
-            [/code]</li>
+            {% highlight xml linenos %}<br />
+            $ docker rm <container ID><br />
+            {% endhighlight %}</li>
 <li>To verify that the image is properly configured and the MobileFirst project runtime is available, launch the MobileFirst Console by loading the following URL: http://192.168.59.103:9080/worklightconsole. </li>
 </ul>
 <blockquote><p>To learn more about Docker commands, review the Docker Documentation.</p></blockquote>

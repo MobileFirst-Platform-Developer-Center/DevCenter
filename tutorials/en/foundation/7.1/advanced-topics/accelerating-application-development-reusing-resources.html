@@ -2,6 +2,7 @@
 layout: tutorial
 title: Accelerating hybrid application development by reusing resources
 relevantTo: [hybrid]
+weight: 10
 ---
 <h2>Overview</h2>
 <ul>
@@ -26,7 +27,7 @@ relevantTo: [hybrid]
 <p>To add application components or MobileFirst project templates, you must identify a download folder.</p>
 <p>The download folder must contain only the application components or the MobileFirst project template archives.</p>
 <p>Set the download folder in <strong>Preferences</strong> > <strong>MobileFirst</strong> > <strong>Templates and Components</strong> > <strong>Download Folder</strong>.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_download_folder-1024x784.png" alt="reusing_components_download_folder" width="980" height="750" class="aligncenter size-large wp-image-3697" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_download_folder-1024x784.png" style="width:55%" /></p>
 <h2 id="application_components">Application components</h2>
 <p>An application component is a reusable library that developers can add to their applications. It can be a client-side library or a server runtime block.</p>
 <p>Application components must be downloaded in the <strong>Download folder</strong> that is specified in the <strong>Window > Preferences > MobileFirst</strong> menu.</p>
@@ -37,14 +38,14 @@ relevantTo: [hybrid]
 <p>The created application component is in archive format.</p>
 <ol>
 <li>Right-click the MobileFirst hybrid project and select <strong>Create Application Component</strong>.
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/reusing_components_create_application_component.png"><img src="{{ site.baseurl }}/assets/backup/reusing_components_create_application_component.png" alt="reusing_components_create_application_component" width="1004" height="966" class="aligncenter size-full wp-image-3694" /></a>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_create_application_component.png" style="width:55%" />
 </li>
 <p>A wizard guides you through the process of creating the application component. For more information about this wizard, see the user documentation.</p>
 <li>In the first page of the wizard, enter metadata information for the application component.
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_create_application_component1-900x1024.png" alt="reusing_components_create_application_component1" width="900" height="1024" class="aligncenter size-large wp-image-3695" />
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_create_application_component1-900x1024.png" style="width:55%" />
 </li>
 <li>In the next page of the wizard, select the files that you want to include in the application component archive.
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_create_application_component2-900x1024.png" alt="reusing_components_create_application_component2" width="900" height="1024" class="aligncenter size-large wp-image-3696" />
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_create_application_component2-900x1024.png" style="width:55%" />
 </li>
 </ol>
 <p>After the application component archive is created, if you want to add more optional hooks to enable automation when the application component is used, refer to the topic about adding hooks to an application component, in the user documentation.</p>
@@ -55,21 +56,21 @@ relevantTo: [hybrid]
 <p>Basic information about the application components is displayed.<br />
 The application components are loaded from the configured <strong>Download folder</strong>.</li>
 <li>Right-click the MobileFirst hybrid project and select <strong>Add/Remove Application Components</strong>.
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_add_application_component.png" alt="reusing_components_add_application_component" width="988" height="998" class="aligncenter size-full wp-image-3693" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_add_application_component.png" style="width:55%" /></p>
 <p>The application components are scanned in the Download folder.</p>
 <p>Only valid application components are displayed in the Add and Remove Application Components wizard.</p>
 <p>Each component is displayed along with the Thumbnail, Name, Author and Version, next to a checkbox.</p>
 <p>The application components that you select are installed in the target MobileFirst project.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_available_components.png" alt="reusing_components_available_components" width="605" height="472" class="aligncenter size-full wp-image-3897" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_available_components.png" style="width:55%" /></p>
 <p>The addition status of the application component is displayed after the activity is completed.</p>
 <p>The component resources are marked with the unique ID of the application component.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_files_added.png" alt="reusing_components_files_added" width="682" height="624" class="aligncenter size-full wp-image-3895" />
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_files_added.png" style="width:55%" />
 </li>
 <li>Ensure that the required MobileFirst environments are created before you add the application component, otherwise error messages are displayed.</li>
 <p>If the required Android SDK is not installed on the hosting MobileFirst Studio, the appropriate message is displayed.</p>
 <p>If the contents of the application components or the MobileFirst applications are renamed, the linkage with the application component is broken.</p>
 <p>The application component files are read-only and you cannot modify them.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_environment_warning_android.png" alt="reusing_components_environment_warning_android" width="612" height="476" class="aligncenter size-full wp-image-3896" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_environment_warning_android.png" style="width:55%" /></p>
 </ol>
 <h3 id="remove_application_components">Removing application components</h3>
 <ol>
@@ -79,11 +80,11 @@ The application components are loaded from the configured <strong>Download folde
 </li>
 <li>Clear the marks next to the application components that you want to remove.</li>
 </ol>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_components_used.png" alt="reusing_components_components_used" width="605" height="472" class="aligncenter size-full wp-image-3894" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_components_used.png" style="width:55%" /></p>
 <p>When you remove application components, you are prompted to confirm whether to roll back the resource to its original content. For example, if you remove a <code>UserPermission</code> element, you are prompted to confirm the removal.</p>
 <p>The removal status of the application component is displayed after the removal activity is done.</p>
 <p>On successful removal of the application components, the original contents of the MobileFirst hybrid project resources are restored.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_removal.png" alt="reusing_components_removal" width="734" height="476" class="aligncenter size-full wp-image-3893" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_removal.png" style="width:55%" /></p>
 <h2 id="mobilefirst_project_templates">MobileFirst project templates</h2>
 <p>By using MobileFirst project templates, you can develop applications faster by not having to start from scratch.</p>
 <p>You can use MobileFirst project templates to provide value-added services; you can add elements that are consistent with the look-and-feel of your brand.</p>
@@ -93,7 +94,7 @@ The application components are loaded from the configured <strong>Download folde
 <p>You can export MobileFirst hybrid projects as templates for reusability.</p>
 <ol>
 <li>Right-click a MobileFirst project and click <strong>Export</strong> > <strong>IBM MobileFirst > MobileFirst Project Template</strong>.
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_project_template.png" alt="reusing_components_project_template" width="537" height="561" class="aligncenter size-full wp-image-3892" />
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_project_template.png" style="width:55%" />
 </li>
 <li>On the Export page, enter basic information for the MobileFirst project template, such as <strong>Template name</strong>, <strong>Author</strong>, <strong>Description</strong>, <strong>Thumbnail</strong>, and <strong>Template archive</strong>.
 <p>Valid extensions for Template archives are <code>.zip</code> and <code>.wlt</code>.</p>
@@ -102,7 +103,7 @@ The application components are loaded from the configured <strong>Download folde
 </li>
 </ol>
 <p>The structure of the Template archive is described in the documentation.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_export_template.png" alt="reusing_components_export_template" width="538" height="563" class="aligncenter size-full wp-image-3891" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_export_template.png" style="width:55%" /></p>
 <h3 id="add_mobilefirst_project_templates">Adding MobileFirst project templates</h3>
 <p>Use the <strong>Shared Templates</strong> option to create a MobileFirst project from a template.</p>
 <ol>
@@ -110,15 +111,15 @@ The application components are loaded from the configured <strong>Download folde
 <li>In the <strong>Name</strong> field, provide a name for the MobileFirst project.</li>
 <li>From the <strong>Project Templates</strong> list, click <strong>Shared Templates</strong>.</li>
 <li>Click <strong>Next</strong>.
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_new_from_template.png" alt="reusing_components_new_from_template" width="613" height="611" class="aligncenter size-full wp-image-3890" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_new_from_template.png" style="width:55%" /></p>
 <p>The MobileFirst project templates are loaded from the configured Download folder (as explained in <a href="#configuring_application_components">Configuring application components and project template preferences</a>).
 </li>
 <li>Provide an application name.</li>
 <li>Select a MobileFirst project template.
 <p>A MobileFirst hybrid project is created with the contents of the MobileFirst project template archive.
 </li>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_new_from_template_app_name.png" alt="reusing_components_new_from_template_app_name" width="614" height="664" class="aligncenter size-full wp-image-3889" /></p>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_task_tags_preferences.png" alt="reusing_components_task_tags_preferences" width="673" height="406" class="alignright size-full wp-image-3887" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_new_from_template_app_name.png" style="width:55%" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_task_tags_preferences.png" style="width:55%" /></p>
 <li>To view the FIXME tags, if any, click <strong>Project > Properties > General > Editors > Structured Text Editors > Task Tags</strong>.
 <ol>
 <li>Click <strong>Enable searching for Task Tags</strong>.</li>
@@ -127,4 +128,4 @@ The application components are loaded from the configured <strong>Download folde
 </ol>
 </li>
 </ol>
-<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_template_fixme_tasks-e1415908676798.png" alt="reusing_components_template_fixme_tasks" width="1204" height="135" class="aligncenter size-full wp-image-3888" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/reusing_components_template_fixme_tasks-e1415908676798.png" style="width:55%" /></p>

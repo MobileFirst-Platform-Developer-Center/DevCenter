@@ -61,21 +61,21 @@ Rules are defined by a <strong>security test</strong> that contains one or more 
 <p>A developer can define the order in which authentication is processed, for example to request authentication in realm2 only after realm1 authentication succeeds.</p>
 <p>The MobileFirst framework provides definitions of default security tests for mobile and web environments, and the ability to create custom security tests.</p>
 <p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config.png"></p>
-<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config.png"><img class="aligncenter wp-image-869 size-full" src="{{ site.baseurl }}/assets/backup/09_01_sample-security-config.png" alt="09_01_sample-security-config" width="819" height="232" /></a></p>
+<p></a><img src="{{ site.baseurl }}/assets/backup/09_01_sample-security-config.png" /></p>
 <p>In the example above, a resource - for example, an application or adapter procedure - can be protected by either of two security tests.</p>
 <ul>
 <li>Using <strong>Security test 1</strong> means that the user must authenticate in both <strong>Realm1</strong> and <strong>Realm2</strong>, each one with its own set of rules.</li>
 <li>Using <strong>Security test 2</strong> means that the user must authenticate in <strong>Realm3 only</strong>.<br />
 Each realm defines its own set of <strong>Authenticator</strong> and <strong>Login module</strong>, meaning that each realm has its own rules for collecting credentials and validating them.</li>
 <p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config-reuse.png"></p>
-<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_sample-security-config-reuse.png"><img class="aligncenter wp-image-874 size-full" src="{{ site.baseurl }}/assets/backup/09_01_sample-security-config-reuse.png" alt="09_01_sample-security-config-reuse" width="816" height="228" /></a><br />
+<p></a><img src="{{ site.baseurl }}/assets/backup/09_01_sample-security-config-reuse.png" /><br />
 Realms, authenticators, and login modules can be reused.<br />
 On the updated configuration above, <strong>Realm2</strong> is reused.<br />
 Protecting a resource with <strong>Security test1</strong> means that the user must authenticate in both <strong>Realm1 and Realm2</strong>.<br />
 Protecting a resource with <strong>Security test2</strong> means the user must authenticate in <strong>Realm2 only</strong>.</p>
 <p>When a request is made to the protected entity, IBM MobileFirst Platform Foundation checks whether the session is already authenticated. If it is not, a process is automatically triggered to verify the user's identity.<br />
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_client-server-flow.png"></p>
-<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_client-server-flow.png"><img class="aligncenter wp-image-878 size-full" src="{{ site.baseurl }}/assets/backup/09_01_client-server-flow.png" alt="09_01_client-server-flow" width="1341" height="691" /></a></p>
+<p></a><img src="{{ site.baseurl }}/assets/backup/09_01_client-server-flow.png" /></p>
 <h3>Challenge handler</h3>
 <p>A challenge handler is a client-side entity that controls the authentication process. It is a piece of code (JavaScript, Objective-C, Java, etc.) that you write in your client-side project to handle a specific challenge. It is used to detect the authentication challenges in the server responses and handle them.</p>
 <p>Create a separate challenge handler instance for each realm that the application must authenticate in.</p>
@@ -86,32 +86,32 @@ Protecting a resource with <strong>Security test2</strong> means the user must a
 <p>Authentication settings are configured in the MobileFirst project in the <code>server\conf\authenticationConfig.xml</code> file.</p>
 <p>You can modify them by using the Authentication Configuration Editor.<br />
 <a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_authentication_config_editor.png"></p>
-<p></a><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/09_01_authentication_config_editor.png"><img class="aligncenter wp-image-884 size-full" src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png" alt="09_01_authentication_config_editor" width="960" height="453" /></a></p>
+<p></a><img src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png" /></p>
 <p>Each realm has a name, a <strong>loginModule</strong> specification, a <strong><code>className</code></strong> of an authenticator implementation and optional parameters.</p>
-<p>[code lang="xml"]<br />
-&lt;realms&gt;<br />
-  &lt;realm name=&quot;SampleAppRealm&quot; loginModule=&quot;StrongDummy&quot;&gt;<br />
-    &lt;className&gt;com.worklight.core.auth.ext.FormBasedAuthenticator&lt;/className&gt;<br />
-  &lt;/realm&gt;</p>
-<p>  &lt;realm name=&quot;SubscribeServlet&quot; loginModule=&quot;rejectAll&quot;&gt;<br />
-    &lt;className&gt;com.worklight.core.auth.ext.HeaderAuthenticator&lt;/className&gt;<br />
-  &lt;/realm&gt;<br />
-&lt;/realms&gt;<br />
-[/code]</p>
+<p>{% highlight xml linenos %}<br />
+<realms><br />
+  <realm name="SampleAppRealm" loginModule="StrongDummy"><br />
+    <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className><br />
+  </realm></p>
+<p>  <realm name="SubscribeServlet" loginModule="rejectAll"><br />
+    <className>com.worklight.core.auth.ext.HeaderAuthenticator</className><br />
+  </realm><br />
+</realms><br />
+{% endhighlight %}</p>
 <p>Each login module has a name, a <strong><code>className</code></strong> of the implementation and optional parameters.</p>
-<p>[code lang="xml"]<br />
-&lt;loginModules&gt;<br />
-  &lt;loginModule name=&quot;StrongDummy&quot;&gt;<br />
-    &lt;className&gt;com.worklight.core.auth.ext.NonValidatingLoginModule&lt;/className&gt;<br />
-  &lt;/loginModule&gt;</p>
-<p>  &lt;loginModule name=&quot;requireLogin&quot;&gt;<br />
-    &lt;className&gt;com.worklight.core.auth.ext.SingleIdentityLoginModule&lt;/className&gt;<br />
-  &lt;/loginModule&gt;</p>
-<p>  &lt;loginModule name=&quot;rejectAll&quot;&gt;<br />
-    &lt;className&gt;com.worklight.core.auth.ext.RejectingLoginModule&lt;/className&gt;<br />
-  &lt;/loginModule&gt;<br />
-&lt;/loginModules&gt;<br />
-[/code]</p>
+<p>{% highlight xml linenos %}<br />
+<loginModules><br />
+  <loginModule name="StrongDummy"><br />
+    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
+  </loginModule></p>
+<p>  <loginModule name="requireLogin"><br />
+    <className>com.worklight.core.auth.ext.SingleIdentityLoginModule</className><br />
+  </loginModule></p>
+<p>  <loginModule name="rejectAll"><br />
+    <className>com.worklight.core.auth.ext.RejectingLoginModule</className><br />
+  </loginModule><br />
+</loginModules><br />
+{% endhighlight %}</p>
 <h2 id="security">Defining security tests</h2>
 <p>With IBM MobileFirst Platform Foundation, you can set up multiple realms for a security test.</p>
 <p>As part of the security test setup, you must set which realms are considered a <strong>user realm</strong> and which are considered a <strong>device realm</strong>.<br />
@@ -130,11 +130,11 @@ Three types of security tests can be defined in the <code>authenticationConfig.x
 By default, the <strong>webSecurityTest</strong> includes a protection against XSRF attacks. For more information about this protection, see the user documentation.<br />
 Each <strong>webSecurityTest</strong> must contain one <strong>testUser</strong> element with a realm definition.<br />
 This realm is considered a <strong>user realm</strong>.</p>
-<p>[code lang="xml"]<br />
-&lt;webSecurityTest name=&quot;SampleWebSecurityTest&quot;&gt;<br />
-  &lt;testUser realm=&quot;SampleRealm&quot; /&gt;<br />
-&lt;/webSecurityTest&gt;<br />
-[/code]</p>
+<p>{% highlight xml linenos %}<br />
+<webSecurityTest name="SampleWebSecurityTest"><br />
+  <testUser realm="SampleRealm" /><br />
+</webSecurityTest><br />
+{% endhighlight %}</p>
 <h3>mobileSecurityTest</h3>
 <p>Use the <strong>mobileSecurityTest</strong> to protect mobile applications.<br />
 By default, the <strong>mobileSecurityTest</strong> includes:</p>
@@ -145,62 +145,62 @@ By default, the <strong>mobileSecurityTest</strong> includes:</p>
 </ul>
 <p>Each <strong>mobileSecurityTest</strong> must contain one <strong>testUser</strong> element with realm definition.<br />
 This realm is considered a <strong>user realm</strong>.</p>
-<p>[code lang="xml"]<br />
-&lt;mobileSecurityTest name=&quot;SampleMobileSecurityTest&quot;&gt;<br />
-  &lt;testUser realm=&quot;SampleRealm&quot; /&gt;<br />
-&lt;/mobileSecurityTest&gt;<br />
-[/code]</p>
+<p>{% highlight xml linenos %}<br />
+<mobileSecurityTest name="SampleMobileSecurityTest"><br />
+  <testUser realm="SampleRealm" /><br />
+</mobileSecurityTest><br />
+{% endhighlight %}</p>
 <h3>customSecurityTest</h3>
 <p>Use the <strong>customSecurityTest</strong> to dictate your own security preferences.<br />
 Unlike the mobile and web security tests, the <strong>customSecurityTest</strong> does not include any predefined authentication realms. It includes only the tests that are defined by the developer.<br />
 Any number of tests can be defined within the <strong>customSecurityTest</strong>.<br />
 You can define which realm to be used as a user realm by adding the <code>isInternalUserId=“true”</code> property.<br />
 You can define the order of realms that the user must authenticate in.</p>
-<p>[code lang="xml"]<br />
-&lt;customSecurityTest name=&quot;SampleCustomSecurityTest&quot;&gt;<br />
-  &lt;test realm=&quot;SampleRealm1&quot; step=&quot;1&quot;/&gt;<br />
-  &lt;test realm=&quot;SampleRealm2&quot; step=&quot;2&quot;/&gt;<br />
-  &lt;test realm=&quot;SampleRealm3&quot; step=&quot;3&quot; isInternalUserID=&quot;true&quot;/&gt;<br />
-&lt;/webSecurityTest&gt;<br />
-[/code]</p>
+<p>{% highlight xml linenos %}<br />
+<customSecurityTest name="SampleCustomSecurityTest"><br />
+  <test realm="SampleRealm1" step="1"/><br />
+  <test realm="SampleRealm2" step="2"/><br />
+  <test realm="SampleRealm3" step="3" isInternalUserID="true"/><br />
+</webSecurityTest><br />
+{% endhighlight %}</p>
 <h2 id="protectApp">Protecting applications</h2>
 <p>Protecting an application means that authentication is required immediately when the application tries to connect to the MobileFirst Server instance.</p>
 <p>A separate <strong>securityTest</strong> can be defined for each application environment in the <code>application-descriptor.xml</code> file.</p>
-<p>[code lang="xml"]<br />
-&lt;android version=&quot;1.0&quot; securityTest=&quot;SampleMobileSecurityTest&quot;&gt;<br />
+<p>{% highlight xml linenos %}<br />
+<android version="1.0" securityTest="SampleMobileSecurityTest"><br />
   ...<br />
-&lt;/android&gt;<br />
-[/code]</p>
+</android><br />
+{% endhighlight %}</p>
 <p>If no security test is defined for a specific environment, only a minimal set of default platform tests are carried out.</p>
 <h2 id="protectAdapters">Protecting adapters</h2>
 <p>Protecting an adapter procedure means that authentication is required when this adapter procedure is called by a client application.<br />
 A separate <strong>securityTest</strong> can be defined for each adapter procedure in the adapter XML file.</p>
-<p>[code lang="xml" highlight="16"]<br />
-&lt;wl:adapter name=&quot;DummyAdapter&quot;<br />
-    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;<br />
-    xmlns:wl=&quot;http://www.worklight.com/integration&quot;<br />
-    xmlns:http=&quot;http://www.worklight.com/integration/http&quot;&gt;</p>
-<p>    &lt;displayName&gt;DummyAdapter&lt;/displayName&gt;<br />
-    &lt;description&gt;DummyAdapter&lt;/description&gt;<br />
-    &lt;connectivity&gt;<br />
-        &lt;connectionPolicy xsi:type=&quot;http:HTTPConnectionPolicyType&quot;&gt;<br />
-            &lt;protocol&gt;http&lt;/protocol&gt;<br />
-            &lt;domain&gt;rss.cnn.com&lt;/domain&gt;<br />
-            &lt;port&gt;80&lt;/port&gt;<br />
-        &lt;/connectionPolicy&gt;<br />
-        &lt;loadConstraints maxConcurrentConnectionsPerNode=&quot;2&quot; /&gt;<br />
-    &lt;/connectivity&gt;<br />
-    &lt;procedure name=&quot;getSecretData&quot; securityTest=&quot;DummyAdapter-securityTest&quot;/&gt;<br />
-&lt;/wl:adapter&gt;<br />
-[/code]</p>
+<p>{% highlight xml linenos %}<br />
+<wl:adapter name="DummyAdapter"<br />
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br />
+    xmlns:wl="http://www.worklight.com/integration"<br />
+    xmlns:http="http://www.worklight.com/integration/http"></p>
+<p>    <displayName>DummyAdapter</displayName><br />
+    <description>DummyAdapter</description><br />
+    <connectivity><br />
+        <connectionPolicy xsi:type="http:HTTPConnectionPolicyType"><br />
+            <protocol>http</protocol><br />
+            <domain>rss.cnn.com</domain><br />
+            <port>80</port><br />
+        </connectionPolicy><br />
+        <loadConstraints maxConcurrentConnectionsPerNode="2" /><br />
+    </connectivity><br />
+    <procedure name="getSecretData" securityTest="DummyAdapter-securityTest"/><br />
+</wl:adapter><br />
+{% endhighlight %}</p>
 <h2 id="protectStatic">Protecting static resources</h2>
 <p>A static resource is a URL that is loaded from the MobileFirst Server instance, for example: the console or mobile web application.</p>
 <p>Protecting a static resource means that MobileFirst Server requires authentication at any attempt to browse to the specified URL.<br />
 The static resources and their protection can be defined in the <code>authenticationConfig.xml</code> file.</p>
-<p>[code lang="xml"]<br />
-&lt;staticResources&gt;<br />
-  &lt;resource id=&quot;mobileFirstConsole&quot; securityTest=&quot;SubscribeServlet&quot;&gt;<br />
-    &lt;urlPatterns&gt;/console*&lt;/urlPatterns&gt;<br />
-  &lt;/resource&gt;<br />
-&lt;/staticResources&gt;<br />
-[/code]</p>
+<p>{% highlight xml linenos %}<br />
+<staticResources><br />
+  <resource id="mobileFirstConsole" securityTest="SubscribeServlet"><br />
+    <urlPatterns>/console*</urlPatterns><br />
+  </resource><br />
+</staticResources><br />
+{% endhighlight %}</p>

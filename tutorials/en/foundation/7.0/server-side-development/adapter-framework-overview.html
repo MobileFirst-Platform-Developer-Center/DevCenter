@@ -2,6 +2,7 @@
 layout: tutorial
 title: 'Updated: Adapters overview'
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+weight: 1
 ---
 <h2>Overview</h2>
 <p>This tutorial presents how to develop server-side code (adapters) that is used to transfer and retrieve information from back-end systems to client applications and cloud services. MobileFirst Server processes the information and handles security. You can write adapters in JavaScript or Java.</p>
@@ -67,21 +68,22 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 You can apply more filtering to retrieved data by using simple XSLT code.</p>
 <p>JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to use Java in the adapter code.</p>
 <h3>XML structure of JavaScript adapters</h3>
-<p>{% highlight xml %} <br />
-<wl:adapter name="HelloWorld"><br />
-  <displayName /><br />
-  <description /><br />
-  <connectivity><br />
-    <connectionPolicy><br />
-    ...</p>
-<p>    <loadConstraints><br />
-    ...<br />
-  </connectivity><br />
-  <procedure /><br />
-  <procedure /><br />
-  ...<br />
-</wl:adapter><br />
- {% endhighlight %} </p>
+<p>{% highlight xml linenos %} 
+<wl:adapter name="HelloWorld">
+    <displayName />
+    <description />
+    <connectivity>
+        <connectionPolicy>
+            ...
+            <loadConstraints>
+                ...
+    </connectivity>
+
+    <procedure />
+    <procedure />
+    ...
+</wl:adapter>
+{% endhighlight %} </p>
 <ul>
 <li><code>name: Mandatory. The name of the adapter</code></li>
 <li><code>displayName</code>: Optional. The name that is displayed in the MobileFirst Console</li>
@@ -94,21 +96,22 @@ You can apply more filtering to retrieved data by using simple XSLT code.</p>
 </li>
 <li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
 </ul>
-<p>{% highlight xml %} <br />
-<procedure name="procedure1"></procedure><br />
-<procedure name="procedure2"></procedure><br />
- {% endhighlight %} </p>
+<p>{% highlight xml linenos %}
+<procedure name="procedure1"></procedure>
+<procedure name="procedure2"></procedure>
+{% endhighlight %} </p>
 <h3>Structure of a JavaScript adapter procedure</h3>
 <p>Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
 The <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
-<p>{% highlight javascript %} <br />
-function procedure1(param) {<br />
-  return WL.Server.invokeSQLStatement({<br />
-    preparedStatement: procedure1Statement,<br />
-    parameters: [param]<br />
-  });<br />
-}<br />
- {% endhighlight %} </p>
+<p>
+{% highlight javascript linenos %}
+function procedure1(param) {
+    return WL.Server.invokeSQLStatement({
+        preparedStatement: procedure1Statement,
+        parameters: [param]
+    });
+}
+{% endhighlight %} </p>
 <h2 id="JavaAdapters">Java adapters</h2>
 <p>Java adapters expose a full REST API to the client and are written in Java. This type of adapters is based on the <a href="https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html">JAX-RS specification</a>.</p>
 <p>In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource.<br />
@@ -123,14 +126,16 @@ The only exception is if the client sending the request supports GZip, then the 
 </ul>
 <h3>XML structure of a Java adapter </h3>
 <p>The XML configuration file configures the class name of the JAX-RS application for the adapter.</p>
-<p>{% highlight xml %} <wl:adapter name="HelloWorld"<br />
-    <displayName /><br />
-    <description /><br />
-    <connectivity><br />
-        <connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy><br />
+<p>{% highlight xml linenos %}
+<wl:adapter name="HelloWorld"
+    <displayName />
+    <description />
+    <connectivity>
+        <connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy>
     </connectivity></p>
-<p>    <JAXRSApplicationClass>com.acme.HelloWorldAdapterApp</JAXRSApplicationClass><br />
-</wl:adapter> {% endhighlight %} </p>
+    <JAXRSApplicationClass>com.acme.HelloWorldAdapterApp</JAXRSApplicationClass>
+</wl:adapter>
+{% endhighlight %}
 <ul>
 <li><code>connectivity</code>:
 <ul>
@@ -147,7 +152,7 @@ The only exception is if the client sending the request supports GZip, then the 
 <p>The JAX-RS application class tells the JAX-RS framework which resources are included in the JAX-RS application of the adapter.</p>
 <h4>JAX-RS resource file</h4>
 <p>A JAX-RS resource is a POJO (Plain Old Java Object) which is mapped to a root URL and has Java methods for serving requests to this root URL and its sub URLs.</p>
-<p>For more information about the Java adapter implementation class and resource file, see <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/server-side-development/java-adapter/">the tutorial for Java Adapter</a>.</p>
+<p>For more information about the Java adapter implementation class and resource file, see <a href="../../server-side-development/java-adapter/">the tutorial for Java Adapter</a>.</p>
 <h2 id="creatingAdapters">Creating adapters</h2>
 <h3>CLI</h3>
 <p>From the project's directory, use <code>mfp add adapter</code> and follow the interactive instructions.</p>
@@ -195,4 +200,4 @@ To run a procedure test:</p>
 <p><img src="{{ site.baseurl }}/assets/backup/adapters_overview_70_call_js_adapter.png"/></p>
 <blockquote><p>For more information about JavaScript and Java adapters, see the topic about "MobileFirst adapters overview" in the user documentation.</p></blockquote>
 <h2 id="next">Tutorials to follow next</h2>
-<p>Follow the tutorials in the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/server-side-development/">server-side development section</a> to learn more about HTTP, SQL, Cast Iron, and JMS JavaScript adapters, Java adapters, invoking adapter procedures from hybrid and native applications, advanced adapter usage and more.</p>
+<p>Follow the tutorials in the <a href="../../server-side-development/">server-side development section</a> to learn more about HTTP, SQL, Cast Iron, and JMS JavaScript adapters, Java adapters, invoking adapter procedures from hybrid and native applications, advanced adapter usage and more.</p>

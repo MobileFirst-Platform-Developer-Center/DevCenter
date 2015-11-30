@@ -2,6 +2,7 @@
 layout: tutorial
 title: Debugging applications
 relevantTo: [hybrid]
+weight: 4
 ---
 <h2>Overview</h2>
 <p>This tutorial explores various approaches to debugging the web resources of a MobileFirst application, either before running the application in a device or while running it in a device.<br />
@@ -36,10 +37,10 @@ As seen in the previous tutorials, during development you can preview applicatio
 <li>Dragonfly for Opera</li>
 <li>Safari Web Inspector</li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_developer_tools.png"><img class="aligncenter wp-image-1503 size-full" src="{{ site.baseurl }}/assets/backup/03_04_developer_tools.png" alt="03_04_developer_tools" width="864" height="632" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/03_04_developer_tools.png"/></p>
 <p>In early application development stages, these tools can be used to debug the application just like a regular website. It is not required to install them in a mobile device.<br />
 You can also preview changes to HTML and CSS in real time by modifying the values in the inspector.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_developer_tools2.png"><img class="aligncenter wp-image-1502 size-full" src="{{ site.baseurl }}/assets/backup/03_04_developer_tools2.png" alt="03_04_developer_tools2" width="860" height="552" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/03_04_developer_tools2.png"/></p>
 <h2 id="debugging_with_mobile_browser_simulator">Debugging with the Mobile Browser Simulator</h2>
 <p>You can also use the Mobile Browser Simulator to preview and debug MobileFirst applications.<br />
 To access it, click the <strong>Preview</strong> button in the MobileFirst Operations Console.</p>
@@ -50,20 +51,20 @@ To access it, click the <strong>Preview</strong> button in the MobileFirst Opera
 <li>Emulate different devices and skins</li>
 <li>Emulate some Cordova features such as access to sensors and other hardware</li>
 </ul>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_mbs.png"><img class="aligncenter wp-image-1506 size-large" src="{{ site.baseurl }}/assets/backup/03_04_mbs-1024x793.png" alt="03_04_mbs" width="980" height="758" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/03_04_mbs-1024x793.png"/></p>
 <p><a name="debugging_with_ios_remote_web_inspector"></a></p>
 <h2 id="debugging_ios_remote_web_inspector">Debugging with iOS Remote Web Inspector</h2>
 <p>Starting in iOS 6, Apple introduced a remote web inspector for debugging web applications on iOS devices. To debug, make sure that the device (or simulator) has the <strong>Private Browsing</strong> option turned off.</p>
 <p>To enable Web Inspector on the device, click <strong>Settings > Safari > Advanced > Web Inspector</strong>.<br />
-<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_ios_web_inspector.png"><img class="aligncenter size-full wp-image-730" src="{{ site.baseurl }}/assets/backup/03_04_ios_web_inspector.png" alt="03_04_ios_web_inspector" width="662" height="330" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/03_04_ios_web_inspector.png"/></p>
 <ol>
 <li>To start debugging, connect the iOS device to a Mac, or start the simulator. Safari 6.0 or higher is required.<br />
 In Safari, go to <strong>Preferences > Advanced</strong>, and select the <strong>Show Develop menu in menu bar</strong> checkbox.</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_safari_developer_menu.png"><img class="aligncenter size-full wp-image-731" src="{{ site.baseurl }}/assets/backup/03_04_safari_developer_menu.png" alt="03_04_safari_developer_menu" width="668" height="444" /></a>
+<p><img src="{{ site.baseurl }}/assets/backup/03_04_safari_developer_menu.png"/>
 </li>
 <li>Now in Safari, select <strong>Develop > [<em>your device ID</em>] > [<em>your application HTML file</em>]</strong>.<br />
 The DOM can now be inspected. It is also possible to alter the CSS and run JavaScript commands, just as in the desktop inspector.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_safari_debugging.png"><img class="aligncenter wp-image-1507 size-large" src="{{ site.baseurl }}/assets/backup/03_04_safari_debugging-1024x725.png" alt="03_04_safari_debugging" width="980" height="693" /></a>
+<p><img src="{{ site.baseurl }}/assets/backup/03_04_safari_debugging-1024x725.png"/>
 </li>
 </ol>
 <h2 id="debugging_with_chrome_remote_web_inspector">Debugging with Chrome Remote Web Inspector</h2>
@@ -76,14 +77,14 @@ In the <code>project.properties</code> file, <code>target</code> = 19 or above i
 <li>In Chrome, enter the following URL: <code>about:inspect</code>.</li>
 <li>Press <strong>Inspect</strong> for the relevant application.<br />
 You can now use all the features of the Chrome Inspector to inspect the Android application.</li>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_debug_with_chrome.png"><img class="aligncenter size-large wp-image-1724" src="{{ site.baseurl }}/assets/backup/03_04_debug_with_chrome-1024x731.png" alt="03_04_debug_with_chrome" width="980" height="699" /></a>
+<p><img src="{{ site.baseurl }}/assets/backup/03_04_debug_with_chrome-1024x731.png"/>
 </ol>
 <h2 id="debugging_with_weinre">Debugging with Weinre</h2>
 <p><a href="http://people.apache.org/~pmuellr/weinre/">Weinre</a> stands for <strong>We</strong>b <strong>In</strong>spector <strong>Re</strong>mote.</p>
 <p>Weinre is a debugger for web pages, like Firebug or other Web Inspectors, except that Weinre is designed to work remotely.<br />
 Weinre can be used to inspect and debug web resources such as HTML, JavaScript, CSS, and network traffic on mobile handsets.</p>
 <p>The Weinre architecture includes the following components:<br />
-<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_weinre.png"><img class="aligncenter size-full wp-image-734" src="{{ site.baseurl }}/assets/backup/03_04_weinre.png" alt="03_04_weinre" width="860" height="251" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/03_04_weinre.png"/></p>
 <p>The Weinre debug server requires a <code>node.js</code> runtime.<br />
 You can find instructions to install Weinre on the <a href="http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html">Weinre installation page</a>.</p>
 <h3>Debug server</h3>
@@ -92,11 +93,13 @@ You can find instructions to install Weinre on the <a href="http://people.apache
 <p>This command starts a Weinre server. The default port is <code>8888</code> but you can change it.</p>
 <h3>Target</h3>
 <p>The Weinre server must be accessible from the device that will be used for debugging. To make it accessible, add the following code line to the web application:</p>
-<p>{% highlight js %} <script src="http://a.b.c:8888/target/target-script-min.js"></script> {% endhighlight %} </p>
+<p>{% highlight js linenos %}
+<script src="http://a.b.c:8888/target/target-script-min.js"></script>
+{% endhighlight %} </p>
 <p>Where a.b.c is the hostname or IP of the Weinre server.</p>
 <h3>Client</h3>
 <p>Before you can start debugging, make sure that the application is open and loaded on the browser with this URL:</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_weinre_debugging.png"><img class="aligncenter size-full wp-image-735" src="{{ site.baseurl }}/assets/backup/03_04_weinre_debugging.png" alt="03_04_weinre_debugging" width="798" height="684" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/03_04_weinre_debugging.png"/></p>
 <h2 id="debugging_with_ibm_mobilefirst_logger">Debugging with IBM MobileFirst Logger</h2>
 <p>IBM MobileFirst Platform Foundation provides a <code>WL.Logger</code> object which can be used to print log messages to the log for the environment used.</p>
 <p>Two of its methods are <code>WL.Logger.debug()</code> and <code>WL.Logger.error()</code>.<br />
@@ -114,16 +117,16 @@ These APIs are multiplatform. The output destination changes according to the pl
 To test a procedure:</p>
 <ol>
 <li>Right-click an adapter folder and select <strong>Run As > Invoke MobileFirst Procedure</strong>.
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_deploy_mobilefirst_adapter.png"><img class="aligncenter wp-image-1509 size-full" src="{{ site.baseurl }}/assets/backup/03_04_deploy_mobilefirst_adapter.png" alt="03_04_deploy_mobilefirst_adapter" width="738" height="124" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/03_04_deploy_mobilefirst_adapter.png"/></p>
 <p>The adapter and procedure are selected. </li>
 <li>Optionally, enter comma-separated parameters.
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_select_adapter_and_procedure.png"><img class="aligncenter size-full wp-image-1722" src="{{ site.baseurl }}/assets/backup/03_04_select_adapter_and_procedure.png" alt="03_04_select_adapter_and_procedure" width="602" height="422" /></a>
+<p><img src="{{ site.baseurl }}/assets/backup/03_04_select_adapter_and_procedure.png"/>
 </li>
 <p>Adapter invocation result:<br />
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_adapter_proceudre_invocation_result1.png"><img class="aligncenter wp-image-1731 size-full" src="{{ site.baseurl }}/assets/backup/03_04_adapter_proceudre_invocation_result1.png" alt="" width="871" height="544" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/03_04_adapter_proceudre_invocation_result1.png"/></p>
 </ol>
 <h2 id="debugging_with_wireshark">Debugging with WireShark</h2>
 <p>Wireshark is a network protocol analyzer that can be used to see what happens in the network.<br />
 You can use filters to follow only what is required.</p>
 <p>For more information, see the <a href="http://www.wireshark.org">WireShark</a> website.</p>
-<p><a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_wireshark.png"><img class="aligncenter size-full wp-image-739" src="{{ site.baseurl }}/assets/backup/03_04_wireshark.png" alt="03_04_wireshark" width="970" height="562" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/03_04_wireshark.png"/></p>

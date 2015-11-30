@@ -3,6 +3,7 @@ layout: tutorial
 title: Remote controlled client-side log collection
 show_children: true
 relevantTo: [ios,android,hybrid]
+weight: 7
 ---
 <h2 id="whatIsLogging">Overview</h2>
 <p>Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging. Example: <code>java.util.logging</code> in Java.</p>
@@ -42,7 +43,7 @@ Capture is on by default but can be turned off.</p>
 <blockquote><p>For more information on installing Analytics in a production environment, review the "Installing the IBM MobileFirst Platform Operational Analytics" topic in the user documentation.</p></blockquote>
 <p>If you do not wish to use the Analytics Platform, you can still collect and process client logs by creating an adapter. By default, the MobileFirst Platform is configured to forward client logs to an adapter named "WLClientLogReceiver" that exposes a method called "log".</p>
 <p>If the Analytics Platform and the adapter have both been configured, the MobileFirst Platform will send logs to both endpoints. Using both may be useful if you'd like to take advantage of the Analytics Platform's log searching capabilities, but also wish to do some custom operations on client logs using your own adapter.</p>
-<p><strong>Note:</strong> Installation and configuration of Analytics Platform and development of adapters is beyond the scope of this Getting Started tutorial. For more information, see the "Installing the MobileFirst Platform Operational Analytics" topic in the user documentation, and the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/server-side-development/adapter-framework-overview/">Adapters overview tutorial</a>.</p>
+<p><strong>Note:</strong> Installation and configuration of Analytics Platform and development of adapters is beyond the scope of this Getting Started tutorial. For more information, see the "Installing the MobileFirst Platform Operational Analytics" topic in the user documentation, and the <a href="../../server-side-development/adapter-framework-overview/">Adapters overview tutorial</a>.</p>
 <h2 id="adminControl">Admin control of client log capture</h2>
 <p><img src="{{ site.baseurl }}/assets/backup/comsole-project-buttons.png"/></p>
 <p><img src="{{ site.baseurl }}/assets/backup/client-log-profiles.png"/></p>

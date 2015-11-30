@@ -10,7 +10,7 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * <a href="../setting-up-your-development-environment/setting-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a>
 * <a href="../setting-up-your-development-environment/setting-ios-development-environment/">Setting up your iOS development environment</a>
 * <a href="../setting-up-your-development-environment/setting-android-development-environment/">Setting up your Android development environment</a>
-<a href="../setting-up-your-development-environment/setting-blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>
+* <a href="../setting-up-your-development-environment/setting-blackberry-10-development-environment/">Setting up your BlackBerry 10 development environment</a>
 * <a href="../setting-up-your-development-environment/setting-windows-phone-8-development-environment/">Setting up your Windows Phone 8 development environment</a>
 * <a href="../setting-up-your-development-environment/setting-windows-phone-8-development-environment/">Setting up your Windows 8 development environment</a>
 

@@ -46,7 +46,7 @@ Once a device has been found, either the entire device can be "disabled" (e.g. t
 <h3 id="dataAccess">Managing data access</h3>
 <p>The last concern is regarding the data that still lives on the user device. With MobileFirst Platform data and documents can be fully encrypted so that when the app is blocked, enterprise data cannot be accessed. In this last section let's see how we can take advantage of the blocking message to wipe data on the device, by adding the following piece of code (in the default <code>initOptions.js</code> file in this case).</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var wlInitOptions = {
 	 onErrorRemoteDisableDenial : function (message, downloadLink) {
 		 if(message==="This device has been decommissioned") {

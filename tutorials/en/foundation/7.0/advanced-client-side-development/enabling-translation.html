@@ -2,13 +2,11 @@
 layout: tutorial
 title: Enabling translation
 relevantTo: [hybrid]
+weight: 4
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/EnablingTranslationProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/EnablingTranslationProject.zip">Download Studio project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>You can use the IBM MobileFirst Platform Foundation framework to enable the translation of applications into other languages.<br />
 Items that can be translated are application strings and system messages.<br />
@@ -30,97 +28,102 @@ In Eclipse, navigate to <strong>Window > Preferences > General > Workspace</stro
 <img src="{{ site.baseurl }}/assets/backup/05_05_encoding.png"/></p>
 <h2 id="strings">Enabling translation of application strings</h2>
 <p>You can find the <code>messages.js</code> file, which is intended for application strings, in the <code>common\js</code> folder.<br />
-{% highlight javascript %} <br />
-Messages = {<br />
-  headerText: "Default header",<br />
-  actionsLabel: "Default action label",<br />
-  sampleText: "Default sample text",<br />
-};<br />
- {% endhighlight %} </p>
+{% highlight javascript linenos %}
+Messages = {
+    headerText: "Default header",
+    actionsLabel: "Default action label",
+    sampleText: "Default sample text",
+};
+{% endhighlight %} </p>
+
 <p>Application messages that are stored in the <code>messages.js</code> file can be referenced in two ways:</p>
 <ul>
 <li>As a JavaScript object property. For example: <code>Messages.headerText</code></li>
 <li>As an ID of an HTML element with <code>class="translate"</code>.<br />
-{% highlight html %} <br />
-<h1 id="headerText" class="translate"></h1><br />
- {% endhighlight %} 
+{% highlight html linenos %}
+<h1 id="headerText" class="translate"></h1>
+{% endhighlight %} 
 </li>
 </ul>
+
 <h2 id="system">Enabling translation of system messages</h2>
 <p>It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password".<br />
 System messages are stored in the <code>WL.ClientMessages</code> object.<br />
 You can find a full list of system messages in the <code>www\default\worklight\messages\messages.json</code> file, which is inside the generated projects (iOS, Android, Windows Phone 8, and so on,…).<br />
 To enable the translation of a system message, override it in your JavaScript application.<br />
-{% highlight javascript %} <br />
-WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";<br />
- {% endhighlight %} </p>
+{% highlight javascript linenos %}
+WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
+{% endhighlight %} </p>
 <p>Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.</p>
 <h2 id="multilang">Multilanguage translation</h2>
 <p>Using JavaScript, you can implement multilanguage translation for your applications.</p>
 <ol>
 <li>Set up the default application strings in the <code>messages.js</code> file.<br />
-{% highlight javascript %} <br />
-Messages = {<br />
-  headerText: "Default header",<br />
-  actionsLabel: "Default action label",<br />
-  sampleText: "Default sample text",<br />
-  englishLanguage : "English",<br />
-  frenchLanguage : "French",<br />
-  russianLanguage : "Russian",<br />
-  hebrewLanguage : "Hebrew"<br />
-};<br />
- {% endhighlight %} </p>
+{% highlight javascript linenos %}
+Messages = {
+    headerText: "Default header",
+    actionsLabel: "Default action label",
+    sampleText: "Default sample text",
+    englishLanguage : "English",
+    frenchLanguage : "French",
+    russianLanguage : "Russian",
+    hebrewLanguage : "Hebrew"
+};
+{% endhighlight %} </p>
 </li>
 <li>Override specific strings when required.<br />
-{% highlight javascript %} <br />
-function setFrench(){<br />
-  Messages.headerText = "Traduction";<br />
-  Messages.actionsLabel = "Sélectionnez une langue:";<br />
-  Messages.sampleText = "Ceci est un exemple de texte en français.";<br />
-}<br />
- {% endhighlight %} 
+
+{% highlight javascript linenos %}
+function setFrench(){
+    Messages.headerText = "Traduction";
+    Messages.actionsLabel = "Sélectionnez une langue:";
+    Messages.sampleText = "Ceci est un exemple de texte en français.";
+}
+{% endhighlight %} 
 </li>
 <li>Update the GUI components with the new strings.<br />
 You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic.<br />
 Each time that an element is updated, it is updated with different strings according to the active language.</p>
-<p>{% highlight javascript %} <br />
-function languageChanged(lang) {<br />
-  if (typeof(lang)!="string")<br />
-    lang = $("#languages").val();</p>
-<p>    switch (lang){<br />
-      case "english":<br />
-        setEnglish();<br />
-        break;<br />
-      case "french":<br />
-        setFrench();<br />
-        break;<br />
-      case "russian":<br />
-        setRussian();<br />
-        break;<br />
-      case "hebrew":<br />
-        setHebrew();<br />
-        break;<br />
-    }</p>
-<p>    if ($("#languages").val()=="hebrew")<br />
-      $("#wrapper").css({direction: 'rtl'});<br />
-    else<br />
-      $("#wrapper").css({direction: 'ltr'});</p>
-<p>    $("#sampleText").html(Messages.sampleText);<br />
-    $("#headerText").html(Messages.headerText);<br />
-    $("#actionsLabel").html(Messages.actionsLabel);<br />
-}<br />
- {% endhighlight %} 
+<p>{% highlight javascript linenos %}
+function languageChanged(lang) {
+    if (typeof(lang)!="string")
+        lang = $("#languages").val();
+        switch (lang){
+          case "english":
+            setEnglish();
+            break;
+          case "french":
+            setFrench();
+            break;
+          case "russian":
+            setRussian();
+            break;
+          case "hebrew":
+            setHebrew();
+            break;
+        }
+    
+    if ($("#languages").val()=="hebrew")
+        $("#wrapper").css({direction: 'rtl'});
+    else
+        $("#wrapper").css({direction: 'ltr'});
+    
+    $("#sampleText").html(Messages.sampleText);
+    $("#headerText").html(Messages.headerText);
+    $("#actionsLabel").html(Messages.actionsLabel);
+}
+{% endhighlight %} 
 </li>
 </ol>
 <h2 id="detectLocale">Detecting the device locale and language</h2>
 <p>It is possible to detect the locale and the language of the device.<br />
 Use the <code>WL.App.getDeviceLocale()</code> and <code>WL.App.getDeviceLanguage()</code> functions to detect the current locale.<br />
-{% highlight javascript %} <br />
-var locale = WL.App.getDeviceLocale();<br />
-var lang = WL.App.getDeviceLanguage();<br />
-WL.Logger.debug(">> Detected locale: " + locale);<br />
-WL.Logger.debug(">> Detected language: " + lang);<br />
- {% endhighlight %} <br />
+{% highlight javascript linenos %}
+var locale = WL.App.getDeviceLocale();
+var lang = WL.App.getDeviceLanguage();
+WL.Logger.debug(">> Detected locale: " + locale);
+WL.Logger.debug(">> Detected language: " + lang);
+{% endhighlight %}
 <img src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png"/></p>
 <h2 id="sample">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/EnablingTranslationProject.zip">Click to download</a> the Studio project.</p>

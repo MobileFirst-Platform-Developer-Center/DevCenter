@@ -9,7 +9,7 @@ relevantTo: [windowsphone8]
 Also mentioned are the addresses and ports that are required for notifications to arrive to the supported Microsoft Push Notification Service vendor (MPNS).</p>
 <p><strong>Prerequisite:</strong> Make sure that you read the <a href="../../../hello-world/configuring-a-native-windows-phone-8-application-with-the-mfp-sdk/"> Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a> tutorial first.</p>
 <h2 id="settingUpTheProject">Setting up the project</h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/11/nativeWP8PushProjectAdapterExpanded.png"><img src="{{ site.baseurl }}/assets/backup/nativeWP8PushProjectAdapterExpanded.png" alt="nativeWP8PushProjectAdapterExpanded" width="256" height="379" class="alignright size-full wp-image-4092" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/nativeWP8PushProjectAdapterExpanded.png" /></p>
 <p>To send push notifications to Windows Phone 8 devices, use the Microsoft Push Notifications Service (MPNS).</p>
 <ul>
 <li>Non-authenticated push notification does not require any setup from the developer. Authenticated push notification requires a Windows Phone Dev Center account.</li>
@@ -24,26 +24,26 @@ Also mentioned are the addresses and ports that are required for notifications t
 <p>        Add the <strong>pushSender</strong> element under the nativeWindows8App environment (these settings are also editable with the Application Descriptor Editor in Design mode).</p>
 <ul>
 <li>Non-authenticated push
-<p>[code lang="xml" highlight="5"]<br />
-&lt;nativeWindowsPhone8App id=&quot;AppName&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot;<br />
-	version=&quot;1.0&quot; xmlns=&quot;http://www.worklight.com/native-windowsphone8-descriptor&quot;&gt;<br />
-	&lt;displayName&gt;AppName&lt;/displayName&gt;<br />
-	&lt;description&gt;AppName&lt;/description&gt;<br />
-	&lt;pushSender /&gt;<br />
-&lt;/nativeWindowsPhone8App&gt;<br />
-[/code]
+<p>{% highlight xml linenos %}<br />
+<nativeWindowsPhone8App id="AppName" platformVersion="7.0.0.00.20150312-0731"<br />
+	version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor"><br />
+	<displayName>AppName</displayName><br />
+	<description>AppName</description><br />
+	<pushSender /><br />
+</nativeWindowsPhone8App><br />
+{% endhighlight %}
 </li>
 <li>Authenticated push<br />
-[code lang="xml" highlight="5,6,7"]<br />
-&lt;nativeWindowsPhone8App id=&quot;AppName&quot; platformVersion=&quot;7.0.0.00.20150312-0731&quot;<br />
-	version=&quot;1.0&quot; xmlns=&quot;http://www.worklight.com/native-windowsphone8-descriptor&quot;&gt;<br />
-	&lt;displayName&gt;AppName&lt;/displayName&gt;<br />
-	&lt;description&gt;AppName&lt;/description&gt;<br />
-        &lt;pushSender&gt;<br />
-             &lt;authenticatedPush serviceName=&quot;&quot; keyAlias=&quot;&quot; keyAliasPassword=&quot;&quot;/&gt;<br />
-        &lt;/pushSender&gt;<br />
-&lt;/nativeWindowsPhone8App&gt;<br />
-[/code]</p>
+{% highlight xml linenos %}<br />
+<nativeWindowsPhone8App id="AppName" platformVersion="7.0.0.00.20150312-0731"<br />
+	version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor"><br />
+	<displayName>AppName</displayName><br />
+	<description>AppName</description><br />
+        <pushSender><br />
+             <authenticatedPush serviceName="" keyAlias="" keyAliasPassword=""/><br />
+        </pushSender><br />
+</nativeWindowsPhone8App><br />
+{% endhighlight %}</p>
 <ul>
 <li>Replace <strong>serviceName</strong> value with the service name.</li>
 <li>Replace <strong>keyAlias</strong> value with the certificate alias.</li>
@@ -63,7 +63,7 @@ Also mentioned are the addresses and ports that are required for notifications t
 <li><code>wlServerContext</code> - The context root of your MobileFirst Server instance.</li>
 <li>wlMPNSServiceName = Add the MPNS service name for authenticated push.</li>
 </ul>
-<p>[code lang="xml"]<br />
+<p>{% highlight xml linenos %}<br />
 wlServerProtocol = http<br />
 wlServerHost =<br />
 wlServerPort = 10080<br />
@@ -73,14 +73,14 @@ wlAppVersion = 1.0<br />
 wlEnvironment = WindowsPhone8native<br />
 wlPlatformVersion = 7.0.0.0<br />
 #languagePreferences = Add locales in order of preference (e.g. fr, en, pt-BR)<br />
-wlMPNSServiceName = Add the MPNS service name for authenticated push.[/code]</li>
+wlMPNSServiceName = Add the MPNS service name for authenticated push.{% endhighlight %}</li>
 <li>
 <h3>Modify the native Windows Phone 8 project.</h3>
 <p>    Edit the <code>Properties\WMAppManifest.xml</code> file and add the following capabilities:<br />
-[code lang="xml"]<br />
-&lt;Capability Name=&quot;ID_CAP_PUSH_NOTIFICATION&quot; /&gt;<br />
-&lt;Capability Name=&quot;ID_CAP_IDENTITY_DEVICE&quot; /&gt;<br />
-[/code]</li>
+{% highlight xml linenos %}<br />
+<Capability Name="ID_CAP_PUSH_NOTIFICATION" /><br />
+<Capability Name="ID_CAP_IDENTITY_DEVICE" /><br />
+{% endhighlight %}</li>
 </ol>
 <h2>Windows Phone 8 Push Notifications Service</h2>
 <p>No specific port needs to be open in your server configuration.<br />

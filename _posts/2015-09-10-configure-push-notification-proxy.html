@@ -17,7 +17,7 @@ author:
 
 <p>Once you have downloaded and installed Apache webserver, navigate to <code>httpd.conf</code> file under "conf" folder. In <code>httpd.conf</code>, load and enable proxy modules :</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule proxy_connect_module modules/mod_proxy_connect.so
 LoadModule proxy_ftp_module modules/mod_proxy_ftp.so
@@ -26,7 +26,7 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 
 <p>In <code>httpd.conf</code> find the section on Proxy server directives .Configure Forward Proxy by making the following changes:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 # Proxy Server directives. Uncomment the following lines to enable the proxy server:
 <IfModule mod_proxy.c>
 #Enable the forward proxy server. Note: Do not use the ProxyRequests directive if
@@ -45,7 +45,7 @@ ProxyRequests On
 
 <p>In the MFPF project ,edit your <code>worklight.properties</code> file to configure GCM notifications to be routed through the proxy:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 #########################################
 #	Push GCM proxy settings
 #########################################
@@ -84,7 +84,7 @@ push.gcm.proxy.port=<proxy port>
 
 <p>Go to MFPF project and edit your worklight.properties file to configure APNs notifications to be routed through the SOCKS proxy:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 #############################################
 #	Push APNS proxy settings
 #############################################

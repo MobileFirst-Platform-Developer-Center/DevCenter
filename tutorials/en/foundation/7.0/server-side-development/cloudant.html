@@ -2,13 +2,11 @@
 layout: tutorial
 title: Integrating with Cloudant by using an adapter
 relevantTo: [hybrid]
+weight: 17
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/CloudantAdapterDemoProject.zip
 ---
-<div id="samplesAndPersonas">
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/CloudantAdapterDemoProject.zip">Download Studio project</a>
-        </li>
-</ul>
 
 <h2>What is Cloudant?</h2>
 <p>Cloudant is a NoSQL Database based on CouchDB that is included with the product as a component called IBM MobileFirst Cloudant Local Data Layer Edition. Cloudant is also available as a standalone installed product and as a Database as a Service (DBaaS) on IBM Bluemix and cloudant.com.</p>
@@ -28,58 +26,45 @@ relevantTo: [hybrid]
 <p>  Then, open the <code>CloudantAdapterDemo/adapters/CloudantAdapter/CloudantAdapter.xml</code> file.</p>
 <p>  The adapter uses basic authentication to connect to the Cloudant database. Enter your database location and username and password into the <code>CloudantAdapter.xml</code> file. You can obtain this information from Cloudant.</p>
 <p>  To avoid exposing the user credentials in <code>CloudantAdapter.xml</code>, you can leverage Cloudant support for API keys and passwords.</p>
-<p>{% highlight xml %} <br />
-<?xml version="1.0" encoding="UTF-8"?><br />
-<!--<br />
-COPYRIGHT LICENSE: This information contains sample code provided in source code form. You may copy, modify, and distribute<br />
-these sample programs in any form without payment to IBM® for the purposes of developing, using, marketing or distributing<br />
-application programs conforming to the application programming interface for the operating platform for which the sample code is written.<br />
-Notwithstanding anything to the contrary, IBM PROVIDES THE SAMPLE SOURCE CODE ON AN "AS IS" BASIS AND IBM DISCLAIMS ALL WARRANTIES,<br />
-EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OR CONDITIONS OF MERCHANTABILITY, SATISFACTORY QUALITY,<br />
-FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT. IBM SHALL NOT BE LIABLE FOR ANY DIRECT,<br />
-INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR OPERATION OF THE SAMPLE SOURCE CODE.<br />
-IBM HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS OR MODIFICATIONS TO THE SAMPLE SOURCE CODE.</p>
-<p>--><br />
-<wl:adapter name="CloudantAdapter"<br />
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br />
-xmlns:wl="http://www.ibm.com/mfp/integration"<br />
-xmlns:http="http://www.ibm.com/mfp/integration/http"></p>
-<p>  <displayName>CloudantAdapter</displayName><br />
-  <description>CloudantAdapter</description><br />
-  <connectivity><br />
-    <connectionPolicy xsi:type="http:HTTPConnectionPolicyType"><br />
-        <protocol>https</protocol><br />
-        <domain>mylogin.cloudant.com</domain><br />
-        <port>443</port><br />
-        <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds><br />
-        <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds><br />
-        <authentication><br />
-          <basic/><br />
-          <serverIdentity><br />
-            <username>mylogin</username><br />
-            <password>mypassword</password><br />
-          </serverIdentity><br />
-        </authentication><br />
-        <maxConcurrentConnectionsPerNode>4</maxConcurrentConnectionsPerNode><br />
-        <!-- Following properties used by adapter's key manager for choosing specific certificate from key store<br />
-          <sslCertificateAlias></sslCertificateAlias><br />
-          <sslCertificatePassword></sslCertificatePassword><br />
-        --><br />
-    </connectionPolicy><br />
-  </connectivity></p>
-<p>  <procedure name="createDB"/><br />
-  <procedure name="deleteDB"/><br />
-  <procedure name="getAllDocs"/><br />
-  <procedure name="updateDocs"/><br />
-  <procedure name="createDoc"/><br />
-  <procedure name="getDoc"/><br />
-  <procedure name="updateDoc"/><br />
-  <procedure name="deleteDoc"/><br />
-  <procedure name="createDesignDoc"/><br />
-  <procedure name="search" /><br />
-  <procedure name="getView" /></p>
-<p></wl:adapter><br />
- {% endhighlight %} </p>
+<p>{% highlight xml linenos %}
+<?xml version="1.0" encoding="UTF-8"?>
+<wl:adapter name="CloudantAdapter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wl="http://www.ibm.com/mfp/integration" xmlns:http="http://www.ibm.com/mfp/integration/http">
+    <displayName>CloudantAdapter</displayName>
+    <description>CloudantAdapter</description>
+    <connectivity>
+        <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+            <protocol>https</protocol>
+            <domain>mylogin.cloudant.com</domain
+            <port>443</port>
+            <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+            <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+            <authentication>
+                <basic/>
+                <serverIdentity>
+                    <username>mylogin</username>
+                    <password>mypassword</password>
+                </serverIdentity>
+            </authentication>
+            <maxConcurrentConnectionsPerNode>4</maxConcurrentConnectionsPerNode>
+            <!-- Following properties used by adapter's key manager for choosing specific certificate from key store
+            <sslCertificateAlias></sslCertificateAlias>
+            <sslCertificatePassword></sslCertificatePassword>
+            -->
+        </connectionPolicy>
+    </connectivity>
+    <procedure name="createDB"/>
+    <procedure name="deleteDB"/>
+    <procedure name="getAllDocs"/>
+    <procedure name="updateDocs"/>
+    <procedure name="createDoc"/>
+    <procedure name="getDoc"/>
+    <procedure name="updateDoc"/>
+    <procedure name="deleteDoc"/>
+    <procedure name="createDesignDoc"/>
+    <procedure name="search" />
+    <procedure name="getView" />
+</wl:adapter>
+{% endhighlight %} </p>
 <h2>Starting the sample application and adapter</h2>
 <p>  Right-click adapters/CloudantAdapter and select <strong>Run As > Deploy MobileFirst Adapter</strong>.</p>
 <p>  Right-click apps/CloudantSampleApp and select <strong>Run As > Run on MobileFirst Development Server</strong>.</p>

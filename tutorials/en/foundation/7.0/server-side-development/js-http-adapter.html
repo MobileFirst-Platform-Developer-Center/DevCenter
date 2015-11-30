@@ -2,13 +2,11 @@
 layout: tutorial
 title: JavaScript HTTP Adapter
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+weight: 2
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/MobileFirstAdaptersProject.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/MobileFirstAdaptersProject.zip">Download Studio project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
 <p>By using IBM MobileFirst Platform Foundation HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.</p>
 <p>You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary.<br />
@@ -44,31 +42,29 @@ You can use either the <strong>Design</strong> or <strong>Source</strong> editor
 <li>Set the TCP Port.</li>
 </ul>
 <p>Declare the required procedures below the connectivity element.</p>
-<p>{% highlight xml %} <br />
-<wl:adapter name="HTTPAdapter"<br />
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br />
-  xmlns:wl="http://www.ibm.com/mfp/integration"<br />
-  xmlns:http="http://www.ibm.com/mfp/integration/http"></p>
-<p>  <displayName>HTTPAdapter</displayName><br />
-  <description>HTTPAdapter</description><br />
-  <connectivity><br />
-    <connectionPolicy xsi:type="http:HTTPConnectionPolicyType"><br />
-      <protocol>http</protocol><br />
-      <domain>rss.cnn.com</domain><br />
-      <port>80</port><br />
-      <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds><br />
-      <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds><br />
-      <maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode><br />
-      <!-- The following properties are used by the adapter's key manager for choosing specific certificate from the keystore.<br />
-      <sslCertificateAlias></sslCertificateAlias><br />
-      <sslCertificatePassword></sslCertificatePassword><br />
-      --><br />
-    </connectionPolicy><br />
-  </connectivity></p>
-<p>  <procedure name="getStories"/></p>
-<p>  <procedure name="getStoriesFiltered"/></p>
-<p></wl:adapter><br />
- {% endhighlight %} </p>
+<p>{% highlight xml linenos %}
+<wl:adapter name="HTTPAdapter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wl="http://www.ibm.com/mfp/integration" xmlns:http="http://www.ibm.com/mfp/integration/http">
+    <displayName>HTTPAdapter</displayName>
+    <description>HTTPAdapter</description>
+    <connectivity>
+        <connectionPolicy xsi:type="http:HTTPConnectionPolicyType"><
+            <protocol>http</protocol>
+            <domain>rss.cnn.com</domain>
+            <port>80</port>
+            <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+            <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+            <maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
+            <!-- The following properties are used by the adapter's key manager for choosing specific certificate from the keystore.<br />
+            <sslCertificateAlias></sslCertificateAlias>
+            <sslCertificatePassword></sslCertificatePassword>
+        -->
+        </connectionPolicy>
+    </connectivity>
+    
+    <procedure name="getStories"/>
+    <procedure name="getStoriesFiltered"/>
+</wl:adapter>
+{% endhighlight %} </p>
 <h2 id="javaScriptImplementation">JavaScript implementation</h2>
 <p>Procedures are implemented in the adapter JavaScript file.<br />
 The service URL is used for procedure invocations.</p>
@@ -86,16 +82,17 @@ Other parts of the URL can be parameterized; that is, substituted at run time by
 <p>In the JavaScript file, use the same procedure name as in the XML file.<br />
 The mandatory parameters to call the procedure are <code>method</code>, <code>path</code>, and <code>returnedContentType</code>.<br />
 The procedure can be parameterized at run time.</p>
-<p>{% highlight javascript %} <br />
-function getFeeds() {<br />
-  var input = {<br />
-      method : 'get',<br />
-      returnedContentType : 'xml',<br />
-      path : "rss.xml"<br />
-  };</p>
-<p>  return WL.Server.invokeHttp(input);<br />
-}<br />
- {% endhighlight %} </p>
+<p>{% highlight javascript linenos %}
+function getFeeds() {
+    var input = {
+        method : 'get',
+        returnedContentType : 'xml',
+        path : "rss.xml"
+    };
+    
+    return WL.Server.invokeHttp(input);<br />
+}
+{% endhighlight %} </p>
 <p>To call an HTTP request, use the <code>WL.Server.invokeHttp</code> method.<br />
 Provide an input parameter object, which must specify:</p>
 <ul>
@@ -112,20 +109,21 @@ Provide an input parameter object, which must specify:</p>
 <h2 id="xslTransformationFiltering">XSL transformation filtering</h2>
 <p>You can apply XSL transformation to the received data, for example to filter the data.<br />
 To apply XSL transformation, specify the transformation options in the input parameters of the procedure invocation.</p>
-<p>{% highlight javascript %} <br />
-function getFeedsFiltered() {</p>
-<p>  var input = {<br />
-      method : 'get',<br />
-      returnedContentType : 'xml',<br />
-      path : "rss.xml",<br />
-      transformation : {<br />
-        type : 'xslFile',<br />
-        xslFile : 'filtered.xsl'<br />
-      }<br />
-  };</p>
-<p>  return WL.Server.invokeHttp(input);<br />
-}<br />
- {% endhighlight %} </p>
+<p>{% highlight javascript linenos %}
+function getFeedsFiltered() {
+    var input = {
+        method : 'get',
+        returnedContentType : 'xml',
+        path : "rss.xml",
+        transformation : {
+            type : 'xslFile',
+            xslFile : 'filtered.xsl'
+        }
+    };
+ 
+    return WL.Server.invokeHttp(input);
+}
+{% endhighlight %} </p>
 <h2 id="creatingSoapServiceRequest">Creating a SOAP-based service request</h2>
 <p>You can use the <code>WL.Server.invokeHttp</code> method to create a <strong>SOAP</strong> envelope, which can be sent directly.</p>
 <p>To call a SOAP-based service in an HTTP adapter, you must encode the SOAP XML envelope within the request body.<br />
@@ -133,16 +131,16 @@ Encoding XML within JavaScript is simple: just use <strong>E4X</strong>, which i
 <p>If you receive error messages for SOAP envelopes, disable the JavaScript validator.<br />
 Click <strong>Project > Properties > Builders</strong> and clear <strong>JavaScript Validator</strong>.</p>
 <p>Use JavaScript to create a SOAP Envelope. It is possible to insert JavaScript code and variables into SOAP XML. Such additional code is evaluated at run time.</p>
-<p>{% highlight javascript %} <br />
-var request =<br />
-  <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"><br />
-    <soap:Body><br />
-      <CelsiusToFahrenheit xmlns="http://www.w3schools.com/webservices/"><br />
-        <Celsius>{celsiusTemp}</Celsius><br />
-      </CelsiusToFahrenheit><br />
-    </soap:Body><br />
-  </soap:Envelope>;</p>
-<p> {% endhighlight %} </p>
+<p>{% highlight javascript linenos %}
+var request =
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+    <CelsiusToFahrenheit xmlns="http://www.w3schools.com/webservices/">
+        <Celsius>{celsiusTemp}</Celsius>
+    </CelsiusToFahrenheit>
+    </soap:Body>
+    </soap:Envelope>;
+{% endhighlight %} </p>
 <p>The<code> WL.Server.invokeHttp(options)</code> method is used to call a request for a SOAP service.</p>
 <p>The Options object must include the following properties:</p>
 <ul>
@@ -151,18 +149,18 @@ var request =<br />
 <li>A <code>path</code> property: a service path</li>
 <li>A <code>body</code> property: <code>content</code> (SOAP XML as a string) and <code>contentType</code></li>
 </ul>
-<p>{% highlight javascript %} <br />
-var input = {<br />
-      method: 'post',<br />
-      returnedContentType: 'xml',<br />
-      path: '/webservices/tempconvert.asmx',<br />
-      body: {<br />
-        content: request.toString(),<br />
-        contentType: 'text/xml; charset=utf-8',<br />
-      },<br />
-  };</p>
-<p>  var result = WL.Server.invokeHttp(input);<br />
- {% endhighlight %} </p>
+<p>{% highlight javascript linenos %}
+var input = {
+    method: 'post',
+    returnedContentType: 'xml',
+    path: '/webservices/tempconvert.asmx',
+    body: {
+        content: request.toString(),
+        contentType: 'text/xml; charset=utf-8',
+    },
+};
+var result = WL.Server.invokeHttp(input);
+{% endhighlight %} </p>
 <h2 id="servicesDiscoveryWizard">Services discovery wizard</h2>
 <p>With MobileFirst Studio, you can reduce development time by using the Discover Back-end Services tool in order to autogenerate adapters from the following services:</p>
 <ul>

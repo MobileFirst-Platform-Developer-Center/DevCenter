@@ -2,7 +2,8 @@
 layout: tutorial
 title: Working with Beacons
 show_children: true
-relevantTo: [ios]
+relevantTo: [ios,android]
+weight: 6
 ---
 <h2>Overview</h2>
 <p>Beacons are represented as <code>Beacon</code> objects in IBM MobileFirst Platform Foundation. Beacons are identified by universally unique identifiers (UUID), major and minor values. The UUID in its canonical form is represented by 32 lowercase hexadecimal digits. The major and minor values are positive numbers in the range of 0-65535 (inclusive).</p>
@@ -18,29 +19,30 @@ relevantTo: [ios]
 </ul>
 <h2 id="registeringbeacons">Registering beacons</h2>
 <p>Register the following beacons by using the beacons (PUT) REST API.<br />
-[code lang="js"]<br />
-{<br />
-    &quot;uuid&quot;: &quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;,<br />
-    &quot;major&quot;: 1,<br />
-    &quot;minor&quot;: 4417,<br />
-    &quot;customData&quot;: {<br />
-        &quot;branchName&quot;: &quot;Indiranagar, Bangalore&quot;<br />
-    }<br />
-}[/code]</p>
-<p>[code lang="js"]<br />
-{<br />
-    &quot;uuid&quot;: &quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;,<br />
-    &quot;major&quot;: 2,<br />
-    &quot;minor&quot;: 4417,<br />
-    &quot;customData&quot;: {<br />
-        &quot;branchName&quot;: &quot;Koramangala, Bangalore&quot;<br />
-    }<br />
-}[/code]</p>
+{% highlight js linenos %}
+{
+    "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+    "major": 1,<
+    "minor": 4417,
+    "customData": {
+        "branchName": "Indiranagar, Bangalore"
+    }
+}{% endhighlight %}</p>
+<p>{% highlight js linenos %}
+{
+    "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+    "major": 2,
+    "minor": 4417,
+    "customData": {
+        "branchName": "Koramangala, Bangalore"
+    }
+}
+{% endhighlight %}</p>
 <h2 id="registeringbeacontriggers">Registering beacon triggers</h2>
 <p>Beacon triggers are represented as <code>BeaconTrigger</code> objects in IBM MobileFirst Platform Foundation. Beacon triggers are identified by the following parameters: <code>triggerName</code>, <code>triggerType</code>, <code>proximityState</code>, <code>dwellingTime</code> (optional), and <code>actionPayload</code>.</p>
 <ul>
 <li>The <code><strong>triggerType</strong></code> parameter determines when the trigger is activated, depending on the device location.<br />
-<table border="1" style="width:100%">
+<table>
 <tr>
 <td>Trigger Type</td>
 <td>Description</td>
@@ -65,7 +67,7 @@ relevantTo: [ios]
 <p><br clear="all" />
 </li>
 <li>The value of the <code><strong>proximityState</strong></code> parameter indicates when the trigger is activated, depending on the distance between the device and the beacon region. The default value is <code>Far</code>.<br />
-<table border="1" style="width:100%">
+<table>
 <tr>
 <td>Proximity State</td>
 <td>Description</td>
@@ -93,60 +95,64 @@ relevantTo: [ios]
 <p><br clear="all" /><br />
 You can register, update, or delete beacon triggers by using REST APIs. For detailed information about the REST APIs, see the Reference part of the user documentation.</p>
 <p>Register the following beacon triggers by using the beacon trigger REST API (POST).</p>
-<p>[code lang="js"]<br />
-{<br />
-    &quot;triggerName&quot;: &quot;entryIntoBranch&quot;,<br />
-     &quot;triggerType&quot;: &quot;Enter&quot;,<br />
-     &quot;proximityState&quot;: &quot;Near&quot;,<br />
-     &quot;actionPayload&quot;: {<br />
-        &quot;alert&quot;: &quot;Welcome to $branchName branch of IMF Bank&quot;<br />
-     }<br />
- }[/code]</p>
+<p>{% highlight js linenos %}
+{
+    "triggerName": "entryIntoBranch",
+    "triggerType": "Enter",
+    "proximityState": "Near",
+    "actionPayload": {
+        "alert": "Welcome to $branchName branch of IMF Bank"
+    }
+}
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
-<p>[code lang="js"]<br />
-{<br />
-    &quot;triggerName&quot;: &quot;entryIntoLoanSection&quot;,<br />
-    &quot;triggerType&quot;: &quot;Enter&quot;,<br />
-    &quot;proximityState&quot;: &quot;Immediate&quot;,<br />
-    &quot;actionPayload&quot;: {<br />
-        &quot;alert&quot;: &quot;Welcome to the Loan processing section. You will be assisted soon by our staff.&quot;<br />
-    }<br />
-}[/code]</p>
+<p>{% highlight js linenos %}
+{
+    "triggerName": "entryIntoLoanSection",
+    "triggerType": "Enter",
+    "proximityState": "Immediate",
+    "actionPayload": {
+        "alert": "Welcome to the Loan processing section. You will be assisted soon by our staff."
+    }
+}
+{% endhighlight %}</p>
 <p><br clear="all" /></p>
-<p>[code lang="js"]<br />
-{<br />
-    &quot;triggerName&quot;: &quot;exitFromBranch&quot;,<br />
-     &quot;triggerType&quot;: &quot;Exit&quot;,<br />
-     &quot;proximityState&quot;: &quot;Far&quot;,<br />
-     &quot;actionPayload&quot;: {<br />
-        &quot;alert&quot;: &quot;Thank you for visiting our $branchName branch. Have a nice day!&quot;<br />
-     }<br />
- }[/code]</p>
+<p>{% highlight js linenos %}
+{
+    "triggerName": "exitFromBranch
+    "triggerType": "Exit",
+    "proximityState": "Far",
+    "actionPayload": {
+        "alert": "Thank you for visiting our $branchName branch. Have a nice day!"
+    }
+}
+{% endhighlight %}</p>
 <h2 id="associatingbeacons">Associating beacons and beacon triggers</h2>
 <p>An association between a beacon and a beacon trigger is represented as a <code>BeaconTriggerAssociation</code> object in IBM MobileFirst Platform Foundation. You create, update, or delete associations by using REST APIs. For detailed information about REST APIs, see the Reference part of the user documentation.</p>
 <p>To create associations between beacons and triggers for an application, use the Associate beacons and triggers (PUT) REST API:<br />
-[code lang="js"]<br />
-{<br />
-    &quot;beacons&quot;: [<br />
-        {<br />
-            &quot;uuid&quot;: &quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;,<br />
-            &quot;major&quot;: 1,<br />
-            &quot;minor&quot;: 4417<br />
-        },<br />
-        {<br />
-            &quot;uuid&quot;: &quot;3d402cf0-3691-4bd9-97ff-0b0a93a160ef&quot;,<br />
-            &quot;major&quot;: 2,<br />
-            &quot;minor&quot;: 4417<br />
-        }<br />
-    ],<br />
-    &quot;triggers&quot;: [<br />
-        {<br />
-            &quot;triggerName&quot;: &quot;entryIntoBranch&quot;,<br />
-            &quot;triggerName&quot;: &quot;exitFromBranch&quot;,<br />
-            &quot;triggerName&quot;: &quot;entryIntoLoanSection&quot;<br />
-        }<br />
-    ]<br />
-}[/code]</p>
+{% highlight js linenos %}
+{
+    "beacons": [
+        {
+            "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+            "major": 1,
+            "minor": 4417
+        },
+        {>
+            "uuid": "3d402cf0-3691-4bd9-97ff-0b0a93a160ef",
+            "major": 2,
+            "minor": 4417
+        }
+    ],
+    "triggers": [
+        {
+            "triggerName": "entryIntoBranch",
+            "triggerName": "exitFromBranch",
+            "triggerName": "entryIntoLoanSection"
+        }
+    ]
+}
+{% endhighlight %}</p>
 <h2 id="retrievingbeacons">Using the server-side API to retrieve beacons and triggers</h2>
 <p>You can retrieve beacons, triggers, and their associations by using the<br />
 <code>WL.Server.getBeaconsAndTriggers(applicationName, beaconsOfInterest)</code> API.</p>

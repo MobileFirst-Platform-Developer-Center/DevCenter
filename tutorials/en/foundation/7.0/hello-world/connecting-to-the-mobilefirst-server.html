@@ -2,6 +2,7 @@
 layout: tutorial
 title: Connecting to the MobileFirst Server
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+weight: 6
 ---
 <h2>Overview</h2>
 <p>To provide the best startup experience, a MobileFirst Hybrid application starts without connecting to the MobileFirst Server. It is up to the developer to decide when should the application connect to the MobileFirst Server.</p>
@@ -14,7 +15,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 
 <h2>API Signatures</h2>
 <h3>JavaScript</h3>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 WL.Client.connect(
   {
     onSuccess: successCallback,
@@ -25,21 +26,21 @@ WL.Client.connect(
 
 
 <h3>Objective-C</h3>
-{% highlight objc %}
+{% highlight objc linenos %}
 [[WLClient sharedInstance] wlConnectWithDelegate:myConnectListener];
 {% endhighlight %}
 
 <p>Where <code>myConnectListener</code> is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 
 <h3>Swift</h3>
-{% highlight swift %}
+{% highlight swift linenos %}
 WLClient.sharedInstance().wlConnectWithDelegate(myConnectListener)
 {% endhighlight %}
 
 <p>Where <code>myConnectListener</code> is an instance of a class that conforms to the <code>WLDelegate</code> protocol, with <code>onSuccess</code> and <code>onFailure</code> methods.</p>
 
 <h3>Java</h3>
-{% highlight java %}
+{% highlight java linenos %}
 WLClient.createInstance(this).connect(myConnectListener);
 {% endhighlight %}
 

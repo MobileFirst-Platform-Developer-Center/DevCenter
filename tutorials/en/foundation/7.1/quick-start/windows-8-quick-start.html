@@ -3,6 +3,7 @@ layout: tutorial
 title: Quick Start demonstration
 relevantTo: [windows8]
 ---
+<br>
 <p>The purpose of this demonstration is to make you experience an end-to-end flow where the MobileFirst Platform Foundation SDK for Windows 8 Universal is integrated into a Visual Studio project and used to retrieve data by using a MobileFirst adapter.</p>
 <p>To learn more about creating projects and applications, using adapters, and lots more, <a href="../">visit the Native Windows 8 Development</a> landing page.</p>
 <p><strong>Prerequisite:</strong> Make sure that you have installed the following software:</p>
@@ -17,17 +18,19 @@ relevantTo: [windows8]
 <ul>
 <li>
 <h4>Create a new project and Windows 8 Universal framework/server-side application entity.</h4>
-<p>                [code lang="shell"]<br />
-                mfp create MyProject<br />
-                cd MyProject<br />
-                mfp add api MyWin8Universal -e windows8<br />
-                [/code]
+<p>                
+{% highlight bash %}
+mfp create MyProject
+cd MyProject
+mfp add api MyWin8Universal -e windows8
+{% endhighlight %}
             </li>
 <li>
 <h4>Add an HTTP adapter to the project.</h4>
-<p>                [code firstline="4" lang="shell"]<br />
-                mfp add adapter MyAdapter -t http<br />
-                [/code]
+<p>                
+{% highlight bash %}
+mfp add adapter MyAdapter -t http
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -36,10 +39,11 @@ relevantTo: [windows8]
 <ul>
 <li>
 <h4>Start the MobileFirst Server and deploy the server-side application entity and adapter.</h4>
-<p>                [code firstline="5" lang="shell"]<br />
-                mfp start<br />
-                mfp push<br />
-                [/code]
+<p>                
+{% highlight bash %}
+mfp start
+mfp push
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -58,12 +62,12 @@ relevantTo: [windows8]
 <h3>Implement the MobileFirst adapter invocation.</h3>
 <ul>
 <li>The following code invokes an adapter:<br />
-[code lang="csharp"]<br />
-WLResourceRequest request = new WLResourceRequest(&quot;/adapters/MyAdapter/getStories&quot;, &quot;GET&quot;);<br />
-request.setQueryParameter(&quot;params&quot;,&quot;technology&quot;);<br />
-MyInvokeListener listener = new MyInvokeListener();<br />
-request.send(listener);<br />
-[/code]
+{% highlight csharp linenos %}
+WLResourceRequest request = new WLResourceRequest("/adapters/MyAdapter/getStories", "GET");
+request.setQueryParameter("params","technology");
+MyInvokeListener listener = new MyInvokeListener();
+request.send(listener);
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -90,4 +94,4 @@ Private Networks (Client and Server)</h4>
 <p>Review the Visual Studio console for the data retrieved by the adapter request.</p>
 </li>
 </ol>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/05/VisualStudioConsole.png"><img src="{{ site.baseurl }}/assets/backup/VisualStudioConsole-1024x405.png" alt="VisualStudioConsole" width="980" height="388" class="aligncenter size-large wp-image-14788" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/VisualStudioConsole-1024x405.png" /></p>

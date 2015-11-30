@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Android - Using native pages
+breadcrumb_title: Using native pages
 relevantTo: [hybrid]
 weight: 4
 downloads:
@@ -16,7 +17,7 @@ With this method, data can be sent from JavaScript to the opened native page, an
 
 As a first step, <code>WL.NativePage.show()</code> needs to be implemented in order to open the native page:
 
-{% highlight javascript %}function openNativePage(){
+{% highlight javascript linenos %}function openNativePage(){
     var params = {
         nameParam : $('#nameInput').val()
     };
@@ -32,7 +33,7 @@ As a first step, <code>WL.NativePage.show()</code> needs to be implemented in or
 
 To handle the callback function:
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function backFromNativePage(data){
 	alert("Received phone number is: " + data.phoneNumber);
 }
@@ -48,14 +49,14 @@ In Android, the native page must be implemented as an Android Activity, or exten
 
 <strong>Step 1</strong>
 As with any Activity, it must be declared in the <code>AndroidManifest.xml</code> file. For example:
-{% highlight xml %}
+{% highlight xml linenos %}
 <activity android:name=".HelloNative"/><activity>
 {% endhighlight %}
 
 <strong>Step 2</strong>
 To retrieve custom data parameters that are passed from the web view, an <code>intent</code> should be used:
 
-{% highlight java %}
+{% highlight java linenos %}
 protected void onCreate(Bundle savedInstanceState) {
 super.onCreate(savedInstanceState);
 
@@ -68,7 +69,7 @@ When the native page switches back to the web view, the <code>finish()</code> fu
 To pass data back to the web view can be done by using an <code>Intent</code> object. For example:
 
 <b>Java:</b>
-{% highlight java %}
+{% highlight java linenos %}
 String phoneNumber = editText.getText().toString();
 Intent phoneNumberInfo = new Intent();
 phoneNumberInfo.putExtra("phoneNumber", phoneNumber);
@@ -77,7 +78,7 @@ finish();
 {% endhighlight %}
 
 <b>JavaScript:</b>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function backFromNativePage(data){
     alert("Received phone number is: " + data.phoneNumber);
 }

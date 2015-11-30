@@ -31,6 +31,7 @@ body {
 	height: 100%;
 	padding-top: 0;
 	font-family: $font_0, $font_1, $font_2;
+	-webkit-print-color-adjust:exact;
 }
 #wrap {
 	min-height: 100%;
@@ -162,8 +163,10 @@ code {
 	padding: 2px 0 2px 2px;
 }
 blockquote {
-	background-color: $color_alto_approx;
-	font-size: 90%;
+	background: #f9f9f9;
+	border-left: 10px solid #ccc;
+	padding: 0.5em 10px;
+	font-size: 110%;
 }
 @media(max-width: 768px) {
 	footer ul {

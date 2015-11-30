@@ -15,7 +15,7 @@ author:
 
 <p>Below I think one of the more important chunks of code to integrate React Native for iOS with the MobileFirst Platform Foundation. The code chunk is the MobileFirst Platform Foundation Adapter invocation call from the file <code>ResourceRequest.m</code> being exported into the React Native javascript code. In this section of code there are two important React Native methods. One being <code>RCT_EXPORT_MODULE();</code> which will allow you to export a native class into the React Native javascript. The other is <code>RCT_EXPORT_METHOD(...)</code> this class explicitly tells React to expose this class's method for use in the React Native javascript. Exporting the particular method below is going to pass in a path named "path" and also a callback named "results." The adapter call is getting a list of movies stored as JSON data to a particular path (this path ended up not being needed). Then that data is passed as the callback into the React Native code.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 #import <Foundation/Foundation.h>
 #import "WLResourceRequest.h"
 #import "ResourceRequest.h"
@@ -45,13 +45,13 @@ RCT_EXPORT_METHOD(getJavaAdapter:(NSString *)path results:(RCTResponseSenderBloc
 
 <p>It is important that you use require to import the module from the MobileFirst iOS SDK into the React Native javascript. Take note that the 'NativeModule' that is being imported is the name of the class above.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var ResourceRequest = require('NativeModules').ResourceRequest;
 {% endhighlight %}
 
 <p>After importing it is simple to use a method from that class inside the <code>index.ios.js</code> file. Below is the invocation of the MobileFirst Adapter from the React Native iOS javascript. The success call of this adapter invocation is going to populate a native <code>ListView</code> with movies from the JSON that is returned.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
     ResourceRequest.getJavaAdapter("cart", (error, result) => {
               if(error){
                 alert("No Dice");

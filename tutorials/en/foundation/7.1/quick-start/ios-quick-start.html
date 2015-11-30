@@ -3,6 +3,7 @@ layout: tutorial
 title: Quick Start demonstration
 relevantTo: [ios]
 ---
+<br>
 <p>The purpose of this demonstration is to experience an end-to-end flow where the MobileFirst Platform Foundation SDK for iOS is integrated into a Xcode project and used to retrieve data using a MobileFirst adapter.</p>
 <p>To learn more about creating projects and applications, using adapters and lots more, <a href="../">visit the Native iOS Development</a> landing page.</p>
 <p>Required installed:</p>
@@ -17,17 +18,19 @@ relevantTo: [ios]
 <ul>
 <li>
 <h4>Create a new project and iOS framework/server-side application entity</h4>
-<p>                [code lang="shell"]<br />
-                mfp create MyProject<br />
-                cd MyProject<br />
-                mfp add api MyiOSFramework -e ios<br />
-                [/code]
+<p>                
+{% highlight bash %}
+mfp create MyProject
+cd MyProject
+mfp add api MyiOSFramework -e ios
+{% endhighlight %}
             </li>
 <li>
 <h4>Add a HTTP adapter to the project</h4>
-<p>                [code firstline="4" lang="shell"]<br />
-                mfp add adapter MyAdapter -t http<br />
-                [/code]
+<p>               
+{% highlight bash %}
+mfp add adapter MyAdapter -t http
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -36,12 +39,13 @@ relevantTo: [ios]
 <ul>
 <li>
 <h4>Start the MobileFirst Server and deploy the server-side application entity and adapter</h4>
-<p>                [code firstline="5" lang="shell"]<br />
-                mfp start<br />
-                # Wait until a browser window is opened, displaying the MobileFirst Console<br />
-                mfp build<br />
-                mfp deploy<br />
-                [/code]
+<p>                
+{% highlight bash %}
+mfp start
+# Wait until a browser window is opened, displaying the MobileFirst Console
+mfp build
+mfp deploy
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -83,27 +87,33 @@ relevantTo: [ios]
 <li>
 <h4>AppDelegate.h</h4>
 <p>                Add the header:<br />
-                [code lang="objc"]#import &quot;WLResourceRequest.h&quot;[/code]
+{% highlight objc linenos %}
+#import "WLResourceRequest.h"
+{% endhighlight %}
             </li>
 <li style="margin-bottom:30px">
 <h4>AppDelegate.m</h4>
 <p>                Add the header:<br />
-                [code lang="objc"]#import &quot;WLResponse.h&quot;[/code]</p>
+{% highlight objc linenos %}
+#import "WLResponse.h"
+{% endhighlight %}</p>
 <p>                Add the following to <code>didFinishLaunchingWithOptions</code>:<br />
-[code lang="objc"]- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {<br />
-    NSURL* url = [NSURL URLWithString:@&quot;/adapters/MyAdapter/getFeed&quot;];<br />
-    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
-    [request setQueryParameterValue:@&quot;['technology']&quot; forName:@&quot;params&quot;];</p>
-<p>    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
-        if(error != nil){<br />
-             NSLog(@&quot;%@&quot;,error.description);<br />
-        }<br />
-        else{<br />
-            NSLog(@&quot;%@&quot;,response.responseJSON);<br />
-        }<br />
-    }];</p>
-<p>    return YES;<br />
-}[/code]
+{% highlight objc linenos %}
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSURL* url = [NSURL URLWithString:@"/adapters/MyAdapter/getFeed"];
+    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+    [request setQueryParameterValue:@"['technology']" forName:@"params"];
+    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+        if(error != nil){
+             NSLog(@"%@",error.description);
+        }
+        else{
+            NSLog(@"%@",response.responseJSON);
+        }
+    }];
+    return YES;
+}
+{% endhighlight %}
             </li>
 </ul>
 </li>
@@ -116,6 +126,6 @@ relevantTo: [ios]
 <li>
 <h3>Click <strong>Run</strong></h3>
 <p>    Review the Xcode console for the data retrieved by the adapter request.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/03/ios-quick-start-result.png"><img src="{{ site.baseurl }}/assets/backup/ios-quick-start-result-1024x574.png" alt="ios-quick-start-result" width="980" height="549" class="aligncenter size-large wp-image-9713" /></a>
+<p><img src="{{ site.baseurl }}/assets/backup/ios-quick-start-result-1024x574.png" />
     </li>
 </ol>

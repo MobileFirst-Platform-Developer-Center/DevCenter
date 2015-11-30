@@ -22,7 +22,7 @@ Application Authenticity Protection is <strong>not available</strong> in the Mob
 <li><a href="#setup">Setting up authenticity</a></li>
 </ul>
 <h2 id="authenticityFlowAndTypes">Authenticity flow and types</h2>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_15_check_flow.jpg"><img src="{{ site.baseurl }}/assets/backup/09_15_check_flow.jpg" alt="09_15_check_flow" width="720" height="400" class="aligncenter size-full wp-image-15623" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/09_15_check_flow.jpg" /></p>
 <p>The challenge token is processed by compiled native code, so that third-party attackers cannot see the logic of this processing.</p>
 <p>Application Authenticity Protection is based on certificate keys that are used to sign the application bundles.<br />
 Only the developer or the enterprise who have the original private key that was used to create the application are able to modify, repackage, and re-sign the bundle.</p>
@@ -46,22 +46,22 @@ Only the developer or the enterprise who have the original private key that was 
 <li>Add the relevant authentication realm to a security test.
 <ul>
 <li>If a <code>mobileSecurityTest</code> is used, add the <code>testAppAuthenticity</code> child element to it:<br />
-[code lang="xml" highlight="2"]<br />
-&lt;mobileSecurityTest name=&quot;MyMobileAuthenticityTest&quot;&gt;<br />
-  &lt;testAppAuthenticity/&gt;<br />
-  &lt;testDeviceId provisioningType=&quot;none&quot; /&gt;<br />
-  &lt;testUser realm=&quot;myMobileLoginForm&quot; /&gt;<br />
-&lt;/mobileSecurityTest&gt;<br />
-[/code]
+{% highlight xml linenos %}<br />
+<mobileSecurityTest name="MyMobileAuthenticityTest"><br />
+  <testAppAuthenticity/><br />
+  <testDeviceId provisioningType="none" /><br />
+  <testUser realm="myMobileLoginForm" /><br />
+</mobileSecurityTest><br />
+{% endhighlight %}
 </li>
 <li>If a <code>customSecurityTest</code> is used, add the <code>wl_authenticityRealm</code> realm to it:<br />
-[code lang="xml" highlight="2"]<br />
-&lt;customSecurityTest name=&quot;MyCustomAuthenticityTest&quot; &gt;<br />
-  &lt;test realm=&quot;wl_authenticityRealm&quot; step=&quot;1&quot;/&gt;<br />
-  &lt;test realm=&quot;wl_anonymousUserRealm&quot; isInternalUserID=&quot;true&quot; step=&quot;1&quot;/&gt;<br />
-  &lt;test realm=&quot;wl_deviceNoProvisioningRealm&quot; step=&quot;2&quot; isInternalDeviceID=&quot;true&quot;/&gt;<br />
-&lt;/customSecurityTest&gt;<br />
-[/code]
+{% highlight xml linenos %}<br />
+<customSecurityTest name="MyCustomAuthenticityTest" ><br />
+  <test realm="wl_authenticityRealm" step="1"/><br />
+  <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"/><br />
+  <test realm="wl_deviceNoProvisioningRealm" step="2" isInternalDeviceID="true"/><br />
+</customSecurityTest><br />
+{% endhighlight %}
 </li>
 </ul>
 </li>
@@ -74,9 +74,9 @@ Only the developer or the enterprise who have the original private key that was 
 <ul>
 <li><strong>By using the <code>wladm</code> program</strong><br />
 Use the <code>wladm</code> program (provided in the MobileFirst installation directory) to run the <code>enable extended-authenticity</code> command:<br />
-[code lang="Java"]<br />
-wladm enable extended-authenticity src-wlapp-file device-file &gt; dest-wlapp-file<br />
-[/code]</p>
+{% highlight java linenos %}<br />
+wladm enable extended-authenticity src-wlapp-file device-file > dest-wlapp-file<br />
+{% endhighlight %}</p>
 <ul>
 <li><code>src-wlapp-file</code> => Original binary app file (<code>.wlapp</code>)</li>
 <li><code>device-file</code> => Binary mobile app file (<code>.apk</code>, <code>.ipa</code>, or <code>.xap</code>)</li>
@@ -86,17 +86,17 @@ wladm enable extended-authenticity src-wlapp-file device-file &gt; dest-wlapp-fi
 </li>
 <li><strong>By using the <code>wladm</code> Ant task</strong><br />
 Use the <code>wladm</code> Ant task (provided in the MobileFirst installation directory) to run the <code>enable-extended-authenticity</code> command:<br />
-[code lang="XML"]<br />
-&lt;enable-extended-authenticity srcwlappfile=&quot;original-.wlapp-file&quot;<br />
-    devicefile=&quot;device file(.apk, .ipa, or .xap)&quot;<br />
-    destwlappfile=&quot;output-.wlapp-file&quot;/&gt;<br />
-[/code]
+{% highlight xml linenos %}<br />
+<enable-extended-authenticity srcwlappfile="original-.wlapp-file"<br />
+    devicefile="device file(.apk, .ipa, or .xap)"<br />
+    destwlappfile="output-.wlapp-file"/><br />
+{% endhighlight %}
   </li>
 </ul>
 <li>After running the <code>wladm</code> command or Ant task, deploy the resulting file to MobileFirst Server instance.</li>
 </ol>
 <p>You can use the MobileFirst Operations Console to see the authenticity level of an application.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/ExtendedAuthenticityAndroid.png"><img src="{{ site.baseurl }}/assets/backup/ExtendedAuthenticityAndroid.png" alt="ExtendedAuthenticityAndroid" width="927" height="209" class="aligncenter size-full wp-image-15670" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/ExtendedAuthenticityAndroid.png" /></p>
 <blockquote><p>For more information, see the topic about configuring extended app authenticity checking, in the user documentation.</p></blockquote>
 <h3 id="environmentSpecificSetup">Environment-specific setup</h3>
 <p>For basic authenticity, go through the basic configuration steps.<br />

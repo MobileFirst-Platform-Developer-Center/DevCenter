@@ -12,7 +12,7 @@ Callback methods are executed even when the application is running in the backgr
 <blockquote><p>For more information, refer to the "silent notifications" topics in the MobileFirst Platform user documentation, and in Apple's user documentation.</p></blockquote>
 <h4>Server API for silent notification</h4>
 <p>To send silent notification, set a string to indicate the type. Create a notification object by using the <code>WL.Server.createDefaultNotification</code> API and set the type as below:<br />
-[code lang="obj-c"]notification.APNS.type = &quot;DEFAULT&quot; | &quot;SILENT&quot; | &quot;MIXED&quot;; [/code]</p>
+{% highlight objc linenos %}notification.APNS.type = "DEFAULT" | "SILENT" | "MIXED"; {% endhighlight %}</p>
 <ul>
 <li><code>DEFAULT</code> means normal notification, which shows the alert and is kept in the notification center if the application is running in the background.</li>
 <li><code>SILENT</code> means silent notification, which does not show any alert or the message is not placed in the notification center. In the silent type, the aps tag of push notification contains only content-available.</li>
@@ -24,9 +24,9 @@ Callback methods are executed even when the application is running in the backgr
 <li>Enable the application capability to perform background tasks on receiving the remote notifications<br />
 To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes, like Remote notifications and Background fetch.
 </li>
-<li>Implement a new callback method in the <code>AppDelegate</code> <span class="inline-code">(application: didReceiveRemoteNotification:fetchCompletionHandler:)</span> to receive silent notifications when the application is running in the background.</li>
+<li>Implement a new callback method in the <code>AppDelegate</code> <code>(application: didReceiveRemoteNotification:fetchCompletionHandler:)</code> to receive silent notifications when the application is running in the background.</li>
 <li>In the callback, check whether the notification is silent by checking that the key content-available is set to 1.</li>
-<li>Call the <span class="inline-code">fetchCompletionHandler</span> block method at the end of the notification handler.</li>
+<li>Call the <code>fetchCompletionHandler</code> block method at the end of the notification handler.</li>
 </ul>
 <h2>Interactive Notifications</h2>
 <p>iOS 8 and above.</p>
@@ -38,9 +38,9 @@ When an interactive notification is received, the device shows action buttons al
 Categories describe a custom type of notification that your application sends and contains actions that a user can perform in response.</p>
 <ul>
 <li>For event-source notifications, create a notification object and set the category as below:<br />
-        [code lang="obj-c"]notification.APNS.category = &quot;poll&quot;; [/code]</li>
+        {% highlight objc linenos %}notification.APNS.category = "poll"; {% endhighlight %}</li>
 <li>For broadcast/tag-based notifications, create a notification object and set the category as below:<br />
-        [code lang="obj-c"]notification.settings.apns.category = &quot;poll&quot;; [/code]</li>
+        {% highlight objc linenos %}notification.settings.apns.category = "poll"; {% endhighlight %}</li>
 <li>The category name must be same as the one used on the client side.</li>
 </ul>
 <h4>Client-side steps for interactive notification</h4>
@@ -49,20 +49,20 @@ Categories describe a custom type of notification that your application sends an
 <li>Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.<br />
 To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes like Remote notifications and Background fetch.</li>
 <li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>didRegisterForRemoteNotificationsWithDeviceToken</code> method in the <code>AppDelegate</code> class.
-<p>    [code lang="obj-c"]<br />
+<p>    {% highlight objc linenos %}<br />
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{<br />
-    NSLog(@&quot;APNS Token : %@&quot;, deviceToken);<br />
+    NSLog(@"APNS Token : %@", deviceToken);<br />
     if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){<br />
         UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;</p>
 <p>        UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];<br />
-        acceptAction.identifier = @&quot;OK&quot;;<br />
-        acceptAction.title = @&quot;OK&quot;;</p>
+        acceptAction.identifier = @"OK";<br />
+        acceptAction.title = @"OK";</p>
 <p>        UIMutableUserNotificationAction *rejetAction = [[UIMutableUserNotificationAction alloc] init];<br />
-        rejetAction.identifier = @&quot;Cancel&quot;;<br />
-        rejetAction.title = @&quot;Cancel&quot;;<br />
+        rejetAction.identifier = @"Cancel";<br />
+        rejetAction.title = @"Cancel";<br />
         [rejetAction setActivationMode:UIUserNotificationActivationModeBackground];</p>
 <p>        UIMutableUserNotificationCategory *cateogory = [[UIMutableUserNotificationCategory alloc] init];<br />
-        cateogory.identifier = @&quot;poll&quot;;<br />
+        cateogory.identifier = @"poll";<br />
         [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextDefault];<br />
         [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextMinimal];</p>
 <p>        NSSet *catgories = [NSSet setWithObject:cateogory];<br />
@@ -70,20 +70,20 @@ To enable background processing, select the project in XCode and in the capabili
     }<br />
     [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];<br />
 }<br />
-[/code]</li>
+{% endhighlight %}</li>
 <li>To handle the actions the user selects, use the <code>handleActionWithIdentifier</code> method of the <code>UIApplicationDelegate</code> protocol:<br />
-    [code lang="obj-c"]<br />
+    {% highlight objc linenos %}<br />
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {<br />
-    if ([identifier isEqualToString:@&quot;OK&quot;]) {</p>
-<p>        NSLog(@&quot;OK was tapped&quot;);<br />
+    if ([identifier isEqualToString:@"OK"]) {</p>
+<p>        NSLog(@"OK was tapped");<br />
     }<br />
-    else if ([identifier isEqualToString:@&quot;Cancel&quot;]) {</p>
-<p>        NSLog(@&quot;Cancel was tapped&quot;);</p>
+    else if ([identifier isEqualToString:@"Cancel"]) {</p>
+<p>        NSLog(@"Cancel was tapped");</p>
 <p>    }<br />
     if (completionHandler) {</p>
 <p>        completionHandler();<br />
     }<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>Make sure to call the <code>completionHandler</code>.</li>
 </ul>

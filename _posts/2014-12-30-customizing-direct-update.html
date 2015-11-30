@@ -22,7 +22,7 @@ Starting from Worklight 6.2 “Direct Update” became a security realm that can
 <p>We start with new project and call it TestProject. Add a hybrid application TestApp and add a mobile environment of your choice (iPhone or Android). In this blog I will use Android. Add some code to <code>main.css</code> file so we can change it later to trigger direct update.<br />
 For example add background color to body:</p>
 
-{% highlight css %}
+{% highlight css linenos %}
 body {
 	background-color: blue;
 }
@@ -30,7 +30,7 @@ body {
 
 <p>Now we need to create some code in order to connect to Worklight server (unlike previous versions, Worklight application does not connect automatically as a part of init process). So lets add a button to index.html page:</p>
 
-{% highlight html %}
+{% highlight html linenos %}
 <button onclick="WL.Client.setUserPref('somekey', 'somevalue');">Get Update</button>
 {% endhighlight %}
 
@@ -50,7 +50,7 @@ body {
 <p>Now that we have a basic application we can start customizing the way we deal with direct update.</p>
 <p>We will use the <code>handleDirectUpdate</code> function of the direct update challenge handler to customize the direct update process and interface. The <code>handleDirectUpdate</code> function has the following format:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 wl_directUpdateChallengeHandler.handleDirectUpdate = function (directUpdateData,directUpdateContext){...}
 {% endhighlight %}
 
@@ -62,7 +62,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function (directUpdateData,
 
 <p>Also we will use <code>directUpdateCustomListener</code>. The custom listener must implement the following methods:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var directUpdateCustomListener = {
   onStart: function(totalSize){
   },
@@ -94,7 +94,7 @@ To complete the direct update process, the application must be reloaded. The fol
 <p>I chose to inform user .<br />
 My listener looks like this:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var directUpdateCustomListener = {
   onStart: function(totalSize){
   },
@@ -113,7 +113,7 @@ var directUpdateCustomListener = {
 <p>Add an implementation of the <code>wl_directUpdateChallengeHandler.handleDirectUpdate</code> function. Pass the <code>directUpdateCustomListener</code> implementation that you have created as a parameter to the function. Make sure <code>directUpdateContext.start(directUpdateCustomListener)</code> is called.<br />
 Here is my implementation of <code>wl_directUpdateChallengeHandler.handleDirectUpdate</code> (in main.js):</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){
 directUpdateContext.start(directUpdateCustomListener);
 };
@@ -126,7 +126,7 @@ directUpdateContext.start(directUpdateCustomListener);
 The mobile security test that is provided by default (in the <code>authenticationConfig.xml</code> file under the <code>server/conf</code> folder) contains a direct update security test. You need to disable this test if you want to trigger direct update on demand.<br />
 To disable the direct update security test, override it by adding <code>mobilesecuritytest</code> explicitly, omitting default direct update test behaviour. For example:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <mobilesecuritytest name="mobileTests">
   <testdeviceid provisioningType="none"></testdeviceid>
   <testuser realm="wl_anonymousUserRealm"></testuser>
@@ -139,7 +139,7 @@ Run and deploy your application to server. Open it. Change background color, run
 <h3>Triggering direct update upon adapter call</h3>
 <p>Set your application to use a custom security test without direct update. The following example shows such a custom security test in the <code>authenticationConfig.xml</code> file:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <customsecuritytest name="customNoDirectUpdate">
   <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"></test>
   <test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" step="2"></test>
@@ -149,12 +149,12 @@ Run and deploy your application to server. Open it. Change background color, run
 <p>Set your application to use that security test by adding it in to Android environment in <code>application-descritor.xml</code> file, like this: <code><android version="1.0" securityTest="customNoDirectUpdate"></code></p>
 
 <p>Create a HTTP adapter, call it RSSReader and set it to use a custom security test with direct update defined.</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <procedure name="getStories" securityTest="customWithDirectUpdateRequest"></procedure>[
 {% endhighlight %}
 
 <p>The following example shows such a custom security test in the <code>authenticationConfig.xml</code> file:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <customsecuritytest name="customWithDirectUpdateRequest">
   <test realm="wl_directUpdateRealm" mode="perRequest"></test>
   <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"></test>
@@ -171,7 +171,7 @@ Press button “Get Update” now RSSReader is invoked and because it is protect
 Lets see how direct update failure can be handled, for example, failure caused by loss of connectivity. In this scenario, the user is prevented from using the app even in offline mode. A dialog is displayed offering the user the option to try again.<br />
 Create a global variable to store the direct update context so that you can use it subsequently when the direct update process fails. For example (in <code>main.js</code> file):</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var savedDirectUpdateContext;
 //Implement a direct update challenge handler. Save the direct update context here. For example:
 
@@ -189,7 +189,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 {% endhighlight %}
 
 <p>Create a function that starts the direct update process by using the direct update context. For example:</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 restartDirectUpdate = function () {
   savedDirectUpdateContext.start(directUpdateCustomListener); // use saved direct update context to restart direct update<br />
 };
@@ -197,7 +197,7 @@ restartDirectUpdate = function () {
 
 <p>Implement <code>directUpdateCustomListener</code>. Add status checking in the <code>onFinish</code> method. If the status starts with "FAILURE", open a modal-only dialog with the option "Try Again". For example:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var directUpdateCustomListener = {
 onStart : function(totalSize) {
 		alert('onStart: totalSize = ' + totalSize + 'Byte');

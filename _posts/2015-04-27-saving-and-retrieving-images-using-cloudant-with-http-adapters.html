@@ -22,7 +22,7 @@ I will be using a sample cluster which you can view by going to this url : https
 <p>We can use a Cordova plugin to read an image file from an app then store this image into our Cloudant Database. In my example I am using iOS so I created two files, ReadFiles.m and ReadFiles.h, that are responsible for reading an image file from a sample app and converting it to a base64 string. This string will be sent to our Cloudant database called demo.
 
 <h3>ReadFiles.m</h3>
-{% highlight objc %}
+{% highlight objc linenos %}
 #import "ReadFiles.h"
 @implementation ReadFiles
 - (void)readFile:(CDVInvokedUrlCommand *)command{
@@ -38,7 +38,7 @@ I will be using a sample cluster which you can view by going to this url : https
 {% endhighlight %}
 
 <h3>ReadFiles.h</h3>
-{% highlight objc %}
+{% highlight objc linenos %}
 #import <Foundation/Foundation.h>
 #import <Cordova/CDV.h>
 @interface ReadFiles : CDVPlugin
@@ -118,7 +118,7 @@ function saveToCloudant(){
 <p>Just as we did in storing the image into Cloudant we can use a GET request to retrieve our image. We will use an HTTP adapter to request the image. You will need to edit the .xml file and the -impl.js file.
 
 <h4>cloudant.xml</h4>
-{% highlight xml %}
+{% highlight xml linenos %}
 <wl:adapter name="cloudant"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:wl="http://www.ibm.com/mfp/integration"
@@ -144,7 +144,7 @@ function saveToCloudant(){
 {% endhighlight %}
 
 <h4>cloudant-impl.js</h4>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function getImage(param) {
 	var config = JSON.parse(param);
 	var input = {
@@ -160,7 +160,7 @@ function getImage(param) {
 
 <p>Just like when we sent a request to store our image we will need to include an authorization header to receive it. Please take note of the path; the path is <code>/$DB_NAME/$DOCUMENT_ID</code>. Finally, add the invokeProcedure request in your main.js file.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function retrieveImageFromCloudant(){
 	var config = {
 			db : "demo",

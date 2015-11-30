@@ -2,33 +2,30 @@
 layout: tutorial
 title: Invoking adapter procedures from native Windows 8 applications
 relevantTo: [windows8]
+weight: 11
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWin8Project.zip
 ---
-<ul>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Download Studio project</a>
-    </li>
-<li class="download-sample">
-      <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWin8Project.zip">Download native project</a>
-    </li>
-</ul>
-<br>
-To create and configure a Windows 8 native project, first follow Tutorial <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/hello-world/creating-first-native-windows-8-mobilefirst-application/" title="Creating your first native Windows 8 MobileFirst application">Creating your first Native Windows 8 MobileFirst application</a>.</p>
+To create and configure a Windows 8 native project, first follow Tutorial <a href="../../hello-world/creating-first-native-windows-8-mobilefirst-application/" title="Creating your first native Windows 8 MobileFirst application">Creating your first Native Windows 8 MobileFirst application</a>.</p>
 <h2>Initializing WLClient</h2>
-<p>{% highlight csharp %} <br />
-WLClient client = WLClient.getInstance();<br />
- {% endhighlight %} </p>
+<p>{% highlight csharp linenos %}
+WLClient client = WLClient.getInstance();
+{% endhighlight %} </p>
 <ol>
 <li>To establish a connection to MobileFirst Server, use the <code>connect</code> method by specifying the <code>MyConnectResponseListener</code> class instance as a parameter.<br />
-{% highlight csharp %} <br />
-client.connect(new MyConnectResponseListener(this));<br />
- {% endhighlight %} </p>
+{% highlight csharp linenos %}
+client.connect(new MyConnectResponseListener(this));
+{% endhighlight %} </p>
 <p>The <code>WLClient</code> instance tries to connect to the MobileFirst Server instance according to the properties of the <code>wlclient.properties</code> file.<br />
 After the connection is established, it invokes one of the methods of the <code>MyConnectResponseListener</code> class.
 </li>
 <li>Specify that the <code>MyConnectResponseListener</code> class implements the <code>WLResponseListener</code> interface.
-<p>{% highlight csharp %} <br />
-public class MyConnectResponseListener : WLResponseListener<br />
- {% endhighlight %} </p>
+<p>{% highlight csharp linenos %}
+public class MyConnectResponseListener : WLResponseListener
+{% endhighlight %} </p>
 <p>The <code>WLResponseListener</code> interface defines two methods:<br />
 - <code>public void onSuccess (WLResponse response) { }</code><br />
 - <code>public void onFailure (WLFailResponse response) { }</code>
@@ -46,53 +43,54 @@ public class MyConnectResponseListener : WLResponseListener<br />
 <li>Get the existing <code>WLClient</code> instance and use it to invoke an adapter procedure.
 </li>
 <li>Specify the <code>MyInvokeListener</code> class instance as a parameter.
-<p>{% highlight csharp %} <br />
-WLProcedureInvocationData invocationData = new WLProcedureInvocationData("RSSReader", "getStories");<br />
-invocationData.setParameters(new Object[]{});<br />
-String myContextObject = "InvokingAdapterProceduresWin8";<br />
-WLRequestOptions options = new WLRequestOptions();<br />
-options.setInvocationContext(myContextObject);<br />
-WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);<br />
- {% endhighlight %} 
+<p>{% highlight csharp linenos %}
+WLProcedureInvocationData invocationData = new WLProcedureInvocationData("RSSReader", "getStories");
+invocationData.setParameters(new Object[]{});
+String myContextObject = "InvokingAdapterProceduresWin8";
+WLRequestOptions options = new WLRequestOptions();
+options.setInvocationContext(myContextObject);
+WLClient.getInstance().invokeProcedure(invocationData, new MyInvokeListener(this), options);
+{% endhighlight %}
 </li>
 </ol>
 <h2>Receiving a procedure response</h2>
 <p>After the procedure invocation is completed, the <code>WLClient</code> instance calls one of the methods of the <code>MyInvokeListener</code> class.<br />
 As before, you must specify that the <code>MyInvokeListener</code> class implements the <code>WLResponseListener</code> interface.</p>
-<p>{% highlight csharp %} <br />
-using IBM.Worklight;<br />
-namespace InvokingAdapterProceduresWin8{<br />
-    public class MyInvokeListener : WLResponseListener<br />
-    { }<br />
-{<br />
- {% endhighlight %} </p>
+<p>{% highlight csharp linenos %}
+using IBM.Worklight;
+namespace InvokingAdapterProceduresWin8{
+    public class MyInvokeListener : WLResponseListener
+    { }
+{
+{% endhighlight %} </p>
 <p>The <code>onSuccess</code> and <code>onFailure</code> methods are invoked by the <code>WLClient</code> instance. The response object contains the response data. You can use its methods and properties to retrieve the required information.</p>
-<p>{% highlight csharp %} <br />
-public void onSuccess(WLResponse response)<br />
-{<br />
-    WLProcedureInvocationResult invocationResponse = ((WLProcedureInvocationResult) response);<br />
-    JObject items;<br />
-    try<br />
-    {<br />
-        items = invocationResponse.getResponseJSON();<br />
-        await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =><br />
-        {<br />
-            myMainPage.AddTextToReceivedTextBlock("Response Success: " + items.ToString());<br />
-        });<br />
-    }<br />
-    catch (JsonReaderException e)<br />
-    {<br />
-          Debug.WriteLine("JSONException : " + e.Message);<br />
-    }<br />
-}</p>
-<p>public void onFailure(WLFailResponse response)<br />
-{<br />
-    await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =><br />
-    {<br />
-        myMainPage.AddTextToReceivedTextBlock("Response failed: " + response.ToString());<br />
-    });<br />
-}<br />
- {% endhighlight %} </p>
+<p>{% highlight csharp linenos %}
+public void onSuccess(WLResponse response)
+{
+    WLProcedureInvocationResult invocationResponse = ((WLProcedureInvocationResult) response);
+    JObject items;
+    try
+    {
+        items = invocationResponse.getResponseJSON();
+        await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+        {
+            myMainPage.AddTextToReceivedTextBlock("Response Success: " + items.ToString());
+        });
+    }
+    catch (JsonReaderException e)
+    {
+          Debug.WriteLine("JSONException : " + e.Message);
+    }<
+}
+
+public void onFailure(WLFailResponse response)
+{
+    await dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+    {
+        myMainPage.AddTextToReceivedTextBlock("Response failed: " + response.ToString());
+    });
+}
+{% endhighlight %} </p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresNativeProject.zip">Click to download</a> the Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/InvokingAdapterProceduresWin8Project.zip">Click to download</a> the Native project.</p>

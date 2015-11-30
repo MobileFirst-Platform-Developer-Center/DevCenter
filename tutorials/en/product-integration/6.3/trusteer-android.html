@@ -23,7 +23,7 @@ You still need to follow these steps if you use a WLC file.</p>
 <p>If you’ve received an Application Component from Trusteer, search the IBM MobileFirst documentation for “Adding application components to MobileFirst projects”. Then make sure the file “<strong>tas.license</strong>” contains your license information.</p>
 <p>If you’ve received the Trusteer SDK, follow the Trusteer documentation to add the Trusteer SDK to your Android project. Make sure you have the “<strong>tas.license</strong>” file in your “<strong>assets</strong>” folder. Its format should be:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 vendorId=com.mycompany
 clientId=my.client.id
 clientKey=YMAQAABNFUWS2L
@@ -32,7 +32,7 @@ clientKey=YMAQAABNFUWS2L
 <h2>Access Risk Items in JavaScript</h2>
 <p>Optionally, you can access the client-side generated Trusteer data object using the following API: <code>WL.Trusteer.getRiskAssessment(onSuccess, onFailure);</code>, where <code>onSuccess</code> is a function that will receive a <code>JSON</code> object containing all the data processed by Trusteer. See Trusteer documentation to get information on each risk item.
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function onSuccess(result) {
   //See in the logs what the full result looks like
   WL.Logger.debug(JSON.stringify(result));
@@ -46,14 +46,14 @@ function onSuccess(result) {
 <h2>Access Risk Items in Java</h2>
 <p>Optionally, you can access the client-side generated Trusteer data object using the following API:
 
-{% highlight java %}
+{% highlight java linenos %}
 WLTrusteer trusteer = WLTrusteer.getInstance();
 JSONObject risks = trusteer.getRiskAssessment();
 {% endhighlight %}
 
 <p>This returns an <code>JSONObject</code> of all the data processed by Truster. See Trusteer documentation to get information on each risk item.
 
-{% highlight java %}
+{% highlight java linenos %}
 JSONObject rooted = (JSONObject) risks.get("os.rooted");
 if(rooted.getInt("value") > 0){
 	//device is rooted
@@ -67,7 +67,7 @@ if(rooted.getInt("value") > 0){
 
 <p>Here is an example of a Trusteer realm and login module you can add to your <strong>authenticationConfig.xml</strong>.</p>
 
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <realms><br />
   ...<br />
   <realm name="wl_basicTrusteerFraudDetectionRealm" loginModule="trusteerFraudDetectionLogin">
@@ -83,7 +83,7 @@ if(rooted.getInt("value") > 0){
 </realms>
 {% endhighlight %}
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <loginModules>
   ...
   <loginModule name="trusteerFraudDetectionLogin">
@@ -108,7 +108,7 @@ if(rooted.getInt("value") > 0){
 <h2>JavaScript Challenge Handler</h2>
 <p>Assuming you’ve added a Trusteer realm to your server’s authentication configuration file, you can register a challenge handler to receive the responses from the authenticator.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var trusteerChallengeHandler = WL.Client.createWLChallengeHandler("wl_basicTrusteerFraudDetectionRealm");
 {% endhighlight %}
 
@@ -116,7 +116,7 @@ var trusteerChallengeHandler = WL.Client.createWLChallengeHandler("wl_basicTrust
 
 <p>If you have set one of your realm options to <code>block</code>, a blocking event will trigger <code>handleFailure</code>.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 trusteerChallengeHandler.handleFailure = function(error) {
       WL.SimpleDialog.show("Error", "Operation failed. Please contact customer support (reason code: " + error.reason + ")",  [{text:"OK"}]);
 };
@@ -135,7 +135,7 @@ trusteerChallengeHandler.handleFailure = function(error) {
 
 <p>If your have set one of your realm options to alert, you can catch the alert event by implementing the <code>processSuccess</code> method.</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 trusteerChallengeHandler.processSuccess = function(identity) {
     var alerts = identity.attributes.alerts; //Array of alerts codes
     if (alerts.length > 0) {
@@ -151,7 +151,7 @@ trusteerChallengeHandler.processSuccess = function(identity) {
 
 <p>Create a class that extends <code>WLChallengeHandler</code>:
 
-{% highlight java %}
+{% highlight java linenos %}
 public class TrusteerChallengeHandler extends WLChallengeHandler{
 //...
 }
@@ -159,7 +159,7 @@ public class TrusteerChallengeHandler extends WLChallengeHandler{
 
 <p>In your application code, register your newly created challenge handler for your Trusteer realm:</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 WLClient.getInstance().registerChallenge(
   new TrusteerChallengeHandler("wl_basicTrusteerFraudDetectionRealm");
 );
@@ -167,7 +167,7 @@ WLClient.getInstance().registerChallenge(
 
 <p>If you have set one of your realm options to block, a blocking event will trigger <code>handleFailure</code>.</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 public class TrusteerChallengeHandler extends WLChallengeHandler {
 //...
   public void handleFailure(JSONObject error){
@@ -191,7 +191,7 @@ public class TrusteerChallengeHandler extends WLChallengeHandler {
 
 <p>If your have set one of your realm options to alert, you can catch the alert event by implementing the <code>handleSuccess</code> method.</p>
 
-{% highlight java %}
+{% highlight java linenos %}
 public class TrusteerChallengeHandler extends WLChallengeHandler{
 //…
   public void handleSuccess(JSONObject identity){

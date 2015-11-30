@@ -1,5 +1,8 @@
 @media print {
-  nav.navbar, .hidden-xs, footer {
+  body{
+    -webkit-print-color-adjust:exact;
+  }
+  nav.navbar, .hidden-xs, footer, #disqus_thread, .download-button {
     display: none;
   }
 }

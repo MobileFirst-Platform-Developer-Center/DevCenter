@@ -2,13 +2,11 @@
 layout: tutorial
 title: Using the MobileFirst Server to authenticate external resources
 relevantTo: [hybrid]
+weight: 12
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MobileFirstAsAuthorizationServer.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MobileFirstAsAuthorizationServer.zip">Download Studio project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>By using MobileFirst Server to authenticate external resources, you can use Single Sign-On (SSO) between IBM MobileFirst Platform Foundation and external services.</p>
 <p>This feature protects those services through the MobileFirst Security Framework.</p>
@@ -31,14 +29,15 @@ relevantTo: [hybrid]
 <li><strong>Authorization Server</strong>: MobileFirst Server<br />The server that issues access tokens to the client after it has successfully authenticated the resource owner and obtained authorization.</li>
 </ul>
 <h3>Overview of the Resource Server component</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/resource-server-300x231.png" alt="resource-server" width="300" height="231" class="alignright size-medium wp-image-3642" /></p>
+<img src="{{ site.baseurl }}/assets/backup/resource-server-300x231.png"/>
 <p>The <strong>Resource Server</strong> is an external server that hosts the available resource.</p>
 <p>One use-case is that of services that are deployed on a cloud, such as <strong>MbaaS</strong>. But this flow is not restricted to that case and works with any third- party server.</p>
 <p>The <strong>Token lib</strong> library is provided for use with the <strong>Resource Server</strong>.</p>
 <p>The public key that is necessary to verify the token must be configured for this component.</p>
 <p>Java and <code>node.js</code> libraries are provided for offline validation.</p>
 <h3>Overview of the client component</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/client-300x187.png" alt="client" width="300" height="187" class="alignright size-medium wp-image-3640" /></p>
+<img src="{{ site.baseurl }}/assets/backup/client-300x187.png" />
+
 <p>The <strong>External SDK</strong> is used to access the resource server. It must be able to attach a header to the request.</p>
 <p>The <strong>MobileFirst SDK</strong> exposes the following API for both hybrid and native code:</p>
 <ol>
@@ -47,23 +46,23 @@ relevantTo: [hybrid]
 <li>Analyze <strong>Resource server</strong> error response to obtain the required scope.</li>
 </ol>
 <h3>Overview of the MobileFirst Server component</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/mobilefirst-server-300x231.png" alt="mobilefirst-server" width="300" height="231" class="alignright size-medium wp-image-3641" /></p>
+<img src="{{ site.baseurl }}/assets/backup/mobilefirst-server-300x231.png" />
 <p>The <strong>Validation Endpoint</strong> is a REST API exposed under the path <code>/oauth/validation.s</code></p>
 <p>It can be used by <strong>Resource Server</strong> or by the reverse proxy for online validation.</p>
 <p>The <strong>Token Endpoint</strong> is a REST API exposed under the path <code>/oauth/token</code>.</p>
 <p><strong>MobileFirst Server</strong> uses the authentication infrastructure to issue an access token for the requested scope (MobileFirst security test).</p>
 <h3>Overview of token format</h3>
-<p>{% highlight javascript %}<br />
-{<br />
-  version: "1.0 (of token)",<br />
-  scope: "<the security test that the token authenticated>",<br />
-  expiration: "<time in msec since epoch>",<br />
-  data: {<br />
-    user_id: "<authenticated user, for example, shachor@il.ibm.com>",<br />
-    device_id: "<device id as known by MobileFirst server>",<br />
-    application_id: "<identity of the app>"<br />
-  }<br />
-}<br />
+<p>{% highlight xml linenos %}
+{
+    version: "1.0 (of token)",
+    scope: "<the security test that the token authenticated>",
+    expiration: "<time in msec since epoch>",
+    data: {
+        user_id: "<authenticated user, for example, shachor@il.ibm.com>",
+        device_id: "<device id as known by MobileFirst server>",
+        application_id: "<identity of the app>"
+    }
+}
 {% endhighlight %}</p>
 <p>The token is signed by the MobileFirst Server instance.</p>
 <p>Clarification for the <code>data</code> field:</p>
@@ -74,7 +73,7 @@ relevantTo: [hybrid]
 </ul>
 <h3>Quick Flow:</h3>
 <p>The client requests a token from the authorization server, receives it, and with that token, accesses the protected resource on the resource server.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/process-flow-1024x768.jpg" alt="process-flow" width="980" height="735" class="aligncenter size-large wp-image-3403" /></p>
+<img src="{{ site.baseurl }}/assets/backup/process-flow-1024x768.jpg" />
 <ol>
 <li>
     <strong>The application developer attempts to access a protected resource on a remote server.</strong></p>
@@ -108,13 +107,13 @@ relevantTo: [hybrid]
 <li>
     <strong>After all relevant realms are authenticated, MobileFirst Server returns an access token to the client.</strong></p>
 <p>      The <strong>MobileFirst Server</strong> returns a JSON object with the following format:</p>
-<p>    {% highlight javascript %}<br />
-    {<br />
-      scope: "<actual scope *>",<br />
-      token_type: "Bearer",<br />
-      access_token: "<encrypted token string>"<br />
-    }<br />
-    {% endhighlight %}<br />
+{% highlight xml linenos %}
+{
+    scope: "<actual scope *>",
+    token_type: "Bearer",
+    access_token: "<encrypted token string>"
+}
+{% endhighlight %}<br />
     <strong>*</strong> different than given scope only if default scope requested
   </li>
 <li>
@@ -133,15 +132,15 @@ relevantTo: [hybrid]
 <p>The default lifetime for each token is 60 seconds. You can override this timeout by adding the AccessTokenExpirationSec attribute to the security test.</p>
 <p>For example, if you want to configure a security test, called SampleSecurityTest, with a lifetime of 15 seconds, edit the <code>authenticationConfig.xml</code> as follows</p>
 <p><strong>From the source view:</strong></p>
-<p>{% highlight xml %}<br />
-<securityTests><br />
-  <customSecurityTest name="SampleSecurityTest" AccessTokenExpirationSec="15"><br />
-    <test realm="SampleRealm" isInternalUserID="true"/><br />
-  </customSecurityTest><br />
-</securityTests><br />
+<p>{% highlight xml linenos %}
+<securityTests>
+  <customSecurityTest name="SampleSecurityTest" AccessTokenExpirationSec="15">
+    <test realm="SampleRealm" isInternalUserID="true"/>
+  </customSecurityTest>
+</securityTests>
 {% endhighlight %}</p>
 <p><strong>From the design view:</strong></p>
-<p><img src="{{ site.baseurl }}/assets/backup/security-test-design-view.png" alt="security-test-design-view" class="aligncenter size-full wp-image-3647" /></p>
+<img src="{{ site.baseurl }}/assets/backup/security-test-design-view.png" />
 <h2 id="mobilefirst_configuration_keystore">MobileFirst project configuration - Keystore</h2>
 <p>To use this feature, preferably use or create your own keystore and configure the MobileFirst Server to use it.</p>
 <p>For an example in an unrelated context, see Configuring device auto provisioning in the product documentation.</p>
@@ -173,35 +172,35 @@ relevantTo: [hybrid]
 <li><strong>CertificatePath</strong> = <code>certificateLib/WorklightServerCertificate.cert</code> "The path to the certificate of MobileFirst Server, relative to the WEB-INF folder."</li>
 </ul>
 <p>In addition to the previous parameters, write the following code for the web.xml file of your external server:</p>
-<p>{% highlight xml %}<br />
-    <web-app ...><br />
-      ...<br />
-      <filter><br />
-            <filter-name>FilterName</filter-name><br />
-            <filter-class>com.worklight.security.WLAccessTokenValidationFilter</filter-class><br />
-            <init-param><br />
-                <param-name>worklightCertificateFile</param-name><br />
-                <param-value>certificateLib/WorklightServerCertificate.cert</param-value><br />
-            </init-param><br />
-            <init-param><br />
-                <param-name>scope</param-name><br />
-                <param-value>securityTestName</param-value><br />
-            </init-param><br />
-      </filter><br />
-      <filter-mapping><br />
-            <filter-name>FilterName</filter-name><br />
-            <url-pattern>/some/protected/url</url-pattern><br />
-      </filter-mapping><br />
-      ...<br />
-    </web-app><br />
+<p>{% highlight xml linenos %}
+    <web-app ...>
+      ...
+      <filter>
+            <filter-name>FilterName</filter-name>
+            <filter-class>com.worklight.security.WLAccessTokenValidationFilter</filter-class>
+            <init-param>
+                <param-name>worklightCertificateFile</param-name>
+                <param-value>certificateLib/WorklightServerCertificate.cert</param-value>
+            </init-param>
+            <init-param>
+                <param-name>scope</param-name>
+                <param-value>securityTestName</param-value>
+            </init-param>
+      </filter>
+      <filter-mapping>
+            <filter-name>FilterName</filter-name>
+            <url-pattern>/some/protected/url</url-pattern>
+      </filter-mapping>
+      ...
+    </web-app>
 {% endhighlight %}</p>
 <p>After successful validation, the filter updates the <code>ClientContext</code> object that the service can use to access user, application, or device identities that are contained in the access token.</p>
 <p>Example of <code>ClientContext</code> usage:</p>
-<p>{% highlight java %}<br />
-  ClientContext context = ClientContext.getInstance();<br />
-  String appId = context.getApplication();<br />
-  String userId = context.getUser();<br />
-  String deviceId = context.getDevice();<br />
+<p>{% highlight java linenos %}
+  ClientContext context = ClientContext.getInstance();
+  String appId = context.getApplication();
+  String userId = context.getUser();
+  String deviceId = context.getDevice();
 {% endhighlight %}</p>
 <h2 id="use_of_the_client_side_api">Use of the client-side API: which methods are allowed</h2>
 <p>The MobileFirst <code>WL.Client</code> API provides built-in support for using MobileFirst access tokens for the following platforms:</p>
@@ -228,15 +227,15 @@ relevantTo: [hybrid]
 <p>In JavaScript, this method is called <strong>getLastAccessToken</strong>.</p>
 <p>The <code>WL.Client</code> instance returns the last access token for a certain scope as a string. Alternatively, if no scope is specified, the last obtained token is returned. This capability is useful when an application is using one scope <strong>only</strong>.</p>
 <p>Add a header named "Authorization" and for the header content, add "Bearer", followed by the token. For example, when issuing an Ajax request, you can write the following code:</p>
-<p>{% highlight javascript %}<br />
-  var token = WL.Client.getLastAccessToken();<br />
-  $.ajax({<br />
-      type: "GET",<br />
-      url: MY_URL,<br />
-      headers: {<br />
-          "Authorization": "Bearer " + token<br />
-      }<br />
-  });<br />
+<p>{% highlight javascript linenos %}
+  var token = WL.Client.getLastAccessToken();
+  $.ajax({
+      type: "GET",
+      url: MY_URL,
+      headers: {
+          "Authorization": "Bearer " + token
+      }
+  });
 {% endhighlight %}</p>
 <h3>Getting the required scope from the external service response</h3>
 <p>In JavaScript, this method is called <strong>getRequiredAccessTokenScope</strong>.</p>
@@ -245,47 +244,47 @@ relevantTo: [hybrid]
 <p>If the error is not related to access token issues, the method returns <code>null</code>.</p>
 <h3>Use of the client-side API: JavaScript example</h3>
 <p>This JavaScript example shows how to use the client-side API for access to an external service.</p>
-<p>{% highlight javascript %}<br />
-function callProtectedRestAPI(retries) {<br />
-    // You must be able to call this method<br />
-    // recursively, because in some cases it is<br />
-    // necessary to obtain a new token and try a<br />
-    // second time.<br />
-    if (retries == 0) {<br />
-        return;<br />
-    }<br />
-    // Get the last obtained access token.<br />
-    // On the first call, the token can be null.<br />
-    var token = WL.Client.getLastAccessToken();<br />
-    var headersObject = (token != null) ? {<br />
-        "Authorization": "Bearer " + token<br />
-    } : {};</p>
-<p>    $.ajax({<br />
-        type: "GET",<br />
-        url: MY_EXTERNAL_SERVER_URL,<br />
-        headers: headersObject<br />
-    }).done(function(response) {<br />
-        showResult(response);<br />
-    }).fail(function(response) {<br />
-        // Need to extract this header from<br />
-        // the response to know the scope.<br />
-        var header = response.getResponseHeader("WWW- Authenticate");<br />
-        var scope = WL.Client.getRequiredAccessTokenScope(response.status, header);<br />
-        if (scope != null) {<br />
-            // The failure is related to the access token. Get a new one.<br />
-            WL.Client.obtainAccessToken(scope, getTokenSuccess, getTokenFailure);<br />
-        } else {<br />
-            showErrorResult("request failed");<br />
-        }<br />
-    });</p>
-<p>    function getTokenSuccess(response) {<br />
-        // Obtained a token. Try to access the external server one more time.<br />
-        callProtectedRestAPI(retries - 1);<br />
-    };</p>
-<p>    function getTokenFailure(response) {<br />
-        showErrorResult(response);<br />
-    };<br />
-}<br />
+<p>{% highlight javascript linenos %}
+function callProtectedRestAPI(retries) {
+    // You must be able to call this method
+    // recursively, because in some cases it is
+    // necessary to obtain a new token and try a
+    // second time.
+    if (retries == 0) {
+        return;
+    }
+    // Get the last obtained access token.
+    // On the first call, the token can be null.
+    var token = WL.Client.getLastAccessToken();
+    var headersObject = (token != null) ? {
+        "Authorization": "Bearer " + token
+    } : {};
+    $.ajax({
+        type: "GET",
+        url: MY_EXTERNAL_SERVER_URL,
+        headers: headersObject
+    }).done(function(response) {
+        showResult(response);
+    }).fail(function(response) {
+        // Need to extract this header from
+        // the response to know the scope.
+        var header = response.getResponseHeader("WWW- Authenticate");
+        var scope = WL.Client.getRequiredAccessTokenScope(response.status, header);
+        if (scope != null) {
+            // The failure is related to the access token. Get a new one.
+            WL.Client.obtainAccessToken(scope, getTokenSuccess, getTokenFailure);
+        } else {
+            showErrorResult("request failed");
+        }
+    });
+    function getTokenSuccess(response) {
+        // Obtained a token. Try to access the external server one more time.
+        callProtectedRestAPI(retries - 1);
+    };
+    function getTokenFailure(response) {
+        showErrorResult(response);
+    };
+}
 {% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/MobileFirstAsAuthorizationServer.zip">Click to download</a> the Studio project.</p>

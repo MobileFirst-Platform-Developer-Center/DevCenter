@@ -47,7 +47,7 @@ On BlueMix we have application with the following configuration:
     <li>The custom identity provider authenticates a user by sending challenges to the client. However, custom identity providers do not communicate directly with clients. They send challenges and receive responses to the challenges by means of the Advanced Mobile Access service. When a custom identity provider successfully authenticates the user, it provides the user identity information to Advanced Mobile Access. For more information on custom authentication refer bluemix documentation : <a href="https://www.ng.bluemix.net/docs/services/mobileaccess/security/id_provs/index-gentopic2.html#custom_id_prov" target="_blank">click here</a>
         The custom identity provider code is defined by two http API: <code>/startAutorization</code> and <code>/handleChallengeAnswer</code>
 
-        {% highlight java %}
+        {% highlight java linenos %}
         @POST
     	@Consumes ("application/json")
     	@Path("/{tenantId}/customAuthRealm_3/startAuthorization")
@@ -100,7 +100,7 @@ On BlueMix we have application with the following configuration:
         {% endhighlight %}
         The Localstore adapter contains few http API's to perform some basic operations like Add, Update, Create and Delete in client application.
 
-{% highlight java %}
+{% highlight java linenos %}
 @GET
 	@Path("/getAllItems")
 	public String getAllItems() throws IOException{
@@ -170,7 +170,7 @@ On BlueMix we have application with the following configuration:
 TAI Extension Link : Download the extension.zip from <a href="https://hub.jazz.net/project/chethan/parkstore-bluemix-server/overview" target="_blank">here</a>
 </li>
 <li> Add TAI Security constraint in web.xml file for both the projects.
-{% highlight xml %}
+{% highlight xml linenos %}
 <security-constraint>
    	<web-resource-collection>
       	   <web-resource-name>LocalstoreApplication</web-resource-name>
@@ -186,13 +186,13 @@ TAI Extension Link : Download the extension.zip from <a href="https://hub.jazz.n
 {% endhighlight %}
 </li>
 <li> Add OAuthTai feature in server.xml
-{% highlight xml %}
+{% highlight xml linenos %}
 <feature>usr:OAuthTai-1.0</feature>
 {% endhighlight %}
 </li>
 <li> Protect the Url's using TAI by adding following code in server.xml
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <usr_OAuthTAI id="myOAuthTAI" realmName="imfRealm">
 		<securityConstraint httpMethods="GET, POST" securedURLs="/LocalstoreAdapter/*"/>
 		<securityConstraint httpMethods="GET, POST" securedURLs="/custom-oauth-java/*"/>
@@ -214,7 +214,7 @@ TAI Extension Link : Download the extension.zip from <a href="https://hub.jazz.n
     {% endhighlight %}
 </li>
 <li> Specify the IMF Auth Url inside Server.env file in liberty.
-{% highlight xml %}
+{% highlight xml linenos %}
 imfServiceUrl=https://imf-authserver.ng.bluemix.net/imf-authserver
 {% endhighlight %}
 </li>
@@ -243,13 +243,13 @@ cf push ${app_name} -p ${path_to_server_package_zip}
     </li>
     <li> Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register the realm and initialize connection with Bluemix Application.
 
-{% highlight java %}
+{% highlight java linenos %}
 IMFClient.sharedInstance().registerAuthenticationDelegate(customAuthDelegate, forRealm: "customAuthRealm_3")
 IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluemix.net", backendGUID: "5e3ad88d-dd48-469d-b46f-2c4ad66b5345")
 {% endhighlight %}
     </li>
     <li> The following is the sample code to invoke the Rest url's in client application.
-        {% highlight java %}
+        {% highlight java linenos %}
         var request: IMFResourceRequest = IMFResourceRequest(path: "https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems", method: "GET")
         request.sendWithCompletionHandler { (wlResponse:IMFResponse!, err:NSError!) -> Void in
     {% endhighlight %}
@@ -267,7 +267,7 @@ IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluem
         <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.47.14-pm-1024x377.png" class="img_responsive" />
     </li>
     <li>Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register notifications in client app.
-        {% highlight swift %}
+        {% highlight swift linenos %}
         let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
         let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         application.registerUserNotificationSettings(notificationSettings)
@@ -276,7 +276,7 @@ IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluem
     </li>
     <li>Add the following code inside <code>didRegisterForRemoteNotificationsWithDeviceToken</code>  function in <code>Appdelegate</code> of client application which will register pushclient and subscribe to tag in client app.
 
-        {% highlight swift %}IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -> Void in
+        {% highlight swift linenos %}IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -> Void in
             if error != nil {
                 println("Error during device registration \(error.description)")
             }
@@ -294,7 +294,7 @@ IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluem
         {% endhighlight %}
     </li>
 <li>Add the following function inside <code>Appdelegate</code> which triggers when push notification arrived in client app.
-        {% highlight swift %}
+        {% highlight swift linenos %}
         func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
             println("Got remote Notification. Data : \(userInfo.description)")
             let info = userInfo as NSDictionary
@@ -313,20 +313,20 @@ IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluem
 
 <ul>
     <li> Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register the realm and initialize connection with Bluemix Application.
-        {% highlight swift %}
+        {% highlight swift linenos %}
         IMFClient.sharedInstance().registerAuthenticationDelegate(customAuthDelegate, forRealm: "customAuthRealm_3")
 IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluemix.net", backendGUID: "5e3ad88d-dd48-469d-b46f-2c4ad66b5345")
 {% endhighlight %}
     </li>
     <li> The following is the sample code to invoke the Rest url's in client application.
-{% highlight swift %}
+{% highlight swift linenos %}
 var request: IMFResourceRequest = IMFResourceRequest(path: "https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems", method: "GET")
         request.sendWithCompletionHandler { (wlResponse:IMFResponse!, err:NSError!) -> Void in
             {% endhighlight %}
     </li>
     <li>Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register notifications in client app.
 
-{% highlight swift %}
+{% highlight swift linenos %}
 let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | UIUserNotificationType.Alert | UIUserNotificationType.Sound
         let notificationSettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
         application.registerUserNotificationSettings(notificationSettings)
@@ -334,7 +334,7 @@ let notificationTypes: UIUserNotificationType = UIUserNotificationType.Badge | U
         {% endhighlight %}
     </li>
     <li>Add the following code inside <code>didRegisterForRemoteNotificationsWithDeviceToken</code>  function in <code>Appdelegate</code> of client application which will register pushclient and subscribe to tag in client app.
-{% highlight swift %}
+{% highlight swift linenos %}
 IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandler: { (response, error) -> Void in
             if error != nil {
                 println("Error during device registration \(error.description)")
@@ -353,7 +353,7 @@ IMFPushClient.sharedInstance().registerDeviceToken(deviceToken, completionHandle
             {% endhighlight %}
         </li>
         <li>Add the following function inside <code>Appdelegate</code> which triggers when push notification arrived in client app.
-{% highlight swift %}
+{% highlight swift linenos %}
 func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         println("Got remote Notification. Data : \(userInfo.description)")
         let info = userInfo as NSDictionary
@@ -397,7 +397,7 @@ Migration of Client Application includes following two steps
     <li>Open the "Podfile" file located in the root of your XCode project in a favourite text editor.</li>
     <li>Comment out or remove the existing content.</li>
     <li>Add the following lines:
-        {% highlight xml %}
+        {% highlight xml linenos %}
         source 'https://github.rtp.raleigh.ibm.com/imflocalsdks/imf-client-sdk-specs.git'
 pod 'IMFCompatibility'
 {% endhighlight %}
@@ -414,13 +414,13 @@ In Xcode's Build Settings, search for "Other Linker Flags" and insert <code>${in
 <h3>Client App Migration</h3>
 <ol>
     <li>Search for bluemix dependency imports like
-{% highlight swift %}
+{% highlight swift linenos %}
 #import <IMFCore/IMFCore.h>
 #import <IMFPush/IMFPush.h>
 {% endhighlight %}
 
 Replace the above imports with
-{% highlight swift %}
+{% highlight swift linenos %}
 #import <IMFCompatibility/IMFCompatibility.h>
 {% endhighlight %}
     </li>
@@ -436,16 +436,16 @@ IMFClient.sharedInstance().initializeWithBackendRoute("http://localhost:10080/Pa
 Note, that <code>backendGUID</code> parameter is ignored and can be empty. Look for all instantiations of IMFResourceRequest class and update it</li>
     <li>Look for all instantiations of IMFResourceRequest class and update the request URL with absolute or relative path to the resource. For example:
 
- {% highlight swift %}
+ {% highlight swift linenos %}
  var request: IMFResourceRequest = IMFResourceRequest(path: "https://parkstore.mybluemix.net/LocalstoreAdapter/apps/5e3ad88d-dd48-469d-b46f-2c4ad66b5345/localstore/getAllItems", method: "GET")
  {% endhighlight %}
 
 should be replaced with
-{% highlight swift %}
+{% highlight swift linenos %}
 var request: IMFResourceRequest = IMFResourceRequest(path: "http://localhost:10080/ParkStoreMFP/adapters/LocalstoreAdapter/localstore/getAllItems", method: "GET")
 {% endhighlight %}</li>
     <li>Add the following code inside <code>didRegisterForRemoteNotificationsWithDeviceToken</code> function in <code>Appdelegate</code> of Client application.
-        {% highlight swift %} WLPush.sharedInstance().tokenFromClient = deviceToken.description{% endhighlight %}</li>
+        {% highlight swift linenos %} WLPush.sharedInstance().tokenFromClient = deviceToken.description{% endhighlight %}</li>
         <li>All on-premise applications require the "worklight.plist" file to be present in the application resources. In the <code>IBMMobileFirstPlatformFoundationNativeSDK</code> pod we supply a file named <strong>sample.worklight.plist</strong>.
             <ul>
                 <li>Locate the "sample.worklight.plist" file in the ‘IBMMobileFirstPlatformFoundationNativeSDK’ pod.</li>
@@ -478,7 +478,7 @@ Add and remove the following changes in your adapter code.</p>
 </ul>
 
 The code looks like the following:
-{% highlight swift %}
+{% highlight swift linenos %}
 	@GET
 	@OAuthSecurity (scope="customAuthRealm_3")
 	@Path("/getAllItems")
@@ -552,7 +552,7 @@ The code looks like the following:
 <h3 id="configoauth">Configuring Custom-OAuth</h3>
 <ul>
     <li>Add realm with same name you had on BlueMix and login module to the authenticationConfig.xml.
-    {% highlight xml %}
+    {% highlight xml linenos %}
     <realm name="customAuthRealm_3" loginModule="customAuthLoginModule_3">
     <className>com.worklight.core.auth.ext.CustomIdentityAuthenticator</className>
     <parameter name="providerUrl" value="http://localhost:10080/ParkStoreMFP/adapters/Customauth"/>
@@ -562,7 +562,7 @@ The code looks like the following:
     </loginModule>
     {% endhighlight %}</li>
         <li>Add Custom-oauth Realm in userIdentityRealms in Application Descriptor file of iOS Native API
-    {% highlight xml %}
+    {% highlight xml linenos %}
     <userIdentityRealms>customAuthRealm_3</userIdentityRealms>
     {% endhighlight %}</li>
 </ul>
@@ -574,7 +574,7 @@ The code looks like the following:
     </li>
     <li> Add Push configuration in Application Descriptor file of iOS Native API and include the password of added apns certificate.
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <pushSender password="password"/>
 <tags>
   <tag>
@@ -585,7 +585,7 @@ The code looks like the following:
     </li>
     <li> Create HTTP Push Adapter with following function code which will send the user push notification to the devices which is subscribed to tag "parkstore".
 
-    {% highlight javascript %}
+    {% highlight javascript linenos %}
     function sendTagNotification(notificationText) {
         var notificationOptions = {};
         notificationOptions.message = {};

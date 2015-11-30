@@ -60,7 +60,7 @@ Complete the procedure for production mode when the app is publicly available an
         < -- and --> tags that surround each permission.</p>
             <ol>
                 <li>Declare the Mobile Quality Assurance preproduction or production activities. Ensure that the manifest file includes an application that contains the following activities:
-                    {% highlight xml %}
+                    {% highlight xml linenos %}
                     <activity android:name="com.ibm.mqa.ui.ProblemActivity"></activity>
                     <activity android:name="com.ibm.mqa.ui.FeedbackActivity"></activity>
                     <activity android:name="com.ibm.mqa.ui.ScreenshotEditorActivity"></activity>
@@ -69,11 +69,11 @@ Complete the procedure for production mode when the app is publicly available an
                 <li>Ensure that the following required permissions are listed in the manifest file:
                     <ul>
                         <li>INTERNET - Mobile Quality Assurance uses this permission to connect with the IBM® Mobile Quality Assurance for Bluemix server. The following code snippet shows the INTERNET permission entry that you must include:
-                            <p>{% highlight xml %}
+                            <p>{% highlight xml linenos %}
 <uses-permission android:name="android.permission.INTERNET" />{% endhighlight %}
                         </li>
                         <li>SYSTEM_ALERT_WINDOW - <strong>Note:</strong> This permission is required as of Android 5.1. Mobile Quality Assurance requires this permission to open windows on top of your application, such as the Mobile Quality Assurance app tester log-in window in preproduction mode, the Mobile Quality Assurance bug and feedback reporting window in preproduction mode, and the Mobile Quality Assurance feedback window in production mode. The following code snippet shows the <code>SYSTEM_ALERT_WINDOW</code> permission entry that you must include:
-                        {% highlight xml %}
+                        {% highlight xml linenos %}
                         <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
                         {% endhighlight %}
                         <strong>Important:</strong> If you do not add the permission, the app might fail with an <code>InvalidDisplayException</code> error: In preproduction mode, the app might fail to start. In production mode, if the app uses the <code>MQA.feedback()</code> API, it might crash when the API is called.</li>
@@ -90,7 +90,7 @@ Complete the procedure for production mode when the app is publicly available an
     <li>Configure MQA to start a new Mobile Quality Assurance session each time your app starts in the Java file:
         <ol>
             <li>Ensure that Mobile Quality Assurance is imported by verifying that your code includes the following lines:
-                {% highlight java %}
+                {% highlight java linenos %}
                 import com.ibm.mqa.MQA;
                 import com.ibm.mqa.MQA.Mode;
                 import com.ibm.mqa.config.Configuration;
@@ -98,7 +98,7 @@ Complete the procedure for production mode when the app is publicly available an
             </li>
             <li>Build a configuration object that specifies how Mobile Quality Assurance behaves.</li>
             <li>Call the <code>MQA.startNewSession()</code> method in the <code>onCreate</code> event of your main activity.
-                {% highlight java %}
+                {% highlight java linenos %}
                 public class MainActivity extends Activity {
                     public static final String APP_KEY = "Your-Application-Key-Goes-Here";
 

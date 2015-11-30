@@ -2,6 +2,7 @@
 layout: tutorial
 title: Introduction to MobileFirst Platform Operations Console
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+weight: 7
 ---
 <h2>Overview</h2>
 <p>The MobileFirst Platform Operations Console is a web-based UI dedicated to the ongoing monitoring and administration of the deployed applications, adapters as well as push notifications. The console also provides access to server logs (audit and error), Operational Analytics, device profiling, and more.</p>
@@ -11,7 +12,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li><a href="#navigatingTheConsole">Navigating the console</a></li>
 <li><a href="#consoleActions">Console actions</a></li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/studio-open-console.png"/></p>
+<p><img src="{{ site.baseurl }}/assets/backup/studio-open-console.png" style="float:right;width:25%"/></p>
 <h2 id="accessTheConsole">Accessing the console</h2>
 <p>You can access the console in three ways.</p>
 <ol>
@@ -54,7 +55,7 @@ See <a href="#consoleActions">Console actions</a> for more information.</p>
 <h4>Application access</h4>
 <p>By using the Remote Disable feature, an administrator can deny a user access to a certain application version, due to phase-out policy or due to security issues encountered in the application.</p>
 <h4>Authenticity</h4>
-<p>Learn more about application authenticity in the <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/authentication-security/application-authenticity-protection/">Application Authenticity Protection tutorial</a>.</p>
+<p>Learn more about application authenticity in the <a href="../../authentication-security/application-authenticity-protection/">Application Authenticity Protection tutorial</a>.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/comsole-env-expanded.png"/></p>
 <h2 id="consoleActions">Console actions</h2>
 <h3>License tracking</h3>
@@ -66,7 +67,7 @@ See <a href="#consoleActions">Console actions</a> for more information.</p>
 <p>You can search for devices either on the user ID (the ID that was used to log in to the Authentication Realm), or on a friendly name (a name that is associated with the device to distinguish it from other devices that share the user ID). You can set the friendly name on the client by using the client-side JavaScript APIs: <code>WL.Device.getFriendlyName</code> and <code>WL.Device.setFriendlyName</code>.</p>
 <blockquote><p>For more information, see the topic about "Device access management in the MobileFirst Operations Console" in the user documentation.</p></blockquote>
 <h3>Client log profiles</h3>
-<p>Related tutorial: <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a></p>
+<p>Related tutorial: <a href="../../advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a></p>
 <p>Administrators can use log profiles to adjust client logger configurations, such as log level and log package filters for any combination of operating system, operating system version, application, application version, and device model.</p>
 <p>When an administrator creates a configuration profile, the log configuration is concatenated with responses to explicit WLClient <code>connect</code> and <code>invokeProcedure</code>/<code>WLResourceRequest</code> API calls, and is applied automatically.</p>
 <blockquote><p>For more information, see the topic about "Client-side log capture configuration from MobileFirst Operations Console" in the user documentation.</p></blockquote>

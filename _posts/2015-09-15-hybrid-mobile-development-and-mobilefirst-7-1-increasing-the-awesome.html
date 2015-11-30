@@ -51,7 +51,7 @@ author:
 
 <p>In a MFP Cordova application, you have another event as well – the initialization of the MobileFirst client-side framework. By default, your code can (probably should) have a function called <code>wlCommonInit</code>. When this function is run, you can then do “MobileFirst stuff”, much like how deviceready implies device readiness. You can simply include this function in your application so you can begin doing things like remote logging, or other utilities. Here is an example:</p>
 
-{% highlight javascript %}
+{% highlight javascript linenos %}
 function wlCommonInit(){
 
 }
@@ -63,7 +63,7 @@ function init() {
 {% endhighlight %}
 
 <p>If you use the default MFP Cordova project, you’ll see some additional bits:</p>
-{% highlight javascript %}
+{% highlight javascript linenos %}
 var Messages = {
     // Add here your messages for the default language.
     // Generate a similar file with a language suffix containing the translated messages.

@@ -1,26 +1,34 @@
 ---
 layout: tutorial
 title: Application Authenticity Protection in Hybrid applications
+breadcrumb_title: Hybrid
 relevantTo: [hybrid]
 ---
 <br>
-This is a continuation of the <a title="Application Authenticity Protection" href="http://developer.ibm.com/mobilefirstplatform/documentation/getting-started-6-3/authentication-security/application-authenticity-protection/">Application Authenticity Protection</a> tutorial.</p>
+This is a continuation of the <a title="Application Authenticity Protection" href="../../authentication-security/application-authenticity-protection/">Application Authenticity Protection</a> tutorial.</p>
 <h3>application-descriptor.xml</h3>
 <p>Add the <em>securityTest</em> attribute to the relevant environment element. For example:</p>
-<p>{% highlight xml %}<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0“>{% endhighlight %}</p>
+<p>{% highlight xml linenos %}
+<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0">
+{% endhighlight %}</p>
 <p>Next, specific environment modifications are required as well.</p>
 <h3>iOS</h3>
 <p>To enable application authenticity protection check for the iPhone/iPad environment, specify the following in <code>application-descriptor.xml</code>:</p>
 <h4>Specifying the bundleId and applicationId</h4>
 <ol>
-<li>Specify the <code>bundleId</code> of the application exactly as it was defined in the <strong>Apple Developer portal</strong>.<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/09_10_appId.png"><img class="aligncenter wp-image-1573 size-full" src="{{ site.baseurl }}/assets/backup/09_10_appId.png" alt="09_10_appId" width="744" height="224" /></a>It can be added either in the Application Description Design view:
-<p><a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_15_application_descriptor_ios.png"><img class="aligncenter wp-image-1090 size-full" src="{{ site.baseurl }}/assets/backup/09_15_application_descriptor_ios.png" alt="09_15_application_descriptor_ios" width="862" height="267" /></a></p>
+<li>Specify the <code>bundleId</code> of the application exactly as it was defined in the <strong>Apple Developer portal</strong>.
+<img src="{{ site.baseurl }}/assets/backup/09_10_appId.png"/>
+It can be added either in the Application Description Design view:
+<img src="{{ site.baseurl }}/assets/backup/09_15_application_descriptor_ios.png"/>
 <p>Or in the Application Descriptor Source view:</p>
-<p>{% highlight xml %}<iphone bundleId="com.worklight.MyBankApp" version="1.0">{% endhighlight %}</p>
+<p>{% highlight xml linenos %}<iphone bundleId="com.worklight.MyBankApp" version="1.0">{% endhighlight %}</p>
 </li>
-<li>Specify the <code>applicationId</code> value. The Application Id value must match the value of the <code>application id</code> property, which is located in the <code>native\worklight.plist</code> file.It can be added either in the Application Description Design view:<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/10/09_10_applicationId.png"><img class="aligncenter wp-image-1574 size-full" src="{{ site.baseurl }}/assets/backup/09_10_applicationId.png" alt="09_10_applicationId" width="900" height="280" /></a>
+<li>Specify the <code>applicationId</code> value. The Application Id value must match the value of the <code>application id</code> property, which is located in the <code>native\worklight.plist</code> file.It can be added either in the Application Description Design view:
+    <img src="{{ site.baseurl }}/assets/backup/09_10_applicationId.png" />
 <p>Or in the Application Descriptor Source view:</p>
-<p>{% highlight xml %}<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0“>{% endhighlight %}</p>
+<p>{% highlight xml linenos %}
+<iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0">
+{% endhighlight %}</p>
 </li>
 <li>In Xcode, verify that the following value exists in the <strong>Other Linker Flags</strong> field: <code>-ObjC</code></li>
 </ol>
@@ -39,38 +47,45 @@ To use the wizard:</p>
 <li>The default password for <strong>debug.keystore</strong> is "android".</li>
 <li>Set the <strong>Key alias</strong> and click <strong>Next</strong>.</li>
 <li>A dialog opens that displays the public key.</li>
-<li>After you click <strong>Finish</strong>, the public key is automatically pasted to the relevant section of the <em>application-descriptor.xml</em> file.<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_15_android-signing-key.png"><img class="alignnone size-full wp-image-1091" src="{{ site.baseurl }}/assets/backup/09_15_android-signing-key.png" alt="09_15_android-signing-key" width="1121" height="518" /></a></li>
+<li>After you click <strong>Finish</strong>, the public key is automatically pasted to the relevant section of the <em>application-descriptor.xml</em> file.
+    <img src="{{ site.baseurl }}/assets/backup/09_15_android-signing-key.png"/>
 </ul>
 </li>
 </ul>
 </li>
 <li>Add the Application package name by using the Application Descriptor Editor (design view):<br />
-<a href="https://developer.ibm.com/mobileplatform/wp-content/uploads/sites/32/2014/07/09_15_android-package-name-editor.png"><img class="alignnone size-full wp-image-1092" src="{{ site.baseurl }}/assets/backup/09_15_android-package-name-editor.png" alt="09_15_android-package-name-editor" width="700" height="164" /></a></li>
+<img src="{{ site.baseurl }}/assets/backup/09_15_android-package-name-editor.png"/>
 <li>Take the Application package name value from the package attribute of the <em>manifest</em> node in the <strong>AndroidManifest.xml</strong>.<br />
 If you decide to change the value to another, verify that you change it in both locations.You can also directly edit <strong>application-descriptor.xml</strong> and add a <em>packageName</em>:</p>
-<p>{% highlight xml %}<android version="1.0"><br />
-        <worklightSettings include="false"/><br />
-        <security><br />
-            <encryptWebResources enabled="false"/><br />
-            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
-            <publicSigningKey>MIGff ...</publicSigningKey><br />
-            <packageName>com.MyBankApp</packageName><br />
-        </security><br />
-</android>{% endhighlight %}</p>
+<p>
+{% highlight xml linenos %}<android version="1.0">
+    <worklightSettings include="false"/>
+    <security>
+        <encryptWebResources enabled="false"/>
+        <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+        <publicSigningKey>MIGff ...</publicSigningKey>
+        <packageName>com.MyBankApp</packageName>
+    </security>
+</android>
+{% endhighlight %}</p>
 </li>
 </ol>
 <h3>Windows Phone 8</h3>
 <p>To enable application authenticity check for the Windows Phone 8 Hybrid environment, several modifications to the <code>application-descriptor.xml</code> file are needed:</p>
 <ol>
-<li>In the Application Descriptor Design view, supply the <code>applicationId</code> and <code>productId</code> in the Windows Phone 8 Security section:<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/09_11_windowsphone8.png"><img class="aligncenter size-large wp-image-1687" src="{{ site.baseurl }}/assets/backup/09_11_windowsphone8-1024x492.png" alt="09_11_windowsphone8" width="980" height="470" /></a></li>
+<li>In the Application Descriptor Design view, supply the <code>applicationId</code> and <code>productId</code> in the Windows Phone 8 Security section:
+    <img src="{{ site.baseurl }}/assets/backup/09_11_windowsphone8-1024x492.png"/></li>
 <li>The <code>productId</code> value can be found in <code>native\PropertiesWMAppManifest.xml</code>.</li>
 <li>The <code>applicationId</code> value must match the value of the span style="font-family:courier-new">wlAppId property, which can be found in the span style="font-family:courier-new">native\wlclient.properties file.</li>
 </ol>
 <p>These values can also be supplied in the Application Descriptor Source view. For example:</p>
-<p>{% highlight xml %}<windowsPhone8 version="1.0"><br />
-        <uuid>b5542877-7afe-4edc-a817-5341b5027633</uuid><br />
-        <security><br />
-            <productId>fca81480-7b4a-4ed0-b387-078e8fa0c3d5</productId><br />
-            <applicationId>HelloWorld</applicationId><br />
-        </security><br />
-    </windowsPhone8>{% endhighlight %}</p>
+<p>
+{% highlight xml linenos %}
+<windowsPhone8 version="1.0">
+    <uuid>b5542877-7afe-4edc-a817-5341b5027633</uuid>
+    <security>
+        <productId>fca81480-7b4a-4ed0-b387-078e8fa0c3d5</productId>
+        <applicationId>HelloWorld</applicationId>
+    </security>
+</windowsPhone8>
+{% endhighlight %}</p>

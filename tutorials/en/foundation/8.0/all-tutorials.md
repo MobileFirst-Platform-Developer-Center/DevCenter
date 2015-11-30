@@ -13,7 +13,6 @@ Get a feel of the MobileFirst SDK with these fast-tracked demos.
 * <a href="../quick-start/ios/">Quick start with iOS</a>
 * <a href="../quick-start/android/">Quick start with Android</a>
 * <a href="../quick-start/windows-8/">Quick start with Windows 8</a>
-* <a href="../quick-start/windows-phone-8/">Quick start with Windows Phone 8</a>
 * <a href="../quick-start/windows-10/">Quick start with Windows 10</a>
 * <a href="../quick-start/windows-phone-10/">Quick start with Windows Phone 10</a>
 * <a href="../quick-start/cordova/">Quick start with Cordova</a>
@@ -33,7 +32,6 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * <a href="../configuring-the-mfpf-sdk/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
 * <a href="../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/"> Configuring a native iOS application with the MobileFirst Platform SDK</a>
 * <a href="../configuring-the-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/"> Configuring a native Android application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-phone-8-application-with-the-mfp-sdk/">Configuring a native Windows Phone 8 application with the MobileFirst Platform SDK</a>
 * <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/">Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK</a>
 * <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/">Configuring a native Windows 10 Universal application with the MobileFirst Platform SDK</a>
 * <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-phone-10-application-with-the-mfp-sdk/">Configuring a native Windows Phone 10 Universal application with the MobileFirst Platform SDK</a>
@@ -80,7 +78,6 @@ Develop the server code (adapters) that your mobile app requires to integrate wi
     * <a href="../server-side-development/invoking-adapter-procedures-native-ios-swift-applications/">Invoking adapter procedures from native iOS Swift applications</a>
     * <a href="../server-side-development/invoking-adapter-procedures-native-ios-applications/">Invoking adapter procedures from native iOS Objective-C applications</a>
     * <a href="../server-side-development/invoking-adapter-procedures-native-android-applications/">Invoking adapter procedures from native Android applications</a>
-    * <a href="../server-side-development/invoking-adapter-procedures-native-windows-phone-8-applications/">Invoking adapter procedures from native Windows Phone 8 applications</a>
     * <a href="../server-side-development/invoking-adapter-procedures-native-windows-8-applications/">Invoking adapter procedures from native Windows 8 Universal applications</a>
     * <a href="../server-side-development/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/">Invoking adapter procedures from native Java Platform, Micro Editions (Java ME) applications</a>
 * <a href="../server-side-development/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a>
@@ -112,7 +109,6 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 * <a href="../notifications/push-notifications-overview/push-notifications-in-native-android-applications/">Push notifications in native Android applications</a>
     * <a href="../notifications/push-notifications-overview/push-notifications-in-native-android-applications/event-source/">Event Source Notifications in Native Android Applications</a>
 	* <a href="../notifications/push-notifications-overview/push-notifications-in-native-android-applications/tag-based/">Tag and Broadcast Notifications in Native Android Applications</a>
-* <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/">Push notifications in native Windows Phone 8 applications</a>
     * <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/event-source/">Event Source Notifications in Native Windows Phone 8 Applications</a>
 	* <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/tag-based/">Tag and Broadcast Notifications in Native Windows Phone 8 Applications</a>
 * <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/">Push notifications in native Windows 8 Universal applications</a>
@@ -130,14 +126,12 @@ Protect your applications and adapter procedures against unauthorized access by 
 	* <a href="../authentication-and-security/custom-authentication/custom-authentication-hybrid-applications/">Custom authentication in hybrid applications</a>
 	* <a href="../authentication-and-security/custom-authentication/custom-authentication-native-ios-applications/"> Custom authentication in native iOS applications</a>
 	* <a href="../authentication-and-security/custom-authentication/custom-authentication-in-native-android-applications/">Custom authentication in native Android applications</a>
-	* <a href="../authentication-and-security/custom-authentication/custom-authentication-in-native-windows-phone-8-applications/">Custom authentication in native Windows Phone 8 applications</a>
 	* <a href="../authentication-and-security/custom-authentication/custom-authentication-in-native-windows-8-applications/">Custom authentication in native Windows 8 applications</a>
 * <a href="../authentication-and-security/application-authenticity-protection/">Application Authenticity Protection</a>
     * <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-hybrid-applications/">Application Authenticity Protection in Hybrid applications</a>
 	* <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-native-ios/">Application Authenticity Protection in Native iOS applications</a>
 	* <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-native-android-applications/">Application Authenticity Protection in Native Android applications</a>
 	* <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-universal-applications/">Application Authenticity Protection in Native Windows 8 Universal applications</a>
-    * <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-phone-8-applications/">Application Authenticity Protection in Native Windows Phone 8 applications</a>
     * <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-10-universal-applications/">Application Authenticity Protection in Native Windows 10 Universal applications</a>
     * <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-phone-10-applications/">Application Authenticity Protection in Native Windows Phone 10 applications</a>
 * <a href="../authentication-and-security/client-x-509-certificate-authentication-user-enrollment/">Client X.509 Certificate Authentication and User Enrollment</a>

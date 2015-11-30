@@ -19,7 +19,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li><a href="#sample">Sample application</a></li>
 </ul>
 <h2 id="addCustom">Adding custom Java classes </h2>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/04_13_project-files.png"><img src="{{ site.baseurl }}/assets/backup/04_13_project-files.png" alt="04_13_project-files" width="182" height="273" class="alignright size-full wp-image-2411" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_13_project-files.png" /></p>
 <ol>
 <li>To use an existing Java library, add the JAR file to the <code>server\lib</code> folder of your MobileFirst project.
 <p>After the adapter is built and deployed, this JAR file is automatically deployed to MobileFirst Server.</p>
@@ -33,7 +33,7 @@ This package name can be interpreted as folders: <code>java\com\sample\customcod
 </li>
 <li>Add methods to your <code>Calculator.java</code> class.<br />
 Here is an example of a static method (does not require a new instance) and of an instance method.</p>
-<p>[code lang="java" title="Calculator.java"]<br />
+<p>{% highlight java linenos %}<br />
 package com.sample.customcode;</p>
 <p>public class Calculator {</p>
 <p>  // Add two integers.<br />
@@ -45,7 +45,7 @@ package com.sample.customcode;</p>
     return first - second;<br />
   }<br />
 }<br />
-[/code]
+{% endhighlight %}
 </li>
 <li>If your Java code has additional dependencies, put the required JAR files in the <code>server\lib</code> folder of your MobileFirst project.
 </li>
@@ -54,23 +54,23 @@ package com.sample.customcode;</p>
 <p>After your custom Java code is created and any required JAR files are added, you can reference it from your MobileFirst adapter JavaScript as if it were written in Java.</p>
 <ol>
 <li>Invoke the static Java method as shown, and use the full class name to reference it directly.<br />
-[code lang="javascript" title="UsingJavaInAdapter-impl.js"]<br />
+{% highlight javascript linenos %}<br />
 function addTwoIntegers(a,b){<br />
   return {<br />
     result: com.sample.customcode.Calculator.addTwoIntegers(a,b)<br />
   };<br />
 }<br />
-[/code]
+{% endhighlight %}
 </li>
 <li>To use the instance method, create a class instance and invoke the instance method from it.
-<p>[code lang="javascript" title="UsingJavaInAdapter-impl.js"]<br />
+<p>{% highlight javascript linenos %}<br />
 function subtractTwoIntegers(a,b){<br />
   var calcInstance = new com.sample.customcode.Calculator();<br />
   return {<br />
     result : calcInstance.subtractTwoIntegers(a,b)<br />
   };<br />
 }<br />
-[/code]
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="sample">Sample application</h2>

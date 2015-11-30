@@ -2,16 +2,12 @@
 layout: tutorial
 title: Form-based authentication in native Android applications
 relevantTo: [android]
+downloads:
+  - name: Download Studio project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeFormBasedAuthProject.zip
+  - name: Download native project
+    url: http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeFormBasedAuthProject.zip
 ---
-<ul>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeFormBasedAuthProject.zip">Download Studio project</a>
-        </li>
-<li class="download-sample">
-          <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeFormBasedAuthProject.zip">Download native project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>This tutorial illustrates the native Android client-side authentication components for form-based authentication.<br />
 <strong>Prerequisite:</strong> Make sure that you read <a href="../" title="Form-based authentication">Form-based authentication</a> first.</p>
@@ -29,64 +25,64 @@ relevantTo: [android]
 <h3>MyChallengeHandler</h3>
 <p>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
 Your <code>MyChallengeHandler</code> class must implement <code>isCustomResponse</code>, which checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
-{% highlight java %} <br />
-public boolean isCustomResponse(WLResponse response) {<br />
-    if (response == null || response.getResponseText() == null ||<br />
-            response.getResponseText().indexOf("j_security_check") == -1) {<br />
-        return false;<br />
-    }<br />
-    return true;<br />
-}<br />
- {% endhighlight %} </p>
+{% highlight java linenos %}
+public boolean isCustomResponse(WLResponse response) {
+    if (response == null || response.getResponseText() == null ||
+            response.getResponseText().indexOf("j_security_check") == -1) {
+        return false;
+    }
+    return true;
+}
+{% endhighlight %} </p>
 <p><br clear="all" /><br />
 The <code>handleChallenge</code> method is called after the <code>isCustomResponse</code> method returns <code>true</code>.<br />
 Here this method presents the login form.<br />
-{% highlight java %} <br />
-public void handleChallenge(WLResponse response){<br />
-    if (!isCustomResponse(response)) {<br />
-        submitSuccess(response);<br />
-    } else {<br />
-        cachedResponse = response;<br />
-        Intent login = new Intent(parentActivity, LoginFormBasedAuth.class);<br />
-        parentActivity.startActivityForResult(login, 1);<br />
-    }<br />
-}<br />
- {% endhighlight %} </p>
+{% highlight java linenos %}
+public void handleChallenge(WLResponse response){
+    if (!isCustomResponse(response)) {
+        submitSuccess(response);
+    } else {
+        cachedResponse = response;
+        Intent login = new Intent(parentActivity, LoginFormBasedAuth.class);
+        parentActivity.startActivityForResult(login, 1);
+    }
+}
+{% endhighlight %} </p>
 <p><br clear="all" /><br />
 The <code>submitLogin</code> method is called by the login form. If the user asked to abort this action, use the <code>submitFailure()</code> method, otherwise use the <code>submitLoginForm()</code> method to send input data to the authenticator.<br />
-{% highlight java %} <br />
-public void submitLogin(int resultCode, String userName, String password, boolean back){<br />
-    if (resultCode != Activity.RESULT_OK || back) {<br />
-        submitFailure(cachedResponse);<br />
-    } else {<br />
-        HashMap<String, String> params = new HashMap<String, String>();<br />
-        params.put("j_username", userName);<br />
-        params.put("j_password", password);<br />
-        submitLoginForm("/j_security_check", params, null, 0, "post");<br />
-    }<br />
-}<br />
- {% endhighlight %} </p>
+{% highlight java linenos %}
+public void submitLogin(int resultCode, String userName, String password, boolean back){
+    if (resultCode != Activity.RESULT_OK || back) {
+        submitFailure(cachedResponse);
+    } else {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("j_username", userName);
+        params.put("j_password", password);
+        submitLoginForm("/j_security_check", params, null, 0, "post");
+    }
+}
+{% endhighlight %} </p>
 <p><br clear="all" /></p>
 <h3>Main activity</h3>
 <p>In the <code>MainActivity</code> class, connect to MobileFirst Server, register your <code>challengeHandler</code> object, and invoke the protected adapter procedure.<br />
 The procedure invocation triggers MobileFirst Server to send a challenge that will trigger the challenge handler.<br />
-{% highlight java %} <br />
-final WLClient client = WLClient.createInstance(this);</p>
-<p>client.connect(new MyConnectionListener());</p>
-<p>challengeHandler = new AndroidChallengeHandler(this, realm);<br />
-client.registerChallengeHandler(challengeHandler);</p>
-<p>invokeBtn = (Button) findViewById(R.id.invoke);<br />
-invokeBtn.setOnClickListener(new View.OnClickListener() {</p>
-<p>    @Override<br />
-    public void onClick(View v) {<br />
-        //setMainText("Invoking...");<br />
-        WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");<br />
-        WLRequestOptions options = new WLRequestOptions();<br />
-        options.setTimeout(30000);<br />
-        client.invokeProcedure(invocationData, new MyResponseListener(), options);<br />
-    }</p>
-<p>});<br />
- {% endhighlight %} </p>
+{% highlight java linenos %}
+final WLClient client = WLClient.createInstance(this)
+client.connect(new MyConnectionListener());
+challengeHandler = new AndroidChallengeHandler(this, realm);
+client.registerChallengeHandler(challengeHandler);
+invokeBtn = (Button) findViewById(R.id.invoke);
+invokeBtn.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        //setMainText("Invoking...");
+        WLProcedureInvocationData invocationData = new WLProcedureInvocationData("DummyAdapter", "getSecretData");<
+        WLRequestOptions options = new WLRequestOptions();
+        options.setTimeout(30000);
+        client.invokeProcedure(invocationData, new MyResponseListener(), options);
+    }
+});
+{% endhighlight %} </p>
 <h2 id="sample">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/NativeFormBasedAuthProject.zip">Click to download</a> the Studio project.<br />
 <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/AndroidNativeFormBasedAuthProject.zip">Click to download</a> the Native project.</p>

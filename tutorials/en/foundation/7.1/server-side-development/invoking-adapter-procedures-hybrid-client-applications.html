@@ -15,12 +15,12 @@ The REST API works with all adapters and <a href="../../authentication-security/
 <p>If your application supports other hybrid environments such as BlackBerry, Mobile Web, or Desktop Browser, see the tutorial for <a href="{{site.baseurl}}/tutorials/en/foundation/6.3/server-side-development/invoking-adapter-procedures-hybrid-client-applications/">IBM MobileFirst Platform Foundation 6.3</a>.</p>
 <p>This tutorial explains how to use the <code>WLResourceRequest</code> API with an HTTP adapter.</p>
 <h2>WLResourceRequest</h2>
-<p>[code lang="js"]<br />
+<p>{% highlight js linenos %}<br />
 var resourceRequest = new WLResourceRequest(<br />
-    &quot;/adapters/RSSReader/getFeedFiltered&quot;,<br />
+    "/adapters/RSSReader/getFeedFiltered",<br />
     WLResourceRequest.GET<br />
 );<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>WLResourceRequest</code> class handles resource requests to MobileFirst adapters or external resources.</p>
 <p>The parameters for the constructor are:</p>
 <ul>
@@ -31,28 +31,28 @@ var resourceRequest = new WLResourceRequest(<br />
 </ul>
 <p><br clear="all" /></p>
 <h4>setQueryParameter</h4>
-<p>[code lang="js"]<br />
-resourceRequest.setQueryParameter(&quot;params&quot;, &quot;['MobileFirst_Platform']&quot;);<br />
-[/code]</p>
+<p>{% highlight js linenos %}<br />
+resourceRequest.setQueryParameter("params", "['MobileFirst_Platform']");<br />
+{% endhighlight %}</p>
 <p>By using the <code>setQueryParameter</code> method, you can include query (URL) parameters in the REST request.</p>
 <ul>
 <li>In MobileFirst JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name <code>params</code>.
 </li>
 <li>In Java adapters or external resources, use <code>setQueryParameter</code> for each parameter.<br />
-[code lang="js"]<br />
-resourceRequest.setQueryParameter(&quot;param1&quot;, &quot;value1&quot;);<br />
-resourceRequest.setQueryParameter(&quot;param2&quot;, &quot;value2&quot;);<br />
-[/code]
+{% highlight js linenos %}<br />
+resourceRequest.setQueryParameter("param1", "value1");<br />
+resourceRequest.setQueryParameter("param2", "value2");<br />
+{% endhighlight %}
 </li>
 </ul>
 <p><br clear="all" /></p>
 <h4>send(body)</h4>
-<p>[code lang="js"]<br />
+<p>{% highlight js linenos %}<br />
 resourceRequest.send().then(<br />
 	onSuccess,<br />
 	onFailure<br />
 );<br />
-[/code]</p>
+{% endhighlight %}</p>
 <p>The <code>send()</code> method triggers the request.<br />
 Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFailure</code> functions.</p>
 <p>The <code>send</code> method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.</p>
@@ -67,37 +67,37 @@ Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFai
 </ul>
 <p>The object is returned to a corresponding success/failure handler.</p>
 <p><br clear="all" /><br />
-[code lang="javascript" highlight="2,3,4,5,13"]<br />
+{% highlight javascript linenos %}<br />
 {<br />
-  &quot;errors&quot;: [],<br />
-  &quot;info&quot;: [],<br />
-  &quot;warnings&quot;: [],<br />
-  &quot;isSuccessful&quot;: true,<br />
-  &quot;responseHeaders&quot;: {<br />
-    &quot;Cache-Control&quot;: &quot;no-cache, must-revalidate, post-check=0, pre-check=0&quot;<br />
+  "errors": [],<br />
+  "info": [],<br />
+  "warnings": [],<br />
+  "isSuccessful": true,<br />
+  "responseHeaders": {<br />
+    "Cache-Control": "no-cache, must-revalidate, post-check=0, pre-check=0"<br />
   },<br />
-  &quot;responseTime&quot;: 491,<br />
-  &quot;statusCode&quot;: 200,<br />
-  &quot;statusReason&quot;: &quot;OK&quot;,<br />
-  &quot;totalTime&quot;: 592,<br />
-  &quot;Items&quot;: [{<br />
-    &quot;creator&quot;: &quot;Jon Fingas&quot;,<br />
-    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated&quot;,<br />
-    &quot;pubDate&quot;: &quot;Mon, 10 Nov 2014 02:21:00 -0500&quot;,<br />
-    &quot;title&quot;: &quot;Harvard used cameras to track attendance without telling students&quot;<br />
+  "responseTime": 491,<br />
+  "statusCode": 200,<br />
+  "statusReason": "OK",<br />
+  "totalTime": 592,<br />
+  "Items": [{<br />
+    "creator": "Jon Fingas",<br />
+    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated",<br />
+    "pubDate": "Mon, 10 Nov 2014 02:21:00 -0500",<br />
+    "title": "Harvard used cameras to track attendance without telling students"<br />
   }, {<br />
-    &quot;creator&quot;: &quot;Jon Fingas&quot;,<br />
-    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/10\/bmw-ev-charging-street-lights\/?ncid=rss_truncated&quot;,<br />
-    &quot;pubDate&quot;: &quot;Mon, 10 Nov 2014 00:10:00 -0500&quot;,<br />
-    &quot;title&quot;: &quot;BMW's new street lights will charge your electric car&quot;<br />
+    "creator": "Jon Fingas",<br />
+    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/bmw-ev-charging-street-lights\/?ncid=rss_truncated",<br />
+    "pubDate": "Mon, 10 Nov 2014 00:10:00 -0500",<br />
+    "title": "BMW's new street lights will charge your electric car"<br />
   }, {<br />
-    &quot;creator&quot;: &quot;Daniel Cooper&quot;,<br />
-    &quot;link&quot;: &quot;http:\/\/www.engadget.com\/2014\/11\/09\/hwyc-lumia-925\/?ncid=rss_truncated&quot;,<br />
-    &quot;pubDate&quot;: &quot;Sun, 09 Nov 2014 22:43:00 -0500&quot;,<br />
-    &quot;title&quot;: &quot;How would you change Nokia's Lumia 925?&quot;<br />
+    "creator": "Daniel Cooper",<br />
+    "link": "http:\/\/www.engadget.com\/2014\/11\/09\/hwyc-lumia-925\/?ncid=rss_truncated",<br />
+    "pubDate": "Sun, 09 Nov 2014 22:43:00 -0500",<br />
+    "title": "How would you change Nokia's Lumia 925?"<br />
   }]<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <ul>
 <li><code>errors</code>, <code>info</code>, and <code>warnings</code> are optional arrays of strings that contain messages.</li>
 <li>The <code>isSuccessful</code> property is set to <code>true</code> if the procedure invocation succeeded (even if no data was retrieved), or to <code>false</code> otherwise.</li>
@@ -105,14 +105,14 @@ Using JavaScript promises, you can define <code>onSuccess</code> and <code>onFai
 </ul>
 <h3>Handling the result</h3>
 <p>The rest of the invocation result depends on what was retrieved from the back-end system. In this example, the <code>Items</code> element is a JSON representation of the XML code that was received from the back end, after the rules in the XSL file were applied.</p>
-<p>[code lang="javascript"]<br />
+<p>{% highlight javascript linenos %}<br />
 function loadFeedsSuccess(result){<br />
-    WL.Logger.debug(&quot;Feed retrieve success&quot;);<br />
-    if (result.responseJSON.Items.length &gt; 0)<br />
+    WL.Logger.debug("Feed retrieve success");<br />
+    if (result.responseJSON.Items.length > 0)<br />
         displayFeeds(result.responseJSON.Items);<br />
 }<br />
-[/code]</p>
+{% endhighlight %}</p>
 <h2 id="sample">Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures" target="_blank">Click to download</a> the MobileFirst project.</p>
 <p>The sample uses the HTTP adapter created in the <a href="../javascript-adapters/js-http-adapter">HTTP Adapter tutorial</a>.</p>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/RSSReader.png"><img src="{{ site.baseurl }}/assets/backup/RSSReader.png" alt="RSSReader" width="399" height="693" class="aligncenter size-full wp-image-16923" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/RSSReader.png" /></p>

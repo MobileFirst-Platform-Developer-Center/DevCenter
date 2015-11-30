@@ -57,7 +57,7 @@ To setup the target with the MobileFirst API, you need to follow the same instru
 <p>The generated <strong>TodayViewController.m</strong> contains a method called <code>widgetPerformUpdateWithCompletionHandler</code>. This method is called by iOS to give your widget an opportunity to update itself. This can happen in the background, or when the user pulls the Today view out.</p>
 <p>To see it in action, try to write a simple code that updates the label with the current date.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {</p>
     NSDate *today = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -76,7 +76,7 @@ Also notice the <code>completionHandler</code> call. This important line lets iO
 <h2>Invoking Procedure</h2>
 <p>In this example the update being performed is to fetch new data from the RSS adapter.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
     WLProcedureInvocationData *myInvocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@"StarterApplicationAdapter" procedureName:@"getEngadgetFeeds"];
     TodayInvoke *invokeListener = [[TodayInvoke alloc] initWithController:self andCompletionHandler:completionHandler];
@@ -86,7 +86,7 @@ Also notice the <code>completionHandler</code> call. This important line lets iO
 
 <p>When initializing the invocation listener, I passed both the current ViewController and the completion handler. The ViewController is passed so that the listener is able to update the label in the view once it receives the data. The completion handler is passed so that the listener can inform the operating system when the operation is complete.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 #import <Foundation/Foundation.h>
 #import "WLClient.h"
 #import "WLDelegate.h"
@@ -99,7 +99,7 @@ Also notice the <code>completionHandler</code> call. This important line lets iO
 @end
 {% endhighlight %}
 
-{% highlight objc %}
+{% highlight objc linenos %}
 - (id)initWithController: (TodayViewController *)mainView andCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
     if ( self = [super init] )
     {
@@ -112,7 +112,7 @@ Also notice the <code>completionHandler</code> call. This important line lets iO
 
 <p>The <code>onSuccess</code> method will trigger the view updates. To make this example a bit more reactive, I am picking a news item at <strong>random</strong> instead of showing the truly "latest" news.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 -(void)onSuccess:(WLResponse *)response{
     if(response && response.invocationResult && response.invocationResult.response && response.invocationResult.response[@"items"]){
         //Get random news item
@@ -142,7 +142,7 @@ Also notice the <code>completionHandler</code> call. This important line lets iO
 This is because if the widget is pulled out of memory, or if the refresh fails, I still want to have the previous news item show, instead of staying empty.</p>
 <p>To do so, I've updated <code>viewDidLoad</code> to retrieve the latest cached version just in case.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -165,7 +165,7 @@ In the main application's <strong>Info.plist</strong>, add a <strong>URL types</
 
 <img src="{{ site.baseurl }}/assets/backup/infoplist.png" class="img_responsive" />
 
-{% highlight xml %}
+{% highlight xml linenos %}
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -181,7 +181,7 @@ In the main application's <strong>Info.plist</strong>, add a <strong>URL types</
 
 <p>On the other side, from your widget code, you can use the <code>tap</code> action we added earlier to open a URL as defined here.</p>
 
-{% highlight objc %}
+{% highlight objc linenos %}
 - (IBAction)tap:(id)sender {
     NSLog(@"tapped!");
     NSURL *customURL = [NSURL URLWithString:@"StarterApplication://"];

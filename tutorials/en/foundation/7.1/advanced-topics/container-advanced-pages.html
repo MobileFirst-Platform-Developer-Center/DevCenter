@@ -2,16 +2,14 @@
 layout: tutorial
 title: Container for advanced pages in hybrid applications
 relevantTo: [hybrid]
+weight: 9
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ContainerForAdvancedPages
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ContainerForAdvancedPagesWar
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/ContainerForAdvancedPages" target="_blank">Download MobileFirst project</a>
-    </li>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/ContainerForAdvancedPagesWar" target="_blank">Download Server WAR</a>
-    </li>
-</ul>
-
+<br>
 <p>This tutorial covers the following topics:</p>
 <ul>
 <li><a href="#prerequisites">Prerequisites</a></li>
@@ -56,165 +54,165 @@ You cannot use the sample that is associated with this tutorial as is with the f
 </ul>
 <h3 id="mobileViews">Mobile views</h3>
 <p>Dojo provides mobile widgets that developers can use to quickly generate mobile views.</p>
-<p>[code lang="html" title="location.jsp" firstline="53"]<br />
-&lt;div id=&quot;locations&quot; dojoType=&quot;dojox.mobile.ScrollableView&quot; selected=&quot;true&quot;&gt;<br />
-    &lt;h1 dojoType=&quot;dojox.mobile.Heading&quot; label=&quot;Locations&quot; fixed=&quot;top&quot;&gt;&lt;/h1&gt;<br />
-    &lt;div class=&quot;list-category&quot; dojoType=&quot;dojox.mobile.RoundRectCategory&quot;&gt;USA&lt;/div&gt;<br />
-    &lt;ul dojoType=&quot;dojox.mobile.RoundRectList&quot;&gt;<br />
-        &lt;c:forEach var=&quot;location&quot; items=&quot;${applicationScope.locationRegistryList['usa']}&quot;&gt;<br />
-            &lt;li dojoType=&quot;dojox.mobile.ListItem&quot; class=&quot;mblVariableHeight&quot;<br />
-            url=&quot;./conferences.jsp?locationId=${location}&quot;<br />
-            urlTarget=&quot;conferences&quot; transition=&quot;slide&quot;&gt;<br />
-                &lt;div class=&quot;list-detail&quot;&gt;<br />
-                    &lt;div&gt;${locationMap[location].city}, ${locationMap[location].state}&lt;/div&gt;<br />
-                &lt;/div&gt;<br />
-            &lt;/li&gt;<br />
-        &lt;/c:forEach&gt;<br />
-    &lt;/ul&gt;<br />
-&lt;/div&gt;<br />
-[/code]</p>
+<p>{% highlight html linenos %}
+<div id="locations" dojoType="dojox.mobile.ScrollableView" selected="true">
+    <h1 dojoType="dojox.mobile.Heading" label="Locations" fixed="top"></h1>
+    <div class="list-category" dojoType="dojox.mobile.RoundRectCategory">USA</div>
+    <ul dojoType="dojox.mobile.RoundRectList">
+        <c:forEach var="location" items="${applicationScope.locationRegistryList['usa']}">
+            <li dojoType="dojox.mobile.ListItem" class="mblVariableHeight"
+            url="./conferences.jsp?locationId=${location}"
+            urlTarget="conferences" transition="slide">
+                <div class="list-detail">
+                    <div>${locationMap[location].city}, ${locationMap[location].state}</div>
+                </div>
+            </li>
+        </c:forEach>
+    </ul>
+</div>
+{% endhighlight %}</p>
 <p>JSTL provides a simple API for iterating over lists to generate Dojox Mobile list items dynamically on the server.</p>
 <h3 id="formClient">Form-based authentication - client</h3>
 <p>IBM Mobile Conference application requires users to be registered and authenticated with the enterprise that is hosting the application. The application is protected by a form-based login, by using a mobile web form that is contained within a Dojox Mobile view.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/login1.png"><img src="{{ site.baseurl }}/assets/backup/login1.png" alt="login" width="400" height="186" class="alignnone size-full wp-image-3682" /></a></p>
-<p>[code lang="html" title="logon.jsp" firstline="50"]<br />
-&lt;div dojoType=&quot;dojox.mobile.View&quot;&gt;<br />
-        &lt;c:set var=&quot;conferences&quot; scope=&quot;session&quot;<br />
-            value=&quot;&quot;&gt;&lt;/c:set&gt;<br />
-        &lt;!-- a sample heading --&gt;<br />
-        &lt;h1 style=&quot;text-align: center;&quot; dojoType=&quot;dojox.mobile.Heading&quot;&gt;IBM Mobile Conference App&lt;/h1&gt;<br />
-        &lt;form action=&quot;j_security_check&quot; method=&quot;post&quot; name=&quot;loginForm&quot;&gt;<br />
-            &lt;div class=&quot;logonClass&quot;&gt;<br />
-                &lt;div&gt;<br />
-                    &lt;span&gt;Username &lt;/span&gt; &lt;input id=&quot;username&quot; dojoType=&quot;dojox.mobile.TextBox&quot;<br />
-                        name=&quot;j_username&quot; /&gt;<br />
-                &lt;/div&gt;<br />
-                &lt;div&gt;<br />
-                    &lt;span&gt;Password &lt;/span&gt; &lt;input id=&quot;password&quot; type=password name=&quot;j_password&quot;<br />
-                        dojoType=&quot;dojox.mobile.TextBox&quot;&gt; &lt;/input&gt;</p>
-<p>                &lt;/div&gt;<br />
-                &lt;div style=&quot;text-align: center;&quot;&gt;<br />
-                    &lt;input id=&quot;login&quot; type=&quot;submit&quot; class=&quot;mblButton&quot; value=&quot;Login&quot;/&gt;<br />
-                &lt;/div&gt;<br />
-            &lt;/div&gt;<br />
-        &lt;/form&gt;<br />
-&lt;/div&gt;<br />
-[/code]</p>
+<p><img src="{{ site.baseurl }}/assets/backup/login1.png" /></p>
+<p>{% highlight html linenos %}
+<div dojoType="dojox.mobile.View">
+    <c:set var="conferences" scope="session"
+        value=""></c:set>
+    <!-- a sample heading -->
+    <h1 style="text-align: center;" dojoType="dojox.mobile.Heading">IBM Mobile Conference App</h1>
+    <form action="j_security_check" method="post" name="loginForm">
+        <div class="logonClass">
+            <div>
+                <span>Username </span> <input id="username" dojoType="dojox.mobile.TextBox"
+                    name="j_username" />
+            </div>
+            <div>
+                <span>Password </span> <input id="password" type=password name="j_password"
+                    dojoType="dojox.mobile.TextBox"> </input>
+            </div>
+            <div style="text-align: center;">
+                <input id="login" type="submit" class="mblButton" value="Login"/>
+            </div>
+        </div>
+    </form>
+</div>
+{% endhighlight %}</p>
 <h3 id="formServer">Form-based authentication - server</h3>
 <p>IBM Mobile Conference application is configured to use Java Enterprise Edition Role Support.</p>
 <ul>
 <li>White list or pattern-based URIs of secured resources</li>
 <li>Support for logout in addition to Java Enterprise Edition standard logout functionality</li>
 </ul>
-<p>[code lang="xml" title="web.xml" firstline="29" highlight="30,41,42,43,46"]<br />
-&lt;security-role&gt;<br />
-    &lt;role-name&gt;worklightadmin&lt;/role-name&gt;<br />
-&lt;/security-role&gt;<br />
-&lt;security-constraint&gt;<br />
-    &lt;display-name&gt;SecurityConstraint&lt;/display-name&gt;<br />
-    &lt;web-resource-collection&gt;<br />
-        &lt;web-resource-name&gt;Conference&lt;/web-resource-name&gt;<br />
-        &lt;url-pattern&gt;/common/location.jsp&lt;/url-pattern&gt;<br />
-        &lt;url-pattern&gt;/common/confs.jsp&lt;/url-pattern&gt;<br />
-        &lt;url-pattern&gt;/common/presenter.jsp&lt;/url-pattern&gt;<br />
-        &lt;url-pattern&gt;/common/sessions.jsp&lt;/url-pattern&gt;<br />
-    &lt;/web-resource-collection&gt;<br />
-    &lt;auth-constraint&gt;<br />
-        &lt;role-name&gt;worklightadmin&lt;/role-name&gt;<br />
-    &lt;/auth-constraint&gt;<br />
-&lt;/security-constraint&gt;<br />
-&lt;login-config&gt;<br />
-    &lt;auth-method&gt;FORM&lt;/auth-method&gt;<br />
-    &lt;form-login-config&gt;<br />
-        &lt;form-login-page&gt;/common/logon.jsp&lt;/form-login-page&gt;<br />
-        &lt;form-error-page&gt;/common/logonError.jsp&lt;/form-error-page&gt;<br />
-    &lt;/form-login-config&gt;<br />
-&lt;/login-config&gt;<br />
-[/code]</p>
-<p>[code lang="html" title="location.jsp" firstline="114" highlight="115,118"]<br />
-&lt;div style=&quot;position: relative; float: left;&quot;&gt;<br />
-    &lt;form method=&quot;post&quot; action=&quot;conferenceLogout.jsp&quot; name=&quot;logout&quot;&gt;<br />
-        &lt;span data-dojo-type=&quot;dojox.mobile.ToolBarButton&quot;<br />
-            data-dojo-props='onClick:function(){<br />
-                document.forms[&quot;logout&quot;].submit();<br />
-            },<br />
-            transition:&quot;slide&quot;'&gt;Logout&lt;/span&gt;<br />
-        &lt;input type=&quot;hidden&quot; name=&quot;logoutExitPage&quot; value=&quot;/&quot;&gt;<br />
-    &lt;/form&gt;<br />
-&lt;/div&gt;<br />
-[/code]</p>
+<p>{% highlight xml linenos %}
+<security-role>
+    <role-name>worklightadmin</role-name>
+</security-role>
+<security-constraint>
+    <display-name>SecurityConstraint</display-name>
+    <web-resource-collection>
+        <web-resource-name>Conference</web-resource-name>
+        <url-pattern>/common/location.jsp</url-pattern>
+        <url-pattern>/common/confs.jsp</url-pattern>
+        <url-pattern>/common/presenter.jsp</url-pattern>
+        <url-pattern>/common/sessions.jsp</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>worklightadmin</role-name>
+    </auth-constraint>
+</security-constraint>
+<login-config>
+    <auth-method>FORM</auth-method>
+    <form-login-config>
+        <form-login-page>/common/logon.jsp</form-login-page>
+        <form-error-page>/common/logonError.jsp</form-error-page>
+    </form-login-config>
+</login-config>
+{% endhighlight %}</p>
+<p>{% highlight html linenos %}
+<div style="position: relative; float: left;">
+    <form method="post" action="conferenceLogout.jsp" name="logout">
+        <span data-dojo-type="dojox.mobile.ToolBarButton"
+            data-dojo-props='onClick:function(){
+                document.forms["logout"].submit();
+            },
+            transition:"slide"'>Logout</span>
+        <input type="hidden" name="logoutExitPage" value="/">
+    </form>
+</div>
+{% endhighlight %}</p>
 <h3 id="registry">Simplified user registry and role configuration</h3>
 <ol>
 <li>Modify the <code>server.xml</code> file as follows, depending on which application server you use:
 <ul>
 <li><strong>MobileFirst Development Server</strong> (Liberty)
-<p>[code lang="xml" title="server.xml" highlight="9,25-31,35-39"]<br />
-&lt;server description=&quot;new server&quot;&gt;<br />
-    &lt;featureManager&gt;<br />
-        &lt;feature&gt;servlet-3.0&lt;/feature&gt;<br />
-        &lt;feature&gt;jndi-1.0&lt;/feature&gt;<br />
-        &lt;feature&gt;jdbc-4.0&lt;/feature&gt;<br />
-        &lt;feature&gt;localConnector-1.0&lt;/feature&gt;<br />
-        &lt;feature&gt;restConnector-1.0&lt;/feature&gt;<br />
-        &lt;feature&gt;jsp-2.2&lt;/feature&gt;<br />
-        &lt;feature&gt;appSecurity-1.0&lt;/feature&gt;<br />
-        &lt;feature&gt;ssl-1.0&lt;/feature&gt;<br />
-    &lt;/featureManager&gt;</p>
-<p>    ...</p>
-<p>    &lt;httpEndpoint host=&quot;*&quot; httpPort=&quot;10080&quot; httpsPort=&quot;10443&quot; id=&quot;defaultHttpEndpoint&quot;&gt;<br />
-        &lt;tcpOptions soReuseAddr=&quot;true&quot;/&gt;</p>
-<p>    &lt;/httpEndpoint&gt;</p>
-<p>    ...<br />
-    &lt;applicationMonitor updateTrigger=&quot;mbean&quot;/&gt;</p>
-<p>    ...</p>
-<p>    &lt;basicRegistry id=&quot;worklight&quot; realm=&quot;worklightRealm&quot;&gt;<br />
-        &lt;user name=&quot;demo&quot; password=&quot;demo&quot;/&gt;<br />
-        &lt;user name=&quot;monitor&quot; password=&quot;demo&quot;/&gt;<br />
-        &lt;user name=&quot;deployer&quot; password=&quot;demo&quot;/&gt;<br />
-        &lt;user name=&quot;operator&quot; password=&quot;demo&quot;/&gt;<br />
-        &lt;user name=&quot;admin&quot; password=&quot;admin&quot;/&gt;<br />
-    &lt;/basicRegistry&gt;</p>
-<p>    ...<br />
-    &lt;webApplication contextRoot=&quot;conference&quot; id=&quot;ContainerForAdvancedPagesWar&quot; location=&quot;module_45_1_IntegrateExistingWebContentWar.war&quot; name=&quot;ContainerForAdvancedPagesWar&quot;&gt;<br />
-        &lt;application-bnd&gt;<br />
-            &lt;security-role name=&quot;worklightadmin&quot;&gt;<br />
-                &lt;user name=&quot;admin&quot;/&gt;<br />
-            &lt;/security-role&gt;<br />
-        &lt;/application-bnd&gt;<br />
-    &lt;/webApplication&gt;</p>
-<p>    &lt;application context-root=&quot;/ContainerForAdvancedPages&quot; id=&quot;ContainerForAdvancedPages&quot; location=&quot;ContainerForAdvancedPages.war&quot; name=&quot;ContainerForAdvancedPages&quot; type=&quot;war&quot;&gt;<br />
-        &lt;classloader commonLibraryRef=&quot;worklight-6.3.0&quot;&gt;<br />
-            &lt;privateLibrary&gt;<br />
-                &lt;fileset dir=&quot;${wlp.user.dir}/shared/resources&quot; includes=&quot;org.hsqldb.hsqldb_2.2.5.jar&quot;/&gt;<br />
-            &lt;/privateLibrary&gt;<br />
-        &lt;/classloader&gt;<br />
-    &lt;/application&gt;</p>
-<p>    ...<br />
-&lt;/server&gt;</p>
-<p>[/code]
+<p>{% highlight xml linenos %}
+<server description="new server">
+    <featureManager>
+        <feature>servlet-3.0</feature>
+        <feature>jndi-1.0</feature>
+        <feature>jdbc-4.0</feature>
+        <feature>localConnector-1.0</feature>
+        <feature>restConnector-1.0</feature>
+        <feature>jsp-2.2</feature>
+        <feature>appSecurity-1.0</feature>
+        <feature>ssl-1.0</feature>
+    </featureManager></p>
+    ...</p>
+    <httpEndpoint host="*" httpPort="10080" httpsPort="10443" id="defaultHttpEndpoint">
+        <tcpOptions soReuseAddr="true"/></p>
+    </httpEndpoint></p>
+    ...
+    <applicationMonitor updateTrigger="mbean"/></p>
+    ...</p>
+    <basicRegistry id="worklight" realm="worklightRealm">
+        <user name="demo" password="demo"/>
+        <user name="monitor" password="demo"/>
+        <user name="deployer" password="demo"/>
+        <user name="operator" password="demo"/>
+        <user name="admin" password="admin"/>
+    </basicRegistry></p>
+    ...
+    <webApplication contextRoot="conference" id="ContainerForAdvancedPagesWar" location="module_45_1_IntegrateExistingWebContentWar.war" name="ContainerForAdvancedPagesWar">
+        <application-bnd>
+            <security-role name="worklightadmin">
+                <user name="admin"/>
+            </security-role>
+        </application-bnd>
+    </webApplication></p>
+    <application context-root="/ContainerForAdvancedPages" id="ContainerForAdvancedPages" location="ContainerForAdvancedPages.war" name="ContainerForAdvancedPages" type="war">
+        <classloader commonLibraryRef="worklight-6.3.0">
+            <privateLibrary>
+                <fileset dir="${wlp.user.dir}/shared/resources" includes="org.hsqldb.hsqldb_2.2.5.jar"/>
+            </privateLibrary>
+        </classloader>
+    </application></p>
+        ...
+</server></p>
+<p>{% endhighlight %}
 </li>
 <li><strong>Tomcat</strong>
-<p>[code lang="xml" title="server.xml" highlight="9"]<br />
-&lt;GlobalNamingResources&gt;<br />
-&lt;!-- Editable user database that can also be used by<br />
-     UserDatabaseRealm to authenticate users<br />
---&gt;<br />
-&lt;Resource auth=&quot;Container&quot;<br />
-    description=&quot;User database that can be updated and saved&quot;<br />
-    factory=&quot;org.apache.catalina.users.MemoryUserDatabaseFactory&quot;<br />
-    name=&quot;UserDatabase&quot;<br />
-    pathname=&quot;conf/tomcat-users.xml&quot;<br />
-    type=&quot;org.apache.catalina.UserDatabase&quot;/&gt;<br />
-&lt;/GlobalNamingResources&gt;<br />
-[/code]
+<p>{% highlight xml linenos %}
+<GlobalNamingResources>
+<!-- Editable user database that can also be used by
+     UserDatabaseRealm to authenticate users
+-->
+<Resource auth="Container"
+    description="User database that can be updated and saved"
+    factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+    name="UserDatabase"
+    pathname="conf/tomcat-users.xml"
+    type="org.apache.catalina.UserDatabase"/>
+</GlobalNamingResources>
+{% endhighlight %}
 </li>
 </ul>
 </li>
 <li>Add the role and user in the <code>tomcat-users.xml</code> file:
-<p>[code lang="xml" title="tomcat-users.xml"]<br />
-&lt;role rolename=&quot;worklightadmin&quot;/&gt;<br />
-&lt;user username=&quot;tomcat&quot; password=&quot;tomcat&quot; roles=&quot;worklightadmin&quot;/&gt;<br />
-[/code]
+<p>{% highlight xml linenos %}
+<role rolename="worklightadmin"/>
+<user username="tomcat" password="tomcat" roles="worklightadmin"/>
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="migrate">Migrating applications to IBM MobileFirst Platform Foundation</h2>
@@ -223,21 +221,21 @@ The presence of application stores (for example: Apple App Store and Google Play
 In the hybrid model, developers typically package the application HTML, CSS, and JavaScript™ code as part of the application that is deployed to the application store. In this tutorial, you see the remote loading of dynamic content capability, where the HTML, CSS, and JavaScript code is hosted externally from the natively packaged hybrid application.</p>
 <h3 id="environments">Working with IBM MobileFirst projects and environments</h3>
 <p>This tutorial comes with a MobileFirst project called <strong>ContainerForAdvancedPages</strong>, which contains an <strong>AdvancedPages</strong> hybrid application. This application already has the iPhone and Android environments added to it.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/projectstructure.png"><img src="{{ site.baseurl }}/assets/backup/projectstructure-300x295.png" alt="projectstructure" width="300" height="295" class="alignnone size-medium wp-image-3685" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/projectstructure-300x295.png" /></p>
 <h3 id="android">Running the sample on an Android environment</h3>
 <ol>
 <li>Make the following changes to the <code>AdvancedPages/android/nativeResources/src/com/AdvancedPages/AdvancedPages.java</code> file:
-<p>[code lang="java" title="AdvancedPages.java" firstline="45" highlight="48"]<br />
-public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
-    if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {<br />
-        WL.getInstance().hideSplashScreen();<br />
-        super.loadUrl(&quot;http://localhost:10080/conference/common/location.jsp&quot;);</p>
-<p>    }<br />
-    else {<br />
-        handleWebFrameworkInitFailure(result);<br />
-    }<br />
-}</p>
-<p>[/code]
+<p>{% highlight java linenos %}
+public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
+    if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
+        WL.getInstance().hideSplashScreen();
+        super.loadUrl("http://localhost:10080/conference/common/location.jsp");
+    }
+    else {
+        handleWebFrameworkInitFailure(result);
+    }
+}
+{% endhighlight %}
 </li>
 <li>If the application is running on a Tomcat application server, change the port to <code>8080</code>.</li>
 <li>If the application is running on an actual Android device, replace <code>localhost</code> with the public IP address of your computer. Make sure that the device and your server are on the same network.</li>
@@ -248,29 +246,28 @@ public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){<br />
 </ol>
 <p>After the application is installed, authenticate with a username and password, such as <code>admin</code> / <code>admin</code>, or whatever credentials you specified in your <code>server.xml</code> file.<br />
 Each view for the IBM Mobile Conference app is loaded through Ajax XHR where each view is generated by the JSP responsible for each distinct view.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/android.jpg"><img src="{{ site.baseurl }}/assets/backup/android.jpg" alt="android" width="600" height="209" class="alignnone size-full wp-image-3678" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/android.jpg" /></p>
 <h3 id="iphone">Running the sample on an iPhone environment</h3>
 <ol>
 <li>Make the following changes to the <code>AdvancedPages/iphone/nativeResources/Classes/AdvancedPages.m</code> file:
-<p>[code lang="objc" title="AdvancedPages.m" firstline="63" highlight="83"]<br />
--(void)wlInitDidCompleteSuccessfully<br />
-{</p>
-<p>    [[WL sharedInstance] hideSplashScreen];</p>
-<p>    UIViewController* rootViewController = self.window.rootViewController;</p>
-<p>    // Create a Cordova View Controller<br />
-    CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;</p>
-<p>    cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];</p>
-<p>    // Adjust the Cordova view controller view frame to match its parent view bounds<br />
-    cordovaViewController.view.frame = rootViewController.view.bounds;</p>
-<p>    // Display the Cordova view<br />
-    [rootViewController addChildViewController:cordovaViewController];<br />
-    [rootViewController.view addSubview:cordovaViewController.view];</p>
-<p>    NSString* remoteURLStr= @&quot;http://localhost:10080/conference/common/location.jsp&quot;;<br />
-                                                        NSURL* remoteURL = [NSURL URLWithString: remoteURLStr];<br />
-                                                        NSURLRequest* request= [NSURLRequest requestWithURL:remoteURL];<br />
-                                                        [cordovaViewController.webView loadRequest:request];<br />
-}<br />
-[/code]
+<p>{% highlight objc linenos %}
+-(void)wlInitDidCompleteSuccessfully {
+    [[WL sharedInstance] hideSplashScreen];
+    UIViewController* rootViewController = self.window.rootViewController;
+    // Create a Cordova View Controller
+    CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
+    cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
+    // Adjust the Cordova view controller view frame to match its parent view bounds
+    cordovaViewController.view.frame = rootViewController.view.bounds;
+    // Display the Cordova view
+    [rootViewController addChildViewController:cordovaViewController];
+    [rootViewController.view addSubview:cordovaViewController.view];
+    NSString* remoteURLStr= @"http://localhost:10080/conference/common/location.jsp";
+    NSURL* remoteURL = [NSURL URLWithString: remoteURLStr];
+    NSURLRequest* request= [NSURLRequest requestWithURL:remoteURL];
+    [cordovaViewController.webView loadRequest:request];
+}
+{% endhighlight %}
 </li>
 <li>If the application is running on a Tomcat application server, change the port to <code>8080</code>.</li>
 <li>Right-click the WAR file and select <strong>Run As > Run on Server</strong>, and then select the MobileFirst Development Server.</li>
@@ -279,105 +276,106 @@ Each view for the IBM Mobile Conference app is loaded through Ajax XHR where eac
 <li>Right-click the iPhone folder and select <strong>Run As > Xcode project</strong>.</li>
 <li>Run the Xcode project on an iOS simulator or device running iOS 7 or later.</li>
 </ol>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/iphone.jpg"><img src="{{ site.baseurl }}/assets/backup/iphone.jpg" alt="iphone" width="600" height="215" class="alignnone size-full wp-image-3681" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/iphone.jpg" /></p>
 <h2 id="extend">Extending IBM Mobile Conference app to IBM MobileFirst Platform Foundation</h2>
+<img src="{{ site.baseurl }}/assets/backup/platformstructure-155x300.png" style="float:right" />
 <h3>Integration with IBM MobileFirst Platform Foundation</h3>
 <p>IBM MobileFirst Platform provides client libraries for hybrid application development. Although the APIs are platform-neutral, they are often backed by platform-specific implementations. Because the conference app is served remotely, these client-side libraries must be packaged with the conference app (WAR). Each platform-specific implementation is in its own folder structure in the web application.</p>
 <p>When the IBM Mobile Conference application completes the authentication process, the mobile device client initializes the device with the server by using <code>WL.Client.init()</code>. This provides a flexible model for application integrity validation, application updates, and other features.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/platformstructure.png"><img src="{{ site.baseurl }}/assets/backup/platformstructure-155x300.png" alt="platformstructure" width="155" height="300" class="alignnone size-medium wp-image-3684" /></a></p>
-<p>[code lang="html" title="location.jsp" firstline="39" highlight="42,46, language=51"]<br />
-&lt;c:choose&gt;<br />
-    &lt;c:when test=&quot;${fn:contains(iOSClient, 'Android')}&quot;&gt;<br />
-        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;<br />
-            href=&quot;dojox/mobile/themes/android/android.css&quot;&gt;&lt;/link&gt;<br />
-    &lt;/c:when&gt;<br />
-    &lt;c:otherwise&gt;<br />
-        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;<br />
-            href=&quot;dojox/mobile/themes/iphone/iphone.css&quot;&gt;&lt;/link&gt;<br />
-    &lt;/c:otherwise&gt;<br />
-&lt;/c:choose&gt;<br />
-&lt;/head&gt;</p>
-<p>&lt;body id=&quot;content&quot; onload=&quot;WL.Client.init({onSuccess:function success(){ console.info('WL init success...'); }, connectOnStartup:false});&quot;&gt;<br />
-    &lt;c:set var=&quot;locationMap&quot; value='${applicationScope.locationRegistry}' scope=&quot;session&quot;/&gt;</p>
-<p>...</p>
-<p>[/code]</p>
-<p>[code lang="javascript" htmlscript="true" title="location.jsp" firstline="132"]<br />
-&lt;c:choose&gt;<br />
-    &lt;c:when test=&quot;${fn:contains(iOSClient, 'Android')}&quot;&gt;</p>
-<p>    &lt;script&gt;<br />
-        // Define WL namespace.<br />
-        var WL = WL ? WL : {};<br />
-        /**<br />
-         * WLClient configuration variables.<br />
-         * Values are injected by the deployer that packs the gadget.<br />
-         */<br />
-         WL.StaticAppProps = {<br />
-   &quot;APP_DISPLAY_NAME&quot;: &quot;AdvancedPages&quot;,<br />
-   &quot;APP_ID&quot;: &quot;AdvancedPages&quot;,<br />
-   &quot;APP_SERVICES_URL&quot;: &quot;\/apps\/services\/&quot;,<br />
-   &quot;APP_VERSION&quot;: &quot;1.0&quot;,<br />
-   &quot;ENVIRONMENT&quot;: &quot;android&quot;,<br />
-   &quot;LOGIN_DISPLAY_TYPE&quot;: &quot;embedded&quot;,<br />
-   &quot;WORKLIGHT_NATIVE_VERSION&quot;: &quot;3826723549&quot;,<br />
-   &quot;WORKLIGHT_PLATFORM_VERSION&quot;: &quot;6.3.0.0&quot;,<br />
-   &quot;WORKLIGHT_ROOT_URL&quot;: &quot;\/apps\/services\/api\/AdvancedPages\/android\/&quot;<br />
-};<br />
-&lt;/script&gt;</p>
-<p>...<br />
-    &lt;/c:when&gt;<br />
-    &lt;c:otherwise&gt;</p>
-<p>     &lt;script&gt;<br />
-        // Define WL namespace.<br />
-        var WL = WL ? WL : {};<br />
-        /**<br />
-         * WLClient configuration variables.<br />
-         * Values are injected by the deployer that packs the gadget.<br />
-         */<br />
-         WL.StaticAppProps = {<br />
-   &quot;APP_DISPLAY_NAME&quot;: &quot;AdvancedPages&quot;,<br />
-   &quot;APP_ID&quot;: &quot;AdvancedPages&quot;,<br />
-   &quot;APP_SERVICES_URL&quot;: &quot;\/apps\/services\/&quot;,<br />
-   &quot;APP_VERSION&quot;: &quot;1.0&quot;,<br />
-   &quot;ENVIRONMENT&quot;: &quot;iphone&quot;,<br />
-   &quot;LOGIN_DISPLAY_TYPE&quot;: &quot;embedded&quot;,<br />
-   &quot;WORKLIGHT_NATIVE_VERSION&quot;: &quot;270878231&quot;,<br />
-   &quot;WORKLIGHT_PLATFORM_VERSION&quot;: &quot;6.3.0.0&quot;,<br />
-   &quot;WORKLIGHT_ROOT_URL&quot;: &quot;\/apps\/services\/api\/AdvancedPages\/iphone\/&quot;<br />
-};<br />
-&lt;/script&gt;<br />
-...</p>
-<p>    &lt;/c:otherwise&gt;<br />
-&lt;/c:choose&gt;<br />
-[/code]</p>
+<br clear="all"/>
+<p>{% highlight html linenos %}
+<c:choose>
+    <c:when test="${fn:contains(iOSClient, 'Android')}">
+        <link rel="stylesheet" type="text/css"
+            href="dojox/mobile/themes/android/android.css"></link>
+    </c:when>
+    <c:otherwise>
+        <link rel="stylesheet" type="text/css"
+            href="dojox/mobile/themes/iphone/iphone.css"></link>
+    </c:otherwise>
+</c:choose>
+</head>
+<body id="content" onload="WL.Client.init({onSuccess:function success(){ console.info('WL init success...'); }, connectOnStartup:false});">
+    <c:set var="locationMap" value='${applicationScope.locationRegistry}' scope="session"/>
+...
+{% endhighlight %}</p>
+<p>{% highlight javascript linenos %}
+<c:choose>
+    <c:when test="${fn:contains(iOSClient, 'Android')}">
+    <script>
+        // Define WL namespace.
+        var WL = WL ? WL : {};
+        /**
+         * WLClient configuration variables.
+         * Values are injected by the deployer that packs the gadget.
+         */
+         WL.StaticAppProps = {
+   "APP_DISPLAY_NAME": "AdvancedPages",
+   "APP_ID": "AdvancedPages",
+   "APP_SERVICES_URL": "\/apps\/services\/",
+   "APP_VERSION": "1.0",
+   "ENVIRONMENT": "android",
+   "LOGIN_DISPLAY_TYPE": "embedded",
+   "WORKLIGHT_NATIVE_VERSION": "3826723549",
+   "WORKLIGHT_PLATFORM_VERSION": "6.3.0.0",
+   "WORKLIGHT_ROOT_URL": "\/apps\/services\/api\/AdvancedPages\/android\/"
+};
+</script></p>
+...
+    </c:when>
+    <c:otherwise></p>
+     <script>
+        // Define WL namespace.
+        var WL = WL ? WL : {};
+        /**
+         * WLClient configuration variables.
+         * Values are injected by the deployer that packs the gadget.
+         */
+         WL.StaticAppProps = {
+   "APP_DISPLAY_NAME": "AdvancedPages",
+   "APP_ID": "AdvancedPages",
+   "APP_SERVICES_URL": "\/apps\/services\/",
+   "APP_VERSION": "1.0",
+   "ENVIRONMENT": "iphone",
+   "LOGIN_DISPLAY_TYPE": "embedded",
+   "WORKLIGHT_NATIVE_VERSION": "270878231",
+   "WORKLIGHT_PLATFORM_VERSION": "6.3.0.0",
+   "WORKLIGHT_ROOT_URL": "\/apps\/services\/api\/AdvancedPages\/iphone\/"
+};
+</script>
+...
+    </c:otherwise>
+</c:choose>
+{% endhighlight %}</p>
 <h3 id="encrypt">Encrypted Cache</h3>
 <p>The Encrypted Offline Cache (EOC) API is used for securely storing data by using HTML5 local cache. The Conference app uses EOC to save a list of favorite sessions in a secure way.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/eoc.jpg"><img src="{{ site.baseurl }}/assets/backup/eoc.jpg" alt="eoc" width="600" height="489" class="alignnone size-full wp-image-3710" /></a></p>
-<p>[code lang="javascript" title="conference.js" firstline="35"]<br />
-function __writeEOC(mykey, mydata, callback) {<br />
-    WL.EncryptedCache.write(mykey, mydata, function() {<br />
-        callback();<br />
-    }, function() {<br />
-        alert('An error occurred writing to the encrypted cache');<br />
-    });<br />
-}<br />
-...<br />
-function saveToCache(key, value) {</p>
-<p>    if (isEOCOpen == false) {<br />
-        __openEOC(function() {<br />
-            __writeEOC(key, value, function() {<br />
-            });<br />
-        });<br />
-    } else {<br />
-        __writeEOC(key, value, function() {<br />
-        }, function() {<br />
-            alert('Unable to write to encrypted cache');<br />
-        });<br />
-    }<br />
-}<br />
-[/code]</p>
+<p><img src="{{ site.baseurl }}/assets/backup/eoc.jpg" /></p>
+<p>{% highlight javascript linenos %}
+function __writeEOC(mykey, mydata, callback) {
+    WL.EncryptedCache.write(mykey, mydata, function() {
+        callback();
+    }, function() {
+        alert('An error occurred writing to the encrypted cache');
+    });
+}
+...
+function saveToCache(key, value) {
+    if (isEOCOpen == false) {
+        __openEOC(function() {
+            __writeEOC(key, value, function() {
+            });
+        });
+    } else {
+        __writeEOC(key, value, function() {
+        }, function() {
+            alert('Unable to write to encrypted cache');
+        });
+    }
+}
+{% endhighlight %}</p>
 <h3 id="camera">Camera support</h3>
 <p>Use the IBM MobileFirst Client API to extend the application to take photos of the conference. The application has a social aspect, where users can view photos from the other conference attendees.</p>
-<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/photo1.jpg"><img src="{{ site.baseurl }}/assets/backup/photo1.jpg" alt="photo" width="600" height="358" class="alignnone size-full wp-image-3701" /></a></p>
+<p><img src="{{ site.baseurl }}/assets/backup/photo1.jpg" /></p>
 <h2 id="proxy">Proxy considerations</h2>
 <p>IBM MobileFirst Platform Foundation is compatible with most known proxy solutions.</p>
 <ul>
