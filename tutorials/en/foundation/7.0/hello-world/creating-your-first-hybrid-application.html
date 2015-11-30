@@ -113,7 +113,7 @@ You can edit this file in the Design or Source editors (in Studio), or with your
 <img src="{{ site.baseurl }}/assets/backup/02_01_application_descriptor-1024x568.png" />
 <p>The file is based on the W3C Widget Packaging and Configuration standard and contains application properties that are used at build time.<br />
 You can specify the application description, details about the author, and the thumbnail image to be displayed in the MobileFirst Operations Console.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
     <!-- Attribute "id" must be identical to application folder name -->
     <application id="HelloWorld" platformVersion="6.2.0.00.20140701-1500"
     xmlns="http://www.worklight.com/application-descriptor"
@@ -133,7 +133,7 @@ You can specify the application description, details about the author, and the t
     </application>
      {% endhighlight %} </p>
 <p>Environment-specific information is inserted automatically as new environments are added to the MobileFirst project:</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
     <iphone bundleId="com.HelloWorld" version="1.0">
         <worklightSettings include="false"/>
         <security>

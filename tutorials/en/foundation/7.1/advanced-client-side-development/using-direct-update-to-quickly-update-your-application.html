@@ -57,7 +57,7 @@ The UI &amp; UX of the Direct Update process can be fully customized by using si
 
 <h3>Server-side customization</h3>
 <p>By default, the <code>mobileSecurityTest</code> has Direct Update enabled in <code>perSession</code> mode:</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <mobileSecurityTest name="mobileTests">
     <testAppAuthenticity/>
     <testDeviceId provisioningType="none" />
@@ -66,12 +66,12 @@ The UI &amp; UX of the Direct Update process can be fully customized by using si
 </mobileSecurityTest>
 {% endhighlight %}</p>
 <p>To disable Direct Update, change its mode to <code>disabled</code>, and similarly to override it to other modes.<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <testDirectUpdate mode="disabled" />
 {% endhighlight %}</p>
 <p>Also by default, the <code>customSecurityTest</code> does not have any realms.<br />
 To add a Direct Update realm to a custom security test, add a <code>test</code> element with the realm name <code>wl_directUpdateRealm</code> and define the required mode property:</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <customSecurityTest name="customTests">
     <test realm="wl_directUpdateRealm" mode="perRequest"/>
 </customSecurityTest>{% endhighlight %}</p>
@@ -173,7 +173,7 @@ directUpdateContext.start(directUpdateCustomListener);
 <ol>
 <li>Generate a certificate and place it in the MobileFirst project in the <code>server\conf</code> folder.</li>
 <li>Edit the MobileFirst Default Certificate section in <code>server\conf\worklight.properties</code> with the certificate keystore information, for example:
-{% highlight xml %}
+{% highlight xml linenos %}
 wl.ca.keystore.path=conf/myCert.jks
 wl.ca.keystore.type=jks
 wl.ca.keystore.password=myStrongPassword
@@ -189,7 +189,7 @@ wl.ca.key.alias.password=myCertPassword{% endhighlight %}</li>
 <p>The public key can then be found in the Application Descriptor Design view:</p>
 <p> <img src="{{ site.baseurl }}/assets/backup/05_05_public_signing_key1-1024x477.png" /></p>
 <p>The public key can also be found in the Application Descriptor Editor view:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <application>
     …
     …

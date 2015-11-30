@@ -18,7 +18,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <h2 id="config">Configuring the authenticationConfig.xml file</h2>
 <h3>Realm</h3>
 <p>Add an authentication realm to the <code>realm</code> section of the <code>authenticationConfig.xml</code> file.</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
   <realm loginModule="AuthLoginModule" name="AuthRealm"><br />
     <className>com.worklight.integration.auth.AdapterAuthenticator</className><br />
       <parameter name="login-function" value="AuthAdapter.onAuthRequired"/><br />
@@ -32,7 +32,7 @@ When logout is detected (explicit or session timeout), a <code>logout-function</
 In both cases, the parameter value syntax is <code>adapterName.functionName</code>.</p>
 <h3 id="loginmodule">LoginModule</h3>
 <p>Add a login module to the <code>loginModules</code> section of the <code>authenticationConfig.xml</code> file and call it <code>AuthLoginModule</code>.</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <loginModule name="AuthLoginModule"><br />
     <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
 </loginModule><br />
@@ -44,7 +44,7 @@ Because all authentication-related actions are done in the adapter code, using <
 You must use this security test to protect the adapter procedure, so use the <code>customSecurityTest</code> element.<br />
 Remember the security test names. You must use them in subsequent steps.<br />
 <strong>Note:</strong> If you use Java adapters, this step is not required.</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
   <customSecurityTest name="AuthSecurityTest"><br />
       <test isInternalUserID="true" realm="AuthRealm"/><br />
   </customSecurityTest><br />
@@ -55,7 +55,7 @@ Remember the security test names. You must use them in subsequent steps.<br />
 <h3>Adapter XML</h3>
 <p>Create an adapter that takes care of the authentication process. Name it <code>AuthAdapter</code>.<br />
 This adapter includes the following procedure:</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <procedure name="submitAuthentication" securityTest="wl_unprotected"/><br />
 {% endhighlight %}</p>
 <p>The <code>submitAuthentication</code> procedure takes care of the authentication process. Note that when the challenge handler invokes the <code>submitAuthentication</code> call, it is responsible for handling all the possible responses. In particular, if the <code>submitAuthentication</code> call returns a challenge, it is passed to the invocation callback, and is not processed by the security framework.<br />
@@ -110,7 +110,7 @@ function onLogout(){<br />
 {% endhighlight %}</p>
 <h2 id="protectJsAdapt">Protecting a Javascript adapter</h2>
 <p>Create a new adapter or add the following procedure to the XML code of your existing adapter:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <procedure name="getSecretData" securityTest="AuthSecurityTest"/><br />
 {% endhighlight %}</p>
 <p>For training purposes, the <code>getSecretData</code> function returns a hardcoded value. Keep in mind that <code>getSecretData</code> is protected by a security test, as defined in the adapter XML.</p>
@@ -137,7 +137,7 @@ function getSecretData(){<br />
 {% endhighlight %}
 </li>
 <li>To set our new realm as the default user identity for the application, add this option in the application descriptor:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <userIdentityRealms>AuthRealm</userIdentityRealms><br />
 {% endhighlight %}
 </li>

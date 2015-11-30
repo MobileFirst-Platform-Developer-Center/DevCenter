@@ -108,7 +108,7 @@ You can edit this file with the Design or Source editors.</p>
 
 <p>The file is based on the W3C Widget Packaging and Configuration standard and contains application properties that are used at build time.
 You can specify the application description, details about the author, and the thumbnail image to be displayed in the MobileFirst Console.</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 	<!-- Attribute "id" must be identical to application folder name -->
 	<application id="HelloWorld" platformVersion="6.3.0.00.20140701-1500"
 	xmlns="http://www.worklight.com/application-descriptor"
@@ -129,7 +129,7 @@ You can specify the application description, details about the author, and the t
 {% endhighlight %}
 
 <p>Environment-specific information is inserted automatically as new environments are added to the MobileFirst project:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 	<iphone bundleId="com.HelloWorld" version="1.0">
 		<worklightSettings include="false"/>
 		<security>

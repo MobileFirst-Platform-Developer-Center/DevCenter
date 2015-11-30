@@ -27,7 +27,7 @@ For more information about how to implement the <code>UsernamePasswordAuthentica
 <li>Add an authentication realm to the <code>realms</code> section of the <code>authenticationConfig.xml</code> file and call it <code>LDAPRealm</code>.</li>
 <li>Use <code>FormBasedAuthenticator</code> in the <code>className</code> element because it implements the required <code>UsernamePasswordAuthenticator</code> interface.</li>
 <p>This realm uses <code>LDAPLoginModule</code> as a login module, which you define <a href="#login">in the Login module section</a>.</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <realm loginModule="LDAPLoginModule" name="LDAPRealm"><br />
   <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className><br />
   <onLoginUrl>/console</onLoginUrl><br />
@@ -37,7 +37,7 @@ For more information about how to implement the <code>UsernamePasswordAuthentica
 <h3 id="login">Login module</h3>
 <ol>
 <li>Add a login module to the <code>loginModules</code> section and call it <code>LDAPLoginModule</code>.
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <loginModule name="LDAPLoginModule"><br />
   <className>com.worklight.core.auth.ext.LdapLoginModule</className><br />
   <parameter name="ldapProviderUrl" value="ldap://10.0.1.2" /><br />
@@ -75,7 +75,7 @@ For more information about how to implement the <code>UsernamePasswordAuthentica
 <p>Add a security test to the <code>securityTests</code> section of the <code>authenticationConfig.xml</code> file.<br />
 You use this security test to protect the adapter procedure. Therefore, use the <code>customSecurityTest</code> element.<br />
 Remember the security test name because you will reuse it to protect adapters.</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <customSecurityTest name="LDAPSecurityTest"><br />
   <test realm="wl_directUpdateRealm" step="1" /><br />
   <test isInternalUserID="true" realm="LDAPRealm" /><br />
@@ -85,7 +85,7 @@ Remember the security test name because you will reuse it to protect adapters.</
 <ol>
 <li>Create an adapter and name it <strong>DummyAdapter</strong>.</li>
 <li>Add a <code>getSecretData</code> procedure and protect it with the security test that you created previously.</li>
-<p>{% highlight xml %}<procedure name="getSecretData" securityTest="LDAPSecurityTest"/>{% endhighlight %}</p>
+<p>{% highlight xml linenos %}<procedure name="getSecretData" securityTest="LDAPSecurityTest"/>{% endhighlight %}</p>
 <p>In this module, the <code>getSecretData</code> procedure returns some hardcoded value:</p>
 <p>{% highlight javascript %}<br />
 function getSecretData(){<br />
@@ -112,7 +112,7 @@ In this module, the <code>getSecretData</code> procedure returns some hardcoded 
 {% endhighlight %}
 </li>
 <li>To set the new realm as the default user identity for the application, in the application descriptor, add this option:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <userIdentityRealms>LDAPRealm</userIdentityRealms><br />
 {% endhighlight %}
 </li>

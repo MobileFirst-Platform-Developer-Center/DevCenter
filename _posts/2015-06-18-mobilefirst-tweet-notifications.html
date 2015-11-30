@@ -175,7 +175,7 @@ Now we can implement the tag subscription. Push notifications in iOS requires an
 <img src="{{ site.baseurl }}/assets/backup/apnscert.png" class="img_responsive" />
 
 Inside the <strong>application-descriptor.xml</strong> file, provide the certificate password and the subscription tag:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <nativeIOSApp id="TwitterFeeds" platformVersion="7.0.0.00.20150402-2001" bundleId="com.TwitterFeeds"
     version="1.0" xmlns="http://www.worklight.com/native-ios-descriptor">
     <displayName>TwitterFeeds>/displayName>
@@ -258,7 +258,7 @@ If we run the app on a device and click the subscribe button, we'll see a log me
 Visit the Twitter <a href="http://apps.twitter.com">Application Management site</a> to set up a Twitter app (you must have a Twitter account to do this).
 In <a href="https://dev.twitter.com/oauth/application-only">Application-only authentication</a>, Follow Step 1 under <strong>Issuing application-only requests</strong> to obtain your encoded credentials. Add them to the <strong>worklight.properties</strong> file in your MobileFirst project:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 my.twitter.app.credentials=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 {% endhighlight %}
 
@@ -378,7 +378,7 @@ WL.Server.createEventSource({
 {% endhighlight %}
 
 <p>That's everything we need to do in the adapter. Add a tag for each procedure in the adapter XML file:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <wl:adapter name="TwitterAdapter"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:wl="http://www.ibm.com/mfp/integration"

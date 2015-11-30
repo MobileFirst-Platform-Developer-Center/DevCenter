@@ -20,7 +20,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <h3>Realms</h3>
 <p>Add two authentication realms to the <code>realm</code> section of the <code>authenticationConfig.xml</code> file.</p>
 <p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <realm loginModule="AuthLoginModule" name="SingleStepAuthRealm">
     <className>com.worklight.integration.auth.AdapterAuthenticator</className>
         <parameter name="login-function" value="SingleStepAuthAdapter.onAuthRequired"/>
@@ -41,7 +41,7 @@ In both cases, the parameter value syntax is <code>adapterName.functionName</cod
 <h3 id="loginmodule">LoginModule</h3>
 <p>Add a login module to the <code>loginModules</code> section of the <code>authenticationConfig.xml</code> file and call it <code>AuthLoginModule</code>.</p>
 <p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <loginModule name="AuthLoginModule">
     <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
 </loginModule>
@@ -54,7 +54,7 @@ You must use this security test to protect the adapter procedure, so use the <co
 Remember the security test names. You must use them in subsequent steps.<br />
 <strong>Note:</strong> If you use Java adapters, this step is not required.</p>
 <p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <customSecurityTest name="SingleStepAuthAdapter-securityTest">
     <test isInternalUserID="true" realm="SingleStepAuthRealm"/>
 </customSecurityTest>
@@ -70,7 +70,7 @@ Remember the security test names. You must use them in subsequent steps.<br />
 <p>The sample that is provided with this tutorial uses two applications and two adapters. The <code>SingleStepAuth</code> application and adapter are covered here. The <code>DoubleStepAuth</code> application and adapter are an extension of the same technique.</p>
 <p>Create an adapter that takes care of the authentication process. Name it <code>SingleStepAuthAdapter</code>.<br />
 This adapter includes the following procedure:</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <procedure name="submitAuthentication" securityTest="wl_unprotected"/>
  {% endhighlight %} </p>
 <p>The <code>submitAuthentication</code> procedure takes care of the authentication process. Note that when the challenge handler invokes the <code>submitAuthentication</code> call, it is responsible for handling all the possible responses. In particular, if the <code>submitAuthentication</code> call returns a challenge, it is passed to the invocation callback, and is not processed by the security framework.</p>
@@ -124,7 +124,7 @@ function onLogout() {
 {% endhighlight %} </p>
 <h2 id="protectJsAdapt">Protecting a Javascript adapter</h2>
 <p>Create a new adapter or add the following procedure to the XML code of your existing adapter:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <procedure name="getSecretData" securityTest="SingleStepAuthAdapter-securityTest"/>
 {% endhighlight %} </p>
 <p>For training purposes, the <code>getSecretData</code> function returns a hardcoded value. Keep in mind that <code>getSecretData</code> is protected by a security test, as defined in the adapter XML.</p>
@@ -151,7 +151,7 @@ function getSecretData(){
 {% endhighlight %} 
 </li>
 <li>To set our new realm as the default user identity for the application, add this option in the application descriptor:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <userIdentityRealms>SingleStepAuthRealm</userIdentityRealms>
 {% endhighlight %} 
 </li>

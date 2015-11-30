@@ -85,7 +85,7 @@ WL.Server.unsubscribeSMS(eventSourceID, phoneNumber);
 {% endhighlight %} </p>
 <h2 id="setup">Setup</h2>
 <p>The <code>SMSConfig.xml</code> file specifies gateway details for both receiving and sending SMS messages.<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <gateway id="myGateway" hostname="yourhostname.com" port="80" programName="backendProgram" toParamName="to" textParamName="text" fromParamName="from">
     <parameter encode="false" name="param1name" value="param1value"/>
     <parameter encode="false" name="param2name" value="param2value"/>
@@ -98,7 +98,7 @@ sms.keyword.unsubscribe=unsub
 sms.gateway.id=myGateway
 {% endhighlight %} </p>
 <p>By default, the <code>SubscribeServlet</code> object that receives the request from the gateway is protected by a security test. This security test takes a <code>RejectingLoginModule</code> parameter which by default rejects any request. To enforce the security mechanism that is supported by your gateway, comment out, or modify the default security test.<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <resource id="subscribeServlet" securityTest="SubscribeServlet">
     <urlPatterns>/subscribeSMS*;/receiveSMS*;/ussd*</urlPatterns
 </resource>

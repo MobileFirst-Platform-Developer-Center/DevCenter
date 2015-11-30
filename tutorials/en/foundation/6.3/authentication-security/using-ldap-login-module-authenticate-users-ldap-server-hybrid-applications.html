@@ -17,13 +17,13 @@ For more information about how to implement <strong>UsernamePasswordAuthenticato
 <p>Add an authentication realm to the <code>realms</code> section of the <strong>authenticationConfig.xml</strong> file and call it <strong>LDAPRealm</strong>.<br />
 Use <strong>FormBasedAuthenticator</strong> in the <code>className</code> element because it implements the required <strong>UsernamePasswordAuthenticator</strong> interface.<br />
 This realm uses <strong>LDAPLoginModule</strong> as a login module, which will be defined later.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <realm loginModule="LDAPLoginModule" name="LDAPRealm">
   <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
 </realm>
 {% endhighlight %}</p>
 <p>To protect a specific resource add the <code>onLoginUrl</code> element as follow:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <realm loginModule="LDAPLoginModule" name="LDAPRealm">
   <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
   <onLoginUrl>/console</onLoginUrl>
@@ -32,7 +32,7 @@ This realm uses <strong>LDAPLoginModule</strong> as a login module, which will b
 <br clear="all" /></p>
 <h3>Login Module</h3>
 <p>Add a login module to the <code>loginModules</code> section and call it <strong>LDAPLoginModule</strong>.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <loginModule name="LDAPLoginModule">
   <className>com.worklight.core.auth.ext.LdapLoginModule</className>
   <parameter name="ldapProviderUrl" value="ldap://10.0.1.2" />
@@ -62,7 +62,7 @@ The <strong>ldapSearchFilterPattern</strong> and <strong>ldapSearchBase</strong>
 <p>Add a security test to the <code>securityTests</code> section of the <strong>authenticationConfig.xml</strong> file.<br />
 You use this security test to protect the adapter procedure. Therefore, use the <code>customSecurityTest</code> element.<br />
 Remember the security test name as it will be needed later.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <customSecurityTest name="LDAPSecurityTest">
   <test realm="wl_directUpdateRealm" step="1" />
   <test isInternalUserID="true" realm="LDAPRealm" />
@@ -71,7 +71,7 @@ Remember the security test name as it will be needed later.</p>
 <h2>Protecting a JavaScript Adapter</h2>
 <p>Create an adapter and name it <strong>DummyAdapter</strong>.<br />
 Add a <code>getSecretData</code> procedure and protect it with the security test that you created in previously.</p>
-<p>{% highlight xml %}<procedure name="getSecretData" securityTest="LDAPSecurityTest"/>{% endhighlight %}</p>
+<p>{% highlight xml linenos %}<procedure name="getSecretData" securityTest="LDAPSecurityTest"/>{% endhighlight %}</p>
 <p>In this module, the <code>getSecretData</code> procedure returns some hardcoded value:</p>
 <p>{% highlight javascript %}
 function getSecretData(){
@@ -93,7 +93,7 @@ public JSONObject getSecretData(){
 }
 {% endhighlight %}</p>
 <p>To set our new realm as the default user identity for the application, in the application descriptor, add this option:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <userIdentityRealms>LDAPRealm</userIdentityRealms>
 {% endhighlight %}</p>
 <h2>Creating the client-side authentication components</h2>

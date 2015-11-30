@@ -44,13 +44,13 @@ downloads:
 <p>Configuring the MobileFirst project consists in configuring the scope for the access token. The scope of an access token must be a predefined realm in a MobileFirst project. You configure realms in the <code><em>MobileFirst_project</em>/server/conf/authenticationConfig.xml</code> file.</p>
 <p>The expiration period of a scope token (realm name) is defined by the expiration attribute of the login module that is associated with the realm.</p>
 <p>If you want to configure a login module called <code>StrongDummy</code> with an expiration attribute, edit the <code>authenticationConfig.xml</code> file in the login module section as follows::</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <loginModule name="StrongDummy" expirationInSeconds="1800">
     <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
 </loginModule>
 {% endhighlight %} </p>
 <p>If you want to configure a realm called <code>SampleAppRealm</code> that is associated with <code>StrongDummy</code>, edit the <code>authenticationConfig.xml</code> file in the realm section as follows:</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <realm name="SampleAppRealm" loginModule="StrongDummy">
 	<className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
 </realm>
@@ -89,7 +89,7 @@ downloads:
 where <code>URL_to_authorization_server</code> is:<br />
 <code>http://<ip-address-to-MobileFirst-server>:<port-number>/<project-context-root></code></li>
 <li>Add a security constraint and a security role to the <code>web.xml</code> file of your external server, as shown below:
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <security-constraint>
     <web-resource-collection>
         <web-resource-name>RESTServlet</web-resource-name>
@@ -106,7 +106,7 @@ where <code>URL_to_authorization_server</code> is:<br />
 {% endhighlight %} 
 </li>
 <li>You must modify the external server <code>server.xml</code> file, too. Configure the feature manager to include these features:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <featureManager>
     <feature>jsp-2.2</feature>
     <feature>appSecurity-2.0</feature>
@@ -117,7 +117,7 @@ where <code>URL_to_authorization_server</code> is:<br />
 {% endhighlight %} 
 </li>
 <li>In your application, add a security role:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <application ...>
     ...
     <application-bnd>
@@ -129,7 +129,7 @@ where <code>URL_to_authorization_server</code> is:<br />
 {% endhighlight %} 
 </li>
 <li>Configure OAuthTAI, where you set which URLs are to be protected:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <usr_OAuthTAI id="myOAuthTAI">
     <securityconstraint httpMethods="GET POST" scope="SampleAppRealm" securedURLs="/REST-Server/api/protected"></securityconstraint>
 </usr_OAuthTAI>

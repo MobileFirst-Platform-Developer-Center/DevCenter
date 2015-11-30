@@ -21,7 +21,7 @@ Public procedures are declared in the XML file while implemented in the JavaScri
 <p>Procedures are implemented in the adapter JavaScript file.<br />
 Procedure names in the JavaScript file must be the same as in the adapter XML file.</p>
 <h4>XML file</h4>
-{% highlight xml %}
+{% highlight xml linenos %}
 ...
 <procedure name="writeMessage"/>
 <procedure name="readMessage"/>
@@ -68,7 +68,7 @@ function writeMessage(messagebody) {
 </ul>
 </li>
 </ul>
-{% highlight xml %}
+{% highlight xml linenos %}
 <wl:adapter name="JMSAdapter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wl="http://www.ibm.com/mfp/integration" xmlns:jms="http://www.ibm.com/mfp/integration/jms">
   <displayName>JMSAdapter</displayName>
   <description>JMSAdapter</description>

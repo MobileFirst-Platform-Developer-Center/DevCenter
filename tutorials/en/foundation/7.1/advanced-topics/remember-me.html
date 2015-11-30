@@ -57,7 +57,7 @@ You might need to adapt it to your specific needs.</p>
 <h2 id="authenticationConfig">authenticationConfig.xml</h2>
 <h3 id="login">Login Module</h3>
 <p>The <code>login module</code> is usually responsible for checking the user credentials and creating the <code>user identity</code>. However, in this example you need only the <code>login module</code> to create the <code>user identity</code>, while the rest of the logic happens in the <code>authenticator</code>. The standard <code>NonValidatingLoginModule</code> is good enough to achieve this.</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 	<loginModules><br />
 		<!-- Use expirationInSeconds to set the session timeout when NOT using rememberMe  --><br />
 		<loginModule name="CustomLoginModule" expirationInSeconds="30"><br />
@@ -69,7 +69,7 @@ You might need to adapt it to your specific needs.</p>
 In version 7.1 and later, the session-independent mode decouples the link between the logged-in state and HTTP sessions, so that interaction between client and MobileFirst Server is no longer session-dependent. This feature enables you to take down a server without breaking user sessions.</p>
 <p>The <code>expirationInSeconds</code> parameter is a built-in setting to determine how long the user session is valid. In this example, the value of this parameter is the default expiration when the user does <strong>not</strong> select <strong>Remember Me</strong>. To make testing easier, the expiration value is set to 30 seconds here, but in a real application you would probably want to use a longer expiration time, such as one hour...</p>
 <h3 id="realm">Realm</h3>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 	<realms><br />
 		<realm name="CustomRealm" loginModule="CustomLoginModule"><br />
 			<className>com.sample.CustomAuthenticator</className><br />
@@ -82,7 +82,7 @@ The <code>realm</code> uses the <code>loginModule</code> that was defined in the
 A custom parameter called <code>rememberMeExpirationInDays</code> defines how long the client is remembered if that user selects <strong>Remember Me</strong>.</p>
 <h3>Security test</h3>
 <p>Because this example uses a Java adapter, you do not really need to define a security test (Java adapters use scopes instead of tests), but just in case it is necessary to protect other resources, create a simple security test.</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 	<securityTests><br />
 		<customSecurityTest name="CustomAuthSecurityTest"><br />
 			<test realm="wl_antiXSRFRealm" /><br />

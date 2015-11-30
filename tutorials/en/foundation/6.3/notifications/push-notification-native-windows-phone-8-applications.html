@@ -34,7 +34,7 @@ downloads:
 <p><br clear="all" /></p>
 <h4>Edit the application-descriptor.xml file</h4>
 <p>Add the "<strong>pushSender</strong>" tag to the application-descriptor.xml file. -<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <nativeWindowsPhone8App id="WindowsPhone8NativePush" platformVersion="6.3.0.00.20141111-0731"
 version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" securityTest="MySecurityTest">
     <displayName>WindowsPhone8NativePush</displayName>
@@ -84,7 +84,7 @@ version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor" s
 <p><img src="{{ site.baseurl }}/assets/backup/nativeWP8Pushwlclientproperties.png"/></p>
 <h4>Modifications to the native Windows Phone 8 project</h4>
 <p>Edit the Properties\WMAppManifest.xml file and add the following capabilities:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <Capability Name="ID_CAP_PUSH_NOTIFICATION" />
 <Capability Name="ID_CAP_IDENTITY_DEVICE" />
 {% endhighlight %}
@@ -252,7 +252,7 @@ public void onReceive(String props, String payload) {
 <h2 id="notificationAPITag">Notification API - Tag-based notification</h2>
 <p>This notification type enables sending and receiving messages by tags. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. Tags are defined in the application-descriptor.xml file.</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <tags>
     <tag>
         <name>PushTag1</name>

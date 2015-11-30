@@ -36,21 +36,21 @@ For example: When credentials validation must be customized for a specific enter
 <h2>Configuring authenticationConfig.xml</h2>
 <p>In the <code>realms</code> section of <strong>authenticationConfig.xml</strong>, define a realm called <strong><code>CustomAuthenticatorRealm</code></strong>.<br />
 Make sure that it uses <strong><code>CustomLoginModule</code></strong>. Specify <code>MyCustomAuthenticator</code> as the class name, which will be implemented later.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <realm name="CustomAuthenticatorRealm" loginModule="CustomLoginModule">
   <className>com.mypackage.MyCustomAuthenticator</className>
 </realm>
 {% endhighlight %}</p>
 <p>In the <code>loginModules</code> section, add a <strong><code>loginModule</code></strong> called <strong><code>CustomLoginModule</code></strong>.<br />
 Specify <code>MyCustomLoginModule</code> as the class name, which will be implemented later.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <loginModule name="CustomLoginModule">
   <className>com.mypackage.MyCustomLoginModule</className>
 </loginModule>
 {% endhighlight %}</p>
 <p>In the <code>securityTests</code> section, add a security test.<br />
 Later, this security test will be used to protect the adapter procedure. Therefore, use a <code>customSecurityTest</code> element. Remember the security test name because it will used later.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <customSecurityTest name="DummyAdapter-securityTest">
   <test isInternalUserID="true" realm="CustomAuthenticatorRealm" />
 </customSecurityTest>

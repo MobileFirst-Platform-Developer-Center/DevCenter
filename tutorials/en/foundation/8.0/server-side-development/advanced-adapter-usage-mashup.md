@@ -84,7 +84,7 @@ Here is a list of the mashup types and the corresponding adapter names:
 **1. Create a procedure / adapter call that create a request to Yahoo! Weather Service for each city and retrieves the corresponding data:**  
 
 (getCitiesListJS adapter) XML:
-{% highlight xml %}
+{% highlight xml linenos %}
 <connectivity>
     <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
         <protocol>http</protocol>

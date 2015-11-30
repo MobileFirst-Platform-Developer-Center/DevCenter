@@ -126,7 +126,7 @@ The device subscription is deleted either by an application that calls the <code
 <li><strong><code>securityTest</code></strong>: A security test from the <code>authenticationConfig.xml</code> file that is used to protect the event source</li>
 </ul>
 <p>An additional event source option:<br />
-{% highlight xml %}poll: {
+{% highlight xml linenos %}poll: {
     interval: 3,
     onPoll: 'getNotificationsFromBackend'
 }
@@ -164,7 +164,7 @@ function submitNotification(userId, notificationText) {
 {% endhighlight %}
 <p><br clear="all" /><br />
 A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
     {
     userId: 'bjones',
     state: {
@@ -227,7 +227,7 @@ function pushNotificationReceived(props, payload) {
 <p>By using this notification type, you can enable messages to be sent and received depending on tags.<br />
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.</p>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:<br />
-{% highlight xml %}<tags>
+{% highlight xml linenos %}<tags>
     <tag>
         <name>PushTag1</name>
         <description>About pushTag1</description>
@@ -325,7 +325,7 @@ You can also modify these settings with the Application Descriptor Editor in Des
 <li>Place the <strong>Project Number</strong> value instead of <strong>senderId</strong>.</li>
 </ul>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <android securityTest="PushApplication-strong-mobile-securityTest" version="1.0">
         <pushSender key="GCM_key" senderId="GCM_ID"/>
 {% endhighlight %}
@@ -335,7 +335,7 @@ You can also modify these settings with the Application Descriptor Editor in Des
 Replace <code>certificate password</code> with your actual certificate password.<br />
 Replace <code>com.PushNotifications</code> with the <code>bundleId</code> of your application. Consult the Apple documentation about how to create <code>bundleId</code> for Xcode projects.</p>
 
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <iphone bundleId="com.PushNotifications" version="1.0">
     <pushSender password=""/>
 {% endhighlight %}
@@ -343,12 +343,12 @@ Replace <code>com.PushNotifications</code> with the <code>bundleId</code> of you
 <h3>Windows Phone 8</h3>
 <p>To set up non-authenticated push:<br />
     
-{% highlight xml %}
+{% highlight xml linenos %}
 <windowsPhone8 version="1.0">
     <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid>
     <pushSender/>{% endhighlight %}</p>
 <p>To set up authenticated push:
-{% highlight xml %}
+{% highlight xml linenos %}
 <windowsPhone8 version="1.0">
     <uuid>e446f9d1-8d04-4198-be53-9fb44ae47548</uuid>
     <pushSender><br />

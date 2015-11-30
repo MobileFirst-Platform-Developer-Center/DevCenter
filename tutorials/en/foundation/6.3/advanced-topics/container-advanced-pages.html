@@ -115,7 +115,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 <li>White list or pattern-based URIs of secured resources</li>
 <li>Support for logout in addition to Java Enterprise Edition standard logout functionality</li>
 </ul>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <security-role>
     <role-name>worklightadmin</role-name>
 </security-role>
@@ -155,7 +155,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 <h3 id="registry">Simplified user registry and role configuration</h3>
 <p>Make these changes in your <strong>server.xml</strong> file, depending which server you use:</p>
 <p>MobileFirst Development Server (Liberty):</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <server description="new server">
     <featureManager>
         <feature>servlet-3.0</feature>
@@ -200,7 +200,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 </server>
 {% endhighlight %}</p>
 <p>Tomcat server:</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <GlobalNamingResources>
 <!-- Editable user database that can also be used by
      UserDatabaseRealm to authenticate users
@@ -214,7 +214,7 @@ You cannot use the sample that is associated with this tutorial as is with the f
 </GlobalNamingResources>
 {% endhighlight %}</p>
 <p>Add role and user in <strong>tomcat-users.xml</strong>:
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <role rolename="worklightadmin"/>
 <user username="tomcat" password="tomcat" roles="worklightadmin"/>
 {% endhighlight %}</p>

@@ -75,7 +75,7 @@ ssl.keystore.password=worklight
 <li>Use the auto provisioning authenticator <code>className</code> parameter.</li>
 <li>Add a <code>validate-csr-function</code> parameter.</li>
 <p>The value of this parameter points to an adapter function that performs CSR validation.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <realm name="CustomDeviceProvisioningRealm" loginModule="CustomDeviceProvisioningLoginModule">
     <className>com.worklight.core.auth.ext.DeviceAutoProvisioningAuthenticator</className>
     <parameter name="validate-csr-function" value="ProvisioningAdapter.validateCSR" />
@@ -88,7 +88,7 @@ ssl.keystore.password=worklight
 <li>Use the auto provisioning login module <code>className</code> parameter.</li>
 <li>Add a <code>validate-certificate-function</code> parameter.</li>
 <p>The value of this parameter points to an adapter function that performs certificate validation.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <loginModule name="CustomDeviceProvisioningLoginModule">
     <className>com.worklight.core.auth.ext.DeviceAutoProvisioningLoginModule</className>
     <parameter name="validate-certificate-function" value="ProvisioningAdapter.validateCertificate" />
@@ -102,7 +102,7 @@ ssl.keystore.password=worklight
 <li>Add a mandatory <code>testDeviceId</code> test.</li>
 <li>Specify <code>provisioningType="custom"</code>.</li>
 <li>Specify <code>realm="CustomDeviceProvisioningRealm"</code>.</li>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <mobileSecurityTest name="CustomDeviceProvisioningSecurityTest">
     <testAppAuthenticity/>
     <testDeviceId provisioningType="custom" realm="CustomDeviceProvisioningRealm" />
@@ -172,7 +172,7 @@ The <code>isSuccessful:false</code> return value means that the application cann
 <h3>Application descriptor</h3>
 <ol>
 <li>Add the security test that you created in the <a href="#security">Security tests</a> section to protect the created environment.
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <iphone applicationId="CustomDeviceProvisioning" bundleId="com.CustomDeviceProvisioning" securityTest="CustomDeviceProvisioningSecurityTest" version="1.0">
     <worklightSettings include="false" />
     <security>

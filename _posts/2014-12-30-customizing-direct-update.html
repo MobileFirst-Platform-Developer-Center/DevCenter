@@ -126,7 +126,7 @@ directUpdateContext.start(directUpdateCustomListener);
 The mobile security test that is provided by default (in the <code>authenticationConfig.xml</code> file under the <code>server/conf</code> folder) contains a direct update security test. You need to disable this test if you want to trigger direct update on demand.<br />
 To disable the direct update security test, override it by adding <code>mobilesecuritytest</code> explicitly, omitting default direct update test behaviour. For example:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <mobilesecuritytest name="mobileTests">
   <testdeviceid provisioningType="none"></testdeviceid>
   <testuser realm="wl_anonymousUserRealm"></testuser>
@@ -139,7 +139,7 @@ Run and deploy your application to server. Open it. Change background color, run
 <h3>Triggering direct update upon adapter call</h3>
 <p>Set your application to use a custom security test without direct update. The following example shows such a custom security test in the <code>authenticationConfig.xml</code> file:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <customsecuritytest name="customNoDirectUpdate">
   <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"></test>
   <test realm="wl_deviceNoProvisioningRealm" isInternalDeviceID="true" step="2"></test>
@@ -149,12 +149,12 @@ Run and deploy your application to server. Open it. Change background color, run
 <p>Set your application to use that security test by adding it in to Android environment in <code>application-descritor.xml</code> file, like this: <code><android version="1.0" securityTest="customNoDirectUpdate"></code></p>
 
 <p>Create a HTTP adapter, call it RSSReader and set it to use a custom security test with direct update defined.</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <procedure name="getStories" securityTest="customWithDirectUpdateRequest"></procedure>[
 {% endhighlight %}
 
 <p>The following example shows such a custom security test in the <code>authenticationConfig.xml</code> file:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <customsecuritytest name="customWithDirectUpdateRequest">
   <test realm="wl_directUpdateRealm" mode="perRequest"></test>
   <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"></test>

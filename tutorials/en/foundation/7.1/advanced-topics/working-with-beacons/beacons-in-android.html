@@ -40,23 +40,23 @@ This is a continuation of <a href="../">Working with Beacons</a> (introduction, 
 <h3>Android Manifest configuration</h3>
 <ul>
 <li>Specify minSdkVersion as 18 (Android 4.3).<br />
- {% highlight xml %}android:minSdkVersion="18"{% endhighlight %}</p>
+ {% highlight xml linenos %}android:minSdkVersion="18"{% endhighlight %}</p>
 </li>
 <li>Specify permissions for BLUETOOTH and BLUETOOTH_ADMIN.<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
     <uses-permission android:name="android.permission.BLUETOOTH" /><br />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /><br />
 {% endhighlight %}</p>
 </li>
 <li>This is in addition to the following standard Worklight permissions:
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
     <uses-permission android:name="android.permission.INTERNET" /><br />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /><br />
     <uses-permission android:name="android.permission.GET_TASKS" /><br />
 {% endhighlight %}</p>
 </li>
 <li>Specify <code>com.worklight.wlclient.api.WLBeaconsMonitoringApplication</code> as the application name.<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <application<br />
     android:name="com.worklight.wlclient.api.WLBeaconsMonitoringApplication"><br />
     ...<br />

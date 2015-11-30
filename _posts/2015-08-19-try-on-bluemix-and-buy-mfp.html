@@ -170,7 +170,7 @@ On BlueMix we have application with the following configuration:
 TAI Extension Link : Download the extension.zip from <a href="https://hub.jazz.net/project/chethan/parkstore-bluemix-server/overview" target="_blank">here</a>
 </li>
 <li> Add TAI Security constraint in web.xml file for both the projects.
-{% highlight xml %}
+{% highlight xml linenos %}
 <security-constraint>
    	<web-resource-collection>
       	   <web-resource-name>LocalstoreApplication</web-resource-name>
@@ -186,13 +186,13 @@ TAI Extension Link : Download the extension.zip from <a href="https://hub.jazz.n
 {% endhighlight %}
 </li>
 <li> Add OAuthTai feature in server.xml
-{% highlight xml %}
+{% highlight xml linenos %}
 <feature>usr:OAuthTai-1.0</feature>
 {% endhighlight %}
 </li>
 <li> Protect the Url's using TAI by adding following code in server.xml
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <usr_OAuthTAI id="myOAuthTAI" realmName="imfRealm">
 		<securityConstraint httpMethods="GET, POST" securedURLs="/LocalstoreAdapter/*"/>
 		<securityConstraint httpMethods="GET, POST" securedURLs="/custom-oauth-java/*"/>
@@ -214,7 +214,7 @@ TAI Extension Link : Download the extension.zip from <a href="https://hub.jazz.n
     {% endhighlight %}
 </li>
 <li> Specify the IMF Auth Url inside Server.env file in liberty.
-{% highlight xml %}
+{% highlight xml linenos %}
 imfServiceUrl=https://imf-authserver.ng.bluemix.net/imf-authserver
 {% endhighlight %}
 </li>
@@ -397,7 +397,7 @@ Migration of Client Application includes following two steps
     <li>Open the "Podfile" file located in the root of your XCode project in a favourite text editor.</li>
     <li>Comment out or remove the existing content.</li>
     <li>Add the following lines:
-        {% highlight xml %}
+        {% highlight xml linenos %}
         source 'https://github.rtp.raleigh.ibm.com/imflocalsdks/imf-client-sdk-specs.git'
 pod 'IMFCompatibility'
 {% endhighlight %}
@@ -552,7 +552,7 @@ The code looks like the following:
 <h3 id="configoauth">Configuring Custom-OAuth</h3>
 <ul>
     <li>Add realm with same name you had on BlueMix and login module to the authenticationConfig.xml.
-    {% highlight xml %}
+    {% highlight xml linenos %}
     <realm name="customAuthRealm_3" loginModule="customAuthLoginModule_3">
     <className>com.worklight.core.auth.ext.CustomIdentityAuthenticator</className>
     <parameter name="providerUrl" value="http://localhost:10080/ParkStoreMFP/adapters/Customauth"/>
@@ -562,7 +562,7 @@ The code looks like the following:
     </loginModule>
     {% endhighlight %}</li>
         <li>Add Custom-oauth Realm in userIdentityRealms in Application Descriptor file of iOS Native API
-    {% highlight xml %}
+    {% highlight xml linenos %}
     <userIdentityRealms>customAuthRealm_3</userIdentityRealms>
     {% endhighlight %}</li>
 </ul>
@@ -574,7 +574,7 @@ The code looks like the following:
     </li>
     <li> Add Push configuration in Application Descriptor file of iOS Native API and include the password of added apns certificate.
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <pushSender password="password"/>
 <tags>
   <tag>

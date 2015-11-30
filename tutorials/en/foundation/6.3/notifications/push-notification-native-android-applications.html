@@ -39,7 +39,7 @@ downloads:
 <li>Your project's number is the <code>senderId</code></li>
 <li>Your Android key is the GCM <code>key</code> (can be generated in <strong>API &amp; Auth > Credentials</strong>)</li>
 </ul>
-<p>{% highlight xml %}<nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="AndroidNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0">
+<p>{% highlight xml linenos %}<nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="AndroidNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0">
 	<pushSender key="SOME-GCM-KEY" senderId="SOME-GCM-ID"/>
 </nativeAndroidApp>{% endhighlight %}
 </li>
@@ -90,7 +90,7 @@ downloads:
 <p><img src="{{ site.baseurl }}/assets/backup/wlclient_properties.png"/></p>
 <h3>Modifications to the native Android project</h3>
 <p>Add the following permissions to the AndroidManifest.xml file of your Android project:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <permission android:name="com.imf.androidnativepush.permission.C2D_MESSAGE" android:protectionLevel="signature" />
 <uses-permission android:name="android.permission.INTERNET" />
  <uses-permission android:name="android.permission.GET_TASKS"/>
@@ -105,7 +105,7 @@ downloads:
  
 <p>Add the <code>launchMode</code> attribute to the main <code>AndroidNativePush</code> activity. Set its value to <code>singleTask</code>.</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <activity
     android:name="com.worklight.androidnativepush.AndroidNativePush"
     android:label="@string/app_name"
@@ -115,7 +115,7 @@ downloads:
 
 <p>Add an intent-filter to the main <code>AndroidNativePush</code> activity for notifications.</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <intent-filter>
    <action android:name="com.worklight.androidnativepush.AndroidNativePush.NOTIFICATION" />
    <category android:name="android.intent.category.DEFAULT" />
@@ -124,7 +124,7 @@ downloads:
 
 <p>Add the <code>GCMIntentService</code> and add an intent-filter for RECEIVE and REGISTRATION of notifications.</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <service android:name="com.worklight.wlclient.push.GCMIntentService" />
 <receiver android:name="com.worklight.wlclient.push.WLBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
    <intent-filter>
@@ -338,7 +338,7 @@ public void onReceive(String arg0, String arg1) {
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.</p>
 <p>Tags are defined in application-descriptor.xml:<br />
 
-{% highlight xml %}<tags>
+{% highlight xml linenos %}<tags>
     <tag>
         <name>PushTag1</name>
         <description>About pushTag1</description>

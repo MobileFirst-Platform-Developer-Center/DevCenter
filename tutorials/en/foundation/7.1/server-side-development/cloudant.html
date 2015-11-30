@@ -30,7 +30,7 @@ relevantTo: [hybrid]
 <p>Cloudant supports several forms of authentication. See the Cloudant documentation about authentication at <a href="https://docs.cloudant.com/authentication.html" target="_blank">https://docs.cloudant.com/authentication.html</a>. With a JavaScript HTTP adapter, the easiest way is to use <strong>Basic Authentication</strong>.</p>
 <p>In your adapter XML file, specify the <code>domain</code> for your Cloudant instance, the <code>port</code>, and add an <code>authentication</code> element of type <code>basic</code>. The framework will use those credentials to generate an <code>Authorization: Basic</code> HTTP header.</p>
 <p><strong>Note:</strong> With Cloudant, you can generate unique API keys to use instead of your real username and password.</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 	<connectivity><br />
 		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType"><br />
 			<protocol>https</protocol><br />

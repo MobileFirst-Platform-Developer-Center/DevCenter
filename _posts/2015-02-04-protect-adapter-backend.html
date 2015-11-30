@@ -27,7 +27,7 @@ Basic access authentication sends a username and password in the HTTP headers, e
 <h2>Authenticator & Realm</h2>
 <p>MobileFirst includes an Authenticator able to extract and decode this header. To use it, add a new <strong>realm</strong> in your <strong>authenticationConfig.xml</strong> which uses the class <code>com.worklight.core.auth.ext.BasicAuthenticator</code>:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <realm name="BackendAccessRealm" loginModule="BackendAccessLogin">
   <className>com.worklight.core.auth.ext.BasicAuthenticator</className>
   <parameter name="basic-realm-name" value="Private"/>
@@ -46,7 +46,7 @@ Basic access authentication sends a username and password in the HTTP headers, e
 <h2>Login Module</h2>
 <p>To validate credentials, a Login Module is used. In our case there is only one set of credentials that are are valid. Let's add the valid credentials in the <code>worklight.properties</code>.</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 ##
 # Backend access credentials
 ##
@@ -55,7 +55,7 @@ backend.password=password
 {% endhighlight %}
 
 <p>Define a login module to use those properties:
-{% highlight xml %}
+{% highlight xml linenos %}
 <loginModule name="BackendAccessLogin">
   <className>com.sample.auth.ConfiguredIdentityLoginModule</className>
   <parameter name="username-property" value="backend.username"/>
@@ -100,14 +100,14 @@ public boolean login(Map<String, Object> authenticationData) {
 
 <h2>Protecting the procedure</h2>
 <p>Combine all of the above in a custom security that uses the defined realm:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <customSecurityTest name="BackendAccessSecurity">
  <test realm="BackendAccessRealm" isInternalUserID="true"/>
 </customSecurityTest>
 {% endhighlight %}
 
 <p>Protect your procedure with the newly created security test:
-{% highlight xml %}
+{% highlight xml linenos %}
 <procedure name="doAction" securityTest="BackendAccessSecurity"/>
 {% endhighlight %}
 <p>Adapter JS:</p>

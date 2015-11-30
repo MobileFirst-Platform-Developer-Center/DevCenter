@@ -23,7 +23,7 @@ You still need to follow these steps if you use a WLC file.</p>
 <p>If you’ve received an Application Component from Trusteer, search the IBM MobileFirst documentation for “Adding application components to MobileFirst projects”. Then make sure the file “<strong>tas.license</strong>” contains your license information.</p>
 <p>If you’ve received the Trusteer SDK, follow the Trusteer documentation to add the Trusteer SDK to your Android project. Make sure you have the “<strong>tas.license</strong>” file in your “<strong>assets</strong>” folder. Its format should be:</p>
 
-{% highlight xml %}
+{% highlight xml linenos %}
 vendorId=com.mycompany
 clientId=my.client.id
 clientKey=YMAQAABNFUWS2L
@@ -67,7 +67,7 @@ if(rooted.getInt("value") > 0){
 
 <p>Here is an example of a Trusteer realm and login module you can add to your <strong>authenticationConfig.xml</strong>.</p>
 
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <realms><br />
   ...<br />
   <realm name="wl_basicTrusteerFraudDetectionRealm" loginModule="trusteerFraudDetectionLogin">
@@ -83,7 +83,7 @@ if(rooted.getInt("value") > 0){
 </realms>
 {% endhighlight %}
 
-{% highlight xml %}
+{% highlight xml linenos %}
 <loginModules>
   ...
   <loginModule name="trusteerFraudDetectionLogin">

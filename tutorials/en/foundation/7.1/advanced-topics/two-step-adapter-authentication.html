@@ -35,7 +35,7 @@ For more information, read the Cloudant <a href="https://docs.cloudant.com/authe
 <h2 id="config">Configuring the authenticationConfig.xml file</h2>
 <h3>Realms</h3>
 <p>Add a realm or replace the existing <code>AuthLoginModule</code> realm in the <code>realms</code> section of the <code>authenticationConfig.xml</code> file:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
   <realm loginModule="AuthLoginModule" name="TwoStepAuthRealm"><br />
     <className>com.worklight.integration.auth.AdapterAuthenticator</className><br />
       <parameter name="login-function" value="AuthAdapter.onAuthRequired"/><br />
@@ -44,7 +44,7 @@ For more information, read the Cloudant <a href="https://docs.cloudant.com/authe
 {% endhighlight %}</p>
 <h3>Security tests</h3>
 <p>Add a security test or replace the existing <code>AuthSecurityTest</code> in the <code>securityTests</code> section of the <code>authenticationConfig.xml</code> file:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
   <customSecurityTest name="TwoStepAuthAdapter-securityTest"><br />
       <test isInternalUserID="true" realm="TwoStepAuthRealm"/><br />
   </customSecurityTest><br />
@@ -56,11 +56,11 @@ For more information, read the Cloudant <a href="https://docs.cloudant.com/authe
 <p>Edit the <code>AuthAdapter.xml</code> file:</p>
 <ol>
 <li>Change the domain name to your Cloudant domain:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <domain>$USERNAME.cloudant.com</domain>{% endhighlight %}
 </li>
 <li>Add the following procedure:
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <procedure name="submitAuthenticationStep2" securityTest="wl_unprotected"/><br />
 {% endhighlight %}
 </li>

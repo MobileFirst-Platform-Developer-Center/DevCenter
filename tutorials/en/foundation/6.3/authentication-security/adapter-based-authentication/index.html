@@ -17,7 +17,7 @@ weight: 8
 <h2>Configuring the authenticationConfig.xml file</h2>
 <h3>Realms</h3>
 <p>Add two authentication realms to the <code>realms</code> section of the <strong>authenticationConfig.xml</strong> file.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
   <realm loginModule="AuthLoginModule" name="SingleStepAuthRealm">
 	<className>com.worklight.integration.auth.AdapterAuthenticator</className>
   	<parameter name="login-function" value="SingleStepAuthAdapter.onAuthRequired"/>
@@ -36,7 +36,7 @@ When logout is detected (explicit or session timeout), a <strong>logout-function
 In both cases, the parameter value syntax is <code>adapterName.functionName</code>.</p>
 <h3>LoginModule</h3>
 <p>Add a login module to the <code>loginModules</code> section of the <strong>authenticationConfig.xml</strong> file and call it <code>AuthLoginModule</code>.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <loginModule name="AuthLoginModule">
     <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
 </loginModule>
@@ -47,7 +47,7 @@ Because all authentication-related actions are done in the adapter code, using <
 <p>Add security tests to the <code>securityTests</code> section of the <strong>authenticationConfig.xml</strong> file.<br />
 You must use this security test to protect the adapter procedure, so use the <code>customSecurityTest</code> element.<br />
 Remember the security test names. You must use them in subsequent steps.</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
   <customSecurityTest name="SingleStepAuthAdapter-securityTest">
       <test isInternalUserID="true" realm="SingleStepAuthRealm"/>
   </customSecurityTest>
@@ -62,7 +62,7 @@ Remember the security test names. You must use them in subsequent steps.</p>
 <p>The sample that is provided with this training module uses two applications and two adapters. The <code>SingleStepAuth</code> application and adapter will be covered here. The <code>DoubleStepAuth</code> application and adapter are an extension of the same technique.</p>
 <p>Create an adapter that takes care of the authentication process. Name it <strong>SingleStepAuthAdapter</strong>.<br />
 The <strong>SingleStepAuthAdapter</strong> includes the following two procedures:</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <procedure name="submitAuthentication" securityTest="wl_unprotected"/>
 <procedure name="getSecretData" securityTest="SingleStepAuthAdapter-securityTest"/>
 {% endhighlight %}</p>

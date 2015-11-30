@@ -41,7 +41,7 @@ WLAcquisitionPolicy policy = new WLAcquisitionPolicy();
 {% endhighlight %}</p>
 <h3>Geo acquisition policy</h3>
 <p>To enable geolocation, make sure to update your <code>AndroidManifest.xml</code> file to enable the following permissions:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <uses-permission android:name="com.google.android.c2dm.permission.ACCESS_COARSE_LOCATION"/>
 <uses-permission android:name="com.google.android.c2dm.permission.ACCESS_FINE_LOCATION"/>
 {% endhighlight %}</p>
@@ -59,7 +59,7 @@ Additional configuration options:</p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h3>Wi-Fi acquisition policy</h3>
 <p>To enable Wi-Fi tracking, make sure to update your <code>AndroidManifest.xml</code> file to enable the following permissions:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 {% endhighlight %}</p>
@@ -150,7 +150,7 @@ WL.Server.setEventHandlers([...]);
 If permissions have not been requested or not granted, the MF API will fail to get a provider and return an error along with a message about the requested accuracy level.</p>
 <h3>Checking for permissions</h3>
 <p>Two levels of access permission are available from <code>AndroidManifest.xml</code>:</p>
-<p>{% highlight xml %}
+<p>{% highlight xml linenos %}
 <android.Manifest.permission.ACCESS_FINE_LOCATION/>
 <android.Manifest.permission.ACCESS_COARSE_LOCATION/>
 {% endhighlight %}

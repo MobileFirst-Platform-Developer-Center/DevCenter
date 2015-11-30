@@ -35,7 +35,7 @@ Public procedures are declared in the XML file while implemented in the JavaScri
 <p>Procedures are implemented in the adapter JavaScript file.<br />
 Procedure names in the JavaScript file must be the same as in the adapter XML file.</p>
 <h4>XML file</h4>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 ...<br />
 <procedure name="writeMessage"/><br />
 <procedure name="readMessage"/><br />
@@ -66,7 +66,7 @@ function writeMessage(messagebody) {</p>
 {% endhighlight %}</p>
 <h2 id="serverxml">Enable JMS in Server.xml</h2>
 <p>Enable JMS on your Liberty profile ND server.</p>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <!-- Enable features --><br />
 <featureManager><br />
   <feature>jsp-2.2</feature><br />
@@ -92,7 +92,7 @@ function writeMessage(messagebody) {</p>
 </ul>
 </li>
 </ul>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <wl:adapter name="JMSAdapter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wl="http://www.ibm.com/mfp/integration" xmlns:jms="http://www.ibm.com/mfp/integration/jms"></p>
 <p>  <displayName>JMSAdapter</displayName><br />
   <description>JMSAdapter</description><br />

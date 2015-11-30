@@ -111,7 +111,7 @@ Enable application security
 <li>Find the <code>authenticationConfig.xml</code> file in this directory:<br />
 <code><em>{WAS_HOME}</em>/profiles/<em>{your profile}</em>/installedApps/<em>{your node}</em>/<em>{MobileFirst Platform EAR}</em>/<em>{MobileFirst Platform WAR}</em>/WEB-INF/classes/conf</code><br />
 and uncomment the realm under the <code>For websphere</code> comment to obtain the following text:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <!-- For websphere --><br />
 <realm name="WASLTPARealm" loginModule="WASLTPAModule"><br />
    <className>com.worklight.core.auth.ext.WebSphereFormBasedAuthenticator</className><br />
@@ -123,7 +123,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 <li>Optionally, include the <code>cookie-domain</code>, <code>cookie-name</code>, and <code>httponly-cookie</code> parameters. For more information, see the topic about the LTPA authenticator in the product documentation.
 </li>
 <li>Uncomment the login module under the <code>For websphere</code> comment:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <!-- For websphere --><br />
 <loginModule name="WASLTPAModule"><br />
    <className>com.worklight.core.auth.ext.WebSphereLoginModule</className><br />
@@ -136,7 +136,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 <li>Use <code>webSecurityTest</code> if you plan to develop for web environments.</li>
 <li>Use <code>mobileSecurityTest</code> if you plan to develop for mobile environments.</li>
 </ul>
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <!-- For websphere --><br />
 <securityTest><br />
    <webSecurityTest name="wasWebSecurity"><br />
@@ -196,7 +196,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 <li>Locate the <code>web.xml</code> file: <code><em>{WAS_HOME}</em>/profiles/<em>{your profile}</em>/installedApps/<em>{your node}</em>/<em>{MobileFirst EAR}</em>/<em>{MobileFirst WAR}</em>/WEB-INF/web.xml</code>
 </li>
 <li>Inside the root tag, add the tags as shown in the code sample. These tags pass to WebSphere Application Server the configuration that the WAR file expects.<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <security-constraint id="SecurityConstraint_1"><br />
    <web-resource-collection id="WebResourceCollection_1"><br />
       <web-resource-name>Snoop Servlet</web-resource-name><br />
@@ -231,7 +231,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 <p>To protect the MobileFirst Operations Console with WebSphere Application Server authentication credentials, modify the <code>authenticationConfig.xml</code> file as follows:</p>
 <ol>
 <li>Uncomment the <code><staticResources></code> element to enable protection of static resources:
-<p>{% highlight xml %}<br />
+<p>{% highlight xml linenos %}<br />
 <!-- Uncomment the next element to protect the worklight console and the first section in securityTests below. --><br />
 <staticResources><br />
    <resource id="mobileFirstPlatformConsole" securityTest="MobileFirstPlatformConsole"><br />
@@ -241,7 +241,7 @@ and uncomment the realm under the <code>For websphere</code> comment to obtain t
 {% endhighlight %}
 </li>
 <li>Add a <code><customSecurityTest></code> element to your existing security test:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <securityTests><br />
    <customSecurityTest name="WorklightConsole"><br />
       <test realm="WASLTPARealm" isInternalUserID="true"/><br />
@@ -259,7 +259,7 @@ var sampleAppRealmChallengeHandler = WL.Client.createChallengeHandler("WASLTPARe
 <ol>
 <li>In the <code>applicationDescriptor.xml</code> file, specify the security test that your app must use for the appropriate environments.<br />
 For example:<br />
-{% highlight xml %}<br />
+{% highlight xml linenos %}<br />
 <common securityTest="WAS-securityTest"/><br />
 <android version="1.0" securityTest="WAS-securityTest"><br />
    <pushSender key= "keyTest" senderId="senderIdTest"/><br />

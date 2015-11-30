@@ -51,7 +51,7 @@ downloads:
 <p>The UI &amp; UX of the Direct Update process can be fully customized by using simple interfaces.</p>
 <h3>Server-side customization</h3>
 <p>By default, the <code>mobileSecurityTest</code> has Direct Update enabled in <code>perSession</code> mode:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <mobileSecurityTest name="mobileTests">
     <testAppAuthenticity/>
     <testDeviceId provisioningType="none" />
@@ -61,13 +61,13 @@ downloads:
 {% endhighlight %}
 
 <p>To Disable Direct Update, change its mode to disabled, and similarly to override it to other modes.</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <testDirectUpdate mode="disabled" />
 {% endhighlight %}
 
 <p>By default, the <code>customSecurityTest</code> does not have any realms.<br />
 To add a Direct Update realm to a custom security test, add a <code>test</code> element with the realm name <code>wl_directUpdateRealm</code> and define the required mode property:</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <customSecurityTest name="customTests">
     <test realm="wl_directUpdateRealm" mode="perRequest"/>
 </customSecurityTest>
@@ -153,7 +153,7 @@ directUpdateContext) {
 <ol>
 <li>Generate a certificate and place it in the MobileFirst project under the <code>server\conf folder</code></li>
 <li>Edit the MobileFirst Default Certificate section in <code>server\conf\worklight.properties</code> with the certificate’s keystore information, for example:
-{% highlight xml %}
+{% highlight xml linenos %}
 wl.ca.keystore.path=conf/myCert.jks
 wl.ca.keystore.type=jks
 wl.ca.keystore.password=myStrongPassword
@@ -171,7 +171,7 @@ wl.ca.key.alias.password=myCertPassword
 <p>You can find the public key on the Design view of the Application Descriptor Editor.</p>
 <p> <img src="{{ site.baseurl }}/assets/backup/05_05_public_signing_key1-1024x477.png"/></p>
 <p>You can also find the public key in the Source view of the Application Descriptor Editor.</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <application>
    …
    …

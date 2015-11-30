@@ -36,7 +36,7 @@ downloads:
 </li>
 <li>In <strong>application-descriptor.xml</strong>, add the <code>pushSender</code> tag with the <code>password</code> attribute. Use the .p12 keystore as the password value.
 <p>For example :</p>
-{% highlight xml %}
+{% highlight xml linenos %}
 <nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.iOSNativePush" id="iOSNativePush" platformVersion="6.3.0.00.20141105-0943" securityTest="MySecurityTest" version="1.0">
 	<displayName>iOSNativePush</displayName>
 	<description>iOSNativePush</description>
@@ -209,7 +209,7 @@ If the application was in background mode (or inactive) when the push notificati
 This notification type enables devices to send and receive messages that are filtered by tags.<br />
 To start receiving tag-based notifications, the device must first subscribe to a push notification tag in an application.<br />
 Tags are defined in the <strong>application-descriptor.xml</strong> file:<br />
-{% highlight xml %}
+{% highlight xml linenos %}
 <tags>
     <tag>
         <name>PushTag1</name>
