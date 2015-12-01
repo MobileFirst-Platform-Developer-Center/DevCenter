@@ -2,6 +2,7 @@
 layout: tutorial
 title: Your first hybrid application
 relevantTo: [hybrid]
+weight: 6
 ---
 <h2>Overview</h2>
 <p>This tutorial describes all the steps from creating a new MobileFirst project and Hybrid application to building it. The tutorial explains the structure of the new Hybrid application and all its components, as well as the concept of "Single-Page Application" (SPA) that MobileFirst Hybrid applications are based on.</p>
@@ -19,18 +20,18 @@ relevantTo: [hybrid]
 <h3>Using the command-line interface (CLI)</h3>
 <ol>
 <li>If you have installed the <a href="../../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">CLI</a>, in the terminal, create a project named <code>HelloWorldProject</code>.<br />
-{% highlight bash %}<br />
-$ mfp create HelloWorldProject<br />
-A MobileFirst Project was successfully created at /Users/MyUser/Dev/HelloWorldProject<br />
+{% highlight bash %}
+$ mfp create HelloWorldProject
+A MobileFirst Project was successfully created at /Users/MyUser/Dev/HelloWorldProject
 {% endhighlight %}</li>
 <li>Go to the context of your newly created project.<br />
-{% highlight bash %}<br />
-$ cd HelloWorldProject/<br />
+{% highlight bash %}
+$ cd HelloWorldProject/
 {% endhighlight %}</li>
 <li>Define a hybrid application named <code>HelloWorld</code>.<br />
-{% highlight bash %}<br />
-$ mfp add hybrid HelloWorld<br />
-A new Hybrid App was added at /Users/MyUser/Dev/HelloWorldProject/apps/HelloWorld<br />
+{% highlight bash %}
+$ mfp add hybrid HelloWorld
+A new Hybrid App was added at /Users/MyUser/Dev/HelloWorldProject/apps/HelloWorld
 {% endhighlight %}</li>
 </ol>
 <h3>Using the Studio</h3>
@@ -54,9 +55,9 @@ A new Hybrid App was added at /Users/MyUser/Dev/HelloWorldProject/apps/HelloWorl
 <p>To add an environment:</p>
 <h3>Using the command-line interface (CLI)</h3>
 <p>Navigate to the Hybrid application and add an environment:<br />
-{% highlight bash %}<br />
-cd apps/HelloWorld<br />
-mfp add environment<br />
+{% highlight bash %}
+cd apps/HelloWorld
+mfp add environment
 {% endhighlight %}</p>
 <h3>Using the Studio</h3>
 <ol>
@@ -66,12 +67,13 @@ mfp add environment<br />
 <li>Select the application to which you would like to add an environment and select one or more environments.
 </li>
 <li>Click <strong>Finish</strong>. A new folder with the environment name is added to the project structure.
-<p><img src="{{ site.baseurl }}/assets/backup/08_05_selecting_an_environment-1012x1024.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/08_05_selecting_an_environment-1012x1024.png" style="width:35%" /></p>
 </li>
 </ol>
 <h2 id="structureOfNewApplication">Structure of the new application</h2>
 <p><img src="{{ site.baseurl }}/assets/backup/02_01_project_structure.png" /></p>
 <h3>Environment files</h3>
+<img src="{{ site.baseurl }}/assets/backup/08_05_environment_folder_structure-196x300.png" style="float:right"/>
 <h4>Common</h4>
 <p>The default environment is called <strong>common</strong>. The <strong>common</strong> environment contains all the resources that are shared between environments:</p>
 <ul>
@@ -93,8 +95,8 @@ mfp add environment<br />
 <li><strong>application-descriptor.xml</strong>: Contains the application metadata</li>
 <li><strong>build-settings.xml</strong>: Contains configuration options for minification and concatenation</li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/08_05_environment_folder_structure-196x300.png" /></p>
 <h4>Environments</h4>
+<img src="{{ site.baseurl }}/assets/backup/02_07_android_folder_structure.png" style="float:right" />
 <p><em>The screen shot to the right depicts the iPhone environment, but the explanation below applies to any mobile environment (iPhone, iPad, Android, BlackBerry, Windows Phone 8, Windows 8).</em></p>
 <p>The mobile environment includes the following folders:</p>
 <ul>
@@ -113,9 +115,6 @@ Files in the <code>native\www</code> folder are regenerated each time the applic
 <p><strong>Note about Android</strong><br />
 After you add the Android environment, an Android project is generated and added to the workspace.<br />
 This project folder does not contain a copy of the application code. Rather, it is mapped to the native folder within the android folder of the application.</p>
-<p>[collapse title="Android project structure"]<br />
-<img src="{{ site.baseurl }}/assets/backup/02_07_android_folder_structure.png" /><br />
-[/collapse]</p>
 <p><br clear="all" /></p>
 <h3>Server files</h3>
 <ul>
@@ -151,44 +150,44 @@ You can edit this file in the Design or Source editors.</p>
 <p><img src="{{ site.baseurl }}/assets/backup/02_01_application_descriptor-1024x568.png" /></p>
 <p>The file is based on the W3C Widget Packaging and Configuration standard and contains application properties that are used at build time.<br />
 You can specify the application description, details about the author, the thumbnail image to be displayed in the MobileFirst Operations Console, and more.</p>
-<p>{% highlight xml linenos %}<br />
-    <!-- Attribute "id" must be identical to application folder name --><br />
-    <application id="HelloWorld" platformVersion="7.1.0.00.20150701-1029"<br />
-    xmlns="http://www.worklight.com/application-descriptor"<br />
+<p>{% highlight xml linenos %}
+    <!-- Attribute "id" must be identical to application folder name -->
+    <application id="HelloWorld" platformVersion="7.1.0.00.20150701-1029"
+    xmlns="http://www.worklight.com/application-descriptor"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></p>
-<p>        <displayName>HelloWorld</displayName><br />
-        <description>HelloWorld</description><br />
-        <author><br />
-            <name>application's author</name><br />
-            <email>application author's e-mail</email><br />
-            <copyright>Copyright My Company</copyright><br />
-            <homepage>http://mycompany.com</homepage><br />
-        </author><br />
-        <mainFile>index.html</mainFile><br />
-        <thumbnailImage>common/images/thumbnail.png</thumbnailImage><br />
-        <features><br />
-        </features><br />
-        <targetCategory>UNDEFINED</targetCategory><br />
-    </application><br />
+<p>        <displayName>HelloWorld</displayName>
+        <description>HelloWorld</description>
+        <author>
+            <name>application's author</name>
+            <email>application author's e-mail</email>
+            <copyright>Copyright My Company</copyright>
+            <homepage>http://mycompany.com</homepage>
+        </author>
+        <mainFile>index.html</mainFile>
+        <thumbnailImage>common/images/thumbnail.png</thumbnailImage>
+        <features>
+        </features>
+        <targetCategory>UNDEFINED</targetCategory>
+    </application>
     {% endhighlight %}</p>
 <p>Environment-specific information is inserted automatically as new environments are added to the MobileFirst project:</p>
-<p>{% highlight xml linenos %}<br />
-    <iphone bundleId="com.HelloWorld" version="1.0"><br />
-        <worklightSettings include="false"/><br />
-        <security><br />
-            <encryptWebResources enabled="false"/><br />
-            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
-        </security><br />
-    </iphone><br />
-    <android version="1.0"><br />
-        <worklightSettings include="false"/><br />
-        <security><br />
-            <encryptWebResources enabled="false"/><br />
-            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
-            <publicSigningKey/><br />
-            <packageName/><br />
-        </security><br />
-    </android><br />
+<p>{% highlight xml linenos %}
+    <iphone bundleId="com.HelloWorld" version="1.0">
+        <worklightSettings include="false"/>
+        <security>
+            <encryptWebResources enabled="false"/>
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+        </security>
+    </iphone>
+    <android version="1.0">
+        <worklightSettings include="false"/>
+        <security>
+            <encryptWebResources enabled="false"/>
+            <testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/>
+            <publicSigningKey/>
+            <packageName/>
+        </security>
+    </android>
     {% endhighlight %}</p>
 <blockquote><p>Learn more about the <code>application-descriptor.xml</code> file in the user documentation.</p></blockquote>
 <h3>The build-settings.xml file</h3>
@@ -202,28 +201,28 @@ In addition, you can use concatenation of the web resources to improve the start
 The default application HTML template complies with HTML5 standard markup, but any other DOCTYPE can be specified.</p>
 <p>The MobileFirst client-side framework uses the jQuery library for internal functions. By default, the <code>$</code> char is assigned to the internal jQuery in the main HTML file (see below). If a different jQuery version is required or if jQuery is not required in the application, this line (#12) can be removed.</p>
 <p>The MobileFirst client framework initialization is bound to the <code>onload</code> event specified in the <code>initOptions.js</code> file. For more information about initialization options, see the user documentation.</p>
-<p>{% highlight html linenos %}<br />
-    <!DOCTYPE HTML><br />
-    <html><br />
-            <head><br />
-                <meta charset="UTF-8"><br />
-                <title>HelloWorld</title><br />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0"><br />
-                <!--<br />
-                    <link rel="shortcut icon" href="images/favicon.png"><br />
-                    <link rel="apple-touch-icon" href="images/apple-touch-icon.png"><br />
-                --><br />
-                <link rel="stylesheet" href="css/main.css"><br />
-                <script>window.$ = window.jQuery = WLJQ;</script><br />
-            </head><br />
-            <body style="display: none;"><br />
-                <!--application UI goes here--><br />
-                Hello World<br />
-                <script src="js/initOptions.js"></script><br />
-                <script src="js/main.js"></script><br />
-                <script src="js/messages.js"></script><br />
-            </body><br />
-    </html><br />
+<p>{% highlight html linenos %}
+    <!DOCTYPE HTML>
+    <html>
+            <head>
+                <meta charset="UTF-8">
+                <title>HelloWorld</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+                <!--
+                    <link rel="shortcut icon" href="images/favicon.png">
+                    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+                -->
+                <link rel="stylesheet" href="css/main.css">
+                <script>window.$ = window.jQuery = WLJQ;</script>
+            </head>
+            <body style="display: none;">
+                <!--application UI goes here-->
+                Hello World
+                <script src="js/initOptions.js"></script>
+                <script src="js/main.js"></script>
+                <script src="js/messages.js"></script>
+            </body>
+    </html>
     {% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>The initOptions.js file</h3>
@@ -238,21 +237,21 @@ It contains a <code>wlCommonInit()</code> function which is invoked automaticall
 <p>This function is used in environment-specific JavaScript files to have a common initialization starting point. Additional details are provided in subsequent tutorials.</p>
 <p>As discussed previously, the MobileFirst application starts in offline mode by default.<br />
 To begin communicating with MobileFirst Server, follow the instructions provided in the default <code>wlCommonInit()</code> function:</p>
-<p>{% highlight js linenos %}<br />
-function wlCommonInit(){<br />
-    /*<br />
-     * Use of WL.Client.connect() API before any connectivity to MobileFirst Server is required.<br />
-     * Call this API only once, before any other WL.Client methods that communicate with MobileFirst Server.<br />
-     * Remember to specify and implement the onSuccess and onFailure callback functions for WL.Client.connect(), e.g:<br />
-     *<br />
-     *    WL.Client.connect({<br />
-     *    		onSuccess: onConnectSuccess,<br />
-     *    		onFailure: onConnectFailure<br />
-     *    });<br />
-     *<br />
-     */</p>
-<p>    // Common initialization code goes here</p>
-<p>}<br />
+<p>{% highlight js linenos %}
+function wlCommonInit(){
+    /*
+     * Use of WL.Client.connect() API before any connectivity to MobileFirst Server is required.
+     * Call this API only once, before any other WL.Client methods that communicate with MobileFirst Server.
+     * Remember to specify and implement the onSuccess and onFailure callback functions for WL.Client.connect(), e.g:
+     *
+     *    WL.Client.connect({
+     *    		onSuccess: onConnectSuccess,
+     *    		onFailure: onConnectFailure
+     *    });
+     *
+     */
+    // Common initialization code goes here</p>
+}<
 {% endhighlight %}</p>
 <h2 id="buildingAnApplication">Building an application</h2>
 <h3>Using the command-line interface (CLI)</h3>
@@ -276,14 +275,11 @@ Principles of multipage applications that are built with a single DOM model are 
 <h2 id="previewingAnApplication">Previewing an Application</h2>
 <h3>Using the command-line interface (CLI)</h3>
 <p>From the application preview, use the <code>preview</code> command, and select preview mode: Simple preview or MBS.<br />
-{% highlight bash %}mfp preview{% endhighlight %}.</p>
+{% highlight bash %}
+mfp preview
+{% endhighlight %}</p>
 <h3>Using MobileFirst Studio</h3>
-<ul>
-<li>To preview the application's common resources from the CLI, go to the common folder:<br />
-<code>$ cd apps/HelloWorld/common/</code> and use <code>$ mfp preview</code> to start the preview.
-    </li>
-<li>To preview the application's common resources from the Studio, right-click the <code>common</code> folder and choose <strong>Run As > Preview</strong>.
-</li>
+To preview the application's common resources from the Studio, right-click the <code>common</code> folder and choose <strong>Run As > Preview</strong>.
 </ul>
 <p>If you are presented with a login screen, use admin/admin as the username/password.</p>
 <p>To learn more about previewing, see the <a href="../../hello-world/previewing-your-hybrid-application/">Previewing your Hybrid Application</a> tutorial.</p>

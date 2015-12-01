@@ -1,10 +1,12 @@
 language: ruby
-script: "./build.sh" # execute this script on each commit
+script:
+  - "./buildPages.sh" # execute this script on each commit
+  - "./buildBluemix.sh" # execute this script on each commit
 branches:
   only:
   - jekyll # only take into account `jekyll' branch
 rvm:
-- 2.1.2 # version of `ruby'
+- 2.2.2 # version of `ruby'
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer

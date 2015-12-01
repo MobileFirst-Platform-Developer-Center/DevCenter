@@ -2,6 +2,7 @@
 layout: tutorial
 title: Application Authenticity Protection
 show_children: true
+weight: 9
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 ---
 <h2 id="overview">Overview</h2>
@@ -46,21 +47,21 @@ Only the developer or the enterprise who have the original private key that was 
 <li>Add the relevant authentication realm to a security test.
 <ul>
 <li>If a <code>mobileSecurityTest</code> is used, add the <code>testAppAuthenticity</code> child element to it:<br />
-{% highlight xml linenos %}<br />
-<mobileSecurityTest name="MyMobileAuthenticityTest"><br />
-  <testAppAuthenticity/><br />
-  <testDeviceId provisioningType="none" /><br />
-  <testUser realm="myMobileLoginForm" /><br />
-</mobileSecurityTest><br />
+{% highlight xml linenos %}
+<mobileSecurityTest name="MyMobileAuthenticityTest">
+  <testAppAuthenticity/>
+  <testDeviceId provisioningType="none" />
+  <testUser realm="myMobileLoginForm" />
+</mobileSecurityTest>
 {% endhighlight %}
 </li>
 <li>If a <code>customSecurityTest</code> is used, add the <code>wl_authenticityRealm</code> realm to it:<br />
-{% highlight xml linenos %}<br />
-<customSecurityTest name="MyCustomAuthenticityTest" ><br />
-  <test realm="wl_authenticityRealm" step="1"/><br />
-  <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"/><br />
-  <test realm="wl_deviceNoProvisioningRealm" step="2" isInternalDeviceID="true"/><br />
-</customSecurityTest><br />
+{% highlight xml linenos %}
+<customSecurityTest name="MyCustomAuthenticityTest">
+  <test realm="wl_authenticityRealm" step="1"/>
+  <test realm="wl_anonymousUserRealm" isInternalUserID="true" step="1"/>
+  <test realm="wl_deviceNoProvisioningRealm" step="2" isInternalDeviceID="true"/>
+</customSecurityTest>
 {% endhighlight %}
 </li>
 </ul>
@@ -74,8 +75,8 @@ Only the developer or the enterprise who have the original private key that was 
 <ul>
 <li><strong>By using the <code>wladm</code> program</strong><br />
 Use the <code>wladm</code> program (provided in the MobileFirst installation directory) to run the <code>enable extended-authenticity</code> command:<br />
-{% highlight java linenos %}<br />
-wladm enable extended-authenticity src-wlapp-file device-file > dest-wlapp-file<br />
+{% highlight java linenos %}
+wladm enable extended-authenticity src-wlapp-file device-file > dest-wlapp-file
 {% endhighlight %}</p>
 <ul>
 <li><code>src-wlapp-file</code> => Original binary app file (<code>.wlapp</code>)</li>
@@ -86,10 +87,10 @@ wladm enable extended-authenticity src-wlapp-file device-file > dest-wlapp-file<
 </li>
 <li><strong>By using the <code>wladm</code> Ant task</strong><br />
 Use the <code>wladm</code> Ant task (provided in the MobileFirst installation directory) to run the <code>enable-extended-authenticity</code> command:<br />
-{% highlight xml linenos %}<br />
-<enable-extended-authenticity srcwlappfile="original-.wlapp-file"<br />
-    devicefile="device file(.apk, .ipa, or .xap)"<br />
-    destwlappfile="output-.wlapp-file"/><br />
+{% highlight xml linenos %}
+<enable-extended-authenticity srcwlappfile="original-.wlapp-file"
+    devicefile="device file(.apk, .ipa, or .xap)"
+    destwlappfile="output-.wlapp-file"/>
 {% endhighlight %}
   </li>
 </ul>

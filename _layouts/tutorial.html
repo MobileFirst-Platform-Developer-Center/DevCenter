@@ -5,38 +5,28 @@ custom_js:
 - js/tutorial.js
 ---
 <div class="container-fluid tutorial">
-  <div class="row">
-    <div class="hidden-xs col-sm-2">
-      {% include tutorialNav.html %}
+    <div class="row">
+        <div class="hidden-xs col-sm-2">
+            {% include tutorialNav.html %}
+        </div>
+        <div class="col-sm-8">
+            <h1>{{ page.title}}</h1>
+            {% include breadcrumb.html %} {% if page.downloads %}
+            <div class="downloadButtons">
+                {% for download in page.downloads %}
+                <button class="download-button">
+                    <a href="{{download.url}}">
+                        <span class="glyphicon glyphicon-download-alt"></span>
+                        {{download.name}}
+                    </a>
+                </button>
+                {% endfor %}
+            </div>
+            {% endif %} {{ content }} {% if page.show_children %} {% assign documents = site.pages | sort: "weight" %} {% assign level = page.dir | remove_first: "/" | split:"/" | size %} {% assign childrenLevel = level | plus : 1 %} {% include show-children.html
+            docs=documents dir=page.dir level=childrenLevel %} {% endif %} {% include disqus.html %}
+        </div>
+        <div class="hidden-xs col-sm-2">
+
+        </div>
     </div>
-    <div class="col-sm-8">
-      <h1>{{ page.title}}</h1>
-      {% include breadcrumb.html %}
-
-      {% if page.downloads %}
-        {% for download in page.downloads %}
-          <button class="download-button">
-            <a href="{{download.url}}">
-              <span class="glyphicon glyphicon-download-alt"></span>
-              {{download.name}}
-            </a>
-          </button>
-        {% endfor %}
-      {% endif %}
-
-      {{ content }}
-
-      {% if page.show_children %}
-        {% assign documents = site.pages | sort: "weight" %}
-        {% assign level = page.dir | remove_first: "/" | split:"/" | size %}
-        {% assign childrenLevel = level | plus : 1 %}
-        {% include show-children.html docs=documents dir=page.dir level=childrenLevel %}
-      {% endif %}
-
-      {% include disqus.html %}
-    </div>
-    <div class="hidden-xs col-sm-2">
-
-    </div>
-  </div>
 </div>

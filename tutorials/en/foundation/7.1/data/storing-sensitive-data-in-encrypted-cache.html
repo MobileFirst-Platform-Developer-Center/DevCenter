@@ -2,13 +2,11 @@
 layout: tutorial
 title: Storing sensitive data in encrypted cache
 relevantTo: [hybrid]
+weight: 2
+downloads: 
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/EncryptedCache
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/EncryptedCache" target="_blank">Download MobileFirst project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>Encrypted cache is a mechanism for storing sensitive data on the client side. Encrypted cache is implemented by using HTML5 web storage technology, which allows data to be saved locally and retrieved on subsequent application use or restart.</p>
 <p>The data is encrypted  and stored by a combination of a user-provided key and a randomly generated token that is retrieved from the server (key-value pairs), which makes it more secure.</p>
@@ -50,11 +48,13 @@ The following table shows which browsers support web storage for mobile devices.
 <li><code>onComplete</code> – A callback function to be invoked when cache opening/creating is complete.</li>
 <li><code>onError</code> - A callback function to be invoked when cache is not successfully opened/created.</li>
 </ul>
-<p>{% highlight js linenos %}WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
-function onOpenComplete(status){<br />
-    busyIndicator.hide();<br />
-    alert("Encrypted cache succesfully opened");<br />
-}{% endhighlight %}</p>
+<p>{% highlight js linenos %}
+WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);
+function onOpenComplete(status){
+    busyIndicator.hide();
+    alert("Encrypted cache succesfully opened");
+}
+{% endhighlight %}</p>
 <p><strong>Note:</strong> Before you create a new encrypted cache, make sure that the application can connect to the MobileFirst Server instance.</p>
 <p>A callback function can receive one of the following statuses:</p>
 <ul>
@@ -66,85 +66,98 @@ function onOpenComplete(status){<br />
 <li><code>WL.EncryptedCache.ERROR_KEY_CREATION_IN_PROGRESS</code> – An <code>open()</code> or <code>changeCredentials()</code> request is already running.</li>
 </ul>
 <h4>Example</h4>
-<p>{% highlight js linenos %}WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);<br />
-function onOpenComplete(status){<br />
-    busyIndicator.hide();<br />
-    alert("Encrypted cache succesfully opened");<br />
-}</p>
-<p>function onOpenError(status){<br />
-    busyIndicator.hide();<br />
-    switch(status){<br />
-        case WL.EncryptedCache.ERROR_KEY_CREATION_IN_PROGRESS:<br />
-            alert("ERROR: KEY CREATION IN PROGRESS");<br />
-            break;<br />
-        case WL.EncryptedCache.ERROR_LOCAL_STORAGE_NOT_SUPPORTED:<br />
-            alert("ERROR: LOCAL STORAGE NOT SUPPORTED");<br />
-            break;<br />
-        case WL.EncryptedCache.ERROR_NO_EOC:<br />
-            alert("ERROR: NO EOC");<br />
-            break;<br />
-        case WL.EncryptedCache.ERROR_COULD_NOT_GENERATE_KEY:<br />
-            alert("ERROR: COULD NOT GENERATE KEY");<br />
-            break;<br />
-        case WL.EncryptedCache.ERROR_CREDENTIALS_MISMATCH:<br />
-            alert("ERROR: CREDENTIALS MISMATCH");<br />
-            break;<br />
-        default:<br />
-            alert("AN ERROR HAS OCCURED. STATUS :: " + status);<br />
-    }<br />
-}{% endhighlight %}</p>
+<p>{% highlight js linenos %}
+WL.EncryptedCache.open(key, true, onOpenComplete, onOpenError);
+function onOpenComplete(status){
+    busyIndicator.hide();
+    alert("Encrypted cache succesfully opened");
+}
+
+function onOpenError(status){
+    busyIndicator.hide();
+    switch(status){
+        case WL.EncryptedCache.ERROR_KEY_CREATION_IN_PROGRESS:
+            alert("ERROR: KEY CREATION IN PROGRESS");
+            break;
+        case WL.EncryptedCache.ERROR_LOCAL_STORAGE_NOT_SUPPORTED:
+            alert("ERROR: LOCAL STORAGE NOT SUPPORTED");
+            break;
+        case WL.EncryptedCache.ERROR_NO_EOC:
+            alert("ERROR: NO EOC");
+            break;
+        case WL.EncryptedCache.ERROR_COULD_NOT_GENERATE_KEY:
+            alert("ERROR: COULD NOT GENERATE KEY");
+            break;
+        case WL.EncryptedCache.ERROR_CREDENTIALS_MISMATCH:
+            alert("ERROR: CREDENTIALS MISMATCH");
+            break;
+        default:
+            alert("AN ERROR HAS OCCURED. STATUS :: " + status);
+    }
+}
+{% endhighlight %}</p>
 <h2 id="reading">Reading, writing, and removing data by using encrypted cache</h2>
 <p>When the encrypted cache is open, operations such as reading, writing, and removing data can be performed.</p>
 <h3>Storing data</h3>
 <p>To store data in encrypted cache, use the following API:<br />
 <code>WL.EncryptedCache.write(key, value, onSuccess, onFailure);</code></p>
 <h4>Example</h4>
-<p>{% highlight js linenos %}WL.EncryptedCache.write(key, value, onWriteSuccess, onWriteFailure);<br />
-function onWriteSuccess(status){<br />
-    alert("Succesfully encrypted into cache.");<br />
-}<br />
-function onWriteFailure(status){<br />
-    if (status == WL.EncryptedCache.ERROR_EOC_CLOSED)<br />
-        alert("Encrypted cache closed, write failed. error code= "+ status);<br />
-}{% endhighlight %}</p>
+<p>{% highlight js linenos %}
+WL.EncryptedCache.write(key, value, onWriteSuccess, onWriteFailure);
+function onWriteSuccess(status){
+    alert("Succesfully encrypted into cache.");
+}
+
+function onWriteFailure(status){
+    if (status == WL.EncryptedCache.ERROR_EOC_CLOSED)
+        alert("Encrypted cache closed, write failed. error code= "+ status);
+}
+{% endhighlight %}</p>
 <h3>Reading data</h3>
-<p>To read data from the encrypted cache, use the following API:<br />
+<p>To read data from the encrypted cache, use the following API:
 <code>WL.EncryptedCache.read(key, onSuccess, onFailure);</code></p>
 <h4>Example</h4>
-<p>{% highlight js linenos %}WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);<br />
-function onDecryptReadSuccess(value){<br />
-    alert("Read success. Retrieved value :: " + key + " = " + value);<br />
-}<br />
-function onDecryptReadFailure(status){<br />
-    alert("Encrypted cache closed, reading failed");<br />
-}{% endhighlight %}</p>
+<p>{% highlight js linenos %}
+WL.EncryptedCache.read(key, onDecryptReadSuccess, onDecryptReadFailure);
+function onDecryptReadSuccess(value){
+    alert("Read success. Retrieved value :: " + key + " = " + value);
+}
+function onDecryptReadFailure(status){
+    alert("Encrypted cache closed, reading failed");
+}
+{% endhighlight %}</p>
 <h3>Removing data</h3>
 <p>To remove data from the encrypted cache, use the following API:</p>
 <p><code>WL.EncryptedCache.remove(key, onSuccess, onFailure);</code></p>
 <h4>Example</h4>
-<p>{% highlight js linenos %}WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);<br />
-function onRemoveSuccess(status){<br />
-    alert("Succesfully removed from cache.");<br />
-}<br />
-function onRemoveFailure(status){<br />
-    alert("Encrypted cache closed, remove failed");<br />
+<p>{% highlight js linenos %}
+WL.EncryptedCache.remove(key, onRemoveSuccess, onRemoveFailure);
+function onRemoveSuccess(status){
+    alert("Succesfully removed from cache.");
+}
+function onRemoveFailure(status){
+    alert("Encrypted cache closed, remove failed");
 }{% endhighlight %}</p>
 <h2 id="closing">Closing and destroying encrypted cache</h2>
-<p>To avoid possible unwanted access to encrypted cache, close it.<br />
+<p>To avoid possible unwanted access to encrypted cache, close it.
 After an encrypted cache is closed, access to its data is not possible without the encryption key that was used to create it.</p>
 <p>To close the encrypted cache, use the following API:</p>
 <p><code>WL.EncryptedCache.close(onComplete, onFailure);</code></p>
 <h4>Example</h4>
-<p>{% highlight js linenos %}function destroyCacheClicked(){<br />
-    WL.EncryptedCache.destroy(onDestroyCompleteHandler,<br />
-    onDestroyErrorHandler);<br />
-}<br />
-function onDestroyCompleteHandler(status){<br />
-    alert("Encrypted cache destroyed");<br />
-}<br />
-function onDestroyErrorHandler(status){<br />
-    alert("Error destroying Encrypted cache");<br />
-}{% endhighlight %}</p>
+<p>{% highlight js linenos %}
+function destroyCacheClicked(){
+    WL.EncryptedCache.destroy(onDestroyCompleteHandler,
+    onDestroyErrorHandler);
+}
+
+function onDestroyCompleteHandler(status){
+    alert("Encrypted cache destroyed");
+}
+
+function onDestroyErrorHandler(status){
+    alert("Error destroying Encrypted cache");
+}
+{% endhighlight %}</p>
 <h2 id="changingKey">Changing the encryption key</h2>
 <p>While encrypted cache is in the open state, you can change the encryption key.<br />
 To do so, use the following API:</p>

@@ -173,6 +173,9 @@ blockquote {
 		padding: 0;
 	}
 }
+.downloadButtons {
+	margin-bottom: 53px;
+}
 .download-button {
 	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
 	border-radius: 5px;

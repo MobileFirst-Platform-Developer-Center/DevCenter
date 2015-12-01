@@ -38,9 +38,13 @@ When an interactive notification is received, the device shows action buttons al
 Categories describe a custom type of notification that your application sends and contains actions that a user can perform in response.</p>
 <ul>
 <li>For event-source notifications, create a notification object and set the category as below:<br />
-        {% highlight objc linenos %}notification.APNS.category = "poll"; {% endhighlight %}</li>
+{% highlight objc linenos %}
+notification.APNS.category = "poll";
+{% endhighlight %}</li>
 <li>For broadcast/tag-based notifications, create a notification object and set the category as below:<br />
-        {% highlight objc linenos %}notification.settings.apns.category = "poll"; {% endhighlight %}</li>
+{% highlight objc linenos %}
+notification.settings.apns.category = "poll";
+{% endhighlight %}</li>
 <li>The category name must be same as the one used on the client side.</li>
 </ul>
 <h4>Client-side steps for interactive notification</h4>
@@ -49,41 +53,42 @@ Categories describe a custom type of notification that your application sends an
 <li>Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.<br />
 To enable background processing, select the project in XCode and in the capabilities tab, select the appropriate background modes like Remote notifications and Background fetch.</li>
 <li>Set categories before setting <code>deviceToken</code> on <code>WLPush</code> object in <code>didRegisterForRemoteNotificationsWithDeviceToken</code> method in the <code>AppDelegate</code> class.
-<p>    {% highlight objc linenos %}<br />
--(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{<br />
-    NSLog(@"APNS Token : %@", deviceToken);<br />
-    if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){<br />
-        UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;</p>
-<p>        UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];<br />
-        acceptAction.identifier = @"OK";<br />
-        acceptAction.title = @"OK";</p>
-<p>        UIMutableUserNotificationAction *rejetAction = [[UIMutableUserNotificationAction alloc] init];<br />
-        rejetAction.identifier = @"Cancel";<br />
-        rejetAction.title = @"Cancel";<br />
+<p>    
+{% highlight objc linenos %}
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    NSLog(@"APNS Token : %@", deviceToken);
+    if([application respondsToSelector:@selector(registerUserNotificationSettings:)]){
+        UIUserNotificationType userNotificationTypes = UIUserNotificationTypeNone | UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge;
+        UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
+        acceptAction.identifier = @"OK";
+        acceptAction.title = @"OK";
+        UIMutableUserNotificationAction *rejetAction = [[UIMutableUserNotificationAction alloc] init];
+        rejetAction.identifier = @"Cancel";
+        rejetAction.title = @"Cancel";
         [rejetAction setActivationMode:UIUserNotificationActivationModeBackground];</p>
-<p>        UIMutableUserNotificationCategory *cateogory = [[UIMutableUserNotificationCategory alloc] init];<br />
-        cateogory.identifier = @"poll";<br />
-        [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextDefault];<br />
+        UIMutableUserNotificationCategory *cateogory = [[UIMutableUserNotificationCategory alloc] init];
+        cateogory.identifier = @"poll";
+        [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextDefault];
         [cateogory setActions:@[acceptAction,rejetAction] forContext:UIUserNotificationActionContextMinimal];</p>
-<p>        NSSet *catgories = [NSSet setWithObject:cateogory];<br />
-        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:catgories]];<br />
-    }<br />
-    [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];<br />
-}<br />
+        NSSet *catgories = [NSSet setWithObject:cateogory];
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:userNotificationTypes categories:catgories]];
+    }
+    [[WLPush sharedInstance] setTokenFromClient:deviceToken.description];
+}
 {% endhighlight %}</li>
 <li>To handle the actions the user selects, use the <code>handleActionWithIdentifier</code> method of the <code>UIApplicationDelegate</code> protocol:<br />
-    {% highlight objc linenos %}<br />
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {<br />
-    if ([identifier isEqualToString:@"OK"]) {</p>
-<p>        NSLog(@"OK was tapped");<br />
-    }<br />
-    else if ([identifier isEqualToString:@"Cancel"]) {</p>
-<p>        NSLog(@"Cancel was tapped");</p>
-<p>    }<br />
-    if (completionHandler) {</p>
-<p>        completionHandler();<br />
-    }<br />
-}<br />
+{% highlight objc linenos %}
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler {
+    if ([identifier isEqualToString:@"OK"]) {
+        NSLog(@"OK was tapped");
+    }
+    else if ([identifier isEqualToString:@"Cancel"]) {
+        NSLog(@"Cancel was tapped");
+    }
+    if (completionHandler) {
+        completionHandler();
+    }
+}
 {% endhighlight %}</p>
 <p>Make sure to call the <code>completionHandler</code>.</li>
 </ul>

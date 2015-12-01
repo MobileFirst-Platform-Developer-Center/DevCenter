@@ -1,17 +1,14 @@
 ---
 layout: tutorial
 title: Adapter-based authentication in native Windows Phone 8 applications
+breadcrumb_title: Windows Phone 8
 relevantTo: [windowsphone8]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuthWP8
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth" target="_blank">Download MobileFirst project</a>
-        </li>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuthWP8" target="_blank">Download Native project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>This tutorial illustrates the native Windows Phone 8 client-side authentication components for adapter-based authentication.<br />
 <strong>Prerequisite:</strong> Make sure that you read <a href="../">Adapter-based authentication</a> first.</p>
@@ -22,61 +19,61 @@ relevantTo: [windowsphone8]
 Your <code>CustomAdapterChallengeHandler</code> class must implement the <code>isCustomResponse</code> and <code>handleChallenge</code> methods.</p>
 <ul>
 <li>The <code>isCustomResponse</code> method checks every custom response received from MobileFirst Server to verify whether this is the expected challenge.<br />
-{% highlight csharp linenos %}<br />
-public override bool isCustomResponse(WLResponse response)<br />
-{<br />
-    if (response == null ||<br />
-        response.getResponseJSON() == null ||<br />
-        response.getResponseText() == null ||<br />
-        response.getResponseJSON()["authStatus"] == null ||<br />
-        String.Compare(response.getResponseJSON()["authStatus"].ToString(), "complete", StringComparison.OrdinalIgnoreCase) == 0)<br />
-    {<br />
-        return false;<br />
-    }<br />
-    return true;<br />
-}<br />
+{% highlight csharp linenos %}
+public override bool isCustomResponse(WLResponse response)
+{
+    if (response == null ||
+        response.getResponseJSON() == null ||
+        response.getResponseText() == null ||
+        response.getResponseJSON()["authStatus"] == null ||
+        String.Compare(response.getResponseJSON()["authStatus"].ToString(), "complete", StringComparison.OrdinalIgnoreCase) == 0)
+    {
+        return false;
+    }
+    return true
+}
 {% endhighlight %}
 </li>
 <li>The <code>handleChallenge</code> method is called after the <code>isCustomResponse</code> method returns <code>true</code>.<br />
 Use this method to present the login form. Different approaches are available.<br />
-{% highlight csharp linenos %}<br />
-public override void handleChallenge(JObject challenge)<br />
-{<br />
-    Deployment.Current.Dispatcher.BeginInvoke(() =><br />
-    {<br />
-        MainPage._this.NavigationService.Navigate(new Uri("/LoginPage.xaml", UriKind.Relative));<br />
-    });<br />
-}<br />
+{% highlight csharp linenos %}
+public override void handleChallenge(JObject challenge)
+{
+    Deployment.Current.Dispatcher.BeginInvoke(() =>
+    {
+        MainPage._this.NavigationService.Navigate(new Uri("/LoginPage.xaml", UriKind.Relative));
+    });
+}
 {% endhighlight %}
 </li>
 </ul>
 <p>From the login form, credentials are passed to the <code>CustomAdapterChallengeHandler</code> class. The <code>submitAdapterAuthentication()</code> method is used to send input data to the authenticator.<br />
-{% highlight csharp linenos %}<br />
-public void submitLogin(string userName, string password)<br />
-{<br />
-    object[] parameters = new object[] { userName, password };<br />
-    WLProcedureInvocationData invocationData = new WLProcedureInvocationData("AuthAdapter", "submitAuthentication");<br />
-    invocationData.setParameters(parameters);<br />
-    WLRequestOptions options = new WLRequestOptions();<br />
-    submitAdapterAuthentication(invocationData, options);<br />
-}<br />
+{% highlight csharp linenos %}
+public void submitLogin(string userName, string password)
+{
+    object[] parameters = new object[] { userName, password };
+    WLProcedureInvocationData invocationData = new WLProcedureInvocationData("AuthAdapter", "submitAuthentication");
+    invocationData.setParameters(parameters);
+    WLRequestOptions options = new WLRequestOptions();
+    submitAdapterAuthentication(invocationData, options);
+}
 {% endhighlight %}</p>
 <h3>MainPage</h3>
 <p>Within the <code>MainPage</code> class, connect to MobileFirst Server, register your <code>challengeHandler</code>, and invoke the protected adapter procedure.<br />
 The procedure invocation triggers MobileFirst Server to send a challenge that will trigger the challenge handler.<br />
-{% highlight csharp linenos %}<br />
-    WLClient client;<br />
-    client = WLClient.getInstance();<br />
-    challengeHandler = new WindowsChallengeHandler();<br />
-    client.registerChallengeHandler((BaseChallengeHandler<JObject>)challengeHandler);<br />
-    client.connect(new MyConnectResponseListener(this));<br />
+{% highlight csharp linenos %}
+    WLClient client;
+    client = WLClient.getInstance();
+    challengeHandler = new WindowsChallengeHandler();
+    client.registerChallengeHandler((BaseChallengeHandler<JObject>)challengeHandler);
+    client.connect(new MyConnectResponseListener(this));
 {% endhighlight %}</p>
 <p>Because the native API is not protected by a defined security test, no login form is presented during server connection.<br />
 Invoke the protected adapter procedure. The login form is presented by the <code>challengeHandler</code>.<br />
-{% highlight csharp linenos %}<br />
-    WLProcedureInvocationData invokeData = new WLProcedureInvocationData("AuthAdapter", "getSecretData");<br />
-    WLRequestOptions options = new WLRequestOptions();<br />
-    client.invokeProcedure(invokeData, new MyResponseListener(this), options);<br />
+{% highlight csharp linenos %}
+    WLProcedureInvocationData invokeData = new WLProcedureInvocationData("AuthAdapter", "getSecretData");
+    WLRequestOptions options = new WLRequestOptions();
+    client.invokeProcedure(invokeData, new MyResponseListener(this), options);
 {% endhighlight %}</p>
 <h2>Sample application</h2>
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/AdapterBasedAuth" target="_blank">Click to download</a> the MobileFirst project.</p>

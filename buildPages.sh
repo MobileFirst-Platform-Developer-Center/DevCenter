@@ -9,15 +9,17 @@ fi
 # enable error reporting to the console
 set -e
 
+## First, build for GitHub Pages
 # build site with jekyll, by default to `_site' folder
-bundle exec jekyll build -d _site/MFPSamples --profile
+rm -rf _site/*
+bundle exec jekyll build --config _config.yml,_configPages.yml -d _site/MFPSamples --profile
 rm -f _site/*.log
 # bundle exec htmlproof ./_site --disable-external --href-ignore '#'
 
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.master
 
-#clone `master' branch of the repository using encrypted GH_TOKEN for authentification
+#clone `master' branch of the repository
 git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --branch master --single-branch ../mfpsamples.github.ibm.com.master
 # copy generated HTML site to `master' branch
 rm -rf ../mfpsamples.github.ibm.com.master/*
