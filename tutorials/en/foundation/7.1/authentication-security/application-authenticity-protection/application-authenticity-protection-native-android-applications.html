@@ -38,15 +38,15 @@ This is a continuation of the <a title="Application Authenticity Protection" hre
 <li>Take the Application package name value from the package attribute of the <em>manifest</em> node in the <code>AndroidManifest.xml</code>.<br />
 If you decide to change the value, make sure that you change it in both locations.</p>
 <p>You can also edit the <code>application-descriptor.xml</code> file directly to add the package name:</p>
-<p>{% highlight xml linenos %}<br />
-<android version="1.0" securityTest="customTests"><br />
-     <worklightSettings include="false"/><br />
-     <security><br />
-         <encryptWebResources enabled="false"/><br />
-         <testWebResourcesChecksum enabled="false"<br />
-             ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/><br />
-         <publicSigningKey>MIGfM …</publicSigningKey><br />
-         <packageName>com.MyBankApp</packageName><br />
-     </security><br />
-</android><br />
+<p>{% highlight xml linenos %}
+<android version="1.0" securityTest="customTests">
+     <worklightSettings include="false"/>
+     <security>
+         <encryptWebResources enabled="false"/>
+         <testWebResourcesChecksum enabled="false"
+             ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3"/
+         <publicSigningKey>MIGfM …</publicSigningKey>
+         <packageName>com.MyBankApp</packageName>
+     </security>
+</android>
 {% endhighlight %}</li>

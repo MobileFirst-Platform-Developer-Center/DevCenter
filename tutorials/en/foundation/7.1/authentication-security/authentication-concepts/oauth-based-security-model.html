@@ -70,47 +70,47 @@ A scope is a list of realm names - the realms that the user must authenticate ag
 <p>You can modify the settings by using the Authentication Configuration Editor.<br />
 <img src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png" /></p>
 <p>Each realm takes a name, a <code>loginModule</code> specification, an authenticator implementation, and optional parameters.</p>
-<p>{% highlight xml linenos %}<br />
-<realms><br />
-  <realm name="SampleAppRealm" loginModule="StrongDummy"><br />
-    <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className><br />
-  </realm></p>
-<p>  <realm name="SubscribeServlet" loginModule="rejectAll"><br />
-    <className>com.worklight.core.auth.ext.HeaderAuthenticator</className><br />
-  </realm><br />
-</realms><br />
+<p>{% highlight xml linenos %}
+<realms>
+  <realm name="SampleAppRealm" loginModule="StrongDummy">
+    <className>com.worklight.core.auth.ext.FormBasedAuthenticator</className>
+  </realm>
+  <realm name="SubscribeServlet" loginModule="rejectAll">
+    <className>com.worklight.core.auth.ext.HeaderAuthenticator</className>
+  </realm>
+</realms>
 {% endhighlight %}</p>
 <p>Each login module takes a name, a login module implementation, and optional parameters.</p>
-<p>{% highlight xml linenos %}<br />
-<loginModules><br />
-  <loginModule name="StrongDummy"><br />
-    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className><br />
-  </loginModule></p>
-<p>  <loginModule name="requireLogin"><br />
-    <className>com.worklight.core.auth.ext.SingleIdentityLoginModule</className><br />
-  </loginModule></p>
-<p>  <loginModule name="rejectAll"><br />
-    <className>com.worklight.core.auth.ext.RejectingLoginModule</className><br />
-  </loginModule><br />
-</loginModules><br />
+<p>{% highlight xml linenos %}
+<loginModules>
+  <loginModule name="StrongDummy">
+    <className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+  </loginModule>
+  <loginModule name="requireLogin">
+    <className>com.worklight.core.auth.ext.SingleIdentityLoginModule</className>
+  </loginModule>
+  <loginModule name="rejectAll">
+    <className>com.worklight.core.auth.ext.RejectingLoginModule</className>
+  </loginModule>
+</loginModules>
 {% endhighlight %}</p>
 <h3>User Identity</h3>
 <p>Although user authorization can include authorization with several realms, only one of these realms is defined as the <em>user identity realm</em>, and that realm determines the user identity. In an OAuth-based flow, the user identity realm is set according to the <code>userIdentityRealms</code> definition in the <strong>application descriptor</strong>. This is the user identity that will appear in the Devices tab of the console.</p>
 <p><strong>Note:</strong> In the classic (pre-V7.0) flows, the user identity realm is selected according to the definition in the security test. In OAuth-based flows, information about the user identity, which is set by the <code>userIdentityRealms</code> attribute, is part of the data contained in the ID token.</p>
-<p>{% highlight xml linenos %}<br />
-<userIdentityRealms>SampleAppRealm</userIdentityRealms><br />
+<p>{% highlight xml linenos %}
+<userIdentityRealms>SampleAppRealm</userIdentityRealms>
 {% endhighlight %}</p>
 <h2 id="protectAdapt">Protecting adapters</h2>
 <h3>Java adapters</h3>
 <p>MobileFirst Java adapters come ready with OAuth capabilities. See <a href="../../../server-side-development/java-adapter/" title="Java Adapter">Java Adapters</a>.</p>
-<p>{% highlight java linenos %}<br />
-    @DELETE<br />
-    @Path("/{userId}")<br />
-    @OAuthSecurity(scope="adminRealm")<br />
-    //This will serve: DELETE /users/{userId}<br />
-    public void deleteUser(@PathParam("userId") String userId){<br />
-        ...<br />
-    }<br />
+<p>{% highlight java linenos %}
+    @DELETE
+    @Path("/{userId}")
+    @OAuthSecurity(scope="adminRealm")
+    //This will serve: DELETE /users/{userId}
+    public void deleteUser(@PathParam("userId") String userId){
+        ...
+    }
 {% endhighlight %}</p>
 <p>In this example, the <code>deleteUser</code> procedure uses the annotation <code>@OAuthSecurity(scope="adminRealm")</code>, which means that it is protected by a scope containing the realm <code>adminRealm</code>.</p>
 <p>A scope can be made of several realms, space-separated: <code>@OAuthSecurity(scope="realm1 realm2 realm3")</code>.</p>
