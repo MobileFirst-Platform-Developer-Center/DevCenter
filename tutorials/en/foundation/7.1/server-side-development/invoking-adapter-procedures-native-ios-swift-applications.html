@@ -2,16 +2,13 @@
 layout: tutorial
 title: Resource request from native iOS Swift applications
 relevantTo: [ios]
+weight: 7
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresSwift
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures" target="_blank">Download MobileFirst project</a>
-    </li>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresSwift" target="_blank">Download Native project</a>
-    </li>
-</ul>
-
 <h2>Overview</h2>
 <p>To create and configure an iOS native project, first follow the “<a href="../../hello-world/configuring-a-native-ios-application-with-the-mfp-sdk/" title="Configuring a native iOS application with the MobileFirst Platform SDK">Configuring a native iOS application with the MobileFirst Platform SDK</a>” tutorial.</p>
 <p>If you are developing Swift-based applications, make sure that you follow the additional steps.</p>
@@ -23,9 +20,9 @@ This tutorial explains how to use the <code>WLResourceRequest</code> API with an
 </li>
 <li>Initiate the connection to the server by using the <code>wlConnectWithDelegate</code> method.<br />
 For most actions, you must specify a delegate object, such as a <code>MyConnectListener</code> instance in the following example:<br />
-{% highlight swift linenos %}<br />
-let connectListener = MyConnectListener(vc: self)<br />
-WLClient.sharedInstance().wlConnectWithDelegate(connectListener)<br />
+{% highlight swift linenos %}
+let connectListener = MyConnectListener(vc: self)
+WLClient.sharedInstance().wlConnectWithDelegate(connectListener)
 {% endhighlight %}
 </li>
 <li>Make sure that your Bridging Header includes the <code>WLSwiftBridgingHeader.h</code> file for access to MobileFirst APIs.
@@ -33,10 +30,10 @@ WLClient.sharedInstance().wlConnectWithDelegate(connectListener)<br />
 <li>To specify the delegate object, create a delegate for the <code>wlConnectWithDelegate</code> method and receive the response from the MobileFirst Server instance. Name the class <code>MyConnectListener</code>.
 <p>For your <code>MyConnectListener</code> class, the header file must specify that it implements the <code>WLDelegate</code> protocol.</p>
 <p><strong>Note</strong>: To avoid a compiler error raising that your delegate does not conform to <code>NSObjectProtocol</code>, make your class a subclass of <code>NSObject</code>.</p>
-<p>{% highlight swift linenos %}<br />
-class MyConnectListener: NSObject, WLDelegate{<br />
-//...<br />
-}<br />
+<p>{% highlight swift linenos %}
+class MyConnectListener: NSObject, WLDelegate{
+//...
+}
 {% endhighlight %}</p>
 <p>The <code>WLDelegate</code> protocol specifies that the class implements the following methods:<br />
 - The <strong>onSuccess</strong> method: <code>func onSuccess(response: WLResponse!)</code><br />
@@ -45,21 +42,22 @@ class MyConnectListener: NSObject, WLDelegate{<br />
 In both cases, the response object is passed as an argument.
 </li>
 <li>Use this object to operate data that is retrieved from the server.
-<p>{% highlight swift linenos %}<br />
-func onSuccess(response: WLResponse!) {<br />
-    var resultText = "Connection success. "<br />
-    if(response != nil){<br />
-        resultText += response.responseText<br />
-    }<br />
-    self.vc.updateView(resultText)<br />
-}</p>
-<p>func onFailure(response: WLFailResponse!) {<br />
-    var resultText = "Connection failure. "<br />
-    if(response != nil){<br />
-        resultText += response.errorMsg<br />
-    }<br />
-    self.vc.updateView(resultText)<br />
-}<br />
+<p>{% highlight swift linenos %}
+func onSuccess(response: WLResponse!) {
+    var resultText = "Connection success. "
+    if(response != nil){
+        resultText += response.responseText
+    }
+    self.vc.updateView(resultText)
+}
+
+func onFailure(response: WLFailResponse!) {
+    var resultText = "Connection failure. "
+    if(response != nil){
+        resultText += response.errorMsg
+    }
+    self.vc.updateView(resultText)
+}
 {% endhighlight %}
 </li>
 </ol>
@@ -67,39 +65,39 @@ func onSuccess(response: WLResponse!) {<br />
 <p>The <code>WLResourceRequest</code> class handles resource requests to MobileFirst adapters or external resources.</p>
 <ol>
 <li>To call a procedure, create a <code>WLResourceRequest</code> object and specify the path to the adapter and the HTTP method.<br />
-{% highlight swift linenos %}<br />
-let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getFeed"), method: WLHttpMethodGet)<br />
+{% highlight swift linenos %}
+let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getFeed"), method: WLHttpMethodGet)
 {% endhighlight %}
 </li>
 <li>Add the required parameters.
 <ul>
 <li>For JavaScript-based adapters, use the <code>params</code> parameter name to set an array of parameters.<br />
-{% highlight swift linenos %}<br />
-request.setQueryParameterValue("['MobileFirst_Platform']", forName: "params")<br />
+{% highlight swift linenos %}
+request.setQueryParameterValue("['MobileFirst_Platform']", forName: "params")
 {% endhighlight %}
 </li>
 <li>For Java adapters or other resources, you can use <code>setQueryParameterValue</code> for each parameter.<br />
-{% highlight swift linenos %}<br />
-request.setQueryParameterValue("value1", forName: "param1")<br />
-request.setQueryParameterValue("value2", forName: "param2")<br />
+{% highlight swift linenos %}
+request.setQueryParameterValue("value1", forName: "param1")
+request.setQueryParameterValue("value2", forName: "param2")
 {% endhighlight %}
 </li>
 </ul>
 </li>
 <li>Call the procedure by using the <code>sendWithCompletionHandler</code> method. Supply a completion handler to manage the retrieved data.
-<p>{% highlight swift linenos %}<br />
-        request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in<br />
-            var resultText = ""<br />
-            if(error != nil){<br />
-                resultText = "Invocation failure. "<br />
-                resultText += error.description<br />
-            }<br />
-            else if(response != nil){<br />
-                resultText = "Invocation success. "<br />
-                resultText += response.responseText<br />
-            }<br />
-            self.updateView(resultText)<br />
-        }<br />
+<p>{% highlight swift linenos %}
+request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+    var resultText = ""
+    if(error != nil){
+        resultText = "Invocation failure."
+        resultText += error.description
+    }
+    else if(response != nil){
+        resultText = "Invocation success."
+        resultText += response.responseText
+    }
+    self.updateView(resultText)
+}
 {% endhighlight %}</p>
 <p>For more granular management of the retrieved data (such as non-text responses, PDF, etc), you can use the <code>sendWithDelegate</code> method and provide a delegate that conforms to both the <code>NSURLConnectionDataDelegate</code> and <code>NSURLConnectionDelegate</code> protocols.</p>
 <p>Other signatures, which are not covered in this tutorial, exist for the <code>send</code> method. Those signatures enable you to set parameters in the body instead of the query, or to handle the response with a delegate instead of a completion handler. See the user documentation to learn more.</p>

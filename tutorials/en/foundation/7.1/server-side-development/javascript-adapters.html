@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: JavaScript adapters
+weight: 2
 show_children: true
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 ---
@@ -33,20 +34,20 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 You can apply more filtering to retrieved data by using simple XSLT code.</p>
 <p>JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to use Java in the adapter code.</p>
 <h2 id="xmlStructure">XML structure of JavaScript adapters</h2>
-<p>{% highlight xml linenos %}<br />
-<wl:adapter name="HelloWorld"><br />
-  <displayName /><br />
-  <description /><br />
-  <connectivity><br />
-    <connectionPolicy><br />
-    ...</p>
-<p>    <loadConstraints><br />
-    ...<br />
-  </connectivity><br />
-  <procedure /><br />
-  <procedure /><br />
-  ...<br />
-</wl:adapter><br />
+<p>{% highlight xml linenos %}
+<wl:adapter name="HelloWorld">
+  <displayName />
+  <description />
+  <connectivity>
+    <connectionPolicy>
+    ...
+    <loadConstraints>
+    ...
+  </connectivity>
+  <procedure />
+  <procedure />
+  ...
+</wl:adapter>
 {% endhighlight %}</p>
 <ul>
 <li><code>name:</code> Mandatory. The name of the adapter</li>
@@ -60,20 +61,20 @@ You can apply more filtering to retrieved data by using simple XSLT code.</p>
 </li>
 <li><code>procedure</code>: Declares a service for accessing a back-end application. One entry for each adapter procedure.</li>
 </ul>
-<p>{% highlight xml linenos %}<br />
-<procedure name="procedure1"></procedure><br />
-<procedure name="procedure2"></procedure><br />
+<p>{% highlight xml linenos %}
+<procedure name="procedure1"></procedure>
+<procedure name="procedure2"></procedure>
 {% endhighlight %}</p>
 <h2 id="procedureStructure">Structure of a JavaScript adapter procedure</h2>
 <p>Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.<br />
 The <code>WL.Server</code> API defines a procedure logic in JavaScript.</p>
-<p>{% highlight javascript linenos %}<br />
-function procedure1(param) {<br />
-  return WL.Server.invokeSQLStatement({<br />
-    preparedStatement: procedure1Statement,<br />
-    parameters: [param]<br />
-  });<br />
-}<br />
+<p>{% highlight javascript linenos %}
+function procedure1(param) {
+  return WL.Server.invokeSQLStatement({
+    preparedStatement: procedure1Statement,
+    parameters: [param]
+  });
+}
 {% endhighlight %}</p>
 <h2 id="globalvars">Using global variables</h2>
 <p>Depending on your infrastructure and configuration, your MobileFirst server may be running with <code>SessionIndependent</code> set to true, where each request may reach a different node and HTTP sessions are not used.<br />

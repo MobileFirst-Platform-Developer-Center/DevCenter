@@ -2,13 +2,10 @@
 layout: tutorial
 title: Using Java in JavaScript adapters
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters" target="_blank">Download MobileFirst project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>To learn more about adapters in general, start with the <a href="../../../server-side-development/adapter-framework-overview/" title="Adapters overview">Adapters Overview</a> tutorial.</p>
 <p>When JavaScript is not sufficient to implement required functionality, or if a Java class already exists, you can use Java code as an extension for the JavaScript adapter.</p>
@@ -19,7 +16,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li><a href="#sample">Sample application</a></li>
 </ul>
 <h2 id="addCustom">Adding custom Java classes </h2>
-<p><img src="{{ site.baseurl }}/assets/backup/04_13_project-files.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/04_13_project-files.png" style="float:right" /></p>
 <ol>
 <li>To use an existing Java library, add the JAR file to the <code>server\lib</code> folder of your MobileFirst project.
 <p>After the adapter is built and deployed, this JAR file is automatically deployed to MobileFirst Server.</p>
@@ -33,18 +30,18 @@ This package name can be interpreted as folders: <code>java\com\sample\customcod
 </li>
 <li>Add methods to your <code>Calculator.java</code> class.<br />
 Here is an example of a static method (does not require a new instance) and of an instance method.</p>
-<p>{% highlight java linenos %}<br />
-package com.sample.customcode;</p>
-<p>public class Calculator {</p>
-<p>  // Add two integers.<br />
-  public static int addTwoIntegers(int first, int second){<br />
-    return first + second;<br />
-  }</p>
-<p>  // Subtract two integers.<br />
-  public int subtractTwoIntegers(int first, int second){<br />
-    return first - second;<br />
-  }<br />
-}<br />
+<p>{% highlight java linenos %}
+package com.sample.customcode;
+public class Calculator {
+  // Add two integers.
+  public static int addTwoIntegers(int first, int second){
+    return first + second;
+  }
+  // Subtract two integers.
+  public int subtractTwoIntegers(int first, int second){
+    return first - second;
+  }
+}
 {% endhighlight %}
 </li>
 <li>If your Java code has additional dependencies, put the required JAR files in the <code>server\lib</code> folder of your MobileFirst project.
@@ -54,22 +51,22 @@ package com.sample.customcode;</p>
 <p>After your custom Java code is created and any required JAR files are added, you can reference it from your MobileFirst adapter JavaScript as if it were written in Java.</p>
 <ol>
 <li>Invoke the static Java method as shown, and use the full class name to reference it directly.<br />
-{% highlight javascript linenos %}<br />
-function addTwoIntegers(a,b){<br />
-  return {<br />
-    result: com.sample.customcode.Calculator.addTwoIntegers(a,b)<br />
-  };<br />
-}<br />
+{% highlight javascript linenos %}
+function addTwoIntegers(a,b){
+  return {
+    result: com.sample.customcode.Calculator.addTwoIntegers(a,b)
+  };
+}
 {% endhighlight %}
 </li>
 <li>To use the instance method, create a class instance and invoke the instance method from it.
-<p>{% highlight javascript linenos %}<br />
-function subtractTwoIntegers(a,b){<br />
-  var calcInstance = new com.sample.customcode.Calculator();<br />
-  return {<br />
-    result : calcInstance.subtractTwoIntegers(a,b)<br />
-  };<br />
-}<br />
+<p>{% highlight javascript linenos %}
+function subtractTwoIntegers(a,b){
+  var calcInstance = new com.sample.customcode.Calculator();
+  return {
+    result : calcInstance.subtractTwoIntegers(a,b)
+  };
+}
 {% endhighlight %}
 </li>
 </ol>
