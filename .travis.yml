@@ -1,6 +1,6 @@
 language: ruby
 script:
-  # - "./buildPages.sh" # execute this script on each commit
+  - "./buildPages.sh" # execute this script on each commit
   - "./buildBluemix.sh" # execute this script on each commit
 branches:
   only:
