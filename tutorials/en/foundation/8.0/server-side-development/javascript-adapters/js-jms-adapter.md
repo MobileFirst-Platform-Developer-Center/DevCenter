@@ -143,4 +143,5 @@ Usually, such implementation requires that you copy JAR files to the `server\lib
 
 ### Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.  
+
 By using the attached sample, you can send and read messages to a JMS queue called `MobileFirst`. To run the sample, you need an external JMS library.
