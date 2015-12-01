@@ -8,10 +8,10 @@ fi
 
 # enable error reporting to the console
 set -e
-pwd
 
 ## First, build for GitHub Pages
 # build site with jekyll, by default to `_site' folder
+rm -rf _site/*
 bundle exec jekyll build --config _config.yml,_configBluemix.yml -d _site --profile
 rm -f _site/*.log
 # bundle exec htmlproof ./_site --disable-external --href-ignore '#'
