@@ -2,13 +2,11 @@
 layout: tutorial
 title: Integrating IBM MobileFirst Platform Foundation SDK in Cordova applications
 relevantTo: [cordova]
+weight: 5
+downloads: 
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Cordova
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/Cordova" target="_blank">Download MobileFirst project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p>You can use the IBM MobileFirst Platform Command Line Interface (CLI) to leverage MobileFirst features in Cordova applications. This is made possible by packaging the MobileFirst SDK as a plug-in for Cordova named <code>cordova-plugin-mfp</code>.</p>
 <p>Use this tutorial as a guide to create Cordova applications by using the MobileFirst CLI, add supported platforms to the application, and add MobileFirst features and 3rd-party Cordova plug-ins.<br />
@@ -35,84 +33,84 @@ The tutorial also explains the initialization flow of IBM MobileFirst Platform F
 <h2 id="cordovaCLICommands">Cordova CLI commands</h2>
 <p>You can create a Cordova-based project with the MobileFirst plug-in by using the MobileFirst CLI. For more information about downloading and using the MobileFirst CLI, see the <a href="../../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a> tutorial.</p>
 <p>To see a list of the available Cordova commands, open <strong>Terminal</strong> and run the following command: <code>mfp cordova</code>.</p>
-<p>{% highlight bash %}<br />
-NAME<br />
-     mobilefirst cordova</p>
-<p>SYNOPSIS<br />
-     mfp cordova <command> [options]</p>
-<p>DESCRIPTION<br />
-     IBM MobileFirst Platform Command Line Interface (CLI) for Cordova specific<br />
-     actions.</p>
-<p>     Specific help for each command is available. For example:<br />
-     mfp help cordova create</p>
-<p>GLOBAL COMMANDS<br />
-     config .............................. View or alter configuration settings</p>
-<p>PROJECT COMMANDS<br />
-     cordova create .............................. Creates a new Cordova project<br />
-     cordova emulate .................................. Emulates Cordova project<br />
-     cordova platform ................................ Manages project platforms<br />
-     cordova plugin .................................... Manages project plugins<br />
-     cordova prepare ............................... Prepares a Cordova project<br />
-     cordova preview ......................... Previews existing Cordova project<br />
-     cordova run .......................................... Runs Cordova project</p>
-<p>COMMAND-LINE FLAGS/OPTIONS<br />
-     -v, --version ...............Prints out the version number of this utility<br />
-     -d, --debug ........................Debug mode produces a debug log output<br />
-     -dd, --ddebug ................... Debug mode produces a verbose log output</p>
-<p>EXAMPLE USAGE<br />
-     $ mfp cordova create myapp --platform android<br />
-     $ cd myapp<br />
-     $ mfp cordova preview<br />
-     $ mfp cordova emulate --platform android<br />
+<p>{% highlight bash %}
+NAME
+     mobilefirst cordova
+SYNOPSIS
+     mfp cordova <command> [options]
+DESCRIPTION
+     IBM MobileFirst Platform Command Line Interface (CLI) for Cordova specific
+     actions.
+     Specific help for each command is available. For example:
+     mfp help cordova create
+GLOBAL COMMANDS
+     config .............................. View or alter configuration settings
+PROJECT COMMANDS
+     cordova create .............................. Creates a new Cordova project
+     cordova emulate .................................. Emulates Cordova project
+     cordova platform ................................ Manages project platforms
+     cordova plugin .................................... Manages project plugins
+     cordova prepare ............................... Prepares a Cordova project
+     cordova preview ......................... Previews existing Cordova project
+     cordova run .......................................... Runs Cordova project
+COMMAND-LINE FLAGS/OPTIONS
+     -v, --version ...............Prints out the version number of this utility
+     -d, --debug ........................Debug mode produces a debug log output
+     -dd, --ddebug ................... Debug mode produces a verbose log output
+EXAMPLE USAGE
+     $ mfp cordova create myapp --platform android
+     $ cd myapp
+     $ mfp cordova preview
+     $ mfp cordova emulate --platform android
 {% endhighlight %}</p>
 <h2 id="creatingCordovaProject">Creating a Cordova project</h2>
 <p>To create a Cordova application, run the command: <code>mfp cordova create</code>.<br />
 You can use either the Interactive Mode as detailed below, or the Direct Mode (see <code>mfp help cordova create</code>).</p>
 <ol>
 <li>Enter the application name, package ID, application version, and desired platforms:</li>
-<p>{% highlight bash %}<br />
-[?] Enter name of app: MyCordovaApp<br />
-[?] Enter the package ID: (com.ibm.MyCordovaApp)<br />
-[?] Enter the app version: (1.0.0)<br />
-[?] Select platforms to be supported by your app: (Press <space> to select)<br />
- ❯⬢ android<br />
-  ⬢ ios<br />
+<p>{% highlight bash %}
+[?] Enter name of app: MyCordovaApp
+[?] Enter the package ID: (com.ibm.MyCordovaApp)<
+[?] Enter the app version: (1.0.0)
+[?] Select platforms to be supported by your app: (Press <space> to select)
+ ❯⬢ android
+  ⬢ ios
 {% endhighlight %}</p>
 <li>A default set of Cordova plug-ins, including <code>cordova-plugin-mfp</code>, are automatically added to the application. You can also add additional standard Cordova plug-ins.</li>
-<p>{% highlight bash %}<br />
+<p>{% highlight bash %}
 [?] The following plugins are automatically added to your app:<br />
-cordova-plugin-mfp<br />
-org.apache.cordova.device<br />
-org.apache.cordova.dialogs<br />
-org.apache.cordova.geolocation<br />
-org.apache.cordova.globalization<br />
-org.apache.cordova.inappbrowser<br />
-org.apache.cordova.network-information</p>
-<p>Please press enter to continue...</p>
-<p>[?] Select additional plugins you would like to add:<br />
- ❯⬡ cordova-plugin-mfp-jsonstore<br />
-  ⬡ cordova-plugin-mfp-push<br />
-  ⬡ org.apache.cordova.battery-status<br />
-  ⬡ org.apache.cordova.camera<br />
-  ⬡ org.apache.cordova.console<br />
-  ⬡ org.apache.cordova.contacts<br />
-  ⬡ org.apache.cordova.device-motion<br />
-  ⬡ org.apache.cordova.device-orientation<br />
-  ⬡ org.apache.cordova.file<br />
-  ⬡ org.apache.cordova.file-transfer<br />
-  ⬡ org.apache.cordova.media<br />
-  ⬡ org.apache.cordova.media-capture<br />
-  ⬡ org.apache.cordova.splashscreen<br />
-  ⬡ org.apache.cordova.statusbar<br />
-  ⬡ org.apache.cordova.vibration<br />
+cordova-plugin-mfp
+org.apache.cordova.device
+org.apache.cordova.dialogs
+org.apache.cordova.geolocation
+org.apache.cordova.globalization
+org.apache.cordova.inappbrowser
+org.apache.cordova.network-information
+Please press enter to continue...
+[?] Select additional plugins you would like to add:
+ ❯⬡ cordova-plugin-mfp-jsonstore
+  ⬡ cordova-plugin-mfp-push
+  ⬡ org.apache.cordova.battery-status
+  ⬡ org.apache.cordova.camera
+  ⬡ org.apache.cordova.console
+  ⬡ org.apache.cordova.contacts
+  ⬡ org.apache.cordova.device-motion
+  ⬡ org.apache.cordova.device-orientation
+  ⬡ org.apache.cordova.file
+  ⬡ org.apache.cordova.file-transfer
+  ⬡ org.apache.cordova.media
+  ⬡ org.apache.cordova.media-capture
+  ⬡ org.apache.cordova.splashscreen
+  ⬡ org.apache.cordova.statusbar
+  ⬡ org.apache.cordova.vibration
 {% endhighlight %}</p>
 <li>You can use an application template for your project. The CLI provides the default template <em>cordova-hello-world-mfp</em>. You can create your own repository of app templates to speed up your development process and point the path to the application template that you want to use.</li>
-<p>{% highlight bash %}<br />
-[?] Enter a path to an app template to be added: (cordova-hello-world-mfp)<br />
+<p>{% highlight bash %}
+[?] Enter a path to an app template to be added: (cordova-hello-world-mfp)
 {% endhighlight %}</p>
 <blockquote><p>To learn more about Cordova application templates, see the topic about developing Cordova client apps, in the user documentation.</p></blockquote>
 <li>The Cordova project is generated with the selected platforms and plug-ins.</li>
-<p><img src="{{ site.baseurl }}/assets/backup/cordova-app-1024x560.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/cordova-app-1024x560.png" style="width: 55%"/></p>
 </ol>
 <h2 id="cordovaProjectStructure">Cordova project structure</h2>
 <p>After the Cordova project is created, the following files and folders are generated. This project structure follows the standard Cordova project structure:</p>
@@ -129,67 +127,67 @@ org.apache.cordova.network-information</p>
 <h2 id="mobileFirstPlatformInitializationFlow">MobileFirst Platform initialization flow</h2>
 <p>The initialization flow is similar to the flow of a MobileFirst Hybrid app. During initialization, the MobileFirst Cordova Plugin runs <code>WL.Client.init(wlInitOptions)</code>. After initialization completes, the function <code>wlCommonInit()</code> is called.</p>
 <p>The <code>wlInitOptions</code> object and the <code>wlCommonInit</code> function are available inside the <code>index.js</code> file, which is part of the <em>cordova-hello-world-mfp</em> template. You can use the standard Cordova <code>deviceready</code> event to handle Cordova initialization, but the function <code>wlCommonInit</code> is the recommended way to identify that MobileFirst features are ready to be used.</p>
-<p>{% highlight js linenos %}<br />
-var Messages = {<br />
-    // Add here your messages for the default language.<br />
-    // Generate a similar file with a language suffix containing the translated messages.<br />
-    // key1 : message1,<br />
-};</p>
-<p>var wlInitOptions = {<br />
-    // Options to initialize with the WL.Client object.<br />
-    // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.<br />
-};</p>
-<p>// Called automatically after MFP framework initialization by WL.Client.init(wlInitOptions).<br />
-function wlCommonInit(){<br />
-	// Common initialization code goes here<br />
-    document.getElementById('app_version').innerText = WL.Client.getAppProperty("APP_VERSION");<br />
-    document.getElementById('mobilefirst').setAttribute('style', 'display:block;');<br />
-}</p>
-<p>var app = {<br />
-    // Application Constructor<br />
-    initialize: function() {<br />
-        this.bindEvents();<br />
-    },</p>
-<p>    // Bind any events that are required on startup. Common events are:<br />
-    // 'load', 'deviceready', 'offline', and 'online'.<br />
-    bindEvents: function() {<br />
-        document.addEventListener('deviceready', this.onDeviceReady, false);<br />
-    },</p>
-<p>    // The scope of 'this' is the event. In order to call the 'receivedEvent'<br />
-    // function, 'app.receivedEvent(...);' must be explicitly called.<br />
-    onDeviceReady: function() {<br />
-        app.receivedEvent('deviceready');<br />
-    },</p>
-<p>    // Update the DOM on a received event.<br />
-    receivedEvent: function(id) {<br />
-        var parentElement = document.getElementById(id);<br />
-        var listeningElement = parentElement.querySelector('.listening');<br />
-        var receivedElement = parentElement.querySelector('.received');</p>
-<p>        listeningElement.setAttribute('style', 'display:none;');<br />
-        receivedElement.setAttribute('style', 'display:block;');</p>
-<p>        console.log('Received Event: ' + id);<br />
-    }<br />
-};</p>
-<p>app.initialize();<br />
+<p>{% highlight js linenos %}
+var Messages = {
+    // Add here your messages for the default language.
+    // Generate a similar file with a language suffix containing the translated messages.
+    // key1 : message1,
+};
+var wlInitOptions = {
+    // Options to initialize with the WL.Client object.
+    // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.
+};
+// Called automatically after MFP framework initialization by WL.Client.init(wlInitOptions).
+function wlCommonInit(){
+	// Common initialization code goes here
+    document.getElementById('app_version').innerText = WL.Client.getAppProperty("APP_VERSION");
+    document.getElementById('mobilefirst').setAttribute('style', 'display:block;');
+}
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, 'app.receivedEvent(...);' must be explicitly called.
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update the DOM on a received event.
+    receivedEvent: function(id) {
+        var parentElement = document.getElementById(id);
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+        console.log('Received Event: ' + id);
+    }
+};
+<p>app.initialize();
 {% endhighlight %}</p>
 <h2 id="previewWebResources">Previewing the applications web resources</h2>
 <p>You might want to preview the web resources of your application outside any specific platform, for example to debug common JavaScript logic.</p>
 <p>Before you can preview application web resources, you must have a MobileFirst Development Server running. If a MobileFirst Server instance is not yet available, use the <code>mfp create</code> command to setup a new MobileFirst back-end project, followed by the <code>mfp start</code> command to initialize MobileFirst Server.</p>
-<p>{% highlight bash %}<br />
-mfp create MyMFPProject<br />
-cd MyMFPProject<br />
-mfp start<br />
+<p>{% highlight bash %}
+mfp create MyMFPProject
+cd MyMFPProject
+mfp start
 {% endhighlight %}</p>
 <p>When previewing the Cordova app, you can make selections by using either the MobileFirst Operations Console Simple Browser Rendering, or Mobile Browser Simulator.<br />
 After MobileFirst Server is started, navigate to the Cordova application folder and use the <code>mfp cordova preview</code> command to preview the application:</p>
-<p>{% highlight bash %}<br />
-mfp cordova preview<br />
-[?] Select how to preview your app: (Use arrow keys)<br />
-❯ browser: Simple browser rendering<br />
-  mbs: Mobile Browser Simulator</p>
-<p>[?] Select platform(s) to be previewed: (Press <space> to select)<br />
-❯⬡ ios<br />
- ⬡ android<br />
+<p>{% highlight bash %}
+mfp cordova preview
+[?] Select how to preview your app: (Use arrow keys)
+❯ browser: Simple browser rendering
+  mbs: Mobile Browser Simulator
+[?] Select platform(s) to be previewed: (Press <space> to select)
+❯⬡ ios
+ ⬡ android
 {% endhighlight %}</p>
 <h2 id="testingAnApplication">Testing an application on an emulator or device</h2>
 <p>To run the application by using the Android Emulator or the iOS Simulator, use the <code>emulate</code> command:<br />
@@ -197,31 +195,34 @@ mfp cordova preview<br />
 <p>Alternately, you can plug a device into your computer and test the app directly on it by using the <code>run</code> command:<br />
 {% highlight bash %}mfp cordova run{% endhighlight %}</p>
 <p><strong>Note:</strong> If you do not have a device plugged and execute the <code>run</code> command, this command starts an emulator/simulator, so that the behavior is the same as that of the <code>emulate</code> command.</p>
-<p>{% highlight bash %}<br />
-[?] What platforms do you want to run on? (Use arrow keys)<br />
-   android<br />
- ❯ ios<br />
+<p>{% highlight bash %}
+[?] What platforms do you want to run on? (Use arrow keys)
+   android
+ ❯ ios
 {% endhighlight %}</p>
 <p><img src="{{ site.baseurl }}/assets/backup/cordova-preview-e1437034704442.jpg" /></p>
 <h2 id="managingCordovaPlatforms">Managing Cordova platforms</h2>
 <p>You can manage the available platforms in the Cordova project by using the <code>platform</code> command: <code>mfp cordova platform [option]</code>.</p>
 <ul>
 <li>Add a new platform to Cordova app: <code>mfp cordova platform add</code><br />
-{% highlight bash %}mfp cordova platform add<br />
-[?] Select platforms to be supported by your app: (Press <space> to select)<br />
- ❯⬡ android<br />
-  ⬡ ios<br />
+{% highlight bash %}
+mfp cordova platform add<
+[?] Select platforms to be supported by your app: (Press <space> to select)
+ ❯⬡ android
+  ⬡ ios
 {% endhighlight %}
 </li>
 <li>List available platforms in Cordova app: <code>mfp cordova platform list</code><br />
-{% highlight bash %}mfp cordova platform list<br />
-Installed Platforms: ios 3.7.0<br />
-Available Platforms: android<br />
+{% highlight bash %}
+mfp cordova platform list
+Installed Platforms: ios 3.7.0
+Available Platforms: android
 {% endhighlight %}</li>
 <li>Remove a platform: <code>mfp cordova platform remove</code><br />
-{% highlight bash %}mfp cordova platform remove<br />
-[?] Select the configured platform(s) to remove from this app: (Press <space> to select)<br />
- ❯⬡ ios 3.7.0<br />
+{% highlight bash %}
+mfp cordova platform remove
+[?] Select the configured platform(s) to remove from this app: (Press <space> to select)
+ ❯⬡ ios 3.7.0
 {% endhighlight %}
 </li>
 <li>Update Cordova assets for each platform in Cordova app: <code>mfp cordova platform update</code></li>
@@ -231,45 +232,45 @@ Available Platforms: android<br />
 <p>{% highlight bash %}mfp cordova plugin [option]{% endhighlight %}</p>
 <ul>
 <li>Add<br />
-        {% highlight bash %}<br />
-[?] Select plugins(s) to be added to your app: (Press <space> to select)<br />
- ❯⬡ cordova-plugin-mfp-jsonstore<br />
-  ⬡ org.apache.cordova.battery-status<br />
-  ⬡ org.apache.cordova.camera<br />
-  ⬡ org.apache.cordova.console<br />
-  ⬡ org.apache.cordova.contacts<br />
-  ⬡ org.apache.cordova.device-motion<br />
-  ⬡ org.apache.cordova.device-orientation<br />
-  ⬡ org.apache.cordova.file<br />
-  ⬡ org.apache.cordova.file-transfer<br />
-  ⬡ org.apache.cordova.media<br />
-  ⬡ org.apache.cordova.media-capture<br />
-  ⬡ org.apache.cordova.splashscreen<br />
-  ⬡ org.apache.cordova.statusbar<br />
-  ⬡ org.apache.cordova.vibration<br />
-  ⬡ Add 3rd party plugin<br />
+{% highlight bash %}
+[?] Select plugins(s) to be added to your app: (Press <space> to select)
+ ❯⬡ cordova-plugin-mfp-jsonstore
+  ⬡ org.apache.cordova.battery-status
+  ⬡ org.apache.cordova.camera
+  ⬡ org.apache.cordova.console
+  ⬡ org.apache.cordova.contacts
+  ⬡ org.apache.cordova.device-motion
+  ⬡ org.apache.cordova.device-orientation
+  ⬡ org.apache.cordova.file
+  ⬡ org.apache.cordova.file-transfer
+  ⬡ org.apache.cordova.media
+  ⬡ org.apache.cordova.media-capture
+  ⬡ org.apache.cordova.splashscreen
+  ⬡ org.apache.cordova.statusbar
+  ⬡ org.apache.cordova.vibration
+  ⬡ Add 3rd party plugin
 {% endhighlight %}</li>
-<li>List<br />
-{% highlight bash %}<br />
-cordova-plugin-mfp 7.1.0 "IBM MobileFirst Platform Foundation"<br />
-org.apache.cordova.device 0.2.13 "Device"<br />
-org.apache.cordova.dialogs 0.2.11 "Notification"<br />
-org.apache.cordova.geolocation 0.3.11 "Geolocation"<br />
-org.apache.cordova.globalization 0.3.3 "Globalization"<br />
-org.apache.cordova.inappbrowser 0.5.4 "InAppBrowser"<br />
-org.apache.cordova.network-information 0.2.14 "Network Information"<br />
+<li>List
+{% highlight bash %}
+cordova-plugin-mfp 7.1.0 "IBM MobileFirst Platform Foundation"
+org.apache.cordova.device 0.2.13 "Device"
+org.apache.cordova.dialogs 0.2.11 "Notification"
+org.apache.cordova.geolocation 0.3.11 "Geolocation"
+org.apache.cordova.globalization 0.3.3 "Globalization"
+org.apache.cordova.inappbrowser 0.5.4 "InAppBrowser"
+org.apache.cordova.network-information 0.2.14 "Network Information"
 {% endhighlight %}</li>
-<li>Remove<br />
-{% highlight bash %}<br />
-mfp cordova plugin remove org.apache.cordova.camera<br />
+<li>Remove
+{% highlight bash %}
+mfp cordova plugin remove org.apache.cordova.camera
 {% endhighlight %}</li>
-<li>Search<br />
-{% highlight bash %}<br />
-mfp cordova plugin search barcode<br />
+<li>Search
+{% highlight bash %}
+mfp cordova plugin search barcode
 {% endhighlight %}</li>
-<li>Update<br />
-{% highlight bash %}<br />
-mfp cordova plugin update<br />
+<li>Update
+{% highlight bash %}
+mfp cordova plugin update
 {% endhighlight %}</li>
 </ul>
 <h2 id="registeringApplications">Registering applications</h2>
@@ -281,14 +282,16 @@ mfp cordova plugin update<br />
 <p>It is also possible to register an application to an existing remote MobileFirst Server, such as a QA, UAT, preproduction or production server. The <code>mfp push</code> command can be used with the remote server name specified.</p>
 <p>Create a remote server definition by using the command: <code>mfp server add</code>.<br />
 You are prompted to provide a name, a fully qualified server address (<code>protocol://host-or-ip-address:port</code>), admin username and password, and additional details.</p>
-<p>{% highlight bash %}mfp server add<br />
-[?] Enter name of new server definition: myserver<br />
-[?] Enter the fully qualified URL of this server: http://192.168.0.1:10080<br />
-[?] Enter the MFP admin login id: admin<br />
-[?] Enter the MFP admin password: *****<br />
-[?] Save admin password for this server?: No<br />
-[?] Enter the context root of the MobileFirst administration services: worklightadmin<br />
-[?] Make this server the default?: (Y/n) n{% endhighlight %}</p>
+<p>{% highlight bash %}
+mfp server add
+[?] Enter name of new server definition: myserver
+[?] Enter the fully qualified URL of this server: http://192.168.0.1:10080
+[?] Enter the MFP admin login id: admin
+[?] Enter the MFP admin password: *****
+[?] Save admin password for this server?: No
+[?] Enter the context root of the MobileFirst administration services: worklightadmin
+[?] Make this server the default?: (Y/n) n
+{% endhighlight %}</p>
 <p>To push to the newly defined remote server, run the command: <code> mfp push <em>myserver</em></code>.<br />
 The <code>push</code> command connects to the server and retrieves the list of available back-end projects to be selected.</p>
 <p>After pushing an application to the remote server, the application configuration (w<code>orklight.plist</code>/<code>wlclient.properties</code>, <code>config.xml</code> files) are updated to point to the remote server as the back-end server for the app.</p>
@@ -352,129 +355,129 @@ The <code>push</code> command connects to the server and retrieves the list of a
 <h4>Add the Vibration and Camera Plug-ins</h4>
 </li>
 <p>To add the Cordova Vibration and Camera plug-ins to the Cordova project, run the following commands:</p>
-<p>{% highlight bash %}<br />
-mfp cordova plugin add org.apache.cordova.vibration<br />
-mfp cordova plugin add org.apache.cordova.camera<br />
-{% endhighlight %}<br />
+<p>{% highlight bash %}
+mfp cordova plugin add org.apache.cordova.vibration
+mfp cordova plugin add org.apache.cordova.camera
+{% endhighlight %}
 Optionally, you can run the interactive command <code>mfp cordova plugin add</code> and select the vibration and camera plugins from the list presented.</p>
 <li>
 <h4>Edit the index.html file</h4>
 </li>
 <p>Edit the <code><em>your-app-name</em>/www/index.html</code> file to add the three buttons: <strong>VIBRATE</strong>, <strong>CAMERA</strong>, and <strong>RSS FEED</strong>, a list to present the results from RSS FEED, and an image to present the result from the camera plug-in:</p>
-<p>{% highlight html linenos %}<br />
-<body><br />
-     <div id="menu" ><br />
-        <img id="image" /><br />
-        <a onclick="app.vibrate()">VIBRATE</a><br />
-        <a onclick="app.getPicture()">CAMERA</a><br />
-        <a onclick="app.getRSSFeed()">RSS FEED</a><br />
-        <div id="div_rss"><br />
-          <h1>RSS FEED ITEMS</h1><br />
-          <ul id="list_rss"></ul><br />
-        </div><br />
-      </div><br />
-</body><br />
+<p>{% highlight html linenos %}
+<body>
+    <div id="menu" >
+        <img id="image" />
+        <a onclick="app.vibrate()">VIBRATE</a>
+        <a onclick="app.getPicture()">CAMERA</a>
+        <a onclick="app.getRSSFeed()">RSS FEED</a>
+        <div id="div_rss">
+            <h1>RSS FEED ITEMS</h1>
+            <ul id="list_rss"></ul>
+        </div>
+    </div>
+</body>
 {% endhighlight %}</p>
 <li>
 <h4>Edit the index.css file</h4>
 <p>Edit the file <code><em>your-app-name</em>/www/css/index.css</code> to update the visual of the app.</p>
-<p>{% highlight css linenos %}<br />
-body {<br />
-  position: absolute;<br />
-  height: 100%;<br />
-  width: 100%;<br />
-  text-align: right;<br />
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;<br />
-  font-weight: 300;<br />
-  background: url(../img/bg-portrait.png);<br />
-  background-size: cover;<br />
-  background-repeat: no-repeat;<br />
-  overflow: auto;<br />
-}<br />
-body, p, div{<br />
-  margin: 0;<br />
-}<br />
-p {<br />
-  padding-right: 5px;<br />
-}<br />
-div {<br />
-  position: relative;<br />
-  margin-right: 20px;<br />
-  margin-left: 20px;<br />
-  padding-right: 2px;<br />
-  clear: both;<br />
-  display:block;<br />
-}<br />
-a{<br />
-  display:block;<br />
-  font-size: 20px;<br />
-  text-transform: none;<br />
-  background-color:#00B2EF;<br />
-  color:#FFFFFF;<br />
-  margin-bottom: 10px;<br />
-  margin-top: 2px;<br />
-  padding-right: 5px;<br />
-}<br />
-li {<br />
-  font-size:15px;<br />
-  border-bottom: 1px solid #ccc;<br />
-  text-align: center;<br />
-}</p>
-<p>.version_label {<br />
-  font-weight: bold;<br />
-  background-color:#FFFFFF;<br />
-}<br />
-#app_version {<br />
-  padding-left: 2px;<br />
-}<br />
-#deviceready {<br />
-  width: 160px;<br />
-}<br />
-#image{<br />
-  width: 140px;<br />
-}<br />
-#menu {<br />
-  top: 50%;<br />
-}<br />
-#div_rss{<br />
-  display: none;<br />
-  text-align: center;<br />
-}<br />
-.blink {<br />
-    animation:fade 3000ms infinite;<br />
-    -webkit-animation:fade 3000ms infinite;<br />
-    -moz-animation:fade 3000ms infinite;<br />
-}<br />
-@-webkit-keyframes fade {<br />
-    from { opacity: 1.0; }<br />
-    50% { opacity: 0.4; }<br />
-    to { opacity: 1.0; }<br />
-}<br />
-@keyframes fade {<br />
-    from { opacity: 1.0; }<br />
-    50% { opacity: 0.4; }<br />
-    to { opacity: 1.0; }<br />
-}<br />
-.event {<br />
-    color:#FFFFFF;<br />
-}<br />
-.listening {<br />
-    background-color:#333333;<br />
-    display:block;<br />
-}<br />
-.received {<br />
-    background-color:#4B946A;<br />
-    display:none;<br />
-}<br />
-/* Landscape layout (with min-width) */<br />
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {<br />
-  body {<br />
-    background: url(../img/bg-landscape.png);<br />
-    background-size: cover;<br />
-    background-repeat: no-repeat;<br />
-    max-height: 400px;<br />
-  }<br />
-}<br />
+<p>{% highlight css linenos %}
+body {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: right;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  background: url(../img/bg-portrait.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: auto;
+}
+body, p, div{
+  margin: 0;
+}
+p {
+  padding-right: 5px;
+}
+div {
+  position: relative;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding-right: 2px;
+  clear: both;
+  display:block;
+}
+a{
+  display:block;
+  font-size: 20px;
+  text-transform: none;
+  background-color:#00B2EF;
+  color:#FFFFFF;
+  margin-bottom: 10px;
+  margin-top: 2px;
+  padding-right: 5px;
+}
+li {
+  font-size:15px;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+}
+.version_label {
+  font-weight: bold;
+  background-color:#FFFFFF;
+}
+#app_version {
+  padding-left: 2px;
+}
+#deviceready {
+  width: 160px;
+}
+#image{
+  width: 140px;
+}
+#menu {
+  top: 50%;
+}
+#div_rss{
+  display: none;
+  text-align: center;
+}
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+    -moz-animation:fade 3000ms infinite;
+}
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+.event {
+    color:#FFFFFF;
+}
+.listening {
+    background-color:#333333;
+    display:block;
+}
+.received {
+    background-color:#4B946A;
+    display:none;
+}
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+  body {
+    background: url(../img/bg-landscape.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-height: 400px;
+  }
+}
 {% endhighlight %}</p>
 </li>
 <li>
@@ -486,78 +489,78 @@ li {<br />
 <li>For the <strong>CAMERA</strong> button, use the function <code>navigator.camera.getPicture(onSuccess,onFailure,options)</code> to open the camera.</li>
 <li>For the <strong>RSS FEED</strong> button, use the <code>WLResourceRequest</code> API method to call the adapter procedure <code>getStories</code>, as described in the <a href="../../server-side-development/invoking-adapter-procedures-hybrid-client-applications/" target="_blank">Invoking adapter procedures from hybrid client applications</a> tutorial.</li>
 </ul>
-<p>{% highlight js linenos %}<br />
-var Messages = {<br />
-    // Add here your messages for the default language.<br />
-    // Generate a similar file with a language suffix containing the translated messages.<br />
-    // key1 : message1,<br />
-};</p>
-<p>var wlInitOptions = {<br />
-    // Options to initialize with the WL.Client object.<br />
-    // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.<br />
-};</p>
-<p>// Called automatically after MFP framework initialization by WL.Client.init(wlInitOptions).<br />
-function wlCommonInit(){<br />
-	// Common initialization code goes here<br />
-    document.getElementById('menu').setAttribute('style', 'display:block;');<br />
-}</p>
-<p>var app = {<br />
-    // Application Constructor<br />
-    initialize: function() {<br />
-        this.bindEvents();<br />
-    },</p>
-<p>    // Bind any events that are required on startup. Common events are:<br />
-    // 'load', 'deviceready', 'offline', and 'online'.<br />
-    bindEvents: function() {<br />
-        document.addEventListener('deviceready', this.onDeviceReady, false);<br />
-    },</p>
-<p>    // The scope of 'this' is the event. In order to call the 'receivedEvent'<br />
-    // function, 'app.receivedEvent(...);' must be explicitly called.<br />
-    onDeviceReady: function() {<br />
-        app.receivedEvent('deviceready');<br />
-    },</p>
-<p>    // Update the DOM on a received event.<br />
-    receivedEvent: function(id) {<br />
-    },<br />
-    // Trigger the vibration<br />
-    vibrate: function(){<br />
-        WL.Logger.info("vibrating");<br />
-        navigator.vibrate(3000);<br />
-    },<br />
-    // Trigger the camera<br />
-    getPicture: function(){<br />
-        navigator.camera.getPicture(app.getPictureSuccess, app.getPictureFail, { quality: 50,<br />
-            destinationType: Camera.DestinationType.FILE_URI });<br />
-    },<br />
-    // Receive the result from the camera<br />
-    getPictureSuccess: function(imageURI){<br />
-        WL.Logger.info("getPicture success "+imageURI);<br />
-        document.getElementById("image").src=imageURI;<br />
-    },<br />
-    // Called when some error occur with the camera<br />
-    getPictureFail: function(){<br />
-        WL.Logger.error("getPicture failed");<br />
-    },<br />
-    // Execute a request to RSSAdapter/getStories<br />
-    getRSSFeed: function(){<br />
-        var resourceRequest = new WLResourceRequest(<br />
-                    "/adapters/RSSAdapter/getStories",<br />
-                    WLResourceRequest.GET);<br />
-        resourceRequest.send().then(app.getRSSFeedSuccess,app.getRSSFeedError);<br />
-    },<br />
-    // Receive the response from RSSAdapter<br />
-    getRSSFeedSuccess:function(response){<br />
-        WL.Logger.info("getRSSFeedsSuccess");<br />
-        //The response.responseJSON element contains the data received from the back-end<br />
-        alert("Total RSS Feed items received:"+response.responseJSON.rss.channel.item.length);<br />
-    },<br />
-    // Called when some error occurs during the request to RSSAdapter<br />
-    getRSSFeedError:function(response){<br />
-        WL.Logger.error("Response ERROR:"+JSON.stringify(response));<br />
-        alert("Response ERROR:"+JSON.stringify(response));<br />
-    }<br />
-};</p>
-<p>app.initialize();<br />
+<p>{% highlight js linenos %}
+var Messages = {
+    // Add here your messages for the default language.
+    // Generate a similar file with a language suffix containing the translated messages.
+    // key1 : message1,
+};
+var wlInitOptions = {
+    // Options to initialize with the WL.Client object.
+    // For initialization options please refer to IBM MobileFirst Platform Foundation Knowledge Center.
+};
+// Called automatically after MFP framework initialization by WL.Client.init(wlInitOptions).
+function wlCommonInit(){
+	// Common initialization code goes here
+    document.getElementById('menu').setAttribute('style', 'display:block;');
+}
+var app = {
+    // Application Constructor
+    initialize: function() {
+        this.bindEvents();
+    },
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function() {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, 'app.receivedEvent(...);' must be explicitly called.
+    onDeviceReady: function() {
+        app.receivedEvent('deviceready');
+    },
+    // Update the DOM on a received event.
+    receivedEvent: function(id) {
+    },
+    // Trigger the vibration
+    vibrate: function(){
+        WL.Logger.info("vibrating");
+        navigator.vibrate(3000);
+    },
+    // Trigger the camera
+    getPicture: function(){
+        navigator.camera.getPicture(app.getPictureSuccess, app.getPictureFail, { quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI });
+    },
+    // Receive the result from the camera
+    getPictureSuccess: function(imageURI){
+        WL.Logger.info("getPicture success "+imageURI);
+        document.getElementById("image").src=imageURI;
+    },
+    // Called when some error occur with the camera
+    getPictureFail: function(){
+        WL.Logger.error("getPicture failed");
+    },
+    // Execute a request to RSSAdapter/getStories
+    getRSSFeed: function(){
+        var resourceRequest = new WLResourceRequest(
+                    "/adapters/RSSAdapter/getStories",
+                    WLResourceRequest.GET);
+        resourceRequest.send().then(app.getRSSFeedSuccess,app.getRSSFeedError);
+    },
+    // Receive the response from RSSAdapter
+    getRSSFeedSuccess:function(response){
+        WL.Logger.info("getRSSFeedsSuccess");
+        //The response.responseJSON element contains the data received from the back-end
+        alert("Total RSS Feed items received:"+response.responseJSON.rss.channel.item.length);
+    },
+    // Called when some error occurs during the request to RSSAdapter
+    getRSSFeedError:function(response){
+        WL.Logger.error("Response ERROR:"+JSON.stringify(response));
+        alert("Response ERROR:"+JSON.stringify(response));
+    }
+};
+app.initialize();
 {% endhighlight %}</p>
 <li>
 <h4>Create a MobileFirst Project and adapter</h4>
