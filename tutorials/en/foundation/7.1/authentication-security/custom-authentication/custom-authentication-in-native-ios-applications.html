@@ -2,19 +2,15 @@
 layout: tutorial
 title: Custom Authentication in native iOS applications
 relevantTo: [ios]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomAuth
+  - name: Download Obj-C project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomAuthObjC
+  - name: Download Swift project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomAuthSwift
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/CustomAuth" target="_blank">Download MobileFirst project</a>
-        </li>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/CustomAuthObjC" target="_blank">Download Objective-C project</a>
-        </li>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/CustomAuthSwift" target="_blank">Download Swift project</a>
-        </li>
-</ul>
-<br>
+<h2>Overview</h2>
 This tutorial explains how to implement the client side of a custom authentication in native iOS.<br />
 <strong>Prerequisite:</strong> Make sure that you read the <a title="Custom Authentication" href="../">Custom Authentication</a> tutorial first.</p>
 <h2>Implementing client-side authentication</h2>
@@ -25,45 +21,45 @@ This tutorial explains how to implement the client side of a custom authenticati
 <h3>Challenge handler</h3>
 <ol>
 <li>Create a <code>MyChallengeHandler</code> class as a subclass of <code>ChallengeHandler</code>.<br />
-{% highlight objc linenos %}<br />
-@interface MyChallengeHandler : ChallengeHandler<br />
+{% highlight objc linenos %}
+@interface MyChallengeHandler : ChallengeHandler
 {% endhighlight %}
 </li>
 <li>Call the <code>initWithRealm</code> method:<br />
-{% highlight objc linenos %}<br />
-@implementation MyChallengeHandler<br />
-//...<br />
--(id)init:{<br />
-    self = [self initWithRealm:@"CustomAuthenticatorRealm"];<br />
-    return self;<br />
-}<br />
+{% highlight objc linenos %}
+@implementation MyChallengeHandler
+//...
+-(id)init:{
+    self = [self initWithRealm:@"CustomAuthenticatorRealm"];
+    return self;
+}=
 {% endhighlight %}
 </li>
 <li>Add the implementation of the following <code>ChallengeHandler</code> methods to handle the custom authenticator and login module challenge:
 <ol>
 <li> <strong><code>isCustomResponse</code> method:</strong><br />
 The <code>isCustomResponse</code> method is invoked each time a response is received from the MobileFirst Server. It is used to detect whether the response contains data that is related to this challenge handler. It must return either <code>true</code> or <code>false</code>.</p>
-<p>{% highlight objc linenos %}<br />
--(BOOL) isCustomResponse:(WLResponse *)response {<br />
-    if(response &amp;&amp; [response getResponseJson]){<br />
-        if ([[response getResponseJson] objectForKey:@"authStatus"]) {<br />
-            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@"authStatus"];<br />
-            return ([authRequired compare:@"required"] == NSOrderedSame);<br />
-        }<br />
-    }<br />
-    return false;<br />
-}<br />
+<p>{% highlight objc linenos %}
+-(BOOL) isCustomResponse:(WLResponse *)response {
+    if(response &amp;&amp; [response getResponseJson]){
+        if ([[response getResponseJson] objectForKey:@"authStatus"]) {
+            NSString* authRequired = (NSString*) [[response getResponseJson] objectForKey:@"authStatus"];
+            return ([authRequired compare:@"required"] == NSOrderedSame);
+        }
+    }
+    return false;
+}
 {% endhighlight %}
 </li>
 <li> <strong><code>handleChallenge</code> method:</strong><br />
 If <code>isCustomResponse</code> returns <code>true</code>, the framework calls the <code>handleChallenge</code> method. This function is used to perform required actions, such as hiding the application screen and showing the login screen.</p>
-<p>{% highlight objc linenos %}<br />
--(void) handleChallenge:(WLResponse *)response {<br />
-    NSLog(@"A login form should appear");<br />
-    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];<br />
-    loginController.challengeHandler = self;<br />
-    [self.vc.navigationController pushViewController:loginController animated:YES];<br />
-}<br />
+<p>{% highlight objc linenos %}
+-(void) handleChallenge:(WLResponse *)response {
+    NSLog(@"A login form should appear");
+    LoginViewController* loginController = [self.vc.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    loginController.challengeHandler = self;
+    [self.vc.navigationController pushViewController:loginController animated:YES];
+}
 {% endhighlight %}
 </li>
 <li><strong><code>onSuccess</code> and <code>onFailure</code> methods: </strong><br />
@@ -72,16 +68,16 @@ At the end of the authentication flow, calls to the <code>onSuccess</code> or <c
 <li>Call the <code>submitSuccess</code> method to inform the framework that the authentication process completed successfully, so that the <code>onSuccess</code> handler of the invocation is called.</li>
 <li>Call the <code>submitFailure</code> method to inform the framework that the authentication process failed, so that the <code>onFailure</code> handler of the invocation is called.</li>
 </ul>
-<p>{% highlight objc linenos %}<br />
--(void) onSuccess:(WLResponse *)response {<br />
-    NSLog(@"Challenge succeeded");<br />
-    [self.vc.navigationController popViewControllerAnimated:YES];<br />
-    [self submitSuccess:response];<br />
-}</p>
-<p>-(void) onFailure:(WLFailResponse *)response {<br />
-    NSLog(@"Challenge failed");<br />
-    [self submitFailure:response];<br />
-}<br />
+<p>{% highlight objc linenos %}
+-(void) onSuccess:(WLResponse *)response {
+    NSLog(@"Challenge succeeded");
+    [self.vc.navigationController popViewControllerAnimated:YES];
+    [self submitSuccess:response];
+}
+-(void) onFailure:(WLFailResponse *)response {
+    NSLog(@"Challenge failed");
+    [self submitFailure:response];
+}
 {% endhighlight %}
 </li>
 </ol>
@@ -90,17 +86,17 @@ At the end of the authentication flow, calls to the <code>onSuccess</code> or <c
 <p><br clear="all" /></p>
 <h4>submitLoginForm</h4>
 <p>In your login View Controller, when the user types to submit the credentials, call the <code>submitLoginForm</code> method to send the credentials to the MobileFirst Server.</p>
-<p>{% highlight objc linenos %}<br />
-@implementation LoginViewController<br />
-//...<br />
-- (IBAction)login:(id)sender {<br />
-    [self.challengeHandler<br />
-         submitLoginForm:@"/my_custom_auth_request_url"<br />
-         requestParameters:@{@"username": self.username.text, @"password": self.password.text}<br />
-         requestHeaders:nil<br />
-         requestTimeoutInMilliSeconds:0<br />
-         requestMethod:@"POST"];<br />
-}<br />
+<p>{% highlight objc linenos %}
+@implementation LoginViewController
+//...
+- (IBAction)login:(id)sender {
+    [self.challengeHandler
+         submitLoginForm:@"/my_custom_auth_request_url"
+         requestParameters:@{@"username": self.username.text, @"password": self.password.text}
+         requestHeaders:nil
+         requestTimeoutInMilliSeconds:0
+         requestMethod:@"POST"];
+}
 {% endhighlight %}</p>
 <p><br clear="all" /></p>
 <h3>The Main ViewController</h3>
@@ -108,23 +104,23 @@ At the end of the authentication flow, calls to the <code>onSuccess</code> or <c
 The protected procedure invocation triggers MobileFirst Server to send the challenge.</p>
 <ul>
 <li>Create a <code>WLClient</code> instance and use the <code>connect</code> method to connect to the MobileFirst Server:<br />
-{% highlight objc linenos %}<br />
-    MyConnectListener *connectListener = [[MyConnectListener alloc] init];<br />
-    [[WLClient sharedInstance] wlConnectWithDelegate:connectListener];<br />
+{% highlight objc linenos %}
+    MyConnectListener *connectListener = [[MyConnectListener alloc] init];
+    [[WLClient sharedInstance] wlConnectWithDelegate:connectListener];
 {% endhighlight %}
 </li>
 <li>In order to listen to incoming challenges, make sure to register the challenge handler by using the <code>registerChallengeHandler</code> method:<br />
-{% highlight objc linenos %}<br />
+{% highlight objc linenos %}
     [[WLClient sharedInstance] registerChallengeHandler:[[MyChallengeHandler alloc] initWithViewController:self] ];<br />
 {% endhighlight %}
 </li>
 <li>Invoke the protected adapter procedure:<br />
-{% highlight objc linenos %}<br />
-    NSURL* url = [NSURL URLWithString:@"/adapters/AuthAdapter/getSecretData"];<br />
-    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];<br />
-    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {<br />
-    ...<br />
-    }];<br />
+{% highlight objc linenos %}
+    NSURL* url = [NSURL URLWithString:@"/adapters/AuthAdapter/getSecretData"];
+    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+    ...
+    }];
 {% endhighlight %}
 </li>
 </ul>
