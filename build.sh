@@ -8,6 +8,7 @@ fi
 
 # enable error reporting to the console
 set -e
+pwd
 
 ## First, build for GitHub Pages
 # build site with jekyll, by default to `_site' folder
