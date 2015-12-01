@@ -18,7 +18,7 @@ module Jekyll
     safe true
 
     def generate(site)
-      if site.layouts.key? 'redirect'
+      if site.config['generate_redirects'] && (site.layouts.key? 'redirect')
         # Look for pages to redirect
         site.pages.each do |page|
           next unless (page['is_redirect'] != true)
