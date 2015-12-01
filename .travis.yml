@@ -1,5 +1,7 @@
 language: ruby
-script: "./build.sh" # execute this script on each commit
+script:
+  - "./buildPages.sh" # execute this script on each commit
+  - "./buildBluemix.sh" # execute this script on each commit
 branches:
   only:
   - jekyll # only take into account `jekyll' branch
