@@ -5,7 +5,6 @@ permalink: pretty
 paginate: 10
 paginate_path: "/blog/:num/"
 markdown: redcarpet
-exclude: [vendor,build.sh,Gemfile,Gemfile.lock,README.md]
 generate_redirects: false
 redcarpet:
     extensions: ["with_toc_data", "tables"]
