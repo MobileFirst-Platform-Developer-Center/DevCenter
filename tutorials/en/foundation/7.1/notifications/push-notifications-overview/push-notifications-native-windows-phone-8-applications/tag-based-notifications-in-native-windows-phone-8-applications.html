@@ -2,16 +2,12 @@
 layout: tutorial
 title: Tag and Broadcast Notifications in Native Windows Phone 8 Applications
 relevantTo: [windowsphone8]
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/TagNotifications
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/TagNotificationsWP8
 ---
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/TagNotifications" target="_blank">Download MobileFirst project</a>
-        </li>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/TagNotificationsWP8" target="_blank">Download Native project</a>
-        </li>
-</ul>
-
 <h2>Overview</h2>
 <p><strong>Prerequisite:</strong> Make sure that you read the <a href="../" title="Push notifications in native Windows Phone 8 applications">Push notifications in native Windows Phone 8 applications</a> tutorial first.</p>
 <p>Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.<br />
@@ -27,20 +23,20 @@ Tags represent topics of interest to the user and provide the ability to receive
 <h3>Tag Notifications configuration</h3>
 <h4>Setting up tags</h4>
 <p>Tags are defined in the <code>application-descriptor.xml</code> file:</p>
-<p>{% highlight xml linenos %}<nativeWindowsPhone8App id="NativeWP8TagNotifications" platformVersion="7.0.0.00.20150227-0916"<br />
-	version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor"><br />
-...<br />
-...<br />
-...<br />
-<tags><br />
-    <tag><br />
-        <name>my tag 1</name><br />
-        <description>About my tag 1</description><br />
-    </tag><br />
-    <tag><br />
-        <name>my tag 2</name><br />
-        <description>About my tag 2</description><br />
-    </tag><br />
+<p>{% highlight xml linenos %}<nativeWindowsPhone8App id="NativeWP8TagNotifications" platformVersion="7.0.0.00.20150227-0916"
+	version="1.0" xmlns="http://www.worklight.com/native-windowsphone8-descriptor">
+...
+...
+...
+<tags>
+    <tag>
+        <name>my tag 1</name>
+        <description>About my tag 1</description>
+    </tag>
+    <tag>
+        <name>my tag 2</name>
+        <description>About my tag 2</description>
+    </tag>
 </tags>{% endhighlight %}</p>
 <h2 id="notificationsAPI">Notifications API</h2>
 <h3>API methods for tag notifications</h3>
@@ -93,14 +89,17 @@ Tags represent topics of interest to the user and provide the ability to receive
 </ul>
 </li>
 <li>If using the CLI:
-<p>{% highlight bash %}$ mfp adapter call<br />
-[?] Which endpoint do you want to use? PushAdapter/sendBroadcastNotification<br />
-[?] Enter the comma-separated parameters: "NativeWP8TagNotifications","hello"<br />
-[?] How should the procedure be called? GET{% endhighlight %}</p>
+<p>{% highlight bash %}
+$ mfp adapter call
+[?] Which endpoint do you want to use? PushAdapter/sendBroadcastNotification
+[?] Enter the comma-separated parameters: "NativeWP8TagNotifications","hello"
+[?] How should the procedure be called? GET
+{% endhighlight %}</p>
 <p>Or:</p>
-<p>{% highlight bash %}$ mfp adapter call<br />
-[?] Which endpoint do you want to use? PushAdapter/sendTagNotification<br />
-[?] Enter the comma-separated parameters: "NativeWP8TagNotifications","hello","sample-tag1"<br />
-[?] How should the procedure be called? GET<br />
+<p>{% highlight bash %}
+$ mfp adapter call
+[?] Which endpoint do you want to use? PushAdapter/sendTagNotification
+[?] Enter the comma-separated parameters: "NativeWP8TagNotifications","hello","sample-tag1"
+[?] How should the procedure be called? GET
 {% endhighlight %}</li>
 </ol>

@@ -2,6 +2,7 @@
 layout: tutorial
 title: Push Notifications Overview
 show_children: true
+weight: 1
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 ---
 <h2>Overview</h2>
@@ -13,7 +14,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li><a href="#rest">REST API for Push notifications</a></li>
 <li><a href="#environmentType">Supported environments</a></li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/push-example-169x300.png" /></p>
+<p><img src="{{ site.baseurl }}/assets/backup/push-example-169x300.png" style="float:right" /></p>
 <h2 id="whatIsPushNotifications">What is push notification?</h2>
 <p>Push notifications is the ability of a mobile device to receive messages that are "pushed" from a server.</p>
 <p>Notifications are received regardless of whether the application is currently running.<br />
@@ -35,9 +36,18 @@ Notifications can take several forms:</p>
 </ul>
 <h2 id="notificationTypes">Push notification types</h2>
 <h3>Event Source notifications</h3>
-<p>Event source push notifications are notification messages that are targeted to devices with a user subscription.<br />
-[collapse label="Expand to read more"]</p>
-<div style="margin-left: 30px">
+<p>Event source push notifications are notification messages that are targeted to devices with a user subscription.</p>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="ReadMore">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#readMore" aria-expanded="true" aria-controls="readMore">Click to read more</a>
+            </h4>
+        </div>
+
+        <div id="readMore" class="panel-collapse collapse" role="tabpanel" aria-labelledby="linuxAndMac1">
+            <div class="panel-body">
 <h2 id="notificatioArchitecture">Notification architecture</h2>
 <h3>Terminology</h3>
 <h4>Event source</h4>
@@ -99,7 +109,10 @@ When a notification is retrieved by the adapter, it is processed and sent throug
 <p>The device subscription is created when the application on a device calls the subscribe method.<br />
 The device subscription is deleted either by an application that calls the <em>unsubscribe</em> method or when the push mediator informs the MobileFirst Server that the device is permanently not accessible.
 </div>
-<p>[/collapse]</p>
+</div>
+</div>
+</div>
+
 <h3>Tag notifications</h3>
 <p>Tag push notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.</p>
 <h3>Broadcast notifications</h3>
