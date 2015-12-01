@@ -9,7 +9,7 @@ downloads:
 
 ### Overview
 Java adapters provide free reign over connectivity to your backend. It is therefore your responsibility to ensure best practices regarding performance and other implementation details.  
-This tutorial shows an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
+This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
 
 **Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
 
@@ -189,3 +189,5 @@ The adapter should return the RSS feed converted to JSON.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.
 
 The attached sample includes an adapter called `RSSAdapter` and a hybrid application called `RSSReader` to test the adapter inside an application.
+
+![java-http-app](java-http-app.png)
