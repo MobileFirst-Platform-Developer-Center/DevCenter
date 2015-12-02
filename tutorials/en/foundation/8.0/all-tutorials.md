@@ -63,7 +63,7 @@ Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; nati
 ### <a href="../server-side-development/">Server-side development</a>
 Develop the server code (adapters) that your mobile app requires to integrate with enterprise back-end applications and cloud services.
 
-* <a href="../server-side-development/adapter-framework-overview/">Adapters overview</a>
+* <a href="../server-side-development/adapters-overview/">Adapters overview</a>
 * <a href="../server-side-development/javascript-adapters/">JavaScript adapters</a>
     * <a href="../server-side-development/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
     * <a href="../server-side-development/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a>
