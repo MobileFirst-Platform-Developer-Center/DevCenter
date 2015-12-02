@@ -31,15 +31,15 @@ The basic process was this: build out the Apple Watch apps user interface in Xco
 <h3>The User Interface</h3>
 So, lets first look at the app interface.  I have two views that were built in Interface Builder.  One is a table that displays rows of data, one is a details screen which has lots of labels used to display data.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/applewatch-ui1.jpg" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/applewatch-ui1.jpg" class="img_responsive" />
 
 In the main interface I have a "loading..." label (that is hidden once the data is loaded) and a table that is used to display data.  For each row in the table there are 3 labels to display specific data fields. These were connected to IBOutlet references in the view controller class. All of these are straightforward WatchKit development practices.  Be sure to check out the <a href="https://developer.apple.com/library/ios/documentation/WatchKit/Reference/WKInterfaceTable_class/index.html#//apple_ref/occ/cl/WKInterfaceTable" target="_blank">WKInterfaceTable class reference</a> for more detail on working with WatchKit tables.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/watchkit-ib-table.jpg" class="img_responsive"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/watchkit-ib-table.jpg" class="img_responsive"/>
 
 For displaying the details screen, I also used very similar pattern.  I added labels for displaying data, and linked them to IBOutlet references in my view controller so I can change their values once the data is loaded.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/watchkit-ib-details.jpg" class="img_responsive"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/watchkit-ib-details.jpg" class="img_responsive"/>
 
 <h3>Serving Data</h3>
 Loading data into a WatchKit extension is identical to making a request to the MobileFirst server adapter from a native iOS app, which can be done in either <a href="https://ibm.biz/MobileFirst-InvokeAdapter-iOS" target="_blank">Objective-C</a> or <a href="https://ibm.biz/MobileFirst-InvokeAdapter-Swift" target="_blank">Swift</a>.</p>

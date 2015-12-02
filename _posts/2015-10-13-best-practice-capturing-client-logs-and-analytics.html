@@ -109,7 +109,7 @@ author:
 <b>Example: Chrome Mobile</b>
 <p>Chrome asks the end user if they desire to send usage and crash reports:</p>
 
-<img src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-01-21-24-56-169x300.png" class="img-responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-01-21-24-56-169x300.png" class="img-responsive" />
 
 <p>In this case, you'd always capture, but only send if the user has agreed to it. Your configuration is:</p>
 
@@ -133,7 +133,7 @@ if (userAgreed) {
 <b>Example: Nova Launcher</b>
 <p>Nova Launcher is slightly different than Chrome Mobile in that it also includes "errors", and gives a more verbose explanation to the end user as to what they have agreed.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-01-21-31-13-169x300.png"  class="img-responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-01-21-31-13-169x300.png"  class="img-responsive" />
 
 <p>The configuration is very similar, except for the logger level:</p>
 {% highlight java linenos %}
@@ -148,7 +148,7 @@ WLAnalytics.setCapture(true);
 <b>Example: Tasker</b>
 <p>Tasker is an Android "automation" application, that listens for device events and triggers an action. It is extremely powerful, intended for a highly technical end user. I include it here because Tasker chose to be extremely verbose about what the user has agreed to.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-07-21-34-20-169x300.png" class="img-responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-07-21-34-20-169x300.png" class="img-responsive" />
 
 <p>The text strongly hints that Tasker is recording at debug level, but only when the user agrees, so their initial configuration would be:</p>
 
@@ -169,7 +169,7 @@ Logger.setCapture(true);
 <b>Example: Evernote</b>
 <p>I cannot find evidence in the Evernote user experience of giving the end user the choice of opting in or out of "usage reporting", so let's assume for the sake of this example that Evernote never collects anonymous usage data (which is probably a bad assumption, but go with me anyway). Evernote does, however, send raw debug logs up to the server, but only on end user demand.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-14-21-36-08-169x300.png" class="img-responsive" /></a>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot_2015-02-14-21-36-08-169x300.png" class="img-responsive" /></a>
 
 <p>Notice that Evernote uses the phrase "activity log" and "error log".  To the end user, this may be confusing.  Is it my activity or just application errors?  It's not completely clear what the end user is sending when they use this button.  So, the configuration is:</p>
 

@@ -11,7 +11,7 @@ author:
 
 <p>iOS 8 added support for <a href="https://ibm.biz/BdEbuf" target="_blank">App Extensions</a>, which lets you extend custom functionality and content outside of your application.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Dec-4-2014-2.23.44-PM-575x1024.png" class="img_responsive"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Dec-4-2014-2.23.44-PM-575x1024.png" class="img_responsive"/>
 
 <p>One such extension is the <a href="https://ibm.biz/BdEbuP" target="_blank">Today Widget</a>. Today Widgets appear in the top drawer of the iOS screen, and show content for a quick glance.
 An example of a Today Widget is the Calendar Today Widget built-in iOS.</p>
@@ -23,7 +23,7 @@ An example of a Today Widget is the Calendar Today Widget built-in iOS.</p>
 <p><br clear="all" /></p>
 
 <h2>Add a Today Extension Target</h2>
-<img src="{{ site.baseurl }}/assets/backup/todayext-wizard.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/todayext-wizard.png" class="img_responsive" />
 
 <p>In Xcode, while the project is open, go to <strong>File > New > Target</strong> .
 In the wizard, choose <strong>iOS > Application Extension > Today Extension</strong>.</p>
@@ -35,13 +35,13 @@ Xcode will generate a new folder in your project and a new target. This will pro
 <p>The generated skeleton comes with a simple storyboard (<strong>MainInterface.storyboard</strong>) and a ViewController (<strong>TodayViewController.h</strong>).
 You can design the visual interface just like in any other storyboard. In this example, I kept the storyboard as-is (just a <strong>Label</strong> centered inside the view). I’ve Control-Dragged the Label to <strong>TodayViewController.h</strong> to add an outlet.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/todayext-storyboard.png" class="img_responsive" /></a></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/todayext-storyboard.png" class="img_responsive" /></a></p>
 
 <p>Because I also want to be able to capture taps on the widget, I’ve added a <strong>Tap Gesture Recognizer</strong> to my View.</p>
-<img src="{{ site.baseurl }}/assets/backup/tag-gesture.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/tag-gesture.png" class="img_responsive" />
 <p>I then linked it to an action in <strong>TodayViewController.m</strong>.
 
-<img src="{{ site.baseurl }}/assets/backup/tap-action.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/tap-action.png" class="img_responsive" />
 <p>In a real application, you will probably use a more complete design, however this is out of the scope of this article.</p>
 <h2>Link the MobileFirst (Worklight) Library</h2>
 <p>Because the Today Extension is a different target from your main application, it lives in its own sandbox - separate from your application sandbox, with its own lifecycle. This has important implications on the way you design and code your widget. You will not be able to share objects living in your application with your widget.</p>
@@ -51,7 +51,7 @@ You can design the visual interface just like in any other storyboard. In this e
 <p>In this example, to get the latest news from the RSS adapter, I need access to the MobileFirst API from my widget.
 To setup the target with the MobileFirst API, you need to follow the same instructions provided by the documentation “<a href="https://ibm.biz/BdEpQm" target="_blank">Developing native applications for iOS</a>”. Make sure the <strong>worklight.plist</strong> also appears in the <strong>Copy Bundle Resources</strong>, and don’t forget to set the required <strong>Build Settings</strong>.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/link-binary.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/link-binary.png" class="img_responsive" />
 
 <h2>Lifecycle</h2>
 <p>The generated <strong>TodayViewController.m</strong> contains a method called <code>widgetPerformUpdateWithCompletionHandler</code>. This method is called by iOS to give your widget an opportunity to update itself. This can happen in the background, or when the user pulls the Today view out.</p>
@@ -155,7 +155,7 @@ This is because if the widget is pulled out of memory, or if the refresh fails, 
 
 <p>With all of this, you should be able to view your widget in action.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/today-ext-news-575x1024.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/today-ext-news-575x1024.png" class="img_responsive" />
 
 <h2>Tap to open</h2>
 <p>Again, because the widget lives in a different sandbox, you cannot simply "segue" into your application. You need to open your application just like you would from the another application.</p>
@@ -163,7 +163,7 @@ This is because if the widget is pulled out of memory, or if the refresh fails, 
 <p>You first need to register your main application to respond to a specific <strong>URL scheme</strong>.
 In the main application's <strong>Info.plist</strong>, add a <strong>URL types</strong> property, with a <strong>URL scheme</strong> and <strong>URL identifier</strong>. See above link for more details.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/infoplist.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/infoplist.png" class="img_responsive" />
 
 {% highlight xml linenos %}
 	<key>CFBundleURLTypes</key>

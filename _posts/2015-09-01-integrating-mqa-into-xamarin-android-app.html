@@ -18,7 +18,7 @@ author:
 <blockquote><p><em><span style="line-height: 1.5">IBM MQA provides line of business professionals and development teams with insightful and streamlined quality feedback and metrics from both pre-production and production, enabling them to prioritize and take action to support a dynamic mobile app strategy.</span></em></p></blockquote>
 
 <p>The Features of MQA are</p>
-<img class="size-full wp-image-65" src="{{ site.baseurl }}/assets/backup/MQA1.png" class="img_responsive" />
+<img alt="missing_alt" class="size-full wp-image-65" src="{{ site.baseurl }}/assets/backup/MQA1.png" class="img_responsive" />
 
 <p><em><strong>Note</strong></em>: To understand more about MQA, visit <a href="http://www-03.ibm.com/software/products/en/ibm-mobilefirst-platform-quality-assurance">IBM Mobile Quality Assurance</a></p>
 
@@ -35,7 +35,7 @@ author:
 
 <p>So, we have to find a workaround to address this use-case. The initial step is to download the Android MQA SDK and see what's provided. you can download it from <a href="http://www-01.ibm.com/support/knowledgecenter/#!/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/c_AndroidSDKsForDownload.html">here</a>. Once successfully downloaded and unzipped, we should see a jar file namely <strong><em>MQA-Android-library-<version number>.jar</em>  </strong>under lib folder<strong>.</strong></p>
 
-<img src="{{ site.baseurl }}/assets/backup/MQA2.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MQA2.png" class="img_responsive" />
 
 <p>As Xamarin is C# based, What can we do with this jar file?</p>
 
@@ -43,7 +43,7 @@ author:
 
 <p><strong><em>Note</em>:</strong> Steps to consume MQA Android JAR in a Xamarin.Android app is mentioned <a href="https://developer.xamarin.com/guides/android/advanced_topics/java_integration_overview/binding_a_java_library_(.jar)/">here</a></p>
 
-<img src="{{ site.baseurl }}/assets/backup/MQA31.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MQA31.png" class="img_responsive" />
 
 <p>The files of our interest here are <strong>MQA-Android-library-2.7.4.jar</strong> (Version number may vary) and <strong>Metadata.xml.</strong></p>
 
@@ -76,7 +76,7 @@ author:
 
 Once all the errors are fixed and your binding project builds successfully, add a new Xamarin Android project (if you haven't added yet). Now, add MQA binding project reference in our Xamarin android app. <em><strong>Note:</strong></em> Both your binding project and Xamarin.Android project should be of same <strong>target framework. </strong>You can verify this by right clicking on your project -> Options -> General.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/MQA5.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MQA5.png" class="img_responsive" />
 
 <p>Now, let's start MQA android session in our Count.Android app. Before doing this, we should create a MQA service on IBM Bluemix. You can follow the instructions mentioned at <a href="https://www.ng.bluemix.net/docs/#services/MobileQualityAssurance/index.html#MobileQualityAssurance">Getting started with Mobile Quality Assurance- Bluemix</a> or watch this video.</p>
 

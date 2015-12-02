@@ -72,22 +72,22 @@ author:
 <h3>WebSphere Application Server</h3>
 <p>Create a WebSphere Application Profile with Security enabled. Open WAS admin console -> Security -> SSL certificate and key management -> SSL configurations.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/Screenshot-2.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-2.png" class="img_responsive" />
 
 <p>Open NodeDefaultSSLSettings -> Key stores and certificates.</p>
-<img src="{{ site.baseurl }}/assets/backup/Screenshot-3.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-3.png" class="img_responsive" />
 
 <p>Open NodeDefaultKeyStore -> Personal certificates and import the new certificate. Point to the ssl_cert.p12 and chose to import the certificate.</p>
-<img src="{{ site.baseurl }}/assets/backup/Screenshot-4.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-4.png" class="img_responsive" />
 
 <p>Open NodeDefaultTrustStore -> Signer certificates and add the new certificate's signer certificate. Add the ca.crt as root1.</p>
-<img src="{{ site.baseurl }}/assets/backup/Screenshot-5.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-5.png" class="img_responsive" />
 
 <p>Open NodeDefaultSSLSettings -> Quality of protection (QoP) settings. Choose Protocol as <code>SSL_TLSv2</code>. Choose Cipher suite groups as Custom and click on Update selected ciphers button. Use the Add and Remove button to make sure accepted ciphers are in the selected ciphers list. Apply the settings.</p>
 
 <blockquote>WebSphere Application Server's own services require other versions protocol for communication. Enforcing the server to work with only TLS version 1.2 will interfere with stopping and starting the server.</blockquote>
 
-<img src="{{ site.baseurl }}/assets/backup/Screenshot-6.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-6.png" class="img_responsive" />
 
 <p><strong>Note:</strong> The string "SSL" is interchangeable with "TLS" and vice versa in the cipher names. For example, where SSL_RSA_WITH_AES_128_CBC_SHA is specified, TLS_RSA_WITH_AES_128_CBC_SHA also applies.</p>
 

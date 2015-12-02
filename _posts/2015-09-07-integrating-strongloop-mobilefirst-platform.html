@@ -38,13 +38,13 @@ author:
         <p>In this case the MFP server will act as the authorization server. It will authenticate and authorize clients by running a series of challenges to the client. When the client answers all challenges appropriately, MFP will send back to the client an Access Token which can be used to access external resources.</p>
 
         <p>The following diagram shows the flow in which the client obtains an access token from the MFP server.</p>
-        <img src="{{ site.baseurl }}/assets/backup/image001.png" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/image001.png" class="img_responsive" />
     </li>
     <li><b>Resource Server:</b> The server that hosts the protected resources. It can accept, and respond to, protected resource requests by using access tokens.
         <p>In this case the StrongLoop server, together with the node.js  TokenValidation library, will act as the resource server while all the REST APIs hosted on the server are the different resources. The Token Validation library will intercept all REST API calls, will validate the OAuth Access Token, and if the token is valid and contains the right scopes, will invoke the REST API.</p>
 
         <p>The following diagram shows how StrongLoop, using the npm token validation library, verifies the access token off-line, i.e., without accessing the MFP server. For this to work, the library will connect MFP once to get the public key and will then do all validation locally.<br />
-            <img src="{{ site.baseurl }}/assets/backup/MFP_Security_validation_cc_BG-720x560-landscape.jpg" class="img_responsive" />
+            <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MFP_Security_validation_cc_BG-720x560-landscape.jpg" class="img_responsive" />
     </li>
 </ul>
 
