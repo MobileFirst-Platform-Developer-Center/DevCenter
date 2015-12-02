@@ -4,7 +4,7 @@ script:
   - "./buildBluemix.sh" # execute this script on each commit
 branches:
   only:
-  - jekyll # only take into account `jekyll' branch
+  - master # only take into account `master' branch
 rvm:
 - 2.2.2 # version of `ruby'
 env:
