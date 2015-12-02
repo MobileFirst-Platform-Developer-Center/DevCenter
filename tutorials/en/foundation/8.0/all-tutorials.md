@@ -3,6 +3,7 @@ layout: tutorial
 title: All Tutorials
 weight: 1
 show_disqus: false
+print_pdf: false
 ---
 <br>
 Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
