@@ -233,13 +233,13 @@ cf push ${app_name} -p ${path_to_server_package_zip}
 <h3>Advance Mobile Access service</h3>
 <ul>
     <li> Bind the pushed application to Advance Mobile Access Service.
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-3.28.04-pm-1024x346.png" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-3.28.04-pm-1024x346.png"  />
     </li>
     <li> Register your client application in AMA dashboard. For more info refer documentation : <a href="https://www.ng.bluemix.net/docs/services/mobileaccess/index.html" target="_blank">click here</a>
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-3.42.32-pm.png" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-3.42.32-pm.png"  />
     </li>
     <li> AMA provides Facebook, Google, or a custom identity provider to authenticate access to protected resources. Add Custom identity provider feature as it can be migrated to MFPF and specify the corresponding jax-rs custom authentication application url and realm name.
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-4.03.21-pm.png" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-4.03.21-pm.png"  />
     </li>
     <li> Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register the realm and initialize connection with Bluemix Application.
 
@@ -259,12 +259,12 @@ IMFClient.sharedInstance().initializeWithBackendRoute("https://parkstore.mybluem
 <h3>Push Service for iOS 8</h3>
 <ul>
     <li> Bind the application with Push Service for iOS 8
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-4.07.01-pm-1024x367.png" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-17-at-4.07.01-pm-1024x367.png"  />
     </li>
     <li> Configure Apple Push Notification service (APNs) which requires Apple Developer Account and Generate pl2 certificates. Documentation link : <a href="https://www.ng.bluemix.net/docs/services/mobilepush/index.html#certificates" target="_blank">click here</a>
     </li>
     <li> Upload the generated pl2 certificate in Push service dashboard
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.47.14-pm-1024x377.png" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.47.14-pm-1024x377.png"  />
     </li>
     <li>Add the following code inside <code>didFinishLaunchingWithOptions</code> function in <code>Appdelegate</code> of client application which will register notifications in client app.
         {% highlight swift linenos %}
@@ -366,11 +366,11 @@ func application(application: UIApplication, didReceiveRemoteNotification userIn
 {% endhighlight %}
     </li>
     <li>The following are the screenshots of client application.
-        <img src="{{ site.baseurl }}/assets/backup/IMG_0020-169x300.jpg" class="img_responsive" />
-        <img src="{{ site.baseurl }}/assets/backup/IMG_00211-169x300.jpg" class="img_responsive" />
-        <img src="{{ site.baseurl }}/assets/backup/IMG_0025-169x300.jpg" class="img_responsive" />
-        <img src="{{ site.baseurl }}/assets/backup/IMG_0024-169x300.jpg" class="img_responsive" />
-        <img src="{{ site.baseurl }}/assets/backup/IMG_0026-169x300.jpg" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/IMG_0020-169x300.jpg"  />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/IMG_00211-169x300.jpg"  />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/IMG_0025-169x300.jpg"  />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/IMG_0024-169x300.jpg"  />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/IMG_0026-169x300.jpg"  />
     </li>
 </ul>
 
@@ -460,11 +460,11 @@ var request: IMFResourceRequest = IMFResourceRequest(path: "http://localhost:100
     <li>To migrate JAX-RS application to on-prem (MobileFirst Foundation) server we need to do the following steps for server:
     Create MobileFirst Project --> Create native API app for iOS
         ​​
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.50.04-pm.png" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.50.04-pm.png"  />
 
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.51.13-pm.png" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.51.13-pm.png"  />
 
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.52.28-pm.png" class="img_responsive" /></li>
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.52.28-pm.png"  /></li>
         <li>Add two adapters for Custom Authentication and Localstore and migrate the JAX-RS code as shown in the following example.</li>
 </ol>
 
@@ -570,7 +570,7 @@ The code looks like the following:
 <h3 id="configurepush">Configuring Push Capability</h3>
 <ul>
     <li> Add apns p12 certificate which is generated from Apple Developer Account under iOS Native API Folder
-        <img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.58.03-pm.png" class="img_responsive" />
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-07-12-at-6.58.03-pm.png"  />
     </li>
     <li> Add Push configuration in Application Descriptor file of iOS Native API and include the password of added apns certificate.
 

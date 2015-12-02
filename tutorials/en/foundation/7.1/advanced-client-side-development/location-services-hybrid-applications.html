@@ -19,7 +19,7 @@ downloads:
 <li><a href="#sample">Sample application</a></li>
 </ul>
 <h2 id="architecture">Architecture</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg" /></p>
 <p>The application code on the mobile device, in the form of an acquisition policy, controls the collection of data from device sensors.</p>
 <p>The collected data is referred to as the device context.</p>
 <p>When a change occurs in the device context, such as a change in the geolocation of the device or the fact that it entered a Wi-Fi zone, triggers can be activated.</p>
@@ -103,7 +103,7 @@ Wifi: {
 <li>Differentiates <code>Net2</code> access points by their MAC address.
 </li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.jpg" /></p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h2 id="triggers">Triggers</h2>
 <p>{% highlight javascript linenos %}
@@ -173,16 +173,16 @@ WL.Server.setEventHandlers([...]);
 The <strong>Mobile Browser Simulator</strong> provides capabilities to simulate sensor data and errors.<br />
 To access it, right-click an application environment and select <strong>Run As</strong> > <strong>Preview</strong>.</p>
 <h3>Geo testing</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_geotesting.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_geotesting.png" /></p>
 <p>You can use the Geolocation widget to set a specific position through a manual entry or by a click on the map.</p>
 <p>A simple simulation mode is also provided by the <strong>Step</strong> and <strong>Play</strong> buttons, which move the position in the simulated device at the given speed and in the direction of the given heading.</p>
 <p>You can also simulate the generation of errors.</p>
 <h3>Wi-Fi testing</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_wifitesting.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_wifitesting.png" /></p>
 <p>You can use the Network widget to define simulated access points, configure their signal strengths, and simulate the connection or disconnection to an access point.<br />
 You can also simulate the generation of errors.</p>
 <h3>Scenarios</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_scenarios.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_scenarios.png" /></p>
 <p>You can use the Scenario widget to automatically simulate a user moving through an environment in a complex way.<br />
 A scenario consists of:</p>
 <ul>
@@ -194,28 +194,28 @@ A scenario consists of:</p>
 </li>
 </ul>
 <p>To open the scenario editor, click <strong>Edit</strong>.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_scenario-edit-mode.png" style="width:55%"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_scenario-edit-mode.png" style="width:55%"/></p>
 <p>Enter a geolocation directly to move the map, or use the arrows to pan and +/- track to zoom.</p>
 <ul>
-<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_path-icon.png" style="display:inline" /> to define the path of the user.
+<li>Click <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_path-icon.png" style="display:inline" /> to define the path of the user.
 </li>
 <li>Click on the map to add each path point. Double-click to add the last point.<br />
 You can drag points to new locations.
 </li>
 <li>Click on a point to set the user's arrival time to that point, or to delete the whole path.</li>
-<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_wifi-icon.png" style="display:inline" /> to add Wi-Fi access points.
+<li>Click <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_wifi-icon.png" style="display:inline" /> to add Wi-Fi access points.
 </li>
 <li>Click on the map and drag to set the area covered by the access point.</li>
 <li>Click an existing access point to change its SSID and MAC.<br />
 After clicking, drag to move or resize.
 </li>
-<li>Click <img src="{{ site.baseurl }}/assets/backup/10_04_zone-icon.png" style="display:inline" /> to add no-GPS zones.
+<li>Click <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_zone-icon.png" style="display:inline" /> to add no-GPS zones.
 </li>
 <li>Click on the map to add each vertex of the zone. Double-click to add the last point.<br />
 After clicking an existing zone, you can drag to move, resize, or rotate.
 </li>
 </ul>
-<p>When a scenario is played, the position of the user is displayed on the map ( <img src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png" style="display:inline"/> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and does not change in a no-GPS zone).<br />
+<p>When a scenario is played, the position of the user is displayed on the map ( <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_user-icon.png" style="display:inline"/> ) and is automatically updated. The position that is available to the device is shown in the Geolocation widget (and does not change in a no-GPS zone).<br />
 Wi-Fi access point visibility and signal strengths are automatically updated. You can see these updates in the Network widget.<br />
 You can import and export scenarios to support test reuse.</p>
 <h2 id="androidPermissions">Location Services permissions in Android</h2>
@@ -251,4 +251,4 @@ for more information, please refer to https://developer.android.com/preview/feat
 <li>Ongoing acquisition
 </li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_sample.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_sample.png" /></p>

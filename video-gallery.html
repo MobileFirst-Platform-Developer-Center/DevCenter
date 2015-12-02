@@ -8,13 +8,13 @@ custom_js:
 <div class="container video-gallery">
 
     <h2>Video Gallery<small> Click on a tag for filtered content</small></h2>
-    
+
     <ul class="gallery row">
       {% for video in site.data.videos %}
       <li class="col-md-3 col-sm-4 col-xs-6">
           <figure>
             <a href="{{video.url}}" data-toggle="lightbox" data-width="960" data-gallery="youtubevideos">
-                <img src="{{video.thumbnail}}" class="thumbnail img-responsive">
+                <img src="{{video.thumbnail}}" class="thumbnail img-responsive" alt="{{video.caption}}">
             </a>
             {% for tag in video.tags %}
               <span class="label label-info">{{tag}}</span>

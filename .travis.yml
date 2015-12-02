@@ -1,4 +1,5 @@
 language: ruby
+cache: bundler
 script:
   - "./buildPages.sh" # execute this script on each commit
   - "./buildBluemix.sh" # execute this script on each commit

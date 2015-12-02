@@ -10,29 +10,29 @@ author:
 ---
 <p>In April 2014 Microsoft <a href="http://blogs.windows.com/buildingapps/2014/04/02/extending-platform-commonality-through-universal-windows-apps/" target="_blank">announced Universal Apps</a> for Windows 8.1 . Universal app development is a paradigm in which you can use a lot of shared code between Windows Tabs and Windows Phone. In 8.1 – Microsoft introduced the <a href="https://msdn.microsoft.com/library/windows/apps/dn726767.aspx" target="_blank">Windows Runtime API (Win RT)</a> that works on the Windows Phone 8.1 as well. Up until Windows Phone 8.0 – the Windows Phone apps were Windows Silverlight apps. Silverlight Phone apps don’t migrate to the Windows tablet world; they <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn762318.aspx" target="_blank">have to be re-written</a>. Starting 8.1 you can write Windows Phone apps using the Win RT API – the same API you used to use to build the Windows tablet apps. A detailed explanation is available  in a <a href="http://www.slideshare.net/ITCamp/it-camp-2014-developing-for-windows-phone-81-dan-ardelean" target="_blank">MS IT Camp presentation</a> by Dan Ardelean</p>
 
-<img src="{{ site.baseurl }}/assets/backup/UnivApp1.jpg" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/UnivApp1.jpg"  />
 
 <h3>IBM MobileFirst Windows SDKs</h3>
 <p>Note: At the time of the article the IBM MobileFirst Foundation 7.0 does not have a formal support for Windows Universal apps</p>
 <p>IBM MobileFirst 7.0 has 4 SDKs available for Windows app developers. The WindowsPhone8 native and hybrid and Windows8 native and hybrid. The Hybrid SDKs are for developing Cordova Hybrid apps across all phone types.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/IBMWinSDKs.jpg" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/IBMWinSDKs.jpg"  />
 
 <h3>Building IBM MobileFirst Windows Universal C# apps (Native)</h3>
 <p>In this post we will see how you can build a IBM MobileFirst Windows Universal native C# app using the Windows 8 Native SDKs. If you are new to Windows Universal apps, a very <a href="https://msdn.microsoft.com/en-us/library/windows/apps/dn609832.aspx" target="_blank">detailed article </a> is available in the Windows dev center. The IBM MobileFirst Windows8 SDK is written on Windows RT APIs. So it also happens to work on Windows Phone 8.1. This will however not work on Windows Phone 8.0 as Windows Phone 8.0 can run only Silverligt apps. If you have written a app for Windows 8 tabs, you can migrate them to a Windows phone app pretty easily by adding a Windows Phone project to it</p>
 
 <h3>1. Create the IBM MF Windows 8 native app</h3>
-<img src="{{ site.baseurl }}/assets/backup/AjayCreateWinApp.jpg" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AjayCreateWinApp.jpg"  />
 <p>This will give you the necessary Windows artifacts to create the universal app.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/AjayCreateWinApp2.jpg" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AjayCreateWinApp2.jpg"  />
 <p>This also is the “server environment” that you will be connecting to from your app from the tab as well as the phone.</p>
 
 <h3>2. Create the Universal App </h3>
 <h4> a. New Visual Studio project</h4>
 <p>In a Visual Studio 2013 solution – create a Windows Universal C# App.</p>
 
-<p><img src="{{ site.baseurl }}/assets/backup/AjayCreateWinProj1.jpg" class="img_responsive" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AjayCreateWinProj1.jpg"  /></p>
 
 <p>This in fact adds 3 projects to your solution<br />
 1. [appname].Windows (Windows 8.1)<br />
@@ -49,7 +49,7 @@ author:
 <li>worklight-windows8.dll</li>
 </ol>
 
-<p><img src="{{ site.baseurl }}/assets/backup/AjayCreateWinProj2.jpg" class="img_responsive" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AjayCreateWinProj2.jpg"  /></p>
 <p>Also <code>Add > Existing item </code> the wlclient.properties file to the root of the project . Make sure you</p>
 <ol>
 <li>Build Action = Content</li>

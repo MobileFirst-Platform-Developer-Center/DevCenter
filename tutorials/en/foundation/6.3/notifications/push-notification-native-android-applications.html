@@ -21,7 +21,7 @@ downloads:
 <li><a href="#sampleApplication">Sample application</a></li>
 </ul>
 <h2 id="settingupnativeandroid">Setting up your native Android application for push notification</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushAdapterExpanded.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/NativeAndroidPushAdapterExpanded.png"/></p>
 <p>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Android Native API and HTTP adapter.</p>
 <p>The native API includes the following files:</p>
 <ul>
@@ -77,7 +77,7 @@ downloads:
 </table>
 </li>
 <li>After you copy the libraries, the native Android project appears as shown:
-<p><img src="{{ site.baseurl }}/assets/backup/Androidjar.png"/></li>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Androidjar.png"/></li>
 </ul>
 <h3>Edit the wlclient.properties file.</h3>
 <p>Edit the wlclient.properties file in your native Android project and enter appropriate values for the following fields:</p>
@@ -87,7 +87,7 @@ downloads:
 <li>wlServerContext – Context root of your MobileFirst Server instance.</li>
 <li>GcmSenderId – The project number that you obtained through the Google API console.</li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/wlclient_properties.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/wlclient_properties.png"/></p>
 <h3>Modifications to the native Android project</h3>
 <p>Add the following permissions to the AndroidManifest.xml file of your Android project:</p>
 {% highlight xml linenos %}
@@ -394,11 +394,11 @@ For a full list of message properties, see the user documentation.</p>
 -The <strong>AndroidNativePushProject.zip</strong> file contains a native Android application that uses a MobileFirst native API library to subscribe to push notifications and receive notifications from GCM.<br />
 Make sure to update the wlclient.properties file in AndroidNativePushProject with the relevant server settings.</p>
 <h4>To run the Android application, select <strong>Run As > Android Application</strong>.</h4>
-<p><img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushRun.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/NativeAndroidPushRun.png"/></p>
 <h4>In MobileFirst Studio, right-click <strong>Push Adapter</strong> and select <strong>Run As > Invoke MobileFirst Procedure</strong>.</h4>
 <p>Call <code>submitNotification</code> to send a push notification.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/nativeiOSSendnotificationmobilefirst.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/nativeiOSSendnotificationmobilefirst.png"/></p>
 <p><em>Push notification received - application in background</em><br />
-<img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushNotificationReceivedAppBackground.png"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/NativeAndroidPushNotificationReceivedAppBackground.png"/></p>
 <p><em>Push notification received - application in foreground</em></p>
-<p><img src="{{ site.baseurl }}/assets/backup/NativeAndroidPushReceivedNotification.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/NativeAndroidPushReceivedNotification.png"/></p>

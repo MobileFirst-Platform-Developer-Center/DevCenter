@@ -19,10 +19,10 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <p>The new MobileFirst end-to-end authorization flow has two phases: the client acquires the token and then uses it to access a protected resource.</p>
 <h3>Acquiring a token</h3>
 <p>In this phase, the client undergoes security checks in order to receive an access token. These security checks use authorization entities, which are described in <a href="#authEntities">the next section</a>.<br />
-<img src="{{ site.baseurl }}/assets/backup/MFP_Security_obtain_token.jpg"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MFP_Security_obtain_token.jpg"/></p>
 <h3>Using a token to access a protected resource</h3>
 <p>It is possible to enforce MobileFirst security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial <a href="../../authentication-security/using-mobilefirst-server-authenticate-external-resources/" title="Using the MobileFirst Server to authenticate external resources">Using MobileFirst Server to authenticate external resources</a>.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/MFP_Security_protect_MFP_resources.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MFP_Security_protect_MFP_resources.jpg"/></p>
 <h2 id="authEntities">Authorization entities</h2>
 <p>You can protect MobileFirst resources such as adapter procedures from unauthorized access by specifying a <strong>scope</strong> that contains one or more <i>authentication realms</i>.</p>
 <p>An <strong>authentication realm</strong> defines the process to be used to authenticate users.</p>
@@ -68,7 +68,7 @@ A scope is a list of realm names - the realms that the user must authenticate ag
 <h2 id="define">Defining realms, authenticators, and login modules</h2>
 <p>You configure authentication settings in the MobileFirst project in the <code>server\conf\authenticationConfig.xml</code> file.</p>
 <p>You can modify the settings by using the Authentication Configuration Editor.<br />
-<img src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_01_authentication_config_editor.png"/></p>
 <p>Each realm takes a name, a <code>loginModule</code> specification, an authenticator implementation, and optional parameters.</p>
 <p>{% highlight xml linenos %}
 <realms><br />

@@ -43,7 +43,7 @@ Device provisioning is based on the device ID and supported on the Android and i
 The issued certificate contains device information that is obtained during the provisioning process.<br />
 Before a certificate is issued to a specific device, the server can perform extra validations on the received device credentials.<br />
 You can configure your own CA keystore for the generation of the device provisioning certificate.<br />
-<img src="{{ site.baseurl }}/assets/backup/09_13_understanding-flow.png"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_13_understanding-flow.png"/></p>
 <h2 id="none">No provisioning</h2>
 <p><strong>No provisioning</strong> is appropriate for development environments.<br />
 Using <strong>No provisioning</strong> means that the provisioning process is not triggered (requested) by MobileFirst Server.<br />
@@ -71,9 +71,9 @@ The server collects the supplied device information and issues a certificate by 
 The certificate is issued to any device that requests it, therefore <strong>Auto provisioning</strong> makes sense only when it is used after a successful application authenticity check.</p>
 <h3>First application start</h3>
 <p>Authenticity check is a proprietary MobileFirst technology, which makes sure that the application is the authentic one and was not modified by anyone.<br />
-<img src="{{ site.baseurl }}/assets/backup/09_13_autoprov-firststart.png"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_13_autoprov-firststart.png"/></p>
 <h3>Subsequent application starts</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/09_13_autoprov-subsequent.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_13_autoprov-subsequent.png"/></p>
 <h3>Enabling auto provisioning</h3>
 <p>To enable <strong>Auto provisioning</strong>, add the following realms to your <code>authentication-config.xml</code> file.</p>
 <p>{% highlight xml linenos %}

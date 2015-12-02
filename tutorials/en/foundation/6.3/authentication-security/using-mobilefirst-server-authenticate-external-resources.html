@@ -29,14 +29,14 @@ downloads:
 <li><strong>Authorization Server</strong>: MobileFirst Server<br />The server that issues access tokens to the client after it has successfully authenticated the resource owner and obtained authorization.</li>
 </ul>
 <h3>Overview of the Resource Server component</h3>
-<img src="{{ site.baseurl }}/assets/backup/resource-server-300x231.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/resource-server-300x231.png"/>
 <p>The <strong>Resource Server</strong> is an external server that hosts the available resource.</p>
 <p>One use-case is that of services that are deployed on a cloud, such as <strong>MbaaS</strong>. But this flow is not restricted to that case and works with any third- party server.</p>
 <p>The <strong>Token lib</strong> library is provided for use with the <strong>Resource Server</strong>.</p>
 <p>The public key that is necessary to verify the token must be configured for this component.</p>
 <p>Java and <code>node.js</code> libraries are provided for offline validation.</p>
 <h3>Overview of the client component</h3>
-<img src="{{ site.baseurl }}/assets/backup/client-300x187.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/client-300x187.png" />
 
 <p>The <strong>External SDK</strong> is used to access the resource server. It must be able to attach a header to the request.</p>
 <p>The <strong>MobileFirst SDK</strong> exposes the following API for both hybrid and native code:</p>
@@ -46,7 +46,7 @@ downloads:
 <li>Analyze <strong>Resource server</strong> error response to obtain the required scope.</li>
 </ol>
 <h3>Overview of the MobileFirst Server component</h3>
-<img src="{{ site.baseurl }}/assets/backup/mobilefirst-server-300x231.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/mobilefirst-server-300x231.png" />
 <p>The <strong>Validation Endpoint</strong> is a REST API exposed under the path <code>/oauth/validation.s</code></p>
 <p>It can be used by <strong>Resource Server</strong> or by the reverse proxy for online validation.</p>
 <p>The <strong>Token Endpoint</strong> is a REST API exposed under the path <code>/oauth/token</code>.</p>
@@ -73,7 +73,7 @@ downloads:
 </ul>
 <h3>Quick Flow:</h3>
 <p>The client requests a token from the authorization server, receives it, and with that token, accesses the protected resource on the resource server.</p>
-<img src="{{ site.baseurl }}/assets/backup/process-flow-1024x768.jpg" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/process-flow-1024x768.jpg" />
 <ol>
 <li>
     <strong>The application developer attempts to access a protected resource on a remote server.</strong></p>
@@ -140,7 +140,7 @@ downloads:
 </securityTests>
 {% endhighlight %}</p>
 <p><strong>From the design view:</strong></p>
-<img src="{{ site.baseurl }}/assets/backup/security-test-design-view.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/security-test-design-view.png" />
 <h2 id="mobilefirst_configuration_keystore">MobileFirst project configuration - Keystore</h2>
 <p>To use this feature, preferably use or create your own keystore and configure the MobileFirst Server to use it.</p>
 <p>For an example in an unrelated context, see Configuring device auto provisioning in the product documentation.</p>

@@ -76,7 +76,7 @@ To add a Direct Update realm to a custom security test, add a <code>test</code> 
 <p>The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on available configurations (per session or per request, as explained above).</p>
 <p>The updated web resources are downloaded when necessary.<br />
 After a Direct Update, the application no longer uses prepackaged resources but those resources in the application's sandbox.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/05_05_du_internal_function.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_du_internal_function.jpg"/></p>
 <h2 id="userExperience">User experience</h2>
 <h3>Default behavior</h3>
 <ol>
@@ -85,7 +85,7 @@ After a Direct Update, the application no longer uses prepackaged resources but 
 <li>After the user approves, a progress bar dialog is displayed and web resources are downloaded.
 </li>
 <li>The application is automatically reloaded after the update is complete.
-<p><img src="{{ site.baseurl }}/assets/backup/05_05_du_examples.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_du_examples.png"/></p>
 </li>
 </ol>
 <p><br clear="all" /></p>
@@ -141,7 +141,7 @@ directUpdateContext) {
         }]
     );
 }; {% endhighlight %} </p>
-<p><img src="{{ site.baseurl }}/assets/backup/05_05_custom_dialog.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_custom_dialog.png"/></p>
 <p>In the example above, the <code>submitFailure</code> API is used to dismiss the Direct Update:<br />
 {% highlight js linenos %} wl_directUpdateChallengeHandler.submitFailure(); {% endhighlight %} </p>
 <p>As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer.</p>
@@ -150,7 +150,7 @@ directUpdateContext) {
 <p>Optionally, a developer can also supply a Direct Update listener to fully control a Direct Update lifecycle. For more information, see the topic about customizing the direct update interface, in the user documentation.<br />
 {% highlight js linenos %} directUpdateContext.start(directUpdateCustomListener); {% endhighlight %} </p>
 <h2 id="distribution">Distribution - Working with Direct Update in the field</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/05_05_distribution.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_distribution.jpg"/></p>
 <p>(*) During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.</p>
 <h2 id="disablingApps">Disabling old application versions</h2>
 <p>From the MobileFirst Operations Console, it is possible to prevent users from using obsolete versions and to notify users about available updates.</p>
@@ -175,9 +175,9 @@ wl.ca.key.alias.password=myCertPassword
 <li>Follow the on-screen instructions.</li>
 </ol>
 </li>
-<p> <img src="{{ site.baseurl }}/assets/backup/05_05_du_authenticity_setup.png"/></p>
+<p> <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_du_authenticity_setup.png"/></p>
 <p>You can find the public key on the Design view of the Application Descriptor Editor.</p>
-<p> <img src="{{ site.baseurl }}/assets/backup/05_05_public_signing_key1-1024x477.png"/></p>
+<p> <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_public_signing_key1-1024x477.png"/></p>
 <p>You can also find the public key on the Source view of the Application Descriptor Editor.</p>
 <p>{% highlight xml linenos %}
 <application>

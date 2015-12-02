@@ -23,7 +23,7 @@ This tutorial covers the following topics:</p>
 The default workspace encoding in Eclipse is <code>Cp1252</code>.</p>
 Before you create the MobileFirst project and start the translation work, you must change the default encoding of the Eclipse workspace.<br />
 In Eclipse, navigate to <strong>Window > Preferences > General > Workspace</strong> and change the encoding to <code>UTF-8</code>. If you have already created a project, you will need to go over each <code>.css</code> and <code>.js</code> file and change its encoding property.</p>
-<img src="{{ site.baseurl }}/assets/backup/05_05_encoding.png" style="width:55%" /></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_encoding.png" style="width:55%" /></p>
 <h2 id="strings">Enabling translation of application strings</h2>
 You can find the <code>messages.js</code> file, which is intended for application strings, in the <code>common\js</code> folder.<br />
 {% highlight javascript linenos %}
@@ -122,6 +122,6 @@ var lang = WL.App.getDeviceLanguage();
 WL.Logger.debug(">> Detected locale: " + locale);
 WL.Logger.debug(">> Detected language: " + lang);
 {% endhighlight %}
-<img src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png" /></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png" /></p>
 <h2 id="sample">Sample application</h2>
 <a href="https://github.com/MobileFirst-Platform-Developer-Center/Translation" target="_blank">Click to download</a> the MobileFirst project.</p>

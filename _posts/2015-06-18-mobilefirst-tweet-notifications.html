@@ -19,7 +19,7 @@ In this blog we will do the following:
     <li>Pass data between the iOS and WatchKit app</li>
 </ol>
 
-<img src="{{ site.baseurl }}/assets/backup/screenshots.001.jpg" class="img_responsive"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/screenshots.001.jpg" />
 
 <h3>Creating the iOS App</h3>
 Start by creating an iOS project with a Single View Application. Choose Swift for the language.
@@ -30,7 +30,7 @@ In our iOS app, we'll use a TableView to display the list of tweets. We'll also 
 
 So, add those 3 items to the storyboard. We're also going to have a label for the table.
 
-<img src="{{ site.baseurl }}/assets/backup/viewcontroller-553x1024.png" class="img_responsive" /></a>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/viewcontroller-553x1024.png"  /></a>
 
 Create IBActions for the buttons and IBOutlets for the buttons and table view:
 
@@ -79,11 +79,11 @@ At this point we can run the app on the iPhone simulator and see that tapping th
 <h3>Adding the MobileFirst Adapter</h3>
 Now we’ve got to set up the MobileFirst portion of the application. Using MobileFirst Studio, create a MobileFirst Project with a Native iOS API. Then create a MobileFirst HTTP Adapter:
 
-<img src="{{ site.baseurl }}/assets/backup/adapterCreate-1024x607.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/adapterCreate-1024x607.png"  />
 
 You should now have the following project structure in Studio:
 
-<img src="{{ site.baseurl }}/assets/backup/projstructure.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/projstructure.png"  />
 
 Now we're going to integrate the MobileFirst SDK into the iOS application:
 <ol>
@@ -91,7 +91,7 @@ Now we're going to integrate the MobileFirst SDK into the iOS application:
     <li>Inside the Xcode project <strong>Build Settings</strong>, in the <strong>Swift Compiler - Code Generation</strong> section, set <strong>Objective-C Bridging Header</strong> to "WorklightAPI/include/WLSwiftBridgingHeader.h"</li>
     <li>In the <strong>Linking</strong> section, set <strong>Other Linker Flags</strong> to "-ObjC"</li>
     <li>Inside <strong>Build Phases</strong>, in the <strong>Link Binary With Libraries</strong> section, add the following frameworks:
-        <img src="{{ site.baseurl }}/assets/backup/frameworks.png" class="img_responsive" /></li>
+        <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/frameworks.png"  /></li>
 </ol>
 
 Now it's time for the fun stuff!
@@ -159,10 +159,10 @@ override func viewDidLoad() {
 Let's test what we have so far and make sure we can connect to the server:
 <ol>
     <li>In the MobileFirst Studio project, right-click the app name and select <strong>Run As</strong>-><strong>Deploy native API</strong>
-    <img src="{{ site.baseurl }}/assets/backup/deployNativeAPI-1024x893.png" class="img_responsive" /></a>
+    <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/deployNativeAPI-1024x893.png"  /></a>
     </li>
     <li>Right-click the adapter name and select <strong>Run As</strong>-><strong>Deploy MobileFirst Adapter</strong>
-    <img src="{{ site.baseurl }}/assets/backup/deployAdapter-1024x753.png" class="img_responsive" /></a>
+    <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/deployAdapter-1024x753.png"  /></a>
     </li>
     <li>Run the Xcode app.</li>
 </ol>
@@ -172,7 +172,7 @@ You should see a lot of output in the console including the "onSuccess" log.</p>
 <h3>Push Notifications</h3>
 Now we can implement the tag subscription. Push notifications in iOS requires an APNS p12 certificate to be added to the MobileFirst project.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/apnscert.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/apnscert.png"  />
 
 Inside the <strong>application-descriptor.xml</strong> file, provide the certificate password and the subscription tag:</p>
 {% highlight xml linenos %}
@@ -441,11 +441,11 @@ class ViewController: UIViewController, WLDelegate, WLOnReadyToSubscribeListener
 <h3>Creating the WatchKit App</h3>
 <p>Add a WatchKit App target to the iOS project. On the watch, we're only going to show the table of tweets. We don't need any buttons, but we do want to put a label inside the table to display the tweet:</p>
 
-<img src="{{ site.baseurl }}/assets/backup/watchstoryboard.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/watchstoryboard.png"  />
 
 <p>Add a new class to the WatchKit Extension folder called <code>FeedRowController</code> that is a subclass of NSObject. This class will hold the content for each row of the table. In the storyboard, select the TableRowController from the Interface Controller Scene and set its class and identifier to FeedRowController:</p>
 
-<img src="{{ site.baseurl }}/assets/backup/feedRowController.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/feedRowController.png"  />
 
 <p>Add an IBOutlet for the label. You will need to add the <code>import WatchKit</code> statement.</p>
 

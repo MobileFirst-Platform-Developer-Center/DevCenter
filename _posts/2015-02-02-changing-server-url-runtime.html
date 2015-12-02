@@ -30,7 +30,7 @@ For API documentation visit this <a href="http://www-01.ibm.com/support/knowledg
 
 <p>As written above, this is a pretty simple application. It allows you to get &amp; set the server URL as well as provide a verification that the URL change was successful. After the image is a quick rundown of the application's flow.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/app-ui.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/app-ui.png"  />
 
 <h3>Application flow</h3>
 <h4>Step 1</h4>
@@ -58,7 +58,7 @@ function getServerURLSuccess(serverURL) {
 ...
 {% endhighlight %}
 
-<img src="{{ site.baseurl }}/assets/backup/before-address.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/before-address.png"  />
 
 <h4>Step 3</h4>
 <p>The application successfully connected to a MobileFirst server using the current server URL. To change the server URL to another server's URL, <code>WL.App.setServerUrl</code> is used. In this sample I chose to have the end-user manually enter a fully qualified address by inputting the <code>protocol</code>, <code>host/IP address</code>, <code>port</code> and <code>context root</code>, but of course this is purely applicative.</p>
@@ -83,8 +83,8 @@ function setServerURLSuccess() {
 ...
 ...
 {% endhighlight %}
-<img src="{{ site.baseurl }}/assets/backup/after-address.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/after-address.png"  />
 
 <h4>Step 4</h4>
 <p>After setting the new server URL, we can now tap the connect button to connect again. Viola!</p>
-<p><img src="{{ site.baseurl }}/assets/backup/connect-success1.png" class="img_responsive" />
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/connect-success1.png"  />

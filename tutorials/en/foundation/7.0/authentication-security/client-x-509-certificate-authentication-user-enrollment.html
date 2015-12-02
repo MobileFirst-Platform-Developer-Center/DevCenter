@@ -66,9 +66,9 @@ The user enrollment process relies on a dependent user realm to help it establis
 IBM MobileFirst Platform Foundation then provisions the device with the X.509 client certificate for use in subsequent connections to the server.<br />
 <br />
 The first time a user connects to the MobileFirst server, that user must authenticate through the dependent realm to initiate the enrollment process. After a user is enrolled into the User Certificate Authentication realm, subsequent connections to the server occur through the two way SSL/TLS handshake, where the client certificate is presented as the SSL client entity.<br /></p>
-<p><img src="{{ site.baseurl }}/assets/backup/UserEnrollFlow.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/UserEnrollFlow.jpg"/></p>
 <p></p>
-<p><img src="{{ site.baseurl }}/assets/backup/ClientCertAuthFlow.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/ClientCertAuthFlow.jpg"/></p>
 <h2 id="certificateAuthorities">X.509 certificate and certificate authorities (CAs)</h2>
 <p>For security reasons, during testing, it is not recommended to use an established CA that uses an embedded PKI in your infrastructure.<br />
 <br />
@@ -436,7 +436,7 @@ The following examples shows the updates made above.<br />
 <p>You must install the root CA that you generated in the previous steps onto your client devices for your devices to trust MobileFirst Server over SSL. Email or host the <code>root_ca.crt</code> file, and then open the file on your device. The iOS and Android devices ask for approval when you manually attempt to install certificates.<br />
 <br />
 <center><br />
-<img src="{{ site.baseurl }}/assets/backup/AndroidX509accept-300x213.png"/><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/AndroidX509accept-300x213.png"/><br />
 </center><br /></p>
 <h2 id="installApp">Installing and testing the application</h2>
 <ol>

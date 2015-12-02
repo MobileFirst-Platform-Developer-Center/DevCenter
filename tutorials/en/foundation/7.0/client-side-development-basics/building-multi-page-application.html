@@ -29,7 +29,7 @@ This is required because the main application HTML file loads the MobileFirst cl
 <li>A single HTML file that contains all the application "pages"</li>
 <li>A separate HTML file for each application "page"</li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/03_02_application_types.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_application_types.jpg"/></p>
 <p>A single HTML file is the preferred model for simpler applications, where the developer is responsible for showing the “current” page <code>DIV</code> and hiding the rest.</p>
 <p>However, larger applications present a challenge:</p>
 <ul>
@@ -95,7 +95,7 @@ $.getScript(path + "js/MainPage.js", function() {
 JavaScript (and CSS, if needed) references from the <code>MainPage.html</code> are loaded into the DOM.</p>
 <h2 id="implementPageNavigationHistory">Implementing page navigation with history</h2>
 <p>By using the previously described technique to load an external HTML file, you can implement a navigation interface with history.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/03_02_mutlipage_history.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_mutlipage_history.jpg"/></p>
 <p>The navigation history must be preserved as a stack in a global array object.<br />
 A reference to the currently loaded page must be preserved, too, by using a global object variable.<br />
 A reference to the file path is needed for Windows Phone 8.</p>
@@ -103,7 +103,7 @@ A reference to the file path is needed for Windows Phone 8.</p>
 var currentPage = {};<br />
 var path = ""; {% endhighlight %} </p>
 <h3>Implementing page navigation with history: Step 1</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_1.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_1.jpg"/></p>
 <ol>
 <li>On application start, the <code>MainPage.html</code> file is loaded from the application code and injected into the <code>#pagePort DIV</code>.
 <p>
@@ -132,7 +132,7 @@ currentPage.init = function() {
 <li>When the <code>MainPage.html</code> file is loaded, the <code>currentPage.init</code> method is called.</li>
 </ol>
 <h3>Implementing page navigation with history: Step 2</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_2.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_2.jpg"/></p>
 <ol>
 <li><code>MainPage.html</code> is pushed into the <code>pagesHistory</code> stack.</li>
 <li><code>Page1.html</code> is loaded and injected into <code>#pagePort DIV</code>. <code>Page1.js</code> is loaded as a part of <code>Page1.html</code>.</li>
@@ -148,7 +148,7 @@ currentPage.init = function(){
 <li>When the loading of <code>Page1.html</code> completes, a new <code>currentPage.init</code> method is called.</li>
 </ol>
 <h3>Implementing page navigation with history: Step 3</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_3.jpg"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_navigation_history_3.jpg"/></p>
 <ol>
 <li>The previous HTML file name is retrieved from the <code>PagesHistory</code> stack (<code>MainPage.html</code>).</li>
 <li>It is loaded and injected into <code>#pagePort DIV</code>.
@@ -178,4 +178,4 @@ currentPage.init = function(){
 </ol>
 <h2 id="sampleApplication">Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/BuildingMultiPageApplicationProject.zip">Click to download</a> the Studio project.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/03_02_sample_app.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_02_sample_app.png"/></p>

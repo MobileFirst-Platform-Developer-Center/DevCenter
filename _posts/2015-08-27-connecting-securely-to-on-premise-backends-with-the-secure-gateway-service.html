@@ -15,12 +15,12 @@ author:
 <h3>Pre-requisites</h3>
 <p>The ibm-mfpf-container-7.1.0.0.eval.zip archive file should have been downloaded and extracted into a directory say ibm-mfpf-container-7.1.0.0.eval. Users should also be familiar with deploying their MobileFirst Platform Foundation projects on the IBM container service and have all the pre-requisites installed on the system where they are going to run the secure gateway client. If they are not, then they should read the article linked below</p>
 
-<p><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/ibm-containers/">https://developer.ibm.com/mobilefirstplatform/tutorials/en/foundation/7.1/ibm-containers/evaluate</a></p>
+<p><a href="{{site.baseurl}}/tutorials/en/foundation/7.1/ibm-containers/">{{site.baseurl}}/tutorials/en/foundation/7.1/ibm-containers/evaluate</a></p>
 
 <h3>Connecting to On-Premise</h3>
 <p>In order to support communication over TLS from an adapter to Secure Gateway we would need to use a TLS proxy. In this post we will use <a href="https://www.stunnel.org/index.html" target="_blank">stunnel</a> an opensource TLS proxy to connect to the public endpoint exposed by the Secure Gateway service on IBM Bluemix. We will install this proxy inside the docker container and it will listen for unencrypted calls at a particular local port. The EIS connectivity driver can then make calls to this local port on the docker container which are then transmitted by stunnel over TLS to the secure gateway public endpoint. This is shown in the figure below</p>
 
-<img src="{{ site.baseurl }}/assets/backup/Slide1.jpg" alt="On-Premise Connectivity" class="img_responsive" />
+<img src="{{ site.baseurl }}/assets/backup/Slide1.jpg" alt="On-Premise Connectivity"  />
 
 <h3>Steps to connect to On premise with Mutual Auth</h3>
 <ol>
@@ -139,4 +139,4 @@ CMD ["/root/bin/run_supervisord"]
 </ol>
 
 <p>You can now follow the steps to build, deploy and run your container on Bluemix as mentioned in<br />
-<a href="{{site.baseurl}}/tutorials/en/foundation/7.1/ibm-containers/run">https://developer.ibm.com/mobilefirstplatform/tutorials/en/foundation/7.1/ibm-containers/run</a></p>
+<a href="{{site.baseurl}}/tutorials/en/foundation/7.1/ibm-containers/run">{{site.baseurl}}/tutorials/en/foundation/7.1/ibm-containers/run</a></p>

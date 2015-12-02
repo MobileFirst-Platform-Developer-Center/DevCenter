@@ -7,7 +7,7 @@ weight: 1
 <h2>Overview</h2>
 <p>This tutorial presents how to develop server-side code (adapters) that is used for integrating between the client application, through the MobileFirst Platform, with enterprise back-end applications and cloud services.</p>
 <p>The tutorial is followed by explanations and examples for HTTP, SQL, Cast Iron, and JMS adapters. It also shows how to invoke adapter procedures from hybrid and native applications, advanced adapter usage, and how to use Java in adapters.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation1.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation1.png"/></p>
 <h2>Benefits</h2>
 <h3>Universality</h3>
 <ul>
@@ -48,13 +48,13 @@ Usually, adapter procedures are implemented in JavaScript, but because an adapte
 <h2>Adapter creation</h2>
 <ol>
 <li>In Eclipse, click the MobileFirst icon that is located in the toolbar and select <strong>MobileFirst Adapter</strong>.<br />
-<img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation2.png"/></li>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation2.png"/></li>
 <li>Select a MobileFirst project and an adapter type.
-<p><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_21.png"/></li>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_21.png"/></li>
 <li>Select an adapter type and type an adapter name. Applications use this name to access the adapter.</li>
 <li>Click <strong>Finish</strong>.</li>
 </ol>
-<p><img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_41.png"/><br />
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_41.png"/><br />
 This generates both an XML file, which declares procedures and connection properties, and a JavaScript file, which defines procedures and the adapter logic.<br />
 <br clear="all" /></p>
 <h2>Adapter deployment</h2>
@@ -62,23 +62,23 @@ This generates both an XML file, which declares procedures and connection proper
 <li>Select an adapter to deploy.
 </li>
 <li>Right-click the adapter and select <strong>Run As > Deploy MobileFirst Adapter</strong>.<br />
-<img src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_51.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_Adapter_Creation_51.png"/>
 </li>
 </ol>
 <p>MobileFirst Studio archives the adapter code and deploys it to the MobileFirst Server instance.<br />
 You can see the deployed adapter in the MobileFirst Console.<br />
-<img src="{{ site.baseurl }}/assets/backup/04_01-console.png"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01-console.png"/></p>
 <h2>Testing adapter procedures</h2>
 <p>MobileFirst Studio can be used to test the adapter procedures.<br />
 To run a procedure test:</p>
 <ol>
 <li>Select <strong>Run As > Invoke MobileFirst Procedure</strong>.<br />
-<img src="{{ site.baseurl }}/assets/backup/04_01_invoke-menu.png"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01_invoke-menu.png"/></p>
 </li>
 <li>Select the procedure that you want to test.
 </li>
 <li>Enter comma-separated procedure parameters and click <strong>Run</strong>.
-<p><img src="{{ site.baseurl }}/assets/backup/04_01-invoke-options.png"/></li>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_01-invoke-options.png"/></li>
 </ol>
 <h2>Adapter XML structure</h2>
 <p>{% highlight xml linenos %}

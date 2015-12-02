@@ -18,7 +18,7 @@ weight: 4
 <p>If a source control management system (such as Rational Team Concert™, Git or Subversion) is used, refer to the user documentation topic: Integrating with source control systems.</p>
 
 <h2>Currently supported environments</h2>
-<img src="{{ site.baseurl }}/assets/backup/03_05_smartphones.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_smartphones.png" />
 
 <strong>Smartphones</strong>
 <ul>
@@ -28,7 +28,7 @@ weight: 4
     <li>Windows Phone 8 and later</li>
 </ul>
 
-<img src="{{ site.baseurl }}/assets/backup/03_05_tablets.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_tablets.png" />
 
 <p><strong>Tablets</strong></p>
 <ul>
@@ -37,7 +37,7 @@ weight: 4
     <li>Windows 8 and later</li>
 </ul>
 
-<img src="{{ site.baseurl }}/assets/backup/03_05_web.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_web.png" />
 
 <p><strong>Web</strong></p>
 <ul>
@@ -45,7 +45,7 @@ weight: 4
     <li>Browsers that support HTML 5 and CSS 3</li>
 </ul>
 
-<img src="{{ site.baseurl }}/assets/backup/03_05_browsers.png"  />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_browsers.png"  />
 
 <p><strong>Browsers</strong></p>
 <ul>
@@ -54,7 +54,7 @@ weight: 4
 </ul>
 
 <h2>How does optimization work?</h2>
-<img src="{{ site.baseurl }}/assets/backup/03_05_common_folder_structure-219x300.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_common_folder_structure-219x300.png" />
 
 <p>The MobileFirst application structure is divided into environment folders (iPhone, Android, BlackBerry and so on).</p>
 Each environment folder contains the web resources (CSS, JS, images, and so on) that are relevant for that specific environment.</p>
@@ -75,7 +75,7 @@ There are 2 ways to add an environment to a MobileFirst project:</p>
 The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: The new environment HTML code overrides the common HTML file.<br />
 Note: By default, a new environment does not include a new HTML file because the common HTML file is shared by all environments.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/03_05_html.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_html.png" />
 
 <p><strong>JavaScript optimization</strong><br />
 The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: The JavaScript file from an environment folder has a <code>wlEnvInit()</code> function that invokes the <code>wlCommonInit()</code> JavaScript function from the common folder.</p>
@@ -83,7 +83,7 @@ The newly added environment (for example, iPhone) extends the resources of the c
 <p>Technically, the JavaScript from an environment folder is appended to the file from the common folder.<br />
 Using the same variable names as in the common folder redefines their meaning.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/03_05_javascript.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_javascript.png" />
 
 <p><strong>CSS optimization</strong><br />
 The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: The CSS file from an environment folder is appended to the CSS file from the common folder.</p>
@@ -91,9 +91,9 @@ The newly added environment (for example, iPhone) extends the resources of the c
 <p>Using the same property names as the ones in the common folder overrides their settings.<br />
 Note: The CSS from the environment folder might contain some default CSS rules that match the environment needs.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/03_05_css.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_css.png" />
 
 <p><strong>Images optimizations</strong><br />
 The newly added environment (for example, iPhone) extends the resources of the common environment in the following way: Image files in the images folder of the environment folder that have the same file name than the image files in the common folder override the image files in the common folder.</p>
 
-<img src="{{ site.baseurl }}/assets/backup/03_05_iphone.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_05_iphone.png" />
