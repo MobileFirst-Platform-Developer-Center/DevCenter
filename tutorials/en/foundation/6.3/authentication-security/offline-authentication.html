@@ -34,7 +34,7 @@ The associated sample project demonstrates an end-to-end scenario. However, ther
 <p>Before either online or offline authentication occurs, an Internet connection is checked for first. Depending on the result, the appropriate authentication flow is used.</p>
 <h3>Online Authentication</h3>
 <h4>Steps 2 and 3:</h4>
-<p>The online authentication flow is implemented as explained in the <a href="../../authentication-security/adapter-based-authentication/adapter-based-authentication-hybrid-applications/" title="Adapter-based authentication in hybrid applications">adapter-based authentication in hybrid applications</a> tutorial.</p>
+<p>The online authentication flow is implemented as explained in the <a href="../adapter-based-authentication-hybrid-applications/" title="Adapter-based authentication in hybrid applications">adapter-based authentication in hybrid applications</a> tutorial.</p>
 <h4>Steps 4 and 5:</h4>
 <p>After a successful login, a JSONStore is created using the end-user’s username and encrypted using the user's password.</p>
 <h4>Step 6:</h4>
@@ -72,7 +72,7 @@ function goToSecuredArea() {
 <h3>Implementation notes</h3>
 <h4>Single-Step Authentication</h4>
 <ol>
-<li>The online authentication flow uses the same code as provided in the <a href="../../authentication-security/adapter-based-authentication/" title="Adapter-based authentication">single-step adapter authentication sample application</a>.
+<li>The online authentication flow uses the same code as provided in the <a href="../" title="Adapter-based authentication">single-step adapter authentication sample application</a>.
 </li>
 <li>In order to simulate a back-end of multiple users, a valid login is considered one where the <code>username == password</code>, no matter what the username is.
 <p>The <code>submitAuthentication</code> function in the adapter's <code>*-impl.js</code> file is therefore modified to:<br />

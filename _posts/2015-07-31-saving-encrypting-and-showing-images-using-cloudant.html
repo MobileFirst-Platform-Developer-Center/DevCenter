@@ -8,7 +8,7 @@ author:
   display_name: Nana Amfo
 ---
 <h2>Overview</h2>
-<p>This blog post is based on <a href="{{site.baseurl}}/blog/2015/04/27/saving-and-retrieving-images-using-cloudant-with-http-adapters/">Saving and Retrieving Images using Cloudant with HTTP Adapters</a> that I made a while ago using cloudant to store a base64 encoded image. Instead of saving the encoded image I will encrypt it using <code>WL.SecurityUtils</code> class provided in MobileFirst Foundation. WL.SecurityUtils is a small utility class that provides encryption and decryption of data using the Stanford Javascript Crypto Library (SJCL). In addition, I will not be covering the database creation or the Cordova plugin integration you can find that in the previous blog.
+<p>This blog post is based on <a href="{{site.baseurl}}/blog/2015-04-27/saving-and-retrieving-images-using-cloudant-with-http-adapters/">Saving and Retrieving Images using Cloudant with HTTP Adapters</a> that I made a while ago using cloudant to store a base64 encoded image. Instead of saving the encoded image I will encrypt it using <code>WL.SecurityUtils</code> class provided in MobileFirst Foundation. WL.SecurityUtils is a small utility class that provides encryption and decryption of data using the Stanford Javascript Crypto Library (SJCL). In addition, I will not be covering the database creation or the Cordova plugin integration you can find that in the previous blog.
 
 <h3>Encryption</h3>
 <p>To encrypt data you can use the <code>WL.SecurityUtils.encrypt</code> method. This method requires the key and the text that you wish to encrypt. It is recommended that you secure your key so that no one else can use it. In this blog I am hardcoding the key for simplicity.
