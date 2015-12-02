@@ -22,24 +22,24 @@ author:
 <h3 id="manageVersions">Managing app versions</h3>
 <p>There are two options to deny access to an app using MobileFirst Platform v7.0. The first one concerns the entire app, as shown in the following figure:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/disableApp1.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/disableApp1.png"  />
 
 <p>By doing this, all users having this specific version of the app on this platform will be informed that they should upgrade. By default, the client MobileFirst Platform SDK will display a dialog box with the message entered in the console and a button to access the new version specified in the URL. But this default behavior can be customized, as we will see later.</p>
 
 <h3 id="manageApps">Managing app access</h3>
 <p>The second option, which is what we are aiming at here, is the ability to deny access to a particular user or even a specific device:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/manageDevices.png" class="img_responsive" /></a>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/manageDevices.png"  /></a>
 
 <p>To take advantage of this feature, you must enable device tracking (see the <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.monitor.doc/monitor/c_device_mgmt.html" target="_blank">documentation</a>) by adding <code>wl.device.tracking.enabled=true</code> in the <code>worklight.properties</code> file.<br />
 Note that, depending on your application, a particular device can be found based on its id, user id or even a friendly name.<br />
 Once a device has been found, either the entire device can be "disabled" (e.g. the device is still usable but cannot make any request to the MobileFirst Platform server), or a specific app on the device. The following options are available for disabling a device:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/disableDeviceOptions.png" class="img_responsive" /></a>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/disableDeviceOptions.png"  /></a>
 
 <p>and the following options for disabling an app:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/disableDeviceAppOptions.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/disableDeviceAppOptions.png"  />
 
 <p>So what happens when any of the device or app status has been changed using this panel? The app, when it connects to the MobileFirst Platform server, receives exactly the same challenge handler as when the entire app is disabled for everybody, except that the generic message received is "This device has been decommissioned" (whatever the status that was selected).</p>
 

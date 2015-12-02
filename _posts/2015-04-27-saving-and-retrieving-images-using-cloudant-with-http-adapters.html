@@ -16,7 +16,7 @@ I will be using a sample cluster which you can view by going to this url : https
 <h3>Create your database</h3>
 <p>In the ibmdemo cluster I have already created a database called demo. To create a database you can use the dashboard, use Cloudant's REST Services to generate a database or use any client library that is compatible with Cloudant
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-04-26-at-7.44.00-PM-300x147.png" class="img_responsive" /></a>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-04-26-at-7.44.00-PM-300x147.png"  /></a>
 
 <h3>Save the image into your database</h3>
 <p>We can use a Cordova plugin to read an image file from an app then store this image into our Cloudant Database. In my example I am using iOS so I created two files, ReadFiles.m and ReadFiles.h, that are responsible for reading an image file from a sample app and converting it to a base64 string. This string will be sent to our Cloudant database called demo.
@@ -112,7 +112,7 @@ function saveToCloudant(){
 <p>You may notice that I added an authorization header to my request by creating a base64 string comprised of the username and password concatenated by a colon. I do this because I am sending a through HTTPS. You may not need to do this if you are using HTTP but it is recommended that you send request through HTTPS. In addition, I will strongly suggest you <b>not</b> hardcode your username and password into your production code. There are other ways to securely send data into Cloudant, but this is beyond the scope of this post.
 
 <p>After saving your image you can preview the document that you have created using the dashboard.
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-04-26-at-8.17.42-PM-300x157.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-04-26-at-8.17.42-PM-300x157.png"  />
 
 <h3>Retrieve your image from Cloudant</h3>
 <p>Just as we did in storing the image into Cloudant we can use a GET request to retrieve our image. We will use an HTTP adapter to request the image. You will need to edit the .xml file and the -impl.js file.
@@ -188,7 +188,7 @@ function retrieveImageFromCloudant(){
 <h3>Putting it all together</h3>
 <p>For the UI I used two buttons, one button that will stored the image into Cloudant as a base64 string and the second button to retrieve the image using an HTTP adapter request. The final result should look like the following.
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Apr-26-2015-8.23.24-PM-169x300.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/iOS-Simulator-Screen-Shot-Apr-26-2015-8.23.24-PM-169x300.png"  />
 
 <p>Hopefully, this blog post will show you how easy it is to use Cloudant as your DBaaS without too much effort.
 <p><a href="https://github.ibm.com/noamfo/developerWorks/tree/master/CloudantAdapterTestProject">CloudantAdapter App</a>

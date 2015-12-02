@@ -26,7 +26,7 @@ author:
 
 <p>So how do we make use of Ionic with a hybrid MobileFirst application? The process involves a few manual steps that I'll walk you through below, but note that fellow IBM Carlos Santana has created <a href="https://github.com/csantanapr/mfp-ionic-templates">starter templates</a> that you can use to skip this process entirely. I still recommend noting what's going on here (and Carlos and I do things a bit differently) just so you can be aware of the changes. You will also need to follow this manual process if you are porting an <i>existing</i> Ionic project to MobileFirst.</p>
 
-<p>I'm assuming you have an existing MobileFirst server set up and that you've created a new hybrid application. If you haven't done so, then go ahead and do that now. I'm also using the <a href="https://developer.ibm.com/mobilefirstplatform/install/#clui">MobileFirst command line</a> for this post.</p>
+<p>I'm assuming you have an existing MobileFirst server set up and that you've created a new hybrid application. If you haven't done so, then go ahead and do that now. I'm also using the <a href="{{site.baseurl}}/downloads">MobileFirst command line</a> for this post.</p>
 
 <h3>Preparing the Folders</h3>
 <p>For your first step, go ahead and get rid of the <code>common</code> folder. You can delete it or rename it, it doesn't matter.</p>
@@ -37,11 +37,11 @@ author:
 
 <p>Open the folder you just created and you'll see something like the following:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/shot13.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/shot13.png"  />
 
 <p>Even with telling Ionic not to create a "full" Cordova project, it will add some files that you won't need for your MobileFirst project. Simply take that <code>www</code> folder and copy it out as common. Your app directory may look something like this now:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/shot22.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/shot22.png"  />
 <p>In the shot above, <code>common-orig</code> was the folder MobileFirst created and <code>ioniccode</code> is the Ionic project we just made. (You can delete that.)</p>
 
 <h3>Updating the Code</h3>
@@ -157,7 +157,7 @@ function wlCommonInit(){
 
 <p>And that's basically it - for now. If you do a quick <code>mfp bd</code> and open your app in the console, you should see Ionic-awesomeness running within MobileFist-epicness.</p>
 
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/ionicconsole.png"><img src="{{ site.baseurl }}/assets/backup/ionicconsole.png" alt="ionicconsole" width="835" height="580" class="alignnone size-full wp-image-11145" /></a></p>
+<img src="{{ site.baseurl }}/assets/backup/ionicconsole.png"/>
 
 <p>So, what next? Probably the biggest issue we haven't covered here is properly "bootstrapping" the application. By that I mean, creating a way to delay application logic until both Cordova'a <code>deviceReady</code> event has fired as well as MobileFirst's init process. I've covered that on my blog and will link to it below. Of course, you can skip worrying about that and just get Carlos' templates, but as I said above, you probably want to know a bit about the thinking behind <i>how</i> we do the bootstrapping as well. Of course, one of the biggest benefits of using MobileFirst is the ability to call different adapters. I've got demos showing two of them (Database and HTTP) within the Ionic framework.</p>
 

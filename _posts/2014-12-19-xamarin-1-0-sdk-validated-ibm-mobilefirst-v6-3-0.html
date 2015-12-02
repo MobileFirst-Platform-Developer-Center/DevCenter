@@ -6,7 +6,7 @@ tags:
 author:
   display_name: Ajay Chebbi
 ---
-<p>Couple of weeks back we <a href="http://developer.ibm.com/mobilefirstplatform/2014/12/05/ibm-mobilefirst-platform-foundation-6-3-now-available/" target="_blank">announced the availability </a> of IBM MobileFirst Platform Foundation 6.3.0 . We went ahead and validated the <a href="https://components.xamarin.com/view/ibm-worklight" target="_blank">IBM MobileFirst Xamarin SDK 1.0.0</a> with the IBM MobileFirst 6.3.0 server. The IBM MobileFirst Xamarin SDK passed our tests! iOS and Android apps built with the current IBM MobileFirst Xamarin 1.0.0 SDK will work with the IBM MobileFirst 6.3.0 server.</p>
+<p>Couple of weeks back we <a href="{{site.baseurl}}/blog/2014/12/05/ibm-mobilefirst-platform-foundation-6-3-now-available/" target="_blank">announced the availability </a> of IBM MobileFirst Platform Foundation 6.3.0 . We went ahead and validated the <a href="https://components.xamarin.com/view/ibm-worklight" target="_blank">IBM MobileFirst Xamarin SDK 1.0.0</a> with the IBM MobileFirst 6.3.0 server. The IBM MobileFirst Xamarin SDK passed our tests! iOS and Android apps built with the current IBM MobileFirst Xamarin 1.0.0 SDK will work with the IBM MobileFirst 6.3.0 server.</p>
 <p>However, there is one tweak needed in the development environment. In 6.3.0, the IBM MobileFirst CLI (a.k.a Worklight CLI) command is now changed from <code>wl</code> to <code>mfp</code>. This renders the Xamarin addin not functional. So, developers will have to do the following 2 things - if they install the 6.3.0 CLI</p>
 <li>Remember, The default installation on windows is now at C:\Program Files\IBM\MobileFirst-CLI </li>
 <li>copy mfp.cmd file to wl.cmd in the install location</li>

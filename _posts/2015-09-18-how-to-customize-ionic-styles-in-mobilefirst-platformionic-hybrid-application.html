@@ -8,7 +8,7 @@ author:
   display_name: ShuSia
 ---
 <p>Before getting started, I would like to give the credit to my teammate Jeff Tennenbaum, who figured out how to get this working.</p>
-<p>When building hybrid mobile applications using <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started/">MobileFirst Platform</a> (MFP), part of the process is to choose a JavaScript framework to speed up the development of mobile applications (e.g., Ionic, jQuery Mobile, Dojo, etc.). In this blog, we will use <a href="http://ionicframework.com/">Ionic</a> for our hybrid application. One of the common things developers do is to add their custom styles. The recommended way of working with custom styles in Ionic is by using <a href="http://sass-lang.com/">Sass</a>, a powerful CSS language extension.</p>
+<p>When building hybrid mobile applications using <a href="{{site.baseurl}}/tutorials/en/">MobileFirst Platform</a> (MFP), part of the process is to choose a JavaScript framework to speed up the development of mobile applications (e.g., Ionic, jQuery Mobile, Dojo, etc.). In this blog, we will use <a href="http://ionicframework.com/">Ionic</a> for our hybrid application. One of the common things developers do is to add their custom styles. The recommended way of working with custom styles in Ionic is by using <a href="http://sass-lang.com/">Sass</a>, a powerful CSS language extension.</p>
 <p>Before being able to use Sass, you will need to set it up. In this blog, we will take advantage of the new feature in MFP v7.1. One of the major enhancements in MFP v7.1 is the new development model based on Apache Cordova. In the past, it was difficult to add any third-party plugins to your MFP applications.  In MFP v7.1, you can now create a Cordova application using MFP Command Line Interface (CLI). In this model, <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/hello-world/integrating-mfpf-sdk-in-cordova-applications/">MFP SDK</a> is packaged as a plug-in for Cordova. Because you create a Cordova application with MFP as a plug-in, you can now easily add any third-party plugins to your application and work with it like a normal Cordova application. This means, Ionic commands (including the command to set up Sass) will work in such application.</p>
 <p>Now, let’s get started. First, we need to create a Cordova project and integrate with Ionic. Then, we can work on our customization and test the result.</p>
 <p><strong>Create Cordova Project</strong></p>
@@ -22,14 +22,14 @@ $ npm install<br />
 $ mfp cordova emulate</p></blockquote>
 <p>The <code>npm install</code> will take care of running <code>bower install</code> this will download all the js dependencies in www/js/lib/</p>
 <p>While the emulator is loading, you can examine the file structure of your application.<br />
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/project-300x171.png" class="img_responsive" /></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/project-300x171.png"  /></p>
 <p>Note: You can create a plain Ionic project by using the <code>ionic start</code> command as described in the <a href="http://ionicframework.com/getting-started/">Ionic Getting Started Tutorial</a>.</p>
 <p>When prompted for what platform to run on, choose ios.<br />
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/cli1-300x47.png" class="img_responsive" /><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/cli1-300x47.png"  /><br />
 When prompted for target device, choose iPhone-6.<br />
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/cli2-300x169.png" class="img_responsive" /><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/cli2-300x169.png"  /><br />
 You can see the result running in iPhone 6 emulator, as depicted below.<br />
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/emulator-orig-164x300.png" class="img_responsive" /><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/emulator-orig-164x300.png"  /><br />
 This is an out of the box MFP/Ionic application using the <code>tab</code> template. Let’s proceed now with a simple customization.</p>
 <p><strong>Add Customization</strong></p>
 <p>Before starting on customizations, you need to make sure that Sass has been setup for your project. You can setup Sass by typing this command in the <code>myapp</code> directory.</p>
@@ -59,5 +59,5 @@ $stable:  #CBBEB5 !default;</p>
 @import "www/lib/ionic/scss/ionic";</p>
 </blockquote>
 <p>Run the <code>mfp cordova emulate</code> command again to see the changes. Your emulator should look similar to the screenshot below.<br />
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/emulator-final-164x300.png" class="img_responsive" /><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/emulator-final-164x300.png"  /><br />
 Congratulations! You have successfully customized the look and feel of an MFP/Ionic hybrid application. This is a very simple customization to get you started. For more information, you can check out <a href="http://learn.ionicframework.com/formulas/working-with-sass/">this tutorial</a> from the Ionic website on how to write a Sass theme.</p>

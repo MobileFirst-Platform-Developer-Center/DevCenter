@@ -53,15 +53,15 @@ author:
 <p>Let’s look at the security flows between our actors.  How do the various IBM MobileFirst-provided components (SDK, passport strategy, etc) secure the interactions between the actors?</p>
 <p>There are three basic flows between the actors that are under your control as a developer.  The mobile app makes calls to the mobile back-end to access Push and Data services.  The Mobile App also makes calls to one or more node.js services, and those services can make calls to the mobile back-end.  These calls are all under your control as a programmer; your mobile app invokes the service calls using IMFResourceRequest (which is part of the client SDK), and your node.js service can call the mobile back-end as a RESTful service.  These three flows are depicted by the arrows in the image below.</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/1-300x208.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/1-300x208.png"  />
 
 <p>Now, let’s add in the Advanced Mobile Access Authorisation server (AZ server).  We know that the mobile app will need to send tokens on the requests, and both the mobile back-end and the node.js service will need to validate the tokens that are sent in.  So, on the mobile back-end and the node.js service, the developer will use the passport.io framework with strategies that we provide which will enforce the requirement to send a token with the requests.  The passport code will retrieve the token from the inbound request and validate it against the AZ server (details of the actual validation are given later in this document).  On the mobile app, the IMFResourceRequest and IMFURLProtocol functions from the client SDK will obtain a token and add it in to the request. This is completely transparent to you, as the developer. (Remember that your code had to perform authentication previously; however, sending the token on requests requires no additional work).  The situation that we have now is shown in the following diagram.</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/2-245x300.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/2-245x300.png"  />
 
 <p>There is one piece still missing: On the node.js service, your code needs to obtain an authorisation header to send to the mobile back-end if you want to call it.  The  server SDK provides an easy-to-use API to obtain this header, so our final flow diagram is as follows:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/3-244x300.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/3-244x300.png"  />
 
 <p><strong>Tokens</strong></p>
 <p>When we say “send a token”, what do we actually mean?  Well, for the IBM MobileFirst Platform we have created our own IBM MobileFirst security tokens.  These tokens provide a consistent way of accessing services by IMF clients (by which we mean clients of the IBM MobileFirst Platform for iOS), irrespective of how they originally authenticated.  This lets us support multiple forms of authentication (in the beta release we support Facebook, Google and Custom as authentication mechanisms) without you having to change your service code.  The consistency is important — in fact, it provides a number of benefits:</p>
@@ -98,7 +98,7 @@ author:
 <p>The protocol we use to send and receive tokens is called OAuth 2.0.  This is an open specification for authorisation, originally designed to allow client applications to access server resources on behalf of a resource owner.  The canonical OAuth client is actually a server side application, which communicates with the user via a browser-based interface.</p>
 <p>Let’s quickly look at an example of a server-side OAuth application.  A user Sally  uses a web browser to allow a website printMyPhotos.com to print her photos, which are stored on another website myPhoto.com.  Sally does not want to give her myPhoto.com username and password to the printing website; she just wants to grant access to print specific photos.  The actors are the <em>Resource Owner</em>, who is the end user that owns the photos, the the <em>OAuth Client</em>, which is the printing website, the <em>Resource Server</em> which hosts the photos, and the <em>Authorisation Server</em> which handles the tokens and authentication.  This scenario is shown in the image below.</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/4-300x175.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/4-300x175.png"  />
 
 <p>This is very different from our mobile use case!  There is no web browser and no intermediate third party web site — our OAuth client is actually embedded in the  mobile app itself.  As we will see below, this introduces challenges.</p>
 <p>There are actually multiple levels of authentication involved in OAuth.  First of all, the OAuth client has to authenticate <em>itself</em> to the authorisation server.  In the canonical use case, the authorisation service needs to know that the OAuth client really is the printMyPhotos.com web site and not some other site trying to steal photos.  In our mobile use case, the authorisation service needs to know that the OAuth client is a valid instance of our application, and not some other application.</p>
