@@ -151,11 +151,11 @@ function printList(allDocs) {
 
 <p>Notice that because of the asynchronous execution of some APIs, the code has been spread into several functions in order to ensure the consistency of the results stored and displayed. An initial call to the <code>getDocumentList()</code> function (button "Refresh List") gives the following result:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp1-291x300.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp1-291x300.png"  />
 
 <p>After having downloaded the initial set of documents (button “Download files”) as we will see later in the post, a second call to the <code>getDocumentList()</code> function gives the following new result:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp2-260x300.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp2-260x300.png"  />
 
 <h2 id="download">Downloading documents into the mobile app</h2>
 <p>Once we know which documents are available, the next step is to be able to download these locally. We will explore two options for downloading the documents.
@@ -229,7 +229,7 @@ function getDocument(docName) {
 {% endhighlight %}
 <p>It requires a piece of Java code in order to read the content of the file and return it encoded in base64 format:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp3-300x253.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp3-300x253.png"  />
 
 <p>The Java code itself is quite simple:
 {% highlight java linenos %}
@@ -296,7 +296,7 @@ function downloadDocument(docName) {
 <p>Once the documents are in the app, they can be displayed at any time, even when there is no connectivity.
 <p>The tricky thing here is that depending on the platform, you won’t store the files at the same location. Indeed, iOS has a built-in PDF reader available for Safari, whilst for Android an external app is required to render the PDF. Therefore on Android it is important to store the files in a location that will be accessible from this app. In order to have a platform dependent implementation, the same function can be written specifically under its own platform, as shown in figure 4:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp4-163x300.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp4-163x300.png"  />
 
 <p>In the <code>main.js</code> file under the Android folder, the <code>geFilePath()</code> function is implemented as follow:</p>
 {% highlight javascript linenos %}
@@ -338,7 +338,7 @@ $('#docList').on('click', 'li', function() {
 {% endhighlight %}
 
 <p>Figure 5 shows how it renders on iOS:</p>
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp5-160x300.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/managePDFhybridApp5-160x300.png"  />
 
 <p>On Android it is necessary to hit the system back button to go from the PDF viewer app back to the hybrid app.<br>
 Use <code>git clone https://hub.jazz.net/git/enoiret/MFPDocViewer</code> if you want to download the sample project to make tests.</p>

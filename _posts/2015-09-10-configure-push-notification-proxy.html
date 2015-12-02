@@ -66,7 +66,7 @@ push.gcm.proxy.port=<proxy port>
 
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/HTTPServerAccesslogs.png" "img_responsive" />
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/GCMProxyServerWireshark.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/GCMProxyServerWireshark.png"  />
 
 <p>Stopping the proxy will prevent the notifications from reaching GCM.</p>
 
@@ -77,10 +77,10 @@ push.gcm.proxy.port=<proxy port>
 <p>Commonly available SOCKS 4/5 proxies can be used. For illustration, we have used a SOCKS5 proxy created using ssh. This is essentially a ssh tunneling proxy. Enabling ssh tunneling proxy creates a simple SOCKS5 proxy (or SOCKS4 depending on the version of the ssh client &amp; server). This does not require any additional software installation. On Windows systems "<a href="http://www.putty.org/">putty</a>" tool can be used to configure a SOCKS proxy.</p>
 <p>On the system where MFPF server is installed, execute the following command. This creates a tunnelling proxy to the ssh server.</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/CreateSOCKS5ProxyGeneric.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/CreateSOCKS5ProxyGeneric.png"  />
 
 <p>Verify the proxy server is listening for traffic at the specified port :</p>
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/VerifySOCKS5Proxyuser.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/VerifySOCKS5Proxyuser.png"  />
 
 <p>Go to MFPF project and edit your worklight.properties file to configure APNs notifications to be routed through the SOCKS proxy:</p>
 
@@ -97,9 +97,9 @@ push.apns.proxy.port=1080
 
 <p>Verify if the proxy server has established a connection with APNS servers. Simple <code>netstat</code> command should show:</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/SOCKS5ProxyAPNSConnection.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/SOCKS5ProxyAPNSConnection.png"  />
 
 <p>Stop the SOCKS proxy to verify if the notifications can be sent. MFPF server log will show :</p>
-<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/APNSErrorMessage-300x108.png" class="img_responsive" />
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/APNSErrorMessage-300x108.png"  />
 
 <p>We have seen how MobileFirst server can be configured to route notifications to APNs through a proxy. Commonly available HTTP/TCP proxies can be configured and used for GCM and SOCKS proxy for connecting to APNs</p>

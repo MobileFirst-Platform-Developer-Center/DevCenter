@@ -11,12 +11,12 @@ author:
   display_name: Ajay Chebbi
 
 ---
-<p>You may have already heard about <a href="https://developer.ibm.com/mobilefirstplatform/" target="_blank">IBM MobileFirst Platform Foundation</a> and its capabilities. Some of the industry-grade features like <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/authentication-security/" target="_blank">security framework</a> that it provides may have appealed to you and you now want to try it! You can do this in under 5 minutes, without downloading any software and without running around to find a machine to install it on!</p>
+<p>You may have already heard about <a href="{{site.baseurl}}" target="_blank">IBM MobileFirst Platform Foundation</a> and its capabilities. Some of the industry-grade features like <a href="{{site.baseurl}}/tutorials/en/foundation/7.0/authentication-security/" target="_blank">security framework</a> that it provides may have appealed to you and you now want to try it! You can do this in under 5 minutes, without downloading any software and without running around to find a machine to install it on!</p>
 
 <p>Typically when you build a POC or demo of a mobile app with MobileFirst Platform,</p>
 
 <ul>
-    <li>You first download  the <a href="https://developer.ibm.com/mobilefirstplatform/install/" target="_blank">MobileFirst developer Studio or the MobileFirst CLI</a>.  </li>
+    <li>You first download  the <a href="{{site.baseurl}}/downloads" target="_blank">MobileFirst developer Studio or the MobileFirst CLI</a>.  </li>
     <li>Then you build the app and demo it from your laptop.</li>
 </ul>
 
@@ -30,7 +30,7 @@ author:
 <h3>Running the sample</h3>
 <p>The server is a full featured MobileFirst Platform server that contains the MobileFirst runtime service, Analytics service, the Cloudant data proxy and the Mobile browser simulator - all installed on a liberty server. This server is configured with a local database (Derby) inside the container itself.</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/trial_container.jpg" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/trial_container.jpg"  />
 <p>Once you have created the container and downloaded the demo app source code, you can use it right away. The sample uses app configuration and adapters that are pre loaded in the container image. You can find the detailed steps of creating the container in the <a href="/tutorials/en/foundation/7.1/ibm-containers/evaluate" target="_blank">tutorial</a> as well as a companion <a href="http://youtu.be/w2r8RmQyCMA" target="_blank">video</a>.</p>
 
 <p>Just to demonstrate one of the basic capabilities follow the steps below.</p>
@@ -44,19 +44,19 @@ author:
     <li>You will see the message you added to the console. This appears only once per logged in session</li>
 </ol>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_disable.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_disable.png"  />
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_phone_disable-169x300.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_phone_disable-169x300.png"  />
 
 <h3>Viewing Analytics Console of the MobileFirst server</h3>
 <p>The IBM MobileFirst trial server comes with inbuilt analytics. This helps you in analyzing various metrics around your app. You can read more about it here. For example you can see the various usage statistics.</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_analytics.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_analytics.png"  />
 
 <h3>Adding your own apps and adapters</h3>
 <p>If you are developing a POC and want to host your own app and adapters, you can do so by either uploading them thru the console.</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_upload.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_upload.png"  />
 
 If you are using the MobileFirst CLI, then you can also add them via the newly introduced capability of pushing apps and adapters to a remote server.</p>
 {% highlight bash %}
@@ -120,7 +120,7 @@ However this capability exists only for iOS and Android as there is no Cloudant 
     <li>You cannot make changes to any of the server artifacts like authentication configuration, add new libs etc.</li>
 </ol>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_limitation.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/container_limitation.png"  />
 
 <h3>Next steps</h3>
 <p>If you want to run a customized MobileFirst server on the container service, you can find more information in the <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/ibm-containers/run" target="_blank">getting started guide</a> on creating your own images</p>

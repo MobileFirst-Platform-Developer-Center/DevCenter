@@ -10,7 +10,7 @@ tags:
 author:
   display_name: Nathan Hazout
 ---
-This is a follow up to <a href="https://developer.ibm.com/mobilefirstplatform/blog/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">Handling binary responses in native iOS using Java adapters</a>.
+This is a follow up to <a href="{{site.baseurl}}/blog/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">Handling binary responses in native iOS using Java adapters</a>.
 
 Starting with MobileFirst Platform 7.0, you can send and receive arbitrary data to your client’s device using <a href="{{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/java-adapter/" target="_blank">Java Adapters</a>.
 
@@ -20,7 +20,7 @@ The user will input a string (for example a URL), submit it to the Java Adapter,
 The Android application will handle the binary data and display the image.
 
 <h3>Adapter code</h3>
-This section is the same as the <a href="https://developer.ibm.com/mobilefirstplatform/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">iOS version</a>.
+This section is the same as the <a href="{{site.baseurl}}/blog/2015/06/15/handling-binary-responses-in-native-ios-using-java-adapters/" target="_blank">iOS version</a>.
 I've created a MobileFirst project called <code>BinaryResponse</code>. In it I've added a Java Adapter called <code>QR</code>.
 
 To make the QR generation easier, I am using the <a href="https://github.com/zxing/zxing" target="_blank">ZXing</a> library. I've copied <a href="http://repo1.maven.org/maven2/com/google/zxing/core/3.2.0/core-3.2.0.jar" target="_blank">core-3.2.0.jar</a> and <a href="http://repo1.maven.org/maven2/com/google/zxing/javase/3.2.0/javase-3.2.0.jar" target="_blank">javase-3.2.0.jar</a> into the <code>lib</code> folder of my adapter.
@@ -140,4 +140,4 @@ I used <code>send(WLHttpResponseListener)</code> and created a new class called 
 
 <p>For best results, make sure you use MobileFirst with the latest iFix available by checking for updates in Eclipse, or IBM Fix Central if you have installed a Studio version from there.</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-08-19-at-11.12.54-AM.png" class="img_responsive"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-08-19-at-11.12.54-AM.png" />

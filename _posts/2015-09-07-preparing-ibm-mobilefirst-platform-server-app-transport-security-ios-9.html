@@ -12,7 +12,7 @@ author:
 <p><strong>App Transport Security</strong> is one of the new features enforced by Apple to improve secure communications between App and Web Services. This feature is available from iOS 9 or  later. This post talks about how to enable transport security on IBM MobileFirst Platform Servers.</p>
 <p>App Transport Security, in simple words, mandates the application to communicate with a web service over TLS version 1.2 protocol and use connection ciphers that provide forward secrecy. This means the developer has to ensure that the web service to which his application is communicating is deployed on a web server that supports TLS version 1.2 and forward secrecy. For more information, see <a href="https://ibm.biz/BdX6Ha">Apple's Technote on App Transport Security</a></p>
 <p>As of today, if the web server is not ready, the developer can override this default behavior and turn off the transport security, which is not recommended.</p>
-<blockquote><p>More details on how to turn off transport security and server setup requirements are listed in the post, <a href="https://developer.ibm.com/mobilefirstplatform/2015/09/09/ats-and-bitcode-in-ios9/">ATS and Bitcode in iOS 9</a>.
+<blockquote><p>More details on how to turn off transport security and server setup requirements are listed in the post, <a href="{{site.baseurl}}/blog/2015/09/09/ats-and-bitcode-in-ios9/">ATS and Bitcode in iOS 9</a>.
 </p></blockquote>
 <p>The post also talks about how the developer can switch off the transport security using the <code>NSAllowsArbitraryLoads</code> exception property, so that the application can communicate with the server in the development environment. The development server in the IBM MobileFirst Platform Studio eclipse and the Command Line Interface (CLI) do not support App Transport Security.</p>
 <h2>Requirements</h2>
@@ -72,22 +72,22 @@ author:
 <h3>WebSphere Application Server</h3>
 <p>Create a WebSphere Application Profile with Security enabled. Open WAS admin console -> Security -> SSL certificate and key management -> SSL configurations.</p>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-2.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-2.png"  />
 
 <p>Open NodeDefaultSSLSettings -> Key stores and certificates.</p>
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-3.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-3.png"  />
 
 <p>Open NodeDefaultKeyStore -> Personal certificates and import the new certificate. Point to the ssl_cert.p12 and chose to import the certificate.</p>
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-4.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-4.png"  />
 
 <p>Open NodeDefaultTrustStore -> Signer certificates and add the new certificate's signer certificate. Add the ca.crt as root1.</p>
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-5.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-5.png"  />
 
 <p>Open NodeDefaultSSLSettings -> Quality of protection (QoP) settings. Choose Protocol as <code>SSL_TLSv2</code>. Choose Cipher suite groups as Custom and click on Update selected ciphers button. Use the Add and Remove button to make sure accepted ciphers are in the selected ciphers list. Apply the settings.</p>
 
 <blockquote>WebSphere Application Server's own services require other versions protocol for communication. Enforcing the server to work with only TLS version 1.2 will interfere with stopping and starting the server.</blockquote>
 
-<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-6.png" class="img_responsive" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screenshot-6.png"  />
 
 <p><strong>Note:</strong> The string "SSL" is interchangeable with "TLS" and vice versa in the cipher names. For example, where SSL_RSA_WITH_AES_128_CBC_SHA is specified, TLS_RSA_WITH_AES_128_CBC_SHA also applies.</p>
 

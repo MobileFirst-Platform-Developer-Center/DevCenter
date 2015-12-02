@@ -6,7 +6,7 @@ tags:
 author:
   display_name: Mike Rheinheimer
 ---
-<p>Since you've read the <a href="https://developer.ibm.com/mobilefirstplatform/2015/10/01/mobilefirst-analytics-planning-for-production/">MobileFirst Analytics - Planning for Production</a> blog post, you're ready to get some practice setting up a cluster.</p>
+<p>Since you've read the <a href="{{site.baseurl}}/blog/2015/10/01/mobilefirst-analytics-planning-for-production/">MobileFirst Analytics - Planning for Production</a> blog post, you're ready to get some practice setting up a cluster.</p>
 
 <p>Before we start, be sure you've noted and understood from the planning blog post that ElasticSearch is the underlying cluster manager. You do not need to deploy your application servers in a cluster! In fact, you should avoid doing so, because the configuration of the MobileFirst Analytics server is quite often unique per node.  If you clustered your application servers, the application server would share configuration information and the unique configuration you tried to apply would be overwritten. You don't want that.</p>
 
@@ -99,7 +99,7 @@ author:
 <p>Since the configuration requires at least three master-eligible nodes to be available in your cluster before ElasticSearch will reply to queries, you'll need to bring up three analytics servers, visit each console to trigger the initialization, wait for ElasticSearch to establish a quorum and vote for a master, then you'll see green status.</p>
 
 <h4>(Nearly) Required Settings</h4>
-<p>Remember all those times I said "yeah, that's it"?  Well, about that.  You are strongly recommended to set additional configuration.  Since you know what shards are and how the setting affects performance (you did read the <a href="https://developer.ibm.com/mobilefirstplatform/2015/10/01/mobilefirst-analytics-planning-for-production/">planning blog post</a>, right?), you really should set that property.  Also, you should consider setting the <code>nodename</code> so each node can be easily identified in the logs and Administration tab, and set the <code>datapath</code> so you know in which directory your data is stored.</p>
+<p>Remember all those times I said "yeah, that's it"?  Well, about that.  You are strongly recommended to set additional configuration.  Since you know what shards are and how the setting affects performance (you did read the <a href="{{site.baseurl}}/blog/2015/10/01/mobilefirst-analytics-planning-for-production/">planning blog post</a>, right?), you really should set that property.  Also, you should consider setting the <code>nodename</code> so each node can be easily identified in the logs and Administration tab, and set the <code>datapath</code> so you know in which directory your data is stored.</p>
 
 <table class="table table-striped">
     <thead>
