@@ -25,14 +25,9 @@ custom_js:
             {% endif %}
             {{ content }}
 
-            {% comment %}
               {% if page.show_children %}
-                {% assign documents = site.pages | sort: "weight" %}
-                {% assign level = page.dir | remove_first: "/" | split:"/" | size %}
-                {% assign childrenLevel = level | plus : 1 %}
-                {% include show-children.html docs=documents dir=page.dir level=childrenLevel %}
+                {% include show-children.html children=page.children %}
               {% endif %}
-            {% endcomment %}
 
             {% include disqus.html %}
         </div>
