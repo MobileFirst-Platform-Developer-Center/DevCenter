@@ -103,11 +103,12 @@ function getYahooWeather(woeid) {
         returnedContentType : 'xml',
         path : 'forecastrss',
         parameters : {
-          'w' : woeid,
-          'u' : 'c' //celcius
-    }
-};
-return WL.Server.invokeHttp(input);
+            'w' : woeid,
+            'u' : 'c' //celcius
+        }
+    };
+    
+    return WL.Server.invokeHttp(input);
 }  
 {% endhighlight %}
 
