@@ -11,6 +11,9 @@ redcarpet:
 gems:
   - jekyll-feed
   - jekyll-paginate
+sass:
+  style: :compressed
+
 defaults:
   -
     scope:
