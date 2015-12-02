@@ -140,7 +140,7 @@ Protect your applications and adapter procedures against unauthorized access by 
 * <a href="../authentication-and-security/websphere-ltpa-based-authentication/">WebSphere LTPA-based authentication</a>
 * <a href="../authentication-and-security/device-provisioning-concepts/">Device provisioning concepts</a>
 * <a href="../authentication-and-security/custom-device-provisioning/">Custom device provisioning</a>
-* <a href="../advanced-topics/ntlm-authentication/">NTLM Authentication</a>
+* [NTLM Authentication](../authentication-and-security/ntlm-authentication/)
 * <a href="../advanced-topics/remember-me/">Remember Me</a>
 * <a href="../advanced-topics/offline-authentication/">Offline Authentication</a>
 * <a href="../advanced-topics/device-enrollment/">Device Enrollment</a>
