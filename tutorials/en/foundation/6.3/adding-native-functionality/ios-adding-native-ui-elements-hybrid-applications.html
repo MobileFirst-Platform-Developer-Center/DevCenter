@@ -23,7 +23,7 @@ The implementation can be modified to handle more of the status codes that are r
 The Cordova controller is then added as a child to the root view and displayed on the screen.</p>
 <p>If it is decided to implement a custom introduction screen as explained before, consider delaying the display the Cordova view until the user is done with the custom native screen.</p>
 <h2>Native SplashScreen sample</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/07_08_splashscreen_sample.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_08_splashscreen_sample.png"/></p>
 <p>The NativeUIInHybrid project includes a hybrid application called NativeSplashScreen.<br />
 This example uses a Page View Controller to show a sliding introduction to the application. The user interface was created using a Storyboard in XCode.<br />
 Two classes, <code>PageViewController</code> and <code>PageContentViewController</code>, were created to handle the slides.</p>
@@ -159,7 +159,7 @@ For the action receiver to receive actions, it must first be registered. This sh
 <p>The first parameter is an arbitrary name. It can be used later to remove an action receiver.<br />
 {% highlight js linenos %}WL.App.removeActionReceiver("MyActionReceiverId");{% endhighlight %}
 <h2>SendAction Sample</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/07_08_screenshot.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_08_screenshot.png"/></p>
 <p><strong>Overview</strong><br />
 Download the NativeUIInHybrid project, which includes a hybrid application called SendAction.<br />
 Note: This sample requires the MapKit framework.</p>
@@ -206,7 +206,7 @@ WL.App.addActionReceiver ("MyActionReceiverId", function actionReceiver(received
 The interface was designed with a Storyboard file. It features a generic view controller with the <code>ViewController</code> custom class (described later).</p>
 <p>The view controller contains a <code>MKMapView</code> object and a Container View.<br />
 The Container View contains a view controller, which is set to use the <code>HybridScreenViewController</code> class (described later).</p>
-<p><img src="{{ site.baseurl }}/assets/backup/07_08_storyboard.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/07_08_storyboard.png"/></p>
 <p><strong>HybridScreenViewController</strong><br />
 <code>HybridScreenViewController</code> extends <code>CDVViewController</code>, the Cordova web view provided by MobileFirst (<code>@interface HybridScreenViewController : CDVViewController</code>).</p>
 <p>The implementation of the class is almost empty, except for setting the startPage of the Cordova web view.</p>

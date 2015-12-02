@@ -23,7 +23,7 @@ controls in a native way for each mobile platform.</p>
 <h2 id="busyindicator">WL.BusyIndicator</h2>
 <p><code>WL.BusyIndicator</code> implements a common API to display a modal activity indicator.<br />
 It uses native implementation on the following platforms: Android, iOS, BlackBerry 10, and Windows Phone 8.<br />
-<img src="{{ site.baseurl }}/assets/backup/05_02_busyind.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_02_busyind.png"/>
 <p>It must be initialized before use.</p>
 {% highlight javascript linenos %}
 busyIndicator = new WL.BusyIndicator( null, {text : 'Loading...'});
@@ -46,7 +46,7 @@ In the second parameter, available options are:</p>
 <p>The <code>WL.SimpleDialog</code> implements a common API for showing a modal dialog window with buttons.<br />
 It uses a native implementation on the following platforms: Android, iOS, Windows Phone 8, and BlackBerry 10.<br />
 Adobe Air, BlackBerry 6/7, Desktop webpage, and Mobile Web use a JS-based implementation.<br />
-<img src="{{ site.baseurl }}/assets/backup/05_02_simpledialog.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_02_simpledialog.png" />
 <p>The invocation syntax is:</p>
 {% highlight javascript linenos %}
 WL.SimpleDialog.show(title, text, buttons, options);
@@ -80,7 +80,7 @@ WL.SimpleDialog.show(dialogTitle, dialogText, [
 <h2 id="tabbar">WL.TabBar</h2>
 <p><code>Wl.TabBar</code> provides application navigation with a tab bar component.<br />
 Supported environments are Android and iOS.<br />
-<img src="{{ site.baseurl }}/assets/backup/05_02_tabbar.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_02_tabbar.png"/>
 <p>The iOS implementation uses a native component, but Android uses an HTML-generated tab bar.<br />
 The syntax is similar, though with some minor differences.<br />
 <code>WL.TabBar</code> must be initialized before it can be used.</p>
@@ -152,7 +152,7 @@ WL.TabBar.addItem("item1",
 <code>WL.OptionsMenu</code> allows to display a menu of options.<br />
 In Windows Phone 8 this also functions as a tab bar.<br />
 Note: If your application targets Android 3.0 (API level 11) or higher, WL.OptionsMenu might have no effect, depending on the device. For more information, see the MobileFirst user documentation.<br />
-<img src="{{ site.baseurl }}/assets/backup/05_02_optionsmenu.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_02_optionsmenu.png" />
 <p>Because WL.OptionsMenu is only available for Android 2.x, Windows 8 and Windows Phone 8, it is recommended to initialize it at the environment level (<code>android\js\main.js</code>, <code>windows8\js\main.js</code>, <code>windowsphone8\js\main.js</code>) and not in the common folder (<code>common\js\main.js</code>).</p>
 <p>WL.OptionsMenu must be initialized before use.<br />
 Here are the API signatures:</p>
@@ -196,7 +196,7 @@ WL.OptionsMenu.addItem("item2",
 </ul>
 <h2 id="splashscreen">Splash Screen</h2>
 <p>Supported environments: Android, iOS and WP8.<br />
-<img src="{{ site.baseurl }}/assets/backup/05_02_splash.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/05_02_splash.png"/>
 <p>The framework provides a default splash screen loading behavior.<br />
 The splash screen is shown once the application launches.<br />
 This is done in</p>

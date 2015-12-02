@@ -13,9 +13,9 @@ downloads:
 With a JMS adapter, you can read and write messages from any messaging provider that supports the API.</p>
 <h2>Creating the adapter</h2>
 <p>In MobileFirst Platform Foundation Studio, create an adapter and select the <strong>JMS Adapter</strong> type. A standard JMS Adapter structure is created.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/04_05_new-adapter.png"/></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_05_new-adapter.png"/></p>
 Public procedures are declared in the XML file while implemented in the JavaScript file. The procedure name in the JavaScript file must match the one declared in the XML file.<br />
-<p><img src="{{ site.baseurl }}/assets/backup/04_05-jms-fle-structure.png"/><br />
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/04_05-jms-fle-structure.png"/><br />
 <br clear="all" /></p>
 <h3>Procedure implementation</h3>
 <p>Procedures are implemented in the adapter JavaScript file.<br />
@@ -114,13 +114,13 @@ function readMessage() {
 }
 {% endhighlight %}
 <p>Result:<br />
-<img src="{{ site.baseurl }}/assets/backup/jms_readmessage_result-300x169.png"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/jms_readmessage_result-300x169.png"/></p>
 <h3>readAllJMSMessages</h3>
 <p>This method takes the same parameters as the <code>readSingleJMSMessage</code> method.<br />
 It returns a list of JMS messages in the same format as the <code>readSingleJMSMessage</code> method. The result is contained in a “messages” object.</p>
 <p>To use this method, use an external server, <strong>not</strong> the one that MobileFirst Studio is using.</p>
 <p>Result:<br />
-<img src="{{ site.baseurl }}/assets/backup/jms_readalljmsmessages_result-300x154.png"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/jms_readalljmsmessages_result-300x154.png"/></p>
 <h3>writeMessage</h3>
 <p>This method writes a JMSText message to the destination. It features user properties that can be set.<br />
 It returns the <code>JMSMessageID</code> of the sent message.</p>
@@ -139,7 +139,7 @@ function writeMessage(messagebody) {
 }
 {% endhighlight %}
 <p>Result:<br />
-<img src="{{ site.baseurl }}/assets/backup/jms_writemessage_result-300x36.png"/></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/jms_writemessage_result-300x36.png"/></p>
 <h3>requestReplyJMSMessage</h3>
 <p>This method:</p>
 <ul>

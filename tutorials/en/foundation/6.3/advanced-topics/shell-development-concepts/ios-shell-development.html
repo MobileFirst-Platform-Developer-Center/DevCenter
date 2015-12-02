@@ -10,9 +10,9 @@ downloads:
 <p>In this tutorial, you learn how to add an iOS environment to your shell component, test application, and inner application.</p>
 <h2>Adding an iOS environment to a shell component</h2>
 <p>Start by adding an iPhone environment to your shell component by following the same procedure as for a standard IBM MobileFirst Platform Foundation application.<br />
-<img src="{{ site.baseurl }}/assets/backup/10_02_new-environment.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_02_new-environment.png" />
 
-<img src="{{ site.baseurl }}/assets/backup/10_03_project-structure.png" style="float:right"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_03_project-structure.png" style="float:right"/>
 <p>The following folder structure is created:</p>
 <ul>
 <li><strong>css, images, fragments</strong> and <strong>js</strong> contain resources that override or extend resources from the Shell component <strong>common</strong> folder.</li>
@@ -59,9 +59,9 @@ Add a method signature to <strong>MyCustomAlert.h</strong>, and method implement
 }
 {% endhighlight %}</p>
 <p>Run your application to see the implemented functions.<br />
-<img src="{{ site.baseurl }}/assets/backup/10_03_objc-result.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_03_objc-result.png"/>
 <p>Finally, copy your Objective C code from the iPhone project that you used to develop it back to the shell component.<br />
-<img src="{{ site.baseurl }}/assets/backup/10_03_copy_files.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_03_copy_files.png"/>
 The custom Objective C classes added to the iPhone project can be copied, to keep the folder structure intact.<br />
 Xcode stores its own project structure in a <strong>project.pbxproj</strong> file. Therefore, the content of this file must also be copied from the test application to the shell component.</p>
 <p>The <strong>native</strong> folder of the test application is not being rebuilt from the shell component each time you build the iOS application.<br />
@@ -75,7 +75,7 @@ Doing so helps inner application developers to test their code without the need 
 For example: to develop and test an iPhone application without a Mac.<br />
 To use the NativeEmptyApp, open it as an Xcode project.</p>
 <p>When the application is built and deployed to an iOS device, go to Settings to change the URL from which this inner application content is loaded.<br />
-<img src="{{ site.baseurl }}/assets/backup/10_03_ios_settings.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_03_ios_settings.png" />
 <p><strong>Important</strong>:<br />
 NativeEmptyApp cannot load a remote inner application that has the device provisioning enabled.<br />
 NativeEmptyApp can be used only in the development environment.</p>

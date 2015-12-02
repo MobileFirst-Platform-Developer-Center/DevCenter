@@ -9,7 +9,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <p><strong>Prerequisite</strong>: Make sure to read the <a href="../../server-side-development/adapter-framework-overview/">Adapters Overview</a> tutorial first.</p>
 <p>Java adapters are based on the JAX-RS specification. In other words, a Java adapter is a JAX-RS service that can easily be deployed to a MobileFirst Server instance and has access to MobileFirst Server APIs.</p>
 <p>In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource. The only exception is if the client sending the request supports GZip, then the returned content encoding of the Java adapter is compressed by GZip. All operations on the returned content are done and owned by the developer.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/java-adapter.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/java-adapter.jpg" /></p>
 <p>Each Java adapter has its own isolated sandbox, in which all its classes run without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "adapter mashup" possible.</p>
 <p>It is possible to include 3rd-party libraries required by the adapter code in the <code>adapter/lib</code> directory. The libraries that you include in this directory override any libraries that are provided by the application server or included in the <code>server/lib</code> folder.</p>
 <h3>Agenda</h3>
@@ -41,7 +41,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li>Fill the adapter name and package name fields.</li>
 <li>Click <strong>Finish</strong>.</li>
 </ol>
-<p><img src="{{ site.baseurl }}/assets/backup/java-adapter-form.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/java-adapter-form.png" /></p>
 <h3>By using MobileFirst CLI</h3>
 <ol>
 <li>Open the terminal.</li>
@@ -49,7 +49,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li>Enter <code>mfp add adapter {name} --type java --package {package name}</code></li>
 </ol>
 <h2 id="filestructure">File structure</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/java-adapter-files.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/java-adapter-files.png" /></p>
 <h3>XML File</h3>
 <p>Java adapters have an XML configuration file such as all the other types of adapters. In this configuration file, configure the class name of the JAX-RS application for this adapter.<br />
 In our case: <code>com.sample.adapter.JavaAdapterApplication</code>.</p>
@@ -150,7 +150,7 @@ PushAPI pushApi = serverApi.getPushAPI();
 <li>Select <strong>Run As > Call MobileFirst Adapter</strong>.
 </li>
 <li>Enter any required parameters and click <strong>Run</strong>.<br />
-<img src="{{ site.baseurl }}/assets/backup/java-adapter-call.png" /></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/java-adapter-call.png" /></p>
 <h3>In the Command Line interface (CLI)</h3>
 <p>Enter <code>$ mfp adapter call</code>, then follow the prompts by using the arrow keys.</p>
 <blockquote><p>For more information, see the <a href="../../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a> tutorial.</p></blockquote>
@@ -167,7 +167,7 @@ To receive a Test Token, make an HTTP <code>POST</code> request to <code>http(s)
 {% endhighlight %}</p>
 <p>In your next requests to your adapter endpoints, add an HTTP header with the name "<code>Authorization</code>" and the value you received previously (starting with <code>Bearer</code>).</p>
 <p>The security framework now skips any security challenges protecting your resource.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/java-adapter-postman.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/java-adapter-postman.png" /></p>
 <blockquote><p>See it in action in this video blog entry: <a href="https://developer.ibm.com/mobilefirstplatform/2015/03/24/getting-familiar-ibm-mobilefirst-platform-foundation-java-adapters/" title="Getting familiar with IBM MobileFirst Platform Foundation Java Adapters [Part 1]" target="_blank">Getting familiar with IBM MobileFirst Platform Foundation Java Adapters</a></p></blockquote>
 <h2 id="morelinks">HTTP &amp; SQL best practices</h2>
 <p>For examples of Java adapters communicating with an HTTP or SQL back end, see:</li>

@@ -20,7 +20,7 @@ downloads:
 <li><a href="#sample">Sample application</a></li>
 </ul>
 <h2 id="architecture">Architecture</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/location_service_diagram.jpg" /></p>
 <p>The application code on the mobile device, in the form of an acquisition policy, controls the collection of data from device sensors.</p>
 <p>The collected data is referred to as the device context.</p>
 <p>When a change occurs in the device context, such as a change in the geolocation of the device or the fact that it entered a Wi-Fi zone, triggers can be activated.</p>
@@ -44,7 +44,7 @@ WLAcquisitionPolicy* policy = [[WLAcquisitionPolicy alloc] init];
 <li><code>location-services</code></li>
 <li><code>gps</code> (when <code>enableHighAccuracy=true</code>)</li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_ios_geo.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_ios_geo.png" /></p>
 <p>Then in your code, you can use:<br />
 {% highlight objc linenos %}
 WLGeoAcquisitionPolicy* geoPolicy = [WLGeoAcquisitionPolicy getLiveTrackingProfile];
@@ -57,7 +57,7 @@ WLGeoAcquisitionPolicy* geoPolicy = [WLGeoAcquisitionPolicy getLiveTrackingProfi
 <li><code>NSLocationWhenInUseUsageDescription</code></li>
 <li><code>NSLocationAlwaysUsageDescription</code></li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-03-12-at-14.03.17.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-2015-03-12-at-14.03.17.png" /></p>
 <p>LiveTracking is a preset profile that uses the most accurate settings to track the device.<br />
 Additional configuration options:</p>
 <ul>
@@ -68,7 +68,7 @@ Additional configuration options:</p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h3>Wi-Fi acquisition policy</h3>
 <p>Add <code>wifi</code> to your <code>UIRequiredDeviceCapabilities</code> node in <code>yourAppName-info.plist</code>.<br />
-<img src="{{ site.baseurl }}/assets/backup/10_04_ios_wifi.png" /><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_ios_wifi.png" /><br />
 Then in your code, you can use:<br />
 {% highlight objc linenos %}
 WLWifiAcquisitionPolicy* wifiPolicy = [[WLWifiAcquisitionPolicy alloc] init];
@@ -89,7 +89,7 @@ In the above example, the acquisition policy works as follows:</p>
 <li>Differentiates <code>Net2</code> access points by MAC address.
 </li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_04_wifi-policy-example.jpg" /></p>
 <blockquote><p>For more information, see the topic about setting an acquisition policy, in the user documentation.</p></blockquote>
 <h2 id="triggers">Triggers</h2>
 <p>You can setup triggers:</p>
@@ -171,4 +171,4 @@ WL.Server.setEventHandlers([...]);
 <li>Ongoing acquisition
 </li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/Screen-Shot-Location-iOS.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/Screen-Shot-Location-iOS.png" /></p>

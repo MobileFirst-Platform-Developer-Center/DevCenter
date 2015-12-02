@@ -28,7 +28,7 @@ The tutorial also explores the debugging of MobileFirst adapters and the tools t
 <h2 id="debugging_on_a_desktop_browser">Debugging on a desktop browser</h2>
 <p>Modern browsers, such as Chrome, Firefox, Safari, or Opera, provide an easy and convenient way to debug web apps.<br />
 As seen in the previous tutorials, during development you can preview applications in a desktop browser by using the <a href="../../hello-world/introduction-to-mobilefirst-platform-operations-console/" title="Introduction to MobileFirst Operations Console">MobileFirst Operations Console</a>.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/preview-common.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/preview-common.png" /></p>
 <p>Many web tools for debugging are available on various desktop browsers, for example:</p>
 <ul>
 <li>FireBug</li>
@@ -37,34 +37,34 @@ As seen in the previous tutorials, during development you can preview applicatio
 <li>Dragonfly for Opera</li>
 <li>Safari Web Inspector</li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_developer_tools.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_developer_tools.png" /></p>
 <p>In early application development stages, these tools can be used to debug the application just like a regular website. It is not required to install them in a mobile device.<br />
 You can also preview changes to HTML and CSS in real time by modifying the values in the inspector.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_developer_tools2.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_developer_tools2.png" /></p>
 <h2 id="debugging_with_mobile_browser_simulator">Debugging with the Mobile Browser Simulator</h2>
 <p>You can also use the Mobile Browser Simulator to preview and debug MobileFirst applications.<br />
 To access it, click the <strong>Preview</strong> button in the MobileFirst Operations Console.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/preview-buttons2.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/preview-buttons2.png" /></p>
 <p>The Mobile Browser Simulator has several added values over <strong>Preview</strong> as <strong>Common Resources</strong>, for example:</p>
 <ul>
 <li>Preview environment-specific resources</li>
 <li>Emulate different devices and skins</li>
 <li>Emulate some Cordova features such as access to sensors and other hardware</li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_mbs-1024x793.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_mbs-1024x793.png" /></p>
 <p><a name="debugging_with_ios_remote_web_inspector"></a></p>
 <h2 id="debugging_ios_remote_web_inspector">Debugging with iOS Remote Web Inspector</h2>
 <p>Starting in iOS 6, Apple introduced a remote web inspector for debugging web applications on iOS devices. To debug, make sure that the device (or simulator) has the <strong>Private Browsing</strong> option turned off.</p>
 <p>To enable Web Inspector on the device, click <strong>Settings > Safari > Advanced > Web Inspector</strong>.<br />
-<img src="{{ site.baseurl }}/assets/backup/03_04_ios_web_inspector.png" /></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_ios_web_inspector.png" /></p>
 <ol>
 <li>To start debugging, connect the iOS device to a Mac, or start the simulator. Safari 6.0 or higher is required.<br />
 In Safari, go to <strong>Preferences > Advanced</strong>, and select the <strong>Show Develop menu in menu bar</strong> checkbox.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_safari_developer_menu.png" />
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_safari_developer_menu.png" />
 </li>
 <li>Now in Safari, select <strong>Develop > [<em>your device ID</em>] > [<em>your application HTML file</em>]</strong>.<br />
 The DOM can now be inspected. It is also possible to alter the CSS and run JavaScript commands, just as in the desktop inspector.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_safari_debugging-1024x725.png" />
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_safari_debugging-1024x725.png" />
 </li>
 </ol>
 <h2 id="debugging_with_chrome_remote_web_inspector">Debugging with Chrome Remote Web Inspector</h2>
@@ -77,14 +77,14 @@ In the <code>project.properties</code> file, <code>target</code> = 19 or above i
 <li>In Chrome, enter the following URL: <code>about:inspect</code>.</li>
 <li>Press <strong>Inspect</strong> for the relevant application.<br />
 You can now use all the features of the Chrome Inspector to inspect the Android application.</li>
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_debug_with_chrome-1024x731.png" />
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_debug_with_chrome-1024x731.png" />
 </ol>
 <h2 id="debugging_with_weinre">Debugging with Weinre</h2>
 <p><a href="http://people.apache.org/~pmuellr/weinre/">Weinre</a> stands for <strong>We</strong>b <strong>In</strong>spector <strong>Re</strong>mote.</p>
 <p>Weinre is a debugger for web pages, like Firebug or other Web Inspectors, except that Weinre is designed to work remotely.<br />
 Weinre can be used to inspect and debug web resources such as HTML, JavaScript, CSS, and network traffic on mobile handsets.</p>
 <p>The Weinre architecture includes the following components:<br />
-<img src="{{ site.baseurl }}/assets/backup/03_04_weinre.png" /></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_weinre.png" /></p>
 <p>The Weinre debug server requires a <code>node.js</code> runtime.<br />
 You can find instructions to install Weinre on the <a href="http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html">Weinre installation page</a>.</p>
 <h3>Debug server</h3>
@@ -97,7 +97,7 @@ You can find instructions to install Weinre on the <a href="http://people.apache
 <p>Where a.b.c is the hostname or IP of the Weinre server.</p>
 <h3>Client</h3>
 <p>Before you can start debugging, make sure that the application is open and loaded on the browser with this URL:</p>
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_weinre_debugging.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_weinre_debugging.png" /></p>
 <h2 id="debugging_with_ibm_mobilefirst_logger">Debugging with IBM MobileFirst Logger</h2>
 <p>IBM MobileFirst Platform Foundation provides a <code>WL.Logger</code> object which can be used to print log messages to the log for the environment used.</p>
 <p>Two of its methods are <code>WL.Logger.debug()</code> and <code>WL.Logger.error()</code>.<br />
@@ -115,16 +115,16 @@ These APIs are multiplatform. The output destination changes according to the pl
 To test a procedure:</p>
 <ol>
 <li>Right-click an adapter folder and select <strong>Run As > Invoke MobileFirst Procedure</strong>.
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_deploy_mobilefirst_adapter.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_deploy_mobilefirst_adapter.png" /></p>
 <p>The adapter and procedure are selected. </li>
 <li>Optionally, enter comma-separated parameters.
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_select_adapter_and_procedure.png" />
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_select_adapter_and_procedure.png" />
 </li>
 <p>Adapter invocation result:<br />
-<img src="{{ site.baseurl }}/assets/backup/03_04_adapter_proceudre_invocation_result1.png" /></p>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_adapter_proceudre_invocation_result1.png" /></p>
 </ol>
 <h2 id="debugging_with_wireshark">Debugging with WireShark</h2>
 <p>Wireshark is a network protocol analyzer that can be used to see what happens in the network.<br />
 You can use filters to follow only what is required.</p>
 <p>For more information, see the <a href="http://www.wireshark.org">WireShark</a> website.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/03_04_wireshark.png" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/03_04_wireshark.png" /></p>

@@ -18,11 +18,11 @@ With Custom device provisioning you can validate:</p>
 <p>It is vital to gain a solid understanding of the topics that are discussed in the <a title="Device provisioning concepts" href="../../authentication-security/device-provisioning-concepts/">Device Provisioning Concepts tutorial</a> because this tutorial is fully based on those concepts.</p>
 <h2>Understanding custom device provisioning</h2>
 <h3>First Application Start</h3>
-<img src="{{ site.baseurl }}/assets/backup/09_14_flow_firststart.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_14_flow_firststart.png" />
 Authenticity check is a proprietary IBM MobileFirst Platform Foundation technology that makes sure application is the authentic one and was not modified by anyone.<br />
 The main difference between auto and custom provisioning is two functions that you can perform custom validation of CSR during the provisioning process and custom validation of certificate during each application start.</p>
 <h3>Subsequent Application Starts</h3>
-<img src="{{ site.baseurl }}/assets/backup/09_14_flow_subsequent.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_14_flow_subsequent.png" />
 <h3>keystore</h3>
 <p>By default, the MobileFirst Server uses its internal keystore to issue a certificate.<br />
 You can tell the server to use your own keystore by adjusting the <strong>worklight.properties</strong> file.<br />
@@ -245,4 +245,4 @@ customDevProvChallengeHandler.handleFailure = function(){
 <p><em>handleFailure</em> function is called each time that the certificate fails validation. You can use it for UI manipulations and to notify the user that the application cannot connect to server.</p>
 <h2>Sample application</h2>
 <p><a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v630/CustomDeviceProvisioningProject.zip">Click to download</a> the Studio project.</p>
-<img src="{{ site.baseurl }}/assets/backup/09_14_results.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_14_results.png"/>

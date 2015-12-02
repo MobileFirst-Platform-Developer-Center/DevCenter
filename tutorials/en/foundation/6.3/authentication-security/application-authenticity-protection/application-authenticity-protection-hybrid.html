@@ -17,14 +17,14 @@ This is a continuation of the <a title="Application Authenticity Protection" hre
 <h4>Specifying the bundleId and applicationId</h4>
 <ol>
 <li>Specify the <code>bundleId</code> of the application exactly as it was defined in the <strong>Apple Developer portal</strong>.
-<img src="{{ site.baseurl }}/assets/backup/09_10_appId.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_10_appId.png"/>
 It can be added either in the Application Description Design view:
-<img src="{{ site.baseurl }}/assets/backup/09_15_application_descriptor_ios.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_application_descriptor_ios.png"/>
 <p>Or in the Application Descriptor Source view:</p>
 <p>{% highlight xml linenos %}<iphone bundleId="com.worklight.MyBankApp" version="1.0">{% endhighlight %}</p>
 </li>
 <li>Specify the <code>applicationId</code> value. The Application Id value must match the value of the <code>application id</code> property, which is located in the <code>native\worklight.plist</code> file.It can be added either in the Application Description Design view:
-    <img src="{{ site.baseurl }}/assets/backup/09_10_applicationId.png" />
+    <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_10_applicationId.png" />
 <p>Or in the Application Descriptor Source view:</p>
 <p>{% highlight xml linenos %}
 <iphone bundleId="com.worklight.MyBankApp" applicationId="MyBankApp" securityTest="customTests" version="1.0">
@@ -48,13 +48,13 @@ To use the wizard:</p>
 <li>Set the <strong>Key alias</strong> and click <strong>Next</strong>.</li>
 <li>A dialog opens that displays the public key.</li>
 <li>After you click <strong>Finish</strong>, the public key is automatically pasted to the relevant section of the <em>application-descriptor.xml</em> file.
-    <img src="{{ site.baseurl }}/assets/backup/09_15_android-signing-key.png"/>
+    <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_android-signing-key.png"/>
 </ul>
 </li>
 </ul>
 </li>
 <li>Add the Application package name by using the Application Descriptor Editor (design view):<br />
-<img src="{{ site.baseurl }}/assets/backup/09_15_android-package-name-editor.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_15_android-package-name-editor.png"/>
 <li>Take the Application package name value from the package attribute of the <em>manifest</em> node in the <strong>AndroidManifest.xml</strong>.<br />
 If you decide to change the value to another, verify that you change it in both locations.You can also directly edit <strong>application-descriptor.xml</strong> and add a <em>packageName</em>:</p>
 <p>
@@ -74,7 +74,7 @@ If you decide to change the value to another, verify that you change it in both 
 <p>To enable application authenticity check for the Windows Phone 8 Hybrid environment, several modifications to the <code>application-descriptor.xml</code> file are needed:</p>
 <ol>
 <li>In the Application Descriptor Design view, supply the <code>applicationId</code> and <code>productId</code> in the Windows Phone 8 Security section:
-    <img src="{{ site.baseurl }}/assets/backup/09_11_windowsphone8-1024x492.png"/></li>
+    <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/09_11_windowsphone8-1024x492.png"/></li>
 <li>The <code>productId</code> value can be found in <code>native\PropertiesWMAppManifest.xml</code>.</li>
 <li>The <code>applicationId</code> value must match the value of the span style="font-family:courier-new">wlAppId property, which can be found in the span style="font-family:courier-new">native\wlclient.properties file.</li>
 </ol>

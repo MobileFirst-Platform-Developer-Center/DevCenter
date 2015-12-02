@@ -41,10 +41,10 @@ Make sure that you have a solid understanding of MobileFirst development princip
 </li>
 </ul>
 <h3>Shell Component</h3>
-<img src="{{ site.baseurl }}/assets/backup/10_01_shell_component_mock.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_01_shell_component_mock.png" />
 A Shell component is a component to be used by inner applications as a code base wrapper. It usually consists of native classes and shell-specific web resources that are going to be used in inner applications. The shell component is implemented by shell developers and sent to inner application developers to use.</p>
 <h3>Inner Application</h3>
-<img src="{{ site.baseurl }}/assets/backup/10_01_inner_app_mock.png" />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_01_inner_app_mock.png" />
 A Inner application is a set of web resources (HTML / JavaScript / CSS) that are run inside the shell component.</p>
 <h3>Test Application</h3>
 <p>The shell component is not executable by itself. After it is created, an inner application is automatically added to the project by MobileFirst Studio. This application is used by the shell developer to test the shell component functionality.</p>
@@ -65,7 +65,7 @@ Note that the <strong>MyShellTest</strong> application was automatically created
 <p>The <strong>shell-descriptor.xml</strong> file contains shell component metadata and application-specific properties.<br />
 Application-specific properties that are set in the shell descriptor are used in all inner applications.<br />
 <strong>shell-descriptor.xml</strong> can be edited in either Design or Source mode.<br />
-<img src="{{ site.baseurl }}/assets/backup/10_01_descriptor-design.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_01_descriptor-design.png"/>
 <p>{% highlight xml linenos %}
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <shell xmlns="http://www.worklight.com/shell-descriptor" id="MyShell" platformVersion="6.3.0.00.20141011-1406" version="1.0">
@@ -99,7 +99,7 @@ function wlCommonInit(){
 Build and deploy the <strong>MyShellTest</strong> application.<br />
 When your application is built and deployed, you find it in MobileFirst Console as a regular hybrid application.<br />
 Preview your <strong>MyShellTest</strong> application. Note that it contains web resources from both the shell component and the inner application.<br />
-<img  src="{{ site.baseurl }}/assets/backup/10_01_preview.png" />
+<img alt="missing_alt"  src="{{ site.baseurl }}/assets/backup/10_01_preview.png" />
 <h2 id="creatingAndUsingAShellBundle">Creating and using a shell bundle in an inner application</h2>
 <p>When the shell developer builds a shell component a <strong>.wlshell</strong> file is created in the project <code>bin\</code> folder. This file is called a shell bundle and can be sent to inner application developers to use.<br />
 A shell developer who works with a test application is not required to explicitly create a shell bundle. The test application references the shell component source code directly from the location that is specified in its <code>application-descriptor.xml</code> file.<br />
@@ -110,5 +110,5 @@ The shell developer can send this file to inner application developers.</p>
 <p>The inner application developer must copy the shell bundle file to a MobileFirst project.<br />
 When inner application developers create a new inner application, they must specify the location of a shell bundle file.<br />
 If a new shell bundle file is received from shell component developers, inner application developers must replace the existing shell bundle file and rebuild their applications.<br />
-<img src="{{ site.baseurl }}/assets/backup/10_01_bundle-flow.png"/>
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/10_01_bundle-flow.png"/>
 <h2 id="environmentSpecific" class="noPrint">Environment Specific</h2>

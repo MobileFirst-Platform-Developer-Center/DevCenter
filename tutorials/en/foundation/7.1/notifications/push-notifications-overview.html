@@ -14,7 +14,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li><a href="#rest">REST API for Push notifications</a></li>
 <li><a href="#environmentType">Supported environments</a></li>
 </ul>
-<p><img src="{{ site.baseurl }}/assets/backup/push-example-169x300.png" style="float:right" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/push-example-169x300.png" style="float:right" /></p>
 <h2 id="whatIsPushNotifications">What is push notification?</h2>
 <p>Push notifications is the ability of a mobile device to receive messages that are "pushed" from a server.</p>
 <p>Notifications are received regardless of whether the application is currently running.<br />
@@ -64,9 +64,9 @@ An event source is declared in the MobileFirst adapter that is used by the appli
 <p>The end user must approve the push notification subscription.<br />
 After the subscription is approved, the device registers with an Apple, Google, or Microsoft push server to obtain a token that is used to identify the device (“Allow notifications for application X on device Y”), and sends a subscription request to the MobileFirst Server. <em>This operation is performed automatically by the MobileFirst framework.</em></p>
 <h3>Demonstration</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/08_01_subscription_1.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_subscription_1.jpg" /></p>
 <p>When the subscribe API method is called, the device registers with a push service mediator and obtains a device token (done automatically by the framework).</p>
-<p><img src="{{ site.baseurl }}/assets/backup/08_01_subscription_2.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_subscription_2.jpg" /></p>
 <p>When the token is obtained, the application subscribes to an event source. Both actions are done automatically by a single API method call, as described in <a href="#subscriptionManagement">Subscription management</a>.</p>
 <h2 id="sendingNotifications">Sending notifications</h2>
 <p>IBM MobileFirst Platform Foundation provides a unified API for push notification.</p>
@@ -86,13 +86,13 @@ After the subscription is approved, the device registers with an Apple, Google, 
 When a notification is retrieved by the adapter, it is processed and sent through the corresponding push service mediator (Apple, Google, or Microsoft).</p>
 <p>Some custom logic can be added in the adapter to preprocess notifications. The push service mediator receives the notification and sends it to a device.</p>
 <h3>Demonstration</h3>
-<p><img src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_1.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_1.jpg" /></p>
 <p>Notifications are retrieved by the MobileFirst adapter event source, either by poll or by push from the back-end system.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_2.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_2.jpg" /></p>
 <p>The adapter processes the notification and sends it to a push service mediator.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_3.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_3.jpg" /></p>
 <p>The push service mediator sends a push notification to the device.</p>
-<p><img src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_4.jpg" /></p>
+<p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/08_01_sending_notification_4.jpg" /></p>
 <p>The device processes the received notification.</p>
 <h2 id="subscriptionManagement">Subscription management</h2>
 <h3>User subscription</h3>
