@@ -6,6 +6,7 @@ paginate: 10
 paginate_path: "/blog/:num/"
 markdown: redcarpet
 generate_redirects: false
+print_pdf: false
 redcarpet:
     extensions: ["with_toc_data", "tables"]
 gems:
@@ -30,7 +31,7 @@ defaults:
       layout: tutorial
       show_breadcrumb: true
       show_disqus: true
-      print_pdf: false
+      print_pdf: true
   -
     scope:
       path: "labs"

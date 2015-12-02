@@ -13,6 +13,7 @@ PDFKit.configure do |config|
 end
 
 Jekyll::Hooks.register :site, :post_write do |site|
+  next unless site.config['print_pdf']
   site.pages.each do |page|
     next unless page.data['print_pdf']
     # next unless page.url == '/tutorials/en/foundation/6.3/hello-world/previewing-application-mobile-web-desktop-browser/'
@@ -29,7 +30,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
     file_name = prefix_folder + page.url.chomp('/') + '.pdf'
 
     # Generate the PDF
-    kit = PDFKit.new('https://pages.github.ibm.com/MFPSamples' + page.url + 'index.html')
+    kit = PDFKit.new(page.content)
     # kit.stylesheets << site.config['destination'] + '/css/combined.css'
     file = kit.to_file(file_name)
   end
