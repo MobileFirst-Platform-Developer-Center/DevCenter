@@ -8,7 +8,7 @@
       "children": [
         {
           "name": "Setting up your development environment",
-          "path": "/development-environment"
+          "path": "/setting-up-your-development-environment"
         },
         {
           "name": "Hello World",
@@ -16,7 +16,7 @@
         },
         {
           "name": "Client-side development",
-          "path": "/client-side-development"
+          "path": "/client-side-development-basics"
         },
         {
           "name": "Server-side development",
