@@ -15,6 +15,9 @@ bundle exec jekyll build --config _config.yml,_configPDF.yml -d _site --profile
 rm -f _site/*.log
 # bundle exec htmlproof ./_site --disable-external --href-ignore '#'
 
+# cleanup
+rm -rf ../generated-pdf
+
 ## Push the `master`
 #clone pdf repository
 git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch master --single-branch ../generated-pdf/master
@@ -30,11 +33,13 @@ git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
 git push --quiet origin master
 
 ## Push the `8.0`
+cd ../..
 #clone pdf repository
 git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch master --single-branch ../generated-pdf/release80
 # copy generated PDF
 rm -rf ../generated-pdf/release80/*
 cp -R --parents _site/pdf/tutorials/en/foundation/8.0/* ../generated-pdf/release80
+cp -R --parents _site/pdf/tutorials/en/product-integration/8.0/* ../generated-pdf/release80
 cp _site/pdf/8.0.html ../generated-pdf/release80/
 
 # commit and push generated content
