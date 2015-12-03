@@ -36,7 +36,7 @@ git push --quiet origin master
 cd ../../DevCenter
 pwd
 #clone pdf repository
-git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch master --single-branch ../generated-pdf/release80
+git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch release80 --single-branch ../generated-pdf/release80
 # copy generated PDF
 rm -rf ../generated-pdf/release80/*
 mkdir -p ../generated-pdf/release80/tutorials/en/foundation/8.0 && cp -R _site/pdf/tutorials/en/foundation/8.0/* ../generated-pdf/release80
