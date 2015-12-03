@@ -1,7 +1,7 @@
-require 'pry'
-require 'pry-byebug'
-# require 'pdfkit'
-# require 'fileutils'
+# require 'pry'
+# require 'pry-byebug'
+require 'pdfkit'
+require 'fileutils'
 PDFKit.configure do |config|
   # config.wkhtmltopdf = '/path/to/wkhtmltopdf'
   config.default_options = {
