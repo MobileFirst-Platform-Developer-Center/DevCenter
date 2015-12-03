@@ -50,7 +50,7 @@ GEM
     sass (3.4.19)
     typhoeus (0.8.0)
       ethon (>= 0.8.0)
-    wkhtmltopdf-binary (0.9.9.3)
+    wkhtmltopdf-binary-edge (0.12.2.1)
     yell (2.0.5)
 
 PLATFORMS
@@ -63,7 +63,7 @@ DEPENDENCIES
   jekyll-paginate
   pdfkit
   redcarpet
-  wkhtmltopdf-binary
+  wkhtmltopdf-binary-edge
 
 BUNDLED WITH
    1.10.6
