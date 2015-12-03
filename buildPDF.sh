@@ -33,7 +33,7 @@ git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
 git push --quiet origin master
 
 ## Push the `8.0`
-cd ../..
+cd ..
 pwd
 #clone pdf repository
 git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch master --single-branch ../generated-pdf/release80
