@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Setting up the Windows and Windows Phone development environment
+title: Setting up the Windows 8 and Windows 10 development environment
 relevantTo: [windowsphone8,windows8,cordova]
 weight: 4
 ---
