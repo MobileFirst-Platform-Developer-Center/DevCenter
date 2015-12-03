@@ -211,7 +211,6 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
 ### <a href="../starter-application-sample/">Starter Application samples</a>
 
 * <a href="../starter-application-sample/">Starter Application sample application</a>
-* <a href="../starter-application-sample/running-dojo-based-sample">Dojo Showcase sample application</a>
 
 ### <a href="../ibm-containers/">IBM Containers</a>
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
