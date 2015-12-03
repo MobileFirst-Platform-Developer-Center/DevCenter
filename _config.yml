@@ -38,3 +38,9 @@ defaults:
     values:
       layout: labs
       show_disqus: true
+  -
+    scope:
+      path: "pdf"
+    values:
+      layout: pdflist
+      permalink: /:path/:basename:output_ext      

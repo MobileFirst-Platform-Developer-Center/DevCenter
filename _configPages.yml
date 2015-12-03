@@ -1,2 +1,2 @@
 baseurl: /MFPSamples
-exclude: [vendor,buildPages.sh,buildBluemix.sh,buildPDF.sh,Gemfile,Gemfile.lock,README.md,Staticfile.auth,Staticfile]
+exclude: [vendor,buildPages.sh,buildBluemix.sh,buildPDF.sh,Gemfile,Gemfile.lock,README.md,Staticfile.auth,Staticfile,pdf]
