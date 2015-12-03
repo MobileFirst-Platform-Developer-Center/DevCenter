@@ -1,9 +1,9 @@
 language: ruby
 cache: bundler
 script:
-  # - "./buildPages.sh" # execute this script on each commit
-  # - "./buildBluemix.sh" # execute this script on each commit
-  - "./buildPDF.sh" # execute this script on each commit
+  - "./buildPages.sh" # execute this script on each commit
+  - "./buildBluemix.sh" # execute this script on each commit
+  # - "./buildPDF.sh" # execute this script on each commit
 branches:
   only:
   - master # only take into account `master' branch
