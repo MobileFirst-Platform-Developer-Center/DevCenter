@@ -30,32 +30,32 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 ### <a href="../configuring-the-mfpf-sdk/">Configuring the MobileFirst SDK</a>
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows/Phone application.
 
-* <a href="../configuring-the-mfpf-sdk/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
+* <a href="../configuring-the-mfpf-sdk/integrating-mfpf-sdk/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
 * <a href="../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/"> Configuring a native iOS application with the MobileFirst Platform SDK</a>
 * <a href="../configuring-the-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/"> Configuring a native Android application with the MobileFirst Platform SDK</a>
 * <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/">Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK</a>
 * <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/">Configuring a native Windows 10 UWP application with the MobileFirst Platform SDK</a>
 
-### <a href="../client-side-development-in-cordova-applications/">Client-side development in Cordova applications</a>
+### <a href="../client-side-development/">Cordova client-side development</a>
 Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; native interactions.
 
-* <a href="../client-side-development-in-cordova-applications/intro-mfpf-cordova/">Introduction - MobileFirst SDK development in Cordova applications</a>
-* <a href="../client-side-development-in-cordova-applications/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
-* <a href="../client-side-development-in-cordova-applications/common-ui-controls/">Common UI controls</a>
-* <a href="../client-side-development-in-cordova-applications/translation/">Translation</a>
-* <a href="../client-side-development-in-cordova-applications/using-direct-update-to-quickly-update-your-application/">Using Direct Update to quickly update your application</a>
-* <a href="../client-side-development-in-cordova-applications/debugging-applications/">Debugging applications</a>
-* <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
-    * <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/logging-in-native-android/">Logging in native Android</a>
-    * <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/logging-in-native-ios/">Logging in native iOS</a>
-    * <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/">Logging in MobileFirst hybrid applications</a>
+* <a href="../client-side-development-/intro-mfpf-cordova/">Introduction - MobileFirst SDK development in Cordova applications</a>
+* <a href="../client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
+* <a href="../client-side-development/common-ui-controls/">Common UI controls</a>
+* <a href="../client-side-development/translation/">Translation</a>
+* <a href="../client-side-development/using-direct-update-to-quickly-update-your-application/">Using Direct Update to quickly update your application</a>
+* <a href="../client-side-development/debugging-applications/">Debugging applications</a>
+* <a href="../client-side-development/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
+    * <a href="../client-side-development-/remote-controlled-client-side-log-collection/logging-in-native-android/">Logging in native Android</a>
+    * <a href="../client-side-development/remote-controlled-client-side-log-collection/logging-in-native-ios/">Logging in native iOS</a>
+    * <a href="../client-side-development/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/">Logging in MobileFirst hybrid applications</a>
 * Adding native UI elements to hybrid applications
-    * <a href="../client-side-development-in-cordova-applications/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>
-    * <a href="../client-side-development-in-cordova-applications/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
-    * <a href="../client-side-development-in-cordova-applications/wp8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
-    *  <a href="../client-side-development-in-cordova-applications/wp10-adding-native-ui-elements-hybrid-applications/">Windows Phone 10 – Adding native UI elements to hybrid applications</a>
-    *  <a href="../client-side-development-in-cordova-applications/w8-adding-native-ui-elements-hybrid-applications/">Windows 8 – Adding native UI elements to hybrid applications</a>
-    * <a href="../client-side-development-in-cordova-applications/w10-adding-native-ui-elements-hybrid-applications/">Windows 10 – Adding native UI elements to hybrid applications</a>
+    * <a href="../client-side-development/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>
+    * <a href="../client-side-development/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
+    * <a href="../client-side-development/wp8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
+    *  <a href="../client-side-development/wp10-adding-native-ui-elements-hybrid-applications/">Windows Phone 10 – Adding native UI elements to hybrid applications</a>
+    *  <a href="../client-side-development/w8-adding-native-ui-elements-hybrid-applications/">Windows 8 – Adding native UI elements to hybrid applications</a>
+    * <a href="../client-side-development/w10-adding-native-ui-elements-hybrid-applications/">Windows 10 – Adding native UI elements to hybrid applications</a>
 * <a href="../advanced-topics/integrating-server-generated-pages-hybrid-applications/">Integrating server-generated pages in hybrid applications</a>
 *  <a href="../advanced-topics/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/">Using MobileFirst application as a container for server-generated pages</a>
 *  <a href="../advanced-topics/container-advanced-pages/">Container for advanced pages</a>
@@ -175,11 +175,11 @@ Add testing capabilities to your application.
 ### <a href="{{site.baseurl}}/tutorials/en/application-scanning">Application Scanning</a>
 Scan your application for potential harming code.
 
-* <a href="{{site.baseurl}}/tutorials/en/application-scanning/">MobileFirst application scanning</a>
-
 ### <a href="../../../cloudant/">Cloudant Data Layer</a>
 Scalable database management for your MobileFirst projects.
 
 * <a href="../data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
 	* <a href="../data/working-with-cloudant-nosql-db-api/ios/">iOS – Cloudant NoSQL DB API</a>
 	* <a href="../data/working-with-cloudant-nosql-db-api/android/">Android – Cloudant NoSQL DB API</a>
+
+* <a href="{{site.baseurl}}/tutorials/en/application-scanning/">MobileFirst application scanning</a>
