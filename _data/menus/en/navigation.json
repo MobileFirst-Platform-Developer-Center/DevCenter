@@ -53,7 +53,7 @@
             "path": "/application-scanning"
         }, {
             "name": "Presence Insights",
-            "path": "https://presenceinsights.ng.bluemix.net/piui/",
+            "path": "https://presenceinsights.ibmcloud.com/piui/",
             "external": true
         }, ]
     }, ]
