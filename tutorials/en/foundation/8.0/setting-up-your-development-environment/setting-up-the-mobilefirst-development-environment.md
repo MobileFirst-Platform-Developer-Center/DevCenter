@@ -1,9 +1,10 @@
 ---
 layout: tutorial
 title: Setting up the MobileFirst development environment
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windowsphone,windows,cordova]
+weight: 1
 ---
-<h2>Overview</h2>
+### Overview
 <p>This tutorial covers the basics of the IBM MobileFirst development environment: supported Eclipse versions, installation of Eclipse and MobileFirst Studio and a tour of the Eclipse UI, installation of the IBM MobileFirst Command line tool (CLI), and an introduction to the capabilities of the tools.</p>
 <h3>Agenda</h3>
 <ul>
