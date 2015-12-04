@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Setting up the Android development environment
+breadcrumb_title: Android environment
 relevantTo: [android,cordova]
 weight: 3
 ---
