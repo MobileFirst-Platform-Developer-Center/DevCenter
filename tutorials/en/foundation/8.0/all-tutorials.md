@@ -13,9 +13,9 @@ Get a feel of the MobileFirst SDK with these fast-tracked demos.
 
 * [Quick start with iOS](../quick-start/ios/)
 * [Quick start with Android](../quick-start/android/)
-* [Quick start with Windows 8 Universal](../quick-start/windows-8/)
-* [Quick start with Windows 10 UWP](../quick-start/windows-10/)
-* [Quick start with Cordova](../quick-start/cordova/")
+* [Quick start with Windows 8 Universal](../quick-start/windows/)
+* [Quick start with Windows 10 UWP](../quick-start/windows/)
+* [Quick start with Cordova](../quick-start/cordova/)
 
 ### [Setting up your development environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
@@ -155,10 +155,10 @@ Move the apps that you create from your development environment to the productio
 * [Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
 * [Distributing mobile applications with Application Center](../moving-to-production/distributing-mobile-applications-with-application-center/)
 
-### [IBM Containers](../ibm-containers/overview/)
+### [IBM Containers](../ibm-containers/)
 Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 
-* [Overview](../ibm-containers/overview/)
+* [Overview](../ibm-containers/)
 * [Evaluate](../ibm-containers/evaluate/)
 * [Run](../ibm-containers/run/)
 * [Sample application](../ibm-containers/sample-app/)
