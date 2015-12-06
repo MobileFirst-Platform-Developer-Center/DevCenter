@@ -165,7 +165,7 @@ Add testing capabilities to your application.
 Scalable database management for your MobileFirst projects.
 
 * [Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
-	* [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
+    * [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
 	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
 
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
