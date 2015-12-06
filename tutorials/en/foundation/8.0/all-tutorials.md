@@ -43,6 +43,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 * [Common UI controls](../client-side-development/common-ui-controls/)
 * [Translation](../client-side-development/translation/)
 * [Using Direct Update to quickly update your application](../client-side-development/using-direct-update-to-quickly-update-your-application/)
+* [Working offline](../client-side-development/working-offline/)
 * [Debugging applications](../client-side-development/debugging-applications/)
 * [iOS – Adding native UI elements to hybrid applications](../client-side-development/ios-adding-native-ui-elements-hybrid-applications/)
 * [Android – Adding native UI elements to hybrid applications](../client-side-development/android-adding-native-ui-elements-hybrid-applications/)
