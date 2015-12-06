@@ -14,6 +14,7 @@ end
 
 Jekyll::Hooks.register :site, :post_write do |site|
   next unless site.config['print_pdf']
+  threads = []
   site.pages.each do |page|
     next unless page.data['print_pdf']
     # next unless page.url == '/tutorials/en/foundation/6.3/hello-world/previewing-application-mobile-web-desktop-browser/'
@@ -29,10 +30,11 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
     # Define the file path
     file_name = prefix_folder + page.url.chomp('/') + '.pdf'
-
-    # Generate the PDF
-    kit = PDFKit.new(source_file)
-    # kit.stylesheets << site.config['destination'] + '/css/combined.css'
-    file = kit.to_file(file_name)
+    threads << Thread.new {
+      # Generate the PDF
+      kit = PDFKit.new(source_file)
+      file = kit.to_file(file_name)
+    }
   end
+  threads.each { |thr| thr.join }
 end
