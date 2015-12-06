@@ -17,7 +17,7 @@ Get a feel of the MobileFirst SDK with these fast-tracked demos.
 * [Quick start with Windows 10 UWP](../quick-start/windows-10/)
 * [Quick start with Cordova](../quick-start/cordova/)
 
-### [Setting up your development environment](../setting-up-your-development-environment/)
+### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
 * [Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
@@ -35,8 +35,8 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * [Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/)
 * [Configuring a native Windows 10 UWP application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/)
 
-### [Client-side development](../client-side-development/)
-Learn to use MobileFirst APIs: Direct Update, Logging, web &#8596; native interactions.
+### [Client-side Development](../client-side-development/)
+Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation, web &#8596; native interactions, debugging and more...
 
 * [Using CLI to create, build, and manage MobileFirst project artifacts](../client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/)
 * [MobileFirst SDK in Cordova applications](../client-side-development/mfpf-in-cordova-applications/)
@@ -44,24 +44,18 @@ Learn to use MobileFirst APIs: Direct Update, Logging, web &#8596; native intera
 * [Translation](../client-side-development/translation/)
 * [Using Direct Update to quickly update your application](../client-side-development/using-direct-update-to-quickly-update-your-application/)
 * [Debugging applications](../client-side-development/debugging-applications/)
+* [iOS – Adding native UI elements to hybrid applications](../client-side-development/ios-adding-native-ui-elements-hybrid-applications/)
+* [Android – Adding native UI elements to hybrid applications](../client-side-development/android-adding-native-ui-elements-hybrid-applications/)
+* [Windows 8 Universal – Adding native UI elements to hybrid applications](../client-side-development/w8-adding-native-ui-elements-hybrid-applications/)
+* [Windows 10 UWP – Adding native UI elements to hybrid applications](../client-side-development/w10-adding-native-ui-elements-hybrid-applications/)
+* [Integrating server-generated pages in hybrid applications](../advanced-topics/integrating-server-generated-pages-hybrid-applications/)
+* [Using MobileFirst application as a container for server-generated pages](../advanced-topics/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/)
 * [JSONStore](../client-side-development/jsonstore/)
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
 	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
-* [Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
-	* [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
-	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
-* Adding native UI elements to hybrid applications
-    * [iOS – Adding native UI elements to hybrid applications](../client-side-development/ios-adding-native-ui-elements-hybrid-applications/)
-    * [Android – Adding native UI elements to hybrid applications](../client-side-development/android-adding-native-ui-elements-hybrid-applications/)
-    * [Windows Phone 8 – Adding native UI elements to hybrid applications](../client-side-development/wp8-adding-native-ui-elements-hybrid-applications/)
-    * [Windows Phone 10 – Adding native UI elements to hybrid applications](../client-side-development/wp10-adding-native-ui-elements-hybrid-applications/)
-    * [Windows 8 – Adding native UI elements to hybrid applications](../client-side-development/w8-adding-native-ui-elements-hybrid-applications/)
-    * [Windows 10 – Adding native UI elements to hybrid applications](../client-side-development/w10-adding-native-ui-elements-hybrid-applications/)
-* [Integrating server-generated pages in hybrid applications](../advanced-topics/integrating-server-generated-pages-hybrid-applications/)
-* [Using MobileFirst application as a container for server-generated pages](../advanced-topics/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/)
 
-### [Server-side development](../server-side-development/)
+### [Server-side Development](../server-side-development/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.
 
 * [Adapters overview](../server-side-development/adapters-overview/)
@@ -74,7 +68,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Java Adapters](../server-side-development/java-adapters/)
     * [Java HTTP adapter](../server-side-development/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../server-side-development/java-adapters/java-sql-adapter/)
-* Invoking adapter procedures
+* Resource request in Adapters
     * [Resource request from Cordova  applications](../server-side-development/invoking-adapter-procedures-hybrid-client-applications/)
     * [Resource request from iOS Swift-based  applications](../server-side-development/invoking-adapter-procedures-native-ios-swift-applications/)
     * [Resource request from iOS Objective C-based  applications](../server-side-development/invoking-adapter-procedures-native-ios-applications/)
@@ -107,7 +101,7 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 * [SMS Notification](../notifications/sms-notifications/)
 * [Two-way SMS communication](../notifications/two-way-sms-communication/)
 
-### [Authentication and security](../authentication-and-security/)
+### [Authentication and Security](../authentication-and-security/)
 Protect your applications and adapter procedures against unauthorized access by using authentication, login modules, and device provisioning.
 
 * [Authentication concepts](../authentication-and-security/authentication-concepts/)
@@ -158,7 +152,7 @@ Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 * [Run](../ibm-containers/run/)
 * [Sample application](../ibm-containers/sample-app/)
 
-### [Integrate with MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
+### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.
 
 * [MobileFirst Quality Assurance in Cordova applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/)
@@ -166,14 +160,14 @@ Add testing capabilities to your application.
 * [MobileFirst Quality Assurance in iOS applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/)
 * [MobileFirst Quality Assurance in Android applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/)
 
-### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
-Scan your application for potential harming code.
-
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.
 
 * [Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
 	* [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
 	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
+
+### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
+Scan your application for potential harming code.
 
 * [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
