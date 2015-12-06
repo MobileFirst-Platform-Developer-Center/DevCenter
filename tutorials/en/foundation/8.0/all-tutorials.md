@@ -13,8 +13,8 @@ Get a feel of the MobileFirst SDK with these fast-tracked demos.
 
 * [Quick start with iOS](../quick-start/ios/)
 * [Quick start with Android](../quick-start/android/)
-* [Quick start with Windows 8 Universal](../quick-start/windows/)
-* [Quick start with Windows 10 UWP](../quick-start/windows/)
+* [Quick start with Windows 8 Universal](../quick-start/windows-8/)
+* [Quick start with Windows 10 UWP](../quick-start/windows-10/)
 * [Quick start with Cordova](../quick-start/cordova/)
 
 ### [Setting up your development environment](../setting-up-your-development-environment/)
