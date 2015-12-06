@@ -40,6 +40,11 @@ git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch release80 --si
 # copy generated PDF
 rm -rf ../generated-pdf/release80/*
 mkdir -p ../generated-pdf/release80/tutorials/en/foundation/8.0 && cp -R _site/pdf/tutorials/en/foundation/8.0/* ../generated-pdf/release80/tutorials/en/foundation/8.0/
+mkdir -p ../generated-pdf/release80/tutorials/en/product-integration/8.0 && cp -R _site/pdf/tutorials/en/product-integration/8.0/* ../generated-pdf/release80/tutorials/en/product-integration/8.0/
+mkdir -p ../generated-pdf/release80/tutorials/en/quality-assurance/8.0 && cp -R _site/pdf/tutorials/en/quality-assurance/8.0/* ../generated-pdf/release80/tutorials/en/quality-assurance/8.0/
+mkdir -p ../generated-pdf/release80/tutorials/en/application-scanning && cp -R _site/pdf/tutorials/en/application-scanning/* ../generated-pdf/release80/tutorials/en/application-scanning/
+mkdir -p ../generated-pdf/release80/tutorials/en/cloudant && cp -R _site/pdf/tutorials/en/cloudant/* ../generated-pdf/release80/tutorials/en/cloudant/
+# copy the index file
 cp _site/pdf/8.0.html ../generated-pdf/release80/index.html
 
 # commit and push generated content
