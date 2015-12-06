@@ -73,6 +73,7 @@ $color_celeste_approx: #ccc;
 		padding-right: 0;
 		margin-right: 0;
 		#pnext-search-input {
+			height: 33px;
 			border-radius: 4px 0 0 4px;
 			&:focus {
 				border-color: #ccc;
@@ -81,7 +82,6 @@ $color_celeste_approx: #ccc;
 			}
 		}
 	}
-
 }
 .dropdown-menu {
 	opacity: 0.97;
