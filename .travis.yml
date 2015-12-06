@@ -1,9 +1,9 @@
 language: ruby
 cache: bundler
 env:
-  -BUILD="buildPDF.sh"
-  -BUILD="buildPages.sh"
-  -BUILD="buildBluemix.sh"
+  -BUILD=buildPDF.sh
+  -BUILD=buildPages.sh
+  -BUILD=buildBluemix.sh
 script:
   # - "./buildPages.sh" # execute this script on each commit
   # - "./buildBluemix.sh" # execute this script on each commit
