@@ -1,5 +1,7 @@
 # require 'pry'
 # require 'pry-byebug'
+require 'thread'
+require 'thwait'
 require 'pdfkit'
 require 'fileutils'
 PDFKit.configure do |config|
@@ -36,5 +38,5 @@ Jekyll::Hooks.register :site, :post_write do |site|
       file = kit.to_file(file_name)
     }
   end
-  threads.each { |thr| thr.join }
+  ThreadsWait.all_waits(*threads)
 end
