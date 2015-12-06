@@ -43,4 +43,4 @@ defaults:
       path: "pdf"
     values:
       layout: pdflist
-      permalink: /:path/:basename:output_ext      
+      permalink: /:path/:basename:output_ext
