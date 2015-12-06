@@ -1,10 +1,10 @@
 language: ruby
 cache: bundler
 env:
-  - BUILD="./buildPDF.sh"
-  - BUILD="./buildPages.sh"
-  - BUILD="./buildBluemix.sh"
-script: $BUILD
+  - BUILD=buildPDF.sh
+  - BUILD=buildPages.sh
+  - BUILD=buildBluemix.sh
+script: "./$BUILD"
 branches:
   only:
   - master # only take into account `master' branch
