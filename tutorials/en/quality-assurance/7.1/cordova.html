@@ -61,15 +61,15 @@ cd hello
     <li>Add the Mobile Quality Assurance plug-in to your Cordova project by completing the following steps:
         <ol>
             <li>Enter the following command to install the MQA plugin:
-            {% highlight bash %}
-            cordova plugin add plugin_location
-            {% endhighlight %}
+{% highlight bash %}
+cordova plugin add plugin_location
+{% endhighlight %}
             Where <em>plugin_location</em> is the path to the directory of the extracted Mobile Quality Assurance plugin that you downloaded.
              </li>
              <li>Enter the following command to install the  required device plugin:
-             {% highlight bash %}
-             cordova plugin add cordova-plugin-device
-             {% endhighlight %}
+ {% highlight bash %}
+ cordova plugin add cordova-plugin-device
+ {% endhighlight %}
              </li>
              <li>If your app has an Android runtime that is earlier than 4.0, rename the <code><em>project_name</em>\<em>app_name</em>\platforms\android\custom_rules.xml</code> file to <code>custom_rules_bak.xml</code>.
              </li>
@@ -85,32 +85,32 @@ cd hello
 <ol>
     <li>Open the index.js file that is in the <code><em>your_project_name</em>\www\js</code> directory.</li>
     <li>Place the following function and required parameters inside the <code>onDeviceReady()</code> function before the end brace of the function:
-    {% highlight java linenos %}
-    MQA.startNewSession({
-      mode: "QA",
-      //or mode: "MARKET" for production mode
-      android: {
-         appKey: "your_MQA_Android_appKey" ,
-         notificationsEnabled: true
-		},
-      ios: {
-         appKey: "your_MQA_iOS_appKey" ,
-         screenShotsFromGallery: true,
-           }
+{% highlight java linenos %}
+MQA.startNewSession({
+  mode: "QA",
+  //or mode: "MARKET" for production mode
+  android: {
+     appKey: "your_MQA_Android_appKey" ,
+     notificationsEnabled: true
 	},
-       {
-      success: function () {console.log("Session Started successfully");},
-      error: function (string) { console.log("Session error" + string);}
-	});
-    {% endhighlight %}
+  ios: {
+     appKey: "your_MQA_iOS_appKey" ,
+     screenShotsFromGallery: true,
+       }
+},
+   {
+  success: function () {console.log("Session Started successfully");},
+  error: function (string) { console.log("Session error" + string);}
+});
+{% endhighlight %}
 
     <blockquote>To learn more about starting a Mobile Quality Assurance session, including details about the different session configuration options, see <a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_start_cordova_session.html" title="Starting Cordova quality assurance sessions" target="_blank">Starting Cordova quality assurance sessions</a>.</blockquote>
     </li>
     <li>Build and run your app.
-       {% highlight bash %}
-       cordova build
-       cordova run
-       {% endhighlight %}
+{% highlight bash %}
+cordova build
+cordova run
+{% endhighlight %}
    </li>
 </ol>
 
