@@ -14,8 +14,8 @@
                 "name": "Configuring the MobileFirst Platform Foundation SDK",
                 "path": "/configuring-the-mfpf-sdk"
             }, {
-                "name": "Cordova client-side development",
-                "path": "/cordova-client-side-development"
+                "name": "Client-side development",
+                "path": "/client-side-development"
             }, {
                 "name": "Server-side development",
                 "path": "/server-side-development"

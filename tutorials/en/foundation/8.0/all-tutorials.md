@@ -23,11 +23,11 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * [Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
 * [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
-* [Setting up the Windows & Windows Phone development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
+* [Setting up the Windows 8 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
 * [Introduction to MobileFirst Operations Console](../quick-start/introduction-to-mobilefirst-platform-operations-console/)
 
-### [Configuring the MobileFirst SDK](../configuring-the-mfpf-sdk/)
-Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 or 10  application.
+### [Configuring the MobileFirst Platform Foundation SDK](../configuring-the-mfpf-sdk/)
+Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 Universal or Windows 10 UWP application.
 
 * [Integrating MobileFirst Platform Foundation SDK in Cordova Applications](../configuring-the-mfpf-sdk/integrating-mfpf-sdk/)
 * [Configuring a native iOS application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/)
@@ -35,32 +35,34 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * [Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/)
 * [Configuring a native Windows 10 UWP application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/)
 
-### [Cordova client-side development](../cordova-client-side-development/)
-Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; native interactions.
+### [Client-side development](../client-side-development/)
+Learn to use MobileFirst APIs: Direct Update, Logging, web &#8596; native interactions.
 
-* [Introduction - MobileFirst SDK development in Cordova applications](../client-side-development-/intro-mfpf-cordova/)
-* [Using CLI to create, build, and manage MobileFirst project artifacts](../cordova-client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/)
-* [Common UI controls](../cordova-client-side-development/common-ui-controls/")
-* [Translation](../cordova-client-side-development/translation/)
-* [Using Direct Update to quickly update your application](../cordova-client-side-development/using-direct-update-to-quickly-update-your-application/)
-* [Debugging applications](../cordova-client-side-development/debugging-applications/)
-* [Remote controlled client-side log collection](../cordova-client-side-development/remote-controlled-client-side-log-collection/)
-    * [Logging in native Android](../client-side-development-/remote-controlled-client-side-log-collection/logging-in-native-android/")
-    * [Logging in native iOS](../cordova-client-side-development/remote-controlled-client-side-log-collection/logging-in-native-ios/)
-    * [Logging in MobileFirst hybrid applications](../cordova-client-side-development/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/)
+* [Using CLI to create, build, and manage MobileFirst project artifacts](../client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/)
+* [MobileFirst SDK in Cordova applications](../client-side-development/mfpf-in-cordova-applications/)
+* [Common UI controls](../client-side-development/common-ui-controls/)
+* [Translation](../client-side-development/translation/)
+* [Using Direct Update to quickly update your application](../client-side-development/using-direct-update-to-quickly-update-your-application/)
+* [Debugging applications](../client-side-development/debugging-applications/)
+* [JSONStore](../client-side-development/jsonstore/)
+    * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
+	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
+	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
+* [Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
+	* [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
+	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
 * Adding native UI elements to hybrid applications
-    * [iOS – Adding native UI elements to hybrid applications](../cordova-client-side-development/ios-adding-native-ui-elements-hybrid-applications/)
-    * [Android – Adding native UI elements to hybrid applications](../cordova-client-side-development/android-adding-native-ui-elements-hybrid-applications/)
-    * [Windows Phone 8 – Adding native UI elements to hybrid applications](../cordova-client-side-development/wp8-adding-native-ui-elements-hybrid-applications/)
-    * [Windows Phone 10 – Adding native UI elements to hybrid applications](../cordova-client-side-development/wp10-adding-native-ui-elements-hybrid-applications/)
-    * [Windows 8 – Adding native UI elements to hybrid applications](../cordova-client-side-development/w8-adding-native-ui-elements-hybrid-applications/)
-    * [Windows 10 – Adding native UI elements to hybrid applications](../cordova-client-side-development/w10-adding-native-ui-elements-hybrid-applications/)
+    * [iOS – Adding native UI elements to hybrid applications](../client-side-development/ios-adding-native-ui-elements-hybrid-applications/)
+    * [Android – Adding native UI elements to hybrid applications](../client-side-development/android-adding-native-ui-elements-hybrid-applications/)
+    * [Windows Phone 8 – Adding native UI elements to hybrid applications](../client-side-development/wp8-adding-native-ui-elements-hybrid-applications/)
+    * [Windows Phone 10 – Adding native UI elements to hybrid applications](../client-side-development/wp10-adding-native-ui-elements-hybrid-applications/)
+    * [Windows 8 – Adding native UI elements to hybrid applications](../client-side-development/w8-adding-native-ui-elements-hybrid-applications/)
+    * [Windows 10 – Adding native UI elements to hybrid applications](../client-side-development/w10-adding-native-ui-elements-hybrid-applications/)
 * [Integrating server-generated pages in hybrid applications](../advanced-topics/integrating-server-generated-pages-hybrid-applications/)
 * [Using MobileFirst application as a container for server-generated pages](../advanced-topics/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/)
-* [Container for advanced pages](../advanced-topics/container-advanced-pages/)
 
 ### [Server-side development](../server-side-development/)
-Develop the server code (adapters) that your mobile app requires to integrate with enterprise back-end applications and cloud services.
+Develop server-side code to integrate with enterprise back-end systems and cloud services.
 
 * [Adapters overview](../server-side-development/adapters-overview/)
 * [JavaScript adapters](../server-side-development/javascript-adapters/)
@@ -73,26 +75,15 @@ Develop the server code (adapters) that your mobile app requires to integrate wi
     * [Java HTTP adapter](../server-side-development/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../server-side-development/java-adapters/java-sql-adapter/)
 * Invoking adapter procedures
-    * [Invoking adapter procedures from hybrid client applications](../server-side-development/invoking-adapter-procedures-hybrid-client-applications/)
-    * [Invoking adapter procedures from native iOS Swift applications](../server-side-development/invoking-adapter-procedures-native-ios-swift-applications/)
-    * [Invoking adapter procedures from native iOS Objective-C applications](../server-side-development/invoking-adapter-procedures-native-ios-applications/)
-    * [Invoking adapter procedures from native Android applications](../server-side-development/invoking-adapter-procedures-native-android-applications/)
-    * [Invoking adapter procedures from native Windows 8 Universal applications](../server-side-development/invoking-adapter-procedures-native-windows-8-applications/)
-    * [Invoking adapter procedures from native Java Platform, Micro Editions (Java ME) applications](../server-side-development/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/)
+    * [Resource request from Cordova  applications](../server-side-development/invoking-adapter-procedures-hybrid-client-applications/)
+    * [Resource request from iOS Swift-based  applications](../server-side-development/invoking-adapter-procedures-native-ios-swift-applications/)
+    * [Resource request from iOS Objective C-based  applications](../server-side-development/invoking-adapter-procedures-native-ios-applications/)
+    * [Resource request from Android  applications](../server-side-development/invoking-adapter-procedures-native-android-applications/)
+    * [Resource request from Windows 8 Universal  applications](../server-side-development/invoking-adapter-procedures-native-windows-8-applications/)
+    * [Resource request from Windows 10 UWP  applications](../server-side-development/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/)
 * [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
-* [Debugging adapters](../server-side-development/debugging-adapters/)
 * [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
-
-### [Data](../data/)
-Add data-related functionality to your applications. Create apps that can run offline.
-
-* [JSONStore](../data/jsonstore/)
-    * [JSONStore in Cordova applications](../data/jsonstore/jsonstore-javascript-api/)
-	* [JSONStore in iOS applications](../data/jsonstore/jsonstore-objective-c-api/)
-	* [JSONStore in Android applications](../data/jsonstore/jsonstore-java-api/)
-* [Working with Cloudant NoSQL DB API](../data/working-with-cloudant-nosql-db-api/)
-	* [iOS – Cloudant NoSQL DB API](../data/working-with-cloudant-nosql-db-api/ios/)
-	* [Android – Cloudant NoSQL DB API](../data/working-with-cloudant-nosql-db-api/android/)
+* [Debugging adapters](../server-side-development/debugging-adapters/)
 
 ### [Notifications](../notifications/)
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
@@ -147,6 +138,10 @@ Protect your applications and adapter procedures against unauthorized access by 
 ### [Analytics](../analytics/)
 
 * [Operational Analytics](../analytics/operational-analytics/)
+* [Remote controlled client-side log collection](../client-side-development/remote-controlled-client-side-log-collection/)
+    * [Logging in native Android](../client-side-development-/remote-controlled-client-side-log-collection/logging-in-native-android/)
+    * [Logging in native iOS](../client-side-development/remote-controlled-client-side-log-collection/logging-in-native-ios/)
+    * [Logging in MobileFirst hybrid applications](../client-side-development/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/)
 * [Reports and analytics](../analytics/reports-analytics/)
 
 ### [Moving to production](../moving-to-production/)
@@ -177,8 +172,8 @@ Scan your application for potential harming code.
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.
 
-* [Working with Cloudant NoSQL DB API](../data/working-with-cloudant-nosql-db-api/)
-	* [iOS – Cloudant NoSQL DB API](../data/working-with-cloudant-nosql-db-api/ios/)
-	* [Android – Cloudant NoSQL DB API](../data/working-with-cloudant-nosql-db-api/android/)
+* [Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
+	* [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
+	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
 
 * [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
