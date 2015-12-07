@@ -13,6 +13,8 @@ With a JMS adapter, you can read and write messages from any messaging provider 
 
 >WebSphere Application Server Liberty profile included with IBM MobileFirst™ Platform Foundation does not contain the built-in Liberty JMS features. JMS is supported by the WebSphere Application Server Liberty profile V8.5 ND (Network Deployment) server. Look for "Enabling JMS" in the documentation for WebSphere Application Server.
 
+**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+
 ### Enable JMS in Server.xml
 
 Enable JMS on your Liberty profile ND server:
