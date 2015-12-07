@@ -5,7 +5,7 @@ permalink: pretty
 paginate: 10
 paginate_path: "/blog/:num/"
 markdown: redcarpet
-generate_redirects: true
+generate_redirects: false
 print_pdf: false
 redcarpet:
     extensions: ["with_toc_data", "tables"]
