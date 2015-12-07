@@ -19,7 +19,6 @@ rm -f _site/*.log
 rm -rf ../generated-pdf
 
 ## Push the `8.0`
-cd ../../DevCenter
 pwd
 #clone pdf repository
 git clone git@github.ibm.com:MFPSamples/TutorialsForOfflineReading.git --branch release80 --single-branch ../generated-pdf/release80
