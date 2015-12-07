@@ -2,6 +2,7 @@
 layout: tutorial
 title: Server-side Development
 show_disqus: false
+print_pdf: false
 ---
 ### Server-side development
 <p><i>Multiple tutorials within</i></p>

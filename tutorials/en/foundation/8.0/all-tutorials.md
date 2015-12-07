@@ -3,183 +3,172 @@ layout: tutorial
 title: All Tutorials
 weight: 1
 show_disqus: false
+print_pdf: false
 ---
 <br>
 Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
 
-### <a href="../quick-start/">Quick Start</a>
+### [Quick Start](../quick-start)
 Get a feel of the MobileFirst SDK with these fast-tracked demos.
 
-* <a href="../quick-start/ios/">Quick start with iOS</a>
-* <a href="../quick-start/android/">Quick start with Android</a>
-* <a href="../quick-start/windows-8/">Quick start with Windows 8</a>
-* <a href="../quick-start/windows-10/">Quick start with Windows 10</a>
-* <a href="../quick-start/windows-phone-10/">Quick start with Windows Phone 10</a>
-* <a href="../quick-start/cordova/">Quick start with Cordova</a>
+* [Quick start with iOS](../quick-start/ios/)
+* [Quick start with Android](../quick-start/android/)
+* [Quick start with Windows 8 Universal](../quick-start/windows-8/)
+* [Quick start with Windows 10 UWP](../quick-start/windows-10/)
+* [Quick start with Cordova](../quick-start/cordova/)
 
-### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
+### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
-* <a href="../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up the MobileFirst development environment</a>
-* <a href="../setting-up-your-development-environment/setting-up-the-ios-development-environment/">Setting up the iOS development environment</a>
-* <a href="../setting-up-your-development-environment/setting-up-the-android-development-environment/">Setting up the Android development environment</a>
-* <a href="../setting-up-your-development-environment/setting-up-the-windows-and-windows-phone-development-environment/">Setting up the Windows & Windows Phone development environments</a>
-* <a href="../quick-start/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Operations Console</a>
+* [Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
+* [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
+* [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
+* [Setting up the Windows 8 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
+* [Introduction to MobileFirst Operations Console](../quick-start/introduction-to-mobilefirst-platform-operations-console/)
 
-### <a href="../configuring-the-mfpf-sdk/">Configuring the MobileFirst SDK</a>
-Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows/Phone application.
+### [Configuring the MobileFirst Platform Foundation SDK](../configuring-the-mfpf-sdk/)
+Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 Universal or Windows 10 UWP application.
 
-* <a href="../configuring-the-mfpf-sdk/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a>
-* <a href="../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/"> Configuring a native iOS application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-the-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/"> Configuring a native Android application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/">Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/">Configuring a native Windows 10 Universal application with the MobileFirst Platform SDK</a>
-* <a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-phone-10-application-with-the-mfp-sdk/">Configuring a native Windows Phone 10 Universal application with the MobileFirst Platform SDK</a>
+* [Integrating MobileFirst Platform Foundation SDK in Cordova Applications](../configuring-the-mfpf-sdk/integrating-mfpf-sdk/)
+* [Configuring a native iOS application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/)
+* [Configuring a native Android application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/)
+* [Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/)
+* [Configuring a native Windows 10 UWP application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/)
 
-### <a href="../client-side-development-in-cordova-applications/">Client-side development in Cordova applications</a>
-Learn MobileFirst APIs: UI controls, Direct Update, Logging and web &#8596; native interactions.
+### [Client-side Development](../client-side-development/)
+Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation, web &#8596; native interactions, debugging and more...
 
-* <a href="../client-side-development-in-cordova-applications/intro-mfpf-cordova/">Introduction - MobileFirst SDK development in Cordova applications</a>
-* <a href="../client-side-development-in-cordova-applications/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a>
-* <a href="../client-side-development-in-cordova-applications/common-ui-controls/">Common UI controls</a>
-* <a href="../client-side-development-in-cordova-applications/translation/">Translation</a>
-* <a href="../client-side-development-in-cordova-applications/using-direct-update-to-quickly-update-your-application/">Using Direct Update to quickly update your application</a>
-* <a href="../client-side-development-in-cordova-applications/debugging-applications/">Debugging applications</a>
-* <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
-    * <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/logging-in-native-android/">Logging in native Android</a>
-    * <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/logging-in-native-ios/">Logging in native iOS</a>
-    * <a href="../client-side-development-in-cordova-applications/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/">Logging in MobileFirst hybrid applications</a>
-* Adding native UI elements to hybrid applications
-    * <a href="../client-side-development-in-cordova-applications/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a>
-    * <a href="../client-side-development-in-cordova-applications/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a>
-    * <a href="../client-side-development-in-cordova-applications/wp8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a>
-    *  <a href="../client-side-development-in-cordova-applications/wp10-adding-native-ui-elements-hybrid-applications/">Windows Phone 10 – Adding native UI elements to hybrid applications</a>
-    *  <a href="../client-side-development-in-cordova-applications/w8-adding-native-ui-elements-hybrid-applications/">Windows 8 – Adding native UI elements to hybrid applications</a>
-    * <a href="../client-side-development-in-cordova-applications/w10-adding-native-ui-elements-hybrid-applications/">Windows 10 – Adding native UI elements to hybrid applications</a>
-* <a href="../advanced-topics/integrating-server-generated-pages-hybrid-applications/">Integrating server-generated pages in hybrid applications</a>
-*  <a href="../advanced-topics/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/">Using MobileFirst application as a container for server-generated pages</a>
-*  <a href="../advanced-topics/container-advanced-pages/">Container for advanced pages</a>
+* [Using CLI to create, build, and manage MobileFirst project artifacts](../client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/)
+* [MobileFirst SDK in Cordova applications](../client-side-development/intro-mfpf-cordova/)
+* [Common UI controls](../client-side-development/common-ui-controls/)
+* [Translation](../client-side-development/translation/)
+* [Using Direct Update to quickly update your application](../client-side-development/using-direct-update-to-quickly-update-your-application/)
+* [Working offline](../client-side-development/working-offline/)
+* [Debugging applications](../client-side-development/debugging-applications/)
+* [iOS – Adding native UI elements to hybrid applications](../client-side-development/ios-adding-native-ui-elements-hybrid-applications/)
+* [Android – Adding native UI elements to hybrid applications](../client-side-development/android-adding-native-ui-elements-hybrid-applications/)
+* [Windows 8 Universal – Adding native UI elements to hybrid applications](../client-side-development/w8-adding-native-ui-elements-hybrid-applications/)
+* [Windows 10 UWP – Adding native UI elements to hybrid applications](../client-side-development/w10-adding-native-ui-elements-hybrid-applications/)
+* [Integrating server-generated pages in hybrid applications](../advanced-topics/integrating-server-generated-pages-hybrid-applications/)
+* [Using MobileFirst application as a container for server-generated pages](../advanced-topics/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/)
+* [JSONStore](../client-side-development/jsonstore/)
+    * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
+	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
+	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
 
-### <a href="../server-side-development/">Server-side development</a>
-Develop the server code (adapters) that your mobile app requires to integrate with enterprise back-end applications and cloud services.
+### [Server-side Development](../server-side-development/)
+Develop server-side code to integrate with enterprise back-end systems and cloud services.
 
-* <a href="../server-side-development/adapters-overview/">Adapters overview</a>
-* <a href="../server-side-development/javascript-adapters/">JavaScript adapters</a>
-    * <a href="../server-side-development/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
-    * <a href="../server-side-development/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a>
-    * <a href="../server-side-development/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a>
-    * <a href="../server-side-development/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a>
-    * <a href="../server-side-development/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a>
-* <a href="../server-side-development/java-adapters/">Java Adapters</a>
-    * <a href="../server-side-development/java-adapters/java-http-adapter/">Java HTTP adapter</a>
-    * <a href="../server-side-development/java-adapters/java-sql-adapter/">Java SQL adapter</a>
-* Invoking adapter procedures
-    * <a href="../server-side-development/invoking-adapter-procedures-hybrid-client-applications/">Invoking adapter procedures from hybrid client applications</a>
-    * <a href="../server-side-development/invoking-adapter-procedures-native-ios-swift-applications/">Invoking adapter procedures from native iOS Swift applications</a>
-    * <a href="../server-side-development/invoking-adapter-procedures-native-ios-applications/">Invoking adapter procedures from native iOS Objective-C applications</a>
-    * <a href="../server-side-development/invoking-adapter-procedures-native-android-applications/">Invoking adapter procedures from native Android applications</a>
-    * <a href="../server-side-development/invoking-adapter-procedures-native-windows-8-applications/">Invoking adapter procedures from native Windows 8 Universal applications</a>
-    * <a href="../server-side-development/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/">Invoking adapter procedures from native Java Platform, Micro Editions (Java ME) applications</a>
-* <a href="../server-side-development/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a>
-* <a href="../server-side-development/debugging-adapters/">Debugging adapters</a>
-* <a href="../server-side-development/cloudant/">Integrating with Cloudant by using an adapter</a>
+* [Adapters overview](../server-side-development/adapters-overview/)
+* [JavaScript adapters](../server-side-development/javascript-adapters/)
+    * [JavaScript HTTP Adapter](../server-side-development/javascript-adapters/js-http-adapter/)
+    * [JavaScript SQL Adapter](../server-side-development/javascript-adapters/js-sql-adapter/)
+    * [JavaScript Cast Iron Adapter](../server-side-development/javascript-adapters/js-cast-iron-adapter/)
+    * [JavaScript JMS Adapter](../server-side-development/javascript-adapters/js-jms-adapter/)
+    * [Using Java in JavaScript adapters](../server-side-development/javascript-adapters/using-java-adapters/)
+* [Java Adapters](../server-side-development/java-adapters/)
+    * [Java HTTP adapter](../server-side-development/java-adapters/java-http-adapter/)
+    * [Java SQL adapter](../server-side-development/java-adapters/java-sql-adapter/)
+* Resource request in Adapters
+    * [Resource request from Cordova  applications](../server-side-development/invoking-adapter-procedures-hybrid-client-applications/)
+    * [Resource request from iOS Swift-based  applications](../server-side-development/invoking-adapter-procedures-native-ios-swift-applications/)
+    * [Resource request from iOS Objective C-based  applications](../server-side-development/invoking-adapter-procedures-native-ios-applications/)
+    * [Resource request from Android  applications](../server-side-development/invoking-adapter-procedures-native-android-applications/)
+    * [Resource request from Windows 8 Universal  applications](../server-side-development/invoking-adapter-procedures-native-windows-8-applications/)
+    * [Resource request from Windows 10 UWP  applications](../server-side-development/invoking-adapter-procedures-native-java-platform-micro-editions-java-applications/)
+* [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
+* [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
+* [Debugging adapters](../server-side-development/debugging-adapters/)
 
-### <a href="../data/">Data</a>
-Add data-related functionality to your applications. Create apps that can run offline.
-
-* <a href="../data/jsonstore/">JSONStore</a>
-    * <a href="../data/jsonstore/jsonstore-javascript-api/">JSONStore in Cordova applications</a>
-	* <a href="../data/jsonstore/jsonstore-objective-c-api/">JSONStore in iOS applications</a>
-	* <a href="../data/jsonstore/jsonstore-java-api/">JSONStore in Android applications</a>
-* <a href="../data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
-	* <a href="../data/working-with-cloudant-nosql-db-api/ios/">iOS – Cloudant NoSQL DB API</a>
-	* <a href="../data/working-with-cloudant-nosql-db-api/android/">Android – Cloudant NoSQL DB API</a>
-
-### <a href="../notifications/">Notifications</a>
+### [Notifications](../notifications/)
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 
-* <a href="../notifications/push-notifications-overview/">Push Notifications Overview</a>
-* <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/">Push notifications in hybrid applications</a>
-    * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/event-source/">Event Source Notifications in Hybrid Applications</a>
-    * <a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/tag-based/">Tag and Broadcast Notifications in Hybrid Applications</a>
-* <a href="../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/">Push notifications in native iOS applications</a>
-    * <a href="../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/event-source/">Event Source Notifications in Native iOS Applications</a>
-	* <a href="../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/tag-based/">Tag and Broadcast Notifications in Native iOS Applications</a>
-	* <a href="../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/interactive-and-silent/">Interactive and Silent Notifications in Native iOS Applications</a>
-* <a href="../notifications/push-notifications-overview/push-notifications-in-native-android-applications/">Push notifications in native Android applications</a>
-    * <a href="../notifications/push-notifications-overview/push-notifications-in-native-android-applications/event-source/">Event Source Notifications in Native Android Applications</a>
-	* <a href="../notifications/push-notifications-overview/push-notifications-in-native-android-applications/tag-based/">Tag and Broadcast Notifications in Native Android Applications</a>
-    * <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/event-source/">Event Source Notifications in Native Windows Phone 8 Applications</a>
-	* <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/tag-based/">Tag and Broadcast Notifications in Native Windows Phone 8 Applications</a>
-* <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/">Push notifications in native Windows 8 Universal applications</a>
-	* <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/event-source/">Event Source Notifications in Native Windows 8 Applications</a>
-	* <a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/tag-based/">Tag and Broadcast Notifications in Native Windows 8 Applications</a>
-* <a href="../notifications/sms-notifications/">SMS Notification</a>
-* <a href="../notifications/two-way-sms-communication/">Two-way SMS communication</a>
+* [Push Notifications Overview](../notifications/push-notifications-overview/)
+* [Push notifications in hybrid applications](../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/)
+    * [Event Source Notifications in Hybrid Applications](../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/event-source/)
+    * [Tag and Broadcast Notifications in Hybrid Applications](../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/tag-based/)
+* [Push notifications in native iOS applications](../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/)
+    * [Event Source Notifications in Native iOS Applications](../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/event-source/)
+	* [Tag and Broadcast Notifications in Native iOS Applications](../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/tag-based/)
+	* [Interactive and Silent Notifications in Native iOS Applications](../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/interactive-and-silent/)
+* [Push notifications in native Android applications](../notifications/push-notifications-overview/push-notifications-in-native-android-applications/)
+    * [Event Source Notifications in Native Android Applications](../notifications/push-notifications-overview/push-notifications-in-native-android-applications/event-source/)
+	* [Tag and Broadcast Notifications in Native Android Applications](../notifications/push-notifications-overview/push-notifications-in-native-android-applications/tag-based/)
+    * [Event Source Notifications in Native Windows Phone 8 Applications](../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/event-source/)
+	* [Tag and Broadcast Notifications in Native Windows Phone 8 Applications](../notifications/push-notifications-overview/push-notifications-in-native-windows-phone-8-applications/tag-based/)
+* [Push notifications in native Windows 8 Universal applications](../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/)
+	* [Event Source Notifications in Native Windows 8 Applications](../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/event-source/)
+	* [Tag and Broadcast Notifications in Native Windows 8 Applications](../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/tag-based/)
+* [SMS Notification](../notifications/sms-notifications/)
+* [Two-way SMS communication](../notifications/two-way-sms-communication/)
 
-### <a href="../authentication-and-security/">Authentication and security</a>
+### [Authentication and Security](../authentication-and-security/)
 Protect your applications and adapter procedures against unauthorized access by using authentication, login modules, and device provisioning.
 
-* <a href="../authentication-and-security/authentication-concepts/">Authentication concepts</a>
-* <a href="../authentication-and-security/authentication-concepts/oauth-based-security-model/">OAuth-based security model</a>
-* <a href="../authentication-and-security/custom-authentication/">Custom Authentication</a>
-	* <a href="../authentication-and-security/custom-authentication/custom-authentication-hybrid-applications/">Custom authentication in hybrid applications</a>
-	* <a href="../authentication-and-security/custom-authentication/custom-authentication-native-ios-applications/"> Custom authentication in native iOS applications</a>
-	* <a href="../authentication-and-security/custom-authentication/custom-authentication-in-native-android-applications/">Custom authentication in native Android applications</a>
-	* <a href="../authentication-and-security/custom-authentication/custom-authentication-in-native-windows-8-applications/">Custom authentication in native Windows 8 applications</a>
-* <a href="../authentication-and-security/application-authenticity-protection/">Application Authenticity Protection</a>
-    * <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-hybrid-applications/">Application Authenticity Protection in Hybrid applications</a>
-	* <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-native-ios/">Application Authenticity Protection in Native iOS applications</a>
-	* <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-native-android-applications/">Application Authenticity Protection in Native Android applications</a>
-	* <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-universal-applications/">Application Authenticity Protection in Native Windows 8 Universal applications</a>
-    * <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-10-universal-applications/">Application Authenticity Protection in Native Windows 10 Universal applications</a>
-    * <a href="../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-phone-10-applications/">Application Authenticity Protection in Native Windows Phone 10 applications</a>
-* <a href="../authentication-and-security/client-x-509-certificate-authentication-user-enrollment/">Client X.509 Certificate Authentication and User Enrollment</a>
-* <a href="../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a>
-* <a href="../authentication-and-security/using-ldap-login-module-to-authenticate-users-with-ldap-server-in-hybrid-applications/">Using LDAP Login Module to authenticate users with LDAP server in hybrid applications</a>
-* <a href="../authentication-and-security/websphere-ltpa-based-authentication/">WebSphere LTPA-based authentication</a>
-* <a href="../authentication-and-security/device-provisioning-concepts/">Device provisioning concepts</a>
-* <a href="../authentication-and-security/custom-device-provisioning/">Custom device provisioning</a>
+* [Authentication concepts](../authentication-and-security/authentication-concepts/)
+* [OAuth-based security model](../authentication-and-security/authentication-concepts/oauth-based-security-model/)
+* [Custom Authentication](../authentication-and-security/custom-authentication/)
+	* [Custom authentication in hybrid applications](../authentication-and-security/custom-authentication/custom-authentication-hybrid-applications/)
+	* [ Custom authentication in native iOS applications](../authentication-and-security/custom-authentication/custom-authentication-native-ios-applications/)
+	* [Custom authentication in native Android applications](../authentication-and-security/custom-authentication/custom-authentication-in-native-android-applications/)
+	* [Custom authentication in native Windows 8 applications](../authentication-and-security/custom-authentication/custom-authentication-in-native-windows-8-applications/)
+* [Application Authenticity Protection](../authentication-and-security/application-authenticity-protection/)
+    * [Application Authenticity Protection in Hybrid applications](../authentication-and-security/application-authenticity-protection/application-authenticity-protection-hybrid-applications/)
+	* [Application Authenticity Protection in Native iOS applications](../authentication-and-security/application-authenticity-protection/application-authenticity-protection-native-ios/)
+	* [Application Authenticity Protection in Native Android applications](../authentication-and-security/application-authenticity-protection/application-authenticity-protection-native-android-applications/)
+	* [Application Authenticity Protection in Native Windows 8 Universal applications](../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-universal-applications/)
+    * [Application Authenticity Protection in Native Windows 10 Universal applications](../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-10-universal-applications/)
+    * [Application Authenticity Protection in Native Windows Phone 10 applications](../authentication-and-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-phone-10-applications/)
+* [Client X.509 Certificate Authentication and User Enrollment](../authentication-and-security/client-x-509-certificate-authentication-user-enrollment/)
+* [Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
+* [Using LDAP Login Module to authenticate users with LDAP server in hybrid applications](../authentication-and-security/using-ldap-login-module-to-authenticate-users-with-ldap-server-in-hybrid-applications/)
+* [WebSphere LTPA-based authentication](../authentication-and-security/websphere-ltpa-based-authentication/)
+* [Device provisioning concepts](../authentication-and-security/device-provisioning-concepts/)
+* [Custom device provisioning](../authentication-and-security/custom-device-provisioning/)
 * [NTLM Authentication](../authentication-and-security/ntlm-authentication/)
-* <a href="../advanced-topics/remember-me/">Remember Me</a>
-* <a href="../advanced-topics/offline-authentication/">Offline Authentication</a>
-* <a href="../advanced-topics/device-enrollment/">Device Enrollment</a>
+* [Remember Me](../advanced-topics/remember-me/)
+* [Offline Authentication](../advanced-topics/offline-authentication/)
+* [Device Enrollment](../advanced-topics/device-enrollment/)
 
-### <a href="../analytics/">Analytics</a>
+### [Analytics](../analytics/)
 
-* <a href="../analytics/operational-analytics/">Operational Analytics</a>
-* <a href="../analytics/reports-analytics/">Reports and analytics</a>
+* [Operational Analytics](../analytics/operational-analytics/)
+* [Remote controlled client-side log collection](../client-side-development/remote-controlled-client-side-log-collection/)
+    * [Logging in native Android](../client-side-development-/remote-controlled-client-side-log-collection/logging-in-native-android/)
+    * [Logging in native iOS](../client-side-development/remote-controlled-client-side-log-collection/logging-in-native-ios/)
+    * [Logging in MobileFirst hybrid applications](../client-side-development/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/)
+* [Reports and analytics](../analytics/reports-analytics/)
 
-### <a href="../moving-to-production/">Moving to production</a>
+### [Moving to production](../moving-to-production/)
 Move the apps that you create from your development environment to the production environment.
 
-* <a href="../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/">Moving from development environment to stand-alone QA and production servers</a>
-* <a href="../moving-to-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
+* [Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
+* [Distributing mobile applications with Application Center](../moving-to-production/distributing-mobile-applications-with-application-center/)
 
-### <a href="../ibm-containers/overview/">IBM Containers</a>
+### [IBM Containers](../ibm-containers/)
 Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 
-* <a href="../ibm-containers/overview/">Overview</a>
-* <a href="../ibm-containers/evaluate/">Evaluate</a>
-* <a href="../ibm-containers/run/">Run</a>
-* <a href="../ibm-containers/sample-app/">Sample application</a>
+* [Overview](../ibm-containers/)
+* [Evaluate](../ibm-containers/evaluate/)
+* [Run](../ibm-containers/run/)
+* [Sample application](../ibm-containers/sample-app/)
 
-### <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview">Integrate with MobileFirst Quality Assurance</a>
+### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.
 
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/">MobileFirst Quality Assurance in Cordova applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/hybrid/">MobileFirst Quality Assurance in Hybrid applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/">MobileFirst Quality Assurance in iOS applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/">MobileFirst Quality Assurance in Android applications</a>
+* [MobileFirst Quality Assurance in Cordova applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/)
+* [MobileFirst Quality Assurance in Hybrid applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/hybrid/)
+* [MobileFirst Quality Assurance in iOS applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/)
+* [MobileFirst Quality Assurance in Android applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/)
 
-### <a href="{{site.baseurl}}/tutorials/en/application-scanning">Application Scanning</a>
-Scan your application for potential harming code.
-
-* <a href="{{site.baseurl}}/tutorials/en/application-scanning/">MobileFirst application scanning</a>
-
-### <a href="../../../cloudant/">Cloudant Data Layer</a>
+### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.
 
-* <a href="../data/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a>
-	* <a href="../data/working-with-cloudant-nosql-db-api/ios/">iOS – Cloudant NoSQL DB API</a>
-	* <a href="../data/working-with-cloudant-nosql-db-api/android/">Android – Cloudant NoSQL DB API</a>
+* [Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
+    * [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
+	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
+
+### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
+Scan your application for potential harming code.
+
+* [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)

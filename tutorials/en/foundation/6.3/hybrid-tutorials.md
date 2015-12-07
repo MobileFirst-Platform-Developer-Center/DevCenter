@@ -2,6 +2,7 @@
 layout: tutorial
 title: Hybrid Development
 show_disqus: false
+print_pdf: false
 ---
 ### Setting up your development environment
 <p><i>Multiple tutorials within</i></p>

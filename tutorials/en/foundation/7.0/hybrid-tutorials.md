@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Hybrid Development
+print_pdf: false
 show_disqus: false
 ---
 <br>

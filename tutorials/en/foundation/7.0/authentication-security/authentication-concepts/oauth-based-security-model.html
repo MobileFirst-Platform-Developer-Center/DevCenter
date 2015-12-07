@@ -5,7 +5,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 ---
 <h2>Overview</h2>
 <p>The <a href="http://oauth.net/" target="_blank">OAuth 2.0</a> protocol is based on the acquisition of an access token, which encapsulates the authorization that is granted to the client. In that context, IBM MobileFirst Platform Server serves as an authorization server and is able to generate such tokens. The client can then use these tokens to access resources on a resource server, which can be either MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. This separation between resource server and authorization server in the new OAuth-based model allows you to enforce MobileFirst security on resources that are running outside MobileFirst Server.</p>
-<p>To support backward compatibility, <a href="../../authentication-security/authentication-concepts/classic-security-model/" title="Classic security model">the classic (pre-V7.0) MobileFirst security model</a> is still used in the flows that are based on the existing MobileFirst APIs (for example, <code>invokeProcedure</code> in Java). The new client APIs trigger flows that conform to the OAuth-based security model. IBM MobileFirst Platform Foundation V7.0 provides seamless integration between the two security models. The platform allows you to mix classic and new APIs in the same application, while keeping a consistent security context on the server side.</p>
+<p>To support backward compatibility, <a href="../classic-security-model/" title="Classic security model">the classic (pre-V7.0) MobileFirst security model</a> is still used in the flows that are based on the existing MobileFirst APIs (for example, <code>invokeProcedure</code> in Java). The new client APIs trigger flows that conform to the OAuth-based security model. IBM MobileFirst Platform Foundation V7.0 provides seamless integration between the two security models. The platform allows you to mix classic and new APIs in the same application, while keeping a consistent security context on the server side.</p>
 <p>This tutorial covers the following topics:</p>
 <ul>
 <li><a href="#authflow">Authorization flow</a></li>
@@ -21,7 +21,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <p>In this phase, the client undergoes security checks in order to receive an access token. These security checks use authorization entities, which are described in <a href="#authEntities">the next section</a>.<br />
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MFP_Security_obtain_token.jpg"/></p>
 <h3>Using a token to access a protected resource</h3>
-<p>It is possible to enforce MobileFirst security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial <a href="../../authentication-security/using-mobilefirst-server-authenticate-external-resources/" title="Using the MobileFirst Server to authenticate external resources">Using MobileFirst Server to authenticate external resources</a>.</p>
+<p>It is possible to enforce MobileFirst security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial <a href="../../../authentication-security/using-mobilefirst-server-authenticate-external-resources/" title="Using the MobileFirst Server to authenticate external resources">Using MobileFirst Server to authenticate external resources</a>.</p>
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/MFP_Security_protect_MFP_resources.jpg"/></p>
 <h2 id="authEntities">Authorization entities</h2>
 <p>You can protect MobileFirst resources such as adapter procedures from unauthorized access by specifying a <strong>scope</strong> that contains one or more <i>authentication realms</i>.</p>
@@ -38,7 +38,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <li>An <strong>adapter-based</strong> authenticator that uses the MobileFirst adapter infrastructure to collect and validate the credentials from the client application.</li>
 <li>A <strong>header-based</strong> authenticator that does not require interactive credentials collection, but checks the specific HTTP header instead.</li>
 </ul>
-<p>In addition to predefined authenticators, you can create your own custom authenticators by using Java code, as explained in tutorial <a href="../../authentication-security/custom-authenticator-login-module/" title="Custom Authenticator and Login Module">Custom Authenticator and Login Module</a>.</p>
+<p>In addition to predefined authenticators, you can create your own custom authenticators by using Java code, as explained in tutorial <a href="../../../authentication-security/custom-authenticator-login-module/" title="Custom Authenticator and Login Module">Custom Authenticator and Login Module</a>.</p>
 <h3>Login Module</h3>
 <p>A login module is a server-side entity that is responsible for verifying the user credentials provided by the authenticator.</p>
 <p>The credentials validation can be done, for example, in one of the following ways:</p>
@@ -49,7 +49,7 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 </ul>
 <p>It is possible to add custom user properties according to the enterprise needs.</p>
 <p>A login module can be configured to automatically record login attempts for audit purposes.</p>
-<p>In addition to predefined login modules, you can create your own custom login module by using the Java code, , as explained in tutorial <a href="../../authentication-security/custom-authenticator-login-module/" title="Custom Authenticator and Login Module">Custom Authenticator and Login Module</a>.</p>
+<p>In addition to predefined login modules, you can create your own custom login module by using the Java code, , as explained in tutorial <a href="../../../authentication-security/custom-authenticator-login-module/" title="Custom Authenticator and Login Module">Custom Authenticator and Login Module</a>.</p>
 <h3>Authentication realm</h3>
 <p>An authentication realm is a combination of one authenticator and one login module. Each authentication realm defines its authentication flow:</p>
 <ul>
@@ -102,7 +102,7 @@ A scope is a list of realm names - the realms that the user must authenticate ag
 {% endhighlight %} </p>
 <h2 id="protectAdapt">Protecting adapters</h2>
 <h3>Java adapters</h3>
-<p>MobileFirst Java adapters come ready with OAuth capabilities. See <a href="../../server-side-development/java-adapter/" title="Java Adapter">Java Adapters</a>.</p>
+<p>MobileFirst Java adapters come ready with OAuth capabilities. See <a href="../../../server-side-development/java-adapter/" title="Java Adapter">Java Adapters</a>.</p>
 <p>{% highlight java linenos %}
     @DELETE
     @Path("/{userId}")
@@ -118,10 +118,10 @@ A scope is a list of realm names - the realms that the user must authenticate ag
 <p>If you want to disable MobileFirst default security, you can use: <code>@OAuthSecurity(enabled=false)</code>.</p>
 <p>You can use the <code>@OAuthSecurity</code> annotation also at the resource class level, to define a scope for the entire Java class.</p>
 <h3>JavaScript adapters</h3>
-<p>JavaScript adapters such as HTTP adapters, SQL adapters, etc, need to be protected by a <em>security test</em>. Security tests are covered in the <a href="../../authentication-security/authentication-concepts/classic-security-model/" title="Classic security model">Classic security model</a> tutorial.</p>
+<p>JavaScript adapters such as HTTP adapters, SQL adapters, etc, need to be protected by a <em>security test</em>. Security tests are covered in the <a href="../classic-security-model/" title="Classic security model">Classic security model</a> tutorial.</p>
 <p>Remember that adapters protected via the previous "classic" model can still be accessed via REST APIs and respond to OAuth authentication requests.</p>
 <h2 id="protectExtRes">Protecting external resources</h2>
 <p>With IBM MobileFirst Platform Foundation V7.0, you can enforce MobileFirst security on resources that run outside MobileFirst Server. To this end, you can use the built-in <code>Node.js</code> and Java validation modules, or implement your own custom validation module in the technology of your choice, by using the online validation endpoint.</p>
-<p>See <a href="../../authentication-security/using-mobilefirst-server-authenticate-external-resources/" title="Using the MobileFirst Server to authenticate external resources">Using MobileFirst Server to authenticate external resources</a>.</p>
+<p>See <a href="../../../authentication-security/using-mobilefirst-server-authenticate-external-resources/" title="Using the MobileFirst Server to authenticate external resources">Using MobileFirst Server to authenticate external resources</a>.</p>
 <h2 id="protectAppStaticRes">Protecting applications and static resources</h2>
-<p>Additionally, entire applications are protected by a security test. Security tests are covered in the <a href="../../authentication-security/authentication-concepts/classic-security-model/" title="Classic security model">Classic security model</a> tutorial.</p>
+<p>Additionally, entire applications are protected by a security test. Security tests are covered in the <a href="../classic-security-model/" title="Classic security model">Classic security model</a> tutorial.</p>
