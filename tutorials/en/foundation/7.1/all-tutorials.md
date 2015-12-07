@@ -225,8 +225,8 @@ Add testing capabilities to your application.
 
 * <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/cordova/">MobileFirst Quality Assurance in Cordova applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/hybrid/">MobileFirst Quality Assurance in Hybrid applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/ios/">MobileFirst Quality Assurance in iOS applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/android/">MobileFirst Quality Assurance in Android applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/native-ios/">MobileFirst Quality Assurance in iOS applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/native-android/">MobileFirst Quality Assurance in Android applications</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/application-scanning/">Application Scanning</a>
 Scan your application for potential harming code.
