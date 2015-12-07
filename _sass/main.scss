@@ -258,25 +258,3 @@ h4.panel-title, .tutorial h4.panel-title  {
 .navbar-toggle {
 	margin-right: 24px;
 }
-
-@media only screen and (min-resolution: 117dpi) and (max-resolution: 119dpi), only screen and (min-resolution: 131dpi) and (max-resolution: 133dpi), only screen and (min-resolution: 145dpi) and (max-resolution: 154dpi), only screen and (min-resolution: 162dpi) and (max-resolution: 164dpi), only screen and (min-resolution: 169dpi)  {
-	.carousel {
-		display: none;
-	}
-	.input-group-btn {
-		padding-right: 14px;
-	}
-	.logo {
-		margin-left: 5px;
-	}
-	.downloadButtons {
-		display: none;
-	}
-	.navbar-default .navbar-nav .open .dropdown-menu > li > a {
-		color: white;
-	}
-	
-	.navbar-default .navbar-nav .open .dropdown-menu > li > ul > li > a {
-		color: black;
-	}
-}
