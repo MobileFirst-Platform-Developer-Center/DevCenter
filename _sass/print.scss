@@ -5,4 +5,16 @@
   nav.navbar, .hidden-xs, footer, #disqus_thread, .download-button {
     display: none;
   }
+
+  pre, code, .highlight pre code, .highlight .code pre {
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .highlight .gutter {
+    display: none;
+  }
 }
