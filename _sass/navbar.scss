@@ -75,8 +75,13 @@ $color_celeste_approx: #ccc;
         color: $white;
       }
     }
-    .navbar-header a:hover {
-      text-decoration: none;
+    .navbar-header {
+      a:hover {
+        text-decoration: none;
+      }
+      @media (max-width: $screen-xs-max) {
+        margin-right: 0;
+      }
     }
   }
   .container-fluid {
