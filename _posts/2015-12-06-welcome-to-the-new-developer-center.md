@@ -11,7 +11,7 @@ Here's a quick list of what you can expect:
 
 * New responsive design
 * Tutorials are readable on mobile devices
-* Improved discovery of tutorials with new top-level and side-bars menus
+* Improved discovery of tutorials with new top-level and side-bar menus
 * Improved [blog]({{site.baseurl}}/blog/) experience
 * All-new [Labs]({{site.baseurl}}/labs/)
 * All-new [video gallery]({{site.baseurl}}/video-gallery/)
