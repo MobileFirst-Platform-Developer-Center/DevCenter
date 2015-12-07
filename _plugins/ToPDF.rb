@@ -8,7 +8,8 @@ PDFKit.configure do |config|
   # config.wkhtmltopdf = '/path/to/wkhtmltopdf'
   config.default_options = {
     page_size: 'A4',
-    print_media_type: true
+    print_media_type: true,
+    disable_internal_links: true
   }
   config.root_url = 'https://pages.github.ibm.com'
   config.verbose = true
