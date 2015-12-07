@@ -25,7 +25,7 @@ custom_js:
             {% endif %}
             {{ content }}
 
-              {% if page.show_children and site.show_children %}
+              {% if page.show_children %}
                 {% include show-children.html children=page.children %}
               {% endif %}
 

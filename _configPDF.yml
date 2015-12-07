@@ -1,4 +1,3 @@
 baseurl: file:////home/travis/build/MFPSamples/DevCenter/_site
 print_pdf: true
 exclude: [vendor]
-show_children: false

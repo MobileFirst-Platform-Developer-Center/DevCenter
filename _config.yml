@@ -7,7 +7,6 @@ paginate_path: "/blog/:num/"
 markdown: redcarpet
 generate_redirects: false
 print_pdf: false
-show_children: true
 redcarpet:
     extensions: ["with_toc_data", "tables"]
 gems:
