@@ -7,7 +7,7 @@ env:
 script:
   - "./buildPages.sh" # execute this script on each commit
   - "./buildBluemix.sh" # execute this script on each commit
-  # - "./buildPDF.sh" # execute this script on each commit
+  - "./buildPDF.sh" # execute this script on each commit
   # - "./${BUILD}"
 branches:
   only:
