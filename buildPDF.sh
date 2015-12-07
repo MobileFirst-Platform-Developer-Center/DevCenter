@@ -18,25 +18,11 @@ rm -f _site/*.log
 # cleanup
 rm -rf ../generated-pdf
 
-## Push the `master`
-#clone pdf repository
-git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch master --single-branch ../generated-pdf/master
-# copy generated PDF
-rm -rf ../generated-pdf/master/*
-cp -R _site/pdf/* ../generated-pdf/master
-# commit and push generated content
-cd ../generated-pdf/master
-git config user.email "nathanh@il.ibm.com"
-git config user.name "Nathan Hazout Travis"
-git add -A .
-git commit -a -m "Travis Build $TRAVIS_BUILD_NUMBER"
-git push --quiet origin master
-
 ## Push the `8.0`
 cd ../../DevCenter
 pwd
 #clone pdf repository
-git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch release80 --single-branch ../generated-pdf/release80
+git clone git@github.ibm.com:MFPSamples/TutorialsForOfflineReading.git --branch release80 --single-branch ../generated-pdf/release80
 # copy generated PDF
 rm -rf ../generated-pdf/release80/*
 mkdir -p ../generated-pdf/release80/tutorials/en/foundation/8.0 && cp -R _site/pdf/tutorials/en/foundation/8.0/* ../generated-pdf/release80/tutorials/en/foundation/8.0/
@@ -58,7 +44,7 @@ git push --quiet origin release80
 cd ../../DevCenter
 pwd
 #clone pdf repository
-git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch release71 --single-branch ../generated-pdf/release71
+git clone git@github.ibm.com:MFPSamples/TutorialsForOfflineReading.git --branch release71 --single-branch ../generated-pdf/release71
 # copy generated PDF
 rm -rf ../generated-pdf/release71/*
 mkdir -p ../generated-pdf/release71/tutorials/en/foundation/7.1 && cp -R _site/pdf/tutorials/en/foundation/7.1/* ../generated-pdf/release71/tutorials/en/foundation/7.1/
@@ -80,7 +66,7 @@ git push --quiet origin release71
 cd ../../DevCenter
 pwd
 #clone pdf repository
-git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch release70 --single-branch ../generated-pdf/release70
+git clone git@github.ibm.com:MFPSamples/TutorialsForOfflineReading.git --branch release70 --single-branch ../generated-pdf/release70
 # copy generated PDF
 rm -rf ../generated-pdf/release70/*
 mkdir -p ../generated-pdf/release70/tutorials/en/foundation/7.0 && cp -R _site/pdf/tutorials/en/foundation/7.0/* ../generated-pdf/release70/tutorials/en/foundation/7.0/
@@ -101,7 +87,7 @@ git push --quiet origin release70
 cd ../../DevCenter
 pwd
 #clone pdf repository
-git clone git@github.ibm.com:NATHANH/experimentalpdf.git --branch release63 --single-branch ../generated-pdf/release63
+git clone git@github.ibm.com:MFPSamples/TutorialsForOfflineReading.git --branch release63 --single-branch ../generated-pdf/release63
 # copy generated PDF
 rm -rf ../generated-pdf/release63/*
 mkdir -p ../generated-pdf/release63/tutorials/en/foundation/6.3 && cp -R _site/pdf/tutorials/en/foundation/6.3/* ../generated-pdf/release63/tutorials/en/foundation/6.3/
