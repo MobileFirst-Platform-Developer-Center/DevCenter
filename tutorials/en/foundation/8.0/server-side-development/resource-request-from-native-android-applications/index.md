@@ -10,7 +10,6 @@ downloads:
 ---
 <span style = "color:red">RENAMING</span>
 
-
 ### Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources <span style = "color:red"> LINK TO using-mobilefirst-server-authenticate-external-resources</span>.  
@@ -60,7 +59,6 @@ The `WLResponseListener` interface defines two methods:
     ```Java
     WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
     ```
-
 3. Add the required parameters:
   * In JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name `params`:
 
@@ -74,7 +72,7 @@ The `WLResponseListener` interface defines two methods:
         request.setQueryParameter("param2","value2");
         ```
 4. Trigger the request using the `.send()` method.  
-Specify a `MyInvokeListener` class instance as a parameter (will be further explained in the next section).
+Specify a `MyInvokeListener` class instance:
 
     ```java
     request.send(new MyInvokeListener());
@@ -92,10 +90,10 @@ When the procedure invocation is completed, the framework calls one of the metho
     }
     ```
 
-2. Specify the `onSuccess` and `onFailure` methods.  
+2. Implement the `onSuccess` and `onFailure` methods.  
 If the procedure invocation is successful, the `onSuccess` method is called. Otherwise, the `onFailure` method is called.
 Use these methods to get the data that is retrieved from the adapter.  
-The `response` object contains the response data, you can use its methods and properties to retrieve the required information.
+The `response` object contains the response data and you can use its methods and properties to retrieve the required information.
 
     ```java
     public void onSuccess(WLResponse response) {
