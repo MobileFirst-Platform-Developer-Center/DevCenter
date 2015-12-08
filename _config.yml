@@ -24,6 +24,7 @@ defaults:
       category: blog
       layout: blogpost
       show_disqus: true
+      pinned: false
   -
     scope:
       path: "tutorials"

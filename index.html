@@ -92,7 +92,7 @@ layout: default
       <h3 class="blogPostsHeading">Recent Updates</h3>
       <div class="twoColumns">
         {% for post in site.posts limit:10 %}
-          <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
+          <p class="postDate{% if post.pinned %} pinned{% endif %}">{{post.date | date: '%B %d, %Y'}}</p>
           <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
         {% endfor %}
       </div>
