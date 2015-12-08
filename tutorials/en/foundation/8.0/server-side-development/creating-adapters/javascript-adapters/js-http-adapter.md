@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: JavaScript HTTP Adapters
+title: JavaScript HTTP Adapter
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 downloads:
   - name: Download MobileFirst project

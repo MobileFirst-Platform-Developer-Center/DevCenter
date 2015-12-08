@@ -112,7 +112,7 @@ If `RSSResponse` is not `200 OK`, we write the status code and reason in the res
 ### Results
 The adapter should return the RSS feed converted to JSON.
 
-```xml
+```json
 {
    "rss": {
       "channel": {

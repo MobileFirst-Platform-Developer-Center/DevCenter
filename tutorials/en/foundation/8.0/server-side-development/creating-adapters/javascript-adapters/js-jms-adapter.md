@@ -141,7 +141,7 @@ This method:
 By using IBM MobileFirst Platform, you can configure access to several JMS providers. Configurations might vary depending on the selected provider.
 
 When you work with an external JMS provider, check its documentation to learn how to implement it.  
-Usually, such implementation requires that you copy JAR files to the `server\lib` directory of your MobileFirst project. Validate the URL and port.
+<span style = "color:red"> Usually, such implementation requires that you copy JAR files to the `server\lib` directory of your MobileFirst project. Validate the URL and port.</span>
 
 ### Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.  

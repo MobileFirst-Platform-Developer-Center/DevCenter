@@ -92,7 +92,7 @@ There are two ways of running SQL statements:
 ### Invocation Results
 The result is retrieved as a JSON object:
 
-```XML
+```json
 {
   "isSuccessful": true,
   "resultSet": [{
