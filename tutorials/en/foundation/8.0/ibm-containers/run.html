@@ -349,7 +349,7 @@ The <code>startserver.sh</code> script is used to run the Mobilefirst Server ima
 $ ./startserver.sh args/startserver.properties
 {% endhighlight %}
             </li>
-            <li> Launch the MobileFirst Console by loading the following URL: http://<server_ip>:9080/worklightconsole (it may take a few moments).</li>
+            <li> Launch the MobileFirst Console by loading the following URL: http://<server_ip>:9080/mfpconsole (it may take a few moments).</li>
             <li>Upload the <code>.wlapp</code> and <code>.adapter</code> files.</li>
             <li>Update the application's <code>worklight.plist</code> (for iOS) and/or <code>wlclient.properties</code> (for Android, Windows Universal, Windows Phone) with the protocol, host and port values of the IBM Container.</li>
             <li>You can now run your application to verify that it successfully connects to the MobileFirst Server, running on IBM Containers.</li>
@@ -388,7 +388,7 @@ The list contains the image repository, tag, ID, date of creation and virtual si
             [code lang="xml" gutter="false"]<br />
             $ docker rm &lt;container ID&gt;<br />
             [/code]</li>
-<li>To verify that the image is properly configured and the MobileFirst project runtime is available, launch the MobileFirst Console by loading the following URL: http://192.168.59.103:9080/worklightconsole. </li>
+<li>To verify that the image is properly configured and the MobileFirst project runtime is available, launch the MobileFirst Console by loading the following URL: http://192.168.59.103:9080/mfpconsole. </li>
 </ul>
 <blockquote><p>To learn more about Docker commands, review the Docker Documentation.</p></blockquote>
 <p>-->
