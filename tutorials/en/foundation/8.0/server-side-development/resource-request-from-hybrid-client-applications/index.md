@@ -6,6 +6,7 @@ downloads:
   - name: Download Mobile project
     url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures
 ---
+<span style = "color:red">RENAMING</span>
 
 ### Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
@@ -26,8 +27,10 @@ var resourceRequest = new WLResourceRequest(
 ```
 The parameters for the constructor are:
 
-* **request URL**: To access an adapter within the same project, the URL should be `/adapters/AdapterName/procedureName`  
-To access resources outside of the project, use the full URL
+* **request URL**:
+ * For JavaScript adapters, the URL should be `/adapters/{AdapterName}/{procedureName}`
+ * For Java adapters, the URL should be `/adapters/{AdapterName}/{path}`
+ * To access resources outside of the project, use the full URL
 * **HTTP method**: Most commonly `WLResourceRequest.GET` or `WLResourceRequest.POST`
 * **timeout**: Optional, request timeout in milliseconds</br></br>
 
