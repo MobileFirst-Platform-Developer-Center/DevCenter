@@ -167,7 +167,7 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
     * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-8-applications/">Adapter-based authentication in native Windows 8 applications</a>
 * <a href="../authentication-security/custom-authentication/">Custom Authentication</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-hybrid-applications/">Custom authentication in hybrid applications</a>
-    * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-ios-applications/"> Custom authentication in native iOS applications</a>
+    * <a href="../authentication-security/custom-authentication/custom-authentication-native-ios-applications/"> Custom authentication in native iOS applications</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-android-applications/">Custom authentication in native Android applications</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-windows-phone-8-applications/">Custom authentication in native Windows Phone 8 applications</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-windows-8-applications/">Custom authentication in native Windows 8 applications</a>
