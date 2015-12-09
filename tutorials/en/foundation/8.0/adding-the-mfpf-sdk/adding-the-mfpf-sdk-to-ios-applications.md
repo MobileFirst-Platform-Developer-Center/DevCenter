@@ -12,7 +12,7 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 In this tutorial you will learn how to add the MobileFirst Native SDK using CocoaPods to either a new or existing iOS application. You will also learn how to configure the MobileFirst Server to recognize to application, as well as find information about the files added to your project by the SDK. 
 
-> Note: a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK can be downloaded from the MobileFirst Operations Console. Review the console tutorials to learn how. <span style="color:red">missing link</span>
+> Note: a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK can be downloaded from the MobileFirst Operations Console. Review the console tutorials to learn how. <span style="color:red">TODO: missing link</span>
 
 **Pre-requisites:** Xcode and MobileFirst CLI installed in the developer workstation.
 
@@ -84,31 +84,24 @@ Configuring the MobileFirst Server recognize the application can be achieved in 
 #### Registering the application in the MobileFirst Operations Console
 
 1. Open your browser of choice and navigate to the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.
-2. <span style="color:red">TODO</span>
+2. <span style="color:red">TODO: add console instructions</span>
 
 ### Generated MobileFirst Native SDK artifacts
-Now that the Xcode project is integrated with the MobileFirst Native SDK, three artifacts were added: the <code>mfpclient.plist</code> file, the application-descriptor.xml file and the <code>mobilefirst</code> folder.
-
-<span style="color:red">TODO</span>
+Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> and the the application-descriptor.json file.
 
 #### mfpclient.plist 
-The <code>mfpclient.plist</code> file, located at the root of the project, holds server configuration properties and is user-editable:
+Located at the root of the project, this file contains server configuration properties and is user-editable:
 
-- <code>protocol</code> – The communication protocol to MobileFirst Server, which is either <code>http</code> or <code>https</code>.
+<span style="color:red">TODO: add image of file?</span>
+- <code>protocol</code> – The communication protocol to MobileFirst Server. Either <code>HTTP</code> or <code>HTPS</code>.
 - <code>host</code> – The hostname of the MobileFirst Server instance.
 - <code>port</code> – The port of the MobileFirst Server instance.
 - <code>wlServerContext</code> – The context root path of the application on the MobileFirst Server instance.
-- <code>application id</code> – The application ID as defined in the <code>application-descriptor.xml</code> file.
-- <code>application version</code> – The application version.
-- <code>environment</code> – The target environment of the native application (“iOSnative”).
-- <code>wlUid</code> – This property is used by Mobile Test Workbench (deprecated feature) to identify it as a MobileFirst application.
-- <code>wlPlatformVersion</code> – The MobileFirst Studio version.
+- <code>languagePreference</code> - Sets the default language for client sdk system messages
 
-#### application-descriptor.xml
-The <code>application-descriptor.xml</code> file, located at the root of the project, is a metadata file that you use to define various aspects of the application, such as user identity realms and push notifications support, security settings that MobileFirst Server enforces, and more.
-
-#### The mobilefirst folder
-The <code>mobilefirst</code> folder, located at the root of the project contains <code>.wlapp</code> files. These files are the server-side entities that are deployed to the MobileFirst Server.
+#### application-descriptor.json
+Located at the root of the project, this file contains properties related to the application and is user-editable: 
+<span style="color:red">TODO: add contents of file</span>
 
 ### Tutorials to follow next
 Now that the application is integrated with the MobileFirst Native SDK you can follow the tutorials in the [Native iOS development](../../native/ios/) category to learn more about authentication and security, server-side development, notifications, and more.
