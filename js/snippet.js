@@ -1,7 +1,7 @@
 var snippets = $('div.highlight>pre, figure.highlight>pre');
 
 [].forEach.call(snippets, function(snippet) {
-    snippet.firstChild.insertAdjacentHTML('beforebegin', '<button data-clipboard-snippet>Copy</button>');
+    snippet.firstChild.insertAdjacentHTML('beforebegin', '<button class="btn btn-sm clipboard" data-clipboard-snippet><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>');
 });
 
 var clipboardSnippets = new Clipboard('[data-clipboard-snippet]', {
@@ -13,14 +13,4 @@ var clipboardSnippets = new Clipboard('[data-clipboard-snippet]', {
           return trigger.nextElementSibling;
       }
     }
-});
-
-clipboardSnippets.on('success', function(e) {
-    e.clearSelection();
-
-    showTooltip(e.trigger, 'Copied!');
-});
-
-clipboardSnippets.on('error', function(e) {
-    showTooltip(e.trigger, fallbackMessage(e.action));
 });

@@ -64,3 +64,19 @@
 .highlight .lineno { border: none; border-radius: 0; border-right: solid 1px; color: #aaa; }
 .highlight .code pre { border: none; white-space: pre; overflow-x: auto; word-wrap: normal; }
 .highlight pre code { display: block; white-space: pre; overflow-x: auto; word-wrap: normal; }
+
+.highlight {
+  button.clipboard {
+    font-size: 110%;
+  	float:right;
+  	-webkit-transition: opacity 0.3s ease-in-out;
+    -o-transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+  :hover {
+    button.clipboard {
+      opacity: 1;
+    }
+  }
+}
