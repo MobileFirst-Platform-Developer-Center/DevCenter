@@ -38,10 +38,10 @@ The MobileFirst Native SDK is provided via CocoaPods. Follow the below instructi
 6. Comment out or remove the contents of the file.
 7. Add the following lines and save the changes:
 
-        ```xml
-        source 'https://github.com/CocoaPods/Specs.git'
-        pod 'IBMMobileFirstPlatformFoundation'
-        ```
+    ```xml
+    source 'https://github.com/CocoaPods/Specs.git'
+    pod 'IBMMobileFirstPlatformFoundation'
+    ```
 
 8. Run the command: <code>pod install</code>. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.   **Note:** This command may take several minutes to complete.
 
@@ -51,9 +51,9 @@ The MobileFirst Native SDK is provided via CocoaPods. Follow the below instructi
 10. Right-click the project and select <b>Add Files To [ProjectName]</b>, select the <code>mfpclient.plist</code>, located in the root folder of the Xcode project.
 11. Whenever you want to use the MobileFirst Native SDK, make sure that you import the framework:
 
-        ```objc
-        #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h> 
-        ```
+    ```objc
+    #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h> 
+    ```
 
 <br>
 #### Note about Swift:
@@ -83,8 +83,10 @@ Configuring the MobileFirst Server recognize the application can be achieved in 
 <br>
 #### Registering the application in the MobileFirst Operations Console
 
-1. Open your browser of choice and navigate to the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.
-2. <span style="color:red">TODO: add console instructions</span>
+1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.
+2. Click on the button to create a new application and follow the on-screen instructions.
+
+<span style="color:red">Add image of console -> create new app</span>
 
 ### Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> and the the application-descriptor.json file.
