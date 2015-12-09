@@ -106,10 +106,10 @@ Located at the root of the project, this file contains server configuration prop
 - <code>languagePreference</code> - Sets the default language for client sdk system messages
 
 #### application-descriptor.json
-Located in **<xcode-project-root-folder>/mobilefirst**, this file contains properties related to the application and is user-editable:  
+Located in the **&lt;xcode-project-root-directory&gt;/mobilefirst** folder, this file contains properties related to the application and is user-editable:  
 
 <span style="color:red">TODO: add image of file?</span>  
 <span style="color:red">TODO: add contents of file</span>
 
 ### Tutorials to follow next
-Now that the application is integrated with the MobileFirst Native SDK you can follow the tutorials in the [Native iOS development](../../ios-tutorials/) category to learn more about authentication and security, server-side development, notifications, and more.
+Now that the application is integrated with the MobileFirst Native SDK you can continue to the tutorials in [Native iOS development](../../ios-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
