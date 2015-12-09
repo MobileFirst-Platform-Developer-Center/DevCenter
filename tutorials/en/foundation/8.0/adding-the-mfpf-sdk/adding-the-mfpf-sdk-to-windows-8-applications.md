@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuring a native Windows 10 UWP application with the MobileFirst Platform SDK
-bradcrumb_title: Adding the MobileFirst Native Windows 10 SDK
+breadcrumb_title: Adding the MobileFirst Native Windows 10 SDK
 relevantTo: [windows8]
 weight: 4
 ---

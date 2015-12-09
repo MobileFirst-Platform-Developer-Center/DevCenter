@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Configuring a native Android application with the MobileFirst Platform SDK
-bradcrumb_title: Adding the MobileFirst Native Android SDK
+breadcrumb_title: Adding the MobileFirst Native Android SDK
 relevantTo: [android]
 weight: 3
 ---
