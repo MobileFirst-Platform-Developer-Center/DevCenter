@@ -44,83 +44,85 @@ Messages.headerText
 ```
 
 ## Enabling translation of system messages
-It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password".
-System messages are stored in the `WL.ClientMessages` object.
-You can find a full list of system messages in the `www\default\worklight\messages\messages.json` file, which is inside the generated projects (iOS, Android, Windows Phone 8, and so on,…).
+It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password". System messages are stored in the `WL.ClientMessages` object.
+You can find a full list of system messages in the `www\default\worklight\messages\messages.json` file, which is inside the generated projects (iOS, Android, Windows Phone 8, and so on,…).  
 To enable the translation of a system message, override it in your JavaScript application.
-[code lang="javascript"]
+
+```javascript
 WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
-[/code]</p>
-<p>Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.</p>
+```
+
+Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.
 
 ## Multilanguage translation
-<p>Using JavaScript, you can implement multilanguage translation for your applications.</p>
-<ol>
-<li>Set up the default application strings in the `messages.js` file.
-[code lang="javascript"]
-Messages = {
-  headerText: "Default header",
-  actionsLabel: "Default action label",
-  sampleText: "Default sample text",
-  englishLanguage : "English",
-  frenchLanguage : "French",
-  russianLanguage : "Russian",
-  hebrewLanguage : "Hebrew"
-};
-[/code]</p>
-</li>
-<li>Override specific strings when required.
-[code lang="javascript"]
-function setFrench(){
-  Messages.headerText = "Traduction";
-  Messages.actionsLabel = "Sélectionnez une langue:";
-  Messages.sampleText = "Ceci est un exemple de texte en français.";
-}
-[/code]
-</li>
-<li>Update the GUI components with the new strings.
-You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic.
-Each time that an element is updated, it is updated with different strings according to the active language.</p>
-<p>[code lang="javascript"]
-function languageChanged(lang) {
-  if (typeof(lang)!="string")
-    lang = $("#languages").val();</p>
-<p>    switch (lang){
-      case "english":
-        setEnglish();
-        break;
-      case "french":
-        setFrench();
-        break;
-      case "russian":
-        setRussian();
-        break;
-      case "hebrew":
-        setHebrew();
-        break;
-    }</p>
-<p>    if ($("#languages").val()=="hebrew")
-      $("#wrapper").css({direction: 'rtl'});
-    else
-      $("#wrapper").css({direction: 'ltr'});</p>
-<p>    $("#sampleText").html(Messages.sampleText);
-    $("#headerText").html(Messages.headerText);
-    $("#actionsLabel").html(Messages.actionsLabel);
-}
-[/code]
-</li>
-</ol>
+Using JavaScript, you can implement multilanguage translation for your applications.
+
+1. Set up the default application strings in the `messages.js` file.
+
+    ```javascript
+    Messages = {
+      headerText: "Default header",
+      actionsLabel: "Default action label",
+      sampleText: "Default sample text",
+      englishLanguage : "English",
+      frenchLanguage : "French",
+      russianLanguage : "Russian",
+      hebrewLanguage : "Hebrew"
+    };
+```
+
+2. Override specific strings when required.
+
+    ```javascript
+    function setFrench(){
+      Messages.headerText = "Traduction";
+      Messages.actionsLabel = "Sélectionnez une langue:";
+      Messages.sampleText = "Ceci est un exemple de texte en français.";
+    }
+```
+
+3. Update the GUI components with the new strings. You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic. Each time that an element is updated, it is updated with different strings according to the active language.
+
+    ```javascript
+    function languageChanged(lang) {
+      if (typeof(lang)!="string")
+        lang = $("#languages").val();
+      switch (lang){
+        case "english":
+          setEnglish();
+          break;
+        case "french":
+          setFrench();
+          break;
+        case "russian":
+          setRussian();
+          break;
+        case "hebrew":
+          setHebrew();
+          break;
+      }       
+      if ($("#languages").val()=="hebrew")
+        $("#wrapper").css({direction: 'rtl'});
+      else
+        $("#wrapper").css({direction: 'ltr'});
+      $("#sampleText").html(Messages.sampleText);
+      $("#headerText").html(Messages.headerText);
+      $("#actionsLabel").html(Messages.actionsLabel);
+    }
+```
 
 ## Detecting the device locale and language
-<p>It is possible to detect the locale and the language of the device.
+It is possible to detect the locale and the language of the device.
 Use the `WL.App.getDeviceLocale()` and `WL.App.getDeviceLanguage()` functions to detect the current locale.
-[code lang="javascript"]
+
+```javascript
 var locale = WL.App.getDeviceLocale();
 var lang = WL.App.getDeviceLanguage();
 WL.Logger.debug(">> Detected locale: " + locale);
 WL.Logger.debug(">> Detected language: " + lang);
-[/code]
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/05_05_detected-logs.png"><img src="{{ site.baseurl }}/assets/backup/05_05_detected-logs.png" alt="05_05_detected-logs" width="505" height="65" class="alignnone size-full wp-image-1327" /></a></p>
+```
+
+![Get device localle and language](DeviceLocaleLangugae.png)
 
 ## Sample application
-<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/Translation" target="_blank">Click to download</a> the MobileFirst project.</p>
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation)  the MobileFirst project.
