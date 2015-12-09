@@ -8,11 +8,11 @@ weight: 2
 ### Overview
 The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
 
-> For a complete list of MobileFirst SDK abilities visit the user documentation
+> For a complete list of MobileFirst SDK abilities [visit the user documentation](#) <span style="color:red">TODO: missing link</a>
 
-In this tutorial you will learn how to add the MobileFirst Native SDK using CocoaPods to either a new or existing iOS application. You will also learn how to configure the MobileFirst Server to recognize to application, as well as find information about the files added to your project by the SDK. 
+In this tutorial you will learn how to add the MobileFirst Native SDK using CocoaPods to either a new or existing iOS application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
 
-**Pre-requisites:** Xcode and MobileFirst CLI installed in the developer workstation.  
+**Pre-requisites:** Xcode and MobileFirst CLI installed on the developer workstation.  
 Make sure you have read through the [Setting up your development environment tutorials](../../setting-up-your-development-environment).
 
 **Jump to:**
@@ -52,7 +52,7 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
  
     These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
     
-    > <b>Tip:</b> Learn more about the various CLI commands in the [Introduction to MobileFirst CLI](#) tutorial <span style="color:red">missing link</a>
+    > <b>Tip:</b> Learn more about the various CLI commands in the [Introduction to MobileFirst CLI](#) tutorial <span style="color:red">TODO: missing link</a>
 
 5. The MobileFirst Native SDK is provided via CocoaPods. If [CocoaPods](http://guides.cocoapods.org) is not installed in your development environment, install it as follows:
  - Open **Terminal** and navigate to the root of the Xcode project
