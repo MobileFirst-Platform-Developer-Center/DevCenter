@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Native Windows 10 SDK to Windows 10 applications
-breadcrumb_title: Adding the MobileFirst Native Windows 10 SDK
+title: Adding the MobileFirst Platform Foundation SDK to Windows 8 Univeral Applications
+breadcrumb_title: Windows 8 Universal SDK
 relevantTo: [windows8]
 weight: 4
 ---

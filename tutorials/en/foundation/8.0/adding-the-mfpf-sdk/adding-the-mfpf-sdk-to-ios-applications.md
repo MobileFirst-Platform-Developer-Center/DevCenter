@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to iOS applications
-breadcrumb_title: Adding the MobileFirst Native iOS SDK
+title: Adding the MobileFirst Platform Foundation SDK to iOS Applications
+breadcrumb_title: iOS SDK
 relevantTo: [ios]
 weight: 2
 ---
