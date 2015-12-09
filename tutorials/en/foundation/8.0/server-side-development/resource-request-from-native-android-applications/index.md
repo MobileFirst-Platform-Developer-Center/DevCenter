@@ -42,8 +42,8 @@ The `WLResponseListener` interface defines two methods:
 
     Use these methods to process connection success or connection failure.
 
-### Invoking an adapter procedure
-<span style = "color:red">After the connection is established with a MobileFirst Server instance</span>, you can use the `WLResourceRequest` method to invoke adapter procedures or to call any REST resources.
+### Calling an adapter procedure
+The `WLResourceRequest` class handles resource requests to MobileFirst adapters or external resources.
 
 1. Define the URI of the resource:
 
@@ -71,14 +71,15 @@ The `WLResponseListener` interface defines two methods:
         request.setQueryParameter("param1","value1");
         request.setQueryParameter("param2","value2");
         ```
-4. Trigger the request using the `.send()` method.  
+4. Call the procedure by using the `.send()` method.  
 Specify a `MyInvokeListener` class instance:
 
     ```java
     request.send(new MyInvokeListener());
     ```
+
 </br>
-> There are other signatures for the `send` method, which are not covered in this tutorial. Those signatures enable you to set parameters in the body instead of the query, or to handle the response with a delegate instead of a completion handler. See the user documentation to learn more.
+> See the user documentation to learn more about `WLResourceRequest` and other signatures for the `send` method, which are not covered in this tutorial.
 
 ### Receiving a procedure response
 When the procedure invocation is completed, the framework calls one of the methods of the `MyInvokeListener` class.
