@@ -1,7 +1,9 @@
 ---
 layout: tutorial
-title: Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK
+title: Configuring a native Windows 10 UWP application with the MobileFirst Platform SDK
+bradcrumb_title: Adding the MobileFirst Native Windows 10 SDK
 relevantTo: [windows8]
+weight: 4
 ---
 <h2>Overview</h2>
 <p>To serve a native Windows 8 Universal application, MobileFirst Server must be aware of it. For this purpose, IBM MobileFirst Platform Foundation provides a Native API library, which contains a set of APIs and configuration files.</p>
