@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK
+title: Adding the MobileFirst Native Windows 8 Universal SDK to Windows 8 applications
 breadcrumb_title: Adding the MobileFirst Native Windows 8 SDK
 relevantTo: [windows8]
 weight: 5
