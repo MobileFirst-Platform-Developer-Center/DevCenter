@@ -14,8 +14,7 @@ MobileFirst applications can access resources using the `WLResourceRequest` REST
 The REST API works with all adapters and external resources <span style = "color:red"> LINK TO using-mobilefirst-server-authenticate-external-resources</span>.  
 This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
 
-<span style = "color:red">To create and configure an iOS native project, first follow the “<a href="../" title="Configuring a native iOS application with the MobileFirst Platform SDK">Configuring a native iOS application with the MobileFirst Platform SDK</a>” tutorial.
-If you are developing Swift-based applications, make sure that you follow the additional steps.</span>
+To create and configure an iOS native project, first follow the [Adding the MobileFirst Platform Foundation SDK to iOS Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) tutorial.
 
 ### Calling an adapter procedure
 The `WLResourceRequest` class handles resource requests to MobileFirst adapters or external resources.

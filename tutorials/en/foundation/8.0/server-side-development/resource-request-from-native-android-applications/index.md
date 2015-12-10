@@ -15,7 +15,7 @@ MobileFirst applications can access resources using the `WLResourceRequest` REST
 The REST API works with all adapters and external resources <span style = "color:red"> LINK TO using-mobilefirst-server-authenticate-external-resources</span>.  
 This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
 
-<span style = "color:red">To create and configure an Android native project, first follow the <a href="../../configuring-the-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/">Configuring a native Android application with the MobileFirst Platform SDK</a> tutorial.</span>
+To create and configure an Android native project, first follow the [Adding the MobileFirst Platform Foundation SDK to Android Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) tutorial.
 
 ### Initializing WLClient
 <span style = "color:red">WLCLIENT.CONNECT</span>

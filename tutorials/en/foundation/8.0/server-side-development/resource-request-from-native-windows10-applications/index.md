@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource request from native Windows Phone 8 applications
+title: Resource Request from Native Windows 10 Applications
 relevantTo: [windowsphone8]
 ---
 <ul>
