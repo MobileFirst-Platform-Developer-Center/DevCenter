@@ -13,7 +13,7 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 In this tutorial you will learn how to add the MobileFirst Native SDK using CocoaPods to either a new or existing iOS application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
 
 **Pre-requisites:** Xcode and MobileFirst CLI installed on the developer workstation.  
-Make sure you have read through the [Setting up your development environment tutorials](../../setting-up-your-development-environment).
+Make sure you have read through the [Setting up your development environment](../../setting-up-your-development-environment) tutorials.
 
 **Jump to:**
 
