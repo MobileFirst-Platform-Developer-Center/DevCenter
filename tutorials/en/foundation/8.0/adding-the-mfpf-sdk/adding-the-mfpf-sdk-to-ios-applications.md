@@ -17,38 +17,43 @@ Make sure you have read through the [Setting up your development environment](..
 
 **Jump to:**
 
-- [Registering the application in the MobileFirst Operations Console](#registering-the-application-in-the-mobilefirst-operations-console)
-- [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
+- [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
-### Registering the Application in the MobileFirst Operations Console
+### Adding the MobileFirst Native SDK
 Before starting, make sure the MobileFirst Server is running.  
-From **Terminal** run the command: <code>mfpdev server start</code>.
+From **Terminal** run the command:
 
-1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.
-2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.
+```bash
+mfpdev server start
+```
 
-![Register application in the MobileFirst Operations Console](register-app-in-console.png)
-
-After successfully registering your application you can optionally download a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK.
-
-If you prefer to manually add the MobileFirst Native SDK, [continue reading](#manually-adding-the-mobilefirst-native-sdk).
-
-> <b>Important</b>: Use the <code>[ProjectName].<b>xcworkspace</b></code> file in order to open the project in Xcode. Do <b>not</b> use the <code>[ProjectName].<b>xcodeproj</b></code> file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
-
-### Manually Adding the MobileFirst Native SDK
 Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Xcode project.
 
 1. Create an Xcode project or use an existing one.  
 
 2. Open **Terminal** and navigate to the root of the Xcode project.  
 
-3. Run the command: <code>mfpdev app register</code>.  
-        The <code>mfpdev app register</code> CLI command generates the <code>mfpclient.plist</code> file at the root of the Xcode project.
+3. Run the command: 
+ 
+    ```bash
+    mfpdev app register
+    ```
+    
+    The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server and registers the application, followed by generating the <code>mfpclient.plist</code> file at the root of the Xcode project.
+        
+    > The application registration can also be done from the MobileFirst Operations Console:    
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
+        2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.  
+        3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
 
-4. Run the command: <code>mfpdev app pull</code>.  
-        The <code>mfpdev app pull</code> CLI command first creates a **mobilefirst** folder at the root of the Xcode project and then contacts the MobileFirst Server to download into said folder the <code>application-descriptor.json</code> file.
+4. Run the command: 
+ 
+    ```bash
+    mfpdev app pull
+    ```
+    The <code>mfpdev app pull</code> CLI command registers the application in the MobileFirst Server, followed by creates a **mobilefirst** folder at the root of the Xcode project populating it with the <code>application-descriptor.json</code> file.
     
     These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
     

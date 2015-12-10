@@ -17,32 +17,44 @@ Make sure you have read through the [Setting up your development environment](..
 
 **Jump to:**
 
-- [Registering the application in the MobileFirst Operations Console](#registering-the-application-in-the-mobilefirst-operations-console)
 - [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
-
-### Registering the Application in the MobileFirst Operations Console
-Before starting, make sure the MobileFirst Server is running.  
-From **Terminal** run the command: <code>mfpdev server start</code>.
-
-1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.
-2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.
-
-![Register application in the MobileFirst Operations Console](register-app-in-console.png)
-
-After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
-
-If you prefer to manually add the MobileFirst Native SDK, [continue reading](#manually-adding-the-mobilefirst-native-sdk).
 
 ### Manually Adding the MobileFirst Native SDK
 Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Android Studio project.
 
 1. Create an Android project or use an existing one.  
 
-2. In <strong>Project > Gradle scripts</strong>, select <strong>build.gradle (Module: app)</strong>.
+2. Open **Terminal** and navigate to the root of the Android Studio project.  
 
-3. Add the following lines below <code>apply plugin: 'com.android.application'</code>:
+3. Run the command: 
+ 
+    ```bash
+    mfpdev app register
+    ```
+    
+    The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server and registers the application, followed by generating the <code>mfpclient.plist</code> file at the root of the Android Studio project.
+        
+    > The application registration can also be done from the MobileFirst Operations Console:    
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
+        2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.  
+        3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
+
+4. Run the command:
+
+    ```bash
+    mfpdev app pull
+    ```
+    The <code>mfpdev app pull</code> CLI command first creates a **mobilefirst** folder at the root of the Android Studio project and then contacts the MobileFirst Server to download into said folder the <code>application-descriptor.json</code> file.
+    
+    These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
+    
+    > <b>Tip:</b> Learn more about the various CLI commands in the [Introduction to MobileFirst CLI](#) tutorial <span style="color:red">TODO: missing link</a>
+
+5. In <strong>Project > Gradle scripts</strong>, select <strong>build.gradle (Module: app)</strong>.
+
+6. Add the following lines below <code>apply plugin: 'com.android.application'</code>:
 
     ```xml
     repositories{
@@ -50,7 +62,7 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
     }
     ```
     
-4. Add the following inside <code>android</code>:
+7. Add the following inside <code>android</code>:
     
     ```xml
     packagingOptions {
@@ -60,7 +72,7 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
     }
     ```
     
-5. Add the following lines inside <code>dependencies</code>:
+8. Add the following lines inside <code>dependencies</code>:
 
     ```xml
     compile group: 'com.ibm.mobile.foundation',
@@ -70,14 +82,14 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
     transitive: true
     ```
     
-6. Add the following permissions to the <code>AndroidManifest.xml</code> file:
+9. Add the following permissions to the <code>AndroidManifest.xml</code> file:
 
     ```xml
     <uses-permission android:name=android.permission.INTERNET/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
     ```
-7. Add the MobileFirst UI activity:
+10. Add the MobileFirst UI activity:
 
     ```xml
     <activity android:name="com.worklight.wlclient.ui.UIActivity" />
@@ -108,16 +120,16 @@ The file can be edited via the MobileFirst Operations Console.
 ```javascript
 {
     "applicationKey": {
-        "bundleId": "com.sampleone.bankApp",
+        "packageName": "com.samplePackage",
         "version": "1.0",
-        "clientPlatform":"ios"
-    },
-  
+        "clientPlatform":"android"
+    }
+    
     ...
     ...
     ...
- }
+}
  ```
 
 ### Tutorials to follow next
-Now that the application is integrated with the MobileFirst Native SDK you can continue reading tutorials for [Native iOS development](../../ios-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
+Now that the application is integrated with the MobileFirst Native SDK you can continue reading tutorials for [Native Android development](../../android-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
