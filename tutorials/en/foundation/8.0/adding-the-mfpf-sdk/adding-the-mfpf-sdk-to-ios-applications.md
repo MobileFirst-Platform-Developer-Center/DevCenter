@@ -60,20 +60,21 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
     - Run the command: <code>pod setup</code>  
     **Note:** This command may take several minutes to complete.<br><br>
     
-6. Change directory to the location of the Xcode project.
-7. Run the command: <code>pod init</code>. This creates a <code>Podfile</code>.
-8. Using your favorite editor, open the <code>Podfile</code> file.
-9. Comment out or remove the contents of the file.
-10. Add the following lines and save the changes:
+6. Run the command: <code>pod init</code>. This creates a <code>Podfile</code>.
+7. Using your favorite editor, open the <code>Podfile</code> file.
+8. Comment out or remove the contents of the file.
+9. Add the following lines and save the changes:
 
     ```xml
     source 'https://github.com/CocoaPods/Specs.git'
     pod 'IBMMobileFirstPlatformFoundation'
     ```
-11. Run the command: <code>pod install</code>. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.   **Note:** This command may take several minutes to complete.
+10. Run the command: <code>pod install</code>. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.  
+    **Note:** This command may take several minutes to complete.
+    
     > <b>Important</b>: From here on, use the <code>[ProjectName].<b>xcworkspace</b></code> file in order to open the project in Xcode. Do <b>not</b> use the <code>[ProjectName].<b>xcodeproj</b></code> file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
-12. Open the Xcode project by double-clicking the <b>.xcworkspace</b> file.
-13. Right-click the project and select <b>Add Files To [ProjectName]</b>, select the <code>mfpclient.plist</code>, located in the root folder of the Xcode project.
+11. Open the Xcode project by double-clicking the <b>.xcworkspace</b> file.
+12. Right-click the project and select <b>Add Files To [ProjectName]</b>, select the <code>mfpclient.plist</code>, located in the root folder of the Xcode project.
 
 Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Platform Foundation framework:
 
@@ -96,8 +97,6 @@ Two MobileFirst-related artifacts are available in the Xcode project after it ha
 #### mfpclient.plist 
 Located at the root of the project, this file contains server configuration properties and is user-editable:
 
-<span style="color:red">TODO: add image of file?</span>  
-
 - <code>protocol</code> – The communication protocol to MobileFirst Server. Either <code>HTTP</code> or <code>HTPS</code>.
 - <code>host</code> – The hostname of the MobileFirst Server instance.
 - <code>port</code> – The port of the MobileFirst Server instance.
@@ -105,10 +104,26 @@ Located at the root of the project, this file contains server configuration prop
 - <code>languagePreference</code> - Sets the default language for client sdk system messages
 
 #### application-descriptor.json
-Located in the **&lt;xcode-project-root-directory&gt;/mobilefirst** folder, this file contains properties related to the application and is user-editable:  
+Located in the **&lt;xcode-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its <code>bundleId</code and <code>version</code> and is user-editable.
 
-<span style="color:red">TODO: add image of file?</span>  
-<span style="color:red">TODO: add contents of file</span>
+If edited, be sure to update the MobileFirst Server by running the CLI command: <code>mfpdev app push</code>.  
+The file can also be updated by pulling from the server its latest variation by running the CLI command: <code>mfpdev app pull</code>.
+
+The file can be edited via the MobileFirst Operations Console.
+
+```javascript
+{
+    "applicationKey": {
+        "bundleId": "com.sampleone.bankApp",
+        "version": "1.0",
+        "clientPlatform":"ios"
+    },
+  
+    ...
+    ...
+    ...
+ }
+ ```
 
 ### Tutorials to follow next
-Now that the application is integrated with the MobileFirst Native SDK you can continue to the tutorials in [Native iOS development](../../ios-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
+Now that the application is integrated with the MobileFirst Native SDK you can continue reading tutorials for [Native iOS development](../../ios-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
