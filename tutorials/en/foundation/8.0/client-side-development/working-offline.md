@@ -104,41 +104,24 @@ The following sample shows an offline and online detection mechanism.
 ```javascript
 document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED, MyApp.connectionFailure, false);
 MyApp.connectionFailure = function() {
-WL.Client.connect({
-onSuccess: function() {
-WL.Logger.debug(&quot;online&quot;);
-MyApp.onlineRestored();
-},
-onFailure: function() {
-WL.Logger.debug(&quot;Still offline... Trying to connect again in 5
-seconds.&quot;);
-window.setTimeout(MyApp.connectionFailure, 5000);
-}
-});
+  WL.Client.connect({
+    onSuccess: function() {
+      WL.Logger.debug("online");
+      MyApp.onlineRestored();
+    },
+    onFailure: function() {
+      WL.Logger.debug("Still offline... Trying to connect again in 5 seconds.");
+      window.setTimeout(MyApp.connectionFailure, 5000);
+    }
+  });
 };
 ```
+1. An event listener for a `WL.Events.WORKLIGHT_IS_DISCONNECTED` event is added to the document. `MyApp.connectionFailure()` is invoked when the event fires.
+2. `WL.Client.connect()` tries to establish a server connection.
+3. If the connection is successfully established, `MyApp.onlineRestored()` is invoked.
+4. If the connection fails, a timeout is set for 5 seconds to invoke `MyApp.connectionFailure()` again.
 
-[code lang="js" highlight="2,4,6,12"]document.addEventListener(WL.Events.WORKLIGHT_IS_DISCONNECTED,
-MyApp.connectionFailure, false);
-MyApp.connectionFailure = function() {
-    WL.Client.connect({
-        onSuccess: function() {
-            WL.Logger.debug(&quot;online&quot;);
-            MyApp.onlineRestored();
-        },
-        onFailure: function() {
-            WL.Logger.debug(&quot;Still offline... Trying to connect again in 5
-            seconds.&quot;);
-            window.setTimeout(MyApp.connectionFailure, 5000);
-        }
-    });
-};[/code]
-<ol>
-<li>An event listener for a `WL.Events.WORKLIGHT_IS_DISCONNECTED` event is added to the document. `MyApp.connectionFailure()` is invoked when the event fires.</li>
-<li>`WL.Client.connect()` tries to establish a server connection.</li>
-<li>If the connection is successfully established, `MyApp.onlineRestored()` is invoked.</li>
-<li>If the connection fails, a timeout is set for 5 seconds to invoke `MyApp.connectionFailure()` again.</li>
-</ol>
 ## Sample application
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/WorkingOffline" target="_blank">Click to download</a> the MobileFirst project.
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/06_01_sample.png"><img src="{{ site.baseurl }}/assets/backup/06_01_sample.png" alt="06_01_sample" width="320" height="590" class="aligncenter size-full wp-image-9839" /></a>
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/WorkingOffline) the MobileFirst project.
+
+![working-offline sample](working-offline.png)
