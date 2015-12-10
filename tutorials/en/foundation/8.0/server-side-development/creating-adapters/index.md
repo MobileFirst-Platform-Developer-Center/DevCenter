@@ -86,7 +86,7 @@ $ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<a
 >For more information about the `archetype:generate` command see the Maven documentation.
 
 
-### File Strucure
+### File Structure
 
 The result will be a Maven project containing a `src` folder and a `pom.xml` file:
 
