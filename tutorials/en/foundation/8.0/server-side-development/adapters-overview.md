@@ -34,7 +34,7 @@ You can write adapters in JavaScript or Java.
 * Security integration with the MobileFirst security model with no additional customization, by using simple annotations in the source code
 
 ### JavaScript adapters
-JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, Cast Iron, <span style="color:red">SAP JCo, and SAP Netweaver</span>.  
+JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, Cast Iron, <span style="color:red">JMS, SAP JCo and SAP Netweaver</span>.  
 JavaScript adapter provides a set of services, called procedures. Mobile apps invoke procedures by issuing Ajax requests.
 The procedure retrieves information from the back-end application that returns data in some format:
 

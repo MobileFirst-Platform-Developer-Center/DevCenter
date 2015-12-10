@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to Windows 8 Univeral Applications
+title: Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal Applications
 breadcrumb_title: Windows 8 Universal SDK
 relevantTo: [windows8]
 weight: 4

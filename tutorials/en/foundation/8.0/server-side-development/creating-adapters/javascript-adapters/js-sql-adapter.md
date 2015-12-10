@@ -12,6 +12,7 @@ An IBM MobileFirst Platform Foundation SQL adapter is designed to communicate wi
 <span style="color:red"> As a developer, you must download the JDBC connector driver for the specific database type separately and add it to the `server\lib\` folder of a MobileFirst project. You can download the JDBC connector driver from the appropriate vendor website.</span>  
 In this tutorial and in the accompanying sample, you learn how to use a MobileFirst adapter to connect to a MySQL database.
 
+**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
 ### The `XML` File
 The XML file contains settings and metadata.
@@ -91,7 +92,7 @@ There are two ways of running SQL statements:
 ### Invocation Results
 The result is retrieved as a JSON object:
 
-```XML
+```json
 {
   "isSuccessful": true,
   "resultSet": [{

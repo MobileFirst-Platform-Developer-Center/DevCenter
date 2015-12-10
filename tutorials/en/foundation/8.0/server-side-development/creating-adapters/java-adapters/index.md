@@ -7,7 +7,7 @@ relevantTo: [ios,android,windowsphone8,windows8,cordova]
 ### Overview
 Java adapters are based on the JAX-RS specification. In other words, a Java adapter is a JAX-RS service that can easily be deployed to a MobileFirst Server instance and has access to MobileFirst Server APIs.
 
-**Prerequisite:** Make sure to read the [Adapters Overview](../adapters-overview) tutorial first.
+**Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../) tutorial first.
 
 ### File structure
 
