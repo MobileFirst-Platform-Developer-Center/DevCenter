@@ -89,10 +89,8 @@ Whenever you want to use the MobileFirst Native SDK, make sure that you import t
 #### Note about iOS 9:
 > If you are developing for iOS9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's <code>info.plist</code> to be able to test locally without security restrictions.
 
-Now that the MobileFirst Native SDK was added to the Xcode project, the final step to perform is to ensure that the MobileFirst Server will recognize any future requests arriving to it from the application.
-
 ### Generated MobileFirst Native SDK artifacts
-Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> and the the application-descriptor.json file.
+Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> and the <code>application-descriptor.json</code> file.
 
 #### mfpclient.plist 
 Located at the root of the project, this file contains server configuration properties and is user-editable:
