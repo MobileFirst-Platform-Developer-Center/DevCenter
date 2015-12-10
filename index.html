@@ -92,8 +92,10 @@ layout: default
       <h3 class="blogPostsHeading">Recent Updates</h3>
       <div class="twoColumns">
         {% for post in site.posts limit:10 %}
+        <div class="postItem inline">
           <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
           <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+        </div>
         {% endfor %}
       </div>
 </div>
