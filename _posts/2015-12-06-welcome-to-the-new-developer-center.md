@@ -12,7 +12,7 @@ Here's a quick list of what you can expect:
 * New responsive design for Desktop and Mobile Web
 * Tutorials are now readable on mobile devices
 * Improved display of code snippets in tutorials
-    * Tip: hover a snippet in order to click and copy to clipboard
+    * Tip: hover a snippet and click the clipboard icon to copy the code snippet
 * Improved discovery of tutorials with new top and side-bar menus
 * Improved tutorials for [offline reading]({{site.baseurl}}/downloads/)
 * Improved [blog]({{site.baseurl}}/blog/) experience

@@ -51,5 +51,3 @@ function fallbackMessage(action) {
 
     return actionMsg;
 }
-
-//hljs.initHighlightingOnLoad();

@@ -4,35 +4,32 @@
     {% if page.relevantTo %}
     <ul class="relevantTo">
       {% for persona in page.relevantTo %}
-        <li class="{{persona}}" title="{{persona}}">&nbsp;</li>
+      <li class="{{persona}}" title="{{persona}}">&nbsp;</li>
       {% endfor %}
     </ul>
     {% endif %}
   </div>
   <div class="leftPart">
     <ol class="breadcrumb">
-        {% for crumb in page.breadcrumbs %}
-         {% if forloop.last %}
-             <li class="active">{{ crumb.title }}</li>
-         {% else %}
-          {% if crumb.use_dropdown == true %}
+      {% for crumb in page.breadcrumbs %}
+        {% if forloop.last and crumb.use_dropdown == false %}
+          <li class="active">{{ crumb.title }}</li>
+        {% elsif crumb.use_dropdown == true %}
           <li class="dropdown">
             <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">{{crumb.title}}<b class="caret"></b></a>
-              <ul class="dropdown-menu">
+            <ul class="dropdown-menu">
               {% for p in crumb.siblings %}
-                  <li><a tabindex="-1" href="{{site.baseurl}}{{p.url}}"{%if p.url == page.url%} class="active"{%endif%}>{{p.title}}</a>
-                  </li>
-                  {% if forloop.last != true %}
-                  <li role="separator" class="divider"></li>
-                  {% endif %}
-              {% endfor %}
-              </ul>
-            </li>
-          {% else %}
-              <li><a href="{{site.baseurl}}{{crumb.url}}">{{crumb.title}}</a></li>
-          {% endif %}
-         {% endif %}
-       {% endfor %}
+              <li><a tabindex="-1" href="{{site.baseurl}}{{p.url}}" {%if p.url==page.url%} class="active" {%endif%}>{{p.title}}</a>
+              </li>
+              {% if forloop.last != true %}
+              <li role="separator" class="divider"></li>
+              {% endif %} {% endfor %}
+            </ul>
+          </li>
+        {% else %}
+          <li><a href="{{site.baseurl}}{{crumb.url}}">{{crumb.title}}</a></li>
+        {% endif %}
+      {% endfor %}
     </ol>
   </div>
 

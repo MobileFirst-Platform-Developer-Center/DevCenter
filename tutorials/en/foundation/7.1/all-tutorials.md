@@ -3,7 +3,6 @@ layout: tutorial
 title: All Tutorials
 weight: 1
 print_pdf: false
-print_pdf: false
 show_disqus: false
 ---
 <br>
