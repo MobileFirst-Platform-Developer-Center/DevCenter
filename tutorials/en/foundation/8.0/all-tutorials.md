@@ -26,14 +26,14 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * [Setting up the Windows 8 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
 * [Introduction to MobileFirst Operations Console](../quick-start/introduction-to-mobilefirst-platform-operations-console/)
 
-### [Configuring the MobileFirst Platform Foundation SDK](../configuring-the-mfpf-sdk/)
+### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 Universal or Windows 10 UWP application.
 
-* [Integrating MobileFirst Platform Foundation SDK in Cordova Applications](../configuring-the-mfpf-sdk/integrating-mfpf-sdk/)
-* [Configuring a native iOS application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/)
-* [Configuring a native Android application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/)
-* [Configuring a native Windows 8 Universal application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/)
-* [Configuring a native Windows 10 UWP application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-windows-10-application-with-the-mfp-sdk/)
+* [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications/)
+* [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/)
+* [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications/)
+* [Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications/)
+* [Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
 
 ### [Client-side Development](../client-side-development/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation, web &#8596; native interactions, debugging and more...

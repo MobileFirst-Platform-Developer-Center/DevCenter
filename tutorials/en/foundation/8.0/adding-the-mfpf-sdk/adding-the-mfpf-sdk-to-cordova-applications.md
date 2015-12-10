@@ -1,7 +1,9 @@
 ---
 layout: tutorial
-title: Integrating IBM MobileFirst Platform Foundation SDK in Cordova applications
+title: Adding the MobileFirst Platform Foundation SDK to Cordova Applications
+breadcrumb_title: Cordova SDK
 relevantTo: [cordova]
+weight: 1
 ---
 <ul>
 <li class="download-sample">
