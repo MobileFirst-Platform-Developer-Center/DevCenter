@@ -33,32 +33,33 @@ From **Terminal** run the command: <code>mfpdev server start</code>.
 
 After successfully registering your application you can optionally download a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK.
 
-If you prefer to manually add the MobileFirst Native SDK, continue reading.
+If you prefer to manually add the MobileFirst Native SDK, [continue reading](#manually-adding-the-mobilefirst-native-sdk).
 
 > <b>Important</b>: Use the <code>[ProjectName].<b>xcworkspace</b></code> file in order to open the project in Xcode. Do <b>not</b> use the <code>[ProjectName].<b>xcodeproj</b></code> file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
 
 ### Manually Adding the MobileFirst Native SDK
 Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Xcode project.
 
-1. Create an Xcode project or use an existing one.
-2. Open **Terminal** and navigate to the root of the Xcode project.
-3. Run the command: <code>mfpdev app register</code>
+1. Create an Xcode project or use an existing one.  
 
-    The <code>mfpdev app register</code> CLI command generates the <code>mfpclient.plist</code> file at the root of the Xcode project.
+2. Open **Terminal** and navigate to the root of the Xcode project.  
 
-4. Run the command: <code>mfpdev app pull</code>
+3. Run the command: <code>mfpdev app register</code>.  
+        The <code>mfpdev app register</code> CLI command generates the <code>mfpclient.plist</code> file at the root of the Xcode project.
 
-    The <code>mfpdev app pull</code> CLI command first creates a **mobilefirst** folder at the root of the Xcode project and then contacts the MobileFirst Server to download into said folder the <code>application-descriptor.json</code> file.
- 
+4. Run the command: <code>mfpdev app pull</code>.  
+        The <code>mfpdev app pull</code> CLI command first creates a **mobilefirst** folder at the root of the Xcode project and then contacts the MobileFirst Server to download into said folder the <code>application-descriptor.json</code> file.
+    
     These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
     
     > <b>Tip:</b> Learn more about the various CLI commands in the [Introduction to MobileFirst CLI](#) tutorial <span style="color:red">TODO: missing link</a>
-
-5. The MobileFirst Native SDK is provided via CocoaPods. If [CocoaPods](http://guides.cocoapods.org) is not installed in your development environment, install it as follows:
- - Open **Terminal** and navigate to the root of the Xcode project
- - Run the command: <code>sudo gem install cocoapods</code>
- - Run the command: <code>pod setup</code>  
-   **Note:** This command may take several minutes to complete.
+        
+5. The MobileFirst Native SDK is provided via CocoaPods. If [CocoaPods](http://guides.cocoapods.org) is not installed in your development environment, install it as follows:    
+    - Open **Terminal** and navigate to the root of the Xcode project
+    - Run the command: <code>sudo gem install cocoapods</code>
+    - Run the command: <code>pod setup</code>  
+    **Note:** This command may take several minutes to complete.<br><br>
+    
 6. Change directory to the location of the Xcode project.
 7. Run the command: <code>pod init</code>. This creates a <code>Podfile</code>.
 8. Using your favorite editor, open the <code>Podfile</code> file.
@@ -70,9 +71,7 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
     pod 'IBMMobileFirstPlatformFoundation'
     ```
 11. Run the command: <code>pod install</code>. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.   **Note:** This command may take several minutes to complete.
-
     > <b>Important</b>: From here on, use the <code>[ProjectName].<b>xcworkspace</b></code> file in order to open the project in Xcode. Do <b>not</b> use the <code>[ProjectName].<b>xcodeproj</b></code> file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
-
 12. Open the Xcode project by double-clicking the <b>.xcworkspace</b> file.
 13. Right-click the project and select <b>Add Files To [ProjectName]</b>, select the <code>mfpclient.plist</code>, located in the root folder of the Xcode project.
 
