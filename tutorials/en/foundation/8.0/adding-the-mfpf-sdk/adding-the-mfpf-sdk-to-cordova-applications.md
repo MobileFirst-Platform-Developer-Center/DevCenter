@@ -11,21 +11,22 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](#) <span style="color:red">TODO: missing link</a>
 
-In this tutorial you will learn how to add the MobileFirst Native SDK as an Apache Cordova plugin ([cordova-plugin-mfp](https://www.npmjs.com/package/cordova-plugin-mfp)) using NPM to either a new or existing Cordova application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
+In this tutorial you will learn how to add the MobileFirst Native SDK as an Apache Cordova plugin ([cordova-plugin-mfp](https://www.npmjs.com/package/cordova-plugin-mfp)) using NPM to either a new or existing Cordova application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are changed in the project.
 
 **Pre-requisites:** Apache Cordova and MobileFirst CLI installed on the developer workstation.  
 Make sure you have read through the [Setting up your development environment](../../setting-up-your-development-environment) tutorials.
 
 **Jump to:**
 
-- [Creating a Cordova app using the MobileFirst template](#adding-the-mobilefirst-native-sdk)
 - [Adding the MobileFirst Cordova Plugin](#adding-the-mobilefirst-native-sdk)
+- [Registering the Cordova app in MobileFirst Server]
+- [Run the application on emulator or on a real device]
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 
 
-### Adding the MobileFirst Plugin to a Cordova project
+### Adding the MobileFirst Cordova Plugin
 Before starting, make sure the MobileFirst Server is running.  
 From **Terminal** run the command:
 
@@ -33,7 +34,7 @@ From **Terminal** run the command:
 mfpdev server start
 ```
 
-Follow the below instructions to add the MobileFirst Cordova Plugin to either a new or existing Cordova project and register the app in a MobileFirst Server.
+Follow the below instructions to add the MobileFirst Cordova Plugin to either a new or existing Cordova project:
 
 1. Create a Cordova project or use an existing one. The MobileFirst template app can be used to create a new Cordova project. To use the template app, open **Terminal**  and run the command:
 ```bash
@@ -88,7 +89,7 @@ The preview can be done in two ways, with Simple Browser Rendering or with Mobil
 ❯ browser: Simple browser rendering 
   mbs: Mobile Browser Simulator 
 ```
-#### Run the application on a emulator or on a device
+#### Run the application on emulator or on a real device
 
 6. Use the Cordova CLI to run the application on a emulator or on a real device.
 	To emulate the application execute the command <code> cordova emulate <platform> </code>
@@ -109,17 +110,6 @@ The preview can be done in two ways, with Simple Browser Rendering or with Mobil
 		```bash
 		cordova run android
 		```
-		
-		
-
-
-#### Execute the
-<br>
-#### Note about Swift:
-> Because Swift is designed to be compatible with Objective-C you can use the MobileFirst SDK from within an iOS Swift project, too. Create a Swift project and follow the same steps, as described at the beginning of the tutorial, to integrate the MobileFirst Native SDK. Use <code>import IBMMobileFirstPlatformFoundation</code> in any class that needs to use the SDK.
-
-#### Note about iOS 9:
-> If you are developing for iOS9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's <code>info.plist</code> to be able to test locally without security restrictions.
 
 ### Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> and the <code>application-descriptor.json</code> file.
