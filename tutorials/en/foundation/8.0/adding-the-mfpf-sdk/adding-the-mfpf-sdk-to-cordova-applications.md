@@ -18,7 +18,7 @@ Make sure you have read through the [Setting up your development environment](..
 
 **Jump to:**
 
-- [Adding the MobileFirst Cordova Plugin](#adding-the-mobilefirst-native-sdk)
+- [Adding the MobileFirst Cordova Plugin](#adding-the-mobilefirst-cordova-plugin)
 - [Registering the Cordova app in MobileFirst Server]
 - [Run the application on emulator or on a real device]
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
