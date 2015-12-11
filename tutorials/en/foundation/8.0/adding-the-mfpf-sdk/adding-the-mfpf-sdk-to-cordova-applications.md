@@ -45,28 +45,31 @@ The ***myapp*** folder will be created with a copy of the cordova-template-mfp p
 2. Navigate to the root of the Cordova project.
 
 3. Add the MobileFirst Cordova Plugin[cordova-plugin-mfp](https://www.npmjs.com/package/cordova-plugin-mfp)) using the cordova CLI. This will install the plugin from [NPM](https://www.npmjs.com/package/cordova-plugin-mfp):
- ```bash
- cordova plugin add cordova-plugin-mfp
- ```
+```bash
+cordova plugin add cordova-plugin-mfp
+```
 
 4. Add one or more platforms to the project using the Cordova CLI
     To add ios platform:
-    ```bash
-    cordova platform add ios
-    ```
+   
+```bash
+cordova platform add ios
+```
    To add android platform:
-    ```bash
-    cordova platform add android
-    ```
+   
+```bash
+cordova platform add android
+```
+
 ### Registering the Cordova app in MobileFirst Server
 
 4. Register the application with MobileFirst Server with the command: 
  
-    ```bash
-    mfpdev app register
-    ```
+```bash
+mfpdev app register
+```
     
-    The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server and registers the application, followed by updating the <code>config.xml</code> file at the root of the Cordova project adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as a native app in MobileFirst Server.
+The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server and registers the application, followed by updating the <code>config.xml</code> file at the root of the Cordova project adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as a native app in MobileFirst Server.
     
        <span style="color:red">TODO: Not sure if the following is valid for Cordova</a> 
     > The application registration can also be done from the MobileFirst Operations Console:    
@@ -80,36 +83,48 @@ The ***myapp*** folder will be created with a copy of the cordova-template-mfp p
 ### Preview, emulate or run application on a device
 #### Preview the Application
 5. After registered in a MobileFirst Server, the app can be previewed with the command
+
 ```bash
 mdo app preview
 ```
 The preview can be done in two ways, with Simple Browser Rendering or with Mobile Browser Simulator. With Simple Browser Rendering the app is presented as a web page in your browser while Mobile Browser Simulator will simulate a Mobile Device in your browser and the app is presented inside the simulated device.
+
 ```bash
 ? Select how to preview your app: (Use arrow keys)
 ❯ browser: Simple browser rendering 
-  mbs: Mobile Browser Simulator 
+mbs: Mobile Browser Simulator 
 ```
+
 #### Running the application on emulator or on a real device
 
 6. Use the Cordova CLI to run the application on a emulator or on a real device.
-	To emulate the application execute the command <code> cordova emulate <platform> </code>
-		example for ios:
-		```bash
-		cordova emulate ios
-		```
-		example for android:
-		```bash
-		cordova emulate android
-		```
-	To run the application on a real device attached to the development machin, execute the command <code> cordova run <platform> </code>
-		example for ios:
-		```bash
-		cordova run ios
-		```
-		example for android:
-		```bash
-		cordova run android
-		```
+
+To emulate the application execute the command <code> cordova emulate <platform> </code>
+
+example for ios:
+
+```bash
+cordova emulate ios
+```
+
+example for android:
+
+```bash
+cordova emulate android
+```
+
+To run the application on a real device attached to the development machin, execute the command <code> cordova run <platform> </code>
+example for ios:
+
+```bash
+cordova run ios
+```		
+
+example for android:
+
+```bash
+cordova run android
+```
 
 ### Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> and the <code>application-descriptor.json</code> file.
