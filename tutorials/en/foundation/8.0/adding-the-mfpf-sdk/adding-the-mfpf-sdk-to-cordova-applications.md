@@ -19,8 +19,8 @@ Make sure you have read through the [Setting up your development environment](..
 **Jump to:**
 
 - [Adding the MobileFirst Cordova Plugin](#adding-the-mobilefirst-cordova-plugin)
-- [Registering the Cordova app in MobileFirst Server]
-- [Run the application on emulator or on a real device]
+- [Registering the Cordova app in MobileFirst Server](#registering-the-cordova-app-in-mobilefirstserver)
+- [Running the application on emulator or on a real device](#running-the-application-on-emulator-or-on-a-real-device)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -89,7 +89,7 @@ The preview can be done in two ways, with Simple Browser Rendering or with Mobil
 ❯ browser: Simple browser rendering 
   mbs: Mobile Browser Simulator 
 ```
-#### Run the application on emulator or on a real device
+#### Running the application on emulator or on a real device
 
 6. Use the Cordova CLI to run the application on a emulator or on a real device.
 	To emulate the application execute the command <code> cordova emulate <platform> </code>
