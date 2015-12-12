@@ -6,9 +6,9 @@ relevantTo: [android,cordova]
 weight: 3
 ---
 ### Overview
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/) tutorial.
-
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
+
+**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/) tutorial.
 
 #### Android Studio
 Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.

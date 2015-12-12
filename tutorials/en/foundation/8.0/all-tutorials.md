@@ -38,7 +38,7 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 ### [Client-side Development](../client-side-development/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation, web &#8596; native interactions, debugging and more...
 
-* [Using CLI to create, build, and manage MobileFirst project artifacts](../client-side-development/updated-using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/)
+* [Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
 * [MobileFirst SDK in Cordova applications](../client-side-development/intro-mfpf-cordova/)
 * [Common UI controls](../client-side-development/common-ui-controls/)
 * [Translation](../client-side-development/translation/)
@@ -98,7 +98,7 @@ Protect your applications and adapter procedures against unauthorized access by 
     * [Implementing SecurityCheckWithUserAuthentication in Native Android applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/android/)
     * [Implementing SecurityCheckWithUserAuthentication in Native Windows 8 Universal applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-8/)
     * [Implementing SecurityCheckWithUserAuthentication in Native Windows 10 UWP applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-10/)
-        * [Application Authenticity Protection](../authentication-and-security/application-authenticity-protection/)
+* [Application Authenticity Protection](../authentication-and-security/application-authenticity-protection/)
     * [Application Authenticity Protection in Cordova applications applications](../authentication-and-security/application-authenticity-protection/cordova/)
 	* [Application Authenticity Protection in Native iOS applications applications](../authentication-and-security/application-authenticity-protection/ios/)
 	* [Application Authenticity Protection in Native Android applications applications](../authentication-and-security/application-authenticity-protection/android/)
@@ -158,6 +158,7 @@ Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.
 
+* [MobileFirst Quality Assurance Overview]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview/)
 * [MobileFirst Quality Assurance in Cordova applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/)
 * [MobileFirst Quality Assurance in iOS applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/)
 * [MobileFirst Quality Assurance in Android applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/)
