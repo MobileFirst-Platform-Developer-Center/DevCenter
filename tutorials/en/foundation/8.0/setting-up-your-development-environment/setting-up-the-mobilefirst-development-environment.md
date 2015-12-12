@@ -26,7 +26,7 @@ To download the MobileFirst CLI, visit the [downloads]({{site.base}}/downloads/)
 ### MobileFirst Operations Console
 <span style="color:red">TODO: add information</span>
 
-### System requirement
+### System requirements
 The MobileFirst developer tools are supported on the following operating systems: Windows, Apple OS X and Linux.
 
 The MobileFirst Operations Console is a web application and is supported in modern browsers: Internet Explorer 10+, Chrome, Safari and Firefox.
