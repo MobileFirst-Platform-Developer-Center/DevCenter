@@ -129,8 +129,6 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 * [Push notifications in native Windows 8 Universal applications](../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/)
 	* [Event Source Notifications in Native Windows 8 Applications](../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/event-source/)
 	* [Tag and Broadcast Notifications in Native Windows 8 Applications](../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/tag-based/)
-* [SMS Notification](../notifications/sms-notifications/)
-* [Two-way SMS communication](../notifications/two-way-sms-communication/)
 
 ### [Analytics](../analytics/)
 
