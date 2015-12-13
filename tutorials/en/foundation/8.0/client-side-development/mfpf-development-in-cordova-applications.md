@@ -9,9 +9,9 @@ weight: 1
 From [http://cordova.apache.org/](http://cordova.apache.org/):
 > Apache Cordova is an open-source mobile development framework. It allows you to use standard web technologies such as HTML5, CSS3, and JavaScript for cross-platform development, avoiding each mobile platforms' native development language. Applications execute within wrappers targeted to each platform, and rely on standards-compliant API bindings to access each device's sensors, data, and network status.
 
-IBM MobileFirst Platform Foundation provides an SDK in the form of a standard Cordova plug-in which can be installed in Cordova application. 
+IBM MobileFirst Platform Foundation provides an SDK in the form of a standard Cordova plug-in.
 
-> To integrate integrate a Cordova application with the MobileFirst Cordova SDK, review the following tutorial: [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications)
+> Learn how to [Add the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications).
 
 The MobileFirst SDK feature set provides the following:
 
