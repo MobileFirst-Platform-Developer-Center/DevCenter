@@ -7,12 +7,7 @@ env:
     - BUILD=buildPDF.sh
     - BUILD=buildPages.sh
     - BUILD=buildBluemix.sh
-script:
-  # - "./buildPages.sh" # execute this script on each commit
-  # - "./buildBluemix.sh" # execute this script on each commit
-  # - "./buildPDF.sh" # execute this script on each commit
-  # - echo $BUILD
-  - ./$BUILD
+script: ./build/$BUILD
 branches:
   only:
   - master # only take into account `master' branch
