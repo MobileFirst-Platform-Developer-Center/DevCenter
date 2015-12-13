@@ -113,16 +113,16 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 
 * [Push Notifications Overview](../notifications/push-notifications-overview/)
 * [Push notifications in Cordova applications](../notifications/push-notifications-in-cordova-applications/)
-    * [Tag and Broadcast Notifications Applications](../notifications/push-notifications-in-cordova-applications/tag-based/)
+    * [Tag and Broadcast Notifications](../notifications/push-notifications-in-cordova-applications/tag-based/)
 * [Push notifications in native iOS applications](../notifications/push-notifications-in-native-ios-applications/)
 	* [Tag and Broadcast Notifications Applications](../notifications/push-notifications-in-native-ios-applications/tag-based/)
-	* [Interactive and Silent Notifications Applications](../notifications/push-notifications-in-native-ios-applications/interactive-and-silent/)
+	* [Interactive and Silent  Notifications](../notifications/push-notifications-in-native-ios-applications/interactive-and-silent/)
 * [Push notifications in native Android applications](../notifications/push-notifications-in-native-android-applications/)
-	* [Tag and Broadcast Notifications Applications](../notifications/push-notifications-in-native-android-applications/tag-based/)
+	* [Tag and Broadcast  Notifications](../notifications/push-notifications-in-native-android-applications/tag-based/)
 * [Push notifications in native Windows 8 Universal applications](../notifications/push-notifications-in-native-windows-8-applications/)
-	* [Tag and Broadcast Notifications Applications](../notifications/push-notifications-in-native-windows-8-applications/tag-based/)
+	* [Tag and Broadcast  Notifications](../notifications/push-notifications-in-native-windows-8-applications/tag-based/)
 * [Push notifications in native Windows 10 UWP applications](../notifications/push-notifications-in-native-windows-10-applications/)
-    * [Tag and Broadcast Notifications Applications](../notifications/push-notifications-in-native-windows-10-applications/tag-based/)
+    * [Tag and Broadcast  Notifications](../notifications/push-notifications-in-native-windows-10-applications/tag-based/)
 
 ### [Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage and more.
