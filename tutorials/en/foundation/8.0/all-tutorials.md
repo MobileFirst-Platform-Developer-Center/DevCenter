@@ -114,8 +114,8 @@ Protect your applications and adapter procedures against unauthorized access by 
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 
 * [Push Notifications Overview](../notifications/push-notifications-overview/)
-* [Push notifications in hybrid applications](../notifications/push-notifications-in-cordova-applications/)
-    * [Tag and Broadcast Notifications in Hybrid Applications](../notifications/push-notifications-in-cordova-applications/tag-based/)
+* [Push notifications in Cordova applications](../notifications/push-notifications-in-cordova-applications/)
+    * [Tag and Broadcast Notifications in Cordova Applications](../notifications/push-notifications-in-cordova-applications/tag-based/)
 * [Push notifications in native iOS applications](../notifications/push-notifications-in-native-ios-applications/)
 	* [Tag and Broadcast Notifications in native iOS Applications](../notifications/push-notifications-in-native-ios-applications/tag-based/)
 	* [Interactive and Silent Notifications in Native iOS Applications](../notifications/push-notifications-in-native-ios-applications/interactive-and-silent/)
