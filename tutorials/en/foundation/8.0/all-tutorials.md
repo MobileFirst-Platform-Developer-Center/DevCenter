@@ -42,9 +42,9 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 * [Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
 * Native UI elements in Cordova applications
     * [Native UI elements in Cordova iOS applications](../client-side-development/native-ui-elements-in-cordova-ios-applications/)
-    * [Native UI elements in Cordova Android applications](../client-side-development/native-ui-elements-cordova-android-applications/)
-    * [Native UI elements in Cordova Windows 8 Universal applications](../client-side-development/native-ui-elements-cordova-windows-8-applications/)
-    * [Native UI elements in Cordova Windows 10 UWP applications](../client-side-development/native-ui-elements-cordova-windows-10-applications/)
+    * [Native UI elements in Cordova Android applications](../client-side-development/native-ui-elements-in-cordova-android-applications/)
+    * [Native UI elements in Cordova Windows 8 Universal applications](../client-side-development/native-ui-elements-in-cordova-windows-8-applications/)
+    * [Native UI elements in Cordova Windows 10 UWP applications](../client-side-development/native-ui-elements-in-cordova-windows-10-applications/)
 * [JSONStore](../client-side-development/jsonstore/)
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
