@@ -40,7 +40,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 
 * [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
 * [Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
-* Adding native UI elements to Cordova applications
+* Native UI elements in Cordova applications
     * [Native UI elements in Cordova iOS applications](../client-side-development/native-ui-elements-in-cordova-ios-applications/)
     * [Native UI elements in Cordova Android applications](../client-side-development/native-ui-elements-cordova-android-applications/)
     * [Native UI elements in Cordova Windows 8 Universal applications](../client-side-development/native-ui-elements-cordova-windows-8-applications/)

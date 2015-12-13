@@ -36,5 +36,5 @@ Cordova application development can be further enhanced by using frameworks such
 
 > To get started with Cordova applications visit [Cordova's Get Started website](https://cordova.apache.org/#getstarted).
 
-##Tutorials to follow next
+### Tutorials to follow next
 Get started by [adding the MobileFirst SDK to your Cordova application](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications), and review MobileFirst-provided features in the [All Tutorials](../../all-tutorials/) section.
