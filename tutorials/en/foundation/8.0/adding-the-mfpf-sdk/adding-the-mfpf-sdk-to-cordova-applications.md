@@ -9,12 +9,12 @@ weight: 1
 ### Overview
 The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
 
-> For a complete list of MobileFirst SDK abilities [visit the user documentation](#) <span style="color:red">TODO: missing link</a>
+> For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 In this tutorial you will learn how to add the MobileFirst Native SDK as an Apache Cordova plugin ([cordova-plugin-mfp](https://www.npmjs.com/package/cordova-plugin-mfp)) using NPM to either a new or existing Cordova application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are changed in the project.
 
-**Pre-requisites:** Apache Cordova and MobileFirst CLI installed on the developer workstation.  
-Make sure you have read through the [Setting up your development environment](../../setting-up-your-development-environment) tutorials.
+**Pre-requisites:** Apache Cordova CLI and MobileFirst CLI installed on the developer workstation.  
+Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
 **Jump to:**
 
@@ -69,7 +69,7 @@ cordova platform add android
 mfpdev app register
 ```
     
-The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server and registers the application, followed by updating the <code>config.xml</code> file at the root of the Cordova project adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as a native app in MobileFirst Server.
+The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>config.xml</code> file at the root of the Cordova project, and adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as a native app in MobileFirst Server.
     
        <span style="color:red">TODO: Not sure if the following is valid for Cordova</a> 
     > The application registration can also be done from the MobileFirst Operations Console:    
@@ -77,8 +77,7 @@ The <code>mfpdev app register</code> CLI command first connects to the MobileFir
         2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.  
         3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
 
-    
-    > <b>Tip:</b> Learn more about the various CLI commands in the [Introduction to MobileFirst CLI](#) tutorial <span style="color:red">TODO: missing link</a>
+    > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
         
 ### Preview, emulate or run application on a device
 #### Preview the Application
