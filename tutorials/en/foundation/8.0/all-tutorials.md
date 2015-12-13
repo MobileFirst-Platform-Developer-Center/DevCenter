@@ -38,20 +38,21 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 ### [Client-side Development](../client-side-development/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation, web &#8596; native interactions, debugging and more...
 
+* [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
 * [Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
-* [MobileFirst SDK in Cordova applications](../client-side-development/intro-mfpf-cordova/)
-* [Translation](../client-side-development/translation/)
-* [Using Direct Update to quickly update your application](../client-side-development/using-direct-update-to-quickly-update-your-application/)
-* [Debugging applications](../client-side-development/debugging-applications/)
-* [iOS – Adding native UI elements to hybrid applications](../client-side-development/ios-adding-native-ui-elements-hybrid-applications/)
-* [Android – Adding native UI elements to hybrid applications](../client-side-development/android-adding-native-ui-elements-hybrid-applications/)
-* [Windows 8 Universal – Adding native UI elements to hybrid applications](../client-side-development/w8-adding-native-ui-elements-hybrid-applications/)
-* [Windows 10 UWP – Adding native UI elements to hybrid applications](../client-side-development/w10-adding-native-ui-elements-hybrid-applications/)
-* [Integrating server-generated pages in hybrid applications](../advanced-topics/integrating-server-generated-pages-hybrid-applications/)
+* Adding native UI elements to Cordova applications
+    * [iOS – Adding native UI elements to hybrid applications](../client-side-development/ios-adding-native-ui-elements-hybrid-applications/)
+    * [Android – Adding native UI elements to hybrid applications](../client-side-development/android-adding-native-ui-elements-hybrid-applications/)
+    * [Windows 8 Universal – Adding native UI elements to hybrid applications](../client-side-development/w8-adding-native-ui-elements-hybrid-applications/)
+    * [Windows 10 UWP – Adding native UI elements to hybrid applications](../client-side-development/w10-adding-native-ui-elements-hybrid-applications/)
 * [JSONStore](../client-side-development/jsonstore/)
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
 	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
+* [Integrating server-generated pages in hybrid applications](../advanced-topics/integrating-server-generated-pages-hybrid-applications/)
+* [Translation](../client-side-development/translation/)
+* [Using Direct Update to quickly update your application](../client-side-development/using-direct-update-to-quickly-update-your-application/)
+* [Debugging applications](../client-side-development/debugging-applications/)
 
 ### [Server-side Development](../server-side-development/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.
