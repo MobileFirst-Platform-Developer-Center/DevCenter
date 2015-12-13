@@ -12,7 +12,7 @@ set -e
 ## First, build for GitHub Pages
 # build site with jekyll, by default to `_site' folder
 rm -rf _site/*
-bundle exec jekyll build --config _config.yml,_configBluemix.yml -d _site --profile
+bundle exec jekyll build --config _config.yml,build/_configBluemix.yml -d _site --profile
 rm -f _site/*.log
 # bundle exec htmlproof ./_site --disable-external --href-ignore '#'
 

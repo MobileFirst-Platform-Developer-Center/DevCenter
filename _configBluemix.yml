@@ -1,1 +1,0 @@
-exclude: [vendor,buildPages.sh,buildBluemix.sh,buildPDF.sh,Gemfile,Gemfile.lock,README.md,pdf]

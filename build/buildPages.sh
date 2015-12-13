@@ -12,7 +12,7 @@ set -e
 ## First, build for GitHub Pages
 # build site with jekyll, by default to `_site' folder
 rm -rf _site/*
-bundle exec jekyll build --config _config.yml,_configPages.yml -d _site/MFPSamples --profile
+bundle exec jekyll build --config _config.yml,build/_configPages.yml -d _site/MFPSamples --profile
 rm -f _site/*.log
 #bundle exec htmlproof ./_site --disable-external --href-ignore '#'
 
