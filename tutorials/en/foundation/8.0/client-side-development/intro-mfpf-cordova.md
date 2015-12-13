@@ -11,14 +11,18 @@ From [http://cordova.apache.org/](http://cordova.apache.org/):
 IBM MobileFirst Platform Foundation provides an SDK in the form of a standard Cordova plug-in which can be installed in your Cordova application.  
 The MobileFirst SDK feature set, including:
 
-* Cross-platform UI elements such as TabBar and SimpleDialog
 * Ability to navigate between web and native views and/or call Native code using the MobileFirst SendAction API
-* Share session data between web and native views
-* Call Resource Requests to retrieve data from any backend
-* Protect applications using MobileFirst Security checks
+* Share data between web and native views
+* Use MobileFirst ResourceRequest API to retrieve data from any backend
+* Protect applications using MobileFirst Security model
 * And more...
 
 Learn more about Cordova application development in the Cordova website: [http://cordova.apache.org/](http://cordova.apache.org/)  
+
+Cordova applications can be developed using UI frameworks like [AngularJS](https://angularjs.org/), [jQuery Mobile](http://jquerymobile.com/), [Backbone](http://backbonejs.org/) and more.  
+For specific UI elements use Cordova plugins such as
+[cordova-plugin-dialogs](https://www.npmjs.com/package/cordova-plugin-dialogs), 
+[cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar) or [cordova-plugin-progress](https://www.npmjs.com/package/cordova-plugin-progress).
 
 ##Tutorials
 To get started with the MobileFirst SDK for Cordova, see the Hello World tutorial:
