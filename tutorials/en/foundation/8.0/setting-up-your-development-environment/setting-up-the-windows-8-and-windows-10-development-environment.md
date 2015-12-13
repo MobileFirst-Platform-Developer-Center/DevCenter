@@ -6,9 +6,9 @@ relevantTo: [windows,cordova]
 weight: 4
 ---
 ### Overview
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/) tutorial.
-
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8 Universal and Windows 10 UWP applications.
+
+**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/) tutorial.
 
 #### Registration
 1. Register as a Windows developer

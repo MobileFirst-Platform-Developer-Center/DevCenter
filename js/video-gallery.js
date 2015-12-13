@@ -4,4 +4,13 @@ $(document).ready(function ($) {
     type: 'iframe'
     // other options
   });
+  $.ajax('/js/data/videos.json',{
+    success: function(data){
+      console.log(data);
+      var videoTemplate = $.templates("#videoTemplate");
+      $.each(data, function(index,video){
+        $('#videosList').append(videoTemplate.render(video));
+      });
+    }
+  });
 });

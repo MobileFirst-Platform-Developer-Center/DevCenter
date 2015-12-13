@@ -6,9 +6,9 @@ relevantTo: [ios,cordova]
 weight: 2
 ---
 ### Overview
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/) tutorial.
-
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test iOS applications. These steps include registering at Apple Developer and installing Xcode.
+
+**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/) tutorial.
 
 #### Registration
 1. Register as an iOS developer

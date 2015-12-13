@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Advanced adapter usage and mashup
+title: Advanced Adapter Usage and Mashup
 relevantTo: [hybrid]
 downloads:
   - name: Download MobileFirst project
@@ -107,7 +107,7 @@ function getYahooWeather(woeid) {
             'u' : 'c' //celcius
         }
     };
-    
+
     return WL.Server.invokeHttp(input);
 }  
 {% endhighlight %}
