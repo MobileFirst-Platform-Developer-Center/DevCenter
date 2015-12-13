@@ -127,6 +127,7 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
     * [Tag and Broadcast Notifications in native Windows 10 UWP Applications](../notifications/push-notifications-in-native-windows-10-applications/tag-based/)
 
 ### [Analytics](../analytics/)
+Monitor deployed applications and adapters, gain insight on application usage and more.
 
 * [Operational Analytics](../analytics/operational-analytics/)
 * [Remote controlled client-side log collection](../client-side-development/remote-controlled-client-side-log-collection/)
