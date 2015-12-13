@@ -48,7 +48,6 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 * [Windows 8 Universal – Adding native UI elements to hybrid applications](../client-side-development/w8-adding-native-ui-elements-hybrid-applications/)
 * [Windows 10 UWP – Adding native UI elements to hybrid applications](../client-side-development/w10-adding-native-ui-elements-hybrid-applications/)
 * [Integrating server-generated pages in hybrid applications](../advanced-topics/integrating-server-generated-pages-hybrid-applications/)
-* [Using MobileFirst application as a container for server-generated pages](../advanced-topics/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/)
 * [JSONStore](../client-side-development/jsonstore/)
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
