@@ -125,4 +125,4 @@ WL.Logger.debug(">> Detected language: " + lang);
 ![Get device localle and language](DeviceLocaleLangugae.png)
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation)  the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation)  the MobileFirst project.  
