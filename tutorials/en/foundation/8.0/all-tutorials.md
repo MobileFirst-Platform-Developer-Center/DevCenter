@@ -75,7 +75,6 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
     * [Resource request from Android applications](../server-side-development/resource-request-from-native-android-applications/)
     * [Resource request from Windows 8 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
     * [Resource request from Windows 10 UWP applications](../server-side-development/resource-request-from-native-windows-10-applications/)
-    * [Invoking adpater procedures from Java ME applications](../server-side-development/invoking-adapter-procedures-from-java-micro-edition-applications/)
 * [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
 * [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
 * [Debugging adapters](../server-side-development/debugging-adapters/)
