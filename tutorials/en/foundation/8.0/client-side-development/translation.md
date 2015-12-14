@@ -2,6 +2,7 @@
 layout: tutorial
 title: Translation
 relevantTo: [cordova]
+weight: 12
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation
