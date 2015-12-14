@@ -43,16 +43,20 @@ You can also preview changes to HTML and CSS in real time by modifying the value
 
 ## Debugging with the Mobile Browser Simulator
 You can also use the Mobile Browser Simulator to preview and debug MobileFirst applications.  
-To access it, click the **Preview** button in the MobileFirst Operations Console.
-![Mobile Browser Simulator](MBS1.png)
+In order to use the Mobile Browser Simulator you need to:
 
-The Mobile Browser Simulator has several added values over **Preview** as **Common Resources**, for example:
+1. Follow the [Using CLI to manage MobileFirst artifacts](using-cli-to-manage-mobilefirst-artifacts) tutorial to install the MobileFirst CLI.
+2. Use the following command to emulate/debug your application:
 
-* Preview environment-specific resources
-* Emulate different devices and skins
-* Emulate some Cordova features such as access to sensors and other hardware
+    ```shell
+    mfpdev app preview
+    ```
 
-![Debugging with Mobile Browser Simulator](MBS2.png)
+    If your application consists of more that one platform - specify the platform to preview:
+
+    ```shell
+    mfpdev app preview <platform>
+    ```
 
 ## Debugging with iOS Remote Web Inspector
 Starting in iOS 6, Apple introduced a remote web inspector for debugging web applications on iOS devices. To debug, make sure that the device (or simulator) has the **Private Browsing** option turned off.
