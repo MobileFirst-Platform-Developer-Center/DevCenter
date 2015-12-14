@@ -49,13 +49,13 @@ In order to use the Mobile Browser Simulator you need to:
 2. Use the following command to emulate/debug your application:
 
     ```shell
-    mfpdev app preview
+    $ ./mfpdev app preview
     ```
 
     If your application consists of more that one platform - specify the platform to preview:
 
     ```shell
-    mfpdev app preview <platform>
+    $ ./mfpdev app preview <platform>
     ```
 
 ## Debugging with iOS Remote Web Inspector
