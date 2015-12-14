@@ -45,7 +45,7 @@ You can also preview changes to HTML and CSS in real time by modifying the value
 You can also use the Mobile Browser Simulator to preview and debug MobileFirst applications.  
 In order to use the Mobile Browser Simulator you need to:
 
-1. Follow the [Using CLI to manage MobileFirst artifacts](using-cli-to-manage-mobilefirst-artifacts) tutorial to install the MobileFirst CLI.
+1. Follow the [Using CLI to manage MobileFirst artifacts](using-cli-to-manage-mobilefirst-artifacts.md) tutorial to install the MobileFirst CLI.
 2. Use the following command to emulate/debug your application:
 
     ```shell
