@@ -18,11 +18,13 @@ The following Cordova plug-ins are available:
 * **cordova-plugin-mfp**
 * **cordova-plugin-mfp-push**
 * **cordova-plugin-mfp-jsonstore**
+* **cordova-plugin-mfp-fips**
 
-The **cordova-plugin-mfp** plug-in contains the core MobileFirst functions and is required. If you install either the **cordova-plugin-mfp-push** plug-in or the **cordova-plugin-mfp-jsonstore** plug-in, the **cordova-plugin-mfp** is automatically installed.
+The **cordova-plugin-mfp** plug-in contains the core MobileFirst functions and is required. If you install either the **cordova-plugin-mfp-push** plug-in, the **cordova-plugin-mfp-jsonstore** plug-in or the **cordova-plugin-mfp-fips** plug-in, the **cordova-plugin-mfp** is automatically installed.
 
 The **cordova-plugin-mfp-jsonstore** plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../client-side-development/jsonstore/).
 The **cordova-plugin-mfp-push** plug-in provides permissions needed to use push notification from the MobileFirst Server for Android apps. Additional setup for using push notification is required. For more information on push notification, see the [Push notification. tutorial](../notifications/push-notifications-overview/)
+The **cordova-plugin-mfp-fips** enable FIPS related features. For more information about FIPS, see [FIPS](../link-needs-to-be-updated)) <span style="color:red">TODO: Update link</span>
 
 **Pre-requisites:** MobileFirst CLI and Apache Cordova CLI installed on the developer workstation.  
 Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
@@ -74,6 +76,12 @@ cordova plugin add cordova-plugin-mfp-push
 
 ```bash
 cordova plugin add cordova-plugin-mfp-jsonstore
+```
+
+* add **cordova-plugin-mfp-fips**
+
+```bash
+cordova plugin add cordova-plugin-mfp-fips
 ```
 
 5. Add one or more platforms to the project using the Cordova CLI
