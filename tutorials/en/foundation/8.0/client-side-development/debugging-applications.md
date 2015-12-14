@@ -5,9 +5,10 @@ relevantTo: [cordova]
 weight: 12
 ---
 ## Overview
-This tutorial explores various approaches to debugging the web resources of a MobileFirst application, either before running the application on a device or while running it on a device.
+This tutorial explores various approaches to debugging the web resources of a MobileFirst application,  
+Either before running the application on a device or while running it on a device.
 
-The following debugging options are covered:
+**Jump to:**
 
 * [What is debugging?](#what-is-debugging)
 * [Debugging on a desktop browser](#debugging-on-a-desktop-browser)
@@ -42,21 +43,20 @@ You can also preview changes to HTML and CSS in real time by modifying the value
 ![modifying values in the Developer Tools](developer-tools-2.png)
 
 ## Debugging with the Mobile Browser Simulator
-You can also use the Mobile Browser Simulator to preview and debug MobileFirst applications.  
-In order to use the Mobile Browser Simulator you need to:
+You can use the Mobile Browser Simulator to preview and debug MobileFirst applications.  
+To use the Mobile Browser Simulator, open **Terminal** and run the command:
 
-1. Follow the [Using CLI to manage MobileFirst artifacts](../using-cli-to-manage-mobilefirst-artifacts) tutorial to install the MobileFirst CLI.
-2. Use the following command to emulate/debug your application:
+```bash
+$ mfpdev app preview
+```
 
-    ```shell
-    $ ./mfpdev app preview
-    ```
+If your application consists of more that one platform - specify the platform to preview:
 
-    If your application consists of more that one platform - specify the platform to preview:
+```bash
+$ mfpdev app preview <platform>
+```
 
-    ```shell
-    $ ./mfpdev app preview <platform>
-    ```
+> Learn more about the MobileFirst CLI in the [Using CLI to manage MobileFirst artifacts](../using-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Debugging with iOS Remote Web Inspector
 Starting in iOS 6, Apple introduced a remote web inspector for debugging web applications on iOS devices. To debug, make sure that the device (or simulator) has the **Private Browsing** option turned off.
