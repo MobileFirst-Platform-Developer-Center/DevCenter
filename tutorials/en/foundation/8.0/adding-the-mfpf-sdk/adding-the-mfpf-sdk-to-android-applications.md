@@ -99,7 +99,7 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
 Two MobileFirst-related artifacts are available in the Android Studio project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.properties</code> and the <code>application-descriptor.json</code> file.
 
 #### mfpclient.properties 
-Located at the **./app/src/main/assets/** folder of the Android Studio project, this file contains server configuration properties and is user-editable:
+Located at the **./app/src/main/assets/** folder of the Android Studio project, this file contains server connectivity properties and is user-editable:
 
 - <code>protocol</code> – The communication protocol to MobileFirst Server. Either <code>HTTP</code> or <code>HTPS</code>.
 - <code>host</code> – The hostname of the MobileFirst Server instance.
@@ -108,7 +108,7 @@ Located at the **./app/src/main/assets/** folder of the Android Studio project, 
 - <code>languagePreference</code> - Sets the default language for client sdk system messages
 
 #### application-descriptor.json
-Located in the **&lt;android-studio-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its <code>bundleId</code and <code>version</code> and is user-editable.
+Located in the **&lt;android-studio-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its <code>bundleId</code> and <code>version</code> and is user-editable.
 
 The file can be edited either locally or via the MobileFirst Operations Console.  
 If edited locally, the MobileFirst Server can be updated by running the CLI command: <code>mfpdev app push</code>.  
