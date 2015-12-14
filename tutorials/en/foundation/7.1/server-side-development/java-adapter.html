@@ -53,19 +53,19 @@ relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 <h3>XML File</h3>
 <p>Java adapters have an XML configuration file such as all the other types of adapters. In this configuration file, configure the class name of the JAX-RS application for this adapter.<br />
 In our case: <code>com.sample.adapter.JavaAdapterApplication</code>.</p>
-<p>{% highlight xml linenos %}<br />
-<?xml version="1.0" encoding="UTF-8"?><br />
-<wl:adapter name="JavaAdapter"<br />
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"<br />
-	xmlns:wl="http://www.ibm.com/mfp/integration"<br />
-	xmlns:http="http://www.ibm.com/mfp/integration/http"></p>
-<p>	<displayName>JavaAdapter</displayName><br />
-	<description>JavaAdapter</description><br />
-	<connectivity><br />
-		<connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy><br />
-	</connectivity></p>
-<p>	<JAXRSApplicationClass>com.sample.adapter.JavaAdapterApplication</JAXRSApplicationClass><br />
-</wl:adapter><br />
+<p>{% highlight xml linenos %}
+<?xml version="1.0" encoding="UTF-8"?>
+<wl:adapter name="JavaAdapter"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:wl="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
+	<displayName>JavaAdapter</displayName>
+	<description>JavaAdapter</description>
+	<connectivity>
+		<connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy>
+	</connectivity>
+	<JAXRSApplicationClass>com.sample.adapter.JavaAdapterApplication</JAXRSApplicationClass>
+</wl:adapter>
 {% endhighlight %}</p>
 <p>Note that the connection policy type is <code>NullConnectionPolicy</code>, which means that the XML configuration file is not used to define the connectivity of the adapter. In Java adapters, this is the only allowed connectivity type. The MobileFirst Server leaves setting up the connectivity policy to the developer of the adapter. For example, an adapter can contain code that uses an Apache HTTP client to connect to a back-end system.</p>
 <h3>The <code>src</code> folder</h3>
