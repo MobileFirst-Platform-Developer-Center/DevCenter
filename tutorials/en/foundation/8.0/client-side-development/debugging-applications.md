@@ -11,10 +11,12 @@ The following debugging options are covered:
 
 * [What is debugging?](#what-is-debugging)
 * [Debugging on a desktop browser](#debugging-on-a-desktop-browser)
+* [Debugging with the Mobile Browser Simulator](#debugging-with-the-mobile-browser-simulator)
 * [Debugging with iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
 * [Debugging with Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
 * [Debugging with Weinre](#debugging-with-weinre)
 * [Debugging with IBM MobileFirst Logger](#debugging-with-ibm-mobilefirst-logger)
+* [Testing Adapters](#testing-adapters)
 * [Debugging with WireShark](#debugging-with-wireshark)
 
 ## What is debugging?
@@ -39,6 +41,19 @@ In early application development stages, these tools can be used to debug the ap
 You can also preview changes to HTML and CSS in real time by modifying the values in the inspector.
 ![modifying values in the Developer Tools](developer-tools-2.png)
 
+## Debugging with the Mobile Browser Simulator
+You can also use the Mobile Browser Simulator to preview and debug MobileFirst applications.  
+To access it, click the **Preview** button in the MobileFirst Operations Console.
+![Mobile Browser Simulator](MBS1.png)
+
+The Mobile Browser Simulator has several added values over **Preview** as **Common Resources**, for example:
+
+* Preview environment-specific resources
+* Emulate different devices and skins
+* Emulate some Cordova features such as access to sensors and other hardware
+
+![Debugging with Mobile Browser Simulator](MBS2.png)
+
 ## Debugging with iOS Remote Web Inspector
 Starting in iOS 6, Apple introduced a remote web inspector for debugging web applications on iOS devices. To debug, make sure that the device (or simulator) has the **Private Browsing** option turned off.
 To enable Web Inspector on the device, click **Settings > Safari > Advanced > Web Inspector**.
@@ -56,48 +71,56 @@ With Google Chrome, it is possible to remotely inspect web applications on Andro
 This action requires Android 4.4 or later, Chrome 32 or later, and IBM Worklight Foundation V6.2.0 or IBM MobileFirst Platform Foundation 6.3 or later.
 Additionally, in the `AndroidManifest.xml` file, `targetSdkVersion` = 19 or above is required.
 In the `project.properties` file, `target` = 19 or above is required.
-<ol>
-<li>Start the application in the Android Emulator or a connected device.</li>
-<li>In Chrome, enter the following URL: `about:inspect`.</li>
-<li>Press **Inspect** for the relevant application.
-You can now use all the features of the Chrome Inspector to inspect the Android application.</li>
-<a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/03_04_debug_with_chrome.png"><img class="aligncenter size-large wp-image-1724" src="{{ site.baseurl }}/assets/backup/03_04_debug_with_chrome-1024x731.png" alt="03_04_debug_with_chrome" width="980" height="699" /></a>
-</ol>
+
+1. Start the application in the Android Emulator or a connected device.
+2. In Chrome, enter the following URL: `about:inspect`.
+3. Press **Inspect** for the relevant application.  
+You can now use all the features of the Chrome Inspector to inspect the Android application.
+![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
 ## Debugging with Weinre
-<a href="http://people.apache.org/~pmuellr/weinre/">Weinre</a> stands for **Web Inspector Remote**.
-Weinre is a debugger for web pages, like Firebug or other Web Inspectors, except that Weinre is designed to work remotely.
+Weinre is a debugger for web pages, like Firebug or other Web Inspectors, except that **Weinre is designed to work remotely**.
 Weinre can be used to inspect and debug web resources such as HTML, JavaScript, CSS, and network traffic on mobile handsets.
 The Weinre architecture includes the following components:
-<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_weinre.png"><img class="aligncenter size-full wp-image-734" src="{{ site.baseurl }}/assets/backup/03_04_weinre.png" alt="03_04_weinre" width="860" height="251" /></a>
+![Weinre](Weinre.png)
+
 The Weinre debug server requires a `node.js` runtime.
-You can find instructions to install Weinre on the <a href="http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html">Weinre installation page</a>.
+You can find instructions to install Weinre on the [Weinre installation page](http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html).
+
 <h3>Debug server</h3>
-When the Weinre server is installed, enter the following command to run it:
-`weinre --httpPort 8888 --boundHost -all-`
-This command starts a Weinre server. The default port is `8888` but you can change it.
+When the Weinre server is installed, enter the following command to run it:  
+`weinre --httpPort 8888 --boundHost -all-`  
+This command starts a Weinre server.  
+The default port is `8888` but you can change it.
+
 <h3>Target</h3>
-The Weinre server must be accessible from the device that will be used for debugging. To make it accessible, add the following code line to the web application:
-[code lang="js"]&lt;script src=&quot;http://a.b.c:8888/target/target-script-min.js&quot;<&lt;/script<[/code]
+The Weinre server must be accessible from the device that will be used for debugging.  
+To make it accessible, add the following code line to the web application:
+
+```
+<script src="http://a.b.c:8888/target/target-script-min.js"></script>
+```
+
 Where a.b.c is the hostname or IP of the Weinre server.
+
 <h3>Client</h3>
 Before you can start debugging, make sure that the application is open and loaded on the browser with this URL:
-<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_weinre_debugging.png"><img class="aligncenter size-full wp-image-735" src="{{ site.baseurl }}/assets/backup/03_04_weinre_debugging.png" alt="03_04_weinre_debugging" width="798" height="684" /></a>
+![Weinre Debugging](Weinre-Debugging.png)
 
 ## Debugging with IBM MobileFirst Logger
-IBM MobileFirst Platform Foundation provides a `WL.Logger` object which can be used to print log messages to the log for the environment used.
-Two of its methods are `WL.Logger.debug()` and `WL.Logger.error()`.
+IBM MobileFirst Platform Foundation provides a `WL.Logger` object which can be used to print log messages to the log for the environment used.  
+Two of its methods are `WL.Logger.debug()` and `WL.Logger.error()`.  
 These APIs are multiplatform. The output destination changes according to the platform on which that application runs:
-<ul>
-<li>**Developer console** when it is running on a desktop browser</li>
-<li>**LogCat** when it is running on Android device</li>
-<li>**Visual Studio Output** when it is running on a Windows Phone 8 device and Windows 8 App</li>
-<li>**XCode Console** when it is running on an iOS device</li>
-</ul>
-`WL.Logger` contains more methods.
-<blockquote>For more information, see the documentation for `WL.Logger` in the API reference part of the user documentation.</blockquote>
 
-## Testing adapter procedures
+* **Developer console** when it is running on a desktop browser
+* **LogCat** when it is running on Android device
+* **Visual Studio Output** when it is running on a Windows Phone 8 device and Windows 8 App
+* **XCode Console** when it is running on an iOS device
+
+`WL.Logger` contains more methods.
+> For more information, see the documentation for `WL.Logger` in the API reference part of the user documentation.
+
+## Testing Adapters
 You can test adapter procedures by using MobileFirst Studio.
 To test a procedure:
 <ol>
@@ -112,7 +135,7 @@ Adapter invocation result:
 </ol>
 
 ## Debugging with WireShark
-Wireshark is a network protocol analyzer that can be used to see what happens in the network.
-You can use filters to follow only what is required.
-For more information, see the <a href="http://www.wireshark.org">WireShark</a> website.
-<a href="http://developer.ibm.com/worklight/wp-content/uploads/sites/32/2014/07/03_04_wireshark.png"><img class="aligncenter size-full wp-image-739" src="{{ site.baseurl }}/assets/backup/03_04_wireshark.png" alt="03_04_wireshark" width="970" height="562" /></a>
+**Wireshark is a network protocol analyzer** that can be used to see what happens in the network.  
+You can use filters to follow only what is required.  
+For more information, see the [WireShark](http://www.wireshark.org) website.
+![WirShark](WireShark.png)
