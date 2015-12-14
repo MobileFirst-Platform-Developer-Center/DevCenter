@@ -49,7 +49,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
     * <span style="color:red">TODO: </span>[JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* <span style="color:red">TODO: </span>[JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
 	* <span style="color:red">TODO: </span>[JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
-* <span style="color:red">TODO: </span>[Integrating server-generated pages in hybrid applications](../advanced-topics/integrating-server-generated-pages-hybrid-applications/)
+* <span style="color:red">TODO: </span>[Integrating server-generated pages in hybrid applications](../client-side-development/integrating-server-generated-pages-hybrid-applications/)
 * <span style="color:red">TODO: </span>[Translation](../client-side-development/translation/)
 * <span style="color:red">TODO: </span>[Using Direct Update to quickly update your application](../client-side-development/using-direct-update-to-quickly-update-your-application/)
 * <span style="color:red">TODO: </span>[Debugging applications](../client-side-development/debugging-applications/)
@@ -65,7 +65,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
         * [JavaScript SQL Adapter](../server-side-development/creating-adapters/javascript-adapters/js-sql-adapter/)
         * [JavaScript JMS Adapter](../server-side-development/creating-adapters/javascript-adapters/js-jms-adapter/)
         * [JavaScript Cast Iron Adapter](../server-side-development/creating-adapters/javascript-adapters/js-cast-iron-adapter/)
-    * [Java Adapters](../server-side-development/java-adapters/)
+    * [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
         * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
         * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
 * Resource request in Adapters
