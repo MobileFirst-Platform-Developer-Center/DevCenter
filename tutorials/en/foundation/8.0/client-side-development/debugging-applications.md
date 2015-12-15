@@ -53,7 +53,7 @@ mfpdev app preview
 If your application consists of more that one platform - specify the platform to preview:
 
 ```bash
-mfpdev app preview <platform>
+mfpdev app preview -p <platform>
 ```
 
 > Learn more about the MobileFirst CLI in the [Using CLI to manage MobileFirst artifacts](../using-cli-to-manage-mobilefirst-artifacts) tutorial.
