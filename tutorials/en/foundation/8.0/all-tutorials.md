@@ -20,7 +20,7 @@ Get a feel of the MobileFirst SDK with these fast-tracked demos.
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
-* <span style="color:red">TODO: </span>[Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
+* <span style="color:red">IN PROGRESS </span>[Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
 * [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
 * [Setting up the Windows 8 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
@@ -29,7 +29,7 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 Universal or Windows 10 UWP application.
 
-* <span style="color:red">TODO: </span>[Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications/)
+* <span style="color:red">IN PROGRESS</span>[Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications/)
 * [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/)
 * [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications/)
 * <span style="color:red">TODO: </span>[Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications/)
@@ -49,14 +49,14 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
     * <span style="color:red">TODO: </span>[JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* <span style="color:red">TODO: </span>[JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
 	* <span style="color:red">TODO: </span>[JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
-* <span style="color:red">TODO: </span>[Integrating server-generated pages in hybrid applications](../client-side-development/integrating-server-generated-pages-hybrid-applications/)
+* <span style="color:red">TODO: </span>[Integrating server-generated pages in Cordova applications](../client-side-development/integrating-server-generated-pages-in-cordova-applications/)
 * <span style="color:red">TODO: </span>[Translation](../client-side-development/translation/)
 * <span style="color:red">TODO: </span>[Using Direct Update to quickly update your application](../client-side-development/using-direct-update-to-quickly-update-your-application/)
 * <span style="color:red">TODO: </span>[Debugging applications](../client-side-development/debugging-applications/)
 
 ### [Server-side Development](../server-side-development/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.  
-<span style="color:red">TODO: everything</span>
+<span style="color:red">IN PROGRESS</span>
 
 * [Adapters overview](../server-side-development/adapters-overview/)
 * [Creating Java and JavaScript adapters](../server-side-development/creating-adapters/)
