@@ -11,16 +11,26 @@ The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://
 
 **Prerequisite:**  Make sure that you read the [Adapters Overview](../adapters-overview) tutorial first.</span>
 
-### Using Maven Archetype "adapter-maven-archetype"
+###Jump To:
+* [Creating Adapters using Maven](#creatingWithMaven)
+ * [Install Maven](#installMvn)
+ * [Create an Adapter](#createAdapter)
+ * [Build and Deploy Adapters](#build&deploy)
+ * [Dependencies](#dependencies)
+ * [Grouping Adapters in a Single Maven Project](#grouping)
+* [Creating Adapters using MobileFirst CLI](#creatingWithCli)
+* [Creating Adapters using MobileFirst Operations Console](#creatingWithConsole)
+
+### Creating Adapters using Maven Archetype "adapter-maven-archetype"<a name="creatingWithMaven"></a>
 The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) in order to create the adapter as a Maven project.
 
 </br>
-#### Install Maven
+#### Install Maven<a name="installMvn"></a>
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
 
 </br>
-#### Creating an Adapter
-To create an adapter Maven project, use the `archetype:generate` command.
+#### Create an Adapter<a name="createAdapter"></a>
+To create a Maven adapter project, use the `archetype:generate` command.
 You can choose to run the command interactively or directly.
 
 **In Interactive Mode**
@@ -39,7 +49,7 @@ You can choose to run the command interactively or directly.
 2. Enter the Group Id of the Maven project to be build:
 
     ```shell
-    Define value for property 'groupId': : sample.group.id
+    Define value for property 'groupId': : com.mfp
     ```
 
 3. Enter the Artifact Id of the Maven project **which will later be used also as the adapter name**:
@@ -57,7 +67,7 @@ You can choose to run the command interactively or directly.
 5. Enter the Java adapter package name (the default is the `groupId`):
 
     ```shell
-    Define value for property 'package':  sample.group.id: : com.sample.adapter
+    Define value for property 'package':  com.mfp: : com.sample
     ```
 
 6. Enter `y` to confirm:
@@ -91,7 +101,7 @@ After creating the adapter the result will be a Maven project containing a `src`
 
 ![mvn-adapter](java-adapter-structrue.png)
 
-#### Building and Deploying Java Adapters
+#### Build and Deploy Adapters <a name="build&deploy"></a>
 **Build**
 
 The adapter will be built every time you run the `mvn install` command to build your Maven project.  
@@ -101,10 +111,9 @@ The end result is the `.adapter` file in the project `target` folder:
 
 **Deploy**
 
-1. Edit the `pom.xml` file with the following `properties` parameters:
+1. The `pom.xml` file contains the following `properties` parameters:
 
       ```xml
-      ...
       <properties>
     		<!-- parameters for deploy mfpf adapter -->
     		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
@@ -112,8 +121,8 @@ The end result is the `.adapter` file in the project `target` folder:
     		<mfpfPassword>demo</mfpfPassword>
     	</properties>
       ```
-   * Replace the `IP` and `PORT` with the MobileFirst Server IP and port.
-   * Replace the `mfpfUser` and `mfpfPassword` with the MobileFirst admin user name and password.  
+   * Replace the `IP` and `PORT` with your MobileFirst Server IP and port.
+   * Replace the `mfpfUser` and `mfpfPassword` with your MobileFirst admin user name and password.  
 2. Open the project's root folder in terminal and run the `mvn:adapter` command:
 
       ```shell
@@ -122,7 +131,7 @@ The end result is the `.adapter` file in the project `target` folder:
 **NOTE:** The deploy command is available only during development (for security reasons).
 
 </br>
-#### Dependencies
+#### Dependencies <a name="dependencies"></a>
 In order to use an external library in your adapter, follow these suggested instructions:
 
 1. Add a `lib` folder under the root Maven project folder and put the external library in it.
@@ -143,14 +152,53 @@ For example:
 > For more information about `dependencies` see the Maven documentation.
 
 </br>
-#### Grouping Adapters in a Single Maven Project
+#### Grouping Adapters in a Single Maven Project <a name="grouping"></a>
+If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides many benefits such as build all and deploy all abilities, sharing dependencies etc.
+
+To group adapters you need to:
+
+1. Create a root folder and call it, for example, "GroupAdapters".
+2. Put the Maven adapter projects in it.
+3. Create a `pom.xml` file:
+
+    ```xml
+    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    	<modelVersion>4.0.0</modelVersion>
+    	<groupId>com.sample</groupId>
+    	<artifactId>GroupAdapters</artifactId>
+    	<version>1.0-SNAPSHOT</version>
+    	<packaging>pom</packaging>
+
+    	<modules>
+    					<module>AdapterName1</module>
+    					<module>AdapterName2</module>
+    	</modules>
+
+    	<properties>
+    		<!-- parameters for deploy mfpf adapter -->
+    		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
+    		<mfpfUser>demo</mfpfUser>
+    		<mfpfPassword>demo</mfpfPassword>
+    	</properties>
+
+    </project>
+    ```
+  * Define a **`groupId`** of your choice
+  * Add an **`artifactId`** - the root folder's name
+  * Replace the `IP` and `PORT` with your MobileFirst Server IP and port.
+  * Replace the `mfpfUser` and `mfpfPassword` with your MobileFirst admin user name and password.
+
+4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
+
+### Creating Adapters using MobileFirst CLI <a name="creatingWithCli"></a>
+
+### Creating Adapters using MobileFirst Operations Console <a name="creatingWithConsole"></a>
 
 
-
+<br/><br/><br/>
 
 * **Using the MobileFirst Operations Console:**
   1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
   2. Drag and drop the `.adapter` file from the target folder into the Console.
-
-* **Using the MobileFirst CLI:**
-  1.
