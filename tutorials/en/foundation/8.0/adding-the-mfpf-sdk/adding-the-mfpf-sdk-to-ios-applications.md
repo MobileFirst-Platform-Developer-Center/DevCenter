@@ -44,7 +44,7 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
     The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>mfpclient.plist</code> file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.
         
     > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
-        1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
         2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
         3. After successfully registering your application you can optionally download a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK.
 
@@ -95,10 +95,10 @@ Whenever you want to use the MobileFirst Native SDK, make sure that you import t
 > If you are developing for iOS9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's <code>info.plist</code> to be able to test locally without security restrictions.
 
 ### Generated MobileFirst Native SDK artifacts
-Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> and the <code>application-descriptor.json</code> file.
+Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> file and the <code>application-descriptor.json</code> file.
 
 #### mfpclient.plist 
-Located at the root of the project, this file contains server configuration properties and is user-editable:
+Located at the root of the project, this file contains server connectivity properties and is user-editable:
 
 - <code>protocol</code> – The communication protocol to MobileFirst Server. Either <code>HTTP</code> or <code>HTPS</code>.
 - <code>host</code> – The hostname of the MobileFirst Server instance.
@@ -107,7 +107,7 @@ Located at the root of the project, this file contains server configuration prop
 - <code>languagePreference</code> - Sets the default language for client sdk system messages
 
 #### application-descriptor.json
-Located in the **&lt;xcode-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its <code>bundleId</code and <code>version</code> and is user-editable.
+Located in the **&lt;xcode-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its <code>bundleId</code> and <code>version</code> and is user-editable.
 
 The file can be edited either locally or via the MobileFirst Operations Console.  
 If edited locally, the MobileFirst Server can be updated by running the CLI command: <code>mfpdev app push</code>.  
