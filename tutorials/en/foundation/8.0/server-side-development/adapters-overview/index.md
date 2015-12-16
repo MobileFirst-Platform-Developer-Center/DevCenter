@@ -2,6 +2,7 @@
 layout: tutorial
 title: Adapters Overview
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
+weight: 1
 ---
 ### Overview
 Adapters (server-side code) are used to transfer and retrieve information from back-end systems to client applications and cloud services. MobileFirst Server processes the information and handles security. Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](../advanced-adapter-usage-mashup)" possible.  
@@ -34,8 +35,8 @@ You can write adapters in JavaScript or Java.
 * Security integration with the MobileFirst security model with no additional customization, by using simple annotations in the source code
 
 ### JavaScript adapters
-JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, Cast Iron, <span style="color:red">JMS, SAP JCo and SAP Netweaver</span>.  
-JavaScript adapter provides a set of services, called procedures. Mobile apps invoke procedures by issuing Ajax requests.
+JavaScript adapters provide templates for communicating with HTTP and SQL back-ends.  
+It provides a set of services, called procedures and mobile apps can call these procedures by issuing AJAX requests.
 The procedure retrieves information from the back-end application that returns data in some format:
 
 * If this format is JSON, the MobileFirst Server keeps the data intact.

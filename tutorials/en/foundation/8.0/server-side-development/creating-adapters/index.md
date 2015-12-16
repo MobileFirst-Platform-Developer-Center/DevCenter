@@ -3,6 +3,7 @@ layout: tutorial
 title: Creating Java and JavaScript Adapters
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 show_children: true
+weight: 2
 ---
 
 ### Overview
@@ -11,52 +12,63 @@ The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://
 
 **Prerequisite:**  Make sure that you read the [Adapters Overview](../adapters-overview) tutorial first.</span>
 
-### Install Maven
+###Jump To:
+* [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
+ * [Install Maven](#install-maven)
+ * [Create an Adapter](#create-an-adapter)
+ * [Build and Deploy Adapters](#build-and-deploy-adapters)
+ * [Dependencies](#dependencies)
+ * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
+* [Creating Adapters Using MobileFirst CLI](#creating-adapters-using-mobilefirst-cli)
+* [Creating Adapters Using MobileFirst Operations Console](#creating-adapters-using-mobilefirst-operations-console)
+
+### Creating Adapters Using Maven Archetype "adapter-maven-archetype"
+The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) in order to create the adapter as a Maven project.
+
+</br>
+#### Install Maven
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
 
-### Creating an Adapter
-To create an adapter Maven project, use the `archetype:generate` command.
+</br>
+#### Create an Adapter
+To create a Maven adapter project, use the `archetype:generate` command.
 You can choose to run the command interactively or directly.
 
-#### In Interactive Mode
+**In Interactive Mode**
+
 1. Run:
 
     ```shell
-    $ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0
+    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0
     ```
   * The `Archetype Group Id` and Archetype Version are required parameters to identify the archetype.
   * The `Archetype Artifact Id` is a required parameter to identify the adapter type:
      * Use `adapter-maven-archetype-java` to crate a Java adapter
      * Use `adapter-maven-archetype-http` to create a JavaScript HTTP adapter
      * Use `adapter-maven-archetype-sql` to create a JavaScript SQL adapter  
-      <span style="color:red">
-      `adapter-maven-archetype-jms` - JavaScript JMS adapter  
-      `adapter-maven-archetype-sap` - JavaScript SAP adapter  
-      `adapter-maven-archetype-cast-iron` - JavaScript Cast Iron adapter  
-      </span>
 
-2. You will be asked to enter the Group Id of the Maven project to be build:
+2. Enter the Group Id of the Maven project to be build:
 
     ```shell
-    Define value for property 'groupId': : sample.group.id
+    Define value for property 'groupId': : com.mfp
     ```
 
-3. You will be asked to enter the Artifact Id of the Maven project **which will later be used also as the adapter name**:
+3. Enter the Artifact Id of the Maven project **which will later be used also as the adapter name**:
 
     ```shell
     Define value for property 'artifactId': : SampleAdapter
     ```
 
-4. You will be asked to enter the Maven project version (the default is `1.0-SNAPSHOT`):
+4. Enter the Maven project version (the default is `1.0-SNAPSHOT`):
 
     ```shell
     Define value for property 'version':  1.0-SNAPSHOT: : 1.0
     ```
 
-5. You will be asked to enter the Java adapter package name (the default is the `groupId`):
+5. Enter the Java adapter package name (the default is the `groupId`):
 
     ```shell
-    Define value for property 'package':  sample.group.id: : com.sample.adapter
+    Define value for property 'package':  com.mfp: : com.sample
     ```
 
 6. Enter `y` to confirm:
@@ -72,73 +84,129 @@ You can choose to run the command interactively or directly.
     archetypeVersion: 7.2.0.0
      Y: : y
     ```
-<br/><br/>
+<br/>
 
-#### In Direct Mode
+**In Direct Mode**
+
 Replace the placeholders with the actual values and run:
 
 ```shell
-$ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0 -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid> -Dversion=<maven_project_version> -Dpackage=<java_adapter_package_name>
+mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0 -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid> -Dversion=<maven_project_version> -Dpackage=<java_adapter_package_name>
 ```
 
 <br/>
 
 >For more information about the `archetype:generate` command see the Maven documentation.
 
-
-### File Structure
-
-The result will be a Maven project containing a `src` folder and a `pom.xml` file:
+After creating the adapter the result will be a Maven project containing a `src` folder and a `pom.xml` file:
 
 ![mvn-adapter](java-adapter-structrue.png)
 
-### Building and Deploying Java Adapter
-#### Build
+#### Build and Deploy Adapters
+**Build**
+
 The adapter will be built every time you run the `mvn install` command to build your Maven project.  
 The end result is the `.adapter` file in the project `target` folder:
 
 ![java-adapter-result](java-adapter-result.png)
 
-#### Deploy
-<span style="color:red">**NOTE:** The deploy command is available only during development.</span>
+**Deploy**
 
-1. Edit the `pom.xml` file with the following `configuration` parameters:
+1. The `pom.xml` file contains the following `properties` parameters:
 
-    ```xml
-    ...
-    <configuration>
-      <!-- parameters for deploy adapter -->
-      <serverUrl>http://<IP>:<PORT>/mfpadmin</serverUrl>
-      <user>ADMIN_USER</user>
-      <password>ADMIN_PASSWORD</password>
-    </configuration>
-    ```
- * Replace the `IP` and `PORT` with the MobileFirst Server IP and port.
- * Replace the `ADMIN_USER` and `ADMIN_PASSWORD` with the MobileFirst admin user and password.<br/><br/>
-
+      ```xml
+      <properties>
+    		<!-- parameters for deploy mfpf adapter -->
+    		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
+    		<mfpfUser>demo</mfpfUser>
+    		<mfpfPassword>demo</mfpfPassword>
+    	</properties>
+      ```
+   * Replace the `IP` and `PORT` with your MobileFirst Server IP and port.
+   * Replace the `mfpfUser` and `mfpfPassword` with your MobileFirst admin user name and password.  
 2. Open the project's root folder in terminal and run the `mvn:adapter` command:
 
-    ```shell
-    $ mvn adapter:deploy
+      ```shell
+      mvn adapter:deploy
+      ```
+**NOTE:** The deploy command is available only during development (for security reasons).
+
+</br>
+#### Dependencies <a name="dependencies"></a>
+In order to use an external library in your adapter, follow these suggested instructions:
+
+1. Add a `lib` folder under the root Maven project folder and put the external library in it.
+2. Add the library path under the `dependencies` element in the Maven project `pom.xml` file.  
+For example:
+
+    ```xml
+    <dependency>
+        <groupId>sample</groupId>
+        <artifactId>com.sample</artifactId>
+        <version>1.0</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/lib/</systemPath>
+    </dependency>
     ```
-<br/>
 
-<span style="color:red"> *** You can also deploy the Java adapter using Ant tasks.
-For more information see the topic about Deploying applications and adapters in the user documentation.</span>
+</br>
+> For more information about `dependencies` see the Maven documentation.
 
-### Grouping adapters in a single maven project
+</br>
+#### Grouping Adapters in a Single Maven Project
+If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides many benefits such as build all and deploy all abilities, sharing dependencies etc.
 
-### Dependencies
-Unlike using the Studio or the CLI `lib` folder to put your dependencies, in the Java adapter Maven project you'll put them under the `dependencies` element in the Maven project pom.xml file.
+To group adapters you need to:
 
-<blockquote>For more information about `dependencies` see the Maven documentation.</blockquote></li>
+1. Create a root folder and call it, for example, "GroupAdapters".
+2. Put the Maven adapter projects in it.
+3. Create a `pom.xml` file:
 
-<h2>Migrating an Existing Java Adapter</h2>
-In order to migrate an existing Java adapter to Java adapter Maven project you need to:
-<ul>
-	<li>Create a new Maven project using the existing adapter name and adapter package name.</li>
-	<li>Overwrite the adapter .xml file (under src/main/resources) with the existing Java adapter .xml file.</li>
-	<li>Overwrite the adapter application and resource Java files (under src/main/java/adapter_package_name) with the existing Java adapter application and resource Java files.</li>
-	<li>To add dependencies from the existing Java adapter `lib` folder see the <a href="#dependencies">Dependencies</a> section.</li>
+    ```xml
+    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-</ul>
+    	<modelVersion>4.0.0</modelVersion>
+    	<groupId>com.sample</groupId>
+    	<artifactId>GroupAdapters</artifactId>
+    	<version>1.0-SNAPSHOT</version>
+    	<packaging>pom</packaging>
+
+    	<modules>
+    					<module>AdapterName1</module>
+    					<module>AdapterName2</module>
+    	</modules>
+
+    	<properties>
+    		<!-- parameters for deploy mfpf adapter -->
+    		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
+    		<mfpfUser>demo</mfpfUser>
+    		<mfpfPassword>demo</mfpfPassword>
+    	</properties>
+
+    </project>
+    ```
+  * Define a **`groupId`** of your choice
+  * Add an **`artifactId`** - the root folder's name
+  * Replace the `IP` and `PORT` with your MobileFirst Server IP and port.
+  * Replace the `mfpfUser` and `mfpfPassword` with your MobileFirst admin user name and password.
+
+4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
+
+### Creating Adapters Using MobileFirst CLI
+
+
+
+
+
+
+
+
+### Creating Adapters Using MobileFirst Operations Console
+
+
+<br/><br/><br/>
+
+* **Using the MobileFirst Operations Console:**
+  1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
+  2. Drag and drop the `.adapter` file from the target folder into the Console.
