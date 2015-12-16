@@ -5,7 +5,7 @@ breadcrumb_title: MobileFirst environment
 relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
-### Overview
+## Overview
 This tutorial covers the basics of the IBM MobileFirst Platfrom Foundation development environment and tools.
 
 **Jump to**
@@ -16,14 +16,14 @@ This tutorial covers the basics of the IBM MobileFirst Platfrom Foundation devel
 
 <span style="color:red">TODO: stand-alone artifact? all-in-one?</span>
 
-### MobileFirst CLI
+## MobileFirst CLI
 IBM MobileFirst Platform Foundation provides a command-line interface tool to manage MobileFirst Servers, configure MobileFirst applications, and create, build, deploy and test MobileFirst adapters. The CLI lets you use your preferred code editor or alternative IDEs to implemet applications and adapters.
 
 To learn more about the MobileFirst CLI, see the tutorial: [Using CLI to manage MobileFirst artifacts]()../../using-cli-to-manage-mobilefirst-artifacts/)
 
 To download the MobileFirst CLI, visit the [downloads]({{site.base}}/downloads/) page.
 
-### MobileFirst Operations Console
+## MobileFirst Operations Console
 <span style="color:red">TODO: add information</span>
 
 ### System requirements

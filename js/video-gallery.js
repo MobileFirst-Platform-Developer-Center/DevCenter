@@ -1,3 +1,40 @@
+var videos = [];
+var videoTags = [];
+function displayVideos(tag){
+  $('#videosList').html('');
+  $('#videoTags span').removeClass('label-success').addClass('label-info');
+  var videoTemplate = $.templates("#videoTemplate");
+  if(tag){
+    filteredVideos = jQuery.grep(videos,function(video){
+      var index = jQuery.inArray(tag,video.tags);
+      return index!=-1;
+    });
+    $('#videoTags *[data-tag="'+tag+'"]').removeClass('label-info').addClass('label-success');
+  }
+  else{
+    filteredVideos = videos;
+    $('#videoTags *[data-tag=""]').removeClass('label-info').addClass('label-success');
+  }
+  $.each(filteredVideos, function(index,video){
+    $('#videosList').append(videoTemplate.render(video));
+  });
+}
+function displayVideoTags(){
+  $('#videoTags').html('');
+  $.each(videos, function(index,video){
+    videoTags = videoTags.concat(video.tags);
+  });
+  videoTags = videoTags.filter(function(item, pos, self) {
+      return self.indexOf(item) == pos;
+  });
+  $('#videoTags').append('<span class="videoTag label label-info" data-tag="">All</span>');
+  $.each(videoTags, function(index,tag){
+    $('#videoTags').append('<span class="videoTag label label-info" data-tag="'+tag+'">'+tag+'</span>');
+  });
+  $('#videoTags span').on('click',function(event){
+    displayVideos($(event.currentTarget).data('tag'));
+  });
+}
 $(document).ready(function ($) {
   $('.gallery').magnificPopup({
     delegate: 'a', // child items selector, by clicking on it popup will open
@@ -6,11 +43,9 @@ $(document).ready(function ($) {
   });
   $.ajax('/js/data/videos.json',{
     success: function(data){
-      console.log(data);
-      var videoTemplate = $.templates("#videoTemplate");
-      $.each(data, function(index,video){
-        $('#videosList').append(videoTemplate.render(video));
-      });
+      videos = data;
+      displayVideoTags();
+      displayVideos();
     }
   });
 });

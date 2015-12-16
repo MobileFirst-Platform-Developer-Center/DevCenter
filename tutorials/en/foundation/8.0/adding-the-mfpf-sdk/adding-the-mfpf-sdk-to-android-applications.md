@@ -5,7 +5,7 @@ breadcrumb_title: Android SDK
 relevantTo: [android]
 weight: 3
 ---
-### Overview
+## Overview
 The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
 
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
@@ -95,10 +95,10 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
     <activity android:name="com.worklight.wlclient.ui.UIActivity" />
     ```
 
-### Generated MobileFirst Native SDK artifacts
+## Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Android Studio project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.properties</code> and the <code>application-descriptor.json</code> file.
 
-#### mfpclient.properties 
+### mfpclient.properties 
 Located at the **./app/src/main/assets/** folder of the Android Studio project, this file contains server connectivity properties and is user-editable:
 
 - <code>protocol</code> – The communication protocol to MobileFirst Server. Either <code>HTTP</code> or <code>HTPS</code>.
@@ -107,7 +107,7 @@ Located at the **./app/src/main/assets/** folder of the Android Studio project, 
 - <code>wlServerContext</code> – The context root path of the application on the MobileFirst Server instance.
 - <code>languagePreference</code> - Sets the default language for client sdk system messages
 
-#### application-descriptor.json
+### application-descriptor.json
 Located in the **&lt;android-studio-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its <code>bundleId</code> and <code>version</code> and is user-editable.
 
 The file can be edited either locally or via the MobileFirst Operations Console.  
@@ -128,5 +128,5 @@ The file can also be updated by pulling from the server its latest revision by r
 }
  ```
 
-### Tutorials to follow next
+## Tutorials to follow next
 Now that the application is integrated with the MobileFirst Native SDK you can continue reading tutorials for [Native Android development](../../android-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
