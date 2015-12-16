@@ -54,10 +54,10 @@ mfpdev server start
 
 Follow the below instructions to add the MobileFirst Cordova Plugin to either a new or existing Cordova project:
 
-1. Create a Cordova project or use an existing one. The MobileFirst template app can be used to create a new Cordova project that already contains the MbileFirst Plug--in. To use the template, open **Terminal** and run the command:
+1. Create a Cordova project or use an existing one. The MobileFirst template app can be used to create a new Cordova project that already contains the MobileFirst Plug-in. To use the template, open **Terminal** and run the command:
 
     ```bash
-    cordova create myapp com.ibm.app myapp --template cordova-template-mfp
+    cordova create myapp  --template cordova-template-mfp
     ```
 
     The ***myapp*** folder will be created with a copy of the cordova-template-mfp project
@@ -70,14 +70,14 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     cordova plugin add cordova-plugin-mfp
     ```
 
-4. The optional plug-ins <code>cordova-plugin-mfp-push</code> and <code>cordova-plugin-mfp-jsonstore</code> can be added using the Cordova CLI command <code>cordova add plugin [plug-in-name]</code>.
+4. The optional plug-ins <code>cordova-plugin-mfp-push</code>, <code>cordova-plugin-mfp-jsonstore</code> and <code>cordova-plugin-mfp-fips</code> can be added using the Cordova CLI command <code>cordova add plugin [plug-in-name]</code>.
 
-    For example, to add the <code>cordova-plugin-mfp</code> plug-in:
+    For example, to add the <code>cordova-plugin-mfp-push</code> plug-in:
 
     ```bash
     cordova plugin add cordova-plugin-mfp-push
     ```
-    
+
 5. Add one or more platforms to the Cordova project using the Cordova CLI command <code>cordova platform add [platform]</code>.
 
     To add the iOS platform:
@@ -85,33 +85,42 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     ```bash
     cordova platform add ios
     ```
-    
+
     To add the Android platform:
 
     ```bash
     cordova platform add android
     ```
-    
+
+    To add the Windows platform:
+
+    ```bash
+    cordova platform add windows
+    ```
+
+    > The platform versions supported by MobileFirst plug-ins are **cordova-ios@4.0.1**, **cordova-android@5.0.0** and **cordova-windows@4.2.0**
+
 ### Registering the Cordova app in MobileFirst Server
 
 1. Open **Terminal** and navigate to the root of the Cordova project.  
 
 2. Register the application with MobileFirst Server with the CLI command:
 
-```bash
-mfpdev app register
-```
+    ```bash
+    mfpdev app register
+    ```
 
-The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>config.xml</code> file at the root of the Cordova project, and adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as an application in MobileFirst Server.
+    The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>config.xml</code> file at the root of the Cordova project, and adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as an application in MobileFirst Server.
 
-<span style="color:red">TODO: Not sure if the following is valid for Cordova</span>  
-> The application registration can also be done from the MobileFirst Operations Console:    
-    1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
-    2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.  
-    3. After successfully registering your application you can optionally download a "skeleton" Cordova project pre-bundled with the MobileFirst Cordova SDK.
+    > The application registration can also be done from the MobileFirst Operations Console:    
+    > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
+    > 2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.  
+    > 3. After successfully registering your application you can optionally download a "skeleton" Cordova project pre-bundled with the MobileFirst Cordova SDK.
 
-<br>
+<br>   
+
 > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
+
 
 ### Running the application on emulator or on a real device
 #### Preview the Application
@@ -171,7 +180,6 @@ When the MobileFirst Cordova plug-in is added to the project, the previously gen
     <mfp:sdkChecksum>3563350808</mfp:sdkChecksum>
     <mfp:appChecksum>0</mfp:appChecksum>
     <mfp:security>
-        <mfp:encryptWebResources enabled="false" />
         <mfp:testWebResourcesChecksum enabled="false" ignoreFileExtensions="png, jpg, jpeg, gif, mp4, mp3" />
     </mfp:security>
 </mfp:android>
@@ -188,20 +196,44 @@ When the MobileFirst Cordova plug-in is added to the project, the previously gen
 * **mfp:sdkChecksum:** Checksum of the SDK in use
 * **mfp:appChecksum:** Checksum of the app
 * **mfp:security:** Root element for security configurations
-* **mfp:encryptWebResources:** <span style="color:red">??</span>
 * **mfp:testWebResourcesChecksum:** Enables or Disables the test for web resources checksum
-* **mfp:platformVersion:**  <span style="color:red">??</span>
-* **mfp:clientCustomInit:** <span style="color:red">??</span>
+* **mfp:platformVersion:**  The version of the MobileFirst SDK in use
+* **mfp:clientCustomInit:** Enables or Disables custom initialization, when WL.Client.init is not automatically executed
 * **mfp:server:** MobileFirst Server URL and Runtime definition
-* **mfp:directUpdateAuthenticityPublicKey:** MobileFirst Server URL and Runtime definition
+* **mfp:directUpdateAuthenticityPublicKey:** The public key used for direct update authenticity
 * **mfp:languagePreferences:** Default language for client sdk system messages (en, fr, es)
 
+
 #### Editing MobileFirst settings in config.xml with MobileFirst CLI
+
 The MobileFirst CLI can be used to edit the MobileFirst settings in config.xml with the command
 
 ```bash
 mfpdev app config
 ```
+
+
+#### application-descriptor.json
+Located in the **&lt;cordova-project-root-directory&gt;/mobilefirst/[platform]** folder, this file contains application configuration settings such as its <code>bundleId</code> and <code>version</code> and is user-editable.
+
+The file can be edited either locally or via the MobileFirst Operations Console.  
+If edited locally, the MobileFirst Server can be updated by running the CLI command: <code>mfpdev app push</code>.  
+The file can also be updated by pulling from the server its latest revision by running the CLI command: <code>mfpdev app pull</code>.
+
+```javascript
+{
+    "applicationKey": {
+        "packageName": "com.samplePackage",
+        "version": "1.0",
+        "clientPlatform":"android"
+    }
+
+    ...
+    ...
+    ...
+}
+ ```
+
 
 ### Tutorials to follow next
 Now that the MobileFirst Cordova plugin is added to the application you can continue reading tutorials for [Cordova development](../../hybrid-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
