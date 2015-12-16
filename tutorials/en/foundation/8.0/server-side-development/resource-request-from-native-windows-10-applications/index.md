@@ -2,6 +2,7 @@
 layout: tutorial
 title: Resource Request from Native Windows 10 Applications
 relevantTo: [windowsphone8]
+weight: 8
 ---
 <ul>
 <li class="download-sample">

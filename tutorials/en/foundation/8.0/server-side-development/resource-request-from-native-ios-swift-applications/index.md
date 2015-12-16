@@ -7,6 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresSwift
+weight: 6
 ---
 
 ### Overview

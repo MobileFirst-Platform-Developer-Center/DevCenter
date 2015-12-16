@@ -5,6 +5,7 @@ relevantTo: [ios,android,windowsphone8,windows8,cordova]
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters
+weight: 3
 ---
 
 ### Overview

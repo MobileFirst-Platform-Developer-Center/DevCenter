@@ -3,6 +3,7 @@ layout: tutorial
 title: Creating Java and JavaScript Adapters
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 show_children: true
+weight: 2
 ---
 
 ### Overview
@@ -12,24 +13,24 @@ The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://
 **Prerequisite:**  Make sure that you read the [Adapters Overview](../adapters-overview) tutorial first.</span>
 
 ###Jump To:
-* [Creating Adapters using Maven](#creatingWithMaven)
- * [Install Maven](#installMvn)
- * [Create an Adapter](#createAdapter)
- * [Build and Deploy Adapters](#build&deploy)
+* [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
+ * [Install Maven](#install-maven)
+ * [Create an Adapter](#create-an-adapter)
+ * [Build and Deploy Adapters](#build-and-deploy-adapters)
  * [Dependencies](#dependencies)
- * [Grouping Adapters in a Single Maven Project](#grouping)
-* [Creating Adapters using MobileFirst CLI](#creatingWithCli)
-* [Creating Adapters using MobileFirst Operations Console](#creatingWithConsole)
+ * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
+* [Creating Adapters Using MobileFirst CLI](#creating-adapters-using-mobilefirst-cli)
+* [Creating Adapters Using MobileFirst Operations Console](#creating-adapters-using-mobilefirst-operations-console)
 
-### Creating Adapters using Maven Archetype "adapter-maven-archetype"<a name="creatingWithMaven"></a>
+### Creating Adapters Using Maven Archetype "adapter-maven-archetype"
 The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) in order to create the adapter as a Maven project.
 
 </br>
-#### Install Maven<a name="installMvn"></a>
+#### Install Maven
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
 
 </br>
-#### Create an Adapter<a name="createAdapter"></a>
+#### Create an Adapter
 To create a Maven adapter project, use the `archetype:generate` command.
 You can choose to run the command interactively or directly.
 
@@ -101,7 +102,7 @@ After creating the adapter the result will be a Maven project containing a `src`
 
 ![mvn-adapter](java-adapter-structrue.png)
 
-#### Build and Deploy Adapters <a name="build&deploy"></a>
+#### Build and Deploy Adapters
 **Build**
 
 The adapter will be built every time you run the `mvn install` command to build your Maven project.  
@@ -152,7 +153,7 @@ For example:
 > For more information about `dependencies` see the Maven documentation.
 
 </br>
-#### Grouping Adapters in a Single Maven Project <a name="grouping"></a>
+#### Grouping Adapters in a Single Maven Project
 If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides many benefits such as build all and deploy all abilities, sharing dependencies etc.
 
 To group adapters you need to:
@@ -192,9 +193,16 @@ To group adapters you need to:
 
 4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
 
-### Creating Adapters using MobileFirst CLI <a name="creatingWithCli"></a>
+### Creating Adapters Using MobileFirst CLI
 
-### Creating Adapters using MobileFirst Operations Console <a name="creatingWithConsole"></a>
+
+
+
+
+
+
+
+### Creating Adapters Using MobileFirst Operations Console
 
 
 <br/><br/><br/>

@@ -2,6 +2,7 @@
 layout: tutorial
 title: Adapters Overview
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
+weight: 1
 ---
 ### Overview
 Adapters (server-side code) are used to transfer and retrieve information from back-end systems to client applications and cloud services. MobileFirst Server processes the information and handles security. Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](../advanced-adapter-usage-mashup)" possible.  
