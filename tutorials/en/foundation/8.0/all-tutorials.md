@@ -62,8 +62,6 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
     * [JavaScript adapters](../server-side-development/creating-adapters/javascript-adapters/)
         * [JavaScript HTTP Adapter](../server-side-development/creating-adapters/javascript-adapters/js-http-adapter/)
         * [JavaScript SQL Adapter](../server-side-development/creating-adapters/javascript-adapters/js-sql-adapter/)
-        * [JavaScript JMS Adapter](../server-side-development/creating-adapters/javascript-adapters/js-jms-adapter/)
-        * [JavaScript Cast Iron Adapter](../server-side-development/creating-adapters/javascript-adapters/js-cast-iron-adapter/)
     * [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
         * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
         * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
