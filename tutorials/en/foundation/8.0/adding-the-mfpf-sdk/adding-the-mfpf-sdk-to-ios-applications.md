@@ -5,7 +5,7 @@ breadcrumb_title: iOS SDK
 relevantTo: [ios]
 weight: 2
 ---
-### Overview
+## Overview
 The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
 
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
@@ -94,10 +94,10 @@ Whenever you want to use the MobileFirst Native SDK, make sure that you import t
 #### Note about iOS 9:
 > If you are developing for iOS9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's <code>info.plist</code> to be able to test locally without security restrictions.
 
-### Generated MobileFirst Native SDK artifacts
+## Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> file and the <code>application-descriptor.json</code> file.
 
-#### mfpclient.plist 
+### mfpclient.plist 
 Located at the root of the project, this file contains server connectivity properties and is user-editable:
 
 - <code>protocol</code> – The communication protocol to MobileFirst Server. Either <code>HTTP</code> or <code>HTPS</code>.
@@ -106,7 +106,7 @@ Located at the root of the project, this file contains server connectivity prope
 - <code>wlServerContext</code> – The context root path of the application on the MobileFirst Server instance.
 - <code>languagePreference</code> - Sets the default language for client sdk system messages
 
-#### application-descriptor.json
+### application-descriptor.json
 Located in the **&lt;xcode-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its <code>bundleId</code> and <code>version</code> and is user-editable.
 
 The file can be edited either locally or via the MobileFirst Operations Console.  
@@ -127,5 +127,5 @@ The file can also be updated by pulling from the server its latest revision by r
  }
  ```
 
-### Tutorials to follow next
+## Tutorials to follow next
 Now that the application is integrated with the MobileFirst Native SDK you can continue reading tutorials for [Native iOS development](../../ios-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
