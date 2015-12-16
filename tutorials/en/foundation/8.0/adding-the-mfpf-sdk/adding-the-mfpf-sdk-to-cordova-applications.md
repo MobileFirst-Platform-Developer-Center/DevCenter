@@ -171,9 +171,10 @@ cordova run android
 ```
 
 ### Generated MobileFirst Native SDK artifacts
+Two MobileFirst-related artifacts are available in the Cordova project after it has been integrated with the MobileFirst Cordova SDK: the <code>config.xml</code> and the <code>application-descriptor.json</code> file.
 
 #### config.xml
-When the MobileFirst Cordova plug-in is added to the project, the previously generated <code>config.xml</code> file receives a set of new settings identified with the namespace <code>mfp:</code>. The added elements will contain information related MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to config.xml:
+When the MobileFirst Cordova plug-in is added to the project, the Cordova-generated <code>config.xml</code> file receives a set of new settings identified with the namespace <code>mfp:</code>. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the <code>config.xml</code> file:
 
 ```xml
 <mfp:android>
@@ -203,15 +204,12 @@ When the MobileFirst Cordova plug-in is added to the project, the previously gen
 * **mfp:directUpdateAuthenticityPublicKey:** The public key used for direct update authenticity
 * **mfp:languagePreferences:** Default language for client sdk system messages (en, fr, es)
 
-
-#### Editing MobileFirst settings in config.xml with MobileFirst CLI
-
-The MobileFirst CLI can be used to edit the MobileFirst settings in config.xml with the command
+**Editing MobileFirst settings in config.xml with MobileFirst CLI**  
+The MobileFirst CLI can be used to edit the above settings with the command:
 
 ```bash
 mfpdev app config
 ```
-
 
 #### application-descriptor.json
 Located in the **&lt;cordova-project-root-directory&gt;/mobilefirst/[platform]** folder, this file contains application configuration settings such as its <code>bundleId</code> and <code>version</code> and is user-editable.
@@ -233,7 +231,6 @@ The file can also be updated by pulling from the server its latest revision by r
     ...
 }
  ```
-
 
 ### Tutorials to follow next
 Now that the MobileFirst Cordova plugin is added to the application you can continue reading tutorials for [Cordova development](../../hybrid-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
