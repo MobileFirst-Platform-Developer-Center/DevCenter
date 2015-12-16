@@ -5,12 +5,12 @@ breadcrumb_title: Windows 8 and 10 environments
 relevantTo: [windows,cordova]
 weight: 4
 ---
-### Overview
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/) tutorial.
-
+## Overview
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8 Universal and Windows 10 UWP applications.
 
-#### Registration
+**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/) tutorial.
+
+### Registration
 1. Register as a Windows developer
 
 - [Create an Microsoft account](https://signup.live.com/) to be used by your organization/team admin.
@@ -18,10 +18,10 @@ This tutorial explains the steps a developer needs to follow in order to be able
 
 > Learn more in the [Windows developer support](https://dev.windows.com/en-us/support) website
 
-#### Development
+### Development
 Application development for either Windows 8 Universal or Windows 10 UWP requires a PC workstation running either the Windows 8 or Windows 10 operating system, with Microsoft  Visual Studio 2013 or 2015.
 
-##### Windows 8 Universal
+#### Windows 8 Universal
 A Windows 8 Universal application Solution is made up from three projects:
 
 - Shared code for business logic
@@ -33,7 +33,7 @@ Windows 8 Universal requires:
 - Windows OS 8.1 or higher
 - Visual Studio 2013 or 2015
 
-##### Windows 10 UWP
+#### Windows 10 UWP
 A Windows 10 UWP (Universal Windows Platform) application Solution is made up from a single project containing:
 
 - Shared code for business logic
@@ -44,5 +44,5 @@ Windows 10 UWP requires:
 - Windows OS 8.1 or higher
 - Visual Studio 2015
 
-### What's Next
+## What's Next
 Now that the MobileFirst and Android development environment are set up, continue to [Quick Start](../../quick-start/windows/) category to experience MobileFirst Platform, or to [All Tutorials](../../all-tutorials) to learn specific aspects of MobileFirst Platform development.

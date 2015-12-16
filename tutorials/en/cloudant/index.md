@@ -26,4 +26,4 @@ To get started, select from the list below the Foundation release you are using:
 * [MobileFirst Platform Foundation 6.3]({{site.baseurl}}/tutorials/en/product-integration/6.3/cloudant/)
 * [MobileFirst Platform Foundation 7.0]({{site.baseurl}}/tutorials/en/foundation/7.0/data/cloudant-nosql-db-api/)
 * [MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/foundation/7.1/data/working-with-cloudant-nosql-db-api/)
-* [MobileFirst Platform Foundation 8.0]({{site.baseurl}}/tutorials/en/foundation/8.0/data/working-with-cloudant-nosql-db-api/)
+* [MobileFirst Platform Foundation 8.0]({{site.baseurl}}/tutorials/en/foundation/8.0/client-side-development/working-with-cloudant-nosql-db-api/)

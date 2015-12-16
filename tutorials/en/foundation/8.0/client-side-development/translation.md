@@ -2,6 +2,7 @@
 layout: tutorial
 title: Translation
 relevantTo: [cordova]
+weight: 12
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation
@@ -125,4 +126,4 @@ WL.Logger.debug(">> Detected language: " + lang);
 ![Get device localle and language](DeviceLocaleLangugae.png)
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation)  the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation)  the MobileFirst project.  

@@ -1,9 +1,11 @@
 ---
 title: Welcome to the New Developer Center
 date: 2015-12-06
+pinned: true
 author:
   display_name: Idan Adar
 ---
+
 Hello everyone!
 
 As you may have noticed, we've made some changes to the Developer Center website.  
@@ -11,8 +13,14 @@ Here's a quick list of what you can expect:
 
 * New responsive design for Desktop and Mobile Web
 * Tutorials are now readable on mobile devices
+
+![Mobile-friendly]({{site.baseurl}}/assets/blog/2015-12-06-welcome-to-the-new-developer-center/mobile-friendly.gif)
+
 * Improved display of code snippets in tutorials
-    * Tip: hover a snippet and click the clipboard icon to copy the code snippet
+    * Tip: hover a snippet and click the clipboard icon to copy the code snippet. Like this:
+
+![Code snippet example]({{site.baseurl}}/assets/blog/2015-12-06-welcome-to-the-new-developer-center/code-snippets.png)
+
 * Improved discovery of tutorials with new top and side-bar menus
 * Improved tutorials for [offline reading]({{site.baseurl}}/downloads/)
 * Improved [blog]({{site.baseurl}}/blog/) experience

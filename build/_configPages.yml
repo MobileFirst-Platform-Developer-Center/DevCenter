@@ -1,0 +1,2 @@
+baseurl: /MFPSamples
+exclude: [vendor,build,Gemfile,Gemfile.lock,README.md,Staticfile.auth,Staticfile,pdf]
