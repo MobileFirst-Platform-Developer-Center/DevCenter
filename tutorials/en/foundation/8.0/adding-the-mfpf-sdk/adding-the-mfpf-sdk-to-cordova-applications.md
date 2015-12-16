@@ -6,7 +6,7 @@ relevantTo: [cordova]
 weight: 1
 ---
 
-### Overview
+## Overview
 The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
 
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
@@ -44,7 +44,7 @@ Make sure you have read the [Setting up your MobileFirst development environment
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
-### Adding the MobileFirst Cordova Plug-in
+## Adding the MobileFirst Cordova Plug-in
 Before starting, make sure the MobileFirst Server is running.  
 From **Terminal** run the command:
 
@@ -100,7 +100,7 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
 
     > The platform versions supported by MobileFirst plug-ins are **cordova-ios@4.0.1**, **cordova-android@5.0.0** and **cordova-windows@4.2.0**
 
-### Registering the Cordova app in MobileFirst Server
+## Registering the Cordova app in MobileFirst Server
 
 1. Open **Terminal** and navigate to the root of the Cordova project.  
 
@@ -122,8 +122,8 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
 > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 
-### Running the application on emulator or on a real device
-#### Preview the Application
+###Running the application on emulator or on a real device
+### Preview the Application
 
 The application can be previewed with the CLI command
 
@@ -140,7 +140,7 @@ With Simple Browser Rendering the app is presented as a web page in your browser
 mbs: Mobile Browser Simulator
 ```
 
-#### Running the application on emulator or on a real device
+### Running the application on emulator or on a real device
 Use the Cordova CLI to run the application on a emulator or on a real device.  
 To emulate the application execute the Cordova CLI command <code>cordova emulate [platform]</code>.
 
@@ -173,7 +173,7 @@ cordova run android
 ### Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Cordova project after it has been integrated with the MobileFirst Cordova SDK: the <code>config.xml</code> and the <code>application-descriptor.json</code> file.
 
-#### config.xml
+### config.xml
 When the MobileFirst Cordova plug-in is added to the project, the Cordova-generated <code>config.xml</code> file receives a set of new settings identified with the namespace <code>mfp:</code>. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the <code>config.xml</code> file:
 
 ```xml
@@ -211,7 +211,7 @@ The MobileFirst CLI can be used to edit the above settings with the command:
 mfpdev app config
 ```
 
-#### application-descriptor.json
+### application-descriptor.json
 Located in the **&lt;cordova-project-root-directory&gt;/mobilefirst/[platform]** folder, this file contains application configuration settings such as its <code>bundleId</code> and <code>version</code> and is user-editable.
 
 The file can be edited either locally or via the MobileFirst Operations Console.  
@@ -232,5 +232,5 @@ The file can also be updated by pulling from the server its latest revision by r
 }
  ```
 
-### Tutorials to follow next
+## Tutorials to follow next
 Now that the MobileFirst Cordova plugin is added to the application you can continue reading tutorials for [Cordova development](../../hybrid-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
