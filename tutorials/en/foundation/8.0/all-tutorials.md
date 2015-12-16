@@ -51,7 +51,6 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 	* <span style="color:red">TODO: </span>[JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
 * <span style="color:red">TODO: </span>[Integrating server-generated pages in Cordova applications](../client-side-development/integrating-server-generated-pages-in-cordova-applications/)
 * <span style="color:red">TODO: </span>[Translation](../client-side-development/translation/)
-* <span style="color:red">TODO: </span>[Using Direct Update to quickly update your application](../client-side-development/using-direct-update-to-quickly-update-your-application/)
 * <span style="color:red">TODO: </span>[Debugging applications](../client-side-development/debugging-applications/)
 
 ### [Server-side Development](../server-side-development/)
@@ -171,7 +170,7 @@ Scalable database management for your MobileFirst projects.
 	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
 
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
-Scan your application for potential harming code. 
- 
+Scan your application for potential harming code.
+
 <span style="color:red">TODO: outsource to the AppScan team</span>  
 * [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
