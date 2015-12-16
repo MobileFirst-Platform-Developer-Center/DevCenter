@@ -1,6 +1,9 @@
 ---
 title: Event Source Notifications in MFP 7.1 Cordova Applications
 date: 2015-12-09
+tags:
+- MobileFirst_Platform
+- Push_Notifications
 author:
   display_name: Theodora Cheng
 ---
