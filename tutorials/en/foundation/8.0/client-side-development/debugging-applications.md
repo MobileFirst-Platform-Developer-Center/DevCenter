@@ -89,7 +89,7 @@ You can now use all the features of the Chrome Inspector to inspect the Android 
 Weinre is a debugger for web pages, like Firebug or other Web Inspectors, except that **Weinre is designed to work remotely**.
 Weinre can be used to inspect and debug web resources such as HTML, JavaScript, CSS, and network traffic on mobile handsets.
 The Weinre architecture includes the following components:
-![Weinre](Weinre.png)
+![Weinre](Weinre.jpg)
 
 The Weinre debug server requires a `node.js` runtime.
 You can find instructions to install Weinre on the [Weinre installation page](http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html).
