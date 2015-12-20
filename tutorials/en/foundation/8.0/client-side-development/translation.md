@@ -124,9 +124,8 @@ The below steps explain the implementation of this tutorial's sample application
     ```
 
 ## Detecting the device locale and language
-<span style="color:red">TODO: check if these API methods still exist in 8.0</span>   
 It is possible to detect the locale and the language of the device.  
-Use the `WL.App.getDeviceLocale()` and `WL.App.getDeviceLanguage()` functions to detect the current locale.
+Use the `WL.App.getDeviceLocale()` and `WL.App.getDeviceLanguage()` functions to detect the locale and language respectively.
 
 ```javascript
 var locale = WL.App.getDeviceLocale();
@@ -142,4 +141,6 @@ WL.Logger.debug(">> Detected language: " + lang);
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
 
 ### Sample usage
-Add an environment using the `cordova platform add` command.
+1. Open **Terminal** and navigate to the Cordova project
+2. Add an environment using the `cordova platform add` command
+3. Build and run the Cordova application
