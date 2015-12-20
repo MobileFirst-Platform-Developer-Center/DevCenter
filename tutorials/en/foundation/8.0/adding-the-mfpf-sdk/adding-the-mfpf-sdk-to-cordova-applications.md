@@ -78,7 +78,7 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     cordova plugin add cordova-plugin-mfp-push
     ```
 
-5. Add one or more platforms to the Cordova project using the Cordova CLI command <code>cordova platform add [platform]</code>.
+5. Optionally add one or more platforms to the Cordova project using the Cordova CLI command <code>cordova platform add [platform]</code>.
 
     To add the iOS platform:
 
