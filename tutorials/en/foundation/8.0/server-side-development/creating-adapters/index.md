@@ -173,8 +173,8 @@ To group adapters you need to:
     	<packaging>pom</packaging>
 
     	<modules>
-    					<module>AdapterName1</module>
-    					<module>AdapterName2</module>
+				<module>Adapter1</module>
+				<module>Adapter2</module>
     	</modules>
 
     	<properties>
@@ -184,12 +184,25 @@ To group adapters you need to:
     		<mfpfPassword>demo</mfpfPassword>
     	</properties>
 
+      <build>
+    		<plugins>
+    			<plugin>
+    				<groupId>com.ibm.mfp</groupId>
+    				<artifactId>adapter-maven-plugin</artifactId>
+    				<version>8.0.0</version>
+    				<extensions>true</extensions>
+    			</plugin>
+    		</plugins>
+    	</build>
+
     </project>
     ```
-  * Define a **`groupId`** of your choice
-  * Add an **`artifactId`** - the root folder's name
-  * Replace the `IP` and `PORT` with your MobileFirst Server IP and port.
-  * Replace the `mfpfUser` and `mfpfPassword` with your MobileFirst admin user name and password.
+  1. Define a **`groupId`** element of your choice
+  2. Add an **`artifactId`** element - the root folder's name
+  3. Add a **`module`** element for each adapter
+  4. Add the **`build`** element
+  5. Replace the **`IP`** and **`PORT`** with your MobileFirst Server IP and port.
+  6. Replace the **`mfpfUser`** and **`mfpfPassword`** with your MobileFirst admin user name and password.
 
 4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
 
