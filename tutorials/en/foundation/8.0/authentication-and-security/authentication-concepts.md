@@ -15,10 +15,12 @@ This tutorial covers the following topics:
 *   [Authorization flow](#authorization-flow)
 *   [Authorization entities](#authEntities)
   * SecurityCheck
-  * SecurityCheckConfiguration
+    * SecurityCheck classes
+    * SecurityCheckConfiguration
+    * securityCheckDefinition
   * Scope
   * Scope Token
-  * Security Adapter
+  * Challenge Handler
 * Protecting resources
   * Java adapters
   * JavaScript adapters
@@ -44,16 +46,27 @@ It is possible to enforce MobileFirst security both on resources that run on Mob
 ![Protect Resources]({{ site.baseurl }}/assets/backup/MFP_Security_protect_MFP_resources.jpg)
 
 ## Authorization entities
+You can protect resources such as adapters from unauthorized access by specifying a **scope** or **scope token** that contains zero or more **SecurityCheck**.
+
+A **SecurityCheck** defines the process to be used to authenticate users. It is often associated with a **SecurityCheckConfiguration** that defines properties to be used by the SecurityCheck.
+
+SecurityChecks are instantiated by **Security Adapters**.
+
+The same SecurityCheck can be used to protect several resources.
+
+The client application needs to implement a **challenge handler** to handle challenges sent by the SecurityCheck.
 
 ### SecurityCheck
 
-### SecurityCheckConfiguration
+#### SecurityCheck classes
+
+#### SecurityCheckConfiguration
+
+#### securityCheckDefinition
 
 ### Scope
 
 ### Scope Token
-
-### Security Adapter
 
 ## Protecting resources
 
