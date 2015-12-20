@@ -15,9 +15,10 @@ This tutorial covers the following topics:
 *   [Authorization flow](#authorization-flow)
 *   [Authorization entities](#authEntities)
   * SecurityCheck
-    * SecurityCheck classes
-    * SecurityCheckConfiguration
     * securityCheckDefinition
+    * SecurityCheck implementation
+    * SecurityCheckConfiguration
+    * Built-in Security Checks
   * Scope
   * Scope Token
   * Challenge Handler
@@ -57,12 +58,17 @@ The same SecurityCheck can be used to protect several resources.
 The client application needs to implement a **challenge handler** to handle challenges sent by the SecurityCheck.
 
 ### SecurityCheck
+A **SecurityCheck** is an object responsible for obtaining credentials from a client and validate them.
 
-#### SecurityCheck classes
+#### securityCheckDefinition
+Security checks are defined inside adapters. Any adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources, content, to send to the client), a *SecurityCheck* adapter, or **both**. However it is recommended to define your *SecurityCheck* in a seprate adapter.
+
+
+#### SecurityCheck implementation
 
 #### SecurityCheckConfiguration
 
-#### securityCheckDefinition
+#### Built-in Security Checks
 
 ### Scope
 
