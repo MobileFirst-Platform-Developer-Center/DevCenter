@@ -30,10 +30,10 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 Universal or Windows 10 UWP application.
 
 * <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications/)
-* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/)
+* [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/)
 * <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications/)
-* <span style="color:red">TODO: </span>[Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications/)
-* <span style="color:red">TODO: </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
+* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications/)
+* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
 
 ### [Client-side Development](../client-side-development/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation, web &#8596; native interactions, debugging and more...
@@ -45,13 +45,13 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
     * <span style="color:red">TODO: </span>[Native UI elements in Cordova Android applications](../client-side-development/native-ui-elements-in-cordova-android-applications/)
     * <span style="color:red">TODO: </span>[Native UI elements in Cordova Windows 8 Universal applications](../client-side-development/native-ui-elements-in-cordova-windows-8-applications/)
     * <span style="color:red">TODO: </span>[Native UI elements in Cordova Windows 10 UWP applications](../client-side-development/native-ui-elements-in-cordova-windows-10-applications/)
-* <span style="color:red">TODO: </span>[JSONStore](../client-side-development/jsonstore/)
-    * <span style="color:red">TODO: </span>[JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
-	* <span style="color:red">TODO: </span>[JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
-	* <span style="color:red">TODO: </span>[JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
+* <span style="color:red">IN PROGRESS </span>[JSONStore](../client-side-development/jsonstore/)
+    * <span style="color:red">IN PROGRESS </span>[JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
+	* <span style="color:red">IN PROGRESS </span>[JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
+	* <span style="color:red">IN PROGRESS </span>[JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
 * <span style="color:red">TODO: </span>[Integrating server-generated pages in Cordova applications](../client-side-development/integrating-server-generated-pages-in-cordova-applications/)
 * <span style="color:red">IN PROGRESS</span> [Translation](../client-side-development/translation/)
-* <span style="color:red">TODO: </span>[Debugging applications](../client-side-development/debugging-applications/)
+* [Debugging applications](../client-side-development/debugging-applications/)
 
 ### [Server-side Development](../server-side-development/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.  
@@ -95,11 +95,6 @@ Protect your applications and adapter procedures against unauthorized access by 
     * [SecurityCheckWithUserAuthentication in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-8/)
     * [SecurityCheckWithUserAuthentication in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-10/)
 * [Application Authenticity Protection](../authentication-and-security/application-authenticity-protection/)
-    * [Application Authenticity Protection in Cordova applications applications](../authentication-and-security/application-authenticity-protection/cordova/)
-	* [Application Authenticity Protection in iOS applications applications](../authentication-and-security/application-authenticity-protection/ios/)
-	* [Application Authenticity Protection in Android applications applications](../authentication-and-security/application-authenticity-protection/android/)
-	* [Application Authenticity Protection in Windows 8 Universal applications applications](../authentication-and-security/application-authenticity-protection/windows-8)
-    * [Application Authenticity Protection in Windows 10 UWP applications applications](../authentication-and-security/application-authenticity-protection/windows-10)
 * [Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
 * [WebSphere LTPA-based authentication](../authentication-and-security/websphere-ltpa-based-authentication/)
 * [Step-up authentication](../authentication-and-security/step-up-authentication/)
@@ -125,7 +120,7 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 
 ### [Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage and more.  
-<span style="color:red">TODO: everything</span>
+<span style="color:red">IN PROGRESS</span>
 
 * [Operational Analytics](../analytics/operational-analytics/)
 * [Remote controlled client-side log collection](../client-side-development/remote-controlled-client-side-log-collection/)
@@ -152,7 +147,7 @@ Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.  
-<span style="color:red">TODO: Check with the MQA team</span>
+<span style="color:red">Owned by the MQA team</span>
 
 * [MobileFirst Quality Assurance Overview]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview/)
 * [MobileFirst Quality Assurance in Cordova applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/)
