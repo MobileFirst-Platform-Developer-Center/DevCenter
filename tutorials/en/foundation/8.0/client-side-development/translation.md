@@ -5,14 +5,14 @@ relevantTo: [cordova]
 weight: 12
 downloads:
   - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/Translation
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
 
 ## Overview
 You can use the IBM MobileFirst Platform Foundation framework to add multilingual translation of Cordova applications into other languages.  
 Items that can be translated are application strings and system messages. 
 
-Jump to:
+**Jump to:**
 
 * [Translating application strings](#translating-application-strings)
 * [Translating system messages](#translating-system-messages)
