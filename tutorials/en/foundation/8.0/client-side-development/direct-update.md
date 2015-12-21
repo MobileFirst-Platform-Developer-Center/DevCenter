@@ -27,14 +27,15 @@ With Direct Update, Cordova applications can be updated "over-the-air" with refr
 
 - [Under the hood](#under-the-hood)
 - [How Direct Update works](#how-direct-update-works)
+- [Deploying updated web resources to MobileFirst Server](#deploying-updated-web-resources-to-mobliefirst-server)
 - [User experience](#user-experience)
-- [Working with Direct Update in the field](#working-with-direct-update-in-the-field)
+- [Direct Update in the field](#direct-update-in-the-field)
 - [Disabling old application versions](#disabling-old-application-versions)
 - [Direct Update authenticity](#direct-update-authenticity)
 - [Differential Direct Update](#differential-direct-update)
 
 ## Under the Hood
-<span style="color:red">TODO: update with information on security check.
+<span style="color:red">TODO: update with information on direct update's security check.
 
 ## How Direct Update works
 The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on its configuration. The updated web resources are downloaded when necessary.
@@ -43,15 +44,20 @@ After a Direct Update, the application no longer uses the pre-packaged web resou
 
 ![How direct update works]({{site.baseurl}}/assets/backup/05_05_du_internal_function.jpg)
 
+## Deploying updated web resources to MobileFirst Server
+<span style="color:red">TODO: how to create updated web resources and upload to the console
+
 ## User Experience
 By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
 
 ![Direct update examples]({{site.baseurl}}/assets/backup/05_05_du_examples.png)
 
 ## Working with Direct Update in the field
-During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.
+The diagram below depicts the flow of updating an application's web resources using Direct Update once it has been submitted to the application stores and used by end-users.
 
 ![Direct update in the field]({{site.baseurl}}/assets/backup/05_05_distribution.jpg)
+
+Note: During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.
 
 ## Disabling old application versions
 From the MobileFirst Operations Console, it is possible to prevent users from using obsolete versions, and to notify users about available updates.
@@ -105,8 +111,6 @@ To enable Direct Update authenticity:
 - It is highly suggested to enable Secure Direct Update.
 - Secure Direct Update does not work on already-deployed applications.
 - Secure Direct Update works on applications published with the above configuration.
-
-> For more information, see the topic about configuring and customizing direct update, in the user documentation.
 
 ## Differential Direct Update
 Differential Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
