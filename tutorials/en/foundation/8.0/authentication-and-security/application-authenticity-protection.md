@@ -47,8 +47,11 @@ In order to enable Application Authenticity Protection for your Cordova or Nativ
 
     The result of the command above is a `.data` file generated next to the `MyBankApp.ipa` file called `MyBankApp.appAuthenticity.data`.
  
-2. Open the MobileFirst Operations Console in your browser of choice and navigate to the ... screen.
-3. Follow the on-screen instructions to upload the `.data` file.
+2. Open the MobileFirst Operations Console in your browser of choice.
+3. Select your application from the left-side pane and click on the Authenticiy menu item.
+3. Click on "Upload File" to upload the `.data` file.
+
+After uploading the `.data` file Application Authenticity Protection will be enabled for the application.
 
 <span style="color:red">TODO: add image of where to upload .properties file</span>
 
@@ -64,5 +67,7 @@ Application Authenticity Protection has two available properties:
 
 - `expirationInSec`:
 - `inactivityTimeoutInSec`:
+
+To configure these properties, in the MobileFirst Operations Console navigate to the ... screen.
 
 <span style="color:red">TODO: add image of where to edit the properties</span>
