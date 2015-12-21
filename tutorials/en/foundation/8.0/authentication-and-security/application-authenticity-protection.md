@@ -18,6 +18,9 @@ Application Authenticity Protection is available for:
 
 > <b>Note:</b> Application Authenticity Protection is <b>not available</b> in the MobileFirst Development Server. To test, follow the below instructions in a remote application server, such as a QA, UAT or Production server.
 
+To enable Application Authenticity Protection you can either follow the on-screen instructions in the MobileFirst Operations Console → [your-application] → Authenticity,  
+Or review the information below.
+
 **Jump to:**
 
 - [Authenticity flow](authenticity-flow)
@@ -45,7 +48,7 @@ In order to enable Application Authenticity Protection for your Cordova or Nativ
     java -jar /Users/idanadar/Desktop/mfp-server-authenticity-tool.jar /Users/idanadar/Desktop/MyBankApp.ipa
     ```
 
-    The result of the command above is a `.data` file generated next to the `MyBankApp.ipa` file called `MyBankApp.appAuthenticity.data`.
+    The result of the command above is a `.data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.appAuthenticity.data`.
  
 2. Open the MobileFirst Operations Console in your browser of choice.
 3. Select your application from the left-side pane and click on the Authenticiy menu item.
@@ -56,7 +59,7 @@ After uploading the `.data` file Application Authenticity Protection will be ena
 <span style="color:red">TODO: add image of where to upload .data file</span>
 
 #### Disabling Authenticity
-In order to disable Application Authenticity Protection, remove the previously uploaded `.data` file.
+In order to disable Application Authenticity Protection, click on "Delete Authenticity File".
 
 <span style="color:red">TODO: add image of where to remove .data file</span>
 
