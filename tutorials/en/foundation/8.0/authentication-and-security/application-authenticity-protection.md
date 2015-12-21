@@ -16,10 +16,9 @@ Application Authenticity Protection is available for:
 - Cordova applications (iOS, Android, Windows 8, Windows 10)
 - Native applications (iOS, Android, Windows 8, Windows 10)
 
-> <b>Note:</b> Application Authenticity Protection is <b>not available</b> in the MobileFirst Development Server. To test, follow the below instructions in a remote application server, such as a QA, UAT or Production server.
+<b>Note:</b> Application Authenticity Protection is <b>not available</b> in the MobileFirst Development Server. To test, follow the below instructions in a remote application server, such as a QA, UAT or Production server.
 
-To enable Application Authenticity Protection you can either follow the on-screen instructions in the MobileFirst Operations Console → [your-application] → Authenticity,  
-Or review the information below.
+> To enable Application Authenticity Protection you can either follow the on-screen instructions in the MobileFirst Operations Console → [your-application] → Authenticity, or review the information below.
 
 **Jump to:**
 
