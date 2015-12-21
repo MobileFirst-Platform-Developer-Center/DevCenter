@@ -53,12 +53,12 @@ In order to enable Application Authenticity Protection for your Cordova or Nativ
 
 After uploading the `.data` file Application Authenticity Protection will be enabled for the application.
 
-<span style="color:red">TODO: add image of where to upload .properties file</span>
+<span style="color:red">TODO: add image of where to upload .data file</span>
 
 #### Disabling Authenticity
 In order to disable Application Authenticity Protection, remove the previously uploaded `.data` file.
 
-<span style="color:red">TODO: add image of where to remove .properties file</span>
+<span style="color:red">TODO: add image of where to remove .data file</span>
 
 ## Configuring Authenticity
 Application Authenticity Protection has two available properties:
