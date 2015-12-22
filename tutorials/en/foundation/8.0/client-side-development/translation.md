@@ -124,23 +124,47 @@ The below steps explain the implementation of this tutorial's sample application
     ```
 
 ## Detecting the device locale and language
-It is possible to detect the locale and the language of the device.  
-Use the `WL.App.getDeviceLocale()` and `WL.App.getDeviceLanguage()` functions to detect the locale and language respectively.
+It is possible to detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
+The globalization plug-in is auto-installed when adding a platform to the Cordova plug-in.
+
+Use the `navigator.globalization.getLocaleName` and `navigator.globalization.getPreferredLanguage` functions to detect the locale and language respectively.
 
 ```javascript
-var locale = WL.App.getDeviceLocale();
-var lang = WL.App.getDeviceLanguage();
-WL.Logger.debug(">> Detected locale: " + locale);
-WL.Logger.debug(">> Detected language: " + lang);
+var locale;
+navigator.globalization.getLocaleName(
+	function (localeValue) {
+		locale = "localeValue.value";
+		WL.Logger.debug(">> Detected locale: " + locale);
+		
+        ...
+        ...
+        ...
+	},
+	function() {
+		WL.Logger.debug(">> Unable to detect locale.");
+	}
+);
+
+var lang;
+navigator.globalization.getPreferredLanguage(
+	function (langValue) {
+		lang = langValue.value;
+		WL.Logger.debug(">> Detected language: " + lang);
+	},
+	function() {
+		WL.Logger.debug(">> Unable to detect language.");
+	}
+);
 ```
 
-<span style="color:red">TODO: update image</span>
 ![Get device localle and language](DeviceLocaleLangugae.png)
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
 
 ### Sample usage
-1. Open **Terminal** and navigate to the Cordova project
-2. Add an environment using the `cordova platform add` command
-3. Build and run the Cordova application
+1. Open **Terminal** and navigate to the Cordova project.
+2. Add an environment using the `cordova platform add` command.
+3. Prepare and run the Cordova application using `cordova prepare` followed by `cordova run`.
+
+> Tip: you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.
