@@ -71,8 +71,6 @@ Additional examples for customized Direct Update UI:
 - An alternate HTML file that is presented to the user with options
 - And so on…
 
-<span style="color:red">TODO: Update sample and code snippet below to create a dialog using the Cordova dialog plug-in</span>
-
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
 	// custom text for the dialog
