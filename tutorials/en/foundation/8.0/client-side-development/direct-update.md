@@ -33,6 +33,7 @@ With Direct Update, Cordova applications can be updated "over-the-air" with refr
 - [Disabling old application versions](#disabling-old-application-versions)
 - [Direct Update authenticity](#direct-update-authenticity)
 - [Differential Direct Update](#differential-direct-update)
+- [Sample application](#sample-application)
 
 ## How Direct Update works
 The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on its configuration. The updated web resources are downloaded when necessary.
@@ -147,3 +148,11 @@ Differential Direct Updates enables an application to download only the files th
 **Important:** A differential update is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a full update - meaning that the entire web resources are downloaded and updated.
 
 There is no change in the behaviour of applications that were built with previous versions of IBM MobileFirst Platform Foundation.
+
+## Sample application
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate) the Cordova project.  
+
+### Sample usage
+1. Open **Terminal** and navigate to the Cordova project.
+2. Add a platform using the `cordova platform add` command.
+3. Prepare and run the Cordova application using `cordova prepare` followed by `cordova run`.

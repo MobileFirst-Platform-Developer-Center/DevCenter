@@ -164,7 +164,7 @@ navigator.globalization.getPreferredLanguage(
 
 ### Sample usage
 1. Open **Terminal** and navigate to the Cordova project.
-2. Add an environment using the `cordova platform add` command.
+2. Add a platform using the `cordova platform add` command.
 3. Prepare and run the Cordova application using `cordova prepare` followed by `cordova run`.
 
 > Tip: you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.
