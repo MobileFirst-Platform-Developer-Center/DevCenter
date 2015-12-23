@@ -29,6 +29,7 @@ With Direct Update, Cordova applications can be updated "over-the-air" with refr
 - [How Direct Update works](#how-direct-update-works)
 - [Deploying updated web resources to MobileFirst Server](#deploying-updated-web-resources-to-mobliefirst-server)
 - [User experience](#user-experience)
+- [Customizing the Direct Update UI](#customizing-the-direct-update-ui)
 - [Direct Update in the field](#direct-update-in-the-field)
 - [Disabling old application versions](#disabling-old-application-versions)
 - [Direct Update authenticity](#direct-update-authenticity)
@@ -52,6 +53,74 @@ By default, after a Direct Update is received a dialog is displayed and the user
 
 ![Direct update examples]({{site.baseurl}}/assets/backup/05_05_du_examples.png)
 
+## Customizing the Direct Update UI
+It is possible to override the default UI and/or UX of Direct Update, and create a custom Direct Update behavior altogether.  
+To do so, override the `handleDirectUpdate` function:
+
+```javascript
+wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
+    // custom Direct Update logic
+};
+```
+
+- `directUpdateData` - A JSON object containing the `downloadSize` property that represents the file size (in bytes) of the update package to be downloaded from MobileFirst Server.
+- `directUpdateContext` - A JavaScript object exposing the `.start()` and `.stop()` functions, which start and stop the Direct Update flow.
+
+### Example
+In the example code below, a custom Direct Update dialog is presented for the user to either continue with the update process or dismiss it.  
+Additional examples for customized Direct Update UI:
+
+- A dialog that is created by using a third-party JavaScript framework (such as Dojo or jQuery Mobile, Ionic, ...)
+- Fully native UI by executing a Cordova plug-in
+- An alternate HTML file that is presented to the user with options
+- And so on…
+
+<span style="color:red">TODO: Update sample and code snippet below to create a dialog using the Cordova dialog plug-in</span>
+
+```javascript
+wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
+    // custom WL.SimpleDialog for Direct Update
+    var customDialogTitle = 'Custom Title Text';
+    var customDialogMessage = 'Custom Message Text';
+    var customButtonText1 = 'Update Application';
+    var customButtonText2 = 'Not Now';
+    WL.SimpleDialog.show(customDialogTitle, customDialogMessage,
+        [{
+            text : customButtonText1,
+            handler : function() {
+                directUpdateContext.start();
+            }
+        },
+        {
+            text : customButtonText2,
+            handler : function() {
+                wl_directUpdateChallengeHandler.submitFailure();
+            }
+        }]
+    );
+};
+```
+
+[Custom direct update dialog]({{ site.baseurl }}/assets/backup/05_05_custom_dialog.png)
+
+In the example above, the `submitFailure` API is used to dismiss the Direct Update:
+
+```javascript
+wl_directUpdateChallengeHandler.submitFailure();
+```
+
+As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer.  
+As such, it is important to call `submitFailure()` to notify the MobileFirst framework that the process completed with a "failure". The MobileFirst framework in turn invokes the `onFailure` callback of the invocation that triggered the Direct Update.
+
+Because the update process did not take place, it will occur again the next time it is triggered.
+Optionally, a developer can also supply a Direct Update listener to fully control a Direct Update lifecycle.
+
+```javascript
+directUpdateContext.start(directUpdateCustomListener);
+```
+
+> For more information, see the topic about customizing the direct update interface, in the user documentation.
+
 ## Working with Direct Update in the field
 The diagram below depicts the flow of updating an application's web resources using Direct Update once it has been submitted to the application stores and used by end-users.
 
@@ -67,50 +136,13 @@ From the MobileFirst Operations Console, it is possible to prevent users from us
 <span style="color:red">TODO: Show how to use remote disable in the console</span>
 
 ## Direct Update authenticity
-Enabling Direct Update authenticity prevents a 3rd-party attacker from altering the transmitted web resources from the server to the client application (that is, when it is cached in a content delivery network (CDN)).
+Direct Update authenticity prevents a 3rd-party attacker from altering the transmitted web resources from the server (or if it is stored at a content delivery network (CDN))to the client application.
 
-To enable Direct Update authenticity:  
-<span style="color:red">TODO: write instructions how to enable it</span>
-
-- Generate a certificate and place it in the MobileFirst project in the <code>server\conf</code> folder.
-- Edit the MobileFirst Default Certificate section in <code>server\conf\worklight.properties</code> with the certificate keystore information, for example:
- 
-    ```xml
-    wl.ca.keystore.path=conf/myCert.jks
-    wl.ca.keystore.type=jks
-    wl.ca.keystore.password=myStrongPassword
-    wl.ca.key.alias=certAlias
-    wl.ca.key.alias.password=myCertPassword
-    ```
-
-- Add the certificate public key using the Application Descriptor Design view. To do so:
-    - Right-click the application folder and select **Extract Public Signing Key**.
-    - Follow the on-screen instructions.
-
-    ![Direct update authenticity setup]({{site.baseurl}}/assets/backup/05_05_du_authenticity_setup.png)
- 
-    The public key can then be found in the Application Descriptor Design view:
-
-    ![Public signing key location]({{site.baseurl}}/assets/backup/05_05_public_signing_key.png)
-
-    The public key can also be found in the Application Descriptor Editor view:
-    
-    ```xml 
-    <application>
-        …
-        …
-        …
-        <directUpdateAuthenticityPublicKey>
-            public keystore value
-        </directUpdateAuthenticityPublicKey>
-    </application>
-    ```
+Direct Update authenticity is always-on and uses the certificate stored in the application server's keystore.
 
 **Notes:**
 
-- It is highly suggested to enable Secure Direct Update.
-- Secure Direct Update does not work on already-deployed applications.
-- Secure Direct Update works on applications published with the above configuration.
+- Direct Update authenticity does not work on already-deployed applications. Applications must be re-deployed to the various app stores.
 
 ## Differential Direct Update
 Differential Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.

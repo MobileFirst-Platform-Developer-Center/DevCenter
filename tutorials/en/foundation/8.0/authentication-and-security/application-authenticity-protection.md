@@ -7,10 +7,11 @@ weight: 1
 ---
 ## Overview
 By issuing an HTTP request, any entity can access the HTTP services (APIs) that IBM MobileFirst Platform Foundation Server offers.  
-The Application Authenticity Protection feature ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.
+The Application Authenticity Protection Security Check ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.
 
-<span style="color:red">TODO: Add information about the Security Check</span>
+> [Learn more]("../authentication-concepts/") about Security Checks
 
+#### Availability
 Application Authenticity Protection is available for:
 
 - Cordova applications (iOS, Android, Windows 8, Windows 10)
@@ -63,13 +64,15 @@ In order to disable Application Authenticity Protection, click on "Delete Authen
 <span style="color:red">TODO: add image of where to remove .data file</span>
 
 ## Configuring Authenticity
-Application Authenticity Protection has two available properties:
+Application Authenticity Protection has two available properties.  
+To configure them:
+
+1. Open the MobileFirst Operations Console
+2. Navigate to [your application] → 
 
 <span style="color:red">TODO: add missing property description</span>  
 
 - `expirationInSec`:
 - `inactivityTimeoutInSec`:
-
-To configure these properties, in the MobileFirst Operations Console navigate to the ... screen.
 
 <span style="color:red">TODO: add image of where to edit the properties</span>
