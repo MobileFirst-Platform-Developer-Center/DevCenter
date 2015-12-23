@@ -25,7 +25,6 @@ With Direct Update, Cordova applications can be updated "over-the-air" with refr
 
 **Jump to:**
 
-- [Under the hood](#under-the-hood)
 - [How Direct Update works](#how-direct-update-works)
 - [Deploying updated web resources to MobileFirst Server](#deploying-updated-web-resources-to-mobliefirst-server)
 - [User experience](#user-experience)
@@ -34,9 +33,6 @@ With Direct Update, Cordova applications can be updated "over-the-air" with refr
 - [Disabling old application versions](#disabling-old-application-versions)
 - [Direct Update authenticity](#direct-update-authenticity)
 - [Differential Direct Update](#differential-direct-update)
-
-## Under the Hood
-<span style="color:red">TODO: update with information on direct update's security check.
 
 ## How Direct Update works
 The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on its configuration. The updated web resources are downloaded when necessary.
@@ -79,29 +75,32 @@ Additional examples for customized Direct Update UI:
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
-    // custom WL.SimpleDialog for Direct Update
-    var customDialogTitle = 'Custom Title Text';
-    var customDialogMessage = 'Custom Message Text';
-    var customButtonText1 = 'Update Application';
-    var customButtonText2 = 'Not Now';
-    WL.SimpleDialog.show(customDialogTitle, customDialogMessage,
-        [{
-            text : customButtonText1,
-            handler : function() {
-                directUpdateContext.start();
-            }
-        },
-        {
-            text : customButtonText2,
-            handler : function() {
-                wl_directUpdateChallengeHandler.submitFailure();
-            }
-        }]
-    );
+	// custom text for the dialog
+	var customDialogTitle = 'Custom Title Text';
+	var customDialogMessage = 'Custom Message Text';
+	var customButtonText1 = 'Update Application';
+	var customButtonText2 = 'Not Now';
+
+	// Create dialog
+	navigator.notification.confirm(
+	    'Custom Message Text', 
+	     onClick,
+	    'Custom Title Text',
+	    ['Update','Cancel']
+	);
 };
+
+// Handle dialog buttons
+function onClick(buttonIndex) {
+	if (buttonIndex == 1) {
+		directUpdateContext.start();
+	} else {
+		wl_directUpdateChallengeHandler.submitFailure();
+	}
+}
 ```
 
-[Custom direct update dialog]({{ site.baseurl }}/assets/backup/05_05_custom_dialog.png)
+![Custom direct update dialog]({{ site.baseurl }}/assets/backup/05_05_custom_dialog.png)
 
 In the example above, the `submitFailure` API is used to dismiss the Direct Update:
 
@@ -133,7 +132,7 @@ From the MobileFirst Operations Console, it is possible to prevent users from us
 
 **Clarification:** The Remote Disable feature only prevents users from interacting with MobileFirst Server; that is, it prevents the app from connecting to the server. The application itself is still accessible. Any action in the application that requires server connectivity is blocked.
 
-<span style="color:red">TODO: Show how to use remote disable in the console</span>
+![Remote disable in the MobileFirst Operations Console](remote-disable.png)
 
 ## Direct Update authenticity
 Direct Update authenticity prevents a 3rd-party attacker from altering the transmitted web resources from the server (or if it is stored at a content delivery network (CDN))to the client application.
