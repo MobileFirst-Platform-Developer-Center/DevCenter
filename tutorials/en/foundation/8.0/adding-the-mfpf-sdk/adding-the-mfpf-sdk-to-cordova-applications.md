@@ -36,7 +36,7 @@ The <code>cordova-plugin-mfp-fips</code> plug-in enables FIPS related features. 
 **Pre-requisites:** MobileFirst CLI and Apache Cordova CLI installed on the developer workstation.  
 Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
-**Jump to:**
+#### Jump to:
 
 - [Adding the MobileFirst Cordova Plug-in](#adding-the-mobilefirst-cordova-plug-in)
 - [Registering the Cordova app in MobileFirst Server](#registering-the-cordova-app-in-mobilefirstserver)

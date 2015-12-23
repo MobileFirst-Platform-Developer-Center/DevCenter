@@ -15,7 +15,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Grad
 **Pre-requisites:** Android Studio and MobileFirst CLI installed on the developer workstation.  
 Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
-**Jump to:**
+#### Jump to:
 
 - [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)

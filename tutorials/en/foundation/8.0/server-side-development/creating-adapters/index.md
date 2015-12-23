@@ -12,7 +12,7 @@ The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://
 
 **Prerequisite:**  Make sure that you read the [Adapters Overview](../adapters-overview) tutorial first.</span>
 
-###Jump To:
+#### Jump to:
 * [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
  * [Install Maven](#install-maven)
  * [Create an Adapter](#create-an-adapter)

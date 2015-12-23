@@ -17,7 +17,7 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 * Make sure to read the [Java Adapters](../) tutorial first.
 * This tutorial assumes knowledge of SQL.
 
-### Jump To:
+#### Jump to:
 
 * [Setting up the data source](#setting-up-the-data-source)
 * [UserAdapterApplication](#useradapterapplication)

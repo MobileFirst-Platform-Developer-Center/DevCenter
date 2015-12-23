@@ -21,7 +21,7 @@ Application Authenticity Protection is available for:
 
 > To enable Application Authenticity Protection you can either follow the on-screen instructions in the MobileFirst Operations Console → [your-application] → Authenticity, or review the information below.
 
-**Jump to:**
+#### Jump to:
 
 - [Authenticity flow](authenticity-flow)
 - [Enabling authenticity](enabling-authenticity)

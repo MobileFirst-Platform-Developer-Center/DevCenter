@@ -8,7 +8,7 @@ weight: 12
 This tutorial explores various approaches to debugging the web resources of Cordova application,  
 Either before running the application on a device or while running it on a device.
 
-**Jump to:**
+#### Jump to:
 
 * [What is debugging?](#what-is-debugging)
 * [Debugging on a desktop browser](#debugging-on-a-desktop-browser)
