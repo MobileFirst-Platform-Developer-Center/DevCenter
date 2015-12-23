@@ -3,6 +3,9 @@ layout: tutorial
 title: Using Direct Update to quickly update your application
 relevantTo: [cordova]
 weight: 11
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 ## Overview
 With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources.
@@ -150,7 +153,7 @@ Differential Direct Updates enables an application to download only the files th
 There is no change in the behaviour of applications that were built with previous versions of IBM MobileFirst Platform Foundation.
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate) the Cordova project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the Cordova project.  
 
 ### Sample usage
 1. Open **Terminal** and navigate to the Cordova project.
