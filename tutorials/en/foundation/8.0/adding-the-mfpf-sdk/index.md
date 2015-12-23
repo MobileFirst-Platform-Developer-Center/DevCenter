@@ -9,4 +9,4 @@ print_pdf: false
 The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
 
 Learn in the following tutorials how to integrate the SDK into your application.  
-To continue, select a tutorial:</p>
+To continue, select a tutorial:
