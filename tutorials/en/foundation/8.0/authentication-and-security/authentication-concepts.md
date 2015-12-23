@@ -12,20 +12,9 @@ The [OAuth 2.0](http://oauth.net/) protocol is based on the acquisition of an ac
 
 This tutorial covers the following topics:
 
-*   [Authorization flow](#authorization-flow)
-*   [Authorization entities](#authEntities)
-  * SecurityCheck
-    * securityCheckDefinition
-    * SecurityCheck implementation
-    * SecurityCheckConfiguration
-    * Built-in Security Checks
-  * Scope
-  * Scope Token
-  * Challenge Handler
+* [Authorization flow](#authorization-flow)
+* [Authorization entities](#authEntities)
 * Protecting resources
-  * Java adapters
-  * JavaScript adapters
-  * External resources
 * Configuring Authentication from the MobileFirst Console
 * Further reading
 
@@ -134,19 +123,44 @@ TODO
 TODO
 
 #### Built-in Security Checks
-List here some of the out-of-the-box security features such as authenticity, direct update, etc. Probably link to the relevant tutorial.
+TODO List here some of the out-of-the-box security features such as authenticity, direct update, etc. Probably link to the relevant tutorial.
 
 ### Scope
+A **scope** is a space-separated list of **Scope Elements**. A scope is used to protect a resource (see later).
 
-### Scope Token
+### Scope Element
+By default, the scope elements you write in your *scope* are matched to a **SecurityCheck** with the same name.
+
+Optionally, at the application level, you can also map a **scope element** to a different SecurityCheck. Specifically, you can map it to a list of zero or more SecurityChecks. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
 
 ## Protecting resources
 
 ### Java adapters
+You can specify the `scope` of a Java adapter by using the `@OAuthSecurity` annotation.
+```java
+@DELETE
+@Path("/{userId}")
+@OAuthSecurity(scope="deletePower")
+//This will serve: DELETE /users/{userId}
+public void deleteUser(@PathParam("userId") String userId){
+    ...
+}
+```
+In this example, the `deleteUser` procedure uses the annotation `@OAuthSecurity(scope="deletePower")`, which means that it is protected by a **scope** containing the **scope element** `deletePower`.
+
+A scope can be made of several **scope elements**, space-separated: `@OAuthSecurity(scope="element1 element2 element3")`.
+
+If you do not specify the `@OAuthSecurity` annotation, the procedure is protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security test protecting the application also applies here.
+
+If you want to disable MobileFirst default security, you can use: `@OAuthSecurity(enabled=false)`.
+
+You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
 
 ### JavaScript adapters
+TODO
 
 ### External resources
+TODO
 
 ## Configuring Authentication from the MobileFirst Console
 
