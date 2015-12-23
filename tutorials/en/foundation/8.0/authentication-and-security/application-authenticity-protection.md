@@ -61,11 +61,8 @@ In order to disable Application Authenticity Protection, click the "Delete Authe
 <span style="color:red">TODO: add image of where to remove .data file</span>
 
 ## Configuring Authenticity
-The Application Authenticity Protection Security Check has two properties that are applicable to it.  
-To configure them:
-
-1. Open the MobileFirst Operations Console
-2. Navigate to [your application] → ???
+The Application Authenticity Protection Security Check has two available properties.  
+To configure, load the MobileFirst Operations Console and navigate to [your application] → Security → ???
 
 - `expirationInSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
 - `inactivityTimeoutInSec`: Defaults to 0 seconds / no inactivity timeout. Defines the duration of inactivity that if met, will force token expiration.
