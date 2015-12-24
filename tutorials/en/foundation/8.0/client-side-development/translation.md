@@ -130,11 +130,9 @@ The globalization plug-in is auto-installed when adding a platform to the Cordov
 Use the `navigator.globalization.getLocaleName` and `navigator.globalization.getPreferredLanguage` functions to detect the locale and language respectively.
 
 ```javascript
-var locale;
 navigator.globalization.getLocaleName(
 	function (localeValue) {
-		locale = "localeValue.value";
-		WL.Logger.debug(">> Detected locale: " + locale);
+		WL.Logger.debug(">> Detected locale: " + localeValue);
 		
         ...
         ...
@@ -145,7 +143,6 @@ navigator.globalization.getLocaleName(
 	}
 );
 
-var lang;
 navigator.globalization.getPreferredLanguage(
 	function (langValue) {
 		lang = langValue.value;
