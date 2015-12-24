@@ -56,26 +56,25 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 
 ### [Server-side Development](../server-side-development/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.  
-<span style="color:red">IN PROGRESS</span>
 
-* [Adapters overview](../server-side-development/adapters-overview/)
-* [Creating Java and JavaScript adapters](../server-side-development/creating-adapters/)
-    * [JavaScript adapters](../server-side-development/creating-adapters/javascript-adapters/)
-        * [JavaScript HTTP Adapter](../server-side-development/creating-adapters/javascript-adapters/js-http-adapter/)
-        * [JavaScript SQL Adapter](../server-side-development/creating-adapters/javascript-adapters/js-sql-adapter/)
-    * [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
-        * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
-        * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
-* Resource request in Adapters
+* <span style="color:red">IN PROGRESS</span> [Adapters overview](../server-side-development/adapters-overview/)
+* <span style="color:red">IN PROGRESS</span> [Creating Java and JavaScript adapters](../server-side-development/creating-adapters/)
+* <span style="color:red">IN PROGRESS</span> [JavaScript adapters](../server-side-development/creating-adapters/javascript-adapters/)
+    * [JavaScript HTTP Adapter](../server-side-development/creating-adapters/javascript-adapters/js-http-adapter/)
+    * [JavaScript SQL Adapter](../server-side-development/creating-adapters/javascript-adapters/js-sql-adapter/)
+* <span style="color:red">IN PROGRESS</span> [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
+    * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
+    * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
+* <span style="color:red">IN PROGRESS</span> Resource request in Adapters
     * [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
     * [Resource request from iOS Swift-based applications](../server-side-development/resource-request-from-native-ios-swift-applications/)
     * [Resource request from iOS Objective C-based applications](../server-side-development/resource-request-from-native-ios-applications/)
     * [Resource request from Android applications](../server-side-development/resource-request-from-native-android-applications/)
     * [Resource request from Windows 8 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
     * [Resource request from Windows 10 UWP applications](../server-side-development/resource-request-from-native-windows-10-applications/)
-* [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
-* [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
-* [Debugging adapters](../server-side-development/debugging-adapters/)
+* <span style="color:red">TODO</span> [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
+* <span style="color:red">TODO</span> [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
+* <span style="color:red">IN PROGRESS</span> [Debugging adapters](../server-side-development/debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
 Protect your applications and adapter procedures against unauthorized access by using authentication, login modules, and device provisioning.  
@@ -103,20 +102,10 @@ Protect your applications and adapter procedures against unauthorized access by 
 
 ### [Notifications](../notifications/)
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.  
-<span style="color:red">TODO: everything</span>
 
-* [Push Notifications Overview](../notifications/push-notifications-overview/)
-* [Push notifications in Cordova applications](../notifications/push-notifications-in-cordova-applications/)
-    * [Tag and Broadcast Notifications](../notifications/push-notifications-in-cordova-applications/tag-based/)
-* [Push notifications in native iOS applications](../notifications/push-notifications-in-native-ios-applications/)
-	* [Tag and Broadcast Notifications Applications](../notifications/push-notifications-in-native-ios-applications/tag-based/)
-	* [Interactive and Silent  Notifications](../notifications/push-notifications-in-native-ios-applications/interactive-and-silent/)
-* [Push notifications in native Android applications](../notifications/push-notifications-in-native-android-applications/)
-	* [Tag and Broadcast  Notifications](../notifications/push-notifications-in-native-android-applications/tag-based/)
-* [Push notifications in native Windows 8 Universal applications](../notifications/push-notifications-in-native-windows-8-applications/)
-	* [Tag and Broadcast  Notifications](../notifications/push-notifications-in-native-windows-8-applications/tag-based/)
-* [Push notifications in native Windows 10 UWP applications](../notifications/push-notifications-in-native-windows-10-applications/)
-    * [Tag and Broadcast  Notifications](../notifications/push-notifications-in-native-windows-10-applications/tag-based/)
+* <span style="color:red">TODO </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
+* <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
+* <span style="color:red">TODO </span>[Handling Push Notifications](../notifications/handling-push-notifications/)
 
 ### [Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage and more.  
