@@ -40,18 +40,18 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 
 * [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
 * <span style="color:red">TODO: </span>[Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
-* Native UI elements in Cordova applications
-    * <span style="color:red">TODO: </span>[Native UI elements in Cordova iOS applications](../client-side-development/native-ui-elements-in-cordova-ios-applications/)
-    * <span style="color:red">TODO: </span>[Native UI elements in Cordova Android applications](../client-side-development/native-ui-elements-in-cordova-android-applications/)
-    * <span style="color:red">TODO: </span>[Native UI elements in Cordova Windows 8 Universal applications](../client-side-development/native-ui-elements-in-cordova-windows-8-applications/)
-    * <span style="color:red">TODO: </span>[Native UI elements in Cordova Windows 10 UWP applications](../client-side-development/native-ui-elements-in-cordova-windows-10-applications/)
+* <span style="color:red">TODO: </span>Native UI elements in Cordova applications
+    * [Native UI elements in Cordova iOS applications](../client-side-development/native-ui-elements-in-cordova-ios-applications/)
+    * [Native UI elements in Cordova Android applications](../client-side-development/native-ui-elements-in-cordova-android-applications/)
+    * [Native UI elements in Cordova Windows 8 Universal applications](../client-side-development/native-ui-elements-in-cordova-windows-8-applications/)
+    * [Native UI elements in Cordova Windows 10 UWP applications](../client-side-development/native-ui-elements-in-cordova-windows-10-applications/)
 * <span style="color:red">IN PROGRESS </span>[JSONStore](../client-side-development/jsonstore/)
-    * <span style="color:red">IN PROGRESS </span>[JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
-	* <span style="color:red">IN PROGRESS </span>[JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
-	* <span style="color:red">IN PROGRESS </span>[JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
+    * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
+	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
+	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
 * <span style="color:red">TODO: </span>[Integrating server-generated pages in Cordova applications](../client-side-development/integrating-server-generated-pages-in-cordova-applications/)
-* <span style="color:red">IN PROGRESS</span> [Using Direct Update to Quickly Update Your Application](../client-side-development/direct-update/)
-* <span style="color:red">IN PROGRESS</span> [Translation](../client-side-development/translation/)
+* <span style="color:red">IN PROGRESS </span>[Using Direct Update to Quickly Update Your Application](../client-side-development/direct-update/)
+* <span style="color:red">IN PROGRESS </span>[Translation](../client-side-development/translation/)
 * [Debugging applications](../client-side-development/debugging-applications/)
 
 ### [Server-side Development](../server-side-development/)
@@ -82,17 +82,17 @@ Protect your applications and adapter procedures against unauthorized access by 
 * <span style="color:red">IN PROGRESS </span>[Authentication concepts](../authentication-and-security/authentication-concepts/)
 * <span style="color:red">TODO: </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
 * <span style="color:red">TODO: </span>[Implementing SecurityCheckWithAttempts](../authentication-and-security/implementing-securitycheckwithattempts/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithAttempts in Cordova applications applications](../authentication-and-security/implementing-securitycheckwithattempts/cordova/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithAttempts in iOS applications](../authentication-and-security/implementing-securitycheckwithattempts/ios/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithAttempts in Android applications](../authentication-and-security/implementing-securitycheckwithattempts/android/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithAttempts in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithattempts/windows-8/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithAttempts in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithattempts/windows-10/)
+    * [SecurityCheckWithAttempts in Cordova applications applications](../authentication-and-security/implementing-securitycheckwithattempts/cordova/)
+    * [SecurityCheckWithAttempts in iOS applications](../authentication-and-security/implementing-securitycheckwithattempts/ios/)
+    * [SecurityCheckWithAttempts in Android applications](../authentication-and-security/implementing-securitycheckwithattempts/android/)
+    * [SecurityCheckWithAttempts in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithattempts/windows-8/)
+    * [SecurityCheckWithAttempts in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithattempts/windows-10/)
 * <span style="color:red">TODO: </span>[Implementing SecurityCheckWithUserAuthentication](../authentication-and-security/implementing-securitycheckwithuserauthentication/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithUserAuthentication in Cordova  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/cordova/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithUserAuthentication in iOS  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/ios/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithUserAuthentication in Android  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/android/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithUserAuthentication in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-8/)
-    * <span style="color:red">TODO: </span>[SecurityCheckWithUserAuthentication in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-10/)
+    * [SecurityCheckWithUserAuthentication in Cordova  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/cordova/)
+    * [SecurityCheckWithUserAuthentication in iOS  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/ios/)
+    * [SecurityCheckWithUserAuthentication in Android  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/android/)
+    * [SecurityCheckWithUserAuthentication in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-8/)
+    * [SecurityCheckWithUserAuthentication in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-10/)
 * <span style="color:red">IN PROGRESS </span>[Application Authenticity Protection](../authentication-and-security/application-authenticity-protection/)
 * <span style="color:red">TODO: </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
 * <span style="color:red">TODO: </span>[WebSphere LTPA-based authentication](../authentication-and-security/websphere-ltpa-based-authentication/)
@@ -106,33 +106,35 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
 * <span style="color:red">TODO </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
 * <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
 * <span style="color:red">TODO </span>[Handling Push Notifications](../notifications/handling-push-notifications/)
+    * [Handling Push Notifications in Cordova applications](../notifications/cordova/)
+    * [Handling Push Notifications in iOS applications](../notifications/handling-push-notifications/ios/)
+    * [Handling Push Notifications in Android applications](../notifications/handling-push-notifications/android/)
+    * [Handling Push Notifications in Windows 8 Universal applications](../notifications/handling-push-notifications/windows-8/)
+    * [Handling Push Notifications in Windows 10 UWP applications](../notifications/handling-push-notifications/windows-10/)
 
 ### [Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage and more.  
-<span style="color:red">IN PROGRESS</span>
 
-* [Operational Analytics](../analytics/operational-analytics/)
-* [Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
+* <span style="color:red">TODO </span>[Operational Analytics](../analytics/operational-analytics/)
+* <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
     * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-native-android/)
     * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-native-ios/)
     * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/)
-* [Reports and analytics](../analytics/reports-analytics/)
+* <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
 
 ### [Moving to production](../moving-to-production/)
 Move the apps that you create from your development environment to the production environment.  
-<span style="color:red">TODO: everything</span>
 
-* [Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
-* [Distributing mobile applications with Application Center](../moving-to-production/distributing-mobile-applications-with-application-center/)
+* <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
+* <span style="color:red">TODO </span>[Distributing mobile applications with Application Center](../moving-to-production/distributing-mobile-applications-with-application-center/)
 
 ### [IBM Containers](../ibm-containers/)
 Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.  
-<span style="color:red">TODO: everything</span>
 
-* [Overview](../ibm-containers/)
-* [Evaluate](../ibm-containers/evaluate/)
-* [Run](../ibm-containers/run/)
-* [Sample application](../ibm-containers/sample-app/)
+* <span style="color:red">TODO </span>[Overview](../ibm-containers/)
+* <span style="color:red">TODO </span>[Evaluate](../ibm-containers/evaluate/)
+* <span style="color:red">TODO </span>[Run](../ibm-containers/run/)
+* <span style="color:red">TODO </span>[Sample application](../ibm-containers/sample-app/)
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.  
@@ -145,9 +147,8 @@ Add testing capabilities to your application.
 
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.  
-<span style="color:red">TODO: everything</span>
 
-* [Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
+* <span style="color:red">TODO </span>[Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
     * [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
 	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
 
