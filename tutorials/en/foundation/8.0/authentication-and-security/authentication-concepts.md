@@ -99,6 +99,7 @@ public abstract class SecurityCheckWithUserAuthentication extends SecurityCheckW
 ```
 
 `SecurityCheckWithAuthenticationConfig` enables a property called `rememberMeDurationSec`.
+
 ```java
 public class SecurityCheckWithAuthenticationConfig extends SecurityCheckWithAttemptsConfig {
 
