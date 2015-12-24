@@ -7,10 +7,11 @@ weight: 1
 ---
 
 ## Overview
+The MobileFirst Platform Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token which encapsulates the authorization header that is granted to the client.  
 
-The [OAuth 2.0](http://oauth.net/) protocol is based on the acquisition of an access token, which encapsulates the authorization that is granted to the client. In that context, IBM MobileFirst Platform Server serves as an authorization server and is able to generate such tokens. The client can then use these tokens to access resources on a resource server, which can be either MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. This separation between resource server and authorization server in the new OAuth-based model allows you to enforce MobileFirst security on resources that are running outside MobileFirst Server.
+In that context, IBM MobileFirst Platform Server serves as an **authorization server** and is able to **generate access tokens**. The client can then use these tokens to access resources on a resource server, which can be either the MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows to enforce security on resources that are running outside MobileFirst Server.
 
-This tutorial covers the following topics:
+#### Jump to:
 
 * [Authorization flow](#authorization-flow)
 * [Authorization entities](#authEntities)
@@ -18,44 +19,38 @@ This tutorial covers the following topics:
 * Configuring Authentication from the MobileFirst Console
 * Further reading
 
-
-
 ## Authorization flow
+The authorization flow has two phases:
 
-The new MobileFirst end-to-end authorization flow has two phases: the client acquires the token and then uses it to access a protected resource.
+1. The client acquires a token.
+2. The client uses the token to access a protected resource.
 
 ### Acquiring a token
-
-In this phase, the client undergoes security checks in order to receive an access token. These security checks use authorization entities, which are described in [the next section](#authEntities).  
+In this phase, the client undergoes security checks in order to receive an access token. These security checks use **authorization entities**, which are described in [the next section](#authEntities).  
 ![Obtain Token]({{ site.baseurl }}/assets/backup/MFP_Security_obtain_token.jpg)
 
 ### Using a token to access a protected resource
-
-It is possible to enforce MobileFirst security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/ "Using the MobileFirst Server to authenticate external resources").
+It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
 
 ![Protect Resources]({{ site.baseurl }}/assets/backup/MFP_Security_protect_MFP_resources.jpg)
 
 ## Authorization entities
-You can protect resources such as adapters from unauthorized access by specifying a **scope** or **scope token** that contains zero or more **SecurityCheck**.
+- You can protect resources such as adapters from unauthorized access by specifying a **scope** that contains zero or more **scope elements**.
 
-A **SecurityCheck** defines the process to be used to authenticate users. It is often associated with a **SecurityCheckConfiguration** that defines properties to be used by the SecurityCheck.
+- A **SecurityCheck** defines the process to be used to authenticate users. It is often associated with a **SecurityCheckConfiguration** that defines properties to be used by the SecurityCheck. SecurityChecks are instantiated by **Security Adapters**. The same SecurityCheck can be used to protect several resources.
 
-SecurityChecks are instantiated by **Security Adapters**.
-
-The same SecurityCheck can be used to protect several resources.
-
-The client application needs to implement a **challenge handler** to handle challenges sent by the SecurityCheck.
+- The client application needs to implement a **challenge handler** to handle challenges sent by the SecurityCheck.
 
 ### SecurityCheck
-A **SecurityCheck** is an object responsible for obtaining credentials from a client and validate them.
+A SecurityCheck is an object responsible for obtaining credentials from a client and validate them.
 
 #### securityCheckDefinition
-Security checks are defined inside adapters. Any adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources, content, to send to the client), a *SecurityCheck* adapter, or **both**. However it is recommended to define your *SecurityCheck* in a separate adapter.
+Security checks are defined inside adapters. Any adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**. However it is recommended to define the SecurityCheck in a separate adapter.
 
-In your **adapter.xml**, add an XML element called `securityCheckDefinition`. For example:
+In your **adapter.xml** file add an XML element called `securityCheckDefinition`. For example:
 
 ```xml
-<securityCheckDefinition name="otp" class="com.ibm.mfp.OTPSecurityCheck">
+<securityCheckDefinition name="sample" class="com.ibm.mfp.sampleSecurityCheck">
     <property name="successExpirationSec" defaultValue="60"/>
     <property name="failureExpirationSec" defaultValue="60"/>
     <property name="maxAttempts" defaultValue="3"/>
@@ -67,8 +62,7 @@ In your **adapter.xml**, add an XML element called `securityCheckDefinition`. Fo
 - Some SecurityChecks can be configured with a list of `property` elements.
 
 #### SecurityCheck implementation
-
-The class file of your SecurityCheck is where all of the logic happens. Your implementation should extend one of the provided base classes.
+The class file of your SecurityCheck is where all of the logic happens. Your implementation should extend one of the provided base classes, below.  
 The parent class you choose will determine the balance between customization and simplicity.
 
 ##### `SecurityCheckWithUserAuthentication`
@@ -117,6 +111,7 @@ Those properties can be configured at several levels:
 
 ##### adapter.xml
 TODO
+
 ##### application xml?
 TODO
 
@@ -124,10 +119,14 @@ TODO
 TODO
 
 #### Built-in Security Checks
-TODO List here some of the out-of-the-box security features such as authenticity, direct update, etc. Probably link to the relevant tutorial.
+Also available are these out-of-the-box security checks:
+
+- [Application Authenticity Protection](../application-authenticity-protection/)
+- [Direct Update](../../client-side-development/direct-update)
+- [LTPA](../websphere-ltpa-based-authentication/)
 
 ### Scope
-A **scope** is a space-separated list of **Scope Elements**. A scope is used to protect a resource (see later).
+A **scope** is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
 
 ### Scope Element
 By default, the scope elements you write in your *scope* are matched to a **SecurityCheck** with the same name.
@@ -138,6 +137,7 @@ Optionally, at the application level, you can also map a **scope element** to a 
 
 ### Java adapters
 You can specify the `scope` of a Java adapter by using the `@OAuthSecurity` annotation.
+
 ```java
 @DELETE
 @Path("/{userId}")
