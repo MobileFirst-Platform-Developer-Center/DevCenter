@@ -20,7 +20,7 @@ You can use IBM MobileFirst Platform adapters to communicate with a remote Cloud
 
 This tutorial assumes that you are comfortable with adapters. See [JavaScript HTTP Adapter](../creating-adapters/javascript-adapters/js-http-adapter) or [Java Adapters](../creating-adapters/java-adapters)
 
-## Jump To:
+#### Jump to:
 * [JavaScript HTTP adapter](#javascript-http-adapter)
 * [Java adapters](#java-adapters)
 * [Sample application](#sample-application)

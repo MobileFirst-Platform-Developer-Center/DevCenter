@@ -8,7 +8,7 @@ weight: 1
 ## Overview
 This tutorial covers the basics of the IBM MobileFirst Platfrom Foundation development environment and tools.
 
-**Jump to**
+#### Jump to:
 
 - [MobileFirst CLI](#mobilefirst-cli)
 - [MobileFirst Operations Console](#mobilefirst-operations-console)

@@ -12,7 +12,7 @@ downloads:
 You can use the IBM MobileFirst Platform Foundation framework to add multilingual translation of Cordova applications into other languages.  
 Items that can be translated are application strings and system messages. 
 
-**Jump to:**
+#### Jump to:
 
 * [Translating application strings](#translating-application-strings)
 * [Translating system messages](#translating-system-messages)
@@ -163,7 +163,7 @@ navigator.globalization.getPreferredLanguage(
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
 
 ### Sample usage
-1. Open **Terminal** and navigate to the Cordova project.
+1. From the command line, navigate to the Cordova project.
 2. Add a platform using the `cordova platform add` command.
 3. Prepare and run the Cordova application using `cordova prepare` followed by `cordova run`.
 

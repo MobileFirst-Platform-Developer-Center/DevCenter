@@ -15,7 +15,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Coco
 **Pre-requisites:** Xcode and MobileFirst CLI installed on the developer workstation.  
 Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
-**Jump to:**
+#### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
