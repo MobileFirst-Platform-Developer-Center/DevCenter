@@ -20,11 +20,11 @@
                 "name": "Server-side development",
                 "path": "/server-side-development"
             }, {
-                "name": "Notifications",
-                "path": "/notifications"
-            }, {
                 "name": "Authentication and security",
                 "path": "/authentication-and-security"
+            }, {
+                "name": "Notifications",
+                "path": "/notifications"
             }, {
                 "name": "Analytics",
                 "path": "/analytics"
