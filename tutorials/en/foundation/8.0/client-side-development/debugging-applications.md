@@ -13,6 +13,7 @@ Either before running the application on a device or while running it on a devic
 * [What is debugging?](#what-is-debugging)
 * [Debugging on a desktop browser](#debugging-on-a-desktop-browser)
 * [Debugging with the Mobile Browser Simulator](#debugging-with-the-mobile-browser-simulator)
+* [Debugging with Ripple](#debugging-with-ripple)
 * [Debugging with iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
 * [Debugging with Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
 * [Debugging with Weinre](#debugging-with-weinre)
@@ -57,6 +58,11 @@ mfpdev app preview -p <platform>
 ```
 
 > Learn more about the MobileFirst CLI in the [Using CLI to manage MobileFirst artifacts](../using-cli-to-manage-mobilefirst-artifacts) tutorial.
+
+### Debugging with Ripple
+Ripple is a web based mobile environment simulator designed to enable rapid development of mobile web applications for various web application frameworks, such as Apache Cordova and BlackBerry WebWorks™. It lets you run a Cordova application in your browser and fake various Cordova features. For example, it lets you simulate the accelerometer to test shake events. It can fake the camera API by letting you select a picture from your hard drive.  
+More information about how to install and use Apache Ripple™ can be found on the [Apache Ripple page](http://ripple.incubator.apache.org/).
+
 
 ### Debugging with iOS Remote Web Inspector
 Starting in iOS 6 Apple introduced a remote [Web Inspector](https://developer.apple.com/safari/tools/) for debugging web applications on iOS devices. To debug, make sure that the device (or simulator) has the **Private Browsing** option turned off.  
