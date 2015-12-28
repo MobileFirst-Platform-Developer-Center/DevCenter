@@ -6,74 +6,85 @@ relevantTo: [windows8]
 weight: 4
 ---
 ## Overview
+The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
 
-To serve a native Windows 8 Universal application, MobileFirst Server must be aware of it. For this purpose, IBM MobileFirst Platform Foundation provides a Native API library, which contains a set of APIs and configuration files.
+> For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
-This tutorial explains how to generate the Windows 8 Universal Native API and how to integrate it with a native Windows Universal application. These steps are necessary for you to be able to use it later on for tasks such as connecting to MobileFirst Server, invoking adapter procedures, implementing authentication methods, and so on.
+In this tutorial you will learn how to add the MobileFirst Native SDK using Nuget to either a new or existing Windows 8 Universal application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
 
-**Prerequisite:** Developers are expected to be proficient with Microsoft developer tools.
+**Pre-requisites:** Microsoft Visual Studio 2013 or 2015 and MobileFirst CLI installed on the developer workstation.  
+Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
-## Creating a MobileFirst native API
+#### Jump to:
 
-### CLI
+- [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
+- [Tutorials to follow next](#tutorials-to-follow-next)
 
-1.[Using CLI](../../advanced-client-side-development/using-cli-create-build-manage-project-artifacts/) create a new MobileFirst project:
+### Adding the MobileFirst Native SDK
 
-``````bash
-$ mfp create HelloWorldNative</code>
-``````
+Before starting, make sure the MobileFirst Server is running.  
+From **Terminal** run the command:
 
-2.Go to the newly created project directory:
-`````bash
-$ cd HelloWorldNative
-`````
-3.Add a new Windows Universal native API:
-`````bash
-$ mfp add api Win8HelloWorld -e windows8
-`````
-4.Navigate into the native API folder and run the command:
-`````bash
-$ mfp push
-`````
-** Note:**
-This action is required for MobileFirst Server to recognize the application if it attempts to connect.
+```bash
+mfpdev server start
+```
 
-## Manually adding the MobileFirst Native SDK
+Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Xcode project.
 
-To import worklight studio packages, NuGet package manager is used.
+1. Create a Windows 8 Universal project using Visual Studio 2013/2015 or use an existing project.  
+
+2. Open **Terminal** and navigate to the root of the Xcode project.  
+
+3. Run the command:
+
+    ```bash
+    mfpdev app register
+    ```
+
+    The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>mfpclient.plist</code> file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.
+
+    > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
+        2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
+        3. After successfully registering your application you can optionally download a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK.
+
+4. Run the command:
+
+    ```bash
+    mfpdev app pull
+    ```
+    The <code>mfpdev app pull</code> CLI command creates the **mobilefirst** folder at the root of the Xcode project and downloads into it the <code>application-descriptor.json</code> file, containing application configuration data.
+
+    These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
+
+    > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
+
+5. To import worklight studio packages, NuGet package manager is used.
 NuGet is the package manager for the Microsoft development platform including .NET. The NuGet client tools provide the ability to produce and consume packages. The NuGet Gallery is the central package repository used by all package authors and consumers.
 
-Follow the instructions to manually add MobileFirst native SDK to
-an existing or new Windows 8 Univeral application.
+6. Open the Windows 8 Universal project in Visual studio 2013/2015. Right click the project solution and navigate -> Manage Nuget packages for solution.
 
-1.
-Create a Windows 8 Universal project using Visual Studio 2013/2015 or use an existing project.
+7. In the search option , search for IBM MobileFirst Platform. Choose IBM.MobileFirstPlatform.8.0.0.0.
 
-2.
-Right click the project solution and navigate -> Manage Nuget packages for solution.
-
-3.
-In the search option , search for IBM MobileFirst Platform. Choose IBM.MobileFirstPlatform.8.0.0.0.
-
-4.
-Click Install. This installs the IBM MobileFirstPlatform Native SDK and its dependencies.
+8. Click Install. This installs the IBM MobileFirstPlatform Native SDK and its dependencies.
 
 Alternatively,
 
-Browse to https://www.nuget.org/packages
+Browse to [https://www.nuget.org/packages](https://www.nuget.org/packages)
 
 - Search for IBM MobileFirstPlatform SDK
 
 - Download IBM.MobileFirstPlatform.8.0.0.0.nupkg to your filesystem.
-- Open Visual Studio 2013/2015. Click on Tools -> NuGet Package Manager -> Package Manager Settings.
-Select Package Sources
-Click Add (+)
+- Open the Windows 8 Universal project in Visual Studio 2013/2015. Click on Tools -> NuGet Package Manager -> Package Manager Settings.
+- Select Package Sources
+- Click Add (+)
 Give some name to your package and choose the path to your .nupkg file and click update.
 Close the dialog. 	
 
-- In Solution explorer, right click on the Solution| Manage NuGet Packages for Solution...
-Select the source you created in Step 1 or search for IBM MobileFirst Platform in search tab
-Choose IBM MobileFirst Platform
+- In Solution explorer, right click the solution and choose  "Manage NuGet Packages for Solution".
+Select the source you created in the previous step or search for IBM MobileFirst Platform in search tab.
+Choose "IBM MobileFirst Platform".
 
 - Click on Install
 
