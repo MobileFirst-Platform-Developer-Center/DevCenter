@@ -2,6 +2,9 @@
 title: Welcome to the New Developer Center
 date: 2015-12-06
 pinned: true
+tags:
+- MobileFirst_Platform
+- Developer_Center
 author:
   display_name: Idan Adar
 ---

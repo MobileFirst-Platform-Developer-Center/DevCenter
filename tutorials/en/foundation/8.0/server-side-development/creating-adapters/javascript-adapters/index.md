@@ -5,7 +5,8 @@ show_children: true
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 ---
 ### Overview
-JavaScript adapters provide templates for connection to various back-ends, such as HTTP, SQL, <span style="color:red">Cast Iron, JMS, SAP JCo and SAP Netweaver</span>.  
+JavaScript adapters provide templates for connection to HTTP and SQL back-ends. It provides a set of services, called procedures and mobile apps can call these procedures by issuing AJAX requests.
+
 
 **Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../) tutorial first.
 

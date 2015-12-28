@@ -7,6 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresAndroid
+weight: 4
 ---
 <span style = "color:red">RENAMING</span>
 

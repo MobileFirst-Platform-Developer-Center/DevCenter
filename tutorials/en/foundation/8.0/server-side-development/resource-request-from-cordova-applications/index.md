@@ -3,8 +3,9 @@ layout: tutorial
 title: Resource Request from Hybrid Client Applications
 relevantTo: [cordova]
 downloads:
-  - name: Download Mobile project
+  - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures
+weight: 3
 ---
 <span style = "color:red">RENAMING</span>
 

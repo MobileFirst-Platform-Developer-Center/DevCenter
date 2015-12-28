@@ -34,7 +34,7 @@ In our case: `com.sample.adapter.JavaAdapterApplication`.
 </wl:adapter>
 ```
 
-Note that the connection policy type is `NullConnectionPolicy`, which means that the XML configuration file is not used to define the connectivity of the adapter. In Java adapters, this is the only allowed connectivity type. The MobileFirst Server leaves setting up the connectivity policy to the developer of the adapter. For example, an adapter can contain code that uses an Apache HTTP client to connect to a back-end system.  
+Note that the connection policy type is `NullConnectionPolicy`, which means that the XML configuration file is not used to define the connectivity of the adapter. In Java adapters, this is the only allowed connectivity type. <span style="color:red">The MobileFirst Server leaves setting up the connectivity policy to the developer of the adapter. For example, an adapter can contain code that uses an Apache HTTP client to connect to a back-end system.</span>
 
 #### The `java` folder
 In this folder, put the Java sources of the JAX-RS service. JAX-RS services are composed of an application class (which extends `com.worklight.wink.extensions.MFPJAXRSApplication`) and resources classes.

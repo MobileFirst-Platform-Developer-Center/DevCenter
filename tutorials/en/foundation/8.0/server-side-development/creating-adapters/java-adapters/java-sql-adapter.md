@@ -5,6 +5,7 @@ relevantTo: [ios,android,windowsphone8,windows8,cordova]
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters
+weight: 
 ---
 
 ### Overview
@@ -16,11 +17,11 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 * Make sure to read the [Java Adapters](../) tutorial first.
 * This tutorial assumes knowledge of SQL.
 
-### Jump To:
+#### Jump to:
 
-* [Setting up the data source](#setupds)
-* [UserAdapterApplication](#UserAdapterApplication)
-* [UserAdapterResource](#UserAdapterResource)
+* [Setting up the data source](#setting-up-the-data-source)
+* [UserAdapterApplication](#useradapterapplication)
+* [UserAdapterResource](#useradapterresource)
 * [Results](#results)
 * [Sample](#sample)
 
