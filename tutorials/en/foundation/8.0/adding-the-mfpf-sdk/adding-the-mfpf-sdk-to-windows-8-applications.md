@@ -65,9 +65,15 @@ NuGet is the package manager for the Microsoft development platform including .N
 
 6. Open the Windows 8 Universal project in Visual studio 2013/2015. Right click the project solution and navigate -> Manage Nuget packages for solution.
 
-7. In the search option , search for IBM MobileFirst Platform. Choose IBM.MobileFirstPlatform.8.0.0.0.
+![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
 
-8. Click Install. This installs the IBM MobileFirstPlatform Native SDK and its dependencies.
+ 7.In the search option , search for IBM MobileFirst Platform. Choose IBM.MobileFirstPlatform.8.0.0.0.
+
+![Add-Nuget-tosolution-search](Add-Nuget-tosolution1.png)
+
+![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
+
+ 8.Click Install. This installs the IBM MobileFirstPlatform Native SDK and its dependencies.
 
 Alternatively,
 
@@ -77,41 +83,41 @@ Browse to [https://www.nuget.org/packages](https://www.nuget.org/packages)
 
 - Download IBM.MobileFirstPlatform.8.0.0.0.nupkg to your filesystem.
 - Open the Windows 8 Universal project in Visual Studio 2013/2015. Click on Tools -> NuGet Package Manager -> Package Manager Settings.
+
+![Add-Nuget-lcoally-VS-settings](Add-Nuget-locally0.png)
+
 - Select Package Sources
 - Click Add (+)
 Give some name to your package and choose the path to your .nupkg file and click update.
+
+![Add-Nuget-locally-source](Add-Nuget-locally1.png)
+
 Close the dialog. 	
 
 - In Solution explorer, right click the solution and choose  "Manage NuGet Packages for Solution".
 Select the source you created in the previous step or search for IBM MobileFirst Platform in search tab.
 Choose "IBM MobileFirst Platform".
 
+![Add-Nuget-choose-source](Add-Nuget-locally2.png)
+
 - Click on Install
 
-The MobileFirst native API contains several components:
+![Add-Nuget-installSDK](Add-Nuget.png)
 
-- **worklight-windows8.dll** is a MobileFirst API library that you must copy to your native Windows 8 Universal project. This is contained within the "buildtarget" folder , under the respective hardware architecture.
-- **Newtonsoft.Json.dll** is a library that provides JSON support.
-- **SharpCompress.dll** is a library that provides compression support.
-- **application-descriptor.xml** defines application metadata and security settings that MobileFirst Server enforces.
-- **mfpclient.resw** contains connectivity settings that a native Windows Universal application uses. You must copy this file to your native Windows Universal project.
-- As with any MobileFirst project, you create the server configuration by modifying the files that are in the **server\conf** folder.
+## Generated MobileFirst Native SDK artifacts
+Two MobileFirst-related artifacts are available in the Android Studio project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.resw</code> and the <code>application-descriptor.json</code> file.
 
 ### mfpclient.resw
 
-You can edit the **wlclient.properties** file to set connectivity information.
+Located at the root of the project, this file contains server connectivity properties and is user-editable:
 
-- *wlServerProtocol* – The communication protocol to MobileFirst Server, which is either http or https.
-- *wlServerHost* – The host name of the MobileFirst Server instance.
-- *wlServerPort* – The port of the MobileFirst Server instance.
-- *wlServerContext* – The context root path of the application on MobileFirst Server.
-- *wlAppId* – The application ID as defined in the **application-descriptor.xml** file.
-- *wlAppVersion* – The application version.
-- *wlEnvironment* – The target environment of the native application.
-- *wlPlatformVersion* – The MobileFirst Studio version.
-- *languagePreferences* – The list of preferred locales.
+- <code>protocol</code> – The communication protocol to MobileFirst Server. Either <code>HTTP</code> or <code>HTPS</code>.
+- <code>host</code> – The hostname of the MobileFirst Server instance.
+- <code>port</code> – The port of the MobileFirst Server instance.
+- <code>wlServerContext</code> – The context root path of the application on the MobileFirst Server instance.
+- <code>languagePreference</code> - Sets the default language for client sdk system messages
 
-In Visual Studio, open the **Properties**window of the *mfpclient.resw*file and set the **Copy to Output Directory** option to **Copy always**.
+In Visual Studio, open the **Properties** window of the *mfpclient.resw* file and set the **Copy to Output Directory** option to **Copy always**.
 
 Add the following capabilities to the *Package.appxmanifest*:
 
