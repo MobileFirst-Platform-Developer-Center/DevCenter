@@ -61,21 +61,20 @@ mfpdev app preview -p <platform>
 
 ### Debugging with Ripple
 Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  
-It lets you run a Cordova application in your browser and fake various Cordova features. For example, it can fake the camera API by letting you select a picture from your computer.  
+It lets you run a Cordova application in your browser and fake various Cordova features. For example, it can fake the camera API by letting you select a picture locally from your computer.  
 
-In order to use Ripple you must first install it.
 #### Installing Ripple
 
 1. Download and install the latest version of [Node.js](https://nodejs.org/en/) (v0.12.0 or later required).  
 You can verify Node.js installation by typing `npm -v` in terminal.
-2. Open terminal and type the following:
+2. Open terminal and type:
 
     ```bash
 npm install -g ripple-emulator
 ```
 
 #### Running application using Ripple
-After Ripple is installed open command line from your cordova project location and type:
+After Ripple is installed open terminal from your cordova project location and type:
 
 ```bash
 ripple emulate
