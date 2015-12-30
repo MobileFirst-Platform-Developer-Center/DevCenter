@@ -7,13 +7,13 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters
 ---
 
-### Overview
+## Overview
 Java adapters provide free reign over connectivity to your backend. It is therefore your responsibility to ensure best practices regarding performance and other implementation details.  
 This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
 
 **Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
 
-### RSSAdapterApplication
+## RSSAdapterApplication
 `RSSAdapterApplication` extends `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
 
 ```java
@@ -24,7 +24,7 @@ protected void init() throws Exception {
 }
 ```
 
-### RSSAdapterResource
+## RSSAdapterResource
 `RSSAdapterResource` is where we handle the requests to your adapter.
 
 ```java
@@ -34,8 +34,8 @@ public class RSSAdapterResource {
 ```
 `@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.<br/><br/>
 
-#### HTTP Client
-##### RSSAdapterResource
+### HTTP Client
+#### RSSAdapterResource
 
 ```java
 private static CloseableHttpClient client;
@@ -48,8 +48,8 @@ public static void init() {
 ```
 Because every request to your resource will create a new instance of `RSSAdapterResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `RSSAdapterApplication` as described above.<br/><br/>
 
-#### Procedure resource
-##### RSSAdapterResource
+### Procedure resource
+#### RSSAdapterResource
 
 ```java
 @GET
@@ -76,8 +76,8 @@ Our adapter exposes just one resource URL which allows to retrieve the RSS feed 
 
 Depending if you pass a `tag` parameter, `execute` will retrieve a different build a different path and retrieve a different RSS file.<br/><br/>
 
-#### execute()
-##### RSSAdapterResource
+### execute()
+#### RSSAdapterResource
 
 ```java
 public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
@@ -109,7 +109,7 @@ The output stream is then `flush`ed and `close`d.</p>
 
 If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
 
-### Results
+## Results
 The adapter should return the RSS feed converted to JSON.
 
 ```json
@@ -185,7 +185,7 @@ The adapter should return the RSS feed converted to JSON.
 }
 ```
 
-### Sample
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.
 
 The attached sample includes an adapter called `RSSAdapter` and a hybrid application called `RSSReader` to test the adapter inside an application.

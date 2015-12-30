@@ -7,7 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdapterMashup
 weight: 10
 ---
-# Overview
+## Overview
 Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
 
 In theory, from the client side, you could make several requests successively, one depending on the other.

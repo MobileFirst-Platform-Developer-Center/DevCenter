@@ -4,17 +4,17 @@ title: JavaScript Adapters
 show_children: true
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 ---
-### Overview
+## Overview
 JavaScript adapters provide templates for connection to HTTP and SQL back-ends. It provides a set of services, called procedures and mobile apps can call these procedures by issuing AJAX requests.
 
 
 **Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../) tutorial first.
 
-### File structure
+## File structure
 
 <span style="color:red">Image</span>
 
-#### The `XML` File
+### The `XML` File
 JavaScript adapters have an XML configuration file which describes the connectivity options and lists the procedures that are exposed to the application or other adapters.
 
 ```xml
@@ -41,11 +41,11 @@ JavaScript adapters have an XML configuration file which describes the connectiv
  * When the back-end system requires user authentication, defines how user credentials are obtained.
 * `procedure`: Declares a service for accessing a back-end application. One entry for each adapter procedure.
 
-#### The `js` folder
+### The `js` folder
 This folder contains all JavaScript files, which contains the implementation of procedures that are declared in the XML file. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data.  
 Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
 
-### JavaScript adapter procedures
+## JavaScript adapter procedures
 Procedures are declared in XML and are implemented with server-side JavaScript, for the following purposes:
 
 * To provide adapter functions to the application
@@ -72,4 +72,4 @@ JavaScript adapter procedures are implemented in JavaScript. However, because an
 <span style="color:red"> ### Using global variables </span>  
 Depending on your infrastructure and configuration, your MobileFirst server may be running with `SessionIndependent` set to true, where each request may reach a different node and HTTP sessions are not used. In such cases you should not rely on global variables to keep data from one request to the next.
 
-### JavaScript adapter types
+## For examples of JavaScript adapters communicating with an HTTP or SQL back end, see:

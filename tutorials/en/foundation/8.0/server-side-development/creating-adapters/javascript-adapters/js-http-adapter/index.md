@@ -7,7 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters
 weight: 1
 ---
-### Overview
+## Overview
 By using IBM MobileFirst Platform Foundation HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
 
 You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary. The retrieved data can be in XML, HTML, JSON, or plain text format.
@@ -17,7 +17,7 @@ Optionally, it is also possible to use XSL to filter received records and fields
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
-### The `XML` File
+## The `XML` File
 The XML file contains settings and metadata.  
 To edit the adapter XML file, you must:
 
@@ -57,7 +57,7 @@ Declare the required procedures below the connectivity element:
 </wl:adapter>
 ```
 
-### JavaScript implementation
+## JavaScript implementation
 A service URL is used for procedure invocations. Some parts of the URL are constant; for example, http://example.com/.  
 Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the MobileFirst procedure.
 
@@ -94,7 +94,7 @@ function getFeeds() {
 
 >See the topic about "WL.Server.invokeHttp" in the user documentation for a complete list of options.
 
-### XSL transformation filtering
+## XSL transformation filtering
 You can apply XSL transformation to the received data, for example to filter  the data.  
 To apply XSL transformation, specify the transformation options in the input parameters of the procedure invocation:
 
@@ -115,7 +115,7 @@ function getFeedsFiltered() {
 }
 ```
 
-### Creating a SOAP-based service request
+## Creating a SOAP-based service request
 You can use the `WL.Server.invokeHttp` method to create a **SOAP** envelope, which can be sent directly.
 
 To call a SOAP-based service in an HTTP adapter, you must encode the SOAP XML envelope within the request body.  
@@ -157,5 +157,5 @@ var input = {
   var result = WL.Server.invokeHttp(input);
 ```
 
-### Sample application
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.

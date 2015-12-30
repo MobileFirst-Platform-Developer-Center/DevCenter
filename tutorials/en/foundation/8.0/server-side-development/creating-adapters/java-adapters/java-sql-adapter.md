@@ -5,10 +5,10 @@ relevantTo: [ios,android,windowsphone8,windows8,cordova]
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters
-weight: 
+weight:
 ---
 
-### Overview
+## Overview
 Java adapters give developers control over connectivity to a back end. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.
 This tutorial covers an example of a Java adapter that connects to a MySQL back end to make CRUD (Create, Read, Update, Delete) operations on a `users` table, using REST concepts.
 
@@ -17,7 +17,7 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 * Make sure to read the [Java Adapters](../) tutorial first.
 * This tutorial assumes knowledge of SQL.
 
-#### Jump to:
+### Jump to:
 
 * [Setting up the data source](#setting-up-the-data-source)
 * [UserAdapterApplication](#useradapterapplication)
@@ -25,11 +25,11 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 * [Results](#results)
 * [Sample](#sample)
 
-### Setting up the data source<a name="setupds"></a>
+## Setting up the data source
 The MobileFirst Server needs to be configured to connect to the MySQL server. Those configurations can be stored in the `server.xml` file.
 To connect to a database, Java code needs a JDBC connector driver for the specific database type.
 
-##### server.xml
+#### server.xml
 
 ```xml
 <library id="MySQLLib">
@@ -49,7 +49,7 @@ To connect to a database, Java code needs a JDBC connector driver for the specif
 In MobileFirst Studio for Eclipse, select **Project Explorer > MobileFirst Development Server > shared > resources**.</sapn>
 * The `dataSource` tag specifies how to connect to the database. Write down the `jndiName` that you choose, because you will need it later.
 
-### UserAdapterApplication<a name="UserAdapterApplication"></a>
+## UserAdapterApplication
 
 `UserAdapterApplication` extends `MFPJAXRSApplication` and is a good place to trigger any initialization required by the adapter application.
 
@@ -61,7 +61,7 @@ protected void init() throws Exception {
 }
 ```
 
-### UserAdapterResource<a name="UserAdapterResource"></a>
+## UserAdapterResource
 `UserAdapterResource` is where requests to the adapter are handled.
 
 ```java
@@ -71,8 +71,8 @@ protected void init() throws Exception {
 ```
 `@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.<br/><br/>
 
-#### Using DataSource
-##### UserAdapterResource
+### Using DataSource
+#### UserAdapterResource
 
 ```java
 static DataSource ds = null;
@@ -88,7 +88,7 @@ The `DataSource` is set as `static` so that it can be shared across all requests
 
 The previously defined `jndiName` parameter is used to find the database configuration.<br/><br/>
 
-####Create User
+### Create User
 
 ```java
 @POST
@@ -134,7 +134,7 @@ If the insertion was successful, the `return Response.ok().build()` method is us
 
 **Important:** Make sure to close resources, such as prepared statements and connections.<br/><br/>
 
-#### Get User
+### Get User
 ```java
 @GET
 @Produces("application/json")
@@ -176,7 +176,7 @@ If the user is found, a response is built from the generated JSON object.
 
 Prepending the method with `@Produces("application/json")` makes sure that the `Content-Type` of the output is correct.<br/><br/>
 
-#### Get all users
+### Get all users
 This method is similar to `getUser`, except for the loop over the `ResultSet`.
 
 ```java
@@ -205,7 +205,7 @@ public Response getAllUsers() throws SQLException{
 }
 ```
 <br/><br/>
-#### Update user
+### Update user
 
 ```java
 @PUT
@@ -249,7 +249,7 @@ public Response updateUser(@PathParam("userId") String userId,
 ```
 When updating an existing resource, it is standard practice to use `@PUT` (for `HTTP PUT`) and to use the resource ID in the `@Path`.<br/><br/>
 
-#### Delete user
+### Delete user
 
 ```java
 @DELETE
@@ -283,10 +283,10 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 ```
 `@DELETE` (for `HTTP DELETE`) is used together with the resource ID in the `@Path`, to delete a user.
 
-### Results<a name="results"></a>
+## Results
 <span style="color:red"> Use the testing techniques described in ### </spsn>
 
-### Sample<a name="sample"></a>
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.
 
 The sample includes the **UserAdapter** described here.  

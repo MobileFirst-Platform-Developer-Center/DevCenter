@@ -8,13 +8,13 @@ downloads:
 weight: 3
 ---
 
-### Overview
+## Overview
 
 When JavaScript is not sufficient to implement required functionality, or if a Java class already exists, you can use Java code as an extension for the JavaScript adapter.
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
-### Adding custom Java classes 
+## Adding custom Java classes 
 <span style="color:red">IMAGE</span>
 
 1. To use an existing Java library, add the JAR file to the `server\lib` folder of your MobileFirst project.
@@ -45,11 +45,11 @@ Here are an examples of a static method (that does not require a new instance) a
     ```
 5. If your Java code has additional dependencies, put the required JAR files in the `server\lib` folder of your MobileFirst project.
 
-### Invoking custom Java classes from the adapter
+## Invoking custom Java classes from the adapter
 After your custom Java code is created and any required JAR files are added, you can call it from the JavaScript code:
 
 * Invoke the static Java method as shown, and use the full class name to reference it directly:
-##### UsingJavaInAdapter-impl.js
+#### UsingJavaInAdapter-impl.js
 
     ```js
     function addTwoIntegers(a,b){
@@ -59,7 +59,7 @@ After your custom Java code is created and any required JAR files are added, you
     }
     ```
 * To use the instance method, create a class instance and invoke the instance method from it:
-##### UsingJavaInAdapter-impl.js
+#### UsingJavaInAdapter-impl.js
 
     ```js
     function subtractTwoIntegers(a,b){
@@ -70,5 +70,5 @@ After your custom Java code is created and any required JAR files are added, you
     }
     ```
 
-### Sample application
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.

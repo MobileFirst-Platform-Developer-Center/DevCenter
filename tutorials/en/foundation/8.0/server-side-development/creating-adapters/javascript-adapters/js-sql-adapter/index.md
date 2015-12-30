@@ -8,14 +8,14 @@ downloads:
 weight: 2
 ---
 
-### Overview
+## Overview
 An IBM MobileFirst Platform Foundation SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.  
 <span style="color:red"> As a developer, you must download the JDBC connector driver for the specific database type separately and add it to the `server\lib\` folder of a MobileFirst project. You can download the JDBC connector driver from the appropriate vendor website.</span>  
 In this tutorial and in the accompanying sample, you learn how to use a MobileFirst adapter to connect to a MySQL database.
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
-### The `XML` File
+## The `XML` File
 The XML file contains settings and metadata.
 
 1. In the adapter XML file, declare the following parameters:
@@ -43,7 +43,7 @@ The XML file contains settings and metadata.
     <procedure name="getAccountTransactions1"/>
     ```
 
-### JavaScript implementation
+## JavaScript implementation
 The adapter JavaScript file is used to implement the procedure logic.  
 There are two ways of running SQL statements:
 
@@ -90,7 +90,7 @@ There are two ways of running SQL statements:
     }
     ```
 
-### Invocation Results
+## Invocation Results
 The result is retrieved as a JSON object:
 
 ```json
@@ -118,7 +118,7 @@ The result is retrieved as a JSON object:
  * To access the `resultSet` object on the client-side: `result.invocationResult.resultSet`
  * To access the `resultSet` object on the server-side: `result.ResultSet`
 
-### Sample application
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.  
 
 * To run the sample, execute the `mobilefirstTraining.sql` file <span style="color:red">(which you can find under ...)</span> on your local MySQL server.
