@@ -19,19 +19,16 @@ In our case: `com.sample.adapter.JavaAdapterApplication`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<wl:adapter name="JavaAdapter"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:wl="http://www.ibm.com/mfp/integration"
-    xmlns:http="http://www.ibm.com/mfp/integration/http">
+<mfp:adapter name="JavaAdapter"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mfp="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
 
-    <displayName>JavaAdapter</displayName>
-    <description>JavaAdapter</description>
-    <connectivity>
-        <connectionPolicy xsi:type="wl:NullConnectionPolicyType"></connectionPolicy>
-    </connectivity>
+	<displayName>JavaAdapter</displayName>
+	<description>JavaAdapter</description>
 
-    <JAXRSApplicationClass>com.sample.adapter.JavaAdapterApplication</JAXRSApplicationClass>
-</wl:adapter>
+	<JAXRSApplicationClass>sample.JavaAdapterApplication</JAXRSApplicationClass>
+</mfp:adapter>
 ```
 
 Note that the connection policy type is `NullConnectionPolicy`, which means that the XML configuration file is not used to define the connectivity of the adapter. In Java adapters, this is the only allowed connectivity type. <span style="color:red">The MobileFirst Server leaves setting up the connectivity policy to the developer of the adapter. For example, an adapter can contain code that uses an Apache HTTP client to connect to a back-end system.</span>

@@ -19,19 +19,20 @@ JavaScript adapters have an XML configuration file which describes the connectiv
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<wl:adapter name="HelloWorld">
-  <displayName />
-  <description />
+<mfp:adapter name="HelloWorld">
+
+  <displayName>HelloWorld</displayName>
+	<description>HelloWorld</description>
   <connectivity>
     <connectionPolicy>
     ...
 
-    <loadConstraints>
-    ...
+    </connectionPolicy>
   </connectivity>
+
   <procedure name="procedure1"></procedure>
   <procedure name="procedure2"></procedure>
-</wl:adapter>
+</mfp:adapter>
 ```
 * `name`: Mandatory. The name of the adapter
 * `displayName`: Optional. The name that is displayed in the MobileFirst Console

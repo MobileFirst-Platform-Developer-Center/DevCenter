@@ -28,33 +28,29 @@ To edit the adapter XML file, you must:
 Declare the required procedures below the connectivity element:
 
 ```xml
-<wl:adapter name="HTTPAdapter"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:wl="http://www.ibm.com/mfp/integration"
-  xmlns:http="http://www.ibm.com/mfp/integration/http">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mfp:adapter name="JavaScriptHTTP"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mfp="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
 
-  <displayName>HTTPAdapter</displayName>
-  <description>HTTPAdapter</description>
-  <connectivity>
-    <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
-      <protocol>http</protocol>
-      <domain>rss.cnn.com</domain>
-      <port>80</port>  
-      <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
-      <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
-      <maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
-      <!-- The following properties are used by the adapter's key manager for choosing specific certificate from the keystore.
-      <sslCertificateAlias></sslCertificateAlias>
-      <sslCertificatePassword></sslCertificatePassword>
-      -->       
-    </connectionPolicy>
-  </connectivity>
+	<displayName>JavaScriptHTTP</displayName>
+	<description>JavaScriptHTTP</description>
+	<connectivity>
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+			<protocol>http</protocol>
+			<domain>www.engadget.com</domain>
+			<port>80</port>
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
+		</connectionPolicy>
+	</connectivity>
 
-  <procedure name="getStories"/>
+	<procedure name="getFeeds"/>
+	<procedure name="getFeedsFiltered"/>
 
-  <procedure name="getStoriesFiltered"/>
-
-</wl:adapter>
+</mfp:adapter>
 ```
 
 ## JavaScript implementation

@@ -25,16 +25,28 @@ The XML file contains settings and metadata.
  * Password<br/><br/>
 
     ```xml
-    <connectivity>
-    <connectionPolicy xsi:type="sql:SQLConnectionPolicy">        
-      <dataSourceDefinition>
-        <driverClass>com.mysql.jdbc.Driver</driverClass>
-        <url>jdbc:mysql://localhost:3306/mobilefirst_training</url>
-          <user>mobilefirst</user>
-          <password>mobilefirst</password>
-      </dataSourceDefinition>
-    </connectionPolicy>
-    </connectivity>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <mfp:adapter name="JavaScriptSQL"
+    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    	xmlns:mfp="http://www.ibm.com/mfp/integration"
+    	xmlns:sql="http://www.ibm.com/mfp/integration/sql">
+
+    	<displayName>JavaScriptSQL</displayName>
+    	<description>JavaScriptSQL</description>
+    	<connectivity>
+    		<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
+    			<dataSourceDefinition>
+    				<driverClass>com.mysql.jdbc.Driver</driverClass>
+    				<url>jdbc:mysql://localhost:3306/mobilefirst_training</url>
+    			    <user>mobilefirst</user>
+        			<password>mobilefirst</password>
+    			</dataSourceDefinition>
+    		</connectionPolicy>
+    	</connectivity>
+
+    	<procedure name="getAccountTransactions1"/>
+    	<procedure name="getAccountTransactions2"/>
+    </mfp:adapter>
     ```
 
 2. Declare a procedure in the adapter XML file.
