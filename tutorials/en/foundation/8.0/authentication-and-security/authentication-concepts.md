@@ -28,7 +28,11 @@ The authorization flow has two phases:
 ### Acquiring a token
 In this phase, the client undergoes `security checks` in order to receive an access token.  
 These `security checks` use **authorization entities**, which are described in [the next section](#authEntities).  
-![Obtain Token](MFP_Security_obtain_token_8.0.png)
+![Obtain Token](auth-flow-1.jpg)
+
+1. Client application sends a request to obtain a token.
+2. Client application undergoes security checks according to requested scope.
+3. Client application receives and stores the token.
 
 ### Using a token to access a protected resource
 It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
@@ -36,7 +40,11 @@ It is possible to enforce security both on resources that run on MobileFirst Ser
 It is also possible to separate the Authorization Server from MFP Server by using DataPower as an Authorization Server.  
 In this case the Introspection Endpoint will keep MFP Server and DataPower in sync.
 
-![Protect Resources]({{ site.baseurl }}/assets/backup/MFP_Security_protect_MFP_resources.jpg)
+![Protect Resources](auth-flow-2.jpg)
+
+1. Client application sends a request with the received token.
+2. Validation module validates the token.
+3. MFP Server proceeds to adapter invocation.
 
 ## Authorization entities
 - You can protect resources such as adapters from unauthorized access by specifying a **scope** that contains zero or more **scope elements**.
