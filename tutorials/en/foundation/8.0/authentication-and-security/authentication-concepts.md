@@ -7,7 +7,7 @@ weight: 1
 ---
 
 ## Overview
-The MobileFirst Platform Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token which encapsulates the authorization header that is granted to the client.  
+The MobileFirst Platform Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token that encapsulates the authorization header that is granted to the client.  
 
 In that context, IBM MobileFirst Platform Server serves as an **authorization server** and is able to **generate access tokens**. The client can then use these tokens to access resources on a resource server, which can be either the MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows to enforce security on resources that are running outside MobileFirst Server.
 
@@ -26,13 +26,25 @@ The authorization flow has two phases:
 2. The client uses the token to access a protected resource.
 
 ### Acquiring a token
-In this phase, the client undergoes security checks in order to receive an access token. These security checks use **authorization entities**, which are described in [the next section](#authEntities).  
-![Obtain Token]({{ site.baseurl }}/assets/backup/MFP_Security_obtain_token.jpg)
+In this phase, the client undergoes `security checks` in order to receive an access token.  
+These `security checks` use **authorization entities**, which are described in [the next section](#authEntities).  
+![Obtain Token](auth-flow-1.jpg)
+
+1. Client application sends a request to obtain a token.
+2. Client application undergoes security checks according to requested scope.
+3. Client application receives and stores the token.
 
 ### Using a token to access a protected resource
 It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
 
-![Protect Resources]({{ site.baseurl }}/assets/backup/MFP_Security_protect_MFP_resources.jpg)
+It is also possible to separate the Authorization Server from MFP Server by using DataPower as an Authorization Server.  
+In this case the Introspection Endpoint will keep MFP Server and DataPower in sync.
+
+![Protect Resources](auth-flow-2.jpg)
+
+1. Client application sends a request with the received token.
+2. Validation module validates the token.
+3. MFP Server proceeds to adapter invocation.
 
 ## Authorization entities
 - You can protect resources such as adapters from unauthorized access by specifying a **scope** that contains zero or more **scope elements**.
