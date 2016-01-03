@@ -70,17 +70,17 @@ You can verify Node.js installation by typing `npm -v` in terminal.
 2. Open terminal and type:
 
     ```bash
-npm install -g ripple-emulator
-```
+    npm install -g ripple-emulator
+    ```
 
 #### Running application using Ripple
-After Ripple is installed open terminal from your cordova project location and type:
+After Ripple is installed open terminal from your Cordova project location and type:
 
 ```bash
 ripple emulate
 ```
 
-![Ripple emulator](ripple2.png)
+![Ripple emulator](Ripple2.png)
 
 > More information about Apache Ripple™ can be found on the [Apache Ripple page](http://ripple.incubator.apache.org/) or [npm ripple-emulator page](https://www.npmjs.com/package/ripple-emulator).
 
