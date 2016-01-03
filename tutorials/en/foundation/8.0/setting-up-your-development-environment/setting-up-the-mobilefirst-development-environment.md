@@ -58,4 +58,5 @@ To download and install MobileFirst Studio, visit the [downloads]({{site.base}}/
 To use MobileFirst Studio for Cordova application development, it is also required to download and install the [THyM Eclipse plug-in](https://www.eclipse.org/community/eclipse_newsletter/2014/november/article3.php).
 
 ## Applications and adapters development
-You can use your preferred code editor or alternative IDEs, such as Atom.io, Eclipse, IntelliJ and others, to implement applications and adapters.
+You can use your preferred code editor or alternative IDEs, such as Atom.io, Eclipse, IntelliJ and others, to implement applications and adapters.  
+To learn more about the MobileFirst development, refer to [the tutorials sections](../../all-tutorials/).  
