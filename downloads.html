@@ -13,19 +13,93 @@ title: Downloads
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="installFoundation">
             <br/>
-            <p>IBM MobileFirst Platform Foundation 8.0 enables simplified, community-driven experiences and work flows for both the developer and the administrator, and consists of MobileFirst Developer and Operations Console, and the MobileFirst CLI.</p>
+            <p>IBM MobileFirst Platform Foundation 8.0 enables simplified, community-driven experiences and work flows for both the developer and the administrator, and consists of <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">MobileFirst Server, MobileFirst CLI and MobileFirst Studio</a></p>
 
-            <p>Download MobileFirst Platform Foundation artifacts:</p>
-            
-            <ul>
-                <li><a href="#">MobileFirst CLI</a></li>
-                <li><a href="#">MobileFirst Development Server</a></li>
-            </ul>
+            <b>Installation instructions:</b>
+            <div class="panel-group" id="accordion0" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="server">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#collapseServer0" aria-expanded="true" aria-controls="collapseServer">Installing MobileFirst Server</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseServer0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="server">
+                        <div class="panel-body">
+                            TO DO
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="studio">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#collapseStudio0" aria-expanded="true" aria-controls="collapseStudio">Installing MobileFirst Studio</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseStudio0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="studio">
+                        <div class="panel-body">
+                            <ol>
+                                <li> Make sure that you have the Eclipse IDE for
+                                    <strong>Java EE Developers</strong> installed: <a href="https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr2">Luna SR2 (4.4.2)</a> or <a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars1">Mars SR1 (4.5.1)</a>
+                                    <br/>
+                                    <blockquote>
+                                        <strong>Note 2:</strong> Ensure that your Eclipse workspace path does not contain any spaces, which can cause failures when apps are deployed to the internal development server, or when the MobileFirst Operations Console is started.
+                                    </blockquote>
+                                </li>
+                                <li>Start Eclipse, and then select <strong>Help > Eclipse Marketplace</strong>.</li>
+                                <li>In the <strong>Find</strong> field, type <em>MobileFirst Platform</em> and click <strong>Go</strong>.</li>
+                                <li>Click the IBM MobileFirst Platform Studio <strong>Install</strong> button.</li>
+                                <li>IBM MobileFirst Platform Studio and all features are preselected. Confirm your selection and click <strong>Next</strong>.</li>
+                                <li>Review and accept the license terms, and then click <strong>Finish</strong> to begin the installation.</li>
+                                <li>Follow the prompts to complete the installation.</li>
+                                <li>If your Eclipse workbench has IBM Rational Team Concert™ V4.0 Eclipse Client already installed, you might need to clean the Eclipse environment before you use Studio.</li>
+                            </ol>
+
+                            <p>
+                                <strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="cli">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#collapseCli0" aria-expanded="true" aria-controls="cli">Installing MobileFirst CLI</a>
+                        </h4>
+                    </div>
+
+                    <div id="collapseCli0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cli">
+                        <div class="panel-body">
+                            <p>To use the CLI, you must have the Java Developer Kit (JDK) installed on your machine. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
+
+                            <p>You must have the
+                                <code>JAVA_HOME</code> environment variable set to your JDK directory. For example:</p>
+
+                            <ul>
+                                <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
+                                <li> Mac OSX: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
+                            </ul>
+
+                            <ol>
+                                <li>Open a command-line terminal</li>
+                                <li>Run the command: npm install -g mfpdev-cli</li>
+                                <li>You can verify the installation by running <code>mfpdev -v</code>
+                            </ol>
+
+                            <p>
+                                <strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="downloadPreviousReleases">
-            <br/>
-            <p>Below are installation instruction for previous releases of IBM Worklight/MobileFirst Platform Foundation.</p>
+            <br/>        
+            <b>Installation instructions:</b>
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
@@ -91,7 +165,7 @@ title: Downloads
                                 <code>JAVA_HOME</code> environment variable set to your JDK directory. For example:</p>
 
                             <ul>
-                                <li> Windows: C:Program FilesJavajdk1.7.0_60</li>
+                                <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
                                 <li> Mac OSX: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
                             </ul>
 
@@ -153,6 +227,7 @@ title: Downloads
                     </div>
                 </div>
             </div>
+            
             <b>Previous Studio releases:</b>
             <ul>
                 <li><a href="http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mobilefirst_studio_plugin_7.0.0.zip">IBM MobileFirst Platform Foundation 7.0.0.0</a></li>
