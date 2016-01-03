@@ -50,10 +50,7 @@ Messages.headerText
 ## Translating system messages
 It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password". System messages are stored in the `WL.ClientMessages` object.
 
-You can find a full list of system messages in the `messages.json` file, located inside the generated project.
-
-<span style="color:red">Check where is messages.json</span>
- 
+You can find a full list of system messages in the `[cordova-project\platform\assets\www\messages\messages.json` file, located inside the generated project.  
 To translate a system message, override it in the application code.
 
 ```javascript

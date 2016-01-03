@@ -17,16 +17,23 @@ This tutorial covers the basics of the IBM MobileFirst Platfrom Foundation devel
 <span style="color:red">TODO: stand-alone artifact? all-in-one?</span>
 
 ## MobileFirst CLI
-IBM MobileFirst Platform Foundation provides a command-line interface tool to manage MobileFirst Servers, configure MobileFirst applications, and create, build, deploy and test MobileFirst adapters. The CLI lets you use your preferred code editor or alternative IDEs to implemet applications and adapters.
+IBM MobileFirst Platform Foundation provides a command-line interface tool to:
 
-To learn more about the MobileFirst CLI, see the tutorial: [Using CLI to manage MobileFirst artifacts]()../../using-cli-to-manage-mobilefirst-artifacts/)
+- Manage MobileFirst Servers
+- Configure MobileFirst applications
+- Create, build, deploy and test MobileFirst adapters.
 
+To learn more about the MobileFirst CLI, see the tutorial: [Using CLI to manage MobileFirst artifacts](../../using-cli-to-manage-mobilefirst-artifacts/).  
 To download the MobileFirst CLI, visit the [downloads]({{site.base}}/downloads/) page.
 
 ## MobileFirst Operations Console
 <span style="color:red">TODO: add information</span>
 
-### System requirements
-The MobileFirst developer tools are supported on the following operating systems: Windows, Apple OS X and Linux.
-
 The MobileFirst Operations Console is a web application and is supported in modern browsers: Internet Explorer 10+, Chrome, Safari and Firefox.
+
+## Applications and adapters development
+You can use your preferred code editor or alternative IDEs, such as ATOM or IntelliJ, to implemet applications and adapters.
+
+### System requirements
+- The MobileFirst developer tools are supported on the following operating systems: Windows, Apple OS X and Linux.
+- The MobileFirst Operations Console is supported in modern browsers: Internet Explorer 10+, Chrome, Safari and Firefox.
