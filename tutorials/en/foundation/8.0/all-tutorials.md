@@ -20,11 +20,11 @@ Get a feel of the MobileFirst SDK with these fast-tracked demos.
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
-* <span style="color:red">IN PROGRESS </span>[Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
+* [Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
 * [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
 * [Setting up the Windows 8 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
-* <span style="color:red">TODO: </span>[Introduction to MobileFirst Operations Console](../quick-start/introduction-to-mobilefirst-platform-operations-console/)
+* <span style="color:red">TODO: </span>[Using the MobileFirst Platform Operations Console](../quick-start/using-the-mobilefirst-platform-operations-console/)
 
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 Universal or Windows 10 UWP application.

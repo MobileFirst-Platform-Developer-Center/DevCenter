@@ -8,32 +8,40 @@ weight: 1
 ## Overview
 This tutorial covers the basics of the IBM MobileFirst Platfrom Foundation development environment and tools.
 
+- The MobileFirst developer tools are supported on the following operating systems: Windows, Apple OS X and Linux.
+- The MobileFirst Operations Console is supported in modern browsers such as: Internet Explorer 10+, latest Chrome, Safari and Firefox.
+
 #### Jump to:
 
-- [MobileFirst CLI](#mobilefirst-cli)
-- [MobileFirst Operations Console](#mobilefirst-operations-console)
-- [System requirements](#system-requirements)
+- [MobileFirst Development Server](#mobilefirst-development-server)
+- [MobileFirst Command-line Interface](#mobilefirst-command-line-interface-cli)
+- [Applications and Adapters Development](#applications-and-adapters-development)
 
-<span style="color:red">TODO: stand-alone artifact? all-in-one?</span>
+## MobileFirst Development Server
+The MobileFirst Development Server is a web application archive (.war) that is deployed on an IBM WebSphere Liberty profile Application Server.  
+From the MobileFirst Server's Operations Console a developer can:
 
-## MobileFirst CLI
-IBM MobileFirst Platform Foundation provides a command-line interface tool to:
+- Register and deploy applications and adapters
+- Optionally download native/Cordova application templates 
+- Configure application aspects:
+    - Authentication and security
+    - Push Notifications
+    - Direct Update
+- Generate DevOps scripts for continuous integration workflows and faster development cycles
+- and more
+
+To learn more about the MobileFirst Operations Console, see the tutorial: [Using the MobilFirst Platform Operations Console](../../adding-the-mfpf-sdk/using-the-mobilefirst-platform-operations-console).  
+To download and install the MobileFirst Development Server, visit the [downloads]({{site.base}}/downloads/) page.
+
+## MobileFirst Command-line Interface (CLI)
+The MobileFirst command-line interface tool enables developers to:
 
 - Manage MobileFirst Servers
-- Configure MobileFirst applications
-- Create, build, deploy and test MobileFirst adapters.
+- Register and configure applications
+- Create, build, deploy and test adapters
 
-To learn more about the MobileFirst CLI, see the tutorial: [Using CLI to manage MobileFirst artifacts](../../using-cli-to-manage-mobilefirst-artifacts/).  
-To download the MobileFirst CLI, visit the [downloads]({{site.base}}/downloads/) page.
-
-## MobileFirst Operations Console
-<span style="color:red">TODO: add information</span>
-
-The MobileFirst Operations Console is a web application and is supported in modern browsers: Internet Explorer 10+, Chrome, Safari and Firefox.
+To learn more about the MobileFirst CLI, see the tutorial: [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/).  
+To download and install the MobileFirst CLI, visit the [downloads]({{site.base}}/downloads/) page.
 
 ## Applications and adapters development
-You can use your preferred code editor or alternative IDEs, such as ATOM or IntelliJ, to implemet applications and adapters.
-
-### System requirements
-- The MobileFirst developer tools are supported on the following operating systems: Windows, Apple OS X and Linux.
-- The MobileFirst Operations Console is supported in modern browsers: Internet Explorer 10+, Chrome, Safari and Firefox.
+You can use your preferred code editor or alternative IDEs, such as Atom.io, Eclipse, IntelliJ and others, to implement applications and adapters.
