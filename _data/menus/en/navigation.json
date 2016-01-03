@@ -80,11 +80,22 @@
         "name": "Welcome to Labs",
         "path": ""
     }, {
-        "name": "7.1 Labs",
-        "path": "/7.1/setup"
+        "name": "Developers",
+        "path": "",
+        "children": [{
+            "name": "7.1 Labs",
+            "path": "/developers/7.1/setup",
+            }, {
+            "name": "7.0 Labs",
+            "path": "/developers/7.0/setup",
+        }]
     }, {
-        "name": "7.0 Labs",
-        "path": "/7.0/setup"
+        "name": "Administrators",
+        "path": "",
+        "children": [{
+            "name": "7.1 Labs",
+            "path": "/administrators/7.1/intro"
+        }]
     }]
 }, {
     "name": "Learn More",
