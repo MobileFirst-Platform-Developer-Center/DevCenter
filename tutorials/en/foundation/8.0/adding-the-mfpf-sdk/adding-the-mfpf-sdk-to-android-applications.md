@@ -77,7 +77,7 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundation',
-    version: '8.0.0.0',
+    version: '8.0.0',
     ext: 'aar',
     transitive: true
     ```
@@ -85,7 +85,7 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
 9. Add the following permissions to the <code>AndroidManifest.xml</code> file:
 
     ```xml
-    <uses-permission android:name=android.permission.INTERNET/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
     ```

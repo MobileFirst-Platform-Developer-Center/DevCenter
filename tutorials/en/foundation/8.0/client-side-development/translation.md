@@ -52,8 +52,9 @@ It is also possible to translate the system messages that the application displa
 
 You can find a full list of system messages in the `messages.json` file, located inside the generated project.
 
-<span style="color:red">Check where is messages.json</span>
- 
+- Android: `[Cordova-project]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
+- iOS, Windows: `[Cordova-project]\platforms\[ios or windows]\www\plugins\cordova-plugin-mfp\worklight\messages`
+
 To translate a system message, override it in the application code.
 
 ```javascript
