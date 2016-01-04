@@ -5,58 +5,128 @@ breadcrumb_title: Windows 8 Universal SDK
 relevantTo: [windows8]
 weight: 4
 ---
-<h2>Overview</h2>
-<p>To serve a native Windows 8 Universal application, MobileFirst Server must be aware of it. For this purpose, IBM MobileFirst Platform Foundation provides a Native API library, which contains a set of APIs and configuration files.</p>
-<p>This tutorial explains how to generate the Windows 8 Universal Native API and how to integrate it with a native Windows Universal application. These steps are necessary for you to be able to use it later on for tasks such as connecting to MobileFirst Server, invoking adapter procedures, implementing authentication methods, and so on.</p>
-<p><strong>Prerequisite:</strong> Developers are expected to be proficient with Microsoft developer tools.</p>
-<h2>Creating and deploying a MobileFirst native API</h2>
-<h3>CLI</h3>
-<ol>
-<li><a href="../../advanced-client-side-development/using-cli-create-build-manage-project-artifacts/">Using the CLI</a>, create a new MobileFirst project: <code>$ mfp create HelloWorldNative</code></li>
-<li>Go to the newly created project directory: <code>$ cd HelloWorldNative/</code></li>
-<li>Add a new Windows Universal native API: <code>$ mfp add api Win8HelloWorld -e windows8</code></li>
-<li>Navigate into the native API folder and run the command: <code>$ mfp push</code>. <strong>Note:</strong> This action is required for MobileFirst Server to recognize the application if it attempts to connect.</li>
-</ol>
-<h3>Studio</h3>
-<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/Windows8UniversalProject.png"><img src="{{ site.baseurl }}/assets/backup/Windows8UniversalProject-218x300.png" alt="Windows8UniversalProject" width="218" height="300" class="alignright size-medium wp-image-14736" /></a></p>
-<ol>
-<li>In MobileFirst Studio, create a MobileFirst project and add a MobileFirst Native API.</li>
-<li>In the <strong>New MobileFirst Native API</strong> dialog, enter your application name and select <strong>Windows Universal</strong> for the <strong>Environment</strong> field.</li>
-<li>Right-click the generated NativeAPI folder (located in <code><em>your-projects</em>/apps/<em>your-nativeapi-app-name</em></code>) and select <strong>Run As &gt; Deploy Native API</strong>.<br />
- <strong>Note:</strong> This action is required in order for MobileFirst Server to recognize the application if it attempts to connect.</li>
-</ol>
-<p>The MobileFirst native API contains several components:</p>
-<ul>
-<li><code>worklight-windows8.dll</code> is a MobileFirst API library that you must copy to your native Windows 8 Universal project. This is contained within the "buildtarget" folder , under the respective hardware architecture.</li>
-<li><code>Newtonsoft.Json.dll</code> is a library that provides JSON support.</li>
-<li><code>SharpCompress.dll</code> is a library that provides compression support.</li>
-<li><code>application-descriptor.xml</code> defines application metadata and security settings that MobileFirst Server enforces.</li>
-<li><code>wlclient.properties</code> contains connectivity settings that a native Windows Universal application uses. You must copy this file to your native Windows Universal project.</li>
-<li>As with any MobileFirst project, you create the server configuration by modifying the files that are in the <code>server\conf</code> folder.</li>
-</ul>
-<h2>wlclient.properties</h2>
-<p>You can edit the <em>wlclient.properties</em> file to set connectivity information.</p>
-<ul>
-<li>wlServerProtocol – The communication protocol to MobileFirst Server, which is either http or https.</li>
-<li>wlServerHost – The host name of the MobileFirst Server instance.</li>
-<li>wlServerPort – The port of the MobileFirst Server instance.</li>
-<li>wlServerContext – The context root path of the application on MobileFirst Server.</li>
-<li>wlAppId – The application ID as defined in the <code>application-descriptor.xml</code> file.</li>
-<li>wlAppVersion – The application version.</li>
-<li>wlEnvironment – The target environment of the native application.</li>
-<li>wlPlatformVersion – The MobileFirst Studio version.</li>
-<li>languagePreferences – The list of preferred locales.</li>
-</ul>
-<h2>Creating and configuring a Windows Universal native application</h2>
-<ol>
-<li>Create a Windows Universal Application project or use an existing one.</li>
-<li>Add as a <em>reference</em> <code>worklight-windows8.dll</code>, <code>Newtonsoft.Json.dll</code> and <code>SharpCompress.dll</code> files.Choose the right <code>worklight-windowsphone8.dll</code> from the folder that matches the architecture of the target device (ARM/x64/x86).</li>
-<li>Copy the <code>wlclient.properties</code> file to the root of the native project.</li>
-<li>In Visual Studio, open the <strong>Properties</strong> window of the <code>wlclient.properties</code> file and set the <strong>Copy to Output Directory</strong> option to <strong>Copy always</strong>.</li>
-<li>Add the following capabilities to the <code>Package.appxmanifest</code>:<br />
-<em>Internet (Client &amp; Server)</em><br />
-<em>Private Networks (Client &amp; Server)</em></li>
-</ol>
-<blockquote><p>For more information, see the topic about developing native C# applications for Windows Universal, in the user documentation.</p></blockquote>
-<h2 id="next">Tutorials to follow next</h2>
-<p>Now that your application contains the Native API library, you can follow the tutorials in the <a href="../../native/windows8/">Native Windows 8 Development</a> section to learn more about authentication and security, server-side development, advanced client-side development, notifications and more.</p>
+## Overview
+The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
+
+> For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+
+In this tutorial you will learn how to add the MobileFirst Native SDK using Nuget to either a new or existing Windows 8 Universal application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
+
+**Pre-requisites:** Microsoft Visual Studio 2013 or 2015 and MobileFirst CLI installed on the developer workstation.  
+Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
+
+#### Jump to:
+
+- [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
+- [Tutorials to follow next](#tutorials-to-follow-next)
+
+### Adding the MobileFirst Native SDK
+
+Before starting, make sure the MobileFirst Server is running.  
+From **Terminal** run the command:
+
+```bash
+mfpdev server start
+```
+
+Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Xcode project.
+
+1. Create a Windows 8 Universal project using Visual Studio 2013/2015 or use an existing project.  
+
+2. Open **Terminal** and navigate to the root of the Xcode project.  
+
+3. Run the command:
+
+    ```bash
+    mfpdev app register
+    ```
+
+    The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>mfpclient.plist</code> file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.
+
+    > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
+        2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
+        3. After successfully registering your application you can optionally download a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK.
+
+4. Run the command:
+
+    ```bash
+    mfpdev app pull
+    ```
+    The <code>mfpdev app pull</code> CLI command creates the **mobilefirst** folder at the root of the Xcode project and downloads into it the <code>application-descriptor.json</code> file, containing application configuration data.
+
+    These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
+
+    > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
+
+5. To import worklight studio packages, NuGet package manager is used.
+NuGet is the package manager for the Microsoft development platform including .NET. The NuGet client tools provide the ability to produce and consume packages. The NuGet Gallery is the central package repository used by all package authors and consumers.
+
+6. Open the Windows 8 Universal project in Visual studio 2013/2015. Right click the project solution and navigate -> Manage Nuget packages for solution.
+
+![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
+
+ 7.In the search option , search for IBM MobileFirst Platform. Choose IBM.MobileFirstPlatform.8.0.0.0.
+
+![Add-Nuget-tosolution-search](Add-Nuget-tosolution1.png)
+
+![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
+
+ 8.Click Install. This installs the IBM MobileFirstPlatform Native SDK and its dependencies.
+
+Alternatively,
+
+Browse to [https://www.nuget.org/packages](https://www.nuget.org/packages)
+
+- Search for IBM MobileFirstPlatform SDK
+
+- Download IBM.MobileFirstPlatform.8.0.0.0.nupkg to your filesystem.
+- Open the Windows 8 Universal project in Visual Studio 2013/2015. Click on Tools -> NuGet Package Manager -> Package Manager Settings.
+
+![Add-Nuget-lcoally-VS-settings](Add-Nuget-locally0.png)
+
+- Select Package Sources
+- Click Add (+)
+Give some name to your package and choose the path to your .nupkg file and click update.
+
+![Add-Nuget-locally-source](Add-Nuget-locally1.png)
+
+Close the dialog. 	
+
+- In Solution explorer, right click the solution and choose  "Manage NuGet Packages for Solution".
+Select the source you created in the previous step or search for IBM MobileFirst Platform in search tab.
+Choose "IBM MobileFirst Platform".
+
+![Add-Nuget-choose-source](Add-Nuget-locally2.png)
+
+- Click on Install
+
+![Add-Nuget-installSDK](Add-Nuget.png)
+
+## Generated MobileFirst Native SDK artifacts
+Two MobileFirst-related artifacts are available in the Android Studio project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.resw</code> and the <code>application-descriptor.json</code> file.
+
+### mfpclient.resw
+
+Located at the root of the project, this file contains server connectivity properties and is user-editable:
+
+- <code>protocol</code> – The communication protocol to MobileFirst Server. Either <code>HTTP</code> or <code>HTPS</code>.
+- <code>host</code> – The hostname of the MobileFirst Server instance.
+- <code>port</code> – The port of the MobileFirst Server instance.
+- <code>wlServerContext</code> – The context root path of the application on the MobileFirst Server instance.
+- <code>languagePreference</code> - Sets the default language for client sdk system messages
+
+In Visual Studio, open the **Properties** window of the *mfpclient.resw* file and set the **Copy to Output Directory** option to **Copy always**.
+
+Add the following capabilities to the *Package.appxmanifest*:
+
+>Internet (Client &amp; Server)
+
+>Private Networks (Client &amp; Server)
+
+For more information, see the topic about developing native C# applications for Windows Universal, in the user documentation.
+
+## Tutorials to follow next
+Now that your application contains the Native API library, you can follow the tutorials in the
+[Native Windows 8 Development](../../native/windows8/) section to learn more about authentication and security, server-side development, advanced client-side development, notifications and more.
