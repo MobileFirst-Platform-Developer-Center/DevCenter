@@ -1,0 +1,74 @@
+{
+    "name": "Japanese Foundation 8.0",
+    "path": "/tutorials/jp/foundation/8.0",
+    "children": [{
+            "name": "Japanese Foundation",
+            "path": "",
+            "children": [{
+                "name": "Japanese Quick start",
+                "path": "/quick-start"
+            }, {
+                "name": "Japanese Setting up your development environment",
+                "path": "/setting-up-your-development-environment"
+            }, {
+                "name": "Japanese Adding the MobileFirst Platform Foundation SDK",
+                "path": "/adding-the-mfpf-sdk"
+            }, {
+                "name": "Japanese Client-side development",
+                "path": "/client-side-development"
+            }, {
+                "name": "Japanese Server-side development",
+                "path": "/server-side-development"
+            }, {
+                "name": "Japanese Authentication and security",
+                "path": "/authentication-and-security"
+            }, {
+                "name": "Japanese Notifications",
+                "path": "/notifications"
+            }, {
+                "name": "Japanese Analytics",
+                "path": "/analytics"
+            }, {
+                "name": "Japanese Moving to production",
+                "path": "/moving-to-production",
+            }, ]
+        }, {
+            "name": "Japanese IBM Countainers",
+            "path": "/ibm-containers",
+            "children": [{
+                "name": "Japanese Overview",
+                "path": ""
+            }, {
+                "name": "Japanese Evaluate",
+                "path": "/evaluate"
+            }, {
+                "name": "Japanese Run",
+                "path": "/run"
+            }, {
+                "name": "Japanese Sample application",
+                "path": "/sample-app"
+            }]
+        }, {
+            "name": "Japanese Tutorials by platform",
+            "path": "",
+            "children": [{
+                "name": "Japanese iOS",
+                "path": "/ios-tutorials"
+            }, {
+                "name": "Japanese Android",
+                "path": "/android-tutorials"
+            }, {
+                "name": "Japanese Windows 8 Universal",
+                "path": "/windows-8-tutorials"
+            }, {
+                "name": "Japanese Windows 10 UWP",
+                "path": "/windows-10-tutorials"
+            }, {
+                "name": "Japanese Hybrid",
+                "path": "/hybrid-tutorials"
+            }, {
+                "name": "Japanese Server-side",
+                "path": "/server-side-tutorials"
+            }]
+        }]
+    }

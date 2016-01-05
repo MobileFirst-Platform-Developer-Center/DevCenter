@@ -1,0 +1,115 @@
+[{
+    "name": "Tutorials",
+    "path": "/tutorials/en",
+    "children": [{
+        "name": "All Tutorials",
+        "path": "",
+        "children": [{
+            "name": "8.0",
+            "path": "/foundation/8.0/all-tutorials"
+        }, {
+            "name": "7.1",
+            "path": "/foundation/7.1/all-tutorials"
+        }, {
+            "name": "7.0",
+            "path": "/foundation/7.0/all-tutorials"
+        }, {
+            "name": "6.3",
+            "path": "/foundation/6.3/all-tutorials"
+        }, ]
+    }, {
+        "name": "Quick Start",
+        "path": "",
+        "children": [{
+            "name": "Cordova",
+            "path": "/foundation/8.0/quick-start/cordova"
+        }, {
+            "name": "iOS",
+            "path": "/foundation/8.0/quick-start/ios"
+        }, {
+            "name": "Android",
+            "path": "/foundation/8.0/quick-start/android"
+        }, {
+            "name": "Windows 8 Universal",
+            "path": "/foundation/8.0/quick-start/windows-8"
+        }, {
+            "name": "Windows 10 UWP",
+            "path": "/foundation/8.0/quick-start/windows-10"
+        } ]
+    }, {
+        "name": "By Product",
+        "path": "",
+        "children": [{
+            "name": "Foundation",
+            "path": "/foundation"
+        }, {
+            "name": "Quality Assurance",
+            "path": "/quality-assurance"
+        }, {
+            "name": "Cloudant Data Layer",
+            "path": "/cloudant"
+        }, {
+            "name": "Application Scanning",
+            "path": "/application-scanning"
+        }, {
+            "name": "Presence Insights",
+            "path": "https://presenceinsights.ibmcloud.com/piui/",
+            "external": true
+        }, ]
+    }, ]
+}, {
+    "name": "Product Integration",
+    "path": "/tutorials/en/product-integration",
+    "children": [{
+        "name": "8.0",
+        "path": "/8.0"
+    }, {
+        "name": "7.1",
+        "path": "/7.1"
+    }, {
+        "name": "7.0",
+        "path": "/7.0"
+    }, {
+        "name": "6.3",
+        "path": "/6.3"
+    }]
+}, {
+    "name": "Labs",
+    "path": "/labs",
+    "children": [{
+        "name": "Welcome to Labs",
+        "path": ""
+    }, {
+        "name": "Developers",
+        "path": "",
+        "children": [{
+            "name": "7.1 Labs",
+            "path": "/developers/7.1/setup",
+            }, {
+            "name": "7.0 Labs",
+            "path": "/developers/7.0/setup",
+        }]
+    }, {
+        "name": "Administrators",
+        "path": "",
+        "children": [{
+            "name": "7.1 Labs",
+            "path": "/administrators/7.1/intro"
+        }]
+    }]
+}, {
+    "name": "Learn More",
+    "path": "/learn-more",
+}, {
+    "name": "Video Gallery",
+    "path": "/video-gallery",
+}, {
+    "name": "Blog",
+    "path": "/blog",
+}, {
+    "name": "Help",
+    "path": "/help",
+}, {
+    "name": "Downloads",
+    "path": "/downloads",
+}]
