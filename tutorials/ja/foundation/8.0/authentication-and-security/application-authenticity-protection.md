@@ -30,7 +30,7 @@ Once an application has successfuly registered with the MobileFirst Server, and 
 
 <span style="color:red">TODO: Update with a new diagram from the design team</span>
 
-![Authenticity flow](https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/04/09_15_check_flow.jpg)
+![Authenticity flow](check_flow.jpg)
 
 > The challenge token in the diagram is processed by compiled native code, so that third-party attackers cannot see the logic of this processing.
 
