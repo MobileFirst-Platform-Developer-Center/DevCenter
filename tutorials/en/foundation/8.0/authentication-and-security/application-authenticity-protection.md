@@ -28,8 +28,6 @@ Only the developer or the enterprise who have the original private key that was 
 
 Once an application has successfuly registered with the MobileFirst Server, and passed the Authenticity challenge, an Authenticity token is granted. For as long as the token is valid, the Authenticity challenge will not occur again. See [Configuring authenticity](configuring-authenticity) to learn how this can be customized.
 
-<span style="color:red">TODO: Update with a new diagram from the design team</span>
-
 ![Authenticity flow](check_flow.jpg)
 
 > The challenge token in the diagram is processed by compiled native code, so that third-party attackers cannot see the logic of this processing.
