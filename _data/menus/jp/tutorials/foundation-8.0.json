@@ -2,72 +2,72 @@
     "name": "Japanese Foundation 8.0",
     "path": "/tutorials/ja/foundation/8.0",
     "children": [{
-            "name": "Japanese Foundation",
+            "name": "Foundation",
             "path": "",
             "children": [{
-                "name": "Japanese Quick start",
+                "name": "Quick start",
                 "path": "/quick-start"
             }, {
-                "name": "Japanese Setting up your development environment",
+                "name": "Setting up your development environment",
                 "path": "/setting-up-your-development-environment"
             }, {
-                "name": "Japanese Adding the MobileFirst Platform Foundation SDK",
+                "name": "Adding the MobileFirst Platform Foundation SDK",
                 "path": "/adding-the-mfpf-sdk"
             }, {
-                "name": "Japanese Client-side development",
+                "name": "Client-side development",
                 "path": "/client-side-development"
             }, {
-                "name": "Japanese Server-side development",
+                "name": "Server-side development",
                 "path": "/server-side-development"
             }, {
-                "name": "Japanese Authentication and security",
+                "name": "Authentication and security",
                 "path": "/authentication-and-security"
             }, {
-                "name": "Japanese Notifications",
+                "name": "Notifications",
                 "path": "/notifications"
             }, {
-                "name": "Japanese Analytics",
+                "name": "Analytics",
                 "path": "/analytics"
             }, {
-                "name": "Japanese Moving to production",
+                "name": "Moving to production",
                 "path": "/moving-to-production",
             }, ]
         }, {
-            "name": "Japanese IBM Countainers",
+            "name": "IBM Countainers",
             "path": "/ibm-containers",
             "children": [{
-                "name": "Japanese Overview",
+                "name": "Overview",
                 "path": ""
             }, {
-                "name": "Japanese Evaluate",
+                "name": "Evaluate",
                 "path": "/evaluate"
             }, {
-                "name": "Japanese Run",
+                "name": "Run",
                 "path": "/run"
             }, {
-                "name": "Japanese Sample application",
+                "name": "Sample application",
                 "path": "/sample-app"
             }]
         }, {
-            "name": "Japanese Tutorials by platform",
+            "name": "Tutorials by platform",
             "path": "",
             "children": [{
-                "name": "Japanese iOS",
+                "name": "iOS",
                 "path": "/ios-tutorials"
             }, {
-                "name": "Japanese Android",
+                "name": "Android",
                 "path": "/android-tutorials"
             }, {
-                "name": "Japanese Windows 8 Universal",
+                "name": "Windows 8 Universal",
                 "path": "/windows-8-tutorials"
             }, {
-                "name": "Japanese Windows 10 UWP",
+                "name": "Windows 10 UWP",
                 "path": "/windows-10-tutorials"
             }, {
-                "name": "Japanese Hybrid",
+                "name": "Hybrid",
                 "path": "/hybrid-tutorials"
             }, {
-                "name": "Japanese Server-side",
+                "name": "Server-side",
                 "path": "/server-side-tutorials"
             }]
         }]
