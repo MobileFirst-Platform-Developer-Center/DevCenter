@@ -45,11 +45,11 @@ In order to enable Application Authenticity Protection in your Cordova or Native
     java -jar /Users/idanadar/Desktop/mfp-server-authenticity-tool.jar /Users/idanadar/Desktop/MyBankApp.ipa
     ```
 
-    The result of the command above is a `.data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.appAuthenticity.data`.
+    The result of the command above is a `.authenticity_data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.authenticity_data`.
  
 2. Open the MobileFirst Operations Console in your browser of choice.
 3. Select your application from the left-side pane and click on the Authenticiy menu item.
-3. Click on "Upload File" to upload the `.data` file.
+3. Click on "Upload File" to upload the `.authenticity_data` file.
 
 After uploading the `.data` file Application Authenticity Protection will be enabled for the application.
 
@@ -64,7 +64,7 @@ In order to disable Application Authenticity Protection, click the "Delete Authe
 The Application Authenticity Protection Security Check has two available properties.  
 To configure, load the MobileFirst Operations Console and navigate to **[your application]** → **Security** → **???**
 
-- `expirationInSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
-- `inactivityTimeoutInSec`: Defaults to 0 seconds / no inactivity timeout. Defines the duration of inactivity that if met, will force token expiration.
+- `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
+- `inactivityTimeoutSec`: Defaults to 0 seconds / no inactivity timeout. Defines the duration of inactivity that if met, will force token expiration.
 
 <span style="color:red">TODO: add image of where to edit the properties</span>
