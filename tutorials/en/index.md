@@ -6,6 +6,7 @@ show_disqus: false
 show_breadcrumb: false
 breadcrumb_title: en
 use_dropdown: true
+use_dropdown_url_replace: true
 print_pdf: false
 ---
 <em>Currently tutorials are available only in English. Stay tuned!</em>
