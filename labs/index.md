@@ -16,5 +16,5 @@ show_disqus: false
     <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a>
     
     <h3>For Administrators</h3>
-    <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/administrators/7.1/setup/" role="button">7.1 labs</a>
+    <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/administrators/7.1/intro/" role="button">7.1 labs</a>
 </div>
