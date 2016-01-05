@@ -5,6 +5,7 @@ hide_in_breadcrumb: true
 show_disqus: false
 show_breadcrumb: false
 breadcrumb_title: en
+use_dropdown: true
 print_pdf: false
 ---
 <em>Currently tutorials are available only in English. Stay tuned!</em>
@@ -32,4 +33,3 @@ If you are not yet familiar with IBM MobileFirst Platform, visit the [Get Introd
 
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
 * [MobileFirst Platform Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
-
