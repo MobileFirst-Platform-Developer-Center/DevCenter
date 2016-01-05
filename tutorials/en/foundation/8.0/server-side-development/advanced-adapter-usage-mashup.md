@@ -1,10 +1,11 @@
 ---
 layout: tutorial
-title: Advanced adapter usage and mashup
+title: Advanced Adapter Usage and Mashup
 relevantTo: [hybrid]
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdapterMashup
+weight: 10
 ---
 # Overview
 Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
@@ -107,7 +108,7 @@ function getYahooWeather(woeid) {
             'u' : 'c' //celcius
         }
     };
-    
+
     return WL.Server.invokeHttp(input);
 }  
 {% endhighlight %}
@@ -217,7 +218,7 @@ conn.close();
 return jsonArr.toString();
 {% endhighlight %}  
 
-> An example of city list in SQL is available in the provided adapter maven project, under `utils/mobilefirstTraining.sql`.
+> An example of city list in SQL is available in the provided adapter maven project, under `Utils/mobilefirstTraining.sql`.
 Remember that SQL adapters require a JDBC connector driver. [Follow these instructions to add the JDBC connector dependency](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html) .
 
 ## Sample application

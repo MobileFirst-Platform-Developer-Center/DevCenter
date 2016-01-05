@@ -5,6 +5,7 @@ hide_in_breadcrumb: true
 show_disqus: false
 show_breadcrumb: false
 breadcrumb_title: en
+print_pdf: false
 ---
 <em>Currently tutorials are available only in English. Stay tuned!</em>
 

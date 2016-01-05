@@ -1,4 +1,4 @@
-<ul>
+<ul class="hidden-print">
 {% for p in include.children %}
     <li><a href="{{site.baseurl}}{{p.url}}"{%if p.url == page.url%} class="active"{%endif%}>{{ p.title }}</a>
       {% include show-children.html children=p.children%}

@@ -24,6 +24,7 @@ defaults:
       category: blog
       layout: blogpost
       show_disqus: true
+      pinned: false
   -
     scope:
       path: "tutorials"
@@ -38,3 +39,9 @@ defaults:
     values:
       layout: labs
       show_disqus: true
+  -
+    scope:
+      path: "pdf"
+    values:
+      layout: pdflist
+      permalink: /:path/:basename:output_ext

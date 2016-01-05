@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide hidden-sm hidden-xs" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -75,7 +75,7 @@ layout: default
         </div>
         <div class="col-md-3">
             <a href="http://www.ibm.com/support/knowledgecenter/SSVNYL"><img class="img-circle hidden-xs" src="{{site.baseurl}}/assets/mid-menu/get-docs.png" alt="Read user documentation topics"></a>
-            <h2><a href="http://www.ibm.com/support/knowledgecenter/SSVNYL" target="_blank">Get Docs</a></h2>
+            <h2><a href="http://www-01.ibm.com/support/knowledgecenter/SSVNYL/com.ibm.mfp.doc/platform_modules/c_pm_core.html" target="_blank">Get Docs</a></h2>
             <p>Access full product user documentation in the Knowledge Center.</p>
         </div>
         <div class="col-md-3">
@@ -92,8 +92,10 @@ layout: default
       <h3 class="blogPostsHeading">Recent Updates</h3>
       <div class="twoColumns">
         {% for post in site.posts limit:10 %}
-          <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>
+        <div class="postItem inline">
+          <p class="postDate">{% if post.pinned %}<span class="glyphicon glyphicon-pushpin"></span>{% endif %}{{post.date | date: '%B %d, %Y'}}</p>
           <p class="postTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></p>
+        </div>
         {% endfor %}
       </div>
 </div>

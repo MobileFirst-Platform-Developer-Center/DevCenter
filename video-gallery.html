@@ -5,25 +5,28 @@ custom_js:
 - lib/magnific/jquery.magnific-popup.min.js
 - js/video-gallery.js
 ---
+<script id="videoTemplate" type="text/x-jsrender">
+{% raw %}
+<li class="col-md-3 col-sm-4 col-xs-6">
+    <figure>
+      <a href="{{:url}}" data-toggle="lightbox" data-width="960" data-gallery="youtubevideos">
+          <img src="{{:thumbnail}}" class="thumbnail img-responsive" alt="{{:caption}}">
+      </a>
+      {{for tags}}
+        <span class="videoTag label label-info" data-tag="{{:#data}}">{{:#data}}</span>
+      {{/for}}
+      <figcaption class="figure-caption">
+        {{:caption}}
+      </figcaption>
+    </figure>
+</li>
+{% endraw %}
+</script>
 <div class="container video-gallery">
 
     <h2>Video Gallery<small> Click on a tag for filtered content</small></h2>
+    <div id="videoTags"></div>
+    <ul id="videosList" class="gallery row">
 
-    <ul class="gallery row">
-      {% for video in site.data.videos %}
-      <li class="col-md-3 col-sm-4 col-xs-6">
-          <figure>
-            <a href="{{video.url}}" data-toggle="lightbox" data-width="960" data-gallery="youtubevideos">
-                <img src="{{video.thumbnail}}" class="thumbnail img-responsive" alt="{{video.caption}}">
-            </a>
-            {% for tag in video.tags %}
-              <span class="label label-info">{{tag}}</span>
-            {% endfor %}
-            <figcaption class="figure-caption">
-                {{video.caption}}
-            </figcaption>
-          </figure>
-      </li>
-      {% endfor %}
     </ul>
 </div>

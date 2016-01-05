@@ -3,7 +3,6 @@ layout: tutorial
 title: All Tutorials
 weight: 1
 print_pdf: false
-print_pdf: false
 show_disqus: false
 ---
 <br>
@@ -167,7 +166,7 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
     * <a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-8-applications/">Adapter-based authentication in native Windows 8 applications</a>
 * <a href="../authentication-security/custom-authentication/">Custom Authentication</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-hybrid-applications/">Custom authentication in hybrid applications</a>
-    * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-ios-applications/"> Custom authentication in native iOS applications</a>
+    * <a href="../authentication-security/custom-authentication/custom-authentication-native-ios-applications/"> Custom authentication in native iOS applications</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-android-applications/">Custom authentication in native Android applications</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-windows-phone-8-applications/">Custom authentication in native Windows Phone 8 applications</a>
     * <a href="../authentication-security/custom-authentication/custom-authentication-in-native-windows-8-applications/">Custom authentication in native Windows 8 applications</a>
@@ -208,6 +207,10 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
 * <a href="../moving-production/reports-analytics/">Reports and analytics</a>
 * <a href="../moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
 
+### <a href="../starter-application-sample/">Starter Application samples</a>
+
+* <a href="../starter-application-sample/">Starter Application sample application</a>
+
 ### <a href="../ibm-containers/">IBM Containers</a>
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
 
@@ -221,8 +224,8 @@ Add testing capabilities to your application.
 
 * <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/cordova/">MobileFirst Quality Assurance in Cordova applications</a>
 * <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/hybrid/">MobileFirst Quality Assurance in Hybrid applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/ios/">MobileFirst Quality Assurance in iOS applications</a>
-* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/android/">MobileFirst Quality Assurance in Android applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/native-ios/">MobileFirst Quality Assurance in iOS applications</a>
+* <a href="{{site.baseurl}}/tutorials/en/quality-assurance/7.1/native-android/">MobileFirst Quality Assurance in Android applications</a>
 
 ### <a href="{{site.baseurl}}/tutorials/en/application-scanning/">Application Scanning</a>
 Scan your application for potential harming code.

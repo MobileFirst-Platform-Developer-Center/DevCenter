@@ -26,6 +26,9 @@ custom_js:
             {{ content }}
 
               {% if page.show_children %}
+                {% if page.show_children_title %}
+                  <h2 class="hidden-print">{{page.show_children_title}}</h2>
+                {% endif %}
                 {% include show-children.html children=page.children %}
               {% endif %}
 

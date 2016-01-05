@@ -160,7 +160,7 @@ public Response getAllUsers() throws SQLException{
 }
 {% endhighlight %}</p>
 <h3>Update user</h3>
-<p>{% highlight java linenos %}<br />
+<p>{% highlight java linenos %}
 @PUT
 @Path("/{userId}")
 public Response updateUser(@PathParam("userId") String userId, @FormParam("firstName") String firstName, @FormParam("lastName") String lastName, @FormParam("password") String password) throws SQLException{

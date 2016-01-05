@@ -11,8 +11,8 @@
                 "name": "Setting up your development environment",
                 "path": "/setting-up-your-development-environment"
             }, {
-                "name": "Configuring the MobileFirst Platform Foundation SDK",
-                "path": "/configuring-the-mfpf-sdk"
+                "name": "Adding the MobileFirst Platform Foundation SDK",
+                "path": "/adding-the-mfpf-sdk"
             }, {
                 "name": "Client-side development",
                 "path": "/client-side-development"
@@ -20,11 +20,11 @@
                 "name": "Server-side development",
                 "path": "/server-side-development"
             }, {
-                "name": "Notifications",
-                "path": "/notifications"
-            }, {
                 "name": "Authentication and security",
                 "path": "/authentication-and-security"
+            }, {
+                "name": "Notifications",
+                "path": "/notifications"
             }, {
                 "name": "Analytics",
                 "path": "/analytics"
@@ -58,11 +58,11 @@
                 "name": "Android",
                 "path": "/android-tutorials"
             }, {
-                "name": "Windows Phone 8 & 10",
-                "path": "/windows-phone-8-10-tutorials"
+                "name": "Windows 8 Universal",
+                "path": "/windows-8-tutorials"
             }, {
-                "name": "Windows 8 & 10",
-                "path": "/windows-8-10-tutorials"
+                "name": "Windows 10 UWP",
+                "path": "/windows-10-tutorials"
             }, {
                 "name": "Hybrid",
                 "path": "/hybrid-tutorials"
