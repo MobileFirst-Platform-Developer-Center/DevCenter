@@ -9,6 +9,7 @@ use_dropdown: true
 use_dropdown_url_replace: true
 print_pdf: false
 ---
+<br>
 チュートリアルのセクションは、自分のペースで学習できるチュートリアルとサンプル・アプリケーションの集合です。チュートリアルは、ユーザーが IBM MobileFirst Platform 製品群を使用してモバイル・アプリケーションを開発、テスト、保護およびデプロイするための支援となります。IBM MobileFirst Platform について詳しくは、[はじめに](../../get-introduced/) ページをご覧ください。
 
 ### [Foundation]({{site.baseurl}}/tutorials/ja/foundation/)

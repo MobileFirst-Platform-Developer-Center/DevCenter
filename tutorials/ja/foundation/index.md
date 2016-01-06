@@ -5,6 +5,7 @@ weight: 0
 show_breadcrumb: true
 show_disqus: false
 ---
+<br>
 IBM MobileFirst Platform Foundation は企業がネイティブ、ハイブリッドおよびモバイル Web アプリケーションを開発し、テスト、保護および管理できるようにするためのツール・セットです。
 MobileFirst Studio, MobileFirst Operations Console, MobileFirst CLI および MobileFirst Native &amp; Hybrid SDK について学習するには、ご使用の Foundation リリースを以下のリストから選択してください:
 
