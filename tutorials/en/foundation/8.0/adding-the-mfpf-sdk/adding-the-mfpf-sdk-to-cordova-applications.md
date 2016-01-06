@@ -113,7 +113,7 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>config.xml</code> file at the root of the Cordova project, and adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as an application in MobileFirst Server.
 
     > The application registration can also be done from the MobileFirst Operations Console:    
-    > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:10080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
+    > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:9080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
     > 2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.  
     > 3. After successfully registering your application you can optionally download a "skeleton" Cordova project pre-bundled with the MobileFirst Cordova SDK.
 
@@ -122,7 +122,7 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
 > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 
-###Running the application on emulator or on a real device
+## Running the application on emulator or on a real device
 ### Preview the Application
 
 The application can be previewed with the CLI command
@@ -170,7 +170,7 @@ Run the application on an Android device:
 cordova run android
 ```
 
-### Generated MobileFirst Native SDK artifacts
+## Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Cordova project after it has been integrated with the MobileFirst Cordova SDK: the <code>config.xml</code> and the <code>application-descriptor.json</code> file.
 
 ### config.xml

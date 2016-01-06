@@ -1,0 +1,170 @@
+---
+layout: labs
+title: MobileFirst Platform Foundation 7.0 Labs
+tabs:
+  - name: Setup
+    path: /labs/developers/7.0/setup/
+  - name: CNN RSS
+    path: /labs/developers/7.0/cnn-rss/
+  - name: Hello Paris
+    path: /labs/developers/7.0/hello-paris/
+  - name: Electricity Consumption Checker
+    path: /labs/developers/7.0/electricity-consumption-checker/
+  - name: Technical Maintenance Assistant
+    path: /labs/developers/7.0/technical-maintenance-assistant/
+---
+<h3>Hello Paris</h3>
+<p>During this lab you will create a Hello Paris mobile application. Development will be done using the Ionic Framework, MobileFirst Platform Foundation and Visual Studio Code as the main IDE. You will use several speech APIs, including Google translation API to perform speech-to-text and text-to-speech translation. In addition, you will use the Watson Service on Bluemix to perform English text-to-French text translation, Cloudant to store user queries and the MobileFirst Platform Quality Assurance and MobileFirst Platform Application Scanning Services on Bluemix.</p>
+
+<img src="{{site.baseurl}}/assets/labs/hello-paris.png" alt="Hello Paris app UI"/>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Prepare screen mockups</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <b>Description:</b> Using the NinjaMock service, create screen mockups for the application.
+                <br>
+                <b>Time to complete:</b> 17 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="https://www.youtube.com/embed/nInx6jw22Fk"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Prepare Hybrid application using the Inonic framework</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <b>Description:</b> Using the Ionic framework, create a simple project and migrate it to MobileFirst Platform. Open it using Visual Studio Code together with live-reload server from Ionic framework.
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <br>
+                <b>Lab files:</b> <a href="https://www.dropbox.com/sh/swl66z0ot7riefc/AACnWXpzRp6rTFpaRTBDqBhoa?dl=0">download</a>
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/mgt0A3Xn6sk"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Implement application logic</a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <b>Description:</b> Prepare the main page structure required for development of this application. Deploy the application to MobileFirst Server and preview its Android version using the  built-in Mobile Browser Simulator.
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/xUkuKLpI-xI"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Add animations and alter the application UI</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <b>Description:</b> Create a spinner, and change the application design by adding some animation using ng-animate.
+                <br>
+                <b>Time to complete:</b> 35 minutes
+                <br>
+                <b>Lab files: <a href="https://www.dropbox.com/sh/k5x1nn2n8siso37/AADl1mRN-B7muLda0NFEcFVma?dl=0">download</a>
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pIIH1dEUPEU"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Add translation lists and history</a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+                <b>Description:</b> Create a second page structure with 3 lists, an additional button for repeating French translation and create related functions.
+                <br>
+                <b>Time to complete:</b> 45 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/bRvSPfZyO08"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSix">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Add speech recognition</a>
+            </h4>
+        </div>
+        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div class="panel-body">
+                <b>Description:</b> Using annyang library add speech recognition and transform it to english text.
+                <b>Time to complete:</b> 25 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1gpVgdzu1Ac"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSeven">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">Use the Watson Bluemix service</a>
+            </h4>
+        </div>
+        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+            <div class="panel-body">
+                <b>Description:</b> Create a new Watson service instance on Bluemix and perform text-to-text translation using it. Perform text-to-speech transformation and playback French text.
+                <br>
+                <b>Time to complete:</b> 50 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/x-5aMLxUuAU"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingEight">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">Use Cloudant to store and retrieve history</a>
+            </h4>
+        </div>
+        <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+            <div class="panel-body">
+                <b>Description:</b> Create Cloudant database instance and using REST API add and get history of user queries.
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <br>
+                <b>Lab files:</b> <a href="https://www.dropbox.com/sh/10wkdycudygli0o/AAAjKgZYFLR17ZEx7jdU3GkTa?dl=0">download</a>
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/2RNeZuyOjlY"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+---
+layout: labs
+title: MobileFirst Platform Foundation 7.1 Labs
+tabs:
+  - name: Setup
+    path: /labs/developers/7.1/setup/
+  - name: Hybrid Wallet
+    path: /labs/developers/7.1/hybrid-wallet/
+  - name: Canteen
+    path: /labs/developers/7.1/canteen/
+  - name: Comrade
+    path: /labs/developers/7.1/comrade/
+---
+<h3>Comrade</h3>
+<p>During this lab session you will create the "Comrade" application. This app will be using adapter-based authentication, an HTTP JavaScript  adapter and the recently introduced Cordova application project.</p>
+<p>Development will be done using the Ionic Framework, MobileFirst Platform CLI and Atom as the main IDE.</p>
+<p>You will also learn how to use Mobile Quality Assurance service on Bluemix. The application development will start with UI preparation using the Ionic Creator drag’n’drop tool. The created UI project will be then migrated to a MobileFirst platform Cordova application project and you will continue development from there.</p>
+
+<img src="{{site.baseurl}}/assets/labs/comrade-app.png" alt="Comrade app UI"/>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Create a basic app UI using Ionic Creator</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <b>Description:</b> Register an account for Ionic Creator and use its drag’n’drop editor to create a simple UI for the application.
+                <br>
+                <b>Time to complete:</b> 20 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="https://www.youtube.com/embed/CqMxd_2ej-I"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Migrate the Ionic project to MobileFirst Platform</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <b>Description:</b> Using the MobileFirst Platform Foundation 7.1 CLI and the Atom code editor, migrate the Ionic project to a MobileFirst Cordova project. Create a server side project, deploy the application and establish server connectivity.
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <br>
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Y2C4P6QbHfA"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Use an HTTP adapter to retrieve a list of comrades</a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <b>Description:</b> Using the MobileFirst Platform Foundation 7.1 CLI and the Atom, create an HTTP adapter to retrieve a list of comrades and display them inside the application.
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9KUiO09jPZE"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Implement application logic</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <b>Description:</b> Prepare a Details page and display there the details for a selected comrade.
+                <br>
+                <b>Time to complete:</b> 17 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Qq4UFPlPXRY"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Implement adapter-based authentication</a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+                <b>Description:</b> Create a second adapter that will be responsible for authentication and for validating user credentials inside the adapter by following the adapter authentication concept.
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/lgUwFaI9kTs"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSix">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">Application UI</a>
+            </h4>
+        </div>
+        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div class="panel-body">
+                <b>Description:</b> Style the “Comrade” application using Ionic Framework style and custom classes.
+                <b>Time to complete:</b> 50 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Qy-DFmib4co"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingSeven">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">Remote Disable and Analytics</a>
+            </h4>
+        </div>
+        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+            <div class="panel-body">
+                <b>Description:</b> Get introduced to MobileFirst Platform capabilities: Remote Control and Analytics, including implementation of a custom charts.
+                <br>
+                <b>Time to complete:</b> 35 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/b1AOB6u0wLs"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingEight">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">Use the Mobile Quality Assurance service on Bluemix to submit a bug report</a>
+            </h4>
+        </div>
+        <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+            <div class="panel-body">
+                <b>Description:</b> Create an MQA service instance on Bluemix, add MQA SDK to hybrid application, establish the session and submit a bug report.
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DAjyV_VIxwU"></iframe>
+                </div></div>
+            </div>
+        </div>
+    </div>
+</div>

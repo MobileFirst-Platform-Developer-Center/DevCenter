@@ -1,0 +1,124 @@
+---
+layout: labs
+title: MobileFirst Platform Foundation 7.1 Labs
+tabs:
+  - name: Introduction
+    path: /labs/administrators/7.1/intro/
+  - name: Linux
+    path: /labs/administrators/7.1/linux/
+  - name: Windows
+    path: /labs/administrators/7.1/windows/
+  - name: IBM Bluemix
+    path: /labs/administrators/7.1/bluemix/
+---
+<h2>Overview</h2>
+<p>Follow the instructions below to learn how to install MobileFirst Platform Server on IBM Bluemix.</p>
+
+<p>For this purpose, the MobileFirst Platform Server will be setup in a Docker container image, and pushed to an IBM Container on Bluemix, including MobileFirst Platfrom Operational Analytics. An Ubuntu 14.04 image will be used to perform the installation steps.</p>
+
+<h4>Pre-requisites:</h4>
+
+<ol>
+    <li>Follow the <a href="{{site.baseurl}}/labs/developers/7.1/setup/">7.1 Labs required setup</a> to install Ubuntu, install the MobileFirst CLI and register at Bluemix</li>
+</ol>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Setup prerequisites for MobileFirst Platform installation on Bluemix</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <b>Description:</b> Download the MobileFirst Platform evaluation image, setup Docker and VirtualBox, install Cloud Foundry command-line interface and IBM Containers extension.
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <br>
+                Lab files: 
+                
+                <ul>
+                    <li>
+{% highlight bash %}
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+sudo pip install pyopenssl ndg-httpsclient pyasn1
+sudo pip install requests[security]
+{% endhighlight %}
+                    </li>
+                    <li><a href="https://help.ubuntu.com/community/VirtualBox/Installation">VirtualBox installation using command-line on Ubuntu</a></li>
+                </ul>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/yh72B0acUik"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Install MobileFirst Platform Analytics container on Bluemix</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <b>Description:</b> Setup and configure MobileFirst Platform analytics image in docker container and push it to Bluemix.<br>
+                Docker machine environment setup: <code>eval "$(docker-machine env default)"</code>
+                <br>
+                <b>Time to complete:</b> 45 minutes
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/W8mXpsMv2qU"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Install MobileFirst Platform Server 7.1 on Bluemix</a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <b>Description:</b> Setup and configure MobileFirst Platform Server image in docker container with test runtime environment and push it to Bluemix.
+                <br>
+                Docker machine environment setup: <code>eval "$(docker-machine env default)"</code>
+                <br>
+                <b>Time to complete:</b> 45 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/kCxRv_sn508"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Verify MobileFirst Platform 7.1 installation on Bluemix</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <b>Description:</b> Deploy test application and adapter and verify platform setup using it.
+                <br>
+                <b>Time to complete:</b> 10 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/um8CnJzYOJY"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,23 +1,26 @@
 <nav class="navmenu navmenu-default" role="navigation">
     <ul>
-      {% for version_hash in site.data.menus.en.tutorials %}
-        {% assign version = version_hash[1] %}
-          {% if page.url contains version.path %}
-            {% for category in version.children %}
-              {% capture combined_path %}{{version.path}}{{category.path}}{% endcapture %}
-              <li class="open">
-                <a href="#" class="navmenu-brand dropdown-toggle" data-toggle="dropdown">{{category.name}}</a>
-                <ul class="dropdown-menu navmenu-nav" role="menu">
-                  {% for topic in category.children %}
-                    {% capture combined_path %}{{version.path}}{{category.path}}{{topic.path}}{% endcapture %}
-                    <li {% if page.url contains combined_path %} class="active" {% endif %}>
-                      <a href="{{site.baseurl}}{{combined_path}}/">{{topic.name}}</a>
-                    </li>
-                  {% endfor %}
-                </ul>
-              </li>
-            {% endfor %}
-          {% endif %}
+      {% for language_hash in site.data.menus %}
+        {% assign language = language_hash[1] %}
+        {% for version_hash in language.tutorials %}
+          {% assign version = version_hash[1] %}
+            {% if page.url contains version.path %}
+              {% for category in version.children %}
+                {% capture combined_path %}{{version.path}}{{category.path}}{% endcapture %}
+                <li class="open">
+                  <a href="#" class="navmenu-brand dropdown-toggle" data-toggle="dropdown">{{category.name}}</a>
+                  <ul class="dropdown-menu navmenu-nav" role="menu">
+                    {% for topic in category.children %}
+                      {% capture combined_path %}{{version.path}}{{category.path}}{{topic.path}}{% endcapture %}
+                      <li {% if page.url contains combined_path %} class="active" {% endif %}>
+                        <a href="{{site.baseurl}}{{combined_path}}/">{{topic.name}}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% endfor %}
+            {% endif %}
+        {% endfor %}
       {% endfor %}
     </ul>
 </nav>

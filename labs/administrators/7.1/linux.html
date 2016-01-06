@@ -1,0 +1,148 @@
+---
+layout: labs
+title: MobileFirst Platform Foundation 7.1 Labs
+tabs:
+  - name: Introduction
+    path: /labs/administrators/7.1/intro/
+  - name: Linux
+    path: /labs/administrators/7.1/linux/
+  - name: Windows
+    path: /labs/administrators/7.1/windows/
+  - name: IBM Bluemix
+    path: /labs/administrators/7.1/bluemix/
+---
+<h2>Overview</h2>
+<p>Follow the instructions below to learn how to install MobileFirst Platform Server on a Linux workstation.</p>
+
+<p>For this purpose, Ubuntu Server 14.04.03 64bit distribution will be used and together with DB2 Workgroup Server V10.5, WebSphere Application Server Liberty Core 8.5.5.5, MobileFirst Server including Operational Analytics and Application Center.</p>
+
+<h4>Pre-requisites:</h4>
+
+<ol>
+    <li>Download Ubuntu Server 14.04 64bit image (<a href="https://drive.google.com/file/d/0BwGGruMLclCVNGNGVThBd29ocmc/view?usp=sharing">Google Drive</a> | <a href="https://www.dropbox.com/s/blpujy8qpxxqiix/UbuntuServer14.04.3.ova?dl=0">Dropbox</a>)</li>
+    <li>Download product distributions.<br/>
+        <ul>
+            <li>Database – DB2_10.5.0.3_limited_Lnx_x86-64</li>
+            <li>MobileFirst Server – MFPF_7.1_INST_MGR_REP_MF_SVR_EN</li>
+            <li>WebSphere Application Server – WAS_LIBERTY_CORE_V8.5.5.5_MP_ML</li>
+        </ul>
+        <br>
+        You can get these in three different ways:
+        <ul>
+            <li>If you are a customer and have a license – download them from Passport Advantage</li>
+            <li>If you are a Business Partner and have a Value Package – download them from Partner World</li>
+            <li>Request trial licenses from IBM representatives</li>
+        </ul>
+    </li>
+</ol>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Setup pre-requisited software</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+                <b>Description:</b> Using existing VMware image, start the virtual machine instance with Ubuntu Server 14.04.03 and install additional packages, required to setup and run MobileFirst Platform on Linux.
+                <br>
+                <b>Time to complete:</b> 23 minutes
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Ihp6Xlj3AK0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Setup DB2 Workgroup Server installation on Ubuntu 14.04</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <b>Description:</b> Setup DB2 Workgroup Server V10.5 that we will use as a database for MobileFirst Platform.
+                <br>
+                <b>Time to complete:</b> 25 minutes
+                <br>
+                <b>Lab files:</b>
+                <ul>
+                    <li><a href="http://winscp.net/eng/download.php">WinSCP</a> (graphical SCP client for Windows)</li>
+                    <li><a href="http://www-01.ibm.com/support/docview.wss?uid=swg24040291">IBM Installation Manager</a></li>
+                    <li><a href="https://github.com/andriivasylchenko/adminDayTestApp">Demo project on GitHub.com</a> (.war, .adapter and .wlapp files can be found in the \bin folder)</li>
+                    <li>Symbolic link (will be required during the lab): <code>sudo ln -s /lib/i386-linux-gnu/libpam.so.0 /lib/libpam.so.0</code></li>
+                </ul>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Qfc8qG6IWMA"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Setup WAS Liberty Core on Ubuntu 14.04</a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <b>Description:</b> Setup Installation Manager and then install WAS Liberty. Create server instances for MobileFirst Server and Analytics server.
+                <br>
+                <b>Time to complete:</b> 21 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/PiqEFIzLGBU"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Setup MobileFirst Platform Server 7.1, Operational Analytics and Application Center on Ubuntu 14.04</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <b>Description:</b> Using Installation Manager install MobileFirst Platform Server. Setup Analytics server.
+                <br>
+                <b>Time to complete:</b> 15 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/OBeuL23IUm8"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Setup runtime and deploy Test application and adapter to verify MFP setup on Ubuntu 14.04</a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+                <b>Description:</b> Using the Server Configuration Tool, create a MobileFirst Platform Server configuration and then setup the runtime environment. Deploy test application and adapter and verify server installation using the test application.
+                <br>
+                <b>Time to complete:</b> 30 minutes
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/UT6PDQc1mwA"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
