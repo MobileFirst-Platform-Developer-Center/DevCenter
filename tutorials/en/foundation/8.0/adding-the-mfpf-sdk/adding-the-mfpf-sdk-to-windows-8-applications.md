@@ -22,6 +22,7 @@ Make sure you have read the [Setting up your MobileFirst development environment
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ### Adding the MobileFirst Native SDK
+Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Visual Studio project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
 From **Terminal** run the command:
@@ -29,8 +30,6 @@ From **Terminal** run the command:
 ```bash
 mfpdev server start
 ```
-
-Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Visual Studio project.
 
 1. Create a Windows 8 Universal project using Visual Studio 2013/2015 or use an existing project.  
 

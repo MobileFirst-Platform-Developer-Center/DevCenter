@@ -22,7 +22,14 @@ Make sure you have read the [Setting up your MobileFirst development environment
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ### Manually Adding the MobileFirst Native SDK
-Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Android Studio project.
+Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Android Studio project, and registering the application in the MobileFirst Server.
+
+Before starting, make sure the MobileFirst Server is running.  
+From **Terminal** run the command:
+
+```bash
+mfpdev server start
+```
 
 1. Create an Android project or use an existing one.  
 
@@ -58,7 +65,10 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
 
     ```xml
     repositories{
-        jcenter()
+        //jcenter()
+        maven {
+            url "http://ibobs-Mac-mini.local:8081/nexus/content/repositories/snapshots/"
+        }
     }
     ```
     

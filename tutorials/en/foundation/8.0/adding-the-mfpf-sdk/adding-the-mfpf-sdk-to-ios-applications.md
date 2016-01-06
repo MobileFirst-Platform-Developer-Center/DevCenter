@@ -22,14 +22,14 @@ Make sure you have read the [Setting up your MobileFirst development environment
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ### Adding the MobileFirst Native SDK
+Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Xcode project, and registering the application in the MobileFirst Server.
+
 Before starting, make sure the MobileFirst Server is running.  
 From **Terminal** run the command:
 
 ```bash
 mfpdev server start
 ```
-
-Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Xcode project.
 
 1. Create an Xcode project or use an existing one.  
 
