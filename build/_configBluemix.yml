@@ -1,1 +1,1 @@
-exclude: [vendor,build,Gemfile,Gemfile.lock,README.md,pdf]
+exclude: [vendor,build,Gemfile,Gemfile.lock,README.md,pdf,Staticfile.auth]
