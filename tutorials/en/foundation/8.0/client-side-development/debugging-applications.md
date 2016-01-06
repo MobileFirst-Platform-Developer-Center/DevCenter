@@ -2,7 +2,7 @@
 layout: tutorial
 title: Debugging applications
 relevantTo: [cordova]
-weight: 12
+weight: 7
 ---
 ### Overview
 This tutorial explores various approaches to debugging the web resources of Cordova application,  

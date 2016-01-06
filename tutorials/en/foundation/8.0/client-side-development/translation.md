@@ -2,7 +2,7 @@
 layout: tutorial
 title: Multilingual translation of Cordova applications
 relevantTo: [cordova]
-weight: 12
+weight: 4
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
