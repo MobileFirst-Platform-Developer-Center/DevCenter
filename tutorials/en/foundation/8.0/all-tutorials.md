@@ -36,7 +36,7 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
 
 ### [Client-side Development](../client-side-development/)
-Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation, web &#8596; native interactions, debugging and more...
+Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation debugging applications and more...
 
 * [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
 * <span style="color:red">TODO: </span>[Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
