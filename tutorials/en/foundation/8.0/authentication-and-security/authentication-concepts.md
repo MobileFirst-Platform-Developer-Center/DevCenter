@@ -30,9 +30,10 @@ In this phase, the client undergoes `security checks` in order to receive an acc
 These `security checks` use **authorization entities**, which are described in [the next section](#authEntities).  
 ![Obtain Token](auth-flow-1.jpg)
 
-1. Client application sends a request to obtain a token.
-2. Client application undergoes security checks according to requested scope.
-3. Client application receives and stores the token.
+1. Client application sends a request to use a protected resource.
+2. Client application undergoes `security checks` according to the requested resource `scope`.
+3. After receiving a `grant code` the client application requests a token.
+3. Client application receives the token.
 
 ### Using a token to access a protected resource
 It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
