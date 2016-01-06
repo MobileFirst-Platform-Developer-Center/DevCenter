@@ -205,11 +205,11 @@ This is where you had to set <code>publicKeyServerUrl</code> when you set up OAu
 //the configuration ('config') is optional if you wish to report<br />
 //events to the Analytics Server.<br />
     var config = {<br />
-        url : 'http://localhost:10080/worklight-analytics-service/data',<br />
+        url : 'http://localhost:9080/worklight-analytics-service/data',<br />
         username : 'admin',<br />
         password : 'admin'<br />
     };</p>
-<p>    passport.use(new mfpStrategy({publicKeyServerUrl:'http://localhost:10080/WLProject', analytics : {onpremise: config}}));</p>
+<p>    passport.use(new mfpStrategy({publicKeyServerUrl:'http://localhost:9080/WLProject', analytics : {onpremise: config}}));</p>
 <p>    var app = express();<br />
     app.use(passport.initialize());</p>
 <p>//protect api with MFP strategy using scope Realm1 Realm2 Realm3<br />
