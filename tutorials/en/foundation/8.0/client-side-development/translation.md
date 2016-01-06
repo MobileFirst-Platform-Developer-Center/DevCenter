@@ -155,6 +155,7 @@ navigator.globalization.getPreferredLanguage(
 );
 ```
 
+The result can then be seen in the device log, for example from Android's LogCat:  
 ![Get device localle and language](DeviceLocaleLangugae.png)
 
 ## Sample application
