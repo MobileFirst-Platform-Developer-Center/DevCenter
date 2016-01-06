@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>IBM MobileFirst Platform</title>
+	<atom:link href="https://developer.ibm.com/mobilefirstplatform/feed/" rel="self" type="application/rss+xml" />
+	<link>https://developer.ibm.com/mobilefirstplatform</link>
+	<description>Develop, test, manage, and secure your mobile web, native and hybrid apps</description>
+	<lastBuildDate>Mon, 04 Jan 2016 18:16:20 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=4.2.5</generator>
+	<item>
+		<title>Foundation 7.1 Accessibility and Application Crash Analytics Support is now available</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/12/31/foundation-7-1-accessibility-and-application-crash-analytics-support-is-now-available/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/12/31/foundation-7-1-accessibility-and-application-crash-analytics-support-is-now-available/#comments</comments>
+		<pubDate>Thu, 31 Dec 2015 21:43:55 +0000</pubDate>
+		<dc:creator><![CDATA[cshunger]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[mobilefirst-platform]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=19116</guid>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/31/foundation-7-1-accessibility-and-application-crash-analytics-support-is-now-available/">Foundation 7.1 Accessibility and Application Crash Analytics Support is now available</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>This month IBM MobileFirst&trade; Platform Foundation released two new features in an iFix for Operational Analytics, accessibility, and application crash analytics.</p>
+<h2>Crash Analytics</h2>
+<p>Previously you have had the ability to capture crashes, now with Operational Analytics you can analyze your captured application crashes, thus allowing you to better monitor and troubleshoot your applications. We now offer new charts for monitoring application crashes and charts for application troubleshooting on the dashboard of the Operational Analytics Console.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/Screen-Shot-2016-01-04-at-12.05.34-PM.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/Screen-Shot-2016-01-04-at-12.05.34-PM.png" alt="Screen Shot 2016-01-04 at 12.05.34 PM" width="2560" height="1400" class="aligncenter size-full wp-image-19142" /></a></p>
+<p>Crash Analytics has an easy client-side implementation which makes capturing crashes a much simpler task. Rogue crashes are common on apps released to the public. Crash Analytics captures and analyzes rogue crashes and informs the Operational Analytics users. Knowing what causes these rogue crashes gives the developer the opportunity to debug and fix without having to spend the time reproducing the problem. With that being said, Crash Analytics helps your developers save time and betters your app user experience.</p>
+<p>You can read more about Crash Analytics in our knowledge center <a href="https://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.monitor.doc/monitor/c_op_analytics_crashes.html">here</a>.</p>
+<h2>Accessibility</h2>
+<p>Accessibility features enable people with disabilities, such as restricted mobility and limited vision, to work successfully with IBM MobileFirst&trade; Platform Foundation.</p>
+<p>The IBM MobileFirst Operational Analytics Console now provides accessibility features.</p>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/31/foundation-7-1-accessibility-and-application-crash-analytics-support-is-now-available/">Foundation 7.1 Accessibility and Application Crash Analytics Support is now available</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/12/31/foundation-7-1-accessibility-and-application-crash-analytics-support-is-now-available/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Protected: MFP Performance Testing for Session Independent Mode (OAuth model)</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/12/31/19121/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/12/31/19121/#comments</comments>
+		<pubDate>Thu, 31 Dec 2015 13:00:23 +0000</pubDate>
+		<dc:creator><![CDATA[K7FX_Haim_Schneider]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=19121</guid>
+		<description><![CDATA[<p>There is no excerpt because this is a protected post.</p>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/31/19121/">Protected: MFP Performance Testing for Session Independent Mode (OAuth model)</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<form action="https://developer.ibm.com/mobilefirstplatform/wp-login.php?action=postpass" class="post-password-form" method="post">
+<p>This content is password protected. To view it please enter your password below:</p>
+<p><label for="pwbox-19121">Password: <input name="post_password" id="pwbox-19121" type="password" size="20" /></label> <input type="submit" name="Submit" value="Submit" /></p>
+</form>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/31/19121/">Protected: MFP Performance Testing for Session Independent Mode (OAuth model)</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/12/31/19121/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>MFP Performance Testing for Session Independent Mode (OAuth model)</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/12/20/mfp-performance-testing-session-independent-mode/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/12/20/mfp-performance-testing-session-independent-mode/#comments</comments>
+		<pubDate>Sun, 20 Dec 2015 08:31:25 +0000</pubDate>
+		<dc:creator><![CDATA[1WY0_nir_grande]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=19065</guid>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/20/mfp-performance-testing-session-independent-mode/">MFP Performance Testing for Session Independent Mode (OAuth model)</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>The purpose of this page is to describe how to run performance tests on the different features of the MFP Server. In this post, an Apache JMeter performance test is used and Java classes are compiled especially for JMeter.</p>
+<p>There are two descriptions in this post:<br />
+1. <a href="#MFP">MFP flow</a> &#8211; The standard MFP flow, starting from the client request and ending with the reception of a valid access token.<br />
+2. <a href="#Jmeter">Test flow</a> &#8211; A JMeter test flow that emulates an MFP client.<br />
+A zip file containing the files that are used in the JMeter flow below has been provided. Read more <a href="#Attachment">here</a>.</p>
+<p>Before we describe the actual test flow, let us consider the OAuth flow:<br />
+<font size="6"><strong><em>OAuth flow with Java adapter</em></strong></font><br />
+The OAuth 2.0 protocol is based on acquiring an access token, which encapsulates the authorization that is granted to the client. In that context, the IBM MobileFirst Platform Server serves as an authorization server and is able to generate such tokens. The client can then use these tokens to access resources on a resource server, which can be either the MobileFirst Server itself, or an external server. The resource servers perform validation on the token to make sure that the client can be granted access to the requested resource. This separation between resource server and authorization server in the new OAuth-based model allows you to enforce MobileFirst security on resources that are running outside the MobileFirst Server.</p>
+<ul>
+<a name="MFP"></a><br />
+<font size="6"><strong>MFP flow</strong></font><br />
+The resource in this flow is Java adapter<br />
+<strong>Registration</strong> &#8211; This phase occurs once in the lifetime of a mobile app that is installed on a device. In this phase, the client registers itself with the MobileFirst Server. When application authenticity has been configured, it is activated during registration.<br />
+<strong>Authorization</strong> &#8211; In this phase, the client has to undergo specific security checks, according to the scope of the authorization request. All the security checks supported by MobileFirst can be used in this phase (built-in realms such as remoteDisable and others, custom realms, and adapter-based authentication).<br />
+<strong>Token</strong> &#8211; After successful authorization, the client is redirected to the token endpoint, where it is authenticated using the PKI trust that was established during the registration phase. The endpoint then generates two sets of tokens and sends them back to the client: an access token, which encapsulates all the security checks that the client has passed in the authorization phase and an ID token, which contains information regarding the user and device identity of the client.<br />
+<strong>Access resource</strong> &#8211; From this point it is possible to access the resource, either an adapter or an external resource, with a valid token.</p>
+<p><a name="Jmeter"></a><br />
+<font size="6"><strong>JMeter Test flow</strong></font><br />
+<a href="#Prerequisite">Prerequisite</a> &#8211; Before running the script, ensure that the MFP Server is up. Deploy the application and also copy all the dependencies as mentioned below.<br />
+<a href="#Registration">Registration</a> &#8211; <strong>In this test this step is bypassed by adding the clients directly to the database. It is a single action in the application life cycle that should have no effect on performance. </strong><br />
+<a href="#Authorization">Authorization</a> &#8211; In the test, authorization is required for the <code>antiXSRF</code> and <code>deviceNoProvisioning</code> realms. This means that the client has to extract the correct instance id and device token in order to successfully pass the authorization phase and get a valid grant code.<br />
+<a href="#Sign">Sign grant code</a> &#8211; This Java class mimics client behavior by signing the grant code that was received in the authorization phase.<br />
+<a href="#Token">Token</a> &#8211; The client sends the signed grant code and receives an access token and ID token. These values are then extracted by JMeter.<br />
+<a href="#Call">A sample REST API call</a> &#8211; Shows how to access the resource endpoint with a valid token.</p>
+<p>JMeter is used here for simulating an MFP client. It lets you use hundreds of threads, each thread holding a large number of fake devices. Using this method, you can stress the MFP server according to your needs. This flow describes a single client session with several requests. </p>
+<ol>
+<a name="Prerequisite"></a><br />
+<font size="5"><strong>Prerequisite</strong></font></p>
+<ul>
+   1. Import the Java class that has been provided to the /lib/ext folder in JMeter.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/placingjar.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/placingjar-300x137.png" alt="placingjar" width="600" class="alignnone size-medium wp-image-19073" /></a><br />
+   2. Deploy the dummy <code>test</code> app. The application is needed for the registration procedure.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/deploy-app.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/deploy-app.png" alt="deploy app" width="926" height="472" class="alignnone size-full wp-image-19099" /></a>
+</ul>
+<p><a name="Registration"></a><br />
+<font size="5"><strong>Registration</strong></font><br />
+The registration flow occurs during the first client server negotiation and is written to the <code>CLIENT_INSTANCES</code> table. Only registered clients can access MFP resources.<br />
+Registration is a single action that should have no effect on performance. We did not implement this operation inside JMeter script.<br />
+The <code>CLIENT INSTANCES</code> table has been populated with pairs of coordinated <code>client_id</code> and <code>device_id</code>. This data will be used later by JMeter.</p>
+<p>The following SQL command inserts clients into the CLIENT_INSTANCES table:<br />
+insert into CLIENT_INSTANCES values (count ,&#8217;test&#8217;,&#8217;1.0&#8242;,&#8217;ANDROID&#8217;,blob(x&#8217;30819F300D06092A864886F70D010101050003818D00308189028181009A8757DC39A58B28210FC8367385B2920C02C647C4A82411FFD5B0C0B60985EAE4A785760D1CB8213E01B1AABBA4D71031D769387F62D501690CF4E870D9A8E78A9A613E112CA9759B40C4F839E84E502880EEA56B5A316971C3E7D270A003DF4453FC4FC69247DD2B7204724599D60335B6F542C7FDD84380B1B7183E23A2C90203010001&#8242;),count,&#8217;Android-4.2.2&#8242;,&#8217;Lenovo S750&#8242;);</p>
+<p>You can use the DB2 sql script that is attached in the zip file below.<br />
+Parameters:</p>
+<ul>
+<code>count</code> &#8211; Variable that represents the client id and device id<br />
+<code>test </code>&#8211; Application name<br />
+<code>1.0</code> &#8211; Application version<br />
+<code>ANDROID </code>&#8211; Application environment<br />
+<code>blob </code>&#8211; Constant public key
+</ul>
+<p>The default insert command assumes you have an application called <code>test </code>in an <code>ANDROID</code> environment. Ensure that you have deployed such a dummy application. Wrap this command according to your needs and to the tool you use.<br />
+Please note that the command inserts the public key that is used by the Java class. This value should not be changed.
+</ol>
+<ol>
+<a name="Authorization"></a><br />
+<font size="5"><strong>Authorization</strong></font><br />
+Authorization involves a set of requests, with which the client eventually receives a grant code after successfully handling all challenges. </p>
+<p>Send the appropriate headers for each request.<br />
+The following are the default headers for all requests:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/default-headers.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/default-headers-1024x227.png" alt="default headers" width="980" height="217" class="alignnone size-large wp-image-19076" /></a></p>
+<ul>
+<code>x-wl-app-version</code>: Version of your app<br />
+<code>x-wl-platform-version</code>: MFP platform version (for 7.1, do not change)<br />
+<code>X-WL-ClientId</code> &#8211; Client ID<br />
+<code>X-WL-Session</code> &#8211;  Any string for session ID
+</ul>
+<p>Now we will demonstrate the authorization process in two phases:</p>
+<ul>
+<font size="4"><strong>Authorization1</strong></font><br />
+Sends a request to authorization in order to get the challenges back and extract them:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/authorization1request.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/authorization1request-1024x381.png" alt="authorization1request" width="980" height="365" class="alignnone size-large wp-image-19077" /></a></p>
+<ol>
+<code>client id</code> &#8211; The client that is used during the session<br />
+<code>scope </code> &#8211; Authorization is protected by <code>anti-XSRF</code> in this sample. If you have a different authentication flow, change this parameter accordingly.
+</ol>
+<p>Use your own values for <code>scope</code> and <code>client id</code>. Leave all the other parameters as they appear here. </p>
+<p>the Server returns the <code>anti-XSRF</code> and <code>deviceNoProvisioning</code> realm challenges:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/auth1response.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/auth1response-1024x133.png" alt="auth1response" width="980" height="127" class="alignnone size-large wp-image-19078" /></a></p>
+<p>Extract the <code>wl-instance-Id</code> and the <code>device-token</code> from the response and send them as headers in all requests to the MFP Server. If you do not, the authentication check will fail and the request will be rejected. Challenge data is different for each session, so you need to extract and store the challenge data for each thread:</p>
+<p>Extract <code>instance-id</code><br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extract_instance_id.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extract_instance_id.png" alt="extract_instance_id" width="766" height="592" class="alignnone size-full wp-image-19079" /></a><br />
+Extract <code>device token</code><br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extractdevicetoken1.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extractdevicetoken1.png" alt="extractdevicetoken" width="413" height="302" class="alignnone size-full wp-image-19104" /></a></p>
+<p>Change response status to HTTP 200<br />
+When JMeter performs initialization the first time, MFP Server will respond with an HTTP 401 status. This is as expected, so the performance tool should treat this HTTP status as a success, too. You may consider changing the HTTP status to HTTP 200. Otherwise, JMeter reports this request as “failed” and records it as an error, thus impacting significantly on the performance testing report.<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/changeresponeto200png1.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/changeresponeto200png1.png" alt="changeresponeto200png" width="961" height="797" class="alignnone size-full wp-image-19113" /></a>
+</ul>
+<ul>
+<font size="4"><strong>Authorization2</strong></font><br />
+First, add the extracted values of the previous request (<code>device-token</code> + <code>instance-id</code>) as headers:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/antixsrf-headers.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/antixsrf-headers-1024x164.png" alt="antixsrf headers" width="980" height="157" class="alignnone size-large wp-image-19081" /></a></p>
+<p>Now, execute the same authorization request again, with the same parameters.<br />
+The expected response is 307 and the server sends the grant code:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/auth2response.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/auth2response-1024x551.png" alt="auth2response" width="980" height="527" class="alignnone size-large wp-image-19082" /></a><br />
+The grant code is extracted by JMeter:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extract_grant_code.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extract_grant_code-1024x336.png" alt="extract_grant_code" width="980" height="322" class="alignnone size-large wp-image-19083" /></a>
+</ul>
+</ol>
+<p><a name="Sign"></a><br />
+<font size="5"><strong>Sign grant code</strong></font><br />
+This phase is an internal JMeter operation in order to sign the grant code.<br />
+Ensure that the <code>jmeter.jwscreator</code> class name is selected.<br />
+The class gets the <code>payload</code> parameter (extracted grant code) and signs the grant code with the constant public key, which was already inserted using the registration script.<br />
+The class signs the grant code and returns the <code>jws</code> parameter to be used as a header to get the access token:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/signgrantcodeclass.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/signgrantcodeclass-1024x183.png" alt="signgrantcodeclass" width="980" height="175" class="alignnone size-large wp-image-19084" /></a></p>
+<p><a name="Token"></a><br />
+<font size="5"><strong>Token</strong></font><br />
+This is the final authorization step. At the end of this flow, the client receives the access token that will be used to access the resource endpoint.<br />
+Add the <code>X-WL-Authenticate</code> header, returned by the <code>sign grant code</code> Java request:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/x-wl-authenticate1.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/x-wl-authenticate1.png" alt="x-wl-authenticate" width="1206" height="299" class="alignnone size-full wp-image-19092" /></a></p>
+<p>Token request: Pass in four parameters including two dynamic – <code>client_id</code> and <code>code</code>:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/tokenrequest.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/tokenrequest-1024x633.png" alt="tokenrequest" width="980" height="606" class="alignnone size-large wp-image-19086" /></a></p>
+<p>In the response you get <code>access_token</code> and <code>id_token</code>:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/tokenresponse.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/tokenresponse-1024x511.png" alt="tokenresponse" width="980" height="489" class="alignnone size-large wp-image-19087" /></a></p>
+<p>Extract both parameters: <code>access_token</code> and <code>id_token</code><br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extractaccesstoken.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extractaccesstoken.png" alt="extractaccesstoken" width="350" height="301" class="alignnone size-full wp-image-19105" /></a></p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extract-id-token.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/extract-id-token.png" alt="extract id token" width="381" height="302" class="alignnone size-full wp-image-19103" /></a></p>
+<p><strong>The above steps should work as-is on any target server, assuming the server URL and context path are correct.<br />
+The context path is a user-defined parameter, and server URL can be configured in the </strong><strong>HTTP request defaults</strong> section.</p>
+<p><a name="Call"></a><br />
+<font size="5"><strong>Sample of REST API call</strong></font><br />
+This is a sample API call to a test adapter. Use your own adapter API.<br />
+This call demonstrates how to pass the <code>access_token</code> and <code>id_token</code> into the Authorization header.</p>
+<p>Adding tokens to the authorization header<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/tokensheaders1.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/tokensheaders1.png" alt="tokensheaders" width="1519" height="309" class="alignnone size-full wp-image-19091" /></a></p>
+<p>Sample request showing how to access a resource endpoint with a REST API call:<br />
+<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/callbills.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/callbills-1024x462.png" alt="callbills" width="980" height="442" class="alignnone size-large wp-image-19090" /></a></p>
+<p><a name="Attachment"></a><br />
+<strong>Attachment</strong><br />
+The zip file <a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/perftestfiles.zip">perftestfiles</a> includes the following files:<br />
+1. JMeter script &#8211; Script file that demonstrates all the steps above<br />
+2. Grant code signer Java class &#8211; Java class that signs grant code<br />
+3. SQL script for DB2 convention &#8211; SQL insert command for DB2<br />
+4. <code>test </code>dummy application with <code>android</code> environment </p>
+<p>Tips when running the script:<br />
+•   Fill in the desired <strong>number of threads</strong> and <strong>loop count</strong> in <strong>data per user</strong>. It is recommended to start with one cycle for monitoring purposes. Ensure the single flow works as expected.<br />
+•   When running with more threads, do not forget to select the <strong>errors</strong> checkbox in the <strong>Flow results</strong> section to avoid a mass of write operations that will kill the JMeter.<br />
+•   You can also spread the script among several JMeter clients, or run it from the command line.
+</ul>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/20/mfp-performance-testing-session-independent-mode/">MFP Performance Testing for Session Independent Mode (OAuth model)</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/12/20/mfp-performance-testing-session-independent-mode/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Introducing Support for India App Stores in IBM MobileFirst Quality Assurance 6.3!</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/12/17/introducing-support-india-app-stores-mobilefirst-quality-assurance-6-3/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/12/17/introducing-support-india-app-stores-mobilefirst-quality-assurance-6-3/#comments</comments>
+		<pubDate>Thu, 17 Dec 2015 13:15:52 +0000</pubDate>
+		<dc:creator><![CDATA[Christopher Dawson]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[MobileFirst_Platform]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=19051</guid>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/17/introducing-support-india-app-stores-mobilefirst-quality-assurance-6-3/">Introducing Support for India App Stores in IBM MobileFirst Quality Assurance 6.3!</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>To expand the coverage of country-specific app stores in the user sentiment feature, IBM&reg; MobileFirst&trade; Quality Assurance published an ifix that allows you to select India when you configure your user sentiment display.</p>
+<p><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/12/User-sentiment-configure-India.jpg" alt="Sample screen showing the IN option." /></p>
+<p>Using user sentiment analysis, you can:</p>
+<ul>
+<li>Consolidate your app store ratings and reviews into easy-to-view collections</li>
+<li>Analyze mountains of explicit user feedback about features, performance, and usability</li>
+<li>Understand what users are saying about your app and where they are having problems</li>
+<li>Compare apps against competitors to see how you can improve the overall user experience</li>
+</ul>
+<p>User sentiment crawls only ratings that are associated with review text from the top app stores and then provides a cumulative data-driven mobile app score. This score synthesizes app quality, user experience, and the overall amount of positive and negative feedback that users give an app. It also grades each app for 10 attributes. With this grade, you can measure how you app rates from version to version on specific key drivers of overall user experience.</p>
+<p>By going beyond simple download counts or star-ratings, application sentiment analysis helps you to more accurately measure your mobile app efforts. With user sentiment analysis and categorization, you can see results of deep data analysis and make informed decisions about where to invest your development efforts to provide the best possible customer experience.</p>
+<p>To learn more about the recent update, see the <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C4000008" target="_blank">download page</a> for IBM MobileFirst Quality Assurance or see the IBM MobileFirst Quality Assurance Knowledge Center <a href="http://www.ibm.com/support/knowledgecenter/SSFRDS_6.3.0/com.ibm.mqa.uau.doc/topics/r_whatsnew.html">&#8220;What&#8217;s new&#8221;</a> topic.</p>
+<p>Watch for more posts from <a href="mailto:jraisig@us.ibm.com">Jennifer Raisig</a> and the IBM MQA team.</p>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/17/introducing-support-india-app-stores-mobilefirst-quality-assurance-6-3/">Introducing Support for India App Stores in IBM MobileFirst Quality Assurance 6.3!</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/12/17/introducing-support-india-app-stores-mobilefirst-quality-assurance-6-3/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>CVE-2015-5257/CVE-2015-8320: Weak Randomization of BridgeSecret for Apache Cordova Android</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/12/11/cve-2015-5257cve-2015-8320-weak-randomization-of-bridgesecret-for-apache-cordova-android/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/12/11/cve-2015-5257cve-2015-8320-weak-randomization-of-bridgesecret-for-apache-cordova-android/#comments</comments>
+		<pubDate>Fri, 11 Dec 2015 22:30:53 +0000</pubDate>
+		<dc:creator><![CDATA[ktop]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=19000</guid>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/11/cve-2015-5257cve-2015-8320-weak-randomization-of-bridgesecret-for-apache-cordova-android/">CVE-2015-5257/CVE-2015-8320: Weak Randomization of BridgeSecret for Apache Cordova Android</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>[Update – December 15th 2015] All patches for MobileFirst Platform Foundation versions 6.3.0 to 7.1.0 are now available on IBM Fix Central. Please download the iFix and follow the instructions below on how to apply the patch. Versions 6.2.0 and before do not require a fix as the vulnerability does not apply.</p>
+<p>As of November 25, 2015, this blog post acknowledges that IBM is aware that Cordova announced two CVEs for vulnerabilities on the Android platform.<br />
+This post will focus on CVE-2015-5257. The other CVE is still being worked on.</p>
+<p>*Note: On some sites, this CVE may be referred to as CVE-2015-8320. Red Hat made a typo mistake in their CVE using the same number as Cordova, so Cordova&#8217;s CVE got pushed to to CVE-2015-8320.</p>
+<p><a href="https://cordova.apache.org/announcements/2015/11/20/security.html">https://cordova.apache.org/announcements/2015/11/20/security.html</a></p>
+<p><em>CVE-2015-5257: Weak Randomization of BridgeSecret for Apache Cordova Android</p>
+<p>Severity: Low</p>
+<p>Vendor: The Apache Software Foundation</p>
+<p>Versions Affected: Cordova Android versions up to 3.6.4</p>
+<p>Description:</p>
+<p>Cordova uses a bridge that allows the Native Application to communicate with the HTML and Javascript that control the user interface. To protect this bridge on Android, the framework uses a BridgeSecret to protect it from third-party hijacking. However, the BridgeSecret is not sufficiently random and can be determined in certain scenarios.</p>
+<p>Upgreade Path: Developers who are concerned about this issue should rebuild their applications with Cordova Android 4.1.1 or later. Versions after 3.6.4 do not contain this vulnerability.</p>
+<p>Credit: David Kaplan &amp; Roee Hay, IBM X-Force Application Security Research Team</em></p>
+<h3>Available iFixes</h3>
+<p>iFixes are now available for MobileFirst Platform Foundation versions 6.3, 7.0, and 7.1. All earlier versions of the product are unaffected.</p>
+<h3>How to apply the patch and push to users</h3>
+<p>All customers who build hybrid applications for Android should immediately install the iFix and take the following steps to ensure your application and users are secure:</p>
+<ol>
+<li>Install the iFix</li>
+<li>Rebuild your application and redeploy</li>
+<li>Verify that the patch was applied</li>
+<li>Use MobileFirst Platform Foundation Server tools to ensure users upgrade. <strong>This is not the same as an &#8220;in app update&#8221; but in fact an upgrade of the actual Android apk installed on the device.</strong></li>
+</ol>
+<p><strong>1. Install the iFix</strong><br />
+Remember that the iFixes are available from Fix Central.</p>
+<p>All customers will need to download the appropriate MobileFirst Platform Foundation iFix and rebuild their applications because these fixes affect native Cordova code that runs on the device. This will ensure that the internal Cordova Android code inside your applications gets refreshed with the security fixes. MobileFirst Platform Foundation Server and other products are not affected because Cordova runs only on the client device.</p>
+<p>Note: Your version of Cordova will not be upgraded to a new version when installing the fixpack. Instead you will be using a patched version of the Cordova at the same level as before. For example, if you were using MobileFirst Platform Foundation version 6.3, you will now be using a patched version of Cordova 3.6, not a new upgraded point version of Cordova.</p>
+<p>Note: After installing the iFix you will need to remove the Android environment and then add it back to your application. This will put the new cordova.jar file into your project from MobileFirst Platform Foundation Studio. If you have made any manual Android environment customizations, save them before removing the Android environment so that you can restore them after adding the Android environment back to your application.</p>
+<p><strong>2. Rebuild your application and redeploy</strong><br />
+Rebuilding with the iFix installed will ensure that your application&#8217;s internal Cordova code is patched. After this, redeploy the application to a device/emulator.</p>
+<p><strong>3. Verify that the patch was applied</strong><br />
+There is no easy way to verify. Trying to hack the Cordova BridgeSecret will be very difficult and probably futile. In this situation, if you have installed the iFix successfully, then you have applied the patch and are most likely safe.</p>
+<p><strong>4. Use MobileFirst Platform Foundation Server tools to ensure users upgrade</strong><br />
+It is important for your customers to stay up to date with the latest fixes for vulnerabilities. You can use the MobileFirst Platform Foundation Server to remotely disable your application and force users to download the update if they want to continue using your service. The following instructions are for MobileFirst Platform Foundation 7.0 and are from the Knowledge Center located at: <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.deploy.doc/devref/c_updating_wl_apps_in_production.html?lang=en">http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.deploy.doc/devref/c_updating_wl_apps_in_production.html?lang=en</a><br />
+*Please refer to the appropriate documentation for which ever version of MobileFirst Platform Foundation you are using.</p>
+<p>Deploying a new app version and blocking the old version<br />
+    1. Optional &#8211; send notification message to users of the old version, announcing a mandatory update in a few days.<br />
+    2. In MobileFirst Platform Foundation Studio, increment the app version number.<br />
+    3. Build and test your project and generate new .wlapp and .apk files for it.<br />
+    4. Deploy the new .wlapp file to MobileFirst Platform Foundation Server.<br />
+    5. Submit the new .apk file to the Android app stores.<br />
+    6. Wait for review and approval, and for the apps to become available.<br />
+    7. Copy links to the new app version.<br />
+    8. Block the old version of the app in MobileFirst Platform Foundation Console, supplying a message and link to the new version.<br />
+See <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.appadmin.doc/admin/t_locking_an_application.html">Locking an application</a> and <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.appadmin.doc/admin/t_denying_access_to_older_app_versions.html">Remotely disabling application connectivity</a><br />
+(*Please refer to the appropriate documentation for which ever version of MobileFirst Platform Foundation you are using).</p>
+<h3>Other Resources</h3>
+<p>Please take some time to review the security sections on IBM Developer Works:<br />
+<a href="http://www.ibm.com/developerworks/mobile/worklight/getting-started.html#GS_security">http://www.ibm.com/developerworks/mobile/worklight/getting-started.html#GS_security</a></p>
+<p>Also review the latest Cordova security guide:<br />
+<a href="https://cordova.apache.org/docs/en/5.4.0/guide/appdev/security/index.html">https://cordova.apache.org/docs/en/5.4.0/guide/appdev/security/index.html</a></p>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/11/cve-2015-5257cve-2015-8320-weak-randomization-of-bridgesecret-for-apache-cordova-android/">CVE-2015-5257/CVE-2015-8320: Weak Randomization of BridgeSecret for Apache Cordova Android</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/12/11/cve-2015-5257cve-2015-8320-weak-randomization-of-bridgesecret-for-apache-cordova-android/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Event Source Notifications in MFP 7.1 Cordova Applications</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/12/09/event-source-notifications-in-mfp-7-1-cordova-applications/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/12/09/event-source-notifications-in-mfp-7-1-cordova-applications/#comments</comments>
+		<pubDate>Wed, 09 Dec 2015 22:43:26 +0000</pubDate>
+		<dc:creator><![CDATA[DoraC]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Cordova]]></category>
+		<category><![CDATA[MobileFirst_Platform]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=19026</guid>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/09/event-source-notifications-in-mfp-7-1-cordova-applications/">Event Source Notifications in MFP 7.1 Cordova Applications</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<h2>Overview</h2>
+<p><strong>Prerequisite: </strong> Make sure to read the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/" title="Push Notifications in Hybrid Applications">Push Notifications in Hybrid Applications</a> tutorial first.</p>
+<p>This blogpost is here to show you how to write Cordova applications with event source notification functionality.</p>
+<p>Event source notifications are notification messages that are targeted to devices with a user subscription.<br />
+While the user subscription exists, MobileFirst Server can produce push notifications for the subscribed user. These notifications can be delivered by the adapter code to all or some of the devices from which the user subscribed.</p>
+<p>To learn more about the architecture and terminology of event-source push notifications refer to the <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/notifications/push-notifications-overview/" title="Push notification overview">Push notification overview</a> tutorial.</p>
+<p>Implementation of the push notification API consists of the following main steps:</p>
+<h4>On the server side:</h4>
+<ul>
+<li>Creating an event source</li>
+<li>Sending notification</li>
+</ul>
+<h4>On the client side:</h4>
+<ul>
+<li>Sending the token and initializing the <code>WLPush</code> class</li>
+<li>Registering the event source</li>
+<li>Subscribing to/unsubscribing from the event source</li>
+<li>Displaying a received messaged</li>
+</ul>
+<h3>Agenda</h3>
+<ul>
+<li><a href="#serverSidenotificationAPI">Notification API &#8211; server-side</a></li>
+<li><a href="#clientSidenotificationAPI">Notification API &#8211; client-side</a></li>
+<li><a href="#sampleApplication">Sample application</a></li>
+</ul>
+<h2 id="serverSidenotificationAPI">Notification API &#8211; Server-side</h2>
+<h3>Creating an event source</h3>
+<p>To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):</p>
+<pre class="brush: jscript; title: ; notranslate">WL.Server.createEventSource({
+    name: 'PushEventSource',
+    onDeviceSubscribe: 'deviceSubscribeFunc',
+    onDeviceUnsubscribe: 'deviceUnsubscribeFunc',
+    securityTest:'PushApplication-strong-mobile-securityTest'
+});</pre>
+<ul>
+<li><strong><span class="inline-code">name</span></strong> – a name by which the event source is referenced.</li>
+<li><strong><span class="inline-code">onDeviceSubscribe</span></strong> – an adapter function that is invoked when the user subscription request is received.</li>
+<li><strong><span class="inline-code">onDeviceUnsubscribe</span></strong> – an adapter function that is invoked when the user unsubscription request is received.</li>
+<li><strong><span class="inline-code">securityTest</span></strong> – a security test from the <code>authenticationConfig.xml</code> file, which is used to protect the event source.</li>
+</ul>
+<p>An additional event source option:</p>
+<pre class="brush: jscript; first-line: 6; title: ; notranslate">poll: {
+    interval: 3,
+    onPoll: 'getNotificationsFromBackend'
+}</pre>
+<ul>
+<li><strong><span class="inline-code">poll</span></strong> – a method that is used for notification retrieval.<br />
+The following parameters are required:</p>
+<ul>
+<li><strong><span class="inline-code">interval</span></strong> – the polling interval in seconds.</li>
+<li><strong><span class="inline-code">onPoll</span></strong> – the polling implementation. An adapter function to be invoked at specified intervals.</li>
+</ul>
+</li>
+</ul>
+<p><br clear="all"/></p>
+<h3>Sending a notification</h3>
+<p>As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <span class="inline-code">submitNotifications()</span> adapter function is invoked by a back-end system as an external API to send notifications.</p>
+<pre class="brush: jscript; title: ; notranslate">function submitNotification(userId, notificationText) {
+    var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
+
+    if (userSubscription === null) {
+        return { result: &quot;No subscription found for user :: &quot; + userId };
+    }
+
+    var badgeDigit = 1;
+    var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});
+
+        WL.Server.notifyAllDevices(userSubscription, notification);
+
+    return {
+        result: &quot;Notification sent to user :: &quot; + userId
+    };
+}</pre>
+<p>The <span class="inline-code">submitNotification</span> function receives the <span class="inline-code">userId</span> to send notification to and the <span class="inline-code">notificationText</span>.</p>
+<pre class="brush: jscript; title: ; notranslate">function submitNotification(userId, notificationText) {</pre>
+<p>A user subscription object contains the information about all of the user’s subscriptions. Each user subscription can have several device subscriptions. The object structure is as follows:</p>
+<pre class="brush: jscript; title: ; notranslate">{
+    userId: 'bjones',
+    state: {
+        customField: 3
+    },
+    getDeviceSubscriptions: function()[}
+};</pre>
+<p>Next line:</p>
+<pre class="brush: jscript; first-line: 2; title: ; notranslate">var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);</pre>
+<p>If the user has no subscriptions for the specified event source, a <strong>null</strong> object is returned.</p>
+<pre class="brush: jscript; first-line: 4; title: ; notranslate">if (userSubscription === null) {
+        return { result: &quot;No subscription found for user :: &quot; + userId };
+}</pre>
+<p>The <span class="inline-code">WL.Server.createDefaultNotification</span> API method creates and returns a default notification JSON block for the supplied values.</p>
+<pre class="brush: jscript; first-line: 8; title: ; notranslate">var badgeDigit = 1;
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:&quot;data&quot;});</pre>
+<ul>
+<li><strong><span class="inline-code">notificationText</span></strong> &#8211; The text to be pushed to the device.</li>
+<li><strong><span class="inline-code">Badge</span></strong> (number) &#8211; A number that is displayed on the application icon or tile (available only in iOS and Windows Phone).</li>
+<li><strong><span class="inline-code">custom</span></strong> &#8211; Custom, or Payload, is a JSON object that is transferred to the application and that can contain custom properties.</li>
+</ul>
+<p>The <span class="inline-code">WL.Server.notifyAllDevices</span> API method sends notification to all the devices that are subscribed to the user.</p>
+<pre class="brush: jscript; first-line: 11; title: ; notranslate">WL.Server.notifyAllDevices(userSubscription, notification);</pre>
+<p><br clear="all"/></p>
+<h4>Several APIs exist for sending notifications:</h4>
+<ul>
+<li><span class="inline-code">WL.Server.notifyAllDevices(userSubscription, options)</span> &#8211; to send notification to all user’s devices.</li>
+<li><span class="inline-code">WL.Server.notifyDevice(userSubscription, device, options)</span> &#8211; to send notification to a specific device that belongs to a specific user subscription. </li>
+<li><span class="inline-code">WL.Server.notifyDeviceSubscription(deviceSubscription, options)</span> &#8211; to send the notification to a specific device.</li>
+</ul>
+<h2 id="clientSidenotificationAPI">Notification API &#8211; Client-side</h2>
+<ul>
+<li><span class="inline-code">WL.Client.Push.isPushSupported()</span> – returns <code>true</code> if push notifications are supported by the platform, or <code>false</code> otherwise.</li>
+<li><span class="inline-code">WL.Client.Push.isSubscribed(alias)</span> – returns whether the currently logged-in user is subscribed to a specified event source alias.</li>
+</ul>
+<p>Set up push notifications, with the callback function defined in <span class="inline-code">WL.Client.Push.onReadyToSubscribe</span> to notify that a device is ready to subscribe to push notifications:</p>
+<pre class="brush: jscript; title: ; notranslate">
+if (WL.Client.Push) {
+    WL.Client.Push.onReadyToSubscribe = function() {
+
+        WL.SimpleDialog.show(&quot;Push Notifications&quot;, &quot;onReadyToSubscribe&quot;,
+        [{
+            text : 'Close',
+            handler : function() {}
+        }]);
+
+        $('#SubscribeButton').removeAttr('disabled');
+        $('#UnsubscribeButton').removeAttr('disabled');
+
+        WL.Client.Push.registerEventSourceCallback(
+            &quot;myPush&quot;,
+            &quot;PushAdapter&quot;,
+            &quot;PushEventSource&quot;,
+            pushNotificationReceived
+        );
+   };
+}
+</pre>
+<p>When a push notification is received by a device, the callback function defined in <span class="inline-code">WL.Client.Push.registerEventSourceCallback</span> is invoked:</p>
+<pre class="brush: jscript; title: ; notranslate">
+WL.SimpleDialog.show(&quot;Push Notifications&quot;, &quot;Provider notification data: &quot; + JSON.stringify(props), [{
+    text: 'Close',
+    handler: function() {
+        WL.SimpleDialog.show(&quot;Push Notifications&quot;, &quot;Application notification data: &quot; + JSON.stringify(payload), [{
+            text: 'Close',
+            handler: function() {}
+        }]);
+    }
+}]);
+</pre>
+<p>If the application was in background mode (or inactive) when the push notification arrived, this callback function is invoked when the application returns to the foreground.</p>
+<h2 id="sampleApplication">Sample application</h2>
+<p><a href="https://github.com/tchengus/EventSourceNotificationsCordova" target="_blank">Click to download</a> the sample project.</p>
+<p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_sample.png"><img class="aligncenter wp-image-1389 size-full" src="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/08_01_push_sample.png" alt="08_01_push_sample" width="850" height="500" /></a></p>
+<h3>Sending a notification</h3>
+<p>To get the app running:<br />
+1. Create a MFP Cordova Application and select the platforms you would like to be supported by your app</p>
+<pre class="brush: bash; title: ; notranslate">
+$ mfp cordova create
+[?] Enter name of app: PushNotifications
+[?] Enter the package ID: com.ibm.PushNotifications
+[?] Enter the app version: 1.0.0
+[?] Select platforms to be supported by your app: android, ios
+[?] Select additional plugins you would like to add:
+  ⬡ cordova-plugin-mfp-jsonstore 8.0.0 &quot;IBM MobileFirst Platform Foundation - JSONStore&quot;
+ ❯⬢ cordova-plugin-mfp-push 8.0.0
+[?] Enter a path to an app template to be added: cordova-hello-world-mfp
+$ cd PushNotifications
+</pre>
+<p>2. Copy contents in sample app to your Cordova app (PushNotifications/www/, application-descriptor.xml)<br />
+3. Follow instructions in <a href="https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/">Push Notifications Overview</a> to set up corresponding platform<br />
+4. Create Local MFP Server, or Use Remote MFP Server</p>
+<pre class="brush: bash; title: ; notranslate">
+$ cd ..
+$ mfp create backendServer
+$ cd backendServer
+$ mfp start
+</pre>
+<p>5. Create http adapter</p>
+<pre class="brush: bash; title: ; notranslate">
+$ mfp add adapter PushAdapter -t http
+</pre>
+<p>6. Copy contents in sample app to your Cordova app (backendServer/PushAdapter/, backendServer/server/conf/authenticationConfig.xml)<br />
+7. Push Adapter to server</p>
+<pre class="brush: bash; title: ; notranslate">
+$ mfp push
+</pre>
+<p>8. Run app on corresponding device</p>
+<pre class="brush: bash; title: ; notranslate">
+$ cd ..
+$ cd PushNotifications
+$ mfp cordova run
+</pre>
+<p>9. To test the sample, go into <span class="inline-code">/backendServer</span> to call the adapter in the CLI. Use the username you entered to login to the app:</p>
+<pre class="brush: bash; title: ; notranslate">
+$ mfp adapter call
+[?] Which endpoint do you want to use? PushAdapter/submitNotification
+[?] Enter the comma-separated parameters: &quot;the-user-name&quot;, &quot;hello!&quot;
+[?] How should the procedure be called? GET
+</pre>
+<p>Note that for push notifications to work on an emulator, it must be using one of the “Google APIs…” targets, as opposed to the regular “Android x.x.x” targets. You can check what target an emulator is using by opening the AVD manager and looking at the value in the “Target Name” column.</p>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/12/09/event-source-notifications-in-mfp-7-1-cordova-applications/">Event Source Notifications in MFP 7.1 Cordova Applications</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/12/09/event-source-notifications-in-mfp-7-1-cordova-applications/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Multi Line Android Push Notifications with IBM MobileFirst</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/11/24/multi-line-gcm-push-notifications/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/11/24/multi-line-gcm-push-notifications/#comments</comments>
+		<pubDate>Tue, 24 Nov 2015 18:28:40 +0000</pubDate>
+		<dc:creator><![CDATA[VivinKrishnan]]></dc:creator>
+				<category><![CDATA[Mobile]]></category>
+		<category><![CDATA[MobileFirst_Platform]]></category>
+		<category><![CDATA[mobilefirst-platform]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=18983</guid>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/11/24/multi-line-gcm-push-notifications/">Multi Line Android Push Notifications with IBM MobileFirst</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>Isn&#8217;t it frustrating that even with a big screen Android phone, you cannot read a Google Cloud Messaging (GCM) push notification send from MobileFirst server , in its entirety in the notification shade. Changing the orientation to landscape does not help as this has no effect on the notification shade in your Android phone. You quickly want to copy a coupon code or OTP (One time password) but cannot, since you do not see the complete text.</p>
+<p>Take the example of an office that sends out leave approval status as push notifications. You are looking forward to a leave approval to start a much postponed vacation. With great anticipation you check the notification in your Android device&#8217;s notification shade and see this:</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/11/BasicStyleNotification.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/11/BasicStyleNotification.png" alt="BasicStyleNotification" width="300" height="200" class="aligncenter size-full wp-image-18987" /></a></p>
+<p>How frustrating that you have to launch the application to see the rest. When the application launches , you see the lines you have been waiting for.</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/11/ApplicationinForeground.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/11/ApplicationinForeground.png" alt="ApplicationinForeground" width="300" height="700" class="aligncenter size-full wp-image-19005" /></a></p>
+<p>How good it would have been if the notification showed the complete text and wraps it to fit device width. Starting Android API Level 16 this can be achieved using the <a href="http://developer.android.com/reference/android/app/Notification.BigTextStyle.html">BigText</a> style for notification. Here is how you do it:</p>
+<p>The key is to override the default implementation of <code>GCMIntentService</code> in your Android project. Navigate to the Android Project generated by MobileFirst in your workspace.</p>
+<p>Open &#8220;src/com/yourapplication/GCMIntentService.java&#8221;.</p>
+<p>Override the default notify methods by adding your own.</p>
+<pre class="brush: java; title: ; notranslate">
+@Override
+	public void notify(Context context, String alert, int badge, String sound,
+			Intent intent) {
+
+		Notification notification = createNotification(context, alert, getNotificationTitle(context), alert, badge, true, 0, intent);
+
+		NotificationManager notificationManager = (NotificationManager) context
+				.getSystemService(Context.NOTIFICATION_SERVICE);
+		notificationManager.notify(1, notification);
+
+	}
+
+	@Override
+	public void notify(Context context, String tickerText) {
+
+		Notification notification = createNotification(context, tickerText, getNotificationTitle(context), tickerText, 0, true, 0, null);
+
+		NotificationManager notificationManager = (NotificationManager) context
+				.getSystemService(Context.NOTIFICATION_SERVICE);
+		notificationManager.notify(1, notification);
+	}
+
+	@Override
+	public void notify(Context context, Message message, Intent intent) {
+
+		JSONObject props= message.getProps();
+		String alert=&quot;&quot;;
+		int badge=0;
+		int priority=0;
+
+		try {
+			alert=props.getString(&quot;alert&quot;);
+			badge=props.getInt(&quot;badge&quot;);
+			priority=props.getInt(&quot;priority&quot;);
+
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		Notification notification = createNotification(context, alert, getNotificationTitle(context), alert , badge , true, priority, intent);
+
+ 		NotificationManager notificationManager = (NotificationManager) context
+				.getSystemService(Context.NOTIFICATION_SERVICE);
+
+ 		notificationManager.notify(1, notification);
+ 	}
+</pre>
+<p>Implement the createNotification method in which you will define your notifications to be of BigText style.</p>
+<pre class="brush: java; highlight: [14]; title: ; notranslate">
+private Notification createNotification(Context context, String ticker, String title, String msg, int badge, boolean bridge, int priority, Intent intent) {
+ 		int icon = RES_PUSH_NOTIFICATION_ICON;
+ 		long when = System.currentTimeMillis();
+ 		Notification notification = null;
+
+ 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+		Notification.Builder notificationBuilder = new Notification.Builder(this)
+                						.setSmallIcon(icon)
+						                .setTicker(ticker)
+						                .setWhen(when)
+						                .setContentTitle(title)
+						                .setContentText(msg)
+						                .setStyle(new Notification.BigTextStyle().bigText(msg))
+						                .setContentIntent(pendingIntent);
+
+ 		notification = notificationBuilder.build();
+ 		notification.priority = priority;
+
+ 		notification.number = badge;
+ 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
+
+ 		return notification;
+ 	}
+</pre>
+<blockquote><p> For more details on the Notification styles available, refer Android documentation.
+ </p></blockquote>
+<p>Thats&#8217;all. Run your application and try sending a rather long text in your GCM notification. Your leave approval status should now look like:</p>
+<p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/11/MultiLinenotification.png"><img src="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/11/MultiLinenotification.png" alt="MultiLinenotification" width="300" height="250" class="aligncenter size-full wp-image-18986" /></a></p>
+<p>You now see the complete notification in your notification shade, wrapped to fit the device width. Note that, the override will apply to all incoming GCM notifications to your application.</p>
+<p>If you would like to achieve InboxStyle notifications, refer to this <a href="https://www.ibm.com/developerworks/community/blogs/worklight/entry/inboxstyle_notifications_in_android?lang=en#s-android-gcm-intent-service">blog</a>.</p>
+<p>Complete project with modified GCMIntentService is available <a href="https://github.com/vivinkrishnan/multi-line-push">here</a>.</p>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/11/24/multi-line-gcm-push-notifications/">Multi Line Android Push Notifications with IBM MobileFirst</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/11/24/multi-line-gcm-push-notifications/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Please take part in our Mobile Developers&#8217; Survey</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/11/17/please-take-part-in-our-mobile-developers-survey/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/11/17/please-take-part-in-our-mobile-developers-survey/#comments</comments>
+		<pubDate>Tue, 17 Nov 2015 10:26:53 +0000</pubDate>
+		<dc:creator><![CDATA[IdanAdar]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[MobileFirst_Platform]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=18964</guid>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/11/17/please-take-part-in-our-mobile-developers-survey/">Please take part in our Mobile Developers&#8217; Survey</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>We at IBM MobileFirst Platform team spend a lot of time creating new stuff. in our daily race to make sure we are up to speed with what our users need, it seems like a good idea to ask them directly about their use of the product. We actually didn’t come up with this approach by ourselves- this is becoming a common practice in our industry.</p>
+<p>Recently, IBM has started to take a more intentional approach on how to “ask” users what their opinions &amp; ideas are.<br />
+This is done by implementing <a href="http://www.ibm.com/design/">IBM Design Thinking</a> in the work of product development teams.</p>
+<p>By taking <a href="https://www.surveygizmo.com/s3/2320682/MobileFirst-Platform-Mobile-Developer-Survey">this short survey</a> we expect you- our users, to share experience &amp; knowledge regarding the app development &amp; management process. So please go ahead &amp; educate us about your actual specific needs when doing your work.</p>
+<p>Thank you for your time- feel free to address any other thoughts to the design team.</p>
+<p><a href="https://www.surveygizmo.com/s3/2320682/MobileFirst-Platform-Mobile-Developer-Survey">https://www.surveygizmo.com/s3/2320682/MobileFirst-Platform-Mobile-Developer-Survey</a></p>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/11/17/please-take-part-in-our-mobile-developers-survey/">Please take part in our Mobile Developers&#8217; Survey</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/11/17/please-take-part-in-our-mobile-developers-survey/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Mobile Quality Assurance delivers export feedback</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/11/06/mobile-quality-assurance-delivers-export-feedback-2/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/11/06/mobile-quality-assurance-delivers-export-feedback-2/#comments</comments>
+		<pubDate>Fri, 06 Nov 2015 12:56:39 +0000</pubDate>
+		<dc:creator><![CDATA[Christopher Dawson]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[MobileFirst_Platform]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=18933</guid>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/11/06/mobile-quality-assurance-delivers-export-feedback-2/">Mobile Quality Assurance delivers export feedback</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>I’ve always been sort of fascinated by the speed and convenience of mail delivery services in the United States. In anticipation of the rapidly-arriving Halloween holiday, I purchased a Harley Quinn costume from Amazon. In a mere two days, my costume of epic proportions was packaged, left the carrier facility, traveled several hundred miles, and delivered to my doorstep. Meanwhile, all I had to do was click a few buttons and walk to my door.</p>
+<p>In the latest update of IBM&reg; Mobile Quality Assurance (MQA), we offer a feature with similar speed and convenience: export feedback. With just one click, all of the feedback for your app that is instrumented with MQA is exported to a CSV file and downloaded to your computer. The CSV file includes the following information for each feedback instance:</p>
+<ul>
+<li>Timestamp</li>
+<li>Platform identification (iOS or Android)</li>
+<li>Device type</li>
+<li>Logging mode (production or preproduction)</li>
+<li>App version</li>
+<li>Feedback message</li>
+</ul>
+<p>For more information about how to use this feature, see &#8220;<a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_ExportingUserFeedback.html">Exporting user feedback</a>&#8221; in the IBM Knowledge Center.</p>
+<p>This is no trick! With a few clicks, you can treat yourself by <a href="http://www.ibm.biz/MobileFirstQualityAssuranceTrial">trying MQA on IBM Bluemix&trade;</a>. And you don’t even have to walk to your door.</p>
+<p>Watch for more posts by <a href="mailto:simsp@us.ibm.com">Parker Sims</a> and the IBM MQA team.</p>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/11/06/mobile-quality-assurance-delivers-export-feedback-2/">Mobile Quality Assurance delivers export feedback</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/11/06/mobile-quality-assurance-delivers-export-feedback-2/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>IBM Mobile Quality Assurance adds bug-tracking integration and sentiment analysis results for India</title>
+		<link>https://developer.ibm.com/mobilefirstplatform/2015/10/26/ibm-mobile-quality-assurance-adds-bug-tracking-integration-and-sentiment-analysis-results-for-india/</link>
+		<comments>https://developer.ibm.com/mobilefirstplatform/2015/10/26/ibm-mobile-quality-assurance-adds-bug-tracking-integration-and-sentiment-analysis-results-for-india/#comments</comments>
+		<pubDate>Mon, 26 Oct 2015 19:54:36 +0000</pubDate>
+		<dc:creator><![CDATA[Christopher Dawson]]></dc:creator>
+				<category><![CDATA[Uncategorized]]></category>
+		<category><![CDATA[Mobile Quality Assurance]]></category>
+		<category><![CDATA[MobileFirst_Platform]]></category>
+
+		<guid isPermaLink="false">https://developer.ibm.com/mobilefirstplatform/?p=18782</guid>
+		<description><![CDATA[<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/10/26/ibm-mobile-quality-assurance-adds-bug-tracking-integration-and-sentiment-analysis-results-for-india/">IBM Mobile Quality Assurance adds bug-tracking integration and sentiment analysis results for India</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<p>One of the nice things about new features is that they can provide you with the solution to the one or two things that prevented something from completely meeting your needs. For example, do you remember what convinced you to purchase your new phone or car?</p>
+<p>Mobile Quality Assurance (MQA) for Bluemix updated its code to include the ability to connect with additional issue-tracking systems, as well as sentiment analysis support for India. </p>
+<h3>Bug-tracking system support</h3>
+<p>MQA had issue-tracking integration with IBM Rational Team Concert for quite a while, but you had some roadblocks to overcome if you did not use Rational Team Concert. To help overcome these roadblocks, MQA has added support for the following systems:</p>
+<ul>
+<li>JIRA</li>
+<li>TFS</li>
+<li>HP Quality Center</li>
+<li>GitHub</li>
+<li>FogBugz</li>
+</ul>
+<p>You can integrate MQA with existing accounts that you have established with one or more of these products to send information about bugs, crashes, and feedback. This can simplify your testing workflow if you use MQA and consolidate your test information in one of these systems. For more information about this feature, see &#8220;<a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_other_integration.html">Integrating with other bug tracking products</a>&#8221; in the IBM Knowledge Center.</p>
+<h3>India sentiment analysis support</h3>
+<p>India is now included as a choice when you enable sentiment analysis for your app.  You can select the IN flag to search the responses in the India Apple store. It is a little bit different when searching the Google Play store. Selecting the IN flag will search for the results in the Hindi locale. You can often get more complete results if you also search for results for the same app in the US (English) locale.</p>
+<p>Hopefully these new updates will be the features that convince you that it is time to treat yourself to that shiny new MQA service. Feel free to <a href="http://ibm.biz/MobileFirstQualityAssuranceTrial">take MQA for a test drive on Bluemix</a>.</p>
+<p>Stay tuned for further posts by <a href="mailto:cdawson@us.ibm.com">Chris Dawson</a> and the IBM MQA team.</p>
+<p>The post <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform/2015/10/26/ibm-mobile-quality-assurance-adds-bug-tracking-integration-and-sentiment-analysis-results-for-india/">IBM Mobile Quality Assurance adds bug-tracking integration and sentiment analysis results for India</a> appeared first on <a rel="nofollow" href="https://developer.ibm.com/mobilefirstplatform">IBM MobileFirst Platform</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://developer.ibm.com/mobilefirstplatform/2015/10/26/ibm-mobile-quality-assurance-adds-bug-tracking-integration-and-sentiment-analysis-results-for-india/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+	</channel>
+</rss>
