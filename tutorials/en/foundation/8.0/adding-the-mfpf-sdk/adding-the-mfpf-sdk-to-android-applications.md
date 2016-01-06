@@ -65,7 +65,7 @@ mfpdev server start
 
     ```xml
     repositories{
-        //jcenter()
+        //jcenter() ---- remove below maven line and bring back jcenter line once we go live with the tutorials
         maven {
             url "http://ibobs-Mac-mini.local:8081/nexus/content/repositories/snapshots/"
         }
@@ -87,9 +87,15 @@ mfpdev server start
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundation',
-    version: '8.0',
+    version: '8.0.Beta1-SNAPSHOT',
     ext: 'aar',
     transitive: true
+    ```
+    
+Or: 
+
+    ```xml
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.Beta1-SNAPSHOT'
     ```
     
 9. Add the following permissions to the <code>AndroidManifest.xml</code> file:
