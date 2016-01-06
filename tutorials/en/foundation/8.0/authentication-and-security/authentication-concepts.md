@@ -154,13 +154,13 @@ You can specify the `scope` of a Java adapter by using the `@OAuthSecurity` anno
 ```java
 @DELETE
 @Path("/{userId}")
-@OAuthSecurity(scope="deletePower")
+@OAuthSecurity(scope="deletePrivilege")
 //This will serve: DELETE /users/{userId}
 public void deleteUser(@PathParam("userId") String userId){
     ...
 }
 ```
-In this example, the `deleteUser` procedure uses the annotation `@OAuthSecurity(scope="deletePower")`, which means that it is protected by a **scope** containing the **scope element** `deletePower`.
+In this example, the `deleteUser` procedure uses the annotation `@OAuthSecurity(scope="deletePrivilege")`, which means that it is protected by a **scope** containing the **scope element** `deletePrivilege`.
 
 A scope can be made of several **scope elements**, space-separated: `@OAuthSecurity(scope="element1 element2 element3")`.
 
@@ -171,7 +171,26 @@ If you want to disable MobileFirst default security, you can use: `@OAuthSecurit
 You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
 
 ### JavaScript adapters
-TODO
+You can protect a JavaScript adapter procedure by assigning a scope to the procedure definition in the adapter's XML file:
+
+```xml
+<procedure deleteUser scope="deletePrivilege">
+```
+
+A scope can be made of several **scope elements**, space-separated:
+
+```xml
+<procedure deleteUser scope="element1 element2 element3">
+```
+
+If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security test protecting the application also applies here.
+
+If you want to disable MobileFirst default security, you can use `secured="false"`:
+
+```xml
+<procedure deleteUser secured="false">
+```
+
 
 ### External resources
 TODO

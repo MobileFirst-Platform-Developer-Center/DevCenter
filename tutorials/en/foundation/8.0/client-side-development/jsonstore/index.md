@@ -2,7 +2,7 @@
 layout: tutorial
 title: JSONStore
 relevantTo: [cordova, ios, android]
-weight: 7
+weight: 5
 show_children: true
 ---
 ## Overview
