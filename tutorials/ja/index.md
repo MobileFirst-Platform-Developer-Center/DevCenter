@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: IBM MobileFirst Platform Tutorials
+title: IBM MobileFirst Platform チュートリアル
 hide_in_breadcrumb: true
 show_disqus: false
 show_breadcrumb: false
@@ -9,9 +9,7 @@ use_dropdown: true
 use_dropdown_url_replace: true
 print_pdf: false
 ---
-The Tutorials section is a collection of self-paced tutorials and sample applications that will help you start developing, testing, securing, and deploying mobile applications with the IBM MobileFirst Platform suite of products.
-
-If you are not yet familiar with IBM MobileFirst Platform, visit the [Get Introduced](../../get-introduced/) page.
+チュートリアルのセクションは、自分のペースで学習できるチュートリアルとサンプル・アプリケーションの集合です。チュートリアルは、ユーザーが IBM MobileFirst Platform 製品群を使用してモバイル・アプリケーションを開発、テスト、保護およびデプロイするための支援となります。IBM MobileFirst Platform について詳しくは、[はじめに](../../get-introduced/) ページをご覧ください。
 
 ### [Foundation]({{site.baseurl}}/tutorials/en/foundation/)
 * [MobileFirst Platform Foundation 6.3]({{site.baseurl}}/tutorials/en/foundation/6.3/all-tutorials/)
