@@ -2,7 +2,7 @@
 layout: tutorial
 title: Cloudant
 weight: 0
-show_breadcrumb: false
+show_breadcrumb: true
 ---
 <h3>What is Cloudant?</h3>
 <p>Cloudant is a NoSQL Database as a Service (DBaaS) that is based on CouchDB and  available from <a href="http://cloudant.com" target="_blank">cloudant.com</a></p>

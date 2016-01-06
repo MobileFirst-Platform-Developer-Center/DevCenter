@@ -3,7 +3,7 @@ layout: tutorial
 title: IBM MobileFirst Platform チュートリアル
 hide_in_breadcrumb: true
 show_disqus: false
-show_breadcrumb: false
+show_breadcrumb: true
 breadcrumb_title: 日本語
 use_dropdown: true
 use_dropdown_url_replace: true
@@ -11,7 +11,7 @@ print_pdf: false
 ---
 チュートリアルのセクションは、自分のペースで学習できるチュートリアルとサンプル・アプリケーションの集合です。チュートリアルは、ユーザーが IBM MobileFirst Platform 製品群を使用してモバイル・アプリケーションを開発、テスト、保護およびデプロイするための支援となります。IBM MobileFirst Platform について詳しくは、[はじめに](../../get-introduced/) ページをご覧ください。
 
-### [Foundation]({{site.baseurl}}/tutorials/en/foundation/)
+### [Foundation]({{site.baseurl}}/tutorials/ja/foundation/)
 * [MobileFirst Platform Foundation 6.3]({{site.baseurl}}/tutorials/en/foundation/6.3/all-tutorials/)
 * [MobileFirst Platform Foundation 7.0]({{site.baseurl}}/tutorials/en/foundation/7.0/all-tutorials/)
 * [MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/foundation/7.1/all-tutorials/)

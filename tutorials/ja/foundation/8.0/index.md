@@ -3,6 +3,7 @@ layout: tutorial
 title: IBM MobileFirst Platform Foundation 8.0
 breadcrumb_title: 8.0
 use_dropdown: true
+show_breadcrumb: true
 print_pdf: false
 weight: 0
 show_disqus: false

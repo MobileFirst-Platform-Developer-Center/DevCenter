@@ -2,7 +2,7 @@
 layout: tutorial
 title: Foundation
 weight: 0
-show_breadcrumb: false
+show_breadcrumb: true
 show_disqus: false
 ---
 IBM MobileFirst Platform Foundation は企業がネイティブ、ハイブリッドおよびモバイル Web アプリケーションを開発し、テスト、保護および管理できるようにするためのツール・セットです。

@@ -3,10 +3,10 @@ layout: tutorial
 title: IBM MobileFirst Platform Tutorials
 hide_in_breadcrumb: true
 show_disqus: false
-show_breadcrumb: false
+show_breadcrumb: true
 breadcrumb_title: English
 use_dropdown: true
-use_dropdown_url_replace: true
+use_dropdown_url_replace: false
 print_pdf: false
 ---
 The Tutorials section is a collection of self-paced tutorials and sample applications that will help you start developing, testing, securing, and deploying mobile applications with the IBM MobileFirst Platform suite of products.
