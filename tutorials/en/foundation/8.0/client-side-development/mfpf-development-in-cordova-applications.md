@@ -24,7 +24,9 @@ The MobileFirst SDK feature set provides the following:
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 ### Application development
-Cordova applications can be further enhanced using Cordova plug-ins for adding UI elements such as dialogs, tabbars, spinners and the like as well as more advanced functionalities such as Geolocation and more. You can find Cordova plug-ins in the official [Cordova plug-ins repository](https://cordova.apache.org/plugins/), as well as on [GitHub.com](https://github.com) and in popular Cordova blog, such as [Plugreg](http://plugreg.com/).
+Cordova applications can be enhanced by integerating **Cordova plug-ins**. Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on). Cordova plug-ins are installed using the [Cordova-provided tool Plugman](https://cordova.apache.org/docs/en/5.4.0/plugin_ref/plugman.html).
+
+You can find Cordova plug-ins in the official [Cordova plug-ins repository](https://cordova.apache.org/plugins/), as well as on [GitHub.com](https://github.com) and in popular Cordova blogs, such as [Plugreg](http://plugreg.com/).
 
 Example plug-ins:
 
@@ -32,7 +34,7 @@ Example plug-ins:
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
-Cordova application development can be further enhanced by using frameworks such as [Ionic](http://ionicframework.com/), [AngularJS](https://angularjs.org/), [jQuery Mobile](http://jquerymobile.com/), [Backbone](http://backbonejs.org/) and others.
+Cordova application development can be further enhanced by using frameworks such as [Ionic](http://ionicframework.com/), [AngularJS](https://angularjs.org/), [jQuery Mobile](http://jquerymobile.com/), [Backbone](http://backbonejs.org/) and many others.
 
 > To get started with Cordova applications visit [Cordova's Get Started website](https://cordova.apache.org/#getstarted).
 
