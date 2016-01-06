@@ -46,7 +46,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
 * <span style="color:red">IN PROGRESS </span>[Using Direct Update to Quickly Update Your Application](../client-side-development/direct-update/)
 * [Translation](../client-side-development/translation/)
-* [Debugging applications](../client-side-development/debugging-applications/)
+* [Debugging Cordova applications](../client-side-development/debugging-applications/)
 
 ### [Server-side Development](../server-side-development/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.  
