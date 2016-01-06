@@ -39,6 +39,7 @@ Cordova application development can be further enhanced by using frameworks such
 Learn more about Cordova:
 
 - [Cordova Overview](https://cordova.apache.org/docs/en/5.4.0/guide/overview/index.html)
+- [Cordova best practices, testing, debugging, cosiderations and keeping up](https://cordova.apache.org/docs/en/5.4.0/guide/next/index.html#link-10)
 - [Get started with Cordova applications development](https://cordova.apache.org/#getstarted)
 
 ## Tutorials to follow next
