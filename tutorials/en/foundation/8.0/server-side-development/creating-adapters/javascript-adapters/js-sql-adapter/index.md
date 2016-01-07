@@ -8,14 +8,16 @@ downloads:
 weight: 2
 ---
 
-### Overview
-An IBM MobileFirst Platform Foundation SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.  
-<span style="color:red"> As a developer, you must download the JDBC connector driver for the specific database type separately and add it to the `server\lib\` folder of a MobileFirst project. You can download the JDBC connector driver from the appropriate vendor website.</span>  
+## Overview
+An IBM MobileFirst Platform Foundation SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
+
+To connect to a database, JavaScript code needs a JDBC connector driver for the specific database type. You must download the JDBC connector driver for the specific database type separately and add it as a dependency in your project. For more information on how to add dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../) tutorial.
+
 In this tutorial and in the accompanying sample, you learn how to use a MobileFirst adapter to connect to a MySQL database.
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
-### The `XML` File
+## The `XML` File
 The XML file contains settings and metadata.
 
 1. In the adapter XML file, declare the following parameters:
@@ -25,16 +27,28 @@ The XML file contains settings and metadata.
  * Password<br/><br/>
 
     ```xml
-    <connectivity>
-    <connectionPolicy xsi:type="sql:SQLConnectionPolicy">        
-      <dataSourceDefinition>
-        <driverClass>com.mysql.jdbc.Driver</driverClass>
-        <url>jdbc:mysql://localhost:3306/mobilefirst_training</url>
-          <user>mobilefirst</user>
-          <password>mobilefirst</password>
-      </dataSourceDefinition>
-    </connectionPolicy>
-    </connectivity>
+    <?xml version="1.0" encoding="UTF-8"?>
+    <mfp:adapter name="JavaScriptSQL"
+    	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    	xmlns:mfp="http://www.ibm.com/mfp/integration"
+    	xmlns:sql="http://www.ibm.com/mfp/integration/sql">
+
+    	<displayName>JavaScriptSQL</displayName>
+    	<description>JavaScriptSQL</description>
+    	<connectivity>
+    		<connectionPolicy xsi:type="sql:SQLConnectionPolicy">
+    			<dataSourceDefinition>
+    				<driverClass>com.mysql.jdbc.Driver</driverClass>
+    				<url>jdbc:mysql://localhost:3306/mobilefirst_training</url>
+    			    <user>mobilefirst</user>
+        			<password>mobilefirst</password>
+    			</dataSourceDefinition>
+    		</connectionPolicy>
+    	</connectivity>
+
+    	<procedure name="getAccountTransactions1"/>
+    	<procedure name="getAccountTransactions2"/>
+    </mfp:adapter>
     ```
 
 2. Declare a procedure in the adapter XML file.
@@ -43,7 +57,7 @@ The XML file contains settings and metadata.
     <procedure name="getAccountTransactions1"/>
     ```
 
-### JavaScript implementation
+## JavaScript implementation
 The adapter JavaScript file is used to implement the procedure logic.  
 There are two ways of running SQL statements:
 
@@ -90,7 +104,7 @@ There are two ways of running SQL statements:
     }
     ```
 
-### Invocation Results
+## Invocation Results
 The result is retrieved as a JSON object:
 
 ```json
@@ -118,9 +132,9 @@ The result is retrieved as a JSON object:
  * To access the `resultSet` object on the client-side: `result.invocationResult.resultSet`
  * To access the `resultSet` object on the server-side: `result.ResultSet`
 
-### Sample application
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.  
 
-* To run the sample, execute the `mobilefirstTraining.sql` file <span style="color:red">(which you can find under ...)</span> on your local MySQL server.
+* The Adapters project also includes a sample MySQL script in the **Utils** folder, which needs to be imported into your database to test the project.
 * Make sure that the `mobilefirst@% user` has all access permissions assigned to it.
-* <span style="color:red"> Remember to download and set the MySQL Java Connector in your project.</span>
+* Remember to download and set the MySQL Java Connector in your Adapters project.

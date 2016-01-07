@@ -9,7 +9,7 @@ weight: 3
 ---
 <span style = "color:red">RENAMING</span>
 
-### Overview
+## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources <span style = "color:red"> LINK TO using-mobilefirst-server-authenticate-external-resources</span>, and is supported in the following hybrid environments: iOS, Android, Windows Phone 8, and  Windows 8.
 
@@ -17,7 +17,7 @@ The REST API works with all adapters and external resources <span style = "color
 
 This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
 
-### WLResourceRequest
+## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to MobileFirst adapters or external resources.
 
 ```js
@@ -35,7 +35,7 @@ The parameters for the constructor are:
 * **HTTP method**: Most commonly `WLResourceRequest.GET` or `WLResourceRequest.POST`
 * **timeout**: Optional, request timeout in milliseconds</br></br>
 
-#### setQueryParameter
+### setQueryParameter
 By using the `setQueryParameter` method, you can include query (URL) parameters in the REST request.
 
 * In JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name `params`:
@@ -51,7 +51,7 @@ By using the `setQueryParameter` method, you can include query (URL) parameters 
     ```
 </br>
 
-#### send(body)
+### send(body)
 The `send()` method triggers the request. It takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
 
 ```js
@@ -63,12 +63,12 @@ resourceRequest.send().then(
 Using JavaScript promises, you can define `onSuccess` and `onFailure` functions.
 </br></br>
 
-#### sendFormParameters(json)
+### sendFormParameters(json)
 To send URL-encoded form parameters, use the `sendFormParameters(json)` method instead. This method converts the JSON to a URL encoded string, sets the content-type to `application/x-www-form-urlencoded`, and sets it as the HTTP body.
 
 >For more information about `WLResourceRequest`, see the API reference in the user documentation.
 
-### Results
+## Results
 Both the `onSuccess` and `onFailure` callbacks receive a `response` object, which typically contains the following properties:
 
 * **`status`**: The HTTP response status
@@ -114,7 +114,7 @@ The `response` object is returned to the corresponding success/failure handler.
 * The `isSuccessful` property is set to `true` if the procedure invocation succeeded (even if no data was retrieved), or to `false` otherwise.
 * The response can contain other metadata such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
 
-#### Handling the result
+### Handling the result
 The rest of the invocation result depends on what was retrieved from the back-end system. In this example, the `Items` element is a JSON representation of the XML code that was received from the back end, after the rules in the XSL file were applied.
 
 ```js
@@ -125,7 +125,7 @@ function loadFeedsSuccess(result){
 }
 ```
 
-### Sample application
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures) the MobileFirst project.
 
 The sample uses the JavaScript HTTP adapter created in the [HTTP Adapter tutorial.](../creating-adapters/javascript-adapters/js-http-adapter)

@@ -11,14 +11,14 @@ weight: 5
 ---
 <span style = "color:red">RENAMING</span>
 
-### Overview
+## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources <span style = "color:red"> LINK TO using-mobilefirst-server-authenticate-external-resources</span>.  
 This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
 
 To create and configure an iOS native project, first follow the [Adding the MobileFirst Platform Foundation SDK to iOS Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) tutorial.
 
-### Calling an adapter procedure
+## Calling an adapter procedure
 The `WLResourceRequest` class handles resource requests to MobileFirst adapters or external resources.
 
 1. Define the URL of the resource:
@@ -71,7 +71,7 @@ Supply a completion handler to manage the retrieved data:
 > There are also other signatures for the `send` method, which are not covered in this tutorial. Those signatures enable you to set parameters in the body instead of the query and provide more granular management of the retrieved data (such as non-text responses, PDF, etc). You can use the `sendWithDelegate` method and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols.  
 See the user documentation to learn more about `WLResourceRequest`.
 
-### Sample application
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures) the MobileFirst project.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresObjC) the Native project.

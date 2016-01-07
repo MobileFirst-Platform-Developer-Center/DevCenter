@@ -20,7 +20,7 @@ You can use IBM MobileFirst Platform adapters to communicate with a remote Cloud
 
 This tutorial assumes that you are comfortable with adapters. See [JavaScript HTTP Adapter](../creating-adapters/javascript-adapters/js-http-adapter) or [Java Adapters](../creating-adapters/java-adapters)
 
-#### Jump to:
+### Jump to:
 * [JavaScript HTTP adapter](#javascript-http-adapter)
 * [Java adapters](#java-adapters)
 * [Sample application](#sample-application)
@@ -62,7 +62,7 @@ In your adapter XML file, specify the `domain` for your Cloudant instance, the `
 </connectivity>
 ```
 
-###Procedures
+### Procedures
 Your adapter procedures use the `invokeHttp` method to send an HTTP request to one of the URLs that are defined by Cloudant.  
 For example, you can create a new document by sending a `POST` request to `/{*your-database*}/` with the body being a JSON representation of the document that you wish to store.
 
