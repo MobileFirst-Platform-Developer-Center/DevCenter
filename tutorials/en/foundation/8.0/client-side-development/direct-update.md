@@ -10,12 +10,14 @@ downloads:
 ## Overview
 With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.
 
+In order to update an application, the updated web resources of the application need to be packaged and uploaded to the MobileFirst Server using the MobileFirst CLI, which will then handle updating any application as it attempts to connect.
+
 > Direct Update updates only the application's web resources. To update native resources a new application version must be submitted to the respective app store.
 
 #### Jump to:
 
 - [How Direct Update works](#how-direct-update-works)
-- [Deploying updated web resources](#deploying-updated-web-resources)
+- [Creating and deploying updated web resources](#creating-and-deploying-updated-web-resources)
 - [User experience](#user-experience)
 - [Customizing the Direct Update UI](#customizing-the-direct-update-ui)
 - [Direct Update authenticity](#direct-update-authenticity)
@@ -24,14 +26,31 @@ With Direct Update, Cordova applications can be updated "over-the-air" with refr
 - [Sample application](#sample-application)
 
 ## How Direct Update works
-The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates based on its configuration. The updated web resources are downloaded when necessary.
+The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the MobileFirst. The updated web resources are downloaded when necessary.
 
 After a Direct Update, the application no longer uses the pre-packaged web resources. Instead it will use the web  resources in the application's sandbox.
 
 ![How direct update works]({{site.baseurl}}/assets/backup/05_05_du_internal_function.jpg)
 
-## Deploying updated web resources
-<span style="color:red">TODO: how to create updated web resources and upload to the console
+## Creating and deploying updated web resources
+Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the MobileFirst Server.
+
+1. Open a **Terminal** window and navigate to the root of the Cordova project.
+2. Run the command:
+
+```bash 
+ mfpdev webupdate
+```
+
+The <code>mfpdev webupdate</code> commands packages the updated web resources to a .zip file and uploads it to the default MobileFirst Server running in the developer workstation. The packaged web resources can be found at **[cordova-project-root-folder]\mobilefirst\[platform-folder]**.
+
+Alternatives:
+
+* Build the package but do not upload it: <code>mfpdev webupdate --build | -b</code>.
+* Build the package and upload it to a different MobileFirst Server: <code>mfpdev webupdate [server-name] [runtime-name]</code>. For example: <code>mfpdev webupdate myQAServer MyBankApps</code>
+* To build the package and upload previously packaged web resources:  <code>mfpdev webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip</code>
+
+> Run the command <code>mfpdev help webupdate</code> to learn about additional command flags.
 
 ## User Experience
 By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
@@ -127,3 +146,4 @@ The diagram below depicts the flow of updating an application's web resources us
 1. From the command line, navigate to the Cordova project.
 2. Add a platform using the `cordova platform add` command.
 3. Prepare and run the Cordova application using `cordova prepare` followed by `cordova run`.
+4. Alter the application web resources and upload them to the server as [explained above](#creating-and-deploying-updated-web-resources).
