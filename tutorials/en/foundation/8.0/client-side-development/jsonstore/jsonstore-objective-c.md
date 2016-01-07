@@ -1,51 +1,25 @@
 ---
 layout: tutorial
 title: Using JSONStore in Native iOS applications
-date: 2015-04-14 08:03:36.000000000 +03:00
-type: tutorial
-published: true
-status: publish
-categories: []
-tags:
-- 7-1
-meta:
-  _wpcom_is_markdown: '1'
-  _edit_last: '9037'
-  _syntaxhighlighter_encoded: '1'
-  _wpas_done_all: '1'
-author:
-  login: iadar@il.ibm.com
-  email: IADAR@il.ibm.com
-  display_name: IdanAdar
-  first_name: IDAN
-  last_name: ADAR
+relevantTo: [ios]
+weight: 2
+downloads:
+  - name: Download MobileFirst project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC
 ---
 
-<div id="samplesAndPersonas">
-<div>
-        Relevant to:</p>
-<ul id="relevantForPersona">
-<li class="ios">Native iOS</li>
-</ul></div>
-<ul>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStore" target="_blank">Download MobileFirst project</a>
-        </li>
-<li class="download-sample">
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC" target="_blank">Download Native project</a>
-        </li>
-</ul>
-</div>
-<h2>Overview</h2>
-<p>This tutorial is a continuation of the JSONStore Overview tutorial.<br />
-The tutorial covers the following topics:</p>
-<ul>
-<li><a href="#addingJSONStore">Adding the JSONStore component</a></li>
-<li><a href="#basicUsage">Basic API Usage</a></li>
-<li><a href="advancedUsage">Advanced Usage</a></li>
-<li><a href="#sample">Sample application</a></li>
-<li><a href="#info">Additional information</a></li>
-</ul>
+## Overview
+This tutorial is a continuation of the JSONStore Overview tutorial.    
+
+#### Jump to:
+
+* [Adding JSONStore](#adding-jsonstore)
+* [Basic Usage](#basic-usage)
+* [Advanced Usage](#advanced-usage)
+* [Sample application](#sample-application)
+* [Additional information](#additional-information)
+
+
 <h2 id="addingJSONStore">Adding the JSONStore component</h2>
 <p><img src="{{ site.baseurl }}/assets/backup/jsonstote-nativeios-project.png" alt="jsonstote-nativeios-project" width="160" height="300" class="alignright size-medium wp-image-9411" /><br />
 Adding the JSONStore component to native iOS applications is accomplished using CocoaPods.<br />
