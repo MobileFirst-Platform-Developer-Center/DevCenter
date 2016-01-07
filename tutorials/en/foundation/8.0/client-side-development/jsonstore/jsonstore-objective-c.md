@@ -17,229 +17,291 @@ This tutorial is a continuation of the JSONStore Overview tutorial.
 * [Basic Usage](#basic-usage)
 * [Advanced Usage](#advanced-usage)
 * [Sample application](#sample-application)
-* [Additional information](#additional-information)
+
+## Adding JSONStore
+Adding the JSONStore component to native iOS applications is accomplished using CocoaPods.  
+First, make sure the MobileFirst Native SDK is present by following the instructions in the tutorial: [Configuring a Native iOS Application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/).
+
+Next, perform the following steps:
+
+1. Edit the existing <code>podfile</code>, located at the root of the Xcode project.
+Add to the file:
+
+    ```xml
+    source 'https://github.com/CocoaPods/Specs.git'
+    pod 'IBMMobileFirstPlatformFoundationJSONStore'
+    ```
+
+2. In **Terminal**, navigate to the root of the Xcode project and run the command: <code>pod install</code> - note that this action may take a while.
+
+The JSONStore feature should now be available to you in the Xcode project.
+
+## Basic Usage
+###Open
+
+Use <code>openCollections</code> to open one or more JSONStore collections.
+
+Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.  
+If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+
+For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **MobileFirst Adapter Integration** in the second part of this tutorial.
+
+```objc
+NSError *error = nil;
+
+JSONStoreCollection* collection = [[JSONStoreCollection alloc] initWithName:@"people"];
+[collection setSearchField:@"name" withType:JSONStore_String];
+[collection setSearchField:@"age" withType:JSONStore_Integer];
+
+[[JSONStore sharedInstance] openCollections:@[collection] withOptions:nil error:error];
+```
+
+###Get
+Use <code>getCollectionWithName</code> to create an accessor to the collection. You must call <code>openCollections</code> before you call <code>getCollectionWithName</code>.
+
+```objc
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+```
+
+The variable <code>collection</code> can now be used to perform operations on the <code>people</code> collection such as <code>add</code>, <code>find</code>, and <code>replace</code>.
+
+###Add
+Use <code>addData</code> to store data as documents inside a collection.
+
+```objc
+NSError *error = nil;
+
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+
+NSDictionary *data = @{@"name" : @"yoel", @"age" : @23};
+[[collection addData:@[data] andMarkDirty:YES withOptions:nil error:error] intValue];
+```
+
+###Find
+Use <code>findWithQueryParts</code> to locate a document inside a collection by using a query. Use <code>findAllWithOptions</code> to retrieve all the documents inside a collection. Use <code>findWithIds</code> to search by the document unique identifier.
+
+```objc
+NSError *error = nil;
+
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+//Build a query part.
+
+JSONStoreQueryPart *query = [[JSONStoreQueryPart alloc] init];
+[query searchField:@"name" like:@"yoel"];
+JSONStoreQueryOptions *options = [[JSONStoreQueryOptions alloc] init];
+
+// returns a maximum of 10 documents, default: retuns every document
+[options setLimit:@10];
+
+// Count using the query part built above.
+NSArray *results = [collection findWithQueryParts:@[query] andOptions:options error:error];
+```
+
+###Replace
+Use <code>replaceDocuments</code> to modify documents inside a collection. The field that you use to perform the replacement is <code>_id,</code> the document unique identifier.
+
+```objc
+NSError *error = nil;
+
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+
+//Replacing name 'carlos' with name 'carlitos'.<br />
+NSDictionary *replacement = @{@"_id": @1, @"json" : @{@"name" : @"chevy", @"age" : @23}};
+[collection replaceDocuments:@[replacement] andMarkDirty:YES error:error];
+```
+
+This examples assumes that the document <code>{_id: 1, json: {name: 'yoel', age: 23} }</code> is in the collection.
+
+###Remove
+Use <code>removeWithIds</code> to delete a document from a collection.
+Documents are not erased from the collection until you call <code>markDocumentClean</code>. For more information, see the **MobileFirst Adapter Integration** section later in this tutorial.
+
+```objc
+NSError *error = nil;
+
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+[collection removeWithIds:@[@1] andMarkDirty:YES error:error];
+```
+
+###Remove Collection
+Use <code>removeCollectionWithError</code> to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+
+```objc
+NSError *error = nil;
+
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+BOOL removeCollectionWorked = [collection removeCollectionWithError:error];
+```
+
+###Destroy
+Use <code>destroyDataAndReturnError</code> to remove the following data:
+
+* All documents
+* All collections
+* All Stores - See **Multiple User Support** later in this tutorial
+* All JSONStore metadata and security artifacts - See **Security** later in this tutorial
+
+```objc
+NSError *error = nil;
+[[JSONStore sharedInstance] destroyDataAndReturnError:error];
+```
 
 
-<h2 id="addingJSONStore">Adding the JSONStore component</h2>
-<p><img src="{{ site.baseurl }}/assets/backup/jsonstote-nativeios-project.png" alt="jsonstote-nativeios-project" width="160" height="300" class="alignright size-medium wp-image-9411" /><br />
-Adding the JSONStore component to native iOS applications is accomplished using CocoaPods.<br />
-First, make sure the MobileFirst SDK is present by following the instructions in the tutorial: <a href="../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/">Configuring a Native iOS Application with the MobileFirst Platform SDK</a>.</p>
-<p>Next, perform the following steps:</p>
-<ol>
-<li>Edit the existing <code>podfile</code>, located at the root of the Xcode project</li>
-<li>Add to the file:<br />
-[code lang="shell"]<br />
-source 'https://github.com/CocoaPods/Specs.git'<br />
-pod 'IBMMobileFirstPlatformFoundationJSONStore'<br />
-[/code]</li>
-<li>In <strong>Terminal</strong>, navigate to the root of the Xcode project and run the command: <code>pod  install</code> - note that this action may take a while.</li>
-</ol>
-<p>The JSONStore feature should now be available to you in the Xcode project.</p>
-<h2 id="basicUsage">Basic API Usage</p>
-<h3>Open</h3>
-<p>Use <code>openCollections</code> to open one or more JSONStore collections</p>
-<p>Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.</p>
-<p>If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.</p>
-<p>For optional features that you can enable at initialization time, see <strong>Security, Multiple User Support,</strong> and <strong>MobileFirst Adapter Integration</strong> in the second part of this module</p>
-<p>[code language="objc"]<br />
-NSError *error = nil;</p>
-<p>JSONStoreCollection* collection = [[JSONStoreCollection alloc] initWithName:@&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;];<br />
-[collection setSearchField:@&amp;amp;amp;amp;amp;quot;name&amp;amp;amp;amp;amp;quot; withType:JSONStore_String];<br />
-[collection setSearchField:@&amp;amp;amp;amp;amp;quot;age&amp;amp;amp;amp;amp;quot; withType:JSONStore_Integer];</p>
-<p>[[JSONStore sharedInstance] openCollections:@[collection] withOptions:nil error:&amp;amp;amp;amp;amp;amp;error];<br />
-[/code]</p>
-<h3>Get</h3>
-<p>Use <code>getCollectionWithName</code> to create an accessor to the collection. You must call <code>openCollections</code> before you call <code>getCollectionWithName</code>.</p>
-<p>[code language="objc"]<br />
-NSString *collectionName = @&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;;<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];<br />
-[/code]</p>
-<p>The variable <code>collection</code> can now be used to perform operations on the <code>people</code> collection such as <code>add</code>, <code>find</code>, and <code>replace</code></p>
-<h3>Add</h3>
-<p>Use <code>addData</code> to store data as documents inside a collection</p>
-<p>[code language="objc"]<br />
-NSError *error = nil;</p>
-<p>NSString *collectionName = @&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;;<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>NSDictionary *data = @{@&amp;amp;amp;amp;amp;quot;name&amp;amp;amp;amp;amp;quot; : @&amp;amp;amp;amp;amp;quot;yoel&amp;amp;amp;amp;amp;quot;, @&amp;amp;amp;amp;amp;quot;age&amp;amp;amp;amp;amp;quot; : @23};</p>
-<p>[[collection addData:@[data] andMarkDirty:YES withOptions:nil error:&amp;amp;amp;amp;amp;amp;error] intValue];<br />
-[/code]</p>
-<h3>Find</h3>
-<p>Use <code>findWithQueryParts</code> to locate a document inside a collection by using a query. Use <code>findAllWithOptions</code> to retrieve all the documents inside a collection. Use <code>findWithIds</code> to search by the document unique identifier.</p>
-<p>[code language="objc"]<br />
-NSError *error = nil;</p>
-<p>NSString *collectionName = @&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;;<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>//Build a query part.<br />
-JSONStoreQueryPart *query = [[JSONStoreQueryPart alloc] init];<br />
-[query searchField:@&amp;amp;amp;amp;amp;quot;name&amp;amp;amp;amp;amp;quot; like:@&amp;amp;amp;amp;amp;quot;yoel&amp;amp;amp;amp;amp;quot;];</p>
-<p>JSONStoreQueryOptions *options = [[JSONStoreQueryOptions alloc] init];<br />
-// returns a maximum of 10 documents, default: retuns every document<br />
-[options setLimit:@10];</p>
-<p>// Count using the query part built above.<br />
-NSArray *results = [collection findWithQueryParts:@[query] andOptions:options error:&amp;amp;amp;amp;amp;amp;error];<br />
-[/code]</p>
-<h3>Replace</h3>
-<p>Use <code>replaceDocuments</code> to modify documents inside a collection. The field that you use to perform the replacement is <code>_id,</code> the document unique identifier.</p>
-<p>[code language="objc"]<br />
-NSError *error = nil;</p>
-<p>NSString *collectionName = @&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;;<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>//Replacing name 'carlos' with name 'carlitos'.<br />
-NSDictionary *replacement = @{@&amp;amp;amp;amp;amp;quot;_id&amp;amp;amp;amp;amp;quot;: @1, @&amp;amp;amp;amp;amp;quot;json&amp;amp;amp;amp;amp;quot; : @{@&amp;amp;amp;amp;amp;quot;name&amp;amp;amp;amp;amp;quot; : @&amp;amp;amp;amp;amp;quot;chevy&amp;amp;amp;amp;amp;quot;, @&amp;amp;amp;amp;amp;quot;age&amp;amp;amp;amp;amp;quot; : @23}};<br />
-[collection replaceDocuments:@[replacement] andMarkDirty:YES error:&amp;amp;amp;amp;amp;amp;error];<br />
-[/code]</p>
-<p>This examples assumes that the document <code>{_id: 1, json: {name: 'yoel', age: 23} }</code> is in the collection</p>
-<h3>Remove</h3>
-<p>Use <code>removeWithIds</code> to delete a document from a collection.</p>
-<p>Documents are not erased from the collection until you call <code>markDocumentClean</code>. For more information, see the <strong>MobileFirst Adapter Integration</strong> section later in this tutorial</p>
-<p>[code language="objc"]<br />
-NSError *error = nil;</p>
-<p>NSString *collectionName = @&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;;<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>[collection removeWithIds:@[@1] andMarkDirty:YES error:&amp;amp;amp;amp;amp;amp;error];<br />
-[/code]</p>
-<h3>Remove Collection</h3>
-<p>Use <code>removeCollectionWithError</code> to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms</p>
-<p>[code language="objc"]<br />
-NSError *error = nil;</p>
-<p>NSString *collectionName = @&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;;<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>BOOL removeCollectionWorked = [collection removeCollectionWithError:&amp;amp;amp;amp;amp;amp;error];<br />
-[/code]</p>
-<h3>Destroy</h3>
-<p>Use <code>destroyDataAndReturnError</code> to remove the following data:</p>
-<ul>
-<li>All documents</li>
-<li>All collections</li>
-<li>All Stores "See <strong>Multiple User Support</strong> later in this tutorial"</li>
-<li>All JSONStore metadata and security artifacts "See <strong>Security</strong> later in this tutorial"</li>
-</ul>
-<p>[code language="objc"]<br />
-NSError *error = nil;</p>
-<p>[[JSONStore sharedInstance] destroyDataAndReturnError:&amp;amp;amp;amp;amp;amp;error];<br />
-[/code]</p>
-</h2>
-<h2 id="advancedUsage">Advanced Usage</h2>
-<h3>Security</h3>
-<p>You can secure all the collections in a store by passing a <code>JSONStoreOpenOptions</code> object with a password to the <code>openCollections</code> function. If no password is passed, the documents of all the collections in the store are not encrypted.</p>
-<p>Some security metadata is stored in the keychain (iOS).</p>
-<p>The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).</p>
-<p>Use <code>closeAllCollectionsAndReturnError</code> to lock access to all the collections until you call <code>openCollections</code> again. If you think of <code>openCollections</code> as a login function you can think of <code>closeAllCollectionsAndReturnError</code> as the corresponding logout function.</p>
-<p>Use <code>changeCurrentPassword</code> to change the password.</p>
-<p>[code language="objc"]<br />
-NSError *error = nil;</p>
-<p>JSONStoreCollection *collection = [[JSONStoreCollection alloc] initWithName:@&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;];<br />
-[collection setSearchField:@&amp;amp;amp;amp;amp;quot;name&amp;amp;amp;amp;amp;quot; withType:JSONStore_String];<br />
-[collection setSearchField:@&amp;amp;amp;amp;amp;quot;age&amp;amp;amp;amp;amp;quot; withType:JSONStore_Integer];</p>
-<p>JSONStoreOpenOptions *options = [JSONStoreOpenOptions new];<br />
-[options setPassword:@&amp;amp;amp;amp;amp;quot;123&amp;amp;amp;amp;amp;quot;];</p>
-<p>[[JSONStore sharedInstance] openCollections:@[collection] withOptions:options error:&amp;amp;amp;amp;amp;amp;error];<br />
-[/code]</p>
-<h3>Multiple User Support</h3>
-<p>You can create multiple stores that contain different collections in a single MobileFirst application. The <code>openCollections</code> function can take an options object with a username. If no username is given, the default username is "jsonstore".</p>
-<p>[code language="objc"]<br />
-NSError *error = nil;</p>
-<p>JSONStoreCollection *collection = [[JSONStoreCollection alloc] initWithName:@&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;];<br />
-[collection setSearchField:@&amp;amp;amp;amp;amp;quot;name&amp;amp;amp;amp;amp;quot; withType:JSONStore_String];<br />
-[collection setSearchField:@&amp;amp;amp;amp;amp;quot;age&amp;amp;amp;amp;amp;quot; withType:JSONStore_Integer];</p>
-<p>JSONStoreOpenOptions *options = [JSONStoreOpenOptions new];<br />
-[options setUsername:@&amp;amp;amp;amp;amp;quot;yoel&amp;amp;amp;amp;amp;quot;];</p>
-<p>[[JSONStore sharedInstance] openCollections:@[collection] withOptions:options error:&amp;amp;amp;amp;amp;amp;error];<br />
-[/code]</p>
-<h3>MobileFirst Adapter Integration</h3>
-<p>This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.</p>
-<p>You can achieve these goals by using functions such as <code>WLClient invokeProcedure</code> or your own instance of an <code>NSURLConnection</code> if you need more flexibility.</p>
-<h4>Adapter Implementation</h4>
-<p>Create a MobileFirst adapter and name it "<strong>People</strong>". Define it's procedures <code>addPerson</code>, <code>getPeople</code>, <code>pushPeople</code>, <code>removePerson</code>, and <code>replacePerson</code>.</p>
-<p>[code language="javascript"]<br />
-function getPeople() {<br />
-	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };</p>
-<p>	WL.Logger.debug('Adapter: people, procedure: getPeople called.');<br />
-	WL.Logger.debug('Sending data: ' + JSON.stringify(data));</p>
-<p>	return data;<br />
-}</p>
-<p>function pushPeople(data) {<br />
-	WL.Logger.debug('Adapter: people, procedure: pushPeople called.');<br />
-	WL.Logger.debug('Got data from JSONStore to ADD: ' + data);</p>
-<p>	return;<br />
-}</p>
-<p>function addPerson(data) {<br />
-	WL.Logger.debug('Adapter: people, procedure: addPerson called.');<br />
-	WL.Logger.debug('Got data from JSONStore to ADD: ' + data);</p>
-<p>	return;<br />
-}</p>
-<p>function removePerson(data) {<br />
-	WL.Logger.debug('Adapter: people, procedure: removePerson called.');<br />
-	WL.Logger.debug('Got data from JSONStore to REMOVE: ' + data);</p>
-<p>	return;<br />
-}</p>
-<p>function replacePerson(data) {<br />
-	WL.Logger.debug('Adapter: people, procedure: replacePerson called.');<br />
-	WL.Logger.debug('Got data from JSONStore to REPLACE: ' + data);</p>
-<p>	return;<br />
-}<br />
-[/code]</p>
-<h4>Load data from MobileFirst Adapter</h4>
-<p>To load data from a MobileFirst Adapter use <code>WLClient invokeProcedure</code>.</p>
-<p>[code language="objc"]<br />
-// Start - LoadFromAdapter<br />
-@interface LoadFromAdapter : NSObject&amp;amp;amp;amp;amp;lt;WLDelegate&amp;amp;amp;amp;amp;gt;<br />
-@end</p>
-<p>@implementation LoadFromAdapter<br />
--(void)onSuccess:(WLResponse *)response {<br />
-  NSArray *loadedDocuments = [[response getResponseJson]  objectForKey:@&amp;amp;amp;amp;amp;quot;peopleList&amp;amp;amp;amp;amp;quot;];<br />
-  // handle success<br />
-}<br />
--(void)onFailure:(WLFailResponse *)response {<br />
-  // handle success<br />
-}<br />
-@end<br />
-// End - LoadFromAdapter</p>
-<p>NSError *error = nil;</p>
-<p>WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@&amp;amp;amp;amp;amp;quot;People&amp;amp;amp;amp;amp;quot; procedureName:@&amp;amp;amp;amp;amp;quot;getPeople&amp;amp;amp;amp;amp;quot;];</p>
-<p>LoadFromAdapter *loadDelegate =  [[LoadFromAdapter alloc] init];</p>
-<p>WLClient *client = [[WLClient sharedInstance] init];<br />
-[client invokeProcedure:invocationData withDelegate:loadDelegate];<br />
-[/code]</p>
-<h4>Get Push Required (Dirty Documents)</h4>
-<p>Calling <code>allDirtyAndReturnError</code> returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.</p>
-<p>[code language="objc"]<br />
-NSError* error = nil;</p>
-<p>NSString *collectionName = @&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;;<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>NSArray *dirtyDocs = [collection allDirtyAndReturnError:&amp;amp;amp;amp;amp;amp;error];<br />
-[/code]</p>
-<p>To prevent JSONStore from marking the documents as "dirty", pass the option <code>andMarkDirty:NO</code> to <code>add</code>, <code>replace</code>, and <code>remove</code></p>
-<h4>Push changes</h4>
-<p>To push changes to a MobileFirst adapter, call the <code>findAllDirtyDocuments</code> to get a list of documents with modifications and then use <code>WLClient invokeProcedure</code>. After the data is sent and a successful response is received make sure you call <code>markDocumentsClean</code>.</p>
-<p>[code language="objc"]<br />
-// Start - PushToAdapter<br />
-@interface PushToAdapter :NSObject&amp;amp;amp;amp;amp;lt;WLDelegate&amp;amp;amp;amp;amp;gt;<br />
-@end</p>
-<p>@implementation PushToAdapter<br />
--(void)onSuccess:(WLResponse *)response {<br />
-  // handle success<br />
-}<br />
--(void)onFailure:(WLFailResponse *)response {<br />
-  // handle faiure<br />
-}<br />
-@end<br />
-// End - PushToAdapter</p>
-<p>NSError* error = nil;</p>
-<p>NSString *collectionName = @&amp;amp;amp;amp;amp;quot;people&amp;amp;amp;amp;amp;quot;;<br />
-JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];</p>
-<p>NSArray *dirtyDocs = [collection allDirtyAndReturnError:&amp;amp;amp;amp;amp;amp;error];</p>
-<p>WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@&amp;amp;amp;amp;amp;quot;People&amp;amp;amp;amp;amp;quot; procedureName:@&amp;amp;amp;amp;amp;quot;pushPeople&amp;amp;amp;amp;amp;quot;];<br />
-[invocationData setParameters:@[dirtyDocs]];</p>
-<p>PushToAdapter *pushDelegate =  [[PushToAdapter alloc] init];</p>
-<p>WLClient *client = [[WLClient sharedInstance] init];<br />
-[client invokeProcedure:invocationData withDelegate:pushDelegate];<br />
-[/code]</p>
-<p><img src="{{ site.baseurl }}/assets/backup/ios-native-screen.png" alt="ios-native-screen" width="168" height="300" class="alignright size-medium wp-image-9410" /></p>
-<h2 id="sample">Sample application</h2>
-<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStore" target="_blank">Click to download</a> the MobileFirst project.</p>
-<p><a href="https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC" target="_blank">Click to download</a> the Native project.</p>
-<p>The Native iOS project contains an application that demonstrates the use of JSONStore.</p>
-<h2 id="info">Additional information</h2>
-<p>For more information about JSONStore, see the product user documentation.</p>
+## Advanced Usage
+### Security
+You can secure all the collections in a store by passing a <code>JSONStoreOpenOptions</code> object with a password to the <code>openCollections</code> function. If no password is passed, the documents of all the collections in the store are not encrypted.
+
+Some security metadata is stored in the keychain (iOS).  
+The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
+
+Use <code>closeAllCollectionsAndReturnError</code> to lock access to all the collections until you call <code>openCollections</code> again. If you think of <code>openCollections</code> as a login function you can think of <code>closeAllCollectionsAndReturnError</code> as the corresponding logout function.
+
+Use <code>changeCurrentPassword</code> to change the password.
+
+```objc
+NSError *error = nil;
+
+JSONStoreCollection *collection = [[JSONStoreCollection alloc] initWithName:@"people"];
+[collection setSearchField:@"name" withType:JSONStore_String];
+[collection setSearchField:@"age" withType:JSONStore_Integer];
+
+JSONStoreOpenOptions *options = [JSONStoreOpenOptions new];
+[options setPassword:@"123"];
+[[JSONStore sharedInstance] openCollections:@[collection] withOptions:options error:error];
+```
+
+### Multiple User Support
+You can create multiple stores that contain different collections in a single MobileFirst application. The <code>openCollections</code> function can take an options object with a username. If no username is given, the default username is "jsonstore".
+
+```objc
+NSError *error = nil;
+
+JSONStoreCollection *collection = [[JSONStoreCollection alloc] initWithName:@"people"];
+[collection setSearchField:@"name" withType:JSONStore_String];
+[collection setSearchField:@"age" withType:JSONStore_Integer];
+
+JSONStoreOpenOptions *options = [JSONStoreOpenOptions new];
+[options setUsername:@"yoel"];
+[[JSONStore sharedInstance] openCollections:@[collection] withOptions:options error:error];
+```
+
+### MobileFirst Adapter Integration
+This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
+
+You can achieve these goals by using functions such as <code>WLClient invokeProcedure</code> or your own instance of an <code>NSURLConnection</code> if you need more flexibility.
+
+#### Adapter Implementation
+Create a MobileFirst adapter and name it "**People**". Define it's procedures <code>addPerson</code>,  <code>getPeople</code>, <code>pushPeople</code>, <code>removePerson</code>, and <code>replacePerson</code>.
+
+```javascript
+function getPeople() {
+	var data = { peopleList : [{name: 'chevy', age: 23}, {name: 'yoel', age: 23}] };
+	WL.Logger.debug('Adapter: people, procedure: getPeople called.');
+	WL.Logger.debug('Sending data: ' + JSON.stringify(data));
+	return data;
+}
+function pushPeople(data) {
+	WL.Logger.debug('Adapter: people, procedure: pushPeople called.');
+	WL.Logger.debug('Got data from JSONStore to ADD: ' + data);
+	return;
+}
+function addPerson(data) {
+	WL.Logger.debug('Adapter: people, procedure: addPerson called.');
+	WL.Logger.debug('Got data from JSONStore to ADD: ' + data);
+	return;
+}
+function removePerson(data) {
+	WL.Logger.debug('Adapter: people, procedure: removePerson called.');
+	WL.Logger.debug('Got data from JSONStore to REMOVE: ' + data);
+	return;
+}
+function replacePerson(data) {
+	WL.Logger.debug('Adapter: people, procedure: replacePerson called.');
+	WL.Logger.debug('Got data from JSONStore to REPLACE: ' + data);
+	return;
+}
+```
+
+#### Load data from MobileFirst Adapter
+To load data from a MobileFirst Adapter use <code>WLClient invokeProcedure</code>.
+
+```objc
+// Start - LoadFromAdapter
+@interface LoadFromAdapter : NSObject<WLDelegate>
+@end
+
+@implementation LoadFromAdapter
+-(void)onSuccess:(WLResponse *)response {
+  NSArray *loadedDocuments = [[response getResponseJson]  objectForKey:@"peopleList"];
+  // handle success
+}
+
+-(void)onFailure:(WLFailResponse *)response {
+  // handle success
+}
+@end
+// End - LoadFromAdapter
+
+NSError *error = nil;
+WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@"People" procedureName:@"getPeople"];
+
+LoadFromAdapter *loadDelegate =  [[LoadFromAdapter alloc] init];
+WLClient *client = [[WLClient sharedInstance] init];
+[client invokeProcedure:invocationData withDelegate:loadDelegate];
+```
+
+#### Get Push Required (Dirty Documents)
+Calling <code>allDirtyAndReturnError</code> returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+
+```objc
+NSError* error = nil;
+NSString *collectionName = @"people";
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+NSArray *dirtyDocs = [collection allDirtyAndReturnError:error];
+```
+
+To prevent JSONStore from marking the documents as "dirty", pass the option <code>andMarkDirty:NO</code> to <code>add</code>, <code>replace</code>, and <code>remove</code>.
+
+#### Push changes
+To push changes to a MobileFirst adapter, call the <code>findAllDirtyDocuments</code> to get a list of documents with modifications and then use <code>WLClient invokeProcedure</code>. After the data is sent and a successful response is received make sure you call <code>markDocumentsClean</code>.
+
+```objc
+// Start - PushToAdapter
+@interface PushToAdapter :NSObject<WLDelegate>
+@end
+
+@implementation PushToAdapter
+-(void)onSuccess:(WLResponse *)response {
+  // handle success
+}
+
+-(void)onFailure:(WLFailResponse *)response {
+  // handle faiure
+}
+@end
+// End - PushToAdapter
+
+NSError* error = nil;
+NSString *collectionName = @"people";
+
+JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
+NSArray *dirtyDocs = [collection allDirtyAndReturnError:error];
+
+WLProcedureInvocationData *invocationData = [[WLProcedureInvocationData alloc] initWithAdapterName:@"People" procedureName:@"pushPeople"];
+[invocationData setParameters:@[dirtyDocs]];
+
+PushToAdapter *pushDelegate =  [[PushToAdapter alloc] init];
+WLClient *client = [[WLClient sharedInstance] init];
+[client invokeProcedure:invocationData withDelegate:pushDelegate];
+```
+
+## Sample application
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC) the Native iOS project.  
+
+![sample JSONStore sample for native iOS](ios-native-screen.png)
