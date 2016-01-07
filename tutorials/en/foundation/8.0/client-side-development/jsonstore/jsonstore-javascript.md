@@ -6,63 +6,58 @@ weight: 1
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStore
-
 ---
+
+<span style="color:red">check which Cordova platforms are supported</span>
+
 ## Overview
 This tutorial is a continuation of the JSONStore Overview tutorial.    
-Pre-requisites: Cordova CLI installed on the developer workstation.  
-Make sure you have read the [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.  
 
-The tutorial covers the following topics:
+**Pre-requisites**: 
 
-* [Add the JSONStore feature](#add-the-jsonstore-feature)
-* Basic Usage
-  * [Initalize](#initialize)
-  * [Get](#get)
-  * [Add](#add)
-  * [Find](#find)
-  * [Replace](#replace)
-  * [Remove](#remove)
-  * [Remove Collection](#remove-collection)
-  * [Destroy](#destroy)
-* Advanced Usage
-  * [Security](#security)
-  * [Multiple User Support](#multiple-user-support)
-  * [MobileFirst Adapter Integration](#mobileFirst-adapter-integration)
-  * [Enhance](#enhance)
+- Cordova CLI installed on the developer workstation.  
+- Make sure you have read the [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.  
+
+#### Jump to:
+
+* [Adding JSONStore](#adding-jsonstore)
+* [Basic Usage](#basic-usage)
+* [Advanced Usage](#advanced-usage)
 * [Sample application](#sample-application)
 
-## Add the JSONStore feature
-To add JSONStore to your hybrid environment use cordova CLI:
+## Adding JSONStore
+To add JSONStore plug-in to your Cordova application:
 
-1. Open terminal
+1. Open a **Terminal** window.
 2. Navigate to your Cordova project folder.
-2. Type the following command: `cordova plugin add cordova-plugin-mfp-jsonstore`
+3. Run the command: `cordova plugin add cordova-plugin-mfp-jsonstore`.
 
-This command will add the jsonstore plugin to your project.
-![Add JSONStore feature](jsonstore-add-feature.png)
+![Add JSONStore feature](jsonstore-add-plugin.png)
 
-## Initialize
+## Basic Usage
+
+### Initialize
 Use `init` to start one or more JSONStore collections.  
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.
-If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+
+Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
 
 ```javascript
 var collections = {
-  people : {
-    searchFields: {name: 'string', age: 'integer'}
-  }
+    people : {
+        searchFields: {name: 'string', age: 'integer'}
+    }
 };
+
 WL.JSONStore.init(collections).then(function (collections) {
-  // handle success - collection.people (people's collection)
+    // handle success - collection.people (people's collection)
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-For optional features that you can enable at initialization time, see **Security**, **Multiple User Support**, and **MobileFirst Adapter Integration** in the second part of this tutorial.
+> For optional features that you can enable at initialization time, see **Security**, **Multiple User Support**, and **MobileFirst Adapter Integration** in the second part of this tutorial.
 
-## Get
+### Get
 Use `get` to create an accessor to the collection. You must call `init` before you call get otherwise the result of `get` will be undefined.
 
 ```javascript
@@ -72,24 +67,27 @@ var people = WL.JSONStore.get(collectionName);
 
 The variable `people` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`.
 
-## Add
+### Add
 Use `add` to store data as documents inside a collection
 
 ```javascript
 var collectionName = 'people';
 var options = {};
 var data = {name: 'yoel', age: 23};
+
 WL.JSONStore.get(collectionName).add(data, options).then(function () {
- // handle success
+    // handle success
 }).fail(function (error) {
- // handle failure
+    // handle failure
 });
 ```
 
-## Find
-Use `find` to locate a document inside a collection by using a query.  
-Use `findAll` to retrieve all the documents inside a collection.  
-Use `findById` to search by the document unique identifier.  
+### Find
+
+* Use `find` to locate a document inside a collection by using a query.  
+* Use `findAll` to retrieve all the documents inside a collection.  
+* Use `findById` to search by the document unique identifier.  
+
 The default behavior for find is to do a "fuzzy" search.
 
 ```javascript
@@ -99,14 +97,15 @@ var options = {
   exact: false, //default
   limit: 10 // returns a maximum of 10 documents, default: return every document
 };
+
 WL.JSONStore.get(collectionName).find(query, options).then(function (results) {
-  // handle success - results (array of documents found)
+    // handle success - results (array of documents found)
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-## Replace
+### Replace
 Use `replace` to modify documents inside a collection. The field that you use to perform the replacement is `_id`, the document unique identifier.
 
 ```javascript
@@ -115,44 +114,48 @@ var document = {
 };
 var collectionName = 'people';
 var options = {};
+
 WL.JSONStore.get(collectionName).replace(document, options).then(function (numberOfDocsReplaced) {
-  // handle success
+    // handle success
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
 This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
 
-## Remove
-Use `remove` to delete a document from a collection.
+### Remove
+Use `remove` to delete a document from a collection.  
 Documents are not erased from the collection until you call push.  
-For more information, see the **MobileFirst Adapter Integration** section later in this tutorial
+
+> For more information, see the **MobileFirst Adapter Integration** section later in this tutorial
 
 ```javascript
 var query = {_id: 1};
 var collectionName = 'people';
 var options = {exact: true};
 WL.JSONStore.get(collectionName).remove(query, options).then(function (numberOfDocsRemoved) {
-  // handle success
+    // handle success
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-## Remove Collection
+### Remove Collection
 Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
 
 ```javascript
 var collectionName = 'people';
 WL.JSONStore.get(collectionName).removeCollection().then(function (removeCollectionReturnCode) {
-  // handle success
+    // handle success
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-## Destroy
+## Advanced Usage
+
+### Destroy
 Use `destroy` to remove the following data:
 
 * All documents
@@ -163,17 +166,19 @@ Use `destroy` to remove the following data:
 ```javascript
 var collectionName = 'people';
 WL.JSONStore.destroy().then(function () {
-  // handle success
+    // handle success
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-## Security
+### Security
 You can secure all the collections in a store by passing a password to the `init` function. If no password is passed, the documents of all the collections in the store are not encrypted.
-Data encryption is only available on Android, iOS, Windows Phone 8, and Windows 8 environments.  
-Some security metadata are stored in the *keychain* (iOS), *shared preferences* (Android), *isolated storage* (Windows 8 Phone), or the *credential locker* (Windows 8).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).   
+
+Data encryption is only available on Android, iOS, Windows 8 Universal and Windows 10 UWP environments.  
+Some security metadata is stored in the *keychain* (iOS), *shared preferences* (Android) or the *credential locker* (Windows 8).  
+The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
+   
 Use `closeAll` to lock access to all the collections until you call `init` again. If you think of `init` as a login function you can think of `closeAll` as the corresponding logout function. Use `changePassword` to change the password.
 
 ```javascript
@@ -184,14 +189,14 @@ var collections = {
 };
 var options = {password: '123'};
 WL.JSONStore.init(collections, options).then(function () {
-  // handle success
+    // handle success
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-## Multiple User Support
-You can create multiple stores that contain different collections in a single MobileFirst application. The `init` function can take an options object with a username. If no username is given, the default username is **jsonstore**
+### Multiple User Support
+You can create multiple stores that contain different collections in a single MobileFirst application. The `init` function can take an options object with a username. If no username is given, the default username is **jsonstore**.
 
 ```javascript
 var collections = {
@@ -201,14 +206,15 @@ var collections = {
 };
 var options = {username: 'yoel'};
 WL.JSONStore.init(collections, options).then(function () {
-  // handle success
+    // handle success
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-## MobileFirst Adapter Integration
-This section assumes that you are familiar with MobileFirst adapters.  
+### MobileFirst Adapter Integration
+This section assumes that you are familiar with MobileFirst Adapters.  
+
 MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.  
 You can achieve these goals by using`WLResourceRequest` or `jQuery.ajax` if you need more flexibility.
 
@@ -245,7 +251,7 @@ function replacePerson(data) {
 }
 ```
 
-### Initialize a collection linked to a MobileFirst adapter
+#### Initialize a collection linked to a MobileFirst adapter
 
 ```javascript
 var collections = {
@@ -264,81 +270,82 @@ var collections = {
     }   
   }
 }
+
 var options = {};
 WL.JSONStore.init(collections, options).then(function () {
-  // handle success
+    // handle success
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-### Load data from MobileFirst Adapter
+#### Load data from MobileFirst Adapter
 When `load` is called, JSONStore uses some metadata about the adapter (**name** and **procedure**), which you previously passed to `init`, to determine what data to get from the adapter and eventually store it.
 
 ```javascript
 var collectionName = 'people';
 WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
-  // handle success
+    // handle success
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-### Get Push Required (Dirty Documents)
+#### Get Push Required (Dirty Documents)
 Calling `getPushRequired` returns an array of so called *"dirty documents"*, which are documents that have local modifications that do not exist on the back-end system. These documents are sent to the MobileFirst adapter when `push` is called.
 
 ```javascript
 var collectionName = 'people';
 WL.JSONStore.get(collectionName).getPushRequired().then(function (dirtyDocuments) {
-  // handle success
+    // handle success
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
 To prevent JSONStore from marking the documents as "dirty", pass the option `{markDirty:false}` to `add`, `replace`, and `remove`
 
-### Push
+#### Push
 `push` sends the documents that changed to the correct MobileFirst adapter procedure (i.e., `addPerson` is called with a document that was added locally). This mechanism is based on the last operation that is associated with the document that changed and the adapter metadata that is passed to `init`.
 
 ```javascript
 var collectionName = 'people';
 WL.JSONStore.get(collectionName).push().then(function (response) {
-  // handle success
-  // response is an empty array if all documents reached the server
-  // response is an array of error responses if some documents failed to reach the server
+    // handle success
+    // response is an empty array if all documents reached the server
+    // response is an array of error responses if some documents failed to reach the server
 }).fail(function (error) {
-  // handle failure
+    // handle failure
 });
 ```
 
-## Enhance
+### Enhance
 Use `enhance` to extend the core API to fit your needs, by adding functions to a collection prototype.
 This example shows how to use `enhance` to add the function `getValue` that works on the `keyvalue` collection. It takes a `key` (string) as it's only parameter and returns a single result.
 
 ```javascript
 var collectionName = 'keyvalue';
 WL.JSONStore.get(collectionName).enhance('getValue', function (key) {
-  var deferred = $.Deferred();
-  var collection = this;
-  //Do an exact search for the key
-  collection.find({key: key}, {exact:true, limit: 1}).then(deferred.resolve, deferred.reject);
-  return deferred.promise();
+    var deferred = $.Deferred();
+    var collection = this;
+    //Do an exact search for the key
+    collection.find({key: key}, {exact:true, limit: 1}).then(deferred.resolve, deferred.reject);
+    return deferred.promise();
 });
+
 //Usage:
 var key = 'myKey';
 WL.JSONStore.get(collectionName).getValue(key).then(function (result) {
-  // handle success
-  // result contains an array of documents with the results from the find
+    // handle success
+    // result contains an array of documents with the results from the find
 }).fail(function () {
-  // handle failure
+    // handle failure
 });
 ```
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStore) the MobileFirst project.  
-The MobileFirst project contains an application that demonstrates the use of JSONStore in a hybrid environment.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStore) the Cordova project.  
 
 ![jsonstore sample](jsonstore-hybrid.png)
 
-> For more information about JSONStore, see the product user documentation.
+> For more information about JSONStore, see the user documentation.

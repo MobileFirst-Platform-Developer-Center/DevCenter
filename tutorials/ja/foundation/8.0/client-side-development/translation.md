@@ -14,11 +14,11 @@ IBM MobileFirst Platform Foundation フレームワークを使用すると、Co
 
 #### 関連リンク:
 
-* [アプリケーション・ストリングの翻訳](#translating-application-strings)
-* [システム・メッセージの翻訳](#translating-system-messages)
-* [複数言語の翻訳](#multilanguage-translation)
-* [デバイスのロケールおよび言語の検出](#detecting-the-device-locale-and-language)
-* [サンプル・アプリケーション](#sample-application)
+* [アプリケーション・ストリングの翻訳](#アプリケーション・ストリング-の-翻訳)
+* [システム・メッセージの翻訳](#システム・メッセージ-の-翻訳)
+* [複数言語の翻訳](#複数言語-の-翻訳)
+* [デバイスのロケールおよび言語の検出](#デバイス-の-ロケール-および-言語-の-検出)
+* [サンプル・アプリケーション](#サンプル-アプリケーション)
 
 ## アプリケーション・ストリングの翻訳
 翻訳されるストリングは "Messages" と呼ばれる `JSON` オブジェクト内に保管されています。これは Cordova アプリケーションの index.js ファイルにあります: **[cordova-project-root-directory]/www/js/index.js**
