@@ -11,10 +11,10 @@ Java adapters are based on the JAX-RS specification. In other words, a Java adap
 
 ## File structure
 
-<span style="color:red">Image</span>
+![mvn-adapter](java-adapter-fs.png)
 
-### The `XML` File  
-Java adapters have an XML configuration file such as all the other types of adapters. In this configuration file, configure the class name of the JAX-RS application for this adapter.
+### The `adapter-resources` folder  
+The `adapter-resources` folder contains an XML configuration file. In this configuration file, configure the class name of the JAX-RS application for this adapter.
 In our case: `com.sample.adapter.JavaAdapterApplication`.
 
 ```xml
@@ -31,16 +31,10 @@ In our case: `com.sample.adapter.JavaAdapterApplication`.
 </mfp:adapter>
 ```
 
-Note that the connection policy type is `NullConnectionPolicy`, which means that the XML configuration file is not used to define the connectivity of the adapter. In Java adapters, this is the only allowed connectivity type. <span style="color:red">The MobileFirst Server leaves setting up the connectivity policy to the developer of the adapter. For example, an adapter can contain code that uses an Apache HTTP client to connect to a back-end system.</span>
-
 ### The `java` folder
 In this folder, put the Java sources of the JAX-RS service. JAX-RS services are composed of an application class (which extends `com.worklight.wink.extensions.MFPJAXRSApplication`) and resources classes.
 The JAX-RS application and resources classes define the Java methods and their mapping to URLs.
 `com.sample.JavaAdapterApplication` is the JAX-RS application class and `com.sample.JavaAdapterResource` is a JAX-RS resource included in the application.
-
-## Dependencies
-
-<span style="color:red">----TBD----</span>
 
 ## JAX-RS application class
 The JAX-RS application class tells the JAX-RS framework which resources are included in the application.

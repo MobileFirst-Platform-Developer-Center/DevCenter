@@ -45,8 +45,7 @@ To connect to a database, Java code needs a JDBC connector driver for the specif
               user="root" />
 </dataSource>
 ```
-* <span style="color:red">The `library` tag specifies where to find the `MySQL .jar` file. In most cases, `${shared.resource.dir}` is **shared/resources** under the Liberty server root folder.  
-In MobileFirst Studio for Eclipse, select **Project Explorer > MobileFirst Development Server > shared > resources**.</sapn>
+* The `library` tag specifies where to find the `MySQL .jar` file. In most cases, `${shared.resource.dir}` is **shared/resources** under the Liberty server root folder.  
 * The `dataSource` tag specifies how to connect to the database. Write down the `jndiName` that you choose, because you will need it later.
 
 ## UserAdapterApplication
@@ -290,5 +289,5 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.
 
 The sample includes the **UserAdapter** described here.  
-<span style="color:red"> The project also includes a sample MySQL script in the **server** folder, which needs to be imported into your database to test the project.</span>  
+The Adapters project also includes a sample MySQL script in the **Utils** folder, which needs to be imported into your database to test the project.  
 The project does not include the MySQL connector driver, and does not include the **server.xml** configuration described above. Those steps need to be completed in order to use the sample.

@@ -9,8 +9,10 @@ weight: 2
 ---
 
 ## Overview
-An IBM MobileFirst Platform Foundation SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.  
-<span style="color:red"> As a developer, you must download the JDBC connector driver for the specific database type separately and add it to the `server\lib\` folder of a MobileFirst project. You can download the JDBC connector driver from the appropriate vendor website.</span>  
+An IBM MobileFirst Platform Foundation SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
+
+To connect to a database, JavaScript code needs a JDBC connector driver for the specific database type. You must download the JDBC connector driver for the specific database type separately and add it as a dependency in your project. For more information on how to add dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../) tutorial.
+
 In this tutorial and in the accompanying sample, you learn how to use a MobileFirst adapter to connect to a MySQL database.
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
@@ -133,6 +135,6 @@ The result is retrieved as a JSON object:
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.  
 
-* To run the sample, execute the `mobilefirstTraining.sql` file <span style="color:red">(which you can find under ...)</span> on your local MySQL server.
+* The Adapters project also includes a sample MySQL script in the **Utils** folder, which needs to be imported into your database to test the project.
 * Make sure that the `mobilefirst@% user` has all access permissions assigned to it.
-* <span style="color:red"> Remember to download and set the MySQL Java Connector in your project.</span>
+* Remember to download and set the MySQL Java Connector in your Adapters project.

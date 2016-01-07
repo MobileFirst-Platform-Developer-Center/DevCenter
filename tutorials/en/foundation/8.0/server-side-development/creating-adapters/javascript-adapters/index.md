@@ -12,17 +12,17 @@ JavaScript adapters provide templates for connection to HTTP and SQL back-ends. 
 
 ## File structure
 
-<span style="color:red">Image</span>
+![mvn-adapter](js-adapter-fs.png)
 
-### The `XML` File
-JavaScript adapters have an XML configuration file which describes the connectivity options and lists the procedures that are exposed to the application or other adapters.
+### The `adapter-resources` folder  
+The `adapter-resources` folder contains an XML configuration file. This configuration file describes the connectivity options and lists the procedures that are exposed to the application or other adapters.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<mfp:adapter name="HelloWorld">
+<mfp:adapter name="JavaScriptAdapter">
 
-  <displayName>HelloWorld</displayName>
-	<description>HelloWorld</description>
+  <displayName>JavaScriptAdapter</displayName>
+	<description>JavaScriptAdapter</description>
   <connectivity>
     <connectionPolicy>
     ...
@@ -67,10 +67,7 @@ function procedure1(param) {
 By using server-side JavaScript, a procedure can process the data before or after it calls the service. You can apply more filtering to retrieved data by using simple XSLT code.  
 JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to [use Java in the adapter](../javascript-adapters/using-java-adapters) code.
 
-
-
-
-<span style="color:red"> ### Using global variables </span>  
-Depending on your infrastructure and configuration, your MobileFirst server may be running with `SessionIndependent` set to true, where each request may reach a different node and HTTP sessions are not used. In such cases you should not rely on global variables to keep data from one request to the next.
+### Using global variables
+The MobileFirst server does not rely on HTTP sessions and each request may reach a different node. You should not rely on global variables to keep data from one request to the next.
 
 ## For examples of JavaScript adapters communicating with an HTTP or SQL back end, see:

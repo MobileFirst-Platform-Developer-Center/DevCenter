@@ -7,8 +7,9 @@ weight: 2
 ---
 
 ## Overview
-This tutorial demonstrates how to create either Java or JavaScript adapter using the Maven Archetype "adapter-maven-archetype".
-The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) in order to create the adapter as a Maven project.
+Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst CLI or MobileFirst Operations Console. This tutorial demonstrates how to create either a Java or JavaScript adapter using the above methods.
+
+The adapter project is based on the Maven Archetype "adapter-maven-archetype" which is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
 **Prerequisite:**  Make sure that you read the [Adapters Overview](../adapters-overview) tutorial first.</span>
 
@@ -45,41 +46,40 @@ You can choose to run the command interactively or directly.
      * Use `adapter-maven-archetype-http` to create a JavaScript HTTP adapter
      * Use `adapter-maven-archetype-sql` to create a JavaScript SQL adapter  
 
-2. Enter the Group Id of the Maven project to be build:
+2. Enter a Group Id of the Maven project to be build. For example:
 
     ```shell
-    Define value for property 'groupId': : com.mfp
+    Define value for property 'groupId': : com.mycompany
     ```
 
-3. Enter the Artifact Id of the Maven project **which will later be used also as the adapter name**:
+3. Enter an Artifact Id of the Maven project **which will later be used also as the adapter name**. For example:
 
     ```shell
     Define value for property 'artifactId': : SampleAdapter
     ```
 
-4. Enter the Maven project version (the default is `1.0-SNAPSHOT`):
+4. Enter a Maven project version (the default is `1.0-SNAPSHOT`). For example:
 
     ```shell
     Define value for property 'version':  1.0-SNAPSHOT: : 1.0
     ```
 
-5. Enter the Java adapter package name (the default is the `groupId`):
+5. Enter a Java adapter package name (the default is the `groupId`). For example:
 
     ```shell
-    Define value for property 'package':  com.mfp: : com.sample
+    Define value for property 'package':  com.mycompany: : com.mypackage
     ```
 
 6. Enter `y` to confirm:
 
     ```shell
-    [INFO] Using property: archetypeVersion = 7.2.0.0
+    [INFO] Using property: archetypeVersion = 8.0.0
     Confirm properties configuration:
-    groupId: sample.group.id
-    artifactId: Sample
+    groupId: com.mycompany
+    artifactId: SampleAdapter
     version: 1.0
-    package: com.sample.adapter
-    adapter-name: TestAdapter
-    archetypeVersion: 7.2.0.0
+    package: com.mypackage
+    archetypeVersion: 8.0.0
      Y: : y
     ```
 <br/>
@@ -98,7 +98,7 @@ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<ada
 
 After creating the adapter the result will be a Maven project containing a `src` folder and a `pom.xml` file:
 
-![mvn-adapter](java-adapter-structrue.png)
+![mvn-adapter](adapter-fs.png)
 
 ### Build and Deploy Adapters
 #### Build
@@ -106,7 +106,7 @@ After creating the adapter the result will be a Maven project containing a `src`
 The adapter will be built every time you run the `mvn install` command to build your Maven project.  
 The end result is the `.adapter` file in the project `target` folder:
 
-![java-adapter-result](java-adapter-result.png)
+![java-adapter-result](adapter-result.png)
 
 #### Deploy
 
