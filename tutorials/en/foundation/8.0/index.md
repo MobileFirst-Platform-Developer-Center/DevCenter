@@ -6,6 +6,7 @@ use_dropdown: true
 print_pdf: false
 weight: 0
 show_disqus: false
+show_breadcrumb: true
 ---
 <br>
 IBM MobileFirst Platform Foundation represents a set of tools enabling enterprises to develop, test, secure, and manage native, hybrid, and mobile web applications.

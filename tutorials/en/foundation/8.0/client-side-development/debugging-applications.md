@@ -1,18 +1,22 @@
 ---
 layout: tutorial
-title: Debugging applications
+title: Debugging Cordova applications
 relevantTo: [cordova]
-weight: 12
+weight: 7
 ---
-### Overview
-This tutorial explores various approaches to debugging the web resources of Cordova application,  
-Either before running the application on a device or while running it on a device.
+## Overview
+Debugging is a process that consists of finding the cause of defects in applicative code and application user interface.
+
+* Cordova applications consist of web-based resources such as HTML, JavaScript &amp; CSS, and optional native code (written in Java, Objective-C, Swift, C#, ...).
+* Native code can be debugged by using standard tools that are provided by the platform SDK, such as XCode, Android LogCat, or Microsoft Visual Studio.
+
+This tutorial explores various approaches to debugging a Cordova application, whether running locally via an Emulator or Simulator, or while running in a physical mobile device.
+
+> Learn more about Cordova debugging and testing in the Cordova website: [Debugging applications](https://cordova.apache.org/docs/en/5.4.0/guide/next/index.html#link-10).
 
 #### Jump to:
 
-* [What is debugging?](#what-is-debugging)
-* [Debugging on a desktop browser](#debugging-on-a-desktop-browser)
-* [Debugging with the Mobile Browser Simulator](#debugging-with-the-mobile-browser-simulator)
+* [Debugging with the IBM Mobile Browser Simulator](#debugging-with-the-ibm-mobile-browser-simulator)
 * [Debugging with Ripple](#debugging-with-ripple)
 * [Debugging with iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
 * [Debugging with Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
@@ -20,38 +24,15 @@ Either before running the application on a device or while running it on a devic
 * [Debugging with IBM MobileFirst Logger](#debugging-with-ibm-mobilefirst-logger)
 * [Debugging with WireShark](#debugging-with-wireshark)
 
-### What is debugging?
-Debugging is a process that consists of finding the cause of defects in applicative code and UI.
-
-* Cordova applications consist of web-based resources such as HTML, JavaScript &amp; CSS, and optional native code (written in Java, Objective-C, Swift, C#, ...).
-* Native code can be debugged by using standard tools that are provided by the platform SDK, such as XCode, Android LogCat, or Microsoft Visual Studio.
-
-### Debugging on a desktop browser
-Modern browsers, such as Chrome, Firefox, Safari, Internet Explorer 10 (and above) and Opera, provide an easy and convenient way to debug web apps.
-Many web tools for debugging are available. For example:
-
-* FireBug
-* Chrome Developer Tools
-* Internet Explorer Developer Tools
-* Dragonfly for Opera
-* Safari Web Inspector
-
-![Developer Tools](developer-tools.png)
-
-In early application development stages, these tools can be used to debug the application just like a regular website. It is not required to install them in a mobile device.  
-You can also preview changes to HTML and CSS in real time by modifying the values in the inspector.
-
-![modifying values in the Developer Tools](developer-tools-2.png)
-
-### Debugging with the Mobile Browser Simulator
-You can use the Mobile Browser Simulator to preview and debug MobileFirst applications.  
-To use the Mobile Browser Simulator, open **Terminal** and run the command:
+## Debugging with the IBM Mobile Browser Simulator
+You can use IBM MobileFirst Platform Foundation's Mobile Browser Simulator (MBS) to preview and debug MobileFirst applications.  
+To use the MBS, open a **Terminal** and run the command:
 
 ```bash
 mfpdev app preview
 ```
 
-If your application consists of more that one platform - specify the platform to preview:
+If your application consists of more than one platform - specify the platform to preview:
 
 ```bash
 mfpdev app preview -p <platform>
@@ -59,11 +40,11 @@ mfpdev app preview -p <platform>
 
 > Learn more about the MobileFirst CLI in the [Using CLI to manage MobileFirst artifacts](../using-cli-to-manage-mobilefirst-artifacts) tutorial.
 
-### Debugging with Ripple
+## Debugging with Ripple
 Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  
 It lets you run a Cordova application in your browser and fake various Cordova features. For example, it can fake the camera API by letting you select a picture locally from your computer.  
 
-#### Installing Ripple
+### Installing Ripple
 
 1. Download and install the latest version of [Node.js](https://nodejs.org/en/) (v0.12.0 or later required).  
 You can verify Node.js installation by typing `npm -v` in terminal.
@@ -73,7 +54,7 @@ You can verify Node.js installation by typing `npm -v` in terminal.
     npm install -g ripple-emulator
     ```
 
-#### Running application using Ripple
+### Running application using Ripple
 After Ripple is installed open terminal from your Cordova project location and type:
 
 ```bash
@@ -84,7 +65,7 @@ ripple emulate
 
 > More information about Apache Ripple™ can be found on the [Apache Ripple page](http://ripple.incubator.apache.org/) or [npm ripple-emulator page](https://www.npmjs.com/package/ripple-emulator).
 
-### Debugging with iOS Remote Web Inspector
+## Debugging with iOS Remote Web Inspector
 Starting in iOS 6 Apple introduced a remote [Web Inspector](https://developer.apple.com/safari/tools/) for debugging web applications on iOS devices. To debug, make sure that the device (or simulator) has the **Private Browsing** option turned off.  
 To enable Web Inspector on the device, Tap **Settings > Safari > Advanced > Web Inspector**.
 
@@ -99,7 +80,7 @@ The DOM can now be inspected. It is also possible to alter the CSS and run JavaS
 
     ![Safari Debugging](safari-debugging.png)
 
-### Debugging with Chrome Remote Web Inspector
+## Debugging with Chrome Remote Web Inspector
 Using Google Chrome it is possible to remotely inspect web applications on Android devices or the Android Emulator.  
 This action requires Android 4.4 or later, Chrome 32 or later, and IBM Worklight Foundation V6.2.0 or IBM MobileFirst Platform Foundation 6.3 or later. Additionally, in the `AndroidManifest.xml` file, `targetSdkVersion = 19` or above is required. In the `project.properties` file, `target = 19` or above is required.
 
@@ -111,7 +92,7 @@ You can now use all the features of the Chrome Inspector to inspect the Android 
 
 ![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
-### Debugging with Weinre
+## Debugging with Weinre
 Weinre is a debugger for web pages, like Firebug or other Web Inspectors, except that **Weinre is designed to work remotely**.
 Weinre can be used to inspect and debug web resources such as HTML, JavaScript, CSS, and network traffic on mobile handsets.
 The Weinre architecture includes the following components:
@@ -120,13 +101,13 @@ The Weinre architecture includes the following components:
 The Weinre debug server requires a `node.js` runtime.
 You can find instructions to install Weinre on the [Weinre installation page](http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html).
 
-<h3>Debug server</h3>
+#### Debug server
 When the Weinre server is installed, enter the following command to run it:  
 `weinre --httpPort 8080 --boundHost -all-`  
 This command starts a Weinre server.  
 The default port is `8080` but you can change it.
 
-<h3>Target</h3>
+#### Target
 The Weinre server must be accessible from the device that will be used for debugging.  
 To make it accessible, add the following code line to the web application:
 
@@ -134,9 +115,9 @@ To make it accessible, add the following code line to the web application:
 <script src="http://a.b.c:8080/target/target-script-min.js"></script>
 ```
 
-Where a.b.c is the hostname or IP of the Weinre server.
+Where <code>a.b.c</code> is the hostname or IP of the Weinre server.
 
-<h3>Client</h3>
+#### Client
 Before you can start debugging, make sure that the application is open and loaded on the browser with this URL:
 ![Weinre Debugging](Weinre-Debugging.png)
 

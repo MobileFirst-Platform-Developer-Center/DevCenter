@@ -36,23 +36,17 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
 
 ### [Client-side Development](../client-side-development/)
-Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation, web &#8596; native interactions, debugging and more...
+Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation debugging applications and more...
 
 * [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
 * <span style="color:red">TODO: </span>[Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
-* <span style="color:red">TODO: </span>Native UI elements in Cordova applications
-    * [Native UI elements in Cordova iOS applications](../client-side-development/native-ui-elements-in-cordova-ios-applications/)
-    * [Native UI elements in Cordova Android applications](../client-side-development/native-ui-elements-in-cordova-android-applications/)
-    * [Native UI elements in Cordova Windows 8 Universal applications](../client-side-development/native-ui-elements-in-cordova-windows-8-applications/)
-    * [Native UI elements in Cordova Windows 10 UWP applications](../client-side-development/native-ui-elements-in-cordova-windows-10-applications/)
 * <span style="color:red">IN PROGRESS </span>[JSONStore](../client-side-development/jsonstore/)
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
 	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
-* <span style="color:red">TODO: </span>[Integrating server-generated pages in Cordova applications](../client-side-development/integrating-server-generated-pages-in-cordova-applications/)
 * <span style="color:red">IN PROGRESS </span>[Using Direct Update to Quickly Update Your Application](../client-side-development/direct-update/)
 * [Translation](../client-side-development/translation/)
-* [Debugging applications](../client-side-development/debugging-applications/)
+* [Debugging Cordova applications](../client-side-development/debugging-applications/)
 
 ### [Server-side Development](../server-side-development/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.  
@@ -62,17 +56,17 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * <span style="color:red">IN PROGRESS</span> [JavaScript adapters](../server-side-development/creating-adapters/javascript-adapters/)
     * [JavaScript HTTP Adapter](../server-side-development/creating-adapters/javascript-adapters/js-http-adapter/)
     * [JavaScript SQL Adapter](../server-side-development/creating-adapters/javascript-adapters/js-sql-adapter/)
+    * [Using Java in JavaScript Adapters](../server-side-development/creating-adapters/javascript-adapters/using-java-in-javascript-adapters/)
 * <span style="color:red">IN PROGRESS</span> [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
     * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
-* <span style="color:red">IN PROGRESS</span> Resource request in Adapters
-    * [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
-    * [Resource request from iOS Swift-based applications](../server-side-development/resource-request-from-native-ios-swift-applications/)
-    * [Resource request from iOS Objective C-based applications](../server-side-development/resource-request-from-native-ios-applications/)
-    * [Resource request from Android applications](../server-side-development/resource-request-from-native-android-applications/)
-    * [Resource request from Windows 8 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
-    * [Resource request from Windows 10 UWP applications](../server-side-development/resource-request-from-native-windows-10-applications/)
-* <span style="color:red">TODO</span> [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from iOS Swift-based applications](../server-side-development/resource-request-from-native-ios-swift-applications/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from iOS Objective C-based applications](../server-side-development/resource-request-from-native-ios-applications/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../server-side-development/resource-request-from-native-android-applications/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../server-side-development/resource-request-from-native-windows-10-applications/)
+* <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
 * <span style="color:red">TODO</span> [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
 * <span style="color:red">IN PROGRESS</span> [Debugging adapters](../server-side-development/debugging-adapters/)
 

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Using Direct Update to quickly update your application
 relevantTo: [cordova]
-weight: 11
+weight: 3
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
