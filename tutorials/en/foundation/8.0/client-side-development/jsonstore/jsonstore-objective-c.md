@@ -4,10 +4,9 @@ title: Using JSONStore in Native iOS applications
 relevantTo: [ios]
 weight: 2
 downloads:
-  - name: Download MobileFirst project
+  - name: Download Native iOS project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC
 ---
-
 ## Overview
 This tutorial is a continuation of the JSONStore Overview tutorial.    
 
@@ -37,7 +36,7 @@ Add to the file:
 The JSONStore feature should now be available to you in the Xcode project.
 
 ## Basic Usage
-###Open
+### Open
 
 Use <code>openCollections</code> to open one or more JSONStore collections.
 
@@ -56,7 +55,7 @@ JSONStoreCollection* collection = [[JSONStoreCollection alloc] initWithName:@"pe
 [[JSONStore sharedInstance] openCollections:@[collection] withOptions:nil error:error];
 ```
 
-###Get
+### Get
 Use <code>getCollectionWithName</code> to create an accessor to the collection. You must call <code>openCollections</code> before you call <code>getCollectionWithName</code>.
 
 ```objc
@@ -66,7 +65,7 @@ JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithN
 
 The variable <code>collection</code> can now be used to perform operations on the <code>people</code> collection such as <code>add</code>, <code>find</code>, and <code>replace</code>.
 
-###Add
+### Add
 Use <code>addData</code> to store data as documents inside a collection.
 
 ```objc
@@ -79,7 +78,7 @@ NSDictionary *data = @{@"name" : @"yoel", @"age" : @23};
 [[collection addData:@[data] andMarkDirty:YES withOptions:nil error:error] intValue];
 ```
 
-###Find
+### Find
 Use <code>findWithQueryParts</code> to locate a document inside a collection by using a query. Use <code>findAllWithOptions</code> to retrieve all the documents inside a collection. Use <code>findWithIds</code> to search by the document unique identifier.
 
 ```objc
@@ -100,7 +99,7 @@ JSONStoreQueryOptions *options = [[JSONStoreQueryOptions alloc] init];
 NSArray *results = [collection findWithQueryParts:@[query] andOptions:options error:error];
 ```
 
-###Replace
+### Replace
 Use <code>replaceDocuments</code> to modify documents inside a collection. The field that you use to perform the replacement is <code>_id,</code> the document unique identifier.
 
 ```objc
@@ -116,7 +115,7 @@ NSDictionary *replacement = @{@"_id": @1, @"json" : @{@"name" : @"chevy", @"age"
 
 This examples assumes that the document <code>{_id: 1, json: {name: 'yoel', age: 23} }</code> is in the collection.
 
-###Remove
+### Remove
 Use <code>removeWithIds</code> to delete a document from a collection.
 Documents are not erased from the collection until you call <code>markDocumentClean</code>. For more information, see the **MobileFirst Adapter Integration** section later in this tutorial.
 
@@ -128,7 +127,7 @@ JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithN
 [collection removeWithIds:@[@1] andMarkDirty:YES error:error];
 ```
 
-###Remove Collection
+### Remove Collection
 Use <code>removeCollectionWithError</code> to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
 
 ```objc
@@ -139,7 +138,7 @@ JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithN
 BOOL removeCollectionWorked = [collection removeCollectionWithError:error];
 ```
 
-###Destroy
+### Destroy
 Use <code>destroyDataAndReturnError</code> to remove the following data:
 
 * All documents
