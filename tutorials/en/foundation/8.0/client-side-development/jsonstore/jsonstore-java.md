@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: Using JSONStore in Native Android applications
-relevantTo: [ios]
-weight: 2
+relevantTo: [android]
+weight: 3
 downloads:
   - name: Download Native Android project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid
