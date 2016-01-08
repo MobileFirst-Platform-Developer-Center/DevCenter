@@ -3,7 +3,7 @@ layout: tutorial
 title: Application Authenticity 
 breadcrumb_title: Application Authenticity
 relevantTo: [android,ios,windows,cordova]
-weight: 5
+weight: 10
 ---
 ## Overview
 By issuing an HTTP request, any entity can access the HTTP services (APIs) that IBM MobileFirst Platform Foundation Server offers.  

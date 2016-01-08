@@ -3,7 +3,7 @@ layout: tutorial
 title: NTLM Authentication
 breadcrumb_title: NTLM authentication
 relevantTo: [android,ios,windows,cordova]
-weight: 10
+weight: 5
 ---
 # Overview
 The NTLM protocol is a challenge-response mechanism for authentication users in Windows operating systems.
