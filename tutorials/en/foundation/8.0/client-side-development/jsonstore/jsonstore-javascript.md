@@ -7,9 +7,6 @@ downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStore
 ---
-
-<span style="color:red">check which Cordova platforms are supported</span>
-
 ## Overview
 This tutorial is a continuation of the JSONStore Overview tutorial.    
 
