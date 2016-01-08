@@ -64,8 +64,8 @@
                 "name": "Windows 10 UWP",
                 "path": "/windows-10-tutorials"
             }, {
-                "name": "Hybrid",
-                "path": "/hybrid-tutorials"
+                "name": "Cordova",
+                "path": "/cordova-tutorials"
             }, {
                 "name": "Server-side",
                 "path": "/server-side-tutorials"
