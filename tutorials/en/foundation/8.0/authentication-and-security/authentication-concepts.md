@@ -134,7 +134,7 @@ TODO
 #### Built-in Security Checks
 Also available are these out-of-the-box security checks:
 
-- [Application Authenticity Protection](../application-authenticity-protection/)
+- [Application Authenticity](../application-authenticity/)
 - [Direct Update](../../client-side-development/direct-update)
 - [LTPA](../websphere-ltpa-based-authentication/)
 

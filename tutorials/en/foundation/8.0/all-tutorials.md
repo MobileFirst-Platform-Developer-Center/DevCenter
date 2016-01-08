@@ -87,7 +87,7 @@ Protect your applications and adapter procedures against unauthorized access by 
     * [SecurityCheckWithUserAuthentication in Android  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/android/)
     * [SecurityCheckWithUserAuthentication in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-8/)
     * [SecurityCheckWithUserAuthentication in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-10/)
-* <span style="color:red">IN PROGRESS </span>[Application Authenticity Protection](../authentication-and-security/application-authenticity-protection/)
+* <span style="color:red">IN PROGRESS </span>[Application Authenticity](../authentication-and-security/application-authenticity/)
 * <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
 * <span style="color:red">TODO </span>[WebSphere LTPA-based authentication](../authentication-and-security/websphere-ltpa-based-authentication/)
 * <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
