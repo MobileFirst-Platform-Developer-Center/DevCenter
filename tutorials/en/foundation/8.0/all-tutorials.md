@@ -44,7 +44,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
 	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
-* <span style="color:red">IN PROGRESS </span>[Using Direct Update to Quickly Update Your Application](../client-side-development/direct-update/)
+* <span style="color:red">IN PROGRESS </span>[Using Direct Update to Quickly Update Applications](../client-side-development/direct-update/)
 * [Translation](../client-side-development/translation/)
 * [Debugging Cordova applications](../client-side-development/debugging-applications/)
 

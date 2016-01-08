@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using Direct Update to quickly update your application
+title: Using Direct Update to quickly update applications
 relevantTo: [cordova]
 weight: 3
 downloads:
