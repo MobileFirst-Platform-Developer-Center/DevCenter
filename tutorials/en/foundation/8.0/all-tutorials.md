@@ -40,7 +40,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 
 * [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
 * <span style="color:red">TODO </span>[Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
-* <span style="color:red">IN PROGRESS </span>[JSONStore](../client-side-development/jsonstore/)
+* [JSONStore](../client-side-development/jsonstore/)
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
 	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
@@ -71,7 +71,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * <span style="color:red">IN PROGRESS</span> [Debugging adapters](../server-side-development/debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
-Protect your applications and adapter procedures against unauthorized access by using authentication, login modules, and device provisioning.  
+Add various layers of protection to your applications and adapters.
 
 * <span style="color:red">IN PROGRESS </span>[Authentication concepts](../authentication-and-security/authentication-concepts/)
 * <span style="color:red">TODO </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
