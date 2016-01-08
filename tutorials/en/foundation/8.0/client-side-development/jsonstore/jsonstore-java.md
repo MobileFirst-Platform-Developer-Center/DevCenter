@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using JSONStore in Native iOS applications
+title: Using JSONStore in Native Android applications
 relevantTo: [ios]
 weight: 2
 downloads:
