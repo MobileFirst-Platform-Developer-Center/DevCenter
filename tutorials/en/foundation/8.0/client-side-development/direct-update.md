@@ -42,7 +42,7 @@ Once work on new web resources, such as bug fixes or minor changes and the like,
  mfpdev webupdate
 ```
 
-The <code>mfpdev webupdate</code> commands packages the updated web resources to a .zip file and uploads it to the default MobileFirst Server running in the developer workstation. The packaged web resources can be found at **[cordova-project-root-folder]\mobilefirst\[platform-folder]**.
+The <code>mfpdev webupdate</code> commands packages the updated web resources to a .zip file and uploads it to the default MobileFirst Server running in the developer workstation. The packaged web resources can be found at **[cordova-project-root-folder]/mobilefirst/[platform-folder]**.
 
 Alternatives:
 
