@@ -126,7 +126,7 @@ The below steps explain the implementation of this tutorial's sample application
 
 ## Detecting the device locale and language
 It is possible to detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
-The globalization plug-in is auto-installed when adding a platform to the Cordova plug-in.
+The globalization plug-in is auto-installed when adding a platform to the Cordova application.
 
 Use the `navigator.globalization.getLocaleName` and `navigator.globalization.getPreferredLanguage` functions to detect the locale and language respectively.
 
