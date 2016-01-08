@@ -8,7 +8,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 #### Requirements:
 
-* <span style="color:red">Stand-alone MobileFirst Server / MobileFirst CLI</span>
+* Either a Stand-alone MobileFirst Server or MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 * Configured Xcode 6.x for iOS, Android Studio for Android or Visual Studio for Windows 8/10
 
 <hr> 
