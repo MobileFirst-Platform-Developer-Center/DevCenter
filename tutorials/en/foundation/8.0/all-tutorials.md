@@ -12,8 +12,8 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
 Get a feel of the MobileFirst SDK with these fast-tracked demos.
 
 * <span style="color:red">IN PROGRESS </span>[Quick start with Cordova](../quick-start/cordova/)
-* <span style="color:red">TODO </span>[Quick start with iOS](../quick-start/ios/)
-* <span style="color:red">TODO </span>[Quick start with Android](../quick-start/android/)
+* <span style="color:red">IN PROGRESS </span>[Quick start with iOS](../quick-start/ios/)
+* <span style="color:red">IN PROGRESS </span>[Quick start with Android](../quick-start/android/)
 * <span style="color:red">TODO </span>[Quick start with Windows 8 Universal](../quick-start/windows-8/)
 * <span style="color:red">TODO </span>[Quick start with Windows 10 UWP](../quick-start/windows-10/)
 
