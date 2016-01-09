@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Introduction to MobileFirst Platform Operations Console
-relevantTo: [ios,android,windowsphone,windows,cordova]
+title: Using the MobileFirst Platform Operations Console
+relevantTo: [ios,android,windows,cordova]
 weight: 6
 ---
-<h2>Overview</h2>
+## Overview
 <p>The MobileFirst Platform Operations Console is a web-based UI dedicated to the ongoing monitoring and administration of the deployed applications, adapters, and push notifications. The console also provides access to server logs (audit and error), Operational Analytics, device profiling, and more.</p>
 <h3>Agenda</h3>
 <ul>
