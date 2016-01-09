@@ -38,10 +38,6 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ![Image of downloading an adapter sample](create-an-adapter.png)
  
-2. <span style="color:red">Build the adapter.</span>
-
-    ![Image of building the adapter]()
-
 ### 4. Editing application logic
 
 1. Open the Xcode project project

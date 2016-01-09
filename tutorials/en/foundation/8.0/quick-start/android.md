@@ -37,10 +37,6 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 1. Click on the "Create new" button next to **Adapters** and download a sample adapter.
 
     ![Image of downloading an adapter sample](create-an-adapter.png)
- 
-2. <span style="color:red">Build the adapter.</span>
-
-    ![Image of building the adapter]()
 
 ### 4. Editing application logic
 
