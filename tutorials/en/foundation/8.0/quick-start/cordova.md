@@ -25,31 +25,21 @@ From a **Terminal** window:
 Open the MobileFirst Operations Console by loading the URL <code>http://localhost:9080/mfpconsole</code>.  
 The username/password are *demo/demo*.
  
-1. Click on "Create new" next to **Applications**.
+1. Click on "Create new" next to **Applications**, select the desired platform, identifier &amp; version values.
 
-    ![Image of creating a new application](create-app.png)
-
-2. Select the Desired platform, and provide an identifier &amp; version values.
-
-    ![Image of selecting platform, and providing an identifier and version](register-app.png)
+    ![Image of selecting platform, and providing an identifier and version](create-an-application.png)
  
-3. Click on the **Download Sample** tile and select to download a Hybrid sample.
+2. Click on the **Download Sample** tile and select to download a Cordova sample application.
 
-    ![Image of downloading a sample application](download-sample.png)
+    ![Image of downloading a sample application](download-sample-application.png)
 
 ### 3. Creating an adapter
 
-From the MobileFirst Operations Console,
+1. Click on "Create new" next to **Adapters** and download an adapter sample.
 
-1. Click on "Create new" next to **Adapters**.
-
-    ![Image of creating a new adapters](create-adapter.png)
-
-2. Download an adapter sample.
-
-    ![Image of downloading an adapter sample]()
+    ![Image of downloading an adapter sample](create-an-adapter.png)
  
-3. <span style="color:red">Build the adapter.</span>
+2. <span style="color:red">Build the adapter.</span>
 
     ![Image of building the adapter]()
 
