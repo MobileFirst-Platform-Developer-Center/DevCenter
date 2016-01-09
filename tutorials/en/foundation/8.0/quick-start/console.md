@@ -17,7 +17,7 @@ The MobileFirst Operations Console can be accessed in the following ways:
 
 ### From a locally installed MobileFirst Server
 #### Desktop Browser
-From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole).
+From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *demo/demo*.
 
 #### Command-line
 From a **Terminal** window, with the MobileFirst CLI installed, run the command: <code>mfpdev server console</code>
@@ -30,7 +30,7 @@ From a **Terminal** window, with the MobileFirst CLI installed, run the command:
 ### From a remotely installed MobileFirst Server
 #### Desktop Browser
 From your browser of choice, load the URL <code>http://the-server-host:server-port-number/mfpconsole</code>  
-The host server can be a customer-owner server, or running on a service such as Bluemix.
+The host server can be a customer-owner server, or running on a service such as Bluemix. The username/password are *demo/demo*.
 
 #### Command-line
 From a **Terminal** window, with the MobileFirst CLI installed, 
