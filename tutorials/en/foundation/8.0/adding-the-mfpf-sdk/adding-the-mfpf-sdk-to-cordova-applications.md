@@ -33,8 +33,11 @@ The <code>cordova-plugin-mfp-push</code> plug-in provides permissions needed to 
 **cordova-plugin-mfp-fips**  
 The <code>cordova-plugin-mfp-fips</code> plug-in enables FIPS related features. For more information about FIPS, see [FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) in the user docuementation.
 
-**Pre-requisites:** MobileFirst CLI and Apache Cordova CLI installed on the developer workstation.  
-Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
+**Pre-requisites:** 
+
+- MobileFirst CLI and Apache Cordova CLI installed on the developer workstation.  
+- *Optional* MobileFirst Server to run a locally
+- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
 #### Jump to:
 
@@ -46,11 +49,7 @@ Make sure you have read the [Setting up your MobileFirst development environment
 
 ## Adding the MobileFirst Cordova Plug-in
 Before starting, make sure the MobileFirst Server is running.  
-From a **Terminal** window run the command:
-
-```bash
-mfpdev server start
-```
+If using a locally installed server: From a **Terminal** window, navigate to the server's **scripts** folder and run the command: <code>./start.cmd</code> in Mac, <code>./start.sh</code> in Linux or <code>start.bat</code> in Windows.
 
 Follow the below instructions to add the MobileFirst Cordova Plugin to either a new or existing Cordova project:
 

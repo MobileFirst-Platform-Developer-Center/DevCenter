@@ -12,8 +12,11 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 In this tutorial you will learn how to add the MobileFirst Native SDK using Gradle and Maven Central to either a new or existing Android application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
 
-**Pre-requisites:** Android Studio and MobileFirst CLI installed on the developer workstation.  
-Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
+**Pre-requisites:** 
+
+- Android Studio MobileFirst CLI installed on the developer workstation.  
+- *Optional* MobileFirst Server to run a locally
+- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
 #### Jump to:
 
@@ -25,11 +28,7 @@ Make sure you have read the [Setting up your MobileFirst development environment
 Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Android Studio project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-From a **Terminal** window run the command:
-
-```bash
-mfpdev server start
-```
+If using a locally installed server: From a **Terminal** window, navigate to the server's **scripts** folder and run the command: <code>./start.cmd</code> in Mac, <code>./start.sh</code> in Linux or <code>start.bat</code> in Windows.
 
 1. Create an Android project or use an existing one.  
 
