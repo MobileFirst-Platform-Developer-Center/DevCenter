@@ -12,8 +12,6 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 * Configured Xcode for iOS, Android Studio for Android or Visual Studio for Windows 8/10
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
-<hr> 
-
 ### 1. Starting the MobileFirst Server
 
 > If a remote server was already setup, skip this step.

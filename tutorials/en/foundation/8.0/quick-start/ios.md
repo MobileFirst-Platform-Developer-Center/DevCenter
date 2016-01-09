@@ -12,8 +12,6 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 * Configured Xcode
 * *Optional* Stand-alone MobileFirst Server and MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 
-<hr> 
-
 ### 1. Starting the MobileFirst Server
 
 > If a remote server was already setup, skip this step.

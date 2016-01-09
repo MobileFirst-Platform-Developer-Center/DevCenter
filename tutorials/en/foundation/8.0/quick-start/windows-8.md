@@ -12,8 +12,6 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 * Configured Visual Studio 2013/5
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
-<hr> 
-
 ### 1. Starting the MobileFirst Server
 
 > If a remote server was already setup, skip this step.
