@@ -1,5 +1,6 @@
 ---
 layout: tutorial
-title: Windows 8
-relevantTo: [windows8]
+title: Windows 10
+relevantTo: [windows]
+weight: 4
 ---
