@@ -141,12 +141,14 @@ Optionally, a developer can also supply a Direct Update listener to fully contro
 directUpdateContext.start(directUpdateCustomListener);
 ```
 
-> For more information, see the topic about customizing Direct Update in the user documentation.
+> For more information, see the "Configuring and customizing direct update" user documentation topic. 
 
 ## Direct Update authenticity
 Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a content delivery network (CDN)) to the client application.
 
-<span style="color:red">Direct Update authenticity is always-on and uses the certificate stored in the application server's keystore.</span>
+Direct Update authenticity is always-on and uses the certificate stored in the application server's keystore.
+
+> For more information, see the "Configuring and customizing direct update" user documentation topic. 
 
 ## Differential Direct Update
 Differential Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
