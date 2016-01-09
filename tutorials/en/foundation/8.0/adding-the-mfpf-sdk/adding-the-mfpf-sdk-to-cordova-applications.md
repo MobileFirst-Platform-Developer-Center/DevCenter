@@ -46,7 +46,7 @@ Make sure you have read the [Setting up your MobileFirst development environment
 
 ## Adding the MobileFirst Cordova Plug-in
 Before starting, make sure the MobileFirst Server is running.  
-From **Terminal** run the command:
+From a **Terminal** window run the command:
 
 ```bash
 mfpdev server start

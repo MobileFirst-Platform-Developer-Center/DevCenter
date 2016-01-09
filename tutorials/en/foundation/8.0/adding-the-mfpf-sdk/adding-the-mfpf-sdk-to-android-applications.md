@@ -25,7 +25,7 @@ Make sure you have read the [Setting up your MobileFirst development environment
 Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Android Studio project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-From **Terminal** run the command:
+From a **Terminal** window run the command:
 
 ```bash
 mfpdev server start
