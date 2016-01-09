@@ -108,7 +108,7 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
     * [Handling Push Notifications in Windows 10 UWP applications](../notifications/handling-push-notifications/windows-10/)
 
 ### [Analytics](../analytics/)
-Monitor deployed applications and adapters, gain insight on application usage and more.  
+Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
 * <span style="color:red">TODO </span>[Operational Analytics](../analytics/operational-analytics/)
 * <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
