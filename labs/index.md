@@ -12,6 +12,8 @@ show_disqus: false
         <li>As an administrator, learn how to setup MobileFirst Platform on Linux, Windows and IBM Bluemix.</li>
     </ul>
 
+    <p><i>All materials were created by Andrii Vasylchenko</i></p>
+
     <h3>For Developers</h3>
     <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a>
 
