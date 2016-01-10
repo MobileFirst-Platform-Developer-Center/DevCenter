@@ -49,7 +49,7 @@ The <code>cordova-plugin-mfp-fips</code> plug-in enables FIPS related features. 
 
 ## Adding the MobileFirst Cordova Plug-in
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.cmd</code> in Mac, <code>./start.sh</code> in Linux or <code>start.bat</code> in Windows.
+If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.sh</code> in Mac and Linux or <code>start.cmd</code> in Windows.
 
 Follow the below instructions to add the MobileFirst Cordova Plugin to either a new or existing Cordova project:
 

@@ -34,6 +34,9 @@ From the MobileFirst Server's Operations Console a developer can:
 
 The MobileFirst Development Server is installed as a stand-alone server and provides the following scripts in its **scripts** folder:
 
+<code>.sh</code> scripts are for Linux and Mac.  
+<code>.cmd</code> scripts are for Windows.
+
 - <code>console.[sh|cmd]</code>: Open the local MobileFirst Console
 - <code>run.[sh|cmd]</code>: Run the local MobileFirst Server with trailing Liberty Server messages
 - <code>start.[sh|cmd]</code>: Run the local MobileFirst Server in background mode

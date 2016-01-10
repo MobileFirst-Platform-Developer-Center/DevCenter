@@ -28,7 +28,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Coco
 Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Xcode project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.cmd</code>.
+If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.sh</code>.
 
 1. Create an Xcode project or use an existing one.  
 
