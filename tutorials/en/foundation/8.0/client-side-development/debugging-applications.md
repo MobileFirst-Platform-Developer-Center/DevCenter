@@ -26,7 +26,7 @@ This tutorial explores various approaches to debugging a Cordova application, wh
 
 ## Debugging with the IBM Mobile Browser Simulator
 You can use IBM MobileFirst Platform Foundation's Mobile Browser Simulator (MBS) to preview and debug MobileFirst applications.  
-To use the MBS, open a **Terminal** and run the command:
+To use the MBS, open a **Command-line** window and run the command:
 
 ```bash
 mfpdev app preview

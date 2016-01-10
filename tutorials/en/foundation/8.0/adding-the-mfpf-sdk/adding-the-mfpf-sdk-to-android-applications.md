@@ -28,11 +28,11 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Grad
 Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Android Studio project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Terminal** window, navigate to the server's **scripts** folder and run the command: <code>./start.cmd</code> in Mac, <code>./start.sh</code> in Linux or <code>start.bat</code> in Windows.
+If using a locally installed server: From a **Command-line window, navigate to the server's **scripts** folder and run the command: <code>./start.cmd</code> in Mac, <code>./start.sh</code> in Linux or <code>start.bat</code> in Windows.
 
 1. Create an Android project or use an existing one.  
 
-2. Open **Terminal** and navigate to the root of the Android Studio project.  
+2. Open a **Command-line** window and navigate to the root of the Android Studio project.  
 
 3. Run the command: 
  
@@ -43,7 +43,7 @@ If using a locally installed server: From a **Terminal** window, navigate to the
     The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>mfpclient.properties</code> file in the **./app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
         
     > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
-        1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:9080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:9080/mfpconsole/</code>. You can also open the console from the **Command-line** using the CLI command <code>mfpdev server console</code>.  
         2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
         3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
 

@@ -31,7 +31,7 @@ Add to the file:
     pod 'IBMMobileFirstPlatformFoundationJSONStore'
     ```
 
-2. From a **Terminal** window, navigate to the root of the Xcode project and run the command: <code>pod install</code> - note that this action may take a while.
+2. From a **Command-line window, navigate to the root of the Xcode project and run the command: <code>pod install</code> - note that this action may take a while.
 
 The JSONStore feature should now be available to you in the Xcode project.
 

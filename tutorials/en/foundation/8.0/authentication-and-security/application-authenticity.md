@@ -36,7 +36,7 @@ Once an application has successfuly registered with the MobileFirst Server, and 
 ## Enabling Application Authenticity
 In order to enable Application Authenticity in your Cordova or Native application, the application's binary file needs to be signed using the MobileFirst-supplied command line tool. Eligible binary files are: `ipa` for iOS, `apk` for Android and `appx` for Windows 8 Universal &amp; Windows 10 UWP.
 
-1. Open **Terminal** and run the command: `java -jar path-to-mfp-server-authenticity-tool.jar path-to-binary-file`
+1. Open a **Command-line** window and run the command: `java -jar path-to-mfp-server-authenticity-tool.jar path-to-binary-file`
 
     For example:
 

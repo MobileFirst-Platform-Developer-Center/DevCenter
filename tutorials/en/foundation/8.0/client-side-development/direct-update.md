@@ -39,7 +39,7 @@ After a Direct Update, the application no longer uses the pre-packaged web resou
 ## Creating and deploying updated web resources
 Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the MobileFirst Server.
 
-1. Open a **Terminal** window and navigate to the root of the Cordova project.
+1. Open a **Command-line** window and navigate to the root of the Cordova project.
 2. Run the command: <code>mfpdev app webupdate</code>.
 
 The <code>mfpdev app webupdate</code> command packages the updated web resources to a .zip file and uploads it to the default MobileFirst Server running in the developer workstation. The packaged web resources can be found at the  **[cordova-project-root-folder]/mobilefirst/** folder.

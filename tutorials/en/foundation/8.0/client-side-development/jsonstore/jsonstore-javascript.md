@@ -25,8 +25,7 @@ This tutorial is a continuation of the JSONStore Overview tutorial.
 ## Adding JSONStore
 To add JSONStore plug-in to your Cordova application:
 
-1. Open a **Terminal** window.
-2. Navigate to your Cordova project folder.
+1. Open a **Command-line** window and navigate to your Cordova project folder.
 3. Run the command: `cordova plugin add cordova-plugin-mfp-jsonstore`.
 
 ![Add JSONStore feature](jsonstore-add-plugin.png)

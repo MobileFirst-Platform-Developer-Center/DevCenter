@@ -16,7 +16,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 > If a remote server was already set-up, skip this step.
 
-From a **Terminal** window, navigate to the server's **scripts** folder and run the command: <code>./start.cmd</code> in Mac, <code>./start.sh</code> in Linux or <code>start.bat</code> in Windows.
+From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.cmd</code> in Mac, <code>./start.sh</code> in Linux or <code>start.bat</code> in Windows.
 
 ### 2. Creating an application
 
@@ -36,10 +36,6 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ![Image of downloading an adapter sample](create-an-adapter.png)
  
-2. <span style="color:red">Build the adapter.</span>
-
-    ![Image of building the adapter]()
-
 ### 4. Editing application logic
 
 1. Open the Cordova project in your code editor of choice.
@@ -52,7 +48,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 5. Running the application
 
-1. From a **Terminal** window, navigate to the Cordova project root folder.
+1. From a **Command-line window, navigate to the Cordova project root folder.
 2. Run the commands: <code>cordova prepare</code> followed by <code>cordova run</code>.
 
  - If a device is connected, the application will be installed and launched in the device,
