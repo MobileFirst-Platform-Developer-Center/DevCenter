@@ -46,9 +46,9 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ![Image of application that successfully called a resource from the MobileFirst Server ]()
 
-    <hr>
+<hr>
 
-    ## Next steps
+## Next steps
 
-    - To add an adapter follow the [Adapter end-to-end demonstration](../adapter)
-    - Review [All Tutorials](../../all-tutorials)
+- To add an adapter follow the [Adapter end-to-end demonstration](../adapter)
+- Review [All Tutorials](../../all-tutorials)

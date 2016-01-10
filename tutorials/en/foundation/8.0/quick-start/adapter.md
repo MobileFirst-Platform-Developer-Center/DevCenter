@@ -53,9 +53,9 @@ If an application is not already available, follow the instructions [to quickly 
 ### 4. Editing application logic
 Open the application project and paste the following code snippet:
 
-    ```javascript
-    WLResourceRequest code snippet here
-    ```
+```javascript
+WLResourceRequest code snippet here
+```
 
 ### 5. Running the application
 
