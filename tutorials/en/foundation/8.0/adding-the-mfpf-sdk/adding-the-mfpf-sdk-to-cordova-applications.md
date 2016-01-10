@@ -33,8 +33,11 @@ The <code>cordova-plugin-mfp-push</code> plug-in provides permissions needed to 
 **cordova-plugin-mfp-fips**  
 The <code>cordova-plugin-mfp-fips</code> plug-in enables FIPS related features. For more information about FIPS, see [FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) in the user docuementation.
 
-**Pre-requisites:** MobileFirst CLI and Apache Cordova CLI installed on the developer workstation.  
-Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
+**Pre-requisites:** 
+
+- MobileFirst CLI and Apache Cordova CLI installed on the developer workstation.  
+- *Optional* MobileFirst Server to run a locally.
+- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
 #### Jump to:
 
@@ -46,15 +49,11 @@ Make sure you have read the [Setting up your MobileFirst development environment
 
 ## Adding the MobileFirst Cordova Plug-in
 Before starting, make sure the MobileFirst Server is running.  
-From **Terminal** run the command:
-
-```bash
-mfpdev server start
-```
+If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.sh</code> in Mac and Linux or <code>start.cmd</code> in Windows.
 
 Follow the below instructions to add the MobileFirst Cordova Plugin to either a new or existing Cordova project:
 
-1. Create a Cordova project or use an existing one. The MobileFirst template app can be used to create a new Cordova project that already contains the MobileFirst Plug-in. To use the template, open **Terminal** and run the command:
+1. Create a Cordova project or use an existing one. The MobileFirst template app can be used to create a new Cordova project that already contains the MobileFirst Plug-in. To use the template, open the **Command-line** and run the command:
 
     ```bash
     cordova create myapp  --template cordova-template-mfp
@@ -102,7 +101,7 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
 
 ## Registering the Cordova app in MobileFirst Server
 
-1. Open **Terminal** and navigate to the root of the Cordova project.  
+1. Open the **Command-line** and navigate to the root of the Cordova project.  
 
 2. Register the application with MobileFirst Server with the CLI command:
 
@@ -113,7 +112,7 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>config.xml</code> file at the root of the Cordova project, and adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as an application in MobileFirst Server.
 
     > The application registration can also be done from the MobileFirst Operations Console:    
-    > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:9080/mfpconsole/</code>. You can also open the console from **Terminal** using the CLI command <code>mfpdev server console</code>.  
+    > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:9080/mfpconsole/</code>. You can also open the console from the **Command-line** using the CLI command <code>mfpdev server console</code>.  
     > 2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.  
     > 3. After successfully registering your application you can optionally download a "skeleton" Cordova project pre-bundled with the MobileFirst Cordova SDK.
 

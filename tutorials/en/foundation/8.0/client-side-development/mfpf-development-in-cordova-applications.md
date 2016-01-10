@@ -23,7 +23,8 @@ The MobileFirst SDK feature set provides the following:
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 ## Application development
-Cordova applications can be enhanced by integerating **Cordova plug-ins**. Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on). 
+### Cordova plug-ins
+Cordova applications can be enhanced by integerating **Cordova plug-ins**. Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on).
 
 You can find Cordova plug-ins in the official [Cordova plug-ins repository](https://cordova.apache.org/plugins/), as well as on [GitHub.com](https://github.com) and in popular Cordova blogs, such as [Plugreg](http://plugreg.com/).
 
@@ -33,7 +34,14 @@ Example plug-ins:
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
+### 3rd-party frameworks
 Cordova application development can be further enhanced by using frameworks such as [Ionic](http://ionicframework.com/), [AngularJS](https://angularjs.org/), [jQuery Mobile](http://jquerymobile.com/), [Backbone](http://backbonejs.org/) and many others.
+
+### 3rd-party packages
+Applications can be modified using 3rd party packages to achieve requirements such as Minification &amp; Concatenation of the application's web resources and more. Popular packages to do so are:
+
+- [uglify-js](https://www.npmjs.com/package/uglify-js)
+- [clean-css](https://www.npmjs.com/package/clean-css)
 
 ## Further reading
 Learn more about Cordova:

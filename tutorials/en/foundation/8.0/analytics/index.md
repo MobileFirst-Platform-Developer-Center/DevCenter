@@ -5,8 +5,6 @@ show_children: true
 show_disqus: false
 print_pdf: false
 ---
-<h2>Overview</h2>
-...
-...
-
+## Overview
+Monitor deployed applications and adapters, gain insight on application usage and more.  
 To continue, select a tutorial:</p>

@@ -9,13 +9,15 @@ print_pdf: false
 Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
 
 ### [Quick Start](../quick-start)
-Get a feel of the MobileFirst SDK with these fast-tracked demos.
+Get a feel of MobileFirst Platform Foundation.
 
-* <span style="color:red">TODO: </span>[Quick start with iOS](../quick-start/ios/)
-* <span style="color:red">TODO: </span>[Quick start with Android](../quick-start/android/)
-* <span style="color:red">TODO: </span>[Quick start with Windows 8 Universal](../quick-start/windows-8/)
-* <span style="color:red">TODO: </span>[Quick start with Windows 10 UWP](../quick-start/windows-10/)
-* <span style="color:red">TODO: </span>[Quick start with Cordova](../quick-start/cordova/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Cordova](../quick-start/cordova/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with iOS](../quick-start/ios/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Android](../quick-start/android/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8 Universal](../quick-start/windows-8/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 10 UWP](../quick-start/windows-10/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Adapters](../quick-start/adapter/)
+* <span style="color:red">IN PROGRESS </span>[Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
@@ -24,7 +26,7 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
 * [Setting up the Windows 8 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
-* <span style="color:red">TODO: </span>[Using the MobileFirst Platform Operations Console](../quick-start/using-the-mobilefirst-platform-operations-console/)
+* <span style="color:red">TODO </span>[Setting up MobileFirst Platform Foundation on IBM Containers Using Foundation Tile](../quick-start/foundation-tile/)
 
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 Universal or Windows 10 UWP application.
@@ -39,12 +41,12 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation debugging applications and more...
 
 * [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
-* <span style="color:red">TODO: </span>[Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
-* <span style="color:red">IN PROGRESS </span>[JSONStore](../client-side-development/jsonstore/)
+* <span style="color:red">TODO </span>[Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
+* [JSONStore](../client-side-development/jsonstore/)
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
 	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
-* <span style="color:red">IN PROGRESS </span>[Using Direct Update to Quickly Update Your Application](../client-side-development/direct-update/)
+* <span style="color:red">IN PROGRESS </span>[Using Direct Update to Quickly Update Applications](../client-side-development/direct-update/)
 * [Translation](../client-side-development/translation/)
 * [Debugging Cordova applications](../client-side-development/debugging-applications/)
 
@@ -71,28 +73,28 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * <span style="color:red">IN PROGRESS</span> [Debugging adapters](../server-side-development/debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
-Protect your applications and adapter procedures against unauthorized access by using authentication, login modules, and device provisioning.  
+Add various layers of protection to your applications and adapters.
 
 * <span style="color:red">IN PROGRESS </span>[Authentication concepts](../authentication-and-security/authentication-concepts/)
-* <span style="color:red">TODO: </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
-* <span style="color:red">TODO: </span>[Implementing SecurityCheckWithAttempts](../authentication-and-security/implementing-securitycheckwithattempts/)
+* <span style="color:red">TODO </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
+* <span style="color:red">TODO </span>[Implementing SecurityCheckWithAttempts](../authentication-and-security/implementing-securitycheckwithattempts/)
     * [SecurityCheckWithAttempts in Cordova applications applications](../authentication-and-security/implementing-securitycheckwithattempts/cordova/)
     * [SecurityCheckWithAttempts in iOS applications](../authentication-and-security/implementing-securitycheckwithattempts/ios/)
     * [SecurityCheckWithAttempts in Android applications](../authentication-and-security/implementing-securitycheckwithattempts/android/)
     * [SecurityCheckWithAttempts in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithattempts/windows-8/)
     * [SecurityCheckWithAttempts in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithattempts/windows-10/)
-* <span style="color:red">TODO: </span>[Implementing SecurityCheckWithUserAuthentication](../authentication-and-security/implementing-securitycheckwithuserauthentication/)
+* <span style="color:red">TODO </span>[Implementing SecurityCheckWithUserAuthentication](../authentication-and-security/implementing-securitycheckwithuserauthentication/)
     * [SecurityCheckWithUserAuthentication in Cordova  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/cordova/)
     * [SecurityCheckWithUserAuthentication in iOS  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/ios/)
     * [SecurityCheckWithUserAuthentication in Android  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/android/)
     * [SecurityCheckWithUserAuthentication in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-8/)
     * [SecurityCheckWithUserAuthentication in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-10/)
-* <span style="color:red">IN PROGRESS </span>[Application Authenticity Protection](../authentication-and-security/application-authenticity-protection/)
-* <span style="color:red">TODO: </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
-* <span style="color:red">TODO: </span>[WebSphere LTPA-based authentication](../authentication-and-security/websphere-ltpa-based-authentication/)
-* <span style="color:red">TODO: </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
-* <span style="color:red">TODO: </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
-* <span style="color:red">TODO: </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
+* <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
+* <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
+* <span style="color:red">TODO </span>[WebSphere LTPA-based authentication](../authentication-and-security/websphere-ltpa-based-authentication/)
+* <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
+* <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
+* <span style="color:red">IN PROGRESS </span>[Application Authenticity](../authentication-and-security/application-authenticity/)
 
 ### [Notifications](../notifications/)
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.  
@@ -107,7 +109,7 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
     * [Handling Push Notifications in Windows 10 UWP applications](../notifications/handling-push-notifications/windows-10/)
 
 ### [Analytics](../analytics/)
-Monitor deployed applications and adapters, gain insight on application usage and more.  
+Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
 * <span style="color:red">TODO </span>[Operational Analytics](../analytics/operational-analytics/)
 * <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
@@ -148,6 +150,6 @@ Scalable database management for your MobileFirst projects.
 
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
 Scan your application for potential harming code.  
-<span style="color:red">TODO: outsource to the AppScan team</span>  
+<span style="color:red">TODO outsource to the AppScan team</span>  
 
 * [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
