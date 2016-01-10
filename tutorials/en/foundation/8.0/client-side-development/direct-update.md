@@ -146,7 +146,10 @@ directUpdateContext.start(directUpdateCustomListener);
 ## Direct Update authenticity
 Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a content delivery network (CDN)) to the client application.
 
-Direct Update authenticity is always-on and uses the certificate stored in the application server's keystore.
+Direct Update authenticity uses the certificate stored in the application server's keystore.  
+By default it uses the default certificate provided by MobileFirst, however it is recommended to replace it with your own.  
+
+If no certificate is provided, Direct Update will continue to function sans authenticity verification.
 
 > For more information, see the "Configuring and customizing direct update" user documentation topic. 
 

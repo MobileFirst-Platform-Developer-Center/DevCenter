@@ -60,10 +60,9 @@ In order to disable Application Authenticity, click the "Delete Authenticity Fil
 ![Disable Application Authenticity by removing a previously uploaded .authenticity_data file](disable_authenticity.png)
 
 ## Configuring Application Authenticity
-The Application Authenticity out-of-the-box security check has two available properties that can be configured:
+The Application Authenticity out-of-the-box security check can be configured with the following property:
 
 - `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
-- `inactivityTimeoutSec`: Defaults to 0 seconds / no inactivity timeout. Defines the duration of inactivity that if met, will force token expiration.
 
 #### To configure the <code>expirationSec</code> property:
 
@@ -74,8 +73,4 @@ The Application Authenticity out-of-the-box security check has two available pro
 3. Set a new value in seconds.
 
 ![Configuring the expirationSec property in the console](configuring_expirationSec.png)
-
-#### To configure the <code>inactivityTimeoutSec</code> property:
-<span style="color:red">where is inactivitytimeoutsec in the console</span>
-
 
