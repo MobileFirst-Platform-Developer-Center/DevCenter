@@ -70,7 +70,9 @@ If using a locally installed server: From a **Command-line** window, navigate to
 9. Add the following lines and save the changes:
 
     ```xml
-    source 'https://github.com/CocoaPods/Specs.git'
+    //source 'https://github.com/CocoaPods/Specs.git'
+    source 'https://hub.jazz.net/git/oper2000/imf-client-sdk-specs-inhouse.git' 
+    use_frameworks! 
     pod 'IBMMobileFirstPlatformFoundation'
     ```
 10. Run the command: <code>pod install</code>. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.  
