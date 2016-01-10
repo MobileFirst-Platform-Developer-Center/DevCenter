@@ -16,6 +16,7 @@ Get a feel of MobileFirst Platform Foundation.
 * <span style="color:red">IN PROGRESS </span>[Quick Start with Android](../quick-start/android/)
 * <span style="color:red">TODO </span>[Quick Start with Windows 8 Universal](../quick-start/windows-8/)
 * <span style="color:red">TODO </span>[Quick Start with Windows 10 UWP](../quick-start/windows-10/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Adapters](../quick-start/adapter/)
 * <span style="color:red">IN PROGRESS </span>[Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
