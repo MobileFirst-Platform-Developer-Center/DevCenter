@@ -55,7 +55,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 
 * <span style="color:red">IN PROGRESS</span> [Adapters overview](../server-side-development/adapters-overview/)
 * <span style="color:red">IN PROGRESS</span> [Creating Java and JavaScript adapters](../server-side-development/creating-adapters/)
-* <span style="color:red">IN PROGRESS</span> [JavaScript adapters](../server-side-development/creating-adapters/javascript-adapters/)
+* [JavaScript adapters](../server-side-development/creating-adapters/javascript-adapters/)
     * [JavaScript HTTP Adapter](../server-side-development/creating-adapters/javascript-adapters/js-http-adapter/)
     * [JavaScript SQL Adapter](../server-side-development/creating-adapters/javascript-adapters/js-sql-adapter/)
     * [Using Java in JavaScript Adapters](../server-side-development/creating-adapters/javascript-adapters/using-java-in-javascript-adapters/)
