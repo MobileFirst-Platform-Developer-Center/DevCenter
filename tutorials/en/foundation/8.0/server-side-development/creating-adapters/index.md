@@ -22,6 +22,10 @@ The adapter project is based on the Maven Archetype "adapter-maven-archetype" wh
  * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
 * [Creating Adapters Using MobileFirst CLI](#creating-adapters-using-mobilefirst-cli)
 * [Creating Adapters Using MobileFirst Operations Console](#creating-adapters-using-mobilefirst-operations-console)
+* [Testing Adapters](#testing-adapters)
+ * [Using Postman](#using-postman)
+ * [Using the MobileFirst CLI](#using-the-mobilefirst-cli)
+
 
 ## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
 The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) in order to create the adapter as a Maven project.
@@ -213,9 +217,15 @@ To group adapters you need to:
 
 ## Creating Adapters Using MobileFirst Operations Console
 
-
-<br/><br/><br/>
-
 * **Using the MobileFirst Operations Console:**
   1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
   2. Drag and drop the `.adapter` file from the target folder into the Console.
+
+
+
+## Testing Adapters
+
+### Using the MobileFirst CLI
+
+
+### Using Postman
