@@ -13,7 +13,7 @@ Java adapters are based on the JAX-RS specification. In other words, a Java adap
 
 ![mvn-adapter](java-adapter-fs.png)
 
-### The `adapter-resources` folder  
+### The adapter-resources folder  
 The `adapter-resources` folder contains an XML configuration file. In this configuration file, configure the class name of the JAX-RS application for this adapter.
 In our case: `com.sample.adapter.JavaAdapterApplication`.
 
@@ -31,7 +31,7 @@ In our case: `com.sample.adapter.JavaAdapterApplication`.
 </mfp:adapter>
 ```
 
-### The `java` folder
+### The java folder
 In this folder, put the Java sources of the JAX-RS service. JAX-RS services are composed of an application class (which extends `com.worklight.wink.extensions.MFPJAXRSApplication`) and resources classes.
 The JAX-RS application and resources classes define the Java methods and their mapping to URLs.
 `com.sample.JavaAdapterApplication` is the JAX-RS application class and `com.sample.JavaAdapterResource` is a JAX-RS resource included in the application.
