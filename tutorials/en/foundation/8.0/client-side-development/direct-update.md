@@ -149,8 +149,6 @@ Direct Update authenticity prevents a 3rd-party attacker from altering the web r
 Direct Update authenticity uses the certificate stored in the application server's keystore.  
 By default it uses the default certificate provided by MobileFirst, however it is recommended to replace it with your own.  
 
-If no certificate is provided, Direct Update will continue to function sans authenticity verification.
-
 > For more information, see the "Configuring and customizing direct update" user documentation topic. 
 
 ## Differential Direct Update
