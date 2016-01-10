@@ -28,14 +28,24 @@ From a **Command-line** window, navigate to the server's **scripts** folder and 
     ![Image of create an adapter](create-an-adapter.png)
     
     ![Image of downloading an adapter sample](download-adapter-code.png)
-    
+
+### 3. Editing adapter logic
+
+<span style="color:red">Update adapter name</span>
+
+1. Open the adapter's Maven project in your IDE of choicea, navigate to the **[adapter-project/src/main/js/adapter-impl.js]** and paste the following code snippet:
+
+    ```javascript
+    WLResourceRequest code snippet here
+    ```
+
 2. From a **Command-line** window, navigate to the adapter's Maven project and run the command: 
 
     ```bash
     mfpdev adapter build
     ```
 
-3. From a **Command-line** window, navigate to the adapter's Maven project and run the command: 
+3. When the build finishes, run the command:
 
     ```bash
     mfpdev adapter deploy
@@ -47,26 +57,19 @@ From a **Command-line** window, navigate to the server's **scripts** folder and 
     mfpdev adapter deploy Replace-with-remote-server-name
     ```
  
-### 3. Editing application logic
-Open the application project and paste the following code snippet:
+### 4. Testing the adapter
+From a **Command-line** window, navigate to the adapter's Maven project and run the command: 
 
-```javascript
-WLResourceRequest code snippet here
+<span style="color:red">Update command</span>
+
+```bash
+mfpdev adapter call MyHTTPAdapter/MyProcedure ...
 ```
-
-### 5. Testing the adapter
-
-#### Testing using an pplication
-To test the adapter using an application is not already available, follow the instructions [to quickly create an application](../).
-
-#### Testing using Postman
-
-<span style="color:red">waiting for text from Lior</span>
 
 <hr>
 
 ## Next steps
 
-- To add an adapter follow the [Adapter end-to-end demonstration](../adapter)
-- Review [All Tutorials](../../all-tutorials)
+* Learn how to make [resource request calls using adapters from the application logic](../../server-side-development)
+* Review [All Tutorials](../../all-tutorials)
 

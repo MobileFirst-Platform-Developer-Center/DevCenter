@@ -64,5 +64,6 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ## Next steps
 
-- To add an adapter follow the [Adapter end-to-end demonstration](../adapter)
+- Review the [Adapter end-to-end demonstration](../adapter)
+- Review the [Client-side development tutorials](../../client-side-development/)
 - Review [All Tutorials](../../all-tutorials)
