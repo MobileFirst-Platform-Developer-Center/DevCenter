@@ -5,7 +5,7 @@ relevantTo: [windows]
 weight: 5
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application &amp; an adapter are quickly created using the MobileFirst Operations Console, and the application is able to call a resource on the MobileFirst Server, using an MobileFirst Adapter.
+The purpose of this demonstration is to experience an end-to-end flow where an application is quickly created using the MobileFirst Operations Console and connectivity is verified with the MobileFirst Server.
 
 #### Prerequisites:
 
@@ -20,7 +20,7 @@ From a **Command-line** window, navigate to the server's **scripts** folder and 
 
 ### 2. Creating an application
 
-In a browser window, open the MobileFirst Operations Console by loading the URL: <code>http://your-server-host:server-port/mfpconsole</code>. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *demo/demo*.
+In a browser window, open the MobileFirst Operations Console by loading the URL: <code>http://your-server-host:server-port/mfpconsole</code>. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
 1. Click on the "Create new" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
 
@@ -30,13 +30,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ![Image of downloading a sample application](download-sample-application.png)
 
-### 3. Creating an adapter
-
-1. Click on the "Create new" button next to **Adapters** and download a sample adapter.
-
-    ![Image of downloading an adapter sample](create-an-adapter.png)
-
-### 4. Editing application logic
+### 3. Editing application logic
 
 1. Open the Visual Studio project.
 
@@ -46,8 +40,15 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     WLResourceRequest code snippet here
     ```
 
-### 5. Running the application
+### 4. Running the application
 
 1. In Visual Studio, click on the **Start Debugging** button.
 
     ![Image of application that successfully called a resource from the MobileFirst Server ]()
+
+    <hr>
+
+    ## Next steps
+
+    - To add an adapter follow the [Adapter end-to-end demonstration](../adapter)
+    - Review [All Tutorials](../../all-tutorials)

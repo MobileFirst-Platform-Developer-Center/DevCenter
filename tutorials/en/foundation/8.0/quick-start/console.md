@@ -2,7 +2,7 @@
 layout: tutorial
 title: Using the MobileFirst Platform Operations Console
 relevantTo: [ios,android,windows,cordova]
-weight: 6
+weight: 7
 ---
 ## Overview
 The MobileFirst Platform Operations Console is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
@@ -17,7 +17,7 @@ The MobileFirst Operations Console can be accessed in the following ways:
 
 ### From a locally installed MobileFirst Server
 #### Desktop Browser
-From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *demo/demo*.
+From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
 #### Command-line
 From a **Command-line** window, with the MobileFirst CLI installed, run the command: <code>mfpdev server console</code>
@@ -30,7 +30,7 @@ From a **Command-line** window, with the MobileFirst CLI installed, run the comm
 ### From a remotely installed MobileFirst Server
 #### Desktop Browser
 From your browser of choice, load the URL <code>http://the-server-host:server-port-number/mfpconsole</code>  
-The host server can be a customer-owner server, or running on a service such as Bluemix. The username/password are *demo/demo*.
+The host server can be a customer-owner server, or running on a service such as Bluemix. The username/password are *admin/admin*.
 
 #### Command-line
 From a **Command-line** window, with the MobileFirst CLI installed, 
