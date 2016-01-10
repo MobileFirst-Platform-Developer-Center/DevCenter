@@ -14,7 +14,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 ### 1. Starting the MobileFirst Server
 
-> If a remote server was already setup, skip this step.
+> If a remote server was already set-up, skip this step.
 
 From a **Terminal** window, navigate to the server's **scripts** folder and run the command: <code>start.bat</code>.
 
