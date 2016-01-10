@@ -40,7 +40,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     WLResourceRequest code snippet here
     ```
 
-### 4. Running the application
+### 4. Testing the application
 
 1. In Visual Studio, click on the **Start Debugging** button.
 

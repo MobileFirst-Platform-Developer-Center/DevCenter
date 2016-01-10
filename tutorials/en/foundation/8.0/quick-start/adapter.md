@@ -19,10 +19,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.sh</code> in Mac and Linux or <code>start.cmd</code> in Windows.
 
-### 2. *Optional* Creating an application
-If an application is not already available, follow the instructions [to quickly create an application](../).
-
-### 3. Creating an adapter
+### 2. Creating an adapter
 
 1. Click on the "Create new" button next to **Adapters** and download the **JavaScript-HTTP** adapter sample.
 
@@ -50,13 +47,26 @@ If an application is not already available, follow the instructions [to quickly 
     mfpdev adapter deploy Replace-with-remote-server-name
     ```
  
-### 4. Editing application logic
+### 3. Editing application logic
 Open the application project and paste the following code snippet:
 
 ```javascript
 WLResourceRequest code snippet here
 ```
 
-### 5. Running the application
+### 5. Testing the adapter
 
-???????
+#### Testing using an pplication
+To test the adapter using an application is not already available, follow the instructions [to quickly create an application](../).
+
+#### Testing using Postman
+
+<span style="color:red">waiting for text from Lior</span>
+
+<hr>
+
+## Next steps
+
+- To add an adapter follow the [Adapter end-to-end demonstration](../adapter)
+- Review [All Tutorials](../../all-tutorials)
+

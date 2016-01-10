@@ -36,13 +36,21 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Cordova project in your code editor of choice.
 
-2. Select the **www/js/index.js** file and paste the following code snippet:
+2. Select the **www/js/index.js** file and paste the following code snippet inside the `wlCommonInit()` function:
 
     ```javascript
-    WLResourceRequest code snippet here
+    WLAuthorizationManager.obtainAccessToken()
+  	.then (
+    	function() {
+      		alert("Access token granted");
+    	},
+    	function(error) {
+      	    alert("Access token not granted: " + error);
+    	}
+  	);  
     ```
 
-### 4. Running the application
+### 4. Testing the application
 
 1. From a **Command-line** window, navigate to the Cordova project root folder.
 2. Run the commands: <code>cordova prepare</code> followed by <code>cordova run</code>.

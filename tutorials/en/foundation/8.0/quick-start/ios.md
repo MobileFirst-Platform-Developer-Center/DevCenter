@@ -39,16 +39,41 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     In Objective-C:
 
     ```objc
-    WLResourceRequest code snippet here
+    - (BOOL)application:(UIApplication ​*)application didFinishLaunchingWithOptions:(NSDictionary *​)launchOptions {
+        WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
+            (token, error) -> Void in
+            
+            if (error != nil) {
+                NSLog(@"Access token not granted.");
+            } else {
+                NSLog(@"Access token granted.");
+            }
+        }
+
+        return YES;
+    }
     ```
     
     In Swift:
     
     ```swift
-    WLResourceRequest code snippet here
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
+            (token, error!)->Void
+            
+            if error != nil {
+                NSLog("Access token not granted.")
+            }
+            else {
+                NSLog("Access token granted.")
+            }
+
+            return true
+        }
+    }
     ```
 
-### 4. Running the application
+### 4. Testing the application
 
 1. In Xcode, press the **Play** button.
 
