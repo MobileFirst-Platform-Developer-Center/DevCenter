@@ -32,6 +32,13 @@ From the MobileFirst Server's Operations Console a developer can:
 - Generate DevOps scripts for continuous integration workflows and faster development cycles
 - and more
 
+The MobileFirst Development Server is installed as a stand-alone server and provides the following scripts in its **scripts** folder:
+
+- <code>console.[sh|cmd]</code>: Open the local MobileFirst Console
+- <code>run.[sh|cmd]</code>: Run the local MobileFirst Server with trailing Liberty Server messages
+- <code>start.[sh|cmd]</code>: Run the local MobileFirst Server in background mode
+- <code>stop.[sh|cmd]</code>: Stop the currenet local MobileFirst Server instance
+
 To learn more about the MobileFirst Operations Console, see the tutorial: [Using the MobilFirst Platform Operations Console](../../quick-start/console/).  
 To download and install the MobileFirst Development Server, visit the [downloads]({{site.base}}/downloads/) page.
 
