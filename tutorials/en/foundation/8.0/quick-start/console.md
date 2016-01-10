@@ -20,7 +20,7 @@ The MobileFirst Operations Console can be accessed in the following ways:
 From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *demo/demo*.
 
 #### Command-line
-From a **Command-line window, with the MobileFirst CLI installed, run the command: <code>mfpdev server console</code>
+From a **Command-line** window, with the MobileFirst CLI installed, run the command: <code>mfpdev server console</code>
 
 #### MobileFirst Studio
 <span style="color:red">From MobileFirst in Eclipse, click on **Open MobileFirst Console**</span>.
@@ -33,7 +33,7 @@ From your browser of choice, load the URL <code>http://the-server-host:server-po
 The host server can be a customer-owner server, or running on a service such as Bluemix. The username/password are *demo/demo*.
 
 #### Command-line
-From a **Command-line window, with the MobileFirst CLI installed, 
+From a **Command-line** window, with the MobileFirst CLI installed, 
 
 1. Add a remote server definition:
 

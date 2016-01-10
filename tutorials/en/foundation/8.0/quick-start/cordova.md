@@ -9,7 +9,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 #### Prerequisites:
 
-* Configured Xcode for iOS, Android Studio for Android or Visual Studio for Windows 8/10
+* Configured Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8/10
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -48,7 +48,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 5. Running the application
 
-1. From a **Command-line window, navigate to the Cordova project root folder.
+1. From a **Command-line** window, navigate to the Cordova project root folder.
 2. Run the commands: <code>cordova prepare</code> followed by <code>cordova run</code>.
 
  - If a device is connected, the application will be installed and launched in the device,
