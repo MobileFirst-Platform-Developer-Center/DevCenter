@@ -187,7 +187,3 @@ The adapter should return the RSS feed converted to JSON.
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.
-
-The attached sample includes an adapter called `RSSAdapter` and a hybrid application called `RSSReader` to test the adapter inside an application.
-
-![java-http-app](java-http-app.png)

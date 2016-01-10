@@ -15,41 +15,35 @@ When JavaScript is not sufficient to implement required functionality, or if a J
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
 ## Adding custom Java classes 
-<span style="color:red">IMAGE</span>
+![UsingJavainJS](UsingJavainJS.png)
 
-1. To use an existing Java library, add the JAR file to the `server\lib` folder of your MobileFirst project.
-After the adapter is built and deployed, this JAR file is automatically deployed to MobileFirst Server.
+To use an existing Java library, add the JAR file as a dependency in your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../#dependencies) tutorial.
 
-2. To add custom Java code to your project, right-click the `server/java` folder in your MobileFirst project and add a Java class file. Name it `Calculator.java`.
+To add custom Java code to your project, add a folder named **java** to the **src/main** folder in your adapter project and put your package in it. The sample in this tutorial uses a `com.sample.customcode` package and a Java class file named `Calculator.java`.   
 **Important:** The package name must start with either `com`, `org`, or `net`.
 
-3. Add this file to a package. This sample uses the `com.sample.customcode` package.
-This package name can be interpreted as folders: `java\com\sample\customcode`
-
-4. Add methods to your Java class.  
+Add methods to your Java class.  
 Here are an examples of a static method (that does not require a new instance) and an instance method:
 
-    ```java
-    public class Calculator {
+```java
+public class Calculator {
 
-      // Add two integers.
-      public static int addTwoIntegers(int first, int second){
-        return first + second;
-      }
+  // Add two integers.
+  public static int addTwoIntegers(int first, int second){
+    return first + second;
+  }
 
-      // Subtract two integers.
-      public int subtractTwoIntegers(int first, int second){
-        return first - second;
-      }
-    }
-    ```
-5. If your Java code has additional dependencies, put the required JAR files in the `server\lib` folder of your MobileFirst project.
+  // Subtract two integers.
+  public int subtractTwoIntegers(int first, int second){
+    return first - second;
+  }
+}
+```
 
 ## Invoking custom Java classes from the adapter
 After your custom Java code is created and any required JAR files are added, you can call it from the JavaScript code:
 
 * Invoke the static Java method as shown, and use the full class name to reference it directly:
-#### UsingJavaInAdapter-impl.js
 
     ```js
     function addTwoIntegers(a,b){
@@ -59,7 +53,6 @@ After your custom Java code is created and any required JAR files are added, you
     }
     ```
 * To use the instance method, create a class instance and invoke the instance method from it:
-#### UsingJavaInAdapter-impl.js
 
     ```js
     function subtractTwoIntegers(a,b){
