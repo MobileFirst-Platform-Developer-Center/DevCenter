@@ -70,7 +70,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 9. Add the following lines and save the changes:
 
     ```xml
-    //source 'https://github.com/CocoaPods/Specs.git'
+    // remove source before going live
     source 'https://hub.jazz.net/git/oper2000/imf-client-sdk-specs-inhouse.git' 
     use_frameworks! 
     pod 'IBMMobileFirstPlatformFoundation'
