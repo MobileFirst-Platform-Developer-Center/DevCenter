@@ -17,7 +17,7 @@ Optionally, it is also possible to use XSL to filter received records and fields
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
-## The `XML` File
+## The XML File
 The XML file contains settings and metadata.  
 To edit the adapter XML file, you must:
 
