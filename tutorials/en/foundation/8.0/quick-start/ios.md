@@ -77,15 +77,13 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     
     ![Image of downloading an adapter sample](download-adapter-code.png)
 
-### 5. Editing adapter logic
-
-1. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
+2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
 
     ```bash
     mfpdev adapter build
     ```
 
-2. When the build finishes, run the command:
+3. When the build finishes, run the command:
 
     ```bash
     mfpdev adapter deploy
@@ -97,7 +95,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     mfpdev adapter deploy Replace-with-remote-server-name
     ```
 
-### 6. Testing the application
+### 5. Testing the application
 
 1. In Xcode, press the **Play** button.
 
