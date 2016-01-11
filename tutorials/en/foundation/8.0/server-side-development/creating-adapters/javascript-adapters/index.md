@@ -14,7 +14,7 @@ JavaScript adapters provide templates for connection to HTTP and SQL back-ends. 
 
 ![mvn-adapter](js-adapter-fs.png)
 
-### The `adapter-resources` folder  
+### The adapter-resources folder  
 The `adapter-resources` folder contains an XML configuration file. This configuration file describes the connectivity options and lists the procedures that are exposed to the application or other adapters.
 
 ```xml
@@ -42,7 +42,7 @@ The `adapter-resources` folder contains an XML configuration file. This configur
  * When the back-end system requires user authentication, defines how user credentials are obtained.
 * `procedure`: Declares a service for accessing a back-end application. One entry for each adapter procedure.
 
-### The `js` folder
+### The js folder
 This folder contains all JavaScript files, which contains the implementation of procedures that are declared in the XML file. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data.  
 Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
 

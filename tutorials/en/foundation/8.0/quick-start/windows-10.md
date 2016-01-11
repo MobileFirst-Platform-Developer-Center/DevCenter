@@ -29,6 +29,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 2. Click on the **Get Starter Code** tile and select to download the Android Starter Code.
 
     ![Image of downloading a sample application](download-sample-application.png)
+    
+    ![Image of download a sample application](download-application-code.png)
 
 ### 3. Editing application logic
 
@@ -50,5 +52,5 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ## Next steps
 
-- To add an adapter follow the [Adapter end-to-end demonstration](../adapter)
+- Review the [Adapter end-to-end demonstration](../adapter)
 - Review [All Tutorials](../../all-tutorials)

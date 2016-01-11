@@ -29,46 +29,40 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 2. Click on the **Get Starter Code** tile and select to download the iOS Starter Code.
 
     ![Image of downloading a sample application](download-sample-application.png)
+    
+    ![Image of download a sample application](download-application-code.png)
  
 ### 3. Editing application logic
 
 1. Open the Xcode project project
 
-2. Select the **[project-root]/AppDelegate.m** file and paste the following code snippet:
+2. Select the **[project-root]/ViewController.m** file and paste the following code snippet in <code>viewDidLoad</code>:
 
     In Objective-C:
 
     ```objc
-    - (BOOL)application:(UIApplication ​*)application didFinishLaunchingWithOptions:(NSDictionary *​)launchOptions {
-        WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
-            (token, error) -> Void in
-            
-            if (error != nil) {
-                NSLog(@"Access token not granted.");
-            } else {
-                NSLog(@"Access token granted.");
-            }
+    WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
+        (token, error) -> Void in
+        
+        if (error != nil) {
+            NSLog(@"Access token not granted.");
+        } else {
+            NSLog(@"Access token granted.");
         }
-
-        return YES;
     }
     ```
     
     In Swift:
     
     ```swift
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
-            (token, error!)->Void
-            
-            if error != nil {
-                NSLog("Access token not granted.")
-            }
-            else {
-                NSLog("Access token granted.")
-            }
-
-            return true
+    WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
+        (token, error!)->Void
+        
+        if error != nil {
+            NSLog("Access token not granted.")
+        }
+        else {
+            NSLog("Access token granted.")
         }
     }
     ```
@@ -83,7 +77,6 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ## Next steps
 
-- To add an adapter follow the [Adapter end-to-end demonstration](../adapter)
+- Review the [Adapter end-to-end demonstration](../adapter)
 - Review [All Tutorials](../../all-tutorials)
-
 

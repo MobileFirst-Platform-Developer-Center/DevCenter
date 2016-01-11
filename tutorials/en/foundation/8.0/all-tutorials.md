@@ -46,7 +46,8 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
 	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
-* <span style="color:red">IN PROGRESS </span>[Using Direct Update to Quickly Update Applications](../client-side-development/direct-update/)
+* <span style="color:red">IN PROGRESS </span>[Sending actions between JavaScript and Native code](../sending-actions-between-javascript-and-native-code/)
+* <span style="color:red">IN PROGRESS </span>[Using Direct Update in Cordova Applications](../client-side-development/direct-update/)
 * [Translation](../client-side-development/translation/)
 * [Debugging Cordova applications](../client-side-development/debugging-applications/)
 
@@ -55,7 +56,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 
 * <span style="color:red">IN PROGRESS</span> [Adapters overview](../server-side-development/adapters-overview/)
 * <span style="color:red">IN PROGRESS</span> [Creating Java and JavaScript adapters](../server-side-development/creating-adapters/)
-* <span style="color:red">IN PROGRESS</span> [JavaScript adapters](../server-side-development/creating-adapters/javascript-adapters/)
+* [JavaScript adapters](../server-side-development/creating-adapters/javascript-adapters/)
     * [JavaScript HTTP Adapter](../server-side-development/creating-adapters/javascript-adapters/js-http-adapter/)
     * [JavaScript SQL Adapter](../server-side-development/creating-adapters/javascript-adapters/js-sql-adapter/)
     * [Using Java in JavaScript Adapters](../server-side-development/creating-adapters/javascript-adapters/using-java-in-javascript-adapters/)

@@ -64,9 +64,9 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
     ```xml
     repositories{
-        //jcenter() ---- remove below maven line and bring back jcenter line once we go live with the tutorials
+        //jcenter()
         maven {
-            url "http://ibobs-Mac-mini.local:8081/nexus/content/repositories/snapshots/"
+            url "http://visustar.francelab.fr.ibm.com:8081/nexus/content/repositories/mobile-s/"
         }
     }
     ```
