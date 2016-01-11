@@ -108,7 +108,7 @@ A friendly name is a name that is associated with the device to distinguish it f
 ### Client logs
 Administrators can use log profiles to adjust client logger configurations, such as log level and log package filters, for any combination of operating system, operating system version, application, application version, and device model.
 
-When an administrator creates a configuration profile, the log configuration is concatenated with responses to explicit WLClient <code>connect</code> and <code>invokeProcedure</code>/<code>WLResourceRequest</code> API calls, and is applied automatically.</p>
+When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as <code>WLResourceRequest</code>, and is applied automatically.</p>
 
 > For more information, see the topic about client-side log capture configuration from MobileFirst Operations Console in the user documentation.
 
