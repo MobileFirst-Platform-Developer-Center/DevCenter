@@ -224,40 +224,67 @@ To group adapters you need to:
 
 
 ## Testing Adapters
-
-### Using the MobileFirst CLI
-
-
-### Using Postman
 MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource/procedure, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.
 
-* The URL to access your adapter procedure is: `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{procedure-name}`
+The structure of the URL used to access the adapter resource is: `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{procedure-name}`
 
-* Passing parameters:
- * When using Java adapters, parameters can be passed in the URL, body, form, etc, depending on how you configured your adapter.
- * When using JavaScript adapters, parameters are passed as `params=[a,b,c,d]`, in other words, a JavaScript procedure receives only one parameter called params which needs to be an array of ordered, unnamed values. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
+### Using Postman
 
-* If your resource is protected by a security test, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
- * To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the procedure/class:
+**Passing parameters:**
 
-         ```java
-         @OAuthSecurity(enabled=false)
-         ```
- * To disable security in JavaScript adapters you should add the `secured` attribute to the procedure:
+* When using Java adapters, parameters can be passed in the URL, body, form, etc, depending on how you configured your adapter.
+* When using JavaScript adapters, parameters are passed as `params=[a,b,c,d]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be an array of ordered, unnamed values. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
 
-         ```js
-         <procedure name="proc1" secured="false"/>
-         ```
- * For you to work around this during your development stage, the development version of the MobileFirst server includes a test token endpoint.
-To receive a Test Token, make an HTTP `POST` request to `http(s)://{server_ip}:{server_port}/{project_name}/authorization/v1/testtoken` with your HTTP client (Postman). You receive a JSON object with a temporary valid authorization token:
+**Handling security:**
 
-        ```json
-        {
-        "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImpwayI6eyJhbGciOiJSU0EiLCJleHAiOiJBUUFCIiwibW9kIjoiQU0wRGQ3eEFkdjZILXlnTDdyOHFDTGRFLTNJMm2FPZUlxb2UtckpBMHVadXcyckhoWFozV1ZDZUtlelJWY0NPWXNRTi1tUUswbWZ6NV8zby1ldjBVWXdYa1NPd0JCbDFFaHFJd1ZEd09pZWcySk1HbDBFWHNQWmZrTlpJLUhVNG9NaWktVHJOTHp..."
-        }
-        ```
-In your next requests to your adapter endpoints, add an HTTP header with the name “`Authorization`” and the value you received previously (starting with Bearer). The security framework will skip any security challenges protecting your resource.
+If your resource is protected by a security check, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
 
-<span style="color:red">
-IMAGE
-</span>
+To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the procedure/class:
+
+```java
+@OAuthSecurity(enabled=false)
+```
+
+To disable security in JavaScript adapters you should add the `secured` attribute to the procedure:
+
+```js
+<procedure name="proc1" secured="false"/>
+```
+
+For you to work around this during your development stage, the development version of the MobileFirst Server includes a test token endpoint. To receive a Test Token you should:
+
+1. In the MobileFirst Operations Console -> **Settings** -> **Confidential Clients** tab, create a confidential client or use the default one:  
+For testing purposes set **Allowed Scopes** as `**`.
+
+  ![Image of setting a confidential client](confidential_client.png)
+
+2. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
+
+```xml
+grant_type : client_credentials
+scope : **
+```
+
+  ![Image of Postman Body configuration](Body_configuration.png)
+
+3. Add an authorization header using Basic authentication (use the confidential client's ID and secret):  
+
+  ![Image of Postman Authorization configuration](Authorization_configuration.png)
+
+
+The result will be a JSON object with a temporary valid access token:
+
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsImp3ayI6eyJlIjoiQVFBQiIsIm4iOiJBTTBEZDd4QWR2NkgteWdMN3I4cUNMZEUtM0kya2s0NXpnWnREZF9xczhmdm5ZZmRpcVRTVjRfMnQ2T0dHOENWNUNlNDFQTXBJd21MNDEwWDlJWm52aHhvWWlGY01TYU9lSXFvZS1ySkEwdVp1dzJySGhYWjNXVkNlS2V6UlZjQ09Zc1FOLW1RSzBtZno1XzNvLWV2MFVZd1hrU093QkJsMUVocUl3VkR3T2llZzJKTUdsMEVYc1BaZmtOWkktSFU0b01paS1Uck5MelJXa01tTHZtMDloTDV6b3NVTkExNXZlQ0twaDJXcG1TbTJTNjFuRGhIN2dMRW95bURuVEVqUFk1QW9oMmluSS0zNlJHWVZNVVViTzQ2Q3JOVVl1SW9iT2lYbEx6QklodUlDcGZWZHhUX3g3c3RLWDVDOUJmTVRCNEdrT0hQNWNVdjdOejFkRGhJUHU4Iiwia3R5IjoiUlNBIiwia2lkIjoidGVzdCJ9fQ.eyJpc3MiOiJjb20uaWJtLm1mcCIsInN1YiI6InRlc3QiLCJhdWQiOiJjb20uaWJtLm1mcCIsImV4cCI6MTQ1MjUxNjczODAwNSwic2NvcGUiOiJ4eCJ9.vhjSkv5GShCpcDSu1XCp1FlgSpMHZa-fcJd3iB4JR-xr_3HOK54c36ed_U5s3rvXViao5E4HQUZ7PlEOl23bR0RGT2bMGJHiU7c0lyrMV5YE9FdMxqZ5MKHvRnSOeWlt2Vc2izh0pMMTZd-oL-0w1T8e-F968vycyXeMs4UAbp5Dr2C3DcXCzG_h9jujsNNxgXL5mKJem8EpZPolQ9Rgy2bqt45D06QTW7J9Q9GXKt1XrkZ9bGpL-HgE2ihYeHBygFll80M8O56By5KHwfSvGDJ8BMdasHFfGDRZUtC_yz64mH1lVxz5o0vWqPwEuyfslTNCN-M8c3W9-6fQRjO4bw",
+  "token_type": "Bearer",
+  "expires_in": 3599,
+  "scope": "**"
+}
+```
+
+Now with any future request to adapter endpoints, add an HTTP header with the name `Authorization` and the value you received previously. The security framework will skip any security challenges protecting your resource.
+
+![Adapter request using Postman with the test token]()
+
+### Using the MobileFirst CLI
