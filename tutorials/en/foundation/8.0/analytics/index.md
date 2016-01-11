@@ -15,6 +15,8 @@ MobileFirst Operational Analytics is delivered as an EAR file which contains two
 * WebSphere® Application Server
 * Tomcat
 
+**Note**: All of the Getting Started Operational Analytics tutorials will make the assumption that you are working in the development environment using a the embedded Liberty server. However, all the same concepts apply to Tomcat and WebSphere® Application Server.
+
 In MobileFirst Studio, the two WAR files are installed and available by default in the embedded Liberty server.
 
 To continue, select a tutorial:

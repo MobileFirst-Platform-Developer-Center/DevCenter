@@ -8,6 +8,7 @@ title: Capture Data
 * [Server Logs](#server-logs)
 * [Client Logs](#client-logs)
 * [Sample Application](#Application)
+
 Different types of analytics events are captured by the MobileFirst Operational Analytics server: network activities, notification activities, server logs, and client logs.
 
 #### Network Activities
