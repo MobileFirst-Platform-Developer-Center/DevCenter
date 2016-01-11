@@ -107,8 +107,8 @@ After creating the adapter the result will be a Maven project containing a `src`
 ### Build and Deploy Adapters
 #### Build
 
-The adapter will be built every time you run the `mvn install` command to build your Maven project.  
-The end result is the `.adapter` file in the project `target` folder:
+The adapter is built each time you run the `mvn install` command to build the Maven project.
+This generates an **.adapter** file which can be found in the **target** folder:
 
 ![java-adapter-result](adapter-result.png)
 
