@@ -13,7 +13,7 @@ The adapter project is based on the Maven Archetype "adapter-maven-archetype" wh
 
 **Prerequisite:**  Make sure that you read the [Adapters Overview](../adapters-overview) tutorial first.</span>
 
-### Jump to:
+#### Jump to:
 * [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
  * [Install Maven](#install-maven)
  * [Create an Adapter](#create-an-adapter)
@@ -39,7 +39,7 @@ You can choose to run the command interactively or directly.
 
 #### Interactive Mode
 
-1. Run:
+1. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
 
     ```shell
     mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0
@@ -50,7 +50,7 @@ You can choose to run the command interactively or directly.
      * Use `adapter-maven-archetype-http` to create a JavaScript HTTP adapter
      * Use `adapter-maven-archetype-sql` to create a JavaScript SQL adapter  
 
-2. Enter a Group Id of the Maven project to be build. For example:
+2. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
 
     ```shell
     Define value for property 'groupId': : com.mycompany
@@ -68,7 +68,7 @@ You can choose to run the command interactively or directly.
     Define value for property 'version':  1.0-SNAPSHOT: : 1.0
     ```
 
-5. Enter a Java adapter package name (the default is the `groupId`). For example:
+5. Enter an adapter package name (the default is the `groupId`). For example:
 
     ```shell
     Define value for property 'package':  com.mycompany: : com.mypackage
@@ -124,8 +124,8 @@ The end result is the `.adapter` file in the project `target` folder:
     		<mfpfPassword>demo</mfpfPassword>
     	</properties>
       ```
-   * Replace the `IP` and `PORT` with your MobileFirst Server IP and port.
-   * Replace the `mfpfUser` and `mfpfPassword` with your MobileFirst admin user name and password.  
+   * Replace the `localhost:9080` with your MobileFirst Server IP and port.
+   * Replace the `mfpfUser` and `mfpfPassword` values with your MobileFirst admin user name and password.  
 2. Open the project's root folder in terminal and run the `mvn:adapter` command:
 
       ```shell
@@ -201,8 +201,8 @@ To group adapters you need to:
   2. Add an **`artifactId`** element - the root folder's name
   3. Add a **`module`** element for each adapter
   4. Add the **`build`** element
-  5. Replace the **`IP`** and **`PORT`** with your MobileFirst Server IP and port.
-  6. Replace the **`mfpfUser`** and **`mfpfPassword`** with your MobileFirst admin user name and password.
+  5. Replace the **localhost:9080** with your MobileFirst Server IP and port.
+  6. Replace the **mfpfUser** and **mfpfPassword** values with your MobileFirst admin user name and password.
 
 4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
 
@@ -229,3 +229,35 @@ To group adapters you need to:
 
 
 ### Using Postman
+MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource/procedure, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.
+
+* The URL to access your adapter procedure is: `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{procedure-name}`
+
+* Passing parameters:
+ * When using Java adapters, parameters can be passed in the URL, body, form, etc, depending on how you configured your adapter.
+ * When using JavaScript adapters, parameters are passed as `params=[a,b,c,d]`, in other words, a JavaScript procedure receives only one parameter called params which needs to be an array of ordered, unnamed values. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
+
+* If your resource is protected by a security test, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
+ * To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the procedure/class:
+
+         ```java
+         @OAuthSecurity(enabled=false)
+         ```
+ * To disable security in JavaScript adapters you should add the `secured` attribute to the procedure:
+
+         ```js
+         <procedure name="proc1" secured="false"/>
+         ```
+ * For you to work around this during your development stage, the development version of the MobileFirst server includes a test token endpoint.
+To receive a Test Token, make an HTTP `POST` request to `http(s)://{server_ip}:{server_port}/{project_name}/authorization/v1/testtoken` with your HTTP client (Postman). You receive a JSON object with a temporary valid authorization token:
+
+        ```json
+        {
+        "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsImpwayI6eyJhbGciOiJSU0EiLCJleHAiOiJBUUFCIiwibW9kIjoiQU0wRGQ3eEFkdjZILXlnTDdyOHFDTGRFLTNJMm2FPZUlxb2UtckpBMHVadXcyckhoWFozV1ZDZUtlelJWY0NPWXNRTi1tUUswbWZ6NV8zby1ldjBVWXdYa1NPd0JCbDFFaHFJd1ZEd09pZWcySk1HbDBFWHNQWmZrTlpJLUhVNG9NaWktVHJOTHp..."
+        }
+        ```
+In your next requests to your adapter endpoints, add an HTTP header with the name “`Authorization`” and the value you received previously (starting with Bearer). The security framework will skip any security challenges protecting your resource.
+
+<span style="color:red">
+IMAGE
+</span>
