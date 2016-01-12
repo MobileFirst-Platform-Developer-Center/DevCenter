@@ -87,6 +87,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     mfpdev adapter deploy Replace-with-remote-server-name
     ```
 
+<img src="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/cordova/cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
 ### 5. Testing the application
 
 1. From a **Command-line** window, navigate to the Cordova project root folder.
@@ -95,8 +96,6 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
  - If a device is connected, the application will be installed and launched in the device,
  - Otherwise the Simulator or Emulator will be used.
-
-    ![Image of application that successfully called a resource from the MobileFirst Server ]()
 
 ## Next steps
 
