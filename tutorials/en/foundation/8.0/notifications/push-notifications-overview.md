@@ -10,20 +10,20 @@ should talk about the
 2. obtaining tokenn
 3. push flow
 
-### Overview
+## Overview
 
 IBM MobileFirst Platform Foundation provides a unified set of API methods to send notifications to devices on which MobileFirst applications are installed. Notification can be sent based on tags.
 
 ### Agenda
 
-* [What is push notification?](#About)
-* [Push notification types](#Types)
-* [REST API for Push notifications](#RestAPI)
-* [Supported environments](#Supported)
+* [What is Push Notification?](#what-is-push-notification)
+* [Push Notification Types](#push-notification-types)
+* [REST API for Push Notifications](#rest-api-for-push-notifications)
+* [Supported Environments](#supported-environments)
 
 ![ios-tag-sample](push-notifications-overview-pics/ios-tag-sample.png)
 
-### <a name="About">What is push notification?</a>
+###What is Push Notification?
 
 Push notifications is the ability of a mobile device to receive messages that are "pushed" from a server.
 
@@ -34,7 +34,7 @@ Notifications can take several forms:
 * **Badge (iOS), Tile (W8, WP8)** - a graphical representation that allows a short text or image
 * **Banner (iOS), Toast (W8, WP8)** - a disappearing pop-up text message at the top of the device display
 * **Sound (all)** - a sound file playing when a notification is received
-* **Interactive (iOS 8)** - action buttons inside the **banner** of a received notification
+* **Interactive (iOS 8)** - action buttons inside the banner of a received notification
 
 
 **Device support**
@@ -45,7 +45,7 @@ Push notifications are supported for the following mobile platforms:
 * Windows Phone 8.x
 * Windows 8
 
-### <a name="Types">Push Notification Types</a>
+###Push Notification Types
 **Tag notifications**
 
 Tag push notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.
@@ -56,7 +56,7 @@ Broadcast push notifications are a form of tag push notifications that are targe
 
 **Unicast notifications**
 
-Unicast notifications are targeted to a particular device or a <code>userID</code>. Unicast notifications do not require any additional setup and are enabled by default when the MobileFirst application is enabled for push notifications.
+Unicast notifications are targeted to a particular device or a ```userID```. Unicast notifications do not require any additional setup and are enabled by default when the MobileFirst application is enabled for push notifications.
 
 >For more information about unicast notifications, see the topic about sending push notifications, in the user documentation.
 
@@ -68,10 +68,10 @@ Interactive push notifications enables action buttons to be added for received n
 
 Silent push notifications enables notifications to be sent without disturbing the user. (*iOS 7 and above only*)
 
-### <a name="RestAPI">REST API for Push notifications</a>
+###REST API for Push Notifications
 
 MobileFirst Platform Foundation exposes a REST API endpoint that can be accessed by non-mobile clients. It is another way to use the push service without needing to develop and deploy MobileFirst adapters.
 
 >For more information about the REST API for push notification, see the topic about REST API Runtime Services, in the user documentation.
 
-### <a name="Supported">Supported environments</a>
+###Supported environments
