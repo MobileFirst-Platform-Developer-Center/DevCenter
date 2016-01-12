@@ -50,10 +50,11 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
         resourceRequest.send().then(
             function(response) {
+                // Will display "Hello world".
                 alert(response.responseText);
             },
             function(response) {
-                alert ("failure: " + response.errorMsg);
+                alert ("Failure: " + response.errorMsg);
             }
         );
     }
