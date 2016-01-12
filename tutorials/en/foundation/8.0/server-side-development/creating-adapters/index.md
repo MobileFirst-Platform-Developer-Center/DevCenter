@@ -224,9 +224,11 @@ To group adapters you need to:
 
 
 ## Testing Adapters
-MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource/procedure, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.
+MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.
 
-The structure of the URL used to access the adapter resource is: `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{procedure-name}`
+The structure of the URL used to access the adapter resource is:
+* In JavaScript adapters `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{procedure-name}`
+* For Java adapters `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{path}`
 
 ### Using Postman
 
@@ -239,7 +241,7 @@ The structure of the URL used to access the adapter resource is: `http://<IP>:<P
 
 If your resource is protected by a scope, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
 
-To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the procedure/class:
+To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the method/class:
 
 ```java
 @OAuthSecurity(enabled=false)
