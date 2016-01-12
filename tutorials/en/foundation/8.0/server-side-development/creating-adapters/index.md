@@ -13,7 +13,7 @@ The adapter project is based on the Maven Archetype "adapter-maven-archetype" wh
 
 **Prerequisite:**  Make sure that you read the [Adapters Overview](../adapters-overview) tutorial first.</span>
 
-### Jump to:
+#### Jump to:
 * [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
  * [Install Maven](#install-maven)
  * [Create an Adapter](#create-an-adapter)
@@ -39,7 +39,7 @@ You can choose to run the command interactively or directly.
 
 #### Interactive Mode
 
-1. Run:
+1. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
 
     ```shell
     mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0
@@ -50,7 +50,7 @@ You can choose to run the command interactively or directly.
      * Use `adapter-maven-archetype-http` to create a JavaScript HTTP adapter
      * Use `adapter-maven-archetype-sql` to create a JavaScript SQL adapter  
 
-2. Enter a Group Id of the Maven project to be build. For example:
+2. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
 
     ```shell
     Define value for property 'groupId': : com.mycompany
@@ -68,7 +68,7 @@ You can choose to run the command interactively or directly.
     Define value for property 'version':  1.0-SNAPSHOT: : 1.0
     ```
 
-5. Enter a Java adapter package name (the default is the `groupId`). For example:
+5. Enter an adapter package name (the default is the `groupId`). For example:
 
     ```shell
     Define value for property 'package':  com.mycompany: : com.mypackage
@@ -107,8 +107,8 @@ After creating the adapter the result will be a Maven project containing a `src`
 ### Build and Deploy Adapters
 #### Build
 
-The adapter will be built every time you run the `mvn install` command to build your Maven project.  
-The end result is the `.adapter` file in the project `target` folder:
+The adapter is built each time you run the `mvn install` command to build the Maven project.
+This generates an **.adapter** file which can be found in the **target** folder:
 
 ![java-adapter-result](adapter-result.png)
 
@@ -124,8 +124,8 @@ The end result is the `.adapter` file in the project `target` folder:
     		<mfpfPassword>demo</mfpfPassword>
     	</properties>
       ```
-   * Replace the `IP` and `PORT` with your MobileFirst Server IP and port.
-   * Replace the `mfpfUser` and `mfpfPassword` with your MobileFirst admin user name and password.  
+   * Replace the `localhost:9080` with your MobileFirst Server IP and port.
+   * Replace the `mfpfUser` and `mfpfPassword` values with your MobileFirst admin user name and password.  
 2. Open the project's root folder in terminal and run the `mvn:adapter` command:
 
       ```shell
@@ -201,8 +201,8 @@ To group adapters you need to:
   2. Add an **`artifactId`** element - the root folder's name
   3. Add a **`module`** element for each adapter
   4. Add the **`build`** element
-  5. Replace the **`IP`** and **`PORT`** with your MobileFirst Server IP and port.
-  6. Replace the **`mfpfUser`** and **`mfpfPassword`** with your MobileFirst admin user name and password.
+  5. Replace the **localhost:9080** with your MobileFirst Server IP and port.
+  6. Replace the **mfpfUser** and **mfpfPassword** values with your MobileFirst admin user name and password.
 
 4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
 
@@ -224,8 +224,67 @@ To group adapters you need to:
 
 
 ## Testing Adapters
+MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource/procedure, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.
 
-### Using the MobileFirst CLI
-
+The structure of the URL used to access the adapter resource is: `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{procedure-name}`
 
 ### Using Postman
+
+**Passing parameters:**
+
+* When using Java adapters, parameters can be passed in the URL, body, form, etc, depending on how you configured your adapter.
+* When using JavaScript adapters, parameters are passed as `params=[a,b,c,d]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be an array of ordered, unnamed values. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
+
+**Handling security:**
+
+If your resource is protected by a security check, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
+
+To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the procedure/class:
+
+```java
+@OAuthSecurity(enabled=false)
+```
+
+To disable security in JavaScript adapters you should add the `secured` attribute to the procedure:
+
+```js
+<procedure name="proc1" secured="false"/>
+```
+
+For you to work around this during your development stage, the development version of the MobileFirst Server includes a test token endpoint. To receive a Test Token you should:
+
+1. In the MobileFirst Operations Console -> **Settings** -> **Confidential Clients** tab, create a confidential client or use the default one:  
+For testing purposes set **Allowed Scopes** as `**`.
+
+  ![Image of setting a confidential client](confidential_client.png)
+
+2. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
+
+```xml
+grant_type : client_credentials
+scope : **
+```
+
+  ![Image of Postman Body configuration](Body_configuration.png)
+
+3. Add an authorization header using Basic authentication (use the confidential client's ID and secret):  
+
+  ![Image of Postman Authorization configuration](Authorization_configuration.png)
+
+
+The result will be a JSON object with a temporary valid access token:
+
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIsImp3ayI6eyJlIjoiQVFBQiIsIm4iOiJBTTBEZDd4QWR2NkgteWdMN3I4cUNMZEUtM0kya2s0NXpnWnREZF9xczhmdm5ZZmRpcVRTVjRfMnQ2T0dHOENWNUNlNDFQTXBJd21MNDEwWDlJWm52aHhvWWlGY01TYU9lSXFvZS1ySkEwdVp1dzJySGhYWjNXVkNlS2V6UlZjQ09Zc1FOLW1RSzBtZno1XzNvLWV2MFVZd1hrU093QkJsMUVocUl3VkR3T2llZzJKTUdsMEVYc1BaZmtOWkktSFU0b01paS1Uck5MelJXa01tTHZtMDloTDV6b3NVTkExNXZlQ0twaDJXcG1TbTJTNjFuRGhIN2dMRW95bURuVEVqUFk1QW9oMmluSS0zNlJHWVZNVVViTzQ2Q3JOVVl1SW9iT2lYbEx6QklodUlDcGZWZHhUX3g3c3RLWDVDOUJmTVRCNEdrT0hQNWNVdjdOejFkRGhJUHU4Iiwia3R5IjoiUlNBIiwia2lkIjoidGVzdCJ9fQ.eyJpc3MiOiJjb20uaWJtLm1mcCIsInN1YiI6InRlc3QiLCJhdWQiOiJjb20uaWJtLm1mcCIsImV4cCI6MTQ1MjUxNjczODAwNSwic2NvcGUiOiJ4eCJ9.vhjSkv5GShCpcDSu1XCp1FlgSpMHZa-fcJd3iB4JR-xr_3HOK54c36ed_U5s3rvXViao5E4HQUZ7PlEOl23bR0RGT2bMGJHiU7c0lyrMV5YE9FdMxqZ5MKHvRnSOeWlt2Vc2izh0pMMTZd-oL-0w1T8e-F968vycyXeMs4UAbp5Dr2C3DcXCzG_h9jujsNNxgXL5mKJem8EpZPolQ9Rgy2bqt45D06QTW7J9Q9GXKt1XrkZ9bGpL-HgE2ihYeHBygFll80M8O56By5KHwfSvGDJ8BMdasHFfGDRZUtC_yz64mH1lVxz5o0vWqPwEuyfslTNCN-M8c3W9-6fQRjO4bw",
+  "token_type": "Bearer",
+  "expires_in": 3599,
+  "scope": "**"
+}
+```
+
+Now with any future request to adapter endpoints, add an HTTP header with the name `Authorization` and the value you received previously. The security framework will skip any security challenges protecting your resource.
+
+![Adapter request using Postman with the test token]()
+
+### Using the MobileFirst CLI

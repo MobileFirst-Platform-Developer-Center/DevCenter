@@ -42,15 +42,43 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     WLResourceRequest code snippet here
     ```
 
-### 4. Testing the application
+### 4. Creating an adapter
+
+1. Click on the "Create new" button next to **Adapters** and download the **JavaScript-HTTP** adapter sample.
+
+    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
+
+    ![Image of create an adapter](create-an-adapter.png)
+    
+    ![Image of downloading an adapter sample](download-adapter-code.png)
+
+2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
+
+    ```bash
+    mfpdev adapter build
+    ```
+
+3. When the build finishes, run the command:
+
+    ```bash
+    mfpdev adapter deploy
+    ```
+
+    If using a remote MobileFirst Server, run the command:
+
+    ```bash
+    mfpdev adapter deploy Replace-with-remote-server-name
+    ```
+
+### 5. Testing the application
 
 1. In Visual Studio, click on the **Start Debugging** button.
 
     ![Image of application that successfully called a resource from the MobileFirst Server ]()
 
-<hr>
-
 ## Next steps
 
-- Review the [Adapter end-to-end demonstration](../adapter)
+- Review the [Client-side development tutorials](../../client-side-development/)
+- Review the [Server-side development tutorials](../../server-side-development/)
+- Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review [All Tutorials](../../all-tutorials)

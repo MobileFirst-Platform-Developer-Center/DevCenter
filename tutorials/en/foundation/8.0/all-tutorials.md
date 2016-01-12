@@ -16,7 +16,6 @@ Get a feel of MobileFirst Platform Foundation.
 * <span style="color:red">IN PROGRESS </span>[Quick Start with Android](../quick-start/android/)
 * <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8 Universal](../quick-start/windows-8/)
 * <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 10 UWP](../quick-start/windows-10/)
-* <span style="color:red">IN PROGRESS </span>[Quick Start with Adapters](../quick-start/adapter/)
 * <span style="color:red">IN PROGRESS </span>[Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
@@ -60,7 +59,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
     * [JavaScript HTTP Adapter](../server-side-development/creating-adapters/javascript-adapters/js-http-adapter/)
     * [JavaScript SQL Adapter](../server-side-development/creating-adapters/javascript-adapters/js-sql-adapter/)
     * [Using Java in JavaScript Adapters](../server-side-development/creating-adapters/javascript-adapters/using-java-in-javascript-adapters/)
-* <span style="color:red">IN PROGRESS</span> [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
+* [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
     * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
