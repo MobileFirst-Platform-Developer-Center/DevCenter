@@ -34,42 +34,61 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
  
 ### 3. Editing application logic
 
-1. Open the Xcode project project
+1. Open the Xcode project project.
 
-2. Select the **[project-root]/ViewController.m** file and paste the following code snippet in `viewDidLoad`:
+2. Select the **[project-root]/ViewController.m/swift** file and:
+
+* Add the following header: 
 
     In Objective-C:
 
     ```objc
-    WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
-        (token, error) -> Void in
-        
-        if (error != nil) {
-            NSLog(@"Access token not granted.");
-        } else {
-            NSLog(@"Access token granted.");
+    #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
+    ```
+    
+    In Swift: 
+    
+    ```swift
+    import IBMMobileFirstPlatformFoundation
+    ```
+    
+* Paste the following code snippet in the `viewDidLoad` function:
+ 
+    In Objective-C:
+
+    ```objc
+    NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/users/world"];
+    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+     
+    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+        if(error != nil){
+             NSLog(@"%@",error.description);
         }
-    }
+        else{
+            NSLog(@"%@",response.responseText);
+        }
+    }];
     ```
     
     In Swift:
     
     ```swift
-    WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
-        (token, error!)->Void
-        
-        if error != nil {
-            NSLog("Access token not granted.")
+    let url = NSURL(string: "/adapters/javaAdapter/users/world")
+    let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
+
+    request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+        if(error != nil){
+            NSLog("error.description")
         }
         else {
-            NSLog("Access token granted.")
+            NSLog("response.responseText")
         }
     }
     ```
 
 ### 4. Creating an adapter
 
-1. Click on the "Create new" button next to **Adapters** and download the **JavaScript-HTTP** adapter sample.
+1. Click on the "Create new" button next to **Adapters** and download the **Java** adapter sample.
 
     > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
 

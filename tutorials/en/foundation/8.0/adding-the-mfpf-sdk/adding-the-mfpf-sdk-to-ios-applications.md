@@ -30,7 +30,7 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
 Before starting, make sure the MobileFirst Server is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
 
-1. Create an Xcode project or use an existing one.  
+1. Create an Xcode project or use an existing one (Swift or Objective-C).  
 
 2. Open a **Command-line** window and navigate to the root of the Xcode project.  
 
@@ -78,19 +78,23 @@ If using a locally installed server: From a **Command-line** window, navigate to
 10. Run the command: `pod install`. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.  
     **Note:** This command may take several minutes to complete.
     
-    > <b>Important</b>: From here on, use the `[ProjectName].<b>xcworkspace</b>` file in order to open the project in Xcode. Do <b>not</b> use the `[ProjectName].<b>xcodeproj</b>` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
+    > <b>Important</b>: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do <b>not</b> use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
 11. Open the Xcode project by double-clicking the <b>.xcworkspace</b> file.
 12. In Xcode, right-click the project and select <b>Add Files To [ProjectName]</b> and select the `mfpclient.plist` file.
 
 Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Platform Foundation framework:
 
+Objective-C:
+
 ```objc
 #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h> 
 ```
 
-<br>
-#### Note about Swift:
-> Because Swift is designed to be compatible with Objective-C you can use the MobileFirst SDK from within an iOS Swift project, too. Create a Swift project and follow the same steps, as described at the beginning of the tutorial, to integrate the MobileFirst Native SDK. Use `import IBMMobileFirstPlatformFoundation` in any class that needs to use the SDK.
+Swift:
+
+```swift
+import IBMMobileFirstPlatformFoundation
+```
 
 #### Note about iOS 9:
 > If you are developing for iOS9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's `info.plist` to be able to test locally without security restrictions.
