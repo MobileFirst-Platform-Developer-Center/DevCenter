@@ -17,7 +17,7 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 * Make sure to read the [Java Adapters](../) tutorial first.
 * This tutorial assumes knowledge of SQL.
 
-### Jump to:
+#### Jump to:
 
 * [Setting up the data source](#setting-up-the-data-source)
 * [UserAdapterApplication](#useradapterapplication)
@@ -283,7 +283,7 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 `@DELETE` (for `HTTP DELETE`) is used together with the resource ID in the `@Path`, to delete a user.
 
 ## Results
-<span style="color:red"> Use the testing techniques described in ### </spsn>
+Use the testing techniques described in the [Creating Java and JavaScript Adapters](../../#testing-adapters) tutorial.
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.
