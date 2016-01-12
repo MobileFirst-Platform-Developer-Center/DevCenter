@@ -17,7 +17,7 @@ In this tutorial and in the accompanying sample, you learn how to use a MobileFi
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
-## The `XML` File
+## The XML File
 The XML file contains settings and metadata.
 
 1. In the adapter XML file, declare the following parameters:
