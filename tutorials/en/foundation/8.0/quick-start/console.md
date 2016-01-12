@@ -20,12 +20,7 @@ The MobileFirst Operations Console can be accessed in the following ways:
 From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
 #### Command-line
-From a **Command-line** window, with the MobileFirst CLI installed, run the command: `mfpdev server console`
-
-#### MobileFirst Studio
-<span style="color:red">In Eclipse, click on the **Open MobileFirst Console** button</span>.
-
-![Image showing how to access the console from MobileFirst Studio]()
+From a **Command-line** window, with the MobileFirst CLI installed, run the command: `mfpdev server console`.
 
 ### From a remotely installed MobileFirst Server
 #### Desktop Browser
@@ -47,7 +42,7 @@ From a **Command-line** window, with the MobileFirst CLI installed,
     mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
     ```
 
-2. Run the command: `mfpdev server console MyRemoteServer`
+2. Run the command: `mfpdev server console MyRemoteServer`.
 
 > Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
@@ -91,6 +86,11 @@ Set-up [push notifications](../../notifications/push-notifications-overview/) an
 Register an adapter and download Starter Code.
 
 ![Image of adapter registration screen](create-adapter.png)
+
+#### Adapter properties
+After an adapter is deployed, it can be configured in the console.
+
+![Image of adapter configuration screen](adapter-configuration.png)
 
 ### Devices
 Administrators can search for devices that access the MobileFirst Server and can manage access rights.  
