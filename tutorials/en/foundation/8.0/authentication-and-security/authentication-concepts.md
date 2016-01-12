@@ -139,12 +139,16 @@ Also available are these out-of-the-box security checks:
 - [LTPA](../websphere-ltpa-based-authentication/)
 
 ### Scope
-A **scope** is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
+A `scope` is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
 
 ### Scope Element
-By default, the scope elements you write in your *scope* are matched to a **SecurityCheck** with the same name.
+Scope element is a keyword that indicates which `SecurityChecks` are being used to protect the resource.
 
-Optionally, at the application level, you can also map a **scope element** to a different SecurityCheck. Specifically, you can map it to a list of zero or more SecurityChecks. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
+###Scope Mapping
+By default, the scope elements you write in your *scope* are matched to a `SecurityCheck` with the same name.
+
+Optionally, at the application level, you can also map a **scope element** to a different `SecurityCheck`. Specifically, you can map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
+
 
 ## Protecting resources
 
