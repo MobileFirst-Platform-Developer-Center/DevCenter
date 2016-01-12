@@ -13,7 +13,7 @@ title: Downloads
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="installFoundation">
             <br/>
-            <p>IBM MobileFirst Platform Foundation 8.0 enables simplified, community-driven experiences and work flows for both the developer and the administrator, and consists of <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">MobileFirst Server, MobileFirst Command-line Interface (CLI), MobileFirst Operations Console and MobileFirst Studio</a></p>
+            <p>IBM MobileFirst Platform Foundation 8.0 enables simplified, community-driven experiences and work flows for both the developer and the administrator, and consists of <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">MobileFirst Server, MobileFirst developer Command-line Interface (CLI), MobileFirst Operations Console and MobileFirst Studio</a></p>
 
             <b>Installation instructions:</b>
             <div class="panel-group" id="accordion0" role="tablist" aria-multiselectable="true">
@@ -42,14 +42,14 @@ title: Downloads
                         <div class="panel-body">
                             <ol>
                                 <li> Make sure that you have the Eclipse IDE for
-                                    <strong>Java EE Developers</strong> installed: <a href="https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr2">Luna SR2 (4.4.2)</a> or <a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars1">Mars SR1 (4.5.1)</a>
+                                    <strong>Java EE Developers</strong> installed: <a href="https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr2">Luna SR2 (4.4.2)</a> or <a href="http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/mars1">Mars SR1 (4.5.1)</a>.
                                     <br/>
                                     <blockquote>
                                         Ensure that your Eclipse workspace path does not contain any spaces, which can cause failures when apps are deployed to the internal development server, or when the MobileFirst Operations Console is started.
                                     </blockquote>
                                 </li>
                                 <li>Start Eclipse, and then select <strong>Help > Eclipse Marketplace</strong>.</li>
-                                <li>In the <strong>Find</strong> field, type <em>MobileFirst Platform</em> and click <strong>Go</strong>.</li>
+                                <li>In the <strong>Find</strong> field, type "MobileFirst Platform" and click <strong>Go</strong>.</li>
                                 <li>Click the IBM MobileFirst Platform Studio <strong>Install</strong> button.</li>
                                 <li>IBM MobileFirst Platform Studio and all features are preselected. Confirm your selection and click <strong>Next</strong>.</li>
                                 <li>Review and accept the license terms, and then click <strong>Finish</strong> to begin the installation.</li>
@@ -65,23 +65,23 @@ title: Downloads
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="cli">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#collapseCli0" aria-expanded="true" aria-controls="cli"> MobileFirst Command-line Interface</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#collapseCli0" aria-expanded="true" aria-controls="cli"> MobileFirst developer CLI</a>
                         </h4>
                     </div>
 
                     <div id="collapseCli0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cli">
                         <div class="panel-body">
-                            <p>To use the MobileFirst Command-line Interface (CLI), you must have the Java Developer Kit (JDK) installed on your machine as well NPM. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
+                            <p>To use the MobileFirst developer CLI, Java Developer Kit (JDK) 7 or above is required to be installed on developer workstation, as well the <a href="https://www.npmjs.com/">NPM package manager</a>. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
 
                             <ol>
                                 <li>Set the <code>JAVA_HOME</code> environment variable set to your JDK directory. For example:
                                     <ul>
                                         <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
-                                        <li> OSX: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
+                                        <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
                                     </ul>
                                 </li>
                                 <li>Install NPM. <a href="http://blog.npmjs.org/post/85484771375/how-to-install-npm" target="_blank">Follow the installation instructions</a> in the NPM website</li>
-                                <li>From a **Command-line* window, run the command: <code>npm install -g mfpdev-cli</code></li>
+                                <li>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code></li>
                                 <li>You can verify the installation by running <code>mfpdev -v</code>
                             </ol>
 
