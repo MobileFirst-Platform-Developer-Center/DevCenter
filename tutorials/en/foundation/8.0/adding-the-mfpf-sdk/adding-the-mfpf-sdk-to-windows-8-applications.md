@@ -14,7 +14,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Nuge
 
 **Pre-requisites:** 
 
-- Microsoft Visual Studio 2013 or 2015 and MobileFirst CLI installed on the developer workstation.  
+- Microsoft Visual Studio 2013 or 2015 and MobileFirst developer CLI installed on the developer workstation.  
 - *Optional* MobileFirst Server to run a locally.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 

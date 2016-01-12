@@ -35,7 +35,7 @@ The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more in
 
 **Pre-requisites:** 
 
-- MobileFirst CLI and Apache Cordova CLI installed on the developer workstation.  
+- Apache Cordova CLI and MobileFirst developer CLI installed on the developer workstation.  
 - *Optional* MobileFirst Server to run a locally.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
@@ -203,8 +203,8 @@ When the MobileFirst Cordova plug-in is added to the project, the Cordova-genera
 * **mfp:directUpdateAuthenticityPublicKey:** The public key used for direct update authenticity
 * **mfp:languagePreferences:** Default language for client sdk system messages (en, fr, es)
 
-**Editing MobileFirst settings in config.xml with MobileFirst CLI**  
-The MobileFirst CLI can be used to edit the above settings with the command:
+**Editing MobileFirst settings in config.xml with MobileFirst developer CLI**  
+The MobileFirst developer CLI can be used to edit the above settings with the command:
 
 ```bash
 mfpdev app config
