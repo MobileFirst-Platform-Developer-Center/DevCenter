@@ -237,7 +237,7 @@ The structure of the URL used to access the adapter resource is: `http://<IP>:<P
 
 **Handling security:**
 
-If your resource is protected by a security check, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
+If your resource is protected by a scope, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
 
 To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the procedure/class:
 
@@ -251,23 +251,23 @@ To disable security in JavaScript adapters you should add the `secured` attribut
 <procedure name="proc1" secured="false"/>
 ```
 
-For you to work around this during your development stage, the development version of the MobileFirst Server includes a test token endpoint. To receive a Test Token you should:
-
+Alternatively, the development version of the MobileFirst Server includes a test token endpoint to bypass the security challenges. To receive a Test Token you should:
+{% comment %}
 1. In the MobileFirst Operations Console -> **Settings** -> **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
+{% endcomment %}
+1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
 
-2. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
-
-```xml
-grant_type : client_credentials
-scope : **
-```
+    ```xml
+    grant_type : client_credentials
+    scope : **
+    ```
 
   ![Image of Postman Body configuration](Body_configuration.png)
-
-3. Add an authorization header using Basic authentication (use the confidential client's ID and secret):  
+2. Add an authorization header using Basic authentication with the <span style="color:red">Add link to the confidential client tutorial</span>
+confidential client's ID (test) and secret (test):  
 
   ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
