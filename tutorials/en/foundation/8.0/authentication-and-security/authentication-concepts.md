@@ -26,12 +26,12 @@ The authorization flow has two phases:
 2. The client uses the token to access a protected resource.
 
 ### Acquiring a token
-In this phase, the client undergoes `security checks` in order to receive an access token.  
-These `security checks` use **authorization entities**, which are described in [the next section](#authEntities).  
+In this phase, the client undergoes `securityChecks` in order to receive an access token.  
+These `securityChecks` use **authorization entities**, which are described in [the next section](#authEntities).  
 ![Obtain Token](auth-flow-1.jpg)
 
 1. Client application sends a request to use a protected resource.
-2. Client application undergoes `security checks` according to the requested resource `scope`.
+2. Client application undergoes `securityChecks` according to the requested resource `scope`.
 3. The client application requests a token from the Authorization Server.
 4. Client application receives the token.
 
