@@ -61,7 +61,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     
 ### 4. Creating an adapter
 
-1. Click on the "Create new" button next to **Adapters** and download the **JavaScript-HTTP** adapter sample.
+1. Click on the "Create new" button next to **Adapters** and download the **Java** adapter sample.
 
     > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
 
