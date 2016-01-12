@@ -17,11 +17,11 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 > If a remote server was already set-up, skip this step.
 
-From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.sh</code> in Mac and Linux or <code>start.cmd</code> in Windows.
+From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
 
 ### 2. Creating an application
 
-In a browser window, open the MobileFirst Operations Console by loading the URL: <code>http://your-server-host:server-port/mfpconsole</code>. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
 1. Click on the "Create new" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
 
@@ -37,24 +37,25 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Cordova project in your code editor of choice.
 
-2. Select the **www/js/index.js** file and paste the following code snippet, replacing the existing `wlCommonInit()` function:
+2. Select the **/config.xml** file and edit the `<mfp:server ... url=" "/>` value with the IP address of the MobileFirst Server.
+
+3. Select the **www/js/index.js** file and paste the following code snippet, replacing the existing `wlCommonInit()` function:
 
     ```javascript
     function wlCommonInit() {
         var resourceRequest = new WLResourceRequest(
-            "/adapters/httpadapter/getFeed",
+            "/adapters/javaAdapter/users/world",
             WLResourceRequest.GET
         );
 
         resourceRequest.send().then(
-            function() {
-                alert("Successfully connected and retrieved data from the MobileFirst Server.");
-                alert("show some server result here");
+            function(response) {
+                alert(response.responseText);
             },
-            function() {
-                alert ("failure");
+            function(response) {
+                alert ("failure: " + response.errorMsg);
             }
-        )
+        );
     }
     ```
     
@@ -90,7 +91,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. From a **Command-line** window, navigate to the Cordova project root folder.
 
-2. Run the commands: <code>cordova prepare</code> followed by <code>cordova run</code>.
+2. Run the commands: `cordova prepare` followed by `cordova run`.
 
  - If a device is connected, the application will be installed and launched in the device,
  - Otherwise the Simulator or Emulator will be used.

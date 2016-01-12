@@ -28,7 +28,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Coco
 Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Xcode project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.sh</code>.
+If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
 
 1. Create an Xcode project or use an existing one.  
 
@@ -40,10 +40,10 @@ If using a locally installed server: From a **Command-line** window, navigate to
     mfpdev app register
     ```
     
-    The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>mfpclient.plist</code> file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.
+    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the `mfpclient.plist` file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.
         
     > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
-        1. Open your browser of choice and load the MobileFirst Operations Console using the address <code>http://localhost:9080/mfpconsole/</code>. You can also open the console from the **Command-line** using the CLI command <code>mfpdev server console</code>.  
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
         2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
         3. After successfully registering your application you can optionally download a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK.
 
@@ -52,7 +52,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     ```bash
     mfpdev app pull
     ```
-    The <code>mfpdev app pull</code> CLI command creates the **mobilefirst** folder at the root of the Xcode project and downloads into it the <code>application-descriptor.json</code> file, containing application configuration data.
+    The `mfpdev app pull` CLI command creates the **mobilefirst** folder at the root of the Xcode project and downloads into it the `application-descriptor.json` file, containing application configuration data.
     
     These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
     
@@ -60,12 +60,12 @@ If using a locally installed server: From a **Command-line** window, navigate to
         
 5. The MobileFirst Native SDK is provided via CocoaPods. If [CocoaPods](http://guides.cocoapods.org) is not installed in your development environment, install it as follows:    
     - Open a **Command-line** window and navigate to the root of the Xcode project
-    - Run the command: <code>sudo gem install cocoapods</code>
-    - Run the command: <code>pod setup</code>  
+    - Run the command: `sudo gem install cocoapods`
+    - Run the command: `pod setup`  
     **Note:** This command may take several minutes to complete.<br><br>
     
-6. Run the command: <code>pod init</code>. This creates a <code>Podfile</code>.
-7. Using your favorite code editor, open the <code>Podfile</code>.
+6. Run the command: `pod init`. This creates a `Podfile`.
+7. Using your favorite code editor, open the `Podfile`.
 8. Comment out or remove the contents of the file.
 9. Add the following lines and save the changes:
 
@@ -75,12 +75,12 @@ If using a locally installed server: From a **Command-line** window, navigate to
     use_frameworks! 
     pod 'IBMMobileFirstPlatformFoundation'
     ```
-10. Run the command: <code>pod install</code>. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.  
+10. Run the command: `pod install`. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.  
     **Note:** This command may take several minutes to complete.
     
-    > <b>Important</b>: From here on, use the <code>[ProjectName].<b>xcworkspace</b></code> file in order to open the project in Xcode. Do <b>not</b> use the <code>[ProjectName].<b>xcodeproj</b></code> file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
+    > <b>Important</b>: From here on, use the `[ProjectName].<b>xcworkspace</b>` file in order to open the project in Xcode. Do <b>not</b> use the `[ProjectName].<b>xcodeproj</b>` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
 11. Open the Xcode project by double-clicking the <b>.xcworkspace</b> file.
-12. In Xcode, right-click the project and select <b>Add Files To [ProjectName]</b> and select the <code>mfpclient.plist</code> file.
+12. In Xcode, right-click the project and select <b>Add Files To [ProjectName]</b> and select the `mfpclient.plist` file.
 
 Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Platform Foundation framework:
 
@@ -90,29 +90,29 @@ Whenever you want to use the MobileFirst Native SDK, make sure that you import t
 
 <br>
 #### Note about Swift:
-> Because Swift is designed to be compatible with Objective-C you can use the MobileFirst SDK from within an iOS Swift project, too. Create a Swift project and follow the same steps, as described at the beginning of the tutorial, to integrate the MobileFirst Native SDK. Use <code>import IBMMobileFirstPlatformFoundation</code> in any class that needs to use the SDK.
+> Because Swift is designed to be compatible with Objective-C you can use the MobileFirst SDK from within an iOS Swift project, too. Create a Swift project and follow the same steps, as described at the beginning of the tutorial, to integrate the MobileFirst Native SDK. Use `import IBMMobileFirstPlatformFoundation` in any class that needs to use the SDK.
 
 #### Note about iOS 9:
-> If you are developing for iOS9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's <code>info.plist</code> to be able to test locally without security restrictions.
+> If you are developing for iOS9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's `info.plist` to be able to test locally without security restrictions.
 
 ## Generated MobileFirst Native SDK artifacts
-Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the <code>mfpclient.plist</code> file and the <code>application-descriptor.json</code> file.
+Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the `mfpclient.plist` file and the `application-descriptor.json` file.
 
 ### mfpclient.plist 
 Located at the root of the project, this file contains server connectivity properties and is user-editable:
 
-- <code>protocol</code> – The communication protocol to MobileFirst Server. Either <code>HTTP</code> or <code>HTPS</code>.
-- <code>host</code> – The hostname of the MobileFirst Server instance.
-- <code>port</code> – The port of the MobileFirst Server instance.
-- <code>wlServerContext</code> – The context root path of the application on the MobileFirst Server instance.
-- <code>languagePreference</code> - Sets the default language for client sdk system messages
+- `protocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTPS`.
+- `host` – The hostname of the MobileFirst Server instance.
+- `port` – The port of the MobileFirst Server instance.
+- `wlServerContext` – The context root path of the application on the MobileFirst Server instance.
+- `languagePreference` - Sets the default language for client sdk system messages
 
 ### application-descriptor.json
-Located in the **&lt;xcode-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its <code>bundleId</code> and <code>version</code> and is user-editable.
+Located in the **&lt;xcode-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its `bundleId` and `version` and is user-editable.
 
 The file can be edited either locally or via the MobileFirst Operations Console.  
-If edited locally, the MobileFirst Server can be updated by running the CLI command: <code>mfpdev app push</code>.  
-The file can also be updated by pulling from the server its latest revision by running the CLI command: <code>mfpdev app pull</code>.
+If edited locally, the MobileFirst Server can be updated by running the CLI command: `mfpdev app push`.  
+The file can also be updated by pulling from the server its latest revision by running the CLI command: `mfpdev app pull`.
 
 ```javascript
 {

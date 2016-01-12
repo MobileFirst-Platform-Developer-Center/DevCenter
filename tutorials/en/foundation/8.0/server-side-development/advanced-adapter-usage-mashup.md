@@ -25,7 +25,7 @@ This tutorial covers the following topics:
 When calling a JavaScript adapter procedure from another JavaScript adapter use the `WL.Server.invokeProcedure(invocationData)` API.
 This API enables to invoke a procedure on any of your adapters. `WL.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
 
-The <code>invocationData</code> function signature is:  
+The `invocationData` function signature is:  
 `WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
 
 For example:

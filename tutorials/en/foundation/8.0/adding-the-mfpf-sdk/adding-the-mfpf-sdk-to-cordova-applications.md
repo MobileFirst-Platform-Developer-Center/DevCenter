@@ -22,16 +22,16 @@ The following MobileFirst Cordova SDK plug-ins are available:
 * cordova-plugin-mfp-fips
 
 **cordova-plug-in-mfp**  
-The <code>cordova-plugin-mfp</code> plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins the <code>cordova-plugin-mfp</code> plug-in is automatically installed as well.
+The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins the `cordova-plugin-mfp` plug-in is automatically installed as well.
 
 **cordova-plugin-mfp-jsonstore**  
-The <code>cordova-plugin-mfp-jsonstore</code> plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../client-side-development/jsonstore/).  
+The `cordova-plugin-mfp-jsonstore` plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../client-side-development/jsonstore/).  
 
 **cordova-plugin-mfp-push**  
-The <code>cordova-plugin-mfp-push</code> plug-in provides permissions needed to use push notification from the MobileFirst Server for Android apps. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications  tutorial](../notifications/push-notifications-overview/).  
+The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push notification from the MobileFirst Server for Android apps. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications  tutorial](../notifications/push-notifications-overview/).  
 
 **cordova-plugin-mfp-fips**  
-The <code>cordova-plugin-mfp-fips</code> plug-in enables FIPS related features. For more information about FIPS, see [FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) in the user docuementation.
+The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see [FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) in the user docuementation.
 
 **Pre-requisites:** 
 
@@ -49,7 +49,7 @@ The <code>cordova-plugin-mfp-fips</code> plug-in enables FIPS related features. 
 
 ## Adding the MobileFirst Cordova Plug-in
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.sh</code> in Mac and Linux or <code>start.cmd</code> in Windows.
+If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
 
 Follow the below instructions to add the MobileFirst Cordova Plugin to either a new or existing Cordova project:
 
@@ -69,15 +69,15 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     cordova plugin add cordova-plugin-mfp
     ```
 
-4. The optional plug-ins <code>cordova-plugin-mfp-push</code>, <code>cordova-plugin-mfp-jsonstore</code> and <code>cordova-plugin-mfp-fips</code> can be added using the Cordova CLI command <code>cordova add plugin [plug-in-name]</code>.
+4. The optional plug-ins `cordova-plugin-mfp-push`, `cordova-plugin-mfp-jsonstore` and `cordova-plugin-mfp-fips` can be added using the Cordova CLI command `cordova add plugin [plug-in-name]`.
 
-    For example, to add the <code>cordova-plugin-mfp-push</code> plug-in:
+    For example, to add the `cordova-plugin-mfp-push` plug-in:
 
     ```bash
     cordova plugin add cordova-plugin-mfp-push
     ```
 
-5. Optionally add one or more platforms to the Cordova project using the Cordova CLI command <code>cordova platform add [platform]</code>.
+5. Optionally add one or more platforms to the Cordova project using the Cordova CLI command `cordova platform add [platform]`.
 
     To add the iOS platform:
 
@@ -109,10 +109,10 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     mfpdev app register
     ```
 
-    The <code>mfpdev app register</code> CLI command first connects to the MobileFirst Server to register the application, followed by generating the <code>config.xml</code> file at the root of the Cordova project, and adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as an application in MobileFirst Server.
+    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the `config.xml` file at the root of the Cordova project, and adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as an application in MobileFirst Server.
 
     > The application registration can also be done from the MobileFirst Operations Console:    
-    > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  <code>http://localhost:9080/mfpconsole/</code>. You can also open the console from the **Command-line** using the CLI command <code>mfpdev server console</code>.  
+    > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
     > 2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.  
     > 3. After successfully registering your application you can optionally download a "skeleton" Cordova project pre-bundled with the MobileFirst Cordova SDK.
 
@@ -141,7 +141,7 @@ mbs: Mobile Browser Simulator
 
 ### Running the application on emulator or on a real device
 Use the Cordova CLI to run the application on a emulator or on a real device.  
-To emulate the application execute the Cordova CLI command <code>cordova emulate [platform]</code>.
+To emulate the application execute the Cordova CLI command `cordova emulate [platform]`.
 
 Preview the application in the iOS Simulator:
 
@@ -155,7 +155,7 @@ Preview the application in the Android Emulator:
 cordova emulate android
 ```
 
-To run the application on a real device attached to the development workstation, execute the Cordova CLI command <code>cordova run [platform]</code>
+To run the application on a real device attached to the development workstation, execute the Cordova CLI command `cordova run [platform]`
 
 Run the application on an iOS device:
 
@@ -170,10 +170,10 @@ cordova run android
 ```
 
 ## Generated MobileFirst Native SDK artifacts
-Two MobileFirst-related artifacts are available in the Cordova project after it has been integrated with the MobileFirst Cordova SDK: the <code>config.xml</code> and the <code>application-descriptor.json</code> file.
+Two MobileFirst-related artifacts are available in the Cordova project after it has been integrated with the MobileFirst Cordova SDK: the `config.xml` and the `application-descriptor.json` file.
 
 ### config.xml
-When the MobileFirst Cordova plug-in is added to the project, the Cordova-generated <code>config.xml</code> file receives a set of new settings identified with the namespace <code>mfp:</code>. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the <code>config.xml</code> file:
+When the MobileFirst Cordova plug-in is added to the project, the Cordova-generated `config.xml` file receives a set of new settings identified with the namespace `mfp:`. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the `config.xml` file:
 
 ```xml
 <mfp:android>
@@ -211,11 +211,11 @@ mfpdev app config
 ```
 
 ### application-descriptor.json
-Located in the **&lt;cordova-project-root-directory&gt;/mobilefirst/[platform]** folder, this file contains application configuration settings such as its <code>bundleId</code> and <code>version</code> and is user-editable.
+Located in the **&lt;cordova-project-root-directory&gt;/mobilefirst/[platform]** folder, this file contains application configuration settings such as its `bundleId` and `version` and is user-editable.
 
 The file can be edited either locally or via the MobileFirst Operations Console.  
-If edited locally, the MobileFirst Server can be updated by running the CLI command: <code>mfpdev app push</code>.  
-The file can also be updated by pulling from the server its latest revision by running the CLI command: <code>mfpdev app pull</code>.
+If edited locally, the MobileFirst Server can be updated by running the CLI command: `mfpdev app push`.  
+The file can also be updated by pulling from the server its latest revision by running the CLI command: `mfpdev app pull`.
 
 ```javascript
 {

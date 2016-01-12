@@ -20,7 +20,7 @@ The MobileFirst Operations Console can be accessed in the following ways:
 From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
 #### Command-line
-From a **Command-line** window, with the MobileFirst CLI installed, run the command: <code>mfpdev server console</code>
+From a **Command-line** window, with the MobileFirst CLI installed, run the command: `mfpdev server console`
 
 #### MobileFirst Studio
 <span style="color:red">In Eclipse, click on the **Open MobileFirst Console** button</span>.
@@ -29,7 +29,7 @@ From a **Command-line** window, with the MobileFirst CLI installed, run the comm
 
 ### From a remotely installed MobileFirst Server
 #### Desktop Browser
-From your browser of choice, load the URL <code>http://the-server-host:server-port-number/mfpconsole</code>  
+From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`  
 The host server can be a customer-owner server, or running on a service such as Bluemix. The username/password are *admin/admin*.
 
 #### Command-line
@@ -38,16 +38,16 @@ From a **Command-line** window, with the MobileFirst CLI installed,
 1. Add a remote server definition:
 
     *Interactive Mode*  
-    Run the command: <code>mfpdev server add</code> and follow the on-screen instructions.
+    Run the command: `mfpdev server add` and follow the on-screen instructions.
 
     *Direct Mode*  
-    Run the command with the following structure: <code>mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]</code>. For example:
+    Run the command with the following structure: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. For example:
 
     ```bash
     mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
     ```
 
-2. Run the command: <code>mfpdev server console MyRemoteServer</code>
+2. Run the command: `mfpdev server console MyRemoteServer`
 
 > Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
@@ -97,7 +97,7 @@ Administrators can search for devices that access the MobileFirst Server and can
 Devices can be searched for using either user ID or using a friendly name.
 
 The user ID is the identifier that was used to log-in.  
-A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. You can set the friendly name on the client by using the client-side JavaScript APIs: <code>WL.Device.setFriendlyName</code> and <code>WL.Device.getFriendlyName</code>.
+A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. You can set the friendly name on the client by using the client-side JavaScript APIs: `WL.Device.setFriendlyName` and `WL.Device.getFriendlyName`.
 
 > For more information, see the topic about device access management in the MobileFirst Operations Console in the user documentation.
 
@@ -108,7 +108,7 @@ A friendly name is a name that is associated with the device to distinguish it f
 ### Client logs
 Administrators can use log profiles to adjust client logger configurations, such as log level and log package filters, for any combination of operating system, operating system version, application, application version, and device model.
 
-When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as <code>WLResourceRequest</code>, and is applied automatically.</p>
+When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as `WLResourceRequest`, and is applied automatically.</p>
 
 > For more information, see the topic about client-side log capture configuration from MobileFirst Operations Console in the user documentation.
 

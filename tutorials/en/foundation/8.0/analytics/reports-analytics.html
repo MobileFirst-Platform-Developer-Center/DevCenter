@@ -64,13 +64,13 @@ author:
         <strong>Device usage</strong> - Device Usage reports are default aggregations that are based on raw data and are provided for the benefit of organizations that do not have OLAP systems or choose not to integrate IBM MobileFirst Platform with an OLAP system.
     </li>
 </ul>
-<p>To enable raw data collection, edit the <code>worklight.properties</code> file:</p>
+<p>To enable raw data collection, edit the `worklight.properties` file:</p>
 <ol>
 <li>
-        Uncomment the <code>reports.exportRawData</code> property and set its value to <code>true</code>.
+        Uncomment the `reports.exportRawData` property and set its value to `true`.
     </li>
 <li>
-        Modify the <code>wl.reports.db</code> properties to contain your database settings.
+        Modify the `wl.reports.db` properties to contain your database settings.
     </li>
 </ol>
 <h2 id="raw">Raw data</h2>
@@ -79,7 +79,7 @@ author:
 <p>For more information about how to enable raw data reports, see the IBM MobileFirst Platform user documentation.</p>
 <h2 id="usage">Device usage reports</h2>
 <p>To allow simpler and faster access to reports data, MobileFirst Server runs an analytics data processor task with a default 24-hour interval.</p>
-<p>This task retrieves the raw entries for the specified time interval from the <code>app_activity_report</code> table, processes them, and fills the <code>fact_activities</code> table.</p>
+<p>This task retrieves the raw entries for the specified time interval from the `app_activity_report` table, processes them, and fills the `fact_activities` table.</p>
 <p>For more information about how to enable device usage reports, see the IBM MobileFirst Platform user documentation.</p>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/fact_activities.png"><img src="{{ site.baseurl }}/assets/backup/fact_activities-185x300.png" alt="fact_activities" width="185" height="300" class="alignright size-medium wp-image-1776" /></a><br />
 <br clear="all" /></p>

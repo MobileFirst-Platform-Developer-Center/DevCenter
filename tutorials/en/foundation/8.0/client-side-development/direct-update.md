@@ -40,9 +40,9 @@ After a Direct Update, the application no longer uses the pre-packaged web resou
 Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the MobileFirst Server.
 
 1. Open a **Command-line** window and navigate to the root of the Cordova project.
-2. Run the command: <code>mfpdev app webupdate</code>.
+2. Run the command: `mfpdev app webupdate`.
 
-The <code>mfpdev app webupdate</code> command packages the updated web resources to a .zip file and uploads it to the default MobileFirst Server running in the developer workstation. The packaged web resources can be found at the  **[cordova-project-root-folder]/mobilefirst/** folder.
+The `mfpdev app webupdate` command packages the updated web resources to a .zip file and uploads it to the default MobileFirst Server running in the developer workstation. The packaged web resources can be found at the  **[cordova-project-root-folder]/mobilefirst/** folder.
 
 Alternatives:
 
@@ -52,13 +52,13 @@ Alternatives:
     mfpdev app webupdate --build
     ```
 
-* Build the .zip file and upload it to a different MobileFirst Server: <code>mfpdev app webupdate [server-name] [runtime-name]</code>. For example: 
+* Build the .zip file and upload it to a different MobileFirst Server: `mfpdev app webupdate [server-name] [runtime-name]`. For example: 
 
     ```bash
     mfpdev app webupdate myQAServer MyBankApps
     ```
 
-* Build the .zip file and upload a previously generated .zip file: <code>mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]</code>. For example: 
+* Build the .zip file and upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
 
     ```bash
     mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
@@ -72,7 +72,7 @@ Alternatives:
 
     ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
 
-> Run the command <code>mfpdev help webupdate</code> to learn about additional command flags.
+> Run the command `mfpdev help webupdate` to learn about additional command flags.
 
 ## User Experience
 By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.

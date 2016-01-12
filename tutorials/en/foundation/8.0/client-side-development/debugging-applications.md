@@ -115,7 +115,7 @@ To make it accessible, add the following code line to the web application:
 <script src="http://a.b.c:8080/target/target-script-min.js"></script>
 ```
 
-Where <code>a.b.c</code> is the hostname or IP of the Weinre server.
+Where `a.b.c` is the hostname or IP of the Weinre server.
 
 #### Client
 Before you can start debugging, make sure that the application is open and loaded on the browser with this URL:

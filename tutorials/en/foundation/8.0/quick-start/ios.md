@@ -16,11 +16,11 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 > If a remote server was already set-up, skip this step.
 
-1. From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.sh</code>.
+1. From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
 
 ### 2. Creating an application
 
-In a browser window, open the MobileFirst Operations Console by loading the URL: <code>http://your-server-host:server-port/mfpconsole</code>. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
 1. Click on the "Create new" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
 
@@ -36,7 +36,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Xcode project project
 
-2. Select the **[project-root]/ViewController.m** file and paste the following code snippet in <code>viewDidLoad</code>:
+2. Select the **[project-root]/ViewController.m** file and paste the following code snippet in `viewDidLoad`:
 
     In Objective-C:
 
