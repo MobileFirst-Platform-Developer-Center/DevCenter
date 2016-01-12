@@ -26,12 +26,12 @@ The authorization flow has two phases:
 2. The client uses the token to access a protected resource.
 
 ### Acquiring a token
-In this phase, the client undergoes `security checks` in order to receive an access token.  
-These `security checks` use **authorization entities**, which are described in [the next section](#authEntities).  
+In this phase, the client undergoes `securityChecks` in order to receive an access token.  
+These `securityChecks` use **authorization entities**, which are described in [the next section](#authEntities).  
 ![Obtain Token](auth-flow-1.jpg)
 
 1. Client application sends a request to use a protected resource.
-2. Client application undergoes `security checks` according to the requested resource `scope`.
+2. Client application undergoes `securityChecks` according to the requested resource `scope`.
 3. The client application requests a token from the Authorization Server.
 4. Client application receives the token.
 
@@ -139,12 +139,16 @@ Also available are these out-of-the-box security checks:
 - [LTPA](../websphere-ltpa-based-authentication/)
 
 ### Scope
-A **scope** is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
+A `scope` is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
 
 ### Scope Element
-By default, the scope elements you write in your *scope* are matched to a **SecurityCheck** with the same name.
+Scope element is a keyword that indicates which `SecurityChecks` are being used to protect the resource.
 
-Optionally, at the application level, you can also map a **scope element** to a different SecurityCheck. Specifically, you can map it to a list of zero or more SecurityChecks. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
+###Scope Mapping
+By default, the scope elements you write in your *scope* are matched to a `SecurityCheck` with the same name.
+
+Optionally, at the application level, you can also map a **scope element** to a different `SecurityCheck`. Specifically, you can map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
+
 
 ## Protecting resources
 
