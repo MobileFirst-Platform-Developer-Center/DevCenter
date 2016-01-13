@@ -37,10 +37,35 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Android Studio project.
 
-2. Select the **app/java/com.mfp.sample/MainActivity.java** file and paste the following code snippet:
+2. Select the **app/java/com.mfp.sample/MainActivity.java** file and paste the following code snippets:
+
+* Imports:
 
     ```java
-    WLResourceRequest code snippet here
+    import com.worklight.wlclient.api.*;
+    import java.net.URI;
+    import android.util.Log;
+    ```
+    
+* In `protected void onCreate()`:
+
+    ```java
+    WLClient client = WLClient.createInstance(this);
+
+    URI adapterPath = new URI("/adapters/javaAdapter/users/world");
+    WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
+
+    request.send(new WLResponseListener() {
+        @Override
+         public void onSuccess(WLResponse wlResponse) {
+            Log.i("MobileFirst Quick Start", "Adapter invocation response: " + wlResponse.getResponseText());
+        }
+
+        @Override
+        public void onFailure(WLFailResponse wlFailResponse) {
+            Log.i("MobileFirst Quick Start", "Adapter invocation response: " + wlFailResponse.getErrorMsg());
+        }
+    });
     ```
 
 ### 4. Creating an adapter

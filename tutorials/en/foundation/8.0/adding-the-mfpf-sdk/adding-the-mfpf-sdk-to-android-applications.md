@@ -62,7 +62,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
 ### Adding the SDK
 
-1. In **Project > Gradle scripts**, select **build.gradle (Module: app)**.
+1. In **Project → Gradle scripts**, select the **build.gradle (Module: app)** file.
 
 2. Add the following lines below `apply plugin: 'com.android.application'`:
 
@@ -101,7 +101,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.Beta1-SNAPSHOT'
     ```
     
-5. Add the following permissions to the `AndroidManifest.xml` file:
+5. In **Project → App → manifests**, select Add the following permissions to the `AndroidManifest.xml` file:
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
