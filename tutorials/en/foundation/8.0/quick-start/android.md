@@ -53,7 +53,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     WLClient client = WLClient.createInstance(this);
 
     URI adapterPath = new URI("/adapters/javaAdapter/users/world");
-    WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
+    WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
 
     request.send(new WLResponseListener() {
         @Override
