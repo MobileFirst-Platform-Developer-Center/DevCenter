@@ -6,5 +6,5 @@ show_disqus: false
 print_pdf: false
 ---
 ## Overview
-<span style="color:red">TOD: add description</span>
+Develop server-side code to integrate with enterprise back-end systems and cloud services.  
 To continue, select a tutorial:

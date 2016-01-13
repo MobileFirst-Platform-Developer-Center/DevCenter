@@ -10,14 +10,14 @@ downloads:
 weight: 7
 ---
 
-### Overview
+## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources <span style = "color:red"> LINK TO using-mobilefirst-server-authenticate-external-resources</span>.  
 This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
 
 To create and configure a Windows 8 (Universal) native project, first follow the [Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) tutorial.
 
-### Calling an adapter procedure
+## Calling an adapter procedure
 The `WLResourceRequest` class handles resource requests to MobileFirst adapters or external resources.
 
 1. Define the URI of the resource:
@@ -57,7 +57,7 @@ Specify a `MyInvokeListener` class instance:
 </br>
 > See the user documentation to learn more about `WLResourceRequest` and other signatures for the `send` method, which are not covered in this tutorial.
 
-### Receiving a procedure response
+## Receiving a procedure response
 When the procedure invocation is completed, the framework calls one of the methods of the `MyInvokeListener` class.
 
 1. Specify that the `MyInvokeListener` class implements the `WLResponseListener` interface:
@@ -100,7 +100,7 @@ The `response` object contains the response data and you can use its methods and
     }
     ```
 
-### Sample application
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures) the MobileFirst project.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresWin8) the Native project.

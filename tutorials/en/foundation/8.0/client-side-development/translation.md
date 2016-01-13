@@ -2,7 +2,7 @@
 layout: tutorial
 title: Multilingual translation of Cordova applications
 relevantTo: [cordova]
-weight: 12
+weight: 4
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
@@ -126,7 +126,7 @@ The below steps explain the implementation of this tutorial's sample application
 
 ## Detecting the device locale and language
 It is possible to detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
-The globalization plug-in is auto-installed when adding a platform to the Cordova plug-in.
+The globalization plug-in is auto-installed when adding a platform to the Cordova application.
 
 Use the `navigator.globalization.getLocaleName` and `navigator.globalization.getPreferredLanguage` functions to detect the locale and language respectively.
 
@@ -155,6 +155,7 @@ navigator.globalization.getPreferredLanguage(
 );
 ```
 
+The result can then be seen in the device log, for example from Android's LogCat:  
 ![Get device localle and language](DeviceLocaleLangugae.png)
 
 ## Sample application

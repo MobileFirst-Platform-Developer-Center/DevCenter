@@ -3,7 +3,7 @@ layout: tutorial
 title: NTLM Authentication
 breadcrumb_title: NTLM authentication
 relevantTo: [android,ios,windows,cordova]
-weight: 10
+weight: 5
 ---
 # Overview
 The NTLM protocol is a challenge-response mechanism for authentication users in Windows operating systems.
@@ -17,11 +17,11 @@ Topics:
 
 ## Back-end connection settings (`connectAs="endUser/server"`)
 For MobileFirst Server to handle sessions when connecting to a back-end system, you can use either of the following 2 approaches:
-* **<code>connectAS="server"</code>**:  
+* **`connectAS="server"`**:  
 All sessions use the same connection context to the back end.
 This is the MobileFirst Server default behavior.
 ![ConnectAsServer](ConnectAsServer.jpg)
-* **<code>connectAS="endUser"</code>**:
+* **`connectAS="endUser"`**:
 Each session is authenticated separately and has a unique connection context against the back end.
 ![ConnectAsEndUser](ConnectAsEndUser.jpg)
 

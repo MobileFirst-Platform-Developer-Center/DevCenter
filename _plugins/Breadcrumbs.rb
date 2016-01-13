@@ -107,6 +107,13 @@ Jekyll::Hooks.register :pages, :pre_render do |page, payload|
           else
             element['use_dropdown'] = false
           end
+
+          if temp.data['use_dropdown_url_replace']
+            element['use_dropdown_url_replace'] = true
+          else
+            element['use_dropdown_url_replace'] = false
+          end
+
           breadcrumbs.push(element)
         end
       end

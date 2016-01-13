@@ -7,7 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters
 weight: 1
 ---
-### Overview
+## Overview
 By using IBM MobileFirst Platform Foundation HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
 
 You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary. The retrieved data can be in XML, HTML, JSON, or plain text format.
@@ -17,7 +17,7 @@ Optionally, it is also possible to use XSL to filter received records and fields
 
 **Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
 
-### The `XML` File
+## The XML File
 The XML file contains settings and metadata.  
 To edit the adapter XML file, you must:
 
@@ -28,36 +28,32 @@ To edit the adapter XML file, you must:
 Declare the required procedures below the connectivity element:
 
 ```xml
-<wl:adapter name="HTTPAdapter"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:wl="http://www.ibm.com/mfp/integration"
-  xmlns:http="http://www.ibm.com/mfp/integration/http">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mfp:adapter name="JavaScriptHTTP"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mfp="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
 
-  <displayName>HTTPAdapter</displayName>
-  <description>HTTPAdapter</description>
-  <connectivity>
-    <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
-      <protocol>http</protocol>
-      <domain>rss.cnn.com</domain>
-      <port>80</port>  
-      <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
-      <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
-      <maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
-      <!-- The following properties are used by the adapter's key manager for choosing specific certificate from the keystore.
-      <sslCertificateAlias></sslCertificateAlias>
-      <sslCertificatePassword></sslCertificatePassword>
-      -->       
-    </connectionPolicy>
-  </connectivity>
+	<displayName>JavaScriptHTTP</displayName>
+	<description>JavaScriptHTTP</description>
+	<connectivity>
+		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+			<protocol>http</protocol>
+			<domain>www.engadget.com</domain>
+			<port>80</port>
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
+		</connectionPolicy>
+	</connectivity>
 
-  <procedure name="getStories"/>
+	<procedure name="getFeeds"/>
+	<procedure name="getFeedsFiltered"/>
 
-  <procedure name="getStoriesFiltered"/>
-
-</wl:adapter>
+</mfp:adapter>
 ```
 
-### JavaScript implementation
+## JavaScript implementation
 A service URL is used for procedure invocations. Some parts of the URL are constant; for example, http://example.com/.  
 Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the MobileFirst procedure.
 
@@ -94,7 +90,7 @@ function getFeeds() {
 
 >See the topic about "WL.Server.invokeHttp" in the user documentation for a complete list of options.
 
-### XSL transformation filtering
+## XSL transformation filtering
 You can apply XSL transformation to the received data, for example to filter  the data.  
 To apply XSL transformation, specify the transformation options in the input parameters of the procedure invocation:
 
@@ -115,7 +111,7 @@ function getFeedsFiltered() {
 }
 ```
 
-### Creating a SOAP-based service request
+## Creating a SOAP-based service request
 You can use the `WL.Server.invokeHttp` method to create a **SOAP** envelope, which can be sent directly.
 
 To call a SOAP-based service in an HTTP adapter, you must encode the SOAP XML envelope within the request body.  
@@ -157,5 +153,5 @@ var input = {
   var result = WL.Server.invokeHttp(input);
 ```
 
-### Sample application
+## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.

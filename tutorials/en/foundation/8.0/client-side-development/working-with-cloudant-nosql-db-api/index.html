@@ -2,6 +2,7 @@
 layout: tutorial
 title: Working with Cloudant NoSQL DB API
 show_children: true
+weight: 6
 ---
 <div id="samplesAndPersonas">
 <div>
@@ -44,7 +45,7 @@ show_children: true
 <li><a href="#cloudant">Cloudant Data Layer Local Edition</a>: an advanced NoSQL database where application data can be stored</li>
 <li><a href="#tai">MobileFirst OAuth Trust Association Interceptor</a>: the front end for OAuth authentication of incoming requests to the MobileFirst Data Proxy</li>
 </ul>
-<p>The following diagram shows the initial data request from Cloudant Data Layer Local via the mobile device. The process starts after the device receives an <code>401 unauthorized</code> error message when requesting a protected resource. The diagram does not show the entire OAuth process, but you can find more information in the topic about the OAuth-based security model, in the user documentation.</p>
+<p>The following diagram shows the initial data request from Cloudant Data Layer Local via the mobile device. The process starts after the device receives an `401 unauthorized` error message when requesting a protected resource. The diagram does not show the entire OAuth process, but you can find more information in the topic about the OAuth-based security model, in the user documentation.</p>
 <p><a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2015/02/BlueListTopology.png"><img src="{{ site.baseurl }}/assets/backup/BlueListTopology.png" alt="BlueListTopology" width="845" height="949" class="alignnone size-full wp-image-8493" /></a></p>
 <ol>
 <li>A request to a protected resource is sent from the mobile device to MobileFirst Server. In this sample, a request is made through adapter-based authentication with a basic username and password.</li>
@@ -58,7 +59,7 @@ show_children: true
 <li>Cloudant Data Layer Local sends the requested information back to the MobileFirst Data Proxy Server.</li>
 <li>The requested information is sent from the MobileFirst Data Proxy Server to the device.</li>
 </ol>
-<p><strong>Note:</strong> After the device has proper OAuth validation, it does not need to go back to MobileFirst Server to receive a new token for each request. The TAI validates the token against MobileFirst Server and when the token becomes invalid, a <code>401 unauthorized</code> error message is sent back to the device.  When this occurs, the process starts over again and the device must re-authenticate with MobileFirst Server.</p>
+<p><strong>Note:</strong> After the device has proper OAuth validation, it does not need to go back to MobileFirst Server to receive a new token for each request. The TAI validates the token against MobileFirst Server and when the token becomes invalid, a `401 unauthorized` error message is sent back to the device.  When this occurs, the process starts over again and the device must re-authenticate with MobileFirst Server.</p>
 <h2 id="dataProxy">Setting up MobileFirst Data Proxy Server</h2>
 <p>If you have not installed and configured the MobileFirst Data Proxy, follow these instructions:</p>
 <p><a href="http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.installconfig.doc/install_config/t_installing_imf_datastore.html">Installing and configuring the MobileFirst Data Proxy</a></p>
@@ -76,7 +77,7 @@ show_children: true
 <h2 id="mfpServer">Setting up MobileFirst Server</h2>
 <p>The <a href="https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise ">bluelist on premises project</a> contains a MobileFirst Platform sample. The sample includes a MobileFirst project with Native API applications for both iOS and Android (iOSBlueList and AndroidBluelist). It also includes the adapter used for authentication (CloudantAuthenticationAdapter). Deploy these artifacts to your MobileFirst Server instance.</p>
 <p>You must set up authentication to the Cloudant Data Layer Local Edition by configuring access through the MobileFirst Data Proxy. For this purpose, it is required to integrate the OAuth capabilities that are provided by MobileFirst Platform.</p>
-<p>In the sample, the <code>CloudantAuthenticationAdapter</code> adapter has been created and configured to handle this authentication. The <code>authenticationConfig.xml</code> file has also been modified to create a corresponding realm and login module as described in <a href="http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_cloudantsec.html#oauth">configuring OAuth security</a>, in the user documentation.</p>
+<p>In the sample, the `CloudantAuthenticationAdapter` adapter has been created and configured to handle this authentication. The `authenticationConfig.xml` file has also been modified to create a corresponding realm and login module as described in <a href="http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_cloudantsec.html#oauth">configuring OAuth security</a>, in the user documentation.</p>
 <h2 id="cloudant">MobileFirst Platform Cloudant Data Layer Local</h2>
 <p>In order to use this sample, you must install the IBM MobileFirst Platform Cloudant Data Layer Local Edition. For more information about the installation process, see <a href="http://www-01.ibm.com/support/knowledgecenter/SSTPQH_1.0.0/com.ibm.cloudant.local.install.doc/topics/clinstall_cloudant_local_overview.html">IBM MobileFirst Platform Cloudant Data Layer Local Edition</a>, in the user documentation.</p>
 <p>To obtain and download this component, see the following documentation:<br />
@@ -86,5 +87,5 @@ show_children: true
 <p><a href="https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise">Bluelist-on-premises</a></p>
 <p>You can clone the samples from IBM DevOps Services by running the following command in a directory of your choice:</p>
 <p>[code]$ git clone https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise [/code]</p>
-<p>If you do not have <code>git</code> installed, follow the instructions on the <a href="http://git-scm.com/downloads">git website</a>.</p>
+<p>If you do not have `git` installed, follow the instructions on the <a href="http://git-scm.com/downloads">git website</a>.</p>
 <h2 id="clientSideApi">iOS and Android client-side API tutorials</h2>
