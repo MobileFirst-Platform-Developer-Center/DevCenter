@@ -283,7 +283,7 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 `@DELETE` (for `HTTP DELETE`) is used together with the resource ID in the `@Path`, to delete a user.
 
 ## Results
-Use the testing techniques described in the [Creating Java and JavaScript Adapters](../../#testing-adapters) tutorial.
+Use the testing techniques described in the [Testing and Debugging Adapters](../../testing-and-debugging-adapters) tutorial.
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.

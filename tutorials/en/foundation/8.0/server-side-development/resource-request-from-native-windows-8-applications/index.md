@@ -5,7 +5,7 @@ relevantTo: [windows8]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8
-weight: 7
+weight: 9
 ---
 
 ## Overview

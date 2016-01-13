@@ -5,7 +5,7 @@ relevantTo: [android]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid
-weight: 4
+weight: 6
 ---
 ## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API. The REST API works with all adapters and external resources.

@@ -5,7 +5,7 @@ relevantTo: [ios]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift
-weight: 6
+weight: 8
 ---
 
 ## Overview
