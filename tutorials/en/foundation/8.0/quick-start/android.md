@@ -51,10 +51,14 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ```java
     WLClient client = WLClient.createInstance(this);
-
-    URI adapterPath = new URI("/adapters/javaAdapter/users/world");
+    URI adapterPath = null;
+    try {
+        adapterPath = new URI("/adapters/javaAdapter/users/world");
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+    }
+    
     WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
-
     request.send(new WLResponseListener() {
         @Override
          public void onSuccess(WLResponse wlResponse) {
@@ -98,9 +102,10 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 5. Testing the application
 
-1. In Android Studio, click on the **Run App** button.
+1. In Android Studio, click on the **Run App** button.  
+The adapter response is then printed in Android Studio's **LogCat**.
 
-    ![Image of application that successfully called a resource from the MobileFirst Server ]()
+    ![Image of application that successfully called a resource from the MobileFirst Server ](success_response.png)
 
 ## Next steps
 

@@ -69,7 +69,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../server-side-development/resource-request-from-native-windows-10-applications/)
 * <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
-* <span style="color:red">TODO</span> [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
+* <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
 * [Debugging adapters](../server-side-development/debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)

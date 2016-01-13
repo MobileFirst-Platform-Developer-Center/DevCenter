@@ -76,13 +76,13 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ```swift
     let url = NSURL(string: "/adapters/javaAdapter/users/world")
     let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-
+    
     request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
         if(error != nil){
-            NSLog("error.description")
+            NSLog("Failure: " + error.description)
         }
-        else {
-            NSLog("response.responseText")
+        else if (response != nil){
+            NSLog("Adapter invocation response: " + response.responseText)
         }
     }
     ```
@@ -119,7 +119,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. In Xcode, press the **Play** button.
 
-    ![Image of application that successfully called a resource from the MobileFirst Server ]()
+    ![Image of application that successfully called a resource from the MobileFirst Server ](success_response.png)
 
 ## Next steps
 
