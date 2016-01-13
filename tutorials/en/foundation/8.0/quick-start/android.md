@@ -108,8 +108,9 @@ The adapter response is then printed in Android Studio's **LogCat**.
     ![Image of application that successfully called a resource from the MobileFirst Server ](success_response.png)
 
 ## Next steps
+Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Client-side development tutorials](../../client-side-development/)
 - Review the [Server-side development tutorials](../../server-side-development/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
+- Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)
