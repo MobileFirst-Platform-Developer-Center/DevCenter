@@ -8,7 +8,7 @@ weight: 2
 
 ## Overview
 
-In this section you will be learning how to handle push notifications in a Cordova application.
+In this section you will learn how to handle push notifications in a Cordova application.
 
 ### Agenda
 * [Notifications configuration](#notifications-configuration)
