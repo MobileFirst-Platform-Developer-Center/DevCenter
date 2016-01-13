@@ -62,11 +62,11 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
      
     [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-        if(error != nil){
-             NSLog(@"%@",error.description);
+        if (error != nil){
+             NSLog(@"Failure: %@",error.description);
         }
-        else{
-            NSLog(@"%@",response.responseText);
+        else if (response != nill){
+            NSLog(@"Success: %@",response.responseText);
         }
     }];
     ```
@@ -78,11 +78,11 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
     
     request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
-        if(error != nil){
+        if (error != nil){
             NSLog("Failure: " + error.description)
         }
         else if (response != nil){
-            NSLog("Adapter invocation response: " + response.responseText)
+            NSLog("Success: " + response.responseText)
         }
     }
     ```

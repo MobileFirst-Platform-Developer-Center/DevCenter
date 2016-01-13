@@ -62,12 +62,12 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     request.send(new WLResponseListener() {
         @Override
          public void onSuccess(WLResponse wlResponse) {
-            Log.i("MobileFirst Quick Start", "Adapter invocation response: " + wlResponse.getResponseText());
+            Log.i("MobileFirst Quick Start", "Success: " + wlResponse.getResponseText());
         }
 
         @Override
         public void onFailure(WLFailResponse wlFailResponse) {
-            Log.i("MobileFirst Quick Start", "Adapter invocation response: " + wlFailResponse.getErrorMsg());
+            Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
         }
     });
     ```
