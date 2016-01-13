@@ -19,7 +19,7 @@ This tutorial is a continuation of the JSONStore Overview tutorial.
 
 ## Basic Usage
 ### Open
-Use <code>openCollections</code> to open one or more JSONStore collections.
+Use `openCollections` to open one or more JSONStore collections.
 
 Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
 
@@ -41,7 +41,7 @@ try {
 ```
 
 ### Get
-Use <code>getCollectionByName</code> to create an accessor to the collection. You must call <code>openCollections</code> before you call <code>getCollectionByName</code>.
+Use `getCollectionByName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionByName`.
 ```java
 Context context = getContext();
 try {
@@ -53,10 +53,10 @@ try {
 }
 ```
 
-The variable <code>collection</code> can now be used to perform operations on the <code>people</code> collection such as <code>add</code>, <code>find</code>, and <code>replace</code>
+The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`
 
 ### Add
-Use <code>addData</code> to store data as documents inside a collection
+Use `addData` to store data as documents inside a collection
 ```java
 Context context = getContext();
 try {
@@ -74,7 +74,7 @@ try {
 ```
 
 ### Find
-Use <code>findDocuments</code> to locate a document inside a collection by using a query. Use <code>findAllDocuments</code> to retrieve all the documents inside a collection. Use <code>findDocumentById</code> to search by the document unique identifier.
+Use `findDocuments` to locate a document inside a collection by using a query. Use `findAllDocuments` to retrieve all the documents inside a collection. Use `findDocumentById` to search by the document unique identifier.
 
 ```java
 Context context = getContext();
@@ -97,7 +97,7 @@ try {
 ```
 
 ### Replace
-Use <code>replaceDocument</code> to modify documents inside a collection. The field that you use to perform the replacement is <code>_id,</code> the document unique identifier.
+Use `replaceDocument` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
 
 ```java
 Context context = getContext();
@@ -115,11 +115,11 @@ try {
 }
 ```
 
-This examples assumes that the document <code>{_id: 1, json: {name: 'yoel', age: 23} }</code> is in the collection.
+This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
 
 ### Remove
-Use <code>removeDocumentById</code> to delete a document from a collection.
-Documents are not erased from the collection until you call <code>markDocumentClean</code>. For more information, see the **MobileFirst Adapter Integration** section later in this tutorial.
+Use `removeDocumentById` to delete a document from a collection.
+Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **MobileFirst Adapter Integration** section later in this tutorial.
 
 ```java
 Context context = getContext();
@@ -137,7 +137,7 @@ try {
 ```
 
 ### Remove Collection
-Use <code>removeCollection</code> to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
 
 ```java
 Context context = getContext();
@@ -152,7 +152,7 @@ try {
 ```
 
 ### Destroy
-Use <code>destroy</code> to remove the following data:
+Use `destroy` to remove the following data:
 
 * All documents
 * All collections
@@ -171,14 +171,14 @@ try {
 
 ## Advanced Usage
 ### Security
-You can secure all the collections in a store by passing a <code>JSONStoreInitOptions</code> object with a password to the <code>openCollections</code> function. If no password is passed, the documents of all the collections in the store are not encrypted.
+You can secure all the collections in a store by passing a `JSONStoreInitOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
 
 Some security metadata is stored in the shared preferences (Android).  
 The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
 
-Use <code>closeAll</code> to lock access to all the collections until you call <code>openCollections</code> again. If you think of <code>openCollections</code> as a login function you can think of <code>closeAll</code> as the corresponding logout function.
+Use `closeAll` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAll` as the corresponding logout function.
 
-Use <code>changePassword</code> to change the password.
+Use `changePassword` to change the password.
 
 ```java
 Context context = getContext();
@@ -198,7 +198,7 @@ try {
 ```
 
 #### Multiple User Support
-You can create multiple stores that contain different collections in a single MobileFirst application. The <code>openCollections</code> function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
+You can create multiple stores that contain different collections in a single MobileFirst application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
 
 ```java
 Context context = getContext();
@@ -219,10 +219,10 @@ try {
 
 #### MobileFirst Adapter Integration
 This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
-You can achieve these goals by using functions such as <code>WLClient.invokeProcedure</code> or your own instance of an <code>HttpClient</code> if you need more flexibility.
+You can achieve these goals by using functions such as `WLClient.invokeProcedure` or your own instance of an `HttpClient` if you need more flexibility.
 
 #### Adapter Implementation
-Create a MobileFirst adapter and name it "**People**". Define it's procedures <code>addPerson</code>, <code>getPeople</code>, <code>pushPeople</code>, <code>removePerson</code>, and <code>replacePerson</code>.
+Create a MobileFirst adapter and name it "**People**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
 
 ```javascript
 function getPeople() {
@@ -254,7 +254,7 @@ function replacePerson(data) {
 ```
 
 #### Load data from MobileFirst Adapter
-To load data from a MobileFirst Adapter use <code>WLClient.invokeProcedure</code>.
+To load data from a MobileFirst Adapter use `WLClient.invokeProcedure`.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -279,7 +279,7 @@ client.invokeProcedure(invocationData, responseListener);
 ```
 
 #### Get Push Required (Dirty Documents)
-Calling <code>findAllDirtyDocuments</code> returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+Calling `findAllDirtyDocuments` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
 
 ```java
 Context  context = getContext();
@@ -293,10 +293,10 @@ try {
 }
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option <code>options.setMarkDirty(false)</code> to <code>add</code>, <code>replace</code>, and <code>remove</code>.
+To prevent JSONStore from marking the documents as "dirty", pass the option `options.setMarkDirty(false)` to `add`, `replace`, and `remove`.
 
 #### Push changes
-To push changes to a MobileFirst adapter, call the <code>findAllDirtyDocuments</code> to get a list of documents with modifications and then use <code>WLClient.invokeProcedure</code>. After the data is sent and a successful response is received make sure you call <code>markDocumentsClean</code>.
+To push changes to a MobileFirst adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLClient.invokeProcedure`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {

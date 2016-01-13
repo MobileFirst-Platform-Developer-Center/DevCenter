@@ -10,17 +10,18 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 #### Prerequisites:
 
 * Configured Xcode
-* *Optional* Stand-alone MobileFirst Server and MobileFirst CLI ([download]({{site.baseurl}}/downloads))
+* MobileFirst developer CLI ([download]({{site.baseurl}}/downloads))
+* *Optional* Stand-alone MobileFirst Server([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
 
 > If a remote server was already set-up, skip this step.
 
-1. From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>./start.sh</code>.
+1. From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
 
 ### 2. Creating an application
 
-In a browser window, open the MobileFirst Operations Console by loading the URL: <code>http://your-server-host:server-port/mfpconsole</code>. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
 1. Click on the "Create new" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
 
@@ -34,42 +35,61 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
  
 ### 3. Editing application logic
 
-1. Open the Xcode project project
+1. Open the Xcode project project.
 
-2. Select the **[project-root]/ViewController.m** file and paste the following code snippet in <code>viewDidLoad</code>:
+2. Select the **[project-root]/ViewController.m/swift** file and:
+
+* Add the following header: 
 
     In Objective-C:
 
     ```objc
-    WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
-        (token, error) -> Void in
-        
-        if (error != nil) {
-            NSLog(@"Access token not granted.");
-        } else {
-            NSLog(@"Access token granted.");
+    #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
+    ```
+    
+    In Swift: 
+    
+    ```swift
+    import IBMMobileFirstPlatformFoundation
+    ```
+    
+* Paste the following code snippet in the `viewDidLoad` function:
+ 
+    In Objective-C:
+
+    ```objc
+    NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/users/world"];
+    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+     
+    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+        if(error != nil){
+             NSLog(@"%@",error.description);
         }
-    }
+        else{
+            NSLog(@"%@",response.responseText);
+        }
+    }];
     ```
     
     In Swift:
     
     ```swift
-    WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { 
-        (token, error!)->Void
-        
-        if error != nil {
-            NSLog("Access token not granted.")
+    let url = NSURL(string: "/adapters/javaAdapter/users/world")
+    let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
+
+    request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+        if(error != nil){
+            NSLog("error.description")
         }
         else {
-            NSLog("Access token granted.")
+            NSLog("response.responseText")
         }
     }
     ```
 
 ### 4. Creating an adapter
 
-1. Click on the "Create new" button next to **Adapters** and download the **JavaScript-HTTP** adapter sample.
+1. Click on the "Create new" button next to **Adapters** and download the **Java** adapter sample.
 
     > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
 

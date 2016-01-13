@@ -64,7 +64,7 @@ The Application Authenticity out-of-the-box security check can be configured wit
 
 - `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
 
-#### To configure the <code>expirationSec</code> property:
+#### To configure the `expirationSec` property:
 
 1. Load the MobileFirst Operations Console and navigate to **[your application]** → **Security** → **Security Check Configurations** and click on **Create New**.
 

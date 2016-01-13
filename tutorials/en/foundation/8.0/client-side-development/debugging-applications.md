@@ -38,7 +38,7 @@ If your application consists of more than one platform - specify the platform to
 mfpdev app preview -p <platform>
 ```
 
-> Learn more about the MobileFirst CLI in the [Using CLI to manage MobileFirst artifacts](../using-cli-to-manage-mobilefirst-artifacts) tutorial.
+> Learn more about the MobileFirst developer CLI in the [Using MobileFirst developer CLI to manage MobileFirst artifacts](../using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Debugging with Ripple
 Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  
@@ -115,7 +115,7 @@ To make it accessible, add the following code line to the web application:
 <script src="http://a.b.c:8080/target/target-script-min.js"></script>
 ```
 
-Where <code>a.b.c</code> is the hostname or IP of the Weinre server.
+Where `a.b.c` is the hostname or IP of the Weinre server.
 
 #### Client
 Before you can start debugging, make sure that the application is open and loaded on the browser with this URL:

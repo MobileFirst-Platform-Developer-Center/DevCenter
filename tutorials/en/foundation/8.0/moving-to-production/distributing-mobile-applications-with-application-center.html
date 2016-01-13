@@ -52,9 +52,9 @@ relevantTo: [ios,android,windowsphone8,windows8,cordova]
 <blockquote><p>For more information, see the topic about configuring Secure Sockets Layer (SSL), in the user documentation.</p></blockquote>
 </li>
 <li>After Application Center is installed with IBM Installation Manager, open the console:
-<p><code>http://localhost:9080/appcenterconsole</code>
+<p>`http://localhost:9080/appcenterconsole`
 </li>
-<li>Log in with this user/password combination: <code>demo</code> / <code>demo</code></li>
+<li>Log in with this user/password combination: `demo` / `demo`</li>
 <li>At this point, you can configure user authentication. For example, you can connect to an LDAP repository.<br />
 <blockquote><p>For more information, see the topic about configuring the Application Center after installation, in the user documentation.</p></blockquote>
 </li>
@@ -65,8 +65,8 @@ The mobile client is the mobile application that you use to browse the catalog a
 <h2 id="clients">Preparing mobile clients</h2>
 <h3>For Android phones and tablets</h3>
 <p>The mobile client is delivered as a compiled application (APK).</p>
-<pre><code>    &lt;code&gt;<em>install_dir</em>/ApplicationCenter/installer/IBMApplicationCenter.apk&lt;/code&gt;
-</code></pre>
+<pre>`    &lt;code&gt;<em>install_dir</em>/ApplicationCenter/installer/IBMApplicationCenter.apk&lt;/code&gt;
+`</pre>
 <h3>For iPad and iPhone</h3>
 <ol>
 <li>
@@ -74,7 +74,7 @@ The mobile client is the mobile application that you use to browse the catalog a
     </li>
 <li>
         In MobileFirst Studio, open the IBMAppCenter Project at:</p>
-<p>        <code><em>install_dir</em>/ApplicationCenter/installer</code>
+<p>        `<em>install_dir</em>/ApplicationCenter/installer`
     </li>
 <li>
         Use <strong>Run As > Run on MobileFirst Development Server</strong> to build the project.
@@ -91,7 +91,7 @@ The mobile client is the mobile application that you use to browse the catalog a
     </li>
 <li>
         A BlackBerry project is provided in:</p>
-<p>        <code><em>install_dir</em>/ApplicationCenter/installer/IBMAppCenterBlackBerry6</code>
+<p>        `<em>install_dir</em>/ApplicationCenter/installer/IBMAppCenterBlackBerry6`
     </li>
 </ul>
 <h3>For Windows Phone 8</h3>
@@ -109,23 +109,23 @@ Application Center manages only company applications that are signed with the co
 </li>
 </ol>
 <p>The Windows Phone version of the mobile client is included at:</p>
-<p><code><em>install_dir</em>/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap</code></p>
-<p><strong>Important:</strong>  You <strong>cannot</strong> use the unsigned <code>.xap</code> file directly. Before you can install it on a device, you must first sign it with your company certificate, which you obtained from Symantec or Microsoft.</p>
+<p>`<em>install_dir</em>/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap`</p>
+<p><strong>Important:</strong>  You <strong>cannot</strong> use the unsigned `.xap` file directly. Before you can install it on a device, you must first sign it with your company certificate, which you obtained from Symantec or Microsoft.</p>
 <blockquote><p>For more information about how to sign Windows Phone mobile client applications, see the <a href="http://dev.windows.com/en-us/develop">Microsoft Developer website</a>.</p></blockquote>
 <h3>For Windows Store Apps for Windows 8 Pro</h3>
 <ul>
 <li>
-        The <code><em>install_dir</em>/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip</code> file contains the executable of the Application Center client. Distribute this file to the client computer and unzip it. It contains the executable program.
+        The `<em>install_dir</em>/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip` file contains the executable of the Application Center client. Distribute this file to the client computer and unzip it. It contains the executable program.
     </li>
 <li>
-        Installing a Windows Store app (a file of type <code>appx</code>) without using Microsoft Windows Store is called <em>sideloading</em> an app. To sideload an app, you must comply with the prerequisites in <a href="https://technet.microsoft.com/fr-fr/library/dn613842.aspx">Prepare to Sideload Apps</a>. The Windows 8.1 update simplifies the prerequisites for sideloading. For more information, see <a href="http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx">Sideloading Store Apps to Windows 8.1 Devices</a>.
+        Installing a Windows Store app (a file of type `appx`) without using Microsoft Windows Store is called <em>sideloading</em> an app. To sideload an app, you must comply with the prerequisites in <a href="https://technet.microsoft.com/fr-fr/library/dn613842.aspx">Prepare to Sideload Apps</a>. The Windows 8.1 update simplifies the prerequisites for sideloading. For more information, see <a href="http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx">Sideloading Store Apps to Windows 8.1 Devices</a>.
     </li>
 </ul>
 <h2 id="managingApps">Managing applications in the Application Center console</h2>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/overview1.png"><img src="{{ site.baseurl }}/assets/backup/overview1.png" alt="overview" width="600" height="479" class="alignright size-full wp-image-2112" /></a></p>
 <p>Use the Application Center console to manage applications in the catalog in the following ways:</p>
 <ul>
-    <code><br /></code></p>
+    `<br />`</p>
 <li>
         Add and remove applications
     </li>
@@ -158,11 +158,11 @@ Application Center manages only company applications that are signed with the co
 <li>
         Select an application file:</p>
 <ul>
-<li><code>.ipa</code>: iOS</li>
-<li><code>.apk</code>: Android</li>
-<li><code>.zip</code>: BlackBerry</li>
-<li><code>.xap</code>: Windows Phone 8</li>
-<li><code>.appx</code>: Windows Store</li>
+<li>`.ipa`: iOS</li>
+<li>`.apk`: Android</li>
+<li>`.zip`: BlackBerry</li>
+<li>`.xap`: Windows Phone 8</li>
+<li>`.appx`: Windows Store</li>
 </ul>
 </li>
 <li>
@@ -212,7 +212,7 @@ By default, an application can be installed by any authorized user of the store.
         Open the Application Center console.
     </li>
 <li>
-        Click the <strong>Add Application</strong> button to add the mobile client <code>.apk</code>, <code>.ipa</code>, <code>.zip</code>, or <code>.xap</code> file.
+        Click the <strong>Add Application</strong> button to add the mobile client `.apk`, `.ipa`, `.zip`, or `.xap` file.
     </li>
 <li>
         Click <strong>Next</strong> to open the Application Details page.
@@ -222,7 +222,7 @@ By default, an application can be installed by any authorized user of the store.
     </li>
 <li>
         Click <strong>Done</strong> to add the Application Center app to the catalog.</p>
-<p>The Application Center client for Windows 8 Pro does not need to be added to the catalog. This client is a regular Windows <code>.exe</code> program contained in the <code><em>install_dir</em>/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip</code> file. You can simply copy it to the client computer.
+<p>The Application Center client for Windows 8 Pro does not need to be added to the catalog. This client is a regular Windows `.exe` program contained in the `<em>install_dir</em>/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip` file. You can simply copy it to the client computer.
     </li>
 </ol>
 <h3>Windows Phone 8</h3>
@@ -231,7 +231,7 @@ By default, an application can be installed by any authorized user of the store.
 <p>Before you can install the mobile client, you must enroll the device with the company by installing the enrollment token:</p>
 <ol>
 <li>Open the web browser on the device.</li>
-<li>Enter the URL: <code>http://hostname:9080/appcenterconsole/installers.html</code></li>
+<li>Enter the URL: `http://hostname:9080/appcenterconsole/installers.html`</li>
 <li>Enter the user name and password.</li>
 <li>Click <strong>Tokens</strong> to open the list of enrollment tokens.</li>
 <li>Select the company in the list. The details of the company account are displayed.</li>
@@ -246,7 +246,7 @@ By default, an application can be installed by any authorized user of the store.
     </li>
 <li>
         Enter the URL:<br />
-        <code>http://hostname:9080/appcenterconsole/installers.html</code>
+        `http://hostname:9080/appcenterconsole/installers.html`
     </li>
 <li>Enter the user name and password.
 </li>
@@ -263,10 +263,10 @@ By default, an application can be installed by any authorized user of the store.
         Enter the host name or IP address of the server.
     </li>
 <li>
-        In the <strong>Server port</strong> field, enter the port number if it is not the default one (<code>9080</code>).
+        In the <strong>Server port</strong> field, enter the port number if it is not the default one (`9080`).
     </li>
 <li>
-        In the <strong>Application context</strong> field, enter the context: <code>applicationcenter</code>.
+        In the <strong>Application context</strong> field, enter the context: `applicationcenter`.
     </li>
 </ol>
 <p><a href="http://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/07/login.png"><img src="{{ site.baseurl }}/assets/backup/login.png" alt="login" width="300" height="399" class="alignnone size-full wp-image-2123" /></a></p>
@@ -304,20 +304,20 @@ By default, an application can be installed by any authorized user of the store.
     </li>
 </ol>
 <h2 id="cmdLineTools">Application Center command-line tools</h2>
-<p>The <code><em>install_dir</em>/ApplicationCenter/tools</code> directory contains all the files that are required to use the command-line tool or Ant tasks to manage the applications in the store:</p>
+<p>The `<em>install_dir</em>/ApplicationCenter/tools` directory contains all the files that are required to use the command-line tool or Ant tasks to manage the applications in the store:</p>
 <ul>
 <li>
-        <code>applicationcenterdeploytool.jar</code>: the upload command-line tool.
+        `applicationcenterdeploytool.jar`: the upload command-line tool.
     </li>
 <li>
-        <code>json4jar</code>: the library for the JSON format that is required by the upload tool.
+        `json4jar`: the library for the JSON format that is required by the upload tool.
     </li>
 <li>
-        <code>build.xml</code>: a sample Ant script that you can use to upload a single file or a sequence of files to Application Center.
+        `build.xml`: a sample Ant script that you can use to upload a single file or a sequence of files to Application Center.
     </li>
 <li>
-        <code>acdeploytool.sh</code> and <code>acdeploytool.bat</code>: Simple scripts to call Java with the <code>applicationcenterdeploytool.jar</code> file.
+        `acdeploytool.sh` and `acdeploytool.bat`: Simple scripts to call Java with the `applicationcenterdeploytool.jar` file.
     </li>
 </ul>
-<p>For example, to deploy an application <code>app.apk</code> file to the store in <code>localhost:9080/applicationcenter</code> with user ID <code>demo</code> and password <code>demo</code>, write:</p>
-<p><code>Java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u demo -p demo app.apk</code></p>
+<p>For example, to deploy an application `app.apk` file to the store in `localhost:9080/applicationcenter` with user ID `demo` and password `demo`, write:</p>
+<p>`Java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u demo -p demo app.apk`</p>

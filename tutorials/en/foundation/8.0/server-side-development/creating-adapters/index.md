@@ -7,7 +7,7 @@ weight: 2
 ---
 
 ## Overview
-Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst CLI or MobileFirst Operations Console. This tutorial demonstrates how to create either a Java or JavaScript adapter using the above methods.
+Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst developer CLI or MobileFirst Operations Console. This tutorial demonstrates how to create either a Java or JavaScript adapter using the above methods.
 
 The adapter project is based on the Maven Archetype "adapter-maven-archetype" which is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
@@ -20,11 +20,11 @@ The adapter project is based on the Maven Archetype "adapter-maven-archetype" wh
  * [Build and Deploy Adapters](#build-and-deploy-adapters)
  * [Dependencies](#dependencies)
  * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
-* [Creating Adapters Using MobileFirst CLI](#creating-adapters-using-mobilefirst-cli)
+* [Creating Adapters Using MobileFirst developer CLI](#creating-adapters-using-mobilefirst-developer-cli)
 * [Creating Adapters Using MobileFirst Operations Console](#creating-adapters-using-mobilefirst-operations-console)
 * [Testing Adapters](#testing-adapters)
  * [Using Postman](#using-postman)
- * [Using the MobileFirst CLI](#using-the-mobilefirst-cli)
+ * [Using the MobileFirst developer CLI](#using-the-mobilefirst-developer-cli)
 
 
 ## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
@@ -206,7 +206,7 @@ To group adapters you need to:
 
 4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
 
-## Creating Adapters Using MobileFirst CLI
+## Creating Adapters Using MobileFirst developer CLI
 
 
 
@@ -289,4 +289,4 @@ Now with any future request to adapter endpoints, add an HTTP header with the na
 
 ![Adapter request using Postman with the test token]()
 
-### Using the MobileFirst CLI
+### Using the MobileFirst developer CLI

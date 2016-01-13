@@ -11,12 +11,12 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
 ### [Quick Start](../quick-start)
 Get a feel of MobileFirst Platform Foundation.
 
-* <span style="color:red">IN PROGRESS </span>[Quick Start with Cordova](../quick-start/cordova/)
-* <span style="color:red">IN PROGRESS </span>[Quick Start with iOS](../quick-start/ios/)
-* <span style="color:red">IN PROGRESS </span>[Quick Start with Android](../quick-start/android/)
+* [Quick Start with Cordova](../quick-start/cordova/)
+* [Quick Start with iOS](../quick-start/ios/)
+* [Quick Start with Android](../quick-start/android/)
 * <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8 Universal](../quick-start/windows-8/)
 * <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 10 UWP](../quick-start/windows-10/)
-* <span style="color:red">IN PROGRESS </span>[Using the MobileFirst Platform Operations Console](../quick-start/console/)
+* [Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
@@ -25,7 +25,7 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
 * [Setting up the Windows 8 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
-* <span style="color:red">TODO </span>[Setting up MobileFirst Platform Foundation on IBM Containers Using Foundation Tile](../quick-start/foundation-tile/)
+* <span style="color:red">TODO </span>[Setting up MobileFirst Platform Foundation on IBM Containers Using Foundation Tile](../setting-up-your-development-environment/foundation-tile/)
 
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 Universal or Windows 10 UWP application.
@@ -40,7 +40,7 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation debugging applications and more...
 
 * [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
-* <span style="color:red">TODO </span>[Using CLI to manage MobileFirst artifacts](../client-side-development/using-cli-to-manage-mobilefirst-artifacts/)
+* <span style="color:red">TODO </span>[Using MobileFirst developer CLI to manage MobileFirst artifacts](../client-side-development/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
 * [JSONStore](../client-side-development/jsonstore/)
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
@@ -70,7 +70,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../server-side-development/resource-request-from-native-windows-10-applications/)
 * <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
 * <span style="color:red">TODO</span> [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
-* <span style="color:red">IN PROGRESS</span> [Debugging adapters](../server-side-development/debugging-adapters/)
+* [Debugging adapters](../server-side-development/debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications and adapters.

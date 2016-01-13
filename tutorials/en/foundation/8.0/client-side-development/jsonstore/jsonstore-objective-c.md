@@ -23,7 +23,7 @@ First, make sure the MobileFirst Native SDK is present by following the instruct
 
 Next, perform the following steps:
 
-1. Edit the existing <code>podfile</code>, located at the root of the Xcode project.
+1. Edit the existing `podfile`, located at the root of the Xcode project.
 Add to the file:
 
     ```xml
@@ -31,14 +31,14 @@ Add to the file:
     pod 'IBMMobileFirstPlatformFoundationJSONStore'
     ```
 
-2. From a **Command-line** window, navigate to the root of the Xcode project and run the command: <code>pod install</code> - note that this action may take a while.
+2. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install` - note that this action may take a while.
 
 The JSONStore feature should now be available to you in the Xcode project.
 
 ## Basic Usage
 ### Open
 
-Use <code>openCollections</code> to open one or more JSONStore collections.
+Use `openCollections` to open one or more JSONStore collections.
 
 Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.  
 If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
@@ -56,17 +56,17 @@ JSONStoreCollection* collection = [[JSONStoreCollection alloc] initWithName:@"pe
 ```
 
 ### Get
-Use <code>getCollectionWithName</code> to create an accessor to the collection. You must call <code>openCollections</code> before you call <code>getCollectionWithName</code>.
+Use `getCollectionWithName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionWithName`.
 
 ```objc
 NSString *collectionName = @"people";
 JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithName:collectionName];
 ```
 
-The variable <code>collection</code> can now be used to perform operations on the <code>people</code> collection such as <code>add</code>, <code>find</code>, and <code>replace</code>.
+The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`.
 
 ### Add
-Use <code>addData</code> to store data as documents inside a collection.
+Use `addData` to store data as documents inside a collection.
 
 ```objc
 NSError *error = nil;
@@ -79,7 +79,7 @@ NSDictionary *data = @{@"name" : @"yoel", @"age" : @23};
 ```
 
 ### Find
-Use <code>findWithQueryParts</code> to locate a document inside a collection by using a query. Use <code>findAllWithOptions</code> to retrieve all the documents inside a collection. Use <code>findWithIds</code> to search by the document unique identifier.
+Use `findWithQueryParts` to locate a document inside a collection by using a query. Use `findAllWithOptions` to retrieve all the documents inside a collection. Use `findWithIds` to search by the document unique identifier.
 
 ```objc
 NSError *error = nil;
@@ -100,7 +100,7 @@ NSArray *results = [collection findWithQueryParts:@[query] andOptions:options er
 ```
 
 ### Replace
-Use <code>replaceDocuments</code> to modify documents inside a collection. The field that you use to perform the replacement is <code>_id,</code> the document unique identifier.
+Use `replaceDocuments` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
 
 ```objc
 NSError *error = nil;
@@ -113,11 +113,11 @@ NSDictionary *replacement = @{@"_id": @1, @"json" : @{@"name" : @"chevy", @"age"
 [collection replaceDocuments:@[replacement] andMarkDirty:YES error:error];
 ```
 
-This examples assumes that the document <code>{_id: 1, json: {name: 'yoel', age: 23} }</code> is in the collection.
+This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
 
 ### Remove
-Use <code>removeWithIds</code> to delete a document from a collection.
-Documents are not erased from the collection until you call <code>markDocumentClean</code>. For more information, see the **MobileFirst Adapter Integration** section later in this tutorial.
+Use `removeWithIds` to delete a document from a collection.
+Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **MobileFirst Adapter Integration** section later in this tutorial.
 
 ```objc
 NSError *error = nil;
@@ -128,7 +128,7 @@ JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithN
 ```
 
 ### Remove Collection
-Use <code>removeCollectionWithError</code> to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+Use `removeCollectionWithError` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
 
 ```objc
 NSError *error = nil;
@@ -139,7 +139,7 @@ BOOL removeCollectionWorked = [collection removeCollectionWithError:error];
 ```
 
 ### Destroy
-Use <code>destroyDataAndReturnError</code> to remove the following data:
+Use `destroyDataAndReturnError` to remove the following data:
 
 * All documents
 * All collections
@@ -154,14 +154,14 @@ NSError *error = nil;
 
 ## Advanced Usage
 ### Security
-You can secure all the collections in a store by passing a <code>JSONStoreOpenOptions</code> object with a password to the <code>openCollections</code> function. If no password is passed, the documents of all the collections in the store are not encrypted.
+You can secure all the collections in a store by passing a `JSONStoreOpenOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
 
 Some security metadata is stored in the keychain (iOS).  
 The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
 
-Use <code>closeAllCollectionsAndReturnError</code> to lock access to all the collections until you call <code>openCollections</code> again. If you think of <code>openCollections</code> as a login function you can think of <code>closeAllCollectionsAndReturnError</code> as the corresponding logout function.
+Use `closeAllCollectionsAndReturnError` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAllCollectionsAndReturnError` as the corresponding logout function.
 
-Use <code>changeCurrentPassword</code> to change the password.
+Use `changeCurrentPassword` to change the password.
 
 ```objc
 NSError *error = nil;
@@ -176,7 +176,7 @@ JSONStoreOpenOptions *options = [JSONStoreOpenOptions new];
 ```
 
 ### Multiple User Support
-You can create multiple stores that contain different collections in a single MobileFirst application. The <code>openCollections</code> function can take an options object with a username. If no username is given, the default username is "jsonstore".
+You can create multiple stores that contain different collections in a single MobileFirst application. The `openCollections` function can take an options object with a username. If no username is given, the default username is "jsonstore".
 
 ```objc
 NSError *error = nil;
@@ -193,10 +193,10 @@ JSONStoreOpenOptions *options = [JSONStoreOpenOptions new];
 ### MobileFirst Adapter Integration
 This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
 
-You can achieve these goals by using functions such as <code>WLClient invokeProcedure</code> or your own instance of an <code>NSURLConnection</code> if you need more flexibility.
+You can achieve these goals by using functions such as `WLClient invokeProcedure` or your own instance of an `NSURLConnection` if you need more flexibility.
 
 #### Adapter Implementation
-Create a MobileFirst adapter and name it "**People**". Define it's procedures <code>addPerson</code>,  <code>getPeople</code>, <code>pushPeople</code>, <code>removePerson</code>, and <code>replacePerson</code>.
+Create a MobileFirst adapter and name it "**People**". Define it's procedures `addPerson`,  `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
 
 ```javascript
 function getPeople() {
@@ -228,7 +228,7 @@ function replacePerson(data) {
 ```
 
 #### Load data from MobileFirst Adapter
-To load data from a MobileFirst Adapter use <code>WLClient invokeProcedure</code>.
+To load data from a MobileFirst Adapter use `WLClient invokeProcedure`.
 
 ```objc
 // Start - LoadFromAdapter
@@ -256,7 +256,7 @@ WLClient *client = [[WLClient sharedInstance] init];
 ```
 
 #### Get Push Required (Dirty Documents)
-Calling <code>allDirtyAndReturnError</code> returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+Calling `allDirtyAndReturnError` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
 
 ```objc
 NSError* error = nil;
@@ -265,10 +265,10 @@ JSONStoreCollection *collection = [[JSONStore sharedInstance] getCollectionWithN
 NSArray *dirtyDocs = [collection allDirtyAndReturnError:error];
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option <code>andMarkDirty:NO</code> to <code>add</code>, <code>replace</code>, and <code>remove</code>.
+To prevent JSONStore from marking the documents as "dirty", pass the option `andMarkDirty:NO` to `add`, `replace`, and `remove`.
 
 #### Push changes
-To push changes to a MobileFirst adapter, call the <code>findAllDirtyDocuments</code> to get a list of documents with modifications and then use <code>WLClient invokeProcedure</code>. After the data is sent and a successful response is received make sure you call <code>markDocumentsClean</code>.
+To push changes to a MobileFirst adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLClient invokeProcedure`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
 
 ```objc
 // Start - PushToAdapter
