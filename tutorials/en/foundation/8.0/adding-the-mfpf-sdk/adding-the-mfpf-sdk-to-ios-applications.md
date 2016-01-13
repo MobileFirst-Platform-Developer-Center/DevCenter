@@ -56,7 +56,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     
     These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
     
-    > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
+    > <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst developer CLI to manage MobileFirst artifacts](../../client-side-development/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
         
 5. The MobileFirst Native SDK is provided via CocoaPods. If [CocoaPods](http://guides.cocoapods.org) is not installed in your development environment, install it as follows:    
     - Open a **Command-line** window and navigate to the root of the Xcode project
@@ -65,22 +65,26 @@ If using a locally installed server: From a **Command-line** window, navigate to
     **Note:** This command may take several minutes to complete.<br><br>
     
 6. Run the command: `pod init`. This creates a `Podfile`.
-7. Using your favorite code editor, open the `Podfile`.
-8. Comment out or remove the contents of the file.
-9. Add the following lines and save the changes:
+    - Using your favorite code editor, open the `Podfile`.
+    - Comment out or delete the contents of the file.
+    - Add the following lines and save the changes:
 
-    ```xml
-    // remove source before going live
-    source 'https://hub.jazz.net/git/oper2000/imf-client-sdk-specs-inhouse.git' 
-    use_frameworks! 
-    pod 'IBMMobileFirstPlatformFoundation'
-    ```
-10. Run the command: `pod install`. This command adds the MobileFirst Native SDK, generates the Pod project, and integrates it with the Xcode project.  
+        ```xml
+        // remove source line below before going live with the tutorials
+        source 'https://hub.jazz.net/git/oper2000/imf-client-sdk-specs-inhouse.git' 
+        use_frameworks! 
+        pod 'IBMMobileFirstPlatformFoundation'
+        ```
+7. Run the command: `pod install`. This command adds the MobileFirst Native SDK files, generates a Pod project, and integrates it with the Xcode project.  
     **Note:** This command may take several minutes to complete.
     
     > <b>Important</b>: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do <b>not</b> use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
-11. Open the Xcode project by double-clicking the <b>.xcworkspace</b> file.
-12. In Xcode, right-click the project and select <b>Add Files To [ProjectName]</b> and select the `mfpclient.plist` file.
+8. Open the Xcode project by double-clicking the **.xcworkspace** file.
+9. In Xcode, right-click the project entry and select **Add Files To [ProjectName]**, find and select the **mfpclient.plist** file, located at the  **[ProjectName]/Pods/IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation/Resources** folder.
+
+The MobileFirst Native SDK is now integrated with the Xcode project.
+
+### Referencing the SDK
 
 Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Platform Foundation framework:
 
@@ -96,6 +100,7 @@ Swift:
 import IBMMobileFirstPlatformFoundation
 ```
 
+<br>
 #### Note about iOS 9:
 > If you are developing for iOS9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's `info.plist` to be able to test locally without security restrictions.
 
