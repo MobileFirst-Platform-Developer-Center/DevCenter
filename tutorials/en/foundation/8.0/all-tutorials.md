@@ -94,7 +94,7 @@ Add various layers of protection to your applications and adapters.
 * <span style="color:red">TODO </span>[WebSphere LTPA-based authentication](../authentication-and-security/websphere-ltpa-based-authentication/)
 * <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
 * <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
-* <span style="color:red">IN PROGRESS </span>[Application Authenticity](../authentication-and-security/application-authenticity/)
+* [Application Authenticity](../authentication-and-security/application-authenticity/)
 
 ### [Notifications](../notifications/)
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.  
