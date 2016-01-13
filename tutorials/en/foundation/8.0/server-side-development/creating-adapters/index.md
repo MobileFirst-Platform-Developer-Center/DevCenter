@@ -7,7 +7,8 @@ weight: 2
 ---
 
 ## Overview
-Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst developer CLI or MobileFirst Operations Console. This tutorial demonstrates how to create either a Java or JavaScript adapter using the above methods.
+Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst developer CLI or MobileFirst Operations Console. You can edit the adapter code using your IDE of choice.  
+This tutorial demonstrates how to create either a Java or JavaScript adapter using the above methods.
 
 The adapter project is based on the Maven Archetype "adapter-maven-archetype" which is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
@@ -20,7 +21,7 @@ The adapter project is based on the Maven Archetype "adapter-maven-archetype" wh
  * [Build and Deploy Adapters](#build-and-deploy-adapters)
  * [Dependencies](#dependencies)
  * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
-* [Creating Adapters Using MobileFirst developer CLI](#creating-adapters-using-mobilefirst-developer-cli)
+* [Creating Adapters Using MobileFirst Developer CLI](#creating-adapters-using-mobilefirst-developer-cli)
 * [Creating Adapters Using MobileFirst Operations Console](#creating-adapters-using-mobilefirst-operations-console)
 * [Testing Adapters](#testing-adapters)
  * [Using Postman](#using-postman)
@@ -206,7 +207,7 @@ To group adapters you need to:
 
 4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
 
-## Creating Adapters Using MobileFirst developer CLI
+## Creating Adapters Using MobileFirst Developer CLI
 
 
 
@@ -217,11 +218,16 @@ To group adapters you need to:
 
 ## Creating Adapters Using MobileFirst Operations Console
 
-* **Using the MobileFirst Operations Console:**
-  1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
-  2. Drag and drop the `.adapter` file from the target folder into the Console.
+1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
+2. Click on the "Create new" button next to Adapters. You have two options to create an adapter:
+ * Using Maven or MobileFirst developer CLI as previously explained above.
+ * Download a template adapter project (step 2).
+3. Build the adapter Using Maven or MobileFirst developer CLI.
+4. Choose one of the following ways to upload the generated **.adapter** file which can be found in the target folder of the adapter project:
+ * Click on the Deploy Adapter button (step 5).
+ * Drag and drop the file into the Create new adapter screen.
 
-
+ ![Creating adapter using console](Create_adapter_console.png)
 
 ## Testing Adapters
 MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.
