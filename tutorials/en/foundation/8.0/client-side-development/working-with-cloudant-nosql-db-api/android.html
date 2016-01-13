@@ -55,7 +55,7 @@ author:
 DataManager manager = DataManager.initialize(context, new URL(CLOUDANT_PROXY_URL));<br />
 [/code]<br />
 The value for <span class="inline-code">cloudantProxyUrl</span> is the URL of the MobileFirst Data Proxy which was configured during installation. The URL includes the IP address, host, and context root that you have defined.<br />
-For example: <code>http://localhost:9080/imf-data-proxy</code>.<br />
+For example: `http://localhost:9080/imf-data-proxy`.<br />
 In the native Android sample that comes with this tutorial, the value for the <span class="inline-code">cloudantProxyUrl</span> is set in the <span class="inline-code">bluelist.properties</span> file.</p>
 <h2 id="creatingLocal">Creating local data stores</h2>
 <p>You can create a Store object to allow your application to access a local database, which can be used even when the application is offline.</p>
@@ -116,17 +116,17 @@ Task&lt;Boolean&gt; permissionsTask = manager.setCurrentUserPermissions(DataMana
 [/code]<br />
 <strong>Note:</strong> In the sample, the user is authenticated via OAuth. OAuth has been configured through adapter-based authentication. You can find further instructions on setting up access with OAuth capabilities and the MobileFirst Data Proxy in the topic about configuring OAuth security, in the user documentation.</p>
 <h2 id="modeling">Modeling data for Android applications</h2>
-<p>In Android applications, you can use the <span class="inline-code">DataObjectMapper</span> class to map native objects to JSON document format. When you create a data store with the <code>DataManager</code> API, you can create a new <span class="inline-code">DataObjectMapper</span> to set on the <span class="inline-code">Store</span> object.<br />
+<p>In Android applications, you can use the <span class="inline-code">DataObjectMapper</span> class to map native objects to JSON document format. When you create a data store with the `DataManager` API, you can create a new <span class="inline-code">DataObjectMapper</span> to set on the <span class="inline-code">Store</span> object.<br />
 [code lang="java"]<br />
 localStore.setMapper(new DataObjectMapper());<br />
 [/code]<br />
-In the sample, a custom <code>TodoItem</code> class allows you to store custom data as objects in our application. When creating a custom <span class="inline-code">DataObjectMapper</span> class, make sure that it meets the following requirements:</p>
+In the sample, a custom `TodoItem` class allows you to store custom data as objects in our application. When creating a custom <span class="inline-code">DataObjectMapper</span> class, make sure that it meets the following requirements:</p>
 <ul>
 <li>Conform to the IMFDataObject protocol.</li>
 <li>Have the IMFDataObject protocol metadata property set on the class interface.</li>
-<li>Implements <code>DataObject</code>.</li>
+<li>Implements `DataObject`.</li>
 </ul>
-<h3>TodoItem implementation (<code>TodoItem.java</code>)</h3>
+<h3>TodoItem implementation (`TodoItem.java`)</h3>
 <p>[code lang="java"]<br />
 public class TodoItem implements DataObject {</p>
 <p>    private Metadata metadata = null;<br />
@@ -183,7 +183,7 @@ saveTask.continueWith(new Continuation&lt;Object, Void&gt;() {<br />
     }<br />
 });<br />
 [/code]<br />
-<strong>Note:</strong> When saving an object, it is good practice to use the new object that is returned by the <code>task.getResult()</code> method, to avoid errors caused by stale objects and to maintain a consistent experience.</p>
+<strong>Note:</strong> When saving an object, it is good practice to use the new object that is returned by the `task.getResult()` method, to avoid errors caused by stale objects and to maintain a consistent experience.</p>
 <h3>Deleting data</h3>
 <p>To delete an object in a data store, pass the object to the <span class="inline-code">LocalStore.delete(<em>objecttodelete</em>)</span> method.</p>
 <p>[code lang="java"]<br />
@@ -260,22 +260,22 @@ pushTask.continueWith(new Continuation&lt;PushReplication, Object&gt;() {<br />
 <h2 id="running">Running the Android sample</h2>
 <p>Make sure that you have properly configured and started the following instances:</p>
 <ul>
-<li>MobileFirst Server with <code>CloudantAuthenticationAdapter</code> and <code>AndroidBlueList</code> Native API deployed</li>
+<li>MobileFirst Server with `CloudantAuthenticationAdapter` and `AndroidBlueList` Native API deployed</li>
 <li>Cloudant Data Local Layer Edition</li>
 <li>MobileFirst Data Proxy Server configured against MobileFirst Server and the Cloudant Data Layer Local Edition</li>
 </ul>
 <h2 id="sdks">Obtaining and configuring the required SDKs</h2>
 <p>Make sure that you have correctly installed and set up Gradle. If you have not done so, complete the following:</p>
 <ol>
-<li>Download the current Gradle distribution from <code>www.Gradle.org</code>.</li>
-<li>When importing the sample, select a <code>build.gradle</code> file.<br />
-Android Studio then prompts you for a <code>GRADLE_HOME</code> variable.
+<li>Download the current Gradle distribution from `www.Gradle.org`.</li>
+<li>When importing the sample, select a `build.gradle` file.<br />
+Android Studio then prompts you for a `GRADLE_HOME` variable.
 </li>
 <li>Point to the Gradle distribution that you just downloaded.</li>
 <li>After the project is open, check and update the following items:
 <ul>
-<li>In the <code>bluelist.properties</code> file, set the <span class="inline-code">cloudantProxyUrl</span> to your MobileFirst Data Proxy Server location.</li>
-<li>In the <code>wlclient.properties</code> file, make sure to check and update the values to match the MobileFirst Server instance that you have deployed.</li>
+<li>In the `bluelist.properties` file, set the <span class="inline-code">cloudantProxyUrl</span> to your MobileFirst Data Proxy Server location.</li>
+<li>In the `wlclient.properties` file, make sure to check and update the values to match the MobileFirst Server instance that you have deployed.</li>
 </ul>
 </li>
 </ol>
@@ -343,13 +343,13 @@ public void handleChallenge(WLResponse wlResponse) {<br />
     submitAdapterAuthentication(invocationData, options);<br />
 }<br />
 [/code]</p>
-<p>After authentication, the database is configured in the <span class="inline-code">DataStoreManager</span> <code>init</code> method. This database configuration consists of the following steps:</p>
+<p>After authentication, the database is configured in the <span class="inline-code">DataStoreManager</span> `init` method. This database configuration consists of the following steps:</p>
 <ul>
 <li>Initializing the SDK</li>
 <li>Creating the local and remote databases</li>
 <li>Setting permissions for the user that was created</li>
 <li>Setting the <span class="inline-code">replicatorFactory</span>, <span class="inline-code">pullReplication</span>, and <span class="inline-code">pushReplication</span></li>
-<li>Registering the <code>TodoItem</code> class and data type with the <span class="inline-code">DataObjectMapper</span></li>
+<li>Registering the `TodoItem` class and data type with the <span class="inline-code">DataObjectMapper</span></li>
 </ul>
 <p><strong>Note:</strong> For simplicity, the database name that is created is currently set to the variable <span class="inline-code">DBName</span> in the <span class="inline-code">DataStoreManager</span>, but you can change this name in the <span class="inline-code">bluelist.properties</span> file.</p>
 <p>The <span class="inline-code">MainActivity</span> class provides functions for creating, updating, deleting, and listing items, and functions for push and pull replication.</p>

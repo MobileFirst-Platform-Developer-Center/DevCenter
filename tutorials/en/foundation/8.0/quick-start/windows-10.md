@@ -10,17 +10,18 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 #### Prerequisites:
 
 * Configured Visual Studio 2015
+* MobileFirst developer CLI ([download]({{site.baseurl}}/downloads))
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
 
 > If a remote server was already set-up, skip this step.
 
-From a **Command-line** window, navigate to the server's **scripts** folder and run the command: <code>start.bat</code>.
+From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `start.bat`.
 
 ### 2. Creating an application
 
-In a browser window, open the MobileFirst Operations Console by loading the URL: <code>http://your-server-host:server-port/mfpconsole</code>. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
 1. Click on the "Create new" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
 
@@ -44,7 +45,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 4. Creating an adapter
 
-1. Click on the "Create new" button next to **Adapters** and download the **JavaScript-HTTP** adapter sample.
+1. Click on the "Create new" button next to **Adapters** and download the **Java** adapter sample.
 
     > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
 
@@ -77,8 +78,9 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ![Image of application that successfully called a resource from the MobileFirst Server ]()
 
 ## Next steps
+Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Client-side development tutorials](../../client-side-development/)
 - Review the [Server-side development tutorials](../../server-side-development/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
+- Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

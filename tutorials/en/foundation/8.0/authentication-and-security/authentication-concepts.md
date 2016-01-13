@@ -7,7 +7,7 @@ weight: 1
 ---
 
 ## Overview
-The MobileFirst Platform Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token that encapsulates the authorization header that is granted to the client.  
+The MobileFirst Platform Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token that encapsulates the granted permissions to the client.  
 
 In that context, IBM MobileFirst Platform Server serves as an **authorization server** and is able to **generate access tokens**. The client can then use these tokens to access resources on a resource server, which can be either the MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows to enforce security on resources that are running outside MobileFirst Server.
 
@@ -15,7 +15,7 @@ In that context, IBM MobileFirst Platform Server serves as an **authorization se
 
 * [Authorization flow](#authorization-flow)
 * [Authorization entities](#authEntities)
-* Protecting resources
+* [Protecting resources](#protecting-resources)
 * Configuring Authentication from the MobileFirst Console
 * Further reading
 
@@ -26,14 +26,15 @@ The authorization flow has two phases:
 2. The client uses the token to access a protected resource.
 
 ### Acquiring a token
-In this phase, the client undergoes `security checks` in order to receive an access token.  
-These `security checks` use **authorization entities**, which are described in [the next section](#authEntities).  
+In this phase, the client undergoes **security checks** in order to receive an access token.  
+These security checks use **authorization entities**, which are described in [the next section](#authEntities).  
+
 ![Obtain Token](auth-flow-1.jpg)
 
 1. Client application sends a request to use a protected resource.
-2. Client application undergoes `security checks` according to the requested resource `scope`.
-3. After receiving a `grant code` the client application requests a token.
-3. Client application receives the token.
+2. Client application undergoes security checks according to the requested resource scope.
+3. The client application requests a token from the Authorization Server.
+4. Client application receives the token.
 
 ### Using a token to access a protected resource
 It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
@@ -50,7 +51,7 @@ In this case the Introspection Endpoint will keep MFP Server and DataPower in sy
 ## Authorization entities
 - You can protect resources such as adapters from unauthorized access by specifying a **scope** that contains zero or more **scope elements**.
 
-- A **SecurityCheck** defines the process to be used to authenticate users. It is often associated with a **SecurityCheckConfiguration** that defines properties to be used by the SecurityCheck. SecurityChecks are instantiated by **Security Adapters**. The same SecurityCheck can be used to protect several resources.
+- A **SecurityCheck** defines the process to be used to authenticate users. It is often associated with a **SecurityCheckConfiguration** that defines properties to be used by the security check. SecurityChecks are instantiated by **Security Adapters**. The same SecurityCheck can be used to protect several resources.
 
 - The client application needs to implement a **challenge handler** to handle challenges sent by the SecurityCheck.
 
@@ -60,7 +61,7 @@ A SecurityCheck is an object responsible for obtaining credentials from a client
 #### securityCheckDefinition
 Security checks are defined inside adapters. Any adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**. However it is recommended to define the SecurityCheck in a separate adapter.
 
-In your **adapter.xml** file add an XML element called `securityCheckDefinition`. For example:
+In your **adapter XML** file add an XML element called `securityCheckDefinition`. For example:
 
 ```xml
 <securityCheckDefinition name="sample" class="com.ibm.mfp.sampleSecurityCheck">
@@ -139,12 +140,15 @@ Also available are these out-of-the-box security checks:
 - [LTPA](../websphere-ltpa-based-authentication/)
 
 ### Scope
-A **scope** is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
+A `scope` is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
 
 ### Scope Element
-By default, the scope elements you write in your *scope* are matched to a **SecurityCheck** with the same name.
+Scope element is a keyword that indicates which security checks are being used to protect the resource.
 
-Optionally, at the application level, you can also map a **scope element** to a different SecurityCheck. Specifically, you can map it to a list of zero or more SecurityChecks. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
+### Scope Mapping
+By default, the scope elements you write in your *scope* are matched to a `SecurityCheck` with the same name.
+
+Optionally, at the application level, you can also map a **scope element** to a different `SecurityCheck`. Specifically, you can map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
 
 ## Protecting resources
 

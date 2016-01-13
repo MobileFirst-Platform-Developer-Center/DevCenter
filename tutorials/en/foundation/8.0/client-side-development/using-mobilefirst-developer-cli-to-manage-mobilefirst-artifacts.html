@@ -31,8 +31,8 @@ The CLI Installer adds the installation folder to your <strong>path</strong> env
 <h2 id="creatingProjects">Creating MobileFirst back-end projects</h2>
 <p>Back-end projects are used for managing hybrid applications, adapters, and other server-side entities. Create a MobileFirst back-end project by using either of these commands:</p>
 <ul>
-<li><code>mobilefirst create &lt;project-name&gt;</code></li>
-<li><code>mfp create &lt;project-name&gt;</code></li>
+<li>`mobilefirst create &lt;project-name&gt;`</li>
+<li>`mfp create &lt;project-name&gt;`</li>
 </ul>
 <p>[code lang="xml"]<br />
 ~/projects $ mfp create MyProject<br />
@@ -40,46 +40,46 @@ A MobileFirst project was successfully created at /Users/cli-user/projects/MyPro
 [/code]</p>
 <h2 id="managingServers">Managing MobileFirst Server instances</h2>
 <p>The instance of the Liberty development server is created in the default user directory. For example:<br />
-<code>/Users/cli-user/.ibm/mobilefirst/7.1.0.00-build-number/server</code>.</p>
+`/Users/cli-user/.ibm/mobilefirst/7.1.0.00-build-number/server`.</p>
 <h3>Server commands</h3>
 <h4>Managing a running server</h4>
 <ul>
-<li><code>mfp start</code> - Starts the server.</li>
-<li><code>mfp stop</code> - Stops the server.</li>
-<li><code>mfp status</code> - Gives the status of the server, whether it is running or not, its process ID, and the used port number.</li>
-<li><code>mfp config</code> - Prompts you to select which configuration setting to change. Available options: default browser, preview type (simple or Mobile Browser Simulator), and more.</li>
-<li><code>mfp preview [&lt;environments&gt; --noshell|-n]</code>  - Displays a preview of the current application or environment in your default browser.</li>
-<li><code>mfp restart</code> - Restarts the local test server.</li>
-<li><code>mfp console</code> - Opens the MobileFirst Operations Console in your default web browser.</li>
+<li>`mfp start` - Starts the server.</li>
+<li>`mfp stop` - Stops the server.</li>
+<li>`mfp status` - Gives the status of the server, whether it is running or not, its process ID, and the used port number.</li>
+<li>`mfp config` - Prompts you to select which configuration setting to change. Available options: default browser, preview type (simple or Mobile Browser Simulator), and more.</li>
+<li>`mfp preview [&lt;environments&gt; --noshell|-n]`  - Displays a preview of the current application or environment in your default browser.</li>
+<li>`mfp restart` - Restarts the local test server.</li>
+<li>`mfp console` - Opens the MobileFirst Operations Console in your default web browser.</li>
 </ul>
 <h4>Managing server definitions</h4>
 <ul>
-<li><code>mfp server add</code> - Adds a new server definition.</li>
-<li><code>mfp server edit</code> - Edits an existing new server definition.</li>
-<li><code>mfp server info</code> - Returns information about the existing server or about all servers.</li>
-<li><code>mfp server remove</code> - Removes a server definition</li>
+<li>`mfp server add` - Adds a new server definition.</li>
+<li>`mfp server edit` - Edits an existing new server definition.</li>
+<li>`mfp server info` - Returns information about the existing server or about all servers.</li>
+<li>`mfp server remove` - Removes a server definition</li>
 </ul>
 <h4>Managing client and server artifacts</h4>
 <ul>
-<li><code>mfp push</code> - A superset of commands allowing for different actions, depending on the current location
+<li>`mfp push` - A superset of commands allowing for different actions, depending on the current location
 <ul>
-<li>If called at the root of a MobileFirst back-end project or a Cordova project, the command registers client and server artifacts (<code>.wlapps</code>, <code>.adapters</code> and <code>.war</code> files) in the server.</li>
+<li>If called at the root of a MobileFirst back-end project or a Cordova project, the command registers client and server artifacts (`.wlapps`, `.adapters` and `.war` files) in the server.</li>
 <li>If called at the root of a native project, the command generates required configuration files and registers the application in the server.</li>
-<li>Additional <code>push</code> commands are also available: <code>--nosend</code>, <code>--password</code>, <code>--minify</code>, and <code>--concatenate</code>. Use <code>mfp help push</code> to learn more.</li>
+<li>Additional `push` commands are also available: `--nosend`, `--password`, `--minify`, and `--concatenate`. Use `mfp help push` to learn more.</li>
 </ul>
 </li>
 </ul>
 <h2 id="hybridApps">Creating hybrid applications and environments</h2>
 <h3>Hybrid applications</h3>
-<p>Before creating the hybrid application, first navigate to the MobileFirst project directory: <code>cd MyProject</code>.<br />
-To create a hybrid application, use the <code>mfp add hybrid &lt;name&gt;</code> command. The generated hybrid application is placed inside the <strong>apps</strong> folder of the current project.</p>
+<p>Before creating the hybrid application, first navigate to the MobileFirst project directory: `cd MyProject`.<br />
+To create a hybrid application, use the `mfp add hybrid &lt;name&gt;` command. The generated hybrid application is placed inside the <strong>apps</strong> folder of the current project.</p>
 <p>[code lang="xml"]<br />
 ~/projects $ cd MyProject<br />
 ~/projects/MyProject $ mfp add hybrid MyHybridApp<br />
 A new hybrid app was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp<br />
 [/code]</p>
 <h3>Environments</h3>
-<p>Use the <code>mfp add environment</code> command to add an environment to the application. You can use this command in the project directory if the project contains only one app. Otherwise, select which app to add the environment to, or call the command from inside the directory of the hybrid app to which the environment should be added.</p>
+<p>Use the `mfp add environment` command to add an environment to the application. You can use this command in the project directory if the project contains only one app. Otherwise, select which app to add the environment to, or call the command from inside the directory of the hybrid app to which the environment should be added.</p>
 <p>[code lang="xml"]<br />
 ~/projects/MyProject $ mfp add environment<br />
 [?] To which hybrid app would you want to add environments? (Use the arrow keys.)<br />
@@ -106,7 +106,7 @@ A new android environment was added at /Users/cli-user/projects/MyProject/apps/M
 A new iphone environment was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp/iphone<br />
 [/code]</p>
 <h3>Application skins</h3>
-<p>To add an application skin from the CLI, use the <code>mfp add skin</code> command.</p>
+<p>To add an application skin from the CLI, use the `mfp add skin` command.</p>
 <p><strong>Interactive Mode</strong> prompts for the platform to target and name. The current working directory must be under an existing hybrid application, and at least one environment must already be added to this app.</p>
 <p>[code lang="xml"]<br />
 ~/projects/MyProject/apps/MyHybridApp $ mfp add skin<br />
@@ -119,7 +119,7 @@ A new android skin was added at /Users/cli-user/projects/MyProject/apps/MyHybrid
 <p>To add a skin in <strong>Direct Mode</strong>:<br />
 [code lang="xml"]mfp add skin [--environment|-e android|blackberry|blackberry10|iphone|ipad &amp;lt;name&amp;gt;][/code]</p>
 <h3>Adding optional features</h3>
-<p>To add optional features to a hybrid application from the CLI, use the <code>mfp add feature</code> command.</p>
+<p>To add optional features to a hybrid application from the CLI, use the `mfp add feature` command.</p>
 <p><strong>Interactive mode</strong> prompts for the features to add:<br />
 [code lang="xml"]<br />
 ~/projects/MyProject/apps/MyHybridApp $ mfp add feature<br />
@@ -135,7 +135,7 @@ A new android skin was added at /Users/cli-user/projects/MyProject/apps/MyHybrid
 ~/projects/MyProject/apps/MyHybridApp $ mfp add feature jsonstore<br />
 A new jsonstore Feature was added at /Users/cli-user/projects/MyProject/apps/MyHybridApp<br />
 [/code]</p>
-<p>To remove optional features from a hybrid application by using the CLI, use the <code>mfp remove feature</code> command.<br />
+<p>To remove optional features from a hybrid application by using the CLI, use the `mfp remove feature` command.<br />
 <strong>Interactive mode</strong> prompts for the features to remove:</p>
 <p>[code lang="xml"]<br />
 ~/projects/MyProject/apps/MyHybridApp $ mfp remove feature<br />
@@ -147,7 +147,7 @@ A jsonstore Feature was removed from /Users/cli-user/projects/MyProject/apps/MyH
 [code lang="xml"]mfp remove feature [fips|jsonstore|tealeaf][/code]</p>
 <h3>Concatenation and minification</h3>
 <p>Applicable only for hybrid applications.</p>
-<p>Concatenation is the process of merging web resources such as <code>.js</code> and <code>.css</code> files reducing the amount of files in the application, while minification is process of <em>obfuscating</em> code, making it less readable and more secure.</p>
+<p>Concatenation is the process of merging web resources such as `.js` and `.css` files reducing the amount of files in the application, while minification is process of <em>obfuscating</em> code, making it less readable and more secure.</p>
 <p>To concatenate the web resources of a hybrid application, run the command:<br />
 [code lang="xml"]<br />
 ~/projects/MyProject/apps/MyHybridApp $ mfp push --concatenate|-c<br />
@@ -159,21 +159,21 @@ A jsonstore Feature was removed from /Users/cli-user/projects/MyProject/apps/MyH
 <h2 id="addingNativeSDK">Adding MobileFirst Native SDKs</h2>
 <p>The MobileFirst Native SDK is available for the following environments: iOS, Android, Windows Universal, and Windows Phone Silverlight.<br />
 Adding the Native SDK is possible either using locally generated artifacts or by using CocoaPods and Gradle specifically for iOS and Android respectively.</p>
-<p>If selecting to add the Native SDK using the locally generated artifacts, first add to the project a NativeAPI "app" using the <code>mfp add</code> command.<br />
+<p>If selecting to add the Native SDK using the locally generated artifacts, first add to the project a NativeAPI "app" using the `mfp add` command.<br />
 This "app" is used in the server as a way to identify the client application.</p>
 <p>If selecting to add the Native SDK using CocoaPods or Gradle, <a href="../../configuring-the-mfpf-sdk/">follow the tutorials in the Configuring the MobileFirst Platform Foundation SDK category</a> first.<br />
-After the SDK is added, navigate to the root of the native project and run the command: <code>mfp push</code>.<br />
+After the SDK is added, navigate to the root of the native project and run the command: `mfp push`.<br />
 [code lang="xml"]~/projects/myNativeiOSProject $ mfp push[/code]</p>
 <p>Depending on the native project, different artifacts are created:</p>
 <ul>
-<li><code>mobilefirst</code> folder: Contains <code>.wlapp</code> files which are pushed and registered in the MobileFirst Server after the command is run.</li>
-<li><code>worklight.properties</code> (for iOS) or <code>wlclient.properties</code> (for Android and Windows Universal/Phone) containing project metadata.
+<li>`mobilefirst` folder: Contains `.wlapp` files which are pushed and registered in the MobileFirst Server after the command is run.</li>
+<li>`worklight.properties` (for iOS) or `wlclient.properties` (for Android and Windows Universal/Phone) containing project metadata.
 </li>
 </ul>
-<p>By default, <code>mfp push</code> attempts to push and register the artifacts in the default server.<br />
-Run <code>mfp push --nosend|-n</code> to create the artifacts without also registering in the server.</p>
+<p>By default, `mfp push` attempts to push and register the artifacts in the default server.<br />
+Run `mfp push --nosend|-n` to create the artifacts without also registering in the server.</p>
 <h2 id="adapters">Creating and testing adapters</h2>
-<p>To add an adapter, use the <code>mfp adapter add</code> command.</p>
+<p>To add an adapter, use the `mfp adapter add` command.</p>
 <p><strong>Interactive Mode</strong>:<br />
 [code lang="xml"]<br />
 ~/projects/MyProject $ mfp adapter add<br />
@@ -184,13 +184,13 @@ Run <code>mfp push --nosend|-n</code> to create the artifacts without also regis
 A new HTTP adapter was added at /Users/cli-user/projects/MyProject/adapters/MyHttpAdapter<br />
 [/code]</p>
 <p><strong>Direct Mode</strong>:<br />
-<code>mfp adapter add --type http &lt;adapter-name&gt;</code>, or <code>-t</code> for type. The types of adapters that can be added are HTTP, SQL, Cast Iron, SAP Netweaver Gateway, JMS, SAP Jco, and Java.</p>
+`mfp adapter add --type http &lt;adapter-name&gt;`, or `-t` for type. The types of adapters that can be added are HTTP, SQL, Cast Iron, SAP Netweaver Gateway, JMS, SAP Jco, and Java.</p>
 <p>[code lang="xml"]<br />
 ~/projects/MyProject $ mfp adapter add --type http TestAdapter<br />
 A new http Adapter was added at /Users/cli-user/projects/MyProject/adapters/TestAdapter<br />
 [/code]</p>
 <h3>Calling an adapter</h3>
-<p>Use <code>mfp adapter call</code> for <strong>Interactive Mode</strong>:</p>
+<p>Use `mfp adapter call` for <strong>Interactive Mode</strong>:</p>
 <p>[code lang="xml"]<br />
 ~/projects/MyProject $ mfp adapter call<br />
 [?] Which adapter do you want to use? MyHttpAdapter<br />
@@ -213,7 +213,7 @@ A new http Adapter was added at /Users/cli-user/projects/MyProject/adapters/Test
 ...<br />
 [/code]</p>
 <p>Or to call an adapter in <strong>Direct Mode</strong>:<br />
-<code>mfp invoke [&lt;adapter&gt;:&lt;procedure&gt;[\"&lt;json array&gt;\"| --file|-f &lt;path-to-json-array-file&gt;]]</code></p>
+`mfp invoke [&lt;adapter&gt;:&lt;procedure&gt;[\"&lt;json array&gt;\"| --file|-f &lt;path-to-json-array-file&gt;]]`</p>
 <p>[code lang="xml"]<br />
 ~/projects/MyProject $ mfp invoke MyHttpAdapter:getStories \&quot;world\&quot;<br />
 {<br />
@@ -231,9 +231,9 @@ A new http Adapter was added at /Users/cli-user/projects/MyProject/adapters/Test
 [/code]</p>
 <h2 id="importExport">Exporting and importing MobileFirst projects</h2>
 <h3>Exporting</h3>
-<p>By using the <code>export</code> command, you can create a compressed file, which contains the entire MobileFirst project, or the optimized hybrid assets to use in a native application.</p>
+<p>By using the `export` command, you can create a compressed file, which contains the entire MobileFirst project, or the optimized hybrid assets to use in a native application.</p>
 <p><strong>Exporting a project in Interactive Mode</strong><br />
-<code>mfp export</code> - Running this command in the project root folder prompts you to enter the path and name of the compressed file to export to.<br />
+`mfp export` - Running this command in the project root folder prompts you to enter the path and name of the compressed file to export to.<br />
 The resulting compressed file is intended to be shared with other MobileFirst developers. The compressed file contains source artifacts and everything another developer would need to build the missing artifacts.</p>
 <p>[code lang="xml"]<br />
 ~/projects/MyProject $ mfp export<br />
@@ -242,14 +242,14 @@ The resulting compressed file is intended to be shared with other MobileFirst de
 Project successfully exported to /Users/cli-user/Desktop/MyProject.zip<br />
 [/code]</p>
 <p><strong>Exporting a project in Direct Mode</strong><br />
-<code>mfp export [&lt;path-to-zip-file&gt;]</code> - If run from the root folder of the project, direct mode takes one additional argument, which is the full path to the compressed file to create.</p>
+`mfp export [&lt;path-to-zip-file&gt;]` - If run from the root folder of the project, direct mode takes one additional argument, which is the full path to the compressed file to create.</p>
 <p>[code lang="xml"]<br />
 ~/projects/MyProject $ mfp export /Users/cli-user/Documents/MyProject.zip<br />
 Project successfully exported to /Users/cli-user/Documents/MyProject.zip<br />
 [/code]</p>
 <p><strong>Exporting hybrid assets in Interactive Mode</strong></p>
 <ol>
-<li>First run the <code>mfp build</code> command to make sure that the app is built.
+<li>First run the `mfp build` command to make sure that the app is built.
 </li>
 <li>Run the hybrid asset export within the environment folder of the existing hybrid app. Interactive mode asks whether to include the native libraries, the path, and file name of the compressed file to export to.<br />
 The native libraries are built files. Native application IDEs need to ensure that the hybrid assets can be used in a native app.</li>
@@ -262,7 +262,7 @@ The native libraries are built files. Native application IDEs need to ensure tha
 Project successfully exported to /Users/cli-user/Documents/MyiOSHybridApp.zip<br />
 [/code]</p>
 <p><strong>Exporting hybrid assets in Direct Mode</strong><br />
-<code>mfp export [&lt;path-to-zip-file&gt;] [-i | --includeNativeLibs]</code> - In direct mode, provide the full path to export hybrid assets. If the arguments <code>-i</code> or <code>--includeNativeLibs</code> are supplied, the native libraries are included.</p>
+`mfp export [&lt;path-to-zip-file&gt;] [-i | --includeNativeLibs]` - In direct mode, provide the full path to export hybrid assets. If the arguments `-i` or `--includeNativeLibs` are supplied, the native libraries are included.</p>
 <p>[code lang="xml"]<br />
 ~/projects/MyProject/apps/MyHybridApp/iphone $ mfp export /Users/cli-user/Documents/MyiOSHybridApp.zip -i<br />
 Project successfully exported to /Users/cli-user/Documents/MyiOSHybridApp.zip<br />
@@ -278,7 +278,7 @@ Project successfully exported to /Users/cli-user/Documents/MyiOSHybridApp.zip<br
 <blockquote><p>See the "Optimizing applications with CLI" topic in the user documentation</p></blockquote>
 <h2 id="helpfulCommands">Helpful commands</h2>
 <ul>
-<li><code>mfp help</code> – Shows how to use all the commands.</li>
-<li><code>mfp help <em>command-name</em></code> - Shows help for a specific command.</li>
-<li><code>mfp info</code> –  Returns the OS release, system memory, <code>node.js</code> version, and MobileFirst CLI version.</li>
+<li>`mfp help` – Shows how to use all the commands.</li>
+<li>`mfp help <em>command-name</em>` - Shows help for a specific command.</li>
+<li>`mfp info` –  Returns the OS release, system memory, `node.js` version, and MobileFirst CLI version.</li>
 </ul>

@@ -14,9 +14,9 @@ IBM MobileFirst Platform Foundation provides an SDK in the form of a standard Co
 
 The MobileFirst SDK feature set provides the following:
 
-* Use MobileFirst <code>ResourceRequest</code> API to retrieve data from backend systems
+* Use MobileFirst `ResourceRequest` API to retrieve data from backend systems
 * Protect applications using the MobileFirst SecurityChecks and other security features such as Application Authentcity Protection
-* Ability to navigate and share data between web and native views and/or call Native code using the MobileFirst <code>SendAction</code> API
+* Ability to navigate and share data between web and native views and/or call Native code using the MobileFirst `SendAction` API
 * Update an application's web resources using Direct Update
 * And more...
 
