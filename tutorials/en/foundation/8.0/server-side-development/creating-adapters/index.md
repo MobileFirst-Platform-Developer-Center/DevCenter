@@ -7,7 +7,8 @@ weight: 2
 ---
 
 ## Overview
-Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst developer CLI or MobileFirst Operations Console. This tutorial demonstrates how to create either a Java or JavaScript adapter using the above methods.
+Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst developer CLI or MobileFirst Operations Console. You can edit the adapter code using your IDE of choice.  
+This tutorial demonstrates how to create either a Java or JavaScript adapter using the above methods.
 
 The adapter project is based on the Maven Archetype "adapter-maven-archetype" which is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
 
@@ -20,7 +21,7 @@ The adapter project is based on the Maven Archetype "adapter-maven-archetype" wh
  * [Build and Deploy Adapters](#build-and-deploy-adapters)
  * [Dependencies](#dependencies)
  * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
-* [Creating Adapters Using MobileFirst developer CLI](#creating-adapters-using-mobilefirst-developer-cli)
+* [Creating Adapters Using MobileFirst Developer CLI](#creating-adapters-using-mobilefirst-developer-cli)
 * [Creating Adapters Using MobileFirst Operations Console](#creating-adapters-using-mobilefirst-operations-console)
 * [Testing Adapters](#testing-adapters)
  * [Using Postman](#using-postman)
@@ -133,6 +134,9 @@ This generates an **.adapter** file which can be found in the **target** folder:
       ```
 **NOTE:** The deploy command is available only during development (for security reasons).
 
+> Tip: You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
+
+
 ### Dependencies <a name="dependencies"></a>
 In order to use an external library in your adapter, follow these suggested instructions:
 
@@ -206,7 +210,7 @@ To group adapters you need to:
 
 4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
 
-## Creating Adapters Using MobileFirst developer CLI
+## Creating Adapters Using MobileFirst Developer CLI
 
 
 
@@ -217,29 +221,36 @@ To group adapters you need to:
 
 ## Creating Adapters Using MobileFirst Operations Console
 
-* **Using the MobileFirst Operations Console:**
-  1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
-  2. Drag and drop the `.adapter` file from the target folder into the Console.
+1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
+2. Click on the "Create new" button next to Adapters. You have two options to create an adapter:
+ * Using Maven or MobileFirst developer CLI as previously explained above.
+ * Download a template adapter project (step 2).
+3. Build the adapter Using Maven or MobileFirst developer CLI.
+4. Choose one of the following ways to upload the generated **.adapter** file which can be found in the target folder of the adapter project:
+ * Click on the Deploy Adapter button (step 5).
+ * Drag and drop the file into the Create new adapter screen.
 
-
+ ![Creating adapter using console](Create_adapter_console.png)
 
 ## Testing Adapters
-MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource/procedure, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.
+MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.
 
-The structure of the URL used to access the adapter resource is: `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{procedure-name}`
+The structure of the URL used to access the adapter resource is:
+* In JavaScript adapters `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{procedure-name}`
+* For Java adapters `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{path}`
 
 ### Using Postman
 
 **Passing parameters:**
 
 * When using Java adapters, parameters can be passed in the URL, body, form, etc, depending on how you configured your adapter.
-* When using JavaScript adapters, parameters are passed as `params=[a,b,c,d]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be an array of ordered, unnamed values. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
+* When using JavaScript adapters, parameters are passed as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be an array of ordered, unnamed values. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
 
 **Handling security:**
 
-If your resource is protected by a security check, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
+If your resource is protected by a scope, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
 
-To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the procedure/class:
+To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the method/class:
 
 ```java
 @OAuthSecurity(enabled=false)
@@ -251,23 +262,23 @@ To disable security in JavaScript adapters you should add the `secured` attribut
 <procedure name="proc1" secured="false"/>
 ```
 
-For you to work around this during your development stage, the development version of the MobileFirst Server includes a test token endpoint. To receive a Test Token you should:
-
+Alternatively, the development version of the MobileFirst Server includes a test token endpoint to bypass the security challenges. To receive a Test Token you should:
+{% comment %}
 1. In the MobileFirst Operations Console -> **Settings** -> **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
+{% endcomment %}
+1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
 
-2. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
-
-```xml
-grant_type : client_credentials
-scope : **
-```
+    ```xml
+    grant_type : client_credentials
+    scope : **
+    ```
 
   ![Image of Postman Body configuration](Body_configuration.png)
-
-3. Add an authorization header using Basic authentication (use the confidential client's ID and secret):  
+2. Add an authorization header using Basic authentication with the <span style="color:red">Add link to the confidential client tutorial</span>
+confidential client's ID (test) and secret (test):  
 
   ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
