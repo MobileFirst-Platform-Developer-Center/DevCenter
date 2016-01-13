@@ -20,15 +20,17 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Grad
 
 #### Jump to:
 
-- [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
+- [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
-### Manually Adding the MobileFirst Native SDK
-Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Android Studio project, and registering the application in the MobileFirst Server.
+## Adding the MobileFirst Native SDK
+Follow the below instructions to add the MobileFirst Native SDK to either a new or existing Android Studio project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
+
+### Creating and registering the application
 
 1. Create an Android project or use an existing one.  
 
@@ -56,11 +58,13 @@ If using a locally installed server: From a **Command-line** window, navigate to
     
     These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
     
-    > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst developer CLI to manage MobileFirst artifacts](../../client-side-development/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
-5. In <strong>Project > Gradle scripts</strong>, select <strong>build.gradle (Module: app)</strong>.
+### Adding the SDK
 
-6. Add the following lines below `apply plugin: 'com.android.application'`:
+1. In **Project > Gradle scripts**, select **build.gradle (Module: app)**.
+
+2. Add the following lines below `apply plugin: 'com.android.application'`:
 
     ```xml
     repositories{
@@ -71,7 +75,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     }
     ```
     
-7. Add the following inside `android`:
+3. Add the following inside `android`:
     
     ```xml
     packagingOptions {
@@ -81,7 +85,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     }
     ```
     
-8. Add the following lines inside `dependencies`:
+4. Add the following lines inside `dependencies`:
 
     ```xml
     compile group: 'com.ibm.mobile.foundation',
@@ -91,20 +95,20 @@ If using a locally installed server: From a **Command-line** window, navigate to
     transitive: true
     ```
     
-Or: 
+    Or: 
 
     ```xml
     compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.Beta1-SNAPSHOT'
     ```
     
-9. Add the following permissions to the `AndroidManifest.xml` file:
+5. Add the following permissions to the `AndroidManifest.xml` file:
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
     ```
-10. Add the MobileFirst UI activity:
+6. Add the MobileFirst UI activity:
 
     ```xml
     <activity android:name="com.worklight.wlclient.ui.UIActivity" />
