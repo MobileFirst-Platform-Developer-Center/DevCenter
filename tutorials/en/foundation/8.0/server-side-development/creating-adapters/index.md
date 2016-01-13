@@ -134,6 +134,9 @@ This generates an **.adapter** file which can be found in the **target** folder:
       ```
 **NOTE:** The deploy command is available only during development (for security reasons).
 
+> Tip: You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
+
+
 ### Dependencies <a name="dependencies"></a>
 In order to use an external library in your adapter, follow these suggested instructions:
 
