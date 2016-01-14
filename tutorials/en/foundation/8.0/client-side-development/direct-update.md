@@ -46,31 +46,28 @@ The `mfpdev app webupdate` command packages the updated web resources to a .zip 
 
 Alternatives:
 
-* Build the .zip file but do not upload it: 
-
-    ```bash
-    mfpdev app webupdate --build
-    ```
-
 * Build the .zip file and upload it to a different MobileFirst Server: `mfpdev app webupdate [server-name] [runtime-name]`. For example: 
 
     ```bash
     mfpdev app webupdate myQAServer MyBankApps
     ```
 
-* Build the .zip file and upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
+* Upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
 
     ```bash
     mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
     ```
 
-* Build the .zip file and upload it via the MobileFirst Operations Console:
+* Manually upload packaged web resources to the MobileFirst Server:
+ 1. Build the .zip file without uploading it:
 
-    ```bash
-    mfpdev app webupdate --build
-    ```
+         ```bash
+         mfpdev app webupdate --build
+         ```
+ 2. Load the MobileFirst Operations Console and click on the application entry.
+ 3. Click on **Upload File** to upload the packaged web resources.
 
-    ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
+![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
 
 > Run the command `mfpdev help webupdate` to learn about additional command flags.
 
