@@ -52,6 +52,17 @@ It is possible to enforce security both on resources that run on MobileFirst Ser
 
 - The client application needs to implement a **challenge handler** to handle challenges sent by the SecurityCheck.
 
+### Scope
+A `scope` is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
+
+### Scope Element
+Scope element is a keyword that indicates which security checks are being used to protect the resource.
+
+### Scope Mapping
+By default, the scope elements you write in your *scope* are matched to a `SecurityCheck` with the same name.
+
+Optionally, at the application level, you can also map a **scope element** to a different `SecurityCheck`. Specifically, you can map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
+
 ### SecurityCheck
 A SecurityCheck is an object responsible for obtaining credentials from a client and validate them.
 
@@ -135,17 +146,6 @@ Also available are these out-of-the-box security checks:
 - [Application Authenticity](../application-authenticity/)
 - [Direct Update](../../client-side-development/direct-update)
 - [LTPA](../websphere-ltpa-based-authentication/)
-
-### Scope
-A `scope` is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
-
-### Scope Element
-Scope element is a keyword that indicates which security checks are being used to protect the resource.
-
-### Scope Mapping
-By default, the scope elements you write in your *scope* are matched to a `SecurityCheck` with the same name.
-
-Optionally, at the application level, you can also map a **scope element** to a different `SecurityCheck`. Specifically, you can map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
 
 ## Protecting resources
 
