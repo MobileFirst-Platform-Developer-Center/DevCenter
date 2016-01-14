@@ -5,8 +5,9 @@ relevantTo: [ios,android,windows,cordova]
 weight: 11
 ---
 ## Overview
-You can test as well as debug Java code implemented for use in **Java** or **JavaScript adapters** via IDEs such as Eclipse, IntelliJ and alike.  
-This tutorial demonstrates how to test and debug a Java adapter using the Eclipse IDE.
+
+You can test Java and JavaScript adapters as well as debug Java code implemented for use in Java or JavaScript adapters via IDEs such as Eclipse, IntelliJ and alike.  
+This tutorial demonstrates how to test adapters using the MobileFirst Developer CLI and using Postman and also how to debug a Java adapter using the Eclipse IDE.
 
 #### Jump to:
 
@@ -76,9 +77,13 @@ The result will be a JSON object with a temporary valid access token:
 }
 ```
 
-Now with any future request to adapter endpoints, add an HTTP header with the name `Authorization` and the value you received previously. The security framework will skip any security challenges protecting your resource.
+Now with any future request to adapter endpoints, add an HTTP header with the name `Authorization` and the value you received previously (starting with Bearer). The security framework will skip any security challenges protecting your resource.
 
-![Adapter request using Postman with the test token]()
+![Adapter request using Postman with the test token](Adapter-response.png)
+
+### Using MobileFirst Developer CLI
+
+<span style="color:red"> TBD </span>
 
 ## Debugging Adapters in Eclipse
 Before an adapter's Java code can be debugged, Eclipse needs to be configured as follows:
