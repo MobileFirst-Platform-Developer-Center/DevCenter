@@ -3,12 +3,13 @@ layout: tutorial
 title: JavaScript Adapters
 show_children: true
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
+weight: 3
 ---
 ## Overview
 JavaScript adapters provide templates for connection to HTTP and SQL back-ends. It provides a set of services, called procedures and mobile apps can call these procedures by issuing AJAX requests.
 
 
-**Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../) tutorial first.
+**Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../creating-adapters) tutorial first.
 
 ## File structure
 

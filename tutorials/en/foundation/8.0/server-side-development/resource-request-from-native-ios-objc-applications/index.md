@@ -5,7 +5,7 @@ relevantTo: [ios]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestObjC
-weight: 5
+weight: 7
 ---
 
 ## Overview

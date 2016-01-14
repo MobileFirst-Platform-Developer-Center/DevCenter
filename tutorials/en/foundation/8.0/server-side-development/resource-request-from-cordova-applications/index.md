@@ -5,7 +5,7 @@ relevantTo: [cordova]
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova
-weight: 3
+weight: 5
 ---
 
 ## Overview
