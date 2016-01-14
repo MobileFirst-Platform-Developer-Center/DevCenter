@@ -72,7 +72,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     - Add the following lines and save the changes:
 
         ```xml
-        // remove source line below before going live with the tutorials
+        # remove source line below before going live with the tutorials
         source 'https://hub.jazz.net/git/oper2000/imf-client-sdk-specs-inhouse.git' 
         use_frameworks! 
         pod 'IBMMobileFirstPlatformFoundation'
