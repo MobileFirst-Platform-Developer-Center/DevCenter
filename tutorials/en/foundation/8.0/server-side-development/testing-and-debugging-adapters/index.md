@@ -1,20 +1,25 @@
 ---
 layout: tutorial
 title: Testing and Debugging Adapters
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,cordova]
 weight: 11
 ---
 ## Overview
-You can debug Java code implemented for use in **Java** or **JavaScript adapters** via IDEs such as Eclipse, IntelliJ and alike.  
-This tutorial demonstrates debugging a Java adapter using the Eclipse IDE.
+You can test as well as debug Java code implemented for use in **Java** or **JavaScript adapters** via IDEs such as Eclipse, IntelliJ and alike.  
+This tutorial demonstrates how to test and debug a Java adapter using the Eclipse IDE.
+
+#### Jump to:
+
+* [Testing Adapters](#testing-adapters)
+* [Debugging Adapters](#debugging-adapters)
 
 ## Testing Adapters
-MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass URL parameters, path parameters, body parameters or headers as you see fit.
+MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass `URL` parameters, `path` parameters, `body` parameters or `headers` as you see fit.
 
 The structure of the URL used to access the adapter resource is:
 
-* In JavaScript adapters - `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{procedure-name}`
-* In Java adapters - `http://<IP>:<PORT>/mfp/api/adapters/{adapter-name}/{path}`
+* In JavaScript adapters - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{procedure-name}`
+* In Java adapters - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{path}`
 
 ### Using Postman
 
@@ -74,9 +79,6 @@ The result will be a JSON object with a temporary valid access token:
 Now with any future request to adapter endpoints, add an HTTP header with the name `Authorization` and the value you received previously. The security framework will skip any security challenges protecting your resource.
 
 ![Adapter request using Postman with the test token]()
-
-### Using the MobileFirst Developer CLI
-
 
 ## Debugging Adapters in Eclipse
 Before an adapter's Java code can be debugged, Eclipse needs to be configured as follows:
