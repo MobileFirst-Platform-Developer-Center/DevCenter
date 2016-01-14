@@ -113,7 +113,7 @@ Each method is preceded by one or more JAX-RS 2.0 annotations, for example an an
 Another example is `@Path("/{username}")`, which defines the path to access this procedure (in addition to the resource-level path). As you can see, this path can include a variable part. This variable is then used as a parameter of the method, as defined `@PathParam("username") String name`.  
 
 > You can use many other annotations. See **Annotation Types Summary** here:
-[https://jsr311.java.net/nonav/releases/1.1/javax/ws/rs/package-summary.html](https://jsr311.java.net/nonav/releases/1.1/javax/ws/rs/package-summary.html)
+[https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 ## HTTP Session
 Depending on your infrastructure and configuration, your MobileFirst server may be running with `SessionIndependent` set to true, where each request can reach a different node and HTTP sessions are not used. In such cases you should not rely on Java's HttpSession to persist​ data from one request to the next.
