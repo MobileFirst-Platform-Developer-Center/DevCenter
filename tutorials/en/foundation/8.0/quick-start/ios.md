@@ -62,11 +62,11 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
      
     [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-        if(error != nil){
-             NSLog(@"%@",error.description);
+        if (error != nil){
+             NSLog(@"Failure: %@",error.description);
         }
-        else{
-            NSLog(@"%@",response.responseText);
+        else if (response != nill){
+            NSLog(@"Success: %@",response.responseText);
         }
     }];
     ```
@@ -76,13 +76,13 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ```swift
     let url = NSURL(string: "/adapters/javaAdapter/users/world")
     let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-
+    
     request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
-        if(error != nil){
-            NSLog("error.description")
+        if (error != nil){
+            NSLog("Failure: " + error.description)
         }
-        else {
-            NSLog("response.responseText")
+        else if (response != nil){
+            NSLog("Success: " + response.responseText)
         }
     }
     ```
@@ -117,13 +117,31 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 5. Testing the application
 
-1. In Xcode, press the **Play** button.
+In Xcode, press the **Play** button.
 
-    ![Image of application that successfully called a resource from the MobileFirst Server ]()
+![Image of application that successfully called a resource from the MobileFirst Server ](success_response.png)
+
+> <b>Note:</b> Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default.  
+To complete the tutorial, [disable  ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).
+
+> 1. In Xcode, right-click the <b>[project]/info.plist file → Open As → Source Code</b>
+> 2. Paste the following: 
+
+>    
+    ```xml
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+    ```
+
+> 3. Press the **Play** button.
 
 ## Next steps
+Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Client-side development tutorials](../../client-side-development/)
 - Review the [Server-side development tutorials](../../server-side-development/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
+- Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

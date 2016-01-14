@@ -47,7 +47,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
 * <span style="color:red">IN PROGRESS </span>[Sending actions between JavaScript and Native code](../sending-actions-between-javascript-and-native-code/)
 * <span style="color:red">IN PROGRESS </span>[Using Direct Update in Cordova Applications](../client-side-development/direct-update/)
-* [Translation](../client-side-development/translation/)
+* [Multilingual translation of Cordova applications](../client-side-development/translation/)
 * [Debugging Cordova applications](../client-side-development/debugging-applications/)
 
 ### [Server-side Development](../server-side-development/)
@@ -62,14 +62,14 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
     * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from iOS Swift-based applications](../server-side-development/resource-request-from-native-ios-swift-applications/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from iOS Objective C-based applications](../server-side-development/resource-request-from-native-ios-applications/)
+* [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
+* [Resource request from iOS Swift-based applications](../server-side-development/resource-request-from-native-ios-swift-applications/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from iOS Objective C-based applications](../server-side-development/resource-request-from-native-ios-objc-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../server-side-development/resource-request-from-native-android-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../server-side-development/resource-request-from-native-windows-10-applications/)
 * <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
-* <span style="color:red">TODO</span> [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
+* <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
 * [Debugging adapters](../server-side-development/debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
@@ -94,7 +94,7 @@ Add various layers of protection to your applications and adapters.
 * <span style="color:red">TODO </span>[WebSphere LTPA-based authentication](../authentication-and-security/websphere-ltpa-based-authentication/)
 * <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
 * <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
-* <span style="color:red">IN PROGRESS </span>[Application Authenticity](../authentication-and-security/application-authenticity/)
+* [Application Authenticity](../authentication-and-security/application-authenticity/)
 
 ### [Notifications](../notifications/)
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.  

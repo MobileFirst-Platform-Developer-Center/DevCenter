@@ -23,7 +23,7 @@ IBM MobileFirst Platform Foundation provides a unified set of API methods to sen
 
 ![ios-tag-sample](push-notifications-overview-pics/ios-tag-sample.png)
 
-###What is Push Notification?
+### What is Push Notification?
 
 Push notifications is the ability of a mobile device to receive messages that are "pushed" from a server.
 
@@ -45,7 +45,7 @@ Push notifications are supported for the following mobile platforms:
 * Windows Phone 8.x
 * Windows 8
 
-###Push Notification Types
+### Push Notification Types
 **Tag notifications**
 
 Tag push notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.
@@ -54,9 +54,11 @@ Tag push notifications are notification messages that are targeted to all the de
 
 Broadcast push notifications are a form of tag push notifications that are targeted to all subscribed devices.
 
-**Unicast notifications**
+**User Authenticated Notifications**
 
-Unicast notifications are targeted to a particular device or a ```userID```. Unicast notifications do not require any additional setup and are enabled by default when the MobileFirst application is enabled for push notifications.
+User Authenticated Notifications are notifications secured with OAuth.
+
+Unicast notifications are targeted to a particular device or a `userID`. Unicast notifications do not require any additional setup and are enabled by default when the MobileFirst application is enabled for push notifications.
 
 >For more information about unicast notifications, see the topic about sending push notifications, in the user documentation.
 

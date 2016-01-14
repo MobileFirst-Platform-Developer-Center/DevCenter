@@ -39,7 +39,7 @@ You can choose to run the command interactively or directly.
 
 1. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
 
-    ```shell
+    ```bash
     mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0
     ```
   * The `Archetype Group Id` and Archetype Version are required parameters to identify the archetype.
@@ -50,31 +50,31 @@ You can choose to run the command interactively or directly.
 
 2. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
 
-    ```shell
+    ```bash
     Define value for property 'groupId': : com.mycompany
     ```
 
 3. Enter an Artifact Id of the Maven project **which will later be used also as the adapter name**. For example:
 
-    ```shell
+    ```bash
     Define value for property 'artifactId': : SampleAdapter
     ```
 
 4. Enter a Maven project version (the default is `1.0-SNAPSHOT`). For example:
 
-    ```shell
+    ```bash
     Define value for property 'version':  1.0-SNAPSHOT: : 1.0
     ```
 
 5. Enter an adapter package name (the default is the `groupId`). For example:
 
-    ```shell
+    ```bash
     Define value for property 'package':  com.mycompany: : com.mypackage
     ```
 
 6. Enter `y` to confirm:
 
-    ```shell
+    ```bash
     [INFO] Using property: archetypeVersion = 8.0.0
     Confirm properties configuration:
     groupId: com.mycompany
@@ -90,13 +90,13 @@ You can choose to run the command interactively or directly.
 
 Replace the placeholders with the actual values and run:
 
-```shell
+```bash
 mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0 -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid> -Dversion=<maven_project_version> -Dpackage=<java_adapter_package_name>
 ```
 
 <br/>
 
->For more information about the `archetype:generate` command see the Maven documentation.
+> For more information about the `archetype:generate` command see the Maven documentation.
 
 After creating the adapter the result will be a Maven project containing a `src` folder and a `pom.xml` file:
 
@@ -126,12 +126,12 @@ This generates an **.adapter** file which can be found in the **target** folder:
    * Replace the `mfpfUser` and `mfpfPassword` values with your MobileFirst admin user name and password.  
 2. Open the project's root folder in terminal and run the `mvn:adapter` command:
 
-      ```shell
+      ```bash
       mvn adapter:deploy
       ```
 **NOTE:** The deploy command is available only during development (for security reasons).
 
-> Tip: You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
+> <b>Tip:</b> You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
 
 
 ### Dependencies <a name="dependencies"></a>
