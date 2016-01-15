@@ -47,14 +47,14 @@ The following diagram shows the initial data request from Cloudant Data Layer Lo
 ![BlueList Topology](bluelist-topology-test.png "BlueList Topology")
 
 1. A request to a protected resource is sent from the mobile device to MobileFirst Server. In this sample, a request is made through adapter-based authentication with a basic username and password.
-1. On valid authentication, a token is received and sent back to the device.
-1. A request to receive data from the Cloudant Data Layer Local Edition is sent to the MobileFirst Data Proxy Server. This request is then intercepted by the MobileFirst OAuth Trust Association Interceptor (TAI). This request contains the token received in step 2.
-1. The TAI sends a request to MobileFirst Server for validation.
-1. The MobileFirst Authorization Server returns the public key for the TAI to validate the token.
-1. The TAI forwards the now validated request to receive data to the MobileFirst Data Proxy Server.
-1. The MobileFirst Data Proxy Server sends the request to the Cloudant Data Layer Local.
-1. Cloudant Data Layer Local sends the requested information back to the MobileFirst Data Proxy Server.
-1. The requested information is sent from the MobileFirst Data Proxy Server to the device.
+2. On valid authentication, a token is received and sent back to the device.
+3. A request to receive data from the Cloudant Data Layer Local Edition is sent to the MobileFirst Data Proxy Server. This request is then intercepted by the MobileFirst OAuth Trust Association Interceptor (TAI). This request contains the token received in step 2.
+4. The TAI sends a request to MobileFirst Server for validation.
+5. The MobileFirst Authorization Server returns the public key for the TAI to validate the token.
+6. The TAI forwards the now validated request to receive data to the MobileFirst Data Proxy Server.
+7. The MobileFirst Data Proxy Server sends the request to the Cloudant Data Layer Local.
+8. Cloudant Data Layer Local sends the requested information back to the MobileFirst Data Proxy Server.
+9. The requested information is sent from the MobileFirst Data Proxy Server to the device.
 
 **Note:** After the device has proper OAuth validation, it does not need to go back to MobileFirst Server to receive a new token for each request. The TAI validates the token against MobileFirst Server and when the token becomes invalid, a `401 unauthorized` error message is sent back to the device.  When this occurs, the process starts over again and the device must re-authenticate with MobileFirst Server.
 
