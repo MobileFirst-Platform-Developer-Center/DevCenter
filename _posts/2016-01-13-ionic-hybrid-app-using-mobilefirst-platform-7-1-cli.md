@@ -1,13 +1,12 @@
 ---
 title: Ionic Hybrid Mobile app using MobileFirst Platform 7.1 CLI
-date: 2016-03-01
-pinned: false
+date: 2016-01-13
 tags:
 - MobileFirst_Platform
 - Ionic
 - Cordova
 author:
-  display_name: Idan Adar
+  display_name: Vidyasagar MSC
 ---
 
 ![Ionic preview image](http://vidyasagarmsc.com/wp-content/uploads/2015/12/preview.jpg)
