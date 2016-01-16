@@ -1,8 +1,5 @@
 ---
 title: Ionic Hybrid Mobile app using MobileFirst Platform 7.1 CLI
-
-ionic-hybrid-app-using-mobilefirst-platform-7-1-cli
-
 date: 2016-03-01
 pinned: false
 tags:
