@@ -10,7 +10,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 #### Prerequisites:
 
 * Configured Android Studio
-* MobileFirst developer CLI ([download]({{site.baseurl}}/downloads))
+* MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -76,7 +76,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Click on the "Create new" button next to **Adapters** and download the **Java** adapter sample.
 
-    > If Maven and the MobileFirst developer CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
+    > If Maven and the MobileFirst Developer CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
 
     ![Image of create an adapter](create-an-adapter.png)
     

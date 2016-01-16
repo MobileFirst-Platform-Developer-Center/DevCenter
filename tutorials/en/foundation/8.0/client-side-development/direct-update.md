@@ -12,7 +12,7 @@ downloads:
 ## Overview
 With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.
 
-In order to update an application, the updated web resources of the application need to be packaged and uploaded to the MobileFirst Server using the MobileFirst developer CLI, which will then handle updating any application as it attempts to connect.
+In order to update an application, the updated web resources of the application need to be packaged and uploaded to the MobileFirst Server using the MobileFirst Developer CLI, which will then handle updating any application as it attempts to connect.
 
 **Supported Cordova platforms:** iOS and Android.
 

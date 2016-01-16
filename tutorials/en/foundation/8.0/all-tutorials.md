@@ -40,7 +40,7 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation debugging applications and more...
 
 * [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
-* <span style="color:red">TODO </span>[Using MobileFirst developer CLI to manage MobileFirst artifacts](../client-side-development/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
+* <span style="color:red">TODO </span>[Using MobileFirst Developer CLI to manage MobileFirst artifacts](../client-side-development/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
 * [JSONStore](../client-side-development/jsonstore/)
     * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)

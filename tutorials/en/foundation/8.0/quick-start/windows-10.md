@@ -10,7 +10,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 #### Prerequisites:
 
 * Configured Visual Studio 2015
-* MobileFirst developer CLI ([download]({{site.baseurl}}/downloads))
+* MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server

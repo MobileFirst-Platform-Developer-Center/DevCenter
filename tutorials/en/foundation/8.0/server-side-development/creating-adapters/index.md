@@ -7,7 +7,7 @@ weight: 2
 ---
 
 ## Overview
-Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst developer CLI or MobileFirst Operations Console. You can edit the adapter code using your IDE of choice.  
+Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst Developer CLI or MobileFirst Operations Console. You can edit the adapter code using your IDE of choice.  
 This tutorial demonstrates how to create either a Java or JavaScript adapter using the above methods.
 
 The adapter project is based on the Maven Archetype "adapter-maven-archetype" which is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
@@ -214,9 +214,9 @@ To group adapters you need to:
 
 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
 2. Click on the "Create new" button next to Adapters. You have two options to create an adapter:
- * Using Maven or MobileFirst developer CLI as previously explained above.
+ * Using Maven or MobileFirst Developer CLI as previously explained above.
  * Download a template adapter project (step 2).
-3. Build the adapter Using Maven or MobileFirst developer CLI.
+3. Build the adapter Using Maven or MobileFirst Developer CLI.
 4. Choose one of the following ways to upload the generated **.adapter** file which can be found in the target folder of the adapter project:
  * Click on the Deploy Adapter button (step 5).
  * Drag and drop the file into the Create new adapter screen.
