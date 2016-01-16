@@ -13,7 +13,7 @@ title: Downloads
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="installFoundation">
             <br/>
-            <p>IBM MobileFirst Platform Foundation 8.0 enables simplified, community-driven experiences and work flows for both the developer and the administrator, and consists of <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">MobileFirst Server, MobileFirst developer Command-line Interface (CLI), MobileFirst Operations Console and MobileFirst Studio</a></p>
+            <p>IBM MobileFirst Platform Foundation 8.0 enables simplified, community-driven experiences and work flows for both the developer and the administrator, and consists of <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">MobileFirst Server, MobileFirst Developer Command-line Interface (CLI), MobileFirst Operations Console and MobileFirst Studio</a>.</p>
 
             <b>Installation instructions:</b>
             <div class="panel-group" id="accordion0" role="tablist" aria-multiselectable="true">
@@ -26,7 +26,30 @@ title: Downloads
 
                     <div id="collapseServer0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="server">
                         <div class="panel-body">
-                            TO DO
+                            <p>To use the MobileFirst Server, Java Developer Kit (JDK) 7 or 8 is required to be installed on developer workstation. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
+
+                            <ol>
+                                <li>Set the <code>JAVA_HOME</code> environment variable to your JDK directory. For example:
+                                    <ul>
+                                        <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
+                                        <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Download and extract</a> the MobileFirst Server .zip file</li>
+                            </ol>
+                            
+                            <p>The MobileFirst Development Server is installed as a stand-alone server and provides the following scripts in its <strong>scripts</strong> folder:<br/> <code>.sh</code> scripts are for Linux and Mac and 
+                            <code>.cmd</code> scripts are for Windows.</p>
+                            
+                            <ul>
+                                <li><code>console.[sh|cmd]</code>: Open the local MobileFirst Console</li>
+                                <li><code>run.[sh|cmd]</code>: Run the local MobileFirst Server with trailing Liberty Server messages</li>
+                                <li><code>start.[sh|cmd]</code>: Run the local MobileFirst Server in background mode</li>
+                                <li><code>stop.[sh|cmd]</code>: Stop the currenet local MobileFirst Server instance</li>
+                            </ul>
+                            
+                            <p>
+                                <strong>Next:</strong> Install the MobileFirst Developer CLI, and start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">following the tutorials</a>.</p>
                         </div>
                     </div>
                 </div>
@@ -65,24 +88,24 @@ title: Downloads
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="cli">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#collapseCli0" aria-expanded="true" aria-controls="cli"> MobileFirst developer CLI</a>
+                            <a role="button" data-toggle="collapse" data-parent="#accordion0" href="#collapseCli0" aria-expanded="true" aria-controls="cli"> MobileFirst Developer CLI</a>
                         </h4>
                     </div>
 
                     <div id="collapseCli0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cli">
                         <div class="panel-body">
-                            <p>To use the MobileFirst developer CLI, Java Developer Kit (JDK) 7 or above is required to be installed on developer workstation, as well the <a href="https://www.npmjs.com/">NPM package manager</a>. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
+                            <p>To use the MobileFirst Developer CLI, Java Developer Kit (JDK) 7 or 8 is required to be installed on developer workstation, as well the <a href="https://www.npmjs.com/">NPM package manager</a>. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
 
                             <ol>
-                                <li>Set the <code>JAVA_HOME</code> environment variable set to your JDK directory. For example:
+                                <li>Set the <code>JAVA_HOME</code> environment variable to your JDK directory. For example:
                                     <ul>
                                         <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
                                         <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
                                     </ul>
                                 </li>
-                                <li>Install NPM. <a href="http://blog.npmjs.org/post/85484771375/how-to-install-npm" target="_blank">Follow the installation instructions</a> in the NPM website</li>
-                                <li>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code></li>
-                                <li>You can verify the installation by running <code>mfpdev -v</code>
+                                <li>Install NPM. <a href="http://blog.npmjs.org/post/85484771375/how-to-install-npm" target="_blank">Follow the installation instructions</a> in the NPM website.</li>
+                                <li>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code>.</li>
+                                <li>You can verify the installation by running <code>mfpdev -v</code>.
                             </ol>
 
                             <p>
@@ -95,7 +118,9 @@ title: Downloads
         </div>
 
         <div role="tabpanel" class="tab-pane" id="downloadPreviousReleases">
-            <br/>        
+            <br/>       
+            Download previous versions of Worklight/MobileFirst Foundation.
+            <br/><br/>        
             <b>Installation instructions:</b>
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -159,11 +184,11 @@ title: Downloads
                             <p>To use the CLI, you must have the Java Developer Kit (JDK) installed on your machine. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
 
                             <p>You must have the
-                                <code>JAVA_HOME</code> environment variable set to your JDK directory. For example:</p>
+                                <code>JAVA_HOME</code> environment variable to your JDK directory. For example:</p>
 
                             <ul>
                                 <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
-                                <li> Mac OSX: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
+                                <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
                             </ul>
 
                             <ol>
