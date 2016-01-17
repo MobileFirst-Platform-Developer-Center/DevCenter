@@ -5,11 +5,10 @@ relevantTo: [android]
 weight: 3
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application is quickly created using the MobileFirst Operations Console and connectivity is verified with the MobileFirst Server.
-
+The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are  registered using the MobileFirst Operations Console, an "skeleton" Android Studio project is downloaded and edited to call the adapter, and the result is printed to the log - verifying a successful connection with the MobileFirst Server.
 #### Prerequisites:
 
-* Configured Android Studio
+* Android Studio
 * MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
@@ -102,8 +101,11 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 5. Testing the application
 
-1. In Android Studio, click on the **Run App** button.  
-The adapter response is then printed in Android Studio's **LogCat**.
+1. In Android Studio, select the **[project]/app/src/main/assets/mfpclient.properties** file and edit the **host** property with the IP address of the MobileFirst Server.
+
+1. Click on the **Run App** button.  
+
+The adapter response is then printed in Android Studio's LogCat view.
 
     ![Image of application that successfully called a resource from the MobileFirst Server ](success_response.png)
 

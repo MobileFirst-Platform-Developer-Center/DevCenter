@@ -5,11 +5,11 @@ relevantTo: [cordova]
 weight: 1
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application &amp; an adapter are created from the MobileFirst Operations Console, and application makes a resource request call using the MobileFirst Adapter to  verify connectivity with the MobileFirst Server.
+The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are  registered using the MobileFirst Operations Console, an "skeleton" Cordova project is downloaded and edited to call the adapter, and the result is displayed - verifying a successful connection with the MobileFirst Server.
 
 #### Prerequisites:
 
-* Configured Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8/10
+* Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8 Universal / Windows 10 UWP
 * MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
@@ -37,9 +37,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Cordova project in your code editor of choice.
 
-2. Select the **/config.xml** file and edit the `<mfp:server ... url=" "/>` value with the IP address of the MobileFirst Server.
-
-3. Select the **www/js/index.js** file and paste the following code snippet, replacing the existing `wlCommonInit()` function:
+2. Select the **www/js/index.js** file and paste the following code snippet, replacing the existing `wlCommonInit()` function:
 
     ```javascript
     function wlCommonInit() {
@@ -89,18 +87,24 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ```
 
 <img src="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/cordova/cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
+
 ### 5. Testing the application
 
-1. From a **Command-line** window, navigate to the Cordova project root folder.
+1. In the Cordova project, select the **config.xml** file and edit the `<mfp:server ... url=" "/>` value with the IP address of the MobileFirst Server.
 
-2. Run the commands: `cordova prepare` followed by `cordova run`.
+2. From a **Command-line** window, navigate to the Cordova project root folder.
 
- - If a device is connected, the application will be installed and launched in the device,
- - Otherwise the Simulator or Emulator will be used.
+3. Run the command: `cordova platform add ios/android/windows` to add a platform.
+
+4. Run the command: `cordova prepare` followed by `cordova run`.
+
+If a device is connected, the application will be installed and launched in the device,  
+Otherwise the Simulator or Emulator will be used.
 
 ## Next steps
 
 - Review the [Client-side development tutorials](../../client-side-development/)
 - Review the [Server-side development tutorials](../../server-side-development/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
+- Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)
