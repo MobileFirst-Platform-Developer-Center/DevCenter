@@ -53,7 +53,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     import IBMMobileFirstPlatformFoundation
     ```
     
-* Paste the following code snippet in the `viewDidLoad` function:
+* Paste the following code snippet, replacing the existing `viewDidLoad()` function:
  
     In Objective-C:
 

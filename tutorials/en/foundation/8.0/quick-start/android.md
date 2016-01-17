@@ -38,7 +38,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 2. Select the **app/java/com.mfp.sample/MainActivity.java** file and paste the following code snippets:
 
-* Imports:
+* Add the following imports:
 
     ```java
     import com.worklight.wlclient.api.*;
@@ -46,7 +46,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     import android.util.Log;
     ```
     
-* In `protected void onCreate()`:
+* Paste the following code snippet, replacing the existing `protected void onCreate()` function:
 
     ```java
     WLClient client = WLClient.createInstance(this);
