@@ -66,6 +66,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
              NSLog(@"Failure: %@",error.description);
         }
         else if (response != nill){
+            // Will print "Hello world" in the Xcode Console.
             NSLog(@"Success: %@",response.responseText);
         }
     }];
@@ -117,7 +118,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 5. Testing the application
 
-1. In Xcode, select the **mfpclient.plist** file and edit the **host** property with the IP address of the MobileFirst Server's.
+1. In Xcode, select the **mfpclient.plist** file and edit the **host** property with the IP address of the MobileFirst Server.
 
 2. Press the **Play** button.
 

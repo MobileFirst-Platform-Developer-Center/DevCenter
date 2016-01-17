@@ -61,6 +61,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     request.send(new WLResponseListener() {
         @Override
          public void onSuccess(WLResponse wlResponse) {
+            // Will print "Hello world" in LogCat.
             Log.i("MobileFirst Quick Start", "Success: " + wlResponse.getResponseText());
         }
 

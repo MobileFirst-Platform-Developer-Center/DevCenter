@@ -48,7 +48,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
         resourceRequest.send().then(
             function(response) {
-                // Will display "Hello world".
+                // Will display "Hello world" in an alert dialog.
                 alert("Success: " + response.responseText);
             },
             function(response) {
@@ -90,7 +90,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 5. Testing the application
 
-1. In the Cordova project, select the **config.xml** file and edit the `<mfp:server ... url=" "/>` value with the IP address of the MobileFirst Server.
+1. In the Cordova project, select the **config.xml** file and edit the  
+`<mfp:server ... url=" "/>` value with the IP address of the MobileFirst Server.
 
 2. From a **Command-line** window, navigate to the Cordova project root folder.
 
