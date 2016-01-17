@@ -36,7 +36,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Android Studio project.
 
-2. Select the **app/java/com.mfp.sample/MainActivity.java** file and paste the following code snippets:
+2. Select the **app/java/com/mfp/sample/MainActivity.java** file and:
 
 * Add the following imports:
 
@@ -46,7 +46,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     import android.util.Log;
     ```
     
-* Paste the following code snippet, replacing the existing `protected void onCreate()` function:
+* Paste the following code snippet, inside the `protected void onCreate()` function:
 
     ```java
     WLClient client = WLClient.createInstance(this);

@@ -58,32 +58,40 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     In Objective-C:
 
     ```objc
-    NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/users/world"];
-    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
-     
-    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-        if (error != nil){
-             NSLog(@"Failure: %@",error.description);
-        }
-        else if (response != nill){
-            // Will print "Hello world" in the Xcode Console.
-            NSLog(@"Success: %@",response.responseText);
-        }
-    }];
+    - (void)viewDidLoad {
+        [super viewDidLoad];
+        
+        NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/users/world"];
+        WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+         
+        [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+            if (error != nil){
+                 NSLog(@"Failure: %@",error.description);
+            }
+            else if (response != nill){
+                // Will print "Hello world" in the Xcode Console.
+                NSLog(@"Success: %@",response.responseText);
+            }
+        }];
+    }
     ```
     
     In Swift:
     
     ```swift
-    let url = NSURL(string: "/adapters/javaAdapter/users/world")
-    let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
+    override func viewDidLoad() {
+        super.viewDidLoad()
     
-    request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
-        if (error != nil){
-            NSLog("Failure: " + error.description)
-        }
-        else if (response != nil){
-            NSLog("Success: " + response.responseText)
+        let url = NSURL(string: "/adapters/javaAdapter/users/world")
+        let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
+        
+        request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+            if (error != nil){
+                NSLog("Failure: " + error.description)
+            }
+            else if (response != nil){
+                NSLog("Success: " + response.responseText)
+            }
         }
     }
     ```
