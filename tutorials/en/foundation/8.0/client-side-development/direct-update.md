@@ -34,7 +34,7 @@ The application web resources are initially packaged with the application to ens
 
 After a Direct Update, the application no longer uses the pre-packaged web resources. Instead it will use the web  resources in the application's sandbox.
 
-![How direct update works]({{site.baseurl}}/assets/backup/05_05_du_internal_function.jpg)
+![Diagram of how direct update works](internal_function.jpg)
 
 ## Creating and deploying updated web resources
 Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the MobileFirst Server.
@@ -153,7 +153,7 @@ Differential Direct Updates enables an application to download only the files th
 ## Working with Direct Update in the field
 The diagram below depicts the flow of updating an application's web resources using Direct Update once it has been submitted to the application stores and used by end-users.
 
-![Direct update in the field]({{site.baseurl}}/assets/backup/05_05_distribution.jpg)
+![Direct update in the field](distribution.jpg)
 
 > <b>Note:</b> During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.
 
