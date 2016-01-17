@@ -46,13 +46,13 @@ To disable security in JavaScript adapters you should add the `secured` attribut
 ```
 
 Alternatively, the development version of the MobileFirst Server includes a test token endpoint to bypass the security challenges. To receive a Test Token you should:
-{% comment %}
-1. In the MobileFirst Operations Console -> **Settings** -> **Confidential Clients** tab, create a confidential client or use the default one:  
+
+1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
-{% endcomment %}
-1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
+
+2. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
 
     ```xml
     grant_type : client_credentials
@@ -60,8 +60,7 @@ For testing purposes set **Allowed Scopes** as `**`.
     ```
 
   ![Image of Postman Body configuration](Body_configuration.png)
-2. Add an `authorization header` using `Basic authentication` with the <span style="color:red">Add link to the confidential client tutorial</span>
-confidential client's ID (test) and secret (test):  
+3. Add an `authorization header` using `Basic authentication` with the confidential client's ID (test) and secret (test):  
 
   ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
@@ -85,7 +84,7 @@ Now with any future request to adapter endpoints, add an HTTP header with the na
 
 <span style="color:red"> TBD </span>
 
-## Debugging Adapters in Eclipse
+## Debugging Adapters
 Before an adapter's Java code can be debugged, Eclipse needs to be configured as follows:
 
 1. **Maven integration** - Starting Eclipse Kepler (v4.3), Maven support is built-in in Eclipse.  
