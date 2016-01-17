@@ -107,7 +107,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 The adapter response is then printed in Android Studio's LogCat view.
 
-    ![Image of application that successfully called a resource from the MobileFirst Server ](success_response.png)
+![Image of application that successfully called a resource from the MobileFirst Server](success_response.png)
 
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
