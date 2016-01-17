@@ -83,7 +83,7 @@ Set-up [push notifications](../../notifications/push-notifications-overview/) an
 ### Adapters
 
 #### Creating adapters
-Register an adapter and download Starter Code.
+Register an adapter and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
 
 ![Image of adapter registration screen](create-adapter.png)
 
