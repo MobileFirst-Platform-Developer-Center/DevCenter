@@ -9,14 +9,16 @@ weight: 8
 ---
 
 ## Overview
-MobileFirst applications can access resources using the `WLResourceRequest` REST API. The REST API works with all adapters and external resources.
+MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
+The REST API works with all adapters and external resources.
 
-Prerequisite: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) to your Native iOS project.
+**Prerequisite**: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) to your Native iOS project.
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
-Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method (`WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut`, `WLHttpMethodDelete`):
+Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
+Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
 
 ```swift
 let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getFeed"), method: WLHttpMethodGet)
