@@ -12,23 +12,24 @@ downloads:
 
 This tutorial shows how to apply technology available in IBM MobileFirst Platform Foundation to store data for iOS mobile applications. By using Cloudant NoSQL DB APIs, you can complete specific database operations, such as creating, reading, updating, deleting, and synchronizing data between local and remote databases. This tutorial provides a basic overview of these APIs and explains how to configure and run the sample, in the following topics:
 
-[Using the IMFData SDK](#using-the-imfdata-sdk)
-[Creating local data stores](#creating-local-data-stores)
-[Creating remote data stores](#creating-remote-data-stores)
-[Setting user permissions for remote stores](#setting-user-permissions-for-remote-stores)
-[Modeling data for iOS applications](#modeling-data-for-ios-applications)
-[Creating and updating data](#creating-and-updating-data)
-[Supporting synchronization and offline storage](#supporting-synchronization-and-offline-storage)
-[Running the iOS sample](#running-the-ios-sample)
-[Obtaining and configuring the required SDKs](#obtaining-and-configuring-the-required-sdks)
-[Enabling encryption](#enabling-encryption)
-[BlueList application flow](#bluelist-application-flow)
+* [Using the IMFData SDK](#using-the-imfdata-sdk)
+* [Creating local data stores](#creating-local-data-stores)
+* [Creating remote data stores](#creating-remote-data-stores)
+* [Setting user permissions for remote stores](#setting-user-permissions-for-remote-stores)
+* [Modeling data for iOS applications](#modeling-data-for-ios-applications)
+* [Creating and updating data](#creating-and-updating-data)
+* [Supporting synchronization and offline storage](#supporting-synchronization-and-offline-storage)
+* [Running the iOS sample](#running-the-ios-sample)
+* [Obtaining and configuring the required SDKs](#obtaining-and-configuring-the-required-sdks)
+* [Enabling encryption](#enabling-encryption)
+* [BlueList application flow](#bluelist-application-flow)
 
 
 ##Using the IMFData SDK
 
 After the IMFData SDK is installed, you can begin to initialize and use the SDK in your native iOS application.
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 // Initialize the IMFDataManager
 IMFDataManager *manager = [IMFDataManager initializeWithUrl:cloudantProxyUrl];
@@ -43,6 +44,7 @@ In the native iOS sample that comes with this tutorial, the value for the `cloud
 
 You can create a Store object to allow your application to access a local database, which can be used even when the application is offline.
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 //Get reference to IMFDataManager
 IMFDataManager *manager = [IMFDataManager sharedInstance];
@@ -63,6 +65,7 @@ if (error) {
 
 You can also create a Store object to allow your application to access a remote database.
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 // Get reference to data manager
 IMFDataManager *manager = [IMFDataManager sharedInstance];
@@ -84,6 +87,7 @@ NSString *dbname = @"todosdb";
 
 You can set specific permissions for users to access remote stores.
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 [manager setCurrentUserPermissions: DB_ACCESS_GROUP_MEMBERS forStoreName: @"todosdb" completionHander:^(BOOL success, NSError *error) {
     if(error){
@@ -94,7 +98,7 @@ You can set specific permissions for users to access remote stores.
 }];
 {% endhighlight %}
 
-**Note:** In the sample, the user is authenticated via OAuth. OAuth has been configured through adapter-based authentication. You can find further instructions on setting up access with OAuth capabilities and the MobileFirst Data Proxy in [configuring OAuth security documentation](http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_cloudantsec.html%23oauth?lang=en).
+**Note:** In the sample, the user is authenticated via OAuth. OAuth has been configured through adapter-based authentication. You can find further instructions on setting up access with OAuth capabilities and the MobileFirst Data Proxy in the [configuring OAuth security documentation](http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_cloudantsec.html%23oauth?lang=en).
 
 
 ##Modeling data for iOS applications
@@ -107,6 +111,7 @@ In iOS applications, you can use the `CDTDataObjectMapper` class to map native o
 
 ###TodoItem implementation (`TodoItem.h`)
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 @interface TodoItem : NSObject <CDTDataObject>
 @property NSString *name;
@@ -118,6 +123,7 @@ In iOS applications, you can use the `CDTDataObjectMapper` class to map native o
 
 You must then register the class and data type with the `CDTDataObjectMapper`. In the sample, the `TableViewController` does that after the store is created.
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 //using the existing store
 [self.datastore.mapper setDataType:@"TodoItem" forClassName:NSStringFromClass([TodoItem class])];
@@ -130,6 +136,7 @@ Using the same operation, you can save new objects and save changes to existing 
 
 ###Creating Todo Items
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 //using a store that was created previously
 - (void) createItem: (TodoItem*) item
@@ -147,6 +154,7 @@ Using the same operation, you can save new objects and save changes to existing 
 
 ###Updating Todo Items
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 //using a store that was created previously
 - (void) updateItem: (TodoItem*) item
@@ -166,6 +174,7 @@ Using the same operation, you can save new objects and save changes to existing 
 
 To delete an object in a data store, pass the object to the `delete: completionHandler` method:
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 //using a store that was created previously
 -(void) deleteItem: (TodoItem*) item
@@ -180,7 +189,8 @@ To delete an object in a data store, pass the object to the `delete: completionH
 }
 {% endhighlight %}
 
-<h3>Querying data</h3>
+###Querying data
+
 You can query for objects that have an object mapper. The Cloudant query API provides convenient methods for querying with `NSPredicate` and for querying by data type. For more information about these functions, see [Querying data](http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_sdk_query.html) in the user documentation.
 
 
@@ -192,6 +202,7 @@ By using the data manager API, you can synchronize data between local storage on
 
 When pull replication runs, the local database within the mobile device is updated with what exists in the remote database.
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 - (void)pullItems
 {
@@ -217,6 +228,7 @@ When pull replication runs, the local database within the mobile device is updat
 
 When push replication runs, the data from the local database within the mobile device is sent to the remote database.
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 - (void)pushItems
 {
@@ -258,7 +270,7 @@ If you have not completed some of these tasks, review the proper setup section o
 
     1. Install CocoaPods by entering the following terminal command:
 
-        ```
+        ```shell
         $ sudo gem install cocoapods
         ```
 
@@ -316,6 +328,7 @@ $ pod install
 
 Now the project has the dependencies that are required to encrypt the local databases correctly. To encrypt these databases in your client-side code, first create an `CDTEncryptionKeyProvider` and then create a local data store with this `keyProvider`:
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 //Initialize a key provider
 id<CDTEncryptionKeyProvider> keyProvider = [CDTEncryptionKeychainProvider providerWithPassword:@"password" forIdentifier:@"user"];
@@ -326,6 +339,7 @@ self.datastore = [manager localStore:dbname withEncryptionKeyProvider:keyProvide
 
 You must also use the `CDTEncryptionKeyProvider` that you defined when you created `CDTPullReplication` and `CDTPushReplication`:
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 //pull replication
 self.pullReplication   = [[IMFDataManager sharedInstance] pullReplicationForStore:dbname withEncryptionKeyProvider:keyProvider];
@@ -341,6 +355,7 @@ In the sample application, the encryption code is already provided in the `Table
 
 When the application starts, the `AppDelegate` instance initializes the connection to MobileFirst Server. After initialization, the application creates and registers the `BlueListChallangeHandler` handler.
 
+<span style="color:red">UPDATE TO SWIFT</span>
 {% highlight objc linenos %}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     WLClient *wlClient = [WLClient sharedInstance];
