@@ -12,6 +12,8 @@ weight: 5
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources, and is supported in the following Cordova platforms: iOS, Android, Windows 8.1 Universal and Windows 10 UWP.
 
+**Prerequisite**: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) to your Cordova application.
+
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
@@ -115,6 +117,9 @@ function loadFeedsSuccess(result){
         displayFeeds(result.responseJSON.Items);
 }
 ```
+
+## For more information
+> For more information about WLResourceRequest, refer to the user documentation.
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova) the MobileFirst project.

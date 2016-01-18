@@ -8,9 +8,10 @@ downloads:
 weight: 6
 ---
 ## Overview
-MobileFirst applications can access resources using the `WLResourceRequest` REST API. The REST API works with all adapters and external resources.
+MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
+The REST API works with all adapters and external resources.
 
-Prerequisite: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) to your Native Android project.
+**Prerequisite**: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) to your Native Android project.
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
@@ -77,6 +78,9 @@ The `response` object contains the response data and you can use its methods and
          AndroidNativeApp.updateTextView("Failed to call the resource\n" + responseText);
     }
     ```
+
+## For more information
+> For more information about WLResourceRequest, refer to the user documentation.
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid) the Native project.

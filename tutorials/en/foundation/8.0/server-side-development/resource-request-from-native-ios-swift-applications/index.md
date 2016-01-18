@@ -105,6 +105,9 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 request.setQueryParameterValue("['param1', 'param2']", forName: "params")
 ```
 
+## For more information
+> For more information about WLResourceRequest, refer to the user documentation.
+
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift) the Native project.
 
