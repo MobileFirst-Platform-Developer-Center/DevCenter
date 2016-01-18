@@ -5,7 +5,7 @@ relevantTo: [android]
 weight: 3
 downloads:
   - name: Download Native Android project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
 ---
 ## Overview
 This tutorial is a continuation of the JSONStore Overview tutorial.    

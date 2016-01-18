@@ -4,7 +4,9 @@ title: Resource Request from Native Android Applications
 relevantTo: [android]
 downloads:
   - name: Download Native project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---
 ## Overview
@@ -83,8 +85,8 @@ The `response` object contains the response data and you can use its methods and
 > For more information about WLResourceRequest, refer to the user documentation.
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid) the Native project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the adapter Maven project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Native project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
 * Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.

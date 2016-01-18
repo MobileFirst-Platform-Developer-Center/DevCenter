@@ -4,9 +4,9 @@ title: Resource Request from Native iOS Swift Applications
 relevantTo: [ios]
 downloads:
   - name: Download Native project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
   - name: Download Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 8
 ---
 
@@ -113,8 +113,8 @@ request.setQueryParameterValue("['param1', 'param2']", forName: "params")
 ## Sample application
 The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift) the Native project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the adapter Maven project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the Native project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
 * Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.

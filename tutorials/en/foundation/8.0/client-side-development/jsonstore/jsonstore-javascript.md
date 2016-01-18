@@ -5,7 +5,7 @@ relevantTo: [cordova]
 weight: 1
 downloads:
   - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStore
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80
 ---
 ## Overview
 This tutorial is a continuation of the JSONStore Overview tutorial.    

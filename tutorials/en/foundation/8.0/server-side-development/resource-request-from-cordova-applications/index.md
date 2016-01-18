@@ -4,7 +4,9 @@ title: Resource Request from Cordova Applications
 relevantTo: [cordova]
 downloads:
   - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
 
@@ -122,8 +124,8 @@ function loadFeedsSuccess(result){
 > For more information about WLResourceRequest, refer to the user documentation.
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova) the MobileFirst project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the adapter Maven project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
 * Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.
