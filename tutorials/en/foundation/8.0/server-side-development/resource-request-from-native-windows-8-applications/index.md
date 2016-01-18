@@ -1,24 +1,22 @@
 ---
 layout: tutorial
-title: Resource Request from Native Windows 8 Universal Applications
+title: Resource Request from Native Windows 8.1 Universal Applications
 relevantTo: [windows8]
 downloads:
-  - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures
   - name: Download Native project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresWin8
-weight: 7
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8
+weight: 9
 ---
 
 ## Overview
-MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources <span style = "color:red"> LINK TO using-mobilefirst-server-authenticate-external-resources</span>.  
+MobileFirst applications can access resources using the `WLResourceRequest` REST API. The REST API works with all adapters and external resources.
+
 This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
 
-To create and configure a Windows 8 (Universal) native project, first follow the [Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) tutorial.
+To create and configure a Windows 8.1 (Universal) native project, first follow the [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) tutorial.
 
-## Calling an adapter procedure
-The `WLResourceRequest` class handles resource requests to MobileFirst adapters or external resources.
+## WLResourceRequest
+The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
 1. Define the URI of the resource:
 
@@ -38,7 +36,7 @@ The `WLResourceRequest` class handles resource requests to MobileFirst adapters 
   * In JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name `params`:
 
         ```cs
-        request.setQueryParameter("params","['MobileFirst_Platform']");
+        request.setQueryParameter("params","['param1', 'param2']");
         ```
   * In Java adapters or external resources, use the `setQueryParameter` method for each parameter:
 
@@ -46,7 +44,7 @@ The `WLResourceRequest` class handles resource requests to MobileFirst adapters 
         request.setQueryParameter("param1","value1");
         request.setQueryParameter("param2","value2");
         ```
-4. Call the procedure by using the `.send()` method.  
+4. Call the resource by using the `.send()` method.  
 Specify a `MyInvokeListener` class instance:
 
     ```cs
@@ -57,8 +55,8 @@ Specify a `MyInvokeListener` class instance:
 </br>
 > See the user documentation to learn more about `WLResourceRequest` and other signatures for the `send` method, which are not covered in this tutorial.
 
-## Receiving a procedure response
-When the procedure invocation is completed, the framework calls one of the methods of the `MyInvokeListener` class.
+##  The response
+When the resource call is completed, the framework calls one of the methods of the `MyInvokeListener` class.
 
 1. Specify that the `MyInvokeListener` class implements the `WLResponseListener` interface:
 
@@ -68,7 +66,7 @@ When the procedure invocation is completed, the framework calls one of the metho
     ```
 
 2. Implement the `onSuccess` and `onFailure` methods.  
-If the procedure invocation is successful, the `onSuccess` method is called. Otherwise, the `onFailure` method is called.
+If the resource call is successful, the `onSuccess` method is called. Otherwise, the `onFailure` method is called.
 Use these methods to get the data that is retrieved from the adapter.  
 The `response` object contains the response data and you can use its methods and properties to retrieve the required information.
 
@@ -101,12 +99,9 @@ The `response` object contains the response data and you can use its methods and
     ```
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8) the Native project.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresWin8) the Native project.
-
-* The `InvokingAdapterProcedures` project contains a **MobileFirst Native API** to deploy to MobileFirst Server.
-* The `InvokingAdapterProceduresWin8` project contains a **native Windows 8 Universal application** that uses a MobileFirst native API library to communicate with a MobileFirst Server instance.
-* Make sure to update the `mfpclient.properties` file in **InvokingAdapterProceduresWin8** with the relevant server settings.
+* The ResourceRequestWin8 project contains a native Windows 8.1 Universal application that uses a MobileFirst native SDK to communicate with a MobileFirst Server instance.
+* Make sure to update the mfpclient.properties file in the native Windows 8.1 with the relevant server settings.
 
 <span style = "color:red">SCREENSHOT</span>

@@ -5,12 +5,11 @@ relevantTo: [android]
 weight: 3
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application is quickly created using the MobileFirst Operations Console and connectivity is verified with the MobileFirst Server.
-
+The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are  registered using the MobileFirst Operations Console, an "skeleton" Android Studio project is downloaded and edited to call the adapter, and the result is printed to the log - verifying a successful connection with the MobileFirst Server.
 #### Prerequisites:
 
-* Configured Android Studio
-* MobileFirst developer CLI ([download]({{site.baseurl}}/downloads))
+* Android Studio
+* MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -37,17 +36,47 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Android Studio project.
 
-2. Select the **app/java/com.mfp.sample/MainActivity.java** file and paste the following code snippet:
+2. Select the **app/java/com/mfp/sample/MainActivity.java** file and:
+
+* Add the following imports:
 
     ```java
-    WLResourceRequest code snippet here
+    import com.worklight.wlclient.api.*;
+    import java.net.URI;
+    import android.util.Log;
+    ```
+    
+* Paste the following code snippet, inside the `protected void onCreate()` function:
+
+    ```java
+    WLClient client = WLClient.createInstance(this);
+    URI adapterPath = null;
+    try {
+        adapterPath = new URI("/adapters/javaAdapter/users/world");
+    } catch (URISyntaxException e) {
+        e.printStackTrace();
+    }
+    
+    WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
+    request.send(new WLResponseListener() {
+        @Override
+         public void onSuccess(WLResponse wlResponse) {
+            // Will print "Hello world" in LogCat.
+            Log.i("MobileFirst Quick Start", "Success: " + wlResponse.getResponseText());
+        }
+
+        @Override
+        public void onFailure(WLFailResponse wlFailResponse) {
+            Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
+        }
+    });
     ```
 
 ### 4. Creating an adapter
 
 1. Click on the "Create new" button next to **Adapters** and download the **Java** adapter sample.
 
-    > If Maven and the MobileFirst developer CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
+    > If Maven and the MobileFirst Developer CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
 
     ![Image of create an adapter](create-an-adapter.png)
     
@@ -73,13 +102,18 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 5. Testing the application
 
-1. In Android Studio, click on the **Run App** button.
+1. In Android Studio, select the **[project]/app/src/main/assets/mfpclient.properties** file and edit the **host** property with the IP address of the MobileFirst Server.
 
-    ![Image of application that successfully called a resource from the MobileFirst Server ]()
+1. Click on the **Run App** button.  
+
+The adapter response is then printed in Android Studio's LogCat view.
+
+![Image of application that successfully called a resource from the MobileFirst Server](success_response.png)
 
 ## Next steps
+Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Client-side development tutorials](../../client-side-development/)
 - Review the [Server-side development tutorials](../../server-side-development/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
+- Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

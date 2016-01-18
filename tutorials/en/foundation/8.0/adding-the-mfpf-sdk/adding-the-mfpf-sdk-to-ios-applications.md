@@ -14,7 +14,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Coco
 
 **Pre-requisites:** 
 
-- Xcode and MobileFirst developer CLI installed on the developer workstation.  
+- Xcode and MobileFirst Developer CLI installed on the developer workstation.  
 - *Optional* MobileFirst Server to run a locally.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
@@ -58,7 +58,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
     These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
 
-> <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst developer CLI to manage MobileFirst artifacts](../../client-side-development/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../../client-side-development/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### Adding the SDK
 
@@ -72,7 +72,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     - Add the following lines and save the changes:
 
         ```xml
-        // remove source line below before going live with the tutorials
+        # remove source line below before going live with the tutorials
         source 'https://hub.jazz.net/git/oper2000/imf-client-sdk-specs-inhouse.git' 
         use_frameworks! 
         pod 'IBMMobileFirstPlatformFoundation'

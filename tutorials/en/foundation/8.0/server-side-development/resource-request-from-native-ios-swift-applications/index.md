@@ -3,24 +3,22 @@ layout: tutorial
 title: Resource Request from Native iOS Swift Applications
 relevantTo: [ios]
 downloads:
-  - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures
   - name: Download Native project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresSwift
-weight: 6
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift
+weight: 8
 ---
 
 ## Overview
-MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources <span style = "color:red"> LINK TO using-mobilefirst-server-authenticate-external-resources</span>.  
+MobileFirst applications can access resources using the `WLResourceRequest` REST API. The REST API works with all adapters and external resources.
+
 This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
 
 To create and configure an iOS native project, first follow the [Adding the MobileFirst Platform Foundation SDK to iOS Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) tutorial.
 
-## Calling an adapter procedure
-The `WLResourceRequest` class handles resource requests to MobileFirst adapters or external resources.
+## WLResourceRequest
+The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
-1. To call a procedure, create a `WLResourceRequest` object and specify the path to the adapter and the HTTP method(GET, POST, etc):
+1. To call a resource, create a `WLResourceRequest` object and specify the path to the adapter and the HTTP method(GET, POST, etc):
 
     ```swift
     let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getFeed"), method: WLHttpMethodGet)
@@ -33,7 +31,7 @@ The `WLResourceRequest` class handles resource requests to MobileFirst adapters 
   * In JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name `params`:
 
         ```swift
-        request.setQueryParameterValue("['MobileFirst_Platform']", forName: "params")
+        request.setQueryParameterValue("['param1', 'param2']", forName: "params")
         ```
   * In Java adapters or external resources, use the `setQueryParameter` method for each parameter:
 
@@ -41,18 +39,18 @@ The `WLResourceRequest` class handles resource requests to MobileFirst adapters 
         request.setQueryParameterValue("value1", forName: "param1")
         request.setQueryParameterValue("value2", forName: "param2")
         ```
-4. Call the procedure by using the `sendWithCompletionHandler` method.  
+4. Call the resource by using the `sendWithCompletionHandler` method.  
 Supply a completion handler to manage the retrieved data:
 
     ```swift
     request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
         var resultText = ""
         if(error != nil){
-            resultText = "Invocation failure. "
+            resultText = "Successfully called the resource"
             resultText += error.description
         }
         else if(response != nil){
-            resultText = "Invocation success. "
+            resultText = "Failed to call the resource"
             resultText += response.responseText
         }
         self.updateView(resultText)
@@ -66,12 +64,9 @@ Supply a completion handler to manage the retrieved data:
 See the user documentation to learn more about `WLResourceRequest`.
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProcedures) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift) the Native project.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/InvokingAdapterProceduresSwift) the Native project.
-
-* The `InvokingAdapterProcedures` project contains a **MobileFirst native API** that you can deploy to your MobileFirst Server instance.
-* The `InvokingAdapterProceduresSwift` project contains a **native iOS Swift application** that uses a MobileFirst native API library to communicate with the MobileFirst Server instance.
-* Make sure to update the `mfpclient.plist` file in **NativeiOSInvoking** with the relevant server settings.
+* The ResourceRequestSwift project contains a native iOS Swift application that uses a MobileFirst native SDK to communicate with the MobileFirst Server instance.
+* Make sure to update the mfpclient.plist file in the native iOS project with the relevant server settings.
 
 <span style = "color:red">SCREENSHOT</span>

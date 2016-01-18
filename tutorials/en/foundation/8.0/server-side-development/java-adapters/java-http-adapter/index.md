@@ -110,7 +110,7 @@ The output stream is then `flush`ed and `close`d.</p>
 If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
 
 ## Results
-Use the testing techniques described in the [Creating Java and JavaScript Adapters](../../#testing-adapters) tutorial.
+Use the testing techniques described in the [Testing and Debugging Adapters](../../testing-and-debugging-adapters) tutorial.
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.

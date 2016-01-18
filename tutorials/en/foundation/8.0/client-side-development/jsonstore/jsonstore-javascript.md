@@ -171,8 +171,8 @@ WL.JSONStore.destroy().then(function () {
 ### Security
 You can secure all the collections in a store by passing a password to the `init` function. If no password is passed, the documents of all the collections in the store are not encrypted.
 
-Data encryption is only available on Android, iOS, Windows 8 Universal and Windows 10 UWP environments.  
-Some security metadata is stored in the *keychain* (iOS), *shared preferences* (Android) or the *credential locker* (Windows 8).  
+Data encryption is only available on Android, iOS, Windows 8.1 Universal and Windows 10 UWP environments.  
+Some security metadata is stored in the *keychain* (iOS), *shared preferences* (Android) or the *credential locker* (Windows 8.1).  
 The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
    
 Use `closeAll` to lock access to all the collections until you call `init` again. If you think of `init` as a login function you can think of `closeAll` as the corresponding logout function. Use `changePassword` to change the password.

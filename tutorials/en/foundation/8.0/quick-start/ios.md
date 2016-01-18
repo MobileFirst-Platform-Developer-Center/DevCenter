@@ -5,19 +5,19 @@ relevantTo: [ios]
 weight: 2
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application is quickly created using the MobileFirst Operations Console and connectivity is verified with the MobileFirst Server.
+The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are  registered using the MobileFirst Operations Console, an "skeleton" Xcode project is downloaded and edited to call the adapter, and the result is printed to the log - verifying a successful connection with the MobileFirst Server.
 
 #### Prerequisites:
 
-* Configured Xcode
-* MobileFirst developer CLI ([download]({{site.baseurl}}/downloads))
-* *Optional* Stand-alone MobileFirst Server([download]({{site.baseurl}}/downloads))
+* Xcode
+* MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
+* *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
 
 > If a remote server was already set-up, skip this step.
 
-1. From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
+From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
 
 ### 2. Creating an application
 
@@ -35,7 +35,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
  
 ### 3. Editing application logic
 
-1. Open the Xcode project project.
+1. Open the Xcode project project by double-clickign the **.xcworkspace** file.
 
 2. Select the **[project-root]/ViewController.m/swift** file and:
 
@@ -53,36 +53,45 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     import IBMMobileFirstPlatformFoundation
     ```
     
-* Paste the following code snippet in the `viewDidLoad` function:
+* Paste the following code snippet, replacing the existing `viewDidLoad()` function:
  
     In Objective-C:
 
     ```objc
-    NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/users/world"];
-    WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
-     
-    [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-        if(error != nil){
-             NSLog(@"%@",error.description);
-        }
-        else{
-            NSLog(@"%@",response.responseText);
-        }
-    }];
+    - (void)viewDidLoad {
+        [super viewDidLoad];
+        
+        NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/users/world"];
+        WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+         
+        [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+            if (error != nil){
+                 NSLog(@"Failure: %@",error.description);
+            }
+            else if (response != nill){
+                // Will print "Hello world" in the Xcode Console.
+                NSLog(@"Success: %@",response.responseText);
+            }
+        }];
+    }
     ```
     
     In Swift:
     
     ```swift
-    let url = NSURL(string: "/adapters/javaAdapter/users/world")
-    let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-
-    request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
-        if(error != nil){
-            NSLog("error.description")
-        }
-        else {
-            NSLog("response.responseText")
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        let url = NSURL(string: "/adapters/javaAdapter/users/world")
+        let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
+        
+        request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+            if (error != nil){
+                NSLog("Failure: " + error.description)
+            }
+            else if (response != nil){
+                NSLog("Success: " + response.responseText)
+            }
         }
     }
     ```
@@ -117,13 +126,35 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 5. Testing the application
 
-1. In Xcode, press the **Play** button.
+1. In Xcode, select the **mfpclient.plist** file and edit the **host** property with the IP address of the MobileFirst Server.
 
-    ![Image of application that successfully called a resource from the MobileFirst Server ]()
+2. Press the **Play** button.
+
+The adapter response is then printed in the Xcode Console.
+
+![Image of application that successfully called a resource from the MobileFirst Server ](success_response.png)
+
+> <b>Note:</b> Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default.  
+To complete the tutorial, [disable  ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).
+
+> 1. In Xcode, right-click the <b>[project]/info.plist file → Open As → Source Code</b>
+> 2. Paste the following: 
+
+>    
+    ```xml
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+    ```
+
+> 3. Press the **Play** button.
 
 ## Next steps
+Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Client-side development tutorials](../../client-side-development/)
 - Review the [Server-side development tutorials](../../server-side-development/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
+- Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

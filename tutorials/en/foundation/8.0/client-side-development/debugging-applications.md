@@ -38,7 +38,7 @@ If your application consists of more than one platform - specify the platform to
 mfpdev app preview -p <platform>
 ```
 
-> Learn more about the MobileFirst developer CLI in the [Using MobileFirst developer CLI to manage MobileFirst artifacts](../using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts) tutorial.
+> Learn more about the MobileFirst Developer CLI in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Debugging with Ripple
 Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  
@@ -128,7 +128,7 @@ These APIs are multiplatform. The output destination changes according to the pl
 
 * **Developer console** when it is running on a desktop browser
 * **LogCat** when it is running on Android device
-* **Visual Studio Output** when it is running on a Windows Phone 8 device and Windows 8 App
+* **Visual Studio Output** when it is running on a Windows Phone 8 device and Windows 8.1 App
 * **XCode Console** when it is running on an iOS device
 
 `WL.Logger` contains more methods.

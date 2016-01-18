@@ -25,28 +25,25 @@ The authorization flow has two phases:
 1. The client acquires a token.
 2. The client uses the token to access a protected resource.
 
-### Acquiring a token
+### Obtaining a token
 In this phase, the client undergoes **security checks** in order to receive an access token.  
 These security checks use **authorization entities**, which are described in [the next section](#authEntities).  
 
 ![Obtain Token](auth-flow-1.jpg)
 
 1. Client application sends a request to use a protected resource.
-2. Client application undergoes security checks according to the requested resource scope.
-3. The client application requests a token from the Authorization Server.
+2. Client application undergoes security checks according to the requested scope.
+3. Client application requests a token from the Authorization Server.
 4. Client application receives the token.
 
 ### Using a token to access a protected resource
 It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
 
-It is also possible to separate the Authorization Server from MFP Server by using DataPower as an Authorization Server.  
-In this case the Introspection Endpoint will keep MFP Server and DataPower in sync.
-
 ![Protect Resources](auth-flow-2.jpg)
 
 1. Client application sends a request with the received token.
 2. Validation module validates the token.
-3. MFP Server proceeds to adapter invocation.
+3. MobileFirst Server proceeds to adapter invocation.
 
 ## Authorization entities
 - You can protect resources such as adapters from unauthorized access by specifying a **scope** that contains zero or more **scope elements**.
@@ -54,6 +51,17 @@ In this case the Introspection Endpoint will keep MFP Server and DataPower in sy
 - A **SecurityCheck** defines the process to be used to authenticate users. It is often associated with a **SecurityCheckConfiguration** that defines properties to be used by the security check. SecurityChecks are instantiated by **Security Adapters**. The same SecurityCheck can be used to protect several resources.
 
 - The client application needs to implement a **challenge handler** to handle challenges sent by the SecurityCheck.
+
+### Scope
+A `scope` is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
+
+### Scope Element
+Scope element is a keyword that indicates which security checks are being used to protect the resource.
+
+### Scope Mapping
+By default, the scope elements you write in your *scope* are matched to a `SecurityCheck` with the same name.
+
+Optionally, at the application level, you can also map a **scope element** to a different `SecurityCheck`. Specifically, you can map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
 
 ### SecurityCheck
 A SecurityCheck is an object responsible for obtaining credentials from a client and validate them.
@@ -138,17 +146,6 @@ Also available are these out-of-the-box security checks:
 - [Application Authenticity](../application-authenticity/)
 - [Direct Update](../../client-side-development/direct-update)
 - [LTPA](../websphere-ltpa-based-authentication/)
-
-### Scope
-A `scope` is a space-separated list of **scope elements**. A scope is used to protect a resource (see later).
-
-### Scope Element
-Scope element is a keyword that indicates which security checks are being used to protect the resource.
-
-### Scope Mapping
-By default, the scope elements you write in your *scope* are matched to a `SecurityCheck` with the same name.
-
-Optionally, at the application level, you can also map a **scope element** to a different `SecurityCheck`. Specifically, you can map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
 
 ## Protecting resources
 

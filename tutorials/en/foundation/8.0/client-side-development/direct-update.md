@@ -12,7 +12,7 @@ downloads:
 ## Overview
 With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.
 
-In order to update an application, the updated web resources of the application need to be packaged and uploaded to the MobileFirst Server using the MobileFirst developer CLI, which will then handle updating any application as it attempts to connect.
+In order to update an application, the updated web resources of the application need to be packaged and uploaded to the MobileFirst Server using the MobileFirst Developer CLI, which will then handle updating any application as it attempts to connect.
 
 **Supported Cordova platforms:** iOS and Android.
 
@@ -34,7 +34,7 @@ The application web resources are initially packaged with the application to ens
 
 After a Direct Update, the application no longer uses the pre-packaged web resources. Instead it will use the web  resources in the application's sandbox.
 
-![How direct update works]({{site.baseurl}}/assets/backup/05_05_du_internal_function.jpg)
+![Diagram of how direct update works](internal_function.jpg)
 
 ## Creating and deploying updated web resources
 Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the MobileFirst Server.
@@ -46,31 +46,28 @@ The `mfpdev app webupdate` command packages the updated web resources to a .zip 
 
 Alternatives:
 
-* Build the .zip file but do not upload it: 
-
-    ```bash
-    mfpdev app webupdate --build
-    ```
-
 * Build the .zip file and upload it to a different MobileFirst Server: `mfpdev app webupdate [server-name] [runtime-name]`. For example: 
 
     ```bash
     mfpdev app webupdate myQAServer MyBankApps
     ```
 
-* Build the .zip file and upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
+* Upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
 
     ```bash
     mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
     ```
 
-* Build the .zip file and upload it via the MobileFirst Operations Console:
+* Manually upload packaged web resources to the MobileFirst Server:
+ 1. Build the .zip file without uploading it:
 
-    ```bash
-    mfpdev app webupdate --build
-    ```
+         ```bash
+         mfpdev app webupdate --build
+         ```
+ 2. Load the MobileFirst Operations Console and click on the application entry.
+ 3. Click on **Upload File** to upload the packaged web resources.
 
-    ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
+![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
 
 > Run the command `mfpdev help webupdate` to learn about additional command flags.
 
@@ -156,7 +153,7 @@ Differential Direct Updates enables an application to download only the files th
 ## Working with Direct Update in the field
 The diagram below depicts the flow of updating an application's web resources using Direct Update once it has been submitted to the application stores and used by end-users.
 
-![Direct update in the field]({{site.baseurl}}/assets/backup/05_05_distribution.jpg)
+![Direct update in the field](distribution.jpg)
 
 > <b>Note:</b> During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.
 
@@ -165,6 +162,6 @@ The diagram below depicts the flow of updating an application's web resources us
 
 ### Sample usage
 1. From the command line, navigate to the Cordova project.
-2. Add a platform using the `cordova platform add` command.
-3. Prepare and run the Cordova application using `cordova prepare` followed by `cordova run`.
+2. Add a platform by running the `cordova platform add` command.
+3. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
 4. Alter the application web resources and upload them to the MobileFirst Server as [explained above](#creating-and-deploying-updated-web-resources).
