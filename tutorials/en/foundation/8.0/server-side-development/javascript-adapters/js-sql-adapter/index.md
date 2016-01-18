@@ -3,8 +3,8 @@ layout: tutorial
 title: JavaScript SQL Adapter
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 downloads:
-  - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters
 weight: 2
 ---
 
@@ -133,8 +133,8 @@ The result is retrieved as a JSON object:
  * To access the `resultSet` object on the server-side: `result.ResultSet`
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the Adapters Maven project.
 
-* The Adapters project also includes a sample MySQL script in the **Utils** folder, which needs to be imported into your database to test the project.
-* Make sure that the `mobilefirst@% user` has all access permissions assigned to it.
-* Remember to download and set the MySQL Java Connector in your Adapters project.
+* The Adapters Maven project includes a sample MySQL script in the **Utils** folder, which needs to be imported into your database.
+* Make sure that the `mobilefirst@%` user has all access permissions assigned.
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).

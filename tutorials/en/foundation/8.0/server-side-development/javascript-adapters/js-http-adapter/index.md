@@ -154,4 +154,6 @@ var input = {
 ```
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the Adapters Maven project.
+
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
