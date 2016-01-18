@@ -43,7 +43,7 @@ Push notifications are supported for the following mobile platforms:
 * Android 2.3.5, 4.x, 5.x, 6.x
 * iOS 6, 7, 8 and 9
 * Windows Phone 8.x
-* Windows 8
+* Windows 8.1
 
 ### Push Notification Types
 **Tag notifications**

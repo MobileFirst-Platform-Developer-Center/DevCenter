@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal Applications
-breadcrumb_title: Windows 8 Universal SDK
+title: Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal Applications
+breadcrumb_title: Windows 8.1 Universal SDK
 relevantTo: [windows8]
 weight: 4
 ---
@@ -10,7 +10,7 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
-In this tutorial you will learn how to add the MobileFirst Native SDK using Nuget to either a new or existing Windows 8 Universal application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
+In this tutorial you will learn how to add the MobileFirst Native SDK using Nuget to either a new or existing Windows 8.1 Universal application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
 
 **Pre-requisites:** 
 
@@ -32,7 +32,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
 ### Creating and registering the application
 
-1. Create a Windows 8 Universal project using Visual Studio 2013/2015 or use an existing project.  
+1. Create a Windows 8.1 Universal project using Visual Studio 2013/2015 or use an existing project.  
 
 2. Open the **Command-line** and navigate to the root of the Visual Studio project.  
 
@@ -65,7 +65,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 1. To import worklight studio packages, NuGet package manager is used.
 NuGet is the package manager for the Microsoft development platform including .NET. The NuGet client tools provide the ability to produce and consume packages. The NuGet Gallery is the central package repository used by all package authors and consumers.
 
-2. Open the Windows 8 Universal project in Visual studio 2013/2015. Right-click the project solution and select  **Manage Nuget packages**.
+2. Open the Windows 8.1 Universal project in Visual studio 2013/2015. Right-click the project solution and select  **Manage Nuget packages**.
 
     ![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
 
@@ -120,4 +120,4 @@ The file can also be updated by pulling from the server its latest revision by r
 
 ## Tutorials to follow next
 Now that your application contains the Native API library, you can follow the tutorials in the
-[Native Windows 8 Development](../../native/windows8/) section to learn more about authentication and security, server-side development, advanced client-side development, notifications and more.
+[Native Windows 8.1 Development](../../native/windows8/) section to learn more about authentication and security, server-side development, advanced client-side development, notifications and more.

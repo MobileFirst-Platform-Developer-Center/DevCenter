@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource Request from Native Windows 8 Universal Applications
+title: Resource Request from Native Windows 8.1 Universal Applications
 relevantTo: [windows8]
 downloads:
   - name: Download Native project
@@ -13,7 +13,7 @@ MobileFirst applications can access resources using the `WLResourceRequest` REST
 
 This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
 
-To create and configure a Windows 8 (Universal) native project, first follow the [Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) tutorial.
+To create and configure a Windows 8.1 (Universal) native project, first follow the [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) tutorial.
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
@@ -101,7 +101,7 @@ The `response` object contains the response data and you can use its methods and
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8) the Native project.
 
-* The ResourceRequestWin8 project contains a native Windows 8 Universal application that uses a MobileFirst native SDK to communicate with a MobileFirst Server instance.
-* Make sure to update the mfpclient.properties file in the native Windows 8 with the relevant server settings.
+* The ResourceRequestWin8 project contains a native Windows 8.1 Universal application that uses a MobileFirst native SDK to communicate with a MobileFirst Server instance.
+* Make sure to update the mfpclient.properties file in the native Windows 8.1 with the relevant server settings.
 
 <span style = "color:red">SCREENSHOT</span>

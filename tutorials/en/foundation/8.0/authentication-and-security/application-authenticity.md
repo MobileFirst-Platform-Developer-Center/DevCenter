@@ -12,7 +12,7 @@ The out-of-the-box Application Authenticity [security check](../authentication-c
 To enable Application Authenticity protection you can either follow the on-screen instructions in the MobileFirst Operations Console → [your-application] → Authenticity, or review the information below.
 
 #### Availability
-Application Authenticity is available in all supported platforms (iOS, Android, Windows 8 Universal, Windows 10 UWP) in both Cordova and Native applications.
+Application Authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and Native applications.
 
 > <b>Note:</b> Application Authenticity is <b>not available</b> in the MobileFirst Development Server. To test, use a remote application server such as a QA, UAT or Production server.
 
@@ -34,7 +34,7 @@ Once an application has successfuly registered with the MobileFirst Server, and 
 > The challenge token in the diagram is processed by compiled native code, so that third-party attackers cannot see the logic of this processing.
 
 ## Enabling Application Authenticity
-In order to enable Application Authenticity in your Cordova or Native application, the application's binary file needs to be signed using the MobileFirst-supplied command line tool. Eligible binary files are: `ipa` for iOS, `apk` for Android and `appx` for Windows 8 Universal &amp; Windows 10 UWP.
+In order to enable Application Authenticity in your Cordova or Native application, the application's binary file needs to be signed using the MobileFirst-supplied command line tool. Eligible binary files are: `ipa` for iOS, `apk` for Android and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
 
 1. Open a **Command-line** window and run the command: `java -jar path-to-mfp-server-authenticity-tool.jar path-to-binary-file`
 

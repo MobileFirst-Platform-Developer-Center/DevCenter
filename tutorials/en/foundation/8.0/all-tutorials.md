@@ -14,7 +14,7 @@ Get a feel of MobileFirst Platform Foundation.
 * [Quick Start with Cordova](../quick-start/cordova/)
 * [Quick Start with iOS](../quick-start/ios/)
 * [Quick Start with Android](../quick-start/android/)
-* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8 Universal](../quick-start/windows-8/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8.1 Universal](../quick-start/windows-8/)
 * <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 10 UWP](../quick-start/windows-10/)
 * [Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
@@ -24,16 +24,16 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * [Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
 * [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
-* [Setting up the Windows 8 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
+* [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
 * <span style="color:red">TODO </span>[Setting up MobileFirst Platform Foundation on IBM Containers Using Foundation Tile](../setting-up-your-development-environment/foundation-tile/)
 
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
-Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8 Universal or Windows 10 UWP application.
+Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
 
 * <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications/)
 * [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/)
 * [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications/)
-* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 8 Universal applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications/)
+* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications/)
 * <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
 
 ### [Client-side Development](../client-side-development/)
@@ -64,7 +64,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
 * [Resource request from iOS Swift-based applications](../server-side-development/resource-request-from-native-ios-swift-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../server-side-development/resource-request-from-native-android-applications/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../server-side-development/resource-request-from-native-windows-10-applications/)
 * <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
 * <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
@@ -79,13 +79,13 @@ Add various layers of protection to your applications and adapters.
     * [SecurityCheckWithAttempts in Cordova applications applications](../authentication-and-security/implementing-securitycheckwithattempts/cordova/)
     * [SecurityCheckWithAttempts in iOS applications](../authentication-and-security/implementing-securitycheckwithattempts/ios/)
     * [SecurityCheckWithAttempts in Android applications](../authentication-and-security/implementing-securitycheckwithattempts/android/)
-    * [SecurityCheckWithAttempts in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithattempts/windows-8/)
+    * [SecurityCheckWithAttempts in Windows 8.1 Universal  applications](../authentication-and-security/implementing-securitycheckwithattempts/windows-8/)
     * [SecurityCheckWithAttempts in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithattempts/windows-10/)
 * <span style="color:red">TODO </span>[Implementing SecurityCheckWithUserAuthentication](../authentication-and-security/implementing-securitycheckwithuserauthentication/)
     * [SecurityCheckWithUserAuthentication in Cordova  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/cordova/)
     * [SecurityCheckWithUserAuthentication in iOS  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/ios/)
     * [SecurityCheckWithUserAuthentication in Android  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/android/)
-    * [SecurityCheckWithUserAuthentication in Windows 8 Universal  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-8/)
+    * [SecurityCheckWithUserAuthentication in Windows 8.1 Universal  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-8/)
     * [SecurityCheckWithUserAuthentication in Windows 10 UWP  applications](../authentication-and-security/implementing-securitycheckwithuserauthentication/windows-10/)
 * <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
 * <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
@@ -103,7 +103,7 @@ Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.
     * [Handling Push Notifications in Cordova applications](../notifications/cordova/)
     * [Handling Push Notifications in iOS applications](../notifications/handling-push-notifications/ios/)
     * [Handling Push Notifications in Android applications](../notifications/handling-push-notifications/android/)
-    * [Handling Push Notifications in Windows 8 Universal applications](../notifications/handling-push-notifications/windows-8/)
+    * [Handling Push Notifications in Windows 8.1 Universal applications](../notifications/handling-push-notifications/windows-8/)
     * [Handling Push Notifications in Windows 10 UWP applications](../notifications/handling-push-notifications/windows-10/)
 
 ### [Analytics](../analytics/)

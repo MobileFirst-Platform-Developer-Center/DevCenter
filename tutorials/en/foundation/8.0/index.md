@@ -19,7 +19,7 @@ For curated content visit:
 
 * [iOS development](ios-tutorials/) 
 * [Android development](android-tutorials/) 
-* [Windows 8 Universal development](windows-8-tutorials/) 
+* [Windows 8.1 Universal development](windows-8-tutorials/) 
 * [Windows 10 UWP development](windows-10-tutorials/) 
 * [Cordova development](hybrid-tutorials/)
 * [Server-side development](server-side-tutorials/)

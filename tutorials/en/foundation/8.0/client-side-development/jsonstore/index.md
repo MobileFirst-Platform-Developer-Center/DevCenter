@@ -18,7 +18,7 @@ IBM MobileFirst™ Platform Foundation's **JSONStore** is an optional client-sid
 #### JSONStore is available in the following environments:
 
 * Native: Android and iOS
-* Cordova: Android, iOS, Windows 8 Universal and Windows 10 UWP
+* Cordova: Android, iOS, Windows 8.1 Universal and Windows 10 UWP
 * Mobile Browser Simulator (not for production use)
 
 > **Note:** This tutorial shows how to get started with the JSONStore API. Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Platform Foundation user documentation.

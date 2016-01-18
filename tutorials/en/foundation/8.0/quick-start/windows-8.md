@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Windows 8 Universal end-to-end demonstration
+title: Windows 8.1 Universal end-to-end demonstration
 relevantTo: [windows]
 weight: 4
 ---

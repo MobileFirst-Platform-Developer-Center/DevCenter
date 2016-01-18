@@ -1,12 +1,12 @@
 ---
 layout: tutorial
-title: Setting up the Windows 8 and Windows 10 development environment
-breadcrumb_title: Windows 8 and 10 environments
+title: Setting up the Windows 8.1 and Windows 10 development environment
+breadcrumb_title: Windows 8.1 and 10 environments
 relevantTo: [windows,cordova]
 weight: 4
 ---
 ## Overview
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8 Universal and Windows 10 UWP applications.
+This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8.1 Universal and Windows 10 UWP applications.
 
 **Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/) tutorial.
 
@@ -19,16 +19,16 @@ This tutorial explains the steps a developer needs to follow in order to be able
 > Learn more in the [Windows developer support](https://dev.windows.com/en-us/support) website
 
 ### Development
-Application development for either Windows 8 Universal or Windows 10 UWP requires a PC workstation running either the Windows 8 or Windows 10 operating system, with Microsoft  Visual Studio 2013 or 2015.
+Application development for either Windows 8.1 Universal or Windows 10 UWP requires a PC workstation running either the Windows 8.1 or Windows 10 operating system, with Microsoft  Visual Studio 2013 or 2015.
 
-#### Windows 8 Universal
-A Windows 8 Universal application Solution is made up from three projects:
+#### Windows 8.1 Universal
+A Windows 8.1 Universal application Solution is made up from three projects:
 
 - Shared code for business logic
 - A project for Windows Desktop/tablet applications
 - A project for Windows Phone applications
 
-Windows 8 Universal requires:
+Windows 8.1 Universal requires:
 
 - Windows OS 8.1 or higher
 - Visual Studio 2013 or 2015

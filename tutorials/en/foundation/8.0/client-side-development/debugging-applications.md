@@ -128,7 +128,7 @@ These APIs are multiplatform. The output destination changes according to the pl
 
 * **Developer console** when it is running on a desktop browser
 * **LogCat** when it is running on Android device
-* **Visual Studio Output** when it is running on a Windows Phone 8 device and Windows 8 App
+* **Visual Studio Output** when it is running on a Windows Phone 8 device and Windows 8.1 App
 * **XCode Console** when it is running on an iOS device
 
 `WL.Logger` contains more methods.
