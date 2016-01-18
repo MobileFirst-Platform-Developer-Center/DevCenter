@@ -11,62 +11,103 @@ weight: 8
 ## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API. The REST API works with all adapters and external resources.
 
-This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
-
-To create and configure an iOS native project, first follow the [Adding the MobileFirst Platform Foundation SDK to iOS Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) tutorial.
+Prerequisite: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) to your Native iOS project.
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
-1. To call a resource, create a `WLResourceRequest` object and specify the path to the adapter and the HTTP method(GET, POST, etc):
+Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method (`WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut`, `WLHttpMethodDelete`):
 
-    ```swift
-    let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getFeed"), method: WLHttpMethodGet)
-    ```
-  * For JavaScript adapters, use `/adapters/{AdapterName}/{procedureName}`
-  * For Java adapters, use `/adapters/{AdapterName}/{path}`
-  * To access resources outside of the project, use the full URL    
+```swift
+let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getFeed"), method: WLHttpMethodGet)
+```
 
-3. Add the required parameters:
-  * In JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name `params`:
+* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
+* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
+* To access resources outside of the project, use the full URL as per the requirements of the external server.
 
-        ```swift
-        request.setQueryParameterValue("['param1', 'param2']", forName: "params")
-        ```
-  * In Java adapters or external resources, use the `setQueryParameter` method for each parameter:
+## Sending the request
+Request the resource by using the `sendWithCompletionHandler` method.  
+Supply a completion handler to handle the retrieved data:
 
-        ```swift
-        request.setQueryParameterValue("value1", forName: "param1")
-        request.setQueryParameterValue("value2", forName: "param2")
-        ```
-4. Call the resource by using the `sendWithCompletionHandler` method.  
-Supply a completion handler to manage the retrieved data:
-
-    ```swift
-    request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
-        var resultText = ""
-        if(error != nil){
-            resultText = "Successfully called the resource"
-            resultText += error.description
-        }
-        else if(response != nil){
-            resultText = "Failed to call the resource"
-            resultText += response.responseText
-        }
-        self.updateView(resultText)
+```swift
+request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+    var resultText = ""
+    if(error != nil){
+        resultText = "Failed to call the resource"
+        resultText += error.description
     }
-    ```
-    Use the `response` and `error` objects to get the data that is retrieved from the adapter.  
-    The `response` object contains the response data and you can use its methods and properties to retrieve the required information.
+    else if(response != nil){
+        resultText = "Successfully called the resource"
+        resultText += response.responseText
+    }
+    self.updateView(resultText)
+}
+```
 
-</br>
-> There are also other signatures for the `send` method, which are not covered in this tutorial. Those signatures enable you to set parameters in the body instead of the query and provide more granular management of the retrieved data (such as non-text responses, PDF, etc). You can use the `sendWithDelegate` method and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols.  
-See the user documentation to learn more about `WLResourceRequest`.
+Use the `response` and `error` objects to get the data that is retrieved from the adapter.
+
+The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText -> String`, `responseJSON -> Dictionary` (if the response is in JSON) and `status -> Int` (the HTTP status of the response).
+
+Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
+
+## Parameters
+Before sending your request, you may want to add parameters as needed.
+
+### Path parameters
+As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WLResourceRequest` object.
+
+### Query parameters
+To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
+
+```swift
+request.setQueryParameterValue("value1", forName: "param1")
+request.setQueryParameterValue("value2", forName: "param2")
+```
+### Form parameters
+To send **form** parameters in the body, use `sendWithFormParameters` instead of the simple `sendWithCompletionHandler`:
+
+```swift
+//@FormParam("height")
+let formParams = ["height":"175"]
+
+//Sending the request with Form parameters
+request.sendWithFormParameters(formParams) { (response, error) -> Void in
+    if(error == nil){
+        NSLog(response.responseText)
+    }
+    else{
+        NSLog(error.description)
+    }
+}
+```
+
+### Header parameters
+To send a parameter as an HTTP header use the `setHeaderValue` API:
+
+```swift
+//@HeaderParam("Date")
+request.setHeaderValue("2015-06-06", forName: "Date")
+```
+
+### Other custom body parameters
+
+- `sendWithBody` allows you to set an arbitrary String in the body.
+- `sendWithJSON` allows you to set an arbitrary dictionary in the body.
+- `sendWithData` allows you to set an arbitrary `NSData` in the body.
+
+### Javascript Adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```swift
+request.setQueryParameterValue("['param1', 'param2']", forName: "params")
+```
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift) the Native project.
 
 * The ResourceRequestSwift project contains a native iOS Swift application that uses a MobileFirst native SDK to communicate with the MobileFirst Server instance.
 * Make sure to update the mfpclient.plist file in the native iOS project with the relevant server settings.
+* The sample uses `JavaAdapter` contained in the [Adapters sample](https://github.com/MobileFirst-Platform-Developer-Center/Adapters). The adapter needs to be deployed first.
 
 <span style = "color:red">SCREENSHOT</span>
