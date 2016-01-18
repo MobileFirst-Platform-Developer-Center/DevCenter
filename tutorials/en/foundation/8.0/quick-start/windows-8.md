@@ -22,25 +22,33 @@ From a **Command-line** window, navigate to the server's **scripts** folder and 
 ### 2. Creating an application
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
- 
+
 1. Click on the "Create new" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
 
     ![Image of selecting platform, and providing an identifier and version](create-an-application.png)
- 
-2. Click on the **Get Starter Code** tile and select to download the Android Starter Code.
+
+2. Click on the **Get Starter Code** tile and select to download the Windows 8.1 Universal Starter Code.
 
     ![Image of downloading a sample application](download-sample-application.png)
-    
+
     ![Image of download a sample application](download-application-code.png)
 
 ### 3. Editing application logic
 
 1. Open the Visual Studio project.
 
-2. Select the solution's **App.xaml.cs** file and paste the following code snippet:
+2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet:
 
     ```csharp
-    WLResourceRequest code snippet here
+    IWorklightClient _newClient = WorklightClient.CreateInstance();
+
+    StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/users/world");    
+
+    WorklightResourceRequest rr = _newClient.ResourceRequest(uriBuilder.ToString(), "GET");
+
+    WorklightResponse resp = await rr.Send();
+
+    Debug.WriteLine("Response is " + resp.ResponseText);
     ```
 
 ### 4. Creating an adapter
@@ -50,10 +58,10 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
 
     ![Image of create an adapter](create-an-adapter.png)
-    
+
     ![Image of downloading an adapter sample](download-adapter-code.png)
 
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
+2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
     ```bash
     mfpdev adapter build
