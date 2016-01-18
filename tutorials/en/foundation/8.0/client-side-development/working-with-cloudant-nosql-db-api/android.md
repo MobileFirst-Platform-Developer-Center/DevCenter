@@ -7,6 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise
 ---
 
+
 ##Overview
 
 This tutorial shows how to apply technology available in IBM MobileFirst Platform Foundation to store data for Android mobile applications. By using Cloudant NoSQL DB APIs, you can complete specific database operations, such as creating, reading, updating, deleting, and synchronizing data between local and remote databases. This tutorial provides a basic overview of these APIs and explains how to configure and run the sample, in the following topics:
@@ -324,40 +325,43 @@ It is possible to encrypt the local datastores in order to secure data that is b
   * Add `sqlcipher.jar` as a file dependency. You can use the **Dependencies** tab under **Open Module Settings**, from the context menu of the Android Studio app folder.
 2. To use SQLCipher commercially, you must obtain the necessary [license](https://www.zetetic.net/sqlcipher/).
 3. Initialize your local store for encryption with a key provider.
-{% highlight java linenos %}
-// Initialize a key provider
-KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"password","user");
 
-// Create local store using reference to IMFDataManager that you initialized above
-String name = "todosdb";
-Task<;Store>; storeTask = manager.localStore(name, keyProvider);
-storeTask.continueWith(new Continuation<;Store, Void>;() {
-    @Override
-    public Void then(Task<;Store>; task) throws Exception {
-        if (task.isFaulted()) {
-            // Handle error
-        } else {
-            // Do something with Store
-            Store store = task.getResult();
-        }
-        return null;
-     }
-});
-{% endhighlight %}
+    ```java
+    // Initialize a key provider
+    KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"password","user");
+    
+    // Create local store using reference to IMFDataManager that you initialized above
+    String name = "todosdb";
+    Task<;Store>; storeTask = manager.localStore(name, keyProvider);
+    storeTask.continueWith(new Continuation<;Store, Void>;() {
+        @Override
+        public Void then(Task<;Store>; task) throws Exception {
+            if (task.isFaulted()) {
+                // Handle error
+            } else {
+                // Do something with Store
+                Store store = task.getResult();
+            }
+            return null;
+         }
+    });
+    ```
+
 4. When replicating with an encrypted local store, you must pass a `KeyProvider` into `pullReplicationForStore()` or `pushReplicationForStore()`.
-{% highlight java linenos %}
-// Using reference to IMFDataManager that you initialized above
-String name = "todosdb";
 
-// Initialize a key provider
-KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"passw0rd","user");
-
-// pull replication
-Task<;PushReplication>; pullTask = manager.pullReplicationForStore(name, keyProvider);
-
-// push replication
-Task<;PushReplication>; pushTask = manager.pushReplicationForStore(name, keyProvider);
-{% endhighlight %}
+    ```java
+    // Using reference to IMFDataManager that you initialized above
+    String name = "todosdb";
+    
+    // Initialize a key provider
+    KeyProvider keyProvider = new AndroidKeyProvider(getContext(),"passw0rd","user");
+    
+    // pull replication
+    Task<;PushReplication>; pullTask = manager.pullReplicationForStore(name, keyProvider);
+    
+    // push replication
+    Task<;PushReplication>; pushTask = manager.pushReplicationForStore(name, keyProvider);
+    ```
 
 
 ##BlueList application flow
