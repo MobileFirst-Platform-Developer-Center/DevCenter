@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Android -  Cloudant NoSQL DB API
+title: iOS - Cloudant NoSQL DB API
 relevantTo: [ios]
 downloads:
   - name: Download MobileFirst project

@@ -369,8 +369,8 @@ It is possible to encrypt the local datastores in order to secure data that is b
 When the application starts, the `DataStoreManager` instance initiates the connection to the MobileFirst Server instance and creates and registers the `BlueListChallengeHandler` instance.
 
 {% highlight java linenos %}
-    WLClient client = WLClient.createInstance(context);<br />
-    client.registerChallengeHandler(blueListChallengeHandler);<br />
+    WLClient client = WLClient.createInstance(context);
+    client.registerChallengeHandler(blueListChallengeHandler);
 {% endhighlight %}
 
 For simplicity, the sample silently logs in a user by calling `CloudantAuthenticationAdapter` with correct user name and password parameters. This is completed in the `BlueListChallengeHandler`.
@@ -379,7 +379,7 @@ For simplicity, the sample silently logs in a user by calling `CloudantAuthentic
 @Override
 public void handleChallenge(WLResponse wlResponse) {
     Object[] parameters = new Object[]{UserName,UserPassword};
-    WLProcedureInvocationData invocationData = new  WLProcedureInvocationData(AdapterName, "submitAuthentication");<br />
+    WLProcedureInvocationData invocationData = new  WLProcedureInvocationData(AdapterName, "submitAuthentication");
     invocationData.setParameters(parameters);
     WLRequestOptions options = new WLRequestOptions();
     options.setTimeout(30000);
