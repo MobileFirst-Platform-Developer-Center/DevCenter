@@ -402,7 +402,7 @@ The `MainActivity` class provides functions for creating, updating, deleting, an
 
 After completing initialization, the application does an initial pull from the remote database. The user can now create, update, and modify list items in the application, and modify the corresponding priority (red = high, yellow = medium, white = low). By design, the application starts synchronization only when the user manually pulls down the list. On pull down, the application first completes a pull replication from the remote database to the local. After this operation has completed, push replication occurs, which sends any updated local data to the remote database. The local and remote databases are then synchronized.
 
-![BlueList Todos 1](BlueList_Todos_13.png)
-![BlueList Todos 2](BlueList_Todos_23.png)
+![BlueList Todos 1](BlueList_Todos_1.png)
+![BlueList Todos 2](BlueList_Todos_2.png)
 
 
