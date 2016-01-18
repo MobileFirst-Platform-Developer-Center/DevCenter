@@ -97,7 +97,7 @@ Add various layers of protection to your applications and adapters.
 ### [Notifications](../notifications/)
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.  
 
-* <span style="color:red">TODO </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
+* <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
 * <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
 * <span style="color:red">TODO </span>[Handling Push Notifications](../notifications/handling-push-notifications/)
     * [Handling Push Notifications in Cordova applications](../notifications/cordova/)
@@ -142,7 +142,7 @@ Add testing capabilities to your application.
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.  
 
-* <span style="color:red">TODO </span>[Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
+* <span style="color:red">IN PROGRESS </span>[Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
     * [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
 	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
 
