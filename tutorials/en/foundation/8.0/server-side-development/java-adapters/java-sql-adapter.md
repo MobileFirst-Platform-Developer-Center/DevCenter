@@ -68,7 +68,7 @@ protected void init() throws Exception {
   public class UserAdapterResource {
 }
 ```
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.<br/><br/>
+`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
 
 ### Using DataSource
 #### UserAdapterResource
@@ -85,7 +85,7 @@ public static void init() throws NamingException {
 ```
 The `DataSource` is set as `static` so that it can be shared across all requests to the adapter. It is initialized in the `init()` method, which is called by the `init()` method of `UserAdapterApplication`, as described above.
 
-The previously defined `jndiName` parameter is used to find the database configuration.<br/><br/>
+The previously defined `jndiName` parameter is used to find the database configuration.
 
 ### Create User
 
@@ -131,7 +131,7 @@ The SQL queries are built by the `PreparedStatement` method.
 
 If the insertion was successful, the `return Response.ok().build()` method is used to send a `200 OK` back to the client. If there was an error, a different `Response` object can be built with a specific HTTP status code. In this example, a `409 Conflict` error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.
 
-**Important:** Make sure to close resources, such as prepared statements and connections.<br/><br/>
+**Important:** Make sure to close resources, such as prepared statements and connections.
 
 ### Get User
 ```java
@@ -173,7 +173,7 @@ This method uses `@GET` with a `@Path("/{userId}")`, which means that it is avai
 If the user is not found, the `404 NOT FOUND` error code is returned.  
 If the user is found, a response is built from the generated JSON object.
 
-Prepending the method with `@Produces("application/json")` makes sure that the `Content-Type` of the output is correct.<br/><br/>
+Prepending the method with `@Produces("application/json")` makes sure that the `Content-Type` of the output is correct.
 
 ### Get all users
 This method is similar to `getUser`, except for the loop over the `ResultSet`.
@@ -203,7 +203,6 @@ public Response getAllUsers() throws SQLException{
     return Response.ok(results).build();
 }
 ```
-<br/><br/>
 ### Update user
 
 ```java
@@ -246,7 +245,7 @@ public Response updateUser(@PathParam("userId") String userId,
 
 }
 ```
-When updating an existing resource, it is standard practice to use `@PUT` (for `HTTP PUT`) and to use the resource ID in the `@Path`.<br/><br/>
+When updating an existing resource, it is standard practice to use `@PUT` (for `HTTP PUT`) and to use the resource ID in the `@Path`.
 
 ### Delete user
 

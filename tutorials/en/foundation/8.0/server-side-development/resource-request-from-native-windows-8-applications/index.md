@@ -11,9 +11,7 @@ weight: 9
 ## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API. The REST API works with all adapters and external resources.
 
-This tutorial explains how to use the `WLResourceRequest` API with an HTTP adapter.
-
-To create and configure a Windows 8.1 (Universal) native project, first follow the [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal Applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) tutorial.
+Prerequisite: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-wondows-8-applications) to your Native Windows 8.1 project.
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
