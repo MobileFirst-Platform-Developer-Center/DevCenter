@@ -101,7 +101,7 @@ cloudant = new CloudantClient(cloudantDomain,cloudantKey,cloudantPassword);
 db = cloudant.database(CLOUDANT_DB, false);
 ```
 <br/>
-Using [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) and standard Java API for RESTful Web Services (JAX-RS), you can create a new document on Cloudant in just a few lines, by sending a JSON representation of the document in the HTTP request.
+Using [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) and standard Java API for RESTful Web Services (JAX-RS 2.0), you can create a new document on Cloudant in just a few lines, by sending a JSON representation of the document in the HTTP request.
 
 ```java
 @POST

@@ -29,7 +29,7 @@ You can write adapters in JavaScript or Java.
 
 ### Benefits specific to Java adapters
 * Ability to fully control the URL structure, the content types, the request and response headers, content and encoding
-* <span style="color:red">Easy and fast development and testing by using the command-line interface (CLI)</span>
+* Easy and fast development and testing by using the MobileFirst Developer CLI.
 * Ability to test the adapter by using a 3rd-party tool such as Postman
 * Easy and fast deployment to a running MobileFirst Server instance with no compromise on performance and no downtime
 * Security integration with the MobileFirst security model with no additional customization, by using simple annotations in the source code
@@ -48,10 +48,8 @@ The JavaScript implementation of the procedure receives the JSON data, performs 
 ![javascript_adapters](javascript_adapters.jpg)
 
 ## Java adapters
-Java adapters expose a full REST API to the client and are written in Java. This type of adapters is based on the [JAX-RS specification] (https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html).
+Java adapters expose a full REST API to the client and are written in Java. This type of adapter is based on the [JAX-RS 2.0 specification] (https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html).
 In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource. The only exception is if the client sending the request supports GZip, then the returned content encoding of the Java adapter is compressed by GZip. All operations on the returned content are done and owned by the developer.
-
-> For more information about JAX-RS, see [https://jsr311.java.net/nonav/releases/1.1/index.html](https://jsr311.java.net/nonav/releases/1.1/index.html)
 
 ![java-adapter](java-adapter.jpg)
 
