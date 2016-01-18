@@ -123,5 +123,11 @@ function loadFeedsSuccess(result){
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the adapter Maven project.
+
+### Sample usage
+* Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.
+* The sample uses the `JavaAdapter` contained in the Adapters Maven project. 
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 
 ![RSSReader](RSSReader.png)

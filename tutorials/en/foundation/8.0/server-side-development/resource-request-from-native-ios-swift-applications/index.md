@@ -5,6 +5,8 @@ relevantTo: [ios]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters
 weight: 8
 ---
 
@@ -109,10 +111,14 @@ request.setQueryParameterValue("['param1', 'param2']", forName: "params")
 > For more information about WLResourceRequest, refer to the user documentation.
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift) the Native project.
+The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.
 
-* The ResourceRequestSwift project contains a native iOS Swift application that uses a MobileFirst native SDK to communicate with the MobileFirst Server instance.
-* Make sure to update the mfpclient.plist file in the native iOS project with the relevant server settings.
-* The sample uses `JavaAdapter` contained in the [Adapters sample](https://github.com/MobileFirst-Platform-Developer-Center/Adapters). The adapter needs to be deployed first.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift) the Native project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the adapter Maven project.
+
+### Sample usage
+* Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.
+* The sample uses the `JavaAdapter` contained in the Adapters Maven project. 
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 
 <span style = "color:red">SCREENSHOT</span>

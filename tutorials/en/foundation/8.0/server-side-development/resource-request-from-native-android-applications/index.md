@@ -84,8 +84,12 @@ The `response` object contains the response data and you can use its methods and
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid) the Native project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the adapter Maven project.
 
-* The ResourceRequestAndroid project contains a native Android application that uses a MobileFirst native SDK to communicate with MobileFirst Server.
-* Make sure to update the mfpclient.properties file in the native Android project with the required server settings.
+### Sample usage
+* Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.
+* The sample uses the `JavaAdapter` contained in the Adapters Maven project. 
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+
 
 <span style = "color:red">SCREENSHOT</span>
