@@ -61,7 +61,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
     * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
-* [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
 * [Resource request from iOS Swift-based applications](../server-side-development/resource-request-from-native-ios-swift-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../server-side-development/resource-request-from-native-android-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
