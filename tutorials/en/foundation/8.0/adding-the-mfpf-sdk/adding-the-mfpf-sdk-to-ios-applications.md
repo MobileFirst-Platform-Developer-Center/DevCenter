@@ -21,6 +21,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Coco
 #### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -104,6 +105,14 @@ import IBMMobileFirstPlatformFoundation
 <br>
 #### Note about iOS 9:
 > If you are developing for iOS 9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's `info.plist` to be able to test locally without security restrictions.
+
+## Updating the MobileFirst Native SDK
+
+To update the MobileFirst Native SDK with the latest release, run the following command from the root folder of the Xcode project in a **Command-line** window:
+
+```bash
+pod update
+```
 
 ## Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the `mfpclient.plist` file and the `application-descriptor.json` file.
