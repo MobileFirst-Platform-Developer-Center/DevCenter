@@ -107,12 +107,13 @@ import IBMMobileFirstPlatformFoundation
 > If you are developing for iOS 9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's `info.plist` to be able to test locally without security restrictions.
 
 ## Updating the MobileFirst Native SDK
-
 To update the MobileFirst Native SDK with the latest release, run the following command from the root folder of the Xcode project in a **Command-line** window:
 
 ```bash
 pod update
 ```
+
+SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.org/?q=ibm%20mobilefirst).
 
 ## Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the `mfpclient.plist` file and the `application-descriptor.json` file.

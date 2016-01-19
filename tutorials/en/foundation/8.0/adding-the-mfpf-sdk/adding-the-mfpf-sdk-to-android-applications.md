@@ -21,6 +21,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Grad
 #### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -113,6 +114,12 @@ If using a locally installed server: From a **Command-line** window, navigate to
     ```xml
     <activity android:name="com.worklight.wlclient.ui.UIActivity" />
     ```
+
+## Updating the MobileFirst Native SDK
+To update the MobileFirst Native SDK with the latest release, find the release version number and update the `version` property accordingly in the **build.gradle** file.  
+See step 4 above.
+
+SDK releases can be found in the SDK's [JCenter repository](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#).
 
 ## Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Android Studio project after it has been integrated with the MobileFirst Native SDK: the `mfpclient.properties` and the `application-descriptor.json` file.
