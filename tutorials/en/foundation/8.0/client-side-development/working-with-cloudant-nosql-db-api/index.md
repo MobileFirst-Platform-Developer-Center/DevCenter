@@ -88,6 +88,7 @@ In the sample, the `CloudantAuthenticationAdapter` adapter has been created and 
 
 In order to use this sample, you must install the IBM MobileFirst Platform Cloudant Data Layer Local Edition. For more information about the installation process, see [IBM MobileFirst Platform Cloudant Data Layer Local Edition](http://www-01.ibm.com/support/knowledgecenter/SSTPQH_1.0.0/com.ibm.cloudant.local.install.doc/topics/clinstall_cloudant_local_overview.html), in the user documentation.
 
+<span style="color:red">UPDATE LINK TO 8.0 DOC'S</span>
 To obtain and download this component, see the following documentation:<br />
 [Download the IBM MobileFirst Platform Foundation V7.0 products](http://www.ibm.com/support/docview.wss?uid=swg24039278)
 
