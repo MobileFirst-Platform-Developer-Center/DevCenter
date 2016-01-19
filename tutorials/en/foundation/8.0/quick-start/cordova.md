@@ -5,7 +5,7 @@ relevantTo: [cordova]
 weight: 1
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are  registered using the MobileFirst Operations Console, an "skeleton" Cordova project is downloaded and edited to call the adapter, and the result is displayed - verifying a successful connection with the MobileFirst Server.
+The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are registered using the MobileFirst Operations Console, an "skeleton" Cordova project is downloaded and edited to call the adapter, and the result is displayed - verifying a successful connection with the MobileFirst Server.
 
 #### Prerequisites:
 

@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Windows 10 UWP end-to-end demonstration
+title: Windows 8.1 Universal and Windows 10 UWP end-to-end demonstration
 relevantTo: [windows]
-weight: 5
+weight: 4
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application is quickly created using the MobileFirst Operations Console and connectivity is verified with the MobileFirst Server.
+The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are registered using the MobileFirst Operations Console, an "skeleton" Visual Studio project is downloaded and edited to call the adapter, and the result is printed to the log - verifying a successful connection with the MobileFirst Server.
 
 #### Prerequisites:
 
-* Configured Visual Studio 2015
+* Configured Visual Studio 2013/5
 * MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
 * *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
@@ -27,7 +27,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ![Image of selecting platform, and providing an identifier and version](create-an-application.png)
 
-2. Click on the **Get Starter Code** tile and select to download the Windows 10 UWP Starter Code.
+2. Click on the **Get Starter Code** tile and select to download Windows 8.1 or Windows 10 Starter Code.
 
     ![Image of downloading a sample application](download-sample-application.png)
 
@@ -42,8 +42,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ```csharp
     IWorklightClient _newClient = WorklightClient.CreateInstance();
 
-    StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/users/world");
-        
+    StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/users/world");    
+
     WorklightResourceRequest rr = _newClient.ResourceRequest(uriBuilder.ToString(), "GET");
 
     WorklightResponse resp = await rr.Send();
