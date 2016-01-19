@@ -111,14 +111,14 @@ request.setQueryParameterValue("['param1', 'param2']", forName: "params")
 > For more information about WLResourceRequest, refer to the user documentation.
 
 ## Sample application
-The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.
+The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.  
+The adapter Maven project contains the Java adapter to be used during the resource request call.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the Native project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the Native project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
 * Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.
-* The sample uses the `JavaAdapter` contained in the Adapters Maven project. 
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+* The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 
 <span style = "color:red">SCREENSHOT</span>

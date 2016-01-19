@@ -124,12 +124,17 @@ function loadFeedsSuccess(result){
 > For more information about WLResourceRequest, refer to the user documentation.
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the MobileFirst project.
+The ResourceRequestSwift project contains a Cordova application that makes a resource request using a Java adapter.  
+The adapter Maven project contains the Java adapter to be used during the resource request call.
+
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the MobileFirst project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-* Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.
-* The sample uses the `JavaAdapter` contained in the Adapters Maven project. 
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+1. From the command line, navigate to the Cordova project.
+2. Add a platform by running the `cordova platform add` command.
+3. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
+
+* The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 
 ![RSSReader](RSSReader.png)

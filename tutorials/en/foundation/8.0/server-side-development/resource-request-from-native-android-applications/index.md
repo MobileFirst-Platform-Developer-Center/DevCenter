@@ -85,13 +85,14 @@ The `response` object contains the response data and you can use its methods and
 > For more information about WLResourceRequest, refer to the user documentation.
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Native project.
+The ResourceRequestSwift project contains a native Android application that makes a resource request using a Java adapter.  
+The adapter Maven project contains the Java adapter to be used during the resource request call.
+
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Native project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-* Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.
-* The sample uses the `JavaAdapter` contained in the Adapters Maven project. 
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
-
+* Make sure to update the **app/src/main/assets/mfpclient.properties** file in the Android Studio project with the server properties.
+* The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 
 <span style = "color:red">SCREENSHOT</span>
