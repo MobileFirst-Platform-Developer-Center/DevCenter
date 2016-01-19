@@ -86,7 +86,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     mfpdev adapter deploy Replace-with-remote-server-name
     ```
 
-<img src="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/cordova/cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
+<img src="cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
 
 ### 5. Testing the application
 
