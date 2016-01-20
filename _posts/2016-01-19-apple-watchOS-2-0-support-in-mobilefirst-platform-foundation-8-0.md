@@ -54,7 +54,7 @@ In order to use the demo app:
 
 4. Edit the **mfpclient.plist** file and set the `host` property. Make sure the file is a member of both targets - WatchOSDemoApp and WatchOSDemoApp WatchKit Extension:
 
-    ![Image of editing the .plist file in Xcode](/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/mfpclient.plist_edit.png)
+    ![Image of editing the .plist file in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/mfpclient.plist_edit.png)
 
     Remember the file should be member of both targets - WatchOSDemoApp and WatchOSDemoApp WatchKit Extension:
     
