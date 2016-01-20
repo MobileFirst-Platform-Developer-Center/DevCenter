@@ -74,7 +74,7 @@ Alternatives:
 ## User Experience
 By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
 
-![Direct update examples]({{site.baseurl}}/assets/backup/05_05_du_examples.png)
+![Direct update example](direct-update-success.png)
 
 ## Customizing the Direct Update UI
 The default Direct Update UI that is presented to the end-user can be customized, as can the entire user experience flow.  
