@@ -222,3 +222,8 @@ To group adapters you need to:
  * Drag and drop the file into the Create new adapter screen.
 
  ![Creating adapter using console](Create_adapter_console.png)
+
+ 5. After successfully deploying the adapter, the details page will be displayed containing the following tabs:
+  * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
+  * Resources - a list of the adapter resources.
+  * Configurations Files - adapter configuration data, to be used in devops environments.
