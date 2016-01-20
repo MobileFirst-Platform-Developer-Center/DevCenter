@@ -14,7 +14,7 @@ Get a feel of MobileFirst Platform Foundation.
 * [Quick Start with Cordova](../quick-start/cordova/)
 * [Quick Start with iOS](../quick-start/ios/)
 * [Quick Start with Android](../quick-start/android/)
-* [Quick Start with Windows 8.1 Universal and Windows 10 UWP](../quick-start/windows-8-10/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8.1 Universal and Windows 10 UWP](../quick-start/windows-8-10/)
 * [Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)

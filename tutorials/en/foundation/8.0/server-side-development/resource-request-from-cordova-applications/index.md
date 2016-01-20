@@ -32,6 +32,7 @@ The parameters for the constructor are:
  * For Java adapters, the URL should be `/adapters/{AdapterName}/{path}`
  * To access resources outside of the project, use the full URL
 * **HTTP method**: Most commonly `WLResourceRequest.GET` or `WLResourceRequest.POST`
+* **timeout**: Optional, request timeout in milliseconds
 
 ### setQueryParameter
 By using the `setQueryParameter` method, you can include query (URL) parameters in the REST request.

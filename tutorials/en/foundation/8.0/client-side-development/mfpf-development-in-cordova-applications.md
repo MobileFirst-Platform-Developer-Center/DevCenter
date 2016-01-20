@@ -14,26 +14,17 @@ IBM MobileFirst Platform Foundation provides an SDK in the form of a standard Co
 
 The MobileFirst SDK feature set provides the following:
 
-* Use MobileFirst `ResourceRequest` API to retrieve data from backend systems.
-* Protect applications using the MobileFirst security framework and other security features such as Application Authentcity Protection, Remote Disble.
-* Ability to navigate and share data between web and native views and/or call Native code using the MobileFirst `SendAction` API.
-* Update an application's web resources using Direct Update.
-* Implement Java or JavaScript adapters.
+* Use MobileFirst `ResourceRequest` API to retrieve data from backend systems
+* Protect applications using the MobileFirst SecurityChecks and other security features such as Application Authentcity Protection
+* Ability to navigate and share data between web and native views and/or call Native code using the MobileFirst `SendAction` API
+* Update an application's web resources using Direct Update
 * And more...
 
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 ## Application development
-Applications developed with Cordova can be further enhanced by using the following Cordova-provided development paths and features:
-
-### Hooks
-Cordova Hooks are scripts that provide developers with the ability to customize Cordova commands, enabling to create for example custom build flows. Read more about [Cordova Hooks](http://cordova.apache.org/docs/en/dev/guide/appdev/hooks/index.html#Hooks%20Guide).
-
-### Merges
-The Merges folder provides the ability to have platform-specific web resources (HTML, CSS and JavaScript files). These web resources are then deployed during the `cordova prepare` step to the appropriate native directory. Files placed under the **merges/** folder will override matching files in the **www/** folder of the relevant platform. Read more about [the Merges folder](https://github.com/apache/cordova-cli#merges).
-
 ### Cordova plug-ins
-Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on).
+Cordova applications can be enhanced by integerating **Cordova plug-ins**. Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on).
 
 You can find Cordova plug-ins in the official [Cordova plug-ins repository](https://cordova.apache.org/plugins/), as well as on [GitHub.com](https://github.com) and in popular Cordova blogs, such as [Plugreg](http://plugreg.com/).
 
@@ -51,9 +42,6 @@ Applications can be modified using 3rd party packages to achieve requirements su
 
 - [uglify-js](https://www.npmjs.com/package/uglify-js)
 - [clean-css](https://www.npmjs.com/package/clean-css)
-
-
-
 
 ## Further reading
 Learn more about Cordova:

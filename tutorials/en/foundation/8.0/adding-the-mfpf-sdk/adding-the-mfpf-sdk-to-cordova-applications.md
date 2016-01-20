@@ -13,24 +13,8 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 In this tutorial you will learn how to add the MobileFirst SDK to either a new or existing Cordova application created with Apache Cordova, Ionic or other thirdy-party tool. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are changed in the project.
 
-**Prerequisites:** 
-
-- Apache Cordova CLI and MobileFirst Developer CLI installed on the developer workstation.  
-- *Optional* MobileFirst Server to run a locally.
-- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
-
-#### Jump to:
-
-- [Available MobileFirst Cordova plug-ins](#available-mobilefirst-cordova-plug-ins)
-- [Adding the MobileFirst Cordova Plug-in](#adding-the-mobilefirst-cordova-plug-in)
-- [Registering the Cordova app in MobileFirst Server](#registering-the-cordova-app-in-mobilefirstserver)
-- [Running the application on emulator or on a real device](#running-the-application-on-emulator-or-on-a-real-device)
-- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Tutorials to follow next](#tutorials-to-follow-next)
-
-## Available MobileFirst Cordova plug-ins
-The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is registered at NPM](https://www.npmjs.com/package/cordova-plugin-mfp).  
-The SDK is comprised of the following plug-ins:
+The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, and is registered at NPM:  ([cordova-plugin-mfp](https://www.npmjs.com/package/cordova-plugin-mfp)).  
+The following MobileFirst Cordova SDK plug-ins are available:
 
 * cordova-plugin-mfp
 * cordova-plugin-mfp-push
@@ -38,16 +22,30 @@ The SDK is comprised of the following plug-ins:
 * cordova-plugin-mfp-fips
 
 **cordova-plug-in-mfp**  
-The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the `cordova-plugin-mfp` plug-in is automatically installed as well if not already installed.
+The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins the `cordova-plugin-mfp` plug-in is automatically installed as well.
 
 **cordova-plugin-mfp-jsonstore**  
 The `cordova-plugin-mfp-jsonstore` plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../client-side-development/jsonstore/).  
 
 **cordova-plugin-mfp-push**  
-The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../notifications/push-notifications-overview/).  
+The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push notification from the MobileFirst Server for Android apps. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications  tutorial](../notifications/push-notifications-overview/).  
 
 **cordova-plugin-mfp-fips**  
-The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see the user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see [FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) in the user docuementation.
+
+**Pre-requisites:** 
+
+- Apache Cordova CLI and MobileFirst Developer CLI installed on the developer workstation.  
+- *Optional* MobileFirst Server to run a locally.
+- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
+
+#### Jump to:
+
+- [Adding the MobileFirst Cordova Plug-in](#adding-the-mobilefirst-cordova-plug-in)
+- [Registering the Cordova app in MobileFirst Server](#registering-the-cordova-app-in-mobilefirstserver)
+- [Running the application on emulator or on a real device](#running-the-application-on-emulator-or-on-a-real-device)
+- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
+- [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the MobileFirst Cordova Plug-in
 Before starting, make sure the MobileFirst Server is running.  
