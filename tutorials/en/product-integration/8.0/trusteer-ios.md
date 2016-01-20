@@ -41,7 +41,7 @@ In **Build Phases > Link Binary With Libraries**, drag and drop
 ![trusteer-build-phases](trusteer-build-phases.png)
 
 In **Build Settings > Linking > Other Linker Flags**, add:
-<code>-force_load "$(SRCROOT)/tas/libtas_full.a"</code>.
+`-force_load "$(SRCROOT)/tas/libtas_full.a"`
 
 ![TR_IOS_forceload](TR_IOS_forceload.png)
 
