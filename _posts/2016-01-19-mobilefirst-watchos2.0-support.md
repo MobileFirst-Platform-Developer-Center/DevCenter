@@ -13,11 +13,12 @@ This blogpost is here to tell you about the MobileFirst SDK support for Apple Wa
 
 ### Overview
 
+**Prerequisite:** Make sure to read the [Authentication Concepts](/tutorials/en/foundation/8.0/authentication-and-security/authentication-concepts/) tutorial first.
+
 MobileFirst 8.0 beta SDK is coming with support for watchOS 2.0.
 In addition to the iOS framework - IBMMobileFirstPlatformFoundation there is a watchOS framework - IBMMobileFirstPlatformFoundationWatchOS, which can be used in the WatchKit Extension targets of Xcode project.
 The watch app as any regular app should be registered as a separate app in the MFP Console, using Bundle Identifier of the WatchKit Extension.
 That app is independent from it's iOS counterpart and has it's own security. It should define it's own Challenge Handler, using the tools available in the watch. (For example can't effectively use user/password but can tap a pin code as shown in the demo bellow).
-
 
 ### Install the SDK using CocoaPods
 
@@ -50,7 +51,9 @@ In order to use the demo app:
 - Open the workspace created - WatchOSDemoApp.xcworkspace
 - See you have under Pods/Pods/IBMMobileFirstPlatformFoundation both IBMMobileFirstPlatformFoundation.framework and IBMMobileFirstPlatformFoundationWatchOS.framework:
 ![my-alt-text](/assets/blog/2016-01-19-mobilefirst-watchos2.0-support/Pod_frameworks.png)
-- Edit mfpclient.plist to set `host` property. Remember the file should be member of both targets - WatchOSDemoApp and WatchOSDemoApp WatchKit Extension:
+- Edit mfpclient.plist to set `host` property:
+![my-alt-text](/assets/blog/2016-01-19-mobilefirst-watchos2.0-support/mfpclient.plist_edit.png)
+ Remember the file should be member of both targets - WatchOSDemoApp and WatchOSDemoApp WatchKit Extension:
 ![my-alt-text](/assets/blog/2016-01-19-mobilefirst-watchos2.0-support/mfpclient.plist_membership.png)
 - Deploy the adapters UsernamePasswordAdapter.adapter, PinCodeAdapter.adapter and bankAdapter.adapter into the server.
 - Register both apps com.worklight.WatchOSDemoApp and com.worklight.WatchOSDemoApp.watchkitapp.watchkitextension in the MFP console, and map the scope element `balanceCheckScope` to security check as follows:
