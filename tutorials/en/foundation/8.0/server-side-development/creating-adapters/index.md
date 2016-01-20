@@ -98,7 +98,7 @@ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<ada
 
 > For more information about the `archetype:generate` command see the Maven documentation.
 
-After creating the adapter the result will be a Maven project containing a `src` folder and a `pom.xml` file:
+After creating the adapter the result will be a Maven project containing a **src** folder and a **pom.xml** file:
 
 ![mvn-adapter](adapter-fs.png)
 
@@ -112,7 +112,7 @@ This generates an **.adapter** file which can be found in the **target** folder:
 
 #### Deploy
 
-1. The `pom.xml` file contains the following `properties` parameters:
+1. The **pom.xml** file contains the following `properties` parameters:
 
       ```xml
       <properties>
@@ -122,37 +122,51 @@ This generates an **.adapter** file which can be found in the **target** folder:
     		<mfpfPassword>demo</mfpfPassword>
     	</properties>
       ```
-   * Replace the `localhost:9080` with your MobileFirst Server IP and port.
-   * Replace the `mfpfUser` and `mfpfPassword` values with your MobileFirst admin user name and password.  
+   * Replace the **localhost:9080** with your MobileFirst Server IP and port.
+   * Replace the **`mfpfUser`** and **`mfpfPassword`** values with your MobileFirst admin user name and password.  
 2. Open the project's root folder in terminal and run the `mvn:adapter` command:
 
       ```bash
       mvn adapter:deploy
       ```
-**NOTE:** The deploy command is available only during development (for security reasons).
+**NOTE:** The `deploy` command is available only during development (for security reasons).
 
 > <b>Tip:</b> You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
 
 
 ### Dependencies <a name="dependencies"></a>
-In order to use an external library in your adapter, follow these suggested instructions:
+In order to use an external library in your adapter, follow one of these suggested instructions:
 
-1. Add a `lib` folder under the root Maven project folder and put the external library in it.
-2. Add the library path under the `dependencies` element in the Maven project `pom.xml` file.  
-For example:
+#### Adding a local dependency:
+1. Add a **lib** folder under the root Maven project folder and put the external library in it.
+2. Add the library path under the `dependencies` element in the Maven project's **pom.xml** file.  
+   For example:
 
     ```xml
     <dependency>
-        <groupId>sample</groupId>
-        <artifactId>com.sample</artifactId>
-        <version>1.0</version>
-        <scope>system</scope>
-        <systemPath>${project.basedir}/lib/</systemPath>
+      <groupId>sample</groupId>
+      <artifactId>com.sample</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/</systemPath>
+    </dependency>
+    ```
+
+#### Adding an external dependency:
+1. Search the dependency in one of the search engines for Maven dependencies that exist online, for example [The Central Repository](http://search.maven.org/).
+2. Copy the POM dependency information and paste it under the `dependencies` element in the Maven project's **pom.xml** file.
+   The following example uses the `cloudant-client artifactId`:
+
+    ```xml
+    <dependency>
+      <groupId>com.cloudant</groupId>
+      <artifactId>cloudant-client</artifactId>
+      <version>2.2.0</version>
     </dependency>
     ```
 
 </br>
-> For more information about `dependencies` see the Maven documentation.
+> For more information about dependencies see the Maven documentation.
 
 ### Grouping Adapters in a Single Maven Project
 If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides many benefits such as build all and deploy all abilities, sharing dependencies etc.
@@ -161,7 +175,7 @@ To group adapters you need to:
 
 1. Create a root folder and call it, for example, "GroupAdapters".
 2. Put the Maven adapter projects in it.
-3. Create a `pom.xml` file:
+3. Create a **pom.xml** file:
 
     ```xml
     <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -203,7 +217,7 @@ To group adapters you need to:
   3. Add a **`module`** element for each adapter
   4. Add the **`build`** element
   5. Replace the **localhost:9080** with your MobileFirst Server IP and port.
-  6. Replace the **mfpfUser** and **mfpfPassword** values with your MobileFirst admin user name and password.
+  6. Replace the **`mfpfUser`** and **`mfpfPassword`** values with your MobileFirst admin user name and password.
 
 4. To build or deploy all adapters, run the commands from the root "GroupAdapters" project.
 
@@ -222,3 +236,8 @@ To group adapters you need to:
  * Drag and drop the file into the Create new adapter screen.
 
  ![Creating adapter using console](Create_adapter_console.png)
+
+ 5. After successfully deploying the adapter, the details page will be displayed containing the following tabs:
+  * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
+  * Resources - a list of the adapter resources.
+  * Configurations Files - adapter configuration data, to be used in devops environments.
