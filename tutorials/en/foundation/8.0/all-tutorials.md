@@ -14,8 +14,7 @@ Get a feel of MobileFirst Platform Foundation.
 * [Quick Start with Cordova](../quick-start/cordova/)
 * [Quick Start with iOS](../quick-start/ios/)
 * [Quick Start with Android](../quick-start/android/)
-* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8.1 Universal](../quick-start/windows-8/)
-* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 10 UWP](../quick-start/windows-10/)
+* [Quick Start with Windows 8.1 Universal and Windows 10 UWP](../quick-start/windows-8-10/)
 * [Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
@@ -61,7 +60,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
     * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
-* [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
+* <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
 * [Resource request from iOS Swift-based applications](../server-side-development/resource-request-from-native-ios-swift-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../server-side-development/resource-request-from-native-android-applications/)
 * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
@@ -97,7 +96,7 @@ Add various layers of protection to your applications and adapters.
 ### [Notifications](../notifications/)
 Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.  
 
-* <span style="color:red">TODO </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
+* <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
 * <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
 * <span style="color:red">TODO </span>[Handling Push Notifications](../notifications/handling-push-notifications/)
     * [Handling Push Notifications in Cordova applications](../notifications/cordova/)
@@ -142,7 +141,7 @@ Add testing capabilities to your application.
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.  
 
-* <span style="color:red">TODO </span>[Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
+* <span style="color:red">IN PROGRESS </span>[Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
     * [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
 	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
 

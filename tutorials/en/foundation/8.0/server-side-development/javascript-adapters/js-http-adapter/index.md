@@ -4,7 +4,7 @@ title: JavaScript HTTP Adapter
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 downloads:
   - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters/tree/release80
 weight: 1
 ---
 ## Overview
@@ -154,4 +154,6 @@ var input = {
 ```
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the Adapters Maven project.
+
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).

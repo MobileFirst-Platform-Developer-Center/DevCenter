@@ -4,13 +4,17 @@ title: Resource Request from Cordova Applications
 relevantTo: [cordova]
 downloads:
   - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
 
 ## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources, and is supported in the following Cordova platforms: iOS, Android, Windows 8.1 Universal and Windows 10 UWP.
+
+**Prerequisite**: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) to your Cordova application.
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
@@ -115,7 +119,21 @@ function loadFeedsSuccess(result){
 }
 ```
 
+## For more information
+> For more information about WLResourceRequest, refer to the user documentation.
+
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova) the MobileFirst project.
+The ResourceRequestSwift project contains a Cordova application that makes a resource request using a Java adapter.  
+The adapter Maven project contains the Java adapter to be used during the resource request call.
+
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the MobileFirst project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+
+### Sample usage
+1. From the command line, navigate to the Cordova project.
+2. Add a platform by running the `cordova platform add` command.
+3. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
+
+* The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 
 ![RSSReader](RSSReader.png)

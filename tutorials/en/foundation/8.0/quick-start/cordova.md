@@ -5,7 +5,7 @@ relevantTo: [cordova]
 weight: 1
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are  registered using the MobileFirst Operations Console, an "skeleton" Cordova project is downloaded and edited to call the adapter, and the result is displayed - verifying a successful connection with the MobileFirst Server.
+The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are registered using the MobileFirst Operations Console, an "skeleton" Cordova project is downloaded and edited to call the adapter, and the result is displayed - verifying a successful connection with the MobileFirst Server.
 
 #### Prerequisites:
 
@@ -86,7 +86,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     mfpdev adapter deploy Replace-with-remote-server-name
     ```
 
-<img src="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/cordova/cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
+<img src="cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
 
 ### 5. Testing the application
 

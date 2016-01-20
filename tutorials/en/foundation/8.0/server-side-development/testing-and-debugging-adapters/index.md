@@ -42,7 +42,7 @@ To disable security in Java adapters you should attach the `OAuthSecurity` annot
 To disable security in JavaScript adapters you should add the `secured` attribute to the procedure:
 
 ```js
-<procedure name="proc1" secured="false"/>
+<procedure name="adapter-procedure-name" secured="false"/>
 ```
 
 Alternatively, the development version of the MobileFirst Server includes a test token endpoint to bypass the security challenges. To receive a Test Token you should:

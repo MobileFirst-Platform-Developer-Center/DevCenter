@@ -5,7 +5,7 @@ relevantTo: [ios]
 weight: 2
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are  registered using the MobileFirst Operations Console, an "skeleton" Xcode project is downloaded and edited to call the adapter, and the result is printed to the log - verifying a successful connection with the MobileFirst Server.
+The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are registered using the MobileFirst Operations Console, an "skeleton" Xcode project is downloaded and edited to call the adapter, and the result is printed to the log - verifying a successful connection with the MobileFirst Server.
 
 #### Prerequisites:
 

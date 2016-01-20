@@ -4,13 +4,16 @@ title: Resource Request from Native Android Applications
 relevantTo: [android]
 downloads:
   - name: Download Native project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---
 ## Overview
-MobileFirst applications can access resources using the `WLResourceRequest` REST API. The REST API works with all adapters and external resources.
+MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
+The REST API works with all adapters and external resources.
 
-Prerequisite: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) to your Native Android project.
+**Prerequisite**: Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) to your Native Android project.
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
@@ -78,10 +81,18 @@ The `response` object contains the response data and you can use its methods and
     }
     ```
 
-## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid) the Native project.
+## For more information
+> For more information about WLResourceRequest, refer to the user documentation.
 
-* The ResourceRequestAndroid project contains a native Android application that uses a MobileFirst native SDK to communicate with MobileFirst Server.
-* Make sure to update the mfpclient.properties file in the native Android project with the required server settings.
+## Sample application
+The ResourceRequestSwift project contains a native Android application that makes a resource request using a Java adapter.  
+The adapter Maven project contains the Java adapter to be used during the resource request call.
+
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Native project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+
+### Sample usage
+* Make sure to update the **app/src/main/assets/mfpclient.properties** file in the Android Studio project with the server properties.
+* The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 
 <span style = "color:red">SCREENSHOT</span>

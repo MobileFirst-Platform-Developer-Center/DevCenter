@@ -5,7 +5,7 @@ relevantTo: [ios]
 weight: 2
 downloads:
   - name: Download Native iOS project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC/tree/release80
 ---
 ## Overview
 This tutorial is a continuation of the JSONStore Overview tutorial.    

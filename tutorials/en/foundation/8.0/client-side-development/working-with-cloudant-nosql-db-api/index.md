@@ -44,7 +44,7 @@ The attached sample integrates four major components for authentication, verific
 
 The following diagram shows the initial data request from Cloudant Data Layer Local via the mobile device. The process starts after the device receives an `401 unauthorized` error message when requesting a protected resource. The diagram does not show the entire OAuth process, but you can find more information in the topic about the OAuth-based security model, in the user documentation.
 
-![BlueList Topology](bluelist-topology-test.png "BlueList Topology")
+![BlueList Topology](bluelist-topology.png "BlueList Topology")
 
 1. A request to a protected resource is sent from the mobile device to MobileFirst Server. In this sample, a request is made through adapter-based authentication with a basic username and password.
 2. On valid authentication, a token is received and sent back to the device.
@@ -88,11 +88,13 @@ In the sample, the `CloudantAuthenticationAdapter` adapter has been created and 
 
 In order to use this sample, you must install the IBM MobileFirst Platform Cloudant Data Layer Local Edition. For more information about the installation process, see [IBM MobileFirst Platform Cloudant Data Layer Local Edition](http://www-01.ibm.com/support/knowledgecenter/SSTPQH_1.0.0/com.ibm.cloudant.local.install.doc/topics/clinstall_cloudant_local_overview.html), in the user documentation.
 
+<span style="color:red">UPDATE LINK TO 8.0 DOC'S</span>
 To obtain and download this component, see the following documentation:<br />
 [Download the IBM MobileFirst Platform Foundation V7.0 products](http://www.ibm.com/support/docview.wss?uid=swg24039278)
 
 
 ##Obtaining the sample
+
 The sample that goes with the corresponding iOS and Android tutorials is hosted on the following GitHub repository:
 
 [Bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise")
