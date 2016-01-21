@@ -12,7 +12,7 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 In this tutorial you will learn how to add the MobileFirst Native SDK using Nuget to either a new or existing Windows 8.1 Universal application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
 
-**Pre-requisites:** 
+**Prerequisites:** 
 
 - Microsoft Visual Studio 2015 running on Windows 10 and MobileFirst Developer CLI installed on the developer workstation.  
 - *Optional* MobileFirst Server to run a locally.

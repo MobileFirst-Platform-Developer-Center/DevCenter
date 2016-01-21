@@ -10,7 +10,7 @@ downloads:
 ## Overview
 This tutorial is a continuation of the JSONStore Overview tutorial.    
 
-**Pre-requisites**: 
+**Prerequisites**: 
 
 - Cordova CLI installed on the developer workstation.  
 - Make sure you have read the [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.  

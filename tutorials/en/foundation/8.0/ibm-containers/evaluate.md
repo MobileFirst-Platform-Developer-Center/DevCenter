@@ -7,7 +7,7 @@ relevantTo: [ios,android,windows,cordova]
 ## Overview
 This tutorial goes through the steps that you must follow to evaluate running IBM MobileFirst Platform Foundation on IBM Containers: You register an account at the Bluemix website, you create an IBM Container that contains a preconfigured, self-contained, MobileFirst Platform Foundation "Getting Started" image, you set up this image, and finally you download a sample mobile application and run it with the MobileFirst Server instance that runs inside the Container service on Bluemix.
 
-**Pre-requisites:** First make sure that you read the [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../) tutorial.
+**Prerequisites:** First make sure that you read the [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../) tutorial.
 
 #### Jump to:
 
