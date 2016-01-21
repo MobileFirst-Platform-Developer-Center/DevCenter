@@ -8,15 +8,6 @@ print_pdf: false
 <br>
 Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
 
-### [Quick Start](../quick-start)
-Get a feel of MobileFirst Platform Foundation.
-
-* [Quick Start with Cordova](../quick-start/cordova/)
-* [Quick Start with iOS](../quick-start/ios/)
-* [Quick Start with Android](../quick-start/android/)
-* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8.1 Universal and Windows 10 UWP](../quick-start/windows-8-10/)
-* [Using the MobileFirst Platform Operations Console](../quick-start/console/)
-
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
@@ -25,6 +16,15 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
 * [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
 * <span style="color:red">TODO </span>[Setting up MobileFirst Platform Foundation on IBM Containers Using Foundation Tile](../setting-up-your-development-environment/foundation-tile/)
+
+### [Quick Start](../quick-start)
+Get a feel of MobileFirst Platform Foundation.
+
+* [Quick Start with Cordova](../quick-start/cordova/)
+* [Quick Start with iOS](../quick-start/ios/)
+* [Quick Start with Android](../quick-start/android/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8.1 Universal and Windows 10 UWP](../quick-start/windows-8-10/)
+* [Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
