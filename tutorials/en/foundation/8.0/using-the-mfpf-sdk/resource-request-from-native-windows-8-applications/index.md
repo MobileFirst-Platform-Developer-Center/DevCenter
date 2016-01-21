@@ -13,7 +13,7 @@ MobileFirst applications can access resources using the `WLResourceRequest` REST
 
 **Prerequisites**: 
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-wondows-8-applications) to your Native Windows 8.1 project.
+- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) to your Native Windows 8.1 project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest
