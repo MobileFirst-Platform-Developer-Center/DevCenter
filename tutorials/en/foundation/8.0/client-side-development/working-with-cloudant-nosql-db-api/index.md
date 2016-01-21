@@ -14,6 +14,7 @@ downloads:
 
 This tutorial assumes that you know how to create MobileFirst native applications for iOS and Android, and that you have basic knowledge of adapter-based authentication. For more information, see the following tutorials:
 
+* <span style="color:red">UPDATE LINKS</span>
 * [Configuring a native iOS application with the MobileFirst Platform SDK](../../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/)
 * [Configuring a native iOS application with the MobileFirst Platform SDK](../../configuring-the-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/)
 * [Adapter-based authentication](../../authentication-security/adapter-based-authentication/)
