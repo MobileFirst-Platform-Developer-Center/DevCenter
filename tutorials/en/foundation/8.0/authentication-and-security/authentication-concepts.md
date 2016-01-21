@@ -144,7 +144,7 @@ TODO
 Also available are these out-of-the-box security checks:
 
 - [Application Authenticity](../application-authenticity/)
-- [Direct Update](../../client-side-development/direct-update)
+- [Direct Update](../../using-the-mfpf-sdk/direct-update)
 - [LTPA](../websphere-ltpa-based-authentication/)
 
 ## Protecting resources

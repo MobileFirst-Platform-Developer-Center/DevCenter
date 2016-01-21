@@ -54,7 +54,7 @@ The IBM MobileFirst command-line interface (CLI) tool enables developers to:
 
 To download and install the MobileFirst Developer CLI, visit the [downloads]({{site.base}}/downloads/) page.
 
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../client-side-development/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ## MobileFirst Studio
 IBM MobileFirst Studio is an Eclipse plug-in that interfaces with the MobileFirst Developer CLI and provides a User Interface for commands such as:

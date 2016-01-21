@@ -104,8 +104,8 @@ Otherwise the Simulator or Emulator will be used.
 
 ## Next steps
 
-- Review the [Client-side development tutorials](../../client-side-development/)
-- Review the [Server-side development tutorials](../../server-side-development/)
+- Review the [Client-side development tutorials](../../using-the-mfpf-sdk/)
+- Review the [Server-side development tutorials](../../adapters/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)
