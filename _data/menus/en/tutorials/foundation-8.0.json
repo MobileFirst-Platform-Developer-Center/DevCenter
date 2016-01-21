@@ -14,11 +14,11 @@
                 "name": "Adding the MobileFirst Platform Foundation SDK",
                 "path": "/adding-the-mfpf-sdk"
             }, {
-                "name": "Client-side development",
-                "path": "/client-side-development"
+                "name": "Using the MobileFirst Platform Foundation SDK",
+                "path": "/using-the-mfpf-sdk"
             }, {
-                "name": "Server-side development",
-                "path": "/server-side-development"
+                "name": "Adapters",
+                "path": "/adapters"
             }, {
                 "name": "Authentication and security",
                 "path": "/authentication-and-security"
