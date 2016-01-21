@@ -154,7 +154,7 @@ To complete the tutorial, [disable  ATS](http://iosdevtips.co/post/121756573323/
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Server-side development tutorials](../../server-side-development/)
+- Review the [Server-side development tutorials](../../adapters/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

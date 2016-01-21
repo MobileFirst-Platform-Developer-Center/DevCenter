@@ -28,7 +28,7 @@ After signing in to Bluemix, you are presented with the Bluemix Dashboard, which
 To manage containers and images, you need to install the following tools: IBM MobileFirst Platform Foundation CLI, Docker, and IBM Containers Extension (ICE) CLI.
 
 ### MobileFirst Platform Foundation CLI
-Follow the [Using MobileFirst Developer CLI to create, build, and manage artifacts](../../client-side-development/using-mobilefirst-developer-cli-to-create-manage-artifacts/) tutorial to install the MobileFirst Command Line Interface.
+Follow the [Using MobileFirst Developer CLI to create, build, and manage artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-create-manage-artifacts/) tutorial to install the MobileFirst Command Line Interface.
 
 ### Docker
 Go to the [Docker Documentation](https://docs.docker.com/) -> left side menu, and select **Install > Docker Engine**, select your OS type and follow the instructions to install the Docker Toolbox.

@@ -8,15 +8,6 @@ print_pdf: false
 <br>
 Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
 
-### [Quick Start](../quick-start)
-Get a feel of MobileFirst Platform Foundation.
-
-* [Quick Start with Cordova](../quick-start/cordova/)
-* [Quick Start with iOS](../quick-start/ios/)
-* [Quick Start with Android](../quick-start/android/)
-* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8.1 Universal and Windows 10 UWP](../quick-start/windows-8-10/)
-* [Using the MobileFirst Platform Operations Console](../quick-start/console/)
-
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
@@ -25,6 +16,15 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
 * [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
 * <span style="color:red">TODO </span>[Setting up MobileFirst Platform Foundation on IBM Containers Using Foundation Tile](../setting-up-your-development-environment/foundation-tile/)
+
+### [Quick Start](../quick-start)
+Get a feel of MobileFirst Platform Foundation.
+
+* [Quick Start with Cordova](../quick-start/cordova/)
+* [Quick Start with iOS](../quick-start/ios/)
+* [Quick Start with Android](../quick-start/android/)
+* <span style="color:red">IN PROGRESS </span>[Quick Start with Windows 8.1 Universal and Windows 10 UWP](../quick-start/windows-8-10/)
+* [Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
@@ -35,39 +35,40 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications/)
 * <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
 
-### [Client-side Development](../client-side-development/)
+### [Using the MobileFirst Platform Foundation SDK](../using-the-mfpf-sdk/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation debugging applications and more...
 
-* [MobileFirst SDK development in Cordova applications](../client-side-development/mfpf-development-in-cordova-applications/)
-* <span style="color:red">TODO </span>[Using MobileFirst Developer CLI to manage MobileFirst artifacts](../client-side-development/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
-* [JSONStore](../client-side-development/jsonstore/)
-    * [JSONStore in Cordova applications](../client-side-development/jsonstore/jsonstore-javascript/)
-	* [JSONStore in iOS applications](../client-side-development/jsonstore/jsonstore-objective-c/)
-	* [JSONStore in Android applications](../client-side-development/jsonstore/jsonstore-java/)
-* <span style="color:red">IN PROGRESS </span>[Using Direct Update in Cordova Applications](../client-side-development/direct-update/)
-* [Multilingual translation of Cordova applications](../client-side-development/translation/)
-* [Debugging Cordova applications](../client-side-development/debugging-applications/)
+* [MobileFirst Platform Foundation SDK development in Cordova applications](../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
+* <span style="color:red">TODO </span>[Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
+* Resource Reuqests from client applications
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
+    * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal applications](../using-the-mfpf-sdk/resource-request-from-native-windows-8-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-native-windows-10-applications/)
+* [JSONStore](../using-the-mfpf-sdk/jsonstore/)
+    * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore/jsonstore-javascript/)
+	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore/jsonstore-objective-c/)
+	* [JSONStore in Android applications](../using-the-mfpf-sdk/jsonstore/jsonstore-java/)
+* <span style="color:red">IN PROGRESS </span>[Using Direct Update in Cordova Applications](../using-the-mfpf-sdk/direct-update/)
+* [Multilingual translation of Cordova applications](../using-the-mfpf-sdk/translation/)
+* [Debugging Cordova applications](../using-the-mfpf-sdk/debugging-applications/)
 
-### [Server-side Development](../server-side-development/)
+### [Adapters](../adapters/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.  
 
-* <span style="color:red">IN PROGRESS</span> [Adapters overview](../server-side-development/adapters-overview/)
-* <span style="color:red">IN PROGRESS</span> [Creating Java and JavaScript adapters](../server-side-development/creating-adapters/)
-* [JavaScript adapters](../server-side-development/creating-adapters/javascript-adapters/)
-    * [JavaScript HTTP Adapter](../server-side-development/creating-adapters/javascript-adapters/js-http-adapter/)
-    * [JavaScript SQL Adapter](../server-side-development/creating-adapters/javascript-adapters/js-sql-adapter/)
-    * [Using Java in JavaScript Adapters](../server-side-development/creating-adapters/javascript-adapters/using-java-in-javascript-adapters/)
-* [Java Adapters](../server-side-development/creating-adapters/java-adapters/)
-    * [Java HTTP adapter](../server-side-development/creating-adapters/java-adapters/java-http-adapter/)
-    * [Java SQL adapter](../server-side-development/creating-adapters/java-adapters/java-sql-adapter/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../server-side-development/resource-request-from-cordova-applications/)
-* [Resource request from iOS Swift-based applications](../server-side-development/resource-request-from-native-ios-swift-applications/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../server-side-development/resource-request-from-native-android-applications/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal applications](../server-side-development/resource-request-from-native-windows-8-applications/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../server-side-development/resource-request-from-native-windows-10-applications/)
-* <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../server-side-development/advanced-adapter-usage-mashup/)
-* <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../server-side-development/cloudant/)
-* <span style="color:red">IN PROGRESS</span> [Testing and debugging adapters](../server-side-development/testing-and-debugging-adapters/)
+* <span style="color:red">IN PROGRESS</span> [Adapters overview](../adapters/adapters-overview/)
+* <span style="color:red">IN PROGRESS</span> [Creating Java and JavaScript adapters](../adapters/creating-adapters/)
+* [JavaScript adapters](../adapters/creating-adapters/javascript-adapters/)
+    * [JavaScript HTTP Adapter](../adapters/creating-adapters/javascript-adapters/js-http-adapter/)
+    * [JavaScript SQL Adapter](../adapters/creating-adapters/javascript-adapters/js-sql-adapter/)
+    * [Using Java in JavaScript Adapters](../adapters/creating-adapters/javascript-adapters/using-java-in-javascript-adapters/)
+* [Java Adapters](../adapters/creating-adapters/java-adapters/)
+    * [Java HTTP adapter](../adapters/creating-adapters/java-adapters/java-http-adapter/)
+    * [Java SQL adapter](../adapters/creating-adapters/java-adapters/java-sql-adapter/)
+* <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
+* <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../adapters/cloudant/)
+* <span style="color:red">IN PROGRESS</span> [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications and adapters.
@@ -141,9 +142,9 @@ Add testing capabilities to your application.
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.  
 
-* <span style="color:red">IN PROGRESS </span>[Working with Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/)
-    * [iOS – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/ios/)
-	* [Android – Cloudant NoSQL DB API](../client-side-development/working-with-cloudant-nosql-db-api/android/)
+* <span style="color:red">IN PROGRESS </span>[Working with Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/)
+    * [iOS – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/ios/)
+	* [Android – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/android/)
 
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
 Scan your application for potential harming code.  

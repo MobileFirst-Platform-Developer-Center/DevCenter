@@ -58,7 +58,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
     These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
 
-    > <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../../client-side-development/using-mobilefirst-developer cli-to-manage-mobilefirst-artifacts/) tutorial.
+    > <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### Adding the SDK
 
