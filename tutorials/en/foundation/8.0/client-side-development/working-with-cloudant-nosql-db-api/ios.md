@@ -98,7 +98,6 @@ You can set specific permissions for users to access remote stores.
 }];
 {% endhighlight %}
 
-<span style="color:red">UPDATE LINK TO 8.0 DOC'S</span>
 **Note:** In the sample, the user is authenticated via OAuth. OAuth has been configured through adapter-based authentication. You can find further instructions on setting up access with OAuth capabilities and the MobileFirst Data Proxy in the [configuring OAuth security documentation](http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_cloudantsec.html%23oauth?lang=en).
 
 
@@ -192,7 +191,6 @@ To delete an object in a data store, pass the object to the `delete: completionH
 
 ###Querying data
 
-<span style="color:red">UPDATE LINK TO 8.0 DOC'S</span>
 You can query for objects that have an object mapper. The Cloudant query API provides convenient methods for querying with `NSPredicate` and for querying by data type. For more information about these functions, see [Querying data](http://ibm.biz/knowctr#SSHS8R_7.0.0/com.ibm.worklight.dev.doc/cloud/data/t_data_sdk_query.html) in the user documentation.
 
 
@@ -262,7 +260,7 @@ Make sure that you have properly configured and started the following instances:
 MobileFirst Server with `CloudantAuthenticationAdapter` and `iOSBlueList` Native API deployed
 Cloudant Data Local Layer Edition
 MobileFirst Data Proxy Server configured against MobileFirst Server and the Cloudant Data Layer Local Edition
-    
+
 If you have not completed some of these tasks, review the proper setup section of the [Working with Cloudant NoSQL DB API](../#overview) tutorial.
 
 

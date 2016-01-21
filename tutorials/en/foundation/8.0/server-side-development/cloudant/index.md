@@ -18,7 +18,7 @@ The Cloudant API is documented on the [IBM Cloudant Documentation](https://docs.
 
 You can use IBM MobileFirst Platform adapters to communicate with a remote Cloudant database. This tutorial shows you some examples.
 
-This tutorial assumes that you are comfortable with adapters. See [JavaScript HTTP Adapter](../javascript-adapters/js-http-adapter) or [Java Adapters](../java-adapters)
+This tutorial assumes that you are comfortable with adapters. See [JavaScript HTTP Adapter](../creating-adapters/javascript-adapters/js-http-adapter) or [Java Adapters](../creating-adapters/java-adapters)
 
 ### Jump to:
 * [JavaScript HTTP adapter](#javascript-http-adapter)

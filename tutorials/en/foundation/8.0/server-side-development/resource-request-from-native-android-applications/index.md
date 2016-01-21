@@ -24,29 +24,57 @@ The `WLResourceRequest` class handles resource requests to adapters or external 
     URI adapterPath = new URI("/adapters/RSSReader/getFeed");
     ```
  * For JavaScript adapters, use `/adapters/{AdapterName}/{procedureName}`
- * For Java adapters, use `/adapters/{AdapterName}/{path}`
- * To access resources outside of the project, use the full URL
+ * For Java adapters, use `/adapters/{AdapterName}/{path}`. The path depends on how you defined your @Path annotations in your Java code. This would also include any @PathParam you used.
+ * To access resources outside of the project, use the full URL as per the requirements of the external server.
 
 2. Create a `WLResourceRequest` object and choose the HTTP Method (GET, POST, etc):
 
     ```Java
     WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
     ```
-3. Add the required parameters:
+3. Before sending your request, you may want to add parameters as needed.
+
   * In JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name `params`:
 
         ```js
         request.setQueryParameter("params","['param1', 'param2']");
         ```
-  * In Java adapters or external resources, use the `setQueryParameter` method for each parameter:
+  * In Java adapters or external resources, there are several optional types of parameters:
 
-        ```java
-        request.setQueryParameter("param1","value1");
-        request.setQueryParameter("param2","value2");
-        ```
-4. <span style="color:red">CHANGE according to the new sample</span>
-Call the resource by using the `.send()` method.  
-Specify a `MyInvokeListener` class instance:
+    * **Path parameter**: path parameters (/path/value1/value2) are set during the creation of the WLResourceRequest object:
+
+          ```java
+          URI adapterPath = new URI("/adapters/JavaAdapter/users/"
+                    + first_name.getText().toString() +"/"
+                    + middle_name.getText().toString() +"/"
+                    + last_name.getText().toString()
+          );
+
+          WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.POST);
+          ```
+
+    * **Query parameters**: use the `.setQueryParameter` method for each parameter:
+
+          ```java
+          request.setQueryParameter("param1","value1");
+          request.setQueryParameter("param2","value2");
+          ```
+
+    * **Header parameters**: use `.addHeader()` to set header parameters to the request.
+
+          ```java
+          request.addHeader("date", date.getText().toString());
+          ```
+
+    * **Form parameters**: To send form parameters in the body, use `.send(HashMap<String, String> formParameters, WLResponseListener)`:  
+
+          ```java
+          HashMap formParams = new HashMap();
+          formParams.put("height", height.getText().toString());
+          request.send(formParams, new MyInvokeListener());
+          ```    
+
+4. Call the resource by using the `.send()` method. Specify a WLResponseListener class instance:
 
     ```java
     request.send(new MyInvokeListener());
@@ -55,9 +83,9 @@ Specify a `MyInvokeListener` class instance:
 > See the user documentation to learn more about `WLResourceRequest` and other signatures for the `send` method, which are not covered in this tutorial.
 
 ## The response
-<span style="color:red">CHANGE according to the new sample</span> When the resource call is completed, the framework calls one of the methods of the `MyInvokeListener` class.
+When the resource call is completed, the framework calls one of the methods of the WLResponseListener class that you defined in the `.send()` method.
 
-1. <span style="color:red">CHANGE according to the new sample</span> Specify that the `MyInvokeListener` class implements the `WLResponseListener` interface:
+1. Create a new class that implements the `WLResponseListener` interface:
 
     ```java
     public class MyInvokeListener implements WLResponseListener {
@@ -65,7 +93,7 @@ Specify a `MyInvokeListener` class instance:
     ```
 
 2. Implement the `onSuccess` and `onFailure` methods.  
-If the resource call is successful, the `onSuccess` method is called. Otherwise, the `onFailure` method is called.
+If the resource call is successful, the `onSuccess` method is called. Otherwise, the `onFailure` method is called.  
 Use these methods to get the data that is retrieved from the adapter.  
 The `response` object contains the response data and you can use its methods and properties to retrieve the required information.
 
@@ -84,8 +112,9 @@ The `response` object contains the response data and you can use its methods and
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
+<img alt="Image of the sample application" src="ResourceRequestAndroid.png" style="float:right"/>
 ## Sample application
-The ResourceRequestSwift project contains a native Android application that makes a resource request using a Java adapter.  
+The ResourceRequestAndroid project contains a native Android application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter to be used during the resource request call.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Native project.  
