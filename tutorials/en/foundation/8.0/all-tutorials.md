@@ -40,11 +40,12 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation
 
 * [MobileFirst Platform Foundation SDK development in Cordova applications](../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
 * <span style="color:red">TODO </span>[Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../adapters/resource-request-from-cordova-applications/)
-* [Resource request from iOS Swift-based applications](../adapters/resource-request-from-native-ios-swift-applications/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../adapters/resource-request-from-native-android-applications/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal applications](../adapters/resource-request-from-native-windows-8-applications/)
-* <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../adapters/resource-request-from-native-windows-10-applications/)
+* Resource Reuqests from client applications
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
+    * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal applications](../using-the-mfpf-sdk/resource-request-from-native-windows-8-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-native-windows-10-applications/)
 * [JSONStore](../using-the-mfpf-sdk/jsonstore/)
     * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore/jsonstore-objective-c/)
