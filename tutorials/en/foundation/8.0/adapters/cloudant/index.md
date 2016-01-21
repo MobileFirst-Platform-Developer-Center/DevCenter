@@ -5,7 +5,7 @@ relevantTo: [cordova]
 downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter
-weight: 11
+weight: 5
 ---
 ## Overview
 Cloudant is a NoSQL Database based on CouchDB, which is included with the product as a component called IBM MobileFirst Cloudant Local Data Layer Edition. Cloudant is also available as a stand-alone installed product and as a Database-as-a-Service (DBaaS) on IBM Bluemix and `cloudant.com`.

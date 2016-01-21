@@ -2,7 +2,7 @@
 layout: tutorial
 title: MobileFirst development in Cordova applications
 relevantTo: [cordova]
-weight: 1
+weight: 2
 ---
 
 ## Overview

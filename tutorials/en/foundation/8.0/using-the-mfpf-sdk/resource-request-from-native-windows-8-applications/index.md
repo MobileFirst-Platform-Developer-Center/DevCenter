@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Resource Request from Native Windows 8.1 Universal Applications
-relevantTo: [windows8]
+relevantTo: [windows]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8
-weight: 9
+weight: 6
 ---
 
 ## Overview

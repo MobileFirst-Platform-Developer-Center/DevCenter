@@ -7,7 +7,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
   - name: Download Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
-weight: 5
+weight: 3
 ---
 
 ## Overview
