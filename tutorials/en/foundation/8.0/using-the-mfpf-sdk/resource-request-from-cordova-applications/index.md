@@ -14,9 +14,9 @@ weight: 3
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources, and is supported in the following Cordova platforms: iOS, Android, Windows 8.1 Universal and Windows 10 UWP.
 
-**Prerequisites**: 
+**Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) to your Cordova application.
+- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications) to your Cordova application.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest
@@ -24,7 +24,7 @@ The `WLResourceRequest` class handles resource requests to adapters or external 
 
 ```js
 var resourceRequest = new WLResourceRequest(
-    "/adapters/RSSReader/getFeedFiltered",
+    "/adapters/JavaAdapter/users",
     WLResourceRequest.GET
 );
 ```
@@ -51,6 +51,13 @@ By using the `setQueryParameter` method, you can include query (URL) parameters 
     resourceRequest.setQueryParameter("param1", "value1");
     resourceRequest.setQueryParameter("param2", "value2");
     ```
+
+### setHeader
+By using the `setHeader` method, you can set a new HTTP header or replace an existing header with the same name in the REST request.
+
+```js
+resourceRequest.setHeader("Header-Name","value");
+```
 
 ### send(body)
 The `send()` method triggers the request. It takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
@@ -116,10 +123,9 @@ The `response` object is returned to the corresponding success/failure handler.
 The rest of the resource call result depends on what was retrieved from the back-end system. In this example, the `Items` element is a JSON representation of the XML code that was received from the back end, after the rules in the XSL file were applied.
 
 ```js
-function loadFeedsSuccess(result){
-    WL.Logger.debug("Feed retrieve success");
-    if (result.responseJSON.Items.length > 0)
-        displayFeeds(result.responseJSON.Items);
+function onSuccess(result){
+    WL.Logger.debug("Request success");
+    showResult(result.responseJSON);
 }
 ```
 
