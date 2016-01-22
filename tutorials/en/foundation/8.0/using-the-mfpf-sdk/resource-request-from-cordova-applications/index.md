@@ -125,8 +125,7 @@ The rest of the resource call result depends on what was retrieved from the back
 ```js
 function onSuccess(result){
     WL.Logger.debug("Request success");
-    if (result.responseJSON.Items.length > 0)
-        displayFeeds(result.responseJSON.Items);
+    showResult(result.responseJSON);
 }
 ```
 
