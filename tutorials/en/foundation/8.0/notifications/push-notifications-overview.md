@@ -5,9 +5,9 @@ show_children: true
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 weight: 1
 ---
-should talk about the 
+should talk about the
 1. push service
-2. obtaining tokenn
+2. obtaining token
 3. push flow
 
 ## Overview
@@ -20,8 +20,7 @@ IBM MobileFirst Platform Foundation provides a unified set of API methods to sen
 * [Push Notification Types](#push-notification-types)
 * [REST API for Push Notifications](#rest-api-for-push-notifications)
 * [Supported Environments](#supported-environments)
-
-![ios-tag-sample](push-notifications-overview-pics/ios-tag-sample.png)
+* [Obtaining a Token](#obtaining-a-token)
 
 ### What is Push Notification?
 
@@ -31,10 +30,10 @@ Notifications are received regardless of whether the application is currently ru
 Notifications can take several forms:
 
 * **Alert (all)** -  a pop-up text message
-* **Badge (iOS), Tile (W8, WP8)** - a graphical representation that allows a short text or image
-* **Banner (iOS), Toast (W8, WP8)** - a disappearing pop-up text message at the top of the device display
+* **Badge (iOS), Tile (W8.1, WP10)** - a graphical representation that allows a short text or image
+* **Banner (iOS), Toast (W8, WP10)** - a disappearing pop-up text message at the top of the device display
 * **Sound (all)** - a sound file playing when a notification is received
-* **Interactive (iOS 8)** - action buttons inside the banner of a received notification
+* **Interactive (iOS 9)** - action buttons inside the banner of a received notification
 
 
 **Device support**
@@ -43,7 +42,7 @@ Push notifications are supported for the following mobile platforms:
 * Android 2.3.5, 4.x, 5.x, 6.x
 * iOS 6, 7, 8 and 9
 * Windows Phone 8.x
-* Windows 8.1
+* Windows 10
 
 ### Push Notification Types
 **Tag notifications**
@@ -77,3 +76,5 @@ MobileFirst Platform Foundation exposes a REST API endpoint that can be accessed
 >For more information about the REST API for push notification, see the topic about REST API Runtime Services, in the user documentation.
 
 ###Supported environments
+
+###Obtaining a token
