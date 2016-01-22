@@ -12,7 +12,7 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 In this tutorial you will learn how to add the MobileFirst Native SDK using Nuget to either a new or existing Windows 8.1 Universal application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
 
-**Prerequisites:** 
+**Prerequisites:**
 
 - Microsoft Visual Studio 2013 or 2015 and MobileFirst Developer CLI installed on the developer workstation.  
 - *Optional* MobileFirst Server to run a locally.
@@ -21,6 +21,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Nuge
 #### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -76,6 +77,14 @@ NuGet is the package manager for the Microsoft development platform including .N
     ![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
 
 4. Click **Install**. This installs the IBM MobileFirst Platform Native SDK and its dependencies.
+
+## Updating the MobileFirst Native SDK
+To update the MobileFirst Native SDK with the latest release, run the following command from the root folder of the Visual Studio project in a **Command-line** window:
+
+```bash
+Nuget update
+```
+
 
 ## Generated MobileFirst Native SDK artifacts
 Two MobileFirst-related artifacts are available in the Android Studio project after it has been integrated with the MobileFirst Native SDK: the `mfpclient.resw` and the `application-descriptor.json` file.
