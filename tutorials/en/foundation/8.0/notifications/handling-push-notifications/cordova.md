@@ -8,300 +8,75 @@ weight: 2
 
 ## Overview
 
+Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.
+Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
+
+Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved <code>Push.all</code> tag (auto-created for every device). Broadcast notifications can be disabled by by unsubscribing from the reserved <code>Push.all</code> tag.
+
 ### Agenda
-* [Notifications configuration](#notifications-configuration)
+* [Notifications Configuration](#notifications-configuration)
 * [Notifications API](#notifications-api)
 * [Handling a push notification](#handling-a-push-notification)
 * [Handling a secure push notification](#handling-a-secure-push-notification)
 
 ### Notifications Configuration
+### To get the application running for Android
+1. Create cordova app using cordoav create and mfp cordova template
+2. Add android platform
+3. Add cordova-plugin-mfp-push plugin. Take it from latest halpert Electra DevOps integration build till its published in npm registry
+4. Run cordova build
+5. Import the app/platforms/android in Android Studio
+6. Add classpath 'com.google.gms:google-services:2.0.0-alpha3' to Module:android gradle. Add jcenter() to repositories in buildscript block
+7. Add compile 'com.google.android.gms:play-services-gcm:8.4.0' to app/platforms/android/cordova-plugin-mfp-push/<appname>-build-extras.gradle
+8. Add compile 'com.squareup.okhttp:okhttp:2.6.0' to app/platforms/android/cordova-plugin-mfp-push/<appname>-build-extras.gradle
+9. Add apply plugin: 'com.google.gms.google-services' to app/platforms/android/cordova-plugin-mfp-push/<appname>-build-extras.gradle
+10. Add google-services.json to app/platforms/android folder
+11. Add the Push SDK APIs to your application (Refer the sample application)
+12. Disable the old push plugin in config.xml. This is reqired till its removed
+13. If you want to change the notification title, then add push_notification_tile in strings.xml
 
-#### Installing necessary libraries
-
-You should already have Node.js/npm and the Cordova package installed. If you don't, you can download and install Node from [https://nodejs.org/en/download/](https://nodejs.org/en/download/).
-
-The Cordova library is also required to use this plugin. You can find instructions to install Cordova and set up your Cordova app at [https://cordova.apache.org/#getstarted](https://cordova.apache.org/#getstarted).
-
-### Creating a Cordova application
-
-1. Run the following commands to create a new Cordova application. Alternatively you can use an existing application as well.
-
-	```
-	$ cordova create {appName}
-	$ cd {appName}
-	```
-
-1. Edit `config.xml` file and set the desired application name in the `<name>` element instead of a default HelloCordova.
-
-1. Continue editing `config.xml`. Update the `<platform name="ios">` element with a deployment target declaration as shown in the code snippet below.
-
-	```XML
-	<platform name="ios">
-		<preference name="deployment-target" value="8.0" />
-		// other properties
-	</platform>
-	```
-
-1. Continue editing `config.xml`. Update the `<platform name="android">` element with a minimum and target SDK versions as shown in the code snippet below.
-
-	```XML
-	<platform name="android">
-		<preference name="android-minSdkVersion" value="15" />
-		<preference name="android-targetSdkVersion" value="23" />
-		// other properties
-	</platform>
-	```
-
-	> The minSdkVersion should be above 15.
-
-	> The targetSdkVersion should always reflect the latest Android SDK available from Google.
-
-### Adding Cordova platforms
-
-Run the following commands according to which platform you want to add to your Cordova application
-
-```Bash
-cordova platform add ios
-
-cordova platform add android
-```
-
-### Adding the Cordova plugin
-
-From your Cordova application root directory, enter the following command to install the Cordova Push plugin.
-
-```Bash
-cordova plugin add ibm-mfp-push
-```
-
-From your app root folder, verify that the Cordova Core and Push plugin were installed successfully, using the following command.
-
-```Bash
-cordova plugin list
-```
-
-## Configuration
-
-### Configuring Your iOS Development Environment
-
-Follow the Configuring Your iOS Development Environment instructions from [Bluemix Mobile Services Core SDK plugin](https://github.com/ibm-bluemix-mobile-services/bms-clientsdk-cordova-plugin-core)
-
-Go to `Build Settings` > `Search Paths` > `Framework Search Paths` and verify that the following entry was added:
-
-```
-"[your-project-name]/Plugins/ibm-mfp-push"
-```
-
-#### Updating your client application to use the Push SDK
-
-By default Cordova creates a native iOS project built with iOS therefore you will need to import an automatically generated Swift header in order to use the Push SDK. Add the following Objective-C code snippets to your application delegate class.
-
-At the top of your AppDelegate.m:
-
-```Objective-C
-#import "[your-project-name]-Swift.h"
-```
-
-If your project name has spaces or hyphens, replace them with underscores in the import statement. Example:
-
-```Objective-C
-// Project name is "Test Project" or "Test-Project"
-#import "Test_Project-Swift.h"
-```
-
-Add below code to your application delegate
-
-#### Objective-C:
-
-```
-// Register device token with Bluemix Push Notification Service
-- (void)application:(UIApplication *)application
-	 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-
-	 [[CDVMFPPush sharedInstance]
-	 	didRegisterForRemoteNotifications:deviceToken];
-}
-
-// Handle error when failed to register device token with APNs
-- (void)application:(UIApplication*)application
-	 didFailToRegisterForRemoteNotificationsWithError:(NSError*)error {
-
-	[[CDVMFPPush sharedInstance]
-		didFailToRegisterForRemoteNotifications:error];
-}
-
-// Handle receiving a remote notification
--(void)application:(UIApplication *)application
-	didReceiveRemoteNotification:(NSDictionary *)userInfo
-	fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-
-	[[CDVMFPPush sharedInstance] didReceiveRemoteNotification:userInfo];
-}
-```
-
-#### Swift:
-
-```
-// Register device token with Bluemix Push Notification Service
-func application(application: UIApplication,
-	didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-
-	CDVMFPPush.sharedInstance().didRegisterForRemoteNotifications(deviceToken)
-}
-
-// Handle error when failed to register device token with APNs
-func application(application: UIApplication,
-	didFailToRegisterForRemoteNotificationsWithError error: NSErrorPointer) {
-
-	CDVMFPPush.sharedInstance().didFailToRegisterForRemoteNotifications(error)
-}
-
-// Handle receiving a remote notification
-func application(application: UIApplication,
-	didReceiveRemoteNotification userInfo: [NSObject : AnyObject], 	fetchCompletionHandler completionHandler: ) {
-
-	CDVMFPPush.sharedInstance().didReceiveRemoteNotification(userInfo)
-}
-```
-
-### Configuring Your Android Development Environment
-
-Android development environement does not require any additional configuration. You can open the Android Project generated by Cordova in [your-app-name]/platforms/android directory with Android Studio or use Cordova CLI to build and run it.
+### To get the application running for iOS
+1. Create Cordova project without using cordova mfp template
+2. In the cordova-plugin-mfp-push, comment out the dependeny on cordova-plugin-mfp in plugin.xml
+3. Run cordova build
+4. Open in XCode
+5. Add #import "HelloCordova-Swift.h" in AppDelegate.m
+6. Declare the notification methods in AppDelegate.m (Refer Sample)
+7. Use the Push SDK APIs (Refer Sample)
+8. Modify the server and port details in mfpclient.plist  
 
 ### Notifications API
-## Usage
 
-The following MFPPush Javascript functions are available:
+#### API methods for tag notifications
+##### Client-side API
+* `WL.Client.Push.subscribeTag(tagName,options)` - Subscribes the device to the specified tag name.
+* `WL.Client.Push.unsubscribeTag(tagName,options)` - Unsubscribes the device from the specified tag name.
+* `WL.Client.Push.isPushSupported()` - Returns `true` if push notifications are supported by the platform, or `false` otherwise.
+* `WL.Client.Push.isTagSubscribed(tagName)` - Returns whether the device is subscribed to a specified tag name.
 
-Javascript Function | Description
---- | ---
-registerDevice(settings, success, failure) | Registers the device with the Push Notifications Service.
-unregisterDevice(success, failure) | Unregisters the device from the Push Notifications Service
-retrieveSubscriptions(success, failure) | Retrieves the tags device is currently subscribed to
-retrieveAvailableTags(success, failure) | Retrieves all the tags available in a push notification service instance.
-subscribe(tag, success, failure) | Subscribes to a particular tag.
-unsubscribe(tag, success, failure) | Unsubscribes from a particular tag.
-registerNotificationsCallback(callback) | Registers a callback for when a notification arrives on the device.
+#### Common API methods for tag and broadcast notifications
+##### Client-side API
+* `WL.Client.Push.onMessage (props, payload)` -
+This method is called when a push notification is received by the device.
+* **props** - A JSON block that contains the notification properties of the platform.
+* **payload** - A JSON block that contains other data that is sent from MobileFirst Server. The JSON block also contains the tag name for tag-based or broadcast notification. The tag name appears in the "tag" element. For broadcast notification, the default tag name is `Push.ALL`.
 
-**Android (Native)**
-The following native Android function is available.
-
- Android function | Description
---- | ---
-CDVMFPPush. setIgnoreIncomingNotifications(boolean ignore) | By default, push notifications plugin handles all incoming Push Notification by tunnelling them to JavaScript callback. Use this method to override the plugin's default behavior in case you want to manually handle incoming push notifications in native code.
-
-## SDK Sequence Diagrams
-
-![Cordova Android SDK](sdk-flows-Cordova-android-apps.png)
-![Cordova iOS SDK](sdk-flows-Cordova-ios-apps.png)
-
-## Examples
-
-### Using MFPPush
-
-#### Register for Push Notifications
-
-```
-var settings = {
-	ios: {
-		alert: true,
-		badge: true,
-		sound: true
-	}
+{% highlight javascript %}
+WL.Client.Push.onMessage = function (props, payload) {
+    WL.Client.Push.onMessage = function (props, payload) {
+        WL.SimpleDialog.show("Tag Notifications", "Provider notification data: " + JSON.stringify(props), [ {
+            text : 'Close',
+            handler : function() {
+                WL.SimpleDialog.show("Tag Notifications", "Application notification data: " + JSON.stringify(payload), [ {
+                    text : 'Close',
+                    handler : function() {}
+                  }]);    	
+            }
+        }]);
+    };
 }
-
-var success = function(message) { console.log("Success: " + message); };
-var failure = function(message) { console.log("Error: " + message); };
-
-MFPPush.registerDevice(settings, success, failure);
-```
-
-The settings structure contains the settings that you want to enable for push notifications. You must use the defined structure and should only change the boolean value of each notification setting.
-
-> Android does NOT make use of the settings parameter. If you're only building Android app pass an empty object, e.g.
-
-```
-MFPPush.registerDevice({}, success, failure);
-```
-
-To unregister for push notifications simply call the following:
-
-```
-MFPPush.unregisterDevice(success, failure);
-```
-
-#### Retrieving Tags
-
-In the following examples, the function parameter is a success callback that receives an array of tags. The second parameter is a callback function called on error.
-
-To retrieve an array of tags to which the user is currently subscribed, use the following Javascript function:
-
-```
-MFPPush.retrieveSubscriptions(function(tags) {
-	alert(tags);
-}, failure);
-```
-
-To retrieve an array of tags that are available to subscribe, use the following Javascript function:
-
-```
-MFPPush.retrieveAvailableTags(function(tags) {
-	alert(tags);
-}, failure);
-```
-
-#### Subscribe and Unsubscribe to/from Tags
-
-```
-var tag = "YourTag";
-MFPPush.subscribe(tag, success, failure);
-MFPPush.unsubscribe(tag, success, failure);
-```
+{% endhighlight %}
 
 ### Handling a push notification
-
-```
-var handleNotificationCallback = function(notification) {
-	// notification is a JSON object
-	alert(notif);
-}
-
-MFPPush.registerNotificationsCallback(handleNotificationCallback);
-```
-
-The following table describes the properties of the notification object:
-
-Property | Description
---- | ---
-message | Push notification message text
-payload | JSON object containing additional notification payload.
-sound | The name of a sound file in the app bundle or in the Library/Sounds folder of the app’s data container (iOS only).
-badge | The number to display as the badge of the app icon. If this property is absent, the badge is not changed. To remove the badge, set the value of this property to 0 (iOS only).
-action-loc-key | The string is used as a key to get a localized string in the current localization to use for the right button’s title instead of “View” (iOS only).
-
-Example Notification structure:
-
-```
-// iOS
-notification = {
-	message: "Something has happened",
-	payload: {
-		customProperty:12345
-	},
-	sound: "mysound.mp3",
-	badge: 7,
-	action-loc-key: "Click me"
-}
-
-// Android
-notification = {
-	message: "Something has happened",
-	payload: {
-		customProperty:12345
-	},
-	id: <id>,
-	url: <url>
-}
-```
 
 ### Handling a secure push notification
