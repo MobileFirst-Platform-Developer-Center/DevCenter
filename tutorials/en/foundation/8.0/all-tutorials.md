@@ -36,7 +36,7 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
 
 ### [Using the MobileFirst Platform Foundation SDK](../using-the-mfpf-sdk/)
-Learn to use MobileFirst APIs: Direct Update, JSONStore, Client-side translation debugging applications and more...
+Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
 
 * [MobileFirst Platform Foundation SDK development in Cordova applications](../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
 * <span style="color:red">TODO </span>[Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
@@ -71,7 +71,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * <span style="color:red">IN PROGRESS</span> [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
-Add various layers of protection to your applications and adapters.
+Add various layers of protection to your applications.
 
 * <span style="color:red">IN PROGRESS </span>[Authentication concepts](../authentication-and-security/authentication-concepts/)
 * <span style="color:red">TODO </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
@@ -95,7 +95,7 @@ Add various layers of protection to your applications and adapters.
 * [Application Authenticity](../authentication-and-security/application-authenticity/)
 
 ### [Notifications](../notifications/)
-Send notifications to your mobile apps with IBM MobileFirst Platform Foundation.  
+Send notifications with IBM MobileFirst Platform Foundation.  
 
 * <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
 * <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
@@ -116,14 +116,18 @@ Monitor deployed applications and adapters, gain insight on application usage, f
     * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/)
 * <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
 
-### [Moving to production](../moving-to-production/)
-Move the apps that you create from your development environment to the production environment.  
+### [Cloudant Data Layer](../../../cloudant/)
+Scalable database management for your MobileFirst projects.  
+
+* <span style="color:red">IN PROGRESS </span>[Working with Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/)
+    * [iOS – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/ios/)
+	* [Android – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/android/)
 
 * <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
 * <span style="color:red">TODO </span>[Distributing mobile applications with Application Center](../moving-to-production/distributing-mobile-applications-with-application-center/)
 
 ### [IBM Containers](../ibm-containers/)
-Deploy MobileFirst platform to the cloud using IBM Containers in Bluemix.  
+Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
 
 * <span style="color:red">TODO </span>[Overview](../ibm-containers/)
 * <span style="color:red">TODO </span>[Evaluate](../ibm-containers/evaluate/)
@@ -139,15 +143,11 @@ Add testing capabilities to your application.
 * [MobileFirst Quality Assurance in iOS applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/)
 * [MobileFirst Quality Assurance in Android applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/)
 
-### [Cloudant Data Layer](../../../cloudant/)
-Scalable database management for your MobileFirst projects.  
-
-* <span style="color:red">IN PROGRESS </span>[Working with Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/)
-    * [iOS – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/ios/)
-	* [Android – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/android/)
-
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
 Scan your application for potential harming code.  
 <span style="color:red">TODO outsource to the AppScan team</span>  
 
 * [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
+
+### [Moving to production](../moving-to-production/)
+Move the apps that you create from your development environment to the production environment.  
