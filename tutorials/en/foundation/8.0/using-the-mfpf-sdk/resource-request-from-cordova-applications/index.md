@@ -51,13 +51,13 @@ By using the `setQueryParameter` method, you can include query (URL) parameters 
     resourceRequest.setQueryParameter("param1", "value1");
     resourceRequest.setQueryParameter("param2", "value2");
     ```
+
 ### setHeader
-By using the `setHeader` method, you can set a new header or replace an existing header with the same name in the REST request.
+By using the `setHeader` method, you can set a new HTTP header or replace an existing header with the same name in the REST request.
 
-    ```js
-    resourceRequest.setHeader("Header-Name","value");
-    ```
-
+```js
+resourceRequest.setHeader("Header-Name","value");
+```
 
 ### send(body)
 The `send()` method triggers the request. It takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
