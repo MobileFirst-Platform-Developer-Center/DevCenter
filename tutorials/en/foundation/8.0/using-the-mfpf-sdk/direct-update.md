@@ -74,7 +74,7 @@ Alternatives:
 ## User Experience
 By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
 
-![Direct update example](direct-update-success.png)
+![Direct update example](direct-update-flow.png)
 
 ## Customizing the Direct Update UI
 The default Direct Update UI that is presented to the end-user can be customized, as can the entire user experience flow.  
@@ -131,12 +131,12 @@ In the example above, the `submitFailure` API method is used to dismiss the Dire
 
 As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer. As such, it is important to call `submitFailure()` to notify the MobileFirst framework that the process completed with a "failure". The MobileFirst framework in turn invokes the `onFailure` callback of the invocation that triggered the Direct Update. Because the update process did not take place, it will occur again the next time it is triggered.
 
-### Further customization
+<!-- ### Further customization
 Optionally, a developer can also supply a Direct Update listener to fully control a Direct Update lifecycle entirely.
 
 ```javascript
 directUpdateContext.start(directUpdateCustomListener);
-```
+``` -->
 
 > For more information, see the "Configuring and customizing direct update" user documentation topic. 
 
