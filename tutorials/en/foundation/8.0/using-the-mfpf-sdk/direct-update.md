@@ -77,8 +77,8 @@ By default, after a Direct Update is received a dialog is displayed and the user
 ![Direct update example](direct-update-flow.png)
 
 ## Customizing the Direct Update UI
-The default Direct Update UI that is presented to the end-user can be customized, as can the entire user experience flow.  
-To do so, override the `handleDirectUpdate` function:
+The default Direct Update UI that is presented to the end-user can be customized.  
+To do so, override `handleDirectUpdate`:
 
 ```javascript
 wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
@@ -100,12 +100,6 @@ Additional examples for a customized Direct Update UI:
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
-	// custom text for the dialog
-	var customDialogTitle = 'Custom Title Text';
-	var customDialogMessage = 'Custom Message Text';
-	var customButtonText1 = 'Update Application';
-	var customButtonText2 = 'Not Now';
-
 	// Create dialog
 	navigator.notification.confirm(
 	    'Custom Message Text', 
