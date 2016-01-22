@@ -93,12 +93,8 @@ Two MobileFirst-related artifacts are available in the Android Studio project af
 
 Located at the root of the project, this file contains server connectivity properties and is user-editable:
 
-<<<<<<< Updated upstream
-- `protocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTPS`.
-- `WlAppId` - The identifier of the application. This should be same as the Application identifier in the server.
-=======
 - `protocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTTPS`.
->>>>>>> Stashed changes
+- `WlAppId` - The identifier of the application. This should be same as the Application identifier in the server.
 - `host` – The hostname of the MobileFirst Server instance.
 - `port` – The port of the MobileFirst Server instance.
 - `wlServerContext` – The context root path of the application on the MobileFirst Server instance.
