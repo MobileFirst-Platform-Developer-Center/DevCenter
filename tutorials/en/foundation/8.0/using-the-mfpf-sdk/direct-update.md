@@ -78,7 +78,7 @@ By default, after a Direct Update is received a dialog is displayed and the user
 
 ## Customizing the Direct Update UI
 The default Direct Update UI that is presented to the end-user can be customized.  
-To do so, override `handleDirectUpdate`:
+Add the following inside the `wlCommonInit()` function in **index.js**:
 
 ```javascript
 wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
