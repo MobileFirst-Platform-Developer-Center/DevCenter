@@ -13,7 +13,7 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 In this tutorial you will learn how to add the MobileFirst SDK to either a new or existing Cordova application created with Apache Cordova, Ionic or other thirdy-party tool. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are changed in the project.
 
-**Prerequisites:** 
+**Prerequisites:**
 
 - Apache Cordova CLI and MobileFirst Developer CLI installed on the developer workstation.  
 - *Optional* MobileFirst Server to run a locally.
@@ -43,7 +43,7 @@ The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, an
 The `cordova-plugin-mfp-jsonstore` plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../using-the-mfpf-sdk/jsonstore/).  
 
 **cordova-plugin-mfp-push**  
-The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../notifications/push-notifications-overview/). 
+The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../notifications/push-notifications-overview/).
 
 **cordova-plugin-mfp-fips**  
 The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see the user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
@@ -70,7 +70,7 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     cordova plugin add cordova-plugin-mfp
     ```
 
-4. The optional plug-ins `cordova-plugin-mfp-push`, `cordova-plugin-mfp-jsonstore` and `cordova-plugin-mfp-fips` can be added using the Cordova CLI command `cordova add plugin [plug-in-name]`.
+4. The optional plug-ins `cordova-plugin-mfp-push`, `cordova-plugin-mfp-jsonstore` and `cordova-plugin-mfp-fips` can be added using the Cordova CLI command `cordova plugin add [plug-in-name]`.
 
     For example, to add the `cordova-plugin-mfp-push` plug-in:
 
