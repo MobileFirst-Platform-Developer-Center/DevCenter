@@ -10,8 +10,8 @@ Server-side development provides the tools and functionality required in order t
 
 ### Authentication and security
 
-* [Authentication and security](../authentication-security)
+* [Authentication and security](../authentication-and-security/)
 
-### Server-side development
+### Adapters development
 
-* [Server-side development](../server-side-developmenet)
+* [Adapters development](../adapters/)
