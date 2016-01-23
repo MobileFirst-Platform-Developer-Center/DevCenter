@@ -9,7 +9,6 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
-
 ## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources.
@@ -26,12 +25,16 @@ Create a `WLResourceRequest` object and specify the path to the resource and the
 Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
 
 ```swift
-let request = WLResourceRequest(URL: NSURL(string: "/adapters/RSSReader/getFeed"), method: WLHttpMethodGet)
+let request = WLResourceRequest(
+    URL: NSURL(string: "/adapters/RSSReader/getFeed"),
+    method: WLHttpMethodGet
+)
 ```
 
 * For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
 * For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
 * To access resources outside of the project, use the full URL as per the requirements of the external server.
+* **timeout**: Optional, request timeout in milliseconds
 
 ## Sending the request
 Request the resource by using the `sendWithCompletionHandler` method.  
@@ -122,7 +125,9 @@ The adapter Maven project contains the Java adapter to be used during the resour
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-* Make sure to update the **mfpclient.plist** file in the Xcode project with the server properties.
-* The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+1. From the command line, navigate to the Xcode project.
+2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+4. From Xcode, run the sample by clicking the **Run* button.
 
 

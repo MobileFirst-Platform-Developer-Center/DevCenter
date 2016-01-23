@@ -9,7 +9,6 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
-
 ## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources, and is supported in the following Cordova platforms: iOS, Android, Windows 8.1 Universal and Windows 10 UWP.
@@ -22,19 +21,19 @@ The REST API works with all adapters and external resources, and is supported in
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
-```js
+Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
+Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
+
+```javascript
 var resourceRequest = new WLResourceRequest(
     "/adapters/JavaAdapter/users",
     WLResourceRequest.GET
 );
 ```
-The parameters for the constructor are:
 
-* **request URL**:
- * For JavaScript adapters, the URL should be `/adapters/{AdapterName}/{procedureName}`
- * For Java adapters, the URL should be `/adapters/{AdapterName}/{path}`
- * To access resources outside of the project, use the full URL
-* **HTTP method**: Most commonly `WLResourceRequest.GET` or `WLResourceRequest.POST`
+* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
+* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
+* To access resources outside of the project, use the full URL as per the requirements of the external server.
 * **timeout**: Optional, request timeout in milliseconds
 
 ### setQueryParameter
@@ -132,18 +131,20 @@ function onSuccess(result){
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
+<img alt="Image of the sample application" src="RSSReader.png" style="float:right"/>
 ## Sample application
-The ResourceRequestSwift project contains a Cordova application that makes a resource request using a Java adapter.  
+The ResourceRequestCordova project contains a Cordova application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter to be used during the resource request call.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the MobileFirst project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the Cordova project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
 1. From the command line, navigate to the Cordova project.
-2. Add a platform by running the `cordova platform add` command.
-3. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
+2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+3. Add a platform by running the `cordova platform add` command.
+4. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+5. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
 
-* The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 
-![RSSReader](RSSReader.png)
+
