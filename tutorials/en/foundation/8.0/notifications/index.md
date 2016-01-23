@@ -6,5 +6,5 @@ show_disqus: false
 print_pdf: false
 ---
 ## Overview
-In this category you learn how to implement push notification in Cordova and native applications.  
+Learn how to setup, send and receive push notification in Cordova and native applications usng the MobileFirst Push Service.  
 To continue, select a tutorial:
