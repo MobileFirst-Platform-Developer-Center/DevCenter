@@ -61,6 +61,8 @@ If using a locally installed server: From a **Command-line** window, navigate to
     cordova create myapp  --template cordova-template-mfp
     ```
 
+    > The templated **index.js** enables use of additional MobileFirst features as such [Multilingual application  translation](../../using-the-mfpf-sdk/translation) and initialization options (see the user documentation for more information)
+
 2. Navigate to the root of the Cordova project: <code>cd myapp</code>
 
 3. Add one or more supported platforms to the Cordova project using the Cordova CLI command: `cordova platform add ios|android|windows`. For example:
