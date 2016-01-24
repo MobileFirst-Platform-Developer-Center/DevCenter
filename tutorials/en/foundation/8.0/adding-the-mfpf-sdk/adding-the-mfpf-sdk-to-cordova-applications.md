@@ -55,7 +55,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
 1. Create a Cordova project or use an existing one. 
 
-    Consider creating the application using the MobileFirst Cordova **application template**. The template reconfigures the Cordova project's **config.xml** file with requierd MobileFirst-specific plug-in entries, as well as provides a MobileFirst-specific, ready-to-use, **index.js** file adjusted for MobileFirst application development. To use the template, create the application with the <code>--template</code> flag:
+    Consider creating the project using the MobileFirst Cordova **application template**. The template adds to the Cordova project's **config.xml** file requierd MobileFirst-specific plug-in entries, as well as provides a MobileFirst-specific, ready-to-use, **index.js** file adjusted for MobileFirst application development. 
 
     ```bash
     cordova create myapp  --template cordova-template-mfp
@@ -64,8 +64,6 @@ If using a locally installed server: From a **Command-line** window, navigate to
 2. Navigate to the root of the Cordova project: <code>cd myapp</code>
 
 3. Add one or more supported platforms to the Cordova project using the Cordova CLI command: `cordova platform add ios|android|windows`. For example:
-
-    To add the iOS platform:
 
     ```bash
     cordova platform add ios
@@ -92,7 +90,14 @@ If using a locally installed server: From a **Command-line** window, navigate to
     > 2. Click on the "New" button next to "Applications" to create a new application. Follow the on-screen instructions.  
     > 3. After successfully registering your application you can optionally download a "skeleton" Cordova project pre-bundled with the MobileFirst Cordova SDK.
 
-<br>   
+3. Run the command: 
+ 
+    ```bash
+    mfpdev app pull
+    ```
+    The `mfpdev app pull` CLI command creates the **mobilefirst** folder at the root of the Xcode project and downloads into it the `application-descriptor.json` file, containing application configuration data.
+
+    These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
 
 > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
