@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: MobileFirst development in Cordova applications
+title: MobileFirst Platform Foundation development in Cordova applications
 relevantTo: [cordova]
 weight: 2
 ---
@@ -10,7 +10,7 @@ From [http://cordova.apache.org/](http://cordova.apache.org/):
 
 > Apache Cordova is an open-source mobile development framework. It allows you to use standard web technologies such as HTML5, CSS3, and JavaScript for cross-platform development, avoiding each mobile platforms' native development language. Applications execute within wrappers targeted to each platform, and rely on standards-compliant API bindings to access each device's sensors, data, and network status.
 
-IBM MobileFirst Platform Foundation provides an SDK in the form of a standard Cordova plug-in. Learn how to [Add the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications).
+IBM MobileFirst Platform Foundation provides an SDK in the form of several Cordova plug-ins. Learn how to [Add the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications).
 
 The MobileFirst SDK feature set provides the following:
 
@@ -22,7 +22,14 @@ The MobileFirst SDK feature set provides the following:
 
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
-## Application development
+#### Jump to:
+
+* [Cordova application development](#cordova-application-development)
+* [Previewing applications](previewing-applications)
+* [Further reading](#further-reading)
+* [Tutorials to follow next](#tutorials-to-follow-next)
+
+## Cordova application development
 Applications developed with Cordova can be further enhanced by using the following Cordova-provided development paths and features:
 
 ### Hooks
@@ -50,6 +57,45 @@ Applications can be modified using 3rd party packages to achieve requirements su
 
 - [uglify-js](https://www.npmjs.com/package/uglify-js)
 - [clean-css](https://www.npmjs.com/package/clean-css)
+
+## Previewing applications
+A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. With MobileFirst, two additional preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering. 
+
+* With Simple Browser rendering the application is presented as a web page in the desktop browser.
+* The Mobile Browser Simulator is a web application that enables testing the application by simulating device features without needing to install device vendor native SDK.
+
+> Learn more about Simple Browser rendering the IBM Mobile Browser Simulator in the user documentation.
+
+### Previewing the application web resources:
+
+1. From a **Command-line** window, run the command:
+
+    ```bash
+    mfpdev app preview
+    ```
+
+2. Select a preview option:
+
+    ```bash
+    ? Select how to preview your app: (Use arrow keys)
+    ❯ browser: Simple browser rendering
+    mbs: Mobile Browser Simulator
+    ```
+
+> <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobileirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+
+### Running the application on emulator or on a physical device
+To emulate the application execute the Cordova CLI command `cordova emulate ios|android|windows`. For example:
+
+```bash
+cordova emulate ios
+```
+
+To run the application on a physical device, attached to the development workstation a run the Cordova CLI command `cordova run ios|android|windows`. For example:
+
+```bash
+cordova run ios
+```
 
 ## Further reading
 Learn more about Cordova:

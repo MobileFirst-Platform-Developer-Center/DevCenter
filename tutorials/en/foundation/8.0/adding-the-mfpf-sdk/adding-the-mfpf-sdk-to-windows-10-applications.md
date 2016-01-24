@@ -43,7 +43,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     mfpdev app register
     ```
 
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the `mfpclient.resw` file at the root of the Visual Studio project, and adding to it the metadata that identifies the MobileFirst Server.
+    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.resw** file at the root of the Visual Studio project, and adding to it the metadata that identifies the MobileFirst Server.
 
     > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
         1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
@@ -130,7 +130,7 @@ The file can also be updated by pulling from the server its latest revision by r
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
 
-- Review the [Server-side development tutorials](../../adapters/)
+- Review the [Adapters development tutorials](../../adapters/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

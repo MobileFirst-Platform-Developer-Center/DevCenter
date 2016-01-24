@@ -5,11 +5,29 @@ breadcrumb_title: Cordova SDK
 relevantTo: [cordova]
 weight: 1
 ---
-
 ## Overview
-The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
+The MobileFirst Platform Foundation SDK provides a set of API methods enabling developers to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
 
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+
+The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is registered at NPM](https://www.npmjs.com/package/cordova-plugin-mfp). Available plug-ins are:
+
+* cordova-plugin-mfp
+* cordova-plugin-mfp-push
+* cordova-plugin-mfp-jsonstore
+* cordova-plugin-mfp-fips
+
+**cordova-plug-in-mfp**  
+The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the `cordova-plugin-mfp` plug-in is automatically installed as well if not already installed.
+
+**cordova-plugin-mfp-jsonstore**  
+The `cordova-plugin-mfp-jsonstore` plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../../using-the-mfpf-sdk/jsonstore/).  
+
+**cordova-plugin-mfp-push**  
+The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../../notifications/push-notifications-overview/).
+
+**cordova-plugin-mfp-fips**  
+The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 In this tutorial you will learn how to add the MobileFirst SDK to either a new or existing Cordova application created with Apache Cordova, Ionic or other thirdy-party tool. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are changed in the project.
 
@@ -21,64 +39,31 @@ In this tutorial you will learn how to add the MobileFirst SDK to either a new o
 
 #### Jump to:
 
-- [Available MobileFirst Cordova plug-ins](#available-mobilefirst-cordova-plug-ins)
-- [Adding the MobileFirst Cordova Plug-in](#adding-the-mobilefirst-cordova-plug-in)
-- [Registering the Cordova app in MobileFirst Server](#registering-the-cordova-app-in-mobilefirstserver)
+- [Adding the MobileFirst Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
+- [Updating the MobileFirst Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
 - [Running the application on emulator or on a real device](#running-the-application-on-emulator-or-on-a-real-device)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Available MobileFirst Cordova plug-ins
-The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is registered at NPM](https://www.npmjs.com/package/cordova-plugin-mfp).  
-The SDK is comprised of the following plug-ins:
-* cordova-plugin-mfp
-* cordova-plugin-mfp-push
-* cordova-plugin-mfp-jsonstore
-* cordova-plugin-mfp-fips
+## Adding the MobileFirst Cordova SDK
+Follow the below instructions to add the MobileFirst Cordova SDK to either a new or existing Cordova project, and registering it in the MobileFirst Server.
 
-**cordova-plug-in-mfp**  
-The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the `cordova-plugin-mfp` plug-in is automatically installed as well if not already installed.
-
-**cordova-plugin-mfp-jsonstore**  
-The `cordova-plugin-mfp-jsonstore` plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../using-the-mfpf-sdk/jsonstore/).  
-
-**cordova-plugin-mfp-push**  
-The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../notifications/push-notifications-overview/).
-
-**cordova-plugin-mfp-fips**  
-The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see the user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
-
-## Adding the MobileFirst Cordova Plug-in
 Before starting, make sure the MobileFirst Server is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
 
-Follow the below instructions to add the MobileFirst Cordova Plugin to either a new or existing Cordova project:
+### Adding the SDK
 
-1. Create a Cordova project or use an existing one. The MobileFirst template app can be used to create a new Cordova project that already contains the MobileFirst Plug-in. To use the template, open the **Command-line** and run the command:
+1. Create a Cordova project or use an existing one. 
+
+    Consider creating the application using the MobileFirst Cordova **application template**. The template reconfigures the Cordova project's **config.xml** file with requierd MobileFirst-specific plug-in entries, as well as provides a MobileFirst-specific, ready-to-use, **index.js** file adjusted for MobileFirst application development. To use the template, create the application with the <code>--template</code> flag:
 
     ```bash
     cordova create myapp  --template cordova-template-mfp
     ```
 
-    The ***myapp*** folder will be created with a copy of the cordova-template-mfp project
+2. Navigate to the root of the Cordova project: <code>cd myapp</code>
 
-2. Navigate to the root of the Cordova project.
-
-3. Add the MobileFirst Cordova Plugin ([cordova-plugin-mfp](https://www.npmjs.com/package/cordova-plugin-mfp)) using the cordova CLI. This will install the plugin from [NPM](https://www.npmjs.com/package/cordova-plugin-mfp):
-
-    ```bash
-    cordova plugin add cordova-plugin-mfp
-    ```
-
-4. The optional plug-ins `cordova-plugin-mfp-push`, `cordova-plugin-mfp-jsonstore` and `cordova-plugin-mfp-fips` can be added using the Cordova CLI command `cordova plugin add [plug-in-name]`.
-
-    For example, to add the `cordova-plugin-mfp-push` plug-in:
-
-    ```bash
-    cordova plugin add cordova-plugin-mfp-push
-    ```
-
-5. Optionally add one or more platforms to the Cordova project using the Cordova CLI command `cordova platform add [platform]`.
+3. Add one or more supported platforms to the Cordova project using the Cordova CLI command: `cordova platform add ios|android|windows`. For example:
 
     To add the iOS platform:
 
@@ -86,31 +71,21 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     cordova platform add ios
     ```
 
-    To add the Android platform:
+    > <b>Important:</b> The platform versions supported by the MobileFirst plug-ins are **cordova-ios@4.0.1**, **cordova-android@5.0.0** and **cordova-windows@4.2.0**
 
-    ```bash
-    cordova platform add android
-    ```
+### Registering the Cordova application in MobileFirst Server
 
-    To add the Windows platform:
+1. Open a **Command-line** window and navigate to the root of the Cordova project.  
 
-    ```bash
-    cordova platform add windows
-    ```
-
-    > The platform versions supported by MobileFirst plug-ins are **cordova-ios@4.0.1**, **cordova-android@5.0.0** and **cordova-windows@4.2.0**
-
-## Registering the Cordova app in MobileFirst Server
-
-1. Open the **Command-line** and navigate to the root of the Cordova project.  
-
-2. Register the application with MobileFirst Server with the CLI command:
+2. Register the application with MobileFirst Server:
 
     ```bash
     mfpdev app register
     ```
 
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the `config.xml` file at the root of the Cordova project, and adding to it the metadata that identifies the MobileFirst Server. Each platform is registered as an application in MobileFirst Server.
+    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by updating the **config.xml** file at the root of the Cordova project with metadata that identifies the MobileFirst Server. 
+    
+    Each platform is registered as an application in MobileFirst Server.
 
     > The application registration can also be done from the MobileFirst Operations Console:    
     > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
@@ -119,62 +94,18 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
 
 <br>   
 
-> <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
+## Updating the MobileFirst Cordova SDK
+To update the MobileFirst Cordova SDK with the latest release, the **cordova-plugin-mfp** plug-in needs to be removed using the `cordova plugin remove cordova-plugin-mfp` command, followed by re-adding it: `cordova plugin add cordova-plugin-mfp`.
 
-## Running the application on emulator or on a real device
-### Preview the Application
+SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/cordova-plugin-mfp).
 
-The application can be previewed with the CLI command
-
-```bash
-mfpdev app preview
-```
-
-The preview can be done in two ways, with Simple Browser Rendering or with the IBM Mobile Browser Simulator.  
-With Simple Browser Rendering the app is presented as a web page in your browser while the IBM Mobile Browser Simulator will simulate a Mobile Device in your browser and the app is presented inside the simulated device.
-
-```bash
-? Select how to preview your app: (Use arrow keys)
-❯ browser: Simple browser rendering
-mbs: Mobile Browser Simulator
-```
-
-### Running the application on emulator or on a real device
-Use the Cordova CLI to run the application on a emulator or on a real device.  
-To emulate the application execute the Cordova CLI command `cordova emulate [platform]`.
-
-Preview the application in the iOS Simulator:
-
-```bash
-cordova emulate ios
-```
-
-Preview the application in the Android Emulator:
-
-```bash
-cordova emulate android
-```
-
-To run the application on a real device attached to the development workstation, execute the Cordova CLI command `cordova run [platform]`
-
-Run the application on an iOS device:
-
-```bash
-cordova run ios
-```
-
-Run the application on an Android device:
-
-```bash
-cordova run android
-```
-
-## Generated MobileFirst Native SDK artifacts
-Two MobileFirst-related artifacts are available in the Cordova project after it has been integrated with the MobileFirst Cordova SDK: the `config.xml` and the `application-descriptor.json` file.
+## Generated MobileFirst Cordova SDK artifacts
+Two MobileFirst-related artifacts are available in the Cordova project after it has been integrated with the MobileFirst Cordova SDK: the Cordova `config.xml` and the MobileFirst `application-descriptor.json` file.
 
 ### config.xml
-When the MobileFirst Cordova plug-in is added to the project, the Cordova-generated `config.xml` file receives a set of new settings identified with the namespace `mfp:`. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the `config.xml` file:
+Once the MobileFirst Cordova SDK is added to the project, the Cordova-generated `config.xml` file receives a set of new settings identified with the namespace `mfp:`. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the `config.xml` file:
 
 ```xml
 <mfp:android>
@@ -212,7 +143,7 @@ mfpdev app config
 ```
 
 ### application-descriptor.json
-Located in the **&lt;cordova-project-root-directory&gt;/mobilefirst/[platform]** folder, this file contains application configuration settings such as its `bundleId` and `version` and is user-editable.
+Located in the **[cordova-project-root-directory]/mobilefirst/[platform]** folder, this file contains application configuration settings such as its `bundleId` and `version` and is user-editable.
 
 The file can be edited either locally or via the MobileFirst Operations Console.  
 If edited locally, the MobileFirst Server can be updated by running the CLI command: `mfpdev app push`.  
@@ -230,12 +161,13 @@ The file can also be updated by pulling from the server its latest revision by r
     ...
     ...
 }
- ```
+```
 
 ## Tutorials to follow next
-With the MobileFirst Native SDK now integrated, you can now:
+With the MobileFirst Cordova SDK now integrated, you can now:
 
-- Review the [Server-side development tutorials](../../adapters/)
+- Review the [Using the MobileFirst Platform Foundation SDK tutorials](../../using-the-mfpf-sdk/)
+- Review the [Adapters development tutorials](../../adapters/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)
