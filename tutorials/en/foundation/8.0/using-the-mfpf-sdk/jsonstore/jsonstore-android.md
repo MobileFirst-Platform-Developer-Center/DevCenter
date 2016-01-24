@@ -8,7 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
 ---
 ## Overview
-This tutorial is a continuation of the JSONStore Overview tutorial.    
+This tutorial further elaborates on the available JSONStore APIs for Native Android development.
 
 #### Jump to:
 

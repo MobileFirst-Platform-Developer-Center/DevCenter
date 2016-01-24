@@ -8,7 +8,9 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC/tree/release80
 ---
 ## Overview
-This tutorial is a continuation of the JSONStore Overview tutorial.    
+This tutorial further elaborates on the available JSONStore APIs for Native iOS development.
+
+**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Xcode project. Follow the tutorial: [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/).
 
 #### Jump to:
 
@@ -18,10 +20,6 @@ This tutorial is a continuation of the JSONStore Overview tutorial.
 * [Sample application](#sample-application)
 
 ## Adding JSONStore
-Adding the JSONStore component to native iOS applications is accomplished using CocoaPods.  
-First, make sure the MobileFirst Native SDK is present by following the instructions in the tutorial: [Configuring a Native iOS Application with the MobileFirst Platform SDK](../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/).
-
-Next, perform the following steps:
 
 1. Edit the existing `podfile`, located at the root of the Xcode project.
 Add to the file:
