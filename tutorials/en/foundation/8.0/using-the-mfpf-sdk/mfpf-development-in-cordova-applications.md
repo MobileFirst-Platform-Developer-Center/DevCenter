@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Platform Foundation development in Cordova applications
+breadcrumb_title: Cordova application development
 relevantTo: [cordova]
 weight: 2
 ---
