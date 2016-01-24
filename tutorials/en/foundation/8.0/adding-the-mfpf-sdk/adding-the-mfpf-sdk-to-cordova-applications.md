@@ -71,7 +71,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
     > <b>Important:</b> The platform versions supported by the MobileFirst plug-ins are **cordova-ios@4.0.1**, **cordova-android@5.0.0** and **cordova-windows@4.2.0**
 
-### Registering the Cordova application in MobileFirst Server
+### Registering the application
 
 1. Open a **Command-line** window and navigate to the root of the Cordova project.  
 
