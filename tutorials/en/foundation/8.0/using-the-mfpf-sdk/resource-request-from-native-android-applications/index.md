@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: Resource request - Android
+title: Resource request from Native Android applications
+breadcrumb_title: Resource request - Android
 relevantTo: [android]
 downloads:
   - name: Download Native project

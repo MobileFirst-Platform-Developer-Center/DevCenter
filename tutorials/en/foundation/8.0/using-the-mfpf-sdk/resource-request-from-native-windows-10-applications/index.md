@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: Resource request - Windows 10 UWP
+title: Resource request from Native Windows 10 UWP applications
+breadcrumb_title: Resource request - Windows 10 UWP
 relevantTo: [windows]
 weight: 7
 ---

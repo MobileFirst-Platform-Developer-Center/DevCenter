@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: Resource request - Cordova
+title: Resource request from Cordova applications
+breadcrumb_title: Resource request - Cordova
 relevantTo: [cordova]
 downloads:
   - name: Download MobileFirst project
