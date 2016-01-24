@@ -114,7 +114,7 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
 
     > The application registration can also be done from the MobileFirst Operations Console:    
     > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
-    > 2. Click on the "Create new" button next to "Applications" to create a new application. Follow the on-screen instructions.  
+    > 2. Click on the "New" button next to "Applications" to create a new application. Follow the on-screen instructions.  
     > 3. After successfully registering your application you can optionally download a "skeleton" Cordova project pre-bundled with the MobileFirst Cordova SDK.
 
 <br>   

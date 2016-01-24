@@ -47,7 +47,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
     > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
         1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
-        2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
+        2. Click on the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
         3. After successfully registering your application you can optionally download a "skeleton" Visual Studio project pre-bundled with the MobileFirst Native SDK.
 
 4. Run the command:
