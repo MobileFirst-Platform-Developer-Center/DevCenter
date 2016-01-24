@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title:  Client-side development
+title: Using the MobileFirst Platform Foundation SDK
 show_disqus: false
 show_children: true
 print_pdf: false

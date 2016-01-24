@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource Request from Native Windows 8.1 Universal Applications
+title: Resource request - Windows 8.1 Universal
 relevantTo: [windows]
 downloads:
   - name: Download Native project

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource Request from Native iOS Swift Applications
+title: Resource request - iOS (Swift)
 relevantTo: [ios]
 downloads:
   - name: Download Native project

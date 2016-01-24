@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource Request from Cordova Applications
+title: Resource request - Cordova
 relevantTo: [cordova]
 downloads:
   - name: Download MobileFirst project
@@ -131,7 +131,7 @@ function onSuccess(result){
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
-<img alt="Image of the sample application" src="RSSReader.png" style="float:right"/>
+<img alt="Image of the sample application" src="resource-request-success-cordova.png" style="float:right"/>
 ## Sample application
 The ResourceRequestCordova project contains a Cordova application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter to be used during the resource request call.
@@ -141,7 +141,8 @@ The adapter Maven project contains the Java adapter to be used during the resour
 
 ### Sample usage
 1. From the command line, navigate to the Cordova project.
-2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+2. Ensure the sample is registered in the MobileFirst Server by running the command:  
+`mfpdev app register`.
 3. Add a platform by running the `cordova platform add` command.
 4. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 5. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
