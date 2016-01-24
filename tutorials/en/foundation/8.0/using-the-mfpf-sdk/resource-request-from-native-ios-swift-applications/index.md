@@ -13,7 +13,7 @@ weight: 5
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources.
 
-**Prerequisites**: 
+**Prerequisites**:
 
 - Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) to your Native iOS project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
@@ -75,7 +75,7 @@ request.setQueryParameterValue("value1", forName: "param1")
 request.setQueryParameterValue("value2", forName: "param2")
 ```
 ### Form parameters
-To send **form** parameters in the body, use `sendWithFormParameters` instead of the simple `sendWithCompletionHandler`:
+To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
 
 ```swift
 //@FormParam("height")
@@ -129,5 +129,3 @@ The adapter Maven project contains the Java adapter to be used during the resour
 2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
 3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 4. From Xcode, run the sample by clicking the **Run* button.
-
-
