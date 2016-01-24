@@ -89,6 +89,8 @@ wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 - `directUpdateData` - A JSON object containing the `downloadSize` property that represents the file size (in bytes) of the update package to be downloaded from MobileFirst Server.
 - `directUpdateContext` - A JavaScript object exposing the `.start()` and `.stop()` functions, which start and stop the Direct Update flow.
 
+<img alt="Image of custom Direct Update dialog" src="custom-direct-update-dialog.png" style="float:right; width:290px"/>
+
 ### Example
 In the example code below, a custom Direct Update dialog is presented to the user to either continue with the update process or dismiss it.  
 Additional examples for a customized Direct Update UI:
@@ -100,28 +102,24 @@ Additional examples for a customized Direct Update UI:
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
-	// Create dialog
-	navigator.notification.confirm(
-	    'Custom Message Text', 
-	     onClick,
-	    'Custom Title Text',
-	    ['Update','Cancel']
-	);
+    // Create a dialog.
+    navigator.notification.confirm(
+        'Custom dialog body text', 
+        // Handle dialog buttons.
+        function(buttonIndex) {
+            if (buttonIndex == 2) {
+                directUpdateContext.start();
+            } else {
+                wl_directUpdateChallengeHandler.submitFailure();
+            }
+        },
+        'Custom dialog title text',
+        ['Cancel','Update']
+    );
 };
-
-// Handle dialog buttons
-function onClick(buttonIndex) {
-	if (buttonIndex == 1) {
-		directUpdateContext.start();
-	} else {
-		wl_directUpdateChallengeHandler.submitFailure();
-	}
-}
 ```
 
 In the example above, the `submitFailure` API method is used to dismiss the Direct Update.
-
-![Custom direct update dialog]({{ site.baseurl }}/assets/backup/05_05_custom_dialog.png)
 
 As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer. As such, it is important to call `submitFailure()` to notify the MobileFirst framework that the process completed with a "failure". The MobileFirst framework in turn invokes the `onFailure` callback of the invocation that triggered the Direct Update. Because the update process did not take place, it will occur again the next time it is triggered.
 
