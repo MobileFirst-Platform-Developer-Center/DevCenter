@@ -137,7 +137,7 @@ The file can also be updated by pulling from the server its latest revision by r
 ```javascript
 {
     "applicationKey": {
-        "bundleId": "com.sampleone.bankApp",
+        "bundleId": "com.sample.bankApp",
         "version": "1.0",
         "clientPlatform":"ios"
     },
