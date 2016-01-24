@@ -43,14 +43,14 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
 * Resource Reuqests from client applications
     * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
     * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
-    * <span style="color:red">IN PROGRESS</span> [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
+    * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
     * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal applications](../using-the-mfpf-sdk/resource-request-from-native-windows-8-applications/)
     * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-native-windows-10-applications/)
 * [JSONStore](../using-the-mfpf-sdk/jsonstore/)
     * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore/jsonstore-javascript/)
 	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore/jsonstore-objective-c/)
 	* [JSONStore in Android applications](../using-the-mfpf-sdk/jsonstore/jsonstore-java/)
-* <span style="color:red">IN PROGRESS </span>[Using Direct Update in Cordova Applications](../using-the-mfpf-sdk/direct-update/)
+* [Using Direct Update in Cordova Applications](../using-the-mfpf-sdk/direct-update/)
 * [Multilingual translation of Cordova applications](../using-the-mfpf-sdk/translation/)
 * [Debugging Cordova applications](../using-the-mfpf-sdk/debugging-applications/)
 
