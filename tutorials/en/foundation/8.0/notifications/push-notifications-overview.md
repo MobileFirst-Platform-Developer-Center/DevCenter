@@ -25,7 +25,8 @@ Notifications can take several forms:
 * **Badge (iOS), Tile (Windows 8.1 Universal, Windows 10 UWP)** - a graphical representation that allows a short text or image
 * **Banner (iOS), Toast (Windows 8.1 Universal, Windows 10 UWP)** - a disappearing pop-up text message at the top of the device display
 * **Sound (all)** - a sound file playing when a notification is received
-* **Interactive (iOS 9)** - action buttons inside the banner of a received notification
+* **Interactive (iOS 8 and above)** - action buttons inside the banner of a received notification
+* **Silent (iOS 7 and above)** - sending notifications without distrubing the user
 
 **Device support**  
 Push notifications are supported for the following mobile platforms:
@@ -46,28 +47,20 @@ Broadcast push notifications are a form of tag push notifications that are targe
 #### User Authenticated Notifications
 User Authenticated Notifications are notifications secured with OAuth.
 
-Unicast notifications are targeted to a particular device or a `userID`. Unicast notifications do not require any additional setup and are enabled by default when the MobileFirst application is enabled for push notifications.
-
 > For more information about unicast notifications, see the topic about sending push notifications, in the user documentation.
 
-#### Interactive notifications
-Interactive push notifications enables action buttons to be added for received notifications. (*iOS 8 and above only*)
-
-#### Silent notifications
-Silent push notifications enables notifications to be sent without disturbing the user. (*iOS 7 and above only*)
-
-#### REST API for Push Notifications
-MobileFirst Platform Foundation exposes a REST API endpoint that can be accessed by non-mobile clients. It is another way to use the push service without needing to develop and deploy MobileFirst adapters.
-
-> For more information about the REST API for push notification, see the topic about REST API Runtime Services, in the user documentation.
-
 ## Setting up support for Push Notifications
+- how to configure the server with p12 certificate for iOS, otpional certificate for Windows and GCM credentials for Android
 
-- need to write here how to setup the server (if needed at all)
+===
+The handling in client side tutorials should show:
 - how to edit the xcode project podfile with push
 - how to edit andrid studio project builde.gralde with Push
 - how to edit windows project nuget file with Push
-- (idan will take care of tutorial UI for this)
-- how to setup push on the server for ios/android/windows
-- need to consider perhaps to put all the setup into a seperate tutorial as it looks like it'll be a lot of text
-- need to think together with nathan about how/where to explain the security aspect of push Notifications
+- how to intercept and display notifications in the client
+
+=== 
+the overview tutorial should show:
+- how to setup authenticated push; prerequisite should be the security tutorial to understand the foundation of the new security model
+
+===
