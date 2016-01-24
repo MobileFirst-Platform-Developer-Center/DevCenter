@@ -13,7 +13,7 @@ weight: 4
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
 The REST API works with all adapters and external resources.
 
-**Prerequisites**: 
+**Prerequisites**:
 
 - Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) to your Native Android project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
@@ -21,96 +21,84 @@ The REST API works with all adapters and external resources.
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
-1. Define the URI of the resource:
+Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
+Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT`, `WLResourceRequest.HEAD` and `WLResourceRequest.DELETE`.
 
-    ```java
-    URI adapterPath = new URI("/adapters/RSSReader/getFeed");
-    ```
- * For JavaScript adapters, use `/adapters/{AdapterName}/{procedureName}`
- * For Java adapters, use `/adapters/{AdapterName}/{path}`. The path depends on how you defined your @Path annotations in your Java code. This would also include any @PathParam you used.
- * To access resources outside of the project, use the full URL as per the requirements of the external server.
+```java
+URI adapterPath = new URI("/adapters/RSSReader/getFeed");
+WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
+```
 
-2. Create a `WLResourceRequest` object and choose the HTTP Method (GET, POST, etc):
+* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
+* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
+* To access resources outside of the project, use the full URL as per the requirements of the external server.
+* **timeout**: Optional, request timeout in milliseconds
+* **scope**: Optional, if you know which scope is protecting the resource - specifying this scope could make the request more efficient.
 
-    ```Java
-    WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
-    ```
-3. Before sending your request, you may want to add parameters as needed.
+## Sending the request
+Request the resource by using the `.send()` method. Specify a WLResponseListener class instance:
 
-  * In JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name `params`:
+```java
+request.send(new WLResponseListener(){
+  public void onSuccess(WLResponse response) {
+    Log.d("Success", response.getResponseText());
+  }
+  public void onFailure(WLFailResponse response) {
+    Log.d("Failure", response.getResponseText());
+  }
+});
+```
 
-        ```js
-        request.setQueryParameter("params","['param1', 'param2']");
-        ```
-  * In Java adapters or external resources, there are several optional types of parameters:
+Use the `WLResponse response` and `WLFailResponse response` objects to get the data that is retrieved from the adapter.
 
-    * **Path parameter**: path parameters (/path/value1/value2) are set during the creation of the WLResourceRequest object:
+The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText -> String`, `responseJSON -> Dictionary` (if the response is in JSON) and `status -> Int` (the HTTP status of the response).
 
-          ```java
-          URI adapterPath = new URI("/adapters/JavaAdapter/users/"
-                    + first_name.getText().toString() +"/"
-                    + middle_name.getText().toString() +"/"
-                    + last_name.getText().toString()
-          );
+## Parameters
+Before sending your request, you may want to add parameters as needed.
 
-          WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.POST);
-          ```
+### Path parameters
+As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WLResourceRequest` object:
 
-    * **Query parameters**: use the `.setQueryParameter` method for each parameter:
+```java
+URI adapterPath = new URI("/adapters/JavaAdapter/users/value1/value2");
+WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
+```
 
-          ```java
-          request.setQueryParameter("param1","value1");
-          request.setQueryParameter("param2","value2");
-          ```
+### Query parameters
+To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
 
-    * **Header parameters**: use `.addHeader()` to set header parameters to the request.
+```java
+request.setQueryParameter("param1","value1");
+request.setQueryParameter("param2","value2");
+```
 
-          ```java
-          request.addHeader("date", date.getText().toString());
-          ```
+### Form parameters
+To send form parameters in the body, use `.send(HashMap<String, String> formParameters, WLResponseListener)` instead of `.send(WLResponseListener)`:  
 
-    * **Form parameters**: To send form parameters in the body, use `.send(HashMap<String, String> formParameters, WLResponseListener)`:  
+```java
+HashMap formParams = new HashMap();
+formParams.put("height", height.getText().toString());
+request.send(formParams, new MyInvokeListener());
+```    
 
-          ```java
-          HashMap formParams = new HashMap();
-          formParams.put("height", height.getText().toString());
-          request.send(formParams, new MyInvokeListener());
-          ```    
+### Header parameters
+To send a parameter as an HTTP header use `.addHeader()` API:
 
-4. Call the resource by using the `.send()` method. Specify a WLResponseListener class instance:
+```java
+request.addHeader("date", date.getText().toString());
+```
 
-    ```java
-    request.send(new MyInvokeListener());
-    ```
+### Other custom body parameters
+- `.send(requestBody, WLResponseListener listener)` allows you to set an arbitrary String in the body.
+- `.send(JSONStore json, WLResponseListener listener)` allows you to set an arbitrary dictionary in the body.
+- `.send(byte[] data, WLResponseListener listener)` allows you to set an arbitrary byte array in the body.
 
-> See the user documentation to learn more about `WLResourceRequest` and other signatures for the `send` method, which are not covered in this tutorial.
+### Javascript Adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
-## The response
-When the resource call is completed, the framework calls one of the methods of the WLResponseListener class that you defined in the `.send()` method.
-
-1. Create a new class that implements the `WLResponseListener` interface:
-
-    ```java
-    public class MyInvokeListener implements WLResponseListener {
-    }
-    ```
-
-2. Implement the `onSuccess` and `onFailure` methods.  
-If the resource call is successful, the `onSuccess` method is called. Otherwise, the `onFailure` method is called.  
-Use these methods to get the data that is retrieved from the adapter.  
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information.
-
-    ```java
-    public void onSuccess(WLResponse response) {
-          String responseText = response.getResponseText();
-          AndroidNativeApp.updateTextView("Successfully called the resource\n" + responseText);
-    }
-
-    public void onFailure(WLFailResponse response) {
-         String responseText = response.getResponseText();
-         AndroidNativeApp.updateTextView("Failed to call the resource\n" + responseText);
-    }
-    ```
+```java
+request.setQueryParameter("params","['param1', 'param2']");
+```
 
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
@@ -124,7 +112,7 @@ The adapter Maven project contains the Java adapter to be used during the resour
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-* Make sure to update the **app/src/main/assets/mfpclient.properties** file in the Android Studio project with the server properties.
-* The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
-
-<span style = "color:red">SCREENSHOT</span>
+1. From the command line, navigate to the Android project.
+2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+5. From Android Studio, run the sample by clicking the **Run** button.
