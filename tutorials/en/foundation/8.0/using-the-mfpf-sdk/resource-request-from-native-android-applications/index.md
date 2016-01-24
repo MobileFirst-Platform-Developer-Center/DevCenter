@@ -91,7 +91,7 @@ request.addHeader("date", date.getText().toString());
 ### Other custom body parameters
 - `.send(requestBody, WLResponseListener listener)` allows you to set an arbitrary String in the body.
 - `.send(JSONStore json, WLResponseListener listener)` allows you to set an arbitrary dictionary in the body.
-- `.send(byte[] data, WLResponseListener listener)` allows you to set an arbitrary data object in the body.
+- `.send(byte[] data, WLResponseListener listener)` allows you to set an arbitrary byte array in the body.
 
 ### Javascript Adapters
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
