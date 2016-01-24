@@ -116,7 +116,7 @@ request.setQueryParameterValue("['param1', 'param2']", forName: "params")
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
-<img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
+<img alt="Image of the sample application" src="resource-request-success-ios.png" style="float:right"/>
 ## Sample application
 The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter to be used during the resource request call.

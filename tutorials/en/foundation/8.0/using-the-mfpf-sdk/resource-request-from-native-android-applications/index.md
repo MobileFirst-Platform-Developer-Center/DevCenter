@@ -103,7 +103,7 @@ request.setQueryParameter("params","['param1', 'param2']");
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
-<img alt="Image of the sample application" src="ResourceRequestAndroid.png" style="float:right"/>
+<img alt="Image of the sample application" src="resource-request-success-android.png" style="float:right"/>
 ## Sample application
 The ResourceRequestAndroid project contains a native Android application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter to be used during the resource request call.
@@ -113,6 +113,7 @@ The adapter Maven project contains the Java adapter to be used during the resour
 
 ### Sample usage
 1. From the command line, navigate to the Android project.
-2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+2. Ensure the sample is registered in the MobileFirst Server by running the command:  
+`mfpdev app register`.
 3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 4. From Android Studio, run the sample by clicking the **Run** button.
