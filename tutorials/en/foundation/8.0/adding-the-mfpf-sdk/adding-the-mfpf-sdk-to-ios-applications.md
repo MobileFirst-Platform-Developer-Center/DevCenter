@@ -149,4 +149,9 @@ The file can also be updated by pulling from the server its latest revision by r
  ```
 
 ## Tutorials to follow next
-Now that the application is integrated with the MobileFirst Native SDK you can continue reading tutorials for [Native iOS development](../../ios-tutorials/) to learn more about authentication and security, server-side development, notifications, and more.
+With the MobileFirst Native SDK now integrated, you can now:
+
+- Review the [Server-side development tutorials](../../adapters/)
+- Review the [Authentication and security tutorials](../../authentication-and-security/)
+- Review the [Notifications tutorials](../../notifications/)
+- Review [All Tutorials](../../all-tutorials)

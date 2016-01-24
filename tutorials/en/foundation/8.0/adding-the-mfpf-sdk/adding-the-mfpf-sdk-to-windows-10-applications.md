@@ -128,5 +128,9 @@ The file can also be updated by pulling from the server its latest revision by r
  ```
 
 ## Tutorials to follow next
-Now that your application contains the Native API library, you can follow the tutorials in the
-[Native Windows 8.1 Development](../../native/windows10/) section to learn more about authentication and security, server-side development, advanced client-side development, notifications and more.
+With the MobileFirst Native SDK now integrated, you can now:
+
+- Review the [Server-side development tutorials](../../adapters/)
+- Review the [Authentication and security tutorials](../../authentication-and-security/)
+- Review the [Notifications tutorials](../../notifications/)
+- Review [All Tutorials](../../all-tutorials)
