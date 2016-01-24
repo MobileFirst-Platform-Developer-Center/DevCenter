@@ -10,7 +10,7 @@ downloads:
 ## Overview
 This tutorial further elaborates on the available JSONStore APIs for Native iOS development.
 
-**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Xcode project. Follow the tutorial: [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/).
+**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Xcode project. Follow the tutorial: [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/).
 
 #### Jump to:
 
