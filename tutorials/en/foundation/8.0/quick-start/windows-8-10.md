@@ -50,12 +50,11 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
        rr.send();
     });
 
-    if(resp.success){
-      Debug.WriteLine("Success " + resp.ResponseText);
-    }else{
-      Debug.WriteLine("Failed " + resp.error);  
+    if (resp.success) {
+      Debug.WriteLine("Success: " + resp.ResponseText);
+    } else {
+      Debug.WriteLine("Failure: " + resp.error);  
     }
-
     ```
 
 ### 4. Creating an adapter
