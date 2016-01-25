@@ -46,9 +46,16 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     WorklightResourceRequest rr = _newClient.ResourceRequest(uriBuilder.ToString(), "GET");
 
-    WorklightResponse resp = await rr.Send();
+    WorklightResponse resp= return Task.Run<WorklightResponse> (() => {
+       rr.send();
+    });
 
-    Debug.WriteLine("Response is " + resp.ResponseText);
+    if(resp.success){
+      Debug.WriteLine("Success " + resp.ResponseText);
+    }else{
+      Debug.WriteLine("Failed " + resp.error);  
+    }
+
     ```
 
 ### 4. Creating an adapter
