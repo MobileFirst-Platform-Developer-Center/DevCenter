@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Using Direct Update in Cordova applications
+breadcrumb_title: Direct Update
 relevantTo: [cordova]
 weight: 10
 downloads:
