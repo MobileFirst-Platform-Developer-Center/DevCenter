@@ -25,13 +25,23 @@ This tutorial further elaborates on the available JSONStore APIs for Native iOS 
 Add to the file:
 
     ```xml
-    source 'https://github.com/CocoaPods/Specs.git'
     pod 'IBMMobileFirstPlatformFoundationJSONStore'
     ```
 
 2. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install` - note that this action may take a while.
 
-The JSONStore feature should now be available to you in the Xcode project.
+Whenever you want to use JSONStore, make sure that you import the JSONStore header:  
+Objective-C:
+
+```objc
+#import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundationJSONStore.h> 
+```
+
+Swift:
+
+```swift
+import IBMMobileFirstPlatformFoundationJSONStore    
+```
 
 ## Basic Usage
 ### Open
