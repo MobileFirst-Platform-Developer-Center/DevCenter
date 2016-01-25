@@ -123,9 +123,6 @@ Scalable database management for your MobileFirst projects.
     * [iOS – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/ios/)
 	* [Android – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/android/)
 
-* <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
-* <span style="color:red">TODO </span>[Distributing mobile applications with Application Center](../moving-to-production/distributing-mobile-applications-with-application-center/)
-
 ### [IBM Containers](../ibm-containers/)
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
 
@@ -151,3 +148,7 @@ Scan your application for potential harming code.
 
 ### [Moving to production](../moving-to-production/)
 Move the apps that you create from your development environment to the production environment.  
+
+* <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
+* <span style="color:red">TODO </span>[Distributing mobile applications with Application Center](../moving-to-production/distributing-mobile-applications-with-application-center/)
+
