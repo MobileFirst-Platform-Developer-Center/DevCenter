@@ -150,5 +150,5 @@ Scan your application for potential harming code.
 Move the apps that you create from your development environment to the production environment.  
 
 * <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
-* <span style="color:red">TODO </span>[Distributing mobile applications with Application Center](../moving-to-production/distributing-mobile-applications-with-application-center/)
+* <span style="color:red">IN PROGRESS </span>[Distributing mobile applications with Application Center](../moving-to-production/app-center/)
 
