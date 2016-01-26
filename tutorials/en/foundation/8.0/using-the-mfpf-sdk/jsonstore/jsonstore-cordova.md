@@ -339,9 +339,13 @@ WL.JSONStore.get(collectionName).getValue(key).then(function (result) {
 });
 ```
 
-## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStore) the Cordova project.  
+> For more information about JSONStore, see the user documentation.
 
 ![jsonstore sample](jsonstore-hybrid.png)
+## Sample application
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80) the Cordova project.  
 
-> For more information about JSONStore, see the user documentation.
+### Sample usage
+1. From the command line, navigate to the Cordova project.
+2. Add a platform by running the `cordova platform add` command.
+3. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
