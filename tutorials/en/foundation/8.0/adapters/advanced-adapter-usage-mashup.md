@@ -3,8 +3,8 @@ layout: tutorial
 title: Advanced Adapter Usage and Mashup
 relevantTo: [hybrid]
 downloads:
-  - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/AdapterMashup
+  - name: Download Cordova project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 4
 ---
 ## Overview
@@ -221,9 +221,15 @@ return jsonArr.toString();
 > An example of city list in SQL is available in the provided adapter maven project, under `Utils/mobilefirstTraining.sql`.
 Remember that SQL adapters require a JDBC connector driver. [Follow these instructions to add the JDBC connector dependency](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html) .
 
+<img alt="sample application" src="AdaptersMashupSample.png" style="float:right"/>
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdapterMashup) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the MobileFirst project.
 
-Note: the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
+**Note:** the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
 
-![Adapter Mashup sample](AdaptersMashupSample.png)
+### Sample usage
+1. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+1. From the command line, navigate to the Cordova project.
+2. Add a platform by running the `cordova platform add` command.
+3. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
+

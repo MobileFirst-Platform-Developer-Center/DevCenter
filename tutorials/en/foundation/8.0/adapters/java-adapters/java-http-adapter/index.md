@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: Java HTTP Adapter
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,cordova]
 downloads:
-  - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters/tree/release80
 ---
 
 ## Overview
@@ -110,7 +110,10 @@ The output stream is then `flush`ed and `close`d.</p>
 If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
 
 ## Results
-Use the testing techniques described in the [Testing and Debugging Adapters](../../testing-and-debugging-adapters) tutorial.
+Use the testing techniques described in the [Testing and Debugging Adapters](../../testing-and-debugging-adapters/tree/release80) tutorial.
 
-## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.
+## Sample
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the Maven project.
+
+### Sample usage
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).

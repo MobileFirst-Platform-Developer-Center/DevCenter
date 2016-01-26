@@ -3,7 +3,7 @@ layout: tutorial
 title: Android -  Cloudant NoSQL DB API
 relevantTo: [android]
 downloads:
-  - name: Download MobileFirst project
+  - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise
 ---
 

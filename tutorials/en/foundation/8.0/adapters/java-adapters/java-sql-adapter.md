@@ -1,10 +1,10 @@
 ---
 layout: tutorial
 title: Java SQL Adapter
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,cordova]
 downloads:
-  - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters/tree/release80
 weight:
 ---
 
@@ -284,9 +284,12 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 ## Results
 Use the testing techniques described in the [Testing and Debugging Adapters](../../testing-and-debugging-adapters) tutorial.
 
-## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters) the MobileFirst project.
+## Sample 
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters/tree/release80) the Maven project.
 
-The sample includes the **UserAdapter** described here.  
-The Adapters project also includes a sample MySQL script in the **Utils** folder, which needs to be imported into your database to test the project.  
+The Adapters Maven project includes the **UserAdapter** described above.    
+Also included is an SQL script in the **Utils** folder, which needs to be imported into your database to test the project.  
 The project does not include the MySQL connector driver, and does not include the **server.xml** configuration described above. Those steps need to be completed in order to use the sample.
+
+### Sample usage
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).

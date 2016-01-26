@@ -3,8 +3,8 @@ layout: tutorial
 title: Integrating with Cloudant by Using an Adapter
 relevantTo: [cordova]
 downloads:
-  - name: Download MobileFirst project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter
+  - name: Download Cordova project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
 weight: 5
 ---
 ## Overview
@@ -118,10 +118,15 @@ public Response addEntry(User user){
 ```
 
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80) the Cordova project.
 
-The sample contains two adapters, one in JavaScript and one in Java. It also contains a hybrid application that works with both the Java and JavaScript adapters.
+The sample contains two adapters, one in JavaScript and one in Java.  
+It also contains a Cordva application that works with both the Java and JavaScript adapters.
 
+### Sample usage 
 1. Create a database in Cloudant and set the database name in the adapter.
 2. Create a user (an API key) and make sure that you provide read and write rights for this user.
 3. <span style="color:red"> To connect to Cloudant, update the `CloudantAdapter/server/conf/mfp.properties` file with the domain, username, and password at the bottom of the file.</span>
+4. From a **Command-line**, navigate to the project's root folder.
+5. Add a platform using the `cordova platform add` command.
+6. Prepare and run the application using the `cordova prepare` and `cordova run` commands.

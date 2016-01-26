@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Cordova applications
+title: JSONStore in Cordova applications
 relevantTo: [cordova]
 weight: 1
 downloads:
-  - name: Download MobileFirst project
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80
 ---
 ## Overview
@@ -346,6 +346,7 @@ WL.JSONStore.get(collectionName).getValue(key).then(function (result) {
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80) the Cordova project.  
 
 ### Sample usage
+1. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 1. From the command line, navigate to the Cordova project.
 2. Add a platform by running the `cordova platform add` command.
 3. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.

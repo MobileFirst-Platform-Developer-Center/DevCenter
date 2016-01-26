@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Native Android applications
+title: JSONStore in Native Android applications
 relevantTo: [android]
 weight: 3
 downloads:

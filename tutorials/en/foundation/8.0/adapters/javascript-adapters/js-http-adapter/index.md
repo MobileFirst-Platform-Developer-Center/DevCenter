@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: JavaScript HTTP Adapter
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,cordova]
 downloads:
-  - name: Download MobileFirst project
+  - name: Download Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters/tree/release80
 weight: 1
 ---
@@ -153,7 +153,8 @@ var input = {
   var result = WL.Server.invokeHttp(input);
 ```
 
-## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the Adapters Maven project.
+## Sample
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters/tree/release80/) the Adapters Maven project.
 
+### Sample usage
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).

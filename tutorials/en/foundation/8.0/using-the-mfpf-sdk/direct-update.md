@@ -5,7 +5,7 @@ breadcrumb_title: Direct Update
 relevantTo: [cordova]
 weight: 10
 downloads:
-  - name: Download MobileFirst project
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 ## Overview

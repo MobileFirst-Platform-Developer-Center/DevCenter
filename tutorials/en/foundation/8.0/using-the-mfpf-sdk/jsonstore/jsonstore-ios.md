@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Native iOS applications
+title: JSONStore in Native iOS applications
 relevantTo: [ios]
 weight: 2
 downloads:

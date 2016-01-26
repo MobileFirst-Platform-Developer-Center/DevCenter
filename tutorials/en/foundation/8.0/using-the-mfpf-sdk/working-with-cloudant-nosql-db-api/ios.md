@@ -3,7 +3,7 @@ layout: tutorial
 title: iOS - Cloudant NoSQL DB API
 relevantTo: [ios]
 downloads:
-  - name: Download MobileFirst project
+  - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise
 ---
 

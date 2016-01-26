@@ -4,7 +4,7 @@ title: Resource request from Cordova applications
 breadcrumb_title: Resource request - Cordova
 relevantTo: [cordova]
 downloads:
-  - name: Download MobileFirst project
+  - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
   - name: Download Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80

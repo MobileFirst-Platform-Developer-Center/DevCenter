@@ -5,7 +5,7 @@ relevantTo: [android, ios]
 show_children: true
 weight: 8
 downloads:
-  - name: Download MobileFirst project
+  - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise
 ---
 
