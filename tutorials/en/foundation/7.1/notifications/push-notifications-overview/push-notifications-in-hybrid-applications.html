@@ -24,12 +24,15 @@ Also mentioned are the addresses and ports that are required to be accessible fo
 <h3 id="setupiOS">iOS</h3>
 <p>To send push notifications to iOS devices, you use the Apple Push Notifications Service (APNS).<br />
 You must be a registered Apple iOS Developer to obtain an APNS certificate for your application.<br />
-<strong>Note:</strong> APNS certificates must have a non-blank password.</p>
 <ul>
 <li>During the development phase, use the <code>apns-certificate-sandbox.p12</code> sandbox certificate file.</li>
 <li>During the production phase, use the <code>apns-certificate-production.p12</code> production certificate file.</li>
 <li>Place the certificate file either in the application root folder or in the application environment (iPhone or iPad) folder. The environment root folder takes the highest priority.</li>
 </ul>
+
+<strong>Note:</strong> APNS certificates must have a non-blank password.</p>
+<strong>Note:</strong> The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.</p>
+
 <p>When the hybrid application has both iPhone and iPad environments, it requires separate certificates for push notification for each environment. In that case, place those certificates in the corresponding environment folders.</p>
 <blockquote><p>To learn about setting up push notifications required certificates, see this blog post: <a href="https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en">Understanding and setting up certificates required to use iOS devices and Apple Push Notifications services (APNS)</a></p></blockquote>
 <h4>Apple Push Notifications Service</h4>
