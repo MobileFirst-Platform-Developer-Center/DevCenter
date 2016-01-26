@@ -55,7 +55,6 @@ pod 'IBMMobileFirstPlatformFoundation'
 <blockquote><strong>Important</strong>: From here on, use the <code>[ProjectName].<strong>xcworkspace</strong></code> file in order to open the project in Xcode. Do <strong>not</strong> use the <code>[ProjectName].<strong>xcodeproj</strong></code> file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).</p></blockquote>
 </li>
 <li>Open the Xcode project by double-clicking the <strong>.xcworkspace</strong> file.</li>
-<li>Right-click the project and select <strong>Add Files To [ProjectName]</strong>, select the <code>worklight.plist</code>, located in the root folder of the Xcode project.</li>
 <li>Whenever you want to use the MobileFirst Native SDK, make sure that you import the framework:<br />
 {% highlight objc linenos %}
 #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
@@ -73,7 +72,8 @@ cd your-project-name
 mfp start
 {% endhighlight %}</p>
 <p>After the project is created and the server is running, the server-side entity can be created and deployed to the server.<br />
-The next step adds the following files to the native project, as explained in section <a href="#insideNativeApp">Inside a native application containing the MobileFirst Native SDK</a>: <code>worklight.plist</code>, <code>application-descriptor.xml</code>, <code>mobilefirst</code> folder.</p>
+The next step adds the following files to the native directory, as explained in the next section: <code>worklight.plist</code>, <code>application-descriptor.xml</code>, <code>mobilefirst</code> folder.</p>
+<p>Make sure to add <code>worklight.plist</code> to your XCode project: Right-click the project and select <strong>Add Files To [ProjectName]</strong>, select the <code>worklight.plist</code>, located in the root folder of the Xcode project.</p>
 <h3>Deploying the server-side entity</h3>
 <ol>
 <li>In <strong>Terminal</strong>, navigate to the Xcode project.</li>
@@ -107,7 +107,7 @@ The next step adds the following files to the native project, as explained in se
 <p><img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/02_02_new_swift.png" />
 </li>
 <li>
-Use <code>import "IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h"</code> in any class that needs to use the MobileFirst SDK.
+Use <code>import IBMMobileFirstPlatformFoundation</code> in any class that needs to use the MobileFirst SDK.
 </li>
 </ol>
 <p>All the MobileFirst classes are now available from any of your Swift files.<br />
