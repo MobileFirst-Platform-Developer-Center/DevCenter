@@ -16,6 +16,7 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 * cordova-plugin-mfp-push
 * cordova-plugin-mfp-jsonstore
 * cordova-plugin-mfp-fips
+* cordova-plugin-mfp-encrypt-utils
 
 **cordova-plug-in-mfp**  
 The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the `cordova-plugin-mfp` plug-in is automatically installed as well if not already installed.
@@ -29,12 +30,18 @@ The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push no
 **cordova-plugin-mfp-fips**  
 The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
+**cordova-plugin-mfp-encrypt-utils**  
+The `cordova-plugin-mfp-encrypt-utils` plug-in provides encryption functions. For more information about encryption functions, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+
+
 In this tutorial you will learn how to add the MobileFirst SDK to either a new or existing Cordova application created with Apache Cordova, Ionic or other thirdy-party tool. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are changed in the project.
+
+
 
 **Prerequisites:**
 
 - Apache Cordova CLI and MobileFirst Developer CLI installed on the developer workstation.  
-- *Optional* MobileFirst Server to run a locally.
+- *Optional* MobileFirst Server to run locally.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
 
 #### Jump to:
@@ -53,9 +60,9 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
 ### Adding the SDK
 
-1. Create a Cordova project or use an existing one. 
+1. Create a Cordova project or use an existing one.
 
-    Consider creating the project using the MobileFirst Cordova **application template**. The template adds to the Cordova project's **config.xml** file requierd MobileFirst-specific plug-in entries, as well as provides a MobileFirst-specific, ready-to-use, **index.js** file adjusted for MobileFirst application development. 
+    Consider creating the project using the MobileFirst Cordova **application template**. The template adds to the Cordova project's **config.xml** file requierd MobileFirst-specific plug-in entries, as well as provides a MobileFirst-specific, ready-to-use, **index.js** file adjusted for MobileFirst application development.
 
     ```bash
     cordova create myapp  --template cordova-template-mfp
@@ -83,8 +90,8 @@ If using a locally installed server: From a **Command-line** window, navigate to
     mfpdev app register
     ```
 
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by updating the **config.xml** file at the root of the Cordova project with metadata that identifies the MobileFirst Server. 
-    
+    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by updating the **config.xml** file at the root of the Cordova project with metadata that identifies the MobileFirst Server.
+
     Each platform is registered as an application in MobileFirst Server.
 
     > The application registration can also be done from the MobileFirst Operations Console:    
@@ -92,8 +99,8 @@ If using a locally installed server: From a **Command-line** window, navigate to
     > 2. Click on the "New" button next to "Applications" to create a new application. Follow the on-screen instructions.  
     > 3. After successfully registering your application you can optionally download a "skeleton" Cordova project pre-bundled with the MobileFirst Cordova SDK.
 
-3. Run the command: 
- 
+3. Run the command:
+
     ```bash
     mfpdev app pull
     ```
