@@ -341,7 +341,7 @@ WL.JSONStore.get(collectionName).getValue(key).then(function (result) {
 
 > For more information about JSONStore, see the user documentation.
 
-![jsonstore sample](jsonstore-hybrid.png)
+<img alt="JSONStore sample app" src="jsonstore-cordova.png" style="float:right"/>
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80) the Cordova project.  
 
