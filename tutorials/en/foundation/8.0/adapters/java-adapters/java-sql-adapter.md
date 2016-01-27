@@ -4,7 +4,7 @@ title: Java SQL Adapter
 relevantTo: [ios,android,windows,cordova]
 downloads:
   - name: Download Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight:
 ---
 
@@ -285,7 +285,7 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 Use the testing techniques described in the [Testing and Debugging Adapters](../../testing-and-debugging-adapters) tutorial.
 
 ## Sample 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaAdapters/tree/release80) the Maven project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
 
 The Adapters Maven project includes the **UserAdapter** described above.    
 Also included is an SQL script in the **Utils** folder, which needs to be imported into your database to test the project.  

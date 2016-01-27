@@ -4,7 +4,7 @@ title: Using Java in JavaScript Adapters
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 downloads:
   - name: Download Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
 
@@ -64,7 +64,7 @@ After your custom Java code is created and any required JAR files are added, you
     ```
 
 ## Sample
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JavaScriptAdapters/tree/release80) the Maven project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
 
 ### Sample usage
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
