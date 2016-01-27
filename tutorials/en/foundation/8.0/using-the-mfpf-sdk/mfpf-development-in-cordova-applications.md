@@ -82,6 +82,15 @@ A Cordova application's web resources can be previewed either in the iOS Simulat
     ❯ browser: Simple browser rendering
     mbs: Mobile Browser Simulator
     ```
+3. Select a platform to preview (only added platform will be displayed):
+
+    ```bash
+    ❯◯ android
+    ◯ ios
+    ```
+
+Applicative code (HTML, CSS and JS) can now be edited in real-time.  
+After making a change to a resource, save the change and it will be immediately reflected in the browser.
 
 > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobileirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
