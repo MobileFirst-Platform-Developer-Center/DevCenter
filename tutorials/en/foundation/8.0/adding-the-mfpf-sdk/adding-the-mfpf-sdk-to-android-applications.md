@@ -16,7 +16,7 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 - Android Studio and MobileFirst Developer CLI installed on the developer workstation.  
 - *Optional* MobileFirst Server to run a locally.
-- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-the-mobilefirst-development-environment) tutorial.
+- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.
 
 #### Jump to:
 
