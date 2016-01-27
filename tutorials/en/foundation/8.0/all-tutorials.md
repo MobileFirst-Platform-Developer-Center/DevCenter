@@ -39,7 +39,7 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
 
 * [MobileFirst Platform Foundation SDK development in Cordova applications](../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
-* <span style="color:red">TODO </span>[Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
+* <span style="color:red">IN PRGORESS </span>[Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
 * Resource Reuqests from client applications
     * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
     * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
