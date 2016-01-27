@@ -6,7 +6,7 @@ relevantTo: [cordova]
 weight: 1
 ---
 ## Overview
-The MobileFirst Platform Foundation SDK provides a set of API methods enabling developers to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
+In this tutorial you will learn how to add the MobileFirst SDK to either a new or existing Cordova application created with Apache Cordova, Ionic or other thirdy-party tool. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are changed in the project.
 
 > For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
@@ -18,25 +18,20 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 * cordova-plugin-mfp-fips
 * cordova-plugin-mfp-encrypt-utils
 
-**cordova-plug-in-mfp**  
+#### cordova-plug-in-mfp
 The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the `cordova-plugin-mfp` plug-in is automatically installed as well if not already installed.
 
-**cordova-plugin-mfp-jsonstore**  
+#### cordova-plugin-mfp-jsonstore
 The `cordova-plugin-mfp-jsonstore` plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../../using-the-mfpf-sdk/jsonstore/).  
 
-**cordova-plugin-mfp-push**  
+#### cordova-plugin-mfp-push
 The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../../notifications/push-notifications-overview/).
 
-**cordova-plugin-mfp-fips**  
+#### cordova-plugin-mfp-fips
 The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
-**cordova-plugin-mfp-encrypt-utils**  
+#### cordova-plugin-mfp-encrypt-utils
 The `cordova-plugin-mfp-encrypt-utils` plug-in provides encryption functions. For more information about encryption functions, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
-
-
-In this tutorial you will learn how to add the MobileFirst SDK to either a new or existing Cordova application created with Apache Cordova, Ionic or other thirdy-party tool. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are changed in the project.
-
-
 
 **Prerequisites:**
 
