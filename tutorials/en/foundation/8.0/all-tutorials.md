@@ -143,6 +143,7 @@ Add testing capabilities to your application.
 * [MobileFirst Quality Assurance in iOS applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/)
 * [MobileFirst Quality Assurance in Android applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/)
 
+{% comment %}
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
 Scan your application for potential harming code.  
 <span style="color:red">TODO outsource to the AppScan team</span>  
@@ -154,4 +155,4 @@ Move the apps that you create from your development environment to the productio
 
 * <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
 * [Distributing mobile applications with Application Center](../moving-to-production/app-center/)
-
+{% endcomment %}
