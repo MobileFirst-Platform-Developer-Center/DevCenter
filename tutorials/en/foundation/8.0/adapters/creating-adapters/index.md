@@ -22,7 +22,7 @@ The adapter project is based on the Maven Archetype "adapter-maven-archetype" wh
  * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
 * [Creating Adapters Using MobileFirst Developer CLI](#creating-adapters-using-mobilefirst-developer-cli)
  * [Install MobileFirst Developer CLI](#install-mobilefirst-developer-cli)
- * [Create an Adapter](#create-an-adapter)
+ * [Create an Adapter](#install-mobilefirst-developer-cli)
 * [File Structure](file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
 * [Creating Adapters Using MobileFirst Operations Console](#creating-adapters-using-mobilefirst-operations-console)
@@ -192,7 +192,7 @@ To group adapters you need to:
   3. Add a **`module`** element for each adapter
   4. Add the **`build`** element
   5. Replace the **localhost:9080** with your MobileFirst Server IP and port.
-  6. Replace the **`mfpfUser`** and **`mfpfPassword`** values with your MobileFirst admin user name and password.
+  6. **Optional**. Replace the **`mfpfUser`** and **`mfpfPassword`** default values with your MobileFirst admin user name and password.
 
 4. To [build or deploy](#build-and-deploy-adapters) all adapters, run the Maven commands from the root "GroupAdapters" project.
 
