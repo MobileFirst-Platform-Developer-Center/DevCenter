@@ -77,3 +77,6 @@ DEPENDENCIES
   pdfkit
   redcarpet
   wkhtmltopdf-binary-edge
+
+BUNDLED WITH
+   1.10.6
