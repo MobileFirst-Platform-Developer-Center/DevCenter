@@ -59,7 +59,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
 Develop server-side code to integrate with enterprise back-end systems and cloud services.  
 
 * <span style="color:red">IN PROGRESS</span> [Adapters overview](../adapters/adapters-overview/)
-* <span style="color:red">IN PROGRESS</span> [Creating Java and JavaScript adapters](../adapters/creating-adapters/)
+* [Creating Java and JavaScript adapters](../adapters/creating-adapters/)
 * [JavaScript adapters](../adapters/javascript-adapters/)
     * [JavaScript HTTP Adapter](../adapters/javascript-adapters/js-http-adapter/)
     * [JavaScript SQL Adapter](../adapters/javascript-adapters/js-sql-adapter/)
@@ -69,7 +69,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
     * [Java SQL adapter](../adapters/java-adapters/java-sql-adapter/)
 * <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
 * <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../adapters/cloudant/)
-* <span style="color:red">IN PROGRESS</span> [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
+* [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications.
