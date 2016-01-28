@@ -12,7 +12,7 @@ weight: 3
 ---
 ## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources, and is supported in the following Cordova platforms: iOS, Android, Windows 8.1 Universal and Windows 10 UWP.
+The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
@@ -37,6 +37,19 @@ var resourceRequest = new WLResourceRequest(
 * To access resources outside of the project, use the full URL as per the requirements of the external server.
 * **timeout**: Optional, request timeout in milliseconds
 
+## Sending the request
+Request the resource by using the `send()` method.  
+The `send()` method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
+
+```js
+resourceRequest.send().then(
+    onSuccess,
+    onFailure
+)
+```
+
+Using JavaScript **promises**, you can define `onSuccess` and `onFailure` functions.
+
 ### setQueryParameter
 By using the `setQueryParameter` method, you can include query (URL) parameters in the REST request.
 
@@ -59,27 +72,16 @@ By using the `setHeader` method, you can set a new HTTP header or replace an exi
 resourceRequest.setHeader("Header-Name","value");
 ```
 
-### send(body)
-The `send()` method triggers the request. It takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
-
-```js
-resourceRequest.send().then(
-    onSuccess,
-    onFailure
-)
-```
-Using JavaScript promises, you can define `onSuccess` and `onFailure` functions.
-
 ### sendFormParameters(json)
-To send URL-encoded form parameters, use the `sendFormParameters(json)` method instead. This method converts the JSON to a URL encoded string, sets the content-type to `application/x-www-form-urlencoded`, and sets it as the HTTP body.
+To send URL-encoded form parameters, use the `sendFormParameters(json)` method instead. This method converts the JSON to a URL encoded string, sets the `content-type` to `application/x-www-form-urlencoded`, and sets it as the HTTP body.
 
->For more information about `WLResourceRequest`, see the API reference in the user documentation.
+> For more information about `WLResourceRequest`, see the API reference in the user documentation.
 
 ## The response
 Both the `onSuccess` and `onFailure` callbacks receive a `response` object, which typically contains the following properties:
 
 * **`status`**: The HTTP response status
-* **`responseJSON`**: An object that contains the data that is returned by the called resource, and additional information about the resource call
+* **`responseJSON`**: An object that contains the data that is returned by the called resource, and additional information about the resource call.
 
 The `response` object is returned to the corresponding success/failure handler.
 
@@ -101,16 +103,6 @@ The `response` object is returned to the corresponding success/failure handler.
     "link": "http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated",
     "pubDate": "Mon, 10 Nov 2014 02:21:00 -0500",
     "title": "Harvard used cameras to track attendance without telling students"
-  }, {
-    "creator": "Jon Fingas",
-    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/bmw-ev-charging-street-lights\/?ncid=rss_truncated",
-    "pubDate": "Mon, 10 Nov 2014 00:10:00 -0500",
-    "title": "BMW's new street lights will charge your electric car"
-  }, {
-    "creator": "Daniel Cooper",
-    "link": "http:\/\/www.engadget.com\/2014\/11\/09\/hwyc-lumia-925\/?ncid=rss_truncated",
-    "pubDate": "Sun, 09 Nov 2014 22:43:00 -0500",
-    "title": "How would you change Nokia's Lumia 925?"
   }]
 }
 ```
@@ -124,7 +116,6 @@ The rest of the resource call result depends on what was retrieved from the back
 
 ```js
 function onSuccess(result){
-    WL.Logger.debug("Request success");
     showResult(result.responseJSON);
 }
 ```
