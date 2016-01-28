@@ -129,4 +129,4 @@ It also contains a Cordva application that works with both the Java and JavaScri
 3. <span style="color:red"> To connect to Cloudant, update the `CloudantAdapter/server/conf/mfp.properties` file with the domain, username, and password at the bottom of the file.</span>
 4. From a **Command-line**, navigate to the project's root folder.
 5. Add a platform using the `cordova platform add` command.
-6. Prepare and run the application using the `cordova prepare` and `cordova run` commands.
+6. Run the application by running the `cordova run` command.

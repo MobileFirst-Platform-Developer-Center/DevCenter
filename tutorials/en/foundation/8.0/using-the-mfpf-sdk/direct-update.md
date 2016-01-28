@@ -160,5 +160,5 @@ The diagram below depicts the flow of updating an application's web resources us
 ### Sample usage
 1. From the command line, navigate to the Cordova project.
 2. Add a platform by running the `cordova platform add` command.
-3. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
+3. Run the Cordova application by running the `cordova run` command.
 4. Alter the application web resources and upload them to the MobileFirst Server as [explained above](#creating-and-deploying-updated-web-resources).
