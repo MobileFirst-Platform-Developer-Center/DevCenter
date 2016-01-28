@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Server-side development
+title: Adapters
 show_children: true
 show_disqus: false
 print_pdf: false
