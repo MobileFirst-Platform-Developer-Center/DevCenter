@@ -40,7 +40,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
 
 * [MobileFirst Platform Foundation SDK development in Cordova applications](../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
 * <span style="color:red">IN PRGORESS </span>[Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
-* Resource Reuqests from client applications
+* Resource Requests from client applications
     * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
     * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
     * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
@@ -60,13 +60,13 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 
 * <span style="color:red">IN PROGRESS</span> [Adapters overview](../adapters/adapters-overview/)
 * <span style="color:red">IN PROGRESS</span> [Creating Java and JavaScript adapters](../adapters/creating-adapters/)
-* [JavaScript adapters](../adapters/creating-adapters/javascript-adapters/)
-    * [JavaScript HTTP Adapter](../adapters/creating-adapters/javascript-adapters/js-http-adapter/)
-    * [JavaScript SQL Adapter](../adapters/creating-adapters/javascript-adapters/js-sql-adapter/)
-    * [Using Java in JavaScript Adapters](../adapters/creating-adapters/javascript-adapters/using-java-in-javascript-adapters/)
-* [Java Adapters](../adapters/creating-adapters/java-adapters/)
-    * [Java HTTP adapter](../adapters/creating-adapters/java-adapters/java-http-adapter/)
-    * [Java SQL adapter](../adapters/creating-adapters/java-adapters/java-sql-adapter/)
+* [JavaScript adapters](../adapters/javascript-adapters/)
+    * [JavaScript HTTP Adapter](../adapters/javascript-adapters/js-http-adapter/)
+    * [JavaScript SQL Adapter](../adapters/javascript-adapters/js-sql-adapter/)
+    * [Using Java in JavaScript Adapters](../adapters/javascript-adapters/using-java-in-javascript-adapters/)
+* [Java Adapters](../adapters/java-adapters/)
+    * [Java HTTP adapter](../adapters/java-adapters/java-http-adapter/)
+    * [Java SQL adapter](../adapters/java-adapters/java-sql-adapter/)
 * <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
 * <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../adapters/cloudant/)
 * <span style="color:red">IN PROGRESS</span> [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
