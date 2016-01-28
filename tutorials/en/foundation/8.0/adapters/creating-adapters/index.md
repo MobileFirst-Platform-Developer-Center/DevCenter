@@ -260,13 +260,13 @@ After creating the adapter the result will be a Maven project containing a **src
 * **Using the MobileFirst Developer CLI** - Run the `mfpdev adapter build` command from the project's root folder.
 * **Using Maven** - The adapter is built each time you run the `mvn install` command to build the Maven project.
 
-This generates an **.adapter** file which can be found in the **target** folder:
+This generates an **.adapter** archive file which can be found in the **target** folder:
 
 ![java-adapter-result](adapter-result.png)
 
 ### Deploy
 
-1. The **pom.xml** file contains the following `properties` parameters:
+1. The **pom.xml** file contains the following `properties`:
 
       ```xml
       <properties>
@@ -276,8 +276,8 @@ This generates an **.adapter** file which can be found in the **target** folder:
     		<mfpfPassword>admin</mfpfPassword>
     	</properties>
       ```
-   * Replace **localhost:9080** with your MobileFirst Server IP address and port number.
-   * Replace the **mfpfUser** and **mfpfPassword** values with your MobileFirst admin user name and password.  
+   * Replace **locsalhost:9080** with your MobileFirst Server IP address and port number.
+   * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your MobileFirst admin user name and password.
 2. Run the deploy command from the project's root folder:
  * **Using the MobileFirst Developer CLI**:
 
@@ -293,7 +293,7 @@ This generates an **.adapter** file which can be found in the **target** folder:
 </br>
 > **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
 
-**NOTE:** The deploy command is available only during development (for security reasons).
+**NOTE:** The deploy command is available only during development.
 
 ## Creating Adapters Using MobileFirst Operations Console
 
