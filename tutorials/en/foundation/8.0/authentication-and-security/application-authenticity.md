@@ -24,10 +24,7 @@ Application Authenticity is available in all supported platforms (iOS, Android, 
 - [Configuring authenticity](configuring-application-authenticity)
 
 ## Authenticity Flow
-Application Authenticity is based on certificate keys that are used to sign the application bundles.
-Only the developer or the enterprise who have the original private key that was used to create the application are able to modify, repackage, and re-sign the bundle.
-
-Once an application has successfuly registered with the MobileFirst Server, and passed the Authenticity challenge, an Authenticity token is granted. For as long as the token is valid, the Authenticity challenge will not occur again. See [Configuring authenticity](configuring-authenticity) to learn how this can be customized.
+Once an application has passed the Authenticity challenge, an Authenticity scope is granted. For as long as the token is valid, the Authenticity challenge will not occur again. See [Configuring authenticity](configuring-authenticity) to learn how this can be customized.
 
 ![Authenticity flow](check_flow.jpg)
 
@@ -41,7 +38,7 @@ To enable Application Authenticity in your Cordova or Native application, the ap
     For example:
 
     ```bash
-    java -jar /Users/idanadar/Desktop/mfp-server-authenticity-tool.jar /Users/idanadar/Desktop/MyBankApp.ipa
+    java -jar /Users/your-username/Desktop/mfp-server-authenticity-tool.jar /Users/your-username/Desktop/MyBankApp.ipa
     ```
 
     The result of the command above is an `.authenticity_data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.authenticity_data`.
