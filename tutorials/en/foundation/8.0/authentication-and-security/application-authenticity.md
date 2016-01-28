@@ -38,7 +38,7 @@ To enable Application Authenticity in your Cordova or Native application, the ap
     For example:
 
     ```bash
-    java -jar /Users/idanadar/Desktop/mfp-server-authenticity-tool.jar /Users/idanadar/Desktop/MyBankApp.ipa
+    java -jar /Users/your-username/Desktop/mfp-server-authenticity-tool.jar /Users/your-username/Desktop/MyBankApp.ipa
     ```
 
     The result of the command above is an `.authenticity_data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.authenticity_data`.
