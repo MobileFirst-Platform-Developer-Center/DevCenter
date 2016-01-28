@@ -15,7 +15,7 @@ IBM MobileFirst Platform Foundation provides an SDK in the form of several Cordo
 
 The MobileFirst SDK feature set provides the following:
 
-* Use MobileFirst `ResourceRequest` API to retrieve data from backend systems.
+* Use MobileFirst `WLResourceRequest` API to retrieve data from backend systems.
 * Protect applications using the MobileFirst security framework and other security features such as Application Authentcity Protection, Remote Disble.
 * Ability to navigate and share data between web and native views and/or call Native code using the MobileFirst `SendAction` API.
 * Update an application's web resources using Direct Update.
@@ -27,6 +27,7 @@ The MobileFirst SDK feature set provides the following:
 
 * [Cordova application development](#cordova-application-development)
 * [Previewing applications](previewing-applications)
+* [Crosswalk support](#crosswalk-support)
 * [Further reading](#further-reading)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -93,6 +94,25 @@ Applicative code (HTML, CSS and JS) can now be edited in real-time.
 After making a change to a resource, save the change and it will be immediately reflected in the browser.
 
 > <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobileirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+
+### CrossWalk support
+Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  
+To add it:
+
+1. From a **Command-line** line, run the command:
+
+    ```bash
+    cordova plugin add cordova-plugin-crosswalk-webview
+    ```
+    
+    This command will add the CrossWalk WebView to the application.  
+    Behind the scenes, the MobileFirst Cordova SDK will adjust the Android project activity for using it.
+    
+2. Build the project by running the command:
+
+    ```bash
+    cordova build
+    ```
 
 ### Running the application on emulator or on a physical device
 To emulate the application execute the Cordova CLI command `cordova emulate ios|android|windows`. For example:
