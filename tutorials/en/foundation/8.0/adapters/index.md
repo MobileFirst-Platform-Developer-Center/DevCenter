@@ -6,5 +6,5 @@ show_disqus: false
 print_pdf: false
 ---
 ## Overview
-Develop server-side code to integrate with enterprise back-end systems and cloud services.  
+Develop server-side code using Java and JavaScript adapters, and integrate with enterprise back-end systems and cloud services.  
 To continue, select a tutorial:
