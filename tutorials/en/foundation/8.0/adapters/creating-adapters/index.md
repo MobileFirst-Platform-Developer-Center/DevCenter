@@ -7,12 +7,10 @@ weight: 2
 ---
 
 ## Overview
-Adapters are Maven projects that contains server-side code implemented in either Java or JavaScript. An adapter project can be created by using Maven, MobileFirst Developer CLI or MobileFirst Operations Console. You can edit the adapter code using your IDE of choice.  
-This tutorial demonstrates how to create either a Java or JavaScript adapter using the above methods.
+This tutorial explains how to create MobileFirst **Java or JavaScript adapters**.  
+An adapter can be created either by using Maven directly or by using the MobileFirst Developer CLI (with a required prerequisite to have Maven installed on the developer workstation), or be downloaded as sample starter code from the MobileFirst Operations Console. The Adapter code can then be edited using your IDE of choice, such as Eclipse, IntelliJ and the like.
 
-The adapter project is based on the Maven Archetype "adapter-maven-archetype" which is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html).
-
-**Prerequisite:**  Make sure that you read the [Adapters Overview](../adapters-overview) tutorial first.</span>
+**Prerequisite:** Make sure that you read the [Adapters Overview](../adapters-overview) first.
 
 #### Jump to:
 * [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
@@ -25,17 +23,18 @@ The adapter project is based on the Maven Archetype "adapter-maven-archetype" wh
  * [Create an Adapter](#create-an-adapter)
 * [File Structure](file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
-* [Creating Adapters Using MobileFirst Operations Console](#creating-adapters-using-mobilefirst-operations-console)
-
+* [Downloading or Deploying Adapters Using MobileFirst Operations Console](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
+* [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
-The "adapter-maven-archetype" is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) in order to create the adapter as a Maven project.
+The "adapter-maven-archetype" is a MobileFirst-provided archetype, and is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) in order to create the adapter as a Maven project.
 
 ### Install Maven
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
 
 ### Create an Adapter
-To create a Maven adapter project, use the `archetype:generate` command.
+To create a Maven adapter project, use the `archetype:generate` command. Once the command is running, Maven will download required files from the MobileFirst Maven repository in order to be able to generate the adapter Maven project.
+
 You can choose to run the command interactively or directly.
 
 #### Interactive Mode
@@ -199,7 +198,8 @@ To group adapters you need to:
 ## Creating Adapters Using MobileFirst Developer CLI
 
 ### Install MobileFirst Developer CLI
-Follow the installation instructions in the [Downloads]({{site.baseurl}}/downloads/) page to Install MobileFirst Developer CLI.
+Follow the installation instructions in the [Downloads]({{site.baseurl}}/downloads/) page to Install MobileFirst Developer CLI.  
+**Prerequisite:** To create adapters using the Developer CLI, Maven must be installed.
 
 ### Create an Adapter
 To create a Maven adapter project, use the `mfpdev adapter create` command.
@@ -226,9 +226,9 @@ You can choose to run the command interactively or directly.
       SQL
     ❯ Java
     ```
-  * Select `Java` to create a Java adapter
   * Select `HTTP` to create a JavaScript HTTP adapter
   * Select `SQL` to create a JavaScript SQL adapter  
+  * Select `Java` to create a Java adapter
 
 4. Enter an adapter package (this option is valid for Java adapters only). For example:
 
@@ -295,7 +295,7 @@ This generates an **.adapter** file which can be found in the **target** folder:
 
 **NOTE:** The deploy command is available only during development (for security reasons).
 
-## Creating Adapters Using MobileFirst Operations Console
+## Downloading or Deploying Adapters Using MobileFirst Operations Console
 
 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
 2. Click on the "Create new" button next to Adapters. You have two options to create an adapter:
@@ -312,3 +312,10 @@ This generates an **.adapter** file which can be found in the **target** folder:
 * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
 * Resources - a list of the adapter resources.
 * Configurations Files - adapter configuration data, to be used in devops environments.
+
+## Tutorials to follow next
+
+* [Learn about Java adapters](../java-adapters)
+* [Learn about JavaScript adapters](../javascript-adapters)
+* [Testing and debugging adapters](../testing-and-debugging-adapters)
+* [Review all Adapters tutorials](../)
