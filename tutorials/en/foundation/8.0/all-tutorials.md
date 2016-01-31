@@ -67,9 +67,10 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Java Adapters](../adapters/java-adapters/)
     * [Java HTTP adapter](../adapters/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../adapters/java-adapters/java-sql-adapter/)
+* [Developing Adapters in IDEs](../adapters/developing-adapters/)
+* [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 * <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
 * <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../adapters/cloudant/)
-* [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications.
