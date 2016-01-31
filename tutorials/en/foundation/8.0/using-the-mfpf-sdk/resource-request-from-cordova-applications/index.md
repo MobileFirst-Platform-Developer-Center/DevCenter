@@ -136,7 +136,7 @@ The adapter Maven project contains the Java adapter to be used during the resour
 2. Ensure the sample is registered in the MobileFirst Server by running the command:  
 `mfpdev app register`.
 3. Add a platform by running the `cordova platform add` command.
-4. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+4. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
 5. Run the Cordova application by running the `cordova run` command.
 
 
