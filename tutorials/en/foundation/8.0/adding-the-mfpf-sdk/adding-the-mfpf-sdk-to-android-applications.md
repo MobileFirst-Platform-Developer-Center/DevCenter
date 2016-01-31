@@ -50,17 +50,6 @@ If using a locally installed server: From a **Command-line** window, navigate to
         2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
         3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
 
-4. Run the command:
-
-    ```bash
-    mfpdev app pull
-    ```
-    The `mfpdev app pull` CLI command creates the **mobilefirst** folder at the root of the Android Studio project and downloads into it the `application-descriptor.json` file, containing application configuration data.
-    
-    These files are further explained in the [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts) section below.
-    
-> <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
-
 ### Adding the SDK
 
 1. In **Project → Gradle scripts**, select the **build.gradle (Module: app)** file.
@@ -137,8 +126,20 @@ Located at the **./app/src/main/assets/** folder of the Android Studio project, 
 Located in the **&lt;android-studio-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its `bundleId` and `version` and is user-editable.
 
 The file can be edited either locally or via the MobileFirst Operations Console.  
-If edited locally, the MobileFirst Server can be updated by running the CLI command: `mfpdev app push`.  
-The file can also be updated by pulling from the server its latest revision by running the CLI command: `mfpdev app pull`.
+If edited locally, the MobileFirst Server can be updated by running the CLI command:
+
+```bash
+mfpdev app push
+```
+
+The file can also be updated by pulling from the server its latest revision by running the CLI command:
+
+```bash
+mfpdev app pull
+```
+The `mfpdev app pull` CLI command creates the **mobilefirst** folder at the root of the Android Studio project and downloads into it the `application-descriptor.json` file, containing application configuration data.
+    
+> <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ```javascript
 {
@@ -152,7 +153,7 @@ The file can also be updated by pulling from the server its latest revision by r
     ...
     ...
 }
- ```
+```
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:

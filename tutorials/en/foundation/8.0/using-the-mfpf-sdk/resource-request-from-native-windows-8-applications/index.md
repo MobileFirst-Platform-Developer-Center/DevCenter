@@ -6,19 +6,24 @@ relevantTo: [windows]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---
-
 ## Overview
-MobileFirst applications can access resources using the `WLResourceRequest` REST API. The REST API works with all adapters and external resources.
+MobileFirst applications can access resources using the `WLResourceRequest` REST API.  
+The REST API works with all adapters and external resources.
 
 **Prerequisites**: 
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) to your Native Windows 8.1 project.
+- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) to your Native Windows 8.1 Universal project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
+
+Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
+Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
 
 1. Define the URI of the resource:
 
@@ -100,10 +105,19 @@ The `response` object contains the response data and you can use its methods and
     }
     ```
 
-## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8) the Native project.
+    ## For more information
+    > For more information about WLResourceRequest, refer to the user documentation.
 
-* The ResourceRequestWin8 project contains a native Windows 8.1 Universal application that uses a MobileFirst native SDK to communicate with a MobileFirst Server instance.
-* Make sure to update the mfpclient.properties file in the native Windows 8.1 with the relevant server settings.
+    <img alt="Image of the sample application" src="resource-request-success-ios.png" style="float:right"/>
+    ## Sample application
+    The ResourceRequestWindows8 project contains a native Windows 8 Universal application that makes a resource request using a Java adapter.  
+    The adapter Maven project contains the Java adapter to be used during the resource request call.
 
-<span style = "color:red">SCREENSHOT</span>
+    [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWindows8/tree/release80) the Native project.  
+    [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+
+    ### Sample usage
+    1. From the command line, navigate to the Visual Studio project.
+    2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+    3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+    4. From Visual Studio, run the sample by clicking the **Run* button.

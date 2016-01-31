@@ -97,7 +97,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 3. Run the command: `cordova platform add ios/android/windows` to add a platform.
 
-4. Run the command: `cordova prepare` followed by `cordova run`.
+4. Run the command: `cordova run`.
 
 If a device is connected, the application will be installed and launched in the device,  
 Otherwise the Simulator or Emulator will be used.

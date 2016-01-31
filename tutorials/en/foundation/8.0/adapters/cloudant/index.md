@@ -5,7 +5,7 @@ relevantTo: [cordova]
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
-weight: 5
+weight: 6
 ---
 ## Overview
 Cloudant is a NoSQL Database based on CouchDB, which is included with the product as a component called IBM MobileFirst Cloudant Local Data Layer Edition. Cloudant is also available as a stand-alone installed product and as a Database-as-a-Service (DBaaS) on IBM Bluemix and `cloudant.com`.
@@ -129,4 +129,4 @@ It also contains a Cordva application that works with both the Java and JavaScri
 3. <span style="color:red"> To connect to Cloudant, update the `CloudantAdapter/server/conf/mfp.properties` file with the domain, username, and password at the bottom of the file.</span>
 4. From a **Command-line**, navigate to the project's root folder.
 5. Add a platform using the `cordova platform add` command.
-6. Prepare and run the application using the `cordova prepare` and `cordova run` commands.
+6. Run the application by running the `cordova run` command.

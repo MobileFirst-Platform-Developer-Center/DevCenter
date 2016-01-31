@@ -5,8 +5,7 @@ relevantTo: [ios,android,windowsphone8,windows8,cordova]
 weight: 1
 ---
 ## Overview
-Adapters (server-side code) are used to transfer and retrieve information from back-end systems to client applications and cloud services. MobileFirst Server processes the information and handles security. Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](../advanced-adapter-usage-mashup)" possible.  
-You can write adapters in JavaScript or Java.  
+MobileFirst Adapters are Maven projects that contain server-side code implemented in either Java or JavaScript. Adapters are used to transfer and retrieve information from back-end systems to client applications and cloud services. MobileFirst Server processes the information and handles security. Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](../advanced-adapter-usage-mashup)" possible. 
 
 ![adapter_overview](adapter_overview_top.jpg)
 
@@ -54,3 +53,11 @@ In Java adapters, it is up to the developer to define the returned content and i
 ![java-adapter](java-adapter.jpg)
 
 > For more information see the topic about "MobileFirst adapters overview" in the user documentation.
+
+## Tutorials to follow next
+
+* [Learn how to create adapters](../creating-adapters)
+* [Learn about Java adapters](../java-adapters)
+* [Learn about JavaScript adapters](../javascript-adapters)
+* [Testing and debugging adapters](../testing-and-debugging-adapters)
+* [Review all Adapters tutorials](../)

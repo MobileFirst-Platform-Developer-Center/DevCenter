@@ -5,7 +5,7 @@ relevantTo: [hybrid]
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
-weight: 4
+weight: 5
 ---
 ## Overview
 Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
@@ -231,5 +231,5 @@ Remember that SQL adapters require a JDBC connector driver. [Follow these instru
 1. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 1. From the command line, navigate to the Cordova project.
 2. Add a platform by running the `cordova platform add` command.
-3. Prepare and run the Cordova application by running the `cordova prepare` command followed by the `cordova run` command.
+3. Run the Cordova application by running the `cordova run` command.
 
