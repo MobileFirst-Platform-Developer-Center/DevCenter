@@ -27,7 +27,9 @@ An adapter can be created either by using Maven directly or by using the MobileF
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
-The "adapter-maven-archetype" is a MobileFirst-provided archetype, and is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) in order to create the adapter as a Maven project.
+The "adapter-maven-archetype" is a MobileFirst-provided archetype, that based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html), and is used by Maven in order to create the MobileFirst adapter Maven project.
+
+To create an adapter Maven project, first install Maven and follow the instructions below.
 
 ### Install Maven
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.

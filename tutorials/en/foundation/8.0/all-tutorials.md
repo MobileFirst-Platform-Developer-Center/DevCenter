@@ -6,7 +6,7 @@ show_disqus: false
 print_pdf: false
 ---
 <br>
-Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
+Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 beta.
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
