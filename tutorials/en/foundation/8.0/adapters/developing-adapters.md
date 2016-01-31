@@ -21,7 +21,7 @@ In this tutorial a MobileFirst adapter is created and built from the Eclipse IDE
 * [Further reading](#further-reading)
 
 ## Create or import a MobileFirst Adapter Maven project
-To create a new project or importing an existing one, follow the bellow instructions.
+Follow the bellow instructions to either create a new adapter Maven project or import an existing one.
 
 ### Creating a new adapter Maven project
 
@@ -54,17 +54,15 @@ To import the adapter Maven project, select **File → Import... → Maven → E
 ![Image showing how to import an adapter Maven project to Eclipse](import-adapter-maven-project.png)
 
 ## Building and deploying an adapter Maven project
-By building an adapter Maven project, the resulting **.adapter** artifact will be generated in the Maven project's **target** folder.  
+After building an adapter Maven project, a **.adapter** artifact is generated and placed in the Maven project's **target** folder. The generated **.adapter** artifact can then be deployed either to the local MobileFirst Server or to a remote MobileFirst Server using either Maven, the MobileFirst Developer CLI or the MobileFirst Operations Console.
 
 ### Building an adapter Maven project
 To build an adapter, right-click on the adapter folder and select **Run As → Maven install**.  
 
 ### Deploying an adapter Maven project
-The generated **.adapter** artifact can be deployed either to the local MobileFirst Server or to a remote one by using either Maven, the MobileFirst Developer CLI or the MobileFirst Operations Console.
+Learn how to deploy an adapter in the [Deploy section](../creating-adapters/#build-and-deploy-adapters) of the Creating Java and JavaScript Adapters tutorial.
 
-> Learn how to deploy an adapter in the [Deploy section](../creating-adapters/#build-and-deploy-adapters) of the Creating Java and JavaScript Adapters tutorial.
-
-**Tip:** Eclipse can also be enhanced to ease the deployment step by integrating a **Command-line** window using a plug-in, creating a consistant development environment. From this window Maven or MobileFirst Developer CLI commands can be run.
+> **Tip:** Eclipse can also be enhanced to ease the deployment step by integrating a **Command-line** window using a plug-in, creating a consistant development environment. From this window Maven or MobileFirst Developer CLI commands can be run.
 
 ## Further reading
-Learn how to debug Java code in the [Testing and debugging adaters](../testing-and-debugging-adapters) tutorial.
+Learn how to debug Java code in adapters in the [Testing and debugging adaters](../testing-and-debugging-adapters) tutorial.
