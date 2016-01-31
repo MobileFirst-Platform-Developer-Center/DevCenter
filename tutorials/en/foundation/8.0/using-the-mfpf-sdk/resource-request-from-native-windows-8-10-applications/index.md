@@ -1,11 +1,13 @@
 ---
 layout: tutorial
-title: Resource request from Native Windows 8.1 Universal applications
-breadcrumb_title: Resource request - Windows 8.1 Universal
+title: Resource request from Native Windows 8.1 Universal and Windows 10 UWP applications
+breadcrumb_title: Resource request - Windows 8.1 Universal and Windows 10 UWP
 relevantTo: [windows]
 downloads:
-  - name: Download Native project
+  - name: Download Native Windows 8 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8
+  - name: Download Native Windows 10 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10
   - name: Download Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
@@ -16,7 +18,7 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**: 
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) to your Native Windows 8.1 Universal project.
+- Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) or [Windows 10 UWP](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications) project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest
@@ -110,10 +112,11 @@ The `response` object contains the response data and you can use its methods and
 
     <img alt="Image of the sample application" src="resource-request-success-ios.png" style="float:right"/>
     ## Sample application
-    The ResourceRequestWindows8 project contains a native Windows 8 Universal application that makes a resource request using a Java adapter.  
+    The ResourceRequestWin8 and ResourceRequestWin10 projects contain a native Windows 8 Universal/Windows 10 UWP application that makes a resource request using a Java adapter.  
     The adapter Maven project contains the Java adapter to be used during the resource request call.
 
-    [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWindows8/tree/release80) the Native project.  
+    [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80) the Native project.  
+    [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80) the Native project.  
     [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
     ### Sample usage
