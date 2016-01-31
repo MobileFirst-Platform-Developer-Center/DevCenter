@@ -315,7 +315,8 @@ This generates an **.adapter** file which can be found in the **target** folder:
 
 ## Tutorials to follow next
 
-* [Learn about Java adapters](../java-adapters)
-* [Learn about JavaScript adapters](../javascript-adapters)
-* [Testing and debugging adapters](../testing-and-debugging-adapters)
+* [Learn about Java adapters](../java-adapters/)
+* [Learn about JavaScript adapters](../javascript-adapters/)
+* [Develop adapters in IDEs](../developing-adapters/)
+* [Testing and debugging adapters](../testing-and-debugging-adapters/)
 * [Review all Adapters tutorials](../)

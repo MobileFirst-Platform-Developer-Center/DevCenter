@@ -59,5 +59,6 @@ In Java adapters, it is up to the developer to define the returned content and i
 * [Learn how to create adapters](../creating-adapters)
 * [Learn about Java adapters](../java-adapters)
 * [Learn about JavaScript adapters](../javascript-adapters)
+* [Develop adapters in IDEs](../developing-adapters/)
 * [Testing and debugging adapters](../testing-and-debugging-adapters)
 * [Review all Adapters tutorials](../)
