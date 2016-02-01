@@ -46,7 +46,7 @@ To learn more about the MobileFirst Operations Console, see the tutorial: [Using
 To download and install the MobileFirst Development Server, visit the [downloads]({{site.base}}/downloads/) page.
 
 ### Adding the MobileFirst Server to Eclipse
-The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quick starting and stopping of the development server.  
+The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quickly starting and stopping of the development server.  
 
 1. From the **Servers** view in Eclipse, select **New → Server**.
 2. If an IBM folder option does not exist, click on "Download additional server adapters".
