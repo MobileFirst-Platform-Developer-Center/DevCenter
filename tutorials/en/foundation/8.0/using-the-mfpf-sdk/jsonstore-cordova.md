@@ -358,7 +358,7 @@ The JSONStoreSwift project contains a Cordova application that utilizes the JSON
 Included is a JavaScript adapter Maven project.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80) the Cordova project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the Maven project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
 1. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).

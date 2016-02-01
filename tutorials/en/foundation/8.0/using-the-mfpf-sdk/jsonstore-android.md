@@ -334,18 +334,18 @@ try {
 }
 ```
 
-<img alt="Image of the sample application" src="ios-native-screen.png" style="float:right"/>
+<img alt="Image of the sample application" src="android-native-screen.png" style="float:right"/>
 ## Sample application
-The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  
+The JSONStoreAndroid project contains a native Android application that utilizes the JSONStore API set.  
 Included is a JavaScript adapter Maven project.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the Maven project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
 1. From the command line, navigate to the Android Studio project.
 2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
 3. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-4. Import the project to Android Studio, and run the sample by clicking the **Run* button.
+4. Import the project to Android Studio, and run the sample by clicking the **Run** button.
 
 
