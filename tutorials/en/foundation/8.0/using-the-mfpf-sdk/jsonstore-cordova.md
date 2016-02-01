@@ -2,10 +2,12 @@
 layout: tutorial
 title: JSONStore in Cordova applications
 relevantTo: [cordova]
-weight: 9
+weight: 8
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 ## Overview
 IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
@@ -352,10 +354,14 @@ WL.JSONStore.get(collectionName).getValue(key).then(function (result) {
 
 <img alt="JSONStore sample app" src="jsonstore-cordova.png" style="float:right"/>
 ## Sample application
+The JSONStoreSwift project contains a Cordova application that utilizes the JSONStore API set.  
+Included is a JavaScript adapter Maven project.
+
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80) the Cordova project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the Maven project.  
 
 ### Sample usage
 1. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
-1. From the command line, navigate to the Cordova project.
+2. From the command-line, navigate to the Cordova project.
 2. Add a platform by running the `cordova platform add` command.
 3. Run the Cordova application by running the `cordova run` command.

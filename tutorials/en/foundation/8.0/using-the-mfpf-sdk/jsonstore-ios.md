@@ -6,6 +6,8 @@ weight: 9
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC/tree/release80
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 ## Overview
 IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
@@ -317,7 +319,17 @@ WLClient *client = [[WLClient sharedInstance] init];
 [client invokeProcedure:invocationData withDelegate:pushDelegate];
 ```
 
+<img alt="Image of the sample application" src="ios-native-screen.png" style="float:right"/>
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreObjC) the Native iOS project.  
+The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  
+Included is a JavaScript adapter Maven project.
 
-![sample JSONStore sample for native iOS](ios-native-screen.png)
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80) the Native project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the Maven project.  
+
+### Sample usage
+1. From the command line, navigate to the Xcode project.
+2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+3. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+4. Import the project to Xcode, and run the sample by clicking the **Run* button.
+

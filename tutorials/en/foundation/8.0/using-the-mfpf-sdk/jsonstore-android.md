@@ -2,10 +2,12 @@
 layout: tutorial
 title: JSONStore in Native Android applications
 relevantTo: [android]
-weight: 9
+weight: 10
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 ## Overview
 IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
@@ -332,7 +334,18 @@ try {
 }
 ```
 
+<img alt="Image of the sample application" src="ios-native-screen.png" style="float:right"/>
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
+The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  
+Included is a JavaScript adapter Maven project.
 
-![sample JSONStore sample for native iOS](android-native-screen.png)
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the Maven project.  
+
+### Sample usage
+1. From the command line, navigate to the Android Studio project.
+2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+3. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+4. Import the project to Android Studio, and run the sample by clicking the **Run* button.
+
+
