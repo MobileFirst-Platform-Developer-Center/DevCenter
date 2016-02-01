@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,cordova]
 ---
 ## Overview
 
-IBM MobileFirst Platform Foundation provides a Command Line Interface (CLI) tool - `mfpdev` - to easily  manage MobileFirst client and server artifacts. The CLI tool enables you to use your preferred code editors or alternative IDEs.
+IBM MobileFirst Platform Foundation provides a Command Line Interface (CLI) tool - `mfpdev` - to easily  manage MobileFirst client and server artifacts.
 
 By using the CLI, you can manage Cordova-based applications that uses the MobileFirst Cordova plug-in, and Native applications that uses the MobileFirst Native SDK.
 
@@ -21,13 +21,13 @@ In this tutorial you will learn how to install the `mfpdev` Command Line Interfa
 #### Jump to
 
 * [Prerequisites](#prerequisites)
-* [Installing the mfpdev CLI](#installation)
-* [Interactive and Direct modes](#interactiveAndDirectModes)
-* [Managing MobileFirst Server instances](#managingServers)
-* [Managing Applications](#managingApplications)
-* [Managing and Testing Adapters](#adapters)
-* [Helpful commands](#helpfulCommands)
-* [Update and Uninstall the Command Line Interface](#updateUninstall)
+* [Installing the mfpdev CLI](#installing-the-mfpdev-cli)
+* [Interactive and Direct modes](#interactive-and-direct-modes)
+* [Managing MobileFirst Server instances](#managing-mobilefirst-server-instances)
+* [Managing Applications](#managing-applications)
+* [Managing and Testing Adapters](#managing-and-testing-adapters)
+* [Helpful commands](#helpful-commands)
+* [Update and Uninstall the Command Line Interface](#update-and-uninstall-the-command-line-interface)
 
 ## Prerequisites
 The Command Line Interface is available as a NPM package at [NPM registry](https://www.npmjs.com/). You must have node.js installed in your environment in order to install NPM packages.
@@ -44,87 +44,6 @@ v4.2.3
 >Note: Minimum supported node.js version is 4.2.3
 
 <span style="color:red">TODO: Confirm if  node.js 5.0+ will be supported at GA</span>
-
-## Interactive and Direct modes
-
-All commands can be executed in interactive or direct mode. In the interactive mode, the parameters required for the command will be prompted and some default values will be used. In direct mode, the parameters must be provided with the command being executed.
-
-Example:
-
-`mfpdev server add` in interactive mode:
-
-```bash
-$ mfpdev server add
-? Enter the name of the new server definition: mydevserver
-? Enter the fully qualified URL of this server: http://mydevserver.example.com:9080
-? Enter the MobileFirst Server administrator login ID: admin
-? Enter the MobileFirst Server administrator password: *****
-? Save the admin password for this server?: Yes
-? Enter the context root of the MobileFirst administration services: mfpadmin
-? Enter the MobileFirst Server connection timeout in seconds: 30
-Verifying server configuration...
-The following runtimes are currently installed on this server: mfp
-Server profile 'mydevserver' added successfully.
-```
-The same command in direct mode would be
-
-`mfpdev server add mydevserver --url http://mydevserver.example.com:9080 --login admin --password admin --setdefault`
-
-To find what is the right syntax for a command in direct mode use `mfpdev help <command>`
-
-```
-$ mfpdev help server add
-
-NAME
-     mobilefirst server add
-
-SYNOPSIS
-     mfpdev server add [
-          <name>
-          --url|-u <url>
-          [--login|-l <login>]
-          [--password|-p <password>]
-          [--contextroot|-c <contextRoot>]
-          [--timeout|-t <timeout>]
-          [--setdefault|-s]
-     ]
-
-DESCRIPTION
-     Adds a new server definition.
-
-OPTIONS
-	<name>: The name of the server to use as an alias.
-
-	--url|-u <url>: The fully qualified URL of the server. The syntax must
-	include the full: protocol://name.domain:port. The IP address may also be
-	used instead of name.domain. This value is required if the server name is
-	supplied on the command line.                
-
-	[--login|-l <login>]: The admin login id used to manage the MobileFirst
-	server. If not set, defaults to "demo".
-
-	[--password|-p <password>]: The password for the admin login ID. If you do
-	not set this, you are prompted for the admin password on all server
-	management tasks.  There is no default password.
-
-	[--contextroot|-c <contextRoot>]:  The context root of the MobileFirst
-	administration services.  If not set, defaults to 'mfpadmin'.
-
-	[--timeout|-t <timeout>]:  The MobileFirst server connection timeout
-	value in seconds.
-
-	[--setdefault|-s]: Providing this flag makes this new server the new
-	default server profile. You can switch the default by using
-	'mfpdev server edit'.
-
-
-USAGE
-	Interactive Mode:
-          $ mfpdev server add
-
-	Direct Mode:
-          $ mfpdev server add name --url http://acme.com:10080 --setdefault
-```
 
 ## Installing the mfpdev CLI
 
@@ -191,9 +110,39 @@ EXAMPLE USAGE
 ```
 
 
+## Interactive and Direct modes
+
+All commands can be executed in interactive or direct mode. In the interactive mode, the parameters required for the command will be prompted and some default values will be used. In direct mode, the parameters must be provided with the command being executed.
+
+Example:
+
+`mfpdev server add` in interactive mode:
+
+```bash
+$ mfpdev server add
+? Enter the name of the new server definition: mydevserver
+? Enter the fully qualified URL of this server: http://mydevserver.example.com:9080
+? Enter the MobileFirst Server administrator login ID: admin
+? Enter the MobileFirst Server administrator password: *****
+? Save the admin password for this server?: Yes
+? Enter the context root of the MobileFirst administration services: mfpadmin
+? Enter the MobileFirst Server connection timeout in seconds: 30
+Verifying server configuration...
+The following runtimes are currently installed on this server: mfp
+Server profile 'mydevserver' added successfully.
+```
+The same command in direct mode would be
+
+```
+mfpdev server add mydevserver --url http://mydevserver.example.com:9080 --login admin --password admin --setdefault
+```
+
+To find what is the right syntax for a command in direct mode use `mfpdev help <command>`
+
+
 ## Managing MobileFirst Server instances
 
-You can use `mfpdev server <option>` command to manage the instances of MobileFirst Server that are in use.
+You can use `mfpdev server <option>` command to manage the instances of MobileFirst Server that are in use. There must be always at least one server instance listed as the default instance. The default server is always used when another one is not specified.
 
 ### List server instances
 
@@ -225,6 +174,13 @@ $ mfpdev server edit
 
 And follow the interactive prompt to select the server to be edited and provide the information to be updated
 
+To set a server as the default one execute
+
+```bash
+$ mfpdev server edit <server_name> --setdefault
+```
+
+
 ### Remove server instances
 
 To remove a server instance from the list of registered servers, execute the command:
@@ -243,10 +199,10 @@ To open the console of the default server registered execute the command
 $ mfpdev server console
 ```
 
-This command will open the console of another server, not the default one, inform the server name as a parameter of the command
+To open the console of another server, not the default one, inform the server name as a parameter of the command
 
 ```bash
-$ mfpdev server console **server_name**
+$ mfpdev server console <server_name>
 ```
 
 ### Remove apps and adapters from a server
@@ -256,7 +212,9 @@ To remove all apps and adapters registered in a server execute the command
 ```bash
 $ mfpdev server clean
 ```
-This will put the  server instance in a clean state
+
+And select the server to clean form the interactive prompt.
+This will put the  server instance in a clean state without any app or adapter deployed.
 
 ## Managing applications
 
@@ -264,20 +222,21 @@ The command `mfpdev app <option>` can be used to manage applications created wit
 
 ### Register an application in a server instance
 
-Applications created with MobileFirst Platform SDK, must be registered in a MobileFirst Server when it is ready to be executed.
+An  application created with MobileFirst Platform SDK, must be registered in a MobileFirst Server when it is ready to be executed.
 
 To register an app, run the following command from the root folder of the app project.
 
 ```bash
 $ mfpdev app register
 ```
+
 This command can be executed from the root of a Cordova, Android, iOS or Windows application.
 
 It will use the default server and runtime to execute the following tasks:
 
-Register an application with a server
-Generate a default client properties file for the application
-Put the server information into the client properties file
+* Register an application with a server
+* Generate a default client properties file for the application
+* Put the server information into the client properties file
 
 For a Cordova application, this command will update the config.xml file
 For an iOS application, this command will update the  file mfpclient.plist
@@ -286,11 +245,14 @@ For an Android or Windows application, this command will update the file mfpclie
 To register an app to a server and runtime that is not the default one, use the syntax
 
 ```
-$ mfpdev app register **server** **runtime**
+$ mfpdev app register <server> <runtime>
 ```
 
 For Cordova Windows platform, the `-w <platform>` argument must be added to the command.  The `<platform>` argument is a comma separated list of the windows platforms to be registered. Valid values are `windows`,`windows8` and `windowsphone8`
 
+```
+$ mfpdev app register -w windows8
+```
 
 ### Config an application
 
@@ -302,36 +264,109 @@ To change the value of those attributes, use the following command
 $ mfpdev app config
 ```
 
-This command will interactively present a list of attributes that can be changed and prompt for the new value of the attribute
+This command will interactively present a list of attributes that can be changed and prompt for the new value of the attribute.
+
+The attributes available will vary for each platform (Android, iOS, Windows).
 
 ### Preview a Cordova application
 
 A Cordova application can be previewed using a browser. This is a way to preview an app faster then using the platform specific emulators and simulators.
 
-To preview a Cordova application execute the command
+To preview a Cordova application execute the following command form the app root
 
 ```bash
 $ mfpdev app preview
 ```
+
 You will be prompted to select what platform to preview and what type of preview to be used.
 There are two options of preview, MBS and Browser. MBS - Mobile Browser Simulator - will simulate a mobile device on browser. Browser - Simple Browser Rendering - will present the www resources of the cordova application as a usual browser web page.
 
 >For more details about the preview options see the [UPDATE- Tutorial about preview](../url/to/be/updated)
 
 
-* mfpdev app register
-* mfpdev app config
-* mfpdev app preview
-* mfpdev app webupdate
-* mfpdev app pull
-* mfpdev app push
+### Update web resources for Direct Update
+
+The web resources of a cordova app, like .html, .css and .js files inside  www folder can be updated without the need to reinstall the app at the mobile device. This is possible with the Direct Update feature provided by MobileFirst Platform.
+
+> For more details about how Direct Update works see the tutorial [Using Direct Update in Cordova applications](../direct-update)
+
+When you want to send a new set of web resources to be updated in a cordova application, execute the command
+
+```
+$ mfpdev app webupdate
+```
+
+This command will package the updated web resources to a .zip file and upload it to the default MobileFirst Server registered. The packaged web resources can be found at the [cordova-project-root-folder]/mobilefirst/ folder.
+
+To upload the web resources to different server instance, inform the server name and runtime as part of the command
+
+```
+$ mfpdev app webupdate <server_name> <runtime>
+```
+
+You can use the --build parameter to generate the .zip file with the packaged web resources without uploading it to a server.
+
+```
+$ mfpdev app webupdate --build
+```
+
+To upload a package that was previously built, use the --file parameter
+
+```
+$ mfpdev app webupdate --file mobilefirst/com.ibm.test-android-1.0.0.zip
+```
+
+There is also the option to encrypt the content of package using the --encrypt parameter
+
+```
+$ mfpdev app webupdate --encrypt
+```
+
+### Pull and Push the MobileFirst Application configuration
+
+After a MobileFirst Application is registered in a MobileFirst server, it is possible to change some of the application configurations using the MobileFirst Server Console and them pull those configurations from the server to the application with the following command
+
+```
+$ mfpdev app pull
+```
+
+It is also possible to change the application configurations locally and push the changes to the MobileFirst Server with the command
+
+```
+$ mfpdev app push
+```
 
 ## Managing and Testing Adapters
 
-* mfpdev adapter create
-* mfpdev adapter build
-* mfpdev adapter deploy
-* mfpdev adapter call
+It is possible to manage MobileFirst Adapters with the command `mfpdev adapter <option>`.
+
+>To learn more about MobileFirst Adapters see the tutorials at the  [Adapters](../adapters/) category.
+
+
+### Create a MobileFirst Adapter
+
+```
+$ mfpdev adapter create
+```
+
+### Build a MobileFirst Adapter
+
+```
+$ mfpdev adapter build
+```
+
+### Deploy a MobileFirst Adapter
+
+```
+$ mfpdev adapter deploy
+```
+
+### Execute a MobileFirst Adapter from the command line
+
+```
+$ mfpdev adapter call
+```
+
 
 ## Helpful commands
 
