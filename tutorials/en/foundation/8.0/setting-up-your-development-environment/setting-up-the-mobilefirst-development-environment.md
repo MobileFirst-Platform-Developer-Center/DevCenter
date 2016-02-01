@@ -26,7 +26,7 @@ From the MobileFirst Server's Operations Console a developer can:
 - Optionally download native/Cordova application templates 
 - Configure application aspects:
     - Authentication and security
-    - Authenticity
+    - Application Authenticity
     - Push Notifications
     - Direct Update
 - Generate DevOps scripts for continuous integration workflows and faster development cycles
@@ -48,13 +48,14 @@ To download and install the MobileFirst Development Server, visit the [downloads
 ### Adding the MobileFirst Server to Eclipse
 The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quick starting and stopping of the development server.  
 
-
 1. From the **Servers** view in Eclipse, select **New → Server**.
-2. Select **IBM → WebSphere Application Server Liberty**, provide a server **name** and **hostname** and click **Next**.
-3. Provide  the path to the server's root directory, and select a JRE version to use.
-4. Click **Next** followed by clicking **Finish**.
-
-By default the server starts in debug mode using the port 10777.
+2. If an IBM folder option does not exist, click on "Download additional server adapters".
+3. Select **WebSphere Application Server Liberty Tools** and follow the on-screen instructions.
+4. From the **Servers** view in Eclipse, select **New → Server**.
+5. Select **IBM → WebSphere Application Server Liberty**.
+6. Provide a server **name** and **hostname** and click **Next**.
+7. Provide  the path to the server's root directory, and select a JRE version to use.
+8. Click **Next** followed by clicking **Finish**.
 
 ## MobileFirst Command-line Interface
 The IBM MobileFirst command-line interface (CLI) tool enables developers to:
