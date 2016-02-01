@@ -8,7 +8,7 @@ weight: 2
 
 ## Overview
 This tutorial explains how to create MobileFirst **Java or JavaScript adapters**.  
-An adapter can be created either by using Maven directly or by using the MobileFirst Developer CLI (with a required prerequisite to have Maven installed on the developer workstation), or be downloaded as sample starter code from the MobileFirst Operations Console. The Adapter code can then be edited using your IDE of choice, such as Eclipse, IntelliJ and the like.
+An adapter can be created either by using Maven directly or by using the MobileFirst Developer CLI (with a required prerequisite to have Maven installed on the developer workstation), or be downloaded as a sample starter code from the MobileFirst Operations Console. The Adapter code can then be edited using your IDE of choice, such as Eclipse, IntelliJ and the like.
 
 **Prerequisite:** Make sure that you read the [Adapters Overview](../adapters-overview) first.
 
@@ -27,7 +27,9 @@ An adapter can be created either by using Maven directly or by using the MobileF
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
-The "adapter-maven-archetype" is a MobileFirst-provided archetype, and is based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) in order to create the adapter as a Maven project.
+The "adapter-maven-archetype" is a MobileFirst-provided archetype, that based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html), and is used by Maven in order to create the MobileFirst adapter Maven project.
+
+To create an adapter Maven project, first install Maven and follow the instructions below.
 
 ### Install Maven
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
@@ -315,7 +317,8 @@ This generates an **.adapter** archive file which can be found in the **target**
 
 ## Tutorials to follow next
 
-* [Learn about Java adapters](../java-adapters)
-* [Learn about JavaScript adapters](../javascript-adapters)
-* [Testing and debugging adapters](../testing-and-debugging-adapters)
+* [Learn about Java adapters](../java-adapters/)
+* [Learn about JavaScript adapters](../javascript-adapters/)
+* [Develop adapters in IDEs](../developing-adapters/)
+* [Testing and debugging adapters](../testing-and-debugging-adapters/)
 * [Review all Adapters tutorials](../)

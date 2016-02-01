@@ -1,6 +1,6 @@
 ---
 title: Apple watchOS 2.0 support in MobileFirst Platform Foundation 8.0
-date: 2016-01-19
+date: 2016-03-11
 tags:
 - MobileFirst_Platform
 - iOS
@@ -13,16 +13,16 @@ author:
 **Prerequisite:** Make sure to read the [Authentication Concepts]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/authentication-concepts/) tutorial first.
 
 MobileFirst Platform Foundation 8.0 beta's Native iOS SDK now contains support for Apple's  watchOS 2.0.  
-In addition to the iOS framework, IBMMobileFirstPlatformFoundation.framework, there is now also a watchOS framework, IBMMobileFirstPlatformFoundationWatchOS, which can be used in the WatchKit Extension target of an Xcode project.
+In addition to the iOS framework (`IBMMobileFirstPlatformFoundation`) there is now also a watchOS   `IBMMobileFirstPlatformFoundationWatchOS` framework which can be used in the WatchKit Extension target of an Xcode project.
 
-The watch app, as any regular iOS app, should be registered as a separate application in the MobileFirst Operations Console using the Bundle Identifier of the WatchKit Extension. That app is independent from its iPhone counterpart and has it's own security. It should define it's own Challenge Handler using the tools available in the watch (for example: an end-user can't effectively use user/password but can tap a pin code as shown in the demo bellow).
+The watch app, as any regular iOS app, should be registered as a separate application in the MobileFirst Operations Console using the Bundle Identifier of the WatchKit Extension. That app is independent from its iPhone counterpart and has its own security. It should define its own Challenge Handler using the tools available in the watch (for example: an end-user can't effectively use user/password but can type a pin code as shown in the demo below).
 
 ### Installing the SDK using CocoaPods
-In order to install the SDK using CocoaPods, your Podfile should include the target of the WatchKit Extenstion.  
+In order to install the SDK using CocoaPods, your Podfile should include the target of the WatchKit Extension.  
 For example: [https://github.ibm.com/MFPSamples/WatchOSDemo/blob/master/WatchOSDemoApp/Podfile](https://github.ibm.com/MFPSamples/WatchOSDemo/blob/master/WatchOSDemoApp/Podfile).
 
 ### Import IBMMobileFirstPlatformFoundationWatchOS
-In the watch Extension's source files you should import `IBMMobileFirstPlatformFoundationWatchOS` in order to use MobileFirst code:
+In the watch Extension's source files you should import the `IBMMobileFirstPlatformFoundationWatchOS` framework in order to use MobileFirst code:
 
 ##### Objective C:
 
@@ -36,27 +36,27 @@ In the watch Extension's source files you should import `IBMMobileFirstPlatformF
 import IBMMobileFirstPlatformFoundationWatchOS
 ```
 
-### Watch OS Demo App
+### watchOS Demo App
 
-There is also a complete demo app. Demonstrated in the app is accessing a resource protected by specific "scope" with the iPhone app and watch app maping to the respecive appropriate security checks: the iPhone app maps to a username/password security check, and the watch app maps to a pin-code security check.
+There is also a complete demo app. The demo accesses a resource protected by specific "scope". The iPhone app and watchOS app map to their respecive security checks: the iPhone app maps to a username/password security check, and the watchOS app maps to a pin-code security check.
 
 You can download the demo Xcode project from GitHub: [https://github.ibm.com/MFPSamples/WatchOSDemo](https://github.ibm.com/MFPSamples/WatchOSDemo).
 
 In order to use the demo app:
 
-1. From command-line, navigate to the WatchOSDemoApp and run `pod install`. There is a Podfile prepared located within the project.
+1. From command-line, navigate to the WatchOSDemoApp and run `pod install`. There is a prepared Podfile located within the project.
 
-2. Open the workspace created - WatchOSDemoApp.xcworkspace
+2. Open the workspace created: WatchOSDemoApp.xcworkspace.
 
 3. Under **Pods/Pods/IBMMobileFirstPlatformFoundation** both *IBMMobileFirstPlatformFoundation.framework* and *IBMMobileFirstPlatformFoundationWatchOS.framework* are available:
 
     ![Image of framework files]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Pod_frameworks.png)
 
-4. Edit the **mfpclient.plist** file and set the `host` property. Make sure the file is a member of both targets - WatchOSDemoApp and WatchOSDemoApp WatchKit Extension:
+4. Edit the **mfpclient.plist** file and set the `host` property. 
 
     ![Image of editing the .plist file in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/mfpclient.plist_edit.png)
 
-    Remember the file should be member of both targets - WatchOSDemoApp and WatchOSDemoApp WatchKit Extension:
+    Make sure the file should be member of both targets - WatchOSDemoApp and WatchOSDemoApp WatchKit Extension:
 
     ![Image of memberships in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/mfpclient.plist_membership.png)
 
@@ -70,14 +70,14 @@ In order to use the demo app:
 
     ![Image of how to run the project in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Run_demo_app_on_watch.png)
 
-Clicking on "My Balance" should display the Pin Code screen  
+Clicking on "My Balance" should display the Pin Code screen.  
 A valid pin is "1234". Try first an incorrect pin - the Pin Code screen should appear again with "Please try again". Then try with a valid pin - you should get the balance screen.  
 
 ![Image of Balance button in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Balance_btn_watch.png)
 ![Image of Pin Code screen in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Pincode_screen.png)
 ![Image of balance result in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Watch_balance_screen.png)
 
-Do the same in the iPhone app - Login screen with username/password should be opened. Valid username/password is when the username is the same as the password (for example "user" and "user").
+Do the same in the iPhone app - Login screen with username/password should be opened. Any username/password pair where the username and password are identical is valid (for example "user" and "user").
 
 ![Image of Balance button in iPhone app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Balance_btn_iphone.png)
 ![Image of User Password screen in iPhone app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/User_password_screen.png)

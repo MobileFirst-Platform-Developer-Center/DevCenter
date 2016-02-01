@@ -6,7 +6,7 @@ show_disqus: false
 print_pdf: false
 ---
 <br>
-Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0.
+Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 beta.
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
@@ -44,8 +44,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
     * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
     * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
     * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
-    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal applications](../using-the-mfpf-sdk/resource-request-from-native-windows-8-applications/)
-    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-native-windows-10-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-native-windows-8-10-applications/)
 * JSONStore
     * [JSONStore overview](../using-the-mfpf-sdk/jsonstore/)
     * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore/jsonstore-cordova/)
@@ -67,9 +66,10 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Java Adapters](../adapters/java-adapters/)
     * [Java HTTP adapter](../adapters/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../adapters/java-adapters/java-sql-adapter/)
+* [Developing Adapters in IDEs](../adapters/developing-adapters/)
+* [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 * <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
 * <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../adapters/cloudant/)
-* [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications.
