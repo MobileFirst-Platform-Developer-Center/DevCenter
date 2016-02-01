@@ -123,4 +123,4 @@ The `response` object contains the response data and you can use its methods and
     1. From the command line, navigate to the Visual Studio project.
     2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
     3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-    4. From Visual Studio, run the sample by clicking the **Run* button.
+    4. import the project to Visual Studio, and run the sample by clicking the **Run* button.
