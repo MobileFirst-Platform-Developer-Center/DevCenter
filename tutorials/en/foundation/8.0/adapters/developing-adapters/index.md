@@ -16,7 +16,7 @@ As taught in previous [Adapters tutorials](../), MobileFirst Adapters are Maven 
 
 * [Creating a new adapter Maven project](#creating-a-new-adapter-maven-project)
 * [Importing an existing adapter Maven project](#importing-an-existing-adapter-maven-project)
-* [Building and deploying an adapter Maven project](#building-and-deploying-maven-project)
+* [Building and deploying an adapter Maven project](#building-and-deploying-an-adapter-maven-project)
 * [Further reading](#further-reading)
 
 ## Create or import a MobileFirst Adapter Maven project
