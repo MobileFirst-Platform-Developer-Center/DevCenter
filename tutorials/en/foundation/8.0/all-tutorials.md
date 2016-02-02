@@ -11,10 +11,10 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 be
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
-* [Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
-* [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
-* [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
-* [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
+* [Setting up the MobileFirst development environment](../setting-up-your-development-environment/mobilefirst-development-environment/)
+* [Setting up the iOS development environment](../setting-up-your-development-environment/ios-development-environment/)
+* [Setting up the Android development environment](../setting-up-your-development-environment/android-development-environment/)
+* [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/windows-8-10-development-environment/)
 
 ### [Quick Start](../quick-start)
 Get a feel of MobileFirst Platform Foundation.
@@ -129,8 +129,7 @@ Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
 
 * [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../ibm-containers/)
 * <span style="color:red">IN PROGRESS </span>[Setting up MobileFirst Server on IBM Containers Using Foundation Tile](../ibm-containers/using-foundation-tile/)
-* <span style="color:red">TODO </span>[Creating a MobileFirst Server image using Cloud Foundary on IBM Containers](../ibm-containers/creating-an-image/)
-* <span style="color:red">TODO </span>[Sample application](../ibm-containers/sample-app/)
+* <span style="color:red">TODO </span>[Creating a MobileFirst Server image using Cloud Foundary](../ibm-containers/creating-an-image/)
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.  
