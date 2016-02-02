@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Creating a MobileFirst Server image using Cloud Foundary on IBM Containers
+title: Creating a MobileFirst Server image using Cloud Foundary
 breadcrumb_title: Prepare and run on IBM Containers
 relevantTo: [ios,android,windows,cordova]
 ---
