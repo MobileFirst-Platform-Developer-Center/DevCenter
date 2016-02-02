@@ -53,4 +53,8 @@ The server instance can be further configured through the Configuration tab:
 > **Note:** The beta release does not support all mentioned features. These will be added with time until the GA release.
 
 ## Further reading
-Now that the MobileFirst Server instance is up &amp; running, you can learn more about the MobileFirst Operations Console, and how to create applications and adapters by [reading through the tutorials](../../all-tutorials/).
+Now that the MobileFirst Server instance is up &amp; running, you can learn more about the MobileFirst Operations Console, how to create applications and adapters and enhance applications with push notifications, security and more.
+
+* Experience MobileFirst Platform Foundation with these [Quick Start tutorials](../../quick-start)
+* Or [read through all available tutorials](../../all-tutorials/).
+* 
