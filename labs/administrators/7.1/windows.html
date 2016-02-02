@@ -1,6 +1,6 @@
 ---
 layout: labs
-title: MobileFirst Platform Foundation 7.1 Labs
+title: MobileFirst Platform Foundation 7.1 Administrator Labs
 tabs:
   - name: Introduction
     path: /labs/administrators/7.1/intro/
