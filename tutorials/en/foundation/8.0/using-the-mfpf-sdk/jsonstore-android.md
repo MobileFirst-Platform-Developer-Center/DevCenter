@@ -23,7 +23,6 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 
 #### Jump to:
 
-* [Adding JSONStore](#adding-jsonstore)
 * [Basic Usage](#basic-usage)
 * [Advanced Usage](#advanced-usage)
 * [Sample application](#sample-application)
