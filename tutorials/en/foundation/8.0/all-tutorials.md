@@ -11,10 +11,10 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 be
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
-* [Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
-* [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
-* [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
-* [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
+* [Setting up the MobileFirst development environment](../setting-up-your-development-environment/mobilefirst-development-environment/)
+* [Setting up the iOS development environment](../setting-up-your-development-environment/ios-development-environment/)
+* [Setting up the Android development environment](../setting-up-your-development-environment/android-development-environment/)
+* [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/windows-8-10-development-environment/)
 
 ### [Quick Start](../quick-start)
 Get a feel of MobileFirst Platform Foundation.
