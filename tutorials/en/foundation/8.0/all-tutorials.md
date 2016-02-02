@@ -39,17 +39,16 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
 
 * [MobileFirst Platform Foundation SDK development in Cordova applications](../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
-* <span style="color:red">IN PRGORESS </span>[Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
+* [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
 * Resource Requests from client applications
     * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
     * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
     * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
     * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-native-windows-8-10-applications/)
 * JSONStore
-    * [JSONStore overview](../using-the-mfpf-sdk/jsonstore/)
-    * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore/jsonstore-cordova/)
-	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore/jsonstore-ios/)
-	* [JSONStore in Android applications](../using-the-mfpf-sdk/jsonstore/jsonstore-android/)
+    * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore-cordova/)
+	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore-ios/)
+	* [JSONStore in Android applications](../using-the-mfpf-sdk/jsonstore-android/)
 * [Using Direct Update in Cordova Applications](../using-the-mfpf-sdk/direct-update/)
 * [Multilingual translation of Cordova applications](../using-the-mfpf-sdk/translation/)
 * [Debugging Cordova applications](../using-the-mfpf-sdk/debugging-applications/)

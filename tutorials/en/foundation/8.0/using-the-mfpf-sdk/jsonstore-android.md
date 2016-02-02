@@ -2,17 +2,27 @@
 layout: tutorial
 title: JSONStore in Native Android applications
 relevantTo: [android]
-weight: 3
+weight: 10
 downloads:
-  - name: Download Native Android project
+  - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 ## Overview
-This tutorial further elaborates on the available JSONStore APIs for Native Android development.
+IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
+
+#### Key features
+
+* Data indexing for efficient searching
+* Data encryption in production environments
+* Mechanism for tracking local-only changes to the stored data
+* Support for multiple users
+
+> **Note:** Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Platform Foundation user documentation website.
 
 #### Jump to:
 
-* [Adding JSONStore](#adding-jsonstore)
 * [Basic Usage](#basic-usage)
 * [Advanced Usage](#advanced-usage)
 * [Sample application](#sample-application)
@@ -42,6 +52,7 @@ try {
 
 ### Get
 Use `getCollectionByName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionByName`.
+
 ```java
 Context context = getContext();
 try {
@@ -57,6 +68,7 @@ The variable `collection` can now be used to perform operations on the `people` 
 
 ### Add
 Use `addData` to store data as documents inside a collection
+
 ```java
 Context context = getContext();
 try {
@@ -323,7 +335,18 @@ try {
 }
 ```
 
+<img alt="Image of the sample application" src="android-native-screen.png" style="float:right"/>
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
+The JSONStoreAndroid project contains a native Android application that utilizes the JSONStore API set.  
+Included is a JavaScript adapter Maven project.
 
-![sample JSONStore sample for native iOS](android-native-screen.png)
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
+
+### Sample usage
+1. From the command line, navigate to the Android Studio project.
+2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+3. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+4. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+
+

@@ -26,7 +26,7 @@ From the MobileFirst Server's Operations Console a developer can:
 - Optionally download native/Cordova application templates 
 - Configure application aspects:
     - Authentication and security
-    - Authenticity
+    - Application Authenticity
     - Push Notifications
     - Direct Update
 - Generate DevOps scripts for continuous integration workflows and faster development cycles
@@ -45,6 +45,18 @@ The MobileFirst Development Server is installed as a stand-alone server and prov
 To learn more about the MobileFirst Operations Console, see the tutorial: [Using the MobilFirst Platform Operations Console](../../quick-start/console/).  
 To download and install the MobileFirst Development Server, visit the [downloads]({{site.base}}/downloads/) page.
 
+### Adding the MobileFirst Server to Eclipse
+The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quickly starting and stopping of the development server.  
+
+1. From the **Servers** view in Eclipse, select **New → Server**.
+2. If an IBM folder option does not exist, click on "Download additional server adapters".
+3. Select **WebSphere Application Server Liberty Tools** and follow the on-screen instructions.
+4. From the **Servers** view in Eclipse, select **New → Server**.
+5. Select **IBM → WebSphere Application Server Liberty**.
+6. Provide a server **name** and **hostname** and click **Next**.
+7. Provide  the path to the server's root directory, and select a JRE version to use.
+8. Click **Next** followed by clicking **Finish**.
+
 ## MobileFirst Command-line Interface
 The IBM MobileFirst command-line interface (CLI) tool enables developers to:
 
@@ -56,7 +68,7 @@ To download and install the MobileFirst Developer CLI, visit the [downloads]({{s
 
 > Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
-## MobileFirst Studio
+<!-- ## MobileFirst Studio
 IBM MobileFirst Studio is an Eclipse plug-in that interfaces with the MobileFirst Developer CLI and provides a User Interface for commands such as:
 
 - Application &amp; adapter creation and registration
@@ -67,10 +79,12 @@ IBM MobileFirst Studio is an Eclipse plug-in that interfaces with the MobileFirs
 To download and install MobileFirst Studio, visit the [downloads]({{site.base}}/downloads/) page.
 
 #### Requirements
-To use MobileFirst Studio for Cordova application development, it is also required to download and install the [THyM Eclipse plug-in](https://www.eclipse.org/community/eclipse_newsletter/2014/november/article3.php).
+To use MobileFirst Studio for Cordova application development, it is also required to download and install the [THyM Eclipse plug-in](https://www.eclipse.org/community/eclipse_newsletter/2014/november/article3.php). -->
 
 ## Applications and adapters development
 You can use your preferred code editor or alternative IDEs, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
-To learn more about MobileFirst development, refer to [the tutorials sections](../../all-tutorials/).  
+
+For adapters develpment, refer to the [Adapters](../../adapters/) category as well as to the [Developing Adapters in IDEs](../../adapters/developing-adapters) and [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorials.
 
 > <b>Note:</b> API auto-completion is available only in Typescript-supporting IDEs.
+

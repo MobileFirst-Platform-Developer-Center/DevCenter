@@ -7,7 +7,7 @@ weight: 10
 ---
 ## Overview
 By issuing an HTTP request, any entity can access the HTTP services (APIs) that IBM MobileFirst Platform Foundation Server offers.  
-The out-of-the-box Application Authenticity [security check](../authentication-concepts/) ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.
+The predefined Application Authenticity [security check](../authentication-concepts/) ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.
 
 To enable Application Authenticity you can either follow the on-screen instructions in the **MobileFirst Operations Console** → **[your-application]** → **Authenticity**, or review the information below.
 
@@ -57,7 +57,7 @@ To disable Application Authenticity, click the "Delete Authenticity File" button
 ![Disable Application Authenticity by removing a previously uploaded .authenticity_data file](disable_authenticity.png)
 
 ## Configuring Application Authenticity
-The Application Authenticity out-of-the-box security check can be configured with the following property:
+The Application Authenticity predefined security check can be configured with the following property:
 
 - `expirationInSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
 

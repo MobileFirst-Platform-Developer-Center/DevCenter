@@ -16,7 +16,7 @@ As taught in previous [Adapters tutorials](../), MobileFirst Adapters are Maven 
 
 * [Creating a new adapter Maven project](#creating-a-new-adapter-maven-project)
 * [Importing an existing adapter Maven project](#importing-an-existing-adapter-maven-project)
-* [Building and deploying an adapter Maven project](#building-and-deploying-maven-project)
+* [Building and deploying an adapter Maven project](#building-and-deploying-an-adapter-maven-project)
 * [Further reading](#further-reading)
 
 ## Create or import a MobileFirst Adapter Maven project
@@ -53,15 +53,26 @@ To import the adapter Maven project, select **File → Import... → Maven → E
 ![Image showing how to import an adapter Maven project to Eclipse](import-adapter-maven-project.png)
 
 ## Building and deploying an adapter Maven project
-After building an adapter Maven project, a **.adapter** artifact is generated and placed in the Maven project's **target** folder. The generated **.adapter** artifact can then be deployed either to the local MobileFirst Server or to a remote MobileFirst Server using either Maven, the MobileFirst Developer CLI or the MobileFirst Operations Console.
-
-### Building an adapter Maven project
-To build an adapter, right-click on the adapter folder and select **Run As → Maven install**.  
-
-### Deploying an adapter Maven project
-Learn how to deploy an adapter in the [Deploy section](../creating-adapters/#build-and-deploy-adapters) of the Creating Java and JavaScript Adapters tutorial.
+An adapter project and be built and deployed by using either Maven command-line commands, the MobileFirst Developer CLI or from Eclipse.  
+[Learn how to build and deploy adapters](../creating-adapters/#build-and-deploy-adapters).
 
 > **Tip:** Eclipse can also be enhanced to ease the deployment step by integrating a **Command-line** window using a plug-in, creating a consistant development environment. From this window Maven or MobileFirst Developer CLI commands can be run.
+
+### Building an adapter
+To build an adapter, right-click on the adapter folder and select **Run As → Maven install**.  
+
+### Deploying an adapter
+To deploy an adapter, first add the deploy Maven command:
+
+1. Select **Run → Run Configurations...**, right-click on **Maven Build** and select **New**.
+2. Provide a Name: "Maven deploy".
+2. Set as a Goal: "adapter:deploy".
+3. Click **Apply** followed by clicking on **Run** to have an initial deploy.
+
+You can now right-click on the adapter folder and select **Run As → Maven Deploy**
+
+### Building and deploying an adapter
+You can also combine the "build" and  "deploy" Maven Goals to a single "build and deploy" Goal: "clean install adapter:deploy".
 
 ## Further reading
 Learn how to debug Java code in adapters in the [Testing and debugging adaters](../testing-and-debugging-adapters) tutorial.

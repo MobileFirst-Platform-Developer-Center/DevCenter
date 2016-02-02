@@ -117,4 +117,4 @@ The adapter Maven project contains the Java adapter to be used during the resour
 2. Ensure the sample is registered in the MobileFirst Server by running the command:  
 `mfpdev app register`.
 3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-4. From Android Studio, run the sample by clicking the **Run** button.
+4. Import the project to Android Studio, and run the sample by clicking the **Run** button.

@@ -3,7 +3,7 @@ layout: tutorial
 title: Using Direct Update in Cordova applications
 breadcrumb_title: Direct Update
 relevantTo: [cordova]
-weight: 10
+weight: 11
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
