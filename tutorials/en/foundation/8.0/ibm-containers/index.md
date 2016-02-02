@@ -26,5 +26,5 @@ The IBM Container infrastructure includes a private registry for your images, so
 
 ## Tutorials to follow next
 
-* Create a MobileFirst Server instance on IBM Containers [using the MobileFirst Platform Foudation Tile](foundation-tile/).
-* *Advanced* Learn how to [create an image](creating-an-image/) of your MobileFirst Server and upload it to IBM Containers.
+* Create a MobileFirst Server instance on IBM Containers [using the MobileFirst Platform Foudation Tile](using-foundation-tile/).
+* **Advanced**. Learn how to [create an image](creating-an-image/) of your MobileFirst Server and upload it to IBM Containers.
