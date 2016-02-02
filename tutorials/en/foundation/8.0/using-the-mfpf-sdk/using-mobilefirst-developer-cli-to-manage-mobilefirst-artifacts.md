@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Using MobileFirst Developer CLI to Manage MobileFirst Artifacts
+breadcrumb_title: MobileFirst Developer CLI
 weight: 1
 relevantTo: [ios,android,windows,cordova]
 ---
