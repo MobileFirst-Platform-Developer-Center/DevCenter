@@ -64,10 +64,10 @@ DESCRIPTION
      for developing MobileFirst applications. The command-line can be used by itself, or in conjunction
      with the IBM MobileFirst Platform Foundation Operations Console. Some functions are available from  
      the command-line only and not the console.
-     
+
      For more information and a step-by-step example of using the CLI, see the IBM Knowledge Center for
-     your version of IBM MobileFirst Platform Foundation at 
-     
+     your version of IBM MobileFirst Platform Foundation at
+
           https://www.ibm.com/support/knowledgecenter.
     ...
     ...
@@ -217,16 +217,16 @@ The attributes available will vary for each platform (Android, iOS, Windows).
 ### Preview a Cordova application
 A Cordova application's web resources can be previewed using a browser. Previewing an application allows for fast and rapid develop without needing to use native platform specific emulators and simulators.
 
-To preview a Cordova application, execute the following command form the Cordova application root folder:
+To preview a Cordova application, execute the following command from the Cordova application root folder:
 
 ```bash
 mfpdev app preview
 ```
 
 You will be prompted to select which platform to preview and which type of preview to use.  
-There are two options of preview: MBS and Browser. 
+There are two options of preview: MBS and Browser.
 
-* MBS - Mobile Browser Simulator. Will simulate a mobile device on browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more. 
+* MBS - Mobile Browser Simulator. Will simulate a mobile device on browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more.
 * Browser - Simple Browser Rendering. Will present the www resources of the cordova application as a usual browser web page.
 
 > For more details about the preview options see the [Cordova development tutorial](../mfpf-development-in-cordova-applications).
@@ -243,7 +243,7 @@ When you want to send a new set of web resources to be updated in a cordova appl
 mfpdev app webupdate
 ```
 
-This command will package the updated web resources to a .zip file and upload it to the default MobileFirst Server registered. The packaged web resources can be found at the [cordova-project-root-folder]/mobilefirst/ folder.
+This command will package the updated web resources to a .zip file and upload it to the default MobileFirst Server registered. The packaged web resources can be found at the `[cordova-project-root-folder]/mobilefirst/` folder.
 
 To upload the web resources to different server instance, inform the server name and runtime as part of the command
 
@@ -285,39 +285,78 @@ mfpdev app push
 ## Managing and Testing Adapters
 It is possible to manage MobileFirst Adapters with the command `mfpdev adapter <option>`.
 
-> To learn more about MobileFirst Adapters see the tutorials at the [Adapters](../adapters/) category.
+> To learn more about MobileFirst Adapters see the tutorials at the [Adapters](../../adapters/) category.
 
 
 ### Create a MobileFirst Adapter
+
+To create a new MobileFirst Adapter, use the command
 
 ```
 mfpdev adapter create
 ```
 
+And follow the prompt to inform the name, type and group id of the adapter
+
 ### Build a MobileFirst Adapter
+
+To buid an adapter execute the following command from the adapter root folder
 
 ```
 mfpdev adapter build
 ```
 
+This will generate a .adapter file at the `<AdapterName>/target` folder.
+
 ### Deploy a MobileFirst Adapter
+
+The following command will deploy the adapter to the default server.
 
 ```
 mfpdev adapter deploy
 ```
 
+To deploy to a different server use
+
+```
+mfpdev adapter deploy <server_name>
+```
+
 ### Execute a MobileFirst Adapter from the command line
+
+After an adapter is deployed it is possible to execute the adapter from the command line to test it's behavior with the command:
 
 ```
 mfpdev adapter call
 ```
 
+You will be prompted to inform the adapter, procedure and parameters to use. The output of the command will be the response of the adapter procedure.
+
 ## Helpful commands
 
-* `mfpdev config`
-* `mfpdev help`
-* `mfpdev info`
-* `mfpdev -v`
+To set preferences of the mfpdev cli like development browser and default preview mode use the command
+
+```
+mfpdev config
+```
+
+To see the help content describing all mfpdev commands use
+
+```
+mfpdev help
+```
+
+The following command will generate a list with information about your environment
+
+```
+mfpdev info
+```
+
+To print the version of the mfpdev CLI use
+
+```
+mfpdev -v
+```
 
 ## Update and Uninstall the Command Line Interface
 
