@@ -12,6 +12,8 @@ WL.Analytics.log({buttonPress: "buttonB"}, "press");
 WL.Analytics.log({buttonPress: "buttonC"}, "press");
 ```
 
+> **Note**: Remember to always send data to the analytics server by using `WL.Analytics.send();`
+
 To create a chart, follow these steps.
 
 1. Go to the **Custom Charts** tab

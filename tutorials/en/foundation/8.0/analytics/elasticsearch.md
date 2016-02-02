@@ -12,7 +12,38 @@ One of the more useful JNDI properties to get started viewing your Elasticsearch
 
  ```xml
 <jndiEntry jndiName="analytics/http.enabled" value="true"/>
- ```   
- This JNDI property will allow you to view your Operational Analytics raw data in JSON format and allow you to access your Elasticsearch instance through port 9500. Being able to access your Elasticsearch instance gives you the ability to run custom queries and view more detailed information about your Elasticsearch instance, if you know how. If you are interested in learning more about querying or learning more about your Elasticsearch instance please reference the Elasticsearch documentation.
+ ```
 
- **Note**: We do not support running queries on your data. Do this at your own risk.
+>**Note**: This is not secure and should not be enabled on a production environment.
+
+ This JNDI property will allow you to view your Operational Analytics raw data in JSON format and allow you to access your Elasticsearch instance through port 9500.
+
+You can view all your data by visiting the tenant's search REST endpoint. An example below:
+
+```
+http://localhost:9500/worklight/_search
+```
+
+ Being able to access your Elasticsearch instance gives you the ability to run custom queries and view more detailed information about your Elasticsearch instance, if you know how.
+
+ You can view your cluster health:
+
+ ```
+http://localhost:9500/_cluster/health
+```
+
+You can view information on your current nodes:
+
+```
+http://localhost:9500/_nodes
+```
+
+You can also view the current mappings in analytics:
+
+```
+http://localhost:9500/worklight/_mapping
+```
+
+Elasticsearch exposes many more REST endpoints. If you are interested in learning more about querying or learning more about your Elasticsearch instance please reference the Elasticsearch documentation.
+
+ > **Note**: We do not support running queries on your data. Do this at your own risk.
