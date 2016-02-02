@@ -15,7 +15,6 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
 * [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
-* <span style="color:red">IN PROGRESS </span>[Setting up MobileFirst Platform Foundation on IBM Containers Using Foundation Tile](../setting-up-your-development-environment/setting-up-foundation-on-ibm-containers/)
 
 ### [Quick Start](../quick-start)
 Get a feel of MobileFirst Platform Foundation.
@@ -129,8 +128,8 @@ Scalable database management for your MobileFirst projects.
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
 
 * <span style="color:red">TODO </span>[Overview](../ibm-containers/)
-* <span style="color:red">TODO </span>[Evaluate](../ibm-containers/evaluate/)
-* <span style="color:red">TODO </span>[Run](../ibm-containers/run/)
+* <span style="color:red">IN PROGRESS </span>[Setting up MobileFirst Server on IBM Containers Using Foundation Tile](../ibm-containers/foundation-tile/)
+* <span style="color:red">TODO </span>[Creating a MobileFirst Server image using Cloud Foundary on IBM Containers](../ibm-containers/creating-an-image/)
 * <span style="color:red">TODO </span>[Sample application](../ibm-containers/sample-app/)
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)

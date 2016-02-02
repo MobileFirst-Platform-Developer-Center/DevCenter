@@ -57,4 +57,3 @@ Now that the MobileFirst Server instance is up &amp; running, you can learn more
 
 * Experience MobileFirst Platform Foundation with these [Quick Start tutorials](../../quick-start)
 * Or [read through all available tutorials](../../all-tutorials/).
-* 
