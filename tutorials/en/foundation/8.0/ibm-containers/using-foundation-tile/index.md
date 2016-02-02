@@ -10,6 +10,8 @@ This tutorial provides step-by-step instructions to set-up a MobileFirst Server 
 
 IBM MobileFirst Platform Foundation Tile is a **Bluemix service** that enables quick and easy stand-up of scaleable Developer or Production environments of MobileFirst Platform Foundation v8.0 Beta.
 
+> [Read the overview](../)
+
 ## Using MobileFirst Platform Foundation Tile
 
 1. Load [bluemix.net](http://bluemix.net) and visit the **Catalog** page, search for "MobileFirst Platform Foundation".
