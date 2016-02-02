@@ -52,6 +52,7 @@ try {
 
 ### Get
 Use `getCollectionByName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionByName`.
+
 ```java
 Context context = getContext();
 try {
@@ -67,6 +68,7 @@ The variable `collection` can now be used to perform operations on the `people` 
 
 ### Add
 Use `addData` to store data as documents inside a collection
+
 ```java
 Context context = getContext();
 try {
