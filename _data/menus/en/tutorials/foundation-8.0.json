@@ -5,11 +5,11 @@
             "name": "Foundation",
             "path": "",
             "children": [{
-                "name": "Quick start",
-                "path": "/quick-start"
-            }, {
                 "name": "Setting up your development environment",
                 "path": "/setting-up-your-development-environment"
+            }, {
+                "name": "Quick start",
+                "path": "/quick-start"
             }, {
                 "name": "Adding the MobileFirst Platform Foundation SDK",
                 "path": "/adding-the-mfpf-sdk"
