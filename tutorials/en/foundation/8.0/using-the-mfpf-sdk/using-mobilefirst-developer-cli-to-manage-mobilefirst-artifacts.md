@@ -30,7 +30,7 @@ In this tutorial you will learn how to install the `mfpdev` Command Line Interfa
 ## Prerequisites
 The MobileFirst Developer CLI is available as an NPM package at the [NPM registry](https://www.npmjs.com/).  
 
-Ensure **node.js** is installed in the development environment in order to install NPM packages.
+Ensure **node.js** is installed in the development environment in order to install NPM packages.  
 Follow the installation instructions in [nodejs.org](https://nodejs.org) to install node.js.
 
 To confirm that node.js is properly installed, execute the command `node -v`.
@@ -51,7 +51,7 @@ npm install -g mfpdev-cli
 
 To confirm the installation, execute the command `mfpdev` without any arguments and it will print the help text:
 
-```bash
+```shell
 NAME
      IBM MobileFirst Platform Foundation Command Line Interface (CLI).
 
@@ -81,7 +81,6 @@ Example:
 `mfpdev server add` in interactive mode:
 
 ```bash
-mfpdev server add
 ? Enter the name of the new server definition: mydevserver
 ? Enter the fully qualified URL of this server: http://mydevserver.example.com:9080
 ? Enter the MobileFirst Server administrator login ID: admin
@@ -166,15 +165,14 @@ To remove all apps and adapters registered in a server execute the command:
 mfpdev server clean
 ```
 
-And select the server to clean form the interactive prompt.
+And select the server to clean form the interactive prompt.  
 This will put the server instance in a clean state without any app or adapter deployed.
 
 ## Managing applications
 The command `mfpdev app <option>` can be used to manage applications created with the MobileFirst Platform SDK.
 
 ### Register an application in a server instance
-An  application created with MobileFirst Platform SDK, must be registered in a MobileFirst Server when it is ready to be executed.
-
+An  application created with MobileFirst Platform SDK, must be registered in a MobileFirst Server when it is ready to be executed.  
 To register an app, run the following command from the root folder of the app project:
 
 ```bash
@@ -198,7 +196,7 @@ To register an app to a server and runtime that is not the default one, use the 
 mfpdev app register <server> <runtime>
 ```
 
-For Cordova Windows platform, the `-w <platform>` argument must be added to the command.  The `<platform>` argument is a comma separated list of the windows platforms to be registered. Valid values are `windows`,`windows8` and `windowsphone8`
+For Cordova Windows platform, the `-w <platform>` argument must be added to the command.  The `<platform>` argument is a comma separated list of the windows platforms to be registered. Valid values are `windows`,`windows8` and `windowsphone8`.
 
 ```
 mfpdev app register -w windows8
@@ -216,18 +214,18 @@ This command will interactively present a list of attributes that can be changed
 The attributes available will vary for each platform (Android, iOS, Windows).
 
 ### Preview a Cordova application
-A Cordova application can be previewed using a browser. This is a way to preview an app faster then using the platform specific emulators and simulators.
+A Cordova application's web resources can be previewed using a browser. Previewing an application allows for fast and rapid develop without needing to use native platform specific emulators and simulators.
 
-To preview a Cordova application execute the following command form the app root:
+To preview a Cordova application, execute the following command form the Cordova application root folder:
 
 ```bash
 mfpdev app preview
 ```
 
-You will be prompted to select which platform to preview and what type of preview to be used.  
-There are two options of preview, MBS and Browser. 
+You will be prompted to select which platform to preview and which type of preview to use.  
+There are two options of preview: MBS and Browser. 
 
-* MBS - Mobile Browser Simulator. Will simulate a mobile device on browser. 
+* MBS - Mobile Browser Simulator. Will simulate a mobile device on browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more. 
 * Browser - Simple Browser Rendering. Will present the www resources of the cordova application as a usual browser web page.
 
 > For more details about the preview options see the [Cordova development tutorial](../mfpf-development-in-cordova-applications).
