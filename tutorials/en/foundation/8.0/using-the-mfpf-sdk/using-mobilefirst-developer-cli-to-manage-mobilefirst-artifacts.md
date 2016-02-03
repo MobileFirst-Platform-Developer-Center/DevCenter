@@ -34,7 +34,7 @@ The MobileFirst Developer CLI is available as an NPM package at the [NPM registr
 Ensure **node.js** is installed in the development environment in order to install NPM packages.  
 Follow the installation instructions in [nodejs.org](https://nodejs.org) to install node.js.
 
-To confirm that node.js is properly installed, execute the command `node -v`.
+To confirm that node.js is properly installed, run the command `node -v`.
 
 ```bash
 node -v
@@ -44,13 +44,13 @@ v4.2.3
 > **Note:** Minimum supported node.js version is 4.2.3
 
 ## Installing the MobileFirst Developer CLI
-To install the Command Line Interface execute the command:
+To install the Command Line Interface run the command:
 
 ```bash
 npm install -g mfpdev-cli
 ```
 
-To confirm the installation, execute the command `mfpdev` without any arguments and it will print the help text:
+To confirm the installation, run the command `mfpdev` without any arguments and it will print the help text:
 
 ```shell
 NAME
@@ -106,13 +106,13 @@ To find what is the right syntax for a command in direct mode use `mfpdev help <
 You can use `mfpdev server <option>` command to manage the instances of MobileFirst Server that are in use. There must be always at least one server instance listed as the default instance.   The default server is always used if another one was not specified.
 
 ### List server instances
-To list all the MobileFirst Server instances available to be used, execute the  command
+To list all the MobileFirst Server instances available to be used, run the command:
 
 ```bash
 mfpdev server info
 ```
 
-By default, a local server profile is created automatically and used as the current default by the CLI
+By default, a local server profile is created automatically and used as the current default by the CLI.
 
 ### Add a new server instance
 
@@ -125,20 +125,20 @@ mfpdev server add
 Follow the interactive prompt to provide a name to the server, the server URL and user/password credentials.
 
 ### Edit server instances
-If you want to edit the details of a registered server instance, execute the following command and follow the interactive prompt to select the server to be edited and provide the information to be updated.
+If you want to edit the details of a registered server instance, run the following command and follow the interactive prompt to select the server to be edited and provide the information to be updated.
 
 ```bash
 mfpdev server edit
 ```
 
-To set a server as the default one execute:
+To set a server as the default one, use:
 
 ```bash
 mfpdev server edit <server_name> --setdefault
 ```
 
 ### Remove server instances
-To remove a server instance from the list of registered servers, execute the command:
+To remove a server instance from the list of registered servers, run the command:
 
 ```bash
 mfpdev server remove
@@ -147,7 +147,7 @@ mfpdev server remove
 And select the server from the interactive list
 
 ### Open MobileFirst Operations Console
-To open the console of the default server registered execute the command:
+To open the console of the default server registered run the command:
 
 ```bash
 mfpdev server console
@@ -160,7 +160,7 @@ mfpdev server console <server_name>
 ```
 
 ### Remove apps and adapters from a server
-To remove all apps and adapters registered in a server execute the command:
+To remove all apps and adapters registered in a server run the command:
 
 ```bash
 mfpdev server clean
@@ -181,7 +181,7 @@ mfpdev app register
 ```
 
 This command can be executed from the root of a Cordova, Android, iOS or Windows application.  
-It will use the default server and runtime to execute the following tasks:
+It will use the default server and runtime to run the following tasks:
 
 * Register an application with a server.
 * Generate a default client properties file for the application.
@@ -205,7 +205,7 @@ mfpdev app register -w windows8
 
 ### Config an application
 When an application is registered, server related attributes are added to the app configuration file.  
-To change the value of those attributes, use the following command:
+To change the value of those attributes, run the following command:
 
 ```bash
 mfpdev app config
@@ -217,7 +217,7 @@ The attributes available will vary for each platform (Android, iOS, Windows).
 ### Preview a Cordova application
 A Cordova application's web resources can be previewed using a browser. Previewing an application allows for fast and rapid develop without needing to use native platform specific emulators and simulators.
 
-To preview a Cordova application, execute the following command from the Cordova application root folder:
+To preview a Cordova application, run the following command from the Cordova application root folder:
 
 ```bash
 mfpdev app preview
@@ -237,13 +237,13 @@ The web resources of a cordova app, like .html, .css and .js files inside **www*
 
 > For more details about how Direct Update works see the tutorial [Using Direct Update in Cordova applications](../direct-update).
 
-When you want to send a new set of web resources to be updated in a cordova application, execute the command
+When you want to send a new set of web resources to be updated in a cordova application, run the command
 
 ```
 mfpdev app webupdate
 ```
 
-This command will package the updated web resources to a .zip file and upload it to the default MobileFirst Server registered. The packaged web resources can be found at the `[cordova-project-root-folder]/mobilefirst/` folder.
+This command will package the updated web resources to a .zip file and upload it to the default MobileFirst Server registered. The packaged web resources can be found at the **[cordova-project-root-folder]/mobilefirst/** folder.
 
 To upload the web resources to different server instance, inform the server name and runtime as part of the command
 
@@ -300,31 +300,31 @@ And follow the prompt to inform the name, type and group id of the adapter
 
 ### Build a MobileFirst Adapter
 
-To buid an adapter execute the following command from the adapter root folder
+To build an adapter, run the following command from the adapter's root folder:
 
 ```
 mfpdev adapter build
 ```
 
-This will generate a .adapter file at the `<AdapterName>/target` folder.
+This will generate a .adapter file at the **<AdapterName>/target** folder.
 
 ### Deploy a MobileFirst Adapter
 
-The following command will deploy the adapter to the default server.
+The following command will deploy the adapter to the default server:
 
 ```
 mfpdev adapter deploy
 ```
 
-To deploy to a different server use
+To deploy to a different server, use:
 
 ```
 mfpdev adapter deploy <server_name>
 ```
 
-### Execute a MobileFirst Adapter from the command line
+### Call a MobileFirst Adapter from the command line
 
-After an adapter is deployed it is possible to execute the adapter from the command line to test it's behavior with the command:
+After an adapter is deployed it is possible to call the adapter from the command line to test it's behavior with the command:
 
 ```
 mfpdev adapter call
@@ -332,27 +332,29 @@ mfpdev adapter call
 
 You will be prompted to inform the adapter, procedure and parameters to use. The output of the command will be the response of the adapter procedure.
 
+> Learn more in the [Testing and debugging adapters](../../adapters/testing-and-debugging-adapters/) tutorial.
+
 ## Helpful commands
 
-To set preferences of the mfpdev cli like development browser and default preview mode use the command
+To set preferences of the mfpdev CLI, such as default browser and default preview mode, use the command:
 
 ```
 mfpdev config
 ```
 
-To see the help content describing all mfpdev commands use
+To see the help content describing all mfpdev commands, use:
 
 ```
 mfpdev help
 ```
 
-The following command will generate a list with information about your environment
+The following command will generate a list with information about your environment:
 
 ```
 mfpdev info
 ```
 
-To print the version of the mfpdev CLI use
+To print the version of the mfpdev CLI, use:
 
 ```
 mfpdev -v
@@ -360,13 +362,13 @@ mfpdev -v
 
 ## Update and Uninstall the Command Line Interface
 
-To update the command line interface execute the command:
+To update the command line interface run the command:
 
 ```bash
 npm update -g mfpdev-cli
 ```
 
-To uninstall the command line interface execute the command:
+To uninstall the command line interface run the command:
 
 ```bash
 npm uninstall -g mfpdev-cli
