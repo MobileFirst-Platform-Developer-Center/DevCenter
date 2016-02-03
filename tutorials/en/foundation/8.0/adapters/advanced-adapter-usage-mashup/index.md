@@ -13,7 +13,7 @@ Now that basic usage of different types of adapters has been covered, it is impo
 In theory, from the client side, you could make several requests successively, one depending on the other.
 However, writing this logic on the server side could be faster and cleaner.
 
-This tutorial covers the following topics:
+#### Jump to:
 
 * [JavaScript adapter API](#javascript-adapter-api)
 * [Java adapter API](#java-adapter-api)
@@ -231,17 +231,24 @@ conn.close();
 return jsonArr.toString();
 {% endhighlight %}  
 
-> An example of city list in SQL is available in the provided adapter maven project, under `Utils/mobilefirstTraining.sql`.
-Remember that SQL adapters require a JDBC connector driver. [Follow these instructions to add the JDBC connector dependency](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html) .
-
 <img alt="sample application" src="AdaptersMashupSample.png" style="float:right"/>
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the Cordova project.
 
 **Note:** the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
 
 ### Sample usage
-1. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+#### SQL setup
+An example of city list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`. 
+
+1. Run the .sql script in your SQL database.
+2. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapters](../../creating-adapters/).
+3. Open the MobileFirst Console
+    - Click on the **getCitiesListJS** adapter and update the database connectivity properties.
+    - Click on the **getCitiesListJava** adapter and update the database connectivity properties.
+
+#### Application setup
+
 1. From the command line, navigate to the Cordova project.
 2. Add a platform by running the `cordova platform add` command.
 3. Run the Cordova application by running the `cordova run` command.
