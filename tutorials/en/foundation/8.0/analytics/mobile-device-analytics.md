@@ -1,5 +1,5 @@
 ---
 layout: tutorial
 title: Mobile Device Analytics
-weight:7
+weight: 7
 ---
