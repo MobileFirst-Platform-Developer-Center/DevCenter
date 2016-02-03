@@ -1,6 +1,6 @@
 ---
-title: Logging in MobileFirst hybrid applications (JavaScript)
-relevantTo: [hybrid]
+title: Logging in MobileFirst Cordova applications (JavaScript)
+relevantTo: [cordova]
 ---
 ### Logging example for hybrid applications (JavaScript)
 Outputs to a browser JavaScript console, LogCat, or Xcode console.

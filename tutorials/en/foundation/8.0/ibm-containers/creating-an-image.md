@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Run IBM MobileFirst Platform Foundation on IBM Containers
+title: Creating a MobileFirst Server image using Cloud Foundary
 breadcrumb_title: Prepare and run on IBM Containers
 relevantTo: [ios,android,windows,cordova]
 ---
 ## Overview
 This tutorial demonstrates how to take a locally developed IBM MobileFirst Platform Foundation project and run it on Bluemix. To achieve this result, you go through the following steps: set up your host computer with the required tools (MobileFirst Developer CLI, Docker, and IBM Containers Extension (ICE) CLI), set up your Bluemix environment, build a MobileFirst Platform Foundation Server image, deploy your project runtime and push it to the Bluemix repository. Finally, you run the image on an IBM Container and update it with the MobileFirst project application and adapter.
 
-**Note:** Windows OS is currently not supported.<  
+**Note:** Windows OS is currently not supported.
 **Note:** The MobileFirst Server Configuration Tools cannot be used for deployments to IBM Containers.
 
 **Prerequisite:** Make sure to read the [Introduction to IBM MobileFirst Platform Foundation on IBM Containers]("../") tutorial.

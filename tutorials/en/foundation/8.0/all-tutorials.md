@@ -11,11 +11,10 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 be
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
-* [Setting up the MobileFirst development environment](../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/)
-* [Setting up the iOS development environment](../setting-up-your-development-environment/setting-up-the-ios-development-environment/)
-* [Setting up the Android development environment](../setting-up-your-development-environment/setting-up-the-android-development-environment/)
-* [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/setting-up-the-windows-8-and-windows-10-development-environment/)
-* <span style="color:red">TODO </span>[Setting up MobileFirst Platform Foundation on IBM Containers Using Foundation Tile](../setting-up-your-development-environment/foundation-tile/)
+* [Setting up the MobileFirst development environment](../setting-up-your-development-environment/mobilefirst-development-environment/)
+* [Setting up the iOS development environment](../setting-up-your-development-environment/ios-development-environment/)
+* [Setting up the Android development environment](../setting-up-your-development-environment/android-development-environment/)
+* [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/windows-8-10-development-environment/)
 
 ### [Quick Start](../quick-start)
 Get a feel of MobileFirst Platform Foundation.
@@ -108,15 +107,19 @@ Send notifications with IBM MobileFirst Platform Foundation.
     * [Handling Push Notifications in Windows 8.1 Universal applications](../notifications/handling-push-notifications/windows-8/)
     * [Handling Push Notifications in Windows 10 UWP applications](../notifications/handling-push-notifications/windows-10/)
 
-### [Analytics](../analytics/)
+### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
-* <span style="color:red">TODO </span>[Operational Analytics](../analytics/operational-analytics/)
+* <span style="color:red">TODO </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
 * <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
     * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-native-android/)
     * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-native-ios/)
-    * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/)
+    * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
 * <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
+* <span style="color:red">TODO </span>[Alerts](../analytics/alerts/)
+* <span style="color:red">TODO </span>[Creating Custom Charts](../analytics/custom-charts/)
+* 
+* <span style="color:red">TODO </span>[Elastic Search](../analytics/elasticsearch/)
 
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.  
@@ -128,10 +131,9 @@ Scalable database management for your MobileFirst projects.
 ### [IBM Containers](../ibm-containers/)
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
 
-* <span style="color:red">TODO </span>[Overview](../ibm-containers/)
-* <span style="color:red">TODO </span>[Evaluate](../ibm-containers/evaluate/)
-* <span style="color:red">TODO </span>[Run](../ibm-containers/run/)
-* <span style="color:red">TODO </span>[Sample application](../ibm-containers/sample-app/)
+* [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../ibm-containers/)
+* <span style="color:red">IN PROGRESS </span>[Setting up MobileFirst Server on IBM Containers Using Foundation Tile](../ibm-containers/using-foundation-tile/)
+* <span style="color:red">TODO </span>[Creating a MobileFirst Server image using Cloud Foundary](../ibm-containers/creating-an-image/)
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.  
