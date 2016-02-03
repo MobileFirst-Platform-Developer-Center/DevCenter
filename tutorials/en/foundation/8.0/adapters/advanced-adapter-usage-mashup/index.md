@@ -13,7 +13,7 @@ Now that basic usage of different types of adapters has been covered, it is impo
 In theory, from the client side, you could make several requests successively, one depending on the other.
 However, writing this logic on the server side could be faster and cleaner.
 
-This tutorial covers the following topics:
+#### Jump to:
 
 * [JavaScript adapter API](#javascript-adapter-api)
 * [Java adapter API](#java-adapter-api)
