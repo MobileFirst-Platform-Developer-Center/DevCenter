@@ -1,4 +1,5 @@
 ---
+layout: tutorial
 title:  Alerts
 weight: 4
 ---

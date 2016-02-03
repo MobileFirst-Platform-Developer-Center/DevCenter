@@ -1,4 +1,5 @@
 ---
+layout: tutorial
 title: Elastic search
 weight: 6
 ---

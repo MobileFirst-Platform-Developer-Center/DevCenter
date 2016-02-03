@@ -1,4 +1,5 @@
 ---
+layout: tutorial
 title: Creating Custom Charts
 weight:4
 ---
