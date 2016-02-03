@@ -23,7 +23,7 @@ This tutorial covers the following topics:
 ## JavaScript adapter API
 ### Calling a JavaScript adapter procedure from a JavaScript adapter
 When calling a JavaScript adapter procedure from another JavaScript adapter use the `WL.Server.invokeProcedure(invocationData)` API.
-This API enables to invoke a procedure on any of your adapters. `WL.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
+This API enables to invoke a procedure on any of your JavaScript adapters. `WL.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
 
 The `invocationData` function signature is:  
 `WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
@@ -36,21 +36,27 @@ WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions"
 > Calling a Java adapter from a JavaScript adapter is not supported
 
 ## Java adapter API
+Before you can call another adapter - the AdaptersAPI must be assigned to a variable:
+{% highlight java %}
+@Context
+AdaptersAPI adaptersAPI;
+{% endhighlight %}
+
 ### Calling a Java adapter from a Java adapter
 When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
 This call returns an `HttpResponse` object.
 {% highlight java %}
-HttpUriRequest req = new HttpGet(MyAdapterProcedureURL);
-org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
+HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
+org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response)
 {% endhighlight %}
 
 ### Calling a JavaScript adapter procedure from a Java adapter
 When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an `HttpUriRequest` to pass as a parameter to the `executeAdapterRequest` call.
 {% highlight java %}
-HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
-org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
+HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
+org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 {% endhighlight %}
 
 ## Data mashup example
@@ -117,18 +123,20 @@ function getYahooWeather(woeid) {
 {% highlight java %}
 @GET
 @Produces("application/json")
-public String get(@Context HttpServletResponse response, @QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-    String returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"), response);
-    return returnValue;
+public Response get(@QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+	Response returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"));
+	return returnValue;
 }
 
-private String execute(HttpUriRequest req, HttpServletResponse resultResponse) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-    String strOut = null;
-    HttpResponse RSSResponse = client.execute(host, req);
-    ServletOutputStream os = resultResponse.getOutputStream();
-
-...
-// (Convert the retrieved XML to JSON)
+private Response execute(HttpUriRequest req) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+	HttpResponse RSSResponse = client.execute(host, req);
+	if (RSSResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+		String json = XML.toJson(RSSResponse.getEntity().getContent());
+		return Response.ok().entity(json).build();
+	}else{ // Handle Failure
+		RSSResponse.getEntity().getContent().close();
+		return Response.status(RSSResponse.getStatusLine().getStatusCode()).entity(RSSResponse.getStatusLine().getReasonPhrase()).build();
+	}
 }
 {% endhighlight %}  
 
@@ -147,7 +155,7 @@ function getCitiesList() {
 
 (getCitiesListJava, getCitiesListJavaToJs adapters)
 {% highlight java %}
-PreparedStatement getAllCities = getSQLConnection().prepareStatement("select city, identifier, summary from weather");
+PreparedStatement getAllCities = conn.prepareStatement("select city, identifier, summary from weather");
 ResultSet rs = getAllCities.executeQuery();
 {% endhighlight %}  
 
@@ -171,20 +179,23 @@ function getCityWeather(woeid){
 (getCitiesListJava adapter)
 {% highlight java %}
 while (rs.next()) {
-	getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
-    HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
-    org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-    JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
-    ...
+  getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
+	HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
+	HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+	JSONObject jsonWeather = adaptersAPI.getResponseAsJSON(response);
+  ...
+}
 {% endhighlight %}  
 
 (getCitiesListJavaToJs adapter)
 {% highlight java %}
-    while (rs.next()) {
-        HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather", URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
-        org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-        JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
-        ...
+while (rs.next()) {
+  // Calling a JavaScript HTTP adapter procedure
+	HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather", URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
+	org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+	JSONObject jsonWeather = adaptersAPI.getResponseAsJSON(response);
+  ...
+}
 {% endhighlight %}  
 
 **4. Iterating through the retrieved rss feed to fetch only the weather description,   
@@ -201,6 +212,8 @@ return cityList;
 
 (getCitiesListJava, getCitiesListJavaToJs adapters)
 {% highlight java %}
+{
+    ...
     JSONObject rss = (JSONObject) jsonWeather.get("rss");
     JSONObject channel = (JSONObject) rss.get("channel");
     JSONObject item = (JSONObject) channel.get("item");
@@ -232,4 +245,3 @@ Remember that SQL adapters require a JDBC connector driver. [Follow these instru
 1. From the command line, navigate to the Cordova project.
 2. Add a platform by running the `cordova platform add` command.
 3. Run the Cordova application by running the `cordova run` command.
-
