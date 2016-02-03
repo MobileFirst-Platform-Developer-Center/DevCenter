@@ -1,14 +1,13 @@
 ---
 layout: tutorial
-title: Analytics
+title: MobileFirst Platform Operational Analytics
 show_children: true
-show_disqus: false
-print_pdf: false
+show_disqus: true
+print_pdf: true
 ---
 ## Overview
+MobileFirst Platform Operational Analytics collects data about applications, adapters, devices, logs, and your own custom events to give a high-level view of the client interaction with the IBM MobileFirst Platform Server.
 
-MobileFirst Operational Analytics collects data about applications, adapters, devices, logs, and your own custom events to give a high-level view of the client interaction with the IBM MobileFirst Platform Server.
-
-**Note**: All of the Getting Started Operational Analytics tutorials will make the assumption that you are working in the development environment using a the embedded Liberty server. However, all the same concepts apply to Tomcat and WebSphere® Application Server.
+> **Note**: The below tutorials make the assumption that you are working with the MobileFirst development environment, which uses WebSphere Liberty profile application server. However, all concepts also apply to Tomcat and WebSphere® Full profile spplication servers.
 
 To continue, select a tutorial:

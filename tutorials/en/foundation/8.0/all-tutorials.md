@@ -107,15 +107,19 @@ Send notifications with IBM MobileFirst Platform Foundation.
     * [Handling Push Notifications in Windows 8.1 Universal applications](../notifications/handling-push-notifications/windows-8/)
     * [Handling Push Notifications in Windows 10 UWP applications](../notifications/handling-push-notifications/windows-10/)
 
-### [Analytics](../analytics/)
+### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
-* <span style="color:red">TODO </span>[Operational Analytics](../analytics/operational-analytics/)
+* <span style="color:red">TODO </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
 * <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
     * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-native-android/)
     * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-native-ios/)
-    * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-hybrid-applications/)
+    * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
 * <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
+* <span style="color:red">TODO </span>[Alerts](../analytics/alerts/)
+* <span style="color:red">TODO </span>[Creating Custom Charts](../analytics/custom-charts/)
+* 
+* <span style="color:red">TODO </span>[Elastic Search](../analytics/elasticsearch/)
 
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.  

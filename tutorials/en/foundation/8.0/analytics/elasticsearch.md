@@ -1,10 +1,12 @@
 ---
-title: Elasticsearch
+title: Elastic search
+weight: 6
 ---
+## Overview
+Behind the scenes running search queries and storing data for Operational Analytics is **Elasticsearch 1.5x**.  
+Elasticsearch is a real-time distributed search and analytics engine. Elasticsearch allows you to explore your data at a speed and at a scale never before possible. Elasticsearch is used for full-text search, structured search. You can read more about Elasticsearch and look through the documentation [here](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
 
-Behind the scenes running search queries and storing data for Operational Analytics is Elasticsearch 1.5x. Elasticsearch is a real-time distributed search and analytics engine. Elasticsearch allows you to explore your data at a speed and at a scale never before possible. Elasticsearch is used for full-text search, structured search. You can read more about Elasticsearch and look through the documentation [here](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
-
-What we use Elasticsearch for is to store all your mobile and server data in JSON format on your Analytics server in an Elasticsearch instances. We then query this data in real-time in order to build the analytics console you see today.
+Elasticsearch is used for storing all mobile and server data in JSON format on the Analytics server in Elasticsearch instances. When the instances are queried, in real-time in order to build the analytics console you see today.
 
 We do not hide any Elasticsearch functionality from the user. If you know how to fully utilize Elasticsearch, debug Elasticsearch, or optimize Elasticsearch instances we let you. You can access all the Elasticsearch properties through JNDI variables or environment entries.
 

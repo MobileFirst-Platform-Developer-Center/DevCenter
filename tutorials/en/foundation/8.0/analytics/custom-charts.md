@@ -1,5 +1,6 @@
 ---
 title: Creating Custom Charts
+weight:4
 ---
 ### Creating Custom Charts
 Creating a custom chart is simple. The following example walks you through creating a pie chart, based on the user pressing three buttons.
