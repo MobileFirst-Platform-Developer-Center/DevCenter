@@ -118,7 +118,6 @@ Monitor deployed applications and adapters, gain insight on application usage, f
 * <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
 * <span style="color:red">TODO </span>[Alerts](../analytics/alerts/)
 * <span style="color:red">TODO </span>[Creating Custom Charts](../analytics/custom-charts/)
-* 
 * <span style="color:red">TODO </span>[Elastic Search](../analytics/elasticsearch/)
 
 ### [Cloudant Data Layer](../../../cloudant/)
