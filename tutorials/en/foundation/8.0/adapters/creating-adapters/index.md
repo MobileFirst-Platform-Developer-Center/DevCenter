@@ -192,7 +192,7 @@ To group adapters you need to:
   2. Add an **`artifactId`** element - the root folder's name
   3. Add a **`module`** element for each adapter
   4. Add the **`build`** element
-  5. Replace the **localhost:9080** with your MobileFirst Server IP and port.
+  5. **Optional**. Replace **localhost:9080** with your specific MobileFirst Server IP address and port number.
   6. **Optional**. Replace the **`mfpfUser`** and **`mfpfPassword`** default values with your MobileFirst admin user name and password.
 
 4. To [build or deploy](#build-and-deploy-adapters) all adapters, run the Maven commands from the root "GroupAdapters" project.
