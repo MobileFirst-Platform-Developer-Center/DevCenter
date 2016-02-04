@@ -66,8 +66,7 @@ For testing purposes set **Allowed Scopes** as `**`.
     ```
 
   ![Image of Postman Body configuration](Body_configuration.png)
-2. Add an `authorization header` using `Basic authentication` with the <span style="color:red">Add link to the confidential client tutorial</span>
-confidential client's ID (admin) and secret (admin).
+2. Add an `authorization header` using `Basic authentication` with username "admin" and password "admin".
 
   ![Image of Postman Authorization configuration](Authorization_configuration.png)
 

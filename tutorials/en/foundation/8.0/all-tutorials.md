@@ -66,7 +66,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
     * [Java SQL adapter](../adapters/java-adapters/java-sql-adapter/)
 * [Developing Adapters in IDEs](../adapters/developing-adapters/)
 * [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
-* <span style="color:red">IN PROGRESS</span> [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
+* [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
 * <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../adapters/cloudant/)
 
 ### [Authentication and Security](../authentication-and-security/)
@@ -90,7 +90,6 @@ Add various layers of protection to your applications.
     * [Implementing the SecurityCheckWithUserAuthentication challenge handler in Windows 10 UWP applications](../authentication-and-security/security-check-with-user-authentication/windows-10/)
 * <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
 * <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
-* <span style="color:red">TODO </span>[WebSphere LTPA-based authentication](../authentication-and-security/websphere-ltpa-based-authentication/)
 * <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
 * <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
 * [Application Authenticity](../authentication-and-security/application-authenticity/)
