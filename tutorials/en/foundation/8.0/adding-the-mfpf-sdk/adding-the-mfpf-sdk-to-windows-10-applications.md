@@ -31,13 +31,14 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
 Before starting, make sure the MobileFirst Server is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or  `start.cmd` in Windows.
 
+### Creating an application
+Create a Windows 8.1 Universal project using Visual Studio 2013/2015 or use an existing project.  
+
 ### Creating and registering the application
 
-1. Create a Windows 8.1 Universal project using Visual Studio 2013/2015 or use an existing project.  
+1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
 
-2. Open the **Command-line** and navigate to the root of the Visual Studio project.  
-
-3. Run the command:
+2. Run the command:
 
     ```bash
     mfpdev app register

@@ -31,24 +31,8 @@ Follow the below instructions to add the MobileFirst Native SDK to either a new 
 Before starting, make sure the MobileFirst Server is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
 
-### Creating and registering the application
-
-1. Create an Android project or use an existing one.  
-
-2. Open a **Command-line** window and navigate to the root of the Android Studio project.  
-
-3. Run the command: 
- 
-    ```bash
-    mfpdev app register
-    ```
-    
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **./app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
-        
-    > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
-        1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
-        2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
-        3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
+### Creating an Android application
+Create an Android Studio project or use an existing one.  
 
 ### Adding the SDK
 
@@ -91,7 +75,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.Beta1-SNAPSHOT'
     ```
     
-5. In **Android → App → manifests**, select Add the following permissions to the `AndroidManifest.xml` file:
+5. In **Android → App → manifests**, add the following permissions to the `AndroidManifest.xml` file:
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -103,6 +87,22 @@ If using a locally installed server: From a **Command-line** window, navigate to
     ```xml
     <activity android:name="com.worklight.wlclient.ui.UIActivity" />
     ```
+
+### Registering the application
+1. Open a **Command-line** window and navigate to the root of the Android Studio project.  
+
+2. Run the command: 
+ 
+    ```bash
+    mfpdev app register
+    ```
+    
+    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **./app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
+        
+    > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
+        2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
+        3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
 
 ## Updating the MobileFirst Native SDK
 To update the MobileFirst Native SDK with the latest release, find the release version number and update the `version` property accordingly in the **build.gradle** file.  

@@ -35,13 +35,14 @@ Follow the below instructions to add the MobileFirst Native SDK to either a new 
 Before starting, make sure the MobileFirst Server is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
 
+### Creating an application
+Create an Xcode project or use an existing one (Swift or Objective-C).  
+
 ### Creating and registering the application
 
-1. Create an Xcode project or use an existing one (Swift or Objective-C).  
+1. Open a **Command-line** window and navigate to the root of the Xcode project.  
 
-2. Open a **Command-line** window and navigate to the root of the Xcode project.  
-
-3. Run the command: 
+2. Run the command: 
  
     ```bash
     mfpdev app register
