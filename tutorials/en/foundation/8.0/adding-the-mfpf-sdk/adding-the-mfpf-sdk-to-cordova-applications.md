@@ -100,7 +100,6 @@ To update the MobileFirst Cordova SDK with the latest release, the **cordova-plu
 SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/cordova-plugin-mfp).
 
 ## Generated MobileFirst Cordova SDK artifacts
-Two MobileFirst-related artifacts are available in the Cordova project after it has been integrated with the MobileFirst Cordova SDK: the Cordova `config.xml` and the MobileFirst `application-descriptor.json` file.
 
 ### config.xml
 Once the MobileFirst Cordova SDK is added to the project, the Cordova-generated `config.xml` file receives a set of new settings identified with the namespace `mfp:`. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the `config.xml` file:
@@ -138,39 +137,6 @@ The MobileFirst Developer CLI can be used to edit the above settings with the co
 
 ```bash
 mfpdev app config
-```
-
-### application-descriptor.json
-Located in the **[cordova-project-root-directory]/mobilefirst/[platform]** folder, this file contains application configuration settings such as its `bundleId` and `version` and is user-editable.
-
-The file can be edited either locally or via the MobileFirst Operations Console.  
-If edited locally, the MobileFirst Server can be updated by running the CLI command: 
-
-```bash 
-mfpdev app push
-```
-
-The file can also be updated by pulling from the server its latest revision by running the CLI command:
-
-```bash
-mfpdev app pull
-```
-The `mfpdev app pull` CLI command creates the **mobilefirst** folder at the root of the Xcode project and downloads into it the `application-descriptor.json` file, containing application configuration data.
-
-> <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
-
-```javascript
-{
-    "applicationKey": {
-        "packageName": "com.samplePackage",
-        "version": "1.0",
-        "clientPlatform":"android"
-    }
-
-    ...
-    ...
-    ...
-}
 ```
 
 ## Tutorials to follow next

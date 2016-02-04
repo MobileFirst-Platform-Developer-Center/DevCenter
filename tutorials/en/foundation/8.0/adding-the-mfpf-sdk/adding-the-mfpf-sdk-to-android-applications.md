@@ -111,7 +111,6 @@ See step 4 above.
 SDK releases can be found in the SDK's [JCenter repository](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#).
 
 ## Generated MobileFirst Native SDK artifacts
-Two MobileFirst-related artifacts are available in the Android Studio project after it has been integrated with the MobileFirst Native SDK: the `mfpclient.properties` and the `application-descriptor.json` file.
 
 ### mfpclient.properties 
 Located at the **./app/src/main/assets/** folder of the Android Studio project, this file contains server connectivity properties and is user-editable:
@@ -121,39 +120,6 @@ Located at the **./app/src/main/assets/** folder of the Android Studio project, 
 - `port` – The port of the MobileFirst Server instance.
 - `wlServerContext` – The context root path of the application on the MobileFirst Server instance.
 - `languagePreference` - Sets the default language for client sdk system messages
-
-### application-descriptor.json
-Located in the **&lt;android-studio-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its `bundleId` and `version` and is user-editable.
-
-The file can be edited either locally or via the MobileFirst Operations Console.  
-If edited locally, the MobileFirst Server can be updated by running the CLI command:
-
-```bash
-mfpdev app push
-```
-
-The file can also be updated by pulling from the server its latest revision by running the CLI command:
-
-```bash
-mfpdev app pull
-```
-The `mfpdev app pull` CLI command creates the **mobilefirst** folder at the root of the Android Studio project and downloads into it the `application-descriptor.json` file, containing application configuration data.
-    
-> <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
-
-```javascript
-{
-    "applicationKey": {
-        "packageName": "com.samplePackage",
-        "version": "1.0",
-        "clientPlatform":"android"
-    }
-    
-    ...
-    ...
-    ...
-}
-```
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
