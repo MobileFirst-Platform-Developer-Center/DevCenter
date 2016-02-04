@@ -91,7 +91,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.Beta1-SNAPSHOT'
     ```
     
-5. In **Project → App → manifests**, select Add the following permissions to the `AndroidManifest.xml` file:
+5. In **Android → App → manifests**, select Add the following permissions to the `AndroidManifest.xml` file:
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
