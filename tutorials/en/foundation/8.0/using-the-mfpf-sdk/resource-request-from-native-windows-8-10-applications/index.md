@@ -28,7 +28,7 @@ Create a `WorklightResourceRequest` object and specify the path to the resource 
 Available methods are: `GET`, `POST`, `PUT` and `DELETE`.
 
 ```cs
-URI adapterPath = new URI("/adapters/RSSReader/getFeed",UriKind.Relative);
+URI adapterPath = new URI("/adapters/JavaAdapter/users",UriKind.Relative);
 WorklightResourceRequest request = WorklightClient.ResourceRequest(adapterPath,"GET");
 ```
 
