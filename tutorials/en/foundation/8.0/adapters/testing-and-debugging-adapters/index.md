@@ -66,9 +66,7 @@ For testing purposes set **Allowed Scopes** as `**`.
     ```
 
   ![Image of Postman Body configuration](Body_configuration.png)
-2. Add an `authorization header` using `Basic authentication` with the confidential client's ID (admin) and secret (admin).
-
-> Learn more about confidential clients in the [Using MobileFirst Server to Authenticate External Resource](../../authentication-and-security/using-mobilefirst-server-authenticate-external-resources) tutorial.
+2. Add an `authorization header` using `Basic authentication` with username "admin" and password "admin".
 
   ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
