@@ -52,7 +52,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
 ### Adding the SDK
 
-1. In **Project → Gradle scripts**, select the **build.gradle (Module: app)** file.
+1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file.
 
 2. Add the following lines below `apply plugin: 'com.android.application'`:
 
