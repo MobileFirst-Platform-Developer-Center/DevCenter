@@ -12,13 +12,20 @@ Tags represent topics of interest to the user and provide the ability to receive
 
 Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved Push.all tag (auto-created for every device). Broadcast notifications can be disabled by unsubscribing from the reserved Push.all tag.
 
-### Agenda
+**Prerequisites:** 
+
+* Android Studio and MobileFirst Developer CLI installed on the developer workstation.  
+* *Optional* MobileFirst Server to run locally.
+* Make sure you have read the [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/index) tutorial.
+
+#### Jump to:
+
 * [Notifications configuration](#notifications-configuration)
 * [Notifications API](#notifications-api)
 * [Handling a push notification](#handling-a-push-notification)
 * [Handling a secure push notification](#handling-a-secure-push-notification)
 
-### Notifications Configuration
+## Notifications Configuration
 
 1. Create a new android project via Android Studio.
 
@@ -54,15 +61,14 @@ Broadcast notifications are a form of tag push notifications that are targeted t
 
 9. Use the Push SDK APIs in your application (Refer to sample)
 
-### Notifications API
-#### API methods for tag notifications
-##### Client-side API
+## Notifications API
+
+### API methods for tag notifications
 * `WLPush.subscribeTag(tagName,options)` - Subscribes the device to the specified tag name.
 * `WLPush.unsubscribeTag(tagName,options)` -  Unsubscribes the device from the specified tag name
 * `WLPush.isTagSubscribed(tagName)` - Returns whether the device is subscribed to a specified tag name
 
-#### Common API methods for tag and broadcast notifications
-#### Client-side API
+### API methods for tag and broadcast notifications
 
 * `WLNotificationListener` - Defines the callback method to be notified when the notification arrives.
 * `client.getPush().setWLNotificationListener(listener)` -
@@ -73,6 +79,6 @@ This method registers a listener to be used for push notifications. This listene
 --* *props* – A JSON block that contains the notifications properties of the platform.
 --* *payload* – A JSON block that contains other data that is sent from MobileFirst Server. The JSON block also contains the tag name for tag-based or broadcast notification. The tag name appears in the “tag” element. For broadcast notification, the default tag name is `Push.ALL`.
 
-### Handling a push notification
+## Handling a push notification
 
-### Handling a secure push notification
+## Handling a secure push notification
