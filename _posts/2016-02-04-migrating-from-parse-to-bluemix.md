@@ -9,9 +9,10 @@ tags:
 author:
   display_name: Andrew Trice
 ---
-<img src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/02/curves_ahead.jpeg" style="float:right" alt="temp_image" /> 
-This week [Parse.com](http://parse.com), Facebook’s Mobile Backend as a Service offering, shocked both their customers and the development community by announcing that they are [sunsetting](http://blog.parse.com/announcements/moving-on/) the service to “focus resources elsewhere.” Luckily, they’re not leaving current customers high and dry – they are giving developers a year’s notice before the service is shut down, providing [data migration tools to MongoDB](http://blog.parse.com/announcements/introducing-parse-server-and-the-database-migration-tool/), and open-sourcing [parse-server](https://github.com/ParsePlatform/parse-server), a Parse.com API-compatible router package for Express.js on top of Node.js.
+<img src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/02/curves_ahead.jpeg" style="float:right; margin-left: 10px" alt="temp_image" /> 
 
+This week [Parse.com](http://parse.com), Facebook’s Mobile Backend as a Service offering, shocked both their customers and the development community by announcing that they are [sunsetting](http://blog.parse.com/announcements/moving-on/) the service to “focus resources elsewhere.” Luckily, they’re not leaving current customers high and dry – they are giving developers a year’s notice before the service is shut down, providing [data migration tools to MongoDB](http://blog.parse.com/announcements/introducing-parse-server-and-the-database-migration-tool/), and open-sourcing [parse-server](https://github.com/ParsePlatform/parse-server), a Parse.com API-compatible router package for Express.js on top of Node.js.
+<br clear="all"/>
 If you’re a Parse customer looking to move your app infrastructure to someplace secure, then you’re in luck.  Bluemix is the place for you.  In this post, I spell out the process of migrating an application from Parse.com to Bluemix. Let’s get started!
 
 ## Create your Parse-on-Bluemix application 
