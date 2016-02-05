@@ -44,7 +44,7 @@ To enable Application Authenticity in your Cordova or Native application, the ap
     The result of the command above is an `.authenticity_data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.authenticity_data`.
  
 2. Open the MobileFirst Operations Console in your browser of choice.
-3. Select your application from the left-side pane and click on the Authenticiy menu item.
+3. Select your application from the navigation sidebar and click on the Authenticiy menu item.
 3. Click on "Upload Authenticity File" to upload the `.authenticity_data` file.
 
 When the `.authenticity_data` file is uploaded, Application Authenticity is enabled.

@@ -31,13 +31,14 @@ Follow the below instructions to manually add the MobileFirst Native SDK to eith
 Before starting, make sure the MobileFirst Server is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or  `start.cmd` in Windows.
 
+### Creating an application
+Create a Windows 8.1 Universal project using Visual Studio 2013/2015 or use an existing project.  
+
 ### Creating and registering the application
 
-1. Create a Windows 8.1 Universal project using Visual Studio 2013/2015 or use an existing project.  
+1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
 
-2. Open the **Command-line** and navigate to the root of the Visual Studio project.  
-
-3. Run the command:
+2. Run the command:
 
     ```bash
     mfpdev app register
@@ -75,10 +76,8 @@ Nuget update
 ```
 
 ## Generated MobileFirst Native SDK artifacts
-Two MobileFirst-related artifacts are available in the Android Studio project after it has been integrated with the MobileFirst Native SDK: the `mfpclient.resw` and the `application-descriptor.json` file.
 
 ### mfpclient.resw
-
 Located at the root of the project, this file contains server connectivity properties and is user-editable:
 
 - `protocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTTPS`.
@@ -94,40 +93,6 @@ Add the following capabilities to the `Package.appxmanifest`:
 
 - Internet (Client &amp; Server)
 - Private Networks (Client &amp; Server)
-
-### application-descriptor.json
-Located in the **&lt;visual-studio-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its `bundleId` and `version` and is user-editable.
-
-The file can be edited either locally or via the MobileFirst Operations Console.  
-If edited locally, the MobileFirst Server can be updated by running the CLI command:
-
-```bash
-mfpdev app push
-```
-
-The file can also be updated by pulling from the server its latest revision by running the CLI command:
-
-```bash
-mfpdev app pull
-```
-
-The `mfpdev app pull` CLI command creates the **mobilefirst** folder at the root of the Visual Studio project and downloads into it the `application-descriptor.json` file, containing application configuration data.
-
-> <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer cli-to-manage-mobilefirst-artifacts/) tutorial.
-
-```javascript
-{
-    "applicationKey": {
-        "packageName": "com.samplePackage",
-        "version": "1.0",
-        "clientPlatform":"visualstudio"
-    }
-
-    ...
-    ...
-    ...
-}
-```
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:

@@ -35,13 +35,14 @@ Follow the below instructions to add the MobileFirst Native SDK to either a new 
 Before starting, make sure the MobileFirst Server is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
 
+### Creating an application
+Create an Xcode project or use an existing one (Swift or Objective-C).  
+
 ### Creating and registering the application
 
-1. Create an Xcode project or use an existing one (Swift or Objective-C).  
+1. Open a **Command-line** window and navigate to the root of the Xcode project.  
 
-2. Open a **Command-line** window and navigate to the root of the Xcode project.  
-
-3. Run the command: 
+2. Run the command: 
  
     ```bash
     mfpdev app register
@@ -109,7 +110,6 @@ pod update
 SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.org/?q=ibm%20mobilefirst).
 
 ## Generated MobileFirst Native SDK artifacts
-Two MobileFirst-related artifacts are available in the Xcode project after it has been integrated with the MobileFirst Native SDK: the `mfpclient.plist` file and the `application-descriptor.json` file.
 
 ### mfpclient.plist 
 Located at the root of the project, this file contains server connectivity properties and is user-editable:
@@ -119,40 +119,6 @@ Located at the root of the project, this file contains server connectivity prope
 - `port` – The port of the MobileFirst Server instance.
 - `wlServerContext` – The context root path of the application on the MobileFirst Server instance.
 - `languagePreference` - Sets the default language for client sdk system messages
-
-### application-descriptor.json
-Located in the **&lt;xcode-project-root-directory&gt;/mobilefirst** folder, this file contains application configuration settings such as its `bundleId` and `version` and is user-editable.
-
-The file can be edited either locally or via the MobileFirst Operations Console.  
-If edited locally, the MobileFirst Server can be updated by running the CLI command: 
-
-```bash
-mfpdev app push
-```
-
-The file can also be updated by pulling from the server its latest revision by running the CLI command:
- 
-```bash
-mfpdev app pull
-```
-
-The `mfpdev app pull` CLI command creates the **mobilefirst** folder at the root of the Xcode project and downloads into it the `application-descriptor.json` file, containing application configuration data.
-
-> <b>Tip:</b> Learn more about the various CLI commands in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
-
-```javascript
-{
-    "applicationKey": {
-        "bundleId": "com.sample.bankApp",
-        "version": "1.0",
-        "clientPlatform":"ios"
-    },
-  
-    ...
-    ...
-    ...
-}
-```
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
