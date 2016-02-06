@@ -105,6 +105,7 @@ Send notifications with IBM MobileFirst Platform Foundation.
     * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)
     <!-- * <span style="color:red">TODO </span>[Handling Push Notifications in Windows 8.1 Universal and Windows 10 UWP applications](../notifications/handling-push-notifications-in-windows-8-10/)
     -->
+    
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
