@@ -203,7 +203,7 @@ For Cordova Windows platform, the `-w <platform>` argument must be added to the 
 mfpdev app register -w windows8
 ```
 
-### Config an application
+### Configure an application
 When an application is registered, server related attributes are added to the app configuration file.  
 To change the value of those attributes, run the following command:
 
@@ -213,6 +213,8 @@ mfpdev app config
 
 This command will interactively present a list of attributes that can be changed and prompt for the new value of the attribute.  
 The attributes available will vary for each platform (Android, iOS, Windows).
+
+Available attributes are: the server and runtime the application will be deployed to, setting a public key for the Direct Update authenticity feature, and setting application default language.
 
 ### Preview a Cordova application
 A Cordova application's web resources can be previewed using a browser. Previewing an application allows for fast and rapid develop without needing to use native platform specific emulators and simulators.
