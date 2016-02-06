@@ -3,7 +3,7 @@ layout: tutorial
 title: Handling Push Notifications in Cordova
 show_children: true
 relevantTo: [cordova]
-weight: 2
+weight: 3
 ---
 
 ## Overview

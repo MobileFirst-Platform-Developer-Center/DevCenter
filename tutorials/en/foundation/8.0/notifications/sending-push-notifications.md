@@ -13,3 +13,5 @@ teach how to send push notifications:
 ## Overview
 1. Sending a push notification with a java adapter
 2. Sending a push notification with a javascript adapter
+3. Sending a push notification from the console
+4. Sending a push notification using REST API (show the avaialble options through Swagger?)
