@@ -28,11 +28,11 @@ Get a feel of MobileFirst Platform Foundation.
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
 
-* [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications/)
-* [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/)
-* [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications/)
-* [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications/)
-* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
+* [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/cordova/)
+* [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/ios/)
+* [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/android/)
+* [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal applications](../adding-the-mfpf-sdk/windows-8/)
+* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/windows-10/)
 
 ### [Using the MobileFirst Platform Foundation SDK](../using-the-mfpf-sdk/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
@@ -98,14 +98,13 @@ Add various layers of protection to your applications.
 Send notifications with IBM MobileFirst Platform Foundation.  
 
 * <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
-* <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
-* <span style="color:red">TODO </span>[Handling Push Notifications](../notifications/handling-push-notifications/)
-    * [Handling Push Notifications in Cordova applications](../notifications/cordova/)
-    * [Handling Push Notifications in iOS applications](../notifications/handling-push-notifications/ios/)
-    * [Handling Push Notifications in Android applications](../notifications/handling-push-notifications/android/)
-    * [Handling Push Notifications in Windows 8.1 Universal applications](../notifications/handling-push-notifications/windows-8/)
-    * [Handling Push Notifications in Windows 10 UWP applications](../notifications/handling-push-notifications/windows-10/)
-
+*[Sending Push Notifications](../notifications/sending-push-notifications/)
+* Handling Push Notifications in client applications
+    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
+    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
+    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)
+    <!-- * <span style="color:red">TODO </span>[Handling Push Notifications in Windows 8.1 Universal and Windows 10 UWP applications](../notifications/handling-push-notifications-in-windows-8-10/)
+    -->
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
