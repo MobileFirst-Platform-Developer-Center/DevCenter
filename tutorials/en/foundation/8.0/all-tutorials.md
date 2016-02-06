@@ -98,7 +98,7 @@ Add various layers of protection to your applications.
 Send notifications with IBM MobileFirst Platform Foundation.  
 
 * <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
-*[Sending Push Notifications](../notifications/sending-push-notifications/)
+* <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
 * Handling Push Notifications in client applications
     * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
     * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
