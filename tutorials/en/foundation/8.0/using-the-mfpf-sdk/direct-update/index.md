@@ -64,7 +64,7 @@ Alternatives:
          mfpdev app webupdate --build
          ```
  2. Load the MobileFirst Operations Console and click on the application entry.
- 3. Click on **Upload File** to upload the packaged web resources.
+     3. Click on **Upload Web Resources File** to upload the packaged web resources.
 
 ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
 
