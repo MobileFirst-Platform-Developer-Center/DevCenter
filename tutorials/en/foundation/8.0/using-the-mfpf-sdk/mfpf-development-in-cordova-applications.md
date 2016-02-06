@@ -130,8 +130,8 @@ cordova run ios
 ## Further reading
 Learn more about Cordova:
 
-- [Cordova Overview](https://cordova.apache.org/docs/en/5.4.0/guide/overview/index.html)
-- [Cordova best practices, testing, debugging, cosiderations and keeping up](https://cordova.apache.org/docs/en/5.4.0/guide/next/index.html#link-10)
+- [Cordova Overview](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
+- [Cordova best practices, testing, debugging, cosiderations and keeping up](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
 - [Get started with Cordova applications development](https://cordova.apache.org/#getstarted)
 
 ## Tutorials to follow next
