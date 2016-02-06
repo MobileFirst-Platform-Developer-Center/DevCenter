@@ -102,10 +102,8 @@ Send notifications with IBM MobileFirst Platform Foundation.
 * Handling Push Notifications in client applications
     * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
     * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)
-    <!-- * <span style="color:red">TODO </span>[Handling Push Notifications in Windows 8.1 Universal and Windows 10 UWP applications](../notifications/handling-push-notifications-in-windows-8-10/)
-    -->
-    
+    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)  
+  
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
