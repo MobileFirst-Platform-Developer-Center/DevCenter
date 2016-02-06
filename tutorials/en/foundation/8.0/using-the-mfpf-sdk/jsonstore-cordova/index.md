@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore in Cordova applications
+breadcrumb_title: JSONStore - Cordova
 relevantTo: [cordova]
 weight: 8
 downloads:
@@ -21,10 +22,7 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 
 > **Note:** Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Platform Foundation user documentation website.
 
-**Prerequisites**: 
-
-- Cordova CLI installed on the developer workstation.  
-- Make sure you have read the [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.  
+**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Xcode project. Follow the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/cordova/) tutorial.
 
 #### Jump to:
 

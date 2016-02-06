@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore in Native Android applications
+breadcrumb_title: JSONStore - Android
 relevantTo: [android]
 weight: 10
 downloads:
@@ -20,6 +21,9 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 * Support for multiple users
 
 > **Note:** Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Platform Foundation user documentation website.
+
+**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Android Studio project. Follow the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/android/) tutorial.
+
 
 #### Jump to:
 
