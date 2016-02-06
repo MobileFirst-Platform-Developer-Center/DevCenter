@@ -21,7 +21,7 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 
 > **Note:** Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Platform Foundation user documentation website.
 
-**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Xcode project. Follow the tutorial: [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/).
+**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Xcode project. Follow the tutorial: [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../../adding-the-mfpf-sdk/ios/).
 
 #### Jump to:
 

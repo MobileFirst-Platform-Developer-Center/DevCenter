@@ -16,7 +16,7 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) to your Native iOS project.
+- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/ios) to your Native iOS project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest

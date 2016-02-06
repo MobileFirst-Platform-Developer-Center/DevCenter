@@ -16,7 +16,7 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications) to your Native Android project.
+- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/android) to your Native Android project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest

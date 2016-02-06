@@ -18,7 +18,7 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications) or [Windows 10 UWP](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications) project.
+- Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal](../../adding-the-mfpf-sdk/windows-8) or [Windows 10 UWP](../../adding-the-mfpf-sdk/windows-10) project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest
