@@ -51,14 +51,16 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 	com.squareup.okhttp:okhttp:2.6.0
 	```
 
+	<span style="color:red"> remove step 6 before going live</span>
+
 6. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
 
-   Remove libs folder from the aar.  
-   Note: This step is not required once the lib gets to maven central/jcenter. Just need to add mavenCentral()/jcenter() in app gradle.
+   	Remove libs folder from the aar.  
+   	Note: This step is not required once the lib gets to maven central/jcenter. Just need to add mavenCentral()/jcenter() in app gradle.
 
 7. Add the push required configuration in AndroidManifest.xml 
 
-	<span style="colo:red">TODO: explain what is needed to do in the AndroidManifest.xml file</span>
+	<span style="color:red">TODO: explain what is needed to do in the AndroidManifest.xml file</span>
 
 ### Google Services setup
 <span style="color:red">Idan: I would consider moving this entire section to the server-side setup in the overview.</span>
@@ -71,7 +73,7 @@ To setup the Android project with Google Services, visit [Google's Services webs
 This step generates a `Server API Key` and a `Sender ID`.  
 The generated values are used to identify the application by Google's GCM service in order to send notifications to the device. 
 
-<span style="color:red">TODO: Add explanation what to do with these files (= add them in the Console).</span>
+<span style="color:red">TODO: Add explanation what to do with these values (= add them in the Console).</span>
 
 ## Notifications API
 <span style="color:red">TODO: Add introduction text to the API.</span>
