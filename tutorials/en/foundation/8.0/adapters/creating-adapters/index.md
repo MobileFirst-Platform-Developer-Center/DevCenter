@@ -293,7 +293,7 @@ This generates an **.adapter** archive file which can be found in the **target**
         ```
 
 </br>
-> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
 
 **NOTE:** The deploy command is available only during development.
 

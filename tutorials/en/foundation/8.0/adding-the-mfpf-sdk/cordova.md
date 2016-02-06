@@ -73,7 +73,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     cordova platform add ios
     ```
 
-    > <b>Important:</b> The platform versions supported by the MobileFirst plug-ins are **cordova-ios@4.0.1**, **cordova-android@5.0.0** and **cordova-windows@4.2.0**
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The platform versions supported by the MobileFirst plug-ins are **cordova-ios@4.0.1**, **cordova-android@5.0.0** and **cordova-windows@4.2.0**
 
 ### Registering the application
 
@@ -89,7 +89,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
     Each platform is registered as an application in MobileFirst Server.
 
-    > The application registration can also be done from the MobileFirst Operations Console:    
+    > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be done from the MobileFirst Operations Console:    
     > 1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
     > 2. Click on the "New" button next to "Applications" to create a new application. Follow the on-screen instructions.  
     > 3. After successfully registering your application you can optionally download a "skeleton" Cordova project pre-bundled with the MobileFirst Cordova SDK.

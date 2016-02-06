@@ -93,7 +93,7 @@ A Cordova application's web resources can be previewed either in the iOS Simulat
 Applicative code (HTML, CSS and JS) can now be edited in real-time.  
 After making a change to a resource, save the change and it will be immediately reflected in the browser.
 
-> <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobileirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobileirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### CrossWalk support
 Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  

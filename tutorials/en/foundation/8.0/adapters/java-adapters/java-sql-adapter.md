@@ -131,7 +131,7 @@ The SQL queries are built by the `PreparedStatement` method.
 
 If the insertion was successful, the `return Response.ok().build()` method is used to send a `200 OK` back to the client. If there was an error, a different `Response` object can be built with a specific HTTP status code. In this example, a `409 Conflict` error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.
 
-**Important:** Make sure to close resources, such as prepared statements and connections.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Make sure to close resources, such as prepared statements and connections.
 
 ### Get User
 ```java

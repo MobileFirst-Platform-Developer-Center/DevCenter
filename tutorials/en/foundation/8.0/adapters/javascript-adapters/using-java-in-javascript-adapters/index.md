@@ -20,7 +20,8 @@ When JavaScript is not sufficient to implement required functionality, or if a J
 To use an existing Java library, add the JAR file as a dependency in your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
 
 To add custom Java code to your project, add a folder named **java** to the **src/main** folder in your adapter project and put your package in it. The sample in this tutorial uses a `com.sample.customcode` package and a Java class file named `Calculator.java`.   
-**Important:** The package name must start with either `com`, `org`, or `net`.
+
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The package name must start with either `com`, `org`, or `net`.
 
 Add methods to your Java class.  
 Here are an examples of a static method (that does not require a new instance) and an instance method:

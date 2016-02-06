@@ -46,7 +46,7 @@ Create a Windows 8.1 Universal project using Visual Studio 2013/2015 or use an e
 
     The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.resw** file at the root of the Visual Studio project, and adding to it the metadata that identifies the MobileFirst Server.
 
-    > <b>Tip:</b> The application registration can also be performed from the MobileFirst Operations Console:    
+    > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
         1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
         2. Click on the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
         3. After successfully registering your application you can optionally download a "skeleton" Visual Studio project pre-bundled with the MobileFirst Native SDK.
