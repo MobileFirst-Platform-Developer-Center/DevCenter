@@ -36,7 +36,7 @@ The `cordova-plugin-mfp-encrypt-utils` plug-in provides encryption functions. Fo
 **Prerequisites:**
 
 - Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) and MobileFirst Developer CLI installed on the developer workstation.  
-- *Optional* MobileFirst Server to run locally.
+- MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.
 
 #### Jump to:

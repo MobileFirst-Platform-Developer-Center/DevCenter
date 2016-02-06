@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP Applications
-breadcrumb_title: Windows 10 UWP SDK
-relevantTo: [windows10]
-weight: 5
+title: Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal Applications
+breadcrumb_title: Windows 8.1 Universal SDK
+relevantTo: [windows8]
+weight: 4
 ---
 ## Overview
 In this tutorial you will learn how to add the MobileFirst Native SDK using Nuget to either a new or existing Windows 8.1 Universal application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
@@ -14,8 +14,8 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 **Prerequisites:**
 
-- Microsoft Visual Studio 2015 running on Windows 10 and MobileFirst Developer CLI installed on the developer workstation.  
-- *Optional* MobileFirst Server to run a locally.
+- Microsoft Visual Studio 2013 or 2015 and MobileFirst Developer CLI installed on the developer workstation.  
+- MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.
 
 #### Jump to:
@@ -56,17 +56,17 @@ Create a Windows 8.1 Universal project using Visual Studio 2013/2015 or use an e
 1. To import worklight studio packages, NuGet package manager is used.
 NuGet is the package manager for the Microsoft development platform including .NET. The NuGet client tools provide the ability to produce and consume packages. The NuGet Gallery is the central package repository used by all package authors and consumers.
 
-2. Open the Windows 8.1 Universal project in Visual studio 2013/2015. Right click the project solution and navigate -> Manage Nuget packages for solution.
+2. Open the Windows 8.1 Universal project in Visual studio 2013/2015. Right-click the project solution and select  **Manage Nuget packages**.
 
     ![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
 
-3. In the search option , search for IBM MobileFirst Platform. Choose IBM.MobileFirstPlatform.8.0.0.0.
+3. In the search option, search for "IBM MobileFirst Platform". Choose **IBM.MobileFirstPlatform.8.0.0.0**.
 
     ![Add-Nuget-tosolution-search](Add-Nuget-tosolution1.png)
 
     ![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
 
-4. Click Install. This installs the IBM MobileFirstPlatform Native SDK and its dependencies.
+4. Click **Install**. This installs the IBM MobileFirst Platform Native SDK and its dependencies.
 
 ## Updating the MobileFirst Native SDK
 To update the MobileFirst Native SDK with the latest release, run the following command from the root folder of the Visual Studio project in a **Command-line** window:
@@ -75,9 +75,11 @@ To update the MobileFirst Native SDK with the latest release, run the following 
 Nuget update
 ```
 
+
 ## Generated MobileFirst Native SDK artifacts
 
 ### mfpclient.resw
+
 Located at the root of the project, this file contains server connectivity properties and is user-editable:
 
 - `protocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTTPS`.
