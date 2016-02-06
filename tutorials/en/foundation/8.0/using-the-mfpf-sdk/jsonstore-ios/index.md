@@ -33,8 +33,7 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 
 ## Adding JSONStore
 
-1. Edit the existing `podfile`, located at the root of the Xcode project.
-Add to the file:
+1. Add the following to the existing `podfile`, located at the root of the Xcode project:
 
     ```xml
     pod 'IBMMobileFirstPlatformFoundationJSONStore'
