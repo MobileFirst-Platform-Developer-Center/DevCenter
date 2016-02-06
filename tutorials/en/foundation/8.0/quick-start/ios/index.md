@@ -11,7 +11,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 * Xcode
 * MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
-* *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
+* *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
 

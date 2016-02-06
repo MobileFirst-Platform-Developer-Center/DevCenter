@@ -11,7 +11,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 * Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
 * MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
-* *Optional* Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
+* *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
 
