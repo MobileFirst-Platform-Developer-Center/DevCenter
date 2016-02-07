@@ -129,4 +129,5 @@ The adapter Maven project contains the Java adapter to be used during the resour
 1. From the command line, navigate to the Xcode project.
 2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
 3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-4. Import the project to Xcode, and run the sample by clicking the **Run* button.
+4. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+5. Import the project to Xcode, and run the sample by clicking the **Run* button.
