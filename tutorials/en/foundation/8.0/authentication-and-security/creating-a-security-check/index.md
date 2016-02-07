@@ -94,6 +94,12 @@ The `<property>` element takes the following attributes:
 - `defaultValue`: Overrides the default value defined in the configuration class.
 - `displayName`: A friendly name to be displayed in the console.
 
+Example:
+
+```xml
+<property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
+```
+
 ##### MobileFirst Console - Adapter
 In the console, in the "Security Check" tab of your adapter, you will be able change the value of any property defined in the adapter.xml.
 Note that ONLY the properties defined in adapter.xml appear on this screen; properties defined in the configuration class won't appear here automatically.
