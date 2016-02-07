@@ -73,8 +73,8 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 Add various layers of protection to your applications.
 
 * <span style="color:red">IN PROGRESS </span>[Authentication concepts](../authentication-and-security/authentication-concepts/)
-* <span style="color:red">TODO </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
-* <span style="color:red">TODO </span>[SecurityCheckWithAttempts concepts](../authentication-and-security/security-check-with-attempts/)
+* <span style="color:red">IN PROGRESS </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
+* <span style="color:red">IN PROGRESS </span>[SecurityCheckWithAttempts concepts](../authentication-and-security/security-check-with-attempts/)
     * [Implementing the SecurityCheckWithAttempts security adapter](../authentication-and-security/security-check-with-attempts/adapter/)
     * [Implementing the SecurityCheckWithAttempts challenge handler in Cordova applications](../authentication-and-security/security-check-with-attempts/cordova/)
     * [Implementing the SecurityCheckWithAttempts challenge handler in iOS applications](../authentication-and-security/security-check-with-attempts/ios/)
