@@ -53,9 +53,7 @@ Subclassing this class leaves a lot of flexibility in your Security Check implem
 ### SecurityCheckWithAttempts
 This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`. 
 
-The `SecurityCheckWithAttempts` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource.
-
-This class also provides built-in capabilities to block access after a set number of attempts.
+The `SecurityCheckWithAttempts` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
 
 > Learn more in the [SecurityCheckWithAttempts](../security-check-with-attempts) tutorial.
 
@@ -64,7 +62,7 @@ This abstract class extends `SecurityCheckWithAttempts` and therefore inherits a
 
 In addition, the `SecurityCheckWithUserAuthentication` class provides the MobileFirst framework an `AuthenticatedUser` object which represents the logged-in user. Methods that are required to be implemented are `createUser`, `validateCredentials` and `createChallenge`.
 
-This class also optionally enables a "Remember Me" behavior.
+Also provided is a built-in capability to optionally enable a "Remember Me" login behavior.
 
 > Learn more in the [SecurityCheckWithUserAuthentication](../security-check-with-user-authentication) tutorial.
 

@@ -7,16 +7,23 @@ weight: 3
 ---
 
 ## Overview
-This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. The only two methods required to implement are `validateCredentials` and `createChallenge`. This class is good for simple flows that just need to validate some arbitrary credentials to grant access.
+This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`. 
 
-This class also provides built-in capabilities to block access after a set number of attempts.
+The `SecurityCheckWithAttempts` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
 
-This tutorial uses the example of a hard-coded PIN code to protect resources, and gives the client 3 attempts (after which the client is blocked for 60 seconds).
+This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client is blocked for 60 seconds).
 
 **Prerequisites:** Make sure to read the [Authentication concepts](../authentication-concepts/) and [Creating a Security Check](../creating-a-security-check) tutorials.
 
+#### Jump to:
+
+* [Creating the Security Check](#pingcodeattempts)
+* [Creating the Challenge](#creating-the-challenge)
+* [Validating the user credentials](#validating-the-user-credentials)
+* [Configuring the SecurityCheck](#configuring-the-securitycheck)
+
 ## PinCodeAttempts
-In a Java adapter, add a Java class named `PinCodeAttempts` that extends `SecurityCheckWithAttempts`.
+[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `SecurityCheckWithAttempts`.
 
 ```java
 public class PinCodeAttempts extends SecurityCheckWithAttempts {
@@ -34,8 +41,8 @@ public class PinCodeAttempts extends SecurityCheckWithAttempts {
 ```
 
 ## Creating the challenge
-When the SecurityCheck is triggered, it sends a challenge to the client. Returning `null` will creating an empty challenge which may be enough in some cases.
-Optionally, you can some data with the challenge, such as an error message to display, or any other data that can be used by the client.
+When the SecurityCheck is triggered, it sends a challenge to the client. Returning `null` will creating an empty challenge which may be enough in some cases.  
+Optionally, you can return data with the challenge, such as an error message to display, or any other data that can be used by the client.
 
 For example, `PinCodeAttempts` sends a predefined error message and the number of remaining attempts.
 
@@ -51,7 +58,7 @@ protected Map<String, Object> createChallenge() {
 
 `remainingAttempts` is inherited from `SecurityCheckWithAttempts`.
 
-## Validating the credentials
+## Validating the user credentials
 When the client sends the challenge's answer, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
 
 ```java
@@ -78,8 +85,8 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Configuration class
-Instead of hardcoding the valid PIN code, let's allow it to be configured in the adapter.xml and the MobileFirst Console.
+### Configuration class
+Instead of hardcoding the valid PIN code, it can also be configured using the adapter.xml file and the MobileFirst Operations Console.
 
 Create a new Java class that extends `SecurityCheckWithAttemptsConfig`. It is important to extend a class that matches the parent SecurityCheck in order to inherit the default configuration.
 
@@ -96,7 +103,7 @@ public class PinCodeConfig extends SecurityCheckWithAttemptsConfig {
 }
 ```
 
-The only required method in this class is a constructor that can handle a `Properties` instance. Use the `get[Type]Property` methods to retrieve a specific property from the adapter.xml. If no value is found, the third parameter defines a default value (`1234`).
+The only required method in this class is a constructor that can handle a `Properties` instance. Use the `get[Type]Property` method to retrieve a specific property from the adapter.xml file. If no value is found, the third parameter defines a default value (`1234`).
 
 You can also add error handling in this constructor, using the `addMessage` method:
 
@@ -126,7 +133,7 @@ protected PinCodeConfig getConfig() {
 }
 ```
 
-Now, you can use `getConfig().pinCode` to retrieve the default PIN code.
+`getConfig().pinCode` can now be used to retrieve the default PIN code.  
 
 `validateCredentials` can be modified to use the PIN code from the configuration instead of the hardcoded value.
 
@@ -159,18 +166,18 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
-  <property name="pinCode" defaultValue="1234" displayName="The valid PIN code"/>
-  <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
-  <property name="failureExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
-  <property name="successExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
+    <property name="pinCode" defaultValue="1234" displayName="The valid PIN code"/>
+    <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
+    <property name="failureExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
+    <property name="successExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
 </securityCheckDefinition>
 ```
 
-The `name` attribute will be the name of your SecurityCheck, the `class` should be set to the class created previously.
+The `name` attribute should be the name of the SecurityCheck, the `class` should be set to the class created previously.
 
 A `securityCheckDefinition` can contain zero or more `property` elements. The `pinCode` property is the one defined in the `PinCodeConfig` configuration class. The other properties are inherited from the `SecurityCheckWithAttemptsConfig` configuration class.
 
-By default, if you do not specify those properties in the adapter.xml you received the defaults set by `SecurityCheckWithAttemptsConfig`:
+By default, if you do not specify those properties in the adapter.xml file you received the defaults set by `SecurityCheckWithAttemptsConfig`:
 
 ```java
 public SecurityCheckWithAttemptsConfig(Properties properties) {
