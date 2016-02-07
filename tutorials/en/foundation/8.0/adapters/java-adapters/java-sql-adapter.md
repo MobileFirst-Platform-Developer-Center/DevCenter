@@ -293,3 +293,5 @@ The project does not include the MySQL connector driver, and does not include th
 
 ### Sample usage
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+
