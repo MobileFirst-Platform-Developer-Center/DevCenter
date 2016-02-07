@@ -7,7 +7,7 @@ weight: 3
 ---
 
 ## Overview
-This abstract class extends `SecurityCheckWithExternalization` and implements most of it methods to simplify usage. The only 2 methods required to implement are `validateCredentials` and `createChallenge`. This class is good for simple flows that just need to validate some arbitrary credentials to grant access.
+This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. The only two methods required to implement are `validateCredentials` and `createChallenge`. This class is good for simple flows that just need to validate some arbitrary credentials to grant access.
 
 This class also provides built-in capabilities to block access after a set number of attempts.
 
