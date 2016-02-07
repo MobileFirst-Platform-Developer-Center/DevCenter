@@ -52,7 +52,7 @@ request.send(new WLResponseListener(){
 
 Use the `WLResponse response` and `WLFailResponse response` objects to get the data that is retrieved from the adapter.
 
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText -> String`, `responseJSON -> Dictionary` (if the response is in JSON) and `status -> Int` (the HTTP status of the response).
+The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
 
 ## Parameters
 Before sending your request, you may want to add parameters as needed.
