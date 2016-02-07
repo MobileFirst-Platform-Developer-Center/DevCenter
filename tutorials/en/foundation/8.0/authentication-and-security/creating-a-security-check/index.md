@@ -29,17 +29,30 @@ In your **adapter XML** file add an XML element called `securityCheckDefinition`
 The class file of your SecurityCheck is where all of the logic happens. Your implementation should extend one of the provided base classes, below.  
 The parent class you choose will determine the balance between customization and simplicity.
 
-##### `SecurityCheckWithUserAuthentication`
-TODO
-
-##### `SecurityCheckWithAttempts`
-TODO
+##### `SecurityCheck`
+`SecurityCheck` is a Java interface defining the minimum required methods to represent the server-side state of a security check. Using this interface alone does not provide any implementation code and it is the sole responsibility of the implementor handle each scenario.
 
 ##### `SecurityCheckWithExternalization`
-TODO
+This abstract class implements some basic version of the `SecurityCheck` interface.
+It provides among other things: externalization as JSON, inactivity timeout, expiration countdown...
 
-##### `SecurityCheck`
-TODO
+Subclassing this class leaves a lot of flexibility in your Security Check implementation.
+
+##### `SecurityCheckWithAttempts`
+This abstract class extends `SecurityCheckWithExternalization` and implements most of it methods to simplify usage. The only 2 methods required to implement are `validateCredentials` and `createChallenge`. This class is good for simple flows that just need to validate some arbitrary credentials to grant access.
+
+This class also provides built-in capabilities to block access after a set number of attempts.
+
+> Learn more on the [SecurityCheckWithAttempts](../security-check-with-attempts) tutorial
+
+##### `SecurityCheckWithUserAuthentication`
+This abstract class extends `SecurityCheckWithAttempts` and therefore inherits from all of its features.
+
+In addition, the class provides the framework an `AuthenticatedUser` (an object representing the logged in user). The only methods required to implement are `createUser`, `validateCredentials` and `createChallenge`.
+
+This class also optionally enables a "Remember Me" behavior.
+
+> Learn more on the [SecurityCheckWithUserAuthentication](../security-check-with-user-authentication) tutorial
 
 #### SecurityCheckConfiguration
 
@@ -56,7 +69,7 @@ public abstract class SecurityCheckWithUserAuthentication extends SecurityCheckW
 }
 ```
 
-`SecurityCheckWithAuthenticationConfig` enables a property called `rememberMeDurationSec`.
+`SecurityCheckWithAuthenticationConfig` enables a property called `rememberMeDurationSec` with a default of `0`.
 
 ```java
 public class SecurityCheckWithAuthenticationConfig extends SecurityCheckWithAttemptsConfig {
@@ -74,13 +87,19 @@ public class SecurityCheckWithAuthenticationConfig extends SecurityCheckWithAtte
 Those properties can be configured at several levels:
 
 ##### adapter.xml
-TODO
+In your adapter.xml file, inside `<securityCheckDefinition>`, you can add one of more `<property>` elements.
+The `<property>` element takes the following attributes:
 
-##### application xml?
-TODO
+- `name`: The name of the property, as defined in the configuration class.
+- `defaultValue`: Overrides the default value defined in the configuration class.
+- `displayName`: A friendly name to be displayed in the console.
 
-##### console?
-TODO
+##### MobileFirst Console - Adapter
+In the console, in the "Security Check" tab of your adapter, you will be able change the value of any property defined in the adapter.xml.
+Note that ONLY the properties defined in adapter.xml appear on this screen; properties defined in the configuration class won't appear here automatically.
+
+##### MobileFirst Console - Application
+Property values can also be overridden at the application level. In your console, in the "Security" tab of your application, under the "Security Check Configurations" section, you can modify the values defined in each Security Check available.
 
 #### Built-in Security Checks
 Also available are these out-of-the-box security checks:
