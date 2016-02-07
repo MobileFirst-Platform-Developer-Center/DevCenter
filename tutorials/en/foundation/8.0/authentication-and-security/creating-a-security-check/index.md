@@ -10,6 +10,14 @@ A SecurityCheck is an object responsible for obtaining credentials from a client
 
 Security checks are defined inside adapters. Any adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**. However it is recommended to define the SecurityCheck in a separate adapter.
 
+#### Jump to:
+
+* [Defining a SecurityCheck](#defining-a-securitycheck)
+* [SecurityCheck Implementation](#securitycheck-implementation)
+* [SecurityCheck Configuration](#securitycheckconfiguration)
+* [Predefined Security Checks](#predefined-security-check)
+* [Tutorials to follow next](#tutorials-to-follow-next)
+
 ## Defining a SecurityCheck
 In your **adapter XML** file add an XML element called `securityCheckDefinition`. For example:
 
@@ -25,7 +33,7 @@ In your **adapter XML** file add an XML element called `securityCheckDefinition`
 - The `class` attribute specifies the implementation of the SecurityCheck
 - Some SecurityChecks can be configured with a list of `property` elements.
 
-## SecurityCheck implementation
+## SecurityCheck Implementation
 The class file of your SecurityCheck is where all of the logic happens. Your implementation should extend one of the provided base classes, below.  
 The parent class you choose will determine the balance between customization and simplicity.
 
@@ -54,7 +62,7 @@ This class also optionally enables a "Remember Me" behavior.
 
 > Learn more in the [SecurityCheckWithUserAuthentication](../security-check-with-user-authentication) tutorial
 
-## SecurityCheckConfiguration
+## SecurityCheck Configuration
 
 Each `SecurityCheck` implementation class can use a `SecurityCheckConfiguration` class that defines properties available for that `SecurityCheck`. Each base `SecurityCheck` class comes with a matching `SecurityCheckConfiguration` class. You can create your own implementation that extends one of the base `SecurityCheckConfiguration` classes and use it for your custom `SecurityCheck`.
 
@@ -117,3 +125,9 @@ Also available are these out-of-the-box security checks:
 - [Application Authenticity](../application-authenticity/)
 - [Direct Update](../../using-the-mfpf-sdk/direct-update)
 - LTPA
+
+## Tutorials to follow next
+Continue reading about implementing security checks in the following tutorials:
+
+* [Implementing the SecurityCheckWithAttempts](implementing-the-securitycheckwithattempts/)
+* [Implementing the SecurityCheckWithUserAuthentication](implementing-the-securitycheckwithuserauthentication/)
