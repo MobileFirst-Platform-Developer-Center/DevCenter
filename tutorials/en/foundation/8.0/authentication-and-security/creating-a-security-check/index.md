@@ -10,6 +10,9 @@ A SecurityCheck is an object responsible for obtaining credentials from a client
 
 Security checks are defined inside adapters. Any adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**. However it is recommended to define the SecurityCheck in a separate adapter.
 
+**Prerequisites:** Familiarize yourself with the MobileFirst Platform Foundation authentication framework before continuing.  
+Read the [Authentication concepts](../authentication-concepts/) tutorial.
+
 #### Jump to:
 
 * [Defining a SecurityCheck](#defining-a-securitycheck)
