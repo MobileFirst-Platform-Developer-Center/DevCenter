@@ -138,9 +138,17 @@ directUpdateContext.start(directUpdateCustomListener);
 > For more information, see the "Configuring and customizing direct update" user documentation topic. 
 
 ## Direct Update authenticity
-Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a content delivery network (CDN)) to the client application.
+Disabled by default, Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a content delivery network (CDN)) to the client application.
 
-> Note: Direct Update authenticity is disabled by default. To enable, see the "Configuring and customizing direct update" user documentation topic. 
+**To enable Direct Update authenticity:**
+
+1. Open a **Command-line** window and navigate to the root of the Cordova project.
+2. Run the command: `mfpdev app config` and select the "Direct Update Authenticity public key" option.
+3. Provide the public key and confirm.
+
+Any future Direct Update deliveries to client applications will be protected by Direct Update authenticity.
+
+#### Obtaining public key
 
 ## Differential Direct Update
 Differential Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
