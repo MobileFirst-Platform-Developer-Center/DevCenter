@@ -56,7 +56,7 @@ Create a Windows 8.1 Universal project using Visual Studio 2013/2015 or use an e
 1. To import worklight studio packages, NuGet package manager is used.
 NuGet is the package manager for the Microsoft development platform including .NET. The NuGet client tools provide the ability to produce and consume packages. The NuGet Gallery is the central package repository used by all package authors and consumers.
 
-2. Open the Windows 8.1 Universal project in Visual studio 2013/2015. Right click the project solution and navigate -> Manage Nuget packages for solution.
+2. Open the Windows 8.1 Universal project in Visual studio 2013/2015. Right click the project solution and navigate → Manage Nuget packages for solution.
 
     ![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
 

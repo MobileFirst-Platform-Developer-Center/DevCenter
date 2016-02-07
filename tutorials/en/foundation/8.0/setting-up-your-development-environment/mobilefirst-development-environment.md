@@ -15,7 +15,6 @@ This tutorial covers the basics of the IBM MobileFirst Platfrom Foundation devel
 
 - [MobileFirst Development Server](#mobilefirst-development-server)
 - [MobileFirst Command-line Interface](#mobilefirst-command-line-interface)
-<!-- - [MobileFirst Studio](#mobilefirst-studio) -->
 - [Applications and Adapters Development](#applications-and-adapters-development)
 
 ## MobileFirst Development Server

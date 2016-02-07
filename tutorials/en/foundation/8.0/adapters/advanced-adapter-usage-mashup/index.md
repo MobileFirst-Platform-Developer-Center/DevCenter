@@ -81,9 +81,9 @@ Here is a list of the mashup types and the corresponding adapter names:
 
 | Scenario                                         |      Cities Adapter name     |  Weather Adapter name |  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** adapter -> **JavaScript** adapter | getCitiesListJS              | getCityWeatherJS      |  
-| **Java** adapter -> **JavaScript** adapter       | getCitiesListJavaToJS        | getCityWeatherJS      |  
-| **Java** adapter -> **Java** adapter             | getCitiesListJava            | getCityWeatherJava    |
+| **JavaScript** adapter → **JavaScript** adapter | getCitiesListJS              | getCityWeatherJS      |  
+| **Java** adapter → **JavaScript** adapter       | getCitiesListJavaToJS        | getCityWeatherJS      |  
+| **Java** adapter → **Java** adapter             | getCitiesListJava            | getCityWeatherJava    |
 
 
 

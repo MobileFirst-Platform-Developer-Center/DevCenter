@@ -53,7 +53,7 @@ Alternatively, the development version of the MobileFirst Server includes a test
 
 To receive a Test Token you should:
 {% comment %}
-1. In the MobileFirst Operations Console -> **Settings** -> **Confidential Clients** tab, create a confidential client or use the default one:  
+1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
