@@ -96,6 +96,21 @@ public class PinCodeConfig extends SecurityCheckWithAttemptsConfig {
 
 The only required method in this class is a constructor that can handle a `Properties` instance. Use the `get[Type]Property` methods to retrieve a specific property from the adapter.xml. If no value is found, the third parameter defines a default value (`1234`).
 
+You can also add error handling in this constructor, using the `addMessage` method:
+
+```java
+//Check that the PIN code is at least 4 characters long. Triggers an error.
+if(pinCode.length() < 4){
+    addMessage(errors,"pinCode","pinCode needs to be at least 4 characters");
+}
+
+//Check that the PIN code is numeric. Triggers warning.
+try
+{ int i = Integer.parseInt(pinCode); }
+catch(NumberFormatException nfe)
+{ addMessage(warnings,"pinCode","PIN code contains non-numeric characters"); }
+```
+
 In your main class (`PinCodeAttempts`), add the following two methods to be able to load the configuration:
 
 ```java
