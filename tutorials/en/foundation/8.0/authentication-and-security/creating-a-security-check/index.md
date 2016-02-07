@@ -129,5 +129,5 @@ Also available are these out-of-the-box security checks:
 ## Tutorials to follow next
 Continue reading about implementing security checks in the following tutorials:
 
-* [Implementing the SecurityCheckWithAttempts](implementing-the-securitycheckwithattempts/)
-* [Implementing the SecurityCheckWithUserAuthentication](implementing-the-securitycheckwithuserauthentication/)
+* [Implementing the SecurityCheckWithAttempts](../security-check-with-attempts/)
+* [Implementing the SecurityCheckWithUserAuthentication](../security-check-with-user-authentication/)
