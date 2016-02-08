@@ -104,8 +104,8 @@ To access Swagger:
 <img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin-right:126px"/>
 **Test Token:**
 
-To add a Test Token to the request, so the security framework will skip any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation. You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes you can select all).
-
+To add a Test Token to the request, so the security framework will skip any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation. You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes you can select all).  
+If you are using the Swagger UI for the first time you may be required to log in with the MobileFirst Operations Console username and password.
 <br/><br/>
 **Sending request:**
 
