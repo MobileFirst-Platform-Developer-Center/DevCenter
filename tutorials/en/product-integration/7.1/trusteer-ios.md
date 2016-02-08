@@ -38,20 +38,24 @@ clientKey=YMAQAABNFUWS2L
 {% endhighlight %}
 
 ### Link Trusteer Libraries
-In **Build Phases > Link Binary With Libraries**, drag and drop
+In **Build Phases → Link Binary With Libraries**, drag and drop
 **libtas_full.a** to link your project with the Trusteer library.
 
 ![trusteer-build-phases](trusteer-build-phases.png)
 
-In **Build Settings > Linking > Other Linker Flags**, add:
+In **Build Settings → Linking → Other Linker Flags**, add:
 `-force_load "$(SRCROOT)/tas/libtas_full.a"`.
 
 ![TR_IOS_forceload](TR_IOS_forceload.png)
 
-In **Build Settings > Linking > Dead Code Stripping**, select
+In **Build Settings → Linking → Dead Code Stripping**, select
 `NO`.
 
 ![TR_IOS_deadcode](TR_IOS_deadcode.png)
+
+In **Build Settings → Deployment → Strip Linked Product**, select
+`NO`.
+![Strip Linked Product](trusteer-strip.png)
 
 **Note:** If the iOS project is native, please follow the standard MobileFirst native requirements are described in the MobileFirst documentation as well as the requirements described in the Trusteer documentation. For example, Trusteer requires
 CoreMotion.framework in addition to MobileFirst's standard requirements.
