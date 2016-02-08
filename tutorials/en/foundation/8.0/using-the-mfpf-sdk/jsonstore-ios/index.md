@@ -45,7 +45,7 @@ Whenever you want to use JSONStore, make sure that you import the JSONStore head
 Objective-C:
 
 ```objc
-#import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundationJSONStore.h> 
+#import <IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h>
 ```
 
 Swift:
