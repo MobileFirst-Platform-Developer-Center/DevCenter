@@ -26,4 +26,4 @@ The client must then register a **challenge handler** for each `SecurityCheck`, 
 
 A **challenge handler** is a class responsible for handling challenges sent by the MobileFirst server, such as collecting credentials and submitting them back to the `SecurityCheck`.
 
-In this example, the `SecurityCheck` is the one defined in 
+In this example, the `SecurityCheck` is the one defined in [Implementing Security Check with Attempts Security Adapter](../adapter). The challenge sent by this `SecurityCheck` contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
