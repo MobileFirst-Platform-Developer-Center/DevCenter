@@ -35,7 +35,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
  
 ### 3. Editing application logic
 
-1. Open the Xcode project project by double-clickign the **.xcworkspace** file.
+1. Open the Xcode project project by double-clicking the **.xcworkspace** file.
 
 2. Select the **[project-root]/ViewController.m/swift** file and paste the following code snippet, replacing the existing `viewDidLoad()` function:
  

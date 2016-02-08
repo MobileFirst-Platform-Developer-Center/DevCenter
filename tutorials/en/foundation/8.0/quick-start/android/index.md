@@ -35,14 +35,13 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 3. Editing application logic
 
-1. Open the Android Studio project.
+1. Open the Android Studio project and import the project.
 
 2. Select the **app/java/com/mfp/sample/MainActivity.java** file and:
 
 * Add the following imports:
 
     ```java
-    import com.worklight.wlclient.api.*;
     import java.net.URI;
     import android.util.Log;
     ```

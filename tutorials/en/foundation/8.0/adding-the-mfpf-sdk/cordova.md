@@ -43,7 +43,6 @@ The `cordova-plugin-mfp-encrypt-utils` plug-in provides encryption functions. Fo
 
 - [Adding the MobileFirst Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
 - [Updating the MobileFirst Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
-- [Running the application on emulator or on a real device](#running-the-application-on-emulator-or-on-a-real-device)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
