@@ -20,72 +20,94 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 #### Jump to:
 
 * [Setting up the data source](#setting-up-the-data-source)
-* [UserAdapterApplication](#useradapterapplication)
-* [UserAdapterResource](#useradapterresource)
+* [JavaSQLResource](#javasqlresource)
 * [Results](#results)
 * [Sample](#sample)
 
 ## Setting up the data source
-The MobileFirst Server needs to be configured to connect to the MySQL server. Those configurations can be stored in the `server.xml` file.
-To connect to a database, Java code needs a JDBC connector driver for the specific database type.
-
-#### server.xml
+### Using configuration properties
+The MobileFirst Server needs to be configured to connect to the MySQL server. In this case we are using **configuration properties** which are configured in the adapter's xml file and can be updated in the console. Here is the configuration in the adapter's xml file:
 
 ```xml
-<library id="MySQLLib">
-  <fileset dir="${shared.resource.dir}" includes="mysql-*.jar" />
-</library>
+<mfp:adapter name="JavaSQL"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mfp="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
 
-<dataSource jndiName="jdbc/mobilefirst_training">
-  <jdbcDriver libraryRef="MySQLLib" />
-  <properties databaseName="mobilefirst_training"
-              password=""
-              portNumber="3306"
-              serverName="localhost"
-              user="root" />
-</dataSource>
-```
-* The `library` tag specifies where to find the `MySQL .jar` file. In most cases, `${shared.resource.dir}` is **shared/resources** under the Liberty server root folder.  
-* The `dataSource` tag specifies how to connect to the database. Write down the `jndiName` that you choose, because you will need it later.
+	<displayName>JavaSQL</displayName>
+	<description>JavaSQL</description>
 
-## UserAdapterApplication
+	<JAXRSApplicationClass>com.sample.JavaSQLApplication</JAXRSApplicationClass>
 
-`UserAdapterApplication` extends `MFPJAXRSApplication` and is a good place to trigger any initialization required by the adapter application.
-
-```java
-@Override
-protected void init() throws Exception {
-    UserAdapterResource.init();
-    logger.info("Adapter initialized!");
-}
+	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
+	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
+	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
+</mfp:adapter>
 ```
 
-## UserAdapterResource
-`UserAdapterResource` is where requests to the adapter are handled.
+Notice that the configuration properties elements must always be located below the `JAXRSApplicationClass` element.  
+Here we define the connection settings and give them a default value, so they could be used later in the AdapterResource class.
+
+## JavaSQLResource
+`JavaSQLResource` is where requests to the adapter are handled.
 
 ```java
 @Path("/")
-  public class UserAdapterResource {
+  public class JavaSQLResource {
 }
 ```
 `@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
 
 ### Using DataSource
-#### UserAdapterResource
+First we define static variables to hold the database connection properties so they can be shared across all requests to the adapter:
 
 ```java
-static DataSource ds = null;
-static Context ctx = null;
+private static BasicDataSource ds = null;
+private static String DB_url = null;
+private static String DB_username = null;
+private static String DB_password  = null;
+```
 
+Since we are using configuration properties that can be configured during runtime in the console - we need to check their values each time we intend to connect to the database:
 
-public static void init() throws NamingException {
-    ctx = new InitialContext();
-    ds = (DataSource)ctx.lookup("jdbc/mobilefirst_training");
+```java
+private boolean updatedProperties() {
+	// Check if the properties were changed during runtime (in the console)
+	String last_url = DB_url;
+	String last_username = DB_username;
+	String last_password  = DB_password;
+
+	DB_url = configurationAPI.getPropertyValue("DB_url");
+	DB_username = configurationAPI.getPropertyValue("DB_username");
+	DB_password = configurationAPI.getPropertyValue("DB_password");
+
+	return !last_url.equals(DB_url) ||
+			!last_username.equals(DB_username) ||
+			!last_password.equals(DB_password);
 }
 ```
-The `DataSource` is set as `static` so that it can be shared across all requests to the adapter. It is initialized in the `init()` method, which is called by the `init()` method of `UserAdapterApplication`, as described above.
 
-The previously defined `jndiName` parameter is used to find the database configuration.
+This method will be called each time we intend to connect to the database, and if the properties have been changed - we set the `DataSource` configuration properties again accordingly:
+
+```java
+public Connection getSQLConnection(){
+  // Create a connection object to the database
+  Connection conn = null;
+  if(updatedProperties() || ds == null){
+    ds= new BasicDataSource();
+    ds.setDriverClassName("com.mysql.jdbc.Driver");
+    ds.setUrl(DB_url);
+    ds.setUsername(DB_username);
+    ds.setPassword(DB_password);
+  }
+  try {
+    conn = ds.getConnection();
+  } catch (SQLException e) {
+    e.printStackTrace();
+  }
+  return conn;
+}
+```
 
 ### Create User
 
@@ -97,7 +119,7 @@ public Response createUser(@FormParam("userId") String userId,
                             @FormParam("password") String password)
                                     throws SQLException{
 
-    Connection con = ds.getConnection();
+    Connection con = getSQLConnection();
     PreparedStatement insertUser = con.prepareStatement("INSERT INTO users (userId, firstName, lastName, password) VALUES (?,?,?,?)");
 
     try{
@@ -125,7 +147,7 @@ The method has a series of `@FormParam` arguments, which means that those can be
 
 It is also possible to pass the parameters in the HTTP body as JSON objects, by using `@Consumes(MediaType.APPLICATION_JSON)`, in which case the method needs a `JSONObject` argument, or a simple Java object with properties that match the JSON property names.
 
-The `Connection con = ds.getConnection();` method gets the connection from the data source that was defined earlier.
+The `Connection con = getSQLConnection();` method gets the connection from the data source that was defined earlier.
 
 The SQL queries are built by the `PreparedStatement` method.
 
@@ -139,7 +161,7 @@ If the insertion was successful, the `return Response.ok().build()` method is us
 @Produces("application/json")
 @Path("/{userId}")
 public Response getUser(@PathParam("userId") String userId) throws SQLException{
-    Connection con = ds.getConnection();
+    Connection con = getSQLConnection();
     PreparedStatement getUser = con.prepareStatement("SELECT * FROM users WHERE userId = ?");
 
     try{
@@ -183,7 +205,7 @@ This method is similar to `getUser`, except for the loop over the `ResultSet`.
 @Produces("application/json")
 public Response getAllUsers() throws SQLException{
     JSONArray results = new JSONArray();
-    Connection con = ds.getConnection();
+    Connection con = getSQLConnection();
     PreparedStatement getAllUsers = con.prepareStatement("SELECT * FROM users");
     ResultSet data = getAllUsers.executeQuery();
 
@@ -213,7 +235,7 @@ public Response updateUser(@PathParam("userId") String userId,
                             @FormParam("lastName") String lastName,
                             @FormParam("password") String password)
                                     throws SQLException{
-    Connection con = ds.getConnection();
+    Connection con = getSQLConnection();
     PreparedStatement getUser = con.prepareStatement("SELECT * FROM users WHERE userId = ?");
 
     try{
@@ -253,7 +275,7 @@ When updating an existing resource, it is standard practice to use `@PUT` (for `
 @DELETE
 @Path("/{userId}")
 public Response deleteUser(@PathParam("userId") String userId) throws SQLException{
-    Connection con = ds.getConnection();
+    Connection con = getSQLConnection();
     PreparedStatement getUser = con.prepareStatement("SELECT * FROM users WHERE userId = ?");
 
     try{
@@ -284,14 +306,12 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 ## Results
 Use the testing techniques described in the [Testing and Debugging Adapters](../../testing-and-debugging-adapters) tutorial.
 
-## Sample 
+## Sample
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
 
-The Adapters Maven project includes the **UserAdapter** described above.    
-Also included is an SQL script in the **Utils** folder, which needs to be imported into your database to test the project.  
-The project does not include the MySQL connector driver, and does not include the **server.xml** configuration described above. Those steps need to be completed in order to use the sample.
+The Adapters Maven project includes the **JavaSQL** adapter described above.    
+Also included is an SQL script in the **Utils** folder, which needs to be imported into your database to test the project.
 
 ### Sample usage
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
-
