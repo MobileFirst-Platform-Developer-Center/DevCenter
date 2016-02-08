@@ -23,7 +23,7 @@ From a **Command-line** window, navigate to the server's **scripts** folder and 
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
-1. Click on the "Create new" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
+1. Click on the "New" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
 
     ![Image of selecting platform, and providing an identifier and version](create-an-application.png)
  
@@ -60,9 +60,10 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     
 ### 4. Creating an adapter
 
-1. Click on the "Create new" button next to **Adapters** and download the **Java** adapter sample.
+1. Click on the "New" button next to **Adapters** and download the **Java** adapter sample.
 
-    > If Maven and the MobileFirst Developer CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.
+    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.  
+    Alternatively, download [this prepared .adapter artifact](#) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
     ![Image of create an adapter](create-an-adapter.png)
     
@@ -74,17 +75,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     mfpdev adapter build
     ```
 
-3. When the build finishes, run the command:
-
-    ```bash
-    mfpdev adapter deploy
-    ```
-
-    If using a remote MobileFirst Server, run the command:
-
-    ```bash
-    mfpdev adapter deploy Replace-with-remote-server-name
-    ```
+3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.  
+    The adapter can be found in the **[adapter]/target** folder.
 
 <img src="cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
 

@@ -16,7 +16,6 @@ In that context, IBM MobileFirst Platform Server serves as an **authorization se
 * [Authorization flow](#authorization-flow)
 * [Authorization entities](#authEntities)
 * [Protecting resources](#protecting-resources)
-* [Configuring Authentication from the MobileFirst Operations  Console](#configuring-authentication-from-the-mobilefirst-operations-console)
 * [Further reading](#further-reading)
 
 ## Authorization flow
@@ -119,9 +118,6 @@ If you want to disable MobileFirst default security, you can use `secured="false
 ```xml
 <procedure deleteUser secured="false">
 ```
-
-## Configuring Authentication from the MobileFirst Operations Console
-<span style="color:red">TODO</span>
 
 ## Further Reading
 Continue reading about authentication in the following tutorials:
