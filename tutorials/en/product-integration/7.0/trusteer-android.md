@@ -211,7 +211,8 @@ public class TrusteerChallengeHandler extends WLChallengeHandler{
 {% endhighlight %}
 
 ### Sample application
-<a href="https://github.ibm.com/MFPSamples/TrusteerAndroid" target="_blank">Click to download</a> the MobileFirst project.
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TrusteerIntegrationProject.zip" target="_blank">Click to download</a> the MobileFirst project.  
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TrusteerAndroidNativeProject.zip" target="_blank">Click to download</a> the Native project.  
 
 
 #### Sample Setup
