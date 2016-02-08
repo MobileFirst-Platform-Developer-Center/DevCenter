@@ -74,23 +74,26 @@ Add various layers of protection to your applications.
 
 * <span style="color:red">IN PROGRESS </span>[Authentication concepts](../authentication-and-security/authentication-concepts/)
 * <span style="color:red">IN PROGRESS </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
-* [SecurityCheck WithAttempts](../authentication-and-security/security-check-with-attempts/)
+* <span style="color:red">IN PROGRESS </span>[SecurityCheck WithAttempts](../authentication-and-security/security-check-with-attempts/)
     * [Implementing the security adapter](../authentication-and-security/security-check-with-attempts/adapter/)
     * [Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-attempts/cordova/)
     * [Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-attempts/ios/)
     * [Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-attempts/android/)
     * [Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-attempts/windows-8-10/)
-* [SecurityCheck With UserAuthentication](../authentication-and-security/security-check-with-user-authentication/)
+* <span style="color:red">TODO </span>[SecurityCheck With UserAuthentication](../authentication-and-security/security-check-with-user-authentication/)
     * [Implementing the security adapter](../authentication-and-security/security-check-with-user-authentication/adapter/)
     * [Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-user-authentication/cordova/)
     * [Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-user-authentication/ios/)
     * [Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-user-authentication/android/)
     * [Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-user-authentication/windows-8-10/)
-* <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
 * <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
+* [Application Authenticity](../authentication-and-security/application-authenticity/)
+{% comment %}
+* <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
 * <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
 * <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
-* [Application Authenticity](../authentication-and-security/application-authenticity/)
+{% endcomment %}
+
 
 ### [Notifications](../notifications/)
 Send notifications with IBM MobileFirst Platform Foundation.  
