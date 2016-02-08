@@ -50,7 +50,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 * Paste the following code snippet, inside the `protected void onCreate()` function:
 
     ```java
-    WLClient client = WLClient.createInstance(this);
+    WLClient.createInstance(this);
     URI adapterPath = null;
     try {
         adapterPath = new URI("/adapters/javaAdapter/users/world");
