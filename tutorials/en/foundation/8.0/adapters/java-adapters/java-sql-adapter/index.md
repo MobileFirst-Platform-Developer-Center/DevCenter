@@ -51,7 +51,8 @@ Here we define the connection settings and give them a default value, so they co
 
 You can then view and configure these properties in the MobileFirst Operations Console:
 
-<span style="color:red">add image of properties in the console</span>
+
+![Configuration Properties in the Console](console-config-props.png)
 
 ## Implemeting SQL in the adapter Resource class
 The adapter Resource class is where requests to the server are handled.
