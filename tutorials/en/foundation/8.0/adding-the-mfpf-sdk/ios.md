@@ -38,23 +38,6 @@ If using a locally installed server: From a **Command-line** window, navigate to
 ### Creating an application
 Create an Xcode project or use an existing one (Swift or Objective-C).  
 
-### Creating and registering the application
-
-1. Open a **Command-line** window and navigate to the root of the Xcode project.  
-
-2. Run the command: 
- 
-    ```bash
-    mfpdev app register
-    ```
-
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.plist** file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.
-            
-    > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
-        1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
-        2. Click on the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-        3. After successfully registering your application you can optionally download a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK.
-
 ### Adding the SDK
 
 1. The MobileFirst Native SDK is provided via CocoaPods. If [CocoaPods](http://guides.cocoapods.org) is not installed in your development environment, install it as follows:  
@@ -72,7 +55,24 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
         use_frameworks! 
         pod 'IBMMobileFirstPlatformFoundation'
         ```
-        
+
+### Registering the application
+
+1. Open a **Command-line** window and navigate to the root of the Xcode project.  
+
+2. Run the command: 
+ 
+    ```bash
+    mfpdev app register
+    ```
+
+    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.plist** file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.
+            
+    > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
+        2. Click on the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
+        3. After successfully registering your application you can optionally download a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK.
+
 3. Run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
     **Note:** This command may take several minutes to complete.
     
