@@ -4,7 +4,7 @@ title: Trusteer for iOS
 relevantTo: [ios]
 downloads:
   - name: MobileFirst project
-    url: https://github.ibm.com/MFPSamples/TrusteeriOS
+    url: https://github.ibm.com/MFPSamples/TrusteeriOS/tree/release71
 ---
 ## Overview
 Trusteer Mobile SDK collects multiple mobile device risk factors and provides them to the mobile app, enabling organizations to restrict mobile app functionality based on risk levels. In your IBM MobileFirst Platform Foundation application, you may want to protect access to some specific resources or procedures based risk levels, such as detected malware or whether the device is jailbroken or rooted. For example, you could prevent a malware-ridden device from logging into your banking app, and prevent rooted devices from using the “transfer funds” feature.
@@ -261,7 +261,7 @@ If your have set one of your `realm` options to `alert`, you can catch the alert
  {% endhighlight %}
 
 ### Sample application
-<a href="https://github.ibm.com/MFPSamples/TrusteerObjC" target="_blank">Click to download</a> the MobileFirst project.
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/TrusteerObjC/tree/release71" target="_blank">Click to download</a> the MobileFirst project.
 
 
 #### Sample Setup

@@ -263,7 +263,9 @@ If your have set one of your `realm` options to `alert`, you can catch the alert
  {% endhighlight %}
 
 ### Sample application
-<a href="https://github.ibm.com/MFPSamples/TrusteerObjC" target="_blank">Click to download</a> the MobileFirst project.
+### Sample application
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TrusteerIntegrationProject.zip" target="_blank">Click to download</a> the MobileFirst project.  
+<a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v700/TrusteeriOSNativeProject.zip" target="_blank">Click to download</a> the Native project. 
 
 
 #### Sample Setup
