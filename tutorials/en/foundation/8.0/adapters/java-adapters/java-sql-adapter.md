@@ -9,7 +9,7 @@ weight:
 ---
 
 ## Overview
-Java adapters give developers control over connectivity to a back end. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.
+Java adapters give developers control over connectivity to a back end system. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.
 This tutorial covers an example of a Java adapter that connects to a MySQL back end to make CRUD (Create, Read, Update, Delete) operations on a `users` table, using REST concepts.
 
 **Prerequisites:**
@@ -20,13 +20,14 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 #### Jump to:
 
 * [Setting up the data source](#setting-up-the-data-source)
-* [JavaSQLResource](#javasqlresource)
+* [Implemeting SQL in the adapter Resource class](#implementing-sql-in-the-adapter-resource-class)
 * [Results](#results)
 * [Sample](#sample)
 
 ## Setting up the data source
-### Using configuration properties
-The MobileFirst Server needs to be configured to connect to the MySQL server. In this case we are using **configuration properties** which are configured in the adapter's xml file and can be updated in the console. Here is the configuration in the adapter's xml file:
+In order to configure the MobileFirst Server to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the MobileFirst Operations Console.
+
+Edit the adater.xml file and add the following properties:
 
 ```xml
 <mfp:adapter name="JavaSQL"
@@ -45,21 +46,28 @@ The MobileFirst Server needs to be configured to connect to the MySQL server. In
 </mfp:adapter>
 ```
 
-Notice that the configuration properties elements must always be located below the `JAXRSApplicationClass` element.  
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `JAXRSApplicationClass` element.  
 Here we define the connection settings and give them a default value, so they could be used later in the AdapterResource class.
 
-## JavaSQLResource
-`JavaSQLResource` is where requests to the adapter are handled.
+You can then view and configure these properties in the MobileFirst Operations Console:
+
+<span style="color:red">add image of properties in the console</span>
+
+## Implemeting SQL in the adapter Resource class
+The adapter Resource class is where requests to the server are handled.
+
+In the supplied sample adapter, the class name is `JavaSQLResource`.
 
 ```java
 @Path("/")
   public class JavaSQLResource {
 }
 ```
+
 `@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
 
 ### Using DataSource
-First we define static variables to hold the database connection properties so they can be shared across all requests to the adapter:
+Define static variables to hold the database connection properties so they can be shared across all requests to the server:
 
 ```java
 private static BasicDataSource ds = null;
@@ -110,6 +118,7 @@ public Connection getSQLConnection(){
 ```
 
 ### Create User
+Used to create a new user record in the database.
 
 ```java
 @POST
@@ -142,6 +151,7 @@ public Response createUser(@FormParam("userId") String userId,
     }  
 }
 ```
+
 Because this method does not have any `@Path`, it is accessible as the root URL of the resource. Because it uses `@POST`, it is accessible via `HTTP POST` only.  
 The method has a series of `@FormParam` arguments, which means that those can be sent in the HTTP body as `x-www-form-urlencoded` parameters.
 
@@ -156,6 +166,8 @@ If the insertion was successful, the `return Response.ok().build()` method is us
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Make sure to close resources, such as prepared statements and connections.
 
 ### Get User
+Retrieve a user from the database.
+
 ```java
 @GET
 @Produces("application/json")
@@ -190,6 +202,7 @@ public Response getUser(@PathParam("userId") String userId) throws SQLException{
 
 }
 ```
+
 This method uses `@GET` with a `@Path("/{userId}")`, which means that it is available via `HTTP GET /adapters/UserAdapter/{userId}`, and the `{userId}` is retrieved by the `@PathParam("userId")` argument of the method.
 
 If the user is not found, the `404 NOT FOUND` error code is returned.  
@@ -225,7 +238,9 @@ public Response getAllUsers() throws SQLException{
     return Response.ok(results).build();
 }
 ```
+
 ### Update user
+Update a user record in the database.
 
 ```java
 @PUT
@@ -267,9 +282,11 @@ public Response updateUser(@PathParam("userId") String userId,
 
 }
 ```
+
 When updating an existing resource, it is standard practice to use `@PUT` (for `HTTP PUT`) and to use the resource ID in the `@Path`.
 
 ### Delete user
+Delete a user record from the database.
 
 ```java
 @DELETE
@@ -301,13 +318,11 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 
 }
 ```
+
 `@DELETE` (for `HTTP DELETE`) is used together with the resource ID in the `@Path`, to delete a user.
 
-## Results
-Use the testing techniques described in the [Testing and Debugging Adapters](../../testing-and-debugging-adapters) tutorial.
-
-## Sample
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
+## Sample adapter
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
 
 The Adapters Maven project includes the **JavaSQL** adapter described above.    
 Also included is an SQL script in the **Utils** folder, which needs to be imported into your database to test the project.
