@@ -8,8 +8,7 @@ downloads:
 ---
 
 ## Overview
-Java adapters provide free reign over connectivity to your backend. It is therefore your responsibility to ensure best practices regarding performance and other implementation details.  
-This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
+Java adapters provide free reign over connectivity to a backend system. It is therefore the developer's responsibility to ensure best practices regarding performance and other implementation details. This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
 
 **Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
 
@@ -24,18 +23,20 @@ protected void init() throws Exception {
 }
 ```
 
-## RSSAdapterResource
-`RSSAdapterResource` is where we handle the requests to your adapter.
+## Implemeting the adapter Resource class
+
+The adapter Resource class is where requests to the server are handled.  
+In the supplied sample adapter, the class name is `RSSAdapterResource`.
 
 ```java
 @Path("/")
 public class RSSAdapterResource {
 }
 ```
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.<br/><br/>
+
+`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
 
 ### HTTP Client
-#### RSSAdapterResource
 
 ```java
 private static CloseableHttpClient client;
@@ -46,10 +47,10 @@ public static void init() {
     host = new HttpHost("developer.ibm.com");
 }
 ```
-Because every request to your resource will create a new instance of `RSSAdapterResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `RSSAdapterApplication` as described above.<br/><br/>
+
+Because every request to your resource will create a new instance of `RSSAdapterResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `RSSAdapterApplication` as described above.
 
 ### Procedure resource
-#### RSSAdapterResource
 
 ```java
 @GET
@@ -65,7 +66,8 @@ public void get(@Context HttpServletResponse response, @QueryParam("tag") String
 
 }
 ```
-Our adapter exposes just one resource URL which allows to retrieve the RSS feed from the backend service.
+
+The sample adapter exposes just one resource URL which allows to retrieve the RSS feed from the backend service.
 
 * `@GET` means that this procedure only responds to `HTTP GET` requests.
 * `@Produces("application/json")` specifies the Content Type of the response to send back. We chose to send the response as a `JSON` object to make it easier on the client-side.
@@ -109,13 +111,9 @@ The output stream is then `flush`ed and `close`d.</p>
 
 If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
 
-## Results
-Use the testing techniques described in the [Testing and Debugging Adapters](../../testing-and-debugging-adapters/) tutorial.
-
-## Sample
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
+## Sample adapter
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
 
 ### Sample usage
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
-
