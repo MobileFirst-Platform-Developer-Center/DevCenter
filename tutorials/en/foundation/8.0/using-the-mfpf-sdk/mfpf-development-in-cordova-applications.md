@@ -11,7 +11,7 @@ From [http://cordova.apache.org/](http://cordova.apache.org/):
 
 > Apache Cordova is an open-source mobile development framework. It allows you to use standard web technologies such as HTML5, CSS3, and JavaScript for cross-platform development, avoiding each mobile platforms' native development language. Applications execute within wrappers targeted to each platform, and rely on standards-compliant API bindings to access each device's sensors, data, and network status.
 
-IBM MobileFirst Platform Foundation provides an SDK in the form of several Cordova plug-ins. Learn how to [Add the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications).
+IBM MobileFirst Platform Foundation provides an SDK in the form of several Cordova plug-ins. Learn how to [Add the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova).
 
 The MobileFirst SDK feature set provides the following:
 
@@ -93,7 +93,7 @@ A Cordova application's web resources can be previewed either in the iOS Simulat
 Applicative code (HTML, CSS and JS) can now be edited in real-time.  
 After making a change to a resource, save the change and it will be immediately reflected in the browser.
 
-> <b>Tip:</b> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobileirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobileirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### CrossWalk support
 Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  
@@ -130,9 +130,9 @@ cordova run ios
 ## Further reading
 Learn more about Cordova:
 
-- [Cordova Overview](https://cordova.apache.org/docs/en/5.4.0/guide/overview/index.html)
-- [Cordova best practices, testing, debugging, cosiderations and keeping up](https://cordova.apache.org/docs/en/5.4.0/guide/next/index.html#link-10)
+- [Cordova Overview](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
+- [Cordova best practices, testing, debugging, cosiderations and keeping up](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
 - [Get started with Cordova applications development](https://cordova.apache.org/#getstarted)
 
 ## Tutorials to follow next
-Get started by [adding the MobileFirst SDK to your Cordova application](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications), and review MobileFirst-provided features in the [All Tutorials](../../all-tutorials/) section.
+Get started by [adding the MobileFirst SDK to your Cordova application](../../adding-the-mfpf-sdk/cordova), and review MobileFirst-provided features in the [All Tutorials](../../all-tutorials/) section.

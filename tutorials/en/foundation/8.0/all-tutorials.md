@@ -28,11 +28,11 @@ Get a feel of MobileFirst Platform Foundation.
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
 
-* [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications/)
-* [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications/)
-* [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-android-applications/)
-* [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-8-applications/)
-* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-windows-10-applications/)
+* [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/cordova/)
+* [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/ios/)
+* [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/android/)
+* [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal applications](../adding-the-mfpf-sdk/windows-8/)
+* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/windows-10/)
 
 ### [Using the MobileFirst Platform Foundation SDK](../using-the-mfpf-sdk/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
@@ -72,40 +72,39 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications.
 
-* <span style="color:red">IN PROGRESS </span>[Authentication concepts](../authentication-and-security/authentication-concepts/)
-* <span style="color:red">TODO </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
-* <span style="color:red">TODO </span>[SecurityCheckWithAttempts concepts](../authentication-and-security/security-check-with-attempts/)
-    * [Implementing the SecurityCheckWithAttempts security adapter](../authentication-and-security/security-check-with-attempts/adapter/)
-    * [Implementing the SecurityCheckWithAttempts challenge handler in Cordova applications](../authentication-and-security/security-check-with-attempts/cordova/)
-    * [Implementing the SecurityCheckWithAttempts challenge handler in iOS applications](../authentication-and-security/security-check-with-attempts/ios/)
-    * [Implementing the SecurityCheckWithAttempts challenge handler in Android applications](../authentication-and-security/security-check-with-attempts/android/)
-    * [Implementing the SecurityCheckWithAttempts challenge handler in Windows 8 Universal applications](../authentication-and-security/security-check-with-attempts/windows-8/)
-    * [Implementing the SecurityCheckWithAttempts challenge handler in Windows 10 UWP applications](../authentication-and-security/security-check-with-attempts/windows-10/)
-* <span style="color:red">TODO </span>[SecurityCheckWithUserAuthentication concepts](../authentication-and-security/security-check-with-user-authentication/)
-    * [Implementing the SecurityCheckWithUserAuthentication security adapter](../authentication-and-security/security-check-with-user-authentication/adapter/)
-    * [Implementing the SecurityCheckWithUserAuthentication challenge handler in Cordova applications](../authentication-and-security/security-check-with-user-authentication/cordova/)
-    * [Implementing the SecurityCheckWithUserAuthentication challenge handler in iOS applications](../authentication-and-security/security-check-with-user-authentication/ios/)
-    * [Implementing the SecurityCheckWithUserAuthentication challenge handler in Android applications](../authentication-and-security/security-check-with-user-authentication/android/)
-    * [Implementing the SecurityCheckWithUserAuthentication challenge handler in Windows 8.1 Universal applications](../authentication-and-security/security-check-with-user-authentication/windows-8/)
-    * [Implementing the SecurityCheckWithUserAuthentication challenge handler in Windows 10 UWP applications](../authentication-and-security/security-check-with-user-authentication/windows-10/)
-* <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
+* [Authentication concepts](../authentication-and-security/authentication-concepts/)
+* <span style="color:red">IN PROGRESS </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
+* [SecurityCheck WithAttempts](../authentication-and-security/security-check-with-attempts/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the security adapter](../authentication-and-security/security-check-with-attempts/adapter/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-attempts/cordova/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-attempts/ios/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-attempts/android/)
+    * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-attempts/windows-8-10/)
+* [SecurityCheck With UserAuthentication](../authentication-and-security/security-check-with-user-authentication/)
+    * <span style="color:red">TODO </span>[Implementing the security adapter](../authentication-and-security/security-check-with-user-authentication/adapter/)
+    * <span style="color:red">TODO </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-user-authentication/cordova/)
+    * <span style="color:red">TODO </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-user-authentication/ios/)
+    * <span style="color:red">TODO </span>[Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-user-authentication/android/)
+    * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-user-authentication/windows-8-10/)
 * <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
+* [Application Authenticity](../authentication-and-security/application-authenticity/)
+{% comment %}
+* <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
 * <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
 * <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
-* [Application Authenticity](../authentication-and-security/application-authenticity/)
+{% endcomment %}
+
 
 ### [Notifications](../notifications/)
 Send notifications with IBM MobileFirst Platform Foundation.  
 
 * <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
 * <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
-* <span style="color:red">TODO </span>[Handling Push Notifications](../notifications/handling-push-notifications/)
-    * [Handling Push Notifications in Cordova applications](../notifications/cordova/)
-    * [Handling Push Notifications in iOS applications](../notifications/handling-push-notifications/ios/)
-    * [Handling Push Notifications in Android applications](../notifications/handling-push-notifications/android/)
-    * [Handling Push Notifications in Windows 8.1 Universal applications](../notifications/handling-push-notifications/windows-8/)
-    * [Handling Push Notifications in Windows 10 UWP applications](../notifications/handling-push-notifications/windows-10/)
-
+* Handling Push Notifications in client applications
+    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
+    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
+    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)  
+  
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 

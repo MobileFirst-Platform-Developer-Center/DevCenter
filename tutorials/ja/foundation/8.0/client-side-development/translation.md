@@ -10,15 +10,15 @@ downloads:
 
 ## 概要
 IBM MobileFirst Platform Foundation フレームワークを使用すると、Cordova アプリケーションを他の言語に置き換える複数言語翻訳を追加できます。  
-翻訳可能な項目は、アプリケーション・ストリングとシステム・メッセージです。 
+翻訳可能な項目は、アプリケーション・ストリングとシステム・メッセージです。
 
 #### 関連リンク:
 
-* [アプリケーション・ストリングの翻訳](#アプリケーション・ストリング-の-翻訳)
-* [システム・メッセージの翻訳](#システム・メッセージ-の-翻訳)
-* [複数言語の翻訳](#複数言語-の-翻訳)
-* [デバイスのロケールおよび言語の検出](#デバイス-の-ロケール-および-言語-の-検出)
-* [サンプル・アプリケーション](#サンプル-アプリケーション)
+* [アプリケーション・ストリングの翻訳](#アプリケーション・ストリングの翻訳)
+* [システム・メッセージの翻訳](#システム・メッセージの翻訳)
+* [複数言語の翻訳](#複数言語の翻訳)
+* [デバイスのロケールおよび言語の検出](#デバイスのロケールおよび言語の検出)
+* [サンプル・アプリケーション](#サンプル・アプリケーション)
 
 ## アプリケーション・ストリングの翻訳
 翻訳されるストリングは "Messages" と呼ばれる `JSON` オブジェクト内に保管されています。これは Cordova アプリケーションの index.js ファイルにあります: **[cordova-project-root-directory]/www/js/index.js**
@@ -50,7 +50,7 @@ Messages.headerText
 ## システム・メッセージの翻訳
 「インターネット接続が使用できません」や「ユーザー名またはパスワードが無効です」など、アプリケーションが表示するシステム・メッセージも翻訳することができます。システム・メッセージは `WL.ClientMessages` オブジェクト内に保管されています。
 
-システム・メッセージの完全なリストは、生成されたプロジェクト内の `messages.json` ファイル内にあります。 
+システム・メッセージの完全なリストは、生成されたプロジェクト内の `messages.json` ファイル内にあります。
 
 - Android: `[Cordova-project]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
 - iOS、Windows: `[Cordova-project]\platforms\[ios or windows]\www\plugins\cordova-plugin-mfp\worklight\messages`
@@ -96,9 +96,9 @@ JavaScript を使用して、アプリケーションの複数言語への翻訳
 
     ```javascript
     function languageChanged(lang) {
-        if (typeof(lang)!="string") 
+        if (typeof(lang)!="string")
             lang = $("#languages").val();
-        
+
             switch (lang){
 case "english":
                 setEnglish();
@@ -113,12 +113,12 @@ case "english":
                 setHebrew();
                 break;
         }
-               
+
         if ($("#languages").val()=="hebrew")
             $("#wrapper").css({direction: 'rtl'});
         else
             $("#wrapper").css({direction: 'ltr'});
-      
+
         $("#sampleText").html(Messages.sampleText);
         $("#headerText").html(Messages.headerText);
         $("#actionsLabel").html(Messages.actionsLabel);
@@ -135,7 +135,7 @@ Cordova のグローバリゼーション・プラグインを使用して、デ
 navigator.globalization.getLocaleName(
 	function (localeValue) {
 		WL.Logger.debug(">> Detected locale: " + localeValue);
-		
+
         ...
         ...
         ...

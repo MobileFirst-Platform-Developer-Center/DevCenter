@@ -48,17 +48,19 @@ clientKey=YMAQAABNFUWS2
 {% endhighlight %}
 
 <h2>Link Trusteer Libraries</h2>
-<p>In <strong>Build Phases > Link Binary With Libraries</strong>, drag and drop <strong>libtas_full.a</strong> to link your project with the Trusteer library. If you get linker errors, move <strong>libWorklightStaticLibProject.a</strong> to the top of the list.</p>
+<p>In <strong>Build Phases → Link Binary With Libraries</strong>, drag and drop <strong>libtas_full.a</strong> to link your project with the Trusteer library. If you get linker errors, move <strong>libWorklightStaticLibProject.a</strong> to the top of the list.</p>
 
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/trusteer-ios/TR_IOS_link-library.png" class="img-responsive" /></a>
 
-<p>In <strong>Build Settings > Linking > Other Linker Flags</strong>, add:<code>-force_load "$(SRCROOT)/tas/libtas_full.a"</code>.
+<p>In <strong>Build Settings → Linking → Other Linker Flags</strong>, add:<code>-force_load "$(SRCROOT)/tas/libtas_full.a"</code>.
 
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/trusteer-ios/TR_IOS_forceload.png" class="img-responsive" /></a>
 
-<p>In <strong>Build Settings > Linking > Dead Code Stripping</strong>, select <code>NO</code>.</p>
+<p>In <strong>Build Settings → Linking → Dead Code Stripping</strong>, select <code>NO</code>.</p>
 
 <img alt="missing_alt" src="{{ site.baseurl }}/assets/tutorials/trusteer-ios/TR_IOS_deadcode.png" class="img-responsive" /></a>
+
+<p>In <strong>Build Settings → Deployment → Strip Linked Product</strong>, select <code>NO</code>.</p>
 
 <p><strong>Note :</strong> If the iOS project is native, please follow the standard MobileFirst native requirements are described in the MobileFirst documentation as well as the requirements described in the Trusteer documentation. For example, Trusteer requires CoreMotion.framework in addition to MobileFirst's standard requirements.</p>
 

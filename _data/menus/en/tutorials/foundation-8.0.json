@@ -5,16 +5,16 @@
             "name": "Foundation",
             "path": "",
             "children": [{
-                "name": "Setting up your development environment",
+                "name": "Environment set-up",
                 "path": "/setting-up-your-development-environment"
             }, {
                 "name": "Quick start",
                 "path": "/quick-start"
             }, {
-                "name": "Adding the MobileFirst Platform Foundation SDK",
+                "name": "Adding the SDK",
                 "path": "/adding-the-mfpf-sdk"
             }, {
-                "name": "Using the MobileFirst Platform Foundation SDK",
+                "name": "Using the SDK",
                 "path": "/using-the-mfpf-sdk"
             }, {
                 "name": "Adapters",
@@ -26,7 +26,7 @@
                 "name": "Notifications",
                 "path": "/notifications"
             }, {
-                "name": "Analytics",
+                "name": "Operational Analytics",
                 "path": "/analytics"
             }, {
                 "name": "Moving to production",
@@ -36,17 +36,11 @@
             "name": "IBM Countainers",
             "path": "/ibm-containers",
             "children": [{
-                "name": "Overview",
-                "path": ""
+                "name": "Using Foundation Tile",
+                "path": "/using-foundation-tile"
             }, {
-                "name": "Evaluate",
-                "path": "/evaluate"
-            }, {
-                "name": "Run",
-                "path": "/run"
-            }, {
-                "name": "Sample application",
-                "path": "/sample-app"
+                "name": "Creating an Image",
+                "path": "/creating-an-image"
             }]
         }, {
             "name": "Tutorials by platform",

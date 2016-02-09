@@ -166,4 +166,4 @@ The result can then be seen in the device log, for example from Android's LogCat
 2. Add a platform using the `cordova platform add` command.
 3. Run the Cordova application by running the `cordova run` command.
 
-> <b>Tip:</b> you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.

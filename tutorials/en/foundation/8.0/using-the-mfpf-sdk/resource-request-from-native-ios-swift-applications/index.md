@@ -16,7 +16,7 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-ios-applications) to your Native iOS project.
+- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/ios) to your Native iOS project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest
@@ -58,7 +58,7 @@ request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void
 
 Use the `response` and `error` objects to get the data that is retrieved from the adapter.
 
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText -> String`, `responseJSON -> Dictionary` (if the response is in JSON) and `status -> Int` (the HTTP status of the response).
+The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
 
 Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
 
@@ -129,4 +129,5 @@ The adapter Maven project contains the Java adapter to be used during the resour
 1. From the command line, navigate to the Xcode project.
 2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
 3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-4. Import the project to Xcode, and run the sample by clicking the **Run* button.
+4. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+5. Import the project to Xcode, and run the sample by clicking the **Run* button.
