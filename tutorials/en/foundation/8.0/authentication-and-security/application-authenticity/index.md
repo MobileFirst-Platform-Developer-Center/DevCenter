@@ -7,7 +7,7 @@ weight: 10
 ---
 ## Overview
 By issuing an HTTP request, any entity can access the HTTP services (APIs) that IBM MobileFirst Platform Foundation Server offers.  
-The predefined Application Authenticity [security check](../authentication-concepts/) ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.
+The predefined application-authenticity [security check](../authentication-concepts/) ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.
 
 To enable Application Authenticity you can either follow the on-screen instructions in the **MobileFirst Operations Console** → **[your-application]** → **Authenticity**, or review the information below.
 
@@ -23,8 +23,10 @@ Application Authenticity is available in all supported platforms (iOS, Android, 
 - [Disabling authenticity](disabling-application-authenticity)
 - [Configuring authenticity](configuring-application-authenticity)
 
-## Authenticity Flow
-Once an application has passed the Authenticity challenge, an Authenticity scope is granted. For as long as the token is valid, the Authenticity challenge will not occur again. See [Configuring authenticity](configuring-authenticity) to learn how this can be customized.
+## Application Authenticity Flow
+By default, the application-authenticity security check is run during the application's runtime registration with MobileFirst Server, which occurs the first time an instance of the application attempts to connect to the server.
+
+Once an application has passed the authenticity challenge, an authenticity scope is granted. For as long as the token is valid, the authenticity challenge will not occur again. See [Configuring authenticity](configuring-authenticity) to learn how this can be customized.
 
 ![Authenticity flow](check_flow.jpg)
 
@@ -57,7 +59,7 @@ To disable Application Authenticity, click the "Delete Authenticity File" button
 ![Disable Application Authenticity by removing a previously uploaded .authenticity_data file](disable_authenticity.png)
 
 ## Configuring Application Authenticity
-The Application Authenticity predefined security check can be configured with the following property:
+The predefined application-authenticity security check can be configured with the following property:
 
 - `expirationInSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
 
