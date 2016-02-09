@@ -2,6 +2,7 @@ language: ruby
 # cache: bundler
 before_install:
   - gem update bundler
+  - bundler --version
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
