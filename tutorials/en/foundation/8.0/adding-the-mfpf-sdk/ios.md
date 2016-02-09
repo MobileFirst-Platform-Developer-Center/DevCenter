@@ -70,6 +70,9 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     ```bash
     mfpdev app register
     ```
+    
+    You will be asked to provide the application's BundleID.  
+    The BundleID is **case sensitive***.
 
     The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.plist** file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.
             
