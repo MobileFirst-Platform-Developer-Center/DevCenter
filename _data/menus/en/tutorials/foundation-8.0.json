@@ -5,16 +5,16 @@
             "name": "Foundation",
             "path": "",
             "children": [{
-                "name": "Setting up your development environment",
+                "name": "Environment set-up",
                 "path": "/setting-up-your-development-environment"
             }, {
                 "name": "Quick start",
                 "path": "/quick-start"
             }, {
-                "name": "Adding the MobileFirst Platform Foundation SDK",
+                "name": "Adding the SDK",
                 "path": "/adding-the-mfpf-sdk"
             }, {
-                "name": "Using the MobileFirst Platform Foundation SDK",
+                "name": "Using the SDK",
                 "path": "/using-the-mfpf-sdk"
             }, {
                 "name": "Adapters",
@@ -36,9 +36,6 @@
             "name": "IBM Countainers",
             "path": "/ibm-containers",
             "children": [{
-                "name": "Overview",
-                "path": ""
-            }, {
                 "name": "Using Foundation Tile",
                 "path": "/using-foundation-tile"
             }, {
