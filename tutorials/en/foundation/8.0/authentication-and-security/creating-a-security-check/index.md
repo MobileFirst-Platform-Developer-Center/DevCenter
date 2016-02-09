@@ -8,7 +8,7 @@ weight: 2
 ## Overview
 A SecurityCheck is an object responsible for obtaining credentials from a client and validate them.
 
-Security checks are defined inside **Java adapters**. Any Java adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**. However it is recommended to define the SecurityCheck in a separate Java adapter.
+Security checks are defined inside **Java adapters**. Any Java adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
 
 **Prerequisites:** Familiarize yourself with the MobileFirst Platform Foundation authentication framework before continuing.  
 Read the [Authentication concepts](../authentication-concepts/) tutorial.
