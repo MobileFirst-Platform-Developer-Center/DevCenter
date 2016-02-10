@@ -16,7 +16,7 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 - Microsoft Visual Studio 2013 or 2015 and MobileFirst Developer CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.
+- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../setting-up-your-development-environment/windows-8-10-development-environment) tutorials.
 
 #### Jump to:
 
