@@ -162,7 +162,7 @@ The diagram below depicts the flow of updating an application's web resources us
 
 ![Direct update in the field](distribution.jpg)
 
-> <b>Note:</b> During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.
+> **Note:** During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the Cordova project.  

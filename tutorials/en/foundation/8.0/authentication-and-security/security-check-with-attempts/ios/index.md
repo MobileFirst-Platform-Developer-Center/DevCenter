@@ -106,7 +106,7 @@ In general successes are automatically processed by the framework to allow the r
 
 Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `WLChallengeHandler`'s `handleSuccess(success: [NSObject : AnyObject]!)`. Here again, the content and structure of the `success` Dictionary depends on what the `SecurityCheck` sends.
 
-In the `PinCodeAttempts` sample application, the success does not contain any additional data and so `handleSuccess` is not implemented.
+In the `PinCodeAttemptsSwift` sample application, the success does not contain any additional data and so `handleSuccess` is not implemented.
 
 ## Registering the challenge handler
 
@@ -138,9 +138,10 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80) the iOS Swift Native project.
 
 ### Sample usage
-
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the available `ResourceAdapter` and `PinCodeAttempts` adapters](../../creating-adapters/).
-* Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
-* In the MobileFirst console, under **Applications** → **PinCodeSwift** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
+1. Use either Maven or MobileFirst Developer CLI to [build and deploy the available `ResourceAdapter` and `PinCodeAttempts` adapters](../../creating-adapters/).
+2. From a command-line window, navigate to the project's root folder and run the command: `mfpdev app register`.
+3. In the MobileFirst console, under **Applications** → **PinCodeCordova** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
 
 ![Sample application](sample-application.png)
+
+
