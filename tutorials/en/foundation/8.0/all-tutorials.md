@@ -89,8 +89,8 @@ Add various layers of protection to your applications.
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-user-authentication/windows-8-10/)
 * <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
 * [Application Authenticity](../authentication-and-security/application-authenticity/)
-{% comment %}
 * <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
+{% comment %}
 * <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
 * <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
 {% endcomment %}
@@ -100,10 +100,9 @@ Send notifications with IBM MobileFirst Platform Foundation.
 
 * <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
 * <span style="color:red">IN PROGRESS </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
-* Handling Push Notifications in client applications
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)
+* <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
+* <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
+* <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)
 
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  

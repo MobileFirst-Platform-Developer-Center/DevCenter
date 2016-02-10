@@ -104,6 +104,13 @@ Create an Android Studio project or use an existing one.
         2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
         3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
 
+### Creating an WLClient instance
+Before using any MobileFirst-supplied APIs, first create a `WLClient` instance in the `onCreate` method:
+
+```java
+WLClient.createInstance(this);
+```
+
 ## Updating the MobileFirst Native SDK
 To update the MobileFirst Native SDK with the latest release, find the release version number and update the `version` property accordingly in the **build.gradle** file.  
 See step 4 above.
