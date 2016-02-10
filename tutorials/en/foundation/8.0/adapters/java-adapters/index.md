@@ -44,7 +44,7 @@ The JAX-RS 2.0 application class tells the JAX-RS 2.0 framework which resources 
 package com.sample.adapter;
 
 import java.util.logging.Logger;
-import com.worklight.wink.extensions.MFPJAXRSApplication;
+import com.ibm.mfp.adapter.api.MFPJAXRSApplication;
 
 public class JavaAdapterApplication extends MFPJAXRSApplication{
 
@@ -77,18 +77,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import com.worklight.adapters.rest.api.WLServerAPI;
-import com.worklight.adapters.rest.api.WLServerAPIProvider;
-
 @Path("/")
 public class JavaAdapterResource {
 
     //Define logger (Standard java.util.Logger)
     static Logger logger = Logger.getLogger(JavaAdapterResource.class.getName());
-
-    //Define the server api to be able to perform server operations
-    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
-
 
     //Path for method: "<server address>/Adapters/adapters/JavaAdapter/{username}"
     @GET

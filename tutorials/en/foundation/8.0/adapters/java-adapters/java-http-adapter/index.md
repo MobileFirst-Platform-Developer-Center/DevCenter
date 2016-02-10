@@ -82,7 +82,7 @@ Depending if you pass a `tag` parameter, `execute` will retrieve a different bui
 
 ```java
 public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
-        throws ClientProtocolException, IOException,
+        throws IOException,
         IllegalStateException, SAXException {
     HttpResponse RSSResponse = client.execute(host, req);
     ServletOutputStream os = resultResponse.getOutputStream();
