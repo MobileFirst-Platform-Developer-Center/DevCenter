@@ -125,16 +125,16 @@ someChallengeHandler = WL.Client.createWLChallengeHandler("<securityCheck-name>"
 ```
 
 ## Sample application
-The sample **PinCodeSwift** is an iOS Swift application that uses `WLResourceRequest` to get a bank balance.  
+The sample **PinCodeCordova** is a Corodova application that uses `WLResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80) the iOS Swift Native project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) the Cordova project.
 
 ### Sample usage
 
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the available `ResourceAdapter` and `PinCodeAttempts` adapters](../../creating-adapters/).
 * Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
-* In the MobileFirst console, under **Applications** → **PinCodeSwift** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
+* In the MobileFirst console, under **Applications** → **PinCodeCordova** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
 
 ![Sample application](sample-application.png)
