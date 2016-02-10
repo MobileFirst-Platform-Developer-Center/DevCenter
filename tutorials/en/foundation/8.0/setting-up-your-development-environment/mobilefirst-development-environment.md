@@ -8,21 +8,23 @@ weight: 1
 ## Overview
 This tutorial covers the basics of the IBM MobileFirst Platform Foundation development environment and tools.
 
-- The MobileFirst developer tools are supported on the following operating systems: Windows, Apple OS X and Linux.
+- The MobileFirst Platform Foundation developer tools are supported on the following operating systems: Windows, Apple OS X and Linux.
 - The MobileFirst Operations Console is supported in modern browsers such as: Internet Explorer 10+, latest Chrome, Safari and Firefox.
 
 #### Jump to:
 
-- [MobileFirst Development Server](#mobilefirst-development-server)
-- [MobileFirst Command-line Interface](#mobilefirst-command-line-interface)
+- [MobileFirst Development Kit](#mobilefirst-development-kit)
 - [Applications and Adapters Development](#applications-and-adapters-development)
 
-## MobileFirst Development Server
-The IBM MobileFirst Development Server is a web application archive (.war) that is deployed on an IBM WebSphere Liberty profile Application Server.  
+## MobileFirst Development Kit
+The IBM MobileFirst Development Kit consists of the following:
+
+### MobileFirst Server
+The IBM MobileFirst Server is a web application archive (.war) that is deployed on an IBM WebSphere Liberty profile Application Server.  
 From the MobileFirst Server's Operations Console a developer can:
 
 - Register and deploy applications and adapters
-- Optionally download native/Cordova application templates 
+- Optionally download native/Cordova application and adapter templates 
 - Configure application aspects:
     - Authentication and security
     - Application Authenticity
@@ -44,7 +46,7 @@ The MobileFirst Development Server is installed as a stand-alone server and prov
 To learn more about the MobileFirst Operations Console, see the tutorial: [Using the MobilFirst Platform Operations Console](../../quick-start/console/).  
 To download and install the MobileFirst Development Server, visit the [downloads]({{site.base}}/downloads/) page.
 
-### Adding the MobileFirst Server to Eclipse
+#### Adding the MobileFirst Server to Eclipse
 The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quickly starting and stopping of the development server.  
 
 1. From the **Servers** view in Eclipse, select **New → Server**.
@@ -56,7 +58,7 @@ The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quick
 7. Provide  the path to the server's root directory, and select a JRE version to use.
 8. Click **Next** followed by clicking **Finish**.
 
-## MobileFirst Command-line Interface
+### MobileFirst Command-line Interface
 The IBM MobileFirst command-line interface (CLI) tool enables developers to:
 
 - Manage MobileFirst Servers
@@ -79,6 +81,12 @@ To download and install MobileFirst Studio, visit the [downloads]({{site.base}}/
 
 #### Requirements
 To use MobileFirst Studio for Cordova application development, it is also required to download and install the [THyM Eclipse plug-in](https://www.eclipse.org/community/eclipse_newsletter/2014/november/article3.php). -->
+
+### MobileFirst Platform Foundation client and server SDKs &amp; APIs
+MobileFirst Platform Foundation provides client-side SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Server-side APIs for adapter development are available as well.
+
+To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials.  
+To use the MobileFirst server-side APIs, visit the [Adapters](../../adapters/) tutorials.  
 
 ## Applications and adapters development
 You can use your preferred code editor or alternative IDEs, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
