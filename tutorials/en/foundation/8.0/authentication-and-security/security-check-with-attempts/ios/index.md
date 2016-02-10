@@ -41,7 +41,7 @@ class PinCodeChallengeHandler : WLChallengeHandler {
 ```
 
 ## Handling the challenge
-The minimum requirement from the `WLChallengeHandler` protocol is to implement `handleChallenge(challenge: [NSObject : AnyObject]!)`, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`.
+The minimum requirement from the `WLChallengeHandler` protocol is to implement the `handleChallenge` method, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`.
 
 > Learn more about the `WLChallengeHandler` protocol in the user documentation.
 
@@ -68,7 +68,7 @@ override func handleChallenge(challenge: [NSObject : AnyObject]!) {
 If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
 
 ## Submitting the challenge's answer
-Once the credentials have been collected from the UI, use `WLChallengeHandler`'s `submitChallengeAnswer(answer: [NSObject : AnyObject]!)` to send an answer back to the `SecurityCheck`. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Once the credentials have been collected from the UI, use the `WLChallengeHandler`'s `submitChallengeAnswer(answer: [NSObject : AnyObject]!)` method to send an answer back to the `SecurityCheck`. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
 
 ```swift
 self.submitChallengeAnswer(["pin": pinTextField.text!])
@@ -84,7 +84,7 @@ self.submitFailure(nil)
 ```
 
 ## Handling failures
-Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement `WLChallengeHandler`'s `handleFailure(failure: [NSObject : AnyObject]!)`.
+Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `WLChallengeHandler`'s `handleFailure` method.
 The structure of the `Dictionary` passed as a parameter greatly depends on the nature of the failure.
 
 ```swift
@@ -103,7 +103,7 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 ## Handling successes
 In general successes are automatically processed by the framework to allow the rest of the application to continue.
 
-Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `WLChallengeHandler`'s `handleSuccess(success: [NSObject : AnyObject]!)`. Here again, the content and structure of the `success` Dictionary depends on what the `SecurityCheck` sends.
+Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing the `WLChallengeHandler`'s `handleSuccess(success: [NSObject : AnyObject]!)` method. Here again, the content and structure of the `success` `Dictionary` depends on what the `SecurityCheck` sends.
 
 In the `PinCodeAttemptsSwift` sample application, the success does not contain any additional data and so `handleSuccess` is not implemented.
 
@@ -142,5 +142,3 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 3. In the MobileFirst console, under **Applications** → **PinCodeCordova** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
 
 ![Sample application](sample-application.png)
-
-
