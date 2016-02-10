@@ -53,7 +53,7 @@ You can then view and configure these properties in the MobileFirst Operations C
 
 ![Configuration Properties in the Console](console-config-props.png)
 
-## Implemeting SQL in the adapter Resource class
+## Implementing SQL in the adapter Resource class
 The adapter Resource class is where requests to the server are handled.
 
 In the supplied sample adapter, the class name is `JavaSQLResource`.
