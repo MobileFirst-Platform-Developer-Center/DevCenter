@@ -1,13 +1,8 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in iOS applications
-breadcrumb_title: iOS applications
-relevantTo: [ios]
-downloads:
-  - name: Download Native project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80
-  - name: Download Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityAdapters/tree/release80
+title: Implementing the challenge handler in Android applications
+breadcrumb_title: Android applications
+relevantTo: [android]
 ---
 ## Overview
 When trying to access a protected resource, the server (the `SecurityCheck`) will send back to the client a list containing one or more **challenges** for the client to handle.  
@@ -32,34 +27,34 @@ A challenge handler is a class responsible for handling challenges sent by the M
 
 In this example, the `SecurityCheck` is `PinCodeAttempts` which was defined in [Implementing Security Check with Attempts Security Adapter](../adapter). The challenge sent by this `SecurityCheck` contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
 
-Create a Swift class that extends `WLChallengeHandler`:
+Create a Java class that extends `WLChallengeHandler`:
 
-```swift
-class PinCodeChallengeHandler : WLChallengeHandler {
+```java
+public class PinCodeChallengeHandler extends WLChallengeHandler {
 
 }
 ```
 
 ## Handling the challenge
-The minimum requirement from the `WLChallengeHandler` protocol is to implement `handleChallenge(challenge: [NSObject : AnyObject]!)`, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`. It is responsible for asking the user to provide the credentials.
+The minimum requirement from the `WLChallengeHandler` protocol is to implement a constructor and a `handleChallenge` method, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSONObject`.
 
 > Learn more about the `WLChallengeHandler` protocol in the user documentation.
 
 In this example, an alert is displayed asking to enter the PIN code:
 
-```swift
-override func handleChallenge(challenge: [NSObject : AnyObject]!) {
-    NSLog("%@",challenge)
-    var errorMsg : String
-    if challenge["errorMsg"] is NSNull {
-        errorMsg = "This data requires a PIN code."
+```java
+@Override
+public void handleChallenge(JSONObject jsonObject) {
+    Log.d("Handle Challenge", jsonObject.toString());
+    try{
+        if (jsonObject.isNull("errorMsg")){
+            alertMsg("This data requires a PIN code.\n Remaining attempts: " + jsonObject.getString("remainingAttempts"));
+        } else {
+            alertMsg(jsonObject.getString("errorMsg") + "\nRemaining attempts: " + jsonObject.getString("remainingAttempts"));
+        }
+    } catch (JSONException e) {
+        e.printStackTrace();
     }
-    else{
-        errorMsg = challenge["errorMsg"] as! String
-    }
-    let remainingAttempts = challenge["remainingAttempts"] as! Int
-
-    showPopup(errorMsg,remainingAttempts: remainingAttempts)
 }
 ```
 
@@ -105,7 +100,7 @@ In general successes are automatically processed by the framework to allow the r
 
 Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `WLChallengeHandler`'s `handleSuccess(success: [NSObject : AnyObject]!)`. Here again, the content and structure of the `success` Dictionary depends on what the `SecurityCheck` sends.
 
-In the `PinCodeAttemptsSwift` sample application, the success does not contain any additional data and so `handleSuccess` is not implemented.
+In the `PinCodeAttempts` sample application, the success does not contain any additional data and so `handleSuccess` is not implemented.
 
 ## Registering the challenge handler
 
@@ -137,10 +132,9 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80) the iOS Swift Native project.
 
 ### Sample usage
-1. Use either Maven or MobileFirst Developer CLI to [build and deploy the available `ResourceAdapter` and `PinCodeAttempts` adapters](../../creating-adapters/).
-2. From a command-line window, navigate to the project's root folder and run the command: `mfpdev app register`.
-3. In the MobileFirst console, under **Applications** → **PinCodeCordova** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
+
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the available `ResourceAdapter` and `PinCodeAttempts` adapters](../../creating-adapters/).
+* Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+* In the MobileFirst console, under **Applications** → **PinCodeSwift** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
 
 ![Sample application](sample-application.png)
-
-
