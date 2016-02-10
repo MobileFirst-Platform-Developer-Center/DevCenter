@@ -12,8 +12,8 @@ Java adapters provide free reign over connectivity to a backend system. It is th
 
 **Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
 
-## RSSAdapterApplication
-`RSSAdapterApplication` extends `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
+## Initializing the adapter
+In the supplied sample adapter, the `RSSAdapterApplication` class is used to extend `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
 
 ```java
 @Override
@@ -24,13 +24,13 @@ protected void init() throws Exception {
 ```
 
 ## Implemeting the adapter Resource class
-
 The adapter Resource class is where requests to the server are handled.  
 In the supplied sample adapter, the class name is `RSSAdapterResource`.
 
 ```java
 @Path("/")
 public class RSSAdapterResource {
+
 }
 ```
 
@@ -79,7 +79,6 @@ The sample adapter exposes just one resource URL which allows to retrieve the RS
 Depending if you pass a `tag` parameter, `execute` will retrieve a different build a different path and retrieve a different RSS file.<br/><br/>
 
 ### execute()
-#### RSSAdapterResource
 
 ```java
 public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
@@ -101,18 +100,21 @@ public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
     os.close();
 }
 ```
+
 * `HttpResponse RSSResponse = client.execute(host, req)`. We use our static HTTP client to execute the HTTP request and store the response.
 * `ServletOutputStream os = resultResponse.getOutputStream()`. This is the output stream to write a response to the client.
 * `resultResponse.addHeader("Content-Type", "application/json")`. As mentioned before, we chose to send the response as JSON.
 * `String json = XML.toJson(RSSResponse.getEntity().getContent())`. We used `org.apache.wink.json4j.utils.XML` to convert the XML RSS to a JSON string.
 * `os.write(json.getBytes(Charset.forName("UTF-8")))` the resulting JSON string is written to the output stream.
 
-The output stream is then `flush`ed and `close`d.</p>
+The output stream is then `flush`ed and `close`d.
 
 If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
 
 ## Sample adapter
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
+
+The Adapters Maven project includes the **JavaHTTP** adapter described above. 
 
 ### Sample usage
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaHTTP adapter](../../creating-adapters/).

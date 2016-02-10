@@ -21,8 +21,7 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 
 * [Setting up the data source](#setting-up-the-data-source)
 * [Implemeting SQL in the adapter Resource class](#implementing-sql-in-the-adapter-resource-class)
-* [Results](#results)
-* [Sample](#sample)
+* [Sample adapter](#sample-adapter)
 
 ## Setting up the data source
 In order to configure the MobileFirst Server to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the MobileFirst Operations Console.
