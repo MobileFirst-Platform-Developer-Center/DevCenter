@@ -56,7 +56,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
 ### [Adapters](../adapters/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.  
 
-* <span style="color:red">IN PROGRESS</span> [Adapters overview](../adapters/adapters-overview/)
+* [Adapters overview](../adapters/adapters-overview/)
 * [Creating Java and JavaScript adapters](../adapters/creating-adapters/)
 * [JavaScript adapters](../adapters/javascript-adapters/)
     * [JavaScript HTTP Adapter](../adapters/javascript-adapters/js-http-adapter/)
@@ -79,7 +79,7 @@ Add various layers of protection to your applications.
     * [Implementing the security check](../authentication-and-security/security-check-with-attempts/security-check/)
     * [Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-attempts/cordova/)
     * [Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-attempts/ios/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-attempts/android/)
+    * [Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-attempts/android/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-attempts/windows-8-10/)
 * [SecurityCheck With UserAuthentication](../authentication-and-security/security-check-with-user-authentication/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the security check](../authentication-and-security/security-check-with-user-authentication/security-check/)
