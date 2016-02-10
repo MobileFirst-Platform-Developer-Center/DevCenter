@@ -22,7 +22,12 @@ Read the [Authentication concepts](../authentication-concepts/) tutorial.
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Defining a SecurityCheck
-[Create a Java adapter](../../adapters/creating-adapters/). In the Java adapter's adapter.xml file, add an XML element called `securityCheckDefinition`. For example:
+[Create a Java adapter](../../adapters/creating-adapters/) or use an exiting one.
+
+> When creating a Java adapter, the default template assumes the adapter will serve **resources**. It is the developer's choice to bundle Security Checks and resources in the same adapter, or to separate them into distinct adapters.
+To remove the default **resource** implementation, delete the files **[AdapterName]Application.java** and **[AdapterName]Resource.java**. Remove the `<JAXRSApplicationClass>` element from **adapter.xml** as well.
+
+In the Java adapter's adapter.xml file, add an XML element called `securityCheckDefinition`. For example:
 
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
@@ -33,7 +38,7 @@ Read the [Authentication concepts](../authentication-concepts/) tutorial.
 ```
 
 - The `name` attribute will be the name of your SecurityCheck.
-- The `class` attribute specifies the implementation Java class of the SecurityCheck.
+- The `class` attribute specifies the implementation Java class of the SecurityCheck. You need to create this class.
 - Some SecurityChecks can be configured with a list of `property` elements.
 
 ## SecurityCheck Implementation
@@ -52,7 +57,7 @@ Subclassing this class leaves a lot of flexibility in your Security Check implem
 > Learn more in the `SecurityCheckWithExternalization` user documentation topic.
 
 ### SecurityCheckWithAttempts
-This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`. 
+This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`.
 
 The `SecurityCheckWithAttempts` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
 
