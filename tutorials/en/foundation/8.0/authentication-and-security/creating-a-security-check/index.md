@@ -32,8 +32,8 @@ Read the [Authentication concepts](../authentication-concepts/) tutorial.
 </securityCheckDefinition>
 ```
 
-- The `name` attribute will be the name of your SecurityCheck
-- The `class` attribute specifies the implementation of the SecurityCheck
+- The `name` attribute will be the name of your SecurityCheck.
+- The `class` attribute specifies the implementation Java class of the SecurityCheck.
 - Some SecurityChecks can be configured with a list of `property` elements.
 
 ## SecurityCheck Implementation
