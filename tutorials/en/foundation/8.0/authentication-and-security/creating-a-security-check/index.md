@@ -37,7 +37,8 @@ Read the [Authentication concepts](../authentication-concepts/) tutorial.
 - Some SecurityChecks can be configured with a list of `property` elements.
 
 ## SecurityCheck Implementation
-The class file of the SecurityCheck is where the security check's implementation takes place. The implementation should extend one of the provided base classes, below. The parent class you choose will determine the balance between customization and simplicity.
+Create the security check's Java class. The implementation should extend one of the provided base classes, below.  
+The parent class you choose will determine the balance between customization and simplicity.
 
 ### SecurityCheck
 `SecurityCheck` is a Java **interface**, defining the minimum required methods to represent the server-side state of a security check. Using this interface alone does not provide any implementation code and it is the sole responsibility of the implementor to handle each scenario.
