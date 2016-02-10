@@ -13,23 +13,23 @@ Java adapters provide free reign over connectivity to a backend system. It is th
 **Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
 
 ## Initializing the adapter
-In the supplied sample adapter, the `RSSAdapterApplication` class is used to extend `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
+In the supplied sample adapter, the `JavaHTTPApplication` class is used to extend `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
 
 ```java
 @Override
 protected void init() throws Exception {
-    RSSAdapterResource.init();
+    JavaHTTPResource.init();
     logger.info("Adapter initialized!");
 }
 ```
 
-## Implemeting the adapter Resource class
+## Implementing the adapter Resource class
 The adapter Resource class is where requests to the server are handled.  
-In the supplied sample adapter, the class name is `RSSAdapterResource`.
+In the supplied sample adapter, the class name is `JavaHTTPResource`.
 
 ```java
 @Path("/")
-public class RSSAdapterResource {
+public class JavaHTTPResource {
 
 }
 ```
@@ -43,12 +43,12 @@ private static CloseableHttpClient client;
 private static HttpHost host;
 
 public static void init() {
-    client = HttpClients.createDefault();
-    host = new HttpHost("developer.ibm.com");
+  client = HttpClientBuilder.create().build();
+  host = new HttpHost("mobilefirstplatform.ibmcloud.com");
 }
 ```
 
-Because every request to your resource will create a new instance of `RSSAdapterResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `RSSAdapterApplication` as described above.
+Because every request to your resource will create a new instance of `JavaHTTPResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `JavaHTTPApplication` as described above.
 
 ### Procedure resource
 
@@ -56,13 +56,13 @@ Because every request to your resource will create a new instance of `RSSAdapter
 @GET
 @Produces("application/json")
 public void get(@Context HttpServletResponse response, @QueryParam("tag") String tag)
-        throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-    if(tag!=null && !tag.isEmpty()){
-        execute(new HttpGet("/mobilefirstplatform/tag/"+ tag +"/feed"), response);
-    }
-    else{
-        execute(new HttpGet("/mobilefirstplatform/feed"), response);
-    }
+    throws IOException, IllegalStateException, SAXException {
+  if(tag!=null && !tag.isEmpty()){
+    execute(new HttpGet("/blog/atom/"+ tag +".xml"), response);
+  }
+  else{
+    execute(new HttpGet("/feed.xml"), response);
+  }
 
 }
 ```
@@ -72,11 +72,11 @@ The sample adapter exposes just one resource URL which allows to retrieve the RS
 * `@GET` means that this procedure only responds to `HTTP GET` requests.
 * `@Produces("application/json")` specifies the Content Type of the response to send back. We chose to send the response as a `JSON` object to make it easier on the client-side.
 * `@Context HttpServletResponse response` will be used to write to the response output stream. This enables us more granularity than returning a simple string.
-* `@QueryParam("tag")` String tag enables the procedure to receive a parameter. The choice of `QueryParam` means the parameter is to be passed in the query (`/RSSAdapter/?tag=MobileFirst_Platform`). Other options include `@PathParam`, `@HeaderParam`, `@CookieParam`, `@FormParam`, etc.
-* `throws ClientProtocolException, ...` means we are forwarding any exception back to the client. The client code is responsible for handling potential exceptions which will be received as `HTTP 500` errors. Another solution (more likely in production code) is to handle exceptions in your server Java code and decide what to send to the client based on the exact error.
-* `execute(new HttpGet("/mobilefirstplatform/feed"), response)`. The actual HTTP request to the backend service is handled by another method defined later.
+* `@QueryParam("tag")` String tag enables the procedure to receive a parameter. The choice of `QueryParam` means the parameter is to be passed in the query (`/JavaHTTP/?tag=MobileFirst_Platform`). Other options include `@PathParam`, `@HeaderParam`, `@CookieParam`, `@FormParam`, etc.
+* `throws IOException, ...` means we are forwarding any exception back to the client. The client code is responsible for handling potential exceptions which will be received as `HTTP 500` errors. Another solution (more likely in production code) is to handle exceptions in your server Java code and decide what to send to the client based on the exact error.
+* `execute(new HttpGet("/feed.xml"), response)`. The actual HTTP request to the backend service is handled by another method defined later.
 
-Depending if you pass a `tag` parameter, `execute` will retrieve a different build a different path and retrieve a different RSS file.<br/><br/>
+Depending if you pass a `tag` parameter, `execute` will retrieve a different build a different path and retrieve a different RSS file.
 
 ### execute()
 
@@ -114,7 +114,7 @@ If `RSSResponse` is not `200 OK`, we write the status code and reason in the res
 ## Sample adapter
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
 
-The Adapters Maven project includes the **JavaHTTP** adapter described above. 
+The Adapters Maven project includes the **JavaHTTP** adapter described above.
 
 ### Sample usage
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
