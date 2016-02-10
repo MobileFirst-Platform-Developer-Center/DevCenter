@@ -135,9 +135,12 @@ The result is retrieved as a JSON object:
 ## Sample adapter
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the Adapters Maven project.
 
+The Adapters Maven project includes the **JavaScriptSQL** adapter described above.  
+Also included is an SQL script in the **Utils** folder.
+
 ### Sample usage
-* The Adapters Maven project includes a sample MySQL script in the **Utils** folder, which needs to be imported into your database.
+* Import the SQL script to a database.
 * Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
 
