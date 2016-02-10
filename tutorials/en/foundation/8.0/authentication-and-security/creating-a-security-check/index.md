@@ -22,7 +22,12 @@ Read the [Authentication concepts](../authentication-concepts/) tutorial.
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Defining a SecurityCheck
-[Create a Java adapter](../../adapters/creating-adapters/). In the Java adapter's adapter.xml file, add an XML element called `securityCheckDefinition`. For example:
+[Create a Java adapter](../../adapters/creating-adapters/) or use an exiting one.
+
+> When creating a Java adapter, the default template assumes the adapter will serve **resources**. It is the developer's choice to bundle Security Checks and resources in the same adapter, or to separate them into distinct adapters.
+To remove the default **resource** implementation, delete the files **[AdapterName]Application.java** and **[AdapterName]Resource.java**. Remove the `<JAXRSApplicationClass>` element from **adapter.xml** as well.
+
+In the Java adapter's adapter.xml file, add an XML element called `securityCheckDefinition`. For example:
 
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
@@ -32,12 +37,13 @@ Read the [Authentication concepts](../authentication-concepts/) tutorial.
 </securityCheckDefinition>
 ```
 
-- The `name` attribute will be the name of your SecurityCheck
-- The `class` attribute specifies the implementation of the SecurityCheck
+- The `name` attribute will be the name of your SecurityCheck.
+- The `class` attribute specifies the implementation Java class of the SecurityCheck. You need to create this class.
 - Some SecurityChecks can be configured with a list of `property` elements.
 
 ## SecurityCheck Implementation
-The class file of the SecurityCheck is where the security check's implementation takes place. The implementation should extend one of the provided base classes, below. The parent class you choose will determine the balance between customization and simplicity.
+Create the security check's Java class. The implementation should extend one of the provided base classes, below.  
+The parent class you choose will determine the balance between customization and simplicity.
 
 ### SecurityCheck
 `SecurityCheck` is a Java **interface**, defining the minimum required methods to represent the server-side state of a security check. Using this interface alone does not provide any implementation code and it is the sole responsibility of the implementor to handle each scenario.
@@ -48,14 +54,14 @@ It provides, among other options: externalization as JSON, inactivity timeout, e
 
 Subclassing this class leaves a lot of flexibility in your Security Check implementation.
 
-> Learn more in the SecurityCheckWithExternalization user documentation topic.
+> Learn more in the `SecurityCheckWithExternalization` user documentation topic.
 
 ### SecurityCheckWithAttempts
-This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`. 
+This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`.
 
 The `SecurityCheckWithAttempts` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
 
-> Learn more in the [SecurityCheckWithAttempts](../security-check-with-attempts) tutorial.
+> Learn more in the [Security Check With Attempts](../security-check-with-attempts/) tutorials.
 
 ### SecurityCheckWithUserAuthentication
 This abstract class extends `SecurityCheckWithAttempts` and therefore inherits all of its features.
@@ -64,7 +70,7 @@ In addition, the `SecurityCheckWithUserAuthentication` class provides the Mobile
 
 Also provided is a built-in capability to optionally enable a "Remember Me" login behavior.
 
-> Learn more in the [SecurityCheckWithUserAuthentication](../security-check-with-user-authentication) tutorial.
+> Learn more in the [SecurityCheck With User Authentication](../security-check-with-user-authentication/) tutorials.
 
 ## SecurityCheck Configuration
 Each `SecurityCheck` implementation class can use a `SecurityCheckConfiguration` class that defines properties available for that `SecurityCheck`. Each base `SecurityCheck` class comes with a matching `SecurityCheckConfiguration` class. You can create your own implementation that extends one of the base `SecurityCheckConfiguration` classes and use it for your custom `SecurityCheck`.

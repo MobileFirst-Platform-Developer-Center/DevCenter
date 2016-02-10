@@ -20,7 +20,7 @@ The MobileFirst Platform Foundation SDK consists of a collection of pods, availa
 
 - Xcode and MobileFirst Developer CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.
+- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your iOS development environment](../../setting-up-your-development-environment/ios-development-environment) tutorials.
 
 #### Jump to:
 

@@ -162,7 +162,7 @@ The result can then be seen in the device log, for example from Android's LogCat
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
 
 ### Sample usage
-1. From the command line, navigate to the Cordova project.
+1. From the command line, navigate to the project's root folder.
 2. Add a platform using the `cordova platform add` command.
 3. Run the Cordova application by running the `cordova run` command.
 

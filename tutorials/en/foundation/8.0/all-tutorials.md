@@ -12,6 +12,7 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 be
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
 * [Setting up the MobileFirst development environment](../setting-up-your-development-environment/mobilefirst-development-environment/)
+* [Setting up the Cordova development environments](../setting-up-your-development-environment/cordova-development-environment/)
 * [Setting up the iOS development environment](../setting-up-your-development-environment/ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/android-development-environment/)
 * [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/windows-8-10-development-environment/)
@@ -75,13 +76,13 @@ Add various layers of protection to your applications.
 * [Authentication concepts](../authentication-and-security/authentication-concepts/)
 * [Creating a Security Check](../authentication-and-security/creating-a-security-check/)
 * [SecurityCheck WithAttempts](../authentication-and-security/security-check-with-attempts/)
-    * [Implementing the security adapter](../authentication-and-security/security-check-with-attempts/adapter/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-attempts/cordova/)
+    * [Implementing the security check](../authentication-and-security/security-check-with-attempts/security-check/)
+    * [Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-attempts/cordova/)
     * [Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-attempts/ios/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-attempts/android/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-attempts/windows-8-10/)
 * [SecurityCheck With UserAuthentication](../authentication-and-security/security-check-with-user-authentication/)
-    * <span style="color:red">TODO </span>[Implementing the security adapter](../authentication-and-security/security-check-with-user-authentication/adapter/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the security check](../authentication-and-security/security-check-with-user-authentication/security-check/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-user-authentication/cordova/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-user-authentication/ios/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-user-authentication/android/)
@@ -94,17 +95,16 @@ Add various layers of protection to your applications.
 * <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
 {% endcomment %}
 
-
 ### [Notifications](../notifications/)
 Send notifications with IBM MobileFirst Platform Foundation.  
 
 * <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
-* <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
+* <span style="color:red">IN PROGRESS </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
 * Handling Push Notifications in client applications
     * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
     * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)  
-  
+    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)
+
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 

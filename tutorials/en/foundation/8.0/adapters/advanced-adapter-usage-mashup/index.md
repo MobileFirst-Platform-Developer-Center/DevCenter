@@ -249,6 +249,6 @@ An example of city list in SQL is available in the provided adapter maven projec
 
 #### Application setup
 
-1. From the command line, navigate to the Cordova project.
+1. From the command line, navigate to the project's root folder.
 2. Add a platform by running the `cordova platform add` command.
 3. Run the Cordova application by running the `cordova run` command.
