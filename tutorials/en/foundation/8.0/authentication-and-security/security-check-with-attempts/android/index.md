@@ -3,6 +3,11 @@ layout: tutorial
 title: Implementing the challenge handler in Android applications
 breadcrumb_title: Android applications
 relevantTo: [android]
+downloads:
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
+  - name: Download Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityAdapters/tree/release80
 ---
 ## Overview
 When trying to access a protected resource, the server (the `SecurityCheck`) will send back to the client a list containing one or more **challenges** for the client to handle.  
@@ -40,12 +45,19 @@ The minimum requirement from the `WLChallengeHandler` protocol is to implement a
 
 > Learn more about the `WLChallengeHandler` protocol in the user documentation.
 
-In this example, an alert is displayed asking to enter the PIN code:
+Add a constructor method:
+
+```java
+public PinCodeChallengeHandler(String SecurityCheck) {
+    super(SecurityCheck);
+}
+```
+
+In this `handleChallenge` example, an alert is displayed asking to enter the PIN code:
 
 ```java
 @Override
 public void handleChallenge(JSONObject jsonObject) {
-    Log.d("Handle Challenge", jsonObject.toString());
     try{
         if (jsonObject.isNull("errorMsg")){
             alertMsg("This data requires a PIN code.\n Remaining attempts: " + jsonObject.getString("remainingAttempts"));
@@ -58,15 +70,15 @@ public void handleChallenge(JSONObject jsonObject) {
 }
 ```
 
-> The implementation of `showPopup` is included in the sample application.
+> The implementation of `alertMsg` is included in the sample application.
 
 If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
 
 ## Submitting the challenge's answer
-Once the credentials have been collected from the UI, use `WLChallengeHandler`'s `submitChallengeAnswer(answer: [NSObject : AnyObject]!)` to send an answer back to the `SecurityCheck`. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Once the credentials have been collected from the UI, use the `WLChallengeHandler`'s `submitChallengeAnswer(JSONObject answer)` method to send an answer back to the `SecurityCheck`. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
 
-```swift
-self.submitChallengeAnswer(["pin": pinTextField.text!])
+```java
+submitChallengeAnswer(new JSONObject().put("pin", pinCodeTxt.getText()));
 ```
 
 ## Cancelling the challenge
@@ -74,33 +86,37 @@ In some cases, such as clicking a "Cancel" button in the UI, you want to tell th
 
 To achieve this, call:
 
-```swift
-self.submitFailure(nil)
+```java
+submitFailure(null);
 ```
 
 ## Handling failures
-Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement `WLChallengeHandler`'s `handleFailure(failure: [NSObject : AnyObject]!)`.
-The structure of the `Dictionary` passed as a parameter greatly depends on the nature of the failure.
+Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `WLChallengeHandler`'s `handleFailure` method.
+The structure of the `JSONObject` passed as a parameter greatly depends on the nature of the failure.
 
-```swift
-override func handleFailure(failure: [NSObject : AnyObject]!) {
-    if let errorMsg = failure["failure"] as? String {
-        showError(errorMsg)
-    }
-    else{
-        showError("Unknown error")
+```java
+@Override
+public void handleFailure(JSONObject jsonObject) {
+    try {
+        if (!jsonObject.isNull("failure")) {
+            alertError(jsonObject.getString("failure"));
+        } else {
+            alertError("Unknown error");
+        }
+    } catch (JSONException e) {
+        e.printStackTrace();
     }
 }
 ```
 
-> The implementation of `showError` is included in the sample application.
+> The implementation of `alertError` is included in the sample application.
 
 ## Handling successes
 In general successes are automatically processed by the framework to allow the rest of the application to continue.
 
-Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `WLChallengeHandler`'s `handleSuccess(success: [NSObject : AnyObject]!)`. Here again, the content and structure of the `success` Dictionary depends on what the `SecurityCheck` sends.
+Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing the `WLChallengeHandler`'s `handleSuccess` method. Here again, the content and structure of the `JSONObject` passed as a parameter depends on what the `SecurityCheck` sends.
 
-In the `PinCodeAttempts` sample application, the success does not contain any additional data and so `handleSuccess` is not implemented.
+In the `PinCodeAttempts` sample application, the `JSONObject` does not contain any additional data and so `handleSuccess` is not implemented.
 
 ## Registering the challenge handler
 
@@ -108,33 +124,28 @@ In order for the challenge handler to listen for the right challenges, you must 
 
 This is done by initializing the challenge handler with the `SecurityCheck` like this:
 
-```swift
-var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName")
+```java
+PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts", this);
 ```
 
 You must then **register** the challenge handler instance:
 
-```swift
-WLClient.sharedInstance().registerChallengeHandler(someChallengeHandler)
-```
-
-In this example, in one line:
-
-```swift
-WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
+```java
+WLClient client = WLClient.createInstance(this);
+client.registerChallengeHandler(pinCodeChallengeHandler);
 ```
 
 ## Sample application
-The sample **PinCodeSwift** is an iOS Swift application that uses `WLResourceRequest` to get a bank balance.  
+The sample **PinCodeAndroid** is an Android application that uses `WLResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80) the iOS Swift Native project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) the Android Native project.
 
 ### Sample usage
 
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the available `ResourceAdapter` and `PinCodeAttempts` adapters](../../creating-adapters/).
 * Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
-* In the MobileFirst console, under **Applications** → **PinCodeSwift** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
+* In the MobileFirst console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
 
 ![Sample application](sample-application.png)
