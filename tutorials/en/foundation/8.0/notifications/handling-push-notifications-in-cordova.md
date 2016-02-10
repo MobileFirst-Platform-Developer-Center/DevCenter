@@ -21,38 +21,44 @@ Broadcast notifications are a form of tag push notifications that are targeted t
 
 ### Notifications Configuration
 ### To get the application running for Android
-1. Create cordova app using cordoav create and mfp cordova template
-2. Add android platform
-3. Add cordova-plugin-mfp-push plugin. Take it from latest halpert Electra DevOps integration build till its published in npm registry
-4. Run cordova build
-5. Import the app/platforms/android in Android Studio
-6. Add classpath 'com.google.gms:google-services:2.0.0-alpha3' to Module:android gradle. Add jcenter() to repositories in buildscript block
-7. Add compile 'com.google.android.gms:play-services-gcm:8.4.0' to app/platforms/android/cordova-plugin-mfp-push/<appname>-build-extras.gradle
-8. Add compile 'com.squareup.okhttp:okhttp:2.6.0' to app/platforms/android/cordova-plugin-mfp-push/<appname>-build-extras.gradle
-9. Add apply plugin: 'com.google.gms.google-services' to app/platforms/android/cordova-plugin-mfp-push/<appname>-build-extras.gradle
-10. Add google-services.json to app/platforms/android folder
+1. Create cordova app using cordova create and mfp cordova template
+2. $ cordova platform add android
+3. $ cordova platform add plugin cordova-plugin-mfp-push
+4. $ cordova build
+5. Import the app/platforms/android into Android Studio
+6. In build.gradle(module:Android), add to respositories (2x)
+```
+maven {
+            url "http://visustar.francelab.fr.ibm.com:8081/nexus/content/repositories/mobile-s"
+}
+```  
+7. In build.gradle(module:Android), add classpath 'com.google.gms:google-services:2.0.0-alpha3' to dependencies (3x)
+8. In build.gradle(module:Android), add jcenter() to repositories in buildscript block
+7. Add compile 'com.google.android.gms:play-services-gcm:8.4.0' to app/platforms/android/cordova-plugin-mfp-push/<appname>-build-extras.gradle in dependencies
+8. Add compile 'com.squareup.okhttp:okhttp:2.6.0' to app/platforms/android/cordova-plugin-mfp-push/<appname>-build-extras.gradle in depedencies
+9. Add apply plugin: 'com.google.gms.google-services' to app/platforms/android/cordova-plugin-mfp-push/<appname>-build-extras.gradle outside dependencies
+10. Add google-services.json configuration file to app/platforms/android folder
+11. Change version to '8.0.0-Beta1-SNAPSHOT' in app/platforms/android folder
 11. Add the Push SDK APIs to your application (Refer the sample application)
-12. Disable the old push plugin in config.xml. This is reqired till its removed
 13. If you want to change the notification title, then add push_notification_tile in strings.xml
 
 ### To get the application running for iOS
 1. Create Cordova project without using cordova mfp template
-2. In the cordova-plugin-mfp-push, comment out the dependeny on cordova-plugin-mfp in plugin.xml
-3. Run cordova build
-4. Open in XCode
-5. Add #import "HelloCordova-Swift.h" in AppDelegate.m
-6. Declare the notification methods in AppDelegate.m (Refer Sample)
-7. Use the Push SDK APIs (Refer Sample)
-8. Modify the server and port details in mfpclient.plist  
+2. $ cordova platform add ios
+3. $ cordova platform add plugin cordova-plugin-mfp-push
+4. $ cordova build
+5. Open in XCode
+6. Use the Push SDK APIs (Refer Sample)
 
 ### Notifications API
 
 #### API methods for tag notifications
 ##### Client-side API
-* `WL.Client.Push.subscribeTag(tagName,options)` - Subscribes the device to the specified tag name.
-* `WL.Client.Push.unsubscribeTag(tagName,options)` - Unsubscribes the device from the specified tag name.
-* `WL.Client.Push.isPushSupported()` - Returns `true` if push notifications are supported by the platform, or `false` otherwise.
-* `WL.Client.Push.isTagSubscribed(tagName)` - Returns whether the device is subscribed to a specified tag name.
+* `MFPPush.subscribeTag(tagName,options)` - Subscribes the device to the specified tag name.
+* `MFPPush.unsubscribeTag(tagName,options)` - Unsubscribes the device from the specified tag name.
+* `MFPPush.registerDevice(options) - Registers devices for push notifications (?!? confirm definition ?!?)
+* `MFPPush.isPushSupported()` - Returns `true` if push notifications are supported by the platform, or `false` otherwise.
+* `MFPPush.isTagSubscribed(tagName)` - Returns whether the device is subscribed to a specified tag name.
 
 #### Common API methods for tag and broadcast notifications
 ##### Client-side API

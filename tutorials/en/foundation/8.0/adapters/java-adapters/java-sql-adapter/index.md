@@ -21,8 +21,7 @@ This tutorial covers an example of a Java adapter that connects to a MySQL back 
 
 * [Setting up the data source](#setting-up-the-data-source)
 * [Implemeting SQL in the adapter Resource class](#implementing-sql-in-the-adapter-resource-class)
-* [Results](#results)
-* [Sample](#sample)
+* [Sample adapter](#sample-adapter)
 
 ## Setting up the data source
 In order to configure the MobileFirst Server to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the MobileFirst Operations Console.
@@ -325,9 +324,11 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 ## Sample adapter
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
 
-The Adapters Maven project includes the **JavaSQL** adapter described above.    
-Also included is an SQL script in the **Utils** folder, which needs to be imported into your database to test the project.
+The Adapters Maven project includes the **JavaSQL** adapter described above.  
+Also included is an SQL script in the **Utils** folder.
 
 ### Sample usage
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
+* Import the SQL script to a database.
+* Make sure that the `mobilefirst@%` user has all access permissions assigned.
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaSQL adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

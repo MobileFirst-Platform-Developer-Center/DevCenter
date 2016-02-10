@@ -41,9 +41,9 @@ GEM
     json (1.8.3)
     kramdown (1.9.0)
     liquid (3.0.6)
-    listen (3.0.6)
+    listen (3.0.5)
       rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9.7)
+      rb-inotify (>= 0.9)
     mercenary (0.3.5)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -79,4 +79,4 @@ DEPENDENCIES
   wkhtmltopdf-binary-edge
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

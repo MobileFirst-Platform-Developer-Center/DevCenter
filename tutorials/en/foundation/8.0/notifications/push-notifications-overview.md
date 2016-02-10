@@ -59,6 +59,52 @@ User Authenticated Notifications are notifications secured with OAuth.
 
 This section assumes you have an application registered in the server, and should explain how to add a certificate for iOS (as well mention what are the available certificate types) and where to get it from, how to create GCM credentials and how to add them.</span>
 
+In the MFP Console > Security > Map Scope Elements to Security Checks > add the scope _push.mobileclient_ to enable push notifications.
+
+###Android
+[screenshot]
+In the push services > push settings section of your application in the MFP operations console, add your Google Cloud Messaging (GCM) Push credentials. 
+
+To enable GCM for your application, set it up at [this link](https://developers.google.com/mobile/add?platform=android&cntapi=gcm&cnturl=https:%2F%2Fdevelopers.google.com%2Fcloud-messaging%2Fandroid%2Fclient&cntlbl=Continue%20Adding%20GCM%20Support&%3Fconfigured%3Dtrue
+). Keep the configuration file for later. Enter in the Sender ID and API Key into the Push > Push Settings > GCM Push Credential Sections.
+
+*_Android Push Notifications Service_*
+
+If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:
+
+Configure the firewall to allow connectivity with GCM in order for your GCM client apps to receive messages. The ports to open are 5228, 5229, and 5230. GCM typically uses only 5228, but it sometimes uses 5229 and 5230. GCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. For more information, see Implementing an HTTP Connection Server.
+Ensure that your firewall accepts outgoing connections from MobileFirst Server to android.googleapis.com on port 443.
+
+**When testing with an emulator, use a Google Device
+
+###iOS
+[screenshot]
+In the push services > push settings section of your application in the MFP operations console, add your APNS certificate and corresponding password. 
+
+>To learn about setting up push notifications required certificates, see this blog post: [Understanding and setting up certificates required to use iOS devices and Apple Push Notifications services (APNS)](https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en)
+
+*_Apple Push Notifications Services_*
+
+For push notifications to be sent, the following servers must be accessible from a MobileFirst Server instance:
+Sandbox servers:
+gateway.sandbox.push.apple.com:2195
+feedback.sandbox.push.apple.com:2196
+
+Production servers:
+gateway.push.apple.com:2195
+Feedback.push.apple.com:2196
+
+1-courier.push.apple.com 5223
+
+*_APNS Certificate_*
+
+* During the development phase, use the apns-certificate-sandbox.p12 sandbox certificate file.
+* During the production phase, use the apns-certificate-production.p12 production certificate file.
+* Place the certificate file either in the application root folder or in the application environment (iPhone or iPad) folder. The environment root folder takes the highest priority.
+*Note*: APNS certificates must have a non-blank password.
+*Note*: The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
+
+
 === 
 this overview tutorial should explain:
 - how to setup authenticated push; 

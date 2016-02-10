@@ -22,7 +22,7 @@ Read the [Authentication concepts](../authentication-concepts/) tutorial.
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Defining a SecurityCheck
-In the Java adapter's adapter.xml file, add an XML element called `securityCheckDefinition`. For example:
+[Create a Java adapter](../../adapters/creating-adapters/). In the Java adapter's adapter.xml file, add an XML element called `securityCheckDefinition`. For example:
 
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
@@ -130,7 +130,8 @@ Also available are these predefined security checks:
 - LTPA
 
 ## Tutorials to follow next
-Continue reading about security checks in the following tutorials:
+Continue reading about security checks in the following tutorials.  
+Remember to deploy your adapter when you're done developing or making changes.
 
 * [Implementing the SecurityCheckWithAttempts](../security-check-with-attempts/)
 * [Implementing the SecurityCheckWithUserAuthentication](../security-check-with-user-authentication/)
