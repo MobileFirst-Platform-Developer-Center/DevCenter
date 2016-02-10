@@ -13,27 +13,25 @@ This tutorial covers the basics of the IBM MobileFirst Platform Foundation devel
 
 #### Jump to:
 
-- [MobileFirst Development Kit](#mobilefirst-development-kit)
+- [Development Kit](#development-kit)
 - [Applications and Adapters Development](#applications-and-adapters-development)
 
-## MobileFirst Development Kit
-The IBM MobileFirst Development Kit consists of the following:
+## Development Kit
+The IBM MobileFirst Platform Foundation Development Kit consists of the following components.  
+These artifacts can either be installed seperately, or downloaded in a single bundle using the MobileFirst Platform Foundation Development Kit Installer.
+
+#### MobileFirst Platform Foundation Development Kit Installer
+The Installer can be downloaded ahead of time and be used in "offline situations", where Internet connectivity is not available. It pre-packages the MobileFirst Server, The MobileFirst Developer CLI and the MobileFirst SDKs for manual installation.
+
+[Download the Installer](#). 
 
 ### MobileFirst Server
-The IBM MobileFirst Server is a web application archive (.war) that is deployed on an IBM WebSphere Liberty profile Application Server.  
-From the MobileFirst Server's Operations Console a developer can:
+MobileFirst Server is a set of Web Application Archive (.war) files that can be deployed to the following application servers: Tomcat, WebSphere Liberty profile and WebSphere Full profile.
 
-- Register and deploy applications and adapters
-- Optionally download native/Cordova application and adapter templates 
-- Configure application aspects:
-    - Authentication and security
-    - Application Authenticity
-    - Push Notifications
-    - Direct Update
-- Generate DevOps scripts for continuous integration workflows and faster development cycles
-- and more
+As part of the MobileFirst development kit, the MobileFirst Server arrives pre-packaged in the following form:  
+A WebSphere Liberty profile application server with MobileFirst Server deployed onto it. The server provides an  "mfp" runtime and uses a pre-configured filesystem-based database.
 
-The MobileFirst Development Server is installed as a stand-alone server and provides the following scripts in its **scripts** folder:
+The MobileFirst Server is installed as a stand-alone server and provides the following scripts in its **scripts** folder:
 
 `.sh` scripts are for Linux and Mac.  
 `.cmd` scripts are for Windows.
@@ -43,8 +41,9 @@ The MobileFirst Development Server is installed as a stand-alone server and prov
 - `start.[sh|cmd]`: Run the local MobileFirst Server in background mode
 - `stop.[sh|cmd]`: Stop the currenet local MobileFirst Server instance
 
-To learn more about the MobileFirst Operations Console, see the tutorial: [Using the MobilFirst Platform Operations Console](../../quick-start/console/).  
-To download and install the MobileFirst Development Server, visit the [downloads]({{site.base}}/downloads/) page.
+> Download and install the MobileFirst Server, visit the [downloads]({{site.base}}/downloads/) page.
+
+> Learn more about the MobileFirst Server in the user documentation.
 
 #### Adding the MobileFirst Server to Eclipse
 The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quickly starting and stopping of the development server.  
@@ -58,6 +57,22 @@ The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quick
 7. Provide  the path to the server's root directory, and select a JRE version to use.
 8. Click **Next** followed by clicking **Finish**.
 
+### MobileFirst Operations Console
+The MobileFirst Server's Operations Console expose the MobileFirst Server functionalities.  
+A developer can:
+
+- Register and deploy applications and adapters
+- Optionally download native/Cordova application and adapter templates 
+- Configure application aspects:
+    - Authentication and security
+    - Application Authenticity
+    - Push Notifications
+    - Direct Update
+- Generate DevOps scripts for continuous integration workflows and faster development cycles
+- and more
+
+> Learn more about the MobileFirst Operations Console, see the tutorial: [Using the MobilFirst Platform Operations Console](../../quick-start/console/).  
+
 ### MobileFirst Command-line Interface
 The IBM MobileFirst command-line interface (CLI) tool enables developers to:
 
@@ -65,7 +80,7 @@ The IBM MobileFirst command-line interface (CLI) tool enables developers to:
 - Register and configure applications
 - Create, build, deploy and test adapters
 
-To download and install the MobileFirst Developer CLI, visit the [downloads]({{site.base}}/downloads/) page.
+> Download and install the MobileFirst Developer CLI, visit the [downloads]({{site.base}}/downloads/) page.
 
 > Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
@@ -87,6 +102,9 @@ MobileFirst Platform Foundation provides client-side SDKs for Cordova applicatio
 
 To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials.  
 To use the MobileFirst server-side APIs, visit the [Adapters](../../adapters/) tutorials.  
+
+#### Manual installation
+If the MobileFirst SDKs were downloaded as part of the MobileFirst Platform Foundation Development Kit Installer, [visit the user the documentation for installation instructions](#).
 
 ## Applications and adapters development
 You can use your preferred code editor or alternative IDEs, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
