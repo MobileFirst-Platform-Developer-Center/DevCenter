@@ -12,6 +12,7 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 be
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
 
 * [Setting up the MobileFirst development environment](../setting-up-your-development-environment/mobilefirst-development-environment/)
+* [Setting up the Cordova development environments](../setting-up-your-development-environment/cordova-development-environment/)
 * [Setting up the iOS development environment](../setting-up-your-development-environment/ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/android-development-environment/)
 * [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/windows-8-10-development-environment/)
@@ -39,11 +40,11 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
 
 * [MobileFirst Platform Foundation SDK development in Cordova applications](../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
 * [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
-* Resource Requests from client applications
+* Resource Request from client applications
     * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
-    * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
-    * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
-    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-native-windows-8-10-applications/)
+    * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-ios-swift-applications/)
+    * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-android-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/)
 * JSONStore
     * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore-cordova/)
 	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore-ios/)
@@ -55,14 +56,14 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
 ### [Adapters](../adapters/)
 Develop server-side code to integrate with enterprise back-end systems and cloud services.  
 
-* <span style="color:red">IN PROGRESS</span> [Adapters overview](../adapters/adapters-overview/)
+* [Adapters overview](../adapters/adapters-overview/)
 * [Creating Java and JavaScript adapters](../adapters/creating-adapters/)
 * [JavaScript adapters](../adapters/javascript-adapters/)
     * [JavaScript HTTP Adapter](../adapters/javascript-adapters/js-http-adapter/)
     * [JavaScript SQL Adapter](../adapters/javascript-adapters/js-sql-adapter/)
     * [Using Java in JavaScript Adapters](../adapters/javascript-adapters/using-java-in-javascript-adapters/)
 * [Java Adapters](../adapters/java-adapters/)
-    * [Java HTTP adapter](../adapters/java-adapters/java-http-adapter/)
+    * <span style="color:red">IN PROGRESS </span>[Java HTTP adapter](../adapters/java-adapters/java-http-adapter/)
     * [Java SQL adapter](../adapters/java-adapters/java-sql-adapter/)
 * [Developing Adapters in IDEs](../adapters/developing-adapters/)
 * [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
@@ -73,45 +74,43 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 Add various layers of protection to your applications.
 
 * [Authentication concepts](../authentication-and-security/authentication-concepts/)
-* <span style="color:red">IN PROGRESS </span>[Creating a Security Check](../authentication-and-security/creating-a-security-check/)
+* [Creating a Security Check](../authentication-and-security/creating-a-security-check/)
 * [SecurityCheck WithAttempts](../authentication-and-security/security-check-with-attempts/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the security adapter](../authentication-and-security/security-check-with-attempts/adapter/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-attempts/cordova/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-attempts/ios/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-attempts/android/)
+    * [Implementing the security check](../authentication-and-security/security-check-with-attempts/security-check/)
+    * [Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-attempts/cordova/)
+    * [Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-attempts/ios/)
+    * [Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-attempts/android/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-attempts/windows-8-10/)
 * [SecurityCheck With UserAuthentication](../authentication-and-security/security-check-with-user-authentication/)
-    * <span style="color:red">TODO </span>[Implementing the security adapter](../authentication-and-security/security-check-with-user-authentication/adapter/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the security check](../authentication-and-security/security-check-with-user-authentication/security-check/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-user-authentication/cordova/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-user-authentication/ios/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-user-authentication/android/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-user-authentication/windows-8-10/)
 * <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
 * [Application Authenticity](../authentication-and-security/application-authenticity/)
-{% comment %}
 * <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
+{% comment %}
 * <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
 * <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
 {% endcomment %}
-
 
 ### [Notifications](../notifications/)
 Send notifications with IBM MobileFirst Platform Foundation.  
 
 * <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
-* <span style="color:red">TODO </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
-* Handling Push Notifications in client applications
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)  
-  
+* <span style="color:red">IN PROGRESS </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
+* <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
+* <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
+* <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)
+
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
 * <span style="color:red">TODO </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
 * <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
-    * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-native-android/)
-    * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-native-ios/)
+    * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-android/)
+    * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-ios/)
     * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
 * <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
 * <span style="color:red">TODO </span>[Alerts](../analytics/alerts/)

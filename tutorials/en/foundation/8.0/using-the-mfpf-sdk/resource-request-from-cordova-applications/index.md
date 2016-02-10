@@ -132,7 +132,7 @@ The adapter Maven project contains the Java adapter to be used during the resour
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-1. From the command line, navigate to the Cordova project.
+1. From the command line, navigate to the project's root folder.
 2. Ensure the sample is registered in the MobileFirst Server by running the command:  
 `mfpdev app register`.
 3. Add a platform by running the `cordova platform add` command.

@@ -16,7 +16,7 @@ The MobileFirst Platform Foundation SDK provides a set of API methods enabling a
 
 - Android Studio and MobileFirst Developer CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server
-- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment) tutorial.
+- Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Android development environment](../../setting-up-your-development-environment/android-development-environment) tutorials.
 
 #### Jump to:
 
@@ -103,6 +103,13 @@ Create an Android Studio project or use an existing one.
         1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
         2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
         3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
+
+### Creating an WLClient instance
+Before using any MobileFirst-supplied APIs, first create a `WLClient` instance in the `onCreate` method:
+
+```java
+WLClient.createInstance(this);
+```
 
 ## Updating the MobileFirst Native SDK
 To update the MobileFirst Native SDK with the latest release, find the release version number and update the `version` property accordingly in the **build.gradle** file.  
