@@ -55,7 +55,7 @@ This abstract class extends `SecurityCheckWithExternalization` and implements mo
 
 The `SecurityCheckWithAttempts` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
 
-> Learn more in the [SecurityCheckWithAttempts](../security-check-with-attempts) tutorial.
+> Learn more in the [Security Check With Attempts](../security-check-with-attempts/) tutorials.
 
 ### SecurityCheckWithUserAuthentication
 This abstract class extends `SecurityCheckWithAttempts` and therefore inherits all of its features.
@@ -64,7 +64,7 @@ In addition, the `SecurityCheckWithUserAuthentication` class provides the Mobile
 
 Also provided is a built-in capability to optionally enable a "Remember Me" login behavior.
 
-> Learn more in the [SecurityCheckWithUserAuthentication](../security-check-with-user-authentication) tutorial.
+> Learn more in the [SecurityCheck With User Authentication](../security-check-with-user-authentication/) tutorials.
 
 ## SecurityCheck Configuration
 Each `SecurityCheck` implementation class can use a `SecurityCheckConfiguration` class that defines properties available for that `SecurityCheck`. Each base `SecurityCheck` class comes with a matching `SecurityCheckConfiguration` class. You can create your own implementation that extends one of the base `SecurityCheckConfiguration` classes and use it for your custom `SecurityCheck`.
