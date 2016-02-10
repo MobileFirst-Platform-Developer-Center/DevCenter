@@ -100,10 +100,9 @@ Send notifications with IBM MobileFirst Platform Foundation.
 
 * <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
 * <span style="color:red">IN PROGRESS </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
-* Handling Push Notifications in client applications
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
-    * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)
+* <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
+* <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
+* <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Android applications](../notifications/handling-push-notifications-in-android/)
 
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
