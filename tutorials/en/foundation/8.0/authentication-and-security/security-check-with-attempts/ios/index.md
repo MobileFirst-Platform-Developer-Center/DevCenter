@@ -41,7 +41,7 @@ class PinCodeChallengeHandler : WLChallengeHandler {
 ```
 
 ## Handling the challenge
-The minimum requirement from the `WLChallengeHandler` protocol is to implement `handleChallenge(challenge: [NSObject : AnyObject]!)`, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`. It is responsible for asking the user to provide the credentials.
+The minimum requirement from the `WLChallengeHandler` protocol is to implement `handleChallenge(challenge: [NSObject : AnyObject]!)`, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`.
 
 > Learn more about the `WLChallengeHandler` protocol in the user documentation.
 

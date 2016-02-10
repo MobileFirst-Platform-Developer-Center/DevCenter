@@ -40,9 +40,7 @@ PinCodeChallengeHandler = WL.Client.createWLChallengeHandler("PinCodeAttempts");
 ```
 
 ## Handling the challenge
-The minimum requirement from the `WLChallengeHandler` protocol is to implement the `handleChallenge()` method.
-`handleChallenge` receives the challenge as a JSON object. This is the place to put your logic code that handles the received challenge.
-for example display a form for entering username and password.
+The minimum requirement from the `WLChallengeHandler` protocol is to implement the `handleChallenge()` method, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSON` Object.
 
 > Learn more about the `WLChallengeHandler` protocol in the user documentation.
 
