@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing Security Check with Attempts Security Adapter
+title: Implementing the With Attempts Security Check 
 breadcrumb_title: Security adapter
 relevantTo: [android,ios,windows,cordova]
 weight: 3
