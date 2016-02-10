@@ -14,7 +14,7 @@ In that context, IBM MobileFirst Platform Server serves as an **authorization se
 #### Jump to:
 
 * [Authorization flow](#authorization-flow)
-* [Authorization entities](#authEntities)
+* [Authorization entities](#authorization-entities)
 * [Protecting resources](#protecting-resources)
 * [Further reading](#further-reading)
 
@@ -26,7 +26,7 @@ The authorization flow has two phases:
 
 ### Obtaining a token
 In this phase, the client undergoes **security checks** in order to receive an access token.  
-These security checks use **authorization entities**, which are described in [the next section](#authEntities).  
+These security checks use **authorization entities**, which are described in [the next section](#authorization-entities).  
 
 ![Obtain Token](auth-flow-1.jpg)
 
