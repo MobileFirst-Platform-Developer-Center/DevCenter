@@ -11,6 +11,23 @@ print_pdf: false
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="settingUpYourDevelopmentEnvironment">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesettingUpYourDevelopmentEnvironment" aria-expanded="true" aria-controls="settingUpYourDevelopmentEnvironment">Setting up your development environment</a>
+            </h4>
+        </div>
+
+        <div id="collapsesettingUpYourDevelopmentEnvironment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="settingUpYourDevelopmentEnvironment">
+            <div class="panel-body">
+                <ul>
+                    <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
+                    <li><a href="../setting-up-your-development-environment/ios-development-environment/">Setting up the iOS development environment</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="quickstart">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseQuickstart" aria-expanded="true" aria-controls="collapseQuickstart">Quick Start</a>
@@ -27,23 +44,6 @@ print_pdf: false
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="settingUpYourDevelopmentEnvironment">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesettingUpYourDevelopmentEnvironment" aria-expanded="true" aria-controls="settingUpYourDevelopmentEnvironment">Setting up your development environment</a>
-            </h4>
-        </div>
-
-        <div id="collapsesettingUpYourDevelopmentEnvironment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="settingUpYourDevelopmentEnvironment">
-            <div class="panel-body">
-                <ul>
-                    <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
-                    <li><a href="../setting-up-your-development-environment/ios-development-environment/">Setting up the iOS development environment</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="helloWorld">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseHelloWorld" aria-expanded="true" aria-controls="helloWorld">Hello World</a>
@@ -53,9 +53,9 @@ print_pdf: false
         <div id="collapseHelloWorld" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hellowWorld">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../configuring-the-mfpf-sdk/configuring-a-native-ios-application-with-the-mfp-sdk/">Configuring a native iOS application with the MobileFirst Platform SDK</a></li>
-                    <li><a href="../configuring-the-mfpf-sdk/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Console</a></li>
-                    <li> <a href="../advanced-using-the-mfpf-sdk/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a></li>
+                    <li><a href="../quick-start/console/">Using the MobileFirst Platform Operations Console</a></li>
+                    <li><a href="../adding-the-mfpf-sdk/ios/">Adding the MobileFirst Platform Foundation SDK to iOS Applications</a></li>
+                    <li> <a href="../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/">Using MobileFirst Developer CLI to Manage MobileFirst Artifacts</a></li>
                 </ul>
             </div>
         </div>
@@ -73,7 +73,7 @@ print_pdf: false
                 <b>Required reading</b>
                 <ul>
                     <li><a href="../adapters/adapters-overview/">Adapters overview</a></li>
-                    <li> <a href="../adapters/invoking-adapter-procedures-native-ios-applications/">Invoking adapter procedures from native iOS applications</a></li>
+                    <li> <a href="../using-the-mfpf-sdk/resource-request-from-ios-swift-applications/">Resource request from iOS Swift applications</a></li>
                 </ul>
 
                 <b>Further reading</b>
@@ -82,8 +82,6 @@ print_pdf: false
                         <ul>
                             <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a></li>
                             <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                            <li><a href="../adapters/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a></li>
-                            <li><a href="../adapters/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a></li>
                             <li><a href="../adapters/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a></li>
                         </ul>
                     </li>
@@ -93,8 +91,9 @@ print_pdf: false
                             <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
                         </ul>
                     </li>
-                    <li><a href="../adapters/debugging-adapters/">Debugging adapters</a></li>
+                    <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
                     <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
+                    <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
                 </ul>
             </div>
         </div>
@@ -110,9 +109,8 @@ print_pdf: false
         <div id="collapseWorkingWithData" class="panel-collapse collapse" role="tabpanel" aria-labelledby="workingWithData">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../using-the-mfpf-sdk/jsonstore">JSONStore</a></li>
+                    <li><a href="../using-the-mfpf-sdk/jsonstore-ios">JSONStore</a></li>
                     <li><a href="../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a></li>
-                    <li><a href="../advanced-using-the-mfpf-sdk/remote-controlled-client-side-log-collection/">Remote-controlled Client-side log collection</a></li>
                 </ul>
             </div>
         </div>
@@ -127,35 +125,33 @@ print_pdf: false
 
         <div id="collapseAuthenticationSecurity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AuthenticationSecurity">
             <div class="panel-body">
-                <a href="../authentication-security/authentication-concepts/">Authentication concepts</a>
+                <a href="../authentication-and-security/authentication-concepts/">Authentication concepts</a>
                 <br><br>
-                <h4>Form-based authentication</h4>
+                <h4>Security Check WithAttempts</h4>
                 <ul>
-                    <li><a href="../authentication-security/form-based-authentication/">Form-based authentication - server configuration</a></li>
-                    <li><a href="../authentication-security/form-based-authentication/form-based-authentication-native-ios-applications/">Form-based authentication - client implementation</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-attempts/security-check">Creating the security check</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-attempts/ios/">Implementing the challenge handler</a></li>
                 </ul>
 
-                <h4>Adapter-based authentication</h4>
+                <h4>Security Check UserAuthentication</h4>
                 <ul>
-                    <li><a href="../authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a></li>
-                    <li><a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-ios-applications/">Adapter-based authentication - client implementation</a></li>
-                    <li><a href="../advanced-topics/two-step-adapter-authentication/">Two-Step authentication</a></li>
-                </ul>
-
-                <h4>Custom authentication</h4>
-                <ul>
-                    <li><a href="../authentication-security/custom-authentication/">Custom authentication - server configuration</a></li>
-                    <li><a href="../authentication-security/custom-authentication/custom-authentication-in-native-ios-applications/">Custom authentication - client implementation</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-user-authentication/security-check">Creating the security check</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-user-authentication/ios/">Implementing the challenge handler</a></li>
                 </ul>
 
                 <h4>Application Authenticity</h4>
                 <ul>
-                    <li><a href="../authentication-security/application-authenticity/">Application Authenticity</a></li>
+                    <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
                 </ul>
 
                 <h4>Authenticating external resources</h4>
                 <ul>
-                    <li><a href="../authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a></li>
+                    <li><a href="../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a></li>
+                </ul>
+                
+                <h4>Other</h4>
+                <ul>
+                    <li><a href="../authentication-and-security/ntlm/">NTLM Authentication</a></li>
                 </ul>
             </div>
         </div>
@@ -173,13 +169,22 @@ print_pdf: false
                 <b>Push Notifications</b>
                 <ul>
                     <li><a href="../notifications/push-notifications-overview">Push Notifications Overview</a></li>
-                    <li><a href="../notifications/push-notifications-overview/push-notifications-in-native-ios-applications/">Push notifications in native iOS applications</a></li>
+                    <li><a href="../notifications/push-notifications-overview/sending-push-notifications">Sending push notifications</a>
+                    <li><a href="../notifications/push-notifications-overview/handling-push-notifications-in-ios/">Handling Push Notifications in iOS applications</a></li>
+                </ul>
+                <b>Adapters mashup</b>
+                <ul>
+                    <li><a href="../adapters/advanced-adapter-usage-mashup">Adapters mashup</a></li>
+                </ul>
+                <b>IBM Containers</b>
+                <ul>
+                    <li><a href="../ibm-containers/">IBM Containers Overview</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="MovingToProduction">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMovingToProduction" aria-expanded="true" aria-controls="MovingToProduction">Moving to Production</a>
@@ -194,20 +199,19 @@ print_pdf: false
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ReportsAndAnalytics">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReportsAndAnalytics" aria-expanded="true" aria-controls="ReportsAndAnalytics">Reports and analytics</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReportsAndAnalytics" aria-expanded="true" aria-controls="ReportsAndAnalytics">Operational Analytics analytics</a>
             </h4>
         </div>
 
         <div id="collapseReportsAndAnalytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ReportsAndAnalytics">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../analytics/operational-analytics/">Operational Analytics</a></li>
-                    <li><a href="../analytics/reports-analytics/">Reports and analytics</a></li>
+                    <li><a href="../analytics/">Operational Analytics</a></li>
                 </ul>
             </div>
         </div>

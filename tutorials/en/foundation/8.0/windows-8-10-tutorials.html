@@ -1,15 +1,32 @@
 ---
 layout: tutorial
-title: Developing for Windows 10
+title: Developing for Windows 8.1
 show_disqus: false
 use_dropdown: true
 print_pdf: false
 ---
 <br>
-<p>Review curated tutorials for the Windows 10 platform.</p>
+<p>Review curated tutorials for the Windows 8.1 Universal platform.</p>
 <br>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="settingUpYourDevelopmentEnvironment">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesettingUpYourDevelopmentEnvironment" aria-expanded="true" aria-controls="settingUpYourDevelopmentEnvironment">Setting up your development environment</a>
+            </h4>
+        </div>
+
+        <div id="collapsesettingUpYourDevelopmentEnvironment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="settingUpYourDevelopmentEnvironment">
+            <div class="panel-body">
+                <ul>
+                    <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
+                    <li><a href="../setting-up-your-development-environment/windows-8-10-development-environment/">Setting up the Windows 8.1 Universal and Windows 10 UWP  development environment</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="quickstart">
             <h4 class="panel-title">
@@ -27,24 +44,6 @@ print_pdf: false
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="settingUpYourDevelopmentEnvironment">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesettingUpYourDevelopmentEnvironment" aria-expanded="true" aria-controls="settingUpYourDevelopmentEnvironment">Setting up your development environment</a>
-            </h4>
-        </div>
-
-        <div id="collapsesettingUpYourDevelopmentEnvironment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="settingUpYourDevelopmentEnvironment">
-            <div class="panel-body">
-                <ul>
-                    <li><a href="../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
-                    <li><a href="../setting-up-your-development-environment/windows-8-10-development-environment/">Setting up the Windows Phone development environment</a></li>
-                </ul
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="helloWorld">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseHelloWorld" aria-expanded="true" aria-controls="helloWorld">Hello World</a>
@@ -54,9 +53,9 @@ print_pdf: false
         <div id="collapseHelloWorld" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hellowWorld">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../configuring-the-mfpf-sdk/configuring-a-native-windows-8-application-with-the-mfp-sdk/">Configuring a native Windows 8.1 application with the MobileFirst Platform SDK</a></li>
-                    <li><a href="../configuring-the-mfpf-sdk/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Console</a></li>
-                    <li> <a href="../advanced-using-the-mfpf-sdk/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a></li>
+                    <li><a href="../quick-start/console/">Using the MobileFirst Platform Operations Console</a></li>
+                    <li><a href="../adding-the-mfpf-sdk/windows-8-10/">Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal and Windows 10 UWP  Applications</a></li>
+                    <li> <a href="../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/">Using MobileFirst Developer CLI to Manage MobileFirst Artifacts</a></li>
                 </ul>
             </div>
         </div>
@@ -74,7 +73,7 @@ print_pdf: false
                 <b>Required reading</b>
                 <ul>
                     <li><a href="../adapters/adapters-overview/">Adapters overview</a></li>
-                    <li> <a href="../adapters/invoking-adapter-procedures-native-windows-8-applications/">Invoking adapter procedures from native Windows 8.1 applications</a></li>
+                    <li> <a href="../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/">Resource request from Windows 8.1 Universal and Windows 10 UWP  applications</a></li>
                 </ul>
 
                 <b>Further reading</b>
@@ -83,8 +82,6 @@ print_pdf: false
                         <ul>
                             <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a></li>
                             <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                            <li><a href="../adapters/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a></li>
-                            <li><a href="../adapters/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a></li>
                             <li><a href="../adapters/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a></li>
                         </ul>
                     </li>
@@ -94,8 +91,9 @@ print_pdf: false
                             <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
                         </ul>
                     </li>
-                    <li><a href="../adapters/debugging-adapters/">Debugging adapters</a></li>
+                    <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
                     <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
+                    <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
                 </ul>
             </div>
         </div>
@@ -110,30 +108,33 @@ print_pdf: false
 
         <div id="collapseAuthenticationSecurity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AuthenticationSecurity">
             <div class="panel-body">
-                <a href="../authentication-security/authentication-concepts/">Authentication concepts</a>
+                <a href="../authentication-and-security/authentication-concepts/">Authentication concepts</a>
                 <br><br>
-                <b>Form-based authentication</b>
+                <h4>Security Check WithAttempts</h4>
                 <ul>
-                    <li><a href="../authentication-security/form-based-authentication/">Form-based authentication - server configuration</a></li>
-                    <li><a href="../authentication-security/form-based-authentication/form-based-authentication-in-native-windows-8-applications/">Form-based authentication - client implementation</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-attempts/security-check">Creating the security check</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-attempts/windows-8-10/">Implementing the challenge handler</a></li>
                 </ul>
 
-                <b>Adapter-based authentication</b>
+                <h4>Security Check UserAuthentication</h4>
                 <ul>
-                    <li><a href="../authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a></li>
-                    <li><a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-windows-8-applications/">Adapter-based authentication - client implementation</a></li>
-                    <li><a href="../advanced-topics/two-step-adapter-authentication/">Two-Step authentication</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-user-authentication/security-check">Creating the security check</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-user-authentication/windows-8-10/">Implementing the challenge handler</a></li>
                 </ul>
 
-                <b>Custom authentication</b>
+                <h4>Application Authenticity</h4>
                 <ul>
-                    <li><a href="../authentication-security/custom-authentication/">Custom authentication - server configuration</a></li>
-                    <li><a href="../authentication-security/custom-authentication/custom-authentication-in-native-windows-8-applications/">Custom authentication - client implementation</a></li>
+                    <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
                 </ul>
 
-                <b>Application Authenticity</b>
+                <h4>Authenticating external resources</h4>
                 <ul>
-                    <li><a href="../authentication-security/application-authenticity/">Application Authenticity</a></li>
+                    <li><a href="../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a></li>
+                </ul>
+                
+                <h4>Other</h4>
+                <ul>
+                    <li><a href="../authentication-and-security/ntlm/">NTLM Authentication</a></li>
                 </ul>
             </div>
         </div>
@@ -151,13 +152,22 @@ print_pdf: false
                 <b>Push Notifications</b>
                 <ul>
                     <li><a href="../notifications/push-notifications-overview">Push Notifications Overview</a></li>
-                    <li><a href="../notifications/push-notifications-overview/push-notifications-in-native-windows-8-applications/">Push notifications in native Windows 8.1 applications</a></li>
+                    <li><a href="../notifications/push-notifications-overview/sending-push-notifications">Sending push notifications</a>
+                    <li><a href="../notifications/push-notifications-overview/handling-push-notifications-in-windows-8-10/">Handling Push Notifications in Windows 8 Universal and Windows 10 UWP applications</a></li>
+                </ul>
+                <b>Adapters mashup</b>
+                <ul>
+                    <li><a href="../adapters/advanced-adapter-usage-mashup">Adapters mashup</a></li>
+                </ul>
+                <b>IBM Containers</b>
+                <ul>
+                    <li><a href="../ibm-containers/">IBM Containers Overview</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="MovingToProduction">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMovingToProduction" aria-expanded="true" aria-controls="MovingToProduction">Moving to Production</a>
@@ -172,20 +182,19 @@ print_pdf: false
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ReportsAndAnalytics">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReportsAndAnalytics" aria-expanded="true" aria-controls="ReportsAndAnalytics">Reports and analytics</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReportsAndAnalytics" aria-expanded="true" aria-controls="ReportsAndAnalytics">Operational Analytics analytics</a>
             </h4>
         </div>
 
         <div id="collapseReportsAndAnalytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ReportsAndAnalytics">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../analytics/operational-analytics/">Operational Analytics</a></li>
-                    <li><a href="../analytics/reports-analytics/">Reports and analytics</a></li>
+                    <li><a href="../analytics/">Operational Analytics</a></li>
                 </ul>
             </div>
         </div>

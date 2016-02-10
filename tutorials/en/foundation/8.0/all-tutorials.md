@@ -42,9 +42,9 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
 * [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
 * Resource Request from client applications
     * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
-    * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
-    * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
-    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-native-windows-8-10-applications/)
+    * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-ios-swift-applications/)
+    * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-android-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/)
 * JSONStore
     * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore-cordova/)
 	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore-ios/)
@@ -109,8 +109,8 @@ Monitor deployed applications and adapters, gain insight on application usage, f
 
 * <span style="color:red">TODO </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
 * <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
-    * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-native-android/)
-    * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-native-ios/)
+    * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-android/)
+    * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-ios/)
     * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
 * <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
 * <span style="color:red">TODO </span>[Alerts](../analytics/alerts/)
