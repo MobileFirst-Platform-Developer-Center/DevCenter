@@ -78,7 +78,7 @@ request.Send(formParams);
 ```    
 
 ### Header parameters
-To send a parameter as an HTTP header use `.AddHeader()` API:
+To send a parameter as an HTTP header use `.SetHeader()` API:
 
 ```cs
 request.SetHeader(KeyValuePair<string,string> header);
