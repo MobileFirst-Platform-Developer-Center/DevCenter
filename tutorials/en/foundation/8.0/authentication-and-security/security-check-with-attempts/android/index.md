@@ -91,7 +91,7 @@ submitFailure(null);
 ```
 
 ## Handling failures
-Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `WLChallengeHandler`'s `handleFailure` method.
+Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `WLChallengeHandler`'s `handleFailure` method.  
 The structure of the `JSONObject` passed as a parameter greatly depends on the nature of the failure.
 
 ```java
