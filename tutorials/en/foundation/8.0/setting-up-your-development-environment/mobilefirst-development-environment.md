@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
 ## Overview
-This tutorial covers the basics of the IBM MobileFirst Platfrom Foundation development environment and tools.
+This tutorial covers the basics of the IBM MobileFirst Platform Foundation development environment and tools.
 
 - The MobileFirst developer tools are supported on the following operating systems: Windows, Apple OS X and Linux.
 - The MobileFirst Operations Console is supported in modern browsers such as: Internet Explorer 10+, latest Chrome, Safari and Firefox.
