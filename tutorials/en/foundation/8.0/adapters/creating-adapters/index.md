@@ -24,8 +24,8 @@ This tutorial explains how to create, build and deploy MobileFirst **Java or Jav
  * [Create an Adapter](#install-mobilefirst-developer-cli)
 * [File Structure](file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
-* [Updating the Maven Archetype Version](#updating-the-maven-archetype-version)
 * [Downloading or Deploying Adapters Using MobileFirst Operations Console](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
+* [Updating the Maven Archetype Version](#updating-the-maven-archetype-version)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
@@ -299,29 +299,6 @@ This generates an **.adapter** archive file which can be found in the **target**
 
 **NOTE:** The deploy command is available only during development.
 
-## Updating the Maven Archetype Version
-To update the adapter Maven project with the latest release, find the release version number and update the following properties in the adapter's **pom.xml** file:
-1. The `adapter-maven-api` version:
-
-```xml
-<dependency>
-  <groupId>com.ibm.mfp</groupId>
-  <artifactId>adapter-maven-api</artifactId>
-  <scope>provided</scope>
-  <version>8.0.0</version>
-</dependency>
-```
-2. The `adapter-maven-plugin` version:
-
-```xml
-<plugin>
-  <groupId>com.ibm.mfp</groupId>
-  <artifactId>adapter-maven-plugin</artifactId>
-  <version>8.0.0</version>
-  <extensions>true</extensions>
-</plugin>
-```
-
 ## Downloading or Deploying Adapters Using MobileFirst Operations Console
 
 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://<IP>:<PORT>/mfpconsole/`.  
@@ -339,6 +316,30 @@ To update the adapter Maven project with the latest release, find the release ve
 * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
 * Resources - a list of the adapter resources.
 * Configurations Files - adapter configuration data, to be used in devops environments.
+
+## Updating the Maven Archetype Version
+To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/) by search for "IBM MobileFirst Platform" and update the following properties in the adapter Maven project's **pom.xml** file:
+
+1. The `adapter-maven-api` version:
+
+    ```xml
+    <dependency>
+      <groupId>com.ibm.mfp</groupId>
+      <artifactId>adapter-maven-api</artifactId>
+      <scope>provided</scope>
+      <version>8.0.0</version>
+    </dependency>
+    ```
+2. The `adapter-maven-plugin` version:
+
+    ```xml
+    <plugin>
+      <groupId>com.ibm.mfp</groupId>
+      <artifactId>adapter-maven-plugin</artifactId>
+      <version>8.0.0</version>
+      <extensions>true</extensions>
+    </plugin>
+    ```
 
 ## Tutorials to follow next
 
