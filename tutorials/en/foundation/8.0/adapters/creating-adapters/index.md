@@ -102,7 +102,7 @@ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<ada
 
 <br/>
 
-> For more information about the `archetype:generate` command see the Maven documentation.
+> For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
 
 ### Dependencies <a name="dependencies"></a>
 In order to use an external library in your adapter, follow one of the following suggested instructions:
