@@ -1,2 +1,9 @@
-exclude: [vendor,build,Gemfile,Gemfile.lock,README.md,pdf]
+exclude:
+  -vendor
+  -build
+  -Gemfile
+  -Gemfile.lock
+  -README.md
+  -pdf
+  -tutorials/ja
 source_url: https://github.com/MobileFirst-Platform-Developer-Center/DevCenter
