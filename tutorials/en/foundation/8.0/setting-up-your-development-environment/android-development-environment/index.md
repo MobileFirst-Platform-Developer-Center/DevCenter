@@ -13,7 +13,7 @@ This tutorial explains the steps a developer needs to follow in order to be able
 ### Android Studio
 Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.
 
-![Configure the Android SDK](configure-sdk.png)
+![Configure the Android SDK](android-studio.png)
 
 ### Android SDK
 The Android SDK provides the tools and APIs required to develop applications on the Android platform, using the Java programming language.
