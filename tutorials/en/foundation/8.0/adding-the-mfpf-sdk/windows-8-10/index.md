@@ -34,23 +34,6 @@ If using a locally installed server: From a **Command-line** window, navigate to
 ### Creating an application
 Create a Windows 8.1 Universal or Windows 10 UWP project using Visual Studio 2013/2015 or use an existing project.  
 
-### Creating and registering the application
-
-1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
-
-2. Run the command:
-
-    ```bash
-    mfpdev app register
-    ```
-
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.resw** file at the root of the Visual Studio project, and adding to it the metadata that identifies the MobileFirst Server.
-
-    > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
-        1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
-        2. Click on the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-        3. After successfully registering your application you can optionally download a "skeleton" Visual Studio project pre-bundled with the MobileFirst Native SDK.
-
 ### Adding the SDK
 
 1. To import worklight studio packages, NuGet package manager is used.
@@ -68,13 +51,29 @@ NuGet is the package manager for the Microsoft development platform including .N
 
 4. Click **Install**. This installs the IBM MobileFirst Platform Native SDK and its dependencies.
 
+### Registering the application
+
+1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
+
+2. Run the command:
+
+    ```bash
+    mfpdev app register
+    ```
+
+    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.resw** file at the root of the Visual Studio project, and adding to it the metadata that identifies the MobileFirst Server.
+
+    > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
+        1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
+        2. Click on the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
+        3. After successfully registering your application you can optionally download a "skeleton" Visual Studio project pre-bundled with the MobileFirst Native SDK.
+
 ## Updating the MobileFirst Native SDK
 To update the MobileFirst Native SDK with the latest release, run the following command from the root folder of the Visual Studio project in a **Command-line** window:
 
 ```bash
 Nuget update
 ```
-
 
 ## Generated MobileFirst Native SDK artifacts
 
