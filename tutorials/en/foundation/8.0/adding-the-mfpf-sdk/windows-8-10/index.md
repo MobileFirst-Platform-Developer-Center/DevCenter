@@ -51,6 +51,10 @@ NuGet is the package manager for the Microsoft development platform including .N
 
 4. Click **Install**. This installs the IBM MobileFirst Platform Native SDK and its dependencies.
 
+5. Ensure that, at a minimum, the following capabilities are enabled in `Package.appxmanifest`:
+
+    - Internet (Client)
+
 ### Registering the application
 
 1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
@@ -87,13 +91,6 @@ Located at the root of the project, this file contains server connectivity prope
 - `port` – The port of the MobileFirst Server instance.
 - `wlServerContext` – The context root path of the application on the MobileFirst Server instance.
 - `languagePreference` - Sets the default language for client sdk system messages
-
-In Visual Studio, open the **Properties** window of the `mfpclient.resw` file and set the **Copy to Output Directory** option to **Copy always**.
-
-Add the following capabilities to the `Package.appxmanifest`:
-
-- Internet (Client &amp; Server)
-- Private Networks (Client &amp; Server)
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
