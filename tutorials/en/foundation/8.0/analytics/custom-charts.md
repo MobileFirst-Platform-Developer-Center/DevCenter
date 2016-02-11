@@ -1,5 +1,7 @@
 ---
+layout: tutorial
 title: Creating Custom Charts
+weight: 4
 ---
 ### Creating Custom Charts
 Creating a custom chart is simple. The following example walks you through creating a pie chart, based on the user pressing three buttons.
@@ -11,6 +13,8 @@ WL.Analytics.log({buttonPress: "buttonA"}, "press");
 WL.Analytics.log({buttonPress: "buttonB"}, "press");
 WL.Analytics.log({buttonPress: "buttonC"}, "press");
 ```
+
+> **Note**: Remember to always send data to the analytics server by using `WL.Analytics.send();`
 
 To create a chart, follow these steps.
 

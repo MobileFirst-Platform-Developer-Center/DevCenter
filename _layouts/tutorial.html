@@ -11,12 +11,13 @@ custom_js:
         </div>
         <div class="col-sm-8">
             <h1>{{ page.title}}</h1>
+            {% include contribute.html %}
             {% include breadcrumb.html %} {% if page.downloads %}
             <div class="downloadButtons hidden-xs">
                 {% for download in page.downloads %}
                 <button class="download-button">
                     <a href="{{download.url}}">
-                        <span class="glyphicon glyphicon-download-alt"></span>
+                        <span class="glyphicon glyphicon-cloud-download"></span>
                         {{download.name}}
                     </a>
                 </button>

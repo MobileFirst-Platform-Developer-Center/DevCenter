@@ -1,6 +1,7 @@
 ---
 title: Remote controlled client-side log collection
 relevantTo: [android,iOS, hybrid]
+weight: 3
 ---
 ### Overview
 Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging. Example: ```java.util.logging``` in Java.

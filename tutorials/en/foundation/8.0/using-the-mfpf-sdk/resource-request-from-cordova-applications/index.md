@@ -16,7 +16,7 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/adding-the-mfpf-sdk-to-cordova-applications) to your Cordova application.
+- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/cordova) to your Cordova application.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest
@@ -132,12 +132,13 @@ The adapter Maven project contains the Java adapter to be used during the resour
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-1. From the command line, navigate to the Cordova project.
+1. From the command line, navigate to the project's root folder.
 2. Ensure the sample is registered in the MobileFirst Server by running the command:  
 `mfpdev app register`.
 3. Add a platform by running the `cordova platform add` command.
 4. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-5. Run the Cordova application by running the `cordova run` command.
+5. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+6. Run the Cordova application by running the `cordova run` command.
 
 
 

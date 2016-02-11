@@ -1,6 +1,7 @@
 name: "IBM MobileFirst Platform Developer Center"
 description: "Develop, test, manage, and secure your mobile web, native and hybrid apps"
-url: https://developer.ibm.com
+url: https://mobilefirstplatform.ibmcloud.com
+source_url: https://github.ibm.com/MFPSamples/DevCenter
 permalink: pretty
 paginate: 10
 paginate_path: "/blog/:num/"

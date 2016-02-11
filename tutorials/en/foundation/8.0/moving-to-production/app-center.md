@@ -95,10 +95,12 @@ Application Center manages only company applications that are signed with the co
 
 > For more information about company accounts and enrollment tokens, see the [Microsoft Developer website > Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) page
 
-
-**Important:**  You **cannot** use the unsigned `.xap` file directly. Before you can install it on a device, you must first sign it with your company certificate, which you obtained from Symantec or Microsoft.
-
 > For more information about how to sign Windows Phone mobile client applications, see the [Microsoft Developer website](http://dev.windows.com/en-us/develop).
+
+<br/>
+
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:**  You **cannot** use the unsigned `.xap` file directly. Before you can install it on a device, you must first sign it with your company certificate, which you obtained from Symantec or Microsoft.
+
 
 ### For Windows Store Apps for Windows 8.1 Pro
 

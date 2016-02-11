@@ -13,7 +13,7 @@ Now that basic usage of different types of adapters has been covered, it is impo
 In theory, from the client side, you could make several requests successively, one depending on the other.
 However, writing this logic on the server side could be faster and cleaner.
 
-This tutorial covers the following topics:
+#### Jump to:
 
 * [JavaScript adapter API](#javascript-adapter-api)
 * [Java adapter API](#java-adapter-api)
@@ -23,7 +23,7 @@ This tutorial covers the following topics:
 ## JavaScript adapter API
 ### Calling a JavaScript adapter procedure from a JavaScript adapter
 When calling a JavaScript adapter procedure from another JavaScript adapter use the `WL.Server.invokeProcedure(invocationData)` API.
-This API enables to invoke a procedure on any of your adapters. `WL.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
+This API enables to invoke a procedure on any of your JavaScript adapters. `WL.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
 
 The `invocationData` function signature is:  
 `WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
@@ -36,21 +36,27 @@ WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions"
 > Calling a Java adapter from a JavaScript adapter is not supported
 
 ## Java adapter API
+Before you can call another adapter - the AdaptersAPI must be assigned to a variable:
+{% highlight java %}
+@Context
+AdaptersAPI adaptersAPI;
+{% endhighlight %}
+
 ### Calling a Java adapter from a Java adapter
 When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
 This call returns an `HttpResponse` object.
 {% highlight java %}
-HttpUriRequest req = new HttpGet(MyAdapterProcedureURL);
-org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
+HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
+org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response)
 {% endhighlight %}
 
 ### Calling a JavaScript adapter procedure from a Java adapter
 When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an `HttpUriRequest` to pass as a parameter to the `executeAdapterRequest` call.
 {% highlight java %}
-HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
-org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-JSONObject jsonObj = api.getAdaptersAPI().getResponseAsJSON(response);
+HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
+org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 {% endhighlight %}
 
 ## Data mashup example
@@ -75,9 +81,9 @@ Here is a list of the mashup types and the corresponding adapter names:
 
 | Scenario                                         |      Cities Adapter name     |  Weather Adapter name |  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** adapter -> **JavaScript** adapter | getCitiesListJS              | getCityWeatherJS      |  
-| **Java** adapter -> **JavaScript** adapter       | getCitiesListJavaToJS        | getCityWeatherJS      |  
-| **Java** adapter -> **Java** adapter             | getCitiesListJava            | getCityWeatherJava    |
+| **JavaScript** adapter → **JavaScript** adapter | getCitiesListJS              | getCityWeatherJS      |  
+| **Java** adapter → **JavaScript** adapter       | getCitiesListJavaToJS        | getCityWeatherJS      |  
+| **Java** adapter → **Java** adapter             | getCitiesListJava            | getCityWeatherJava    |
 
 
 
@@ -117,18 +123,20 @@ function getYahooWeather(woeid) {
 {% highlight java %}
 @GET
 @Produces("application/json")
-public String get(@Context HttpServletResponse response, @QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-    String returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"), response);
-    return returnValue;
+public Response get(@QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+	Response returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"));
+	return returnValue;
 }
 
-private String execute(HttpUriRequest req, HttpServletResponse resultResponse) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-    String strOut = null;
-    HttpResponse RSSResponse = client.execute(host, req);
-    ServletOutputStream os = resultResponse.getOutputStream();
-
-...
-// (Convert the retrieved XML to JSON)
+private Response execute(HttpUriRequest req) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
+	HttpResponse RSSResponse = client.execute(host, req);
+	if (RSSResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+		String json = XML.toJson(RSSResponse.getEntity().getContent());
+		return Response.ok().entity(json).build();
+	}else{ // Handle Failure
+		RSSResponse.getEntity().getContent().close();
+		return Response.status(RSSResponse.getStatusLine().getStatusCode()).entity(RSSResponse.getStatusLine().getReasonPhrase()).build();
+	}
 }
 {% endhighlight %}  
 
@@ -147,7 +155,7 @@ function getCitiesList() {
 
 (getCitiesListJava, getCitiesListJavaToJs adapters)
 {% highlight java %}
-PreparedStatement getAllCities = getSQLConnection().prepareStatement("select city, identifier, summary from weather");
+PreparedStatement getAllCities = conn.prepareStatement("select city, identifier, summary from weather");
 ResultSet rs = getAllCities.executeQuery();
 {% endhighlight %}  
 
@@ -171,20 +179,23 @@ function getCityWeather(woeid){
 (getCitiesListJava adapter)
 {% highlight java %}
 while (rs.next()) {
-	getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
-    HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
-    org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-    JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
-    ...
+  getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
+	HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
+	HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+	JSONObject jsonWeather = adaptersAPI.getResponseAsJSON(response);
+  ...
+}
 {% endhighlight %}  
 
 (getCitiesListJavaToJs adapter)
 {% highlight java %}
-    while (rs.next()) {
-        HttpUriRequest req = api.getAdaptersAPI().createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather", URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
-        org.apache.http.HttpResponse response = api.getAdaptersAPI().executeAdapterRequest(req);
-        JSONObject jsonWeather = api.getAdaptersAPI().getResponseAsJSON(response);
-        ...
+while (rs.next()) {
+  // Calling a JavaScript HTTP adapter procedure
+	HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather", URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
+	org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+	JSONObject jsonWeather = adaptersAPI.getResponseAsJSON(response);
+  ...
+}
 {% endhighlight %}  
 
 **4. Iterating through the retrieved rss feed to fetch only the weather description,   
@@ -201,6 +212,8 @@ return cityList;
 
 (getCitiesListJava, getCitiesListJavaToJs adapters)
 {% highlight java %}
+{
+    ...
     JSONObject rss = (JSONObject) jsonWeather.get("rss");
     JSONObject channel = (JSONObject) rss.get("channel");
     JSONObject item = (JSONObject) channel.get("item");
@@ -218,18 +231,24 @@ conn.close();
 return jsonArr.toString();
 {% endhighlight %}  
 
-> An example of city list in SQL is available in the provided adapter maven project, under `Utils/mobilefirstTraining.sql`.
-Remember that SQL adapters require a JDBC connector driver. [Follow these instructions to add the JDBC connector dependency](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html) .
-
 <img alt="sample application" src="AdaptersMashupSample.png" style="float:right"/>
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the MobileFirst project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the Cordova project.
 
 **Note:** the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
 
 ### Sample usage
-1. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../creating-adapters/).
-1. From the command line, navigate to the Cordova project.
+#### SQL setup
+An example of city list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`. 
+
+1. Run the .sql script in your SQL database.
+2. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapters](../../creating-adapters/).
+3. Open the MobileFirst Console
+    - Click on the **getCitiesListJS** adapter and update the database connectivity properties.
+    - Click on the **getCitiesListJava** adapter and update the database connectivity properties.
+
+#### Application setup
+
+1. From the command line, navigate to the project's root folder.
 2. Add a platform by running the `cordova platform add` command.
 3. Run the Cordova application by running the `cordova run` command.
-

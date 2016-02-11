@@ -6,7 +6,7 @@ use_dropdown: true
 print_pdf: false
 ---
 <br>
-<p>Review curated tutorials for Hybrid apps.</p>
+<p>Review curated tutorials for Cordova applications.</p>
 <br>
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -20,10 +20,24 @@ print_pdf: false
         <div id="collapsesettingUpYourDevelopmentEnvironment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="settingUpYourDevelopmentEnvironment">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/">Setting up the MobileFirst development environment</a></li>
-                    <li><a href="../setting-up-your-development-environment/ios-development-environment/">Setting up the iOS development environment</a></li>
-                    <li><a href="../setting-up-your-development-environment/android-development-environment/">Setting up the Android development environment</a></li>
-                    <li><a href="../setting-up-your-development-environment/windows-8-10-development-environment/">Setting up the Windows and Windows Phone development environments</a></li>
+                    <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
+                    <li><a href="../setting-up-your-development-environment/cordova-development-environment/">Setting up the Cordova development environment</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="quickstart">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseQuickstart" aria-expanded="true" aria-controls="collapseQuickstart">Quick Start</a>
+            </h4>
+        </div>
+
+        <div id="collapseQuickstart" class="panel-collapse collapse" role="tabpanel" aria-labelledby="quickstart">
+            <div class="panel-body">
+                <ul>
+                <li><a href="../quick-start/cordova/">End-to-end flow demonstration</a></li>
                 </ul>
             </div>
         </div>
@@ -39,9 +53,29 @@ print_pdf: false
         <div id="collapseHelloWorld" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hellowWorld">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../configuring-the-mfpf-sdk/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Console</a></li>
-                    <li> <a href="../advanced-using-the-mfpf-sdk/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a></li>
-                    <li><a href="../configuring-the-mfpf-sdk/integrating-mfpf-sdk-in-cordova-applications/">Integrating MobileFirst Platform Foundation SDK in Cordova Applications</a></li>
+                    <li><a href="../quick-start/console/">Using the MobileFirst Platform Operations Console</a></li>
+                    <li><a href="../adding-the-mfpf-sdk/cordova/">Adding the MobileFirst Platform Foundation SDK to Cordova Applications</a></li>
+                    <li><a href="../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/">Using MobileFirst Developer CLI to Manage MobileFirst Artifacts</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="appdev">
+            <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAppdev" aria-expanded="true" aria-controls="appdev">Application development</a>
+            </h4>
+        </div>
+
+        <div id="collapseAppdev" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hellowWorld">
+            <div class="panel-body">
+                <ul>
+                    <li><a href="../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/">MobileFirst Platform Foundation SDK development in Cordova applications
+</a></li>
+                    <li><a href="../using-the-mfpf-sdk/direct-update/">Using Direct Update in Cordova Applications</a></li>
+                    <li><a href="../using-the-mfpf-sdk/translation/">Multilingual translation of Cordova applications</a></li>
+                    <li><a href="../using-the-mfpf-sdk/debugging-applications/">Debugging Cordova applications</a></li>
                 </ul>
             </div>
         </div>
@@ -57,10 +91,9 @@ print_pdf: false
         <div id="collapseAdapters" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapters">
             <div class="panel-body">
                 <b>Required reading</b>
-                <br>
                 <ul>
                     <li><a href="../adapters/adapters-overview/">Adapters overview</a></li>
-                    <li> <a href="../adapters/invoking-adapter-procedures-hybrid-client-applications/">Invoking adapter procedures from Hybrid applications</a></li>
+                    <li><a href="../using-the-mfpf-sdk/resource-request-from-cordova-applications/">Resource request from Cordova applications</a></li>
                 </ul>
 
                 <b>Further reading</b>
@@ -69,8 +102,6 @@ print_pdf: false
                         <ul>
                             <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a></li>
                             <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                            <li><a href="../adapters/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a></li>
-                            <li><a href="../adapters/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a></li>
                             <li><a href="../adapters/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a></li>
                         </ul>
                     </li>
@@ -80,34 +111,9 @@ print_pdf: false
                             <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
                         </ul>
                     </li>
-                    <li><a href="../adapters/debugging-adapters/">Debugging adapters</a></li>
+                    <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
                     <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="clientSideDev">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseclientSideDev" aria-expanded="true" aria-controls="clientSideDev">Client-side development</a>
-            </h4>
-        </div>
-
-        <div id="collapseclientSideDev" class="panel-collapse collapse" role="tabpanel" aria-labelledby="clientSideDev">
-            <div class="panel-body">
-
-                <ul>
-                    <li><a href="../using-the-mfpf-sdk/debugging-applications/">Debugging applications</a></li>
-                    <li><a href="../using-the-mfpf-sdk/common-ui-controls/">Common UI controls</a></li>
-                    <li><a href="../using-the-mfpf-sdk/enabling-translation/">Enabling translation</a></li>
-                    <li><a href="../using-the-mfpf-sdk/using-direct-update-to-quickly-update-your-application/">Using Direct Update to quickly update your application</a></li>
-                    <li><a href="../using-the-mfpf-sdk/ios-adding-native-ui-elements-hybrid-applications/">iOS – Adding native UI elements to hybrid applications</a></li>
-                    <li><a href="../using-the-mfpf-sdk/android-adding-native-ui-elements-hybrid-applications/">Android – Adding native UI elements to hybrid applications</a></li>
-                    <li><a href="../using-the-mfpf-sdk/windows-phone-8-adding-native-ui-elements-hybrid-applications/">Windows Phone 8 – Adding native UI elements to hybrid applications</a></li>
-
-                    <li><a href="../using-the-mfpf-sdk/integrating-server-generated-pages-hybrid-applications/">Integrating server-generated pages in hybrid applications</a></li>
-                    <li><a href="../using-the-mfpf-sdk/using-a-mobilefirst-application-as-a-container-for-server-generated-pages/">Using MobileFirst application as a container for server-generated pages</a></li>
+                    <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
                 </ul>
             </div>
         </div>
@@ -123,9 +129,7 @@ print_pdf: false
         <div id="collapseWorkingWithData" class="panel-collapse collapse" role="tabpanel" aria-labelledby="workingWithData">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../using-the-mfpf-sdk/jsonstore">JSONStore</a></li>
-                    <li><a href="../using-the-mfpf-sdk/working-offline/">Working Offline</a></li>
-                    <li><a href="../using-the-mfpf-sdk/remote-controlled-client-side-log-collection/">Remote-controlled Client-side log collection</a></li>
+                    <li><a href="../using-the-mfpf-sdk/jsonstore-cordova">JSONStore</a></li>
                 </ul>
             </div>
         </div>
@@ -140,31 +144,33 @@ print_pdf: false
 
         <div id="collapseAuthenticationSecurity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AuthenticationSecurity">
             <div class="panel-body">
-                security samples
-
-                <b>Application Authenticity</b>
+                <a href="../authentication-and-security/authentication-concepts/">Authentication concepts</a>
+                <br><br>
+                <h4>Security Check WithAttempts</h4>
                 <ul>
-                    <li><a href="../authentication-security/application-authenticity/">Application Authenticity</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-attempts/security-check">Creating the security check</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-attempts/cordova/">Implementing the challenge handler</a></li>
                 </ul>
 
-                <b>Authenticating external resources</b>
+                <h4>Security Check UserAuthentication</h4>
                 <ul>
-                    <li><a href="../authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-user-authentication/security-check">Creating the security check</a></li>
+                    <li><a href="../authentication-and-security/security-check-with-user-authentication/cordova/">Implementing the challenge handler</a></li>
                 </ul>
 
-                <b>LDAP, LTPA and X.509 Certificate</b>
+                <h4>Application Authenticity</h4>
                 <ul>
-                    <li><a href="../authentication-security/using-ldap-login-module-to-authenticate-users-with-ldap-server-in-hybrid-applications/">Using LDAP Login Module to authenticate users with LDAP server in hybrid applications</a></li>
-                    <li><a href="../authentication-security/websphere-ltpa-based-authentication/">WebSphere LTPA-based authentication</a></li>
-                    <li><a href="../authentication-security/client-x-509-certificate-authentication-user-enrollment/">Client X.509 Certificate Authentication and User Enrollment</a></li>
+                    <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
                 </ul>
 
-                <b>Advanced topics</b>
+                <h4>Authenticating external resources</h4>
                 <ul>
-                    <li><a href="../advanced-topics/device-enrollment/">Device Enrollment</a></li>
-                    <li><a href="../advanced-topics/offline-authentication/">Offline Authentication</a></li>
-                    <li><a href="../advanced-topics/remember-me/">Remember Me</a></li>
-                    <li><a href="../advanced-topics/ntlm-authentication/">NTLM Authentication</a></li>
+                    <li><a href="../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a></li>
+                </ul>
+                
+                <h4>Other</h4>
+                <ul>
+                    <li><a href="../authentication-and-security/ntlm/">NTLM Authentication</a></li>
                 </ul>
             </div>
         </div>
@@ -173,23 +179,31 @@ print_pdf: false
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="AdvancedTopics">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAdvancedTopics" aria-expanded="true" aria-controls="AdvancedTopics">Push Notifications</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAdvancedTopics" aria-expanded="true" aria-controls="AdvancedTopics">Advanced topics</a>
             </h4>
         </div>
 
         <div id="collapseAdvancedTopics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AdvancedTopics">
             <div class="panel-body">
+                <b>Push Notifications</b>
                 <ul>
                     <li><a href="../notifications/push-notifications-overview">Push Notifications Overview</a></li>
-                    <li><a href="../notifications/push-notifications-overview/push-notifications-in-hybrid-applications/">Push notifications in hybrid applications</a></li>
-                    <li><a href="../notifications/sms-notifications/">SMS notifications</a></li>
-                    <li><a href="../notifications/two-way-sms-communication/">2-Way SMS notifications</a></li>
+                    <li><a href="../notifications/push-notifications-overview/sending-push-notifications">Sending push notifications</a>
+                    <li><a href="../notifications/push-notifications-overview/handling-push-notifications-in-cordova/">Handling Push Notifications in cordova applications</a></li>
+                </ul>
+                <b>Adapters mashup</b>
+                <ul>
+                    <li><a href="../adapters/advanced-adapter-usage-mashup">Adapters mashup</a></li>
+                </ul>
+                <b>IBM Containers</b>
+                <ul>
+                    <li><a href="../ibm-containers/">IBM Containers Overview</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="MovingToProduction">
             <h4 class="panel-title">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMovingToProduction" aria-expanded="true" aria-controls="MovingToProduction">Moving to Production</a>
@@ -204,20 +218,19 @@ print_pdf: false
                 </ul>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ReportsAndAnalytics">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReportsAndAnalytics" aria-expanded="true" aria-controls="ReportsAndAnalytics">Reports and analytics</a>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReportsAndAnalytics" aria-expanded="true" aria-controls="ReportsAndAnalytics">Operational Analytics analytics</a>
             </h4>
         </div>
 
         <div id="collapseReportsAndAnalytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ReportsAndAnalytics">
             <div class="panel-body">
                 <ul>
-                    <li><a href="../analytics/operational-analytics/">Operational Analytics</a></li>
-                    <li><a href="../analytics/reports-analytics/">Reports and analytics</a></li>
+                    <li><a href="../analytics/">Operational Analytics</a></li>
                 </ul>
             </div>
         </div>

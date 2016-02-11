@@ -5,16 +5,16 @@
             "name": "Foundation",
             "path": "",
             "children": [{
-                "name": "Setting up your development environment",
+                "name": "Environment set-up",
                 "path": "/setting-up-your-development-environment"
             }, {
                 "name": "Quick start",
                 "path": "/quick-start"
             }, {
-                "name": "Adding the MobileFirst Platform Foundation SDK",
+                "name": "Adding the SDK",
                 "path": "/adding-the-mfpf-sdk"
             }, {
-                "name": "Using the MobileFirst Platform Foundation SDK",
+                "name": "Using the SDK",
                 "path": "/using-the-mfpf-sdk"
             }, {
                 "name": "Adapters",
@@ -26,7 +26,7 @@
                 "name": "Notifications",
                 "path": "/notifications"
             }, {
-                "name": "Analytics",
+                "name": "Operational Analytics",
                 "path": "/analytics"
             }, {
                 "name": "Moving to production",
@@ -36,36 +36,27 @@
             "name": "IBM Countainers",
             "path": "/ibm-containers",
             "children": [{
-                "name": "Overview",
-                "path": ""
+                "name": "Using Foundation Tile",
+                "path": "/using-foundation-tile"
             }, {
-                "name": "Evaluate",
-                "path": "/evaluate"
-            }, {
-                "name": "Run",
-                "path": "/run"
-            }, {
-                "name": "Sample application",
-                "path": "/sample-app"
+                "name": "Creating an Image",
+                "path": "/creating-an-image"
             }]
         }, {
             "name": "Tutorials by platform",
             "path": "",
             "children": [{
+                "name": "Cordova",
+                "path": "/cordova-tutorials"
+            }, {
                 "name": "iOS",
                 "path": "/ios-tutorials"
             }, {
                 "name": "Android",
                 "path": "/android-tutorials"
             }, {
-                "name": "Windows 8 Universal",
-                "path": "/windows-8-tutorials"
-            }, {
-                "name": "Windows 10 UWP",
-                "path": "/windows-10-tutorials"
-            }, {
-                "name": "Cordova",
-                "path": "/cordova-tutorials"
+                "name": "Windows 8.1 and 10",
+                "path": "/windows-8-10-tutorials"
             }, {
                 "name": "Server-side",
                 "path": "/server-side-tutorials"

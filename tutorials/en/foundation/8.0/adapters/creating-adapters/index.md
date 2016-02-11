@@ -7,8 +7,9 @@ weight: 2
 ---
 
 ## Overview
-This tutorial explains how to create MobileFirst **Java or JavaScript adapters**.  
 An adapter can be created either by using Maven directly or by using the MobileFirst Developer CLI (with a required prerequisite to have Maven installed on the developer workstation), or be downloaded as a sample starter code from the MobileFirst Operations Console. The Adapter code can then be edited using your IDE of choice, such as Eclipse, IntelliJ and the like.
+
+This tutorial explains how to create, build and deploy MobileFirst **Java or JavaScript adapters** using Maven and the MobileFirst Developer CLI.
 
 **Prerequisite:** Make sure that you read the [Adapters Overview](../adapters-overview) first.
 
@@ -20,10 +21,11 @@ An adapter can be created either by using Maven directly or by using the MobileF
  * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
 * [Creating Adapters Using MobileFirst Developer CLI](#creating-adapters-using-mobilefirst-developer-cli)
  * [Install MobileFirst Developer CLI](#install-mobilefirst-developer-cli)
- * [Create an Adapter](#create-an-adapter)
+ * [Create an Adapter](#install-mobilefirst-developer-cli)
 * [File Structure](file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
 * [Downloading or Deploying Adapters Using MobileFirst Operations Console](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
+* [Updating the Adapter Maven Project](#updating-the-adapter-maven-project)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
@@ -100,7 +102,7 @@ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<ada
 
 <br/>
 
-> For more information about the `archetype:generate` command see the Maven documentation.
+> For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
 
 ### Dependencies <a name="dependencies"></a>
 In order to use an external library in your adapter, follow one of the following suggested instructions:
@@ -192,8 +194,8 @@ To group adapters you need to:
   2. Add an **`artifactId`** element - the root folder's name
   3. Add a **`module`** element for each adapter
   4. Add the **`build`** element
-  5. Replace the **localhost:9080** with your MobileFirst Server IP and port.
-  6. Replace the **`mfpfUser`** and **`mfpfPassword`** values with your MobileFirst admin user name and password.
+  5. **Optional**. Replace **localhost:9080** with your specific MobileFirst Server IP address and port number.
+  6. **Optional**. Replace the **`mfpfUser`** and **`mfpfPassword`** default values with your MobileFirst admin user name and password.
 
 4. To [build or deploy](#build-and-deploy-adapters) all adapters, run the Maven commands from the root "GroupAdapters" project.
 
@@ -262,13 +264,13 @@ After creating the adapter the result will be a Maven project containing a **src
 * **Using the MobileFirst Developer CLI** - Run the `mfpdev adapter build` command from the project's root folder.
 * **Using Maven** - The adapter is built each time you run the `mvn install` command to build the Maven project.
 
-This generates an **.adapter** file which can be found in the **target** folder:
+This generates an **.adapter** archive file which can be found in the **target** folder:
 
 ![java-adapter-result](adapter-result.png)
 
 ### Deploy
 
-1. The **pom.xml** file contains the following `properties` parameters:
+1. The **pom.xml** file contains the following `properties`:
 
       ```xml
       <properties>
@@ -278,8 +280,8 @@ This generates an **.adapter** file which can be found in the **target** folder:
     		<mfpfPassword>admin</mfpfPassword>
     	</properties>
       ```
-   * Replace **localhost:9080** with your MobileFirst Server IP address and port number.
-   * Replace the **mfpfUser** and **mfpfPassword** values with your MobileFirst admin user name and password.  
+   * Replace **locsalhost:9080** with your MobileFirst Server IP address and port number.
+   * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your MobileFirst admin user name and password.
 2. Run the deploy command from the project's root folder:
  * **Using the MobileFirst Developer CLI**:
 
@@ -293,9 +295,9 @@ This generates an **.adapter** file which can be found in the **target** folder:
         ```
 
 </br>
-> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
 
-**NOTE:** The deploy command is available only during development (for security reasons).
+**NOTE:** The deploy command is available only during development.
 
 ## Downloading or Deploying Adapters Using MobileFirst Operations Console
 
@@ -314,6 +316,30 @@ This generates an **.adapter** file which can be found in the **target** folder:
 * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
 * Resources - a list of the adapter resources.
 * Configurations Files - adapter configuration data, to be used in devops environments.
+
+## Updating the Adapter Maven Project
+To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/) by search for "IBM MobileFirst Platform" and update the following properties in the adapter Maven project's **pom.xml** file:
+
+1. The `adapter-maven-api` version:
+
+    ```xml
+    <dependency>
+      <groupId>com.ibm.mfp</groupId>
+      <artifactId>adapter-maven-api</artifactId>
+      <scope>provided</scope>
+      <version>8.0.0</version>
+    </dependency>
+    ```
+2. The `adapter-maven-plugin` version:
+
+    ```xml
+    <plugin>
+      <groupId>com.ibm.mfp</groupId>
+      <artifactId>adapter-maven-plugin</artifactId>
+      <version>8.0.0</version>
+      <extensions>true</extensions>
+    </plugin>
+    ```
 
 ## Tutorials to follow next
 

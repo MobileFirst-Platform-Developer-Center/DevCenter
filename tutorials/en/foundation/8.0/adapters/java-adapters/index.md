@@ -6,7 +6,7 @@ relevantTo: [ios,android,windowsphone8,windows8,cordova]
 weight: 4
 ---
 ## Overview
-Java adapters are based on the JAX-RS 2.0 specification. In other words, a Java adapter is a JAX-RS 2.0 service that can easily be deployed to a MobileFirst Server instance and has access to MobileFirst Server APIs.
+Java adapters are based on the JAX-RS 2.0 specification. In other words, a Java adapter is a JAX-RS 2.0 service that can easily be deployed to a MobileFirst Server instance and has access to MobileFirst Server APIs and other 3rd party APIs.
 
 **Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../creating-adapters) tutorial first.
 
@@ -44,7 +44,7 @@ The JAX-RS 2.0 application class tells the JAX-RS 2.0 framework which resources 
 package com.sample.adapter;
 
 import java.util.logging.Logger;
-import com.worklight.wink.extensions.MFPJAXRSApplication;
+import com.ibm.mfp.adapter.api.MFPJAXRSApplication;
 
 public class JavaAdapterApplication extends MFPJAXRSApplication{
 
@@ -77,18 +77,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import com.worklight.adapters.rest.api.WLServerAPI;
-import com.worklight.adapters.rest.api.WLServerAPIProvider;
-
 @Path("/")
 public class JavaAdapterResource {
 
     //Define logger (Standard java.util.Logger)
     static Logger logger = Logger.getLogger(JavaAdapterResource.class.getName());
-
-    //Define the server api to be able to perform server operations
-    WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
-
 
     //Path for method: "<server address>/Adapters/adapters/JavaAdapter/{username}"
     @GET
@@ -116,7 +109,7 @@ Another example is `@Path("/{username}")`, which defines the path to access this
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 ## HTTP Session
-Depending on your infrastructure and configuration, your MobileFirst server may be running with `SessionIndependent` set to true, where each request can reach a different node and HTTP sessions are not used. In such cases you should not rely on Java's HttpSession to persist​ data from one request to the next.
+The MobileFirst server does not rely on HTTP sessions and each request may reach a different node. You should not rely on HTTP sessions to keep data from one request to the next.
 
 ## MobileFirst server-side API
 Java adapters can use the MobileFirst server-side Java API to perform operations that are related to MobileFirst Server, such as calling other adapters, submitting push notifications, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  

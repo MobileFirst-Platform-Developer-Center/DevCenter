@@ -1,9 +1,9 @@
 ---
+layout: tutorial
 title:  Alerts
+weight: 4
 ---
-
-### Alerts
-
+## Alerts
 If you are using the latest interim fix of MobileFirst, you can set thresholds in alert definitions in the IBM MobileFirst™ Platform Operational Analytics Console to better monitor your activities.
 
 You can configure thresholds, which if exceeded, trigger alerts to notify the MobileFirst Operational Analytics Console monitor. The triggered alerts can be visualized on the console, or the alerts can be handled by a custom webhook. This feature provides a proactive means of detecting client log errors, server log errors, extended periods of network latency, and authentication failures. Reactive thresholds and alerts keep you from having to sift through your data and set thresholds at a wide spectrum of granularity.

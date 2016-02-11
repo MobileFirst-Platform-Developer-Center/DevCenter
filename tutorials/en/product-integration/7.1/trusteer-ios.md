@@ -4,7 +4,7 @@ title: Trusteer for iOS
 relevantTo: [ios]
 downloads:
   - name: MobileFirst project
-    url: https://github.ibm.com/MFPSamples/TrusteeriOS
+    url: https://github.ibm.com/MFPSamples/TrusteeriOS/tree/release71
 ---
 ## Overview
 Trusteer Mobile SDK collects multiple mobile device risk factors and provides them to the mobile app, enabling organizations to restrict mobile app functionality based on risk levels. In your IBM MobileFirst Platform Foundation application, you may want to protect access to some specific resources or procedures based risk levels, such as detected malware or whether the device is jailbroken or rooted. For example, you could prevent a malware-ridden device from logging into your banking app, and prevent rooted devices from using the “transfer funds” feature.
@@ -38,20 +38,24 @@ clientKey=YMAQAABNFUWS2L
 {% endhighlight %}
 
 ### Link Trusteer Libraries
-In **Build Phases > Link Binary With Libraries**, drag and drop
+In **Build Phases → Link Binary With Libraries**, drag and drop
 **libtas_full.a** to link your project with the Trusteer library.
 
 ![trusteer-build-phases](trusteer-build-phases.png)
 
-In **Build Settings > Linking > Other Linker Flags**, add:
+In **Build Settings → Linking → Other Linker Flags**, add:
 `-force_load "$(SRCROOT)/tas/libtas_full.a"`.
 
 ![TR_IOS_forceload](TR_IOS_forceload.png)
 
-In **Build Settings > Linking > Dead Code Stripping**, select
+In **Build Settings → Linking → Dead Code Stripping**, select
 `NO`.
 
 ![TR_IOS_deadcode](TR_IOS_deadcode.png)
+
+In **Build Settings → Deployment → Strip Linked Product**, select
+`NO`.
+![Strip Linked Product](trusteer-strip.png)
 
 **Note:** If the iOS project is native, please follow the standard MobileFirst native requirements are described in the MobileFirst documentation as well as the requirements described in the Trusteer documentation. For example, Trusteer requires
 CoreMotion.framework in addition to MobileFirst's standard requirements.
@@ -261,7 +265,7 @@ If your have set one of your `realm` options to `alert`, you can catch the alert
  {% endhighlight %}
 
 ### Sample application
-<a href="https://github.ibm.com/MFPSamples/TrusteerObjC" target="_blank">Click to download</a> the MobileFirst project.
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/TrusteerObjC/tree/release71" target="_blank">Click to download</a> the MobileFirst project.
 
 
 #### Sample Setup

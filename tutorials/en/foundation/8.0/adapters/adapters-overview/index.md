@@ -5,7 +5,7 @@ relevantTo: [ios,android,windowsphone8,windows8,cordova]
 weight: 1
 ---
 ## Overview
-MobileFirst Adapters are Maven projects that contain server-side code implemented in either Java or JavaScript. Adapters are used to transfer and retrieve information from back-end systems to client applications and cloud services. MobileFirst Server processes the information and handles security. Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](../advanced-adapter-usage-mashup)" possible. 
+MobileFirst Adapters are Maven projects that contain server-side code implemented in either Java or JavaScript. Adapters are used to transfer and retrieve information from back-end systems to client applications and cloud services. MobileFirst Server processes the information and handles security. Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](../advanced-adapter-usage-mashup)" possible.
 
 ![adapter_overview](adapter_overview_top.jpg)
 
@@ -43,14 +43,13 @@ The procedure retrieves information from the back-end application that returns d
 
 The JavaScript implementation of the procedure receives the JSON data, performs any additional processing, and returns it to the calling app.
 
-<span style="color:red">UPDATE THE IMAGE</span>
 ![javascript_adapters](javascript_adapters.jpg)
 
 ## Java adapters
 Java adapters expose a full REST API to the client and are written in Java. This type of adapter is based on the [JAX-RS 2.0 specification] (https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html).
 In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource. The only exception is if the client sending the request supports GZip, then the returned content encoding of the Java adapter is compressed by GZip. All operations on the returned content are done and owned by the developer.
 
-![java-adapter](java-adapter.jpg)
+![java-adapter](java_adapter.jpg)
 
 > For more information see the topic about "MobileFirst adapters overview" in the user documentation.
 

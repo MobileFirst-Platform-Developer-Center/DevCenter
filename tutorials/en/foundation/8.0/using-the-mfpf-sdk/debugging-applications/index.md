@@ -12,7 +12,7 @@ Debugging is a process that consists of finding the cause of defects in applicat
 
 This tutorial explores various approaches to debugging a Cordova application, whether running locally via an Emulator or Simulator, or while running in a physical mobile device.
 
-> Learn more about Cordova debugging and testing in the Cordova website: [Debugging applications](https://cordova.apache.org/docs/en/5.4.0/guide/next/index.html#link-10).
+> Learn more about Cordova debugging and testing in the Cordova website: [Debugging applications](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device).
 
 #### Jump to:
 

@@ -31,6 +31,8 @@ In order to update an application, the updated web resources of the application 
 ## How Direct Update works
 The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the MobileFirst. The updated web resources are downloaded when necessary.
 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Note:** a Direct Update is checked for once per 60 minutes.
+
 After a Direct Update, the application no longer uses the pre-packaged web resources. Instead it will use the web  resources in the application's sandbox.
 
 ![Diagram of how direct update works](internal_function.jpg)
@@ -64,7 +66,7 @@ Alternatives:
          mfpdev app webupdate --build
          ```
  2. Load the MobileFirst Operations Console and click on the application entry.
- 3. Click on **Upload File** to upload the packaged web resources.
+     3. Click on **Upload Web Resources File** to upload the packaged web resources.
 
 ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
 
@@ -138,21 +140,31 @@ directUpdateContext.start(directUpdateCustomListener);
 > For more information, see the "Configuring and customizing direct update" user documentation topic. 
 
 ## Direct Update authenticity
-Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a content delivery network (CDN)) to the client application.
+Disabled by default, Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a content delivery network (CDN)) to the client application.
 
-> Note: Direct Update authenticity is disabled by default. To enable, see the "Configuring and customizing direct update" user documentation topic. 
+**To enable Direct Update authenticity:**  
+Using a preferred tool, extract the public key from the MobileFirst Server keystore and convert it to base64.  
+The produced value should then be used as instructed below:
+
+1. Open a **Command-line** window and navigate to the root of the Cordova project.
+2. Run the command: `mfpdev app config` and select the "Direct Update Authenticity public key" option.
+3. Provide the public key and confirm.
+
+Any future Direct Update deliveries to client applications will be protected by Direct Update authenticity.
+
+> Refer to the "Direct Update" user documentation for more information about obtaining a public key for Direcr Update authenticity.
 
 ## Differential Direct Update
 Differential Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
 
-**Important:** A differential update is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a full update - meaning that the entire web resources are downloaded and updated.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** A differential update is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a full update - meaning that the entire web resources are downloaded and updated.
 
 ## Working with Direct Update in the field
 The diagram below depicts the flow of updating an application's web resources using Direct Update once it has been submitted to the application stores and used by end-users.
 
 ![Direct update in the field](distribution.jpg)
 
-> <b>Note:</b> During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.
+> **Note:** During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.
 
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the Cordova project.  

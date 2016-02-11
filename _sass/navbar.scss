@@ -103,6 +103,9 @@ $color_celeste_approx: #ccc;
         -webkit-box-shadow: none;
       }
     }
+    .input-group-btn:last-child > .btn {
+        height: 33px;
+    }
   }
 }
 .dropdown-menu {
