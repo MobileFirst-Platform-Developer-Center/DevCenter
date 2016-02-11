@@ -11,9 +11,12 @@ By issuing an HTTP request, an entity can access to corporate HTTP services (API
 To enable Application Authenticity you can either follow the on-screen instructions in the **MobileFirst Operations Console** → **[your-application]** → **Authenticity**, or review the information below.
 
 #### Availability
-Application Authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and Native applications.
+* Application Authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and Native applications.
 
-> <b>Note:</b> Application Authenticity is <b>not available</b> in the MobileFirst Development Server. To test, use a remote application server such as a QA, UAT or Production server.
+#### Limitations
+
+* Application Authenticity is <b>not available</b> in the MobileFirst Development Server. To test, use a remote application server such as a QA, UAT or Production server.
+* Application Authenticity does not support **Bitcode** in iOS. If using Application Authentcity, disable Bitcode in the Xcode project properties.
 
 #### Jump to:
 
