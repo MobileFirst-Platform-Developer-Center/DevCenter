@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Cordova
+title: Handling Push Notifications in Cordova applications
 show_children: true
 relevantTo: [cordova]
 weight: 3

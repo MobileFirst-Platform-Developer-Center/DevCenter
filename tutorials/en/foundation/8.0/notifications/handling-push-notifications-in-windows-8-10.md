@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Windows 8
-relevantTo: [windows8]
+title: Handling Push Notifications in Windows 8 Universal and Windows 10 UWP applications
+relevantTo: [windows]
 weight: 6
 ---
 In this tutorial, you will be learning how to handle push notification for Windows 8 applications.
