@@ -18,8 +18,8 @@ This tutorial covers the basics of the IBM MobileFirst Platform Foundation devel
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Development Kit
-The development kit provides a ready-for-development environment with minimal configuration. The environment is made up of the following:  
-A WebSphere Liberty profile application server with MobileFirst Server deployed onto it. It is pre-configured with an  "mfp" runtime and uses a pre-configured filesystem-based database.
+The development kit provides a ready-for-development environment with minimal configuration needed. The environment is made up of the following:  
+A WebSphere Liberty profile application server with MobileFirst Server deployed onto it. It is pre-configured with an  "mfp" runtime and uses a pre-configured filesystem-based Apache Derby database.
 
 The Development Kit consists of: MobileFirst Server, MobileFirst Developer Command-line Interface (CLI), MobileFirst Operations Console and the MobileFirst client SDKs.
 
