@@ -25,7 +25,7 @@ This tutorial explains how to create, build and deploy MobileFirst **Java or Jav
 * [File Structure](file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
 * [Downloading or Deploying Adapters Using MobileFirst Operations Console](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
-* [Updating the Maven Archetype Version](#updating-the-maven-archetype-version)
+* [Updating the Adapter Maven Project](#updating-the-adapter-maven-project)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
@@ -317,7 +317,7 @@ This generates an **.adapter** archive file which can be found in the **target**
 * Resources - a list of the adapter resources.
 * Configurations Files - adapter configuration data, to be used in devops environments.
 
-## Updating the Maven Archetype Version
+## Updating the Adapter Maven Project
 To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/) by search for "IBM MobileFirst Platform" and update the following properties in the adapter Maven project's **pom.xml** file:
 
 1. The `adapter-maven-api` version:
