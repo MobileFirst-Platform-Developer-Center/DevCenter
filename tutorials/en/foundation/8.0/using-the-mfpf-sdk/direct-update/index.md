@@ -31,6 +31,8 @@ In order to update an application, the updated web resources of the application 
 ## How Direct Update works
 The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the MobileFirst. The updated web resources are downloaded when necessary.
 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Note:** a Direct Update is checked for once per 60 minutes.
+
 After a Direct Update, the application no longer uses the pre-packaged web resources. Instead it will use the web  resources in the application's sandbox.
 
 ![Diagram of how direct update works](internal_function.jpg)
