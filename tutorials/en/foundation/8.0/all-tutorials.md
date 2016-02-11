@@ -32,19 +32,18 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../adding-the-mfpf-sdk/cordova/)
 * [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/ios/)
 * [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/android/)
-* [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal applications](../adding-the-mfpf-sdk/windows-8/)
-* <span style="color:red">IN PROGRESS </span>[Adding the MobileFirst Platform Foundation SDK to Windows 10 UWP applications](../adding-the-mfpf-sdk/windows-10/)
+* [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal and Windows 10 UWP applications](../adding-the-mfpf-sdk/windows-8-10/)
 
 ### [Using the MobileFirst Platform Foundation SDK](../using-the-mfpf-sdk/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
 
 * [MobileFirst Platform Foundation SDK development in Cordova applications](../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
 * [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
-* Resource Requests from client applications
+* Resource Request from client applications
     * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
-    * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-native-ios-swift-applications/)
-    * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-native-android-applications/)
-    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-native-windows-8-10-applications/)
+    * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-ios-swift-applications/)
+    * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-android-applications/)
+    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/)
 * JSONStore
     * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore-cordova/)
 	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore-ios/)
@@ -109,8 +108,8 @@ Monitor deployed applications and adapters, gain insight on application usage, f
 
 * <span style="color:red">TODO </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
 * <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
-    * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-native-android/)
-    * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-native-ios/)
+    * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-android/)
+    * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-ios/)
     * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
 * <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
 * <span style="color:red">TODO </span>[Alerts](../analytics/alerts/)

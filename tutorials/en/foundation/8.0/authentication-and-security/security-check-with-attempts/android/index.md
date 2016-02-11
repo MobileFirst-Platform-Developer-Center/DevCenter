@@ -48,8 +48,8 @@ The minimum requirement from the `WLChallengeHandler` protocol is to implement a
 Add a constructor method:
 
 ```java
-public PinCodeChallengeHandler(String SecurityCheck) {
-    super(SecurityCheck);
+public PinCodeChallengeHandler(String securityCheck) {
+    super(securityCheck);
 }
 ```
 

@@ -13,11 +13,20 @@ Tags represent topics of interest to the user and provide the ability to receive
 
 Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). Broadcast notifications can be disabled by by unsubscribing from the reserved `Push.all` tag.
 
-### Agenda
+
+### Jump to:
 * [Notifications configuration](#notifications-configuration)
 * [Notifications API](#notifications-api)
 * [Handling a push notification](#handling-a-push-notification)
 * [Handling a secure push notification](#handling-a-secure-push-notification)
+
+
+### Notifications Configuration
+1. Create native project using XCode
+2. Add the MobileFirst Platform Foundation SDk, for detailed instructions see [Adding the MobileFirst Platform Foundation SDK to iOS Applications](../../adding-the-mfpf-sdk/ios.md)
+3. 
+
+#Old tutorial
 
 ### Notifications Configuration
 

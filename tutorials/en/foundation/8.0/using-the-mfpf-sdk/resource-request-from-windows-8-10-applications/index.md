@@ -28,7 +28,7 @@ Create a `WorklightResourceRequest` object and specify the path to the resource 
 Available methods are: `GET`, `POST`, `PUT` and `DELETE`.
 
 ```cs
-URI adapterPath = new URI("/adapters/RSSReader/getFeed",UriKind.Relative);
+URI adapterPath = new URI("/adapters/JavaAdapter/users",UriKind.Relative);
 WorklightResourceRequest request = WorklightClient.ResourceRequest(adapterPath,"GET");
 ```
 
@@ -78,10 +78,10 @@ request.Send(formParams);
 ```    
 
 ### Header parameters
-To send a parameter as an HTTP header use `.AddHeader()` API:
+To send a parameter as an HTTP header use `.SetHeader()` API:
 
 ```cs
-request.AddHeader(System.Net.WebHeaderCollection header);
+request.SetHeader(KeyValuePair<string,string> header);
 ```
 
 ### Other custom body parameters
