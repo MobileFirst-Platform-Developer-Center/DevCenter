@@ -24,7 +24,7 @@ This tutorial explains how to create, build and deploy MobileFirst **Java or Jav
  * [Create an Adapter](#install-mobilefirst-developer-cli)
 * [File Structure](file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
-* [Update Maven Archetype Version](#update-maven-archetype-version)
+* [Updating the Maven Archetype Version](#updating-the-maven-archetype-version)
 * [Downloading or Deploying Adapters Using MobileFirst Operations Console](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -299,7 +299,7 @@ This generates an **.adapter** archive file which can be found in the **target**
 
 **NOTE:** The deploy command is available only during development.
 
-## Update the Adapter Maven Project
+## Updating the Maven Archetype Version
 To update the adapter Maven project with the latest release, find the release version number and update the following properties in the adapter's **pom.xml** file:
 1. The `adapter-maven-api` version:
 
