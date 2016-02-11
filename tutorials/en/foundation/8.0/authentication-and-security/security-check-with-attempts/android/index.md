@@ -148,4 +148,4 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 * Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
 * In the MobileFirst console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
 
-![Sample application](sample-application.png)
+![Sample application](sample-application-android.png)
