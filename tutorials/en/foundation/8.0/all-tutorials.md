@@ -67,7 +67,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Developing Adapters in IDEs](../adapters/developing-adapters/)
 * [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 * [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
-* <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant by using an adapter](../adapters/cloudant/)
+* <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant using an adapter](../adapters/cloudant/)
 
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications.
@@ -82,9 +82,9 @@ Add various layers of protection to your applications.
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-attempts/windows-8-10/)
 * [SecurityCheck With UserAuthentication](../authentication-and-security/security-check-with-user-authentication/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the security check](../authentication-and-security/security-check-with-user-authentication/security-check/)
-    * <span style="color:red">TODO </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-user-authentication/cordova/)
-    * <span style="color:red">TODO </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-user-authentication/ios/)
-    * <span style="color:red">TODO </span>[Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-user-authentication/android/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/security-check-with-user-authentication/cordova/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/security-check-with-user-authentication/ios/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Android applications](../authentication-and-security/security-check-with-user-authentication/android/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-user-authentication/windows-8-10/)
 * <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
 * [Application Authenticity](../authentication-and-security/application-authenticity/)

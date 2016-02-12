@@ -6,10 +6,9 @@ relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
 ## Overview
-This tutorial covers the basics of the IBM MobileFirst Platform Foundation development environment and tools.
-
-* The MobileFirst Platform Foundation developer tools are supported on the following operating systems: Windows, Apple OS X and Linux.
-* The MobileFirst Operations Console is supported in modern browsers such as: Internet Explorer 10+, latest Chrome, Safari and Firefox.
+IBM MobileFirst Platform Foundation is made up of several components. These components can be installed either seperately via online repositories, or downloaded bundled together for offline installation using the MobileFirst Platform Foundation Development Kit Installer.
+ 
+This tutorial expands on the components of IBM MobileFirst Platform Foundation and the available setup steps to get started with the MobileFirst Development environment.
 
 #### Jump to:
 
@@ -19,11 +18,9 @@ This tutorial covers the basics of the IBM MobileFirst Platform Foundation devel
 
 ## Development Kit
 The development kit provides a ready-for-development environment with minimal configuration needed. The environment is made up of the following:  
-A WebSphere Liberty profile application server with MobileFirst Server deployed onto it. It is pre-configured with an  "mfp" runtime and uses a pre-configured filesystem-based Apache Derby database.
+A WebSphere Liberty profile application server with MobileFirst Server deployed onto it. It is pre-configured with an  "mfp" runtime and uses a pre-configured file system-based Apache Derby database.
 
 The Development Kit consists of: MobileFirst Server, MobileFirst Developer Command-line Interface (CLI), MobileFirst Operations Console and the MobileFirst client SDKs.
-
-These components can be installed either seperately via online repositories, or downloaded bundled together for offline installation using the MobileFirst Platform Foundation Development Kit Installer.
 
 ### MobileFirst Platform Foundation Development Kit Installer
 The Installer can be downloaded ahead of time and be used for "offline situations", where Internet connectivity is not available. The Installer  pre-packages the MobileFirst Server, The MobileFirst Developer CLI and the MobileFirst client SDKs for manual installation.
@@ -72,6 +69,8 @@ A developer can:
     - Direct Update
 - Generate DevOps scripts for continuous integration workflows and faster development cycles
 - and more
+
+Once the MobileFirst Server is up &amp; running, you can access the console from a browser using the URL: `http://locahost:9080/mfpconsole`.
 
 > Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Platform Operations Console](../../quick-start/console/) tutorial.
 
