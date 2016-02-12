@@ -70,7 +70,7 @@ A developer can:
 - Generate DevOps scripts for continuous integration workflows and faster development cycles
 - and more
 
-After the MobileFirst Servr is up &amp; running, you can access the console from a browser using the URL: `http://locahost:9080/mfpconsole`.
+Once the MobileFirst Server is up &amp; running, you can access the console from a browser using the URL: `http://locahost:9080/mfpconsole`.
 
 > Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Platform Operations Console](../../quick-start/console/) tutorial.
 
