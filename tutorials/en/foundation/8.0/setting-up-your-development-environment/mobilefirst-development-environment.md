@@ -18,34 +18,23 @@ This tutorial expands on the components of IBM MobileFirst Platform Foundation a
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Development Kit
-The development kit provides a ready-for-development environment with minimal configuration needed. The environment is made up of the following:  
-A WebSphere Liberty profile application server with MobileFirst Server deployed onto it. It is pre-configured with an  "mfp" runtime and uses a pre-configured file system-based Apache Derby database.
+The development kit provides a ready-for-development environment with minimal configuration needed.
 
 The Development Kit consists of: MobileFirst Server, MobileFirst Developer Command-line Interface (CLI), MobileFirst Operations Console and the MobileFirst client SDKs.
-
-## IBM MobileFirst Platform Foundation components
 
 ### MobileFirst Platform Foundation Development Kit Installer
 The Installer can be downloaded ahead of time and be used for "offline situations", where Internet connectivity is not available. The Installer  pre-packages the MobileFirst Server, The MobileFirst Developer CLI and the MobileFirst client SDKs for manual installation.
 
 > To download the installer, visit the [downloads]({{site.baseurl}}/downloads/) page.
 
+## MobileFirst Platform Foundation components
+
 ### MobileFirst Server
-MobileFirst Server is a set of Web Application Archive (.war) files that can be deployed to the following application servers: Tomcat, WebSphere Liberty profile and WebSphere Full profile.
+As part of the Development Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
 
-The MobileFirst Server is installed as a stand-alone server and provides the following scripts in its **scripts** folder:
+> To download and install the MobileFirst Server, visit the [downloads]({{site.base}}/downloads/) page.  
 
-`.sh` scripts are for Linux and Mac.  
-`.cmd` scripts are for Windows.
-
-- `console.[sh|cmd]`: Open the local MobileFirst Console
-- `run.[sh|cmd]`: Run the local MobileFirst Server with trailing Liberty Server messages
-- `start.[sh|cmd]`: Run the local MobileFirst Server in background mode
-- `stop.[sh|cmd]`: Stop the currenet local MobileFirst Server instance
-
-> To download and install the MobileFirst Server, visit the [downloads]({{site.base}}/downloads/) page.
-
-> Learn more about the MobileFirst Server in the user documentation.
+If using MobileFirst Server on IBM Containers, see the [Using Foundation Tile]() tutorial.  
 
 #### Adding the MobileFirst Server to Eclipse
 The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quickly starting and stopping of the development server.  
@@ -107,7 +96,7 @@ MobileFirst Platform Foundation provides client-side SDKs for Cordova applicatio
 To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  To use the MobileFirst server-side APIs, visit the [Adapters](../../adapters/) tutorials category.  
 
 #### Manual installation
-If the MobileFirst SDKs were downloaded as part of the MobileFirst Platform Foundation Development Kit Installer, [visit the user the documentation for installation instructions](#).
+If the MobileFirst SDKs were downloaded as part of the MobileFirst Platform Foundation Development Kit Installer, [visit the user  documentation for setup instructions](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 ## Applications and adapters development
 You can use your preferred code editor or alternative IDEs, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
