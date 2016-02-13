@@ -48,20 +48,19 @@ The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quick
 8. Click **Next** followed by clicking **Finish**.
 
 ### MobileFirst Operations Console
-The MobileFirst Server's Operations Console expose the MobileFirst Server functionalities.  
+The MobileFirst Server's Operations Console exposes the following functionalities.  
 A developer can:
 
 - Register and deploy applications and adapters
-- Optionally download native/Cordova application and adapter templates 
-- Configure application aspects:
-    - Authentication and security
+- Optionally download native/Cordova application and adapter starter code templates 
+- Configure an application's authentication and security properties
+- Manage applications:
     - Application Authenticity
     - Push Notifications
     - Direct Update
+    - Remote Disable/Notify
 - Generate DevOps scripts for continuous integration workflows and faster development cycles
 - and more
-
-Once the MobileFirst Server is up &amp; running, you can access the console from a browser using the URL: `http://locahost:9080/mfpconsole`.
 
 > Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Platform Operations Console](../../quick-start/console/) tutorial.
 
@@ -91,17 +90,18 @@ To use MobileFirst Studio for Cordova application development, it is also requir
 ### MobileFirst Platform Foundation client and server SDKs &amp; APIs
 MobileFirst Platform Foundation provides client-side SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Server-side APIs for adapter development are available as well.
 
-To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  To use the MobileFirst server-side APIs, visit the [Adapters](../../adapters/) tutorials category.  
+* To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  
+* To use the MobileFirst server-side APIs, visit the [Adapters](../../adapters/) tutorials category.  
 
 #### Manual installation
 If the MobileFirst SDKs were downloaded as part of the MobileFirst Platform Foundation Development Kit Installer, [visit the user  documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) for setup instructions.
 
 ## Applications and adapters development
-You can use your preferred code editor or alternative IDEs, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
+You can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
 
 For adapters develpment, refer to the [Adapters](../../adapters/) category as well as to the [Developing Adapters in IDEs](../../adapters/developing-adapters) and [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorials.
 
-> <b>Note:</b> API auto-completion is available only in Typescript-supporting IDEs.
+> **Note:** API auto-completion is available only in Typescript-supporting editors.
 
 ## Tutorials to follow next
 Visit the [All Tutorials](../../all-tutorials/) page and select a tutorials category to follow next.
