@@ -15,7 +15,7 @@ To enable Application Authenticity you can either follow the on-screen instructi
 
 #### Limitations
 
-* Application Authenticity is <b>not available</b> in the MobileFirst Development Server. To test, use a remote application server such as a QA, UAT or Production server.
+* Application Authenticity is **not available** in the MobileFirst Development Server. To test, use a remote application server such as a QA, UAT or Production server.
 * Application Authenticity does not support **Bitcode** in iOS. If using Application Authentcity, disable Bitcode in the Xcode project properties.
 
 #### Jump to:

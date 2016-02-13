@@ -18,7 +18,7 @@ You can use Application Center in different contexts. For example:
 * As an enterprise app store across an organization.
 * During development to distribute applications within a team.
 
-> <b>Note: to build the iOS AppCenter Installer application, MobileFirst 7.1 is required
+> **Note:** to build the iOS AppCenter Installer application, MobileFirst 7.1 is required
 
 #### Jump to:
 

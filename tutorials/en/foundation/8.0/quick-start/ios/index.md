@@ -110,10 +110,10 @@ The adapter response is then printed in the Xcode Console.
 
 ![Image of application that successfully called a resource from the MobileFirst Server ](success_response.png)
 
-> <b>Note:</b> Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default.  
+> **Note:** Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default.  
 To complete the tutorial, [disable  ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).
 
-> 1. In Xcode, right-click the <b>[project]/info.plist file → Open As → Source Code</b>
+> 1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 > 2. Paste the following: 
 
 >    
