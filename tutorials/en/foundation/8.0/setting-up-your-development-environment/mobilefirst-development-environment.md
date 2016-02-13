@@ -33,8 +33,7 @@ The Installer can be downloaded ahead of time and be used for "offline situation
 As part of the Development Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
 
 > To download and install the MobileFirst Server, visit the [downloads]({{site.base}}/downloads/) page.  
-
-If using MobileFirst Server on IBM Containers, see the [Using Foundation Tile]() tutorial.  
+> If using MobileFirst Server on IBM Containers, see the [Using Foundation Tile](../../ibm-containers/) tutorial.  
 
 #### Adding the MobileFirst Server to Eclipse
 The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quickly starting and stopping of the development server.  
@@ -73,8 +72,7 @@ The IBM MobileFirst command-line interface (CLI) tool enables developers to:
 - Register and configure applications
 - Create, build, deploy and test adapters
 
-> To download and install the MobileFirst Developer CLI, visit the [downloads]({{site.base}}/downloads/) page.
-
+> To download and install the MobileFirst Developer CLI, visit the [downloads]({{site.base}}/downloads/) page.  
 > Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 <!-- ## MobileFirst Studio
@@ -96,7 +94,7 @@ MobileFirst Platform Foundation provides client-side SDKs for Cordova applicatio
 To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  To use the MobileFirst server-side APIs, visit the [Adapters](../../adapters/) tutorials category.  
 
 #### Manual installation
-If the MobileFirst SDKs were downloaded as part of the MobileFirst Platform Foundation Development Kit Installer, [visit the user  documentation for setup instructions](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+If the MobileFirst SDKs were downloaded as part of the MobileFirst Platform Foundation Development Kit Installer, [visit the user  documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) for setup instructions.
 
 ## Applications and adapters development
 You can use your preferred code editor or alternative IDEs, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
