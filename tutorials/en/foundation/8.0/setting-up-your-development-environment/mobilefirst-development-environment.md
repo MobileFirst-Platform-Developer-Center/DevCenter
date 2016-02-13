@@ -6,13 +6,14 @@ relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
 ## Overview
-IBM MobileFirst Platform Foundation is made up of several components. These components can be installed either seperately via online repositories, or downloaded bundled together for offline installation using the MobileFirst Platform Foundation Development Kit Installer.
+The IBM MobileFirst Platform Foundation components can be installed either seperately via online repositories, or downloaded bundled together for offline installation using the Development Kit Installer.
  
-This tutorial expands on the components of IBM MobileFirst Platform Foundation and the available setup steps to get started with the MobileFirst Development environment.
+This tutorial expands on the components of IBM MobileFirst Platform Foundation and the setup needed to get started with the MobileFirst Development environment.
 
 #### Jump to:
 
 * [Development Kit](#development-kit)
+* [MobileFirst Platform Foundation components](#mobilefirst-platform-foundation-components)
 * [Applications and Adapters Development](#applications-and-adapters-development)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -21,6 +22,8 @@ The development kit provides a ready-for-development environment with minimal co
 A WebSphere Liberty profile application server with MobileFirst Server deployed onto it. It is pre-configured with an  "mfp" runtime and uses a pre-configured file system-based Apache Derby database.
 
 The Development Kit consists of: MobileFirst Server, MobileFirst Developer Command-line Interface (CLI), MobileFirst Operations Console and the MobileFirst client SDKs.
+
+## IBM MobileFirst Platform Foundation components
 
 ### MobileFirst Platform Foundation Development Kit Installer
 The Installer can be downloaded ahead of time and be used for "offline situations", where Internet connectivity is not available. The Installer  pre-packages the MobileFirst Server, The MobileFirst Developer CLI and the MobileFirst client SDKs for manual installation.
