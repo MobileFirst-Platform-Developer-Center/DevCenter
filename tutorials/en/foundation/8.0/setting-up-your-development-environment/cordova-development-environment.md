@@ -24,7 +24,7 @@ To install:
 2. From a **Command-line** window, run the command: `npm install -g cordova`.
 
 ## Next steps
-You can use your preferred code editor or alternative IDEs, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
+You can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
 
 * Learn how to add the [MobileFirst SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova/).
 * For applications development, refer to the [Using the MobileFirst Platform Foundation SDK](../../using-the-mfpf-sdk/) tutorials.
