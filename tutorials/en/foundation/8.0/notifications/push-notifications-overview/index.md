@@ -33,10 +33,10 @@ Notifications are received regardless of whether the application is currently ru
 * **Silent (iOS 8 and above)** - sending notifications without distrubing the user
 
 ### Device support
-Push notifications are supported for the following mobile platforms:
+Push notifications are supported for the following platforms in MobileFirst Platform Foundation:
 
-* Android 4.x, 5.x, 6.x
 * iOS 8.x, 9.x
+* Android 4.x, 5.x, 6.x
 
 ## Push Notification Types 
 
