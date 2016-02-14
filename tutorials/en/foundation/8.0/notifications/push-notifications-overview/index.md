@@ -74,8 +74,6 @@ To setup GCM:
 
 4. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and server **API Key** and click **Save**.
 
-![Image of adding the GCM crendentials](server-side-setup.png)
-
 #### Notes
 If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
 
@@ -91,8 +89,6 @@ To setup APNS:
 1. [Generate a push notification certificate](https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en).
 2. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then,  click **Save**.
 
-![Image of adding the GCM crendentials](gcm-setup.png)
-
 #### Notes
 * For push notifications to be sent, the following servers must be accessible from a MobileFirst Server instance:  
     * Sandbox servers:  
@@ -105,6 +101,8 @@ To setup APNS:
 * During the development phase, use the apns-certificate-sandbox.p12 sandbox certificate file.
 * During the production phase, use the apns-certificate-production.p12 production certificate file.
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
+
+![Image of adding the GCM crendentials](server-side-setup.png)
 
 ## Tutorials to follow next
 With the prerequisites for push notifications now accomplished, the application can be configured as well.  
