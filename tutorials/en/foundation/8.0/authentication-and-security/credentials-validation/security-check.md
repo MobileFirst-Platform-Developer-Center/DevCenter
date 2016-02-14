@@ -7,9 +7,9 @@ weight: 3
 ---
 
 ## Overview
-This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`. 
+This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`. 
 
-The `SecurityCheckWithAttempts` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
+The `CredentialsValidationSecurityCheck` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
 
 This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client is blocked for 60 seconds).
 
@@ -23,7 +23,7 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 * [Configuring the SecurityCheck](#configuring-the-securitycheck)
 
 ## PinCodeAttempts
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `SecurityCheckWithAttempts`.
+[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
 
 ```java
 public class PinCodeAttempts extends SecurityCheckWithAttempts {
@@ -56,7 +56,7 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-`remainingAttempts` is inherited from `SecurityCheckWithAttempts`.
+`remainingAttempts` is inherited from `CredentialsValidationSecurityCheck`.
 
 ## Validating the user credentials
 When the client sends the challenge's answer, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
