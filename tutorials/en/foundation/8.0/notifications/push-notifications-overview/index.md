@@ -89,7 +89,6 @@ iOS devices use Apple's Push Notification Service (APNS) for push notifications.
 To setup APNS:
 
 1. [Generate a push notification certificate](https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en)
-In the push services > push settings section of your application in the MFP operations console, add your APNS certificate and corresponding password. 
 2. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then,  click **Save**.
 
 ![Image of adding the GCM crendentials](gcm-setup.png)
