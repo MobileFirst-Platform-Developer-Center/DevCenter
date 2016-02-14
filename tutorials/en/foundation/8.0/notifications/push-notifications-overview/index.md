@@ -14,12 +14,12 @@ This tutorial provides an introduction to push notifications and the supported n
 
 
 #### Jump to:
-* [What is a Push Notification?](#what-is-a-push-notification)
+* [What is a Push Notification](#what-is-a-push-notification)
 * [Push Notification Types](#push-notification-types)
 * [Setting up Push Notifications](#setting-up-push-notifications)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
-## What is a Push Notification?
+## What is a Push Notification
 Push notifications is the ability of a mobile device to receive messages that are "pushed" from a server.  
 Notifications are received regardless of whether the application is currently running in the foreground or background.  
 
@@ -74,7 +74,7 @@ To setup GCM:
 
 4. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and server **API Key** and click **Save**.
 
-![Image of adding the GCM crendentials](gcm-setup.png)
+![Image of adding the GCM crendentials](server-side-setup.png)
 
 #### Notes
 If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
@@ -88,7 +88,7 @@ If your organization has a firewall that restricts the traffic to or from the In
 iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
 To setup APNS:
 
-1. [Generate a push notification certificate](https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en)
+1. [Generate a push notification certificate](https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en).
 2. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then,  click **Save**.
 
 ![Image of adding the GCM crendentials](gcm-setup.png)
@@ -113,3 +113,4 @@ Select a tutorial:
 * [Handling push notifications in Cordova applications](../handling-push-notifications-in-cordova)
 * [Handling push notifications in iOS applications](../handling-push-notifications-in-ios)
 * [Handling push notifications in Android applications](../handling-push-notifications-in-android)
+* [Sending push notifications](../sending-push-notifications)
