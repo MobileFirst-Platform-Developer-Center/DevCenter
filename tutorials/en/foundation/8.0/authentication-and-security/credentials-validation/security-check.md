@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing the With Attempts Security Check 
+title: Implementing the CredentialsValidation Security Check 
 breadcrumb_title: Security adapter
 relevantTo: [android,ios,windows,cordova]
 weight: 3

@@ -30,7 +30,7 @@ The challenge handler defines the client-side behavior that is specific to the s
 ## Creating the challenge handler
 A challenge handler is a class responsible for handling challenges sent by the MobileFirst server, such as displaying a login screen, collecting credentials and submitting them back to the `SecurityCheck`.
 
-In this example, the `SecurityCheck` is `PinCodeAttempts` which was defined in [Implementing Security Check with Attempts Security Adapter](../adapter). The challenge sent by this `SecurityCheck` contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
+In this example, the `SecurityCheck` is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidation Security Check](../security-check). The challenge sent by this `SecurityCheck` contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
 
 Create a Java class that extends `WLChallengeHandler`:
 

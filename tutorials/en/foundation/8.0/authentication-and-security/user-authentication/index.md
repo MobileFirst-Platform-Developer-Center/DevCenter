@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing Security Check with User Authentication
+title: UserAuthentication Security Check
 relevantTo: [android,ios,windows,cordova]
 show_children: true
 show_disqus: false
