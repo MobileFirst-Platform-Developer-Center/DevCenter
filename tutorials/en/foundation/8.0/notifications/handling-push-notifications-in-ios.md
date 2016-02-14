@@ -4,6 +4,14 @@ title: Handling Push Notifications in iOS applications
 relevantTo: [ios]
 weight: 4
 ---
+<span style="color:red">
+The handling in client side tutorials should explain:
+- how to setup push notifications support in iOS Xcode project (editing the podfile?)
+- how to setup push notifications support in Andrid Studio project (editing the builde.gradle file?)
+- how to setup push notifications support in Cordova applications
+- how to intercept and display notifications in the client
+</span>
+
 ## Overview
 
 In this tutorial, you will be learning how to handle push notification for iOS applications in Swift.

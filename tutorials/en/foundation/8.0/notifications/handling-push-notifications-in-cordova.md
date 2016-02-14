@@ -6,6 +6,14 @@ relevantTo: [cordova]
 weight: 3
 ---
 
+<span style="color:red">
+The handling in client side tutorials should explain:
+- how to setup push notifications support in iOS Xcode project (editing the podfile?)
+- how to setup push notifications support in Andrid Studio project (editing the builde.gradle file?)
+- how to setup push notifications support in Cordova applications
+- how to intercept and display notifications in the client
+</span>
+
 ## Overview
 
 Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.
