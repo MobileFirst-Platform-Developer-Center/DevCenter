@@ -108,9 +108,9 @@ Monitor deployed applications and adapters, gain insight on application usage, f
 
 * <span style="color:red">TODO </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
 * <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
-    * [Logging in native Android](../analytics/remote-controlled-client-side-log-collection/logging-in-android/)
-    * [Logging in native iOS](../analytics/remote-controlled-client-side-log-collection/logging-in-ios/)
-    * [Logging in MobileFirst hybrid applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
+    * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
+    * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/logging-in-android-applications/)
+    * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/logging-in-ios-applications/)
 * <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
 * <span style="color:red">TODO </span>[Alerts](../analytics/alerts/)
 * <span style="color:red">TODO </span>[Creating Custom Charts](../analytics/custom-charts/)
