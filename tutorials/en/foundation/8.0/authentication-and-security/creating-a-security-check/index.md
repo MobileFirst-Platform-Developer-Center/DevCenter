@@ -139,7 +139,6 @@ Also available are these predefined security checks:
 Continue reading about security checks in the following tutorials.  
 Remember to deploy your adapter when you're done developing or making changes.
 
-* [Implementing the CredentialsValidation Security Check](../credentials-validation/)
-* [Implementing the UserAuthentication Security Check](../user-authentication/)
-
-Learn about additional MobileFirst Platform Foundation [authentication and security features](../).
+* [Implementing the CredentialsValidation Security Check](../credentials-validation/).
+* [Implementing the UserAuthentication Security Check](../user-authentication/).
+* Learn about additional MobileFirst Platform Foundation [authentication and security features](../).
