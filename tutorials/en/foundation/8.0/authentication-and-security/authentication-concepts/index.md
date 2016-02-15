@@ -71,7 +71,7 @@ Several predefined security checks available:
 
 - [Application Authenticity](../application-authenticity/)
 - [Direct Update](../../using-the-mfpf-sdk/direct-update)
-- [LTPA](../websphere-ltpa-based-authentication/)
+- LTPA
 
 > Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial.
 
