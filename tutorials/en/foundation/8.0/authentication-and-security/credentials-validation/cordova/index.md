@@ -3,6 +3,7 @@ layout: tutorial
 title: Implementing the challenge handler in Cordova applications
 breadcrumb_title: Cordova
 relevantTo: [cordova]
+weight: 2
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80

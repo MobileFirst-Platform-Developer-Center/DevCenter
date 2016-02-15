@@ -3,6 +3,7 @@ layout: tutorial
 title: Implementing the challenge handler in Android applications
 breadcrumb_title: Android
 relevantTo: [android]
+weight: 4
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
