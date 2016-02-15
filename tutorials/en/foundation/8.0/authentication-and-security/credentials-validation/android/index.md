@@ -1,13 +1,13 @@
 ---
 layout: tutorial
 title: Implementing the challenge handler in Android applications
-breadcrumb_title: Android applications
+breadcrumb_title: Android
 relevantTo: [android]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
   - name: Download Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityAdapters/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 When trying to access a protected resource, the server (the `SecurityCheck`) will send back to the client a list containing one or more **challenges** for the client to handle.  
