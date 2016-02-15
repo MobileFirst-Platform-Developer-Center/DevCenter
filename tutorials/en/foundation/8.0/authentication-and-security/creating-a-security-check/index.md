@@ -8,7 +8,7 @@ weight: 2
 ## Overview
 A SecurityCheck is an object responsible for obtaining credentials from a client and validate them.
 
-Security checks are defined inside **Java adapters**. Any Java adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
+Security checks are defined inside **an adapter** and are implemented in Java code. Any adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
 
 **Prerequisites:** Familiarize yourself with the MobileFirst Platform Foundation authentication framework before continuing.  
 Read the [Authentication concepts](../authentication-concepts/) tutorial.
@@ -22,7 +22,7 @@ Read the [Authentication concepts](../authentication-concepts/) tutorial.
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Defining a SecurityCheck
-[Create a Java adapter](../../adapters/creating-adapters/) or use an exiting one.
+[Create a Java or JavaScript adapter](../../adapters/creating-adapters/) or use an exiting one.
 
 > When creating a Java adapter, the default template assumes the adapter will serve **resources**. It is the developer's choice to bundle Security Checks and resources in the same adapter, or to separate them into distinct adapters.
 To remove the default **resource** implementation, delete the files **[AdapterName]Application.java** and **[AdapterName]Resource.java**. Remove the `<JAXRSApplicationClass>` element from **adapter.xml** as well.
@@ -42,7 +42,7 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 - Some SecurityChecks can be configured with a list of `property` elements.
 
 ## SecurityCheck Implementation
-Create the security check's Java class. The implementation should extend one of the provided base classes, below.  
+Create the security check's **Java class**. The implementation should extend one of the provided base classes, below.  
 The parent class you choose will determine the balance between customization and simplicity.
 
 ### SecurityCheck
