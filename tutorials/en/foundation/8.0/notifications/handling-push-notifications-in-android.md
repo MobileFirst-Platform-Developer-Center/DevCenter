@@ -39,35 +39,37 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 1. In **Android → Gradle scripts**, select the **build.gradle (Project: [application-name])** file.
 
-2. Add the following line to `dependencies`:
-	
-	```xml
-	classpath 'com.google.gms:google-services:2.0.0-alpha3'
-	```
+	1. Add the following line to `dependencies`:
+		
+		```xml
+		classpath 'com.google.gms:google-services:2.0.0-alpha3'
+		```
 
 3. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file.
 
-4. Add the following line below `apply plugin: 'com.android.application'`:
+	1. Add the following line to `dependencies`:
+		
+		```xml
+		com.google.android.gms:play-services-gcm:8.4.0
+		com.squareup.okhttp:okhttp:2.6.0
+		```
 
-	```xml
-	apply plugin: 'com.google.gms.google-services'
-	```
+	2. Add the following line at the bottom:
 
-5. Add the following line to `dependencies`:
-	
-	```xml
-	com.google.android.gms:play-services-gcm:8.4.0
-	com.squareup.okhttp:okhttp:2.6.0
-	```
+		```xml
+		apply plugin: 'com.google.gms.google-services'
+		```
 
-	<span style="color:red"> remove step 6 before going live</span>
+		**Note:** This line must be placed at the bottom of `app/build.gradle` as to not create an dependency collisions. For more details see [*The Google Services Gradle Plugin*](https://developers.google.com/android/guides/google-services-plugin)
 
-6. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
+	<span style="color:red"> remove step 3 before going live</span>
+
+3. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
 
    	Remove libs folder from the aar.  
    	Note: This step is not required once the lib gets to maven central/jcenter. Just need to add mavenCentral()/jcenter() in app gradle.
 
-7. Add the push required configuration in AndroidManifest.xml 
+4. Add the push required configuration in AndroidManifest.xml 
 
 	<span style="color:red">TODO: explain what is needed to do in the AndroidManifest.xml file</span>
 
