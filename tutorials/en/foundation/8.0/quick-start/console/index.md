@@ -85,6 +85,8 @@ Set-up [push notifications](../../notifications/push-notifications-overview/) an
 #### Creating adapters
 Register an adapter and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
 
+<span style="color:red">update image</span>
+
 ![Image of adapter registration screen](create-adapter.png)
 
 #### Adapter properties
@@ -94,10 +96,8 @@ After an adapter is deployed, it can be configured in the console.
 
 ### Devices
 Administrators can search for devices that access the MobileFirst Server and can manage access rights.  
-Devices can be searched for using either user ID or using a friendly name.
-
-The user ID is the identifier that was used to log-in.  
-A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. You can set the friendly name on the client by using the client-side JavaScript APIs: `WL.Device.setFriendlyName` and `WL.Device.getFriendlyName`.
+Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
+A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
 
 > For more information, see the topic about device access management in the MobileFirst Operations Console in the user documentation.
 
@@ -111,8 +111,6 @@ Administrators can use log profiles to adjust client logger configurations, such
 When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as `WLResourceRequest`, and is applied automatically.</p>
 
 > For more information, see the topic about client-side log capture configuration from MobileFirst Operations Console in the user documentation.
-
-<span style="color:red">replace with image showing client logs</span>
 
 ![Image of client logs screen](client-logs.png)
 

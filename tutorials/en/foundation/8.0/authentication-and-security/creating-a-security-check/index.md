@@ -8,7 +8,7 @@ weight: 2
 ## Overview
 A SecurityCheck is an object responsible for obtaining credentials from a client and validate them.
 
-Security checks are defined inside **Java adapters**. Any Java adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
+Security checks are defined inside **an adapter** and are implemented in Java code. Any adapter can theoretically define a SecurityCheck. An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
 
 **Prerequisites:** Familiarize yourself with the MobileFirst Platform Foundation authentication framework before continuing.  
 Read the [Authentication concepts](../authentication-concepts/) tutorial.
@@ -22,7 +22,7 @@ Read the [Authentication concepts](../authentication-concepts/) tutorial.
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Defining a SecurityCheck
-[Create a Java adapter](../../adapters/creating-adapters/) or use an exiting one.
+[Create a Java or JavaScript adapter](../../adapters/creating-adapters/) or use an exiting one.
 
 > When creating a Java adapter, the default template assumes the adapter will serve **resources**. It is the developer's choice to bundle Security Checks and resources in the same adapter, or to separate them into distinct adapters.
 To remove the default **resource** implementation, delete the files **[AdapterName]Application.java** and **[AdapterName]Resource.java**. Remove the `<JAXRSApplicationClass>` element from **adapter.xml** as well.
@@ -42,40 +42,40 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 - Some SecurityChecks can be configured with a list of `property` elements.
 
 ## SecurityCheck Implementation
-Create the security check's Java class. The implementation should extend one of the provided base classes, below.  
+Create the security check's **Java class**. The implementation should extend one of the provided base classes, below.  
 The parent class you choose will determine the balance between customization and simplicity.
 
 ### SecurityCheck
 `SecurityCheck` is a Java **interface**, defining the minimum required methods to represent the server-side state of a security check. Using this interface alone does not provide any implementation code and it is the sole responsibility of the implementor to handle each scenario.
 
-### SecurityCheckWithExternalization
+### ExternalizableSecurityCheck
 This abstract class implements a basic version of the `SecurityCheck` interface.  
 It provides, among other options: externalization as JSON, inactivity timeout, expiration countdown and more.
 
 Subclassing this class leaves a lot of flexibility in your Security Check implementation.
 
-> Learn more in the `SecurityCheckWithExternalization` user documentation topic.
+> Learn more in the `ExternalizableSecurityCheck` user documentation topic.
 
-### SecurityCheckWithAttempts
-This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`.
+### CredentialsValidation Security Check
+This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`.
 
-The `SecurityCheckWithAttempts` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
+The `CredentialsValidationSecurityCheck` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
 
-> Learn more in the [Security Check With Attempts](../security-check-with-attempts/) tutorials.
+> Learn more in the [CredentialsValidation security check](../credentials-validation/) tutorials.
 
-### SecurityCheckWithUserAuthentication
-This abstract class extends `SecurityCheckWithAttempts` and therefore inherits all of its features.
+### UserAuthentication Security Check
+This abstract class extends `CredentialsValidationSecurityCheck` and therefore inherits all of its features.
 
-In addition, the `SecurityCheckWithUserAuthentication` class provides the MobileFirst framework an `AuthenticatedUser` object which represents the logged-in user. Methods that are required to be implemented are `createUser`, `validateCredentials` and `createChallenge`.
+In addition, the `UserAuthenticationSecurityCheck` class provides the MobileFirst framework an `AuthenticatedUser` object which represents the logged-in user. Methods that are required to be implemented are `createUser`, `validateCredentials` and `createChallenge`.
 
 Also provided is a built-in capability to optionally enable a "Remember Me" login behavior.
 
-> Learn more in the [SecurityCheck With User Authentication](../security-check-with-user-authentication/) tutorials.
+> Learn more in the [UserAuthentication security check](../user-authentication/) tutorials.
 
-## SecurityCheck Configuration
+## Security Check Configuration
 Each `SecurityCheck` implementation class can use a `SecurityCheckConfiguration` class that defines properties available for that `SecurityCheck`. Each base `SecurityCheck` class comes with a matching `SecurityCheckConfiguration` class. You can create your own implementation that extends one of the base `SecurityCheckConfiguration` classes and use it for your custom `SecurityCheck`.
 
-For example, `SecurityCheckWithUserAuthentication`'s `createConfiguration` method returns an instance of `SecurityCheckWithAuthenticationConfig`.
+For example, `UserAuthenticationSecurityCheck`'s `createConfiguration` method returns an instance of `SecurityCheckWithAuthenticationConfig`.
 
 ```java
 public abstract class SecurityCheckWithUserAuthentication extends SecurityCheckWithAttempts {
@@ -139,7 +139,6 @@ Also available are these predefined security checks:
 Continue reading about security checks in the following tutorials.  
 Remember to deploy your adapter when you're done developing or making changes.
 
-* [Implementing the SecurityCheckWithAttempts](../security-check-with-attempts/)
-* [Implementing the SecurityCheckWithUserAuthentication](../security-check-with-user-authentication/)
-
-Learn about additional MobileFirst Platform Foundation [authentication and security features](../).
+* [Implementing the CredentialsValidation Security Check](../credentials-validation/).
+* [Implementing the UserAuthentication Security Check](../user-authentication/).
+* Learn about additional MobileFirst Platform Foundation [authentication and security features](../).

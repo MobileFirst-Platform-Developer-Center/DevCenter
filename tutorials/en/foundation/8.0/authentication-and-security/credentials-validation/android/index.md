@@ -1,13 +1,13 @@
 ---
 layout: tutorial
 title: Implementing the challenge handler in Android applications
-breadcrumb_title: Android applications
+breadcrumb_title: Android
 relevantTo: [android]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
   - name: Download Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityAdapters/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 When trying to access a protected resource, the server (the `SecurityCheck`) will send back to the client a list containing one or more **challenges** for the client to handle.  
@@ -30,7 +30,7 @@ The challenge handler defines the client-side behavior that is specific to the s
 ## Creating the challenge handler
 A challenge handler is a class responsible for handling challenges sent by the MobileFirst server, such as displaying a login screen, collecting credentials and submitting them back to the `SecurityCheck`.
 
-In this example, the `SecurityCheck` is `PinCodeAttempts` which was defined in [Implementing Security Check with Attempts Security Adapter](../adapter). The challenge sent by this `SecurityCheck` contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
+In this example, the `SecurityCheck` is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidation Security Check](../security-check). The challenge sent by this `SecurityCheck` contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
 
 Create a Java class that extends `WLChallengeHandler`:
 
@@ -144,7 +144,7 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 
 ### Sample usage
 
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the available `ResourceAdapter` and `PinCodeAttempts` adapters](../../creating-adapters/).
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../creating-adapters/).
 * Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
 * In the MobileFirst console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
 

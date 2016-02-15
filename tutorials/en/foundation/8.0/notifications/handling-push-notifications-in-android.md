@@ -4,8 +4,9 @@ title: Handling Push Notifications in Android applications
 relevantTo: [android]
 weight: 5
 ---
+
 ## Overview
-Before Android applications are able to handle any recieved push notifications, they must configured with support for Google Play Services. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and  subscribe &amp; unsubscribe to tags.
+Before Android applications are able to handle any received push notifications, they must configured with support for Google Play Services. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and  subscribe &amp; unsubscribe to tags.
 
 In this tutorial you learn how to configure an Android application and how to use the MobileFirst-provided Notifications API.
 
@@ -28,60 +29,96 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 ### Project setup
 
-1. In **Android → Gradle scripts**, select the **build.gradle (Project: [application-name])** file.
+1. In **Android → Gradle scripts**, select the **build.gradle (Project: [application-name])** file add the following line to `dependencies`: 
 
-2. Add the following line to `dependencies`:
-	
-	```xml
+	```
 	classpath 'com.google.gms:google-services:2.0.0-alpha3'
 	```
 
 3. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file.
 
-4. Add the following line below `apply plugin: 'com.android.application'`:
+	1. Add the following line to `dependencies`:
+		
+		```
+		com.google.android.gms:play-services-gcm:8.4.0
+		com.squareup.okhttp:okhttp:2.6.0
+		```
 
-	```xml
-	apply plugin: 'com.google.gms.google-services'
-	```
+	2. Add the following line at the bottom:
 
-5. Add the following line to `dependencies`:
-	
-	```xml
-	com.google.android.gms:play-services-gcm:8.4.0
-	com.squareup.okhttp:okhttp:2.6.0
-	```
+		```
+		apply plugin: 'com.google.gms.google-services'
+		```
 
-	<span style="color:red"> remove step 6 before going live</span>
+		**Note:** This line must be placed at the bottom of `app/build.gradle` as to not create an dependency collisions. For more details see [*The Google Services Gradle Plugin*](https://developers.google.com/android/guides/google-services-plugin)
 
-6. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
+	<span style="color:red"> remove step 3 before going live</span>
+
+3. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
 
    	Remove libs folder from the aar.  
    	Note: This step is not required once the lib gets to maven central/jcenter. Just need to add mavenCentral()/jcenter() in app gradle.
 
-7. Add the push required configuration in AndroidManifest.xml 
+4. Add the push required configuration in **AndroidManifest.xml**:
 
-	<span style="color:red">TODO: explain what is needed to do in the AndroidManifest.xml file</span>
+	1. Add the following permissions to the top the `manifest` tag:
 
-### Google Services setup
-<span style="color:red">Idan: I would consider moving this entire section to the server-side setup in the overview.</span>
+		```xml
+		<!-- Permissions -->
+    	<uses-permission android:name="android.permission.WAKE_LOCK" />
+		
+    	<!-- GCM Permissions -->
+    	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    	<permission
+    	    android:name="your.application.package.name.permission.C2D_MESSAGE"
+    	    android:protectionLevel="signature" />
 
-To setup the Android project with Google Services, visit [Google's Services website](https://developers.google.com/mobile/add?platform=android&cntapi=gcm&cnturl=https:%2F%2Fdevelopers.google.com%2Fcloud-messaging%2Fandroid%2Fclient&cntlbl=Continue%20Adding%20GCM%20Support&%3Fconfigured%3Dtrue).
+		```
 
-1. Provide your application name and package name.
-2. Select "Cloud Messaging" and click on **Enable Google cloud messaging**.
+	2. Add the following, `MFPPush Intent Service`, `MFPPush Instance ID Listener Service` to the `application` tag:
 
-This step generates a `Server API Key` and a `Sender ID`.  
-The generated values are used to identify the application by Google's GCM service in order to send notifications to the device. 
+		```xml
+        <!-- GCM Receiver -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="your.application.package.name" />
+            </intent-filter>
+        </receiver>
 
-<span style="color:red">TODO: Add explanation what to do with these values (= add them in the Console).</span>
+        <!-- MFPPush Intent Service -->
+        <service
+            android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <!-- MFPPush Instance ID Listener Service -->
+        <service
+            android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+		```
+
+		**Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
+
 
 ## Notifications API
 <span style="color:red">TODO: Add introduction text to the API.</span>
 
 ### API methods for tag notifications
-* `WLPush.subscribeTag(tagName,options)` - Subscribes the device to the specified tag name.
-* `WLPush.unsubscribeTag(tagName,options)` -  Unsubscribes the device from the specified tag name
-* `WLPush.isTagSubscribed(tagName)` - Returns whether the device is subscribed to a specified tag name
+* `MFPPush.subscribe(String[] tagNames, MFPPushResponceListener)` - Subscribes the device to the specified tag(s).
+* `MFPPush.unsubscribe(String[] tagNames, MFPPushResponceListener)` -  Unsubscribes the device from the specified tag(s).
+* `MFPPush.getTags(MFPPushResponceListener)` - Returns a list of available tags the device can subscribe to.
+* `MFPPush.getSubscriptions(MFPPushResponceListener)` - Returns a list of tag names as strings that the device is subscribed to.
 
 ### API methods for tag and broadcast notifications
 
@@ -91,9 +128,45 @@ This method sets the implementation class of the `WLNotificationListener` interf
 * `client.getPush().setOnReadyToSubscribeListener(listener)` -
 This method registers a listener to be used for push notifications. This listener should implement the `onReadyToSubscribe()` method.
 * The `onMessage(props,payload)` method of `WLNotificationListener` is called when a push notification is received by the device.
+
 --* *props* – A JSON block that contains the notifications properties of the platform.
+
 --* *payload* – A JSON block that contains other data that is sent from MobileFirst Server. The JSON block also contains the tag name for tag-based or broadcast notification. The tag name appears in the “tag” element. For broadcast notification, the default tag name is `Push.ALL`.
 
 ## Handling a push notification
 
+In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing one of the following methods.
+
+### Option One
+
+1. In the activity in which you wish the handle push notifications, add `implements MFPPushNofiticationListener` to the class declaration.
+2. Set the class to be the listener by calling `listen(this)` on an instance of `MFPPush`.
+2. Then you will need to add the following required method:
+
+	```java
+	@Override
+    public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
+        // Handle push notification here
+    }
+	```
+
+3. In this method you will receive the `MFPSimplePushNotification` and can handle the notification for the desired behavior.
+
+### Option Two
+
+Create a listener by calling `listen(new MFPPushNofiticationListener())` on an instance of `MFPPush` as outlined below:
+
+```java
+push.listen(new MFPPushNotificationListener() {
+    @Override
+    public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
+        // Handle push notification here
+    }
+});
+```
+
+**Note:** `push` was obtained by calling `MFPPush push = MFPPush.getInstance()`
+
 ## Handling a secure push notification
+<span style="color:red">TODO: Add instructions on handling secure push notifications.</span>
+

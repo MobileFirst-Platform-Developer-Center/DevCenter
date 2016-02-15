@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Implementing the With Attempts Security Check 
-breadcrumb_title: Security adapter
+title: Implementing the CredentialsValidation Security Check 
+breadcrumb_title: security check
 relevantTo: [android,ios,windows,cordova]
 weight: 3
 ---
 
 ## Overview
-This abstract class extends `SecurityCheckWithExternalization` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`. 
+This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`. 
 
-The `SecurityCheckWithAttempts` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
+The `CredentialsValidationSecurityCheck` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
 
 This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client is blocked for 60 seconds).
 
@@ -21,9 +21,10 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
 * [Configuring the SecurityCheck](#configuring-the-securitycheck)
+* [Sample application](#sample-application)
 
 ## PinCodeAttempts
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `SecurityCheckWithAttempts`.
+[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
 
 ```java
 public class PinCodeAttempts extends SecurityCheckWithAttempts {
@@ -56,7 +57,7 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-`remainingAttempts` is inherited from `SecurityCheckWithAttempts`.
+`remainingAttempts` is inherited from `CredentialsValidationSecurityCheck`.
 
 ## Validating the user credentials
 When the client sends the challenge's answer, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
@@ -190,3 +191,12 @@ public SecurityCheckWithAttemptsConfig(Properties properties) {
 ```
 
 Note that the default for `failureExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+
+## Sample application
+The security check is available as part of the complete sample application, where the challenge handler is implemented to handle the security check.  
+Select a platform:
+
+* [Implemented the challenge handler in Cordova applications](../cordova)
+* [Implemented the challenge handler in iOS applications](../ios)
+* [Implemented the challenge handler in Android applications](../android)
+* [Implemented the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../windows-8-10)

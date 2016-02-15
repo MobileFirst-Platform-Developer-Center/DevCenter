@@ -4,9 +4,6 @@ title: Using Direct Update in Cordova applications
 breadcrumb_title: Direct Update
 relevantTo: [cordova]
 weight: 11
-downloads:
-  - name: Download Cordova project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 ## Overview
 With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.
@@ -22,7 +19,7 @@ In order to update an application, the updated web resources of the application 
 - [How Direct Update works](#how-direct-update-works)
 - [Creating and deploying updated web resources](#creating-and-deploying-updated-web-resources)
 - [User experience](#user-experience)
-- [Customizing the Direct Update UI](#customizing-the-direct-update-ui)
+<!-- - [Customizing the Direct Update UI](#customizing-the-direct-update-ui) -->
 - [Direct Update authenticity](#direct-update-authenticity)
 - [Differential Direct Update](#differential-direct-update)
 - [Direct Update in the field](#direct-update-in-the-field)
@@ -83,7 +80,7 @@ By default, after a Direct Update is received a dialog is displayed and the user
 
 ![Direct update example](direct-update-flow.png)
 
-## Customizing the Direct Update UI
+<!-- ## Customizing the Direct Update UI
 The default Direct Update UI that is presented to the end-user can be customized.  
 Add the following inside the `wlCommonInit()` function in **index.js**:
 
@@ -130,7 +127,7 @@ In the example above, the `submitFailure` API method is used to dismiss the Dire
 
 As mentioned, when the developer creates a customized Direct Update experience, the responsibility for its flow now belongs to the developer. As such, it is important to call `submitFailure()` to notify the MobileFirst framework that the process completed with a "failure". The MobileFirst framework in turn invokes the `onFailure` callback of the invocation that triggered the Direct Update. Because the update process did not take place, it will occur again the next time it is triggered.
 
-<!-- ### Further customization
+### Further customization
 Optionally, a developer can also supply a Direct Update listener to fully control a Direct Update lifecycle entirely.
 
 ```javascript

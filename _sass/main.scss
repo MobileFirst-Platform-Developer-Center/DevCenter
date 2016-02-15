@@ -280,3 +280,20 @@ h4.panel-title, .tutorial h4.panel-title  {
 	margin:-20px 0 0 0;
 	padding:0;
 }
+
+.navbar {
+	min-height: 40px;
+}
+
+.navbar.navbar-default {
+	line-height: 18px;
+}
+
+.navbar-default .navbar-nav>li>a {
+	line-height: 11px;
+}
+
+.navbar-form {
+	margin-top: 4px;
+	margin-bottom: 2px;
+}
