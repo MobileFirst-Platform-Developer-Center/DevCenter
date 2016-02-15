@@ -5,16 +5,8 @@ relevantTo: [android]
 weight: 5
 ---
 
-<span style="color:red">
-The handling in client side tutorials should explain:
-- how to setup push notifications support in iOS Xcode project (editing the podfile?)
-- how to setup push notifications support in Andrid Studio project (editing the builde.gradle file?)
-- how to setup push notifications support in Cordova applications
-- how to intercept and display notifications in the client
-</span>
-
 ## Overview
-Before Android applications are able to handle any recieved push notifications, they must configured with support for Google Play Services. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and  subscribe &amp; unsubscribe to tags.
+Before Android applications are able to handle any received push notifications, they must configured with support for Google Play Services. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and  subscribe &amp; unsubscribe to tags.
 
 In this tutorial you learn how to configure an Android application and how to use the MobileFirst-provided Notifications API.
 
@@ -176,5 +168,5 @@ push.listen(new MFPPushNotificationListener() {
 **Note:** `push` was obtained by calling `MFPPush push = MFPPush.getInstance()`
 
 ## Handling a secure push notification
-<span style="color:red">TODO: Add introduction on handling secure push notifications.</span>
+<span style="color:red">TODO: Add instructions on handling secure push notifications.</span>
 
