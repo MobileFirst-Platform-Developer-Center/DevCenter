@@ -21,6 +21,7 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
 * [Configuring the SecurityCheck](#configuring-the-securitycheck)
+* [Sample application](#sample-application)
 
 ## PinCodeAttempts
 [Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
@@ -190,3 +191,12 @@ public SecurityCheckWithAttemptsConfig(Properties properties) {
 ```
 
 Note that the default for `failureExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+
+## Sample application
+The security check is available as part of the complete sample application, where the challenge handler is implemented to handle the security check.  
+Select a platform:
+
+* [Implemented the challenge handler in Cordova applications](../cordova)
+* [Implemented the challenge handler in iOS applications](../ios)
+* [Implemented the challenge handler in Android applications](../android)
+* [Implemented the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../windows-8-10)
