@@ -39,37 +39,92 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 1. In **Android → Gradle scripts**, select the **build.gradle (Project: [application-name])** file.
 
-2. Add the following line to `dependencies`:
-	
-	```xml
-	classpath 'com.google.gms:google-services:2.0.0-alpha3'
-	```
+	1. Add the following line to `dependencies`:
+		
+		```
+		classpath 'com.google.gms:google-services:2.0.0-alpha3'
+		```
 
 3. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file.
 
-4. Add the following line below `apply plugin: 'com.android.application'`:
+	1. Add the following line to `dependencies`:
+		
+		```
+		com.google.android.gms:play-services-gcm:8.4.0
+		com.squareup.okhttp:okhttp:2.6.0
+		```
 
-	```xml
-	apply plugin: 'com.google.gms.google-services'
-	```
+	2. Add the following line at the bottom:
 
-5. Add the following line to `dependencies`:
-	
-	```xml
-	com.google.android.gms:play-services-gcm:8.4.0
-	com.squareup.okhttp:okhttp:2.6.0
-	```
+		```
+		apply plugin: 'com.google.gms.google-services'
+		```
 
-	<span style="color:red"> remove step 6 before going live</span>
+		**Note:** This line must be placed at the bottom of `app/build.gradle` as to not create an dependency collisions. For more details see [*The Google Services Gradle Plugin*](https://developers.google.com/android/guides/google-services-plugin)
 
-6. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
+	<span style="color:red"> remove step 3 before going live</span>
+
+3. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
 
    	Remove libs folder from the aar.  
    	Note: This step is not required once the lib gets to maven central/jcenter. Just need to add mavenCentral()/jcenter() in app gradle.
 
-7. Add the push required configuration in AndroidManifest.xml 
+4. Add the push required configuration in AndroidManifest.xml
 
-	<span style="color:red">TODO: explain what is needed to do in the AndroidManifest.xml file</span>
+	1. Add the following permissions to the top the `manifest` tag:
+
+		```xml
+		<!-- Permissions -->
+    	<uses-permission android:name="android.permission.INTERNET" />
+    	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    	<uses-permission android:name="android.permission.GET_TASKS" />
+    	<uses-permission android:name="android.permission.WAKE_LOCK" />
+		
+    	<!-- GCM Permissions -->
+    	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    	<permission
+    	    android:name="your.application.package.name.permission.C2D_MESSAGE"
+    	    android:protectionLevel="signature" />
+
+		```
+
+	2. Add the following `MobileFirst UI Activity`, `MFPPush Intent Service`, `MFPPush Instance ID Listener Service` to the `application` tag:
+
+		```xml
+		<!-- MobileFirst UI Activity -->
+        <activity android:name="com.worklight.wlclient.ui.UIActivity" />
+
+        <!-- GCM Receiver -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="your.application.package.name" />
+            </intent-filter>
+        </receiver>
+
+        <!-- MFPPush Intent Service -->
+        <service
+            android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <!-- MFPPush Instance ID Listener Service -->
+        <service
+            android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+		```
+
+		**Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
 
 ### Google Services setup
 <span style="color:red">Idan: I would consider moving this entire section to the server-side setup in the overview.</span>
