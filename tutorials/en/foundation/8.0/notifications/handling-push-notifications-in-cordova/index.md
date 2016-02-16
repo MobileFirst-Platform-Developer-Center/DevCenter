@@ -13,8 +13,8 @@ In this tutorial you learn how to configure a Cordova application and how to use
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/index)
-    * [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../../adding-the-mfpf-sdk/cordova)
+    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/index)
+    * [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova)
     * [Push Notifications Overview](../push-notifications-overview)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst Developer CLI installed on the developer workstation
