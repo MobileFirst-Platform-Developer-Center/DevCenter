@@ -72,7 +72,7 @@ To setup GCM:
     This step generates a `Server API Key` and a `Sender ID`.  
     The generated values are used to identify the application by Google's GCM service in order to send notifications to the device.
 
-4. Select "Generate configuration file" and download **google-services.json**.  This file will be used later to configure Android application.
+4. Click "Generate configuration file" and download **google-services.json**.  This file will be used later to configure Android application.
 5. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and server **API Key** and click **Save**.
 
 #### Notes
