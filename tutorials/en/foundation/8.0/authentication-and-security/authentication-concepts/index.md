@@ -48,23 +48,26 @@ It is possible to enforce security both on resources that run on MobileFirst Ser
 Several authorization entities are available as part of the MobileFirst authentication framework:
 
 ### Scope
-You can protect resources such as adapters from unauthorized access by specifying a scope.  
+You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
 A scope is a space-separated list of zero or more **scope elements**.
 
 #### Scope Element
-A scope element is a keyword that indicates which security checks are being used to protect the resource.
+A scope element is a keyword that indicates which **security checks** are being used to protect the resource.
 
 #### Scope Mapping
 By default, the scope elements you write in your scope are matched to a `SecurityCheck` with the same name.
 
-Optionally, at the application level, you can also map a scope element to a different `SecurityCheck`. Specifically, you can map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
+Optionally, at the application level, you can map a scope element to a different security check.  
+You can also map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
 
-### SecurityCheck
-A security check is an object responsible for obtaining credentials from a client and validate them.
+### Security Check
+A security check is an object responsible for obtaining credentials from a client and validate them.  
+Security checks are instantiated by Adapters.
 
-The security check defines the process to be used to authenticate users. It is often associated with a **SecurityCheckConfiguration** that defines properties to be used by the security check. Security checks are instantiated by **Adapters**. The same security check can also be used to protect several resources.
+The security check defines the process to be used to authenticate users. It is often associated with a **SecurityCheckConfiguration** that defines properties to be used by the security check.  
+The same security check can also be used to protect several resources.
 
-The client application needs to implement a **challenge handler** to handle challenges sent by the `SecurityCheck`.
+On the client-side, the application logic needs to implement a **challenge handler** to handle challenges sent by the security check.
 
 #### Built-in Security Checks
 Several predefined security checks available:
@@ -72,6 +75,8 @@ Several predefined security checks available:
 - [Application Authenticity](../application-authenticity/)
 - [Direct Update](../../using-the-mfpf-sdk/direct-update)
 - LTPA
+
+Also available are two security-check implementations: `CredentialsValidationSecurityCheck` and `UserAuthenticationSecurityCheck`.
 
 > Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial.
 
@@ -127,5 +132,5 @@ If you want to disable MobileFirst default security, you can use `secured="false
 Continue reading about authentication in the following tutorials:
 
 * [Creating a security check](../creating-a-security-check)
-* [Implementing the CredentialsValidation Security Check](../credentials-validation)
-* [Implementing the UserAuthentication Security Check](../user-authentication)
+* [Implementing the CredentialsValidationSecurityCheck](../credentials-validation)
+* [Implementing the UserAuthenticationSecurityCheck](../user-authentication)
