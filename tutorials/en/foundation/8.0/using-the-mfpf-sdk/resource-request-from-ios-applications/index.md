@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource request from iOS applications
+title: Resource request from Native iOS applications
 breadcrumb_title: Resource request - iOS (Swift)
 relevantTo: [ios]
 downloads:
@@ -56,11 +56,12 @@ request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void
 }
 ```
 
-Use the `response` and `error` objects to get the data that is retrieved from the adapter.
+Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
 
+## The response
 The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
 
-Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
+Use the `response` and `error` objects to get the data that is retrieved from the adapter.
 
 ## Parameters
 Before sending your request, you may want to add parameters as needed.

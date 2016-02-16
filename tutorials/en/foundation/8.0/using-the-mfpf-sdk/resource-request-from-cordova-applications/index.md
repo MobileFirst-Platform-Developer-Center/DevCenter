@@ -78,12 +78,7 @@ To send URL-encoded form parameters, use the `sendFormParameters(json)` method i
 > For more information about `WLResourceRequest`, see the API reference in the user documentation.
 
 ## The response
-Both the `onSuccess` and `onFailure` callbacks receive a `response` object, which typically contains the following properties:
-
-* **`status`**: The HTTP response status
-* **`responseJSON`**: An object that contains the data that is returned by the called resource, and additional information about the resource call.
-
-The `response` object is returned to the corresponding success/failure handler.
+Both the `onSuccess` and `onFailure` callbacks receive a `response` object. The `response` object contains the response data and you can use its properties to retrieve the required information. Commonly used properties are `responseText`, `responseJSON` (JSON object, if the response is in JSON) and `status` (the HTTP status of the response).
 
 ```json
 {
@@ -107,9 +102,8 @@ The `response` object is returned to the corresponding success/failure handler.
 }
 ```
 
-* `errors`, `info`, and `warnings` are optional arrays of strings that contain messages.
-* The `isSuccessful` property is set to `true` if the resource call succeeded (even if no data was retrieved), or to `false` otherwise.
-* The response can contain other metadata such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
+* In case of request failure, the `response` object also cotains a `errorMsg` property.
+* Depending if using a Java or JavaScript adapter, the response may contain other properties such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
 
 ### Handling the response
 The response object is received by the `onSuccess` and `onFailure` callback functions.  
