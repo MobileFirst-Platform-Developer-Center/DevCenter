@@ -31,8 +31,8 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
-    <property name="successExpirationSec" defaultValue="60"/>
-    <property name="failureExpirationSec" defaultValue="60"/>
+    <property name="successStateExpirationSec" defaultValue="60"/>
+    <property name="failureStateExpirationSec" defaultValue="60"/>
     <property name="maxAttempts" defaultValue="3"/>
 </securityCheckDefinition>
 ```
