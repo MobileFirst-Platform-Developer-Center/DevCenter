@@ -99,7 +99,7 @@ To send a parameter as an HTTP header use the `setHeaderValue` API:
 
 ```swift
 //@HeaderParam("Date")
-request.setHeaderValue("2015-06-06", forName: "Date")
+request.setHeaderValue("2015-06-06", forName: "birthdate")
 ```
 
 ### Other custom body parameters
