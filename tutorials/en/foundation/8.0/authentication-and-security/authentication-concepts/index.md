@@ -55,10 +55,10 @@ A scope is a space-separated list of zero or more **scope elements**.
 A scope element is a keyword that indicates which **security checks** are being used to protect the resource.
 
 #### Scope Mapping
-By default, the scope elements you write in your scope are matched to a `SecurityCheck` with the same name.
+By default, the scope elements you write in your scope are matched to a security check with the same name.
 
 Optionally, at the application level, you can map a scope element to a different security check.  
-You can also map it to a list of zero or more `SecurityChecks`. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
+You can also map it to a list of zero or more security checks. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
 
 ### Security Check
 A security check is an object responsible for obtaining credentials from a client and validate them.  
@@ -122,7 +122,7 @@ A scope can be made of several scope elements, space-separated:
 If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security test protecting the application also applies here.
 
 #### Disabling protection
-If you want to disable MobileFirst default security, you can use `secured="false"`:
+If you want to disable the default security, you can use `secured="false"`:
 
 ```xml
 <procedure deleteUser secured="false">
