@@ -41,7 +41,7 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 - The `class` attribute specifies the implementation Java class of the SecurityCheck. You need to create this class.
 - Some SecurityChecks can be configured with a list of `property` elements.
 
-## SecurityCheck Implementation
+## Security Check Implementation
 Create the security check's **Java class**. The implementation should extend one of the provided base classes, below.  
 The parent class you choose will determine the balance between customization and simplicity.
 
@@ -56,14 +56,14 @@ Subclassing this class leaves a lot of flexibility in your Security Check implem
 
 > Learn more in the `ExternalizableSecurityCheck` user documentation topic.
 
-### CredentialsValidation Security Check
+### CredentialsValidationSecurityCheck
 This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`.
 
 The `CredentialsValidationSecurityCheck` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
 
 > Learn more in the [CredentialsValidation security check](../credentials-validation/) tutorials.
 
-### UserAuthentication Security Check
+### UserAuthenticationSecurityCheck
 This abstract class extends `CredentialsValidationSecurityCheck` and therefore inherits all of its features.
 
 In addition, the `UserAuthenticationSecurityCheck` class provides the MobileFirst framework an `AuthenticatedUser` object which represents the logged-in user. Methods that are required to be implemented are `createUser`, `validateCredentials` and `createChallenge`.
@@ -75,25 +75,25 @@ Also provided is a built-in capability to optionally enable a "Remember Me" logi
 ## Security Check Configuration
 Each `SecurityCheck` implementation class can use a `SecurityCheckConfiguration` class that defines properties available for that `SecurityCheck`. Each base `SecurityCheck` class comes with a matching `SecurityCheckConfiguration` class. You can create your own implementation that extends one of the base `SecurityCheckConfiguration` classes and use it for your custom `SecurityCheck`.
 
-For example, `UserAuthenticationSecurityCheck`'s `createConfiguration` method returns an instance of `SecurityCheckWithAuthenticationConfig`.
+For example, `UserAuthenticationSecurityCheck`'s `createConfiguration` method returns an instance of `UserAuthenticationSecurityCheckConfig`.
 
 ```java
-public abstract class SecurityCheckWithUserAuthentication extends SecurityCheckWithAttempts {
-    @Override
-    public SecurityCheckConfiguration createConfiguration(Properties properties) {
-        return new SecurityCheckWithAuthenticationConfig(properties);
-    }
+public abstract class UserAuthenticationSecurityCheck extends CredentialsValidationSecurityCheck {
+  @Override
+  public SecurityCheckConfiguration createConfiguration(Properties properties) {
+      return new UserAuthenticationSecurityCheckConfig(properties);
+  }
 }
 ```
 
-`SecurityCheckWithAuthenticationConfig` enables a property called `rememberMeDurationSec` with a default of `0`.
+`UserAuthenticationSecurityCheckConfig` enables a property called `rememberMeDurationSec` with a default of `0`.
 
 ```java
-public class SecurityCheckWithAuthenticationConfig extends SecurityCheckWithAttemptsConfig {
+public class UserAuthenticationSecurityCheckConfig extends CredentialsValidationSecurityCheckConfig {
 
     public int rememberMeDurationSec;
 
-    public SecurityCheckWithAuthenticationConfig(Properties properties) {
+    public UserAuthenticationSecurityCheckConfig(Properties properties) {
         super(properties);
         rememberMeDurationSec = getIntProperty("rememberMeDurationSec", properties, 0);
     }
