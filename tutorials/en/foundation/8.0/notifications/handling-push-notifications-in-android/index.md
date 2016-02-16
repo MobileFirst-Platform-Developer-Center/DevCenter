@@ -2,7 +2,7 @@
 layout: tutorial
 title: Handling Push Notifications in Android applications
 relevantTo: [android]
-weight: 5
+weight: 4
 ---
 
 ## Overview

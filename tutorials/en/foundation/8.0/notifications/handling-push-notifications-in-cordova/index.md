@@ -3,7 +3,7 @@ layout: tutorial
 title: Handling Push Notifications in Cordova applications
 show_children: true
 relevantTo: [cordova]
-weight: 3
+weight: 2
 ---
 ## Overview
 Before Cordova applications are able to handle any received push notifications, they must be configured for the appropriate platform. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register & unregister devices, and subscribe &amp; unsubscribe to tags.
@@ -32,6 +32,7 @@ In this tutorial you learn how to configure a Cordova application and how to use
 Create a new Cordova project or use an existing one.  
 If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../../adding-the-mfpf-sdk/cordova) tutorial.
 
+### Adding the Push plug-in
 1. Whether using iOS or Android, open a **command-line** window and navigate to the root of the Cordova project.  
     Add the MobileFirst Push plug-in by running the command: 
 

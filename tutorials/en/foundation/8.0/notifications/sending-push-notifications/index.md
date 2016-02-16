@@ -2,8 +2,8 @@
 layout: tutorial
 title: Sending Push Notifications
 show_children: true
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
-weight: 2
+relevantTo: [ios,android,windows,cordova]
+weight: 5
 ---
 teach how to send push notifications: 
 1. how to handle tokens for added security
