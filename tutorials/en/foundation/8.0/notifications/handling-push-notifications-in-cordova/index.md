@@ -53,6 +53,15 @@ If the MobileFirst Cordova SDK is not already present in the project, follow the
     ```
     
 3. Navigate to **[project root]platforms/android/cordova-plugin-mfp-push/** and select the **<appname>-build-extras.gradle** file. 
+    - Change compile version to `8.0.0-Beta1-SNAPSHOT` in `dependencies`:
+    
+        ```xml
+        compile group: 'com.ibm.mobile.foundation', 
+            name:'ibmmobilefirstplatformfoundationpush', 
+            version:'8.0.0-Beta1-SNAPSHOT', 
+            ext: 'aar', 
+            transitive: true
+        ```
     - Add the following to `dependencies`: 
     
         ```xml
@@ -63,15 +72,6 @@ If the MobileFirst Cordova SDK is not already present in the project, follow the
     
         ```xml
         apply plugin: 'com.google.gms.google-services'
-        ```
-    - Change compile version to `8.0.0-Beta1-SNAPSHOT`:
-    
-        ```xml
-        compile group: 'com.ibm.mobile.foundation', 
-            name:'ibmmobilefirstplatformfoundationpush', 
-            version:'8.0.0-Beta1-SNAPSHOT', 
-            ext: 'aar', 
-            transitive: true
         ```
 
 4. Add google-services.json configuration file to app/platforms/android folder
