@@ -48,7 +48,7 @@ hr {
 .well {
 	margin-top: 5px;
 }
-.custombtn {
+.custombtn.btn-default {
 	display: block;
 	width: 300px;
 	background-color: $color_rhino_approx;
@@ -71,6 +71,7 @@ hr {
 		text-decoration: none;
 		border: 1px solid $color_chambray_approx;
 	}
+	
 	&.containers {
 		width: 400px;
 	}
