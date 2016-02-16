@@ -64,6 +64,15 @@ If the MobileFirst Cordova SDK is not already present in the project, follow the
         ```xml
         apply plugin: 'com.google.gms.google-services'
         ```
+    - Change compile version to `8.0.0-Beta1-SNAPSHOT`:
+    
+        ```xml
+        compile group: 'com.ibm.mobile.foundation', 
+            name:'ibmmobilefirstplatformfoundationpush', 
+            version:'8.0.0-Beta1-SNAPSHOT', 
+            ext: 'aar', 
+            transitive: true
+        ```
 
 4. Add google-services.json configuration file to app/platforms/android folder
 
@@ -77,9 +86,6 @@ If the MobileFirst Cordova SDK is not already present in the project, follow the
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** the bundleId selected for the application must match the AppId that you have previously created in the Apple Developer site. See the [Push Notifications Overview] tutorial.
 
 ![image of where is the capability in Xcode](push-capability.png)
-
-### Notificatin title in Android
-If you want to change the notification title, then add `push_notification_tile` in the **strings.xml** file.
 
 ## Notifications API
 ### Client-side API for tag notifications
