@@ -6,7 +6,7 @@ weight: 5
 ---
 
 ## Overview
-Before Android applications are able to handle any received push notifications, they must configured with support for Google Play Services. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and  subscribe &amp; unsubscribe to tags.
+Before Android applications are able to handle any received push notifications, they must configured with support for Google Play Services. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags.
 
 In this tutorial you learn how to configure an Android application and how to use the MobileFirst-provided Notifications API.
 
@@ -31,22 +31,20 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 1. In **Android → Gradle scripts**, select the **build.gradle (Project: [application-name])** file add the following line to `dependencies`: 
 
-	```
+	```bash
 	classpath 'com.google.gms:google-services:2.0.0-alpha3'
 	```
 
 3. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file.
-
-	1. Add the following line to `dependencies`:
+	- Add the following line to `dependencies`:
 		
-		```
+		```bash
 		com.google.android.gms:play-services-gcm:8.4.0
 		com.squareup.okhttp:okhttp:2.6.0
 		```
+	- Add the following line at the bottom:
 
-	2. Add the following line at the bottom:
-
-		```
+		```bash
 		apply plugin: 'com.google.gms.google-services'
 		```
 
