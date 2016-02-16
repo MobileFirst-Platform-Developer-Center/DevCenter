@@ -123,15 +123,19 @@ someChallengeHandler = WL.Client.createWLChallengeHandler("the-securityCheck-nam
 The sample **PinCodeCordova** is a Corodova application that uses `WLResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityAdapters/tree/release80) the SecurityAdapters Maven project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) the Cordova project.
 
 ### Sample usage
-1. Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../creating-adapters/).
-2. From a command-line window, navigate to the project's root folder and run the command: `mfpdev app register`.
-3. In the MobileFirst console, under **Applications** → **PinCodeCordova** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
-4. Back in the command-line:
-    - Add a platform by running the `cordova platform add` command.
-    - Run the Cordova application by running the `cordova run` command.
+* Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../creating-adapters/).
+* Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register` from a **command-line** window.
+* Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
+    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`. 
+    * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
+        
+        > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
+* Back in the command-line:
+    * Add a platform by running the `cordova platform add` command.
+    * Run the Cordova application by running the `cordova run` command.
 
 ![Sample application](sample-application.png)
