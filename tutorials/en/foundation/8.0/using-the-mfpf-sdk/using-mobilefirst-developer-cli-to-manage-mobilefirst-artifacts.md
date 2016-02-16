@@ -284,6 +284,8 @@ It is also possible to change the application configurations locally and push th
 mfpdev app push
 ```
 
+**Example:** scope mapping to security checks can be performed in the MobileFirst Operations Console, and then be pulled from  the server using the abve command. The downloaded .zip file is stored in the project's **[root directory]/mobilefirst** folder, and can be later used with the `mfpdev app push` to upload it to a different MobileFirst Server, allowing for fast configuration and setup by re-using the predefined configuration.
+
 ## Managing and Testing Adapters
 It is possible to manage MobileFirst Adapters with the command `mfpdev adapter <option>`.
 
