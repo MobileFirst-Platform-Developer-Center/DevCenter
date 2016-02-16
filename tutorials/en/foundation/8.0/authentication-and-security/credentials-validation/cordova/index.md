@@ -11,8 +11,8 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
-When trying to access a protected resource, the server (the `SecurityCheck`) will send back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a`JSON object`, listing the `SecurityCheck` name with an optional `JSON` of additional data:
+When trying to access a protected resource, the server (the security check) will send back to the client a list containing one or more **challenges** for the client to handle.  
+This list is received as a`JSON object`, listing the security check name with an optional `JSON` of additional data:
 
 ```json
 {
@@ -25,13 +25,13 @@ This list is received as a`JSON object`, listing the `SecurityCheck` name with a
 }
 ```
 
-The client should then register a **challenge handler** for each `SecurityCheck`.  
+The client should then register a **challenge handler** for each security check.  
 The challenge handler defines the client-side behavior that is specific to the security check.
 
 ## Creating the challenge handler
-A challenge handler is responsible for handling challenges sent by the MobileFirst server, such as displaying a login screen, collecting credentials and submitting them back to the `SecurityCheck`.
+A challenge handler is responsible for handling challenges sent by the MobileFirst server, such as displaying a login screen, collecting credentials and submitting them back to the security check.
 
-In this example, the `SecurityCheck` is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidation Security Check](../security-check). The challenge sent by this `SecurityCheck` contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
+In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
 
 
 Use the `WL.Client.createWLChallengeHandler()` API method to create and register a challenge Handler:
@@ -74,7 +74,7 @@ PinCodeChallengeHandler.handleChallenge = function(challenge) {
 If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
 
 ## Submitting the challenge's answer
-Once the credentials have been collected from the UI, use `WLChallengeHandler`'s `submitChallengeAnswer()` to send an answer back to the `SecurityCheck`. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Once the credentials have been collected from the UI, use `WLChallengeHandler`'s `submitChallengeAnswer()` to send an answer back to the security check. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
 
 ```javascript
 PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
@@ -107,13 +107,13 @@ PinCodeChallengeHandler.handleFailure = function(error) {
 ## Handling successes
 In general successes are automatically processed by the framework to allow the rest of the application to continue.
 
-Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `WLChallengeHandler`'s `handleSuccess()`. Here again, the content and structure of the `success` JSON object depends on what the `SecurityCheck` sends.
+Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `WLChallengeHandler`'s `handleSuccess()`. Here again, the content and structure of the `success` JSON object depends on what the security check sends.
 
 In the `PinCodeAttemptsCordova` sample application, the success does not contain any additional data.
 
 ## Registering the challenge handler
-In order for the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific `SecurityCheck` name.  
-This is done by creating the challenge handler with the `SecurityCheck` like this:
+In order for the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.  
+This is done by creating the challenge handler with the security check like this:
 
 ```javascript
 someChallengeHandler = WL.Client.createWLChallengeHandler("the-securityCheck-name");

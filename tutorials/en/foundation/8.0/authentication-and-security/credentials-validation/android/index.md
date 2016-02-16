@@ -11,8 +11,8 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
-When trying to access a protected resource, the server (the `SecurityCheck`) will send back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON` object, listing the `SecurityCheck` name with an optional `JSON` of additional data:
+When trying to access a protected resource, the server (the security check) will send back to the client a list containing one or more **challenges** for the client to handle.  
+This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
 
 ```json
 {
@@ -25,13 +25,13 @@ This list is received as a `JSON` object, listing the `SecurityCheck` name with 
 }
 ```
 
-The client should then register a **challenge handler** for each `SecurityCheck`.  
+The client should then register a **challenge handler** for each security check.  
 The challenge handler defines the client-side behavior that is specific to the security check.
 
 ## Creating the challenge handler
-A challenge handler is a class responsible for handling challenges sent by the MobileFirst server, such as displaying a login screen, collecting credentials and submitting them back to the `SecurityCheck`.
+A challenge handler is a class responsible for handling challenges sent by the MobileFirst server, such as displaying a login screen, collecting credentials and submitting them back to the security check.
 
-In this example, the `SecurityCheck` is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidation Security Check](../security-check). The challenge sent by this `SecurityCheck` contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
+In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
 
 Create a Java class that extends `WLChallengeHandler`:
 
@@ -76,7 +76,7 @@ public void handleChallenge(JSONObject jsonObject) {
 If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
 
 ## Submitting the challenge's answer
-Once the credentials have been collected from the UI, use the `WLChallengeHandler`'s `submitChallengeAnswer(JSONObject answer)` method to send an answer back to the `SecurityCheck`. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Once the credentials have been collected from the UI, use the `WLChallengeHandler`'s `submitChallengeAnswer(JSONObject answer)` method to send an answer back to the security check. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
 
 ```java
 submitChallengeAnswer(new JSONObject().put("pin", pinCodeTxt.getText()));
@@ -115,15 +115,15 @@ public void handleFailure(JSONObject jsonObject) {
 ## Handling successes
 In general successes are automatically processed by the framework to allow the rest of the application to continue.
 
-Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing the `WLChallengeHandler`'s `handleSuccess` method. Here again, the content and structure of the `JSONObject` passed as a parameter depends on what the `SecurityCheck` sends.
+Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing the `WLChallengeHandler`'s `handleSuccess` method. Here again, the content and structure of the `JSONObject` passed as a parameter depends on what the security check sends.
 
 In the `PinCodeAttempts` sample application, the `JSONObject` does not contain any additional data and so `handleSuccess` is not implemented.
 
 ## Registering the challenge handler
 
-In order for the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific `SecurityCheck` name.
+In order for the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
 
-This is done by initializing the challenge handler with the `SecurityCheck` like this:
+This is done by initializing the challenge handler with the security check like this:
 
 ```java
 PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts", this);
@@ -141,7 +141,7 @@ The sample **PinCodeAndroid** is an Android application that uses `WLResourceReq
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) the Android Native project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) the Android project.
 
 ### Sample usage
 
