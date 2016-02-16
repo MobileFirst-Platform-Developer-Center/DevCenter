@@ -35,7 +35,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 	classpath 'com.google.gms:google-services:2.0.0-alpha3'
 	```
 
-3. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file.
+2. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file.
 	- Add the following line to `dependencies`:
 		
 		```bash
@@ -50,7 +50,13 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 		**Note:** This line must be placed at the bottom of `app/build.gradle` as to not create an dependency collisions. For more details see [*The Google Services Gradle Plugin*](https://developers.google.com/android/guides/google-services-plugin)
 
-	<span style="color:red"> remove step 3 before going live</span>
+3. Add the **google-service.json** obtained from step 4 in [Setting up Push Notifications](../push-notifications-overview/#android) to your Android project's **app/** directory.
+
+    *Optionally:* From Android Studio's terminal you can type:
+    * **Mac/Linux:** `$ mv path-to-download/google-services.json app/`
+    * **Windows:** `$ move path-to-download/google-services.json app/`
+
+    <span style="color:red"> remove step 3 before going live</span>
 
 3. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
 
