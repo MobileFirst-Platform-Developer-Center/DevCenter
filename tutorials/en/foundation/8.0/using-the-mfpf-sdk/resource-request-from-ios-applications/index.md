@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource request from Native iOS applications
+title: Resource request from iOS applications
 breadcrumb_title: Resource request - iOS (Swift)
 relevantTo: [ios]
 downloads:
