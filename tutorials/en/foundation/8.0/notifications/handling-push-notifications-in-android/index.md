@@ -14,7 +14,7 @@ In this tutorial you learn how to configure an Android application and how to us
 
 * Android Studio and MobileFirst Developer CLI installed on the developer workstation.  
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* Make sure you have read the [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/index) tutorial, as well as the [Adding the MobileFirst Platform Foundation SDK to Android applications](../../../adding-the-mfpf-sdk/android) tutorial.
+* Make sure you have read the [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/index) tutorial, as well as the [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android) tutorial.
 
 #### Jump to:
 
