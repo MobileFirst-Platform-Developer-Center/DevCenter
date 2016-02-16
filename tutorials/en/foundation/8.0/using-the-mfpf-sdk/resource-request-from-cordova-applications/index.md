@@ -112,17 +112,16 @@ The `response` object is returned to the corresponding success/failure handler.
 * The response can contain other metadata such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
 
 ### Handling the response
-The response object is received by the onSuccess and onFailure callback functions.
+The response object is received by the `onSuccess` and `onFailure` callback functions.  
+For example:
 
 ```js
 onSuccess: function(response) {
-    resultText = "Successfully called the resource "
-    resultText += response.responseText
+    resultText = "Successfully called the resource: " + response.responseText;
 },
 
 onFailure: function(response) {
-    resultText = "Failed to call the resource "
-    resultText = response.errorMsg;
+    resultText = "Failed to call the resource:" + response.errorMsg;
 }
 ```
 
