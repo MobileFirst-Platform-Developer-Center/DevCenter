@@ -6,9 +6,12 @@ relevantTo: [windows]
 weight: 4
 ---
 ## Overview
-In this tutorial you will learn how to add the MobileFirst Native SDK using Nuget to either a new or existing Windows 8.1 Universal application or Windows 10 UWP (Universal Windows Platform) application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
 
-The MobileFirst Platform Foundation SDK provides a set of API methods enabling a developer to implement various MobileFirst features, such as: authentication and security mechanisms, notifications, resource requests, collecting analytics data and more.
+The MobileFirst Platform Foundation SDK consists of a collection of dependencies, available through [Nuget](https://www.nuget.org/), that you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
+
+* **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
+
+In this tutorial you will learn how to add the MobileFirst Native SDK using Nuget to either a new or existing Windows 8.1 Universal application or Windows 10 UWP (Universal Windows Platform) application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
 
 > For instruction to manually add the SDK files to a project, [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
