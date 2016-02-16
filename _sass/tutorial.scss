@@ -173,4 +173,28 @@ $color_wild_sand_approx: #f5f5f5;
 	.highlight button.clipboard {
 		padding: 0 5px 0 5px;
 	}
+	#boxes {
+		a:hover {
+			text-decoration: none;
+		}
+		.boxBtn {
+		    display: inline-block;
+		    height: 100px;
+		    width: 168px;
+		    background-color: #f5f5f5;
+		    border-bottom: 35px solid #264a60;
+		    margin-right: 10px
+		}
+		.boxBtn:hover {
+			border-bottom: 35px solid #1d3649;
+		}
+		.boxPlatform {
+		    line-height: 57px;
+		    color:white;
+		}
+		.boxBtn img {
+			margin: 7px 0 0 61px;
+			height: 47px;
+		}
+	}
 }
