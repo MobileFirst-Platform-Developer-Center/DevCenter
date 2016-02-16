@@ -87,23 +87,23 @@ The `response` object is returned to the corresponding success/failure handler.
 
 ```json
 {
-  "errors": [],
-  "info": [],
-  "warnings": [],
-  "isSuccessful": true,
   "responseHeaders": {
-    "Cache-Control": "no-cache, must-revalidate, post-check=0, pre-check=0"
+    "Content-Type": "application/json",
+    "X-Powered-By": "Servlet/3.1",
+    "Content-Length": "86",
+    "Date": "Mon, 15 Feb 2016 21:12:08 GMT"
   },
-  "responseTime": 491,
-  "statusCode": 200,
-  "statusReason": "OK",
-  "totalTime": 592,
-  "Items": [{
-    "creator": "Jon Fingas",
-    "link": "http:\/\/www.engadget.com\/2014\/11\/10\/harvard-used-cameras-to-check-attendance\/?ncid=rss_truncated",
-    "pubDate": "Mon, 10 Nov 2014 02:21:00 -0500",
-    "title": "Harvard used cameras to track attendance without telling students"
-  }]
+  "status": 200,
+  "responseText": "{\"height\":\"184\",\"last\":\"Doe\",\"Date\":\"1984-12-12\",\"age\":31,\"middle\":\"C\",\"first\":\"John\"}",
+  "responseJSON": {
+    "height": "184",
+    "last": "Doe",
+    "Date": "1984-12-12",
+    "age": 31,
+    "middle": "C",
+    "first": "John"
+  },
+  "invocationContext": null
 }
 ```
 
@@ -112,11 +112,17 @@ The `response` object is returned to the corresponding success/failure handler.
 * The response can contain other metadata such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
 
 ### Handling the response
-The rest of the resource call result depends on what was retrieved from the back-end system. In this example, the `Items` element is a JSON representation of the XML code that was received from the back end, after the rules in the XSL file were applied.
+The response object is received by the onSuccess and onFailure callback functions.
 
 ```js
-function onSuccess(result){
-    showResult(result.responseJSON);
+onSuccess: function(response) {
+    resultText = "Successfully called the resource "
+    resultText += response.responseText
+},
+
+onFailure: function(response) {
+    resultText = "Failed to call the resource "
+    resultText = response.errorMsg;
 }
 ```
 
@@ -139,6 +145,3 @@ The adapter Maven project contains the Java adapter to be used during the resour
 4. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
 5. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
 6. Run the Cordova application by running the `cordova run` command.
-
-
-
