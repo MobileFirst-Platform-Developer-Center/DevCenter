@@ -80,6 +80,9 @@ To send URL-encoded form parameters, use the `sendFormParameters(json)` method i
 ## The response
 Both the `onSuccess` and `onFailure` callbacks receive a `response` object. The `response` object contains the response data and you can use its properties to retrieve the required information. Commonly used properties are `responseText`, `responseJSON` (JSON object, if the response is in JSON) and `status` (the HTTP status of the response).
 
+In case of request failure, the `response` object also cotains a `errorMsg` property.  
+Depending if using a Java or JavaScript adapter, the response may contain other properties such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
+
 ```json
 {
   "responseHeaders": {
@@ -101,9 +104,6 @@ Both the `onSuccess` and `onFailure` callbacks receive a `response` object. The 
   "invocationContext": null
 }
 ```
-
-* In case of request failure, the `response` object also cotains a `errorMsg` property.
-* Depending if using a Java or JavaScript adapter, the response may contain other properties such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
 
 ### Handling the response
 The response object is received by the `onSuccess` and `onFailure` callback functions.  
