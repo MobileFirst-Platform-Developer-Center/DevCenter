@@ -14,7 +14,7 @@ In this tutorial you learn how to configure an Android application and how to us
 
 * Android Studio and MobileFirst Developer CLI installed on the developer workstation.  
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* Make sure you have read the [Setting up your MobileFirst development environment](../../../setting-up-your-development-environment/index) tutorial, as well as the [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android) tutorial.
+* Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment) tutorial, as well as the [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android) tutorial.
 
 #### Jump to:
 
@@ -25,7 +25,7 @@ In this tutorial you learn how to configure an Android application and how to us
 
 ## Notifications Configuration
 Create a new Android Studio project or use an existing one.  
-If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Android applications](../../../adding-the-mfpf-sdk/android) tutorial.
+If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android) tutorial.
 
 ### Project setup
 
@@ -40,7 +40,6 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 		
 		```bash
 		com.google.android.gms:play-services-gcm:8.4.0
-		com.squareup.okhttp:okhttp:2.6.0
 		```
 	- Add the following line at the bottom:
 
@@ -48,22 +47,22 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 		apply plugin: 'com.google.gms.google-services'
 		```
 
-		**Note:** This line must be placed at the bottom of `app/build.gradle` as to not create an dependency collisions. For more details see [*The Google Services Gradle Plugin*](https://developers.google.com/android/guides/google-services-plugin)
+		> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** This line must be placed at the bottom of the file as to not create a  dependency collisions. For more details see [The Google Services Gradle Plugin](https://developers.google.com/android/guides/google-services-plugin) documentation.
 
 3. Add the **google-service.json** obtained from step 4 in [Setting up Push Notifications](../push-notifications-overview/#android) to your Android project's **app/** directory.
 
-    *Optionally:* From Android Studio's terminal you can type:
+    Optionally from Android Studio's terminal view you can type:
     * **Mac/Linux:** `$ mv path-to-download/google-services.json app/`
     * **Windows:** `$ move path-to-download/google-services.json app/`
 
-    <span style="color:red"> remove step 3 before going live</span>
+    <span style="color:red"> remove step 4 below before going live</span>
 
-3. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
+4. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
 
    	Remove libs folder from the aar.  
    	Note: This step is not required once the lib gets to maven central/jcenter. Just need to add mavenCentral()/jcenter() in app gradle.
 
-4. Add the push required configuration in **AndroidManifest.xml**:
+5. Add the push required configuration in **AndroidManifest.xml**:
 
 	1. Add the following permissions to the top the `manifest` tag:
 
@@ -76,10 +75,9 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
     	<permission
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
-
 		```
 
-	2. Add the following, `MFPPush Intent Service`, `MFPPush Instance ID Listener Service` to the `application` tag:
+	2. Add the following (`MFPPush Intent Service`, `MFPPush Instance ID Listener Service`) to the `application` tag:
 
 		```xml
         <!-- GCM Receiver -->
@@ -112,7 +110,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
         </service>
 		```
 
-		**Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
+		> **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
 
 
 ## Notifications API
