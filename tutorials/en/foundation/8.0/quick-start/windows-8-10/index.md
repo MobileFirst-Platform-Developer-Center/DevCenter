@@ -60,23 +60,27 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Click on the "New" button next to **Adapters**
     * Select the **Actions → Download sample** option. Download the **Java** adapter sample.
-        
+
         > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.  
-    * From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
+    * From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
         ```bash
         mfpdev adapter build
         ```
     * When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     * Alternatively, download [this prepared .adapter artifact](#) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
-    
+
     ![Image of create an adapter](create-an-adapter.png)
 
 ### 5. Testing the application
 
-1. In Visual Studio, click on the **Start Debugging** button.
+1. In Visual Studio, select the **mfpclient.resw** file and edit the **host** property with the IP address of the MobileFirst Server.
 
-    ![Image of application that successfully called a resource from the MobileFirst Server ]()
+2. Press the **Run App** button.
+
+The adapter response is then printed in the Visual Studio Output Console.
+
+![Image of application that successfully called a resource from the MobileFirst Server](success_response.png)
 
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
