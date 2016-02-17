@@ -9,9 +9,9 @@ Creating a custom chart is simple. The following example walks you through creat
 The messages that are logged to the Operational Analytics server in this example are hard-coded buttons. Those messages look like this:
 
 ```javascript
-WL.Analytics.log({buttonPress: "buttonA"}, "press");
-WL.Analytics.log({buttonPress: "buttonB"}, "press");
-WL.Analytics.log({buttonPress: "buttonC"}, "press");
+WL.Analytics.log("buttonA", "press");
+WL.Analytics.log("buttonB", "press");
+WL.Analytics.log("buttonC", "press");
 ```
 
 > **Note**: Remember to always send data to the analytics server by using `WL.Analytics.send();`
