@@ -197,7 +197,7 @@ As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `Cre
 In addition, a `rememberMeDurationSec` property can also be configured.
 
 ## Sample application
-To see a sample using this security check, review the below tutorials:   
+To see a sample using this security check, review the below tutorials.  
 Select a platform:
 
 * [Implementing the challenge handler in Cordova applications](../cordova)
