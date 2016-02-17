@@ -6,7 +6,7 @@ relevantTo: [ios]
 weight: 9
 downloads:
   - name: Download Native project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreiOS/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
   - name: Download Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
@@ -354,7 +354,7 @@ do {
 The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  
 Included is a JavaScript adapter Maven project.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreiOS/tree/release80) the Native iOS project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80) the Native iOS project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
