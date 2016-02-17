@@ -193,7 +193,7 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 Note that the default for `failureStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
 
 ## Sample application
-The security check is available as part of the complete sample application, where the challenge handler is implemented to handle the security check.  
+To see a sample using this security check, review the below tutorials: 
 Select a platform:
 
 * [Implementing the challenge handler in Cordova applications](../cordova)

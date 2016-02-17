@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing the User Authentication Security Check
+title: Implementing the UserAuthenticationSecurityCheck
 breadcrumb_title: security check
 relevantTo: [android,ios,windows,cordova]
 weight: 1
@@ -10,7 +10,7 @@ This abstract class extends `CredentialsValidationSecurityCheck` and builds upon
 
 Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
 
-This tutorial uses the example of Security Check asking for a username and password and uses the username to represent an authenticated user.
+This tutorial uses the example of a security check asking for a username and password and uses the username to represent an authenticated user.
 
 **Prerequisites:** Make sure to read the [Credentials Validation Security Check](../../credentials-validation/) tutorial.
 
@@ -49,3 +49,151 @@ protected Map<String, Object> createChallenge() {
     return challenge;
 }
 ```
+
+## Validating the user credentials
+When the client sends the challenge's answer, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
+
+In this example, credentials are considered "valid" when `username` and `password` are the same:
+
+```java
+@Override
+protected boolean validateCredentials(Map<String, Object> credentials) {
+    if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+        String username = credentials.get("username").toString();
+        String password = credentials.get("password").toString();
+        if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            return true;
+        }
+        else {
+            errorMsg = "Wrong Credentials";
+        }
+    }
+    else{
+        errorMsg = "Credentials not set properly";
+    }
+    return false;
+}
+```
+
+## AuthenticatedUser
+`UserAuthenticationSecurityCheck` stores a representation of the current user in the security check's persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
+
+Users are represented by an instance of the class `AuthenticatedUser`. Its constructor receives a `id`, `displayName` and `securityCheckName`.
+
+In this example, we are using the `username` for both the `id` and `displayName`.
+
+First, modify the `validateCredentials` method to save the `username`:
+
+```java
+private String userId, displayName;
+
+@Override
+protected boolean validateCredentials(Map<String, Object> credentials) {
+    if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+        String username = credentials.get("username").toString();
+        String password = credentials.get("password").toString();
+        if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            userId = username;
+            displayName = username;
+            return true;
+        }
+        else {
+            errorMsg = "Wrong Credentials";
+        }
+    }
+    else{
+        errorMsg = "Credentials not set properly";
+    }
+    return false;
+}
+```
+
+Then, override the `createUser` method to return a new instance of `AuthenticatedUser`:
+
+```java
+@Override
+protected AuthenticatedUser createUser() {
+    return new AuthenticatedUser(userId, displayName, this.getName());
+}
+```
+
+You can use `this.getName()` to get the current security check name.
+
+`UserAuthenticationSecurityCheck` will call your `createUser()` implementation after a successful login.
+
+## Remember Me
+`UserAuthenticationSecurityCheck` by default uses the `successStateExpirationSec` property to determine how long does the success state last; this feature was inherited from `CredentialsValidationSecurityCheck`.
+
+If you want to allow users to stay logged-in past the `successStateExpirationSec`, and even past the **token expiration**, `UserAuthenticationSecurityCheck` adds this capability.
+
+`UserAuthenticationSecurityCheck` adds a property called `rememberMeDurationSec` whose default value is `0`. This means that by default, users are remembered for **0 seconds**, effectively disabling the feature. Change this value to a number that makes sense for your application (a day, a week, a month...).
+
+The feature is also managed by overriding the method `rememberCreatedUser()`, which returns `true` by default. Meaning the feature is active by default (granted you changed the duration property).
+
+In this example, the client decides to enable/disable the remember me feature by sending a `boolean` as part of the submitted credentials.
+
+First, modify the `validateCredentials` method to save the `rememberMe` choice:
+
+```java
+private String userId, displayName;
+private boolean rememberMe = false;
+
+@Override
+protected boolean validateCredentials(Map<String, Object> credentials) {
+    if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+        String username = credentials.get("username").toString();
+        String password = credentials.get("password").toString();
+        if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+            userId = username;
+            displayName = username;
+
+            //Optional RememberMe
+            if(credentials.containsKey("rememberMe") ){
+                rememberMe = Boolean.valueOf(credentials.get("rememberMe").toString());
+            }
+
+            return true;
+        }
+        else {
+            errorMsg = "Wrong Credentials";
+        }
+    }
+    else{
+        errorMsg = "Credentials not set properly";
+    }
+    return false;
+}
+```
+
+Then, override the `rememberCreatedUser()` method:
+
+```java
+@Override
+protected boolean rememberCreatedUser() {
+    return rememberMe;
+}
+```
+
+## Configuring the SecurityCheck
+In your adapter.xml, add a `<securityCheckDefinition>` element:
+
+```xml
+<securityCheckDefinition name="UserAuthSecurityCheck" class="com.sample.UserAuthSecurityCheck">
+  <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
+  <property name="failureStateExpirationSec" defaultValue="10" displayName="How long before the client can try again (seconds)"/>
+  <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
+  <property name="rememberMeDurationSec" defaultValue="120" displayName="How long is the user remembered when using RememberMe (seconds)"/>
+</securityCheckDefinition>
+```
+As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `CredentialsValidationSecurityCheck` properties, such as `failureStateExpirationSec`, `successStateExpirationSec`, etc.
+
+In addition, a `rememberMeDurationSec` property can also be configured.
+
+## Sample application
+To see a sample using this security check, review the below tutorials:   
+Select a platform:
+
+* [Implementing the challenge handler in Cordova applications](../cordova)
+* [Implementing the challenge handler in iOS applications](../ios)
+* [Implementing the challenge handler in Android applications](../android)
+* [Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../windows-8-10)
