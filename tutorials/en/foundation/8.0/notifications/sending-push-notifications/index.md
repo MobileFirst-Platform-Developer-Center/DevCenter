@@ -41,7 +41,11 @@ Broadcast notifications are a form of tag push notifications that are targeted t
 ![send-to-all](send-to-all.png)
 
 ## Setting Up Custom Push Notifications
-You have the option of customizing your iOS Push Notifications in Send Push > iOS Custom Settings.
+###Android
+If you want to change the notification title, then add `push_notification_tile` in the **strings.xml** file.
+
+###iOS
+You also have the option of customizing your iOS Push Notifications in Send Push > iOS Custom Settings.
 ![set-up-custom-tags](set-up-custom-tags.png)
 
 ## Sending a Secure Push Notification
