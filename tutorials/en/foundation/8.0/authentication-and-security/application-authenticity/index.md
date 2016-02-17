@@ -22,7 +22,6 @@ To enable Application Authenticity you can either follow the on-screen instructi
 
 - [Authenticity flow](authenticity-flow)
 - [Enabling authenticity](enabling-application-authenticity)
-- [Disabling authenticity](disabling-application-authenticity)
 - [Configuring authenticity](configuring-application-authenticity)
 
 ## Application Authenticity Flow
@@ -49,16 +48,14 @@ To enable Application Authenticity in your Cordova or Native application, the ap
  
 2. Open the MobileFirst Operations Console in your browser of choice.
 3. Select your application from the navigation sidebar and click on the Authenticiy menu item.
-3. Click on "Upload Authenticity File" to upload the `.authenticity_data` file.
+3. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
 
 When the `.authenticity_data` file is uploaded, Application Authenticity is enabled.
 
 ![Enable Application Authenticity by uploading an .authenticity_data file](enable_authenticity.png)
 
-## Disabling Application Authenticity
-To disable Application Authenticity, click the "Delete Authenticity File" button.
-
-![Disable Application Authenticity by removing a previously uploaded .authenticity_data file](disable_authenticity.png)
+### Disabling Application Authenticity
+To disable Application Authenticity, click the **Delete Authenticity File** button.
 
 ## Configuring Application Authenticity
 The predefined application-authenticity security check can be configured with the following property:
