@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing the Credentials Validation Security Check
+title: Implementing the CredentialsValidationSecurityCheck
 breadcrumb_title: security check
 relevantTo: [android,ios,windows,cordova]
 weight: 1
