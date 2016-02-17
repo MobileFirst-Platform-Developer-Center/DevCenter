@@ -18,7 +18,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 > If a remote server was already set-up, skip this step.
 
-From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
+From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating an application
 
