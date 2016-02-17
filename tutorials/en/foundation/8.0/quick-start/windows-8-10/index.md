@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Windows 8.1 Universal and Windows 10 UWP end-to-end demonstration
+breadcrumb_title: Windows 8.1 Universal and Windows 10 UWP
 relevantTo: [windows]
 weight: 4
 ---
@@ -17,7 +18,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 > If a remote server was already set-up, skip this step.
 
-From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `start.bat`.
+From a **Command-line** window, navigate to the server's folder and run the command: `run.bat`.
 
 ### 2. Creating an application
 
@@ -25,13 +26,11 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Click on the "New" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
 
-    ![Image of selecting platform, and providing an identifier and version](create-an-application.png)
+    ![Image of selecting platform, and providing an identifier and version](register-an-application-windows.png)
 
 2. Click on the **Get Starter Code** tile and select to download Windows 8.1 or Windows 10 Starter Code.
 
-    ![Image of downloading a sample application](download-sample-application.png)
-
-    ![Image of download a sample application](download-application-code.png)
+    ![Image of downloading a sample application](download-starter-code-windows.png)
 
 ### 3. Editing application logic
 
@@ -59,23 +58,19 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 4. Creating an adapter
 
-1. Click on the "New" button next to **Adapters** and download the **Java** adapter sample.
+1. Click on the "New" button next to **Adapters**
+    * Select the **Actions → Download sample** option. Download the **Java** adapter sample.
+        
+        > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.  
+    * From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
 
-    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.  
-    Alternatively, download [this prepared .adapter artifact](#) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
-
+        ```bash
+        mfpdev adapter build
+        ```
+    * When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+    * Alternatively, download [this prepared .adapter artifact](#) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
+    
     ![Image of create an adapter](create-an-adapter.png)
-
-    ![Image of downloading an adapter sample](download-adapter-code.png)
-
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
-
-    ```bash
-    mfpdev adapter build
-    ```
-
-3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.  
-    The adapter can be found in the **[adapter]/target** folder.
 
 ### 5. Testing the application
 

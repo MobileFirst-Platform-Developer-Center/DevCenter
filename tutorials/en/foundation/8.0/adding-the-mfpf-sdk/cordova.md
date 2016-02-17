@@ -18,20 +18,27 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 * cordova-plugin-mfp-fips
 * cordova-plugin-mfp-encrypt-utils
 
-#### cordova-plug-in-mfp
-The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the `cordova-plugin-mfp` plug-in is automatically installed as well if not already installed.
+#### cordova-plugin-mfp
+The cordova-plugin-mfp plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the cordova-plugin-mfp plug-in is automatically installed as well if not already installed.
+
+> The following cordova plug-ins will be installed as a dependency of cordova-plugin-mfp:
+>   
+>    - cordova-plugin-device
+>    - cordova-plugin-dialogs
+>    - cordova-plugin-globalization
+>    - cordova-plugin-okhttp
 
 #### cordova-plugin-mfp-jsonstore
-The `cordova-plugin-mfp-jsonstore` plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../../using-the-mfpf-sdk/jsonstore/).  
+The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../../using-the-mfpf-sdk/jsonstore/).  
 
 #### cordova-plugin-mfp-push
-The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../../notifications/push-notifications-overview/).
+The cordova-plugin-mfp-push plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../../notifications/push-notifications-overview/).
 
 #### cordova-plugin-mfp-fips
-The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+The cordova-plugin-mfp-fips plug-in enables FIPS related features. For more information about FIPS, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 #### cordova-plugin-mfp-encrypt-utils
-The `cordova-plugin-mfp-encrypt-utils` plug-in provides encryption functions. For more information about encryption functions, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+The cordova-plugin-mfp-encrypt-utils plug-in provides encryption functions. For more information about encryption functions, see the [user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 **Prerequisites:**
 
@@ -101,7 +108,7 @@ SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/pa
 ## Generated MobileFirst Cordova SDK artifacts
 
 ### config.xml
-Once the MobileFirst Cordova SDK is added to the project, the Cordova-generated `config.xml` file receives a set of new settings identified with the namespace `mfp:`. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the `config.xml` file:
+Once the MobileFirst Cordova SDK is added to the project, the Cordova-generated **config.xml** file receives a set of new settings identified with the namespace `mfp:`. The added elements contain information related to MobileFirst features and the MobileFirst Server. Here is an example of MobileFirst settings added to the **config.xml** file:
 
 ```xml
 <mfp:android>
@@ -131,7 +138,7 @@ Once the MobileFirst Cordova SDK is added to the project, the Cordova-generated 
 * **mfp:directUpdateAuthenticityPublicKey:** The public key used for direct update authenticity
 * **mfp:languagePreferences:** Default language for client sdk system messages (en, fr, es)
 
-**Editing MobileFirst settings in config.xml with MobileFirst Developer CLI**  
+### Editing MobileFirst settings in config.xml
 The MobileFirst Developer CLI can be used to edit the above settings with the command:
 
 ```bash

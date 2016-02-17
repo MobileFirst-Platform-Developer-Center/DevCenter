@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource request from Native Windows 8.1 Universal and Windows 10 UWP applications
+title: Resource request from Windows 8.1 Universal and Windows 10 UWP applications
 breadcrumb_title: Resource request - Windows 8.1 Universal and Windows 10 UWP
 relevantTo: [windows]
 downloads:

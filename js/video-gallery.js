@@ -1,3 +1,5 @@
+---
+---
 var videos = [];
 var videoTags = [];
 function displayVideos(tag){
@@ -41,7 +43,7 @@ $(document).ready(function ($) {
     type: 'iframe'
     // other options
   });
-  $.ajax('/js/data/videos.json',{
+  $.ajax('{{site.baseurl}}/js/data/videos.json',{
     success: function(data){
       videos = data;
       displayVideoTags();

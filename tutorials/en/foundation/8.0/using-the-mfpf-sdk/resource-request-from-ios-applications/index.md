@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Resource request from Native iOS applications
+title: Resource request from iOS applications
 breadcrumb_title: Resource request - iOS (Swift)
 relevantTo: [ios]
 downloads:
@@ -56,11 +56,12 @@ request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void
 }
 ```
 
-Use the `response` and `error` objects to get the data that is retrieved from the adapter.
+Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
 
+## The response
 The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
 
-Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
+Use the `response` and `error` objects to get the data that is retrieved from the adapter.
 
 ## Parameters
 Before sending your request, you may want to add parameters as needed.
@@ -98,7 +99,7 @@ To send a parameter as an HTTP header use the `setHeaderValue` API:
 
 ```swift
 //@HeaderParam("Date")
-request.setHeaderValue("2015-06-06", forName: "Date")
+request.setHeaderValue("2015-06-06", forName: "birthdate")
 ```
 
 ### Other custom body parameters
@@ -130,4 +131,4 @@ The adapter Maven project contains the Java adapter to be used during the resour
 2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
 3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
 4. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
-5. Import the project to Xcode, and run the sample by clicking the **Run* button.
+5. Import the project to Xcode, and run the sample by clicking the **Run** button.

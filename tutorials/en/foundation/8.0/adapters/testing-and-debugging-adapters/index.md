@@ -7,6 +7,7 @@ weight: 6
 ## Overview
 
 You can test Java and JavaScript adapters as well as debug Java code implemented for use in Java or JavaScript adapters via IDEs such as Eclipse, IntelliJ and alike.  
+
 This tutorial demonstrates how to test adapters using the MobileFirst Developer CLI and using Postman and also how to debug a Java adapter using the Eclipse IDE.
 
 #### Jump to:
@@ -24,13 +25,12 @@ The structure of the URL used to access the adapter resource is:
 * In JavaScript adapters - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{procedure-name}`
 * In Java adapters - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{path}`
 
-**Passing parameters:**
+### Passing parameters
 
 * When using Java adapters, parameters can be passed in the URL, body, form, etc, depending on how you configured your adapter.
 * When using JavaScript adapters, parameters are passed as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be an array of ordered, unnamed values. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
 
-**Handling security:**
-
+### Handling security
 If your resource is protected by a scope, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
 
 To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the method/class:
@@ -49,7 +49,7 @@ Alternatively, the development version of the MobileFirst Server includes a test
 
 ### Using Postman
 
-**Test Token:**
+#### Test Token
 
 To receive a Test Token you should:
 {% comment %}
@@ -82,7 +82,7 @@ The result will be a JSON object with a temporary valid access token:
 }
 ```
 <br/><br/>
-**Sending request:**
+#### Sending request
 
 Now with any future request to adapter endpoints, add an HTTP header with the name `Authorization` and the value you received previously (starting with Bearer). The security framework will skip any security challenges protecting your resource.
 
@@ -101,13 +101,13 @@ To access Swagger:
 
   ![Image of the Swagger UI](SwaggerUI.png)
 
-<img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin-right:126px"/>
-**Test Token:**
+<img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
+#### Test Token
+To add a Test Token to the request, so the security framework will skip any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
 
-To add a Test Token to the request, so the security framework will skip any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation. You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes you can select all).  
-If you are using the Swagger UI for the first time you may be required to log in with the MobileFirst Operations Console username and password.
+You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes you can select all). If you are using the Swagger UI for the first time you may be required to log in with the MobileFirst Operations Console username and password.
 <br/><br/>
-**Sending request:**
+#### Sending request
 
 Expand the endpoint's operation, enter the required parameters (if needed) and click on the **Try it out!** button.
 
@@ -120,7 +120,7 @@ Expand the endpoint's operation, enter the required parameters (if needed) and c
 In order to test the adapter functionality, use the `mfpdev adapter call` command to call Java or JavaScript adapters from the command line.
 You can choose to run the command interactively or directly. The following is an example of using the direct mode:
 
-**Java adapters:**
+#### Java adapters
 Open a **Command-line** window and run:
 
 ```bash
@@ -136,7 +136,7 @@ Response:
 Hello World
 ```
 
-**JavaScript adapters:**
+#### JavaScript adapters
 Open a **Command-line** window and run:
 
 ```bash

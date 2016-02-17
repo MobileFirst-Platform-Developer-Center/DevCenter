@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: JSONStore in Native Android applications
+title: JSONStore in Android applications
 breadcrumb_title: JSONStore - Android
 relevantTo: [android]
 weight: 10

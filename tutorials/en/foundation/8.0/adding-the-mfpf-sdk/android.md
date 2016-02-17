@@ -40,7 +40,7 @@ Create an Android Studio project or use an existing one.
 
 ### Adding the SDK
 
-1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file.
+1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
 
 2. Add the following lines below `apply plugin: 'com.android.application'`:
 
@@ -79,18 +79,20 @@ Create an Android Studio project or use an existing one.
     compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.Beta1-SNAPSHOT'
     ```
     
-5. In **Android → App → manifests**, add the following permissions to the `AndroidManifest.xml` file:
+5. In **Android → app → manifests**, open the `AndroidManifest.xml` file. Add the following permissions above the **application** element:
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
     ```
-6. Add the MobileFirst UI activity:
+6. Add the MobileFirst UI activity next to the existing **activity** element:
 
     ```xml
     <activity android:name="com.worklight.wlclient.ui.UIActivity" />
     ```
+
+> If a Gradle Sync request appears, accept it.
 
 ### Registering the application
 1. Open a **Command-line** window and navigate to the root of the Android Studio project.  
@@ -101,7 +103,7 @@ Create an Android Studio project or use an existing one.
     mfpdev app register
     ```
     
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **./app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
+    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
         
     > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
         1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  

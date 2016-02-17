@@ -1,15 +1,14 @@
 ---
 layout: tutorial
-title: Implementing the CredentialsValidation Security Check 
-breadcrumb_title: Security adapter
+title: Implementing the CredentialsValidationSecurityCheck
+breadcrumb_title: security check
 relevantTo: [android,ios,windows,cordova]
-weight: 3
+weight: 1
 ---
 
 ## Overview
-This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`. 
-
-The `CredentialsValidationSecurityCheck` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Aslo provided is a built-in capability to block access after a set number of attempts.
+This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`.  
+The `CredentialsValidationSecurityCheck` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
 
 This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client is blocked for 60 seconds).
 
@@ -17,17 +16,17 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 
 #### Jump to:
 
-* [Creating the Security Check](#pingcodeattempts)
+* [Creating the Security Check](#creating-the-security-check)
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
 * [Configuring the SecurityCheck](#configuring-the-securitycheck)
 * [Sample application](#sample-application)
 
-## PinCodeAttempts
+## Creating the Security Check
 [Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
 
 ```java
-public class PinCodeAttempts extends SecurityCheckWithAttempts {
+public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 
     @Override
     protected boolean validateCredentials(Map<String, Object> credentials) {
@@ -42,7 +41,7 @@ public class PinCodeAttempts extends SecurityCheckWithAttempts {
 ```
 
 ## Creating the challenge
-When the SecurityCheck is triggered, it sends a challenge to the client. Returning `null` will creating an empty challenge which may be enough in some cases.  
+When the Security Check is triggered, it sends a challenge to the client. Returning `null` will creating an empty challenge which may be enough in some cases.  
 Optionally, you can return data with the challenge, such as an error message to display, or any other data that can be used by the client.
 
 For example, `PinCodeAttempts` sends a predefined error message and the number of remaining attempts.
@@ -89,10 +88,10 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ### Configuration class
 Instead of hardcoding the valid PIN code, it can also be configured using the adapter.xml file and the MobileFirst Operations Console.
 
-Create a new Java class that extends `SecurityCheckWithAttemptsConfig`. It is important to extend a class that matches the parent SecurityCheck in order to inherit the default configuration.
+Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent SecurityCheck in order to inherit the default configuration.
 
 ```java
-public class PinCodeConfig extends SecurityCheckWithAttemptsConfig {
+public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 
     public String pinCode;
 
@@ -167,36 +166,36 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
-    <property name="pinCode" defaultValue="1234" displayName="The valid PIN code"/>
-    <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
-    <property name="failureExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
-    <property name="successExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
+  <property name="pinCode" defaultValue="1234" displayName="The valid PIN code"/>
+  <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
+  <property name="failureStateExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
+  <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
 </securityCheckDefinition>
 ```
 
 The `name` attribute should be the name of the SecurityCheck, the `class` should be set to the class created previously.
 
-A `securityCheckDefinition` can contain zero or more `property` elements. The `pinCode` property is the one defined in the `PinCodeConfig` configuration class. The other properties are inherited from the `SecurityCheckWithAttemptsConfig` configuration class.
+A `securityCheckDefinition` can contain zero or more `property` elements. The `pinCode` property is the one defined in the `PinCodeConfig` configuration class. The other properties are inherited from the `CredentialsValidationSecurityCheckConfig` configuration class.
 
-By default, if you do not specify those properties in the adapter.xml file you received the defaults set by `SecurityCheckWithAttemptsConfig`:
+By default, if you do not specify those properties in the adapter.xml file you received the defaults set by `CredentialsValidationSecurityCheckConfig`:
 
 ```java
-public SecurityCheckWithAttemptsConfig(Properties properties) {
+public CredentialsValidationSecurityCheckConfig(Properties properties) {
     super(properties);
     maxAttempts = getIntProperty("maxAttempts", properties, 1);
-    attemptIntervalSec = getIntProperty("attemptIntervalSec", properties, 120);
-    successExpirationSec = getIntProperty("successExpirationSec", properties, 3600);
-    failureExpirationSec = getIntProperty("failureExpirationSec", properties, 0);
+    attemptingStateExpirationSec = getIntProperty("attemptingStateExpirationSec", properties, 120);
+    successStateExpirationSec = getIntProperty("successStateExpirationSec", properties, 3600);
+    failureStateExpirationSec = getIntProperty("failureStateExpirationSec", properties, 0);
 }
 ```
 
-Note that the default for `failureExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+Note that the default for `failureStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
 
 ## Sample application
-The security check is available as part of the complete sample application, where the challenge handler is implemented to handle the security check.  
+To see a sample using this security check, review the below tutorials: 
 Select a platform:
 
-* [Implemented the challenge handler in Cordova applications](../cordova)
-* [Implemented the challenge handler in iOS applications](../ios)
-* [Implemented the challenge handler in Android applications](../android)
-* [Implemented the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../windows-8-10)
+* [Implementing the challenge handler in Cordova applications](../cordova)
+* [Implementing the challenge handler in iOS applications](../ios)
+* [Implementing the challenge handler in Android applications](../android)
+* [Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../windows-8-10)

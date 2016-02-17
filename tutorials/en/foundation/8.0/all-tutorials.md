@@ -40,8 +40,8 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
 * [MobileFirst Platform Foundation SDK development in Cordova applications](../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/)
 * [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/)
 * Resource Request from client applications
-    * <span style="color:red">IN PROGRESS</span> [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
-    * [Resource request from iOS Swift-based applications](../using-the-mfpf-sdk/resource-request-from-ios-swift-applications/)
+    * [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
+    * [Resource request from iOS applications](../using-the-mfpf-sdk/resource-request-from-ios-applications/)
     * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-android-applications/)
     * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/)
 * JSONStore
@@ -79,7 +79,7 @@ Add various layers of protection to your applications.
     * [Implementing the challenge handler in Cordova applications](../authentication-and-security/credentials-validation/cordova/)
     * [Implementing the challenge handler in iOS applications](../authentication-and-security/credentials-validation/ios/)
     * [Implementing the challenge handler in Android applications](../authentication-and-security/credentials-validation/android/)
-    * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/security-check-with-attempts/windows-8-10/)
+    * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/credentials-validation/windows-8-10/)
 * [UserAuthentication Security Check](../authentication-and-security/user-authentication/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the security check](../authentication-and-security/user-authentication/security-check/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/user-authentication/cordova/)

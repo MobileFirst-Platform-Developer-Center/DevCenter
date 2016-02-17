@@ -128,4 +128,5 @@ PushAPI pushApi = serverApi.getPushAPI();
 ```
 > For more information, review the Server-side API topics in the user documentation.
 
-## For examples of Java adapters communicating with an HTTP or SQL back end, see:
+## Java adapter examples
+For examples of Java adapters communicating with an HTTP or SQL back end, see:

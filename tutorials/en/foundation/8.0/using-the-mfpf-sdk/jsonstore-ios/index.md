@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: JSONStore in Native iOS applications
+title: JSONStore in iOS applications
 breadcrumb_title: JSONStore - iOS
 relevantTo: [ios]
 weight: 9
