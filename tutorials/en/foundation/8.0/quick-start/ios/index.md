@@ -25,14 +25,12 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
  
 1. Click on the "New" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
 
-    ![Image of selecting platform, and providing an identifier and version](create-an-application.png)
+    ![Image of selecting platform, and providing an identifier and version](register-an-application-ios.png)
  
 2. Click on the **Get Starter Code** tile and select to download the iOS Starter Code.
 
-    ![Image of download a sample application](download-sample-application.png)
+    ![Image of download a sample application](download-starter-code-ios.png)
     
-    ![Image of download a sample application](download-application-code.png)
- 
 ### 3. Editing application logic
 
 1. Open the Xcode project project by double-clicking the **.xcworkspace** file.
@@ -82,23 +80,20 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 ### 4. Creating an adapter
 
-1. Click on the "New" button next to **Adapters** and download the **Java** adapter sample.
+1. Click on the "New" button next to **Adapters**
+    * Select the **Actions → Download sample** option. Download the **Java** adapter sample.
+        
+        > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.  
+    * From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
 
-    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.  
-    Alternatively, download [this prepared .adapter artifact](#) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
-
-    ![Image of create an adapter](create-an-adapter.png)
+        ```bash
+        mfpdev adapter build
+        ```
+    * When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+    * Alternatively, download [this prepared .adapter artifact](#) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
     
-    ![Image of downloading an adapter sample](download-adapter-code.png)
+    ![Image of create an adapter](create-an-adapter.png)
 
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
-
-    ```bash
-    mfpdev adapter build
-    ```
-
-3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.  
-   The adapter can be found in the **[adapter]/target** folder.
 
 ### 5. Testing the application
 
