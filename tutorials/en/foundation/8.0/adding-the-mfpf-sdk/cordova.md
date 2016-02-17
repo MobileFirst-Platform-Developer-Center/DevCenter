@@ -18,7 +18,7 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 * cordova-plugin-mfp-fips
 * cordova-plugin-mfp-encrypt-utils
 
-#### cordova-plug-in-mfp
+#### cordova-plugin-mfp
 The `cordova-plugin-mfp` plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the `cordova-plugin-mfp` plug-in is automatically installed as well if not already installed.
 
 #### cordova-plugin-mfp-jsonstore
@@ -31,7 +31,9 @@ The `cordova-plugin-mfp-push` plug-in provides permissions needed to use push no
 The `cordova-plugin-mfp-fips` plug-in enables FIPS related features. For more information about FIPS, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 #### cordova-plugin-mfp-encrypt-utils
-The `cordova-plugin-mfp-encrypt-utils` plug-in provides encryption functions. For more information about encryption functions, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+The `cordova-plugin-mfp-encrypt-utils` plug-in provides encryption functions. For more information about encryption functions, see the [user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+
+  > The following cordova plug-ins will be installed as a dependency of 'cordova-plugin-mfp': 'cordova-plugin-device','cordova-plugin-dialogs','cordova-plugin-globalization' and 'cordova-plugin-okhttp'
 
 **Prerequisites:**
 
