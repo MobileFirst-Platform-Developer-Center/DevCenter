@@ -7,8 +7,7 @@ weight: 1
 ---
 
 ## Overview
-This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`.
-
+This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are required to be implemented: `validateCredentials` and `createChallenge`.  
 The `CredentialsValidationSecurityCheck` class is meant for simple flows to need to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
 
 This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client is blocked for 60 seconds).
@@ -17,13 +16,13 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 
 #### Jump to:
 
-* [Creating the Security Check](#pingcodeattempts)
+* [Creating the Security Check](#creating-the-security-check)
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
 * [Configuring the SecurityCheck](#configuring-the-securitycheck)
 * [Sample application](#sample-application)
 
-## PinCodeAttempts
+## Creating the Security Check
 [Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
 
 ```java

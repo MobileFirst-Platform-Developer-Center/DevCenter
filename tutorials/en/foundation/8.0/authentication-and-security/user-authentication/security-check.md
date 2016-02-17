@@ -6,16 +6,24 @@ relevantTo: [android,ios,windows,cordova]
 weight: 1
 ---
 ## Overview
-This abstract class extends `CredentialsValidationSecurityCheck` and builds upon it to fit the most common use-cases of simple user authentication. In addition to validating the credentials, it creates a user identity that will be accessible from various parts of the framework, allowing you to identity the current user.
-
-Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
+This abstract class extends `CredentialsValidationSecurityCheck` and builds upon it to fit the most common use-cases of simple user authentication. In addition to validating the credentials, it creates a **user identity** that will be accessible from various parts of the framework, allowing you to identify the current user. Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
 
 This tutorial uses the example of a security check asking for a username and password and uses the username to represent an authenticated user.
 
-**Prerequisites:** Make sure to read the [Credentials Validation Security Check](../../credentials-validation/) tutorial.
+**Prerequisites:** Make sure to read the [CredentialsValidationSecurityCheck](../../credentials-validation/) tutorial.
 
-## UserAuthSecurityCheck
-Create a Java adapter and add a Java class named `UserAuthSecurityCheck` that extends `UserAuthenticationSecurityCheck`.
+#### Jump to:
+
+* [Creating the Security Check](#creating-the-security-check)
+* [Creating the Challenge](#creating-the-challenge)
+* [Validating the user credentials](#validating-the-user-credentials)
+* [Creating the AuthenticatedUser object](#creating-the-authenticateduser-object)
+* [Adding Remember Me functionality](#adding-remember-me-functionality)
+* [Configuring the SecurityCheck](#configuring-the-securitycheck)
+* [Sample application](#sample-application)
+
+## Creating the Security Check
+[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `UserAuthSecurityCheck` that extends `UserAuthenticationSecurityCheck`.
 
 ```java
 public class UserAuthSecurityCheck extends UserAuthenticationSecurityCheck {
@@ -38,7 +46,7 @@ public class UserAuthSecurityCheck extends UserAuthenticationSecurityCheck {
 ```
 
 ## Creating the challenge
-The challenge is exactly the same as the one described in [Implementing the Credentials Validation Security Check](../../credentials-validation/security-check/).
+The challenge is exactly the same as the one described in [Implementing the CredentialsValidationSecurityCheck](../../credentials-validation/security-check/).
 
 ```java
 @Override
@@ -75,54 +83,53 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## AuthenticatedUser
-`UserAuthenticationSecurityCheck` stores a representation of the current user in the security check's persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
-
+## Creating the AuthenticatedUser object
+The `UserAuthenticationSecurityCheck` stores a representation of the current user in the security check's persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters. 
 Users are represented by an instance of the class `AuthenticatedUser`. Its constructor receives a `id`, `displayName` and `securityCheckName`.
 
 In this example, we are using the `username` for both the `id` and `displayName`.
 
-First, modify the `validateCredentials` method to save the `username`:
+1. First, modify the `validateCredentials` method to save the `username`:
 
-```java
-private String userId, displayName;
+    ```java
+    private String userId, displayName;
 
-@Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
-        String username = credentials.get("username").toString();
-        String password = credentials.get("password").toString();
-        if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
-            userId = username;
-            displayName = username;
-            return true;
+    @Override
+    protected boolean validateCredentials(Map<String, Object> credentials) {
+        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+            String username = credentials.get("username").toString();
+            String password = credentials.get("password").toString();
+            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+                userId = username;
+                displayName = username;
+                return true;
+            }
+            else {
+                errorMsg = "Wrong Credentials";
+            }
         }
-        else {
-            errorMsg = "Wrong Credentials";
+        else{
+            errorMsg = "Credentials not set properly";
         }
+        return false;
     }
-    else{
-        errorMsg = "Credentials not set properly";
+    ```
+
+2. Then, override the `createUser` method to return a new instance of `AuthenticatedUser`:
+
+    ```java
+    @Override
+    protected AuthenticatedUser createUser() {
+        return new AuthenticatedUser(userId, displayName, this.getName());
     }
-    return false;
-}
-```
-
-Then, override the `createUser` method to return a new instance of `AuthenticatedUser`:
-
-```java
-@Override
-protected AuthenticatedUser createUser() {
-    return new AuthenticatedUser(userId, displayName, this.getName());
-}
-```
+    ```
 
 You can use `this.getName()` to get the current security check name.
 
 `UserAuthenticationSecurityCheck` will call your `createUser()` implementation after a successful login.
 
-## Remember Me
-`UserAuthenticationSecurityCheck` by default uses the `successStateExpirationSec` property to determine how long does the success state last; this feature was inherited from `CredentialsValidationSecurityCheck`.
+## Adding Remember Me functionality
+`UserAuthenticationSecurityCheck` by default uses the `successStateExpirationSec` property to determine how long does the success state last; this property was inherited from `CredentialsValidationSecurityCheck`.
 
 If you want to allow users to stay logged-in past the `successStateExpirationSec`, and even past the **token expiration**, `UserAuthenticationSecurityCheck` adds this capability.
 
@@ -132,50 +139,50 @@ The feature is also managed by overriding the method `rememberCreatedUser()`, wh
 
 In this example, the client decides to enable/disable the remember me feature by sending a `boolean` as part of the submitted credentials.
 
-First, modify the `validateCredentials` method to save the `rememberMe` choice:
+1. First, modify the `validateCredentials` method to save the `rememberMe` choice:
 
-```java
-private String userId, displayName;
-private boolean rememberMe = false;
+    ```java
+    private String userId, displayName;
+    private boolean rememberMe = false;
 
-@Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
-        String username = credentials.get("username").toString();
-        String password = credentials.get("password").toString();
-        if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
-            userId = username;
-            displayName = username;
+    @Override
+    protected boolean validateCredentials(Map<String, Object> credentials) {
+        if(credentials!=null && credentials.containsKey("username") && credentials.containsKey("password")){
+            String username = credentials.get("username").toString();
+            String password = credentials.get("password").toString();
+            if(!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
+                userId = username;
+                displayName = username;
 
-            //Optional RememberMe
-            if(credentials.containsKey("rememberMe") ){
-                rememberMe = Boolean.valueOf(credentials.get("rememberMe").toString());
+                //Optional RememberMe
+                if(credentials.containsKey("rememberMe") ){
+                    rememberMe = Boolean.valueOf(credentials.get("rememberMe").toString());
+                }
+
+                return true;
             }
-
-            return true;
+            else {
+                errorMsg = "Wrong Credentials";
+            }
         }
-        else {
-            errorMsg = "Wrong Credentials";
+        else{
+            errorMsg = "Credentials not set properly";
         }
+        return false;
     }
-    else{
-        errorMsg = "Credentials not set properly";
+    ```
+
+2. Then, override the `rememberCreatedUser()` method:
+
+    ```java
+    @Override
+    protected boolean rememberCreatedUser() {
+        return rememberMe;
     }
-    return false;
-}
-```
-
-Then, override the `rememberCreatedUser()` method:
-
-```java
-@Override
-protected boolean rememberCreatedUser() {
-    return rememberMe;
-}
-```
+    ```
 
 ## Configuring the SecurityCheck
-In your adapter.xml, add a `<securityCheckDefinition>` element:
+In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
 
 ```xml
 <securityCheckDefinition name="UserAuthSecurityCheck" class="com.sample.UserAuthSecurityCheck">
