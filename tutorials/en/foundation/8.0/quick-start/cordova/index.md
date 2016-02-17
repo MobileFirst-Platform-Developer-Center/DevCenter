@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Cordova end-to-end demonstration
+breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 ---

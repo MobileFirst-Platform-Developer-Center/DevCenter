@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Android end-to-end demonstration
+breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 ---
