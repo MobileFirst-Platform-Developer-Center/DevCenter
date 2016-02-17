@@ -85,8 +85,6 @@ Set-up [push notifications](../../notifications/push-notifications-overview/) an
 #### Creating adapters
 Register an adapter and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
 
-<span style="color:red">update image</span>
-
 ![Image of adapter registration screen](create-adapter.png)
 
 #### Adapter properties
@@ -100,8 +98,6 @@ Devices can be searched for using either user ID or using a friendly name. The u
 A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
 
 > For more information, see the topic about device access management in the MobileFirst Operations Console in the user documentation.
-
-<span style="color:red">replace with image showing logged devices</span>
 
 ![Image of device management screen](devices.png)
 
@@ -129,7 +125,5 @@ License terms vary depending on which edition (Enterprise or Consumer) of Mobile
 By tracking the usage of client devices and determining whether the devices are active, administrators can decommission devices that should no longer be accessing the service. This situation might arise if an employee has left the company, for example.
 
 > For more information, see the topic about license tracking in the user documentation.</p></blockquote>
-
-<span style="color:red">replace with image showing license information</span>
 
 ![Image of client logs screen](license-tracking.png)
