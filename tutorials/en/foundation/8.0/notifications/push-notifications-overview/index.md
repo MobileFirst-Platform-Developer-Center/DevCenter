@@ -55,11 +55,10 @@ User Authenticated Notifications are notifications secured with OAuth.
 ## Setting up Push Notifications
 The first step to enable push notifications support is to map the **push.mobileclient** scope element to the application.
 
-<span style="color:red">Need to discuss with the design/security team about the below text</span>
+1. In the MobileFirst Operations Console → **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**
+2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
 
-In the MobileFirst Operations Console → **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** and write "push.mobileclient" in the **Scope element** field followed by clicking on the **Add** button. 
-
-For User Authenticated notifications the **push.mobileclient** scope element should be mapped to the security check of the application.  
+For User Authenticated notifications the **push.mobileclient** scope element should be mapped to the security check of the application.
 
 ### Android
 Android devices use the Google Cloud Messaging (GCM) service for push notifications.  
@@ -72,7 +71,7 @@ To setup GCM:
     This step generates a `Server API Key` and a `Sender ID`.  
     The generated values are used to identify the application by Google's GCM service in order to send notifications to the device.
 
-4. Click "Generate configuration file" and download **google-services.json**.  This file will be used later to configure Android application.
+4. Click **Generate configuration file** and download the **google-services.json** file. This file will be used later to [configure the Android application](../handling-push-notifications-in-android).
 5. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and server **API Key** and click **Save**.
 
 #### Notes

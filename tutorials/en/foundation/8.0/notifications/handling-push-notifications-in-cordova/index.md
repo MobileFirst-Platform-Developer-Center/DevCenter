@@ -66,7 +66,6 @@ If the MobileFirst Cordova SDK is not already present in the project, follow the
     
         ```xml
         compile 'com.google.android.gms:play-services-gcm:8.4.0'
-        compile 'com.squareup.okhttp:okhttp:2.6.0'
         ```
     - Add the following line at the bottom:
     
