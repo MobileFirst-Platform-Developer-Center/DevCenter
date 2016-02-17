@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: User Authentication Security Check
+title: UserAuthenticationSecurityCheck
 relevantTo: [android,ios,windows,cordova]
 show_children: true
 show_disqus: false
