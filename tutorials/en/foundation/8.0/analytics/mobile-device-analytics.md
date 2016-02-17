@@ -16,11 +16,17 @@ To record a session in Operational Analytics 8.0 it is first needed to make sure
 ### Devices
 When you first call the Analytics API send method devices will start to populate the Analytics console. Device information is collected out of the box. Information that is recorded is data like Device ID, Operating System, Model, etc.
 
-### Network
-
 ### Crashes
-App crashes is also collected out of the box. However, app crashes will not be 
+App crashes is also collected out of the box. However, app crashes will not show in the Operational Analytics server until Analytics is sent on the client device.
 
+### Network
+Collection on adapters and network occur in two different locations on the client and on the server.
+
+The client is going to collect the information when you start collecting on the device event `Network`. Collecting on the Client is going to collect information like roundtrip time and payload size.
+
+The server is going to collect more backend information like server processing time, adapter usage, procedures, etc.
+
+Since the client and the server are each collecting their own information this means that all the charts will not display data until the client is configured to do so. To configure your client you need to start collecting on the device event `Analytics`.
 
 ### Server logs
 To start collecting server logs the server environment variable for `log.forward` has to be set to true on the MobileFirst Runtime console. This will collect server logs at the log level specified in the MobileFirst Runtime Console.

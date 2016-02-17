@@ -9,9 +9,9 @@ Creating a custom chart is simple. The following example walks you through creat
 The messages that are logged to the Operational Analytics server in this example are hard-coded buttons. Those messages look like this:
 
 ```javascript
-WL.Analytics.log("buttonA", "press");
-WL.Analytics.log("buttonB", "press");
-WL.Analytics.log("buttonC", "press");
+WL.Analytics.log({"location":"USA"});
+WL.Analytics.log({"location":"China"});
+WL.Analytics.log({"location":"Germany"});
 ```
 
 > **Note**: Remember to always send data to the analytics server by using `WL.Analytics.send();`
@@ -19,29 +19,23 @@ WL.Analytics.log("buttonC", "press");
 To create a chart, follow these steps.
 
 1. Go to the **Custom Charts** tab
-
-       <img src="{{ site.baseurl }}/assets/backup/custom-chart-1-1024x275.png" alt="Create Custom Chart" style="max-width:100%!important;" class="aligncenter size-large wp-image-15081" />
+![Highlight-Custom-Charts-Tab](./images/HighlightCustomChartsTab.png)
 
 2. click **Create Chart**.
-
-       <img src="{{ site.baseurl }}/assets/backup/custom-chart-2-1024x713.png" alt="custom-chart-2" style="max-width:100%!important;" class="aligncenter size-large wp-image-15082" />
+![Custom-Charts-Tb](./images/CustomChartsTab.png)
 
 3. Enter a **Chart Title**
 
 4. Select **Custom Data** as the **Event Type**
 
 5. Select a **Chart Type**. This example uses a **Pie Chart**.
-
-       <img src="{{ site.baseurl }}/assets/backup/custom-chart-type-1024x627.png" alt="custom-chart-type" width="980" height="600" class="aligncenter size-large wp-image-15090" />
+![Custom-Charts-General-Settings](./images/CustomChartsGeneralSettings.png)
 
 6. Click on the **Chart Definition** tab.
 
-       <img src="{{ site.baseurl }}/assets/backup/custom-chart-3-e1437662521800-1024x404.png" alt="custom-chart-3" style="max-width:100%!important;" class="aligncenter size-large wp-image-15083" />
-
-7. Select a **Property**. This example uses ```buttonPress```.
-
-       <img src="{{ site.baseurl }}/assets/backup/custom-chart-4-1024x693.png" alt="custom-chart-4" style="max-width:100%!important;" class="aligncenter size-large wp-image-15084" />
+7. Select a **Property**. This example uses ```location```.
+![Custom-Charts-Chart-Definition](./images/CustomChartsChartDefinition.png)
 
 8. Click **Save**. The chart is saved under the **Custom Charts** tab in the main dashboard.
 
-       <img src="{{ site.baseurl }}/assets/backup/custom-chart-5-1024x642.png" alt="custom-chart-5" style="max-width:100%!important;" class="aligncenter size-large wp-image-15085" />
+![Custom-Chart](./images/CustomChart.png)
