@@ -21,7 +21,7 @@ In order to update an application, the updated web resources of the application 
 - [User experience](#user-experience)
 <!-- - [Customizing the Direct Update UI](#customizing-the-direct-update-ui) -->
 - [Direct Update authenticity](#direct-update-authenticity)
-- [Differential Direct Update](#differential-direct-update)
+- [Delta and Full Direct Update](#delta-and-full-direct-update)
 - [Direct Update in the field](#direct-update-in-the-field)
 - [Sample application](#sample-application)
 
@@ -151,10 +151,10 @@ Any future Direct Update deliveries to client applications will be protected by 
 
 > Refer to the "Direct Update" user documentation for more information about obtaining a public key for Direcr Update authenticity.
 
-## Differential Direct Update
-Differential Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
+## Delta and Full Direct Update
+Delta Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** A differential update is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a full update - meaning that the entire web resources are downloaded and updated.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** A **delta update** is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a **full update** (meaning that the entire web resources are downloaded and updated).
 
 ## Working with Direct Update in the field
 The diagram below depicts the flow of updating an application's web resources using Direct Update once it has been submitted to the application stores and used by end-users.
