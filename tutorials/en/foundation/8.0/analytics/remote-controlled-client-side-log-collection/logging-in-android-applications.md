@@ -14,7 +14,7 @@ public class MathUtils{
   private static final Logger logger = Logger.getInstance(MathUtils.class.getName());
   public int sum(final int a, final int b){
   int sum = a + b;
-  logger.debug("sum called with args " + a + " and " + b + ". Returning " + sum);
+  logger.debug("sum called with args " + a + " and " + b + ".       Returning " + sum);
   return sum;
   }
 }
@@ -30,7 +30,7 @@ Logger.setCapture(false)
 The default capture level is DEBUG in development and FATAL in production. To control the capture level (verbosity):
 
 ```java
-Logger.setLevel(Logger.LEVEL FATAL)
+Logger.setLevel(Logger.FATAL)
 ```
 
 Log sending is enabled by default. To turn automatic log sending on or off:
