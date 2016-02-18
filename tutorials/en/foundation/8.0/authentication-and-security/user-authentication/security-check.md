@@ -23,10 +23,10 @@ This tutorial uses the example of a security check asking for a username and pas
 * [Sample application](#sample-application)
 
 ## Creating the Security Check
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `UserAuthSecurityCheck` that extends `UserAuthenticationSecurityCheck`.
+[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
 
 ```java
-public class UserAuthSecurityCheck extends UserAuthenticationSecurityCheck {
+public class UserLogin extends UserAuthenticationSecurityCheck {
 
     @Override
     protected AuthenticatedUser createUser() {
@@ -84,7 +84,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ## Creating the AuthenticatedUser object
-The `UserAuthenticationSecurityCheck` stores a representation of the current user in the security check's persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters. 
+The `UserAuthenticationSecurityCheck` stores a representation of the current user in the security check's persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
 Users are represented by an instance of the class `AuthenticatedUser`. Its constructor receives a `id`, `displayName` and `securityCheckName`.
 
 In this example, we are using the `username` for both the `id` and `displayName`.
@@ -185,7 +185,7 @@ In this example, the client decides to enable/disable the remember me feature by
 In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
 
 ```xml
-<securityCheckDefinition name="UserAuthSecurityCheck" class="com.sample.UserAuthSecurityCheck">
+<securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
   <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
   <property name="failureStateExpirationSec" defaultValue="10" displayName="How long before the client can try again (seconds)"/>
   <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>

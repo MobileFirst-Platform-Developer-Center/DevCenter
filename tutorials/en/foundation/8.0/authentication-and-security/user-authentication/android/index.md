@@ -15,7 +15,7 @@ downloads:
 ## Overview
 **Prerequisite:** This tutorial is a continuation of the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/android) tutorial. Make sure to read it first.
 
-The challenge handler implementation will be modified to fit the `UserLoginCSecurityCheck` created in the matching [security check tutorial](../security-check), and will demonstrate a few additional features (APIs) such as the preemptive `login` , `logout` and `obtainAccessToken`.
+The challenge handler implementation will be modified to fit the `UserLoginSecurityCheck` created in the matching [security check tutorial](../security-check), and will demonstrate a few additional features (APIs) such as the preemptive `login` , `logout` and `obtainAccessToken`.
 
 ## Creating the challenge handler
 1. Create a Java class that extends `WLChallengeHandler`:
@@ -42,10 +42,10 @@ The challenge handler implementation will be modified to fit the `UserLoginCSecu
     ```
 
 ## Handling the challenge
-In this example, the challenge sent by `UserLoginCSecurityCheck` is the same one sent by `PinCodeAttempts`: the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`. The `handleChallenge` method is responsible for collecting the username and password from the user.
+In this example, the challenge sent by `UserLoginSecurityCheck` is the same one sent by `PinCodeAttempts`: the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`. The `handleChallenge` method is responsible for collecting the username and password from the user.
 
 ## Submitting the credentials
-Once the credentials have been collected, use the `WLChallengeHandler`'s `submitChallengeAnswer(JSONObject answer)` method to send an answer back to the security check. In this example, `UserLoginCSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
+Once the credentials have been collected, use the `WLChallengeHandler`'s `submitChallengeAnswer(JSONObject answer)` method to send an answer back to the security check. In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
 
 `credentials` is a `JSONObject` containing `username`, `password` and `rememberMe`:
 
@@ -162,7 +162,7 @@ Here, `identity` has a key called `user` which itself contains a `JSONObject` re
     "id": "john",
     "displayName": "john",
     "authenticatedAt": 1455803338008,
-    "authenticatedBy": "UserLoginCSecurityCheck"
+    "authenticatedBy": "UserLoginSecurityCheck"
   }
 }
 ```
@@ -190,7 +190,7 @@ There are two samples associated with this tutorial:
 - **PreemptiveLoginAndroid**: An application that always starts with a login screen, using the preemptive `login` API.
 - **RememberMeAndroid**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
 
-Both samples use the same `UserLoginCSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
+Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeAndroid/tree/release80) the Remember Me project.
@@ -201,9 +201,9 @@ Both samples use the same `UserLoginCSecurityCheck` from the **SecurityCheckAdap
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../creating-adapters/).
 * Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register` from a **command-line** window.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `UserLogin`. 
+    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `UserLogin`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-        
+
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
 
 ![Sample application](sample-application-android.png)
