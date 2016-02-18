@@ -48,7 +48,7 @@ If the MobileFirst Cordova SDK is not already present in the project, follow the
     ```
 
 ### iOS platform
-The iOS platform requires one additional step.  
+The iOS platform requires an additional step.  
 In Xcode, enable push notifications for your application in the **Capabilities** screen.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** the bundleId selected for the application must match the AppId that you have previously created in the Apple Developer site. See the [Push Notifications Overview] tutorial.
