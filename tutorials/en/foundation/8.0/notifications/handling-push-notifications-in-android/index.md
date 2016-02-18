@@ -32,42 +32,18 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 ### Project setup
 
-1. In **Android → Gradle scripts**, select the **build.gradle (Project: [application-name])** file add the following line to `dependencies`: 
-
+1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following line to `dependencies`:
+		
 	```bash
-	classpath 'com.google.gms:google-services:2.0.0-alpha3'
+	com.google.android.gms:play-services-gcm:8.4.0
 	```
 
-2. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file.
-	- Add the following line to `dependencies`:
-		
-		```bash
-		com.google.android.gms:play-services-gcm:8.4.0
-		```
-	- Add the following line at the bottom:
+    <span style="color:red"> remove step 2 below before going live</span>
 
-		```bash
-		apply plugin: 'com.google.gms.google-services'
-		```
+2. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to <android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar. Also  remove libs folder from the aar.  
 
-		> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** This line must be placed at the bottom of the file as to not create a  dependency collisions. For more details see [The Google Services Gradle Plugin](https://developers.google.com/android/guides/google-services-plugin) documentation.
-
-3. Add the **google-service.json** obtained from step 4 in [Setting up Push Notifications](../push-notifications-overview/#android) to your Android project's **app/** directory.
-
-    Optionally from Android Studio's terminal view you can type:
-    * **Mac/Linux:** `$ mv path-to-download/google-services.json app/`
-    * **Windows:** `$ move path-to-download/google-services.json app/`
-
-    <span style="color:red"> remove step 4 below before going live</span>
-
-4. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to `<android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar`
-
-   	Remove libs folder from the aar.  
-   	Note: This step is not required once the lib gets to maven central/jcenter. Just need to add mavenCentral()/jcenter() in app gradle.
-
-5. Add the push required configuration in **AndroidManifest.xml**:
-
-	1. Add the following permissions to the top the `manifest` tag:
+3. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
+	* Add the following permissions to the top the `manifest` tag:
 
 		```xml
 		<!-- Permissions -->
@@ -79,8 +55,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
 		```
-
-	2. Add the following (`MFPPush Intent Service`, `MFPPush Instance ID Listener Service`) to the `application` tag:
+	* Add the following (`MFPPush Intent Service`, `MFPPush Instance ID Listener Service`) to the `application` tag:
 
 		```xml
         <!-- GCM Receiver -->
