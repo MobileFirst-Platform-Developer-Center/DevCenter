@@ -18,6 +18,16 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 * cordova-plugin-mfp-fips
 * cordova-plugin-mfp-encrypt-utils
 
+#### Jump to:
+
+- [Cordova SDK components](#cordova-sdk-components)
+- [Adding the MobileFirst Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
+- [Updating the MobileFirst Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
+- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
+- [Tutorials to follow next](#tutorials-to-follow-next)
+
+## Cordova SDK components
+
 #### cordova-plugin-mfp
 The cordova-plugin-mfp plug-in is the core MobileFirst plug-in for Cordova, and is required. If you install any of the other MobileFirst plug-ins, the cordova-plugin-mfp plug-in is automatically installed as well if not already installed.
 
@@ -45,13 +55,6 @@ The cordova-plugin-mfp-encrypt-utils plug-in provides encryption functions. For 
 - Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) and MobileFirst Developer CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Cordova development environment](../../setting-up-your-development-environment/cordova-development-environment) tutorials.
-
-#### Jump to:
-
-- [Adding the MobileFirst Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
-- [Updating the MobileFirst Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
-- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the MobileFirst Cordova SDK
 Follow the below instructions to add the MobileFirst Cordova SDK to either a new or existing Cordova project, and registering it in the MobileFirst Server.
