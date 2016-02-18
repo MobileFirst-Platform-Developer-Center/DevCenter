@@ -14,7 +14,7 @@ Logging libraries typically have verbosity controls, that are frequently called 
 Log capture is the ability to persistently record messages that are passed to the logging API.
 <span style="color:red">persist them where? how? in the analytics server? mention this...</span>
 
-The logging level can be controled by code with API calls that are specific to the platform:
+The logging level can be controlled by code with API calls that are specific to the platform:
 
 * [Logging in Cordova applications](../cordova/)
 * [Logging in iOS applications](../ios/)
