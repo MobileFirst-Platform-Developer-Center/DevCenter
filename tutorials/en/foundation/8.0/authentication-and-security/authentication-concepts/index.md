@@ -16,7 +16,7 @@ In that context, IBM MobileFirst Platform Server serves as an **authorization se
 * [Authorization flow](#authorization-flow)
 * [Authorization entities](#authorization-entities)
 * [Protecting resources](#protecting-resources)
-* [Further reading](#further-reading)
+* [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Authorization flow
 The authorization flow has two phases:
@@ -76,8 +76,6 @@ Several predefined security checks available:
 - [Direct Update](../../using-the-mfpf-sdk/direct-update)
 - LTPA
 
-Also available are two security-check implementations: `CredentialsValidationSecurityCheck` and `UserAuthenticationSecurityCheck`.
-
 > Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial.
 
 ## Protecting resources
@@ -128,7 +126,7 @@ If you want to disable the default security, you can use `secured="false"`:
 <procedure name="deleteUser" secured="false">
 ```
 
-## Further Reading
+## Tutorials to follow next
 Continue reading about authentication in the following tutorials:
 
 * [Creating a security check](../creating-a-security-check)

@@ -1,8 +1,11 @@
 ---
 layout: tutorial
 title: Analytic's Charts
-weight: 1
+relevantTo: [ios,android,windows,cordova]
+weight: 6
 ---
+
+<span style="color:red">I was under the impression this is not for the beta release?</span>
 
 Collecting Analytics has become simpler and more customizable since Operational Analytics 7.1. To start collecting analytics in Operational Analytics 8.0 all you have to do is call the initialize method of the analytics API. Discussed in the [Analytics API tutorial](./analytics-api.md)
 
