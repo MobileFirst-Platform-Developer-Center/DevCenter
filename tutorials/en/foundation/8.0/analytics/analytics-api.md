@@ -2,7 +2,7 @@
 layout: tutorial
 title: Using Analytics API in client applications
 relevantTo: [ios,android,windows,cordova]
-weight: 1
+weight: 4
 ---
 ## Overview
 To populate your custom charts you can use the Anlaytics API to send customized data. Custom data is any key/value pair that you would like to collect that is not an out of the box feature, like button presses.

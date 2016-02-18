@@ -1,7 +1,8 @@
 ---
 layout: tutorial
 title: Creating Custom Charts
-weight: 4
+relevantTo: [ios,android,windows,cordova]
+weight: 3
 ---
 ### Creating Custom Charts
 Creating a custom chart is simple. The following example walks you through creating a pie chart, based on the user pressing three buttons.
