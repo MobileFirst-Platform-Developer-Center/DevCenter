@@ -6,17 +6,11 @@ relevantTo: [ios,android,cordova]
 weight: 1
 ---
 ## Overview
-IBM MobileFirst Platform Foundation provides a unified set of API methods to send notifications to iOS, Android, Windows 8 Universal, Windows 10 UWP and Cordova (iOS, Android) applications.
-
-This tutorial provides an introduction to push notifications and the supported notifications types, required setup steps to ready the MobileFirst Server to be able to send notificaitons, and the setup steps to ready Native and Cordova applications with support for push notifications, as well as delving into supported scenarios such as sending notifications to applications with and without authentication and available notification types.
+IBM MobileFirst Platform Foundation provides a unified set of API methods to send notifications to iOS, Android, Windows 8 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support. 
 
 #### Jump to:
 * [What is a Push Notification](#what-is-a-push-notification)
 * [Push Notification Types](#push-notification-types)
-* [Setting up Push Notifications](#setting-up-push-notifications)
-    * [Scope mapping](#scope-mapping)
-    * [GCM configuration](#gcm)
-    * [APNS configuration](#apns)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## What is a Push Notification
@@ -52,66 +46,10 @@ User Authenticated Notifications are notifications secured with OAuth.
 
 > For more information about notifications types, see the topic about push notifications in the user documentation.
 
-## Setting up Push Notifications
-Enabling push notifications support involves several configuration steps in both MobileFirst Server and the client application.
-
-### Scope mapping
-Map the **push.mobileclient** scope element to the application.
-
-1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
-2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
-
-For User Authenticated notifications the **push.mobileclient** scope element should be mapped to the security check of the application.
-
-### GCM
-Android devices use the Google Cloud Messaging (GCM) service for push notifications.  
-To setup GCM:
-
-1. Visit [Google's Services website](https://developers.google.com/mobile/add?platform=android&cntapi=gcm&cnturl=https:%2F%2Fdevelopers.google.com%2Fcloud-messaging%2Fandroid%2Fclient&cntlbl=Continue%20Adding%20GCM%20Support&%3Fconfigured%3Dtrue).
-2. Provide your application name and package name.
-3. Select "Cloud Messaging" and click on **Enable Google cloud messaging**.
-
-    This step generates a `Server API Key` and a `Sender ID`.  
-    The generated values are used to identify the application by Google's GCM service in order to send notifications to the device.
-
-4. Click **Generate configuration file** and download the **google-services.json** file. This file will be used later to [configure the Android application](../handling-push-notifications-in-android).
-5. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and server **API Key** and click **Save**.
-
-#### Notes
-If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
-
-* Configure the firewall to allow connectivity with GCM in order for your GCM client apps to receive messages.
-* The ports to open are 5228, 5229, and 5230. GCM typically uses only 5228, but it sometimes uses 5229 and 5230. 
-* GCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. 
-* Ensure that your firewall accepts outgoing connections from MobileFirst Server to android.googleapis.com on port 443.
-
-### APNS
-iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
-To setup APNS:
-
-1. [Generate a push notification certificate](https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en).
-2. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then, click **Save**.
-
-#### Notes
-* For push notifications to be sent, the following servers must be accessible from a MobileFirst Server instance:  
-    * Sandbox servers:  
-        * gateway.sandbox.push.apple.com:2195
-        * feedback.sandbox.push.apple.com:2196
-    * Production servers:  
-        * gateway.push.apple.com:2195
-        * Feedback.push.apple.com:2196
-        * 1-courier.push.apple.com 5223
-* During the development phase, use the apns-certificate-sandbox.p12 sandbox certificate file.
-* During the production phase, use the apns-certificate-production.p12 production certificate file.
-    * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
-
-![Image of adding the GCM crendentials](server-side-setup.png)
-
 ## Tutorials to follow next
-With the prerequisites for push notifications now accomplished, the application can be configured as well.  
-Select a tutorial:
+Follow through the below required setup of the server-side and client-side in order to be able to send and receive push notifications:
 
+* [Sending push notifications](../sending-push-notifications)
 * [Handling push notifications in Cordova applications](../handling-push-notifications-in-cordova)
 * [Handling push notifications in iOS applications](../handling-push-notifications-in-ios)
 * [Handling push notifications in Android applications](../handling-push-notifications-in-android)
-* [Sending push notifications](../sending-push-notifications)

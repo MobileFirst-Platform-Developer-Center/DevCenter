@@ -106,15 +106,14 @@ Send notifications with IBM MobileFirst Platform Foundation.
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
-* <span style="color:red">TODO </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
-* <span style="color:red">TODO </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
+* <span style="color:red">IN PROGRESS </span>[Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
+* <span style="color:red">IN PROGRESS </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
     * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
     * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/logging-in-ios-applications/)
     * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/logging-in-android-applications/)
-* <span style="color:red">TODO </span>[Reports and analytics](../analytics/reports-analytics/)
-* <span style="color:red">TODO </span>[Alerts](../analytics/alerts/)
-* <span style="color:red">TODO </span>[Creating Custom Charts](../analytics/custom-charts/)
-* <span style="color:red">TODO </span>[Elastic Search](../analytics/elasticsearch/)
+* <span style="color:red">IN PROGRESS </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
+* <span style="color:red">IN PROGRESS </span>[Creating Custom Charts](../analytics/custom-charts/)
+
 
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.  

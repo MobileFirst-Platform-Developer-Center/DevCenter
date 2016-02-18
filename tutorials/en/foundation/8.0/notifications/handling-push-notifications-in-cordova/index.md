@@ -3,7 +3,7 @@ layout: tutorial
 title: Handling Push Notifications in Cordova applications
 show_children: true
 relevantTo: [cordova]
-weight: 2
+weight: 3
 ---
 ## Overview
 Before iOS and Android Cordova applications are able to receive and display push notifications, the Cordova project needs to be configured with the **cordova-plugin-mfp-push** plug-in. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications.
@@ -48,7 +48,7 @@ If the MobileFirst Cordova SDK is not already present in the project, follow the
     ```
 
 ### iOS platform
-The iOS platform requires one additional step.  
+The iOS platform requires an additional step.  
 In Xcode, enable push notifications for your application in the **Capabilities** screen.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** the bundleId selected for the application must match the AppId that you have previously created in the Apple Developer site. See the [Push Notifications Overview] tutorial.

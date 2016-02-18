@@ -16,7 +16,7 @@ In that context, IBM MobileFirst Platform Server serves as an **authorization se
 * [Authorization flow](#authorization-flow)
 * [Authorization entities](#authorization-entities)
 * [Protecting resources](#protecting-resources)
-* [Further reading](#further-reading)
+* [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Authorization flow
 The authorization flow has two phases:
@@ -76,8 +76,6 @@ Several predefined security checks available:
 - [Direct Update](../../using-the-mfpf-sdk/direct-update)
 - LTPA
 
-Also available are two security-check implementations: `CredentialsValidationSecurityCheck` and `UserAuthenticationSecurityCheck`.
-
 > Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial.
 
 ## Protecting resources
@@ -110,13 +108,13 @@ If you want to disable MobileFirst default security, you can use: `@OAuthSecurit
 You can protect a JavaScript adapter procedure by assigning a scope to the procedure definition in the adapter's XML file:
 
 ```xml
-<procedure deleteUser scope="deletePrivilege">
+<procedure name="deleteUser" scope="deletePrivilege">
 ```
 
 A scope can be made of several scope elements, space-separated:
 
 ```xml
-<procedure deleteUser scope="element1 element2 element3">
+<procedure name="deleteUser" scope="element1 element2 element3">
 ```
 
 If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security test protecting the application also applies here.
@@ -125,10 +123,10 @@ If you do not specify any scope - the procedure will be protected by the MobileF
 If you want to disable the default security, you can use `secured="false"`:
 
 ```xml
-<procedure deleteUser secured="false">
+<procedure name="deleteUser" secured="false">
 ```
 
-## Further Reading
+## Tutorials to follow next
 Continue reading about authentication in the following tutorials:
 
 * [Creating a security check](../creating-a-security-check)
