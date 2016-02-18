@@ -188,11 +188,17 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
     failureStateExpirationSec = getIntProperty("failureStateExpirationSec", properties, 0);
 }
 ```
+The properties defined by `CredentialsValidationSecurityCheckConfig` are:
+- `maxAttempts`: How many attempts are allowed before reaching a *failure*.
+- `attemptingStateExpirationSec`: Interval in seconds during which the client should provide valid credentials, and attempts are counted.
+- `successStateExpirationSec`: Interval in seconds during which the successful login holds.
+- `failureStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
 
 Note that the default for `failureStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
 
+
 ## Sample application
-To see a sample using this security check, review the below tutorials: 
+To see a sample using this security check, review the below tutorials:
 Select a platform:
 
 * [Implementing the challenge handler in Cordova applications](../cordova)
