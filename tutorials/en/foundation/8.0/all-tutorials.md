@@ -74,7 +74,7 @@ Add various layers of protection to your applications.
 
 * [Authentication concepts](../authentication-and-security/authentication-concepts/)
 * [Creating a Security Check](../authentication-and-security/creating-a-security-check/)
-* [CredentialsValidation Security Check](../authentication-and-security/credentials-validation/)
+* [CredentialsValidationSecurityCheck](../authentication-and-security/credentials-validation/)
     * [Implementing the security check](../authentication-and-security/credentials-validation/security-check/)
     * [Implementing the challenge handler in Cordova applications](../authentication-and-security/credentials-validation/cordova/)
     * [Implementing the challenge handler in iOS applications](../authentication-and-security/credentials-validation/ios/)
