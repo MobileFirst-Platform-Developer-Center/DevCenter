@@ -48,7 +48,8 @@ Create the security check's **Java class**. The implementation should extend one
 The parent class you choose will determine the balance between customization and simplicity.
 
 ### Security Check
-`SecurityCheck` is a Java **interface**, defining the minimum required methods to represent the server-side state of a security check. Using this interface alone does not provide any implementation code and it is the sole responsibility of the implementor to handle each scenario.
+`SecurityCheck` is a Java **interface**, defining the minimum required methods to represent the security check.  
+It is the sole responsibility of the implementor to handle each scenario.
 
 ### ExternalizableSecurityCheck
 This abstract class implements a basic version of the security-check interface.  
