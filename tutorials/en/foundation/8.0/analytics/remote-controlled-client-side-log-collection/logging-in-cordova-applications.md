@@ -1,5 +1,5 @@
 ---
-title: Logging in MobileFirst Cordova applications (JavaScript)
+title: Logging in Cordova Applications
 relevantTo: [cordova]
 ---
 ### Logging example for hybrid applications (JavaScript)

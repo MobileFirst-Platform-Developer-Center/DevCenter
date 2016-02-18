@@ -1,5 +1,5 @@
 ---
-title: Logging in native Android (Java)
+title: Logging in Android Applications
 relevantTo: [android]
 ---
 Android MobileFirst Platform SDK cannot persistently capture log data until the ```com.worklight.common.Logger.setContext(Context)``` method is called.

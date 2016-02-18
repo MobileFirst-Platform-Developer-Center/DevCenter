@@ -1,5 +1,5 @@
 ---
-title: Logging in native iOS (Objective-C)
+title: Logging in iOS Applications
 relevantTo: [iOS]
 ---
 ### Logging example for native iOS (Objective-C)
