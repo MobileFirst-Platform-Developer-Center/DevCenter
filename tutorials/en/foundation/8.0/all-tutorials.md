@@ -80,7 +80,7 @@ Add various layers of protection to your applications.
     * [Implementing the challenge handler in iOS applications](../authentication-and-security/credentials-validation/ios/)
     * [Implementing the challenge handler in Android applications](../authentication-and-security/credentials-validation/android/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/credentials-validation/windows-8-10/)
-* [UserAuthentication Security Check](../authentication-and-security/user-authentication/)
+* [UserAuthenticationSecurityCheck](../authentication-and-security/user-authentication/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the security check](../authentication-and-security/user-authentication/security-check/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/user-authentication/cordova/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/user-authentication/ios/)
