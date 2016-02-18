@@ -32,11 +32,27 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 ### Project setup
 
-1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following line to `dependencies`:
+1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
 		
 	```bash
 	com.google.android.gms:play-services-gcm:8.4.0
 	```
+    
+    And:
+    
+   
+    ```xml
+    compile group: 'com.ibm.mobile.foundation',
+    name: 'ibmmobilefirstplatformfoundationPush',
+    version: '8.0.Beta1-SNAPSHOT',
+    ext: 'aar',
+    transitive: true
+    ```
+    - Or in a single line:
+
+        ```xml
+        compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.Beta1-SNAPSHOT'
+        ```
 
     <span style="color:red"> remove step 2 below before going live</span>
 
