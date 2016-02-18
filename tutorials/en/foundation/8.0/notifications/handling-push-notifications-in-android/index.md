@@ -44,7 +44,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundationPush',
-    version: '8.0.Beta1-SNAPSHOT',
+    version: '8.0.0.0.Beta1-SNAPSHOT',
     ext: 'aar',
     transitive: true
     ```

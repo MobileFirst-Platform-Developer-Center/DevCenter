@@ -2,7 +2,7 @@
 layout: tutorial
 title: Handling Push Notifications in iOS applications
 relevantTo: [ios]
-weight: 3
+weight: 5
 ---
 <span style="color:red">
 The handling in client side tutorials should explain:

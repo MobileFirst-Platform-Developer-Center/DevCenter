@@ -35,6 +35,15 @@ As part of the Development Kit, the MobileFirst Server is provided pre-deployed 
 > To download and install the MobileFirst Server, visit the [downloads]({{site.base}}/downloads/) page.  
 > If using MobileFirst Server on IBM Containers, see the [Using Foundation Tile](../../ibm-containers/) tutorial.  
 
+In the server directory, available are the following scripts:
+
+* `console.[sh|cmd]`: Open the local MobileFirst Console
+* `run.[sh|cmd]`: Run the local MobileFirst Server with trailing Liberty Server messages
+    * Add the `-bg` flag to run the process in the background
+* `start.[sh|cmd]`: Run the local MobileFirst Server in the background
+* `stop.[sh|cmd]`: Stop the currenet local MobileFirst Server instance
+
+
 #### Adding the MobileFirst Server to Eclipse
 The MobileFirst Server can be integrated into the Eclipse IDE, allowing to quickly starting and stopping of the development server.  
 
