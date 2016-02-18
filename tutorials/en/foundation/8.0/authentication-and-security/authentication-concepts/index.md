@@ -110,13 +110,13 @@ If you want to disable MobileFirst default security, you can use: `@OAuthSecurit
 You can protect a JavaScript adapter procedure by assigning a scope to the procedure definition in the adapter's XML file:
 
 ```xml
-<procedure deleteUser scope="deletePrivilege">
+<procedure name="deleteUser" scope="deletePrivilege">
 ```
 
 A scope can be made of several scope elements, space-separated:
 
 ```xml
-<procedure deleteUser scope="element1 element2 element3">
+<procedure name="deleteUser" scope="element1 element2 element3">
 ```
 
 If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security test protecting the application also applies here.
@@ -125,7 +125,7 @@ If you do not specify any scope - the procedure will be protected by the MobileF
 If you want to disable the default security, you can use `secured="false"`:
 
 ```xml
-<procedure deleteUser secured="false">
+<procedure name="deleteUser" secured="false">
 ```
 
 ## Further Reading
