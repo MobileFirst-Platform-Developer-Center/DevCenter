@@ -1,6 +1,7 @@
 ---
 title: Remote controlled client-side log collection
-relevantTo: [ios,android,cordova]
+breadcrumb_title: Log collection
+relevantTo: [ios,android,windows,cordova]
 weight: 2
 ---
 
@@ -16,9 +17,9 @@ Log capture is the ability to persistently record messages that are passed to th
 
 The logging level can be controlled by code with API calls that are specific to the platform:
 
-* [Logging in Cordova applications](../cordova/)
-* [Logging in iOS applications](../ios/)
-* [Logging in Android applications](../android/)
+* [Logging in Cordova applications](cordova/)
+* [Logging in iOS applications](ios/)
+* [Logging in Android applications](android/)
 
 ### Admin control of client log capture
 To configure log capture preferences for applications in production, use the MobileFirst Operations Console. Administrators can control the MobileFirst client SDK log capture and levels from the MobileFirst Operations Console.
