@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Platform Foundation Operational Analytics
-show_children: true
+breadcrumb_title: Operational Analytics
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,windows,cordova]
@@ -103,3 +103,6 @@ http://localhost:9500/*/_mapping
 > Elasticsearch exposes many more REST endpoints. To learn more, visit the Elasticsearch documentation.
 
 ## Tutorials to follow next
+
+* [Remote Controlled client-side log collection](remote-controlled-client-side-log-collection)
+* [Analytics API](analytics-api)
