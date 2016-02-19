@@ -12,7 +12,7 @@ Security checks are defined inside **an adapter** and are implemented in Java co
 An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
 
 **Prerequisites:** Familiarize yourself with the MobileFirst Platform Foundation authentication framework before continuing.  
-Read the [Authentication concepts](../authentication-concepts/) tutorial.
+Read the [Authorization concepts](../authorization-concepts/) tutorial.
 
 #### Jump to:
 

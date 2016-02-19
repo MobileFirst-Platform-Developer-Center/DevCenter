@@ -123,7 +123,7 @@ If the user is already logged-in or is in the *remembered* state, the API will t
 
 The `obtainAccessToken` API takes in a **scope**. The scope here can be the name of your **security check**.
 
-> Learn more about **scope** here: [Authentication Concepts](../../authentication-concepts)
+> Learn more about **scope** here: [Authorization concepts](../../authorization-concepts)
 
 ## Handling success and failure
 As noted in the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/android) tutorial, `WLChallengeHandler` will call the  `handleSuccess` or `handleFailure` methods upon success or failure of the challenge. You can choose to update your UI based on those events.

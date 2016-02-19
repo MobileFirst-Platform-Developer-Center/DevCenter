@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Authentication Concepts
-breadcrumb_title: Authentication concepts
+title: Authorization concepts
+breadcrumb_title: Authorization concepts
 relevantTo: [android,ios,windows,cordova]
 weight: 1
 ---
