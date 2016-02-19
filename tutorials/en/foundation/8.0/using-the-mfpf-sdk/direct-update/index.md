@@ -67,7 +67,7 @@ Alternatives:
 
 ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
 
-* The packaged web resources can be further protected by encrypting the resulting .zip file:
+* The packaged web resources can be further protected by placing the web resources in an encrypted .zip file:
 
 ```bash
 mfpdev app webupdate --encrypt
