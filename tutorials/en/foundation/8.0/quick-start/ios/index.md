@@ -121,8 +121,6 @@ To complete the tutorial, [disable  ATS](http://iosdevtips.co/post/121756573323/
     </dict>
     ```
 
-> 3. Press the **Play** button.
-
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 

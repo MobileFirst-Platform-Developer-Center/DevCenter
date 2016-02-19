@@ -24,7 +24,6 @@ Get a feel of MobileFirst Platform Foundation.
 * [Quick Start with iOS](../quick-start/ios/)
 * [Quick Start with Android](../quick-start/android/)
 * [Quick Start with Windows 8.1 Universal and Windows 10 UWP](../quick-start/windows-8-10/)
-* [Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Adding the MobileFirst Platform Foundation SDK](../adding-the-mfpf-sdk/)
 Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
@@ -33,6 +32,7 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/ios/)
 * [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/android/)
 * [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal and Windows 10 UWP applications](../adding-the-mfpf-sdk/windows-8-10/)
+* [Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Using the MobileFirst Platform Foundation SDK](../using-the-mfpf-sdk/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
@@ -126,7 +126,7 @@ Scalable database management for your MobileFirst projects.
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
 
 * [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../ibm-containers/)
-* <span style="color:red">IN PROGRESS </span>[Setting up MobileFirst Server on IBM Containers Using Foundation Tile](../ibm-containers/using-foundation-tile/)
+* <span style="color:red">IN PROGRESS </span>[Setting up MobileFirst Server on IBM Containers Using Mobile Foundation](../ibm-containers/using-mobilef-foundation/)
 * <span style="color:red">TODO </span>[Creating a MobileFirst Server image using Cloud Foundary](../ibm-containers/creating-an-image/)
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
