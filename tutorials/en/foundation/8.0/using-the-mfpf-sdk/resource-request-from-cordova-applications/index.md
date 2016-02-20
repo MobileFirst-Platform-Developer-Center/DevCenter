@@ -39,7 +39,9 @@ var resourceRequest = new WLResourceRequest(
 
 ## Sending the request
 Request the resource by using the `send()` method.  
-The `send()` method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
+The `send()` method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string. 
+
+Using JavaScript **promises**, you can define `onSuccess` and `onFailure` callback functions.
 
 ```js
 resourceRequest.send().then(
@@ -47,8 +49,6 @@ resourceRequest.send().then(
     onFailure
 )
 ```
-
-Using JavaScript **promises**, you can define `onSuccess` and `onFailure` functions.
 
 ### setQueryParameter
 By using the `setQueryParameter` method, you can include query (URL) parameters in the REST request.
@@ -125,7 +125,7 @@ onFailure: function(response) {
 <img alt="Image of the sample application" src="resource-request-success-cordova.png" style="float:right"/>
 ## Sample application
 The ResourceRequestCordova project contains a Cordova application that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter to be used during the resource request call.
+The adapter Maven project contains the Java adapter used during the resource request call.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the Cordova project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.

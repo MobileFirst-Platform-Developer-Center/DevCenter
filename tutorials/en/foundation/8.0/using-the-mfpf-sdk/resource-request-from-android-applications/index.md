@@ -26,7 +26,7 @@ Create a `WLResourceRequest` object and specify the path to the resource and the
 Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT`, `WLResourceRequest.HEAD` and `WLResourceRequest.DELETE`.
 
 ```java
-URI adapterPath = new URI("/adapters/RSSReader/getFeed");
+URI adapterPath = new URI("/adapters/JavaAdapter/users");
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
 ```
 
@@ -108,7 +108,7 @@ request.setQueryParameter("params","['param1', 'param2']");
 <img alt="Image of the sample application" src="resource-request-success-android.png" style="float:right"/>
 ## Sample application
 The ResourceRequestAndroid project contains a native Android application that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter to be used during the resource request call.
+The adapter Maven project contains the Java adapter used during the resource request call.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Native project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.

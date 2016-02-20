@@ -27,7 +27,7 @@ Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` 
 
 ```swift
 let request = WLResourceRequest(
-    URL: NSURL(string: "/adapters/RSSReader/getFeed"),
+    URL: NSURL(string: "/adapters/JavaAdapter/users"),
     method: WLHttpMethodGet
 )
 ```
@@ -43,16 +43,12 @@ Supply a completion handler to handle the retrieved data:
 
 ```swift
 request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
-    var resultText = ""
-    if(error != nil){
-        resultText = "Failed to call the resource"
-        resultText += error.description
+    if(error == nil){
+        NSLog(response.responseText)
     }
-    else if(response != nil){
-        resultText = "Successfully called the resource"
-        resultText += response.responseText
+    else{
+        NSLog(error.description)
     }
-    self.updateView(resultText)
 }
 ```
 
@@ -121,7 +117,7 @@ request.setQueryParameterValue("['param1', 'param2']", forName: "params")
 <img alt="Image of the sample application" src="resource-request-success-ios.png" style="float:right"/>
 ## Sample application
 The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter to be used during the resource request call.
+The adapter Maven project contains the Java adapter used during the resource request call.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the Native project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
