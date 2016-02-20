@@ -13,13 +13,29 @@ title: Downloads
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="installFoundation">
             <br/>
-            <p>The IBM MobileFirst Platform Foundation v8.0 Development Kit consists of the following components: MobileFirst Server, MobileFirst Developer Command-line Interface (CLI), MobileFirst Operations Console and the MobileFirst client SDKs &amp; server-side APIs.</p>
+            <p>The IBM MobileFirst Platform Foundation v8.0 Development Kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.</p>
             
-            <p>These components can be installed either seperately via online repositories, or downloaded bundled together through the MobileFirst Platform Foundation Development Kit Installer, for future or offline use.</p>
+            <p>These components can be installed either seperately via online repositories which contain the latest releases, or downloaded bundled together through the MobileFirst Platform Foundation Development Kit Installer, for future or offline use.</p>
             
-            <p>To learn more about the MobileFirst Platform Foundation components and the Development Kit Installer, visit the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/">Setting up the MobileFirst development environment</a> tutorial.</p>
+            <blockquote>To learn more about the MobileFirst Platform Foundation components and the Development Kit Installer, visit the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/">Setting up the MobileFirst development environment</a> tutorial.</blockquote>
                 
+            <br/>
             <h4>Installation instructions:</h4>
+            <p>You can run an instance of the MobileFirst Server on <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/">IBM Containers</a>, or locally in the developer workstation.<br/>
+            To continue locally, download the stand-alone MobileFirst Server .zip file or use the Development Kit Installer.</p>
+                
+            <p><strong>Prerequisites:</strong> To use the MobileFirst Server in your local workstation, Java Developer Kit (JDK) 7 or 8 is required to be installed.</p>
+            
+            <ul>
+                <li>Download Java 7 or 8 JDK</li>
+                <li>Set the <code>JAVA_HOME</code> environment variable to your JDK directory. For example:
+                    <ul>
+                        <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
+                        <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
+                    </ul>
+                </li>
+            </ul>
+            
             <small>Components bundled together</small>
             <div class="panel-group" id="accordion0" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
@@ -37,8 +53,16 @@ title: Downloads
                                 <a href="#">Download the MobileFirst Development Kit Installer for Windows</a>
                             </p>
                             
-                            <p>The Installer extracts the MobileFirst Platform Foundation components to a specified location.<br/>
-                            Once extracted, start the MobileFirst Server as instructed below. You can then follow the instructions as provided in the MobileFirst Operations Console's Downloads page to install and use the MobileFirst Platform Foundation components.
+                            <p>
+                                Once installation completes,
+                                <ol>
+                                    <li>From a <strong>Command-line</strong> window, navigate to the extracted folder and execute the <code>run.sh|cmd</code> script to start the MobileFirst Server.</li>
+                                    <li>Once the server has started, load the MobileFirst Operations Console: <a href="http://localhost:9080/mfpconsole">http://localhost:9080/mfpconsole</a>.</li>
+                                    <li>Optionally click on "Get Starter Code" to visit the Downloads page and download development tools to get started.</li>
+                                </ol>
+                            </p>
+                            <p>
+                                <strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">following the tutorials</a>.
                             </p>
                         </div>
                     </div>
@@ -54,35 +78,10 @@ title: Downloads
 
                     <div id="collapseServer0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="server">
                         <div class="panel-body">
-                            <p>The MobileFirst Server can be run either on <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/">IBM Containers</a>, or locally in the developer workstation.</p>
-                            
-                            <p>To continue locally, first <a href="#">Download and extract</a> the stand-alone MobileFirst Server .zip file, or use the Development Kit Installer.</p>
-                            
-                            <p>To use the MobileFirst Server in your local workstation, Java Developer Kit (JDK) 7 or 8 is required to be installed on developer workstation. Additionally, certain operating systems require certain software as a prerequisite. To generate a compatibility report, see <a href="http://www-969.ibm.com/software/reports/compatibility/clarity/index.jsp">Software Product Compatibility Reports</a>.</p>
-
                             <ol>
-                                <li>Set the <code>JAVA_HOME</code> environment variable to your JDK directory. For example:
-                                    <ul>
-                                        <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
-                                        <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
-                                    </ul>
-                                </li>
-                                <br/>
-                                <li>
-                                    Once Java is installed, open the server folder.<br/> <code>.sh</code> scripts are for Linux and Mac and <code>.cmd</code> scripts are for Windows.
-                                    <ul>
-                                        <li><code>console.[sh|cmd]</code>: Open the local MobileFirst Console</li>
-                                        <li><code>run.[sh|cmd]</code>: Run the local MobileFirst Server with trailing Liberty Server messages
-                                            <ul>
-                                                <li>Add the <code>-bg</code> flag to run the process in the background</li>
-                                            </ul>
-                                        </li>
-                                        <li><code>start.[sh|cmd]</code>: Run the local MobileFirst Server in the background</li>
-                                        <li><code>stop.[sh|cmd]</code>: Stop the currenet local MobileFirst Server instance</li>
-                                    </ul>
-                                </li>
+                                <li><a href="#">Download and extract</a> the stand-alone MobileFirst Server .zip file.</li>
+                                <li>From a <strong>Command-line</strong> window, navigate to the extracted folder and execute the <code>run.sh|cmd</code> script to start the MobileFirst Server.</li>
                             </ol>
-                            
                             <p>
                                 <strong>Next:</strong> Install the MobileFirst Developer CLI.
                             </p>
@@ -130,15 +129,13 @@ title: Downloads
 
                     <div id="collapseCli0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cli">
                         <div class="panel-body">
-                            <p>To use the MobileFirst Developer CLI the <a href="https://www.npmjs.com/">NPM package manager</a> is required to be installed on the developer workstation.
+                            <p>To use the MobileFirst Developer CLI the <a href="https://www.npmjs.com/">NPM package manager</a> is required to be installed on the developer workstation.<br/>
+                            You can verify the installation by running <code>mfpdev -v</code>.</p>
 
                             <ol>
                                 <li>NPM is bundled as part of Node.js. Install <a href="https://nodejs.org/en/">Node.js v4.3.0 LTS</a>.</li>
-                                <br/>
                                 <li>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code>.<br/>
                                     If the CLI was downloaded using the Development Kit Installer, run the command: <code>npm install -g path-to-cli-zip-file</code>.</li>
-                                <br/>
-                                <li>You can verify the installation by running <code>mfpdev -v</code>.</li>
                             </ol>
 
                             <p>
