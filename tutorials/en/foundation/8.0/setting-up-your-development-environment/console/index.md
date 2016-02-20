@@ -127,3 +127,9 @@ By tracking the usage of client devices and determining whether the devices are 
 > For more information, see the topic about license tracking in the user documentation.</p></blockquote>
 
 ![Image of client logs screen](license-tracking.png)
+
+### Downloads
+For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of MobileFirst Platform Foundation from the Downloads page.
+
+![Image of available artifacts](downloads.png)
+

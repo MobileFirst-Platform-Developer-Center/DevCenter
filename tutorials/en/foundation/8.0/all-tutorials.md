@@ -16,6 +16,7 @@ Set up your development environment to work with IBM MobileFirst Platform Founda
 * [Setting up the iOS development environment](../setting-up-your-development-environment/ios-development-environment/)
 * [Setting up the Android development environment](../setting-up-your-development-environment/android-development-environment/)
 * [Setting up the Windows 8.1 Universal & Windows 10 UWP development environments](../setting-up-your-development-environment/windows-8-10-development-environment/)
+* [Using the MobileFirst Platform Operations Console](../setting-up-your-development-environment/console/)
 
 ### [Quick Start](../quick-start)
 Get a feel of MobileFirst Platform Foundation.
@@ -32,7 +33,6 @@ Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Andro
 * [Adding the MobileFirst Platform Foundation SDK to iOS applications](../adding-the-mfpf-sdk/ios/)
 * [Adding the MobileFirst Platform Foundation SDK to Android applications](../adding-the-mfpf-sdk/android/)
 * [Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal and Windows 10 UWP applications](../adding-the-mfpf-sdk/windows-8-10/)
-* [Using the MobileFirst Platform Operations Console](../quick-start/console/)
 
 ### [Using the MobileFirst Platform Foundation SDK](../using-the-mfpf-sdk/)
 Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
