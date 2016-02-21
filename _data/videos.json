@@ -73,5 +73,10 @@
         "url": "//www.youtube.com/watch?v=tFvogRMC4ss",
         "thumbnail": "//img.youtube.com/vi/tFvogRMC4ss/hqdefault.jpg",
         "tags": ["CLI", "Integration"]
-    },
+    }, {
+        "caption": "DataPower Integration",
+        "url": "//www.youtube.com/watch?v=emDdHC0VlRY",
+        "thumbnail": "//img.youtube.com/vi/emDdHC0VlRY/hqdefault.jpg",
+        "tags": ["DataPower","Integration","Security"]
+    }
 ]

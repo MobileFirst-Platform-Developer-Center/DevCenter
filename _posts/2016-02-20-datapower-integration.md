@@ -248,3 +248,6 @@ Make sure to configure the *server.xml* and deploy the artifacts before running 
 - [Protecting your mobile application traffic by using IBM WebSphere DataPower as a security gateway](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_protecting_your_mobile_app_traffic_using_datapower.html?lang=en)
 - [Integrating IBM WebSphere DataPower with a cluster of instances of MobileFirst Server](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_integrating_datapower_was_or_iberty.html?lang=en)
 - [Using WebSphere DataPower as a push notification proxy](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.integ.doc/devref/t_DataPower_as_push_notification_proxy.html?lang=en)
+
+## Video
+<iframe width="420" height="315" src="https://www.youtube.com/embed/emDdHC0VlRY" frameborder="0" allowfullscreen></iframe>
