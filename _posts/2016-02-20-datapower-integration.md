@@ -7,8 +7,6 @@ tags:
 author:
   name: Nathan Hazout
 ---
-# DataPower Integration
-
 ## Introduction
 You can use IBM® WebSphere® DataPower® in the Demilitarized Zone (DMZ) of your enterprise to protect MobileFirst mobile application traffic.
 
@@ -235,7 +233,7 @@ Keep in mind that most mobile devices reject self-signed certificates by default
 During development, if you wish to open a non-SSL (HTTP) port, you need to modify the gateway:
 In your Multi-Protocol Gateway, look for *Front side settings*. Add an **HTTP Front side handler**, choose a port for HTTP requests, and make sure to check `GET` in the list of allowed methods.
 
-## Samples & Pattern
+## Samples &amp; Pattern
 You can download the samples and pattern from [GitHub](https://github.com/nasht00/DataPowerIntegration).
 There are 3 samples available:
 
