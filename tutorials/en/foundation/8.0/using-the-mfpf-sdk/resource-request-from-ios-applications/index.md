@@ -72,6 +72,14 @@ To send **query** parameters (`/path?param1=value1...`) use the `setQueryParamet
 request.setQueryParameterValue("value1", forName: "param1")
 request.setQueryParameterValue("value2", forName: "param2")
 ```
+
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```swift
+request.setQueryParameterValue("['value1', 'value2']", forName: "params")
+```
+
 ### Form parameters
 To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
 
@@ -90,6 +98,13 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 }
 ```
 
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```swift
+let formParams = ["params":"['value1', 'value2']"]
+```
+
 ### Header parameters
 To send a parameter as an HTTP header use the `setHeaderValue` API:
 
@@ -103,13 +118,6 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithBody` allows you to set an arbitrary String in the body.
 - `sendWithJSON` allows you to set an arbitrary dictionary in the body.
 - `sendWithData` allows you to set an arbitrary `NSData` in the body.
-
-### Javascript Adapters
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
-
-```swift
-request.setQueryParameterValue("['param1', 'param2']", forName: "params")
-```
 
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.

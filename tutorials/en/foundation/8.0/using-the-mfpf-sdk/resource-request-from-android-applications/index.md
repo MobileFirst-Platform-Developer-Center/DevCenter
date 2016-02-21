@@ -74,6 +74,13 @@ request.setQueryParameter("param1","value1");
 request.setQueryParameter("param2","value2");
 ```
 
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```java
+request.setQueryParameter("params","['value1', 'value2']");
+```
+
 ### Form parameters
 To send form parameters in the body, use `.send(HashMap<String, String> formParameters, WLResponseListener)` instead of `.send(WLResponseListener)`:  
 
@@ -82,6 +89,13 @@ HashMap formParams = new HashMap();
 formParams.put("height", height.getText().toString());
 request.send(formParams, new MyInvokeListener());
 ```    
+
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```java
+formParams.put("params", "['value1', 'value2']");
+```
 
 ### Header parameters
 To send a parameter as an HTTP header use `.addHeader()` API:
@@ -94,13 +108,6 @@ request.addHeader("date", date.getText().toString());
 - `.send(requestBody, WLResponseListener listener)` allows you to set an arbitrary String in the body.
 - `.send(JSONStore json, WLResponseListener listener)` allows you to set an arbitrary dictionary in the body.
 - `.send(byte[] data, WLResponseListener listener)` allows you to set an arbitrary byte array in the body.
-
-### Javascript Adapters
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
-
-```java
-request.setQueryParameter("params","['param1', 'param2']");
-```
 
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.

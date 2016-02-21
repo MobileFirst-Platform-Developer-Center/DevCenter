@@ -39,7 +39,7 @@ var resourceRequest = new WLResourceRequest(
 
 ## Sending the request
 Request the resource by using the `send()` method.  
-The `send()` method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string. 
+The `send()` method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
 
 Using JavaScript **promises**, you can define `onSuccess` and `onFailure` callback functions.
 
@@ -53,17 +53,17 @@ resourceRequest.send().then(
 ### setQueryParameter
 By using the `setQueryParameter` method, you can include query (URL) parameters in the REST request.
 
-* In JavaScript adapters, which use ordered nameless parameters, pass an array of parameters with the name `params`:
+```js
+resourceRequest.setQueryParameter("param1", "value1");
+resourceRequest.setQueryParameter("param2", "value2");
+```
 
-    ```js
-    resourceRequest.setQueryParameter("params", "['param1', 'param2']");
-    ```
-* In Java adapters or external resources, use `setQueryParameter` for each parameter:
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
-    ```java
-    resourceRequest.setQueryParameter("param1", "value1");
-    resourceRequest.setQueryParameter("param2", "value2");
-    ```
+```js
+resourceRequest.setQueryParameter("params", "['value1', 'value2']");
+```
 
 ### setHeader
 By using the `setHeader` method, you can set a new HTTP header or replace an existing header with the same name in the REST request.
@@ -73,7 +73,19 @@ resourceRequest.setHeader("Header-Name","value");
 ```
 
 ### sendFormParameters(json)
-To send URL-encoded form parameters, use the `sendFormParameters(json)` method instead. This method converts the JSON to a URL encoded string, sets the `content-type` to `application/x-www-form-urlencoded`, and sets it as the HTTP body.
+To send URL-encoded form parameters, use the `sendFormParameters(json)` method instead. This method converts the JSON to a URL encoded string, sets the `content-type` to `application/x-www-form-urlencoded`, and sets it as the HTTP body:
+
+```js
+var formParams = {"param1": "value1", "param2": "value2"};
+resourceRequest.sendFormParameters(formParams);
+```
+
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```js
+var formParams = {"params":"['value1', 'value2']"};
+```
 
 > For more information about `WLResourceRequest`, see the API reference in the user documentation.
 
