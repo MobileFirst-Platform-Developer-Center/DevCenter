@@ -12,6 +12,7 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 * Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
 * MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
+* Cordova 6.0 CLI
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -24,11 +25,14 @@ From a **Command-line** window, navigate to the server's folder and run the comm
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
-1. Click on the "New" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
+1. Click on the "New" button next to **Applications**
+    * Select a platform: **Android, iOS, Windows**
+    * Enter **com.ibm.sample** as the **application identifier**
+    * Enter **1.0** as the **version** value
 
     ![Image of selecting platform, and providing an identifier and version](register-an-application-cordova.png)
  
-2. Click on the **Get Starter Code** tile and select to download the Cordova Starter Code.
+2. Click on the **Get Starter Code** tile and select to download the Cordova mobile app scaffold.
 
     ![Image of creating a sample application](download-starter-code-cordova.png)
  
