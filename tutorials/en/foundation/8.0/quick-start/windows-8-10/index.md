@@ -24,11 +24,14 @@ From a **Command-line** window, navigate to the server's folder and run the comm
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
-1. Click on the "New" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
+1. Click on the "New" button next to **Applications**
+    * Select a **Windows** platform
+    * Enter **com.ibm.sample** as the **application identifier**
+    * Enter **1.0** as the **version** value
 
     ![Image of selecting platform, and providing an identifier and version](register-an-application-windows.png)
 
-2. Click on the **Get Starter Code** tile and select to download Windows 8.1 or Windows 10 Starter Code.
+2. Click on the **Get Starter Code** tile and select to download the Windows 8.1 or Windows 10 mobile app scaffold.
 
     ![Image of downloading a sample application](download-starter-code-windows.png)
 
