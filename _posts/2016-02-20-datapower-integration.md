@@ -1,5 +1,5 @@
 ---
-title: DataPower Integration
+title: Protecting IBM MobileFirst Platform Foundation application traffic using IBM DataPower
 date: 2016-02-20
 tags:
 - MobileFirst_Platform
