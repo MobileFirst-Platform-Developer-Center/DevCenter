@@ -112,7 +112,6 @@ Monitor deployed applications and adapters, gain insight on application usage, f
     * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/logging-in-ios-applications/)
     * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/logging-in-android-applications/)
 * <span style="color:red">IN PROGRESS </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
-* <span style="color:red">IN PROGRESS </span>[Creating Custom Charts](../analytics/custom-charts/)
 
 
 ### [Cloudant Data Layer](../../../cloudant/)
