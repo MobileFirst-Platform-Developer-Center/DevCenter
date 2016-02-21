@@ -6,7 +6,7 @@ tags:
 - MobileFirst_Platform
 - Developer_Center
 author:
-  display_name: Idan Adar
+  name: Idan Adar
 ---
 
 Hello everyone!

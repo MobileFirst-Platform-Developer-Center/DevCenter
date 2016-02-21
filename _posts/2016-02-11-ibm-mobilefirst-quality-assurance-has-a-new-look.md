@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - MobileFirst_Quality_Assurance
 author:
-  display_name: Christopher Dawson
+  name: Christopher Dawson
 ---
 
 A new year is a great time for a fresh start and improvement. IBM&reg; Mobile Quality Assurance for Bluemix&reg; has made some changes, including a new look and an improved user interface. The update for February 2016 includes the following changes:

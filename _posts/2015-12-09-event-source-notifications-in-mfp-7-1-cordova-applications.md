@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - Push_Notifications
 author:
-  display_name: Theodora Cheng
+  name: Theodora Cheng
 ---
 ### Overview
 

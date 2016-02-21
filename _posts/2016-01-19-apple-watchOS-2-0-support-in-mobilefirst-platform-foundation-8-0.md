@@ -6,7 +6,7 @@ tags:
 - iOS
 - Apple_Watch
 author:
-  display_name: Amichai Meir
+  name: Amichai Meir
 ---
 
 ## Overview

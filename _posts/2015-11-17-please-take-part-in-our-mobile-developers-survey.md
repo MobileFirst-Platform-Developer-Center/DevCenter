@@ -5,7 +5,7 @@ tags:
 - Survey
 - MobileFirst_Platform
 author:
-  display_name: Ora Peled-Nakash
+  name: Ora Peled-Nakash
 ---
 We at IBM MobileFirst Platform team spend a lot of time creating new stuff. in our daily race to make sure we are up to speed with what our users need, it seems like a good idea to ask them directly about their use of the product. We actually didn’t come up with this approach by ourselves- this is becoming a common practice in our industry.
 

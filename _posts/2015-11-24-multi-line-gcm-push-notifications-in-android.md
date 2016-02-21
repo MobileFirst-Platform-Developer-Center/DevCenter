@@ -6,7 +6,7 @@ tags:
 - Push_notifications
 - MobileFirst_Platform
 author:
-  display_name: Vivin Krishnan
+  name: Vivin Krishnan
 ---
 Isn’t it frustrating that even with a big screen Android phone, you cannot read a Google Cloud Messaging (GCM) push notification send from MobileFirst server , in its entirety in the notification shade. Changing the orientation to landscape does not help as this has no effect on the notification shade in your Android phone. You quickly want to copy a coupon code or OTP (One time password) but cannot, since you do not see the complete text.
 

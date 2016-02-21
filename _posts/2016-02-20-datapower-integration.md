@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - DataPower
 author:
-  display_name: Nathan Hazout
+  name: Nathan Hazout
 ---
 # DataPower Integration
 
@@ -250,4 +250,6 @@ Make sure to configure the *server.xml* and deploy the artifacts before running 
 - [Using WebSphere DataPower as a push notification proxy](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.integ.doc/devref/t_DataPower_as_push_notification_proxy.html?lang=en)
 
 ## Video
-<iframe width="420" height="315" src="https://www.youtube.com/embed/emDdHC0VlRY" frameborder="0" allowfullscreen></iframe>
+<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+    <iframe src="https://www.youtube.com/embed/emDdHC0VlRY"></iframe>
+</div>

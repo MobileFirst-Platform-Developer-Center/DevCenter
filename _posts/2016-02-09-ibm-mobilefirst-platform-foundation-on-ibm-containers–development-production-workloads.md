@@ -6,7 +6,7 @@ tags:
 - Bluemix
 - IBM_Containers
 author:
-  display_name: Norton Stanley
+  name: Norton Stanley
 ---
 
 **What's new in MobileFirst platform v7.1?**  

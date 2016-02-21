@@ -7,7 +7,7 @@ tags:
 - Bluemix
 - DevOps
 author:
-  display_name: Srinivasan Nanduri
+  name: Srinivasan Nanduri
 ---
 
 IBM MobileFirst Platform Foundation (rel. 7.1 – hereafter referred to as MFPF), is now available on Bluemix. The main components of the platform – the server and the analytics can be run as containers on the IBM Bluemix Container Service. This blog discusses a step-by-step approach for building and deploying the server and analytics containers using the IBM Bluemix DevOps Services.

@@ -6,7 +6,7 @@ tags:
 - IBM_Bluemix
 - Architecture
 author:
-  display_name: Ian Oeschger
+  name: Ian Oeschger
 ---
 At [Interconnect ](http://www.ibm.com/cloud-computing/us/en/interconnect/)this year, the IBM Cloud team and [developerWorks](http://ibm.com/developerworks) are launching a new entry point into our cloud platform.
 
