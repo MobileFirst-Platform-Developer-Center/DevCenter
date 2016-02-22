@@ -97,7 +97,7 @@ Add various layers of protection to your applications.
 ### [Notifications](../notifications/)
 Send notifications with IBM MobileFirst Platform Foundation.  
 
-* <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
+* [Push Notifications Overview](../notifications/push-notifications-overview/)
 * <span style="color:red">IN PROGRESS </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
 * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
 * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
@@ -108,11 +108,10 @@ Monitor deployed applications and adapters, gain insight on application usage, f
 
 * <span style="color:red">IN PROGRESS </span>[Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
 * <span style="color:red">IN PROGRESS </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
-    * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
-    * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/logging-in-ios-applications/)
-    * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/logging-in-android-applications/)
-* <span style="color:red">IN PROGRESS </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
-
+    * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/cordova/)
+    * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/ios/)
+    * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/android/)
+* <span style="color:red">IN PROGRESS </span>[Using Analytics API in client applications](../analytics/analytics-api/)
 
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.  
