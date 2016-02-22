@@ -5,7 +5,7 @@ relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 ## Overview
-To populate your custom charts you can use the Anlaytics API to send customized data. Custom data is any key/value pair that you would like to collect that is not an out of the box feature, like button presses.
+To populate your custom charts you can use the Analytics API to send customized data. Custom data is any key/value pair that you would like to collect that is not an out of the box feature, like button presses.
 
 When collecting custom analytics data, the app writes to the devices file system and is not sent until the `send` API is called. After the `send` API is called the app deletes the data from the file system and begins collecting again.
 
