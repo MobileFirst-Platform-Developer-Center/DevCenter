@@ -127,7 +127,7 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the Native project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the iOS project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage

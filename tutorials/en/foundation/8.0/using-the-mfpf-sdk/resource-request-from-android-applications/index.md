@@ -117,7 +117,7 @@ request.addHeader("date", date.getText().toString());
 The ResourceRequestAndroid project contains a native Android application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Native project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Android project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
