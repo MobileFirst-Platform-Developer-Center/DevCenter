@@ -84,7 +84,6 @@ Create an Android Studio project or use an existing one.
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
     ```
 6. Add the MobileFirst UI activity next to the existing **activity** element:
 
@@ -128,9 +127,9 @@ SDK releases can be found in the SDK's [JCenter repository](https://bintray.com/
 ### mfpclient.properties 
 Located at the **./app/src/main/assets/** folder of the Android Studio project, this file contains server connectivity properties and is user-editable:
 
-- `protocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTPS`.
-- `host` – The hostname of the MobileFirst Server instance.
-- `port` – The port of the MobileFirst Server instance.
+- `wlServerProtocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTTPS`.
+- `wlServerHost` – The hostname of the MobileFirst Server instance.
+- `wlServerPort` – The port of the MobileFirst Server instance.
 - `wlServerContext` – The context root path of the application on the MobileFirst Server instance.
 - `languagePreference` - Sets the default language for client sdk system messages
 
