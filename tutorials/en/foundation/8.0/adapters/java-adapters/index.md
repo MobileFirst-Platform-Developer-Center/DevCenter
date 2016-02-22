@@ -65,7 +65,7 @@ Those properties can be overridden in the MobileFirst Console:
 ![Console properties](console-properties.png)
 
 ### The java folder
-the Java sources of the JAX-RS 2.0 service are placed in this folder. JAX-RS 2.0 services are composed of an application class (which extends `com.worklight.wink.extensions.MFPJAXRSApplication`) and the resources classes.
+the Java sources of the JAX-RS 2.0 service are placed in this folder. JAX-RS 2.0 services are composed of an application class (which extends `com.ibm.mfp.adapter.api.MFPJAXRSApplication`) and the resources classes.
 
 The JAX-RS 2.0 application and resources classes define the Java methods and their mapping to URLs.  
 `com.sample.JavaAdapterApplication` is the JAX-RS 2.0 application class and `com.sample.JavaAdapterResource` is a JAX-RS 2.0 resource included in the application.
