@@ -46,12 +46,7 @@ Edit the adater.xml file and add the following properties:
 ```
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `JAXRSApplicationClass` element.  
-Here we define the connection settings and give them a default value, so they could be used later in the AdapterResource class.
-
-You can then view and configure these properties in the MobileFirst Operations Console:
-
-
-![Configuration Properties in the Console](console-config-props.png)
+Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
 
 ## Implementing SQL in the adapter Resource class
 The adapter Resource class is where requests to the server are handled.
@@ -67,55 +62,41 @@ In the supplied sample adapter, the class name is `JavaSQLResource`.
 `@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
 
 ### Using DataSource
-Define static variables to hold the database connection properties so they can be shared across all requests to the server:
+When the adapter is deployed, or whenever the configuration is changed from the MobileFirst console, the adapter's `MFPJAXRSApplication`'s `init` method is called. This is a good place to [load the connection properties](../#configuration-api) and create a `DataSource`.
 
 ```java
-private static BasicDataSource ds = null;
-private static String DB_url = null;
-private static String DB_username = null;
-private static String DB_password  = null;
-```
+public class JavaSQLApplication extends MFPJAXRSApplication{
 
-Since we are using configuration properties that can be configured during runtime in the console - we need to check their values each time we intend to connect to the database:
+	public BasicDataSource dataSource = null;
 
-```java
-private boolean updatedProperties() {
-	// Check if the properties were changed during runtime (in the console)
-	String last_url = DB_url;
-	String last_username = DB_username;
-	String last_password  = DB_password;
+	@Context
+	ConfigurationAPI configurationAPI;
 
-	DB_url = configurationAPI.getPropertyValue("DB_url");
-	DB_username = configurationAPI.getPropertyValue("DB_username");
-	DB_password = configurationAPI.getPropertyValue("DB_password");
-
-	return !last_url.equals(DB_url) ||
-			!last_username.equals(DB_username) ||
-			!last_password.equals(DB_password);
+	@Override
+	protected void init() throws Exception {		
+		dataSource= new BasicDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl(configurationAPI.getPropertyValue("DB_url"));
+		dataSource.setUsername(configurationAPI.getPropertyValue("DB_username"));
+		dataSource.setPassword(configurationAPI.getPropertyValue("DB_password"));
+	}
 }
 ```
 
-This method will be called each time we intend to connect to the database, and if the properties have been changed - we set the `DataSource` configuration properties again accordingly:
+In the resource class, create a helper method to get an SQL connection.
+Use the `AdaptersAPI` to get the current `MFPJAXRSApplication` instance:
 
 ```java
-public Connection getSQLConnection(){
+@Context
+AdaptersAPI adaptersAPI;
+
+public Connection getSQLConnection() throws SQLException{
   // Create a connection object to the database
-  Connection conn = null;
-  if(updatedProperties() || ds == null){
-    ds= new BasicDataSource();
-    ds.setDriverClassName("com.mysql.jdbc.Driver");
-    ds.setUrl(DB_url);
-    ds.setUsername(DB_username);
-    ds.setPassword(DB_password);
-  }
-  try {
-    conn = ds.getConnection();
-  } catch (SQLException e) {
-    e.printStackTrace();
-  }
-  return conn;
+  JavaSQLApplication app = adaptersAPI.getJaxRsApplication(JavaSQLApplication.class);
+  return app.dataSource.getConnection();
 }
 ```
+
 
 ### Create User
 Used to create a new user record in the database.

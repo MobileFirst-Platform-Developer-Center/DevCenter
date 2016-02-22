@@ -59,6 +59,8 @@ The **adapter.xml** file can also contain custom properties:
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
 </mfp:adapter>
 ```
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `JAXRSApplicationClass` element.  
+Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
 
 Those properties can be overridden in the MobileFirst Console:
 
