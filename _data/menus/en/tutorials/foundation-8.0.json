@@ -36,8 +36,8 @@
             "name": "IBM Countainers",
             "path": "/ibm-containers",
             "children": [{
-                "name": "Using Foundation Tile",
-                "path": "/using-foundation-tile"
+                "name": "Using Mobile Foundation",
+                "path": "/using-mobile-foundation"
             }, {
                 "name": "Creating an Image",
                 "path": "/creating-an-image"

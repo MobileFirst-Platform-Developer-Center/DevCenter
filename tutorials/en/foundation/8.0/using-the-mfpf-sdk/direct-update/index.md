@@ -19,11 +19,13 @@ In order to update an application, the updated web resources of the application 
 - [How Direct Update works](#how-direct-update-works)
 - [Creating and deploying updated web resources](#creating-and-deploying-updated-web-resources)
 - [User experience](#user-experience)
-<!-- - [Customizing the Direct Update UI](#customizing-the-direct-update-ui) -->
 - [Direct Update authenticity](#direct-update-authenticity)
 - [Delta and Full Direct Update](#delta-and-full-direct-update)
 - [Direct Update in the field](#direct-update-in-the-field)
 - [Sample application](#sample-application)
+{% comment %}
+-[Customizing the Direct Update UI](#customizing-the-direct-update-ui)
+{% endcomment %}
 
 ## How Direct Update works
 The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the MobileFirst. The updated web resources are downloaded when necessary.
