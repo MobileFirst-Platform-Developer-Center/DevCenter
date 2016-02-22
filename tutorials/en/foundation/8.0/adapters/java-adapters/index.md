@@ -15,7 +15,7 @@ Java adapters are based on the JAX-RS 2.0 specification. In other words, a Java 
 ![mvn-adapter](java-adapter-fs.png)
 
 ### The adapter-resources folder  
-The `adapter-resources` folder contains an XML configuration file. In this configuration file, configure the class name of the JAX-RS 2.0 application for this adapter.
+The `adapter-resources` folder contains an XML configuration file (*adapter.xml*). In this configuration file, configure the class name of the JAX-RS 2.0 application for this adapter.
 In our case: `com.sample.adapter.JavaAdapterApplication`.
 
 ```xml
@@ -31,6 +31,31 @@ In our case: `com.sample.adapter.JavaAdapterApplication`.
 	<JAXRSApplicationClass>sample.JavaAdapterApplication</JAXRSApplicationClass>
 </mfp:adapter>
 ```
+
+#### Custom properties
+
+The *adapter.xml* file can also contain custom properties:
+
+```xml
+<mfp:adapter name="JavaSQL"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mfp="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
+
+	<displayName>JavaSQL</displayName>
+	<description>JavaSQL</description>
+
+	<JAXRSApplicationClass>com.sample.JavaSQLApplication</JAXRSApplicationClass>
+
+	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
+	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
+	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
+</mfp:adapter>
+```
+
+Those properties can be overridden in the MobileFirst Console:
+
+![Console properties](console-properties.png)
 
 ### The java folder
 In this folder, put the Java sources of the JAX-RS 2.0 service. JAX-RS 2.0 services are composed of an application class (which extends `com.worklight.wink.extensions.MFPJAXRSApplication`) and resources classes.
@@ -111,22 +136,54 @@ Another example is `@Path("/{username}")`, which defines the path to access this
 ## HTTP Session
 The MobileFirst server does not rely on HTTP sessions and each request may reach a different node. You should not rely on HTTP sessions to keep data from one request to the next.
 
-## MobileFirst server-side API
+## MobileFirst server-side APIs
 Java adapters can use the MobileFirst server-side Java API to perform operations that are related to MobileFirst Server, such as calling other adapters, submitting push notifications, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
 
-To get the server API interface, use the following code:
+### Configuration API
+The `ConfigurationAPI` class provides an API to retrieve properties defined in the *adapter.xml* or in the MobileFirst console.
+
+Inside your Java class, add the following at the class level:
 
 ```java
-WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
+@Context
+ConfigurationAPI configurationAPI;
 ```
-The `WLServerAPI` interface is the parent of all the API categories: (Analytics, Configuration, Push, Adapters, Authentication).
 
-If you want, for example, to use the push API, you can write:  
+Then you can use the `configurationAPI` instance to get properties:
 
 ```java
-PushAPI pushApi = serverApi.getPushAPI();
+configurationAPI.getPropertyValue("DB_url");
 ```
-> For more information, review the Server-side API topics in the user documentation.
+
+The `getServerJNDIProperty` method can also be used to retrieve a JNDI property from your server configuration.
+
+> Learn more about `ConfigurationAPI` in the user documentation.
+
+### Adapters API
+The `AdaptersAPI` class provides an API to retrieve information about the current adapter and send REST requests to other adapters.
+
+Inside your Java class, add the following at the class level:
+
+```java
+@Context
+AdaptersAPI adaptersAPI;
+```
+
+You can see usage examples on the [advanced adapter usage mashup tutorial](../advanced-adapter-usage-mashup).
+
+> Learn more about `AdaptersAPI` in the user documentation.
+
+### Analytics API
+The `AnalyticsAPI` class provides an API for reporting information to analytics.
+
+Inside your Java class, add the following at the class level:
+
+```java
+@Context
+AnalyticsAPI adaptersAPI;
+```
+
+You can see usage examples on the [analytics api tutorial](../../analytics/analytics-api).
 
 ## Java adapter examples
 For examples of Java adapters communicating with an HTTP or SQL back end, see:
