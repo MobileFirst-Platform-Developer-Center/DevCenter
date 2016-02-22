@@ -162,6 +162,8 @@ Then you can use the `configurationAPI` instance to get properties:
 configurationAPI.getPropertyValue("DB_url");
 ```
 
+When the adapter configuration is modified from the MobileFirst console, the JAX-RS application is reloaded and its `init` method is called again.
+
 The `getServerJNDIProperty` method can also be used to retrieve a JNDI property from your server configuration.
 
 > Learn more about `ConfigurationAPI` in the user documentation.
