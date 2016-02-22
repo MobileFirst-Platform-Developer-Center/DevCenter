@@ -84,7 +84,6 @@ Create an Android Studio project or use an existing one.
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
     ```
 6. Add the MobileFirst UI activity next to the existing **activity** element:
 
