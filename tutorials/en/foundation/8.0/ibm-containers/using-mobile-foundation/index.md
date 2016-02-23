@@ -14,8 +14,8 @@ Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up 
 
 #### Jump to:
 
-* [Using the Mobile Foundation Bluemix service](#using-mobilefirst-platform-foundation-tile)
-* [Basic Server](#basic-server)
+* [Using the Mobile Foundation Bluemix service](#using-the-mobile-foundation-bluemix-service)
+* [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
 * [Further reading](#further-reading)
 
@@ -41,9 +41,9 @@ Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up 
 
 7. After starting the server you are presented with the MobileFirst Platform Operations Console.
 
-    ![Image of Mobile Foundation setup](console.png)
+    ![Image of Mobile Foundation setup](dashboard.png)
 
-## Basic Server
+## Server configuration
 The created server instance baseline is made of:
 
 * A single node
