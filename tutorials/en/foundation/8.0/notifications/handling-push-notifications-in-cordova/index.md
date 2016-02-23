@@ -3,10 +3,10 @@ layout: tutorial
 title: Handling Push Notifications in Cordova applications
 show_children: true
 relevantTo: [cordova]
-weight: 2
+weight: 3
 ---
 ## Overview
-Before Cordova applications are able to handle any received push notifications, they must be configured for the appropriate platform. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register & unregister devices, and subscribe &amp; unsubscribe to tags.
+Before iOS and Android Cordova applications are able to receive and display push notifications, the Cordova project needs to be configured with the **cordova-plugin-mfp-push** plug-in. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications.
 
 In this tutorial you learn how to configure a Cordova application and how to use the MobileFirst-provided Notifications API.
 
@@ -14,9 +14,8 @@ In this tutorial you learn how to configure a Cordova application and how to use
 
 * Make sure you have read the following tutorials:
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/index)
-    * [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova)
     * [Push Notifications Overview](../push-notifications-overview)
-* MobileFirst Server to run locally, or a remotely running MobileFirst Server.
+* MobileFirst Server to run locally, or a remotely running MobileFirst Server
 * MobileFirst Developer CLI installed on the developer workstation
 * Cordova CLI installed on the developer workstation
 
@@ -33,54 +32,24 @@ Create a new Cordova project or use an existing one.
 If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../../adding-the-mfpf-sdk/cordova) tutorial.
 
 ### Adding the Push plug-in
-1. Whether using iOS or Android, open a **command-line** window and navigate to the root of the Cordova project.  
-    Add the MobileFirst Push plug-in by running the command: 
+
+1. From a **command-line** window, navigate to the root of the Cordova project.  
+
+2. Add the push plug-in to the iOS and/or Android platform by running the command:
 
     ```bash
     cordova plugin add cordova-plugin-mfp-push
     ```
-    
-2. Run the command: `$ cordova build`
 
-### Android platform
+3. Build the Cordova project by running the command: 
 
-1. Open the project in Android Studio by importing the **[project root]/platforms/android** folder.
-
-2. In **Android → Gradle scripts**, select the **build.gradle (Module: Android)** file and the following line to `dependencies`:    
-
-    ```xml
-    classpath 'com.google.gms:google-services:2.0.0-alpha3'
+    ```bash
+    cordova build
     ```
-    
-3. Navigate to **[project root]platforms/android/cordova-plugin-mfp-push/** and select the **<appname>-build-extras.gradle** file. 
-    - Change compile version to `8.0.0-Beta1-SNAPSHOT` in `dependencies`:
-    
-        ```xml
-        compile group: 'com.ibm.mobile.foundation', 
-            name:'ibmmobilefirstplatformfoundationpush', 
-            version:'8.0.0-Beta1-SNAPSHOT', 
-            ext: 'aar', 
-            transitive: true
-        ```
-    - Add the following to `dependencies`: 
-    
-        ```xml
-        compile 'com.google.android.gms:play-services-gcm:8.4.0'
-        ```
-    - Add the following line at the bottom:
-    
-        ```xml
-        apply plugin: 'com.google.gms.google-services'
-        ```
-
-4. Add google-services.json configuration file to app/platforms/android folder
-
-5. Change version to `8.0.0-Beta1-SNAPSHOT` in app/platforms/android folder
 
 ### iOS platform
-
-1. Open the project in Xcode by importing the **[project root]/platforms/ios** folder.
-2. Enable push notifications for your application in the **Capabilities** screen.
+The iOS platform requires an additional step.  
+In Xcode, enable push notifications for your application in the **Capabilities** screen.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** the bundleId selected for the application must match the AppId that you have previously created in the Apple Developer site. See the [Push Notifications Overview] tutorial.
 

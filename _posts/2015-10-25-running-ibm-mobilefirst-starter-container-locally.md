@@ -6,7 +6,7 @@ tags:
 - MobileFirst_Platform
 - IBM_Containers
 author:
-  display_name: Srinivasan Nanduri
+  name: Srinivasan Nanduri
 ---
 <blockquote><b>Disclaimer: </b>The solution discussed herein is from my own personal experience as a developer using the MobileFirst platform and do not represent IBM's view nor IBM's interest in supporting this officially.</blockquote>
 

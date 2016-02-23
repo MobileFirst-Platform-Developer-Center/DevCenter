@@ -27,7 +27,7 @@ Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` 
 
 ```swift
 let request = WLResourceRequest(
-    URL: NSURL(string: "/adapters/RSSReader/getFeed"),
+    URL: NSURL(string: "/adapters/JavaAdapter/users"),
     method: WLHttpMethodGet
 )
 ```
@@ -43,16 +43,12 @@ Supply a completion handler to handle the retrieved data:
 
 ```swift
 request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
-    var resultText = ""
-    if(error != nil){
-        resultText = "Failed to call the resource"
-        resultText += error.description
+    if(error == nil){
+        NSLog(response.responseText)
     }
-    else if(response != nil){
-        resultText = "Successfully called the resource"
-        resultText += response.responseText
+    else{
+        NSLog(error.description)
     }
-    self.updateView(resultText)
 }
 ```
 
@@ -76,6 +72,14 @@ To send **query** parameters (`/path?param1=value1...`) use the `setQueryParamet
 request.setQueryParameterValue("value1", forName: "param1")
 request.setQueryParameterValue("value2", forName: "param2")
 ```
+
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```swift
+request.setQueryParameterValue("['value1', 'value2']", forName: "params")
+```
+
 ### Form parameters
 To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
 
@@ -94,6 +98,13 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 }
 ```
 
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```swift
+let formParams = ["params":"['value1', 'value2']"]
+```
+
 ### Header parameters
 To send a parameter as an HTTP header use the `setHeaderValue` API:
 
@@ -108,22 +119,15 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithJSON` allows you to set an arbitrary dictionary in the body.
 - `sendWithData` allows you to set an arbitrary `NSData` in the body.
 
-### Javascript Adapters
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
-
-```swift
-request.setQueryParameterValue("['param1', 'param2']", forName: "params")
-```
-
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
 <img alt="Image of the sample application" src="resource-request-success-ios.png" style="float:right"/>
 ## Sample application
 The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter to be used during the resource request call.
+The adapter Maven project contains the Java adapter used during the resource request call.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the Native project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the iOS project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage

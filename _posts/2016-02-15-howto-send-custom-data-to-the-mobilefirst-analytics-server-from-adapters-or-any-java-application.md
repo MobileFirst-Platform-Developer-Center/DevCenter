@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - Analytics
 author:
-  display_name: Yoel Nunez
+  name: Yoel Nunez
 ---
 ## Overview
 Sending custom data from your MobileFirst 7.1 apps to the Operational Analytics Server can be accomplished by using the <code>log</code> methods from the <code>WLAnalytics</code> and <code>WL.Analytics</code> objects in hybrid and native Android and iOS environments. However, sending custom data from MobileFirst Adapters, JavaScript or Java, is not supported. Hence, I decided to write some code to send custom data from any java application.

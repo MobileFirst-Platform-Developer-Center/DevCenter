@@ -12,7 +12,7 @@ The `CredentialsValidationSecurityCheck` class is meant for simple flows to need
 
 This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client is blocked for 60 seconds).
 
-**Prerequisites:** Make sure to read the [Authentication concepts](../../authentication-concepts/) and [Creating a Security Check](../../creating-a-security-check) tutorials.
+**Prerequisites:** Make sure to read the [Authorization concepts](../../authorization-concepts/) and [Creating a Security Check](../../creating-a-security-check) tutorials.
 
 #### Jump to:
 
@@ -188,11 +188,17 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
     failureStateExpirationSec = getIntProperty("failureStateExpirationSec", properties, 0);
 }
 ```
+The properties defined by `CredentialsValidationSecurityCheckConfig` are:
+- `maxAttempts`: How many attempts are allowed before reaching a *failure*.
+- `attemptingStateExpirationSec`: Interval in seconds during which the client should provide valid credentials, and attempts are counted.
+- `successStateExpirationSec`: Interval in seconds during which the successful login holds.
+- `failureStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
 
 Note that the default for `failureStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
 
+
 ## Sample application
-To see a sample using this security check, review the below tutorials: 
+To see a sample using this security check, review the below tutorials:
 Select a platform:
 
 * [Implementing the challenge handler in Cordova applications](../cordova)

@@ -26,7 +26,7 @@ The MobileFirst SDK feature set provides the following:
 #### Jump to:
 
 * [Cordova application development](#cordova-application-development)
-* [Previewing applications](previewing-applications)
+* [Previewing applications](#previewing-applications)
 * [Crosswalk support](#crosswalk-support)
 * [Further reading](#further-reading)
 * [Tutorials to follow next](#tutorials-to-follow-next)
@@ -43,7 +43,7 @@ The Merges folder provides the ability to have platform-specific web resources (
 ### Cordova plug-ins
 Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on).
 
-You can find Cordova plug-ins in the official [Cordova plug-ins repository](https://cordova.apache.org/plugins/), as well as on [GitHub.com](https://github.com) and in popular Cordova blogs, such as [Plugreg](http://plugreg.com/).
+You can find Cordova plug-ins on [GitHub.com](https://github.com) and in popular Cordova plug-ins websites, such as [Plugreg](http://plugreg.com/) and [NPM](http://npmjs.org).
 
 Example plug-ins:
 
@@ -61,7 +61,7 @@ Applications can be modified using 3rd party packages to achieve requirements su
 - [clean-css](https://www.npmjs.com/package/clean-css)
 
 ## Previewing applications
-A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. With MobileFirst, two additional preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering. 
+A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Platform Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering. 
 
 * With Simple Browser rendering the application is presented as a web page in the desktop browser.
 * The Mobile Browser Simulator is a web application that enables testing the application by simulating device features without needing to install device vendor native SDK.
@@ -90,10 +90,14 @@ A Cordova application's web resources can be previewed either in the iOS Simulat
     ◯ ios
     ```
 
-Applicative code (HTML, CSS and JS) can now be edited in real-time.  
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobileirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+
+#### Live preview
+Applicative code (HTML, CSS and JS) can now be edited in real-time with live-preview.   
 After making a change to a resource, save the change and it will be immediately reflected in the browser.
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobileirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+#### Live reload
+To achieve a similar effect while previewing in physical devices or simulators/emulators, add the **cordova-plugin-livereload** plug-in. For usage instructions, [see the plug-ins GitHub page](https://github.com/omefire/cordova-plugin-livereload).
 
 ### CrossWalk support
 Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  

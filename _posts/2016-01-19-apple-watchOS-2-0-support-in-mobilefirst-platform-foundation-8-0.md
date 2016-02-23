@@ -6,7 +6,7 @@ tags:
 - iOS
 - Apple_Watch
 author:
-  display_name: Amichai Meir
+  name: Amichai Meir
 ---
 
 ## Overview
@@ -36,6 +36,11 @@ In the watch Extension's source files you should import the `IBMMobileFirstPlatf
 import IBMMobileFirstPlatformFoundationWatchOS
 ```
 
+### Support "Access Disabled" and "Active and Notifying" messages
+By default, the iOS MobileFirst framework provides a built-in UI alert for returning the messages for the "Access Disabled" and "Active and Notifying" options. This is not supported for the watchOS MobileFirst framework.
+Therefore, in order to see messages from "Access Disabled" or "Active and Notifying", a custom remote disable challenge handler should be implemented and registered. The custom challenge handler should be initialized with the security check wl_remoteDisableRealm. An example of such an implementation appears in the demo below.
+
+
 ### watchOS Demo App
 
 There is also a complete demo app. The demo accesses a resource protected by specific "scope". The iPhone app and watchOS app map to their respecive security checks: the iPhone app maps to a username/password security check, and the watchOS app maps to a pin-code security check.
@@ -52,7 +57,7 @@ In order to use the demo app:
 
     ![Image of framework files]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Pod_frameworks.png)
 
-4. Edit the **mfpclient.plist** file and set the `host` property. 
+4. Edit the **mfpclient.plist** file and set the `host` property.
 
     ![Image of editing the .plist file in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/mfpclient.plist_edit.png)
 
@@ -71,7 +76,7 @@ In order to use the demo app:
     ![Image of how to run the project in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Run_demo_app_on_watch.png)
 
 Clicking on "My Balance" should display the Pin Code screen.  
-A valid pin is "1234". Try first an incorrect pin - the Pin Code screen should appear again with "Please try again". Then try with a valid pin - you should get the balance screen.  
+A valid pin is "1234" (That can be changed in the security check using the MobileFirst Operations Console). Try first an incorrect pin - the Pin Code screen should appear again with "Please try again". Then try with a valid pin - you should get the balance screen.  
 
 ![Image of Balance button in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Balance_btn_watch.png)
 ![Image of Pin Code screen in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Pincode_screen.png)

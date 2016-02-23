@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - Analytics
 author:
-  display_name: Yoel Nunez
+  name: Yoel Nunez
 ---
 ## Overview
 

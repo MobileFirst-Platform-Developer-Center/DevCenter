@@ -6,7 +6,7 @@ tags:
 - Ionic
 - Cordova
 author:
-  display_name: Vidyasagar MSC
+  name: Vidyasagar MSC
 ---
 
 ![Ionic preview image](http://vidyasagarmsc.com/wp-content/uploads/2015/12/preview.jpg)

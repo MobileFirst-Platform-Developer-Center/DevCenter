@@ -16,12 +16,12 @@ This tutorial explains how to create, build and deploy MobileFirst **Java or Jav
 #### Jump to:
 * [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
  * [Install Maven](#install-maven)
- * [Create an Adapter](#create-an-adapter)
+ * [Creating an Adapter](#creating-an-adapter)
  * [Dependencies](#dependencies)
  * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
 * [Creating Adapters Using MobileFirst Developer CLI](#creating-adapters-using-mobilefirst-developer-cli)
  * [Install MobileFirst Developer CLI](#install-mobilefirst-developer-cli)
- * [Create an Adapter](#install-mobilefirst-developer-cli)
+ * [Creating an Adapter](#install-mobilefirst-developer-cli)
 * [File Structure](file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
 * [Downloading or Deploying Adapters Using MobileFirst Operations Console](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
@@ -36,8 +36,18 @@ To create an adapter Maven project, first install Maven and follow the instructi
 ### Install Maven
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
 
-### Create an Adapter
-To create a Maven adapter project, use the `archetype:generate` command. Once the command is running, Maven will download required files from the MobileFirst Maven repository in order to be able to generate the adapter Maven project.
+#### Local Maven repositories
+If Internet connectivity is not available, you can also create local Maven repositories.  
+
+1. Make sure you have first installed Maven.
+2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
+3. Start the server and download from the Downloads page the Adapter tooling.
+4. Install the security check archetypes by running the **adapter-maven-buildall.zip/install-security-checks.sh|cmd** script.
+5. Install the adapters archetypes by running the **security-maven-buildall.zip/install-adapter.sh|cmd** script.
+
+### Creating an Adapter
+To create a Maven adapter project, use the `archetype:generate` command. Once the command is executed, Maven will download (or use the above local repositories) required files from the MobileFirst Maven repository in order to be able to generate the adapter Maven project.
+
 
 You can choose to run the command interactively or directly.
 
@@ -205,7 +215,7 @@ To group adapters you need to:
 Follow the installation instructions in the [Downloads]({{site.baseurl}}/downloads/) page to Install MobileFirst Developer CLI.  
 **Prerequisite:** To create adapters using the Developer CLI, Maven must be installed.
 
-### Create an Adapter
+### Creating an Adapter
 To create a Maven adapter project, use the `mfpdev adapter create` command.
 You can choose to run the command interactively or directly.
 

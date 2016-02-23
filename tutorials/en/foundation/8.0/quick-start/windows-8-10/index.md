@@ -24,11 +24,14 @@ From a **Command-line** window, navigate to the server's folder and run the comm
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
-1. Click on the "New" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
+1. Click on the "New" button next to **Applications**
+    * Select a **Windows** platform
+    * Enter **com.ibm.sample** as the **application identifier**
+    * Enter **1.0** as the **version** value
 
     ![Image of selecting platform, and providing an identifier and version](register-an-application-windows.png)
 
-2. Click on the **Get Starter Code** tile and select to download Windows 8.1 or Windows 10 Starter Code.
+2. Click on the **Get Starter Code** tile and select to download the Windows 8.1 or Windows 10 mobile app scaffold.
 
     ![Image of downloading a sample application](download-starter-code-windows.png)
 
@@ -57,31 +60,43 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ```
 
 ### 4. Creating an adapter
-
-1. Click on the "New" button next to **Adapters**
-    * Select the **Actions → Download sample** option. Download the **Java** adapter sample.
+Click on the "New" button next to **Adapters**
         
-        > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.  
-    * From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
+1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-        ```bash
-        mfpdev adapter build
-        ```
-    * When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
-    * Alternatively, download [this prepared .adapter artifact](#) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
+    > If Maven and MobileFirst Developer CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+
+2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+
+    ```bash
+    mfpdev adapter build
+    ```
+
+3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+
+* Alternatively, download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
     
     ![Image of create an adapter](create-an-adapter.png)
 
 ### 5. Testing the application
 
-1. In Visual Studio, click on the **Start Debugging** button.
+1. In Visual Studio, select the **mfpclient.resw** file and edit the **host** property with the IP address of the MobileFirst Server.
 
-    ![Image of application that successfully called a resource from the MobileFirst Server ]()
+2. Press the **Run App** button.
+
+#### Results
+* Clicking on the **Test Server Connection** button will display **Obtained Access Token Successfully**.
+* If the application was able to connect to the MobileFirst Server, a resource request call using the Java adapter will take place.
+
+The adapter response is then printed in Visual Studio's Outpout console.
+
+![Image of application that successfully called a resource from the MobileFirst Server](success_response.png)
 
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Server-side development tutorials](../../adapters/)
+- Review the [Using the MobileFirst Platform Foundation](../../using-the-mfpf-sdk/) tutorials
+- Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

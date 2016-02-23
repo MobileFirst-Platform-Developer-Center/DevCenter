@@ -33,7 +33,8 @@ Follow the bellow instructions to either create a new adapter Maven project or i
 
     ![Image showing how to create an adapter Maven project in Eclipse](select-project-name-and-location.png)
 
-3. Add the MobileFirst adapter Archetype.
+3. Select or add the MobileFirst adapter Archetype.
+    -  If you [installed the archetypes locally](../creating-adapters/#install-maven) and they are not appearing in the list of archetypes, select **Configure → Add Local Catalog → Browse to the /.m2/repository/archetype-catalog.xml in the home directory.
     - Click on **Add Archetype** and the provide the following details:
         - **Archetype Group ID**: `com.ibm.mfp`
         - **Archetype Artifact Id**: either `adapter-maven-archetype-java`, `adapter-maven-archetype-http` or `adapter-maven-archetype-sql`

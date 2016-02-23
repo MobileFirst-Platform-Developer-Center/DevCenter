@@ -6,7 +6,7 @@ tags:
 - Bluemix
 - IoT
 author:
-  display_name: Thomas Suedbroecker
+  name: Thomas Suedbroecker
 ---
 ## Introduction
 Question: What makes you happy, in the current and future world? IoT, PaaS or Mobile?

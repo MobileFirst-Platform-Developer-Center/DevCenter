@@ -26,7 +26,7 @@ Create a `WLResourceRequest` object and specify the path to the resource and the
 Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT`, `WLResourceRequest.HEAD` and `WLResourceRequest.DELETE`.
 
 ```java
-URI adapterPath = new URI("/adapters/RSSReader/getFeed");
+URI adapterPath = new URI("/adapters/JavaAdapter/users");
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
 ```
 
@@ -74,6 +74,13 @@ request.setQueryParameter("param1","value1");
 request.setQueryParameter("param2","value2");
 ```
 
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```java
+request.setQueryParameter("params","['value1', 'value2']");
+```
+
 ### Form parameters
 To send form parameters in the body, use `.send(HashMap<String, String> formParameters, WLResponseListener)` instead of `.send(WLResponseListener)`:  
 
@@ -82,6 +89,13 @@ HashMap formParams = new HashMap();
 formParams.put("height", height.getText().toString());
 request.send(formParams, new MyInvokeListener());
 ```    
+
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```java
+formParams.put("params", "['value1', 'value2']");
+```
 
 ### Header parameters
 To send a parameter as an HTTP header use `.addHeader()` API:
@@ -95,22 +109,15 @@ request.addHeader("date", date.getText().toString());
 - `.send(JSONStore json, WLResponseListener listener)` allows you to set an arbitrary dictionary in the body.
 - `.send(byte[] data, WLResponseListener listener)` allows you to set an arbitrary byte array in the body.
 
-### Javascript Adapters
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
-
-```java
-request.setQueryParameter("params","['param1', 'param2']");
-```
-
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
 <img alt="Image of the sample application" src="resource-request-success-android.png" style="float:right"/>
 ## Sample application
 The ResourceRequestAndroid project contains a native Android application that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter to be used during the resource request call.
+The adapter Maven project contains the Java adapter used during the resource request call.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Native project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Android project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
