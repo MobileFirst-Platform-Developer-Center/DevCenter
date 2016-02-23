@@ -7,11 +7,9 @@ print_pdf: true
 relevantTo: [ios,android,windows,cordova]
 ---
 ## Overview
-MobileFirst Platform Foundation Operational Analytics collects data from app to server activities, client logs, client crashes, and server side logs from the MobileFirst Runtime Server. Collecting analytics from all these data points populates the Operational Analytics Charts with infrastructure and client side information.
+MobileFirst Platform Foundation Operational Analytics collects data from app to server activities, client logs, client crashes, and server side logs from the MobileFirst Runtime Server and client devices. Collecting analytics from all these data points populates the Operational Analytics Charts with infrastructure and client side information.
 
-[architecture diagram]
-
-Operational Analytics also allows the ability to collect data on custom events using the Analytics API to give the user the ability to create charts that are not included in the list of charts provided.
+![architecture diagram](mfp_operational_analytics.png)
 
 Operational Analytics is bundled by default as part of the [MobileFirst Platform Foundation Development Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
 
@@ -35,12 +33,11 @@ After navigating to the Analytics console you will see a dashboard like below (b
 ![Analytics console](analytics-console.png)
 
 From the Analytics Console you can then:
-(hyperink these)
 
-* Create custom charts
-* Manage alerts
-* Monitor App Crash
-* Monitor Network Data
+* [Create custom charts](#custom-charts)
+* [Manage alerts](#manage-alerts)
+* [Monitor App Crash](#monitor-app-crash)
+* [Monitor Network Data](#monitor-network)
 * And a lot more!
 
 ### Custom Charts
@@ -57,7 +54,7 @@ App crashes are visualized on the MobileFirst Operational Analytics Console, whe
 ### Monitor Network Data
 The MobileFirst Operational Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways. 
 
-> For more information about creating custom charts, see the user documentation
+> For more information about the data collected by MobileFirst Analytics, see the user documentation
 
 ## Elasticsearch
 Behind the scenes, running search queries and storing data for Operational Analytics is **Elasticsearch 1.5x**.  
@@ -118,5 +115,5 @@ http://localhost:9500/*/_mapping
 * [Analytics API](analytics-api)
 
 ## Related Blogposts
-* Yoel's Custom Charts
-* Harrison/Dora's Web Hooks
+* [More on Instrumenting Custom Analytics](https://developer.ibm.com/mobilefirstplatform/2016/01/22/howto-custom-in-app-behavior-analytics/)
+* [More on Instrumenting Webhooks](https://developer.ibm.com/mobilefirstplatform/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

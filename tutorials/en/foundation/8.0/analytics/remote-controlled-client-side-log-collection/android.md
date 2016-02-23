@@ -5,8 +5,6 @@ relevantTo: [android]
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in Android applications.
 
-
-
 ### Persisting Log Capture
 MobileFirst Platform SDK for Android cannot persistently capture log data until the `com.worklight.common.Logger.setContext(Context)` method is called. This is best called in the `onCreate` method of your main Android activity.
 
