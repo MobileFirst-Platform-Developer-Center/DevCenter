@@ -7,7 +7,9 @@ print_pdf: true
 relevantTo: [ios,android,windows,cordova]
 ---
 ## Overview
-MobileFirst Platform Foundation Operational Analytics collects data about applications, adapters, devices, logs, and your own custom events to give a high-level view of the client interaction with the IBM MobileFirst Platform Server.
+MobileFirst Platform Foundation Operational Analytics collects data from app to server activities, client logs, client crashes, and server side logs from the MobileFirst Runtime Server. Collecting analytics from all these data points populates the Operational Analytics Charts with infrastructure and client side information.
+
+Operational Analytics also allows the ability to collect data on custom events using the Analytics API to give the user the ability to create charts that are not included in the list of charts provided.
 
 Operational Analytics is bundled by default as part of the [MobileFirst Platform Foundation Development Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
 
@@ -104,5 +106,5 @@ http://localhost:9500/*/_mapping
 
 ## Tutorials to follow next
 
-* [Remote Controlled client-side log collection](remote-controlled-client-side-log-collection)
+* [Client-side log collection](remote-controlled-client-side-log-collection)
 * [Analytics API](analytics-api)

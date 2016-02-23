@@ -8,9 +8,7 @@ This tutorial provides the required code snippets in order to add logging capabi
 <span style="color:red">Anything else to add here?</span>
 
 ### Persisting log capture
-MobileFirst Platform SDK for Android cannot persistently capture log data until the `com.worklight.common.Logger.setContext(Context)` method is called.
-
-<span style="color:red">Need to mention where in the app lifecycle should the above code be used</span>
+MobileFirst Platform SDK for Android cannot persistently capture log data until the `com.worklight.common.Logger.setContext(Context)` method is called. This is best called in the onCreate method of your main Android activity.
 
 #### Logging example
 The below code snippet will output to the Android Studio LogCat view:
@@ -35,9 +33,7 @@ public class MathUtils{
     Logger.setCapture(false)
     ```
 
-* The default capture level is DEBUG in development and FATAL in production. To control the capture level (verbosity):
-
-    <span style="color:red">How do we know this? who/what and how sets this DEBUG and FATAL differences. Also, this collides what the text written in the overview of logging, where it is said that the logging can be controled from the analytics console.</span>
+* The default capture level is FATAL in development and in production. To control the capture level (verbosity):
 
     ```java
     Logger.setLevel(Logger.FATAL)
