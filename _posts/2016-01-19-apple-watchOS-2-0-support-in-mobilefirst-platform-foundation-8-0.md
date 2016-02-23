@@ -76,7 +76,7 @@ In order to use the demo app:
     ![Image of how to run the project in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Run_demo_app_on_watch.png)
 
 Clicking on "My Balance" should display the Pin Code screen.  
-A valid pin is "1234". Try first an incorrect pin - the Pin Code screen should appear again with "Please try again". Then try with a valid pin - you should get the balance screen.  
+A valid pin is "1234" (That can be changed in the security check using the MobileFirst Operations Console). Try first an incorrect pin - the Pin Code screen should appear again with "Please try again". Then try with a valid pin - you should get the balance screen.  
 
 ![Image of Balance button in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Balance_btn_watch.png)
 ![Image of Pin Code screen in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Pincode_screen.png)
