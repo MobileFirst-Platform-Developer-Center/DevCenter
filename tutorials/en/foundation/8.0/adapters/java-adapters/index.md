@@ -196,5 +196,21 @@ AnalyticsAPI adaptersAPI;
 
 You can see usage examples on the [Analytics API tutorial](../../analytics/analytics-api).
 
+### Security API
+The `AdapterSecurityContext` class provides the security context of an adapter REST call.
+
+Inside your Java class, add the following at the class level:
+
+```java
+@Context
+AdapterSecurityContext securityContext;
+```
+
+You can then get the current `AuthenticatedUser` using:
+
+```java
+AuthenticatedUser currentUser = securityContext.getAuthenticatedUser();
+```
+
 ## Java adapter examples
 For examples of Java adapters communicating with an HTTP or SQL back end, see:
