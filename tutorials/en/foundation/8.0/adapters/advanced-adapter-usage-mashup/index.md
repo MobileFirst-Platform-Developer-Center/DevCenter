@@ -238,8 +238,8 @@ return jsonArr.toString();
 **Note:** the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
 
 ### Sample usage
-#### SQL setup
-An example of city list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`. 
+#### Adapter setup
+An example of city list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
 
 1. Run the .sql script in your SQL database.
 2. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapters](../../creating-adapters/).
@@ -249,6 +249,6 @@ An example of city list in SQL is available in the provided adapter maven projec
 
 #### Application setup
 
-1. From the command line, navigate to the project's root folder.
+1. From the command line, navigate to the **CordovaApp** project's root folder.
 2. Add a platform by running the `cordova platform add` command.
 3. Run the Cordova application by running the `cordova run` command.

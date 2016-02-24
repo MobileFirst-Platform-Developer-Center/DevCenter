@@ -32,7 +32,7 @@ The Cloudant API can be accessed as a simple HTTP web service.
 Using an HTTP adapter, you can connect to the Cloudant HTTP service with the `invokeHttp` method.
 
 ### Authentication
-Cloudant supports several forms of authentication. See the Cloudant documentation about authentication at [https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html). With a JavaScript HTTP adapter, the easiest way is to use **Basic Authentication**.
+Cloudant supports several forms of authentication. See the Cloudant documentation about authentication at [https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html). With a JavaScript HTTP adapter, you can use **Basic Authentication**.
 
 In your adapter XML file, specify the `domain` for your Cloudant instance, the `port` and add an `authentication` element of type `basic`. The framework will use those credentials to generate an `Authorization: Basic` HTTP header.
 
@@ -40,25 +40,25 @@ In your adapter XML file, specify the `domain` for your Cloudant instance, the `
 
 ```xml
 <connectivity>
-    <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
-        <protocol>https</protocol>
-        <domain>mysubdomain.cloudant.com</domain>
-        <port>443</port>   
-        <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
-        <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
-        <authentication>
-            <basic/>
-                <serverIdentity>
-                    <username>foribloster5er5engthesce</username>
-                    <password>c2a8c830f3eertyert0729c786644b0badc1</password>
-                </serverIdentity>
-        </authentication>
-        <maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
-        <!-- Following properties used by adapter's key manager for choosing specific certificate from key store
-        <sslCertificateAlias></sslCertificateAlias>
-        <sslCertificatePassword></sslCertificatePassword>
-        -->     
-    </connectionPolicy>
+  <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+    <protocol>https</protocol>
+    <domain>CLOUDANT_ACCOUNT.cloudant.com</domain>
+    <port>443</port>
+    <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+    <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
+    <authentication>
+      <basic/>
+        <serverIdentity>
+          <username>CLOUDANT_KEY</username>
+          <password>CLOUDANT_PASSWORD</password>
+        </serverIdentity>
+    </authentication>
+    <maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
+    <!-- Following properties used by adapter's key manager for choosing specific certificate from key store
+    <sslCertificateAlias></sslCertificateAlias>
+    <sslCertificatePassword></sslCertificatePassword>
+    -->
+  </connectionPolicy>
 </connectivity>
 ```
 
@@ -97,11 +97,11 @@ During the initialization of your Java adapter, set up a `CloudantClient` instan
 **Note:** With Cloudant, you can generate unique API keys to use instead of your real username and password.
 
 ```java
-cloudant = new CloudantClient(cloudantDomain,cloudantKey,cloudantPassword);
-db = cloudant.database(CLOUDANT_DB, false);
+CloudantClient cloudantClient = new CloudantClient(cloudantAccount,cloudantKey,cloudantPassword);
+db = cloudantClient.database(cloudantDBName, false);
 ```
 <br/>
-Using [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) and standard Java API for RESTful Web Services (JAX-RS 2.0), you can create a new document on Cloudant in just a few lines, by sending a JSON representation of the document in the HTTP request.
+Using [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) and standard Java API for RESTful Web Services (JAX-RS 2.0), you can create a new document on Cloudant by sending a JSON representation of the document in the HTTP request.
 
 ```java
 @POST
@@ -121,12 +121,25 @@ public Response addEntry(User user){
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80) the Cordova project.
 
 The sample contains two adapters, one in JavaScript and one in Java.  
-It also contains a Cordva application that works with both the Java and JavaScript adapters.
+It also contains a Cordova application that works with both the Java and JavaScript adapters.
 
-### Sample usage 
-1. Create a database in Cloudant and set the database name in the adapter.
-2. Create a user (an API key) and make sure that you provide read and write rights for this user.
-3. <span style="color:red"> To connect to Cloudant, update the `CloudantAdapter/server/conf/mfp.properties` file with the domain, username, and password at the bottom of the file.</span>
-4. From a **Command-line**, navigate to the project's root folder.
-5. Add a platform using the `cordova platform add` command.
-6. Run the application by running the `cordova run` command.
+### Sample usage
+#### Adapter setup
+1. Create a database in Cloudant and generate an API key. Make sure that you provide read and write rights for this key.
+2. To connect to Cloudant, update the Cloudant configuration:
+
+ * CloudantJS:
+  1. Open the adapter XML file and replace the `CLOUDANT_ACCOUNT`, `KEY` and `PASSWORD` placeholders with the actual values.
+  2. Open the **CloudantJS-impl.js** file and replace the `DATABASE_NAME` placeholder with your database name.
+  3. Deploy the adapter.
+
+ * CloudantJava:
+  1. Deploy the adapter.
+  2. Open the adapter's Configurations page on the MobileFirst Operations Console and replace the `DATABASE_NAME`, `CLOUDANT_ACCOUNT`, `KEY` and `PASSWORD` placeholder with the actual values.
+
+  > To learn more about the adapter's configurations properties see the [Java Adapters](../java-adapters) tutorial.
+
+#### Application setup
+1. From a **Command-line**, navigate to the **CloudantAdapterApp** project's root folder.
+2. Add a platform using the `cordova platform add` command.
+3. Run the application by running the `cordova run` command.
