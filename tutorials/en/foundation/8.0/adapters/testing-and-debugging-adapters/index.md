@@ -16,6 +16,8 @@ This tutorial demonstrates how to test adapters using the MobileFirst Developer 
  * [Using Postman](#using-postman)
  * [Using Swagger](#using-swagger)
 * [Debugging Adapters](#debugging-adapters)
+ * [JavaScript adapters](#javascript-adapters)
+ * [Java adapters](#java-adapters) 
 
 ## Testing Adapters
 MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass `URL` parameters, `path` parameters, `body` parameters or `headers` as you see fit.
@@ -156,6 +158,14 @@ Hello World
 
 
 ## Debugging Adapters
+### JavaScript adapters
+You can debug JavaScript code in JavaScrit adapters by using the `WL.Logger` API.  
+Available logging levels, from least to most verbose, are: `WL.Logger.error`, `WL.Logger.warn, `WL.Logger.info` and `WL.Logger.debug`.
+
+The logs are then printed to the log file of the application server.  
+Be sure to set the server verbosity level accordingly, otherwise you will not see the logging in the log file.
+
+### Java adapters
 Before an adapter's Java code can be debugged, Eclipse needs to be configured as follows:
 
 1. **Maven integration** - Starting Eclipse Kepler (v4.3), Maven support is built-in in Eclipse.  
