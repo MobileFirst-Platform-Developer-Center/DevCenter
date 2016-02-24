@@ -67,7 +67,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Developing Adapters in IDEs](../adapters/developing-adapters/)
 * [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 * [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
-* <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant using an adapter](../adapters/cloudant/)
+* [Integrating with Cloudant using an adapter](../adapters/cloudant/)
 
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications.
