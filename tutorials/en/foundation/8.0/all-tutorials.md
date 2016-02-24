@@ -43,7 +43,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
     * [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
     * [Resource request from iOS applications](../using-the-mfpf-sdk/resource-request-from-ios-applications/)
     * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-android-applications/)
-    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/)
+    * [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/)
 * JSONStore
     * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore-cordova/)
 	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore-ios/)
