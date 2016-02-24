@@ -2,7 +2,10 @@
 title: Logging in Cordova Applications
 relevantTo: [cordova]
 ---
-### Logging example for hybrid applications (JavaScript)
+## Overview
+This tutorial provides the required code snippets in order to add logging capabilities in Cordova applications.
+
+## Logging example
 Outputs to a browser JavaScript console, LogCat, or Xcode console.
 
 ```javascript
@@ -15,16 +18,24 @@ var MathUtils = function(){
    };
 }();
 ```
-### API calls for specific tasks
+
+## Additional API Methods For Specific Tasks
 Log capture is enabled by default. To turn log capture on or off:
 
-```WL.Logger.config({capture: false})```
+```javascript
+WL.Logger.config({capture: false})
+```
 
 The default capture level is DEBUG in development and FATAL in production. To control the capture level (verbosity):
 
-```WL.Logger.config({level: 'FATAL'})```
+```javascript
+WL.Logger.config({level: 'FATAL'})
+```
 
 Log sending is enabled by default. To turn automatic log sending on or off:
 
-```WL.Logger.config({autoSendLogs: false})```
-> For more information about ```WL.Logger API```, see the API reference in the user documentation
+```javascript
+WL.Logger.config({autoSendLogs: false})
+```
+
+> For more information about the `Logger` API, see the API reference in the user documentation.

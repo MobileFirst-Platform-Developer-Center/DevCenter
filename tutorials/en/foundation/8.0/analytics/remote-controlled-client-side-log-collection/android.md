@@ -8,7 +8,7 @@ This tutorial provides the required code snippets in order to add logging capabi
 ### Persisting Log Capture
 MobileFirst Platform SDK for Android cannot persistently capture log data until the `com.worklight.common.Logger.setContext(Context)` method is called. This is best called in the `onCreate` method of your main Android activity.
 
-#### Logging Example
+## Logging Example
 The below code snippet will output to the Android Studio LogCat view:
 
 ```java
@@ -24,23 +24,23 @@ public class MathUtils{
 }
 ```
 
-### Additional API Methods For Specific Tasks
-* Log capture is enabled by default. To turn log capture on or off:
+## Additional API Methods For Specific Tasks
+Log capture is enabled by default. To turn log capture on or off:
 
-    ```java
-    Logger.setCapture(false)
-    ```
+```java
+Logger.setCapture(false)
+```
 
-* The default capture level is FATAL in development and in production. To control the capture level (verbosity):
+The default capture level is FATAL in development and in production. To control the capture level (verbosity):
 
-    ```java
-    Logger.setLevel(Logger.FATAL)
-    ```
+```java
+Logger.setLevel(Logger.FATAL)
+```
 
-* Log sending is enabled by default. To turn automatic log sending on or off:
+Log sending is enabled by default. To turn automatic log sending on or off:
 
-    ```java
-    Logger.setAutoSendLogs(false)
-    ```
+```java
+Logger.setAutoSendLogs(false)
+```
 
 > For more information about the `Logger` API, see the API reference in the user documentation.
