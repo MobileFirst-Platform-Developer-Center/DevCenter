@@ -38,17 +38,17 @@ Declare the required procedures below the connectivity element:
 	<description>JavaScriptHTTP</description>
 	<connectivity>
 		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
-			<protocol>http</protocol>
-			<domain>www.engadget.com</domain>
-			<port>80</port>
+			<protocol>https</protocol>
+			<domain>mobilefirstplatform.ibmcloud.com</domain>
+			<port>443</port>
 			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
 			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
 			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
 		</connectionPolicy>
 	</connectivity>
 
-	<procedure name="getFeeds"/>
-	<procedure name="getFeedsFiltered"/>
+	<procedure name="getFeed"/>
+	<procedure name="getFeedFiltered"/>
 
 </mfp:adapter>
 ```
@@ -76,11 +76,11 @@ Provide an input parameter object, which must specify:
 * The transformation type (optional)
 
 ```js
-function getFeeds() {
+function getFeed() {
   var input = {
       method : 'get',
       returnedContentType : 'xml',
-      path : "rss.xml"
+      path : "feed.xml"
   };
 
 
@@ -91,16 +91,16 @@ function getFeeds() {
 >See the topic about "WL.Server.invokeHttp" in the user documentation for a complete list of options.
 
 ## XSL transformation filtering
-You can apply XSL transformation to the received data, for example to filter  the data.  
+You can also apply XSL transformation to the received data, for example to filter the data.  
 To apply XSL transformation, specify the transformation options in the input parameters of the procedure invocation:
 
 ```js
-function getFeedsFiltered() {
+function getFeedFiltered() {
 
   var input = {
       method : 'get',
       returnedContentType : 'xml',
-      path : "rss.xml",
+      path : "feed.xml",
       transformation : {
         type : 'xslFile',
         xslFile : 'filtered.xsl'
