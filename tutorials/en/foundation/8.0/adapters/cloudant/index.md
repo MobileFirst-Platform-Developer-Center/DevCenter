@@ -141,5 +141,6 @@ It also contains a Cordova application that works with both the Java and JavaScr
 
 #### Application setup
 1. From a **Command-line**, navigate to the **CloudantAdapterApp** project's root folder.
-2. Add a platform using the `cordova platform add` command.
-3. Run the application by running the `cordova run` command.
+2. Register the application by running the command: `mfpdev app register`.
+3. Add a platform using the `cordova platform add` command.
+4. Run the application by running the `cordova run` command.
