@@ -15,17 +15,17 @@
         "thumbnail": "//img.youtube.com/vi/vgGJLY8oxmc/hqdefault.jpg",
         "tags": ["Bluemix","MobileServices"]
     }, {
-        "caption": "Push Notifications Service",
+        "caption": "MobileFirst 7.x Push Notifications Service",
         "url": "//www.youtube.com/watch?v=REs-JSqlIUI",
         "thumbnail": "//img.youtube.com/vi/REs-JSqlIUI/hqdefault.jpg",
         "tags": ["Bluemix", "MobileServices"]
     }, {
-        "caption": "Streamline integration with backend systems using MobileFirst",
+        "caption": "Streamline integration with backend systems using MobileFirst 7.x",
         "url": "//www.youtube.com/watch?v=0gQk3IvfK0A",
         "thumbnail": "//img.youtube.com/vi/0gQk3IvfK0A/hqdefault.jpg",
         "tags": ["Integration"]
     }, {
-        "caption": "Creating a Windows Native C# app connecting to MobileFirst",
+        "caption": "Creating a Windows Native C# app connecting to MobileFirst 7.x",
         "url": "//www.youtube.com/watch?v=Ntt25H6PAxI",
         "thumbnail": "//img.youtube.com/vi/Ntt25H6PAxI/hqdefault.jpg",
         "tags": ["Development", "Android"]
@@ -35,47 +35,47 @@
         "thumbnail": "//img.youtube.com/vi/FMTmOUPBhNI/hqdefault.jpg",
         "tags": ["Integration"]
     }, {
-        "caption": "IBM MobileFirst Platform Foundation With Android ProGuard",
+        "caption": "IBM MobileFirst Platform 7.x Foundation With Android ProGuard",
         "url": "//www.youtube.com/watch?v=WrCmLJuIMuk",
         "thumbnail": "//img.youtube.com/vi/WrCmLJuIMuk/hqdefault.jpg",
         "tags": ["Integration", "Android"]
     }, {
-        "caption": "Operational Analytics for LOB",
+        "caption": "MobileFirst 7.x Operational Analytics for LOB",
         "url": "//www.youtube.com/watch?v=euuvr9DaT5M",
         "thumbnail": "//img.youtube.com/vi/euuvr9DaT5M/hqdefault.jpg",
         "tags": ["Analytics"]
     }, {
-        "caption": "Operational Analytics console",
+        "caption": "MobileFirst 7.x Operational Analytics console",
         "url": "//www.youtube.com/watch?v=EQDpRF-9Smc",
         "thumbnail": "//img.youtube.com/vi/EQDpRF-9Smc/hqdefault.jpg",
         "tags": ["Analytics"]
     }, {
-        "caption": "Operational Analytics Custom Charts",
+        "caption": "MobileFirst 7.x Operational Analytics Custom Charts",
         "url": "//www.youtube.com/watch?v=XtlJI4ZemZQ",
         "thumbnail": "//img.youtube.com/vi/XtlJI4ZemZQ/hqdefault.jpg",
         "tags": ["Analytics"]
     }, {
-        "caption": "Getting familiar with Java adapters - part 1",
+        "caption": "Getting familiar with Java adapters in MobileFirst 7.x - part 1",
         "url": "//www.youtube.com/watch?v=cKM5480-6wI",
         "thumbnail": "//img.youtube.com/vi/cKM5480-6wI/hqdefault.jpg",
         "tags": ["Java", "Adapters"]
     }, {
-        "caption": "Getting familiar with Java adapters - part 2",
+        "caption": "Getting familiar with Java adapters in MobileFirst 7.x - part 2",
         "url": "//www.youtube.com/watch?v=Z2QUi33_a5k",
         "thumbnail": "//img.youtube.com/vi/Z2QUi33_a5k/hqdefault.jpg",
         "tags": ["Java", "Adapters"]
     }, {
-        "caption": "OAuth security - part 1",
+        "caption": "MobileFirst 7.x OAuth security - part 1",
         "url": "//www.youtube.com/watch?v=uyeGupYSZj4",
         "thumbnail": "//img.youtube.com/vi/uyeGupYSZj4/hqdefault.jpg",
         "tags": ["OAuth", "Security"]
     }, {
-        "caption": "OAuth security - part 2",
+        "caption": "MobileFirst 7.x OAuth security - part 2",
         "url": "//www.youtube.com/watch?v=eeFBCptXLFU",
         "thumbnail": "//img.youtube.com/vi/eeFBCptXLFU/hqdefault.jpg",
         "tags": ["OAuth", "Security"]
     }, {
-        "caption": "Integrating IBM MobileFirst CLI with Grunt",
+        "caption": "Integrating IBM MobileFirst 7.x CLI with Grunt",
         "url": "//www.youtube.com/watch?v=tFvogRMC4ss",
         "thumbnail": "//img.youtube.com/vi/tFvogRMC4ss/hqdefault.jpg",
         "tags": ["CLI", "Integration"]
