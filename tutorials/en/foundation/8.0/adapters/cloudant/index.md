@@ -117,6 +117,7 @@ public Response addEntry(User user){
 }
 ```
 
+<img alt="Image of the sample application" src="cloudant-app.png" style="float:right"/>
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80) the Cordova project.
 
