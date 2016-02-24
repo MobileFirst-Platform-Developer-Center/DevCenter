@@ -26,8 +26,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Click on the "New" button next to **Applications**
     * Select a **Windows** platform
-    * Enter **com.ibm.sample** as the **application identifier**
-    * Enter **1.0** as the **version** value
+    * Enter **MFPStarterCSharp.Windows** as the **application identifier** for Windows, or **MFPStarterCSharp.WindowsPhone** for Windows Phone.
+    * Enter **1.0.0** as the **version** value
 
     ![Image of selecting platform, and providing an identifier and version](register-an-application-windows.png)
 
@@ -60,7 +60,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ```
 
 ### 4. Creating an adapter
-Click on the "New" button next to **Adapters**
+Click on the "New" button next to **Adapters**.  
+Alternatively, download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
@@ -73,8 +74,6 @@ Click on the "New" button next to **Adapters**
     ```
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
-
-* Alternatively, download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
     
     ![Image of create an adapter](create-an-adapter.png)
 

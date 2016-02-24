@@ -5,43 +5,51 @@ relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 ## Overview
-To populate your custom charts you can use the Analytics API to send customized data. Custom data is any key/value pair that you would like to collect that is not an out of the box feature, like button presses.
+To populate your custom charts you can use the Analytics API to send customized data. Custom data is any key/value pair that you would like to collect that is not an out-of-the-box feature, like button presses.
 
-When collecting custom analytics data, the app writes to the devices file system and is not sent until the `send` API is called. After the `send` API is called the app deletes the data from the file system and begins collecting again.
+When collecting custom analytics data the app writes to the devices file system and is not sent until the `send` API method is called. After the `send` API method is called the app deletes the data from the file system and begins populating the file system with logs again. To send data with Analtyics see [Sending Analytics Data].
 
-Before you being in the native app import the Analytics SDK.
+To use Analytics APIs in iOS and Android applications, first import the Analytics SDK.  
+In Cordova applications this is not needed.
+
 #### Android
 ```java
 import com.worklight.common.WLAnalytics;
 ```
+
 #### iOS
 ```objective-c
 import "WLAnalytics.h"
 ```
 
 #### Jump to:
-* Initializing Analytics
-* Enabling/Disabling Client Event Types
+* [Initializing Analytics](initializing-analytics)
+* [Enabling/Disabling Client Event Types]
 * Custom Events
  * [JavaScript API](#javascript-api)
  * [Java API](#java-api)
  * [Objective-C API](#objective-c-api)
 
 ## Initializing Analytics
-Before you can start collecting the out of the box data that Operational Analytics provides you first need to initialize Analytics.
+Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to initialize Analytics.  
 
+<span style="color:red"> I don't understand the below sentence. do i need to do something in my javascript to get this working?</span>
 In cordova this is done through your native application. So the code snippets below are going to show you how to initialize analytics in iOS and Android.
 
 #### Android:
-```Java
+
+```java
 WLAnalytics.init(this.getApplication());
 ```
 
 #### iOS:
+
 ```objective-c
+
 ```
 
-After initializing analytics the app will start collecting user information, like app sessions.
+After initializing analytics, the application will begin collecting user information, like app sessions.
+<span style="color:red">Where did this come from? This is not mentioned in the overview - what is being collected once analytics has been initialized. Also, can I control what is being collected by the sdk?</span>
 
 After sending data to the MobileFirst server you will start to see charts filled out like the one below:
 
@@ -50,8 +58,9 @@ After initializing the Analtyics SDK app sessions will start to be recorded on t
 
 As soon as the device is set up to record sessions and you send your data, you will see a chart like the one below.
 
-!(sessions-chart)[./analytics-app-sessions.png]
+![sessions-chart](analytics-app-sessions.png)
 
+## Enabling/Disabling Client Event Types
 You can enable or disable the collecting of app sessions with the API below:
 
 #### Android:
@@ -60,6 +69,10 @@ You can enable or disable the collecting of app sessions with the API below:
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
+
+#### iOS
+
+#### Cordova
 
 ## Client Network Activities
 Collection on adapters and network occur in two different locations on the client and on the server.
@@ -130,5 +143,23 @@ NSDictionary *inventory = @{
 };
 
 [[WLAnalytics sharedInstance] log:@"Custom event" withMetadata:inventory];
+[[WLAnalytics sharedInstance] send];
+```
+
+##Sending Analytics
+
+#### JavaScript
+```javascript
+WL.Analytics.send();
+```
+ 
+##### Android
+
+```java
+WLAnalytics.send();
+```
+
+#### Objective-C API
+```objective-c
 [[WLAnalytics sharedInstance] send];
 ```
