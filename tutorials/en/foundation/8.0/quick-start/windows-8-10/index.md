@@ -26,8 +26,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Click on the "New" button next to **Applications**
     * Select a **Windows** platform
-    * Enter **com.ibm.sample** as the **application identifier**
-    * Enter **1.0** as the **version** value
+    * Enter **MFPStarterCSharp.Windows** as the **application identifier** for Windows, or **MFPStarterCSharp.WindowsPhone** for Windows Phone.
+    * Enter **1.0.0** as the **version** value
 
     ![Image of selecting platform, and providing an identifier and version](register-an-application-windows.png)
 
