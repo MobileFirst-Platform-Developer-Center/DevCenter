@@ -7,7 +7,7 @@ weight: 3
 ## Overview
 To populate your custom charts you can use the Analytics API to send customized data. Custom data is any key/value pair that you would like to collect that is not an out of the box feature, like button presses.
 
-When collecting custom analytics data, the app writes to the devices file system and is not sent until the `send` API is called. After the `send` API is called the app deletes the data from the file system and begins collecting again.
+When collecting custom analytics data, the app writes to the devices file system and is not sent until the `send` API is called. After the `send` method is called the app deletes the data from the client file system and begins populating the filesystem with logs again. To see how to send data with Analtyics see [Sending Analytics].
 
 Before you being in the native app import the Analytics SDK.
 #### Android
@@ -130,5 +130,23 @@ NSDictionary *inventory = @{
 };
 
 [[WLAnalytics sharedInstance] log:@"Custom event" withMetadata:inventory];
+[[WLAnalytics sharedInstance] send];
+```
+
+##Sending Analytics
+
+#### JavaScript
+```javascript
+WL.Analytics.send();
+```
+ 
+##### Android
+
+```java
+WLAnalytics.send();
+```
+
+#### Objective-C API
+```objective-c
 [[WLAnalytics sharedInstance] send];
 ```
