@@ -73,7 +73,8 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ```
     
 ### 4. Creating an adapter
-Click on the "New" button next to **Adapters**
+Click on the "New" button next to **Adapters**.  
+Alternatively, download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
@@ -86,8 +87,6 @@ Click on the "New" button next to **Adapters**
     ```
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
-
-* Alternatively, download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
     
     ![Image of create an adapter](create-an-adapter.png)
 
