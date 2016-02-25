@@ -15,7 +15,7 @@ downloads:
 ## Overview
 **Prerequisite:** This tutorial is a continuation of the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/android) tutorial. Make sure to read it first.
 
-The challenge handler implementation will be modified to fit the `UserLoginSecurityCheck` created in the matching [security check tutorial](../security-check), and will demonstrate a few additional features (APIs) such as the preemptive `login` , `logout` and `obtainAccessToken`.
+The challenge handler implementation will be modified to fit the `UserLoginSecurityCheck` created in the matching [security check tutorial](../security-check), and will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
 
 ## Creating the challenge handler
 1. Create a Java class that extends `WLChallengeHandler`:
@@ -201,7 +201,7 @@ Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapt
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../creating-adapters/).
 * Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register` from a **command-line** window.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `UserLogin`.
+    * In the MobileFirst Operations Console, under **Applications** → **APP_NAME** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `UserLogin`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
