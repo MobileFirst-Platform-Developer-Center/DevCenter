@@ -3,6 +3,9 @@ layout: tutorial
 title: Handling Push Notifications in Cordova applications
 show_children: true
 relevantTo: [cordova]
+downloads:
+  - name: Download Cordova project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80
 weight: 3
 ---
 ## Overview
@@ -25,6 +28,7 @@ In this tutorial you learn how to configure a Cordova application and how to use
     * [iOS platform](#ios-platform)
 * [Notifications API](#notifications-api)
 * [Handling a push notification](#handling-a-push-notification)
+* [Sample application](#sample-application)
 
 ## Notifications Configuration
 Create a new Cordova project or use an existing one.  
@@ -58,7 +62,8 @@ In Xcode, enable push notifications for your application in the **Capabilities**
 ### Client-side
 Javascript Function | Description
 --- | ---
-`MFPPush.isPushSupported(success,failure)` | Does the device support push notifications.
+`MFPPush.initialize(success, failure)` | Initialize the MFPPush instance. 
+`MFPPush.isPushSupported(success, failure)` | Does the device support push notifications.
 `MFPPush.registerDevice(success, failure)` | Registers the device with the Push Notifications Service.
 `MFPPush.getTags(success, failure)` | Retrieves all the tags available in a push notification service instance.
 `MFPPush.subscribe(tag, success, failure)` | Subscribes to a particular tag.
@@ -182,10 +187,23 @@ Javascript Function | Description
     ```
 
 ## Handling a push notification
-You can handle a received push notification by operating on its response object.
+You can handle a received push notification by operating on its response object in the registered callback function.
 
 ```javascript
 var notificationReceived = function(message) {
     alert(JSON.stringify(message));
 };
 ```
+
+<img alt="Image of the sample application" src="sample-app" style="float:right"/>
+## Sample application
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) the Cordova project.
+
+### Sample usage
+
+#### Application setup
+1. From a **Command-line**, navigate to the project's root folder.
+2. Register the application by running the command: `mfpdev app register`.
+3. Add a platform using the `cordova platform add` command.
+4. Follow required set-up steps mentioned in this tutorial.
+5. Run the application by running the `cordova run` command.
