@@ -84,7 +84,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ## Creating the AuthenticatedUser object
-The `UserAuthenticationSecurityCheck` stores a representation of the current user in the security check's persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
+The `UserAuthenticationSecurityCheck` stores a representation of the current client (user, device, application) in persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
 Users are represented by an instance of the class `AuthenticatedUser`. Its constructor receives a `id`, `displayName` and `securityCheckName`.
 
 In this example, we are using the `username` for both the `id` and `displayName`.
@@ -126,7 +126,7 @@ In this example, we are using the `username` for both the `id` and `displayName`
 
 You can use `this.getName()` to get the current security check name.
 
-`UserAuthenticationSecurityCheck` will call your `createUser()` implementation after a successful login.
+`UserAuthenticationSecurityCheck` will call your `createUser()` implementation after a successful `validateCredentials`.
 
 ## Adding Remember Me functionality
 `UserAuthenticationSecurityCheck` by default uses the `successStateExpirationSec` property to determine how long does the success state last; this property was inherited from `CredentialsValidationSecurityCheck`.
