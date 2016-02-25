@@ -26,6 +26,7 @@ In this tutorial you learn how to configure an Android application and how to us
 * [API implementation](#api-implementation)
 * [Handling a push notification](#handling-a-push-notification)
 * [Handling a secure push notification](#handling-a-secure-push-notification)
+* [Sample applications](#sample-application)
 
 ## Notifications Configuration
 Create a new Android Studio project or use an existing one.  
@@ -305,3 +306,8 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ## Handling a secure push notification
 <span style="color:red">TODO: Add instructions on handling secure push notifications.</span>
 
+
+## Sample application
+<!-- ![Sample application image](notifications-app.png =25x "Push Notifications") -->
+
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) the Cordova project.

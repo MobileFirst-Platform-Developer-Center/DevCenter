@@ -69,7 +69,7 @@ To setup APNS:
 * During the production phase, use the apns-certificate-production.p12 production certificate file.
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
 
-![Image of adding the GCM crendentials](server-side-setup.png)
+![Image of adding the GCM credentials](server-side-setup.png)
 
 ## Adding Tags
 In the MobileFirst Operations Console → **[your application] → Push → Tags**, click **Create New**.  
