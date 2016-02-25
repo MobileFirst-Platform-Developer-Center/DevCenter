@@ -23,6 +23,7 @@ In this tutorial you learn how to configure an Android application and how to us
 
 * [Notifications configuration](#notifications-configuration)
 * [Notifications API](#notifications-api)
+* [API implementation](#api-implementation)
 * [Handling a push notification](#handling-a-push-notification)
 * [Handling a secure push notification](#handling-a-secure-push-notification)
 
@@ -112,36 +113,172 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 ### Client-side
 
-| Java Methods                                                      | Description                                                              |
-|-------------------------------------------------------------------|--------------------------------------------------------------------------|
-| `MFPPush.subscribe(String[] tagNames, MFPPushResponceListener)`   | Subscribes the device to the specified tag(s).                           |
-| `MFPPush.unsubscribe(String[] tagNames, MFPPushResponceListener)` | Unsubscribes the device from the specified tag(s).                       |
-| `MFPPush.getTags(MFPPushResponceListener)`                        | Returns a list of available tags the device can subscribe to.            |
-| `MFPPush.getSubscriptions(MFPPushResponceListener)`               | Returns a list of tag names as strings that the device is subscribed to. |
+| Java Methods | Description |
+|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [`MFPPush.initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
+| [`MFPPush.isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
+| [`MFPPush.registerDevice(MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
+| [`MFPPush.getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
+| [`MFPPush.subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
+| [`MFPPush.getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
+| [`MFPPush.unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
+| [`MFPPush.unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
 
 
-### API methods for tag and broadcast notifications
+### API implementation
 
-* `WLNotificationListener` - Defines the callback method to be notified when the notification arrives.
-* `client.getPush().setWLNotificationListener(listener)` -
-This method sets the implementation class of the `WLNotificationListener` interface.
-* `client.getPush().setOnReadyToSubscribeListener(listener)` -
-This method registers a listener to be used for push notifications. This listener should implement the `onReadyToSubscribe()` method.
-* The `onMessage(props,payload)` method of `WLNotificationListener` is called when a push notification is received by the device.
+All API calls must be called on an instance of `MFPPush`.  This can be by created a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.  Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API's
 
---* *props* – A JSON block that contains the notifications properties of the platform.
+#### Initialization
 
---* *payload* – A JSON block that contains other data that is sent from MobileFirst Server. The JSON block also contains the tag name for tag-based or broadcast notification. The tag name appears in the “tag” element. For broadcast notification, the default tag name is `Push.ALL`.
+Required for the client application to connect to MFPPush service with the right application context.
+
+* The API method should be called first before using any other MFPPush APIs. 
+* Registers the callback function to handle received push notifications.
+
+```java
+MFPPush.getInstance().initialize(this);
+```
+
+#### Is push supported
+
+Checks if the device supports push notifications.
+
+```java
+Boolean isSupported = MFPPush.getInstance().isPushSupported();
+
+if (isSupported ) {
+    // Push is supported
+} else {
+    // Push is not supported
+}
+```
+
+#### Register device
+
+Register the device to the push notifications service.
+
+```java
+MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
+    @Override
+    public void onSuccess(String s) {
+        // Successfully registered
+    }
+
+    @Override
+    public void onFailure(MFPPushException e) {
+        // Registration failed with error
+    }
+});
+```
+
+#### Get tags
+
+Retrieve all the available tags from the push notification service.
+
+```java
+MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
+    @Override
+    public void onSuccess(List<String> strings) {
+        // Successfully retrieved tags as list of strings
+    }
+
+    @Override
+    public void onFailure(MFPPushException e) {
+        // Failed to receive tags with error
+    }
+});
+````
+#### Subscribe
+
+Subscribe to desired tags.
+
+```java
+String[] tags = {"Tag 1", "Tag 2"};
+
+MFPPush.getInstance().subscribe(tags, new MFPPushResponseListener<String[]>() {
+    @Override
+    public void onSuccess(String[] strings) {
+        // Subscribed successfully
+    }
+
+    @Override
+    public void onFailure(MFPPushException e) {
+        // Failed to subscribe
+    }
+});
+```
+
+#### Get subscriptions
+
+Retrieve tags the device is currently subscribed to.
+
+```java
+MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>() {
+    @Override
+    public void onSuccess(List<String> strings) {
+        // Successfully received subscriptions as list of strings
+    }
+
+    @Override
+    public void onFailure(MFPPushException e) {
+        // Failed to retrieve subscriptions with error
+    }
+});
+```
+
+#### Unsubscribe
+
+Unsubscribe from tags.
+
+```java
+String[] tags = {"Tag 1", "Tag 2"};
+
+MFPPush.getInstance().unsubscribe(tags, new MFPPushResponseListener<String[]>() {
+    @Override
+    public void onSuccess(String[] strings) {
+        // Unsubscribed successfully
+    }
+
+    @Override
+    public void onFailure(MFPPushException e) {
+        // Failed to unsubscribe
+    }
+});
+```
+
+#### Unregister
+
+Unregister the device from push notification service instance.
+
+```java
+MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
+    @Override
+    public void onSuccess(String s) {
+        disableButtons();
+        // Unregistered successfully
+    }
+
+    @Override
+    public void onFailure(MFPPushException e) {
+        // Failed to unregister
+    }
+});
+```
+
 
 ## Handling a push notification
 
 In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing one of the following methods.
 
+
 ### Option One
 
-1. In the activity in which you wish the handle push notifications, add `implements MFPPushNofiticationListener` to the class declaration.
-2. Set the class to be the listener by calling `listen(this)` on an instance of `MFPPush`.
-2. Then you will need to add the following required method:
+In the activity in which you wish the handle push notifications.
+
+1. Add `implements MFPPushNofiticationListener` to the class declaration.
+2. Set the class to be the listener by calling `MFPPush.getInstance().listen(this)` in the `onCreate` method.
+2. Then you will need to add the following *required* method:
 
 	```java
 	@Override
@@ -157,15 +294,13 @@ In order to handle a push notification you will need to set up a `MFPPushNotific
 Create a listener by calling `listen(new MFPPushNofiticationListener())` on an instance of `MFPPush` as outlined below:
 
 ```java
-push.listen(new MFPPushNotificationListener() {
+MFPPush.getInstance().listen(new MFPPushNotificationListener() {
     @Override
     public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
         // Handle push notification here
     }
 });
 ```
-
-**Note:** `push` was obtained by calling `MFPPush push = MFPPush.getInstance()`
 
 ## Handling a secure push notification
 <span style="color:red">TODO: Add instructions on handling secure push notifications.</span>
