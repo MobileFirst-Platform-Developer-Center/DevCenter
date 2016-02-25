@@ -58,10 +58,6 @@ In Xcode, enable push notifications for your application in the **Capabilities**
 
 ## Notifications API
 ### Client-side API for tag notifications
-
-
-## Notifications API
-### Client-side API for tag notifications
 Javascript Function | Description
 --- | ---
 MFPPush.isPushSupported(success,failure) | Does the device support push notifications.
