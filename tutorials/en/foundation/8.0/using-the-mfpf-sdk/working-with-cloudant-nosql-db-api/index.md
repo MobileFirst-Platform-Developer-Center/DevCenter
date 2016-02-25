@@ -45,7 +45,7 @@ The attached sample integrates four major components for authentication, verific
 
 The following diagram shows the initial data request from Cloudant Data Layer Local via the mobile device. The process starts after the device receives an `401 unauthorized` error message when requesting a protected resource. The diagram does not show the entire OAuth process, but you can find more information in the topic about the OAuth-based security model, in the user documentation.
 
-![BlueList Topology](bluelist-topology.png "BlueList Topology")
+![BlueList Topology](bluelist-topology.jpg "BlueList Topology")
 
 1. A request to a protected resource is sent from the mobile device to MobileFirst Server. In this sample, a request is made through adapter-based authentication with a basic username and password.
 2. On valid authentication, a token is received and sent back to the device.
