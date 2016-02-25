@@ -24,6 +24,7 @@ In this tutorial you learn how to configure a Cordova application and how to use
     * [Android platform](#android-platform)
     * [iOS platform](#ios-platform)
 * [Notifications API](#notifications-api)
+* [Configure Application for Push Notifications](#configure-application-for-push-notifications)
 * [Handling a push notification](#handling-a-push-notification)
 * [Handling a secure push notification](#handling-a-secure-push-notification)
 
@@ -58,84 +59,93 @@ In Xcode, enable push notifications for your application in the **Capabilities**
 ## Notifications API
 ### Client-side API for tag notifications
 
-`MFPPush.isPushSupported()` - Returns `true` if push notifications are supported by the platform, or `false` otherwise.\
 
-```javascript
-MFPPush.isPushSupported(function(successResponse) {
-    alert("Push Supported: " + successResponse);
-}, function(failureResponse) {
-    alert("Failed to get push support status");
-    }
-);
-```
+## Notifications API
+### Client-side API for tag notifications
+Javascript Function | Description
+--- | ---
+MFPPush.isPushSupported(success,failure) | Does the device support push notifications.
+MFPPush.registerDevice(success, failure) | Registers the device with the Push Notifications Service.
+MFPPush.getTags(success, failure) | Retrieves all the tags available in a push notification service instance.
+MFPPush.subscribe(tag, success, failure) | Subscribes to a particular tag.
+MFPPush.getSubsciptions(success, failure) | Retrieves the tags device is currently subscribed to
+MFPPush.unsubscribe(tag, success, failure) | Unsubscribes from a particular tag.
+MFPPush.unregisterDevice(success, failure) | Unregisters the device from the Push Notifications Service
 
-`MFPPush.registerDevice(options)` - Registers devices for push notifications (?!? confirm definition ?!?)
 
-```javascript
-MFPPush.registerDevice(settings, function(successResponse) {
-    alert("Successfully registered");
-    enableButtons();
-}, function(failureResponse) {
-    alert("Failed to register");
-    }
-);
-```
+### Configure Application for Push Notifications
 
-`MFPPush.getTags()` - Gets all tags available (?!? confirm definition?!?)
+1. Configure the app to check if device supports push notifications.
 
-```javascript
-MFPPush.getTags(function(tags) {
-    alert(JSON.stringify(tags));
-}, function(){
-    alert("Failed to get tags");
-    }
-);
-```
+    ```javascript 
+    MFPPush.isPushSupported(function(successResponse) {
+        alert("Push Supported: " + successResponse);
+    }, function(failureResponse) {
+        alert("Failed to get push support status");
+    });
+    ```
+2. Register device with push notifications service.
 
-`MFPPush.subscribe(tagName,options)` - Subscribes the device to the specified tag name.
+    ```javascript
+    MFPPush.registerDevice(function(successResponse) {
+        alert("Successfully registered");
+        enableButtons();
+    }, function(failureResponse) {
+        alert("Failed to register");
+    });
+    ```
 
-```javascript
-var tags = ['sample-tag1','sample-tag2']
-MFPPush.subscribe(tags,function(tags) {
-    alert("Subscribed successfully");
-}, function(){
-    alert("Failed to subscribe");
-);
-```
+3. Get all the available tags from the push notification service instance.
 
-`MFPPush.getSubsciptions(options)` - Get tags the device is subscribed to.
+    ```javascript
+    MFPPush.getTags(function(tags) {
+        alert(JSON.stringify(tags));
+    }, function(){
+        alert("Failed to get tags");
+    });
+    ```
 
-```javascript
-MFPPush.getSubscriptions(function(subscriptions) {
-    alert(JSON.stringify(subscriptions));
-}, function(){
-    alert("Failed to get subscriptions");
-    }
-);
-```
+4. Subscribe to the desired tags
 
-`MFPPush.unsubscribe(tagName,options)` - Unsubscribes the device to the specified tag name.
+    ```javascript
+    var tags = ['sample-tag1','sample-tag2']
+    MFPPush.subscribe(tags,function(tags) {
+        alert("Subscribed successfully");
+    }, function(){
+        alert("Failed to subscribe");
+    });
+    ```
 
-```javascript
-var tags = ['sample-tag1','sample-tag2']
-MFPPush.unsubscribe(tags, function(tags) {
-    alert("Unsubscribed successfully");
-}, function(){
-    alert("Failed to unsubscribe");
-    }
-);
-```
+5. Retrieve tags device is currently subscribed to
 
-`MFPPush.unregisterDevice(options)` - Unregisters device for push notifications.
+    ```javascript
+    MFPPush.getSubscriptions(function(subscriptions) {
+        alert(JSON.stringify(subscriptions));
+    }, function(){
+        alert("Failed to get subscriptions");
+    });
+    ```
 
-```javascript
-MFPPush.unregisterDevice(function(successResponse) {
-    alert("Unregistered successfully");
-}, function(){
-    alert("Failed to unregister");
-    }   
-);
-```
+6. Unsubscribe to the desired tags
+
+    ```javascript
+    var tags = ['sample-tag1','sample-tag2']
+    MFPPush.unsubscribe(tags, function(tags) {
+        alert("Unsubscribed successfully");
+    }, function(){
+        alert("Failed to unsubscribe");
+    });
+    ```
+
+7. Unregister device from push notification service instance.
+
+    ```javascript
+    MFPPush.unregisterDevice(function(successResponse) {
+        alert("Unregistered successfully");
+    }, function(){
+        alert("Failed to unregister");
+    });
+    ```
 
 ### Handling a push notification
 You can handle a push notification by taking message received and creating an alert.
