@@ -110,11 +110,15 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 ## Notifications API
 <span style="color:red">TODO: Add introduction text to the API.</span>
 
-### API methods for tag notifications
-* `MFPPush.subscribe(String[] tagNames, MFPPushResponceListener)` - Subscribes the device to the specified tag(s).
-* `MFPPush.unsubscribe(String[] tagNames, MFPPushResponceListener)` -  Unsubscribes the device from the specified tag(s).
-* `MFPPush.getTags(MFPPushResponceListener)` - Returns a list of available tags the device can subscribe to.
-* `MFPPush.getSubscriptions(MFPPushResponceListener)` - Returns a list of tag names as strings that the device is subscribed to.
+### Client-side
+
+| Java Methods                                                      | Description                                                              |
+|-------------------------------------------------------------------|--------------------------------------------------------------------------|
+| `MFPPush.subscribe(String[] tagNames, MFPPushResponceListener)`   | Subscribes the device to the specified tag(s).                           |
+| `MFPPush.unsubscribe(String[] tagNames, MFPPushResponceListener)` | Unsubscribes the device from the specified tag(s).                       |
+| `MFPPush.getTags(MFPPushResponceListener)`                        | Returns a list of available tags the device can subscribe to.            |
+| `MFPPush.getSubscriptions(MFPPushResponceListener)`               | Returns a list of tag names as strings that the device is subscribed to. |
+
 
 ### API methods for tag and broadcast notifications
 
