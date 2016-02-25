@@ -16,8 +16,9 @@ In this tutorial you learn how to configure a Cordova application and how to use
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/index)
+    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
     * [Push Notifications Overview](../push-notifications-overview)
+    * [Preparing the MobileFirst Server for push notification](../sending-push-notifications/)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server
 * MobileFirst Developer CLI installed on the developer workstation
 * Cordova CLI installed on the developer workstation
@@ -114,6 +115,12 @@ Javascript Function | Description
         }
     );
     ```
+    
+    > *Optional*. *iOS-only*. Before calling the above `registerDevice` API method, use the `setOptions(options)` API method to enable or disable various options, such as alerts, notification sound, badge and interactive notifications categories.  
+    > 
+    > Read more about the the `setOptions(options)` API method in the user documentation.
+    
+    
 
 * Retrieve all the available tags from the push notification service.
 
@@ -195,7 +202,7 @@ var notificationReceived = function(message) {
 };
 ```
 
-<img alt="Image of the sample application" src="sample-app" style="float:right"/>
+<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) the Cordova project.
 
