@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Implementing the challenge handler in Cordova applications
-breadcrumb_title: Cordova applications
+breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 2
 downloads:
@@ -152,7 +152,7 @@ There are two samples associated with this tutorial:
 Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80) the Remember Me project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80) the Remember Me project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginCordova/tree/release80) the Remember Me project.
 
 ### Sample usage
