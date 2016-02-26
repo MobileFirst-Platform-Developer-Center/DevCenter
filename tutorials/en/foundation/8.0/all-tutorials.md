@@ -106,7 +106,7 @@ Send notifications with IBM MobileFirst Platform Foundation.
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
-* <span style="color:red">IN PROGRESS </span>[Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
+* [Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
 * <span style="color:red">IN PROGRESS </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
     * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/cordova/)
     * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/ios/)
