@@ -9,7 +9,7 @@ relevantTo: [ios,android,windows,cordova]
 ## Overview
 MobileFirst Platform Foundation Operational Analytics collects data from app to server activities, client logs, client crashes, and server side logs from the MobileFirst Runtime Server and client devices. Collecting analytics from all these data points populates the Operational Analytics Charts with infrastructure and client side information.
 
-![architecture diagram](mfp_operational_analytics.png)
+![architecture diagram](mfp_operational_analytics.jpg)
 
 Operational Analytics is bundled by default as part of the [MobileFirst Platform Foundation Development Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
 
