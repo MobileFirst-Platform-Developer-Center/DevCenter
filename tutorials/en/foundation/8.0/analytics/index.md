@@ -21,7 +21,7 @@ Operational Analytics is bundled by default as part of the [MobileFirst Platform
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## MobileFirst Analytics Console
-You can open the Analytics Console from the MobileFirst Operations Console.
+You can open the Analytics Console from the MobileFirst Operations Console, by clicking on "Analytics Console".
 
 ![Analytics console button](analytics-console-button.png)
 
