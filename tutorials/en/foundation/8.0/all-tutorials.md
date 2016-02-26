@@ -72,7 +72,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications.
 
-* [Autherization concepts](../authentication-and-security/autherization-concepts/)
+* [Authorization concepts](../authentication-and-security/authorization-concepts/)
 * [Creating a Security Check](../authentication-and-security/creating-a-security-check/)
 * [CredentialsValidationSecurityCheck](../authentication-and-security/credentials-validation/)
     * [Implementing the security check](../authentication-and-security/credentials-validation/security-check/)
