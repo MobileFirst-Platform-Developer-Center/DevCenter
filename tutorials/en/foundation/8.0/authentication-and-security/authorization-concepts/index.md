@@ -86,7 +86,9 @@ All resources and applications are protected by a default scope that restricts a
 ### Mandatory application scope
 In addition to the default scope, you can add security checks at the application level. Those security checks will protect the entire application and resources used by this application.
 
-You can define the mandatory scope from the MobileFirst Operations Console.
+You can define the mandatory scope from the MobileFirst Operations Console:
+
+![Mandatory application scope](mandatory-application-scope.png)
 
 ### Java adapters
 You can specify the scope of a Java adapter by using the `@OAuthSecurity` annotation.
