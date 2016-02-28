@@ -83,7 +83,7 @@ The `obtainAccessToken` API takes in a **scope**. The scope can be the name of y
 
 > Learn more about **scope** in the [Authorization concepts](../../authorization-concepts) tutorial
 
-### Retrieving the authenticated user
+## Retrieving the authenticated user
 The challenge handler's `processSuccess` method receives a `data` as a parameter.
 If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `processSuccess` to save the current user:
 
