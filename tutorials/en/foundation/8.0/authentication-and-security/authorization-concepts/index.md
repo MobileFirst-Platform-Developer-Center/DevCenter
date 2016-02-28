@@ -97,7 +97,7 @@ In the above example, the `deleteUser` procedure uses the annotation `@OAuthSecu
 
 A scope can be made of several scope elements, space-separated: `@OAuthSecurity(scope="element1 element2 element3")`.
 
-If you do not specify the `@OAuthSecurity` annotation, the procedure is protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security test protecting the application also applies here.
+If you do not specify the `@OAuthSecurity` annotation, the procedure is protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security check protecting the application also applies here.
 
 You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
 
@@ -117,7 +117,7 @@ A scope can be made of several scope elements, space-separated:
 <procedure name="deleteUser" scope="element1 element2 element3">
 ```
 
-If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security test protecting the application also applies here.
+If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security check protecting the application also applies here.
 
 #### Disabling protection
 If you want to disable the default security, you can use `secured="false"`:
