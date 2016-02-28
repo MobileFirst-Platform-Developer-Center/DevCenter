@@ -80,6 +80,14 @@ Several predefined security checks available:
 
 ## Protecting resources
 
+### Default scope
+All resources and applications are protected by a default scope that restricts access to registered mobile applications only.
+
+### Mandatory application scope
+In addition to the default scope, you can add security checks at the application level. Those security checks will protect the entire application and resources used by this application.
+
+You can define the mandatory scope from the MobileFirst Operations Console.
+
 ### Java adapters
 You can specify the scope of a Java adapter by using the `@OAuthSecurity` annotation.
 
@@ -97,12 +105,13 @@ In the above example, the `deleteUser` procedure uses the annotation `@OAuthSecu
 
 A scope can be made of several scope elements, space-separated: `@OAuthSecurity(scope="element1 element2 element3")`.
 
-If you do not specify the `@OAuthSecurity` annotation, the procedure is protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security check protecting the application also applies here.
+If you do not specify the `@OAuthSecurity` annotation, the procedure is protected by the MobileFirst default security scope.
 
 You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
 
 #### Disabling protection
-If you want to disable MobileFirst default security, you can use: `@OAuthSecurity(enabled=false)`.
+If you want to disable security, you can use: `@OAuthSecurity(enabled=false)`.  
+This will also disable the default scope.
 
 ### JavaScript adapters
 You can protect a JavaScript adapter procedure by assigning a scope to the procedure definition in the adapter's XML file:
@@ -117,10 +126,11 @@ A scope can be made of several scope elements, space-separated:
 <procedure name="deleteUser" scope="element1 element2 element3">
 ```
 
-If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope. That means that only a registered mobile app that is deployed on the same MobileFirst Server instance as the adapter can access this resource. Any security check protecting the application also applies here.
+If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope.
 
 #### Disabling protection
-If you want to disable the default security, you can use `secured="false"`:
+If you want to disable security, you can use `secured="false"`.  
+This will also disable the default scope:
 
 ```xml
 <procedure name="deleteUser" secured="false">
