@@ -26,8 +26,9 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Click on the "New" button next to **Applications**
     * Select a **Windows** platform
-    * Enter **MFPStarterCSharp.Windows** as the **application identifier** for Windows, or **MFPStarterCSharp.WindowsPhone** for Windows Phone.
+    * Enter **MFPStarterCSharp.Windows** as the **application identifier** for Windows, or **MFPStarterCSharp.WindowsPhone** for Windows Phone
     * Enter **1.0.0** as the **version** value
+    * Click on **Register application**
 
     ![Image of selecting platform, and providing an identifier and version](register-an-application-windows.png)
 
@@ -60,8 +61,9 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ```
 
 ### 4. Creating an adapter
-Click on the "New" button next to **Adapters**.  
-Alternatively, download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
+Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
+
+Alternatively, click on the "New" button next to **Adapters**.  
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
@@ -84,7 +86,7 @@ Alternatively, download [this prepared .adapter artifact](../javaAdapter.adapter
 2. Press the **Run App** button.
 
 #### Results
-* Clicking on the **Test Server Connection** button will display **Obtained Access Token Successfully**.
+* Clicking on the **Test Server Connection** button will display **Client has connected to server**.
 * If the application was able to connect to the MobileFirst Server, a resource request call using the Java adapter will take place.
 
 The adapter response is then printed in Visual Studio's Outpout console.
