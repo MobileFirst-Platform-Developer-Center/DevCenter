@@ -148,5 +148,6 @@ Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapt
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
 
-![Sample application](login-screen.png)
-![Sample application](balance.png)
+        <div style="text-align:center">
+            <img src="login-screen.png" style="display:inline"/><img src="balance.png" style="display:inline"/>
+        </div>
