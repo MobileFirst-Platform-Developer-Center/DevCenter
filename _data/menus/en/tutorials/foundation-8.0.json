@@ -26,11 +26,8 @@
                 "name": "Notifications",
                 "path": "/notifications"
             }, {
-                "name": "Operational Analytics",
+                "name": "Analytics",
                 "path": "/analytics"
-            }, {
-                "name": "Moving to production",
-                "path": "/moving-to-production",
             }, {
                 "name": "IBM Containers",
                 "path": "/ibm-containers"
