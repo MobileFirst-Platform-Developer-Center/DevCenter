@@ -29,6 +29,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     * Select a platform: **Android, iOS, Windows**
     * Enter **com.ibm.sample** as the **application identifier**
     * Enter **1.0.0** as the **version** value
+    * Click on **Register application**
 
     ![Image of selecting platform, and providing an identifier and version](register-an-application-cordova.png)
  
@@ -108,7 +109,7 @@ If a device is connected, the application will be installed and launched in the 
 Otherwise the Simulator or Emulator will be used.
 
 #### Results
-* Clicking on the **Test Server Connection** button will display **Obtained Access Token Successfully**.
+* Clicking on the **Test Server Connection** button will display **Client has connected to server**.
 * If the application was able to connect to the MobileFirst Server, a resource request call using the Java adapter will take place.
 
 The adapter response is then displayed in an alert.
