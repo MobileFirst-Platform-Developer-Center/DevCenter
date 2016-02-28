@@ -14,30 +14,20 @@ downloads:
 ---
 
 ## Overview
-**Prerequisite:** This tutorial is a continuation of the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/cordova) tutorial. Make sure to read it first.
+**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/cordova) tutorial.
 
-The challenge handler implementation will be modified to fit the `UserLoginSecurityCheck` created in the matching [security check tutorial](../security-check), and will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
+The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
 
-## Creating the challenge handler
-Use the `WL.Client.createWLChallengeHandler` method to create and register a challenge Handler:
-
-```js
-var userLoginChallengeHandler = WL.Client.createWLChallengeHandler(securityCheckName);
-```
-
-## Handling the challenge
-In this example, the challenge sent by `UserLoginSecurityCheck` is the same one sent by `PinCodeAttempts`: the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`. The `handleChallenge` method is responsible for collecting the username and password from the user.
-
-## Submitting the credentials
-Once the credentials have been collected, use the `WLChallengeHandler`'s `submitChallengeAnswer` method to send an answer back to the security check. In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
+## Login
+In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
 
 ```js
 userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password, rememberMe: rememberMeState});
 ```
 
-You may also want to login a user without any challenge being received. For examples, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
+You may also want to login a user without any challenge being received. For example, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
 
-You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Platform Foundation SDK includes a different API:
+You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Platform Foundation SDK includes the `login` API:
 
 ```js
 WLAuthorizationManager.login(securityCheckName,{'username':username, 'password':password, rememberMe: rememberMeState}).then(
@@ -60,19 +50,18 @@ if (isChallenged){
     userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password, rememberMe: rememberMeState});
 } else {
     WLAuthorizationManager.login(securityCheckName,{'username':username, 'password':password, rememberMe: rememberMeState}).then(
-        function () {
-            WL.Logger.debug("login onSuccess");
-        },
-        function (response) {
-            WL.Logger.debug("login onFailure: " + JSON.stringify(response));
-        });
+//...
+    );
 }
 ```
 
-## Obtaining an access token
-Since this security check supports *remember me* functionality, it would be useful to check if the user is currently logged in, during the application startup.
+> **Note:**
+> `WLAuthorizationManager`'s `login()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `processSuccess` or `handleFailure` will **also** be called.
 
-The MobileFirst Platform Foundation SDK provides an API to ask the server for a valid token:
+## Obtaining an access token
+Since this security check supports *remember me* functionality, it would be useful to check if the client is currently logged in, during the application startup.
+
+The MobileFirst Platform Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
 
 ```js
 WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheckName).then(
@@ -85,22 +74,16 @@ WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheck
         showLoginDiv();
 });
 ```
+> **Note:**
+> `WLAuthorizationManager`'s `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `processSuccess` or `handleFailure` will  **also** be called.
 
-If the user is already logged-in or is in the *remembered* state, the API will trigger a success. If the user is not logged in, the security check will send back a challenge.
+If the client is already logged-in or is in the *remembered* state, the API will trigger a success. If the client is not logged in, the security check will send back a challenge.
 
-The `obtainAccessToken` API takes in a **scope**. The scope here can be the name of your **security check**.
+The `obtainAccessToken` API takes in a **scope**. The scope can be the name of your **security check**.
 
-> Learn more about **scope** here: [Authorization concepts](../../authorization-concepts)
+> Learn more about **scope** in the [Authorization concepts](../../authorization-concepts) tutorial
 
-## Handling success and failure
-As noted in the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/cordova) tutorial, `WLChallengeHandler` will call the  `processSuccess` or `handleFailure` methods upon success or failure of the challenge. You can choose to update your UI based on those events.
-
-> **Notes:**
->
-> * `WLAuthorizationManager`'s `login()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `processSuccess` or `handleFailure` will **also** be called.
-> * `WLAuthorizationManager`'s `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `processSuccess` or `handleFailure` will  **also** be called.
-
-### Retrieving the authenticated user
+## Retrieving the authenticated user
 The challenge handler's `processSuccess` method receives a `data` as a parameter.
 If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `processSuccess` to save the current user:
 
@@ -116,7 +99,7 @@ userLoginChallengeHandler.processSuccess = function(data) {
 }
 ```
 
-Here, `identity` has a key called `user` which itself contains a `JSONObject` representing the `AuthenticatedUser`:
+Here, `data` has a key called `user` which itself contains a `JSONObject` representing the `AuthenticatedUser`:
 
 ```json
 {
@@ -124,7 +107,7 @@ Here, `identity` has a key called `user` which itself contains a `JSONObject` re
     "id": "john",
     "displayName": "john",
     "authenticatedAt": 1455803338008,
-    "authenticatedBy": "UserLoginSecurityCheck"
+    "authenticatedBy": "UserLogin"
   }
 }
 ```
