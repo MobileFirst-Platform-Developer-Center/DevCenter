@@ -46,7 +46,7 @@ It lets you run a Cordova application in your browser and fake various Cordova f
 
 ### Installing Ripple
 
-1. Download and install the latest version of [Node.js](https://nodejs.org/en/) (v0.12.0 or later required).  
+1. Download and install the latest version of [Node.js](https://nodejs.org/en/).
 You can verify Node.js installation by typing `npm -v` in terminal.
 2. Open terminal and type:
 

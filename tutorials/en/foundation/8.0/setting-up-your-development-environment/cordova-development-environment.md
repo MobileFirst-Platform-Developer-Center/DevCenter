@@ -20,7 +20,7 @@ To get started with [Cordova development](https://cordova.apache.org/) the very 
 MobileFirst Platform Foundation supports Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html).  
 To install:
 
-1. Download and install [NodeJS v4.3 LTS](https://nodejs.org/en/).
+1. Download and install [NodeJS](https://nodejs.org/en/).
 2. From a **Command-line** window, run the command: `npm install -g cordova`.
 
 ## Next steps
