@@ -8,7 +8,7 @@ downloads:
 weight: 8
 ---
 ## Overview
-Cloudant is a NoSQL Database based on CouchDB, which is included with the product as a component called IBM MobileFirst Cloudant Local Data Layer Edition. Cloudant is also available as a stand-alone installed product and as a Database-as-a-Service (DBaaS) on IBM Bluemix and `cloudant.com`.
+Cloudant is a NoSQL Database based on CouchDB, which is available as a stand-alone product as well as a Database-as-a-Service (DBaaS) on IBM Bluemix and `cloudant.com`.
 
 As described in the Cloudant documentation:
 > Documents are JSON objects. Documents are containers for your data, and are the basis of the Cloudant database.  
