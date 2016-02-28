@@ -124,7 +124,7 @@ Here, `identity` has a key called `user` which itself contains a `JSONObject` re
     "id": "john",
     "displayName": "john",
     "authenticatedAt": 1455803338008,
-    "authenticatedBy": "UserLoginSecurityCheck"
+    "authenticatedBy": "UserLogin"
   }
 }
 ```
