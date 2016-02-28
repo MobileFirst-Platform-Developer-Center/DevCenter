@@ -31,18 +31,12 @@
             }, {
                 "name": "Moving to production",
                 "path": "/moving-to-production",
-            }, ]
-        }, {
-            "name": "IBM Countainers",
-            "path": "/ibm-containers",
-            "children": [{
-                "name": "Using Mobile Foundation",
-                "path": "/using-mobile-foundation"
             }, {
-                "name": "Creating an Image",
-                "path": "/creating-an-image"
+                "name": "IBM Containers",
+                "path": "/ibm-containers"
             }]
-        }, {
+        },
+        {
             "name": "Tutorials by platform",
             "path": "",
             "children": [{
