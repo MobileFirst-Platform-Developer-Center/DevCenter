@@ -12,8 +12,10 @@ Security checks are defined inside **an adapter** and are implemented in Java co
 
 An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
 
-**Prerequisites:** Familiarize yourself with the MobileFirst Platform Foundation authentication framework before continuing.  
-Read the [Authorization concepts](../authorization-concepts/) tutorial.
+**Prerequisites:** 
+
+* Read the [Authorization concepts](../authorization-concepts/) tutorial.
+* Learn how to [creating adapters](../../adapters/creating-adapters).
 
 #### Jump to:
 
@@ -42,7 +44,7 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 
 - The `name` attribute will be the name of your security check.
 - The `class` attribute specifies the implementation Java class of the security check. You need to create this class.
-- Some SecurityChecks can be configured with a list of `property` elements.
+- Security Checks can be [further configured](#security-check-configuration) with a list of `property` elements.
 
 ## Security Check Implementation
 Create the security check's **Java class**. The implementation should extend one of the provided base classes, below.  

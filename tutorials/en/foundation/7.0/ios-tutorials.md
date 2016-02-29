@@ -3,6 +3,7 @@ layout: tutorial
 title: Native iOS Development
 show_disqus: false
 print_pdf: false
+show_in_nav: false
 ---
 <br>
 ### Quick Start

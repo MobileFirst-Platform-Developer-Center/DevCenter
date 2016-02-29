@@ -23,7 +23,11 @@ def GetChildren(url, site)
     next unless (level == target_level) && (page.url.include? url)
     element = {}
     element['url'] = page.url
-    element['title'] = page.data['title']
+    if page.data['breadcrumb_title']
+      element['title'] = page.data['breadcrumb_title']
+    else
+      element['title'] = page.data['title']
+    end
 
     if page.data['weight']
       element['weight'] = page.data['weight']

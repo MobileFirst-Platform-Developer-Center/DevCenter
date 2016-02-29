@@ -8,6 +8,8 @@ weight: 1
 ## Overview
 IBM MobileFirst Platform Foundation provides a unified set of API methods to send notifications to iOS, Android, Windows 8 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support. 
 
+The package used to filter logs for the push notification service is `com.ibm.mfp.push`.
+
 #### Jump to:
 * [What is a Push Notification](#what-is-a-push-notification)
 * [Push Notification Types](#push-notification-types)

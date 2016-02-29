@@ -36,13 +36,10 @@ To setup GCM:
 
 1. Visit [Google's Services website](https://developers.google.com/mobile/add?platform=android&cntapi=gcm&cnturl=https:%2F%2Fdevelopers.google.com%2Fcloud-messaging%2Fandroid%2Fclient&cntlbl=Continue%20Adding%20GCM%20Support&%3Fconfigured%3Dtrue).
 2. Provide your application name and package name.
-3. Select "Cloud Messaging" and click on **Enable Google cloud messaging**.
-
-    This step generates a `Server API Key` and a `Sender ID`.  
-    The generated values are used to identify the application by Google's GCM service in order to send notifications to the device.
-
-4. Click **Generate configuration file** and download the **google-services.json** file. This file will be used later to [configure the Android application](../handling-push-notifications-in-android).
-5. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and server **API Key** and click **Save**.
+3. Select "Cloud Messaging" and click on **Enable Google cloud messaging**.  
+    - This step generates a **Server API Key** and a **Sender ID**.
+    - The generated values are used to identify the application by Google's GCM service in order to send notifications to the device.
+4. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and server **API Key** and click **Save**.
 
 #### Notes
 If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
@@ -72,7 +69,7 @@ To setup APNS:
 * During the production phase, use the apns-certificate-production.p12 production certificate file.
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
 
-![Image of adding the GCM crendentials](server-side-setup.png)
+![Image of adding the GCM credentials](server-side-setup.png)
 
 ## Adding Tags
 In the MobileFirst Operations Console → **[your application] → Push → Tags**, click **Create New**.  

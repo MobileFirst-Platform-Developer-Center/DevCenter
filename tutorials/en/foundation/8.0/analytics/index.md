@@ -5,11 +5,12 @@ breadcrumb_title: Operational Analytics
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,windows,cordova]
+weight: 8
 ---
 ## Overview
 MobileFirst Platform Foundation Operational Analytics collects data from app to server activities, client logs, client crashes, and server side logs from the MobileFirst Runtime Server and client devices. Collecting analytics from all these data points populates the Operational Analytics Charts with infrastructure and client side information.
 
-![architecture diagram](mfp_operational_analytics.png)
+![architecture diagram](mfp_operational_analytics.jpg)
 
 Operational Analytics is bundled by default as part of the [MobileFirst Platform Foundation Development Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
 
@@ -21,7 +22,7 @@ Operational Analytics is bundled by default as part of the [MobileFirst Platform
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## MobileFirst Analytics Console
-You can open the Analytics Console from the MobileFirst Operations Console.
+You can open the Analytics Console from the MobileFirst Operations Console, by clicking on "Analytics Console".
 
 ![Analytics console button](analytics-console-button.png)
 
@@ -51,7 +52,7 @@ You can configure thresholds which, if exceeded, trigger alerts to notify the Mo
 App crashes are visualized on the MobileFirst Operational Analytics Console, where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default. When crash logs are sent to the analytics server, they will automatically populate the crash charts.
 
 ### Monitor Network Data
-The MobileFirst Operational Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways. 
+The MobileFirst Operational Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways.
 
 > For more information about the data collected by MobileFirst Analytics, see the user documentation
 

@@ -1,48 +1,8 @@
 {
     "name": "Foundation 8.0",
     "path": "/tutorials/en/foundation/8.0",
-    "children": [{
-            "name": "Foundation",
-            "path": "",
-            "children": [{
-                "name": "Environment set-up",
-                "path": "/setting-up-your-development-environment"
-            }, {
-                "name": "Quick start",
-                "path": "/quick-start"
-            }, {
-                "name": "Adding the SDK",
-                "path": "/adding-the-mfpf-sdk"
-            }, {
-                "name": "Using the SDK",
-                "path": "/using-the-mfpf-sdk"
-            }, {
-                "name": "Adapters",
-                "path": "/adapters"
-            }, {
-                "name": "Authentication and security",
-                "path": "/authentication-and-security"
-            }, {
-                "name": "Notifications",
-                "path": "/notifications"
-            }, {
-                "name": "Operational Analytics",
-                "path": "/analytics"
-            }, {
-                "name": "Moving to production",
-                "path": "/moving-to-production",
-            }, ]
-        }, {
-            "name": "IBM Countainers",
-            "path": "/ibm-containers",
-            "children": [{
-                "name": "Using Mobile Foundation",
-                "path": "/using-mobile-foundation"
-            }, {
-                "name": "Creating an Image",
-                "path": "/creating-an-image"
-            }]
-        }, {
+    "children": [
+        {
             "name": "Tutorials by platform",
             "path": "",
             "children": [{

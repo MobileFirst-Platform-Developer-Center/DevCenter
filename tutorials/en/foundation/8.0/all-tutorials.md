@@ -72,7 +72,7 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications.
 
-* [Autherization concepts](../authentication-and-security/autherization-concepts/)
+* [Authorization concepts](../authentication-and-security/authorization-concepts/)
 * [Creating a Security Check](../authentication-and-security/creating-a-security-check/)
 * [CredentialsValidationSecurityCheck](../authentication-and-security/credentials-validation/)
     * [Implementing the security check](../authentication-and-security/credentials-validation/security-check/)
@@ -82,11 +82,11 @@ Add various layers of protection to your applications.
     * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/credentials-validation/windows-8-10/)
 * [UserAuthenticationSecurityCheck](../authentication-and-security/user-authentication/)
     * [Implementing the security check](../authentication-and-security/user-authentication/security-check/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/user-authentication/cordova/)
+    * [Implementing the challenge handler in Cordova applications](../authentication-and-security/user-authentication/cordova/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/user-authentication/ios/)
     * [Implementing the challenge handler in Android applications](../authentication-and-security/user-authentication/android/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/user-authentication/windows-8-10/)
-* <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
+* <span style="color:red">IN PROGRESS </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
 * [Application Authenticity](../authentication-and-security/application-authenticity/)
 * <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
 {% comment %}
@@ -106,46 +106,45 @@ Send notifications with IBM MobileFirst Platform Foundation.
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
-* <span style="color:red">IN PROGRESS </span>[Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
+* [Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
 * <span style="color:red">IN PROGRESS </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
     * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/cordova/)
     * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/ios/)
     * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/android/)
 * <span style="color:red">IN PROGRESS </span>[Using Analytics API in client applications](../analytics/analytics-api/)
 
+{% comment %}
 ### [Cloudant Data Layer](../../../cloudant/)
 Scalable database management for your MobileFirst projects.  
 
-* <span style="color:red">IN PROGRESS </span>[Working with Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/)
+* [Working with Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/)
     * [iOS – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/ios/)
 	* [Android – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/android/)
+{% endcomment %}
 
 ### [IBM Containers](../ibm-containers/)
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
 
 * [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../ibm-containers/)
-* <span style="color:red">IN PROGRESS </span>[Using the Mobile Foundation service to set-upp MobileFirst Server on IBM Containers](../ibm-containers/using-mobile-foundation/)
-* <span style="color:red">TODO </span>[Creating a MobileFirst Server image using Cloud Foundary](../ibm-containers/creating-an-image/)
+{% comment %}
+* <span style="color:red">IN PROGRESS </span>[Using the Mobile Foundation service to set-up MobileFirst Server on IBM Containers](../ibm-containers/using-mobile-foundation/)
+{% endcomment %}
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.  
-<span style="color:red">Owned by the MQA team</span>
 
 * [MobileFirst Quality Assurance Overview]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview/)
 * [MobileFirst Quality Assurance in Cordova applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/)
 * [MobileFirst Quality Assurance in iOS applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/)
 * [MobileFirst Quality Assurance in Android applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/)
 
+### Collateral tutorials
+
+* [Distributing mobile applications with Application Center](../collateral-tutorials/app-center/)
+
 {% comment %}
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
 Scan your application for potential harming code.  
-<span style="color:red">TODO outsource to the AppScan team</span>  
 
 * [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
-
-### [Moving to production](../moving-to-production/)
-Move the apps that you create from your development environment to the production environment.  
-
-* <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
-* [Distributing mobile applications with Application Center](../moving-to-production/app-center/)
 {% endcomment %}

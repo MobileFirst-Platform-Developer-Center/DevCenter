@@ -1,44 +1,7 @@
 {
     "name": "Foundation 6.3",
     "path": "/tutorials/en/foundation/6.3",
-    "children": [{
-        "name": "Foundation",
-        "path": "",
-        "children": [{
-            "name": "Setting up your development environment",
-            "path": "/setting-up-your-development-environment"
-        }, {
-            "name": "Hello World",
-            "path": "/hello-world"
-        }, {
-            "name": "Client-side development",
-            "path": "/client-side-development-basics"
-        }, {
-            "name": "Server-side development",
-            "path": "/server-side-development"
-        }, {
-            "name": "Advanced client-side development",
-            "path": "/advanced-client-side-development"
-        }, {
-            "name": "Working Offline",
-            "path": "/working-offline"
-        }, {
-            "name": "Adding native functionality",
-            "path": "/adding-native-functionality"
-        }, {
-            "name": "Notifications",
-            "path": "/notifications"
-        }, {
-            "name": "Authentication and security",
-            "path": "/authentication-security"
-        }, {
-            "name": "Advanced topics",
-            "path": "/advanced-topics"
-        }, {
-            "name": "Moving to production",
-            "path": "/moving-production"
-        }, ]
-    }, {
+    "children": [ {
         "name": "Tutorials by platform",
         "path": "",
         "children": [{

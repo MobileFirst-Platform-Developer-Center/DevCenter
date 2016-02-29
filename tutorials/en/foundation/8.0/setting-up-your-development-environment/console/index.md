@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Using the MobileFirst Platform Operations Console
-breadcrumb_title: MobileFirst Platform Operations Console
+title: Using the MobileFirst Operations Console
+breadcrumb_title: MobileFirst Operations Console
 relevantTo: [ios,android,windows,cordova]
 weight: 7
 ---
@@ -67,17 +67,17 @@ Provide basic application values and download Starter Code.
 ![Image of application registration screen](create-app.png)
 
 #### Managing applications
-Manage and configure registered applications by use of [Direct Update](../../using-the-mfpf-sdk/direct-update/), Remote Disable, [Application Authenticity](../../authentication-and-security/application-authenticity/), and [setting security parameters](../../authentication-and-security/authentication-concepts/).
+Manage and configure registered applications by use of [Direct Update](../../using-the-mfpf-sdk/direct-update/), Remote Disable, [Application Authenticity](../../authentication-and-security/application-authenticity/), and [setting security parameters](../../authentication-and-security/authorization-concepts/).
 
 ![Image of application management screen](application-management.png)
 
 #### Authentication and Security
-Configure application security paramteres.
+Configure application security paramteres, such as the default token expiration value, map scope elements to security checks, define, mandatory application scopes and configure security check options.
 
 ![Image of application security configuration screen](authentication-and-security.png)
 
 #### Notifications
-Set-up [push notifications](../../notifications/push-notifications-overview/) and related parameters, such as tags, as well as sending notifications.
+Set-up [push notifications](../../notifications/push-notifications-overview/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
 
 ![Image of push notifications setup scren](push-notifications.png)
 

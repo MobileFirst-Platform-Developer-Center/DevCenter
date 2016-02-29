@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Implementing the UserAuthenticationSecurityCheck
-breadcrumb_title: security check
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,cordova]
 weight: 1
 ---
@@ -84,7 +84,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ## Creating the AuthenticatedUser object
-The `UserAuthenticationSecurityCheck` stores a representation of the current user in the security check's persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
+The `UserAuthenticationSecurityCheck` stores a representation of the current client (user, device, application) in persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
 Users are represented by an instance of the class `AuthenticatedUser`. Its constructor receives a `id`, `displayName` and `securityCheckName`.
 
 In this example, we are using the `username` for both the `id` and `displayName`.
@@ -126,12 +126,12 @@ In this example, we are using the `username` for both the `id` and `displayName`
 
 You can use `this.getName()` to get the current security check name.
 
-`UserAuthenticationSecurityCheck` will call your `createUser()` implementation after a successful login.
+`UserAuthenticationSecurityCheck` will call your `createUser()` implementation after a successful `validateCredentials`.
 
 ## Adding Remember Me functionality
 `UserAuthenticationSecurityCheck` by default uses the `successStateExpirationSec` property to determine how long does the success state last; this property was inherited from `CredentialsValidationSecurityCheck`.
 
-If you want to allow users to stay logged-in past the `successStateExpirationSec`, and even past the **token expiration**, `UserAuthenticationSecurityCheck` adds this capability.
+If you want to allow users to stay logged-in past the `successStateExpirationSec`, `UserAuthenticationSecurityCheck` adds this capability.
 
 `UserAuthenticationSecurityCheck` adds a property called `rememberMeDurationSec` whose default value is `0`. This means that by default, users are remembered for **0 seconds**, effectively disabling the feature. Change this value to a number that makes sense for your application (a day, a week, a month...).
 

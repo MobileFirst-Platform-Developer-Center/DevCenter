@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Using Analytics API in client applications
+breadcrumb_title: Analytics API
 relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
