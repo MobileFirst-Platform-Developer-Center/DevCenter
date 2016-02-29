@@ -121,13 +121,13 @@ Use JavaScript to create a SOAP Envelope. It is possible to insert JavaScript co
 
 ```js
 var request =
-  <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-    <soap:Body>
-      <CelsiusToFahrenheit xmlns="http://www.w3schools.com/webservices/">
-        <Celsius>{celsiusTemp}</Celsius>
-      </CelsiusToFahrenheit>
-    </soap:Body>
-  </soap:Envelope>;
+		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+			<soap:Body>
+				<GetCitiesByCountry xmlns="http://www.webserviceX.NET">
+					<CountryName>{countryName}</CountryName>
+				</GetCitiesByCountry>
+			</soap:Body>
+		</soap:Envelope>;
 ```
 
 The` WL.Server.invokeHttp(options)` method is used to call a request for a SOAP service.
@@ -141,16 +141,16 @@ The Options object must include the following properties:
 
 ```js
 var input = {
-      method: 'post',
-      returnedContentType: 'xml',
-      path: '/webservices/tempconvert.asmx',
-      body: {
-        content: request.toString(),
-        contentType: 'text/xml; charset=utf-8',
-      },
-  };
+		method: 'post',
+		returnedContentType: 'xml',
+		path: '/globalweather.asmx',
+		body: {
+			content: request.toString(),
+			contentType: 'text/xml; charset=utf-8'
+		}
+	};
 
-  var result = WL.Server.invokeHttp(input);
+var result = WL.Server.invokeHttp(input);
 ```
 
 ## Sample adapter
