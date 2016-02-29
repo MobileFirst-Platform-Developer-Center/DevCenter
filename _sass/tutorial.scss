@@ -92,10 +92,14 @@ $color_wild_sand_approx: #f5f5f5;
 				}
 				> ul {
 					> li {
+						list-style-type: disc;
+						list-style-position: inside;
 						&.active {
 							font-weight: bold;
 							> ul {
 								> li {
+									list-style-type: circle;
+									list-style-position: inside;
 									&.active {
 										> a {
 											font-weight: bold;
