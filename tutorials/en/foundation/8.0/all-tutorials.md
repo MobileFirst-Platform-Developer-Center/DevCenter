@@ -126,7 +126,9 @@ Scalable database management for your MobileFirst projects.
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
 
 * [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../ibm-containers/)
+{% comment %}
 * <span style="color:red">IN PROGRESS </span>[Using the Mobile Foundation service to set-up MobileFirst Server on IBM Containers](../ibm-containers/using-mobile-foundation/)
+{% endcomment %}
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.  
@@ -136,16 +138,13 @@ Add testing capabilities to your application.
 * [MobileFirst Quality Assurance in iOS applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/)
 * [MobileFirst Quality Assurance in Android applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/)
 
+### Collateral tutorials
+
+* [Distributing mobile applications with Application Center](../collateral-tutorials/app-center/)
+
 {% comment %}
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
 Scan your application for potential harming code.  
-<span style="color:red">TODO outsource to the AppScan team</span>  
 
 * [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
-
-### [Moving to production](../moving-to-production/)
-Move the apps that you create from your development environment to the production environment.  
-
-* <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
-* [Distributing mobile applications with Application Center](../moving-to-production/app-center/)
 {% endcomment %}
