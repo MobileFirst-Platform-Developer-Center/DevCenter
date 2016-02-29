@@ -1,5 +1,5 @@
-# require 'pry'
-# require 'pry-byebug'
+require 'pry'
+require 'pry-byebug'
 
 def GetChildren(url, site)
   # Caching mechanism
@@ -23,11 +23,7 @@ def GetChildren(url, site)
     next unless (level == target_level) && (page.url.include? url)
     element = {}
     element['url'] = page.url
-    if page.data['breadcrumb_title']
-      element['title'] = page.data['breadcrumb_title']
-    else
-      element['title'] = page.data['title']
-    end
+    element['title'] = page.data['title']
 
     if page.data['weight']
       element['weight'] = page.data['weight']
@@ -48,9 +44,8 @@ def GetChildren(url, site)
   children
 end
 
-Jekyll::Hooks.register :pages, :pre_render do |page, payload|
+Jekyll::Hooks.register :site, :pre_render do |site, payload|
+  payload["site"]["data"]["tutorials"] = GetChildren("/tutorials/", payload["site"])
   # binding.pry
-  next unless page.data['show_children']
-  payload['page']['children'] = GetChildren(page.url, payload['site'])
-  # binding.pry
+
 end

@@ -8,6 +8,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    byebug (8.2.2)
+    coderay (1.1.1)
     colorator (0.1)
     colored (1.2)
     ethon (0.8.1)
@@ -45,12 +47,20 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
     mercenary (0.3.5)
+    method_source (0.8.2)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     parallel (1.6.2)
     pdfkit (0.8.2)
+    pry (0.10.3)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
@@ -58,6 +68,7 @@ GEM
     rouge (1.10.1)
     safe_yaml (1.0.4)
     sass (3.4.21)
+    slop (3.6.0)
     thread_safe (0.3.5)
     typhoeus (0.8.0)
       ethon (>= 0.8.0)
@@ -75,6 +86,8 @@ DEPENDENCIES
   jekyll-feed
   jekyll-paginate
   pdfkit
+  pry
+  pry-byebug
   redcarpet
   wkhtmltopdf-binary-edge
 
