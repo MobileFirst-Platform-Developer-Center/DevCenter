@@ -10,7 +10,7 @@
               <a href="#" class="navmenu-brand dropdown-toggle" data-toggle="dropdown">{{product.title}}</a>
               <ul class="dropdown-menu navmenu-nav" role="menu">
                 {% for category in version.children %}
-                  {% if category.children != empty %}
+                  {% if category.show_in_nav == true %}
                   <li {% if page.url contains category.url %} class="active" {% endif %}>
                     <a href="{{site.baseurl}}{{category.url}}">{{category.title}}</a>
                   </li>

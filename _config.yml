@@ -33,6 +33,7 @@ defaults:
       layout: tutorial
       show_breadcrumb: true
       show_disqus: true
+      show_in_nav: true
       print_pdf: true
   -
     scope:

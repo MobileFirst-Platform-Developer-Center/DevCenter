@@ -31,6 +31,8 @@ def GetChildren(url, site)
       element['weight'] = 1000
     end
 
+    element['show_in_nav'] = page.data['show_in_nav']
+
     element['children'] = GetChildren(page.url, site)
 
     children.push(element)
