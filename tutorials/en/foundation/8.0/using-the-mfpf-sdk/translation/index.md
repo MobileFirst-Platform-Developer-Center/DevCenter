@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Multilingual translation of Cordova applications
+breadcrumb_title: Multilingual translation
 relevantTo: [cordova]
 weight: 12
 downloads:
