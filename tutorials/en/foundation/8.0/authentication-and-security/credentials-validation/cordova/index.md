@@ -12,7 +12,7 @@ downloads:
 ---
 ## Overview
 When trying to access a protected resource, the server (the security check) will send back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a`JSON object`, listing the security check name with an optional `JSON` of additional data:
+This list is received as a `JSON object`, listing the security check name with an optional `JSON` of additional data:
 
 ```json
 {
