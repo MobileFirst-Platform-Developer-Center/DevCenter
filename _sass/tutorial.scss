@@ -110,6 +110,10 @@ $color_wild_sand_approx: #f5f5f5;
 										color: $black;
 										font-size: 80%;
 										text-decoration: none;
+										&:hover {
+											font-weight: 600;
+											color: #3c4646;
+										}
 									}
 								}
 							}
@@ -118,7 +122,12 @@ $color_wild_sand_approx: #f5f5f5;
 							color: $black;
 							font-size: 90%;
 							text-decoration: none;
+							&:hover {
+								font-weight: 600;
+								color: #3c4646;
+							}
 						}
+						
 					}
 				}
 			}
