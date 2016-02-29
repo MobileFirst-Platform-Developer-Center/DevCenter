@@ -323,9 +323,9 @@ This generates an **.adapter** archive file which can be found in the **target**
     ![Creating adapter using console](Create_adapter_console.png)
 
 5. After successfully deploying the adapter, the details page will be displayed containing the following tabs:
-* Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
-* Resources - a list of the adapter resources.
-* Configurations Files - adapter configuration data, to be used in devops environments.
+ * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
+ * Resources - a list of the adapter resources.
+ * Configurations Files - adapter configuration data, to be used in devops environments.
 
 ## Updating the Adapter Maven Project
 To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/) by search for "IBM MobileFirst Platform" and update the following properties in the adapter Maven project's **pom.xml** file:
