@@ -131,7 +131,6 @@ Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.  
-<span style="color:red">Owned by the MQA team</span>
 
 * [MobileFirst Quality Assurance Overview]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview/)
 * [MobileFirst Quality Assurance in Cordova applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/)
