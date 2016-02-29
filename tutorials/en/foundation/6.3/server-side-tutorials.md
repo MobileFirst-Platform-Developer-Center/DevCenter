@@ -3,6 +3,7 @@ layout: tutorial
 title: Server-side Development
 show_disqus: false
 print_pdf: false
+show_in_nav: false
 ---
 ### Server-side development
 <p><i>Multiple tutorials within</i></p>

@@ -3,6 +3,7 @@ layout: tutorial
 title: Hybrid Development
 print_pdf: false
 show_disqus: false
+show_in_nav: false
 ---
 <br>
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
