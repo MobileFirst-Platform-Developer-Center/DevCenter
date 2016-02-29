@@ -5,12 +5,12 @@ relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 ## Overview
-To populate your custom charts you can use the Analytics API to send customized data. Custom data is any key/value pair that you would like to collect that is not an out-of-the-box feature, like button presses.
 
-When collecting custom analytics data the app writes to the devices file system and is not sent until the `send` API method is called. After the `send` API method is called the app deletes the data from the file system and begins populating the file system with logs again. To send data with Analtyics see [Sending Analytics Data].
+MobileFirst Operational Analytics collects a lot of information on the client app for the developer if the developer chooses to enable Analtyics. To populate your analytics console with client side information there are a few steps needed to instrument on the client device to start collecting analytics in Android, iOS, and Cordova apps.
+
+If the application is a Cordova application then you will have to follow along with the native instrumentation of Analytics. Analytics for Cordova apps need to be initialized in native code.
 
 To use Analytics APIs in iOS and Android applications, first import the Analytics SDK.  
-In Cordova applications this is not needed.
 
 #### Android
 ```java
@@ -33,9 +33,6 @@ import "WLAnalytics.h"
 ## Initializing Analytics
 Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to initialize Analytics.  
 
-<span style="color:red"> I don't understand the below sentence. do i need to do something in my javascript to get this working?</span>
-In cordova this is done through your native application. So the code snippets below are going to show you how to initialize analytics in iOS and Android.
-
 #### Android:
 
 ```java
@@ -50,8 +47,6 @@ WLAnalytics.init(this.getApplication());
 
 After initializing analytics, the application will begin collecting user information, like app sessions.
 <span style="color:red">Where did this come from? This is not mentioned in the overview - what is being collected once analytics has been initialized. Also, can I control what is being collected by the sdk?</span>
-
-After sending data to the MobileFirst server you will start to see charts filled out like the one below:
 
 ## Recording App Sessions
 After initializing the Analtyics SDK app sessions will start to be recorded on the users device. A session in MobileFirst Operational Anlaytics is recorded when the app is moved to the foreground, then to the background thTt sequence of events is one full session.
@@ -71,8 +66,6 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
 #### iOS
-
-#### Cordova
 
 ## Client Network Activities
 Collection on adapters and network occur in two different locations on the client and on the server.
@@ -152,7 +145,7 @@ NSDictionary *inventory = @{
 ```javascript
 WL.Analytics.send();
 ```
- 
+
 ##### Android
 
 ```java
