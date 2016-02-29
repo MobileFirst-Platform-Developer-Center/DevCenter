@@ -18,7 +18,7 @@
                         {% for tutorial in category.children %}
                           <li {% if page.url contains tutorial.url %} class="active" {% endif %}>
                             <a href="{{site.baseurl}}{{tutorial.url}}">{{tutorial.breadcrumb_title}}</a>
-                            {% if (page.url contains tutorial.url) and (tutorial.children != empty) %}
+                            {% if page.url contains tutorial.url and tutorial.children != empty %}
                               <ul>
                                 {% for childtutorial in tutorial.children %}
                                   <li {% if page.url contains childtutorial.url %} class="active" {% endif %}>
