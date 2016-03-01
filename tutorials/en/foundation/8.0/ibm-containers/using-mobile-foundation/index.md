@@ -36,9 +36,16 @@ Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-u
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Configuration tab](#configuring-the-server-instance), and click on **Start advanced server**.
 
+    During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Platform Foundation environment is being initialized.  
+    This takes between 5 to 10 minutes.
+
     ![Image of Mobile Foundation setup](overview-page.png)
 
-6. After starting the server you are presented with the MobileFirst Platform Operations Console.
+6. With the MobileFirst Server now running, you are presented with the following Dashboard:
+
+    ![Image of Mobile Foundation setup](service-dashboard.png)
+
+7. Click on **Launch Console** to open the MobileFirst Operations Console.
 
     ![Image of Mobile Foundation setup](dashboard.png)
 
@@ -53,14 +60,14 @@ The basic server instance consists of:
 Through the Configuration tab, the server instance can be further customized with:
 
 * Varying node, memory and storage combinations
-* MobileFirst Operations Console username &amp; password
+* MobileFirst Operations Console admin password
 * LTPA keys
 * JNDI configuration
 * User registry 
 * TrustStore
-* Operational Analytics configuration
-* Database selection
-* VPN
+* Operational Analytics configuration*
+* Database selection*
+* VPN*
 
 > **Note:** The beta release does not support all mentioned features.
 
