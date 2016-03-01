@@ -1,6 +1,6 @@
 ---
 title: Using IntelliJ to Develop MobileFirst Java Adapters
-date: 2016-02-29
+date: 2016-03-21
 pinned: true
 tags:
 - MobileFirst_Platform
@@ -9,8 +9,9 @@ tags:
 author:
   name: Lior Burg
 ---
-In MobileFirst Platform Foundation 8.0 adapters are basically Maven projects. This means that you can easily create, develop, build, deploy and debug adapters, like any other Maven project, using supported IDE such as Eclipse or IntelliJ.  
-This post demonstrates how to use IntelliJ to develop MobileFirst Java adapters.
+In MobileFirst Platform Foundation 8.0 adapters are Maven projects. This means that you can easily create, develop, build, deploy and debug adapters, like any other Maven project, using supported IDEs such as Eclipse or IntelliJ.
+
+This post demonstrates how to use **IntelliJ** to develop MobileFirst Java adapters. For instructions how to use Eclipse see the [Developing Adapters in Eclipse]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters) tutorial.
 
 ## Creating a New Java Adapter Maven Project
 1. Go to File → New → Project and select the Maven tab.
@@ -37,7 +38,7 @@ This post demonstrates how to use IntelliJ to develop MobileFirst Java adapters.
 
     ![Name and location screen]({{site.baseurl}}/assets/blog/2016-02-29-debugging-adapters-using-intellij/select-project-name-and-location.png)
 
-You are now ready to implement your Java adapter.
+You are now ready to implement your Java adapter. To learn more about adapters visit the [Adapters Category]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
 
 ## Building and Deploying a Java Adapter Maven Project
 To quickly build and deploy your adapter use the **Maven Projects** view to run commands.  
@@ -63,4 +64,4 @@ In order to debug adapter's Java code, follow this instructions:
 
     ![Add new remote screen]({{site.baseurl}}/assets/blog/2016-02-29-debugging-adapters-using-intellij/Remote screen.png)
 
-3. Click on Run → Debug YOUR-REMOTE-NAME to enter *debug mode*. You can now debug the Java code normally as you would do a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints.
+3. Click on Run → Debug YOUR-REMOTE-NAME to enter *debug mode*. You can now debug the Java code normally as you would do in a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints.
