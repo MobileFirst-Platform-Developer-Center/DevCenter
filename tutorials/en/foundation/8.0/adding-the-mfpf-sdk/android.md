@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adding the MobileFirst Platform Foundation SDK to Android Applications
-breadcrumb_title: Android SDK
+breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 ---

@@ -1,6 +1,7 @@
 ---
 layout: tutorial
-title: Debugging Cordova applications
+title: Debugging Cordova Applications
+breadcrumb_title: Debugging applications        
 relevantTo: [cordova]
 weight: 13
 ---

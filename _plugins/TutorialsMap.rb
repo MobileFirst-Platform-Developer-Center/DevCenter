@@ -25,6 +25,12 @@ def GetChildren(url, site)
     element['url'] = page.url
     element['title'] = page.data['title']
 
+    if page.data['breadcrumb_title']
+      element['breadcrumb_title'] = page.data['breadcrumb_title']
+    else
+      element['breadcrumb_title'] = page.data['title']
+    end
+
     if page.data['weight']
       element['weight'] = page.data['weight']
     else

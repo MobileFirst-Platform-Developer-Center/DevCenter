@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Developing Adapters in IDEs
+title: Developing Adapters in Eclipse
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---

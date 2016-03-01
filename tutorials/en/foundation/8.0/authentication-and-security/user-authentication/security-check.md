@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Implementing the UserAuthenticationSecurityCheck
-breadcrumb_title: security check
+breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,cordova]
 weight: 1
 ---
