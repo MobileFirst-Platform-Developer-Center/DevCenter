@@ -26,7 +26,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
  
 1. Click on the "New" button next to **Applications**
     * Select the **Android** platform
-    * Enter **com.ibm.mfp.sample.mfpstarterandroid** as the **application identifier**
+    * Enter **com.ibm.mfpstarterandroid** as the **application identifier**
     * Enter **1.0** as the **version** value
     * Click on **Register application**
 
@@ -40,7 +40,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Android Studio project and import the project.
 
-2. Select the **app/java/com/mfp/sample/MainActivity.java** file and:
+2. Select the **app/java/com.ibm.mfpstarterandroid/ServerConnectActivity.java** file and:
 
 * Add the following imports:
 
