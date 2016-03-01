@@ -61,9 +61,9 @@ Complete the procedure for production mode when the app is publicly available an
             <ol>
                 <li>Declare the Mobile Quality Assurance preproduction or production activities. Ensure that the manifest file includes an application that contains the following activities:
                     {% highlight xml linenos %}
-                    <activity android:name="com.ibm.mqa.ui.ProblemActivity"></activity>
-                    <activity android:name="com.ibm.mqa.ui.FeedbackActivity"></activity>
-                    <activity android:name="com.ibm.mqa.ui.ScreenshotEditorActivity"></activity>
+        <activity android:name="com.ibm.mqa.ui.ProblemActivity"></activity>
+        <activity android:name="com.ibm.mqa.ui.FeedbackActivity"></activity>
+        <activity android:name="com.ibm.mqa.ui.ScreenshotEditorActivity"></activity>
                     {% endhighlight %}
                 </li>
                 <li>Ensure that the following required permissions are listed in the manifest file:
@@ -77,7 +77,7 @@ Complete the procedure for production mode when the app is publicly available an
                         <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
                         {% endhighlight %}
                         <strong>Important:</strong> If you do not add the permission, the app might fail with an <code>InvalidDisplayException</code> error: In preproduction mode, the app might fail to start. In production mode, if the app uses the <code>MQA.feedback()</code> API, it might crash when the API is called.</li>
-                        <li>For optional settings that you can enable, see <a href="http://www-01.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_DownloadingAndInstallingTheAndroidLibraries.html" title="Installing the Android libraries" target="_blank">Installing the Android libraries</a> in IBM Knowledge Center.</li>
+                        <li>For optional settings that you can enable, see <a href="http://www.ibm.com/support/knowledgecenter/SSJML5_6.0.0/com.ibm.mqa.uau.saas.doc/topics/t_DownloadingAndInstallingTheAndroidLibraries.html" title="Installing the Android libraries" target="_blank">Installing the Android libraries</a> in IBM Knowledge Center.</li>
                     </ul>
                 </li>
             </ol>

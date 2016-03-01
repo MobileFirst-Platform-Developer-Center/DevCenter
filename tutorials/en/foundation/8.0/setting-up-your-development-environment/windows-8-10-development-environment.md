@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Setting up the Windows 8.1 and Windows 10 development environment
-breadcrumb_title: Windows 8.1 and 10 environments
+breadcrumb_title: Windows environments
 relevantTo: [windows,cordova]
 weight: 4
 ---

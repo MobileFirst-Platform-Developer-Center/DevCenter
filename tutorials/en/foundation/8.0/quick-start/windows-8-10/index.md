@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Windows 8.1 Universal and Windows 10 UWP end-to-end demonstration
-breadcrumb_title: Windows 8.1 Universal and Windows 10 UWP
+breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---

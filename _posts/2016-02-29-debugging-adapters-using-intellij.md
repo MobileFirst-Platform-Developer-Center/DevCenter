@@ -9,10 +9,10 @@ tags:
 author:
   name: Lior Burg
 ---
-In MobileFirst Platform Foundation 8.0 adapters are basically Maven projects. This means that you can easily create, develop, build, deploy and debug adapters using supported IDE, such as Eclipse or IntelliJ, like any other Maven project.  
+In MobileFirst Platform Foundation 8.0 adapters are basically Maven projects. This means that you can easily create, develop, build, deploy and debug adapters, like any other Maven project, using supported IDE such as Eclipse or IntelliJ.  
 This post demonstrates how to use IntelliJ to develop MobileFirst Java adapters.
 
-## Creating a New Adapter Maven Project
+## Creating a New Java Adapter Maven Project
 1. Go to File → New → Project and select the Maven tab.
 
     ![New Maven project screen]({{site.baseurl}}/assets/blog/2016-02-29-debugging-adapters-using-intellij/new-project.png)
@@ -31,7 +31,7 @@ This post demonstrates how to use IntelliJ to develop MobileFirst Java adapters.
 
     ![Required parameters screen]({{site.baseurl}}/assets/blog/2016-02-29-debugging-adapters-using-intellij/project-parameters.png)
 
-5. click **Next**.
+5. In the following page, click **Next**.
 
 6. Provide project name and location and click **Finish**
 
@@ -39,11 +39,28 @@ This post demonstrates how to use IntelliJ to develop MobileFirst Java adapters.
 
 You are now ready to implement your Java adapter.
 
-## Building and deploying an adapter Maven project
+## Building and Deploying a Java Adapter Maven Project
 To quickly build and deploy your adapter use the **Maven Projects** view to run commands.  
 Go to View → Tool Windows → Maven Projects:
 
-* Build - click on **Lifecycle** and double click the **install** command.
-* Deploy - click on **Plugins** → **adapter** and double click the **adapter:deploy** command.
+* Build - Click on **Lifecycle** and double click the **install** command.
+* Deploy - Click on **Plugins** → **adapter** and double click the **adapter:deploy** command.
 
-**** build and deploy ??
+<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip** You can also build and deploy the adapter using a single command:
+
+1. Go to Run → Edit Configurations and click the **+** button to add new **Maven** configuration.
+2. Provide a name, set the **Command line** value to `mvn install adapter:deploy` and click **OK**.
+
+    ![Add run configuration screen]({{site.baseurl}}/assets/blog/2016-02-29-debugging-adapters-using-intellij/Build & Deploy command.png)
+
+3. You can then find the configuration in the **Maven Projects** view under **Run Configurations**.
+
+## Debugging a Java Adapter Maven Project
+In order to debug adapter's Java code, follow this instructions:
+
+1. Go to Run → Edit Configurations and click the **+** button to add new **Remote** configuration.
+2. Provide a **Name**, set the **Port** value to "10777" and click **OK**.
+
+    ![Add new remote screen]({{site.baseurl}}/assets/blog/2016-02-29-debugging-adapters-using-intellij/Remote screen.png)
+
+3. Click on Run → Debug YOUR-REMOTE-NAME to enter *debug mode*. You can now debug the Java code normally as you would do a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints.

@@ -17,7 +17,7 @@ This tutorial demonstrates how to test adapters using the MobileFirst Developer 
  * [Using Swagger](#using-swagger)
 * [Debugging Adapters](#debugging-adapters)
  * [JavaScript adapters](#javascript-adapters)
- * [Java adapters](#java-adapters) 
+ * [Java adapters](#java-adapters)
 
 ## Testing Adapters
 MobileFirst adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass `URL` parameters, `path` parameters, `body` parameters or `headers` as you see fit.
@@ -160,7 +160,7 @@ Hello World
 ## Debugging Adapters
 ### JavaScript adapters
 You can debug JavaScript code in JavaScrit adapters by using the `WL.Logger` API.  
-Available logging levels, from least to most verbose, are: `WL.Logger.error`, `WL.Logger.warn, `WL.Logger.info` and `WL.Logger.debug`.
+Available logging levels, from least to most verbose, are: `WL.Logger.error`, `WL.Logger.warn`, `WL.Logger.info` and `WL.Logger.debug`.
 
 The logs are then printed to the log file of the application server.  
 Be sure to set the server verbosity level accordingly, otherwise you will not see the logging in the log file.
@@ -176,7 +176,7 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
     ![Image showing how to import an adapter Maven project to Eclipse](import-adapter-maven-project.png)
 
 3. Provide debugging parameters:
-    - Click **Run → Debug Configurations**.
+    - Click **Run** → **Debug Configurations**.
     - Double-click on **Remote Java application**.
     - Provide a **Name** for this configuration.
     - Set the **Port** value to "10777".
@@ -185,6 +185,6 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
 
     ![Image showing how to set MobileFirst Server debug parameters](setting-debug-parameters.png)
 
-4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do a standard Java application. You need to issue a request to the adapter to make its code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](../creating-adapters/#testing-adapters).
+4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](../creating-adapters/#testing-adapters).
 
     ![Image showing a being-debugged adapter](debugging.png)
