@@ -107,20 +107,11 @@ Send notifications with IBM MobileFirst Platform Foundation.
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
 * [Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
-* <span style="color:red">IN PROGRESS </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
+* [Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
     * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/cordova/)
     * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/ios/)
     * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/android/)
-* <span style="color:red">IN PROGRESS </span>[Using Analytics API in client applications](../analytics/analytics-api/)
-
-{% comment %}
-### [Cloudant Data Layer](../../../cloudant/)
-Scalable database management for your MobileFirst projects.  
-
-* [Working with Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/)
-    * [iOS – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/ios/)
-	* [Android – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/android/)
-{% endcomment %}
+* [Using Analytics API in client applications](../analytics/analytics-api/)
 
 ### [IBM Containers](../ibm-containers/)
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
