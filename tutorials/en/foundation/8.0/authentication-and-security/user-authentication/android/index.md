@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 title: Implementing the challenge handler in Android applications
-breadcrumb_title: Android applications
+breadcrumb_title: Android
 relevantTo: [android]
-weight: 4
+weight: 5
 downloads:
   - name: Download PreemptiveLogin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80
@@ -13,39 +13,12 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
-**Prerequisite:** This tutorial is a continuation of the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/android) tutorial. Make sure to read it first.
+**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/android) tutorial.
 
-The challenge handler implementation will be modified to fit the `UserLoginSecurityCheck` created in the matching [security check tutorial](../security-check), and will demonstrate a few additional features (APIs) such as the preemptive `login` , `logout` and `obtainAccessToken`.
+The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
 
-## Creating the challenge handler
-1. Create a Java class that extends `WLChallengeHandler`:
-
-    ```java
-    public class UserLoginChallengeHandler extends WLChallengeHandler {
-
-    }
-    ```
-
-2. Add a constructor method:
-
-    ```java
-    public UserLoginChallengeHandler(String securityCheck) {
-        super(securityCheck);
-    }
-    ```
-
-3. Register the challenge handler:
-
-    ```java
-    WLClient client = WLClient.createInstance(this);
-    client.registerChallengeHandler(myUserLoginChallengeHandler);
-    ```
-
-## Handling the challenge
-In this example, the challenge sent by `UserLoginSecurityCheck` is the same one sent by `PinCodeAttempts`: the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`. The `handleChallenge` method is responsible for collecting the username and password from the user.
-
-## Submitting the credentials
-Once the credentials have been collected, use the `WLChallengeHandler`'s `submitChallengeAnswer(JSONObject answer)` method to send an answer back to the security check. In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
+## Login
+In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
 
 `credentials` is a `JSONObject` containing `username`, `password` and `rememberMe`:
 
@@ -53,9 +26,9 @@ Once the credentials have been collected, use the `WLChallengeHandler`'s `submit
 submitChallengeAnswer(credentials);
 ```
 
-You may also want to login a user without any challenge being received. For examples, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
+You may also want to login a user without any challenge being received. For example, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
 
-You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Platform Foundation SDK includes a different API:
+You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Platform Foundation SDK includes the `login` API:
 
 ```java
 WLAuthorizationManager.getInstance().login(securityCheckName, credentials, new WLLoginResponseListener() {
@@ -85,25 +58,19 @@ public void login(JSONObject credentials){
     }
     else{
         WLAuthorizationManager.getInstance().login(securityCheckName, credentials, new WLLoginResponseListener() {
-            @Override
-            public void onSuccess() {
-                Log.d(securityCheckName, "Login Preemptive Success");
-
-            }
-
-            @Override
-            public void onFailure(WLFailResponse wlFailResponse) {
-                Log.d(securityCheckName, "Login Preemptive Failure");
-            }
+//...
         });
     }
 }
 ```
 
-## Obtaining an access token
-Since this security check supports *remember me* functionality, it would be useful to check if the user is currently logged in, during the application startup.
+> **Note:**
+> `WLAuthorizationManager`'s `login()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `handleSuccess` or `handleFailure` will **also** be called.
 
-The MobileFirst Platform Foundation SDK provides an API to ask the server for a valid token:
+## Obtaining an access token
+Since this security check supports *remember me* functionality, it would be useful to check if the client is currently logged in, during the application startup.
+
+The MobileFirst Platform Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
 
 ```java
 WLAuthorizationManager.getInstance().obtainAccessToken(scope, new WLAccessTokenListener() {
@@ -119,21 +86,16 @@ WLAuthorizationManager.getInstance().obtainAccessToken(scope, new WLAccessTokenL
 });
 ```
 
-If the user is already logged-in or is in the *remembered* state, the API will trigger a success. If the user is not logged in, the security check will send back a challenge.
+> **Note:**
+> `WLAuthorizationManager`'s `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `handleSuccess` or `handleFailure` will  **also** be called.
 
-The `obtainAccessToken` API takes in a **scope**. The scope here can be the name of your **security check**.
+If the client is already logged-in or is in the *remembered* state, the API will trigger a success. If the client is not logged in, the security check will send back a challenge.
 
-> Learn more about **scope** here: [Authorization concepts](../../authorization-concepts)
+The `obtainAccessToken` API takes in a **scope**. The scope can be the name of your **security check**.
 
-## Handling success and failure
-As noted in the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/android) tutorial, `WLChallengeHandler` will call the  `handleSuccess` or `handleFailure` methods upon success or failure of the challenge. You can choose to update your UI based on those events.
+> Learn more about **scope** in the [Authorization concepts](../../authorization-concepts) tutorial
 
-> **Notes:**
->
-> * `WLAuthorizationManager`'s `login()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `handleSuccess` or `handleFailure` will **also** be called.
-> * `WLAuthorizationManager`'s `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `handleSuccess` or `handleFailure` will  **also** be called.
-
-### Retrieving the authenticated user
+## Retrieving the authenticated user
 The challenge handler's `handleSuccess` method receives a `JSONObject identity` as a parameter.
 If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `handleSuccess` to save the current user:
 
@@ -162,7 +124,7 @@ Here, `identity` has a key called `user` which itself contains a `JSONObject` re
     "id": "john",
     "displayName": "john",
     "authenticatedAt": 1455803338008,
-    "authenticatedBy": "UserLoginSecurityCheck"
+    "authenticatedBy": "UserLogin"
   }
 }
 ```
@@ -201,9 +163,11 @@ Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapt
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../creating-adapters/).
 * Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register` from a **command-line** window.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `UserLogin`.
+    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Map scope elements to security checks**, add a mapping from `accessRestricted` to `UserLogin`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
 
-![Sample application](sample-application-android.png)
+<div style="text-align:center">
+    <img src="login-screen.png" style="display:inline"/><img src="balance.png" style="display:inline"/>
+</div>

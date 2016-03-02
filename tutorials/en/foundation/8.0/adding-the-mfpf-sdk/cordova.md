@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adding the MobileFirst Platform Foundation SDK to Cordova Applications
-breadcrumb_title: Cordova SDK
+breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 ---
@@ -16,7 +16,6 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 * cordova-plugin-mfp-push
 * cordova-plugin-mfp-jsonstore
 * cordova-plugin-mfp-fips
-* cordova-plugin-mfp-encrypt-utils
 
 #### Jump to:
 
@@ -46,9 +45,6 @@ The cordova-plugin-mfp-push plug-in provides permissions needed to use push noti
 
 #### cordova-plugin-mfp-fips
 The cordova-plugin-mfp-fips plug-in enables FIPS related features. For more information about FIPS, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
-
-#### cordova-plugin-mfp-encrypt-utils
-The cordova-plugin-mfp-encrypt-utils plug-in provides encryption functions. For more information about encryption functions, see the [user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 **Prerequisites:**
 

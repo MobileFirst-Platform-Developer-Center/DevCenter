@@ -5,10 +5,8 @@ tags:
 - MobileFirst_Platform
 - DataPower
 author:
-  display_name: Nathan Hazout
+  name: Nathan Hazout
 ---
-# DataPower Integration
-
 ## Introduction
 You can use IBM® WebSphere® DataPower® in the Demilitarized Zone (DMZ) of your enterprise to protect MobileFirst mobile application traffic.
 
@@ -222,9 +220,11 @@ To configure with LDAP, consult the documentation for your application server.
 11. Make sure your MobileFirst application is configured to communicate with your DataPower's IP and port. 	
 
 ### Default behavior with BasicRegistry
-By default, this patterns checks the credentials against a hardcoded file called **local:///MyAAA.xml**. For example it contains a test user with username **fred** and password **smith**. The user you want to test with needs to be in both DataPower's **MyAAA.xml** and the registry configured in Liberty's **server.xml** file.
+By default, this patterns checks the credentials against a hardcoded file called **local:///MyAAA.xml**, which contains a test user with username **fred** and password **smith**. This default is intended for development use only and should be modified for any deployment connected to an untrusted network. The user you want to test with needs to be in both DataPower's **MyAAA.xml** and the registry configured in Liberty's **server.xml** file.
 
-Feel free to adjust your authentication mechanism by editing your *Multi-Protocol Gateway Policy*: In the DataPower search bar, search for **AAA Policy**. Edit the policy called **MFPIntegration_Web_HTTPS_FormLTPA_Form2LTPA**. In the **Authentication** tab, change the authentication **method**. For example, you can choose **Bind to LDAP server**.
+For production deployments, it is likely that customers will want to adjust the authentication mechanism, for example to integrate with an external user registry or other security system.
+
+You can do this by editing your *Multi-Protocol Gateway Policy*: In the DataPower search bar, search for **AAA Policy**. Edit the policy called **MFPIntegration_Web_HTTPS_FormLTPA_Form2LTPA**. In the **Authentication** tab, change the authentication **method**. For example, you can choose **Bind to LDAP server** to perform a simple bind against an LDAP compliant directory server.  The pattern supports the use of any valid DataPower AAA policy, however remember that the user identity returned from the authentication step must also exist in the Liberty user registry.
 
 ### Note regarding SSL
 The pattern by default ONLY supports SSL. You are required to setup a **SSL Proxy Profile** for the pattern to be deployed.
@@ -233,7 +233,7 @@ Keep in mind that most mobile devices reject self-signed certificates by default
 During development, if you wish to open a non-SSL (HTTP) port, you need to modify the gateway:
 In your Multi-Protocol Gateway, look for *Front side settings*. Add an **HTTP Front side handler**, choose a port for HTTP requests, and make sure to check `GET` in the list of allowed methods.
 
-## Samples & Pattern
+## Samples &amp; Pattern
 You can download the samples and pattern from [GitHub](https://github.com/nasht00/DataPowerIntegration).
 There are 3 samples available:
 
@@ -248,3 +248,8 @@ Make sure to configure the *server.xml* and deploy the artifacts before running 
 - [Protecting your mobile application traffic by using IBM WebSphere DataPower as a security gateway](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_protecting_your_mobile_app_traffic_using_datapower.html?lang=en)
 - [Integrating IBM WebSphere DataPower with a cluster of instances of MobileFirst Server](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/admin/t_integrating_datapower_was_or_iberty.html?lang=en)
 - [Using WebSphere DataPower as a push notification proxy](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.integ.doc/devref/t_DataPower_as_push_notification_proxy.html?lang=en)
+
+## Video
+<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+    <iframe src="https://www.youtube.com/embed/emDdHC0VlRY"></iframe>
+</div>

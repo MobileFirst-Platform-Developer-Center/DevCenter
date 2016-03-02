@@ -38,17 +38,17 @@ Declare the required procedures below the connectivity element:
 	<description>JavaScriptHTTP</description>
 	<connectivity>
 		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
-			<protocol>http</protocol>
-			<domain>www.engadget.com</domain>
-			<port>80</port>
+			<protocol>https</protocol>
+			<domain>mobilefirstplatform.ibmcloud.com</domain>
+			<port>443</port>
 			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
 			<socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
 			<maxConcurrentConnectionsPerNode>50</maxConcurrentConnectionsPerNode>
 		</connectionPolicy>
 	</connectivity>
 
-	<procedure name="getFeeds"/>
-	<procedure name="getFeedsFiltered"/>
+	<procedure name="getFeed"/>
+	<procedure name="getFeedFiltered"/>
 
 </mfp:adapter>
 ```
@@ -76,11 +76,11 @@ Provide an input parameter object, which must specify:
 * The transformation type (optional)
 
 ```js
-function getFeeds() {
+function getFeed() {
   var input = {
       method : 'get',
       returnedContentType : 'xml',
-      path : "rss.xml"
+      path : "feed.xml"
   };
 
 
@@ -91,16 +91,16 @@ function getFeeds() {
 >See the topic about "WL.Server.invokeHttp" in the user documentation for a complete list of options.
 
 ## XSL transformation filtering
-You can apply XSL transformation to the received data, for example to filter  the data.  
+You can also apply XSL transformation to the received data, for example to filter the data.  
 To apply XSL transformation, specify the transformation options in the input parameters of the procedure invocation:
 
 ```js
-function getFeedsFiltered() {
+function getFeedFiltered() {
 
   var input = {
       method : 'get',
       returnedContentType : 'xml',
-      path : "rss.xml",
+      path : "feed.xml",
       transformation : {
         type : 'xslFile',
         xslFile : 'filtered.xsl'
@@ -121,13 +121,13 @@ Use JavaScript to create a SOAP Envelope. It is possible to insert JavaScript co
 
 ```js
 var request =
-  <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-    <soap:Body>
-      <CelsiusToFahrenheit xmlns="http://www.w3schools.com/webservices/">
-        <Celsius>{celsiusTemp}</Celsius>
-      </CelsiusToFahrenheit>
-    </soap:Body>
-  </soap:Envelope>;
+		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+			<soap:Body>
+				<GetCitiesByCountry xmlns="http://www.webserviceX.NET">
+					<CountryName>{countryName}</CountryName>
+				</GetCitiesByCountry>
+			</soap:Body>
+		</soap:Envelope>;
 ```
 
 The` WL.Server.invokeHttp(options)` method is used to call a request for a SOAP service.
@@ -141,16 +141,16 @@ The Options object must include the following properties:
 
 ```js
 var input = {
-      method: 'post',
-      returnedContentType: 'xml',
-      path: '/webservices/tempconvert.asmx',
-      body: {
-        content: request.toString(),
-        contentType: 'text/xml; charset=utf-8',
-      },
-  };
+		method: 'post',
+		returnedContentType: 'xml',
+		path: '/globalweather.asmx',
+		body: {
+			content: request.toString(),
+			contentType: 'text/xml; charset=utf-8'
+		}
+	};
 
-  var result = WL.Server.invokeHttp(input);
+var result = WL.Server.invokeHttp(input);
 ```
 
 ## Sample adapter

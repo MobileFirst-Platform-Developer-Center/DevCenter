@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - Analytics
 author:
-  display_name: Chevy Hungerford
+  name: Chevy Hungerford
 ---
 This month IBM MobileFirst™ Platform Foundation released two new features in an iFix for Operational Analytics, accessibility, and application crash analytics.
 

@@ -68,6 +68,13 @@ request.SetQueryParameter("param1","value1");
 request.SetQueryParameter("param2","value2");
 ```
 
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```cs
+request.SetQueryParameter("params","['value1', 'value2']");
+```
+
 ### Form parameters
 To send form parameters in the body, use `.Send(Dictionary<string, string> formParameters)` instead of `.Send()`:  
 
@@ -75,7 +82,14 @@ To send form parameters in the body, use `.Send(Dictionary<string, string> formP
 Dictionary<string,string> formParams = new Dictionary<string,string>();
 formParams.Add("height", height.getText().toString());
 request.Send(formParams);
-```    
+```   
+
+#### JavaScript adapters
+JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+
+```cs
+formParams.Add("params","['value1', 'value2']");
+```
 
 ### Header parameters
 To send a parameter as an HTTP header use `.SetHeader()` API:
@@ -89,13 +103,6 @@ request.SetHeader(KeyValuePair<string,string> header);
 - `.Send(JObject json)` allows you to set an arbitrary dictionary in the body.
 - `.Send(byte[] data)` allows you to set an arbitrary byte array in the body.
 
-### Javascript Adapters
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
-
-```cs
-request.SetQueryParameter("params","['param1', 'param2']");
-```
-
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
@@ -105,8 +112,8 @@ request.SetQueryParameter("params","['param1', 'param2']");
 The ResourceRequestWin8 and ResourceRequestWin10 projects contain a native Windows 8 Universal/Windows 10 UWP application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80) the Native project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80) the Native project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80) the Windows 8.1 Universal project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80) the Windows 10 UWP project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage

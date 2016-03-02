@@ -1,12 +1,12 @@
 ---
 title: IBM MobileFirst Platform Foundation Responds to Google Play Store Announcement of Blocking Apps Using Vulnerable Cordova Versions
-date: 2016-02-17
+date: 2016-02-24
 tags:
 - MobileFirst_Platform
 - Cordova
 - Google Play Store
 author:
-  display_name: Karen Tran
+  name: Karen Tran
 ---
 > [UPDATE Feb. 17, 2016] IBM has assurance from Google that the Google Play Store will not block MobileFirst Platform Foundation apps that have the IBM patched distribution of Cordova for these CVEs. The blocking was scheduled to begin on May 9th. The warning emails will discontinue being sent within two to three weeks.
 

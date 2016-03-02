@@ -6,7 +6,7 @@ tags:
 - Bluemix
 - IBM_Containers
 author:
-  display_name: Krishna C Kumar
+  name: Krishna C Kumar
 ---
 
 ### MobileFirst Platform Foundation for IBM Bluemix Container - Starter

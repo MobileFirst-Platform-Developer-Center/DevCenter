@@ -4,6 +4,7 @@ title: Setting up your development environment
 show_children: true
 show_disqus: false
 print_pdf: false
+weight: 1
 ---
 ## Overview
 Before starting application development in MobileFirst Platform Foundation, the development environment needs to be set-up. This includes both the MobileFirst Platform Foundation development environment, as well any additional development environment: iOS, Android, Windows 8.1 Universal and Windows 10 UWP.

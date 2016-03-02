@@ -4,6 +4,7 @@ breadcrumb_title: IBM Containers
 show_disqus: true
 title: IBM MobileFirst Platform Foundation on IBM Containers
 relevantTo: [ios,android,windows,cordova]
+weight: 9
 ---
 ## Overview
 Before talking about IBM MobileFirst Platform Foundation and IBM Containers, lets talk Bluemix.
@@ -26,5 +27,7 @@ The IBM Container infrastructure includes a private registry for your images, so
 
 ## Tutorials to follow next
 
+IBM MobileFirst Platform Foundation 8.0 beta currently supports only the Mobile Foundation Bluemix service.
+
 * Create a MobileFirst Server instance on IBM Containers [using the MobileFirst Platform Mobile Foudation ](using-mobile-foundation/).
-* **Advanced**. Learn how to [create an image](creating-an-image/) of your MobileFirst Server and upload it to IBM Containers.
+

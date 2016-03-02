@@ -24,11 +24,15 @@ From a **Command-line** window, navigate to the server's folder and run the comm
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
-1. Click on the "New" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
+1. Click on the "New" button next to **Applications**
+    * Select the **iOS** platform
+    * Enter **com.ibm.mfpstarteriosobjectivec** or **com.ibm.mfpstarteriosswift** as the **application identifier** (depending on which mobile app scaffold you will download next)
+    * Enter **1.0** as the **version** value
+    * Click on **Register application**
 
     ![Image of selecting platform, and providing an identifier and version](register-an-application-ios.png)
  
-2. Click on the **Get Starter Code** tile and select to download the iOS Starter Code.
+2. Click on the **Get Starter Code** tile and select to download the iOS Objective-C or Swift mobile app scaffold.
 
     ![Image of download a sample application](download-starter-code-ios.png)
     
@@ -36,62 +40,82 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Xcode project project by double-clicking the **.xcworkspace** file.
 
-2. Select the **[project-root]/ViewController.m/swift** file and paste the following code snippet, replacing the existing `viewDidLoad()` function:
+2. Select the **[project-root]/ViewController.m/swift** file and paste the following code snippet, replacing the existing `getAccessToken()` function:
  
     In Objective-C:
 
     ```objc
-    - (void)viewDidLoad {
-        [super viewDidLoad];
-        
-        NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/users/world"];
-        WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
-         
-        [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-            if (error != nil){
-                 NSLog(@"Failure: %@",error.description);
+    - (void)testServerConnection {
+        _connectionStatusText.text = @"Connecting to Server...";
+        [[WLAuthorizationManager sharedInstance] obtainAccessTokenForScope: @"" withCompletionHandler:^(AccessToken *accessToken, NSError *error) {        
+            if (error != nil){            
+                NSLog(@"Failure: %@",error.description);
+                _connectionStatusText.text = @"Client Failed to connect to Server";
             }
-            else if (response != nill){
-                // Will print "Hello world" in the Xcode Console.
-                NSLog(@"Success: %@",response.responseText);
-            }
-        }];
+            else if (accessToken != nil){            
+                NSLog(@"Success: %@",accessToken.value);
+                _connectionStatusText.text = @"Client has connected to Server";
+                NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/users/world"];
+                WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+                [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+                    if (error != nil){
+                        NSLog(@"Failure: %@",error.description);
+                    }
+                    else if (response != nil){
+                       // Will print "Hello world" in the Xcode Console.
+                       NSLog(@"Success: %@",response.responseText);
+                    }
+                }];
+            }        
+        }];    
     }
     ```
     
     In Swift:
     
     ```swift
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        let url = NSURL(string: "/adapters/javaAdapter/users/world")
-        let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-        
-        request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
-            if (error != nil){
-                NSLog("Failure: " + error.description)
-            }
-            else if (response != nil){
-                NSLog("Success: " + response.responseText)
+    @IBAction func getAccessToken(sender: AnyObject) {
+        connectionStatusWindow.text = "Connecting to Server...";
+        print("Testing Server Connection")
+        WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { (token, error) -> Void in
+            if (error != nil) {
+               self.connectionStatusWindow.text = "Client Failed to connect to Server"
+               print("Did not Recieved an Access Token from Server: " + error.description)
+            } else {
+                self.connectionStatusWindow.text = "Client has connected to Server"
+                print("Recieved the Following Access Token value: " + token.value)
+                let url = NSURL(string: "/adapters/javaAdapter/users/world")
+                let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
+               
+                request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+                    if (error != nil){
+                        NSLog("Failure: " + error.description)
+                    }
+                    else if (response != nil){
+                        NSLog("Success: " + response.responseText)
+                    }
+                }
             }
         }
     }
     ```
 
 ### 4. Creating an adapter
+Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
-1. Click on the "New" button next to **Adapters**
-    * Select the **Actions → Download sample** option. Download the **Java** adapter sample.
+Alternatively, click on the "New" button next to **Adapters**.  
         
-        > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.  
-    * From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
+1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-        ```bash
-        mfpdev adapter build
-        ```
-    * When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
-    * Alternatively, download [this prepared .adapter artifact](#) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
+    > If Maven and MobileFirst Developer CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+
+2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+
+    ```bash
+    mfpdev adapter build
+    ```
+
+3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
     ![Image of create an adapter](create-an-adapter.png)
 
@@ -102,29 +126,19 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 2. Press the **Play** button.
 
+#### Results
+* Clicking on the **Test Server Connection** button will display **Client has connected to server**.
+* If the application was able to connect to the MobileFirst Server, a resource request call using the Java adapter will take place.
+
 The adapter response is then printed in the Xcode Console.
 
 ![Image of application that successfully called a resource from the MobileFirst Server ](success_response.png)
 
-> **Note:** Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default.  
-To complete the tutorial, [disable  ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).
-
-> 1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
-> 2. Paste the following: 
-
->    
-    ```xml
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    ```
-
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Server-side development tutorials](../../adapters/)
+- Review the [Using the MobileFirst Platform Foundation](../../using-the-mfpf-sdk/) tutorials
+- Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

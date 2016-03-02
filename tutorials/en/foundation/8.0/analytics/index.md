@@ -5,11 +5,15 @@ breadcrumb_title: Operational Analytics
 show_disqus: true
 print_pdf: true
 relevantTo: [ios,android,windows,cordova]
+weight: 8
 ---
 ## Overview
-MobileFirst Platform Foundation Operational Analytics collects data about applications, adapters, devices, logs, and your own custom events to give a high-level view of the client interaction with the IBM MobileFirst Platform Server.
+MobileFirst Platform Foundation Operational Analytics collects data from app to server activities, client logs, client crashes, and server side logs from the MobileFirst Runtime Server and client devices. Collecting analytics from all these data points populates the Operational Analytics Charts with infrastructure and client side information.
+
+![architecture diagram](mfp_operational_analytics.jpg)
 
 Operational Analytics is bundled by default as part of the [MobileFirst Platform Foundation Development Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
+
 
 #### Jump to
 
@@ -18,36 +22,38 @@ Operational Analytics is bundled by default as part of the [MobileFirst Platform
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## MobileFirst Analytics Console
-You can open the Analytics Console from the MobileFirst Operations Console.
+You can open the Analytics Console from the MobileFirst Operations Console, by clicking on "Analytics Console".
 
 ![Analytics console button](analytics-console-button.png)
 
-From the Analytics Console you can then:
 
-* Create custom charts
-* Manage alerts
-* Monitor App Crash
-* Monitor App Usage
-* Monitor Network Data
-* And a lot more!
+In the MobileFirst Platform Foundation Development Kit this console's default URL is `http://localhost:9080/analytics/console`.  
+After navigating to the Analytics console you will see a dashboard like below (but with empty data).
 
 ![Analytics console](analytics-console.png)
 
+From the Analytics Console you can then:
+
+* [Create custom charts](#custom-charts)
+* [Manage alerts](#manage-alerts)
+* [Monitor App Crash](#monitor-app-crash)
+* [Monitor Network Data](#monitor-network)
 
 ### Custom Charts
-Custom charts allows you to visualize the collected analytics data in your analytics data store in charts that are not avaliable in the out of the box MobileFirst Analytics Console. This visualization is a powerful way to inspect data for specific use cases. You can create charts with data already collected by Operational Analytics in addition to custom data you report.
-
-> For more information about creating custom charts, see the user documentation
+Custom charts allow you to visualize the collected analytics data in your analytics data store in charts that are not avaliable in the out of the box MobileFirst Analytics Console. This visualization is a powerful way to analyze data important to your business needs.
 
 ### Manage Alerts
 You can set thresholds in alert definitions to better monitor your activities.
 
-You can configure thresholds which, if exceeded, trigger alerts to notify the MobileFirst Analytics Console monitor. The triggered alerts can be visualized on the console, or the alerts can be handled by a custom webhook. This feature provides a proactive means of detecting client log errors, server log errors, extended periods of network latency, and authentication failures. Reactive thresholds and alerts keep you from having to sift through your data and set thresholds at a wide spectrum of granularity.
-
-> For more information about creating custom charts, see the user documentation
+You can configure thresholds which, if exceeded, trigger alerts to notify the MobileFirst Analytics Console monitor. The triggered alerts can be visualized on the console, or the alerts can be handled by a custom webhook. A custom webhook allows control who and how someone is notified when an alert is triggered.
 
 ### Monitor App Crash
-App crashes are visualized on the MobileFirst Operational Analytics Console, where you can quickly view crashes and act on them accordingly.
+App crashes are visualized on the MobileFirst Operational Analytics Console, where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default. When crash logs are sent to the analytics server, they will automatically populate the crash charts.
+
+### Monitor Network Data
+The MobileFirst Operational Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways.
+
+> For more information about the data collected by MobileFirst Analytics, see the user documentation
 
 ## Elasticsearch
 Behind the scenes, running search queries and storing data for Operational Analytics is **Elasticsearch 1.5x**.  
@@ -58,7 +64,7 @@ The Elasticsearch instances are queried in real-time in order to populate the Mo
 
 MobileFirst Operational Analytics does not hide any Elasticsearch functionality. If knowledge how to fully utilize Elasticsearch, debug Elasticsearch, or optimize Elasticsearch instances is present, Operational Analytics does not prevent using it.
 
-If you have interest in any Elasticsearch functionality besides what we are doing for you out of the box, you can read more about it in the Elasticsearch documentation.
+If you have interest in any Elasticsearch functionality besides what MobileFirst Operational Analytics offers out of the box, you can read more about it in the Elasticsearch documentation.
 
 > Read more in the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)
 
@@ -104,5 +110,9 @@ http://localhost:9500/*/_mapping
 
 ## Tutorials to follow next
 
-* [Remote Controlled client-side log collection](remote-controlled-client-side-log-collection)
+* [Client-side log collection](remote-controlled-client-side-log-collection)
 * [Analytics API](analytics-api)
+
+## Related Blogposts
+* [More on Instrumenting Custom Analytics](https://developer.ibm.com/mobilefirstplatform/2016/01/22/howto-custom-in-app-behavior-analytics/)
+* [More on Instrumenting Webhooks](https://developer.ibm.com/mobilefirstplatform/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

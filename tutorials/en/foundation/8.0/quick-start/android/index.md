@@ -24,11 +24,15 @@ From a **Command-line** window, navigate to the server's folder and run the comm
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
-1. Click on the "New" button next to **Applications** and select the desired *platform*, *identifier* and *version* values.
+1. Click on the "New" button next to **Applications**
+    * Select the **Android** platform
+    * Enter **com.ibm.mfpstarterandroid** as the **application identifier**
+    * Enter **1.0** as the **version** value
+    * Click on **Register application**
 
     ![Image of selecting platform, and providing an identifier and version](register-an-application-android.png)
  
-2. Click on the **Get Starter Code** tile and select to download the Android Starter Code.
+2. Click on the **Get Starter Code** tile and select to download the Android mobile app scaffold.
 
     ![Image of downloading a sample application](download-starter-code-android.png)
 
@@ -36,7 +40,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Android Studio project and import the project.
 
-2. Select the **app/java/com/mfp/sample/MainActivity.java** file and:
+2. Select the **app/java/com.ibm.mfpstarterandroid/ServerConnectActivity.java** file and:
 
 * Add the following imports:
 
@@ -72,18 +76,21 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     ```
 
 ### 4. Creating an adapter
+Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
-1. Click on the "New" button next to **Adapters**
-    * Select the **Actions → Download sample** option. Download the **Java** adapter sample.
+Alternatively, click on the "New" button next to **Adapters**.  
         
-        > If Maven and MobileFirst CLI are not installed, follow the on-screen **Setting up your environment** instructions to install.  
-    * From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command: 
+1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-        ```bash
-        mfpdev adapter build
-        ```
-    * When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
-    * Alternatively, download [this prepared .adapter artifact](#) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
+    > If Maven and MobileFirst Developer CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+
+2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+
+    ```bash
+    mfpdev adapter build
+    ```
+
+3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
     ![Image of create an adapter](create-an-adapter.png)
 
@@ -91,7 +98,11 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. In Android Studio, select the **[project]/app/src/main/assets/mfpclient.properties** file and edit the **host** property with the IP address of the MobileFirst Server.
 
-1. Click on the **Run App** button.  
+2. Click on the **Run App** button.  
+
+#### Results
+* Clicking on the **Test Server Connection** button will display **Client has connected to server**.
+* If the application was able to connect to the MobileFirst Server, a resource request call using the Java adapter will take place.
 
 The adapter response is then printed in Android Studio's LogCat view.
 
@@ -100,7 +111,8 @@ The adapter response is then printed in Android Studio's LogCat view.
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Server-side development tutorials](../../adapters/)
+- Review the [Using the MobileFirst Platform Foundation](../../using-the-mfpf-sdk/) tutorials
+- Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)

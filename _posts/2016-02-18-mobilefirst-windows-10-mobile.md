@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - Windows_10
 author:
-  display_name: Srihari Kulkarni
+  name: Srihari Kulkarni
 ---
 <br/>
 Late last year, [Microsoft released two mobiles](http://www.theverge.com/2015/11/9/9700462/microsoft-lumia-950-launch-release-date) - the Lumia 950 and Lumia 950 XL phones that came pre-loaded with Windows 10 Mobile. These mobiles came with Windows 10 Build 10.0.10586. 

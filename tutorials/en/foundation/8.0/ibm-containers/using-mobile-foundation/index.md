@@ -1,21 +1,20 @@
 ---
 layout: tutorial
-title: Setting Up MobileFirst Platform Foundation on IBM Containers - Beta
-breadcrumb_title: Foundation on IBM Containers
+title: Using the Mobile Foundation service to set-up MobileFirst Server on IBM Containers
+breadcrumb_title: Using the Mobile Foundation service
 relevantTo: [ios,android,windows,cordova]
 weight: 6
 ---
 ## Overview
-This tutorial provides step-by-step instructions to set-up a MobileFirst Server instance on IBM Containers using **Mobile Foundation** *beta*.
+This tutorial provides step-by-step instructions to set-up a MobileFirst Server instance on IBM Containers using the **Mobile Foundation** service.  
+Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-up of scaleable Developer or Production environments of MobileFirst Platform Foundation v8.0 Beta on **IBM Containers**.
 
-Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up of scaleable Developer or Production environments of MobileFirst Platform Foundation v8.0 Beta.
-
-> **Prerequisite:** Make sure to read the [Introduction to IBM MobileFirst Platform Foundation on IBM Containers]("../") tutorial.
+> **Prerequisite:** Make sure to read the [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../) tutorial.
 
 #### Jump to:
 
-* [Using the Mobile Foundation Bluemix service](#using-mobilefirst-platform-foundation-tile)
-* [Basic Server](#basic-server)
+* [Using the Mobile Foundation Bluemix service](#using-the-mobile-foundation-bluemix-service)
+* [Server configuration](#server-configuration)
 * [Advanced server configuration](#advanced-server-configuration)
 * [Further reading](#further-reading)
 
@@ -23,7 +22,7 @@ Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up 
 
 1. Load [bluemix.net](http://bluemix.net) and visit the **Catalog** page.
 
-2. From the left sidebar, tick the "Mobile" checkbox under **Services**. Then, click on **MobileFirst Platform Foundation** to begin the service creation process.
+2. From the left sidebar, tick the "Mobile" checkbox under **Services**. Then, click on the **Mobile Foundation** tile to begin the service creation process.
 
     ![Image of Mobile Foundation setup](service-page.png)
 
@@ -33,18 +32,25 @@ Mobile Foundation is a **Bluemix service** that enables quick and easy stand-up 
 
 4. Agree to the Early Beta license terms, provide your Bluemix username and password, and click **Continue**.
 
-5. Optionally update the server configuration in the [Configuration tab](#configuring-the-server-instance), and click on **Start advanced server**.
+5. Start the MobileFirst Server.
+    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
+    - Update the server configuration in the [Configuration tab](#configuring-the-server-instance), and click on **Start advanced server**.
 
-6. Click in **Start Basic Server** to start the MobileFirst Server.
+    During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Platform Foundation environment is being initialized.  
+    This takes between 5 to 10 minutes.
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
-7. After starting the server you are presented with the MobileFirst Platform Operations Console.
+6. With the MobileFirst Server now running, you are presented with the following Dashboard:
 
-    ![Image of Mobile Foundation setup](console.png)
+    ![Image of Mobile Foundation setup](service-dashboard.png)
 
-## Basic Server
-The created server instance baseline is made of:
+7. Click on **Launch Console** to open the MobileFirst Operations Console.
+
+    ![Image of Mobile Foundation setup](dashboard.png)
+
+## Server configuration
+The basic server instance consists of:
 
 * A single node
 * 512MB memory
@@ -54,21 +60,22 @@ The created server instance baseline is made of:
 Through the Configuration tab, the server instance can be further customized with:
 
 * Varying node, memory and storage combinations
-* console username &amp; password
+* MobileFirst Operations Console admin password
 * LTPA keys
 * JNDI configuration
-* user registry 
+* User registry 
 * TrustStore
-* MobileFirst Platform Foundation Analytics configuration
-* Database selection
-* VPN
+* Operational Analytics configuration*
+* Database selection*
+* VPN*
 
 > **Note:** The beta release does not support all mentioned features.
 
 ![Image of Mobile Foundation setup](advanced-server-configuration.png)
 
 ## Further reading
-Now that the MobileFirst Server instance is up &amp; running, you can learn more about the MobileFirst Operations Console, how to create applications and adapters and enhance applications with push notifications, security and more.
+Now that the MobileFirst Server instance is up &amp; running, you can learn more about:
 
+* [MobileFirst Operations Console](../../setting-up-your-development-environment/console)
 * Experience MobileFirst Platform Foundation with these [Quick Start tutorials](../../quick-start)
-* Or [read through all available tutorials](../../all-tutorials/).
+* Or [read through all available tutorials](../../all-tutorials/)

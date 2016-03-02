@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - MobileFirst_Quality_Assurance
 author:
-  display_name: Christopher Dawson
+  name: Christopher Dawson
 ---
 ## Overview
 The technical conference is a great place to network, learn, and hopefully have some fun.

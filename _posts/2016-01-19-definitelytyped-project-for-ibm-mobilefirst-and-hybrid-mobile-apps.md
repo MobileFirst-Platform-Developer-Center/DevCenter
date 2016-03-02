@@ -7,7 +7,7 @@ tags:
 - Cordova
 - Hybrid
 author:
-  display_name: Raymond Camden
+  name: Raymond Camden
 ---
 I've blogged before about the client-side API for hybrid mobile apps built on [IBM MobileFirst](https://ibm.biz/IBM-MobileFirst). One of the things I've discovered recently is the library of [DefinitlyTyped](http://definitelytyped.org/) definition files for TypeScript developers. These files provide intellisense for a huge set of various frameworks and client-side code written in TypeScript. Turns out though that you can also use them in regular old JavaScript files too. My editor of choice (Visual Studio Code) has [great support](https://code.visualstudio.com/docs/languages/javascript for this. You can simply get the file, drop it into your project, and go to town.
 

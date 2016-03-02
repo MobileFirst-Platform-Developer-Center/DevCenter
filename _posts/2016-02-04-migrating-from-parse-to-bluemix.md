@@ -7,7 +7,7 @@ tags:
 - Parse
 - Migration
 author:
-  display_name: Andrew Trice
+  name: Andrew Trice
 ---
 <img src="https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/02/curves_ahead.jpeg" style="float:right; margin-left: 10px" alt="temp_image" /> 
 

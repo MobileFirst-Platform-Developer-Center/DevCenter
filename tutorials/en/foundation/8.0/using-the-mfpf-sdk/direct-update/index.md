@@ -19,20 +19,25 @@ In order to update an application, the updated web resources of the application 
 - [How Direct Update works](#how-direct-update-works)
 - [Creating and deploying updated web resources](#creating-and-deploying-updated-web-resources)
 - [User experience](#user-experience)
-<!-- - [Customizing the Direct Update UI](#customizing-the-direct-update-ui) -->
 - [Direct Update authenticity](#direct-update-authenticity)
 - [Delta and Full Direct Update](#delta-and-full-direct-update)
 - [Direct Update in the field](#direct-update-in-the-field)
+{% comment %}
 - [Sample application](#sample-application)
+-[Customizing the Direct Update UI](#customizing-the-direct-update-ui)
+{% endcomment %}
 
 ## How Direct Update works
-The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the MobileFirst. The updated web resources are downloaded when necessary.
+The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the MobileFirst Server.
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Note:** a Direct Update is checked for once per 60 minutes.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Note:** after a Direct Update was performed, it is checked for again after 60 minutes.
 
-After a Direct Update, the application no longer uses the pre-packaged web resources. Instead it will use the web  resources in the application's sandbox.
+After a Direct Update, the application no longer uses the pre-packaged web resources. Instead, it will use the downloaded web resources from the application's sandbox. If the application's cache on the device will be cleared, the original packaged web resources will be used again.
 
 ![Diagram of how direct update works](internal_function.jpg)
+
+### Versioning
+A Direct Update applies only to a specific version. In other words, updates generated for an application versioned 2.0 cannot be applied to a different version of the same application.
 
 ## Creating and deploying updated web resources
 Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the MobileFirst Server.
@@ -132,9 +137,9 @@ Optionally, a developer can also supply a Direct Update listener to fully contro
 
 ```javascript
 directUpdateContext.start(directUpdateCustomListener);
-``` -->
+``` 
 
-> For more information, see the "Configuring and customizing direct update" user documentation topic. 
+> For more information, see the "Configuring and customizing direct update" user documentation topic. -->
 
 ## Direct Update authenticity
 Disabled by default, Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a content delivery network (CDN)) to the client application.
@@ -149,20 +154,14 @@ The produced value should then be used as instructed below:
 
 Any future Direct Update deliveries to client applications will be protected by Direct Update authenticity.
 
-> Refer to the "Direct Update" user documentation for more information about obtaining a public key for Direcr Update authenticity.
+> Refer to the "Direct Update" user documentation for more information about obtaining the public key required for Direct Update authenticity.
 
 ## Delta and Full Direct Update
 Delta Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** A **delta update** is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a **full update** (meaning that the entire web resources are downloaded and updated).
 
-## Working with Direct Update in the field
-The diagram below depicts the flow of updating an application's web resources using Direct Update once it has been submitted to the application stores and used by end-users.
-
-![Direct update in the field](distribution.jpg)
-
-> **Note:** During development cycles, testers automatically get recent web resources through internal distribution mechanisms and not through application stores.
-
+{% comment %}
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the Cordova project.  
 
@@ -171,3 +170,4 @@ The diagram below depicts the flow of updating an application's web resources us
 2. Add a platform by running the `cordova platform add` command.
 3. Run the Cordova application by running the `cordova run` command.
 4. Alter the application web resources and upload them to the MobileFirst Server as [explained above](#creating-and-deploying-updated-web-resources).
+{% endcomment %}

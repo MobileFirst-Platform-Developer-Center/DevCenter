@@ -2,8 +2,12 @@
 title: Logging in iOS Applications
 relevantTo: [iOS]
 ---
-### Logging example for native iOS (Objective-C)
+## Overview
+This tutorial provides the required code snippets in order to add logging capabilities in iOS applications.
+
+## Logging example
 Outputs to Xcode console
+
 ```objective-c
 #import "OCLogger.h"
 + (int) sum:(int) a with:(int) b{
@@ -14,7 +18,8 @@ Outputs to Xcode console
     return sum;
 }
 ```
-### API calls for specific tasks
+
+### Additional API Methods For Specific Tasks
 Log capture is enabled by default. To turn log capture on or off:
 
 ```objective-c
@@ -32,4 +37,5 @@ Log sending is enabled by default. To turn automatic log sending on or off:
 ```objective-c
 OCLogger.setAutoSendLogs(NO)
 ```
-> For more information about ```objective-cOCLogger API```, see the API reference in the user documentation
+
+> For more information about the `Logger` API, see the API reference in the user documentation.

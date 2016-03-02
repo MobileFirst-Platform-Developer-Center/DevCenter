@@ -6,7 +6,7 @@ relevantTo: [ios,android,cordova]
 weight: 1
 ---
 ## Overview
-IBM MobileFirst Platform Foundation provides a unified set of API methods to send notifications to iOS, Android, Windows 8 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support. 
+IBM MobileFirst Platform Foundation provides a unified set of API methods to send notifications to iOS, Android and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
 
 #### Jump to:
 * [What is a Push Notification](#what-is-a-push-notification)

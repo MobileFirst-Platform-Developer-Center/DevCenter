@@ -43,7 +43,7 @@ Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Clie
     * [Resource request from Cordova applications](../using-the-mfpf-sdk/resource-request-from-cordova-applications/)
     * [Resource request from iOS applications](../using-the-mfpf-sdk/resource-request-from-ios-applications/)
     * [Resource request from Android applications](../using-the-mfpf-sdk/resource-request-from-android-applications/)
-    * <span style="color:red">IN PROGRESS</span> [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/)
+    * [Resource request from Windows 8.1 Universal or Windows 10 UWP applications](../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/)
 * JSONStore
     * [JSONStore in Cordova applications](../using-the-mfpf-sdk/jsonstore-cordova/)
 	* [JSONStore in iOS applications](../using-the-mfpf-sdk/jsonstore-ios/)
@@ -67,26 +67,26 @@ Develop server-side code to integrate with enterprise back-end systems and cloud
 * [Developing Adapters in IDEs](../adapters/developing-adapters/)
 * [Testing and debugging adapters](../adapters/testing-and-debugging-adapters/)
 * [Advanced adapter usage and mashup](../adapters/advanced-adapter-usage-mashup/)
-* <span style="color:red">IN PROGRESS</span> [Integrating with Cloudant using an adapter](../adapters/cloudant/)
+* [Integrating with Cloudant using an adapter](../adapters/cloudant/)
 
 ### [Authentication and Security](../authentication-and-security/)
 Add various layers of protection to your applications.
 
-* [Authentication concepts](../authentication-and-security/authentication-concepts/)
+* [Authorization concepts](../authentication-and-security/authorization-concepts/)
 * [Creating a Security Check](../authentication-and-security/creating-a-security-check/)
 * [CredentialsValidationSecurityCheck](../authentication-and-security/credentials-validation/)
     * [Implementing the security check](../authentication-and-security/credentials-validation/security-check/)
     * [Implementing the challenge handler in Cordova applications](../authentication-and-security/credentials-validation/cordova/)
     * [Implementing the challenge handler in iOS applications](../authentication-and-security/credentials-validation/ios/)
     * [Implementing the challenge handler in Android applications](../authentication-and-security/credentials-validation/android/)
-    * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8 Universal and Windows 10 UWP applications](../authentication-and-security/credentials-validation/windows-8-10/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/credentials-validation/windows-8-10/)
 * [UserAuthenticationSecurityCheck](../authentication-and-security/user-authentication/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the security check](../authentication-and-security/user-authentication/security-check/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Cordova applications](../authentication-and-security/user-authentication/cordova/)
+    * [Implementing the security check](../authentication-and-security/user-authentication/security-check/)
+    * [Implementing the challenge handler in Cordova applications](../authentication-and-security/user-authentication/cordova/)
     * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/user-authentication/ios/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Android applications](../authentication-and-security/user-authentication/android/)
+    * [Implementing the challenge handler in Android applications](../authentication-and-security/user-authentication/android/)
     * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/user-authentication/windows-8-10/)
-* <span style="color:red">TODO </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
+* <span style="color:red">IN PROGRESS </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
 * [Application Authenticity](../authentication-and-security/application-authenticity/)
 * <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
 {% comment %}
@@ -97,7 +97,7 @@ Add various layers of protection to your applications.
 ### [Notifications](../notifications/)
 Send notifications with IBM MobileFirst Platform Foundation.  
 
-* <span style="color:red">IN PROGRESS </span>[Push Notifications Overview](../notifications/push-notifications-overview/)
+* [Push Notifications Overview](../notifications/push-notifications-overview/)
 * <span style="color:red">IN PROGRESS </span>[Sending Push Notifications](../notifications/sending-push-notifications/)
 * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in Cordova applications](../notifications/handling-push-notifications-in-cordova/)
 * <span style="color:red">IN PROGRESS </span>[Handling Push Notifications in iOS applications](../notifications/handling-push-notifications-in-ios/)
@@ -106,48 +106,34 @@ Send notifications with IBM MobileFirst Platform Foundation.
 ### [Operational Analytics](../analytics/)
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
-* <span style="color:red">IN PROGRESS </span>[Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
-* <span style="color:red">IN PROGRESS </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
-    * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/logging-in-cordova-applications/)
-    * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/logging-in-ios-applications/)
-    * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/logging-in-android-applications/)
-* <span style="color:red">IN PROGRESS </span>[Using Analytics API in client applications](../analytics/using-analytics-api-in-client-applications/)
-* <span style="color:red">IN PROGRESS </span>[Creating Custom Charts](../analytics/custom-charts/)
-
-
-### [Cloudant Data Layer](../../../cloudant/)
-Scalable database management for your MobileFirst projects.  
-
-* <span style="color:red">IN PROGRESS </span>[Working with Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/)
-    * [iOS – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/ios/)
-	* [Android – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/android/)
+* [Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
+* [Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
+    * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/cordova/)
+    * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/ios/)
+    * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/android/)
+* [Using Analytics API in client applications](../analytics/analytics-api/)
 
 ### [IBM Containers](../ibm-containers/)
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
 
 * [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../ibm-containers/)
-* <span style="color:red">IN PROGRESS </span>[Setting up MobileFirst Server on IBM Containers Using Mobile Foundation](../ibm-containers/using-mobilef-foundation/)
-* <span style="color:red">TODO </span>[Creating a MobileFirst Server image using Cloud Foundary](../ibm-containers/creating-an-image/)
+* [Using the Mobile Foundation service to set-up MobileFirst Server on IBM Containers](../ibm-containers/using-mobile-foundation/)
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.  
-<span style="color:red">Owned by the MQA team</span>
 
 * [MobileFirst Quality Assurance Overview]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview/)
 * [MobileFirst Quality Assurance in Cordova applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/cordova/)
 * [MobileFirst Quality Assurance in iOS applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/)
 * [MobileFirst Quality Assurance in Android applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/)
 
+### Collateral tutorials
+
+* [Distributing mobile applications with Application Center](../collateral-tutorials/app-center/)
+
 {% comment %}
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
 Scan your application for potential harming code.  
-<span style="color:red">TODO outsource to the AppScan team</span>  
 
 * [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
-
-### [Moving to production](../moving-to-production/)
-Move the apps that you create from your development environment to the production environment.  
-
-* <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
-* [Distributing mobile applications with Application Center](../moving-to-production/app-center/)
 {% endcomment %}
