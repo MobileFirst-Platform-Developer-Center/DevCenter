@@ -92,7 +92,9 @@ function getFeed() {
 
 ## XSL transformation filtering
 You can also apply XSL transformation to the received data, for example to filter the data.  
-To apply XSL transformation, specify the transformation options in the input parameters of the procedure invocation:
+To apply XSL transformation, create a **filtered.xsl** file next to the JavaScript implementation file.
+
+You can then specify the transformation options in the input parameters of the procedure invocation. For example:
 
 ```js
 function getFeedFiltered() {
@@ -110,6 +112,8 @@ function getFeedFiltered() {
   return WL.Server.invokeHttp(input);
 }
 ```
+
+> For more information on XSL transformation, refer to the user documentation.
 
 ## Creating a SOAP-based service request
 You can use the `WL.Server.invokeHttp` method to create a **SOAP** envelope, which can be sent directly.
