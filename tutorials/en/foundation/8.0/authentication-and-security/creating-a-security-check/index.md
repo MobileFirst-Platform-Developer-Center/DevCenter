@@ -6,9 +6,10 @@ relevantTo: [android,ios,windows,cordova]
 weight: 2
 ---
 ## Overview
-A security check is an object responsible for obtaining credentials from a client and validate them.
+A security check is an object responsible for obtaining credentials from a client and validating the credentials.
 
 Security checks are defined inside **an adapter** and are implemented in Java code. Any adapter can theoretically define a SecurityCheck.  
+
 An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
 
 **Prerequisites:** 

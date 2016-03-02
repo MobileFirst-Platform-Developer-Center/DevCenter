@@ -6,83 +6,95 @@ relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 ## Overview
-To populate your custom charts you can use the Analytics API to send customized data. Custom data is any key/value pair that you would like to collect that is not an out-of-the-box feature, like button presses.
+MobileFirst Operational Analytics has a few APIs to help a user get started with collecting Analytics. In Cordova, applications start collecting analytics data out of the box. However, for native platforms, iOS and Android, there is some instrumentation that the developer has to implement. 
 
-When collecting custom analytics data the app writes to the devices file system and is not sent until the `send` API method is called. After the `send` API method is called the app deletes the data from the file system and begins populating the file system with logs again. To send data with Analtyics see [Sending Analytics Data].
+#### Jump to:
+* [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
+* [Enabling/Disabling Client Events](#Enabling/Disabling-client-event-types)
+* [Custom Events](#custom-events)
+ * [JavaScript API](#javascript-api)
+ * [Java API](#java-api)
+ * [Objective-C API](#objective-c-api)
+* [Sending Analytics to the MFP Analytics Server](#sending-analytics-to-the-mfp-analytics-server)
 
-To use Analytics APIs in iOS and Android applications, first import the Analytics SDK.  
-In Cordova applications this is not needed.
-
-#### Android
+## Configuring Analytics on the Client Side
+Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to import the corresponding libraries and initialize analytics API.  
+### Android
+#### Import Library
 ```java
 import com.worklight.common.WLAnalytics;
 ```
 
-#### iOS
-```objective-c
-import "WLAnalytics.h"
-```
-
-#### Jump to:
-* [Initializing Analytics](initializing-analytics)
-* [Enabling/Disabling Client Event Types]
-* Custom Events
- * [JavaScript API](#javascript-api)
- * [Java API](#java-api)
- * [Objective-C API](#objective-c-api)
-
-## Initializing Analytics
-Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to initialize Analytics.  
-
-<span style="color:red"> I don't understand the below sentence. do i need to do something in my javascript to get this working?</span>
-In cordova this is done through your native application. So the code snippets below are going to show you how to initialize analytics in iOS and Android.
-
-#### Android:
+#### Initialize Analytics
+Inside the `onCreate` method of your main activity include:
 
 ```java
 WLAnalytics.init(this.getApplication());
 ```
 
-#### iOS:
-
+### iOS
+#### Import Library
 ```objective-c
-
+import "WLAnalytics.h"
 ```
 
-After initializing analytics, the application will begin collecting user information, like app sessions.
-<span style="color:red">Where did this come from? This is not mentioned in the overview - what is being collected once analytics has been initialized. Also, can I control what is being collected by the sdk?</span>
+#### Initialize Analytics
+No initialization is needed for analytics on iOS.
 
-After sending data to the MobileFirst server you will start to see charts filled out like the one below:
+## Sending Analytics
+Sending Analytics is a crucial step to see client side analytics on the Analytics Server. When collecting Analytics, the analytics logs are stored in a log file on the client device which is sent to the analytics server after using the `send` method of the Analytics API.
 
-## Recording App Sessions
-After initializing the Analtyics SDK app sessions will start to be recorded on the users device. A session in MobileFirst Operational Anlaytics is recorded when the app is moved to the foreground, then to the background thTt sequence of events is one full session.
+#### JavaScript
+```javascript
+WL.Analytics.send();
+```
 
-As soon as the device is set up to record sessions and you send your data, you will see a chart like the one below.
+##### Android
+
+```java
+WLAnalytics.send();
+```
+
+#### Objective-C API
+```objective-c
+[[WLAnalytics sharedInstance] send];
+```
+
+
+## Enabling/Disabling Client Event Types
+The Analytics API gives the developer the freedom to enable and disable collecting Analytics on the event they want to visualize on their analytics console. 
+
+### Client Lifecycle Events
+After configuring the Analytics SDK, app sessions will start to be recorded on the user's device. A session in MobileFirst Operational Analytics is recorded when the app is moved from the foreground then to the background, which creates a session on the analytics console.
+
+As soon as the device is set up to record sessions and you send your data, you will see the analytics console populated with data like below.
 
 ![sessions-chart](analytics-app-sessions.png)
 
-## Enabling/Disabling Client Event Types
 You can enable or disable the collecting of app sessions with the API below:
 
 #### Android:
 ```java
 //DeviceEvent.LIFECYCLE records app sessions
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
-WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
+WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE); 
 ```
 
-#### iOS
+#### Objective-C:
+```objective-c
+//DeviceEvent.LIFECYCLE records app sessions
+[[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
+[[WLAnalytics sharedInstance] removeDeviceEventListener:LIFECYCLE];
+```
 
-#### Cordova
+### Client Network Activities
+Collection on adapters and the network occur in two different locations -- on the client and on the server.
 
-## Client Network Activities
-Collection on adapters and network occur in two different locations on the client and on the server.
-
-The client is going to collect the information when you start collecting on the device event `Network`. Collecting on the Client is going to collect information like roundtrip time and payload size.
+The client is going to collect information like roundtrip time and payload size when you start collecting on the device event `Network`.
 
 The server is going to collect more backend information like server processing time, adapter usage, procedures, etc.
 
-Since the client and the server are each collecting their own information this means that all the charts will not display data until the client is configured to do so. To configure your client you need to start collecting on the device event `Analytics`.
+Since the client and the server are each collecting their own information this means that all the charts will not display data until the client is configured to do so. To configure your client you need to start collecting on the device event `NETWORK`.
 
 To enable or disable network events on the client use the API below:
 
@@ -93,8 +105,14 @@ WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
 WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 ```
 
-### Custom Events
+#### Objective-C:
+```objective-c
+//DeviceEvent.Network records client information about adapters like 'Average Procedure Response Size'
+[[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
+[[WLAnalytics sharedInstance] removeDeviceEventListener:NETWORK];
+```
 
+## Custom Events
 
 #### JavaScript API
 JavaScript API is used in Cordova applications.
@@ -104,12 +122,12 @@ Creating custom events in Cordova is simply just calling:
 ```javascript
 WL.Analytics.log({"key" : 'value'});
 WL.Analytics.send();
- ```
+```
 
-##### Android
+#### Android API
 After setting the first two configurations you can start to log data like in the example below.
 
- ```java
+```java
 JSONObject json = new JSONObject();
 try {
     json.put("key", "value");
@@ -119,22 +137,11 @@ try {
 }
 
 WLAnalytics.log("Message", json);
-```
-
-Be sure to send your data with:
-
-```java
 WLAnalytics.send();
 ```
 
 #### Objective-C API
 Objective-C API is used in iOS applications.
-
-To collect custom analytics in iOS you need to import WLAnalytics.
-
-```objective-c
-#import "WLAnalytics.h";
-```
 
 After importing WLAnalytics you can now use the API to collect custom data like below:
 
@@ -144,23 +151,5 @@ NSDictionary *inventory = @{
 };
 
 [[WLAnalytics sharedInstance] log:@"Custom event" withMetadata:inventory];
-[[WLAnalytics sharedInstance] send];
-```
-
-##Sending Analytics
-
-#### JavaScript
-```javascript
-WL.Analytics.send();
-```
- 
-##### Android
-
-```java
-WLAnalytics.send();
-```
-
-#### Objective-C API
-```objective-c
 [[WLAnalytics sharedInstance] send];
 ```
