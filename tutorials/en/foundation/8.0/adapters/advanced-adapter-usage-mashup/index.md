@@ -250,6 +250,6 @@ An example of city list in SQL is available in the provided adapter maven projec
 #### Application setup
 
 1. From the command line, navigate to the **CordovaApp** project's root folder.
-2. Register the application by running the command: `mfpdev app register`.
-3. Add a platform by running the `cordova platform add` command.
+2. Add a platform by running the `cordova platform add` command.
+3. Register the application by running the command: `mfpdev app register`.
 4. Run the Cordova application by running the `cordova run` command.
