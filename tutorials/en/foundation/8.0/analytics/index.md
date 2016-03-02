@@ -27,8 +27,7 @@ You can open the Analytics Console from the MobileFirst Operations Console, by c
 ![Analytics console button](analytics-console-button.png)
 
 
-In the MobileFirst Platform Foundation Development Kit this console's default URL is `http://localhost:9080/analytics/console`.
-
+In the MobileFirst Platform Foundation Development Kit this console's default URL is `http://localhost:9080/analytics/console`.  
 After navigating to the Analytics console you will see a dashboard like below (but with empty data).
 
 ![Analytics console](analytics-console.png)

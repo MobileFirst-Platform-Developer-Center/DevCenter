@@ -107,27 +107,17 @@ Send notifications with IBM MobileFirst Platform Foundation.
 Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
 * [Introduction to MobileFirst Platform Foundation Operational Analytics](../analytics)
-* <span style="color:red">IN PROGRESS </span>[Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
+* [Remote controlled client-side log collection](../analytics/remote-controlled-client-side-log-collection/)
     * [Logging in Cordova applications](../analytics/remote-controlled-client-side-log-collection/cordova/)
     * [Logging in iOS applications](../analytics/remote-controlled-client-side-log-collection/ios/)
     * [Logging in Android applications](../analytics/remote-controlled-client-side-log-collection/android/)
-* <span style="color:red">IN PROGRESS </span>[Using Analytics API in client applications](../analytics/analytics-api/)
-
-{% comment %}
-### [Cloudant Data Layer](../../../cloudant/)
-Scalable database management for your MobileFirst projects.  
-
-* [Working with Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/)
-    * [iOS – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/ios/)
-	* [Android – Cloudant NoSQL DB API](../using-the-mfpf-sdk/working-with-cloudant-nosql-db-api/android/)
-{% endcomment %}
+* [Using Analytics API in client applications](../analytics/analytics-api/)
 
 ### [IBM Containers](../ibm-containers/)
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
 
 * [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../ibm-containers/)
-* <span style="color:red">IN PROGRESS </span>[Using the Mobile Foundation service to set-up MobileFirst Server on IBM Containers](../ibm-containers/using-mobile-foundation/)
-* <span style="color:red">TODO </span>[Creating a MobileFirst Server image using Cloud Foundary](../ibm-containers/creating-an-image/)
+* [Using the Mobile Foundation service to set-up MobileFirst Server on IBM Containers](../ibm-containers/using-mobile-foundation/)
 
 ### [MobileFirst Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview)
 Add testing capabilities to your application.  
@@ -137,16 +127,13 @@ Add testing capabilities to your application.
 * [MobileFirst Quality Assurance in iOS applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/)
 * [MobileFirst Quality Assurance in Android applications]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/android/)
 
+### Collateral tutorials
+
+* [Distributing mobile applications with Application Center](../collateral-tutorials/app-center/)
+
 {% comment %}
 ### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
 Scan your application for potential harming code.  
-<span style="color:red">TODO outsource to the AppScan team</span>  
 
 * [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
-
-### [Moving to production](../moving-to-production/)
-Move the apps that you create from your development environment to the production environment.  
-
-* <span style="color:red">TODO </span>[Moving from development environment to stand-alone QA and production servers](../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/)
-* [Distributing mobile applications with Application Center](../moving-to-production/app-center/)
 {% endcomment %}
