@@ -67,10 +67,10 @@ The MobileFirst Platform Foundation SDK provides the `obtainAccessToken` API to 
 ```swift
 WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
   if(error != nil){
-    NSLog("auto login failure: " + String(error))
+    NSLog("obtainAccessToken failed: " + String(error))
   }
   else{
-    NSLog("auto login success")
+    NSLog("obtainAccessToken success")
   }
 }
 ```
