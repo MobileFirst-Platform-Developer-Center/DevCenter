@@ -101,7 +101,63 @@ From the MobileFirst Console, there are two types of notifications that can be s
 * Notifications can also be sent a single Device ID, only iOS devices or only Android devices.
 
 ### Via MobileFirst-provided REST APIs
-<span style="color:red">explain how to use the REST APIs</span>
+To send a push notification with the REST API use the PUSH Message (POST) API.
+
+**Path**
+
+`/apps/<applicationId>/messages`
+
+**Example**
+
+`https://example.com:443/imfpush/v1/apps/myapp/messages`
+
+**Header Parameters** 
+
+_Authorization_
+
+The token with the scope `messages.write` and `push.application._<applicationId>_` obtained using the confidential client in the format Bearer token. This parameter has to be mandatorily set.
+
+Payload Properties| Definition
+--- | ---
+message | The alert message to be sent
+settings | The settings are the different attributes of the notification.
+target | Set of targets can be consumer Ids, devices, platforms, or tags. Only one of the targets can be set.
+deviceIds | An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notification.
+platforms | An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and M (Microsoft/Windows).
+tagNames | An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications.
+userIds | An array of users represented by their userIds to send the notification. This is a unicast notification.
+
+**Payload JSON Example**
+
+```json
+{
+    "message" : {
+    "alert" : "Test message",
+  },
+  "settings" : {
+    "apns" : {
+      "badge" : 1,
+      "iosActionKey" : "Ok",
+      "payload" : "",
+      "sound" : "song.mp3",
+      "type" : "SILENT",
+    },
+    "gcm" : {
+      "delayWhileIdle" : ,
+      "payload" : "",
+      "sound" : "song.mp3",
+      "timeToLive" : ,
+    },
+  },
+  "target" : {
+    "deviceIds" : [ "MyDeviceId1", ... ],
+    "platforms" : [ "A,G", ... ],
+    "tagNames" : [ "Gold", ... ],
+    "userIds" : [ "MyUserId", ... ],
+  },
+}
+```
+> For more information about the push rest API, see the topic about push notifications in the user documentation.
 
 ## Customizing Push Notifications
 You can also customize the following:
