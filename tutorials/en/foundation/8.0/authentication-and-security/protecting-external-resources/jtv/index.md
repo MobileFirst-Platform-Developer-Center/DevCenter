@@ -176,5 +176,5 @@ This external resource can be used in combination with any of the security sampl
 - Make sure to update the confidential client and secret.
 - Deploy either of the security checks: **UserLogin** or **PinCodeAttempts**.
 - Register the matching application.
-- Map the scope `authorization.introspect` to the security check.
+- Map the scope `accessRestricted` to the security check.
 - Update the client application to make the `WLResourceRequest` to your servlet URL.
