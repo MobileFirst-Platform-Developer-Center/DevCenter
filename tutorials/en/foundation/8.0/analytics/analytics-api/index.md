@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 ## Overview
-MobileFirst Operational Analytics has a few APIs to help a user get started with collecting Analytics. In Cordova, applications start collecting analytics data out of the box. However, for native platforms, iOS and Android, there is some instrumentation that the developer has to implement. 
+MobileFirst Operational Analytics provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
 
 #### Jump to:
 * [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
@@ -18,9 +18,23 @@ MobileFirst Operational Analytics has a few APIs to help a user get started with
 * [Sending Analytics to the MFP Analytics Server](#sending-analytics-to-the-mfp-analytics-server)
 
 ## Configuring Analytics on the Client Side
-Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to import the corresponding libraries and initialize analytics API.  
+Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to import the corresponding libraries to initialize the analytics support.
+
+### Cordova
+No setup required. Initialized out-of-the-box.
+
+### iOS
+#### Import Library
+
+```objective-c
+import "WLAnalytics.h"
+```
+#### Initialize Analytics
+No setup required. Initialized out-of-the-box.
+
 ### Android
 #### Import Library
+
 ```java
 import com.worklight.common.WLAnalytics;
 ```
@@ -32,39 +46,34 @@ Inside the `onCreate` method of your main activity include:
 WLAnalytics.init(this.getApplication());
 ```
 
-### iOS
-#### Import Library
-```objective-c
-import "WLAnalytics.h"
-```
-
-#### Initialize Analytics
-No initialization is needed for analytics on iOS.
-
 ## Sending Analytics
-Sending Analytics is a crucial step to see client side analytics on the Analytics Server. When collecting Analytics, the analytics logs are stored in a log file on the client device which is sent to the analytics server after using the `send` method of the Analytics API.
+Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When collecting Analytics, the analytics logs are stored in a log file on the client device which is sent to the analytics server after using the `send` method of the Analytics API.
 
-#### JavaScript
+#### Cordova
+In a Cordova application, use the following JavaScript API method:
+
 ```javascript
 WL.Analytics.send();
 ```
 
 ##### Android
+In an Android application, use the following Java API method:
 
 ```java
 WLAnalytics.send();
 ```
 
-#### Objective-C API
+#### iOS
+In an iOS application, use the following Objective-C API method:
+
 ```objective-c
 [[WLAnalytics sharedInstance] send];
 ```
 
-
 ## Enabling/Disabling Client Event Types
-The Analytics API gives the developer the freedom to enable and disable collecting Analytics on the event they want to visualize on their analytics console. 
+The Analytics API gives the developer the freedom to enable and disable collecting Analytics on the event they want to visualize on their Analytics Console. 
 
-When building Cordova applications the Analytics API does not have methods to enable or disable collection on `LIFECYCLE` or `NETWORK` events. Cordova applications come with `LIFECYCLE` and `NETWORK` events enabled out of the box. If you wish to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events
+When building Cordova applications the Analytics API does not have methods to enable or disable collection on `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events enabled out of the box. If you wish to disable these events, follow the [Client Lifecycle Events](#client-lifecycle-events
 ) and [Client Network Events](#client-lifecycle-events) on disabling events.
 
 ### Client Lifecycle Events
@@ -76,76 +85,97 @@ As soon as the device is set up to record sessions and you send your data, you w
 
 You can enable or disable the collecting of app sessions with the API below:
 
-#### Android:
+#### Cordova
+
+* In iOS navigate to the main application delegate to disable the Device Ecent Listener.
+
+* In Android navigate to the sub activity of the main activity to disable.
+
+<span>still waiting on Carlos to put in these changes, so I am not sure of the paths for Android.</span>
+
+#### Android
+
+To enable client lifecycle event logging:
+
 ```java
-//DeviceEvent.LIFECYCLE records app sessions
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
+```
+
+To disable client lifecycle event logging:
+
+```java
 WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE); 
 ```
 
-#### Objective-C:
+#### iOS
+
+To enable client lifecycle event logging:
+
 ```objective-c
-//DeviceEvent.LIFECYCLE records app sessions
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
+```
+
+To disable client lifecycle event logging:
+
+```objective-c
 [[WLAnalytics sharedInstance] removeDeviceEventListener:LIFECYCLE];
 ```
 
-#### JavaScript API
-JavaScript API is used in Cordova applications.
+### Client Network Activities
+Collection on adapters and the network occur in two different locations -- on the client and on the server:
 
-In iOS navigate to the main application delegate to disable the Device Ecent Listener.
-In Android navigate to the sub activity of the main activity to disable.
+* The client is going to collect information such as roundtrip time and payload size when you start collecting on the device event `Network`.
+
+* The server is going to collect backend information such as server processing time, adapter usage, used procedures.
+
+Since the client and the server are each collecting their own information this means that charts will not display data until the client is configured to do so. To configure your client you need to start collecting on the device event `NETWORK`.
+
+#### Cordova
+
+* In iOS navigate to the main application delegate to disable the Device Ecent Listener.
+* In Android navigate to the sub activity of the main activity to disable.
 
 <span>still waiting on Carlos to put in these changes, so I am not sure of the paths for Android.</span>
 
-### Client Network Activities
-Collection on adapters and the network occur in two different locations -- on the client and on the server.
+#### iOS
 
-The client is going to collect information like roundtrip time and payload size when you start collecting on the device event `Network`.
+To enable client network event logging:
 
-The server is going to collect more backend information like server processing time, adapter usage, procedures, etc.
-
-Since the client and the server are each collecting their own information this means that all the charts will not display data until the client is configured to do so. To configure your client you need to start collecting on the device event `NETWORK`.
-
-To enable or disable network events on the client use the API below:
-
-#### Android:
-```java
-//DeviceEvent.Network records client information about adapters like 'Average Procedure Response Size'
-WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
-WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
+```objective-c
+[[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
 ```
 
-#### Objective-C:
+To disable client network event logging:
+
 ```objective-c
-//DeviceEvent.Network records client information about adapters like 'Average Procedure Response Size'
-[[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
 [[WLAnalytics sharedInstance] removeDeviceEventListener:NETWORK];
 ```
 
+#### Android
 
-#### JavaScript API
-JavaScript API is used in Cordova applications.
+To enable client network event logging:
 
-In iOS navigate to the main application delegate to disable the Device Ecent Listener.
-In Android navigate to the sub activity of the main activity to disable.
+```java
+WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
+```
 
-<span>still waiting on Carlos to put in these changes, so I am not sure of the paths for Android.</span>
+To disable client network event logging:
 
+```java
+WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
+```
 
 ## Custom Events
+Use the following API methods to create custom events.
 
-#### JavaScript API
-JavaScript API is used in Cordova applications.
-
-Creating custom events in Cordova is simply just calling:
+#### Cordova
 
 ```javascript
 WL.Analytics.log({"key" : 'value'});
 WL.Analytics.send();
 ```
 
-#### Android API
+#### Android
 After setting the first two configurations you can start to log data like in the example below.
 
 ```java
@@ -162,8 +192,6 @@ WLAnalytics.send();
 ```
 
 #### Objective-C API
-Objective-C API is used in iOS applications.
-
 After importing WLAnalytics you can now use the API to collect custom data like below:
 
 ```objective-c
