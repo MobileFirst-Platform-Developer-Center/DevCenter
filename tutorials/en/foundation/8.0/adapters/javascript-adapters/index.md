@@ -69,22 +69,65 @@ Procedures are declared in XML and are implemented with server-side JavaScript, 
 * To provide adapter functions to the application
 * To call back-end services to retrieve data or to perform actions
 
-Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.  
-The `WL.Server` API defines a procedure logic in JavaScript.
-
-```javascript
-function procedure1(param) {
-  return WL.Server.invokeSQLStatement({
-    preparedStatement: procedure1Statement,
-    parameters: [param]
-  });
-}
-```
+Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.
 
 By using server-side JavaScript, a procedure can process the data before or after it calls the service. You can apply more filtering to retrieved data by using simple XSLT code.  
 JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to [use Java in the adapter](../javascript-adapters/using-java-adapters) code.
 
 ### Using global variables
 The MobileFirst server does not rely on HTTP sessions and each request may reach a different node. You should not rely on global variables to keep data from one request to the next.
+
+## Server-side APIs
+JavaScript adapters can use the MobileFirst server-side APIs to perform operations that are related to MobileFirst Server, such as calling other JavaScript adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
+
+### getPropertyValue
+Use the `MFP.Server.getPropertyValue(propertyName)` API to retrieve properties defined in the **adapter.xml** or in the MobileFirst Operations console:
+
+```js
+MFP.Server.getPropertyValue("name");
+```
+
+### getTokenIntrospectionData
+
+Use the `MFP.Server.getTokenIntrospectionData()` API to
+
+To get the current `AuthenticatedUser` use:
+
+```js
+var currentUser = MFP.Server.getTokenIntrospectionData()......
+```
+
+### getAdapterName
+Use the `getAdapterName()` API to retrieve the adapter name.
+
+### invokeHttp
+Use the `MFP.Server.invokeHttp(options)` API in HTTP adapters.  
+You can see usage examples on the [JavaScript HTTP Adapter](js-http-adapter) tutorial.
+
+### invokeSQL
+Use the `MFP.Server.invokeSQLStatement(options)` and the `MFP.Server.invokeSQLStoredProcedure(options)` APIs in SQL adapters.  
+You can see usage examples on the [JavaScript SQL Adapter](js-sql-adapter) tutorial.
+
+### addResponseHeader
+Use the `MFP.Server.addResponseHeader(name,value)` API to add a new header(s) to the response:
+
+```js
+MFP.Server.addResponseHeader("Expires","Sun, 5 October 2014 18:00:00 GMT");
+```
+### getClientRequest
+Use the `MFP.Server.getClientRequest()` API to get a reference to the Java HttpServletRequest object that was used to invoke an adapter procedure:
+
+```js
+var request = WL.Server.getClientRequest();
+var userAgent = request.getHeader("User-Agent");
+```
+
+### invokeProcedure
+Use the `MFP.Server.invokeProcedure(invocationData)` to call other JavaScript adapters.  
+You can see usage examples on the [Advanced Adapter Usage and Mashup](advanced-adapter-usage-mashup) tutorial.
+
+<br/>
+
+> Learn more about `MFP.Server` APIs in the user documentation.
 
 ## For examples of JavaScript adapters communicating with an HTTP or SQL back end, see:
