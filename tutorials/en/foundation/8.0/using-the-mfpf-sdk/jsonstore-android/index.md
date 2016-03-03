@@ -24,16 +24,21 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 
 **Prerequisite**: Make sure the MobileFirst Native SDK was added to the Android Studio project. Follow the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/android/) tutorial.
 
-#### Gradle dependency
-```
-compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.0-SNAPSHOT'
-```
-
 #### Jump to:
 
+* [Adding JSONStore](#adding-jsonstore)
 * [Basic Usage](#basic-usage)
 * [Advanced Usage](#advanced-usage)
 * [Sample application](#sample-application)
+
+## Adding JSONStore
+1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
+
+2. Add the following to the existing in `dependencies` section:
+
+```
+compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationjsonstore:8.0.0-SNAPSHOT'
+```
 
 ## Basic Usage
 ### Open
