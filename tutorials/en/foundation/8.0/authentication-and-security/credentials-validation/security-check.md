@@ -178,7 +178,7 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
   <property name="pinCode" defaultValue="1234" displayName="The valid PIN code"/>
   <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
-  <property name="failureStateExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
+  <property name="blockedStateExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
   <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
 </securityCheckDefinition>
 ```
@@ -195,16 +195,16 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
     maxAttempts = getIntProperty("maxAttempts", properties, 1);
     attemptingStateExpirationSec = getIntProperty("attemptingStateExpirationSec", properties, 120);
     successStateExpirationSec = getIntProperty("successStateExpirationSec", properties, 3600);
-    failureStateExpirationSec = getIntProperty("failureStateExpirationSec", properties, 0);
+    blockedStateExpirationSec = getIntProperty("blockedStateExpirationSec", properties, 0);
 }
 ```
 The properties defined by `CredentialsValidationSecurityCheckConfig` are:
 - `maxAttempts`: How many attempts are allowed before reaching a *failure*.
 - `attemptingStateExpirationSec`: Interval in seconds during which the client should provide valid credentials, and attempts are counted.
 - `successStateExpirationSec`: Interval in seconds during which the successful login holds.
-- `failureStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
+- `blockedStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
 
-Note that the default for `failureStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+Note that the default for `blockedStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
 
 
 ## Sample application
