@@ -46,16 +46,20 @@ The `adapter-resources` folder contains an XML configuration file. This configur
 * `procedure`: Declares a service for accessing a back-end application. One entry for each adapter procedure.
 * `property`: The **adapter.xml** file can also contain custom properties. The configuration properties elements must always be located *below* the `procedure` elements.
 
-**Note:** The connection properties as well as the custom properties can be overridden in the **MobileFirst Operations Console → Configurations tab** without having to deploy again.
+<br>
+These properties can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab** without having to deploy the adapter again:
 
 ![Console properties](console-properties.png)
 
 **Pull and Push Configurations**
 
-You can pull and push the adapter configurations file found in the **Configuration files tab**. Replace the **DmfpfConfigFile** placeholder with the actual value and run one of the following commands from the root adapter Maven project:
+Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
+To do so, use the pull and push commands described below.  
 
-* To **pull** the configurations - `mvn adapter:configpull -DmfpfConfigFile=<path to a file that will store the configuration>`.
-* To **push** the configurations - `mvn adapter:configpush -DmfpfConfigFile=<path to a file that the configuration will be taken from>`.
+Replace the **DmfpfConfigFile** placeholder with the actual value, for example: `config.json`. Then, run the command from the root folder of the adapter Maven project:
+
+* To **pull** the configurations file - `mvn adapter:configpull -DmfpfConfigFile=<path to a file that will store the configuration>`.
+* To **push** the configurations file - `mvn adapter:configpush -DmfpfConfigFile=<path to the file that stores the configuration>`.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:** The file can be of any file extension and if the file does not exist, it will be created.
 
