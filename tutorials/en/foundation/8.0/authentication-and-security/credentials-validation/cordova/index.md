@@ -138,4 +138,4 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
     * Add a platform by running the `cordova platform add` command.
     * Run the Cordova application by running the `cordova run` command.
 
-![Sample application](sample-application.png)
+![Sample application](pincode-attempts-cordova.png)
