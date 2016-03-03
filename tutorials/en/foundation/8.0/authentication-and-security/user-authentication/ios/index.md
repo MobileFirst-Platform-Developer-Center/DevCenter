@@ -15,10 +15,10 @@ downloads:
 ## Overview
 **Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/ios/) tutorial.
 
-The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
+The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessTokenForScope`.
 
 ## Login
-In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
+In this example, `UserLogin` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
 
 `credentials` is a `JSONObject` containing `username`, `password` and `rememberMe`:
 
@@ -57,35 +57,35 @@ else{
 ```
 
 > **Note:**
-> `WLAuthorizationManager`'s `login()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `handleSuccess` or `handleFailure` will **also** be called.
+> `WLAuthorizationManager`'s `login()` API has its own completion handler, the relevant challenge handler's `handleSuccess` or `handleFailure` will **also** be called.
 
 ## Obtaining an access token
 Since this security check supports *remember me* functionality, it would be useful to check if the client is currently logged in, during the application startup.
 
-The MobileFirst Platform Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
+The MobileFirst Platform Foundation SDK provides the `obtainAccessTokenForScope` API to ask the server for a valid token:
 
 ```swift
 WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
   if(error != nil){
-    NSLog("obtainAccessToken failed: " + String(error))
+    NSLog("obtainAccessTokenForScope failed: " + String(error))
   }
   else{
-    NSLog("obtainAccessToken success")
+    NSLog("obtainAccessTokenForScope success")
   }
 }
 ```
 
 > **Note:**
-> `WLAuthorizationManager`'s `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `handleSuccess` or `handleFailure` will  **also** be called.
+> `WLAuthorizationManager`'s `obtainAccessTokenForScope()` API has its own completion handler, the relevant challenge handler's `handleSuccess` or `handleFailure` will  **also** be called.
 
 If the client is already logged-in or is in the *remembered* state, the API will trigger a success. If the client is not logged in, the security check will send back a challenge.
 
-The `obtainAccessToken` API takes in a **scope**. The scope can be the name of your **security check**.
+The `obtainAccessTokenForScope` API takes in a **scope**. The scope can be the name of your **security check**.
 
 > Learn more about **scope** in the [Authorization concepts](../../authorization-concepts) tutorial
 
 ## Retrieving the authenticated user
-The challenge handler's `handleSuccess` method receives an Dictionary `success` as a parameter.
+The challenge handler's `handleSuccess` method receives a dictionary `success` as a parameter.
 If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `handleSuccess` to save the current user:
 
 ```swift
@@ -95,7 +95,7 @@ override func handleSuccess(success: [NSObject : AnyObject]!) {
 }
 ```
 
-Here, `success` has a key called `user` which itself contains a Dictionary representing the `AuthenticatedUser`:
+Here, `success` has a key called `user` which itself contains a dictionary representing the `AuthenticatedUser`:
 
 ```json
 {
@@ -125,7 +125,7 @@ There are two samples associated with this tutorial:
 - **PreemptiveLoginSwift**: An application that always starts with a login screen, using the preemptive `login` API.
 - **RememberMeSwift**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
 
-Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
+Both samples use the same `UserLogin` security check from the **SecurityCheckAdapters** adapter Maven project.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeSwift/tree/release80) the Remember Me project.
