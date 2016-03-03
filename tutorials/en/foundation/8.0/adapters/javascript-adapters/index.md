@@ -85,7 +85,7 @@ The MobileFirst server does not rely on HTTP sessions and each request may reach
 JavaScript adapters can use the MobileFirst server-side APIs to perform operations that are related to MobileFirst Server, such as calling other JavaScript adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
 
 ### getPropertyValue
-Use the `MFP.Server.getPropertyValue(propertyName)` API to retrieve properties defined in the **adapter.xml** or in the MobileFirst Operations console:
+Use the `MFP.Server.getPropertyValue(propertyName)` API to retrieve properties defined in the **adapter.xml** or in the MobileFirst Operations Console:
 
 ```js
 MFP.Server.getPropertyValue("name");
@@ -134,4 +134,4 @@ You can see usage examples on the [Advanced Adapter Usage and Mashup](advanced-a
 
 > Learn more about `MFP.Server` APIs in the user documentation.
 
-## For examples of JavaScript adapters communicating with an HTTP or SQL back end, see:
+## JavaScript adapter examples:

@@ -37,7 +37,7 @@ To create an adapter Maven project, first install Maven and follow the instructi
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
 
 #### Local Maven repositories
-If Internet connectivity is not available, you can also create local Maven repositories.  
+If Internet connectivity is not available while developing, prepare to work offline:
 
 1. Make sure you have first installed Maven.
 2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
