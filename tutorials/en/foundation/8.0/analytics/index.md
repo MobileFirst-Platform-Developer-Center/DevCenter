@@ -114,5 +114,5 @@ http://localhost:9500/*/_mapping
 * [Analytics API](analytics-api)
 
 ## Related Blogposts
-* [More on Instrumenting Custom Analytics](https://developer.ibm.com/mobilefirstplatform/2016/01/22/howto-custom-in-app-behavior-analytics/)
-* [More on Instrumenting Webhooks](https://developer.ibm.com/mobilefirstplatform/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
+* [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
+* [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

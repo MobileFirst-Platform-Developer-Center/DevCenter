@@ -5,7 +5,8 @@ weight: 1
 show_disqus: false
 print_pdf: false
 ---
-Develop your applications by following the bellow tutorials: set-up your environment, quickly experience the platform and then start adding value to your application by integrating with MobileFirst Platform Foundation 8.0 beta offrings, below.
+<br>
+Develop your applications by following the tutorials bellow: set-up your development environment, experience the platform and add value to your applications by integrating with MobileFirst Platform Foundation 8.0 beta offrings.
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
