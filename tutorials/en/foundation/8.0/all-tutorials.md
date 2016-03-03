@@ -5,8 +5,7 @@ weight: 1
 show_disqus: false
 print_pdf: false
 ---
-<br>
-Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 beta.
+Develop your applications by following the bellow tutorials: set-up your environment, quickly experience the platform and then start adding value to your application by integrating with MobileFirst Platform Foundation 8.0 beta offrings, below.
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
