@@ -30,6 +30,8 @@ Map the **push.mobileclient** scope element to the application.
 
 For User Authenticated notifications the **push.mobileclient** scope element should be mapped to the security check of the application.
 
+> **Note:** In the beta release, authenticated push is supported only in Native Android and iOS applications.
+
 ### GCM
 Android devices use the Google Cloud Messaging (GCM) service for push notifications.  
 To setup GCM:
