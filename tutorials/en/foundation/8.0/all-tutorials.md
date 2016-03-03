@@ -85,8 +85,10 @@ Add various layers of protection to your applications.
     * [Implementing the challenge handler in Cordova applications](../authentication-and-security/user-authentication/cordova/)
     * [Implementing the challenge handler in iOS applications](../authentication-and-security/user-authentication/ios/)
     * [Implementing the challenge handler in Android applications](../authentication-and-security/user-authentication/android/)
-    * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/user-authentication/windows-8-10/)
-* <span style="color:red">IN PROGRESS </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/user-authentication/windows-8-10/)
+* <span style="color:red">IN PROGRESS </span>[Protecting External Resources](../authentication-and-security/protecting-external-resources/)
+    * [Trust Association Interceptor](../authentication-and-security/protecting-external-resources/tai)
+    * [Java Token Validation](../authentication-and-security/protecting-external-resources/jtv)
 * [Application Authenticity](../authentication-and-security/application-authenticity/)
 * <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
 
@@ -126,10 +128,3 @@ Add testing capabilities to your application.
 ### Collateral tutorials
 
 * [Distributing mobile applications with Application Center](../collateral-tutorials/app-center/)
-
-{% comment %}
-### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
-Scan your application for potential harming code.  
-
-* [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
-{% endcomment %}
