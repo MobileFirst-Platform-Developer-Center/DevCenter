@@ -3,6 +3,7 @@ layout: tutorial
 title: Java Token Validation
 breadcrumb_title: J.T.V.
 relevantTo: [android,ios,windows,cordova]
+weight: 1
 downloads:
   - name: Download sample
     url: 
