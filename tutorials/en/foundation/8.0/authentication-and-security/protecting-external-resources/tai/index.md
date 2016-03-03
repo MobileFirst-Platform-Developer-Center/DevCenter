@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: TAI
-breadcrumb_title: TAI
+title: Trust Association Interceptor
+breadcrumb_title: Trust Association Interceptor
 relevantTo: [android,ios,windows,cordova]
 ---
 ## Overview
