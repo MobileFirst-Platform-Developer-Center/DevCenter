@@ -19,7 +19,7 @@ downloads:
 The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
 
 ## Login
-In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
+In this example, `UserLogin` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
 
 ```js
 userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password, rememberMe: rememberMeState});
@@ -132,7 +132,7 @@ There are two samples associated with this tutorial:
 - **PreemptiveLoginCordova**: An application that always starts with a login screen, using the preemptive `login` API.
 - **RememberMeCordova**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
 
-Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
+Both samples use the same `UserLogin` security check from the **SecurityCheckAdapters** adapter Maven project.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80) the Remember Me project.  
