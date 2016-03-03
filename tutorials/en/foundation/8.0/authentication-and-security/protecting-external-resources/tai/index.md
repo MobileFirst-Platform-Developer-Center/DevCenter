@@ -1,9 +1,8 @@
 ---
 layout: tutorial
-title: Using the MobileFirst Server to authenticate external resources
-breadcrumb_title: External resources
+title: TAI
+breadcrumb_title: TAI
 relevantTo: [android,ios,windows,cordova]
-weight: 7
 ---
 ## Overview
 
