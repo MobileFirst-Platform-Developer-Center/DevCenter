@@ -154,7 +154,7 @@ There are two samples associated with this tutorial:
 
 Both samples use the same `UserLogin` security check from the **SecurityCheckAdapters** adapter Maven project.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeAndroid/tree/release80) the Remember Me project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80) the Remember Me project.
 
@@ -168,6 +168,4 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
 
-<div style="text-align:center">
-    <img src="login-screen.png" style="display:inline"/><img src="balance.png" style="display:inline"/>
-</div>
+![sample application](sample-application.png)
