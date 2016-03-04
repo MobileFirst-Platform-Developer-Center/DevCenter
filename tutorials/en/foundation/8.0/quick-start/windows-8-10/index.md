@@ -43,20 +43,31 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet:
 
     ```csharp
-    IWorklightClient _newClient = WorklightClient.CreateInstance();
+    WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken("");
 
-    StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/users/world");    
+    if(accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+    {
+        try
+        {
+          IWorklightClient _newClient = WorklightClient.CreateInstance();
 
-    WorklightResourceRequest rr = _newClient.ResourceRequest(uriBuilder.ToString(), "GET");
+          StringBuilder uriBuilder = new StringBuilder().Append("/adapters/JavaAdapter/users/world");    
 
-    WorklightResponse resp= return Task.Run<WorklightResponse> (() => {
-       rr.send();
-    });
+          WorklightResourceRequest rr = _newClient.ResourceRequest(uriBuilder.ToString(), "GET");
 
-    if (resp.success) {
-      Debug.WriteLine("Success: " + resp.ResponseText);
-    } else {
-      Debug.WriteLine("Failure: " + resp.error);  
+          WorklightResponse resp= await rr.send();
+
+          if (resp.success)
+          {
+              Debug.WriteLine("Success: " + resp.ResponseText);
+          } else
+          {
+              Debug.WriteLine("Failure: " + resp.error);  
+          }
+        }catch(Exception e)
+        {
+          Debug.WriteLine(e.StackTrace);
+        }
     }
     ```
 
@@ -64,7 +75,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
 Alternatively, click on the "New" button next to **Adapters**.  
-        
+
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
     > If Maven and MobileFirst Developer CLI are not installed, follow the on-screen **Set up your development environment** instructions.
@@ -76,7 +87,7 @@ Alternatively, click on the "New" button next to **Adapters**.
     ```
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
-    
+
     ![Image of create an adapter](create-an-adapter.png)
 
 ### 5. Testing the application
