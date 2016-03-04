@@ -348,7 +348,7 @@ do {
 }
 ```
 
-<img alt="Image of the sample application" src="jsonstore-ios-screen.png" style="float:right"/>
+<img alt="Image of the sample application" src="jsonstore-ios-screen.png" style="float:right; width:240px;"/>
 
 ## Sample application
 The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  

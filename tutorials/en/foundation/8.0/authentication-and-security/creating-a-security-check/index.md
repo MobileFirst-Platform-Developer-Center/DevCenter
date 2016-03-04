@@ -12,7 +12,7 @@ Security checks are defined inside **an adapter** and are implemented in Java co
 
 An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
 
-**Prerequisites:** 
+**Prerequisites:**
 
 * Read the [Authorization concepts](../authorization-concepts/) tutorial.
 * Learn how to [creating adapters](../../adapters/creating-adapters).
@@ -37,7 +37,7 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     <property name="successStateExpirationSec" defaultValue="60"/>
-    <property name="failureStateExpirationSec" defaultValue="60"/>
+    <property name="blockedStateExpirationSec" defaultValue="60"/>
     <property name="maxAttempts" defaultValue="3"/>
 </securityCheckDefinition>
 ```

@@ -6,7 +6,7 @@ show_disqus: false
 print_pdf: false
 ---
 <br>
-Below are all available tutorials for IBM MobileFirst Platform Foundation 8.0 beta.
+Develop your applications by following the tutorials bellow: set-up your development environment, experience the platform and add value to your applications by integrating with MobileFirst Platform Foundation 8.0 beta offrings.
 
 ### [Setting up Your Development Environment](../setting-up-your-development-environment/)
 Set up your development environment to work with IBM MobileFirst Platform Foundation.
@@ -83,16 +83,14 @@ Add various layers of protection to your applications.
 * [UserAuthenticationSecurityCheck](../authentication-and-security/user-authentication/)
     * [Implementing the security check](../authentication-and-security/user-authentication/security-check/)
     * [Implementing the challenge handler in Cordova applications](../authentication-and-security/user-authentication/cordova/)
-    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in iOS applications](../authentication-and-security/user-authentication/ios/)
+    * [Implementing the challenge handler in iOS applications](../authentication-and-security/user-authentication/ios/)
     * [Implementing the challenge handler in Android applications](../authentication-and-security/user-authentication/android/)
-    * <span style="color:red">TODO </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/user-authentication/windows-8-10/)
-* <span style="color:red">IN PROGRESS </span>[Using the MobileFirst Server to authenticate external resources](../authentication-and-security/using-mobilefirst-server-authenticate-external-resources/)
+    * <span style="color:red">IN PROGRESS </span>[Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../authentication-and-security/user-authentication/windows-8-10/)
+* <span style="color:red">IN PROGRESS </span>[Protecting External Resources](../authentication-and-security/protecting-external-resources/)
+    * [Trust Association Interceptor](../authentication-and-security/protecting-external-resources/tai)
+    * [Java Token Validation](../authentication-and-security/protecting-external-resources/jtv)
 * [Application Authenticity](../authentication-and-security/application-authenticity/)
 * <span style="color:red">TODO </span>[NTLM Authentication](../authentication-and-security/ntlm-authentication/)
-{% comment %}
-* <span style="color:red">TODO </span>[Step-up authentication](../authentication-and-security/step-up-authentication/)
-* <span style="color:red">TODO </span>[Using Device SSO](../authentication-and-security/using-device-sso/)
-{% endcomment %}
 
 ### [Notifications](../notifications/)
 Send notifications with IBM MobileFirst Platform Foundation.  
@@ -130,10 +128,3 @@ Add testing capabilities to your application.
 ### Collateral tutorials
 
 * [Distributing mobile applications with Application Center](../collateral-tutorials/app-center/)
-
-{% comment %}
-### [Application Scanning]({{site.baseurl}}/tutorials/en/application-scanning)
-Scan your application for potential harming code.  
-
-* [MobileFirst application scanning]({{site.baseurl}}/tutorials/en/application-scanning/)
-{% endcomment %}

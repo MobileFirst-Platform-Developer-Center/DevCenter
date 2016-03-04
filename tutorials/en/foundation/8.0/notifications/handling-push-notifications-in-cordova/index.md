@@ -215,7 +215,7 @@ var notificationReceived = function(message) {
 ### Sample usage
 
 1. From a **Command-line**, navigate to the project's root folder.
-2. Register the application by running the command: `mfpdev app register`.
-3. Add a platform using the `cordova platform add` command.
-4. Follow required set-up steps mentioned in this tutorial.
+2. Add a platform using the `cordova platform add` command.
+3. Register the application by running the command: `mfpdev app register`.
+4. Via the MobileFirst Operations Console, setup the MobileFirst Server with either GCM details or APNS certificate, and add tags.
 5. Run the application by running the `cordova run` command.

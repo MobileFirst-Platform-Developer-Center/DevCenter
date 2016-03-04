@@ -59,12 +59,25 @@ The **adapter.xml** file can also contain custom properties:
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
 </mfp:adapter>
 ```
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `JAXRSApplicationClass` element.  
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must be located **below** the `JAXRSApplicationClass` element.  
 Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
 
-Those properties can be overridden in the MobileFirst Console:
+<br/>
+These properties can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab** without having to deploy the adapter again:
 
 ![Console properties](console-properties.png)
+
+**Pull and Push Configurations**
+
+Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
+To do so, use the pull and push commands described below.  
+
+Replace the **DmfpfConfigFile** placeholder with the actual value, for example: `config.json`. Then, run the command from the root folder of the adapter Maven project:
+
+* To **pull** the configurations file - `mvn adapter:configpull -DmfpfConfigFile=<path to a file that will store the configuration>`.
+* To **push** the configurations file - `mvn adapter:configpush -DmfpfConfigFile=<path to the file that stores the configuration>`.
+
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:** The file can be of any file extension and if the file does not exist, it will be created.
 
 ### The java folder
 the Java sources of the JAX-RS 2.0 service are placed in this folder. JAX-RS 2.0 services are composed of an application class (which extends `com.ibm.mfp.adapter.api.MFPJAXRSApplication`) and the resources classes.
@@ -146,10 +159,10 @@ public class JavaAdapterResource {
 The MobileFirst server does not rely on HTTP sessions and each request may reach a different node. You should not rely on HTTP sessions to keep data from one request to the next.
 
 ## Server-side APIs
-Java adapters can use the MobileFirst server-side Java API to perform operations that are related to MobileFirst Server, such as calling other adapters, submitting push notifications, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
+Java adapters can use the MobileFirst server-side Java APIs to perform operations that are related to MobileFirst Server, such as calling other adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
 
 ### Configuration API
-The `ConfigurationAPI` class provides an API to retrieve properties defined in the **adapter.xml** or in the MobileFirst console.
+The `ConfigurationAPI` class provides an API to retrieve properties defined in the **adapter.xml** or in the MobileFirst Operations console.
 
 Inside your Java class, add the following at the class level:
 
@@ -164,9 +177,11 @@ Then you can use the `configurationAPI` instance to get properties:
 configurationAPI.getPropertyValue("DB_url");
 ```
 
-When the adapter configuration is modified from the MobileFirst console, the JAX-RS application is reloaded and its `init` method is called again.
+When the adapter configuration is modified from the MobileFirst Operations console, the JAX-RS application class is reloaded and its `init` method is called again.
 
 The `getServerJNDIProperty` method can also be used to retrieve a JNDI property from your server configuration.
+
+You can see usage examples on the [Java SQL Adapter tutorial](java-sql-adapter).
 
 > Learn more about `ConfigurationAPI` in the user documentation.
 

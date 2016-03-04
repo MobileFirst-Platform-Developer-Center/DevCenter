@@ -139,7 +139,7 @@ The Adapters Maven project includes the **JavaScriptSQL** adapter described abov
 Also included is an SQL script in the **Utils** folder.
 
 ### Sample usage
-* Import the SQL script to a database.
+* Run the .sql script in your SQL database.
 * Make sure that the `mobilefirst@%` user has all access permissions assigned.
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

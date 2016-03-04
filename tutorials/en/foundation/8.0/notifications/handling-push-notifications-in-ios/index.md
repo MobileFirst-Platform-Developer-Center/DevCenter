@@ -3,6 +3,10 @@ layout: tutorial
 title: Handling Push Notifications in iOS applications
 relevantTo: [ios]
 weight: 5
+downloads:
+  - name: Download Native project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
+
 ---
 <span style="color:red">
 The handling in client side tutorials should explain:
@@ -70,3 +74,14 @@ Returns whether the device is subscribed to a specified tag name.
 ### Handling a push notification
 
 ### Handling a secure push notification
+
+<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
+## Sample application
+
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Android Studio project.
+
+### Sample usage
+1. From the command line, navigate to the project's root folder.
+2. Ensure the sample is registered in the MobileFirst Server by running the command:  
+`mfpdev app register`.
+5. Import the project to Xcode using the .xcworkspace file, and run the sample by clicking the **Run** button.
