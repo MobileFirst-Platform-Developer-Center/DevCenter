@@ -34,8 +34,8 @@ You may also want to login a user without any challenge being received. For exam
 
 You cannot call the `challengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Platform Foundation SDK includes the `Login` API:
 
-```c#
-WorklightResponse response = await WorklightAuthorizationManagerWindows.Instance.Login(String securityCheckName, JObject credentials);
+```csharp
+WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Login(String securityCheckName, JObject credentials);
 ```
 
 If the credentials are wrong, the security check will send back a **challenge**.
@@ -44,7 +44,7 @@ It is the developer's responsibility to know when to use `Login` vs `challengeAn
 
 When the user clicks the **Login** button, you can dynamically choose which API to use:
 
-```c#
+```csharp
 public async void login(JSONObject credentials)
 {
     if(isChallenged)
@@ -53,7 +53,7 @@ public async void login(JSONObject credentials)
     }
     else
     {
-        WorklightResponse response = await WorklightAuthorizationManagerWindows.Instance.Login(securityCheckName, credentials);
+        WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Login(securityCheckName, credentials);
     }
 }
 ```
@@ -62,8 +62,8 @@ Since this security check supports *remember me* functionality, it would be usef
 
 The MobileFirst Platform Foundation SDK provides the `ObtainAccessToken` API to ask the server for a valid token:
 
-```c#
-WorklightAccessToken accessToken = await WorklightAuthorizationManagerWindows.Instance.ObtainAccessToken(scope);
+```csharp
+WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
 ```
 
 If the client is already logged-in or is in the *remembered* state, the API will trigger a success. If the client is not logged in, the security check will send back a challenge.
@@ -73,51 +73,20 @@ The `ObtainAccessToken` API takes in a **scope**. The scope can be the name of y
 > Learn more about **scope** in the [Authorization concepts](../../authorization-concepts) tutorial
 
 ## Retrieving the authenticated user
-The challenge handler's `handleSuccess` method receives a `JSONObject identity` as a parameter.
-If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `handleSuccess` to save the current user:
-
-```java
-@Override
-public void handleSuccess(JSONObject identity) {
-    super.handleSuccess(identity);
-    isChallenged = false;
-    try {
-        //Save the current user
-        SharedPreferences preferences = context.getSharedPreferences(Constants.PREFERENCES_FILE, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(Constants.PREFERENCES_KEY_USER, identity.getJSONObject("user").toString());
-        editor.commit();
-    } catch (JSONException e) {
-        e.printStackTrace();
-    }
-}
-```
-
-Here, `identity` has a key called `user` which itself contains a `JSONObject` representing the `AuthenticatedUser`:
-
-```json
-{
-  "user": {
-    "id": "john",
-    "displayName": "john",
-    "authenticatedAt": 1455803338008,
-    "authenticatedBy": "UserLogin"
-  }
-}
-```
+Not Yet implemented
 
 ## Logout
 The MobileFirst Platform Foundation SDK also provides a `Logout` API to logout from a specific security check:
 
-```c#
-WorklightResponse response = await WorklightAuthorizationManagerWindows.Instance.Logout(securityCheckName);
+```csharp
+WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Logout(securityCheckName);
 ```
 
 ## Sample applications
 There are two samples associated with this tutorial:
 
-- **PreemptiveLoginAndroid**: An application that always starts with a login screen, using the preemptive `Login` API.
-- **RememberMeAndroid**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
+- **PreemptiveLoginWin**: An application that always starts with a login screen, using the preemptive `Login` API.
+- **RememberMeWin**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
 
 Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
 
@@ -136,7 +105,3 @@ Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapt
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
-
-<div style="text-align:center">
-    <img src="login-screen.png" style="display:inline"/><img src="balance.png" style="display:inline"/>
-</div>

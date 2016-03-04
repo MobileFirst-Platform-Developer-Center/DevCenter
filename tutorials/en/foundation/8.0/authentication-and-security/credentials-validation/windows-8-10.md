@@ -37,9 +37,9 @@ In this example, the security check is `PinCodeAttempts` which was defined in [I
 
 Create a C# class that extends `Worklight.ChallengeHandler`:
 
-```C#
-public class PinCodeChallengeHandler : Worklight.ChallengeHandler {
-
+```csharp
+public class PinCodeChallengeHandler : Worklight.ChallengeHandler
+{
 }
 ```
 
@@ -50,7 +50,7 @@ The minimum requirement from the `ChallengeHandler` class is to implement a cons
 
 Add a constructor method:
 
-```C#
+```csharp
 public PinCodeChallengeHandler(String securityCheck) {
     this.securityCheck = securityCheck;
 }
@@ -58,21 +58,23 @@ public PinCodeChallengeHandler(String securityCheck) {
 
 In this `HandleChallenge` example, an alert is displayed asking to enter the PIN code:
 
-```c#
-public override void HandleChallenge(WorklightResponse challenge) {
-    try{
+```csharp
+public override void HandleChallenge(WorklightResponse challenge)
+{
+    try
+    {
         if(challenge.ResponseJSON["errorMsg"]!=null && challenge.ResponseJSON["errorMsg"].Type == JToken.Null)
         {
           showChallenge("This data requires a PIN code.\nRemaining attempts: " + challenge.ResponseJSON["remainingAttempts"]);
+          shouldsubmitchallenge = true;
         }
         else
         {
           showChallenge(challenge.ResponseJSON["errorMsg"] +
-          \nRemaining attempts: " +
-          challenge.ResponseJSON["remainingAttempts"]);
+          \nRemaining attempts: " + challenge.ResponseJSON["remainingAttempts"]);
         }
-
-    } catch (Exception e) {
+    } catch (Exception e)
+    {
         Debug.WriteLine(e.StackTrace);
     }
 }
@@ -83,24 +85,45 @@ public override void HandleChallenge(WorklightResponse challenge) {
 If the credentials are incorrect, you can expect the framework to call `HandleChallenge` again.
 
 ## Submitting the challenge's answer
-Once the credentials have been collected from the UI, use the `ChallengeHandler`'s `ShouldSubmitChallengeAnswer()` method to send an answer back to the security check. `ShouldSubmitChallengeAnswer()` returns a boolean indicating if the challenge response should be sent back to the security check.In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
 
-```c#
+Once the credentials have been collected from the UI, use the `ChallengeHandler`'s `ShouldSubmitChallengeAnswer()` and `GetChallengeAnswer()` method to send an answer back to the security check. `ShouldSubmitChallengeAnswer()` returns a boolean indicating if the challenge response should be sent back to the security check.In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+
+```csharp
 public override bool ShouldSubmitChallengeAnswer()
 {
   JObject pinJSON = new JObject();
   pinJSON.Add("pin", pinCodeTxt.Text);
+  this.challengeAnswer = pinJSON;
+  return this.shouldsubmitchallenge;
 }
+
+public override JObject GetChallengeAnswer()
+{
+  return this.challengeAnswer;
+}
+
 ```
 
 ## Cancelling the challenge
-Not Yet implemented
+In some cases, such as clicking a "Cancel" button in the UI, you want to tell the framework to discard this challenge completely.
 
+To achieve this, override `ShouldSubmitFailure` and `GetSubmitFailureResponse` methods:
+
+```csharp
+public override bool ShouldSubmitFailure()
+{
+  return shouldsubmitfailure;
+}
+public override WorklightResponse GetSubmitFailureResponse()
+{
+  return new WorklightResponse(false, "User cancelled" , new JObject (), "",(int) HttpStatusCode.InternalServerError);
+}
+```
 ## Handling failures
 Not Yet implemented
 
 ## Handling successes
-ShoudSubmitSuccess() ?
+Not Yet implemented
 
 ## Registering the challenge handler
 
@@ -108,13 +131,13 @@ In order for the challenge handler to listen for the right challenges, you must 
 
 This is done by initializing the challenge handler with the security check like this:
 
-```c#
+```csharp
 PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts");
 ```
 
 You must then **register** the challenge handler instance:
 
-```c#
+```csharp
 IWorklightClient client = WorklightClient.createInstance();
 client.RegisterChallengeHandler(pinCodeChallengeHandler);
 ```
@@ -132,7 +155,7 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../creating-adapters/).
 * Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register` from a **command-line** window.
 * Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
+    * In the MobileFirst Operations Console, under **Applications** → **PinCode** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
