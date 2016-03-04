@@ -34,9 +34,57 @@ Broadcast notifications are a form of tag push notifications that are targeted t
 
 
 ### Notifications Configuration
-1. Create native project using XCode
-2. Add the MobileFirst Platform Foundation SDk, for detailed instructions see [Adding the MobileFirst Platform Foundation SDK to iOS Applications](../../adding-the-mfpf-sdk/ios.md)
-3. 
+Create a new Xcode project or use and existing one. /n
+If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to iOS Applications](../../adding-the-mfpf-sdk/ios.md)
+
+### Project setup
+
+1. In terminal: `cd` to the root of the **project directory**.
+2. Run `pod init`
+3. Open the **podfile** that was created and replace its content with the following lines:
+
+	```shell
+	use_frameworks! 
+	pod 'IBMMobileFirstPlatformFoundation'
+
+	use_frameworks! 
+	pod 'IBMMobileFirstPlatformFoundationPush'
+	```
+
+4. Save and close **podfile** 
+5. Back in the terminal run `pod install`
+6. Open project using **.xcworkspace**
+7. In **AppDelegat.swift**:
+	* Initialize a shared instance of `MFPPush` in the `didFinishLaunchingWithOptions`
+
+	```swift
+	MFPPush.sharedInstance().initialize()
+	```
+
+	* Declare the following notification methods `didRegisterForRemoteNotificationsWithDeviceToken` &amp; `didReceiveRemoteNotification`
+
+
+	<span style="color:red">Update var's</span>
+	```swift
+	func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+		// Registers device token with server.
+        MFPPush.sharedInstance().sendDeviceToken(deviceToken)
+    }
+
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        print("Recieved Notification \(userInfo.description)")
+        
+        var alert: String = "alert"
+        var alertID: String = "ID"
+        var alertPayload: String = "Payload"
+        
+        //Handle notification
+    }
+	```
+
+
+
+
 
 #Old tutorial
 
@@ -78,10 +126,12 @@ Returns whether the device is subscribed to a specified tag name.
 <img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
 ## Sample application
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Android Studio project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Xcode project.
 
 ### Sample usage
 1. From the command line, navigate to the project's root folder.
 2. Ensure the sample is registered in the MobileFirst Server by running the command:  
 `mfpdev app register`.
+3. Ensure pod's are install using the command:
+`pod install`
 5. Import the project to Xcode using the .xcworkspace file, and run the sample by clicking the **Run** button.
