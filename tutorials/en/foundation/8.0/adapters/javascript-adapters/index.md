@@ -47,7 +47,7 @@ The `adapter-resources` folder contains an XML configuration file. This configur
 * `property`: The **adapter.xml** file can also contain custom properties. The configuration properties elements must always be located *below* the `procedure` elements.
 
 <br>
-These properties can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab** without having to deploy the adapter again:
+The connection properties as well as the custom properties can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab** without having to deploy the adapter again:
 
 ![Console properties](console-properties.png)
 
