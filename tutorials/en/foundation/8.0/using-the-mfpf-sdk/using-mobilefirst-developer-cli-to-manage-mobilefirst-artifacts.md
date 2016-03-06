@@ -50,6 +50,12 @@ To install the Command Line Interface run the command:
 npm install -g mfpdev-cli
 ```
 
+If the CLI .zip file was downloaded from the MobileFirst Operations Console's Downloads page, use the command:
+
+```bash
+npm install -g <path-to-mfpdev-cli.tgz>
+```
+
 To confirm the installation, run the command `mfpdev` without any arguments and it will print the help text:
 
 ```shell
