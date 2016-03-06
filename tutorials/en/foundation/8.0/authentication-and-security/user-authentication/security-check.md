@@ -23,7 +23,7 @@ This tutorial uses the example of a security check asking for a username and pas
 * [Sample application](#sample-application)
 
 ## Creating the Security Check
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
+[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
 
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
