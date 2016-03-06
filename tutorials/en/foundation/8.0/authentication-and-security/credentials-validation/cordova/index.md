@@ -7,7 +7,7 @@ weight: 2
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80
-  - name: Download Maven project
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview

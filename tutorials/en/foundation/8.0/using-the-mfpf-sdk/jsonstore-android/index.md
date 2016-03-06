@@ -7,7 +7,7 @@ weight: 10
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 ## Overview
