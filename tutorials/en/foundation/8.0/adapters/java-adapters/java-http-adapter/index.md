@@ -3,7 +3,7 @@ layout: tutorial
 title: Java HTTP Adapter
 relevantTo: [ios,android,windows,cordova]
 downloads:
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
 

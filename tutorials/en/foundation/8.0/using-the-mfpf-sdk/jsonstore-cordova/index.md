@@ -7,7 +7,7 @@ weight: 8
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 ## Overview

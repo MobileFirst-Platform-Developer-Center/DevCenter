@@ -48,7 +48,7 @@ The cordova-plugin-mfp-fips plug-in enables FIPS related features. For more info
 
 **Prerequisites:**
 
-- Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) and MobileFirst Developer CLI installed on the developer workstation.  
+- At mininum Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) and MobileFirst Developer CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Cordova development environment](../../setting-up-your-development-environment/cordova-development-environment) tutorials.
 
@@ -57,6 +57,8 @@ Follow the below instructions to add the MobileFirst Cordova SDK to either a new
 
 Before starting, make sure the MobileFirst Server is running.  
 If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
+
+> **Note:** If adding the SDK to an existing Cordova application, the plug-in overwrites the `MainActivity.java` for Android and `Main.m` for iOS.
 
 ### Adding the SDK
 
