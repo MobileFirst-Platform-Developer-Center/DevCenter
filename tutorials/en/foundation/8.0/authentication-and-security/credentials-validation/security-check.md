@@ -51,12 +51,12 @@ For example, `PinCodeAttempts` sends a predefined error message and the number o
 protected Map<String, Object> createChallenge() {
     HashMap challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
-    challenge.put("remainingAttempts",remainingAttempts);
+    challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;
 }
 ```
 
-`remainingAttempts` is inherited from `CredentialsValidationSecurityCheck`.
+`getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
 
 ## Validating the user credentials
 When the client sends the challenge's answer, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.

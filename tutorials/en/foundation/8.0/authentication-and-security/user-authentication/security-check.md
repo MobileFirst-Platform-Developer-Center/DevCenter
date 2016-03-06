@@ -53,7 +53,7 @@ The challenge is exactly the same as the one described in [Implementing the Cred
 protected Map<String, Object> createChallenge() {
     HashMap challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
-    challenge.put("remainingAttempts",remainingAttempts);
+    challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;
 }
 ```
