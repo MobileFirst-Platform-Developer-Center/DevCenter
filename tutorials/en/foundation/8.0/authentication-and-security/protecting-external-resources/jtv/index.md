@@ -48,8 +48,6 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 - `clientId`: The confidential client ID you configured in the MobileFirst Operations Console.
 - `clientSecret`: The confidential client secret you configured in **MobileFirst Operations Console → Settings → Confidential Clients**.
 
-![Confidential clients](confidential-client.png)
-
 ## Validating the credentials
 The `validate` API method will ask the authorization server to validate the authorization header:
 
