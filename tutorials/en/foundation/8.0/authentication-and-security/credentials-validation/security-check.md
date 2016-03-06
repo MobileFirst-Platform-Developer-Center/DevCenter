@@ -23,7 +23,7 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 * [Sample application](#sample-application)
 
 ## Creating the Security Check
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
+[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
 
 ```java
 public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
