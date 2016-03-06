@@ -54,7 +54,7 @@ The connection properties as well as the custom properties can be overridden in 
 **Pull and Push Configurations**
 
 Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
-To do so, use the pull and push commands described below.  
+To do so, use the `pull` and `push` commands described below.  For the properties to be shared, you need to *change the default values given to the properties*.
 
 Replace the **DmfpfConfigFile** placeholder with the actual value, for example: `config.json`. Then, run the command from the root folder of the adapter Maven project:
 
