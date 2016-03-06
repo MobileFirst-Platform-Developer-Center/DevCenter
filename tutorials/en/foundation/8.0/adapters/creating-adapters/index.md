@@ -291,7 +291,7 @@ This generates an **.adapter** archive file which can be found in the **target**
     		<mfpfPassword>admin</mfpfPassword>
     	</properties>
       ```
-   * Replace **locsalhost:9080** with your MobileFirst Server IP address and port number.
+   * Replace **localhost:9080** with your MobileFirst Server IP address and port number.
    * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your MobileFirst admin user name and password.
 2. Run the deploy command from the project's root folder:
  * **Using the MobileFirst Developer CLI**:
