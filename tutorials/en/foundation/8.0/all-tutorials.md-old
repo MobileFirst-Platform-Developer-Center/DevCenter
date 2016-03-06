@@ -4,6 +4,7 @@ title: All Tutorials
 weight: 1
 show_disqus: false
 print_pdf: false
+show_in_nav: false
 ---
 <br>
 Develop your applications by following the tutorials bellow: set-up your development environment, experience the platform and add value to your applications by integrating with MobileFirst Platform Foundation 8.0 beta offrings.
