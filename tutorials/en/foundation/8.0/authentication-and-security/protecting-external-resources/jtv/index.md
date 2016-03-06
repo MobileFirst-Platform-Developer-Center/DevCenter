@@ -6,7 +6,7 @@ relevantTo: [android,ios,windows,cordova]
 weight: 1
 downloads:
   - name: Download sample
-    url: 
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 ## Overview
 MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources.    
@@ -14,7 +14,7 @@ The Java library is provided as a .jar file (**mfp-java-token-validator-8.0.0.ja
 
 This tutorial will show how to protect a simple Java Servlet, `GetBalance`, using a scope `accessRestricted`.
 
-**Prerequesite:**
+**Prerequesites:**
 
 * Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
 * Understanding of the [MobileFirst Platform Foundation security framework](../../).
@@ -84,7 +84,7 @@ TokenIntrospectionData introspectionData = (TokenIntrospectionData) request.getA
 String username = introspectionData.getUsername();
 ```
 
-> For additional API methods, see the JavaDoc.
+> For additional API methods, see the Java Token Validation JavaDoc in the user documentation.
 
 ## Cache
 The `TokenValidationManager` class comes with an internal cache which caches tokens and introspection data. The purpose of the cache is to reduce the amount of token *introspections* done against the Authorization Server, if a request is made with the same header.
@@ -192,7 +192,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
 
 ## Sample
 You can deploy the project on supported application servers (Tomcat, WebSphere Full profile and WebSphere Liberty profile).  
-[Download the simple Java servlet]().
+[Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80).
 
 ### Sample usage
 
