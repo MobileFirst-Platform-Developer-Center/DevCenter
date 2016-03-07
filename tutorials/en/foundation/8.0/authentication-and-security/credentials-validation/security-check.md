@@ -199,6 +199,7 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 }
 ```
 The properties defined by `CredentialsValidationSecurityCheckConfig` are:
+
 - `maxAttempts`: How many attempts are allowed before reaching a *failure*.
 - `attemptingStateExpirationSec`: Interval in seconds during which the client should provide valid credentials, and attempts are counted.
 - `successStateExpirationSec`: Interval in seconds during which the successful login holds.
