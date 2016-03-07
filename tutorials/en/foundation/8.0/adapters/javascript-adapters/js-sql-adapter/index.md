@@ -102,6 +102,26 @@ function getAccountTransactions2(accountId){
     parameters : [accountId]
   });
 }
+```  
+
+### Using multiple parameters
+When using multiple parameters in your SQL query - make sure to accept them in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters array.
+
+```js
+var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
+	"FROM accounttransactions " +
+	"WHERE accounttransactions.fromAccount = ? AND accounttransactions.toAccount = ? " +
+	"ORDER BY transactionDate DESC " +
+	"LIMIT 20;";
+
+//Invoke prepared SQL query and return invocation result
+function getAccountTransactions1(fromAccount, toAccount){
+	return WL.Server.invokeSQLStatement({
+		preparedStatement : getAccountsTransactionsStatement,
+		parameters : [fromAccount, toAccount]
+	});
+}
+
 ```
 
 ## Invocation Results
