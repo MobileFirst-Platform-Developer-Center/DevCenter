@@ -23,7 +23,16 @@ In this tutorial, you will be learning how to handle push notification for iOS a
 Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.
 Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
 
-Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). Broadcast notifications can be disabled by by unsubscribing from the reserved `Push.all` tag.
+Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). Broadcast notifications can be disabled by unsubscribing from the reserved `Push.all` tag.
+
+**Prerequisites:** 
+
+* Make sure you have read the following tutorials:
+	* [Push Notifications Overview](../push-notifications-overview)
+    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/index)
+    * [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios)
+    * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
+* MobileFirst Developer CLI installed on the developer workstation
 
 
 ### Jump to:
@@ -34,53 +43,49 @@ Broadcast notifications are a form of tag push notifications that are targeted t
 
 
 ### Notifications Configuration
-Create a new Xcode project or use and existing one. /n
-If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to iOS Applications](../../adding-the-mfpf-sdk/ios.md)
+Create a new Xcode project or use and existing one.  
+If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios) tutorial.
 
 ### Project setup
 
-1. In terminal: `cd` to the root of the **project directory**.
-2. Run `pod init`
-3. Open the **podfile** that was created and replace its content with the following lines:
+1. Open the projects **podfile** and add the following lines:
 
 	```shell
-	use_frameworks! 
-	pod 'IBMMobileFirstPlatformFoundation'
-
 	use_frameworks! 
 	pod 'IBMMobileFirstPlatformFoundationPush'
 	```
 
-4. Save and close **podfile** 
-5. Back in the terminal run `pod install`
-6. Open project using **.xcworkspace**
-7. In **AppDelegat.swift**:
+2. Save and close the **podfile** 
+3. Open a terminal window and `cd` to the root of the **project derectory**
+4. Run the command `pod install`
+5. Open project using **.xcworkspace**
+6. In **AppDelegat.swift**:
 	* Initialize a shared instance of `MFPPush` in the `didFinishLaunchingWithOptions`
 
-	```swift
-	MFPPush.sharedInstance().initialize()
-	```
-
+		```swift
+		MFPPush.sharedInstance().initialize()
+		```
 	* Declare the following notification methods `didRegisterForRemoteNotificationsWithDeviceToken` &amp; `didReceiveRemoteNotification`
 
+		```swift
 
-	<span style="color:red">Update var's</span>
-	```swift
-	func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-		// Registers device token with server.
-        MFPPush.sharedInstance().sendDeviceToken(deviceToken)
-    }
+		TODO:// Update var's
 
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        print("Recieved Notification \(userInfo.description)")
-        
-        var alert: String = "alert"
-        var alertID: String = "ID"
-        var alertPayload: String = "Payload"
-        
-        //Handle notification
-    }
-	```
+		func application(application: UIApplication, 	didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+			// Registers device token with server.
+    	    MFPPush.sharedInstance().sendDeviceToken(deviceToken)
+    	}
+	
+    	func application(application: UIApplication, didReceiveRemoteNotification 	userInfo: [NSObject : AnyObject]) {
+    	    print("Recieved Notification \(userInfo.description)")
+    	    
+    	    var alert: String = "alert"
+    	    var alertID: String = "ID"
+    	    var alertPayload: String = "Payload"
+    	    
+    	    //Handle notification
+    	}
+		```
 
 
 
@@ -89,12 +94,6 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
 #Old tutorial
 
 ### Notifications Configuration
-
-1. Create native project using XCode
-2. Get the IBMMobileFirstPlatformFoundation.framework and IBMMobileFirstPlatformFoundationPush.framework from halpert and include them in yout project
-3. Declare the notification methods in AppDelegate.m (Refer Sample)
-4. Use the Push SDK APIs (Refer Sample)
-5. Modify the server and port details in mfpclient.plist  
 
 ### Notifications API
 
