@@ -39,15 +39,15 @@ In order to create an adapter, you first need to download and install Maven. Go 
 #### Local Maven repositories
 If Internet connectivity is not available while developing, prepare to work offline:
 
-1. Make sure you have first installed Maven.
+1. Make sure you have first installed Apache Maven.
 2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
-3. Start the MobileFirst Server and open the MobileFirst Operations Console.
+3. Start the MobileFirst Server and load the MobileFirst Operations Console.
 4. Click on **Get Starter Code → Tools tab** and download the Adapter Archetypes from the Adapter tooling section.
-4. Install the security check archetypes by running the **security-maven-buildall.zip/install-security-checks.sh** script in Linux and Mac, or the **install-security-checks.bat** script in Windows.
-5. Install the adapters archetypes by running the **adapter-maven-buildall.zip/install-adapter.sh** script in Linux and Mac, or the **install-adapter.bat** script in Windows.
+5. Install the adapter archetypes and security checks by running the **security-maven-buildall.zip/install-security-checks.sh** script for Linux and Mac, or the **install-security-checks.bat** script for Windows.
+
 
 ### Creating an Adapter
-To create a Maven adapter project, use the `archetype:generate` command. Once the command is executed, Maven will download (or use the above local repositories) required files from the MobileFirst Maven repository in order to be able to generate the adapter Maven project.
+To create a Maven adapter project, use the `archetype:generate` command. Once the command is executed, Maven will download (or use the local repositories mentioned above) required files from the MobileFirst Maven repository in order to be able to generate the adapter Maven project.
 
 
 You can choose to run the command interactively or directly.
@@ -57,7 +57,7 @@ You can choose to run the command interactively or directly.
 1. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
 
     ```bash
-    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0
+    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID -DarchetypeVersion=8.0.0
     ```
   * The `Archetype Group Id` and Archetype Version are required parameters to identify the archetype.
   * The `Archetype Artifact Id` is a required parameter to identify the adapter type:
@@ -102,6 +102,7 @@ You can choose to run the command interactively or directly.
      Y: : y
     ```
 <br/>
+Once the adapter was built, the generated .adapter file can be found in the Maven project's **target** folder.
 
 #### Direct Mode
 
@@ -112,6 +113,7 @@ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<ada
 ```
 
 <br/>
+Once the adapter was built, the generated .adapter file can be found in the Maven project's **target** folder.
 
 > For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
 
