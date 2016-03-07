@@ -176,10 +176,10 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
-  <property name="pinCode" defaultValue="1234" displayName="The valid PIN code"/>
-  <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
-  <property name="blockedStateExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
-  <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
+  <property name="pinCode" defaultValue="1234" description="The valid PIN code"/>
+  <property name="maxAttempts" defaultValue="3" description="How many attempts are allowed"/>
+  <property name="blockedStateExpirationSec" defaultValue="60" description="How long before the client can try again (seconds)"/>
+  <property name="successStateExpirationSec" defaultValue="60" description="How long is a successful state valid for (seconds)"/>
 </securityCheckDefinition>
 ```
 

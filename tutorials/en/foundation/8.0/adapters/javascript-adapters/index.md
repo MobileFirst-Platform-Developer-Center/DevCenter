@@ -46,7 +46,14 @@ The `adapter-resources` folder contains an XML configuration file. This configur
 * `procedure`: Declares a service for accessing a back-end application. One entry for each adapter procedure.
 * `property`: The **adapter.xml** file can also contain custom properties. The configuration properties elements must always be located *below* the `procedure` elements.
 
-<br>
+The `<property>` element takes the following attributes:
+
+- **name**: The name of the property, as defined in the configuration class.
+- **defaultValue**: Overrides the default value defined in the configuration class.
+- **displayName**: *optional*, a friendly name to be displayed in the console.
+- **description**: *optional*, a description to be displayed in the console.
+- **type**: *optional*, ensures that the property is of a specific type such as `integer`, `string`, `boolean` or a list of valid values (for example `type="['1','2','3']"`).
+
 The connection properties as well as the custom properties can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab** without having to deploy the adapter again:
 
 ![Console properties](console-properties.png)
