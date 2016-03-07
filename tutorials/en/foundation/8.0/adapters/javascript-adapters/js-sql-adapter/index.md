@@ -21,7 +21,7 @@ In this tutorial and in the accompanying sample, you learn how to use a MobileFi
 The XML file contains settings and metadata.
 
 1. In the adapter XML file, declare the following parameters:
- * JDBC Driver Class name
+ * JDBC Driver Class
  * Database URL
  * Username
  * Password<br/><br/>
