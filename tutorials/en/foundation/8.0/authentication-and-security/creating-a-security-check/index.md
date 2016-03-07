@@ -115,12 +115,14 @@ The `<property>` element takes the following attributes:
 
 - **name**: The name of the property, as defined in the configuration class.
 - **defaultValue**: Overrides the default value defined in the configuration class.
-- **displayName**: A friendly name to be displayed in the console.
+- **displayName**: *optional*, a friendly name to be displayed in the console.
+- **description**: *optional*, a description to be displayed in the console.
+- **type**: *optional*, ensures that the property is of a specific type such as `integer`, `string`, `boolean` or a list of valid values (for example `type="['1','2','3']"`).
 
 Example:
 
 ```xml
-<property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
+<property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed" type="integer"/>
 ```
 
 ### MobileFirst Operations Console - Adapter
