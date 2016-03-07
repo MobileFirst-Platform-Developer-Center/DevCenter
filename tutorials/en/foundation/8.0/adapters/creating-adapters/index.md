@@ -186,6 +186,7 @@ To group adapters you need to:
     		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
     		<mfpfUser>admin</mfpfUser>
     		<mfpfPassword>admin</mfpfPassword>
+        <mfpfRuntime>mfp</mfpfRuntime>
     	</properties>
 
       <build>
@@ -207,6 +208,7 @@ To group adapters you need to:
   4. Add the **`build`** element
   5. **Optional**. Replace **localhost:9080** with your specific MobileFirst Server IP address and port number.
   6. **Optional**. Replace the **`mfpfUser`** and **`mfpfPassword`** default values with your MobileFirst admin user name and password.
+  7. **Optional**. Replace the **`mfpfRuntime`** default value with your MobileFirst runtime name.
 
 4. To [build or deploy](#build-and-deploy-adapters) all adapters, run the Maven commands from the root "GroupAdapters" project.
 
@@ -289,10 +291,12 @@ This generates an **.adapter** archive file which can be found in the **target**
     		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
     		<mfpfUser>admin</mfpfUser>
     		<mfpfPassword>admin</mfpfPassword>
+    		<mfpfRuntime>mfp</mfpfRuntime>
     	</properties>
       ```
    * Replace **localhost:9080** with your MobileFirst Server IP address and port number.
    * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your MobileFirst admin user name and password.
+   * **Optional**. Replace the **mfpfRuntime** default value with your MobileFirst runtime name.
 2. Run the deploy command from the project's root folder:
  * **Using the MobileFirst Developer CLI**:
 
