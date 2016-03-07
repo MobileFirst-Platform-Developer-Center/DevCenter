@@ -56,6 +56,8 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
+> The implementation of `errorMsg` is included in the sample application.
+
 `getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
 
 ## Validating the user credentials
