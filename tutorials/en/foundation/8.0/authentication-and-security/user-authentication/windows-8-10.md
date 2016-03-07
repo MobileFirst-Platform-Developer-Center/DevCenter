@@ -4,17 +4,6 @@ title: Implementing the challenge handler in Windows 8.1 Universal and Windows 1
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
-downloads:
-  - name: Download PreemptiveLogin Win8 project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80
-  - name: Download PreemptiveLogin Win10 UWP project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80
-  - name: Download RememberMe Win8 project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80
-  - name: Download RememberMe Win 10 UWP project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80  
-  - name: Download Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 **Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/android) tutorial.
@@ -90,10 +79,10 @@ There are two samples associated with this tutorial:
 
 Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80) the Remember Me Win8 project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80) the Remember Me Win10 project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80) the PreemptiveLogin Win8 project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80) the Remember Me Win8 project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80) the Remember Me Win10 project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80) the PreemptiveLogin Win8 project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80) the PreemptiveLoginWin10 project.
 
 ### Sample usage

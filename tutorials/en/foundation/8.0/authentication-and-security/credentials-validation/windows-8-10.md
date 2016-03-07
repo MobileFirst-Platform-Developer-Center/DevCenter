@@ -4,13 +4,6 @@ title: Implementing the challenge handler in Windows 8.1 Universal and Windows 1
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
-downloads:
-  - name: Download Native Windows 8 project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
-  - name: Download Native Windows 10 project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
-  - name: Download Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 When trying to access a protected resource, the server (the security check) will send back to the client a list containing one or more **challenges** for the client to handle.  
@@ -146,7 +139,7 @@ client.RegisterChallengeHandler(pinCodeChallengeHandler);
 The sample **PinCodeWin8** and **PinCodeWin10** are C# applications that uses `ResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80) the Windows 8 project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80) the Windows 10 UWP project.
 

@@ -23,7 +23,7 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 * [Sample application](#sample-application)
 
 ## Creating the Security Check
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
+[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
 
 ```java
 public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
@@ -49,14 +49,14 @@ For example, `PinCodeAttempts` sends a predefined error message and the number o
 ```java
 @Override
 protected Map<String, Object> createChallenge() {
-    HashMap challenge = new HashMap();
+    Map challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
-    challenge.put("remainingAttempts",remainingAttempts);
+    challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;
 }
 ```
 
-`remainingAttempts` is inherited from `CredentialsValidationSecurityCheck`.
+`getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
 
 ## Validating the user credentials
 When the client sends the challenge's answer, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
@@ -86,7 +86,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ### Configuration class
-Instead of hardcoding the valid PIN code, it can also be configured using the adapter.xml file and the MobileFirst Operations Console.
+You can also configure the valid PIN code by using the adapter.xml file and the MobileFirst Operations Console.
 
 Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent SecurityCheck in order to inherit the default configuration.
 
@@ -176,10 +176,10 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
-  <property name="pinCode" defaultValue="1234" displayName="The valid PIN code"/>
-  <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
-  <property name="blockedStateExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
-  <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
+  <property name="pinCode" defaultValue="1234" description="The valid PIN code"/>
+  <property name="maxAttempts" defaultValue="3" description="How many attempts are allowed"/>
+  <property name="blockedStateExpirationSec" defaultValue="60" description="How long before the client can try again (seconds)"/>
+  <property name="successStateExpirationSec" defaultValue="60" description="How long is a successful state valid for (seconds)"/>
 </securityCheckDefinition>
 ```
 
@@ -199,6 +199,7 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 }
 ```
 The properties defined by `CredentialsValidationSecurityCheckConfig` are:
+
 - `maxAttempts`: How many attempts are allowed before reaching a *failure*.
 - `attemptingStateExpirationSec`: Interval in seconds during which the client should provide valid credentials, and attempts are counted.
 - `successStateExpirationSec`: Interval in seconds during which the successful login holds.

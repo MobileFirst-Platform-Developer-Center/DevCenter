@@ -62,7 +62,14 @@ The **adapter.xml** file can also contain custom properties:
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must be located **below** the `JAXRSApplicationClass` element.  
 Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
 
-<br/>
+The `<property>` element takes the following attributes:
+
+- **name**: The name of the property, as defined in the configuration class.
+- **defaultValue**: Overrides the default value defined in the configuration class.
+- **displayName**: *optional*, a friendly name to be displayed in the console.
+- **description**: *optional*, a description to be displayed in the console.
+- **type**: *optional*, ensures that the property is of a specific type such as `integer`, `string`, `boolean` or a list of valid values (for example `type="['1','2','3']"`).
+
 These properties can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab** without having to deploy the adapter again:
 
 ![Console properties](console-properties.png)
@@ -70,7 +77,7 @@ These properties can be overridden in the **MobileFirst Operations Console → [
 **Pull and Push Configurations**
 
 Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
-To do so, use the pull and push commands described below.  
+To do so, use the `pull` and `push` commands described below. For the properties to be shared, you need to *change the default values given to the properties*.
 
 Replace the **DmfpfConfigFile** placeholder with the actual value, for example: `config.json`. Then, run the command from the root folder of the adapter Maven project:
 
@@ -142,11 +149,11 @@ public class JavaAdapterResource {
 
 * `@Path("/")` before the class definition determines the root path of this resource. If you have multiple resource classes, you should set each resource a different path.  
 
-	For example, if you have a `UserResource` with `@Path("/users")` to manage users of a blog, that resource is accessible via `http(s)://host:port/ProjectName/adapters/AdapterName/<em>users</em>/`.
+	For example, if you have a `UserResource` with `@Path("/users")` to manage users of a blog, that resource is accessible via `http(s)://host:port/ProjectName/adapters/AdapterName/users/`.
 
-	That same adapter may contain another resource `PostResource` with `@Path("/posts")` to manage posts of a blog. It is accessible via the `http(s)://host:port/ProjectName/adapters/AdapterName/<em>posts</em>/` URL.  
+	That same adapter may contain another resource `PostResource` with `@Path("/posts")` to manage posts of a blog. It is accessible via the `http(s)://host:port/ProjectName/adapters/AdapterName/posts/` URL.  
 
-	In the example above, because there it has only one resource class, it is set to `@Path("/")` so that it is accessible via `http(s)://host:port/Adapters/adapters/JavaAdapter<em>/</em>`.  
+	In the example above, because there it has only one resource class, it is set to `@Path("/")` so that it is accessible via `http(s)://host:port/Adapters/adapters/JavaAdapter/`.  
 
 * Each method is preceded by one or more JAX-RS 2.0 annotations, for example an annotation of type "HTTP request" such as `@GET`, `@PUT`, `@POST`, `@DELETE`, or `@HEAD`. Such annotations define how the method can be accessed.  
 

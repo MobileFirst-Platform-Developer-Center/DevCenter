@@ -3,7 +3,7 @@ layout: tutorial
 title: JavaScript SQL Adapter
 relevantTo: [ios,android,windowsphone8,windows8,cordova]
 downloads:
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---
