@@ -19,6 +19,8 @@ This tutorial will show how to protect a simple Java Servlet, `GetBalance`, usin
 * Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
 * Understanding of the [MobileFirst Platform Foundation security framework](../../).
 
+![Flow](JTV_flow.jpg)
+
 ## Adding the .jar file dependency
 The **mfp-java-token-validator-8.0.0.jar** is available as a **maven dependency**:
 

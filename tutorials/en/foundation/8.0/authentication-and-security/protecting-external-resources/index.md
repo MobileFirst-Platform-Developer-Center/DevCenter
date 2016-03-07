@@ -15,7 +15,7 @@ The validation/introspection of the token is done using a RESTful request to the
 This can either be done entirely with custom code, or using one of MobileFirst Platform Foundation's helper libraries that encapsulate part of the flow.
 
 ## Flow
-![Protecting external resources diagram]()
+![Protecting external resources diagram](external_resources_flow.jpg)
 
 1. An application with the MobileFirst Platform Foundation client SDK makes a resource request call (or any HTTP request) to a protected resource with or without the `Authorization` header (token).
 2. The resource server obtains a token for the `authorization.introspect` scope and uses this token as authorization to the introspection endpoint.
