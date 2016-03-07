@@ -6,7 +6,7 @@ relevantTo: [android,ios,windows,cordova]
 weight: 1
 downloads:
   - name: Download sample
-    url: 
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 ## Overview
 MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources.    
@@ -14,10 +14,12 @@ The Java library is provided as a .jar file (**mfp-java-token-validator-8.0.0.ja
 
 This tutorial will show how to protect a simple Java Servlet, `GetBalance`, using a scope `accessRestricted`.
 
-**Prerequesite:**
+**Prerequesites:**
 
 * Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
 * Understanding of the [MobileFirst Platform Foundation security framework](../../).
+
+![Flow](JTV_flow.jpg)
 
 ## Adding the .jar file dependency
 The **mfp-java-token-validator-8.0.0.jar** is available as a **maven dependency**:
@@ -48,8 +50,6 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 - `clientId`: The confidential client ID you configured in the MobileFirst Operations Console.
 - `clientSecret`: The confidential client secret you configured in **MobileFirst Operations Console → Settings → Confidential Clients**.
 
-![Confidential clients](confidential-client.png)
-
 ## Validating the credentials
 The `validate` API method will ask the authorization server to validate the authorization header:
 
@@ -70,9 +70,7 @@ if (tokenValidationRes.getAuthenticationError() != null) {
   httpServletResponse.setStatus(error.getStatus());
   httpServletResponse.setHeader("WWW-Authenticate", error.getAuthenticateHeader());
 } else if (tokenValidationRes.getIntrospectionData() != null) {
-  // Success
-  httpServletRequest.setAttribute("introspection-data", tokenValidationRes.getIntrospectionData());
-  filter.doFilter(req, res);
+  // Success logic here
 }
 ```                    
 
@@ -80,18 +78,21 @@ if (tokenValidationRes.getAuthenticationError() != null) {
 The `TokenIntrospectionData` object returned by `getIntrospectionData()` provides you with some information about the client, such as the username of the currently active user:
 
 ```java
+httpServletRequest.setAttribute("introspection-data", tokenValidationRes.getIntrospectionData());
+```
+
+```java
 TokenIntrospectionData introspectionData = (TokenIntrospectionData) request.getAttribute("introspection-data");
 String username = introspectionData.getUsername();
 ```
 
-> For additional API methods, see the JavaDoc.
+
+> For additional API methods, see the Java Token Validation JavaDoc in the user documentation.
 
 ## Cache
 The `TokenValidationManager` class comes with an internal cache which caches tokens and introspection data. The purpose of the cache is to reduce the amount of token *introspections* done against the Authorization Server, if a request is made with the same header.
 
 The default cache size is **50000 items**. After this capacity is reached, the oldest token is removed.  
-
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Before a token is retrieved from the cache, its expiration is checked (the expiration is a field in the introspection data), and is removed if expired. This is done internally by the MobileFirst security framework.
 
 The constructor of `TokenValidationManager` can also accept a `cacheSize` (number of introspection data items) to store:
 
@@ -192,7 +193,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
 
 ## Sample
 You can deploy the project on supported application servers (Tomcat, WebSphere Full profile and WebSphere Liberty profile).  
-[Download the simple Java servlet]().
+[Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80).
 
 ### Sample usage
 

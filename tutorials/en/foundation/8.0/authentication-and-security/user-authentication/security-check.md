@@ -23,7 +23,7 @@ This tutorial uses the example of a security check asking for a username and pas
 * [Sample application](#sample-application)
 
 ## Creating the Security Check
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
+[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
 
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
@@ -51,9 +51,9 @@ The challenge is exactly the same as the one described in [Implementing the Cred
 ```java
 @Override
 protected Map<String, Object> createChallenge() {
-    HashMap challenge = new HashMap();
+    Map challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
-    challenge.put("remainingAttempts",remainingAttempts);
+    challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;
 }
 ```
@@ -186,10 +186,10 @@ In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
-  <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
-  <property name="failureStateExpirationSec" defaultValue="10" displayName="How long before the client can try again (seconds)"/>
-  <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
-  <property name="rememberMeDurationSec" defaultValue="120" displayName="How long is the user remembered when using RememberMe (seconds)"/>
+  <property name="maxAttempts" defaultValue="3" description="How many attempts are allowed"/>
+  <property name="failureStateExpirationSec" defaultValue="10" description="How long before the client can try again (seconds)"/>
+  <property name="successStateExpirationSec" defaultValue="60" description="How long is a successful state valid for (seconds)"/>
+  <property name="rememberMeDurationSec" defaultValue="120" description="How long is the user remembered when using RememberMe (seconds)"/>
 </securityCheckDefinition>
 ```
 As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `CredentialsValidationSecurityCheck` properties, such as `failureStateExpirationSec`, `successStateExpirationSec`, etc.

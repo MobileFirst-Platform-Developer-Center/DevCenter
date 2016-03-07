@@ -9,7 +9,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginiOS/tree/release80
   - name: Download RememberMe project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeiOS/tree/release80
-  - name: Download Maven project
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview

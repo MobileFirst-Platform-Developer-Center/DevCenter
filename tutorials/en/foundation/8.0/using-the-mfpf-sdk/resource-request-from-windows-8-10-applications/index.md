@@ -8,7 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
   - name: Download Native Windows 10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---
