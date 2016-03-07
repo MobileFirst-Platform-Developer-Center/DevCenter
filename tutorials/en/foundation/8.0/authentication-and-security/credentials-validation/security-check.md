@@ -49,7 +49,7 @@ For example, `PinCodeAttempts` sends a predefined error message and the number o
 ```java
 @Override
 protected Map<String, Object> createChallenge() {
-    HashMap challenge = new HashMap();
+    Map challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
     challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;

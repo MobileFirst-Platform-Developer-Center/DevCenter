@@ -51,7 +51,7 @@ The challenge is exactly the same as the one described in [Implementing the Cred
 ```java
 @Override
 protected Map<String, Object> createChallenge() {
-    HashMap challenge = new HashMap();
+    Map challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
     challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;
