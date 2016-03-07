@@ -93,7 +93,7 @@ There are two ways of running SQL statements:
 ### SQL stored procedure
 To run a SQL stored procedure, use the `WL.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.
 
-```js
+```javascript
 // Invoke stored SQL procedure and return invocation result
 function getAccountTransactions2(accountId){
   // To run a SQL stored procedure, use the `WL.Server.invokeSQLStoredProcedure` method
@@ -105,9 +105,9 @@ function getAccountTransactions2(accountId){
 ```  
 
 ### Using multiple parameters
-When using multiple parameters in your SQL query - make sure to accept them in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters array.
+When using multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an array.
 
-```js
+```javascript
 var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
 	"FROM accounttransactions " +
 	"WHERE accounttransactions.fromAccount = ? AND accounttransactions.toAccount = ? " +
