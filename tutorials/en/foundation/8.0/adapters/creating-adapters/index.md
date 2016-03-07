@@ -101,7 +101,6 @@ You can choose to run the command interactively or directly.
     archetypeVersion: 8.0.0
      Y: : y
     ```
-<br/>
 Once the adapter was built, the generated .adapter file can be found in the Maven project's **target** folder.
 
 #### Direct Mode
@@ -112,7 +111,6 @@ Replace the placeholders with the actual values and run the command:
 mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0 -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid> -Dversion=<maven_project_version> -Dpackage=<adapter_package_name>
 ```
 
-<br/>
 Once the adapter was built, the generated .adapter file can be found in the Maven project's **target** folder.
 
 > For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
