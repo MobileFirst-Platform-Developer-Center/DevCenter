@@ -64,45 +64,45 @@ There are two ways of running SQL statements:
 * SQL statement query
 * SQL stored procedure
 
-1. Use the `WL.Server.createSQLStatement` method to prepare a SQL query. This method must always be called outside the function.
-2. Add more parameters, if necessary.
-
-    ```js
-    //Create SQL query
-    var getAccountsTransactionsStatement = WL.Server.createSQLStatement(
-      "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
-      "FROM accounttransactions " +
-      "WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? " +
-      "ORDER BY transactionDate DESC " +
-      "LIMIT 20;"
-    );
-    ```
+### SQL statement query
+1. assign your SQL query to a variable. This must always be done outside the function scope.
+2. Add parameters, if necessary.
 3. Use the `WL.Server.invokeSQLStatement` method to call prepared queries.
 4. Return the result to the application or to another procedure.
 
-    ```js
-    //Invoke prepared SQL query and return invocation result   
-    function getAccountTransactions1(accountId){
-      return WL.Server.invokeSQLStatement({
-        preparedStatement : getAccountsTransactionsStatement,
-        parameters : [accountId, accountId]
-      });
-    }
-    ```
-5. To run a SQL stored procedure, use the `WL.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.
-6. Add more parameters, if necessary.
-7. Return the invocation result to the application or to another procedure.
+      ```js
+      // 1. assign your SQL query to a variable (outside the function scope)
+      // 2. Add parameters, if necessary
+      var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
+        "FROM accounttransactions " +
+        "WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? " +
+        "ORDER BY transactionDate DESC " +
+        "LIMIT 20;";
 
-    ```js
-    //Invoke stored SQL procedure and return invocation result
-    function getAccountTransactions2(accountId){
-      return WL.Server.invokeSQLStoredProcedure({
-        procedure : "getAccountTransactions",
-        parameters : [accountId]
+        // Invoke prepared SQL query and return invocation result
+        function getAccountTransactions1(accountId){
+          // 3. Use the `WL.Server.invokeSQLStatement` method to call prepared queries
+          // 4. Return the result to the application or to another procedure.
+	         return WL.Server.invokeSQLStatement({
+		          preparedStatement : getAccountsTransactionsStatement,
+		          parameters : [accountId, accountId]
+	        });
+      }
+      ```       
 
-      });
-    }
-    ```
+### SQL stored procedure
+To run a SQL stored procedure, use the `WL.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.
+
+```js
+// Invoke stored SQL procedure and return invocation result
+function getAccountTransactions2(accountId){
+  // To run a SQL stored procedure, use the `WL.Server.invokeSQLStoredProcedure` method
+  return WL.Server.invokeSQLStoredProcedure({
+    procedure : "getAccountTransactions",
+    parameters : [accountId]
+  });
+}
+```
 
 ## Invocation Results
 The result is retrieved as a JSON object:
@@ -143,4 +143,3 @@ Also included is an SQL script in the **Utils** folder.
 * Make sure that the `mobilefirst@%` user has all access permissions assigned.
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
-
