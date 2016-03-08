@@ -43,26 +43,41 @@ Several predefined security checks available:
 
 ### Scope
 You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
-A scope is a space-separated list of zero or more **scope elements**, for example `get-balance access-restricted pin-enabled`.
+A scope is a space-separated list of zero or more **scope elements**, for example `element1 element2 element3`.
 
 #### Scope Element
-A scope element is an arbitrary keyword such as `access-restricted` or `pin-enabled` which defines, with your own vocabulary, the level of security needed for this resource.
+A scope element can be either:
+
+* The name of a security check.
+* An arbitrary keyword such as `access-restricted` or `deletePrivilege` which defines the level of security needed for this resource. This keyword will later be mapped to a security check.
+
+#### Default Scope
+By default, all resources are protected by a default scope that restricts access to registered mobile applications only.
 
 #### Scope Mapping
-By default, the **scope elements** you write in your scope are matched to a **security check with the same name**.  
+By default, the **scope elements** you write in your **scope** are mapped to a **security check with the same name**.  
 For example, if you write a security check called `PinCodeAttempts`, you can use a scope element with the same name within your scope.
 
-Optionally, at the application level, you can map a scope element to a different security check.  
-For example you can map the scope element `pin-enabled` to your `PinCodeAttempts` security check. 
- 
+Scope Mapping allows to map scope elements to security checks. When the client asks for a scope element, this configuration defines which security checks should be applied.  
+For example you can map the scope element `access-restricted` to your `PinCodeAttempts` security check.
+
 This can be useful if you want to protect a resource differently depending on which application is trying to access it.  
 You can also map it to a list of zero or more security checks.
 
+For example:  
+scope = `access-restricted deletePrivilege`
+
+* In app A
+  * `access-restricted` is mapped to `PinCodeAttempts`
+  * `deletePrivilege` is mapped to the default scope
+* In app B
+  * `access-restricted` is mapped to `PinCodeAttempts`
+  * `deletePrivilege` is mapped to `UserLogin`
+
+![Scope element](Scope_element.png)
+
 ## Protecting resources
 Your resources can be protected by one of several ways:
-
-### Default scope
-By default, all resources are protected by a default scope that restricts access to registered mobile applications only.
 
 ### Mandatory application scope
 At the application level, you can define a scope that will apply to all the resources used by this application.  
@@ -98,12 +113,7 @@ You can protect a JavaScript adapter procedure by assigning a scope to the proce
 ```xml
 <procedure name="deleteUser" scope="deletePrivilege">
 ```
-
-A scope can be made of several scope elements, space-separated:
-
-```xml
-<procedure name="deleteUser" scope="element1 element2 element3">
-```
+A scope can be made of several scope elements, space-separated: `scope="element1 element2 element3"`
 
 If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope.
 
@@ -114,8 +124,7 @@ Access to a resource with **disabled protection** is allowed to every client. No
 If you want to disable protection, you can use: `@OAuthSecurity(enabled=false)`.
 
 #### JavaScript adapters
-If you want to disable protection, you can use `secured="false"`.  
-This will also disable the default scope:
+If you want to disable protection, you can use `secured="false"`.
 
 ```xml
 <procedure name="deleteUser" secured="false">
@@ -128,12 +137,11 @@ The authorization flow has two phases:
 2. The client uses the token to access a protected resource.
 
 ### Obtaining a token
-In this phase, the client undergoes **security checks** in order to receive an access token.  
-These security checks use **authorization entities**, which are described in [the next section](#authorization-entities).  
+In this phase, the client undergoes **security checks** in order to receive an access token.
 
 ![Obtain Token](auth-flow-1.jpg)
 
-1. Client application sends a request to use a protected resource.
+1. Client application sends a request to obtain access token.
 2. Client application undergoes security checks according to the requested scope.
 3. Client application requests a token from the Authorization Server.
 4. Client application receives the token.
