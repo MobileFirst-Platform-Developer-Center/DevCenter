@@ -1,6 +1,6 @@
 ---
 title: Using IntelliJ to Develop MobileFirst Java Adapters
-date: 2016-03-21
+date: 2016-04-01
 pinned: true
 tags:
 - MobileFirst_Platform
