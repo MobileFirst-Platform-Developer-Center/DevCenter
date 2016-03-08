@@ -67,7 +67,7 @@ There are two ways of running SQL statements:
 ### SQL statement query
 1. assign your SQL query to a variable. This must always be done outside the function scope.
 2. Add parameters, if necessary.
-3. Use the `WL.Server.invokeSQLStatement` method to call prepared queries.
+3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries.
 4. Return the result to the application or to another procedure.
 
       ```js
@@ -81,9 +81,9 @@ There are two ways of running SQL statements:
 
         // Invoke prepared SQL query and return invocation result
         function getAccountTransactions1(accountId){
-          // 3. Use the `WL.Server.invokeSQLStatement` method to call prepared queries
+          // 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries
           // 4. Return the result to the application or to another procedure.
-	         return WL.Server.invokeSQLStatement({
+	         return MFP.Server.invokeSQLStatement({
 		          preparedStatement : getAccountsTransactionsStatement,
 		          parameters : [accountId, accountId]
 	        });
@@ -91,13 +91,13 @@ There are two ways of running SQL statements:
       ```       
 
 ### SQL stored procedure
-To run a SQL stored procedure, use the `WL.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.
+To run a SQL stored procedure, use the `MFP.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.
 
 ```javascript
 // Invoke stored SQL procedure and return invocation result
 function getAccountTransactions2(accountId){
-  // To run a SQL stored procedure, use the `WL.Server.invokeSQLStoredProcedure` method
-  return WL.Server.invokeSQLStoredProcedure({
+  // To run a SQL stored procedure, use the `MFP.Server.invokeSQLStoredProcedure` method
+  return MFP.Server.invokeSQLStoredProcedure({
     procedure : "getAccountTransactions",
     parameters : [accountId]
   });
@@ -116,7 +116,7 @@ var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAcc
 
 //Invoke prepared SQL query and return invocation result
 function getAccountTransactions1(fromAccount, toAccount){
-	return WL.Server.invokeSQLStatement({
+	return MFP.Server.invokeSQLStatement({
 		preparedStatement : getAccountsTransactionsStatement,
 		parameters : [fromAccount, toAccount]
 	});
