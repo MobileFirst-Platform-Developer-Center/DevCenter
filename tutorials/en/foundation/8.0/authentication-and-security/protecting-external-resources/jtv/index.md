@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Java Token Validation
-breadcrumb_title: Java Token Validation
+breadcrumb_title: Java Token Validator
 relevantTo: [android,ios,windows,cordova]
 weight: 1
 downloads:
@@ -9,7 +9,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 ## Overview
-MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources.    
+MobileFirst Platform Foundation provides a Java library to enforce security capabilities on external resources.    
 The Java library is provided as a .jar file (**mfp-java-token-validator-8.0.0.jar**).
 
 This tutorial will show how to protect a simple Java Servlet, `GetBalance`, using a scope `accessRestricted`.
@@ -54,7 +54,7 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 
 - `authorizationURI`: the URI of the Authorization server, usually the MobileFirst Server. For example **http://localhost:9080/mfp/api**.
 - `clientId`: The confidential client ID you configured in the MobileFirst Operations Console.
-- `clientSecret`: The confidential client secret you configured in **MobileFirst Operations Console → Settings → Confidential Clients**.
+- `clientSecret`: The confidential client secret you configured in the MobileFirst Operations Console.
 
 ## Validating the credentials
 The `validate` API method will ask the authorization server to validate the authorization header:
@@ -63,7 +63,7 @@ The `validate` API method will ask the authorization server to validate the auth
 public TokenValidationResult validate(java.lang.String authorizationHeader, java.lang.String expectedScope);
 ```
 
-- `authorizationHeader`: The content of the `Authorization` HTTP header. For example, it could be obtained from a `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
+- `authorizationHeader`: The content of the `Authorization` HTTP header, which is the access token. For example, it could be obtained from a `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
 - `expectedScope`: *Optional*. The scope to validate the token against.
 
 You can query the resulting `TokenValidationResult` object for either an error or valid introspection data:
@@ -128,7 +128,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     public class JTVFilter implements Filter {
 
     	public static final String AUTH_HEADER = "Authorization";
-    	private static final String AUTHSERVER_URI = "http://localhost:9080/mfp/api"; //Set here your authentication server URI
+    	private static final String AUTHSERVER_URI = "http://localhost:9080/mfp/api"; //Set here your authorization server URI
     	private static final String CLIENT_ID = "jtv"; //Set here your confidential client ID
     	private static final String CLIENT_SECRET = "jtv"; //Set here your confidential client SECRET
 
@@ -148,7 +148,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     	}
 
     	@Override
-    	public void doFilter(ServletRequest req, ServletResponse res, FilterChain filter) throws IOException, ServletException {
+    	public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain) throws IOException, ServletException {
     		String expectedScope = filterConfig.getInitParameter("scope");
     		HttpServletRequest httpServletRequest = (HttpServletRequest) req;
     		HttpServletResponse httpServletResponse = (HttpServletResponse) res;
@@ -165,7 +165,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     			} else if (tokenValidationRes.getIntrospectionData() != null) {
     				// Success
     				httpServletRequest.setAttribute("introspection-data", tokenValidationRes.getIntrospectionData());
-    				filter.doFilter(req, res);
+    				filterChain.doFilter(req, res);
     			}
     		} catch (TokenValidationException e) {
     			httpServletResponse.setStatus(500);
