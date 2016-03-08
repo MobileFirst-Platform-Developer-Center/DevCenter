@@ -79,7 +79,7 @@ function addEntry(entry){
             }
         };
 
-    var response = WL.Server.invokeHttp(input);
+    var response = MFP.Server.invokeHttp(input);
     if(!response.id){
         response.isSuccessful = false;
     }

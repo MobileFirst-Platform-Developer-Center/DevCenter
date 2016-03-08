@@ -129,7 +129,7 @@ MFP.Server.addResponseHeader("Expires","Sun, 5 October 2014 18:00:00 GMT");
 Use the `MFP.Server.getClientRequest()` API to get a reference to the Java HttpServletRequest object that was used to invoke an adapter procedure:
 
 ```js
-var request = WL.Server.getClientRequest();
+var request = MFP.Server.getClientRequest();
 var userAgent = request.getHeader("User-Agent");
 ```
 
