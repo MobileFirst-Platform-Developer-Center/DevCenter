@@ -101,54 +101,14 @@ You must modify the external server `server.xml` file to your external resource.
 
 `scope`: The Resource server must authenticate against the scope(s) that were defined with the clientID.
 
-### External service configuration - Using Node.js
-
-To start this example, issue the following commands:
-
-```
-$ npm install express
-$ npm install passport
-$ npm install passport-mfp-token-validation
-```
-
-You can protect your resources that are running on `Node.js` servers with OAuth-based MobileFirst security. Like the Java implementation, the MobileFirst Operational Analytics server is protected by basic authentication. You must configure the **Resource Server** by connecting the `passport-mfp-token-validation` module to the Analytics server.
-
-The `passport-mfp-token-validation` npm module provides passport validation strategy and a verification function to validate access tokens and ID tokens that are issued by the MobileFirst Server.
-
-The following example shows how to use `mfpStrategy` in a node application:
-
-```javascript
-    var express = require('express'),
-    passport = require('passport-mfp-token-validation').Passport,
-    mfpStrategy = require('passport-mfp-token-validation').Strategy;
-    //the configuration ('config') is optional if you wish to report
-    //events to the Analytics Server.
-    var config = {
-        url : 'http://localhost:9080/worklight-analytics-service/data',
-        username : 'admin',
-        password : 'admin'
-    };
-
-    passport.use(new mfpStrategy({publicKeyServerUrl:'http://localhost:9080/WLProject', analytics : {onpremise: config}}));
-
-    var app = express();
-    app.use(passport.initialize());
-
-    //protect api with MFP strategy using scope Realm1 Realm2 Realm3
-    app.get('/v1/apps/:appid/service', passport.authenticate('mobilefirst-strategy', {session: false, scope: 'Realm1 Realm2 Realm3' }),
-            function(req, res){
-                res.send(200, req.securityContext);
-            }
-        );
-
-    app.listen(3000);
-```
-
 ## Reporting analytics <span> Need more clarification on this</span>
-### Java
 The **TAI** library is capable of reporting analytic events to IBM MobileFirst Platform Operational Analytics. To do this, you must configure the Resource Server that contains the **TAI** with your Analytics URL and credentials.
 
-The MobileFirst Operational Analytics server is protected by basic authentication. When you installed this server, you configured the data entry point and basic authentication credentials. To configure the **Resource Server**, you must provide the Analytics credentials, specifically the URL to the data entry point, the user name, and password. These properties are set with the following property names:
+The MobileFirst Operational Analytics server is protected by basic authentication. When you installed this server, you configured the data entry point and basic authentication credentials. 
+
+> **Note:** Visit the knowledge center to learn more about installation of the Operational Analytics server.
+
+To configure the **Resource Server**, you must provide the Analytics credentials, specifically the URL to the data entry point, the user name, and password. These properties are set with the following property names:
 
 ```
 - "imf.analytics.url"
@@ -156,20 +116,12 @@ The MobileFirst Operational Analytics server is protected by basic authenticatio
 - "imf.analytics.password"
 ```
 
-* If your Resource Server is running on Liberty, you must configure these properties by using JNDI. You can do this by adding entries to your `server.xml` file. For example:
-* 
+For example:
+If your Resource Server is running on Liberty, you must configure these properties by using JNDI. You can do this by adding entries to your `server.xml` file.
+
 ```xml
-<jndiEntry jndiName="imf.analytics.username" value="admin"/>t;
+<jndiEntry jndiName="imf.analytics.username" value="admin"/>;
 ```
-
-* If your Resource Server is running on WebSphere Application Server, configure these properties as environment entries.
-
-To do this, navigate from the WebSphere Application Server administration console to **Servers > Server Type > WebSphere application servers** > *{your_server}* > **Server Infrastructure** > **Java and Process Management** > **Process Definition** > **Additional Properties** > **Environment Entries** > **New**.
-
-This is where you had to set `publicKeyServerUrl` when you set up OAuthTAI.
-
-<a href="https://developer.ibm.com/mobilefirstplatform/wp-content/uploads/sites/32/2014/12/WasEnvironmentEntries.png"><img src="{{ site.baseurl }}/assets/backup/WasEnvironmentEntries.png" alt="WasEnvironmentEntries" width="758" height="454" class="alignnone size-full wp-image-7200" /></a>
-
 
 After these properties are set, the **TAI** will post its events to MobileFirst Operational Analytics.
 
