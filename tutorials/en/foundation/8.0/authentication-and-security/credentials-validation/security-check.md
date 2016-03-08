@@ -4,6 +4,9 @@ title: Implementing the CredentialsValidationSecurityCheck
 breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,cordova]
 weight: 1
+downloads:
+  - name: Download Security Checks
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 
 ## Overview
@@ -20,7 +23,7 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
 * [Configuring the SecurityCheck](#configuring-the-securitycheck)
-* [Sample application](#sample-application)
+* [Sample security check](#sample-security-check)
 
 ## Creating the Security Check
 [Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
@@ -210,11 +213,7 @@ The properties defined by `CredentialsValidationSecurityCheckConfig` are:
 Note that the default for `blockedStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
 
 
-## Sample application
-To see a sample using this security check, review the below tutorials:
-Select a platform:
+## Sample Security Check
+[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
-* [Implementing the challenge handler in Cordova applications](../cordova)
-* [Implementing the challenge handler in iOS applications](../ios)
-* [Implementing the challenge handler in Android applications](../android)
-* [Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../windows-8-10)
+The Maven project contains an implementation of CredentialsValidationSecurityCheck.
