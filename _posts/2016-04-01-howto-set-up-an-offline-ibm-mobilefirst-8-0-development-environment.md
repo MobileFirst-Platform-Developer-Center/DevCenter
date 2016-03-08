@@ -48,7 +48,7 @@ Once all of the above files are downloaded, move them to an offline machine for 
 ## MobileFirst Operations Console
 The MobileFirst Development Kit installer includes snapshot downloads for various development artifacts (listed above in Prerequisites) downloadable via the MobileFirst Operations Console downloads page.
 
-![downloads]({{site.baseurl}}}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/console/downloads.png)
+![downloads]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/console/downloads.png)
 
 See the [MobileFirst Operations Console Tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/console/) for more information on accessing and navigating the console.
 
