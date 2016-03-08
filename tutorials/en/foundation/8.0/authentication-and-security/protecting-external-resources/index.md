@@ -15,7 +15,7 @@ The validation/introspection of the token is done using a RESTful request to the
 This can either be done entirely with custom code, or using one of MobileFirst Platform Foundation's helper libraries that encapsulate part of the flow.
 
 ## Flow
-![Protecting external resources diagram]()
+![Protecting external resources diagram](external_resources_flow.jpg)
 
 1. An application with the MobileFirst Platform Foundation client SDK makes a resource request call (or any HTTP request) to a protected resource with or without the `Authorization` header (token).
 2. The resource server obtains a token for the `authorization.introspect` scope and uses this token as authorization to the introspection endpoint.
@@ -24,6 +24,7 @@ This can either be done entirely with custom code, or using one of MobileFirst P
 
 ## Confidential Client
 For the external resource server to be able to use the `authorization.introspect` scope, the server needs to be registered as a **confidential client** via the MobileFirst Operations Console.  
+
 In the MobileFirst Operations Console, under **Settings** → **Confidential Clients**, add a new entry. Choose a **client ID** and **API secret** value. Make sure to set `authorization.introspect` as the **Allowed Scope**.
 
 ![Confidential clients](confidential-client.png)

@@ -62,7 +62,14 @@ The **adapter.xml** file can also contain custom properties:
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must be located **below** the `JAXRSApplicationClass` element.  
 Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
 
-<br/>
+The `<property>` element takes the following attributes:
+
+- **name**: The name of the property, as defined in the configuration class.
+- **defaultValue**: Overrides the default value defined in the configuration class.
+- **displayName**: *optional*, a friendly name to be displayed in the console.
+- **description**: *optional*, a description to be displayed in the console.
+- **type**: *optional*, ensures that the property is of a specific type such as `integer`, `string`, `boolean` or a list of valid values (for example `type="['1','2','3']"`).
+
 These properties can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab** without having to deploy the adapter again:
 
 ![Console properties](console-properties.png)

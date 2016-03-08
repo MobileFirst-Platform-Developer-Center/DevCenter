@@ -49,12 +49,14 @@ For example, `PinCodeAttempts` sends a predefined error message and the number o
 ```java
 @Override
 protected Map<String, Object> createChallenge() {
-    HashMap challenge = new HashMap();
+    Map challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
     challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;
 }
 ```
+
+> The implementation of `errorMsg` is included in the sample application.
 
 `getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
 
@@ -176,10 +178,10 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
-  <property name="pinCode" defaultValue="1234" displayName="The valid PIN code"/>
-  <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
-  <property name="blockedStateExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
-  <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
+  <property name="pinCode" defaultValue="1234" description="The valid PIN code"/>
+  <property name="maxAttempts" defaultValue="3" description="How many attempts are allowed"/>
+  <property name="blockedStateExpirationSec" defaultValue="60" description="How long before the client can try again (seconds)"/>
+  <property name="successStateExpirationSec" defaultValue="60" description="How long is a successful state valid for (seconds)"/>
 </securityCheckDefinition>
 ```
 
@@ -199,6 +201,7 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
 }
 ```
 The properties defined by `CredentialsValidationSecurityCheckConfig` are:
+
 - `maxAttempts`: How many attempts are allowed before reaching a *failure*.
 - `attemptingStateExpirationSec`: Interval in seconds during which the client should provide valid credentials, and attempts are counted.
 - `successStateExpirationSec`: Interval in seconds during which the successful login holds.
