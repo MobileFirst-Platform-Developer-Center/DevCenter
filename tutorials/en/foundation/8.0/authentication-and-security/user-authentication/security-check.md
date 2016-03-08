@@ -4,6 +4,9 @@ title: Implementing the UserAuthenticationSecurityCheck
 breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,cordova]
 weight: 1
+downloads:
+  - name: Download Security Checks
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 This abstract class extends `CredentialsValidationSecurityCheck` and builds upon it to fit the most common use-cases of simple user authentication. In addition to validating the credentials, it creates a **user identity** that will be accessible from various parts of the framework, allowing you to identify the current user. Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
@@ -196,11 +199,7 @@ As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `Cre
 
 In addition, a `rememberMeDurationSec` property can also be configured.
 
-## Sample application
-To see a sample using this security check, review the below tutorials.  
-Select a platform:
+## Sample Security Check
+[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
-* [Implementing the challenge handler in Cordova applications](../cordova)
-* [Implementing the challenge handler in iOS applications](../ios)
-* [Implementing the challenge handler in Android applications](../android)
-* [Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../windows-8-10)
+The Maven project contains an implementation of UserAuthenticationSecurityCheck.
