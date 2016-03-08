@@ -54,3 +54,14 @@ See the [MobileFirst Operations Console Tutorial]({{site.baseurl}}/tutorials/en/
 
 ## MobileFirst CLI
 To use the CLI first download if from the MobileFirst Operations Console via the instructions above and then install it by running `npm install -g mfpdev-cli.tgz`.
+
+## Cordova Plugins and Platforms
+When adding the MobileFirst Cordova SDK plugins to a cordova project, the plugins must first be added before platforms to ensure that the plugin does not search online for additional platform resources. The MobileFirst Cordova SDK plugins can be downloaded from the MobileFirst Operations Console via the instructions above and added by running `cordova plugins add <path to unzipped mfp-cordova>/plugins/cordova-plugin-mfp`. Additionally the following plugins can be installed:
+
+* cordova-plugin-mfp-fips
+* cordova-plugin-mfp-jsonstore
+* cordova-plugin-mfp-push
+
+To add a platform to your cordova project, unzip the downloaded cordova-[android | ios | windows]-x.y.z.tgz platform archive and run `cordova platforms add <path to unzipped platform>/package`. You may want to set system environment variables for the plugins and platforms to avoid typing out the path each time (make sure where you download and unzip them to are permanent locations).
+
+For additional tutorials on Cordova development, see the [IBM MobileFirst Platform Foundation 8.0 Cordova Tutorials]({{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/) or refer to the official [Apache Cordova Documentation](http://cordova.apache.org/docs/en/latest/guide/overview/index.html).
