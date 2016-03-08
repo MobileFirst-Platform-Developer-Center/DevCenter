@@ -42,8 +42,8 @@ If Internet connectivity is not available while developing, prepare to work offl
 1. Make sure you have first installed Apache Maven.
 2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
 3. Start the MobileFirst Server and load the MobileFirst Operations Console.
-4. Click on **Get Starter Code → Tools tab** and download the Adapter Archetypes from the Adapter tooling section.
-5. Install the adapter archetypes and security checks by running the **security-maven-buildall.zip/install-security-checks.sh** script for Linux and Mac, or the **install-security-checks.bat** script for Windows.
+4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-adapter.zip** file from the Adapter tooling section.
+5. Add the adapter archetypes and security checks to the local Maven repository by running the **install-adapter.sh** script for Linux and Mac, or the **install-adapter.bat** script for Windows.
 
 
 ### Creating an Adapter

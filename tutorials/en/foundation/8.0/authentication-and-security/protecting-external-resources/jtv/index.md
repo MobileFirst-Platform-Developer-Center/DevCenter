@@ -34,6 +34,12 @@ The **mfp-java-token-validator-8.0.0.jar** is available as a **maven dependency*
 
 If Internet connectivity is not available while developing, prepare to work offline:
 
+1. Make sure you have first installed Apache Maven.
+2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
+3. Start the MobileFirst Server and load the MobileFirst Operations Console.
+4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
+5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
+
 1. Make sure you have first installed Maven.
 2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
 3. Start the server and download from the Downloads page the **mfp-java-token-validator.jar** file.
