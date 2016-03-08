@@ -187,12 +187,12 @@ In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
   <property name="maxAttempts" defaultValue="3" description="How many attempts are allowed"/>
-  <property name="failureStateExpirationSec" defaultValue="10" description="How long before the client can try again (seconds)"/>
+  <property name="blockedStateExpirationSec" defaultValue="10" description="How long before the client can try again (seconds)"/>
   <property name="successStateExpirationSec" defaultValue="60" description="How long is a successful state valid for (seconds)"/>
   <property name="rememberMeDurationSec" defaultValue="120" description="How long is the user remembered when using RememberMe (seconds)"/>
 </securityCheckDefinition>
 ```
-As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `CredentialsValidationSecurityCheck` properties, such as `failureStateExpirationSec`, `successStateExpirationSec`, etc.
+As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `CredentialsValidationSecurityCheck` properties, such as `blockedStateExpirationSec`, `successStateExpirationSec`, etc.
 
 In addition, a `rememberMeDurationSec` property can also be configured.
 
