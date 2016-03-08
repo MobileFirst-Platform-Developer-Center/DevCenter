@@ -65,7 +65,7 @@ The following URL parts can be parameterized.
 
 >See the topic about "The connectionPolicy element of the HTTP adapter" in the user documentation for advanced options for adapters, such as cookies, headers, and encoding.  
 
-To call an HTTP request, use the `WL.Server.invokeHttp` method.  
+To call an HTTP request, use the `MFP.Server.invokeHttp` method.  
 Provide an input parameter object, which must specify:
 
 * The HTTP method: `GET`,`POST`, `PUT`, `DELETE`
@@ -84,11 +84,11 @@ function getFeed() {
   };
 
 
-  return WL.Server.invokeHttp(input);
+  return MFP.Server.invokeHttp(input);
 }
 ```
 
->See the topic about "WL.Server.invokeHttp" in the user documentation for a complete list of options.
+>See the topic about "MFP.Server.invokeHttp" in the user documentation for a complete list of options.
 
 ## XSL transformation filtering
 You can also apply XSL transformation to the received data, for example to filter the data.  
@@ -109,14 +109,14 @@ function getFeedFiltered() {
       }
   };
 
-  return WL.Server.invokeHttp(input);
+  return MFP.Server.invokeHttp(input);
 }
 ```
 
 > For more information on XSL transformation, refer to the user documentation.
 
 ## Creating a SOAP-based service request
-You can use the `WL.Server.invokeHttp` method to create a **SOAP** envelope, which can be sent directly.
+You can use the `MFP.Server.invokeHttp` method to create a **SOAP** envelope, which can be sent directly.
 
 To call a SOAP-based service in an HTTP adapter, you must encode the SOAP XML envelope within the request body.  
 Encoding XML within JavaScript is simple: just use **E4X**, which is officially part of JavaScript 1.6. You can use this technology to encode any type of XML document, not only SOAP envelopes.
@@ -134,7 +134,7 @@ var request =
 		</soap:Envelope>;
 ```
 
-The` WL.Server.invokeHttp(options)` method is used to call a request for a SOAP service.
+The` MFP.Server.invokeHttp(options)` method is used to call a request for a SOAP service.
 
 The Options object must include the following properties:
 
@@ -154,7 +154,7 @@ var input = {
 		}
 	};
 
-var result = WL.Server.invokeHttp(input);
+var result = MFP.Server.invokeHttp(input);
 ```
 
 ## Sample adapter

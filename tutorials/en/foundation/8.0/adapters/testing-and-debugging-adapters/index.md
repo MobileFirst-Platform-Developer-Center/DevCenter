@@ -162,8 +162,8 @@ Hello World
 
 ## Debugging Adapters
 ### JavaScript adapters
-You can debug JavaScript code in JavaScrit adapters by using the `WL.Logger` API.  
-Available logging levels, from least to most verbose, are: `WL.Logger.error`, `WL.Logger.warn`, `WL.Logger.info` and `WL.Logger.debug`.
+You can debug JavaScript code in JavaScrit adapters by using the `MFP.Logger` API.  
+Available logging levels, from least to most verbose, are: `MFP.Logger.error`, `MFP.Logger.warn`, `MFP.Logger.info` and `MFP.Logger.debug`.
 
 The logs are then printed to the log file of the application server.  
 Be sure to set the server verbosity level accordingly, otherwise you will not see the logging in the log file.
