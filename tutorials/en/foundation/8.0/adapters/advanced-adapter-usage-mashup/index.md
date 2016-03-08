@@ -22,15 +22,15 @@ However, writing this logic on the server side could be faster and cleaner.
 
 ## JavaScript adapter API
 ### Calling a JavaScript adapter procedure from a JavaScript adapter
-When calling a JavaScript adapter procedure from another JavaScript adapter use the `WL.Server.invokeProcedure(invocationData)` API.
-This API enables to invoke a procedure on any of your JavaScript adapters. `WL.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
+When calling a JavaScript adapter procedure from another JavaScript adapter use the `MFP.Server.invokeProcedure(invocationData)` API.
+This API enables to invoke a procedure on any of your JavaScript adapters. `MFP.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
 
 The `invocationData` function signature is:  
-`WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
+`MFP.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
 
 For example:
 {% highlight javascript %}
-WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
+MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
 {% endhighlight %}
 
 > Calling a Java adapter from a JavaScript adapter is not supported
@@ -115,7 +115,7 @@ function getYahooWeather(woeid) {
         }
     };
 
-    return WL.Server.invokeHttp(input);
+    return MFP.Server.invokeHttp(input);
 }  
 {% endhighlight %}
 
@@ -144,9 +144,9 @@ private Response execute(HttpUriRequest req) throws ClientProtocolException, IOE
 
 (getCitiesListJS adapter)
 {% highlight javascript %}
-var getCitiesListStatement = WL.Server.createSQLStatement("select city, identifier, summary from weather;");
+var getCitiesListStatement = MFP.Server.createSQLStatement("select city, identifier, summary from weather;");
 function getCitiesList() {
-	return WL.Server.invokeSQLStatement({
+	return MFP.Server.invokeSQLStatement({
 		preparedStatement : getCitiesListStatement,
 		parameters : []
 	});
@@ -168,7 +168,7 @@ for (var i = 0; i < cityList.resultSet.length; i++) {
 ...
 
 function getCityWeather(woeid){
-	return WL.Server.invokeProcedure({
+	return MFP.Server.invokeProcedure({
 		adapter : 'getCityWeatherJS',
 		procedure : 'getYahooWeather',
 		parameters : [woeid]
