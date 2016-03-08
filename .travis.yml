@@ -6,7 +6,7 @@ env:
   matrix:
     - BUILD=buildPDF.sh
     - BUILD=buildPages.sh
-    - BUILD=buildBluemix.sh
+    # - BUILD=buildBluemix.sh
 script: ./build/$BUILD
 branches:
   only:
