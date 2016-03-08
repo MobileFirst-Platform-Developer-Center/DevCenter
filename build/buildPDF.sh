@@ -13,7 +13,6 @@ set -e
 rm -rf _site/*
 bundle exec jekyll build --config _config.yml,build/_configPDF.yml -d _site --profile
 rm -f _site/*.log
-# bundle exec htmlproof ./_site --disable-external --href-ignore '#'
 
 # cleanup
 rm -rf ../generated-pdf
