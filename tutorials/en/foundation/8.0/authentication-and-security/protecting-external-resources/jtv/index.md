@@ -40,11 +40,6 @@ If Internet connectivity is not available while developing, prepare to work offl
 4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
 5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
 
-1. Make sure you have first installed Maven.
-2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
-3. Start the server and download from the Downloads page the **mfp-java-token-validator.jar** file.
-4. [Add a dependency](../../../adapters/creating-adapters/#dependencies)
-
 ## Instantiating the TokenValidationManager
 To be able to validate tokens, instantiate `TokenValidationManager`.
 
