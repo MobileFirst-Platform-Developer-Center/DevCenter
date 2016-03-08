@@ -125,11 +125,12 @@ In order to use an external library in your adapter, follow one of the following
 For example:
 
 ```xml
+<dependency>
 <groupId>sample</groupId>
-  <artifactId>com.sample</artifactId>
-  <version>1.0</version>
-  <scope>system</scope>
-  <systemPath>${project.basedir}/lib/</systemPath>
+<artifactId>com.sample</artifactId>
+<version>1.0</version>
+<scope>system</scope>
+<systemPath>${project.basedir}/lib/</systemPath>
 </dependency>
 ```
 
@@ -144,12 +145,7 @@ The following example uses the `cloudant-client artifactId`:
 <dependency>
   <groupId>com.cloudant</groupId>
   <artifactId>cloudant-client</artifactId>
-  <version>2.2.0</version>
-  <groupId>sample</groupId>
-    <artifactId>com.sample</artifactId>
-    <version>1.0</version>
-    <scope>system</scope>
-    <systemPath>${project.basedir}/lib/</systemPath>
+  <version>1.2.3</version>
 </dependency>
 ```
 
