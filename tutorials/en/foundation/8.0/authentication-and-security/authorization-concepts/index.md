@@ -9,20 +9,20 @@ weight: 1
 ## Overview
 The MobileFirst Platform Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token that encapsulates the granted permissions to the client.  
 
-In that context, IBM MobileFirst Platform Server serves as an **authorization server** and is able to **generate access tokens**. The client can then use these tokens to access resources on a resource server, which can be either the MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows to enforce security on resources that are running outside MobileFirst Server.
+In that context, the IBM MobileFirst Platform Server serves as an **authorization server** and is able to **generate access tokens**. The client can then use these tokens to access resources on a resource server, which can be either the MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows to enforce security on resources that are running outside MobileFirst Server.
 
 #### Jump to:
 
-* [Authorization flow](#authorization-flow)
 * [Authorization entities](#authorization-entities)
 * [Protecting resources](#protecting-resources)
+* [Authorization flow](#authorization-flow)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Authorization entities
-Several authorization entities are available as part of the MobileFirst authentication framework:
+Several authorization entities are available as part of the MobileFirst Platform Foundation authentication framework:
 
 ### Security Check
-A security check is an object responsible for obtaining credentials from a client and validate them.  
+A security check is an entity that is responsible for obtaining and validating client credentials.   
 Security checks are instantiated by Adapters.
 
 The security check defines the process to be used to authenticate users. It is often associated with a **SecurityCheckConfiguration** that defines properties to be used by the security check.  
@@ -49,14 +49,13 @@ A scope is a space-separated list of zero or more **scope elements**, for exampl
 A scope element is an arbitrary keyword such as `access-restricted` or `pin-enabled` which defines, with your own vocabulary, the level of security needed for this resource.
 
 #### Scope Mapping
-By default, the **scope elements** you write in your scope are matched to a **security check with the same name**.
-
+By default, the **scope elements** you write in your scope are matched to a **security check with the same name**.  
 For example, if you write a security check called `PinCodeAttempts`, you can use a scope element with the same name within your scope.
 
 Optionally, at the application level, you can map a scope element to a different security check.  
-For example you can map the scope element `pin-enabled` to your `PinCodeAttempts` security check.  
-This can be useful if you want to protect a resource differently depending on which application is trying to access it.
-
+For example you can map the scope element `pin-enabled` to your `PinCodeAttempts` security check. 
+ 
+This can be useful if you want to protect a resource differently depending on which application is trying to access it.  
 You can also map it to a list of zero or more security checks.
 
 ## Protecting resources
