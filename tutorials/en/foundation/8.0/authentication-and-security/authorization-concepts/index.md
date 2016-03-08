@@ -85,9 +85,8 @@ Your resources can be protected by one of several ways:
 By default, all resources are protected by a default scope that restricts access to registered mobile applications only.
 
 ### Mandatory application scope
-At the application level, you can define a scope that will apply to all the resources used by this application.
-
-You can define the mandatory application scope from the MobileFirst Operations Console:
+At the application level, you can define a scope that will apply to all the resources used by this application.  
+In the MobileFirst Operations Console, select **[your application] → Security tab**. Under **Mandatory Application Scope** click on **Add to Scope**.
 
 ![Mandatory application scope](mandatory-application-scope.png)
 
