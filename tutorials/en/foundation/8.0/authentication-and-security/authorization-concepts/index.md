@@ -30,9 +30,7 @@ The same security check can also be used to protect several resources.
 
 On the client-side, the application logic needs to implement a **challenge handler** to handle challenges sent by the security check.
 
-> Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial.
-
-> Learn more about challenge handlers in the [Credentials Validation](../credentials-validation) tutorials.
+> Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](../credentials-validation) tutorial.
 
 #### Built-in Security Checks
 Several predefined security checks available:
@@ -40,6 +38,8 @@ Several predefined security checks available:
 - [Application Authenticity](../application-authenticity/)
 - [Direct Update](../../using-the-mfpf-sdk/direct-update)
 - LTPA
+
+> Learn more about built-in security checks in the user documentation.
 
 ### Scope
 You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
