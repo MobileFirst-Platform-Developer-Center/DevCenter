@@ -18,47 +18,8 @@ In that context, IBM MobileFirst Platform Server serves as an **authorization se
 * [Protecting resources](#protecting-resources)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Authorization flow
-The authorization flow has two phases:
-
-1. The client acquires a token.
-2. The client uses the token to access a protected resource.
-
-### Obtaining a token
-In this phase, the client undergoes **security checks** in order to receive an access token.  
-These security checks use **authorization entities**, which are described in [the next section](#authorization-entities).  
-
-![Obtain Token](auth-flow-1.jpg)
-
-1. Client application sends a request to use a protected resource.
-2. Client application undergoes security checks according to the requested scope.
-3. Client application requests a token from the Authorization Server.
-4. Client application receives the token.
-
-### Using a token to access a protected resource
-It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
-
-![Protect Resources](auth-flow-2.jpg)
-
-1. Client application sends a request with the received token.
-2. Validation module validates the token.
-3. MobileFirst Server proceeds to adapter invocation.
-
 ## Authorization entities
 Several authorization entities are available as part of the MobileFirst authentication framework:
-
-### Scope
-You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
-A scope is a space-separated list of zero or more **scope elements**.
-
-#### Scope Element
-A scope element is a keyword that indicates which **security checks** are being used to protect the resource.
-
-#### Scope Mapping
-By default, the scope elements you write in your scope are matched to a security check with the same name.
-
-Optionally, at the application level, you can map a scope element to a different security check.  
-You can also map it to a list of zero or more security checks. This can be useful if you want to protect a resource differently depending on which application is trying to access it.
 
 ### Security Check
 A security check is an object responsible for obtaining credentials from a client and validate them.  
@@ -69,6 +30,10 @@ The same security check can also be used to protect several resources.
 
 On the client-side, the application logic needs to implement a **challenge handler** to handle challenges sent by the security check.
 
+> Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial.
+
+> Learn more about challenge handlers in the [Credentials Validation](../credentials-validation) tutorials.
+
 #### Built-in Security Checks
 Several predefined security checks available:
 
@@ -76,7 +41,23 @@ Several predefined security checks available:
 - [Direct Update](../../using-the-mfpf-sdk/direct-update)
 - LTPA
 
-> Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial.
+### Scope
+You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
+A scope is a space-separated list of zero or more **scope elements**, for example `get-balance access-restricted pin-enabled`.
+
+#### Scope Element
+A scope element is an arbitrary keyword such as `access-restricted` or `pin-enabled` which defines, with your own vocabulary, the level of security needed for this resource.
+
+#### Scope Mapping
+By default, the **scope elements** you write in your scope are matched to a **security check with the same name**.
+
+For example, if you write a security check called `PinCodeAttempts`, you can use a scope element with the same name within your scope.
+
+Optionally, at the application level, you can map a scope element to a different security check.  
+For example you can map the scope element `pin-enabled` to your `PinCodeAttempts` security check.  
+This can be useful if you want to protect a resource differently depending on which application is trying to access it.
+
+You can also map it to a list of zero or more security checks.
 
 ## Protecting resources
 Your resources can be protected by one of several ways:
@@ -140,6 +121,32 @@ This will also disable the default scope:
 ```xml
 <procedure name="deleteUser" secured="false">
 ```
+
+## Authorization flow
+The authorization flow has two phases:
+
+1. The client acquires a token.
+2. The client uses the token to access a protected resource.
+
+### Obtaining a token
+In this phase, the client undergoes **security checks** in order to receive an access token.  
+These security checks use **authorization entities**, which are described in [the next section](#authorization-entities).  
+
+![Obtain Token](auth-flow-1.jpg)
+
+1. Client application sends a request to use a protected resource.
+2. Client application undergoes security checks according to the requested scope.
+3. Client application requests a token from the Authorization Server.
+4. Client application receives the token.
+
+### Using a token to access a protected resource
+It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
+
+![Protect Resources](auth-flow-2.jpg)
+
+1. Client application sends a request with the received token.
+2. Validation module validates the token.
+3. MobileFirst Server proceeds to adapter invocation.
 
 ## Tutorials to follow next
 Continue reading about authentication in the following tutorials:
