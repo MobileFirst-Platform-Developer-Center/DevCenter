@@ -55,6 +55,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ```java
     import java.net.URI;
+    import java.net.URISyntaxException;
     import android.util.Log;
     ```
     
