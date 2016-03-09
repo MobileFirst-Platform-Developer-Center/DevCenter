@@ -22,7 +22,7 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 - [Cordova SDK components](#cordova-sdk-components)
 - [Adding the MobileFirst Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
 - [Updating the MobileFirst Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
-- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
+- [Generated MobileFirst Cordova SDK artifacts](#generated-mobilefirst-cordova-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Cordova SDK components

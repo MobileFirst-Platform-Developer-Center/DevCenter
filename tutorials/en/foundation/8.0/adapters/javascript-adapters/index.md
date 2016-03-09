@@ -135,9 +135,7 @@ var userAgent = request.getHeader("User-Agent");
 
 ### invokeProcedure
 Use the `MFP.Server.invokeProcedure(invocationData)` to call other JavaScript adapters.  
-You can see usage examples on the [Advanced Adapter Usage and Mashup](advanced-adapter-usage-mashup) tutorial.
-
-<br/>
+You can see usage examples on the [Advanced Adapter Usage and Mashup](../advanced-adapter-usage-mashup) tutorial.
 
 > Learn more about `MFP.Server` APIs in the user documentation.
 

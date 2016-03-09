@@ -9,14 +9,14 @@ author:
 ---
 ### Overview
 
-**Prerequisite:** Make sure to read the [Push Notifications in Hybrid Applications](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/) tutorial first.
+**Prerequisite:** Make sure to read the [Push Notifications in Hybrid Applications]({{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/) tutorial first.
 
 This blogpost is here to show you how to write Cordova applications with event source notification functionality.
 
 Event source notifications are notification messages that are targeted to devices with a user subscription.
 While the user subscription exists, MobileFirst Server can produce push notifications for the subscribed user. These notifications can be delivered by the adapter code to all or some of the devices from which the user subscribed.
 
-To learn more about the architecture and terminology of event-source push notifications refer to the [Push notification overview](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/notifications/push-notifications-overview/) tutorial.
+To learn more about the architecture and terminology of event-source push notifications refer to the [Push notification overview]({{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/) tutorial.
 
 Implementation of the push notification API consists of the following main steps:
 
@@ -35,9 +35,9 @@ Displaying a received notification
 
 ### Agenda
 
-- [Notification API - server-side](#serverSidenotificationAPI)
-- [Notification API - client-side](#clientSidenotificationAPI)
-- [Sample application](#sampleApplication)
+- [Notification API - server-side](#notifications-api-server-side)
+- [Notification API - client-side](#notifications-api-client-side)
+- [Sample application](#sample-application)
 
 ### Notification API - Server-side
 
@@ -197,9 +197,9 @@ If the application was in background mode (or inactive) when the push notificati
 
 ### Sample application
 
-[Click to download](https://github.com/tchengus/EventSourceNotificationsCordova") the sample project.
+[Click to download](https://github.com/tchengus/EventSourceNotificationsCordova) the sample project.
 
-![push app sample](push_sample.png)
+![push app sample]({{site.baseurl}}/assets/blog/2015-12-09-event-source-notifications-in-mfp-7-1-cordova-applications/push_sample.png)
 
 #### Sending a notification
 
