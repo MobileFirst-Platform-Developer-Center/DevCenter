@@ -74,7 +74,9 @@ scope = `access-restricted deletePrivilege`
   * `access-restricted` is mapped to `PinCodeAttempts`
   * `deletePrivilege` is mapped to `UserLogin`
 
-![Scope element](Scope_element.png)
+> If you do not select any security check in the "Add New Scope Element Mapping" popup, your scope element will be mapped to the **default scope**.
+
+<img class="gifplayer" alt="Scope element" src="Scope_element.png"/>
 
 ## Protecting resources
 Your resources can be protected by one of several ways:
@@ -103,7 +105,7 @@ In the above example, the `deleteUser` method uses the annotation `@OAuthSecurit
 
 A scope can be made of several scope elements, space-separated: `@OAuthSecurity(scope="element1 element2 element3")`.
 
-If you do not specify the `@OAuthSecurity` annotation, the method is protected by the MobileFirst default security scope.
+If you do not specify the `@OAuthSecurity` annotation, or set the scope to an empty string, the method is protected by the MobileFirst default security scope.
 
 You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
 
@@ -115,9 +117,9 @@ You can protect a JavaScript adapter procedure by assigning a scope to the proce
 ```
 A scope can be made of several scope elements, space-separated: `scope="element1 element2 element3"`
 
-If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope.
+If you do not specify any scope, or use an empty string - the procedure will be protected by the MobileFirst default security scope.
 
-### Disabled protection
+### Disabling protection
 Access to a resource with **disabled protection** is allowed to every client. No security or application management features are enforced on access to such resource.
 
 #### Java adapters
@@ -136,7 +138,7 @@ The authorization flow has two phases:
 1. The client acquires a token.
 2. The client uses the token to access a protected resource.
 
-### Obtaining a token
+### Obtaining an access token
 In this phase, the client undergoes **security checks** in order to receive an access token.
 
 ![Obtain Token](auth-flow-1.jpg)

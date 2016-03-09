@@ -6,12 +6,21 @@ relevantTo: [windows]
 weight: 4
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are registered using the MobileFirst Operations Console, an "skeleton" Visual Studio project is downloaded and edited to call the adapter, and the result is printed to the log - verifying a successful connection with the MobileFirst Server.
+The purpose of this demonstration is to experience an end-to-end flow:
+
+1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
+2. An new or provided adapter is deployed to the MobileFirst Operations Console.  
+3. The application logic is changed to make a resource request.
+
+**End result**:
+
+* Successfully pinging the MobileFirst Server.
+* Successfully retrieving data using a MobileFirst Adapter.
 
 #### Prerequisites:
 
 * Configured Visual Studio 2013/5
-* MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
+* *Optional*. MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -24,7 +33,7 @@ From a **Command-line** window, navigate to the server's folder and run the comm
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
 
-1. Click on the "New" button next to **Applications**
+1. Click the **New** button next to **Applications**
     * Select a **Windows** platform
     * Enter **MFPStarterCSharp.Windows** as the **application identifier** for Windows, or **MFPStarterCSharp.WindowsPhone** for Windows Phone
     * Enter **1.0.0** as the **version** value
@@ -74,7 +83,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 ### 4. Creating an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
-Alternatively, click on the "New" button next to **Adapters**.  
+Alternatively, click the **New** button next to **Adapters**.  
 
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
@@ -94,11 +103,13 @@ Alternatively, click on the "New" button next to **Adapters**.
 
 1. In Visual Studio, select the **mfpclient.resw** file and edit the **host** property with the IP address of the MobileFirst Server.
 
+    Alternatively, if you have installed the MobileFirst Develper CLI then navigate to the project root folder and run the command `mfpdev app register`.  If a remote server is used instead of a local server, first use the command `mfpdev server add` to add it.
+
 2. Press the **Run App** button.
 
-#### Results
-* Clicking on the **Test Server Connection** button will display **Client has connected to server**.
-* If the application was able to connect to the MobileFirst Server, a resource request call using the Java adapter will take place.
+### Results
+* Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
+* If the application was able to connect to the MobileFirst Server, a resource request call using the deployed Java adapter will take place.
 
 The adapter response is then printed in Visual Studio's Outpout console.
 
