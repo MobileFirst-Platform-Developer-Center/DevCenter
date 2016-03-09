@@ -32,7 +32,7 @@ In this tutorial you learn how to configure a Cordova application and how to use
 
 ## Notifications Configuration
 Create a new Cordova project or use an existing one.  
-If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../../adding-the-mfpf-sdk/cordova) tutorial.
+If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova) tutorial.
 
 ### Adding the Push plug-in
 

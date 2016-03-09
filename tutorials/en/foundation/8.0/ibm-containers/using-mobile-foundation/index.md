@@ -34,7 +34,7 @@ Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-u
 
 5. Start the MobileFirst Server.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Configuration tab](#configuring-the-server-instance), and click on **Start advanced server**.
+    - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
 
     During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Platform Foundation environment is being initialized.  
     This takes between 5 to 10 minutes.

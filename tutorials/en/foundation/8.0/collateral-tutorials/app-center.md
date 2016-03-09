@@ -26,7 +26,6 @@ You can use Application Center in different contexts. For example:
 * [Preparing mobile clients](#preparing-mobile-clients)
 * [Managing applications in the Application Center console](#managing-applications-in-the-application-center-console)
 * [The Application Center mobile client](#the-application-center-mobile-client)
-* [Deploying applications from MobileFirst Studio](#deploying-applications-from-mobilefirst-studio)
 * [Application Center command-line tools](#application-center-command-line-tools)
 
 ## Installing and configuring

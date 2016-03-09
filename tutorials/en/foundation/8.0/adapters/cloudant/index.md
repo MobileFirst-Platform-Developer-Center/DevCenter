@@ -132,10 +132,10 @@ It also contains a Cordova application that works with both the Java and JavaScr
  * CloudantJS:
   1. Open the adapter XML file and replace the `CLOUDANT_ACCOUNT`, `KEY` and `PASSWORD` placeholders with the actual values.
   2. Open the **CloudantJS-impl.js** file and replace the `DATABASE_NAME` placeholder with your database name.
-  3. Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaSQL adapter](../../../creating-adapters/).
+  3. Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaSQL adapter](../creating-adapters/).
 
  * CloudantJava:
-  1. Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaSQL adapter](../../../creating-adapters/).
+  1. Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaSQL adapter](../creating-adapters/).
   2. In the **MobileFirst Operations Console → [your adapter] → Configurations tab**, fill in the **Cloudant DB name**, **Cloudant account**, **Cloudant key** and **Cloudant account** fields with the actual values.
 
   > To learn more about the adapter's configurations properties see the [Java Adapters](../java-adapters) tutorial.

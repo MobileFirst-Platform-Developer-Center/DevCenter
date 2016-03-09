@@ -214,7 +214,7 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
 
     ![Image showing how to set MobileFirst Server debug parameters](setting-debug-parameters.png)
 
-4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do in a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](../creating-adapters/#testing-adapters).
+4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do in a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](#testing-adapters).
 
     ![Image showing a being-debugged adapter](debugging.png)
 

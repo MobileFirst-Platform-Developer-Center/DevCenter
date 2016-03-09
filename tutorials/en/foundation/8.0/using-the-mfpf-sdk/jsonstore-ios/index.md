@@ -360,5 +360,5 @@ Included is a JavaScript adapter Maven project.
 ### Sample usage
 1. From the command line, navigate to the project's root folder.
 2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
-3. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../../adapters/creating-adapters/).
+3. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
 4. Import the project to Xcode, and run the sample by clicking the **Run** button.

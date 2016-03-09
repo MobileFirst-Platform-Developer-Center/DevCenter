@@ -16,7 +16,7 @@ In order to send push notifications to iOS or Android devices, the MobileFirst S
 * [Setting up Push Notifications](#setting-up-push-notifications)
 * [Adding Tags](#adding-tags)
 * [Sending Push Notifications](#sending-push-notifications)
-* [Customizing Push Notifications](#customzing-push-notifications)
+* [Customizing Push Notifications](#customizing-push-notifications)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Setting up Push Notifications
