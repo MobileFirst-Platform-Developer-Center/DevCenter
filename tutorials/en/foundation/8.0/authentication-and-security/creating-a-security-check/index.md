@@ -136,7 +136,7 @@ Property values can also be overridden at the application level.
 
 In the MobileFirst Console → **[your application] → Security tab**, under the **Security Check Configurations** section, you can modify the values defined in each security check available.
 
-![Application in console](console-application-security.png)
+<img class="gifplayer" alt="Configurting security check properties" src="console-application-security.png"/>
 
 ## Predefined Security Checks
 Also available are these predefined security checks:

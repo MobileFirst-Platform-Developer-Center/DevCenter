@@ -76,7 +76,7 @@ scope = `access-restricted deletePrivilege`
 
 > If you do not select any security check in the "Add New Scope Element Mapping" popup, your scope element will be mapped to the **default scope**.
 
-<img class="gifplayer" alt="Scope element" src="Scope_element.png"/>
+<img class="gifplayer" alt="Scope mapping" src="scope_mapping.png"/>
 
 ## Protecting resources
 Your resources can be protected by one of several ways:
@@ -85,7 +85,7 @@ Your resources can be protected by one of several ways:
 At the application level, you can define a scope that will apply to all the resources used by this application.  
 In the MobileFirst Operations Console, select **[your application] → Security tab**. Under **Mandatory Application Scope** click on **Add to Scope**.
 
-![Mandatory application scope](mandatory-application-scope.png)
+<img class="gifplayer" alt="Mandatory application scope" src="mandatory-application-scope.png"/>
 
 ### Resource-level
 #### Java adapters
@@ -135,7 +135,7 @@ If you want to disable protection, you can use `secured="false"`.
 ## Authorization flow
 The authorization flow has two phases:
 
-1. The client acquires a token.
+1. The client acquires an access token.
 2. The client uses the token to access a protected resource.
 
 ### Obtaining an access token
@@ -143,10 +143,10 @@ In this phase, the client undergoes **security checks** in order to receive an a
 
 ![Obtain Token](auth-flow-1.jpg)
 
-1. Client application sends a request to obtain access token.
+1. Client application sends a request to obtain access token for a specified scope.
 2. Client application undergoes security checks according to the requested scope.
-3. Client application requests a token from the Authorization Server.
-4. Client application receives the token.
+3. After a successful completion of the challenge process, client application forwards the request to the authorization Server.
+4. Client application receives the access token.
 
 ### Using a token to access a protected resource
 It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
