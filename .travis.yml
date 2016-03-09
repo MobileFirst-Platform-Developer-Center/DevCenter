@@ -7,10 +7,13 @@ env:
     # - BUILD=buildPDF.sh
     - BUILD=buildPages.sh
     # - BUILD=buildBluemix.sh
-script: echo "No Build, only Deploy"    
+script: echo "No Build, only Deploy"
 # script: ./build/$BUILD
 deploy:
+  provider: script
   script: ./build/$BUILD
+  on:
+    branch: master
 branches:
   only:
   - master # only take into account `master' branch
