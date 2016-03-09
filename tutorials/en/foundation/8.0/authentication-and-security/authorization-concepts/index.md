@@ -117,7 +117,7 @@ A scope can be made of several scope elements, space-separated: `scope="element1
 
 If you do not specify any scope - the procedure will be protected by the MobileFirst default security scope.
 
-### Disabled protection
+### Disabling protection
 Access to a resource with **disabled protection** is allowed to every client. No security or application management features are enforced on access to such resource.
 
 #### Java adapters
@@ -136,7 +136,7 @@ The authorization flow has two phases:
 1. The client acquires a token.
 2. The client uses the token to access a protected resource.
 
-### Obtaining a token
+### Obtaining an access token
 In this phase, the client undergoes **security checks** in order to receive an access token.
 
 ![Obtain Token](auth-flow-1.jpg)
