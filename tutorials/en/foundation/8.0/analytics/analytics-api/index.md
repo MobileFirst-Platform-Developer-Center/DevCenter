@@ -83,11 +83,14 @@ You can enable or disable the collecting of app sessions with the API below:
 
 #### Cordova
 
-* In iOS navigate to the main application delegate to disable the Device Ecent Listener.
-
+* In iOS open the XCode project. 
+	* **platforms > ios > *{app-name}*.xcodeproj**
+	* Inside the general project open **Classes > AppDelegate.m**
+	* Follow the iOS guide to enable or disable `LIFECYCLE` activities
 * In Android navigate to the sub activity of the main activity to disable.
-
-<span>still waiting on Carlos to put in these changes, so I am not sure of the paths for Android.</span>
+	* **platforms > android > src > com > sample > {app-name} > MainActivity.java**
+	* Look for the `onCreate` method
+	* Follow the android tutorial to enable or disable `LIFECYCLE` activities 
 
 #### Android
 
@@ -128,10 +131,14 @@ Since the client and the server are each collecting their own information this m
 
 #### Cordova
 
-* In iOS navigate to the main application delegate to disable the Device Ecent Listener.
+* In iOS open the XCode project. 
+	* **platforms > ios > *{app-name}*.xcodeproj**
+	* Inside the general project open **Classes > AppDelegate.m**
+	* Follow the iOS guide to enable or disable `NETWORK` activities
 * In Android navigate to the sub activity of the main activity to disable.
-
-<span>still waiting on Carlos to put in these changes, so I am not sure of the paths for Android.</span>
+	* **platforms > android > src > com > sample > {app-name} > MainActivity.java**
+	* Look for the `onCreate` method
+	* Follow the android tutorial to enable or disable `NETWORK` activities 	
 
 #### iOS
 
