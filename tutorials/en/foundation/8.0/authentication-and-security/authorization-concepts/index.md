@@ -76,7 +76,7 @@ scope = `access-restricted deletePrivilege`
 
 > If you do not select any security check in the "Add New Scope Element Mapping" popup, your scope element will be mapped to the **default scope**.
 
-![Scope element](Scope_element.png)
+<img alt="Scope element" src="Scope_element.png"/>
 
 ## Protecting resources
 Your resources can be protected by one of several ways:
