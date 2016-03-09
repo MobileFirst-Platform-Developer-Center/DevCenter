@@ -359,7 +359,7 @@ Included is a JavaScript adapter Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
-1. Use either Maven or MobileFirst Developer CLI to [build and deploy the **JSONStore** adapter](../../creating-adapters/).
+1. Use either Maven or MobileFirst Developer CLI to [build and deploy the **JSONStore** adapter](../../adapters/creating-adapters/).
 2. From the command-line, navigate to the project's root folder.
 2. Add a platform by running the `cordova platform add` command.
 3. Ensure the application registered at the server by running the command: `mfpdev app register`.

@@ -15,7 +15,7 @@ In this tutorial you learn how to configure an Android application and how to us
 **Prerequisites:** 
 
 * Make sure you have read the following tutorials:
-    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/index)
+    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
     * [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android)
     * [Push Notifications Overview](../push-notifications-overview)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.

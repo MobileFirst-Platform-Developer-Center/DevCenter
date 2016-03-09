@@ -24,8 +24,6 @@ In this tutorial you learn how to configure a Cordova application and how to use
 
 #### Jump to
 * [Notifications Configuration](#notifications-configuration)
-    * [Android platform](#android-platform)
-    * [iOS platform](#ios-platform)
 * [Notifications API](#notifications-api)
 * [Handling a push notification](#handling-a-push-notification)
 * [Sample application](#sample-application)
