@@ -17,5 +17,5 @@ $(function() {
       }, 500);
     });
 
-    $('.gifplayer').gifplayer();
+    $('.gifplayer').gifplayer({wait: 'true'});
 });
