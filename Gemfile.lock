@@ -51,6 +51,7 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     parallel (1.6.2)
     pdfkit (0.8.2)
+    rake (11.0.1)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
@@ -75,6 +76,7 @@ DEPENDENCIES
   jekyll-feed
   jekyll-paginate
   pdfkit
+  rake
   redcarpet
   wkhtmltopdf-binary-edge
 

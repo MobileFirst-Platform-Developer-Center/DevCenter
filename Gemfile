@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'rake'
 gem 'jekyll', '3.0.2'
 gem 'jekyll-feed'
 gem 'redcarpet'
