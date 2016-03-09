@@ -149,7 +149,7 @@ In this phase, the client undergoes **security checks** in order to receive an a
 4. Client application receives the access token.
 
 ### Using a token to access a protected resource
-It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
+It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../protecting-external-resources/).
 
 ![Protect Resources](auth-flow-2.jpg)
 

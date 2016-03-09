@@ -22,7 +22,7 @@ An adapter can either be a *resource* adapter (meaning it serves resources/conte
 * [Defining a security Check](#defining-a-security-check)
 * [Security Check Implementation](#security-check-implementation)
 * [Security Check Configuration](#security-check-configuration)
-* [Predefined Security Checks](#predefined-security-check)
+* [Predefined Security Checks](#predefined-security-checks)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Defining a Security Check
