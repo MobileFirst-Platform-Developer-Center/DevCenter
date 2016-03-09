@@ -7,6 +7,7 @@ env:
     # - BUILD=buildPDF.sh
     - BUILD=buildPages.sh
     # - BUILD=buildBluemix.sh
+script: echo "No Build, only Deploy"    
 # script: ./build/$BUILD
 deploy:
   script: ./build/$BUILD
