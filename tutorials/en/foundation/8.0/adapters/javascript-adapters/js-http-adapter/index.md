@@ -197,37 +197,40 @@ The result is wrapped into a JSON object:
 }
 ```
 
-Note the **Envelope** property, which is specific of SOAP-based requests:
+Note the `Envelope` property, which is specific of SOAP-based requests.
 
-* The `Envelope` property contains the result content of the SOAP-based request. To access the xml content:
-  * On client-side, use JQuery to wrap the result string, then access the nodes like dom.
-  ```JavaScript
-  WL.Client.invokeProcedure({
-		adapter : "JavaScriptSOAP",
-		procedure : "getWeatherInfo",
-		parameters : [ 'Washington', 'United States' ]
-	}, {
-		onSuccess : function(resp) {
-			var $result = $(resp.invocationResult.Envelope.Body.GetWeatherResponse.GetWeatherResult);
-			var weatherInfo = {
-				location: $result.find('Location').text(),
-				time: $result.find('Time').text(),
-				wind: $result.find('Wind').text(),
-				temperature: $result.find('Temperature').text(),
-			};
-		}
-	});
-  ```
-  * On server-side, just create a XML object with the result string, then you can access the nodes as properties.
-  ```JavaScript
-  var xmlDoc = new XML(result.Envelope.Body.GetWeatherResponse.GetWeatherResult);
-	var weatherInfo = {
-		Location: xmlDoc.Location.toString(),
-		Time: xmlDoc.Time.toString(),
-		Wind: xmlDoc.Wind.toString(),
-		Temperature: xmlDoc.Temperature.toString()
-	};
-  ```
+The `Envelope` property contains the result content of the SOAP-based request. To access the xml content:
+
+* On client-side, use JQuery to wrap the result string, then access the nodes like dom.
+
+```JavaScript
+WL.Client.invokeProcedure({
+	adapter : "JavaScriptSOAP",
+	procedure : "getWeatherInfo",
+	parameters : [ 'Washington', 'United States' ]
+}, {
+	onSuccess : function(resp) {
+		var $result = $(resp.invocationResult.Envelope.Body.GetWeatherResponse.GetWeatherResult);
+		var weatherInfo = {
+			location: $result.find('Location').text(),
+			time: $result.find('Time').text(),
+			wind: $result.find('Wind').text(),
+			temperature: $result.find('Temperature').text(),
+		};
+	}
+});
+```
+* On server-side, just create a XML object with the result string, then you can access the nodes as properties.
+
+```JavaScript
+var xmlDoc = new XML(result.Envelope.Body.GetWeatherResponse.GetWeatherResult);
+var weatherInfo = {
+	Location: xmlDoc.Location.toString(),
+	Time: xmlDoc.Time.toString(),
+	Wind: xmlDoc.Wind.toString(),
+	Temperature: xmlDoc.Temperature.toString()
+};
+```
 
 ## Sample adapter
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/) the Adapters Maven project.
