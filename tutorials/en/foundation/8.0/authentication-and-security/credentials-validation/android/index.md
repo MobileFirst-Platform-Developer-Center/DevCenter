@@ -59,16 +59,23 @@ In this `handleChallenge` example, an alert is displayed asking to enter the PIN
 ```java
 @Override
 public void handleChallenge(JSONObject jsonObject) {
+    Log.d("Handle Challenge", jsonObject.toString());
+    Log.d("Failure", jsonObject.toString());
+    Intent intent = new Intent();
+    intent.setAction(Constants.ACTION_ALERT_MSG);
     try{
         if (jsonObject.isNull("errorMsg")){
-            alertMsg("This data requires a PIN code.\n Remaining attempts: " + jsonObject.getString("remainingAttempts"));
+            intent.putExtra("msg", "This data requires a PIN code.\n Remaining attempts: " + jsonObject.getString("remainingAttempts"));
+            broadcastManager.sendBroadcast(intent);
         } else {
-            alertMsg(jsonObject.getString("errorMsg") + "\nRemaining attempts: " + jsonObject.getString("remainingAttempts"));
+            intent.putExtra("msg", jsonObject.getString("errorMsg") + "\nRemaining attempts: " + jsonObject.getString("remainingAttempts"));
+            broadcastManager.sendBroadcast(intent);
         }
     } catch (JSONException e) {
         e.printStackTrace();
     }
 }
+
 ```
 
 > The implementation of `alertMsg` is included in the sample application.
@@ -98,11 +105,16 @@ The structure of the `JSONObject` passed as a parameter greatly depends on the n
 ```java
 @Override
 public void handleFailure(JSONObject jsonObject) {
+    Log.d("Failure", jsonObject.toString());
+    Intent intent = new Intent();
+    intent.setAction(Constants.ACTION_ALERT_ERROR);
     try {
         if (!jsonObject.isNull("failure")) {
-            alertError(jsonObject.getString("failure"));
+            intent.putExtra("errorMsg", jsonObject.getString("failure"));
+            broadcastManager.sendBroadcast(intent);
         } else {
-            alertError("Unknown error");
+            intent.putExtra("errorMsg", "Unknown error");
+            broadcastManager.sendBroadcast(intent);
         }
     } catch (JSONException e) {
         e.printStackTrace();
@@ -148,9 +160,9 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../creating-adapters/).
 * Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register` from a **command-line** window.
 * Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`. 
+    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a mapping from `accessRestricted` to `PinCodeAttempts`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-        
+
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
 
 ![Sample application](sample-application-android.png)
