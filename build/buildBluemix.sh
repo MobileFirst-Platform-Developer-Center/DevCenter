@@ -20,7 +20,7 @@ rm -f _site/*.log
 rm -rf ../mfpsamples.github.ibm.com.generated-bluemix
 
 #clone `generated-bluemix' branch of the repository
-git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --branch generated-bluemix --single-branch ../mfpsamples.github.ibm.com.generated-bluemix
+git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --depth 1 --branch generated-bluemix --single-branch ../mfpsamples.github.ibm.com.generated-bluemix
 # copy generated HTML site to `generated-bluemix' branch
 rm -rf ../mfpsamples.github.ibm.com.generated-bluemix/*
 cp -R _site/* ../mfpsamples.github.ibm.com.generated-bluemix
