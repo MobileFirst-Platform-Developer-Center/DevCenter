@@ -63,7 +63,7 @@ show_in_nav: false
 
 * <a href="../data/working-offline/">Working offline</a>
 * <a href="../data/jsonstore/jsonstore-javascript-api/">JSONStore - JavaScript API</a>
-* <a href="../../data/cloudant-nosql-db-api">Integrating with Cloudant using an adapter</a>
+* <a href="../data/cloudant-nosql-db-api">Integrating with Cloudant using an adapter</a>
 
 ### <a href="../adding-native-functionality/">Adding native functionality to hybrid applications</a>
 

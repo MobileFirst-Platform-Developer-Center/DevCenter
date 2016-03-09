@@ -242,7 +242,7 @@ return jsonArr.toString();
 An example of city list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
 
 1. Run the .sql script in your SQL database.
-2. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapters](../../../creating-adapters/).
+2. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapters](../../../adapters/creating-adapters/).
 3. Open the MobileFirst Console
     - Click on the **getCitiesListJS** adapter and update the database connectivity properties.
     - Click on the **getCitiesListJava** adapter and update the database connectivity properties.
