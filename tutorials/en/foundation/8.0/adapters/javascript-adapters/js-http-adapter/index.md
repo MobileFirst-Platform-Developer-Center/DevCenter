@@ -116,12 +116,8 @@ function getFeedFiltered() {
 > For more information on XSL transformation, refer to the user documentation.
 
 ## Creating a SOAP-based service request
-You can use the `MFP.Server.invokeHttp` method to create a **SOAP** envelope, which can be sent directly.
-
-To call a SOAP-based service in an HTTP adapter, you must encode the SOAP XML envelope within the request body.  
-Encoding XML within JavaScript is simple: just use **E4X**, which is officially part of JavaScript 1.6. You can use this technology to encode any type of XML document, not only SOAP envelopes.
-
-Use JavaScript to create a SOAP Envelope. It is possible to insert JavaScript code and variables into SOAP XML. Such additional code is evaluated at run time. e.g. The `{countryName}` will be evaluated as the real value of variable `countryName`.
+You can use the `MFP.Server.invokeHttp` API method to create a **SOAP** envelope.  
+Note: To call a SOAP-based service in a JavaScript HTTP adapter, you must encode the SOAP XML envelope within the request body using **E4X**.
 
 ```js
 var request =
@@ -137,8 +133,7 @@ var request =
 		</soap:Envelope>;
 ```
 
-The` MFP.Server.invokeHttp(options)` method is used to call a request for a SOAP service.
-
+The `MFP.Server.invokeHttp(options)` method is then used to call a request for a SOAP service.  
 The Options object must include the following properties:
 
 * A `method` property: usually `POST`
@@ -148,20 +143,20 @@ The Options object must include the following properties:
 
 ```js
 var input = {
-		method: 'post',
-		returnedContentType: 'xml',
-		path: '/globalweather.asmx',
-		body: {
-			content: request.toString(),
-			contentType: 'text/xml; charset=utf-8'
-		}
-	};
+	method: 'post',
+	returnedContentType: 'xml',
+	path: '/globalweather.asmx',
+	body: {
+		content: request.toString(),
+		contentType: 'text/xml; charset=utf-8'
+	}
+};
 
 var result = MFP.Server.invokeHttp(input);
 ```
 
 ## Invoking results of SOAP-based service
-The result is wrapped into a JSON object:
+The result is wrapped into a `JSON` object:
 
 ```json
 {
@@ -197,13 +192,14 @@ The result is wrapped into a JSON object:
 }
 ```
 
-Note the `Envelope` property, which is specific of SOAP-based requests.
+Note the `Envelope` property, which is specific of SOAP-based requests.  
+The `Envelope` property contains the result content of the SOAP-based request.
 
-The `Envelope` property contains the result content of the SOAP-based request. To access the xml content:
+To access the XML content:
 
-* On client-side, use JQuery to wrap the result string, then access the nodes like dom.
+* On client-side, jQuery can be used to wrap the result string, and follow the DOM nodes:
 
-```JavaScript
+```javascript
 WL.Client.invokeProcedure({
 	adapter : "JavaScriptSOAP",
 	procedure : "getWeatherInfo",
@@ -220,9 +216,9 @@ WL.Client.invokeProcedure({
 	}
 });
 ```
-* On server-side, just create a XML object with the result string, then you can access the nodes as properties.
+* On server-side, create an XML object with the result string. The nodes can then be accessed as properties:
 
-```JavaScript
+```javascript
 var xmlDoc = new XML(result.Envelope.Body.GetWeatherResponse.GetWeatherResult);
 var weatherInfo = {
 	Location: xmlDoc.Location.toString(),
