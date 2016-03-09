@@ -20,7 +20,7 @@ rm -f _site/*.log
 rm -rf ../mfpsamples.github.ibm.com.master
 
 #clone `master' branch of the repository
-git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --branch master --single-branch ../mfpsamples.github.ibm.com.master
+git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --depth 1 --branch master --single-branch ../mfpsamples.github.ibm.com.master
 # copy generated HTML site to `master' branch
 rm -rf ../mfpsamples.github.ibm.com.master/*
 cp -R _site/MFPSamples/* ../mfpsamples.github.ibm.com.master
