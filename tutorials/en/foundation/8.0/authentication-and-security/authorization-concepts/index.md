@@ -135,7 +135,7 @@ If you want to disable protection, you can use `secured="false"`.
 ## Authorization flow
 The authorization flow has two phases:
 
-1. The client acquires a token.
+1. The client acquires an access token.
 2. The client uses the token to access a protected resource.
 
 ### Obtaining an access token
@@ -143,10 +143,10 @@ In this phase, the client undergoes **security checks** in order to receive an a
 
 ![Obtain Token](auth-flow-1.jpg)
 
-1. Client application sends a request to obtain access token.
+1. Client application sends a request to obtain access token for a specified scope.
 2. Client application undergoes security checks according to the requested scope.
-3. Client application requests a token from the Authorization Server.
-4. Client application receives the token.
+3. After a successful completion of the challenge process, client application forwards the request to the authorization Server.
+4. Client application receives the access token.
 
 ### Using a token to access a protected resource
 It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server as explained in tutorial [Using MobileFirst Server to authenticate external resources](../../using-mobilefirst-server-authenticate-external-resources/).
