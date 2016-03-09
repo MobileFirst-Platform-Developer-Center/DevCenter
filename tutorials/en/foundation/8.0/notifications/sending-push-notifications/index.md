@@ -71,13 +71,13 @@ To setup APNS:
 * During the production phase, use the apns-certificate-production.p12 production certificate file.
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
 
-![Image of adding the GCM credentials](server-side-setup.png)
+<img class="gifplayer" alt="Image of adding the GCM credentials" src="server-side-setup.png"/>
 
 ## Adding Tags
 In the MobileFirst Operations Console → **[your application] → Push → Tags**, click **Create New**.  
 Provide the appropriate `Tag Name` and `Description` and click **Save**.
 
-![set-up-tags](adding-tags.png)
+<img class="gifplayer" alt="Adding tags" src="adding-tags.png"/>
 
 ## Sending Push Notifications
 Push notifications can be sent either from the MobileFirst Operations Console or via REST APIs.
@@ -92,7 +92,7 @@ From the MobileFirst Console, there are two types of notifications that can be s
 
     This can be done by selecting **Send To → Devices By Tags**.
 
-    ![send-by-tag](sending-by-tag.png)
+<img class="gifplayer" alt="Sending by tag" src="sending-by-tag.png"/>
 
 * Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). 
 
