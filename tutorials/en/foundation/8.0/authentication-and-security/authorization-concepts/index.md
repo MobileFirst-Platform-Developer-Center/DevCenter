@@ -85,7 +85,7 @@ Your resources can be protected by one of several ways:
 At the application level, you can define a scope that will apply to all the resources used by this application.  
 In the MobileFirst Operations Console, select **[your application] → Security tab**. Under **Mandatory Application Scope** click on **Add to Scope**.
 
-![Mandatory application scope](mandatory-application-scope.png)
+<img class="gifplayer" alt="Mandatory application scope" src="mandatory-application-scope.png"/>
 
 ### Resource-level
 #### Java adapters
