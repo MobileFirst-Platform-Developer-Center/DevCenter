@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Java Token Validation
+title: Java Token Validator
 breadcrumb_title: Java Token Validator
 relevantTo: [android,ios,windows,cordova]
 weight: 1

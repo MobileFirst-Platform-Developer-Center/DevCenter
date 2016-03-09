@@ -22,7 +22,7 @@ An adapter can either be a *resource* adapter (meaning it serves resources/conte
 * [Defining a security Check](#defining-a-security-check)
 * [Security Check Implementation](#security-check-implementation)
 * [Security Check Configuration](#security-check-configuration)
-* [Predefined Security Checks](#predefined-security-check)
+* [Predefined Security Checks](#predefined-security-checks)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Defining a Security Check
@@ -136,7 +136,7 @@ Property values can also be overridden at the application level.
 
 In the MobileFirst Console → **[your application] → Security tab**, under the **Security Check Configurations** section, you can modify the values defined in each security check available.
 
-![Application in console](console-application-security.png)
+<img class="gifplayer" alt="Configurting security check properties" src="console-application-security.png"/>
 
 ## Predefined Security Checks
 Also available are these predefined security checks:

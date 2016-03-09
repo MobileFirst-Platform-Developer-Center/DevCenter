@@ -14,28 +14,21 @@ This tutorial explains how to create, build and deploy MobileFirst **Java or Jav
 **Prerequisite:** Make sure that you read the [Adapters Overview](../adapters-overview) first.
 
 #### Jump to:
-* [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
- * [Install Maven](#install-maven)
- * [Creating an Adapter](#creating-an-adapter)
- * [Dependencies](#dependencies)
- * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
+* [Install Maven](#install-maven)
 * [Creating Adapters Using MobileFirst Developer CLI](#creating-adapters-using-mobilefirst-developer-cli)
  * [Install MobileFirst Developer CLI](#install-mobilefirst-developer-cli)
  * [Creating an Adapter](#install-mobilefirst-developer-cli)
+* [Creating Adapters Using Maven](#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
 * [File Structure](#file-structure)
 * [Build and Deploy Adapters](#build-and-deploy-adapters)
+* [Dependencies](#dependencies)
+* [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
 * [Downloading or Deploying Adapters Using MobileFirst Operations Console](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
 * [Updating the Adapter Maven Project](#updating-the-adapter-maven-project)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
-The "adapter-maven-archetype" is a MobileFirst-provided archetype, that based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html), and is used by Maven in order to create the MobileFirst adapter Maven project.
-
-To create an adapter Maven project, first install Maven and follow the instructions below.
-
-### Install Maven
+## Install Maven
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
-
 #### Local Maven repositories
 If Internet connectivity is not available while developing, prepare to work offline:
 
@@ -45,8 +38,63 @@ If Internet connectivity is not available while developing, prepare to work offl
 4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-adapter.zip** file from the Adapter tooling section.
 5. Add the adapter archetypes and security checks to the local Maven repository by running the **install-adapter.sh** script for Linux and Mac, or the **install-adapter.bat** script for Windows.
 
+## Creating Adapters Using MobileFirst Developer CLI
+
+### Install MobileFirst Developer CLI
+Follow the installation instructions in the [Downloads]({{site.baseurl}}/downloads/) page to Install MobileFirst Developer CLI.  
+**Prerequisite:** To create adapters using the Developer CLI, Maven must be installed.
 
 ### Creating an Adapter
+To create a Maven adapter project, use the `mfpdev adapter create` command.
+You can choose to run the command interactively or directly.
+
+#### Interactive Mode
+1. Open a **Command-line** window and run:
+
+    ```bash
+    mfpdev adapter create
+    ```
+
+2. Enter an adapter name. For example:
+
+    ```bash
+    ? Enter Adapter Name: SampleAdapter
+    ```
+
+3. Select an adapter type using the arrows and the enter keys:
+
+    ```bash
+    ? Select Adapter Type:
+      HTTP
+      SQL
+    ❯ Java
+    ```
+  * Select `HTTP` to create a JavaScript HTTP adapter
+  * Select `SQL` to create a JavaScript SQL adapter  
+  * Select `Java` to create a Java adapter
+
+4. Enter an adapter package (this option is valid for Java adapters only). For example:
+
+    ```bash
+    ? Enter Package: com.mypackage
+    ```
+
+5. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
+
+    ```bash
+    ? Enter Group ID: com.mycompany
+    ```
+
+#### Direct Mode
+Replace the placeholders with the actual values and run the command:
+
+```bash
+mfpdev adapter create <adapter_name> -t <adapter_type> -p <adapter_package_name> -g <maven_project_groupid>
+```
+
+## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
+The "adapter-maven-archetype" is a MobileFirst-provided archetype, that based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html), and is used by Maven in order to create the MobileFirst adapter Maven project.
+
 To create a Maven adapter project, use the `archetype:generate` Maven command. Once the command is executed, Maven will download (or use the local repositories mentioned above) required files in order to generate the adapter Maven project.
 
 You can choose to run the command interactively or directly.
@@ -114,7 +162,55 @@ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<ada
 
 > For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
 
-### Dependencies <a name="dependencies"></a>
+## File Structure
+After creating the adapter the result will be a Maven project containing a **src** folder and a **pom.xml** file:
+
+![mvn-adapter](adapter-fs.png)
+
+## Build and Deploy Adapters
+### Build
+
+* **Using the MobileFirst Developer CLI** - Run the `mfpdev adapter build` command from the project's root folder.
+* **Using Maven** - The adapter is built each time you run the `mvn install` command to build the Maven project.
+
+This generates an **.adapter** archive file which can be found in the **target** folder:
+
+![java-adapter-result](adapter-result.png)
+
+### Deploy
+
+1. The **pom.xml** file contains the following `properties`:
+
+      ```xml
+      <properties>
+    		<!-- parameters for deploy mfpf adapter -->
+    		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
+    		<mfpfUser>admin</mfpfUser>
+    		<mfpfPassword>admin</mfpfPassword>
+    		<mfpfRuntime>mfp</mfpfRuntime>
+    	</properties>
+      ```
+   * Replace **localhost:9080** with your MobileFirst Server IP address and port number.
+   * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your MobileFirst admin user name and password.
+   * **Optional**. Replace the **mfpfRuntime** default value with your MobileFirst runtime name.
+2. Run the deploy command from the project's root folder:
+ * **Using the MobileFirst Developer CLI**:
+
+        ```bash
+        mfpdev adapter deploy
+        ```
+ * **Using Maven**:
+
+        ```bash
+        mvn adapter:deploy
+        ```
+
+</br>
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
+
+**NOTE:** The deploy command is available only during development.
+
+## Dependencies <a name="dependencies"></a>
 In order to use an external library in your adapter, follow one of the following suggested instructions:
 
 #### Adding a local dependency:
@@ -152,7 +248,7 @@ The following example uses the `cloudant-client artifactId`:
 </br>
 > For more information about dependencies see the Maven documentation.
 
-### Grouping Adapters in a Single Maven Project
+## Grouping Adapters in a Single Maven Project
 If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides benefits such as build all and deploy all abilities, sharing dependencies etc.
 
 To group adapters you need to:
@@ -206,108 +302,6 @@ To group adapters you need to:
   7. **Optional**. Replace the **`mfpfRuntime`** default value with your MobileFirst runtime name.
 
 4. To [build or deploy](#build-and-deploy-adapters) all adapters, run the Maven commands from the root "GroupAdapters" project.
-
-## Creating Adapters Using MobileFirst Developer CLI
-
-### Install MobileFirst Developer CLI
-Follow the installation instructions in the [Downloads]({{site.baseurl}}/downloads/) page to Install MobileFirst Developer CLI.  
-**Prerequisite:** To create adapters using the Developer CLI, Maven must be installed.
-
-### Creating an Adapter
-To create a Maven adapter project, use the `mfpdev adapter create` command.
-You can choose to run the command interactively or directly.
-
-#### Interactive Mode
-1. Open a **Command-line** window and run:
-
-    ```bash
-    mfpdev adapter create
-    ```
-
-2. Enter an adapter name. For example:
-
-    ```bash
-    ? Enter Adapter Name: SampleAdapter
-    ```
-
-3. Select an adapter type using the arrows and the enter keys:
-
-    ```bash
-    ? Select Adapter Type:
-      HTTP
-      SQL
-    ❯ Java
-    ```
-  * Select `HTTP` to create a JavaScript HTTP adapter
-  * Select `SQL` to create a JavaScript SQL adapter  
-  * Select `Java` to create a Java adapter
-
-4. Enter an adapter package (this option is valid for Java adapters only). For example:
-
-    ```bash
-    ? Enter Package: com.mypackage
-    ```
-
-5. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
-
-    ```bash
-    ? Enter Group ID: com.mycompany
-    ```
-
-#### Direct Mode
-Replace the placeholders with the actual values and run the command:
-
-```bash
-mfpdev adapter create <adapter_name> -t <adapter_type> -p <adapter_package_name> -g <maven_project_groupid>
-```
-
-## File Structure
-After creating the adapter the result will be a Maven project containing a **src** folder and a **pom.xml** file:
-
-![mvn-adapter](adapter-fs.png)
-
-## Build and Deploy Adapters
-### Build
-
-* **Using the MobileFirst Developer CLI** - Run the `mfpdev adapter build` command from the project's root folder.
-* **Using Maven** - The adapter is built each time you run the `mvn install` command to build the Maven project.
-
-This generates an **.adapter** archive file which can be found in the **target** folder:
-
-![java-adapter-result](adapter-result.png)
-
-### Deploy
-
-1. The **pom.xml** file contains the following `properties`:
-
-      ```xml
-      <properties>
-    		<!-- parameters for deploy mfpf adapter -->
-    		<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
-    		<mfpfUser>admin</mfpfUser>
-    		<mfpfPassword>admin</mfpfPassword>
-    		<mfpfRuntime>mfp</mfpfRuntime>
-    	</properties>
-      ```
-   * Replace **localhost:9080** with your MobileFirst Server IP address and port number.
-   * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your MobileFirst admin user name and password.
-   * **Optional**. Replace the **mfpfRuntime** default value with your MobileFirst runtime name.
-2. Run the deploy command from the project's root folder:
- * **Using the MobileFirst Developer CLI**:
-
-        ```bash
-        mfpdev adapter deploy
-        ```
- * **Using Maven**:
-
-        ```bash
-        mvn adapter:deploy
-        ```
-
-</br>
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
-
-**NOTE:** The deploy command is available only during development.
 
 ## Downloading or Deploying Adapters Using MobileFirst Operations Console
 

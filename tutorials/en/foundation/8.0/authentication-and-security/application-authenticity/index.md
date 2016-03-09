@@ -20,14 +20,14 @@ To enable Application Authenticity you can either follow the on-screen instructi
 
 #### Jump to:
 
-- [Authenticity flow](authenticity-flow)
-- [Enabling authenticity](enabling-application-authenticity)
-- [Configuring authenticity](configuring-application-authenticity)
+- [Application Authenticity flow](#application-authenticity-flow)
+- [Enabling Application Authenticity](#enabling-application-authenticity)
+- [Configuring Application Authenticity](#configuring-application-authenticity)
 
 ## Application Authenticity Flow
 By default, the application-authenticity security check is run during the application's runtime registration with MobileFirst Server, which occurs the first time an instance of the application attempts to connect to the server.
 
-Once an application has passed the authenticity challenge, an authenticity scope is granted. For as long as the token is valid, the authenticity challenge will not occur again. See [Configuring authenticity](configuring-authenticity) to learn how this can be customized.
+Once an application has passed the authenticity challenge, an authenticity scope is granted. For as long as the token is valid, the authenticity challenge will not occur again. See [Configuring application authenticity](#configuring-application-authenticity) to learn how this can be customized.
 
 ![Authenticity flow](check_flow.jpg)
 

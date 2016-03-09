@@ -23,7 +23,7 @@ This tutorial uses the example of a security check asking for a username and pas
 * [Creating the AuthenticatedUser object](#creating-the-authenticateduser-object)
 * [Adding Remember Me functionality](#adding-remember-me-functionality)
 * [Configuring the SecurityCheck](#configuring-the-securitycheck)
-* [Sample application](#sample-application)
+* [Sample security check](#sample-security-check)
 
 ## Creating the Security Check
 [Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.

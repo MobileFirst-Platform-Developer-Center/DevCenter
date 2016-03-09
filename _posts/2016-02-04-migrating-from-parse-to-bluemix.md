@@ -115,7 +115,7 @@ Add environment variables for <code>APP_ID</code>, <code>MASTER_KEY</code>, and 
 
 On Parse.com, you can access the ID and Key values by going to the app, selecting “App Settings”, and then selecting “Security &amp; Keys”.
 
-![https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/01/14-parse-app-keys1.jpg](Parse app keys)
+![Parse app keys](https://developer.ibm.com/bluemix/wp-content/uploads/sites/20/2016/01/14-parse-app-keys1.jpg)
 
 Save these environment variables. Now we’re ready to deploy the Node.js application.
 

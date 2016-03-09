@@ -27,7 +27,7 @@ For the external resource server to be able to use the `authorization.introspect
 
 In the MobileFirst Operations Console, under **Settings** → **Confidential Clients**, add a new entry. Choose a **client ID** and **API secret** value. Make sure to set `authorization.introspect` as the **Allowed Scope**.
 
-![Confidential clients](confidential-client.png)
+<img class="gifplayer" alt="Configurting a confidential client" src="confidential-client.png"/>
 
 Since the introspection endpoint is an internal protected resource, the resource server will need to obtain a token in order to send any data to it. If you attempt to make a request to the introspection endpoint without an authorization header, a 401 response will be returned.
 

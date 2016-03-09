@@ -22,7 +22,7 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 - [Cordova SDK components](#cordova-sdk-components)
 - [Adding the MobileFirst Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
 - [Updating the MobileFirst Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
-- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
+- [Generated MobileFirst Cordova SDK artifacts](#generated-mobilefirst-cordova-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Cordova SDK components
@@ -38,7 +38,7 @@ The cordova-plugin-mfp plug-in is the core MobileFirst plug-in for Cordova, and 
 >    - cordova-plugin-okhttp
 
 #### cordova-plugin-mfp-jsonstore
-The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../../using-the-mfpf-sdk/jsonstore/).  
+The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For more information on JSONstore, see the [JSONStore tutorial](../../using-the-mfpf-sdk/jsonstore-cordova/).  
 
 #### cordova-plugin-mfp-push
 The cordova-plugin-mfp-push plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../../notifications/push-notifications-overview/).

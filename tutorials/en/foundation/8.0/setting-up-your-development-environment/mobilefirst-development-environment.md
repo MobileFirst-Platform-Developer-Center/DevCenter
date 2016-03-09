@@ -35,7 +35,7 @@ The components are available through the MobileFirst Operations Console's Downlo
 ### MobileFirst Server
 As part of the Development Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
 
-> To download and install the MobileFirst Server, visit the [downloads]({{site.base}}/downloads/) page.  
+> To download and install the MobileFirst Server, visit the [downloads]({{site.baseurl}}/downloads/) page.  
 > If using MobileFirst Server on IBM Containers, see the [Using Mobile Foundation](../../ibm-containers/) tutorial.  
 
 In the server directory, the following scripts are available:
@@ -80,8 +80,8 @@ The IBM MobileFirst command-line interface (CLI) tool enables developers to:
 - Register and configure applications
 - Create, build, deploy and test adapters
 
-> To download and install the MobileFirst Developer CLI, visit the [downloads]({{site.base}}/downloads/) page.  
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> To download and install the MobileFirst Developer CLI, visit the [downloads]({{site.baseurl}}/downloads/) page.  
+> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 <!-- ## MobileFirst Studio
 IBM MobileFirst Studio is an Eclipse plug-in that interfaces with the MobileFirst Developer CLI and provides a User Interface for commands such as:

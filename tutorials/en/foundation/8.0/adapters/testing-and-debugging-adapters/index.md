@@ -112,11 +112,37 @@ You will be asked to select which scopes you want to grant to the Swagger UI (fo
 
 <br/><br/>
 
-#### Sending request
+#### Sending Request
 
 Expand the endpoint's operation, enter the required parameters (if needed) and click on the **Try it out!** button.
 
   ![Adapter request using Swagger with the test token](SwaggerReq.png)
+
+#### Swagger Annotations
+In order to generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
+> To learn more about Swagger Annotations see the [Swagger documentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
+
+```java
+@ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
+@ApiResponses(value = { @ApiResponse(code = 200, message = "A JSON object containing all the received parameters returned.") })
+@POST
+@Produces(MediaType.APPLICATION_JSON)
+@Path("/{path}")
+public Map<String, String> enterInfo(
+    @ApiParam(value = "The value to be passed as a path parameter", required = true) @PathParam("path") String path,
+    @ApiParam(value = "The value to be passed as a header", required = true) @HeaderParam("Header") String header,
+    @ApiParam(value = "The value to be passed as a form parameter", required = true) @FormParam("form") String form) {
+  Map<String, String> result = new HashMap<String, String>();
+
+  result.put("path", path);
+  result.put("header", header);
+  result.put("form", form);
+
+  return result;
+}
+```
+
+![Multiple parameter endpoint in the swagger UI](Multiple_Parameter.png)
 
 
 {% comment %}
@@ -188,7 +214,7 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
 
     ![Image showing how to set MobileFirst Server debug parameters](setting-debug-parameters.png)
 
-4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do in a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](../creating-adapters/#testing-adapters).
+4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do in a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](#testing-adapters).
 
     ![Image showing a being-debugged adapter](debugging.png)
 
