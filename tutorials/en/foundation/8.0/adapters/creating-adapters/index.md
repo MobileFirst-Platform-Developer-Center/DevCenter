@@ -197,8 +197,10 @@ This generates an **.adapter** archive file which can be found in the **target**
  * **Using the MobileFirst Developer CLI**:
 
         ```bash
-        mfpdev adapter deploy
+        mfpdev adapter deploy -x
         ```
+   The `-x` option deploys the adapter to the server that is specified in adapter's pom.xml file.  
+   > For more options run the `mfpdev help adapter deploy` command.
  * **Using Maven**:
 
         ```bash
