@@ -102,12 +102,17 @@ Create an Android Studio project or use an existing one.
     mfpdev app register
     ```
     
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
+The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
         
-    > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
-        1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
-        2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
-        3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
+> 
+> 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
+    
+> 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
+    
+> 3. Once the application is registered, from the **Configuration Files** tab copy the contents of mfpclient.properties.  
+    
+> 4. In the Xcode project, create a new "mfpclient.properties" file under **[project root]/app/src/main/assets/** and paste into it the copied text from step (3) above.
 
 ### Creating an WLClient instance
 Before using any MobileFirst-supplied APIs, first create a `WLClient` instance in the `onCreate` method:
