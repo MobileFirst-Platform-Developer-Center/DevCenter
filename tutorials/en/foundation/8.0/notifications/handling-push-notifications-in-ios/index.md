@@ -58,7 +58,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 2. Save and close the **podfile** 
 3. Open a terminal window and `cd` to the root of the **project derectory**
 4. Run the command `pod install`
-5. Open project using **.xcworkspace**
+5. Open project using the **.xcworkspace** file
 6. In **AppDelegat.swift**:
 	* Initialize a shared instance of `MFPPush` in the `didFinishLaunchingWithOptions`
 
@@ -87,17 +87,43 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
     	}
 		```
 
+## Notifications API
+### Client-side
+
+| Swift Methods                                                                                                | Description                                                             |
+|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
+| [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
+| [`sendDeviceToken(deviceToken: NSData!)`](#send-device-token)                                                | Sends the device token to the server                                    |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device)                  | Registers the device with the Push Notifications Service.               |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+
+### API implementation
+
+All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharredInstance();`, and then calling `push.<api-call>` throughout the view controller.
+
+Alternatively you can call MFPPush.sharredInstance().<api_call> for each instance in which you need to access the push API methods.
+
+#### Initialization
+Required for the client application to connect to MFPPush service.
+
+* The API method should be called first before using any other MFPPush APIs. 
+* Registers the callback function to handle received push notifications.
+
+```swift
+MFPPush.sharredInstance().initialize();
+```
 
 
 
 
 #Old tutorial
 
-### Notifications Configuration
 
-### Notifications API
-
-#### API methods for tag notifications
 ##### Client-side API
 * [`[WLPush sharedInstance]subscribeTag:tagName :options)]` -
 Subscribes the device to the specified tag name.
