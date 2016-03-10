@@ -62,10 +62,9 @@ For testing purposes set **Allowed Scopes** as `**`.
 {% endcomment %}
 1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
 
-    ```xml
-    grant_type : client_credentials
-    scope : **
-    ```
+* `grant_type` : `client_credentials`
+* `scope` : `**`
+
 
   ![Image of Postman Body configuration](Body_configuration.png)
 2. Add an `authorization header` using `Basic authentication` with username "test" and password "test".
