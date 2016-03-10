@@ -5,13 +5,13 @@ breadcrumb_title: Trust Association Interceptor
 relevantTo: [android,ios,windows,cordova]
 weight: 2
 ---
-## Overview
 
 ## Overview
-MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources.    
-The Java library is provided as a .jar file (**mfp-java-token-validator-8.0.0.jar**).
+MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources through Websphere's Trust Association Interceptors.
+ 
+The Java library is provided as a .jar file (**com.ibm.imf.oauth.common_8.0.0.jar**).
 
-This tutorial will show how to protect a simple Java Servlet, `api/protected`, using a scope `ViewProtectedResource`.
+This tutorial will show how to protect a simple Java Servlet, `api/protected`, using a scope `accessRestricted`.
 
 **Prerequesite:**
 
@@ -24,8 +24,8 @@ This tutorial will show how to protect a simple Java Servlet, `api/protected`, u
 ### External service configuration - Using Java: servlet filter
 
 #### Server setup
-1. Add the `com.ibm.imf.oauth.common_1.0.0.jar` file to your server under this path: `usr/extension/lib`
-2. Add the `OAuthTai-1.0.mf` file to the path `usr/extension/lib/features`
+1. Add the `com.ibm.imf.oauth.common_8.0.0.jar` file to your server under this path: `usr/extension/lib`
+2. Add the `OAuthTai-8.0.mf` file to the server under this path `usr/extension/lib/features`
 
 #### Web.xml setup
 Add a security constraint and a security role to the `web.xml` file of your external server, as shown below:
@@ -78,7 +78,7 @@ You must modify the external server `server.xml` file to your external resource.
 
 ```xml
 <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResource" clientSecret="password" cacheSize="500">
-        <securityConstraint httpMethods="GET POST" scope="PinCodeAttemps" securedURLs="/REST-Server/api/protected"></securityConstraint>
+        <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/REST-Server/api/protected"></securityConstraint>
 </usr_OAuthTAI>
 ```
 
@@ -90,11 +90,11 @@ You must modify the external server `server.xml` file to your external resource.
 
 `cacheSize`: The TAI has the optional cache, which can hold tokens as keys and introspection data as values, so that a token that comes in the request from the client won't need to be introspected again in a short time interval. The default size is 50,000 tokens.
 
-`scope`: The Resource server must authenticate against the scope(s) that were defined with the clientID. The scope in this case can be a security check defined by an adapter.
+`scope`: The Resource server must authenticate against the scope(s). The scope in this case is a security check defined by an adapter.
 
 ### Sample usage
 
-1. Make sure to update the confidential client, secret, and scope values in the MobileFirst Operations Console. The scope for TAI should be `authorization.introspection`.
+1. Make sure to update the confidential client, secret, and scope values in the MobileFirst Operations Console. The scope for TAI should be `authorization. introspect`.
 2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
 3. Register the matching application.
 4. Update the client application to make the `WLResourceRequest` to your servlet URL.
