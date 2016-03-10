@@ -22,7 +22,7 @@ No setup required. Initialized out-of-the-box.
 ### iOS
 #### Import Library
 
-```objective-c
+```objc
 import "WLAnalytics.h"
 ```
 #### Initialize Analytics
@@ -62,7 +62,7 @@ WLAnalytics.send();
 #### iOS
 In an iOS application, use the following Objective-C API method:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] send];
 ```
 
@@ -83,14 +83,15 @@ You can enable or disable the collecting of app sessions with the API below:
 
 #### Cordova
 
-* In iOS open the XCode project. 
-	* **platforms > ios > *{app-name}*.xcodeproj**
-	* Inside the general project open **Classes > AppDelegate.m**
-	* Follow the iOS guide to enable or disable `LIFECYCLE` activities
-* In Android navigate to the sub activity of the main activity to disable.
-	* **platforms > android > src > com > sample > {app-name} > MainActivity.java**
-	* Look for the `onCreate` method
-	* Follow the android tutorial to enable or disable `LIFECYCLE` activities 
+* For the iOS platform:
+	* Open the **[Cordova appilcation root folder] → platforms → ios → Classes → AppDelegate.m** file
+	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
+	* Build the Cordova project by running the command: `cordova build`
+	
+* For the Android platform: navigate to the sub activity of the main activity to disable.
+	* Open the  **[Cordova appilcation root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java**
+	* Look for the `onCreate` method and follow the Android guide below to enable or disable `LIFECYCLE` activities.
+	* Build the Cordova project by running the command: `cordova build`
 
 #### Android
 
@@ -110,13 +111,13 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 
 To enable client lifecycle event logging:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
 ```
 
 To disable client lifecycle event logging:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:LIFECYCLE];
 ```
 
@@ -131,26 +132,27 @@ Since the client and the server are each collecting their own information this m
 
 #### Cordova
 
-* In iOS open the XCode project. 
-	* **platforms > ios > *{app-name}*.xcodeproj**
-	* Inside the general project open **Classes > AppDelegate.m**
-	* Follow the iOS guide to enable or disable `NETWORK` activities
-* In Android navigate to the sub activity of the main activity to disable.
-	* **platforms > android > src > com > sample > {app-name} > MainActivity.java**
-	* Look for the `onCreate` method
-	* Follow the android tutorial to enable or disable `NETWORK` activities 	
+* For the iOS platform:
+	* Open the **[Cordova appilcation root folder] → platforms → ios → Classes → AppDelegate.m** file
+	* Follow the iOS guide below to enable or disable `NETWORK` activities.
+	* Build the Cordova project by running the command: `cordova build`
+	
+* For the Android platform: navigate to the sub activity of the main activity to disable.
+	* Open the  **[Cordova appilcation root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java**
+	* Look for the `onCreate` method and follow the Android guide below to enable or disable `NETWORK` activities.
+	* Build the Cordova project by running the command: `cordova build`
 
 #### iOS
 
 To enable client network event logging:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
 ```
 
 To disable client network event logging:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:NETWORK];
 ```
 
@@ -197,7 +199,7 @@ WLAnalytics.send();
 #### Objective-C API
 After importing WLAnalytics you can now use the API to collect custom data like below:
 
-```objective-c
+```objc
 NSDictionary *inventory = @{
     @"property" : @"value",
 };
