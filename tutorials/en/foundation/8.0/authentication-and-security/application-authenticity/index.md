@@ -34,14 +34,14 @@ Once an application has passed the authenticity challenge, an authenticity scope
 > The challenge token in the diagram is processed by compiled native code, so that third-party attackers cannot see the logic of this processing.
 
 ## Enabling Application Authenticity
-To enable Application Authenticity in your Cordova or Native application, the application's binary file needs to be signed using the application-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
+To enable Application Authenticity in your Cordova or Native application, the application's binary file needs to be signed using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
 
-1. Open a **Command-line** window and run the command: `java -jar path-to-application-authenticity-tool.jar path-to-binary-file`
+1. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
 
     For example:
 
     ```bash
-    java -jar /Users/your-username/Desktop/application-authenticity-tool.jar /Users/your-username/Desktop/MyBankApp.ipa
+    java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
     ```
 
     The result of the command above is an `.authenticity_data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.authenticity_data`.
