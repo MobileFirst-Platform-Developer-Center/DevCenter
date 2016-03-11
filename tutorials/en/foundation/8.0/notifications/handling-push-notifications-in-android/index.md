@@ -296,7 +296,9 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 ### Sample usage
 1. From the command line, navigate to the project's root folder.
 2. Ensure the sample is registered in the MobileFirst Server by running the command:  `mfpdev app register`.
-5. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+3. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+
+**Note:** The latest version of Google Play Services is required to be installed on the device for the sample to run.
 
 **[Sending a notification](../sending-push-notifications):**
 
