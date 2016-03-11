@@ -4,31 +4,39 @@ title: Trust Association Interceptor
 breadcrumb_title: Trust Association Interceptor
 relevantTo: [android,ios,windows,cordova]
 weight: 2
+downloads:
+  - name: Download sample
+    url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
 
 ## Overview
-MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources through Websphere's Trust Association Interceptors.
- 
+MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).  
 The Java library is provided as a .jar file (**com.ibm.imf.oauth.common_8.0.0.jar**).
 
-This tutorial will show how to protect a simple Java Servlet, `api/protected`, using a scope `accessRestricted`.
+This tutorial will show how to protect a simple Java Servlet, `api/protected`, using a scope (`accessRestricted`).
 
 **Prerequesite:**
 
 * Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
 * Understanding of the [MobileFirst Platform Foundation security framework](../../).
 
+![Flow](JTV_flow.jpg)
 
-## Configuring the external service
+## Server setup
 
-### External service configuration - Using Java: servlet filter
+1. Obtain the Java library from Maven Central.  
+    If Internet connectivity is not available while developing, prepare to work offline:  
+    1. Make sure you have first installed Apache Maven.
+    2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
+    3. Start the MobileFirst Server and load the MobileFirst Operations Console.
+    4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
+    5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
+<br/>
+2. Add the `com.ibm.imf.oauth.common_8.0.0.jar` file to the WebSphere application server inside **usr/extension/lib**.
+3. Add the `OAuthTai-8.0.mf` file to the WebSphere applicaiton server inside **usr/extension/lib/features**.
 
-#### Server setup
-1. Add the `com.ibm.imf.oauth.common_8.0.0.jar` file to your server under this path: `usr/extension/lib`
-2. Add the `OAuthTai-8.0.mf` file to the server under this path `usr/extension/lib/features`
-
-#### Web.xml setup
-Add a security constraint and a security role to the `web.xml` file of your external server, as shown below:
+### web.xml setup
+Add a security constraint and a security role to the `web.xml` file of the WebSphere application server:
 
 ```xml
 <security-constraint>
@@ -47,55 +55,55 @@ Add a security constraint and a security role to the `web.xml` file of your exte
 </security-role>
 ```
 
-#### server.xml setup
-You must modify the external server `server.xml` file to your external resource.
+### server.xml
+Modify the WebSphere application server's `server.xml` file to your external resource.
 
-* Configure the feature manager to include these features:
+* Configure the feature manager to include the following features:
 
-```xml
-<featureManager>
-       <feature>jsp-2.2</feature>
-       <feature>appSecurity-2.0</feature>
-       <feature>usr:OAuthTai-8.0</feature>
-       <feature>servlet-3.0</feature>
-       <feature>jndi-1.0</feature>
-</featureManager>
-```
+    ```xml
+    <featureManager>
+           <feature>jsp-2.2</feature>
+           <feature>appSecurity-2.0</feature>
+           <feature>usr:OAuthTai-8.0</feature>
+           <feature>servlet-3.0</feature>
+           <feature>jndi-1.0</feature>
+    </featureManager>
+    ```
 
-* In your application, add a security role:
+* Add a security role:
 
-```
-<application id="REST-Server" location="REST-Server.war" name="REST-Server">
-   <application-bnd>
-      <security-role name="TAIUserRole">
-         <special-subject type="ALL_AUTHENTICATED_USERS"/>
-      </security-role>
-   </application-bnd>
-</application>
-```
+    ```xml
+    <application id="REST-Server" location="REST-Server.war" name="REST-Server">
+       <application-bnd>
+          <security-role name="TAIUserRole">
+             <special-subject type="ALL_AUTHENTICATED_USERS"/>
+          </security-role>
+       </application-bnd>
+    </application>
+    ```
 
-* Configure OAuthTAI, this is where URLs are set to be protected:
+* Configure OAuthTAI. this is where URLs are set to be protected:
 
-```xml
-<usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResource" clientSecret="password" cacheSize="500">
-        <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/REST-Server/api/protected"></securityConstraint>
-</usr_OAuthTAI>
-```
+    ```xml
+    <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResource" clientSecret="password" cacheSize="500">
+            <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/REST-Server/api/protected"></securityConstraint>
+    </usr_OAuthTAI>
+    ```
+    - **authorizationURL**:  Either your MobileFirst Server (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
+    - **clientID**: The Resource server must be a registered confidential client, to learn how to register a confidential client
+    - **clientSecret**: The Resource server must be a registered confidential client, to learn how to register a confidential client
+    - **cacheSize**: TAI has an optional cache which can hold tokens as keys, and introspection data as values so that a token that comes in the request from the client won't need to be introspected again in a short time interval. The default size is 50,000 tokens.
+    - **scope**: The resource server authenticates against scope(s). The scope in this case is a Security Check.
 
-`authorizationURL`:  Now that the validation/introspection is done against the MFP server on-line, you must notify the TAI what is the URL of the Authorization Server. This an either be your MFP Server, or some external AZ Server such as Datapower. In most cases, this will be the URL of your MFP Server: http://localhost:9080/mfp/api​
-
-`clientID`: The Resource server must be a registered confidential client, to learn how to register a confidential client
-
-`clientSecret`: The Resource server must be a registered confidential client, to learn how to register a confidential client
-
-`cacheSize`: The TAI has the optional cache, which can hold tokens as keys and introspection data as values, so that a token that comes in the request from the client won't need to be introspected again in a short time interval. The default size is 50,000 tokens.
-
-`scope`: The Resource server must authenticate against the scope(s). The scope in this case is a security check defined by an adapter.
+## Sample
+You can deploy the project on supported application servers (WebSphere Full profile and WebSphere Liberty profile).  
+[Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80).
 
 ### Sample usage
 
-1. Make sure to update the confidential client, secret, and scope values in the MobileFirst Operations Console. The scope for TAI should be `authorization. introspect`.
+1. Make sure to [update the confidential client](../#confidential-client) and secret values in the MobileFirst Operations Console.
 2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
 3. Register the matching application.
-4. Update the client application to make the `WLResourceRequest` to your servlet URL.
-5. Set the scope of your securityConstraint scope to be the security check that your client needs to authenticate against.
+4. Map the `accessRestricted` scope to the security check.
+5. Update the client application to make the `WLResourceRequest` to your servlet URL.
+6. Set the scope of your securityConstraint scope to be the security check that your client needs to authenticate against.
