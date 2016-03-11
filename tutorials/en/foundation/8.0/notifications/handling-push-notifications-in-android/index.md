@@ -133,9 +133,9 @@ Required for the client application to connect to MFPPush service with the right
 * The API method should be called first before using any other MFPPush APIs. 
 * Registers the callback function to handle received push notifications.
 
-    ```java
-    MFPPush.getInstance().initialize(this);
-    ```
+```java
+MFPPush.getInstance().initialize(this);
+```
 
 #### Is push supported
 Checks if the device supports push notifications.
