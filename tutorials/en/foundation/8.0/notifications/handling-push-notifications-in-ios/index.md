@@ -8,30 +8,16 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 
 ---
-<span style="color:red">
-The handling in client side tutorials should explain:
-- how to setup push notifications support in iOS Xcode project (editing the podfile?)
-- how to setup push notifications support in Andrid Studio project (editing the builde.gradle file?)
-- how to setup push notifications support in Cordova applications
-- how to intercept and display notifications in the client
-</span>
-
 ## Overview
-
-In this tutorial, you will be learning how to handle push notification for iOS applications in Swift.
-
-Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.
-Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
-
-Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). Broadcast notifications can be disabled by unsubscribing from the reserved `Push.all` tag.
+MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in iOS applications using Swift.
 
 **Prerequisites:** 
 
 * Make sure you have read the following tutorials:
 	* [Push Notifications Overview](../push-notifications-overview)
-    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/index)
+    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
     * [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios)
-    * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
+* MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst Developer CLI installed on the developer workstation
 
 
@@ -39,8 +25,6 @@ Broadcast notifications are a form of tag push notifications that are targeted t
 * [Notifications configuration](#notifications-configuration)
 * [Notifications API](#notifications-api)
 * [Handling a push notification](#handling-a-push-notification)
-* [Handling a secure push notification](#handling-a-secure-push-notification)
-
 
 ### Notifications Configuration
 Create a new Xcode project or use and existing one.  
@@ -48,18 +32,49 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 ### Project setup
 
-1. Open the projects **podfile** and add the following lines:
+1. Open the project's existing **podfile** and add the following line:
 
-	```shell
-	use_frameworks! 
+	```bash
 	pod 'IBMMobileFirstPlatformFoundationPush'
 	```
 
-2. Save and close the **podfile** 
-3. Open a terminal window and `cd` to the root of the **project derectory**
+2. Save and close the **podfile**.
+3. From a **Command-line** window, navigate into to the project's root folder.
 4. Run the command `pod install`
-5. Open project using **.xcworkspace**
-6. In **AppDelegat.swift**:
+5. Open project using the **.xcworkspace** file.
+
+## Notifications API
+### Client-side
+
+| Swift Methods                                                                                                | Description                                                             |
+|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
+| [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
+| [`sendDeviceToken(deviceToken: NSData!)`](#send-device-token)                                                | Sends the device token to the server                                    |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device)                  | Registers the device with the Push Notifications Service.               |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+
+### API implementation
+
+All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharredInstance();`, and then calling `push.<api-call>` throughout the view controller.
+
+Alternatively you can call MFPPush.sharredInstance().<api_call> for each instance in which you need to access the push API methods.
+
+#### Initialization
+Required for the client application to connect to MFPPush service.
+
+* The API method should be called first before using any other MFPPush APIs. 
+* Registers the callback function to handle received push notifications.
+
+```swift
+MFPPush.sharredInstance().initialize();
+```
+
+In **AppDelegat.swift**:
 	* Initialize a shared instance of `MFPPush` in the `didFinishLaunchingWithOptions`
 
 		```swift
@@ -88,16 +103,9 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 		```
 
 
-
-
-
 #Old tutorial
 
-### Notifications Configuration
 
-### Notifications API
-
-#### API methods for tag notifications
 ##### Client-side API
 * [`[WLPush sharedInstance]subscribeTag:tagName :options)]` -
 Subscribes the device to the specified tag name.
@@ -118,9 +126,9 @@ Returns whether the device is subscribed to a specified tag name.
 * `setOnReadyToSubscribeListener` - This method registers a listener to be used for push notifications. This listener should implement the `OnReadyToSubscribe()` method.
 `[[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];`
 
-### Handling a push notification
+## Handling a push notification
 
-### Handling a secure push notification
+
 
 <img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
 ## Sample application
@@ -128,9 +136,16 @@ Returns whether the device is subscribed to a specified tag name.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Xcode project.
 
 ### Sample usage
-1. From the command line, navigate to the project's root folder.
-2. Ensure the sample is registered in the MobileFirst Server by running the command:  
-`mfpdev app register`.
-3. Ensure pod's are install using the command:
-`pod install`
-5. Import the project to Xcode using the .xcworkspace file, and run the sample by clicking the **Run** button.
+1. From a **Command-line** window, navigate to the project's root folder.
+2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+3. Ensure pod's are install using the command: `pod install`
+4. Import the project to Xcode using the .xcworkspace file, and run the sample by clicking the **Run** button.
+
+**[Sending a notification](../sending-push-notifications):**
+
+* Tag notification
+    * Use the **MobileFirst Operations Console → [your application] → Push screen**.
+* Authenticated notification:
+    * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
+    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
+    * Use the [REST APIs](../sending-push-notifications#via-mobilefirst-provided-rest-apis) to send the notification.

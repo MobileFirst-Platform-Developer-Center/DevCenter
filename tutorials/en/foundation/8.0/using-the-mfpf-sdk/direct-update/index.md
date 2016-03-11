@@ -21,7 +21,6 @@ In order to update an application, the updated web resources of the application 
 - [User experience](#user-experience)
 - [Direct Update authenticity](#direct-update-authenticity)
 - [Delta and Full Direct Update](#delta-and-full-direct-update)
-- [Direct Update in the field](#direct-update-in-the-field)
 {% comment %}
 - [Sample application](#sample-application)
 -[Customizing the Direct Update UI](#customizing-the-direct-update-ui)

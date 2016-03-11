@@ -16,4 +16,8 @@ $(function() {
         scrollTop: $(myEl).offset().top - 6
       }, 500);
     });
+
+    $('body').imagesLoaded(function(){
+      $('.gifplayer').gifplayer({wait: 'true'});
+    });
 });

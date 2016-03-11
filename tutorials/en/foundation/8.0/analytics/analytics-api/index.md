@@ -10,9 +10,8 @@ MobileFirst Operational Analytics provides client-side APIs to help a user get s
 
 #### Jump to:
 * [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
-* [Enabling/Disabling Client Events](#Enabling/Disabling-client-event-types)
+* [Enabling/Disabling Client Events](#enabling-disabling-client-event-types)
 * [Custom Events](#custom-events)
-* [Sending Analytics to the MFP Analytics Server](#sending-analytics-to-the-mfp-analytics-server)
 
 ## Configuring Analytics on the Client Side
 Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to import the corresponding libraries to initialize the analytics support.
@@ -23,7 +22,7 @@ No setup required. Initialized out-of-the-box.
 ### iOS
 #### Import Library
 
-```objective-c
+```objc
 import "WLAnalytics.h"
 ```
 #### Initialize Analytics
@@ -63,7 +62,7 @@ WLAnalytics.send();
 #### iOS
 In an iOS application, use the following Objective-C API method:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] send];
 ```
 
@@ -84,11 +83,15 @@ You can enable or disable the collecting of app sessions with the API below:
 
 #### Cordova
 
-* In iOS navigate to the main application delegate to disable the Device Ecent Listener.
-
-* In Android navigate to the sub activity of the main activity to disable.
-
-<span>still waiting on Carlos to put in these changes, so I am not sure of the paths for Android.</span>
+* For the iOS platform:
+	* Open the **[Cordova appilcation root folder] → platforms → ios → Classes → AppDelegate.m** file
+	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
+	* Build the Cordova project by running the command: `cordova build`
+	
+* For the Android platform: navigate to the sub activity of the main activity to disable.
+	* Open the  **[Cordova appilcation root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java**
+	* Look for the `onCreate` method and follow the Android guide below to enable or disable `LIFECYCLE` activities.
+	* Build the Cordova project by running the command: `cordova build`
 
 #### Android
 
@@ -108,13 +111,13 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 
 To enable client lifecycle event logging:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
 ```
 
 To disable client lifecycle event logging:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:LIFECYCLE];
 ```
 
@@ -129,22 +132,27 @@ Since the client and the server are each collecting their own information this m
 
 #### Cordova
 
-* In iOS navigate to the main application delegate to disable the Device Ecent Listener.
-* In Android navigate to the sub activity of the main activity to disable.
-
-<span>still waiting on Carlos to put in these changes, so I am not sure of the paths for Android.</span>
+* For the iOS platform:
+	* Open the **[Cordova appilcation root folder] → platforms → ios → Classes → AppDelegate.m** file
+	* Follow the iOS guide below to enable or disable `NETWORK` activities.
+	* Build the Cordova project by running the command: `cordova build`
+	
+* For the Android platform: navigate to the sub activity of the main activity to disable.
+	* Open the  **[Cordova appilcation root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java**
+	* Look for the `onCreate` method and follow the Android guide below to enable or disable `NETWORK` activities.
+	* Build the Cordova project by running the command: `cordova build`
 
 #### iOS
 
 To enable client network event logging:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
 ```
 
 To disable client network event logging:
 
-```objective-c
+```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:NETWORK];
 ```
 
@@ -191,7 +199,7 @@ WLAnalytics.send();
 #### Objective-C API
 After importing WLAnalytics you can now use the API to collect custom data like below:
 
-```objective-c
+```objc
 NSDictionary *inventory = @{
     @"property" : @"value",
 };

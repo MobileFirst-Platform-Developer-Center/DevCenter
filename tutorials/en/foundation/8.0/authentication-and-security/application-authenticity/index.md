@@ -20,28 +20,28 @@ To enable Application Authenticity you can either follow the on-screen instructi
 
 #### Jump to:
 
-- [Authenticity flow](authenticity-flow)
-- [Enabling authenticity](enabling-application-authenticity)
-- [Configuring authenticity](configuring-application-authenticity)
+- [Application Authenticity flow](#application-authenticity-flow)
+- [Enabling Application Authenticity](#enabling-application-authenticity)
+- [Configuring Application Authenticity](#configuring-application-authenticity)
 
 ## Application Authenticity Flow
 By default, the application-authenticity security check is run during the application's runtime registration with MobileFirst Server, which occurs the first time an instance of the application attempts to connect to the server.
 
-Once an application has passed the authenticity challenge, an authenticity scope is granted. For as long as the token is valid, the authenticity challenge will not occur again. See [Configuring authenticity](configuring-authenticity) to learn how this can be customized.
+Once an application has passed the authenticity challenge, an authenticity scope is granted. For as long as the token is valid, the authenticity challenge will not occur again. See [Configuring application authenticity](#configuring-application-authenticity) to learn how this can be customized.
 
 ![Authenticity flow](check_flow.jpg)
 
 > The challenge token in the diagram is processed by compiled native code, so that third-party attackers cannot see the logic of this processing.
 
 ## Enabling Application Authenticity
-To enable Application Authenticity in your Cordova or Native application, the application's binary file needs to be signed using the application-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
+To enable Application Authenticity in your Cordova or Native application, the application's binary file needs to be signed using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
 
-1. Open a **Command-line** window and run the command: `java -jar path-to-application-authenticity-tool.jar path-to-binary-file`
+1. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
 
     For example:
 
     ```bash
-    java -jar /Users/your-username/Desktop/application-authenticity-tool.jar /Users/your-username/Desktop/MyBankApp.ipa
+    java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
     ```
 
     The result of the command above is an `.authenticity_data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.authenticity_data`.

@@ -116,16 +116,15 @@ function getFeedFiltered() {
 > For more information on XSL transformation, refer to the user documentation.
 
 ## Creating a SOAP-based service request
-You can use the `MFP.Server.invokeHttp` method to create a **SOAP** envelope, which can be sent directly.
-
-To call a SOAP-based service in an HTTP adapter, you must encode the SOAP XML envelope within the request body.  
-Encoding XML within JavaScript is simple: just use **E4X**, which is officially part of JavaScript 1.6. You can use this technology to encode any type of XML document, not only SOAP envelopes.
-
-Use JavaScript to create a SOAP Envelope. It is possible to insert JavaScript code and variables into SOAP XML. Such additional code is evaluated at run time.
+You can use the `MFP.Server.invokeHttp` API method to create a **SOAP** envelope.  
+Note: To call a SOAP-based service in a JavaScript HTTP adapter, you can     encode the SOAP XML envelope within the request body using **E4X**.
 
 ```js
 var request =
-		<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+		<soap:Envelope
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
 			<soap:Body>
 				<GetCitiesByCountry xmlns="http://www.webserviceX.NET">
 					<CountryName>{countryName}</CountryName>
@@ -134,8 +133,7 @@ var request =
 		</soap:Envelope>;
 ```
 
-The` MFP.Server.invokeHttp(options)` method is used to call a request for a SOAP service.
-
+The `MFP.Server.invokeHttp(options)` method is then used to call a request for a SOAP service.  
 The Options object must include the following properties:
 
 * A `method` property: usually `POST`
@@ -145,16 +143,89 @@ The Options object must include the following properties:
 
 ```js
 var input = {
-		method: 'post',
-		returnedContentType: 'xml',
-		path: '/globalweather.asmx',
-		body: {
-			content: request.toString(),
-			contentType: 'text/xml; charset=utf-8'
-		}
-	};
+	method: 'post',
+	returnedContentType: 'xml',
+	path: '/globalweather.asmx',
+	body: {
+		content: request.toString(),
+		contentType: 'text/xml; charset=utf-8'
+	}
+};
 
 var result = MFP.Server.invokeHttp(input);
+```
+
+## Invoking results of SOAP-based service
+The result is wrapped into a `JSON` object:
+
+```json
+{
+	"statusCode" : 200,
+	"errors" : [],
+	"isSuccessful" : true,
+	"statusReason" : "OK",
+	"Envelope" : {
+		"Body" : {
+			"GetWeatherResponse" : {
+				"xmlns" : "http://www.webserviceX.NET",
+				"GetWeatherResult" : "<?xml version=\"1.0\" encoding=\"utf-16\"?>\n<CurrentWeather>\n  <Location>Shanghai / Hongqiao, China (ZSSS) 31-10N 121-26E 3M</Location>\n  <Time>Mar 07, 2016 - 01:30 AM EST / 2016.03.07 0630 UTC</Time>\n  <Wind> from the W (270 degrees) at 4 MPH (4 KT) (direction variable):0</Wind>\n  <Visibility> 4 mile(s):0</Visibility>\n  <Temperature> 69 F (21 C)</Temperature>\n  <DewPoint> 53 F (12 C)</DewPoint>\n  <RelativeHumidity> 56%</RelativeHumidity>\n  <Pressure> 29.94 in. Hg (1014 hPa)</Pressure>\n  <Status>Success</Status>\n</CurrentWeather>"
+			}
+		},
+		"xsd" : "http://www.w3.org/2001/XMLSchema",
+		"soap" : "http://schemas.xmlsoap.org/soap/envelope/",
+		"xsi" : "http://www.w3.org/2001/XMLSchema-instance"
+	},
+	"responseHeaders" : {
+		"X-AspNet-Version" : "4.0.30319",
+		"Date" : "Mon, 07 Mar 2016 06:46:08 GMT",
+		"Content-Length" : "1027",
+		"Content-Type" : "text/xml; charset=utf-8",
+		"Server" : "Microsoft-IIS/7.0",
+		"X-Powered-By" : "ASP.NET",
+		"Cache-Control" : "private, max-age=0",
+		"X-RBT-Optimized-By" : "e8i-wx-sh4 (RiOS 8.6.2d-ibm1) SC"
+	},
+	"warnings" : [],
+	"totalTime" : 654,
+	"responseTime" : 651,
+	"info" : []
+}
+```
+
+Note the `Envelope` property, which is specific of SOAP-based requests.  
+The `Envelope` property contains the result content of the SOAP-based request.
+
+To access the XML content:
+
+* On client-side, jQuery can be used to wrap the result string, and follow the DOM nodes:
+
+```javascript
+WL.Client.invokeProcedure({
+	adapter : "JavaScriptSOAP",
+	procedure : "getWeatherInfo",
+	parameters : [ 'Washington', 'United States' ]
+}, {
+	onSuccess : function(resp) {
+		var $result = $(resp.invocationResult.Envelope.Body.GetWeatherResponse.GetWeatherResult);
+		var weatherInfo = {
+			location: $result.find('Location').text(),
+			time: $result.find('Time').text(),
+			wind: $result.find('Wind').text(),
+			temperature: $result.find('Temperature').text(),
+		};
+	}
+});
+```
+* On server-side, create an XML object with the result string. The nodes can then be accessed as properties:
+
+```javascript
+var xmlDoc = new XML(result.Envelope.Body.GetWeatherResponse.GetWeatherResult);
+var weatherInfo = {
+	Location: xmlDoc.Location.toString(),
+	Time: xmlDoc.Time.toString(),
+	Wind: xmlDoc.Wind.toString(),
+	Temperature: xmlDoc.Temperature.toString()
+};
 ```
 
 ## Sample adapter

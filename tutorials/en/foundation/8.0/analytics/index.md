@@ -37,7 +37,7 @@ From the Analytics Console you can then:
 * [Create custom charts](#custom-charts)
 * [Manage alerts](#manage-alerts)
 * [Monitor App Crash](#monitor-app-crash)
-* [Monitor Network Data](#monitor-network)
+* [Monitor Network Data](#monitor-network-data)
 
 ### Custom Charts
 Custom charts allow you to visualize the collected analytics data in your analytics data store in charts that are not avaliable in the out of the box MobileFirst Analytics Console. This visualization is a powerful way to analyze data important to your business needs.

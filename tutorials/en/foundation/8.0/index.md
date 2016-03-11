@@ -17,9 +17,9 @@ To review all categories and tutorials visit:
 
 For curated content visit: 
 
+* [Cordova development](cordova-tutorials/)
 * [iOS development](ios-tutorials/) 
 * [Android development](android-tutorials/) 
-* [Windows 8.1 Universal development](windows-8-tutorials/) 
-* [Windows 10 UWP development](windows-10-tutorials/) 
-* [Cordova development](hybrid-tutorials/)
+* [Windows 8.1 Universal and Windows 10 UWP development](windows-8-10-tutorials/) 
+
 * [Server-side development](server-side-tutorials/)

@@ -9,14 +9,14 @@ author:
 ---
 ### Overview
 
-**Prerequisite:** Make sure to read the [Push Notifications in Hybrid Applications](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/) tutorial first.
+**Prerequisite:** Make sure to read the [Push Notifications in Hybrid Applications]({{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/) tutorial first.
 
 This blogpost is here to show you how to write Cordova applications with event source notification functionality.
 
 Event source notifications are notification messages that are targeted to devices with a user subscription.
 While the user subscription exists, MobileFirst Server can produce push notifications for the subscribed user. These notifications can be delivered by the adapter code to all or some of the devices from which the user subscribed.
 
-To learn more about the architecture and terminology of event-source push notifications refer to the [Push notification overview](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/foundation/notifications/push-notifications-overview/) tutorial.
+To learn more about the architecture and terminology of event-source push notifications refer to the [Push notification overview]({{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/) tutorial.
 
 Implementation of the push notification API consists of the following main steps:
 
@@ -35,16 +35,16 @@ Displaying a received notification
 
 ### Agenda
 
-- [Notification API - server-side](#serverSidenotificationAPI)
-- [Notification API - client-side](#clientSidenotificationAPI)
-- [Sample application](#sampleApplication)
+- [Notification API - server-side](#notification-api-server-side)
+- [Notification API - client-side](#notification-api-client-side)
+- [Sample application](#sample-application)
 
 ### Notification API - Server-side
 
 #### Creating an event source
 To create an event source, you declare a notification event source in the adapter JavaScript code at a global level (outside any JavaScript function):
 
-[{% highlight javascript %}
+{% highlight javascript %}
 WL.Server.createEventSource({
     name: 'PushEventSource',
     onDeviceSubscribe: 'deviceSubscribeFunc',
@@ -76,7 +76,7 @@ The following parameters are required:
 
 As described previously, notifications can be either polled from the back-end system or pushed by one. In this example, a <code>submitNotifications()</code> adapter function is invoked by a back-end system as an external API to send notifications.
 
-[{% highlight javascript %}
+{% highlight javascript %}
 function submitNotification(userId, notificationText) {
     var userSubscription = WL.Server.getUserNotificationSubscription('PushAdapter.PushEventSource', userId);
 
@@ -127,7 +127,8 @@ if (userSubscription === null) {
 
 The <code>WL.Server.createDefaultNotification</code> API method creates and returns a default notification JSON block for the supplied values.
 {% highlight javascript %}var badgeDigit = 1;
-var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});{% endhighlight %}
+var notification = WL.Server.createDefaultNotification(notificationText, badgeDigit, {custom:"data"});
+{% endhighlight %}
 
 
 - **<code>notificationText</code>** - The text to be pushed to the device.
@@ -197,9 +198,9 @@ If the application was in background mode (or inactive) when the push notificati
 
 ### Sample application
 
-[Click to download](https://github.com/tchengus/EventSourceNotificationsCordova") the sample project.
+[Click to download](https://github.com/tchengus/EventSourceNotificationsCordova) the sample project.
 
-![push app sample](push_sample.png)
+![push app sample]({{site.baseurl}}/assets/blog/2015-12-09-event-source-notifications-in-mfp-7-1-cordova-applications/08_01_push_sample.png)
 
 #### Sending a notification
 
@@ -221,7 +222,7 @@ $ cd PushNotifications
 
 2. Copy contents in sample app to your Cordova app (PushNotifications/www/, application-descriptor.xml) 
 
-3. Follow instructions in [Push Notifications Overview]({{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/") to set up corresponding platform
+3. Follow instructions in [Push Notifications Overview]({{site.baseurl}}/tutorials/en/foundation/7.1/notifications/push-notifications-overview/push-notifications-in-hybrid-applications/) to set up corresponding platform
 
 4. Create Local MFP Server, or Use Remote MFP Server
 
