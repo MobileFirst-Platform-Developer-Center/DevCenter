@@ -112,12 +112,6 @@ public override WorklightResponse GetSubmitFailureResponse()
   return new WorklightResponse(false, "User cancelled" , new JObject (), "",(int) HttpStatusCode.InternalServerError);
 }
 ```
-## Handling failures
-Not Yet implemented
-
-## Handling successes
-Not Yet implemented
-
 ## Registering the challenge handler
 
 In order for the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.

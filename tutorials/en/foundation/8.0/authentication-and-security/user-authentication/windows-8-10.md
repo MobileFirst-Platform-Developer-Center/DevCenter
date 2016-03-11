@@ -53,6 +53,16 @@ The MobileFirst Platform Foundation SDK provides the `ObtainAccessToken` API to 
 
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
+
+if(accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+{
+  Debug.WriteLine("Auto login success");
+}
+else
+{
+  Debug.WriteLine("Auto login failed");
+}
+
 ```
 
 If the client is already logged-in or is in the *remembered* state, the API will trigger a success. If the client is not logged in, the security check will send back a challenge.
@@ -62,7 +72,37 @@ The `ObtainAccessToken` API takes in a **scope**. The scope can be the name of y
 > Learn more about **scope** in the [Authorization concepts](../../authorization-concepts) tutorial
 
 ## Retrieving the authenticated user
-Not Yet implemented
+The challenge handler's `HandleSuccess` method receives a `JObject identity` as a parameter.
+If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `HandleSuccess` to save the current user:
+
+```csharp
+public override void HandleSuccess(JObject identity)
+{
+    isChallenged = false;
+    try
+    {
+        //Save the current user
+        var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        localSettings.Values["useridentity"] = identity.GetValue("user");
+
+    } catch (Exception e) {
+        Debug.WriteLine(e.StackTrace);
+    }
+}
+```
+
+Here, `identity` has a key called `user` which itself contains a `JObject` representing the `AuthenticatedUser`:
+
+```json
+{
+  "user": {
+    "id": "john",
+    "displayName": "john",
+    "authenticatedAt": 1455803338008,
+    "authenticatedBy": "UserLogin"
+  }
+}
+```
 
 ## Logout
 The MobileFirst Platform Foundation SDK also provides a `Logout` API to logout from a specific security check:
