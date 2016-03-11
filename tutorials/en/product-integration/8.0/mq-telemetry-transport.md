@@ -3,12 +3,12 @@ layout: tutorial
 title: MQ Telemetry Transport
 downloads:
   - name: Download Cordova Project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/MQTTWhiteboard/archive/release80.zip
+    url: https://github.com/MobileFirst-Platform-Developer-Center/MQTTWhiteboard/tree/release80
 ---
 
 ## Overview
 
-IBM MQ Telemetry Transport (MQTT) is a lightweight messaging protocol that is designed for Internet of Things (IoT) and mobule connectivity.
+IBM MQ Telemetry Transport (MQTT) is a lightweight messaging protocol that is designed for Internet of Things (IoT) and mobile  connectivity.
 
 #### Jump to:
 
@@ -22,6 +22,7 @@ IBM MQ Telemetry Transport (MQTT) is a lightweight messaging protocol that is de
 * [Connecting to an MQTT broker](#connecting-to-an-mqtt-broker)
   * [Mosquitto](#mosquitto)
   * [IBM MessageSight](#ibm-messagesight)
+* [Sample application](#sample-application)
 
 
 ## Getting started with MQ Telemetry Transport
@@ -425,31 +426,34 @@ Several MQTT servers are available, both open source and commercial.
 ### Mosquitto
 Mosquitto is an open source, lightweight implementation of MQ Telemetry Transport V3.1, part of the Eclipse Paho messaging project.
 
-The Mosquitto broker is available for many different platforms (Windows, OS X, Linux distributions).
-
+The Mosquitto broker is available for many different platforms (Windows, OS X, Linux distributions).  
 For more information go to:
 
-[http://mosquitto.org](http://mosquitto.org)
+* [http://mosquitto.org](http://mosquitto.org)
+* [http://projects.eclipse.org/projects/technology.mosquitto](http://projects.eclipse.org/projects/technology.mosquitto)
 
-[http://projects.eclipse.org/projects/technology.mosquitto](http://projects.eclipse.org/projects/technology.mosquitto)
 
-
-Download Mosquitto:
-
+Download Mosquitto:  
 [http://mosquitto.org/download/](http://mosquitto.org/download/)
 
 ### IBM MessageSight
+IBM MessageSight for Developers is a virtual IBM MessageSight appliance image.  
 
-IBM MessageSight for Developers is a virtual IBM MessageSight appliance image.
-
-IBM MessageSight is a low-latency, reliable, and scalable messaging server with strong security and easy management.
-
+IBM MessageSight is a low-latency, reliable, and scalable messaging server with strong security and easy management.  
 The developer image can be run with virtualization software such as VMWare, Oracle VirtualBox, and KVM.
 
 For more information go to:
 
-[http://ibm.com/messagesight](http://ibm.com/messagesight)
+* [http://ibm.com/messagesight](http://ibm.com/messagesight)
+* [https://www.ibmdw.net/messaging/messagesight/](https://www.ibmdw.net/messaging/messagesight/)
+* [http://www.youtube.com/watch?v=kcEDoRqhkhA](http://www.youtube.com/watch?v=kcEDoRqhkhA)
 
-[https://www.ibmdw.net/messaging/messagesight/](https://www.ibmdw.net/messaging/messagesight/)
+## Sample applications
+The sample **MQTTWhiteboard** is a Corodova application that demonstrates use of MQTT.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/MQTTWhiteboard/tree/release80) the Cordova project.  
+### Sample usage
+1. [Add an MQTT broker](#whiteboard-running-the-application) `host` and `ip address` values to the `csp` meta tag.
+2. From a **Command-line** window, ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
+3. Add a platform by running the `cordova platform add` command.
+4. Run the Cordova application by running the `cordova run` command.
 
-[http://www.youtube.com/watch?v=kcEDoRqhkhA](http://www.youtube.com/watch?v=kcEDoRqhkhA)
