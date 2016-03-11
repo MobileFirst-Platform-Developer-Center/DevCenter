@@ -42,6 +42,34 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 3. From a **Command-line** window, navigate into to the project's root folder.
 4. Run the command `pod install`
 5. Open project using the **.xcworkspace** file.
+6. In **AppDelegat.swift**:
+    * Initialize a shared instance of `MFPPush` in the `didFinishLaunchingWithOptions`
+
+        ```swift
+        MFPPush.sharedInstance().initialize()
+        ```
+    * Declare the following notification methods `didRegisterForRemoteNotificationsWithDeviceToken` &amp; `didReceiveRemoteNotification`
+
+        ```swift
+
+        TODO:// Update var's
+
+        func application(application: UIApplication,    didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+            // Registers device token with server.
+            MFPPush.sharedInstance().sendDeviceToken(deviceToken)
+        }
+    
+        func application(application: UIApplication, didReceiveRemoteNotification   userInfo: [NSObject : AnyObject]) {
+            print("Recieved Notification \(userInfo.description)")
+            
+            var alert: String = "alert"
+            var alertID: String = "ID"
+            var alertPayload: String = "Payload"
+            
+            //Handle notification
+        }
+        ```
+
 
 ## Notifications API
 ### Client-side
@@ -62,7 +90,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharredInstance();`, and then calling `push.<api-call>` throughout the view controller.
 
-Alternatively you can call MFPPush.sharredInstance().<api_call> for each instance in which you need to access the push API methods.
+Alternatively you can call `MFPPush.sharredInstance().<api_call>` for each instance in which you need to access the push API methods.
 
 #### Initialization
 Required for the client application to connect to MFPPush service.
@@ -74,61 +102,130 @@ Required for the client application to connect to MFPPush service.
 MFPPush.sharredInstance().initialize();
 ```
 
-In **AppDelegat.swift**:
-	* Initialize a shared instance of `MFPPush` in the `didFinishLaunchingWithOptions`
+#### Is push supported
+Checks if the device supports push notifications.
 
-		```swift
-		MFPPush.sharedInstance().initialize()
-		```
-	* Declare the following notification methods `didRegisterForRemoteNotificationsWithDeviceToken` &amp; `didReceiveRemoteNotification`
+```swift
+let isPushSupported: Bool = MFPPush.sharedInstance().isPushSupported()
 
-		```swift
-
-		TODO:// Update var's
-
-		func application(application: UIApplication, 	didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-			// Registers device token with server.
-    	    MFPPush.sharedInstance().sendDeviceToken(deviceToken)
-    	}
-	
-    	func application(application: UIApplication, didReceiveRemoteNotification 	userInfo: [NSObject : AnyObject]) {
-    	    print("Recieved Notification \(userInfo.description)")
-    	    
-    	    var alert: String = "alert"
-    	    var alertID: String = "ID"
-    	    var alertPayload: String = "Payload"
-    	    
-    	    //Handle notification
-    	}
-		```
-
-
-#Old tutorial
-
-
-##### Client-side API
-* [`[WLPush sharedInstance]subscribeTag:tagName :options)]` -
-Subscribes the device to the specified tag name.
-* `[[WLPush sharedInstance]unsubscribeTag:tagName :options)]` -
-Unsubscribes the device from the specified tag name.
-* `[WLPush sharedInstance]isTagSubscribed:tagName]` -
-Returns whether the device is subscribed to a specified tag name.
-
-#### Common API methods for tag and broadcast notifications
-#### Client-side API
-* `didReceiveRemoteNotification` - When a notification is received by a device, the `didReceiveRemoteNotification` method in the app delegate is called. The logic to handle the notification should be defined here.
-{% highlight javascript %}
--(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
-    NSLog(@"Received Notification %@",userInfo.description);
+if isPushSupported {
+    // Push is supported
+} else {
+    // Push is not supported
 }
-{% endhighlight %}
-⋅⋅*`userInfo` – A JSON block that contains the payload field. This field holds other data that is sent from the MobileFirst Platform server. It also contains the tag name for tag and broadcast notification. The tag name appears in the tag element. For broadcast notification, the default tag name is `Push.ALL`.
-* `setOnReadyToSubscribeListener` - This method registers a listener to be used for push notifications. This listener should implement the `OnReadyToSubscribe()` method.
-`[[WLPush sharedInstance] setOnReadyToSubscribeListener:readyToSubscribeListener];`
+```
+
+#### Send device token
+Sends the device token to the server to register the device with its unique identifier.
+
+```swift
+MFPPush.sharedInstance().sendDeviceToken(deviceToken)
+```
+
+**Note:** This is typically called in the **AppDelegate** in the `didRegisterForRemoteNotificationsWithDeviceToken` method
+
+#### Register device
+Register the device to the push notifications service.
+
+```swift
+MFPPush.sharedInstance().registerDevice({(response: WLResponse!, error: NSError!) -> Void in
+    if error == nil {
+        // Successfully registered
+    } else {
+        // Registration failed with error
+    }
+})
+```
+
+#### Get tags
+Retrieve all the available tags from the push notification service.
+
+```swift
+MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Void in
+    if error == nil {
+        print("The response is: \(response)")
+        print("The response text is \(response.responseText)")
+        if response.availableTags().isEmpty == true {
+            // Successfully retrieved tags as list of strings
+        } else {
+            // Successfully retrieved response from server but there where no available tags
+        }
+    } else {
+        // Failed to receive tags with error
+    }
+})
+```
+
+#### Subscribe
+Subscribe to desired tags.
+
+```swift
+var tags: [String] = {"Tag 1", "Tag 2"};
+
+// Get tags
+MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Void in
+    if error == nil {
+        print("The response is: \(response)")
+        print("The response text is \(response.responseText)")
+        if response.availableTags().isEmpty == true {
+            self.tagsArray = []
+            self.showAlert("There are no available tags")
+        } else {
+            self.tagsArray = response.availableTags()
+            self.showAlert(String(self.tagsArray))
+            print("Tags response: \(response)")
+        }
+    } else {
+        self.showAlert("Error \(error.description)")
+        print("Error \(error.description)")
+    }
+})
+```
+
+#### Get subscriptions
+Retrieve tags the device is currently subscribed to.
+
+```swift
+MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSError!) -> Void in
+    if error == nil {
+        // Successfully received subscriptions as list of strings
+    } else {
+        // Failed to retrieve subscriptions with error
+    }
+})
+```
+
+#### Unsubscribe
+Unsubscribe from tags.
+
+```swift
+var tags: [String] = {"Tag 1", "Tag 2"};
+
+// Unsubscribe from tags
+MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+    if error == nil {
+        // Unsubscribed successfully
+    } else {
+        // Failed to unsubscribe
+    }
+})
+```
+
+#### Unregister
+Unregister the device from push notification service instance.
+
+```swift
+MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
+    if error == nil {
+        // Unregistered successfully
+    } else {
+        self.showAlert("Error \(error.description)")
+        // Failed to unregister with error
+    }
+})
+```
 
 ## Handling a push notification
-
-
 
 <img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
 ## Sample application
