@@ -7,7 +7,7 @@ $color_celeste_approx: #ccc;
 
 .navbar {
   &.navbar-default {
-    background-image: url("/MFPFoundation_logo_24px.svg");
+    background-image: url("/assets/MFPFoundation_logo_24px.svg");
     background-repeat: no-repeat;
     background-position: 0.2% 33%;
     //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
