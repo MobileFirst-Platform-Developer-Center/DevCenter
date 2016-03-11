@@ -26,11 +26,13 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 * [Notifications API](#notifications-api)
 * [Handling a push notification](#handling-a-push-notification)
 
+
 ### Notifications Configuration
 Create a new Xcode project or use and existing one.  
-If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios) tutorial.
+If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios) tutorial.
 
-### Project setup
+
+### Adding the Push SDK
 
 1. Open the project's existing **podfile** and add the following line:
 
@@ -42,33 +44,6 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 3. From a **Command-line** window, navigate into to the project's root folder.
 4. Run the command `pod install`
 5. Open project using the **.xcworkspace** file.
-6. In **AppDelegat.swift**:
-    * Initialize a shared instance of `MFPPush` in the `didFinishLaunchingWithOptions`
-
-        ```swift
-        MFPPush.sharedInstance().initialize()
-        ```
-    * Declare the following notification methods `didRegisterForRemoteNotificationsWithDeviceToken` &amp; `didReceiveRemoteNotification`
-
-        ```swift
-
-        TODO:// Update var's
-
-        func application(application: UIApplication,    didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-            // Registers device token with server.
-            MFPPush.sharedInstance().sendDeviceToken(deviceToken)
-        }
-    
-        func application(application: UIApplication, didReceiveRemoteNotification   userInfo: [NSObject : AnyObject]) {
-            print("Recieved Notification \(userInfo.description)")
-            
-            var alert: String = "alert"
-            var alertID: String = "ID"
-            var alertPayload: String = "Payload"
-            
-            //Handle notification
-        }
-        ```
 
 
 ## Notifications API
@@ -86,11 +61,13 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 | [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
 | [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
 
+
 ### API implementation
 
 All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharredInstance();`, and then calling `push.<api-call>` throughout the view controller.
 
 Alternatively you can call `MFPPush.sharredInstance().<api_call>` for each instance in which you need to access the push API methods.
+
 
 #### Initialization
 Required for the client application to connect to MFPPush service.
@@ -101,6 +78,7 @@ Required for the client application to connect to MFPPush service.
 ```swift
 MFPPush.sharredInstance().initialize();
 ```
+
 
 #### Is push supported
 Checks if the device supports push notifications.
@@ -115,6 +93,7 @@ if isPushSupported {
 }
 ```
 
+
 #### Send device token
 Sends the device token to the server to register the device with its unique identifier.
 
@@ -123,6 +102,7 @@ MFPPush.sharedInstance().sendDeviceToken(deviceToken)
 ```
 
 **Note:** This is typically called in the **AppDelegate** in the `didRegisterForRemoteNotificationsWithDeviceToken` method
+
 
 #### Register device
 Register the device to the push notifications service.
@@ -136,6 +116,7 @@ MFPPush.sharedInstance().registerDevice({(response: WLResponse!, error: NSError!
     }
 })
 ```
+
 
 #### Get tags
 Retrieve all the available tags from the push notification service.
@@ -155,6 +136,7 @@ MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Vo
     }
 })
 ```
+
 
 #### Subscribe
 Subscribe to desired tags.
@@ -182,6 +164,7 @@ MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Vo
 })
 ```
 
+
 #### Get subscriptions
 Retrieve tags the device is currently subscribed to.
 
@@ -194,6 +177,7 @@ MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSErro
     }
 })
 ```
+
 
 #### Unsubscribe
 Unsubscribe from tags.
@@ -211,6 +195,7 @@ MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResp
 })
 ```
 
+
 #### Unregister
 Unregister the device from push notification service instance.
 
@@ -225,7 +210,24 @@ MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSErro
 })
 ```
 
+
 ## Handling a push notification
+
+Declare the following notification method `didReceiveRemoteNotification` in your **AppDelegate**
+
+```swift
+TODO:// Update var's
+
+func application(application: UIApplication, didReceiveRemoteNotification   userInfo: [NSObject : AnyObject]) {
+    print("Recieved Notification \(userInfo.description)")
+    
+    var alert: String = "alert"
+    var alertID: String = "ID"
+    var alertPayload: String = "Payload"
+    
+    //Handle notification
+}
+```
 
 <img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
 ## Sample application

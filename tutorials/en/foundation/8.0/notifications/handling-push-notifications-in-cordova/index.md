@@ -215,3 +215,5 @@ var notificationReceived = function(message) {
 3. Register the application by running the command: `mfpdev app register`.
 4. Via the MobileFirst Operations Console, setup the MobileFirst Server with either GCM details or APNS certificate, and add tags.
 5. Run the application by running the `cordova run` command.
+
+**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
