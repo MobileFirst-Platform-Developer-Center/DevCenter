@@ -12,6 +12,7 @@ Outputs to Xcode console
 #import "OCLogger.h"
 + (int) sum:(int) a with:(int) b{
     int sum = a + b;
+    [OCLogger setLevel:DEBUG];
     OCLogger* mathLogger = [OCLogger getInstanceWithPackage:@"MathUtils"];
     NSString* logMessage = [NSString stringWithFormat:@"sum called with args %d and %d. Returning %d", a, b, sum];
     [mathLogger debug:logMessage];
@@ -23,19 +24,19 @@ Outputs to Xcode console
 Log capture is enabled by default. To turn log capture on or off:
 
 ```objective-c
-OCLogger.setCapture(NO)
+[OCLogger setCapture:NO]
 ```
 
-The default capture level is DEBUG in development and FATAL in production. To control the capture level (verbosity):
+The default capture level is FATAL in development and in production. To control the capture level (verbosity):
 
 ```objective-c
-OCLogger.setLevel(OCLogger_DEBUG)
+[OCLogger setLevel:DEBUG];
 ```
 
 Log sending is enabled by default. To turn automatic log sending on or off:
 
 ```objective-c
-OCLogger.setAutoSendLogs(NO)
+[OCLogger setAutoSendLogs:NO]
 ```
 
 > For more information about the `Logger` API, see the API reference in the user documentation.

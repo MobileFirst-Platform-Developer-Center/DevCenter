@@ -17,6 +17,7 @@ import com.worklight.common.Logger;
 public class MathUtils{
   private static final Logger logger = Logger.getInstance(MathUtils.class.getName());
   public int sum(final int a, final int b){
+    logger.setLevel(LEVEL.DEBUG);
     int sum = a + b;
     logger.debug("sum called with args " + a + " and " + b + ". Returning " + sum);
     return sum;
