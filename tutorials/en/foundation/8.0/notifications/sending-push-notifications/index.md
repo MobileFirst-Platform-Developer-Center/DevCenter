@@ -20,7 +20,8 @@ In order to send push notifications to iOS or Android devices, the MobileFirst S
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Setting up Push Notifications
-Enabling push notifications support involves several configuration steps in both MobileFirst Server and the client application.
+Enabling push notifications support involves several configuration steps in both MobileFirst Server and the client application.  
+Continue reading for the server-side setup. Jump to [Client-side setup](#tutorials-to-follow-next).
 
 ### Scope mapping
 Map the **push.mobileclient** scope element to the application.
@@ -33,6 +34,9 @@ Map the **push.mobileclient** scope element to the application.
 ### Authenticated notifications
 Authenticated notifications are push notifications that are sent to one or more `userIds`.  
 For authenticated notifications, the **push.mobileclient** scope element should be mapped to the security check used for the application.
+
+1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
+2. Select a security check. Then, click **Add**.
 
 > **Note:** In the beta release, authenticated notifications are **not supported** in Cordova applications.
 
