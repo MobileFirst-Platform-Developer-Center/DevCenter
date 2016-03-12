@@ -28,9 +28,15 @@ Map the **push.mobileclient** scope element to the application.
 1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
 2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
 
-For User Authenticated notifications the **push.mobileclient** scope element should be mapped to the security check of the application.
+<img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
 
-> **Note:** In the beta release, authenticated push is supported only in Native Android and iOS applications.
+### Authenticated notifications
+Authenticated notifications are push notifications that are sent to one or more `userIds`.  
+For authenticated notifications, the **push.mobileclient** scope element should be mapped to the security check used for the application.
+
+> **Note:** In the beta release, authenticated notifications are **not supported** in Cordova applications.
+
+<img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
 
 ### GCM
 Android devices use the Google Cloud Messaging (GCM) service for push notifications.  
