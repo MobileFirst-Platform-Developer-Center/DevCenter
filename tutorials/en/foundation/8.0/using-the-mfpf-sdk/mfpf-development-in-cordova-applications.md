@@ -26,8 +26,8 @@ The MobileFirst SDK feature set provides the following:
 #### Jump to:
 
 * [Cordova application development](#cordova-application-development)
-* [Previewing applications](#previewing-applications)
-* [Crosswalk support](#crosswalk-support)
+* [Previewing an application's web resources](#previewing-an-application-39-s-web-resources)
+* [CrossWalk support](#crosswalk-support)
 * [Further reading](#further-reading)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -60,16 +60,16 @@ Applications can be modified using 3rd party packages to achieve requirements su
 - [uglify-js](https://www.npmjs.com/package/uglify-js)
 - [clean-css](https://www.npmjs.com/package/clean-css)
 
-## Previewing applications
+## Previewing an application's web resources
 A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Platform Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering. 
 
-* With Simple Browser rendering the application is presented as a web page in the desktop browser.
-* The Mobile Browser Simulator is a web application that enables testing the application by simulating device features without needing to install device vendor native SDK.
+#### Simple Browser
+In Simple Browser previewing, the web resources of the application are being rendered in the desktop browser without being treated as an "app", allowing easy debugging of just the web resources.  
 
-> Learn more about Simple Browser rendering the IBM Mobile Browser Simulator in the user documentation.
+#### Mobile Browser Simulator 
+The Mobile Browser Simulator is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device.
 
-### Previewing the application web resources:
-
+### Previewing
 1. From a **Command-line** window, run the command:
 
     ```bash
@@ -92,14 +92,27 @@ A Cordova application's web resources can be previewed either in the iOS Simulat
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
-#### Live preview
+### Live preview
 Applicative code (HTML, CSS and JS) can now be edited in real-time with live-preview.   
 After making a change to a resource, save the change and it will be immediately reflected in the browser.
 
-#### Live reload
+### Live reload
 To achieve a similar effect while previewing in physical devices or simulators/emulators, add the **cordova-plugin-livereload** plug-in. For usage instructions, [see the plug-ins GitHub page](https://github.com/omefire/cordova-plugin-livereload).
 
-### CrossWalk support
+### Running the application on emulator or on a physical device
+To emulate the application execute the Cordova CLI command `cordova emulate ios|android|windows`. For example:
+
+```bash
+cordova emulate ios
+```
+
+To run the application on a physical device, attached to the development workstation a run the Cordova CLI command `cordova run ios|android|windows`. For example:
+
+```bash
+cordova run ios
+```
+
+## CrossWalk support
 Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  
 To add it:
 
@@ -117,20 +130,7 @@ To add it:
     ```bash
     cordova build
     ```
-
-### Running the application on emulator or on a physical device
-To emulate the application execute the Cordova CLI command `cordova emulate ios|android|windows`. For example:
-
-```bash
-cordova emulate ios
-```
-
-To run the application on a physical device, attached to the development workstation a run the Cordova CLI command `cordova run ios|android|windows`. For example:
-
-```bash
-cordova run ios
-```
-
+    
 ## Further reading
 Learn more about Cordova:
 
