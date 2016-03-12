@@ -8,7 +8,7 @@ This tutorial provides the required code snippets in order to add logging capabi
 ## Logging example
 Outputs to Xcode console
 
-```objective-c
+```objc
 #import "OCLogger.h"
 + (int) sum:(int) a with:(int) b{
     int sum = a + b;
@@ -23,19 +23,19 @@ Outputs to Xcode console
 ### Additional API Methods For Specific Tasks
 Log capture is enabled by default. To turn log capture on or off:
 
-```objective-c
+```objc
 [OCLogger setCapture:NO]
 ```
 
 The default capture level is FATAL in development and in production. To control the capture level (verbosity):
 
-```objective-c
+```objc
 [OCLogger setLevel:DEBUG];
 ```
 
 Log sending is enabled by default. To turn automatic log sending on or off:
 
-```objective-c
+```objc
 [OCLogger setAutoSendLogs:NO]
 ```
 
