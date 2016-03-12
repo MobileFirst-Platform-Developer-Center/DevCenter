@@ -9,10 +9,10 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 ## Overview
-MobileFirst Platform Foundation provides a Java library to enforce security capabilities on external resources.    
+MobileFirst Platform Foundation provides a Java library to enforce security capabilities on external resources.  
 The Java library is provided as a .jar file (**mfp-java-token-validator-8.0.0.jar**).
 
-This tutorial will show how to protect a simple Java Servlet, `GetBalance`, using a scope `accessRestricted`.
+This tutorial will show how to protect a simple Java Servlet, `GetBalance`, using a scope (`accessRestricted`).
 
 **Prerequesites:**
 
@@ -198,7 +198,7 @@ You can deploy the project on supported application servers (Tomcat, WebSphere F
 
 ### Sample usage
 
-1. Make sure to update the confidential client and secret values in the MobileFirst Operations Console.
+1. Make sure to [update the confidential client](../#confidential-client) and secret values in the MobileFirst Operations Console.
 2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
 3. Register the matching application.
 4. Map the `accessRestricted` scope to the security check.

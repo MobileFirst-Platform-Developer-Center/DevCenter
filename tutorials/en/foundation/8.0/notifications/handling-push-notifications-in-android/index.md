@@ -8,9 +8,7 @@ downloads:
 weight: 4
 ---
 ## Overview
-Before Android applications are able to handle any received push notifications, they must configured with support for Google Play Services. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags.
-
-In this tutorial you learn how to configure an Android application and how to use the MobileFirst-provided Notifications API.
+Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
 
 **Prerequisites:** 
 
@@ -131,6 +129,7 @@ Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance 
 
 #### Initialization
 Required for the client application to connect to MFPPush service with the right application context.
+
 * The API method should be called first before using any other MFPPush APIs. 
 * Registers the callback function to handle received push notifications.
 
@@ -296,6 +295,17 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 
 ### Sample usage
 1. From the command line, navigate to the project's root folder.
-2. Ensure the sample is registered in the MobileFirst Server by running the command:  
-`mfpdev app register`.
-5. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+2. Ensure the sample is registered in the MobileFirst Server by running the command:  `mfpdev app register`.
+3. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+
+**Note:** The latest version of Google Play Services is required to be installed on the device for the sample to run.
+
+**[Sending a notification](../sending-push-notifications):**
+
+* Tag notification
+    * Use the **MobileFirst Operations Console → [your application] → Push screen**.
+* Authenticated notification:
+    * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
+    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
+    * Use the [REST APIs](../sending-push-notifications#via-mobilefirst-provided-rest-apis) to send the notification.
+
