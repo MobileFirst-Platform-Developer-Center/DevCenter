@@ -135,7 +135,7 @@ directUpdateContext.start(directUpdateCustomListener);
 > For more information, see the "Configuring and customizing direct update" user documentation topic. -->
 
 ## Direct Update authenticity
-Disabled by default, Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a content delivery network (CDN)) to the client application.
+Disabled by default, Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a Content Delivery Network (CDN)) to the client application.
 
 **To enable Direct Update authenticity:**  
 Using a preferred tool, extract the public key from the MobileFirst Server keystore and convert it to base64.  
