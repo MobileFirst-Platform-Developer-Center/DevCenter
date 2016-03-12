@@ -235,10 +235,8 @@ func application(application: UIApplication, didReceiveRemoteNotification   user
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Xcode project.
 
 ### Sample usage
-1. From a **Command-line** window, navigate to the project's root folder.
-2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
-3. Ensure pod's are install using the command: `pod install`
-4. Import the project to Xcode using the .xcworkspace file, and run the sample by clicking the **Run** button.
+1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+2. Import the project to Xcode using the .xcworkspace file, and run the sample by clicking the **Run** button.
 
 **[Sending a notification](../sending-push-notifications):**
 
