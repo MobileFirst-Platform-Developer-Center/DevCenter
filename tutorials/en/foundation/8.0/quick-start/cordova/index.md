@@ -40,11 +40,11 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     * Enter **1.0.0** as the **version** value
     * Click on **Register application**
 
-    ![Image of selecting platform, and providing an identifier and version](register-an-application-cordova.png)
+    <img class="gifplayer" alt="Register an application" src="register-an-application-cordova.png"/>
  
 2. Click on the **Get Starter Code** tile and select to download the Cordova application scaffold.
 
-    ![Image of creating a sample application](download-starter-code-cordova.png)
+    <img class="gifplayer" alt="Download sample application" src="download-starter-code-cordova.png"/>
  
 ### 3. Editing application logic
 
@@ -99,8 +99,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
-    ![Image of create an adapter](create-an-adapter.png)
-
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
 <img src="cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
 
