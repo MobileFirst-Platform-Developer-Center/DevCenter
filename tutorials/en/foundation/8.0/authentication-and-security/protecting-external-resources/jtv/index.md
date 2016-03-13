@@ -59,7 +59,7 @@ public TokenValidationResult validate(java.lang.String authorizationHeader, java
 ```
 
 - `authorizationHeader`: The content of the `Authorization` HTTP header, which is the access token. For example, it could be obtained from a `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
-- `expectedScope`: *Optional*. The scope to validate the token against.
+- `expectedScope`: The scope to validate the token against, for example `accessRestricted`.
 
 You can query the resulting `TokenValidationResult` object for either an error or valid introspection data:
 
