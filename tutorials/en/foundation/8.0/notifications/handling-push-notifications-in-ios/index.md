@@ -11,7 +11,7 @@ downloads:
 ## Overview
 MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in iOS applications using Swift.
 
-**Prerequisites:** 
+**Prerequisites:**
 
 * Make sure you have read the following tutorials:
 	* [Push Notifications Overview](../push-notifications-overview)
@@ -72,7 +72,7 @@ Alternatively you can call `MFPPush.sharredInstance().<api_call>` for each insta
 #### Initialization
 Required for the client application to connect to MFPPush service.
 
-* The API method should be called first before using any other MFPPush APIs. 
+* The API method should be called first before using any other MFPPush APIs.
 * Registers the callback function to handle received push notifications.
 
 ```swift
@@ -220,11 +220,11 @@ TODO:// Update var's
 
 func application(application: UIApplication, didReceiveRemoteNotification   userInfo: [NSObject : AnyObject]) {
     print("Recieved Notification \(userInfo.description)")
-    
+
     var alert: String = "alert"
     var alertID: String = "ID"
     var alertPayload: String = "Payload"
-    
+
     //Handle notification
 }
 ```
@@ -245,4 +245,4 @@ func application(application: UIApplication, didReceiveRemoteNotification   user
 * Authenticated notification:
     * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
     * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
-    * Use the [REST APIs](../sending-push-notifications#via-mobilefirst-provided-rest-apis) to send the notification.
+    * Use the [REST APIs](../sending-push-notifications#rest-apis) to send the notification.
