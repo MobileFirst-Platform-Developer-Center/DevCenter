@@ -101,22 +101,23 @@ Alternatively, click the **New** button next to **Adapters**.
     
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
-<img src="cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
 
+<img src="cordovaQuickStart.png" alt="sample application" style="float:right"/>
 ### 5. Testing the application
 
-1. In the Cordova project, select the **config.xml** file and edit the  
+1. From a **Command-line** window, navigate to the Cordova project's root folder.
+2. Run the command: `cordova platform add ios/android/windows` to add a platform.
+3. In the Cordova project, select the **config.xml** file and edit the  
 `<mfp:server ... url=" "/>` value with the IP address of the MobileFirst Server.
 
     Alternatively, if you have installed the MobileFirst Develper CLI then navigate to the project root folder and run the command `mfpdev app register`.  If a remote server is used instead of a local server, first use the command `mfpdev server add` to add it.
 
-2. Run the command: `cordova platform add ios/android/windows` to add a platform.
-
-3. Run the command: `cordova run`.
+4. Run the command: `cordova run`.
 
 If a device is connected, the application will be installed and launched in the device,  
 Otherwise the Simulator or Emulator will be used.
 
+<br clear="all"/>
 ### Results
 * Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
 * If the application was able to connect to the MobileFirst Server, a resource request call using the deployed Java adapter will take place.

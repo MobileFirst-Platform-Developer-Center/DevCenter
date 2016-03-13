@@ -134,6 +134,8 @@ Example URL:
 https://example.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
+> For more information about the Push REST API, see the user documentation.
+
 The request can contain the following payload properties: 
 
 Payload Properties| Definition

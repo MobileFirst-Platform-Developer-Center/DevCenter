@@ -128,6 +128,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    
 
+<img src="iosQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
 1. In Xcode, select the **mfpclient.plist** file and edit the **host** property with the IP address of the MobileFirst Server.
@@ -136,6 +137,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
 2. Press the **Play** button.
 
+<br clear="all"/>
 ### Results
 * Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
 * If the application was able to connect to the MobileFirst Server, a resource request call using the deployed Java adapter will take place.
