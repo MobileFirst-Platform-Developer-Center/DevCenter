@@ -19,7 +19,7 @@ In order to send push notifications to iOS or Android devices, the MobileFirst S
     * [Scope mapping](#scope-mapping)
     * [GCM](#gcm)
     * [APNS](#apns)
-* [Setting-up Authenticated Push Notifications](#set-up-authenticated-push-notifications)
+* [Setting-up Authenticated Push Notifications](#setting-up-authenticated-push-notifications)
 * [Adding Tags](#adding-tags)
 * [Customizing Notifications](#customizing-notifications)
 * [Sending Push Notifications](#sending-push-notifications)    
