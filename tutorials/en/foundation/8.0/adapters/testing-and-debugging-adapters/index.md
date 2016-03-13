@@ -67,7 +67,8 @@ For testing purposes set **Allowed Scopes** as `**`.
 
 
   ![Image of Postman Body configuration](Body_configuration.png)
-2. Add an `authorization header` using `Basic authentication` with username "test" and password "test".
+2. Add an `authorization header` using `Basic authentication` with Confidential Client ID ("test") and Secret ("test").
+> Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
 
   ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
@@ -107,7 +108,7 @@ To access Swagger:
 To add a Test Token to the request, so the security framework will skip any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
 
 You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes you can select all). If you are using the Swagger UI for the first time you may be required to log in with the Confidential Client ID ("test") and Secret ("test").
-> Learn more about Confidential Client in the user documentation.
+> Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
 
 <br/><br/>
 
