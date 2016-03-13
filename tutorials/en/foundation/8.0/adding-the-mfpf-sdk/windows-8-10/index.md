@@ -78,7 +78,7 @@ The `mfpdev app register` CLI command first connects to the MobileFirst Server t
     
 > 3. Once the application is registered, from the **Configuration Files** tab copy the contents of mfpclient.resw.  
     
-> 4. In the Xcode project, create a new "mfpclient.resw" file in the **strings** folder and paste into it the copied contents from step (3) above.
+> 4. In the Visual Studio project, create a new "mfpclient.resw" file in the **strings** folder and paste into it the copied contents from step (3) above.
 
 ## Updating the MobileFirst Native SDK
 To update the MobileFirst Native SDK with the latest release, run the following command from the root folder of the Visual Studio project in a **Command-line** window:
