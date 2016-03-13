@@ -50,10 +50,23 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
 
 ### MFPPush Instance
 
-All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharredInstance();`, and then calling `push.methodName()` throughout the view controller.
+All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharedInstance();`, and then calling `push.methodName()` throughout the view controller.
 
-Alternatively you can call `MFPPush.sharredInstance().methodName()` for each instance in which you need to access the push API methods.
+Alternatively you can call `MFPPush.sharedInstance().methodName()` for each instance in which you need to access the push API methods.
 
+### Client-side
+
+| Swift Methods                                                                                                | Description                                                             |
+|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
+| [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device)                  | Registers the device with the Push Notifications Service.               |
+| [`sendDeviceToken(deviceToken: NSData!)`](#send-device-token)                                                | Sends the device token to the server                                    |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
 
 #### Initialization
 Initialization is required for the client application to connect to MFPPush service.
@@ -62,22 +75,8 @@ Initialization is required for the client application to connect to MFPPush serv
 * It registers the callback function to handle received push notifications.
 
 ```swift
-MFPPush.sharredInstance().initialize();
+MFPPush.sharedInstance().initialize();
 ```
-
-### Client-side
-
-| Swift Methods                                                                                                | Description                                                             |
-|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
-| [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`sendDeviceToken(deviceToken: NSData!)`](#send-device-token)                                                | Sends the device token to the server                                    |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device)                  | Registers the device with the Push Notifications Service.               |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
 
 #### Is push supported
 Checks if the device supports push notifications.
@@ -92,7 +91,7 @@ if isPushSupported {
 }
 ```
 
-#### Register device
+#### Register device &amp; Send device token
 Register the device to the push notifications service.
 
 ```swift
@@ -105,7 +104,6 @@ MFPPush.sharedInstance().registerDevice({(response: WLResponse!, error: NSError!
 })
 ```
 
-#### Send device token
 Sends the device token to the server to register the device with its unique identifier.
 
 ```swift
