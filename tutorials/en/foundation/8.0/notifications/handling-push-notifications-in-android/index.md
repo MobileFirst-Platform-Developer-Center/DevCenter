@@ -306,5 +306,5 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 * Authenticated notification:
     * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
     * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
-    * Use the [REST APIs](../sending-push-notifications#via-mobilefirst-provided-rest-apis) to send the notification.
+    * Use the [REST APIs](../sending-push-notifications#rest-apis) to send the notification.
 
