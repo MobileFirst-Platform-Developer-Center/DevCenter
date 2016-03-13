@@ -16,33 +16,24 @@ In order to send push notifications to iOS or Android devices, the MobileFirst S
 #### Jump to
 
 * [Setting-up Push Notifications](#setting-up-push-notifications)
+    * [Google Cloud Messaing](#google-cloud-messaging)
+    * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Scope mapping](#scope-mapping)
-    * [GCM](#gcm)
-    * [APNS](#apns)
-* [Setting-up Authenticated Push Notifications](#setting-up-authenticated-push-notifications)
-* [Adding Tags](#adding-tags)
-* [Customizing Notifications](#customizing-notifications)
+    * [Authenticated Push Notifications](#authenticated-push-notifications)
+* [Defining Tags](#defining-tags)
 * [Sending Push Notifications](#sending-push-notifications)    
     * [MobileFirst Operations Console](#mobilefirst-operations-console)
     * [REST APIs](#rest-apis)
-
+    * [Customizing Notifications](#customizing-notifications)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Setting up Push Notifications
 Enabling push notifications support involves several configuration steps in both MobileFirst Server and the client application.  
 Continue reading for the server-side setup. Jump to [Client-side setup](#tutorials-to-follow-next).
 
-On the server-side, required set-up includes: mapping the push.mobileclient scope and configuring the needed vendor (APNS and/or GCM).
+On the server-side, required set-up includes: configuring the needed vendor (APNS and/or GCM) and mapping the "push.mobileclient" scope.
 
-### Scope mapping
-Map the **push.mobileclient** scope element to the application.
-
-1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
-2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
-
-    <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
-
-### GCM
+### Google Cloud Messaging
 Android devices use the Google Cloud Messaging (GCM) service for push notifications.  
 To setup GCM:
 
@@ -61,7 +52,9 @@ If your organization has a firewall that restricts the traffic to or from the In
 * GCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. 
 * Ensure that your firewall accepts outgoing connections from MobileFirst Server to android.googleapis.com on port 443.
 
-### APNS
+<img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
+
+### Apple Push Notifications Service
 iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
 To setup APNS:
 
@@ -81,51 +74,30 @@ To setup APNS:
 * During the production phase, use the apns-certificate-production.p12 production certificate file.
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
 
-<img class="gifplayer" alt="Image of adding the GCM credentials" src="server-side-setup.png"/>
+<img class="gifplayer" alt="Image of adding the APNS credentials" src="apns-setup.png"/>
 
-## Setting-up Authenticated Push Notifications
+### Scope mapping
+Map the **push.mobileclient** scope element to the application.
+
+1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
+2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
+
+    <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
+
+### Authenticated Push Notifications
 Authenticated notifications are push notifications that are sent to one or more `userIds`.  
 
-1. Map the **push.mobileclient** scope element to the security check used for the application.
+Map the **push.mobileclient** scope element to the security check used for the application.
     - Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
     - Select a security check. Then, click **Add**.
 
-    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
+<img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
     
-2. For testing purposes the existing **test** confidential client can be used, however for production scenarios a new confidential client should be created: 
-
-    <steps to configure a confidential client>  
-    <span style="colo:red">UPDATE THIS IMAGE</span>  
-    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
-
-<!-- **Header Parameters** 
-
-_Authorization_
-
-The token with the scope `messages.write` and `push.application._<applicationId>_` obtained using the confidential client in the format Bearer token. This parameter has to be mandatorily set.
- -->
-
-## Adding Tags
+## Defining Tags
 In the MobileFirst Operations Console → **[your application] → Push → Tags**, click **Create New**.  
 Provide the appropriate `Tag Name` and `Description` and click **Save**.
 
 <img class="gifplayer" alt="Adding tags" src="adding-tags.png"/>
-
-## Customizing Notifications
-Before sending the notification message, you can also customize the following notification attributes.  
-
-In the MobileFirst Operations Console → **[your application] → Push → Tags → Send Push tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
-
-### Android
-
-* Notification sound, how long a notification can be stored in the GCM storage, custom payload and more.
-* If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
-
-### iOS
-
-* Notification sound, custom payload, action key title, notification type and badge number.
-
-![customizing push notifications](customizing-push-notifications.png)
 
 ## Sending Push Notifications
 Push notifications can be sent either from the MobileFirst Operations Console or via REST APIs.
@@ -205,8 +177,31 @@ userIds | An array of users represented by their userIds to send the notificatio
 }
 ```
 
-### Sending the notification
+#### Sending the notification
 To test, use Swagger, POSTMan or other equivilent software:
+
+<!-- **Header Parameters** 
+
+_Authorization_
+
+The token with the scope `messages.write` and `push.application._<applicationId>_` obtained using the confidential client in the format Bearer token. This parameter has to be mandatorily set.
+ -->
+
+### Customizing Notifications
+Before sending the notification message, you can also customize the following notification attributes.  
+
+In the MobileFirst Operations Console → **[your application] → Push → Tags → Send Push tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
+
+### Android
+
+* Notification sound, how long a notification can be stored in the GCM storage, custom payload and more.
+* If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
+
+### iOS
+
+* Notification sound, custom payload, action key title, notification type and badge number.
+
+![customizing push notifications](customizing-push-notifications.png)
 
 ## Tutorials to follow next
 With the server-side now set-up, setup the client-side and handle received notifications.
