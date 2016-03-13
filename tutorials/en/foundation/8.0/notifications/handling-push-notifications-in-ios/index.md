@@ -47,6 +47,24 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
 
 
 ## Notifications API
+
+### MFPPush Instance
+
+All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharredInstance();`, and then calling `push.methodName()` throughout the view controller.
+
+Alternatively you can call `MFPPush.sharredInstance().methodName()` for each instance in which you need to access the push API methods.
+
+
+#### Initialization
+Initialization is required for the client application to connect to MFPPush service.
+
+* The `initialize` method should be called first before using any other MFPPush APIs.
+* It registers the callback function to handle received push notifications.
+
+```swift
+MFPPush.sharredInstance().initialize();
+```
+
 ### Client-side
 
 | Swift Methods                                                                                                | Description                                                             |
@@ -61,25 +79,6 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
 | [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
 | [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
 
-
-### API implementation
-
-All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharredInstance();`, and then calling `push.<api-call>` throughout the view controller.
-
-Alternatively you can call `MFPPush.sharredInstance().<api_call>` for each instance in which you need to access the push API methods.
-
-
-#### Initialization
-Required for the client application to connect to MFPPush service.
-
-* The API method should be called first before using any other MFPPush APIs.
-* Registers the callback function to handle received push notifications.
-
-```swift
-MFPPush.sharredInstance().initialize();
-```
-
-
 #### Is push supported
 Checks if the device supports push notifications.
 
@@ -93,17 +92,6 @@ if isPushSupported {
 }
 ```
 
-
-#### Send device token
-Sends the device token to the server to register the device with its unique identifier.
-
-```swift
-MFPPush.sharedInstance().sendDeviceToken(deviceToken)
-```
-
-**Note:** This is typically called in the **AppDelegate** in the `didRegisterForRemoteNotificationsWithDeviceToken` method
-
-
 #### Register device
 Register the device to the push notifications service.
 
@@ -116,6 +104,15 @@ MFPPush.sharedInstance().registerDevice({(response: WLResponse!, error: NSError!
     }
 })
 ```
+
+#### Send device token
+Sends the device token to the server to register the device with its unique identifier.
+
+```swift
+MFPPush.sharedInstance().sendDeviceToken(deviceToken)
+```
+
+**Note:** This is typically called in the **AppDelegate** in the `didRegisterForRemoteNotificationsWithDeviceToken` method
 
 
 #### Get tags
@@ -230,6 +227,7 @@ func application(application: UIApplication, didReceiveRemoteNotification   user
 ```
 
 <img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
+
 ## Sample application
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Xcode project.
