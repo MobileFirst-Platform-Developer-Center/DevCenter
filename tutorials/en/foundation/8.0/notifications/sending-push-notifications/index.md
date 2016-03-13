@@ -87,11 +87,12 @@ Map the **push.mobileclient** scope element to the application.
 ### Authenticated Push Notifications
 Authenticated notifications are push notifications that are sent to one or more `userIds`.  
 
-Map the **push.mobileclient** scope element to the security check used for the application.
-    - Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
-    - Select a security check. Then, click **Add**.
+Map the **push.mobileclient** scope element to the security check used for the application.  
 
-<img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
+1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
+2. Select a security check. Then, click **Add**.
+
+    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
     
 ## Defining Tags
 In the MobileFirst Operations Console → **[your application] → Push → Tags**, click **Create New**.  
@@ -126,16 +127,15 @@ In the MobileFirst Operations Console → **[your application] → Push → Send
 ### REST APIs
 When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
 
-#### API Usage
-The API is called using a POST request to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL:
+To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.   Example URL: 
 
 ```bash
-https://example.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
+https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
 > For more information about the Push REST API, see the user documentation.
 
+#### Notification payload
 The request can contain the following payload properties: 
 
 Payload Properties| Definition
@@ -180,14 +180,29 @@ userIds | An array of users represented by their userIds to send the notificatio
 ```
 
 #### Sending the notification
-To test, use Swagger, POSTMan or other equivilent software:
+The notification can be sent using different tools, for example POSTMan.
 
-<!-- **Header Parameters** 
+1. [Configure a Confidential Client](../../authentication-and-security/confidential-clients/).  
+    For testing purposes, the existing "Test Client" confidential client can be used.  
+    Or create a new confidential client:      
+    <img class="gifplayer" alt="Configuring a confidential client" src="scope-elements-push.png"/>
 
-_Authorization_
+2. Create a POST request to `http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages`  
+    - If using a remote MobileFirst Server, replace the hostname and port values with your own.
+    - Update the application identifier value with your own.
 
-The token with the scope `messages.write` and `push.application._<applicationId>_` obtained using the confidential client in the format Bearer token. This parameter has to be mandatorily set.
- -->
+3. Set the request with a content-type of `application/x-www-form-urlencoded`.  
+
+4. Set the following form parameters:
+  - `grant_type`: `client_credentials`
+  - `scope`: The **scope** you need access to.
+
+Where to put this???
+
+`HTTP header`: `Authorization: Basic dGVzdDp0ZXN0`
+
+What now???
+
 
 ### Customizing Notifications
 Before sending the notification message, you can also customize the following notification attributes.  
