@@ -52,7 +52,7 @@ NuGet is the package manager for the Microsoft development platform including .N
 
     ![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
 
-4. Click **Install**. This installs the IBM MobileFirst Platform Native SDK and its dependencies.
+4. Click **Install**. This installs the IBM MobileFirst Platform Native SDK and its dependencies.This step also generates an empty `mfpclient.resw` file in `strings` folder in the Visual Studio project.
 
 5. Ensure that, at a minimum, the following capabilities are enabled in `Package.appxmanifest`:
 
@@ -68,16 +68,16 @@ NuGet is the package manager for the Microsoft development platform including .N
     mfpdev app register
     ```
 
-The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.resw** file in the **strings** folder in the Visual Studio project, and adding to it the metadata that identifies the MobileFirst Server.
+The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by updating the **mfpclient.resw** file in the **strings** folder in the Visual Studio project, and adding to it the metadata that identifies the MobileFirst Server.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
-> 
+>
 > 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
-    
+
 > 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-    
+
 > 3. Once the application is registered, from the **Configuration Files** tab copy the contents of mfpclient.resw.  
-    
+
 > 4. In the Visual Studio project, create a new "mfpclient.resw" file in the **strings** folder and paste into it the copied contents from step (3) above.
 
 ## Updating the MobileFirst Native SDK
@@ -91,7 +91,7 @@ Nuget update
 
 ### mfpclient.resw
 
-Located at the root of the project, this file contains server connectivity properties and is user-editable:
+Located within the project in the `strings` folder, this file contains server connectivity properties and is user-editable:
 
 - `protocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTTPS`.
 - `WlAppId` - The identifier of the application. This should be same as the Application identifier in the server.
