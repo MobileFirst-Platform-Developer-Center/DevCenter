@@ -127,13 +127,14 @@ In the MobileFirst Operations Console → **[your application] → Push → Send
 ### REST APIs
 When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
 
-To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.   Example URL: 
+To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
+Example URL: 
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
-> For more information about the Push REST API, see the user documentation.
+> All available Push Notifications REST APIs are available in the "REST API Runtime Services" user documentation topic.
 
 #### Notification payload
 The request can contain the following payload properties: 
@@ -180,29 +181,50 @@ userIds | An array of users represented by their userIds to send the notificatio
 ```
 
 #### Sending the notification
-The notification can be sent using different tools, for example POSTMan.
+The notification can be sent using different tools, for example with Postman as described below:
 
-1. [Configure a Confidential Client](../../authentication-and-security/confidential-clients/).  
-    For testing purposes, the existing "Test Client" confidential client can be used.  
-    Or create a new confidential client:      
-    <img class="gifplayer" alt="Configuring a confidential client" src="scope-elements-push.png"/>
-
+1. [Configure a Confidential Client and create an access token](../../authentication-and-security/confidential-clients/).  
+    In this tutorial, the existing "Test Client" confidential client will be used.  
+    
 2. Create a POST request to `http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages`  
-    - If using a remote MobileFirst Server, replace the hostname and port values with your own.
+    - If using a remote MobileFirst Server, replace the `hostname` and `port` values with your own.
     - Update the application identifier value with your own.
 
-3. Set the request with a content-type of `application/x-www-form-urlencoded`.  
+3. Set a Header:
+    - **Authorization**: `Bearer eyXa01tTHZtMD0zNlJHWVZNVVViTzQ2Q3JTwrJPNK`
 
-4. Set the following form parameters:
-  - `grant_type`: `client_credentials`
-  - `scope`: The **scope** you need access to.
+    ![authorization header](postman_authorization_header.png)
 
-Where to put this???
+5. Set a Body:
+    - Replace "testUser" with the user you are logging in with in your application.
+    - Update other properties as described in [Notification payload](#notification-payload) above.
 
-`HTTP header`: `Authorization: Basic dGVzdDp0ZXN0`
+    ```json
+    {
+        "message" : {
+        "alert" : "Test message",
+      },
+      "settings" : {
+        "apns" : {
+          "badge" : 1,
+          "payload" : ""
+        },
+        "gcm" : {
+          "payload" : ""
+        },
+      },
+      "target" : {
+        "platforms" : [ "G"],
+        "userIds" : [ "testUser"],
+      }
+    }
+    ```
+    
+    ![authorization header](postman_json.png)
+    
+The logged-in user should have now received a notification:
 
-What now???
-
+![Image of the sample application](notifications-app.png)
 
 ### Customizing Notifications
 Before sending the notification message, you can also customize the following notification attributes.  
