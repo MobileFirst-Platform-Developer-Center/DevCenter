@@ -9,14 +9,16 @@ weight: 2
 ## Overview
 In order to send push notifications to iOS or Android devices, the MobileFirst Server first needs to be configured with the GCM details for Android or APNS certificate for iOS. Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID, only iOS devices, only Android devices, or based on the authenticated user.
 
+> **Note:** In the beta release, authenticated notifications are **not supported** in Cordova applications.
+
 **Prerequisite**: Make sure to read the [Push Notifications overview](../push-notifications-overview/) tutorial.
 
 #### Jump to
 
 * [Setting up Push Notifications](#setting-up-push-notifications)
 * [Adding Tags](#adding-tags)
+* [Customizing Notifications](#customizing-notifications)
 * [Sending Push Notifications](#sending-push-notifications)
-* [Customizing Push Notifications](#customizing-push-notifications)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Setting up Push Notifications
@@ -29,18 +31,27 @@ Map the **push.mobileclient** scope element to the application.
 1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
 2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
 
-<img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
+    <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
 
 ### Authenticated notifications
 Authenticated notifications are push notifications that are sent to one or more `userIds`.  
-For authenticated notifications, the **push.mobileclient** scope element should be mapped to the security check used for the application.
 
-1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
-2. Select a security check. Then, click **Add**.
+1. Map the **push.mobileclient** scope element to the security check used for the application.
+    - Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
+    - Select a security check. Then, click **Add**.
 
-> **Note:** In the beta release, authenticated notifications are **not supported** in Cordova applications.
+    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
+    
+2. Configure a Confidential Client: <steps to configure a confidential client>
+    <span style="colo:red">UPDATE THIS IMAGE</span>  
+    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
 
-<img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
+<!-- **Header Parameters** 
+
+_Authorization_
+
+The token with the scope `messages.write` and `push.application._<applicationId>_` obtained using the confidential client in the format Bearer token. This parameter has to be mandatorily set.
+ -->
 
 ### GCM
 Android devices use the Google Cloud Messaging (GCM) service for push notifications.  
@@ -89,45 +100,56 @@ Provide the appropriate `Tag Name` and `Description` and click **Save**.
 
 <img class="gifplayer" alt="Adding tags" src="adding-tags.png"/>
 
+## Customizing Notifications
+Before sending the notification message, you can also customize the following notification attributes.  
+
+In the MobileFirst Operations Console → **[your application] → Push → Tags → Send Push tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
+
+### Android
+
+* Notification sound, how long a notification can be stored in the GCM storage, custom payload and more.
+* If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
+
+### iOS
+
+* Notification sound, custom payload, action key title, notification type and badge number.
+
+![customizing push notifications](customizing-push-notifications.png)
+
+> For more information about the push rest API, see the topic about push notifications in the user documentation.
+
 ## Sending Push Notifications
 Push notifications can be sent either from the MobileFirst Operations Console or via REST APIs.
 
-### From the MobileFirst Operations Console
-In the MobileFirst Operations Console → **[your application] → Push → Send Push**.  
-Select who to send the notification to from the **Send To** dropdown, and provide the **Notification Text**. Then, click **Send**.
-
-From the MobileFirst Console, there are two types of notifications that can be sent: tag and broadcast notifications.
+### MobileFirst Operations Console
+When using the MobileFirst Operation Console to send notifications, there are two types of notifications that can be sent: tag and broadcast notifications.
 
 * Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
 
-    This can be done by selecting **Send To → Devices By Tags**.
+    In the MobileFirst Operations Console → **[your application] → Push → Send Push tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
-<img class="gifplayer" alt="Sending by tag" src="sending-by-tag.png"/>
+    <img class="gifplayer" alt="Sending by tag" src="sending-by-tag.png"/>
 
-* Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). 
+* Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). The `Push.all` tag can be programmatically unsubscribed.
 
-    This can be done by selecting **Send To → All**.
+    In the MobileFirst Operations Console → **[your application] → Push → Send Push tab**, select **All** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
     ![send-to-all](sending-to-all.png)
 
 * Notifications can also be sent a single Device ID, only iOS devices or only Android devices.
 
-### Via MobileFirst-provided REST APIs
-To send a push notification with the REST API use the PUSH Message (POST) API.
+### Push Notifications REST APIs
+When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
 
-**Path**
+#### API Usage
+The API is called using a POST request to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
+Example URL:
 
-`/apps/<applicationId>/messages`
+```bash
+https://example.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
+```
 
-**Example**
-
-`https://example.com:443/imfpush/v1/apps/myapp/messages`
-
-**Header Parameters** 
-
-_Authorization_
-
-The token with the scope `messages.write` and `push.application._<applicationId>_` obtained using the confidential client in the format Bearer token. This parameter has to be mandatorily set.
+The request can contain the following payload properties: 
 
 Payload Properties| Definition
 --- | ---
@@ -169,21 +191,9 @@ userIds | An array of users represented by their userIds to send the notificatio
   },
 }
 ```
-> For more information about the push rest API, see the topic about push notifications in the user documentation.
 
-## Customizing Push Notifications
-You can also customize the following:
-
-### Android
-
-* Notification sound, how long a notification can be stored in the GCM storage, custom payload and more.
-* If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
-
-### iOS
-
-* Notification sound, custom payload, action key title, notification type and badge number.
-
-![customizing push notifications](customizing-push-notifications.png)
+#### Sending the notification
+To test, use Swagger, POSTMan or other equivilent software:
 
 ## Tutorials to follow next
 With the server-side now set-up, setup the client-side and handle received notifications.
