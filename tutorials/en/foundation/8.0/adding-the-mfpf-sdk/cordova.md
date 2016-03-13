@@ -64,13 +64,13 @@ If using a locally installed server: From a **Command-line** window, navigate to
 
 1. Create a Cordova project or use an existing one.
 
-    Consider creating the project using the MobileFirst Cordova **application template**. The template adds to the Cordova project's **config.xml** file requierd MobileFirst-specific plug-in entries, as well as provides a MobileFirst-specific, ready-to-use, **index.js** file adjusted for MobileFirst application development.
+    Consider creating the project using the MobileFirst Cordova **application template**. The template adds to the Cordova project's **config.xml** file required MobileFirst-specific plug-in entries, as well as provides a MobileFirst-specific, ready-to-use, **index.js** file adjusted for MobileFirst application development.
 
     ```bash
     cordova create myapp  --template cordova-template-mfp
     ```
 
-    > The templated **index.js** enables use of additional MobileFirst features as such [Multilingual application  translation](../../using-the-mfpf-sdk/translation) and initialization options (see the user documentation for more information)
+    > The templated **index.js** enables use of additional MobileFirst features as such [Multilingual application  translation](../../using-the-mfpf-sdk/translation) and initialization options (see the user documentation for more information).
 
 2. Navigate to the root of the Cordova project: <code>cd myapp</code>
 
