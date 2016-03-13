@@ -134,7 +134,7 @@ Example URL:
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
-> All available Push Notifications REST APIs are available in the "REST API Runtime Services" user documentation topic.
+> To review all Push Notifications REST APIs, see the "REST API Runtime Services" topic in the user documentation.
 
 #### Notification payload
 The request can contain the following payload properties: 
