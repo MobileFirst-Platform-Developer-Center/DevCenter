@@ -222,8 +222,9 @@ The notification can be sent using different tools, for example with Postman as 
     
     ![authorization header](postman_json.png)
     
-The logged-in user should have now received a notification:
+After clicking on the **Send** button, the logged-in "testUser" should have now received a notification:
 
+*Update this image with the real one*
 ![Image of the sample application](notifications-app.png)
 
 ### Customizing Notifications
