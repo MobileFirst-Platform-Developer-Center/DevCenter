@@ -15,16 +15,17 @@ In order to send push notifications to iOS or Android devices, the MobileFirst S
 
 #### Jump to
 
-* [Setting up Push Notifications](#setting-up-push-notifications)
+* [Setting-up Push Notifications](#setting-up-push-notifications)
     * [Scope mapping](#scope-mapping)
     * [GCM](#gcm)
     * [APNS](#apns)
+* [Setting-up Authenticated Push Notifications](#set-up-authenticated-push-notifications)
 * [Adding Tags](#adding-tags)
 * [Customizing Notifications](#customizing-notifications)
 * [Sending Push Notifications](#sending-push-notifications)    
     * [MobileFirst Operations Console](#mobilefirst-operations-console)
     * [REST APIs](#rest-apis)
-* [Setting-up Authenticated Push Notifications](#set-up-authenticated-push-notifications)
+
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Setting up Push Notifications
@@ -81,6 +82,28 @@ To setup APNS:
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
 
 <img class="gifplayer" alt="Image of adding the GCM credentials" src="server-side-setup.png"/>
+
+## Setting-up Authenticated Push Notifications
+Authenticated notifications are push notifications that are sent to one or more `userIds`.  
+
+1. Map the **push.mobileclient** scope element to the security check used for the application.
+    - Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
+    - Select a security check. Then, click **Add**.
+
+    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
+    
+2. For testing purposes the existing **test** confidential client can be used, however for production scenarios a new confidential client should be created: 
+
+    <steps to configure a confidential client>  
+    <span style="colo:red">UPDATE THIS IMAGE</span>  
+    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
+
+<!-- **Header Parameters** 
+
+_Authorization_
+
+The token with the scope `messages.write` and `push.application._<applicationId>_` obtained using the confidential client in the format Bearer token. This parameter has to be mandatorily set.
+ -->
 
 ## Adding Tags
 In the MobileFirst Operations Console → **[your application] → Push → Tags**, click **Create New**.  
@@ -184,29 +207,6 @@ userIds | An array of users represented by their userIds to send the notificatio
 
 ### Sending the notification
 To test, use Swagger, POSTMan or other equivilent software:
-
-
-## Set-up Authenticated Push Notifications
-Authenticated notifications are push notifications that are sent to one or more `userIds`.  
-
-1. Map the **push.mobileclient** scope element to the security check used for the application.
-    - Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
-    - Select a security check. Then, click **Add**.
-
-    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
-    
-2. For testing purposes the existing **test** confidential client can be used, however for production scenarios a new confidential client should be created: 
-
-    <steps to configure a confidential client>  
-    <span style="colo:red">UPDATE THIS IMAGE</span>  
-    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
-
-<!-- **Header Parameters** 
-
-_Authorization_
-
-The token with the scope `messages.write` and `push.application._<applicationId>_` obtained using the confidential client in the format Bearer token. This parameter has to be mandatorily set.
- -->
 
 ## Tutorials to follow next
 With the server-side now set-up, setup the client-side and handle received notifications.
