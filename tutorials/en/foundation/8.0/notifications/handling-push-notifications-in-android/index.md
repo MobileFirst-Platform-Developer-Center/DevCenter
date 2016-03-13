@@ -5,7 +5,7 @@ relevantTo: [android]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
-weight: 4
+weight: 5
 ---
 ## Overview
 Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
@@ -108,6 +108,12 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 
 ## Notifications API
+
+### MFPPush Instance
+All API calls must be called on an instance of `MFPPush`.  This can be by created a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
+
+Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
+
 ### Client-side
 
 | Java Methods | Description |
@@ -120,12 +126,6 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 | [`MFPPush.getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
 | [`MFPPush.unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
 | [`MFPPush.unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
-
-
-### API implementation
-All API calls must be called on an instance of `MFPPush`.  This can be by created a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
-
-Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
 
 #### Initialization
 Required for the client application to connect to MFPPush service with the right application context.
@@ -182,7 +182,7 @@ MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
         // Failed to receive tags with error
     }
 });
-````
+```
 
 #### Subscribe
 Subscribe to desired tags.

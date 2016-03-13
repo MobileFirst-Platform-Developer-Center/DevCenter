@@ -2,7 +2,7 @@
 layout: tutorial
 title: Handling Push Notifications in iOS applications
 relevantTo: [ios]
-weight: 5
+weight: 4
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
@@ -49,7 +49,6 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
 ## Notifications API
 
 ### MFPPush Instance
-
 All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharedInstance();`, and then calling `push.methodName()` throughout the view controller.
 
 Alternatively you can call `MFPPush.sharedInstance().methodName()` for each instance in which you need to access the push API methods.
@@ -91,7 +90,7 @@ if isPushSupported {
 }
 ```
 
-#### Register device &amp; Send device token
+#### Register device &amp; send device token
 Register the device to the push notifications service.
 
 ```swift
