@@ -181,48 +181,37 @@ userIds | An array of users represented by their userIds to send the notificatio
 ```
 
 #### Sending the notification
-The notification can be sent using different tools, for example with Postman as described below:
+The notification can be sent using different tools.  
+For testing purposes, Postman is used as described below:
 
 1. [Configure a Confidential Client and create an access token](../../authentication-and-security/confidential-clients/).  
     In this tutorial, the existing "Test Client" confidential client will be used.  
     
-2. Create a POST request to `http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages`  
+2. Make a **POST** request to **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
     - If using a remote MobileFirst Server, replace the `hostname` and `port` values with your own.
     - Update the application identifier value with your own.
 
 3. Set a Header:
-    - **Authorization**: `Bearer eyXa01tTHZtMD0zNlJHWVZNVVViTzQ2Q3JTwrJPNK`
-
+    - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
+    - Replace the value after "Bearer" with the value of your access token from step (1) above.
+    
     ![authorization header](postman_authorization_header.png)
 
 5. Set a Body:
-    - Replace "testUser" with the user you are logging in with in your application.
-    - Update other properties as described in [Notification payload](#notification-payload) above.
+    - Update its properties as described in [Notification payload](#notification-payload) above.
+    - For example, by adding the **target** property with the **userIds** attribute, you can send a notification to specific registered users.
 
     ```json
     {
         "message" : {
-        "alert" : "Test message",
-      },
-      "settings" : {
-        "apns" : {
-          "badge" : 1,
-          "payload" : ""
-        },
-        "gcm" : {
-          "payload" : ""
-        },
-      },
-      "target" : {
-        "platforms" : [ "G"],
-        "userIds" : [ "testUser"],
-      }
+            "alert" : "Test message"
+        }
     }
     ```
     
     ![authorization header](postman_json.png)
     
-After clicking on the **Send** button, the logged-in "testUser" should have now received a notification:
+After clicking on the **Send** button, the device should have now received a notification:
 
 *Update this image with the real one*
 ![Image of the sample application](notifications-app.png)
