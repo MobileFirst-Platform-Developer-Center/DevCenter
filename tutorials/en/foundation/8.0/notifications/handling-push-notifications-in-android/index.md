@@ -295,6 +295,7 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 
 ### Sample usage
 1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+2. In the MobileFirst console, under **Applications** → **PushNotificationsAndroid** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
 3. Import the project to Android Studio, and run the sample by clicking the **Run** button.
 
 **Note:** The latest version of Google Play Services is required to be installed on the device for the sample to run.

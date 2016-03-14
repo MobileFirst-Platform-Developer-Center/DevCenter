@@ -208,12 +208,23 @@ var notificationReceived = function(message) {
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) the Cordova project.
 
+**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
+
 ### Sample usage
 
 1. From a **Command-line**, navigate to the project's root folder.
 2. Add a platform using the `cordova platform add` command.
 3. Register the application by running the command: `mfpdev app register`.
-4. Via the MobileFirst Operations Console, setup the MobileFirst Server with either GCM details or APNS certificate, and add tags.
+4. In the MobileFirst Operations Console
+    - Setup the MobileFirst Server with either GCM details or APNS certificate, and define tags.
+    - Under **Applications** → **PushNotificationsAndroid** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
 5. Run the application by running the `cordova run` command.
 
-**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
+**[Sending a notification](../sending-push-notifications):**
+
+* Tag notification
+    * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
+* Authenticated notification:
+    * Deploy the [**UserLogin** sample Security Check](../../authentication-and-security/user-authentication/security-check).
+    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
+    * Follow the instructions for [REST APIs](../sending-push-notifications#rest-apis) to send the notification.

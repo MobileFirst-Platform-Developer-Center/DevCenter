@@ -236,7 +236,6 @@ func application(application: UIApplication, didReceiveRemoteNotification   user
 4. Perform the required scope mapping for **push.mobileclient**.
 4. Run the app by clicking the **Run** button.
 
-
 **[Sending a notification](../sending-push-notifications):**
 
 * Tag notification
