@@ -14,7 +14,6 @@ IBM MQ Telemetry Transport (MQTT) is a lightweight messaging protocol that is de
 
 * [Getting Started with MQ Telemetry Transport](#getting-started-with-mq-telemetry-transport)
 * [Building a collaborative application (Whiteboard)](#building-a-collaborative-application-whiteboard)
-  * [Running the Application](#whiteboard-running-the-application)
   * [Collaboration](#whiteboard-collaboration)
   * [MQTT Client](#whiteboard-mqtt-client)
   * [Adding Callbacks](#whiteboard-adding-callbacks)
@@ -126,18 +125,6 @@ This scenario cannot be efficiently implemented by using traditional polling (HT
 * HTTP polling is high bandwidth (each request requires a now client connection) and result in poor latency.
 * Push notifications minimize bandwidth, but are inappropriate for small in-application updates.
 * MQTT publish/subscribe messaging minimizes bandwidth and latency: an MQTT connections is established once from client to server, and messages are pushed directly to the application with low latency.
-
-#### Whiteboard - Running the Application
-
-> **Note:** Before running the application you need to update your MQTT broker host and port number in `main.js`. You also need to update your Content Security Policy (CSP) inside `index.html` to include your MQTT broker.
-
-1. From the command-line, navigate to your project's root folder
-2. Add a platform by running the `cordova add platform` command
-3. Run the Cordova application by invoking the `cordova run` command
-
-
-<img alt="missing_alt" src="mqtt-devices.png" style="width:80%; margin:0 auto;" />
-
 
 #### Whiteboard - Collaboration
 
@@ -452,8 +439,9 @@ For more information go to:
 The sample **MQTTWhiteboard** is a Corodova application that demonstrates use of MQTT.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/MQTTWhiteboard/tree/release80) the Cordova project.  
 ### Sample usage
-1. [Add an MQTT broker](#whiteboard-running-the-application) `host` and `ip address` values to the `csp` meta tag.
+1. Before running the application you need to update your MQTT broker host and port number in `main.js`. You also need to update your Content Security Policy (CSP) inside `index.html` to include your MQTT broker.
 2. From a **Command-line** window, ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
 3. Add a platform by running the `cordova platform add` command.
 4. Run the Cordova application by running the `cordova run` command.
 
+<img alt="missing_alt" src="mqtt-devices.png" style="width:80%; margin:0 auto;" />
