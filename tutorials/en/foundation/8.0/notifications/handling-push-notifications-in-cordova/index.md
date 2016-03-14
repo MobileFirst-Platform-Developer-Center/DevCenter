@@ -29,8 +29,9 @@ Before iOS and Android Cordova applications are able to receive and display push
 * [Sample application](#sample-application)
 
 ## Notifications Configuration
-Create a new Cordova project or use an existing one.  
-If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova) tutorial.
+Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android.
+
+> If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova) tutorial.
 
 ### Adding the Push plug-in
 
@@ -73,6 +74,7 @@ Javascript Function | Description
 
 #### Initialization
 Initialize the **MFPPush** instance.
+
 - Required for the client application to connect to MFPPush service with the right application context.  
 - The API method should be called first before using any other MFPPush APIs.
 - Registers the callback function to handle received push notifications.
