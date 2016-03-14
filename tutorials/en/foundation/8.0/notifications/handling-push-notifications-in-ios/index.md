@@ -207,21 +207,24 @@ MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSErro
 
 ## Handling a push notification
 
-Declare the following notification method `didReceiveRemoteNotification` in your **AppDelegate**
+Push notifications are handled by the native iOS framework directly. Depending on your application lifecyle, different methods will be called by the iOS framework.
+
+For example if a simple notification is received while the application is running, **AppDelegate**'s `didReceiveRemoteNotification` will be triggered:
 
 ```swift
-TODO:// Update var's
+func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    print("Received Notification in didReceiveRemoteNotification \(userInfo)")
 
-func application(application: UIApplication, didReceiveRemoteNotification   userInfo: [NSObject : AnyObject]) {
-    print("Recieved Notification \(userInfo.description)")
-
-    var alert: String = "alert"
-    var alertID: String = "ID"
-    var alertPayload: String = "Payload"
-
-    //Handle notification
+    // display the alert body
+    if let notification = userInfo["aps"] as? NSDictionary,
+        let alert = notification["alert"] as? NSDictionary,
+        let body = alert["body"] as? String {
+            showAlert(body)
+    }
 }
 ```
+
+> Learn more about handling notifications in iOS from the Apple documentation: http://bit.ly/1ESSGdQ
 
 <img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
 
