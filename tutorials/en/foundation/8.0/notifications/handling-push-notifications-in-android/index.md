@@ -10,7 +10,7 @@ weight: 5
 ## Overview
 Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
 
-**Prerequisites:** 
+**Prerequisites:**
 
 * Make sure you have read the following tutorials:
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
@@ -33,14 +33,14 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 ### Project setup
 
 1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
-		
+
 	```bash
 	com.google.android.gms:play-services-gcm:8.4.0
 	```
-    
+
     And:
-    
-   
+
+
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundationPush',
@@ -64,7 +64,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 		```xml
 		<!-- Permissions -->
     	<uses-permission android:name="android.permission.WAKE_LOCK" />
-		
+
     	<!-- GCM Permissions -->
     	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     	<permission
@@ -114,6 +114,11 @@ All API calls must be called on an instance of `MFPPush`.  This can be by create
 
 Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
 
+### Challenge Handlers
+If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+
+> Learn more about challenge handlers in the [credential validation](../../authentication-and-security/credentials-validation/android) tutorial.
+
 ### Client-side
 
 | Java Methods | Description |
@@ -130,7 +135,7 @@ Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance 
 #### Initialization
 Required for the client application to connect to MFPPush service with the right application context.
 
-* The API method should be called first before using any other MFPPush APIs. 
+* The API method should be called first before using any other MFPPush APIs.
 * Registers the callback function to handle received push notifications.
 
 ```java
@@ -308,4 +313,3 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
     * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
     * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
     * Use the [REST APIs](../sending-push-notifications#rest-apis) to send the notification.
-

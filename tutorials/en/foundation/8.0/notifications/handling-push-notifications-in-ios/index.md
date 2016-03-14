@@ -53,6 +53,11 @@ All API calls must be called on an instance of `MFPPush`.  This can be by create
 
 Alternatively you can call `MFPPush.sharedInstance().methodName()` for each instance in which you need to access the push API methods.
 
+### Challenge Handlers
+If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+
+> Learn more about challenge handlers in the [credential validation](../../authentication-and-security/credentials-validation/ios) tutorial.
+
 ### Client-side
 
 | Swift Methods                                                                                                | Description                                                             |

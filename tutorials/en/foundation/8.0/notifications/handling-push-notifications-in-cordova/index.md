@@ -10,6 +10,8 @@ weight: 3
 ## Overview
 Before iOS and Android Cordova applications are able to receive and display push notifications, the the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
 
+> **Note:** In the beta release, authenticated notifications are **not supported** in Cordova applications.
+
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
@@ -40,7 +42,7 @@ If the MobileFirst Cordova SDK is not already present in the project, follow the
     cordova plugin add cordova-plugin-mfp-push
     ```
 
-3. Build the Cordova project by running the command: 
+3. Build the Cordova project by running the command:
 
     ```bash
     cordova build
@@ -58,7 +60,7 @@ In Xcode, enable push notifications for your application in the **Capabilities**
 ### Client-side
 Javascript Function | Description
 --- | ---
-[`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance. 
+[`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance.
 [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Does the device support push notifications.
 [`MFPPush.registerDevice(success, failure)`](#register-device) | Registers the device with the Push Notifications Service.
 [`MFPPush.getTags(success, failure)`](#get-tags) | Retrieves all the tags available in a push notification service instance.
@@ -70,17 +72,17 @@ Javascript Function | Description
 ### API implementation
 
 #### Initialization
-Initialize the **MFPPush** instance. 
+Initialize the **MFPPush** instance.
 - Required for the client application to connect to MFPPush service with the right application context.  
-- The API method should be called first before using any other MFPPush APIs. 
+- The API method should be called first before using any other MFPPush APIs.
 - Registers the callback function to handle received push notifications.
 
-```javascript 
+```javascript
 MFPPush.initialize (
     function(successResponse) {
         alert("Successfully intialized");
         MFPPush.registerNotificationsCallback(notificationReceived);
-    }, 
+    },
     function(failureResponse) {
         alert("Failed to initialize");
     }
@@ -90,7 +92,7 @@ MFPPush.initialize (
 #### Is push supported
 Check if the device supports push notifications.
 
-```javascript 
+```javascript
 MFPPush.isPushSupported (
     function(successResponse) {
         alert("Push Supported: " + successResponse);
@@ -100,7 +102,7 @@ MFPPush.isPushSupported (
     }
 );
 ```
-    
+
 #### Register device
 Register the device to the push notifications service.
 
@@ -114,9 +116,9 @@ MFPPush.registerDevice(
     }
 );
 ```
-    
+
 > *Optional*. *iOS-only*. Before calling the above `registerDevice` API method, use the `setOptions(options)` API method to enable or disable various options, such as alerts, notification sound, badge and interactive notifications categories.  
-> 
+>
 > Read more about the the `setOptions(options)` API method in the user documentation.
 
 #### Get tags
@@ -224,7 +226,3 @@ var notificationReceived = function(message) {
 
 * Tag notification
     * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
-* Authenticated notification:
-    * Deploy the [**UserLogin** sample Security Check](../../authentication-and-security/user-authentication/security-check).
-    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
-    * Follow the instructions for [REST APIs](../sending-push-notifications#rest-apis) to send the notification.
