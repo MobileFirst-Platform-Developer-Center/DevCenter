@@ -25,6 +25,8 @@ This can either be done entirely with custom code, or using one of MobileFirst P
 ## Confidential Client
 For the external resource server to be able to use the `authorization.introspect` scope, the server needs to be registered as a **confidential client** via the MobileFirst Operations Console.  
 
+> Learn more in the [Confidential Clients](../confidential-clients/) tutorial.
+
 In the MobileFirst Operations Console, under **Settings** → **Confidential Clients**, add a new entry. Choose a **client ID** and **API secret** value. Make sure to set `authorization.introspect` as the **Allowed Scope**.
 
 <img class="gifplayer" alt="Configurting a confidential client" src="confidential-client.png"/>

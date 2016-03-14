@@ -204,7 +204,7 @@ For testing purposes, Postman is used as described below:
     ```json
     {
         "message" : {
-            "alert" : "Test message"
+            "alert" : "Hello World!"
         }
     }
     ```
@@ -213,7 +213,6 @@ For testing purposes, Postman is used as described below:
     
 After clicking on the **Send** button, the device should have now received a notification:
 
-*Update this image with the real one*
 ![Image of the sample application](notifications-app.png)
 
 ### Customizing Notifications
