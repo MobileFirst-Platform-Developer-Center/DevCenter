@@ -95,10 +95,10 @@ In addition to the normal responses that your resource may generate, there are a
 An HTTP **401** response status with the HTTP header `WWW-Authenticate : Bearer` means that no token was found on the `Authorization` header of the original request.
 
 ### invalid_token
-An HTTP **401** response status with the HTTP header `WWW-Authenticate : error="invalid_token"` means that the token that was sent is **invalid** or **expired**.
+An HTTP **401** response status with the HTTP header `WWW-Authenticate: Bearer error="invalid_token"` means that the token that was sent is **invalid** or **expired**.
 
 ### insufficient_scope
-An HTTP **403** response status with the HTTP header `WWW-Authenticate : error="insufficient_scope" scope="scopeA scopeB"` means that the token found in the original request did not match the **scope required by this resource**. The header also includes the scope it expected.
+An HTTP **403** response status with the HTTP header `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"` means that the token found in the original request did not match the **scope required by this resource**. The header also includes the scope it expected.
 
 When making a request, if you do not know which scope is required by the resource, this is the way to determine the answer.  
 For example, request a token with the default scope (`""`) and make a request to the resource. Then you can extract the required scope from the 403 response and request a new token, valid for this scope.
