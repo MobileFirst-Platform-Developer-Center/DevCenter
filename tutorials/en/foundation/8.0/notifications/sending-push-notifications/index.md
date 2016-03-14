@@ -184,14 +184,19 @@ userIds | An array of users represented by their userIds to send the notificatio
 The notification can be sent using different tools.  
 For testing purposes, Postman is used as described below:
 
-1. [Configure a Confidential Client and create an access token](../../authentication-and-security/confidential-clients/).  
-    In this tutorial, the existing "Test Client" confidential client will be used.  
+1. [Configure a Confidential Client](../../authentication-and-security/confidential-clients/).   
+    Sending a Push Notification via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>.`
     
-2. Make a **POST** request to **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
+    <img class="gifplayer" alt="Configure a confidential client" src="push-confidential-client.png"/>
+
+2. [Create an access token](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
+    
+    
+3. Make a **POST** request to **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
     - If using a remote MobileFirst Server, replace the `hostname` and `port` values with your own.
     - Update the application identifier value with your own.
 
-3. Set a Header:
+4. Set a Header:
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
     - Replace the value after "Bearer" with the value of your access token from step (1) above.
     
