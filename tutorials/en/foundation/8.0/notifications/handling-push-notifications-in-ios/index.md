@@ -230,14 +230,18 @@ func application(application: UIApplication, didReceiveRemoteNotification   user
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Xcode project.
 
 ### Sample usage
-1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. Import the project to Xcode using the .xcworkspace file, and run the sample by clicking the **Run** button.
+1. Import the project to Xcode using the .xcworkspace file.
+2. Configure the project with your bundleId (based on bundleId that you have created for your push notifications certificate .p12 file).
+3. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+4. Perform the required scope mapping for **push.mobileclient**.
+4. Run the app by clicking the **Run** button.
+
 
 **[Sending a notification](../sending-push-notifications):**
 
 * Tag notification
-    * Use the **MobileFirst Operations Console → [your application] → Push screen**.
+    * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
 * Authenticated notification:
-    * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
+    * Deploy the [**UserLogin** sample Security Check](../../authentication-and-security/user-authentication/security-check).
     * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
-    * Use the [REST APIs](../sending-push-notifications#rest-apis) to send the notification.
+    * Follow the instructions for [REST APIs](../sending-push-notifications#rest-apis) to send the notification.
