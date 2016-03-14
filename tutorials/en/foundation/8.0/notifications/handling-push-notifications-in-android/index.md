@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Android applications
+title: Handling Push Notifications in Android
 relevantTo: [android]
 downloads:
   - name: Download Native project
