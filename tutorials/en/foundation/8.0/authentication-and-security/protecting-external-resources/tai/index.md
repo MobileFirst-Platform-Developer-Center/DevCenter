@@ -11,7 +11,7 @@ downloads:
 
 ## Overview
 MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).  
-The Java library is provided as a .jar file (**com.ibm.imf.oauth.common_8.0.0.jar**).
+The Java library is provided as a .jar file (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
 
 This tutorial will show how to protect a simple Java Servlet, `api/protected`, using a scope (`accessRestricted`).
 
@@ -32,7 +32,7 @@ This tutorial will show how to protect a simple Java Servlet, `api/protected`, u
     4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
     5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
 <br/>
-2. Add the `com.ibm.imf.oauth.common_8.0.0.jar` file to the WebSphere application server inside **usr/extension/lib**.
+2. Add the `com.ibm.mfp.oauth.tai-8.0.0.jar` file to the WebSphere application server inside **usr/extension/lib**.
 3. Add the `OAuthTai-8.0.mf` file to the WebSphere applicaiton server inside **usr/extension/lib/features**.
 
 ### web.xml setup
@@ -90,11 +90,15 @@ Modify the WebSphere application server's `server.xml` file to your external res
     </usr_OAuthTAI>
     ```
     - **authorizationURL**:  Either your MobileFirst Server (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
-    - **clientID**: The Resource server must be a registered confidential client, to learn how to register a confidential client
+    - **clientID**: The Resource server must be a registered confidential client, to learn how to register a confidential client read the [Confidential Clients](https://pages.github.ibm.com/MFPSamples/tutorials/en/foundation/8.0/authentication-and-security/confidential-clients/) tutorial.
     - **clientSecret**: The Resource server must be a registered confidential client, to learn how to register a confidential client
-    - **cacheSize**: TAI has an optional cache which can hold tokens as keys, and introspection data as values so that a token that comes in the request from the client won't need to be introspected again in a short time interval. The default size is 50,000 tokens.
-    - **scope**: The resource server authenticates against scope(s). The scope in this case is a Security Check.
-
+    - **cacheSize (optional)**: TAI uses the Java-Token-Validator cache to cache tokens and introspection data data as values so that a token that comes in the request from the client won't need to be introspected again in a short time interval.
+    	
+     The default size is 50,000 tokens. 
+     
+     If the you want to guarantee that the tokens are introspected on each request you should set cache to 0.
+    - **scope**: The resource server authenticates against scope(s). A scope could be a security check or a scope element mapped to security checks.
+    
 ## Sample
 You can deploy the project on supported application servers (WebSphere Full profile and WebSphere Liberty profile).  
 [Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80).
