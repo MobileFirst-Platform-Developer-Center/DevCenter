@@ -6,6 +6,12 @@ if [ $TRAVIS_PULL_REQUEST == "true" ]; then
   exit 0
 fi
 
+# only proceed script when on "staging" branch
+# if [ $TRAVIS_BRANCH != 'staging' ]; then
+#   echo "this is not the staging branch, exiting"
+#   exit 0
+# fi
+
 # enable error reporting to the console
 set -e
 
