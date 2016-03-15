@@ -90,7 +90,7 @@ Modify the WebSphere application server's `server.xml` file to your external res
     </usr_OAuthTAI>
     ```
     - **authorizationURL**:  Either your MobileFirst Server (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
-    - **clientID**: The Resource server must be a registered confidential client, to learn how to register a confidential client read the [Confidential Clients](https://pages.github.ibm.com/MFPSamples/tutorials/en/foundation/8.0/authentication-and-security/confidential-clients/) tutorial.
+    - **clientID**: The Resource server must be a registered confidential client, to learn how to register a confidential client read the [Confidential Clients](../../confidential-clients/) tutorial.
     - **clientSecret**: The Resource server must be a registered confidential client, to learn how to register a confidential client
     - **cacheSize (optional)**: TAI uses the Java-Token-Validator cache to cache tokens and introspection data data as values so that a token that comes in the request from the client won't need to be introspected again in a short time interval.
     	
