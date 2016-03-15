@@ -60,11 +60,11 @@ To disable Application Authenticity, click the **Delete Authenticity File** butt
 ## Configuring Application Authenticity
 The predefined application-authenticity security check can be configured with the following property:
 
-- `expirationInSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
+- `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
 
 Once an authenticity check has been performed, it will not be performed again until the token has expired based on the set value.
 
-#### To configure the `expirationInSec` property:
+#### To configure the `expirationSec` property:
 
 1. Load the MobileFirst Operations Console and navigate to **[your application]** → **Security** → **Security Check Configurations** and click on **Create New**.
 
