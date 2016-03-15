@@ -218,4 +218,4 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
 
     ![Image showing a being-debugged adapter](debugging.png)
 
-> For instructions how to use IntelliJ to debug Java adapters see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/21/using-intellij-to-develop-adapters) Blog Post.
+> For instructions how to use IntelliJ to debug Java adapters see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/04/01/using-intellij-to-develop-adapters) Blog Post.
