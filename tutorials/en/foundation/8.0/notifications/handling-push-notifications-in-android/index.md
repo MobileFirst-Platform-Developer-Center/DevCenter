@@ -123,14 +123,14 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 
 | Java Methods | Description |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`MFPPush.initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
-| [`MFPPush.isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
-| [`MFPPush.registerDevice(MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
-| [`MFPPush.getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
-| [`MFPPush.subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
-| [`MFPPush.getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
-| [`MFPPush.unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
-| [`MFPPush.unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
+| [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
+| [`isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
+| [`registerDevice(MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
 
 #### Initialization
 Required for the client application to connect to MFPPush service with the right application context.
