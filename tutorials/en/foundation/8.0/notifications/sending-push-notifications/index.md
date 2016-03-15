@@ -16,7 +16,7 @@ In order to send push notifications to iOS or Android devices, the MobileFirst S
 #### Jump to
 
 * [Setting-up Push Notifications](#setting-up-push-notifications)
-    * [Google Cloud Messaing](#google-cloud-messaging)
+    * [Google Cloud Messaging](#google-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Scope mapping](#scope-mapping)
     * [Authenticated Push Notifications](#authenticated-push-notifications)
