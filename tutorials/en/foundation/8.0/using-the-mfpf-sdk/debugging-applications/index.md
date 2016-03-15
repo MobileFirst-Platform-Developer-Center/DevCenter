@@ -112,4 +112,4 @@ You can use filters to follow only what is required.
 
 > For more information, see the [WireShark](http://www.wireshark.org) website.
 
-![WirShark](wireshark.png)
+![Wireshark](wireshark.png)

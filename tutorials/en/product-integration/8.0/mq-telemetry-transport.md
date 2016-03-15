@@ -435,7 +435,7 @@ For more information go to:
 * [https://www.ibmdw.net/messaging/messagesight/](https://www.ibmdw.net/messaging/messagesight/)
 * [http://www.youtube.com/watch?v=kcEDoRqhkhA](http://www.youtube.com/watch?v=kcEDoRqhkhA)
 
-## Sample applications
+## Sample application
 The sample **MQTTWhiteboard** is a Corodova application that demonstrates use of MQTT.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/MQTTWhiteboard/tree/release80) the Cordova project.  
 ### Sample usage
