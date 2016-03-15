@@ -15,7 +15,6 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 * cordova-plugin-mfp
 * cordova-plugin-mfp-push
 * cordova-plugin-mfp-jsonstore
-* cordova-plugin-mfp-fips
 
 #### Jump to:
 
@@ -42,9 +41,6 @@ The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For 
 
 #### cordova-plugin-mfp-push
 The cordova-plugin-mfp-push plug-in provides permissions needed to use push notification from the MobileFirst Server for Android applications. Additional setup for using push notification is required. For more information on push notification, see the [Push notifications tutorial](../../notifications/push-notifications-overview/).
-
-#### cordova-plugin-mfp-fips
-The cordova-plugin-mfp-fips plug-in enables FIPS related features. For more information about FIPS, see the [user documentation topic for FIPS](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 **Prerequisites:**
 
