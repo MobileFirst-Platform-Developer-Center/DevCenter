@@ -110,9 +110,7 @@ The `mfpdev app register` CLI command first connects to the MobileFirst Server t
 
 > 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
 
-> 3. Once the application is registered, from the **Configuration Files** tab copy the contents of mfpclient.properties.  
-    
-> 4. In the Android Studio project, create a new "mfpclient.properties" file under **[project root]/app/src/main/assets/** and paste into it the copied text from step (3) above.
+> 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.properties** file. Follow the onscreen instructions to add the file to your project.
 
 ### Creating an WLClient instance
 Before using any MobileFirst-supplied APIs, first create a `WLClient` instance in the `onCreate` method:

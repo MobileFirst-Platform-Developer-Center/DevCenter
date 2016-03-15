@@ -83,9 +83,7 @@ The `mfpdev app register` CLI command first connects to the MobileFirst Server t
     
 > 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
     
-> 3. Once the application is registered, from the **Configuration Files** tab copy the contents of mfpclient.plist.  
-    
-> 4. In the Xcode project, create a new "mfpclient.plist" file and paste into it the copied contents from step (3) above.
+> 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
 
 ### Completing the setup process
 In Xcode, right-click the project entry, click on **Add Files To [ProjectName]** and select the **mfpclient.plist** file, located at the root of the Xcode project.
