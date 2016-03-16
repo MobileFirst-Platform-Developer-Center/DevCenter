@@ -44,15 +44,13 @@ Several predefined security checks available:
 ### Scope
 You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
 A scope is a space-separated list of zero or more **scope elements**, for example `element1 element2 element3`.
+The MobileFirst security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope.
 
 #### Scope Element
 A scope element can be either:
 
 * The name of a security check.
 * An arbitrary keyword such as `access-restricted` or `deletePrivilege` which defines the level of security needed for this resource. This keyword will later be mapped to a security check.
-
-#### Default Scope
-By default, all resources are protected by a default scope that restricts access to registered mobile applications only.
 
 #### Scope Mapping
 By default, the **scope elements** you write in your **scope** are mapped to a **security check with the same name**.  
@@ -69,12 +67,12 @@ scope = `access-restricted deletePrivilege`
 
 * In app A
   * `access-restricted` is mapped to `PinCodeAttempts`
-  * `deletePrivilege` is mapped to the default scope
+  * `deletePrivilege` is mapped to an empty string
 * In app B
   * `access-restricted` is mapped to `PinCodeAttempts`
   * `deletePrivilege` is mapped to `UserLogin`
 
-> If you do not select any security check in the "Add New Scope Element Mapping" popup, your scope element will be mapped to the **default scope**.
+> To map your scope element to an empty string, do not select any security check in the "Add New Scope Element Mapping" popup.
 
 <img class="gifplayer" alt="Scope mapping" src="scope_mapping.png"/>
 
@@ -105,7 +103,7 @@ In the above example, the `deleteUser` method uses the annotation `@OAuthSecurit
 
 A scope can be made of several scope elements, space-separated: `@OAuthSecurity(scope="element1 element2 element3")`.
 
-If you do not specify the `@OAuthSecurity` annotation, or set the scope to an empty string, the method is protected by the MobileFirst default security scope.
+If you do not specify the `@OAuthSecurity` annotation, or set the scope to an empty string, the MobileFirst security framework still requires an access token for any incoming request.
 
 You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
 
@@ -117,10 +115,10 @@ You can protect a JavaScript adapter procedure by assigning a scope to the proce
 ```
 A scope can be made of several scope elements, space-separated: `scope="element1 element2 element3"`
 
-If you do not specify any scope, or use an empty string - the procedure will be protected by the MobileFirst default security scope.
+If you do not specify any scope, or use an empty string - the MobileFirst security framework still requires an access token for any incoming request.
 
 ### Disabling protection
-Access to a resource with **disabled protection** is allowed to every client. No security or application management features are enforced on access to such resource.
+**Disabling protection** allows any client to access the resource, the MobileFirst security framework will **not** require an access token.
 
 #### Java adapters
 If you want to disable protection, you can use: `@OAuthSecurity(enabled=false)`.

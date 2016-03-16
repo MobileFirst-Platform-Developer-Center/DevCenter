@@ -61,13 +61,14 @@ In a real setting, the bellow should be implemented in your backend logic, with 
 2. Set the request with a content-type of `application/x-www-form-urlencoded`.  
 3. Set the following two form parameters:
   - `grant_type`: `client_credentials`
-  - `scope`: The **scope** you need access to.
+  - `scope`: Use the scope protecting the resource.  
+  If you don't use a scope to protect your resource, use an empty string.
 
-    ![Creating a confidential client](confidential-client-steps-1-3.png)
+    ![Image of postman configuration](confidential-client-steps-1-3.png)
 
 4. The request should be authenticated using [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). Use your confidential client's **ID** and **secret**.
 
-    ![Creating a confidential client](confidential-client-step-4.png)
+    ![Image of postman configuration](confidential-client-step-4.png)
 
     Outside of Postman, if using the **test** confidential client, you should have the **HTTP header** set to `Authorization: Basic dGVzdDp0ZXN0` (`test:test` encoded using **base64**).
 
@@ -99,5 +100,5 @@ An HTTP **401** response status with the HTTP header `WWW-Authenticate: Bearer e
 ### insufficient_scope
 An HTTP **403** response status with the HTTP header `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"` means that the token found in the original request did not match the **scope required by this resource**. The header also includes the scope it expected.
 
-When making a request, if you do not know which scope is required by the resource, this is the way to determine the answer.  
-For example, request a token with the default scope (`""`) and make a request to the resource. Then you can extract the required scope from the 403 response and request a new token, valid for this scope.
+When making a request, if you do not know which scope is required by the resource, `insufficient_scope` is the way to determine the answer.  
+For example, request a token with an empty string (`""`) as the scope value and make a request to the resource. Then, you can extract the required scope from the 403 response and request a new token for this scope.
