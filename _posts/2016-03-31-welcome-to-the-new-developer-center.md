@@ -24,7 +24,8 @@ Here's a quick list of what you can expect:
 
 ![Code snippet example]({{site.baseurl}}/assets/blog/2015-12-06-welcome-to-the-new-developer-center/code-snippets.png)
 
-* Improved discovery of tutorials with new top and sidebar menus
+* GIF animations to better illustrate product HowTo
+* Improved discovery of tutorials with new top and sidebar navigation menus
 * Improved PDF display of tutorials for [offline reading]({{site.baseurl}}/downloads/)
 * Improved [blog]({{site.baseurl}}/blog/) experience
     * Easily navigate throughout all blog posts

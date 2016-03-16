@@ -1,13 +1,30 @@
 ---
 title: IBM MobileFirst Platform Foundation Responds to Google Play Store Announcement of Blocking Apps Using Vulnerable Cordova Versions
 date: 2016-02-16
+pinned: true
 tags:
 - MobileFirst_Platform
 - Cordova
-- Google Play Store
+- Google_Play_Store
 author:
   name: Karen Tran
 ---
+> [UPDATE Mar. 16, 2016] MANDITORY IFIX INSTALL
+For Google to identify patched applications built with IBM MobileFirst Platform Foundation on the Google Play Store, customers must install the iFixes with the build dates below or iFixes with later build dates. This is MANDITORY for all Android applications built with MobileFirst Platform Foundation submitted to the Google Play Store.
+
+PI58161 ADD BUILD ID TO PROPERTIES FILE TO IDENTIFY MOBILEFIRST PLATFORM FOUNDATION APPLICATIONS.  
+These iFixes embed the Build ID of the last IBM MobileFirst build that was used to build the app.
+
+* 7.1.0 IF20160307-2032 and later builds
+* 7.0.0 IF20160303-2248 and later builds
+* 6.3.0 IF20160305-1806 and later builds
+* 6.2.0 IF20160305-1300 and later builds
+* 6.1.0 IF20160305-1310 and later builds
+
+After installing the iFix, rebuild the application, create a new APK, and upload it to the Google Play Store.
+
+<hr/>
+
 > [UPDATE Feb. 17, 2016] IBM has assurance from Google that the Google Play Store will not block MobileFirst Platform Foundation apps that have the IBM patched distribution of Cordova for these CVEs. The blocking was scheduled to begin on May 9th. The warning emails will discontinue being sent within two to three weeks.
 
 The Google Play Store is notifying app developers that "Beginning May 9, 2016, Google Play will block publishing of any new apps or updates that use pre-4.1.1 versions of Apache Cordova. " due to Apache Cordova pre-4.1.1 containing security vulnerabilities. Google is suggesting that customers should upgrade to Apache Cordova 4.1.1 or higher.  While it is correct that open source Apache Cordova prior to version 4.1.1 contains these vulnerabilities, **this is not the case for IBM MobileFirst Platform Foundation customers who have applied the IBM iFixes for the vulnerabilities**. The iFixes are available from Fix Central with any build dated July 7, 2015 or afterwards. That is, all builds dated on or after July 7, 2015 contain all of the CVE fixes.
