@@ -26,6 +26,7 @@ The MobileFirst SDK feature set provides the following:
 #### Jump to:
 
 * [Cordova application development](#cordova-application-development)
+* [MobileFirst APIs](#mobilefirst-apis)
 * [Previewing an application's web resources](#previewing-an-application-39-s-web-resources)
 * [CrossWalk support](#crosswalk-support)
 * [Further reading](#further-reading)
@@ -59,6 +60,11 @@ Applications can be modified using 3rd party packages to achieve requirements su
 
 - [uglify-js](https://www.npmjs.com/package/uglify-js)
 - [clean-css](https://www.npmjs.com/package/clean-css)
+
+## MobileFirst APIs
+After [adding the MobileFirst Cordova SDK](../../adding-the-mfpf-sdk/cordova) to a Cordova application, the MobileFirst set of API methods is now available for use.
+
+> For a complete list of available API methods, refer to the "Client API changes in V8.0.0" topic in the user documentation.
 
 ## Previewing an application's web resources
 A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Platform Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering. 
