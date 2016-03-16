@@ -10,7 +10,7 @@ When accessing a resource protected by the MobileFirst Platform framework, the M
 Non-mobile clients that do not use the MobileFirst client SDK can also request protected resources, by acting as a **confidential client**.  
 For example, your backend server may need to request a protected resource, or use one of the MobileFirst Platform **REST APIs** such as **Push Notifications**.
 
-Registered confidential clients can obtain a token to be used in all requests to the MobileFirst Server.
+Registered confidential clients can obtain a token to be used in all requests to the MobileFirst Server. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification.
 
 ## Registering the confidential client
 In the MobileFirst Operations Console, under **Settings** → **Confidential Clients**, click on **Create New** to add a new entry.  You will need to provide the following:
@@ -78,7 +78,7 @@ The response for this request will contain a `JSON` object, including the **acce
   "access_token": "eyJhbGciOiJSUzI1NiIsImp ...",
   "token_type": "Bearer",
   "expires_in": 3599,
-  "scope": "**"
+  "scope": "sendMessage accessRestricted"
 }
 ```
 
