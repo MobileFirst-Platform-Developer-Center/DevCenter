@@ -33,7 +33,7 @@ The structure of the URL used to access the adapter resource is:
 * When using JavaScript adapters, parameters are passed as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be **an array of ordered, unnamed values**. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
 
 ### Handling security
-If your resource is protected by a scope, the request prompts you to provide a valid authorization header. Note that by default, MobileFirst uses a simple security scope even if you did not specify any. So unless you specifically disabled security, the endpoint is always protected.
+The MobileFirst security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope. So unless you specifically disabled security, the endpoint is always protected.
 
 To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the method/class:
 
@@ -63,7 +63,8 @@ For testing purposes set **Allowed Scopes** as `**`.
 1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
 
 * `grant_type` : `client_credentials`
-* `scope` : `**`
+* `scope` : Use the scope protecting the resource.  
+If you don't use a scope to protect your resource, use an empty string.
 
 
   ![Image of Postman Body configuration](Body_configuration.png)
