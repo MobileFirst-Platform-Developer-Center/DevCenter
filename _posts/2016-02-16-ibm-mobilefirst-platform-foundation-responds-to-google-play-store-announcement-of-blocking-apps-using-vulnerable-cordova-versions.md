@@ -9,12 +9,10 @@ tags:
 author:
   name: Karen Tran
 ---
-<blockquote><strong>[UPDATE Mar. 16, 2016] MANDITORY IFIX</strong>
-For Google to identify patched applications built with IBM MobileFirst Platform Foundation on the Google Play Store, <i>customers must install the iFixes with the build dates as mentioned below, or iFixes with a later build date.</i>
-<br/>
-This is <strong>mandatory</strong> for all Android applications built with MobileFirst Platform Foundation submitted to the Google Play Store.
-<br/>
-Related APAR: PI58161 ADD BUILD ID TO PROPERTIES FILE TO IDENTIFY MOBILEFIRST PLATFORM FOUNDATION APPLICATIONS</blockquote>
+> **[UPDATE Mar. 16, 2016] Mandatory iFix**
+For Google to identify patched applications built with IBM MobileFirst Platform Foundation on the Google Play Store, *customers must install the iFixes with the build dates as mentioned below, or iFixes with a later build date.* This is <strong>mandatory</strong> for all Android applications built with MobileFirst Platform Foundation that were submitted to the Google Play Store.
+
+Related APAR: PI58161 ADD BUILD ID TO PROPERTIES FILE TO IDENTIFY MOBILEFIRST PLATFORM FOUNDATION APPLICATIONS
 
 Hybrid applications that are built using MobileFirst Studio from the following iFixes, will have the build ID embedded in them. Google will use the Build ID to identify IBM MobileFirst apps. This in turn will ensure Google will not block the applications from the Google Play Store.
 
