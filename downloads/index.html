@@ -5,7 +5,7 @@ title: Downloads
 <div class="container">
     <h2>Downloads</h2>
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#installFoundation" aria-controls="foundation" role="tab" data-toggle="tab">IBM MobileFirst Platform Foundation v8.0</a></li>
+        <li role="presentation" class="active"><a href="#installFoundation" aria-controls="foundation" role="tab" data-toggle="tab">IBM MobileFirst Platform Foundation v8.0 beta</a></li>
         <li role="presentation"><a href="#downloadPreviousReleases" aria-controls="previousReleases" role="tab" data-toggle="tab">Previous MobileFirst Platform Foundation releases</a></li>
         <li role="presentation"><a href="#downloadTutorialsForOfflineReading" aria-controls="tutorialsForOfflineReading" role="tab" data-toggle="tab">Tutorials for offline reading</a></li>
     </ul>
@@ -13,16 +13,16 @@ title: Downloads
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="installFoundation">
             <br/>
-            <p>The IBM MobileFirst Platform Foundation v8.0 Development Kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.</p>
+            <p>The IBM MobileFirst Platform Foundation v8.0 beta Development Kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.</p>
             
             <p>These components can be installed either seperately via online repositories which contain the latest releases, or downloaded bundled together through the MobileFirst Platform Foundation Development Kit Installer, for future or offline use.</p>
             
             <blockquote>To learn more about the MobileFirst Platform Foundation components and the Development Kit Installer, visit the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/">Setting up the MobileFirst development environment</a> tutorial.</blockquote>
                 
             <br/>
-            <h4>Installation instructions:</h4>
+            <h3>Installation instructions:</h3>
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#get-devkit" aria-controls="devkit" role="tab" data-toggle="tab">Developer Kit</a></li>
+                <li role="presentation" class="active"><a href="#get-devkit" aria-controls="devkit" role="tab" data-toggle="tab">Development Kit</a></li>
                 <li role="presentation"><a href="#get-cli" aria-controls="cli" role="tab" data-toggle="tab">Developer CLI</a></li>
                 <li role="presentation"><a href="#get-client-sdks" aria-controls="client-sdks" role="tab" data-toggle="tab">Client SDKs</a></li>
                 <li role="presentation"><a href="#get-artifacts" aria-controls="artifacts" role="tab" data-toggle="tab">Adapter Tooling</a></li>
@@ -38,11 +38,12 @@ title: Downloads
                         To use the MobileFirst Server in your local workstation, Java Developer Kit (JDK) 7 or 8 is required to be installed.</p>
                     
                     <ul>
-                        <li>Download Java 7 or 8 JDK</li>
+                        <li>Download and install Java 7 or 8 JDK</li>
                         <li>Set the <code>JAVA_HOME</code> environment variable to your JDK directory. For example:
                             <ul>
                                 <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
                                 <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
+                                <li> Linux: /usr/lib/jvm/java-1.7.0_60/</li>
                             </ul>
                         </li>
                     </ul>
@@ -59,32 +60,45 @@ title: Downloads
                         Once installation completes,
                         <ol>
                             <li>From a <strong>Command-line</strong> window, navigate to the extracted folder and execute the <code>run.sh|cmd</code> script to start the MobileFirst Server.</li>
-                            <li>Once the server has started, load the MobileFirst Operations Console (username/password: admin/admin): <a href="http://localhost:9080/mfpconsole">http://localhost:9080/mfpconsole</a>.</li>
-                            <li>Optionally click on <strong>Get Starter Code → Tools tab</strong> to download development tools to get started.</li>
+                            <li>Load the MobileFirst Operations Console (username/password: admin/admin): <a href="http://localhost:9080/mfpconsole">http://localhost:9080/mfpconsole</a>.</li>
+                            <li><i>Optional</i>. Click on <strong>Get Starter Code → Tools tab</strong> to download development tools or follow through the tutorials.</li>
                         </ol>
                     </p>
                     
-                    <blockquote>For detailed MobileFirst Platform Foundation component installation instructions, visit the <a href="http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html">user doumentation</a>.<br/>
-                    <strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">following the tutorials</a>.</blockquote>
+                    <blockquote><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">following the tutorials</a>.</blockquote>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="get-cli">
                     <br/>
                     <p>To use the MobileFirst Developer CLI the <a href="https://www.npmjs.com/">NPM package manager</a> is required to be installed on the developer workstation.<br/>
                     You can verify the installation by running <code>mfpdev -v</code>.</p>
                     
-                    <p><strong>Prerequisite: </strong>NPM is bundled as part of Node.js. Install <a href="https://nodejs.org/en/">NodeJS</a>.</p>
+                    <p><strong>Prerequisite:</strong><br/>
+                        NPM is bundled as part of Node.js. Install <a href="https://nodejs.org/en/">NodeJS</a>.</p>
                     
                     <p>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code>.<br/>
-                        If the CLI was downloaded using the Development Kit Installer, run the command: <code>npm install -g path-to-cli-zip-file</code>.
+                        If the CLI was downloaded using the Development Kit Installer, run the command: <code>npm install -g path-to-cli-.tgz-file</code>.
                     </p>
 
                     <blockquote><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</blockquote>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="get-client-sdks">
-                    client sdks
+                    <br/>
+                    <p>The MobileFirst client SDKs are available from the following online repositories.</p>
+                    
+                    <p>You can install the client SDKs by using the respective packager managers. For instructions, review the tutorials.<br/>
+                    You can also get them via the Development Kit Installer for offline installation.</p>
+                    
+                    <ul>
+                        <li><a href="https://www.npmjs.com/" target="_blank">Cordova</a> (npm)</li>
+                        <li><a href="https://cocoapods.org/" target="_blank">iOS</a> (CocoaPods)</li>
+                        <li><a href="http://search.maven.org/" target="_blank">Android</a> (Maven)</li>
+                        <li><a href="https://www.nuget.org/" target="_blank">Windows</a> (NuGet)</li>
+                    </ul>
+                    
+                    <blockquote><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">following the tutorials</a>.</blockquote>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="get-artifacts">
-                    adapter archetypes 
+                    
                 </div>
             </div>
         </div>    
@@ -161,6 +175,7 @@ title: Downloads
                             <ul>
                                 <li> Windows: C:\Program Files\Java\jdk1.7.0_60</li>
                                 <li> OS X: /Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home</li>
+                                <li> Linux: /usr/lib/jvm/java-1.7.0_60/</li>  
                             </ul>
 
                             <ol>
