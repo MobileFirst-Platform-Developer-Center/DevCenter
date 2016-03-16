@@ -62,6 +62,19 @@ This implementation checks the current state of the `StepUpUserLogin` reference.
 
 This flow makes sure that the user is logged in before we ask for the secondary credential (PIN code). The client will never receive both challenges at the same time.
 
+## Retrieve current user
+In `StepUpPinCode`, we are interested in knowing the current user's ID so we can lookup this user's PIN code in some database.
+
+In `StepUpUserLogin`, add the following method to obtain the current user from the **authorization context**:
+
+```java
+public AuthenticatedUser getUser(){
+    return authorizationContext.getActiveUser();
+}
+```
+
+In `StepUpPinCode` you can then use `userLogin.getUser()` to get the current user from the `StepUpUserLogin` security check.
+
 ## Challenge handlers
 In the client-side, there are no special APIs of challenge handler to handle steps. Rather, each challenge handler should handle its own challenge. In this example you need to register two separate challenge handlers: One to handle challenges from `StepUpUserLogin` and one to handle challenges from `StepUpUserLogin`.
 
