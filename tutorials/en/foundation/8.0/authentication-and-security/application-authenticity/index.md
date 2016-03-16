@@ -3,7 +3,7 @@ layout: tutorial
 title: Application Authenticity 
 breadcrumb_title: Application Authenticity
 relevantTo: [android,ios,windows,cordova]
-weight: 10
+weight: 7
 ---
 ## Overview
 By issuing an HTTP request, an entity can access to corporate HTTP services (APIs) IBM MobileFirst Platform Foundation Server provides access to. The predefined application-authenticity [security check](../authorization-concepts/) ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.
@@ -52,7 +52,7 @@ To enable Application Authenticity in your Cordova or Native application, the ap
 
 When the `.authenticity_data` file is uploaded, Application Authenticity is enabled.
 
-![Enable Application Authenticity by uploading an .authenticity_data file](enable_authenticity.png)
+<img class="gifplayer" alt="Enable Application Authenticity" src="enable_application_authenticity.png"/>
 
 ### Disabling Application Authenticity
 To disable Application Authenticity, click the **Delete Authenticity File** button.
@@ -60,11 +60,11 @@ To disable Application Authenticity, click the **Delete Authenticity File** butt
 ## Configuring Application Authenticity
 The predefined application-authenticity security check can be configured with the following property:
 
-- `expirationInSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
+- `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the Authenticity token expires.
 
 Once an authenticity check has been performed, it will not be performed again until the token has expired based on the set value.
 
-#### To configure the `expirationInSec` property:
+#### To configure the `expirationSec` property:
 
 1. Load the MobileFirst Operations Console and navigate to **[your application]** → **Security** → **Security Check Configurations** and click on **Create New**.
 

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Cordova applications
+title: Handling Push Notifications in Cordova
 relevantTo: [cordova]
 downloads:
   - name: Download Cordova project
@@ -8,15 +8,15 @@ downloads:
 weight: 3
 ---
 ## Overview
-Before iOS and Android Cordova applications are able to receive and display push notifications, the Cordova project needs to be configured with the **cordova-plugin-mfp-push** plug-in. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications.
+Before iOS and Android Cordova applications are able to receive and display push notifications, the the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
 
-In this tutorial you learn how to configure a Cordova application and how to use the MobileFirst-provided Notifications API.
+> **Note:** In the beta release, authenticated notifications are **not supported** in Cordova applications.
 
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
-    * [Preparing the MobileFirst Server for push notification](../sending-push-notifications/)
+    * [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/cordova)
     * [Push Notifications Overview](../push-notifications-overview)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server
 * MobileFirst Developer CLI installed on the developer workstation
@@ -29,8 +29,9 @@ In this tutorial you learn how to configure a Cordova application and how to use
 * [Sample application](#sample-application)
 
 ## Notifications Configuration
-Create a new Cordova project or use an existing one.  
-If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova) tutorial.
+Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android.
+
+> If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova) tutorial.
 
 ### Adding the Push plug-in
 
@@ -42,7 +43,7 @@ If the MobileFirst Cordova SDK is not already present in the project, follow the
     cordova plugin add cordova-plugin-mfp-push
     ```
 
-3. Build the Cordova project by running the command: 
+3. Build the Cordova project by running the command:
 
     ```bash
     cordova build
@@ -60,7 +61,7 @@ In Xcode, enable push notifications for your application in the **Capabilities**
 ### Client-side
 Javascript Function | Description
 --- | ---
-[`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance. 
+[`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance.
 [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Does the device support push notifications.
 [`MFPPush.registerDevice(success, failure)`](#register-device) | Registers the device with the Push Notifications Service.
 [`MFPPush.getTags(success, failure)`](#get-tags) | Retrieves all the tags available in a push notification service instance.
@@ -72,17 +73,18 @@ Javascript Function | Description
 ### API implementation
 
 #### Initialization
-Initialize the **MFPPush** instance. 
+Initialize the **MFPPush** instance.
+
 - Required for the client application to connect to MFPPush service with the right application context.  
-- The API method should be called first before using any other MFPPush APIs. 
+- The API method should be called first before using any other MFPPush APIs.
 - Registers the callback function to handle received push notifications.
 
-```javascript 
+```javascript
 MFPPush.initialize (
     function(successResponse) {
         alert("Successfully intialized");
         MFPPush.registerNotificationsCallback(notificationReceived);
-    }, 
+    },
     function(failureResponse) {
         alert("Failed to initialize");
     }
@@ -92,7 +94,7 @@ MFPPush.initialize (
 #### Is push supported
 Check if the device supports push notifications.
 
-```javascript 
+```javascript
 MFPPush.isPushSupported (
     function(successResponse) {
         alert("Push Supported: " + successResponse);
@@ -102,7 +104,7 @@ MFPPush.isPushSupported (
     }
 );
 ```
-    
+
 #### Register device
 Register the device to the push notifications service.
 
@@ -116,9 +118,9 @@ MFPPush.registerDevice(
     }
 );
 ```
-    
+
 > *Optional*. *iOS-only*. Before calling the above `registerDevice` API method, use the `setOptions(options)` API method to enable or disable various options, such as alerts, notification sound, badge and interactive notifications categories.  
-> 
+>
 > Read more about the the `setOptions(options)` API method in the user documentation.
 
 #### Get tags
@@ -210,10 +212,19 @@ var notificationReceived = function(message) {
 ## Sample application
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) the Cordova project.
 
+**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
+
 ### Sample usage
 
 1. From a **Command-line**, navigate to the project's root folder.
 2. Add a platform using the `cordova platform add` command.
 3. Register the application by running the command: `mfpdev app register`.
-4. Via the MobileFirst Operations Console, setup the MobileFirst Server with either GCM details or APNS certificate, and add tags.
+4. In the MobileFirst Operations Console
+    - Setup the MobileFirst Server with either GCM details or APNS certificate, and define tags.
+    - Under **Applications** → **PushNotificationsAndroid** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
 5. Run the application by running the `cordova run` command.
+
+**[Sending a notification](../sending-push-notifications):**
+
+* Tag notification
+    * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.

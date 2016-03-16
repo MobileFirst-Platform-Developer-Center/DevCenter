@@ -9,30 +9,31 @@ weight: 2
 ## Overview
 In order to send push notifications to iOS or Android devices, the MobileFirst Server first needs to be configured with the GCM details for Android or APNS certificate for iOS. Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID, only iOS devices, only Android devices, or based on the authenticated user.
 
+> **Note:** In the beta release, authenticated notifications are **not supported** in Cordova applications.
+
 **Prerequisite**: Make sure to read the [Push Notifications overview](../push-notifications-overview/) tutorial.
 
 #### Jump to
 
-* [Setting up Push Notifications](#setting-up-push-notifications)
-* [Adding Tags](#adding-tags)
-* [Sending Push Notifications](#sending-push-notifications)
-* [Customizing Push Notifications](#customizing-push-notifications)
+* [Setting-up Push Notifications](#setting-up-push-notifications)
+    * [Google Cloud Messaging](#google-cloud-messaging)
+    * [Apple Push Notifications Service](#apple-push-notifications-service)
+    * [Scope mapping](#scope-mapping)
+    * [Authenticated Push Notifications](#authenticated-push-notifications)
+* [Defining Tags](#defining-tags)
+* [Sending Push Notifications](#sending-push-notifications)    
+    * [MobileFirst Operations Console](#mobilefirst-operations-console)
+    * [REST APIs](#rest-apis)
+    * [Customizing Notifications](#customizing-notifications)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Setting up Push Notifications
-Enabling push notifications support involves several configuration steps in both MobileFirst Server and the client application.
+Enabling push notifications support involves several configuration steps in both MobileFirst Server and the client application.  
+Continue reading for the server-side setup. Jump to [Client-side setup](#tutorials-to-follow-next).
 
-### Scope mapping
-Map the **push.mobileclient** scope element to the application.
+On the server-side, required set-up includes: configuring the needed vendor (APNS and/or GCM) and mapping the "push.mobileclient" scope.
 
-1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
-2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
-
-For User Authenticated notifications the **push.mobileclient** scope element should be mapped to the security check of the application.
-
-> **Note:** In the beta release, authenticated push is supported only in Native Android and iOS applications.
-
-### GCM
+### Google Cloud Messaging
 Android devices use the Google Cloud Messaging (GCM) service for push notifications.  
 To setup GCM:
 
@@ -51,7 +52,9 @@ If your organization has a firewall that restricts the traffic to or from the In
 * GCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. 
 * Ensure that your firewall accepts outgoing connections from MobileFirst Server to android.googleapis.com on port 443.
 
-### APNS
+<img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
+
+### Apple Push Notifications Service
 iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
 To setup APNS:
 
@@ -71,9 +74,27 @@ To setup APNS:
 * During the production phase, use the apns-certificate-production.p12 production certificate file.
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
 
-<img class="gifplayer" alt="Image of adding the GCM credentials" src="server-side-setup.png"/>
+<img class="gifplayer" alt="Image of adding the APNS credentials" src="apns-setup.png"/>
 
-## Adding Tags
+### Scope mapping
+Map the **push.mobileclient** scope element to the application.
+
+1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
+2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
+
+    <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
+
+### Authenticated Push Notifications
+Authenticated notifications are push notifications that are sent to one or more `userIds`.  
+
+Map the **push.mobileclient** scope element to the security check used for the application.  
+
+1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New** or edit an existing scope mapping entry.
+2. Select a security check. Then, click **Add**.
+
+    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
+    
+## Defining Tags
 In the MobileFirst Operations Console → **[your application] → Push → Tags**, click **Create New**.  
 Provide the appropriate `Tag Name` and `Description` and click **Save**.
 
@@ -82,42 +103,41 @@ Provide the appropriate `Tag Name` and `Description` and click **Save**.
 ## Sending Push Notifications
 Push notifications can be sent either from the MobileFirst Operations Console or via REST APIs.
 
-### From the MobileFirst Operations Console
-In the MobileFirst Operations Console → **[your application] → Push → Send Push**.  
-Select who to send the notification to from the **Send To** dropdown, and provide the **Notification Text**. Then, click **Send**.
+* With the MobileFirst Operations Console, two types of notifications can be sent: tag and broadcast.
+* With the REST APIs, all forms of notifications can be sent: tag, broadcast and authenticated.
 
-From the MobileFirst Console, there are two types of notifications that can be sent: tag and broadcast notifications.
+### MobileFirst Operations Console
+Notifications can be sent to a single Device ID, only iOS devices or only Android devices, or to devices subscribed to tags.
 
-* Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
+#### Tag notifications
+Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
 
-    This can be done by selecting **Send To → Devices By Tags**.
+In the MobileFirst Operations Console → **[your application] → Push → Send Push tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
 <img class="gifplayer" alt="Sending by tag" src="sending-by-tag.png"/>
 
-* Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). 
+#### Broadcast notifications
 
-    This can be done by selecting **Send To → All**.
+Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). The `Push.all` tag can be programmatically unsubscribed.
 
-    ![send-to-all](sending-to-all.png)
+In the MobileFirst Operations Console → **[your application] → Push → Send Push tab**, select **All** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
 
-* Notifications can also be sent a single Device ID, only iOS devices or only Android devices.
+![send-to-all](sending-to-all.png)
 
-### Via MobileFirst-provided REST APIs
-To send a push notification with the REST API use the PUSH Message (POST) API.
+### REST APIs
+When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
 
-**Path**
+To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
+Example URL: 
 
-`/apps/<applicationId>/messages`
+```bash
+https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
+```
 
-**Example**
+> To review all Push Notifications REST APIs, see the "REST API Runtime Services" topic in the user documentation.
 
-`https://example.com:443/imfpush/v1/apps/myapp/messages`
-
-**Header Parameters** 
-
-_Authorization_
-
-The token with the scope `messages.write` and `push.application._<applicationId>_` obtained using the confidential client in the format Bearer token. This parameter has to be mandatorily set.
+#### Notification payload
+The request can contain the following payload properties: 
 
 Payload Properties| Definition
 --- | ---
@@ -159,10 +179,51 @@ userIds | An array of users represented by their userIds to send the notificatio
   },
 }
 ```
-> For more information about the push rest API, see the topic about push notifications in the user documentation.
 
-## Customizing Push Notifications
-You can also customize the following:
+#### Sending the notification
+The notification can be sent using different tools.  
+For testing purposes, Postman is used as described below:
+
+1. [Configure a Confidential Client](../../authentication-and-security/confidential-clients/).   
+    Sending a Push Notification via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>.`
+    
+    <img class="gifplayer" alt="Configure a confidential client" src="push-confidential-client.png"/>
+
+2. [Create an access token](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
+    
+    
+3. Make a **POST** request to **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
+    - If using a remote MobileFirst Server, replace the `hostname` and `port` values with your own.
+    - Update the application identifier value with your own.
+
+4. Set a Header:
+    - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
+    - Replace the value after "Bearer" with the value of your access token from step (1) above.
+    
+    ![authorization header](postman_authorization_header.png)
+
+5. Set a Body:
+    - Update its properties as described in [Notification payload](#notification-payload) above.
+    - For example, by adding the **target** property with the **userIds** attribute, you can send a notification to specific registered users.
+
+    ```json
+    {
+        "message" : {
+            "alert" : "Hello World!"
+        }
+    }
+    ```
+    
+    ![authorization header](postman_json.png)
+    
+After clicking on the **Send** button, the device should have now received a notification:
+
+![Image of the sample application](notifications-app.png)
+
+### Customizing Notifications
+Before sending the notification message, you can also customize the following notification attributes.  
+
+In the MobileFirst Operations Console → **[your application] → Push → Tags → Send Push tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
 
 ### Android
 

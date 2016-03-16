@@ -88,10 +88,16 @@ AuthenticationResult processRequest(HttpServletRequest request, HttpServletRespo
 AuthenticationResult processAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, String errorMessage)
 {% endhighlight %}
 </li>
-<li>The <code>processRequestAlreadyAuthenticated</code> method is called for each request from an already authenticated session.<br />
+<li>
+  The <code>processRequestAlreadyAuthenticated</code> method is called for each request from an already authenticated session.<br />
 {% highlight java linenos %}
 AuthenticationResult processRequestAlreadyAuthenticated(HttpServletRequest request, HttpServletResponse response)
 {% endhighlight %}
+  <blockquote>
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+    </span><strong>Important:</strong>
+    When using the new <strong>OAuth</strong> flow, this method will not be called as long as the access token is valid.
+  </blockquote>
 </li>
 <li>The <code>getAuthenticationData</code> method is used by a login module to get the credentials that are collected by an authenticator.<br />
 {% highlight java linenos %}

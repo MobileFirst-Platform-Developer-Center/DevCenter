@@ -36,14 +36,14 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 1. Click the **New** button next to **Applications**
     * Select the **Android** platform
     * Enter **com.ibm.mfpstarterandroid** as the **application identifier**
-    * Enter **1.0** as the **version** value
+    * Enter **1.0.0** as the **version** value
     * Click on **Register application**
 
-    ![Image of selecting platform, and providing an identifier and version](register-an-application-android.png)
+    <img class="gifplayer" alt="Register an application" src="register-an-application-android.png"/>
  
 2. Click on the **Get Starter Code** tile and select to download the Android application scaffold.
 
-    ![Image of downloading a sample application](download-starter-code-android.png)
+    <img class="gifplayer" alt="Download sample application" src="download-starter-code-android.png"/>
 
 ### 3. Editing application logic
 
@@ -59,30 +59,40 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     import android.util.Log;
     ```
     
-* Paste the following code snippet, inside the `protected void onCreate()` function:
+* Paste the following code snippet, replacing the `void onSuccess()` function:
 
     ```java
-    WLClient.createInstance(this);
-    URI adapterPath = null;
-    try {
-        adapterPath = new URI("/adapters/javaAdapter/users/world");
-    } catch (URISyntaxException e) {
-        e.printStackTrace();
-    }
-    
-    WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
-    request.send(new WLResponseListener() {
-        @Override
-         public void onSuccess(WLResponse wlResponse) {
-            // Will print "Hello world" in LogCat.
-            Log.i("MobileFirst Quick Start", "Success: " + wlResponse.getResponseText());
+    public void onSuccess(AccessToken token) {
+        System.out.println("Received the following access token value: " + token);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                titleLabel.setText("Yay!");
+                connectionStatusLabel.setText("Connected to MobileFirst Server");
+            }
+        });
+        
+        URI adapterPath = null;
+        try {
+            adapterPath = new URI("/adapters/javaAdapter/users/world");
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
         }
 
-        @Override
-        public void onFailure(WLFailResponse wlFailResponse) {
-            Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
-        }
-    });
+        WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
+        request.send(new WLResponseListener() {
+            @Override
+            public void onSuccess(WLResponse wlResponse) {
+                // Will print "Hello world" in LogCat.
+                Log.i("MobileFirst Quick Start", "Success: " + wlResponse.getResponseText());
+            }
+
+            @Override
+            public void onFailure(WLFailResponse wlFailResponse) {
+                Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
+            }
+        });
+    }
     ```
 
 ### 4. Creating an adapter
@@ -102,8 +112,9 @@ Alternatively, click the **New** button next to **Adapters**.
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
-    ![Image of create an adapter](create-an-adapter.png)
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
+<img src="androidQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
 1. In Android Studio, select the **[project]/app/src/main/assets/mfpclient.properties** file and edit the **host** property with the IP address of the MobileFirst Server.
@@ -112,6 +123,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
 2. Click on the **Run App** button.  
 
+<br clear="all"/>
 ### Results
 * Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
 * If the application was able to connect to the MobileFirst Server, a resource request call using the deployed Java adapter will take place.

@@ -117,7 +117,7 @@ function getFeedFiltered() {
 
 ## Creating a SOAP-based service request
 You can use the `MFP.Server.invokeHttp` API method to create a **SOAP** envelope.  
-Note: To call a SOAP-based service in a JavaScript HTTP adapter, you must encode the SOAP XML envelope within the request body using **E4X**.
+Note: To call a SOAP-based service in a JavaScript HTTP adapter, you can     encode the SOAP XML envelope within the request body using **E4X**.
 
 ```js
 var request =

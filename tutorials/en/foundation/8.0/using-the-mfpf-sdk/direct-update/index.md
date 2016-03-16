@@ -67,17 +67,11 @@ Alternatives:
          mfpdev app webupdate --build
          ```
  2. Load the MobileFirst Operations Console and click on the application entry.
-     3. Click on **Upload Web Resources File** to upload the packaged web resources.
+ 3. Click on **Upload Web Resources File** to upload the packaged web resources.
 
-![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
+        ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
 
-* The packaged web resources can be further protected by placing the web resources in an encrypted .zip file:
-
-```bash
-mfpdev app webupdate --encrypt
-```
-
-> Run the command `mfpdev help webupdate` to learn about additional command flags.
+> Run the command `mfpdev help app webupdate to learn more.
 
 ## User Experience
 By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
@@ -141,7 +135,7 @@ directUpdateContext.start(directUpdateCustomListener);
 > For more information, see the "Configuring and customizing direct update" user documentation topic. -->
 
 ## Direct Update authenticity
-Disabled by default, Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a content delivery network (CDN)) to the client application.
+Disabled by default, Direct Update authenticity prevents a 3rd-party attacker from altering the web resources that are transmitted from the MobileFirst Server (or from a Content Delivery Network (CDN)) to the client application.
 
 **To enable Direct Update authenticity:**  
 Using a preferred tool, extract the public key from the MobileFirst Server keystore and convert it to base64.  

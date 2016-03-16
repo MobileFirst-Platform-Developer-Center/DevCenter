@@ -3,7 +3,7 @@ layout: tutorial
 title: Device Enrollment
 relevantTo: [hybrid]
 weight: 5
-downloads: 
+downloads:
   - name: Download MobileFirst project
     url: https://github.com/MobileFirst-Platform-Developer-Center/DeviceEnrollment/tree/release71
 ---
@@ -167,7 +167,7 @@ Similar to the previous security test, this security test uses some predefined r
 {% highlight javascript linenos %}
 var enrolledDevices = com.ibm.sample.EnrolledDeviceStore;
 {% endhighlight %}</p>
-<blockquote><p>In a multi-node environment, when using a <code>SessionIndependent</code> architecture, using global variables to persist data across requests is <a href=" ../../server-side-development/javascript-adapters#globalvars">not supported</a>. </p></blockquote>
+<blockquote><p>In a multi-node environment, when using a <code>SessionIndependent</code> architecture, using global variables to persist data across requests is <a href="../../server-side-development/javascript-adapters/#globalvars">not supported</a>. </p></blockquote>
 <h3>Enroll device</h3>
 <p>{% highlight javascript linenos %}
 function enroll(pin) {
@@ -356,7 +356,7 @@ function verifyPinCode(pin) {
     var userId = WL.Server.getCurrentUserIdentity().userId;
     var deviceId = WL.Server.getCurrentDeviceIdentity().deviceId;
     var enrollInfo = enrolledDevices.getInfo(deviceId);
-    
+
     if (enrollInfo && enrollInfo.pin == pin) {
         WL.Server.setActiveUser("PinCodeRealm", null);
         WL.Server.setActiveUser("PinCodeRealm", {

@@ -53,7 +53,20 @@ The MobileFirst Development Kit installer includes snapshot downloads for variou
 See the [MobileFirst Operations Console Tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/console/) for more information on accessing and navigating the console.
 
 ## MobileFirst CLI
-To use the CLI first download if from the MobileFirst Operations Console via the instructions above and then install it by running `npm install -g mfpdev-cli.tgz`.
+The MobileFirst CLI may also require an online connection to prepare the third-party dependencies for offline install. We suggest the above workaround with Cordova. First download the mfpdev-cli.tgz file from the MobileFirst Operations Console via the instructions above.
+
+While still online
+
+1. Install Node.js on the online machine
+2. Change directory to where you downloaded mfpdev-cli.tgz and run `npm --cache ./.cache install mfpdev-cli.tgz` to generate and cache the dependencies needed
+3. Zip the new generated .cache folder and move this file along with the mfpdev-cli.tgz file to the offline machine (or download it again from the Console on the offline machine)
+
+On the offline machine
+
+1. Unzip the .cache folder
+2. Run `npm install --cache ./.cache mfpdev-cli.tgz -g` to install mfpdev globally using the previously generated cache (Note: this may take a while)
+
+If you run into any installation errors on Windows regarding node-gyp, rerun the command with the `--no-optional` flag as well.
 
 ## Cordova Plugins and Platforms
 When adding the MobileFirst Cordova SDK plugins to a cordova project, the plugins must first be added before platforms to ensure that the plugin does not search online for additional platform resources. The MobileFirst Cordova SDK plugins can be downloaded from the MobileFirst Operations Console via the instructions above and added by running `cordova plugins add <path to unzipped mfp-cordova>/plugins/cordova-plugin-mfp`. Additionally the following plugins can be installed:

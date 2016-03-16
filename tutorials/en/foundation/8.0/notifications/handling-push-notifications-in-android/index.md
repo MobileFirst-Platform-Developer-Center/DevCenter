@@ -1,18 +1,16 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Android applications
+title: Handling Push Notifications in Android
 relevantTo: [android]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
-weight: 4
+weight: 5
 ---
 ## Overview
-Before Android applications are able to handle any received push notifications, they must configured with support for Google Play Services. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags.
+Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
 
-In this tutorial you learn how to configure an Android application and how to use the MobileFirst-provided Notifications API.
-
-**Prerequisites:** 
+**Prerequisites:**
 
 * Make sure you have read the following tutorials:
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
@@ -35,14 +33,14 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 ### Project setup
 
 1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
-		
+
 	```bash
 	com.google.android.gms:play-services-gcm:8.4.0
 	```
-    
+
     And:
-    
-   
+
+
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundationPush',
@@ -66,7 +64,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 		```xml
 		<!-- Permissions -->
     	<uses-permission android:name="android.permission.WAKE_LOCK" />
-		
+
     	<!-- GCM Permissions -->
     	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     	<permission
@@ -110,28 +108,34 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
 
 ## Notifications API
-### Client-side
 
-| Java Methods | Description |
-|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`MFPPush.initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
-| [`MFPPush.isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
-| [`MFPPush.registerDevice(MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
-| [`MFPPush.getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
-| [`MFPPush.subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
-| [`MFPPush.getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
-| [`MFPPush.unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
-| [`MFPPush.unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
-
-
-### API implementation
+### MFPPush Instance
 All API calls must be called on an instance of `MFPPush`.  This can be by created a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
 
 Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
 
+### Challenge Handlers
+If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+
+> Learn more about challenge handlers in the [credential validation](../../authentication-and-security/credentials-validation/android) tutorial.
+
+### Client-side
+
+| Java Methods | Description |
+|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
+| [`isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
+| [`registerDevice(MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
+
 #### Initialization
 Required for the client application to connect to MFPPush service with the right application context.
-* The API method should be called first before using any other MFPPush APIs. 
+
+* The API method should be called first before using any other MFPPush APIs.
 * Registers the callback function to handle received push notifications.
 
 ```java
@@ -183,7 +187,7 @@ MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
         // Failed to receive tags with error
     }
 });
-````
+```
 
 #### Subscribe
 Subscribe to desired tags.
@@ -295,7 +299,17 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) the Android Studio project.
 
 ### Sample usage
-1. From the command line, navigate to the project's root folder.
-2. Ensure the sample is registered in the MobileFirst Server by running the command:  
-`mfpdev app register`.
-5. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+2. In the MobileFirst console, under **Applications** → **PushNotificationsAndroid** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
+3. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+
+**Note:** The latest version of Google Play Services is required to be installed on the device for the sample to run.
+
+**[Sending a notification](../sending-push-notifications):**
+
+* Tag notification
+    * Use the **MobileFirst Operations Console → [your application] → Push screen**.
+* Authenticated notification:
+    * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
+    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
+    * Use the [REST APIs](../sending-push-notifications#rest-apis) to send the notification.

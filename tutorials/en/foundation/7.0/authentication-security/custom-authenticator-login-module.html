@@ -65,7 +65,7 @@ Later, you use this security test to <a href="#protectJsAdapt">protect a JavaScr
 <customSecurityTest name="DummyAdapter-securityTest">
     <test isInternalUserID="true" realm="CustomAuthenticatorRealm" />
 </customSecurityTest>
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 </ol>
 <h2 id="customAuth">Creating a custom Java authenticator</h2>
@@ -75,37 +75,43 @@ Later, you use this security test to <a href="#protectJsAdapt">protect a JavaScr
 <li>The <code>init</code> method is called when the authenticator instance is created. It takes the parameters that are specified in the definition of the realm in the <code>authenticationConfig.xml</code> file.<br />
 {% highlight java linenos %}
 void init(Map<String, String> options)
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>processRequest</code> method is called for each request from an unauthenticated session.<br />
 {% highlight java linenos %}
 AuthenticationResult processRequest(HttpServletRequest request, HttpServletResponse response, boolean isAccessToProtectedResource)
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>processAuthenticationFailure</code> method is called if the login module returns a failure of credentials validation.<br />
 {% highlight java linenos %}
 AuthenticationResult processAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, String errorMessage)
-{% endhighlight %} 
+{% endhighlight %}
 </li>
-<li>The <code>processRequestAlreadyAuthenticated</code> method is called for each request from an already authenticated session.<br />
+<li>
+  The <code>processRequestAlreadyAuthenticated</code> method is called for each request from an already authenticated session.<br />
 {% highlight java linenos %}
 AuthenticationResult processRequestAlreadyAuthenticated(HttpServletRequest request, HttpServletResponse response)
-{% endhighlight %} 
+{% endhighlight %}
+  <blockquote>
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+    </span><strong>Important:</strong>
+    When using the new <strong>OAuth</strong> flow, this method will not be called as long as the access token is valid.
+  </blockquote>
 </li>
 <li>The <code>getAuthenticationData</code> method is used by a login module to get the credentials that are collected by an authenticator.<br />
 {% highlight java linenos %}
 Map<String, Object> getAuthenticationData()
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>changeResponseOnSuccess</code> method is called after authentication success. It is used to add data to the response after authentication is successful.<br />
 {% highlight java linenos %}
 Boolean changeResponseOnSuccess (HttpServletRequest request, HttpServletResponse response)
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>clone</code> method is used to create a deep copy of class members.<br />
 {% highlight java linenos %}
 WorkLightAuthenticator clone()
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 </ul>
 <h3>Walkthrough</h3>
@@ -122,7 +128,7 @@ These objects will be filled to the authentication data map in <code>getAuthenti
 <p>{% highlight java linenos %}
 private String username;
 private String password;
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>Add a dependency on the server runtime libraries to use server-related classes, for example, <code>HttpServletRequest</code>.
 <ol>
@@ -142,7 +148,7 @@ You see a list of server runtimes that are installed in your Eclipse IDE.</li>
 public void init(Map<String, String> options) throws MissingConfigurationOptionException {
     logger.info("MyCustomAuthenticator initialized");
 }
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>clone</code> method of the authenticator creates a deep copy of the object members.
 <p>
@@ -151,7 +157,7 @@ public WorkLightAuthenticator clone() throws CloneNotSupportedException {
     MyCustomAuthenticator otherAuthenticator = (MyCustomAuthenticator) super.clone();
     return otherAuthenticator;
 }
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>processRequest</code> method is called for each unauthenticated request to collect credentials.
 <p>
@@ -222,7 +228,7 @@ response.setContentType("application/json; charset=UTF-8");
 response.setHeader("Cache-Control", "no-cache, must-revalidate");
 response.getWriter().print("{\"authStatus\":\"required\"}");
 return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The authenticator <code>getAuthenticationData</code> method is used by a login module to get collected credentials.<br />
 After the authenticated session is established, all requests are transported through the <code>changeResponseOnSuccess</code> and <code>processRequestAlreadyAuthenticated</code> methods. You can use these methods to retrieve data from requests and to update responses.</p>
@@ -234,7 +240,7 @@ public Map<String, Object> getAuthenticationData() {
     authenticationData.put("password", password);
     return authenticationData;
 }
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>changeResponseOnSuccess</code> method is called after credentials are successfully validated by the login module. You can use this method to modify the response before you return it to the client. This method must return <code>true</code> if the response was modified. Otherwise, it returns <code>false</code>.<br />
 Use it to notify a client application about the authentication success.</p>
@@ -248,14 +254,14 @@ public boolean changeResponseOnSuccess(HttpServletRequest request, HttpServletRe
     }
     return false;
 }
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>processRequestAlreadyAuthenticated</code> method returns <code>AuthenticationResult</code> objects for authenticated requests.
 <p>{% highlight java linenos %}
 public AuthenticationResult processRequestAlreadyAuthenticated(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
     return AuthenticationResult.createFrom(AuthenticationStatus.REQUEST_NOT_RECOGNIZED);
 }
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>If the login module returns an authentication failure, the <code>processAuthenticationFailure</code> method is called. This method writes an error message to a response body, and returns the <code>CLIENT_INTERACTION_REQUIRED</code> status.
 <p>{% highlight java linenos %}
@@ -266,7 +272,7 @@ public AuthenticationResult processAuthenticationFailure(HttpServletRequest requ
     response.getWriter().print("{\"authStatus\":\"required\", \"errorMessage\":\"" + errorMessage + "\"}");
     return AuthenticationResult.createFrom(AuthenticationStatus.CLIENT_INTERACTION_REQUIRED);
 }
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 </ul>
 </li>
@@ -278,28 +284,28 @@ public AuthenticationResult processAuthenticationFailure(HttpServletRequest requ
 <li>The <code>init</code> method of the login module is called when the login module instance is created. This method takes the options that are specified in the login module definition of the <code>authenticationConfig.xml</code> file.
 <p>{% highlight java linenos %}
 void init(Map<String, String> options)
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>login</code> method of the login module is used to validate the credentials that are collected by the authenticator.
 <p>{% highlight java linenos %}
 boolean login(Map<String, Object> authenticationData)
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>createIdentity</code> method of the login module is used to create a <code>userIdentity</code> object after validation of the credentials succeeds.
 <p>{% highlight java linenos %}
 UserIdentity createIdentity(String loginModule)
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>logout</code> and <code>abort</code> methods are used to clean up cached data after a logout or authentication aborts.
 <p>{% highlight java linenos %}
 void logout()
 void abort()
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>clone</code> method is used to create a deep copy of the class members.<br />
 {% highlight java linenos %}
 WorkLightLoginModule clone()
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 </ul>
 <h3>Walkthrough</h3>
@@ -323,14 +329,14 @@ private String PASSWORD;
 <p>{% highlight java linenos %} <br />
 public void init(Map<String, String> options) throws MissingConfigurationOptionException {<br />
 }<br />
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 <li>The <code>clone</code> method of the login module creates a deep copy of the object members.
 <p>{% highlight java linenos %}
 public MyCustomLoginModule clone() throws CloneNotSupportedException {
     return (MyCustomLoginModule) super.clone();
 }
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>login</code> method is called after the authenticator returns the <code>SUCCESS</code> status.<br />
 When called, the <code>login</code> method gets an <code>authenticationData</code> object from the authenticator.<br />
@@ -348,7 +354,7 @@ public boolean login(Map<String, Object> authenticationData) {
     else
         throw new RuntimeException("Invalid credentials");
 }
- {% endhighlight %} 
+ {% endhighlight %}
 </li>
 </ul>
 </li>
@@ -369,7 +375,7 @@ public UserIdentity(String loginModule,
         Set<String> roles,
         Map<String, Object> attributes,
         Object credentials)
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>The <code>logout</code> and <code>abort</code> methods are used to clean up class members after the user logs out or aborts the authentication flow.
 <p>{% highlight java linenos %}
@@ -382,7 +388,7 @@ public void abort() {
     USERNAME = null;
     PASSWORD = null;
 }
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 </ul>
 </li>
@@ -399,7 +405,7 @@ function getSecretData(){
         secretData: '123456'
     };
 }
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 </ol>
 <h2 id="protectJavaAdapt">Protecting a Java adapter</h2>
@@ -416,12 +422,12 @@ In this module, the <code>getSecretData</code> procedure returns some hardcoded 
 		result.put("secretData", "123456");
 		return result;
 	}
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 <li>To set the new realm as the default user identity for the application, in the application descriptor, add this option:<br />
 {% highlight xml linenos %}
 <userIdentityRealms>CustomAuthenticatorRealm</userIdentityRealms>
-{% endhighlight %} 
+{% endhighlight %}
 </li>
 </ol>
 <blockquote><p>To learn more about application descriptor properties, see the user documentation.</p></blockquote>

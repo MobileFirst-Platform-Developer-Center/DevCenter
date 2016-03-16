@@ -38,12 +38,12 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     * Enter **com.ibm.mfpstarteriosobjectivec** or **com.ibm.mfpstarteriosswift** as the **application identifier** (depending on the application scaffold you will download in the next step)
     * Enter **1.0** as the **version** value
     * Click on **Register application**
-
-    ![Image of selecting platform, and providing an identifier and version](register-an-application-ios.png)
+    
+    <img class="gifplayer" alt="Register an application" src="register-an-application-ios.png"/>
  
 2. Click on the **Get Starter Code** tile and select to download the iOS Objective-C or iOS Swift application scaffold.
 
-    ![Image of download a sample application](download-starter-code-ios.png)
+    <img class="gifplayer" alt="Download sample application" src="download-starter-code-ios.png"/>
     
 ### 3. Editing application logic
 
@@ -125,10 +125,10 @@ Alternatively, click the **New** button next to **Adapters**.
     ```
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
-    
-    ![Image of create an adapter](create-an-adapter.png)
 
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    
 
+<img src="iosQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
 1. In Xcode, select the **mfpclient.plist** file and edit the **host** property with the IP address of the MobileFirst Server.
@@ -137,6 +137,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
 2. Press the **Play** button.
 
+<br clear="all"/>
 ### Results
 * Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
 * If the application was able to connect to the MobileFirst Server, a resource request call using the deployed Java adapter will take place.

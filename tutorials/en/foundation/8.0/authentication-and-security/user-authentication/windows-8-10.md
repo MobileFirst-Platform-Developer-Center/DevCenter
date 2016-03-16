@@ -53,6 +53,16 @@ The MobileFirst Platform Foundation SDK provides the `ObtainAccessToken` API to 
 
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
+
+if(accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
+{
+  Debug.WriteLine("Auto login success");
+}
+else
+{
+  Debug.WriteLine("Auto login failed");
+}
+
 ```
 
 If the client is already logged-in or is in the *remembered* state, the API will trigger a success. If the client is not logged in, the security check will send back a challenge.
@@ -62,7 +72,37 @@ The `ObtainAccessToken` API takes in a **scope**. The scope can be the name of y
 > Learn more about **scope** in the [Authorization concepts](../../authorization-concepts) tutorial
 
 ## Retrieving the authenticated user
-Not Yet implemented
+The challenge handler's `HandleSuccess` method receives a `JObject identity` as a parameter.
+If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `HandleSuccess` to save the current user:
+
+```csharp
+public override void HandleSuccess(JObject identity)
+{
+    isChallenged = false;
+    try
+    {
+        //Save the current user
+        var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        localSettings.Values["useridentity"] = identity.GetValue("user");
+
+    } catch (Exception e) {
+        Debug.WriteLine(e.StackTrace);
+    }
+}
+```
+
+Here, `identity` has a key called `user` which itself contains a `JObject` representing the `AuthenticatedUser`:
+
+```json
+{
+  "user": {
+    "id": "john",
+    "displayName": "john",
+    "authenticatedAt": 1455803338008,
+    "authenticatedBy": "UserLogin"
+  }
+}
+```
 
 ## Logout
 The MobileFirst Platform Foundation SDK also provides a `Logout` API to logout from a specific security check:
@@ -88,7 +128,7 @@ Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapt
 ### Sample usage
 
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
-* Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register` from a **command-line** window.
+* From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
     * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Map scope elements to security checks**, add a scope mapping from `accessRestricted` to `UserLogin`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
