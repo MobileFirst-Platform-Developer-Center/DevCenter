@@ -107,7 +107,7 @@ request.SetHeader(KeyValuePair<string,string> header);
 > For more information about WLResourceRequest, refer to the user documentation.
 
 
-<img alt="Image of the sample application" src="resource-request-success-Win8-10.PNG" style="float:right"/>
+
 ## Sample application
 The ResourceRequestWin8 and ResourceRequestWin10 projects contain a native Windows 8 Universal/Windows 10 UWP application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
@@ -121,3 +121,5 @@ The adapter Maven project contains the Java adapter used during the resource req
 2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
 3. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
 4. import the project to Visual Studio, and run the sample by clicking the **Run* button.
+
+<img alt="Image of the sample application" src="resource-request-success-Win8-10.PNG" style="float:center"/>
