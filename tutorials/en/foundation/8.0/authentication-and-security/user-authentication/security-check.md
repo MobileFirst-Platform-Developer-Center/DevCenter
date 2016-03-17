@@ -131,6 +131,15 @@ You can use `this.getName()` to get the current security check name.
 
 `UserAuthenticationSecurityCheck` will call your `createUser()` implementation after a successful `validateCredentials`.
 
+### Storing attributes in the AuthenticatedUser
+`AuthenticatedUser` has an alternate constructor:
+
+```java
+AuthenticatedUser(String id, String displayName, String securityCheckName, Map<String, Object> attributes);
+```
+
+This constructor adds a `Map` of custom attributes to be stored with the user representation. This can be used to store additional information such as a profile picture, a website, etc. This information is accessible to the client side (challenge handler) and the resource (using introspection data).
+
 ## Adding Remember Me functionality
 `UserAuthenticationSecurityCheck` by default uses the `successStateExpirationSec` property to determine how long does the success state last; this property was inherited from `CredentialsValidationSecurityCheck`.
 
