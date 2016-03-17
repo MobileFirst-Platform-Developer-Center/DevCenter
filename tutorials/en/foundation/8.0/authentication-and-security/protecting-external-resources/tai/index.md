@@ -20,7 +20,7 @@ This tutorial will show how to protect a simple Java Servlet, `api/protected`, u
 * Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
 * Understanding of the [MobileFirst Platform Foundation security framework](../../).
 
-![Flow](JTV_flow.jpg)
+![Flow](TAI_flow.jpg)
 
 ## Server setup
 
