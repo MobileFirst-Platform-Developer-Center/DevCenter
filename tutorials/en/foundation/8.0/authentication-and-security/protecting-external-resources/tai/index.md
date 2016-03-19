@@ -86,7 +86,7 @@ Modify the WebSphere application server's `server.xml` file to your external res
 
     ```xml
     <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResource" clientSecret="password" cacheSize="500">
-            <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/REST-Server/api/protected"></securityConstraint>
+            <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/REST-Server/GetBalance"></securityConstraint>
     </usr_OAuthTAI>
     ```
     - **authorizationURL**:  Either your MobileFirst Server (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
