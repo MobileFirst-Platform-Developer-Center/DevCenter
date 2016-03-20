@@ -46,10 +46,7 @@ Create an Android Studio project or use an existing one.
 
     ```xml
     repositories{
-        //jcenter()
-        maven {
-            url "http://visustar.francelab.fr.ibm.com:8081/nexus/content/repositories/mobile-s/"
-        }
+        jcenter()
     }
     ```
 
