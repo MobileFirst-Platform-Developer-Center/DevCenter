@@ -7,7 +7,7 @@ weight: 5
 ## Overview
 When accessing a resource protected by the MobileFirst Platform framework, the MobileFirst Platform Foundation client SDK (for Cordova, iOS,  Android and Windows) provide the tools to handle the security features.
 
-Non-mobile clients that do not use the MobileFirst client SDK can also request protected resources, by acting as a **confidential client**.  
+Clients that do not use the MobileFirst client SDK can also request protected resources, by acting as a **confidential client**.  
 For example, your backend server may need to request a protected resource, or use one of the MobileFirst Platform **REST APIs** such as **Push Notifications**.
 
 Registered confidential clients can obtain a token to be used in all requests to the MobileFirst Server. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification.
