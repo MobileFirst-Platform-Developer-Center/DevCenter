@@ -94,9 +94,9 @@ Modify the WebSphere application server's `server.xml` file to your external res
     - **clientSecret**: The Resource server must be a registered confidential client, to learn how to register a confidential client
     - **cacheSize (optional)**: TAI uses the Java-Token-Validator cache to cache tokens and introspection data data as values so that a token that comes in the request from the client won't need to be introspected again in a short time interval.
     	
-     The default size is 50,000 tokens. 
-     
-     If the you want to guarantee that the tokens are introspected on each request you should set cache to 0.
+        The default size is 50,000 tokens.  
+        If the you want to guarantee that the tokens are introspected on each request you should set cache to 0.  
+    
     - **scope**: The resource server authenticates against scope(s). A scope could be a security check or a scope element mapped to security checks.
     
 ## Sample
