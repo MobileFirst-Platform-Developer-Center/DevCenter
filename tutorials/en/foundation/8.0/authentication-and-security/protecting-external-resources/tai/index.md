@@ -13,7 +13,7 @@ downloads:
 MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).  
 The Java library is provided as a .jar file (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
 
-This tutorial will show how to protect a simple Java Servlet, `api/protected`, using a scope (`accessRestricted`).
+This tutorial will show how to protect a simple Java Servlet, `TAI/GetBalance`, using a scope (`accessRestricted`).
 
 **Prerequesite:**
 
@@ -41,8 +41,8 @@ Add a security constraint and a security role to the `web.xml` file of the WebSp
 ```xml
 <security-constraint>
    <web-resource-collection>
-      <web-resource-name>RESTServlet</web-resource-name>
-      <url-pattern>/api/protected</url-pattern>
+      <web-resource-name>TrustAssociationInterceptor</web-resource-name>
+      <url-pattern>/TAI/GetBalance</url-pattern>
    </web-resource-collection>
    <auth-constraint>
       <role-name>TAIUserRole</role-name>
@@ -73,7 +73,7 @@ Modify the WebSphere application server's `server.xml` file to your external res
 * Add a security role:
 
     ```xml
-    <application id="REST-Server" location="REST-Server.war" name="REST-Server">
+    <application contextRoot="TAI" id="TrustAssociationInterceptor" location="TAI.war" name="TrustAssociationInterceptor"/>
        <application-bnd>
           <security-role name="TAIUserRole">
              <special-subject type="ALL_AUTHENTICATED_USERS"/>
@@ -86,7 +86,7 @@ Modify the WebSphere application server's `server.xml` file to your external res
 
     ```xml
     <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResource" clientSecret="password" cacheSize="500">
-            <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/REST-Server/GetBalance"></securityConstraint>
+            <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/TAI/GetBalance"></securityConstraint>
     </usr_OAuthTAI>
     ```
     - **authorizationURL**:  Either your MobileFirst Server (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
@@ -95,6 +95,7 @@ Modify the WebSphere application server's `server.xml` file to your external res
     - **cacheSize (optional)**: TAI uses the Java-Token-Validator cache to cache tokens and introspection data data as values so that a token that comes in the request from the client won't need to be introspected again in a short time interval.
     	
         The default size is 50,000 tokens.  
+        
         If the you want to guarantee that the tokens are introspected on each request you should set cache to 0.  
     
     - **scope**: The resource server authenticates against scope(s). A scope could be a security check or a scope element mapped to security checks.
