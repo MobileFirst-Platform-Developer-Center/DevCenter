@@ -124,6 +124,8 @@ public Response addEntry(User user){
 The sample contains two adapters, one in JavaScript and one in Java.  
 It also contains a Cordova application that works with both the Java and JavaScript adapters.
 
+> **Note:** The sample uses Cloudant Java Client v1.2.3 due to known limitation.
+
 ### Sample usage
 #### Adapter setup
 1. Create a database in Cloudant and generate an API key. Make sure that you provide read and write rights for this key.
