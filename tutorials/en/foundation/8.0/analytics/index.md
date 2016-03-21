@@ -12,7 +12,7 @@ MobileFirst Platform Foundation Operational Analytics collects data from app to 
 
 ![architecture diagram](mfp_operational_analytics.jpg)
 
-Operational Analytics is bundled by default as part of the [MobileFirst Platform Foundation Development Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
+Operational Analytics is bundled by default as part of the [MobileFirst Platform Foundation Developer Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
 
 
 #### Jump to
@@ -26,8 +26,7 @@ You can open the Analytics Console from the MobileFirst Operations Console, by c
 
 ![Analytics console button](analytics-console-button.png)
 
-
-In the MobileFirst Platform Foundation Development Kit this console's default URL is `http://localhost:9080/analytics/console`.  
+The default URL is for the MobileFirst Analytics Console is `http://localhost:9080/analytics/console`.  
 After navigating to the Analytics console you will see a dashboard like below (but with empty data).
 
 ![Analytics console](analytics-console.png)

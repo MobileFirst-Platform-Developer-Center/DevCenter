@@ -27,7 +27,7 @@ This tutorial will show how to protect a simple Java Servlet, `api/protected`, u
 1. Obtain the Java library from Maven Central.  
     If Internet connectivity is not available while developing, prepare to work offline:  
     1. Make sure you have first installed Apache Maven.
-    2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
+    2. Download the [MobileFirst Platform Foundation Developer Kit Installer]({{site.baseurl}}/downloads/).
     3. Start the MobileFirst Server and load the MobileFirst Operations Console.
     4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
     5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
