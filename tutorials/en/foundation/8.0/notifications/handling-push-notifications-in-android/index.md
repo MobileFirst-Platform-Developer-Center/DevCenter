@@ -55,7 +55,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
     compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
     ```
 
-3. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
+2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
 	* Add the following permissions to the top the `manifest` tag:
 
 		```xml
