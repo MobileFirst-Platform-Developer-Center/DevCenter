@@ -103,6 +103,11 @@ request.SetHeader(KeyValuePair<string,string> header);
 - `.Send(JObject json)` allows you to set an arbitrary dictionary in the body.
 - `.Send(byte[] data)` allows you to set an arbitrary byte array in the body.
 
+## The response
+The `WorklightResponse` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `ResponseText` (String), `ResponseJSON` (JSONObject) (if the response is in JSON) and `success` (boolean) (success status of the response).
+
+In case of request failure, the response object also contains a `error` property.
+
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
