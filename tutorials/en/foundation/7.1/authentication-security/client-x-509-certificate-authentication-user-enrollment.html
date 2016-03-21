@@ -157,7 +157,7 @@ touch rootca/index.txt
             <li>Create the RSA key pair:<br />
             The parameter, <em>2048</em>, represents the key length.<br />
 {% highlight xml linenos %}
-openssl genrsa -des3 -out rootca\root_ca_key.pem -passout pass:passRoot 2048
+openssl genrsa -des3 -out rootca/root_ca_key.pem -passout pass:passRoot 2048
 {% endhighlight %}
             </li>
             <li>Sign a certificate with the key pair:<br />
