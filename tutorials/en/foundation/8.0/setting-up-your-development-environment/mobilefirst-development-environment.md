@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
 ## Overview
-The IBM MobileFirst Platform Foundation components can be installed either seperately via online repositories which contain the latest release, or downloaded bundled together for future or offline installation using the Developer Kit Installer.
+The IBM MobileFirst Platform Foundation components can be installed either seperately via online repositories which contain the latest release, or downloaded bundled together for future or offline installation using the Development Kit Installer.
  
 This tutorial expands on the components of IBM MobileFirst Platform Foundation and the setup needed to get started with the MobileFirst Development environment.
 
@@ -14,17 +14,17 @@ This tutorial expands on the components of IBM MobileFirst Platform Foundation a
 
 #### Jump to:
 
-* [MobileFirst Platform Foundation Developer Kit](#mobilefirst-platform-foundation-development-kit)
+* [MobileFirst Platform Foundation Development Kit](#mobilefirst-platform-foundation-development-kit)
 * [MobileFirst Platform Foundation components](#mobilefirst-platform-foundation-components)
 * [Applications and Adapters Development](#applications-and-adapters-development)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
-## MobileFirst Platform Foundation Developer Kit
-The Developer Kit provides a ready-for-development environment with minimal configuration needed.
+## MobileFirst Platform Foundation Development Kit
+The Development Kit provides a ready-for-development environment with minimal configuration needed.
 
-The Developer Kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.
+The Development Kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.
 
-### Developer Kit Installer
+### Development Kit Installer
 The Installer packages the components for local installation where Internet connectivity is not available.  
 The components are available through the MobileFirst Operations Console's Downloads page.
 
@@ -33,7 +33,7 @@ The components are available through the MobileFirst Operations Console's Downlo
 ## MobileFirst Platform Foundation components
 
 ### MobileFirst Server
-As part of the Developer Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
+As part of the Development Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
 
 > To download and install the MobileFirst Server, visit the [downloads]({{site.baseurl}}/downloads/) page.  
 > If using MobileFirst Server on IBM Containers, see the [Using Mobile Foundation](../../ibm-containers/) tutorial.  

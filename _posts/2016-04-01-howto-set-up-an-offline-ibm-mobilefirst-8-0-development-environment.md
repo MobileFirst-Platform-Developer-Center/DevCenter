@@ -21,7 +21,7 @@ IBM MobileFirst Platform Foundation supports offline development, but requires m
         * cordova-windows (4.2.0+)
 * [Java (JDK 1.7+)](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html): For running a local development server
 * [Maven (3.3.9+)](https://maven.apache.org/download.cgi): For adapter development
-* [MobileFirst Platform Foundation Developer Kit (8.0+)]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/#mobilefirst-platform-foundation-development-kit): Includes the MobileFirst Server & MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.
+* [MobileFirst Platform Foundation Development Kit (8.0+)]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/#mobilefirst-platform-foundation-development-kit): Includes the MobileFirst Server & MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.
 * [Node.js (0.12.0+)](https://nodejs.org/en/download/releases/): For the MobileFirst CLI and Cordova
 
 For additional offline platform specific development prerequisites see the [tutorial page]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/) for more instructions.
@@ -46,7 +46,7 @@ The cordova command is now available for use. For any other packages that you ma
 Once all of the above files are downloaded, move them to an offline machine for installation. Cordova and the associated cordova platforms as well as the MobileFirst CLI will need to be installed after Node.js has been installed.
 
 ## MobileFirst Operations Console
-The MobileFirst Developer Kit installer includes snapshot downloads for various development artifacts (listed above in Prerequisites) downloadable via the MobileFirst Operations Console downloads page.
+The MobileFirst Development Kit installer includes snapshot downloads for various development artifacts (listed above in Prerequisites) downloadable via the MobileFirst Operations Console downloads page.
 
 ![downloads]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/console/downloads.png)
 
