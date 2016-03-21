@@ -54,11 +54,6 @@ request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void
 
 Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
 
-## The response
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
-
-Use the `response` and `error` objects to get the data that is retrieved from the adapter.
-
 ## Parameters
 Before sending your request, you may want to add parameters as needed.
 
@@ -118,6 +113,11 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithBody` allows you to set an arbitrary String in the body.
 - `sendWithJSON` allows you to set an arbitrary dictionary in the body.
 - `sendWithData` allows you to set an arbitrary `NSData` in the body.
+
+## The response
+The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
+
+Use the `response` and `error` objects to get the data that is retrieved from the adapter.
 
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
