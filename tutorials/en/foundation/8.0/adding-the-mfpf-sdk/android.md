@@ -65,15 +65,15 @@ Create an Android Studio project or use an existing one.
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundation',
-    version: '8.0.Beta1-SNAPSHOT',
+    version: '8.0.+',
     ext: 'aar',
     transitive: true
     ```
 
-    Or:
+    Or in a single line:
 
     ```xml
-    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.Beta1-SNAPSHOT'
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
     ```
 
 5. In **Android → app → manifests**, open the `AndroidManifest.xml` file. Add the following permissions above the **application** element:

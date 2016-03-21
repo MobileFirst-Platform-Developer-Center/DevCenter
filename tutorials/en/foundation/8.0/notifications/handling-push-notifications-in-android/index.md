@@ -44,15 +44,16 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundationPush',
-    version: '8.0.0.0.Beta1-SNAPSHOT',
+    version: '8.0.+',
     ext: 'aar',
     transitive: true
     ```
-    - Or in a single line:
+    
+    Or in a single line:
 
-        ```xml
-        compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.Beta1-SNAPSHOT'
-        ```
+    ```xml
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+    ```
 
     <span style="color:red"> remove step 2 below before going live</span>
 
