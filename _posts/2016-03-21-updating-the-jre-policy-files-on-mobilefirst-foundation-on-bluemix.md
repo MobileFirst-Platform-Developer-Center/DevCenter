@@ -1,7 +1,6 @@
 ---
 title: How to update the JRE related security files on IBM MobileFirst Foundation on Bluemix
 date: 2016-03-21
-pinned: true
 tags:
 - MobileFirst_Platform
 - Bluemix
