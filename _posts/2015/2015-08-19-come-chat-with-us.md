@@ -23,13 +23,13 @@ Slack:
 And a small etiquette request:  
 After registering, please do edit your profile to mention your real name (first and last) and company name.
 
-### How to join us on Slack
+#### How to join us on Slack
 
 1. Provide your email address below
 2. Check your inbox for an invite
 3. Continue with the onboarding process
 
-<p><iframe src="https://slackin.mybluemix.net/" style="overflow:hidden; height:230px; width:310px" scrolling="no"></iframe></p>
+<p><iframe src="https://slackin.mybluemix.net/" style="overflow:hidden; height:230px; width:310px" scrolling="no" frameborder="0"></iframe></p>
 
 That's it.  
 See you there!
