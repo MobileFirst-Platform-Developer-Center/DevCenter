@@ -38,6 +38,8 @@ If your application consists of more than one platform - specify the platform to
 mfpdev app preview -p <platform>
 ```
 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected in the preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
+
 ### Mobile Browser Simulator
 
 ![MBS](mbs.png)

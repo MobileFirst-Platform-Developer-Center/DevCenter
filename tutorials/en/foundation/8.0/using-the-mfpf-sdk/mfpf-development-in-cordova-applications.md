@@ -67,12 +67,14 @@ After [adding the MobileFirst Cordova SDK](../../adding-the-mfpf-sdk/cordova) to
 > For a complete list of available API methods, refer to the "Client API changes in V8.0.0" topic in the user documentation.
 
 ## Previewing an application's web resources
-A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Platform Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering. 
+A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Platform Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering.
+
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected in the preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
 
 #### Simple Browser
 In Simple Browser previewing, the web resources of the application are being rendered in the desktop browser without being treated as an "app", allowing easy debugging of just the web resources.  
 
-#### Mobile Browser Simulator 
+#### Mobile Browser Simulator
 The Mobile Browser Simulator is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device.
 
 ### Previewing
@@ -127,16 +129,16 @@ To add it:
     ```bash
     cordova plugin add cordova-plugin-crosswalk-webview
     ```
-    
+
     This command will add the CrossWalk WebView to the application.  
     Behind the scenes, the MobileFirst Cordova SDK will adjust the Android project activity for using it.
-    
+
 2. Build the project by running the command:
 
     ```bash
     cordova build
     ```
-    
+
 ## Further reading
 Learn more about Cordova:
 
