@@ -135,3 +135,19 @@ The adapter Maven project contains the Java adapter used during the resource req
 2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
 3. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
 4. Import the project to Xcode, and run the sample by clicking the **Run** button.
+
+#### Note about iOS 9:
+
+> * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+>   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
+>   2. Paste the following: 
+>
+>    
+        ```xml
+        <key>NSAppTransportSecurity</key>
+        <dict>
+            <key>NSAllowsArbitraryLoads</key>
+            <true/>
+        </dict>
+        ```
+
