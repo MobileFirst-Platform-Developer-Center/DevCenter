@@ -19,7 +19,7 @@ Before iOS and Android Cordova applications are able to receive and display push
     * [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/cordova)
     * [Push Notifications Overview](../push-notifications-overview)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server
-* MobileFirst Developer CLI installed on the developer workstation
+* MobileFirst CLI installed on the developer workstation
 * Cordova CLI installed on the developer workstation
 
 #### Jump to

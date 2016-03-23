@@ -232,5 +232,5 @@ var weatherInfo = {
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/) the Adapters Maven project.
 
 ### Sample usage
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
+* Use either Maven or MobileFirst CLI to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

@@ -98,7 +98,7 @@ The Mobile Browser Simulator is a web application that enables testing of the Co
     ◯ ios
     ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### Live preview
 Applicative code (HTML, CSS and JS) can now be edited in real-time with live-preview.   

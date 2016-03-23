@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Using MobileFirst Developer CLI to Manage MobileFirst Artifacts
-breadcrumb_title: MobileFirst Developer CLI
+title: Using MobileFirst CLI to Manage MobileFirst Artifacts
+breadcrumb_title: MobileFirst CLI
 weight: 1
 relevantTo: [ios,android,windows,cordova]
 ---
@@ -20,7 +20,7 @@ In this tutorial you will learn how to install the `mfpdev` Command Line Interfa
 #### Jump to
 
 * [Prerequisites](#prerequisites)
-* [Installing the MobileFirst Developer CLI](#installing-the-mobilefirst-developer-cli)
+* [Installing the MobileFirst CLI](#installing-the-mobilefirst-cli)
 * [Interactive and Direct modes](#interactive-and-direct-modes)
 * [Managing MobileFirst Server instances](#managing-mobilefirst-server-instances)
 * [Managing Applications](#managing-applications)
@@ -29,7 +29,7 @@ In this tutorial you will learn how to install the `mfpdev` Command Line Interfa
 * [Update and Uninstall the Command Line Interface](#update-and-uninstall-the-command-line-interface)
 
 ## Prerequisites
-The MobileFirst Developer CLI is available as an NPM package at the [NPM registry](https://www.npmjs.com/).  
+The MobileFirst CLI is available as an NPM package at the [NPM registry](https://www.npmjs.com/).  
 
 Ensure **node.js** is installed in the development environment in order to install NPM packages.  
 Follow the installation instructions in [nodejs.org](https://nodejs.org) to install node.js.
@@ -43,7 +43,7 @@ v4.2.3
 
 > **Note:** Minimum supported node.js version is 4.2.3
 
-## Installing the MobileFirst Developer CLI
+## Installing the MobileFirst CLI
 To install the Command Line Interface run the command:
 
 ```bash

@@ -18,7 +18,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
     * [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* MobileFirst Developer CLI installed on the developer workstation
+* MobileFirst CLI installed on the developer workstation
 
 
 ### Jump to:

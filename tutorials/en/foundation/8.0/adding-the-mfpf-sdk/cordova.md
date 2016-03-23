@@ -44,7 +44,7 @@ The cordova-plugin-mfp-push plug-in provides permissions needed to use push noti
 
 **Prerequisites:**
 
-- At mininum Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) and MobileFirst Developer CLI installed on the developer workstation.  
+- At mininum Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) and MobileFirst CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Cordova development environment](../../setting-up-your-development-environment/cordova-development-environment) tutorials.
 
@@ -141,7 +141,7 @@ Once the MobileFirst Cordova SDK is added to the project, the Cordova-generated 
 * **mfp:languagePreferences:** Default language for client sdk system messages (en, fr, es)
 
 ### Editing MobileFirst settings in config.xml
-The MobileFirst Developer CLI can be used to edit the above settings with the command:
+The MobileFirst CLI can be used to edit the above settings with the command:
 
 ```bash
 mfpdev app config

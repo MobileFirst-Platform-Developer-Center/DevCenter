@@ -117,5 +117,5 @@ If `RSSResponse` is not `200 OK`, we write the status code and reason in the res
 The Adapters Maven project includes the **JavaHTTP** adapter described above.
 
 ### Sample usage
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
+* Use either Maven or MobileFirst CLI to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

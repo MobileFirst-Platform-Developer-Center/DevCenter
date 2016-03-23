@@ -17,7 +17,7 @@ Before Android applications are able to handle any received push notifications, 
     * [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android)
     * [Push Notifications Overview](../push-notifications-overview)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* MobileFirst Developer CLI installed on the developer workstation
+* MobileFirst CLI installed on the developer workstation
 
 #### Jump to:
 

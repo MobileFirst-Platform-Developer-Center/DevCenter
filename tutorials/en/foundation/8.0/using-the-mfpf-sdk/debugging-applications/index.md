@@ -48,7 +48,7 @@ mfpdev app preview -p <platform>
 
 ![MBS](simple.png)
 
-> Learn more about the MobileFirst Developer CLI in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts) tutorial.
+> Learn more about the MobileFirst CLI in the [Using MobileFirst CLI to manage MobileFirst artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Debugging with Ripple
 Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  

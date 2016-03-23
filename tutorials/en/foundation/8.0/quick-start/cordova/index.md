@@ -21,7 +21,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 
 * Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
 * Cordova 6.x CLI
-* *Optional*. MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
+* *Optional*. MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -89,7 +89,7 @@ Alternatively, click the **New** button next to **Adapters**.
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and MobileFirst Developer CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 

@@ -45,7 +45,7 @@ From a **Command-line** window, with the MobileFirst CLI installed,
 
 2. Run the command: `mfpdev server console MyRemoteServer`.
 
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ## Navigating the console
 
