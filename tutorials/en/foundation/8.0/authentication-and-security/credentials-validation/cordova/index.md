@@ -50,19 +50,19 @@ In this example, a prompt is displayed asking to enter the PIN code:
 ```javascript
 PinCodeChallengeHandler.handleChallenge = function(challenge) {
     var msg = "";
-    
+
     // Create the title string for the prompt
     if(challenge.errorMsg != null) {
         msg =  challenge.errorMsg + "\n";
     } else {
         msg = "This data requires a PIN code.\n";
     }
-    
+
     msg += "Remaining attempts: " + challenge.remainingAttempts;
-    
+
     // Display a prompt for user to enter the pin code     
     var pinCode = prompt(msg, "");
-    
+
     if(pinCode){ // calling submitChallengeAnswer with the entered value
         PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
     } else { // calling submitFailure in case user pressed the cancel button
@@ -95,7 +95,7 @@ The structure of the JSON object passed as a parameter greatly depends on the na
 ```javascript
 PinCodeChallengeHandler.handleFailure = function(error) {
     WL.Logger.debug("Challenge Handler Failure!");
-    
+
     if(error.failure && error.failure == "account blocked") {
         alert("No Remaining Attempts!");  
     } else {
@@ -107,7 +107,7 @@ PinCodeChallengeHandler.handleFailure = function(error) {
 ## Handling successes
 In general successes are automatically processed by the framework to allow the rest of the application to continue.
 
-Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `WLChallengeHandler`'s `handleSuccess()`. Here again, the content and structure of the `success` JSON object depends on what the security check sends.
+Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `WLChallengeHandler`'s `processSuccess()`. Here again, the content and structure of the `success` JSON object depends on what the security check sends.
 
 In the `PinCodeAttemptsCordova` sample application, the success does not contain any additional data.
 
@@ -130,9 +130,9 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 * Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`. 
+    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-        
+
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
 * Back in the command-line:
     * Add a platform by running the `cordova platform add` command.
