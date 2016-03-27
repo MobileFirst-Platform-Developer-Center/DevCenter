@@ -24,18 +24,15 @@ show_disqus: false
         <div role="tabpanel" class="tab-pane active" id="forDevelopers">
             <br/>
             <p>Developers can follow the different labs presented below to learn how to integrate applications with various MobileFirst tools and services.</p>
-            <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a>
+            <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/8.0-beta/setup/" role="button">8.0 <em>beta</em> labs</a>
         </div>
-    
-    
-    
+
         <div role="tabpanel" class="tab-pane" id="forAdministrators">
             <br/>
             <p>Administrators can follow the different labs presented below to learn how to setup different MobileFirst environments.</p>
             <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/administrators/7.1/intro/" role="button">7.1 labs</a>
         </div>
-    
-    
+        
         <div role="tabpanel" class="tab-pane" id="downloadAssets">
             <br/>
             <p>The following applications are used throughout the lab sessions for developers.</p>
@@ -56,7 +53,4 @@ show_disqus: false
             </ul>
         </div>
     </div>
-    
-    <br/><br/><br/>
-    <p><i>All materials were created by Andrii Vasylchenko</i></p>
 </div>
