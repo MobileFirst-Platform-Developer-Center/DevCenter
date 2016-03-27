@@ -1,22 +1,22 @@
 ---
 layout: labs
-title: MobileFirst Platform Foundation 8.0 (beta) Developer Labs
+title: MobileFirst Platform Foundation 8.0 Developer Labs
 tabs:
   - name: Introduction
-    path: /labs/developers/8.0-beta/intro/
+    path: /labs/developers/8.0/intro/
   - name: Setup
-    path: /labs/developers/8.0-beta/setup/
+    path: /labs/developers/8.0/setup/
   - name: New Hybrid Wallet
-    path: /labs/developers/8.0-beta/newhybridwallet
+    path: /labs/developers/8.0/newhybridwallet
   - name: Hybrid Messenger
-    path: /labs/developers/8.0-beta/hybridmessenger
+    path: /labs/developers/8.0/hybridmessenger
 ---
 ### Introduction
 Below are MobileFirst Platform Foundation 8.0 hands-on lab sessions with step-by-step guidance.  
 Before starting the lab series make sure to first follow through setup instructions.
 
 <div style="max-width: 200px">
-<a href="{{site.baseurl}}/labs/developers/8.0-beta/newhybridwallet"><img src="{{site.baseurl}}/labs/developers/8.0-beta/newhybridwallet/logo_small.png"></a>
+<a href="{{site.baseurl}}/labs/developers/8.0/newhybridwallet"><img src="{{site.baseurl}}/labs/developers/8.0/newhybridwallet/logo_small.png"></a>
 </div>
 
 In this lab: 
@@ -32,7 +32,7 @@ In this lab:
 ---
 
 <div style="max-width: 200px">
-<a href="{{site.baseurl}}/labs/developers/8.0-beta/hybridmessenger"><img src="{{site.baseurl}}/labs/developers/8.0-beta/hybridmessenger/logo_small.png"></a>
+<a href="{{site.baseurl}}/labs/developers/8.0/hybridmessenger"><img src="{{site.baseurl}}/labs/developers/8.0/hybridmessenger/logo_small.png"></a>
 </div>
 
 In this lab:
