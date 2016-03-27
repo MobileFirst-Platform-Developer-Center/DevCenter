@@ -45,7 +45,7 @@ Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-u
 
     ![Image of Mobile Foundation setup](service-dashboard.png)
 
-7. Click on **Launch Console** to open the MobileFirst Operations Console.
+7. Click on **Launch Console** to open the MobileFirst Operations Console.  The username is "admin" and the password can be revealed by clicking on the "eye" icon.
 
     ![Image of Mobile Foundation setup](dashboard.png)
 
