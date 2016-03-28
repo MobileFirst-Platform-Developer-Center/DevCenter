@@ -1,7 +1,6 @@
 ---
 title: IBM MobileFirst Platform Foundation Responds to Google Play Store Announcement of Blocking Apps Using Vulnerable Cordova Versions
 date: 2016-02-16
-pinned: true
 tags:
 - MobileFirst_Platform
 - Cordova
