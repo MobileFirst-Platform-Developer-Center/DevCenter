@@ -13,7 +13,7 @@
         },
         "title": "Yahoo! Weather - Bangkok, Bangkok, TH",
         "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-1225448/",
-        "description": "Yahoo! Weather for Bangkok, Bangkok, TH",
+        "description": "Weather for Bangkok, Bangkok, TH",
         "language": "en-us",
         "lastBuildDate": "Mon, 28 Mar 2016 04:30 PM ICT",
         "ttl": "60",
@@ -127,7 +127,7 @@
             "low": "82",
             "text": "Thunderstorms"
           }],
-          "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/30.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Partly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Mostly Cloudy. High: 94Low: 77\n<BR /> Tue - Scattered Thunderstorms. High: 92Low: 79\n<BR /> Wed - Thunderstorms. High: 91Low: 80\n<BR /> Thu - Partly Cloudy. High: 92Low: 80\n<BR /> Fri - Partly Cloudy. High: 94Low: 81\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-1225448/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>",
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/30.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Partly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Mostly Cloudy. High: 94Low: 77\n<BR /> Tue - Scattered Thunderstorms. High: 92Low: 79\n<BR /> Wed - Thunderstorms. High: 91Low: 80\n<BR /> Thu - Partly Cloudy. High: 92Low: 80\n<BR /> Fri - Partly Cloudy. High: 94Low: 81\n<BR />\n<BR />\n",
           "guid": {
             "isPermaLink": "false"
           }
