@@ -13,7 +13,7 @@
         },
         "title": "Yahoo! Weather - San Francisco, CA, US",
         "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2487956/",
-        "description": "Yahoo! Weather for San Francisco, CA, US",
+        "description": "Weather for San Francisco, CA, US",
         "language": "en-us",
         "lastBuildDate": "Mon, 28 Mar 2016 01:52 AM PDT",
         "ttl": "60",
@@ -127,7 +127,7 @@
             "low": "55",
             "text": "Partly Cloudy"
           }],
-          "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/23.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Breezy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Breezy. High: 60Low: 50\n<BR /> Tue - Sunny. High: 61Low: 50\n<BR /> Wed - Sunny. High: 62Low: 50\n<BR /> Thu - Mostly Sunny. High: 62Low: 52\n<BR /> Fri - Mostly Sunny. High: 62Low: 52\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2487956/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>",
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/23.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Breezy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Breezy. High: 60Low: 50\n<BR /> Tue - Sunny. High: 61Low: 50\n<BR /> Wed - Sunny. High: 62Low: 50\n<BR /> Thu - Mostly Sunny. High: 62Low: 52\n<BR /> Fri - Mostly Sunny. High: 62Low: 52\n<BR />\n<BR />\n",
           "guid": {
             "isPermaLink": "false"
           }

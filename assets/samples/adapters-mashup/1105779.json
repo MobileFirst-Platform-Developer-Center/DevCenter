@@ -13,7 +13,7 @@
         },
         "title": "Yahoo! Weather - Sydney, NSW, AU",
         "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-1105779/",
-        "description": "Yahoo! Weather for Sydney, NSW, AU",
+        "description": "Weather for Sydney, NSW, AU",
         "language": "en-us",
         "lastBuildDate": "Mon, 28 Mar 2016 07:47 PM AEDT",
         "ttl": "60",
@@ -127,7 +127,7 @@
             "low": "59",
             "text": "Partly Cloudy"
           }],
-          "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/26.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Cloudy. High: 74Low: 64\n<BR /> Tue - Showers. High: 74Low: 65\n<BR /> Wed - Partly Cloudy. High: 75Low: 62\n<BR /> Thu - Partly Cloudy. High: 72Low: 60\n<BR /> Fri - Partly Cloudy. High: 80Low: 61\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-1105779/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>",
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/26.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Cloudy. High: 74Low: 64\n<BR /> Tue - Showers. High: 74Low: 65\n<BR /> Wed - Partly Cloudy. High: 75Low: 62\n<BR /> Thu - Partly Cloudy. High: 72Low: 60\n<BR /> Fri - Partly Cloudy. High: 80Low: 61\n<BR />\n<BR />\n",
           "guid": {
             "isPermaLink": "false"
           }

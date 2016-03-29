@@ -13,7 +13,7 @@
         },
         "title": "Yahoo! Weather - New York, NY, US",
         "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2459115/",
-        "description": "Yahoo! Weather for New York, NY, US",
+        "description": "Weather for New York, NY, US",
         "language": "en-us",
         "lastBuildDate": "Mon, 28 Mar 2016 04:50 AM EDT",
         "ttl": "60",
@@ -127,7 +127,7 @@
             "low": "42",
             "text": "Scattered Showers"
           }],
-          "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/11.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Showers\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Scattered Showers. High: 59Low: 44\n<BR /> Tue - Breezy. High: 53Low: 41\n<BR /> Wed - Partly Cloudy. High: 53Low: 35\n<BR /> Thu - Scattered Showers. High: 68Low: 45\n<BR /> Fri - Mostly Cloudy. High: 67Low: 55\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2459115/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>",
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/11.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Showers\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Scattered Showers. High: 59Low: 44\n<BR /> Tue - Breezy. High: 53Low: 41\n<BR /> Wed - Partly Cloudy. High: 53Low: 35\n<BR /> Thu - Scattered Showers. High: 68Low: 45\n<BR /> Fri - Mostly Cloudy. High: 67Low: 55\n<BR />\n<BR />\n",
           "guid": {
             "isPermaLink": "false"
           }

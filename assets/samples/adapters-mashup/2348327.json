@@ -13,7 +13,7 @@
         },
         "title": "Yahoo! Weather - Christchurch, Canterbury, NZ",
         "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2348327/",
-        "description": "Yahoo! Weather for Christchurch, Canterbury, NZ",
+        "description": "Weather for Christchurch, Canterbury, NZ",
         "language": "en-us",
         "lastBuildDate": "Mon, 28 Mar 2016 09:49 PM NZDT",
         "ttl": "60",
@@ -127,7 +127,7 @@
             "low": "50",
             "text": "Mostly Cloudy"
           }],
-          "description": "<![CDATA[<img src=\"http://l.yimg.com/a/i/us/we/52/27.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Mostly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Mostly Cloudy. High: 61Low: 56\n<BR /> Tue - Partly Cloudy. High: 67Low: 47\n<BR /> Wed - Mostly Cloudy. High: 59Low: 50\n<BR /> Thu - Mostly Cloudy. High: 63Low: 53\n<BR /> Fri - Cloudy. High: 68Low: 54\n<BR />\n<BR />\n<a href=\"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2348327/\">Full Forecast at Yahoo! Weather</a>\n<BR />\n<BR />\n(provided by <a href=\"http://www.weather.com\" >The Weather Channel</a>)\n<BR />\n]]>",
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/27.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Mostly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Mostly Cloudy. High: 61Low: 56\n<BR /> Tue - Partly Cloudy. High: 67Low: 47\n<BR /> Wed - Mostly Cloudy. High: 59Low: 50\n<BR /> Thu - Mostly Cloudy. High: 63Low: 53\n<BR /> Fri - Cloudy. High: 68Low: 54\n<BR />\n<BR />\n",
           "guid": {
             "isPermaLink": "false"
           }
