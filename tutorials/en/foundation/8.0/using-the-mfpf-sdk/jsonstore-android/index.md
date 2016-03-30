@@ -34,14 +34,6 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 ## Adding JSONStore
 1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
 
-2. Add the following to the existing `repositories` section:
-
-    ```xml
-    maven {
-        url 'https://oss.sonatype.org/content/repositories/snapshots/'
-    }
-    ```
-
 2. Add the following to the existing `dependencies` section:
 
 ```
