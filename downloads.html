@@ -27,6 +27,7 @@ title: Downloads
                 <li role="presentation"><a href="#get-cli" aria-controls="cli" role="tab" data-toggle="tab">CLI</a></li>
                 <li role="presentation"><a href="#get-client-sdks" aria-controls="client-sdks" role="tab" data-toggle="tab">Client SDKs</a></li>
                 <li role="presentation"><a href="#get-artifacts" aria-controls="artifacts" role="tab" data-toggle="tab">Adapter Tooling</a></li>
+                <li role="presentation"><a href="#get-production-server" aria-controls="production" role="tab" data-toggle="tab">Production Server</a></li>
             </ul>
             
             <div class="tab-content">
@@ -100,18 +101,30 @@ title: Downloads
                 </div>
                 <div role="tabpanel" class="tab-pane" id="get-artifacts">
                     <br/>
-                    <p>The MobileFirst server-side artifacts are available from Maven Central. For further instructions, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">review the tutorials</a>.<br/>
+                    <p>The MobileFirst server-side artifacts are available from <a href="http://search.maven.org/" target="_blank">Maven Central</a>. For further instructions, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">review the tutorials</a>.<br/>
                     The artifacts are also available from <strong>MobileFirst Operations Console → Get Starter Code → Tools tab</strong> for offline installation.</p>
                     
                     <p><strong>Prerequisite:</strong><br/>
                         To fetch artifacts from Maven Central, <a href="https://maven.apache.org/" target="_blank">Apache Maven</a> must first be installed.</p>
                     
+                    <p>Available artifacts:</p>
                     <ul>
-                        <li><a href="#">OAuth - Java Token Validator</a></li>
-                        <li><a href="#">OAuth - Trust Assosciation Interceptor</a></li>
-                        <li><a href="#">Adapter Maven archetypes</a></li>
-                        <li><a href="#">Security Checks</a></li>
+                        <li>OAuth - Java Token Validator</li>
+                        <li>OAuth - Trust Assosciation Interceptor</li>
+                        <li>Adapter Maven archetypes</li>
+                        <li>Security Checks</li>
                     </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="get-production-server">
+                    <br/>
+                    <p>Download and setup the MobileFirst Server for Production.</p>
+                    <ul>
+                        <li>Download <a href="https://jazz.net/downloads/ibm-installation-manager/">IBM Installation Manager</a></li>
+                        <li>Download <a href=" http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/8.5.5.8/wlp-javaee7-8.5.5.8.zip">WebSphere Liberty profile v8.5.5.8</a></li>
+                        <li>Download <a href="{{site.baseurl}}/beta">MobileFirst Server for Production</a></li>
+                    </ul>
+                    
+                    <p>Once you have all artifacts downladed, follow the user documentation on how to setup a producton environment.</p>
                 </div>
             </div>
         </div>    
