@@ -29,7 +29,7 @@ In this lab:
 * Push notifications messaging
 * JSONStore
 
----
+<!-- ---
 
 <div style="max-width: 200px">
 <a href="{{site.baseurl}}/labs/developers/8.0/hybridmessenger"><img src="{{site.baseurl}}/labs/developers/8.0/hybridmessenger/logo_small.png"></a>
@@ -45,4 +45,4 @@ In this lab:
 * Push notifications messaging
 * Custom analytics
 * Uses IBM Bluemix Mobile Foundation server instance
-* Uses Mobile Quality Assurance
+* Uses Mobile Quality Assurance -->
