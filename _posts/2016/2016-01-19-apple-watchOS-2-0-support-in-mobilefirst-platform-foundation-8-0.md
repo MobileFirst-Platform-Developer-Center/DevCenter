@@ -19,7 +19,7 @@ The watch app, as any regular iOS app, should be registered as a separate applic
 
 ### Installing the SDK using CocoaPods
 In order to install the SDK using CocoaPods, your Podfile should include the target of the WatchKit Extension.  
-For example: [https://github.ibm.com/MFPSamples/WatchOSDemo/blob/master/WatchOSDemoApp/Podfile](https://github.ibm.com/MFPSamples/WatchOSDemo/blob/master/WatchOSDemoApp/Podfile).
+For example: [https://github.com/MobileFirst-Platform-Developer-Center/WatchOSDemo/blob/master/WatchOSDemoApp/Podfile](https://github.com/MobileFirst-Platform-Developer-Center/WatchOSDemo/blob/master/WatchOSDemoApp/Podfile).
 
 ### Import IBMMobileFirstPlatformFoundationWatchOS
 In the watch Extension's source files you should import the `IBMMobileFirstPlatformFoundationWatchOS` framework in order to use MobileFirst code:
@@ -45,7 +45,7 @@ Therefore, in order to see messages from "Access Disabled" or "Active and Notify
 
 There is also a complete demo app. The demo accesses a resource protected by specific "scope". The iPhone app and watchOS app map to their respecive security checks: the iPhone app maps to a username/password security check, and the watchOS app maps to a pin-code security check.
 
-You can download the demo Xcode project from GitHub: [https://github.ibm.com/MFPSamples/WatchOSDemo](https://github.ibm.com/MFPSamples/WatchOSDemo).
+You can download the demo Xcode project from GitHub: [https://github.com/MobileFirst-Platform-Developer-Center/WatchOSDemo](https://github.com/MobileFirst-Platform-Developer-Center/WatchOSDemo).
 
 In order to use the demo app:
 
