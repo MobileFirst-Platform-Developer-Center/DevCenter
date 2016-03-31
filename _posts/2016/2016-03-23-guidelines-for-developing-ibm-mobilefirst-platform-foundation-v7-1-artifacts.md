@@ -1,6 +1,6 @@
 ---
 title: Guidelines for developing IBM MobileFirst Platform Foundation V7.1 artifacts
-date: 2016-03-23
+date: 2016-04-5
 tags:
 - MobileFirst_Platform
 - Migration
