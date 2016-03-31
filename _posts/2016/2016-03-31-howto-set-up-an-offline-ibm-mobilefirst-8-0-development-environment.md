@@ -1,6 +1,6 @@
 ---
 title: 'HowTo: Set Up an Offline IBM MobileFirst 8.0 Development Environment'
-date: 2016-04-01
+date: 2016-03-31
 tags:
 - MobileFirst_Platform
 - Offline
