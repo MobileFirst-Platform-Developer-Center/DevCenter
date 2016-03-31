@@ -1,5 +1,5 @@
 ---
-title: Welcome to the New Developer Center
+title: IBM MobileFirst Platform Foundation 8.0 beta is now available
 date: 2016-03-31
 pinned: true
 tags:
