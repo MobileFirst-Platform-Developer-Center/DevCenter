@@ -30,4 +30,4 @@ This blog post provides the steps to follow if you are trying to update the trus
     You might want to backup the existing truststore.jks file before updating.
 
 * Redeploy the MobileFoundation instance from Bluemix UI using the updated truststore file in "Advanced Settings"
-* If mfp doesn’t restart or the runtimes don’t comeup after the update, connect to the container using the command: `cf ic exec -i <ContainerID> bash` and check the log files at:  /opt/ibm/wlp/usr/servers/mfp/logs/`
+* If mfp doesn’t restart or the runtimes don’t comeup after the update, connect to the container using the command: `cf ic exec -i <ContainerID> bash` and check the log files at: "/opt/ibm/wlp/usr/servers/mfp/logs/"
