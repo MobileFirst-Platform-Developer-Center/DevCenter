@@ -55,15 +55,15 @@ In order to use the demo app:
 
 3. Under **Pods/Pods/IBMMobileFirstPlatformFoundation** both *IBMMobileFirstPlatformFoundation.framework* and *IBMMobileFirstPlatformFoundationWatchOS.framework* are available:
 
-    ![Image of framework files]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Pod_frameworks.png)
+    ![Image of framework files]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Pod_frameworks.png)
 
 4. Edit the **mfpclient.plist** file and set the `host` property.
 
-    ![Image of editing the .plist file in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/mfpclient.plist_edit.png)
+    ![Image of editing the .plist file in Xcode]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/mfpclient.plist_edit.png)
 
     Make sure the file should be member of both targets - WatchOSDemoApp and WatchOSDemoApp WatchKit Extension:
 
-    ![Image of memberships in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/mfpclient.plist_membership.png)
+    ![Image of memberships in Xcode]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/mfpclient.plist_membership.png)
 
 5. Deploy the adapters UsernamePasswordAdapter.adapter, PinCodeAdapter.adapter and bankAdapter.adapter to the server from the MobileFirst Operations Console.
 
@@ -73,17 +73,17 @@ In order to use the demo app:
 
 7. Run the app using the schema "WatchOSDemoApp WatchKit App":
 
-    ![Image of how to run the project in Xcode]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Run_demo_app_on_watch.png)
+    ![Image of how to run the project in Xcode]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Run_demo_app_on_watch.png)
 
 Clicking on "My Balance" should display the Pin Code screen.  
 A valid pin is "1234" (That can be changed in the security check using the MobileFirst Operations Console). Try first an incorrect pin - the Pin Code screen should appear again with "Please try again". Then try with a valid pin - you should get the balance screen.  
 
-![Image of Balance button in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Balance_btn_watch.png)
-![Image of Pin Code screen in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Pincode_screen.png)
-![Image of balance result in watch app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Watch_balance_screen.png)
+![Image of Balance button in watch app]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Balance_btn_watch.png)
+![Image of Pin Code screen in watch app]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Pincode_screen.png)
+![Image of balance result in watch app]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Watch_balance_screen.png)
 
 Do the same in the iPhone app - Login screen with username/password should be opened. Any username/password pair where the username and password are identical is valid (for example "user" and "user").
 
-![Image of Balance button in iPhone app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Balance_btn_iphone.png)
-![Image of User Password screen in iPhone app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/User_password_screen.png)
-![Image of balance result in iPhone app]({{site.baseurl}}/assets/blog/2016-01-19-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Iphone_balance_screen.png)
+![Image of Balance button in iPhone app]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Balance_btn_iphone.png)
+![Image of User Password screen in iPhone app]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/User_password_screen.png)
+![Image of balance result in iPhone app]({{site.baseurl}}/assets/blog/2016-03-31-apple-watchOS-2-0-support-in-mobilefirst-platform-foundation-8-0/Iphone_balance_screen.png)
