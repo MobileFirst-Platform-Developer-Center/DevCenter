@@ -1,6 +1,7 @@
 ---
 title: Welcome to the New Developer Center
 date: 2016-03-31
+pinned: true
 tags:
 - MobileFirst_Platform
 - Beta_Program

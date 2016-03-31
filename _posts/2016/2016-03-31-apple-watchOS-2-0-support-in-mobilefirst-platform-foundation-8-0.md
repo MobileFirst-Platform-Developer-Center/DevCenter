@@ -1,6 +1,6 @@
 ---
 title: Apple watchOS 2.0 support in MobileFirst Platform Foundation 8.0
-date: 2016-02-07
+date: 2016-03-31
 tags:
 - MobileFirst_Platform
 - iOS
