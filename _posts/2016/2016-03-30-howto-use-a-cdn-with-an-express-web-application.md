@@ -33,7 +33,7 @@ A CDN works by caching files (objects) and serving them directly instead of goin
 
 ### Typical CDN Request Flow
 
-![CDN Request Flow](/assets/blog/2016-03-30-howto-use-a-cdn-with-an-express-web-application/cdn-illustration.png)
+![CDN Request Flow]({{site.baseurl}}/assets/blog/2016-03-30-howto-use-a-cdn-with-an-express-web-application/cdn-illustration.png)
 
 1. Client makes a request to `http://assets.domain.com/image.jpg`
 2. A DNS server forwards the request to the CDN server
@@ -136,7 +136,7 @@ app.listen(appEnv.port, function () {
 
 Take a look at the [Getting started with IBM CDN](https://console.ng.bluemix.net/docs/services/cdn/index.html) to setup your CDN.
 
-![IBM CDN in Bluemix](/assets/blog/2016-03-30-howto-use-a-cdn-with-an-express-web-application/ibm-cdn-service.png)
+![IBM CDN in Bluemix]({{site.baseurl}}/assets/blog/2016-03-30-howto-use-a-cdn-with-an-express-web-application/ibm-cdn-service.png)
 
 Once the CDN service is setup and your application is returning the appropriate `Cache-Control` headers then the caching will kick in.
 
