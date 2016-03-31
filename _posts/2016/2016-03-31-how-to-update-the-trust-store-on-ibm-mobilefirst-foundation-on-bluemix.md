@@ -18,13 +18,16 @@ This blog post provides the steps to follow if you are trying to update the trus
 * Login to the IBM container service using cf login and cf ic init commands.
 * Connect to the container using the command: `cf ic exec -it <container_id> bash.`
 
-You can find the container id using the cf ic ps command.
+    You can find the container id using the cf ic ps command.
 
-* Copy the truststore.jks file to your system using the command: `cf ic exec -i <container_id> bash -c 'cat < /opt/ibm/wlp/usr/servers/mfp/resources/security/truststore.jks' > ./truststore.jks`
+* Copy the truststore.jks file to your system using the command: 
+
+    ```bash
+    cf ic exec -i <container_id> bash -c 'cat < /opt/ibm/wlp/usr/servers/mfp/resources/security/truststore.jks' > ./truststore.jks
+    ```
 * Use the keytool command to import additional certificates into the truststore. The default password for this truststore is "worklight".
 
-You might want to backup the existing truststore.jks file before updating
+    You might want to backup the existing truststore.jks file before updating.
 
 * Redeploy the MobileFoundation instance from Bluemix UI using the updated truststore file in "Advanced Settings"
-* If mfp doesn’t restart or the runtimes don’t comeup after the update, connect to the container using the command: `cf ic exec -i <ContainerID> bash
-And check the log files at /opt/ibm/wlp/usr/servers/mfp/logs/`
+* If mfp doesn’t restart or the runtimes don’t comeup after the update, connect to the container using the command: `cf ic exec -i <ContainerID> bash` and check the log files at:  /opt/ibm/wlp/usr/servers/mfp/logs/`
