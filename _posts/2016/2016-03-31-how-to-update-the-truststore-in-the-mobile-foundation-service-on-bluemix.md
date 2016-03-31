@@ -1,15 +1,15 @@
 ---
-title: How to update the trust store on IBM MobileFirst Foundation on Bluemix
+title: How to update the truststore in the Mobile Foundation service on Bluemix
 date: 2016-03-31
 tags:
 - MobileFirst_Platform
 - Bluemix
-- 
+- Mobile_Foundation
 author:
   name: Idan Adar
 ---
 
-If you've created a new truststore and use it while deploying the MobileFoundation service on Bluemix, MobileFirst Server may fail to load the runtime.  
+If you've created a new truststore and use it while deploying the Mobile Foundation service on Bluemix, MobileFirst Server may fail to load the runtime.  
 This is due to the missing default certificates in the truststore. You can avoid this by updating the existing truststore with additional certificates instead of overwriting it with a new one.
 
 This blog post provides the steps to follow if you are trying to update the truststore in the IBM MobileFirst Platform Foundation on Bluemix, with additional certificates:

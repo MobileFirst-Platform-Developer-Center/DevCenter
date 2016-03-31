@@ -13,6 +13,7 @@ redcarpet:
 gems:
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-sitemap
 sass:
   style: :compressed
 

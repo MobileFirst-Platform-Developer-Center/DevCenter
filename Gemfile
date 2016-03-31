@@ -6,5 +6,8 @@ gem 'jekyll-paginate'
 gem 'html-proofer'
 gem 'wkhtmltopdf-binary-edge'
 gem 'pdfkit'
+gem 'jekyll-sitemap'
 # gem 'pry'
 # gem 'pry-byebug'
+
+
