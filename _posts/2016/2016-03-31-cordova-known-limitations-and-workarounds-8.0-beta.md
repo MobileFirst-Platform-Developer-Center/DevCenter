@@ -24,7 +24,7 @@ The following lists the known limitations and workarounds of creating Cordova ap
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`cordova platform add ios`
 
-    A fix will be available in the next cordova-ios release.
+    A fix is planned to be available in the next cordova-ios release.
 
 * A Cordova project created on workstations other than Windows 8 or Windows 10 that adds the Windows Universal platform will need to remove and then re-add the Windows Universal platform if that Cordova project is moved to a Windows 8 or Windows 10 workstation to run.
 
@@ -34,8 +34,8 @@ The following lists the known limitations and workarounds of creating Cordova ap
 
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`cordova platform add windows`
 
-    A fix will be available in the next cordova-windows release.
+    A fix is planned to be available in the next cordova-windows release.
 
 * Secure Direct Update may not work for all platforms. For Cordova apps using the Windows Universal platform, the server may also fail to detect mismatch between cordova plugin versions used when building the app and when building the web resources.
 
-    No workaround is available for Beta. A fix will be available post-Beta.
+    No workaround is available for Beta. A fix is planned to be available post-Beta.
