@@ -56,7 +56,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     WLAuthorizationManager.obtainAccessToken()
     .then (
         function(accessToken) {
-            var statusText = document.getElementById("statusText");
+            var statusText = document.getElementById("main_status");
             statusText.innerHTML = "Obtained Access Token Successfully";
           
             var resourceRequest = new WLResourceRequest(
