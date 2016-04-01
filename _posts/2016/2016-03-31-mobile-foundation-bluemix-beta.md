@@ -63,7 +63,7 @@ You can implement your entire backend by using Bluemix services. Bluemix provide
 ![Bluemix services]({{site.baseurl}}/assets/blog/2016-03-31-mobile-foundation-bluemix-beta/bluemix.png)
 
 ### Enterprise backend
-You could have a system of records that exists inside the firewall of your enterprise. For this scenario, you would need to add an optional Bluemix service called VPN. VPN is a chargeable service. This service allows you to configure a secure tunnel from the MobileFirst containers to your enterprise. The adapter can access IP addresses inside your enterprise firewall through a gateway that is installed in your enterprise DMZ. This could be a custom backend or a database. MobileFirst Platform Foundation also provides readymade adapters to connect to popular systems like SAP or Siebel. You can read more about configuring VPN in this [blog post](http://ibm.co/1Snx3Zo)
+You could have a system of records that exists inside the firewall of your enterprise. For this scenario, you would need to add an optional Bluemix service called VPN. VPN is a chargeable service. This service allows you to configure a secure tunnel from the MobileFirst containers to your enterprise. The adapter can access IP addresses inside your enterprise firewall through a gateway that is installed in your enterprise DMZ. This could be a custom backend or a database. MobileFirst Platform Foundation also provides readymade adapters to connect to popular systems like SAP or Siebel. You can read more about configuring VPN in this [blog post]({{site.baseurl}}/blog/2016/03/27/connecting-securely-from-ibm-mobilefirst-platform-foundation-on-bluemix-to-on-premises-systems/)
 
 ![enterprise backend services]({{site.baseurl}}/assets/blog/2016-03-31-mobile-foundation-bluemix-beta/enterprise.png)
     
@@ -72,7 +72,7 @@ This configurations is the simplest one. The entire business logic can reside in
 
 ![logic in adapter]({{site.baseurl}}/assets/blog/2016-03-31-mobile-foundation-bluemix-beta/inadapter.png)
     
-The following video shows how to get a IBM MobileFirst Platform Server by using the Mobile Foundation service. You can then use the self-paced programming tutorials [??link] to explore the capabilities in detail.
+The following video shows how to get a IBM MobileFirst Platform Server by using the Mobile Foundation service. You can then use the self-paced programming tutorials to explore the capabilities in detail.
 
 <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
     <iframe src="https://www.youtube.com/embed/E85hZZTnW2w"></iframe>
