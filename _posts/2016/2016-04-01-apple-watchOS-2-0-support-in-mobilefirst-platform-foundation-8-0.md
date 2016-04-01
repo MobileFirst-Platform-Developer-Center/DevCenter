@@ -1,5 +1,5 @@
 ---
-title: Apple watchOS 2.0 support in MobileFirst Platform Foundation 8.0
+title: Apple watchOS 2.0 support in MobileFirst Platform Foundation 8.0 Beta
 date: 2016-04-01
 tags:
 - MobileFirst_Platform
@@ -8,6 +8,8 @@ tags:
 author:
   name: Amichai Meir
 ---
+
+> To follow through this blog post, make sure to first [join the MobileFirst Platform Foundation 8.0 Beta Program]({{site.baseurl}}/beta/).
 
 ## Overview
 **Prerequisite:** Make sure to read the [Authentication Concepts]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/authorization-concepts/) tutorial first.
