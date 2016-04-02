@@ -1,6 +1,6 @@
 ---
 title: 'HowTo: Use a CDN with an Express web application'
-date: 2016-03-30
+date: 2016-03-21
 tags:
 - MobileFirst_Platform
 - Bluemix

@@ -1,6 +1,6 @@
 ---
 title: 'IBM MobileFirst Platform Foundation on IBM Containers – development, production workloads'
-date: 2016-02-09
+date: 2016-02-08
 tags:
 - MobileFirst_Platform
 - Bluemix

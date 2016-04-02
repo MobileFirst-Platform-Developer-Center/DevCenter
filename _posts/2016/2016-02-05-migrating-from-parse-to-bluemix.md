@@ -1,6 +1,6 @@
 ---
 title: Migrating Applications from Parse to IBM Bluemix
-date: 2016-02-04
+date: 2016-02-05
 tags:
 - MobileFirst_Platform
 - Bluemix
