@@ -59,46 +59,61 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     import android.util.Log;
     ```
     
-* Paste the following code snippet, replacing the `void onSuccess()` function:
+* Paste the following code snippet, replacing the call to `WLAuthorizationManager.getInstance().obtainAccessToken`:
 
     ```java
-    public void onSuccess(AccessToken token) {
-        System.out.println("Received the following access token value: " + token);
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                titleLabel.setText("Yay!");
-                connectionStatusLabel.setText("Connected to MobileFirst Server");
-            }
-        });
-        
-        URI adapterPath = null;
-        try {
-            adapterPath = new URI("/adapters/javaAdapter/users/world");
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+    WLAuthorizationManager.getInstance().obtainAccessToken("", new WLAccessTokenListener() {
+                @Override
+                public void onSuccess(AccessToken token) {
+                    System.out.println("Received the following access token value: " + token);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            titleLabel.setText("Yay!");
+                            connectionStatusLabel.setText("Connected to MobileFirst Server");
+                        }
+                    });
 
-        WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
-        request.send(new WLResponseListener() {
-            @Override
-            public void onSuccess(WLResponse wlResponse) {
-                // Will print "Hello world" in LogCat.
-                Log.i("MobileFirst Quick Start", "Success: " + wlResponse.getResponseText());
-            }
+                    URI adapterPath = null;
+                    try {
+                        adapterPath = new URI("/adapters/javaAdapter/greet");
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
 
-            @Override
-            public void onFailure(WLFailResponse wlFailResponse) {
-                Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
-            }
-        });
-    }
+                    WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
+                    request.send(new WLResponseListener() {
+                        @Override
+                        public void onSuccess(WLResponse wlResponse) {
+                            // Will print "Hello world" in LogCat.
+                            Log.i("MobileFirst Quick Start", "Success: " + wlResponse.getResponseText());
+                        }
+
+                        @Override
+                        public void onFailure(WLFailResponse wlFailResponse) {
+                            Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
+                        }
+                    });
+                }
+
+                @Override
+                public void onFailure(WLFailResponse wlFailResponse) {
+                    System.out.println("Did not receive an access token from server: " + wlFailResponse.getErrorMsg());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            titleLabel.setText("Bummer...");
+                            connectionStatusLabel.setText("Failed to connect to MobileFirst Server");
+                        }
+                    });
+                }
+            });
     ```
 
 ### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
-<!-- Alternatively, click the **New** button next to **Adapters**.  
+Alternatively, click the **New** button next to **Adapters**.  
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
@@ -112,7 +127,7 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    -->
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
 <img src="androidQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
