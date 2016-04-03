@@ -54,38 +54,39 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ```javascript
     WLAuthorizationManager.obtainAccessToken()
-    .then (
-        function(accessToken) {
-            var statusText = document.getElementById("main_status");
-            statusText.innerHTML = "Obtained Access Token Successfully";
-          
-            var resourceRequest = new WLResourceRequest(
-                "/adapters/javaAdapter/users/world",
-                WLResourceRequest.GET
-            );
+        .then(
+            function(accessToken) {
+                titleText.innerHTML = "Yay!";
+                statusText.innerHTML = "Connected to MobileFirst Server";
+                
+                var resourceRequest = new WLResourceRequest(
+                    "/adapters/javaAdapter/resource/greet/",
+                    WLResourceRequest.GET
+                );
+                
+                resourceRequest.setQueryParameter("name", "world");
+                resourceRequest.send().then(
+                    function(response) {
+                        // Will display "Hello world" in an alert dialog.
+                        alert("Success: " + response.responseText);
+                    },
+                    function(response) {
+                        alert("Failure: " + JSON.stringify(response));
+                    }
+                );
+            },
 
-            resourceRequest.send().then(
-                function(response) {
-                    // Will display "Hello world" in an alert dialog.
-                    alert("Success: " + response.responseText);
-                },
-                function(response) {
-                    alert ("Failure: " + response.errorMsg);
-                }
-            );
-        },
-        
-        function(error) {
-            var statusText = document.getElementById("statusText");
-            statusText.innerHTML = "Failed to obtain access token: " + JSON.stringify(error);
-        }
-    );
+            function(error) {
+                vtitleText.innerHTML = "Bummer...";
+                statusText.innerHTML = "Failed to connect to MobileFirst Server";
+            }
+        );
     ```
     
 ### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
-<!-- Alternatively, click the **New** button next to **Adapters**.  
+Alternatively, click the **New** button next to **Adapters**.  
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
@@ -99,7 +100,7 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    -->
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
 
 <img src="cordovaQuickStart.png" alt="sample application" style="float:right"/>
