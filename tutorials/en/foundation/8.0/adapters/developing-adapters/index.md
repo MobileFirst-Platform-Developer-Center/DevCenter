@@ -46,7 +46,6 @@ Follow the bellow instructions to either create a new adapter Maven project or i
 
 4. Specify Maven project parameters.  
     - Specify required **Group Id**, **Artifact Id**, **Version** and **package** parameters, and click **Finish**.
-    - Change <code>${archetypeVersion}</code> to <code>8.0.0</code>.
 
     ![Image showing how to create an adapter Maven project in Eclipse](project-parameters.png)
 
