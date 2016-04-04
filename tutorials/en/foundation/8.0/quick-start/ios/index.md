@@ -72,10 +72,10 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
             _connectionStatusLabel.text = [NSString stringWithFormat:@"Connected to MobileFirst Server\n%@", serverURL];
             NSLog(@"Received the following access token value: %@", token.value);
             
-            NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/greet/"];
+            NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/resource/greet/"];
             WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
             
-            [request setQueryParameterValue:@"name" forName:@"world"];
+            [request setQueryParameterValue:@"world" forName:@"name"];
             [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
                 if (error != nil){
                     NSLog(@"Failure: %@",error.description);
@@ -97,9 +97,14 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     
     ```swift
     @IBAction func getAccessToken(sender: AnyObject) {
-        connectionStatusWindow.text = "Connecting to Server...";
+        self.testServerButton.enabled = false
+        
+        let serverURL = WLClient.sharedInstance().serverUrl()
+        
+        connectionStatusLabel.text = "Connecting to server...\n\(serverURL)"
         print("Testing Server Connection")
-        WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { (token, error) -> Void in        
+        WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { (token, error) -> Void in
+            
             if (error != nil) {
                 self.titleLabel.text = "Bummer..."
                 self.connectionStatusLabel.text = "Failed to connect to MobileFirst Server\n\(serverURL)"
@@ -109,10 +114,10 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
                 self.connectionStatusLabel.text = "Connected to MobileFirst Server\n\(serverURL)"
                 print("Recieved the following access token value: " + token.value)
                 
-                let url = NSURL(string: "/adapters/javaAdapter/greet/")
+                let url = NSURL(string: "/adapters/javaAdapter/resource/greet/")
                 let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
                 
-                request.setQueryParameterValue("name", forName: "world")
+                request.setQueryParameterValue("world", forName: "name")
                 request.sendWithCompletionHandler { (response, error) -> Void in
                     if (error != nil){
                         NSLog("Failure: " + error.description)
