@@ -76,12 +76,14 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
                     URI adapterPath = null;
                     try {
-                        adapterPath = new URI("/adapters/javaAdapter/greet");
+                        adapterPath = new URI("/adapters/javaAdapter/resource/greet");
                     } catch (URISyntaxException e) {
                         e.printStackTrace();
                     }
 
                     WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
+                    
+                    request.setQueryParameter("name","world");
                     request.send(new WLResponseListener() {
                         @Override
                         public void onSuccess(WLResponse wlResponse) {
