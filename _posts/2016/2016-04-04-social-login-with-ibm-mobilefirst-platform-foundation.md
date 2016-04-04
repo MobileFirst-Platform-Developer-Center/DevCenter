@@ -94,11 +94,8 @@ The Social Login security check adapter in this blog can be easily reused.
   * Goto server console [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole).
   * From the Adapters menu click on `Social Login Adapter`, and move to `Security Checks` tab.  
   * Here you will find place to add your `google client id`.  This id will use the adapter to validate the Google account.    
-
   * If you need to use the social platform token later on, set the `keep original token` to be `true`.
-  ![Adapter Configuration]({{site.baseurl}}/assets/blog/2016-04-04-social-login-with-ibm-mobilefirst-platform-foundation/SocialLoginConfiguration.png)
-  * Press the Save button.
-  * You are done
+  * ![Adapter Configuration]({{site.baseurl}}/assets/blog/2016-04-04-social-login-with-ibm-mobilefirst-platform-foundation/SocialLoginConfiguration.png)
 
 #### Register the application on IBM MobileFirst Platform Foundation Server
   * Goto server console [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole).
@@ -114,18 +111,53 @@ The Social Login security check adapter in this blog can be easily reused.
 #### Architecture
 * Let's see the big picture
 
-### Code
-  * All the code is actually available in the git repository just mentioned.  I want to show some snippet here that you can better understand how things work
+#### Code
+  * All the code is actually available in the [Git repository](https://github.com/mfpdev/mfp-advanced-adapters-samples) as mentioned above.  I want to highlight small piece of code here for better understanding things
 
+  * `HelloSocialUserResource.java` in `HelloSocialUserAdapter`
+    * Protecting a resource with socialLogin
+    ```java
+    @OAuthSecurity(scope = "socialLogin")
+  	public Map<String,Object> hello() {
+  		AuthenticatedUser user = securityContext.getAuthenticatedUser();
+  		Map<String, Object> userAttributes = new HashMap<String, Object>();
+  		userAttributes.put("displayName", user.getDisplayName());
+  		userAttributes.putAll(user.getAttributes());
+  		return userAttributes;
+  	}
+    ```
+    * How to get original token and social platform vendor:
+    ```Java
+    //Getting the social vendor
+    String socialLoginVendor = userAttributes.get("socialLoginVendor");
+    //Getting the original social vendor token
+    String socialLoginVendor = userAttributes.get("originalToken");
+    ```
 
-
-
-
-
-
-
-
-
+    * `SocialLoginSecurityCheck.java` - in `social-login`
+      This class belong to the security check and is responsible for validating the challenge sent from client with the social platform token. It extends `UserAuthenticationSecurityCheck.java`. In the same package of this class you will find classes like `GoogleSupport.java` and `FacebookSupport.java`, those class implements the `LoginVendor.java` interface.  That means that actually you can add more vendors as you like like `TwitterSupport.java`.  here is the `validateCredentials` function:
+      ```java
+      @Override
+      protected boolean validateCredentials(Map<String, Object> credentials) {
+        vendorName = (String) credentials.get(VENDOR_KEY);
+        String token = (String) credentials.get(TOKEN_KEY);
+        if (vendorName != null && token != null) {
+            LoginVendor vendor = getConfiguration().getEnabledVendors().get(vendorName);
+            if (vendor != null) {
+                AuthenticatedUser user = vendor.validateTokenAndCreateUser(token, getName());
+                if (user != null) {
+                    Map<String, Object> attributes = new HashMap<>(user.getAttributes());
+                    attributes.put(VENDOR_ATTRIBUTE, vendorName);
+                    if (getConfiguration().isKeepOriginalToken())
+                        attributes.put(ORIGINAL_TOKEN_ATTRIBUTE, token);
+                    this.user = new AuthenticatedUser(user.getId(), user.getDisplayName(), getName(), attributes);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    ```
 
 ## Supported Versions
 IBM MobileFirst 8.0 beta or later
