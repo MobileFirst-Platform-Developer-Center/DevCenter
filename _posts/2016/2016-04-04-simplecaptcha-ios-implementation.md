@@ -1,8 +1,8 @@
 ---
-title: Implementation to the MobileFirst SimpleCaptcha console sample
+title: Sample implementation for the SimpleCaptcha Security Check
 date: 2016-30-03 22:11:23.000000000 +02:00
 tags:
-- MobileFirst_8.0
+- MobileFirst_Platform
 - iOS
 - SimpleCaptcha
 - Console samples
@@ -10,13 +10,13 @@ author:
   name: Ore Poran
 ---
 
-In this blog post I will demonstrate an ObjectiveC implementation to the "SimpleCaptcha" sample in the MobileFirstPlatform v8.0 Beta console.
+In this blog post I will demonstrate an Objective-C implementation for the "SimpleCaptcha" security check The security check can be downloaded from the MobileFirst Platform 8.0 Beta Operations Console > Get Starter Code page screen.    
 At the end of the sample, you will have the SimpleCaptcha security check deployed on your server, and a client which is able to request an access token with the SimpleCaptcha scope, handle the challenge, delegate it to the user, and eventually obtain the token.
 
 
 ##### Prerequisites
-0. You have to know a bit about [Adapters in v8.0](https://pages.github.ibm.com/MFPSamples/tutorials/en/foundation/8.0/adapters/)
-1. You have to know a bit about [SecurityChecks in v8.0](https://pages.github.ibm.com/MFPSamples/tutorials/en/foundation/8.0/authentication-and-security/)
+0. You have to know a bit about [Adapters in v8.0](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/)
+1. You have to know a bit about [SecurityChecks in v8.0](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/)
 2. MobileFirstPlatformFoundation iOS SDK - get it [here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/ios/)
 3. Maven, with the `security-checks-base` artifact in your local .m2
 
@@ -25,7 +25,7 @@ At the end of the sample, you will have the SimpleCaptcha security check deploye
 To understand the sample
 From the javadoc :
 
->This security checks implements an example of a captcha by calculating the sum
+>This security check implements an example of a captcha by calculating the sum
 of two operands that are sent as a challenge.
 The challenge created is a JSON in the format of {"captcha" : "x + y"}
 The challenge answer should bea  JSON in the format of {"answer" : "z"}
@@ -37,12 +37,12 @@ I'll break this up to Serverside work, and Clientside Work.
 
 ## Serverside
 In our sample, we want to have the SimpleCaptcha security check deployed on the MobileFirst server.
-This is done via adapters, which are deployable artifacts, Java or Javascript, which contain their own custom logic. To read more about adapters - [read this](https://pages.github.ibm.com/MFPSamples/tutorials/en/foundation/8.0/adapters/)    
+This is done via adapters, which are deployable artifacts, Java or Javascript, which contain their own custom logic. To read more about adapters - [read this](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/)    
 Luckily, this security check can be downloaded directly from the MobileFirst console.
 
 #### 1. Downloading the SimpleCaptcha sample
 The first thing we want to do is to download the SimpleCaptcha SecurityCheck, which is encapsulated in a Adapter.
-Under the `Actions` drop down menu in the top right, Pick `Download Sample`.
+Under the `Actions` drop down menu in the top right of the MobileFirst Operations Console, Pick `Download Sample`.
 From the 3 Tabs, choose `Adapters`. There you'll find `SecurityCheck - Simple Captcha`
 
 #### 2. Build/Deploy the Adapter
@@ -257,6 +257,8 @@ Make a button that executes this method:
 ## Summary
 That should be it, when we start our app, presuming our MobileFirst server is up, we should receive the challenge after pressing the obtain button.
 The challenge should pop up our view controller, and we should eventually see the obtained token from the server.    
+
+![SimpleCaptcha_GIF](/assets/blog/2016-04-04-simplecaptcha-ios-implementation/demo.gif)
 
 Add an extra test - obtain the token again, you shouldn't see the challenge at all.
 
