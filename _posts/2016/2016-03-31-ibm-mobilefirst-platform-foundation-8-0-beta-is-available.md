@@ -15,6 +15,6 @@ With this beta program, we intend to deliver the next generation of an open, int
 
 To access the Beta and learn more about this program, visit the [Beta Program page]({{site.baseurl}}/beta/) and follow the instructions at the bottom of the page.
 
-For more information, news and periodic updates, please visit the developer center's blog, and our [Online Documentation](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+For more information on What's New and Changed with the 8.0 beta release, see our [Online Documentation](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 To get started, visit the [Tutorials]({{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials) page.
