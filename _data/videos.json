@@ -1,12 +1,18 @@
 [
     {
+    "caption": "Getting Started With the MobileFirst Platform Development CLI 8.0 on Bluemix and the Development Kit",
+    "url": "//www.youtube.com/watch?v=rYQMC0uIbQA",
+    "thumbnail": "//img.youtube.com/vi/rYQMC0uIbQA/hqdefault.jpg",
+    "tags": ["Bluemix","CLI","Development"]
+    },
+    {
     "caption": "IBM MobileFirst Platform Foundation 7.1 End-to-End Demo",
     "url": "//www.youtube.com/watch?v=lMR0jYP758k",
     "thumbnail": "//img.youtube.com/vi/lMR0jYP758k/hqdefault.jpg",
     "tags": ["Integration","Security","Development","Bluemix","Testing"]
     },
     {
-    "caption": "DataPower Integration",
+    "caption": "DataPower Integration in MobileFirst Platform Foundation 7.1",
     "url": "//www.youtube.com/watch?v=emDdHC0VlRY",
     "thumbnail": "//img.youtube.com/vi/emDdHC0VlRY/hqdefault.jpg",
     "tags": ["DataPower","Integration","Security"]

@@ -20,7 +20,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 #### Prerequisites:
 
 * Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
-* Cordova 6.x CLI
+* Cordova 6.0.0 CLI (v6.1.0 is **not supported**)
 * *Optional*. MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
@@ -56,7 +56,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     WLAuthorizationManager.obtainAccessToken()
     .then (
         function(accessToken) {
-            var statusText = document.getElementById("statusText");
+            var statusText = document.getElementById("main_status");
             statusText.innerHTML = "Obtained Access Token Successfully";
           
             var resourceRequest = new WLResourceRequest(
@@ -82,10 +82,10 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     );
     ```
     
-### 4. Creating an adapter
+### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
-Alternatively, click the **New** button next to **Adapters**.  
+<!-- Alternatively, click the **New** button next to **Adapters**.  
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
@@ -99,7 +99,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    -->
 
 
 <img src="cordovaQuickStart.png" alt="sample application" style="float:right"/>

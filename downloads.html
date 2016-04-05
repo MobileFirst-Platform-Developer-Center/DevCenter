@@ -27,6 +27,7 @@ title: Downloads
                 <li role="presentation"><a href="#get-cli" aria-controls="cli" role="tab" data-toggle="tab">CLI</a></li>
                 <li role="presentation"><a href="#get-client-sdks" aria-controls="client-sdks" role="tab" data-toggle="tab">Client SDKs</a></li>
                 <li role="presentation"><a href="#get-artifacts" aria-controls="artifacts" role="tab" data-toggle="tab">Adapter Tooling</a></li>
+                <li role="presentation"><a href="#get-production-server" aria-controls="production" role="tab" data-toggle="tab">Production Server</a></li>
             </ul>
             
             <div class="tab-content">
@@ -64,8 +65,6 @@ title: Downloads
                             <li><i>Optional</i>. Click on <strong>Get Starter Code → Tools tab</strong> to download development tools or follow through the tutorials.</li>
                         </ol>
                     </p>
-                    
-                    <blockquote><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">following the tutorials</a>.</blockquote>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="get-cli">
                     <br/>
@@ -78,8 +77,6 @@ title: Downloads
                     <p>From a <b>Command-line</b> window, run the command: <code>npm install -g mfpdev-cli</code>.<br/>
                         If the CLI was downloaded using the Development Kit Installer, run the command: <code>npm install -g path-to-cli-.tgz-file</code>.
                     </p>
-
-                    <blockquote><strong>Next:</strong> Start creating apps by <a href="{{site.baseurl}}/tutorials/en/foundation">following the tutorials</a>.</blockquote>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="get-client-sdks">
                     <br/>
@@ -92,26 +89,39 @@ title: Downloads
                     <p>The MobileFirst client SDKs are also available from <strong>MobileFirst Operations Console → Get Starter Code → Tools tab</strong> for offline installation.</p>
                     
                     <ul>
-                        <li><a href="https://www.npmjs.com/" target="_blank">Cordova</a> (npm)</li>
-                        <li><a href="https://cocoapods.org/" target="_blank">iOS</a> (CocoaPods)</li>
-                        <li><a href="http://search.maven.org/" target="_blank">Android</a> (Maven)</li>
-                        <li><a href="https://www.nuget.org/" target="_blank">Windows</a> (NuGet)</li>
+                        <li><a href="https://www.npmjs.com/package/cordova-plugin-mfp" target="_blank">Cordova</a> (npm)</li>
+                        <li><a href="https://cocoapods.org/pods/IBMMobileFirstPlatformFoundation" target="_blank">iOS</a> (CocoaPods)</li>
+                        <li><a href="http://search.maven.org/#search|ga|1|ibmmobilefirstplatformfoundation" target="_blank">Android</a> (Maven)</li>
+                        <li><a href="https://www.nuget.org/packages/IBM.MobileFirstPlatformFoundation/" target="_blank">Windows</a> (NuGet)</li>
                     </ul>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="get-artifacts">
                     <br/>
-                    <p>The MobileFirst server-side artifacts are available from Maven Central. For further instructions, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">review the tutorials</a>.<br/>
+                    <p>The MobileFirst server-side artifacts are available from <a href="http://search.maven.org/" target="_blank">Maven Central</a>. For further instructions, <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">review the tutorials</a>.<br/>
                     The artifacts are also available from <strong>MobileFirst Operations Console → Get Starter Code → Tools tab</strong> for offline installation.</p>
                     
                     <p><strong>Prerequisite:</strong><br/>
                         To fetch artifacts from Maven Central, <a href="https://maven.apache.org/" target="_blank">Apache Maven</a> must first be installed.</p>
                     
+                    <p>Available artifacts:</p>
                     <ul>
-                        <li><a href="#">OAuth - Java Token Validator</a></li>
-                        <li><a href="#">OAuth - Trust Assosciation Interceptor</a></li>
-                        <li><a href="#">Adapter Maven archetypes</a></li>
-                        <li><a href="#">Security Checks</a></li>
+                        <li>OAuth - Java Token Validator</li>
+                        <li>OAuth - Trust Assosciation Interceptor</li>
+                        <li>Adapter Maven archetypes</li>
+                        <li>Security Checks</li>
                     </ul>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="get-production-server">
+                    <br/>
+                    <p>Download and setup the MobileFirst Server for Production.<br/>
+                        Required software:</p>
+                    <ul>
+                        <li><a href="https://jazz.net/downloads/ibm-installation-manager/" target="_blank">IBM Installation Manager</a></li>
+                        <li><a href=" http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/8.5.5.8/wlp-javaee7-8.5.5.8.zip" target="_blank">WebSphere Liberty profile v8.5.5.8</a></li>
+                        <li><a href="{{site.baseurl}}/beta">MobileFirst Server for Production</a></li> (redirects to Beta Program agreement page)
+                    </ul>
+                    
+                    <p>Once you have all artifacts downladed, follow the <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/r_getting_started_mfp_server.html">user documentation on how to setup a production environment</a>.</p>
                 </div>
             </div>
         </div>    

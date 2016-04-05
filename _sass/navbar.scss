@@ -7,9 +7,9 @@ $color_celeste_approx: #ccc;
 
 .navbar {
   &.navbar-default {
-    background-image: url("../assets/MFPFoundation_logo_24px.svg");
-    background-repeat: no-repeat;
-    background-position: 0.2% 33%;
+    //background-image: url("../assets/MFPFoundation_logo_24px.svg");
+    //background-repeat: no-repeat;
+    //background-position: 0.2% 33%;
     //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
     border-radius: 0;
     margin-bottom: 0;
@@ -17,7 +17,7 @@ $color_celeste_approx: #ccc;
     border-color: $color_rhino_approx;
     .logo {
       margin-top: -2px;
-      margin-left: 15px;
+      margin-left: 0px;
       font-size: 140%;
       color: $white;
       .mobilefirst {

@@ -11,113 +11,91 @@ author:
 
 ## Introduction
 
-[Social Login](https://www.wikiwand.com/en/Social_login) become very common authentication method in many apps.
-Many users can use such method with their favorite social platform like Facebook or Google.
-This method makes life easy for the users, and also can gives the app owner ability to leverage the information from the social platform.
-This give the app owner the ability to engage more users and to know more about their users.  More then that the app owner can use the user token to get information from the user profile, picture, friends and feed.  
+[Social Login](https://www.wikiwand.com/en/Social_login) become very common authentication method in many apps.  The app owners and the users understand the big value it gives them, and it become very common authentication method.
+Users can now login to apps with their favorite social platform like Facebook or Google.
+This method makes life easy for the users, and also can gives the app owner ability to leverage the information from the social platform like profile picture, users friends feed. App owner can maximize the user engagements with such abilities.  Now in IBM MobileFirst Platform adding such method become easy with version 8.0.
 
-The Social Login security check adapter in this blog can be easily reused, so you can deploy it into your server, configure it and protect your resources with it.  
+The [Social Login security check](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-login) in this blog can be easily reused. The sample support [Facebook](https://developers.facebook.com/docs/facebook-login) and [Google](https://developers.google.com/identity/) log-in, though you can be extends it easily and add more social vendors like twitter. After deploy it into your server and configure it you will be able protect any resource adapter with it.  
 
-## Prerequisites
-* [Installed Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-* [Registered Facebook Android App](https://developers.facebook.com/docs/android/getting-started)
-* [Registered Google Sign-In App for Android](https://developers.google.com/identity/sign-in/android/start-integrating#get-config)
-* [Installed Android Studio](Registered Facebook OAuth 2.0 Android App)
-* [Installed Maven](https://maven.apache.org/install.html)
+It is recommended to have some basic knowledge about [Adapters](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/) and [Security Checks](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/).  
 
-## What user can do from the sample app
-* The sample allow user to choose their Authentication method by login to Facebook or Google.
-* After successfully logged-in user can call the **/hello** resource which protected with "socialLogin" OAuth scope.
-* The user can also choose to call **/hello** resource without login first, then the default social vendor on the server will be used to authenticate the user.
+## Watch App demo
+Here is short YouTube demo movie which show a very simple app using the [Social Login security check](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-login).
 
-## Running the sample
-* Start by cloning the Git repository - [MobileFirst 8.0.0 advanced samples and extension modules](https://github.com/mfpdev/mfp-advanced-adapters-samples)
+<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+ <iframe src="https://www.youtube.com/embed/DGqNbpBZ8sU"></iframe>
+</div>
 
-#### Cloning the Git repository
+## Running the demo
+For running the demo on your environment following instructions[mfpdev github repository](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-app-samples/SocialLoginSample)
 
-* Clone the following repository https://github.com/mfpdev/mfp-advanced-adapters-samples
+## Let's see the big picture
 
-* From the above repository you will need three folders:
+## Dive into some code
 
-  1. [Social Login security check](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-login) - The social login [security check](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/) adapter.
+### The Social Login Security Check Project
 
-  2. [HelloSocialUser Adapter](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-app-samples/SocialLoginSample/HelloSocialUserAdapter) - The JAX-RS resource adapter which protect with the scope **socialLogin**.
-
-  3. [SocialLoginApp](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-app-samples/SocialLoginSample/SocialLoginApp) - The sample native android application.
-
-#### Configuring the Android app
-* **string.xml**
+This project is [Java adapter maven project](http://www.ibm.com/support/knowledgecenter/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/devref/c_maven_adapters.html?lang=en) which contains the code which able to validate the social platform credentials back from the client.
+From the the file structure of the project we can learn that it is extendable, so you can add more social vendors into it.
 
 ```xml
-<resources>
-    ...
-    <string name="facebook_app_id">Put your Facebook app id here</string>
-    <string name="google_server_client_id">Put your Google web client id here</string>
-    ...
-</resources>
+├── src
+│   └── main
+│       ├── adapter-resources
+│       │   └── adapter.xml
+│       └── java
+│           └── net
+│               └── mfpdev
+│                   └── sample
+│                       └── socialogin
+│                           ├── FacebookSupport.java
+│                           ├── GoogleSupport.java
+│                           ├── LoginVendor.java
+│                           ├── SocialLoginConfiguration.java
+│                           └── SocialLoginSecurityCheck.java
 ```
 
-  * Open the android app [SocialLoginApp](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-app-samples/SocialLoginSample/SocialLoginApp) in Android Studio.
-  * Edit the file **string.xml**, there you need supply the following:
-    * Facebook App ID from [Facebook Apps Console](https://developers.facebook.com/apps/)
+***SocialLoginSecurityCheck.java***
 
-    * ![Facebook APP ID]({{site.baseurl}}/assets/blog/2016-04-04-social-login-with-ibm-mobilefirst-platform-foundation/FacebookAppID.png)
+The social login security check is the core file that mainly responsible for validating the challenge which sent from client with the social platform token.  The **SocialLoginSecurityCheck** extends from **UserAuthenticationSecurityCheck.java** which is part of the [security-check base classes](http://www.ibm.com/support/knowledgecenter/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/dev/c_security_checks_impl.html?lang=en) of the platform. In the same package of this class you will find classes like [*GoogleSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/net/mfpdev/sample/socialogin/GoogleSupport.java) and [*FacebookSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/net/mfpdev/sample/socialogin/FacebookSupport.java), those class implements the [*LoginVendor.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/net/mfpdev/sample/socialogin/LoginVendor.java) interface.  That means that actually you can extends this security checks with more vendors as you like.  
 
-    * Google Web Client ID from [Google API Console](https://console.developers.google.com/apis/credentials).
-
-    * ![Google Client ID]({{site.baseurl}}/assets/blog/2016-04-04-social-login-with-ibm-mobilefirst-platform-foundation/GoogleClientID.png)
-
-    * For the Google SignIn you also need to get the [google-services.json](https://developers.google.com/identity/sign-in/android/start-integrating#prerequisites) file.
-
-
-* **mfpclient.properties**
-    * Insure that **mfpclient.properties** point to correct server host and port (If your  server is installed on localhost leave the **wlServerHost** with the ip 10.0.2.2)
-
-#### Deploying the adapters
-  * IBM MobileFirst Platform gives you several options for deploying an [adapters](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/).
-  * In this blog I will use the maven option.  Be sure to you can run `mvn -v` from the command line.
-  * For each adapter set the configuration in the **pom.xml**, here is example for IBM MobileFirst Foundation Platform server which run on **localhost**:
-
-```xml
-<properties>
-	<mfpfUrl>http://localhost:9080/mfpadmin</mfpfUrl>
-	<mfpfUser>admin</mfpfUser>
-	<mfpfPassword>admin</mfpfPassword>
-	<mfpfRuntime>mfp</mfpfRuntime>
-</properties>
-```
-  * From each of the 2 adapters above run the following command from root folder:
-  `mvn clean install adapter:deploy`
-
-
-#### Configuring the adapters
-
-  * Goto server console [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole).
-  * From the Adapters menu click on *Social Login Adapter*, and move to *Security Checks* tab.  
-  * Here you will find place to add your *google client id*.  This id will use the adapter to validate the Google account.    
-  * If you need to use the social platform token later on, set the **keep original token** attribute to be **true**.
-  * ![Adapter Configuration]({{site.baseurl}}/assets/blog/2016-04-04-social-login-with-ibm-mobilefirst-platform-foundation/SocialLoginConfiguration.png)
-
-#### Register the application on IBM MobileFirst Platform Foundation Server
-  * Goto server console [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole).
-  * Under **Applications** press **new** and register your application.
-
-#### Running the application
-  * You can back to your Android Studio now and run the application. The final result should be looks like the following short movie:
-
-  <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-   <iframe src="https://www.youtube.com/embed/DGqNbpBZ8sU"></iframe>
-  </div>
-
-## Architecture
-* Let's see the big picture
-
-## Code Snippets
-***HelloSocialUserResource.java*** (Part of the HelloSocialUserResource project)
-
-Protect the resource adapter with *socialLogin* scope
+Here is the **validateCredentials** function:
 
 ```java
+ @Override
+ protected boolean validateCredentials(Map<String, Object> credentials) {
+     vendorName = (String) credentials.get(VENDOR_KEY);
+     String token = (String) credentials.get(TOKEN_KEY);
+     if (vendorName != null && token != null) {
+         LoginVendor vendor = getConfiguration().getEnabledVendors().get(vendorName);
+         if (vendor != null) {
+             AuthenticatedUser user = vendor.validateTokenAndCreateUser(token, getName());
+             if (user != null) {
+                 Map<String, Object> attributes = new HashMap<>(user.getAttributes());
+                 attributes.put(VENDOR_ATTRIBUTE, vendorName);
+                 if (getConfiguration().isKeepOriginalToken())
+                     attributes.put(ORIGINAL_TOKEN_ATTRIBUTE, token);
+                 this.user = new AuthenticatedUser(user.getId(), user.getDisplayName(), getName(), attributes);
+                 return true;
+             }
+         }
+     }
+     return false;
+ }
+```
+
+### The HelloSocialUser Project
+This is the [Java adapter maven project](http://www.ibm.com/support/knowledgecenter/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/devref/c_maven_adapters.html?lang=en) which protected by the social login security check.
+
+***HelloSocialUserResource.java***
+
+Protecting a Java resource adapter done by adding `@OAuthSecurity` with the name of the security check / OAuth scope.  
+In the following case we protect the `/hello` resource with OAuth scope name `socialLogin`.  Protected resource has a securityContext which can be achieved by simple inject it with `@Context`.  From securityContext we can get the authenticated user and his attributes.  
+
+```java
+@Context
+private AdapterSecurityContext securityContext;
+
 @OAuthSecurity(scope = "socialLogin")
 public Map<String,Object> hello() {
   AuthenticatedUser user = securityContext.getAuthenticatedUser();
@@ -128,7 +106,7 @@ public Map<String,Object> hello() {
 }
 ```
 
-Getting the original token and the social platform vendor
+To leverage the social login and get more value from it , we can get some userAttributes that the social login security check added, like the social *social vendor name* or the *original social vendor token*:  
 
 ```java
 //Getting the social vendor
@@ -137,36 +115,11 @@ String socialLoginVendor = userAttributes.get("socialLoginVendor");
 String socialLoginVendor = userAttributes.get("originalToken");
 ```
 
-***SocialLoginSecurityCheck.java*** - (Part of the social-login project)
+### The SocialLoginSample app
 
-This class belong to the security check and is responsible for validating the challenge sent from client with the social platform token. It extends **UserAuthenticationSecurityCheck.java** which is part of the [security-check base classes](http://www.ibm.com/support/knowledgecenter/SSHSCD_8.0.0/com.ibm.worklight.dev.doc/dev/c_security_checks_impl.html?lang=en) of the platform. In the same package of this class you will find classes like [*GoogleSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/net/mfpdev/sample/socialogin/GoogleSupport.java) and [*FacebookSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/net/mfpdev/sample/socialogin/FacebookSupport.java), those class implements the [*LoginVendor.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/net/mfpdev/sample/socialogin/LoginVendor.java) interface.  That means that actually you can add more vendors as you like like **TwitterSupport.java**.  here is the **validateCredentials** function:
+***SocialLoginChallengeHandler.java***
 
-```java
-  @Override
-  protected boolean validateCredentials(Map<String, Object> credentials) {
-      vendorName = (String) credentials.get(VENDOR_KEY);
-      String token = (String) credentials.get(TOKEN_KEY);
-      if (vendorName != null && token != null) {
-          LoginVendor vendor = getConfiguration().getEnabledVendors().get(vendorName);
-          if (vendor != null) {
-              AuthenticatedUser user = vendor.validateTokenAndCreateUser(token, getName());
-              if (user != null) {
-                  Map<String, Object> attributes = new HashMap<>(user.getAttributes());
-                  attributes.put(VENDOR_ATTRIBUTE, vendorName);
-                  if (getConfiguration().isKeepOriginalToken())
-                      attributes.put(ORIGINAL_TOKEN_ATTRIBUTE, token);
-                  this.user = new AuthenticatedUser(user.getId(), user.getDisplayName(), getName(), attributes);
-                  return true;
-              }
-          }
-      }
-      return false;
-  }
-```
-
-***SocialLoginChallengeHandler.java*** - (Part of the Android app)
-
-Handling the challenge response. this method trigger the social login in the app
+Calling to protected resource with custom OAuth scope in most cases need a custom [challenge handler](http://localhost:4000/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/android/).  Here is the challenge handler code which trigger the social login flow, and send challenge response which contains the vendor and the social platform token.
 
 ```java
 @Override
@@ -185,9 +138,32 @@ public void handleChallenge(JSONObject jsonObject) {
 }
 ```
 
-***SocialMainActivity.java*** - (Part of the Android app)
+***SocialMainActivity.java***
 
-Calling the protected resource adapter
+The main and the only activity class in the app. In this activity the user can choose his favorite social platform for login, or he can directly call fetch the protected resource without do explicit login.  
+What it is mean to call to preemptive login?  By calling to preemptive login the app tells the server just to logged-in the current user with particular security check name - *socialLogin*.  Once login is successfully done, the current user will be logged in on the server.
+
+Here is a code snippet from sample app that call to preemptive login with security check named "socialLogin":
+
+```java
+WLAuthorizationManager.getInstance().login("socialLogin", credentials, new WLLoginResponseListener() {
+    @Override
+    public void onSuccess() {
+        final String msg = String.format("Logged in successfully with %s", vendor);
+        updateStatus(msg);
+    }
+
+    @Override
+    public void onFailure(WLFailResponse wlFailResponse) {
+        String msg = String.format("Logged in failed with %s", vendor);
+        updateStatus(msg);
+    }
+});
+```
+
+Though Calling to protected resource directly without call to preemptive login can be done either, that mean you don't need to call to preemptive login if you don't really need it in your app business logic. The choice to call to preemptive login sometime good in case you need just to give log-in screen and on success move to next screen.  In most cases where you know you are going to call to specific resource it better to protect it and directly call it.  If you know the scope the resource is protected with, you can explicitly add it like the bellow code.  
+
+Here is a code snippet from the sample app that call to the protected resource */hello*
 
 ```java
 private void callProtectedAdapter() {
@@ -205,8 +181,6 @@ private void callProtectedAdapter() {
   });
 }
 ```
-
-
 
 ## Supported Versions
 IBM MobileFirst 8.0 beta or later

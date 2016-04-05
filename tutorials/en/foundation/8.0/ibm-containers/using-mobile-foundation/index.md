@@ -52,9 +52,9 @@ Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-u
 ## Server configuration
 The basic server instance consists of:
 
-* A single node
-* 512MB memory
-* 32GB storage capacity
+* A single node (server size: "small")
+* 1GB memory
+* 2GB storage capacity
 
 ## Advanced server configuration
 Through the Configuration tab, the server instance can be further customized with:

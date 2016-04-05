@@ -44,7 +44,7 @@ The cordova-plugin-mfp-push plug-in provides permissions needed to use push noti
 
 **Prerequisites:**
 
-- At mininum Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) and MobileFirst CLI installed on the developer workstation.  
+- [Apache Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) (v6.1.0 is **not supported**) and MobileFirst CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Cordova development environment](../../setting-up-your-development-environment/cordova-development-environment) tutorials.
 

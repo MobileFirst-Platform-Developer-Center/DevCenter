@@ -17,7 +17,7 @@ To get started with [Cordova development](https://cordova.apache.org/) the very 
 - [Next steps](#next-steps)
 
 ## Installing the Cordova CLI
-MobileFirst Platform Foundation supports Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html).  
+MobileFirst Platform Foundation supports Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) (v6.1.0 is **not supported**).  
 To install:
 
 1. Download and install [NodeJS](https://nodejs.org/en/).
