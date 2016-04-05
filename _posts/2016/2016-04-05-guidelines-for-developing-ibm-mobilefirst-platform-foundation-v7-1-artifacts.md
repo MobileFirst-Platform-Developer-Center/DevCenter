@@ -17,7 +17,7 @@ Note: IBM’s statements regarding its plans, directions, and intent are subject
 IBM MobileFirst Platform Foundation V7.1 supports two types of adapters: Java™ adapters and JavaScript™ adapters.
 
 #### Java adapters
-In future release of the product, the security API should change. By wrapping the calls to security APIs, you can restrict the impact of such changes to only your wrapper methods. For example, instead of writing the following code:
+In the 8.0 beta release, the security API has changed. By wrapping the calls to security APIs, you can restrict the impact of these changes to only your wrapper methods. For example, instead of writing the following code:
 
 ```java
 api.getSecurityAPI().getSecurityContext().getUserIdentity().getId()
@@ -37,14 +37,12 @@ And use `getUserID()` in all your resources that require the user ID.
 
 1. If you use security APIs, consider using wrappers, as for Java adapters.
 
-2. MobileFirst Server V7.1 supports [both stateless and stateful modes of operations](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html). The only method that the future release of the product should support is stateless, which allows for better scalability and availability.
+2. MobileFirst Server V7.1 supports [both stateless and stateful modes of operations](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html). The only method supported by MobileFirst Platform Foundation 8.0 beta is stateless, which allows for better scalability and availability.<br /><br />Because the state full mode is not supported in MobileFirst Platform Foundation 8.0 beta, you should avoid using the state full mode. If your application requires persisting information between invocations on the server side, consider using a back-end database, or a distributed cache system; and avoid using global variables to save data on the session. 
 
-    Because the stateful mode should be no longer supported, if your application requires persisting information between invocations on the server side, consider using a back-end database, or a distributed cache system; and avoid using global variables to save data on the session. 
-
-3. Use only the supported adapter types: HTTP and SQL. Note that additional adapter types might be added after the beta of the future release of the product.
+3. MobileFirst Platform Foundation 8.0 beta supports only HTTP and SQL JavaScript adapters. Use only these supported adapter types. Note that additional adapter types might be added after the beta of the future release of the product.
 
 ### Security
-IBM MobileFirst Platform Foundation V7.1 supports two methods of authentication: [classic and OAuth](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/r_security_framework.html). JavaScript adapters are protected by using the classic authentication, and Java adapters are protected by using OAuth. The future version of the product should adhere to the OAuth standard and should provide only this authentication method
+IBM MobileFirst Platform Foundation V7.1 supports two methods of authentication: [classic and OAuth](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/r_security_framework.html). JavaScript adapters are protected by using the classic authentication, and Java adapters are protected by using OAuth. As OAuth is the standard authorization mode, you should opt for using it over the classic method.
 
 As a consequence, instead of JavaScript adapters, consider using Java adapters, as they are the only ones that support OAuth.
 
@@ -62,7 +60,7 @@ As a consequence, instead of JavaScript adapters, consider using Java adapters, 
 
 3.	Use Cordova available plug-ins for UI controls. Avoid using MobileFirst UI controls such as: BusyIndicator, OptionsMenu, TabBar, and SimpleDialog. 
 
-4.	Use methods such as responsive design to adjust your app for multiple screen sizes. Avoid using MobileFirst skins, which will not exist in future versions of the product.
+4.	Use methods such as responsive design to adjust your app for multiple screen sizes. Avoid using MobileFirst skins, which is not standard.
 
 5.	For minification and uglification of JavaScript code, use available packages such as [clean-css](https://www.npmjs.com/package/clean-css) or [uglify-js](https://www.npmjs.com/package/uglify-js). Avoid using the MobileFirst Studio plug-in features for minification and concatenation. 
 
