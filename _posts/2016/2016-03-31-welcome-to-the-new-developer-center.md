@@ -36,5 +36,5 @@ Here's a quick list of what you can expect:
 * Improved accessibility in [Labs]({{site.baseurl}}/labs/)
 * Hosted on and powered by [IBM Bluemix](https://bluemix.net)
 
-The new website was made possible thanks to technologies such as: [Jekyll](http://jekyllrb.com/), [Bootstrap](getbootstrap.com), [Travis CI](https://travis-ci.org/) and lots more.  
+The new website was made possible thanks to technologies such as: [Jekyll](http://jekyllrb.com/), [Bootstrap](http://getbootstrap.com), [Travis CI](https://travis-ci.org/) and lots more.  
 We hope you will enjoy all the new things we've put into the site, and welcome comments below.
