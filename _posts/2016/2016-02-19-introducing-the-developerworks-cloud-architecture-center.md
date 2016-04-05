@@ -32,6 +32,8 @@ The architectures and solutions in the developerWorks Cloud Architecture Center 
 
 See more about the developerWorks Cloud Architecture Center in the introductory video, below, and come visit the developerWorks Smartbar in the Solution EXPO at  InterConnect 2016 (February 21-25) to see it (and us!) in person. 
 
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/rUIHMfcRvIQ"></iframe>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/rUIHMfcRvIQ"></iframe>
+    </div>
 </div>

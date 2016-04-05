@@ -11,9 +11,10 @@ author:
 ---
 
 ## Using the new MobileFirst Platform Development CLI to register and run mobile apps
-
 This video shows you how to quickly get started using the new MFPDev CLI to register and run your mobile application both on the MobileFirst Foundation server on Bluemix, and also using the local development server provided by the MobileFirst Platform Development Kit.
 
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/rYQMC0uIbQA"></iframe>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/rYQMC0uIbQA"></iframe>
+    </div>
 </div>

@@ -250,6 +250,8 @@ Make sure to configure the *server.xml* and deploy the artifacts before running 
 - [Using WebSphere DataPower as a push notification proxy](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.integ.doc/devref/t_DataPower_as_push_notification_proxy.html?lang=en)
 
 ## Video
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/emDdHC0VlRY"></iframe>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/emDdHC0VlRY"></iframe>
+    </div>
 </div>

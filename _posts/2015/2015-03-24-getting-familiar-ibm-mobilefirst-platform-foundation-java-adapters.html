@@ -26,8 +26,10 @@ author:
 11. Using Postman REST client for communicating with Java Adapters</p>
 
 <p>As usual - watch it in HD for max resolution.</p>
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/cKM5480-6wI"></iframe>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/cKM5480-6wI"></iframe>
+    </div>
 </div>
 
 <p>Important thing to note is that Java adapters are based on the JAX-RS specification and expose a full REST API to the client. In other words Java adapter is a JAX-RS service that can be deployed to MobileFirst Server and that by default, has access to MobileFirst Server APIs. Being a RESTful endpoint they cannot be accessed using WL.Client.invokeProcedure() API which uses an RPC model. Starting with v7.0 the IBM MobileFirst Platform provides a WLResourceRequest class which should be used to access Java adapters. To summarize<br />

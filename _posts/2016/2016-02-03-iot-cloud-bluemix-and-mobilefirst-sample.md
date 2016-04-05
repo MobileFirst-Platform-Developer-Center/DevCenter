@@ -52,8 +52,10 @@ This playlist does contain three videos, which trying to help you to understand,
 2. Use Node-RED to build your own logic and use a Watson service.
 3. Build a Mobile App based on MobileFirstPlatform and connect to the Bluemix Application.
 
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/watch?v=M2cB16U2Z2o&list=PLUte4WEyMEjU83oQIjqOKIPm35q9I1eZd"></iframe>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/watch?v=M2cB16U2Z2o&list=PLUte4WEyMEjU83oQIjqOKIPm35q9I1eZd"></iframe>
+    </div>
 </div>
 
 ### Where to get more technical insights?
