@@ -9,7 +9,7 @@ weight: 2
 The purpose of this demonstration is to experience an end-to-end flow:
 
 1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
-2. An new or provided adapter is deployed to the MobileFirst Operations Console.  
+2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
 3. The application logic is changed to make a resource request.
 
 **End result**:
