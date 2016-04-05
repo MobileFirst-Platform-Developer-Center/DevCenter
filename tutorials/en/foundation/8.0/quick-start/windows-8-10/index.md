@@ -49,36 +49,36 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Visual Studio project.
 
-2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet:
+2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet into the GetAccessToken() method:
 
     ```csharp
-    WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken("");
-
-    if(accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
-    {
-        try
-        {
+    try
+      {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
-
-          StringBuilder uriBuilder = new StringBuilder().Append("/adapters/JavaAdapter/users/world");    
-
-          WorklightResourceRequest rr = _newClient.ResourceRequest(uriBuilder.ToString(), "GET");
-
-          WorklightResponse resp= await rr.send();
-
-          if (resp.success)
+          accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
+          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
           {
-              Debug.WriteLine("Success: " + resp.ResponseText);
-          } else
-          {
-              Debug.WriteLine("Failure: " + resp.error);  
-          }
-        }catch(Exception e)
-        {
-          Debug.WriteLine(e.StackTrace);
+              System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
+              titleTextBlock.Text = "Yay!";
+              statusTextBlock.Text = "Connected to MobileFirst Server";
+
+              Uri adapterPath = new Uri("/adapters/javaAdapter/resource/greet",UriKind.Relative);
+              WorklightResourceRequest request = _newClient.ResourceRequest(adapterPath, "GET","");
+              request.SetQueryParameter("name", "world");
+              WorklightResponse response = await request.Send();
+
+              System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
+
+            }
         }
-    }
+        catch (Exception e)
+        {
+            titleTextBlock.Text = "Uh-oh";
+            statusTextBlock.Text = "Client failed to connect to MobileFirst Server";
+            System.Diagnostics.Debug.WriteLine("An error occurred: '{0}'", e);
+        }
     ```
+
 
 ### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
@@ -99,6 +99,7 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
 
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    -->
 
+<img src="windowsQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
 1. In Visual Studio, select the **mfpclient.resw** file and edit the **host** property with the IP address of the MobileFirst Server.
