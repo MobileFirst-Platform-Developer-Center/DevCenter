@@ -77,7 +77,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
             },
 
             function(error) {
-                vtitleText.innerHTML = "Bummer...";
+                titleText.innerHTML = "Bummer...";
                 statusText.innerHTML = "Failed to connect to MobileFirst Server";
             }
         );
