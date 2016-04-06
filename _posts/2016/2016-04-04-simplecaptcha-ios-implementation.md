@@ -15,6 +15,7 @@ At the end of the sample, you will have the SimpleCaptcha security check deploye
 
 
 ***
+## Download the sample
 [Get the full sample on my github page](https://github.com/oreporan/iOS_SimpleCaptcha)
 ***
 
