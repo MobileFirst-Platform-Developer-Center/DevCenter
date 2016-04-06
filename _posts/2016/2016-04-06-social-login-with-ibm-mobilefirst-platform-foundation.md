@@ -33,8 +33,8 @@ In order to run this demo, review the instructions in the [sample's repository.]
 
 The diagram above shows the login flow (described with Google, and relevant to Facebook or other social providers as well), meaning that the trigger to call the social providers is initiated by client.
 
-1. The User presses Goole Sign In button.  
-2. The Goole Android SDK is calling to Goole Sign-In REST Service.  
+1. The User presses Google Sign In button.  
+2. The Google Android SDK is calling to Google Sign-In REST Service.  
 3. The access token from Google received and the App is calling to login API with scope social-login and credentials (vendor + token).  
 4. The MFPF's SDK send the credentials and scope to the Authorization Server API.  
 5. The Authorization API called the mapped security check social-login to validate the credentials.  
