@@ -18,7 +18,7 @@ This blog post is taking into a consideration that you have basic knowledge abou
 
 The [Social Login security check](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-login) in this blog can be easily reused for your own needs. The sample includes social providers as [Facebook](https://developers.facebook.com/docs/facebook-login) and [Google](https://developers.google.com/identity/), which can be easily extended by adding more social providers like twitter.
 
-## Watch App demo
+## See in action
 Here is short YouTube demo movie which shows an app using the [Social Login security check](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-login).
 
 <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
