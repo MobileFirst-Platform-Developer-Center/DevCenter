@@ -42,6 +42,14 @@ All classes that extend `CredentialsValidationSecurityCheck` (which includes bot
 
 The current state can be obtained using the inherited `getState()` method.
 
+In `StepUpUserLogin`, add a convenience method to check if the user is currently logged in:
+
+```java
+public boolean isLoggedIn(){
+    return this.getState().equals(STATE_SUCCESS);
+}
+```
+
 ## The authorize method
 
 The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, such as sending a challenge or validating the request.  
@@ -52,7 +60,7 @@ To do so, **override** the `authorize` method:
 ```java
 @Override
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
-    if(userLogin.getState().equals(STATE_SUCCESS)){
+    if(userLogin.isLoggedIn()){
         super.authorize(scope, credentials, request, response);
     }
 }
@@ -60,7 +68,21 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
 This implementation checks the current state of the `StepUpUserLogin` reference. If the state is `STATE_SUCCESS` (meaning the user is logged in), then we continue the normal flow of the security check. If `StepUpUserLogin` is in any other state, nothing is done (no challenge will be sent, no success nor failure).
 
-This flow makes sure that the user is logged in before we ask for the secondary credential (PIN code). The client will never receive both challenges at the same time.
+- Assuming the resource is protected by **both** `StepUpPinCode` and `StepUpUserLogin`, this flow makes sure that the user is logged in before we ask for the secondary credential (PIN code). The client will never receive both challenges at the same time, even though both security checks are activated.
+- Alternatively, if the resource is protected **only** by `StepUpPinCode` (meaning the framework will only activate this security check), you can change the `authorize` implementation to trigger `StepUpUserLogin` manually:
+
+```java
+@Override
+public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
+    if(userLogin.isLoggedIn()){
+        //If StepUpUserLogin is successful, continue the normal processing of StepUpPinCode
+        super.authorize(scope, credentials, request, response);
+    } else {
+        //In any other case, process StepUpUserLogin instead.
+        userLogin.authorize(scope, credentials, request, response);
+    }
+}
+```
 
 ## Retrieve current user
 In `StepUpPinCode`, we are interested in knowing the current user's ID so we can lookup this user's PIN code in some database.
@@ -73,7 +95,28 @@ public AuthenticatedUser getUser(){
 }
 ```
 
-In `StepUpPinCode` you can then use `userLogin.getUser()` to get the current user from the `StepUpUserLogin` security check.
+In `StepUpPinCode` you can then use `userLogin.getUser()` to get the current user from the `StepUpUserLogin` security check, and check the valid PIN code for this specific user:
+
+```java
+@Override
+protected boolean validateCredentials(Map<String, Object> credentials) {
+    //Get the correct PIN code from the database
+    User user = userManager.getUser(userLogin.getUser().getId());
+
+    if(credentials!=null && credentials.containsKey(PINCODE_FIELD)){
+        String pinCode = credentials.get(PINCODE_FIELD).toString();
+
+        if(pinCode.equals(user.getPinCode())){
+            errorMsg = null;
+            return true;
+        }
+        else{
+            errorMsg = "Wrong credentials. Hint: " + user.getPinCode();
+        }
+    }
+    return false;
+}
+```
 
 ## Challenge handlers
 In the client-side, there are no special APIs of challenge handler to handle steps. Rather, each challenge handler should handle its own challenge. In this example you need to register two separate challenge handlers: One to handle challenges from `StepUpUserLogin` and one to handle challenges from `StepUpUserLogin`.
