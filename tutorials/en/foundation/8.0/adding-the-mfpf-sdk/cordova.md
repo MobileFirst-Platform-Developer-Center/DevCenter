@@ -102,6 +102,11 @@ Each platform is registered as an application in MobileFirst Server.
     
 > 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
   
+### Using the SDK
+The MobileFirst-provided API methods are available once the MobileFirst client SDK has been loaded. Once loaded, the `wlCommonInit` function, available in **index.js**, is called. Use this function when trying to call the various MobileFirst-provided API methods.
+
+If adding the SDK to an existing Cordova application, make sure to add the `wlCommonInit` function to the application's **index.js**.
+  
 ## Updating the MobileFirst Cordova SDK
 To update the MobileFirst Cordova SDK with the latest release, the **cordova-plugin-mfp** plug-in needs to be removed using the `cordova plugin remove cordova-plugin-mfp` command, followed by re-adding it: `cordova plugin add cordova-plugin-mfp`.
 
