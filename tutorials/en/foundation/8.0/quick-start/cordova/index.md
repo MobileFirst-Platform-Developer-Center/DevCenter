@@ -9,7 +9,7 @@ weight: 1
 The purpose of this demonstration is to experience an end-to-end flow:
 
 1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
-2. An new or provided adapter is deployed to the MobileFirst Operations Console.  
+2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
 3. The application logic is changed to make a resource request.
 
 **End result**:
@@ -20,8 +20,8 @@ The purpose of this demonstration is to experience an end-to-end flow:
 #### Prerequisites:
 
 * Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
-* Cordova 6.x CLI
-* *Optional*. MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
+* Cordova 6.0.0 CLI (v6.1.0 is **not supported**)
+* *Optional*. MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -54,42 +54,43 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ```javascript
     WLAuthorizationManager.obtainAccessToken()
-    .then (
-        function(accessToken) {
-            var statusText = document.getElementById("statusText");
-            statusText.innerHTML = "Obtained Access Token Successfully";
-          
-            var resourceRequest = new WLResourceRequest(
-                "/adapters/javaAdapter/users/world",
-                WLResourceRequest.GET
-            );
+        .then(
+            function(accessToken) {
+                titleText.innerHTML = "Yay!";
+                statusText.innerHTML = "Connected to MobileFirst Server";
+                
+                var resourceRequest = new WLResourceRequest(
+                    "/adapters/javaAdapter/resource/greet/",
+                    WLResourceRequest.GET
+                );
+                
+                resourceRequest.setQueryParameter("name", "world");
+                resourceRequest.send().then(
+                    function(response) {
+                        // Will display "Hello world" in an alert dialog.
+                        alert("Success: " + response.responseText);
+                    },
+                    function(response) {
+                        alert("Failure: " + JSON.stringify(response));
+                    }
+                );
+            },
 
-            resourceRequest.send().then(
-                function(response) {
-                    // Will display "Hello world" in an alert dialog.
-                    alert("Success: " + response.responseText);
-                },
-                function(response) {
-                    alert ("Failure: " + response.errorMsg);
-                }
-            );
-        },
-        
-        function(error) {
-            var statusText = document.getElementById("statusText");
-            statusText.innerHTML = "Failed to obtain access token: " + JSON.stringify(error);
-        }
-    );
+            function(error) {
+                titleText.innerHTML = "Bummer...";
+                statusText.innerHTML = "Failed to connect to MobileFirst Server";
+            }
+        );
     ```
     
-### 4. Creating an adapter
+### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
 Alternatively, click the **New** button next to **Adapters**.  
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and MobileFirst Developer CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 

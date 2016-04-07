@@ -1,0 +1,138 @@
+{
+  "query": {
+    "count": 1,
+    "created": "2016-03-28T08:51:45Z",
+    "lang": "en-US",
+    "results": {
+      "channel": {
+        "units": {
+          "distance": "mi",
+          "pressure": "in",
+          "speed": "mph",
+          "temperature": "F"
+        },
+        "title": "Yahoo! Weather - San Francisco, CA, US",
+        "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2487956/",
+        "description": "Weather for San Francisco, CA, US",
+        "language": "en-us",
+        "lastBuildDate": "Mon, 28 Mar 2016 01:52 AM PDT",
+        "ttl": "60",
+        "location": {
+          "city": "San Francisco",
+          "country": "United States",
+          "region": " CA"
+        },
+        "wind": {
+          "chill": "43",
+          "direction": "305",
+          "speed": "32"
+        },
+        "atmosphere": {
+          "humidity": "73",
+          "pressure": "1015.0",
+          "rising": "0",
+          "visibility": "16.1"
+        },
+        "astronomy": {
+          "sunrise": "7:0 am",
+          "sunset": "7:30 pm"
+        },
+        "image": {
+          "title": "Yahoo! Weather",
+          "width": "142",
+          "height": "18",
+          "link": "http://weather.yahoo.com",
+          "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+        },
+        "item": {
+          "title": "Conditions for San Francisco, CA, US at 01:00 AM PDT",
+          "lat": "37.747398",
+          "long": "-122.439217",
+          "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2487956/",
+          "pubDate": "Mon, 28 Mar 2016 01:00 AM PDT",
+          "condition": {
+            "code": "23",
+            "date": "Mon, 28 Mar 2016 01:00 AM PDT",
+            "temp": "50",
+            "text": "Breezy"
+          },
+          "forecast": [{
+            "code": "23",
+            "date": "28 Mar 2016",
+            "day": "Mon",
+            "high": "60",
+            "low": "50",
+            "text": "Breezy"
+          }, {
+            "code": "32",
+            "date": "29 Mar 2016",
+            "day": "Tue",
+            "high": "61",
+            "low": "50",
+            "text": "Sunny"
+          }, {
+            "code": "32",
+            "date": "30 Mar 2016",
+            "day": "Wed",
+            "high": "62",
+            "low": "50",
+            "text": "Sunny"
+          }, {
+            "code": "34",
+            "date": "31 Mar 2016",
+            "day": "Thu",
+            "high": "62",
+            "low": "52",
+            "text": "Mostly Sunny"
+          }, {
+            "code": "34",
+            "date": "01 Apr 2016",
+            "day": "Fri",
+            "high": "62",
+            "low": "52",
+            "text": "Mostly Sunny"
+          }, {
+            "code": "30",
+            "date": "02 Apr 2016",
+            "day": "Sat",
+            "high": "62",
+            "low": "53",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "23",
+            "date": "03 Apr 2016",
+            "day": "Sun",
+            "high": "62",
+            "low": "53",
+            "text": "Breezy"
+          }, {
+            "code": "30",
+            "date": "04 Apr 2016",
+            "day": "Mon",
+            "high": "62",
+            "low": "53",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "05 Apr 2016",
+            "day": "Tue",
+            "high": "63",
+            "low": "54",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "06 Apr 2016",
+            "day": "Wed",
+            "high": "66",
+            "low": "55",
+            "text": "Partly Cloudy"
+          }],
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/23.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Breezy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Breezy. High: 60Low: 50\n<BR /> Tue - Sunny. High: 61Low: 50\n<BR /> Wed - Sunny. High: 62Low: 50\n<BR /> Thu - Mostly Sunny. High: 62Low: 52\n<BR /> Fri - Mostly Sunny. High: 62Low: 52\n<BR />\n<BR />\n",
+          "guid": {
+            "isPermaLink": "false"
+          }
+        }
+      }
+    }
+  }
+}

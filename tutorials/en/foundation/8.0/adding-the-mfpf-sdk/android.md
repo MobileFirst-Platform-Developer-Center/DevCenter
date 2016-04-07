@@ -18,7 +18,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Grad
 
 **Prerequisites:**
 
-- Android Studio and MobileFirst Developer CLI installed on the developer workstation.  
+- Android Studio and MobileFirst CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Android development environment](../../setting-up-your-development-environment/android-development-environment) tutorials.
 
@@ -46,10 +46,7 @@ Create an Android Studio project or use an existing one.
 
     ```xml
     repositories{
-        //jcenter()
-        maven {
-            url "http://visustar.francelab.fr.ibm.com:8081/nexus/content/repositories/mobile-s/"
-        }
+        jcenter()
     }
     ```
 
@@ -68,15 +65,15 @@ Create an Android Studio project or use an existing one.
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundation',
-    version: '8.0.Beta1-SNAPSHOT',
+    version: '8.0.+',
     ext: 'aar',
     transitive: true
     ```
 
-    Or:
+    Or in a single line:
 
     ```xml
-    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.Beta1-SNAPSHOT'
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
     ```
 
 5. In **Android → app → manifests**, open the `AndroidManifest.xml` file. Add the following permissions above the **application** element:

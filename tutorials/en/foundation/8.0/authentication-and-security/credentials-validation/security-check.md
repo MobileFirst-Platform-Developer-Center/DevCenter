@@ -143,12 +143,12 @@ public SecurityCheckConfiguration createConfiguration(Properties properties) {
     return new PinCodeConfig(properties);
 }
 @Override
-protected PinCodeConfig getConfig() {
-    return (PinCodeConfig) super.getConfig();
+protected PinCodeConfig getConfiguration() {
+    return (PinCodeConfig) super.getConfiguration();
 }
 ```
 
-`getConfig().pinCode` can now be used to retrieve the default PIN code.  
+`getConfiguration().pinCode` can now be used to retrieve the default PIN code.  
 
 `validateCredentials` can be modified to use the PIN code from the configuration instead of the hardcoded value.
 
@@ -158,11 +158,11 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
     if(credentials!=null && credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 
-        if(pinCode.equals(getConfig().pinCode)){
+        if(pinCode.equals(getConfiguration().pinCode)){
             return true;
         }
         else {
-            errorMsg = "Pin code is not valid. Hint: " + getConfig().pinCode;
+            errorMsg = "Pin code is not valid. Hint: " + getConfiguration().pinCode;
         }
 
     }

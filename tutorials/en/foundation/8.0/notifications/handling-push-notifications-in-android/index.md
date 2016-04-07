@@ -17,7 +17,7 @@ Before Android applications are able to handle any received push notifications, 
     * [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android)
     * [Push Notifications Overview](../push-notifications-overview)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
-* MobileFirst Developer CLI installed on the developer workstation
+* MobileFirst CLI installed on the developer workstation
 
 #### Jump to:
 
@@ -44,21 +44,18 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundationPush',
-    version: '8.0.0.0.Beta1-SNAPSHOT',
+    version: '8.0.+',
     ext: 'aar',
     transitive: true
     ```
-    - Or in a single line:
+    
+    Or in a single line:
 
-        ```xml
-        compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.Beta1-SNAPSHOT'
-        ```
+    ```xml
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+    ```
 
-    <span style="color:red"> remove step 2 below before going live</span>
-
-2. Copy ibmmobilefirstplatformfoundationpush-1.0.0.aar (from halpert Electra DevOps Latest integration build) to <android_sdk>\extras\google\m2repository\com\ibm\mobile\foundation\ibmmobilefirstplatformfoundationpush\1.0.0\ibmmobilefirstplatformfoundationpush-1.0.0.aar. Also  remove libs folder from the aar.  
-
-3. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
+2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
 	* Add the following permissions to the top the `manifest` tag:
 
 		```xml

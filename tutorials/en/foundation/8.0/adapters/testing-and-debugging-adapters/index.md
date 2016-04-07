@@ -8,7 +8,7 @@ weight: 6
 
 You can test Java and JavaScript adapters as well as debug Java code implemented for use in Java or JavaScript adapters via IDEs such as Eclipse, IntelliJ and alike.  
 
-This tutorial demonstrates how to test adapters using the MobileFirst Developer CLI and using Postman and also how to debug a Java adapter using the Eclipse IDE.
+This tutorial demonstrates how to test adapters using the MobileFirst CLI and using Postman and also how to debug a Java adapter using the Eclipse IDE.
 
 #### Jump to:
 
@@ -120,6 +120,8 @@ Expand the endpoint's operation, enter the required parameters (if needed) and c
   ![Adapter request using Swagger with the test token](SwaggerReq.png)
 
 #### Swagger Annotations
+Available only in Java adapters. 
+
 In order to generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
 > To learn more about Swagger Annotations see the [Swagger documentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
 
@@ -147,7 +149,7 @@ public Map<String, String> enterInfo(
 
 
 {% comment %}
-### Using MobileFirst Developer CLI
+### Using MobileFirst CLI
 
 In order to test the adapter functionality, use the `mfpdev adapter call` command to call Java or JavaScript adapters from the command line.
 You can choose to run the command interactively or directly. The following is an example of using the direct mode:
@@ -219,4 +221,4 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
 
     ![Image showing a being-debugged adapter](debugging.png)
 
-> For instructions how to use IntelliJ to debug Java adapters see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/04/01/using-intellij-to-develop-adapters) Blog Post.
+> For instructions how to use IntelliJ to debug Java adapters see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) Blog Post.

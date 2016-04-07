@@ -54,11 +54,6 @@ request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void
 
 Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
 
-## The response
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
-
-Use the `response` and `error` objects to get the data that is retrieved from the adapter.
-
 ## Parameters
 Before sending your request, you may want to add parameters as needed.
 
@@ -119,6 +114,11 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithJSON` allows you to set an arbitrary dictionary in the body.
 - `sendWithData` allows you to set an arbitrary `NSData` in the body.
 
+## The response
+The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
+
+Use the `response` and `error` objects to get the data that is retrieved from the adapter.
+
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
@@ -132,6 +132,22 @@ The adapter Maven project contains the Java adapter used during the resource req
 
 ### Sample usage
 1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
 3. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
 4. Import the project to Xcode, and run the sample by clicking the **Run** button.
+
+#### Note about iOS 9:
+
+> * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+>   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
+>   2. Paste the following: 
+>
+>    
+        ```xml
+        <key>NSAppTransportSecurity</key>
+        <dict>
+            <key>NSAllowsArbitraryLoads</key>
+            <true/>
+        </dict>
+        ```
+

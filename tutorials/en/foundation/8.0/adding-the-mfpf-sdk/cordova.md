@@ -44,7 +44,7 @@ The cordova-plugin-mfp-push plug-in provides permissions needed to use push noti
 
 **Prerequisites:**
 
-- At mininum Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) and MobileFirst Developer CLI installed on the developer workstation.  
+- [Apache Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) or 6.1.1 at minimum (v6.1.0 is **not supported**) and MobileFirst CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Cordova development environment](../../setting-up-your-development-environment/cordova-development-environment) tutorials.
 
@@ -80,7 +80,7 @@ If using a locally installed server: From a **Command-line** window, navigate to
     cordova platform add ios
     ```
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.0.0** and **cordova-windows@4.2.0**
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1** and **cordova-windows@4.2.0**
 
 ### Registering the application
 
@@ -141,7 +141,7 @@ Once the MobileFirst Cordova SDK is added to the project, the Cordova-generated 
 * **mfp:languagePreferences:** Default language for client sdk system messages (en, fr, es)
 
 ### Editing MobileFirst settings in config.xml
-The MobileFirst Developer CLI can be used to edit the above settings with the command:
+The MobileFirst CLI can be used to edit the above settings with the command:
 
 ```bash
 mfpdev app config

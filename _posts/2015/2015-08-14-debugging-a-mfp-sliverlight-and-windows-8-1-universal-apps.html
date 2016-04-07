@@ -1,0 +1,69 @@
+---
+title: Debugging a MFP Sliverlight and Windows 8.1 Universal Apps
+date: 2015-08-14 19:13:44.000000000 +03:00
+tags:
+- MobileFirst_Platform
+- Windows_8
+- Silverlight
+- Debugging
+author:
+  name: Vinod Appajanna
+---
+<p>In this blog I will share a few ways of debugging or troubleshooting an MobileFirst Windows Silverlight and Windows 8.1 Universal apps (Desktops, tables and phones). I will be debugging JavaScript code, managed code (C#), native code (C/C++) and combination of these.</p>
+<p>Basically we will cover</p>
+
+<ul>
+    <li>Console log outputs </li>
+    <li>Break point support</li>
+    <li>remote debugging using remote debuggers like <a href="http://blogs.msdn.com/b/eternalcoding/archive/2015/04/30/why-we-made-vorlon-js-and-how-to-use-it-to-debug-your-javascript-remotely.aspx" target="_blank">VORLON</a> or <a href="http://people.apache.org/~pmuellr/weinre/docs/latest/Home.html" target="_blank">WINRE</a>.</li>
+</ul>
+
+<p>You can see the below screen shots and videos for the flow and debugging techniques used. Along with the videos there are samples attached for you to try.</p>
+
+<h3>Debugging a Silverlight App</h3>
+<p>The High level flow shows the launching of the app from Visual Studio on to device or emulator and logs output to the Visual studio console and vorlon console and also the markup exchange between Vorlon and the device. Here the debugging involves the html, JavaScript and C# (managed code).</p>
+
+<table class="table table-striped">
+<tr>
+<td> <em>High level flow</em><br />
+    <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/DebugSilverLightApp_1-300x201.png"  /></td>
+<td><em>Visual Studio flow</em><br />
+    <img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/DebugSilverLightApp_2-300x224.png" /></td>
+</tr>
+</table>
+
+<em>Video:</em>
+    <div class="sizer">
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="http://youtube.com/embed/v8gjtkSCCpQ"></iframe>
+        </div>
+    </div>
+
+<em><a href="https://github.com/vinapp/debugmfpwindowsapps
+" target="_blank">Download Silverlight Sample Source</a></em></p>
+
+<h3>Debugging a Windows Phone 8.1 App</h3>
+<p>In here the debugging with Vorlon is not included since its already covered as part Siliverlight App debugging and here I have tried covering the debugging of the native (C/C++) code for universal apps.</p>
+
+<table class="table table-striped">
+<tr>
+<td> <em>High level flow</em><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/DebugWindows81App_1-300x214.png"  /></td>
+<td> <em>Visual Studio flow</em><br />
+<img alt="missing_alt" src="{{ site.baseurl }}/assets/backup/DebugWindows81App_2-300x213.png"  /></td>
+</tr>
+</table>
+
+<em>Video:</em><br />
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="http://youtube.com/embed/xklv2X5Qtq0"></iframe>
+    </div>
+</div>
+
+<em><a href="https://github.com/vinapp/debugmfpwindowsapps
+" target="_blank">Download Windows Universal Sample Source</a></em></p>
+
+<p>You read more at the articles below.<br />
+(1) <a href="https://www.ibm.com/developerworks/community/blogs/mobileblog/entry/six_ways_to_debug_a_hybrid_worklight_application?lang=en" target="_blank">Six ways to debug a hybrid Worklight application</a><br />
+(2) <a href="http://stackoverflow.com/questions/14567491/windows-phone-8-ie10-javascript-debugging" target="_blank">Windows Phone 8 IE10 Javascript debugging</a></p>

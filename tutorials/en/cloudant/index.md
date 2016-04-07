@@ -8,7 +8,7 @@ show_breadcrumb: true
 Cloudant is a NoSQL Database as a Service (DBaaS) that is based on CouchDB and  available from [cloudant.com](http://cloudant.com).
 
 ### What is Cloudant Data Layer Local Edition?
-IBM® MobileFirst Platform Cloudant® Data Layer Local Edition is a database management system (DBSM) designed from the ground up to support today's scaling demands. IBM MobileFirst Platform Cloudant Local is a great complement to Cloudant's cloud-based service. It can be run either in concert with the cloud — to support load spikes — or just within your data centers — to support privacy.
+IBM® MobileFirst Platform Cloudant® Data Layer Local Edition is a database management system (DBMS) designed from the ground up to support today's scaling demands. IBM MobileFirst Platform Cloudant Local is a great complement to Cloudant's cloud-based service. It can be run either in concert with the cloud — to support load spikes — or just within your data centers — to support privacy.
 
 IBM MobileFirst Platform Cloudant Local includes all the key features of Cloudant's SaaS offering: robust data synchronization with mobile devices, analytics views, text search and advanced geo-spatial capabilities, all wrapped up in an intuitive dashboard. But you run it within your own controlled environment.
 

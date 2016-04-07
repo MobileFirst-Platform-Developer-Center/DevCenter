@@ -38,6 +38,8 @@ If your application consists of more than one platform - specify the platform to
 mfpdev app preview -p <platform>
 ```
 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected in the preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
+
 ### Mobile Browser Simulator
 
 ![MBS](mbs.png)
@@ -46,7 +48,7 @@ mfpdev app preview -p <platform>
 
 ![MBS](simple.png)
 
-> Learn more about the MobileFirst Developer CLI in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts) tutorial.
+> Learn more about the MobileFirst CLI in the [Using MobileFirst CLI to manage MobileFirst artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Debugging with Ripple
 Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  

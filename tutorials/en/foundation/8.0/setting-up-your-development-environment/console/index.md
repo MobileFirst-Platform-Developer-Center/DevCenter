@@ -25,8 +25,8 @@ From a **Command-line** window, with the MobileFirst CLI installed, run the comm
 
 ### From a remotely installed MobileFirst Server
 #### Desktop Browser
-From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`  
-The host server can be a customer-owner server, or running on a service such as Bluemix. The username/password are *admin/admin*.
+From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
+The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../ibm-containers/).
 
 #### Command-line
 From a **Command-line** window, with the MobileFirst CLI installed, 
@@ -45,7 +45,7 @@ From a **Command-line** window, with the MobileFirst CLI installed,
 
 2. Run the command: `mfpdev server console MyRemoteServer`.
 
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ## Navigating the console
 
@@ -72,7 +72,9 @@ Manage and configure registered applications by use of [Direct Update](../../usi
 ![Image of application management screen](application-management.png)
 
 #### Authentication and Security
-Configure application security paramteres, such as the default token expiration value, map scope elements to security checks, define, mandatory application scopes and configure security check options.
+Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes and configure security check options.
+
+> [Learn more](../../authentication-and-security/) about the MobileFirst security framework.
 
 ![Image of application security configuration screen](authentication-and-security.png)
 
@@ -84,7 +86,7 @@ Set-up [push notifications](../../notifications/push-notifications-overview/) an
 ### Adapters
 
 #### Creating adapters
-Register an adapter and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
+Register a [MobileFirst adapter](../../adapters/) and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
 
 ![Image of adapter registration screen](create-adapter.png)
 
@@ -98,7 +100,7 @@ Administrators can search for devices that access the MobileFirst Server and can
 Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
 A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
 
-> For more information, see the topic about device access management in the MobileFirst Operations Console in the user documentation.
+> For more information, see the topic about device access management in the user documentation.
 
 ![Image of device management screen](devices.png)
 
@@ -107,7 +109,7 @@ Administrators can use log profiles to adjust client logger configurations, such
 
 When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as `WLResourceRequest`, and is applied automatically.</p>
 
-> For more information, see the topic about client-side log capture configuration from MobileFirst Operations Console in the user documentation.
+> For more information, see the topic about client-side log capture configuration in the user documentation.
 
 ![Image of client logs screen](client-logs.png)
 
@@ -125,7 +127,7 @@ License terms vary depending on which edition (Enterprise or Consumer) of Mobile
 
 By tracking the usage of client devices and determining whether the devices are active, administrators can decommission devices that should no longer be accessing the service. This situation might arise if an employee has left the company, for example.
 
-> For more information, see the topic about license tracking in the user documentation.</p></blockquote>
+> For more information, see the topic about license tracking in the user documentation.
 
 ![Image of client logs screen](license-tracking.png)
 

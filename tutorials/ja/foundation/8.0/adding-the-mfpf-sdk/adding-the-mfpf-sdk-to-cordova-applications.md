@@ -98,7 +98,7 @@ Follow the below instructions to add the MobileFirst Cordova Plugin to either a 
     cordova platform add windows
     ```
 
-    > The platform versions supported by MobileFirst plug-ins are **cordova-ios@4.0.1**, **cordova-android@5.0.0** and **cordova-windows@4.2.0**
+    > The platform versions supported by MobileFirst plug-ins are **cordova-ios@4.0.1**, **cordova-android@5.1.0** and **cordova-windows@4.2.0**
 
 ## Registering the Cordova app in MobileFirst Server
 

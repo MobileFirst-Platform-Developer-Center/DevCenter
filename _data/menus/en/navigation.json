@@ -64,6 +64,9 @@
         "name": "Developers",
         "path": "",
         "children": [{
+            "name": "8.0 Labs",
+            "path": "/developers/8.0/intro",
+            }, {
             "name": "7.1 Labs",
             "path": "/developers/7.1/setup",
             }, {

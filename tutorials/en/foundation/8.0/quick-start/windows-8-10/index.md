@@ -9,7 +9,7 @@ weight: 4
 The purpose of this demonstration is to experience an end-to-end flow:
 
 1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
-2. An new or provided adapter is deployed to the MobileFirst Operations Console.  
+2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
 3. The application logic is changed to make a resource request.
 
 **End result**:
@@ -20,7 +20,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 #### Prerequisites:
 
 * Configured Visual Studio 2013/5
-* *Optional*. MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
+* *Optional*. MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -49,45 +49,45 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Visual Studio project.
 
-2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet:
+2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet into the GetAccessToken() method:
 
     ```csharp
-    WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken("");
-
-    if(accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
-    {
-        try
-        {
+    try
+      {
           IWorklightClient _newClient = WorklightClient.CreateInstance();
-
-          StringBuilder uriBuilder = new StringBuilder().Append("/adapters/JavaAdapter/users/world");    
-
-          WorklightResourceRequest rr = _newClient.ResourceRequest(uriBuilder.ToString(), "GET");
-
-          WorklightResponse resp= await rr.send();
-
-          if (resp.success)
+          accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
+          if (accessToken.IsValidToken && accessToken.Value != null && accessToken.Value != "")
           {
-              Debug.WriteLine("Success: " + resp.ResponseText);
-          } else
-          {
-              Debug.WriteLine("Failure: " + resp.error);  
-          }
-        }catch(Exception e)
-        {
-          Debug.WriteLine(e.StackTrace);
+              System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
+              titleTextBlock.Text = "Yay!";
+              statusTextBlock.Text = "Connected to MobileFirst Server";
+
+              Uri adapterPath = new Uri("/adapters/javaAdapter/resource/greet",UriKind.Relative);
+              WorklightResourceRequest request = _newClient.ResourceRequest(adapterPath, "GET","");
+              request.SetQueryParameter("name", "world");
+              WorklightResponse response = await request.Send();
+
+              System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
+
+            }
         }
-    }
+        catch (Exception e)
+        {
+            titleTextBlock.Text = "Uh-oh";
+            statusTextBlock.Text = "Client failed to connect to MobileFirst Server";
+            System.Diagnostics.Debug.WriteLine("An error occurred: '{0}'", e);
+        }
     ```
 
-### 4. Creating an adapter
+
+### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
-Alternatively, click the **New** button next to **Adapters**.  
+<!-- Alternatively, click the **New** button next to **Adapters**.  
 
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and MobileFirst Developer CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
@@ -97,8 +97,9 @@ Alternatively, click the **New** button next to **Adapters**.
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
 
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    -->
 
+<img src="windowsQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
 1. In Visual Studio, select the **mfpclient.resw** file and edit the **host** property with the IP address of the MobileFirst Server.

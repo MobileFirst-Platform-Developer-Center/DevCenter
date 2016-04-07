@@ -26,6 +26,7 @@ The MobileFirst SDK feature set provides the following:
 #### Jump to:
 
 * [Cordova application development](#cordova-application-development)
+* [MobileFirst APIs](#mobilefirst-apis)
 * [Previewing an application's web resources](#previewing-an-application-39-s-web-resources)
 * [CrossWalk support](#crosswalk-support)
 * [Further reading](#further-reading)
@@ -60,13 +61,20 @@ Applications can be modified using 3rd party packages to achieve requirements su
 - [uglify-js](https://www.npmjs.com/package/uglify-js)
 - [clean-css](https://www.npmjs.com/package/clean-css)
 
+## MobileFirst APIs
+After [adding the MobileFirst Cordova SDK](../../adding-the-mfpf-sdk/cordova) to a Cordova application, the MobileFirst set of API methods is now available for use.
+
+> For a complete list of available API methods, refer to the "Client API changes in V8.0.0" topic in the user documentation.
+
 ## Previewing an application's web resources
-A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Platform Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering. 
+A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Platform Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering.
+
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected in the preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
 
 #### Simple Browser
 In Simple Browser previewing, the web resources of the application are being rendered in the desktop browser without being treated as an "app", allowing easy debugging of just the web resources.  
 
-#### Mobile Browser Simulator 
+#### Mobile Browser Simulator
 The Mobile Browser Simulator is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device.
 
 ### Previewing
@@ -90,7 +98,7 @@ The Mobile Browser Simulator is a web application that enables testing of the Co
     ◯ ios
     ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
 ### Live preview
 Applicative code (HTML, CSS and JS) can now be edited in real-time with live-preview.   
@@ -121,16 +129,16 @@ To add it:
     ```bash
     cordova plugin add cordova-plugin-crosswalk-webview
     ```
-    
+
     This command will add the CrossWalk WebView to the application.  
     Behind the scenes, the MobileFirst Cordova SDK will adjust the Android project activity for using it.
-    
+
 2. Build the project by running the command:
 
     ```bash
     cordova build
     ```
-    
+
 ## Further reading
 Learn more about Cordova:
 

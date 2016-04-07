@@ -19,7 +19,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Coco
 
 **Prerequisites:** 
 
-- Xcode and MobileFirst Developer CLI installed on the developer workstation.  
+- Xcode and MobileFirst CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your iOS development environment](../../setting-up-your-development-environment/ios-development-environment) tutorials.
 
@@ -52,8 +52,6 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     - Add the following lines and save the changes:
 
         ```xml
-        # remove source line below before going live with the tutorials
-        source 'https://hub.jazz.net/git/oper2000/imf-client-sdk-specs-inhouse.git' 
         use_frameworks! 
         pod 'IBMMobileFirstPlatformFoundation'
         ```
@@ -107,7 +105,7 @@ import IBMMobileFirstPlatformFoundation
 <br>
 #### Note about iOS 9:
 
-> * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS [read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).
+> * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following: 
 >

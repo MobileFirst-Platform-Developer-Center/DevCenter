@@ -1,0 +1,138 @@
+{
+  "query": {
+    "count": 1,
+    "created": "2016-03-28T09:30:55Z",
+    "lang": "en-US",
+    "results": {
+      "channel": {
+        "units": {
+          "distance": "mi",
+          "pressure": "in",
+          "speed": "mph",
+          "temperature": "F"
+        },
+        "title": "Yahoo! Weather - Bangkok, Bangkok, TH",
+        "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-1225448/",
+        "description": "Weather for Bangkok, Bangkok, TH",
+        "language": "en-us",
+        "lastBuildDate": "Mon, 28 Mar 2016 04:30 PM ICT",
+        "ttl": "60",
+        "location": {
+          "city": "Bangkok",
+          "country": "Thailand",
+          "region": " Bangkok"
+        },
+        "wind": {
+          "chill": "93",
+          "direction": "113",
+          "speed": "11"
+        },
+        "atmosphere": {
+          "humidity": "45",
+          "pressure": "1011.0",
+          "rising": "0",
+          "visibility": "16.1"
+        },
+        "astronomy": {
+          "sunrise": "6:16 am",
+          "sunset": "6:30 pm"
+        },
+        "image": {
+          "title": "Yahoo! Weather",
+          "width": "142",
+          "height": "18",
+          "link": "http://weather.yahoo.com",
+          "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+        },
+        "item": {
+          "title": "Conditions for Bangkok, Bangkok, TH at 03:00 PM ICT",
+          "lat": "13.75335",
+          "long": "100.504829",
+          "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-1225448/",
+          "pubDate": "Mon, 28 Mar 2016 03:00 PM ICT",
+          "condition": {
+            "code": "30",
+            "date": "Mon, 28 Mar 2016 03:00 PM ICT",
+            "temp": "94",
+            "text": "Partly Cloudy"
+          },
+          "forecast": [{
+            "code": "28",
+            "date": "28 Mar 2016",
+            "day": "Mon",
+            "high": "94",
+            "low": "77",
+            "text": "Mostly Cloudy"
+          }, {
+            "code": "47",
+            "date": "29 Mar 2016",
+            "day": "Tue",
+            "high": "92",
+            "low": "79",
+            "text": "Scattered Thunderstorms"
+          }, {
+            "code": "4",
+            "date": "30 Mar 2016",
+            "day": "Wed",
+            "high": "91",
+            "low": "80",
+            "text": "Thunderstorms"
+          }, {
+            "code": "30",
+            "date": "31 Mar 2016",
+            "day": "Thu",
+            "high": "92",
+            "low": "80",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "01 Apr 2016",
+            "day": "Fri",
+            "high": "94",
+            "low": "81",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "02 Apr 2016",
+            "day": "Sat",
+            "high": "95",
+            "low": "79",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "03 Apr 2016",
+            "day": "Sun",
+            "high": "96",
+            "low": "82",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "32",
+            "date": "04 Apr 2016",
+            "day": "Mon",
+            "high": "95",
+            "low": "82",
+            "text": "Sunny"
+          }, {
+            "code": "34",
+            "date": "05 Apr 2016",
+            "day": "Tue",
+            "high": "95",
+            "low": "82",
+            "text": "Mostly Sunny"
+          }, {
+            "code": "4",
+            "date": "06 Apr 2016",
+            "day": "Wed",
+            "high": "93",
+            "low": "82",
+            "text": "Thunderstorms"
+          }],
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/30.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Partly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Mostly Cloudy. High: 94Low: 77\n<BR /> Tue - Scattered Thunderstorms. High: 92Low: 79\n<BR /> Wed - Thunderstorms. High: 91Low: 80\n<BR /> Thu - Partly Cloudy. High: 92Low: 80\n<BR /> Fri - Partly Cloudy. High: 94Low: 81\n<BR />\n<BR />\n",
+          "guid": {
+            "isPermaLink": "false"
+          }
+        }
+      }
+    }
+  }
+}

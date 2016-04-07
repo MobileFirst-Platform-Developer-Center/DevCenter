@@ -28,7 +28,7 @@ MobileFirst Adapters are Maven projects that contain server-side code implemente
 
 ### Benefits specific to Java adapters
 * Ability to fully control the URL structure, the content types, the request and response headers, content and encoding
-* Easy and fast development and testing by using the MobileFirst Developer CLI.
+* Easy and fast development and testing by using the MobileFirst CLI.
 * Ability to test the adapter by using a 3rd-party tool such as Postman
 * Easy and fast deployment to a running MobileFirst Server instance with no compromise on performance and no downtime
 * Security integration with the MobileFirst security model with no additional customization, by using simple annotations in the source code

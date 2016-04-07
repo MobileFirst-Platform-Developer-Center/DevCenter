@@ -4,9 +4,9 @@ env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
   matrix:
-    # - BUILD=buildPDF.sh
+    #- BUILD=buildPDF.sh
     - BUILD=buildPages.sh
-    # - BUILD=buildBluemix.sh
+    - BUILD=buildBluemix.sh
 script: ./build/$BUILD
 branches:
   only:

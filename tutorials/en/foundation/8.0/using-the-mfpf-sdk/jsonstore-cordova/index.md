@@ -6,7 +6,7 @@ relevantTo: [cordova]
 weight: 8
 downloads:
   - name: Download Cordova project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
@@ -183,7 +183,7 @@ You can secure all the collections in a store by passing a password to the `init
 Data encryption is only available on Android, iOS, Windows 8.1 Universal and Windows 10 UWP environments.  
 Some security metadata is stored in the *keychain* (iOS), *shared preferences* (Android) or the *credential locker* (Windows 8.1).  
 The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
-   
+
 Use `closeAll` to lock access to all the collections until you call `init` again. If you think of `init` as a login function you can think of `closeAll` as the corresponding logout function. Use `changePassword` to change the password.
 
 ```javascript
@@ -355,11 +355,11 @@ WL.JSONStore.get(collectionName).getValue(key).then(function (result) {
 The JSONStoreSwift project contains a Cordova application that utilizes the JSONStore API set.  
 Included is a JavaScript adapter Maven project.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStore/tree/release80) the Cordova project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80) the Cordova project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
-1. Use either Maven or MobileFirst Developer CLI to [build and deploy the **JSONStore** adapter](../../adapters/creating-adapters/).
+1. Use either Maven or MobileFirst CLI to [build and deploy the **JSONStore** adapter](../../adapters/creating-adapters/).
 2. From the command-line, navigate to the project's root folder.
 2. Add a platform by running the `cordova platform add` command.
 3. Ensure the application registered at the server by running the command: `mfpdev app register`.

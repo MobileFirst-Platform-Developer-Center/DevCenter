@@ -89,7 +89,7 @@ You can enable or disable the collecting of app sessions with the API below:
 	* Build the Cordova project by running the command: `cordova build`
 	
 * For the Android platform: navigate to the sub activity of the main activity to disable.
-	* Open the  **[Cordova appilcation root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java**
+	* Open the  **[Cordova appilcation root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java**
 	* Look for the `onCreate` method and follow the Android guide below to enable or disable `LIFECYCLE` activities.
 	* Build the Cordova project by running the command: `cordova build`
 

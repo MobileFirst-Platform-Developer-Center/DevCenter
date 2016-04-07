@@ -41,6 +41,8 @@ To setup GCM:
 2. Provide your application name and package name.
 3. Select "Cloud Messaging" and click on **Enable Google cloud messaging**.  
     - This step generates a **Server API Key** and a **Sender ID**.
+ 
+        > **Note:** Also availbe is the option to generate configuration files. This set-up step is not needed.
     - The generated values are used to identify the application by Google's GCM service in order to send notifications to the device.
 4. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add the GCM **Sender ID** and **Server API Key** and click **Save**.
 

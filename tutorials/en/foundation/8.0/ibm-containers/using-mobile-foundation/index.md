@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation service to set-up MobileFirst Server on IBM Containers
+title: Using the Mobile Foundation service to set up MobileFirst Server on IBM Containers
 breadcrumb_title: Using the Mobile Foundation service
 relevantTo: [ios,android,windows,cordova]
 weight: 6
@@ -45,16 +45,16 @@ Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-u
 
     ![Image of Mobile Foundation setup](service-dashboard.png)
 
-7. Click on **Launch Console** to open the MobileFirst Operations Console.
+7. Click on **Launch Console** to open the MobileFirst Operations Console.  The username is "admin" and the password can be revealed by clicking on the "eye" icon.
 
     ![Image of Mobile Foundation setup](dashboard.png)
 
 ## Server configuration
 The basic server instance consists of:
 
-* A single node
-* 512MB memory
-* 32GB storage capacity
+* A single node (server size: "small")
+* 1GB memory
+* 2GB storage capacity
 
 ## Advanced server configuration
 Through the Configuration tab, the server instance can be further customized with:
