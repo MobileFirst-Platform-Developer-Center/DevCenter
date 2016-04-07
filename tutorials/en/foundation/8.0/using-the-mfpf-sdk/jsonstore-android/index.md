@@ -37,9 +37,7 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 2. Add the following to the existing `dependencies` section:
 
 ```
-compile('com.ibm.mobile.foundation:jsonstore:8.0.+@aar') {
-    transitive = true
-}
+compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
 ```
 
 ## Basic Usage

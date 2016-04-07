@@ -37,7 +37,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 1. Click the **New** button next to **Applications**
     * Select a platform: **Android, iOS, Windows**
     * Enter **com.ibm.mfpstartercordova** as the **application identifier**
-    * Enter **1.0.0** as the **version** value
+    * Enter **1.0.0** as the **version** value for iOS and Windows, or **1.0** for Android
     * Click on **Register application**
 
     <img class="gifplayer" alt="Register an application" src="register-an-application-cordova.png"/>
