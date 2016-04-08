@@ -8,6 +8,8 @@ tabs:
     path: /labs/developers/8.0/setup/
   - name: New Hybrid Wallet
     path: /labs/developers/8.0/newhybridwallet
+  - name: Hybrid Messenger
+    path: /labs/developers/8.0/hybridmessenger
 ---
 ### Introduction
 Below are MobileFirst Platform Foundation 8.0 hands-on lab sessions with step-by-step guidance.  
@@ -27,7 +29,7 @@ In this lab:
 * Push notifications messaging
 * JSONStore
 
-<!-- ---
+---
 
 <div style="max-width: 200px">
 <a href="{{site.baseurl}}/labs/developers/8.0/hybridmessenger"><img src="{{site.baseurl}}/labs/developers/8.0/hybridmessenger/logo_small.png"></a>
@@ -43,4 +45,4 @@ In this lab:
 * Push notifications messaging
 * Custom analytics
 * Uses IBM Bluemix Mobile Foundation server instance
-* Uses Mobile Quality Assurance -->
+* Uses Mobile Quality Assurance
