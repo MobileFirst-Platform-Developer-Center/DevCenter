@@ -20,4 +20,4 @@ The development CLI in the MobileFirst Platform Foundation 8.0 beta has the foll
 
 - When previewing Cordova applications using the `mfpdev app preview` command, your application will not be able to call JavaScript adapters under certain circumstances. Specifically, your app will be unable to call JavaScript adapters that are unprotected (`secure=false`), and your app will be unable to call JavaScript adapter procedures that take parameters. This limitation only extends to the preview environment, and your app will behave as expected when running on native device hardware, or your platform's native simulator.
 
--The IBM MobileFirst Platform Command Line Interface (CLI) commands that are used to define a MobileFirst server do not currently support IPV6 internet addresses for Cordova applications.  These commands include mfpdev app register, mfpdev server add, and mfpdev server edit.
+-The IBM MobileFirst Platform Command Line Interface (CLI) commands that are used to define a MobileFirst Server do not currently support IPV6 internet addresses for Cordova applications.  These commands include `mfpdev app register`, `mfpdev server add`, and `mfpdev server edit`.
