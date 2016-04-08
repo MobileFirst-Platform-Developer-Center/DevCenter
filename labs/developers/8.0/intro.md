@@ -38,11 +38,12 @@ In this lab:
 In this lab:
 
 * Mobile application development from scratch
-* Uses Ionic v2 beta
-* Development using CLI
+* Uses Ionic v2 beta with Typescript
+* Development using CLI and MS Visual Studio Code
 * User authentication
-* API integration using API Connect
+* Cloudant database integration
 * Push notifications messaging
-* Custom analytics
+* JSONStore
+* Uses Google Maps Distance Matrix API
 * Uses IBM Bluemix Mobile Foundation server instance
-* Uses Mobile Quality Assurance
+* Uses IBM Mobile Quality Assurance
