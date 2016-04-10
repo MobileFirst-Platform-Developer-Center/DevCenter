@@ -2,16 +2,9 @@
 title: Search
 layout: default
 ---
+<script src='{{site.baseurl}}/lib/elasticsearch-js/elasticsearch.jquery.js' type="text/javascript"></script>
 <script>
-  (function() {
-    var cx = '003695554915687999821:tm7re0uflie';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
+var client = new $.es.Client({
+  hosts: 'localhost:9200'
+});;
 </script>
-<gcse:searchresults-only></gcse:searchresults-only>
