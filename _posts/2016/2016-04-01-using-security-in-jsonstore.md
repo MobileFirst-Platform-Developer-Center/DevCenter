@@ -1,5 +1,5 @@
 ---
-title: Using Security in JSONStore
+title: Using Security in OpenSource JSONStore
 date: 2016-4-1
 tags:
 - iOS
