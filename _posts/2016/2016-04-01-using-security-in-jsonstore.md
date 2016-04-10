@@ -5,6 +5,7 @@ tags:
 - iOS
 - Android
 - JSONStore
+- non-MFPF
 author:
   name: Nana Amfo
 ---
@@ -12,7 +13,7 @@ author:
 
 
 # Overview 
-JSONStore is a lightweight , document-oriented storage system that enables persistent storage of JSON documents for Android applications. Recently, this framework has been released as an open source framework. IBM MobileFirst Platform Foundation provides libraries that allow to enable security features such as encryption and FIPS support in JSONStore. By the end of this blog you will have a JSONStore framework that is secured for your project.
+JSONStore is a lightweight, document-oriented storage system that enables persistent storage of JSON documents for Android applications. Recently, this framework has been released as an open source framework. IBM MobileFirst Platform Foundation provides libraries that allow to enable security features such as encryption and FIPS support in JSONStore. By the end of this blog you will have a JSONStore framework that is secured for your project. This version of JSONStore is not supported for MobileFirst Platform Foundation v8.
 
 ## Android applications
 
