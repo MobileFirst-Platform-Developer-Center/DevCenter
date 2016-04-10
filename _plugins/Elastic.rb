@@ -1,5 +1,5 @@
-require 'pry'
-require 'pry-byebug'
+# require 'pry'
+# require 'pry-byebug'
 require 'json'
 require 'digest/md5'
 module Jekyll
@@ -28,10 +28,11 @@ module Jekyll
       site.posts.docs.each do |document|
         # get all the meta data
         element = document.data
+        element["hash"] = Digest::MD5.hexdigest(document.url)
+        element["url"] = document.url
         # get the cleaned up content
         element["content"] = document.content.gsub(/<\/?[^>]*>/, "")
-        #element["hash"] = document.url.hash
-        element["hash"] = Digest::MD5.hexdigest(document.url)
+
 
         # create the index object
         index = {}
@@ -49,10 +50,10 @@ module Jekyll
         if(document["indexed"])
           # get all the meta data
           element = document.data
+          element["hash"] = Digest::MD5.hexdigest(document.url)
+          element["url"] = document.url
           # get the cleaned up content
           element["content"] = document.content.gsub(/<\/?[^>]*>/, "")
-          # element["hash"] = document.url.hash
-          element["hash"] = Digest::MD5.hexdigest(document.url)
 
           # insert version number
           if document.url.include? "/6.3/"
