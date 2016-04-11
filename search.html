@@ -11,6 +11,13 @@ custom_js:
     <a href="{{:url}}">{{:title}}</a><br/>
     <span>{{:summary}}</span><br/>
     <span class="label label-info">{{:type}}</span>
+    {{if version}}<span class="label label-info">{{:version}}</span>{{/if}}
+    {{for relevantTo}}
+      <span class="videoTag label label-info">{{:#data}}</span>
+    {{/for}}
+    {{for tags}}
+      <span class="videoTag label label-info">{{:#data}}</span>
+    {{/for}}
 </div>
 {% endraw %}
 </script>
