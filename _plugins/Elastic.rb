@@ -28,6 +28,7 @@ module Jekyll
       site.posts.docs.each do |document|
         # get all the meta data
         element = document.data
+        element.delete("excerpt")
         element["hash"] = Digest::MD5.hexdigest(document.url)
         element["url"] = document.url
         element["type"] = "blog"
