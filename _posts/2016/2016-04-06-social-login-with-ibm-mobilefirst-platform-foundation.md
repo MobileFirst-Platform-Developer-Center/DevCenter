@@ -1,5 +1,5 @@
 ---
-title: Implementing social Login Authentication with IBM MobileFirst Platform Foundation 8.0 Beta
+title: Implementing Social Login Authentication with IBM MobileFirst Platform Foundation 8.0 Beta
 date: 2016-04-06
 tags:
 - MobileFirst_Platform
