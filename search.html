@@ -1,10 +1,26 @@
 ---
 title: Search
 layout: default
+custom_js:
+  - lib/elasticsearch-js/elasticsearch.jquery.js
+  - js/search.js
 ---
-<script src='{{site.baseurl}}/lib/elasticsearch-js/elasticsearch.jquery.js' type="text/javascript"></script>
-<script>
-var client = new $.es.Client({
-  hosts: 'localhost:9200'
-});;
+<script id="searchResultTemplate" type="text/x-jsrender">
+{% raw %}
+<div class="searchResult">
+    <a href="{{:url}}">{{:title}}</a>
+</div>
+{% endraw %}
 </script>
+<div class="container search">
+  <h2>Search Results <small id="queryTerm"></small></h2>
+  <p>
+    <strong>Make another search:</strong>
+    <form role="search" action="{{site.baseurl}}/search/" method="get">
+      <input id="pnext-search-input" type="text" class="form-control" placeholder="Search for..." name="q">
+    </form>
+  </p>
+  <div id="searchResults">
+
+  </div>
+</div>
