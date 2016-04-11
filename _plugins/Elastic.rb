@@ -21,6 +21,8 @@ module Jekyll
     safe true
 
     def generate(site)
+      return unless site.config['elastic']
+
       # build an array of each lines I want to print
       lines = []
 
