@@ -97,7 +97,7 @@ Use the `MFP.Server.getPropertyValue(propertyName)` API to retrieve properties d
 ```js
 MFP.Server.getPropertyValue("name");
 ```
-
+{% comment %}
 ### getTokenIntrospectionData
 
 Use the `MFP.Server.getTokenIntrospectionData()` API to
@@ -107,6 +107,7 @@ To get the current `AuthenticatedUser` use:
 ```js
 var currentUser = MFP.Server.getTokenIntrospectionData()......
 ```
+{% endcomment %}
 
 ### getAdapterName
 Use the `getAdapterName()` API to retrieve the adapter name.
