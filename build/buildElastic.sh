@@ -21,4 +21,4 @@ rm -rf _site/*
 bundle exec jekyll build --config _config.yml,build/_configElastic.yml -d _site --profile
 rm -f _site/*.log
 
-curl -u admin:admin -XPOST 'mfpsearch.mybluemix.net:9200/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic/index.json"
+curl -u admin:admin -XPOST 'mfpsearch.mybluemix.net/dev_center/_bulk?pretty' --data-binary "@_site/js/data/elastic/index.json"
