@@ -30,8 +30,10 @@ module Jekyll
         element = document.data
         element["hash"] = Digest::MD5.hexdigest(document.url)
         element["url"] = document.url
+        element["type"] = "blog"
         # get the cleaned up content
         element["content"] = document.content.gsub(/<\/?[^>]*>/, "")
+        element["summary"] = element["content"][0,400]
 
 
         # create the index object
@@ -52,8 +54,10 @@ module Jekyll
           element = document.data
           element["hash"] = Digest::MD5.hexdigest(document.url)
           element["url"] = document.url
+          element["type"] = document["category"]
           # get the cleaned up content
           element["content"] = document.content.gsub(/<\/?[^>]*>/, "")
+          element["summary"] = element["content"][0,400]
 
           # insert version number
           if document.url.include? "/6.3/"

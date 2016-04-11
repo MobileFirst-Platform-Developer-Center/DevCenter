@@ -8,14 +8,15 @@ custom_js:
 <script id="searchResultTemplate" type="text/x-jsrender">
 {% raw %}
 <div class="searchResult">
-    <a href="{{:url}}">{{:title}}</a>
+    <a href="{{:url}}">{{:title}}</a><br/>
+    <span>{{:summary}}</span><br/>
+    <span class="label label-info">{{:type}}</span>
 </div>
 {% endraw %}
 </script>
 <div class="container search">
   <h2>Search Results <small id="queryTerm"></small></h2>
   <p>
-    <strong>Make another search:</strong>
     <form role="search" action="{{site.baseurl}}/search/" method="get">
       <input id="pnext-search-input" type="text" class="form-control" placeholder="Search for..." name="q">
     </form>
@@ -23,4 +24,19 @@ custom_js:
   <div id="searchResults">
 
   </div>
+  <!-- Pagination links -->
+  <nav>
+    <ul class="pagination">
+      <li id="searchPreviousBtn" class="disabled">
+        <a aria-label="Previous" >
+          <span aria-hidden="true">Previous</span>
+        </a>
+      </li>
+      <li id="searchNextBtn" >
+        <a aria-label="Next">
+          <span aria-hidden="true">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
