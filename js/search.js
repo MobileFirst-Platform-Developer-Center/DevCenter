@@ -53,7 +53,7 @@ var MFPSEARCH = {
   },
   init: function(){
     this.client = new $.es.Client({
-      hosts: 'localhost:9200'
+      hosts: 'mfpsearch.mybluemix.net'
     });
     this.queryTerm = this.getParameterByName('q');
     if(this.queryTerm !== null){
