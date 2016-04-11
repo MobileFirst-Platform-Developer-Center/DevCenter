@@ -28,21 +28,20 @@ module Jekyll
       site.posts.docs.each do |document|
         # get all the meta data
         element = document.data
-        element.delete("excerpt")
-        element["hash"] = Digest::MD5.hexdigest(document.url)
-        element["url"] = document.url
-        element["type"] = "blog"
+        element.delete('excerpt')
+        element['hash'] = Digest::MD5.hexdigest(document.url)
+        element['url'] = document.url
+        element['type'] = 'blog'
         # get the cleaned up content
-        element["content"] = document.content.gsub(/<\/?[^>]*>/, "")
-        element["content"] = element["content"].gsub("#", "")
-        element["summary"] = element["content"][0,400]
-
+        element['content'] = document.content.gsub(/<\/?[^>]*>/, '')
+        element['content'] = element['content'].delete('#')
+        element['summary'] = element['content'][0, 400]
 
         # create the index object
         index = {}
-        index["index"] = {}
-        index["index"]["_id"] = element["hash"]
-        index["index"]["_type"] = "blog"
+        index['index'] = {}
+        index['index']['_id'] = element['hash']
+        index['index']['_type'] = 'blog'
         lines.push(index.to_json)
 
         # add it to the array
@@ -51,43 +50,42 @@ module Jekyll
 
       # loop over pages
       site.pages.each do |document|
-        if(document["indexed"])
-          # get all the meta data
-          element = document.data
-          element["hash"] = Digest::MD5.hexdigest(document.url)
-          element["url"] = document.url
-          element["type"] = document["category"]
-          # get the cleaned up content
-          element["content"] = document.content.gsub(/<\/?[^>]*>/, "")
-          element["content"] = element["content"].gsub("#", "")
-          element["summary"] = element["content"][0,400]
+        next unless document['indexed']
+        # get all the meta data
+        element = document.data
+        element['hash'] = Digest::MD5.hexdigest(document.url)
+        element['url'] = document.url
+        element['type'] = document['category']
+        # get the cleaned up content
+        element['content'] = document.content.gsub(/<\/?[^>]*>/, '')
+        element['content'] = element['content'].delete('#')
+        element['summary'] = element['content'][0, 400]
 
-          # insert version number
-          if document.url.include? "/6.3/"
-            element["version"] = "6.3"
-          elsif document.url.include? "/7.0/"
-            element["version"] = "7.0"
-          elsif document.url.include? "/7.1/"
-            element["version"] = "7.1"
-          elsif document.url.include? "/8.0/"
-            element["version"] = "8.0"
-          end
-
-          # create the index object
-          index = {}
-          index["index"] = {}
-          index["index"]["_id"] = element["hash"]
-          index["index"]["_type"] = document["category"]
-          lines.push(index.to_json)
-
-          # add it to the array
-          lines.push(element.to_json)
-          # binding.pry
+        # insert version number
+        if document.url.include? '/6.3/'
+          element['version'] = '6.3'
+        elsif document.url.include? '/7.0/'
+          element['version'] = '7.0'
+        elsif document.url.include? '/7.1/'
+          element['version'] = '7.1'
+        elsif document.url.include? '/8.0/'
+          element['version'] = '8.0'
         end
+
+        # create the index object
+        index = {}
+        index['index'] = {}
+        index['index']['_id'] = element['hash']
+        index['index']['_type'] = document['category']
+        lines.push(index.to_json)
+
+        # add it to the array
+        lines.push(element.to_json)
+        # binding.pry
       end
 
       site.pages << ElasticIndex.new(site, site.source, File.join('js/data/elastic'), lines)
-      #binding.pry
+      # binding.pry
     end
   end
 end
