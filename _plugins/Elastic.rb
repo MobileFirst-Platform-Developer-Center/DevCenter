@@ -33,6 +33,7 @@ module Jekyll
         element["type"] = "blog"
         # get the cleaned up content
         element["content"] = document.content.gsub(/<\/?[^>]*>/, "")
+        element["content"] = element["content"].gsub("#", "")
         element["summary"] = element["content"][0,400]
 
 
@@ -57,6 +58,7 @@ module Jekyll
           element["type"] = document["category"]
           # get the cleaned up content
           element["content"] = document.content.gsub(/<\/?[^>]*>/, "")
+          element["content"] = element["content"].gsub("#", "")
           element["summary"] = element["content"][0,400]
 
           # insert version number
@@ -79,7 +81,7 @@ module Jekyll
 
           # add it to the array
           lines.push(element.to_json)
-          #binding.pry
+          # binding.pry
         end
       end
 

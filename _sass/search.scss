@@ -3,7 +3,10 @@
     .searchResult {
       margin-bottom: 20px;
       a {
-        font-weight: bold;
+        font-size: 110%;
+      }
+      .summary {
+        color: gray;
       }
     }
   }

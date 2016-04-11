@@ -19,6 +19,7 @@ var MFPSEARCH = {
     this.client.search(this.params).then(function(body){
       console.log(body);
       _this.total = body.hits.total;
+      $('#queryTerm').html(_this.queryTerm + " - " + _this.total + " results");
       var searchResultTemplate = $.templates("#searchResultTemplate");
       $('#searchResults').html('');
       $('html,body').scrollTop(0);
@@ -56,7 +57,6 @@ var MFPSEARCH = {
     });
     this.queryTerm = this.getParameterByName('q');
     if(this.queryTerm !== null){
-      $('#queryTerm').html(this.queryTerm);
       this.params = {q: this.queryTerm};
       this.executeSearch();
       _this = this;

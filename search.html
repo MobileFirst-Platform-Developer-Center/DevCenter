@@ -9,15 +9,16 @@ custom_js:
 {% raw %}
 <div class="searchResult">
     <a href="{{:url}}">{{:title}}</a><br/>
-    <span>{{:summary}}</span><br/>
     <span class="label label-info">{{:type}}</span>
-    {{if version}}<span class="label label-info">{{:version}}</span>{{/if}}
+    {{if version}}<span class="label label-default">{{:version}}</span>{{/if}}
     {{for relevantTo}}
-      <span class="videoTag label label-info">{{:#data}}</span>
+      <span class="videoTag label label-default">{{:#data}}</span>
     {{/for}}
     {{for tags}}
-      <span class="videoTag label label-info">{{:#data}}</span>
+      <span class="videoTag label label-default">{{:#data}}</span>
     {{/for}}
+    <br/>
+    <span class="summary">{{:summary}}</span>
 </div>
 {% endraw %}
 </script>
