@@ -33,7 +33,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Grad
 Follow the below instructions to add the MobileFirst Native SDK to either a new or existing Android Studio project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
+If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### Creating an Android application
 Create an Android Studio project or use an existing one.  

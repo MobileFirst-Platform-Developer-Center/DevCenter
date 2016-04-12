@@ -32,7 +32,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Nuge
 Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Visual Studio project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or  `start.cmd` in Windows.
+If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.cmd`.
 
 ### Creating an application
 Create a Windows 8.1 Universal or Windows 10 UWP project using Visual Studio 2013/2015 or use an existing project.  

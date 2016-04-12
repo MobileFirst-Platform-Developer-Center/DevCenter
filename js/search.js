@@ -1,3 +1,31 @@
+
+// SPIN.JS 
+var opts = {
+  lines: 13,
+  length: 28, 
+  width: 14, 
+  radius: 42, 
+  scale: 1, 
+  corners: 1, 
+  color: '#000', 
+  opacity: 0.20, 
+  rotate: 0, 
+  direction: 1, 
+  speed: 1.0, 
+  trail: 70, 
+  fps: 20, 
+  zIndex: 2e9, 
+  className: 'spin', 
+  top: '35%', 
+  left: '50%', 
+  shadow: false, 
+  hwaccel: false, 
+  position: 'absolute'
+};
+
+var target = document.getElementById('searchResults');
+var spinner = new Spinner(opts);
+
 var MFPSEARCH = {
   client: null,
   queryTerm: null,
@@ -39,6 +67,7 @@ var MFPSEARCH = {
       else{
         $('#searchNextBtn').removeClass('disabled');
       }
+      spinner.stop();
     });
   },
   nextPage: function(){
@@ -52,6 +81,7 @@ var MFPSEARCH = {
     this.executeSearch();
   },
   init: function(){
+    spinner.spin(target);    
     this.client = new $.es.Client({
       protocol: 'https',
       hosts: 'mfpsearch.mybluemix.net'
@@ -68,5 +98,5 @@ var MFPSEARCH = {
 };
 
 $(function() {
-  MFPSEARCH.init();
-});
+   MFPSEARCH.init();
+ });
