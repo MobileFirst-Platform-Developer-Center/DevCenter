@@ -15,9 +15,9 @@ custom_js:
             {% include breadcrumb.html %} {% if page.downloads %}
             <div class="downloadButtons hidden-xs">
                 {% for download in page.downloads %}
-                  <a href="{{download.url}}">
-                      <button class="download-button"><span class="glyphicon glyphicon-cloud-download"></span>
-                      {{download.name}}</button>
+                  <a class="download-button" href="{{download.url}}">
+                      <span class="glyphicon glyphicon-cloud-download"></span>
+                      {{download.name}}
                   </a>
                 {% endfor %}
             </div>
