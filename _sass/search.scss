@@ -11,3 +11,15 @@
     }
   }
 }
+
+.container.search {
+    .btn {
+        background-color: white;
+        &:focus, &:hover {
+            color: black;
+        }
+    }
+    .input-group-btn:last-child > .btn {
+        height: 34px;
+    }
+}

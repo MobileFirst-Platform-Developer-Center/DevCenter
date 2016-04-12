@@ -98,5 +98,9 @@ var MFPSEARCH = {
 };
 
 $(function() {
-   MFPSEARCH.init();
- });
+    MFPSEARCH.init();
+    $('#document-type').multiselect({nonSelectedText:"Document type"});
+    $('#platforms').multiselect({nonSelectedText:"Platforms"});
+    $('#versions').multiselect({nonSelectedText:"Versions"});
+});
+
