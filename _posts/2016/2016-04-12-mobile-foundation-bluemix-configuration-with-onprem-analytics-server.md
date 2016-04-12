@@ -1,16 +1,17 @@
----
-title: Steps to configure Mobile Foundation to connect to on-premises Analytics server.
+ ---
+title: Steps to configure Mobile Foundation Service to connect to on-premises Analytics server.
+
 date: 2016-04-12
-pinned: true
+
 tags:
 - MobileFirst_Platform
 - Bluemix
 author: Sumant Kulkarni
 name:
 ---
-This blog talks about configuring MobileFirst server running in Bluemix to connect to an analytics server running on-premises.
+This blog talks about configuring MobileFirst Server running in Bluemix to connect to an analytics server running on-premises.
 
-The Mobile Foundation service on Bluemix allows you to deploy and run your MobileFirst projects on the Bluemix environment. It is a common scenario that the MobileFirst projects would need to access the resources that are running in the enterprise system within your corporate network. In this case, MobileFirst Analytics server is residing in the enterprise system to which the MobileFirst server on the Bluemix should be configured to report the analytics data.
+The Mobile Foundation service on Bluemix allows you to deploy and run your MobileFirst-based applications on the Bluemix environment. It is a common scenario that the MobileFirst projects would need to access the resources that are running in the enterprise system within your corporate network. In this case, MobileFirst Analytics server is residing in the enterprise system to which the MobileFirst Server on the Bluemix should be configured to report the analytics data.
 
 To establish the connectivity between the MobileFirst Server on Bluemix and the enterprise system,  you will configure the IBM Virtual Private Network (VPN) service to setup a virtual network. The VPN service on Bluemix is built on IPSec security standards and provides a secure communication channel between your data center and the resources running in the IBM Containers. In other words VPN is used as gateway between MFP Server and the analytics server which is sitting behind the enterprise firewall.
 
@@ -18,7 +19,7 @@ Below is the architecture of a typical setup :
 
 ![MFP Bluemix with on-premises analytics server ]({{site.baseurl}}/assets/blog/2016-04-12-mobile-foundation-bluemix-configuration-with-onprem-analytics-server/MFPwithAnalytics.png)
 
-The following steps are to be performed in order to configure your analytics server which is on-premises with the Mobilefirst server on Bluemix.
+The following steps are to be performed in order to configure your analytics server which is on-premises with the Mobilefirst Server on Bluemix.
 
 1.  Create an instance of analytics server on on-premises machine.
 
@@ -26,7 +27,7 @@ The following steps are to be performed in order to configure your analytics ser
 
 3. Install a suitable IPSec compliant VPN client on your on-premises gateway machine. You would then need to configure the VPN client on the on-premises gateway to connect with the VPN service on Bluemix. Make sure that the data center running the analytics service is reachable from the VPN gateway machine using the private network. It should be in the same subnet as gateway machine.
 
-4. Create an instance of MobileFirst server on Bluemix using Mobile Foundation
+4. Create an instance of MobileFirst Server on Bluemix using Mobile Foundation
  service offering and configure the details of the analytics server.
 
  ## Configuring the VPN service
@@ -89,12 +90,12 @@ After performing the above steps, the analytics server in the enterprise network
 
 ```
 
-Click on “Start Advanced Server” option to create a MobileFirst server.
+Click on “Start Advanced Server” option to create a MobileFirst Server.
 
 
-This should be create you a MobileFirst server instance with analytics server configured.
+This should be create you a MobileFirst Server instance with analytics server configured.
 
 You can login to the Operations console and ensure that it is accessible.
 
 
-The configuration of on-premises analytics server to the MobileFirst server on Bluemix can be verified by adding sample adapter or by registering app on MFP server and checking the analytics data on the analytics server.
+The configuration of on-premises analytics server to the MobileFirst Server on Bluemix can be verified by adding sample adapter or by registering app on MFP server and checking the analytics data on the analytics server.
