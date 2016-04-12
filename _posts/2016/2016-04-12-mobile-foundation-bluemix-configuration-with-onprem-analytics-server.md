@@ -5,6 +5,7 @@ date: 2016-04-12
 
 tags:
 - MobileFirst_Platform
+- Mobile_Foundation
 - Bluemix
 author: Sumant Kulkarni
 name:
