@@ -1,14 +1,11 @@
- ---
+---
 title: Steps to configure Mobile Foundation Service to connect to on-premises Analytics server.
-
 date: 2016-04-12
-
 tags:
 - MobileFirst_Platform
 - Mobile_Foundation
 - Bluemix
 author: Sumant Kulkarni
-name:
 ---
 This blog talks about configuring MobileFirst Server running in Bluemix to connect to an analytics server running on-premises.
 
@@ -31,24 +28,20 @@ The following steps are to be performed in order to configure your analytics ser
 4. Create an instance of MobileFirst Server on Bluemix using Mobile Foundation
  service offering and configure the details of the analytics server.
 
- ## Configuring the VPN service
+## Configuring the VPN service
 
+1. Create an instance of the VPN service. You can create the service instance by selecting the VPN service option under the Network category of the Bluemix catalog.
 
-1.  Create an instance of the VPN service. You can create the service instance by selecting the VPN service option under the Network category of the Bluemix catalog.
+2. Open the VPN service console to configure the service. Firstly, create a VPN Gateway. Once the VPN Gateway is created, you can configure the VPN service to allow enterprise access for either Single Containers or Container Groups or both in the space.
 
-2.  Open the VPN service console to configure the service. Firstly, create a VPN Gateway. Once the VPN Gateway is created, you can configure the VPN service to allow enterprise access for either Single Containers or Container Groups or both in the space.
+3. Make a note of the IBM Gateway IP that will be created. This will be used in the later steps.
 
-3.  Make a note of the IBM Gateway IP that will be created. This will be used in the later steps.
-
-4.  Next, create a VPN Site Connection. You should populate the following properties:
-        1.  Name : A name for the site connection
-
-        2.  Description : (Optional) A description of the site connection
-            Preshared Key String : A secret key that will be used for authentication during connection setup.
-
-        3.  Customer Subnet : The subnet address of the enterprise network to  which the VPN service enables access to. The value should be in the CIDR format.
-
-        4.  Customer Gateway IP : The IP Address of the Gateway machine in your enterprise. This will be the machine where the VPN client will be installed in the next steps.
+4. Next, create a VPN Site Connection. You should populate the following properties:
+    1. Name: A name for the site connection
+    2. Description: (Optional) A description of the site connection
+       Preshared Key String: A secret key that will be used for authentication during connection setup.
+    3. Customer Subnet: The subnet address of the enterprise network to  which the VPN service enables access to. The value should be in the CIDR format.
+    4. Customer Gateway IP: The IP Address of the Gateway machine in your enterprise. This will be the machine where the VPN client will be installed in the next steps.
 
 ## Configuring the on-premises Gateway machine
 
@@ -83,20 +76,17 @@ After performing the above steps, the analytics server in the enterprise network
 
 5. Add the following properties with suitable values which corresponds to the analytics server.
 
-```
-<jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.url" value="http://10.162.22.162:9080/analytics-service/rest/data"/>
-<jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.console.url" value="http://10.162.22.162:9080/analytics/console"/>
-<jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.username" value="admin"/>
-<jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.password" value="admin"/>
+    ```
+    <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.url" value="http://10.162.22.162:9080/analytics-service/rest/data"/>
+    <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.console.url" value="http://10.162.22.162:9080/analytics/console"/>
+    <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.username" value="admin"/>
+    <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.password" value="admin"/>
 
-```
+    ```
 
-Click on “Start Advanced Server” option to create a MobileFirst Server.
+6. Click on “Start Advanced Server” option to create a MobileFirst Server.
 
-
-This should be create you a MobileFirst Server instance with analytics server configured.
-
+This should be create you a MobileFirst Server instance with analytics server configured.  
 You can login to the Operations console and ensure that it is accessible.
-
 
 The configuration of on-premises analytics server to the MobileFirst Server on Bluemix can be verified by adding sample adapter or by registering app on MFP server and checking the analytics data on the analytics server.
