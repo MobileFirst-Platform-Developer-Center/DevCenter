@@ -17,12 +17,13 @@ This blog continues to my previous blog about [Social Login]({{site.baseurl}}/bl
 
 Imagine that you run a campaign for some new product in your app, and you need to target users by age and gender.  Assuming that you have the user's profile picture from the social login, you can use cognitive API to help you better identify your customers and improve the promotion of  your product.  Actually, if the user profile picture contains his real face you can analyze it with some cognitive API and know his estimated age and his gender.  More than that if the user gives you permissions to get his feeds, then you can analyze his tone or his personality with a cognitive API.  
 
-All of these APIs are available in [Watson](http://www.ibm.com/smarterplanet/us/en/ibmwatson/).  In my demo, I used three services from Watson to analyze some data from my Facebook account.  Those services in based on [machine learning](https://www.wikiwand.com/en/Machine_learning), and indeed very accurate:  
+All of these APIs are available in [Watson](http://www.ibm.com/smarterplanet/us/en/ibmwatson/).  In my demo, I used three services from Watson to analyze some data from my Facebook account.  Those services is based on [machine learning](https://www.wikiwand.com/en/Machine_learning), and indeed very accurate:  
 
 1. [Alchemy Vision API](http://www.alchemyapi.com/products/alchemyvision) - This service lets you analyze the image and gets some data from it. For instance, if the picture recognized as a person then you will able to get the age and gender.  
 ![login flow]({{site.baseurl}}/assets/blog/2016-04-12-leverage-the-social-login/AlchemyVisionAPI.png)
 2. [Personality Insight](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html) - Uncover a deeper understanding of people's personality characteristics, needs, and values to drive personalization
-3. [Tone analyze](https://tone-analyzer-demo.mybluemix.net/) - This service enables people to discover and understand and revise the impact of tone in their content. It uses linguistic analysis to detect and interpret emotional, social, and language cues found in the text.
+3. [Tone analyze](https://tone-analyzer-demo.mybluemix.net/) - This service enables people to discover and understand and revise the impact of tone in their content. It uses linguistic analysis to detect and interpret emotional, social, and language cues found in the text.  
+
 This blog post is taking into consideration that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication , Security Checks, and Adapters, if not please refer to [the Authentication and Security tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/) and to the [Java Adapters tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/java-adapters/).
 
 ## See in action
@@ -42,7 +43,7 @@ I will separate it into two diagrams so each will focus on one flow:
 ![OAuth token generation flow]({{site.baseurl}}/assets/blog/2016-04-12-leverage-the-social-login/token-flow.jpg)  
 
 1. User clicks on the *ANALYZE MY FACEBOOK* button.   
-2. The Client SDK sends resource request to a Protected REST Adapter */analyze*, the adapter is protected with *socialLogin* OAuth scope.  
+2. The Client SDK sends resource request to a protected REST Adapter */analyze*, the adapter is protected with *socialLogin* OAuth scope.  
 3. Since the adapter is protected the Authorization server API check it for valid OAuth token.  
 4. The Authorization server API does not find any valid token with OAuth scope *socialLogin*.  
 5. The response is then returned to the app with unauthorized status.  
