@@ -1,5 +1,5 @@
 ---
-title: Leverage The Social Login On IBM MobileFirst Platform Foundation 8.0
+title: Leverage Social Login In IBM MobileFirst Platform Foundation 8.0
 date: 2016-04-12
 version:
 - 8.0
@@ -65,10 +65,10 @@ I will separate it into two diagrams so each will focus on one flow:
 4. Adapter meshes the data and returns JSON response to the client with the analysis.
 5. App displaying the results.
 
-## Some insights I have about of working with Java adapter
+## Some insights I have about working with Java Adapters
 
 ## Configuration
-Adapter configuration in console is great since you can change them with redeploying the adapter, and the changes affect immediately.
+Adapter configuration in console is great since you can change them without redeploying the adapter, and the changes affect immediately.
 ![Configuration in console]({{site.baseurl}}/assets/blog/2016-04-12-leverage-the-social-login/Configuration.png)  
 Adding configuration is easy with the Java adapter.
 In the code sample I used configuration to maintain the credentials for the Watson services:
