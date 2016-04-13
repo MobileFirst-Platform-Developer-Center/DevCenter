@@ -24,7 +24,7 @@ All of these APIs are available in [Watson](http://www.ibm.com/smarterplanet/us/
 2. [Personality Insight](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html) - Uncover a deeper understanding of people's personality characteristics, needs, and values to drive personalization
 3. [Tone analyze](https://tone-analyzer-demo.mybluemix.net/) - This service enables people to discover and understand and revise the impact of tone in their content. It uses linguistic analysis to detect and interpret emotional, social, and language cues found in the text.  
 
-This blog post is taking into consideration that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication , Security Checks, and Adapters, if not please refer to [the Authentication and Security tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/) and to the [Java Adapters tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/java-adapters/).
+This blog post is taking into consideration that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication, Security Checks and Adapters. if not please refer to [the Authentication and Security tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/) and to the [Java Adapters tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/java-adapters/).
 
 ## See in action
 Here is short YouTube demo movie which shows an app which analyzing some data from my personal Facebook account.  Since I'm not native English speaker and most of my posts are not written in English, in the demo I explicitly add text to influence the results.
