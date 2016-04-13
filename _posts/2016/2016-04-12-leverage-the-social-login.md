@@ -73,20 +73,20 @@ Adapter configuration in console is great since you can change them with redeplo
 Adding configuration is easy with the Java adapter.
 In the code sample I used configuration to maintain the credentials for the Watson services:
 
-1. In your adapter.xml you just need to add your properties like the following:  
+* In your adapter.xml you just need to add your properties like the following:  
 
 ```xml
-  <property name="alchemyAPIKey" defaultValue="[Put here your AlchemyAPI Key]" description="See http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/alchemy-language.html"/>
+<property name="alchemyAPIKey" defaultValue="[Put here your AlchemyAPI Key]" description="See http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/alchemy-language.html"/>
 ```
 
-2. then in the adapter to get the property you just need to inject the ConfigurationAPI as follow
+* then in the adapter to get the property you just need to inject the ConfigurationAPI as follow
 
 ```java
 @Context
-    ConfigurationAPI configApi;
+ConfigurationAPI configApi;
 ```
 
-3. And call it  
+* And call it  
 
 ```java
 configApi.getPropertyValue(ALCHEMY_API_KEY)
@@ -96,17 +96,17 @@ configApi.getPropertyValue(ALCHEMY_API_KEY)
 Integration with external services such [Warson Java SDK](https://github.com/watson-developer-cloud/java-sdk) is also easy.
 Now that the adapter is a [maven project](https://maven.apache.org/) adding such dependency is just couple of lines in the pom.xml:
 
-1. Just add dependency  
+* Just add dependency  
 
 ```xml
 <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>java-sdk</artifactId>
+      <groupId>com.ibm.watson.developer_cloud</groupId>
+      <artifactId>java-sdk</artifactId>
       <version>2.9.0</version>
 </dependency>
 ```
 
-2. And then use it in the adapter
+* And then use it in the adapter
 
 ```java
 private JSONArray getBig5(String feed) {
