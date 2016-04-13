@@ -1,6 +1,8 @@
 ---
 title: Leverage The Social Login On IBM MobileFirst Platform Foundation 8.0
 date: 2016-04-12
+version:
+- 8.0
 tags:
 - MobileFirst_Platform
 - Authentication
@@ -9,19 +11,19 @@ author:
   name: Ishai Borovoy
 ---
 ## Introduction
-This blog continues to my last blog about [Social Login](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/), it is recommended to read it first.   
+This blog continues to my previous blog about [Social Login]({{site.baseurl}}/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/), it is recommended to read it first.   
 
 [Social Login](https://www.wikiwand.com/en/Social_login) by itself is good and gives values to the app owners and users.  In addition, you can leverage the social login and get more value from it.  Facebook, for instance, let you queries their [Graph API](https://developers.facebook.com/docs/graph-api) to get things like user feeds, user friends, pictures. Some of the API requires additional permissions from the user, but sometimes basic info like profile picture is enough to from the app users.  
 
-Imagine that you run a campaign to some new product in your app, and you need to targeting users by age and gender.  Given that you have only the user's profile picture from the social login, there already of things you can get from it to promote your product by better understands who is your users with some help of cognitive API.  Actually, if the user profile picture contains his real face you can analyze it with some cognitive API and know his estimated age and his gender.  More than that if the user gives you permissions to get his feeds, then you can analyze his tone or his personality with a cognitive API.  
+Imagine that you run a campaign for some new product in your app, and you need to target users by age and gender.  Assuming that you have the user's profile picture from the social login, you can use cognitive API to help you better identify your customers and improve the promotion of  your product.  Actually, if the user profile picture contains his real face you can analyze it with some cognitive API and know his estimated age and his gender.  More than that if the user gives you permissions to get his feeds, then you can analyze his tone or his personality with a cognitive API.  
 
-All those APIs is available in [Watson](http://www.ibm.com/smarterplanet/us/en/ibmwatson/).  In my demo, I used three services from Watson to analyze some data from my Facebook account.  Those services in based on [machine learning](https://www.wikiwand.com/en/Machine_learning), and indeed very accurate:  
+All of these APIs are available in [Watson](http://www.ibm.com/smarterplanet/us/en/ibmwatson/).  In my demo, I used three services from Watson to analyze some data from my Facebook account.  Those services in based on [machine learning](https://www.wikiwand.com/en/Machine_learning), and indeed very accurate:  
 
 1. [Alchemy Vision API](http://www.alchemyapi.com/products/alchemyvision) - This service lets you analyze the image and gets some data from it. For instance, if the picture recognized as a person then you will able to get the age and gender.  
 ![login flow]({{site.baseurl}}/assets/blog/2016-04-12-leverage-the-social-login/AlchemyVisionAPI.png)
-2. [Personality Insight](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html) -  - Uncover a deeper understanding of people's personality characteristics, needs, and values to drive personalization
+2. [Personality Insight](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html) - Uncover a deeper understanding of people's personality characteristics, needs, and values to drive personalization
 3. [Tone analyze](https://tone-analyzer-demo.mybluemix.net/) - This service enables people to discover and understand and revise the impact of tone in their content. It uses linguistic analysis to detect and interpret emotional, social, and language cues found in the text.
-This blog post is taking into a consideration that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication , Security Checks, and Adapters, if not please refer to [the Authentication and Security tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/) and to the [Java Adapters tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/java-adapters/).
+This blog post is taking into consideration that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication , Security Checks, and Adapters, if not please refer to [the Authentication and Security tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/) and to the [Java Adapters tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/java-adapters/).
 
 ## See in action
 Here is short YouTube demo movie which shows an app which analyzing some data from my personal Facebook account.  Since I'm not native English speaker and most of my posts are not written in English, in the demo I explicitly add text to influence the results.
@@ -122,7 +124,7 @@ private JSONArray getBig5(String feed) {
     }
 ```
 ## Security
-I mention it also in the [Social Login blog](about [Social Login](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/)), but in the context of a resource adapter it means just adding Java annotation with the desired [OAuth](https://www.wikiwand.com/en/OAuth) scope:   
+I mention it also in the [Social Login blog](about [Social Login]({{site.baseurl}}/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/)), but in the context of a resource adapter it means just adding Java annotation with the desired [OAuth](https://www.wikiwand.com/en/OAuth) scope:   
 
 ```java
 @GET
