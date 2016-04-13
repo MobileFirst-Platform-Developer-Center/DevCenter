@@ -43,6 +43,7 @@ var MFPSEARCH = {
     },
     executeSearch: function() {
         spinner.spin(document.getElementById('searchResults'));
+        
         var _this = this;
         this.client.search(this.params).then(function(body) {
             console.log(body);
@@ -52,9 +53,18 @@ var MFPSEARCH = {
             var searchResultTemplate = $.templates("#searchResultTemplate");
             $('#searchResults').html('');
             $('html,body').scrollTop(0);
-            $.each(body.hits.hits, function(index, result) {
-                $('#searchResults').append(searchResultTemplate.render(result._source));
-            });
+            
+            if (_this.total > 0 ) {
+                $.each(body.hits.hits, function(index, result) {
+                    $('#searchResults').append(searchResultTemplate.render(result._source));
+                });
+                $('#searchNextBtn').show();
+                $('#searchPreviousBtn').show();
+            } else {
+                $('#searchResults').html('No results were found. Try refining your search.');
+                $('#searchNextBtn').hide();
+                $('#searchPreviousBtn').hide();
+            }
             if (_this.from > 0) {
                 $('#searchPreviousBtn').removeClass('disabled');
             } else {
