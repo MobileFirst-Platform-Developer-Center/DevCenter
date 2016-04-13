@@ -5,7 +5,9 @@ tags:
 - MobileFirst_Platform
 - iOS
 - SimpleCaptcha
-- Console samples
+- Security_Checks
+verion:
+- 8.0
 author:
   name: Ore Poran
 ---
@@ -15,6 +17,12 @@ In this blog post I will demonstrate an Objective-C implementation for the "Simp
 The security check can be downloaded from the MobileFirst Platform 8.0 Beta Operations Console → Get Starter Code screen.    
 
 The end result will be: the SimpleCaptcha security check deployed on your server, and an application which is able to request an access token with the `SimpleCaptcha` scope, handle the challenge, delegate it to the user, and eventually obtain the token.
+
+***
+## Download the sample
+[Get the full sample on my github page](https://github.com/oreporan/iOS_SimpleCaptcha)
+***
+
 
 ##### Prerequisites
 * Understanding of [Adapters in v8.0](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/)
@@ -198,24 +206,24 @@ NSString *captchaMessage;
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-   [_equationLabel setText:captchaMessage];
+   [self.equationLabel setText:captchaMessage];
 }
 
 -(void) displayError {
-    _answerTextField.backgroundColor = [UIColor colorWithRed:0.93 green:0.31 blue:0.20 alpha:1.0];
+    self.answerTextField.backgroundColor = [UIColor colorWithRed:0.93 green:0.31 blue:0.20 alpha:1.0];
 }
 
 -(void) displayCaptcha:(NSString *)message {
     captchaMessage = message;
-    [_equationLabel setText:captchaMessage];
+    [self.equationLabel setText:captchaMessage];
 }
 
 - (IBAction)submit:(id)sender {
     NSString * textResult = _answerTextField.text;
     NSMutableDictionary * challengeAnswer = [[NSMutableDictionary alloc] init];
     [challengeAnswer setObject:textResult forKey:@"answer"];
-    if(_challengeHandler) {
-        [_challengeHandler submitChallengeAnswer:challengeAnswer];
+    if(self.challengeHandler) {
+        [self.challengeHandler submitChallengeAnswer:challengeAnswer];
     }
 }
 ...

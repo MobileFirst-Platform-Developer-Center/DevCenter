@@ -5,6 +5,8 @@ tags:
 - MobileFirst_Platform
 - Bluemix
 - Mobile_Foundation
+verion:
+- 8.0
 author:
   name: Ajay Chebbi
 ---
@@ -74,6 +76,8 @@ This configurations is the simplest one. The entire business logic can reside in
     
 The following video shows how to get a IBM MobileFirst Platform Server by using the Mobile Foundation service. You can then use the self-paced programming tutorials to explore the capabilities in detail.
 
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/E85hZZTnW2w"></iframe>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/E85hZZTnW2w"></iframe>
+    </div>
 </div>

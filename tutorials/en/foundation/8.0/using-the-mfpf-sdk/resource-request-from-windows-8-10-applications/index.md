@@ -56,7 +56,7 @@ Before sending your request, you may want to add parameters as needed.
 As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WorklightResourceRequest` object:
 
 ```cs
-URI adapterPath = new URI("/adapters/JavaAdapter/users/value1/value2",UriKind.Relative);
+Uri adapterPath = new Uri("/adapters/JavaAdapter/users/value1/value2",UriKind.Relative);
 WorklightResourceRequest request = WorklightClient.createInstance(adapterPath,"GET");
 ```
 

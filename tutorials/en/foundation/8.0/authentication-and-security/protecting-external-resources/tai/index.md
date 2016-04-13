@@ -10,7 +10,8 @@ downloads:
 ---
 
 ## Overview
-MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).  
+MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
+  
 The Java library is provided as a .jar file (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
 
 This tutorial will show how to protect a simple Java Servlet, `TAI/GetBalance`, using a scope (`accessRestricted`).
@@ -25,14 +26,30 @@ This tutorial will show how to protect a simple Java Servlet, `TAI/GetBalance`, 
 ## Server setup
 
 1. Obtain the Java library from Maven Central.  
+	Downloading the dependency via a pom:
+
+	```xml
+	<dependency>
+	  <groupId>com.ibm.mfp</groupId>
+	  <artifactId>mfp-oauth-tai</artifactId>
+	  <version>8.0.0</version>
+	  <classifier>tai</classifier>
+	  <type>zip</type>
+	</dependency>
+	```
+
+	Download directly from the Maven Central [here](http://search.maven.org/#search%7Cga%7C1%7Cibm%20mfp)
+
     If Internet connectivity is not available while developing, prepare to work offline:  
     1. Make sure you have first installed Apache Maven.
     2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
     3. Start the MobileFirst Server and load the MobileFirst Operations Console.
     4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
     5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
-<br/>
+
+
 2. Add the `com.ibm.mfp.oauth.tai-8.0.0.jar` file to the WebSphere application server inside **usr/extension/lib**.
+
 3. Add the `OAuthTai-8.0.mf` file to the WebSphere applicaiton server inside **usr/extension/lib/features**.
 
 ### web.xml setup

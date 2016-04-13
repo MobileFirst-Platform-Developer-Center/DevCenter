@@ -9,9 +9,7 @@ author:
 ---
 
 ## Overview
-
 In this tutorial we are learning what is a Content Delivery Network (CDN), what are the benefits, and how to instrument your Express JS application to indicate the CDN to cache the responses.
-
 
 * [What is a Content Delivery Network (CDN)?](#what-is-a-content-delivery-network-cdn)
 * [How does a CDN work?](#how-does-a-cdn-work)
@@ -22,13 +20,10 @@ In this tutorial we are learning what is a Content Delivery Network (CDN), what 
 * [Using IBM<sup>&reg;</sup> CDN in Bluemix](#using-ibm-reg-cdn-in-bluemix)
 * [Final Thoughts](#final-thoughts)
 
-
 ## What is a Content Delivery Network (CDN)?
-
 A Content Delivery Network (CDN) is a distributed series of proxy servers deployed across multiple data centers over the internet. The objective of a CDN is to provide high availability and performance to end-users by using techniques such as web caching, load balancing, and request routing.
 
 ## How does a CDN work?
-
 A CDN works by caching files (objects) and serving them directly instead of going to the origin server for every request. Because a CND takes into account the visitor's geolocation, the files are served by the closest server to the user to reduce latency.
 
 ### Typical CDN Request Flow

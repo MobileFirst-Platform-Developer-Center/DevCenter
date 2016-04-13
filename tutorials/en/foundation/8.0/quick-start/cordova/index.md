@@ -9,7 +9,7 @@ weight: 1
 The purpose of this demonstration is to experience an end-to-end flow:
 
 1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
-2. An new or provided adapter is deployed to the MobileFirst Operations Console.  
+2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
 3. The application logic is changed to make a resource request.
 
 **End result**:
@@ -37,7 +37,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 1. Click the **New** button next to **Applications**
     * Select a platform: **Android, iOS, Windows**
     * Enter **com.ibm.mfpstartercordova** as the **application identifier**
-    * Enter **1.0.0** as the **version** value
+    * Enter **1.0.0** as the **version** value for iOS and Windows, or **1.0** for Android
     * Click on **Register application**
 
     <img class="gifplayer" alt="Register an application" src="register-an-application-cordova.png"/>
@@ -77,7 +77,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
             },
 
             function(error) {
-                vtitleText.innerHTML = "Bummer...";
+                titleText.innerHTML = "Bummer...";
                 statusText.innerHTML = "Failed to connect to MobileFirst Server";
             }
         );

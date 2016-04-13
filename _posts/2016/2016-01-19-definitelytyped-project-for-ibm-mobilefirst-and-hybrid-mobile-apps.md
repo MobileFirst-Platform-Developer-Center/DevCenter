@@ -6,6 +6,8 @@ tags:
 - DefinitelyTyped
 - Cordova
 - Hybrid
+verion:
+- 7.1
 author:
   name: Raymond Camden
 ---
@@ -15,8 +17,10 @@ So with that in mind - I started working on a DefinitelyTyped file for MobileFir
 
 In case your curious as to how well this works, check out the video below:
 
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/watch?v=wre69RYbDnA"></iframe>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/watch?v=wre69RYbDnA"></iframe>
+    </div>
 </div>
 
 As a side note - you can get definition files for Apache Cordova and Ionic as well!

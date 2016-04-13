@@ -5,6 +5,8 @@ tags:
 - MobileFirst_Platform
 - Bluemix
 - IBM_Containers
+verion:
+- 7.1
 author:
   name: Krishna C Kumar
 ---
