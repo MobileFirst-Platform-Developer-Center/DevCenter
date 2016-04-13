@@ -5,7 +5,8 @@ tags:
 - MobileFirst_Platform
 - Mobile_Foundation
 - Bluemix
-author: Sumant Kulkarni
+author: 
+  name: Sumant Kulkarni
 ---
 This blog talks about configuring MobileFirst Server running in Bluemix to connect to an analytics server running on-premises.
 
