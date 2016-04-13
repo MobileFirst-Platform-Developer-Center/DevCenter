@@ -5,6 +5,8 @@ tags:
 - MobileFirst_Platform
 - Bluemix
 - Mobile_Foundation
+verion:
+- 8.0
 author:
   name: Idan Adar
 ---

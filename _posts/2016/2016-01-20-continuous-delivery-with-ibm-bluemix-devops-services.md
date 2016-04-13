@@ -6,6 +6,8 @@ tags:
 - IBM_Containers
 - Bluemix
 - DevOps
+verion:
+- 7.1
 author:
   name: Srinivasan Nanduri
 ---
@@ -23,7 +25,7 @@ The steps involved are as follows:
 ## Before you begin
 
 * Sign up for a [Bluemix account](https://hub.jazz.net/)
-* Download the [IBM MobileFirst Platform Foundation Evaluation on Containers v7.1 zip](http://www14.software.ibm.com/cgi-bin/weblap/lap.pl?popup=Y&amp;li_formnum=L-BVID-9XEQG7&amp;accepted_url=http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mfpfcontainers/ibm-mfpf-container-7.1.0.0-eval.zip) to your machine
+* Download the [IBM MobileFirst Platform Foundation Evaluation on Containers v7.1 zip](http://www14.software.ibm.com/cgi-bin/weblap/lap.pl?popup=Y&li_formnum=L-BVID-9XEQG7&accepted_url=http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mfpfcontainers/ibm-mfpf-container-7.1.0.0-eval.zip ) to your machine
 * Install [git](http://git-scm.com/downloads) to configure, change, sync and test locally
 
 ## The MobileFirst Platform Foundation Server Container

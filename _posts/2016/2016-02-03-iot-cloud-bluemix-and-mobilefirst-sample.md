@@ -5,6 +5,8 @@ tags:
 - MobileFirst_Platform
 - Bluemix
 - IoT
+verion:
+- 7.1
 author:
   name: Thomas Suedbroecker
 ---

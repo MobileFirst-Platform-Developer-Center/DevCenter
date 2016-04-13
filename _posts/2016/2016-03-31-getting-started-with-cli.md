@@ -6,6 +6,8 @@ tags:
 - Bluemix
 - CLI
 - Development
+verion:
+- 8.0
 author:
   name: Justin Berstler
 ---
