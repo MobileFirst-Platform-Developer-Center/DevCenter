@@ -83,7 +83,7 @@ In the code sample I used configuration to maintain the credentials for the Wats
 
 ```java
 @Context
-    ConfigurationAPI configApi;
+ConfigurationAPI configApi;
 ```
 
 3. And call it  
@@ -100,8 +100,8 @@ Now that the adapter is a [maven project](https://maven.apache.org/) adding such
 
 ```xml
 <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>java-sdk</artifactId>
+      <groupId>com.ibm.watson.developer_cloud</groupId>
+      <artifactId>java-sdk</artifactId>
       <version>2.9.0</version>
 </dependency>
 ```
