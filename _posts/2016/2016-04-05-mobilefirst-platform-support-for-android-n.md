@@ -1,5 +1,5 @@
 ---
-title: MobileFirst Platform Foundation V7.1 support for Android N
+title: MobileFirst Platform Foundation v7.1 support for Android N
 date: 2016-04-05
 tags:
 - MobileFirst_Platform
