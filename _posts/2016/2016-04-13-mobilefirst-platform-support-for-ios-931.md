@@ -4,6 +4,8 @@ date: 2016-04-13
 tags:
 - MobileFirst_Platform
 - iOS
+verion:
+- 7.1
 author:
   name: S.A.Norton Stanley
 ---

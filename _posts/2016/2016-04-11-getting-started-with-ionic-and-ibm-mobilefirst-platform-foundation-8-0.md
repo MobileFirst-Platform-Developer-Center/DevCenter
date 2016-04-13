@@ -8,6 +8,8 @@ tags:
 - Development
 - Ionic
 - Integration
+verion:
+- 8.0
 author:
   name: Carlos Santanta
 ---

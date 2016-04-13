@@ -5,6 +5,8 @@ tags:
 - MobileFirst_Platform
 - Ionic
 - Cordova
+verion:
+- 7.1
 author:
   name: Vidyasagar MSC
 ---
