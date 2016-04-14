@@ -6,7 +6,7 @@ def GetChildren(url, site)
   if !site['children']
     site['children'] = {}
   elsif site['children'] && site['children']["#{url}"]
-    return site['children'][url]
+    return site['children']["#{url}"]
   end
 
   # Array to be returned
