@@ -51,6 +51,6 @@ end
 Jekyll::Hooks.register :pages, :pre_render do |page, payload|
   # binding.pry
   next unless page.data['show_children']
-  page.data['children'] = GetChildren(page.url, payload['site'])
+  payload['page']['children'] = GetChildren(page.url, payload['site'])
   # binding.pry
 end
