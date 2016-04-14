@@ -1,5 +1,5 @@
 ---
-title: Leverage The Social Login On IBM MobileFirst Platform Foundation 8.0
+title: Leverage Social Login In IBM MobileFirst Platform Foundation 8.0 Beta
 date: 2016-04-12
 version:
 - 8.0
@@ -17,13 +17,14 @@ This blog continues to my previous blog about [Social Login]({{site.baseurl}}/bl
 
 Imagine that you run a campaign for some new product in your app, and you need to target users by age and gender.  Assuming that you have the user's profile picture from the social login, you can use cognitive API to help you better identify your customers and improve the promotion of  your product.  Actually, if the user profile picture contains his real face you can analyze it with some cognitive API and know his estimated age and his gender.  More than that if the user gives you permissions to get his feeds, then you can analyze his tone or his personality with a cognitive API.  
 
-All of these APIs are available in [Watson](http://www.ibm.com/smarterplanet/us/en/ibmwatson/).  In my demo, I used three services from Watson to analyze some data from my Facebook account.  Those services in based on [machine learning](https://www.wikiwand.com/en/Machine_learning), and indeed very accurate:  
+All of these APIs are available in [Watson](http://www.ibm.com/smarterplanet/us/en/ibmwatson/).  In my demo, I used three services from Watson to analyze some data from my Facebook account.  Those services is based on [machine learning](https://www.wikiwand.com/en/Machine_learning), and indeed very accurate:  
 
 1. [Alchemy Vision API](http://www.alchemyapi.com/products/alchemyvision) - This service lets you analyze the image and gets some data from it. For instance, if the picture recognized as a person then you will able to get the age and gender.  
 ![login flow]({{site.baseurl}}/assets/blog/2016-04-12-leverage-the-social-login/AlchemyVisionAPI.png)
 2. [Personality Insight](http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/personality-insights.html) - Uncover a deeper understanding of people's personality characteristics, needs, and values to drive personalization
-3. [Tone analyze](https://tone-analyzer-demo.mybluemix.net/) - This service enables people to discover and understand and revise the impact of tone in their content. It uses linguistic analysis to detect and interpret emotional, social, and language cues found in the text.
-This blog post is taking into consideration that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication , Security Checks, and Adapters, if not please refer to [the Authentication and Security tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/) and to the [Java Adapters tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/java-adapters/).
+3. [Tone analyze](https://tone-analyzer-demo.mybluemix.net/) - This service enables people to discover and understand and revise the impact of tone in their content. It uses linguistic analysis to detect and interpret emotional, social, and language cues found in the text.  
+
+This blog post is taking into consideration that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication, Security Checks and Adapters. if not please refer to [the Authentication and Security tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/) and to the [Java Adapters tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/java-adapters/).
 
 ## See in action
 Here is short YouTube demo movie which shows an app which analyzing some data from my personal Facebook account.  Since I'm not native English speaker and most of my posts are not written in English, in the demo I explicitly add text to influence the results.
@@ -42,7 +43,7 @@ I will separate it into two diagrams so each will focus on one flow:
 ![OAuth token generation flow]({{site.baseurl}}/assets/blog/2016-04-12-leverage-the-social-login/token-flow.jpg)  
 
 1. User clicks on the *ANALYZE MY FACEBOOK* button.   
-2. The Client SDK sends resource request to a Protected REST Adapter */analyze*, the adapter is protected with *socialLogin* OAuth scope.  
+2. The Client SDK sends resource request to a protected REST Adapter */analyze*, the adapter is protected with *socialLogin* OAuth scope.  
 3. Since the adapter is protected the Authorization server API check it for valid OAuth token.  
 4. The Authorization server API does not find any valid token with OAuth scope *socialLogin*.  
 5. The response is then returned to the app with unauthorized status.  
@@ -64,28 +65,28 @@ I will separate it into two diagrams so each will focus on one flow:
 4. Adapter meshes the data and returns JSON response to the client with the analysis.
 5. App displaying the results.
 
-## Some insights I have about of working with Java adapter
+## Some insights I have about working with Java Adapters
 
 ## Configuration
-Adapter configuration in console is great since you can change them with redeploying the adapter, and the changes affect immediately.
+Adapter configuration in console is great since you can change them without redeploying the adapter, and the changes affect immediately.
 ![Configuration in console]({{site.baseurl}}/assets/blog/2016-04-12-leverage-the-social-login/Configuration.png)  
 Adding configuration is easy with the Java adapter.
 In the code sample I used configuration to maintain the credentials for the Watson services:
 
-1. In your adapter.xml you just need to add your properties like the following:  
+* In your adapter.xml you just need to add your properties like the following:  
 
 ```xml
-  <property name="alchemyAPIKey" defaultValue="[Put here your AlchemyAPI Key]" description="See http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/alchemy-language.html"/>
+<property name="alchemyAPIKey" defaultValue="[Put here your AlchemyAPI Key]" description="See http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/alchemy-language.html"/>
 ```
 
-2. then in the adapter to get the property you just need to inject the ConfigurationAPI as follow
+* then in the adapter to get the property you just need to inject the ConfigurationAPI as follow
 
 ```java
 @Context
-    ConfigurationAPI configApi;
+ConfigurationAPI configApi;
 ```
 
-3. And call it  
+* And call it  
 
 ```java
 configApi.getPropertyValue(ALCHEMY_API_KEY)
@@ -95,17 +96,17 @@ configApi.getPropertyValue(ALCHEMY_API_KEY)
 Integration with external services such [Warson Java SDK](https://github.com/watson-developer-cloud/java-sdk) is also easy.
 Now that the adapter is a [maven project](https://maven.apache.org/) adding such dependency is just couple of lines in the pom.xml:
 
-1. Just add dependency  
+* Just add dependency  
 
 ```xml
 <dependency>
-            <groupId>com.ibm.watson.developer_cloud</groupId>
-            <artifactId>java-sdk</artifactId>
+      <groupId>com.ibm.watson.developer_cloud</groupId>
+      <artifactId>java-sdk</artifactId>
       <version>2.9.0</version>
 </dependency>
 ```
 
-2. And then use it in the adapter
+* And then use it in the adapter
 
 ```java
 private JSONArray getBig5(String feed) {

@@ -6,6 +6,8 @@ tags:
 - iOS
 verion:
 - 7.1
+- 7.0
+- 6.3
 author:
   name: S.A.Norton Stanley
 ---
