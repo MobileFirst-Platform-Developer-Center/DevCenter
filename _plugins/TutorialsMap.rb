@@ -53,7 +53,7 @@ def GetChildren(url, site)
 end
 
 Jekyll::Hooks.register :site, :pre_render do |site, payload|
-  payload["site"]["data"]["tutorials"] = GetChildren("/tutorials/", payload["site"])
+  payload["site"]["data"]["tutorials"] = GetChildren("/tutorials/", payload["site"].clone)
   # binding.pry
 
 end
