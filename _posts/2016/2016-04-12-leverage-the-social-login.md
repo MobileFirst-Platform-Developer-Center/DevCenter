@@ -125,7 +125,7 @@ private JSONArray getBig5(String feed) {
     }
 ```
 ## Security
-I mention it also in the [Social Login blog](about [Social Login]({{site.baseurl}}/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation/)), but in the context of a resource adapter it means just adding Java annotation with the desired [OAuth](https://www.wikiwand.com/en/OAuth) scope:   
+I mention it also in the [Social Login blog]({{site.baseurl}}/blog/2016/04/06/social-login-with-ibm-mobilefirst-platform-foundation), but in the context of a resource adapter it means just adding Java annotation with the desired [OAuth](https://www.wikiwand.com/en/OAuth) scope:   
 
 ```java
 @GET
