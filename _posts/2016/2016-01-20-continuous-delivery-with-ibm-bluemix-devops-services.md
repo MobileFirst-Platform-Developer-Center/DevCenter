@@ -6,7 +6,7 @@ tags:
 - IBM_Containers
 - Bluemix
 - DevOps
-verion:
+version:
 - 7.1
 author:
   name: Srinivasan Nanduri

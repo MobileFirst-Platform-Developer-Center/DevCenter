@@ -6,7 +6,7 @@ tags:
 - Authentication
 - Adapters
 - Security_Checks
-verion:
+version:
 - 8.0
 author:
   name: Ishai Borovoy

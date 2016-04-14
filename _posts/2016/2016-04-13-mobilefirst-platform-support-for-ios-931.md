@@ -4,7 +4,7 @@ date: 2016-04-13
 tags:
 - MobileFirst_Platform
 - iOS
-verion:
+version:
 - 7.1
 - 7.0
 - 6.3

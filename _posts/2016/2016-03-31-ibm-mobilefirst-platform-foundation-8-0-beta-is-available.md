@@ -5,7 +5,7 @@ pinned: true
 tags:
 - MobileFirst_Platform
 - Beta_Program
-verion:
+version:
 - 8.0
 author:
   name: Jerome Joubert
