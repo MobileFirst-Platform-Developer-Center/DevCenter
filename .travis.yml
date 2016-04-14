@@ -1,5 +1,5 @@
 language: ruby
-#cache: bundler
+cache: bundler
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
@@ -12,7 +12,6 @@ script: ./build/$BUILD
 branches:
   only:
   - master
-  - elastic
 rvm:
 - 2.1.2 # version of `ruby'
 git:
