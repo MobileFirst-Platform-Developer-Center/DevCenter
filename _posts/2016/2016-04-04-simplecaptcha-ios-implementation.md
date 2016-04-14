@@ -6,7 +6,7 @@ tags:
 - iOS
 - SimpleCaptcha
 - Security_Checks
-verion:
+version:
 - 8.0
 author:
   name: Ore Poran

@@ -29,7 +29,7 @@ module Jekyll
       # loop over blog posts
       site.posts.docs.each do |document|
         # get all the meta data
-        element = document.data
+        element = document.data.clone
         element.delete('excerpt')
         element['hash'] = Digest::MD5.hexdigest(document.url)
         element['url'] = document.url
@@ -38,6 +38,19 @@ module Jekyll
         element['content'] = document.content.gsub(/<\/?[^>]*>/, '')
         element['content'] = element['content'].delete('#')
         element['summary'] = element['content'][0, 400]
+
+        if document.data["version"]
+          # prepare the version list
+          if document.data["version"].is_a?(String)
+            element["version"] = [document.data["version"]]
+          elsif document.data["version"].is_a?(Array)
+            element["version"] = []
+            document.data["version"].each do |version|
+              element["version"].push("#{version}")
+            end
+          end
+
+        end
 
         # create the index object
         index = {}
@@ -65,13 +78,13 @@ module Jekyll
 
         # insert version number
         if document.url.include? '/6.3/'
-          element['version'] = '6.3'
+          element['version'] = ['6.3']
         elsif document.url.include? '/7.0/'
-          element['version'] = '7.0'
+          element['version'] = ['7.0']
         elsif document.url.include? '/7.1/'
-          element['version'] = '7.1'
+          element['version'] = ['7.1']
         elsif document.url.include? '/8.0/'
-          element['version'] = '8.0'
+          element['version'] = ['8.0']
         end
 
         # create the index object

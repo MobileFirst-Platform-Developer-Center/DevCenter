@@ -4,7 +4,7 @@ date: 2016-01-22
 tags:
 - MobileFirst_Platform
 - Analytics
-verion:
+version:
 - 7.0
 - 7.1
 author:

@@ -5,7 +5,7 @@ tags:
 - iOS
 - Android
 - JSONStore
-verion:
+version:
 - 8.0
 author:
   name: Nana Amfo

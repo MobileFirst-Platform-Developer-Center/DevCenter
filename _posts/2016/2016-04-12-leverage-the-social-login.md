@@ -1,5 +1,5 @@
 ---
-title: Leverage Social Login In IBM MobileFirst Platform Foundation 8.0
+title: Leverage Social Login In IBM MobileFirst Platform Foundation 8.0 Beta
 date: 2016-04-12
 version:
 - 8.0

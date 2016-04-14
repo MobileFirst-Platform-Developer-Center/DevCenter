@@ -1,11 +1,11 @@
 ---
-title: Steps to configure Mobile Foundation Service to connect to on-premises Analytics server.
+title: Steps to configure Mobile Foundation Service to connect to on-premises Analytics server
 date: 2016-04-12
 tags:
 - MobileFirst_Platform
 - Mobile_Foundation
 - Bluemix
-verion:
+version:
 - 8.0
 author: 
   name: Sumant Kulkarni

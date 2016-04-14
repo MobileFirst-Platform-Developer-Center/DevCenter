@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - Cordova
 - Beta
-verion:
+version:
 - 8.0
 author:
   name: Karen Tran

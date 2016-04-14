@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - Bluemix
 - IBM_Containers
-verion:
+version:
 - 7.1
 author:
   name: Ajay Chebbi

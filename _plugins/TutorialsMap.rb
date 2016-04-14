@@ -3,11 +3,11 @@
 
 def GetChildren(url, site)
   # Caching mechanism
-  if !site['children']
-    site['children'] = {}
-  elsif site['children'] && site['children']["#{url}"]
-    return site['children'][url]
-  end
+  # if !site['children']
+  #   site['children'] = {}
+  # elsif site['children'] && site['children']["#{url}"]
+  #   return site['children']["#{url}"]
+  # end
 
   # Array to be returned
   children = []
@@ -47,13 +47,13 @@ def GetChildren(url, site)
   children = children.sort { |x, y| x['weight'] <=> y['weight'] }
 
   # Caching
-  site['children']["#{url}"] = children
+  # site['children']["#{url}"] = children
 
   children
 end
 
 Jekyll::Hooks.register :site, :pre_render do |site, payload|
-  payload["site"]["data"]["tutorials"] = GetChildren("/tutorials/", payload["site"])
+  payload["site"]["data"]["tutorials"] = GetChildren("/tutorials/", payload["site"].clone)
   # binding.pry
 
 end

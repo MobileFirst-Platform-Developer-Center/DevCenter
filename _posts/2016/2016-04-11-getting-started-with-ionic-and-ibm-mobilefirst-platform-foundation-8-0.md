@@ -1,14 +1,12 @@
 ---
-title: 'Getting Started with Ionic and MobileFirst Platform Foundation 8.0'
+title: Getting Started with Ionic and MobileFirst Platform Foundation 8.0 Beta
 date: 2016-04-11
 tags:
 - MobileFirst_Platform
 - Bluemix
 - CLI
-- Development
 - Ionic
-- Integration
-verion:
+version:
 - 8.0
 author:
   name: Carlos Santanta
