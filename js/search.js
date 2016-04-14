@@ -112,6 +112,7 @@ var MFPSEARCH = {
 };
 
 $(function() {
+    $("#filters").show();
     MFPSEARCH.init();
     $('#document-type').multiselect({
         nonSelectedText: "Document type"
