@@ -6,7 +6,7 @@ tags:
 - Bluemix
 - CLI
 - Ionic
-verion:
+version:
 - 8.0
 author:
   name: Carlos Santanta

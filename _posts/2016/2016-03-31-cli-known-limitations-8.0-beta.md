@@ -6,7 +6,7 @@ tags:
 - CLI
 - Development
 - Beta_Program
-verion:
+version:
 - 8.0
 author:
   name: Justin Berstler

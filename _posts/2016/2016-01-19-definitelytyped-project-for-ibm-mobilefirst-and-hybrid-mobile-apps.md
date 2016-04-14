@@ -6,7 +6,7 @@ tags:
 - DefinitelyTyped
 - Cordova
 - Hybrid
-verion:
+version:
 - 7.1
 author:
   name: Raymond Camden

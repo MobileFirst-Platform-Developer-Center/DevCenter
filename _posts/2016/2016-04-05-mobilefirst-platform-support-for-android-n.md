@@ -4,7 +4,7 @@ date: 2016-04-05
 tags:
 - MobileFirst_Platform
 - Android
-verion:
+version:
 - 7.1
 author:
   name: S.A.Norton Stanley

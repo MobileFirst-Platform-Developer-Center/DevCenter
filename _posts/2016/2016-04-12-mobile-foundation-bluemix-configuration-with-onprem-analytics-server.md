@@ -5,7 +5,7 @@ tags:
 - MobileFirst_Platform
 - Mobile_Foundation
 - Bluemix
-verion:
+version:
 - 8.0
 author: 
   name: Sumant Kulkarni
