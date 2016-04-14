@@ -17,6 +17,7 @@ Apple's iOS 9.3.1 released earlier this March packs in new features to its mobil
 MobileFirst Platform Foundation v6.3, v7.0, v7.1 has embraced iOS 9.3.1 very well, we tested a bunch of feature like connection to the server, OAuth flow, form based authentication, invoking of JavaScript adapters. All these feature works well, however we did notice few issues which we have documented here.
 
 Known Issues
+
 - With MobileFirst Platform v7.0 and v7.1 we noticed UI issues while the Active notifying dialog is displayed. 
 - With MobileFirst Platform v7.0 and Xcode v7.3 we notice issues with WLHttpMethodGet not being recognized as a constant in a Swift app. A workaround could be to use a String "GET" in place of the constant.
 
