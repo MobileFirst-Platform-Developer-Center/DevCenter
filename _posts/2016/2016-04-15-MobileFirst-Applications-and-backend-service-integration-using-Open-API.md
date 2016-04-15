@@ -3,16 +3,16 @@ title: MobileFirst Applications and enterprise backend service integration using
 date: 2016-04-15
 tags:
 - MobileFirst_Platform
-- MobileFirst_Adapters
+- Adapters
 - Open_API
 - Swagger_Codegen
-verion:
+version:
 - 8.0
 author:
   name: S Venkatakrishnan
 ---
 ## Overview
-The MobileFirst Java Adapter is a simple and secure extension point on the MobileFirst Platform using which you can quickly and seamless integrate you Mobile Applications with enterprise backend data / functions.  To accelerate this integration the MobileFirst platform provides an approach and an adapter extension to support the approach
+The MobileFirst Java Adapter is a simple and secure extension point on the MobileFirst Platform using which you can quickly and seamlessly integrate your Mobile Applications with enterprise backend data / functions.  To accelerate this integration the MobileFirst platform provides an approach and an adapter extension to support the approach.
 
 ## Integration Approach - using Open API
 Most often there is a subset of backend data or function that needs to be quickly and securely exposed as public services that can then be exploited by mobile applications.  The MobileFirst platform proposes the following approach to achieve this goal and also provides tools to accelerate the integration via this approach.
@@ -35,12 +35,12 @@ The Swagger-Codegen maven plugin is added to the Java Adapter maven project.  Th
 
 Here is how we go about this step-by-step to achieve this  :-
 
-* Create a ___MobileFirst Java Adapter___ maven project.  _Refer_ [Creating Java and JavaScript Adapters](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/creating-adapters/#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
+* Create a ___MobileFirst Java Adapter___ maven project.  _Refer_ [Creating Java and JavaScript Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
 * In the project directory create a subdirectory ___src/main/resources___
 * Copy the ReST API descriptions (yaml or json) file to the subdirectory ___src/main/resources___
 * Open the project's pom.xml and add the following fragment under the plugins element - this is the swagger-codegen maven plugin  
 
-    ```
+    ```xml
   <plugin>
       <groupId>io.swagger</groupId>
       <artifactId>swagger-codegen-maven-plugin</artifactId>
@@ -65,8 +65,7 @@ Here is how we go about this step-by-step to achieve this  :-
               </goals>
           </execution>
       </executions>
-  </plugin>
-  
+  </plugin>  
     ```
       
     Here is a sample pom.xml - [CustomerAdapter pom.xml](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/samples/factory-customer-adapter/pom.xml)    
@@ -80,21 +79,21 @@ Here is how we go about this step-by-step to achieve this  :-
 * Customize the code generation specific to your project, it's Java package structure, choice of service implementation.  The plugin configurations descrbied above are for specifying higher level inputs such as input and output locations.  Some specific configurations to 'how' the code should be generated is to be specified in a separate codegen configuration json file.  This is the file whose location and name is specified in the plugin configuration
 property named ___configurationFile___ (see above).   Here is what the contents of this file should be :-  
 
-    ```
+    ```json
   {
-     "modelPackage"    : <name of the Java package for the service data model classes>,
-     "apiPackage" 	 : <name of the Java package for the service API interfaces and classes> ,
+     "modelPackage"    : "<name of the Java package for the service data model classes>",
+     "apiPackage"      : "<name of the Java package for the service API interfaces and classes>" ,
      "additionalProperties" : {
-         "serviceFactoryClassname" : <fully qualified name of the service factory class that will
+         "serviceFactoryClassname" : "<fully qualified name of the service factory class that will
                                       implement the generated service factory interface.  
                                       You should not provide this property if you do not intend to
                                       implement the service factory and would instead 'inject' the
                                       service implementation by other means such as Spring
-                                      dependency injection>
-         "autowiredSpringService"  : <set to "true" if you want to autowire a spring bean for the
+                                      dependency injection>",
+         "autowiredSpringService"  : "<set to "true" if you want to autowire a spring bean for the
                                       service implementation.  You should not provide this property
                                       if you are going to use spring dependency injection to provide
-                                      the service implementation>
+                                      the service implementation>"
        }
   }
     ```  
@@ -126,7 +125,7 @@ If you lookup the outbput directory that you had configured in the maven swagger
 *   If you had provided the _serviceFactoryClassname_ property in the codegen configuration json then you will observe that the generated code wires in the factory implementation class name that was provided there.  You must now provide a concrete implementation of this class implementing the generated service factory interface.  
     Here is a code snippet from a generated sample FactoryFinder class that wires in a specified service factory implementation.  
 
-    ```
+    ```java
     public class CustomersApiServiceFactoryFinder {
 
       public static CustomersApiServiceFactoryIfc findFactoryImpl() throws ServiceFactoryFinderException {
@@ -152,7 +151,7 @@ If you lookup the outbput directory that you had configured in the maven swagger
   
     Here is a code snippet from a generate sample JAXRS resource.  
 
-    ```
+    ```java
     @Component
     public class CustomersApi  {
     @Autowired
@@ -160,14 +159,14 @@ If you lookup the outbput directory that you had configured in the maven swagger
     ...
     ```
     
-When you have completed the service interface implementations your JAXRS resources are complete and ready to be built and deploy.<p>
+When you have completed the service interface implementations your JAXRS resources are complete and ready to be built and deploy.
 
 ### Build and deploy the Adapter
 Before building the Adatper archive for deployment add the following to the pom.xml
 
 Add the following dependency
 
-```
+```xml
 <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
         <artifactId>jackson-annotations</artifactId>
@@ -177,7 +176,7 @@ Add the following dependency
 
 Add the following plugin
 
-```
+```xml
 <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
