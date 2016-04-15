@@ -22,7 +22,7 @@ For the backend data or function that you want to integrate with design ReST API
 
 Designing and describing the ReST APIs lays the foundation to opening up your backend data / functions for use by your mobile applications.  The next steps will be implementing these ReST APIs to connect to your backend data / functions and then hosting the APIs as a service that can be exploited by your mobile applications.
 
-> **NOTE:** You can secure access to your ReST APIs with Aauth.  Add the security attribute to the API methods specifying the required access scopes.
+> **NOTE:** You can secure access to your ReST APIs with OAuth.  Add the security attribute to the API methods specifying the required access scopes.
 
 Here is a sample API specification - [Customer API](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/samples/factory-customer-adapter/src/main/resources/customer.yaml)
 
