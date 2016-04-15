@@ -7,6 +7,27 @@ print_pdf: false
 weight: 1
 ---
 ## Overview
-Before starting application development in MobileFirst Platform Foundation, the development environment needs to be set-up. This includes both the MobileFirst Platform Foundation development environment, as well any additional development environment: iOS, Android, Windows 8.1 Universal and Windows 10 UWP.
+Before starting to develop client and server code using MobileFirst Platform Foundation, the development environment needs to be set-up. This includes installing various required software and tools.
 
-To continue, select a tutorial:
+The following is a list of software you may need to install on your developer workstation in order to develop client and/or server code.
+
+### Server requirements
+
+* Java
+* MobileFirst Development Kit
+
+### Client-side development
+
+* NodeJS
+* MobileFirst CLI
+* Cordova CLI
+* Xcode
+* Android Studio
+* Visual Studio
+
+### Server-side development
+
+* Maven
+
+<br/><br/>
+For further instructions, select a tutorial:
