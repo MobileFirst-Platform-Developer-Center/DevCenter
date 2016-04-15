@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Applications and enterprise backend service integration using Open API
-date: 2016-04-12
+date: 2016-04-15
 tags:
 - MobileFirst_Platform
 - MobileFirst_Adapters
@@ -24,7 +24,7 @@ Designing and describing the ReST APIs lays the foundation to opening up your ba
 
 > **NOTE:** You can secure access to your ReST APIs with Aauth.  Add the security attribute to the API methods specifying the required access scopes.
 
-Here is a sample API specification - [Customer API](TODO : link to sample yaml)
+Here is a sample API specification - [Customer API](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/samples/factory-customer-adapter/src/main/resources/customer.yaml)
 
 ### Generate JAXRS resources for the ReST API integrated with MobileFirst Java Adapter
 Here is where the MobileFirst platform steps in to accelerate the hosting of these ReST APIs as a service through MobileFirst Java Adapters.  It takes advantage of the fact that the APIs are defined using the Open API specifications and employs [Swagger Codegen](http://swagger.io/swagger-codegen/) tools to expedite this.  
@@ -35,7 +35,7 @@ The Swagger-Codegen maven plugin is added to the Java Adapter maven project.  Th
 
 Here is how we go about this step-by-step to achieve this  :-
 
-* Create a ___MobileFirst Java Adapter___ (Refer TODO : Addlink) maven project
+* Create a ___MobileFirst Java Adapter___ maven project.  _Refer_ [Creating Java and JavaScript Adapters](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/creating-adapters/#creating-adapters-using-maven-archetype-quot-adapter-maven-archetype-quot)
 * In the project directory create a subdirectory ___src/main/resources___
 * Copy the ReST API descriptions (yaml or json) file to the subdirectory ___src/main/resources___
 * Open the project's pom.xml and add the following fragment under the plugins element - this is the swagger-codegen maven plugin  
@@ -69,7 +69,7 @@ Here is how we go about this step-by-step to achieve this  :-
   
     ```
       
-    Here is a sample pom.xml - [CustomerAdapter pom.xml](TODO : add link)    
+    Here is a sample pom.xml - [CustomerAdapter pom.xml](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/samples/factory-customer-adapter/pom.xml)    
 
 * Configure the swagger-codegen plugin as follows :
 
@@ -99,7 +99,7 @@ property named ___configurationFile___ (see above).   Here is what the contents 
   }
     ```  
   
-    Here is a sample codegen configuration json file [CustomerAdapter CodegenConfig.json](TODO : add link to)  
+    Here is a sample codegen configuration json file [CustomerAdapter CodegenConfig.json](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/samples/factory-customer-adapter/src/main/resources/codegenConfig.json)  
     
     >**NOTE :** When specifying for _apiPackage_ in the above json ensure that this package is in the resource scan list of AdapterJaxrsApplication class.  For
 example if you have generated a Java Adapter using Maven archetype and have specified a package name for the Adapter classes then use this same package
@@ -113,9 +113,11 @@ facilitates the scanning.
       - provide a Spring bean implementation for the service interface and resolve this implementation via Spring dependency injection.  If you choose this then you must set the _autowiredSpringService_ property to true in the codegen configuration json file.
 
 * Generate the JAXRS resources by running the maven swagger-codegen plugin as follows:-
-  ```
-  mvn io.swagger:swagger-codegen-maven-plugin:2.1.6-SNAPSHOT:generate
-  ```
+
+    ```
+    mvn io.swagger:swagger-codegen-maven-plugin:2.1.6-SNAPSHOT:generate
+    ```
+    
   After this you would have generated the JAXRS resources and the data model classes it requires.  Also will be generated the service interfaces that should be implemented for the backend connectivity.  If you have specified the security attribute for your API methods then you will observe that the generated JAXRS resources are annotated appropriately with the com.ibm.mfp.adapter.api.OAuthSecurity annotations with the appropriate attributes.
 
 ### Provide backend integration implementation
@@ -144,7 +146,7 @@ If you lookup the outbput directory that you had configured in the maven swagger
    
     ```  
 
-    Here is the complete generated sample service factory interface and implementation - [CusomterServiceFacotory](TODO : addlink)
+    Here is the complete generated sample service factory interface and implementation - [CusomterServiceFactory](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/samples/factory-customer-adapter/src/main/java/com/swaggercodegen/samples/factory/customer/api/CustomerFactoryImpl.java)
 
 *   If you had set _autowiredSpringService_ property in the codegen configuration json to true then you will observe that the generated code adds a 'spring autowire' annotation for the service instance varibale in the JAXRS resource.  You must now provide a Spring bean implementation for the generated service interface.  
   
@@ -157,6 +159,7 @@ If you lookup the outbput directory that you had configured in the maven swagger
     private CustomersApiService delegate = null;
     ...
     ```
+    
 When you have completed the service interface implementations your JAXRS resources are complete and ready to be built and deploy.<p>
 
 ### Build and deploy the Adapter
@@ -191,7 +194,7 @@ Add the following plugin
         </executions>
 </plugin>
 ```
-Here is a sample pom.xml - [CustomerAdapter pom.xml](TODO : add link)
+Here is a sample pom.xml - [CustomerAdapter pom.xml](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/samples/factory-customer-adapter/pom.xml)
 
 Now build the Adapter and deploy it on MobileFirst Server !!!
 
@@ -208,5 +211,5 @@ If you have backend data and functions that you want to exploit in your MobileFi
 ## Samples
 To further understand the mfp-adaper-swagger-codegen extension, assimilate and try all of what has been mentioned in this blog post refer to the two the following two samples :-
 
-* [_factory-customer-adapter_](TODO : add link) sample which uses the service factory implementation approach to providing the service implementation  
-* [_spring-customer-adapter_](TODO : add link) sample which uses Spring dependency injection to provide implementation for the service.
+* [_factory-customer-adapter_](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/samples/factory-customer-adapter) sample which uses the service factory implementation approach to providing the service implementation  
+* [_spring-customer-adapter_](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/samples/spring-customer-adapter) sample which uses Spring dependency injection to provide implementation for the service.
