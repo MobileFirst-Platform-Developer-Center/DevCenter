@@ -9,25 +9,33 @@ weight: 1
 ## Overview
 Before starting to develop client and server code using MobileFirst Platform Foundation, the development environment needs to be set-up. This includes installing various required software and tools.
 
-The following is a list of software you may need to install on your developer workstation in order to develop client and/or server code.
+The following is a list of software you may need to install on your developer workstation.
 
-### Server requirements
+### Server
 
-* Java
-* MobileFirst Development Kit
+* Java (requirement for MobileFirst Server and Maven)
+* MobileFirst Development Kit (contains MobileFirst Server)
+* Account on Bluemix.net for running the Mobile Foundation service
 
-### Client-side development
+### Application development
 
-* NodeJS
+* NodeJS (requirement for MobileFirst CLI)
 * MobileFirst CLI
 * Cordova CLI
-* Xcode
-* Android Studio
-* Visual Studio
+* IDEs:
+    - Xcode
+    - Android Studio
+    - Visual Studio
+    - Atom.io, Visual Studio Code, WebStorm, IntelliJ, Eclipse, other IDEs...
 
-### Server-side development
 
+### Adapter development
+
+* NodeJS (requirement for MobileFirst CLI)
+* *optional* MobileFirst CLI
 * Maven
+* IDEs:
+    - IntelliJ, Eclipse, other IDEs...
 
-<br/><br/>
+<br/>
 For further instructions, select a tutorial:
