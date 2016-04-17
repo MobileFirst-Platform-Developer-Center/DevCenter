@@ -49,6 +49,7 @@ var MFPSEARCH = {
             console.log(body);
             _this.total = body.hits.total;
             $('#queryTerm').html(_this.total + " results");
+            $('#search-input').val('');
             $('#search-input').val($('#search-input').val() + _this.queryTerm);
             var searchResultTemplate = $.templates("#searchResultTemplate");
             $('#searchResults').html('');
