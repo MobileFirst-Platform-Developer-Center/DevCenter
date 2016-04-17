@@ -65,7 +65,7 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     wkhtmltopdf-binary-edge (0.12.3.0)
-    yell (2.0.5)
+    yell (2.0.6)
 
 PLATFORMS
   ruby
@@ -79,3 +79,6 @@ DEPENDENCIES
   pdfkit
   redcarpet
   wkhtmltopdf-binary-edge
+
+BUNDLED WITH
+   1.11.2
