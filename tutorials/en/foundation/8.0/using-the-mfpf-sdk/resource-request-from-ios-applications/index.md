@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Resource request from iOS applications
-breadcrumb_title: Resource request - iOS (Swift)
+breadcrumb_title: Resource request - iOS
 relevantTo: [ios]
 downloads:
   - name: Download Native project
@@ -191,7 +191,7 @@ Use the `response` and `error` objects to get the data that is retrieved from th
 
 <img alt="Image of the sample application" src="resource-request-success-ios.png" style="float:right"/>
 ## Sample application
-The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.  
+The ResourceRequestSwift project contains an iOS application, implemented in Swift, that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the iOS project.  
