@@ -25,6 +25,13 @@ The `WLResourceRequest` class handles resource requests to adapters or external 
 Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
 Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
 
+ObjC
+
+```objc
+WLResourceRequest *request = [WLResourceRequest requestWithURL:[NSURL URLWithString:@"/adapters/JavaAdapter/users/"] method:WLHttpMethodGet];
+```
+Swift
+
 ```swift
 let request = WLResourceRequest(
     URL: NSURL(string: "/adapters/JavaAdapter/users"),
@@ -40,6 +47,19 @@ let request = WLResourceRequest(
 ## Sending the request
 Request the resource by using the `sendWithCompletionHandler` method.  
 Supply a completion handler to handle the retrieved data:
+
+ObjC
+
+```objc
+[request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+    if (error == nil){
+        NSLog(@"%@", response.responseText);
+    } else {
+        NSLog(@"%@", error.description);
+    }
+}];
+```
+Swift
 
 ```swift
 request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
@@ -63,6 +83,14 @@ As explained above, **path** parameters (`/path/value1/value2`) are set during t
 ### Query parameters
 To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
 
+ObjC
+
+```objc
+[request setQueryParameterValue:@"value1" forName:@"param1"];
+[request setQueryParameterValue:@"value2" forName:@"param2"];
+```
+Swift
+
 ```swift
 request.setQueryParameterValue("value1", forName: "param1")
 request.setQueryParameterValue("value2", forName: "param2")
@@ -71,12 +99,36 @@ request.setQueryParameterValue("value2", forName: "param2")
 #### JavaScript adapters
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
+ObjC
+
+```objc
+[request setQueryParameterValue:@"['value1', 'value2']" forName:@"params"];
+```
+Swift
+
 ```swift
 request.setQueryParameterValue("['value1', 'value2']", forName: "params")
 ```
 
 ### Form parameters
 To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
+
+ObjC
+
+```objc
+//@FormParam("height")
+NSDictionary *formParams = @{@"height":@"175"};
+
+//Sending the request with Form parameters
+[request sendWithFormParameters:formParams completionHandler:^(WLResponse *response, NSError *error) {
+    if (error == nil){
+        NSLog(@"%@", response.responseText);
+    } else {
+        NSLog(@"%@", error.description);
+    }
+}];
+```
+Swift
 
 ```swift
 //@FormParam("height")
@@ -96,12 +148,27 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 #### JavaScript adapters
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
+ObjC
+
+```objc
+NSDictionary *formParams = @{@"params":@"['value1', 'value2']"};
+```
+Swift
+
 ```swift
 let formParams = ["params":"['value1', 'value2']"]
 ```
 
 ### Header parameters
 To send a parameter as an HTTP header use the `setHeaderValue` API:
+
+ObjC
+
+```objc
+//@HeaderParam("Date")
+[request setHeaderValue:@"2015-06-06" forName:@"birthdate"];
+```
+Swift
 
 ```swift
 //@HeaderParam("Date")
@@ -140,7 +207,7 @@ The adapter Maven project contains the Java adapter used during the resource req
 
 > * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
->   2. Paste the following: 
+>   2. Paste the following:
 >
 >    
         ```xml
@@ -150,4 +217,3 @@ The adapter Maven project contains the Java adapter used during the resource req
             <true/>
         </dict>
         ```
-
