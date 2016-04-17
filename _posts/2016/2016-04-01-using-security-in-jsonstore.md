@@ -5,7 +5,8 @@ tags:
 - iOS
 - Android
 - JSONStore
-- non-MFPF
+version:
+- 8.0
 author:
   name: Nana Amfo
 ---

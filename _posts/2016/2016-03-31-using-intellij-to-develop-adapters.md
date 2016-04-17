@@ -5,6 +5,8 @@ tags:
 - MobileFirst_Platform
 - Java
 - IntelliJ
+version:
+- 8.0
 author:
   name: Lior Burg
 ---

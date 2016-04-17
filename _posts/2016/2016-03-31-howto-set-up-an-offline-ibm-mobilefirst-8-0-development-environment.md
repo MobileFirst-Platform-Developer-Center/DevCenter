@@ -6,6 +6,8 @@ tags:
 - Offline
 - Setup
 - Development_Environment
+version:
+- 8.0
 author:
   name: Danny Cao
 ---

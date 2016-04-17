@@ -4,6 +4,8 @@ date: 2016-02-17
 tags:
 - MobileFirst_Platform
 - Windows_10
+version:
+- 7.1
 author:
   name: Srihari Kulkarni
 ---

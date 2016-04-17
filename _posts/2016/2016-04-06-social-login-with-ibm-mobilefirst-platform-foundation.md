@@ -5,6 +5,9 @@ tags:
 - MobileFirst_Platform
 - Authentication
 - Adapters
+- Security_Checks
+version:
+- 8.0
 author:
   name: Ishai Borovoy
 ---

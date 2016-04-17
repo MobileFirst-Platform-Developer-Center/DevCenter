@@ -5,6 +5,8 @@ tags:
 - MobileFirst_Platform
 - Bluemix
 - Mobile_Foundation
+version:
+- 8.0
 author:
   name: Ajay Chebbi
 ---

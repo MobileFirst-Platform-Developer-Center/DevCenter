@@ -1,11 +1,14 @@
 ---
-title: Steps to configure Mobile Foundation Service to connect to on-premises Analytics server.
+title: Steps to configure Mobile Foundation Service to connect to on-premises Analytics server
 date: 2016-04-12
 tags:
 - MobileFirst_Platform
 - Mobile_Foundation
 - Bluemix
-author: Sumant Kulkarni
+version:
+- 8.0
+author: 
+  name: Sumant Kulkarni
 ---
 This blog talks about configuring MobileFirst Server running in Bluemix to connect to an analytics server running on-premises.
 
@@ -71,6 +74,7 @@ After performing the above steps, the analytics server in the enterprise network
 ![MFP Bluemix start server with advance settings ]({{site.baseurl}}/assets/blog/2016-04-12-mobile-foundation-bluemix-configuration-with-onprem-analytics-server/StartServer.png)
 
 3. Go to the server configuration tab ,where you can find the JNDI Configuration options
+![MFP Bluemix JNDI properties ]({{site.baseurl}}/assets/blog/2016-04-12-mobile-foundation-bluemix-configuration-with-onprem-analytics-server/Jndiproperties.png)
 
 4.  Click on the “Copy from Sample” button which would give you a sample JNDI properties.
 

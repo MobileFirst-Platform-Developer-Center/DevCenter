@@ -4,6 +4,9 @@ date: 2016-01-22
 tags:
 - MobileFirst_Platform
 - Analytics
+version:
+- 7.0
+- 7.1
 author:
   name: Yoel Nunez
 ---
