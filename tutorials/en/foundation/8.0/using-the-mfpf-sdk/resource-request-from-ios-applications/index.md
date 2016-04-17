@@ -25,7 +25,7 @@ The `WLResourceRequest` class handles resource requests to adapters or external 
 Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
 Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
 
-ObjC
+Objective-C
 
 ```objc
 WLResourceRequest *request = [WLResourceRequest requestWithURL:[NSURL URLWithString:@"/adapters/JavaAdapter/users/"] method:WLHttpMethodGet];
@@ -48,7 +48,7 @@ let request = WLResourceRequest(
 Request the resource by using the `sendWithCompletionHandler` method.  
 Supply a completion handler to handle the retrieved data:
 
-ObjC
+Objective-C
 
 ```objc
 [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
@@ -83,7 +83,7 @@ As explained above, **path** parameters (`/path/value1/value2`) are set during t
 ### Query parameters
 To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
 
-ObjC
+Objective-C
 
 ```objc
 [request setQueryParameterValue:@"value1" forName:@"param1"];
@@ -99,7 +99,7 @@ request.setQueryParameterValue("value2", forName: "param2")
 #### JavaScript adapters
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
-ObjC
+Objective-C
 
 ```objc
 [request setQueryParameterValue:@"['value1', 'value2']" forName:@"params"];
@@ -113,7 +113,7 @@ request.setQueryParameterValue("['value1', 'value2']", forName: "params")
 ### Form parameters
 To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
 
-ObjC
+Objective-C
 
 ```objc
 //@FormParam("height")
@@ -148,7 +148,7 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 #### JavaScript adapters
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
-ObjC
+Objective-C
 
 ```objc
 NSDictionary *formParams = @{@"params":@"['value1', 'value2']"};
@@ -162,7 +162,7 @@ let formParams = ["params":"['value1', 'value2']"]
 ### Header parameters
 To send a parameter as an HTTP header use the `setHeaderValue` API:
 
-ObjC
+Objective-C
 
 ```objc
 //@HeaderParam("Date")
