@@ -23,7 +23,7 @@ GEM
       typhoeus (~> 0.7)
       yell (~> 2.0)
     i18n (0.7.0)
-    jekyll (3.0.2)
+    jekyll (3.1.2)
       colorator (~> 0.1)
       jekyll-sass-converter (~> 1.0)
       jekyll-watch (~> 1.1)
@@ -65,17 +65,20 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     wkhtmltopdf-binary-edge (0.12.3.0)
-    yell (2.0.5)
+    yell (2.0.6)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   html-proofer
-  jekyll (= 3.0.2)
+  jekyll
   jekyll-feed
   jekyll-paginate
   jekyll-sitemap
   pdfkit
   redcarpet
   wkhtmltopdf-binary-edge
+
+BUNDLED WITH
+   1.11.2

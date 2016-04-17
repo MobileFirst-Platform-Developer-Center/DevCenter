@@ -119,7 +119,7 @@ Jekyll::Hooks.register :pages, :pre_render do |page, payload|
       end
       i += 1
     end
-    payload['page']['breadcrumbs'] = breadcrumbs
+    page.data['breadcrumbs'] = breadcrumbs
     # binding.pry
 
   end
