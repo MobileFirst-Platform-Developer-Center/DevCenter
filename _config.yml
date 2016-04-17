@@ -35,6 +35,11 @@ defaults:
       indexed: false
   -
     scope:
+      path: "feed.xml"
+    values:
+      indexed: false      
+  -
+    scope:
       path: "js"
     values:
       indexed: false
@@ -42,7 +47,7 @@ defaults:
     scope:
       path: "css"
     values:
-      indexed: false            
+      indexed: false
   -
     scope:
       path: ""
