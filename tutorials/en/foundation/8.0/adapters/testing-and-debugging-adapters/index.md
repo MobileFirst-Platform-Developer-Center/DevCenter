@@ -52,14 +52,17 @@ Alternatively, the development version of the MobileFirst Server includes a test
 ### Using Postman
 
 #### Test Token
+To receive a Test Token, either click the "Run in Postman" button below to import a Collection to your Postman app that contains a ready request, or follow the next steps to create the request yourself.
 
-To receive a Test Token you should:
+<a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="margin: 0"></a>
+
 {% comment %}
 1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
 {% endcomment %}
+
 1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
 
 * `grant_type` : `client_credentials`
