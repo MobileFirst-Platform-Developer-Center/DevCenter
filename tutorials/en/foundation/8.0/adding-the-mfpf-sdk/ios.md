@@ -46,8 +46,8 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     - If CocoaPods is not installed, install it as follows:  
         - Open a **Command-line** window and navigate to the root of the Xcode project.
         - Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands may take several minutes to complete.
-        - Run the command: `pod init`. This creates a `Podfile`.
-2. Using your favorite code editor, open the `Podfile`.
+2. Run the command: `pod init`. This creates a `Podfile`.
+3. Using your favorite code editor, open the `Podfile`.
     - Comment out or delete the contents of the file.
     - Add the following lines and save the changes:
 
@@ -56,7 +56,7 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
         pod 'IBMMobileFirstPlatformFoundation'
         ```
         
-3. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
+4. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
     **Note:** This command may take several minutes to complete.
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
