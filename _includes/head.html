@@ -4,8 +4,8 @@
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 {% feed_meta %}
-{% if page.summary and page.url != '/'%}
-  <meta name="description" content="{{ page.summary | markdownify | strip_html | strip_newlines | xml_escape | strip | truncatewords: 20}}">
+{% if page.excerpt and page.url != '/'%}
+  <meta name="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | strip | truncatewords: 20}}">
 {% else %}
   <meta name="description" content="{{site.description}}">
 {% endif %}

@@ -1,7 +1,7 @@
 # require 'pry'
 # require 'pry-byebug'
 
-def GetChildren(url, site)
+def ShowChildren_GetChildren(url, site)
   # Caching mechanism
   if !site['children']
     site['children'] = {}
@@ -35,7 +35,7 @@ def GetChildren(url, site)
       element['weight'] = 1000
     end
 
-    element['children'] = GetChildren(page.url, site)
+    element['children'] = ShowChildren_GetChildren(page.url, site)
 
     children.push(element)
   end
@@ -51,6 +51,6 @@ end
 Jekyll::Hooks.register :pages, :pre_render do |page, payload|
   # binding.pry
   next unless page.data['show_children']
-  payload['page']['children'] = GetChildren(page.url, payload['site'])
+  page.data['children'] = ShowChildren_GetChildren(page.url, payload['site'])
   # binding.pry
 end

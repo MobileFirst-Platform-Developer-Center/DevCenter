@@ -83,35 +83,26 @@ The IBM MobileFirst command-line interface (CLI) tool enables developers to:
 > To download and install the MobileFirst CLI, visit the [downloads]({{site.baseurl}}/downloads/) page.  
 > Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
-<!-- ## MobileFirst Studio
-IBM MobileFirst Studio is an Eclipse plug-in that interfaces with the MobileFirst CLI and provides a User Interface for commands such as:
-
-- Application &amp; adapter creation and registration
-- Updating of applications and adapters to or from the server
-- Opening the MobileFirst Operations Console
-- Use of Direct Update
-
-To download and install MobileFirst Studio, visit the [downloads]({{site.base}}/downloads/) page.
-
-#### Requirements
-To use MobileFirst Studio for Cordova application development, it is also required to download and install the [THyM Eclipse plug-in](https://www.eclipse.org/community/eclipse_newsletter/2014/november/article3.php). -->
-
 ### MobileFirst Platform Foundation client SDKs and adapter tooling
 MobileFirst Platform Foundation provides client SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Adapter tooling for adapters and security checks development is available as well.
 
 * To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  
 * To develop adapters, visit the [Adapters](../../adapters/) tutorials category.  
 * To develop security checks, visit the [Authentication and security](../../authentication-and-security/) tutorials category.  
-
 #### Manual installation
 To use the client SDKs and adapter tooling that are provided as part of the Devlopment Kit Installer instead of the online repositories, [visit the user  documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) for setup instructions.
 
 ## Applications and adapters development
-You can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
 
-> **Note:** API auto-completion is available only in Typescript-supporting editors.
+#### Applications
+* Cordova applications require NodeJS and the Cordova CLI. Read more about [setting up the Cordova development environment](../).
 
-For adapters develpment, refer to the [Adapters](../../adapters/) category, as well as to the [Developing Adapters in IDEs](../../adapters/developing-adapters) tutorial and the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+    You can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
+    
+* Native applications require either Xcode, Android Studio or Visual Studio. Read more about [setting up the iOS/Android/Windows development environment](../).
+
+#### Adapters
+Adapters require Apache Maven to be installed. Refer to the [Adapters](../../adapters/) category to learn more about adapters and how to create, develop and deploy.
 
 ## Tutorials to follow next
 Visit the [All Tutorials](../../all-tutorials/) page and select a tutorials category to follow next.
