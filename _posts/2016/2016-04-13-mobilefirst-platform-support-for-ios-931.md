@@ -15,7 +15,7 @@ author:
 ![iOS 9.3](https://dl.dropboxusercontent.com/s/las86rdppknh4n1/ios9.3resize.jpg?dl=0)
 Apple's iOS 9.3.1 released earlier this March packs in new features to its mobile operating system for iPhone and iPad. The features include a new Night Shift mode, Touch ID security for Notes, greater personalization for News, app discovery in Health, Apple Music and Nearby for CarPlay, and a new education experience for [iOS](http://www.apple.com/ios/updates/).
 
-MobileFirst Platform Foundation v6.2, v6.3, v7.0, v7.1 has embraced iOS 9.3.1 very well, we tested a bunch of feature like connection to the server, OAuth flow, form based authentication, invoking of JavaScript adapters. All these feature works well, however we did notice few issues which we have documented here.
+MobileFirst Platform Foundation v6.2, v6.3, v7.0, v7.1 has embraced iOS 9.3.1 very well, we tested a bunch of feature like connection to the server, OAuth flow, form based authentication, invoking of JavaScript adapters, push notifications. All these feature works well, however we did notice few issues which we have documented here.
 
 Known Issues
 
