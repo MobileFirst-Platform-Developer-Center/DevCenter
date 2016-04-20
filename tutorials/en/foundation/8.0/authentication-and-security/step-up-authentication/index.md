@@ -6,10 +6,10 @@ relevantTo: [android,ios,windows,cordova]
 weight: 5
 ---
 ## Overview
-Resources can be protected by several security checks. In this case the MobileFirst Server will send to the application all the relevant challenges simultaneously.  
+Resources can be protected by several security checks. In this case, the MobileFirst Server will send all the relevant challenges simultaneously to the application.  
 
-Sometimes a security check may be dependent on another security check, so it is important to be able to control when the challenges will be sent.  
-For example, in this tutorial we'll describe an application that has some resources protected by a username and password, while some other resources require an additional PIN code.
+A security check may be dependent on another security check, so it is important to be able to control when the challenges will be sent.  
+For example, in this tutorial we'll describe an application that has two resources protected by a username and password where the second resource also requires an additional PIN code.
 
 > **Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) and [UserAuthenticationSecurityCheck](.../user-authentication) tutorials before continuing.
 
@@ -24,7 +24,7 @@ For example, in this tutorial we'll describe an application that has some resour
 ## Referencing a Security Check
 Create two security checks: `StepUpPinCode` and `StepUpUserLogin`. Their initial implementation is the same as described in the [Credentials Validation](../credentials-validation/security-check/) and [User Authentication](../user-authentication/security-check/) tutorials.
 
-In the tutorial's example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should only be asked to enter a PIN code if a successful login previously happened to `StepUpUserLogin`.  
+In this tutorial's example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should only be asked to enter a PIN code if a successful login to `StepUpUserLogin` previously happened.  
 To do so, `StepUpPinCode` needs to be able to **reference** the `StepUpUserLogin` class.  
 
 The MobileFirst Platform Foundation framework provides an annotation to inject a reference.  
@@ -37,7 +37,7 @@ private transient StepUpUserLogin userLogin;
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Both security check's implementations need to be bundled inside the same adapter.
 
-To resolve this reference the framework looks up for a security check with the appropriate class, and injects its reference into the dependent security check.  
+To resolve this reference, the framework looks up for a security check with the appropriate class, and injects its reference into the dependent security check.  
 If there are more than one security checks of the same class, the annotation has an optional `name` parameter that can be used to specify the unique name of the referred check.
 
 ## State machine
@@ -75,10 +75,14 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-This implementation checks the current state of the `StepUpUserLogin` reference. If the state is `STATE_SUCCESS` (meaning the user is logged in), then we continue the normal flow of the security check. If `StepUpUserLogin` is in any other state, nothing is done (no challenge will be sent, no success nor failure).
+This implementation checks the current state of the `StepUpUserLogin` reference:
 
-- Assuming the resource is protected by **both** `StepUpPinCode` and `StepUpUserLogin`, this flow makes sure that the user is logged in before we ask for the secondary credential (PIN code). The client will never receive both challenges at the same time, even though both security checks are activated.
-- Alternatively, if the resource is protected **only** by `StepUpPinCode` (meaning the framework will only activate this security check), you can change the `authorize` implementation to trigger `StepUpUserLogin` manually:
+* If the state is `STATE_SUCCESS` (meaning the user is logged in), we continue the normal flow of the security check.
+* If `StepUpUserLogin` is in any other state, nothing is done (no challenge will be sent, no success nor failure).
+
+Assuming the resource is protected by **both** `StepUpPinCode` and `StepUpUserLogin`, this flow makes sure that the user is logged in before we ask for the secondary credential (PIN code). The client will never receive both challenges at the same time, even though both security checks are activated.
+
+Alternatively, if the resource is protected **only** by `StepUpPinCode` (meaning the framework will only activate this security check), you can change the `authorize` implementation to trigger `StepUpUserLogin` manually:
 
 ```java
 @Override
@@ -155,4 +159,3 @@ Sample applications are available for iOS (Swift), Android and Cordova.
 
 **Users list**  
 See the `UserManager.java` file for a list of valid users.
-
