@@ -14,6 +14,6 @@ The **UserAuthenticationSecurityCheckecurity** inherits all the features of the 
 - The concept of an `AuthenticatedUser`, creating a user identity.
 - An optional **Remember Me** capability
 
-> **Prerequisite:** Read [CredentialsValidationSecurityCheck](../credentials-validation) before continuing 
+> **Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) tutorial before continuing.
 
 Select a tutorial:

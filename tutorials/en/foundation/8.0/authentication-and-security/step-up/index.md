@@ -6,23 +6,29 @@ relevantTo: [android,ios,windows,cordova]
 weight: 5
 ---
 ## Overview
+Resources can be protected by several security checks. In this case the MobileFirst Server will send to the application all the relevant challenges simultaneously.  
 
-Resources can be protected by several security checks. In this case the MobileFirst server will send to the client the all the relevant challenges simultaneously.  
+Sometimes a security check may be dependent on another security check, so it is important to be able to control when the challenges will be sent.  
+For example, in this tutorial we'll describe an application that has some resources protected by a username and password, while some other resources require an additional PIN code.
 
-Sometimes a security check may be dependent on another and you want to control when the challenges will be sent.  
-For example in this tutorial, we'll describe an application that has some resources protected by a username and password, while some resources require an additional PIN code.
+> **Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) and [UserAuthenticationSecurityCheck](.../user-authentication) tutorials before continuing.
 
-> Prerequisites: credentials-validation and user-authentication
+#### Jump to:
 
-## Referencing a security check
+* [Referencing a Security Check](#referencing-a-security-check)
+* [State Machine](state-machine)
+* [The Authorize Method](the-authorize-method)
+* [Challenge Handlers](Challenge-Handlers)
+* [Sample Applications](#sample-applications)
 
-Create two security checks: `StepUpPinCode` and `StepUpUserLogin`. Their initial implementation is the same as described in the [credentials validation](../credentials-validation/security-check/) and [user authentication](../user-authentication/security-check/) tutorials.
+## Referencing a Security Check
+Create two security checks: `StepUpPinCode` and `StepUpUserLogin`. Their initial implementation is the same as described in the [Credentials Validation](../credentials-validation/security-check/) and [User Authentication](../user-authentication/security-check/) tutorials.
 
-In our example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should only be asked to enter a PIN code if he successfully logged in to `StepUpUserLogin`.
-
+In the tutorial's example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should only be asked to enter a PIN code if a successful login previously happened to `StepUpUserLogin`.  
 To do so, `StepUpPinCode` needs to be able to **reference** the `StepUpUserLogin` class.  
 
-The MobileFirst framework provides an annotation to inject a reference. In your `StepUpPinCode` class, at the class-level, add:
+The MobileFirst Platform Foundation framework provides an annotation to inject a reference.  
+In your `StepUpPinCode` class, at the class-level, add:
 
 ```java
 @SecurityCheckReference
@@ -31,7 +37,7 @@ private transient StepUpUserLogin userLogin;
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Both security check's implementations need to be bundled inside the same adapter.
 
-To resolve this reference the framework looks up for a security check with appropriate class, and injects its reference into the dependent security check.  
+To resolve this reference the framework looks up for a security check with the appropriate class, and injects its reference into the dependent security check.  
 If there are more than one security checks of the same class, the annotation has an optional `name` parameter that can be used to specify the unique name of the referred check.
 
 ## State machine
@@ -44,7 +50,8 @@ All classes that extend `CredentialsValidationSecurityCheck` (which includes bot
 
 The current state can be obtained using the inherited `getState()` method.
 
-In `StepUpUserLogin`, add a convenience method to check if the user is currently logged in:
+In `StepUpUserLogin`, add a convenience method to check if the user is currently logged-in.
+This method is later used, below.
 
 ```java
 public boolean isLoggedIn(){
@@ -52,7 +59,7 @@ public boolean isLoggedIn(){
 }
 ```
 
-## The authorize method
+## The `authorize` Method
 
 The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, such as sending a challenge or validating the request.  
 The class `CredentialsValidationSecurityCheck`, which `StepUpPinCode` extends, already includes an implementation for this method. However in our case we want to check the state of `StepUpUserLogin` before starting the default behavior of the `authorize` method.
@@ -120,17 +127,31 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Challenge handlers
-In the client-side, there are no special APIs of challenge handler to handle steps. Rather, each challenge handler should handle its own challenge. In this example you need to register two separate challenge handlers: One to handle challenges from `StepUpUserLogin` and one to handle challenges from `StepUpUserLogin`.
+## Challenge Handlers
+In the client-side, there are no special APIs to handle multiple steps. Rather, each challenge handler should handle its own challenge. In this example you need to register two separate challenge handlers: One to handle challenges from `StepUpUserLogin` and one to handle challenges from `StepUpUserLogin`.
 
-## Sample
+<img alt="JSONStore sample app" src="sample-application.png" style="float:right"/>
+## Sample Applications
 
-[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+### Security check
+The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks Maven project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
-- deploy resource adapter
-- deploy StepUp
-- register one of the client samples
-- map `accessRestricted` to `StepUpUserLogin`
-- map `transferPrivilege` to both `StepUpUserLogin` and `StepUpPinCode`
+### Applications
+Sample applications are available for iOS (Swift), Android and Cordova.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) the Cordova project.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) the iOS project.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80) the Android project.
 
-Users: See the `UserManager.java` file for a list of valid users.
+### Sample usage
+* Use either Maven or MobileFirst CLI to [build and deploy the available **StepUpUserLogin**, **StepUpPinCode** and **Resource** adapters](../../../adapters/creating-adapters/).
+* From a **Command-line** window, navigate to the application's root folder and run the command: `mfpdev app register`.
+* Scope mapping:
+    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a scope mapping.
+        * Map the `accessRestricted` scope to the `StepUpUserLogin` security check.
+        * Map the `transferPrivilege` scope to both the `StepUpUserLogin` and and `StepUpPinCode` security checks.
+    * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
+
+**Users list**  
+See the `UserManager.java` file for a list of valid users.
+
