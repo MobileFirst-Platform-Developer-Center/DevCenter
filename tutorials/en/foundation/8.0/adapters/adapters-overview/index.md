@@ -43,7 +43,7 @@ The procedure retrieves information from the back-end application that returns d
 
 The JavaScript implementation of the procedure receives the JSON data, performs any additional processing, and returns it to the calling app.
 
-![javascript_adapters](javascript_adapters.jpg)
+![javascript_adapters](javascript_adapters.png)
 
 ## Java adapters
 Java adapters expose a full REST API to the client and are written in Java. This type of adapter is based on the [JAX-RS 2.0 specification] (https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html).

@@ -5,7 +5,9 @@ tags:
 - MobileFirst_Platform
 - iOS
 - SimpleCaptcha
-- Console samples
+- Security_Checks
+version:
+- 8.0
 author:
   name: Ore Poran
 ---

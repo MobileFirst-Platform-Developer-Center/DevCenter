@@ -7,11 +7,11 @@ env:
     #- BUILD=buildPDF.sh
     - BUILD=buildPages.sh
     - BUILD=buildBluemix.sh
+    - BUILD=buildElastic.sh
 script: ./build/$BUILD
 branches:
   only:
   - master
-  - staging
 rvm:
 - 2.1.2 # version of `ruby'
 git:

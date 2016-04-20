@@ -5,6 +5,8 @@ tags:
 - MobileFirst_Platform
 - Bluemix
 - Mobile_Foundation
+version:
+- 8.0
 author:
   name: Idan Adar
 ---
@@ -16,8 +18,7 @@ This blog post provides the steps to follow if you are trying to update the trus
 
 * Install the Cloudfoundry command line tool (cf) and the "cf ic" plugin.
 * Login to the IBM container service using cf login and cf ic init commands.
-* Connect to the container using the command: `cf ic exec -it <container_id> bash.`
-
+* Connect to the container using the command: `cf ic exec -it <container_id> bash.`  
     You can find the container id using the cf ic ps command.
 
 * Copy the truststore.jks file to your system using the command: 
@@ -25,6 +26,7 @@ This blog post provides the steps to follow if you are trying to update the trus
     ```bash
     cf ic exec -i <container_id> bash -c 'cat < /opt/ibm/wlp/usr/servers/mfp/resources/security/truststore.jks' > ./truststore.jks
     ```
+    
 * Use the keytool command to import additional certificates into the truststore. The default password for this truststore is "worklight".
 
     You might want to backup the existing truststore.jks file before updating.

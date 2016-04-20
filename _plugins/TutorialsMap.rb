@@ -1,7 +1,7 @@
 # require 'pry'
 # require 'pry-byebug'
 
-def GetChildren(url, site)
+def TutorialsMap_GetChildren(url, site)
   # Caching mechanism
   if !site['children']
     site['children'] = {}
@@ -39,7 +39,7 @@ def GetChildren(url, site)
 
     element['show_in_nav'] = page.data['show_in_nav']
 
-    element['children'] = GetChildren(page.url, site)
+    element['children'] = TutorialsMap_GetChildren(page.url, site)
 
     children.push(element)
   end
@@ -53,7 +53,7 @@ def GetChildren(url, site)
 end
 
 Jekyll::Hooks.register :site, :pre_render do |site, payload|
-  payload["site"]["data"]["tutorials"] = GetChildren("/tutorials/", payload["site"])
+  payload["site"]["data"]["tutorials"] = TutorialsMap_GetChildren("/tutorials/", payload["site"])
   # binding.pry
 
 end

@@ -30,8 +30,8 @@ This is the MobileFirst Server default behavior.</p>
 {% endhighlight %}</p>
 <blockquote><p>For more information about the <code>connectAs</code> attribute, read the blog post about <a href="https://www.ibm.com/developerworks/community/blogs/worklight/entry/configuring_http_adapters_for_stateless_stateful_backend_connectivity_and_user_identity_propagation?lang=en" target="_blank">Configuring HTTP adapters for stateless/stateful back-end connectivity and user identity propagation</a>.</p></blockquote>
 <h2 id="NTLM-as-Server">Using NTLM authentication with <code>ServerIdentity</code></h2>
-<p>When you use a procedure to connect to a back-end server that uses NTLM protocol without specifying the <code>connectAs</code> attribute, use the <code><serveridentity></code> element of the adapter XML file as child element of the <code><authentication></code> element. Also add the <code><ntlm workstation></code> child element, so that MobileFirst Server knows which authentication method to use when connecting to the back end.</p>
-<p>Make sure to pass the server and user names to the back-end server in the following pattern: <code><em>server-name/user-name</em></code>.</p>
+<p>When you use a procedure to connect to a back-end server that uses NTLM protocol without specifying the <code>connectAs</code> attribute, use the <code>&lt;serveridentity&gt;</code> element of the adapter XML file as child element of the <code>&lt;authentication&gt;</code> element. Also add the <code>&lt;ntlm workstation&gt;</code> child element, so that MobileFirst Server knows which authentication method to use when connecting to the back end.</p>
+<p>Make sure to pass the server and user names to the back-end server in the following pattern: <em>`server-name/user-name`</em>.</p>
 <p>{% highlight xml linenos %}
 <connectivity>
     <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
@@ -81,7 +81,7 @@ This is the MobileFirst Server default behavior.</p>
 </loginModule>
 {% endhighlight %}
   </li>
-<li>Add the <code><authentication></code> element and its <code><ntlm workstation></code> child element to the adapter XML file, so that MobileFirst Server knows which authentication method to use when connecting to the back end:<br />
+<li>Add the <code>&lt;authentication&gt;</code> element and its <code>&lt;ntlm workstation&gt;</code> child element to the adapter XML file, so that MobileFirst Server knows which authentication method to use when connecting to the back end:<br />
 {% highlight xml linenos %}
 <connectivity>
     <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">

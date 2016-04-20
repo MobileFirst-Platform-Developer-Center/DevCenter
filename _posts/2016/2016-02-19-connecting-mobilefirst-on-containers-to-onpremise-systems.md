@@ -6,6 +6,8 @@ tags:
 - Bluemix
 - IBM_Containers
 - On_premise
+version:
+- 7.1
 author:
   name: SRIKANTH K MURALI 
 ---

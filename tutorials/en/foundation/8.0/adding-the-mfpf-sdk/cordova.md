@@ -16,6 +16,9 @@ The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is re
 * cordova-plugin-mfp-push
 * cordova-plugin-mfp-jsonstore
 
+**Support level:**
+The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1** and **cordova-windows@4.2.0**.
+
 #### Jump to:
 
 - [Cordova SDK components](#cordova-sdk-components)
@@ -52,15 +55,16 @@ The cordova-plugin-mfp-push plug-in provides permissions needed to use push noti
 Follow the below instructions to add the MobileFirst Cordova SDK to either a new or existing Cordova project, and registering it in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
+If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
 
 > **Note:** If adding the SDK to an existing Cordova application, the plug-in overwrites the `MainActivity.java` for Android and `Main.m` for iOS.
 
 ### Adding the SDK
+Consider creating the project using the MobileFirst Cordova **application template**. The template adds to the Cordova project's **config.xml** file required MobileFirst-specific plug-in entries, as well as provides a MobileFirst-specific, ready-to-use, **index.js** file adjusted for MobileFirst application development.
 
-1. Create a Cordova project or use an existing one.
+#### New Application
 
-    Consider creating the project using the MobileFirst Cordova **application template**. The template adds to the Cordova project's **config.xml** file required MobileFirst-specific plug-in entries, as well as provides a MobileFirst-specific, ready-to-use, **index.js** file adjusted for MobileFirst application development.
+1. Create a Cordova project:
 
     ```bash
     cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
@@ -79,8 +83,29 @@ If using a locally installed server: From a **Command-line** window, navigate to
     ```bash
     cordova platform add ios
     ```
+    
+    > **Note:** Because the application was configured using the MobileFirst template, the MobileFirst core Cordova plug-in is added automatically as the platform is added in step 3.
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1** and **cordova-windows@4.2.0**
+#### Existing Application
+
+1. Navigate to the root of your existing Cordova project and add the MobileFirst core Cordova plug-in:
+
+    ```bash
+    cordova plugin add cordova-plugin-mfp
+    ```
+
+2. Navigate to the **www\js** folder and select the **index.js** file.
+
+3. Add the following function:
+
+    ```javascript
+    function wlCommonInit() {
+
+    }
+    ```
+
+The MobileFirst-provided API methods are available once the MobileFirst client SDK has been loaded. Once loaded, the `wlCommonInit` function is then called.  
+Use this function when trying to call the various MobileFirst-provided API methods.
 
 ### Registering the application
 
@@ -101,6 +126,10 @@ Each platform is registered as an application in MobileFirst Server.
 > 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
     
 > 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
+  
+### Using the SDK
+The MobileFirst-provided API methods are available once the MobileFirst client SDK has been loaded. Once loaded, the `wlCommonInit` function is then called.  
+Use this function when trying to call the various MobileFirst-provided API methods.
   
 ## Updating the MobileFirst Cordova SDK
 To update the MobileFirst Cordova SDK with the latest release, the **cordova-plugin-mfp** plug-in needs to be removed using the `cordova plugin remove cordova-plugin-mfp` command, followed by re-adding it: `cordova plugin add cordova-plugin-mfp`.

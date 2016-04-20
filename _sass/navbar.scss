@@ -27,7 +27,8 @@ $color_celeste_approx: #ccc;
         color: $white;
       }
       @media (max-width: $screen-xs-max) {
-        margin-left: 5px;
+          margin-left: 22px;
+          margin-top: 4px;
       }
     }
     .navbar-nav {
@@ -97,9 +98,6 @@ $color_celeste_approx: #ccc;
     margin-right: 0;
     @media (max-width: $screen-xs-max) {
       padding-right: 14px;
-    }
-    @media (max-width: 1262px) {
-      display:none;
     }
     #pnext-search-input {
       height: 33px;
