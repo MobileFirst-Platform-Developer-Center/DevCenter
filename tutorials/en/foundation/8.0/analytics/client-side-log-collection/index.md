@@ -32,34 +32,6 @@ Client log capture can be controlled via several ways:
 * [Logging in iOS applications](ios/)
 * [Logging in Android applications](android/)
 
-### Server Control of Client Log Capture
-Administrators can control the MobileFirst client SDK log capture and levels from the **MobileFirst Operations Console → [your application] → Log Filters**.  
-Through `Log Filters` you are able to create a filter level that you can log at.
-
-![Log filtering from the console](log-filtering.png)
-
-In order to use the server configuration the client has to use the `updateConfigFromServer` method in the `Logger` API.
-
-#### Android
-
-```java
-Logger.updateConfigFromServer();
-```
-
-#### iOS
-
-```objective-c
-[OCLogger updateConfigFromServer];
-```
-
-#### Cordova
-
-```javascript
-WL.Logger.updateConfigFromServer();
-```
-
-The `Logger` configuration values returned from the server will take precidence over any value set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client will receive an empty payload. If an empty payload is received then the `Logger` configuration will default to what was originally configured on the client.
-
 ### Crash capture
 The MobileFirst client SDK, on Android and iOS applications, captures a stack trace upon application crash and logs it at FATAL level. This type of crash is a true crash where the UI disappears from the user's view. In Cordova applications, captures JavaScript global errors and if possible a JavaScript call stack, and logs it at FATAL level. This type of crash is not a crash event, and might or might not have any adverse consequences to the user experience at run time.
 
