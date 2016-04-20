@@ -22,7 +22,7 @@ You can use IBM WebSphere DataPower as a front-end reverse proxy and security ga
 > This article assumes prior knowledge of other MobileFirst features, such as challenge handlers, security tests, realms, login modules, and procedure invocation.
 
 ## Supported versions
-This pattern, samples and blog post were designed to work with DataPower 7.0.0.10 and MobileFirst Platform 7.1.0.00-20160125-0742. Make sure you are using the latest client SDK as some issues have been resolved recently (see APARs PI59119, PI51627, PI59120).
+This pattern, samples and blog post were designed to work with DataPower 7.0.0.10 and MobileFirst Platform 7.1.0.00-20160419-1518. Make sure you are using the latest client SDK as some issues have been resolved recently (see APARs PI59119, PI51627, PI59120).
 
 This also requires MobileFirst Platform to run on an application server that supports LTPA tokens.
 
