@@ -3,7 +3,7 @@ layout: tutorial
 title: Application Authenticity 
 breadcrumb_title: Application Authenticity
 relevantTo: [android,ios,windows,cordova]
-weight: 7
+weight: 8
 ---
 ## Overview
 By issuing an HTTP request, an entity can access to corporate HTTP services (APIs) IBM MobileFirst Platform Foundation Server provides access to. The predefined application-authenticity [security check](../authorization-concepts/) ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.

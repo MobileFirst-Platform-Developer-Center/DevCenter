@@ -1,7 +1,9 @@
 ---
+layout: tutorial
 title: Step Up Authentication
-breadcrumb_title: Step Up
+breadcrumb_title: Step Up Authentication
 relevantTo: [android,ios,windows,cordova]
+weight: 5
 ---
 ## Overview
 
