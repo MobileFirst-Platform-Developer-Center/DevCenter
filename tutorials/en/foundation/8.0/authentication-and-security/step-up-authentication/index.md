@@ -130,7 +130,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ## Challenge Handlers
 In the client-side, there are no special APIs to handle multiple steps. Rather, each challenge handler should handle its own challenge. In this example you need to register two separate challenge handlers: One to handle challenges from `StepUpUserLogin` and one to handle challenges from `StepUpUserLogin`.
 
-<img alt="JSONStore sample app" src="sample-application.png" style="float:right"/>
+<img alt="Step-up sample application" src="sample_application.png" style="float:right"/>
 ## Sample Applications
 
 ### Security check
