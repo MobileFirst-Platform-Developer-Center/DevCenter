@@ -139,6 +139,7 @@ The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the S
 
 ### Applications
 Sample applications are available for iOS (Swift), Android and Cordova.
+
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) the Cordova project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) the iOS project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80) the Android project.
@@ -147,7 +148,7 @@ Sample applications are available for iOS (Swift), Android and Cordova.
 * Use either Maven or MobileFirst CLI to [build and deploy the available **StepUpUserLogin**, **StepUpPinCode** and **Resource** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the application's root folder and run the command: `mfpdev app register`.
 * Scope mapping:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a scope mapping.
+    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks**, add a scope mapping.
         * Map the `accessRestricted` scope to the `StepUpUserLogin` security check.
         * Map the `transferPrivilege` scope to both the `StepUpUserLogin` and and `StepUpPinCode` security checks.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
