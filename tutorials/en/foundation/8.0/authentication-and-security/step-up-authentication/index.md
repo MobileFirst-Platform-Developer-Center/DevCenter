@@ -16,9 +16,9 @@ For example, in this tutorial we'll describe an application that has some resour
 #### Jump to:
 
 * [Referencing a Security Check](#referencing-a-security-check)
-* [State Machine](state-machine)
-* [The Authorize Method](the-authorize-method)
-* [Challenge Handlers](Challenge-Handlers)
+* [State Machine](#state-machine)
+* [The Authorize Method](#the-authorize-method)
+* [Challenge Handlers](#challenge-handlers)
 * [Sample Applications](#sample-applications)
 
 ## Referencing a Security Check
