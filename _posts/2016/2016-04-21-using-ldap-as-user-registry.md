@@ -1,5 +1,5 @@
 ---
-title: IBM MobileFirst Platform Foundation 8.0 Beta working with LDAP and LTPA
+title: Working with LDAP and LTPA in IBM MobileFirst Platform Foundation 8.0 Beta
 date: 2016-04-21
 version:
 - 8.0
@@ -14,14 +14,14 @@ author:
   name: Ishai Borovoy
 ---
 ## Introduction
-The ability to connect the application to a user registry  is important if you need user authentication in production.  You might want your users to be able to connect to your app with the same credentials they use to connect to other resources in the enterprise, or you just need to connect the user to the registry.  [LDAP](https://www.wikiwand.com/en/Lightweight_Directory_Access_Protocol) is an established protocol for connecting to a user registry.  
+The ability to connect an application to a user registry is an important ability.  You might want your users to be able to connect to your app with the same credentials they use to connect to other resources in the enterprise, or you just need to connect the user to the registry.  [LDAP](https://www.wikiwand.com/en/Lightweight_Directory_Access_Protocol) is an established protocol for connecting to a user registry.  
 
-In this blog, I am presenting how to connect your MobileFirst Platform server to [LDAP](https://www.wikiwand.com/en/Lightweight_Directory_Access_Protocol) and allow the mobile users to authenticate.
+In this blog, I am presenting how to connect your MobileFirst Server to [LDAP](https://www.wikiwand.com/en/Lightweight_Directory_Access_Protocol) and allow the users to authenticate.
 
 [LTPA](https://www.wikiwand.com/en/IBM_Lightweight_Third-Party_Authentication), is an authentication technology used in IBM WebSphere products. When accessing web servers that use the LTPA technology it is possible for a user to re-use their login across physical servers.
 
 ## The hands-on tutorial
-Check the hands-on tutorial in [sample's repository.](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/ltpa-sample)
+Check the hands-on tutorial [in the GitHub repository](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/ltpa-sample).
 
 ## The big picture
 Here is diagram to better understand the flow:  
