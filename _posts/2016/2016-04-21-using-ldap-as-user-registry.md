@@ -14,14 +14,13 @@ author:
   name: Ishai Borovoy
 ---
 ## Introduction
-The ability to connect an application to a user registry is an important ability.  You might want your users to be able to connect to your app with the same credentials they use to connect to other resources in the enterprise, or you just need to connect the user to the registry.  [LDAP](https://www.wikiwand.com/en/Lightweight_Directory_Access_Protocol) is an established protocol for connecting to a user registry.  
+The ability to connect an application to a user registry is an important ability. You may want your users to be able to connect to your backend with the same credentials they use to connect to other resources in the enterprise, or you just need to connect the user to the registry. [LDAP](https://www.wikiwand.com/en/Lightweight_Directory_Access_Protocol) is an established protocol for connecting to a user registry.
 
-In this blog, I am presenting how to connect your MobileFirst Server to [LDAP](https://www.wikiwand.com/en/Lightweight_Directory_Access_Protocol) and allow the users to authenticate.
+In this blog post I will show how to connect a MobileFirst Server to [LDAP](https://www.wikiwand.com/en/Lightweight_Directory_Access_Protocol) and allow the users to authenticate. The authentication will be done using [LTPA](https://www.wikiwand.com/en/IBM_Lightweight_Third-Party_Authentication). LTPA is an authentication technology used in IBM WebSphere products. When accessing web servers that use the LTPA technology it is possible for a user to re-use their login across physical servers.
 
-[LTPA](https://www.wikiwand.com/en/IBM_Lightweight_Third-Party_Authentication), is an authentication technology used in IBM WebSphere products. When accessing web servers that use the LTPA technology it is possible for a user to re-use their login across physical servers.
+You can find the sample application that is demonstrated in this blog post [in this GitHub repository](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/ltpa-sample).
 
-## The hands-on tutorial
-Check the hands-on tutorial [in the GitHub repository](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/ltpa-sample).
+In this hands-on sample, you will able to run an iOS application which can do authentication against remote LDAP server or against a basic user registry (both configured in server.xml).
 
 ## The big picture
 Here is diagram to better understand the flow:  
@@ -83,6 +82,3 @@ if (principal != null) {
    logger.fine("LTPABased authorization: sending challenge for " + getConfiguration().loginURL);
 }
 ```
-
-## Supported Versions
-IBM MobileFirst Platform Foundation 8.0
