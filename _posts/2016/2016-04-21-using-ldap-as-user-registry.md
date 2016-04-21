@@ -20,6 +20,8 @@ In this blog post I will show how to connect a MobileFirst Server to [LDAP](http
 
 You can find the sample application that is demonstrated in this blog post [in this GitHub repository](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/ltpa-sample).
 
+In this hands-on sample, you will able to run an iOS application which can do authentication against remote LDAP server or against a basic user registry (both configured in server.xml).
+
 ## The big picture
 Here is diagram to better understand the flow:  
 
