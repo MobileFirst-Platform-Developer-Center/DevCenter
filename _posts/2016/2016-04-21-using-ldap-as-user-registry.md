@@ -21,7 +21,7 @@ In this blog, I am presenting how to connect your MobileFirst Server to [LDAP](h
 [LTPA](https://www.wikiwand.com/en/IBM_Lightweight_Third-Party_Authentication), is an authentication technology used in IBM WebSphere products. When accessing web servers that use the LTPA technology it is possible for a user to re-use their login across physical servers.
 
 ## The hands-on tutorial
-Check the hands-on tutorial [in the GitHub repository](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/ltpa-sample).  In this hands-on tutorial, you will able to run an iOS application which can do authentication against remote LDAP server or against basic user registry (both configured in server.xml).
+Check the hands-on tutorial [in the GitHub repository](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/ltpa-sample).
 
 ## The big picture
 Here is diagram to better understand the flow:  
