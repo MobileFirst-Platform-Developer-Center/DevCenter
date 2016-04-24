@@ -17,9 +17,6 @@ gems:
 sass:
   style: :compressed
   
-product_latest_versions:
-    adapter_maven_plugin: "8.0.0"	
-
 defaults:
   -
     scope:

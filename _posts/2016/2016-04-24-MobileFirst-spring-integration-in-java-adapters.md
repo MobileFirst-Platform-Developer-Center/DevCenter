@@ -30,13 +30,13 @@ This way, it make sense to let classes to depend only on the interfaces of their
 
 
 ## Dependency injection in adapters
-In the following tutorial we will explain how to integrate Spring into a MobileFirst Java adapter by using this module, so that you will be able to write your adapter's code using dependency injection. Your code will become much more modular, clean and testable this way
+In the following tutorial we will explain how to integrate Spring into a MobileFirst Java adapter by using [Spring framework integration for MobileFirst adapters](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/mfp-adapters-spring-integration) module, so that you will be able to write your adapter's code using dependency injection. Your code will become much more modular, clean and testable this way
 
 ## Prerequisits
 
 Make sure maven is installed
 
-####Install mfp-adapters-spring-integration in your local Maven reposiroty
+####Install Spring framework integration for MobileFirst adapters in your local Maven reposiroty
 We will use the open source extension module: [Spring framework integration for MobileFirst adapters](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/mfp-adapters-spring-integration) to make it easier to integrate spring into the adapter
 
 Clone the git repository: https://github.com/mfpdev/mfp-advanced-adapters-samples
@@ -57,7 +57,7 @@ Now the spring extension module is installed on your local Maven repository
 Start by creating a regular MobileFirst adapter:
 
 ```
-mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=adapter-maven-archetype-java -DarchetypeVersion={{site.product_latest_versions.adapter_maven_plugin}} -DgroupId=com.sample -DartifactId=my-spring-xml-adapter -Dpackage=com.sample
+mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=adapter-maven-archetype-java  -DgroupId=com.sample -DartifactId=my-spring-xml-adapter -Dpackage=com.sample
 ```
 
 The following file structure is created by executing the above command:
