@@ -16,7 +16,7 @@ gems:
   - jekyll-sitemap
 sass:
   style: :compressed
-  
+
 defaults:
   -
     scope:
