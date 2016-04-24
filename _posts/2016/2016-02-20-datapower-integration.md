@@ -11,7 +11,7 @@ author:
   name: Nathan Hazout
 ---
 ## Introduction
-You can use IBM® WebSphere® DataPower® in the Demilitarized Zone (DMZ) of your enterprise to protect MobileFirst mobile application traffic.
+You can use IBM® WebSphere® DataPower® in the DMZ of your enterprise to protect MobileFirst mobile application traffic.
 
 Protecting mobile application traffic that comes into your network from customer and employee devices involves preventing data from being altered, authenticating users, and allowing only authorized users to access applications. To protect mobile application traffic that is initiated by a client MobileFirst application, you can use the security gateway features of IBM WebSphere DataPower.
 
