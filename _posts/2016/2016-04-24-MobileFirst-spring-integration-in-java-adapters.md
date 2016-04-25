@@ -31,7 +31,7 @@ This way, it make sense to let classes to depend only on the interfaces of their
 ## Dependency injection in adapters
 In this blog post I will explain how to integrate Spring into a MobileFirst Java adapter by using the [Spring framework integration for MobileFirst adapters](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/mfp-adapters-spring-integration) module, so that you will be able to write your adapter's code using dependency injection. Your code will become much more modular, clean and testable this way.
 
-## Prerequisits
+## Prerequisites
 Make sure [Maven is installed](http://maven.apache.org/).
 
 #### Install Spring framework integration for MobileFirst adapters in your local Maven reposiroty
