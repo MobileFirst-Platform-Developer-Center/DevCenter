@@ -1,6 +1,6 @@
 ---
 title: Client-side log collection
-breadcrumb_title: Log collection
+breadcrumb_title: Client-side Log Collection
 relevantTo: [ios,android,cordova]
 weight: 2
 ---

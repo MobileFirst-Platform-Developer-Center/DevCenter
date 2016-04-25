@@ -1,6 +1,6 @@
 ---
 title: Server-side log collection
-breadcrumb_title: Log collection
+breadcrumb_title: Server-side Log collection
 relevantTo: [ios,android,cordova,adapters]
 weight: 2
 ---
@@ -45,8 +45,12 @@ WL.Logger.updateConfigFromServer();
 
 The `Logger` configuration values returned from the server will take precidence over any value set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client will receive an empty payload. If an empcdty payload is received then the `Logger` configuration will default to what was originally configured on the client.
 
-## Additional Packages
-The MobileFirst Platform Foundation Operations Console also gives the server administrator the ability to persist logs from specified packages and send those logs to the analytics server. This is useful for a user when they want to take advantage of triaging adapter logs in the analytics console without having to collect all server logs. 
+## Forwarding Server Logs
+The MobileFirst Platform Foundation Operations Console also gives the server administrator the ability to persist logs and send those logs to the MobileFirst Analytics Console. 
+
+To forward server logs navigate to the `Runtime Settings`
+
+The from specified packages and send those logs to the analytics server. This is useful for a user when they want to take advantage of triaging adapter logs in the analytics console without having to collect all server logs. 
 
 ## Adapter Logs
 
