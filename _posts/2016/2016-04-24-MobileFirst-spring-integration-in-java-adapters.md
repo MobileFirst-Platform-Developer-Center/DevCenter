@@ -1,5 +1,5 @@
 ---
-title: Spring framework integration in adapters IBM MobileFirst Platform Foundation 8.0 Beta
+title: Spring framework integration with Adapters in IBM MobileFirst Platform Foundation 8.0 Beta
 date: 2016-04-24
 version:
 - 8.0
