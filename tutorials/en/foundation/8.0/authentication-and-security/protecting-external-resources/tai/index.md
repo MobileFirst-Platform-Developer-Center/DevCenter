@@ -66,7 +66,7 @@ Add a security constraint and a security role to the `web.xml` file of the WebSp
    </auth-constraint>
 </security-constraint>
 
-<security-role id="SecurityRole_TAIUserRole"; >
+<security-role id="SecurityRole_TAIUserRole">
    <description>This is the role that MFP OAuthTAI uses to protect the resource, and it is required to be mapped to 'All Authenticated in Application' in WAS and 'ALL_AUTHENTICATED_USERS' in Liberty</description>
    <role-name>TAIUserRole</role-name>
 </security-role>

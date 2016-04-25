@@ -130,6 +130,8 @@ In this example, in one line:
 WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
 ```
 
+**Note:** Registering the challenge handler should only happen once in the entire application lifecycle. It is recommended to use the iOS AppDelegate class to do it.
+
 ## Sample application
 The sample **PinCodeSwift** is an iOS Swift application that uses `WLResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
@@ -142,9 +144,9 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 * Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`. 
+    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
-        
+
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
 
 ![Sample application](sample-application.png)
