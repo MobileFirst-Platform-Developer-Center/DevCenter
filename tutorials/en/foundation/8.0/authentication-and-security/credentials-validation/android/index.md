@@ -148,6 +148,8 @@ WLClient client = WLClient.createInstance(this);
 client.registerChallengeHandler(pinCodeChallengeHandler);
 ```
 
+**Note:** Creating a `WLClient` instance and registering the challenge handler should only happen once in the entire application lifecycle. It is recommended to use the Android Application class to do it.
+
 ## Sample application
 The sample **PinCodeAndroid** is an Android application that uses `WLResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
