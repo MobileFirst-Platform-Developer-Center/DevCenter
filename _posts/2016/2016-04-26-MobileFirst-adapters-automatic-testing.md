@@ -1,6 +1,6 @@
 ---
 title: Automatic testing of Adapters in IBM MobileFirst Platform Foundation 8.0 Beta (Part 1)
-date: 2016-04-24
+date: 2016-04-26
 version:
 - 8.0
 tags:
