@@ -6,10 +6,10 @@ custom_js:
 ---
 <div class="container-fluid tutorial">
     <div class="row">
-        <div class="hidden-xs col-sm-2">
+        <div class="sidebar hidden-xs col-lg-2 col-sm-3">
             {% include tutorialNav.html %}
         </div>
-        <div class="col-sm-8 tutorial-center-div">
+        <div class="col-sm-9 col-lg-8 tutorial-center-div">
             <h1>{{ page.title}}</h1>
             {% include contribute.html %}
             {% include breadcrumb.html %} {% if page.downloads %}
@@ -33,7 +33,7 @@ custom_js:
 
             {% include disqus.html %}
         </div>
-        <div class="hidden-xs col-sm-2">
+        <div class="hidden-md col-lg-2">
 
         </div>
     </div>
