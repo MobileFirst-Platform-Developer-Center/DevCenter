@@ -1,5 +1,5 @@
 ---
-title: Automatic testing adapters IBM MobileFirst Platform Foundation 8.0 Beta (Part 1)
+title: Automatic testing of Adapters in IBM MobileFirst Platform Foundation 8.0 Beta (Part 1)
 date: 2016-04-24
 version:
 - 8.0
@@ -14,22 +14,20 @@ author:
   name: Yotam Madem
 ---
 ## Introduction
-Software testing is extremely important for releasing software. Actually it is so critical that most organizations won't even publish a new release without properly test it.
+Software testing is an important aspect in software development. It is so critical, that most organizations won't even publish a new release without properly testing it.
 
-Testing can be done manually by people who test the apps and APIs to make sure the functionality of existing features is not broken.
+The problem with manual testing is the slowness of the process. Developers must wait for testers to test before a new version can be released, and testers must wait for developers to fix the defects they found before they can verify the fixes.
 
-The problem with manual testing is the slowness of the process. Dev must wait for testers to test until they can release, testers must wait for dev to fix the defects they found until they can verify the fixes.
+Automated tests aim to solve this by replacing most of the manual test with a set of automated tests which are running automatically as part of the delivery process of the development organisation.
 
-Automated tests aim to solve this by replacing most of the manual test cases that should be executed by a set of automated tests which are running automatically as part of the delivery process of the development organisation.
-
-Having high coverage in automated tests as well as reliable tools and infrastructure that will run those can make it much easier for the dev organisation to release frequently and with confidence that existing functionality was not broken due to release of new features.
+Having high coverage in automated tests as well as reliable tools and infrastructure that will run those can make it much easier for the organisation to release frequently and with confidence that existing functionality was not broken due to release of new features.
 
 ## Automated tests in MobileFirst adapters
-Automatically testing MobileFirst adapters became very easy as soon as we released our Adapters Maven plugin which enables you to develop adapters using Maven. Maven makes it simple to integrate with open source libraries such as JUnit and Spring testing framework so that it becomes really straight forward to put together the infrastructure for developing automated tests for adapters.
+Automatically testing MobileFirst adapters became very easy as soon as we released our Adapters Maven plug-in, which enables to develop adapters using Maven. Maven makes it simple to integrate with open source libraries such as JUnit and Spring testing framework, so that it becomes really straightforward to put together the infrastructure for developing automated tests for adapters.
 
 ## Creating adapter with automated test
 
-In this tutorial you will learn how to create an adapter and cover it's functionality by a set of automated tests. We are going to use JUnit and spring testing framework to achieve this goal.
+In this blog post you will learn how to create an adapter and cover its functionality by a set of automated tests. We are going to use JUnit and Spring testing framework to achieve this goal.
 
 ### Prerequisits
 
@@ -75,13 +73,14 @@ public class AdapterWithAutoTestsResource {
 }
 ```
 
-As you can see we have 2 resources in this adapter: one is protected: /resource/protected/{p}, other is unprotected: /resource/unprotected/{p}.
-First, let's going to write automated test for the unprotected resource (since this is simpler for start)
+As you can see we have two resources in this adapter: one is protected: /resource/protected/{p}, and the second is unprotected: /resource/unprotected/{p}.
+
+First, lets write an automated test for the unprotected resource (since this is simpler to start with).
 
 ### Change the pom.xml
 
 #### Add dependencies for tests
-In order to use JUnit we need to add the following dependency to the adapter's pom.xml:
+In order to use JUnit we need to add the following dependency to the adapter's **pom.xml**:
 
 ```xml
 <dependency>
@@ -93,7 +92,7 @@ In order to use JUnit we need to add the following dependency to the adapter's p
 
 ```
 
-In addition to JUnit, we need to add the following dependencies in order to use the spring testing framework:
+In addition to JUnit, we need to add the following dependencies in order to use the Spring testing framework:
 
 ```xml
 <dependency>
@@ -127,7 +126,7 @@ In addition to JUnit, we need to add the following dependencies in order to use 
 
 ### Write your first test
 
-Create the folder: test/java under "src" folder of the adapter project
+Create the folder "test/java" under the "src" folder of the adapter project.
 
 ```
 mkdir src/test
@@ -172,7 +171,7 @@ mvn clean install adapter:deploy
 Then we can run the integration tests:
 
 ```
-mvn failsafe:verify
+mvn failsafe:integration-test failsafe:verify
 ```
 
 Maven should now run the test and we should get the following output:
@@ -341,4 +340,4 @@ public class MyAdapterIT {
 
 In the above case, the file defaults.properties is not used - the default value is hard coded instead
 
-Sample for this repository: [Adapter with automatic tests sample](https://github.com/mfpdev/adapter-with-auto-tests)
+Sample code for this tutorial: [Adapter with automatic tests sample](https://github.com/mfpdev/adapter-with-auto-tests)
