@@ -340,4 +340,4 @@ public class MyAdapterIT {
 
 In the above case, the file defaults.properties is not used - the default value is hard coded instead
 
-Sample code for this tutorial: [Adapter with automatic tests sample](https://github.com/mfpdev/adapter-with-auto-tests)
+Sample code for this blog post: [Adapter with automatic tests sample](https://github.com/mfpdev/adapter-with-auto-tests)
