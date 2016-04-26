@@ -35,6 +35,10 @@ $color_celeste_approx: #ccc;
       > li {
         > a {
           color: $white;
+          @media (max-width: $screen-sm-max) {
+            padding-left: 5px;
+            padding-right: 7px;
+          }
           &:hover {
             color: $white;
           }
