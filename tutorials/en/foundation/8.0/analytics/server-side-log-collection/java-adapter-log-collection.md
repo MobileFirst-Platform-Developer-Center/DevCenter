@@ -9,6 +9,8 @@ This tutorial provides the required code snippets in order to add logging capabi
 
 In the MobileFirst Platform Foundation Operation Console go to the `Runtime` menu selection in the navbar on the left. Under the `Runtime Properties` tab Additional packages can be selected in order to send to the analytics server. Here specifify the class name of the java adapter in which logs are suppose to be sent to the server.
 
+![Log filtering from the console](java-filter.png)
+
 ## Logging example
 Import the java logging package:
 

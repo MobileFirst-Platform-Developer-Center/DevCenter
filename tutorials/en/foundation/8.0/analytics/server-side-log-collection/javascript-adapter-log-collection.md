@@ -7,7 +7,9 @@ This tutorial provides the required code snippets in order to add logging capabi
 
 ## Server Setup
 
-In the MobileFirst Platform Foundation Operation Console go to the `Runtime` menu selection in the navbar on the left. Under the `Runtime Properties` tab Additional packages can be selected in order to send to the analytics server. Here specifify `MFP.Logger` to forward JavaScript Adapter logs to the server.
+In the MobileFirst Platform Foundation Operation Console go to the `Runtime` menu selection in the navbar on the left. Under the `Runtime Properties` tab Additional packages can be selected in order to send to the analytics server. Here specify `MFP.Logger` to forward JavaScript Adapter logs to the server.
+
+![Log filtering from the console](javascript-filter.png)
 
 ## Logging example
 The message below outputs to the `trace.log` file of the MobileFirst Platform Foundation Operations Console server. If the server administrator is forwarding logs from the Operations Console to the Analytics Console the `logger` message will also appear in the Server Log Search.
