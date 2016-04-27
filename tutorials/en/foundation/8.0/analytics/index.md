@@ -109,7 +109,8 @@ http://localhost:9500/*/_mapping
 
 ## Tutorials to follow next
 
-* [Client-side log collection](remote-controlled-client-side-log-collection)
+* [Client-side log collection](client-side-log-collection)
+* [Server-side log collection](server-side-log-collection)
 * [Analytics API](analytics-api)
 
 ## Related Blogposts
