@@ -2,7 +2,7 @@
 layout: tutorial
 title: Enabling the MobileFirst CLI in Eclipse
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: Eclipse
+breadcrumb_title: MobileFirst Eclipse plug-in
 weight: 2
 ---
 
@@ -11,7 +11,7 @@ weight: 2
 Using the Cordova CLI you can create and manage your Cordova applications. You can also achieve the same in the Eclipse IDE by using the [THyM](https://www.eclipse.org/thym/) plug-in.
 ​
 
-THyM provides support for importing and managing Cordova projects in Eclipse. You can create new Cordova projects, as well as import existing Cordova projects. You can also install Cordova plugins into your project through this plugin.
+THyM provides support for importing and managing Cordova projects in Eclipse. You can create new Cordova projects, as well as import existing Cordova projects. You can also install Cordova plug-ins into your project through this plug-in.
 ​
 
 Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
