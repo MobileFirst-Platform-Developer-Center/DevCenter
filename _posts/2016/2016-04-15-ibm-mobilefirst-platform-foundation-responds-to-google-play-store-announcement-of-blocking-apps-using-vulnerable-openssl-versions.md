@@ -31,10 +31,7 @@ After installing the iFix, rebuild the application, create a new APK, and upload
 
 The Google Play Store is notifying app developers that . Beginning July 11, 2016, Google Play will block publishing of any new apps or updates that use older versions of OpenSSL. If you’re using a 3rd party library that bundles OpenSSL, you’ll need to upgrade it to a version that bundles OpenSSL 1.02f/1.01r or higher. 
 
-The iFixes are available from Fix Central with any build dated April 28, 2016 or afterwards. That is, all builds dated on or after April 28, 2016 contain all of the CVE fixes.
+The iFixes are available from Fix Central with any build dated April 27, 2016 or afterwards. That is, all builds dated on or after April 28, 2016 contain all of the CVE fixes.
 
 The IBM distribution of OpenSSL is embedded in the MobileFirst Platform Foundation product, and the vulnerability fixes to OpenSSL are delivered as a MobileFirst Platform Foundation iFix. 
-
-IBM is engaged in discussion with the Google Play Store, as has been done in the past, to avoid flagging Apps built with IBM MobileFirst Platform Foundation that do not contain vulnerabilities.
-
-This blog post will be updated once we have a resolution and Apps are no longer being flagged in the Play Store.
+ 
