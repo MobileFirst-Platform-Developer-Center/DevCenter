@@ -9,7 +9,7 @@ version:
 author:
   name: S.A.Norton Stanley
 ---
-![Android N](https://dl.dropboxusercontent.com/u/97674776/android-n.jpg)
+![Android N](https://dl.dropboxusercontent.com/s/rmfo7nscx2yhf9r/android-n.png?dl=0)
 Google took pretty much everyone by surprise when it debuted a developer preview of [Android N](http://developer.android.com/preview/index.html), over two months before the expected announcement at Google I/O. To run and test your app on the new platform you need to set up an [Android N runtime environment](http://developer.android.com/preview/download.html).
 
 The developer preview version provides a flavour of the new [features](http://developer.android.com/preview/api-overview.html) like Multi-window support, Notification enhancements, Doze on the go, Data Saver.

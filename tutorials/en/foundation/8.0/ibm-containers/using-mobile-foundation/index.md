@@ -9,8 +9,6 @@ weight: 6
 This tutorial provides step-by-step instructions to set-up a MobileFirst Server instance on IBM Containers using the **Mobile Foundation** service.  
 Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-up of scaleable Developer or Production environments of MobileFirst Platform Foundation v8.0 Beta on **IBM Containers**.
 
-> **Prerequisite:** Make sure to read the [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../) tutorial.
-
 #### Jump to:
 
 * [Using the Mobile Foundation Bluemix service](#using-the-mobile-foundation-bluemix-service)
