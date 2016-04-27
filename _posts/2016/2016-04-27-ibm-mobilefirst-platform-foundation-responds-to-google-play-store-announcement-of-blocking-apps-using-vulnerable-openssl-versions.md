@@ -15,9 +15,11 @@ author:
   name: Nana Amfo
 ---
 
-The Google Play Store is notifying app developers that . Beginning July 11, 2016, Google Play will block publishing of any new apps or updates that use older versions of OpenSSL. If you’re using a 3rd party library that bundles OpenSSL, you’ll need to upgrade it to a version that bundles OpenSSL 1.02f/1.01r or higher.  
+The Google Play Store has sent the following notification to app developers:
 
-Related APAR: PI60605 OPENSSL RECEIVED SECURITY UPDATES AND MUST BE UPGRADED TO 1.0.2F
+> Beginning July 11, 2016, Google Play will block publishing of any new apps or updates that use older versions of OpenSSL. If you’re using a 3rd party library that bundles OpenSSL, you’ll need to upgrade it to a version that bundles OpenSSL 1.02f/1.01r or higher.  
+
+**Related APAR:** PI60605 OPENSSL RECEIVED SECURITY UPDATES AND MUST BE UPGRADED TO 1.0.2F
 
 The IBM distribution of OpenSSL is embedded in the MobileFirst Platform Foundation product, and the vulnerability fixes to OpenSSL are delivered as a MobileFirst Platform Foundation iFix. 
 
