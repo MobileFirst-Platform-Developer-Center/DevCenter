@@ -28,7 +28,6 @@ var spinner = new Spinner(opts);
 var MFPSEARCH = {
     client: null,
     queryTerm: null,
-    params: {},
     body: {},
     pageSize: 10,
     total: 0,
@@ -82,12 +81,12 @@ var MFPSEARCH = {
     },
     nextPage: function() {
         this.from = this.from + this.pageSize;
-        this.params.from = this.from;
+        this.body.from = this.from;
         this.executeSearch();
     },
     previousPage: function() {
         this.from = this.from - +this.pageSize;
-        this.params.from = this.from;
+        this.body.from = this.from;
         this.executeSearch();
     },
     init: function() {
@@ -97,9 +96,6 @@ var MFPSEARCH = {
         });
         this.queryTerm = this.getParameterByName('q');
         if (this.queryTerm !== null) {
-            this.params = {
-                q: this.queryTerm
-            };
             this.body = {
                 body: {
                   "query": {
