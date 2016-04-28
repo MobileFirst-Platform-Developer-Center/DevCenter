@@ -6,13 +6,22 @@ relevantTo: [cordova]
 weight: 1
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are registered using the MobileFirst Operations Console, an "skeleton" Cordova project is downloaded and edited to call the adapter, and the result is displayed - verifying a successful connection with the MobileFirst Server.
+The purpose of this demonstration is to experience an end-to-end flow:
+
+1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
+2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
+3. The application logic is changed to make a resource request.
+
+**End result**:
+
+* Successfully pinging the MobileFirst Server.
+* Successfully retrieving data using a MobileFirst Adapter.
 
 #### Prerequisites:
 
 * Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
-* MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
-* Cordova 6.0 CLI
+* Cordova 6.0.0 CLI (v6.1.0 is **not supported**)
+* *Optional*. MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -21,21 +30,21 @@ The purpose of this demonstration is to experience an end-to-end flow where an a
 
 From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
-### 2. Creating an application
+### 2. Creating and registering an application
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
-1. Click on the "New" button next to **Applications**
+1. Click the **New** button next to **Applications**
     * Select a platform: **Android, iOS, Windows**
-    * Enter **com.ibm.sample** as the **application identifier**
-    * Enter **1.0.0** as the **version** value
+    * Enter **com.ibm.mfpstartercordova** as the **application identifier**
+    * Enter **1.0.0** as the **version** value for iOS and Windows, or **1.0** for Android
     * Click on **Register application**
 
-    ![Image of selecting platform, and providing an identifier and version](register-an-application-cordova.png)
+    <img class="gifplayer" alt="Register an application" src="register-an-application-cordova.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Cordova mobile app scaffold.
+2. Click on the **Get Starter Code** tile and select to download the Cordova application scaffold.
 
-    ![Image of creating a sample application](download-starter-code-cordova.png)
+    <img class="gifplayer" alt="Download sample application" src="download-starter-code-cordova.png"/>
  
 ### 3. Editing application logic
 
@@ -45,41 +54,43 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ```javascript
     WLAuthorizationManager.obtainAccessToken()
-    .then (
-        function(accessToken) {
-            var statusText = document.getElementById("statusText");
-            statusText.innerHTML = "Obtained Access Token Successfully";
-          
-            var resourceRequest = new WLResourceRequest(
-                "/adapters/javaAdapter/users/world",
-                WLResourceRequest.GET
-            );
+        .then(
+            function(accessToken) {
+                titleText.innerHTML = "Yay!";
+                statusText.innerHTML = "Connected to MobileFirst Server";
+                
+                var resourceRequest = new WLResourceRequest(
+                    "/adapters/javaAdapter/resource/greet/",
+                    WLResourceRequest.GET
+                );
+                
+                resourceRequest.setQueryParameter("name", "world");
+                resourceRequest.send().then(
+                    function(response) {
+                        // Will display "Hello world" in an alert dialog.
+                        alert("Success: " + response.responseText);
+                    },
+                    function(response) {
+                        alert("Failure: " + JSON.stringify(response));
+                    }
+                );
+            },
 
-            resourceRequest.send().then(
-                function(response) {
-                    // Will display "Hello world" in an alert dialog.
-                    alert("Success: " + response.responseText);
-                },
-                function(response) {
-                    alert ("Failure: " + response.errorMsg);
-                }
-            );
-        },
-        
-        function(error) {
-            var statusText = document.getElementById("statusText");
-            statusText.innerHTML = "Failed to obtain access token: " + JSON.stringify(error);
-        }
-    );
+            function(error) {
+                titleText.innerHTML = "Bummer...";
+                statusText.innerHTML = "Failed to connect to MobileFirst Server";
+            }
+        );
     ```
     
-### 4. Creating an adapter
-Click on the "New" button next to **Adapters**.  
-Alternatively, download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
+### 4. Deploy an adapter
+Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
+
+Alternatively, click the **New** button next to **Adapters**.  
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and MobileFirst Developer CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
@@ -89,28 +100,28 @@ Alternatively, download [this prepared .adapter artifact](../javaAdapter.adapter
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
-    ![Image of create an adapter](create-an-adapter.png)
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
 
-<img src="cordova-success.png" alt="Cordova application showing success response" style="float:right"/>
-
+<img src="cordovaQuickStart.png" alt="sample application" style="float:right"/>
 ### 5. Testing the application
 
-1. In the Cordova project, select the **config.xml** file and edit the  
+1. From a **Command-line** window, navigate to the Cordova project's root folder.
+2. Run the command: `cordova platform add ios/android/windows` to add a platform.
+3. In the Cordova project, select the **config.xml** file and edit the  
 `<mfp:server ... url=" "/>` value with the IP address of the MobileFirst Server.
 
-2. From a **Command-line** window, navigate to the Cordova project folder.
-
-3. Run the command: `cordova platform add ios/android/windows` to add a platform.
+    Alternatively, if you have installed the MobileFirst Develper CLI then navigate to the project root folder and run the command `mfpdev app register`.  If a remote server is used instead of a local server, first use the command `mfpdev server add` to add it.
 
 4. Run the command: `cordova run`.
 
 If a device is connected, the application will be installed and launched in the device,  
 Otherwise the Simulator or Emulator will be used.
 
-#### Results
-* Clicking on the **Test Server Connection** button will display **Client has connected to server**.
-* If the application was able to connect to the MobileFirst Server, a resource request call using the Java adapter will take place.
+<br clear="all"/>
+### Results
+* Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
+* If the application was able to connect to the MobileFirst Server, a resource request call using the deployed Java adapter will take place.
 
 The adapter response is then displayed in an alert.
 

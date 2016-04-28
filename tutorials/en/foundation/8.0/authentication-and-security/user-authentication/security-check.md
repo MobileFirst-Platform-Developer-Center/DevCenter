@@ -4,6 +4,9 @@ title: Implementing the UserAuthenticationSecurityCheck
 breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,cordova]
 weight: 1
+downloads:
+  - name: Download Security Checks
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 This abstract class extends `CredentialsValidationSecurityCheck` and builds upon it to fit the most common use-cases of simple user authentication. In addition to validating the credentials, it creates a **user identity** that will be accessible from various parts of the framework, allowing you to identify the current user. Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
@@ -20,10 +23,10 @@ This tutorial uses the example of a security check asking for a username and pas
 * [Creating the AuthenticatedUser object](#creating-the-authenticateduser-object)
 * [Adding Remember Me functionality](#adding-remember-me-functionality)
 * [Configuring the SecurityCheck](#configuring-the-securitycheck)
-* [Sample application](#sample-application)
+* [Sample security check](#sample-security-check)
 
 ## Creating the Security Check
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
+[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
 
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
@@ -51,9 +54,9 @@ The challenge is exactly the same as the one described in [Implementing the Cred
 ```java
 @Override
 protected Map<String, Object> createChallenge() {
-    HashMap challenge = new HashMap();
+    Map challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
-    challenge.put("remainingAttempts",remainingAttempts);
+    challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;
 }
 ```
@@ -128,6 +131,15 @@ You can use `this.getName()` to get the current security check name.
 
 `UserAuthenticationSecurityCheck` will call your `createUser()` implementation after a successful `validateCredentials`.
 
+### Storing attributes in the AuthenticatedUser
+`AuthenticatedUser` has an alternate constructor:
+
+```java
+AuthenticatedUser(String id, String displayName, String securityCheckName, Map<String, Object> attributes);
+```
+
+This constructor adds a `Map` of custom attributes to be stored with the user representation. This can be used to store additional information such as a profile picture, a website, etc. This information is accessible to the client side (challenge handler) and the resource (using introspection data).
+
 ## Adding Remember Me functionality
 `UserAuthenticationSecurityCheck` by default uses the `successStateExpirationSec` property to determine how long does the success state last; this property was inherited from `CredentialsValidationSecurityCheck`.
 
@@ -186,21 +198,17 @@ In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
-  <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
-  <property name="failureStateExpirationSec" defaultValue="10" displayName="How long before the client can try again (seconds)"/>
-  <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
-  <property name="rememberMeDurationSec" defaultValue="120" displayName="How long is the user remembered when using RememberMe (seconds)"/>
+  <property name="maxAttempts" defaultValue="3" description="How many attempts are allowed"/>
+  <property name="blockedStateExpirationSec" defaultValue="10" description="How long before the client can try again (seconds)"/>
+  <property name="successStateExpirationSec" defaultValue="60" description="How long is a successful state valid for (seconds)"/>
+  <property name="rememberMeDurationSec" defaultValue="120" description="How long is the user remembered when using RememberMe (seconds)"/>
 </securityCheckDefinition>
 ```
-As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `CredentialsValidationSecurityCheck` properties, such as `failureStateExpirationSec`, `successStateExpirationSec`, etc.
+As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `CredentialsValidationSecurityCheck` properties, such as `blockedStateExpirationSec`, `successStateExpirationSec`, etc.
 
 In addition, a `rememberMeDurationSec` property can also be configured.
 
-## Sample application
-To see a sample using this security check, review the below tutorials.  
-Select a platform:
+## Sample Security Check
+[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
-* [Implementing the challenge handler in Cordova applications](../cordova)
-* [Implementing the challenge handler in iOS applications](../ios)
-* [Implementing the challenge handler in Android applications](../android)
-* [Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../windows-8-10)
+The Maven project contains an implementation of UserAuthenticationSecurityCheck.

@@ -22,12 +22,11 @@ You can use Application Center in different contexts. For example:
 
 #### Jump to:
 
-* [Installing and configuring](#installAndConfig)
-* [Preparing mobile clients](#clients)
-* [Managing applications in the Application Center console](#managingApps)
-* [The Application Center mobile client](#mobileClient)
-* [Deploying applications from MobileFirst Studio](#deployingFromStudio)
-* [Application Center command-line tools](#cmdLineTools)
+* [Installing and configuring](#installing-and-configuring)
+* [Preparing mobile clients](#preparing-mobile-clients)
+* [Managing applications in the Application Center console](#managing-applications-in-the-application-center-console)
+* [The Application Center mobile client](#the-application-center-mobile-client)
+* [Application Center command-line tools](#application-center-command-line-tools)
 
 ## Installing and configuring
 Application Center is installed as part of the installation of MobileFirst Server with IBM Installation Manager.

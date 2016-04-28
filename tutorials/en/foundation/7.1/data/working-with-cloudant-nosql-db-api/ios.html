@@ -195,14 +195,14 @@ if(replicationError){
 <li>Cloudant Data Local Layer Edition</li>
 <li>MobileFirst Data Proxy Server configured against MobileFirst Server and the Cloudant Data Layer Local Edition</li>
 </ul>
-<p>If you have not completed some of these tasks, review the proper setup section of the <a href=" ../#overview/">Working with Cloudant NoSQL DB API</a> tutorial.</p>
+<p>If you have not completed some of these tasks, review the proper setup section of the <a href="../#overview">Working with Cloudant NoSQL DB API</a> tutorial.</p>
 <h2 id="sdks">Obtaining and configuring the required SDKs</h2>
 <ol>
 <li>Make sure that you have correctly installed and set up CocoaPods. If you have not done so, complete the following:
 <ol>
 <li>Install CocoaPods by entering the following terminal command:<br />
 {% highlight bash %}
-$ sudo gem install cocoapods 
+$ sudo gem install cocoapods
 {% endhighlight %}
 </li>
 <li>Set up CocoaPods by entering the following terminal command:<br />
@@ -245,7 +245,7 @@ pod 'IMFDataLocal/SQLCipher'
 {% endhighlight %}</p>
 <p>A <code>pod install</code> must be completed after these changes have been made in order to have the correct encryption dependencies configured. To accomplish this, navigate to the Xcode project directory in terminal (in the sample: <code>/BlueList-On-Premise/iOS/objective-c/</code>) and run the following command:</p>
 <p>{% highlight bash %}
-$ pod install 
+$ pod install
 {% endhighlight %}</p>
 <p>Now the project has the dependencies that are required to encrypt the local databases correctly. To encrypt these databases in your client-side code, first create an <code>CDTEncryptionKeyProvider</code> and then create a local data store with this <code>keyProvider</code>:</p>
 <p>{% highlight objc linenos %}

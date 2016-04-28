@@ -28,7 +28,7 @@ MobileFirst Adapters are Maven projects that contain server-side code implemente
 
 ### Benefits specific to Java adapters
 * Ability to fully control the URL structure, the content types, the request and response headers, content and encoding
-* Easy and fast development and testing by using the MobileFirst Developer CLI.
+* Easy and fast development and testing by using the MobileFirst CLI.
 * Ability to test the adapter by using a 3rd-party tool such as Postman
 * Easy and fast deployment to a running MobileFirst Server instance with no compromise on performance and no downtime
 * Security integration with the MobileFirst security model with no additional customization, by using simple annotations in the source code
@@ -43,7 +43,7 @@ The procedure retrieves information from the back-end application that returns d
 
 The JavaScript implementation of the procedure receives the JSON data, performs any additional processing, and returns it to the calling app.
 
-![javascript_adapters](javascript_adapters.jpg)
+![javascript_adapters](javascript_adapters.png)
 
 ## Java adapters
 Java adapters expose a full REST API to the client and are written in Java. This type of adapter is based on the [JAX-RS 2.0 specification] (https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html).

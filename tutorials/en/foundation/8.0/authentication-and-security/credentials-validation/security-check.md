@@ -4,6 +4,9 @@ title: Implementing the CredentialsValidationSecurityCheck
 breadcrumb_title: Security Check
 relevantTo: [android,ios,windows,cordova]
 weight: 1
+downloads:
+  - name: Download Security Checks
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 
 ## Overview
@@ -20,10 +23,10 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
 * [Configuring the SecurityCheck](#configuring-the-securitycheck)
-* [Sample application](#sample-application)
+* [Sample security check](#sample-security-check)
 
 ## Creating the Security Check
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
+[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
 
 ```java
 public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
@@ -49,14 +52,16 @@ For example, `PinCodeAttempts` sends a predefined error message and the number o
 ```java
 @Override
 protected Map<String, Object> createChallenge() {
-    HashMap challenge = new HashMap();
+    Map challenge = new HashMap();
     challenge.put("errorMsg",errorMsg);
-    challenge.put("remainingAttempts",remainingAttempts);
+    challenge.put("remainingAttempts",getRemainingAttempts());
     return challenge;
 }
 ```
 
-`remainingAttempts` is inherited from `CredentialsValidationSecurityCheck`.
+> The implementation of `errorMsg` is included in the sample application.
+
+`getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
 
 ## Validating the user credentials
 When the client sends the challenge's answer, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
@@ -86,7 +91,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 ```
 
 ### Configuration class
-Instead of hardcoding the valid PIN code, it can also be configured using the adapter.xml file and the MobileFirst Operations Console.
+You can also configure the valid PIN code by using the adapter.xml file and the MobileFirst Operations Console.
 
 Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent SecurityCheck in order to inherit the default configuration.
 
@@ -138,12 +143,12 @@ public SecurityCheckConfiguration createConfiguration(Properties properties) {
     return new PinCodeConfig(properties);
 }
 @Override
-protected PinCodeConfig getConfig() {
-    return (PinCodeConfig) super.getConfig();
+protected PinCodeConfig getConfiguration() {
+    return (PinCodeConfig) super.getConfiguration();
 }
 ```
 
-`getConfig().pinCode` can now be used to retrieve the default PIN code.  
+`getConfiguration().pinCode` can now be used to retrieve the default PIN code.  
 
 `validateCredentials` can be modified to use the PIN code from the configuration instead of the hardcoded value.
 
@@ -153,11 +158,11 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
     if(credentials!=null && credentials.containsKey(PINCODE_FIELD)){
         String pinCode = credentials.get(PINCODE_FIELD).toString();
 
-        if(pinCode.equals(getConfig().pinCode)){
+        if(pinCode.equals(getConfiguration().pinCode)){
             return true;
         }
         else {
-            errorMsg = "Pin code is not valid. Hint: " + getConfig().pinCode;
+            errorMsg = "Pin code is not valid. Hint: " + getConfiguration().pinCode;
         }
 
     }
@@ -176,10 +181,10 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
-  <property name="pinCode" defaultValue="1234" displayName="The valid PIN code"/>
-  <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
-  <property name="failureStateExpirationSec" defaultValue="60" displayName="How long before the client can try again (seconds)"/>
-  <property name="successStateExpirationSec" defaultValue="60" displayName="How long is a successful state valid for (seconds)"/>
+  <property name="pinCode" defaultValue="1234" description="The valid PIN code"/>
+  <property name="maxAttempts" defaultValue="3" description="How many attempts are allowed"/>
+  <property name="blockedStateExpirationSec" defaultValue="60" description="How long before the client can try again (seconds)"/>
+  <property name="successStateExpirationSec" defaultValue="60" description="How long is a successful state valid for (seconds)"/>
 </securityCheckDefinition>
 ```
 
@@ -195,23 +200,20 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
     maxAttempts = getIntProperty("maxAttempts", properties, 1);
     attemptingStateExpirationSec = getIntProperty("attemptingStateExpirationSec", properties, 120);
     successStateExpirationSec = getIntProperty("successStateExpirationSec", properties, 3600);
-    failureStateExpirationSec = getIntProperty("failureStateExpirationSec", properties, 0);
+    blockedStateExpirationSec = getIntProperty("blockedStateExpirationSec", properties, 0);
 }
 ```
 The properties defined by `CredentialsValidationSecurityCheckConfig` are:
+
 - `maxAttempts`: How many attempts are allowed before reaching a *failure*.
 - `attemptingStateExpirationSec`: Interval in seconds during which the client should provide valid credentials, and attempts are counted.
 - `successStateExpirationSec`: Interval in seconds during which the successful login holds.
-- `failureStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
+- `blockedStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
 
-Note that the default for `failureStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+Note that the default for `blockedStateExpirationSec` is set to `0`, which means if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
 
 
-## Sample application
-To see a sample using this security check, review the below tutorials:
-Select a platform:
+## Sample Security Check
+[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
-* [Implementing the challenge handler in Cordova applications](../cordova)
-* [Implementing the challenge handler in iOS applications](../ios)
-* [Implementing the challenge handler in Android applications](../android)
-* [Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications](../windows-8-10)
+The Maven project contains an implementation of CredentialsValidationSecurityCheck.

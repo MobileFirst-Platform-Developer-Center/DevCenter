@@ -7,7 +7,7 @@ weight: 10
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 ## Overview
@@ -22,14 +22,23 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 
 > **Note:** Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Platform Foundation user documentation website.
 
-**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Android Studio project. Follow the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/android/) tutorial.
-
+**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Android Studio project. Follow the [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android/) tutorial.
 
 #### Jump to:
 
+* [Adding JSONStore](#adding-jsonstore)
 * [Basic Usage](#basic-usage)
 * [Advanced Usage](#advanced-usage)
 * [Sample application](#sample-application)
+
+## Adding JSONStore
+1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
+
+2. Add the following to the existing `dependencies` section:
+
+```
+compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
+```
 
 ## Basic Usage
 ### Open
@@ -235,10 +244,10 @@ try {
 
 #### MobileFirst Adapter Integration
 This section assumes that you are familiar with MobileFirst adapters. MobileFirst Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
-You can achieve these goals by using functions such as `WLClient.invokeProcedure` or your own instance of an `HttpClient` if you need more flexibility.
+You can achieve these goals by using functions such as `WLResourceRequest` or your own instance of an `HttpClient` if you need more flexibility.
 
 #### Adapter Implementation
-Create a MobileFirst adapter and name it "**People**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+Create a MobileFirst adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
 
 ```javascript
 function getPeople() {
@@ -270,7 +279,7 @@ function replacePerson(data) {
 ```
 
 #### Load data from MobileFirst Adapter
-To load data from a MobileFirst Adapter use `WLClient.invokeProcedure`.
+To load data from a MobileFirst Adapter use `WLResourceRequest`.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -288,10 +297,12 @@ WLResponseListener responseListener = new WLResponseListener() {
   }
 };
 
-WLProcedureInvocationData invocationData = new WLProcedureInvocationData("People", "getPeople");
-Context context = getContext();
-WLClient client = WLClient.createInstance(context);
-client.invokeProcedure(invocationData, responseListener);
+try {
+  WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/getPeople"), WLResourceRequest.GET);
+  request.send(responseListener);
+} catch (URISyntaxException e) {
+  // handle error
+}
 ```
 
 #### Get Push Required (Dirty Documents)
@@ -312,7 +323,7 @@ try {
 To prevent JSONStore from marking the documents as "dirty", pass the option `options.setMarkDirty(false)` to `add`, `replace`, and `remove`.
 
 #### Push changes
-To push changes to a MobileFirst adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLClient.invokeProcedure`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+To push changes to a MobileFirst adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -326,20 +337,25 @@ WLResponseListener responseListener = new WLResponseListener() {
   }
 };
 Context context = getContext();
-WLClient client = WLClient.createInstance(context);
+
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
   List<JSONObject> dirtyDocuments = people.findAllDirtyDocuments();
-  WLProcedureInvocationData invocationData = new WLProcedureInvocationData("People", "pushPeople");
-  invocationData.setParameters(new Object[]{dirtyDocuments});
-  client.invokeProcedure(invocationData, responseListener);
+
+  JSONObject payload = new JSONObject();
+  payload.put("people", dirtyDocuments);
+
+  WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/pushPeople"), WLResourceRequest.POST);
+  request.send(payload, responseListener);
 } catch(JSONStoreException e) {
   // handle failure
+} catch (URISyntaxException e) {
+  // handle error
 }
 ```
 
-<img alt="Image of the sample application" src="android-native-screen.png" style="float:right"/>
+<img alt="Image of the sample application" src="android-native-screen.jpg" style="float:right; width:240px;"/>
 ## Sample application
 The JSONStoreAndroid project contains a native Android application that utilizes the JSONStore API set.  
 Included is a JavaScript adapter Maven project.
@@ -348,9 +364,6 @@ Included is a JavaScript adapter Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
-1. From the command line, navigate to the project's root folder.
-2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
-3. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-4. Import the project to Android Studio, and run the sample by clicking the **Run** button.
-
-
+1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+2. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+3. Import the project to Android Studio, and run the sample by clicking the **Run** button.

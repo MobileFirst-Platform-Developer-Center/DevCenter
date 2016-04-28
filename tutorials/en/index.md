@@ -23,7 +23,7 @@ If you are not yet familiar with IBM MobileFirst Platform, visit the [Get Introd
 ### [Quality Assurance]({{site.baseurl}}/tutorials/en/quality-assurance/)
 * [MobileFirst Quality Assurance 6.3 and 7.0](https://www-01.ibm.com/support/knowledgecenter/SSFRDS_6.3.0/com.ibm.mqa.uau.doc/mqa630_welcome.html)
 * [MobileFirst Quality Assurance as a Bluemix Service for MobileFirst Platform Foundation 7.1]({{site.baseurl}}/tutorials/en/quality-assurance/7.1/overview/)
-* [MobileFirst Quality Assurance as a Bluemix Service for MobileFirst Platform Foundation 8.0]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/overview/)
+* [MobileFirst Quality Assurance as a Bluemix Service for MobileFirst Platform Foundation 8.0]({{site.baseurl}}/tutorials/en/quality-assurance/8.0/)
 
 ### [Cloudant]({{site.baseurl}}/tutorials/en/cloudant/)
 * [MobileFirst Platform Foundation 6.3]({{site.baseurl}}/tutorials/en/product-integration/6.3/cloudant/)

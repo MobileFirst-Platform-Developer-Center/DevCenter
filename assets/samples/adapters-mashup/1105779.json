@@ -1,0 +1,138 @@
+{
+  "query": {
+    "count": 1,
+    "created": "2016-03-28T08:47:43Z",
+    "lang": "en-US",
+    "results": {
+      "channel": {
+        "units": {
+          "distance": "mi",
+          "pressure": "in",
+          "speed": "mph",
+          "temperature": "F"
+        },
+        "title": "Yahoo! Weather - Sydney, NSW, AU",
+        "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-1105779/",
+        "description": "Weather for Sydney, NSW, AU",
+        "language": "en-us",
+        "lastBuildDate": "Mon, 28 Mar 2016 07:47 PM AEDT",
+        "ttl": "60",
+        "location": {
+          "city": "Sydney",
+          "country": "Australia",
+          "region": " NSW"
+        },
+        "wind": {
+          "chill": "72",
+          "direction": "135",
+          "speed": "7"
+        },
+        "atmosphere": {
+          "humidity": "92",
+          "pressure": "1011.0",
+          "rising": "0",
+          "visibility": "13.3"
+        },
+        "astronomy": {
+          "sunrise": "7:6 am",
+          "sunset": "6:55 pm"
+        },
+        "image": {
+          "title": "Yahoo! Weather",
+          "width": "142",
+          "height": "18",
+          "link": "http://weather.yahoo.com",
+          "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+        },
+        "item": {
+          "title": "Conditions for Sydney, NSW, AU at 07:00 PM AEDT",
+          "lat": "-33.856281",
+          "long": "151.020966",
+          "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-1105779/",
+          "pubDate": "Mon, 28 Mar 2016 07:00 PM AEDT",
+          "condition": {
+            "code": "26",
+            "date": "Mon, 28 Mar 2016 07:00 PM AEDT",
+            "temp": "71",
+            "text": "Cloudy"
+          },
+          "forecast": [{
+            "code": "26",
+            "date": "28 Mar 2016",
+            "day": "Mon",
+            "high": "74",
+            "low": "64",
+            "text": "Cloudy"
+          }, {
+            "code": "11",
+            "date": "29 Mar 2016",
+            "day": "Tue",
+            "high": "74",
+            "low": "65",
+            "text": "Showers"
+          }, {
+            "code": "30",
+            "date": "30 Mar 2016",
+            "day": "Wed",
+            "high": "75",
+            "low": "62",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "31 Mar 2016",
+            "day": "Thu",
+            "high": "72",
+            "low": "60",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "01 Apr 2016",
+            "day": "Fri",
+            "high": "80",
+            "low": "61",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "02 Apr 2016",
+            "day": "Sat",
+            "high": "85",
+            "low": "58",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "03 Apr 2016",
+            "day": "Sun",
+            "high": "72",
+            "low": "64",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "28",
+            "date": "04 Apr 2016",
+            "day": "Mon",
+            "high": "75",
+            "low": "62",
+            "text": "Mostly Cloudy"
+          }, {
+            "code": "30",
+            "date": "05 Apr 2016",
+            "day": "Tue",
+            "high": "84",
+            "low": "63",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "30",
+            "date": "06 Apr 2016",
+            "day": "Wed",
+            "high": "76",
+            "low": "59",
+            "text": "Partly Cloudy"
+          }],
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/26.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Cloudy. High: 74Low: 64\n<BR /> Tue - Showers. High: 74Low: 65\n<BR /> Wed - Partly Cloudy. High: 75Low: 62\n<BR /> Thu - Partly Cloudy. High: 72Low: 60\n<BR /> Fri - Partly Cloudy. High: 80Low: 61\n<BR />\n<BR />\n",
+          "guid": {
+            "isPermaLink": "false"
+          }
+        }
+      }
+    }
+  }
+}

@@ -26,8 +26,7 @@ You can open the Analytics Console from the MobileFirst Operations Console, by c
 
 ![Analytics console button](analytics-console-button.png)
 
-
-In the MobileFirst Platform Foundation Development Kit this console's default URL is `http://localhost:9080/analytics/console`.  
+The default URL is for the MobileFirst Analytics Console is `http://localhost:9080/analytics/console`.  
 After navigating to the Analytics console you will see a dashboard like below (but with empty data).
 
 ![Analytics console](analytics-console.png)
@@ -37,7 +36,7 @@ From the Analytics Console you can then:
 * [Create custom charts](#custom-charts)
 * [Manage alerts](#manage-alerts)
 * [Monitor App Crash](#monitor-app-crash)
-* [Monitor Network Data](#monitor-network)
+* [Monitor Network Data](#monitor-network-data)
 
 ### Custom Charts
 Custom charts allow you to visualize the collected analytics data in your analytics data store in charts that are not avaliable in the out of the box MobileFirst Analytics Console. This visualization is a powerful way to analyze data important to your business needs.
@@ -110,9 +109,10 @@ http://localhost:9500/*/_mapping
 
 ## Tutorials to follow next
 
-* [Client-side log collection](remote-controlled-client-side-log-collection)
+* [Client-side log collection](client-side-log-collection)
+* [Server-side log collection](server-side-log-collection)
 * [Analytics API](analytics-api)
 
 ## Related Blogposts
-* [More on Instrumenting Custom Analytics](https://developer.ibm.com/mobilefirstplatform/2016/01/22/howto-custom-in-app-behavior-analytics/)
-* [More on Instrumenting Webhooks](https://developer.ibm.com/mobilefirstplatform/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
+* [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
+* [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

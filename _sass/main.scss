@@ -71,7 +71,7 @@ hr {
 		text-decoration: none;
 		border: 1px solid $color_chambray_approx;
 	}
-	
+
 	&.containers {
 		width: 400px;
 	}
@@ -94,7 +94,7 @@ hr {
 	height: 64px;
 	width: 64px;
 }
-.col-md-3 {
+.mid-nav {
 	margin: 20px 0;
 	p {
 		text-align: center;
@@ -194,18 +194,14 @@ blockquote {
 	border: 1px solid $color_chambray_approx;
 	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
 	box-shadow: 0 2px $color_quill_gray_approx;
-	a {
-		color: $white;
-		text-decoration: none;
-		&:hover {
-			color: $white;
-			text-decoration: none;
-		}
-		.glyphicon-download-alt:before {
-			padding: 0 5px 0 0;
-		}
+	text-decoration: none;
+
+	.glyphicon-download-alt:before {
+		padding: 0 5px 0 0;
 	}
+
 	&:hover {
+		color: $white;
 		background-color: $color_nile_blue_approx;
 		text-decoration: none;
 	}
@@ -297,4 +293,14 @@ h4.panel-title, .tutorial h4.panel-title  {
 .navbar-form {
 	margin-top: 4px;
 	margin-bottom: 2px;
+}
+
+// beta site
+hr {
+	border: 2px solid #DDD;
+	margin: 15px 0 5px 0;
+}
+
+.videoDemo {
+	height: 363px;
 }

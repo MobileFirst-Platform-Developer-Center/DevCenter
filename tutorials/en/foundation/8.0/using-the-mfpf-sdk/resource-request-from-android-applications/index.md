@@ -6,7 +6,7 @@ relevantTo: [android]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 4
 ---
@@ -49,11 +49,6 @@ request.send(new WLResponseListener(){
   }
 });
 ```
-
-## The response
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (JSON Object) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
-
-Use the `WLResponse response` and `WLFailResponse response` objects to get the data that is retrieved from the adapter.
 
 ## Parameters
 Before sending your request, you may want to add parameters as needed.
@@ -109,6 +104,11 @@ request.addHeader("date", date.getText().toString());
 - `.send(JSONStore json, WLResponseListener listener)` allows you to set an arbitrary dictionary in the body.
 - `.send(byte[] data, WLResponseListener listener)` allows you to set an arbitrary byte array in the body.
 
+## The response
+The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (JSON Object) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
+
+Use the `WLResponse response` and `WLFailResponse response` objects to get the data that is retrieved from the adapter.
+
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
@@ -121,9 +121,8 @@ The adapter Maven project contains the Java adapter used during the resource req
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-1. From the command line, navigate to the project's root folder.
-2. Ensure the sample is registered in the MobileFirst Server by running the command:  
+1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 `mfpdev app register`.
-3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-4. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
-5. Import the project to Android Studio, and run the sample by clicking the **Run** button.
+2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+3. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+4. Import the project to Android Studio, and run the sample by clicking the **Run** button.

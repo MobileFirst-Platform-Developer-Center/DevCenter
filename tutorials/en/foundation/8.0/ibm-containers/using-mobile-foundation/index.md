@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation service to set-up MobileFirst Server on IBM Containers
+title: Using the Mobile Foundation service to set up MobileFirst Server on IBM Containers
 breadcrumb_title: Using the Mobile Foundation service
 relevantTo: [ios,android,windows,cordova]
 weight: 6
@@ -8,8 +8,6 @@ weight: 6
 ## Overview
 This tutorial provides step-by-step instructions to set-up a MobileFirst Server instance on IBM Containers using the **Mobile Foundation** service.  
 Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-up of scaleable Developer or Production environments of MobileFirst Platform Foundation v8.0 Beta on **IBM Containers**.
-
-> **Prerequisite:** Make sure to read the [Introduction to IBM MobileFirst Platform Foundation on IBM Containers](../) tutorial.
 
 #### Jump to:
 
@@ -34,7 +32,7 @@ Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-u
 
 5. Start the MobileFirst Server.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Configuration tab](#configuring-the-server-instance), and click on **Start advanced server**.
+    - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
 
     During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Platform Foundation environment is being initialized.  
     This takes between 5 to 10 minutes.
@@ -45,16 +43,16 @@ Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-u
 
     ![Image of Mobile Foundation setup](service-dashboard.png)
 
-7. Click on **Launch Console** to open the MobileFirst Operations Console.
+7. Click on **Launch Console** to open the MobileFirst Operations Console.  The username is "admin" and the password can be revealed by clicking on the "eye" icon.
 
     ![Image of Mobile Foundation setup](dashboard.png)
 
 ## Server configuration
 The basic server instance consists of:
 
-* A single node
-* 512MB memory
-* 32GB storage capacity
+* A single node (server size: "small")
+* 1GB memory
+* 2GB storage capacity
 
 ## Advanced server configuration
 Through the Configuration tab, the server instance can be further customized with:

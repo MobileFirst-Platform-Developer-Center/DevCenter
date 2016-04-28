@@ -7,7 +7,7 @@ weight: 9
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 ## Overview
@@ -348,7 +348,7 @@ do {
 }
 ```
 
-<img alt="Image of the sample application" src="jsonstore-ios-screen.png" style="float:right"/>
+<img alt="Image of the sample application" src="jsonstore-ios-screen.png" style="float:right; width:240px;"/>
 
 ## Sample application
 The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  
@@ -358,7 +358,6 @@ Included is a JavaScript adapter Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
 
 ### Sample usage
-1. From the command line, navigate to the project's root folder.
-2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
-3. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+2. The sample uses the `JSONStoreAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
 4. Import the project to Xcode, and run the sample by clicking the **Run** button.

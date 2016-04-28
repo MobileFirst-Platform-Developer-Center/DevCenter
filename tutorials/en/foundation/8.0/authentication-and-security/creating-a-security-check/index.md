@@ -12,7 +12,7 @@ Security checks are defined inside **an adapter** and are implemented in Java co
 
 An adapter can either be a *resource* adapter (meaning it serves resources/content to send to the client), a *SecurityCheck* adapter, or **both**.
 
-**Prerequisites:** 
+**Prerequisites:**
 
 * Read the [Authorization concepts](../authorization-concepts/) tutorial.
 * Learn how to [creating adapters](../../adapters/creating-adapters).
@@ -22,7 +22,7 @@ An adapter can either be a *resource* adapter (meaning it serves resources/conte
 * [Defining a security Check](#defining-a-security-check)
 * [Security Check Implementation](#security-check-implementation)
 * [Security Check Configuration](#security-check-configuration)
-* [Predefined Security Checks](#predefined-security-check)
+* [Predefined Security Checks](#predefined-security-checks)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Defining a Security Check
@@ -37,7 +37,7 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     <property name="successStateExpirationSec" defaultValue="60"/>
-    <property name="failureStateExpirationSec" defaultValue="60"/>
+    <property name="blockedStateExpirationSec" defaultValue="60"/>
     <property name="maxAttempts" defaultValue="3"/>
 </securityCheckDefinition>
 ```
@@ -115,12 +115,14 @@ The `<property>` element takes the following attributes:
 
 - **name**: The name of the property, as defined in the configuration class.
 - **defaultValue**: Overrides the default value defined in the configuration class.
-- **displayName**: A friendly name to be displayed in the console.
+- **displayName**: *optional*, a friendly name to be displayed in the console.
+- **description**: *optional*, a description to be displayed in the console.
+- **type**: *optional*, ensures that the property is of a specific type such as `integer`, `string`, `boolean` or a list of valid values (for example `type="['1','2','3']"`).
 
 Example:
 
 ```xml
-<property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed"/>
+<property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed" type="integer"/>
 ```
 
 ### MobileFirst Operations Console - Adapter
@@ -134,7 +136,7 @@ Property values can also be overridden at the application level.
 
 In the MobileFirst Console → **[your application] → Security tab**, under the **Security Check Configurations** section, you can modify the values defined in each security check available.
 
-![Application in console](console-application-security.png)
+<img class="gifplayer" alt="Configurting security check properties" src="console-application-security.png"/>
 
 ## Predefined Security Checks
 Also available are these predefined security checks:

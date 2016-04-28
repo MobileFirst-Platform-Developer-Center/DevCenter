@@ -1,0 +1,138 @@
+{
+  "query": {
+    "count": 1,
+    "created": "2016-03-28T08:49:49Z",
+    "lang": "en-US",
+    "results": {
+      "channel": {
+        "units": {
+          "distance": "mi",
+          "pressure": "in",
+          "speed": "mph",
+          "temperature": "F"
+        },
+        "title": "Yahoo! Weather - Christchurch, Canterbury, NZ",
+        "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2348327/",
+        "description": "Weather for Christchurch, Canterbury, NZ",
+        "language": "en-us",
+        "lastBuildDate": "Mon, 28 Mar 2016 09:49 PM NZDT",
+        "ttl": "60",
+        "location": {
+          "city": "Christchurch",
+          "country": "New Zealand",
+          "region": " Canterbury"
+        },
+        "wind": {
+          "chill": "55",
+          "direction": "68",
+          "speed": "14"
+        },
+        "atmosphere": {
+          "humidity": "91",
+          "pressure": "1011.0",
+          "rising": "0",
+          "visibility": "14.7"
+        },
+        "astronomy": {
+          "sunrise": "7:43 am",
+          "sunset": "7:25 pm"
+        },
+        "image": {
+          "title": "Yahoo! Weather",
+          "width": "142",
+          "height": "18",
+          "link": "http://weather.yahoo.com",
+          "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+        },
+        "item": {
+          "title": "Conditions for Christchurch, Canterbury, NZ at 09:00 PM NZDT",
+          "lat": "-43.527519",
+          "long": "172.635422",
+          "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2348327/",
+          "pubDate": "Mon, 28 Mar 2016 09:00 PM NZDT",
+          "condition": {
+            "code": "27",
+            "date": "Mon, 28 Mar 2016 09:00 PM NZDT",
+            "temp": "57",
+            "text": "Mostly Cloudy"
+          },
+          "forecast": [{
+            "code": "28",
+            "date": "28 Mar 2016",
+            "day": "Mon",
+            "high": "61",
+            "low": "56",
+            "text": "Mostly Cloudy"
+          }, {
+            "code": "30",
+            "date": "29 Mar 2016",
+            "day": "Tue",
+            "high": "67",
+            "low": "47",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "28",
+            "date": "30 Mar 2016",
+            "day": "Wed",
+            "high": "59",
+            "low": "50",
+            "text": "Mostly Cloudy"
+          }, {
+            "code": "28",
+            "date": "31 Mar 2016",
+            "day": "Thu",
+            "high": "63",
+            "low": "53",
+            "text": "Mostly Cloudy"
+          }, {
+            "code": "26",
+            "date": "01 Apr 2016",
+            "day": "Fri",
+            "high": "68",
+            "low": "54",
+            "text": "Cloudy"
+          }, {
+            "code": "30",
+            "date": "02 Apr 2016",
+            "day": "Sat",
+            "high": "65",
+            "low": "56",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "28",
+            "date": "03 Apr 2016",
+            "day": "Sun",
+            "high": "76",
+            "low": "57",
+            "text": "Mostly Cloudy"
+          }, {
+            "code": "28",
+            "date": "04 Apr 2016",
+            "day": "Mon",
+            "high": "59",
+            "low": "54",
+            "text": "Mostly Cloudy"
+          }, {
+            "code": "32",
+            "date": "05 Apr 2016",
+            "day": "Tue",
+            "high": "62",
+            "low": "47",
+            "text": "Sunny"
+          }, {
+            "code": "28",
+            "date": "06 Apr 2016",
+            "day": "Wed",
+            "high": "69",
+            "low": "50",
+            "text": "Mostly Cloudy"
+          }],
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/27.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Mostly Cloudy\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Mostly Cloudy. High: 61Low: 56\n<BR /> Tue - Partly Cloudy. High: 67Low: 47\n<BR /> Wed - Mostly Cloudy. High: 59Low: 50\n<BR /> Thu - Mostly Cloudy. High: 63Low: 53\n<BR /> Fri - Cloudy. High: 68Low: 54\n<BR />\n<BR />\n",
+          "guid": {
+            "isPermaLink": "false"
+          }
+        }
+      }
+    }
+  }
+}

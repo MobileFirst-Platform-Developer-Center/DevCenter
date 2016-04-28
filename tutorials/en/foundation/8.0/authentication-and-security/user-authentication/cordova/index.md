@@ -9,7 +9,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginCordova/tree/release80
   - name: Download RememberMe project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80
-  - name: Download Maven project
+  - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 
@@ -19,7 +19,7 @@ downloads:
 The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
 
 ## Login
-In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
+In this example, `UserLogin` expects *key:value*s called `username` and `password`. Optionally, it also accepts a boolean `rememberMe` key that will tell the security check to remember this user for a longer period. In the sample application, this is collected using a boolean value from a checkbox in the login form.
 
 ```js
 userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password, rememberMe: rememberMeState});
@@ -132,22 +132,20 @@ There are two samples associated with this tutorial:
 - **PreemptiveLoginCordova**: An application that always starts with a login screen, using the preemptive `login` API.
 - **RememberMeCordova**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
 
-Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
+Both samples use the same `UserLogin` security check from the **SecurityCheckAdapters** adapter Maven project.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80) the Remember Me project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginCordova/tree/release80) the Remember Me project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginCordova/tree/release80) the Preemptive Login project.
 
 ### Sample usage
 
-* Use either Maven or MobileFirst Developer CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../creating-adapters/).
-* Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register` from a **command-line** window.
+* Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
+* From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Map scope elements to security checks**, add a mapping from `accessRestricted` to `UserLogin`.
+    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Map scope elements to security checks**, add a scope mapping from `accessRestricted` to `UserLogin`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
-        > Learn more about the mfpdev app push/push commands in the [Using MobileFirst Developer CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts).
+        > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
 
-        <div style="text-align:center">
-            <img src="login-screen.png" style="display:inline"/><img src="balance.png" style="display:inline"/>
-        </div>
+![sample application](sample-application.png)

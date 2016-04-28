@@ -6,6 +6,12 @@ if [ $TRAVIS_PULL_REQUEST == "true" ]; then
   exit 0
 fi
 
+# only proceed script when on "staging" branch
+# if [ $TRAVIS_BRANCH != 'staging' ]; then
+#   echo "this is not the staging branch, exiting"
+#   exit 0
+# fi
+
 # enable error reporting to the console
 set -e
 
@@ -14,13 +20,13 @@ set -e
 rm -rf _site/*
 bundle exec jekyll build --config _config.yml,build/_configPages.yml -d _site/MFPSamples --profile
 rm -f _site/*.log
-#bundle exec htmlproof ./_site --disable-external --href-ignore '#'
+# bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
 
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.master
 
 #clone `master' branch of the repository
-git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --branch master --single-branch ../mfpsamples.github.ibm.com.master
+git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --depth 1 --branch master --single-branch ../mfpsamples.github.ibm.com.master
 # copy generated HTML site to `master' branch
 rm -rf ../mfpsamples.github.ibm.com.master/*
 cp -R _site/MFPSamples/* ../mfpsamples.github.ibm.com.master

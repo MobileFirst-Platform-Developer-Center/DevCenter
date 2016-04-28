@@ -21,7 +21,6 @@ This tutorial explores various approaches to debugging a Cordova application, wh
 * [Debugging with Ripple](#debugging-with-ripple)
 * [Debugging with iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
 * [Debugging with Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
-* [Debugging with Weinre](#debugging-with-weinre)
 * [Debugging with IBM MobileFirst Logger](#debugging-with-ibm-mobilefirst-logger)
 * [Debugging with WireShark](#debugging-with-wireshark)
 
@@ -39,7 +38,17 @@ If your application consists of more than one platform - specify the platform to
 mfpdev app preview -p <platform>
 ```
 
-> Learn more about the MobileFirst Developer CLI in the [Using MobileFirst Developer CLI to manage MobileFirst artifacts](../using-mobilefirst-developer-cli-to-manage-mobilefirst-artifacts) tutorial.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected in the preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
+
+### Mobile Browser Simulator
+
+![MBS](mbs.png)
+
+### Simple Preview
+
+![MBS](simple.png)
+
+> Learn more about the MobileFirst CLI in the [Using MobileFirst CLI to manage MobileFirst artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Debugging with Ripple
 Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  
@@ -67,76 +76,42 @@ ripple emulate
 > More information about Apache Ripple™ can be found on the [Apache Ripple page](http://ripple.incubator.apache.org/) or [npm ripple-emulator page](https://www.npmjs.com/package/ripple-emulator).
 
 ## Debugging with iOS Remote Web Inspector
-Starting in iOS 6 Apple introduced a remote [Web Inspector](https://developer.apple.com/safari/tools/) for debugging web applications on iOS devices. To debug, make sure that the device (or simulator) has the **Private Browsing** option turned off.  
-To enable Web Inspector on the device, Tap **Settings > Safari > Advanced > Web Inspector**.
+Starting iOS 6, Apple introduced a remote [Web Inspector](https://developer.apple.com/safari/tools/) for debugging web applications on iOS devices. To debug, make sure that the device (or iOS Simulator) has the **Private Browsing** option turned off.  
 
-![iOS Web Inspector](ios-web-inspector.png)
+1. To enable Web Inspector on the device, Tap **Settings > Safari > Advanced > Web Inspector**.
+2. To start debugging, connect the iOS device to a Mac, or start the simulator.
+3. In Safari, go to **Preferences > Advanced**, and select the **Show Develop menu in menu bar** checkbox.
+4. In Safari, select **Develop > [your device ID] > [your application HTML file]**.
 
-1. To start debugging, connect the iOS device to a Mac, or start the simulator.
-2. In Safari, go to **Preferences > Advanced**, and select the **Show Develop menu in menu bar** checkbox.
-
-    ![Safari Developer Menu](safari-developer-menu.png)
-3. Now in Safari, select **Develop > [*your device ID*] > [*your application HTML file*]**.  
-The DOM can now be inspected. It is also possible to alter the CSS and run JavaScript commands, just as in the desktop inspector.
-
-    ![Safari Debugging](safari-debugging.png)
+![Safari Debugging](safari-debugging.png)
 
 ## Debugging with Chrome Remote Web Inspector
 Using Google Chrome it is possible to remotely inspect web applications on Android devices or the Android Emulator.  
-This action requires Android 4.4 or later, Chrome 32 or later, and IBM Worklight Foundation V6.2.0 or IBM MobileFirst Platform Foundation 6.3 or later. Additionally, in the `AndroidManifest.xml` file, `targetSdkVersion = 19` or above is required. In the `project.properties` file, `target = 19` or above is required.
+This action requires Android 4.4 or later, Chrome 32 or later. Additionally, in the `AndroidManifest.xml` file, `targetSdkVersion = 19` or above is required. In the `project.properties` file, `target = 19` or above is required.
 
 1. Start the application in the Android Emulator or a connected device.
-2. In Chrome, enter the following URL in the address bar: `about:inspect`.
+2. In Chrome, enter the following URL in the address bar: `chrome://inspect`.
 3. Press **Inspect** for the relevant application.
-
-You can now use all the features of the Chrome Inspector to inspect the Android application.
 
 ![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
-## Debugging with Weinre
-Weinre is a debugger for web pages, like Firebug or other Web Inspectors, except that **Weinre is designed to work remotely**.
-Weinre can be used to inspect and debug web resources such as HTML, JavaScript, CSS, and network traffic on mobile handsets.
-The Weinre architecture includes the following components:
-![Weinre](Weinre.jpg)
-
-The Weinre debug server requires a `node.js` runtime.
-You can find instructions to install Weinre on the [Weinre installation page](http://people.apache.org/~pmuellr/weinre/docs/latest/Installing.html).
-
-#### Debug server
-When the Weinre server is installed, enter the following command to run it:  
-`weinre --httpPort 8080 --boundHost -all-`  
-This command starts a Weinre server.  
-The default port is `8080` but you can change it.
-
-#### Target
-The Weinre server must be accessible from the device that will be used for debugging.  
-To make it accessible, add the following code line to the web application:
-
-```
-<script src="http://a.b.c:8080/target/target-script-min.js"></script>
-```
-
-Where `a.b.c` is the hostname or IP of the Weinre server.
-
-#### Client
-Before you can start debugging, make sure that the application is open and loaded on the browser with this URL:
-![Weinre Debugging](Weinre-Debugging.png)
-
 ### Debugging with IBM MobileFirst Logger
-IBM MobileFirst Platform Foundation provides a `WL.Logger` object which can be used to print log messages to the log for the environment used.  
-Two of its methods are `WL.Logger.debug()` and `WL.Logger.error()`.  
-These APIs are multiplatform. The output destination changes according to the platform on which that application runs:
+IBM MobileFirst Platform Foundation provides a `WL.Logger` object that can be used to print log messages.  
+`WL.Logger` contains several levels of logging: `WL.Logger.info`, `WL.Logger.debug`, `WL.Logger.error`.
 
-* **Developer console** when it is running on a desktop browser
-* **LogCat** when it is running on Android device
-* **Visual Studio Output** when it is running on a Windows Phone 8 device and Windows 8.1 App
-* **XCode Console** when it is running on an iOS device
-
-`WL.Logger` contains more methods.
 > For more information, see the documentation for `WL.Logger` in the API reference part of the user documentation.
+
+**Inspecting the log:**
+
+* **Developer console** when previewing a platform using a Simulator or Emulator.
+* **LogCat** when it is running on Android device
+* **XCode Console** when it is running on an iOS device
+* **Visual Studio Output** when it is running on a Windows devices.
 
 ### Debugging with WireShark
 **Wireshark is a network protocol analyzer** that can be used to see what happens in the network.  
 You can use filters to follow only what is required.  
-For more information, see the [WireShark](http://www.wireshark.org) website.
-![WirShark](WireShark.png)
+
+> For more information, see the [WireShark](http://www.wireshark.org) website.
+
+![Wireshark](wireshark.png)

@@ -22,15 +22,15 @@ However, writing this logic on the server side could be faster and cleaner.
 
 ## JavaScript adapter API
 ### Calling a JavaScript adapter procedure from a JavaScript adapter
-When calling a JavaScript adapter procedure from another JavaScript adapter use the `WL.Server.invokeProcedure(invocationData)` API.
-This API enables to invoke a procedure on any of your JavaScript adapters. `WL.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
+When calling a JavaScript adapter procedure from another JavaScript adapter use the `MFP.Server.invokeProcedure(invocationData)` API.
+This API enables to invoke a procedure on any of your JavaScript adapters. `MFP.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
 
 The `invocationData` function signature is:  
-`WL.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
+`MFP.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
 
 For example:
 {% highlight javascript %}
-WL.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
+MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
 {% endhighlight %}
 
 > Calling a Java adapter from a JavaScript adapter is not supported
@@ -88,55 +88,55 @@ Here is a list of the mashup types and the corresponding adapter names:
 
 
 ###Mashup Sample Flow
-**1. Create a procedure / adapter call that create a request to Yahoo! Weather Service for each city and retrieves the corresponding data:**  
+**1. Create a procedure / adapter call that create a request to a back-end endpoint for each city and retrieves the corresponding data:**  
 
-(getCitiesListJS adapter) XML:
+(getCityWeatherJS adapter) XML:
 {% highlight xml %}
 <connectivity>
-    <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
-        <protocol>http</protocol>
-        <domain>weather.yahooapis.com</domain>
-        <port>80</port>
-        ...
-    </connectionPolicy>
+  <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
+    <protocol>http</protocol>
+    <domain>mobilefirstplatform.ibmcloud.com</domain>
+    <port>80</port>
+    ...
+  </connectionPolicy>
 </connectivity>
 {% endhighlight %}
 
-(getCitiesListJS adapter) JavaScript:
+(getCityWeatherJS adapter) JavaScript:
 {% highlight javascript %}
 function getYahooWeather(woeid) {
-    var input = {
-        method : 'get',
-        returnedContentType : 'xml',
-        path : 'forecastrss',
-        parameters : {
-            'w' : woeid,
-            'u' : 'c' //celcius
-        }
-    };
 
-    return WL.Server.invokeHttp(input);
-}  
+	var input = {
+	    method : 'get',
+	    returnedContentType : 'json',
+	    path : 'assets/samples/adapters-mashup/'+ woeid + '.json'
+	};
+
+	return MFP.Server.invokeHttp(input);
+}
 {% endhighlight %}
 
 (getCityWeatherJava adapter)
 {% highlight java %}
 @GET
 @Produces("application/json")
-public Response get(@QueryParam("cityId") String cityId) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-	Response returnValue = execute(new HttpGet("/forecastrss?w="+ cityId +"&u=c"));
-	return returnValue;
+public Response get(@QueryParam("cityId") String cityId) throws IOException, IllegalStateException, SAXException {
+  String path = "/assets/samples/adapters-mashup/"+ cityId +".json";
+  return execute(new HttpGet(path));
 }
 
-private Response execute(HttpUriRequest req) throws ClientProtocolException, IOException, IllegalStateException, SAXException {
-	HttpResponse RSSResponse = client.execute(host, req);
-	if (RSSResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
-		String json = XML.toJson(RSSResponse.getEntity().getContent());
-		return Response.ok().entity(json).build();
-	}else{ // Handle Failure
-		RSSResponse.getEntity().getContent().close();
-		return Response.status(RSSResponse.getStatusLine().getStatusCode()).entity(RSSResponse.getStatusLine().getReasonPhrase()).build();
-	}
+private Response execute(HttpUriRequest req) throws IOException, IllegalStateException, SAXException {
+  HttpResponse RSSResponse = client.execute(host, req);
+
+  InputStream content = RSSResponse.getEntity().getContent();
+  if (RSSResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK){
+    responseAsText = IOUtils.toString(content, "UTF-8");
+    content.close();
+    return Response.ok().entity(responseAsText).build();
+  }else{
+    content.close();
+    return Response.status(RSSResponse.getStatusLine().getStatusCode()).entity(RSSResponse.getStatusLine().getReasonPhrase()).build();
+  }
 }
 {% endhighlight %}  
 
@@ -144,9 +144,9 @@ private Response execute(HttpUriRequest req) throws ClientProtocolException, IOE
 
 (getCitiesListJS adapter)
 {% highlight javascript %}
-var getCitiesListStatement = WL.Server.createSQLStatement("select city, identifier, summary from weather;");
+var getCitiesListStatement = MFP.Server.createSQLStatement("select city, identifier, summary from weather;");
 function getCitiesList() {
-	return WL.Server.invokeSQLStatement({
+	return MFP.Server.invokeSQLStatement({
 		preparedStatement : getCitiesListStatement,
 		parameters : []
 	});
@@ -168,7 +168,7 @@ for (var i = 0; i < cityList.resultSet.length; i++) {
 ...
 
 function getCityWeather(woeid){
-	return WL.Server.invokeProcedure({
+	return MFP.Server.invokeProcedure({
 		adapter : 'getCityWeatherJS',
 		procedure : 'getYahooWeather',
 		parameters : [woeid]
@@ -205,7 +205,10 @@ put this values in a resultSet / JSONArray object and return it to the applicati
 {% highlight javascript %}
 ...
 if (yahooWeatherData.isSuccessful)
-	cityList.resultSet[i].weather = yahooWeatherData.rss.channel.item.description;
+  cityList.resultSet[i].weather = yahooWeatherData.query.results.channel.item.description;
+else {
+  cityList.resultSet[i].weather = "Could not receive the weather..."
+}
 }
 return cityList;
 {% endhighlight %}  
@@ -214,19 +217,21 @@ return cityList;
 {% highlight java %}
 {
     ...
-    JSONObject rss = (JSONObject) jsonWeather.get("rss");
-    JSONObject channel = (JSONObject) rss.get("channel");
+    JSONObject query = (JSONObject) jsonWeather.get("query");
+    JSONObject results = (JSONObject) query.get("results");
+    JSONObject channel = (JSONObject) results.get("channel");
     JSONObject item = (JSONObject) channel.get("item");
-    String cityWeatherSummary = (String) item.get("description");
+    String weatherSummary = (String) item.get("description");
 
     JSONObject jsonObj = new JSONObject();
     jsonObj.put("city", rs.getString("city"));
     jsonObj.put("identifier", rs.getString("identifier"));
     jsonObj.put("summary", rs.getString("summary"));
-    jsonObj.put("weather", cityWeatherSummary);
+    jsonObj.put("weather", weatherSummary);
 
     jsonArr.add(jsonObj);
 }
+rs.close();
 conn.close();
 return jsonArr.toString();
 {% endhighlight %}  
@@ -242,7 +247,7 @@ return jsonArr.toString();
 An example of city list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
 
 1. Run the .sql script in your SQL database.
-2. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapters](../../creating-adapters/).
+2. Use either Maven or MobileFirst CLI to [build and deploy the adapters](../../adapters/creating-adapters/).
 3. Open the MobileFirst Console
     - Click on the **getCitiesListJS** adapter and update the database connectivity properties.
     - Click on the **getCitiesListJava** adapter and update the database connectivity properties.

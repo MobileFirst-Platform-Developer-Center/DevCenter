@@ -16,9 +16,9 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Grad
 
 > For instruction to manually add the SDK files to a project, [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
-**Prerequisites:** 
+**Prerequisites:**
 
-- Android Studio and MobileFirst Developer CLI installed on the developer workstation.  
+- Android Studio and MobileFirst CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your Android development environment](../../setting-up-your-development-environment/android-development-environment) tutorials.
 
@@ -33,7 +33,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Grad
 Follow the below instructions to add the MobileFirst Native SDK to either a new or existing Android Studio project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or `start.cmd` in Windows.
+If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### Creating an Android application
 Create an Android Studio project or use an existing one.  
@@ -46,15 +46,12 @@ Create an Android Studio project or use an existing one.
 
     ```xml
     repositories{
-        //jcenter()
-        maven {
-            url "http://visustar.francelab.fr.ibm.com:8081/nexus/content/repositories/mobile-s/"
-        }
+        jcenter()
     }
     ```
-    
+
 3. Add the following inside `android`:
-    
+
     ```xml
     packagingOptions {
         pickFirst 'META-INF/ASL2.0'
@@ -62,23 +59,23 @@ Create an Android Studio project or use an existing one.
         pickFirst 'META-INF/NOTICE'
     }
     ```
-    
+
 4. Add the following lines inside `dependencies`:
 
     ```xml
     compile group: 'com.ibm.mobile.foundation',
     name: 'ibmmobilefirstplatformfoundation',
-    version: '8.0.Beta1-SNAPSHOT',
+    version: '8.0.+',
     ext: 'aar',
     transitive: true
     ```
-    
-    Or: 
+
+    Or in a single line:
 
     ```xml
-    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.Beta1-SNAPSHOT'
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
     ```
-    
+
 5. In **Android → app → manifests**, open the `AndroidManifest.xml` file. Add the following permissions above the **application** element:
 
     ```xml
@@ -96,25 +93,30 @@ Create an Android Studio project or use an existing one.
 ### Registering the application
 1. Open a **Command-line** window and navigate to the root of the Android Studio project.  
 
-2. Run the command: 
- 
+2. Run the command:
+
     ```bash
     mfpdev app register
     ```
-    
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
-        
-    > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
-        1. Open your browser of choice and load the MobileFirst Operations Console using the address  `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
-        2. Click on the "Create new" button next to "Applications" to create a new application and follow the on-screen instructions.  
-        3. After successfully registering your application you can optionally download a "skeleton" Android Studio project pre-bundled with the MobileFirst Native SDK.
+
+The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
+
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
+>
+> 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
+
+> 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
+
+> 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.properties** file. Follow the onscreen instructions to add the file to your project.
 
 ### Creating an WLClient instance
-Before using any MobileFirst-supplied APIs, first create a `WLClient` instance in the `onCreate` method:
+Before using any MobileFirst-supplied APIs, create a `WLClient` instance:
 
 ```java
 WLClient.createInstance(this);
 ```
+
+**Note:** Creating a `WLClient` instance should only happen once in the entire application lifecycle. It is recommended to use the Android Application class to do it.
 
 ## Updating the MobileFirst Native SDK
 To update the MobileFirst Native SDK with the latest release, find the release version number and update the `version` property accordingly in the **build.gradle** file.  
@@ -124,7 +126,7 @@ SDK releases can be found in the SDK's [JCenter repository](https://bintray.com/
 
 ## Generated MobileFirst Native SDK artifacts
 
-### mfpclient.properties 
+### mfpclient.properties
 Located at the **./app/src/main/assets/** folder of the Android Studio project, this file contains server connectivity properties and is user-editable:
 
 - `wlServerProtocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTTPS`.

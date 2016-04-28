@@ -1,12 +1,12 @@
 ---
 layout: tutorial
 title: Resource request from iOS applications
-breadcrumb_title: Resource request - iOS (Swift)
+breadcrumb_title: Resource request - iOS
 relevantTo: [ios]
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
@@ -25,6 +25,13 @@ The `WLResourceRequest` class handles resource requests to adapters or external 
 Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
 Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
 
+Objective-C
+
+```objc
+WLResourceRequest *request = [WLResourceRequest requestWithURL:[NSURL URLWithString:@"/adapters/JavaAdapter/users/"] method:WLHttpMethodGet];
+```
+Swift
+
 ```swift
 let request = WLResourceRequest(
     URL: NSURL(string: "/adapters/JavaAdapter/users"),
@@ -41,6 +48,19 @@ let request = WLResourceRequest(
 Request the resource by using the `sendWithCompletionHandler` method.  
 Supply a completion handler to handle the retrieved data:
 
+Objective-C
+
+```objc
+[request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+    if (error == nil){
+        NSLog(@"%@", response.responseText);
+    } else {
+        NSLog(@"%@", error.description);
+    }
+}];
+```
+Swift
+
 ```swift
 request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
     if(error == nil){
@@ -54,11 +74,6 @@ request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void
 
 Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
 
-## The response
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
-
-Use the `response` and `error` objects to get the data that is retrieved from the adapter.
-
 ## Parameters
 Before sending your request, you may want to add parameters as needed.
 
@@ -68,6 +83,14 @@ As explained above, **path** parameters (`/path/value1/value2`) are set during t
 ### Query parameters
 To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
 
+Objective-C
+
+```objc
+[request setQueryParameterValue:@"value1" forName:@"param1"];
+[request setQueryParameterValue:@"value2" forName:@"param2"];
+```
+Swift
+
 ```swift
 request.setQueryParameterValue("value1", forName: "param1")
 request.setQueryParameterValue("value2", forName: "param2")
@@ -76,12 +99,36 @@ request.setQueryParameterValue("value2", forName: "param2")
 #### JavaScript adapters
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
+Objective-C
+
+```objc
+[request setQueryParameterValue:@"['value1', 'value2']" forName:@"params"];
+```
+Swift
+
 ```swift
 request.setQueryParameterValue("['value1', 'value2']", forName: "params")
 ```
 
 ### Form parameters
 To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
+
+Objective-C
+
+```objc
+//@FormParam("height")
+NSDictionary *formParams = @{@"height":@"175"};
+
+//Sending the request with Form parameters
+[request sendWithFormParameters:formParams completionHandler:^(WLResponse *response, NSError *error) {
+    if (error == nil){
+        NSLog(@"%@", response.responseText);
+    } else {
+        NSLog(@"%@", error.description);
+    }
+}];
+```
+Swift
 
 ```swift
 //@FormParam("height")
@@ -101,12 +148,27 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 #### JavaScript adapters
 JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
 
+Objective-C
+
+```objc
+NSDictionary *formParams = @{@"params":@"['value1', 'value2']"};
+```
+Swift
+
 ```swift
 let formParams = ["params":"['value1', 'value2']"]
 ```
 
 ### Header parameters
 To send a parameter as an HTTP header use the `setHeaderValue` API:
+
+Objective-C
+
+```objc
+//@HeaderParam("Date")
+[request setHeaderValue:@"2015-06-06" forName:@"birthdate"];
+```
+Swift
 
 ```swift
 //@HeaderParam("Date")
@@ -119,20 +181,39 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithJSON` allows you to set an arbitrary dictionary in the body.
 - `sendWithData` allows you to set an arbitrary `NSData` in the body.
 
+## The response
+The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
+
+Use the `response` and `error` objects to get the data that is retrieved from the adapter.
+
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
 <img alt="Image of the sample application" src="resource-request-success-ios.png" style="float:right"/>
 ## Sample application
-The ResourceRequestSwift project contains a native iOS Swift application that makes a resource request using a Java adapter.  
+The ResourceRequestSwift project contains an iOS application, implemented in Swift, that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the iOS project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-1. From the command line, navigate to the project's root folder.
-2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
-3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-4. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
-5. Import the project to Xcode, and run the sample by clicking the **Run** button.
+1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+3. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+4. Import the project to Xcode, and run the sample by clicking the **Run** button.
+
+#### Note about iOS 9:
+
+> * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+>   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
+>   2. Paste the following:
+>
+>    
+        ```xml
+        <key>NSAppTransportSecurity</key>
+        <dict>
+            <key>NSAllowsArbitraryLoads</key>
+            <true/>
+        </dict>
+        ```

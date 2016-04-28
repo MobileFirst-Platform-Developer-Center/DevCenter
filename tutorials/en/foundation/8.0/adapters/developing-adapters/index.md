@@ -5,9 +5,9 @@ relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---
 ## Overview
-As taught in previous [Adapters tutorials](../), MobileFirst Adapters are Maven projects that are created by using either Maven directly or via the MobileFirst Developer CLI. The adapter code can then be edited in any IDE, and later built and deployed using either Maven or the MobileFirst Developer CLI. A developer may also choose to create, develop, build and deploy all inside a supported IDEs, such as Eclipse or IntelliJ. In this tutorial a MobileFirst adapter is created and built from the Eclipse IDE.
+As taught in previous [Adapters tutorials](../), MobileFirst Adapters are Maven projects that are created by using either Maven directly or via the MobileFirst CLI. The adapter code can then be edited in any IDE, and later built and deployed using either Maven or the MobileFirst CLI. A developer may also choose to create, develop, build and deploy all inside a supported IDEs, such as Eclipse or IntelliJ. In this tutorial a MobileFirst adapter is created and built from the Eclipse IDE.
 
-> For instructions how to use IntelliJ see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/21/using-intellij-to-develop-adapters) Blog Post.
+> For instructions how to use IntelliJ see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) Blog Post.
 
 **Prerequisite:**
 
@@ -46,7 +46,6 @@ Follow the bellow instructions to either create a new adapter Maven project or i
 
 4. Specify Maven project parameters.  
     - Specify required **Group Id**, **Artifact Id**, **Version** and **package** parameters, and click **Finish**.
-    - Change <code>${archetypeVersion}</code> to <code>8.0.0</code>.
 
     ![Image showing how to create an adapter Maven project in Eclipse](project-parameters.png)
 
@@ -56,10 +55,10 @@ To import the adapter Maven project, select **File → Import... → Maven → E
 ![Image showing how to import an adapter Maven project to Eclipse](import-adapter-maven-project.png)
 
 ## Building and deploying an adapter Maven project
-An adapter project can be built and deployed by using either Maven command-line commands, the MobileFirst Developer CLI or from Eclipse.  
+An adapter project can be built and deployed by using either Maven command-line commands, the MobileFirst CLI or from Eclipse.  
 [Learn how to build and deploy adapters](../creating-adapters/#build-and-deploy-adapters).
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Eclipse can also be enhanced to ease the deployment step by integrating a **Command-line** window using a plug-in, creating a consistant development environment. From this window Maven or MobileFirst Developer CLI commands can be run.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Eclipse can also be enhanced to ease the deployment step by integrating a **Command-line** window using a plug-in, creating a consistant development environment. From this window Maven or MobileFirst CLI commands can be run.
 
 ### Building an adapter
 To build an adapter, right-click on the adapter folder and select **Run As → Maven install**.  

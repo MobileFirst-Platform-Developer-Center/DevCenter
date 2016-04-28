@@ -6,12 +6,21 @@ relevantTo: [android]
 weight: 3
 ---
 ## Overview
-The purpose of this demonstration is to experience an end-to-end flow where an application and an adapter are registered using the MobileFirst Operations Console, an "skeleton" Android Studio project is downloaded and edited to call the adapter, and the result is printed to the log - verifying a successful connection with the MobileFirst Server.
+The purpose of this demonstration is to experience an end-to-end flow:
+
+1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
+2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
+3. The application logic is changed to make a resource request.
+
+**End result**:
+
+* Successfully pinging the MobileFirst Server.
+* Successfully retrieving data using a MobileFirst Adapter.
 
 #### Prerequisites:
 
 * Android Studio
-* MobileFirst Developer CLI ([download]({{site.baseurl}}/downloads))
+* *Optional*. MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
@@ -24,17 +33,17 @@ From a **Command-line** window, navigate to the server's folder and run the comm
 
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
-1. Click on the "New" button next to **Applications**
+1. Click the **New** button next to **Applications**
     * Select the **Android** platform
     * Enter **com.ibm.mfpstarterandroid** as the **application identifier**
-    * Enter **1.0** as the **version** value
+    * Enter **1.0.0** as the **version** value
     * Click on **Register application**
 
-    ![Image of selecting platform, and providing an identifier and version](register-an-application-android.png)
+    <img class="gifplayer" alt="Register an application" src="register-an-application-android.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Android mobile app scaffold.
+2. Click on the **Get Starter Code** tile and select to download the Android application scaffold.
 
-    ![Image of downloading a sample application](download-starter-code-android.png)
+    <img class="gifplayer" alt="Download sample application" src="download-starter-code-android.png"/>
 
 ### 3. Editing application logic
 
@@ -46,43 +55,71 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     ```java
     import java.net.URI;
+    import java.net.URISyntaxException;
     import android.util.Log;
     ```
     
-* Paste the following code snippet, inside the `protected void onCreate()` function:
+* Paste the following code snippet, replacing the call to `WLAuthorizationManager.getInstance().obtainAccessToken`:
 
     ```java
-    WLClient.createInstance(this);
-    URI adapterPath = null;
-    try {
-        adapterPath = new URI("/adapters/javaAdapter/users/world");
-    } catch (URISyntaxException e) {
-        e.printStackTrace();
-    }
-    
-    WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
-    request.send(new WLResponseListener() {
-        @Override
-         public void onSuccess(WLResponse wlResponse) {
-            // Will print "Hello world" in LogCat.
-            Log.i("MobileFirst Quick Start", "Success: " + wlResponse.getResponseText());
-        }
+    WLAuthorizationManager.getInstance().obtainAccessToken("", new WLAccessTokenListener() {
+                @Override
+                public void onSuccess(AccessToken token) {
+                    System.out.println("Received the following access token value: " + token);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            titleLabel.setText("Yay!");
+                            connectionStatusLabel.setText("Connected to MobileFirst Server");
+                        }
+                    });
 
-        @Override
-        public void onFailure(WLFailResponse wlFailResponse) {
-            Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
-        }
-    });
+                    URI adapterPath = null;
+                    try {
+                        adapterPath = new URI("/adapters/javaAdapter/resource/greet");
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+
+                    WLResourceRequest request = new WLResourceRequest(adapterPath, WLResourceRequest.GET);
+                    
+                    request.setQueryParameter("name","world");
+                    request.send(new WLResponseListener() {
+                        @Override
+                        public void onSuccess(WLResponse wlResponse) {
+                            // Will print "Hello world" in LogCat.
+                            Log.i("MobileFirst Quick Start", "Success: " + wlResponse.getResponseText());
+                        }
+
+                        @Override
+                        public void onFailure(WLFailResponse wlFailResponse) {
+                            Log.i("MobileFirst Quick Start", "Failure: " + wlFailResponse.getErrorMsg());
+                        }
+                    });
+                }
+
+                @Override
+                public void onFailure(WLFailResponse wlFailResponse) {
+                    System.out.println("Did not receive an access token from server: " + wlFailResponse.getErrorMsg());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            titleLabel.setText("Bummer...");
+                            connectionStatusLabel.setText("Failed to connect to MobileFirst Server");
+                        }
+                    });
+                }
+            });
     ```
 
-### 4. Creating an adapter
+### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
-Alternatively, click on the "New" button next to **Adapters**.  
+Alternatively, click the **New** button next to **Adapters**.  
         
 1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
 
-    > If Maven and MobileFirst Developer CLI are not installed, follow the on-screen **Set up your development environment** instructions.
+    > If Maven and MobileFirst CLI are not installed, follow the on-screen **Set up your development environment** instructions.
 
 2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
 
@@ -92,17 +129,21 @@ Alternatively, click on the "New" button next to **Adapters**.
 
 3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
     
-    ![Image of create an adapter](create-an-adapter.png)
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
+<img src="androidQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
 1. In Android Studio, select the **[project]/app/src/main/assets/mfpclient.properties** file and edit the **host** property with the IP address of the MobileFirst Server.
 
+    Alternatively, if you have installed the MobileFirst Develper CLI then navigate to the project root folder and run the command `mfpdev app register`.  If a remote server is used instead of a local server, first use the command `mfpdev server add` to add it.
+
 2. Click on the **Run App** button.  
 
-#### Results
-* Clicking on the **Test Server Connection** button will display **Client has connected to server**.
-* If the application was able to connect to the MobileFirst Server, a resource request call using the Java adapter will take place.
+<br clear="all"/>
+### Results
+* Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
+* If the application was able to connect to the MobileFirst Server, a resource request call using the deployed Java adapter will take place.
 
 The adapter response is then printed in Android Studio's LogCat view.
 

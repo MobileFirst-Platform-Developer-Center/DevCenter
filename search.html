@@ -1,18 +1,51 @@
 ---
-title: Search
+title: Site Search
+indexed: false
 layout: default
+custom_js:
+  - lib/elasticsearch-js/elasticsearch.jquery.js
+  - lib/spinjs/spin.min.js
+  - js/search.js
 ---
-<script>
-  (function() {
-    var cx = '006696266273115712924:ft7vdfhvshq';
-    var hq = 'nextmobile';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-        '//cse.google.com/cse.js?cx=' + cx + ( hq ? '&hq=more:' + hq : '');
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
+<script id="searchResultTemplate" type="text/x-jsrender">
+{% raw %}
+<div class="searchResult">
+    <a href="{{:url}}">{{:title}}</a><br/>
+    <span class="label label-info">{{:type}}</span>
+    {{if version}}<span class="label label-default">{{:version}}</span>{{/if}}
+    {{for relevantTo}}
+      <span class="videoTag label label-default">{{:#data}}</span>
+    {{/for}}
+    {{for tags}}
+      <span class="videoTag label label-default">{{:#data}}</span>
+    {{/for}}
+    <br/>
+    <span class="summary">{{:summary}}</span>
+</div>
+{% endraw %}
 </script>
-<gcse:searchresults-only linkTarget="_self"></gcse:searchresults>
+<div class="container search">
+  <h2>Search Results <small id="queryTerm"></small></h2>
+  <p>
+    <form role="search" action="{{site.baseurl}}/search/" method="get">
+      <input id="pnext-search-input" type="text" class="form-control" placeholder="Search for..." name="q">
+    </form>
+  </p>
+  <div id="searchResults">
+  </div>
+  <!-- Pagination links -->
+  <nav>
+    <ul class="pagination">
+      <li id="searchPreviousBtn" class="disabled">
+        <a aria-label="Previous" >
+          <span aria-hidden="true">Previous</span>
+        </a>
+      </li>
+      <li id="searchNextBtn" >
+        <a aria-label="Next">
+          <span aria-hidden="true">Next</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

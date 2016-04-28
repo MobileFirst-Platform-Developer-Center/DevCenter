@@ -22,7 +22,7 @@ For curated content visit:
 * [Windows 8 development](windows-8-tutorials/) 
 * [Windows Phone 8 development](windows-phone-8-tutorials/) 
 * [Hybrid development](hybrid-tutorials/)
-* [Server-side development](server-side-tutorials/)
+* [Server-side development](server-side-development/)
 
 
 

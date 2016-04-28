@@ -6,21 +6,27 @@ if [ $TRAVIS_PULL_REQUEST == "true" ]; then
   exit 0
 fi
 
+# only proceed script when on "master" branch
+if [ $TRAVIS_BRANCH != 'master' ]; then
+  echo "this is not the master branch, exiting"
+  exit 0
+fi
+
 # enable error reporting to the console
 set -e
 
-## First, build for GitHub Pages
+## First, build
 # build site with jekyll, by default to `_site' folder
 rm -rf _site/*
 bundle exec jekyll build --config _config.yml,build/_configBluemix.yml -d _site --profile
 rm -f _site/*.log
-# bundle exec htmlproof ./_site --disable-external --href-ignore '#'
+# bundle exec htmlproofer ./_site --disable-external --url-ignore '#'
 
 # cleanup
 rm -rf ../mfpsamples.github.ibm.com.generated-bluemix
 
 #clone `generated-bluemix' branch of the repository
-git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --branch generated-bluemix --single-branch ../mfpsamples.github.ibm.com.generated-bluemix
+git clone git@github.ibm.com:MFPSamples/mfpsamples.github.ibm.com.git --depth 1 --branch generated-bluemix --single-branch ../mfpsamples.github.ibm.com.generated-bluemix
 # copy generated HTML site to `generated-bluemix' branch
 rm -rf ../mfpsamples.github.ibm.com.generated-bluemix/*
 cp -R _site/* ../mfpsamples.github.ibm.com.generated-bluemix

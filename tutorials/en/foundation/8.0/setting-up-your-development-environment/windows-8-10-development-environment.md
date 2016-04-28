@@ -45,4 +45,4 @@ Windows 10 UWP requires:
 - Visual Studio 2015
 
 ## What's Next
-Now that the MobileFirst and Windows development environment are set up, continue to [Quick Start](../../quick-start/windows/) category to experience MobileFirst Platform, or to [All Tutorials](../../all-tutorials) to learn specific aspects of MobileFirst Platform development.
+Now that the MobileFirst and Windows development environment are set up, continue to [Quick Start](../../quick-start/windows-8-10/) category to experience MobileFirst Platform, or to [All Tutorials](../../all-tutorials) to learn specific aspects of MobileFirst Platform development.

@@ -1,0 +1,138 @@
+{
+  "query": {
+    "count": 1,
+    "created": "2016-03-28T08:50:04Z",
+    "lang": "en-us",
+    "results": {
+      "channel": {
+        "units": {
+          "distance": "mi",
+          "pressure": "in",
+          "speed": "mph",
+          "temperature": "F"
+        },
+        "title": "Yahoo! Weather - New York, NY, US",
+        "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2459115/",
+        "description": "Weather for New York, NY, US",
+        "language": "en-us",
+        "lastBuildDate": "Mon, 28 Mar 2016 04:50 AM EDT",
+        "ttl": "60",
+        "location": {
+          "city": "New York",
+          "country": "United States",
+          "region": " NY"
+        },
+        "wind": {
+          "chill": "37",
+          "direction": "85",
+          "speed": "18"
+        },
+        "atmosphere": {
+          "humidity": "88",
+          "pressure": "1014.0",
+          "rising": "0",
+          "visibility": "16.1"
+        },
+        "astronomy": {
+          "sunrise": "6:45 am",
+          "sunset": "7:17 pm"
+        },
+        "image": {
+          "title": "Yahoo! Weather",
+          "width": "142",
+          "height": "18",
+          "link": "http://weather.yahoo.com",
+          "url": "http://l.yimg.com/a/i/brand/purplelogo//uh/us/news-wea.gif"
+        },
+        "item": {
+          "title": "Conditions for New York, NY, US at 04:00 AM EDT",
+          "lat": "40.71455",
+          "long": "-74.007118",
+          "link": "http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2459115/",
+          "pubDate": "Mon, 28 Mar 2016 04:00 AM EDT",
+          "condition": {
+            "code": "11",
+            "date": "Mon, 28 Mar 2016 04:00 AM EDT",
+            "temp": "43",
+            "text": "Showers"
+          },
+          "forecast": [{
+            "code": "39",
+            "date": "28 Mar 2016",
+            "day": "Mon",
+            "high": "59",
+            "low": "44",
+            "text": "Scattered Showers"
+          }, {
+            "code": "23",
+            "date": "29 Mar 2016",
+            "day": "Tue",
+            "high": "53",
+            "low": "41",
+            "text": "Breezy"
+          }, {
+            "code": "30",
+            "date": "30 Mar 2016",
+            "day": "Wed",
+            "high": "53",
+            "low": "35",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "39",
+            "date": "31 Mar 2016",
+            "day": "Thu",
+            "high": "68",
+            "low": "45",
+            "text": "Scattered Showers"
+          }, {
+            "code": "28",
+            "date": "01 Apr 2016",
+            "day": "Fri",
+            "high": "67",
+            "low": "55",
+            "text": "Mostly Cloudy"
+          }, {
+            "code": "30",
+            "date": "02 Apr 2016",
+            "day": "Sat",
+            "high": "57",
+            "low": "45",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "34",
+            "date": "03 Apr 2016",
+            "day": "Sun",
+            "high": "50",
+            "low": "37",
+            "text": "Mostly Sunny"
+          }, {
+            "code": "34",
+            "date": "04 Apr 2016",
+            "day": "Mon",
+            "high": "43",
+            "low": "31",
+            "text": "Mostly Sunny"
+          }, {
+            "code": "30",
+            "date": "05 Apr 2016",
+            "day": "Tue",
+            "high": "50",
+            "low": "34",
+            "text": "Partly Cloudy"
+          }, {
+            "code": "39",
+            "date": "06 Apr 2016",
+            "day": "Wed",
+            "high": "55",
+            "low": "42",
+            "text": "Scattered Showers"
+          }],
+          "description": "<img src=\"http://l.yimg.com/a/i/us/we/52/11.gif\"/>\n<BR />\n<b>Current Conditions:</b>\n<BR />Showers\n<BR />\n<BR />\n<b>Forecast:</b>\n<BR /> Mon - Scattered Showers. High: 59Low: 44\n<BR /> Tue - Breezy. High: 53Low: 41\n<BR /> Wed - Partly Cloudy. High: 53Low: 35\n<BR /> Thu - Scattered Showers. High: 68Low: 45\n<BR /> Fri - Mostly Cloudy. High: 67Low: 55\n<BR />\n<BR />\n",
+          "guid": {
+            "isPermaLink": "false"
+          }
+        }
+      }
+    }
+  }
+}

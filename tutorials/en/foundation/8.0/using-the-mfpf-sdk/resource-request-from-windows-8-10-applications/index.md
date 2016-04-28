@@ -8,7 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin8/tree/release80
   - name: Download Native Windows 10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWin10/tree/release80
-  - name: Download Maven project
+  - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 6
 ---
@@ -18,7 +18,7 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal](../../adding-the-mfpf-sdk/windows-8) or [Windows 10 UWP](../../adding-the-mfpf-sdk/windows-10) project.
+- Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal](../../adding-the-mfpf-sdk/windows-8-10) or [Windows 10 UWP](../../adding-the-mfpf-sdk/windows-8-10) project.
 - Learn how to [create adapters](../../adapters/adapters-overview/).
 
 ## WLResourceRequest
@@ -56,7 +56,7 @@ Before sending your request, you may want to add parameters as needed.
 As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WorklightResourceRequest` object:
 
 ```cs
-URI adapterPath = new URI("/adapters/JavaAdapter/users/value1/value2",UriKind.Relative);
+Uri adapterPath = new Uri("/adapters/JavaAdapter/users/value1/value2",UriKind.Relative);
 WorklightResourceRequest request = WorklightClient.createInstance(adapterPath,"GET");
 ```
 
@@ -103,9 +103,13 @@ request.SetHeader(KeyValuePair<string,string> header);
 - `.Send(JObject json)` allows you to set an arbitrary dictionary in the body.
 - `.Send(byte[] data)` allows you to set an arbitrary byte array in the body.
 
+## The response
+The `WorklightResponse` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `ResponseText` (String), `ResponseJSON` (JSONObject) (if the response is in JSON) and `success` (boolean) (success status of the response).
+
+In case of request failure, the response object also contains a `error` property.
+
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
-
 
 <img alt="Image of the sample application" src="resource-request-success-Win8-10.PNG" style="float:right"/>
 ## Sample application
@@ -117,8 +121,7 @@ The adapter Maven project contains the Java adapter used during the resource req
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
-1. From the command line, navigate to the project's root folder.
-2. Ensure the sample is registered in the MobileFirst Server by running the command: `mfpdev app register`.
-3. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst Developer CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-4. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
-5. import the project to Visual Studio, and run the sample by clicking the **Run* button.
+1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
+3. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+4. import the project to Visual Studio, and run the sample by clicking the **Run* button.

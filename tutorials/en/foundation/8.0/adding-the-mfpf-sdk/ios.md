@@ -19,7 +19,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Coco
 
 **Prerequisites:** 
 
-- Xcode and MobileFirst Developer CLI installed on the developer workstation.  
+- Xcode and MobileFirst CLI installed on the developer workstation.  
 - MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 - Make sure you have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your iOS development environment](../../setting-up-your-development-environment/ios-development-environment) tutorials.
 
@@ -34,30 +34,29 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Coco
 Follow the below instructions to add the MobileFirst Native SDK to either a new or existing Xcode project, and register the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
+If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
 
 ### Creating an application
 Create an Xcode project or use an existing one (Swift or Objective-C).  
 
 ### Adding the SDK
 
-1. The MobileFirst Native SDK is provided via CocoaPods. If [CocoaPods](http://guides.cocoapods.org) is not installed in your development environment, install it as follows:  
-    - Open a **Command-line** window and navigate to the root of the Xcode project.
-    - Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands may take several minutes to complete.
-
+1. The MobileFirst Native SDK is provided via CocoaPods. 
+    - If [CocoaPods](http://guides.cocoapods.org) is already installed in your development environment, skip to step 2.
+    - If CocoaPods is not installed, install it as follows:  
+        - Open a **Command-line** window and navigate to the root of the Xcode project.
+        - Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands may take several minutes to complete.
 2. Run the command: `pod init`. This creates a `Podfile`.
-    - Using your favorite code editor, open the `Podfile`.
+3. Using your favorite code editor, open the `Podfile`.
     - Comment out or delete the contents of the file.
     - Add the following lines and save the changes:
 
         ```xml
-        # remove source line below before going live with the tutorials
-        source 'https://hub.jazz.net/git/oper2000/imf-client-sdk-specs-inhouse.git' 
         use_frameworks! 
         pod 'IBMMobileFirstPlatformFoundation'
         ```
         
-3. Run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
+4. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
     **Note:** This command may take several minutes to complete.
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
@@ -72,20 +71,20 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     mfpdev app register
     ```
     
-    You will be asked to provide the application's BundleID.  
-    The BundleID is **case sensitive***.
+    You will be asked to provide the application's BundleID. Note that the BundleID is **case sensitive**.  
 
-    The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.plist** file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.
-            
-    > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
-        1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.  
-        2. Click on the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-        3. After successfully registering your application you can optionally download a "skeleton" Xcode project pre-bundled with the MobileFirst Native SDK.
+The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.plist** file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.  
+
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
+> 
+> 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
+    
+> 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
+    
+> 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
 
 ### Completing the setup process
 In Xcode, right-click the project entry, click on **Add Files To [ProjectName]** and select the **mfpclient.plist** file, located at the root of the Xcode project.
-
-
 
 ### Referencing the SDK
 
@@ -105,10 +104,8 @@ import IBMMobileFirstPlatformFoundation
 
 <br>
 #### Note about iOS 9:
-> * If you are developing for iOS 9, [consider disabling ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error) in the application's `info.plist` to be able to test locally without security restrictions.
->
-> * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default.  
-To complete the tutorial, [disable  ATS](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error).
+
+> * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following: 
 >
