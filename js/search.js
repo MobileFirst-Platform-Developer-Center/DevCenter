@@ -1,4 +1,4 @@
-// SPIN.JS 
+// SPIN.JS
 var opts = {
     lines: 13,
     length: 28,
@@ -29,6 +29,7 @@ var MFPSEARCH = {
     client: null,
     queryTerm: null,
     params: {},
+    body: {},
     pageSize: 10,
     total: 0,
     from: 0,
@@ -43,17 +44,17 @@ var MFPSEARCH = {
     },
     executeSearch: function() {
         spinner.spin(document.getElementById('searchResults'));
-        
+
         var _this = this;
-        this.client.search(this.params).then(function(body) {
+        this.client.search(this.body).then(function(body) {
             console.log(body);
             _this.total = body.hits.total;
             $('#queryTerm').html(_this.total + " results");
-            $('#search-input').val($('#search-input').val() + _this.queryTerm);
+            $('#search-input').val(_this.queryTerm);
             var searchResultTemplate = $.templates("#searchResultTemplate");
             $('#searchResults').html('');
             $('html,body').scrollTop(0);
-            
+
             if (_this.total > 0 ) {
                 $.each(body.hits.hits, function(index, result) {
                     $('#searchResults').append(searchResultTemplate.render(result._source));
@@ -98,6 +99,15 @@ var MFPSEARCH = {
         if (this.queryTerm !== null) {
             this.params = {
                 q: this.queryTerm
+            };
+            this.body = {
+                body: {
+                  "query": {
+                    "match": {
+                      "_all": this.queryTerm
+                    }
+                  }
+                }
             };
             this.executeSearch();
             _this = this;
