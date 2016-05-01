@@ -29,7 +29,7 @@ Automatically testing MobileFirst adapters became very easy as soon as we releas
 
 In this blog post you will learn how to create an adapter and cover its functionality by a set of automated tests. We are going to use JUnit and Spring testing framework to achieve this goal.
 
-### Prerequisits
+### Prerequisites
 
 * Make sure Maven is installed
 * Make sure that MobileFirst 8.0 DevKit is installed
