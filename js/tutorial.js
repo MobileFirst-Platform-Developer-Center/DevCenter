@@ -1,4 +1,5 @@
-$(function() {
+$(function() {    
+  
   var openedItems = $('.tutorial .sidebar .navmenu-default li.open');
   if (openedItems.length) {
     for (var i = 0; i < openedItems.length; i++) {
@@ -25,3 +26,6 @@ $(function() {
   $('.tutorial table').not('.highlight table').addClass("table table-striped");
 
 });
+
+// Use AnchorJS to generate anchors.
+anchors.add();
