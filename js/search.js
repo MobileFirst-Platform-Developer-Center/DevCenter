@@ -81,14 +81,18 @@ var MFPSEARCH = {
         });
     },
     nextPage: function() {
-        this.from = this.from + this.pageSize;
-        this.body.from = this.from;
-        this.executeSearch();
+        if (_this.from + _this.pageSize <= _this.total) {
+          this.from = this.from + this.pageSize;
+          this.body.from = this.from;
+          this.executeSearch();
+        }
     },
     previousPage: function() {
-        this.from = this.from - +this.pageSize;
-        this.body.from = this.from;
-        this.executeSearch();
+        if (_this.from > 0) {
+          this.from = this.from - +this.pageSize;
+          this.body.from = this.from;
+          this.executeSearch();
+        }
     },
     init: function() {
         this.client = new $.es.Client({
@@ -103,7 +107,8 @@ var MFPSEARCH = {
                     "multi_match": {
                       "query": this.queryTerm,
                       "operator": "and",
-                      "fields": ["title", "content", "author.name"]
+                      "fields": ["title", "content", "author.name"],
+                      "fuzziness": "AUTO"
                     }
                   },
                   "highlight": {
