@@ -12,4 +12,7 @@ $(function() {
     $('body').imagesLoaded(function(){
       $('.gifplayer').gifplayer({wait: 'true'});
     });
+    
+    // Use AnchorJS to generate anchors.
+    anchors.add();
 });
