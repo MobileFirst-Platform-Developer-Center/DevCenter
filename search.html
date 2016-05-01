@@ -13,9 +13,13 @@ custom_js:
     <div class="searchResult">
         <a href="{{:url}}">{{:title}}</a>
         <br/>
-        <span class="label label-info">{{:type}}</span> {{if version}}<span class="label label-default">{{:version}}</span>{{/if}} {{for relevantTo}}
-        <span class="videoTag label label-default">{{:#data}}</span> {{/for}} {{for tags}}
-        <span class="videoTag label label-default">{{:#data}}</span> {{/for}}
+        <span class="label label-info">{{:type}}</span>
+        {{for version}}
+        <span class="label label-default">{{:#data}}</span>{{/for}}
+        {{for relevantTo}}
+        <span class="videoTag label label-default">{{:#data}}</span>{{/for}}
+        {{for tags}}
+        <span class="videoTag label label-default">{{:#data}}</span>{{/for}}
         <br/>
         <span class="summary">{{:summary}}</span>
     </div>
@@ -33,19 +37,19 @@ custom_js:
     </form>
     <div id="filters" style="display:none">
         <br/><b>Optional filters</b><br/>
-        
+
         <select id="document-type" multiple="multiple">
             <option value="blogs">Blogs</option>
             <option value="tutorials">Tutorials</option>
         </select>
-        
+
         <select id="platforms" multiple="multiple">
             <option value="cordova">Cordova</option>
             <option value="ios">iOS</option>
             <option value="android">Android</option>
             <option value="windows">Windows</option>
         </select>
-        
+
         <select id="versions" multiple="multiple">
             <option value="63">6.3</option>
             <option value="70">7.0</option>
@@ -55,7 +59,7 @@ custom_js:
     </div>
     <br/><br/>
     <div id="searchResults">
-    
+
     </div>
     <!-- Pagination links -->
     <nav>
