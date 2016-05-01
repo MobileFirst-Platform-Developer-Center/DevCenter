@@ -56,6 +56,7 @@ var MFPSEARCH = {
 
             if (_this.total > 0 ) {
                 $.each(body.hits.hits, function(index, result) {
+                    result._source.highlight = result.highlight;
                     $('#searchResults').append(searchResultTemplate.render(result._source));
                 });
                 $('#searchNextBtn').show();
@@ -99,8 +100,16 @@ var MFPSEARCH = {
             this.body = {
                 body: {
                   "query": {
-                    "match": {
-                      "_all": this.queryTerm
+                    "multi_match": {
+                      "query": this.queryTerm,
+                      "operator": "and",
+                      "fields": ["title", "content", "author.name"]
+                    }
+                  },
+                  "highlight": {
+                    "fields": {
+                      "title": {},
+                      "content": {}
                     }
                   }
                 }

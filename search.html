@@ -11,7 +11,10 @@ custom_js:
 <script id="searchResultTemplate" type="text/x-jsrender">
     {% raw %}
     <div class="searchResult">
-        <a href="{{:url}}">{{:title}}</a>
+        {{if highlight && highlight.title}}
+        <a href="{{:url}}">{{:highlight.title}}</a>
+        {{else}}
+        <a href="{{:url}}">{{:title}}</a>{{/if}}
         <br/>
         <span class="label label-info">{{:type}}</span>
         {{for version}}
@@ -21,7 +24,10 @@ custom_js:
         {{for tags}}
         <span class="videoTag label label-default">{{:#data}}</span>{{/for}}
         <br/>
-        <span class="summary">{{:summary}}</span>
+        {{if highlight && highlight.content}}
+        <span class="summary">{{:highlight.content}}</span>
+        {{else}}
+        <span class="summary">{{:summary}}</span>{{/if}}
     </div>
     {% endraw %}
 </script>
