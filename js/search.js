@@ -107,7 +107,7 @@ var MFPSEARCH = {
         if (selectedVersions.length > 0) {
             var versionsArray = [];
             $.each(selectedVersions, function(index, result) {
-                versionsArray[index] = result.value;
+                versionsArray.push(result.value);
             });
             mustArray.push({
                 "terms": {
@@ -119,7 +119,7 @@ var MFPSEARCH = {
         if (selectedType.length > 0) {
             var typesArray = [];
             $.each(selectedType, function(index, result) {
-                typesArray[index] = result.value;
+                typesArray.push(result.value);
             });
             mustArray.push({
                 "terms": {
@@ -131,7 +131,10 @@ var MFPSEARCH = {
         if (selectedPlatforms.length > 0) {
             var platformsArray = [];
             $.each(selectedPlatforms, function(index, result) {
-                platformsArray[index] = result.value;
+                platformsArray.push(result.value);
+                if (result.value == "cordova"){
+                  platformsArray.push("hybrid");
+                }
             });
             mustArray.push({
                 "bool": {
