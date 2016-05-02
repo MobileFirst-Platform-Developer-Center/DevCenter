@@ -26,6 +26,3 @@ $(function() {
   $('.tutorial table').not('.highlight table').addClass("table table-striped");
 
 });
-
-// Use AnchorJS to generate anchors.
-anchors.add();

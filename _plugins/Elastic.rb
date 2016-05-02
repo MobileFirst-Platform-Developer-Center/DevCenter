@@ -9,6 +9,8 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
     # loop over blog posts
     site.posts.docs.each do |document|
+      next unless document['indexed']
+      next unless document.data["layout"]!="redirect"
       # get all the meta data
       element = document.data.clone
       element.delete('excerpt')
@@ -47,6 +49,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
     # loop over pages
     site.pages.each do |document|
       next unless document['indexed']
+      next unless document.data["layout"]!="redirect"
       # get all the meta data
       element = document.data
       element['hash'] = Digest::MD5.hexdigest(document.url)

@@ -51,11 +51,7 @@
         }, {
             "name": "Application Scanning",
             "path": "/application-scanning"
-        }, {
-            "name": "Presence Insights",
-            "path": "https://presenceinsights.ibmcloud.com/piui/",
-            "external": true
-        }, ]
+        }]
     }, ]
 }, {
     "name": "Product Integration",
