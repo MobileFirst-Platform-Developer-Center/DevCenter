@@ -5,47 +5,81 @@ layout: default
 custom_js:
   - lib/elasticsearch-js/elasticsearch.jquery.js
   - lib/spinjs/spin.min.js
+  - lib/multiselect/bootstrap-multiselect.js
   - js/search.js
 ---
 <script id="searchResultTemplate" type="text/x-jsrender">
-{% raw %}
-<div class="searchResult">
-    <a href="{{:url}}">{{:title}}</a><br/>
-    <span class="label label-info">{{:type}}</span>
-    {{if version}}<span class="label label-default">{{:version}}</span>{{/if}}
-    {{for relevantTo}}
-      <span class="videoTag label label-default">{{:#data}}</span>
-    {{/for}}
-    {{for tags}}
-      <span class="videoTag label label-default">{{:#data}}</span>
-    {{/for}}
-    <br/>
-    <span class="summary">{{:summary}}</span>
-</div>
-{% endraw %}
+    {% raw %}
+    <div class="searchResult">
+        {{if highlight && highlight.title}}
+        <a href="{{:url}}">{{:highlight.title}}</a>
+        {{else}}
+        <a href="{{:url}}">{{:title}}</a>{{/if}}
+        <br/>
+        <span class="label label-info">{{:type}}</span>
+        {{for version}}
+        <span class="label label-default">{{:#data}}</span>{{/for}}
+        {{for relevantTo}}
+        <span class="videoTag label label-default">{{:#data}}</span>{{/for}}
+        {{for tags}}
+        <span class="videoTag label label-default">{{:#data}}</span>{{/for}}
+        <br/>
+        {{if highlight && highlight.content}}
+        <div class="summary">{{:highlight.content}}</div>
+        {{else}}
+        <div class="summary">{{:summary}}</div>{{/if}}
+    </div>
+    {% endraw %}
 </script>
 <div class="container search">
-  <h2>Search Results <small id="queryTerm"></small></h2>
-  <p>
+    <h2>Site Search <small id="queryTerm"></small></h2>
     <form role="search" action="{{site.baseurl}}/search/" method="get">
-      <input id="pnext-search-input" type="text" class="form-control" placeholder="Search for..." name="q">
+        <div class="input-group add-on">
+            <input id="search-input" type="text" class="form-control" placeholder="Search for..." name="q">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
     </form>
-  </p>
-  <div id="searchResults">
-  </div>
-  <!-- Pagination links -->
-  <nav>
-    <ul class="pagination">
-      <li id="searchPreviousBtn" class="disabled">
-        <a aria-label="Previous" >
-          <span aria-hidden="true">Previous</span>
-        </a>
-      </li>
-      <li id="searchNextBtn" >
-        <a aria-label="Next">
-          <span aria-hidden="true">Next</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+    <div id="filters" style="display:none">
+        <br/><b>Optional filters</b><br/>
+
+        <select id="document-type" multiple="multiple">
+            <option value="blogs">Blogs</option>
+            <option value="tutorials">Tutorials</option>
+        </select>
+
+        <select id="platforms" multiple="multiple">
+            <option value="cordova">Cordova</option>
+            <option value="ios">iOS</option>
+            <option value="android">Android</option>
+            <option value="windows">Windows</option>
+        </select>
+
+        <select id="versions" multiple="multiple">
+            <option value="63">6.3</option>
+            <option value="70">7.0</option>
+            <option value="71">7.1</option>
+            <option value="80">8.0</option>
+        </select>
+    </div>
+    <br/><br/>
+    <div id="searchResults">
+
+    </div>
+    <!-- Pagination links -->
+    <nav>
+        <ul class="pagination">
+            <li id="searchPreviousBtn" class="disabled" style="display:none">
+                <a aria-label="Previous">
+                    <span aria-hidden="true">Previous</span>
+                </a>
+            </li>
+            <li id="searchNextBtn" style="display:none">
+                <a aria-label="Next">
+                    <span aria-hidden="true">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </div>

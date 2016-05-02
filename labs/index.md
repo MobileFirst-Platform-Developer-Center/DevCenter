@@ -4,7 +4,7 @@ title: Labs
 show_disqus: false
 ---
 <div class="container">
-    <h2>Welcome to Labs</h2>
+    <h2 class="no-anchor">Welcome to Labs</h2>
     <p>“Labs” are video-based educational materials with step-by-step instructions.</p>
 
     <ul>
