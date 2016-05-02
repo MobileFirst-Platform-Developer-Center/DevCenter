@@ -43,16 +43,16 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 
 **Note:** To run THyM you must be running Eclipse Mars or later
 
-<span style="color: red">Needs to be updated once THyM goes live in Eclipse Marketplace</span>
-
 1. While in Eclipse click **Help → Eclipse Marketplace...**
 2. In the find field search "thym" then click "Go"
-3. Complete installation process
-4. Restart Eclipse for the installation to take affect.
+3. Click "Install" for Eclipse Thym 
+
+	![Imange of THyM installation](Thym_install.png)
+
+4. Complete the installation process
+5. Restart Eclipse for the installation to take affect.
 
 ## Installing MobileFirst CLI plugin
-
-<span style="color: red">Plugin is not yet live and needs to by downloaded from Halpert</span>
 
 Once you have [installed THyM](#installing-thym) and either [created a cordova project](#creating-a-cordova-project) or [imported a cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the cordova CLI plugin.
 
@@ -60,7 +60,6 @@ Once you have [installed THyM](#installing-thym) and either [created a cordova p
 2. In the Registry tab of the presented dialog box search **mfp** and select **cordova-plugin-mfp** and click **Finish**
 
 	![Image of new cordova plugin install](New_installing_cordova_plugin.png)
-
 
 
 ## Creating a cordova project
