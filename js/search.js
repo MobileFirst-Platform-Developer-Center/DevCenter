@@ -101,7 +101,7 @@ var MFPSEARCH = {
             "bool": {
                 "must": []
             }
-        }
+        };
         var mustArray = this.body.filter.bool.must;
         var selectedVersions = $('#versions option:selected');
         if (selectedVersions.length > 0) {
