@@ -15,7 +15,7 @@ var opts = {
     fps: 20,
     zIndex: 2e9,
     className: 'spin',
-    top: '35%',
+    top: '60%',
     left: '50%',
     shadow: false,
     hwaccel: false,
