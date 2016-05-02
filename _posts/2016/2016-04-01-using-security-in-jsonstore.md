@@ -6,7 +6,9 @@ tags:
 - Android
 - JSONStore
 version:
-- 8.0
+- 6.3
+- 7.0
+- 7.1
 author:
   name: Nana Amfo
 ---

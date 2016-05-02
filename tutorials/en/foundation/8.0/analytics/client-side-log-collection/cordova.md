@@ -26,7 +26,7 @@ Log capture is enabled by default. To turn log capture on or off:
 WL.Logger.config({capture: false})
 ```
 
-The default capture level is DEBUG in development and FATAL in production. To control the capture level (verbosity):
+The default capture level is FATAL in development and in production. To control the capture level (verbosity):
 
 ```javascript
 WL.Logger.config({level: 'FATAL'})
