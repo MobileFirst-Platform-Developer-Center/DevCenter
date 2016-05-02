@@ -9,6 +9,7 @@ $(function() {
       }, 500);
     });
 
+    // Initialize the GIF player.
     $('body').imagesLoaded(function(){
       $('.gifplayer').gifplayer({wait: 'true'});
     });
