@@ -1,7 +1,7 @@
 ---
 layout: default
 custom_js:
-- lib/jasny-bootstrap/js/jasny-bootstrap.js
+- lib/jasny-bootstrap/js/jasny-bootstrap.min.js
 - js/tutorial.js
 ---
 <div class="container-fluid tutorial">
@@ -23,6 +23,7 @@ custom_js:
             </div>
             {% endif %}
             {{ content }}
+            <a onclick="$('html,body').scrollTop(0);"></a>></a>
 
               {% if page.show_children %}
                 {% if page.show_children_title %}
