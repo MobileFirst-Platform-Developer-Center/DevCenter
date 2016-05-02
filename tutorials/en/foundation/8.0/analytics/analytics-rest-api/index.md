@@ -6,13 +6,13 @@ relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 ## Overview
-MobileFirst Platform Foundation Operational Analytics provides rest APIs to help the developer with importing (POST) and exporting (GET) analytics data.
+MobileFirst Platform Foundation Operational Analytics provides REST APIs to help the developer with importing (POST) and exporting (GET) analytics data.
 
 ## Jump to:
-* [Analytics Rest API](#analytics-rest-api)
+* [Analytics REST API](#analytics-rest-api)
 * [Try It Out on Swagger Docs](#try-it-out-on-swagger-docs)
 
-## Analytics Rest API
+## Analytics REST API
 To use the analytics REST API.
 
 **Base URL**
@@ -24,7 +24,7 @@ To use the analytics REST API.
 `https://example.com:9080/analytics-service/v3/applogs`
 
 
-Rest API Method | Endpoint | Description
+REST API Method | Endpoint | Description
 --- | --- | ---
 Application Logs (POST) | /v3/applogs | Create a new application log.
 Application Session (POST) | /v3/appsession | Creates new or updates an existing application session when reporting with the same appSessionID.
@@ -38,13 +38,13 @@ Network Transaction (POST) | /v3/networktransaction |  Create a new network tran
 Server Log (POST) | /v3/serverlog | Creates a new server log.
 User (POST) | /v3/user | Creates a new user.
 
-> For more information about the analytics rest API, see the topic about analytics in the user documentation.
+> For more information about the analytics REST API, see the topic about analytics in the user documentation.
 
-## Try It Out on Swagger Docs
-Try out the analytics rest API on Swagger Docs included with the analytics console.
+## Try it out on Swagger Docs
+Try out the analytics REST API on Swagger Docs included with the analytics console.
 It is already bundled with your analytics console at:
 
-Url: `<ipaddress>:<port>/analytics-service`
+URL: `<ipaddress>:<port>/analytics-service`
 
 Default: `localhost:9080/analytics-service/`
 
