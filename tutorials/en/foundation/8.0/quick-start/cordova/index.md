@@ -20,7 +20,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 #### Prerequisites:
 
 * Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
-* Cordova 6.0.0 CLI (v6.1.0 is **not supported**)
+* Cordova CLI v6.0.0 or v6.1.1 (v6.1.*0* is **not supported**)
 * *Optional*. MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 

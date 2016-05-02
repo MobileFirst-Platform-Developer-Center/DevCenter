@@ -32,7 +32,7 @@ custom_js:
     {% endraw %}
 </script>
 <div class="container search">
-    <h2>Site Search <small id="queryTerm"></small></h2>
+    <h2 class="no-anchor">Site Search <small id="queryTerm"></small></h2>
     <form role="search" action="{{site.baseurl}}/search/" method="get">
         <div class="input-group add-on">
             <input id="search-input" type="text" class="form-control" placeholder="Search for..." name="q">
@@ -45,8 +45,9 @@ custom_js:
         <br/><b>Optional filters</b><br/>
 
         <select id="document-type" multiple="multiple">
-            <option value="blogs">Blogs</option>
-            <option value="tutorials">Tutorials</option>
+            <option value="blog">Blogs</option>
+            <option value="tutorial">Tutorials</option>
+            <option value="lab">Labs</option>
         </select>
 
         <select id="platforms" multiple="multiple">
@@ -57,10 +58,10 @@ custom_js:
         </select>
 
         <select id="versions" multiple="multiple">
-            <option value="63">6.3</option>
-            <option value="70">7.0</option>
-            <option value="71">7.1</option>
-            <option value="80">8.0</option>
+            <option value="6.3">6.3</option>
+            <option value="7.0">7.0</option>
+            <option value="7.1">7.1</option>
+            <option value="8.0">8.0</option>
         </select>
     </div>
     <br/><br/>
