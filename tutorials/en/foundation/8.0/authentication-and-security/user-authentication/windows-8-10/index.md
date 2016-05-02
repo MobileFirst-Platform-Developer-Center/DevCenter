@@ -134,3 +134,5 @@ Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapt
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
+        
+![sample application](RememberMe.png)

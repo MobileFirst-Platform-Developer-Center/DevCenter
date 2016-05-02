@@ -4,6 +4,8 @@ date: 2015-12-09
 tags:
 - MobileFirst_Platform
 - Push_Notifications
+version:
+- 7.1
 author:
   name: Theodora Cheng
 ---
