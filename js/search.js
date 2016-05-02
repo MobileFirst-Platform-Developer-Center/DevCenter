@@ -45,7 +45,9 @@ var MFPSEARCH = {
         spinner.spin(document.getElementById('searchResults'));
 
         var _this = this;
-        this.client.search(this.body).then(function(body) {
+        this.client.search({
+            "body": this.body
+        }).then(function(body) {
             console.log(body);
             _this.total = body.hits.total;
             $('#queryTerm').html(_this.total + " results");
@@ -54,7 +56,7 @@ var MFPSEARCH = {
             $('#searchResults').html('');
             $('html,body').scrollTop(0);
 
-            if (_this.total > 0 ) {
+            if (_this.total > 0) {
                 $.each(body.hits.hits, function(index, result) {
                     result._source.highlight = result.highlight;
                     $('#searchResults').append(searchResultTemplate.render(result._source));
@@ -82,17 +84,70 @@ var MFPSEARCH = {
     },
     nextPage: function() {
         if (_this.from + _this.pageSize <= _this.total) {
-          this.from = this.from + this.pageSize;
-          this.body.from = this.from;
-          this.executeSearch();
+            this.from = this.from + this.pageSize;
+            this.body.from = this.from;
+            this.executeSearch();
         }
     },
     previousPage: function() {
         if (_this.from > 0) {
-          this.from = this.from - +this.pageSize;
-          this.body.from = this.from;
-          this.executeSearch();
+            this.from = this.from - +this.pageSize;
+            this.body.from = this.from;
+            this.executeSearch();
         }
+    },
+    updateFilters: function() {
+        this.body.filter = {
+            "bool": {
+                "must": []
+            }
+        }
+        var mustArray = this.body.filter.bool.must;
+        var selectedVersions = $('#versions option:selected');
+        if (selectedVersions.length > 0) {
+            var versionsArray = [];
+            $.each(selectedVersions, function(index, result) {
+                versionsArray[index] = result.value;
+            });
+            mustArray.push({
+                "terms": {
+                    "version": versionsArray
+                }
+            });
+        }
+        var selectedType = $('#document-type option:selected');
+        if (selectedType.length > 0) {
+            var typesArray = [];
+            $.each(selectedType, function(index, result) {
+                typesArray[index] = result.value;
+            });
+            mustArray.push({
+                "terms": {
+                    "type": typesArray
+                }
+            });
+        }
+        var selectedPlatforms = $('#platforms option:selected');
+        if (selectedPlatforms.length > 0) {
+            var platformsArray = [];
+            $.each(selectedPlatforms, function(index, result) {
+                platformsArray[index] = result.value;
+            });
+            mustArray.push({
+                "bool": {
+                    "should": [{
+                        "terms": {
+                            "relevantTo": platformsArray
+                        }
+                    }, {
+                        "terms": {
+                            "tags": platformsArray
+                        }
+                    }]
+                }
+            });
+        }
+        this.executeSearch();
     },
     init: function() {
         this.client = new $.es.Client({
@@ -102,21 +157,19 @@ var MFPSEARCH = {
         this.queryTerm = this.getParameterByName('q');
         if (this.queryTerm !== null) {
             this.body = {
-                body: {
-                  "query": {
+                "query": {
                     "multi_match": {
-                      "query": this.queryTerm,
-                      "operator": "and",
-                      "fields": ["title", "content", "author.name"],
-                      "fuzziness": "AUTO"
+                        "query": this.queryTerm,
+                        "operator": "and",
+                        "fields": ["title", "content", "author.name"],
+                        "fuzziness": "AUTO"
                     }
-                  },
-                  "highlight": {
+                },
+                "highlight": {
                     "fields": {
-                      "title": {},
-                      "content": {}
+                        "title": {},
+                        "content": {}
                     }
-                  }
                 }
             };
             this.executeSearch();
@@ -132,15 +185,24 @@ var MFPSEARCH = {
 };
 
 $(function() {
-    // $("#filters").show();
+    $("#filters").show();
     MFPSEARCH.init();
     $('#document-type').multiselect({
-        nonSelectedText: "Document type"
+        nonSelectedText: "Document type",
+        onChange: function(option, checked, select) {
+            MFPSEARCH.updateFilters();
+        }
     });
     $('#platforms').multiselect({
-        nonSelectedText: "Platforms"
+        nonSelectedText: "Platforms",
+        onChange: function(option, checked, select) {
+            MFPSEARCH.updateFilters();
+        }
     });
     $('#versions').multiselect({
-        nonSelectedText: "Versions"
+        nonSelectedText: "Versions",
+        onChange: function(option, checked, select) {
+            MFPSEARCH.updateFilters();
+        }
     });
 });
