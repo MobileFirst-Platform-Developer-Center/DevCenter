@@ -11,8 +11,11 @@
                 font-size: 110%;
             }
             .summary {
-                color: black;
+                color: #545454;
                 margin-top: 5px;
+                em {
+                  color: #6A6A64;
+                }
             }
             em {
                 font-weight: bold;
