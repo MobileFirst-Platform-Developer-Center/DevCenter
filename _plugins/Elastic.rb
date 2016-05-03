@@ -51,7 +51,9 @@ Jekyll::Hooks.register :site, :post_write do |site|
       next unless document['indexed']
       next unless document.data["layout"]!="redirect"
       # get all the meta data
-      element = document.data
+      element = document.data.clone
+      element.delete('breadcrumbs')
+      element.delete('children')
       element['hash'] = Digest::MD5.hexdigest(document.url)
       element['url'] = document.url
       element['type'] = document['category']
