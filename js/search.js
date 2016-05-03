@@ -173,7 +173,7 @@ var MFPSEARCH = {
                     "multi_match": {
                         "query": this.queryTerm,
                         "operator": "and",
-                        "fields": ["title", "content", "author.name"],
+                        "fields": ["title", "content", "author.name", "tags"],
                         "fuzziness": "AUTO"
                     }
                 },
