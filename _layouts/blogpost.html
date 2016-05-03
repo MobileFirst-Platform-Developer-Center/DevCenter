@@ -9,7 +9,7 @@ layout: default
             <h1 class="no-anchor">{{page.title}}</h1>
             <div class="page-header">
                 <h4 class="no-anchor">
-                  <span><a href="{{site.baseurl}}/search/?q={{page.author.name}}">{{page.author.name}}</a></span>
+                  <span><a href="{{site.baseurl}}/search/?author={{page.author.name}}">{{page.author.name}}</a></span>
                   <small>{{ page.date | date: '%B %d, %Y' }}</small>
                   <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
                 </h4>
