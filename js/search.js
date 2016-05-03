@@ -80,6 +80,12 @@ var MFPSEARCH = {
                 $('#searchNextBtn').removeClass('disabled');
             }
             spinner.stop();
+
+            $('.search-video').magnificPopup({
+              delegate: 'a', // child items selector, by clicking on it popup will open
+              type: 'iframe'
+              // other options
+            });
         });
     },
     nextPage: function() {

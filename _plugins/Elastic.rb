@@ -84,6 +84,27 @@ Jekyll::Hooks.register :site, :post_write do |site|
       f.puts(element.to_json)
     end
 
+    # loop over videos
+    site.data["videos"].each do |video|
+      #binding.pry
+      element = video.clone
+      element["type"] = "video"
+      element["title"] = element["caption"].clone
+      element.delete("caption")
+      element['hash'] = Digest::MD5.hexdigest(element["url"])
+
+      # create the index object
+      index = {}
+      index['index'] = {}
+      index['index']['_id'] = element['hash']
+      index['index']['_type'] = "video"
+
+      # write the element with its index action
+      f.puts(index.to_json)
+      f.puts(element.to_json)
+
+    end
+
   }
 
 end
