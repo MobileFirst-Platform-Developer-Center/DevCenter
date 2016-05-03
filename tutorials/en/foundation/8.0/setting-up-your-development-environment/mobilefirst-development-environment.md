@@ -89,6 +89,7 @@ MobileFirst Platform Foundation provides client SDKs for Cordova applications as
 * To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  
 * To develop adapters, visit the [Adapters](../../adapters/) tutorials category.  
 * To develop security checks, visit the [Authentication and security](../../authentication-and-security/) tutorials category.  
+
 #### Manual installation
 To use the client SDKs and adapter tooling that are provided as part of the Devlopment Kit Installer instead of the online repositories, [visit the user  documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) for setup instructions.
 
