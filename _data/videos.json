@@ -2,7 +2,8 @@
     "caption": "Getting Started with Ionic and MobileFirst Platform Foundation 8.0",
     "url": "//www.youtube.com/watch?v=DlxZYxXszIw",
     "thumbnail": "//img.youtube.com/vi/DlxZYxXszIw/hqdefault.jpg",
-    "tags": ["Bluemix", "Ionic", "Integration", "CLI", "Development"]
+    "tags": ["Bluemix", "Ionic", "Integration", "CLI", "Development"],
+    "version": ["8.0"]
 },{
     "caption": "Getting Started With the MobileFirst Platform Development CLI 8.0 on Bluemix and the Development Kit",
     "url": "//www.youtube.com/watch?v=rYQMC0uIbQA",

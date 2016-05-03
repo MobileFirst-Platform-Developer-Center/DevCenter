@@ -6,6 +6,7 @@ custom_js:
   - lib/elasticsearch-js/elasticsearch.jquery.js
   - lib/spinjs/spin.min.js
   - lib/multiselect/bootstrap-multiselect.js
+  - lib/magnific/jquery.magnific-popup.min.js
   - js/search.js
 ---
 <script id="searchResultTemplate" type="text/x-jsrender">
@@ -26,8 +27,16 @@ custom_js:
         <br/>
         {{if highlight && highlight.content}}
         <div class="summary">{{:highlight.content}}</div>
-        {{else}}
-        <div class="summary">{{:summary}}</div>{{/if}}
+        {{else summary}}
+        <div class="summary">{{:summary}}</div>
+        {{else type == "video" && thumbnail}}
+        <div class="search-video">
+            <figure>
+              <a href="{{:url}}" data-toggle="lightbox" data-width="960" data-gallery="youtubevideos">
+                  <img src="{{:thumbnail}}" class="thumbnail img-responsive" alt="{{:title}}">
+              </a>
+            </figure>
+        </div>{{/if}}
     </div>
     {% endraw %}
 </script>
@@ -48,6 +57,7 @@ custom_js:
             <option value="blog">Blogs</option>
             <option value="tutorial">Tutorials</option>
             <option value="lab">Labs</option>
+            <option value="video">Videos</option>
         </select>
 
         <select id="platforms" multiple="multiple">

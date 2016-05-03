@@ -51,7 +51,9 @@ Jekyll::Hooks.register :site, :post_write do |site|
       next unless document['indexed']
       next unless document.data["layout"]!="redirect"
       # get all the meta data
-      element = document.data
+      element = document.data.clone
+      element.delete('breadcrumbs')
+      element.delete('children')
       element['hash'] = Digest::MD5.hexdigest(document.url)
       element['url'] = document.url
       element['type'] = document['category']
@@ -80,6 +82,27 @@ Jekyll::Hooks.register :site, :post_write do |site|
       # write the element with its index action
       f.puts(index.to_json)
       f.puts(element.to_json)
+    end
+
+    # loop over videos
+    site.data["videos"].each do |video|
+      #binding.pry
+      element = video.clone
+      element["type"] = "video"
+      element["title"] = element["caption"].clone
+      element.delete("caption")
+      element['hash'] = Digest::MD5.hexdigest(element["url"])
+
+      # create the index object
+      index = {}
+      index['index'] = {}
+      index['index']['_id'] = element['hash']
+      index['index']['_type'] = "video"
+
+      # write the element with its index action
+      f.puts(index.to_json)
+      f.puts(element.to_json)
+
     end
 
   }
