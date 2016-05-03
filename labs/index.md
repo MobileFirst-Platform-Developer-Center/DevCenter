@@ -38,6 +38,10 @@ show_disqus: false
             <p>The following applications are used throughout the lab sessions for developers.</p>
             
             <ul>
+                <li><strong><a href="https://github.com/andriivasylchenko/hybridMessenger">Hybrid Messenger</a></strong><br/>
+                MobileFirst Platform Foundation 8.0 application. Based on Ionic framework.</li>
+                <li><strong><a href="https://github.com/andriivasylchenko/newHybridWallet">new HybridWallet</a></strong><br/>
+                MobileFirst Platform Foundation 8.0 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/hybridWallet">HybridWallet</a></strong><br/>
                 MobileFirst Platform Foundation 7.1 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/canteenPOS">canteenPOS</a></strong><br/>
