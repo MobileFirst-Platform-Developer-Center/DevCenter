@@ -33,23 +33,23 @@
             "name": "Application Scanning",
             "path": "/application-scanning"
         }]
-    }, ]
-}, {
-    "name": "Product Integration",
-    "path": "/tutorials/en/product-integration",
-    "children": [{
-        "name": "8.0",
-        "path": "/8.0"
     }, {
-        "name": "7.1",
-        "path": "/7.1"
-    }, {
-        "name": "7.0",
-        "path": "/7.0"
-    }, {
-        "name": "6.3",
-        "path": "/6.3"
-    }]
+        "name": "Product Integration",
+        "path": "/tutorials/en/product-integration",
+        "children": [{
+            "name": "8.0",
+            "path": "/8.0"
+        }, {
+            "name": "7.1",
+            "path": "/7.1"
+        }, {
+            "name": "7.0",
+            "path": "/7.0"
+        }, {
+            "name": "6.3",
+            "path": "/6.3"
+        }]
+    } ]
 }, {
     "name": "Labs",
     "path": "/labs",
