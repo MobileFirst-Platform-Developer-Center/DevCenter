@@ -18,6 +18,22 @@
             "path": "/foundation/6.3/all-tutorials"
         }, ]
     }, {
+        "name": "By Platform",
+        "path": "",
+        "children": [{
+            "name": "Cordova",
+            "path": "/foundation/8.0/cordova-tutorials"
+        }, {
+            "name": "iOS",
+            "path": "/foundation/8.0/ios-tutorials"
+        }, {
+            "name": "Android",
+            "path": "/foundation/8.0/android-tutorials"
+        }, {
+            "name": "Windows 8 and 10",
+            "path": "/foundation/8.0/windows-8-10-tutorials"
+        }]
+    }, {
         "name": "By Product",
         "path": "",
         "children": [{
