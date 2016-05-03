@@ -74,7 +74,7 @@ var MFPSEARCH = {
                 $('#searchPreviousBtn').addClass('disabled');
             }
 
-            if (_this.from + _this.pageSize > _this.total) {
+            if (_this.from + _this.pageSize >= _this.total) {
                 $('#searchNextBtn').addClass('disabled');
             } else {
                 $('#searchNextBtn').removeClass('disabled');
@@ -89,7 +89,7 @@ var MFPSEARCH = {
         });
     },
     nextPage: function() {
-        if (_this.from + _this.pageSize <= _this.total) {
+        if (_this.from + _this.pageSize < _this.total) {
             this.from = this.from + this.pageSize;
             this.body.from = this.from;
             this.executeSearch();
