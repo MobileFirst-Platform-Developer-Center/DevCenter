@@ -43,7 +43,7 @@ var MFPSEARCH = {
     },
     executeSearch: function() {
         spinner.spin(document.getElementById('searchResults'));
-
+        this.body.from = this.from;
         var _this = this;
         this.client.search({
             "body": this.body
@@ -91,14 +91,12 @@ var MFPSEARCH = {
     nextPage: function() {
         if (_this.from + _this.pageSize < _this.total) {
             this.from = this.from + this.pageSize;
-            this.body.from = this.from;
             this.executeSearch();
         }
     },
     previousPage: function() {
         if (_this.from > 0) {
             this.from = this.from - +this.pageSize;
-            this.body.from = this.from;
             this.executeSearch();
         }
     },
@@ -108,6 +106,7 @@ var MFPSEARCH = {
                 "must": []
             }
         };
+        this.from = 0;
         var mustArray = this.body.filter.bool.must;
         var selectedVersions = $('#versions option:selected');
         if (selectedVersions.length > 0) {
