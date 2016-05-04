@@ -16,7 +16,7 @@ This tutorial expands on the components of IBM MobileFirst Platform Foundation a
 
 * [MobileFirst Platform Foundation Development Kit](#mobilefirst-platform-foundation-development-kit)
 * [MobileFirst Platform Foundation components](#mobilefirst-platform-foundation-components)
-* [Applications and Adapters Development](#applications-and-adapters-development)
+* [Applications and Adapters development](#applications-and-adapters-development)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## MobileFirst Platform Foundation Development Kit
@@ -36,14 +36,13 @@ The components are available through the MobileFirst Operations Console's Downlo
 As part of the Development Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
 
 > To download and install the MobileFirst Server, visit the [downloads]({{site.baseurl}}/downloads/) page.  
-> If using MobileFirst Server on IBM Containers, see the [Using Mobile Foundation](../../ibm-containers/) tutorial.  
 
 In the server directory, the following scripts are available:
 
-* `run.[sh|cmd]`: Run the local MobileFirst Server with trailing Liberty Server messages
+* `run.[sh|cmd]`: Run the MobileFirst Server with trailing Liberty Server messages
     * Add the `-bg` flag to run the process in the background
-* `stop.[sh|cmd]`: Stop the current local MobileFirst Server instance
-* `console.[sh|cmd]`: Open the local MobileFirst Console
+* `stop.[sh|cmd]`: Stop the current MobileFirst Server instance
+* `console.[sh|cmd]`: Open the MobileFirst Console
 
 #### Adding the MobileFirst Server to Eclipse
 The MobileFirst Server can be integrated into the Eclipse IDE.
@@ -89,6 +88,7 @@ MobileFirst Platform Foundation provides client SDKs for Cordova applications as
 * To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  
 * To develop adapters, visit the [Adapters](../../adapters/) tutorials category.  
 * To develop security checks, visit the [Authentication and security](../../authentication-and-security/) tutorials category.  
+
 #### Manual installation
 To use the client SDKs and adapter tooling that are provided as part of the Devlopment Kit Installer instead of the online repositories, [visit the user  documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) for setup instructions.
 

@@ -7,5 +7,6 @@ gem 'html-proofer'
 gem 'wkhtmltopdf-binary-edge'
 gem 'pdfkit'
 gem 'jekyll-sitemap'
+# gem 'jekyll-git_metadata', :git => "git://github.com/nasht00/jekyll-git_metadata.git"
 # gem 'pry'
 # gem 'pry-byebug'
