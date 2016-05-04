@@ -12,6 +12,8 @@ author:
   name: Sachi Pradhan
 ---
 
+> As originally posted [in the Bluemix Developer Center](https://developer.ibm.com/bluemix/2016/05/03/mobile-app-builder-now-available/).
+
 Want to take a mobile app from an idea to a working prototype in a few minutes all without writing a single line of code? Try Mobile App Builder, a new experimental service on Bluemix.
 
 **[Try Mobile App Builder](https://console.ng.bluemix.net/catalog/services/mobile-app-builder/?cm_sp=bluemixblog-_-content-_-cta)**
