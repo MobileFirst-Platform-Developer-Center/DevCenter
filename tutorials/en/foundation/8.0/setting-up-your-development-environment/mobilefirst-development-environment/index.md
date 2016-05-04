@@ -6,18 +6,20 @@ relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
 ## Overview
-The IBM MobileFirst Platform Foundation components can be installed either seperately via online repositories which contain the latest release, or downloaded bundled together for future or offline installation using the Development Kit Installer.
- 
-This tutorial expands on the components of IBM MobileFirst Platform Foundation and the setup needed to get started with the MobileFirst Development environment.
+The IBM MobileFirst Platform Foundation components can be installed either seperately via online repositories which contain the latest release, or downloaded bundled together for future or offline installation using the Development Kit Installer. Continue reading to learn more about the components and how to setup the MobileFirst Development environment by following the installation guide.
 
-> If you intend to use MobileFirst Server on IBM Containers, see the [Using Mobile Foundation](../../ibm-containers/) tutorial.  
+> If you intend to use MobileFirst Server on IBM Containers, see the [Using Mobile Foundation](../../ibm-containers/using-mobile-foundation/) tutorial.  
 
 #### Jump to:
 
+* [Installation guide](#installation-guide)
 * [MobileFirst Platform Foundation Development Kit](#mobilefirst-platform-foundation-development-kit)
 * [MobileFirst Platform Foundation components](#mobilefirst-platform-foundation-components)
 * [Applications and Adapters development](#applications-and-adapters-development)
 * [Tutorials to follow next](#tutorials-to-follow-next)
+
+## Installation guide
+[Read the installation guide](installation-guide) to quickly setup MobileFirst Platform Foundation on your workstation.
 
 ## MobileFirst Platform Foundation Development Kit
 The Development Kit provides a ready-for-development environment with minimal configuration needed.
