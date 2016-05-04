@@ -23,7 +23,7 @@ custom_js:
             </div>
             {% endif %}
             {{ content }}
-            
+            <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div>
             {% if page.show_children %}
                 {% if page.show_children_title %}
                 <h2 class="hidden-print">{{page.show_children_title}}</h2>

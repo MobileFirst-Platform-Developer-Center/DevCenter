@@ -1,9 +1,15 @@
-# Do not use. Does not work.
-#Jekyll::Hooks.register :posts, :pre_render do |post|
-
-  # get the current post last modified time
-  # modification_time = File.mtime( post.path )
-
-  # inject modification_time in post's datas.
-  # post.data['last-modified-date'] = modification_time
-#3end
+Jekyll::Hooks.register :pages, :pre_render do |page, payload|
+  next unless payload.site['last_modified']
+  next unless !page.path.include? "blog/"
+  next unless !page.path.include? "sitemap.xml"
+  next unless !page.path.include? "feed.xml"
+  cmd = "git log -1 --format=%cd #{page.path}"
+  result = %x{ #{cmd} }
+  page.data["last-modified-date"] = result
+end
+Jekyll::Hooks.register :posts, :pre_render do |post, payload|
+  next unless payload.site['last_modified']
+  cmd = "git log -1 --format=%cd #{post.path}"
+  result = %x{ #{cmd} }
+  post.data["last-modified-date"] = result
+end
