@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Installation Guide for Mac
-breadcrumb_title: Installation guide - Mac
+title: Workstation Installation Guide
+breadcrumb_title: Installation guide
 weight: 10
 ---
 ## Overview
-Follow this installation guide in order to setup your Mac workstation for development using MobileFirst Platform Foundation.  
+Follow this installation guide in order to setup your workstation for development using MobileFirst Platform Foundation.  
 
 ## DevKit Installer
 The MobileFirst Platform Foundation [Developer Kit Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment) will install a ready-to-use MobileFirst Server, database and runtime on your developer machine.  
