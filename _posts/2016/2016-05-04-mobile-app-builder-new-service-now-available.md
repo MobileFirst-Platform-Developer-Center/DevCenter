@@ -7,7 +7,6 @@ tags:
 - Mobile_App_Builder
 version:
 - 7.1
-- 8.0
 author:
   name: Sachi Pradhan
 ---
@@ -62,3 +61,5 @@ Here’s how to get started building an app using the Mobile App Builder service
 Mobile App Builder for Bluemix is an experimental service right now, and we plan on adding new features over the coming months. In the meantime, I encourage you to try out this service for your next mobile project.
 
 Happy App Building!
+
+> **Note**: The Mobile App Builder does not support MobileFirst Platform Foundation 8.0 beta
