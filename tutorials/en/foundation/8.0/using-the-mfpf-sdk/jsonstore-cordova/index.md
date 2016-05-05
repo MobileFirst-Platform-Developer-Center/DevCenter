@@ -110,6 +110,26 @@ WL.JSONStore.get(collectionName).find(query, options).then(function (results) {
 });
 ```
 
+```javascript
+var age = document.getElementById("findByAge").value || '';
+
+if(age == "" || isNaN(age)){
+  alert("Please enter a valid age to find");
+}
+else {
+  query = {age: parseInt(age, 10)};
+  var options = {
+    exact: true,
+    limit: 10 //returns a maximum of 10 documents
+  };
+  WL.JSONStore.get(collectionName).find(query, options).then(function (res) {
+    // handle success - results (array of documents found)
+  }).fail(function (errorObject) {
+    // handle failure
+  });
+}
+```
+
 ### Replace
 Use `replace` to modify documents inside a collection. The field that you use to perform the replacement is `_id`, the document unique identifier.
 
@@ -310,6 +330,17 @@ WL.JSONStore.get(collectionName).getPushRequired().then(function (dirtyDocuments
 
 To prevent JSONStore from marking the documents as "dirty", pass the option `{markDirty:false}` to `add`, `replace`, and `remove`
 
+You can also use the `getAllDirty` API to retrieve the dirty documents:
+
+```javascript
+WL.JSONStore.get(collectionName).getAllDirty()
+.then(function (dirtyDocuments) {
+    // handle success
+}).fail(function (errorObject) {
+    // handle failure
+});
+```
+
 #### Push
 `push` sends the documents that changed to the correct MobileFirst adapter procedure (i.e., `addPerson` is called with a document that was added locally). This mechanism is based on the last operation that is associated with the document that changed and the adapter metadata that is passed to `init`.
 
@@ -326,7 +357,7 @@ WL.JSONStore.get(collectionName).push().then(function (response) {
 
 ### Enhance
 Use `enhance` to extend the core API to fit your needs, by adding functions to a collection prototype.
-This example shows how to use `enhance` to add the function `getValue` that works on the `keyvalue` collection. It takes a `key` (string) as it's only parameter and returns a single result.
+This example (the code snippet below) shows how to use `enhance` to add the function `getValue` that works on the `keyvalue` collection. It takes a `key` (string) as it's only parameter and returns a single result.
 
 ```javascript
 var collectionName = 'keyvalue';
