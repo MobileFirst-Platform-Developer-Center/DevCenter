@@ -330,7 +330,7 @@ WL.JSONStore.get(collectionName).getPushRequired().then(function (dirtyDocuments
 
 To prevent JSONStore from marking the documents as "dirty", pass the option `{markDirty:false}` to `add`, `replace`, and `remove`
 
-you can also use the `getAllDirty` API to retrieve the dirty documents:
+You can also use the `getAllDirty` API to retrieve the dirty documents:
 
 ```javascript
 WL.JSONStore.get(collectionName).getAllDirty()
