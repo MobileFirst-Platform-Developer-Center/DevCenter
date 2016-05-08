@@ -1,9 +1,12 @@
 ---
+layout: tutorial
 title: Logging in JavaScript Adapters
-relevantTo: [ios,android,cordova]
+relevantTo: [ios,android,window,cordova]
 ---
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in a JavaScript adapter.
+
+**Prerequisite:** Make sure to read the [overview of server-side log collection](../).
 
 ## Server Setup
 To set-up logging in JavaScript adapters:

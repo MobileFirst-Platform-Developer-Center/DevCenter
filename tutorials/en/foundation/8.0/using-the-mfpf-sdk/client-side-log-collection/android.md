@@ -1,9 +1,13 @@
 ---
+layout: tutorial
 title: Logging in Android Applications
 relevantTo: [android]
+weight: 3
 ---
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in Android applications.
+
+**Prerequisite:** Make sure to read the [overview of client-side log collection](../).
 
 ### Persisting Log Capture
 MobileFirst Platform SDK for Android cannot persistently capture log data until the `com.worklight.common.Logger.setContext(Context)` method is called. This is best called in the `onCreate` method of your main Android activity.

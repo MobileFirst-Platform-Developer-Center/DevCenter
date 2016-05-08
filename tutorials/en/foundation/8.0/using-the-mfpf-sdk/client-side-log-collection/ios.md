@@ -1,9 +1,13 @@
 ---
+layout: tutorial
 title: Logging in iOS Applications
-relevantTo: [iOS]
+relevantTo: [ios]
+weight: 2
 ---
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in iOS applications.
+
+**Prerequisite:** Make sure to read the [overview of client-side log collection](../).
 
 ## Logging example
 Outputs to Xcode console

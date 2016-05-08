@@ -3,7 +3,7 @@ layout: tutorial
 title: JSONStore in Cordova applications
 breadcrumb_title: JSONStore - Cordova
 relevantTo: [cordova]
-weight: 8
+weight: 6
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80

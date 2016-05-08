@@ -1,8 +1,9 @@
 ---
+layout: tutorial
 title: Client-side log collection
-breadcrumb_title: Client-side Log Collection
+breadcrumb_title: Client-side log collection
 relevantTo: [ios,android,cordova]
-weight: 2
+weight: 9
 ---
 
 ## Overview

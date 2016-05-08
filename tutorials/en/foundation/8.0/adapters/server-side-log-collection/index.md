@@ -1,8 +1,8 @@
 ---
 title: Server-side log collection
-breadcrumb_title: Server-side Log collection
+breadcrumb_title: Server-side log collection
 relevantTo: [ios,android,windows,cordova]
-weight: 2
+weight: 7
 ---
 
 ## Overview
@@ -12,7 +12,7 @@ Features the server offers:
 
 * [Remote Client Side Logging](#server-control-of-client-log-capture)
 * [Additional Packages](#additional-packages)
-* [Adapter Logs](#adapter-logs)
+* [Log Collection in Adapters](#log-collection-in-adapters)
 
 ## Logging levels
 Logging libraries typically have verbosity controls that are frequently called **levels**. From least to most verbose: ERROR, WARN, INFO, LOG and DEBUG. 
@@ -46,16 +46,20 @@ WL.Logger.updateConfigFromServer();
 The `Logger` configuration values returned from the server will take precidence over any value set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client will receive an empty payload. If an empcdty payload is received then the `Logger` configuration will default to what was originally configured on the client.
 
 ## Forwarding Server Logs
-The MobileFirst Platform Foundation Operations Console also gives the server administrator the ability to persist logs and send those logs to the MobileFirst Analytics Console. 
+The MobileFirst Platform Foundation Operations Console also gives the server administrator the ability to persist logs and send those logs to the [MobileFirst Analytics Console](../operational-analytics/). 
 
-To forward server logs navigate to the `Runtime Settings`
+To forward server logs navigate to the Runtime's **Settings** screen and provide the used logger package under **Additional Packages**.  
+The collected logs can then be viewed in the Analytics console. This is useful for a user when they want to take advantage of triaging adapter logs in the Analytics console without having to collect all server logs. 
 
-The from specified packages and send those logs to the analytics server. This is useful for a user when they want to take advantage of triaging adapter logs in the analytics console without having to collect all server logs. 
+## Log Collection in Adapters
+Logs in adapters can be viewed in the underlying application server logging mechanism.  
 
-## Adapter Logs
+* In WebSphere full profile and Liberty profile the **messages.log** and **trace.log** files are used, depending on the specified logging level in the **server.xml** file. These logs, however, can also be forwarded to the Analytics console. 
 
-* [JavaScript Adapters](javascript-adapter-log-collection)
-* [Java Adapters](java-adapter-log-collection/)
+Select an adapter type:
+
+* [JavaScript Adapters](javascript-adapter/)
+* [Java Adapters](java-adapter/)
 
 ## For more information
 > For more information about logging and log capture, see the user documentation.

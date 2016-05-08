@@ -8,7 +8,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
-weight: 5
+weight: 4
 ---
 ## Overview
 MobileFirst applications can access resources using the `WLResourceRequest` REST API.  

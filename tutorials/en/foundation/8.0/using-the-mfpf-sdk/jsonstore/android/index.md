@@ -3,7 +3,7 @@ layout: tutorial
 title: JSONStore in Android applications
 breadcrumb_title: JSONStore - Android
 relevantTo: [android]
-weight: 10
+weight: 8
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80

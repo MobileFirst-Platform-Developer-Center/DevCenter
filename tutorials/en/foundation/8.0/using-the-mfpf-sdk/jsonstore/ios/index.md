@@ -3,7 +3,7 @@ layout: tutorial
 title: JSONStore in iOS applications
 breadcrumb_title: JSONStore - iOS
 relevantTo: [ios]
-weight: 9
+weight: 7
 downloads:
   - name: Download Native project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
