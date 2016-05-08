@@ -13,7 +13,7 @@ To set-up logging in JavaScript adapters:
 
 1. In MobileFirst Operations Console select the **Settings** option from the sidebar navigation.
 2. Click the **Edit** button in the **Runtime Properties tab**.
-3. In the **Analytics → Additional packages** section, specify the class name of the Java adapter to forward logs to the MobileFirst Server.
+3. In the **Analytics → Additional packages** section, specify the class name of the Java adapter, for example `com.sample.JavaLoggerTestResource`, to forward logs to the MobileFirst Server.
 
 ![Log filtering from the console](java-filter.png)
 
@@ -36,4 +36,4 @@ Now inside a method include logging:
 logger.warning("Logging warning message...");
 ```
 
-This message outputs to the `trace.log` file of the application server. If the server administrator is forwarding logs from the MobileFirst Server to the MobileFirst Analytics server the `logger` message will also appear in the Server Log Search view in the MobileFirst Analytics Console.
+This message outputs to the `trace.log` file of the application server. If the server administrator is forwarding logs from the MobileFirst Server to the MobileFirst Analytics server the `logger` message will also appear in the **Infrastructure → Server Log Search** view in the MobileFirst Analytics Console.
