@@ -86,6 +86,9 @@ var MFPSEARCH = {
               type: 'iframe'
               // other options
             });
+        },function() {
+            spinner.stop();
+            $('#searchResults').html("Uhoh, something's wrong... please <a href='https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/issues/new'>open an issue to let us know.");
         });
     },
     nextPage: function() {
@@ -129,7 +132,8 @@ var MFPSEARCH = {
             mustArray.push({
                 "terms": {
                     "type": typesArray
-                }
+                },
+                "timeout": "10s"
             });
         }
         var selectedPlatforms = $('#platforms option:selected');
