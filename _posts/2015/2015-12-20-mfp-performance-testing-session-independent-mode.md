@@ -6,6 +6,10 @@ tags:
 - Performance
 - Testing
 - OAuth
+version:
+- 6.3
+- 7.0
+- 7.1
 author:
   name: Nir Grande
 ---

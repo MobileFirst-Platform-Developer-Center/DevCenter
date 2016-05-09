@@ -3,7 +3,7 @@ layout: tutorial
 title: Debugging Cordova Applications
 breadcrumb_title: Debugging applications        
 relevantTo: [cordova]
-weight: 13
+weight: 12
 ---
 ## Overview
 Debugging is a process that consists of finding the cause of defects in applicative code and application user interface.
