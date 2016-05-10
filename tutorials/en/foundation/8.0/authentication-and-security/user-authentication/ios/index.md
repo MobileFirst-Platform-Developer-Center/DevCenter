@@ -136,7 +136,7 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 * Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Map scope elements to security checks**, add a scope mapping from `accessRestricted` to `UserLogin`.
+    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).

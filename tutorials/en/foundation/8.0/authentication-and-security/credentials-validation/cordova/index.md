@@ -128,15 +128,16 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 
 ### Sample usage
 * Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
-* From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+* From a **Command-line** window, navigate to the project's root folder and:
+    * Add a platform by running the `cordova platform add` command.
+    * Registering the application: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks.**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
+    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 * Back in the command-line:
-    * Add a platform by running the `cordova platform add` command.
     * Run the Cordova application by running the `cordova run` command.
 
 ![Sample application](pincode-attempts-cordova.png)
