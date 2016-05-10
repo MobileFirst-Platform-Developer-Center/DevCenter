@@ -107,12 +107,10 @@ http://localhost:9500/*/_mapping
 
 > Elasticsearch exposes many more REST endpoints. To learn more, visit the Elasticsearch documentation.
 
-## Tutorials to follow next
-
-* [Client-side log collection](client-side-log-collection)
-* [Server-side log collection](server-side-log-collection)
-* [Analytics API](analytics-api)
-
 ## Related Blogposts
 * [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
 * [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
+
+## Tutorials to follow next
+
+* [Analytics API](analytics-api)

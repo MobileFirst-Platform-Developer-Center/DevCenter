@@ -295,12 +295,19 @@ h4.panel-title, .tutorial h4.panel-title  {
 	margin-bottom: 2px;
 }
 
-// beta site
+// AnchorJS
+.anchorjs-link:hover {
+	text-decoration: none;
+}
+
 hr {
 	border: 2px solid #DDD;
 	margin: 15px 0 5px 0;
 }
 
-.videoDemo {
-	height: 363px;
+// last mofidied date styling
+#timestamp {
+	font-size: 80%;
+	margin-top: 50px;
+	margin-bottom: 10px;
 }

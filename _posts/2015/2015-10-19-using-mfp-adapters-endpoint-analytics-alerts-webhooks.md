@@ -4,6 +4,9 @@ date: 2015-10-19
 tags:
 - MobileFirst_Platform
 - Analytics
+version:
+- 7.0
+- 7.1
 author:
   name: Harrison Wright
 ---
