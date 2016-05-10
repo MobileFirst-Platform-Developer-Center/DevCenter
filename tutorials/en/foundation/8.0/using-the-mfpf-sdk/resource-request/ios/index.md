@@ -104,11 +104,14 @@ Objective-C
 ```objc
 [request setQueryParameterValue:@"['value1', 'value2']" forName:@"params"];
 ```
+
 Swift
 
 ```swift
 request.setQueryParameterValue("['value1', 'value2']", forName: "params")
 ```
+
+This should be used with `WLHttpMethodGet`.
 
 ### Form parameters
 To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
@@ -158,6 +161,8 @@ Swift
 ```swift
 let formParams = ["params":"['value1', 'value2']"]
 ```
+
+This should be used with `WLHttpMethodPost`.
 
 ### Header parameters
 To send a parameter as an HTTP header use the `setHeaderValue` API:

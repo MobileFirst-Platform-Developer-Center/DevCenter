@@ -23,7 +23,7 @@ The REST API works with all adapters and external resources.
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
 Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
+Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT` and `WLResourceRequest.DELETE`.
 
 ```javascript
 var resourceRequest = new WLResourceRequest(
@@ -65,6 +65,8 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 resourceRequest.setQueryParameter("params", "['value1', 'value2']");
 ```
 
+This should be used with `WLResourceRequest.GET`.
+
 ### setHeader
 By using the `setHeader` method, you can set a new HTTP header or replace an existing header with the same name in the REST request.
 
@@ -86,6 +88,9 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 ```js
 var formParams = {"params":"['value1', 'value2']"};
 ```
+
+This should be used with `WLResourceRequest.POST`.
+
 
 > For more information about `WLResourceRequest`, see the API reference in the user documentation.
 

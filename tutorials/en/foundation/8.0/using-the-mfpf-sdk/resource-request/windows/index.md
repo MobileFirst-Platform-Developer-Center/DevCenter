@@ -75,6 +75,8 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 request.SetQueryParameter("params","['value1', 'value2']");
 ```
 
+This should be used with `GET`.
+
 ### Form parameters
 To send form parameters in the body, use `.Send(Dictionary<string, string> formParameters)` instead of `.Send()`:  
 
@@ -90,6 +92,8 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 ```cs
 formParams.Add("params","['value1', 'value2']");
 ```
+
+This should be used with `POST`.
 
 ### Header parameters
 To send a parameter as an HTTP header use `.SetHeader()` API:

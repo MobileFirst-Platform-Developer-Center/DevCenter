@@ -76,6 +76,8 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 request.setQueryParameter("params","['value1', 'value2']");
 ```
 
+This should be used with `WLResourceRequest.GET`.
+
 ### Form parameters
 To send form parameters in the body, use `.send(HashMap<String, String> formParameters, WLResponseListener)` instead of `.send(WLResponseListener)`:  
 
@@ -91,6 +93,8 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 ```java
 formParams.put("params", "['value1', 'value2']");
 ```
+
+This should be used with `WLResourceRequest.POST`.
 
 ### Header parameters
 To send a parameter as an HTTP header use `.addHeader()` API:
