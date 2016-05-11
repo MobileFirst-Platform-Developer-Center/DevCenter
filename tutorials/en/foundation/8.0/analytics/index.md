@@ -19,6 +19,8 @@ Operational Analytics is bundled by default as part of the [MobileFirst Platform
 
 * [MobileFirst Analytics Console](#mobilefirst-analytics-console)
 * [Elasticsearch](#elasticsearch)
+* [Server Control of Client Log Capture](#server-control-of-client-log-capture)
+* [Forwarding Server Logs](#forwarding-server-logs)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## MobileFirst Analytics Console
@@ -107,10 +109,44 @@ http://localhost:9500/*/_mapping
 
 > Elasticsearch exposes many more REST endpoints. To learn more, visit the Elasticsearch documentation.
 
-## Related Blogposts
-* [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
-* [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
+## Server Control of Client Log Capture
+Administrators can control the MobileFirst client SDK log capture and levels from the **MobileFirst Operations Console → [your application] → Log Filters**.  
+Through `Log Filters` you are able to create a filter level that you can log at.
+
+![Log filtering from the console](log-filtering.png)
+
+In order to use the server configuration the client has to use the `updateConfigFromServer` method in the `Logger` API.
+
+#### Android
+
+```java
+Logger.updateConfigFromServer();
+```
+
+#### iOS
+
+```objective-c
+[OCLogger updateConfigFromServer];
+```
+
+#### Cordova
+
+```javascript
+WL.Logger.updateConfigFromServer();
+```
+
+The `Logger` configuration values returned from the server will take precidence over any value set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client will receive an empty payload. If an empcdty payload is received then the `Logger` configuration will default to what was originally configured on the client.
+
+## Forwarding Server Logs
+The MobileFirst Platform Foundation Operations Console also gives the server administrator the ability to persist logs and send those logs to the MobileFirst Analytics Console. 
+
+To forward server logs navigate to the Runtime's **Settings** screen and provide the used logger package under **Additional Packages**.  
+The collected logs can then be viewed in the Analytics console. This is useful for a user when they want to take advantage of triaging adapter logs in the Analytics console without having to collect all server logs. 
 
 ## Tutorials to follow next
 
 * [Analytics API](analytics-api)
+
+### Related Blogposts
+* [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
+* [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
