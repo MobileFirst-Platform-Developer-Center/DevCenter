@@ -25,6 +25,7 @@ No setup required. Initialized out-of-the-box.
 ```objc
 import "WLAnalytics.h"
 ```
+
 #### Initialize Analytics
 No setup required. Initialized out-of-the-box.
 
@@ -173,14 +174,14 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 ## Custom Events
 Use the following API methods to create custom events.
 
-#### JavaScript
+#### Cordova
 
 ```javascript
 WL.Analytics.log({"key" : 'value'});
 WL.Analytics.send();
 ```
 
-#### Java
+#### Android
 After setting the first two configurations you can start to log data like in the example below.
 
 ```java
@@ -196,7 +197,7 @@ WLAnalytics.log("Message", json);
 WLAnalytics.send();
 ```
 
-#### Objective-C
+#### iOS
 After importing WLAnalytics you can now use the API to collect custom data like below:
 
 ```objc
