@@ -10,9 +10,9 @@ This tutorial provides the required code snippets in order to add logging capabi
 **Prerequisite:** Make sure to read the [overview of client-side log collection](../).
 
 ## Logging example
-Outputs to Xcode console
+Logs are outputted to the Xcode console.
 
-Logging in Objective-C
+#### Objective-C
 
 ```objc
 #import "OCLogger.h"
@@ -26,10 +26,10 @@ Logging in Objective-C
 }
 ```
 
+#### Swift
 Using OCLogger in Swift reuqires creating an OCLogger extension class (this calss can be a seperate swift file or an extension on your current swift file):
 
 ```swift
-
 extension OCLogger {
     //Log methods with no metadata
     
@@ -94,8 +94,6 @@ extension OCLogger {
 ```
 
 After including the extention class you may now use OCLogger in Swift.
-
-Logging in Swift:
 
 ```swift
 func sum(a: Int, b: Int) -> Int{

@@ -173,14 +173,14 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 ## Custom Events
 Use the following API methods to create custom events.
 
-#### Cordova
+#### JavaScript
 
 ```javascript
 WL.Analytics.log({"key" : 'value'});
 WL.Analytics.send();
 ```
 
-#### Android
+#### Java
 After setting the first two configurations you can start to log data like in the example below.
 
 ```java
@@ -196,7 +196,7 @@ WLAnalytics.log("Message", json);
 WLAnalytics.send();
 ```
 
-#### Objective-C API
+#### Objective-C
 After importing WLAnalytics you can now use the API to collect custom data like below:
 
 ```objc
