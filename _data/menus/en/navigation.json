@@ -51,7 +51,7 @@
         }]
     }, {
         "name": "Product Integration",
-        "path": "/tutorials/en/product-integration",
+        "path": "/product-integration",
         "children": [{
             "name": "Foundation 8.0 beta",
             "path": "/8.0"
