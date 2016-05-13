@@ -49,7 +49,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
 1. Open the Android Studio project and import the project.
 
-2. Select the **app/java/com.ibm.mfpstarterandroid/ServerConnectActivity.java** file and:
+2. From the **Project** sidebar menu, select the **app → java → com.ibm.mfpstarterandroid → ServerConnectActivity.java** file and:
 
 * Add the following imports:
 
@@ -134,7 +134,7 @@ Alternatively, click the **New** button next to **Adapters**.
 <img src="androidQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
-1. In Android Studio, select the **[project]/app/src/main/assets/mfpclient.properties** file and edit the **host** property with the IP address of the MobileFirst Server.
+1. In Android Studio, from the **Project** sidebar menu, select the **app → src → main →assets → mfpclient.properties** file and edit the **host** property with the IP address of the MobileFirst Server.
 
     Alternatively, if you have installed the MobileFirst Develper CLI then navigate to the project root folder and run the command `mfpdev app register`.  If a remote server is used instead of a local server, first use the command `mfpdev server add` to add it.
 
