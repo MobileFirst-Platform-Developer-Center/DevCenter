@@ -3,7 +3,7 @@ layout: tutorial
 title: Setting up the Android development environment
 breadcrumb_title: Android environment
 relevantTo: [android,cordova]
-weight: 3
+weight: 5
 ---
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.

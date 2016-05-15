@@ -38,4 +38,4 @@ The following is a list of software you may need to install on your developer wo
     - IntelliJ, Eclipse, other IDEs...
 
 <br/>
-For further instructions, select a tutorial:
+## For further instructions, select a tutorial:
