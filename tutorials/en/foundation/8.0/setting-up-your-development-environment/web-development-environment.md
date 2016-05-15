@@ -45,9 +45,7 @@ In order to serve the web application's resources, these need to be stored in a 
    The generated .war file is available in the **[MyWebApp] → target** folder.
 
 ### Adding the Maven webapp to the application server
-1. Navigate to the **[MobileFirst Developer Kit] → mfp-server → usr → servers → mfp → dropins** folder.
-2. Copy &amp; Paste the .war file into the folder.
-3. Edit the **server.xml file**, located in the [**MobileFirst Developer Kit] → mfp-server → user → servers → mfp** folder. Add the following entry:
+1. Edit the **server.xml file**, located in the [**MobileFirst Developer Kit] → mfp-server → user → servers → mfp** folder. Add the following entry:
 
     ```xml
     <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>
