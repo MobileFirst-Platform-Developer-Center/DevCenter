@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Multilingual translation of Cordova applications
+title: Multilingual translation of JavaScript (Cordova) applications
 breadcrumb_title: Multilingual translation
 relevantTo: [cordova]
 weight: 11

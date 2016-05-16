@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Resource request from Cordova applications
-breadcrumb_title: Cordova
+title: Resource request from JavaScript (Cordova) applications
+breadcrumb_title: JavaScript
 relevantTo: [cordova]
 downloads:
   - name: Download Cordova project
