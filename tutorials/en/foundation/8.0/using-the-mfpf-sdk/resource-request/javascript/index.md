@@ -1,9 +1,11 @@
 ---
 layout: tutorial
-title: Resource request from JavaScript (Cordova) applications
+title: Resource request from JavaScript (Cordova, Web) applications
 breadcrumb_title: JavaScript
 relevantTo: [cordova]
 downloads:
+  - name: Download Web project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
   - name: Download Adapter Maven project
@@ -16,7 +18,8 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../../adding-the-mfpf-sdk/cordova) to your Cordova application.
+- If you are implementing a Cordova application, ensure you have [added the MobileFirst Platform SDK](../../../adding-the-mfpf-sdk/cordova) to your Cordova application.
+- If you are implementing a Web application, ensure you have [added the MobileFirst Platform SDK](../../../adding-the-mfpf-sdk/web) to your Web application.
 - Learn how to [create adapters](../../../adapters/adapters-overview/).
 
 ## WLResourceRequest
@@ -140,14 +143,20 @@ onFailure: function(response) {
 > For more information about WLResourceRequest, refer to the user documentation.
 
 <img alt="Image of the sample application" src="resource-request-success-cordova.png" style="float:right"/>
-## Sample application
-The ResourceRequestCordova project contains a Cordova application that makes a resource request using a Java adapter.  
+## Sample applications
+The ResourceRequestWeb and ResourceRequestCordova projects demonstrate a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the Cordova project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80) the Web project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
-### Sample usage
+### Web sample usage
+1. Make sure you have set-up your [Web development environment](../../../setting-up-your-development-environment/web-development-environment).
+2. Add the application to your local setup.
+3. Load the application URL in a browser.
+
+### Cordova Sample usage
 1. From a **Command-line** window, navigate to the project's root folder.
 2. Add a platform by running the `cordova platform add` command.
 3. Run the command: `mfpdev app register`.

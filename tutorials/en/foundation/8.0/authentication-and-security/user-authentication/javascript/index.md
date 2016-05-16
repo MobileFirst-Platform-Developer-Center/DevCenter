@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in JavaScript (Cordova) applications
-breadcrumb_title: Cordova
+title: Implementing the challenge handler in JavaScript (Cordova, Web) applications
+breadcrumb_title: JavaScript
 relevantTo: [cordova]
 weight: 2
 downloads:

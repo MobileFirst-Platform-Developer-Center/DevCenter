@@ -8,7 +8,7 @@ weight: 6
 ## Overview
 In this tutorial you will learn how to register a web application with the MobileFirst Server, as well as downloading and adding the MobileFirst SDK to web applications.  
 
-The MobileFirst Cordova SDK is provided as a set of JavaScript files, [and is available at NPM](https://www.npmjs.com/package/ibm-mfp-web-core-sdk).  
+The MobileFirst Cordova SDK is provided as a set of JavaScript files, [and is available at NPM](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
 The SDK is comprised of the following files:
 
 - **ibmmfpf.js** - the core of the SDK.
@@ -40,7 +40,7 @@ To add the SDK to new or existing web applications, first download it to your wo
 
 ### Downloading the SDK
 1. From a **command-line** window, navigate to your web application's root folder.
-2. Run the command: `npm install ibm-mfp-web-core-sdk`.
+2. Run the command: `npm install ibm-mfp-web-sdk`.
 
 This creates the following directory structure:
 
@@ -54,7 +54,7 @@ The MobileFirst Web SDK [supports AMD](https://en.wikipedia.org/wiki/Asynchronou
 <head>
     ...
     ...
-    <script type="text/javascript" src="node_modules/ibm-mfp-web-core-sdk/ibmmfpf.js"></script>
+    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/ibmmfpf.js"></script>
 </head>
 ```
 
@@ -80,11 +80,11 @@ WL.Client.init(wlInitOptions).then (
 - **applicationId:** the application package name, as defined while [registering the application](#registering-the-web-application).
 
 ## Updating the MobileFirst Web SDK
-SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/ibm-mfp-web-core-sdk).  
+SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
 To update the MobileFirst Web SDK with the latest release: 
 
 1. Navigate to the root folder of the web application.
-2. Run the command: `npm update ibm-mfp-web-core-sdk`.
+2. Run the command: `npm update ibm-mfp-web-sdk`.
 
 ## Same Origin Policy
 **Important:** Web applications may suffer from errors due to [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same Origin Policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.

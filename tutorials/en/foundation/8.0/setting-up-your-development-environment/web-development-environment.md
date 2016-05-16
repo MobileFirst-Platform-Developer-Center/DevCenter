@@ -39,10 +39,12 @@ In order to serve the web application's resources, these need to be stored in a 
 ### Building the Maven webapp with the web application's resources 
 1. Place the web application's resources (such as the HTML, CSS, JavaScript and image files) inside the generated **[MyWebApp] → src → Main → webapp** folder.
 
-    > From here on, consider the **webapp** folder as the your development location for the web application.
+    > From here on, consider the **webapp** folder as the development location for the web application.
 
 2. Run the command: `mvn clean install` to generate a .war file containing the application's web resources.  
    The generated .war file is available in the **[MyWebApp] → target** folder.
+   
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** `mvn clean install` must be run each time you update a web resource.
 
 ### Adding the Maven webapp to the application server
 1. Edit the **server.xml file**, located in the [**MobileFirst Developer Kit] → mfp-server → user → servers → mfp** folder. Add the following entry:
@@ -58,7 +60,52 @@ Once you are ready to test your web application, visit the URL: **localhost:9080
     - Replace **MyWebApp** with your own value.
 
 ## Using Node.js
-ADD INSTRUCTIONS
+Node.js can be used as a reverse proxy to tunnel requests from the web application to the MobileFirst Server.
+
+1. From a **command-line** window, navigate to your web application's folder and run the following set of commands: 
+
+    ```bash
+    npm init
+    npm install --save express
+    npm install --save request
+    ```
+
+2. Create a new file next to the **node_modules** folder, for example **proxy.js**.
+3. Add the following code to the file:
+
+    ```javascript
+    var express = require('express');
+    var http = require('http');
+    var request = require('request');
+
+    var app = express();
+    var server = http.createServer(app);
+    var port = 9081;
+
+    server.listen(port);
+    app.use('/myapp', express.static(__dirname + '/'));
+
+    // Web server - serves the web application
+    app.get('/home', function(req, res) {
+        // Website you wish to allow to connect
+        res.sendFile(__dirname + '/index.html');
+    });
+
+    // Reverse proxy, pipes the requests to/from MobileFirst Server
+    app.use('/mfp/*', function(req, res) {
+        var url = 'http://localhost:9080' + req.originalUrl;
+        console.log('passing to URL: ' + url);
+        req.pipe(request[req.method.toLowerCase()](url)).pipe(res);
+    });
+    ```
+    - replace the **port** value to the one you desire.
+    - replace `/myapp` with the a desired path name for your web application.
+    - replace `/index.html` with the filename of your main HTML file.
+    - if needed, update `/mfp/*` with the context root of your MobileFirst runtime.
+
+4. To start the proxy, run the command: `node proxy.js`.
+5. Once you are ready to test your web application, visit the URL: **localhost:9081/myapp**.
+    - Replace **myapp** with your own value.
 
 ## Next steps
 To continue with MobileFirst development in Web applications, the MobileFirst Web SDK need to be added to the Web application.
