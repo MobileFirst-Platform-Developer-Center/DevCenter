@@ -61,10 +61,16 @@ WLAnalytics.send();
 ```
 
 #### iOS
-In an iOS application, use the following Objective-C API method:
+In an iOS application, use the following *Objective-C* API method:
 
 ```objc
 [[WLAnalytics sharedInstance] send];
+```
+
+of for *Swift* use the API method:
+
+```swift
+WLAnalytics.sharedInstance().send();
 ```
 
 ## Enabling/Disabling Client Event Types
@@ -112,14 +118,30 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 
 To enable client lifecycle event logging:
 
+*Objective-C:*
+
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
 ```
 
+*Swift:*
+
+```swift
+WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
+```
+
 To disable client lifecycle event logging:
+
+*Objective-C:*
 
 ```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:LIFECYCLE];
+```
+
+*Swift:*
+
+```swift
+WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
 
 ### Client Network Activities
@@ -147,14 +169,30 @@ Since the client and the server are each collecting their own information this m
 
 To enable client network event logging:
 
+*Objective-C:*
+
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
 ```
 
+*Swift:*
+
+```
+WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK);
+```
+
 To disable client network event logging:
+
+*Objective-C:*
 
 ```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:NETWORK];
+```
+
+*Swift:*
+
+```swift
+WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
 
 #### Android
@@ -200,6 +238,8 @@ WLAnalytics.send();
 #### iOS
 After importing WLAnalytics you can now use the API to collect custom data like below:
 
+*Objective-C:*
+
 ```objc
 NSDictionary *inventory = @{
     @"property" : @"value",
@@ -207,4 +247,12 @@ NSDictionary *inventory = @{
 
 [[WLAnalytics sharedInstance] log:@"Custom event" withMetadata:inventory];
 [[WLAnalytics sharedInstance] send];
+```
+
+*Swift:*
+
+```swift
+let metadata: [NSObject: AnyObject] = ["foo": "bar"];  
+WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
+WLAnalytics.sharedInstance().send();
 ```
