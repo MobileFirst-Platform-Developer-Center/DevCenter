@@ -67,7 +67,7 @@ In an iOS application, use the following *Objective-C* API method:
 [[WLAnalytics sharedInstance] send];
 ```
 
-of for *Swift* use the API method:
+or for *Swift* use the API method:
 
 ```swift
 WLAnalytics.sharedInstance().send();
