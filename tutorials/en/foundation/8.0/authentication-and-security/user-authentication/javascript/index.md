@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Cordova applications
+title: Implementing the challenge handler in JavaScript (Cordova) applications
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 2
@@ -14,7 +14,7 @@ downloads:
 ---
 
 ## Overview
-**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/cordova) tutorial.
+**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/javascript) tutorial.
 
 The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
 

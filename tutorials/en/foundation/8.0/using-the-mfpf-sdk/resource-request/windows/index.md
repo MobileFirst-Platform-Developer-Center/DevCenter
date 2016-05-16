@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Resource request from Windows applications
-breadcrumb_title: Resource request - Windows
+breadcrumb_title: Windows
 relevantTo: [windows]
 downloads:
   - name: Download Native Windows 8 project
@@ -18,8 +18,8 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal](../../adding-the-mfpf-sdk/windows-8-10) or [Windows 10 UWP](../../adding-the-mfpf-sdk/windows-8-10) project.
-- Learn how to [create adapters](../../adapters/adapters-overview/).
+- Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal or Windows 10 UWP](../../../adding-the-mfpf-sdk/windows-8-10).
+- Learn how to [create adapters](../../../adapters/adapters-overview/).
 
 ## WLResourceRequest
 The `WorklightResourceRequest` class handles resource requests to adapters or external resources.
@@ -126,6 +126,6 @@ The adapter Maven project contains the Java adapter used during the resource req
 
 ### Sample usage
 1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-3. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../../adapters/creating-adapters/).
+3. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
 4. import the project to Visual Studio, and run the sample by clicking the **Run* button.

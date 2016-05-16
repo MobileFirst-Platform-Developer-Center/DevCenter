@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Resource request from iOS applications
-breadcrumb_title: Resource request - iOS
+breadcrumb_title: iOS
 relevantTo: [ios]
 downloads:
   - name: Download Native project
@@ -16,8 +16,8 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/ios) to your Native iOS project.
-- Learn how to [create adapters](../../adapters/adapters-overview/).
+- Ensure you have [added the MobileFirst Platform SDK](../../../adding-the-mfpf-sdk/ios) to your Native iOS project.
+- Learn how to [create adapters](../../../adapters/adapters-overview/).
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
@@ -204,8 +204,8 @@ The adapter Maven project contains the Java adapter used during the resource req
 
 ### Sample usage
 1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-3. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../../adapters/creating-adapters/).
+3. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
 4. Import the project to Xcode, and run the sample by clicking the **Run** button.
 
 #### Note about iOS 9:
