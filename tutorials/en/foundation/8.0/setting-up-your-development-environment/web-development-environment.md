@@ -34,10 +34,10 @@ In order to serve the web application's resources, these need to be stored in a 
     mvn archetype:generate -DgroupId=MyCompany -DartifactId=MyWebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
     ```
     - Replace **MyCompany** and **MyWebApp** with your own values.
-    - To enter the details one-by-one, remove the `-DinteractiveMode=false` flag.
+    - To enter the values one-by-one, remove the `-DinteractiveMode=false` flag.
 
 ### Building the Maven webapp with the web application's resources 
-1. Place your application's web resources (such as the HTML, CSS, JavaScript and image files) inside the generated **[MyWebApp] → src → Main → webapp** folder.
+1. Place the web application's resources (such as the HTML, CSS, JavaScript and image files) inside the generated **[MyWebApp] → src → Main → webapp** folder.
 
     > From here on, consider the **webapp** folder as the your development location for the web application.
 
