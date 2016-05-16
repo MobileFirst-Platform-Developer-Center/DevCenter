@@ -1,52 +1,37 @@
 ---
 layout: tutorial
-title: MobileFirst with IBM API Connect
+title: API Connect
 relevantTo: [ios,android,windowsphone8,windows8,hybrid]
 ---
+## Overview
+This tutorial will cover how to create an API using IBM API Connect and how to expose it to your mobile application using IBM MobileFirst Platform Foundation. For this we will create a Model and a Data Source using a IBM API Connect and expose it to mobile applications via a MobileFirst HTTP Adapter.
 
+**References**  
+This tutorials will explore information that is explained with more details at the following documentation topics:
 
-# Overview
-
-This tutorial will cover how to create an API using IBM  API Connect and how to expose it to your Mobile Application using MobileFirst Platform Foundation.
-
-For this we will create a Model and a Data Source using a IBM API Connect and expose it to mobile applications via a MobileFirst HTTP Adapter.
-
-
-### References:
-This page will explore some knowledge that is explained with more details at the following pages:
-
-* [JavaScript HTTP Adapters](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-http-adapter/)
+* [JavaScript HTTP Adapters]({{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-http-adapter/)
 * [API Connect 5.0](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/mapfiles/ic_home.html)
 
+### Benefits of using MobileFirst with API Connect
+The main advantage of integrating IBM API Connect with MobileFirst Platform Foundation is to allow you to leverage the MobileFirst Security Framework focused on mobile applications, and IBM API Connect's straightforward approach to create, run, manage and secure your APIs.
 
-
-# Benefits of using MobileFirst with API Connect
-
-The main advantage  of integrating IBM API Connect with MobileFirst Platform Foundation is to allow you to leverage MobileFirst Security Framework focused on mobile applications and IBM API Connect straightforward approach to create, run, manage and secure your APIs.
-
-
-**IBM API Connect Overview:**
-
-![API Connect](./apic_capabilities.png)
-
-
-**For the MobileFirst Foundation Server, the IBM API Connect works as an enterprise backend when you want to build a integration between these two products:**
+### IBM API Connect Overview
+For MobileFirst Server, IBM API Connect works as an enterprise backend when you want to build an integration between these two products. This is the use case that will explored in this tutorial.
 
 ![MFP](./adapter_overview_apic.png)
 
-This is the use case we will explore at this sample.
+## IBM API Connect
 
-# IBM API Connect
-## Setup IBM API Connect toolkit:
+### Setup IBM API Connect toolkit
+For this tutorial, the IBM API Connect developer toolkit will simulate an API Connect Micro Gateway for local testing.  
+More information on how to install API connect, can be found in [this user documentation topic guide](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.overview.doc/overview_installing_apimgmt.html).
 
-For details on how to install API connect you can check [here](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.overview.doc/overview_installing_apimgmt.html), for this tutorial it will be explored the IBM API Connect developer toolkit, that will simulate a API Connect Micro Gateway for local testing.
+**Prerequisites:**
+The setup is based on nodeJS, NPM and Python installed. For more information [see here](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tapim_cli_install.html).
 
-The  setup is very straightforward. It is based in nodeJS, npm  and Python so this must be installed before you proceed. More details you can check [here](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tapim_cli_install.html).
+### Installing the toolkit
 
-
-### Installing the toolkit:
 ```bash
-
 #optional step if you want to handle non-trusted certificates
 npm config -g set strict-ssl false
 #optional step, if you have a proxy on your network
@@ -62,19 +47,19 @@ npm install -g --unsafe-perm https://appliance/packages/apiconnect
 #To validate the install
 apic -v
 ```
-After  the run of  commands above, if all worked as expected, now **apic** is available to be used in your machine.
 
-## Creating an API:
-Using IBM API Connect toolkit you can explore 2 ways to create your APIs:
+**APIC** is now available to be used in your machine.
 
-- Via Command Line, for more details [here](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_cli_model_create_command.html?cp=SSMNED_5.0.0%2F3-4-0-1)
+### Creating an API
+Using IBM API Connect toolkit you can explore two ways to create your APIs:
 
-- Via API designer, for more details [here](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_cli_model_create_editor.html?cp=SSMNED_5.0.0%2F3-5-0-2)
+* Via Command Line, for more details [see here](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_cli_model_create_command.html?cp=SSMNED_5.0.0%2F3-4-0-1)
+* Via API Designer, for more details [see here](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_cli_model_create_editor.html?cp=SSMNED_5.0.0%2F3-5-0-2)
 
-For this tutorial we will explore the approach via command line, but via API Designer allow the same result to be achieved using a UI.
+For this tutorial we will explore the approach via command line. API Designer can acheive the same result.
 
-### Creating the Loopback project
-First let's create a project - for more details [click here](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_cli_project_create.html?cp=SSMNED_5.0.0%2F3-4-0-0):
+### Creating the LoopBack project
+Create a project. For more details [see here](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_cli_project_create.html?cp=SSMNED_5.0.0%2F3-4-0-0):
 
 ```bash
 #Create a loopback project
@@ -87,20 +72,19 @@ apic loopback acme-bank
 # Select with the arrows
 # ❯ empty-server (An empty LoopBack API, without any configured models or datasources)
 ```
+
 ![Sample Execution](./create_project.gif)
 
 
-Now you  have a new folder with your recently created project.
+The above creates a new folder your recently created project.  
+The next step is to create an API on this project. This process is done in two steps:
 
-Let's create an API on this project. This process will be done in 2 steps:
+1. **add a data source to a project:** Data source is how we will store data at your API. IBM API Connect provide a set of pre-made datasources to help you with the integration with several type of backends, for example: In-memory db, Email, MySQL, PostgreSQL and others.  
 
-**1. add a data source to a project:** Data source is how we will store data at your API, IBM API Connect provide a set of pre-made datasources to help you with the integration with several type of  backends, for example: In-memory db , Email, MySQL, PostgreSQL and others.  
-
-**2. add a model to a project:** Model is the representation of the API for the consumers of the API, here is where you can define the properties that will be exposed to your users on this API.
-
+2. **add a model to a project:** Model is the representation of the API for the consumers of the API, here is where you can define the properties that will be exposed to your users on this API.
 
 ### Creating a data source
-Let's create now the API(Data source and Model), for details visit [this page.](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_cli_model_create_command.html?cp=SSMNED_5.0.0%2F3-4-0-1)
+Create the API (Data source and Model). For more details visit [this page](http://www.ibm.com/support/knowledgecenter/SSMNED_5.0.0/com.ibm.apic.toolkit.doc/tutorial_cli_model_create_command.html?cp=SSMNED_5.0.0%2F3-4-0-1).
 
 ```bash
 #enter in your just created project folder
@@ -124,10 +108,10 @@ bankDS
 
 ![Sample Execution](./create_datasource.gif)
 
-The datasource creation is completed, it will use an in memory database to store a set of bank Branches.
+Once the datasource creation is complete, it will use an in-memory database to store a set of bank Branches.
 
 ### Creating a model
-Let's define the data that will be stored on the data source defined previously.
+Define the data that will be stored on the data source defined previously.
 
 ```bash
 apic create --type model
@@ -174,13 +158,13 @@ n
 # Just press Enter
 
 ```
+
 ![Sample Execution](./create_model.gif)
 
-Now, you have a model that has 2 properties(type, phone). These are the current properties that defines a bank branch for this example.  
+You now have a model that has two properties: `type` and `phone`. These are the current properties that defines a bank branch for this example.  
 
 ### Checking what was created
-
-Let's use API Desginer to see what we just created. **API Designer** is very useful user interface to allow you to create, edit and test your API.
+Use API Desginer to see what we just created. **API Designer** is very useful user interface to allow you to create, edit and test your API.
 
 ```bash
 #At your project type:
@@ -190,7 +174,7 @@ apic edit
 
 ![Sample Execution](./api_edit.gif)
 
-Open a new terminal window and go to the project folder, let's start a test server to explore the API:
+Open a new terminal window and go to the project folder. Start a test server to explore the API:
 
 ```bash
 cd <project_home>/acme-bank
@@ -209,16 +193,16 @@ curl --request POST \
 # use -k option on curl to avoid security errors
 # -v of curl provided a more verbose result
 ```
+
 ![Sample Execution](./api_start.gif)
 
-Observe that the API is protected by a x-ibm-client-id and x-ibm-client-secret.
+Observe that the API is protected by `x-ibm-client-id` and `x-ibm-client-secret`.
 
-#MobileFirst foundation server integration
-Now, that we have an API set, let's go to MobileFirst integration. The general idea for this integration is to use a MobileFirst Javascript HTTP Adapter to call the API you just created. In a production environment way to call it would be the same, but probably pointing to a different URL for the production server with IBM API Connect.
+## MobileFirst Server integration
+Use a MobileFirst Javascript HTTP Adapter to call the API you just created. In a production environment the way to call it would be the same, only pointing to a different URL for the production server with IBM API Connect.
 
-## Using the API on MobileFirst(via CLI)
-
-Let's use CLI to create an App and add an [HTTP adapter](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-http-adapter/) to expose to your mobile apps, the API we just created.
+### Using the API on MobileFirst (via CLI)
+Use CLI to create an App and add an [HTTP adapter]({{site.baseurl}}/tutorials/en/foundation/7.1/server-side-development/javascript-adapters/js-http-adapter/) to expose to your mobile apps, the API we just created.
 
 ```bash
 #create your mfp project
@@ -226,13 +210,11 @@ mfp create demoApic
 cd demoApic
 #create an adapter
 mfp add adapter MyBankAdapter --type http
-
 ```
 
 Replace the content of your file **"./adapters/MyBankAdapter/MyBankAdapter-impl.js"** by the following content in the text editor of your choice:
 
 ```xml
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     Licensed Materials - Property of IBM
@@ -266,10 +248,9 @@ Replace the content of your file **"./adapters/MyBankAdapter/MyBankAdapter-impl.
 </wl:adapter>
 ```
 
-And now do the same for the file **./adapters/MyBankAdapter/MyBankAdapter-impl.js**, with the following:
+Do the same for the file **./adapters/MyBankAdapter/MyBankAdapter-impl.js**, with the following:
 
-```js
-
+```javascript
 /*
  *  Licensed Materials - Property of IBM
  *  5725-I43 (C) Copyright IBM Corp. 2011, 2013. All Rights Reserved.
@@ -286,9 +267,9 @@ function createBranch(id, key, type) {
 	    returnedContentType : 'json',
 	    path : path,
 			headers: {
-								"x-ibm-client-id": id,
-								"x-ibm-client-secret": key
-              },
+				"x-ibm-client-id": id,
+				"x-ibm-client-secret": key
+            },
 			body: {
         content: {"type":type},
         contentType: 'application/json; charset=utf-8'
@@ -296,11 +277,10 @@ function createBranch(id, key, type) {
 	};
 	return WL.Server.invokeHttp(input);
 }
-
 ```
 
 
-For testing this code, let's push the update and call the adapter:
+To test this code, push the update and call the adapter:
 
 ```bash
 # start your cli server
@@ -308,30 +288,31 @@ mfp start
 mfp push
 mfp adapter call MyBankAdapter/createBranch [\"default\",\"SECRET\",\"all\"]
 ```
+
 This would create a branch in your test server, if all works fine you receive the response code 200.
 
 ### Attention
 If you get the following error:
 
-```text
+```
 Runtime: Http request failed: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
 ```
 
 That is because you need to import the SSL certificate from your IBM API Connect server to MobileFirst Foundation server, for details take a look at [Importing SSL Certificate](https://developer.ibm.com/answers/questions/210814/mobilefirst-platform-70-java-adapter-ssl-problem-s.html)
 
 
-## Final Notes:
+## Final Notes
 In this tutorial, you completed the following activities:
 
-**API Connect:**
+#### API Connect
 
-  * Installed IBM API Connect developer toolkit;
-  * Created an IBM API Connect project;
-  * Added a data source to your project using the command-line tool;
-  * Added a model to your project using the command-line tool;
+* Installed IBM API Connect developer toolkit
+* Created an IBM API Connect project
+* Added a data source to your project using the command-line tool
+* Added a model to your project using the command-line tool
 
-**MobileFirst Foundation:**
+#### MobileFirst Foundation
 
-  * Created a MobileFirst Application project;
-  * Added a MobileFirst Adapter that calls your API;
-  * Tested the MobileFirst Adapter using the MobileFirst command-line;
+* Created a MobileFirst Application project
+* Added a MobileFirst Adapter that calls your API
+* Tested the MobileFirst Adapter using the MobileFirst command-line
