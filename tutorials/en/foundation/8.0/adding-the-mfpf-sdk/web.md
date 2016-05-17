@@ -27,13 +27,21 @@ The SDK is comprised of the following files:
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ### Registering the web application
-The application registration is performed from the MobileFirst Operations Console:    
+The application registration is performed either from the MobileFirst Operations Console, or from the MobileFirst CLI.
+
+#### From MobileFirst Operations Console
 
 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`.
-2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-3. Select **Web** as the platform, and provide a name and a package ID. Then, click **Save**.
+2. Click the "New" button next to "Applications" to create a new application.
+3. Select **Web** as the platform, and provide its name and its application identifier. Then, click **Save**.
 
 ![Adding the Web platform](add-web-platform.png)
+
+#### From MobileFirst CLI
+
+1. From a **command-line** window, navigate to the root folder of the web application.
+2. Run the command: `mfpdev app register web com.sample.myapp`.
+ - Replace "com.sample.myapp" with your application's identifier.
 
 ## Adding the MobileFirst Web SDK
 To add the SDK to new or existing web applications, first download it to your workstation and then add it to your web application.
