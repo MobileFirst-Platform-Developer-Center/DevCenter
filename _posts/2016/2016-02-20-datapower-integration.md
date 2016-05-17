@@ -22,7 +22,7 @@ You can use IBM WebSphere DataPower as a front-end reverse proxy and security ga
 > This article assumes prior knowledge of other MobileFirst features, such as challenge handlers, security tests, realms, login modules, and procedure invocation.
 
 ## Supported versions
-This pattern, samples and blog post were designed to work with DataPower 7.0.0.10 and MobileFirst Platform 7.1.0.00-20160420-1712. Make sure you are using the latest client SDK as some issues have been resolved recently (see APARs PI59119, PI51627, PI59120).
+This pattern, samples and blog post were designed to work with DataPower 7.0.0.10 and MobileFirst Platform 7.1.0.00-20160513-1006. Make sure you are using the latest client SDK as some issues have been resolved recently (see APARs PI59119, PI51627, PI59120).
 
 This also requires MobileFirst Platform to run on an application server that supports LTPA tokens.
 
@@ -221,7 +221,7 @@ To configure with LDAP, consult the documentation for your application server.
 	* The **HTTPS connection** sets the IP and port that remote clients will use to connect (`0.0.0.0` means any IP). This is the entry point to your application from the outside world. Because the *Front-side handler* uses HTTPS, you need to select the previously configured **SSL proxy profile** from the dropdown.
 	* Upload the **LTPA** file (`ltpa.keys`) used in your MobileFirst server and type the password for this file (the default password for WebSphere is `WebAS`).
 	* Use the same file and password for the second **LTPA** configuration.
-  
+
 	> Because of a known issue in DataPower firmwares 7.2 and above, the LTPA steps may not appear while deploying the pattern, in which case you need to configure the LTPA key manually after deploying the pattern.
 9. **Deploy Pattern**
 10. Back in your **Control Panel**, go to **Multi-Protocol Gateway** and verify that the *Op-State* is **up**.
