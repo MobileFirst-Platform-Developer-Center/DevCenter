@@ -144,7 +144,7 @@ onFailure: function(response) {
 
 <img alt="Image of the sample application" src="resource-request-success-cordova.png" style="float:right"/>
 ## Sample applications
-The ResourceRequestWeb and ResourceRequestCordova projects demonstrate a resource request using a Java adapter.  
+The **ResourceRequestWeb** and **ResourceRequestCordova** projects demonstrate a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the Cordova project.  
