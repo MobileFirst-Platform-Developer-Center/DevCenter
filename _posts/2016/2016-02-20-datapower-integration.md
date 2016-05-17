@@ -5,7 +5,6 @@ tags:
 - MobileFirst_Platform
 - DataPower
 version:
-- 7.0
 - 7.1
 author:
   name: Nathan Hazout
