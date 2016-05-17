@@ -5,6 +5,8 @@ breadcrumb_title: JavaScript
 relevantTo: [cordova]
 weight: 2
 downloads:
+  - name: Download Web project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80
   - name: Download SecurityCheck Maven project
@@ -120,13 +122,20 @@ someChallengeHandler = WL.Client.createWLChallengeHandler("the-securityCheck-nam
 ```
 
 ## Sample application
-The sample **PinCodeCordova** is a Corodova application that uses `WLResourceRequest` to get a bank balance.  
+The **PinCodeWeb** and **PinCodeCordova**  projects use `WLResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80) the Web project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) the Cordova project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) the Cordova project.
 
-### Sample usage
+### Web sample usage
+1. Make sure you have Node.js installed.
+2. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
+3. In the MobileFirst Console → PinCodeWeb → Security, map the `accessRestricted` scope to the `PinCodeAttempts` security check.
+4. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
+
+### Cordova Sample usage
 * Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and:
     * Add a platform by running the `cordova platform add` command.
