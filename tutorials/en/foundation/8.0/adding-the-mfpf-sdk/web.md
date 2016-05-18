@@ -69,6 +69,8 @@ Reference the **ibmmfpf.js** file in the `HEAD` element.
 </head>
 ```
 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** If adding Analytics support or Web Cryptography support for legacy browsers, place the **ibmmfpfanalytics.js** and **webcrypto-shim.js** file references **before** the **ibmmfpf.js** file reference.
+
 #### Using Require JS
 
 **HTML**  
@@ -90,8 +92,6 @@ require(['mfp'], function(WL) {
     // application logic.
 });
 ```
-
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** If adding Analytics support or Web Cryptography support for legacy browsers, place the **ibmmfpfanalytics.js** and **webcrypto-shim.js** file references **before** the **ibmmfpf.js** file reference.
 
 ## Initializing the MobileFirst Web SDK
 Initialize the MobileFirst Web SDK by specifying the **context root** and **application ID** values in the main JavaScript file of your web application:
