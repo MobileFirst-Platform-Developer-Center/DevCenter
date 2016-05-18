@@ -121,7 +121,7 @@ This is done by creating the challenge handler with the security check like this
 someChallengeHandler = WL.Client.createWLChallengeHandler("the-securityCheck-name");
 ```
 
-## Sample application
+## Sample applications
 The **PinCodeWeb** and **PinCodeCordova**  projects use `WLResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
@@ -132,21 +132,22 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 ### Web sample usage
 1. Make sure you have Node.js installed.
 2. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
-3. In the MobileFirst Console → PinCodeWeb → Security, map the `accessRestricted` scope to the `PinCodeAttempts` security check.
-4. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
+3. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
+4. In the MobileFirst Console → PinCodeWeb → Security, map the `accessRestricted` scope to the `PinCodeAttempts` security check.
+5. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
 
 ### Cordova Sample usage
-* Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
-* From a **Command-line** window, navigate to the project's root folder and:
+1. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
+2. From a **Command-line** window, navigate to the project's root folder and:
     * Add a platform by running the `cordova platform add` command.
     * Registering the application: `mfpdev app register`.
-* Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
+3. Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
     * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
-* Back in the command-line:
+4. Back in the command-line:
     * Run the Cordova application by running the `cordova run` command.
 
 ![Sample application](pincode-attempts-cordova.png)

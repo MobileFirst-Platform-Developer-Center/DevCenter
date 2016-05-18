@@ -129,27 +129,35 @@ WLAuthorizationManager.logout(securityCheckName).then(
 ## Sample applications
 There are two samples associated with this tutorial:
 
-- **PreemptiveLoginCordova**: An application that always starts with a login screen, using the preemptive `login` API.
-- **RememberMeCordova**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
+- **PreemptiveLogin**: An application that always starts with a login screen, using the preemptive `login` API.
+- **RememberMe**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
 
 Both samples use the same `UserLogin` security check from the **SecurityCheckAdapters** adapter Maven project.
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80) the Remember Me project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginCordova/tree/release80) the Preemptive Login project.
+- [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
+- [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80) the RememberMe Cordova project.  
+- [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginCordova/tree/release80) the PreemptiveLogin Cordova project.
+- [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWeb/tree/release80) the RememberMe Web project.
+- [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWeb/tree/release80) the PreemptiveLogin Web project.
 
-### Sample usage
+### Web sample usage
+1. Make sure you have Node.js installed.
+2. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
+3. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
+4. In the MobileFirst Console → PreemptiveLoginWeb / RememberMeWeb → Security, map the `accessRestricted` scope to the `UserLogin` security check.
+5. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
 
-* Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
-* From a **Command-line** window, navigate to the project's root folder and:
+### Cordova Sample usage
+1. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
+2. From a **Command-line** window, navigate to the project's root folder and:
     * Add a platform by running the `cordova platform add` command.
     * Register the application: `mfpdev app register`.
-* Map the `accessRestricted` scope to the `UserLogin` security check:
+3. Map the `accessRestricted` scope to the `UserLogin` security check:
     * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
 
-* Back in the command-line:
+4. Back in the command-line:
     * Run the Cordova application by running the `cordova run` command.
 ![sample application](sample-application.png)
