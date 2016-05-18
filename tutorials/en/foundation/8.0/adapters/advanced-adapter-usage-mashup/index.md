@@ -30,7 +30,7 @@ The `invocationData` function signature is:
 
 For example:
 {% highlight javascript %}
-MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
+MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate]});
 {% endhighlight %}
 
 > Calling a Java adapter from a JavaScript adapter is not supported
@@ -46,9 +46,9 @@ AdaptersAPI adaptersAPI;
 When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
 This call returns an `HttpResponse` object.
 {% highlight java %}
-HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
-org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
-JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response)
+HttpUriRequest req = new HttpGet(JavaAdapterProcedureURL);
+HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 {% endhighlight %}
 
 ### Calling a JavaScript adapter procedure from a Java adapter
