@@ -5,7 +5,7 @@ breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
 downloads:
-  - name: Download Native project
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80

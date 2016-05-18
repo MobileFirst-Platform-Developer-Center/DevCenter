@@ -14,12 +14,25 @@ custom_js:
             {% include contribute.html %}
             {% include breadcrumb.html %} {% if page.downloads %}
             <div class="downloadButtons hidden-xs">
-                {% for download in page.downloads %}
-                  <a class="download-button" href="{{download.url}}">
-                      <span class="glyphicon glyphicon-cloud-download"></span>
-                      {{download.name}}
-                  </a>
-                {% endfor %}
+                {% if page.downloads.size > 2 %}
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-default dropdown-toggle download-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span class="glyphicon glyphicon-cloud-download"></span> Download Sample <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                      {% for download in page.downloads %}
+                        <li><a href="{{download.url}}" target="_blank">{{download.name}}</a></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% else %}
+                  {% for download in page.downloads %}
+                    <a class="download-button" href="{{download.url}}" target="_blank">
+                        <span class="glyphicon glyphicon-cloud-download"></span>
+                        {{download.name}}
+                    </a>
+                  {% endfor %}
+                {% endif %}
             </div>
             {% endif %}
             {{ content }}
