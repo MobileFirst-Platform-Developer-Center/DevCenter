@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Cordova applications
+title: Implementing the challenge handler in JavaScript (Cordova) applications
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 2
@@ -14,7 +14,7 @@ downloads:
 ---
 
 ## Overview
-**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/cordova) tutorial.
+**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/javascript) tutorial.
 
 The challenge handler will demonstrate a few additional features (APIs) such as the preemptive `login`, `logout` and `obtainAccessToken`.
 
@@ -141,11 +141,15 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 ### Sample usage
 
 * Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
-* From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
+* From a **Command-line** window, navigate to the project's root folder and:
+    * Add a platform by running the `cordova platform add` command.
+    * Register the application: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Map scope elements to security checks**, add a scope mapping from `accessRestricted` to `UserLogin`.
+    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
 
+* Back in the command-line:
+    * Run the Cordova application by running the `cordova run` command.
 ![sample application](sample-application.png)

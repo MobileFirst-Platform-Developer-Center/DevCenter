@@ -25,6 +25,7 @@ No setup required. Initialized out-of-the-box.
 ```objc
 import "WLAnalytics.h"
 ```
+
 #### Initialize Analytics
 No setup required. Initialized out-of-the-box.
 
@@ -196,7 +197,7 @@ WLAnalytics.log("Message", json);
 WLAnalytics.send();
 ```
 
-#### Objective-C API
+#### iOS
 After importing WLAnalytics you can now use the API to collect custom data like below:
 
 ```objc

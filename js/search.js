@@ -63,10 +63,13 @@ var MFPSEARCH = {
                 });
                 $('#searchNextBtn').show();
                 $('#searchPreviousBtn').show();
+                $('#searchResultsCount').show();
+                $('#searchResultsCount').html("Showing page " + ((_this.from / _this.pageSize) + 1) + " out of " + Math.ceil(_this.total / _this.pageSize));
             } else {
                 $('#searchResults').html('No results were found. Try refining your search.');
                 $('#searchNextBtn').hide();
                 $('#searchPreviousBtn').hide();
+                $('#searchResultsCount').hide();
             }
             if (_this.from > 0) {
                 $('#searchPreviousBtn').removeClass('disabled');
@@ -88,7 +91,7 @@ var MFPSEARCH = {
             });
         },function() {
             spinner.stop();
-            $('#searchResults').html("Uhoh, something's wrong... please <a href='https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/issues/new'>open an issue to let us know.");
+            $('#searchResults').html("Uhoh, something's wrong... please <a href='https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/issues/'>open an issue to let us know.");
         });
     },
     nextPage: function() {
@@ -132,8 +135,7 @@ var MFPSEARCH = {
             mustArray.push({
                 "terms": {
                     "type": typesArray
-                },
-                "timeout": "10s"
+                }
             });
         }
         var selectedPlatforms = $('#platforms option:selected');

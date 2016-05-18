@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Resource request from Android applications
-breadcrumb_title: Resource request - Android
+breadcrumb_title: Android
 relevantTo: [android]
 downloads:
   - name: Download Native project
@@ -16,8 +16,8 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/android) to your Native Android project.
-- Learn how to [create adapters](../../adapters/adapters-overview/).
+- Ensure you have [added the MobileFirst Platform SDK](../../../adding-the-mfpf-sdk/android) to your Native Android project.
+- Learn how to [create adapters](../../../adapters/adapters-overview/).
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
@@ -76,6 +76,8 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 request.setQueryParameter("params","['value1', 'value2']");
 ```
 
+This should be used with `WLResourceRequest.GET`.
+
 ### Form parameters
 To send form parameters in the body, use `.send(HashMap<String, String> formParameters, WLResponseListener)` instead of `.send(WLResponseListener)`:  
 
@@ -91,6 +93,8 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 ```java
 formParams.put("params", "['value1', 'value2']");
 ```
+
+This should be used with `WLResourceRequest.POST`.
 
 ### Header parameters
 To send a parameter as an HTTP header use `.addHeader()` API:
@@ -123,6 +127,6 @@ The adapter Maven project contains the Java adapter used during the resource req
 ### Sample usage
 1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 `mfpdev app register`.
-2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-3. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../../adapters/creating-adapters/).
+3. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
 4. Import the project to Android Studio, and run the sample by clicking the **Run** button.

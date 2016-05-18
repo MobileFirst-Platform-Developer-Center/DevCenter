@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Resource request from Cordova applications
-breadcrumb_title: Resource request - Cordova
+title: Resource request from JavaScript (Cordova) applications
+breadcrumb_title: JavaScript
 relevantTo: [cordova]
 downloads:
   - name: Download Cordova project
@@ -16,14 +16,14 @@ The REST API works with all adapters and external resources.
 
 **Prerequisites**:
 
-- Ensure you have [added the MobileFirst Platform SDK](../../adding-the-mfpf-sdk/cordova) to your Cordova application.
-- Learn how to [create adapters](../../adapters/adapters-overview/).
+- Ensure you have [added the MobileFirst Platform SDK](../../../adding-the-mfpf-sdk/cordova) to your Cordova application.
+- Learn how to [create adapters](../../../adapters/adapters-overview/).
 
 ## WLResourceRequest
 The `WLResourceRequest` class handles resource requests to adapters or external resources.
 
 Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
+Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT` and `WLResourceRequest.DELETE`.
 
 ```javascript
 var resourceRequest = new WLResourceRequest(
@@ -65,6 +65,8 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 resourceRequest.setQueryParameter("params", "['value1', 'value2']");
 ```
 
+This should be used with `WLResourceRequest.GET`.
+
 ### setHeader
 By using the `setHeader` method, you can set a new HTTP header or replace an existing header with the same name in the REST request.
 
@@ -86,6 +88,9 @@ JavaScript adapters use ordered nameless parameters. To pass parameters to a Jav
 ```js
 var formParams = {"params":"['value1', 'value2']"};
 ```
+
+This should be used with `WLResourceRequest.POST`.
+
 
 > For more information about `WLResourceRequest`, see the API reference in the user documentation.
 
@@ -146,6 +151,6 @@ The adapter Maven project contains the Java adapter used during the resource req
 1. From a **Command-line** window, navigate to the project's root folder.
 2. Add a platform by running the `cordova platform add` command.
 3. Run the command: `mfpdev app register`.
-4. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../adapters/creating-adapters/).
-5. To test or debug an adapter, see the [testing and debugging adapters](../../adapters/testing-and-debugging-adapters) tutorial.
+4. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../../adapters/creating-adapters/).
+5. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
 6. Run the Cordova application by running the `cordova run` command.
