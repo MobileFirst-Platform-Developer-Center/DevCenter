@@ -5,7 +5,7 @@ breadcrumb_title: JSONStore - Android
 relevantTo: [android]
 weight: 8
 downloads:
-  - name: Download Native project
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80

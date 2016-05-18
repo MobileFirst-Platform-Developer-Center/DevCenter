@@ -4,7 +4,7 @@ title: Resource request from Android applications
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Download Native project
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
