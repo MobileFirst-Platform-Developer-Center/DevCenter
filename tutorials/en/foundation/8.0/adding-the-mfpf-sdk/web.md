@@ -55,8 +55,11 @@ This creates the following directory structure:
 ![SDK folder contents](sdk-folder.png)
 
 ### Adding the SDK
-To add the SDK to your web application, reference the **ibmmfpf.js** file in the `HEAD` element.  
-The MobileFirst Web SDK [supports AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition). You can use Module Loaders such as [RequireJS](http://requirejs.org/) to load the SDK.
+To add the MobileFirst Web SDK, reference it in standard fashion in the web application.  
+The SDK also [supports AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition), so you can use Module Loaders such as [RequireJS](http://requirejs.org/) to load the SDK.
+
+#### Standard
+Reference the **ibmmfpf.js** file in the `HEAD` element.  
 
 ```html
 <head>
@@ -66,11 +69,32 @@ The MobileFirst Web SDK [supports AMD](https://en.wikipedia.org/wiki/Asynchronou
 </head>
 ```
 
+#### Using Require JS
+
+**HTML**  
+
+```html
+<script type="text/javascript" src="node_modules/requirejs/require.js" data-main="index"></script>
+```
+
+**JavaScript**
+
+```javascript
+require.config({
+	'paths': {
+		'mfp': 'node_modules/ibm-mfp-web-sdk/ibmmfpf'
+	}
+});
+
+require(['mfp'], function(WL) {
+    // application logic.
+});
+```
+
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** If adding Analytics support or Web Cryptography support for legacy browsers, place the **ibmmfpfanalytics.js** and **webcrypto-shim.js** file references **before** the **ibmmfpf.js** file reference.
 
 ## Initializing the MobileFirst Web SDK
-Initialize the MobileFirst Web SDK by specifying the **context root** and **application ID** values.  
-In the main JavaScript file of your web application:
+Initialize the MobileFirst Web SDK by specifying the **context root** and **application ID** values in the main JavaScript file of your web application:
 
 ```javascript
 var wlInitOptions = {
@@ -95,7 +119,9 @@ To update the MobileFirst Web SDK with the latest release:
 2. Run the command: `npm update ibm-mfp-web-sdk`.
 
 ## Same Origin Policy
-**Important:** Web applications may suffer from errors due to [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same Origin Policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
+Because web resources may be hosted on different a server machine than the one that MobileFirst Server is installed on, this may trigger a [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation.
+
+Same Origin Policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
 
 Web apps that are using the MobileFirst Web SDK should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
 
