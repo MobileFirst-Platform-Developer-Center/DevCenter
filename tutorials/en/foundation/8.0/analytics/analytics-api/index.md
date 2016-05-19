@@ -16,7 +16,7 @@ MobileFirst Operational Analytics provides client-side APIs to help a user get s
 ## Configuring Analytics on the Client Side
 Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to import the corresponding libraries to initialize the analytics support.
 
-### Cordova
+### JavaScript
 No setup required. Initialized out-of-the-box.
 
 ### iOS
@@ -46,8 +46,8 @@ WLAnalytics.init(this.getApplication());
 ## Sending Analytics
 Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When collecting Analytics, the analytics logs are stored in a log file on the client device which is sent to the analytics server after using the `send` method of the Analytics API.
 
-#### Cordova
-In a Cordova application, use the following JavaScript API method:
+#### JavaScript
+In a Cordova/Web application, use the following JavaScript API method:
 
 ```javascript
 WL.Analytics.send();
