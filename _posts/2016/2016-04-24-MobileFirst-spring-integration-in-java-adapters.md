@@ -118,7 +118,7 @@ Now the spring extension module is installed on your local Maven repository.
 
 
         <!-- Define the list of JAX-RS resources to use: -->
-        <bean class="ncom.github.mfpdev.adapters.spring.integration.JAXRSResourcesRegistryImpl">
+        <bean class="com.github.mfpdev.adapters.spring.integration.JAXRSResourcesRegistryImpl">
             <property name="resources">
                 <list>
                     <bean class="com.sample.MySpringXmlAdapterResource"/>
