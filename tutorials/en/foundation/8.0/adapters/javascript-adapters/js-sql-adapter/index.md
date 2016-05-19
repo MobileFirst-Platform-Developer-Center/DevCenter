@@ -65,13 +65,13 @@ There are two ways of running SQL statements:
 * SQL stored procedure
 
 ### SQL statement query
-1. assign your SQL query to a variable. This must always be done outside the function scope.
+1. Assign your SQL query to a variable. This must always be done outside the function scope.
 2. Add parameters, if necessary.
 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries.
 4. Return the result to the application or to another procedure.
 
       ```js
-      // 1. assign your SQL query to a variable (outside the function scope)
+      // 1. Assign your SQL query to a variable (outside the function scope)
       // 2. Add parameters, if necessary
       var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
         "FROM accounttransactions " +
