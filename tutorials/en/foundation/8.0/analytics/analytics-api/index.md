@@ -47,7 +47,7 @@ WLAnalytics.init(this.getApplication());
 Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When collecting Analytics, the analytics logs are stored in a log file on the client device which is sent to the analytics server after using the `send` method of the Analytics API.
 
 #### JavaScript
-In a Cordova/Web application, use the following JavaScript API method:
+In a Cordova application, use the following JavaScript API method:
 
 ```javascript
 WL.Analytics.send();
