@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 ## Overview
-MobileFirst Operational Analytics provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
+MobileFirst Foundation's Operational Analytics provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to setup analytics support on the client application and lists available APIs.
 
 #### Jump to:
 * [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
@@ -17,7 +17,8 @@ MobileFirst Operational Analytics provides client-side APIs to help a user get s
 Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to import the corresponding libraries to initialize the analytics support.
 
 ### JavaScript
-No setup required. Initialized out-of-the-box.
+In Cordova applications no setup is required, and initialization is done out-of-the-box.  
+In Web applications the analytics JavaScript files must be references. For instructions, see the [Adding the MobileFirst SDK to Web applications](../../../adding-the-mfpf-sdk/web) tutorial.
 
 ### iOS
 #### Import Library
@@ -47,7 +48,7 @@ WLAnalytics.init(this.getApplication());
 Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When collecting Analytics, the analytics logs are stored in a log file on the client device which is sent to the analytics server after using the `send` method of the Analytics API.
 
 #### JavaScript
-In a Cordova application, use the following JavaScript API method:
+In a Cordova or Web application, use the following JavaScript API method:
 
 ```javascript
 WL.Analytics.send();
