@@ -86,7 +86,7 @@ Now the spring extension module is installed on your local Maven repository.
 
     ```xml
     <dependency>
-      <groupId>net.mfpdev</groupId>
+      <groupId>com.github.mfpdev</groupId>
       <artifactId>mfp-adapters-spring-integration</artifactId>
       <version>1.0.0-SNAPSHOT</version>
     </dependency>
@@ -95,7 +95,7 @@ Now the spring extension module is installed on your local Maven repository.
 4. Edit the **adapter.xml** file ( **src/main/adapter-resources/adapter.xml** ), set the JAXRSApplicationClass element to be:
 
     ```xml
-    <JAXRSApplicationClass>net.mfpdev.adapters.spring.integration.SpringXMLApplication</JAXRSApplicationClass>
+    <JAXRSApplicationClass>com.github.mfpdev.adapters.spring.integration.SpringXMLApplication</JAXRSApplicationClass>
     ```
 
 5. Create the folder **src/main/resources**
@@ -118,7 +118,7 @@ Now the spring extension module is installed on your local Maven repository.
 
 
         <!-- Define the list of JAX-RS resources to use: -->
-        <bean class="net.mfpdev.adapters.spring.integration.JAXRSResourcesRegistryImpl">
+        <bean class="com.github.mfpdev.adapters.spring.integration.JAXRSResourcesRegistryImpl">
             <property name="resources">
                 <list>
                     <bean class="com.sample.MySpringXmlAdapterResource"/>
@@ -230,7 +230,7 @@ In the following example I will show how to make the hello service configurable 
 
     ```xml
     ...
-    <JAXRSApplicationClass>net.mfpdev.adapters.spring.integration.SpringXMLApplication</JAXRSApplicationClass>
+    <JAXRSApplicationClass>com.github.mfpdev.adapters.spring.integration.SpringXMLApplication</JAXRSApplicationClass>
 
     <property name="helloServiceMessage"
               displayName="Hello message"
