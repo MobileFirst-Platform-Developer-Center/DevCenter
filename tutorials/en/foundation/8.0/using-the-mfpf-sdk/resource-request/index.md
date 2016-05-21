@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Resource Requests in client applications
-breadcrumb_title: WLResourceRequest API
+breadcrumb_title: Resource Requests
 relevantTo: [ios,android,windows,cordova]
 show_children: true
 weight: 3
