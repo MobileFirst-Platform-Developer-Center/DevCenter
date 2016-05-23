@@ -89,8 +89,11 @@ As soon as the device is set up to record sessions and you send your data, you w
 
 You can enable or disable the collecting of app sessions with the API below:
 
-#### Cordova
+#### JavaScript
+**Web**  
+Web applications do not support lifecycle events.
 
+**Cordova**  
 * For the iOS platform:
 	* Open the **[Cordova appilcation root folder] → platforms → ios → Classes → AppDelegate.m** file
 	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
@@ -154,8 +157,12 @@ Collection on adapters and the network occur in two different locations -- on th
 
 Since the client and the server are each collecting their own information this means that charts will not display data until the client is configured to do so. To configure your client you need to start collecting on the device event `NETWORK`.
 
-#### Cordova
+#### JavaScript
 
+**Web**  
+
+
+**Cordova**  
 * For the iOS platform:
 	* Open the **[Cordova appilcation root folder] → platforms → ios → Classes → AppDelegate.m** file
 	* Follow the iOS guide below to enable or disable `NETWORK` activities.
