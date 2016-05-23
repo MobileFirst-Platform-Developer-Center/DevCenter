@@ -10,7 +10,7 @@ MobileFirst Foundation's Operational Analytics provides client-side APIs to help
 
 #### Jump to:
 * [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
-* [Sending Analytics Data](#sending-analytics-data]
+* [Sending Analytics Data](#sending-analytics-data)
 * [Enabling/Disabling Client Events](#enabling-disabling-client-event-types)
 * [Custom Events](#custom-events)
 
