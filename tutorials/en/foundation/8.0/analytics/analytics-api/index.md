@@ -148,9 +148,9 @@ WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
 
 ### Client Network Activities
-Collection on adapters and the network occur in two different locations -- on the client and on the server:
+Collection on adapters and the network occur in two different locations: on the client and on the server:
 
-* The client is going to collect information such as roundtrip time and payload size when you start collecting on the device event `Network`.
+* The client is going to collect information such as roundtrip time and payload size when you start collecting on the `Network` device event.
 
 * The server is going to collect backend information such as server processing time, adapter usage, used procedures.
 
