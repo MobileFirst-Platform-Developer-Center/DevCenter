@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Creating Java and JavaScript Adapters
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
 ---

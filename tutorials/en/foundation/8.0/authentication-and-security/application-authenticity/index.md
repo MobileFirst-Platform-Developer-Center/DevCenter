@@ -2,7 +2,7 @@
 layout: tutorial
 title: Application Authenticity 
 breadcrumb_title: Application Authenticity
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 7
 ---
 ## Overview

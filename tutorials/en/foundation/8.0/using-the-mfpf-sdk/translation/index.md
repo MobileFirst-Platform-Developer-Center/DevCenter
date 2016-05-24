@@ -1,8 +1,8 @@
 ---
 layout: tutorial
-title: Multilingual translation of JavaScript (Cordova) applications
+title: Multilingual translation of JavaScript (Cordova, Web) applications
 breadcrumb_title: Multilingual translation
-relevantTo: [cordova]
+relevantTo: [javascript]
 weight: 11
 downloads:
   - name: Download Cordova project
@@ -10,7 +10,7 @@ downloads:
 ---
 
 ## Overview
-You can use the IBM MobileFirst Platform Foundation framework to add multilingual translation of Cordova applications into other languages.  
+You can use the IBM MobileFirst Platform Foundation framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
 Items that can be translated are application strings and system messages. 
 
 #### Jump to:
@@ -22,11 +22,14 @@ Items that can be translated are application strings and system messages.
 * [Sample application](#sample-application)
 
 ## Translating application strings
-Strings that are destined to be translated are stored in a `JSON` object called "Messages". You can find it in the index.js file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
+Strings that are destined to be translated are stored in a `JSON` object called "Messages". 
+
+- In Cordova applications that use the MobileFirst SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
+- In Web applications, you need to add it.
 
 ### JSON object structure example
 
-```JavaScript
+```javascript
 var Messages = {
     headerText: "Default header",
     actionsLabel: "Default action label",
@@ -38,7 +41,7 @@ Strings stored in the Messages `JSON` object can be referenced in two ways in th
 
 **As a JavaScript object property:**
 
-```JavaScript
+```javascript
 Messages.headerText
 ```
 
@@ -51,6 +54,12 @@ Messages.headerText
 ## Translating system messages
 It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password". System messages are stored in the `WL.ClientMessages` object.
 
+**Note:** Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.
+
+### Web applications
+You can find a full list of system messages in the `messages.json` file, located in the **[project root folder]\node_modules\ibm-mfp-web-sdk\lib\messages\ folder**.
+
+### Cordova applications
 You can find a full list of system messages in the `messages.json` file, located inside the generated project.
 
 - Android: `[Cordova-project]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
@@ -61,8 +70,6 @@ To translate a system message, override it in the application code.
 ```javascript
 WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
 ```
-
-**Note:** Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.
 
 ## Multilanguage translation
 Using JavaScript, you can implement multilanguage translation for your application.  
@@ -126,7 +133,13 @@ The below steps explain the implementation of this tutorial's sample application
     ```
 
 ## Detecting the device locale and language
-It is possible to detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
+To detect the language used by the device or browser:
+
+### Web applications
+Detect the browser language using `navigator.language` or any number of available frameworks and solutins.
+
+### Cordova applications
+Detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
 The globalization plug-in is auto-installed when adding a platform to the Cordova application.
 
 Use the `navigator.globalization.getLocaleName` and `navigator.globalization.getPreferredLanguage` functions to detect the locale and language respectively.

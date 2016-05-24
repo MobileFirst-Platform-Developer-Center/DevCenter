@@ -2,7 +2,7 @@
 layout: tutorial
 title: Client-side log collection
 breadcrumb_title: Client-side log collection
-relevantTo: [ios,android,cordova]
+relevantTo: [ios,android,javascript]
 weight: 9
 ---
 
@@ -29,7 +29,7 @@ Client log capture can be controlled via several ways:
 
 ### Logging from client applications:
 
-* [Logging in Cordova applications](cordova/)
+* [Logging in JavaScript (Cordova, Web) applications](javascript/)
 * [Logging in iOS applications](ios/)
 * [Logging in Android applications](android/)
 

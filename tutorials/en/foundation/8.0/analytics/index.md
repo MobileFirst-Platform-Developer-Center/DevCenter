@@ -4,7 +4,7 @@ title: MobileFirst Platform Foundation Operational Analytics
 breadcrumb_title: Operational Analytics
 show_disqus: true
 print_pdf: true
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 8
 ---
 ## Overview

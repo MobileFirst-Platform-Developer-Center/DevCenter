@@ -3,7 +3,7 @@ layout: tutorial
 title: Setting up the Cordova development environment
 breadcrumb_title: Cordova environment
 relevantTo: [cordova]
-weight: 5
+weight: 2
 ---
 ## Overview
 To get started with [Cordova (PhoneGap) development](https://cordova.apache.org/) the very basic required step is to install the Cordova CLI. The Cordova CLI is the tool enabling you to create Cordova applications. These applications can be further enhanced by using various 3rd party frameworks and tools such as Ionic, AngularJS, jQuery Mobile and many more. 

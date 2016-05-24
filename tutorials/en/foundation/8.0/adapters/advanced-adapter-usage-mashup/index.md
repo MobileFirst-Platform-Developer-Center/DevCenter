@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Advanced Adapter Usage and Mashup
-relevantTo: [hybrid]
+relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80

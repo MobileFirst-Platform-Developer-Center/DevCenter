@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Integrating with Cloudant Using an Adapter
-relevantTo: [cordova]
+relevantTo: [javascript]
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80

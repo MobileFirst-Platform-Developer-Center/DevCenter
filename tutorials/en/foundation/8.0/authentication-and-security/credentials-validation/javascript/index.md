@@ -1,10 +1,12 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in JavaScript (Cordova) applications
+title: Implementing the challenge handler in JavaScript (Cordova, Web) applications
 breadcrumb_title: JavaScript
-relevantTo: [cordova]
+relevantTo: [javascript]
 weight: 2
 downloads:
+  - name: Download Web project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80
   - name: Download SecurityCheck Maven project
@@ -119,25 +121,35 @@ This is done by creating the challenge handler with the security check like this
 someChallengeHandler = WL.Client.createWLChallengeHandler("the-securityCheck-name");
 ```
 
-## Sample application
-The sample **PinCodeCordova** is a Corodova application that uses `WLResourceRequest` to get a bank balance.  
+## Sample applications
+The **PinCodeWeb** and **PinCodeCordova**  projects use `WLResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80) the Web project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) the Cordova project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) the Cordova project.
 
-### Sample usage
-* Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
-* From a **Command-line** window, navigate to the project's root folder and:
+### Web sample usage
+Make sure you have Node.js installed.
+
+1. Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.pincodeweb`.
+2. Start the reverse proxy by running the commands: `npm install` followed by: `npm start`. 
+3. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
+4. In the MobileFirst Console → PinCodeWeb → Security, map the `accessRestricted` scope to the `PinCodeAttempts` security check.
+5. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
+
+### Cordova Sample usage
+1. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
+2. From a **Command-line** window, navigate to the project's root folder and:
     * Add a platform by running the `cordova platform add` command.
     * Registering the application: `mfpdev app register`.
-* Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
+3. Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
     * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
-* Back in the command-line:
+4. Back in the command-line:
     * Run the Cordova application by running the `cordova run` command.
 
 ![Sample application](pincode-attempts-cordova.png)

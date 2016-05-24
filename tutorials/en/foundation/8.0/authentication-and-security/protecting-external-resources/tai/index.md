@@ -2,7 +2,7 @@
 layout: tutorial
 title: Trust Association Interceptor
 breadcrumb_title: Trust Association Interceptor
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:
   - name: Download sample

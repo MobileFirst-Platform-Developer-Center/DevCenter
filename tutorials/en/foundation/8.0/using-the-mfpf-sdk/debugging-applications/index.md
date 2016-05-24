@@ -1,17 +1,17 @@
 ---
 layout: tutorial
-title: Debugging JavaScript (Cordova) Applications
+title: Debugging JavaScript (Cordova, Web) Applications
 breadcrumb_title: Debugging applications        
-relevantTo: [cordova]
+relevantTo: [javascript]
 weight: 12
 ---
 ## Overview
 Debugging is a process that consists of finding the cause of defects in applicative code and application user interface.
 
-* Cordova applications consist of web-based resources such as HTML, JavaScript &amp; CSS, and optional native code (written in Java, Objective-C, Swift, C#, ...).
-* Native code can be debugged by using standard tools that are provided by the platform SDK, such as XCode, Android LogCat, or Microsoft Visual Studio.
+* JavaScript (Cordova, Web) applications consist of web-based resources such as HTML, JavaScript &amp; CSS. Cordova application may also contain optional native code (written in Java, Objective-C, Swift, C#, ...).
+* Native code can be debugged by using standard tools that are provided by the platform SDK, such as XCode, Android, or Microsoft Visual Studio.
 
-This tutorial explores various approaches to debugging a Cordova application, whether running locally via an Emulator or Simulator, or while running in a physical mobile device.
+This tutorial explores various approaches to debugging a JavaScript-based application, whether running locally via an Emulator, Simulator, physica device or in a web browser.
 
 > Learn more about Cordova debugging and testing in the Cordova website: [Debugging applications](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device).
 
@@ -38,7 +38,7 @@ If your application consists of more than one platform - specify the platform to
 mfpdev app preview -p <platform>
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected in the preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected during preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
 
 ### Mobile Browser Simulator
 

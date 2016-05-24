@@ -3,7 +3,7 @@ layout: tutorial
 title: Using MobileFirst CLI to Manage MobileFirst Artifacts
 breadcrumb_title: MobileFirst CLI
 weight: 1
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 ---
 ## Overview
 IBM MobileFirst Platform Foundation provides a Command Line Interface (CLI) tool for the developer, **mfpdev**, to easily manage client and server artifacts.  
