@@ -146,6 +146,7 @@ The collected logs can then be viewed in the Analytics console. This is useful f
 ## Tutorials to follow next
 
 * [Analytics API](analytics-api)
+* [Analytics REST API](analytics-rest-api)
 
 ### Related Blogposts
 * [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
