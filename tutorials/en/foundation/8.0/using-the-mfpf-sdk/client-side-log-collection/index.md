@@ -29,7 +29,7 @@ Client log capture can be controlled via several ways:
 
 ### Logging from client applications:
 
-* [Logging in Cordova applications](cordova/)
+* [Logging in JavaScript (Cordova, Web) applications](javascript/)
 * [Logging in iOS applications](ios/)
 * [Logging in Android applications](android/)
 
