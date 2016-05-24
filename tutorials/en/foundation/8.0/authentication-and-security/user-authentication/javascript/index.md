@@ -2,7 +2,7 @@
 layout: tutorial
 title: Implementing the challenge handler in JavaScript (Cordova, Web) applications
 breadcrumb_title: JavaScript
-relevantTo: [cordova]
+relevantTo: [javascript]
 weight: 2
 downloads:
   - name: Download PreemptiveLogin project

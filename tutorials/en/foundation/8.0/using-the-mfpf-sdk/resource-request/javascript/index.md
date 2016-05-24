@@ -2,7 +2,7 @@
 layout: tutorial
 title: Resource request from JavaScript (Cordova, Web) applications
 breadcrumb_title: JavaScript
-relevantTo: [cordova]
+relevantTo: [javascript]
 downloads:
   - name: Download Web project
     url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80

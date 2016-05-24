@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Logging in JavaScript (Cordova, Web) Applications
-relevantTo: [cordova]
+relevantTo: [javascript]
 weight: 1
 ---
 ## Overview

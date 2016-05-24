@@ -2,7 +2,7 @@
 layout: tutorial
 title: Setting up the Web development environment
 breadcrumb_title: Web environment
-relevantTo: [web]
+relevantTo: [javascript]
 weight: 6
 ---
 ## Overview

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Debugging JavaScript (Cordova, Web) Applications
 breadcrumb_title: Debugging applications        
-relevantTo: [cordova]
+relevantTo: [javascript]
 weight: 12
 ---
 ## Overview

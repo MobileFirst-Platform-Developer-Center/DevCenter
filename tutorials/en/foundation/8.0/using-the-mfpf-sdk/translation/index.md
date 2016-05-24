@@ -2,7 +2,7 @@
 layout: tutorial
 title: Multilingual translation of JavaScript (Cordova, Web) applications
 breadcrumb_title: Multilingual translation
-relevantTo: [cordova]
+relevantTo: [javascript]
 weight: 11
 downloads:
   - name: Download Cordova project
