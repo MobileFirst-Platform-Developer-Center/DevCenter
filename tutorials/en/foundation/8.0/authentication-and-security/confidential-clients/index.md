@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Confidential Clients
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 5
 ---
 ## Overview

@@ -2,7 +2,7 @@
 layout: tutorial
 title: Creating a Security Check
 breadcrumb_title: Creating a security check
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
 ## Overview

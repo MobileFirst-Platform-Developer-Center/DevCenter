@@ -2,7 +2,7 @@
 layout: tutorial
 title: Setting up the MobileFirst development environment
 breadcrumb_title: MobileFirst environment
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 ## Overview

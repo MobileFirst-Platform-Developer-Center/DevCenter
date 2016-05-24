@@ -2,7 +2,7 @@
 layout: tutorial
 title: Using the MobileFirst Operations Console
 breadcrumb_title: MobileFirst Operations Console
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---
 ## Overview

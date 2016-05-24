@@ -3,7 +3,7 @@ layout: tutorial
 breadcrumb_title: IBM Containers
 show_disqus: true
 title: IBM MobileFirst Platform Foundation on IBM Containers
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 9
 ---
 ## Overview

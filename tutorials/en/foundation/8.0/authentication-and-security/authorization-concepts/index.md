@@ -2,7 +2,7 @@
 layout: tutorial
 title: Authorization concepts
 breadcrumb_title: Authorization concepts
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---
 

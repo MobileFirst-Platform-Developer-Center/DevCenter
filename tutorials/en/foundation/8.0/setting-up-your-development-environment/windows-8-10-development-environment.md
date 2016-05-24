@@ -2,7 +2,7 @@
 layout: tutorial
 title: Setting up the Windows 8.1 and Windows 10 development environment
 breadcrumb_title: Windows environments
-relevantTo: [windows,cordova]
+relevantTo: [windows,javascript]
 weight: 5
 ---
 ## Overview

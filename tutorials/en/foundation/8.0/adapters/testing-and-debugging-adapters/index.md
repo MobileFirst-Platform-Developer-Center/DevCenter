@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Testing and Debugging Adapters
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
 ## Overview

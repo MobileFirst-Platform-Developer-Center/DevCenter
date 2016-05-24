@@ -2,7 +2,7 @@
 layout: tutorial
 title: Adding the MobileFirst Platform Foundation SDK to Web Applications
 breadcrumb_title: Mobile Web
-relevantTo: [web]
+relevantTo: [javascript]
 weight: 6
 ---
 ## Overview

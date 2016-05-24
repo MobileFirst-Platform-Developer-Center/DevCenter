@@ -2,7 +2,7 @@
 layout: tutorial
 title: Setting up the iOS development environment
 breadcrumb_title: iOS environment
-relevantTo: [ios,cordova]
+relevantTo: [ios,javascript]
 weight: 3
 ---
 ## Overview

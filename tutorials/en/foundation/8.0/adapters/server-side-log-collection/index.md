@@ -1,7 +1,7 @@
 ---
 title: Server-side log collection
 breadcrumb_title: Server-side log collection
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---
 ## Overview
