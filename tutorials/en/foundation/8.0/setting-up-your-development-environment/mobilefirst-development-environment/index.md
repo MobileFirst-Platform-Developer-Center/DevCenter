@@ -28,7 +28,7 @@ The Development Kit consists of the following components: MobileFirst Server &am
 
 ### Development Kit Installer
 The Installer packages the components for local installation where Internet connectivity is not available.  
-The components are available through the MobileFirst Operations Console's Downloads page.
+The components are available through the MobileFirst Operations Console's Download Center.
 
 > To download the installer, visit the [downloads]({{site.baseurl}}/downloads/) page.
 
