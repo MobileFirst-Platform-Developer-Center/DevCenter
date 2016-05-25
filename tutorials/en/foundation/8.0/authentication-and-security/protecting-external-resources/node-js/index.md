@@ -2,7 +2,7 @@
 layout: tutorial
 title: Node.js Validator
 breadcrumb_title: Node.js filter
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:
   - name: Download sample
@@ -10,7 +10,7 @@ downloads:
 ---
 
 ## Overview
-MobileFirst Platform Foundation provides a Node.js framework to enforce security capabilities on external resources.  
+MobileFirst Foundation provides a Node.js framework to enforce security capabilities on external resources.  
 The Node.js framework is provided as an npm module (**passport-mfp-token-validation**).
 
 This tutorial will show how to protect a simple Node.js resource, `GetBalance`, using a scope (`accessRestricted`).
