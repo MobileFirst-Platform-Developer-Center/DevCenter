@@ -4,6 +4,9 @@ title: Node.js Validator
 breadcrumb_title: Node.js filter
 relevantTo: [android,ios,windows,cordova]
 weight: 3
+downloads:
+  - name: Download sample
+    url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 
 ## Overview
@@ -26,38 +29,67 @@ To install the module run:
 npm install passport-mfp-token-validation
 ```
 
-## Example
-```js
-var express = require('express');
-var passport = require('passport-mfp-token-validation').Passport;
-var mfpStrategy = require('passport-mfp-token-validation').Strategy;
+## Usage
+* The sample uses the `express` and `passport-mfp-token-validation` modules:
 
-passport.use(new mfpStrategy({
-    //Specify the URL of the MobileFirst Server
-    authServerUrl: 'http://localhost:9080/mfp/api/az/v1',
-    //Specify the confidential client ID and password which should be defined in the MobileFirst Operations Console
-    confClientID: 'testclient',
-    confClientPass: 'testclient',
-    // The analytics item is optional and only required if you wish to log analytics events to MFP
-    analytics: {
-        onpremise: {
-            url: 'http://localhost:9080/analytics-service/rest/v3',
-            username: 'admin',
-            password: 'admin'
+    ```js
+    var express = require('express');
+    var passport = require('passport-mfp-token-validation').Passport;
+    var mfpStrategy = require('passport-mfp-token-validation').Strategy;
+    ```
+
+* Setup the `Strategy` as follows:
+
+    ```js
+    passport.use(new mfpStrategy({
+        authServerUrl: 'http://localhost:9080/mfp/api/az/v1',
+        confClientID: 'testclient',
+        confClientPass: 'testclient',
+        analytics: {
+            onpremise: {
+                url: 'http://localhost:9080/analytics-service/rest/v3',
+                username: 'admin',
+                password: 'admin'
+            }
         }
-    }
-}));
+    }));
+    ```
+ * `authServerUrl`: Replace `localhost:9080` with your MobileFirst Server IP address and port number.
+ * `confClientID`, `confClientPass`: Replace the confidential client ID and password with the ones you defined in the MobileFirst Operations Console.
+ * `analytics`: The analytics item is optional and only required if you wish to log analytics events to MFP.  
+ Replace `localhost:9080`, `username` and `password` with your Analytics Server IP address, port number, username and password.
 
-var app = express();
-app.use(passport.initialize());
+* Authenticate requests by calling `passport.authenticate`:
 
-app.get('/getBalance', passport.authenticate('mobilefirst-strategy', {
-        session: false,
-        scope: 'accessRestricted'
-    }),
-    function(req, res) {
-        res.send('17364.9');
+    ```js
+    var app = express();
+    app.use(passport.initialize());
+
+    app.get('/getBalance', passport.authenticate('mobilefirst-strategy', {
+            session: false,
+            scope: 'accessRestricted'
+        }),
+        function(req, res) {
+            res.send('17364.9');
+        });
+
+    var server = app.listen(3000, function() {
+        var port = server.address().port
+        console.log("Sample app listening at http://localhost:%s", port)
     });
+    ```
+ * The `Strategy` to employ should be `mobilefirst-strategy`.
+ * Set `session` to `false`.
+ * Specify the `scope` name.
 
-app.listen(3000);
-```
+## Sample
+[Download the Node.js sample](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
+
+### Sample usage
+
+1. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
+2. Make sure to [update the confidential client](../#confidential-client) and secret values in the MobileFirst Operations Console.
+3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
+4. Register the matching application.
+5. Map the `accessRestricted` scope to the security check.
+6. Update the client application to make the `WLResourceRequest` to your servlet URL.
