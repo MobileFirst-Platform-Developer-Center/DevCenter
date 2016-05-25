@@ -7,7 +7,7 @@ weight: 2
 ---
 
 ## Overview
-In order to send push notifications to iOS or Android devices, the MobileFirst Server first needs to be configured with the GCM details for Android or APNS certificate for iOS. Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID, only iOS devices, only Android devices, or based on the authenticated user.
+In order to send push notifications to iOS or Android devices, the MobileFirst Server first needs to be configured with the GCM details for Android or APNS certificate for iOS. Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID, a single UserId, only iOS devices, only Android devices, or based on the authenticated user.
 
 > **Note:** In the release, authenticated notifications are **not supported** in Cordova applications.
 
@@ -109,7 +109,7 @@ Push notifications can be sent either from the MobileFirst Operations Console or
 * With the REST APIs, all forms of notifications can be sent: tag, broadcast and authenticated.
 
 ### MobileFirst Operations Console
-Notifications can be sent to a single Device ID, only iOS devices or only Android devices, or to devices subscribed to tags.
+Notifications can be sent to a single Device ID, a single User ID, only iOS devices or only Android devices, or to devices subscribed to tags.
 
 #### Tag notifications
 Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
