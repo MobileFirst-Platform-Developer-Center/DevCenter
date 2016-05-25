@@ -59,12 +59,28 @@ Edit runtime properties such as Analytics server URL, global security variables,
 
 ![Image of the Runtime Settings screen ](runtime-settings.png)
 
+### Error log
+The Error log shows a list of the failed management operations that were initiated from the MobileFirst Operations Console, or from the command line, on the current runtime environment. Use the log to see the effect of the failure on the servers.
+
+> For more information, see the topic about error log of operations on runtime environments in the user documentation.
+
+![Image of error logs screen](error-log.png)
+
+### Devices
+Administrators can search for devices that access the MobileFirst Server and can manage access rights.  
+Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
+A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
+
+> For more information, see the topic about device access management in the user documentation.
+
+![Image of device management screen](devices.png)
+
 ### Applications
 
-#### Creating applications
+#### Registering applications
 Provide basic application values and download Starter Code. 
 
-![Image of application registration screen](create-app.png)
+![Image of application registration screen](register-applications.png)
 
 #### Managing applications
 Manage and configure registered applications by use of [Direct Update](../../using-the-mfpf-sdk/direct-update/), Remote Disable, [Application Authenticity](../../authentication-and-security/application-authenticity/), and [setting security parameters](../../authentication-and-security/authorization-concepts/).
@@ -95,15 +111,6 @@ After an adapter is deployed, it can be configured in the console.
 
 ![Image of adapter configuration screen](adapter-configuration.png)
 
-### Devices
-Administrators can search for devices that access the MobileFirst Server and can manage access rights.  
-Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
-A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
-
-> For more information, see the topic about device access management in the user documentation.
-
-![Image of device management screen](devices.png)
-
 ### Client logs
 Administrators can use log profiles to adjust client logger configurations, such as log level and log package filters, for any combination of operating system, operating system version, application, application version, and device model.
 
@@ -112,13 +119,6 @@ When an administrator creates a configuration profile, the log configuration is 
 > For more information, see the topic about client-side log capture configuration in the user documentation.
 
 ![Image of client logs screen](client-logs.png)
-
-### Error log
-The Error log shows a list of the failed management operations that were initiated from the MobileFirst Operations Console, or from the command line, on the current runtime environment. Use the log to see the effect of the failure on the servers.
-
-> For more information, see the topic about error log of operations on runtime environments in the user documentation.
-
-![Image of error logs screen](error-log.png)
 
 ### License tracking
 Accessible from the top Settings buttons.
