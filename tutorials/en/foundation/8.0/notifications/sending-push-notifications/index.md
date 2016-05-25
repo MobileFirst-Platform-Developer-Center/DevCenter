@@ -9,7 +9,7 @@ weight: 2
 ## Overview
 In order to send push notifications to iOS or Android devices, the MobileFirst Server first needs to be configured with the GCM details for Android or APNS certificate for iOS. Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID, only iOS devices, only Android devices, or based on the authenticated user.
 
-> **Note:** In the beta release, authenticated notifications are **not supported** in Cordova applications.
+> **Note:** In the release, authenticated notifications are **not supported** in Cordova applications.
 
 **Prerequisite**: Make sure to read the [Push Notifications overview](../push-notifications-overview/) tutorial.
 
