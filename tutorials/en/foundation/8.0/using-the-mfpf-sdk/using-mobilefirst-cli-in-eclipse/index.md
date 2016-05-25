@@ -91,7 +91,7 @@ In this section we will discuss how to import an existing Cordova project that h
 
 ## MobileFirst Commands
 
-To access MobileFirst Platform Foundation's shortcuts right click the root project directory and navigate to **IBM MobileFirst Platform Foundation**.  Here you will be able to select from the following commands:
+To access MobileFirst Foundation's shortcuts right click the root project directory and navigate to **IBM MobileFirst Foundation**.  Here you will be able to select from the following commands:
 
 | Menu option         | Action                                                                                                                                       | MobileFirst command-line interface equivalent |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|

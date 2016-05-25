@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: MobileFirst Platform Foundation Operational Analytics
+title: MobileFirst Foundation Operational Analytics
 breadcrumb_title: Operational Analytics
 show_disqus: true
 print_pdf: true
@@ -8,11 +8,11 @@ relevantTo: [ios,android,windows,javascript]
 weight: 8
 ---
 ## Overview
-MobileFirst Platform Foundation Operational Analytics collects data from app to server activities, client logs, client crashes, and server side logs from the MobileFirst Runtime Server and client devices. Collecting analytics from all these data points populates the Operational Analytics Charts with infrastructure and client side information.
+MobileFirst Foundation Operational Analytics collects data from app to server activities, client logs, client crashes, and server side logs from the MobileFirst Runtime Server and client devices. Collecting analytics from all these data points populates the Operational Analytics Charts with infrastructure and client side information.
 
 ![architecture diagram](mfp_operational_analytics.jpg)
 
-Operational Analytics is bundled by default as part of the [MobileFirst Platform Foundation Development Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
+Operational Analytics is bundled by default as part of the [MobileFirst Foundation Development Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
 
 
 #### Jump to
@@ -138,7 +138,7 @@ WL.Logger.updateConfigFromServer();
 The `Logger` configuration values returned from the server will take precidence over any value set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client will receive an empty payload. If an empcdty payload is received then the `Logger` configuration will default to what was originally configured on the client.
 
 ## Forwarding Server Logs
-The MobileFirst Platform Foundation Operations Console also gives the server administrator the ability to persist logs and send those logs to the MobileFirst Analytics Console. 
+The MobileFirst Foundation Operations Console also gives the server administrator the ability to persist logs and send those logs to the MobileFirst Analytics Console. 
 
 To forward server logs navigate to the Runtime's **Settings** screen and provide the used logger package under **Additional Packages**.  
 The collected logs can then be viewed in the Analytics console. This is useful for a user when they want to take advantage of triaging adapter logs in the Analytics console without having to collect all server logs. 

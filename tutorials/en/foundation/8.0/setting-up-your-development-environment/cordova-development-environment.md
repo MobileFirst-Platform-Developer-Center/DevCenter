@@ -12,7 +12,7 @@ With Cordova applications you can use your preferred code editor, such as Atom.i
 **Prerequisite:** As you setup your Cordova development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment/) tutorial.
 
 ## Installing the Cordova CLI
-MobileFirst Platform Foundation supports Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) or 6.1.1 at minimum (v6.1.0 is **not supported**).  
+MobileFirst Foundation supports Apache [Cordova CLI 6.0.0](https://cordova.apache.org/news/2016/01/28/tools-release.html) or 6.1.1 at minimum (v6.1.0 is **not supported**).  
 To install:
 
 1. Download and install [NodeJS](https://nodejs.org/en/).
@@ -22,5 +22,5 @@ To install:
 To continue with MobileFirst development in Cordova applications, the MobileFirst Cordova SDK/plug-ins need to be added to the Cordova application.
 
 * Learn how to add the [MobileFirst SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova/).
-* For applications development, refer to the [Using the MobileFirst Platform Foundation SDK](../../using-the-mfpf-sdk/) tutorials.
+* For applications development, refer to the [Using the MobileFirst Foundation SDK](../../using-the-mfpf-sdk/) tutorials.
 * For adapters develpment, refer to the [Adapters](../../adapters/) category.

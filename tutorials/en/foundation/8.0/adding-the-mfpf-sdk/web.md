@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to Web Applications
+title: Adding the MobileFirst Foundation SDK to Web Applications
 breadcrumb_title: Mobile Web
 relevantTo: [javascript]
 weight: 6
@@ -12,7 +12,7 @@ The MobileFirst Cordova SDK is provided as a set of JavaScript files, [and is av
 The SDK is comprised of the following files:
 
 - **ibmmfpf.js** - the core of the SDK.
-- **ibmmfpfanalytics.js** - provides support for MobileFirst Platform Foundation Analytics.
+- **ibmmfpfanalytics.js** - provides support for MobileFirst Foundation Analytics.
 - **webcrypto-shim.js** - *optional*. Web Cryptography API shim for legacy browsers [https://github.com/vibornoff/webcrypto-shim](https://github.com/vibornoff/webcrypto-shim).
 
 **Prerequisite:** to run NPM commands, [Node.js](https://nodejs.org) is required.
@@ -138,7 +138,7 @@ During development, this restriction can be alleviated by:
 ## Tutorials to follow next
 With the MobileFirst Web SDK now integrated, you can now:
 
-- Review the [Using the MobileFirst Platform Foundation SDK tutorials](../../using-the-mfpf-sdk/)
+- Review the [Using the MobileFirst Foundation SDK tutorials](../../using-the-mfpf-sdk/)
 - Review the [Adapters development tutorials](../../adapters/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review [All Tutorials](../../all-tutorials)

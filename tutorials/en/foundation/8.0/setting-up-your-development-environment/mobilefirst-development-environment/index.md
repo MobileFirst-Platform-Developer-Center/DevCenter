@@ -6,22 +6,22 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 ## Overview
-The IBM MobileFirst Platform Foundation components can be installed either seperately via online repositories which contain the latest release, or downloaded bundled together for future or offline installation using the Development Kit Installer. Continue reading to learn more about the components and how to setup the MobileFirst Development environment by following the installation guide.
+The IBM MobileFirst Foundation components can be installed either seperately via online repositories which contain the latest release, or downloaded bundled together for future or offline installation using the Development Kit Installer. Continue reading to learn more about the components and how to setup the MobileFirst Development environment by following the installation guide.
 
 > If you intend to use MobileFirst Server on IBM Containers, see the [Using Mobile Foundation](../../ibm-containers/using-mobile-foundation/) tutorial.  
 
 #### Jump to:
 
 * [Installation guide](#installation-guide)
-* [MobileFirst Platform Foundation Development Kit](#mobilefirst-platform-foundation-development-kit)
-* [MobileFirst Platform Foundation components](#mobilefirst-platform-foundation-components)
+* [MobileFirst Foundation Development Kit](#mobilefirst-platform-foundation-development-kit)
+* [MobileFirst Foundation components](#mobilefirst-platform-foundation-components)
 * [Applications and Adapters development](#applications-and-adapters-development)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Installation guide
-[Read the installation guide](installation-guide) to quickly setup MobileFirst Platform Foundation on your workstation.
+[Read the installation guide](installation-guide) to quickly setup MobileFirst Foundation on your workstation.
 
-## MobileFirst Platform Foundation Development Kit
+## MobileFirst Foundation Development Kit
 The Development Kit provides a ready-for-development environment with minimal configuration needed.
 
 The Development Kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.
@@ -32,7 +32,7 @@ The components are available through the MobileFirst Operations Console's Downlo
 
 > To download the installer, visit the [downloads]({{site.baseurl}}/downloads/) page.
 
-## MobileFirst Platform Foundation components
+## MobileFirst Foundation components
 
 ### MobileFirst Server
 As part of the Development Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
@@ -84,10 +84,10 @@ The IBM MobileFirst command-line interface (CLI) tool enables developers to:
 > To download and install the MobileFirst CLI, visit the [downloads]({{site.baseurl}}/downloads/) page.  
 > Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
 
-### MobileFirst Platform Foundation client SDKs and adapter tooling
-MobileFirst Platform Foundation provides client SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Adapter tooling for adapters and security checks development is available as well.
+### MobileFirst Foundation client SDKs and adapter tooling
+MobileFirst Foundation provides client SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Adapter tooling for adapters and security checks development is available as well.
 
-* To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  
+* To use the MobileFirst client SDKs, visit the [Adding the MobileFirst Foundation SDK](../../adding-the-mfpf-sdk/) tutorials category.  
 * To develop adapters, visit the [Adapters](../../adapters/) tutorials category.  
 * To develop security checks, visit the [Authentication and security](../../authentication-and-security/) tutorials category.  
 

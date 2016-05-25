@@ -1,12 +1,12 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to iOS Applications
+title: Adding the MobileFirst Foundation SDK to iOS Applications
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
 ## Overview
-The MobileFirst Platform Foundation SDK consists of a collection of pods, available through [CocoaPods](http://guides.cocoapods.org), that you can add to your Xcode project. The pods correspond to core functions and other functions:
+The MobileFirst Foundation SDK consists of a collection of pods, available through [CocoaPods](http://guides.cocoapods.org), that you can add to your Xcode project. The pods correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
 * **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../using-the-mfpf-sdk/jsonstore-ios/).
@@ -88,7 +88,7 @@ In Xcode, right-click the project entry, click on **Add Files To [ProjectName]**
 
 ### Referencing the SDK
 
-Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Platform Foundation framework:
+Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Foundation framework:
 
 Objective-C:
 

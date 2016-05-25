@@ -25,7 +25,7 @@ This tutorial explores various approaches to debugging a JavaScript-based applic
 * [Debugging with WireShark](#debugging-with-wireshark)
 
 ## Debugging with the IBM Mobile Browser Simulator
-You can use IBM MobileFirst Platform Foundation's Mobile Browser Simulator (MBS) to preview and debug MobileFirst applications.  
+You can use IBM MobileFirst Foundation's Mobile Browser Simulator (MBS) to preview and debug MobileFirst applications.  
 To use the MBS, open a **Command-line** window and run the command:
 
 ```bash
@@ -96,7 +96,7 @@ This action requires Android 4.4 or later, Chrome 32 or later. Additionally, in 
 ![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
 ### Debugging with IBM MobileFirst Logger
-IBM MobileFirst Platform Foundation provides a `WL.Logger` object that can be used to print log messages.  
+IBM MobileFirst Foundation provides a `WL.Logger` object that can be used to print log messages.  
 `WL.Logger` contains several levels of logging: `WL.Logger.info`, `WL.Logger.debug`, `WL.Logger.error`.
 
 > For more information, see the documentation for `WL.Logger` in the API reference part of the user documentation.

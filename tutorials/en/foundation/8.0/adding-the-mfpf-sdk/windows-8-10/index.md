@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications
+title: Adding the MobileFirst Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---
 ## Overview
 
-The MobileFirst Platform Foundation SDK consists of a collection of dependencies, available through [Nuget](https://www.nuget.org/), that you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
+The MobileFirst Foundation SDK consists of a collection of dependencies, available through [Nuget](https://www.nuget.org/), that you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
 

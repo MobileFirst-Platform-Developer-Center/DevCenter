@@ -7,7 +7,7 @@ weight: 1
 ---
 
 ## Overview
-The MobileFirst Platform Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token that encapsulates the granted permissions to the client.  
+The MobileFirst Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token that encapsulates the granted permissions to the client.  
 
 In that context, the IBM MobileFirst Platform Server serves as an **authorization server** and is able to **generate access tokens**. The client can then use these tokens to access resources on a resource server, which can be either the MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows to enforce security on resources that are running outside MobileFirst Server.
 
@@ -19,7 +19,7 @@ In that context, the IBM MobileFirst Platform Server serves as an **authorizatio
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Authorization entities
-Several authorization entities are available as part of the MobileFirst Platform Foundation authentication framework:
+Several authorization entities are available as part of the MobileFirst Foundation authentication framework:
 
 ### Security Check
 A security check is an entity that is responsible for obtaining and validating client credentials.   

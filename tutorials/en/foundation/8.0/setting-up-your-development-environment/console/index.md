@@ -123,7 +123,7 @@ When an administrator creates a configuration profile, the log configuration is 
 ### License tracking
 Accessible from the top Settings buttons.
 
-License terms vary depending on which edition (Enterprise or Consumer) of MobileFirst Platform Foundation is being used.   License tracking is enabled by default and tracks metrics relevant to the licensing policy, such as active client devices and installed applications. This information helps determine whether the current usage of MobileFirst Platform is within the license entitlement levels and can prevent potential license violations.
+License terms vary depending on which edition (Enterprise or Consumer) of MobileFirst Foundation is being used.   License tracking is enabled by default and tracks metrics relevant to the licensing policy, such as active client devices and installed applications. This information helps determine whether the current usage of MobileFirst Platform is within the license entitlement levels and can prevent potential license violations.
 
 By tracking the usage of client devices and determining whether the devices are active, administrators can decommission devices that should no longer be accessing the service. This situation might arise if an employee has left the company, for example.
 
@@ -132,7 +132,7 @@ By tracking the usage of client devices and determining whether the devices are 
 ![Image of client logs screen](license-tracking.png)
 
 ### Downloads
-For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of MobileFirst Platform Foundation from the Download Center in the MobileFirst Console.
+For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of MobileFirst Foundation from the Download Center in the MobileFirst Console.
 
 ![Image of available artifacts](downloads.png)
 

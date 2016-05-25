@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to Cordova Applications
+title: Adding the MobileFirst Foundation SDK to Cordova Applications
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
@@ -179,7 +179,7 @@ mfpdev app config
 ## Tutorials to follow next
 With the MobileFirst Cordova SDK now integrated, you can now:
 
-- Review the [Using the MobileFirst Platform Foundation SDK tutorials](../../using-the-mfpf-sdk/)
+- Review the [Using the MobileFirst Foundation SDK tutorials](../../using-the-mfpf-sdk/)
 - Review the [Adapters development tutorials](../../adapters/)
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)

@@ -151,4 +151,4 @@ Remember to deploy your adapter when you're done developing or making changes.
 
 * [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/).
 * [Implementing the UserAuthenticationSecurityCheck](../user-authentication/).
-* Learn about additional MobileFirst Platform Foundation [authentication and security features](../).
+* Learn about additional MobileFirst Foundation [authentication and security features](../).

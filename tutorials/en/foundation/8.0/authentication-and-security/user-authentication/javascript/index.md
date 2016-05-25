@@ -27,7 +27,7 @@ userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password'
 
 You may also want to login a user without any challenge being received. For example, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
 
-You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Platform Foundation SDK includes the `login` API:
+You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `login` API:
 
 ```js
 WLAuthorizationManager.login(securityCheckName,{'username':username, 'password':password, rememberMe: rememberMeState}).then(
@@ -61,7 +61,7 @@ if (isChallenged){
 ## Obtaining an access token
 Since this security check supports *remember me* functionality, it would be useful to check if the client is currently logged in, during the application startup.
 
-The MobileFirst Platform Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
+The MobileFirst Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
 
 ```js
 WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheckName).then(
@@ -113,7 +113,7 @@ Here, `data` has a key called `user` which itself contains a `JSONObject` repres
 ```
 
 ## Logout
-The MobileFirst Platform Foundation SDK also provides a `logout` API to logout from a specific security check:
+The MobileFirst Foundation SDK also provides a `logout` API to logout from a specific security check:
 
 ```js
 WLAuthorizationManager.logout(securityCheckName).then(

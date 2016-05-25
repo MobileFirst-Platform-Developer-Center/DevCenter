@@ -10,7 +10,7 @@ downloads:
 ---
 
 ## Overview
-MobileFirst Platform Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
+MobileFirst Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
   
 The Java library is provided as a .jar file (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
 
@@ -19,7 +19,7 @@ This tutorial will show how to protect a simple Java Servlet, `TAI/GetBalance`, 
 **Prerequesite:**
 
 * Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* Understanding of the [MobileFirst Platform Foundation security framework](../../).
+* Understanding of the [MobileFirst Foundation security framework](../../).
 
 ![Flow](TAI_flow.jpg)
 
@@ -42,7 +42,7 @@ This tutorial will show how to protect a simple Java Servlet, `TAI/GetBalance`, 
 
     If Internet connectivity is not available while developing, prepare to work offline:  
     1. Make sure you have first installed Apache Maven.
-    2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
+    2. Download the [MobileFirst Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
     3. Start the MobileFirst Server and load the MobileFirst Operations Console.
     4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
     5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.

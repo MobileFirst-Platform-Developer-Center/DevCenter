@@ -27,7 +27,7 @@ Create two security checks: `StepUpPinCode` and `StepUpUserLogin`. Their initial
 In this tutorial's example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should only be asked to enter a PIN code if a successful login to `StepUpUserLogin` previously happened.  
 To do so, `StepUpPinCode` needs to be able to **reference** the `StepUpUserLogin` class.  
 
-The MobileFirst Platform Foundation framework provides an annotation to inject a reference.  
+The MobileFirst Foundation framework provides an annotation to inject a reference.  
 In your `StepUpPinCode` class, at the class-level, add:
 
 ```java

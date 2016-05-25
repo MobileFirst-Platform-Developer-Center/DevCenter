@@ -6,14 +6,14 @@ weight: 1
 relevantTo: [ios,android,windows,javascript]
 ---
 ## Overview
-IBM MobileFirst Platform Foundation provides a Command Line Interface (CLI) tool for the developer, **mfpdev**, to easily manage client and server artifacts.  
+IBM MobileFirst Foundation provides a Command Line Interface (CLI) tool for the developer, **mfpdev**, to easily manage client and server artifacts.  
 Using the CLI you can manage Cordova-based applications that uses the MobileFirst Cordova plug-in, and Native applications that uses the MobileFirst Native SDK.
 
 You can also create, register, and manage MobileFirst adapters to either local or remote MobileFirst Server instances, and administer projects from the command line or via REST services, or from the MobileFirst Operations Console.
 
 In this tutorial you will learn how to install the `mfpdev` Command Line Interface (CLI) and how to use it to manage MobileFirst Server instances, applications and adapters.
 
-> For more information regarding SDK integration in Cordova and Native applications, see the tutorials in the [Adding the MobileFirst Platform Foundation SDK](../../adding-the-mfpf-sdk/) category.
+> For more information regarding SDK integration in Cordova and Native applications, see the tutorials in the [Adding the MobileFirst Foundation SDK](../../adding-the-mfpf-sdk/) category.
 
 > **Further reading:** Learn more about the MobileFirst CLI in the "MobileFirst Platform Command Line Interface" topic in the user documentation.
 
@@ -60,19 +60,19 @@ To confirm the installation, run the command `mfpdev` without any arguments and 
 
 ```shell
 NAME
-     IBM MobileFirst Platform Foundation Command Line Interface (CLI).
+     IBM MobileFirst Foundation Command Line Interface (CLI).
 
 SYNOPSIS
      mfpdev <command> [options]
 
 DESCRIPTION
-     The IBM MobileFirst Platform Foundation Command Line Interface (CLI) is a command-line
+     The IBM MobileFirst Foundation Command Line Interface (CLI) is a command-line
      for developing MobileFirst applications. The command-line can be used by itself, or in conjunction
-     with the IBM MobileFirst Platform Foundation Operations Console. Some functions are available from  
+     with the IBM MobileFirst Foundation Operations Console. Some functions are available from  
      the command-line only and not the console.
 
      For more information and a step-by-step example of using the CLI, see the IBM Knowledge Center for
-     your version of IBM MobileFirst Platform Foundation at
+     your version of IBM MobileFirst Foundation at
 
           https://www.ibm.com/support/knowledgecenter.
     ...

@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 ## Overview
-MobileFirst Platform Foundation Operational Analytics provides REST APIs to help the developer with importing (POST) and exporting (GET) analytics data.
+MobileFirst Foundation Operational Analytics provides REST APIs to help the developer with importing (POST) and exporting (GET) analytics data.
 
 ## Jump to:
 * [Analytics REST API](#analytics-rest-api)

@@ -113,5 +113,5 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
 To continue with MobileFirst development in Web applications, the MobileFirst Web SDK need to be added to the Web application.
 
 * Learn how to add the [MobileFirst SDK to Web applications](../../adding-the-mfpf-sdk/web/).
-* For applications development, refer to the [Using the MobileFirst Platform Foundation SDK](../../using-the-mfpf-sdk/) tutorials.
+* For applications development, refer to the [Using the MobileFirst Foundation SDK](../../using-the-mfpf-sdk/) tutorials.
 * For adapters develpment, refer to the [Adapters](../../adapters/) category.

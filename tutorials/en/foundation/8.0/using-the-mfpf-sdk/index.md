@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the MobileFirst Platform Foundation SDK
+title: Using the MobileFirst Foundation SDK
 show_disqus: false
 show_children: true
 print_pdf: false

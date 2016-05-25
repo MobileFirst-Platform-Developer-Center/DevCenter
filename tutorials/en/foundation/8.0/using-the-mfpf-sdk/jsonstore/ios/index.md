@@ -11,7 +11,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 ## Overview
-IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
+IBM MobileFirst Foundation's **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
 
 #### Key features
 
@@ -20,9 +20,9 @@ IBM MobileFirst Platform Foundation's **JSONStore** is an optional client-side A
 * Mechanism for tracking local-only changes to the stored data
 * Support for multiple users
 
-> **Note:** Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Platform Foundation user documentation website.
+> **Note:** Some features such as data encryption are beyond the scope of this tutorial. All features are documented in detail in the IBM MobileFirst Foundation user documentation website.
 
-**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Xcode project. Follow the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../../adding-the-mfpf-sdk/ios/) tutorial.
+**Prerequisite**: Make sure the MobileFirst Native SDK was added to the Xcode project. Follow the [Adding the MobileFirst Foundation SDK to iOS applications](../../../adding-the-mfpf-sdk/ios/) tutorial.
 
 #### Jump to:
 

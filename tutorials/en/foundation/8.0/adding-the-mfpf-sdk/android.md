@@ -1,12 +1,12 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to Android Applications
+title: Adding the MobileFirst Foundation SDK to Android Applications
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 ---
 ## Overview
-The MobileFirst Platform Foundation SDK consists of a collection of dependencies, available through [Maven Central](http://search.maven.org/), that you can add to your Android Studio project. The dependencies correspond to core functions and other functions:
+The MobileFirst Foundation SDK consists of a collection of dependencies, available through [Maven Central](http://search.maven.org/), that you can add to your Android Studio project. The dependencies correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
 * **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Andoid tutorial](../../using-the-mfpf-sdk/jsonstore-android/).

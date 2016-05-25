@@ -10,7 +10,7 @@ downloads:
 ---
 
 ## Overview
-You can use the IBM MobileFirst Platform Foundation framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
+You can use the IBM MobileFirst Foundation framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
 Items that can be translated are application strings and system messages. 
 
 #### Jump to:

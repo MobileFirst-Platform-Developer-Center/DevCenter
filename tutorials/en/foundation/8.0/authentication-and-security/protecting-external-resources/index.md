@@ -11,14 +11,14 @@ Protected resources can run on the MobileFirst Server (such as **Adapters**), or
 
 This tutorial covers how an external **resource server** can be protected by implementing a **filter** that validates a MobileFirst **access token**.  
 
-This can either be done entirely with custom code, or using one of MobileFirst Platform Foundation's helper libraries that encapsulate part of the flow.
+This can either be done entirely with custom code, or using one of MobileFirst Foundation's helper libraries that encapsulate part of the flow.
 
 ## Flow
 ![Protecting external resources diagram](external_resources_flow.jpg)
 
 The MobileFirst Server has a component called the **introspection endpoint** which is capable of validating and extracting data from a MobileFirst **access token**. This introspection endpoint is available via a REST API.
 
-1. An application with the MobileFirst Platform Foundation client SDK makes a resource request call (or any HTTP request) to a protected resource with or without the `Authorization` header (**client access token**).
+1. An application with the MobileFirst Foundation client SDK makes a resource request call (or any HTTP request) to a protected resource with or without the `Authorization` header (**client access token**).
 2. In order to communicate with the introspection endpoint, the **filter** on the resource server needs to obtain a separate token for itself (see the **confidential client** section).
 3. The **filter** on the resource server extracts the **client access token** from step 1, and sends it to the introspection endpoint for validation.
 4. If the MobileFirst Authorization Server determined that the token is invalid (or doesn't exist), the resource server redirects the client to obtain a new token for the required scope. This part happens internally when using the MobileFirst Client SDK.
@@ -37,4 +37,4 @@ In the MobileFirst Operations Console, under **Settings** → **Confidential Cli
 ## Implementations
 
 This flow can be implemented manually by making HTTP requests directly to the various REST APIs (see documentation).  
-MobileFirst Platform Foundation also provides libraries to help you achieve this on **WebSphere** servers using the provided **Trust Association Interceptor**, or any other Java-based filter using the provided **Java Token Validator**:
+MobileFirst Foundation also provides libraries to help you achieve this on **WebSphere** servers using the provided **Trust Association Interceptor**, or any other Java-based filter using the provided **Java Token Validator**:
