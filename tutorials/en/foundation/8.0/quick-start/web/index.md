@@ -109,6 +109,15 @@ Alternatively, click the **New** button next to **Adapters**.
 3. Run the command: `npm start` to start the Node.js server.
 4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
 
+#### Secure Origins Policy
+When using Chrome during developmenet, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
+
+To overcome this, you can start the Chrome browser with the following flag:
+
+```bash
+--unsafely-treat-insecure-origin-as-secure=http://replace-with-ip-address-or-host:port-number
+```
+
 <br clear="all"/>
 ### Results
 * Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.

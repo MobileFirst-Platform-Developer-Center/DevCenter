@@ -135,8 +135,14 @@ During development, this restriction can be alleviated by:
 
 > Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
 
-## Secure Origins
-When using Chrome during developmenet, the browser may not allow an application to load if using both HTTP and a host that **is not** localhost. This is due to the Secure Origins Policy implemented and used by default in this browser.
+## Secure Origins Policy
+When using Chrome during developmenet, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
+
+To overcome this, you can start the Chrome browser with the following flag:
+
+```bash
+--unsafely-treat-insecure-origin-as-secure=http://replace-with-ip-address-or-host:port-number
+```
 
 Read more about Secure Origins [in this Chormium developer document](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features).
 
