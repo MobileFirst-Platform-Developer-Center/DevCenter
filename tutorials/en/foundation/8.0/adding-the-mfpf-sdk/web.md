@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adding the MobileFirst Foundation SDK to Web Applications
-breadcrumb_title: Mobile Web
+breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6
 ---
@@ -134,6 +134,11 @@ During development, this restriction can be alleviated by:
 - Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
 
 > Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
+
+## Secure Origins
+When using Chrome during developmenet, the browser may not allow an application to load if using both HTTP and a host that **is not** localhost. This is due to the Secure Origins Policy implemented and used by default in this browser.
+
+Read more about Secure Origins [in this Chormium developer document](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features).
 
 ## Tutorials to follow next
 With the MobileFirst Web SDK now integrated, you can now:
