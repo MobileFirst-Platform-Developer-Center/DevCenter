@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Cordova end-to-end demonstration
-breadcrumb_title: Cordova
-relevantTo: [cordova]
-weight: 1
+title: Web app end-to-end demonstration
+breadcrumb_title: Web
+relevantTo: [javascript]
+weight: 5
 ---
 ## Overview
 The purpose of this demonstration is to experience an end-to-end flow:
@@ -19,8 +19,7 @@ The purpose of this demonstration is to experience an end-to-end flow:
 
 #### Prerequisites:
 
-* Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
-* Cordova CLI v6.0.0 or v6.1.1 (v6.1.*0* is **not supported**)
+* A modern web browser
 * *Optional*. MobileFirst CLI ([download]({{site.baseurl}}/downloads))
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
@@ -35,22 +34,21 @@ From a **Command-line** window, navigate to the server's folder and run the comm
 In a browser window, open the MobileFirst Operations Console by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
  
 1. Click the **New** button next to **Applications**
-    * Select a platform: **Android, iOS, Windows**
-    * Enter **com.ibm.mfpstartercordova** as the **application identifier**
-    * Enter **1.0.0** as the **version** value for iOS and Windows, or **1.0** for Android
+    * Select the **Web** platform
+    * Enter **com.ibm.mfpstarterweb** as the **application identifier**
     * Click on **Register application**
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-cordova.png"/>
+    <img class="gifplayer" alt="Register an application" src="register-an-application-web.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Cordova sample application.
+2. Click on the **Get Starter Code** tile and select to download the Web sample application.
 
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-cordova.png"/>
  
 ### 3. Editing application logic
 
-1. Open the Cordova project in your code editor of choice.
+1. Open the project in your code editor of choice.
 
-2. Select the **www/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
+2. Select the **client/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
 
     ```javascript
     WLAuthorizationManager.obtainAccessToken()
@@ -106,17 +104,10 @@ Alternatively, click the **New** button next to **Adapters**.
 <img src="cordovaQuickStart.png" alt="sample application" style="float:right"/>
 ### 5. Testing the application
 
-1. From a **Command-line** window, navigate to the Cordova project's root folder.
-2. Run the command: `cordova platform add ios/android/windows` to add a platform.
-3. In the Cordova project, select the **config.xml** file and edit the  
-`<mfp:server ... url=" "/>` value with the IP address of the MobileFirst Server.
-
-    Alternatively, if you have installed the MobileFirst Develper CLI then navigate to the project root folder and run the command `mfpdev app register`.  If a remote server is used instead of a local server, first use the command `mfpdev server add` to add it.
-
-4. Run the command: `cordova run`.
-
-If a device is connected, the application will be installed and launched in the device,  
-Otherwise the Simulator or Emulator will be used.
+1. From a **Command-line** window, navigate to the **project's root folder → node-server**.
+2. Run the command: `npm install` to install required Node.js configuration.
+3. Run the command: `npm start` to start the Node.js server.
+4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
 
 <br clear="all"/>
 ### Results

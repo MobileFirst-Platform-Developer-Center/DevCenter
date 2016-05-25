@@ -8,7 +8,7 @@ weight: 3
 ## Overview
 The purpose of this demonstration is to experience an end-to-end flow:
 
-1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
+1. A sample application that is pre-bundled with the MobileFirst client SDK is registered and downloaded from the MobileFirst Operations Console.
 2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
 3. The application logic is changed to make a resource request.
 
@@ -41,7 +41,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 
     <img class="gifplayer" alt="Register an application" src="register-an-application-android.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Android application scaffold.
+2. Click on the **Get Starter Code** tile and select to download the Android sample application.
 
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-android.png"/>
 
