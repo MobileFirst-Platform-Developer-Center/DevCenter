@@ -9,6 +9,11 @@ weight: 6
 This tutorial provides step-by-step instructions to set-up a MobileFirst Server instance on IBM Containers using the **Mobile Foundation** service.  
 Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-up of scaleable Developer or Production environments of MobileFirst Foundation v8.0 on **IBM Containers**.
 
+The Mobile Foundation service offers two plan options:
+
+1. **Developer**: This plan provisions a Mobile Foundation server in a container in IBM Containers. This plan does not support the use of container groups or external databases and is restricted to development and test. The server instance allows registering only a single (1) application.
+2. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable container environment through IBM Containers.  This plan also requires a database service, which is created and billed separately. This plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows and Mobile Web.
+
 #### Jump to:
 
 * [Using the Mobile Foundation Bluemix service](#using-the-mobile-foundation-bluemix-service)
@@ -63,9 +68,9 @@ Through the Configuration tab, the server instance can be further customized wit
 * JNDI configuration
 * User registry 
 * TrustStore
-* Operational Analytics configuration*
-* Database selection*
-* VPN*
+* Operational Analytics configuration
+* Database selection (available in the *Professional 1 Application* plan)
+* VPN
 
 > **Note:** The release does not support all mentioned features.
 
