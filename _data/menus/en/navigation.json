@@ -5,7 +5,7 @@
         "name": "All Tutorials",
         "path": "",
         "children": [{
-            "name": "Foundation 8.0 beta",
+            "name": "Foundation 8.0",
             "path": "/foundation/8.0/all-tutorials"
         }, {
             "name": "Foundation 7.1",
@@ -53,7 +53,7 @@
         "name": "Product Integration",
         "path": "/product-integration",
         "children": [{
-            "name": "Foundation 8.0 beta",
+            "name": "Foundation 8.0",
             "path": "/8.0"
         }, {
             "name": "Foundation 7.1",
