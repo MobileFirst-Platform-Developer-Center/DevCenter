@@ -114,7 +114,7 @@ WL.Client.init(wlInitOptions).then (
 
 ## Updating the MobileFirst Web SDK
 SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
-To update the MobileFirst Web SDK with the latest release: 
+To update the MobileFirst Web SDK with the latest release:
 
 1. Navigate to the root folder of the web application.
 2. Run the command: `npm update ibm-mfp-web-sdk`.
@@ -142,8 +142,10 @@ When using Chrome during development, the browser may not allow an application t
 To overcome this, you can start the Chrome browser with the following flag:
 
 ```bash
---unsafely-treat-insecure-origin-as-secure=http://replace-with-ip-address-or-host:port-number
+--unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number"
 ```
+
+Note that you also need to include the `--user-data-dir=/test/only/profile/dir` to create a fresh testing profile for the flag to work.
 
 Read more about Secure Origins [in this Chormium developer document](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features).
 
