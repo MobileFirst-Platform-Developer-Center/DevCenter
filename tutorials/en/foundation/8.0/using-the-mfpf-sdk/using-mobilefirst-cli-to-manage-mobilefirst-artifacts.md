@@ -128,7 +128,23 @@ If you are using another local or remote MobileFirst Server instance you can add
 mfpdev server add
 ```
 
-Follow the interactive prompt to provide a name to the server, the server URL and user/password credentials.
+Follow the interactive prompt to provide a name to the server, the server URL and user/password credentials.  
+For example, to add a MobileFirst Server that is running on a Mobile Foundation Bluemix service you would do the following:
+
+```bash
+$ mfpdev server add
+? Enter the name of the new server profile: MyBluemixServer
+? Enter the fully qualified URL of this server: https://mobilefoundation-7abcd-server.mybluemix.net:443
+? Enter the MobileFirst Server administrator login ID: admin
+? Enter the MobileFirst Server administrator password: *****
+? Save the administrator password for this server?: Yes
+? Enter the context root of the MobileFirst administration services: mfpadmin
+? Enter the MobileFirst Server connection timeout in seconds: 30
+? Make this server the default?: Yes
+Verifying server configuration...
+The following runtimes are currently installed on this server: mfp
+Server profile 'mybluemix' added successfully. 
+```
 
 ### Edit server instances
 If you want to edit the details of a registered server instance, run the following command and follow the interactive prompt to select the server to be edited and provide the information to be updated.
