@@ -142,10 +142,10 @@ When using Chrome during development, the browser may not allow an application t
 To overcome this, you can start the Chrome browser with the following flag:
 
 ```bash
---unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number"
+--unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number" --user-data-dir=/test-to-new-user-profile/myprofile
 ```
 
-Note that you also need to include the `--user-data-dir=/test/only/profile/dir` to create a fresh testing profile for the flag to work.
+- Replace "test-to-new-user-profile/myprofile" with the location of a folder that will act as a new Chrome user profile for the flag to work.
 
 Read more about Secure Origins [in this Chormium developer document](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features).
 
