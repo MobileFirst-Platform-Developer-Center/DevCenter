@@ -101,13 +101,12 @@ Alternatively, click the **New** button next to **Adapters**.
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
 
-<img src="cordovaQuickStart.png" alt="sample application" style="float:right"/>
+<img src="web-success.png" alt="sample application" style="float:right"/>
 ### 5. Testing the application
 
-1. From a **Command-line** window, navigate to the **project's root folder → node-server**.
-2. Run the command: `npm install` to install required Node.js configuration.
-3. Run the command: `npm start` to start the Node.js server.
-4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
+1. From a **Command-line** window, navigate to the **project's root → node-server** folder.
+2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
+3. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
 
 #### Secure Origins Policy
 When using Chrome during developmenet, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
