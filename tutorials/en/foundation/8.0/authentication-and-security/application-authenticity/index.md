@@ -1,9 +1,9 @@
 ---
 layout: tutorial
-title: Application Authenticity 
+title: Application Authenticity
 breadcrumb_title: Application Authenticity
 relevantTo: [android,ios,windows,javascript]
-weight: 8
+weight: 9
 ---
 ## Overview
 By issuing an HTTP request, an entity can access to corporate HTTP services (APIs) IBM MobileFirst Platform Foundation Server provides access to. The predefined application-authenticity [security check](../authorization-concepts/) ensures that an application that tries to connect to a MobileFirst Server instance is the authentic one and was not tampered with or modified by a third-party attacker.
@@ -45,7 +45,7 @@ To enable Application Authenticity in your Cordova or Native application, the ap
     ```
 
     The result of the command above is an `.authenticity_data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.authenticity_data`.
- 
+
 2. Open the MobileFirst Operations Console in your browser of choice.
 3. Select your application from the navigation sidebar and click on the Authenticiy menu item.
 3. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
@@ -73,4 +73,3 @@ Once an authenticity check has been performed, it will not be performed again un
 3. Set a new value in seconds.
 
 ![Configuring the expirationSec property in the console](configuring_expirationSec.png)
-
