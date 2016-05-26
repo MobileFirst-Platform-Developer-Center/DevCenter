@@ -24,6 +24,7 @@ The SDK is comprised of the following files:
 - [Initializing the MobileFirst Web SDK](#initializing-the-mobilefirst-web-sdk)
 - [Updating the MobileFirst Web SDK](#updating-the-mobilefirst-web-sdk)
 - [Same Origin Policy](#same-origin-policy)
+- [Secure Origins Policy](#secure-origins-policy)
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ### Registering the web application
@@ -136,7 +137,7 @@ During development, this restriction can be alleviated by:
 > Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
 
 ## Secure Origins Policy
-When using Chrome during developmenet, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
+When using Chrome during development, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
 
 To overcome this, you can start the Chrome browser with the following flag:
 
