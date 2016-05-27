@@ -116,6 +116,7 @@ Use this function when trying to call the various MobileFirst-provided API metho
     ```bash
     mfpdev app register
     ```
+    - If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by updating the **config.xml** file at the root of the Cordova project with metadata that identifies the MobileFirst Server.
 
@@ -123,9 +124,8 @@ Each platform is registered as an application in MobileFirst Server.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
 > 
-> 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
-    
-> 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
+> 1. Load the MobileFirst Operations Console.  
+> 2. Click the "New" button next to "Applications" to register a new application and follow the on-screen instructions.  
   
 ### Using the SDK
 The MobileFirst-provided API methods are available once the MobileFirst client SDK has been loaded. Once loaded, the `wlCommonInit` function is then called.  

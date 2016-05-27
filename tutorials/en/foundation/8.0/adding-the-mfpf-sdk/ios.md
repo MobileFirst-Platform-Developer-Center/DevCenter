@@ -70,17 +70,16 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     ```bash
     mfpdev app register
     ```
-    
+    - If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+
     You will be asked to provide the application's BundleID. Note that the BundleID is **case sensitive**.  
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.plist** file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.  
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
 > 
-> 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
-    
-> 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-    
+> 1. Load the MobileFirst Operations Console.
+> 2. Click the "New" button next to "Applications" to register a new application and follow the on-screen instructions.  
 > 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
 
 ### Completing the setup process
