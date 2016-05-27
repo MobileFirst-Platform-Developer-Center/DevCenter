@@ -113,7 +113,7 @@ http://localhost:9500/*/_mapping
 Administrators can control the MobileFirst client SDK log capture and levels from the **MobileFirst Operations Console → [your application] → Log Filters**.  
 Through `Log Filters` you are able to create a filter level that you can log at.
 
-![Log filtering from the console](log-filtering.png)
+<img class="gifplayer" alt="Creating a log filter" src="add-log-filter.png"/>
 
 In order to use the server configuration the client has to use the `updateConfigFromServer` method in the `Logger` API.
 
