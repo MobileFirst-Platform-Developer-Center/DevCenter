@@ -7,6 +7,8 @@ weight: 10
 ## Overview
 Follow this installation guide in order to setup your workstation for development using MobileFirst Foundation.  
 
+> **Note:** The MobileFirst Developer Kit is available only for IBM customers.
+
 ## DevKit Installer
 The MobileFirst Foundation [Developer Kit Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment) will install a ready-to-use MobileFirst Server, database and runtime on your developer machine.  
 

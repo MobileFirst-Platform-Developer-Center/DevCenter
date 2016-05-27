@@ -99,7 +99,7 @@ Initialize the MobileFirst Web SDK by specifying the **context root** and **appl
 
 ```javascript
 var wlInitOptions = {
-    mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Developer Kit
+    mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
     applicationId : 'com.sample.mobilewebapp'
 };
 
@@ -135,6 +135,8 @@ During development, this restriction can be alleviated by:
 - Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
 
 > Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
+ 
+> **Note:** serving the applications from the WebSphere Liberty application server is available only for IBM customers who use the MobileFirst Developer Kit.
 
 ## Secure Origins Policy
 When using Chrome during development, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.

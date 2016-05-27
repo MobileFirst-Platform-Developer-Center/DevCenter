@@ -40,14 +40,6 @@ This tutorial will show how to protect a simple Java Servlet, `TAI/GetBalance`, 
 
 	Download directly from the Maven Central [here](http://search.maven.org/#search%7Cga%7C1%7Cibm%20mfp)
 
-    If Internet connectivity is not available while developing, prepare to work offline:  
-    1. Make sure you have first installed Apache Maven.
-    2. Download the [MobileFirst Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
-    3. Start the MobileFirst Server and load the MobileFirst Operations Console.
-    4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
-    5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
-
-
 2. Add the `com.ibm.mfp.oauth.tai-8.0.0.jar` file to the WebSphere application server inside **usr/extension/lib**.
 
 3. Add the `OAuthTai-8.0.mf` file to the WebSphere applicaiton server inside **usr/extension/lib/features**.

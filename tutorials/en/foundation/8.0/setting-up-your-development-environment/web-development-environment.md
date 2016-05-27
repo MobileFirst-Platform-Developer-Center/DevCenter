@@ -18,6 +18,8 @@ During development, this restriction can be alleviated by:
 - Serving the web application resources' from the same WebSphere Liberty profile application server that is used in the MobileFirst Developer Kit.
 - Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
 
+> **Note:** serving the applications from the WebSphere Liberty application server is available only for IBM customers who use the MobileFirst Developer Kit.
+
 <br/>
 **Prerequisites:**  
 The following requires either Apache Maven or Node.js installed on the developer's workstation.  

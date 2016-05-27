@@ -12,9 +12,6 @@ MobileFirst Foundation Operational Analytics collects data from app to server ac
 
 ![architecture diagram](mfp_operational_analytics.jpg)
 
-Operational Analytics is bundled by default as part of the [MobileFirst Foundation Development Kit](../setting-up-your-development-environment/mobilefirst-development-environment).  
-
-
 #### Jump to
 
 * [MobileFirst Analytics Console](#mobilefirst-analytics-console)

@@ -14,7 +14,7 @@ The following is a list of software you may need to install on your developer wo
 ### Server
 
 * Java (requirement for MobileFirst Server and Maven)
-* MobileFirst Development Kit (contains MobileFirst Server)
+* MobileFirst Developer Kit (for IBM customers; contains MobileFirst Server)
 * Account on Bluemix.net for running the Mobile Foundation service
 
 ### Application development
