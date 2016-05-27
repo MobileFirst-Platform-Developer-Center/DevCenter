@@ -71,7 +71,7 @@ Alternatives:
 
         ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
 
-> Run the command `mfpdev help app webupdate to learn more.
+> Run the command `mfpdev help app webupdate` to learn more.
 
 ## User Experience
 By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
