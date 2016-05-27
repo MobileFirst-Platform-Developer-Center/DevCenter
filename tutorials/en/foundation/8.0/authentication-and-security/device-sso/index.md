@@ -29,7 +29,7 @@ For this demonstration the Cordova sample application will be used, however the 
 2. Repeat the steps with a different sample name and application identifier.
 3. Run both applications on the same device. Notice how in each application you will be prompted for the pincode ("1234").
 4. In the MobileFirst Operations Console, set `Enable Device SSO` to `true` for each of the applications as instructed above.
-5. Quit both applications and try again. In the first application you will open, you will be prompted to enter the pincode once tapping the "Get Balance" button. Once opening the second and tapping the "Get Blance" button you will not need to enter the pincode again to get the balance.
+5. Quit both applications and try again. In the first application you will open, you will be prompted to enter the pincode once tapping the "Get Balance" button. Once opening the second and tapping the "Get Balance" button you will not need to enter the pincode again to get the balance.
 
 Note that the PinCodeAttempts security check has a 60 seconds expiration token, so once trying again after 60 seconds the second application will require a pincode.
 
