@@ -143,7 +143,7 @@ $ mfpdev server add
 ? Make this server the default?: Yes
 Verifying server configuration...
 The following runtimes are currently installed on this server: mfp
-Server profile 'mybluemix' added successfully. 
+Server profile 'MyBluemixServer' added successfully. 
 ```
 
 ### Edit server instances

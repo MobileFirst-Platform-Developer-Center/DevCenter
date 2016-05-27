@@ -157,7 +157,7 @@ Alternatively, click the **New** button next to **Adapters**.
 
 1. In Xcode, select the **mfpclient.plist** file and edit the **host** property with the IP address of the MobileFirst Server.
 
-    Alternatively, if you have installed the MobileFirst Develper CLI then navigate to the project root folder and run the command `mfpdev app register`.  If a remote server is used instead of a local server, first use the command `mfpdev server add` to add it.
+     Alternatively, if you have installed the MobileFirst CLI then navigate to the project root folder and run the command `mfpdev app register`. If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
 2. Press the **Play** button.
 
