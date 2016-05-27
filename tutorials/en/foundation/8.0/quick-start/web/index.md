@@ -108,14 +108,17 @@ Alternatively, click the **New** button next to **Adapters**.
 2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
 3. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
 
+<br>
 #### Secure Origins Policy
-When using Chrome during developmenet, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
+When using Chrome during development, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
 
 To overcome this, you can start the Chrome browser with the following flag:
 
 ```bash
---unsafely-treat-insecure-origin-as-secure=http://replace-with-ip-address-or-host:port-number
+--unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number" --user-data-dir=/test-to-new-user-profile/myprofile
 ```
+
+- Replace "test-to-new-user-profile/myprofile" with the location of a folder that will act as a new Chrome user profile for the flag to work.
 
 <br clear="all"/>
 ### Results
@@ -130,5 +133,4 @@ Learn more on using adapters in applications, and how to integrate additional se
 - Review the [Using the MobileFirst Foundation](../../using-the-mfpf-sdk/) tutorials
 - Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
 - Review [All Tutorials](../../all-tutorials)
