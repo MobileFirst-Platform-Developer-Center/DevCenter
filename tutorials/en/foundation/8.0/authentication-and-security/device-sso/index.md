@@ -17,7 +17,7 @@ In the MobileFirst Operations Console:
 2. Click on the "New" button to create a new security check configuration, or the "Edit" icon if there is already an existing security check configuration.
 3. In the **Configure Security-Check Properties** dialog, set the **Enable Device SSO** setting to **true** and press `OK`.
 
-Repeat this action for each of the applications you want the enable the Device SSO feature for.
+Repeat these steps for each of the applications you want the enable Device SSO for.
 
 <img class="gifplayer" alt="Configuring Device SSO in the MobileFirst Operations Console" src="enable-device-sso.png"/>
 
