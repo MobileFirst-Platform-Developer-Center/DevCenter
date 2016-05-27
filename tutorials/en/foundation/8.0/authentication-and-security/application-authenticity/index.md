@@ -36,7 +36,8 @@ Once an application has passed the authenticity challenge, an authenticity scope
 ## Enabling Application Authenticity
 To enable Application Authenticity in your Cordova or Native application, the application's binary file needs to be signed using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
 
-1. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
+1. Download the mfp-app-authenticity tool from the **MobileFirst Operations Console → Download Center**.
+2. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
 
     For example:
 
@@ -46,9 +47,9 @@ To enable Application Authenticity in your Cordova or Native application, the ap
 
     The result of the command above is an `.authenticity_data` file generated next to the `MyBankApp.ipa` file, called `MyBankApp.authenticity_data`.
  
-2. Open the MobileFirst Operations Console in your browser of choice.
-3. Select your application from the navigation sidebar and click on the Authenticiy menu item.
-3. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
+3. Open the MobileFirst Operations Console in your browser of choice.
+4. Select your application from the navigation sidebar and click on the Authenticiy menu item.
+5. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
 
 When the `.authenticity_data` file is uploaded, Application Authenticity is enabled.
 
