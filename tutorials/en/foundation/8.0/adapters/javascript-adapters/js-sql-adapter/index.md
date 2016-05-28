@@ -161,5 +161,5 @@ Also included is an SQL script in the **Utils** folder.
 ### Sample usage
 * Run the .sql script in your SQL database.
 * Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven or MobileFirst CLI to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

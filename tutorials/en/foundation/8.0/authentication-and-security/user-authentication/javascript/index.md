@@ -150,7 +150,7 @@ Make sure you have Node.js installed.
 5. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
 
 ### Cordova Sample usage
-1. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
+1. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
 2. From a **Command-line** window, navigate to the project's root folder and:
     * Add a platform by running the `cordova platform add` command.
     * Register the application: `mfpdev app register`.

@@ -134,7 +134,7 @@ Make sure you have Node.js installed.
 
 1. Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.pincodeweb`.
 2. Start the reverse proxy by running the commands: `npm install` followed by: `npm start`. 
-3. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
+3. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
 4. In the MobileFirst Console → PinCodeWeb → Security, map the `accessRestricted` scope to the `PinCodeAttempts` security check.
 5. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
 
