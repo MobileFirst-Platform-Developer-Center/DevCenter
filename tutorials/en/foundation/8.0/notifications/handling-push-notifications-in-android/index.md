@@ -3,7 +3,7 @@ layout: tutorial
 title: Handling Push Notifications in Android
 relevantTo: [android]
 downloads:
-  - name: Download Native project
+  - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 5
 ---

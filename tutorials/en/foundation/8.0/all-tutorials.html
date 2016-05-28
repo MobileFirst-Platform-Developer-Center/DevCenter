@@ -6,7 +6,7 @@ show_disqus: false
 print_pdf: false
 ---
 <br>
-Develop your applications by following the tutorials bellow: set-up your development environment, experience the platform and add value by integrating with MobileFirst Platform Foundation 8.0 beta offerings.
+Develop your applications by following the tutorials bellow: set-up your development environment, experience the platform and add value by integrating with MobileFirst Platform Foundation 8.0 beta offerings.<br/><br/>
 
 <div id="container">
     <div class="row">
@@ -54,7 +54,11 @@ Develop your applications by following the tutorials bellow: set-up your develop
     Set up your development environment to work with IBM MobileFirst Platform Foundation.
     
     <ul>
-        <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/">Setting up the MobileFirst development environment</a></li>
+        <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/">Setting up the MobileFirst development environment</a>
+            <ul>
+                <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/installation-guide">Installation guide</a>
+            </ul>
+        </li>
         <li><a href="../setting-up-your-development-environment/cordova-development-environment/">Setting up the Cordova development environments</a></li>
         <li><a href="../setting-up-your-development-environment/ios-development-environment/">Setting up the iOS development environment</a></li>
         <li><a href="../setting-up-your-development-environment/android-development-environment/">Setting up the Android development environment</a></li>
@@ -92,22 +96,30 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using MobileFirst CLI to manage MobileFirst artifacts</a></li>
         <li>Resource Request from client applications
             <ul>
-                <li><a href="../using-the-mfpf-sdk/resource-request-from-cordova-applications/">Resource request from Cordova applications</a></li>
-                <li><a href="../using-the-mfpf-sdk/resource-request-from-ios-applications/">Resource request from iOS applications</a></li>
-                <li><a href="../using-the-mfpf-sdk/resource-request-from-android-applications/">Resource request from Android applications</a></li>
-                <li><a href="../using-the-mfpf-sdk/resource-request-from-windows-8-10-applications/">Resource request from Windows 8.1 Universal or Windows 10 UWP applications</a></li>
+                <li><a href="../using-the-mfpf-sdk/resource-request/javascript/">Resource request from JavaScript (Cordova) applications</a></li>
+                <li><a href="../using-the-mfpf-sdk/resource-request/ios/">Resource request from iOS applications</a></li>
+                <li><a href="../using-the-mfpf-sdk/resource-request/android/">Resource request from Android applications</a></li>
+                <li><a href="../using-the-mfpf-sdk/resource-request/windows/">Resource request from Windows 8.1 Universal or Windows 10 UWP applications</a></li>
             </ul>
         </li>
         <li>JSONStore
             <ul>
-                <li><a href="../using-the-mfpf-sdk/jsonstore-cordova/">JSONStore in Cordova applications</a></li>
-            	<li><a href="../using-the-mfpf-sdk/jsonstore-ios/">JSONStore in iOS applications</a></li>
-            	<li><a href="../using-the-mfpf-sdk/jsonstore-android/">JSONStore in Android applications</a></li>
+                <li><a href="../using-the-mfpf-sdk/jsonstore/cordova/">JSONStore in Cordova applications</a></li>
+            	<li><a href="../using-the-mfpf-sdk/jsonstore/ios/">JSONStore in iOS applications</a></li>
+            	<li><a href="../using-the-mfpf-sdk/jsonstore/android/">JSONStore in Android applications</a></li>
+            </ul>
+        </li>
+        <li>Client-side log collection
+            <ul>
+                <li><a href="../using-the-mfpf-sdk/client-side-log-collection/">Overview of client-side log collection</a></li>
+                <li><a href="../using-the-mfpf-sdk/client-side-log-collection/javascript/">Log collection in JavaScript (Cordova) applications</a></li>
+            	<li><a href="../using-the-mfpf-sdk/client-side-log-collection/ios/">Log collection in iOS applications</a></li>
+            	<li><a href="../using-the-mfpf-sdk/client-side-log-collection/android/">Log collection in Android applications</a></li>
             </ul>
         </li>
         <li><a href="../using-the-mfpf-sdk/direct-update/">Using Direct Update in Cordova Applications</a></li>
-        <li><a href="../using-the-mfpf-sdk/translation/">Multilingual translation of Cordova applications</a></li>
-        <li><a href="../using-the-mfpf-sdk/debugging-applications/">Debugging Cordova applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/translation/">Multilingual translation of JavaScript (Cordova) applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/debugging-applications/">Debugging JavaScript (Cordova) applications</a></li>
     </ul>
     
     <h3><a href="../adapters/">Adapters</a></h3>
@@ -131,6 +143,13 @@ Develop your applications by following the tutorials bellow: set-up your develop
         </li>
         <li><a href="../adapters/developing-adapters/">Developing Adapters in Eclipse</a></li>
         <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
+        <li>Server-side log collection
+            <ul>
+                <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
+            </ul>
+        </li>
         <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
         <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
     </ul>
@@ -146,7 +165,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
             <ul>
                 <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/cordova/">Implementing the challenge handler in Cordova applications</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/javascript/">Implementing the challenge handler in JavaScript (Cordova) applications</a></li>
                 <li><a href="../authentication-and-security/credentials-validation/ios/">Implementing the challenge handler in iOS applications</a></li>
                 <li><a href="../authentication-and-security/credentials-validation/android/">Implementing the challenge handler in Android applications</a></li>
                 <li><a href="../authentication-and-security/credentials-validation/windows-8-10/">Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications</a></li>
@@ -155,7 +174,7 @@ Develop your applications by following the tutorials bellow: set-up your develop
         <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
             <ul>
                 <li><a href="../authentication-and-security/user-authentication/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/user-authentication/cordova/">Implementing the challenge handler in Cordova applications</a></li>
+                <li><a href="../authentication-and-security/user-authentication/javascript/">Implementing the challenge handler in JavaScript (Cordova) applications</a></li>
                 <li><a href="../authentication-and-security/user-authentication/ios/">Implementing the challenge handler in iOS applications</a></li>
                 <li><a href="../authentication-and-security/user-authentication/android/">Implementing the challenge handler in Android applications</a></li>
                 <li><a href="../authentication-and-security/user-authentication/windows-8-10/">Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications</a></li>
@@ -189,13 +208,6 @@ Develop your applications by following the tutorials bellow: set-up your develop
 
     <ul>
         <li><a href="../analytics">Introduction to MobileFirst Platform Foundation Operational Analytics</a></li>
-        <li><a href="../analytics/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
-            <ul>
-                <li><a href="../analytics/remote-controlled-client-side-log-collection/cordova/">Logging in Cordova applications</a></li>
-                <li><a href="../analytics/remote-controlled-client-side-log-collection/ios/">Logging in iOS applications</a></li>
-                <li><a href="../analytics/remote-controlled-client-side-log-collection/android/">Logging in Android applications</a></li>
-            </ul>
-        </li>
         <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
     </ul>
     

@@ -16,7 +16,7 @@ MobileFirst Operational Analytics provides client-side APIs to help a user get s
 ## Configuring Analytics on the Client Side
 Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to import the corresponding libraries to initialize the analytics support.
 
-### Cordova
+### JavaScript
 No setup required. Initialized out-of-the-box.
 
 ### iOS
@@ -25,6 +25,7 @@ No setup required. Initialized out-of-the-box.
 ```objc
 import "WLAnalytics.h"
 ```
+
 #### Initialize Analytics
 No setup required. Initialized out-of-the-box.
 
@@ -45,7 +46,7 @@ WLAnalytics.init(this.getApplication());
 ## Sending Analytics
 Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When collecting Analytics, the analytics logs are stored in a log file on the client device which is sent to the analytics server after using the `send` method of the Analytics API.
 
-#### Cordova
+#### JavaScript
 In a Cordova application, use the following JavaScript API method:
 
 ```javascript
@@ -60,10 +61,16 @@ WLAnalytics.send();
 ```
 
 #### iOS
-In an iOS application, use the following Objective-C API method:
+In an iOS application, use the following *Objective-C* API method:
 
 ```objc
 [[WLAnalytics sharedInstance] send];
+```
+
+or for *Swift* use the API method:
+
+```swift
+WLAnalytics.sharedInstance().send();
 ```
 
 ## Enabling/Disabling Client Event Types
@@ -111,14 +118,30 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 
 To enable client lifecycle event logging:
 
+*Objective-C:*
+
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:LIFECYCLE];
 ```
 
+*Swift:*
+
+```swift
+WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
+```
+
 To disable client lifecycle event logging:
+
+*Objective-C:*
 
 ```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:LIFECYCLE];
+```
+
+*Swift:*
+
+```swift
+WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
 
 ### Client Network Activities
@@ -146,14 +169,30 @@ Since the client and the server are each collecting their own information this m
 
 To enable client network event logging:
 
+*Objective-C:*
+
 ```objc
 [[WLAnalytics sharedInstance] addDeviceEventListener:NETWORK];
 ```
 
+*Swift:*
+
+```
+WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK);
+```
+
 To disable client network event logging:
+
+*Objective-C:*
 
 ```objc
 [[WLAnalytics sharedInstance] removeDeviceEventListener:NETWORK];
+```
+
+*Swift:*
+
+```swift
+WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 ```
 
 #### Android
@@ -196,8 +235,10 @@ WLAnalytics.log("Message", json);
 WLAnalytics.send();
 ```
 
-#### Objective-C API
+#### iOS
 After importing WLAnalytics you can now use the API to collect custom data like below:
+
+*Objective-C:*
 
 ```objc
 NSDictionary *inventory = @{
@@ -206,4 +247,12 @@ NSDictionary *inventory = @{
 
 [[WLAnalytics sharedInstance] log:@"Custom event" withMetadata:inventory];
 [[WLAnalytics sharedInstance] send];
+```
+
+*Swift:*
+
+```swift
+let metadata: [NSObject: AnyObject] = ["foo": "bar"];  
+WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
+WLAnalytics.sharedInstance().send();
 ```

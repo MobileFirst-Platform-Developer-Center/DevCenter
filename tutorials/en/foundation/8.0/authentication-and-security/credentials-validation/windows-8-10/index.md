@@ -4,6 +4,13 @@ title: Implementing the challenge handler in Windows 8.1 Universal and Windows 1
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
+downloads:
+  - name: Download Win8 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
+  - name: Download Win10 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
+  - name: Download SecurityCheck Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 When trying to access a protected resource, the server (the security check) will send back to the client a list containing one or more **challenges** for the client to handle.  
@@ -134,7 +141,7 @@ The sample **PinCodeWin8** and **PinCodeWin10** are C# applications that uses `R
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80) the Windows 8 project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80) the Windows 8 project.  
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80) the Windows 10 UWP project.
 
 ### Sample usage
@@ -142,7 +149,7 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 * Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **PinCode** → **Security** → **Map scope elements to security checks.**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
+    * In the MobileFirst Operations Console, under **Applications** → **PinCode** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).

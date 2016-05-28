@@ -6,9 +6,9 @@ relevantTo: [ios]
 weight: 4
 downloads:
   - name: Download PreemptiveLogin project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginiOS/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginSwift/tree/release80
   - name: Download RememberMe project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeiOS/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeSwift/tree/release80
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
@@ -136,7 +136,7 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 * Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
-    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Map scope elements to security checks**, add a scope mapping from `accessRestricted` to `UserLogin`.
+    * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).

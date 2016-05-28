@@ -110,11 +110,13 @@ The `mfpdev app register` CLI command first connects to the MobileFirst Server t
 > 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.properties** file. Follow the onscreen instructions to add the file to your project.
 
 ### Creating an WLClient instance
-Before using any MobileFirst-supplied APIs, first create a `WLClient` instance in the `onCreate` method:
+Before using any MobileFirst-supplied APIs, create a `WLClient` instance:
 
 ```java
 WLClient.createInstance(this);
 ```
+
+**Note:** Creating a `WLClient` instance should only happen once in the entire application lifecycle. It is recommended to use the Android Application class to do it.
 
 ## Updating the MobileFirst Native SDK
 To update the MobileFirst Native SDK with the latest release, find the release version number and update the `version` property accordingly in the **build.gradle** file.  

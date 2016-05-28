@@ -2,7 +2,7 @@
 layout: tutorial
 title: Server-side Development
 show_disqus: false
-use_dropdown: true
+use_dropdown: false
 print_pdf: false
 show_in_nav: falses
 ---

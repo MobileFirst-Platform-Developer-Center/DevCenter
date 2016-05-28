@@ -55,7 +55,7 @@ $color_wild_sand_approx: #f5f5f5;
 		margin: 15px auto 15px auto;
 		display: block;
 	}
-	.col-sm-2 {
+	.sidebar {
 		padding: 23px 0 0 7px;
 		ul {
 			list-style-type: none;
@@ -129,7 +129,7 @@ $color_wild_sand_approx: #f5f5f5;
 								color: #3c4646;
 							}
 						}
-						
+
 					}
 				}
 			}
@@ -248,7 +248,7 @@ $color_wild_sand_approx: #f5f5f5;
 		margin: 9px auto auto auto;
 	}
 	.categoryBox-start-here, .categoryBox-sdk, .categoryBox-security, .categoryBox-more  {
-		
+
 		height: 100px;
 		width:206px;
 		display:inline-block;
@@ -281,7 +281,7 @@ $color_wild_sand_approx: #f5f5f5;
 	.categoryBox-more:hover {
 		background-color: #8fc9eb;
 	}
-	hr { 
+	hr {
 		border: 1px solid #c8d2d2;
 		margin: 15px 0 5px 0
 	}

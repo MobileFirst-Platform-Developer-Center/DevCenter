@@ -4,7 +4,7 @@ title: Labs
 show_disqus: false
 ---
 <div class="container">
-    <h2>Welcome to Labs</h2>
+    <h2 class="no-anchor">Welcome to Labs</h2>
     <p>“Labs” are video-based educational materials with step-by-step instructions.</p>
 
     <ul>
@@ -38,6 +38,10 @@ show_disqus: false
             <p>The following applications are used throughout the lab sessions for developers.</p>
             
             <ul>
+                <li><strong><a href="https://github.com/andriivasylchenko/hybridMessenger">Hybrid Messenger</a></strong><br/>
+                MobileFirst Platform Foundation 8.0 application. Based on Ionic framework.</li>
+                <li><strong><a href="https://github.com/andriivasylchenko/newHybridWallet">new HybridWallet</a></strong><br/>
+                MobileFirst Platform Foundation 8.0 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/hybridWallet">HybridWallet</a></strong><br/>
                 MobileFirst Platform Foundation 7.1 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/canteenPOS">canteenPOS</a></strong><br/>
