@@ -24,7 +24,7 @@ show_disqus: false
         <div role="tabpanel" class="tab-pane active" id="forDevelopers">
             <br/>
             <p>Developers can follow the different labs presented below to learn how to integrate applications with various MobileFirst tools and services.</p>
-            <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/8.0/intro/" role="button">8.0 <em>beta</em> labs</a>
+            <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.1/setup/" role="button">7.1 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/7.0/setup/" role="button">7.0 labs</a> <a class="btn btn-color btn-sm" href="{{site.baseurl}}/labs/developers/8.0/intro/" role="button">8.0 labs</a>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="forAdministrators">
