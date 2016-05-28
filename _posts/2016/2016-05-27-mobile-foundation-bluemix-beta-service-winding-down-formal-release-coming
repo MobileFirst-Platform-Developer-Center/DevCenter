@@ -1,6 +1,6 @@
 ---
 title: Mobile Foundation Bluemix beta service winding down - formal release coming
-date: 2016-05-28
+date: 2016-05-27
 tags:
 - MobileFirst_Foundation
 - Bluemix
@@ -21,7 +21,6 @@ Here's what you need to know:
 * End of Beta Date: June 20, 2016
  - Bluemix: As of June 20, 2016 you will no longer be able to provision new MobileFirst Foundation Beta instances. However, existing instances will continue to be supported. 
  - On-premises: Software download will no longer be available.
-
 
 * End of Beta Support Date: July 20, 2016 
  - For a period of 30 days after the End of Beta Date, through July 20, 2016, all existing instances will continue to be available to users through their Bluemix dashboard, and will continue to be supported by MobileFirst Foundation Beta. 
