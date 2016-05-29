@@ -35,8 +35,6 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
 ## The `initStateDurations` Method
 The `ExternalizableSecurityCheck` defines an abstract method called `initStateDurations`. The subclasses must implement that method providing the names and durations for all states supported by their security check. The duration values usually come from the security check configuration.
 
-In our sample...
-
 ```java
 private static final String SUCCESS_STATE = "success";
 
@@ -57,11 +55,12 @@ Use the following methods to manage states:
 
 ```java
 protected void setState(String name)
-
+```
+```java
 public String getState()
 ```
 
-In our sample it simply checks if the user is enrolled:
+In our sample we simply check if the user is enrolled and return success or failure respectively:
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -77,14 +76,12 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
     }
 }
 ```
-
-This implementation checks the "pinCode" attribute:
-
-* In case it exist:
+* In case the "pinCode" attribute exist:
 
  * Set the state to SUCCESS by using the `setState` method.
  * Add success to the response object by using the `addSuccess` method.
-* In case it doesn't exist:
+
+* In case the "pinCode" attribute doesn't exist:
 
  * Set the state to EXPIRED by using the `setState` method.
  * Add failure to the response object by using the `addFailure` method.
@@ -93,8 +90,6 @@ This implementation checks the "pinCode" attribute:
 
 ## The `introspect` Method
 The `SecurityCheck` interface defines a method called `introspect`. This method...
-
-In our sample...
 
 ```java
 public void introspect(Set<String> checkScope, IntrospectionResponse response) {
