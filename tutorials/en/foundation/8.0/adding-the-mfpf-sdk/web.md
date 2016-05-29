@@ -8,12 +8,11 @@ weight: 6
 ## Overview
 In this tutorial you will learn how to register a web application with the MobileFirst Server, as well as downloading and adding the MobileFirst SDK to web applications.  
 
-The MobileFirst Cordova SDK is provided as a set of JavaScript files, [and is available at NPM](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
+The MobileFirst Web SDK is provided as a set of JavaScript files, [and is available at NPM](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
 The SDK is comprised of the following files:
 
 - **ibmmfpf.js** - the core of the SDK.
 - **ibmmfpfanalytics.js** - provides support for MobileFirst Foundation Analytics.
-- **webcrypto-shim.js** - *optional*. Web Cryptography API shim for legacy browsers [https://github.com/vibornoff/webcrypto-shim](https://github.com/vibornoff/webcrypto-shim).
 
 **Prerequisite:** to run NPM commands, [Node.js](https://nodejs.org) is required.
 
@@ -34,7 +33,7 @@ The application registration is performed either from the MobileFirst Operations
 
 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`.
 2. Click the "New" button next to "Applications" to create a new application.
-3. Select **Web** as the platform, and provide its name and its application identifier. Then, click **Save**.
+3. Select **Web** as the platform, and provide its name and its application identifier. Then, click **Register application**.
 
 ![Adding the Web platform](add-web-platform.png)
 
@@ -125,8 +124,6 @@ Because web resources may be hosted on different a server machine than the one t
 Same Origin Policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
 
 Web apps that are using the MobileFirst Web SDK should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
-
-> Learn more about the topic of Same Origin Policy in Web applications [in the user documentation](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html)
 
 ### Alternatives
 During development, this restriction can be alleviated by:

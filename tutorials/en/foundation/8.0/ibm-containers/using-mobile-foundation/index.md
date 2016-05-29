@@ -11,17 +11,22 @@ Mobile Foundation is a **Bluemix service** that enables quick &amp; easy stand-u
 
 The Mobile Foundation service offers two plan options:
 
-1. **Developer**: This plan provisions a Mobile Foundation server in a container in IBM Containers. This plan does not support the use of container groups or external databases and is restricted to development and test. The server instance allows registering only a single (1) application.
-2. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable container environment through IBM Containers.  This plan also requires a database service, which is created and billed separately. This plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows and Mobile Web.
+1. **Developer**: This plan provisions a Mobile Foundation server in a container in IBM Containers. The plan does not support the use of container groups or external databases *and is restricted to development and testing only*. The server instance allows registering only a single (1) application.
+2. **Professional 1 Application**: This plan provisions a Mobile Foundation server in a scalable container environment. The plan also requires a database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows and Mobile Web.
+
+> [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information regarding billing.
 
 #### Jump to:
 
-* [Using the Mobile Foundation Bluemix service](#using-the-mobile-foundation-bluemix-service)
-* [Server configuration](#server-configuration)
-* [Advanced server configuration](#advanced-server-configuration)
+* [Setting up the Mobile Foundation plans](#setting-up-the-mobile-foundation-plans)
+    * [Setting up the *developer* plan](#setting-up-the-developer-plan)
+    * [Setting up the *Professional 1 Application* plan](#setting-up-the-professional-1-application-plan)
+    * [Server configuration](#server-configuration)
+    * [Advanced server configuration](#advanced-server-configuration)
 * [Further reading](#further-reading)
 
-## Using the Mobile Foundation Bluemix service
+## Setting up the Mobile Foundation plans
+To setup any of the available plans, first follow these steps: 
 
 1. Load [bluemix.net](http://bluemix.net) and visit the **Catalog** page.
 
@@ -29,13 +34,16 @@ The Mobile Foundation service offers two plan options:
 
     ![Image of Mobile Foundation setup](service-page.png)
 
-3. Select a **space** to use and optionally set a **Service name**. Then, click **Create**.
+3. Select a **space** to use and optionally set a **Service name**.
+4. Select the desired plan option, then click **Create**:
+    * [Setting up the *developer* plan](#setting-up-the-developer-plan).
+    * [Setting up the *Professional 1 Application* plan](#setting-up-the-professional-1-application-plan).
 
-    ![Image of Mobile Foundation setup](setup-service.png)
+### Setting up the *developer* plan
 
-4. Agree to the Early license terms, provide your Bluemix username and password, and click **Continue**.
+1. Agree to the Early license terms, provide your Bluemix username and password, and click **Continue**.
 
-5. Start the MobileFirst Server.
+2. Start the MobileFirst Server.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
 
@@ -44,22 +52,31 @@ The Mobile Foundation service offers two plan options:
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
-6. With the MobileFirst Server now running, you are presented with the following Dashboard:
+3. With the MobileFirst Server now running, you are presented with the following Dashboard:
 
     ![Image of Mobile Foundation setup](service-dashboard.png)
 
-7. Click on **Launch Console** to open the MobileFirst Operations Console.  The username is "admin" and the password can be revealed by clicking on the "eye" icon.
+4. Click on **Launch Console** to open the MobileFirst Operations Console.  The username is "admin" and the password can be revealed by clicking on the "eye" icon.
 
     ![Image of Mobile Foundation setup](dashboard.png)
 
-## Server configuration
+### Setting up the *Professional 1 Application* plan
+
+1. Agree to the Early license terms, provide your Bluemix username and password, and click **Continue**.
+2. The plan requires an external [dashDB database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have bought and setup your dashDB instance, enter your credentials in the plan entry page:
+
+    ![Image of Mobile Foundation setup](create-dashdb-instance.png)
+    
+3. 
+
+### Server configuration
 The basic server instance consists of:
 
 * A single node (server size: "small")
 * 1GB memory
 * 2GB storage capacity
 
-## Advanced server configuration
+### Advanced server configuration
 Through the Configuration tab, the server instance can be further customized with:
 
 * Varying node, memory and storage combinations
@@ -71,8 +88,6 @@ Through the Configuration tab, the server instance can be further customized wit
 * Operational Analytics configuration
 * Database selection (available in the *Professional 1 Application* plan)
 * VPN
-
-> **Note:** The release does not support all mentioned features.
 
 ![Image of Mobile Foundation setup](advanced-server-configuration.png)
 

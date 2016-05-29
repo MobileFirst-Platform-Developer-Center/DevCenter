@@ -7,18 +7,16 @@ weight: 6
 ---
 ## Overview
 Developing and testing web applications is as easy as previewing a local HTML file in your web browser of choice.  
-Developers can use their IDE of choice, and a framework(s) that suits their needs.
+Developers can use their IDE of choice, and any framework(s) that suits their needs.
 
 However one thing may stand in the way of developing web applications. Web applications may encounter errors due to [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same Origin Policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
 
 [Web apps that are to use the MobileFirst Web SDK](../../adding-the-mfpf-sdk/web) should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
 
-During development, this restriction can be alleviated by:
+This restriction can be alleviated by:
 
-- Serving the web application resources' from the same WebSphere Liberty profile application server that is used in the MobileFirst Developer Kit.
+- Serving the web application resources' from the same WebSphere Full/Liberty profile application server that also hosts the MobileFirst Server.
 - Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
-
-> **Note:** serving the applications from the WebSphere Liberty application server is available only for IBM customers who use the MobileFirst Developer Kit.
 
 <br/>
 **Prerequisites:**  
@@ -49,7 +47,8 @@ In order to serve the web application's resources, these need to be stored in a 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** `mvn clean install` must be run each time you update a web resource.
 
 ### Adding the Maven webapp to the application server
-1. Edit the **server.xml file**, located in the [**MobileFirst Developer Kit] → mfp-server → user → servers → mfp** folder. Add the following entry:
+1. Edit the **server.xml file** of your WebSphere application server.  
+    If using the MobileFirst Developer Kit, the file is located in: [**MobileFirst Developer Kit] → mfp-server → user → servers → mfp** folder. Add the following entry:
 
     ```xml
     <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>
@@ -102,14 +101,16 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
         req.pipe(request[req.method.toLowerCase()](url)).pipe(res);
     });
     ```
-    - replace the **port** value to the one you desire.
-    - replace `/myapp` with the a desired path name for your web application.
-    - replace `/index.html` with the filename of your main HTML file.
+    - replace the **port** value with your preferred one.
+    - replace `/myapp` with your preferred path name for your web application.
+    - replace `/index.html` with the name of your main HTML file.
     - if needed, update `/mfp/*` with the context root of your MobileFirst runtime.
 
 4. To start the proxy, run the command: `node proxy.js`.
-5. Once you are ready to test your web application, visit the URL: **localhost:9081/myapp**.
-    - Replace **myapp** with your own value.
+5. Once you are ready to test your web application, visit the URL: **server-hostname:port/app-name**, for example: **http://localhost:9081/myapp**
+    - Replace **server-hostname** with your own value.
+    - Replace **port** with your own value.
+    - Replace **app-name** with your own value.
 
 ## Next steps
 To continue with MobileFirst development in Web applications, the MobileFirst Web SDK need to be added to the Web application.
