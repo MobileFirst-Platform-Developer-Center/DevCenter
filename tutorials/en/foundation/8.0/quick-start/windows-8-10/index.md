@@ -24,10 +24,8 @@ The purpose of this demonstration is to experience an end-to-end flow:
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
-
-> If a remote server was already set-up, skip this step.
-
-From a **Command-line** window, navigate to the server's folder and run the command: `run.bat`.
+Make sure you have [created a Mobile Foundation instance](../../ibm-containers/using-mobile-foundation), or  
+If using the [MobileFirst Foundation Developer Kit](../../setting-up-your-development-environment/mobilefirst-development-environment), navigate to the server's folder and run the command: `./run.cmd`.
 
 ### 2. Creating an application
 
