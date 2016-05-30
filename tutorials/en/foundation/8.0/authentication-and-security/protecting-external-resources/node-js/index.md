@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Node.js Validator
-breadcrumb_title: Node.js filter
+breadcrumb_title: Node.js Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:
