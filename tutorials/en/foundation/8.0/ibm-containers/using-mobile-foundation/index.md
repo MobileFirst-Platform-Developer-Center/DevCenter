@@ -34,7 +34,7 @@ To setup the available plans, first follow these steps:
     ![Image of Mobile Foundation setup](service-page.png)
 
 3. Select a **space** to use and optionally set a **Service name**.
-4. Select the desired plan option, then click **Create**:
+4. Select the desired plan option, then click **Create**.
     
 ### Setting up the *developer* plan
 
@@ -43,8 +43,7 @@ To setup the available plans, first follow these steps:
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized.  
-    This takes between 5 to 10 minutes.
+    During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This takes between 5 to 10 minutes.
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
@@ -59,8 +58,7 @@ To setup the available plans, first follow these steps:
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
 
-    During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized.  
-    This takes between 5 to 10 minutes.
+    During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized. This takes between 5 to 10 minutes.
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
