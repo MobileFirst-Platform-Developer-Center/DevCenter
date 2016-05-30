@@ -18,15 +18,14 @@ The Mobile Foundation service offers two plan options:
 
 #### Jump to:
 
-* [Setting up the Mobile Foundation plans](#setting-up-the-mobile-foundation-plans)
-    * [Setting up the *developer* plan](#setting-up-the-developer-plan)
-    * [Setting up the *Professional 1 Application* plan](#setting-up-the-professional-1-application-plan)
-    * [Server configuration](#server-configuration)
-    * [Advanced server configuration](#advanced-server-configuration)
+* [Setting up the Mobile Foundation Service](#setting-up-the-mobile-foundation-service)
+* [Using the Mobile Foundation Service](#using-the-mobile-foundation-service)
+* [Server configuration](#server-configuration)
+* [Advanced server configuration](#advanced-server-configuration)
 * [Further reading](#further-reading)
 
-## Setting up the Mobile Foundation plans
-To setup any of the available plans, first follow these steps: 
+## Setting up the Mobile Foundation Service
+To setup the available plans, first follow these steps: 
 
 1. Load [bluemix.net](http://bluemix.net) and visit the **Catalog** page.
 
@@ -36,13 +35,10 @@ To setup any of the available plans, first follow these steps:
 
 3. Select a **space** to use and optionally set a **Service name**.
 4. Select the desired plan option, then click **Create**:
-    * [Setting up the *developer* plan](#setting-up-the-developer-plan).
-    * [Setting up the *Professional 1 Application* plan](#setting-up-the-professional-1-application-plan).
-
+    
 ### Setting up the *developer* plan
 
 1. Agree to the Early license terms, provide your Bluemix username and password, and click **Continue**.
-
 2. Start the MobileFirst Server.
     - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
     - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
@@ -52,22 +48,30 @@ To setup any of the available plans, first follow these steps:
 
     ![Image of Mobile Foundation setup](overview-page.png)
 
-3. With the MobileFirst Server now running, you are presented with the following Dashboard:
-
-    ![Image of Mobile Foundation setup](service-dashboard.png)
-
-4. Click on **Launch Console** to open the MobileFirst Operations Console.  The username is "admin" and the password can be revealed by clicking on the "eye" icon.
-
-    ![Image of Mobile Foundation setup](dashboard.png)
-
 ### Setting up the *Professional 1 Application* plan
 
 1. Agree to the Early license terms, provide your Bluemix username and password, and click **Continue**.
-2. The plan requires an external [dashDB database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have bought and setup your dashDB instance, enter your credentials in the plan entry page:
+2. The plan requires an external [dashDB database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set-up your dashDB instance, enter your credentials in the plan entry page:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
-    
-3. 
+
+3. Start the MobileFirst Server.
+    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
+    - Update the server configuration in the [Configuration tab](#advanced-server-configuration), and click on **Start advanced server**.
+
+    During this step an IBM Container is generated for the Mobile Foundation service, and the MobileFirst Foundation environment is being initialized.  
+    This takes between 5 to 10 minutes.
+
+    ![Image of Mobile Foundation setup](overview-page.png)
+
+## Using the Mobile Foundation Service
+With the MobileFirst Server now running, you are presented with the following Dashboard:
+
+![Image of Mobile Foundation setup](service-dashboard.png)
+
+Click on **Launch Console** to open the MobileFirst Operations Console.  The username is "admin" and the password can be revealed by clicking on the "eye" icon.
+
+![Image of Mobile Foundation setup](dashboard.png)
 
 ### Server configuration
 The basic server instance consists of:
