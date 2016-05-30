@@ -22,7 +22,7 @@ This tutorial explains how to implement the class and demonstrates how to manage
 * [The authorize Method](#the-authorize-method)
 * [The introspect Method](#the-introspect-method)
 
-## The `initStateDurations` Method
+## The initStateDurations Method
 The `ExternalizableSecurityCheck` defines an abstract method called `initStateDurations`. The subclasses must implement that method providing the names and durations for all states supported by their security check. The duration values usually come from the security check configuration.
 
 ```java
@@ -35,7 +35,7 @@ protected void initStateDurations(Map<String, Integer> durations) {
 
 > For more information about security check configuration, see the [configuration class section](../credentials-validation/security-check/#configuration-class) in the Implementing the CredentialsValidationSecurityCheck tutorial.
 
-## The `authorize` Method
+## The authorize Method
 The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, managing states and sending a response to the client (success, challenge, or failure).
 
 Use the following helper methods to manage states:
@@ -83,7 +83,7 @@ The `AuthorizationResponse.addChallenge` method adds a challenge to the response
 * The name of the security check.
 * A challenge `Map` object.
 
-## The `introspect` Method
+## The introspect Method
 The `SecurityCheck` interface defines a method called `introspect`. This method... ???
 
 ```java

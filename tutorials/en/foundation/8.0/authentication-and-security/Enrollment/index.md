@@ -26,7 +26,7 @@ You can choose to save protected data in the `PersistentAttributes` object, a co
 
 In our sample we use the `PersistentAttributes` object in the adapter resource class to store the PIN code:
 
-* The **isEnrolled** resource returns `true` if the **pinCode** attribute exist and `false` otherwise:
+* The **isEnrolled** resource returns `true` if the **pinCode** attribute exist and `false` otherwise.
 
     ```java
     @GET
@@ -68,10 +68,8 @@ In our sample we use the `PersistentAttributes` object in the adapter resource c
 The Enrollment sample contains three security checks:
 
 ### EnrollmentUserLogin
-The `EnrollmentUserLogin` should expire quickly, it should hold only for the duration of "first time experience".
-It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial except for an extra `isLoggedIn` method.
-
-The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise:
+The `EnrollmentUserLogin` security check is protecting the **setPinCode** resource so that only authenticated users could set a PIN code. It should expire quickly and hold only for the duration of "first time experience".  
+It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial except for an extra `isLoggedIn` method. The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise:
 
 ```java
 public boolean isLoggedIn(){
@@ -100,7 +98,7 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
         }
     }
     ```
-When the user fails to enter the PIN code after three attempts, we want to delete the pinCode attribute before he is prompted to authenticate with the username and password and re-setting a PIN code.
+When the user fails to enter the PIN code after three attempts, we want to delete the **pinCode** attribute before he is prompted to authenticate with the username and password and re-setting a PIN code.
 
     ```java
     @Override
@@ -117,7 +115,7 @@ When the user fails to enter the PIN code after three attempts, we want to delet
         }
     }
     ```
-* The `validateCredentials` method is the same as in `PinCodeAttempts` security check except that in here we compare the credentials to the stored pinCode attribute.
+* The `validateCredentials` method is the same as in `PinCodeAttempts` security check except that in here we compare the credentials to the stored **pinCode** attribute.
 
     ```java
     @Override
@@ -143,7 +141,11 @@ When the user fails to enter the PIN code after three attempts, we want to delet
     ```
 
 ### IsEnrolled
-## Creating the Security Check
+The `IsEnrolled` security check is protecting:
+* The **getBalance** resource so that only enrolled users can see the balance.
+* The **deletePinCode** resource so that deleting the **pinCode** will be possible only if it has been set before.
+
+#### Creating the Security Check
 [Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
 
 ```java
@@ -155,7 +157,57 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
     public void introspect(Set<String> scope, IntrospectionResponse response) {}
 }
 ```
+#### The IsEnrolledConfig Configuration Class
+We created an `IsEnrolledConfig` config class that extends `ExternalizableSecurityCheckConfig`:
 
+```java
+public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
+
+    public int successStateExpirationSec;
+
+    public IsEnrolledConfig(Properties properties) {
+        super(properties);
+        successStateExpirationSec = getIntProperty("expirationInSec", properties, 8000);
+    }
+}
+```
+And added the `createConfiguration` method to the `IsEnrolled` class:
+
+```java
+public class IsEnrolled  extends ExternalizableSecurityCheck{
+    @Override
+    public SecurityCheckConfiguration createConfiguration(Properties properties) {
+        return new IsEnrolledConfig(properties);
+    }
+}
+```
+#### The initStateDurations Method
+We set the duration for the SUCCESS state for `successStateExpirationSec`:
+
+```java
+@Override
+protected void initStateDurations(Map<String, Integer> durations) {
+    durations.put (SUCCESS_STATE, ((IsEnrolledConfig) config).successStateExpirationSec);
+}
+```
+
+#### The authorize Method
+In our sample we simply check if the user is enrolled and return success or failure respectively:
+
+```java
+public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
+    PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
+    if (attributes.get("pinCode") != null){
+        setState(SUCCESS_STATE);
+        response.addSuccess(scope, getExpiresAt(), this.getName());
+    } else  {
+        setState(STATE_EXPIRED);
+        Map <String, Object> failure = new HashMap<String, Object>();
+        failure.put("failure", "User is not enrolled");
+        response.addFailure(getName(), failure);
+    }
+}
+```
 * In case the "pinCode" attribute exist:
 
  * Set the state to SUCCESS by using the `setState` method.
