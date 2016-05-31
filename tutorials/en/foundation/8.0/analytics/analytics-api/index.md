@@ -21,6 +21,7 @@ Before you can start collecting the out-of-the-box data that Operational Analyti
 - In Cordova applications no setup is required, and initialization is done out-of-the-box.  
 - In Web applications the analytics JavaScript files must be referenced. For instructions, review the [Adding the MobileFirst SDK to Web applications](../../../adding-the-mfpf-sdk/web) tutorial.
 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: There are some JavaScript API differences between the Cordova and Web SDKs. Please refer to the [API Reference topic](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in the user documentation.
 ### iOS
 #### Import Analytics Library
 
