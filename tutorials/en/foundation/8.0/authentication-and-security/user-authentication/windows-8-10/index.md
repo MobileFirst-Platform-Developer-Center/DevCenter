@@ -4,6 +4,17 @@ title: Implementing the challenge handler in Windows 8.1 Universal and Windows 1
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
+downloads:
+  - name: Download RememberMe Win8 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80
+  - name: Download RememberMe Win10 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80
+  - name: Download PreemptiveLogin Win8 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80
+  - name: Download PreemptiveLogin Win10 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80
+  - name: Download SecurityCheck Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 **Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck**'s [challenge handler implementation](../../credentials-validation/android) tutorial.

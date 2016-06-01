@@ -201,7 +201,7 @@ This generates an **.adapter** archive file which can be found in the **target**
         ```
         The `-x` option deploys the adapter to the MobileFirst Server that is specified in adapter's **pom.xml** file.  
         If the option is not used, the CLI will use the default server specified in the CLI settings.
-        
+
              > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
  * **Using Maven**:
 
@@ -236,7 +236,7 @@ For example:
 
 #### Adding an external dependency:
 
-1. Search the dependency in one of the search engines for Maven dependencies that exist online, for example [The Central Repository](http://search.maven.org/).
+1. Search online repositories such as [The Central Repository](http://search.maven.org/) for the dependency.
 2. Copy the POM dependency information and paste it under the `dependencies` element in the Maven project's **pom.xml** file.
 
 The following example uses the `cloudant-client artifactId`:
