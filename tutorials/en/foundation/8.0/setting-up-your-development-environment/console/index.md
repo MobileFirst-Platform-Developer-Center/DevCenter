@@ -54,6 +54,11 @@ The Dashboard provides a glance view of the deployed projects.
 
 ![Image of the console dashboard](dashboard.png)
 
+#### Actions dropdown
+The dropdown provides quick access to various console actions.
+
+![Image of Actions dropdown](actions-dropdown.png)
+
 ### Runtime settings
 Edit runtime properties such as Analytics server URL, global security variables, server keystore and confidential clients.
 
