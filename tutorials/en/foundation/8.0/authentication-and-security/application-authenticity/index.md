@@ -51,7 +51,7 @@ To enable Application Authenticity in your Cordova or Native application, the ap
 
 When the `.authenticity_data` file is uploaded, Application Authenticity is enabled.
 
-<img class="gifplayer" alt="Enable Application Authenticity" src="enable_application_authenticity.png"/>
+![Enable Application Authenticity](enable_application_authenticity.png)
 
 ### Disabling Application Authenticity
 To disable Application Authenticity, click the **Delete Authenticity File** button.
