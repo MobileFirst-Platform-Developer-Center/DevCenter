@@ -94,6 +94,11 @@ Configure application security parameters, such as the default token expiration 
 
 ![Image of application security configuration screen](authentication-and-security.png)
 
+#### Application Settings
+Configure the display name of the application in the console as well as the application type and licensing.
+
+![Image of application settings screen](application-settings.png)
+
 #### Notifications
 Set-up [push notifications](../../notifications/push-notifications-overview/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
 
