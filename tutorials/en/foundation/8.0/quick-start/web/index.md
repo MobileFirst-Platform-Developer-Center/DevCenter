@@ -40,7 +40,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
  
 2. Click on the **Get Starter Code** tile and select to download the Web sample application.
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-cordova.png"/>
+    <img class="gifplayer" alt="Download sample application" src="download-starter-code-web.png"/>
  
 ### 3. Editing application logic
 
