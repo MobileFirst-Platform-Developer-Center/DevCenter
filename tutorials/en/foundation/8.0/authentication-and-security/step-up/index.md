@@ -152,7 +152,7 @@ Sample applications are available for iOS (Swift), Android and Cordova.
 * Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **StepUpUserLogin**, **StepUpPinCode** and **Resource** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the application's root folder and run the command: `mfpdev app register`.
 * Scope mapping:
-    * In the MobileFirst Operations Console, under **Applications** → **PIN Code** → **Security** → **Map scope elements to security checks**, add a scope mapping.
+    * In the MobileFirst Operations Console, under **Applications** → **StepUp** → **Security** → **Map scope elements to security checks**, add a scope mapping.
         * Map the `accessRestricted` scope to the `StepUpUserLogin` security check.
         * Map the `transferPrivilege` scope to both the `StepUpUserLogin` and and `StepUpPinCode` security checks.
     * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
