@@ -75,7 +75,7 @@ WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheck
 });
 ```
 > **Note:**
-> `WLAuthorizationManager`'s `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `processSuccess` or `handleFailure` will  **also** be called.
+> `WLAuthorizationManager`'s `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the relevant challenge handler's `handleSuccess` or `handleFailure` will  **also** be called.
 
 If the client is already logged-in or is in the *remembered* state, the API will trigger a success. If the client is not logged in, the security check will send back a challenge.
 
@@ -84,12 +84,12 @@ The `obtainAccessToken` API takes in a **scope**. The scope can be the name of y
 > Learn more about **scope** in the [Authorization concepts](../../authorization-concepts) tutorial
 
 ## Retrieving the authenticated user
-The challenge handler's `processSuccess` method receives a `data` as a parameter.
-If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `processSuccess` to save the current user:
+The challenge handler's `handleSuccess` method receives a `data` as a parameter.
+If the security check sets an `AuthenticatedUser`, this object will contain the user's properties. You can use `handleSuccess` to save the current user:
 
 ```js
-userLoginChallengeHandler.processSuccess = function(data) {
-    WL.Logger.debug("processSuccess");
+userLoginChallengeHandler.handleSuccess = function(data) {
+    WL.Logger.debug("handleSuccess");
     isChallenged = false;
     document.getElementById ("rememberMe").checked = false;
     document.getElementById('username').value = "";

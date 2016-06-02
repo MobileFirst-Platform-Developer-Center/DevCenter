@@ -39,13 +39,13 @@ In this example, the security check is `PinCodeAttempts` which was defined in [I
 Use the `WL.Client.createWLChallengeHandler()` API method to create and register a challenge Handler:
 
 ```javascript
-PinCodeChallengeHandler = WL.Client.createWLChallengeHandler("PinCodeAttempts");
+PinCodeChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("PinCodeAttempts");
 ```
 
 ## Handling the challenge
-The minimum requirement from the `WLChallengeHandler` protocol is to implement the `handleChallenge()` method, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSON` Object.
+The minimum requirement from the `createSecurityCheckChallengeHandler` protocol is to implement the `handleChallenge()` method, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSON` Object.
 
-> Learn more about the `WLChallengeHandler` protocol in the user documentation.
+> Learn more about the `createSecurityCheckChallengeHandler` protocol in the user documentation.
 
 In this example, a prompt is displayed asking to enter the PIN code:
 
@@ -67,8 +67,8 @@ PinCodeChallengeHandler.handleChallenge = function(challenge) {
 
     if(pinCode){ // calling submitChallengeAnswer with the entered value
         PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
-    } else { // calling submitFailure in case user pressed the cancel button
-        PinCodeChallengeHandler.submitFailure();   
+    } else { // calling cancel in case user pressed the cancel button
+        PinCodeChallengeHandler.cancel();   
     }                            
 };
 ```
@@ -76,7 +76,7 @@ PinCodeChallengeHandler.handleChallenge = function(challenge) {
 If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
 
 ## Submitting the challenge's answer
-Once the credentials have been collected from the UI, use `WLChallengeHandler`'s `submitChallengeAnswer()` to send an answer back to the security check. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Once the credentials have been collected from the UI, use `createSecurityCheckChallengeHandler`'s `submitChallengeAnswer()` to send an answer back to the security check. In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
 
 ```javascript
 PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
@@ -87,11 +87,11 @@ In some cases, such as clicking a "Cancel" button in the UI, you want to tell th
 To achieve this, call:
 
 ```javascript
-PinCodeChallengeHandler.submitFailure();
+PinCodeChallengeHandler.cancel();
 ```
 
 ## Handling failures
-Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement `WLChallengeHandler`'s `handleFailure()`.  
+Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement `createSecurityCheckChallengeHandler`'s `handleFailure()`.  
 The structure of the JSON object passed as a parameter greatly depends on the nature of the failure.
 
 ```javascript
@@ -109,7 +109,7 @@ PinCodeChallengeHandler.handleFailure = function(error) {
 ## Handling successes
 In general successes are automatically processed by the framework to allow the rest of the application to continue.
 
-Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `WLChallengeHandler`'s `processSuccess()`. Here again, the content and structure of the `success` JSON object depends on what the security check sends.
+Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing `createSecurityCheckChallengeHandler`'s `handleSuccess()`. Here again, the content and structure of the `success` JSON object depends on what the security check sends.
 
 In the `PinCodeAttemptsCordova` sample application, the success does not contain any additional data.
 
@@ -118,7 +118,7 @@ In order for the challenge handler to listen for the right challenges, you must 
 This is done by creating the challenge handler with the security check like this:
 
 ```javascript
-someChallengeHandler = WL.Client.createWLChallengeHandler("the-securityCheck-name");
+someChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("the-securityCheck-name");
 ```
 
 ## Sample applications
