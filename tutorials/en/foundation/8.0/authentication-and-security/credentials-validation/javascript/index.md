@@ -36,7 +36,7 @@ A challenge handler is responsible for handling challenges sent by the MobileFir
 In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
 
 
-Use the `WL.Client.createWLChallengeHandler()` API method to create and register a challenge Handler:
+Use the `WL.Client.createSecurityCheckChallengeHandler()` API method to create and register a challenge Handler:
 
 ```javascript
 PinCodeChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("PinCodeAttempts");
