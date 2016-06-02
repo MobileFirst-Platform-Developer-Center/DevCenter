@@ -69,8 +69,6 @@ Reference the **ibmmfpf.js** file in the `HEAD` element.
 </head>
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** If adding Analytics support or Web Cryptography support for legacy browsers, place the **ibmmfpfanalytics.js** and **webcrypto-shim.js** file references **before** the **ibmmfpf.js** file reference.
-
 #### Using Require JS
 
 **HTML**  
@@ -93,6 +91,8 @@ require(['mfp'], function(WL) {
 });
 ```
 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** If adding Analytics support, place the **ibmmfpfanalytics.js** file reference **before** the **ibmmfpf.js** file reference.
+
 ## Initializing the MobileFirst Web SDK
 Initialize the MobileFirst Web SDK by specifying the **context root** and **application ID** values in the main JavaScript file of your web application:
 
@@ -112,31 +112,31 @@ WL.Client.init(wlInitOptions).then (
 - **applicationId:** the application package name, as defined while [registering the application](#registering-the-web-application).
 
 ## Updating the MobileFirst Web SDK
-SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
+SDK releases can be found in the SDK [NPM repository](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
 To update the MobileFirst Web SDK with the latest release:
 
 1. Navigate to the root folder of the web application.
 2. Run the command: `npm update ibm-mfp-web-sdk`.
 
-## Same Origin Policy
-Because web resources may be hosted on different a server machine than the one that MobileFirst Server is installed on, this may trigger a [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation.
+## Same-origin policy
+Because web resources may be hosted on different a server machine than the one that MobileFirst Server is installed on, this may trigger a [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation.
 
-Same Origin Policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
+Same-origin policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
 
 Web apps that are using the MobileFirst Web SDK should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
 
 ### Alternatives
-During development, this restriction can be alleviated by:
+The policy requirements can be satisfied by using either of the following methods:
 
-- Serving the web application resources' from the same WebSphere Liberty profile application server that is used in the MobileFirst Developer Kit.
+- Serving the web application resources from the same WebSphere Liberty profile application server that is used in the MobileFirst Developer Kit.
 - Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
 
 > Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
  
 > **Note:** serving the applications from the WebSphere Liberty application server is available only for IBM customers who use the MobileFirst Developer Kit.
 
-## Secure Origins Policy
-When using Chrome during development, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
+## Secure-origins policy
+When using Chrome during development, the browser might not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the secure-origins policy implemented and used by default in this browser.
 
 To overcome this, you can start the Chrome browser with the following flag:
 

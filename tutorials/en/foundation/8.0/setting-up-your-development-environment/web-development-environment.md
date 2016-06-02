@@ -9,11 +9,11 @@ weight: 6
 Developing and testing web applications is as easy as previewing a local HTML file in your web browser of choice.  
 Developers can use their IDE of choice, and any framework(s) that suits their needs.
 
-However one thing may stand in the way of developing web applications. Web applications may encounter errors due to [Same Origin Policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same Origin Policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
+However one thing may stand in the way of developing web applications. Web applications might encounter errors due to [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same-origin policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
 
 [Web apps that are to use the MobileFirst Web SDK](../../adding-the-mfpf-sdk/web) should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
 
-This restriction can be alleviated by:
+The policy requirements can be satisfied by using either of the following methods:
 
 - Serving the web application resources' from the same WebSphere Full/Liberty profile application server that also hosts the MobileFirst Server.
 - Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
