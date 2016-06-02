@@ -40,9 +40,7 @@ The components are available through the MobileFirst Operations Console's Downlo
 ### MobileFirst Server
 As part of the Developer Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
 
-> To download and install the MobileFirst Server, visit the [downloads]({{site.baseurl}}/downloads/) page.  
-
-In the server directory, the following scripts are available:
+In the developer kit's root directory, the following scripts are available:
 
 * `run.[sh|cmd]`: Run the MobileFirst Server with trailing Liberty Server messages
     * Add the `-bg` flag to run the process in the background
@@ -60,6 +58,8 @@ The MobileFirst Server can be integrated into the Eclipse IDE.
 6. Provide a server **name** and **hostname** and click **Next**.
 7. Provide  the path to the server's root directory, and select a JRE version to use.
 8. Click **Next** followed by clicking **Finish**.
+
+You can now start and stop the MobileFirst Server from the Eclipse IDE "servers" view.
 
 ### MobileFirst Operations Console
 The MobileFirst Server's Operations Console exposes the following functionalities.  
