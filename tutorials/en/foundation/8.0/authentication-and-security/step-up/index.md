@@ -4,6 +4,19 @@ title: Step Up Authentication
 breadcrumb_title: Step Up Authentication
 relevantTo: [android,ios,windows,javascript]
 weight: 5
+downloads:
+  - name: Download Cordova project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80
+  - name: Download iOS Swift project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80
+  - name: Download Android project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80
+  - name: Download Win8 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
+  - name: Download Win10 project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
+  - name: Download SecurityCheck Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 Resources can be protected by several security checks. In this case, the MobileFirst Server will send all the relevant challenges simultaneously to the application.  
@@ -147,6 +160,8 @@ Sample applications are available for iOS (Swift), Android and Cordova.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) the Cordova project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) the iOS project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80) the Android project.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80) the Windows 8.1 project.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80) the Windows 10 project.
 
 ### Sample usage
 * Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **StepUpUserLogin**, **StepUpPinCode** and **Resource** adapters](../../../adapters/creating-adapters/).
