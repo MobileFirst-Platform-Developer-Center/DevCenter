@@ -36,7 +36,7 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 ## Installing the MobileFirst CLI plugin
 
 1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "mfp" then click "Go" <span style="color:red">The search term may need to be updated once Eclipse plugin s live</span>
+2. In the find field search "mfp" then click "Go"
 3. Click "Install" for Eclipse Thym 
 
 	![Image of THyM installation](Thym_install.png)
