@@ -132,5 +132,3 @@ Enabling debug mode will show debug level logs in the Eclipse console, while pre
 ### Live update
 
 While previewing an application live update is available.  You can make updates and save you changes and watch them auto refresh in the preview.
-
-
