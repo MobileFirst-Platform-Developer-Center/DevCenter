@@ -38,7 +38,7 @@ In this example, the security check is `PinCodeAttempts` which was defined in [I
 Create a C# class that extends `Worklight.SecurityCheckChallengeHandler`:
 
 ```csharp
-public class PinCodeChallengeHandler : Worklight.ChallengeHandler
+public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
 {
 }
 ```
@@ -127,7 +127,7 @@ To achieve this, override the `ShouldCancel` method.
 ```csharp
 public override bool ShouldCancel()
 {
-  return shouldsubmitfailure;
+  return shouldsubmitcancel;
 }
 ```
 

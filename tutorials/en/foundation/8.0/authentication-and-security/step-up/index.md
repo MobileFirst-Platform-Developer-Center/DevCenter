@@ -155,7 +155,7 @@ The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the S
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
 ### Applications
-Sample applications are available for iOS (Swift), Android and Cordova.
+Sample applications are available for iOS (Swift), Android, Windows 8.1/10, Cordova and Web.
 
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) the Cordova project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) the iOS project.
