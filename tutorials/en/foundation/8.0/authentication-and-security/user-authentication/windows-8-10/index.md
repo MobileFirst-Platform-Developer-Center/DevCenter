@@ -26,8 +26,11 @@ In this example, `UserLoginSecurityCheck` expects *key:value*s called `username`
 
 `credentials` is a `JSONObject` containing `username`, `password` and `rememberMe`:
 
-```c#
-ChallengeHandler.challengeAnswer = credentials;
+```csharp
+public override void SubmitChallengeAnswer(object answer)
+{
+    challengeAnswer = (JObject)answer;
+}
 ```
 
 You may also want to login a user without any challenge being received. For example, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
