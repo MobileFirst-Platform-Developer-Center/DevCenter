@@ -1,5 +1,5 @@
 ---
-title: IBM MobileFirst Studio 8.0 Plugin for Eclipse Now Available
+title: IBM MobileFirst Studio 8.0 Plug-in for Eclipse Now Available
 date: 2016-06-03
 tags:
 - MobileFirst_Platform
@@ -12,9 +12,10 @@ author:
   name: Edna Morales
 ---
 
-## Installing and Using IBM MobileFirst Studio 8.0 Plugin for Eclipse
+The IBM MobileFirst Studio Plugin for Eclipse is now available in the Eclipse Marketplace!  
+Use this plug-in to manage your Cordova project in the Eclipse development environment.
 
-The IBM MobileFirst Studio Plugin for Eclipse is now available in the Eclipse Marketplace!
+## Installing and Using IBM MobileFirst Studio 8.0 Plugin for Eclipse
 
 To install, you must be running Eclipse Mars or later. In Eclipse go to **Help -> Eclipse Marketplace** and search for IBM MobileFirst Studio and install the 8.0 version. You also need to install Eclipse Thym 2.0.0 through the Eclipse Marketplace.
 
