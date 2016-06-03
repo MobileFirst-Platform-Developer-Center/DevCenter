@@ -7,7 +7,7 @@ weight: 10
 ## Overview
 Follow this installation guide in order to setup your workstation for development using MobileFirst Foundation.  
 
-> **Note:** The MobileFirst Developer Kit is available only for IBM customers.
+> **Note:** The MobileFirst Developer Kit is available only to IBM customers.
 
 ## DevKit Installer
 The MobileFirst Foundation [Developer Kit Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment) will install a ready-to-use MobileFirst Server, database and runtime on your developer machine.  
@@ -59,10 +59,12 @@ You can access the [MobileFirst Operations Console]({{site.basurl}}/tutorials/en
 The [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) is a command-line interface enabling you to register applications in the MobileFirst Server, pull/push application from/to the MobileFirst Server, create Java and JavaScript adapters, manage multiple local and remote servers, update live applications using Direct Update and so on.
 
 **Prerequisite:**  
-NodeJS is a requirement before you can install the MobileFirst CLI.  
-Download and install [NodeJS v4.4.3 LTS](https://nodejs.org/en/).
+1. NodeJS is a requirement before you can install the MobileFirst CLI.  
+ Download and install [NodeJS v4.4.3 LTS](https://nodejs.org/en/).
 
-To Verify the installation, open a command-line window and execute: `node -v`.
+ To Verify the installation, open a command-line window and execute: `node -v`.
+
+2. Some CLI commands, such as creating, building and deploying adapters require Maven. See the next section for installation instructions.
 
 ### Installation 
 Open Terminal and execute: `npm install -g mfpdev-cli`.  

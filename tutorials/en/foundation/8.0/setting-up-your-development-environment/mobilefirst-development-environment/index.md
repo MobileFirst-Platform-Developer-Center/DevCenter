@@ -6,11 +6,11 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 ## Overview
-The IBM MobileFirst Foundation components are available seperately via online repositories which contain the latest release. They are also available bundled together in the Developer Kit Installer for IBM Customers for local use. Continue reading to learn more about the components and how to setup the MobileFirst Development environment by following the installation guide.
+The various IBM MobileFirst Foundation components are available in online repositories which provide the latest release of each component. They are also available in bundled form in the MobileFirst Foundation Developer Kit for *IBM Customers* for local use.
 
-> To evalute MobileFirst Foundation all that you need to do is to spin an instance of MobileFirst on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../ibm-containers/using-mobile-foundation/) tutorial for instructions.
+Continue reading to learn more about the components of MobileFirst Foundation.
 
-Continue reading to learn more about the various MobileFirst Foundation components.
+> To evalute MobileFirst Foundation all that you need to do is to spin an instance of MobileFirst Server on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../ibm-containers/using-mobile-foundation/) tutorial for instructions.
 
 #### Jump to:
 
@@ -21,7 +21,7 @@ Continue reading to learn more about the various MobileFirst Foundation componen
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Installation guide
-[Read the installation guide](installation-guide) to quickly setup MobileFirst Foundation on your workstation.
+[Read the installation guide](installation-guide) to quickly setup MobileFirst Foundation in your workstation.
 
 ## MobileFirst Foundation Developer Kit
 IBM Customers also have access to the MobileFirst Developer Kit.  
