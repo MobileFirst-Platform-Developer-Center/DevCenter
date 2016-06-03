@@ -3,7 +3,7 @@ layout: tutorial
 title: Implementing the challenge handler in Android applications
 breadcrumb_title: Android
 relevantTo: [android]
-weight: 5
+weight: 4
 downloads:
   - name: Download PreemptiveLogin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80

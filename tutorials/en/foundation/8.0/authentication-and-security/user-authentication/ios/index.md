@@ -3,7 +3,7 @@ layout: tutorial
 title: Implementing the challenge handler in iOS applications
 breadcrumb_title: iOS
 relevantTo: [ios]
-weight: 4
+weight: 3
 downloads:
   - name: Download PreemptiveLogin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginSwift/tree/release80
