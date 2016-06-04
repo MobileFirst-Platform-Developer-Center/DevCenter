@@ -14,7 +14,7 @@ THyM provides support for importing and managing Cordova projects in Eclipse. Yo
 Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
 
 The MobileFirst Studio plug-in for Eclipse exposes the various MobileFirst commands in the Eclipse IDE.  
-Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App.  
+Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App. Coupled together with [running the MobileFirst Server in Eclipse] you can create a more integrated development environment.
 
 This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
 
