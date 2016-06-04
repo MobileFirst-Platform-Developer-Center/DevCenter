@@ -15,6 +15,8 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
   - name: Download Win10 project
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
+  - name: Download Web project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
@@ -158,19 +160,41 @@ The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the S
 Sample applications are available for iOS (Swift), Android, Windows 8.1/10, Cordova and Web.
 
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) the Cordova project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) the iOS project.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) the iOS Swift project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80) the Android project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80) the Windows 8.1 project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80) the Windows 10 project.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80) the Web app project.
 
 ### Sample usage
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **StepUpUserLogin**, **StepUpPinCode** and **Resource** adapters](../../../adapters/creating-adapters/).
-* From a **Command-line** window, navigate to the application's root folder and run the command: `mfpdev app register`.
-* Scope mapping:
-    * In the MobileFirst Operations Console, under **Applications** → **StepUp** → **Security** → **Map scope elements to security checks**, add a scope mapping.
-        * Map the `accessRestricted` scope to the `StepUpUserLogin` security check.
-        * Map the `transferPrivilege` scope to both the `StepUpUserLogin` and and `StepUpPinCode` security checks.
-    * Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.  
+**Users list**: See the `UserManager.java` file for a list of valid users.
 
-**Users list**  
-See the `UserManager.java` file for a list of valid users.
+#### Deploy adapters
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **StepUp** and **ResourceAdapter** adapters](../../../adapters/creating-adapters/).
+
+#### Register applications
+**Cordova**  
+From a **Command-line** window, navigate to the project's root folder and:
+
+* Add a platform by running the `cordova platform add` command.
+* Registering the application: `mfpdev app register`.
+
+<br/>
+**Native**  
+From a **Command-line** window, navigate to the application's root folder and run the command: `mfpdev app register`.
+
+<br/>
+**Web**  
+Make sure you have Node.js installed.  
+Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.stepupweb`.
+
+#### Scope mapping
+In the **MobileFirst Operations Console → StepUpWeb → Security**, map the following scopes:
+
+* `accessRestricted` to `StepUpUserLogin`
+* `transferPrivilege` to both `StepUpUserLogin` and `StepUpPinCode`
+
+<br/>
+> **Note for web sample:**  
+> Start the reverse proxy by running the commands: `npm install` followed by: `npm start`.  
+> In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
