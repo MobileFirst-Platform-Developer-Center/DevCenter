@@ -14,7 +14,7 @@ THyM provides support for importing and managing Cordova projects in Eclipse. Yo
 Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
 
 The MobileFirst Studio plug-in for Eclipse exposes the various MobileFirst commands in the Eclipse IDE.  
-Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App. Coupled together with [running the MobileFirst Server in Eclipse] you can create a more integrated development environment.
+Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App.
 
 This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
 
@@ -25,8 +25,8 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 
 #### Jump to:
 
-* [Installing the MobileFirst CLI plugin](#installing-the-mobilefirst-cli-plugin)
-* [Installing THyM](#installing-thym)
+* [Installing the MobileFirst Studio plug-in](#installing-the-mobilefirst-studio-plug-in)
+* [Installing the THyM plug-in](#installing-the-thym-plug-in)
 * [Creating a Cordova project](#creating-a-cordova-project)
 * [Importing an existing Cordova project](#importing-an-existing-cordova-project)
 * [Adding the MobileFirst SDK to Cordova project](#adding-the-mobilefirst-sdk-to-cordova-project)
@@ -34,7 +34,7 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 * [Tips and Tricks](#tips-and-tricks)
 
 
-## Installing the MobileFirst CLI plugin
+## Installing the MobileFirst Studio plug-in
 
 1. While in Eclipse click **Help → Eclipse Marketplace...**
 2. In the find field search "mfp" then click "Go"
@@ -45,7 +45,7 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 4. Complete the installation process
 5. Restart Eclipse for the installation to take affect
 
-## Installing THyM
+## Installing the THyM plug-in
 
 **Note:** To run THyM you must be running Eclipse Mars or later.
 
@@ -116,3 +116,6 @@ Enabling debug mode will show debug level logs in the Eclipse console, while pre
 
 ### Live update
 While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
+
+### Integrating MobileFirst Server into Eclipse
+IBM customers also have access to the MobileFirst Foundation Developer Kit. You can couple together the above with [running the MobileFirst Server in Eclipse](../../setting-up-your-development-environment/mobilefirst-development-environment#adding-the-mobilefirst-server-to-eclipse) to create a more integrated development environment.
