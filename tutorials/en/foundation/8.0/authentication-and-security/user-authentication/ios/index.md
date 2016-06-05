@@ -31,7 +31,7 @@ You may also want to login a user without any challenge being received. For exam
 You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `login` API:
 
 ```swift
-WLAuthorizationManager.sharedInstance().login(self.securityCheck, withCredentials: credentials) { (error) -> Void in
+WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
   if(error != nil){
     NSLog("Login Preemptive Failure: " + String(error))
   }
@@ -49,7 +49,7 @@ When the user clicks the **Login** button, you can dynamically choose which API 
 
 ```swift
 if(!self.isChallenged){
-  WLAuthorizationManager.sharedInstance().login(self.securityCheck, withCredentials: credentials) { (error) -> Void in}
+  WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in}
 }
 else{
   self.submitChallengeAnswer(credentials)
@@ -112,7 +112,7 @@ Here, `success` has a key called `user` which itself contains a dictionary repre
 The MobileFirst Foundation SDK also provides a `logout` API to logout from a specific security check:
 
 ```swift
-WLAuthorizationManager.sharedInstance().logout(self.securityCheck){ (error) -> Void in
+WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) -> Void in
   if(error != nil){
     NSLog("Logout Failure: " + String(error))
   }
