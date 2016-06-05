@@ -43,7 +43,7 @@ Here is diagram that shows the flow:
 14. Client gets the user ID and user name, and displays hello {user} dialog :-).
 
 ## The LTPA Security Check
-[Websphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) server is working seamlessly with [LTPA](https://www.wikiwand.com/en/IBM_Lightweight_Third-Party_Authentication) and allows access to the authenticated user details in the security check adapter.  The LTPA validation happens in the [LTPABasedSecurityCheck.java](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/ltpa-sample/ltpa-based/src/main/java/net/mfpdev/sample/ltpa/LTPABasedSecurityCheck.java) security check:
+[Websphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) server is working seamlessly with [LTPA](https://www.wikiwand.com/en/IBM_Lightweight_Third-Party_Authentication) and allows access to the authenticated user details in the security check adapter.  The LTPA validation happens in the [LTPABasedSecurityCheck.java](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/ltpa-sample/ltpa-based/src/main/java/com/github/mfpdev/sample/ltpa/LTPABasedSecurityCheck.java) security check:
 
 ```java
  String principal = WSSubject.getCallerPrincipal();
