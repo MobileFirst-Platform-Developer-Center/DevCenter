@@ -4,6 +4,14 @@ date: 2016-06-05
 tags:
 - MobileFirst_Platform
 - iOS
+version:
+- 8.0
+- 7.1
+- 7.0
+- 6.3
+- 6.2
+- 6.1
+- 6.0
 author:
   name: Idan Adar
 ---
