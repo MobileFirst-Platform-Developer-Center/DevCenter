@@ -6,25 +6,27 @@ relevantTo: [android,ios,windows,javascript]
 weight: 10
 ---
 ## Overview
-This sample demonstrates custom enrollment process and step-up authorization. There is a one time enrollment process during which the user is required to enter his username and password and define a PIN code.  
+This sample demonstrates a custom enrollment process and step-up authorization. There is a one time enrollment process during which the user is required to enter username and password and define a PIN code.  
 
-**Prerequisites:**
+**Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../ExternalizableSecurityCheck/) and [Step-up](../step-up/) tutorials.
 
 #### Jump to:
+
+*
 
 ## Application Flow
 
 * When the application starts for the first time (before enrollment) it shows the UI with two buttons: "Get public data" and "Enroll".
-* When the user starts enrollment (taps on the "Enroll" button) he is prompted with login form and then he is requested to set a PIN code.
-* After successfully enrolled, the UI includes four buttons: "Get public data", "Get balance", "Get transactions" and "Logout".  
-The user can access all four buttons without entering the PIN code.
-* When the application is started for the second time (after enrollment) the UI includes all four buttons but accessing the "Get transactions" button requires the PIN code.
-There are three attempts for entering the PIN code, after that the user is prompted to authenticate with the username and password and re-setting a PIN code.
+* When the user starts enrollment (taps on the "Enroll" button) he is prompted with login form and is then requested to set a PIN code.
+* After enrolling successfully, the UI includes four buttons: "Get public data", "Get balance", "Get transactions" and "Logout". The user can access all four buttons without entering the PIN code.
+* When the application is launched for a second time (after enrollment) the UI includes all four buttons however after clicking the "Get transactions" button the user will be required to enter the PIN code.
+
+After three failing attempts at entering the PIN code the user is prompted to authenticate again with a username and password and re-setting a PIN code.
 
 ## Storing Data in Persistent Attributes
-You can choose to save protected data in the `PersistentAttributes` object, a container for custom attributes of a registered client. It can be accessed from a security check class and from an adapter resource class.
+You can choose to save protected data in the `PersistentAttributes` object which is a container for custom attributes of a registered client. The object can be accessed either from a security check class or from an adapter resource class.
 
-In our sample we use the `PersistentAttributes` object in the adapter resource class to store the PIN code:
+In the provided sample application the `PersistentAttributes` object is used in the adapter resource class to store the PIN code:
 
 * The **isEnrolled** resource returns `true` if the **pinCode** attribute exist and `false` otherwise.
 
@@ -36,6 +38,7 @@ In our sample we use the `PersistentAttributes` object in the adapter resource c
       return (protectedAttributes.get("pinCode") != null);
     }
     ```
+    
 * The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
 
     ```java
@@ -49,6 +52,7 @@ In our sample we use the `PersistentAttributes` object in the adapter resource c
       return Response.ok().build();
     }
     ```
+    
 * The **deletePinCode** resource delete the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
 
     ```java
@@ -86,6 +90,7 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
     @SecurityCheckReference
     private transient EnrollmentUserLogin userLogin;
     ```
+    
 * When the application starts **for the first time** and the user is successfully enrolled, we want him to be able to access the **Get transactions** resource without having to enter the PIN code he just set. To do so, in our `authorize` method, we use the `EnrollmentUserLogin.isLoggedIn` method to check if the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired the user can access **Get transactions**.
 
     ```java
@@ -98,6 +103,7 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
         }
     }
     ```
+    
 When the user fails to enter the PIN code after three attempts, we want to delete the **pinCode** attribute before he is prompted to authenticate with the username and password and re-setting a PIN code.
 
     ```java
@@ -115,6 +121,7 @@ When the user fails to enter the PIN code after three attempts, we want to delet
         }
     }
     ```
+    
 * The `validateCredentials` method is the same as in `PinCodeAttempts` security check except that in here we compare the credentials to the stored **pinCode** attribute.
 
     ```java
@@ -157,6 +164,7 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
     public void introspect(Set<String> scope, IntrospectionResponse response) {}
 }
 ```
+
 #### The IsEnrolledConfig Configuration Class
 We created an `IsEnrolledConfig` config class that extends `ExternalizableSecurityCheckConfig`:
 
@@ -171,6 +179,7 @@ public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
     }
 }
 ```
+
 And added the `createConfiguration` method to the `IsEnrolled` class:
 
 ```java
@@ -208,6 +217,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
     }
 }
 ```
+
 * In case the "pinCode" attribute exist:
 
  * Set the state to SUCCESS by using the `setState` method.
