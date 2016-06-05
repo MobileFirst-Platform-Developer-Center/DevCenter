@@ -128,12 +128,10 @@ Web apps that are using the MobileFirst Web SDK should be handled in a supportin
 ### Alternatives
 The policy requirements can be satisfied by using either of the following methods:
 
-- Serving the web application resources from the same WebSphere Liberty profile application server that is used in the MobileFirst Developer Kit.
+- Serving the web application resources, for example, from the same WebSphere Liberty profile application server that is used in the MobileFirst Developer Kit.
 - Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
 
 > Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
- 
-> **Note:** serving the applications from the WebSphere Liberty application server is available only for IBM customers who use the MobileFirst Developer Kit.
 
 ## Secure-origins policy
 When using Chrome during development, the browser might not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the secure-origins policy implemented and used by default in this browser.

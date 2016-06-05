@@ -118,4 +118,4 @@ Enabling debug mode will show debug level logs in the Eclipse console, while pre
 While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
 
 ### Integrating MobileFirst Server into Eclipse
-IBM customers also have access to the MobileFirst Foundation Developer Kit. You can couple together the above with [running the MobileFirst Server in Eclipse](../../setting-up-your-development-environment/mobilefirst-development-environment#adding-the-mobilefirst-server-to-eclipse) to create a more integrated development environment.
+Using the MobileFirst Foundation Developer Kit, You can couple together the above with [running the MobileFirst Server in Eclipse](../../setting-up-your-development-environment/mobilefirst-development-environment#adding-the-mobilefirst-server-to-eclipse) to create a more integrated development environment.
