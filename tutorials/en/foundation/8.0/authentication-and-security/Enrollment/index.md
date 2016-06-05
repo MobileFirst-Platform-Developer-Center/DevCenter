@@ -4,6 +4,17 @@ title: Enrollment
 breadcrumb_title: Enrollment
 relevantTo: [android,ios,windows,javascript]
 weight: 10
+downloads:
+  - name: Download Cordova project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
+  - name: Download iOS Swift project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
+  - name: Download Android project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
+  - name: Download Web project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80
+  - name: Download SecurityCheck Maven project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
 This sample demonstrates a custom enrollment process and step-up authorization. There is a one time enrollment process during which the user is required to enter username and password and define a PIN code.  
@@ -12,7 +23,10 @@ This sample demonstrates a custom enrollment process and step-up authorization. 
 
 #### Jump to:
 
-*
+* [Application Flow](#application-flow)
+* [Storing Data in Persistent Attributes](#storing-data-in-persistent-attributes)
+* [Security Checks](#security-checks)
+* [Sample Applications](#sample-applications)
 
 ## Application Flow
 
@@ -227,3 +241,48 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
  * Set the state to EXPIRED by using the `setState` method.
  * Add failure to the response object by using the `addFailure` method.
+
+## Sample Applications
+
+### Security check
+The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks Maven project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+
+### Sample Applications
+Sample applications are available for iOS (Swift), Android,  Cordova and Web.
+
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) the Cordova project.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80) the iOS Swift project.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80) the Android project.
+* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
+
+#### Deploy adapters
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **Enrollment** and **ResourceAdapter** adapters](../../../adapters/creating-adapters/).
+
+#### Register applications
+**Cordova**  
+From a **Command-line** window, navigate to the project's root folder and:
+
+* Add a platform by running the `cordova platform add` command.
+* Registering the application: `mfpdev app register`.
+
+<br/>
+**Native**  
+From a **Command-line** window, navigate to the application's root folder and run the command: `mfpdev app register`.
+
+<br/>
+**Web**  
+Make sure you have Node.js installed.  
+Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.enrollmentweb`.
+
+#### Scope mapping
+In the **MobileFirst Operations Console → StepUpWeb → Security**, map the following scopes:
+
+* `setPinCode` scope to `EnrollmentUserLogin` security check
+* `accessRestricted` scope to `IsEnrolled` security check
+* `transactionsPrivilege` scope to `EnrollmentPinCode` and `IsEnrolled` security checks
+
+<br/>
+> **Note for web sample:**  
+> Start the reverse proxy by running the commands: `npm install` followed by: `npm start`.  
+> In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
