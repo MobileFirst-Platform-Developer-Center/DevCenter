@@ -1,6 +1,6 @@
 ---
 title: Support plan for iOS 10
-date: 2016-06-06
+date: 2016-06-05
 tags:
 - MobileFirst_Platform
 - iOS
