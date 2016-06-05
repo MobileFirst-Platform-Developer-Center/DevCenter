@@ -248,7 +248,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
-### Sample Applications
+### Applications
 Sample applications are available for iOS (Swift), Android,  Cordova and Web.
 
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) the Cordova project.
