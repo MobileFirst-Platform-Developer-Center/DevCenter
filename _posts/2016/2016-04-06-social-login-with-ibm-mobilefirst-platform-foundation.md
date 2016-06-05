@@ -60,15 +60,16 @@ From the the file structure of the project we can learn that it is extendable, s
 │       ├── adapter-resources
 │       │   └── adapter.xml
 │       └── java
-│           └── net
-│               └── mfpdev
-│                   └── sample
-│                       └── socialogin
-│                           ├── FacebookSupport.java
-│                           ├── GoogleSupport.java
-│                           ├── LoginVendor.java
-│                           ├── SocialLoginConfiguration.java
-│                           └── SocialLoginSecurityCheck.java
+│           └── com
+│               └── github
+│                   └── mfpdev
+│                       └── sample
+│                           └── socialogin
+│                               ├── FacebookSupport.java
+│                               ├── GoogleSupport.java
+│                               ├── LoginVendor.java
+│                               ├── SocialLoginConfiguration.java
+│                               └── SocialLoginSecurityCheck.java
 ```
 
 ***SocialLoginSecurityCheck.java***  
@@ -111,7 +112,7 @@ The validation of the credentials happens in **validateCredentials** function:
 
 ***LoginVendor.java*** **GoogleSupport.java** **FacebookSupport.java**  
 
-[*GoogleSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/net/mfpdev/sample/socialogin/GoogleSupport.java) and [*FacebookSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/net/mfpdev/sample/socialogin/FacebookSupport.java) implements the [*LoginVendor.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/net/mfpdev/sample/socialogin/LoginVendor.java) interface. Each login vendor class responsible to validate the specific social login user and creating the authenticated user by implementing the method *validateTokenAndCreateUser*.  You can add additional vendor by implementing *LoginVendor.java* (e.g. In orVendor.java).  
+[*GoogleSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/com/github/mfpdev/sample/socialogin/GoogleSupport.java) and [*FacebookSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/com/github/mfpdev/sample/socialogin/FacebookSupport.java) implements the [*LoginVendor.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/com/github/mfpdev/sample/socialogin/LoginVendor.java) interface. Each login vendor class responsible to validate the specific social login user and creating the authenticated user by implementing the method *validateTokenAndCreateUser*.  You can add additional vendor by implementing *LoginVendor.java* (e.g. In orVendor.java).  
 
 ***SocialLoginConfiguration.java***  
   The configuration class contains the configurations, as well the vendors.
