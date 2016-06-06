@@ -110,7 +110,6 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
     ```java
     @Override
     public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
-        PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
         if (userLogin.isLoggedIn()){
             setState(STATE_SUCCESS);
             response.addSuccess(scope, userLogin.getExpiresAt(), getName());
