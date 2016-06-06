@@ -45,9 +45,6 @@ The XML file contains settings and metadata.
     			</dataSourceDefinition>
     		</connectionPolicy>
     	</connectivity>
-
-    	<procedure name="getAccountTransactions1"/>
-    	<procedure name="getAccountTransactions2"/>
     </mfp:adapter>
     ```
 
