@@ -7,21 +7,26 @@ show_disqus: true
 ---
 <br/>
 <div style="background-color:red;color:white; padding: 5px;">
-* talk about installation options (bluemix/devkit) and the new console?<br/>
-* add instructions to register the apps and adapters to test the migration? links?<br/>
+* talk about installation options (bluemix/devkit)?  
+* talk about the new console?<br/>
+* add instructions to register the apps and adapters to test the migration?<br/>
 * work on page UX  
-* update links to GA-links for the KC links
+* update links to GA-links for the KC links  
+* add "learn more" links to tutorials
 </div>
 
-The intent of this cookbook is to provide a clear and simple migration steps of Worklight Foundation 6.2 / MobileFirst Platform Foundation 6.3-7.1 applications and adapters to MobileFirst Foundation v8.0.
+The intent of this cookbook is to provide a clear and simple view of the migration steps for IBM Worklight Foundation 6.2 and IBM MobileFirst Platform Foundation 6.3-7.1 applications and adapters, to IBM MobileFirst Foundation 8.0.
 
-**Note:** The cookbook does not assume to cover all possible migration aspects and you are advised [to visit the migration user documentation topics](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html) for a comprehensive read.
+The migration process will guide you through the steps to transform Classic Hybrid applications into standard Cordova applications, as well as update the MobileFirst SDK in native applications.  
+Adapters will be migrated into Maven projects, and implementation concepts such as the MobileFirst security framework, push notifications and direct update will be further clarified.
 
 To ease some aspects of the migration process, a Migration Assistance tool is provided.  
-The tool helps in identifying areas in your codebase that you will need to inspect and alter, such as APIs that are deprecated, no longer supported, or modified. More on the tool in a bit.
+The tool helps in identifying areas in your codebase that you will need to inspect and alter, such as APIs that are deprecated, no longer supported, or modified.
+
+> **Note:** This cookbook does not attempt to cover all possible migration scenarios and you are advised [to visit the migration user documentation topics](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html) for a comprehensive read.
 
 <br/>
-<span style="color:red">temp UI mockup. Will change.</span>
+<span style="color:red">temporary icons.</span>
 <div id="container">
     <div class="row">
         <div id="migrationOptions">
@@ -87,29 +92,35 @@ This section includes: setting up the project structure, managing the applicatio
 ### Moving from Classic Hybrid/MFP Cordova apps to standard Cordova apps
 *This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1*
 
-In past releases, Classic Hybrid applications were developed using the Eclipse Studio plug-in. Starting MobileFirst Foundation v8.0, support is now introduced for standard Cordova applications in the form of a set of Cordova plug-ins, together forming the new MobileFirst SDK for Cordova, opening the door for developers to use their favorite tools and their own approaches to application development.
+In past releases, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model. Cordova applications can be created using standard community tools, for example the Cordova CLI. These applications can then be registered in the MobileFirst Server using either the MobileFirst CLI or the MobileFirst Operations Console. The MobileFirst Cordova SDK is then added to the mixture as a set of Cordova plug-ins available from the npmjs.org online repository. 
 
+The move to standard Cordova applications opens the door for developers to use their favorite tools and their own approaches to application development.  
 As a developer you are now super-charged with the power that is the [Cordova eco-system](cordova.apache.org).  
-To benefit from this newly gained power you’ll need to migrate your existing Classic Hybrid app structure to a standard Cordova app structure.
+
+> Learn more about Cordova application development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/cordova-tutorials/).
+
+To benefit from this newly gained power you’ll need to migrate your existing Classic Hybrid app structure to a standard Cordova app structure.  
+So lets do that.
 
 <br/>
 #### Step 1
-Open a command-line window and use the Migration Assistance tool in the following manner:  
-    `mfpmigrate client --in path_to_source_directory --out path_to_destination_directory `
+Open a command-line window and use the Migration Assistance tool in the following manner.  
+This could take a while to complete, depending on your Internet connection...
 
-* Replace **source_directory** with the path to the application folder inside the Studio project, for example: */Users/idanadar/Documents/MobileFirst/Eclipses/workspaces/6300/InvokingAdapterProcedures/apps/InvokingAdapterProcedures*
-* Replace **destination_directory** with a newly created folder that will house the converted application
+```bash
+mfpmigrate client --in path_to_source_directory --out path_to_destination_directory 
+```
 
-> You can find an in-depth read of all that the Migration Assistance tool does [in this user documentation topic](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool.html).
+* Replace **source_directory** with the path to the application folder inside the Studio project, for example: */Users/idanadar/Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures*
+* Replace **destination_directory** with a path to a folder that will house the converted application and the generated API report
 
-<br/>
-The process could take a while to complete, depending on your Internet connection...
+> You can read more about what that the Migration Assistance tool does [in this user documentation topic](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool.html).
 
 ![Migrate a Classic Hybrid app to a standard Cordova app](cordova-migration.png)
 
 Once the Migration Assistance tool successfully finishes running, the following has taken place:  
 
-* The **MigratedProject** folder now contains a new Cordova application with the same metadata as the Classic Hybrid app (application version and identifier and other settings depending on the Classic Hybrid app setup), as well as installed the MobileFirst Cordova SDK and added required platforms.  
+* The **MigratedProject** folder now contains a new Cordova application with the same metadata as your Classic Hybrid app (the application identifier and other settings depending on the setup of the Classic Hybrid app), as well as installed the MobileFirst Cordova SDK and added required platforms.  
 * An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation v8.0.
 
 ![API report](api-report-cordova.png)
@@ -493,9 +504,15 @@ The Native application is almost fully migrated. Now’s the time to handle the 
 <hr id="adapters"/>
 
 ## Migrating Adapters
+<span style="color:red">missing overview</span>
 ### Using Maven projects as adapter containers
-
+<span style="color:red">missing steps</span>
 <hr id="devtopics"/>
 
 ## Development topics
-* [Migrating Direct Update](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html#c_upgrade_direct_update)
+<span style="color:red">missing text</span>
+
+* Push
+* Security
+* [Migrating Direct Update](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html#c_upgrade_direct_update) (cordova)
+* Analytics??
