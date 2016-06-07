@@ -126,17 +126,17 @@ Once the Migration Assistance tool successfully finishes running, the following 
 ![API report](api-report-cordova.png)
 
 #### Step 2
-Before you can act on the generated API report, the application’s source needs to be copied over from the Classic Hybrid app to the Cordova app.
+Before you can act on the generated API report, the application’s source code needs to be copied over from the Classic Hybrid app to the Cordova app.
 
 **Classic Hybrid app**  
-Copy the contents of the **common** folder and paste (replace) it to the **www** folder of the Cordova app,
+Copy the contents of the **common** folder and paste it to the **www** folder of the Cordova app (replace if prompted).
 
 **MFP 7.1 Cordova app**  
-copy the **www** folder and paste (replace) the **www** folder of the Cordova app.
+copy the **www** folder and replace the existing **www** folder of the Cordova app.
 
 **Note:** If you have environment-specific implementation in your Classic Hybrid app you can copy it over [using Cordova Merges](cordova.apache.org/docs/en/latest/guide/cli/index.html#using-merges-to-customize-each-platform).
 
- > You are not required to use the Cordova application that is created for you by the Migration Assistance tool. Using the Cordova CLI you can create a new Cordova application on your own, add the MobileFirst Cordova plug-ins as well as any 3rd party Cordova plug-in you need. [Follow the Cordova tutorials to learn more](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/).
+ > You are not required to use the Cordova application that is created for you by the Migration Assistance tool. Using the Cordova CLI you can create a new Cordova application on your own and add the MobileFirst Cordova SDK, as well as any 3rd party Cordova plug-in you may need. [Follow the Cordova tutorials to learn more](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/).
 
 <br/>
 #### Step 3
