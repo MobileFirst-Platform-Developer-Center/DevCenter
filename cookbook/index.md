@@ -372,6 +372,7 @@ The first thing to do is to replace the existing Native SDK with the new SDK.
 
 <br/>
 
+<span style="color:red">Not yet added</span>
 **Android**  
 Below are the quiensetnial steps you'll need to follow, however if it doesn't cover your case do [check the Android migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_android_projs.html).
 
@@ -410,6 +411,7 @@ Below are the quiensetnial steps you'll need to follow, however if it doesn't co
 
 <br/>
 
+<span style="color:red">Not yet added</span>
 **Windows**  
 Below are the quiensetnial steps you'll need to follow, however if it doesn't cover your case do [check the Windows migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_windows_section.html).
 
@@ -467,7 +469,6 @@ Once the Migration Assistance tool successfully finishes running, the following 
 
 * An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation v8.0.
 
-<span style="color:red">The tool is broken.</span><br/> 
 ![API report](api-report-native.png)
 
 #### Step 3
