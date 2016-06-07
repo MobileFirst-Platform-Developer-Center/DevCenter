@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: MobileFirst Foundation v8.0 Migration Cookbook
-breadcrumb_title: 8.0
+breadcrumb_title: Migration cookbook
 print_pdf: true
 show_disqus: true
 show_in_nav: false
