@@ -9,7 +9,8 @@ show_disqus: true
 <div style="background-color:red;color:white; padding: 5px;">
 * talk about installation options (bluemix/devkit) and the new console?<br/>
 * add instructions to register the apps and adapters to test the migration? links?<br/>
-* work on page UX
+* work on page UX  
+* update links to GA-links for the KC links
 </div>
 
 The intent of this cookbook is to provide a clear and simple migration steps of Worklight Foundation 6.2 / MobileFirst Platform Foundation 6.3-7.1 applications and adapters to MobileFirst Foundation v8.0.
@@ -103,7 +104,8 @@ Open a command-line window and use the Migration Assistance tool in the followin
 
 <br/>
 The process could take a while to complete, depending on your Internet connection...
-<img class="gifplayer" alt="Migrate a Classic Hybrid app to a standard Cordova app" src="cordova-migration.png"/>
+
+![Migrate a Classic Hybrid app to a standard Cordova app](cordova-migration.png)
 
 Once the Migration Assistance tool successfully finishes running, the following has taken place:  
 
@@ -123,7 +125,7 @@ copy the **www** folder and paste (replace) the **www** folder of the Cordova ap
 
 **Note:** If you have environment-specific implementation in your Classic Hybrid app you can copy it over [using Cordova Merges](cordova.apache.org/docs/en/latest/guide/cli/index.html#using-merges-to-customize-each-platform).
 
- > You are not required to use the Cordova application that is created for you by the Migration Assistance tool. Using the Cordova CLI you can create the application on your own and add the MobileFirst Cordova plug-ins you need. [Follow the Cordova tutorials to learn more](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/).
+ > You are not required to use the Cordova application that is created for you by the Migration Assistance tool. Using the Cordova CLI you can create a new Cordova application on your own, add the MobileFirst Cordova plug-ins as well as any 3rd party Cordova plug-in you need. [Follow the Cordova tutorials to learn more](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/).
 
 <br/>
 #### Step 3
@@ -450,23 +452,23 @@ Below are the quiensetnial steps you'll need to follow, however if it doesn't co
 With the new SDK now in place, you've probably noticed Xcode complaining about some errors. It's time then to review the API.  
 Use the Migration Assistance tool to generate an API report.
 
+> **Note:** at this time the Migration Assistance tool supports scanning applications based on MobileFirst Platform Foundation 7.1 only.
+
 Open a command-line window and use the Migration Assistance tool in the following manner:  
-    `mfpmigrate client --in path_to_source_directory --out path_to_destination_directory `
+    `mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type platform`
 
-* Replace **source_directory** with the path to the Xcode project, for example: */Users/idanadar/Desktop/InvokingAdapterProceduresiOS*
+* Replace **source_directory** with the path to the Xcode project, for example: */Users/idanadar/Desktop/FormBasedAuthObjCiOS-release71*
 * Replace **destination_directory** with the location where you'd like the report to be generated at
+* Replace **platform** with a supported platform: `ios`, `android` or `windows`
 
-> You can find an in-depth read of all that the Migration Assistance tool does [in this user documentation topic](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool_ios.html#t_cord_mig_assist_tool_ios).
-
-<span style="color:red">The tool is broken.</span><br/>
-<img class="gifplayer" alt="Migrate a Classic Hybrid app to a standard Cordova app" src="cordova-migration.png"/>
+![Generate API report for native apps](native-migration.png)
 
 Once the Migration Assistance tool successfully finishes running, the following has taken place:  
 
 * An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation v8.0.
 
 <span style="color:red">The tool is broken.</span><br/> 
-![API report](api-report-cordova.png)
+![API report](api-report-native.png)
 
 #### Step 3
 The Native application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser and review it. For each item in the report, you will need to either implement it differently or replace it entirely.
