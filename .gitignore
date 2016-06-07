@@ -8,3 +8,5 @@ _customConfig.yml
 # Mac system files
 .DS_Store
 assets/.DS_Store
+
+node_modules/
