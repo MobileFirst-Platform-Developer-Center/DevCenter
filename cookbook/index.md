@@ -257,6 +257,7 @@ The Cordova application is almost fully migrated. Now’s the time to handle the
 
 ## Updating the SDKs in native applications
 
+<span style="color:red">pending rewrite to be like the cordova overview section</span>  
 In past releases, adding the Worklight / MobileFirst Native SDKs to native applications required using the Eclipse Studio plug-in to first create platform-specific artifacts followed by a manual copy &amp; paste of said artifacts into the specific native projects in their respective IDEs followed by further project setup.
 
 Starting MobileFirst Foundation v8.0, support is now introduced for community favored package managers: [CocoaPods for iOS](https://cocoapods.org/), [Gradle for Android](gradle.org/) and [NuGet for Windows](https://www.nuget.org/). With these tools at the developer’s disposal adding the MobileFirst Native SDK is now a command-line away.
