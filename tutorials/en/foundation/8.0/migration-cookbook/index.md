@@ -4,6 +4,7 @@ title: MobileFirst Foundation v8.0 Migration Cookbook
 breadcrumb_title: 8.0
 print_pdf: true
 show_disqus: true
+show_in_nav: false
 ---
 <br/>
 <div style="background-color:red;color:white; padding: 5px;">
@@ -262,12 +263,10 @@ Starting MobileFirst Foundation v8.0, support is now introduced for community fa
 
 <br/>
 #### Step 1
-The first thing to do is to replace the existing Native SDK with the new SDK.  
-
-> If these steps don't cover your specific case do [check the migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html).
+The first thing to do is to replace the existing SDK with the new SDK.
 
 **iOS**  
-**Prerequisite:** Make sure you have CocoaPods installed on your Mac.
+**Prerequisite:** Make sure you have CocoaPods installed on your Mac:
 
 * Open a Command-line window and navigate to the root of the Xcode project.
 * Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands may take several minutes to complete.
@@ -461,8 +460,7 @@ Below are the quiensetnial steps you'll need to follow, however if it doesn't co
 
 <br/>
 #### Step 2
-With the new SDK now in place, you've probably noticed Xcode complaining about some errors. It's time then to review the API.  
-Use the Migration Assistance tool to generate an API report.
+With the new SDK now in place, you've probably noticed the IDE (either Xcode, Android Studio or Visual Studio) complaining about some errors in your code... It's time then to review the API. Use the Migration Assistance tool to generate an API report.
 
 > **Note:** at this time the Migration Assistance tool supports scanning applications based on MobileFirst Platform Foundation 7.1 only.
 
