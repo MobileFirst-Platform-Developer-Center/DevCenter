@@ -9,7 +9,7 @@ show_disqus: true
 <div style="background-color:red;color:white; padding: 5px;">
 * talk about installation options (bluemix/devkit)?  
 * talk about the new console?<br/>
-* add instructions to register the apps and adapters to test the migration?<br/>
+* add instructions to register the apps and adapters to test the migration<br/>
 * work on page UX  
 * update links to GA-links for the KC links  
 * add "learn more" links to tutorials
@@ -17,8 +17,7 @@ show_disqus: true
 
 The intent of this cookbook is to provide a clear and simple view of the migration steps for IBM Worklight Foundation 6.2 and IBM MobileFirst Platform Foundation 6.3-7.1 applications and adapters, to IBM MobileFirst Foundation 8.0.
 
-The migration process will guide you through the steps to transform Classic Hybrid applications into standard Cordova applications, as well as update the MobileFirst SDK in native applications.  
-Adapters will be migrated into Maven projects, and implementation concepts such as the MobileFirst security framework, push notifications and direct update will be further clarified.
+The migration process will guide you through the steps to transform Classic Hybrid applications into [standard Cordova applications](https://cordova.apache.org), as well as update the MobileFirst SDK in native applications. Adapters will be migrated into Maven projects, and implementation concepts such as the MobileFirst security framework, push notifications and direct update will be further clarified. You'll also be guided how to get your application and adapter(s) registered in the MobileFirst Server, since you'll probably want to test it. :)
 
 To ease some aspects of the migration process, a Migration Assistance tool is provided.  
 The tool helps in identifying areas in your codebase that you will need to inspect and alter, such as APIs that are deprecated, no longer supported, or modified.
@@ -81,21 +80,20 @@ With the tool installed, lets move on to migrating applications.
 <hr id="applications"/>
 
 ## Migrating Applications
-In this section you'll be guided through the steps to migrate your Classic Hybrid/MFP Cordova and Native applications.  
+In this section you'll be guided through the steps to migrate your Classic Hybrid/MFPF Cordova and Native applications.  
 This section includes: setting up the project structure, managing the application source, using package managers and handling API changes.
 
 **Select your application type:**
 
-* [Classic Hybrid/MFP Cordova](#moving-from-classic-hybrid-mfp-cordova-apps-to-standard-cordova-apps)
+* [Classic Hybrid/MFPF Cordova](#moving-from-classic-hybrid-mfp-cordova-apps-to-standard-cordova-apps)
 * [Native application](#updating-the-sdks-in-native-applications)
 
-### Moving from Classic Hybrid/MFP Cordova apps to standard Cordova apps
+### Moving from Classic Hybrid/MFPF Cordova apps to standard Cordova apps
 *This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1*
 
-In past releases, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model. Cordova applications can be created using standard community tools, for example the Cordova CLI. These applications can then be registered in the MobileFirst Server using either the MobileFirst CLI or the MobileFirst Operations Console. The MobileFirst Cordova SDK is then added to the mixture as a set of Cordova plug-ins available from the npmjs.org online repository. 
+In past releases Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model. Cordova applications can be created using standard community tools, for example the Cordova CLI (**note:** You can also [setup Eclipse for Cordova application development]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/)). The MobileFirst Cordova SDK is added to the mixture, using the Cordova CLI, as a set of Cordova plug-ins (available from [NPMJS](http://npmjs.org)).
 
-The move to standard Cordova applications opens the door for developers to use their favorite tools and their own approaches to application development.  
-As a developer you are now super-charged with the power that is the [Cordova eco-system](cordova.apache.org).  
+The move to standard Cordova applications opens the door for developers to use their favorite tools and their own approaches to application development. As a developer you are now super-charged with the power that is the [Cordova eco-system](http://cordova.apache.org).  
 
 > Learn more about Cordova application development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/cordova-tutorials/).
 
@@ -131,7 +129,7 @@ Before you can act on the generated API report, the application’s source code 
 **Classic Hybrid app**  
 Copy the contents of the **common** folder and paste it to the **www** folder of the Cordova app (replace if prompted).
 
-**MFP 7.1 Cordova app**  
+**MFPF 7.1 Cordova app**  
 copy the **www** folder and replace the existing **www** folder of the Cordova app.
 
 **Note:** If you have environment-specific implementation in your Classic Hybrid app you can copy it over [using Cordova Merges](cordova.apache.org/docs/en/latest/guide/cli/index.html#using-merges-to-customize-each-platform).
@@ -140,7 +138,7 @@ copy the **www** folder and replace the existing **www** folder of the Cordova a
 
 <br/>
 #### Step 3
-With the application’s source code now in the Cordova app, [a few code blocks need to be either added or edited first](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_migrating_hybrid_byoc.html).
+With the application’s source code now in the Cordova app, [a few code blocks need to be either added or edited](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_migrating_hybrid_byoc.html).
 
 <div class="panel-group accordion" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
@@ -238,7 +236,7 @@ if (document.addEventListener) {
 
 <br/>
 #### Step 4
-The Cordova application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser and review it. For each item in the report, you will need to [either implement it differently or replace it entirely](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_webview.html?lang=en-us#c_upgrad_exist_cordova_webview). You can re-run the Migration Assistance tool, this time pointing to the new Cordova application to check again for any APIs that were not dealt with.
+The Cordova application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser window and review the presented items. For each item in the report, you will need to [either implement it differently or replace it entirely](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_webview.html?lang=en-us#c_upgrad_exist_cordova_webview). You can re-run the Migration Assistance tool, this time pointing to the new Cordova application to check again for any APIs that were not dealt with.
 
 <br/>
 > **Supplemental reading:**  
