@@ -92,11 +92,11 @@ This section includes: setting up the project structure, managing the applicatio
 ### Moving from Classic Hybrid/MFPF Cordova apps to standard Cordova apps
 *This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1*
 
-In past releases Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model. Cordova applications can be created using standard community tools, for example the Cordova CLI (**note:** You can also [setup Eclipse for Cordova application development]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/)). The MobileFirst Cordova SDK is added to the mixture, using the Cordova CLI, as a set of Cordova plug-ins (available from [NPMJS](http://npmjs.org)).
+In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model. Cordova applications can be created using standard community tools, for example the Cordova CLI (**note:** You can also [setup Eclipse for Cordova application development]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/)). The MobileFirst Cordova SDK is added to the mixture using the Cordova CLI as a set of Cordova plug-ins (available from [NPMJS](http://npmjs.org)).
 
 The move to standard Cordova applications opens the door for developers to use their favorite tools and their own approaches to application development. As a developer you are now super-charged with the power that is the [Cordova eco-system](http://cordova.apache.org).  
 
-> Learn more about Cordova application development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/cordova-tutorials/).
+> Learn more about Cordova application development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/).
 
 To benefit from this newly gained power you’ll need to migrate your existing Classic Hybrid app structure to a standard Cordova app structure.  
 So lets do that.
@@ -255,11 +255,12 @@ The Cordova application is almost fully migrated. Now’s the time to handle the
 * [Migrate your adapters](#migrating-adapters).
 
 ## Updating the SDKs in native applications
+In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, the SDKs for native applications required using the Eclipse Studio plug-in to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs followed by further project setup. 
 
-<span style="color:red">pending rewrite to be like the cordova overview section</span>  
-In past releases, adding the Worklight / MobileFirst Native SDKs to native applications required using the Eclipse Studio plug-in to first create platform-specific artifacts followed by a manual copy &amp; paste of said artifacts into the specific native projects in their respective IDEs followed by further project setup.
+Starting MobileFirst Foundation v8.0, support is now introduced for community favored package managers: [CocoaPods for iOS](https://cocoapods.org/), [Gradle for Android](gradle.org/) and [NuGet for Windows](https://www.nuget.org/). With these tools at the developer’s hands, adding the MobileFirst Native SDK is now a command-line away. 
 
-Starting MobileFirst Foundation v8.0, support is now introduced for community favored package managers: [CocoaPods for iOS](https://cocoapods.org/), [Gradle for Android](gradle.org/) and [NuGet for Windows](https://www.nuget.org/). With these tools at the developer’s disposal adding the MobileFirst Native SDK is now a command-line away.
+> Learn more about Native application development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/).
+
 
 <br/>
 #### Step 1
