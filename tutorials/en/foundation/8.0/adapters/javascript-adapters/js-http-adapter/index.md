@@ -25,7 +25,7 @@ To edit the adapter XML file, you must:
 * Set the HTTP domain to the domain part of HTTP URL.  
 * Set the TCP Port.  
 
-Declare the required procedures below the connectivity element:
+Declare the required procedures below the `connectivity` element:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -49,7 +49,6 @@ Declare the required procedures below the connectivity element:
 
 	<procedure name="getFeed"/>
 	<procedure name="getFeedFiltered"/>
-
 </mfp:adapter>
 ```
 

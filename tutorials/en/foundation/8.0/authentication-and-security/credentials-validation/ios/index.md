@@ -33,18 +33,18 @@ A challenge handler is a class responsible for handling challenges sent by the M
 
 In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
 
-Create a Swift class that extends `WLChallengeHandler`:
+Create a Swift class that extends `SecurityCheckChallengeHandler`:
 
 ```swift
-class PinCodeChallengeHandler : WLChallengeHandler {
+class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
 
 }
 ```
 
 ## Handling the challenge
-The minimum requirement from the `WLChallengeHandler` protocol is to implement the `handleChallenge` method, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`.
+The minimum requirement from the `SecurityCheckChallengeHandler` protocol is to implement the `handleChallenge` method, that is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`.
 
-> Learn more about the `WLChallengeHandler` protocol in the user documentation.
+> Learn more about the `SecurityCheckChallengeHandler` protocol in the user documentation.
 
 In this example, an alert is displayed asking to enter the PIN code:
 
@@ -81,11 +81,11 @@ In some cases, such as clicking a "Cancel" button in the UI, you want to tell th
 To achieve this, call:
 
 ```swift
-self.submitFailure(nil)
+self.cancel()
 ```
 
 ## Handling failures
-Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `WLChallengeHandler`'s `handleFailure` method.
+Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `SecurityCheckChallengeHandler`'s `handleFailure` method.
 The structure of the `Dictionary` passed as a parameter greatly depends on the nature of the failure.
 
 ```swift
@@ -104,7 +104,7 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 ## Handling successes
 In general successes are automatically processed by the framework to allow the rest of the application to continue.
 
-Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing the `WLChallengeHandler`'s `handleSuccess(success: [NSObject : AnyObject]!)` method. Here again, the content and structure of the `success` `Dictionary` depends on what the security check sends.
+Optionally you can also choose to do something before the framework closes the challenge handler flow, by implementing the `SecurityCheckChallengeHandler`'s `handleSuccess(success: [NSObject : AnyObject]!)` method. Here again, the content and structure of the `success` `Dictionary` depends on what the security check sends.
 
 In the `PinCodeAttemptsSwift` sample application, the success does not contain any additional data and so `handleSuccess` is not implemented.
 

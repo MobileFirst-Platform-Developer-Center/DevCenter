@@ -42,7 +42,7 @@ npm install passport-mfp-token-validation
 
     ```js
     passport.use(new mfpStrategy({
-        authServerUrl: 'http://localhost:9080/mfp/api/az/v1',
+        authServerUrl: 'http://localhost:9080/mfp/api',
         confClientID: 'testclient',
         confClientPass: 'testclient',
         analytics: {

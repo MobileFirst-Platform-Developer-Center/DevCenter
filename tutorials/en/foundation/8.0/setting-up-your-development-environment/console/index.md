@@ -60,7 +60,7 @@ The dropdown provides quick access to various console actions.
 ![Image of Actions dropdown](actions-dropdown.png)
 
 ### Runtime settings
-Edit runtime properties such as Analytics server URL, global security variables, server keystore and confidential clients.
+Edit runtime properties, global security variables, server keystore and confidential clients.
 
 ![Image of the Runtime Settings screen ](runtime-settings.png)
 
