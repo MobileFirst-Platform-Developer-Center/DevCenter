@@ -7,7 +7,26 @@ weight: 2
 ---
 
 ## Overview
+
 Using the Cordova CLI you can create and manage your Cordova applications. You can also achieve the same in the Eclipse IDE by using the [THyM](https://www.eclipse.org/thym/) plug-in.
+<<<<<<< HEAD
+​
+
+THyM provides support for importing and managing Cordova projects in Eclipse. You can create new Cordova projects, as well as import existing Cordova projects. You can also install Cordova plug-ins into your project through this plug-in.
+​
+
+Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
+​
+
+The MobileFirst plug-in for Eclipse exposes the various MobileFirst commands in Eclipse IDE.  
+Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App.
+​
+
+This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
+
+
+**Prerequisites:**
+=======
 
 THyM provides support for importing and managing Cordova projects in Eclipse. You can create new Cordova projects, as well as import existing Cordova projects. You can also install Cordova plug-ins into your project through this plug-in.
 
@@ -19,6 +38,7 @@ Specifically, it provides the following commands: Open Server Console, Preview A
 This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
 
 **Prerequisites:**  
+>>>>>>> upstream/GA
 
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
@@ -40,14 +60,16 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 2. In the find field search "mfp" then click "Go"
 3. Click "Install" for Eclipse Thym 
 
+	<span style="color:red">Update image</span>
 	![Image of THyM installation](Thym_install.png)
 
 4. Complete the installation process
-5. Restart Eclipse for the installation to take affect
+5. Restart Eclipse for the installation to take affect.
+
 
 ## Installing the THyM plug-in
 
-**Note:** To run THyM you must be running Eclipse Mars or later.
+**Note:** To run THyM you must be running Eclipse Mars or later
 
 1. While in Eclipse click **Help → Eclipse Marketplace...**
 2. In the find field search "thym" then click "Go"
@@ -56,11 +78,12 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 	![Image of THyM installation](Thym_install.png)
 
 4. Complete the installation process
-5. Restart Eclipse for the installation to take affect
+5. Restart Eclipse for the installation to take affect.
 
 
 ## Creating a Cordova project
-To create a new Cordova project using THyM.
+
+In this section we will discuss how to create a new Cordova project using THyM.
 
 1. While in Eclipse click **File → New → Other...**
 2. Narrow options by searching for "Cordova" and select **Hybrid Mobile (Cordova) Application Project** in the **Mobile** directory and click **Next**
@@ -73,8 +96,10 @@ To create a new Cordova project using THyM.
 
 4. Add the desired platform for your project and click **Finish**
 
+
 ## Importing an existing Cordova project
-To import an existing Cordova project that has already been created using the Cordova CLI.
+
+In this section we will discuss how to import an existing Cordova project that has already been created using the Cordova CLI.
 
 1. While in Eclipse click **File → Import...**
 2. Select **Import Cordova Project** in the **Mobile** directory and click **Next >**
@@ -84,15 +109,18 @@ To import an existing Cordova project that has already been created using the Co
 
 
 ## Adding the MobileFirst SDK to Cordova project
-Once you have [installed THyM](#installing-thym) and the [MobileFirst CLI plugin](#installing-mobilefirst-cli-plugin) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the MobileFirst SDK via Cordova plug-in.
+
+Once you have [installed THyM](#installing-thym) and the [MobileFirst CLI plugin](#installing-mobilefirst-cli-plugin) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the MobileFirst SDK via Cordova plugin.
 
 1. In the Project Explorer right click the **plugins** directory and select **Install Cordova Plug-in**
 2. In the Registry tab of the presented dialog box search **mfp** and select **cordova-plugin-mfp** and click **Finish**
 
 	![Image of new Cordova plugin install](New_installing_cordova_plugin.png)
 
+
 ## MobileFirst Commands
-To access MobileFirst Foundation's shortcuts, right-click the root project directory and navigate to **IBM MobileFirst Foundation**.  Here you will be able to select from the following commands:
+
+To access MobileFirst Foundation's shortcuts right click the root project directory and navigate to **IBM MobileFirst Foundation**.  Here you will be able to select from the following commands:
 
 | Menu option         | Action                                                                                                                                       | MobileFirst command-line interface equivalent |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
@@ -108,6 +136,7 @@ To access MobileFirst Foundation's shortcuts, right-click the root project direc
 ## Tips and Tricks
 
 ### Debug mode
+
 Enabling debug mode will show debug level logs in the Eclipse console, while previewing the application in a browser.  To enable debug mode do the following:  
 
 1. Open Eclipse's Preferences.
@@ -115,7 +144,12 @@ Enabling debug mode will show debug level logs in the Eclipse console, while pre
 3. Ensure the **Enable debug mode** check bocks is selected, then click **Apply → OK**
 
 ### Live update
+<<<<<<< HEAD
+
+While previewing an application live update is available.  You can make updates and save you changes and watch them auto refresh in the preview.
+=======
 While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
 
 ### Integrating MobileFirst Server into Eclipse
 Using the MobileFirst Foundation Developer Kit, You can couple together the above with [running the MobileFirst Server in Eclipse](../../setting-up-your-development-environment/mobilefirst-development-environment#adding-the-mobilefirst-server-to-eclipse) to create a more integrated development environment.
+>>>>>>> upstream/GA
