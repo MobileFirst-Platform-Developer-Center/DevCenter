@@ -44,7 +44,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
     ```xml
     compile group: 'com.ibm.mobile.foundation',
             name: 'ibmmobilefirstplatformfoundationpush',
-            version: '8.0.Beta11-SNAPSHOT',
+            version: '8.0.+',
             ext: 'aar',
             transitive: true
     ```
@@ -52,7 +52,7 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
     Or in a single line:
 
     ```xml
-    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.Beta11-SNAPSHOT'
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
     ```
 
 2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
