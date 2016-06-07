@@ -20,7 +20,7 @@ To ease some aspects of the migration process, a Migration Assistance tool is pr
 The tool helps in identifying areas in your codebase that you will need to inspect and alter, such as APIs that are deprecated, no longer supported, or modified. More on the tool in a bit.
 
 <br/>
-<span style="color:red">
+<span style="color:red">temp UI mockup. Will change.</span>
 <div id="container">
     <div class="row">
         <div id="migrationOptions">
@@ -75,10 +75,10 @@ With the tool installed, lets move on to migrating applications.
 <hr id="applications"/>
 
 ## Migrating Applications
-In this section you'll be guided through the steps to follow in order to migrate your Classic Hybrid/MFP Cordova and Native application.  
+In this section you'll be guided through the steps to migrate your Classic Hybrid/MFP Cordova and Native applications.  
 This section includes: setting up the project structure, managing the application source, using package managers and handling API changes.
 
-Choose your application type:
+**Select your application type:**
 
 * [Classic Hybrid/MFP Cordova](#moving-from-classic-hybrid-mfp-cordova-apps-to-standard-cordova-apps)
 * [Native application](#updating-the-sdks-in-native-applications)
@@ -243,29 +243,24 @@ The Cordova application is almost fully migrated. Now’s the time to handle the
 * [Migrate your adapters](#migrating-adapters).
 
 ## Updating the SDKs in native applications
-*This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1*
 
 In past releases, adding the Worklight / MobileFirst Native SDKs to native applications required using the Eclipse Studio plug-in to first create platform-specific artifacts followed by a manual copy &amp; paste of said artifacts into the specific native projects in their respective IDEs followed by further project setup.
 
 Starting MobileFirst Foundation v8.0, support is now introduced for community favored package managers: [CocoaPods for iOS](https://cocoapods.org/), [Gradle for Android](gradle.org/) and [NuGet for Windows](https://www.nuget.org/). With these tools at the developer’s disposal adding the MobileFirst Native SDK is now a command-line away.
 
-Pick your OS:  
+<br/>
+#### Step 1
+The first thing to do is to replace the existing Native SDK with the new SDK.  
 
-* [iOS](#ios)
-* [Android](#android)
-* [Windows](#windows)
+> If these steps don't cover your specific case do [check the migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html).
 
-### iOS
-To migrate your iOS application you'll need to follow through a few steps.  
-If these steps don't cover your case do [check the iOS migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_projs.html).
-
+**iOS**  
 **Prerequisite:** Make sure you have CocoaPods installed on your Mac.
+
 * Open a Command-line window and navigate to the root of the Xcode project.
 * Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands may take several minutes to complete.
 
 <br/>
-#### Step 1
-The first thing to do is to replace the existing Native SDK with the new SDK.
 
 <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
@@ -374,45 +369,8 @@ The first thing to do is to replace the existing Native SDK with the new SDK.
 </div>
 
 <br/>
-#### Step 2
-With the new SDK now in place, you've probably noticed Xcode complaining about some errors. It's time then to review the API.  
-Use the Migration Assistance tool to generate an API report.
 
-Open a command-line window and use the Migration Assistance tool in the following manner:  
-    `mfpmigrate client --in path_to_source_directory --out path_to_destination_directory `
-
-* Replace **source_directory** with the path to the Xcode project, for example: */Users/idanadar/Desktop/InvokingAdapterProceduresiOS*
-* Replace **destination_directory** with the location where you'd like the report to be generated at
-
-> You can find an in-depth read of all that the Migration Assistance tool does [in this user documentation topic](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool_ios.html#t_cord_mig_assist_tool_ios).
-
-<span style="color:red">The tool is broken.</span><br/>
-<img class="gifplayer" alt="Migrate a Classic Hybrid app to a standard Cordova app" src="cordova-migration.png"/>
-
-Once the Migration Assistance tool successfully finishes running, the following has taken place:  
-
-* An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation v8.0.
-
-<span style="color:red">The tool is broken.</span><br/> 
-![API report](api-report-cordova.png)
-
-#### Step 3
-The iOS application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser and review it. For each item in the report, you will need to [either implement it differently or replace it entirely](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_topics.html).
-
-<br/>
-> **Supplemental reading:**  
->
-> * [Migrating existing native iOS apps](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_projs.html)
-> * [Migrating encryption in iOS](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_encryption.html)
-
-### Next steps
-* Review the [development topics](#development-topics) to continue with the migration.
-* [Migrate your adapters](#migrating-adapters).
-
-<br/>
-**Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation v8.0!**
-
-### Android
+**Android**  
 Below are the quiensetnial steps you'll need to follow, however if it doesn't cover your case do [check the Android migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_android_projs.html).
 
 <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
@@ -448,7 +406,9 @@ Below are the quiensetnial steps you'll need to follow, however if it doesn't co
     </div>
 </div>
 
-### Windows
+<br/>
+
+**Windows**  
 Below are the quiensetnial steps you'll need to follow, however if it doesn't cover your case do [check the Windows migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_windows_section.html).
 
 <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
@@ -484,6 +444,48 @@ Below are the quiensetnial steps you'll need to follow, however if it doesn't co
         </div>
     </div>
 </div>
+
+<br/>
+#### Step 2
+With the new SDK now in place, you've probably noticed Xcode complaining about some errors. It's time then to review the API.  
+Use the Migration Assistance tool to generate an API report.
+
+Open a command-line window and use the Migration Assistance tool in the following manner:  
+    `mfpmigrate client --in path_to_source_directory --out path_to_destination_directory `
+
+* Replace **source_directory** with the path to the Xcode project, for example: */Users/idanadar/Desktop/InvokingAdapterProceduresiOS*
+* Replace **destination_directory** with the location where you'd like the report to be generated at
+
+> You can find an in-depth read of all that the Migration Assistance tool does [in this user documentation topic](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool_ios.html#t_cord_mig_assist_tool_ios).
+
+<span style="color:red">The tool is broken.</span><br/>
+<img class="gifplayer" alt="Migrate a Classic Hybrid app to a standard Cordova app" src="cordova-migration.png"/>
+
+Once the Migration Assistance tool successfully finishes running, the following has taken place:  
+
+* An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation v8.0.
+
+<span style="color:red">The tool is broken.</span><br/> 
+![API report](api-report-cordova.png)
+
+#### Step 3
+The Native application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser and review it. For each item in the report, you will need to either implement it differently or replace it entirely.
+
+* [iOS code changes](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_topics.html)
+* [Android code changes](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_androidSDK.html)
+* [Windows code changes](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_windowsSDK.html)
+
+<br/>
+> **Supplemental reading:**  
+>
+> * [Migrating encryption in iOS](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_encryption.html)
+
+### Next steps
+* Review the [development topics](#development-topics) to continue with the migration.
+* [Migrate your adapters](#migrating-adapters).
+
+<br/>
+**Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation v8.0!**
 
 <hr id="adapters"/>
 
