@@ -11,7 +11,7 @@ show_in_nav: false
 * talk about installation options (bluemix/devkit)?  
 * talk about the new console?<br/>
 * add instructions to register the apps and adapters to test the migration<br/>
-* work on page UX  
+* work on page UI  
 * update links to GA-links for the KC links  
 * add "learn more" links to tutorials
 </div>
@@ -26,7 +26,7 @@ The tool helps in identifying areas in your codebase that you will need to inspe
 > **Note:** This cookbook does not attempt to cover all possible migration scenarios and you are advised [to visit the migration user documentation topics](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html) for a comprehensive read.
 
 <br/>
-<span style="color:red">temporary icons.</span>
+<span style="color:red">temporary icons</span>
 <div id="container">
     <div class="row">
         <div id="migrationOptions">
@@ -92,7 +92,7 @@ This section includes: setting up the project structure, managing the applicatio
 ### Moving from Classic Hybrid/MFPF Cordova apps to standard Cordova apps
 *This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1*
 
-In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model. Cordova applications can be created using standard community tools, for example the Cordova CLI (**note:** You can also [setup Eclipse for Cordova application development]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/)). The MobileFirst Cordova SDK is added to the mixture using the Cordova CLI as a set of Cordova plug-ins (available from [NPMJS](http://npmjs.org)).
+In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model. Cordova applications are created using standard community tools, for example the Cordova CLI (**note:** You can also [setup Eclipse for Cordova application development]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/)). The MobileFirst Cordova SDK is added to the mixture using the Cordova CLI as a set of Cordova plug-ins (available from [npm](http://npmjs.org)).
 
 The move to standard Cordova applications opens the door for developers to use their favorite tools and their own approaches to application development. As a developer you are now super-charged with the power that is the [Cordova eco-system](http://cordova.apache.org).  
 
@@ -468,7 +468,7 @@ With the new SDK now in place, you've probably noticed the IDE (either Xcode, An
 Open a command-line window and use the Migration Assistance tool in the following manner:  
     `mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type platform`
 
-* Replace **source_directory** with the path to the Xcode project, for example: */Users/idanadar/Desktop/FormBasedAuthObjCiOS-release71*
+* Replace **source_directory** with the path to the native project, for example: */Users/idanadar/Desktop/FormBasedAuthObjCiOS-release71*
 * Replace **destination_directory** with the location where you'd like the report to be generated at
 * Replace **platform** with a supported platform: `ios`, `android` or `windows`
 
