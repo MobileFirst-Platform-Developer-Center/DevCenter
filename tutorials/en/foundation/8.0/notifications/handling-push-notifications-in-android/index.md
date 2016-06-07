@@ -43,16 +43,16 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 
     ```xml
     compile group: 'com.ibm.mobile.foundation',
-    name: 'ibmmobilefirstplatformfoundationPush',
-    version: '8.0.+',
-    ext: 'aar',
-    transitive: true
+            name: 'ibmmobilefirstplatformfoundationpush',
+            version: '8.0.Beta11-SNAPSHOT',
+            ext: 'aar',
+            transitive: true
     ```
     
     Or in a single line:
 
     ```xml
-    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
+    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.Beta11-SNAPSHOT'
     ```
 
 2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
@@ -122,7 +122,7 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
 | [`isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
-| [`registerDevice(MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
 | [`getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
 | [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
 | [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
@@ -156,7 +156,7 @@ if (isSupported ) {
 Register the device to the push notifications service.
 
 ```java
-MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
+MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>() {
     @Override
     public void onSuccess(String s) {
         // Successfully registered
