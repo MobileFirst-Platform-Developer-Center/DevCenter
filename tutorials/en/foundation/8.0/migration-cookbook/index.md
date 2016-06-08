@@ -274,6 +274,8 @@ The first thing to do is to replace the existing SDK with the new SDK.
 
 <br/>
 
+If the below doesn't cover your specific case do [check the iOS migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_ios_section.html).
+
 <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="removeiOSSDK">
@@ -382,9 +384,8 @@ The first thing to do is to replace the existing SDK with the new SDK.
 
 <br/>
 
-<span style="color:red">Not yet added</span>
 **Android**  
-Below are the quiensetnial steps you'll need to follow, however if it doesn't cover your case do [check the Android migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_android_projs.html).
+If the below doesn't cover your specific case do [check the Android migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_android_projs.html).
 
 <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
@@ -396,8 +397,13 @@ Below are the quiensetnial steps you'll need to follow, however if it doesn't co
 
         <div id="collapseRemoveAndroidSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeAndroidSDK">
             <div class="panel-body">
-
-                </ol>
+                Find your project's lib folder, and delete the following files:
+                <ul>
+                    <li>worklight-android.jar</li>
+                    <li>uicandroid.jar</li>
+                    <li>bcprov.jar</li>
+                    <li>android-async-http.jar</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -412,7 +418,34 @@ Below are the quiensetnial steps you'll need to follow, however if it doesn't co
         <div id="collapseAddAndroidSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addAndroidSDK">
             <div class="panel-body">
                 <ol>
+                    <li>In <b>Android → Gradle Scripts</b>, select the <b>build.gradle (Module: app)</b> file.</li>
+                    <li>Add the following lines below <code>apply plugin: 'com.android.application'</code>:
 
+{% highlight xml %}repositories{
+    jcenter()
+}{% endhighlight %}</li>
+                    <li>Add the following inside <b>android</b>:
+
+{% highlight xml %}packagingOptions {
+    pickFirst 'META-INF/ASL2.0'
+    pickFirst 'META-INF/LICENSE'
+    pickFirst 'META-INF/NOTICE'
+}{% endhighlight %}</li>
+                    <li>Add the following lines inside <b>dependencies</b>:
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundation',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
+
+                    You can further specify additional artfiacts in case your app needs to use the additional functionality. For example, if your app uses Push Notifications, add:
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationpush',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}</li>
                 </ol>
             </div>
         </div>
@@ -421,9 +454,9 @@ Below are the quiensetnial steps you'll need to follow, however if it doesn't co
 
 <br/>
 
-<span style="color:red">Not yet added</span>
+
 **Windows**  
-Below are the quiensetnial steps you'll need to follow, however if it doesn't cover your case do [check the Windows migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_windows_section.html).
+If the below doesn't cover your specific case do [check the Windows migration user documentation topics](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_windows_section.html).
 
 <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
