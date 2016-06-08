@@ -94,7 +94,9 @@ If you are using servlet-2.x , you will need to define the security role in your
     </usr_OAuthTAI>
     ```
     - **authorizationURL**:  Either your MobileFirst Server (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
-    - **clientID**: The Resource server must be a registered confidential client, to learn how to register a confidential client read the [Confidential Clients](../../confidential-clients/) tutorial. *The confidential-client **MUST** have the allowed scope `authorization.introspect` in order for it to be able to validate tokens *
+
+    - **clientID**: The Resource server must be a registered confidential client, to learn how to register a confidential client read the [Confidential Clients](../../confidential-clients/) tutorial. *The confidential-client **MUST** have the allowed scope `authorization.introspect` in order for it to be able to validate tokens
+
     - **clientSecret**: The Resource server must be a registered confidential client, to learn how to register a confidential client read the [Confidential Clients](../../confidential-clients/) tutorial.
     - **cacheSize (optional)**: TAI uses the Java-Token-Validator cache to cache tokens and introspection data data as values so that a token that comes in the request from the client won't need to be introspected again in a short time interval.
 
@@ -105,8 +107,10 @@ If you are using servlet-2.x , you will need to define the security role in your
     - **scope**: The resource server authenticates against scope(s). A scope could be a security check or a scope element mapped to security checks.
 
 ## Using the Token Introspection Data From the TAI
+
 From your resource you may want to access the token information that was intercepted and validated by the TAI. The list of data found on the token [can be found in this user documentation topic(https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-java-token-validator/html/com/ibm/mfp/java/token/validator/data/package-summary.html)    
 To obtain this data, use the [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html) :
+
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();
 JSONObject securityContext = new JSONObject(credentials.get("securityContext"));
