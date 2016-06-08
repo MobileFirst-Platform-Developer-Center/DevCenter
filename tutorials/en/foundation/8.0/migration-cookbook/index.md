@@ -246,7 +246,6 @@ The Cordova application is almost fully migrated. Now’s the time to handle the
 > * [Features that are discontinued in V8.0.0 and features that are not included in V8.0.0](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_removed_features.html#c_removed__section_discontinued_feature_80)
 > * [Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst version 8.0](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_convert2cordova.html)
 
-
 <br/>
 **Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation v8.0!**
 
@@ -257,10 +256,9 @@ The Cordova application is almost fully migrated. Now’s the time to handle the
 ## Updating the SDKs in native applications
 In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, the SDKs for native applications required using the Eclipse Studio plug-in to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs followed by further project setup. 
 
-Starting MobileFirst Foundation v8.0, support is now introduced for community favored package managers: [CocoaPods for iOS](https://cocoapods.org/), [Gradle for Android](gradle.org/) and [NuGet for Windows](https://www.nuget.org/). With these tools at the developer’s hands, adding the MobileFirst Native SDK is now a command-line away. 
+Starting MobileFirst Foundation v8.0, support is now introduced for community favored package managers: [CocoaPods for iOS](https://cocoapods.org/), [Gradle for Android](gradle.org/) and [NuGet for Windows](https://www.nuget.org/). With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platform's environment.
 
 > Learn more about Native application development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/).
-
 
 <br/>
 #### Step 1
@@ -468,9 +466,14 @@ If the below doesn't cover your specific case do [check the Windows migration us
 
         <div id="collapseRemoveWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeWindowsSDK">
             <div class="panel-body">
-                <ol>
-
-                </ol>
+                Removing the following files from the Visual Studio project:
+                
+                <ul>
+                    <li>wlclient.properties</li>
+                    <li>Newtonsoft.Json</li>
+                    <li>SharpCompress</li>
+                    <li>worklight-windows8</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -485,7 +488,9 @@ If the below doesn't cover your specific case do [check the Windows migration us
         <div id="collapseAddWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addWindowsSDK">
             <div class="panel-body">
                 <ol>
-
+                    <li>Right-click the project solution and select <b>Manage Nuget packages</b>.</li>
+                    <li>In the search option, search for "IBM MobileFirst Platform", choose <b>IBM.MobileFirstPlatform.8.0.0.0</b> and click <b>Install</b>.<br/>
+                    <li>in Package.appxmanifest, add the <b>Internet (client)</b> capability.</li>
                 </ol>
             </div>
         </div>
@@ -496,7 +501,8 @@ If the below doesn't cover your specific case do [check the Windows migration us
 #### Step 2
 With the new SDK now in place, you've probably noticed the IDE (either Xcode, Android Studio or Visual Studio) complaining about some errors in your code... It's time then to review the API. Use the Migration Assistance tool to generate an API report.
 
-> **Note:** at this time the Migration Assistance tool supports scanning applications based on MobileFirst Platform Foundation 7.1 only.
+> **Note:** at this time the Migration Assistance tool supports scanning applications based on MobileFirst Platform Foundation 7.1 only.  
+> If you are using an older release, skip to **Step 3**.
 
 Open a command-line window and use the Migration Assistance tool in the following manner:  
     `mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type platform`
@@ -525,12 +531,12 @@ The Native application is almost fully migrated. Now’s the time to handle the 
 >
 > * [Migrating encryption in iOS](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_encryption.html)
 
+<br/>
+**Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation v8.0!**
+
 ### Next steps
 * Review the [development topics](#development-topics) to continue with the migration.
 * [Migrate your adapters](#migrating-adapters).
-
-<br/>
-**Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation v8.0!**
 
 <hr id="adapters"/>
 
