@@ -53,33 +53,43 @@ In the provided sample application the `PersistentAttributes` object is used in 
     }
     ```
 
-* The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.  
+If the security check sets an `AuthenticatedUser`, the `ClientData` object will contain the user's properties. In our sample we get the authenticated user's display name and adds it to the `Response` object.
 
     ```java
     @POST
-    @OAuthSecurity(scope = "setPinCode")
-    @Path("/setPinCode/{pinCode}")
-    public Response setPinCode(@PathParam("pinCode") String pinCode){
-      ClientData clientData = adapterSecurityContext.getClientRegistrationData();
-      clientData.getProtectedAttributes().put("pinCode", pinCode);
-      adapterSecurityContext.storeClientRegistrationData(clientData);
-      return Response.ok().build();
-    }
+  	@Produces("application/json")
+  	@OAuthSecurity(scope = "setPinCode")
+  	@Path("/setPinCode/{pinCode}")
+  	public Response setPinCode(@PathParam("pinCode") String pinCode){
+  		ClientData clientData = adapterSecurityContext.getClientRegistrationData();
+  		clientData.getProtectedAttributes().put("pinCode", pinCode);
+  		adapterSecurityContext.storeClientRegistrationData(clientData);
+  		AuthenticatedUser authenticatedUser = null;
+  		if (clientData.getUsers() != null) {
+  			authenticatedUser = clientData.getUsers().get("EnrollmentUserLogin");
+  		}
+  		Map<String, Object> user = new HashMap<String, Object>();
+  		user.put("userName", authenticatedUser.getDisplayName());
+  		return Response.ok(user).build();
+  	}
     ```
+    Here, `users` has a key called `EnrollmentUserLogin` which itself contains the `AuthenticatedUser` object.
 
-* The **deletePinCode** resource delete the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* The **unenroll** resource deletes the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
 
     ```java
     @DELETE
-    @Path("/deletePinCode")
-    public Response deletePinCode(){
-      ClientData clientData = adapterSecurityContext.getClientRegistrationData();
-      if (clientData.getProtectedAttributes().get("pinCode") != null){
-        clientData.getProtectedAttributes().delete("pinCode");
-        adapterSecurityContext.storeClientRegistrationData(clientData);
-      }
-      return Response.ok().build();
-    }
+  	@OAuthSecurity(scope = "unenroll")
+  	@Path("/unenroll")
+  	public Response unenroll(){
+  		ClientData clientData = adapterSecurityContext.getClientRegistrationData();
+  		if (clientData.getProtectedAttributes().get("pinCode") != null){
+  			clientData.getProtectedAttributes().delete("pinCode");
+  			adapterSecurityContext.storeClientRegistrationData(clientData);
+  		}
+  		return Response.ok().build();
+  	}
     ```
 
 ## Security Checks
@@ -279,6 +289,8 @@ In the **MobileFirst Operations Console → StepUpWeb → Security**, map the fo
 * `setPinCode` scope to `EnrollmentUserLogin` security check
 * `accessRestricted` scope to `IsEnrolled` security check
 * `transactionsPrivilege` scope to `EnrollmentPinCode` and `IsEnrolled` security checks
+
+Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.
 
 <br/>
 > **Note for web sample:**  

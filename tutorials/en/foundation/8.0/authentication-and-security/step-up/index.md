@@ -194,6 +194,8 @@ In the **MobileFirst Operations Console → StepUpWeb → Security**, map the fo
 * `accessRestricted` to `StepUpUserLogin`
 * `transferPrivilege` to both `StepUpUserLogin` and `StepUpPinCode`
 
+Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.
+
 <br/>
 > **Note for web sample:**  
 > Start the reverse proxy by running the commands: `npm install` followed by: `npm start`.  
