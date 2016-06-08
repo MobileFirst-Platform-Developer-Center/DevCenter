@@ -110,7 +110,7 @@ This could take a while to complete, depending on your Internet connection...
 mfpmigrate client --in path_to_source_directory --out path_to_destination_directory 
 ```
 
-* Replace **source_directory** with the path to the application folder inside the Studio project, for example: */Users/idanadar/Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures*
+* Replace **source_directory** with the path to the application folder inside the Studio project, for example: *../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures*
 * Replace **destination_directory** with a path to a folder that will house the converted application and the generated API report
 
 > You can read more about what that the Migration Assistance tool does [in this user documentation topic](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool.html).
@@ -508,7 +508,7 @@ With the new SDK now in place, you've probably noticed the IDE (either Xcode, An
 Open a command-line window and use the Migration Assistance tool in the following manner:  
     `mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type platform`
 
-* Replace **source_directory** with the path to the native project, for example: */Users/idanadar/Desktop/FormBasedAuthObjCiOS-release71*
+* Replace **source_directory** with the path to the native project, for example: *../Desktop/FormBasedAuthObjCiOS-release71*
 * Replace **destination_directory** with the location where you'd like the report to be generated at
 * Replace **platform** with a supported platform: `ios`, `android` or `windows`
 
@@ -546,15 +546,20 @@ The Native application is almost fully migrated. Now’s the time to handle the 
 
 In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Adapters were created, developed and built using the Eclipse Studio plug-in or the MobileFirst CLI. Starting MobileFirst Foundation 8.0, adapters are now considered as standard Apache Maven projects using IBM-provided archetypes for generating the Java and JavaScript adapter types. Using Maven provides to server-side developers a simple and standard way to manage and integrate required dependencies, as well as frees them to use their favored tools during development time.
 
+Maven projects can be created from a command-line using either Maven commands, or using the MobileFirst CLI that operates Maven commands behind-the-scenes.  
+You can also setup Eclipse or IntelliJ to [create and develop adapters in an IDE environment]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/).
+
+**Tip:** Another added value of adapters in MobileFirst Foundation 8.0 is the introduction of a DevOps-style operation mode, where once an adapter is deployed to the MobileFirst Server you can configure various properties (for example, a username and password value for a database connection) live via the MobileFirst Operations Console, without needing to re-deploy the adapter. Now that's rad.
+
 > Learn more about Adapters development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/adapters).
 
-To migrate existing adapters into Maven projects, the process includes creating a matching new Maven project and copying into it the existing adapter implementation, with some modifications.
+To migrate existing adapters into Maven projects, the process includes creating a matching new Maven project and copying into it the existing adapter's source code (with some modifications).
 
 ### Prerequisites
 
-1. Install Apache Maven
-    - [Download the Apache Maven .zip](https://maven.apache.org/download.cgi)  
-    - Add a `MVN_PATH` variable, pointing to the Maven folder  
+1. Install Apache Maven.
+    - [Download the Apache Maven .zip](https://maven.apache.org/download.cgi).
+    - Add a `MVN_PATH` variable, pointing to the Maven folder.  
         *Mac and Linux:*  
         Edit your **~/.bash_profile**:  
         
@@ -567,16 +572,67 @@ To migrate existing adapters into Maven projects, the process includes creating 
         [Follow this guide](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).  
     - Verify the installation by executing: `mvn -v`.
 
-2. The cookbook uses the MobileFirst CLI to call maven commands in order to create and build the adapters.
+2. The cookbook uses the MobileFirst CLI to call Maven commands in order to create and build the adapters.
     - If you haven't already, [install NodeJS](https://nodejs.org/en/) as it is a prerequisite for the tool to work.
-    - From a command-line window, run the command: `npm install -g mfpdev-cli`.
+    - From a command-line window, run the command: `npm install -g mfpdev-cli` (or download &amp; install it from the Download Center in the MobileFirst Operations Console).
     - Verify the installation by executing: `mfpdev -v`.
 
 <br/>
 #### Step 1
+Create a new adapter template that matches your own adapter type.  
+
+* From a command-line window, run the command: `mfpdev adapter create`.
+* Select the adapter type: an HTTP or SQL JavaScript adapter, or a Java adapter.
+* Provide a [GroupID](https://maven.apache.org/guides/mini/guide-naming-conventions.html)
+
+    ![Create an adapter template](creating-an-adapter.png)
+
+#### Step 2
+With the new Maven project in place, we can now copy over the adapter implementation. After that we'll need to handle some code changes...
+
+**HTTP JavaScript adapters**  
+
+* Navigate in your filesystem to the adapter folder, for example: *../Desktop/JavaScriptAdapters/adapters/RSSReader*.
+* Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedApdapter* and into the **src/main/adapter-resources** folder.
+    * Copy &amp; paste into this folder your existing adapter files: **filterd.xsl** (if used)
+    * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, RSSReader.xml)
+    * Edit **js/{file-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, RSSReader-impl.js) 
 
 <br/>
-#### Step 2
+**SQL JavaScript adapters**  
+
+* Navigate in your filesystem to the adapter folder, for example: *../Desktop/JavaScriptAdapters/adapters/SQLAdapter*.
+* Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedApdapter* and into the **src/main/adapter-resources** folder.
+    * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, SQLAdapter.xml)
+    * Edit **js/{file-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, SQLAdapter-impl.js) 
+
+<br/>
+Here's where Maven dependencies come into play. Since we're not using Worklight/MobileFirst Studio where we previously placed the database connector in the **server/lib** folder, we'll instead replace it with a Maven dependency.
+
+* Go back to the newly created Maven project and open the **pom.xml** file located at the root of the directory.
+* Add a dependency for your database type. You can search for the appropriate depdendency to use [in the Maven Central website](http://search.maven.org/).
+    * In this example we'll use MySQL database.
+    * Add the following code block in the `dependencies` section:
+
+    ```xml
+    <dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.6</version>
+	</dependency>
+    ```
+* If you have additional libs, the **pom.xml** file is where you point to them; either to a local file or to a remote dependency.
+
+> [Learn more about Maven dependencies](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html).
+
+<br/>
+**Java adapters**  
+
+<!-- * Navigate in your filesystem to the adapter folder, for example: *../Desktop/InvokingAdapterProcedures-release71/adapters/RSSReader*.
+* Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedApdapter* and into the **src/main/adapter-resources** folder.
+    * Copy &amp; paste into this folder your existing adapter files: **filterd.xsl** (if used)
+    * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, RSSReader.xml)
+    * Edit **js/{file-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, RSSReadder-impl.js)  -->
 
 <br/>
 #### Step 3
