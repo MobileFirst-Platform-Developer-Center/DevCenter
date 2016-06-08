@@ -8,12 +8,14 @@ show_in_nav: false
 ---
 <br/>
 <div style="background-color:red;color:white; padding: 5px;">
-* talk about installation options (bluemix/devkit)?  
-* talk about the new console?<br/>
-* add instructions to register the apps and adapters to test the migration<br/>
+* write about installation options (bluemix/devkit)?  
+* write about the new console?  
+* write about security, push, direct update, what else?  
+* write about web platform  
+* add instructions to register the apps and adapters to test the migration  
+* add "learn more" links to tutorials  
 * work on page UI  
 * update links to GA-links for the KC links  
-* add "learn more" links to tutorials
 </div>
 
 The intent of this cookbook is to provide a clear and simple view of the migration steps for IBM Worklight Foundation 6.2 and IBM MobileFirst Platform Foundation 6.3-7.1 applications and adapters, to IBM MobileFirst Foundation 8.0.
@@ -283,9 +285,8 @@ Once the Migration Assistance tool successfully finishes running, the following 
 
 ![API report](api-report-native.png)
 
-
-<br/>
 #### Step 2
+With the API report generated and evaluated, it's time to replace the old Native SDK with the new Native SDK.
 
 **iOS**  
 **Prerequisite:** Make sure you have CocoaPods installed on your Mac:
@@ -466,7 +467,16 @@ transitive: true{% endhighlight %}
 name: 'ibmmobilefirstplatformfoundationpush',
 version: '8.0.+',
 ext: 'aar',
-transitive: true{% endhighlight %}</li>
+transitive: true{% endhighlight %}
+
+                   Or if you intend on using JSONStore:
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationjsonstore',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
+                   
                 </ol>
             </div>
         </div>
@@ -584,7 +594,8 @@ Create a new adapter template that matches your own adapter type.
 
 * From a command-line window, run the command: `mfpdev adapter create`.
 * Select the adapter type: an HTTP or SQL JavaScript adapter, or a Java adapter.
-* Provide a [GroupID](https://maven.apache.org/guides/mini/guide-naming-conventions.html)
+* Provide a [GroupID](https://maven.apache.org/guides/mini/guide-naming-conventions.html).
+* If creating a Java adapter also specify a [Package Name](https://maven.apache.org/guides/mini/guide-naming-conventions.html).
 
     ![Create an adapter template](creating-an-adapter.png)
 
@@ -593,8 +604,8 @@ With the new Maven project in place, we can now copy over the adapter implementa
 
 **HTTP JavaScript adapters**  
 
-* Navigate in your filesystem to the adapter folder, for example: *../Desktop/JavaScriptAdapters/adapters/RSSReader*.
-* Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedApdapter* and into the **src/main/adapter-resources** folder.
+* Navigate in your filesystem to the JavaScript adapter folder, for example: *../Desktop/JavaScriptAdapters/adapters/RSSReader*.
+* Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedAdapter* and into the **src/main/adapter-resources** folder.
     * Copy &amp; paste into this folder your existing adapter files: **filterd.xsl** (if used)
     * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, RSSReader.xml)
     * Edit **js/{file-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, RSSReader-impl.js) 
@@ -602,8 +613,8 @@ With the new Maven project in place, we can now copy over the adapter implementa
 <br/>
 **SQL JavaScript adapters**  
 
-* Navigate in your filesystem to the adapter folder, for example: *../Desktop/JavaScriptAdapters/adapters/SQLAdapter*.
-* Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedApdapter* and into the **src/main/adapter-resources** folder.
+* Navigate in your filesystem to the JavaScript adapter folder, for example: *../Desktop/JavaScriptAdapters/adapters/SQLAdapter*.
+* Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedAdapter* and into the **src/main/adapter-resources** folder.
     * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, SQLAdapter.xml)
     * Edit **js/{file-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, SQLAdapter-impl.js) 
 
@@ -622,12 +633,15 @@ Here's where Maven dependencies come into play. Since we're not using Worklight/
 		<version>5.1.6</version>
 	</dependency>
     ```
-* If you have additional libs, the **pom.xml** file is where you point to them; either to a local file or to a remote dependency.
+* If you have additional libraries, the **pom.xml** file is where you point to them - either to a local file or to a remote dependency.
 
 > [Learn more about Maven dependencies](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html).
 
 <br/>
-**Java adapters**  
+**Java adapters**    
+* Navigate in your filesystem to the Java adapter folder, for example: *../Desktop/JavaAdapters/*.
+* Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedAdapter* and into the **src/main/adapter-resources** folder.
+
 
 <!-- * Navigate in your filesystem to the adapter folder, for example: *../Desktop/InvokingAdapterProcedures-release71/adapters/RSSReader*.
 * Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedApdapter* and into the **src/main/adapter-resources** folder.
