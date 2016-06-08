@@ -244,9 +244,9 @@ The Cordova application is almost fully migrated. Now’s the time to handle the
 <br/>
 > **Supplemental reading:**  
 >
-> * [Comparison of Cordova apps developed with IBM MobileFirst Platform Foundation 8.0.0 versus V7.1](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_cordova_vs_hybrid.html#c_cordova_vs_hybrid)
-> * [Features that are discontinued in 8.0.0 and features that are not included in 8.0.0](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_removed_features.html#c_removed__section_discontinued_feature_80)
-> * [Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst version 8.0](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_convert2cordova.html)
+> * [Comparison of Cordova apps developed with IBM MobileFirst Platform Foundation 8.0.0 versus V7.1](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_cordova_vs_hybrid.html#c_cordova_vs_hybrid)
+> * [Features that are discontinued in 8.0.0 and features that are not included in 8.0.0](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_removed_features.html#c_removed__section_discontinued_feature_80)
+> * [Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst version 8.0](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_convert2cordova.html)
 
 <br/>
 **Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation 8.0!**
@@ -564,7 +564,7 @@ You can also setup Eclipse or IntelliJ to [create and develop adapters in an IDE
 
 > Learn more about Adapters development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/adapters).
 
-To migrate existing adapters into Maven projects, the process includes creating a matching new Maven project and copying into it the existing adapter's source code (with some modifications).
+To [migrate existing adapters into Maven projects](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/t_migrating_adapters.html%23t_migrating_adapters), the process includes creating a matching new Maven project and copying into it the existing adapter's source code (with some modifications).
 
 ### Prerequisites
 
@@ -590,33 +590,34 @@ To migrate existing adapters into Maven projects, the process includes creating 
 
 <br/>
 #### Step 1
-Create a new adapter template that matches your own adapter type.  
+Create a new adapter template that matches your own adapter type and adapter name and package name.  
+This will ease the migration as the adpater's metadata will resemble and thus will not require extra editing.
 
 * From a command-line window, run the command: `mfpdev adapter create`.
 * Select the adapter type: an HTTP or SQL JavaScript adapter, or a Java adapter.
 * Provide a [GroupID](https://maven.apache.org/guides/mini/guide-naming-conventions.html).
-* If creating a Java adapter also specify a [Package Name](https://maven.apache.org/guides/mini/guide-naming-conventions.html).
+* If creating a Java adapter make sure to specify the same [Package Name](https://maven.apache.org/guides/mini/guide-naming-conventions.html) that you have previously used (for example, "com.sample")
 
     ![Create an adapter template](creating-an-adapter.png)
 
 #### Step 2
-With the new Maven project in place, we can now copy over the adapter implementation. After that we'll need to handle some code changes...
+With the new Maven project in place, we can now copy over the adapter implementation.
 
 **HTTP JavaScript adapters**  
 
 * Navigate in your filesystem to the JavaScript adapter folder, for example: *../Desktop/JavaScriptAdapters/adapters/RSSReader*.
 * Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedAdapter* and into the **src/main/adapter-resources** folder.
-    * Copy &amp; paste into this folder your existing adapter files: **filterd.xsl** (if used)
-    * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, RSSReader.xml)
-    * Edit **js/{file-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, RSSReader-impl.js) 
+    * Copy &amp; paste into this folder your existing adapter files: **filterd.xsl** (if used).
+    * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, RSSReader.xml).
+    * Edit **js/{adapter-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, RSSReader-impl.js).
 
 <br/>
 **SQL JavaScript adapters**  
 
 * Navigate in your filesystem to the JavaScript adapter folder, for example: *../Desktop/JavaScriptAdapters/adapters/SQLAdapter*.
 * Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedAdapter* and into the **src/main/adapter-resources** folder.
-    * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, SQLAdapter.xml)
-    * Edit **js/{file-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, SQLAdapter-impl.js) 
+    * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, SQLAdapter.xml).
+    * Edit **js/{adapter-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, SQLAdapter-impl.js).
 
 <br/>
 Here's where Maven dependencies come into play. Since we're not using Worklight/MobileFirst Studio where we previously placed the database connector in the **server/lib** folder, we'll instead replace it with a Maven dependency.
@@ -635,25 +636,45 @@ Here's where Maven dependencies come into play. Since we're not using Worklight/
     ```
 * If you have additional libraries, the **pom.xml** file is where you point to them - either to a local file or to a remote dependency.
 
-> [Learn more about Maven dependencies](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html).
+> Learn more about Maven dependencies:
+> 
+> * [Introduction to dependency mechanism (Maven.org)](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html)
+> * [Handling dependencies (tutorial)]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies)
 
 <br/>
-**Java adapters**    
-* Navigate in your filesystem to the Java adapter folder, for example: *../Desktop/JavaAdapters/*.
+**Java adapters**
+
+* Navigate in your filesystem to the Java adapter folder, for example: *../Desktop/JavaAdapters/RSSAdapter*.
 * Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedAdapter* and into the **src/main/adapter-resources** folder.
+    * Edit **{adapter-name}.xml**: replace its contents with your existing adapter's XML content (in this example, RSSAdapter.xml).
+* In the new adapter, navigate to (in this example) **src/main/java/com/sample/**.
+    * Replace the existing .java file with your existing adapter's .java files
 
 
-<!-- * Navigate in your filesystem to the adapter folder, for example: *../Desktop/InvokingAdapterProcedures-release71/adapters/RSSReader*.
-* Open another window and navigate to your new Maven project, for example: *../Desktop/MigratedApdapter* and into the **src/main/adapter-resources** folder.
-    * Copy &amp; paste into this folder your existing adapter files: **filterd.xsl** (if used)
-    * Edit **adapter.xml**: replace its contents with your existing adapter's XML content (in this example, RSSReader.xml)
-    * Edit **js/{file-name}-impl.js**: replace its contents with your existing adapter's  content (in this example, RSSReadder-impl.js)  -->
+If you have any libraries in the existing adapter's **lib** folder, then here's where Maven dependencies come into play. Since we're not using Worklight/MobileFirst Studio where we previously placed libraries either in **server/lib** or the Java adapter's **lib** folder, we'll instead replace them with Maven dependencies.
+
+> Learn more about Maven dependencies:
+> 
+> * [Introduction to dependency mechanism (Maven.org)](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html)
+> * [Handling dependencies (tutorial)]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies)
+
+**With the adapter's source now in its new home, it's time to try and build it and see if we have any errors...**
 
 <br/>
 #### Step 3
+From a command-line window, navigate into the adapter's folder and run the command: `mfpdev adapter build`.  
 
-<br/>
-#### Step 4
+![Building adapters in command line - failures](compilation-errors.png)
+
+To resolve such errors it is recommended that you will import the Maven project into an IDE such as IntelliJ, and build the project there.  
+With an IDE at your disposal it will be easier to iterate through the build errors and resolve them one-by-one. [Learn more about using IntelliJ and MobileFirst adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters/).
+
+![Using IntelliJ](intellij.png)
+
+> **Supplemental reading:**  
+>
+> * [Migrating existing adapters to work under MobileFirst Server V8.0.0](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/t_migrating_adapters.html%23t_migrating_adapters)
+> * [Server-side API changes in Mobile Foundation 8.0](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devref/r_server_side_api_changes.html#r_server_side_api_changes)
 
 
 <hr id="devtopics"/>
