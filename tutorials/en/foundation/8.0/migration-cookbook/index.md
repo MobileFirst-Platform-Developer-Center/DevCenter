@@ -92,7 +92,7 @@ This section includes: setting up the project structure, managing the applicatio
 ### Moving from Classic Hybrid/MFPF Cordova apps to standard Cordova apps
 *This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1*
 
-In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model. Cordova applications are created using standard community tools, for example the Cordova CLI (**note:** You can also [setup Eclipse for Cordova application development]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/)). The MobileFirst Cordova SDK is added to the mixture using the Cordova CLI as a set of Cordova plug-ins (available from [npm](http://npmjs.org)).
+In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in or MobileFirst CLI. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model. Cordova applications are created using standard community tools, for example the Cordova CLI (**note:** You can also [setup Eclipse for Cordova application development]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/)). The MobileFirst Cordova SDK is added to the mixture using the Cordova CLI as a set of Cordova plug-ins (available from [npm](http://npmjs.org)).
 
 The move to standard Cordova applications opens the door for developers to use their favorite tools and their own approaches to application development. As a developer you are now super-charged with the power that is the [Cordova eco-system](http://cordova.apache.org).  
 
@@ -260,9 +260,10 @@ Starting MobileFirst Foundation 8.0, support is now introduced for community fav
 
 > Learn more about Native application development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/).
 
+To migrate existing native applications, the process includes replacing the existing SDK with the new SDK.
+
 <br/>
 #### Step 1
-The first thing to do is to replace the existing SDK with the new SDK.
 
 **iOS**  
 **Prerequisite:** Make sure you have CocoaPods installed on your Mac:
@@ -541,11 +542,50 @@ The Native application is almost fully migrated. Now’s the time to handle the 
 <hr id="adapters"/>
 
 ## Migrating Adapters
-<span style="color:red">missing overview</span>
-### Using Maven projects as adapter containers
-<span style="color:red">missing steps</span>
-<hr id="devtopics"/>
+*This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1*
 
+In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Adapters were created, developed and built using the Eclipse Studio plug-in or the MobileFirst CLI. Starting MobileFirst Foundation 8.0, adapters are now considered as standard Apache Maven projects using IBM-provided archetypes for generating the Java and JavaScript adapter types. Using Maven provides to server-side developers a simple and standard way to manage and integrate required dependencies, as well as frees them to use their favored tools during development time.
+
+> Learn more about Adapters development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/adapters).
+
+To migrate existing adapters into Maven projects, the process includes creating a matching new Maven project and copying into it the existing adapter implementation, with some modifications.
+
+### Prerequisites
+
+1. Install Apache Maven
+    - [Download the Apache Maven .zip](https://maven.apache.org/download.cgi)  
+    - Add a `MVN_PATH` variable, pointing to the Maven folder  
+        *Mac and Linux:*  
+        Edit your **~/.bash_profile**:  
+        
+        ```bash
+        #### Apache Maven example location
+        export MVN_PATH="/usr/local/bin"
+        ```
+
+        *Windows:*  
+        [Follow this guide](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).  
+    - Verify the installation by executing: `mvn -v`.
+
+2. The cookbook uses the MobileFirst CLI to call maven commands in order to create and build the adapters.
+    - If you haven't already, [install NodeJS](https://nodejs.org/en/) as it is a prerequisite for the tool to work.
+    - From a command-line window, run the command: `npm install -g mfpdev-cli`.
+    - Verify the installation by executing: `mfpdev -v`.
+
+<br/>
+#### Step 1
+
+<br/>
+#### Step 2
+
+<br/>
+#### Step 3
+
+<br/>
+#### Step 4
+
+
+<hr id="devtopics"/>
 ## Development topics
 <span style="color:red">missing text</span>
 
