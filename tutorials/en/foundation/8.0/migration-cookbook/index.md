@@ -82,7 +82,7 @@ With the tool installed, lets move on to migrating applications.
 
 ## Migrating Applications
 In this section you'll be guided through the steps to migrate your Classic Hybrid/MFPF Cordova and Native applications.  
-This section includes: setting up the project structure, managing the application source, using package managers and handling API changes.
+This section includes: assessing the changes in the API by running the Migration Assistance tool, setting up the project structure, managing the application source, using package managers and handling API changes.
 
 **Select your application type:**
 
@@ -260,10 +260,32 @@ Starting MobileFirst Foundation 8.0, support is now introduced for community fav
 
 > Learn more about Native application development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/).
 
-To migrate existing native applications, the process includes replacing the existing SDK with the new SDK.
+To migrate existing native applications, lets first asses the changes in the API by running the Migration Assistance tool, followed by replacing the existing SDK with the new SDK.
 
 <br/>
 #### Step 1
+Use the Migration Assistance tool to generate an API report.
+
+> **Note:** at this time the Migration Assistance tool supports scanning applications based on MobileFirst Platform Foundation 7.1 only.  
+
+Open a command-line window and use the Migration Assistance tool in the following manner:  
+    `mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type platform`
+
+* Replace **source_directory** with the path to the native project, for example: *../Desktop/FormBasedAuthObjCiOS-release71*
+* Replace **destination_directory** with the location where you'd like the report to be generated at
+* Replace **platform** with a supported platform: `ios`, `android` or `windows`
+
+![Generate API report for native apps](native-migration.png)
+
+Once the Migration Assistance tool successfully finishes running, the following has taken place:  
+
+* An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation 8.0.
+
+![API report](api-report-native.png)
+
+
+<br/>
+#### Step 2
 
 **iOS**  
 **Prerequisite:** Make sure you have CocoaPods installed on your Mac:
@@ -499,27 +521,6 @@ If the below doesn't cover your specific case do [check the Windows migration us
 </div>
 
 <br/>
-#### Step 2
-With the new SDK now in place, you've probably noticed the IDE (either Xcode, Android Studio or Visual Studio) complaining about some errors in your code... It's time then to review the API. Use the Migration Assistance tool to generate an API report.
-
-> **Note:** at this time the Migration Assistance tool supports scanning applications based on MobileFirst Platform Foundation 7.1 only.  
-> If you are using an older release, skip to **Step 3**.
-
-Open a command-line window and use the Migration Assistance tool in the following manner:  
-    `mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type platform`
-
-* Replace **source_directory** with the path to the native project, for example: *../Desktop/FormBasedAuthObjCiOS-release71*
-* Replace **destination_directory** with the location where you'd like the report to be generated at
-* Replace **platform** with a supported platform: `ios`, `android` or `windows`
-
-![Generate API report for native apps](native-migration.png)
-
-Once the Migration Assistance tool successfully finishes running, the following has taken place:  
-
-* An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation 8.0.
-
-![API report](api-report-native.png)
-
 #### Step 3
 The Native application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser and review it. For each item in the report, you will need to either implement it differently or replace it entirely.
 
