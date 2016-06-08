@@ -2,7 +2,7 @@
 layout: tutorial
 title: Confidential Clients
 relevantTo: [android,ios,windows,javascript]
-weight: 7
+weight: 8
 ---
 ## Overview
 When accessing a resource protected by the MobileFirst Platform framework, the MobileFirst Platform Foundation client SDK (for Cordova, iOS,  Android and Windows) provide the tools to handle the security features.

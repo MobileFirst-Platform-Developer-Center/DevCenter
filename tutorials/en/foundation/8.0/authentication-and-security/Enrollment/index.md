@@ -3,7 +3,7 @@ layout: tutorial
 title: Enrollment
 breadcrumb_title: Enrollment
 relevantTo: [android,ios,windows,javascript]
-weight: 10
+weight: 7
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
@@ -52,7 +52,7 @@ In the provided sample application the `PersistentAttributes` object is used in 
       return (protectedAttributes.get("pinCode") != null);
     }
     ```
-    
+
 * The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
 
     ```java
@@ -66,7 +66,7 @@ In the provided sample application the `PersistentAttributes` object is used in 
       return Response.ok().build();
     }
     ```
-    
+
 * The **deletePinCode** resource delete the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
 
     ```java
@@ -104,7 +104,7 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
     @SecurityCheckReference
     private transient EnrollmentUserLogin userLogin;
     ```
-    
+
 * When the application starts **for the first time** and the user is successfully enrolled, we want him to be able to access the **Get transactions** resource without having to enter the PIN code he just set. To do so, in our `authorize` method, we use the `EnrollmentUserLogin.isLoggedIn` method to check if the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired the user can access **Get transactions**.
 
     ```java
@@ -116,8 +116,7 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
         }
     }
     ```
-    
-When the user fails to enter the PIN code after three attempts, we want to delete the **pinCode** attribute before he is prompted to authenticate with the username and password and re-setting a PIN code.
+    When the user fails to enter the PIN code after three attempts, we want to delete the **pinCode** attribute before he is prompted to authenticate with the username and password and re-setting a PIN code.
 
     ```java
     @Override
@@ -134,7 +133,7 @@ When the user fails to enter the PIN code after three attempts, we want to delet
         }
     }
     ```
-    
+
 * The `validateCredentials` method is the same as in `PinCodeAttempts` security check except that in here we compare the credentials to the stored **pinCode** attribute.
 
     ```java

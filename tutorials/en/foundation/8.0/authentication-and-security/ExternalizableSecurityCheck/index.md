@@ -3,7 +3,7 @@ layout: tutorial
 title: Implementing the ExternalizableSecurityCheck
 breadcrumb_title: ExternalizableSecurityCheck
 relevantTo: [android,ios,windows,javascript]
-weight: 6
+weight: 5
 ---
 ## Overview
 The abstract `ExternalizableSecurityCheck` class implements the `SecurityCheck` interface and handles two important aspects of the security check functionality: externalization and state management.
@@ -84,7 +84,8 @@ The `AuthorizationResponse.addChallenge` method adds a challenge to the response
 * A challenge `Map` object.
 
 ## The introspect Method
-The `SecurityCheck` interface defines a method called `introspect`. This method... ???
+The `SecurityCheck` interface defines a method called `introspect`. This method should make sure that the security check is in the state that grants the requested scope. If the scope is granted, the security check should report the granted scope, its expiration, and a custom introspection data to the result parameter. If the scope is not granted, the security check does noting.  
+This method may change the state of the security check and/or the client registration record.
 
 ```java
 public void introspect(Set<String> checkScope, IntrospectionResponse response) {

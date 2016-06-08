@@ -3,7 +3,7 @@ layout: tutorial
 title: Step Up Authentication
 breadcrumb_title: Step Up Authentication
 relevantTo: [android,ios,windows,javascript]
-weight: 5
+weight: 6
 ---
 ## Overview
 Resources can be protected by several security checks. In this case, the MobileFirst Server will send all the relevant challenges simultaneously to the application.  
