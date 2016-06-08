@@ -115,7 +115,7 @@ if isPushSupported {
 Register the device to the push notifications service.
 
 ```swift
-MFPPush.sharedInstance().registerDevice({(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error: NSError!) -> Void in
     if error == nil {
         // Successfully registered
     } else {
@@ -123,6 +123,8 @@ MFPPush.sharedInstance().registerDevice({(response: WLResponse!, error: NSError!
     }
 })
 ```
+
+**Notes:** `options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request.
 
 Sends the device token to the server to register the device with its unique identifier.
 
