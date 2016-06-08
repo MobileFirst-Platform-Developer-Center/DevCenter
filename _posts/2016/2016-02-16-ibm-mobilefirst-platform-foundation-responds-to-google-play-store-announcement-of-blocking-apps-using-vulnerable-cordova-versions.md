@@ -10,7 +10,7 @@ author:
 ---
 > [UPDATE Apr. 21, 2016] Google confirms that it has deployed the MobileFirst Build ID solution to detect MobileFirst applications on the Play Store.
 
-All MobileFirst applications need to apply the iFixes listed in the Mar. 16, 2016 update below or later iFixes. Applications built with these iFixes applied will not get flagged. 
+All MobileFirst applications **MUST** apply the iFixes listed in the Mar. 16, 2016 update below or later iFixes. Applications built with these iFixes applied will not get flagged. 
 
 <hr/>
 
