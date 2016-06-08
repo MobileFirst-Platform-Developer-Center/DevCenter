@@ -26,7 +26,7 @@ Resources can be protected by several security checks. In this case, the MobileF
 A security check may be dependent on another security check, so it is important to be able to control when the challenges will be sent.  
 For example, in this tutorial we'll describe an application that has two resources protected by a username and password where the second resource also requires an additional PIN code.
 
-> **Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) and [UserAuthenticationSecurityCheck](.../user-authentication) tutorials before continuing.
+**Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) and [UserAuthenticationSecurityCheck](.../user-authentication) tutorials before continuing.
 
 #### Jump to:
 
