@@ -11,7 +11,7 @@ downloads:
 
 ## Overview
 MobileFirst Foundation provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
-  
+
 The Java library is provided as a .jar file (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
 
 This tutorial will show how to protect a simple Java Servlet, `TAI/GetBalance`, using a scope (`accessRestricted`).
@@ -25,24 +25,13 @@ This tutorial will show how to protect a simple Java Servlet, `TAI/GetBalance`, 
 
 ## Server setup
 
-1. Obtain the Java library from Maven Central.  
-	Downloading the dependency via a pom:
+1. Obtain the TAI from the Download Center.  
 
-	```xml
-	<dependency>
-	  <groupId>com.ibm.mfp</groupId>
-	  <artifactId>mfp-oauth-tai</artifactId>
-	  <version>8.0.0</version>
-	  <classifier>tai</classifier>
-	  <type>zip</type>
-	</dependency>
-	```
+  * Unpack the `mfp-oauth-tai.zip`    
 
-	Download directly from the Maven Central [here](http://search.maven.org/#search%7Cga%7C1%7Cibm%20mfp)
+2. Add the `com.ibm.mfp.oauth.tai.jar` file to the WebSphere application server inside **usr/extension/lib**.
 
-2. Add the `com.ibm.mfp.oauth.tai-8.0.0.jar` file to the WebSphere application server inside **usr/extension/lib**.
-
-3. Add the `OAuthTai-8.0.mf` file to the WebSphere applicaiton server inside **usr/extension/lib/features**.
+3. Add the `OAuthTai.mf` file to the WebSphere application server inside **usr/extension/lib/features**.
 
 ### web.xml setup
 Add a security constraint and a security role to the `web.xml` file of the WebSphere application server:
@@ -79,9 +68,15 @@ Modify the WebSphere application server's `server.xml` file to your external res
     </featureManager>
     ```
 
-* Add a security role:
+* Add a security role as a class annotation in your Java servlet :
 
-    ```xml
+```java
+@ServletSecurity(@HttpConstraint(rolesAllowed = "TAIUserRole"))
+```
+
+If you are using servlet-2.x , you will need to define the security role in your web.xml :
+
+```xml
     <application contextRoot="TAI" id="TrustAssociationInterceptor" location="TAI.war" name="TrustAssociationInterceptor"/>
        <application-bnd>
           <security-role name="TAIUserRole">
@@ -94,21 +89,32 @@ Modify the WebSphere application server's `server.xml` file to your external res
 * Configure OAuthTAI. this is where URLs are set to be protected:
 
     ```xml
-    <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResource" clientSecret="password" cacheSize="500">
-            <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/TAI/GetBalance"></securityConstraint>
+    <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResourceId" clientSecret="ExternalResourcePass" cacheSize="500">
+            <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/GetBalance"></securityConstraint>
     </usr_OAuthTAI>
     ```
     - **authorizationURL**:  Either your MobileFirst Server (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
-    - **clientID**: The Resource server must be a registered confidential client, to learn how to register a confidential client read the [Confidential Clients](../../confidential-clients/) tutorial.
-    - **clientSecret**: The Resource server must be a registered confidential client, to learn how to register a confidential client
+    - **clientID**: The Resource server must be a registered confidential client, to learn how to register a confidential client read the [Confidential Clients](../../confidential-clients/) tutorial. *The confidential-client MUST have the allowed scope `authorization.introspect` in order for it to be able to validate tokens *
+    - **clientSecret**: The Resource server must be a registered confidential client, to learn how to register a confidential client read the [Confidential Clients](../../confidential-clients/) tutorial.
     - **cacheSize (optional)**: TAI uses the Java-Token-Validator cache to cache tokens and introspection data data as values so that a token that comes in the request from the client won't need to be introspected again in a short time interval.
-    	
+
         The default size is 50,000 tokens.  
-        
+
         If the you want to guarantee that the tokens are introspected on each request you should set cache to 0.  
-    
+
     - **scope**: The resource server authenticates against scope(s). A scope could be a security check or a scope element mapped to security checks.
-    
+
+## Using the Token Introspection Data From the TAI
+From your resource you may want to access the Token information that was intercepted and validated by the TAI. The list of data found on the token can be seen [here](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-java-token-validator/html/com/ibm/mfp/java/token/validator/data/package-summary.html)    
+To obtain this data, use the [WSSubject](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html) API :
+```java
+Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();
+JSONObject securityContext = new JSONObject(credentials.get("securityContext"));
+...
+securityContext.get('mfp-device')
+```
+
+
 ## Sample
 You can deploy the project on supported application servers (WebSphere Full profile and WebSphere Liberty profile).  
 [Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80).
