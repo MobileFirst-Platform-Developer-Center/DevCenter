@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: MobileFirst Foundation v8.0 Migration Cookbook
+title: MobileFirst Foundation 8.0 Migration Cookbook
 breadcrumb_title: Migration cookbook
 print_pdf: true
 show_disqus: true
@@ -120,7 +120,7 @@ mfpmigrate client --in path_to_source_directory --out path_to_destination_direct
 Once the Migration Assistance tool successfully finishes running, the following has taken place:  
 
 * The **MigratedProject** folder now contains a new Cordova application with the same metadata as your Classic Hybrid app (the application identifier and other settings depending on the setup of the Classic Hybrid app), as well as installed the MobileFirst Cordova SDK and added required platforms.  
-* An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation v8.0.
+* An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation 8.0.
 
 ![API report](api-report-cordova.png)
 
@@ -242,12 +242,12 @@ The Cordova application is almost fully migrated. Now’s the time to handle the
 <br/>
 > **Supplemental reading:**  
 >
-> * [Comparison of Cordova apps developed with IBM MobileFirst Platform Foundation V8.0.0 versus V7.1](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_cordova_vs_hybrid.html#c_cordova_vs_hybrid)
-> * [Features that are discontinued in V8.0.0 and features that are not included in V8.0.0](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_removed_features.html#c_removed__section_discontinued_feature_80)
+> * [Comparison of Cordova apps developed with IBM MobileFirst Platform Foundation 8.0.0 versus V7.1](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_cordova_vs_hybrid.html#c_cordova_vs_hybrid)
+> * [Features that are discontinued in 8.0.0 and features that are not included in 8.0.0](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_removed_features.html#c_removed__section_discontinued_feature_80)
 > * [Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst version 8.0](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_convert2cordova.html)
 
 <br/>
-**Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation v8.0!**
+**Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation 8.0!**
 
 ### Next steps
 * Review the [development topics](#development-topics) to continue with the migration.
@@ -256,7 +256,7 @@ The Cordova application is almost fully migrated. Now’s the time to handle the
 ## Updating the SDKs in native applications
 In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, the SDKs for native applications required using the Eclipse Studio plug-in to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs followed by further project setup. 
 
-Starting MobileFirst Foundation v8.0, support is now introduced for community favored package managers: [CocoaPods for iOS](https://cocoapods.org/), [Gradle for Android](gradle.org/) and [NuGet for Windows](https://www.nuget.org/). With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platform's environment.
+Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: [CocoaPods for iOS](https://cocoapods.org/), [Gradle for Android](gradle.org/) and [NuGet for Windows](https://www.nuget.org/). With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platform's environment.
 
 > Learn more about Native application development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/).
 
@@ -515,7 +515,7 @@ Open a command-line window and use the Migration Assistance tool in the followin
 
 Once the Migration Assistance tool successfully finishes running, the following has taken place:  
 
-* An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation v8.0.
+* An API report, **{app-name}-api-report.html**, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation 8.0.
 
 ![API report](api-report-native.png)
 
@@ -532,7 +532,7 @@ The Native application is almost fully migrated. Now’s the time to handle the 
 > * [Migrating encryption in iOS](http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_encryption.html)
 
 <br/>
-**Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation v8.0!**
+**Congratulations! You’ve migrated your application’s client-side code to MobileFirst Foundation 8.0!**
 
 ### Next steps
 * Review the [development topics](#development-topics) to continue with the migration.
