@@ -1,6 +1,6 @@
 ---
 title: How to enable TLS1.2 on a MobileFirst app for Android 4.1
-date: 2016-06-09
+date: 2016-07-09
 tags:
 - MobileFirst_Platform
 - Android
