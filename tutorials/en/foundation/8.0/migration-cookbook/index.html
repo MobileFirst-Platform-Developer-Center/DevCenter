@@ -805,10 +805,9 @@ export MVN_PATH="/usr/local/bin"
 
     <h3>Adapters</h3>
     <h4>JavaScript adapters</h4>
-    <b>Global variables and sessions</b>  
-    This is valid starting MobileFirst Platform Foundation 7.1, but here's a refresher: because network communications are now based on session-independence, you should avoid using global variables to save data on the session - since there is no "session". However, you can use them in order to save data during a single request. Keep in mind though that this is not a good programming practice to follow anymore. <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html">Read more about session independence</a></li>
+    <b>Global variables and sessions</b><br/>
+    Avoid using global variables in JavaScript adapters to save data on the session - since there is no "session". This change in behavior <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html">first appeared in  MobileFirst Platform Foundation 7.1</a>. However, you can use global variables in order to save data for use during a single request. Keep in mind though that this is not a recommended practice anylonger.</li>
 
-    
     <h4>connectAs</h4>
 
     <h3>Push Notifications</h3>
