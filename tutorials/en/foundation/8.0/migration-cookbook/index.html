@@ -807,15 +807,23 @@ export MVN_PATH="/usr/local/bin"
     <h4>JavaScript adapters</h4>
     <b>Global variables and sessions</b><br/>
     Avoid using global variables in JavaScript adapters to save data on the session - since there is no "session". This change in behavior <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html">first appeared in  MobileFirst Platform Foundation 7.1</a>. However, you can use global variables in order to save data for use during a single request. Keep in mind though that this is not a recommended practice anylonger.</li>
-
-    <h4>connectAs</h4>
-
-    <h3>Push Notifications</h3>
+    
+    <h4 style="color:red">connectAs</h4>
+    ??
+    
+    
     <h3>Authentication framework</h3>
-    <h4>Security Tests</h4>
+    <p>The authentication framework in MobileFirst Foundation 8.0 is unlike in previous releases. This area of the migration process will require you to re-implement some of your application backend and client logic.</p>
+    
+    <blockquote>It is highly advised that you will take a moment to familiarize with the new authentication framework. <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/">Learn more in the Authentication tutorials</a>.</blockquote>
+    
+    <h4 style="color:red">Security Tests, Realms, authentication concepts</h4>
+    
+    <h3>Push Notifications</h3>
     <h3>Direct Update</h3>
 
     [Migrating Direct Update](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html#c_upgrade_direct_update) (cordova)
 
-    <h3>Analytics??</h3>
+    <h3>Analytics</h3>
+    ??
 </div>
