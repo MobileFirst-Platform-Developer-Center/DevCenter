@@ -10,7 +10,6 @@ show_in_nav: false
 <div style="background-color:red;color:white; padding: 5px;">
     <ul>
         <li>write about web platform</li>
-        <li>write about authentication framework, adapters stuff, push notifications, direct update, what else?</li>
         <li>add instructions to register the apps and adapters to test the migration</li>
         <li>add "learn more" links to tutorials</li>
         <li>update links to GA-links for the KC links</li>
@@ -23,7 +22,7 @@ show_in_nav: false
     <h2>Overview</h2>
     <p>The intent of this cookbook is to provide a clear and simple view of the migration steps for IBM Worklight Foundation 6.2 and IBM MobileFirst Platform Foundation 6.3-7.1 applications and adapters, to IBM MobileFirst Foundation 8.0.</p>
 
-    <p>The migration process will guide you through the steps to transform Classic Hybrid applications into [standard Cordova applications](https://cordova.apache.org), as well as update the MobileFirst SDK in native applications. Adapters will be migrated into Maven projects, and implementation concepts such as the MobileFirst security framework, push notifications and direct update will be further clarified. You'll also be guided how to get your application and adapter(s) registered in the MobileFirst Server, since you'll probably want to test it. :)</p>
+    <p>The migration process will guide you through the steps to transform Classic Hybrid applications into <a href="https://cordova.apache.org">standard Cordova applications</a>, as well as update the MobileFirst SDK in native applications. Adapters will be migrated into Maven projects, and implementation concepts such as the MobileFirst security framework, push notifications and direct update will be further clarified. You'll also be guided how to get your application and adapter(s) registered in the MobileFirst Server, since you'll probably want to test it. :)</p>
 
     <p>To ease some aspects of the migration process, a Migration Assistance tool is provided.<br/>
     The tool helps in identifying areas in your codebase that you will need to inspect and alter, such as APIs that are deprecated, no longer supported, or modified.</p>
@@ -276,6 +275,7 @@ show_in_nav: false
             <li><a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_cordova_vs_hybrid.html#c_cordova_vs_hybrid">Comparison of Cordova apps developed with IBM MobileFirst Platform Foundation 8.0.0 versus V7.1</a></li>
             <li><a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_removed_features.html#c_removed__section_discontinued_feature_80">Features that are discontinued in 8.0.0 and features that are not included in 8.0.0</a></li>
             <li><a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_convert2cordova.html">Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst version 8.0</a></li>
+            <li><a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_ios_encryption.html">Migrating encryption for Cordova iOS applications</a></li>
         </ul>
     </blockquote>
     
@@ -611,7 +611,7 @@ show_in_nav: false
 
     <p><b>Tip:</b> Another added value of adapters in MobileFirst Foundation 8.0 is the introduction of a DevOps-style operation mode, where once an adapter is deployed to the MobileFirst Server you can configure various properties (for example, a username and password value for a database connection) live via the MobileFirst Operations Console, without needing to re-deploy the adapter. Now that's rad.</p>
 
-    <blockquote>Learn more about Adapters development in MobileFirst Foundation 8.0 [in the tutorials section]({{site.basurl}}/tutorials/en/foundation/8.0/adapters).</blockquote>
+    <blockquote>Learn more about Adapters development in MobileFirst Foundation 8.0 <a href="{{site.basurl}}/tutorials/en/foundation/8.0/adapters">in the tutorials section</a>.</blockquote>
 
     <p>To <a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/t_migrating_adapters.html%23t_migrating_adapters">migrate existing adapters into Maven projects</a>, the process includes creating a matching new Maven project and copying into it the existing adapter's source code (with some modifications).</p>
 
@@ -698,7 +698,7 @@ export MVN_PATH="/usr/local/bin"
     
     <p>If you have additional libraries, the <b>pom.xml</b> file is where you point to them - either to a local file or to a remote dependency.</p>
     
-    <blockquote>Learn more about Maven dependencies:<br/>
+    <blockquote><b>Learn more about Maven dependencies:</b><br/>
         <ul>
             <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html">Introduction to dependency mechanism (Maven.org)</a></li>
             <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">Handling dependencies (tutorial)</a></li>
@@ -738,7 +738,7 @@ export MVN_PATH="/usr/local/bin"
 
     <p>If you're using any additional libraries in the existing adapter, then here's where Maven dependencies come into play. Since we're not using Worklight/MobileFirst Studio where we previously placed libraries either in <b>server/lib</b> or the Java adapter's <b>lib</b> folder, we'll instead replace them with Maven dependencies.</p>
     <br/>
-    <blockquote>Learn more about Maven dependencies:
+    <blockquote><b>Learn more about Maven dependencies:</b>
         <ul>
             <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html">Introduction to dependency mechanism (Maven.org)</a></li>
             <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">Handling dependencies (tutorial)</a></li>
@@ -811,19 +811,28 @@ export MVN_PATH="/usr/local/bin"
     <h4 style="color:red">connectAs</h4>
     ??
     
-    
     <h3>Authentication framework</h3>
     <p>The authentication framework in MobileFirst Foundation 8.0 is unlike in previous releases. This area of the migration process will require you to re-implement some of your application backend and client logic.</p>
     
     <blockquote>It is highly advised that you will take a moment to familiarize with the new authentication framework. <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/">Learn more in the Authentication tutorials</a>.</blockquote>
     
     <h4 style="color:red">Security Tests, Realms, authentication concepts</h4>
+    ??
     
-    <h3>Push Notifications</h3>
+    <h3 style="color:red">Push Notifications</h3>
+    ??
+    
     <h3>Direct Update</h3>
-
-    [Migrating Direct Update](engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html#c_upgrade_direct_update) (cordova)
-
-    <h3>Analytics</h3>
+    <p>The steps to deliver updates using the Direct Update feature have changed, and some restrictions are imposed.</p>
+    
+    <ul>
+        <li>Learn more about how to use the Direct Update in the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/direct-update/">Using Direct Update in Cordova applications</a> tutorial.</li>
+        <li>Review the <a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html">Migrating Direct Update</a> user documentation topic</li>
+    </ul>
+    
+    <h3>Other</h3>
+    <p>In MobileFirst Foundation 8.0 several other components have been removed. For a full list <a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_upgrade_cordova_removed_features.html">review the Removed Components</a> user documentation topic.</p>
+    
+    <h3 style="color:red">Analytics</h3>
     ??
 </div>
