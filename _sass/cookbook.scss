@@ -1,42 +1,56 @@
-// Migration cookbook
-#migrationOptions img {
-	height: 62px;
-	padding: 0;
-	margin: 9px auto auto auto;
-}
-.migrationOption-migration-assistance-tool, .migrationOption-migrating-applications, .migrationOption-migrating-adapters, .migrationOption-development-topics  {
 
-	height: 100px;
-	width:206px;
+// Migration cookbook
+
+#migrationOptions {
+	
+}
+
+.migrationOption-migration-assistance-tool, .migrationOption-migrating-applications, .migrationOption-migrating-adapters, .migrationOption-development-topics  {
+	width: 500px;
+	height: 341px;
 	display:inline-block;
-	text-align: center;
-	font-size: 14px;
+font-family: "Helvetica Neue Medium", Helvetica, Arial;	
+}
+
+.migrationOption-migration-assistance-tool h3, .migrationOption-migrating-applications h3, .migrationOption-migrating-adapters h3, .migrationOption-development-topics h3  {
 	color: #264a60;
-	font-family: "Helvetica Neue Medium", Helvetica, Arial;
+	text-align:center;
+	margin: 107px 280px 0 0;
+	font-size:160%;
 }
-.migrationOption-migration-assistance-tool {
-	background-color: #c1e6fe;
+
+.migrationOption-section-gutter {
+	padding-left: 15px;
 }
-.migrationOption-migration-assistance-tool:hover {
-	background-color: #bbdff3;
+.migrationOption-section-number {
+	font-size:200px;
+	position:absolute;
+	left:-94px;top:957px;
 }
-.migrationOption-migrating-applications {
-	background-color: #9be1d9;
+
+.migrationOption-migration-assistance-tool-gutter-color {
+	border-left: 5px solid #c1e6fe;
 }
-.migrationOption-migrating-applications:hover {
-	background-color: #9dd4ca;
+.migrationOption-apps-gutter-color {
+	border-left: 5px solid #9be1d9;
 }
-.migrationOption-migrating-adapters {
-	background-color: #c4e47a;
+.migrationOption-adapters-gutter-color {
+	border-left: 5px solid #c4e47a;
 }
-.migrationOption-migrating-adapters:hover {
-	background-color: #b6cf74;
+.migrationOption-dev-topics-gutter-color {
+	border-left: 5px solid #98d3fd;
 }
-.migrationOption-development-topics {
-	background-color: #98d3fd;
+.migrationOption-section-number-tool {
+	color: #c1e6fe;
 }
-.migrationOption-development-topics:hover {
-	background-color: #8fc9eb;
+.migrationOption-section-number-apps {
+	color: #9be1d9;
+}
+.migrationOption-section-number-adapters {
+	color: #c4e47a;
+}
+.migrationOption-section-number-dev-topics {
+	color: #98d3fd;
 }
 hr {
 	border: 2px solid #c8d2d2 !important;
