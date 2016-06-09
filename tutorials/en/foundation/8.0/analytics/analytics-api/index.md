@@ -17,11 +17,41 @@ MobileFirst Foundation's Operational Analytics provides client-side APIs to help
 ## Configuring Analytics on the Client Side
 Before you can start collecting the out-of-the-box data that Operational Analytics provides, you first need to import the corresponding libraries to initialize the analytics support.
 
-### JavaScript
-- In Cordova applications no setup is required, and initialization is done out-of-the-box.  
-- In Web applications the analytics JavaScript files must be referenced. For instructions, review the [Adding the MobileFirst SDK to Web applications](../../../adding-the-mfpf-sdk/web) tutorial.
+### JavaScript (Cordova)
+* In Cordova applications no setup is required, and initialization is done out-of-the-box.  
+
+### JavaScript (Web)
+* In Web applications the analytics JavaScript files must be referenced. Make sure you have firt added the MobileFirst Web SDK. Review the [Adding the MobileFirst SDK to Web applications](../../../adding-the-mfpf-sdk/web) tutorial.  
+Depending on how you've added the MobileFirst Web SDK, you will need to either:
+	- Reference Analytics in the `HEAD` element: 
+
+	```html
+	<head>
+	    ...
+	    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics.js"></script>
+	    <script type="text/javascript" src="node_modules/ibm-mfp-web-sdk/ibmmfpf.js"></script>
+	</head>
+	```
+	
+	Or if using RequireJS:
+	
+	```javascript
+	require.config({
+		'paths': {
+			'ibmmfpfanalytics': 'node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics',
+			'mfp': 'node_modules/ibm-mfp-web-sdk/ibmmfpf'
+		}
+	});
+
+	require(['ibmmfpfanalytics','mfp'], function(wlanalytics, WL) {
+	    // application logic.
+	});
+	```
+	
+	Note that you can select your own namespace instead of "wlanalytics".
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: There are some JavaScript API differences between the Cordova and Web SDKs. Please refer to the [API Reference topic](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in the user documentation.
+
 ### iOS
 #### Import Analytics Library
 
@@ -49,11 +79,18 @@ WLAnalytics.init(this.getApplication());
 ## Sending Analytics Data
 Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When collecting Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the MobileFirst Analytics server after using the `send` method of the Analytics API.
 
-### JavaScript
-In a Cordova or Web application, use the following JavaScript API method:
+### JavaScript (Cordova)
+In a Cordova application, use the following JavaScript API method:
 
 ```javascript
 WL.Analytics.send();
+```
+
+### JavaScript (Web)
+In a Web application, use the following JavaScript API method (depending on the namespace you've selected):
+
+```javascript
+wlanalytics.send();
 ```
 
 ### iOS
@@ -93,9 +130,10 @@ You can enable or disable the collecting of app sessions with the API below:
 
 #### JavaScript
 **Web**  
-Web applications do not support lifecycle events.
+Web applications do not support client lifecycle events.
 
 **Cordova**  
+
 * For the iOS platform:
 	* Open the **[Cordova appilcation root folder] → platforms → ios → Classes → AppDelegate.m** file
 	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
@@ -160,9 +198,10 @@ Since the client and the server are each collecting their own information, this 
 #### JavaScript
 
 **Web**  
-
+Web applications do not support client network events.
 
 **Cordova**  
+
 * For the iOS platform:
 	* Open the **[Cordova appilcation root folder] → platforms → ios → Classes → AppDelegate.m** file
 	* Follow the iOS guide below to enable or disable `NETWORK` activities.
@@ -218,12 +257,22 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 ## Custom Events
 Use the following API methods to create custom events.
 
-#### JavaScript
+#### JavaScript (Cordova)
 
 ```javascript
 WL.Analytics.log({"key" : 'value'});
 WL.Analytics.send();
 ```
+
+#### JavaScript (Web)
+Depending on how you have referenced the Web SDK, you will either use wlanalytics
+```javascript
+
+
+.log({"key" : 'value'});
+WL.Analytics.send();
+```
+
 
 #### Android
 After setting the first two configurations you can start to log data like in the example below.
