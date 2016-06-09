@@ -153,7 +153,7 @@ In the client-side, there are no special APIs to handle multiple steps. Rather, 
 ## Sample Applications
 
 ### Security check
-The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks Maven project.
+The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks project under the StepUp Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
 ### Applications
@@ -170,7 +170,7 @@ Sample applications are available for iOS (Swift), Android, Windows 8.1/10, Cord
 **Users list**: See the `UserManager.java` file for a list of valid users.
 
 #### Deploy adapters
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **StepUp** and **ResourceAdapter** adapters](../../../adapters/creating-adapters/).
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy](../../../adapters/creating-adapters/) the available **StepUp** and **ResourceAdapter** adapters.
 
 #### Register applications
 **Cordova**  

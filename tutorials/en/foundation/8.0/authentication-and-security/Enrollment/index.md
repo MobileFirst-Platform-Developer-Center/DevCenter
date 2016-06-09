@@ -171,11 +171,12 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
 
 ### IsEnrolled
 The `IsEnrolled` security check is protecting:
+
 * The **getBalance** resource so that only enrolled users can see the balance.
-* The **deletePinCode** resource so that deleting the **pinCode** will be possible only if it has been set before.
+* The **unenroll** resource so that deleting the **pinCode** will be possible only if it has been set before.
 
 #### Creating the Security Check
-[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
+[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -188,7 +189,7 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
 ```
 
 #### The IsEnrolledConfig Configuration Class
-We created an `IsEnrolledConfig` config class that extends `ExternalizableSecurityCheckConfig`:
+Create an `IsEnrolledConfig` configuration class that extends `ExternalizableSecurityCheckConfig`:
 
 ```java
 public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
@@ -202,7 +203,7 @@ public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
 }
 ```
 
-And added the `createConfiguration` method to the `IsEnrolled` class:
+Add the `createConfiguration` method to the `IsEnrolled` class:
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -213,7 +214,7 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
 }
 ```
 #### The initStateDurations Method
-We set the duration for the SUCCESS state for `successStateExpirationSec`:
+Set the duration for the SUCCESS state to `successStateExpirationSec`:
 
 ```java
 @Override
@@ -253,7 +254,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 ## Sample Applications
 
 ### Security check
-The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks Maven project.
+The `EnrollmentUserLogin`, `EnrollmentPinCode` and `IsEnrolled` security checks are available in the SecurityChecks project under the Enrollment Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
 ### Applications
@@ -265,7 +266,7 @@ Sample applications are available for iOS (Swift), Android,  Cordova and Web.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
 
 #### Deploy adapters
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **Enrollment** and **ResourceAdapter** adapters](../../../adapters/creating-adapters/).
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy](../../../adapters/creating-adapters/) the available **Enrollment** and **ResourceAdapter** adapters.
 
 #### Register applications
 **Cordova**  
@@ -284,7 +285,7 @@ Make sure you have Node.js installed.
 Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.enrollmentweb`.
 
 #### Scope mapping
-In the **MobileFirst Operations Console → StepUpWeb → Security**, map the following scopes:
+In the **MobileFirst Operations Console → EnrollmentWeb → Security**, map the following scopes:
 
 * `setPinCode` scope to `EnrollmentUserLogin` security check
 * `accessRestricted` scope to `IsEnrolled` security check
