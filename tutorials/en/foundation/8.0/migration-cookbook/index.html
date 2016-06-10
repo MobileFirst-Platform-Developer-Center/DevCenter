@@ -51,8 +51,9 @@ show_in_nav: false
                             <h3 class="no-anchor">Migrating<br/>Applications</h3>        
                             
                             <br/>
-                            <p style="margin-left: 25px"><a href="#moving-from-classic-hybrid-mfp-cordova-apps-to-standard-cordova-apps">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></p>
-                            <p style="margin-left: 25px"><a href="#updating-the-sdks-in-native-applications">Updating the SDKs in native<br/> applications</a></p>
+                            <p style="margin-left: 25px"><a href="#migrating-hybrid-to-cordova">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></p>
+                            <p style="margin-left: 25px"><a href="#migrating-web-apps">Modifying Mobile Web /<br/>Desktop Browser apps</a></p>
+                            <p style="margin-left: 25px"><a href="#updating-native-sdks">Updating the SDKs in native<br/> applications</a></p>
                         </div>
                     </a>
                 </div>
@@ -62,7 +63,7 @@ show_in_nav: false
                             <h3 class="no-anchor">Migrating<br/>Adapters</h3>        
                             
                             <br/>
-                            <p style="margin-left: 25px"><a href="#migration-assistance-tool">Setting up the Migration<br/>Assistance tool</a></p>
+                            <p style="margin-left: 25px"><a href="#adapters">Moving to Maven projects</a></p>
                         </div>
                     </a>
                 </div>
@@ -104,17 +105,18 @@ show_in_nav: false
 <div class="migrationOption-section-gutter migrationOption-apps-gutter-color hidden-sm hidden-xs hidden-md">
     <span class="migrationOption-section-number migrationOption-section-number-apps hidden-sm hidden-xs hidden-md">2</span>
     <h2>Migrating Applications</h2>
-    <p>In this section you'll be guided through the steps to migrate your Classic Hybrid/MFPF Cordova and Native applications.  
+    <p>In this section you'll be guided through the steps to migrate your Classic Hybrid/MFPF Cordova, Native and web applications.  
     This section includes: assessing the changes in the API by running the Migration Assistance tool, setting up the project structure, managing the application source, using package managers and handling API changes.</p>
 
     <b>Select your application type:</b>
     
     <ul>
         <li><a href="#moving-from-classic-hybrid-mfp-cordova-apps-to-standard-cordova-apps">Classic Hybrid applications</a></li>
+        <li><a href="#modifying-web-apps">Mobile Web/DesktopBrowser applications</a></li>
         <li><a href="#updating-the-sdks-in-native-applications">Native applications</a></li>
     </ul>
 
-    <h3>Moving from Classic Hybrid/MFPF Cordova apps to standard Cordova apps</h3>
+    <h3 id="migrating-hybrid-to-cordova">Moving from Classic Hybrid/MFPF Cordova apps to standard Cordova apps</h3>
     <p><i>This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1</i><p>
 
     <p>In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in or MobileFirst CLI. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model.</p>
@@ -288,7 +290,9 @@ show_in_nav: false
         <li><a href="#migrating-adapters">Migrate your adapters</a>.</li>
     </ul>
     
-    <h2>Updating the SDKs in native applications</h2>
+    <h3 id="migrating-web-apps" style="color:red">Modifying Mobile Web/Desktop Browser applications</h3>
+    
+    <h3 id="updating-native-sdks">Updating the SDKs in native applications</h3>
     <p>In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, the SDKs for native applications required using the Eclipse Studio plug-in or MobileFirst CLI to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs followed by further project setup.</p>
 
     <p>Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: <a href="https://cocoapods.org/">CocoaPods for iOS</a>, <a href="https://gradle.org/">Gradle for Android</a> and <a href="https://www.nuget.org/">NuGet for Windows</a>. With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platform's environment.</p>
@@ -806,21 +810,27 @@ export MVN_PATH="/usr/local/bin"
     <h3>Adapters</h3>
     <h4>JavaScript adapters</h4>
     <b>Global variables and sessions</b><br/>
-    Avoid using global variables in JavaScript adapters to save data on the session - since there is no "session". This change in behavior <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html">first appeared in  MobileFirst Platform Foundation 7.1</a>. However, you can use global variables in order to save data for use during a single request. Keep in mind though that this is not a recommended practice anylonger.</li>
+    <p>Avoid using global variables in JavaScript adapters to save data on the session - since there is no "session". This change in behavior <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html">first appeared in  MobileFirst Platform Foundation 7.1</a>. However, you can use global variables in order to save data for use during a single request. Keep in mind though that this is not a recommended practice anylonger.</p>
     
-    <h4 style="color:red">connectAs</h4>
+    <b style="color:red">connectAs</b><br/>
     ??
     
     <h3>Authentication framework</h3>
-    <p>The authentication framework in MobileFirst Foundation 8.0 is unlike in previous releases. This area of the migration process will require you to re-implement some of your application backend and client logic.</p>
+    <p>The authentication framework in MobileFirst Foundation 8.0 is unlike in previous releases, as such you will need to re-implement some of your application backend &amp; client logic.</p>
     
-    <blockquote>It is highly advised that you will take a moment to familiarize with the new authentication framework. <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/">Learn more in the Authentication tutorials</a>.</blockquote>
+    <p>It is highly advised that you will take the time to familiarize yourself with the new authentication framework and its authorization flow, which are now based solely on OAuth, as well new authorization entities such as access tokens, security checks and scopes - which replace previously known entities such as security tests, realms and login modules.</p>
     
-    <h4 style="color:red">Security Tests, Realms, authentication concepts</h4>
-    ??
+    <blockquote>Learn more about the authentication framework and authorization concepts <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/">in the Authentication tutorials</a>.</blockquote>
     
-    <h3 style="color:red">Push Notifications</h3>
-    ??
+    <h3>Push Notifications</h3>
+    In MobileFirst Foundation 8.0 a new Push Service is introduced along side a new experience for setting up, configuring and sending notifications.  In addition, the concept of Event Source notifications has been retired. All is not lost, though! Find detailed scenario-based migration pathes in these user documentation topics:
+    
+    <ul>
+        <li><a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/upgrade/t_upgrade_push_to_beta.html#task_gdn_xzd_jv">Migrating to push notifications from event source-based notifications</a></li>
+        <li><a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/api/content/nl/en-us/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_push_service_model.html#concept_t5q_brl_fv">Migration scenarios by platform</a></li>
+    </ul>
+    
+    <blockquote>Learn more about setting up push notifications and sending authenticated and tag-based push notifications <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/notifications/">in the Notifications tutorials</a>.</blockquote>    
     
     <h3>Direct Update</h3>
     <p>The steps to deliver updates using the Direct Update feature have changed, and some restrictions are imposed.</p>
