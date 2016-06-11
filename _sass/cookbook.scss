@@ -1,8 +1,8 @@
 
 // Migration cookbook
 
-#migrationOptions {
-	
+#migrationSteps h2 {
+	margin-top: 0;
 }
 
 .migrationOption-migration-assistance-tool, .migrationOption-migrating-applications, .migrationOption-migrating-adapters, .migrationOption-development-topics  {
@@ -24,7 +24,10 @@ font-family: "Helvetica Neue Medium", Helvetica, Arial;
 }
 .migrationOption-section-number {
 	font-size:200px;
-	position:absolute;
+	position: relative;
+	top: -70px;
+	left: -136px;
+	height: 0;
 }
 
 .migrationOption-migration-assistance-tool-gutter-color {
@@ -41,19 +44,16 @@ font-family: "Helvetica Neue Medium", Helvetica, Arial;
 }
 .migrationOption-section-number-tool {
 	color: #c1e6fe;
-	left:-65px;top:779px;
+	left: -107px;
 }
 .migrationOption-section-number-apps {
 	color: #9be1d9;
-	left:-94px;top:1457px;
 }
 .migrationOption-section-number-adapters {
 	color: #c4e47a;
-	left:-94px;top:6687px;
 }
 .migrationOption-section-number-dev-topics {
 	color: #98d3fd;
-	left:-94px;top:11716px;
 }
 hr {
 	border: 2px solid #c8d2d2 !important;
