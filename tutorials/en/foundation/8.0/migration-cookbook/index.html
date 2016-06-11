@@ -10,7 +10,6 @@ show_in_nav: false
     <ul>
         <li>write about web platform</li>
         <li>add instructions to register the apps and adapters to test the migration</li>
-        <li>write about installation options (bluemix/devkit)?</li>
         <li>write about the new console?</li>
     </ul>
 </div>
@@ -31,12 +30,13 @@ show_in_nav: false
         <div class="row">
             <div id="migrationOptions">
                 <div class="col-md-3">
-                    <a href="#migration-assistance-tool">
+                    <a href="#env-setup">
                         <div class="migrationOption" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
-                            <h3 class="no-anchor">Migration<br/>Assistance Tool</h3>    
+                            <h3 class="no-anchor">Setup &amp;<br/>Tools</h3>    
                             
                             <br/>
-                            <p class="topic"><a href="#migration-assistance-tool">Setting up the Migration<br/>Assistance tool</a></p>
+                            <p class="topic"><a href="#env-setup">Setting up a MobileFirst Server</a></p>
+                            <p class="topic"><a href="#env-setup">Setting up the Migration<br/>Assistance tool</a></p>
                         </div>
                     </a>
                 </div>
@@ -85,9 +85,15 @@ show_in_nav: false
 <br/><br/>
 
 <div id="migrationSteps">
-    <div class="gutter gutter-migration-assistance-tool-color">
+    <div class="gutter gutter-env-setup-color">
         <div class="number number-tool hidden-sm hidden-xs hidden-md">1</div>
-        <h2 id="migration-assistance-tool">Installing the Migration Assistance Tool</h2>
+        <h2 id="env-setup">Setup</h2>
+        <p>A couple of things are needed before the migration can begin: a running MobileFirst Server and the Migration Assitance tool.</p>
+        
+        <h3>MobileFirst Server</h3>
+        <p>You can setup a MobileFirst Server on <a href="https://bluemix.net">IBM Bluemix</a> using the Mobile Foundation Bluemix service <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/">in a few simple steps</a>. Alternatively, you can use the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/">MobileFirst Developer Kit</a> to setup a locally running server.</p>
+        
+        <h3>Migration Assitance tool</h3>
         <p>Since we’ll be using the Migration Assistance tool down the road, lets have it installed.</p>
 
         <ol>
