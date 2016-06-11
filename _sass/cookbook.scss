@@ -1,60 +1,65 @@
 
 // Migration cookbook
 
+#migrationOptions h3 {
+	color: #264a60;
+	text-align: center;
+	margin: 107px 280px 0 0;
+	font-size: 160%;
+}
+.migrationOption {
+	width: 500px;
+	height: 341px;
+	display: inline-block;
+	font-family: "Helvetica Neue Medium", Helvetica, Arial;	
+}
+
+.topic {
+	margin-left: 25px;
+}
+
 #migrationSteps h2 {
 	margin-top: 0;
 }
 
-.migrationOption-migration-assistance-tool, .migrationOption-migrating-applications, .migrationOption-migrating-adapters, .migrationOption-development-topics  {
-	width: 500px;
-	height: 341px;
-	display:inline-block;
-font-family: "Helvetica Neue Medium", Helvetica, Arial;	
-}
-
-.migrationOption-migration-assistance-tool h3, .migrationOption-migrating-applications h3, .migrationOption-migrating-adapters h3, .migrationOption-development-topics h3  {
-	color: #264a60;
-	text-align:center;
-	margin: 107px 280px 0 0;
-	font-size:160%;
-}
-
-.migrationOption-section-gutter {
+.gutter {
 	padding-left: 15px;
 }
-.migrationOption-section-number {
-	font-size:200px;
+.number {
+	font-size: 200px;
 	position: relative;
 	top: -70px;
 	left: -136px;
 	height: 0;
 }
 
-.migrationOption-migration-assistance-tool-gutter-color {
+.gutter-migration-assistance-tool-color {
 	border-left: 5px solid #c1e6fe;
 }
-.migrationOption-apps-gutter-color {
+.gutter-apps-color {
 	border-left: 5px solid #9be1d9;
 }
-.migrationOption-adapters-gutter-color {
+.gutter-adapters-color {
 	border-left: 5px solid #c4e47a;
 }
-.migrationOption-dev-topics-gutter-color {
+.gutter-dev-topics-color {
 	border-left: 5px solid #98d3fd;
 }
-.migrationOption-section-number-tool {
+
+.number-tool {
 	color: #c1e6fe;
-	left: -107px;
+	left: -104px;
 }
-.migrationOption-section-number-apps {
+.number-apps {
 	color: #9be1d9;
 }
-.migrationOption-section-number-adapters {
+.number-adapters {
 	color: #c4e47a;
 }
-.migrationOption-section-number-dev-topics {
+.number-dev-topics {
 	color: #98d3fd;
 }
+
 hr {
 	border: 2px solid #c8d2d2 !important;
 	margin: 15px 0 5px 0
