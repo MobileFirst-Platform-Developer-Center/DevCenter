@@ -32,45 +32,46 @@ show_in_nav: false
             <div id="migrationOptions">
                 <div class="col-md-3">
                     <a href="#migration-assistance-tool">
-                        <div class="migrationOption-migration-assistance-tool" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
+                        <div class="migrationOption" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
                             <h3 class="no-anchor">Migration<br/>Assistance Tool</h3>    
                             
                             <br/>
-                            <p style="margin-left: 25px"><a href="#migration-assistance-tool">Setting up the Migration<br/>Assistance tool</a></p>
+                            <p class="topic"><a href="#migration-assistance-tool">Setting up the Migration<br/>Assistance tool</a></p>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="#applications">
-                        <div class="migrationOption-migrating-applications"style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
+                        <div class="migrationOption"style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
                             <h3 class="no-anchor">Migrating<br/>Applications</h3>        
                             
                             <br/>
-                            <p style="margin-left: 25px"><a href="#migrating-hybrid-to-cordova">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></p>
-                            <p style="margin-left: 25px"><a href="#migrating-web-apps">Modifying Mobile Web /<br/>Desktop Browser apps</a></p>
-                            <p style="margin-left: 25px"><a href="#updating-native-sdks">Updating the SDKs in native<br/> applications</a></p>
+                            <p class="topic"><a href="#migrating-hybrid-to-cordova">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></p>
+                            <p class="topic"><a href="#migrating-web-apps">Modifying Mobile Web /<br/>Desktop Browser apps</a></p>
+                            <p class="topic"><a href="#updating-native-sdks">Updating the SDKs in native<br/> applications</a></p>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="#adapters">
-                        <div class="migrationOption-migrating-adapters"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
+                        <div class="migrationOption"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
                             <h3 class="no-anchor">Migrating<br/>Adapters</h3>        
                             
                             <br/>
-                            <p style="margin-left: 25px"><a href="#adapters">Moving to Maven projects</a></p>
+                            <p class="topic"><a href="#adapters">Moving to Maven projects</a></p>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-3">
                     <a href="#devtopics">
-                        <div class="migrationOption-development-topics"style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
+                        <div class="migrationOption"style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
                             <h3 class="no-anchor">Development<br/>Topics</h3>        
                             
                             <br/>
-                            <p style="margin-left: 25px"><a href="#development-topics">Adapters</a></p>
-                            <p style="margin-left: 25px"><a href="#development-topics">Authentication framework</a></p>
-                            <p style="margin-left: 25px"><a href="#development-topics">Push notifications</a></p>                            
+                            <p class="topic"><a href="#development-topics">Adapters</a></p>
+                            <p class="topic"><a href="#development-topics">Authentication framework</a></p>
+                            <p class="topic"><a href="#development-topics">Push notifications</a></p>
+                            <p class="topic"><a href="#development-topics">Direct Update</a></p> 
                         </div>
                     </a>
                 </div>  
@@ -81,8 +82,8 @@ show_in_nav: false
 <br/><br/>
 
 <div id="migrationSteps">
-    <div class="migrationOption-section-gutter migrationOption-migration-assistance-tool-gutter-color hidden-sm hidden-xs hidden-md">
-        <div class="migrationOption-section-number migrationOption-section-number-tool hidden-sm hidden-xs hidden-md">1</div>
+    <div class="gutter gutter-migration-assistance-tool-color hidden-sm hidden-xs hidden-md">
+        <div class="number number-tool hidden-sm hidden-xs hidden-md">1</div>
         <h2 id="migration-assistance-tool">Installing the Migration Assistance Tool</h2>
         <p>Since we’ll be using the Migration Assistance tool down the road, lets have it installed.</p>
 
@@ -98,8 +99,8 @@ show_in_nav: false
 
     <br id="applications"><br/> 
 
-    <div class="migrationOption-section-gutter migrationOption-apps-gutter-color hidden-sm hidden-xs hidden-md">
-        <span class="migrationOption-section-number migrationOption-section-number-apps hidden-sm hidden-xs hidden-md">2</span>
+    <div class="gutter gutter-apps-color hidden-sm hidden-xs hidden-md">
+        <span class="number number-apps hidden-sm hidden-xs hidden-md">2</span>
         <h2>Migrating Applications</h2>
         <p>In this section you'll be guided through the steps to migrate your Classic Hybrid/MFPF Cordova, Native and web applications.  
         This section includes: assessing the changes in the API by running the Migration Assistance tool, setting up the project structure, managing the application source, using package managers and handling API changes.</p>
@@ -184,31 +185,31 @@ show_in_nav: false
                                 <ul>
                                     <li>Add the following CSS code to the head of your index.html file, before your CSS code that is already there.
 
-        {% highlight html %}
-        <link rel="stylesheet" href="worklight/worklight.css">
-        <link rel="stylesheet" href="css/main.css">
-        {% endhighlight %}
+{% highlight html %}
+<link rel="stylesheet" href="worklight/worklight.css">
+<link rel="stylesheet" href="css/main.css">
+{% endhighlight %}
 
                                 <b>Note:</b> The <b>worklight.css</b> file sets the body attribute to relative. If this affects the style of your app, then declare a different value for the position in your own CSS code. For example:
 
-        {% highlight css %}
-        body {
-          position: absolute;
-        }
-        {% endhighlight %}
+{% highlight css %}
+body {
+  position: absolute;
+}
+{% endhighlight %}
                                     </li>
                                 
                                     <li>Add a reference to the Cordova JavaScript file to the head of the file after the CSS definitions.
 
-        {% highlight html %}<script type="text/javascript" src="cordova.js"></script>{% endhighlight %}
+{% highlight html %}<script type="text/javascript" src="cordova.js"></script>{% endhighlight %}
                                     </li>
                                 
 
                                     <li>Remove the following line of code if it is present.
-        {% highlight html %}<script>window.$ = window.jQuery = WLJQ;</script>{% endhighlight %}
+{% highlight html %}<script>window.$ = window.jQuery = WLJQ;</script>{% endhighlight %}
 
                                     You can download your own version of JQuery, and load it as shown in the following code line.
-        {% highlight html %}<script src="lib/jquery.min.js"></script>{% endhighlight %}
+{% highlight html %}<script src="lib/jquery.min.js"></script>{% endhighlight %}
 
                                     You do not have to move the optional jQuery addition to the lib folder. You can move this addition anywhere you want to, but you must correctly reference it in the index.html file.
                                     </li>
@@ -220,13 +221,13 @@ show_in_nav: false
                                     <li>Remove the following code from <b>InitOptions.js</b>.
                                     The function <code>WL.Client.init</code> is called automatically with the global variable <code>wlInitOptions</code>.
 
-        {% highlight javascript %}
-        if (window.addEventListener) {
-          window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
-        } else if (window.attachEvent) {
-          window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
-        }
-        {% endhighlight %}
+{% highlight javascript %}
+if (window.addEventListener) {
+  window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
                                     </li>
                                 </ul>
                             
@@ -236,23 +237,23 @@ show_in_nav: false
                                     <li>Edit the <b>config.xml</b> file and set the <code>mfp:clientCustomInit</code> element's <code>enabled</code> attribute to <b>true</b>.</li>
 
                                     <li>If you are using the MobileFirst hybrid default template, replace this code:
-        {% highlight javascript %}
-        if (window.addEventListener) {
-          window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
-        } else if (window.attachEvent) {
-          window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
-        }
-        {% endhighlight %}
+{% highlight javascript %}
+if (window.addEventListener) {
+  window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
 
         with the following code:
 
-        {% highlight javascript %}
-        if (document.addEventListener) {
-          document.addEventListener('mfpready', function() { WL.Client.init(wlInitOptions); }, false);
-        } else if (window.attachEvent) {
-          document.attachEvent('mfpready',  function() { WL.Client.init(wlInitOptions); });
-        }
-        {% endhighlight %}
+{% highlight javascript %}
+if (document.addEventListener) {
+  document.addEventListener('mfpready', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  document.attachEvent('mfpready',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
                                     </li>
                                 </ul>
                             </li>
@@ -394,9 +395,11 @@ show_in_nav: false
                                     <li>The Podfile is created at the root of the Xcode project. Find it and open it in an editor of your choosing.</li>
                                     <li>Comment out or remove the existing content.</li>
                                     <li>Add the following lines and save the changes, including the iOS version:
-                {% highlight xml %}use_frameworks!
-                platform :ios, 9.0
-                pod 'IBMMobileFirstPlatformFoundation'{% endhighlight %}
+{% highlight xml %}use_frameworks!
+platform :ios, 8.0
+target "replace-with-the-name-of-the-target-in-xcode-project" do
+    pod 'IBMMobileFirstPlatformFoundation'
+end{% endhighlight %}
 
                                     Additional pods:<br/>
                                     IBMMobileFirstPlatformFoundationPush<br/>
@@ -404,10 +407,12 @@ show_in_nav: false
                                     
                                     You can further specify additional pods in the file in case your app needs to use the additional functionality. For example, if your app uses OpenSSL, the Podfile might look like this:
 
-                {% highlight xml %}use_frameworks!
-                platform :ios, 9.0
-                pod 'IBMMobileFirstPlatformFoundation'
-                pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'{% endhighlight %}                
+{% highlight xml %}use_frameworks!
+platform :ios, 8.0
+target "replace-with-the-name-of-the-target-in-xcode-project" do
+    pod 'IBMMobileFirstPlatformFoundation'
+    pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
+end{% endhighlight %}                
                                     </li>
                                     <li>Run the <code>pod install</code> command. This command installs the MobileFirst Native SDK, IBMMobileFirstPlatformFoundation.framework, and any other frameworks that are specified in the Podfile and their dependencies. It then generates the pods project, and integrates the client project with the MobileFirst SDK.</li>
                                 </ul>
@@ -483,39 +488,39 @@ show_in_nav: false
                             <li>In <b>Android → Gradle Scripts</b>, select the <b>build.gradle (Module: app)</b> file.</li>
                             <li>Add the following lines below <code>apply plugin: 'com.android.application'</code>:
 
-        {% highlight xml %}repositories{
-            jcenter()
-        }{% endhighlight %}</li>
+{% highlight xml %}repositories{
+    jcenter()
+}{% endhighlight %}</li>
                             <li>Add the following inside <b>android</b>:
 
-        {% highlight xml %}packagingOptions {
-            pickFirst 'META-INF/ASL2.0'
-            pickFirst 'META-INF/LICENSE'
-            pickFirst 'META-INF/NOTICE'
-        }{% endhighlight %}</li>
+{% highlight xml %}packagingOptions {
+    pickFirst 'META-INF/ASL2.0'
+    pickFirst 'META-INF/LICENSE'
+    pickFirst 'META-INF/NOTICE'
+}{% endhighlight %}</li>
                             <li>Add the following lines inside <b>dependencies</b>:
 
-        {% highlight xml %}compile group: 'com.ibm.mobile.foundation',
-        name: 'ibmmobilefirstplatformfoundation',
-        version: '8.0.+',
-        ext: 'aar',
-        transitive: true{% endhighlight %}
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundation',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
 
                             You can further specify additional artfiacts in case your app needs to use the additional functionality. For example, if your app uses Push Notifications, add:
 
-        {% highlight xml %}compile group: 'com.ibm.mobile.foundation',
-        name: 'ibmmobilefirstplatformfoundationpush',
-        version: '8.0.+',
-        ext: 'aar',
-        transitive: true{% endhighlight %}
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationpush',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
 
                            Or if you intend on using JSONStore:
 
-        {% highlight xml %}compile group: 'com.ibm.mobile.foundation',
-        name: 'ibmmobilefirstplatformfoundationjsonstore',
-        version: '8.0.+',
-        ext: 'aar',
-        transitive: true{% endhighlight %}
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationjsonstore',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
                            
                         </ol>
                     </div>
@@ -600,8 +605,8 @@ show_in_nav: false
 
     <br id="adapters"/><br/>
 
-    <div class="migrationOption-section-gutter migrationOption-adapters-gutter-color hidden-sm hidden-xs hidden-md">
-        <span class="migrationOption-section-number migrationOption-section-number-adapters hidden-sm hidden-xs hidden-md">3</span>
+    <div class="gutter gutter-adapters-color hidden-sm hidden-xs hidden-md">
+        <span class="number number-adapters hidden-sm hidden-xs hidden-md">3</span>
         <h2>Migrating Adapters</h2>
         <p><i>This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1</i></p>
 
@@ -628,9 +633,9 @@ show_in_nav: false
                 <i>Mac and Linux:</i><br/>
                 Edit your <b>~/.bash_profile</b>:
             
-    {% highlight bash %}#### Apache Maven example location
-    export MVN_PATH="/usr/local/bin"
-    {% endhighlight %}
+{% highlight bash %}#### Apache Maven example location
+export MVN_PATH="/usr/local/bin"
+{% endhighlight %}
 
                 <i>Windows:</i><br/>
                 <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/">Follow this guide</a>.<br/><br/>
@@ -690,11 +695,11 @@ show_in_nav: false
             <li>Add a dependency for your database type. You can search for the appropriate depdendency to use <a href="http://search.maven.org/">in the Maven Central website</a>.
             <li>In this example we'll use MySQL database. Add the following code block in the <b>dependencies</b> section:
 
-    {% highlight xml %}<dependency>
-        <groupId>mysql</groupId>
-        <artifactId>mysql-connector-java</artifactId>
-        <version>5.1.6</version>
-    </dependency>{% endhighlight %}</li>
+{% highlight xml %}<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.6</version>
+</dependency>{% endhighlight %}</li>
         </ol>
         
         <p>If you have additional libraries, the <b>pom.xml</b> file is where you point to them - either to a local file or to a remote dependency.</p>
@@ -708,23 +713,23 @@ show_in_nav: false
         <br/>
         <p>Lets reflect for a moment on what was done above using "diagrams":</p>
         <i>Old structure of a JavaScript adapter</i>
-    {% highlight xml %}MyProject
-    ├── adapters
-    │   ├── RSSAdapter
-    │   │   ├── RSSAdapter-impl.js
-    │   │   ├── RSSAdapter.xml
-    │   │   └── filtered.xsl{% endhighlight %}
+{% highlight xml %}MyProject
+├── adapters
+│   ├── RSSAdapter
+│   │   ├── RSSAdapter-impl.js
+│   │   ├── RSSAdapter.xml
+│   │   └── filtered.xsl{% endhighlight %}
 
         <i>New structure of a JavaScript adapter</i>
-    {% highlight xml %}RSSAdapter
-    ├── pom.xml
-    ├── src
-    │   └── main
-    │       ├── adapter-resources
-    │       │   ├── adapter.xml
-    │       │   └── js
-    │       │        ├── RSSAdapter-impl.js
-    │       │        └── filtered.xml{% endhighlight %}
+{% highlight xml %}RSSAdapter
+├── pom.xml
+├── src
+│   └── main
+│       ├── adapter-resources
+│       │   ├── adapter.xml
+│       │   └── js
+│       │        ├── RSSAdapter-impl.js
+│       │        └── filtered.xml{% endhighlight %}
 
         <br/>
         <b>Java adapters</b>
@@ -749,31 +754,31 @@ show_in_nav: false
         <p>Lets reflect for a moment on what was done above using "diagrams":</p>
         <i>Old structure of a Java adapter</i>
         
-    {% highlight xml %}
-    ├── adapters
-    │   └── RSSAdapter
-    │       ├── RSSAdapter.xml
-    │       ├── lib
-    │       └── src
-    │           └── com
-    │               └── sample
-    │                   ├── RSSAdapterApplication.java
-    │                   └── RSSAdapterResource.java{% endhighlight %}
+{% highlight xml %}
+├── adapters
+│   └── RSSAdapter
+│       ├── RSSAdapter.xml
+│       ├── lib
+│       └── src
+│           └── com
+│               └── sample
+│                   ├── RSSAdapterApplication.java
+│                   └── RSSAdapterResource.java{% endhighlight %}
 
         <i>New structure of a Java adapter</i>
 
-    {% highlight xml %}
-    ├── pom.xml
-    ├── src
-    │   └── main
-    │       ├── adapter-resources
-    │       │   └── adapter.xml
-    │       └── java
-    │           └── com
-    │               └── sample
-    │                   ├── RSSAdapterApplication.java
-    │                   └── RSSAdapterResource.java
-    └{% endhighlight %}
+{% highlight xml %}
+├── pom.xml
+├── src
+│   └── main
+│       ├── adapter-resources
+│       │   └── adapter.xml
+│       └── java
+│           └── com
+│               └── sample
+│                   ├── RSSAdapterApplication.java
+│                   └── RSSAdapterResource.java
+└{% endhighlight %}
 
         <br/>
         <b>With the adapter's source now in its new home, it's time to try and build it and see if we have any errors...</b>
@@ -799,8 +804,8 @@ show_in_nav: false
 
     <br id="devtopics"/><br/>
 
-    <div class="migrationOption-section-gutter migrationOption-dev-topics-gutter-color hidden-sm hidden-xs hidden-md">
-        <span class="migrationOption-section-number migrationOption-section-number-dev-topics hidden-sm hidden-xs hidden-md">4</span>
+    <div class="gutter gutter-dev-topics-color hidden-sm hidden-xs hidden-md">
+        <span class="number number-dev-topics hidden-sm hidden-xs hidden-md">4</span>
         <h2>Development Topics</h2>
         <p>With applications and adapters now migrated to their new structure in MobileFirst Foundation 8.0, we do need to talk about some implementation concepts that have changed in the latest release.</p>
 
