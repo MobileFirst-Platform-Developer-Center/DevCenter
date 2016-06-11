@@ -122,7 +122,7 @@ show_in_nav: false
                         <h3 id="migrating-hybrid-to-cordova">Moving from Classic Hybrid/MFPF Cordova apps to standard Cordova apps</h3>
                             <p><i>This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1</i><p>
 
-                            <p>In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in or MobileFirst CLI. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model.</p>
+                            <p>In past releases, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in or MobileFirst CLI. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model.</p>
                             
                             <p>Cordova applications are created using standard community tools, for example the Cordova CLI (<b>note:</b> You can also <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/" target="_blank">setup Eclipse for Cordova application development</a>). The MobileFirst Cordova SDK is added to the mixture using the Cordova CLI as a set of Cordova plug-ins, available from <a href="https://npmjs.org" target="_blank">npm</a>.</p>
 
@@ -337,7 +337,7 @@ if (document.addEventListener) {
             <div id="collapseMigrateNative" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-native">
                 <div class="panel-body">
                     <h3 id="updating-native-sdks">Updating the SDKs in native applications</h3>
-                    <p>In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, the SDKs for native applications required using the Eclipse Studio plug-in or MobileFirst CLI to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs followed by further project setup.</p>
+                    <p>In past releases, the SDKs for native applications required using the Eclipse Studio plug-in or MobileFirst CLI to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs followed by further project setup.</p>
 
                     <p>Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: <a href="https://cocoapods.org/" target="_blank">CocoaPods for iOS</a>, <a href="https://gradle.org/" target="_blank">Gradle for Android</a> and <a href="https://www.nuget.org/" target="_blank">NuGet for Windows</a>. With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platforms.</p>
 
@@ -652,10 +652,7 @@ transitive: true{% endhighlight %}
                 </div>
             </div>
         </div>    
-</div>
-        
-        
-
+    </div>
 
     <br id="adapters"/><br/>
     
@@ -664,7 +661,7 @@ transitive: true{% endhighlight %}
         <h2>Migrating Adapters</h2>
         <p><i>This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1</i></p>
 
-        <p>In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Adapters were created, developed and built using the Eclipse Studio plug-in or the MobileFirst CLI. Starting MobileFirst Foundation 8.0, adapters are now considered as standard Apache Maven projects using IBM-provided archetypes for generating the Java and JavaScript adapter types. Using Maven provides to server-side developers a simple and standard way to manage and integrate required dependencies, as well as frees them to use their favorite tools during development time.</p>
+        <p>In past releases, adapters were created, developed and built using the MobileFirst Studio plug-in for Eclipse or the MobileFirst CLI. Starting MobileFirst Foundation 8.0, adapters are now considered as standard Apache Maven projects using IBM-provided archetypes for generating the Java and JavaScript adapter types. Using Maven provides to server-side developers a simple and standard way to manage and integrate required dependencies, as well as frees them to use their favorite tools during development time.</p>
 
         <p>Maven projects can be created from a command-line using either Maven commands, or using the MobileFirst CLI that operates Maven commands behind-the-scenes.  
         You can also setup Eclipse or IntelliJ to <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">create and develop adapters in an IDE environment</a>.</p>
