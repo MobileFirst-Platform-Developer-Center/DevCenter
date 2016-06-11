@@ -18,7 +18,7 @@ show_in_nav: false
     <blockquote><b>Note:</b> This cookbook does not attempt to cover all possible migration scenarios and you are advised <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html">to visit the migration user documentation topics for a comprehensive read</a>.</blockquote>
     
     <h2>Quick Start</h2>
-    <p>Before getting started with migrating your applications and adapters, and in case you haven't already, it is recommended that you will go through the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/">Quick Start tutorials</a> to get familiar and experience MobileFirst Foundation 8.0. Additional information <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">can be read throughout in our tutorials</a>.</p>
+    <p>Before getting started with migrating your applications and adapters, and in case you haven't already, it is recommended that you will go through the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/">Quick Start tutorials</a> to get familiar and experience MobileFirst Foundation 8.0. Additional information <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">can be read throughout in our tutorials</a> about topics such as registering applications, deploying adapters and lots more.</p>
     
     <br/>
     <div id="container" class="boxes hidden-sm hidden-xs hidden-md">
@@ -41,9 +41,9 @@ show_in_nav: false
                             <h3 class="no-anchor">Migrating<br/>Applications</h3>        
                             
                             <br/>
-                            <p class="topic"><a href="#migrating-hybrid-to-cordova">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></p>
-                            <p class="topic"><a href="#migrating-web-apps">Modifying Mobile Web /<br/>Desktop Browser apps</a></p>
-                            <p class="topic"><a href="#updating-native-sdks">Updating the SDKs in native<br/> applications</a></p>
+                            <p class="topic"><a href="#applications">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></p>
+                            <p class="topic"><a href="#applications">Modifying Mobile Web /<br/>Desktop Browser apps</a></p>
+                            <p class="topic"><a href="#applications">Updating the SDKs in native<br/> applications</a></p>
                         </div>
                     </a>
                 </div>
@@ -269,7 +269,27 @@ if (document.addEventListener) {
         <br/>
         <h4>Step 4</h4>
         <p>The Cordova application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser window and review the presented items. For each item in the report, you will need to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_webview.html?lang=en">either implement it differently or replace it entirely</a>. You can re-run the Migration Assistance tool, this time pointing to the new Cordova application to check again for any APIs that were not dealt with.</p>
-
+        
+        <br/>
+        <h4>Step 5</h4>
+        <p>To test the Cordova application you can either preview only its web resources, run in a simulator/emulator or in a physical device.<br/>
+            <b>Note:</b> Depending on your application flow you may need to continue adjusting your code (see below) before being able to test it.</p>
+        
+        <p><b>Previewing web resources:</b></p>
+        <ul>
+            <li>From a command-line window, navigate to the applications root folder</li>
+            <li>Run the command: <code>mfpdev app preview</code>
+        </ul>
+        
+        <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/mfpf-development-in-cordova-applications/#mobilefirst-apis">previewing an application's web resources</a></blockquote>
+        
+        <p><b>Testing in emulator/simulator or physical device:</b><br/>
+        <ul>
+            <li>From a command-line window, navigate to the applications root folder</li>
+            <li>If you're only testing UI, you can simply build &amp; run the application: <code>cordova run platform-name</code></li>
+            <li>If you're also testing application logic related to MobileFirst, make sure to first register the application <code>mfpdev app register</code></li>
+        </ul>
+    
         <br/>
         <blockquote>
             <b>Supplemental reading:</b>
@@ -610,6 +630,10 @@ transitive: true{% endhighlight %}
                     </ul>
                     
                     <br/>
+                    <h4>Step 4</h4>
+                    <p>To test the application, run it in the specific platform's IDE.</p>
+                    
+                    <br/>
                     <blockquote>
                         <b>Supplemental reading:</b>
                         <ul>
@@ -760,7 +784,7 @@ export MVN_PATH="/usr/local/bin"
 </dependency>{% endhighlight %}</li>
                         </ol>
                         
-                        <p>If you have additional libraries, the <b>pom.xml</b> file is where you point to them - either to a local file or to a remote dependency.</p>
+                        <p>If you have additional dependencies, the <b>pom.xml</b> file is where you point to them - either to a local file or to a remote dependency.</p>
                         
                         <blockquote><b>Learn more about Maven dependencies:</b><br/>
                             <ul>
@@ -863,6 +887,7 @@ export MVN_PATH="/usr/local/bin"
 
                 <div id="collapseBuildAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
                     <div class="panel-body">    
+                        <h3>Building the migrated adapter</h3>
                         <p>From a command-line window, navigate into the adapter's folder and run the command: <code>mfpdev adapter build</code>.</p>
 
                         <img alt="Building adapters in command line - failures" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/compilation-errors.png"/>
@@ -871,6 +896,10 @@ export MVN_PATH="/usr/local/bin"
                         With an IDE at your disposal it will be easier to iterate through the build errors and resolve them one-by-one. <a href="{{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters/">Learn more about using IntelliJ and MobileFirst adapters</a>.</p>
 
                         <img alt="Using IntelliJ" src="intellij.png"/>                        
+                        
+                        <h3>Testing the built adapter</h3>
+                        <p>To test the migrated adapters you can use either the MobileFirst CLI to call your endpoints, or use Swagger.
+                            <blockquote>Learn more about testing adapters in the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a> tutorial.</blockquote></p>
                     </div>
                 </div>
             </div>
