@@ -15,10 +15,10 @@ show_in_nav: false
     <p>To ease some aspects of the migration process, a Migration Assistance tool is provided.<br/>
     The tool helps in identifying areas in your codebase that you will need to inspect and alter, such as APIs that are deprecated, no longer supported, or modified.</p>
 
-    <blockquote><b>Note:</b> This cookbook does not attempt to cover all possible migration scenarios and you are advised <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html">to visit the migration user documentation topics for a comprehensive read</a>.</blockquote>
+    <blockquote><b>Note:</b> This cookbook does not attempt to cover all possible migration scenarios and you are advised <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html" target="_blank">to visit the migration user documentation topics for a comprehensive read</a>.</blockquote>
     
     <h2>Quick Start</h2>
-    <p>Before getting started with migrating your applications and adapters, and in case you haven't already, it is recommended that you will go through the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/">Quick Start tutorials</a> to get familiar and experience MobileFirst Foundation 8.0. Additional information <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/">can be read throughout our tutorials</a> about topics such as registering applications, deploying adapters and lots more.</p>
+    <p>Before getting started with migrating your applications and adapters, and in case you haven't already, it is recommended that you will go through the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/">Quick Start tutorials</a> to get familiar and experience MobileFirst Foundation 8.0. Additional information <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/" target="_blank">can be read throughout our tutorials</a> about topics such as registering applications, deploying adapters and lots more.</p>
     
     <br/>
     <div id="container" class="boxes hidden-sm hidden-xs hidden-md">
@@ -86,13 +86,13 @@ show_in_nav: false
         <p>A couple of things are needed before the migration can begin: a running MobileFirst Server and the Migration Assitance tool.</p>
         
         <h3>MobileFirst Server</h3>
-        <p>You can setup a MobileFirst Server on <a href="https://bluemix.net">IBM Bluemix</a> using the Mobile Foundation Bluemix service <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/">in a few simple steps</a>. Alternatively, you can use the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/">MobileFirst Developer Kit</a> to setup a locally running server.</p>
+        <p>You can setup a MobileFirst Server on <a href="https://bluemix.net">IBM Bluemix</a> using the Mobile Foundation Bluemix service <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/" target="_blank">in a few steps</a>. Alternatively, you can use the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/" target="_blank">MobileFirst Developer Kit</a> to setup a locally running server.</p>
         
         <h3>Migration Assitance tool</h3>
         <p>With the MobileFirst Server up &amp; running, and since we’ll be using the Migration Assistance tool down the road, lets have the tool installed.</p>
 
         <ol>
-            <li><a href="https://nodejs.org/en/">Install NodeJS</a> as it is a prerequisite for the tool to work.</li>
+            <li><a href="https://nodejs.org/en/" target="_blank">Install NodeJS</a> as it is a prerequisite for the tool to work.</li>
             <li>From the MobileFirst Operations Console, click on the Download Center link at the bottom of the sidebar navigation and download &amp; install the Migration Assistance tool. </li>
         </ol>
 
@@ -122,11 +122,11 @@ show_in_nav: false
 
                             <p>In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, Classic Hybrid applications were created, developed, built and managed using the Eclipse Studio plug-in or MobileFirst CLI. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model.</p>
                             
-                            <p>Cordova applications are created using standard community tools, for example the Cordova CLI (<b>note:</b> You can also <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/">setup Eclipse for Cordova application development</a>). The MobileFirst Cordova SDK is added to the mixture using the Cordova CLI as a set of Cordova plug-ins, available from <a href="https://npmjs.org">npm</a>.</p>
+                            <p>Cordova applications are created using standard community tools, for example the Cordova CLI (<b>note:</b> You can also <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/" target="_blank">setup Eclipse for Cordova application development</a>). The MobileFirst Cordova SDK is added to the mixture using the Cordova CLI as a set of Cordova plug-ins, available from <a href="https://npmjs.org" target="_blank">npm</a>.</p>
 
-                            <p>The move to standard Cordova applications opens the door for developers to use their favorite tools and their own approaches to application development. As a developer you are now super-charged with the power that is the <a href="http://cordova.apache.org">Cordova eco-system</a>.</p>
+                            <p>The move to standard Cordova applications opens the door for developers to use their favorite tools and their own approaches to application development. As a developer you are now super-charged with the power that is the <a href="http://cordova.apache.org" target="_blank">Cordova eco-system</a>.</p>
 
-                            <blockquote>Learn more about Cordova application development in MobileFirst Foundation 8.0 <a href="{{site.basurl}}/tutorials/en/foundation/8.0/cordova-tutorials/">in the tutorials section</a>.</blockquote>
+                            <blockquote>Learn more about Cordova application development in MobileFirst Foundation 8.0 <a href="{{site.basurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">in the tutorials section</a>.</blockquote>
 
                             <p>To benefit from this newly gained power you’ll need to migrate your existing Classic Hybrid app structure to a standard Cordova app structure.  
                             So lets do that.</p>
@@ -143,7 +143,7 @@ show_in_nav: false
                                 <li>Replace <b>destination_directory</b> with a path to a folder that will house the converted application and the generated API report</li>
                             </ul>
         
-                            <blockquote>You can read more about what that the Migration Assistance tool does <a href=" http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool.html">in this user documentation topic</a>.</blockquote>
+                            <blockquote>You can read more about what that the Migration Assistance tool does <a href=" http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool.html" target="_blank">in this user documentation topic</a>.</blockquote>
 
                             <img alt="Migrate a Classic Hybrid app to a standard Cordova app" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/cordova-migration.png"/>
 
@@ -165,13 +165,13 @@ show_in_nav: false
                             <b>MFPF 7.1 Cordova app</b><br/>
                             <p>copy the <b>www</b> folder and replace the existing <b>www</b> folder of the Cordova app.</p>
 
-                            <p><b>Note:</b> If you have environment-specific implementation in your Classic Hybrid app you can copy it over <a href="http://cordova.apache.org/docs/en/latest/guide/cli/index.html#using-merges-to-customize-each-platform">using Cordova Merges</a>.</p>
+                            <p><b>Note:</b> If you have environment-specific implementation in your Classic Hybrid app you can copy it over <a href="http://cordova.apache.org/docs/en/latest/guide/cli/index.html#using-merges-to-customize-each-platform" target="_blank">using Cordova Merges</a>.</p>
 
-                            <blockquote>You are not required to use the Cordova application that is created for you by the Migration Assistance tool. Using the Cordova CLI you can create a new Cordova application on your own and add the MobileFirst Cordova SDK, as well as any 3rd party Cordova plug-in you may need. <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/">Follow the Cordova tutorials to learn more</a>.</blockquote>
+                            <blockquote>You are not required to use the Cordova application that is created for you by the Migration Assistance tool. Using the Cordova CLI you can create a new Cordova application on your own and add the MobileFirst Cordova SDK, as well as any 3rd party Cordova plug-in you may need. <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Follow the Cordova tutorials to learn more</a>.</blockquote>
 
                             <br/>
                             <h4>Step 3</h4>
-                            <p>With the application’s source code now in the Cordova app, <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_migrating_hybrid_byoc.html">a few code blocks need to be either added or edited</a>.</p>
+                            <p>With the application’s source code now in the Cordova app, <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_migrating_hybrid_byoc.html" target="_blank">a few code blocks need to be either added or edited</a>.</p>
 
                                 <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
                                 <div class="panel panel-default">
@@ -268,7 +268,7 @@ if (document.addEventListener) {
 
         <br/>
         <h4>Step 4</h4>
-        <p>The Cordova application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser window and review the presented items. For each item in the report, you will need to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_webview.html?lang=en">either implement it differently or replace it entirely</a>. You can re-run the Migration Assistance tool, this time pointing to the new Cordova application to check again for any APIs that were not dealt with.</p>
+        <p>The Cordova application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser window and review the presented items. For each item in the report, you will need to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_webview.html?lang=en" target="_blank">either implement it differently or replace it entirely</a>. You can re-run the Migration Assistance tool, this time pointing to the new Cordova application to check again for any APIs that were not dealt with.</p>
         
         <br/>
         <h4>Step 5</h4>
@@ -281,7 +281,7 @@ if (document.addEventListener) {
             <li>Run the command: <code>mfpdev app preview</code>
         </ul>
         
-        <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/mfpf-development-in-cordova-applications/#mobilefirst-apis">previewing an application's web resources</a></blockquote>
+        <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/mfpf-development-in-cordova-applications/#mobilefirst-apis" target="_blank">previewing an application's web resources</a></blockquote>
         
         <p><b>Testing in emulator/simulator or physical device:</b><br/>
         <ul>
@@ -294,11 +294,11 @@ if (document.addEventListener) {
         <blockquote>
             <b>Supplemental reading:</b>
             <ul>
-                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_cordova_vs_hybrid.html">Comparison of Cordova apps developed with V8.0.0 versus V7.1.0 and before
+                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_cordova_vs_hybrid.html" target="_blank">Comparison of Cordova apps developed with V8.0.0 versus V7.1.0 and before
     </a></li>
-                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_removed_features.html#c_removed__section_discontinued_feature_80">Features that are discontinued in 8.0.0 and features that are not included in 8.0.0</a></li>
-                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_convert2cordova.html">Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst version 8.0</a></li>
-                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_ios_encryption.html">Migrating encryption for Cordova iOS applications</a></li>
+                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.getstart.doc/what_s_new/c_removed_features.html#c_removed__section_discontinued_feature_80" target="_blank">Features that are discontinued in 8.0.0 and features that are not included in 8.0.0</a></li>
+                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_convert2cordova.html" target="_blank">Migrating existing hybrid or cross-platform apps to Cordova apps supported by MobileFirst version 8.0</a></li>
+                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_ios_encryption.html" target="_blank">Migrating encryption for Cordova iOS applications</a></li>
             </ul>
         </blockquote>
         
@@ -337,7 +337,7 @@ if (document.addEventListener) {
                     <h3 id="updating-native-sdks">Updating the SDKs in native applications</h3>
                     <p>In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, the SDKs for native applications required using the Eclipse Studio plug-in or MobileFirst CLI to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs followed by further project setup.</p>
 
-                    <p>Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: <a href="https://cocoapods.org/">CocoaPods for iOS</a>, <a href="https://gradle.org/">Gradle for Android</a> and <a href="https://www.nuget.org/">NuGet for Windows</a>. With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platforms.</p>
+                    <p>Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: <a href="https://cocoapods.org/" target="_blank">CocoaPods for iOS</a>, <a href="https://gradle.org/" target="_blank">Gradle for Android</a> and <a href="https://www.nuget.org/" target="_blank">NuGet for Windows</a>. With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platforms.</p>
 
                     <blockquote>Learn more about Native application development in MobileFirst Foundation 8.0 <a href="{{site.basurl}}/tutorials/en/foundation/8.0/">in the tutorials section</a>.</blockquote>
 
@@ -381,7 +381,7 @@ if (document.addEventListener) {
                     
                     <br/>
 
-                    <p>If the below doesn't cover your specific case do <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_projs.html">check the iOS migration user documentation topics</a>.</p>
+                    <p>If the below doesn't cover your specific case do <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_projs.html" target="_blank">check the iOS migration user documentation topics</a>.</p>
 
                     <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
@@ -496,7 +496,7 @@ end{% endhighlight %}
                     <br/>
 
                     <b>Android</b><br/>
-                    If the below doesn't cover your specific case do <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_android_projs.html">check the Android migration user documentation topics</a>.
+                    If the below doesn't cover your specific case do <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_android_projs.html" target="_blank">check the Android migration user documentation topics</a>.
 
                     <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
@@ -576,7 +576,7 @@ transitive: true{% endhighlight %}
 
 
                     <b>Windows</b><br/>
-                    If the below doesn't cover your specific case do <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_windows_projs.html">check the Windows migration user documentation topics</a>.
+                    If the below doesn't cover your specific case do <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_windows_projs.html" target="_blank">check the Windows migration user documentation topics</a>.
 
                     <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
@@ -624,9 +624,9 @@ transitive: true{% endhighlight %}
                     <p>The Native application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser and review it. For each item in the report, you will need to either implement it differently or replace it entirely.</p>
 
                     <ul>
-                        <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_topics.html">iOS code changes</a></li>
-                        <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_androidSDK.html">Android code changes</a></li>
-                        <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_windowsSDK.html">Windows code changes</a></li>
+                        <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_topics.html" target="_blank">iOS code changes</a></li>
+                        <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_androidSDK.html" target="_blank">Android code changes</a></li>
+                        <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_windowsSDK.html" target="_blank">Windows code changes</a></li>
                     </ul>
                     
                     <br/>
@@ -637,7 +637,7 @@ transitive: true{% endhighlight %}
                     <blockquote>
                         <b>Supplemental reading:</b>
                         <ul>
-                            <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_encryption.html">Migrating encryption in iOS</a></li>
+                            <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_encryption.html" target="_blank">Migrating encryption in iOS</a></li>
                         </ul>
                     </blockquote>
 
@@ -671,7 +671,7 @@ transitive: true{% endhighlight %}
 
         <blockquote>Learn more about Adapters development in MobileFirst Foundation 8.0 <a href="{{site.basurl}}/tutorials/en/foundation/8.0/adapters">in the tutorials section</a>.</blockquote>
 
-        <p>To <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/t_migrating_adapters.html%23t_migrating_adapters">migrate existing adapters into Maven projects</a>, the process includes creating a matching new Maven project and copying into it the existing adapter's source code (with some modifications). This is then followed by building the Maven project to find any errors.</p>
+        <p>To <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/t_migrating_adapters.html%23t_migrating_adapters" target="_blank">migrate existing adapters into Maven projects</a>, the process includes creating a matching new Maven project and copying into it the existing adapter's source code (with some modifications). This is then followed by building the Maven project to find any errors.</p>
 
         <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
@@ -688,7 +688,7 @@ transitive: true{% endhighlight %}
                         <ol>
                             <li>Install Apache Maven.
                                 <ul>
-                                    <li><a href="https://maven.apache.org/download.cgi">Download the Apache Maven .zip</a>.</li>
+                                    <li><a href="https://maven.apache.org/download.cgi" target="_blank">Download the Apache Maven .zip</a>.</li>
                                     <li>Add a <code>MVN_PATH</code> variable, pointing to the Maven folder.</li>
                                 </ul>
                                 
@@ -700,12 +700,12 @@ export MVN_PATH="/usr/local/bin"
 {% endhighlight %}
 
                                 <i>Windows:</i><br/>
-                                <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/">Follow this guide</a>.<br/><br/>
+                                <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">Follow this guide</a>.<br/><br/>
                                 Verify the installation by executing: <code>mvn -v</code>.</li><br/>
                         
                             <li>The cookbook uses the MobileFirst CLI to call Maven commands in order to create and build the adapters.
                                 <ul>
-                                    <li>If you haven't already, <a href="https://nodejs.org/en/">install NodeJS</a> as it is a prerequisite for the tool to work.</li>
+                                    <li>If you haven't already, <a href="https://nodejs.org/en/" target="_blank">install NodeJS</a> as it is a prerequisite for the tool to work.</li>
                                     <li>From a command-line window, run the command: <code>npm install -g mfpdev-cli</code> (or download &amp; install it from the Download Center in the MobileFirst Operations Console).</li>
                                     <li>Verify the installation by executing: <code>mfpdev -v</code>.</li>
                                 </ul>
@@ -730,8 +730,8 @@ export MVN_PATH="/usr/local/bin"
                         <ul>
                             <li>From a command-line window, run the command: <code>mfpdev adapter create</code>.</li>
                             <li>Select the adapter type: an HTTP or SQL JavaScript adapter, or a Java adapter.</li>
-                            <li>Provide a <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html">GroupID</a>.</li>
-                            <li>If creating a Java adapter make sure to specify the same <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html">Package Name</a> that you have previously used (for example, "com.sample")</li>
+                            <li>Provide a <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">GroupID</a>.</li>
+                            <li>If creating a Java adapter make sure to specify the same <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">Package Name</a> that you have previously used (for example, "com.sample")</li>
                         </ul>
 
                         <img alt="Create an adapter template" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/creating-an-adapter.png"/>
@@ -774,7 +774,7 @@ export MVN_PATH="/usr/local/bin"
 
                         <ol>
                             <li>Go back to the newly created Maven project and open the <b>pom.xml</b> file located at the root of the directory.</li>
-                            <li>Add a dependency for your database type. You can search for the appropriate depdendency to use <a href="http://search.maven.org/">in the Maven Central website</a>.
+                            <li>Add a dependency for your database type. You can search for the appropriate depdendency to use <a href="http://search.maven.org/" target="_blank">in the Maven Central website</a>.
                             <li>In this example we'll use MySQL database. Add the following code block in the <b>dependencies</b> section:
 
 {% highlight xml %}<dependency>
@@ -788,7 +788,7 @@ export MVN_PATH="/usr/local/bin"
                         
                         <blockquote><b>Learn more about Maven dependencies:</b><br/>
                             <ul>
-                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html">Introduction to dependency mechanism (Maven.org)</a></li>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">Introduction to dependency mechanism (Maven.org)</a></li>
                                 <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">Handling dependencies (tutorial)</a></li>
                             </ul>
                         </blockquote>
@@ -838,7 +838,7 @@ export MVN_PATH="/usr/local/bin"
                         <br/>
                         <blockquote><b>Learn more about Maven dependencies:</b>
                             <ul>
-                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html">Introduction to dependency mechanism (Maven.org)</a></li>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">Introduction to dependency mechanism (Maven.org)</a></li>
                                 <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">Handling dependencies (tutorial)</a></li>
                             </ul>
                         </blockquote>
@@ -908,8 +908,8 @@ export MVN_PATH="/usr/local/bin"
 
         <blockquote><b>Supplemental reading:</b>
             <ul>
-                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/t_migrating_adapters.html%23t_migrating_adapters">Migrating existing adapters to work under MobileFirst Server V8.0.0</a></li>
-                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devref/r_server_side_api_changes.html#r_server_side_api_changes">Server-side API changes in Mobile Foundation 8.0</a></li>
+                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/t_migrating_adapters.html%23t_migrating_adapters" target="_blank">Migrating existing adapters to work under MobileFirst Server V8.0.0</a></li>
+                <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devref/r_server_side_api_changes.html#r_server_side_api_changes" target="_blank">Server-side API changes in Mobile Foundation 8.0</a></li>
             </ul>
         </blockquote>
     </div>
@@ -924,7 +924,7 @@ export MVN_PATH="/usr/local/bin"
         <h3>Adapters</h3>
         <h4>JavaScript adapters</h4>
         <b>Global variables and sessions</b><br/>
-        <p>Avoid using global variables in JavaScript adapters to save data on the session - since there is no "session". This change in behavior <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html">first appeared in  MobileFirst Platform Foundation 7.1</a>. However, you can use global variables in order to save data for use during a single request. Keep in mind though that this is not a recommended practice anylonger.</p>
+        <p>Avoid using global variables in JavaScript adapters to save data on the session - since there is no "session". This change in behavior <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html" target="_blank">first appeared in  MobileFirst Platform Foundation 7.1</a>. However, you can use global variables in order to save data for use during a single request. Keep in mind though that this is not a recommended practice anylonger.</p>
         
         <b style="color:red">connectAs</b><br/>
         <p>??</p>
@@ -934,14 +934,14 @@ export MVN_PATH="/usr/local/bin"
         
         <p>It is highly advised that you will take the time to familiarize yourself with the new security framework and its authorization flow, which are now based solely on OAuth, as well new authorization entities such as access tokens, security checks and scopes - which replace previously known entities such as security tests, realms and login modules.</p>
         
-        <blockquote>Learn more about the security framework and authorization concepts <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/">in the Authentication and security tutorials</a>.</blockquote>
+        <blockquote>Learn more about the security framework and authorization concepts <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/" target="_blank">in the Authentication and security tutorials</a>.</blockquote>
         
         <h3>Notifications</h3>
         In MobileFirst Foundation 8.0 a new Push Service is introduced along side a new experience for setting up, configuring and sending notifications.  In addition, the concept of Event Source push notifications has been retired. All is not lost, though! Find detailed scenario-based migration pathes in these user documentation topics:
         
         <ul>
-            <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/upgrade/t_upgrade_push_to_beta.html#task_gdn_xzd_jv">Migrating to push notifications from event source-based notifications</a></li>
-            <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_push_service_model.html#concept_t5q_brl_fv">Migration scenarios by platform</a></li>
+            <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/upgrade/t_upgrade_push_to_beta.html#task_gdn_xzd_jv" target="_blank">Migrating to push notifications from event source-based notifications</a></li>
+            <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_push_service_model.html#concept_t5q_brl_fv" target="_blank">Migration scenarios by platform</a></li>
         </ul>
         
         <blockquote>Learn more about setting up notifications support and sending authenticated and tag-based notifications <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/notifications/">in the Notifications tutorials</a>.</blockquote>    
@@ -951,11 +951,11 @@ export MVN_PATH="/usr/local/bin"
         
         <ul>
             <li>Learn more about how to use Direct Update in the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/direct-update/">Using Direct Update in Cordova applications</a> tutorial</li>
-            <li>Review the <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html">Migrating Direct Update</a> user documentation topic</li>
+            <li>Review the <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html" target="_blank">Migrating Direct Update</a> user documentation topic</li>
         </ul>
         
         <h3>Other</h3>
-        <p>In MobileFirst Foundation 8.0 several other components and features have been removed. For a full list review the <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_upgrade_cordova_removed_features.html">Removed Components</a> user documentation topic.</p>
+        <p>In MobileFirst Foundation 8.0 several other components and features have been removed. For a full list review the <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_upgrade_cordova_removed_features.html" target="_blank">Removed Components</a> user documentation topic.</p>
         
         <h3 style="color:red">Analytics</h3>
         <p>??</p>
