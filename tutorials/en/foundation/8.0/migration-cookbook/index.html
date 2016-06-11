@@ -19,7 +19,7 @@ show_in_nav: false
     <h2>Overview</h2>
     <p>The intent of this cookbook is to provide a clear and simple view of the migration steps for IBM Worklight Foundation 6.2 and IBM MobileFirst Platform Foundation 6.3-7.1 applications and adapters, to IBM MobileFirst Foundation 8.0.</p>
 
-    <p>The migration process will guide you through the steps to transform Classic Hybrid applications into standard Cordova applications, as well as update the MobileFirst SDK in native applications. Mobile Web apps are not forgotten and will be handled too. Adapters will be migrated into Maven projects, and implementation concepts such as the MobileFirst security framework, push notifications and direct update will be further clarified. You'll also be guided how to get your applications and adapters registered in the MobileFirst Server, since you'll probably want to test it. :)</p>
+    <p>The migration process will guide you through the steps to transform Classic Hybrid applications into standard Cordova applications, as well as update the MobileFirst SDK in native applications. Mobile Web apps are not forgotten and will be handled too. Adapters will be migrated into Maven projects, and implementation concepts such as the MobileFirst security framework, push notifications and direct update will be further clarified. You'll also be guided how to get your applications and adapters registered in the MobileFirst Server, since you'll probably want to test it all at some point...</p>
 
     <p>To ease some aspects of the migration process, a Migration Assistance tool is provided.<br/>
     The tool helps in identifying areas in your codebase that you will need to inspect and alter, such as APIs that are deprecated, no longer supported, or modified.</p>
@@ -59,7 +59,7 @@ show_in_nav: false
                             
                             <br/>
                             <p class="topic"><a href="#adapters">Setting-up Apache Maven</a></p>
-                            <p class="topic"><a href="#adapters">Creating a new Maven project</a></p>
+                            <p class="topic"><a href="#adapters">Creating a new Maven<br/>project</a></p>
                             <p class="topic"><a href="#adapters">Migrating source code</a></p>
                             <p class="topic"><a href="#adapters">Building and testing</a></p>
                         </div>
@@ -85,7 +85,7 @@ show_in_nav: false
 <br/><br/>
 
 <div id="migrationSteps">
-    <div class="gutter gutter-migration-assistance-tool-color hidden-sm hidden-xs hidden-md">
+    <div class="gutter gutter-migration-assistance-tool-color">
         <div class="number number-tool hidden-sm hidden-xs hidden-md">1</div>
         <h2 id="migration-assistance-tool">Installing the Migration Assistance Tool</h2>
         <p>Since we’ll be using the Migration Assistance tool down the road, lets have it installed.</p>
@@ -102,7 +102,7 @@ show_in_nav: false
 
     <br id="applications"><br/> 
 
-    <div class="gutter gutter-apps-color hidden-sm hidden-xs hidden-md">
+    <div class="gutter gutter-apps-color">
         <div class="number number-apps hidden-sm hidden-xs hidden-md">2</div>
         <h2>Migrating Applications</h2>
         <p>In this section you'll be guided through the steps to migrate your Classic Hybrid/MFPF Cordova, Native and web applications.  
@@ -634,7 +634,7 @@ transitive: true{% endhighlight %}
 
     <br id="adapters"/><br/>
     
-    <div class="gutter gutter-adapters-color hidden-sm hidden-xs hidden-md">
+    <div class="gutter gutter-adapters-color">
         <div class="number number-adapters hidden-sm hidden-xs hidden-md">3</div>
         <h2>Migrating Adapters</h2>
         <p><i>This aspect of the migration process applies to Worklight Foundation 6.2 - MobileFirst Platform Foundation 6.3-7.1</i></p>
@@ -888,7 +888,7 @@ export MVN_PATH="/usr/local/bin"
 
     <br id="devtopics"/><br/>
 
-    <div class="gutter gutter-dev-topics-color hidden-sm hidden-xs hidden-md">
+    <div class="gutter gutter-dev-topics-color">
         <div class="number number-dev-topics hidden-sm hidden-xs hidden-md">4</div>
         <h2>Development Topics</h2>
         <p>With applications and adapters now migrated to their new structure in MobileFirst Foundation 8.0, we do need to talk about some implementation concepts that have changed in the latest release.</p>
