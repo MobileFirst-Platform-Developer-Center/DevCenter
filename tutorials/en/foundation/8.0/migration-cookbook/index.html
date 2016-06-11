@@ -318,7 +318,7 @@ if (document.addEventListener) {
                     <h3 id="updating-native-sdks">Updating the SDKs in native applications</h3>
                     <p>In past releases of IBM Worklight Foundation and IBM MobileFirst Platform Foundation, the SDKs for native applications required using the Eclipse Studio plug-in or MobileFirst CLI to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs followed by further project setup.</p>
 
-                    <p>Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: <a href="https://cocoapods.org/">CocoaPods for iOS</a>, <a href="https://gradle.org/">Gradle for Android</a> and <a href="https://www.nuget.org/">NuGet for Windows</a>. With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platform's environment.</p>
+                    <p>Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: <a href="https://cocoapods.org/">CocoaPods for iOS</a>, <a href="https://gradle.org/">Gradle for Android</a> and <a href="https://www.nuget.org/">NuGet for Windows</a>. With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platforms.</p>
 
                     <blockquote>Learn more about Native application development in MobileFirst Foundation 8.0 <a href="{{site.basurl}}/tutorials/en/foundation/8.0/">in the tutorials section</a>.</blockquote>
 
@@ -328,7 +328,7 @@ if (document.addEventListener) {
                     <h4>Step 1</h4>
                     <p>Use the Migration Assistance tool to generate an API report.</p>
 
-                    <blockquote><b>Note:</b> at this time the Migration Assistance tool supports scanning applications based on MobileFirst Platform Foundation 7.1 only.</blockquote>
+                    <blockquote><b>Note:</b> at this time the Migration Assistance tool supports scanning native applications that are based on MobileFirst Platform Foundation 7.1 only.</blockquote>
 
                     <p>Open a command-line window and use the Migration Assistance tool in the following manner:</p>
                 {% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type platform{% endhighlight %}
@@ -419,7 +419,7 @@ if (document.addEventListener) {
                                                 <li>Run the <code>pod init</code> command to create a Podfile file.</li>
                                                 <li>The Podfile is created at the root of the Xcode project. Find it and open it in an editor of your choosing.</li>
                                                 <li>Comment out or remove the existing content.</li>
-                                                <li>Add the following lines and save the changes, including the iOS version:
+                                                <li>Add the following lines and save the changes. Remember to update the <b>target</b> value:
 {% highlight xml %}use_frameworks!
 platform :ios, 8.0
 target "replace-with-the-name-of-the-target-in-xcode-project" do
@@ -442,14 +442,14 @@ end{% endhighlight %}
                                                 <li>Run the <code>pod install</code> command. This command installs the MobileFirst Native SDK, IBMMobileFirstPlatformFoundation.framework, and any other frameworks that are specified in the Podfile and their dependencies. It then generates the pods project, and integrates the client project with the MobileFirst SDK.</li>
                                             </ul>
                                         </li>
-                                        <li>Open your <b>ProjectName.xcworkspace</b> file in Xcode by typing <b>open ProjectName.xcworkspace</b> from a command line. This file is in the same directory as the ProjectName.xcodeproj file. You can also double-click it.</li>
-                                        <li>Replace all of the existing MobileFirst imports of headers with a single entry of the following new umbrella header:<br/><br/>
+                                        <li>Open your <b>ProjectName.xcworkspace</b> file in Xcode by typing <b>open ProjectName.xcworkspace</b> from a command line. This file is in the same directory as the ProjectName.xcodeproj file. You can also double-click it from Finder.</li>
+                                        <li>Replace all of the existing MobileFirst imports of headers with a single entry of the following new umbrella header:<br/>
                                         
                                         <b>Objective C:</b><br/>
                                         <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code>
                                         <br/><br/>
                                         <b>Swift:</b><br/>
-                                        <code>import IBMMobileFirstPlatformFoundation</code>
+                                        <code>import IBMMobileFirstPlatformFoundation</code><br/>
                                         </li>
                                         <li>In the <b>Build Settings</b> tab, under <b>Other Linker Flags</b>, add <code>$(inherited)</code> at the beginning of the <b>-ObjC</b> flag.</li>
                                         <li>If you are using Push Notifications or JSONStore, you need to include an independent import.
@@ -899,10 +899,10 @@ export MVN_PATH="/usr/local/bin"
         <p>Avoid using global variables in JavaScript adapters to save data on the session - since there is no "session". This change in behavior <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html">first appeared in  MobileFirst Platform Foundation 7.1</a>. However, you can use global variables in order to save data for use during a single request. Keep in mind though that this is not a recommended practice anylonger.</p>
         
         <b style="color:red">connectAs</b><br/>
-        ??
+        <p>??</p>
         
         <h3>Security framework</h3>
-        <p>The security framework in MobileFirst Foundation 8.0 is unlike in previous releases, as such you will need to re-implement some of your application backend &amp; client logic.</p>
+        <p>The security framework in MobileFirst Foundation 8.0 is unlike in previous releases. As such you will need to re-implement some of your application backend &amp; client logic.</p>
         
         <p>It is highly advised that you will take the time to familiarize yourself with the new security framework and its authorization flow, which are now based solely on OAuth, as well new authorization entities such as access tokens, security checks and scopes - which replace previously known entities such as security tests, realms and login modules.</p>
         
@@ -930,6 +930,6 @@ export MVN_PATH="/usr/local/bin"
         <p>In MobileFirst Foundation 8.0 several other components and features have been removed. For a full list <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_upgrade_cordova_removed_features.html">review the Removed Components user documentation topic</a> .</p>
         
         <h3 style="color:red">Analytics</h3>
-        ??
+        <p>??</p>
     </div>
 </div>
