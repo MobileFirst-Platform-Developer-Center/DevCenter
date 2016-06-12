@@ -18,7 +18,7 @@ show_in_nav: false
     <blockquote><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <b>Note:</b> This cookbook does not attempt to cover all possible migration scenarios and you are advised <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html" target="_blank">to visit the migration user documentation topics for a comprehensive read</a>.</blockquote>
     
     <h2>Getting Help</h2>
-    <p>The MobileFirst Foundation team is here to help with any questions you may have.</br>
+    <p>The MobileFirst Foundation team is here to help with any questions you may have.<br/>
     For official support <a href="https://www-947.ibm.com/support/servicerequest/newServiceRequest.action">please open a PMR</a>. You can also ask questions over at <a href="https://stackoverflow.com/questions/tagged/ibm-mobilefirst" target="_blank">StackOverflow</a> and <a href="{{site.baseurl}}/blog/2015/08/19/come-chat-with-us/" target="_blank">in our Slack community</a>.</p>
     
     <h2>Quick Start</h2>
@@ -30,54 +30,46 @@ show_in_nav: false
     <div id="container" class="boxes hidden-sm hidden-xs hidden-md">
         <div class="row">
             <div id="migrationOptions">
-                <div class="col-md-3">
-                    <a href="#env-setup">
-                        <div class="migrationOption" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
-                            <h3 class="no-anchor">Setup &amp;<br/>Tools</h3>    
-                            
-                            <br/>
-                            <p class="topic"><a href="#env-setup">Setting up a MobileFirst<br/>Server</a></p>
-                            <p class="topic"><a href="#env-setup">Setting up the Migration<br/>Assistance tool</a></p>
-                        </div>
-                    </a>
+                <div class="col-md-3">                    
+                    <div class="migrationOption" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
+                        <h3 class="no-anchor">Setup &amp;<br/>Tools</h3>    
+                        
+                        <br/>
+                        <p class="topic"><a href="#env-setup">Setting up a MobileFirst<br/>Server</a></p>
+                        <p class="topic"><a href="#env-setup">Setting up the Migration<br/>Assistance tool</a></p>
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <a href="#applications">
-                        <div class="migrationOption"style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
-                            <h3 class="no-anchor">Migrating<br/>Applications</h3>        
-                            
-                            <br/>
-                            <p class="topic"><a href="#applications">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></p>
-                            <p class="topic"><a href="#applications">Modifying Mobile Web /<br/>Desktop Browser apps</a></p>
-                            <p class="topic"><a href="#applications">Updating the SDKs in native<br/> applications</a></p>
-                        </div>
-                    </a>
+                    <div class="migrationOption" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
+                        <h3 class="no-anchor">Migrating<br/>Applications</h3>        
+                        
+                        <br/>
+                        <p class="topic"><a href="#applications">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></p>
+                        <p class="topic"><a href="#applications">Modifying Mobile Web / <br/>Desktop Browser apps</a></p>
+                        <p class="topic"><a href="#applications">Updating the SDKs in native<br/> applications</a></p>
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <a href="#adapters">
-                        <div class="migrationOption"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
-                            <h3 class="no-anchor">Migrating<br/>Adapters</h3>        
-                            
-                            <br/>
-                            <p class="topic"><a href="#adapters">Prerequisites for setting-up<br/>Apache Maven</a></p>
-                            <p class="topic"><a href="#adapters">Creating a new Maven<br/>project</a></p>
-                            <p class="topic"><a href="#adapters">Migrating source code</a></p>
-                            <p class="topic"><a href="#adapters">Building and testing</a></p>
-                        </div>
-                    </a>
+                    <div class="migrationOption"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
+                        <h3 class="no-anchor">Migrating<br/>Adapters</h3>        
+                        
+                        <br/>
+                        <p class="topic"><a href="#adapters">Prerequisites for setting-up<br/>Apache Maven</a></p>
+                        <p class="topic"><a href="#adapters">Creating a new Maven<br/>project</a></p>
+                        <p class="topic"><a href="#adapters">Migrating source code</a></p>
+                        <p class="topic"><a href="#adapters">Building and testing</a></p>
+                    </div>
                 </div>
                 <div class="col-md-3">
-                    <a href="#devtopics">
-                        <div class="migrationOption"style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
-                            <h3 class="no-anchor">Development<br/>Topics</h3>        
-                            
-                            <br/>
-                            <p class="topic"><a href="#development-topics">Adapters</a></p>
-                            <p class="topic"><a href="#development-topics">Security framework</a></p>
-                            <p class="topic"><a href="#development-topics">Push notifications</a></p>
-                            <p class="topic"><a href="#development-topics">Direct Update</a></p> 
-                        </div>
-                    </a>
+                    <div class="migrationOption" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
+                        <h3 class="no-anchor">Development<br/>Topics</h3>        
+                        
+                        <br/>
+                        <p class="topic"><a href="#development-topics">Adapters</a></p>
+                        <p class="topic"><a href="#development-topics">Security framework</a></p>
+                        <p class="topic"><a href="#development-topics">Push notifications</a></p>
+                        <p class="topic"><a href="#development-topics">Direct Update</a></p> 
+                    </div>
                 </div>  
             </div>          
         </div>
@@ -102,7 +94,7 @@ show_in_nav: false
             <li>From the MobileFirst Operations Console, click on the Download Center link at the bottom of the sidebar navigation and download &amp; install the Migration Assistance tool. </li>
         </ol>
 
-        <img src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/get-migration-tool.png"/>
+        <img alt="Download the migration tool from the mobilefirst operations console" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/get-migration-tool.png"/>
     </div>
 
     <br id="applications"><br/> 
@@ -194,7 +186,7 @@ show_in_nav: false
                                 </h4>
                             </div>
 
-                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="cordova">
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
                                 <div class="panel-body">
                                     <ol>
                                         <li>Update the <b>www/index.html</b> file.                             
@@ -430,7 +422,7 @@ if (document.addEventListener) {
                                     <div class="panel-body">
                                         <ol>
                                             <li>Make sure Xcode is closed.</li>
-                                            <li>Open <b>Terminal</b> and navigate to the root of the Xcode project</li>
+                                            <li>Open <b>Terminal</b> and navigate to the root of the Xcode project
                                                 <ul>
                                                     <li>Run the <code>pod init</code> command to create a Podfile file.</li>
                                                     <li>The Podfile is created at the root of the Xcode project. Find it and open it in an editor of your choosing.</li>
@@ -677,7 +669,7 @@ transitive: true{% endhighlight %}
                     <div class="panel-body">
                         <p>Maven adapters require Apache Maven installed on the developer workstation.
                         <ol>
-                            <li>Install Apache Maven.
+                            <li>Install Apache Maven.<br/>Verify the installation by executing: <code>mvn -v</code>.
                                 <ul>
                                     <li><a href="https://maven.apache.org/download.cgi" target="_blank">Download the Apache Maven .zip</a>.</li>
                                     <li>Add a <code>MVN_PATH</code> variable, pointing to the Maven folder.</li>
@@ -692,7 +684,7 @@ export MVN_PATH="/usr/local/bin"
 
                                 <i>Windows:</i><br/>
                                 <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">Follow this guide</a>.<br/><br/>
-                                Verify the installation by executing: <code>mvn -v</code>.</li><br/>
+                            </li>
                         
                             <li>The cookbook uses the MobileFirst CLI to call Maven commands in order to create and build the adapters.
                                 <ul>
@@ -732,7 +724,7 @@ export MVN_PATH="/usr/local/bin"
             </div>
             
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="create-adapter">
+                <div class="panel-heading" role="tab" id="migrate-js-adapter">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseMigrateJSAdapter" aria-expanded="false" aria-controls="collapseMigrateJSAdapter">Migrating the JavaScript source code</a>
                     </h4>
@@ -809,7 +801,7 @@ export MVN_PATH="/usr/local/bin"
             </div>
             
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="create-adapter">
+                <div class="panel-heading" role="tab" id="migrate-java-adapter">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseMigrateJavaAdapter" aria-expanded="false" aria-controls="collapseMigrateJavaAdapter">Migrating the Java source code</a>
                     </h4>
@@ -870,7 +862,7 @@ export MVN_PATH="/usr/local/bin"
             </div>
             
             <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="create-adapter">
+                <div class="panel-heading" role="tab" id="build-adapter">
                     <h4 class="panel-title">
                         <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseBuildAdapter" aria-expanded="false" aria-controls="collapseBuildAdapter">Building and testing the Maven project</a>
                     </h4>
@@ -889,8 +881,8 @@ export MVN_PATH="/usr/local/bin"
                         <img alt="Using IntelliJ" src="intellij.png"/>                        
                         
                         <h3>Testing the built adapter</h3>
-                        <p>To test the migrated adapter you can use either the MobileFirst CLI to call your endpoints, or use Swagger from the MobileFirst Operations Console.
-                            <blockquote>Learn more about testing adapters in the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a> tutorial.</blockquote></p>
+                        <p>To test the migrated adapter you can use either the MobileFirst CLI to call your endpoints, or use Swagger from the MobileFirst Operations Console.</p>
+                        <blockquote>Learn more about testing adapters in the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a> tutorial.</blockquote>
                     </div>
                 </div>
             </div>
