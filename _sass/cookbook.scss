@@ -1,21 +1,24 @@
 
 // Migration cookbook
 
-#migrationOptions h3 {
+#migrationPaths h3 {
 	color: #264a60;
 	text-align: center;
-	margin: 107px 280px 0 0;
+	padding-top: 103px;
 	font-size: 160%;
 }
-.migrationOption {
-	width: 500px;
+.migrationPath {
 	height: 341px;
-	display: inline-block;
 	font-family: "Helvetica Neue Medium", Helvetica, Arial;	
 }
 
-.topic {
-	margin-left: 22px;
+.topics {
+	list-style-type: none;
+	padding-left: 18px;
+}
+.topics li {
+	line-height: 1.4em !important;
+	padding-bottom: 9px;
 }
 
 #migrationSteps h2 {
