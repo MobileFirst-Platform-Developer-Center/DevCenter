@@ -27,9 +27,11 @@
 				<circle fill="#264A60" cx="89.7" cy="29.9" r="0.8"/>
 				<g>
 					<polyline fill="none" stroke="#264A60" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-						96.7,55.2 105.2,47.8 96.7,40.3 					"/>
+						113.7,54 120.2,48.2 113.7,42.5 					"/>
+					<polyline fill="none" stroke="#264A60" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+						99.2,54 92.7,48.2 99.2,42.5 					"/>
 					
-						<line fill="none" stroke="#264A60" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="106.8" y1="55.6" x2="118" y2="55.6"/>
+						<line fill="none" stroke="#264A60" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="111.6" y1="37.5" x2="102.1" y2="58.9"/>
 				</g>
 			</g>
 		</g>
