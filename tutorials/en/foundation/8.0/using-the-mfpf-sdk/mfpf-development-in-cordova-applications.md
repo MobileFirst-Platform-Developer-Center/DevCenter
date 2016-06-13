@@ -139,6 +139,12 @@ To add it:
     cordova build
     ```
 
+## WKWebView support for ios
+The default UIWebView used in Cordova iOS applications can be replaced with [Apple's WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/).  
+To add, run the following command from a command-line window: `cordova plugin add cordova-plugin-wkwebview-engine`.
+
+> Learn more about the [Cordova WKWebView plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine).
+
 ## Further reading
 Learn more about Cordova:
 
