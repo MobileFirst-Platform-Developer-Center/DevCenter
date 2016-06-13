@@ -86,7 +86,7 @@ The code sample ues configuration to maintain the credentials for the Watson ser
 ConfigurationAPI configApi;
 ```
 
-* The call it: 
+* Then call it: 
 
 ```java
 configApi.getPropertyValue(ALCHEMY_API_KEY)
