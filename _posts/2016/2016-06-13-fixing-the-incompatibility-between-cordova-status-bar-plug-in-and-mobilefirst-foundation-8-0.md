@@ -23,7 +23,7 @@ But the way it is rendered is like this:
 
 This is because of following reasons:
 
-* `MFPAppDelegate` of 'cordova-plugin-mfp' is designed to meet the MobileFirst Foundation product requirement of a Cordova application that can contain both hybrid and native screens, where it loads the `UIViewController` as the root view controller and `CDVViewController` as child view controller.
+* `MFPAppDelegate` of `cordova-plugin-mfp` is designed to meet the MobileFirst Foundation product requirement of a Cordova application that can contain both hybrid and native screens, where it loads the `UIViewController` as the root view controller and `CDVViewController` as child view controller.
 
 * This implementation introduces potential friction points with `cordova-plugin-statusbar` that assumes `CDVViewController` is the root view controller.
 
