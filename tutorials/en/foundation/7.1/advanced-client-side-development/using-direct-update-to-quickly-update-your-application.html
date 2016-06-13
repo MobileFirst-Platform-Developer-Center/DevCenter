@@ -50,13 +50,17 @@ Direct Update is based on the MobileFirst Authentication Framework. It comes wit
     <li>Change the <code>wl.realm.expiration.directUpdate</code> value in the <code>worklight.properties</code> file to a lower value. 
     <strong>Note:</strong> The lower the value, the more network traffic will incur. The value should be configured with care.
 
-<blockquote>For more information on configuring the Direct Update review the "Configuring login modules" user documentation topic.</blockquote></li>
+    <blockquote><b>Notes:</b>
+        <ul>
+            <li>If the applicaiton accesses a resource that is protected by OAuth authentication, and the client has a valid token, the MobileFirst Server is not called. As a result, the server does not check for an available Direct Update, regardless of the value of the mode property (explained further below). The MobileFirst Server is called when the token expires or when the Direct Update realm inside the token expires. When the realm expires, the Direct Update authenticator is invoked and the server checks for an available Direct Update.</li>
+            <li>For more information on configuring the Direct Update review the "Configuring login modules" user documentation topic.</li>
+        </ul>
+    </blockquote></li>
 </ol>
 
-The UI &amp; UX of the Direct Update process can be fully customized by using simple interfaces.
-
 <h3>Server-side customization</h3>
-<p>By default, the <code>mobileSecurityTest</code> has Direct Update enabled in <code>perSession</code> mode:</p>
+<p>By default, the <code>mobileSecurityTest</code> has Direct Update enabled in <code>perSession</code> mode:<br/>
+It can also be configured to <code>perRequest</code> however do review the notes above in case using OAuth.</p>
 <p>{% highlight xml linenos %}
 <mobileSecurityTest name="mobileTests">
     <testAppAuthenticity/>
