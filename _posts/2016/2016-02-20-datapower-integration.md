@@ -242,7 +242,7 @@ During development, if you wish to open a non-SSL (HTTP) port, you need to modif
 In your Multi-Protocol Gateway, look for *Front side settings*. Add an **HTTP Front side handler**, choose a port for HTTP requests, and make sure to check `GET` in the list of allowed methods.
 
 ## Samples &amp; Pattern
-You can download the samples and pattern from [GitHub](https://github.com/nasht00/DataPowerIntegration).
+You can download the samples and pattern from [GitHub](https://github.com/mfpdev/DataPowerLTPA/tree/release71).
 There are 3 samples available:
 
 - **DataPower** contains the MobileFirst project common to all 3 samples, as well as the Hybrid sample.

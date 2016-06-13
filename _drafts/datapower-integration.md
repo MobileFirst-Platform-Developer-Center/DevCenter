@@ -177,7 +177,7 @@ During development, if you wish to open a non-SSL (HTTP) port, you need to modif
 In your Multi-Protocol Gateway, look for *Front side settings*. Add an **HTTP Front side handler**, choose a port for HTTP requests, and make sure to check `GET` in the list of allowed methods.
 
 ## Samples &amp; Pattern
-You can download the samples and pattern from [GitHub](https://github.com/nasht00/DataPowerIntegration).
+You can download the samples and pattern from [GitHub](https://github.com/mfpdev/DataPowerLTPA/tree/release80).
 There are 3 samples available:
 
 - **DataPowerCordova** contains a Cordova sample.
@@ -185,6 +185,6 @@ There are 3 samples available:
 - **DataPowerAndroid** contains a native Android Studio project.
 - **pattern**: contains the DataPower pattern to use for those samples.
 
-Each of those samples use the `ResourceAdapter` adapter which can be found on [GitHub](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters) as well.
+Each of those samples use the `ResourceAdapter` adapter which can be found on [GitHub](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/release80) as well.
 
 Make sure to configure the *server.xml* and deploy the artifacts before running the samples.
