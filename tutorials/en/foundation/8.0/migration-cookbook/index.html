@@ -32,7 +32,7 @@ show_in_nav: false
             <div id="migrationPaths">
                 <div class="col-md-3">                    
                     <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
-                        <h3 class="setupAndTools">Setup &amp;<br/>Tools</h3>    
+                        <h3 class="setupAndTools no-anchor">Setup &amp;<br/>Tools</h3>    
                         
                         <ul class="topics">
                             <li><a href="#env-setup">Setting up a MobileFirst<br/>Server</a></li>
@@ -42,7 +42,7 @@ show_in_nav: false
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
-                        <h3 class="migratingApplications">Migrating<br/>Applications</h3>        
+                        <h3 class="migratingApplications no-anchor">Migrating<br/>Applications</h3>        
                         
                         <ul class="topics">
                             <li><a href="#applications">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></li>
@@ -53,7 +53,7 @@ show_in_nav: false
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
-                        <h3 class="migratingAdapters">Migrating<br/>Adapters</h3>        
+                        <h3 class="migratingAdapters no-anchor">Migrating<br/>Adapters</h3>        
                         
                         <ul class="topics">
                             <li><a href="#adapters">Prerequisites for setting-up<br/>Apache Maven</a></li>
@@ -65,7 +65,7 @@ show_in_nav: false
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
-                        <h3 class="devTopics">Development<br/>Topics</h3>        
+                        <h3 class="devTopics no-anchor">Development<br/>Topics</h3>        
                         
                         <ul class="topics">
                             <li><a href="#development-topics">Adapters</a></li>
@@ -91,7 +91,7 @@ show_in_nav: false
         <p>You can setup a MobileFirst Server on <a href="https://bluemix.net">IBM Bluemix</a> using the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/" target="_blank">Mobile Foundation Bluemix service</a>. Alternatively, you can use the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/" target="_blank">MobileFirst Developer Kit</a> to setup a locally running server.</p>
         
         <h3>Migration Assitance tool</h3>
-        <p>With the MobileFirst Server up &amp; running, and since we’ll be using the Migration Assistance tool down the road, lets have the tool installed.</p>
+        <p>With the MobileFirst Server up &amp; running, and since we’ll be using the Migration Assistance tool down the road, let's have the tool installed.</p>
 
         <ol>
             <li><a href="https://nodejs.org/en/" target="_blank">Install NodeJS</a> as it is a prerequisite for the tool to work.</li>
@@ -292,8 +292,8 @@ if (document.addEventListener) {
                         <p><b>Testing in emulator/simulator or physical device:</b><br/>
                         <ul>
                             <li>From a command-line window, navigate to the applications root folder</li>
-                            <li>If you're only testing UI, you can simply build &amp; run the application: <code>cordova run platform-name</code></li>
-                            <li>If you're also testing application logic related to MobileFirst, make sure to first register the application <code>mfpdev app register</code></li>
+                            <li>If you're only testing UI, you can simply build &amp; run the application: <code>cordova run replace-with-platform-name</code></li>
+                            <li>If you're also testing application logic related to MobileFirst, make sure to first register the application using <code>mfpdev app register</code> before previewing</li>
                         </ul>
                         
                         <h3>Next steps</h3>
@@ -314,6 +314,35 @@ if (document.addEventListener) {
 
                 <div id="collapseMigrateWeb" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-web-apps">
                     <div class="panel-body">
+                        <h4>Step 1</h4>
+                        <p>Use the Migration Assistance tool to generate an API report.</p>
+
+                        <p>Open a command-line window and use the Migration Assistance tool in the following manner:</p>
+    {% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type web{% endhighlight %}
+
+                        <ul>
+                            <li>Replace <b>source_directory</b> with the path to the native project, for example: <i>../Desktop/FormBasedAuthObjCiOS-release71</i></li>
+                            <li>Replace <b>destination_directory</b> with the location where you'd like the report to be generated at</li>
+                        </ul>
+                    
+                        <img alt="Generate API report for wrb apps" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/native-migration.png"/>
+
+                        <p>Once the Migration Assistance tool successfully finishes running, the following has taken place:</p>
+
+                        <ul>
+                            <li>An API report, <b>{app-name}-api-report.html</b>, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation 8.0.</li>
+                        </ul>
+
+                        <img alt="API report" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/api-report-native.png"/>
+                        
+                        <h4>Step 2</h4>
+                        <p>When it comes to the application structure of web apps, you have two choices:</p>
+                        <ol>
+                            <li>Usin the Cordova "Browser" platform</li>
+                            <li></li>
+                        </ol>
+                        
+                        <h4>Step 3</h4>
                     </div>
                 </div>
             </div>
