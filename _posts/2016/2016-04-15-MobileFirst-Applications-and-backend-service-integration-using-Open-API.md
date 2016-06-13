@@ -55,7 +55,7 @@ Here is how we go about this step-by-step to achieve this  :-
           <dependency>
           	<groupId>com.github.mfpdev</groupId>
           	<artifactId>mfp-adapters-swagger-codegen</artifactId>
-          	<version>1.0</version>
+          	<version>1.0.0</version>
       	</dependency>
       </dependencies>
       <executions>
