@@ -45,8 +45,8 @@ show_in_nav: false
                         <h3 class="migratingApplications no-anchor">Migrating<br/>Applications</h3>        
                         
                         <ul class="topics">
-                            <li><a href="#applications">Moving from Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></li>
-                            <li><a href="#applications">Modifying Mobile Web / <br/>Desktop Browser apps</a></li>
+                            <li><a href="#applications">Migrating Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></li>
+                            <li><a href="#applications">Migrating Mobile Web / <br/>Desktop Browser apps</a></li>
                             <li><a href="#applications">Updating the SDKs in native<br/> applications</a></li>
                         </ul>
                     </div>
@@ -106,6 +106,8 @@ show_in_nav: false
     <div class="gutter gutter-apps-color">
         <div class="number number-apps hidden-sm hidden-xs hidden-md">2</div>
         <h2>Migrating Applications</h2>
+        <p>The steps to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html">migrate your Classic Hybrid/MFPF Cordova, Web and Native applications</a> include: assessing API changes by running the Migration Assistance tool, setting up the project structure, managing the application source, using package managers and handling API changes.</p>
+        
         <h3>Classic Hybrid applications</h3>
         <p>In past releases, Classic Hybrid applications were created, developed, built and managed using the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model.</p>
             
@@ -116,27 +118,12 @@ show_in_nav: false
         <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>Tip:</b> You can also <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/" target="_blank">setup Eclipse for Cordova application development</a>.</p>
 
         <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova application development</a>.</blockquote>
-        <h3>Web applications</h3>
-        <p>Much like Classic Hybrid applications, web applications for the Mobile Web and Desktop Browsers were also managed from the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI. In MobileFirst Foundation 8.0, thanks to developments made by Cordova, you can use the Cordova "Browser" platform to develop for the web and create a holistic experience across channels. You can also develop for the web in good ol' traditional fashion.</p>
         
-        <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Web application development</a>.</blockquote>
-        
-        <h3>Native applications</h3>
-        <p>Native applications required using the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs.</p>
-
-        <p>Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: <a href="https://cocoapods.org/" target="_blank">CocoaPods for iOS</a>, <a href="https://gradle.org/" target="_blank">Gradle for Android</a> and <a href="https://www.nuget.org/" target="_blank">NuGet for Windows</a>. With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platforms.</p>
-
-        <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/">Native application development</a>.</blockquote>
-        
-        <br/>
-        <p>The steps to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html">migrate your Classic Hybrid/MFPF Cordova, Web and Native applications</a> include: assessing API changes by running the Migration Assistance tool, setting up the project structure, managing the application source, using package managers and handling API changes.</p>
-        
-        <b>Select an application type:</b>
         <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateHybrid" aria-expanded="false" aria-controls="collapseMigrateHybrid">Moving from Classic Hybrid/MFPF Cordova apps to standard Cordova apps</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateHybrid" aria-expanded="false" aria-controls="collapseMigrateHybrid">Migrating classic Hybrid/MFPF Cordova apps to standard Cordova apps</a>
                     </h4>
                 </div>
 
@@ -304,11 +291,18 @@ if (document.addEventListener) {
                     </div>
                 </div>
             </div>
+        </div>
         
+        <h3>Web applications</h3>
+        <p>Much like Classic Hybrid applications, web applications for the Mobile Web and Desktop Browsers were also managed from the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI. In MobileFirst Foundation 8.0, thanks to developments made by Cordova, you can use the Cordova "Browser" platform to develop for the web and create a holistic experience across channels. You can also develop for the web in good ol' traditional fashion.</p>
+        
+        <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Web application development</a>.</blockquote>
+        
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-web-apps">
                     <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">Modifying Mobile Web/Desktop Browser applications</a>
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">Migrating Mobile Web/Desktop Browser applications</a>
                     </h4>
                 </div>
 
@@ -346,7 +340,16 @@ if (document.addEventListener) {
                     </div>
                 </div>
             </div>
+        </div>
         
+        <h3>Native applications</h3>
+        <p>Native applications required using the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs.</p>
+
+        <p>Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: <a href="https://cocoapods.org/" target="_blank">CocoaPods for iOS</a>, <a href="https://gradle.org/" target="_blank">Gradle for Android</a> and <a href="https://www.nuget.org/" target="_blank">NuGet for Windows</a>. With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platforms.</p>
+
+        <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/">Native application development</a>.</blockquote>
+        
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-native-apps">
                     <h4 class="panel-title">
