@@ -963,6 +963,129 @@ export MVN_PATH="/usr/local/bin"
         
         <blockquote>Learn more about the security framework and authorization concepts <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/" target="_blank">in the Authentication and security tutorials</a>.</blockquote>
         
+        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="security-framework">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#security-framework" href="#collapseSecurityFramework" aria-expanded="false" aria-controls="collapseSecurityFramework">Security framework differences</a>
+                    </h4>
+                </div>
+
+                <div id="collapseSecurityFramework" class="panel-collapse collapse" role="tabpanel" aria-labelledby="security-framework">
+                    <div class="panel-body">    
+                        <h3>Realm vs SecurityCheck</h3>
+                        <p>In MobileFirst Foundation 8.0, a security check can be looked as the combination of three concepts that exist previous releases:<br/>
+                        security check = realm + authenticator + login module</p>
+                        
+                        <p>The Implementation of the securityCheck is the implementation of both the LoginModule and the Authenticator.<br/>
+                        The definition of a security check is similar to the definition of a realm.</p>
+                        
+                        <table class="table table-striped">    
+                            <tr>
+                                <td></td>
+                                <td><b>Previous releases<b></td>
+                                <td><b>MobileFirst Foundation 8.0</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>Definition<b></td>
+                                <td>Defined in the <b>authenticationConfig.xml</b> with a name, login module, and authenticator, for example:
+
+    {% highlight xml %}<realm loginModule="AuthLoginModule" name="AuthRealm">
+        <className>com.worklight.integration.auth.AdapterAuthenticator</className>
+    </realm>{% endhighlight %}  </td>
+                                <td>Define a security check in the relevant <b>adapter.xml</b> file with a name, and the implementing class:        
+    {% highlight xml %}<securityCheckDefinition
+        name="securityCheckX"
+        class="com.sample.SecurityCheckW">
+    </securityCheckDefinition>{% endhighlight %}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Enter/Exit methods<b></td>
+                                <td><i>Adapter-based authentication:</i> would define a login/logout function, which is called by the framework on authorization requests.
+    {% highlight xml %}<parameter name="login-function" value="AuthAdapter.onAuthRequired"/>
+<parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
+
+                                <i>Custom Authenticator + LoginModule:</i> an <code>init()</code> method for startup, and <code>processRequest()</code> to authorise requests.
+The authenticator sends the login module the credentials to the <code>login()/logout()</code> methods.</td>
+                                <td>When implementing the security check interface, the user must also implement <code>authorize()</code> and <code>introspect()</code> which are called by the framework during authorization requests. The security check handles the authentication and login/logout of itself.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>Usage</b></td>
+                                <td>Encapsulated in a <code>customSecurityTest</code>, which can contain 1 or more realms:
+{% highlight xml %}<customSecurityTest name="AuthSecurityTest">
+    <test isInternalUserID="true" realm="AuthRealm"/>
+</customSecurityTest>{% endhighlight %}</td>
+                                <td>Encapsulated in a <b>Scope</b> element, which can contain 0 or more security checks</td>
+                            </tr>
+                        </table>
+                            
+                        <h3>Security tests vs Scope elements</h3>
+                        <p>In MobileFirst Foundation 8.0 a scope element is used to aggregate 0 or more security checks, which can then be used to protect resources, or apps. This is similar to the 
+                        <code>CustomSecurityTest</code> concept in previous releases.</p>
+                        
+                        <table class="table table-striped">    
+                            <tr>
+                                <td></td>
+                                <td><b>Previous releases<b></td>
+                                <td><b>MobileFirst Foundation 8.0</b></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><b>Definition</b></td>
+                                <td>Defined in the <b>authenticationConfig.xml</b> file with a name, 1 or more security tests, and at least one dedicated to define the <code>UserID</code>.
+
+{% highlight xml %}<customSecurityTest name="AuthSecurityTest">
+    <test isInternalUserID="true" realm="AuthRealm"/>
+</customSecurityTest>{% endhighlight %}</td>
+                                <td>Defined in the MobileFirst Operations Console or via REST, a scope contains 0 or more security checks. 
+
+{% highlight json %}"scopeElementMapping": {
+    "ScopeElementA": “secCheck1 secCheck2"
+}, {% endhighlight %}</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><b>Usage</b></td>
+                                <td>A SecurityTest can be used to protect a resource (Java adapters), a procedure (JavaScript adapters) or an application (Application descriptor).<br/><br/>
+                                    
+                                <b>Java adapter</b>:
+{% highlight java %}@OAuthSecurity(scope="AuthRealm"){% endhighlight %}
+
+                                <b>JavaScript adapter</b>:
+{% highlight javascript %}<procedure name="getSecretData" securityTest="AuthSecurityTest"/>{% endhighlight %}
+
+                                <b>Note</b>: You cannot protect a resource with a realm not belonging to a securityTest</td>
+                                <td>A <b>scope</b> (1 or more scope elements) can be used to protect a resource (Java adapters), a procedure (JavaScript adapters) or an application (application descriptor).<br/><br/>
+
+                                <b>Java adapter</b>:
+{% highlight java %}@OAuthSecurity(scope=“ScopeElementA ScopeElementB"){% endhighlight %}
+
+                                <b>JavaScript adapter</b>:
+{% highlight javascript %}<procedure name="deleteUser" scope="deletePrivilege">{% endhighlight %}
+
+                                <bo>Note</b>: You can protect a resource/application with a securityCheck not belonging to a scopeElement mapping</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><b>UserIdentity</b></td>
+                                <td>Certain realms in a Security test define DeviceID and UserID.
+
+{% highlight xml %}<test isInternalUserID="true" realm="AuthRealm"/>{% endhighlight %}</td>
+                                <td>A scope is not aware of the the securityChecks that make up the scope</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><b>Deployment</b></td>
+                                <td>Configured in the <b>authenticationConfig.xml</b> file. To change which realms make a securityTest, the .war file must be redeployed.</td>
+                                <td>Changed without disrupting the MobileFirst Server using the MobileFirst Operations Console.</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <h3>Notifications</h3>
         In MobileFirst Foundation 8.0 a new Push Service is introduced along side a new experience for setting up, configuring and sending notifications.  In addition, the concept of Event Source push notifications has been retired. All is not lost, though! Find detailed scenario-based migration pathes in these user documentation topics:
         
