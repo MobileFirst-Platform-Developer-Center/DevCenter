@@ -1,5 +1,6 @@
 ---
 title: Protecting IBM MobileFirst Foundation 8.0 application traffic using IBM DataPower
+date: 2016-06-18
 tags:
 - MobileFirst_Platform
 - DataPower
