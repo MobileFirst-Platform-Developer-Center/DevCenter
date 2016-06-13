@@ -294,7 +294,10 @@ if (document.addEventListener) {
         </div>
         
         <h3>Web applications</h3>
-        <p>Much like Classic Hybrid applications, web applications for the Mobile Web and Desktop Browsers were also managed from the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI. In MobileFirst Foundation 8.0, thanks to developments made by Cordova, you can use the Cordova "Browser" platform to develop for the web and create a holistic experience across channels. You can also develop for the web in good ol' traditional fashion.</p>
+        <p>Much like Classic Hybrid applications, web applications for the Mobile Web and Desktop Browsers were also managed from the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI. In MobileFirst Foundation 8.0 development of web apps is done in goold ol' traditional fashion, with the MobileFirst Web SDK available from <a href="https://npmjs.org" target="_blank">npm</a> as well.</p> 
+            
+        <p><b>Note:</b> Unlike in previous releases where it was the MobileFirst Server that served the web application and provided a public-facing URL, in MobileFirst Foundation 8.0 the application is only registered in the MobileFirst Server in order to provide it with security functionality, adapters capabilities and so on. Instead, the serving of the web application is done using standard methods, such as serving it from dedicated web servers.
+        </p>
         
         <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Web application development</a>.</blockquote>
         
@@ -311,32 +314,47 @@ if (document.addEventListener) {
                         <h4>Step 1</h4>
                         <p>Use the Migration Assistance tool to generate an API report.</p>
 
-                        <p>Open a command-line window and use the Migration Assistance tool in the following manner:</p>
-    {% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory  --type web{% endhighlight %}
+                        <blockquote>The Migration Assistance tool does not support web apps, however because the MobileFirst Web SDK shares its codebase with the MobileFirst Cordova SDK, it is possible to use the same method also for web apps.</blockquote>
 
+                        <p>Open a command-line window and use the Migration Assistance tool in the following manner.<br/>
+                        This could take a while to complete, depending on your Internet connection...</p>
+
+{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}
+                            
                         <ul>
-                            <li>Replace <b>source_directory</b> with the path to the native project, for example: <i>../Desktop/FormBasedAuthObjCiOS-release71</i></li>
-                            <li>Replace <b>destination_directory</b> with the location where you'd like the report to be generated at</li>
+                            <li>Replace <b>source_directory</b> with the path to the application folder inside the Studio project, for example: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
+                            <li>Replace <b>destination_directory</b> with a path to a folder to save the generated API report at</li>
                         </ul>
-                    
-                        <img alt="Generate API report for wrb apps" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/native-migration.png"/>
-
+                
                         <p>Once the Migration Assistance tool successfully finishes running, the following has taken place:</p>
 
                         <ul>
                             <li>An API report, <b>{app-name}-api-report.html</b>, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation 8.0.</li>
                         </ul>
-
-                        <img alt="API report" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/api-report-native.png"/>
                         
+                        <br/>
                         <h4>Step 2</h4>
-                        <p>When it comes to the application structure of web apps, you have two choices:</p>
+                        <p>With the API report assesed, it's now time to migrate the application's structure and source.</p>
+                        
                         <ol>
-                            <li>Usin the Cordova "Browser" platform</li>
-                            <li></li>
+                            <li>Create a new folder that will contain your application's source and resources</li>
+                            <li>Copy <b>index.html</b> file and the <b>js</b>, <b>css</b> and <b>images</b> folders from the existing project into the created folder</li>
+                            <li>From a command-line window, navigate to the migrated project's root folder and add the MobileFirst Web SDK: <code>npm install ibm-mfp-web-sdk</code>.</li>
                         </ol>
                         
+                        <blockquote>Before moving to step 4, follow the instructions in the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/web/" target="_blank">Adding the MobileFirst Foundation SDK to Web Applications</a> tutorial to configure the SDK</blockquote>
+                        
+                        <br/>    
                         <h4>Step 3</h4>
+                        <p>The Web application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser window and review the presented items. For each item in the report, you will need to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_webview.html?lang=en" target="_blank">either implement it differently or replace it entirely</a>.</p>
+                        
+                        <br/>
+                        <h4>Step 4</h4>
+                        <p>To test the migrated application:</p>
+                        <ol>
+                            <li>Make sure the application is registered in the MobileFirst Server</li>
+                            <li>you'll need to setup a reverse proxy to not encounter <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/web/#same-origin-policy" target="_blank">Same-origin errors</a>. For this purpose you can use Node.js. For an example implementation of reverse proxy using Node.js, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/web-development-environment/" target="_blank">Setting up the Web development environment</a> tutorial.</p></li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -935,9 +953,6 @@ export MVN_PATH="/usr/local/bin"
         <h4>JavaScript adapters</h4>
         <b>Global variables and sessions</b><br/>
         <p>Avoid using global variables in JavaScript adapters to save data on the session - since there is no "session". This change in behavior <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html" target="_blank">first appeared in  MobileFirst Platform Foundation 7.1</a>. However, you can use global variables in order to save data for use during a single request. Keep in mind though that this is not a recommended practice anylonger.</p>
-        
-        <b style="color:red">connectAs</b><br/>
-        <p>??</p>
         
         <blockquote>Learn more about creating, building, deploying and testing adapters <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">in the Adapters tutorials</a>.</blockquote>
         
