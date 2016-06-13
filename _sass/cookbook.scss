@@ -3,7 +3,6 @@
 
 #migrationPaths h3 {
 	color: #264a60;
-	text-align: center;
 	padding-top: 103px;
 	margin-top: 0;
 	font-size: 160%;
@@ -11,6 +10,18 @@
 .migrationPath {
 	height: 324px;
 	font-family: "Helvetica Neue Medium", Helvetica, Arial;	
+}
+.setupAndTools {
+	padding-left: 64px !important;
+}
+.migratingApplications {
+	padding-left: 38px !important;
+}
+.migratingAdapters {
+	padding-left: 55px !important;
+}
+.devTopics {
+	padding-left: 35px !important;
 }
 
 .topics {
@@ -29,8 +40,6 @@
 #migrationSteps h3 {
 	margin-top: 0 !important;
 }
-
-
 
 .gutter {
 	padding-left: 15px;
