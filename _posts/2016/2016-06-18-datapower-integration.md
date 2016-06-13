@@ -149,7 +149,7 @@ To configure with LDAP, consult the documentation for your application server.
 ![SSL Proxy Profile]({{site.baseurl}}/assets/blog/2016-02-20-datapower-integration/ssl-proxy-profile.png)
 4. Go to your DataPower's **Blueprint Console**. Make sure you are logged in to that same domain.
 5. Go to the **Patterns** tab.
-6. Click on the *import* button (![import]({{site.baseurl}}/assets/blog/2016-02-20-datapower-integration/import-icon.png)), and upload the MFP\_LTPA\_Integration pattern you downloaded.
+6. Click on the *import* button (<img alt="import button" style="margin:0;display:inline" src="{{site.baseurl}}/assets/blog/2016-02-20-datapower-integration/import-icon.png"/>), and upload the MFP\_LTPA\_Integration pattern you downloaded.
 7. Click on the **Deploy...** button.
 8. Fill in the details required to deploy the pattern.
 	* The **destination** should be the full URL to your MobileFirst server context (`http(s)://hostname:port/ProjectName`). If your server requires SSL, you may need to specify an SSL profile.
