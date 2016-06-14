@@ -10,7 +10,7 @@ weight: 3
 ## Overview
 Before iOS and Android Cordova applications are able to receive and display push notifications, the the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
 
-> **Note:** In the release, authenticated notifications are **not supported** in Cordova applications.
+> **Note:** In the release, authenticated notifications are **not supported** in Cordova applications due to a defect. However a workaround is provided: each `MFPPush` API call can be wrapped by `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. The provided sample application uses this workround.
 
 **Prequisites:**
 
@@ -229,3 +229,8 @@ var notificationReceived = function(message) {
 
 * Tag notification
     * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
+* Authenticated notification:
+    * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
+    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
+    * Use either the [REST APIs](../sending-push-notifications#rest-apis) to send the notification, or send to a userId from the Push section in the MobileFirst Operations Console.
+
