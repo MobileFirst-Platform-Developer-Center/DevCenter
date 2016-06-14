@@ -5,10 +5,14 @@ breadcrumb_title: JavaScript
 relevantTo: [javascript]
 weight: 2
 downloads:
-  - name: Download PreemptiveLogin project
+  - name: Download PreemptiveLogin Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginCordova/tree/release80
-  - name: Download RememberMe project
+  - name: Download PreemptiveLogin Web project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWeb/tree/release80
+  - name: Download RememberMe Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeCordova/tree/release80
+  - name: Download RememberMe Web project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWeb/tree/release80
   - name: Download SecurityCheck Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
