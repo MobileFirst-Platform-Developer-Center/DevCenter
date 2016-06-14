@@ -108,8 +108,11 @@ MFPPush.isPushSupported (
 #### Register device
 Register the device to the push notifications service.
 
+
 ```javascript
+var options = { };
 MFPPush.registerDevice(
+    options,
     function(successResponse) {
         alert("Successfully registered");
     },
@@ -119,9 +122,7 @@ MFPPush.registerDevice(
 );
 ```
 
-> *Optional*. *iOS-only*. Before calling the above `registerDevice` API method, use the `setOptions(options)` API method to enable or disable various options, such as alerts, notification sound, badge and interactive notifications categories.  
->
-> Read more about the the `setOptions(options)` API method in the user documentation.
+> **Note:** Due to a defect, the `options` object for **Cordova-based Android** apps must currently contain an empty value as follows: `"phoneNumber":""`. Read more about the the `available options in the user documentation.
 
 #### Get tags
 Retrieve all the available tags from the push notification service.
