@@ -130,16 +130,16 @@ show_in_nav: false
                 <div id="collapseMigrateHybrid" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-hybrid-apps">
                     <div class="panel-body">
                         <h4>Step 1</h4>
-                        <p>Open a command-line window and use the Migration Assistance tool in the following manner.<br/>
-                        This could take a while to complete, depending on your Internet connection...</p>
-
-{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}
-                            
+                        <p>Open a command-line window and use the Migration Assistance tool in the following manner.</p>
                         <ul>
+                            <li>To only scan the Classic Hybrid project and have an API report generated, use:
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}</li>
+                            <li>To scan the Classic Hybrid project as well as and create a predefined Cordova project (this could take a while to complete, depending on your Internet connection...), use:
+{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}</li>
                             <li>Replace <b>source_directory</b> with the path to the application folder inside the Studio project, for example: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
                             <li>Replace <b>destination_directory</b> with a path to a folder that will house the converted application and the generated API report</li>
                         </ul>
-        
+                        
                         <blockquote>You can read more about what that the Migration Assistance tool does <a href=" http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool.html" target="_blank">in this user documentation topic</a>.</blockquote>
 
                         <img alt="Migrate a Classic Hybrid app to a standard Cordova app" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/cordova-migration.png"/>
@@ -148,7 +148,7 @@ show_in_nav: false
 
                         <ul>
                             <li>The <b>MigratedProject</b> folder now contains a new Cordova application with the same metadata as your Classic Hybrid app (the application identifier and other settings depending on the setup of the Classic Hybrid app), as well as installed the MobileFirst Cordova SDK and added required platforms.</li>
-                            <li>An API report, <b>{app-name}-api-report.html</b>, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation 8.0.</li>
+                            <li>If using the **client** command, an API report, <b>{app-name}-api-report.html</b>, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation 8.0.</li>
                         </ul>
 
                         <img alt="API report" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/api-report-cordova.png"/>
@@ -312,14 +312,11 @@ if (document.addEventListener) {
                 <div id="collapseMigrateWeb" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-web-apps">
                     <div class="panel-body">
                         <h4>Step 1</h4>
-                        <p>Use the Migration Assistance tool to generate an API report.</p>
-
-                        <blockquote>The Migration Assistance tool does not support web apps, however because the MobileFirst Web SDK shares its codebase with the MobileFirst Cordova SDK, it is possible to use the same method also for web apps.</blockquote>
-
-                        <p>Open a command-line window and use the Migration Assistance tool in the following manner.<br/>
+                        <p>Use the Migration Assistance tool to generate an API report.<br/>
+                        Open a command-line window and use the Migration Assistance tool in the following manner.<br/>
                         This could take a while to complete, depending on your Internet connection...</p>
 
-{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}
                             
                         <ul>
                             <li>Replace <b>source_directory</b> with the path to the application folder inside the Studio project, for example: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
