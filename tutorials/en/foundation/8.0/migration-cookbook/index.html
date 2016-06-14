@@ -95,7 +95,7 @@ show_in_nav: false
 
         <ol>
             <li><a href="https://nodejs.org/en/" target="_blank">Install NodeJS</a> as it is a prerequisite for the tool to work.</li>
-            <li>From the MobileFirst Operations Console, click on the Download Center link at the bottom of the sidebar navigation.  Download &amp; install the Migration Assistance tool. </li>
+            <li>From the MobileFirst Operations Console, click on the Download Center link at the bottom of the sidebar navigation. Follow the instructions to install the Migration Assistance tool, either from NPM or by downloading a .zip file.</li>
         </ol>
 
         <img alt="Download the migration tool from the mobilefirst operations console" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/get-migration-tool.png"/>
@@ -134,8 +134,9 @@ show_in_nav: false
                         <ul>
                             <li>To only scan the Classic Hybrid project and have an API report generated, use:
 {% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}</li>
-                            <li>To scan the Classic Hybrid project as well as and create a predefined Cordova project (this could take a while to complete, depending on your Internet connection...), use:
-{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}</li>
+                            <li>To scan the Classic Hybrid project as well as and create a predefined Cordova project, use:<br/>
+{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}
+                            <b>Note:</b> this could take a while to complete, depending on your Internet connection, as the process includes downloading the MobileFirst Cordova SDK plug-ins.</li>
                             <li>Replace <b>source_directory</b> with the path to the application folder inside the Studio project, for example: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
                             <li>Replace <b>destination_directory</b> with a path to a folder that will house the converted application and the generated API report</li>
                         </ul>
@@ -228,7 +229,7 @@ if (window.addEventListener) {
                                                     </li>
                                                 </ul>
                             
-                                            <li><b>Optional:</b> Update the <b>www/InitOptions.js</b> file to call <code>WLClient.init</code> manually.
+                                            <li><b>Optional:</b> If you need run logic before the MobileFirst framework is initialized, update the <b>www/InitOptions.js</b> file to call <code>WL.Client.init</code> manually.
                                                 <ul>
                                                     <li>Edit the <b>config.xml</b> file and set the <code>mfp:clientCustomInit</code> element's <code>enabled</code> attribute to <b>true</b>.</li>
 
@@ -266,7 +267,7 @@ if (document.addEventListener) {
                         <br/>
                         <h4>Step 5</h4>
                         <p>To test the Cordova application you can either preview only its web resources, run in a simulator/emulator or in a physical device.<br/>
-                            <b>Note:</b> Depending on your application flow you may need to continue adjusting your code (see below) before being able to test it.</p>
+                            <b>Note:</b> If your client-side code contains logic pertainnig to security and authentication, push notifications, adapters and alike, may need to continue adjusting your code (see below) before being able to test it. You can, however, review your application interface to make sure it is still intact.</p>
                         
                         <p><b>Previewing web resources:</b></p>
                         <ul>
@@ -410,9 +411,6 @@ if (document.addEventListener) {
                         </ul>
                     
                         <br/>
-
-                        <p>If the below doesn't cover your specific case do <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_ios_projs.html" target="_blank">check the iOS migration user documentation topics</a>.</p>
-
                         <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeiOSSDK">
@@ -526,8 +524,6 @@ end{% endhighlight %}
                         <br/>
 
                         <b>Android</b><br/>
-                        If the below doesn't cover your specific case do <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_android_projs.html" target="_blank">check the Android migration user documentation topics</a>.
-
                         <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeAndroidSDK">
@@ -559,7 +555,7 @@ end{% endhighlight %}
                                 <div id="collapseAddAndroidSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addAndroidSDK">
                                     <div class="panel-body">
                                         <ol>
-                                            <li>In <b>Android → Gradle Scripts</b>, select the <b>build.gradle (Module: app)</b> file.</li>
+                                            <li>In Android Studio navigate to <b>Android → Gradle Scripts</b> and select the <b>build.gradle (Module: app)</b> file.</li>
                                             <li>Add the following lines below <code>apply plugin: 'com.android.application'</code>:
 
 {% highlight xml %}repositories{
@@ -605,8 +601,6 @@ transitive: true{% endhighlight %}
                         <br/>
 
                         <b>Windows</b><br/>
-                        If the below doesn't cover your specific case do <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_windows_projs.html" target="_blank">check the Windows migration user documentation topics</a>.
-
                         <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="removeWindowsSDK">
@@ -680,6 +674,7 @@ transitive: true{% endhighlight %}
                 <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_ios_encryption.html" target="_blank">Migrating encryption for Cordova iOS applications</a></li>
             </ul>
         </blockquote>
+        <p>With the application converted to comply with the require app structure in MobileFoundation 8.0, we can start looking at our adapters.</p>
     </div>
 
     <br id="adapters"/><br/>
@@ -712,21 +707,20 @@ transitive: true{% endhighlight %}
                     <div class="panel-body">
                         <p>Maven adapters require Apache Maven installed on the developer workstation.
                         <ol>
-                            <li>Install Apache Maven.<br/>Verify the installation by executing: <code>mvn -v</code>.
+                            <li>Install Apache Maven.
                                 <ul>
                                     <li><a href="https://maven.apache.org/download.cgi" target="_blank">Download the Apache Maven .zip</a>.</li>
                                     <li>Add a <code>MVN_PATH</code> variable, pointing to the Maven folder.</li>
-                                </ul>
-                                
-                                <i>Mac and Linux:</i><br/>
+                                    <li><i>Mac and Linux:</i><br/>
                                 Edit your <b>~/.bash_profile</b>:
                             
 {% highlight bash %}#### Apache Maven example location
 export MVN_PATH="/usr/local/bin"
-{% endhighlight %}
+{% endhighlight %}</li>
 
-                                <i>Windows:</i><br/>
-                                <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">Follow this guide</a>.<br/><br/>
+                                    <li><i>Windows:</i> <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">Follow this guide</a>.</li>
+                                    <li>Verify the installation by executing: <code>mvn -v</code>.
+                                </ul>
                             </li>
                         
                             <li>The cookbook uses the MobileFirst CLI to call Maven commands in order to create and build the adapters.
@@ -780,7 +774,7 @@ export MVN_PATH="/usr/local/bin"
                         <ol>
                             <li>Navigate in your filesystem to the JavaScript adapter folder, for example: <i>../Desktop/JavaScriptAdapters/adapters/RSSReade</i>.</li>
                             <li>Open another window and navigate to your new Maven project, for example: <i>../Desktop/MigratedAdapter</i> and into the <b>src/main/adapter-resources</b> folder.</li>
-                            <li>Copy &amp; paste into this folder your existing adapter files: <b>filterd.xsl</b> (if used).</li>
+                            <li>Copy &amp; paste into this folder your existing adapter files: <b>filtered.xsl</b> (if used).</li>
                             <li>Edit <b>adapter.xml</b>: replace its contents with your existing adapter's XML content (in this example, RSSReader.xml).</li>
                             <li>Edit <b>js/{adapter-name}-impl.js</b>: replace its contents with your existing adapter's  content (in this example, RSSReader-impl.js).</li>
                         </ol>
@@ -861,6 +855,18 @@ export MVN_PATH="/usr/local/bin"
                         </ol>
 
                         <p>If you're using any additional libraries in the existing adapter, then here's where Maven dependencies come into play. Since we're not using Worklight/MobileFirst Studio where we previously placed libraries either in <b>server/lib</b> or the Java adapter's <b>lib</b> folder, we'll instead replace them with Maven dependencies.</p>
+                        
+                        <ol>
+                            <li>Go back to the newly created Maven project and open the <b>pom.xml</b> file located at the root of the directory.</li>
+                            <li>Add a dependency for your database type. You can search for the appropriate depdendency to use <a href="http://search.maven.org/" target="_blank">in the Maven Central website</a>.
+                            <li>In this example we'll use a Cloudant dependency. Add the following code block in the <b>dependencies</b> section:
+
+{% highlight xml %}<dependency>
+	<groupId>com.cloudant</groupId>
+	<artifactId>cloudant-client</artifactId>
+	<version>1.2.3</version>
+</dependency>{% endhighlight %}</li>
+                        </ol>
                         <br/>
                         <blockquote><b>Learn more about Maven dependencies:</b>
                             <ul>
@@ -937,6 +943,7 @@ export MVN_PATH="/usr/local/bin"
                 <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devref/r_server_side_api_changes.html#r_server_side_api_changes" target="_blank">Server-side API changes in Mobile Foundation 8.0</a></li>
             </ul>
         </blockquote>
+        <p>With the adapters migrated to a Maven project compliant form and code, it's time look at some development concepts...
     </div>
 
     <br id="devtopics"/><br/>
