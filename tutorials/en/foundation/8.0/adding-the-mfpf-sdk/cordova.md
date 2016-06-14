@@ -8,13 +8,16 @@ weight: 1
 ## Overview
 In this tutorial you will learn how to add the MobileFirst SDK to either a new or existing Cordova application created with Apache Cordova, Ionic or other thirdy-party tool. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are changed in the project.
 
-> For a complete list of MobileFirst SDK abilities [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
+The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is registered at NPM](https://www.npmjs.com/package/cordova-plugin-mfp).  
+Available plug-ins are:
 
-The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins, [and is registered at NPM](https://www.npmjs.com/package/cordova-plugin-mfp). Available plug-ins are:
+* **cordova-plugin-mfp** - the core SDK plug-in
+* **cordova-plugin-mfp-push** - provides push notifications support
+* **cordova-plugin-mfp-jsonstore** - provides JSONStore support
+* **cordova-plugin-mfp-fips** - *Android only*. Provides FIPS support
+* **cordova-plugin-mfp-encrypt-utils** - *iOS only*. Provides encrypt/decrypt support
 
-* cordova-plugin-mfp
-* cordova-plugin-mfp-push
-* cordova-plugin-mfp-jsonstore
+> [Learn more about the Cordova plug-ins](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_cord_plugins.html) that compose the MobileFirst Cordova SDK in the user documentation.
 
 **Support level:**
 The platform versions supported by the MobileFirst plug-ins, at **minimum**, are **cordova-ios@4.0.1**, **cordova-android@5.1.1** and **cordova-windows@4.2.0**.
