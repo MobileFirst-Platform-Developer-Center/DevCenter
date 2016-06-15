@@ -176,7 +176,7 @@ The `IsEnrolled` security check is protecting:
 * The **unenroll** resource so that deleting the **pinCode** will be possible only if it has been set before.
 
 #### Creating the Security Check
-[Create a Java adapter](../../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
+[Create a Java adapter](../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
