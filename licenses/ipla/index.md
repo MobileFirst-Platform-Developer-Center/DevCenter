@@ -1,3 +1,8 @@
+---
+layout: tutorial
+title: IPLA license
+---
+<br/>
 LICENSE INFORMATION
 
 The Programs listed below are licensed under the following License Information terms and conditions in addition to the Program license terms previously agreed to by Client and IBM. If Client does not have previously agreed to license terms in effect for the Program, the International Program License Agreement (Z125- 3301-14) applies.
