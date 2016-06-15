@@ -37,9 +37,14 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
 1. Open the project's existing **podfile** and add the following lines:
 
     ```xml
-	pod 'IBMMobileFirstPlatformFoundationPush'
+    use_frameworks! 
+
+    platform :ios, 8.0
+    target "Xcode-project-target" do
+        pod 'IBMMobileFirstPlatformFoundation'
+    end
     
-    post_install do |installer|
+	post_install do |installer|
         workDir = Dir.pwd
        
         installer.pods_project.targets.each do |target|
@@ -55,6 +60,7 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
         end
     end 
 	```
+    - Replace **Xcode-project-target** with the name of your Xcode project's target.
 
 2. Save and close the **podfile**.
 3. From a **Command-line** window, navigate into to the project's root folder.

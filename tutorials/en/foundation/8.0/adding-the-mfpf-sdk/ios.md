@@ -53,8 +53,13 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
 
         ```xml
         use_frameworks! 
-        pod 'IBMMobileFirstPlatformFoundation'
+
+        platform :ios, 8.0
+        target "Xcode-project-target" do
+            pod 'IBMMobileFirstPlatformFoundation'
+        end
         ```
+        - Replace **Xcode-project-target** with the name of your Xcode project's target.
         
 4. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
     **Note:** This command may take several minutes to complete.
