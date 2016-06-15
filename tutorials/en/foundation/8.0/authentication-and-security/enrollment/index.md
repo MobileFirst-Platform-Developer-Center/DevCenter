@@ -19,7 +19,7 @@ downloads:
 ## Overview
 This sample demonstrates a custom enrollment process and step-up authorization. There is a one time enrollment process during which the user is required to enter username and password and define a PIN code.  
 
-**Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../ExternalizableSecurityCheck/) and [Step-up](../step-up/) tutorials.
+**Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../externalizable-security-check/) and [Step-up](../step-up/) tutorials.
 
 #### Jump to:
 
@@ -176,7 +176,7 @@ The `IsEnrolled` security check is protecting:
 * The **unenroll** resource so that deleting the **pinCode** will be possible only if it has been set before.
 
 #### Creating the Security Check
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
+[Create a Java adapter](../../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{

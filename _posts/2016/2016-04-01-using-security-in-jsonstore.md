@@ -44,7 +44,7 @@ compile fileTree(dir: 'libs', include: ['*.jar'])
 
 Below screenshot shows the final file system layout after following the above instructions
 
-![Enabling JSONStore](/assets/blog/2016-04-01-using-security-in-jsonstore/EnablingJsonStoreSecurityAndroidStudio.png)
+![Enabling JSONStore]({{site.baseurl}}/assets/blog/2016-04-01-using-security-in-jsonstore/enable-security.png)
 
 Once all the required libraries are in place the last remaining thing to do is to call below method to enable encryption in your JSONStore application.
 
