@@ -266,7 +266,7 @@ Sample applications are available for iOS (Swift), Android,  Cordova and Web.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
 
 #### Deploy adapters
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy](../../../adapters/creating-adapters/) the available **Enrollment** and **ResourceAdapter** adapters.
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy](../../adapters/creating-adapters/) the available **Enrollment** and **ResourceAdapter** adapters.
 
 #### Register applications
 **Cordova**  
