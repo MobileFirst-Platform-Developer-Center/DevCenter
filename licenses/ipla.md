@@ -1,3 +1,116 @@
+LICENSE INFORMATION
+
+The Programs listed below are licensed under the following License Information terms and conditions in addition to the Program license terms previously agreed to by Client and IBM. If Client does not have previously agreed to license terms in effect for the Program, the International Program License Agreement (Z125- 3301-14) applies.
+
+Program Name: IBM MobileFirst Platform Foundation V8.0  
+Program Number: 5725-I43
+
+Program Name: IBM MobileFirst Platform Foundation for iOS V8.0  
+Program Number: 5725-I43
+
+Program Name: IBM MobileFirst Platform Foundation - System Pattern V8.0  
+Program Number: 5725-I43
+
+As described in the International Program License Agreement ("IPLA") and this License Information, IBM grants Licensee a limited right to use the Program. This right is limited to the level of Authorized Use, such as a Processor Value Unit ("PVU"), a Resource Value Unit ("RVU"), a Value Unit ("VU"), or other specified level of use, paid for by Licensee as evidenced in the Proof of Entitlement. Licensee's use may also be limited to a specified machine, or only as a Supporting Program, or subject to other restrictions. As Licensee has not paid for all of the economic value of the Program, no other use is permitted without the payment of additional fees. In addition, Licensee is not authorized to use the Program to provide commercial IT services to any third party, to provide commercial hosting or timesharing, or to sublicense, rent, or lease the Program unless expressly provided for in the applicable agreements under which Licensee obtains authorizations to use the Program. Additional rights may be available to Licensee subject to the payment of additional fees or under different or supplementary terms. IBM reserves the right to determine whether to make such additional rights available to Licensee.
+
+Program's specifications can be found in the collective Description and Technical Information sections of the Program's Announcement Letters.
+
+Multi-Product Install Image
+
+The Program is provided as part of a multi-product install image. Licensee is authorized to install and use only the Program (and its Supporting Programs, if any) for which a valid entitlement is obtained and may not install or use any of the other software included in the image unless Licensee has acquired separate entitlements for that other software.
+
+Supporting Programs
+
+The Program is licensed as a multi-product package and includes the Supporting Programs identified below. Licensee is authorized to install and use such Supporting Programs only to support Licensee's use of the Principal Program under this Agreement and within the limits of the Proofs of Entitlement for the Program (unless broader rights are provided elsewhere in this License Information document). The phrase "to support Licensee's use" would include only those uses that are necessary or otherwise directly related to a licensed use of the Principal Program or another Supporting Program. The Supporting Programs may not be used for any other purpose. Licensee is not authorized to transfer or remarket the Supporting Programs separate from the Principal Program. A Supporting Program may be accompanied by license terms, and those terms, if any, apply to Licensee's use of that Supporting Program. In the event of conflict, the terms in this License Information document supersede the Supporting Program's terms. When Licensee's right to use the Program expires or terminates, Licensee must discontinue use, destroy or promptly return all copies of the Supporting Programs to the party from whom Licensee acquired the Program. If Licensee downloaded the Supporting Programs, Licensee should contact the party from whom Licensee acquired the Program. If Licensee wishes to license the Supporting Programs for any use beyond the limits set forth above, please contact an IBM Sales Representative or the party from whom Licensee acquired the Program to obtain the appropriate license.
+
+The following are Supporting Programs licensed with the Program:
+* IBM DB2 Workgroup Server Edition Version 10.5
+* IBM DB2 Enterprise Server Edition Version 10.5 (on zLinux only)
+* IBM WebSphere Application Server Liberty Core V8.5.5
+* IBM WebSphere Application Server Network Deployment Patterns V2.2.0.0
+* IBM DB2 with BLU Acceleration Pattern V1.2.4.0
+* IBM API Connect Professional V5.0
+
+Separately Licensed Code
+
+The provisions of this paragraph do not apply to the extent they are held to be invalid or unenforceable under the law that governs this license. Each of the components listed below is considered "Separately Licensed Code". IBM Separately Licensed Code is licensed to Licensee under the terms of the applicable third party license agreement(s) set forth in the NON_IBM_LICENSE file(s) that accompanies the Program. Notwithstanding any of the terms in the Agreement, or any other agreement Licensee may have with IBM, the terms of such third party license agreement(s) governs Licensee's use of all Separately Licensed Code unless otherwise noted below.
+
+Future Program updates or fixes may contain additional Separately Licensed Code. Such additional Separately Licensed Code and related licenses are listed in another NON_IBM_LICENSE file that accompanies the Program update or fix. Licensee acknowledges that Licensee has read and agrees to the license agreements contained in the NON_IBM_LICENSE file(s). If Licensee does not agree to the terms of these third party license agreements, Licensee may not use the Separately Licensed Code.
+
+For Programs acquired under the International Program License Agreement ("IPLA") or International Program License Agreement for Non Warranted Program ("ILAN") and Licensee is the original licensee of the Program, if Licensee does not agree with the third party license agreements, Licensee may return the Program in accordance with the terms of, and within the specified time frames stated in, the "Money-back Guarantee" section of the IPLA or ILAN IBM Agreement.
+
+Note: Notwithstanding any of the terms in the third party license agreement, the Agreement, or any other agreement Licensee may have with IBM:
+(a) IBM provides this Separately Licensed Code to Licensee WITHOUT WARRANTIES OF ANY KIND;
+(b) IBM DISCLAIMS ANY AND ALL EXPRESS AND IMPLIED WARRANTIES AND CONDITIONS INCLUDING, BUT NOT LIMITED TO, THE WARRANTY OF TITLE, NON-INFRINGEMENT OR INTERFERENCE AND THE IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, WITH RESPECT TO THE SEPARATELY LICENSED CODE;
+(c) IBM is not liable to Licensee, and will not defend, indemnify, or hold Licensee harmless for any claims arising from or related to the Separately Licensed Code; and
+(d) IBM is not liable for any direct, indirect, incidental, special, exemplary, punitive or consequential damages including, but not limited to, lost data, lost savings, and lost profits, with respect to the Separately Licensed Code.
+
+Notwithstanding these exclusions, in Germany and Austria, IBM's warranty and liability for the Separately Licensed Code is governed only by the respective terms applicable for Germany and Austria in IBM license agreements.
+
+Note: IBM may provide limited support for some Separately Licensed Code. If such support is available, the details and any additional terms related to such support will be set forth in the License Information document.
+
+The following are Separately Licensed Code:
+* Android Robot (graphic)
+* android_device.png
+* android.png
+
+Benchmarking
+
+Licensee may disclose the results of any benchmark test of the Program or its subcomponents to any third party provided that Licensee (A) publicly discloses the complete methodology used in the benchmark test (for example, hardware and software setup, installation procedure and configuration files), (B) performs Licensee's benchmark testing running the Program in its Specified Operating Environment using the latest applicable updates, patches and fixes available for the Program from IBM or third parties that provide IBM products ("Third Parties"), and (C) follows any and all performance tuning and "best practices" guidance available in the Program's documentation and on IBM's support web sites for the Program. If Licensee publishes the results of any benchmark tests for the Program, then notwithstanding anything to the contrary in any agreement between Licensee and IBM or Third Parties, IBM and Third Parties will have the right to publish the results of benchmark tests with respect to Licensee's products provided IBM or Third Parties complies with the requirements of (A), (B) and (C) above in its testing of Licensee's products.
+
+Notwithstanding the foregoing, under no circumstances may Licensee publish the results of benchmark tests run on Oracle Outside In Technology without prior written permission.
+
+The above benchmarking terms apply to the following Programs or subcomponents:
+* IBM MobileFirst Platform Foundation V8.0
+* IBM MobileFirst Platform Foundation for iOS V8.0
+* IBM MobileFirst Platform Foundation - System Pattern V8.0
+
+Source Components and Sample Materials
+
+The Program may include some components in source code form ("Source Components") and other materials identified as Sample Materials. Licensee may copy and modify Source Components and Sample Materials for internal use only provided such use is within the limits of the license rights under this Agreement, provided however that Licensee may not alter or delete any copyright information or notices contained in the Source Components or Sample Materials. IBM provides the Source Components and Sample Materials without obligation of support and "AS IS", WITH NO WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING THE WARRANTY OF TITLE, NON-INFRINGEMENT OR NON-INTERFERENCE AND THE IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+
+Application
+
+Application is a unit of measure by which the Program can be licensed. An Application is a uniquely named software program that is separately installable on a computing device. Licensee must obtain sufficient Application entitlements to cover all Applications that incorporate any portion of, connect to, or are managed by the Program.
+
+Program-unique Terms
+
+Supporting Programs Details
+
+IBM WebSphere Application Server Liberty Core  
+- Use Limitations: Use by Principal Program
+
+IBM DB2 Workgroup Server Edition Version  
+- Use Limitations: Use by Principal Program
+
+IBM DB2 Enterprise Server Edition Version (on zLinux only)  
+- Use Limitations: Use by Principal Program
+
+IBM WebSphere Application Server Network Deployment Patterns  
+- Use Limitations: Use by Principal Program
+
+IBM DB2 with BLU Acceleration Pattern  
+- Use Limitations: Use by Principal Program
+
+IBM API Connect Professional  
+- Entitlement: Ratio 50 Thousand Monthly API Calls / 1 Application
+
+"Ratio n/m" means that Licensee receives some number ('n') entitlements for the Supporting Program for every specified number ('m') entitlements of the Principal Program as a whole. Unless otherwise specified, the number of entitlements for the Supporting Program is rounded up to a multiple of 'n'. For example, if a Program includes 100 PVUs for a Supporting Program for every 500 PVUs obtained of the Principal Program and Licensee acquires 1,200 PVUs of the Program, Licensee may install the Supporting Program and have processor cores available to or managed by it of up to 300 PVUs. Those PVUs would not need to be counted as part of the total PVU requirement for Licensee's installation of the Program on account of the installation of the Supporting Program (although those PVUs might need to be counted for other reasons, such as the processor cores being made available to the Principal Program, as well).
+
+"Use by Principal Program" means that the Supporting Program is provided exclusively for use by the Principal Program. Neither Licensee nor any application, program or device is authorized to directly use or access the services of the Supporting Program except Licensee may access the Supporting Program to perform administrative functions for the Supporting Program such as backup, recovery and authorized configuration.
+
+"Monthly API Calls" is a unit of measure by which the Supporting Program can be licensed. An API Call is the invocation of the Program via a programmable interface. Sufficient entitlements must be obtained to cover the maximum number of API Calls in any calendar month.
+
+Mobile OS Platforms
+
+IBM has tested sample applications created with the mobile tools provided in the Program ("Mobile Tools") to determine if they will execute properly on certain versions of mobile operating system platforms from Apple (iOS), RIM (Blackberry), Microsoft (Windows, Windows RT, Windows Phone), and Google (Android) (collectively "Mobile OS Platforms"), however, Mobile OS Platforms are provided by third parties, are not under IBM's control and are subject to change without notice to IBM. As such, and notwithstanding anything to the contrary, IBM does not warrant that any applications or other output created using the Mobile Tools will execute properly on, interoperate with or be compatible with any Mobile OS Platforms or mobile devices.
+
+
+L/N: L-BVID-A7WLJ8  
+D/N: L-BVID-A7WLJ8  
+P/N: L-BVID-A7WLJ8  
+
+
 International Program License Agreement
 
 Part 1 - General Terms
@@ -230,9 +343,9 @@ ASIA PACIFIC
 
 EUROPE, MIDDLE EAST, AND AFRICA
 
-(9) in Albania, Armenia, Azerbaijan, Belarus, Bosnia-Herzegovina, Bulgaria, Croatia, Former Yugoslav Republic of Macedonia, Georgia, Hungary, Kazakhstan, Kyrgyzstan, Moldova, Montenegro, Poland, Romania, Russia, Serbia, Slovakia, Tajikistan, Turkmenistan, Ukraine, and Uzbekistan: the laws of Austria;
+(9) in Albania, Armenia, Azerbaijan, Belarus, Bosnia- Herzegovina, Bulgaria, Croatia, Former Yugoslav Republic of Macedonia, Georgia, Hungary, Kazakhstan, Kyrgyzstan, Moldova, Montenegro, Poland, Romania, Russia, Serbia, Slovakia, Tajikistan, Turkmenistan, Ukraine, and Uzbekistan: the laws of Austria;
 
-(10) in Algeria, Andorra, Benin, Burkina Faso, Cameroon, Cape Verde, Central African Republic, Chad, Comoros, Congo Republic, Djibouti, Democratic Republic of Congo, Equatorial Guinea, French Guiana, French Polynesia, Gabon, Gambia, Guinea, Guinea-Bissau, Ivory Coast, Lebanon, Madagascar, Mali, Mauritania, Mauritius, Mayotte, Morocco, New Caledonia, Niger, Reunion, Senegal, Seychelles, Togo, Tunisia, Vanuatu, and Wallis and Futuna: the laws of France;
+(10) in Algeria, Andorra, Benin, Burkina Faso, Cameroon, Cape Verde, Central African Republic, Chad, Comoros, Congo Republic, Djibouti, Democratic Republic of Congo, Equatorial Guinea, French Guiana, French Polynesia, Gabon, Gambia, Guinea, Guinea- Bissau, Ivory Coast, Lebanon, Madagascar, Mali, Mauritania, Mauritius, Mayotte, Morocco, New Caledonia, Niger, Reunion, Senegal, Seychelles, Togo, Tunisia, Vanuatu, and Wallis and Futuna: the laws of France;
 
 (11) in Estonia, Latvia, and Lithuania: the laws of Finland;
 
@@ -266,7 +379,7 @@ AMERICAS
 
 EUROPE, MIDDLE EAST, AND AFRICA
 
-(9) in Austria: the court of law in Vienna, Austria (Inner-City);
+(9) in Austria: the court of law in Vienna, Austria (Inner- City);
 
 (10) in Algeria, Andorra, Benin, Burkina Faso, Cameroon, Cape Verde, Central African Republic, Chad, Comoros, Congo Republic, Djibouti, Democratic Republic of Congo, Equatorial Guinea, France, French Guiana, French Polynesia, Gabon, Gambia, Guinea, Guinea-Bissau, Ivory Coast, Lebanon, Madagascar, Mali, Mauritania, Mauritius, Mayotte, Monaco, Morocco, New Caledonia, Niger, Reunion, Senegal, Seychelles, Togo, Tunisia, Vanuatu, and Wallis and Futuna: the Commercial Court of Paris;
 
@@ -320,7 +433,7 @@ All proceedings shall be conducted, including all documents presented in such pr
 
 EUROPE, MIDDLE EAST, AND AFRICA
 
-(4) In Albania, Armenia, Azerbaijan, Belarus, Bosnia-Herzegovina, Bulgaria, Croatia, Former Yugoslav Republic of Macedonia, Georgia, Hungary, Kazakhstan, Kyrgyzstan, Moldova, Montenegro, Poland, Romania, Russia, Serbia, Slovakia, Tajikistan, Turkmenistan, Ukraine, and Uzbekistan:
+(4) In Albania, Armenia, Azerbaijan, Belarus, Bosnia- Herzegovina, Bulgaria, Croatia, Former Yugoslav Republic of Macedonia, Georgia, Hungary, Kazakhstan, Kyrgyzstan, Moldova, Montenegro, Poland, Romania, Russia, Serbia, Slovakia, Tajikistan, Turkmenistan, Ukraine, and Uzbekistan:
 
 All disputes arising out of this Agreement or related to its violation, termination or nullity will be finally settled under the Rules of Arbitration and Conciliation of the International Arbitral Center of the Federal Economic Chamber in Vienna (Vienna Rules) by three arbitrators appointed in accordance with these rules. The arbitration will be held in Vienna, Austria, and the official language of the proceedings will be English. The decision of the arbitrators will be final and binding upon both parties. Therefore, pursuant to paragraph 598 (2) of the Austrian Code of Civil Procedure, the parties expressly waive the application of paragraph 595 (1) figure 7 of the Code. IBM may, however, institute proceedings in a competent court in the country of installation.
 
@@ -386,7 +499,7 @@ Each party will promptly return to the other or destroy all Personal Data that i
 
 (6) Public Bodies Who Are Subject to Public Sector Privacy Legislation
 
-For Licensees who are public bodies subject to public sector privacy legislation, this Item 13.m applies only to Personal Data made available to Licensee in connection with this Agreement, and the obligations in this section apply only to Licensee, except that: 1) section (2)(a) applies only to IBM; 2) sections (1)(a) and (4)(a) apply to both parties; and 3) section (4)(b) and the last sentence in (1)(b) do not apply.
+For Licensees who are public bodies subject to public sector privacy legislation, this Item 13.m applies only to Personal Data made available to Licensee in connection with this Agreement, and the obligations in this section apply only to Licensee, except that: 1) section (2)(a) applies only to IBM; 2) sections (1) (a) and (4)(a) apply to both parties; and 3) section (4)(b) and the last sentence in (1)(b) do not apply.
 
 PERU
 
@@ -708,3 +821,5 @@ c. wasted management time or lost profits, business, revenue, goodwill, or antic
 
 Z125-3301-14 (07/2011)
 
+
+﻿
