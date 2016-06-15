@@ -25,7 +25,7 @@ Repeat these steps for each of the applications you want the enable Device SSO f
 Read the  [Credential Validation](../credentials-validation/) tutorial as we will be using its sample to configure Device SSO.  
 For this demonstration the Cordova sample application will be used, however the same can be done also with the iOS, Android and Windows sample applications.
 
-1. Follow the [sample usage instructions](../credentials-validation/#cordova-sample-usage).
+1. Follow the [sample usage instructions](../credentials-validation/javascript/#cordova-sample-usage).
 2. Repeat the steps with a different sample name and application identifier.
 3. Run both applications on the same device. Notice how in each application you will be prompted for the pincode ("1234").
 4. In the MobileFirst Operations Console, set `Enable Device SSO` to `true` for each of the applications as instructed above.

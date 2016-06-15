@@ -91,7 +91,7 @@ In this section we will discuss how to import an existing Cordova project that h
 
 ## Adding the MobileFirst SDK to Cordova project
 
-Once you have [installed THyM](#installing-thym) and the [MobileFirst CLI plugin](#installing-mobilefirst-cli-plugin) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the MobileFirst SDK via Cordova plugin.
+Once you have [installed THyM](#installing-the-thym-plug-in) and the [MobileFirst CLI plugin](#installing-the-mobilefirst-studio-plug-in) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the MobileFirst SDK via Cordova plugin.
 
 1. In the Project Explorer right click the **plugins** directory and select **Install Cordova Plug-in**
 2. In the Registry tab of the presented dialog box search **mfp** and select **cordova-plugin-mfp** and click **Finish**

@@ -18,7 +18,7 @@ The MobileFirst Java Adapter is a simple and secure extension point on the Mobil
 Most often there is a subset of backend data or function that needs to be quickly and securely exposed as public services that can then be exploited by mobile applications.  The MobileFirst platform proposes the following approach to achieve this goal and also provides tools to accelerate the integration via this approach.
 
 ### Define ReST APIs for the backend data / function using Open API Specs
-For the backend data or function that you want to integrate with design ReST APIs which you could then describe using the [Open API Specification (fka Swagger Specifications)](https://github.com/OAI/OpenAPI-Specification) standard.  You may choose either YAML or JSON as the notation to describe the APIs.  You could use the online [Swagger Editor](editor.swagger.io) as a convenience tool to compose you API definitions according to the Open API specs.
+For the backend data or function that you want to integrate with design ReST APIs which you could then describe using the [Open API Specification (fka Swagger Specifications)](https://github.com/OAI/OpenAPI-Specification) standard.  You may choose either YAML or JSON as the notation to describe the APIs.  You could use the online [Swagger Editor](http://editor.swagger.io) as a convenience tool to compose you API definitions according to the Open API specs.
 
 Designing and describing the ReST APIs lays the foundation to opening up your backend data / functions for use by your mobile applications.  The next steps will be implementing these ReST APIs to connect to your backend data / functions and then hosting the APIs as a service that can be exploited by your mobile applications.
 

@@ -16,7 +16,7 @@ Below are MobileFirst Foundation 8.0 hands-on lab sessions with step-by-step gui
 Before starting the lab series make sure to first follow through setup instructions.
 
 <div style="max-width: 200px">
-<a href="{{site.baseurl}}/labs/developers/8.0/newhybridwallet"><img src="{{site.baseurl}}/labs/developers/8.0/newhybridwallet/logo_small.png"></a>
+<a href="{{site.baseurl}}/labs/developers/8.0/newhybridwallet"><img atl="logo" src="{{site.baseurl}}/labs/developers/8.0/newhybridwallet/logo_small.png"></a>
 </div>
 
 In this lab: 
@@ -32,7 +32,7 @@ In this lab:
 ---
 
 <div style="max-width: 200px">
-<a href="{{site.baseurl}}/labs/developers/8.0/hybridmessenger"><img src="{{site.baseurl}}/labs/developers/8.0/hybridmessenger/logo_small.png"></a>
+<a href="{{site.baseurl}}/labs/developers/8.0/hybridmessenger"><img alt="logo" src="{{site.baseurl}}/labs/developers/8.0/hybridmessenger/logo_small.png"></a>
 </div>
 
 In this lab:
