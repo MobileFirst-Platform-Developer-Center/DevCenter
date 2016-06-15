@@ -9,7 +9,7 @@ tags:
 version:
 - 8.0
 author:
-  name: Ishai Borovoy
+  name: Ishai Borovoy ~
 ---
 
 ## Introduction
