@@ -20,7 +20,7 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 * [Setting-up Notifications](#setting-up-notifications)
     * [Google Cloud Messaging](#google-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
-    * [Windows Notifications Service](#windows-notifications-service)
+    * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [Scope mapping](#scope-mapping)
     * [Authenticated Notifications](#authenticated-notifications)
 * [Defining Tags](#defining-tags)
