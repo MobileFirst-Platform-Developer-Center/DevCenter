@@ -2,7 +2,7 @@
 layout: tutorial
 title: Handling Push Notifications in iOS
 relevantTo: [ios]
-weight: 4
+weight: 5
 downloads:
   - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
