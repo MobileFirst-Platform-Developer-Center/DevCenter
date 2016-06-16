@@ -46,7 +46,7 @@ Open a command-line window and navigate to the extracted folder location.
 * To stop the server: `./stop.cmd`
 
 ### Accessing the MobileFirst Operations Console
-You can access the [MobileFirst Operations Console]({{site.basurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/console/) in the following ways:
+You can access the [MobileFirst Operations Console]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/console/) in the following ways:
 
 * From command-line, execute: `mfpdev server console`
 * From a browser, visit: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)

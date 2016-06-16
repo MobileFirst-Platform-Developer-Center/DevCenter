@@ -15,8 +15,8 @@ Continue reading to learn more about the components of MobileFirst Foundation.
 #### Jump to:
 
 * [Installation guide](#installation-guide)
-* [MobileFirst Foundation Developer Kit](#mobilefirst-platform-foundation-developer-kit)
-* [MobileFirst Foundation components](#mobilefirst-platform-foundation-components)
+* [MobileFirst Foundation Developer Kit](#mobilefirst-foundation-developer-kit)
+* [MobileFirst Foundation components](#mobilefirst-foundation-components)
 * [Applications and Adapters development](#applications-and-adapters-development)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -72,7 +72,7 @@ A developer can:
 - Send Push Notifications to iOS and Android devices
 - Generate DevOps scripts for continuous integration workflows and faster development cycles
 
-> Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Platform Operations Console](../../setting-up-your-development-environment/console/) tutorial.
+> Learn more about the MobileFirst Operations Console in the [Using the MobilFirst Operations Console](../../setting-up-your-development-environment/console/) tutorial.
 
 ### MobileFirst Command-line Interface
 The IBM MobileFirst command-line interface (CLI) tool enables developers to:

@@ -9,7 +9,7 @@ weight: 2
 The MobileFirst Foundation SDK consists of a collection of pods, available through [CocoaPods](http://guides.cocoapods.org), that you can add to your Xcode project. The pods correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../using-the-mfpf-sdk/jsonstore-ios/).
+* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../using-the-mfpf-sdk/jsonstore/ios/).
 * **IBMMobileFirstPlatformFoundationPush** - Contains the Push Notifications framework. For more information, review the [Notifications tutorials](../../notifications/).
 * **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for the Apple WatchOS. For more information, review the [user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/devref/t_ios_frameworks.html).
 
@@ -53,8 +53,13 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
 
         ```xml
         use_frameworks! 
-        pod 'IBMMobileFirstPlatformFoundation'
+
+        platform :ios, 8.0
+        target "Xcode-project-target" do
+            pod 'IBMMobileFirstPlatformFoundation'
+        end
         ```
+        - Replace **Xcode-project-target** with the name of your Xcode project's target.
         
 4. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
     **Note:** This command may take several minutes to complete.

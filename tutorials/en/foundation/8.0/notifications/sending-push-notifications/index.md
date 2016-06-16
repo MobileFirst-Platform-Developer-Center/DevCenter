@@ -1,25 +1,28 @@
 ---
 layout: tutorial
-title: Sending Push Notifications
+title: Sending Notifications
 show_children: true
 relevantTo: [ios,android,windows,cordova]
-weight: 2
+weight: 3
 ---
 
 ## Overview
-In order to send push notifications to iOS or Android devices, the MobileFirst Server first needs to be configured with the GCM details for Android or APNS certificate for iOS. Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID, User Ids, only iOS devices, only Android devices, or based on the authenticated user.
+In order to send push or SMS notifications to iOS, Android or Windows devices, the MobileFirst Server first needs to be configured with the GCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
+Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID,  User Ids, only iOS devices, only Android devices, only Windows devices, or based on the authenticated user.
 
-> **Note:** In the release, authenticated notifications are **not supported** in Cordova applications.
+**Prerequisite**: 
 
-**Prerequisite**: Make sure to read the [Push Notifications overview](../push-notifications-overview/) tutorial.
+* For push notifications, make sure to read the [Push Notifications overview](../push-notifications-overview/) tutorial.
+* For SMS notifications, make sure to read the [SMS Notifications overview](../sms-notifications-overview/) tutorial.
 
 #### Jump to
 
-* [Setting-up Push Notifications](#setting-up-push-notifications)
+* [Setting-up Notifications](#setting-up-notifications)
     * [Google Cloud Messaging](#google-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
+    * [Windows Push Notifications Service](#windows-push-notifications-service)
     * [Scope mapping](#scope-mapping)
-    * [Authenticated Push Notifications](#authenticated-push-notifications)
+    * [Authenticated Notifications](#authenticated-notifications)
 * [Defining Tags](#defining-tags)
 * [Sending Push Notifications](#sending-push-notifications)    
     * [MobileFirst Operations Console](#mobilefirst-operations-console)
@@ -27,11 +30,11 @@ In order to send push notifications to iOS or Android devices, the MobileFirst S
     * [Customizing Notifications](#customizing-notifications)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
-## Setting up Push Notifications
-Enabling push notifications support involves several configuration steps in both MobileFirst Server and the client application.  
-Continue reading for the server-side setup. Jump to [Client-side setup](#tutorials-to-follow-next).
+## Setting up Notifications
+Enabling notifications support involves several configuration steps in both MobileFirst Server and the client application.  
+Continue reading for the server-side setup, or jump to [Client-side setup](#tutorials-to-follow-next).
 
-On the server-side, required set-up includes: configuring the needed vendor (APNS and/or GCM) and mapping the "push.mobileclient" scope.
+On the server-side, required set-up includes: configuring the needed vendor (APNS, GCM or WNS) and mapping the "push.mobileclient" scope.
 
 ### Google Cloud Messaging
 Android devices use the Google Cloud Messaging (GCM) service for push notifications.  
@@ -78,6 +81,15 @@ To setup APNS:
 
 <img class="gifplayer" alt="Image of adding the APNS credentials" src="apns-setup.png"/>
 
+### Windows Push Notifications Service
+Windows devices use the Windows Push Notifications Service (WNS) for push notifications.  
+To setup WNS:
+
+1. Follow the [instructions as provided by Microsoft](http://localhost:4000/tutorials/en/foundation/8.0/notifications/sending-push-notifications/#google-cloud-messaging) to generate the **Package Security Identifier (SID)** and **Client secret** values.
+2. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add these values and click **Save**.
+
+<img class="gifplayer" alt="Image of adding the WNS credentials" src="wns-setup.png"/>
+
 ### Scope mapping
 Map the **push.mobileclient** scope element to the application.
 
@@ -86,8 +98,8 @@ Map the **push.mobileclient** scope element to the application.
 
     <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
 
-### Authenticated Push Notifications
-Authenticated notifications are push notifications that are sent to one or more `userIds`.  
+### Authenticated Notifications
+Authenticated notifications are notifications that are sent to one or more `userIds`.  
 
 Map the **push.mobileclient** scope element to the security check used for the application.  
 
@@ -150,8 +162,9 @@ deviceIds | An array of the devices represented by the device identifiers. Devic
 platforms | An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and M (Microsoft/Windows).
 tagNames | An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications.
 userIds | An array of users represented by their userIds to send the notification. This is a unicast notification.
+phoneNumber | The phone number used for registering the device and receiving notifications. This is a unicast notification.
 
-**Payload JSON Example**
+**Push Notifications Payload JSON Example**
 
 ```json
 {
@@ -179,6 +192,27 @@ userIds | An array of users represented by their userIds to send the notificatio
     "tagNames" : [ "Gold", ... ],
     "userIds" : [ "MyUserId", ... ],
   },
+}
+```
+
+**SMS Notification Payload JSON Example**
+
+```json
+{
+	"host": "2by0.com",
+	"name": "dummy",
+	"port": "80",
+	"programName": "gateway/add.php",
+	"parameters": [{
+		"name": "xmlHttp",
+		"value": "false",
+		"encode": "true"
+	}, {
+		"name": "httpsEnabled",
+		"value": "false",
+		"encode": "true"
+	}]
+
 }
 ```
 

@@ -198,7 +198,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   The list contains the image name, date of creation and ID.
                   </li>
                   <li><strong>startanalytics.sh - Running the image on an IBM Container</strong><br />
-                  The <strong>startanalytics.sh</strong> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container. It also Binds your image to the public IP you configured in the <strong>ANALYTICS_IP</strong> property.</p>
+                  The <strong>startanalytics.sh</strong> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container. It also binds your image to the public IP you configured in the <strong>ANALYTICS_IP</strong> property.</p>
 
                   Run:
 {% highlight bash %}
@@ -206,7 +206,7 @@ If you intend to use analytics with your MobileFirst Server start here.
 {% endhighlight %}
                   </li>
                   <li><strong>startanalyticsgroup.sh - Running the image on an IBM Container group</strong><br />
-                  The <strong>startanalyticsgroup.sh</strong> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container group. It also Binds your image to the Host name you configured in the <strong>ANALYTICS_CONTAINER_GROUP_HOST</strong> property.</p>
+                  The <strong>startanalyticsgroup.sh</strong> script is used to run the MobileFirst Foundation Operational Analytics image on an IBM Container group. It also binds your image to the Host name you configured in the <strong>ANALYTICS_CONTAINER_GROUP_HOST</strong> property.</p>
 
                   Run:
 {% highlight bash %}
@@ -303,7 +303,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   The list contains the image name, date of creation and ID.
                   </li>
                   <li><strong>startserver.sh - Running the image on an IBM Container</strong><br />
-                  The <strong>startserver.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container. It also Binds your image to the public IP you configured in the <strong>SERVER_IP</strong> property.</p>
+                  The <strong>startserver.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container. It also binds your image to the public IP you configured in the <strong>SERVER_IP</strong> property.</p>
                   Run:
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
@@ -311,7 +311,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   </li>
                   </li>
                   <li><strong>startservergroup.sh - Running the image on an IBM Container group</strong><br />
-                  The <strong>startservergroup.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container group. It also Binds your image to the Host name you configured in the <strong>SERVER_CONTAINER_GROUP_HOST</strong> property.</p>
+                  The <strong>startservergroup.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container group. It also binds your image to the Host name you configured in the <strong>SERVER_CONTAINER_GROUP_HOST</strong> property.</p>
                   Run:
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties

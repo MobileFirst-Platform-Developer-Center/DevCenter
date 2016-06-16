@@ -146,6 +146,8 @@ The following runtimes are currently installed on this server: mfp
 Server profile 'MyBluemixServer' added successfully. 
 ```
 
+- Replace the "fully qualified URL of this server" with your own.
+
 ### Edit server instances
 If you want to edit the details of a registered server instance, run the following command and follow the interactive prompt to select the server to be edited and provide the information to be updated.
 

@@ -21,7 +21,7 @@ Before you can start collecting the out-of-the-box data that Operational Analyti
 * In Cordova applications no setup is required, and initialization is done out-of-the-box.  
 
 ### JavaScript (Web)
-* In Web applications the analytics JavaScript files must be referenced. Make sure you have firt added the MobileFirst Web SDK. Review the [Adding the MobileFirst SDK to Web applications](../../../adding-the-mfpf-sdk/web) tutorial.  
+* In Web applications the analytics JavaScript files must be referenced. Make sure you have firt added the MobileFirst Web SDK. Review the [Adding the MobileFirst SDK to Web applications](../../adding-the-mfpf-sdk/web) tutorial.  
 Depending on how you've added the MobileFirst Web SDK, you will need to either:
 	- Reference Analytics in the `HEAD` element: 
 

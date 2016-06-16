@@ -48,7 +48,7 @@ Here’s how to get started building an app using the Mobile App Builder service
     
     ![build app]({{site.baseurl}}/assets/blog/2016-05-04-mobile-app-builder-new-service-now-available/build-app.png)
     
-    ![generate app]({{site.baseurl}}/2assets/blog/016-05-04-mobile-app-builder-new-service-now-available/generate-app.png)
+    ![generate app]({{site.baseurl}}/assets/blog/2016-05-04-mobile-app-builder-new-service-now-available/generate-app.png)
     
 5. Install App
 

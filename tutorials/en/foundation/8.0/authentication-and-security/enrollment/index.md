@@ -19,7 +19,7 @@ downloads:
 ## Overview
 This sample demonstrates a custom enrollment process and step-up authorization. There is a one time enrollment process during which the user is required to enter username and password and define a PIN code.  
 
-**Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../ExternalizableSecurityCheck/) and [Step-up](../step-up/) tutorials.
+**Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../externalizable-security-check/) and [Step-up](../step-up/) tutorials.
 
 #### Jump to:
 
@@ -176,7 +176,7 @@ The `IsEnrolled` security check is protecting:
 * The **unenroll** resource so that deleting the **pinCode** will be possible only if it has been set before.
 
 #### Creating the Security Check
-[Create a Java adapter](../../adapters/creating-adapters) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
+[Create a Java adapter](../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -266,7 +266,7 @@ Sample applications are available for iOS (Swift), Android,  Cordova and Web.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
 
 #### Deploy adapters
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy](../../../adapters/creating-adapters/) the available **Enrollment** and **ResourceAdapter** adapters.
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy](../../adapters/creating-adapters/) the available **Enrollment** and **ResourceAdapter** adapters.
 
 #### Register applications
 **Cordova**  
@@ -289,7 +289,8 @@ In the **MobileFirst Operations Console → EnrollmentWeb → Security**, map th
 
 * `setPinCode` scope to `EnrollmentUserLogin` security check
 * `accessRestricted` scope to `IsEnrolled` security check
-* `transactionsPrivilege` scope to `EnrollmentPinCode` and `IsEnrolled` security checks
+* `unenroll` scope to `IsEnrolled` security check
+* `transactions` scope to `EnrollmentPinCode` and `IsEnrolled` security checks
 
 Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.
 

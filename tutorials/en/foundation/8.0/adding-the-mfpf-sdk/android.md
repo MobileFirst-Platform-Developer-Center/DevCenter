@@ -9,7 +9,7 @@ weight: 3
 The MobileFirst Foundation SDK consists of a collection of dependencies, available through [Maven Central](http://search.maven.org/), that you can add to your Android Studio project. The dependencies correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Andoid tutorial](../../using-the-mfpf-sdk/jsonstore-android/).
+* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Andoid tutorial](../../using-the-mfpf-sdk/jsonstore/android/).
 * **IBMMobileFirstPlatformFoundationPush** - Contains the Push Notifications framework. For more information, review the [Notifications tutorials](../../notifications/).
 
 In this tutorial you will learn how to add the MobileFirst Native SDK using Gradle to either a new or existing Android Studio application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.

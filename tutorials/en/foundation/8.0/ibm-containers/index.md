@@ -29,5 +29,5 @@ The IBM Container infrastructure includes a private registry for your images, so
 
 IBM MobileFirst Foundation 8.0 currently supports only the Mobile Foundation Bluemix service.
 
-* Create a MobileFirst Server instance on IBM Containers [using the MobileFirst Platform Mobile Foudation ](using-mobile-foundation/).
-
+* Create a MobileFirst Server instance on IBM Containers [using the Mobile Foudation service](using-mobile-foundation/).
+* Create a MobileFirst Server instance on IBM Containers [using IBM-provided scripts](mobile-foundation-using-scripts/).
