@@ -71,7 +71,7 @@ To send a notification, see the [sending notifications](../sending-push-notifica
 2. Add a platform using the `cordova platform add` command.
 3. Register the application by running the command: `mfpdev app register`.
 4. In the MobileFirst Operations Console
-    - Setup the MobileFirst Server with either GCM details or APNS certificate, and define tags.
+    - Setup the MobileFirst Server with either GCM key and senderId, APNS certificate or WNS credentials, and define tags.
     - Under **Applications** → **SMSNotificationsCordova** → **Security** → **Map scope elements to security checks**, add a mapping for `push.mobileclient`.
 5. Run the application by running the `cordova run` command.
 

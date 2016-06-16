@@ -42,6 +42,7 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
     platform :ios, 8.0
     target "Xcode-project-target" do
         pod 'IBMMobileFirstPlatformFoundation'
+        pod 'IBMMobileFirstPlatformFoundationPush'
     end
     
 	post_install do |installer|

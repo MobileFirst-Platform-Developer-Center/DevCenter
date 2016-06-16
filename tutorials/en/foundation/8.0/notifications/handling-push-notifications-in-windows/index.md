@@ -23,7 +23,6 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
 
-
 #### Jump to:
 * [Notifications configuration](#notifications-configuration)
 * [Notifications API](#notifications-api)
@@ -35,10 +34,12 @@ If the MobileFirst Native Windows SDK is not already present in the project, fol
 
 
 ### Adding the Push SDK
-<span style="color:red">missing instructions</span>
+
+1. Select Tools > NuGet Package Manager > Package Manager Console.
+2. Choose the project where you want to install the MobileFirst push component.
+3. Add theMobileFirst push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
 
 ## Notifications API
-
 ### MFPPush Instance
 All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharedInstance();`, and then calling `push.methodName()` throughout the view controller.
 
