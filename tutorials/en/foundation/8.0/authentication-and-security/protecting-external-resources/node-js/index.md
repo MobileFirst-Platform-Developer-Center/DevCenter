@@ -21,7 +21,7 @@ This tutorial will show how to protect a simple Node.js resource, `GetBalance`, 
 * Understanding of the [MobileFirst Platform Foundation security framework](../../).
 
 ## The passport-mfp-token-validation module
-The passport-mfp-token-validation module provides passport validation strategy and a verification function to validate access tokens and ID tokens that are issued by the MobileFirst Server.
+The passport-mfp-token-validation module provides an authentication mechanism to verify access tokens that are issued by the MobileFirst Server.
 
 To install the module run:
 
