@@ -31,7 +31,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 ## Notifications Configuration
 Create a new Visual Studio project or use and existing one.  
-If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/windows) tutorial.
+If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/windows-8-10) tutorial.
 
 
 ### Adding the Push SDK
