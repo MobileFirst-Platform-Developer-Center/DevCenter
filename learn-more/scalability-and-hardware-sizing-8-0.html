@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Scalability and Hardware Sizing for MobileFirst Platform Foundation 8.0
+title: Scalability and Hardware Sizing for MobileFirst Foundation 8.0
 show_disqus: false
 ---
-<p>This document contains information about scalability-related parameters of IBM MobileFirst Platform Foundation, and the scalability tests performed.<br>
-It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/Hardware_Calculator.xlsx">hardware sizing calculator</a> that is used to determine the required hardware for an IBM MobileFirst Platform Foundation deployment.</p>
-<p>This document is not a replacement for the IBM MobileFirst Platform Foundation user documentation, the Knowledge Center, which describes an IBM MobileFirst Platform Server architecture, server setup and daily maintenance requirements.</p>
+<p>This document contains information about scalability-related parameters of IBM MobileFirst Foundation, and the scalability tests performed.<br>
+It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v800/Hardware_Calculator.xlsx">hardware sizing calculator</a> that is used to determine the required hardware for an IBM MobileFirst Foundation deployment.</p>
+<p>This document is not a replacement for the IBM MobileFirst Foundation user documentation, the Knowledge Center, which describes an IBM MobileFirst Server architecture, server setup and daily maintenance requirements.</p>
 
 <p><b>Jump to:</b></p>
 <ul>
@@ -23,14 +23,14 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
 <h3 id="architecture">Architecture</h3>
 <figure>
     <img src="{{site.baseurl}}/assets/learn-more/hardware_and_sizing_topo_b2c_deploy_enterprise_cluster.jpg" alt="B2C enterprise deployment topology" class="img-responsive"/>
-    <figcaption class="figure-caption">Figure 1-1: Typical IBM MobileFirst Platform Foundation topology</figcaption>
+    <figcaption class="figure-caption">Figure 1-1: Typical IBM MobileFirst Foundation topology</figcaption>
 </figure>
 
-<p>The IBM MobileFirst Platform Foundation topology is based on the following principles:</p>
+<p>The IBM MobileFirst Foundation topology is based on the following principles:</p>
 <ul>
 	<li>MobileFirst Server is installed in the organization LAN, connecting to various enterprise back-end systems.</li>
 	<li>MobileFirst Server can be clustered for high availability and scalability.</li>
-	<li>The database is used for storing administration and configuration data, push notifications, registered clients data, and the security context of the clients. A single instance of the database is shared by the MobileFirst Platform runtime environment in all MobileFirst Server cluster nodes. It is possible to cluster the database by using the tools and methods that are provided by the database vendor.</li>
+	<li>The database is used for storing administration and configuration data, push notifications, registered clients data, and the security context of the clients. A single instance of the database is shared by the MobileFirst runtime environment in all MobileFirst Server cluster nodes. It is possible to cluster the database by using the tools and methods that are provided by the database vendor.</li>
 	<li>MobileFirst Server is installed behind a web authentication infrastructure, which acts as a reverse proxy and provides SSL.</li>
 	<li>The database server and the MobileFirst Server must be installed on separate host machines.</li>
 </ul>
@@ -42,7 +42,7 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
 <p>When the MobileFirst Server works in session-independent mode, the security context of the clients is stored independently of the container’s HTTP session. In this mode, the security context information can be stored (via the attribute store) in the runtime database (relational or Cloudant), or in WebSphere eXtreme Scale. The eXtreme Scale cache can optionally be persisted to a database, using a loader plugin. The scalability tests were performed with all these configurations, and the throughput results for each configuration are provided below.</p>
 
 <h3 id="scalabilityTests">Scalability Tests</h3>
-<p>IBM conducted a series of scalability tests before releasing IBM MobileFirst Platform Foundation. The following table contains a short summary of the tests performed.</p>
+<p>IBM conducted a series of scalability tests before releasing IBM MobileFirst Foundation. The following table contains a short summary of the tests performed.</p>
 <b>Tests</b>
 
 <table class="table table-striped">
@@ -77,7 +77,7 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
   <tr>
       <td>5</td>
       <td>Scalability tests</td>
-      <td>This test proves that IBM MobileFirst Platform Foundation can linearly scale to multiple servers under a single database.</td>
+      <td>This test proves that IBM MobileFirst Foundation can linearly scale to multiple servers under a single database.</td>
   </tr>
   <tr>
       <td>6</td>
@@ -92,7 +92,7 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
   <tr>
       <td>8</td>
       <td>Recoverability</td>
-      <td>This test stops various components of the IBM MobileFirst Platform Foundation solution (internet, database, and back end). It starts components again and ensures that the server recovered.</td>
+      <td>This test stops various components of the IBM MobileFirst Foundation solution (internet, database, and back end). It starts components again and ensures that the server recovered.</td>
   </tr>
 </tbody>
 </table>
@@ -116,17 +116,17 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
 <p>In session-dependent mode, the tests were performed with a relational database and with a Cloudant database.</p>
 
 <h4>Hardware</h4>
-<p>The following hardware was used for IBM MobileFirst Platform Foundation application server:</p>
+<p>The following hardware was used for IBM MobileFirst Foundation application server:</p>
 <ul>
 	<li>x3250 M4, Xeon 4C E3-1220v2 69W 3.1GHz/1600MHz/8MB
-        <strong>Note:</strong> With the specified number of cores, IBM MobileFirst Platform Foundation performs thousands of transactions per second. If your throughput is low, you can use fewer cores than the specified number.</li>
+        <strong>Note:</strong> With the specified number of cores, IBM MobileFirst Foundation performs thousands of transactions per second. If your throughput is low, you can use fewer cores than the specified number.</li>
 	<li>32 GB 1333 MHz
         <strong>Note:</strong> Not all RAM was used. Use the <a href="http://public.dhe.ibm.com/software/products/en/MobileFirstPlatform/docs/v710/Hardware_Calculator.xlsx">accompanying calculator</a> to compute required RAM.</li>
 	<li>NetExtreme II BCM5790 Gigabit Ethernet</li>
 	<li>2 X 500 3.5in SATA, SR C100</li>
 </ul>
 
-<p>The following hardware was used during testing for the IBM MobileFirst Platform Foundation relational database:</p>
+<p>The following hardware was used during testing for the IBM MobileFirst Foundation relational database:</p>
 <ul>
 	<li>2 Intel Xeon 8C 2.3 GHz/20 MB</li>
 	<li>20 GB DDR3 RAM</li>
@@ -134,7 +134,7 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
 	<li>1 RAID 5 controller</li>
 </ul>
 
-<p>The following hardware was used during testing for the IBM MobileFirst Platform Foundation Cloudant database:</p>
+<p>The following hardware was used during testing for the IBM MobileFirst Foundation Cloudant database:</p>
 <ul>
 	<li>Three node cluster with a single load-balancer hosted by Softlayer</li>
 	<li>32 logical CPU cores (dual es-2650 @ 2GHz)</li>
@@ -153,8 +153,8 @@ It serves as a guide to the provided <a href="http://public.dhe.ibm.com/software
 <h3 id="usingTheHardwareSizingCalculator">Using the hardware sizing calculator</a>
 <h4>About sizing</h4>
 <p>The hardware sizing calculator is based on a scenario that was tested in IBM Labs. This scenario is based on a real customer scenario.<br/>
-However, MobileFirst Platform Server is a platform that is augmented with server-side developer code. Therefore, the sizing is largely influenced not only by client calls, but also by the efficiency of the server-side code. The server performance is also influenced by the security checks used by the application and the security configuration. Hence, you must consider the calculator as a baseline from which you can proceed to customer-specific scalability tests.</p>
-<p>This document is accompanied by a Microsoft Office Excel spreadsheet. The purpose of this spreadsheet is to help organizations calculate the required hardware for an IBM MobileFirst Platform Foundation deployment.</p>
+However, MobileFirst Server is a that is augmented with server-side developer code. Therefore, the sizing is largely influenced not only by client calls, but also by the efficiency of the server-side code. The server performance is also influenced by the security checks used by the application and the security configuration. Hence, you must consider the calculator as a baseline from which you can proceed to customer-specific scalability tests.</p>
+<p>This document is accompanied by a Microsoft Office Excel spreadsheet. The purpose of this spreadsheet is to help organizations calculate the required hardware for an IBM MobileFirst Foundation deployment.</p>
 
 <h4>The calculator computes:</h4>
 <ul>
@@ -169,7 +169,7 @@ However, MobileFirst Platform Server is a platform that is augmented with server
 
 <h3 id="pushNotifications">Push Notifications</h3>
 <h4>What are push notifications?</h4>
-<p>A push notification is an alert that indicates a change or an update that the MobileFirst Platform Server sends to users’ mobile devices. Push notifications are popular with all mobile operating systems. IBM MobileFirst Platform Foundation has APIs that maintain the lists of mobile devices and their tag subscriptions, and send push notifications. IBM MobileFirst Platform Foundation supports push notifications for the following vendors:</p>
+<p>A push notification is an alert that indicates a change or an update that the MobileFirst Server sends to users’ mobile devices. Push notifications are popular with all mobile operating systems. IBM MobileFirst Foundation has APIs that maintain the lists of mobile devices and their tag subscriptions, and send push notifications. IBM MobileFirst Foundation supports push notifications for the following vendors:</p>
 
 <ul>
 	<li>Google's GCM for Android</li>
@@ -177,15 +177,15 @@ However, MobileFirst Platform Server is a platform that is augmented with server
 	<li>Microsoft's MPNS for Windows Phone 8</li>
 </ul>
 
-<p>IBM MobileFirst Platform Foundation does not currently support push notification API for BlackBerry or Windows 8.<br/>
+<p>IBM MobileFirst Foundation does not currently support push notification API for BlackBerry or Windows 8.<br/>
 Possible architectures for push notifications Two architectures are possible for push notifications. They differ by the method that the enterprise back end uses to provide push notification data to the MobileFirst Server:</p>
 
 <ul>
-	<li>Push notifications are sent to the MobileFirst Server by a call to an IBM MobileFirst Platform Foundation procedure.</li>
+	<li>Push notifications are sent to the MobileFirst Server by a call to an IBM MobileFirst Foundation procedure.</li>
 	<li>The MobileFirst Server pulls data by using a MobileFirst JMS adapter. The enterprise back end puts the push notifications in the JMS queue.</li>
 </ul>
 
-<blockquote>For more information about these alternate architectures, <a href="https://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/admin/c_push_notification_possible_architectures.html">see the IBM MobileFirst Platform Foundation user documentation</a>.</blockquote>
+<blockquote>For more information about these alternate architectures, <a href="https://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/admin/c_push_notification_possible_architectures.html">see the IBM MobileFirst Foundation user documentation</a>.</blockquote>
 
 <p>The primary difference between the two methods is that the first method is limited to a single server, which is pulling data from the JMS queue. With the second method, the procedures in the MobileFirst Server are called through a load balancer. Therefore, the architecture can scale to more than one server.</p>
 
@@ -197,7 +197,7 @@ Possible architectures for push notifications Two architectures are possible fo
 	<li>Unicast notifications, are sent to the devices of specific users. The "userID" (or) "deviceID" is specified in the introduced server-side REST API, which enables to send push notification messages to a specified target.</li>
 </ul>
 
-<p>For more information about these features, <a href="https://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/admin/c_push_notification_possible_architectures.html">see the IBM MobileFirst Platform Foundation user documentation</a>.</p>
+<p>For more information about these features, <a href="https://www-01.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/admin/c_push_notification_possible_architectures.html">see the IBM MobileFirst Foundation user documentation</a>.</p>
 
 <h4>Testing assumptions</h4>
 <p>Push providers were simulated with a delay that is typical to these services:</p>
@@ -219,7 +219,7 @@ Starting IBM Worklight Foundation V6.2.0, devices can subscribe to tags or topic
 
 <h3 id="analytics">Analytics</h3>
 <h4>IBM MobileFirst Foundation Analytics Platform</h4>
-<p>The Analytics Platform is a WAR file that is bundled with MobileFirst Server. The Analytics Platform is based on file system storage rather than database storage. The hardware that is required to run the Analytics Platform relies on several factors including:</p>
+<p>The Analytics is a WAR file that is bundled with MobileFirst Server. The Analytics is based on file system storage rather than database storage. The hardware that is required to run the Analytics relies on several factors including:</p>
 
 <ul>
 	<li>The frequency of connectivity to the server</li>
@@ -235,7 +235,7 @@ Starting IBM Worklight Foundation V6.2.0, devices can subscribe to tags or topic
 	<li>Server Logs</li>
 </ul>
 
-<p>The analytics data is always collected and forwarded to the IBM MobileFirst Platform Foundation Analytics Platform. MobileFirst Server produces debug logs that are optionally forwarded to the IBM MobileFirst Platform Foundation Analytics Platform. Client logs are sent when the client app is optionally configured to collect and send logs.</p>
+<p>The analytics data is always collected and forwarded to the IBM MobileFirst Foundation Analytics Platform. MobileFirst Server produces debug logs that are optionally forwarded to the IBM MobileFirst Foundation Analytics Platform. Client logs are sent when the client app is optionally configured to collect and send logs.</p>
 
 <p>An event of network connection to the analytics server is recorded in the following cases:</p>
 <ul>
@@ -277,7 +277,7 @@ By default, client logs are set to “FATAL”, which means that only crash logs
 
 <b>Purging data</b>
 <p>On IBM MobileFirst Foundation Analytics Platform, you can configure automatic purging of data.</p>
-<blockquote>For more information, see the IBM MobileFirst Platform Foundation user documentation</blockquote>
+<blockquote>For more information, see the IBM MobileFirst Foundation user documentation</blockquote>
 
 <p>Different data types can be purged at different intervals. This means that if you wish to keep a year's worth of server network event data but only three weeks of log data, you can set these values separately.</p>
 
@@ -285,7 +285,7 @@ By default, client logs are set to “FATAL”, which means that only crash logs
 
 <b>Clustering</b>
 <p>You can add a new node to the analytics cluster with zero downtime. Therefore, you might want to start with a single node and add nodes as necessary. The total number of nodes that you can add to the cluster is equal to the number of shards that were created when the first node was installed.</p>
-<blockquote>For more information about shards and how to set up a cluster, see the IBM MobileFirst Platform Foundation user documentation</blockquote>
+<blockquote>For more information about shards and how to set up a cluster, see the IBM MobileFirst Foundation user documentation</blockquote>
 
 <h3 id="directUpdate">Direct Update</h3>
 <h4>What is Direct Update?</h4>
@@ -298,7 +298,7 @@ By default, client logs are set to “FATAL”, which means that only crash logs
 <ol>
 	<li># of concurrent direct-update requests. The # of downloads and especially the frequency of usage of the application (e.g. once an hour vs. once a month) will determine the number of requests the MobileFirst server can handle when the new version is pushed.</li>
 	<li>Application size. There is an accumulative size limitation on the ability of the MobileFirst server to push data to clients.</li>
-	<li>Difference in content. Starting with MobileFirst Platform 6.3, the difference in content between the old and the new version is also important (see below).</li>
+	<li>Difference in content. Starting with MobileFirst 6.3, the difference in content between the old and the new version is also important (see below).</li>
 </ol>
 
 <h4>Direct Update lab results</h4>
@@ -306,7 +306,7 @@ By default, client logs are set to “FATAL”, which means that only crash logs
 
 <strong>Note:</strong> You must also validate that the network bandwidth is not the bottleneck.
 
-<p>Starting with IBM MobileFirst Platform Foundation V6.3, direct update was improved to allow users to receive only the web resources that have changed between updates, instead of downloading the entire web resource package. This enhancement reduces download time, conserves bandwidth and improves overall user experience. When the delta size is between 10k to 300k the MobileFirst Server TPS (Transactions per second) rate remains almost the same (6% decrease) with an additional 200 to 300 direct update requests per second.</p>
+<p>Starting with IBM MobileFirst Foundation V6.3, direct update was improved to allow users to receive only the web resources that have changed between updates, instead of downloading the entire web resource package. This enhancement reduces download time, conserves bandwidth and improves overall user experience. When the delta size is between 10k to 300k the MobileFirst Server TPS (Transactions per second) rate remains almost the same (6% decrease) with an additional 200 to 300 direct update requests per second.</p>
 
 <strong>Notice:</strong> The MobileFirst server will only maintain changes between the current release and the one before that. This feature is available only for users who are upgrading an application with web resources that are only one build behind those in the application now being deployed and for Android and iOS only.
 
@@ -337,9 +337,9 @@ As a first approximation, you can get ready by adding servers and increasing out
 <p>The hardware sizing calculator attempts to help you determine the expected size of the database, based on the usage profile.</p>
 
 <h3 id="applicationCenter">Application Center</h3>
-<p>The Application Center is the IBM MobileFirst Platform Foundation application store. The concept of the Application Center is similar to the concept of the Apple public App Store or the Google Play Store, except that it targets only private usage within a company. By using the Application Center, users from the same company or organization download applications to mobile phones or tablets from a single place that serves as a repository of mobile applications.</p>
+<p>The Application Center is the IBM MobileFirst Foundation application store. The concept of the Application Center is similar to the concept of the Apple public App Store or the Google Play Store, except that it targets only private usage within a company. By using the Application Center, users from the same company or organization download applications to mobile phones or tablets from a single place that serves as a repository of mobile applications.</p>
 
-<p>The Application Center and MobileFirst Server can be installed on different systems. This installation choice ensures that the setup of the Application Center app store does not affect the performance of IBM MobileFirst Platform Foundation applications on the server, when it is installed on a different hardware.</p>
+<p>The Application Center and MobileFirst Server can be installed on different systems. This installation choice ensures that the setup of the Application Center app store does not affect the performance of IBM MobileFirst Foundation applications on the server, when it is installed on a different hardware.</p>
 
 <p>The performance of the Application Center is mainly tied to the quality and bandwidth of the network, and to the number of users. The distribution of large mobile applications must be done preferably through 3/4G or WiFi networks. On low networks, the Application Center client tries to solve problems that are related to timeout. If the Application Center cannot reach the server, it tries again several times. The download of an application might also be interrupted when the connection to the network is lost. In such case, the download can restart from where it stopped (for Android, iOS).</p>
 
