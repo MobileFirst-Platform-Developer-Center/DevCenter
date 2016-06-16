@@ -79,8 +79,12 @@ To setup APNS:
 * During the production phase, use the apns-certificate-production.p12 production certificate file.
     * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
 
-### Windows Notifications Service
-<span style="color:red">add WNS instructions here</b>
+### Windows Push Notifications Service
+Windows devices use the Windows Push Notifications Service (WNS) for push notifications.  
+To setup WNS:
+
+1. Follow the [instructions as provided by Microsoft](http://localhost:4000/tutorials/en/foundation/8.0/notifications/sending-push-notifications/#google-cloud-messaging) to generate the **Package Security Identifier (SID)** and **Client secret** values
+2. In the MobileFirst Operations Console → **[your application] → Push → Push Settings**, add these values and click **Save**.
 
 <img class="gifplayer" alt="Image of adding the APNS credentials" src="apns-setup.png"/>
 

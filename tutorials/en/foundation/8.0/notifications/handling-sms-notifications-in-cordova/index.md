@@ -2,7 +2,7 @@
 layout: tutorial
 title: Handling SMS Notifications in Cordova
 relevantTo: [cordova]
-weight: 7
+weight: 8
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsCordova/tree/release80
