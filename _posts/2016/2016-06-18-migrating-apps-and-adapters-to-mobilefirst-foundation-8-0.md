@@ -1,6 +1,6 @@
 ---
 title: Migrating apps and adapters to MobileFirst Foundation 8.0
-date: 2016-06-18
+date: 2016-06-17
 tags:
 - MobileFirst_Platform
 - Migration
