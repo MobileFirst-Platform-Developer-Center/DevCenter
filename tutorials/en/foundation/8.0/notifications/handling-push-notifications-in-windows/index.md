@@ -1,11 +1,14 @@
 ---
 layout: tutorial
-title: Push Notifications in Windows
+title: Handling Push Notifications in Windows 8.1 Universal and Windows 10 UWP
+breadcrumb_title: Handling Push Notifications in Windows
 relevantTo: [windows]
 weight: 7
 downloads:
   - name: Download Visual Studio Project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
+  - name: Download Visual Studio Project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 
 ---
 ## Overview
@@ -21,12 +24,18 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 * MobileFirst CLI installed on the developer workstation
 
 
-### Jump to:
+#### Jump to:
 * [Notifications configuration](#notifications-configuration)
 * [Notifications API](#notifications-api)
 * [Handling a push notification](#handling-a-push-notification)
 
+## Notifications Configuration
+Create a new Visual Studio project or use and existing one.  
+If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/windows) tutorial.
 
+
+### Adding the Push SDK
+<span style="color:red">missing instructions</span>
 
 ## Notifications API
 
@@ -205,8 +214,8 @@ WNS uses regular http or https requests.
 
 ## Sample application
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/) the Windows 8.1 Universal project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/) Windows 10 UWP project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) the Windows 8.1 Universal project.  
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) Windows 10 UWP project.
 
 ### Sample usage
 1. Import the project to Visual Studio.
