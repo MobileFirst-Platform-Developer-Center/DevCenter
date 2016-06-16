@@ -71,7 +71,7 @@ If you choose to work from the OS X Terminal, do the following:
 ## Download the ibm-mfpf-container-8.0.0.0 zip
 To setup IBM MobileFirst Foundation on IBM Containers, you must first create an image that will later be pushed to Bluemix.
 
-<a class="custombtn btn-lg btn-default" style="width:700px; font-size: 100%" href=" http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions and download the IBM MobileFirst Container v8.0 .zip</a>
+<a class="custombtn btn-lg btn-default" style="width:700px; font-size: 100%" href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="_blank">Follow the instructions and download the IBM MobileFirst Container v8.0 .zip</a>
 
 ### Structure of the mfp-cloud-container-8.0.0.zip archive
 <img alt="Image of the on-off switch in the Swagger UI" src="zip.png" style="float:right;margin:27px -10px 0 0"/>
