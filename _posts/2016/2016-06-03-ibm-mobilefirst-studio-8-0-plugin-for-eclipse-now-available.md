@@ -57,3 +57,9 @@ To access MobileFirst Foundation's shortcuts, right-click the root project direc
 
 ### Detailed instructions
 Learn more in the [Using the MobileFirst CLI in Eclipse]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/) tutorial.
+
+### Demo Video
+
+<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+   <iframe src="https://www.youtube.com/embed/i2xSIl8WNR4"></iframe>
+</div>
