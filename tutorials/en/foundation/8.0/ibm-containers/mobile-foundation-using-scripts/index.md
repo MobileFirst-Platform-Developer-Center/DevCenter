@@ -21,7 +21,7 @@ This tutorial demonstrates how to take a locally developed IBM MobileFirst Found
 * [Set up your host machine](#set-up-your-host-machine)
 * [Download the ibm-mfpf-container-8.0.0.0 zip](#download-the-ibm-mfpf-container-8-0-0-0-zip)
 * [Prerequisites](#prerequisites)
-* [Setting Up the MovileFirst and Analytics Servers on IBM Containers](#setting-up-the-movilefirst-and-analytics-servers-on-ibm-containers)
+* [Setting Up the MobileFirst and Analytics Servers on IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
 
 ## Register an account at Bluemix
 If you do not yet have an account, visit the [Bluemix website] and click **Get Started Free** or **Sign Up**. You'll need to fill up a registration form before you can move on to the next step.
