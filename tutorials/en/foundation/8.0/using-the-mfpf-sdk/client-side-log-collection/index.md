@@ -2,13 +2,13 @@
 layout: tutorial
 title: Client-side log collection
 breadcrumb_title: Client-side log collection
-relevantTo: [ios,android,cordova]
+relevantTo: [ios,android,javascript]
 weight: 9
 ---
 
 ## Overview
 Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging. 
-MobileFirst Platform Foundation provides a set of `Logger` API methods for this purpose. 
+MobileFirst Foundation provides a set of `Logger` API methods for this purpose. 
 
 The MobileFirst `Logger` API is similar to commonly used logger APIs, such as `console.log` (JavaScript), `java.util.logging` (Java) and `NSLog` (Objective-C), and provides the additional capability of persistently capturing logged data for sending to the MobileFirst Server to be used for analytics gathering and developer inspection. Use the `Logger` APIs to report log data at appropriate levels so that developers who inspect logs can triage and fix problems without having to reproduce problems in their labs.
 
@@ -29,7 +29,7 @@ Client log capture can be controlled via several ways:
 
 ### Logging from client applications:
 
-* [Logging in Cordova applications](cordova/)
+* [Logging in JavaScript (Cordova, Web) applications](javascript/)
 * [Logging in iOS applications](ios/)
 * [Logging in Android applications](android/)
 

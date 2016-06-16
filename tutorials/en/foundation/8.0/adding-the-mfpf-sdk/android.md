@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to Android Applications
+title: Adding the MobileFirst Foundation SDK to Android Applications
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 ---
 ## Overview
-The MobileFirst Platform Foundation SDK consists of a collection of dependencies, available through [Maven Central](http://search.maven.org/), that you can add to your Android Studio project. The dependencies correspond to core functions and other functions:
+The MobileFirst Foundation SDK consists of a collection of dependencies, available through [Maven Central](http://search.maven.org/), that you can add to your Android Studio project. The dependencies correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Andoid tutorial](../../using-the-mfpf-sdk/jsonstore-android/).
+* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Andoid tutorial](../../using-the-mfpf-sdk/jsonstore/android/).
 * **IBMMobileFirstPlatformFoundationPush** - Contains the Push Notifications framework. For more information, review the [Notifications tutorials](../../notifications/).
 
 In this tutorial you will learn how to add the MobileFirst Native SDK using Gradle to either a new or existing Android Studio application. You will also learn how to configure the MobileFirst Server to recognize the application, as well as find information about the MobileFirst configuration files that are added to the project.
@@ -98,15 +98,14 @@ Create an Android Studio project or use an existing one.
     ```bash
     mfpdev app register
     ```
+    - If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project, and adding to it the metadata that identifies the MobileFirst Server.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
 >
-> 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
-
-> 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-
+> 1. Load the MobileFirst Operations Console.  
+> 2. Click the "New" button next to "Applications" to register a new application and follow the on-screen instructions.  
 > 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.properties** file. Follow the onscreen instructions to add the file to your project.
 
 ### Creating an WLClient instance

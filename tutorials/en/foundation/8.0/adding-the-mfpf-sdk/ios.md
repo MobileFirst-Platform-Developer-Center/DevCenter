@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to iOS Applications
+title: Adding the MobileFirst Foundation SDK to iOS Applications
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
 ## Overview
-The MobileFirst Platform Foundation SDK consists of a collection of pods, available through [CocoaPods](http://guides.cocoapods.org), that you can add to your Xcode project. The pods correspond to core functions and other functions:
+The MobileFirst Foundation SDK consists of a collection of pods, available through [CocoaPods](http://guides.cocoapods.org), that you can add to your Xcode project. The pods correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../using-the-mfpf-sdk/jsonstore-ios/).
+* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../using-the-mfpf-sdk/jsonstore/ios/).
 * **IBMMobileFirstPlatformFoundationPush** - Contains the Push Notifications framework. For more information, review the [Notifications tutorials](../../notifications/).
 * **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for the Apple WatchOS. For more information, review the [user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/devref/t_ios_frameworks.html).
 
@@ -53,8 +53,13 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
 
         ```xml
         use_frameworks! 
-        pod 'IBMMobileFirstPlatformFoundation'
+
+        platform :ios, 8.0
+        target "Xcode-project-target" do
+            pod 'IBMMobileFirstPlatformFoundation'
+        end
         ```
+        - Replace **Xcode-project-target** with the name of your Xcode project's target.
         
 4. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
     **Note:** This command may take several minutes to complete.
@@ -70,17 +75,16 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     ```bash
     mfpdev app register
     ```
-    
+    - If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+
     You will be asked to provide the application's BundleID. Note that the BundleID is **case sensitive**.  
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.plist** file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.  
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
 > 
-> 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
-    
-> 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-    
+> 1. Load the MobileFirst Operations Console.
+> 2. Click the "New" button next to "Applications" to register a new application and follow the on-screen instructions.  
 > 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
 
 ### Completing the setup process
@@ -88,7 +92,7 @@ In Xcode, right-click the project entry, click on **Add Files To [ProjectName]**
 
 ### Referencing the SDK
 
-Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Platform Foundation framework:
+Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Foundation framework:
 
 Objective-C:
 

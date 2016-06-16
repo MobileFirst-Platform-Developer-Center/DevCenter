@@ -5,7 +5,7 @@
         "name": "All Tutorials",
         "path": "",
         "children": [{
-            "name": "Foundation 8.0 beta",
+            "name": "Foundation 8.0",
             "path": "/foundation/8.0/all-tutorials"
         }, {
             "name": "Foundation 7.1",
@@ -32,6 +32,9 @@
         }, {
             "name": "Windows 8 and 10",
             "path": "/foundation/8.0/windows-8-10-tutorials"
+        }, {
+            "name": "Web apps",
+            "path": "/foundation/8.0/web-tutorials"
         }]
     }, {
         "name": "By Product",
@@ -53,7 +56,7 @@
         "name": "Product Integration",
         "path": "/product-integration",
         "children": [{
-            "name": "Foundation 8.0 beta",
+            "name": "Foundation 8.0",
             "path": "/8.0"
         }, {
             "name": "Foundation 7.1",

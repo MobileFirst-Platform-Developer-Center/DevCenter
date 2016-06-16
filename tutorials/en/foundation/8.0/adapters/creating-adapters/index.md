@@ -1,15 +1,13 @@
 ---
 layout: tutorial
 title: Creating Java and JavaScript Adapters
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
 ---
 
 ## Overview
-An adapter can be created either by using Maven directly or by using the MobileFirst CLI (with a required prerequisite to have Maven installed on the developer workstation), or be downloaded as a sample starter code from the MobileFirst Operations Console. The Adapter code can then be edited using your IDE of choice, such as Eclipse, IntelliJ and the like.
-
-This tutorial explains how to create, build and deploy MobileFirst **Java or JavaScript adapters** using Maven and the MobileFirst CLI.
+An adapter can be created using either Maven commands or by using the MobileFirst CLI (that is dependent on Maven being installed and configured). The Adapter code can then be edited and built using your IDE of choice, such as Eclipse and IntelliJ. This tutorial explains how to create, build and deploy MobileFirst **Java or JavaScript adapters** using Maven and the MobileFirst CLI. To learn how to use the Eclipse or IntelliJ IDEs to create and build adapters, review the [Developing Adapters in Eclipse](../developing-adapters) tutorial.
 
 **Prerequisite:** Make sure that you read the [Adapters Overview](../adapters-overview) first.
 
@@ -29,14 +27,6 @@ This tutorial explains how to create, build and deploy MobileFirst **Java or Jav
 
 ## Install Maven
 In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
-#### Local Maven repositories
-If Internet connectivity is not available while developing, prepare to work offline:
-
-1. Make sure you have first installed Apache Maven.
-2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
-3. Start the MobileFirst Server and load the MobileFirst Operations Console.
-4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-adapter.zip** file from the Adapter tooling section.
-5. Add the adapter archetypes and security checks to the local Maven repository by running the **install-adapter.sh** script for Linux and Mac, or the **install-adapter.bat** script for Windows.
 
 ## Creating Adapters Using MobileFirst CLI
 

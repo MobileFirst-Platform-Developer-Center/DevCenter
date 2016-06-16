@@ -2,19 +2,19 @@
 layout: tutorial
 breadcrumb_title: IBM Containers
 show_disqus: true
-title: IBM MobileFirst Platform Foundation on IBM Containers
-relevantTo: [ios,android,windows,cordova]
+title: IBM MobileFirst Foundation on IBM Containers
+relevantTo: [ios,android,windows,javascript]
 weight: 9
 ---
 ## Overview
-Before talking about IBM MobileFirst Platform Foundation and IBM Containers, lets talk Bluemix.
+Before talking about IBM MobileFirst Foundation and IBM Containers, lets talk Bluemix.
 
 **IBM Bluemix** is an implementation of IBM's Open Cloud Architecture. It leverages **Cloud Foundry** to enable developers to rapidly build, deploy, and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.
 
 > Learn more about the Bluemix architecture and Bluemix concepts [on the Bluemix website](https://www.ng.bluemix.net/docs/overview/overview.html).
 
 ### How does it work?
-In a nutshell: to run IBM MobileFirst Platform Foundation on IBM Containers, several components must interact with one another: the first component is an **image** that contains a **Linux distribution with a WebSphere Liberty installation**, with a **MobileFirst Server instance** deployed to it. The image is then stored inside an **IBM Container**, and the IBM Container is managed by **Bluemix**.
+In a nutshell: to run IBM MobileFirst Foundation on IBM Containers, several components must interact with one another: the first component is an **image** that contains a **Linux distribution with a WebSphere Liberty installation**, with a **MobileFirst Server instance** deployed to it. The image is then stored inside an **IBM Container**, and the IBM Container is managed by **Bluemix**.
 
 ### IBM Containers
 IBM Containers are objects that are used to run images in a hosted cloud environment. IBM Containers hold everything that an app needs to run.
@@ -23,11 +23,11 @@ The IBM Container infrastructure includes a private registry for your images, so
 
 [Learn more about IBM Containers](https://www.ng.bluemix.net/docs/containers/container_index.html).
 
-> To learn more about IBM MobileFirst Platform Foundation on IBM Containers, visit the user documentation website.
+> To learn more about IBM MobileFirst Foundation on IBM Containers, visit the user documentation website.
 
 ## Tutorials to follow next
 
-IBM MobileFirst Platform Foundation 8.0 beta currently supports only the Mobile Foundation Bluemix service.
+IBM MobileFirst Foundation 8.0 currently supports only the Mobile Foundation Bluemix service.
 
-* Create a MobileFirst Server instance on IBM Containers [using the MobileFirst Platform Mobile Foudation ](using-mobile-foundation/).
-
+* Create a MobileFirst Server instance on IBM Containers [using the Mobile Foudation service](using-mobile-foundation/).
+* Create a MobileFirst Server instance on IBM Containers [using IBM-provided scripts](mobile-foundation-using-scripts/).

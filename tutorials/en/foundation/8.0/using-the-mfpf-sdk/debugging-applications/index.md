@@ -1,17 +1,17 @@
 ---
 layout: tutorial
-title: Debugging JavaScript (Cordova) Applications
+title: Debugging JavaScript (Cordova, Web) Applications
 breadcrumb_title: Debugging applications        
-relevantTo: [cordova]
+relevantTo: [javascript]
 weight: 12
 ---
 ## Overview
 Debugging is a process that consists of finding the cause of defects in applicative code and application user interface.
 
-* Cordova applications consist of web-based resources such as HTML, JavaScript &amp; CSS, and optional native code (written in Java, Objective-C, Swift, C#, ...).
-* Native code can be debugged by using standard tools that are provided by the platform SDK, such as XCode, Android LogCat, or Microsoft Visual Studio.
+* JavaScript (Cordova, Web) applications consist of web-based resources such as HTML, JavaScript &amp; CSS. Cordova application may also contain optional native code (written in Java, Objective-C, Swift, C#, ...).
+* Native code can be debugged by using standard tools that are provided by the platform SDK, such as XCode, Android, or Microsoft Visual Studio.
 
-This tutorial explores various approaches to debugging a Cordova application, whether running locally via an Emulator or Simulator, or while running in a physical mobile device.
+This tutorial explores various approaches to debugging a JavaScript-based application, whether running locally via an Emulator, Simulator, physica device or in a web browser.
 
 > Learn more about Cordova debugging and testing in the Cordova website: [Debugging applications](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device).
 
@@ -25,7 +25,7 @@ This tutorial explores various approaches to debugging a Cordova application, wh
 * [Debugging with WireShark](#debugging-with-wireshark)
 
 ## Debugging with the IBM Mobile Browser Simulator
-You can use IBM MobileFirst Platform Foundation's Mobile Browser Simulator (MBS) to preview and debug MobileFirst applications.  
+You can use IBM MobileFirst Foundation's Mobile Browser Simulator (MBS) to preview and debug MobileFirst applications.  
 To use the MBS, open a **Command-line** window and run the command:
 
 ```bash
@@ -38,7 +38,7 @@ If your application consists of more than one platform - specify the platform to
 mfpdev app preview -p <platform>
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected in the preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected during preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
 
 ### Mobile Browser Simulator
 
@@ -96,7 +96,7 @@ This action requires Android 4.4 or later, Chrome 32 or later. Additionally, in 
 ![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
 ### Debugging with IBM MobileFirst Logger
-IBM MobileFirst Platform Foundation provides a `WL.Logger` object that can be used to print log messages.  
+IBM MobileFirst Foundation provides a `WL.Logger` object that can be used to print log messages.  
 `WL.Logger` contains several levels of logging: `WL.Logger.info`, `WL.Logger.debug`, `WL.Logger.error`.
 
 > For more information, see the documentation for `WL.Logger` in the API reference part of the user documentation.

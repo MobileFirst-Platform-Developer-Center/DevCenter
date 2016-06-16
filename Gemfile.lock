@@ -58,7 +58,7 @@ GEM
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
     redcarpet (3.3.4)
-    rouge (1.11.1)
+    rouge (1.11.0)
     safe_yaml (1.0.4)
     sass (3.4.22)
     thread_safe (0.3.5)
@@ -83,4 +83,4 @@ DEPENDENCIES
   wkhtmltopdf-binary-edge
 
 BUNDLED WITH
-   1.12.5
+   1.11.2

@@ -7,14 +7,14 @@ print_pdf: false
 weight: 1
 ---
 ## Overview
-Before starting to develop client and server code using MobileFirst Platform Foundation, the development environment needs to be set-up. This includes installing various required software and tools.
+Before starting to develop client and server code using MobileFirst Foundation, the development environment needs to be set-up. This includes installing various required software and tools.
 
 The following is a list of software you may need to install on your developer workstation.
 
 ### Server
 
 * Java (requirement for MobileFirst Server and Maven)
-* MobileFirst Development Kit (contains MobileFirst Server)
+* MobileFirst Developer Kit
 * Account on Bluemix.net for running the Mobile Foundation service
 
 ### Application development
@@ -38,4 +38,4 @@ The following is a list of software you may need to install on your developer wo
     - IntelliJ, Eclipse, other IDEs...
 
 <br/>
-For further instructions, select a tutorial:
+## For further instructions, select a tutorial:
