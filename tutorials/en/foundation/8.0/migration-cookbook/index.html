@@ -16,24 +16,24 @@ show_in_nav: false
     The tool helps in identifying areas in your codebase that you will need to inspect and alter, such as APIs that are deprecated, no longer supported, or modified.</p>
 
     <blockquote><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <b>Note:</b> This cookbook does not attempt to cover all possible migration scenarios and you are advised <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html" target="_blank">to visit the migration user documentation topics for a comprehensive read</a>.</blockquote>
-    
+
     <h2>Getting Help</h2>
     <p>The MobileFirst Foundation team is here to help with any questions you may have.<br/>
     For official support <a href="https://www-947.ibm.com/support/servicerequest/newServiceRequest.action">please open a PMR</a>. You can also ask questions over at <a href="https://stackoverflow.com/questions/tagged/ibm-mobilefirst" target="_blank">StackOverflow</a> and <a href="{{site.baseurl}}/blog/2015/08/19/come-chat-with-us/" target="_blank">in our Slack community</a>.</p>
-    
+
     <h2>Quick Start</h2>
     <p>Before getting started with migrating your applications and adapters, and in case you haven't already, it is recommended that you will go through the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/" target="_blank">Quick Start tutorials</a> to get familiar and experience MobileFirst Foundation 8.0.</p>
-        
+
     <p>Additional information <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/" target="_blank">can be read throughout the available tutorials</a> about topics such as registering applications, building and deploying adapters, implementing and configuring security and authentication, and lots more.</p>
-    
+
     <br/>
     <div id="container" class="boxes hidden-sm hidden-xs hidden-md">
         <div class="row">
             <div id="migrationPaths">
-                <div class="col-md-3">                    
+                <div class="col-md-3">
                     <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
-                        <h3 class="setupAndTools no-anchor">Setup<br/> &amp; Tools</h3>    
-                        
+                        <h3 class="setupAndTools no-anchor">Setup<br/> &amp; Tools</h3>
+
                         <ul class="topics">
                             <li><a href="#env-setup">Setting up a MobileFirst<br/>Server</a></li>
                             <li><a href="#env-setup">Installing the Migration<br/>Assistance tool</a></li>
@@ -42,8 +42,8 @@ show_in_nav: false
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
-                        <h3 class="migratingApplications no-anchor">Migrating<br/>Applications</h3>        
-                        
+                        <h3 class="migratingApplications no-anchor">Migrating<br/>Applications</h3>
+
                         <ul class="topics">
                             <li><a href="#applications">Migrating Classic<br/>Hybrid/MFPF Cordova apps<br/> to standard Cordova apps</a></li>
                             <li><a href="#applications">Migrating Mobile Web / <br/>Desktop Browser apps</a></li>
@@ -53,8 +53,8 @@ show_in_nav: false
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
-                        <h3 class="migratingAdapters no-anchor">Migrating<br/>Adapters</h3>        
-                        
+                        <h3 class="migratingAdapters no-anchor">Migrating<br/>Adapters</h3>
+
                         <ul class="topics">
                             <li><a href="#migrating-adapters">Prerequisites for setting-up<br/>Apache Maven</a></li>
                             <li><a href="#migrating-adapters">Creating a new Maven<br/>project</a></li>
@@ -65,8 +65,8 @@ show_in_nav: false
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
-                        <h3 class="devTopics no-anchor">Development<br/>Topics</h3>        
-                        
+                        <h3 class="devTopics no-anchor">Development<br/>Topics</h3>
+
                         <ul class="topics">
                             <li><a href="#development-topics">Adapters</a></li>
                             <li><a href="#development-topics">Security framework</a></li>
@@ -74,8 +74,8 @@ show_in_nav: false
                             <li><a href="#development-topics">Direct Update</a></li>
                         </ul>
                     </div>
-                </div>  
-            </div>          
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -86,10 +86,10 @@ show_in_nav: false
         <div class="number number-tool hidden-sm hidden-xs hidden-md">1</div>
         <h2 id="env-setup">Setup &amp; Tools</h2>
         <p>A couple of things are needed before the migration can begin: a running MobileFirst Server and the Migration Assitance tool.</p>
-        
+
         <h3>MobileFirst Server</h3>
         <p>You can setup a MobileFirst Server on <a href="https://bluemix.net">IBM Bluemix</a> using the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/" target="_blank">Mobile Foundation Bluemix service</a>. Alternatively, you can use the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment/" target="_blank">MobileFirst Developer Kit</a> to setup a locally running server.</p>
-        
+
         <h3>Migration Assitance tool</h3>
         <p>With the MobileFirst Server up &amp; running, and since we’ll be using the Migration Assistance tool down the road, let's have the tool installed.</p>
 
@@ -101,24 +101,24 @@ show_in_nav: false
         <img alt="Download the migration tool from the mobilefirst operations console" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/get-migration-tool.png"/>
     </div>
 
-    <br id="applications"><br/> 
+    <br id="applications"><br/>
 
     <div class="gutter gutter-apps-color">
         <div class="number number-apps hidden-sm hidden-xs hidden-md">2</div>
         <h2>Migrating Applications</h2>
         <p>The steps to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_migrating_projects.html">migrate your Classic Hybrid/MFPF Cordova, Web and Native applications</a> include: assessing API changes by running the Migration Assistance tool, setting up the project structure, managing the application source, using package managers and handling API changes.</p>
-        
+
         <h3>Classic Hybrid applications</h3>
         <p>In past releases, Classic Hybrid applications were created, developed, built and managed using the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI. Starting MobileFirst Foundation 8.0, support is introduced for standard Cordova applications, replacing the previous application model.</p>
-            
+
         <p>Cordova applications are created using standard community tools, for example the Cordova CLI. The MobileFirst Cordova SDK is added to the mixture using the Cordova CLI as a set of Cordova plug-ins, available from <a href="https://npmjs.org" target="_blank">npm</a>.</p>
 
         <p>The move to standard Cordova applications opens the door for developers to use their favorite tools and their own approaches to application development. As a developer you are now super-charged with the power that is the <a href="http://cordova.apache.org" target="_blank">Cordova eco-system</a>.</p>
 
         <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>Tip:</b> You can also <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/" target="_blank">setup Eclipse for Cordova application development</a>.</p>
 
-        <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova application development</a>.</blockquote>
-        
+        <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova application development</a>.</blockquote>
+
         <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
@@ -140,7 +140,7 @@ show_in_nav: false
                             <li>Replace <b>source_directory</b> with the path to the application folder inside the Studio project, for example: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
                             <li>Replace <b>destination_directory</b> with a path to a folder that will house the converted application and the generated API report</li>
                         </ul>
-                        
+
                         <blockquote>You can read more about what that the Migration Assistance tool does <a href=" http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_cord_mig_assist_tool.html" target="_blank">in this user documentation topic</a>.</blockquote>
 
                         <img alt="Migrate a Classic Hybrid app to a standard Cordova app" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/cordova-migration.png"/>
@@ -182,7 +182,7 @@ show_in_nav: false
                             <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
                                 <div class="panel-body">
                                     <ol>
-                                        <li>Update the <b>www/index.html</b> file.                             
+                                        <li>Update the <b>www/index.html</b> file.
                                             <ul>
                                                 <li>Add the following CSS code to the head of your index.html file, before your CSS code that is already there.
 
@@ -213,7 +213,7 @@ body {
                                                     </li>
                                                 </ul>
                                             </li>
-                        
+
                                             <li>Update the <b>www/js/InitOptions.js</b> file to call WL.Client.init automatically.
                                                 <ul>
                                                     <li>Remove the following code from <b>InitOptions.js</b>.
@@ -228,7 +228,7 @@ if (window.addEventListener) {
 {% endhighlight %}
                                                     </li>
                                                 </ul>
-                            
+
                                             <li><b>Optional:</b> If you need run logic before the MobileFirst framework is initialized, update the <b>www/InitOptions.js</b> file to call <code>WL.Client.init</code> manually.
                                                 <ul>
                                                     <li>Edit the <b>config.xml</b> file and set the <code>mfp:clientCustomInit</code> element's <code>enabled</code> attribute to <b>true</b>.</li>
@@ -263,27 +263,27 @@ if (document.addEventListener) {
                         <br/>
                         <h4>Step 4</h4>
                         <p>The Cordova application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser window and review the presented items. For each item in the report, you will need to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_webview.html?lang=en" target="_blank">either implement it differently or replace it entirely</a>. You can re-run the Migration Assistance tool, this time pointing to the new Cordova application to check again for any APIs that were not dealt with.</p>
-                        
+
                         <br/>
                         <h4>Step 5</h4>
                         <p>To test the Cordova application you can either preview only its web resources, run in a simulator/emulator or in a physical device.<br/>
                             <b>Note:</b> If your client-side code contains logic pertainnig to security and authentication, push notifications, adapters and alike, may need to continue adjusting your code (see below) before being able to test it. You can, however, review your application interface to make sure it is still intact.</p>
-                        
+
                         <p><b>Previewing web resources:</b></p>
                         <ul>
                             <li>From a command-line window, navigate to the applications root folder</li>
                             <li>Run the command: <code>mfpdev app preview</code>
                         </ul>
-        
+
                         <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/mfpf-development-in-cordova-applications/#mobilefirst-apis" target="_blank">previewing an application's web resources</a></blockquote>
-                        
+
                         <p><b>Testing in emulator/simulator or physical device:</b><br/>
                         <ul>
                             <li>From a command-line window, navigate to the applications root folder</li>
                             <li>If you're only testing UI, you can simply build &amp; run the application: <code>cordova run replace-with-platform-name</code></li>
                             <li>If you're also testing application logic related to MobileFirst, make sure to first register the application using <code>mfpdev app register</code> before previewing</li>
                         </ul>
-                        
+
                         <h3>Next steps</h3>
                         <ul>
                             <li>Review the <a href="#development-topics">development topics</a> to continue with the migration.</li>
@@ -293,15 +293,15 @@ if (document.addEventListener) {
                 </div>
             </div>
         </div>
-        
+
         <h3>Web applications</h3>
-        <p>Much like Classic Hybrid applications, web applications for the Mobile Web and Desktop Browsers were also managed from the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI. In MobileFirst Foundation 8.0 development of web apps is done in goold ol' traditional fashion, with the MobileFirst Web SDK available from <a href="https://npmjs.org" target="_blank">npm</a> as well.</p> 
-            
+        <p>Much like Classic Hybrid applications, web applications for the Mobile Web and Desktop Browsers were also managed from the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI. In MobileFirst Foundation 8.0 development of web apps is done in goold ol' traditional fashion, with the MobileFirst Web SDK available from <a href="https://npmjs.org" target="_blank">npm</a> as well.</p>
+
         <p><b>Note:</b> Unlike in previous releases where it was the MobileFirst Server that served the web application and provided a public-facing URL, in MobileFirst Foundation 8.0 the application is only registered in the MobileFirst Server in order to provide it with security functionality, adapters capabilities and so on. Instead, the serving of the web application is done using standard methods, such as serving it from dedicated web servers.
         </p>
-        
-        <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Web application development</a>.</blockquote>
-        
+
+        <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">Web application development</a>.</blockquote>
+
         <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-web-apps">
@@ -318,34 +318,34 @@ if (document.addEventListener) {
                         This could take a while to complete, depending on your Internet connection...</p>
 
 {% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory {% endhighlight %}
-                            
+
                         <ul>
                             <li>Replace <b>source_directory</b> with the path to the application folder inside the Studio project, for example: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
                             <li>Replace <b>destination_directory</b> with a path to a folder to save the generated API report at</li>
                         </ul>
-                
+
                         <p>Once the Migration Assistance tool successfully finishes running, the following has taken place:</p>
 
                         <ul>
                             <li>An API report, <b>{app-name}-api-report.html</b>, was generated containing potential actions that you will need to follow in order to align the application implementation for use in MobileFirst Foundation 8.0.</li>
                         </ul>
-                        
+
                         <br/>
                         <h4>Step 2</h4>
                         <p>With the API report assesed, it's now time to migrate the application's structure and source.</p>
-                        
+
                         <ol>
                             <li>Create a new folder that will contain your application's source and resources</li>
                             <li>Copy the <b>index.html</b> file and the <b>js</b>, <b>css</b> and <b>images</b> folders from the existing project into the created folder</li>
                             <li>From a command-line window, navigate to the migrated project's root folder and add the MobileFirst Web SDK: <code>npm install ibm-mfp-web-sdk</code>.</li>
                         </ol>
-                        
+
                         <blockquote>Before continuing to step 3, follow the instructions in the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/web/" target="_blank">Adding the MobileFirst Foundation SDK to Web Applications</a> tutorial to configure the SDK</blockquote>
-                        
-                        <br/>    
+
+                        <br/>
                         <h4>Step 3</h4>
                         <p>The Web application is almost fully migrated. Now’s the time to handle the generated API report. Open the API report in a browser window and review the presented items. For each item in the report, you will need to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrad_exist_cordova_webview.html?lang=en" target="_blank">either implement it differently or replace it entirely</a>.</p>
-                        
+
                         <br/>
                         <h4>Step 4</h4>
                         <p>To test the migrated application:</p>
@@ -357,14 +357,14 @@ if (document.addEventListener) {
                 </div>
             </div>
         </div>
-        
+
         <h3>Native applications</h3>
         <p>Native applications required using the MobileFirst Studio plug-in for Eclipse or MobileFirst CLI to first create the platform-specific artifacts (WorklightAPI folder, configuration files and so on) followed by a manual copy &amp; paste of said artifacts into the native projects in their respective IDEs.</p>
 
         <p>Starting MobileFirst Foundation 8.0, support is now introduced for community favored package managers: <a href="https://cocoapods.org/" target="_blank">CocoaPods for iOS</a>, <a href="https://gradle.org/" target="_blank">Gradle for Android</a> and <a href="https://www.nuget.org/" target="_blank">NuGet for Windows</a>. With these tools at the developer’s hands, adding the MobileFirst Native SDK is now streamlined for each of the platforms.</p>
 
-        <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/">Native application development</a>.</blockquote>
-        
+        <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">Native application development</a>.</blockquote>
+
         <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-native-apps">
@@ -388,7 +388,7 @@ if (document.addEventListener) {
                             <li>Replace <b>destination_directory</b> with the location where you'd like the report to be generated at</li>
                             <li>Replace <b>platform</b> with a supported platform: <code>ios</code>, <code>android</code> or <code>windows</code></li>
                         </ul>
-                    
+
                         <img alt="Generate API report for native apps" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/native-migration.png"/>
 
                         <p>Once the Migration Assistance tool successfully finishes running, the following has taken place:</p>
@@ -409,7 +409,7 @@ if (document.addEventListener) {
                             <li>Open a Command-line window and navigate to the root of the Xcode project.</li>
                             <li>Run the command: <code>sudo gem install cocoapods</code> followed by <code>pod setup</code>. <b>Note:</b> These commands may take several minutes to complete.</li>
                         </ul>
-                    
+
                         <br/>
                         <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
                             <div class="panel panel-default">
@@ -425,7 +425,7 @@ if (document.addEventListener) {
                                             <li>Open your project in Xcode.</li>
                                             <li>Delete the <b>WorklightAPI</b> folder from your Xcode project (move it to trash).</li>
                                             <li>Modify your existing code in the following ways:
-                                            <li>In the <b>Build Settings</b> tab, 
+                                            <li>In the <b>Build Settings</b> tab,
                                                 <ul>
                                                     <li>Remove <b>$(SRCROOT)/WorklightAPI/include</b> from the header search path.</li>
                                                     <li>Remove <b>$(PROJECTDIR)/WorklightAPI/frameworks</b> from the frameworks search path.</li>
@@ -449,7 +449,7 @@ if (document.addEventListener) {
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="addiOSSDK">
                                     <h4 class="panel-title">
@@ -476,7 +476,7 @@ end{% endhighlight %}
                                                     Additional pods:<br/>
                                                     IBMMobileFirstPlatformFoundationPush<br/>
                                                     IBMMobileFirstPlatformFoundationJSONStore<br/><br/>
-                                                    
+
                                                     You can further specify additional pods in the file in case your app needs to use the additional functionality. For example, if your app uses OpenSSL, the Podfile might look like this:
 
 {% highlight xml %}use_frameworks!
@@ -484,14 +484,14 @@ platform :ios, 8.0
 target "replace-with-the-name-of-the-target-in-xcode-project" do
     pod 'IBMMobileFirstPlatformFoundation'
     pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
-end{% endhighlight %}                
+end{% endhighlight %}
                                                     </li>
                                                     <li>Run the <code>pod install</code> command. This command installs the MobileFirst Native SDK, IBMMobileFirstPlatformFoundation.framework, and any other frameworks that are specified in the Podfile and their dependencies. It then generates the pods project, and integrates the client project with the MobileFirst SDK.</li>
                                                 </ul>
                                             </li>
                                             <li>Open your <b>ProjectName.xcworkspace</b> file in Xcode by typing <b>open ProjectName.xcworkspace</b> from a command line. This file is in the same directory as the ProjectName.xcodeproj file. You can also double-click it from Finder.</li>
                                             <li>Replace all of the existing MobileFirst imports of headers with a single entry of the following new umbrella header:<br/>
-                                        
+
                                             <b>Objective C:</b><br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code>
                                             <br/><br/>
@@ -544,7 +544,7 @@ end{% endhighlight %}
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="addAndroidSDK">
                                     <h4 class="panel-title">
@@ -591,7 +591,7 @@ name: 'ibmmobilefirstplatformfoundationjsonstore',
 version: '8.0.+',
 ext: 'aar',
 transitive: true{% endhighlight %}
-                                       
+
                                         </ol>
                                     </div>
                                 </div>
@@ -612,7 +612,7 @@ transitive: true{% endhighlight %}
                                 <div id="collapseRemoveWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeWindowsSDK">
                                     <div class="panel-body">
                                         Removing the following files from the Visual Studio project:
-                                        
+
                                         <ul>
                                             <li>wlclient.properties</li>
                                             <li>Newtonsoft.Json</li>
@@ -622,7 +622,7 @@ transitive: true{% endhighlight %}
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="addWindowsSDK">
                                     <h4 class="panel-title">
@@ -651,11 +651,11 @@ transitive: true{% endhighlight %}
                             <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_androidSDK.html" target="_blank">Android code changes</a></li>
                             <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_windowsSDK.html" target="_blank">Windows code changes</a></li>
                         </ul>
-                        
+
                         <br/>
                         <h4>Step 4</h4>
                         <p>To test the application, run it in the specific platform's IDE.</p>
-                        
+
                         <h3>Next steps</h3>
                         <ul>
                             <li>Review the <a href="#development-topics">development topics</a> to continue with the migration.</li>
@@ -678,20 +678,20 @@ transitive: true{% endhighlight %}
     </div>
 
     <br id="migrating-adapters"/><br/>
-    
+
     <div class="gutter gutter-adapters-color">
         <div class="number number-adapters hidden-sm hidden-xs hidden-md">3</div>
         <h2>Migrating Adapters</h2>
         <p>In past releases, adapters were created, developed and built using the MobileFirst Studio plug-in for Eclipse or the MobileFirst CLI. Starting MobileFirst Foundation 8.0, adapters are now considered as standard Apache Maven projects that are crated using IBM-provided archetypes for generating the Java and JavaScript adapters.</p>
-            
+
         <p>Using Maven provides to server-side developers a simple and standard way to manage and integrate required dependencies, as well as frees them to use their favorite tools during development time. Maven projects can be created from a command-line using either Maven commands, or by using the MobileFirst CLI that calls Maven commands behind-the-scenes and provides simplified commands.</p>
-            
+
         <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>Tip:</b> You can also setup Eclipse or IntelliJ to <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">create and develop adapters in an IDE environment</a>.</p>
 
         <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>Did you know?</b> MobileFirst Foundation 8.0 introduces a DevOps-style operation mode, where once an adapter is deployed to the MobileFirst Server you can then configure various properties (for example, a username and password value for a database connection) live via the MobileFirst Operations Console, without needing to re-deploy the adapter.</p>
 
-        <blockquote>Learn more about <a href="{{site.basurl}}/tutorials/en/foundation/8.0/adapters" target="_blank">developing Java and JavaScript adapters</a>.</blockquote>
-        
+        <blockquote>Learn more about <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters" target="_blank">developing Java and JavaScript adapters</a>.</blockquote>
+
         <br/>
         <p>The steps to <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/t_migrating_adapters.html%23t_migrating_adapters" target="_blank">migrate your adapters into Maven projects</a> include: creating a matching new Maven project and copying into it the existing adapter's source code (with some modifications). This is then followed by building the Maven project to find any errors.</p>
 
@@ -713,7 +713,7 @@ transitive: true{% endhighlight %}
                                     <li>Add a <code>MVN_PATH</code> variable, pointing to the Maven folder.</li>
                                     <li><i>Mac and Linux:</i><br/>
                                 Edit your <b>~/.bash_profile</b>:
-                            
+
 {% highlight bash %}#### Apache Maven example location
 export MVN_PATH="/usr/local/bin"
 {% endhighlight %}</li>
@@ -722,7 +722,7 @@ export MVN_PATH="/usr/local/bin"
                                     <li>Verify the installation by executing: <code>mvn -v</code>.
                                 </ul>
                             </li>
-                        
+
                             <li>The cookbook uses the MobileFirst CLI to call Maven commands in order to create and build the adapters.
                                 <ul>
                                     <li>If you haven't already, <a href="https://nodejs.org/en/" target="_blank">install NodeJS</a> as it is a prerequisite for the tool to work.</li>
@@ -734,7 +734,7 @@ export MVN_PATH="/usr/local/bin"
                     </div>
                 </div>
             </div>
-            
+
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="create-adapter">
                     <h4 class="panel-title">
@@ -743,7 +743,7 @@ export MVN_PATH="/usr/local/bin"
                 </div>
 
                 <div id="collapseCreateMavenProject" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
-                    <div class="panel-body">    
+                    <div class="panel-body">
                         <p>Create a new adapter template that matches your own adapter type and adapter name and package name.<br/>
                         This will ease the migration as the adpater's metadata will resemble and thus will not require extra editing.</p>
 
@@ -755,11 +755,11 @@ export MVN_PATH="/usr/local/bin"
                         </ul>
 
                         <img alt="Create an adapter template" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/creating-an-adapter.png"/>
-                        
+
                     </div>
                 </div>
             </div>
-            
+
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-js-adapter">
                     <h4 class="panel-title">
@@ -768,7 +768,7 @@ export MVN_PATH="/usr/local/bin"
                 </div>
 
                 <div id="collapseMigrateJSAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
-                    <div class="panel-body">    
+                    <div class="panel-body">
                         <b>HTTP JavaScript adapters</b><br/>
 
                         <ol>
@@ -803,9 +803,9 @@ export MVN_PATH="/usr/local/bin"
     <version>5.1.6</version>
 </dependency>{% endhighlight %}</li>
                         </ol>
-                        
+
                         <p>If you have additional dependencies, the <b>pom.xml</b> file is where you point to them - either to a local file or to a remote dependency.</p>
-                        
+
                         <blockquote><b>Learn more about Maven dependencies:</b><br/>
                             <ul>
                                 <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">Introduction to dependency mechanism (Maven.org)</a></li>
@@ -836,7 +836,7 @@ export MVN_PATH="/usr/local/bin"
                     </div>
                 </div>
             </div>
-            
+
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="migrate-java-adapter">
                     <h4 class="panel-title">
@@ -845,7 +845,7 @@ export MVN_PATH="/usr/local/bin"
                 </div>
 
                 <div id="collapseMigrateJavaAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
-                    <div class="panel-body">    
+                    <div class="panel-body">
                         <ol>
                             <li>Navigate in your filesystem to the Java adapter folder, for example: <i>../Desktop/JavaAdapters/RSSAdapter</i>.</li>
                             <li>Open another window and navigate to your new Maven project, for example: <i>../Desktop/MigratedAdapter</i> and into the <b>src/main/adapter-resources</b> folder.</li>
@@ -855,7 +855,7 @@ export MVN_PATH="/usr/local/bin"
                         </ol>
 
                         <p>If you're using any additional libraries in the existing adapter, then here's where Maven dependencies come into play. Since we're not using Worklight/MobileFirst Studio where we previously placed libraries either in <b>server/lib</b> or the Java adapter's <b>lib</b> folder, we'll instead replace them with Maven dependencies.</p>
-                        
+
                         <ol>
                             <li>Go back to the newly created Maven project and open the <b>pom.xml</b> file located at the root of the directory.</li>
                             <li>Add a dependency for your database type. You can search for the appropriate depdendency to use <a href="http://search.maven.org/" target="_blank">in the Maven Central website</a>.
@@ -877,7 +877,7 @@ export MVN_PATH="/usr/local/bin"
                         <br/>
                         <p>Lets reflect for a moment on what was done above using "diagrams":</p>
                         <i>Old structure of a Java adapter</i>
-                        
+
 {% highlight xml %}
 ├── adapters
 │   └── RSSAdapter
@@ -905,11 +905,11 @@ export MVN_PATH="/usr/local/bin"
 └{% endhighlight %}
 
                         <br/>
-                    
+
                     </div>
                 </div>
             </div>
-            
+
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="build-adapter">
                     <h4 class="panel-title">
@@ -918,17 +918,17 @@ export MVN_PATH="/usr/local/bin"
                 </div>
 
                 <div id="collapseBuildAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
-                    <div class="panel-body">    
+                    <div class="panel-body">
                         <h3>Building the migrated adapter</h3>
                         <p>From a command-line window, navigate into the adapter's folder and run the command: <code>mfpdev adapter build</code>.</p>
 
                         <img alt="Building adapters in command line - failures" src="{{site.baseurl}}/tutorials/en/foundation/8.0/migration-cookbook/compilation-errors.png"/>
 
-                        <p>To resolve such errors it is recommended that you will import the Maven project into an IDE such as IntelliJ, and build the project there.  
+                        <p>To resolve such errors it is recommended that you will import the Maven project into an IDE such as IntelliJ, and build the project there.
                         With an IDE at your disposal it will be easier to iterate through the build errors and resolve them one-by-one. <a href="{{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters/">Learn more about using IntelliJ and MobileFirst adapters</a>.</p>
 
-                        <img alt="Using IntelliJ" src="intellij.png"/>                        
-                        
+                        <img alt="Using IntelliJ" src="intellij.png"/>
+
                         <h3>Testing the built adapter</h3>
                         <p>To test the migrated adapter you can use either the MobileFirst CLI to call your endpoints, or use Swagger from the MobileFirst Operations Console.</p>
                         <blockquote>Learn more about testing adapters in the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a> tutorial.</blockquote>
@@ -957,16 +957,16 @@ export MVN_PATH="/usr/local/bin"
         <h4>JavaScript adapters</h4>
         <b>Global variables and sessions</b><br/>
         <p>Avoid using global variables in JavaScript adapters to save data on the session - since there is no "session". This change in behavior <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html" target="_blank">first appeared in  MobileFirst Platform Foundation 7.1</a>. However, you can use global variables in order to save data for use during a single request. Keep in mind though that this is not a recommended practice anylonger.</p>
-        
+
         <blockquote>Learn more about creating, building, deploying and testing adapters <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/" target="_blank">in the Adapters tutorials</a>.</blockquote>
-        
+
         <h3>Security framework</h3>
         <p>The security framework in MobileFirst Foundation 8.0 is unlike the security framework in past releases. As such you will need to re-implement some of your application backend &amp; client logic.</p>
-        
+
         <p>It is highly advised that you will take the time to familiarize yourself with the new security framework and its authorization flow, which are now based solely on OAuth, as well new authorization entities such as access tokens, security checks and scopes - which replace previously known entities such as security tests, realms and login modules.</p>
-        
+
         <blockquote>Learn more about the security framework and authorization concepts <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/" target="_blank">in the Authentication and security tutorials</a>.</blockquote>
-        
+
         <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="security-framework">
@@ -976,16 +976,16 @@ export MVN_PATH="/usr/local/bin"
                 </div>
 
                 <div id="collapseSecurityFramework" class="panel-collapse collapse" role="tabpanel" aria-labelledby="security-framework">
-                    <div class="panel-body">    
+                    <div class="panel-body">
                         <h3>Realm vs SecurityCheck</h3>
                         <p>In MobileFirst Foundation 8.0, a security check can be looked as the combination of three concepts that exist in previous releases:<br/>
                         Security check = Realm + Authenticator + LoginModule</p>
-                        
+
                         <p>The Implementation of the security check is the implementation of both the LoginModule and the Authenticator.<br/>
                         The definition of a security check is similar to the definition of a realm.</p>
-                        
+
                         <p>The below table depicts differences between the security frameworks of past releases with the security framework in MobileFirst Founation 8.0.</p>
-                        <table class="table table-striped">    
+                        <table class="table table-striped">
                             <tr>
                                 <td></td>
                                 <td><b>Previous releases<b></td>
@@ -998,7 +998,7 @@ export MVN_PATH="/usr/local/bin"
     {% highlight xml %}<realm loginModule="AuthLoginModule" name="AuthRealm">
         <className>com.worklight.integration.auth.AdapterAuthenticator</className>
     </realm>{% endhighlight %}  </td>
-                                <td>Define a security check in the relevant <b>adapter.xml</b> file with a name, and the implementing class:        
+                                <td>Define a security check in the relevant <b>adapter.xml</b> file with a name, and the implementing class:
     {% highlight xml %}<securityCheckDefinition
         name="securityCheckX"
         class="com.sample.SecurityCheckW">
@@ -1024,18 +1024,18 @@ The authenticator sends the login module the credentials to the <code>login()/lo
                                 <td>Encapsulated in a <b>Scope</b> element, which can contain 0 or more security checks</td>
                             </tr>
                         </table>
-                            
+
                         <h3>Security tests vs Scopes</h3>
-                        <p>In MobileFirst Foundation 8.0 a <b>Scope</b> is used to aggregate 0 or more security checks, which can then be used to protect resources, or apps. This is similar to the 
+                        <p>In MobileFirst Foundation 8.0 a <b>Scope</b> is used to aggregate 0 or more security checks, which can then be used to protect resources, or apps. This is similar to the
                         <code>CustomSecurityTest</code> concept in previous releases.</p>
-                        
-                        <table class="table table-striped">    
+
+                        <table class="table table-striped">
                             <tr>
                                 <td></td>
                                 <td><b>Previous releases<b></td>
                                 <td><b>MobileFirst Foundation 8.0</b></td>
                             </tr>
-                            
+
                             <tr>
                                 <td><b>Definition</b></td>
                                 <td>Defined in the <b>authenticationConfig.xml</b> file with a name, 1 or more security tests, and at least one dedicated to define the <code>UserID</code>.
@@ -1043,17 +1043,17 @@ The authenticator sends the login module the credentials to the <code>login()/lo
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">
     <test isInternalUserID="true" realm="AuthRealm"/>
 </customSecurityTest>{% endhighlight %}</td>
-                                <td>Defined in the MobileFirst Operations Console or via REST, a scope contains 0 or more security checks. 
+                                <td>Defined in the MobileFirst Operations Console or via REST, a scope contains 0 or more security checks.
 
 {% highlight json %}"scopeElementMapping": {
     "ScopeElementA": “secCheck1 secCheck2"
 }, {% endhighlight %}</td>
                             </tr>
-                            
+
                             <tr>
                                 <td><b>Usage</b></td>
                                 <td>A SecurityTest can be used to protect a resource (Java adapters), a procedure (JavaScript adapters) or an application (Application descriptor).<br/><br/>
-                                    
+
                                 <b>Java adapter</b>:
 {% highlight java %}@OAuthSecurity(scope="AuthRealm"){% endhighlight %}
 
@@ -1071,7 +1071,7 @@ The authenticator sends the login module the credentials to the <code>login()/lo
 
                                 <bo>Note</b>: You can protect a resource/application with a securityCheck not belonging to a scopeElement mapping</td>
                             </tr>
-                            
+
                             <tr>
                                 <td><b>UserIdentity</b></td>
                                 <td>Certain realms in a Security test define DeviceID and UserID.
@@ -1079,7 +1079,7 @@ The authenticator sends the login module the credentials to the <code>login()/lo
 {% highlight xml %}<test isInternalUserID="true" realm="AuthRealm"/>{% endhighlight %}</td>
                                 <td>A scope is not aware of the the securityChecks that make up the scope</td>
                             </tr>
-                            
+
                             <tr>
                                 <td><b>Deployment</b></td>
                                 <td>Configured in the <b>authenticationConfig.xml</b> file. To change which realms make a securityTest, the .war file must be redeployed.</td>
@@ -1090,26 +1090,26 @@ The authenticator sends the login module the credentials to the <code>login()/lo
                 </div>
             </div>
         </div>
-        
+
         <h3>Notifications</h3>
         In MobileFirst Foundation 8.0 a new Push Service is introduced along side a new experience for setting up, configuring and sending notifications.  In addition, the concept of Event Source push notifications has been retired. All is not lost, though! Find detailed scenario-based migration pathes in these user documentation topics:
-        
+
         <ul>
             <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/upgrade/t_upgrade_push_to_beta.html#task_gdn_xzd_jv" target="_blank">Migrating to push notifications from event source-based notifications</a></li>
             <li><a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/devenv/c_push_service_model.html#concept_t5q_brl_fv" target="_blank">Migration scenarios by platform</a></li>
         </ul>
-        
-        <blockquote>Learn more about setting up notifications support and sending authenticated and tag-based notifications <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/notifications/">in the Notifications tutorials</a>.</blockquote>    
-        
+
+        <blockquote>Learn more about setting up notifications support and sending authenticated and tag-based notifications <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/notifications/">in the Notifications tutorials</a>.</blockquote>
+
         <h3>Direct Update</h3>
         <p>The steps to deliver updates using the Direct Update feature have changed, and some restrictions are imposed.</p>
-        
+
         <ul>
             <li>Review the <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/c_upgrade_direct_update.html" target="_blank">Migrating Direct Update</a> user documentation topic</li>
         </ul>
-        
+
         <blockquote>Learn more about how to use Direct Update in the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/direct-update/" target="_blank">Using Direct Update in Cordova applications</a> tutorial</blockquote>
-        
+
         <h3>Other</h3>
         <p>In MobileFirst Foundation 8.0 several other components and features have been removed. For a full list review the <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.upgrade.doc/dev/t_upgrade_cordova_removed_features.html" target="_blank">Removed Components</a> user documentation topic.</p>
     </div>
