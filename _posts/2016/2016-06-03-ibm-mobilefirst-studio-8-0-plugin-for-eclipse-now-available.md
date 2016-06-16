@@ -61,5 +61,5 @@ Learn more in the [Using the MobileFirst CLI in Eclipse]({{site.baseurl}}/tutori
 ### Demo Video
 
 <div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-   <iframe src="https://www.youtube.com/embed/i2xSIl8WNR4"></iframe>
+   <iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
 </div>
