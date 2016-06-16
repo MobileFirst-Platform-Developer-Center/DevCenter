@@ -10,10 +10,7 @@ IBM MobileFirst Foundation provides a unified set of API methods to send notific
 #### Jump to:
 * [What is SMS Notifications?](#what-is-sms-notification) 
 * [Notification Architecture](#notification-architecture)
-* [SMS Notification API](#sms-notification-api)   
-* [Using a SMS subscribe servlet](#using-a-sms-subscribe-servlet)     
-* [Setting it up](#setting-it-up) 
-* [Sample Application](#sample-application)
+* [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## What is SMS Notification?
 SMS notification is the ability of a mobile device to receive notifications as SMS messages that are pushed from a server.  
@@ -37,7 +34,6 @@ MobileFirst provides a unified push notification API which applies to SMS as wel
  With the client-side API, you can subscribe to, and unsubscribe from, SMS notification subscription. To send a notification, you first retrieve it from the back-end system. A tag can either poll notifications from the back-end system, or wait for the back-end system to explicitly push a new notification. When a notification is retrieved from the MobileFirst Operations Console, it is processed and sent through a preconfigured SMS gateway. You can add extra security in the console preprocess notifications. The SMS gateway receives the notification and sends it to a device.
 
  ![Flow of sending SMS notifications](sending-notifications.png)
- <img alt="" src="" style="float:centre"/>
 
  The process rolls out as follows:
 
@@ -51,4 +47,3 @@ Follow through the below required setup of the server-side and client-side in or
 
 * [Handling push notifications in Cordova applications](../handling-sms-notifications-in-cordova)
 * [Handling push notifications in Android applications](../handling-push-notifications-in-android)
-

@@ -15,7 +15,7 @@ SMS notifications are a sub-set of Push Notification, as such make sure to first
 * [Using a SMS subscribe servlet](#using-a-sms-subscribe-servlet)     
 * [Sample Application](#sample-application)
 
-## SMS Notification API
+## Notifications API
 In SMS notifications, when registering the device, a phone number value is passed.
 
 #### Challenge Handlers
