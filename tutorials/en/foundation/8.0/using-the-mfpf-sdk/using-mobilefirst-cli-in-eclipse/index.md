@@ -38,11 +38,10 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 ## Installing the MobileFirst Studio plug-in
 
 1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "mfp" then click "Go"
-3. Click "Install" for Eclipse Thym 
+2. In the find field search "mobilefirst" then click "Go"
+3. Click "Install" for IBM MobileFirst Platform Studio 
 
-	<span style="color:red">Update image</span>
-	![Image of THyM installation](Thym_install.png)
+	![Image of MobileFirsta installation](mf-eclips-plugin.png)
 
 4. Complete the installation process
 5. Restart Eclipse for the installation to take affect.
@@ -124,8 +123,18 @@ Enabling debug mode will show debug level logs in the Eclipse console, while pre
 2. Select **MobileFirst Studio Plugins** to show the plug-ins preferences page.
 3. Ensure the **Enable debug mode** check bocks is selected, then click **Apply → OK**
 
+
 ### Live update
+
 While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
 
+
 ### Integrating MobileFirst Server into Eclipse
+
 Using the MobileFirst Foundation Developer Kit, You can couple together the above with [running the MobileFirst Server in Eclipse](../../setting-up-your-development-environment/mobilefirst-development-environment#adding-the-mobilefirst-server-to-eclipse) to create a more integrated development environment.
+
+### Demo Video
+
+<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+   <iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+</div>
