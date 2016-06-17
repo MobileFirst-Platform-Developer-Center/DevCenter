@@ -131,7 +131,7 @@ While previewing an application live update is available. You can make updates a
 
 ### Integrating MobileFirst Server into Eclipse
 
-Using the MobileFirst Foundation Developer Kit, You can couple together the above with [running the MobileFirst Server in Eclipse](../../setting-up-your-development-environment/mobilefirst-development-environment#adding-the-mobilefirst-server-to-eclipse) to create a more integrated development environment.
+Using the MobileFirst Foundation Development Kit, You can couple together the above with [running the MobileFirst Server in Eclipse](../../setting-up-your-development-environment/mobilefirst-development-environment#adding-the-mobilefirst-server-to-eclipse) to create a more integrated development environment.
 
 ### Demo Video
 

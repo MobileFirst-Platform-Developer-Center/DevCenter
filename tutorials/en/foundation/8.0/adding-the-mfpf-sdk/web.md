@@ -128,7 +128,7 @@ Web apps that are using the MobileFirst Web SDK should be handled in a supportin
 ### Alternatives
 The policy requirements can be satisfied by using either of the following methods:
 
-- Serving the web application resources, for example, from the same WebSphere Liberty profile application server that is used in the MobileFirst Developer Kit.
+- Serving the web application resources, for example, from the same WebSphere Liberty profile application server that is used in the MobileFirst Development Kit.
 - Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
 
 > Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
