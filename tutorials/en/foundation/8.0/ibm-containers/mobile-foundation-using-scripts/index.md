@@ -23,7 +23,7 @@ This tutorial demonstrates how to take a locally developed IBM MobileFirst Found
 * [Setting Up the MobileFirst and Analytics Servers on IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
 
 ## Register an account at Bluemix
-If you do not yet have an account, visit the [Bluemix website] and click **Get Started Free** or **Sign Up**. You'll need to fill up a registration form before you can move on to the next step.
+If you do not yet have an account, visit the [Bluemix website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You'll need to fill up a registration form before you can move on to the next step.
 
 ### The Bluemix Dashboard
 After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix **space**. By default, this work area  receives the name "dev". You can create multiple work areas/spaces if needed.

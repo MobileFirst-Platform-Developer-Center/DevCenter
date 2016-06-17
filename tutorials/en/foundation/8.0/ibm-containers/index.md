@@ -26,5 +26,5 @@ The IBM Container infrastructure includes a private registry for your images, so
 > To learn more about IBM MobileFirst Foundation on IBM Containers, visit the user documentation website.
 
 ## Tutorials to follow next
-* Create a MobileFirst Server instance on IBM Containers [using the Mobile Foudation service](mobile-foundation-service/).
-* Create a MobileFirst Server instance on IBM Containers [using IBM-provided scripts](mobilefirst-server-using-scripts/).
+* Create a MobileFirst Server instance on IBM Containers [using the Mobile Foudation service](using-mobile-foundation/).
+* Create a MobileFirst Server instance on IBM Containers [using IBM-provided scripts](mobile-foundation-using-scripts/).
