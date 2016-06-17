@@ -1,7 +1,6 @@
 ---
 layout: tutorial
-title: Setting Up the MobileFirst Foundation Server on IBM Containers using Scripts
-breadcrumb_title: Setting Up MobileFirst Foundation Server using Scripts
+title: Setting Up the MobileFirst Server on IBM Containers using Scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---
