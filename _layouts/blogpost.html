@@ -13,6 +13,7 @@ layout: default
                   <small>{{ page.date | date: '%B %d, %Y' }}</small>
                   <span class="disqus-comment-count" data-disqus-identifier="{{page.url}}"></span>
                 </h4>
+
                 {% if page.tags %}
 
                   {% for tag in page.tags %}
@@ -27,7 +28,19 @@ layout: default
             </div>
             {{content}}
             <!-- <div id="timestamp"><em>Last modified on {{ page.last-modified-date | date: '%B %d, %Y' }}</em></div> -->
-
+            
+            <div id="social">
+                <b>Share this post:</b>
+                <ul class="share-buttons">
+                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&t=" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img src="{{site.baseurl}}/assets/blog/share-buttons/facebook.png"></a></li>
+                    <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fmobilefirstplatform.ibmcloud.com&text=:%20https%3A%2F%2Fmobilefirstplatform.ibmcloud.com" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><img src="{{site.baseurl}}/assets/blog/share-buttons/twitter.png"></a></li>
+                    <li><a href="https://plus.google.com/share?url=" target="_blank" title="Share on Google+"><img src="images/flat_web_icon_set/color/Google+.png"></a></li>
+                    <li><a href="http://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=&source=" target="_blank" title="Share on LinkedIn"><img src="images/flat_web_icon_set/color/LinkedIn.png"></a></li>
+                    <li><a href="mailto:?subject=&body=:%20" target="_blank" title="Email"><img src="images/flat_web_icon_set/color/Email.png"></a></li>
+</ul>
+                </ul>
+            </div>
+            
             {% include disqus.html %}
         </div>
         <div class="hidden-xs col-sm-2">

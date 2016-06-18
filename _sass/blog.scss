@@ -47,3 +47,20 @@
       line-height: 2.0em;
   }
 }
+
+#social {
+    margin-top: 30px;
+}
+
+ul.share-buttons{
+  list-style: none;
+  padding: 0;
+}
+
+ul.share-buttons li{
+  display: inline-block;
+}
+
+ul.share-buttons img {
+    margin: 0;
+}
