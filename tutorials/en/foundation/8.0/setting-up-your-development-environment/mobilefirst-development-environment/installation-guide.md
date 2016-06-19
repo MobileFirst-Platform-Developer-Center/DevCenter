@@ -8,7 +8,7 @@ weight: 10
 Follow this installation guide in order to setup your workstation for development using MobileFirst Foundation.
 
 ## DevKit Installer
-The MobileFirst Foundation [Developer Kit Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment) will install a ready-to-use MobileFirst Server, database and runtime on your developer machine.  
+The MobileFirst Foundation [Development Kit Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/setting-up-your-development-environment/mobilefirst-development-environment) will install a ready-to-use MobileFirst Server, database and runtime on your developer machine.  
 
 **Prerequisite:**  
 The installer requires Java installed.

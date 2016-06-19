@@ -61,7 +61,7 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
         ```
         - Replace **Xcode-project-target** with the name of your Xcode project's target.
         
-4. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
+4. Back in command-line, run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
     **Note:** This command may take several minutes to complete.
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
@@ -107,9 +107,9 @@ import IBMMobileFirstPlatformFoundation
 ```
 
 <br>
-#### Note about iOS 9:
+#### Note about iOS 9 and above:
 
-> * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+> * Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following: 
 >

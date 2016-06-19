@@ -1,7 +1,6 @@
 ---
 layout: tutorial
-title: Setting Up the MobileFirst Foundation Server on IBM Containers using Scripts
-breadcrumb_title: Setting Up MobileFirst Foundation Server using Scripts
+title: Setting Up the MobileFirst Server on IBM Containers using Scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---
@@ -24,7 +23,7 @@ This tutorial demonstrates how to take a locally developed IBM MobileFirst Found
 * [Setting Up the MobileFirst and Analytics Servers on IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
 
 ## Register an account at Bluemix
-If you do not yet have an account, visit the [Bluemix website] and click **Get Started Free** or **Sign Up**. You'll need to fill up a registration form before you can move on to the next step.
+If you do not yet have an account, visit the [Bluemix website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You'll need to fill up a registration form before you can move on to the next step.
 
 ### The Bluemix Dashboard
 After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix **space**. By default, this work area  receives the name "dev". You can create multiple work areas/spaces if needed.
@@ -71,12 +70,12 @@ If you choose to work from the OS X Terminal, do the following:
 ## Download the ibm-mfpf-container-8.0.0.0 zip
 To setup IBM MobileFirst Foundation on IBM Containers, you must first create an image that will later be pushed to Bluemix.
 
-<a class="custombtn btn-lg btn-default" style="width:700px; font-size: 100%" href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="_blank">Follow the instructions and download the IBM MobileFirst Container v8.0 .zip</a>
+<a class="custombtn btn-lg btn-default" style="width:700px; font-size: 100%" href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="_blank">Follow the instructions and download the IBM MobileFirst Server for IBM Container v8.0 .zip file (search for: CNBL0EN)</a>
 
 ### Structure of the mfp-cloud-container-8.0.0.zip archive
-<img alt="Image of the on-off switch in the Swagger UI" src="zip.png" style="float:right;margin:27px -10px 0 0"/>
-
 The extracted ZIP file contains the files for building an image (**dependencies** and **mfpf-libs**), the files for building and deploying an IBM MobileFirst Foundation Operational Analytics Container (**mfpf-analytics**) and files for configuring an IBM MobileFirst Foundation Server Container (**mfpf-server**).
+
+![zip file contents](zip.png)
 
 #### The mfpf-server and mfpf-analytics folders
 

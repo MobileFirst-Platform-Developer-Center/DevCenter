@@ -48,7 +48,7 @@ In order to serve the web application's resources, these need to be stored in a 
 
 ### Adding the Maven webapp to the application server
 1. Edit the **server.xml file** of your WebSphere application server.  
-    If using the MobileFirst Developer Kit, the file is located in: [**MobileFirst Developer Kit] → mfp-server → user → servers → mfp** folder. Add the following entry:
+    If using the MobileFirst Development Kit, the file is located in: [**MobileFirst Development Kit] → mfp-server → user → servers → mfp** folder. Add the following entry:
 
     ```xml
     <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>

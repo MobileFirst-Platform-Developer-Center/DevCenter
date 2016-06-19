@@ -282,7 +282,11 @@ From a **Command-line** window, navigate to the application's root folder and ru
 <br/>
 **Web**  
 Make sure you have Node.js installed.  
+Register the application in the MobileFirst Operations Console.
+
+{% comment %}
 Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.enrollmentweb`.
+{% endcomment %}
 
 #### Scope mapping
 In the **MobileFirst Operations Console → EnrollmentWeb → Security**, map the following scopes:
