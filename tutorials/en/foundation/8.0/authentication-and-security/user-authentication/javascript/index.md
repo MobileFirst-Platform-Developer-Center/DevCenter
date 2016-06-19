@@ -147,7 +147,12 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 ### Web sample usage
 Make sure you have Node.js installed.
 
+1. Register the application in the MobileFirst Operations Console.
+
+{% comment %}
 1. Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.remembermeweb` or `com.sample.preemptiveloginweb`.
+{% endcomment %}
+
 2. Start the reverse proxy by running the commands: `npm install` followed by: `npm start`. 
 3. Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
 4. In the MobileFirst Console → PreemptiveLoginWeb / RememberMeWeb → Security, map the `accessRestricted` scope to the `UserLogin` security check.

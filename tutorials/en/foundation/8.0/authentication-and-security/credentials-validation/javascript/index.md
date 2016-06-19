@@ -132,7 +132,12 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 ### Web sample usage
 Make sure you have Node.js installed.
 
+1. Register the application in the MobileFirst Operations Console.
+
+{% comment %}
 1. Navigate to the sample's root folder and run the command: `mfpdev app register web com.sample.pincodeweb`.
+{% endcomment %}
+
 2. Start the reverse proxy by running the commands: `npm install` followed by: `npm start`. 
 3. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
 4. In the MobileFirst Console → PinCodeWeb → Security, map the `accessRestricted` scope to the `PinCodeAttempts` security check.

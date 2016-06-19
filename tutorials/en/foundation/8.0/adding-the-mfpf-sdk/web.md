@@ -18,30 +18,13 @@ The SDK is comprised of the following files:
 
 #### Jump to:
 
-- [Registering the web application](#registering-the-web-application)
 - [Adding the MobileFirst Web SDK](#adding-the-mobilefirst-web-sdk)
 - [Initializing the MobileFirst Web SDK](#initializing-the-mobilefirst-web-sdk)
+- [Registering the web application](#registering-the-web-application)
 - [Updating the MobileFirst Web SDK](#updating-the-mobilefirst-web-sdk)
 - [Same Origin Policy](#same-origin-policy)
 - [Secure Origins Policy](#secure-origins-policy)
 - [Tutorials to follow next](#tutorials-to-follow-next)
-
-### Registering the web application
-The application registration is performed either from the MobileFirst Operations Console, or from the MobileFirst CLI.
-
-#### From MobileFirst Operations Console
-
-1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`.
-2. Click the "New" button next to "Applications" to create a new application.
-3. Select **Web** as the platform, and provide its name and its application identifier. Then, click **Register application**.
-
-![Adding the Web platform](add-web-platform.png)
-
-#### From MobileFirst CLI
-
-1. From a **command-line** window, navigate to the root folder of the web application.
-2. Run the command: `mfpdev app register web com.sample.myapp`.
- - Replace "com.sample.myapp" with your application's identifier.
 
 ## Adding the MobileFirst Web SDK
 To add the SDK to new or existing web applications, first download it to your workstation and then add it to your web application.
@@ -99,7 +82,7 @@ Initialize the MobileFirst Web SDK by specifying the **context root** and **appl
 ```javascript
 var wlInitOptions = {
     mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development server
-    applicationId : 'com.sample.mobilewebapp'
+    applicationId : 'com.sample.mywebapp' // Replace with your own value.
 };
 
 WL.Client.init(wlInitOptions).then (
@@ -110,6 +93,23 @@ WL.Client.init(wlInitOptions).then (
 
 - **mfpContextRoot:** the context root used by the MobileFirst Server.
 - **applicationId:** the application package name, as defined while [registering the application](#registering-the-web-application).
+
+### Registering the web application
+<!-- The application registration is performed either from the MobileFirst Operations Console, or from the MobileFirst CLI.
+
+#### From MobileFirst Operations Console -->
+
+1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`.
+2. Click the "New" button next to "Applications" to create a new application.
+3. Select **Web** as the platform, and provide its name and its application identifier. Then, click **Register application**.
+
+![Adding the Web platform](add-web-platform.png)
+
+<!-- #### From MobileFirst CLI
+
+1. From a **command-line** window, navigate to the root folder of the web application.
+2. Run the command: `mfpdev app register web com.sample.myapp`.
+ - Replace "com.sample.myapp" with your application's identifier. -->
 
 ## Updating the MobileFirst Web SDK
 SDK releases can be found in the SDK [NPM repository](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
