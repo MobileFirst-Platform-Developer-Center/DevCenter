@@ -10,6 +10,9 @@ generate_redirects: false
 print_pdf: false
 redcarpet:
     extensions: ["with_toc_data", "tables"]
+kramdown:
+  input: GFM
+  hard_wrap: false    
 gems:
   - jekyll-feed
   - jekyll-paginate
