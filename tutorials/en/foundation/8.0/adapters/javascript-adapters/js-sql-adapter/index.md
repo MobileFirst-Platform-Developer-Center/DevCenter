@@ -67,7 +67,7 @@ There are two ways of running SQL statements:
 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries.
 4. Return the result to the application or to another procedure.
 
-      ```js
+      ```javascript
       // 1. Assign your SQL query to a variable (outside the function scope)
       // 2. Add parameters, if necessary
       var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
@@ -102,7 +102,7 @@ function getAccountTransactions2(accountId){
 ```  
 
 ### Using multiple parameters
-When using multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an array.
+When using either single or multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an **array**.
 
 ```javascript
 var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
@@ -118,7 +118,6 @@ function getAccountTransactions1(fromAccount, toAccount){
 		parameters : [fromAccount, toAccount]
 	});
 }
-
 ```
 
 ## Invocation Results
@@ -160,3 +159,5 @@ Also included is an SQL script in the **Utils** folder.
 * Make sure that the `mobilefirst@%` user has all access permissions assigned.
 * Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+
+When testing, the account value should be passed in an array: `["12345"]`.
