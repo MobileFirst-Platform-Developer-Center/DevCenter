@@ -12,7 +12,6 @@ script: ./build/$BUILD
 branches:
   only:
   - master
-  - GA
 rvm:
 - 2.1.2 # version of `ruby'
 git:
