@@ -15,7 +15,8 @@ version:
 author:
   name: Idan Adar
 ---
-iOS 10 may be announced in Apple's upcoming [World Wide Developer Conference](https://developer.apple.com/wwdc/) next week (June 13th - 17th). **Update:** [announced](https://developer.apple.com/ios/)!
+iOS 10 may be announced in Apple's upcoming [World Wide Developer Conference](https://developer.apple.com/wwdc/) next week (June 13th - 17th).  
+**Update:** [announced](https://developer.apple.com/ios/)!
 
 IBM plans to provide service updates to IBM MobileFirst Platform Foundation to support the new iOS release based on the terms described in [http://www-01.ibm.com/support/docview.wss?uid=swg27045489](http://www-01.ibm.com/support/docview.wss?uid=swg27045489). Note that this policy is not dictated by the Program Technical Support's lifecycle as stated in the product's version announce letter because a new version of a supported mobile operating system is considered a new feature. In other words, we do not plan to introduce support for iOS 10 in IBM Worklight Foundation 6.2 or earlier releases.
 
