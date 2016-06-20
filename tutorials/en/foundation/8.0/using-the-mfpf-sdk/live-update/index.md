@@ -406,4 +406,4 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 ```
 
 ### Cache expiration
-The `expirationPeriod` value that is defined in the adapter **Configurations** tab dictates the length of time until the caching expires.
+The `expirationPeriod` value that is defined in **Adapters → Live Update Adapter** dictates the length of time until the caching expires.
