@@ -1,3 +1,5 @@
 ---
+show_disqus: false
+show_breadcrumb: false
 ---
-home for tutorials
+Are you lost? [head over to our tutorials]({{site.baseurl}}/tutorials/en/).
