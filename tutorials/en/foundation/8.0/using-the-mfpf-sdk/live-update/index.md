@@ -11,6 +11,10 @@ User segmentation is the practice of dividing users into groups that reflect si
 
 The Live Update feature in MobileFirst Foundation provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the MobileFirst Operations Console for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** applications) for consuming the configuration.
 
+<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+   <iframe src="https://www.youtube.com/embed/P31W1sClqK0"></iframe>
+</div>
+
 #### Common Use Cases
 Live Update supports defining and consuming segment-based configurations, making it easy to make segment-based customizations to the application. Common use cases can be:
 
@@ -27,6 +31,7 @@ Live Update supports defining and consuming segment-based configurations, making
 * [Adding Live Update SDK to Applications](#adding-live-update-sdk-to-applications)
 * [Live Update Usage](#live-update-usage)
 * [Advanced Topics](#advanced-topics)
+
 
 ## Live Update Architecture
 The following system components function together in order to provide the Live Update functionality.
