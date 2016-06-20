@@ -14,9 +14,8 @@ The Live Update feature in MobileFirst Foundation provides a simple way to defin
 #### Common Use Cases
 Live Update supports defining and consuming segment-based configurations, making it easy to make segment-based customizations to the application. Common use cases can be:
 
-* Phased rollout of a feature
+* Release trains and feature flipping
 * A/B testing
-* Adjustment of analytics
 * Context-based customization of the application (e.g. geographic segmentation)
 
 #### Demonstration
@@ -44,7 +43,7 @@ The following system components function together in order to provide the Live U
 * **Live Update adapter:** an adapter which provides:
  - Application schema and segments management
  - Serving configurations to applications
-* **Segment Resolver adapter:** *Optional*. A custom adapter that is implemented by the developer. The adapter receives application context (such as device and user context, as well as custom parameters) and returns a name of a segment that corresponds to the context. 
+* **Segment Resolver adapter:** *Optional*. A custom adapter that is implemented by the developer. The adapter receives application context (such as device and user context, as well as custom parameters) and returns the ID of a segment that corresponds to the context. 
 * **Client-side SDK:** the Live Update SDK is used to retrieve and access configuration elements such as features and properties from the MobileFirst Server.
 * **MobileFirst Operations Console:** used for configuring the Live Update adapter and settings.
 * **Configuration Service:** *Internal*. Provides configuration management services for the Live Update Adapter.
@@ -270,7 +269,7 @@ The purpose of this adapter is to provide custom business logic for retrieving a
 
 The Segment Resolver adapter defines a REST interface. The request to this adapter contains in its body all the required information to decide which segment the end-user belongs to and sends the it back to the application.
 
-To obtain the configuration by parameters:
+To obtain the configuration by parameters, use the Live Update API to send the request:
 
 #### iOS
 
@@ -306,8 +305,10 @@ LiveUpdateManager.getInstance().obtainConfiguration(new HashMap<String, String>(
 ```
 
 #### Adapter implementation
-The arguments that are provided by the application using the client SDK are then passed to the Live Update adapter and from there to the Segment Resolver adapter.  
-Update the adapter's implementation to handle these arguments to return the relevant segment.
+The arguments that are provided by the application using the client SDK are then passed to the Live Update adapter and from there to the Segment Resolver adapter.
+
+Update your newly created Segment Resolver adapter's implementation to handle these arguments to return the relevant segment.  
+The below is sample code you can use.
 
 ```java
 @Api(value = "Sample segment resolver adapter")
@@ -321,7 +322,7 @@ public class SampleSegmentResolverAdapter {
     @POST
     @Path("segment")
     @Produces("text/plain")
-    @OAuthSecurity(enabled = false, scope = "admin")
+    @OAuthSecurity(enabled = true, scope = "configuration-user-login")
     public String getSegment(String body) throws Exception {
         ResolverAdapterData data = gson.fromJson(body, ResolverAdapterData.class);
         String segmentName = "";
