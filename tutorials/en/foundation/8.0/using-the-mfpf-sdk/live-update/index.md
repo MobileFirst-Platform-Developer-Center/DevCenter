@@ -161,13 +161,22 @@ To add, click **New** and provide the requested values.
     </div>
 </div>
 
-#### Define a set of Schema features and properties with default values
+#### Define Schema features and properties with default values
 
 <img class="gifplayer" alt="Add schema feature and property" src="add-feature-property.png"/>
 
 #### Define segments that correspond to market segments
 
 <img class="gifplayer" alt="Add a segment" src="add-segment.png"/>
+
+#### Override default values of features and properties
+
+Enable a feature and change its default state.
+<img class="gifplayer" alt="Enable a feature" src="feature-enabling.png"/>
+
+Override the default value of a property.
+<img class="gifplayer" alt="Override a property" src="property-override.png"/>
+
 
 ## Adding Live Update SDK to applications
 The Live Update SDK provides developers with API to query runtime configuration features and properties that were previously defined in the Live Update Settings screen of the registered application in the MobileFirst Operations Console.
