@@ -11,10 +11,6 @@ User segmentation is the practice of dividing users into groups that reflect si
 
 The Live Update feature in MobileFirst Foundation provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the MobileFirst Operations Console for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** applications) for consuming the configuration.
 
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-   <iframe src="https://www.youtube.com/embed/P31W1sClqK0"></iframe>
-</div>
-
 #### Common Use Cases
 Live Update supports defining and consuming segment-based configurations, making it easy to make segment-based customizations to the application. Common use cases can be:
 
@@ -23,13 +19,20 @@ Live Update supports defining and consuming segment-based configurations, making
 * Adjustment of analytics
 * Context-based customization of the application (e.g. geographic segmentation)
 
+#### Demonstration
+The following video provides a demonstration of the Live Update feature.
+
+<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
+   <iframe src="https://www.youtube.com/embed/P31W1sClqK0"></iframe>
+</div>
+
 #### Jump to:
 * [Live Update Architecture](#live-update-architecture)
 * [Adding Live Update to MobileFirst Server](#adding-live-update-to-mobilefirst-server)
 * [Configuring Application Security](#configuring-application-security)
 * [Schema and Segments](#schema-and-segments)
 * [Adding Live Update SDK to Applications](#adding-live-update-sdk-to-applications)
-* [Live Update Usage](#live-update-usage)
+* [Using the Live Update SDK](#using-the-live-update-sdk)
 * [Advanced Topics](#advanced-topics)
 
 
@@ -209,10 +212,10 @@ The Live Update SDK provides developers with API to query runtime configuration 
     }   
     ```
 
-## Live Update Usage
-There are several approaches to using the Live Update API.
+## Using the Live Update SDK
+There are several approaches to using the Live Update SDK.
 
-### Using Pre-determined Segment
+### Pre-determined Segment
 Implement logic to retrieve a configuration for a relevant segment.  
 Replace "segment-name", "property-name" and "feature-name" with your own.
 
@@ -249,7 +252,7 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", new Configur
 
 With the Live Update configuration retrieved, the applicative logic and the application flow can be based on the state of features and properties. For example, if today is a national holiday, introduce a new marketing promotion in the application.
 
-### Using segment resolver adapter
+### Segment Resolver adapter
 In the [Live Update Architecture](#live-update-architecture) topic, a "segment resolver" adapter was mentioned.  
 The purpose of this adapter is to provide custom business logic for retrieving a segment based on the application/device/user context and applicative custom parameters.
 
@@ -273,7 +276,7 @@ LiveUpdateManager.sharedInstance.obtainConfiguration(["paramKey":"paramValue"], 
 })
 ```
 
-### Android
+#### Android
 
 ```java
 LiveUpdateManager.getInstance().obtainConfiguration(new HashMap<String, String>() {{
@@ -293,10 +296,9 @@ LiveUpdateManager.getInstance().obtainConfiguration(new HashMap<String, String>(
 });
 ```
 
-The arguments that are provided in the code block above are then passed to Live Update adapter and from there to the Segment Resolver adapter.  
-Update the adapter's implementation to handle these arguments to return the relevant segment.
-
 #### Adapter implementation
+The arguments that are provided by the application using the client SDK are then passed to the Live Update adapter and from there to the Segment Resolver adapter.  
+Update the adapter's implementation to handle these arguments to return the relevant segment.
 
 ```java
 @Api(value = "Sample segment resolver adapter")
@@ -404,4 +406,4 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 ```
 
 ### Cache expiration
-The `expirationInSec` value that is defined in the adapter **Configurations** tab dictates the length of time until the caching expires.
+The `expirationPeriod` value that is defined in the adapter **Configurations** tab dictates the length of time until the caching expires.
