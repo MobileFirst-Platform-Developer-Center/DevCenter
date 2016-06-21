@@ -47,7 +47,7 @@ The following system components function together in order to provide the Live U
 * **Segment Resolver adapter:** *Optional*. A custom adapter that is implemented by the developer. The adapter receives application context (such as device and user context, as well as custom parameters) and returns the ID of a segment that corresponds to the context. 
 * **Client-side SDK:** the Live Update SDK is used to retrieve and access configuration elements such as features and properties from the MobileFirst Server.
 * **MobileFirst Operations Console:** used for configuring the Live Update adapter and settings.
-* **Configuration Service:** *Internal*. Provides configuration management services for the Live Update Adapter.
+* **Configuration Service:** *Internal*. Provides configuration management services for the Live Update adapter.
 
 ## Adding Live Update to MobileFirst Server
 By default, Live Update Settings in the MobileFirst Operations Console is hidden. To enable, the provided Live Update adapter needs to be deployed.  
@@ -268,7 +268,7 @@ The purpose of this adapter is to provide custom business logic for retrieving a
 To use a Segment Resolver adapter:
 
 1. Create a new Java adapter
-2. Define the adapter as the Segment Resolver adpater in **Adapters → Live Update Adapter → segmentResolverAdapterName**.
+2. Define the adapter as the Segment Resolver adpater in **Adapters → Live Update adapter → segmentResolverAdapterName**.
 
 The Segment Resolver adapter defines a REST interface. The request to this adapter contains in its body all the required information to decide which segment the end-user belongs to and sends it back to the application.
 
@@ -456,4 +456,4 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 ```
 
 ### Cache expiration
-The `expirationPeriod` value that is defined in **Adapters → Live Update Adapter** dictates the length of time until the caching expires.
+The `expirationPeriod` value that is defined in **Adapters → Live Update adapter** dictates the length of time until the caching expires.
