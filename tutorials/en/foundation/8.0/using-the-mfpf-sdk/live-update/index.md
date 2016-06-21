@@ -267,8 +267,9 @@ The purpose of this adapter is to provide custom business logic for retrieving a
 
 To use a Segment Resolver adapter:
 
-1. Create a new Java adapter
+1. [Create a new Java adapter](../../adapters/creating-adapters/).
 2. Define the adapter as the Segment Resolver adpater in **Adapters → Live Update adapter → segmentResolverAdapterName**.
+3. When development is done remember [to build and deploy it as well](../../adapters/creating-adapters/).
 
 The Segment Resolver adapter defines a REST interface. The request to this adapter contains in its body all the required information to decide which segment the end-user belongs to and sends it back to the application.
 
