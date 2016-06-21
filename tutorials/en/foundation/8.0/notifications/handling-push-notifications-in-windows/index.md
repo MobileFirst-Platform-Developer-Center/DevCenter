@@ -204,7 +204,7 @@ internal class NotificationListner : MFPPushNotificationListener
 3. In the onReceive method you will receive the push notification and can handle the notification for the desired behavior.
 
 
-<img alt="Image of the sample application" src="wp10.png" style="float:right"/>
+<img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
 
 ## Windows Universal Push Notifications Service
 
