@@ -309,7 +309,7 @@ LiveUpdateManager.getInstance().obtainConfiguration(new HashMap<String, String>(
 ```
 
 #### Adapter implementation
-The arguments that are provided by the application using the client SDK are then passed to the Live Update adapter and from there to the Segment Resolver adapter.
+The arguments that are provided by the application using the Live Update client SDK are then passed to the Live Update adapter and from there to the Segment Resolver adapter. This is done automatically by the Live Update adapter without any developer action needed.
 
 Update your newly created Segment Resolver adapter's implementation to handle these arguments to return the relevant segment.  
 The below is sample code you can use.
