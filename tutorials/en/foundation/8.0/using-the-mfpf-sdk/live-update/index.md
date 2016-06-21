@@ -21,8 +21,10 @@ Live Update supports defining and consuming segment-based configurations, making
 #### Demonstration
 The following video provides a demonstration of the Live Update feature.
 
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-   <iframe src="https://www.youtube.com/embed/P31W1sClqK0"></iframe>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/P31W1sClqK0"></iframe>
+    </div>
 </div>
 
 #### Jump to:
@@ -264,10 +266,12 @@ With the Live Update configuration retrieved, the applicative logic and the appl
 In the [Live Update Architecture](#live-update-architecture) topic, a "segment resolver" adapter was mentioned.  
 The purpose of this adapter is to provide custom business logic for retrieving a segment based on the application/device/user context and applicative custom parameters.
 
+To use a Segment Resolver adapter:
+
 1. Create a new Java adapter
 2. Define the adapter as the Segment Resolver adpater in **Adapters → Live Update Adapter → segmentResolverAdapterName**.
 
-The Segment Resolver adapter defines a REST interface. The request to this adapter contains in its body all the required information to decide which segment the end-user belongs to and sends the it back to the application.
+The Segment Resolver adapter defines a REST interface. The request to this adapter contains in its body all the required information to decide which segment the end-user belongs to and sends it back to the application.
 
 To obtain the configuration by parameters, use the Live Update API to send the request:
 
@@ -310,6 +314,9 @@ The arguments that are provided by the application using the client SDK are then
 Update your newly created Segment Resolver adapter's implementation to handle these arguments to return the relevant segment.  
 The below is sample code you can use.
 
+
+**SampleSegmentResolverAdapterApplication.java**  
+
 ```java
 @Api(value = "Sample segment resolver adapter")
 @Path("/")
@@ -344,6 +351,40 @@ public class SampleSegmentResolverAdapter {
 
         return segmentName;
     }
+}
+```
+
+**SampleSegmentResolverAdapter.java**
+
+```java
+public class ResolverAdapterData {
+    public ResolverAdapterData() {
+    }
+
+    public ResolverAdapterData(AdapterSecurityContext asc, Map<String, List<String>> queryArguments)
+    {
+        ClientData cd = asc.getClientRegistrationData();
+
+        this.authenticatedUser = asc.getAuthenticatedUser();
+        this.registrationData = cd == null ? null : cd.getRegistration();
+        this.queryArguments = queryArguments;
+    }
+
+    public AuthenticatedUser getAuthenticatedUser() {
+        return authenticatedUser;
+    }
+
+    public RegistrationData getRegistrationData() {
+        return registrationData;
+    }
+
+    public Map<String, List<String>> getQueryArguments() {
+        return queryArguments;
+    }
+
+    private AuthenticatedUser authenticatedUser;
+    private RegistrationData registrationData;
+    private Map<String, List<String>> queryArguments;
 }
 ```
 
