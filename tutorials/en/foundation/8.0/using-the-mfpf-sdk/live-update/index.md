@@ -291,14 +291,15 @@ LiveUpdateManager.sharedInstance.obtainConfiguration(["paramKey":"paramValue"], 
 #### Android
 
 ```java
-LiveUpdateManager.getInstance().obtainConfiguration(new HashMap<String, String>() {{
-            put("paramKey","paramValue");
-        }}, new ConfigurationListener() {
+Map <String,String> params = new HashMap<>();
+params.put("paramKey", "paramValue");
+
+LiveUpdateManager.getInstance().obtainConfiguration(params , new ConfigurationListener() {
 
     @Override
     public void onSuccess(final Configuration configuration) {
-      Log.i("LiveUpdateDemo", configuration.getProperty("property-name"));
-      Log.i("LiveUpdateDemo", configuration.isFeatureEnabled("feature-name").toString());
+        Log.i("LiveUpdateDemo", configuration.getProperty("property-name"));
+        Log.i("LiveUpdateDemo", configuration.isFeatureEnabled("feature-name").toString());
     }
 
     @Override
