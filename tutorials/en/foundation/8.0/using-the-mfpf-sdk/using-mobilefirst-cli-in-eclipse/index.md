@@ -135,6 +135,8 @@ Using the MobileFirst Foundation Development Kit, You can couple together the ab
 
 ### Demo Video
 
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-   <iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+<div class="sizer">
+	<div class="embed-responsive embed-responsive-16by9">
+   		<iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+	</div>
 </div>
