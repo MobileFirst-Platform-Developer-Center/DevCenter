@@ -2,8 +2,7 @@
 layout: tutorial
 title: Live Update
 relevantTo: [ios,android]
-weight: 11
-published: false
+weight: 10
 ---
 
 ## Overview
