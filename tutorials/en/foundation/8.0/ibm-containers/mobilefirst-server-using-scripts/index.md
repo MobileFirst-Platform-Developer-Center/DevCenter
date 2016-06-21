@@ -70,7 +70,7 @@ If you choose to work from the OS X Terminal, do the following:
 ## Download the ibm-mfpf-container-8.0.0.0 zip
 To setup IBM MobileFirst Foundation on IBM Containers, you must first create an image that will later be pushed to Bluemix.
 
-<a class="custombtn btn-lg btn-default" style="width:700px; font-size: 100%" href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="_blank">Follow the instructions and download the IBM MobileFirst Server for IBM Container v8.0 .zip file (search for: CNBL0EN)</a>
+<a class="custombtn btn-lg btn-default" style="width:700px; font-size: 100%" href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions and download the IBM MobileFirst Server for IBM Container v8.0 .zip file (search for: CNBL0EN)</a>
 
 ### Structure of the mfp-cloud-container-8.0.0.zip archive
 The extracted ZIP file contains the files for building an image (**dependencies** and **mfpf-libs**), the files for building and deploying an IBM MobileFirst Foundation Operational Analytics Container (**mfpf-analytics**) and files for configuring an IBM MobileFirst Foundation Server Container (**mfpf-server**).
@@ -213,6 +213,7 @@ If you intend to use analytics with your MobileFirst Server start here.
 {% endhighlight %}
                   </li>
               </ol>
+              Launch the Analytics Console by loading the following URL: http://&#60ANALYTICS_CONTAINER_HOST&#62/analytics/console (it may take a few moments).  
             </div>
         </div>
     </div>
@@ -242,7 +243,7 @@ If you intend to use analytics with your MobileFirst Server start here.
               <ul>
                   <li><strong>ADMIN_DB_SRV_NAME - </strong>Your dashDB service instance name for storing admin data.</li>
                   <li><strong>ADMIN_SCHEMA_NAME - </strong>Your schema name for admin data. The default is MFPDATA.</li>
-                  <li><strong>RUNTIME_DB_SRV_NAME - </strong>Your dashDB service instance name for runtime data.</li>
+                  <li><strong>RUNTIME_DB_SRV_NAME - </strong>Your dashDB service instance name for storing runtime data. The default is the admin service name.</li>
                   <li><strong>RUNTIME_SCHEMA_NAME - </strong>Your schema name for runtime data. The default is MFPDATA.</li>
               </ul>
               <h4>prepareserver.properties</h4>
@@ -257,6 +258,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   To assign an IP address, run: <code>cf ic ip request</code>.<br/>
                   IP addresses can be reused in multiple containers in a space.<br/>
                   If you've already assigned one, you can run: <code>cf ic ip list</code>.</li>
+                  <li><strong>MFPF_PROPERTIES - </strong>MobileFirst server JNDI properties separated by comma (<strong>without spaces</strong>). Here is where you define the analytics related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://&#60ANALYTICS_CONTAINER_IP&#62:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://&#60ANALYTICS_CONTAINER_IP&#62:9080/analytics/console,mfp/mfp.analytics.username:&#60ANALYTICS_USERNAME&#62,mfp/mfp.analytics.password:&#60ANALYTICS_PASSWORD&#62</code></li>
               </ul>
               <h4>startservergroup.properties</h4>
               <ul>
@@ -264,6 +266,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   <li><strong>SERVER_CONTAINER_GROUP_NAME - </strong>A name for your Bluemix Container group.</li>
                   <li><strong>SERVER_CONTAINER_GROUP_HOST - </strong>Your host name.</li>
                   <li><strong>SERVER_CONTAINER_GROUP_DOMAIN - </strong>Your domain name. The default is: <code>mybluemix.net</code>.</li>
+                  <li><strong>MFPF_PROPERTIES - </strong>MobileFirst server JNDI properties separated by comma (<strong>without spaces</strong>). Here is where you define the analytics related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://&#60ANALYTICS_CONTAINER_GROUP_HOSTNAME&#62:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://&#60ANALYTICS_CONTAINER_GROUP_HOSTNAME&#62:80/analytics/console,mfp/mfp.analytics.username:&#60ANALYTICS_USERNAME&#62,mfp/mfp.analytics.password:&#60ANALYTICS_PASSWORD&#62</code></li>
               </ul>
             </div>
         </div>
@@ -321,5 +324,8 @@ If you intend to use analytics with your MobileFirst Server start here.
         </div>
     </div>
 </div>
+
+Launch the MobileFirst Console by loading the following URL: http://MF_CONTAINER_HOST/mfpconsole (it may take a few moments).  
+Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
 
 With the MobileFirst Server running on IBM Bluemix, You can now start your application development. Review the MobileFirst Foundation [tutorials](../../all-tutorials).
