@@ -3,7 +3,7 @@ layout: tutorial
 title: Using Direct Update in Cordova applications
 breadcrumb_title: Direct Update
 relevantTo: [cordova]
-weight: 10
+weight: 7
 ---
 ## Overview
 With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.

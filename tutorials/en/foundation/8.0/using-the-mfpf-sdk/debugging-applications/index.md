@@ -3,7 +3,7 @@ layout: tutorial
 title: Debugging JavaScript (Cordova, Web) Applications
 breadcrumb_title: Debugging applications        
 relevantTo: [javascript]
-weight: 12
+weight: 9
 ---
 ## Overview
 Debugging is a process that consists of finding the cause of defects in applicative code and application user interface.
