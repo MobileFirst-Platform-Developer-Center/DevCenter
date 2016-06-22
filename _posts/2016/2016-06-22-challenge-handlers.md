@@ -28,7 +28,7 @@ In most cases, the challenge will be sent by a [Security Check]({{site.baseurl}}
 The incoming challenge is matched to your challenge handler using the security check name. It is important to register your challenge handler with the correct security check name.  If the framework does not find any matching challenge handler, an error will be thrown and your application may not work as expected.  
 
 When the framework finds the matching challenge handler, it will call its `handleChallenge` method.  
-This needs to end either with a `submitChallengeAnswer` or a `cancel` call in order to close tell the framework that you are done with this challenge.
+This needs to end either with a `submitChallengeAnswer` or a `cancel` call, in order to tell the framework that you are done with this challenge.
 
 > In 8.0 GA, the `submitFailure` API was renamed to `cancel`.
 
