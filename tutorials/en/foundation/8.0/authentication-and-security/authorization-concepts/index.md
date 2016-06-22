@@ -30,8 +30,6 @@ The same security check can also be used to protect several resources.
 
 On the client-side, the application logic needs to implement a **challenge handler** to handle challenges sent by the security check.
 
-> Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](../credentials-validation) tutorial.
-
 #### Built-in Security Checks
 Several predefined security checks available:
 
@@ -39,7 +37,13 @@ Several predefined security checks available:
 - [Direct Update](../../using-the-mfpf-sdk/direct-update)
 - LTPA
 
-> Learn more about built-in security checks in the user documentation.
+### Challenge Handler
+When trying to access a protected resource, the client may be faced with a challenge. A challenge is a question, a security test, a prompt by the server to make sure you are allowed to access this resource. Most commonly, this challenge is a request for credentials, such as a username and password.
+
+In the client code, this challenge must be handled by an object called a challenge handler. It is important to note that once a challenge is received, it cannot be ignored. You must answer it, or cancel it. Ignoring a challenge may lead to unexpected behavior.
+
+> Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](../credentials-validation) tutorial.
+
 
 ### Scope
 You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
