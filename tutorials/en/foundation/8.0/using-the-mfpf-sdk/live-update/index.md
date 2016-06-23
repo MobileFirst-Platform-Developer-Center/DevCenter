@@ -416,14 +416,18 @@ Once a Schmea has been defined, the system administrator can export and import i
 #### Get schema
 
 ```bash 
-curl --user admin:admin <http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.GenericTestApp/schema> curl.get.txt
+curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.LiveUpdateDemo/schema > curl.get.txt
 ```
 
 #### Post schema
 
 ```bash
-curl -X PUT -d @curl.get.txt --user admin:admin <http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.GenericTestApp/schema> --header "Content-Type:application/json"
+curl -X PUT -d @curl.get.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.LiveUpdateDemo/schema > --header "Content-Type:application/json"
 ```
+
+* Replace "admin:admin" with your own (default is "admin")
+* Replace "localhost" and the port number with your own if needed
+* Replace the application identifier "com.ibm.LiveUpdateDemo" with your own application's.
 
 ### Caching
 Caching is enabled by default in order to avoid network letancy. This means that updates may not take place immediately.  
