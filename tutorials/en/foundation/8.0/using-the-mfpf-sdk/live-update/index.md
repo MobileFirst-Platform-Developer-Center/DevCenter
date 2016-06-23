@@ -416,7 +416,7 @@ Once a Schmea has been defined, the system administrator can export and import i
 #### Get schema
 
 ```bash 
-curl --user admin:admin <http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.GenericTestApp/schema> &gt; curl.get.txt
+curl --user admin:admin <http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.GenericTestApp/schema> curl.get.txt
 ```
 
 #### Post schema
