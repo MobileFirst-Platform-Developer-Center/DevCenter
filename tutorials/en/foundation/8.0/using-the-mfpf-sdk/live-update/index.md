@@ -52,9 +52,11 @@ The following system components function together in order to provide the Live U
 ## Adding Live Update to MobileFirst Server
 By default, Live Update Settings in the MobileFirst Operations Console is hidden. To enable, the provided Live Update adapter needs to be deployed.  
 
-<!-- 1. Open the MobileFirst Operations Console. From the sidebar navigation click on **Download Center → Tools tab**. -->
+<!-- 1. Open the MobileFirst Operations Console. From the sidebar navigation click on **Download Center → Tools tab**. 
+2. Download and deploy the Live Update adapter. -->
 1. [Click to download](https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true) the Live Update adapter.
-2. Download and deploy the Live Update adapter.
+2. Deploy the adapter.
+
 
 Once deployed, the **Live Update Settings** screen is then revealed for each registered application.
 
