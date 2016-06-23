@@ -10,7 +10,7 @@ author:
   name: Nathan Hazout
 ---
 
-Challenge handlers have changed between 8.0 beta and 8.0 GA. If you have used challenge handlers in previous versions of MobileFirst, it is worth going over this quick review of challenge handlers, to understand the new APIs and the different types of challenge handlers.
+Challenge handlers have changed between 8.0 beta and 8.0 GA. If you have used challenge handlers in previous versions of MobileFirst Foundation (previously Worklight/MobileFirst Platform Foundation), it is worth going over this quick review of challenge handlers, to understand the new APIs and the different types of challenge handlers.
 
 ## What is a challenge handler
 When trying to access a protected resource, the client may be faced with a *challenge*. A challenge is a question, a security test, a prompt by the server to make sure you are allowed to access this resource.  
@@ -39,7 +39,7 @@ In some cases, the challenge may be sent by a third party gateway. For example i
 
 > `GatewayChallengeHandler` used to be called a `ChallengeHandler` prior to 8.0 GA.
 
-A gateway challenge does not follow the protocol defined by MobileFirst, as it is generated outside of MobileFirst. While registering a `GatewayChallengeHandler` requires a name (just like `SecurityCheckChallengeHandler`), this name is not used to match the challenge to a challenge handler. Because of this, is it your responsibility to determine whether the incoming response is a challenge and to match it to the correct challenge handler.
+A gateway challenge does not follow the protocol defined by MobileFirst Foundation, as it is generated outside of it. While registering a `GatewayChallengeHandler` requires a name (just like `SecurityCheckChallengeHandler`), this name is not used to match the challenge to a challenge handler. Because of this, is it your responsibility to determine whether the incoming response is a challenge and to match it to the correct challenge handler.
 
 This is done by implementing the `canHandleResponse` method of `GatewayChallengeHandler`. The framework will call this method for almost every incoming response the client receives. Whenever `canHandleResponse` returns `true`, the framework will call `handleChallenge` and wait for you to finish handling this challenge.  
 
