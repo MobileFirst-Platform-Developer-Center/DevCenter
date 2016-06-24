@@ -1,5 +1,5 @@
 ---
-title: Quick Review of Challenge Handlers in 8.0
+title: Quick Review of Challenge Handlers in MobileFirst Foundation 8.0
 date: 2016-06-22
 tags:
 - MobileFirst_Platform
