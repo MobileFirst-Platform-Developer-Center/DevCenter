@@ -8,7 +8,8 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsCordova/tree/release80
 ---
 ## Overview
-SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Cordova](../) tutorials.
+SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Cordova](../) tutorials.  
+SMS notifications in Cordova applications are supported for iOS and Android.
 
 #### Jump to:
 * [Notifications API](#notifications-api)   
