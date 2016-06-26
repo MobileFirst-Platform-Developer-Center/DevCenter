@@ -97,7 +97,7 @@ You can choose to run the command interactively or directly.
 2. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
 
     ```bash
-    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID -DarchetypeVersion=8.0.0
+    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID
     ```
   * The `Archetype Group Id` and Archetype Version are required parameters to identify the archetype.
   * The `Archetype Artifact Id` is a required parameter to identify the adapter type:
@@ -132,7 +132,6 @@ You can choose to run the command interactively or directly.
 7. Enter `y` to confirm:
 
     ```bash
-    [INFO] Using property: archetypeVersion = 8.0.0
     Confirm properties configuration:
     groupId: com.mycompany
     artifactId: SampleAdapter
@@ -147,7 +146,7 @@ You can choose to run the command interactively or directly.
 Replace the placeholders with the actual values and run the command:
 
 ```bash
-mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DarchetypeVersion=8.0.0 -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid> -Dversion=<maven_project_version> -Dpackage=<adapter_package_name>
+mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid>  -Dpackage=<adapter_package_name>
 ```
 
 > For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
@@ -279,7 +278,6 @@ To group adapters you need to:
     			<plugin>
     				<groupId>com.ibm.mfp</groupId>
     				<artifactId>adapter-maven-plugin</artifactId>
-    				<version>8.0.0</version>
     				<extensions>true</extensions>
     			</plugin>
     		</plugins>
@@ -316,7 +314,7 @@ To group adapters you need to:
  * Configurations Files - adapter configuration data, to be used in devops environments.
 
 ## Updating the Adapter Maven Project
-To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/) by search for "IBM MobileFirst Platform" and update the following properties in the adapter Maven project's **pom.xml** file:
+To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) by search for "IBM MobileFirst Platform" and update the following properties in the adapter Maven project's **pom.xml** file:
 
 1. The `adapter-maven-api` version:
 
@@ -325,7 +323,7 @@ To update the adapter Maven project with the latest release, find the **version 
       <groupId>com.ibm.mfp</groupId>
       <artifactId>adapter-maven-api</artifactId>
       <scope>provided</scope>
-      <version>8.0.0</version>
+      <version>8.0.2016061011</version>
     </dependency>
     ```
 2. The `adapter-maven-plugin` version:
@@ -334,7 +332,7 @@ To update the adapter Maven project with the latest release, find the **version 
     <plugin>
       <groupId>com.ibm.mfp</groupId>
       <artifactId>adapter-maven-plugin</artifactId>
-      <version>8.0.0</version>
+      <version>8.0.2016061011</version>
       <extensions>true</extensions>
     </plugin>
     ```
