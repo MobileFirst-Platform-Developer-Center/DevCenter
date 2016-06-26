@@ -84,7 +84,7 @@ To send a notification, see the [sending notifications](../sending-push-notifica
 
 <img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
 ## Sample application
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80) the Cordova project.
+[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80) the Android project.
 
 **Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
 
