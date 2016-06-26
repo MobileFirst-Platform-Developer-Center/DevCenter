@@ -278,7 +278,6 @@ To group adapters you need to:
     			<plugin>
     				<groupId>com.ibm.mfp</groupId>
     				<artifactId>adapter-maven-plugin</artifactId>
-    				<version>8.0.0</version>
     				<extensions>true</extensions>
     			</plugin>
     		</plugins>
