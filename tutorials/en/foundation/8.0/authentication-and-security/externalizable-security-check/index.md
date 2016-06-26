@@ -21,6 +21,8 @@ This tutorial explains how to implement the class and demonstrates how to manage
 * [The initStateDurations Method](#the-initstatedurations-method)
 * [The authorize Method](#the-authorize-method)
 * [The introspect Method](#the-introspect-method)
+* [The AuthorizationContext Object](#the-authorizationcontext-object)
+* [The RegistrationContext Object](#the-registrationcontext-object)
 
 ## The initStateDurations Method
 The `ExternalizableSecurityCheck` defines an abstract method called `initStateDurations`. The subclasses must implement that method providing the names and durations for all states supported by their security check. The duration values usually come from the security check configuration.
@@ -94,3 +96,51 @@ public void introspect(Set<String> checkScope, IntrospectionResponse response) {
     }
 }
 ```
+
+## The AuthorizationContext Object
+The `ExternalizableSecurityCheck` class provides the `AuthorizationContext authorizationContext` object is used for storing transient data associated with the current client for the security check.  
+Use the following methods to store and obtain data:
+
+* Get authenticated user set by this security check for the current client:
+
+    ```java
+    AuthenticatedUser getActiveUser();
+    ```
+* Set the active user for the current client by this security check:
+
+    ```java
+    void setActiveUser(AuthenticatedUser user);
+    ```
+
+## The RegistrationContext Object
+The `ExternalizableSecurityCheck` class provides the `RegistrationContext registrationContext` object is used for storing persistent/deployment data associated with the current client.  
+Use the following methods to store and obtain data:
+
+* Get the user registered by this security check for the current client:
+
+    ```java
+    AuthenticatedUser getRegisteredUser();
+    ```
+* Register the given user for the current client:
+
+    ```java
+    setRegisteredUser(AuthenticatedUser user);
+    ```
+* Get the public persistent attributes of the current client:
+
+    ```java
+    PersistentAttributes getRegisteredPublicAttributes();
+    ```
+* Get the protected persistent attributes of the current client:
+
+    ```java
+    PersistentAttributes getRegisteredProtectedAttributes();
+    ```
+* Find the registration data of mobile clients by the given search criteria:
+
+    ```java
+    List<ClientData> findClientRegistrationData(ClientSearchCriteria criteria);
+    ```
+    
+## Sample Application
+For a sample that implements the `ExternalizableSecurityCheck`, see the [Enrollment](../enrollment) tutorial.

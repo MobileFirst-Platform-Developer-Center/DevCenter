@@ -42,36 +42,17 @@ You can choose to save protected data in the `PersistentAttributes` object which
 
 In the provided sample application the `PersistentAttributes` object is used in the adapter resource class to store the PIN code:
 
-* The **isEnrolled** resource returns `true` if the **pinCode** attribute exist and `false` otherwise.
-
-    ```java
-    @GET
-    @Path("/isEnrolled")
-    public boolean isEnrolled(){
-      PersistentAttributes protectedAttributes = adapterSecurityContext.getClientRegistrationData().getProtectedAttributes();
-      return (protectedAttributes.get("pinCode") != null);
-    }
-    ```
-
-* The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.  
-If the security check sets an `AuthenticatedUser`, the `ClientData` object will contain the user's properties. In our sample we get the authenticated user's display name and adds it to the `Response` object.
+* The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
 
     ```java
     @POST
-  	@Produces("application/json")
   	@OAuthSecurity(scope = "setPinCode")
   	@Path("/setPinCode/{pinCode}")
   	public Response setPinCode(@PathParam("pinCode") String pinCode){
   		ClientData clientData = adapterSecurityContext.getClientRegistrationData();
   		clientData.getProtectedAttributes().put("pinCode", pinCode);
   		adapterSecurityContext.storeClientRegistrationData(clientData);
-  		AuthenticatedUser authenticatedUser = null;
-  		if (clientData.getUsers() != null) {
-  			authenticatedUser = clientData.getUsers().get("EnrollmentUserLogin");
-  		}
-  		Map<String, Object> user = new HashMap<String, Object>();
-  		user.put("userName", authenticatedUser.getDisplayName());
-  		return Response.ok(user).build();
+  		return Response.ok().build();
   	}
     ```
     Here, `users` has a key called `EnrollmentUserLogin` which itself contains the `AuthenticatedUser` object.
@@ -96,12 +77,18 @@ If the security check sets an `AuthenticatedUser`, the `ClientData` object will 
 The Enrollment sample contains three security checks:
 
 ### EnrollmentUserLogin
-The `EnrollmentUserLogin` security check is protecting the **setPinCode** resource so that only authenticated users could set a PIN code. It should expire quickly and hold only for the duration of "first time experience".  
-It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial except for an extra `isLoggedIn` method. The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise:
+The `EnrollmentUserLogin` security check is protecting the **setPinCode** resource so that only authenticated users could set a PIN code. It should expire quickly and hold only for the duration of "first time experience". It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial except for an extra `isLoggedIn` and `getRegisteredUser` methods.  
+The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise.  
+The `getRegisteredUser` method returns the authenticated user.
 
 ```java
 public boolean isLoggedIn(){
     return getState().equals(STATE_SUCCESS);
+}
+```
+```java
+public AuthenticatedUser getRegisteredUser() {
+    return registrationContext.getRegisteredUser();
 }
 ```
 
@@ -173,6 +160,7 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
 The `IsEnrolled` security check is protecting:
 
 * The **getBalance** resource so that only enrolled users can see the balance.
+* The **transactions** resource so that only enrolled users can get the transactions.
 * The **unenroll** resource so that deleting the **pinCode** will be possible only if it has been set before.
 
 #### Creating the Security Check
@@ -250,6 +238,70 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 
  * Set the state to EXPIRED by using the `setState` method.
  * Add failure to the response object by using the `addFailure` method.
+
+The `IsEnrolled` security check **depends on** `EnrollmentUserLogin`:
+
+```java
+@SecurityCheckReference
+private transient EnrollmentUserLogin userLogin;
+```
+* Set the active user by adding the following:
+
+    ```java
+    public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
+        PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
+        if (attributes.get("pinCode") != null){
+            // Is there a user currently active?
+            if (!userLogin.isLoggedIn()){
+                // If not, set one here.
+                authorizationContext.setActiveUser(userLogin.getRegisteredUser());
+            }
+            setState(SUCCESS_STATE);
+            response.addSuccess(scope, getExpiresAt(), this.getName());
+        } else  {
+            setState(STATE_EXPIRED);
+            Map <String, Object> failure = new HashMap<String, Object>();
+            failure.put("failure", "User is not enrolled");
+            response.addFailure(getName(), failure);
+        }
+    }
+    ```
+    Then, the `transactions` resource gets the current `AuthenticatedUser` object to present the display name:
+
+    ```java
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @OAuthSecurity(scope = "transactions")
+    @Path("/transactions")
+    public String getTransactions(){
+      AuthenticatedUser currentUser = securityContext.getAuthenticatedUser();
+      return "Transactions for " + currentUser.getDisplayName() + ":\n{'date':'12/01/2016', 'amount':'19938.80'}";
+    }
+    ```
+    > Fore more information about the `securityContext`, see the [Security API](../../adapters/java-adapters/#security-api) section in the Java adapter tutorial.
+
+* Add the registered user to the response object by adding the following:
+
+    ```java
+    public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
+        PersistentAttributes attributes = registrationContext.getRegisteredProtectedAttributes();
+        if (attributes.get("pinCode") != null){
+            // Is there a user currently active?
+            if (!userLogin.isLoggedIn()){
+                // If not, set one here.
+                authorizationContext.setActiveUser(userLogin.getRegisteredUser());
+            }
+            setState(SUCCESS_STATE);
+            response.addSuccess(scope, getExpiresAt(), getName(), "user", userLogin.getRegisteredUser());
+        } else  {
+            setState(STATE_EXPIRED);
+            Map <String, Object> failure = new HashMap<String, Object>();
+            failure.put("failure", "User is not enrolled");
+            response.addFailure(getName(), failure);
+        }
+    }
+    ```
+    In our sample code, the `IsEnrolled` challenge handler's handleSuccess method use the user object to present the display name.
 
 ## Sample Applications
 
