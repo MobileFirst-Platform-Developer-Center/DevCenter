@@ -88,7 +88,7 @@ Through the Configuration tab, the server instance can be further customized wit
 * User registry 
 * TrustStore
 * Operational Analytics configuration
-* Database selection (available in the *Professional 1 Application* plan)
+* DashDB transactional database selection (available in the *Professional 1 Application* plan)
 * VPN
 
 ![Image of Mobile Foundation setup](advanced-server-configuration.png)
