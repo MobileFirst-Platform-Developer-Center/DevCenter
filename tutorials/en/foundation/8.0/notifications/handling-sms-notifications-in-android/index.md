@@ -46,7 +46,20 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
     public void onFailure(MFPPushException e) {
         // Registration failed with error
     }
-});
+}, optionObject);
+```
+
+* **optionObject**: an `JSONObject` containing the phone number to register the device with. For example:
+
+```java
+JSONObject optionObject = new JSONObject();
+try {
+    // Obtain the inputted phone number.
+    optionObject.put("phoneNumber", editPhoneText.getText().toString());
+}
+catch(Exception ex) {
+    ex.printStackTrace();
+}
 ```
 
 #### Unregister Device
