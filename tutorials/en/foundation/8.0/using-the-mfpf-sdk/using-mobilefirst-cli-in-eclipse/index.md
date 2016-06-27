@@ -41,7 +41,7 @@ This tutorial walks you through installing the THyM and MobileFirst Eclipse plug
 2. In the find field search "mobilefirst" then click "Go"
 3. Click "Install" for IBM MobileFirst Platform Studio 
 
-	![Image of MobileFirsta installation](mf-eclips-plugin.png)
+	![Image of MobileFirsta installation](mff_install.png)
 
 4. Complete the installation process
 5. Restart Eclipse for the installation to take affect.
