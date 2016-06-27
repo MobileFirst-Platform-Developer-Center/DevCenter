@@ -239,7 +239,7 @@ If you intend to use analytics with your MobileFirst Server start here.
                   <li><strong>BLUEMIX_SPACE - </strong>Your Bluemix space (as explained previously).</li>
               </ul>
               <h4>prepareserverdbs.properties</h4>
-              The Mobile Foundation requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB database instance </a>. After you have set-up your dashDB instance, provide the required arguments:
+              The Mobile Foundation requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB *Transactional database* instance </a>. After you have set-up your dashDB instance, provide the required arguments:
               <ul>
                   <li><strong>ADMIN_DB_SRV_NAME - </strong>Your dashDB service instance name for storing admin data.</li>
                   <li><strong>ADMIN_SCHEMA_NAME - </strong>Your schema name for admin data. The default is MFPDATA.</li>
