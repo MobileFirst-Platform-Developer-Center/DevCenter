@@ -475,6 +475,7 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 ### Cache expiration
 The `expirationPeriod` value that is defined in **Adapters → Live Update adapter** dictates the length of time until the caching expires.
 
+<img alt="Image of the sample application" src="live-update-app.png" style="float:right"/>
 ## Sample application
 In the sample application you select a country and using Live Update the app then outputs text in language that corresponds to the selected country.
 
