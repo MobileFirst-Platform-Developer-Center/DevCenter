@@ -70,3 +70,5 @@ After your custom Java code is created and any required JAR files are added, you
 ### Sample usage
 * Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+
+When testing, the adapter expects an array with numbers to add or subtract, for example: `[1,2]`.
