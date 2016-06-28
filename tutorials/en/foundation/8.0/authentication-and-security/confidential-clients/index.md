@@ -13,7 +13,8 @@ For example, your backend server may need to request a protected resource, or us
 Registered confidential clients can obtain a token to be used in all requests to the MobileFirst Server. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification.
 
 ## Registering the confidential client
-In the MobileFirst Operations Console, under **Settings** → **Confidential Clients**, click on **Create New** to add a new entry.  You will need to provide the following:
+In the MobileFirst Operations Console, click on **Runtime Settings** in the sidebar navigation → **Confidential Clients**. Click on **New** to add a new entry.  
+You will need to provide the following:
 
 - **Display Name**: A friendly display name that describes the confidential client, such as **Backend Node server**.
 - **ID**: A unique identifier for the confidential client (can be considered as a "username").
