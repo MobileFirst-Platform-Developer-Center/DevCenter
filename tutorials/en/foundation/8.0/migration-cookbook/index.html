@@ -1028,7 +1028,7 @@ The authenticator sends the login module the credentials to the <code>login()/lo
                         </table>
 
                         <h3>Security tests vs Scopes</h3>
-                        <p>In MobileFirst Foundation 8.0 a <b>Scope</b> is used to aggregate 0 or more security checks, which can then be used to protect resources, or apps. This is similar to the
+                        <p>In MobileFirst Foundation 8.0 a <b>Scope</b> is used to aggregate 0 or more security checks, which can then be used to protect local and external resources, or apps. This is similar to the
                         <code>CustomSecurityTest</code> concept in previous releases.</p>
 
                         <table class="table table-striped">
@@ -1079,7 +1079,7 @@ The authenticator sends the login module the credentials to the <code>login()/lo
                                 <td>Certain realms in a Security test define DeviceID and UserID.
 
 {% highlight xml %}<test isInternalUserID="true" realm="AuthRealm"/>{% endhighlight %}</td>
-                                <td>A scope is not aware of the the securityChecks that make up the scope</td>
+                                <td>A scope is not aware of the the security checks that make up the scope</td>
                             </tr>
 
                             <tr>
