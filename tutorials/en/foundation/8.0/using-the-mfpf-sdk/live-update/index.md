@@ -476,7 +476,7 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 The `expirationPeriod` value that is defined in **Adapters → Live Update adapter** dictates the length of time until the caching expires.
 
 ## Sample application
-The sample application lets you choose your prefered langauge and then outputs the text "Hello World" in the selected langauge.
+In the sample application you select a country and using Live Update the app then outputs text in language that corresponds to the selected country.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80) the Xcode project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80) the Android Studio project.
