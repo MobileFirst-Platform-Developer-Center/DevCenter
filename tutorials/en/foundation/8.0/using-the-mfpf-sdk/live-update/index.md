@@ -489,17 +489,15 @@ In the sample application you select a country and using Live Update the app the
 3. Import the Live Update schema for the sample
   * [Click to download](https://www.github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/blob/release80/scheme.txt) the scheme for the sample
   * [Follow the instructions in the tutorial](#import-export) to upload the schema
-3. Add segments:
-  * In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, add the following segments IDs:
-  
-  1. DE
-  2. FR
-  3. ES
-  4. UK
-  5. IT
-  6. US
+3. Add segments: In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, add the following segments IDs:
+  - DE
+  - FR
+  - ES
+  - UK
+  - IT
+  - US
 
-  Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
+    Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
 
-6. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
-7. In Xcode or Android Studio, run the App.
+4. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
+5. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
