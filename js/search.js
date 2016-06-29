@@ -166,7 +166,7 @@ var MFPSEARCH = {
     init: function() {
         this.client = new $.es.Client({
             protocol: 'https',
-            hosts: 'mfpsearch.mybluemix.net'
+            hosts: 'mfsearch.mybluemix.net'
         });
 
         this.queryTerm = this.getParameterByName('q');
