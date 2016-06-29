@@ -340,7 +340,7 @@ public class SampleSegmentResolverAdapter {
 
     @POST
     @Path("segment")
-    @Produces("text/plain")
+    @Produces("text/plain;charset=UTF-8")
     @OAuthSecurity(enabled = true, scope = "configuration-user-login")
     public String getSegment(String body) throws Exception {
         ResolverAdapterData data = gson.fromJson(body, ResolverAdapterData.class);
