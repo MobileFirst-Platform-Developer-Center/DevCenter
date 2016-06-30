@@ -2,12 +2,12 @@
 layout: tutorial
 title: Authorization concepts
 breadcrumb_title: Authorization concepts
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---
 
 ## Overview
-The MobileFirst Platform Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token that encapsulates the granted permissions to the client.  
+The MobileFirst Foundation authentication framework uses the [OAuth 2.0](http://oauth.net/) protocol. The OAuth 2 protocol is based on the acquisition of an access token that encapsulates the granted permissions to the client.  
 
 In that context, the IBM MobileFirst Platform Server serves as an **authorization server** and is able to **generate access tokens**. The client can then use these tokens to access resources on a resource server, which can be either the MobileFirst Server itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows to enforce security on resources that are running outside MobileFirst Server.
 
@@ -19,7 +19,7 @@ In that context, the IBM MobileFirst Platform Server serves as an **authorizatio
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Authorization entities
-Several authorization entities are available as part of the MobileFirst Platform Foundation authentication framework:
+Several authorization entities are available as part of the MobileFirst Foundation authentication framework:
 
 ### Security Check
 A security check is an entity that is responsible for obtaining and validating client credentials.   
@@ -30,8 +30,6 @@ The same security check can also be used to protect several resources.
 
 On the client-side, the application logic needs to implement a **challenge handler** to handle challenges sent by the security check.
 
-> Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](../credentials-validation) tutorial.
-
 #### Built-in Security Checks
 Several predefined security checks available:
 
@@ -39,7 +37,13 @@ Several predefined security checks available:
 - [Direct Update](../../using-the-mfpf-sdk/direct-update)
 - LTPA
 
-> Learn more about built-in security checks in the user documentation.
+### Challenge Handler
+When trying to access a protected resource, the client may be faced with a challenge. A challenge is a question, a security test, a prompt by the server to make sure you are allowed to access this resource. Most commonly, this challenge is a request for credentials, such as a username and password.
+
+In the client code, this challenge must be handled by an object called a challenge handler. It is important to note that once a challenge is received, it cannot be ignored. You must answer it, or cancel it. Ignoring a challenge may lead to unexpected behavior.
+
+> Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](../credentials-validation) tutorial.
+
 
 ### Scope
 You can protect resources such as adapters from unauthorized access by specifying a **scope**.  

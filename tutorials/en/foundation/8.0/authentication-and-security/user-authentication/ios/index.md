@@ -3,7 +3,7 @@ layout: tutorial
 title: Implementing the challenge handler in iOS applications
 breadcrumb_title: iOS
 relevantTo: [ios]
-weight: 4
+weight: 3
 downloads:
   - name: Download PreemptiveLogin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginSwift/tree/release80
@@ -28,10 +28,10 @@ self.submitChallengeAnswer(credentials);
 
 You may also want to login a user without any challenge being received. For example, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
 
-You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Platform Foundation SDK includes the `login` API:
+You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `login` API:
 
 ```swift
-WLAuthorizationManager.sharedInstance().login(self.securityCheck, withCredentials: credentials) { (error) -> Void in
+WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in
   if(error != nil){
     NSLog("Login Preemptive Failure: " + String(error))
   }
@@ -49,7 +49,7 @@ When the user clicks the **Login** button, you can dynamically choose which API 
 
 ```swift
 if(!self.isChallenged){
-  WLAuthorizationManager.sharedInstance().login(self.securityCheck, withCredentials: credentials) { (error) -> Void in}
+  WLAuthorizationManager.sharedInstance().login(self.securityCheckName, withCredentials: credentials) { (error) -> Void in}
 }
 else{
   self.submitChallengeAnswer(credentials)
@@ -62,7 +62,7 @@ else{
 ## Obtaining an access token
 Since this security check supports *remember me* functionality, it would be useful to check if the client is currently logged in, during the application startup.
 
-The MobileFirst Platform Foundation SDK provides the `obtainAccessTokenForScope` API to ask the server for a valid token:
+The MobileFirst Foundation SDK provides the `obtainAccessTokenForScope` API to ask the server for a valid token:
 
 ```swift
 WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(scope) { (token, error) -> Void in
@@ -109,10 +109,10 @@ Here, `success` has a key called `user` which itself contains a dictionary repre
 ```
 
 ## Logout
-The MobileFirst Platform Foundation SDK also provides a `logout` API to logout from a specific security check:
+The MobileFirst Foundation SDK also provides a `logout` API to logout from a specific security check:
 
 ```swift
-WLAuthorizationManager.sharedInstance().logout(self.securityCheck){ (error) -> Void in
+WLAuthorizationManager.sharedInstance().logout(self.securityCheckName){ (error) -> Void in
   if(error != nil){
     NSLog("Logout Failure: " + String(error))
   }
@@ -133,7 +133,7 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 
 ### Sample usage
 
-* Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
     * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.

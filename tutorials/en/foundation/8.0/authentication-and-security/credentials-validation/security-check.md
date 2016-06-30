@@ -2,7 +2,7 @@
 layout: tutorial
 title: Implementing the CredentialsValidationSecurityCheck
 breadcrumb_title: Security Check
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
   - name: Download Security Checks

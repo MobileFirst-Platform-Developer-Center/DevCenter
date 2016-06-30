@@ -1,14 +1,14 @@
 ---
 layout: tutorial
 title: JavaScript HTTP Adapter
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 1
 ---
 ## Overview
-By using IBM MobileFirst Platform Foundation HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
+By using IBM MobileFirst Foundation HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
 
 You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary. The retrieved data can be in XML, HTML, JSON, or plain text format.
 
@@ -25,7 +25,7 @@ To edit the adapter XML file, you must:
 * Set the HTTP domain to the domain part of HTTP URL.  
 * Set the TCP Port.  
 
-Declare the required procedures below the connectivity element:
+Declare the required procedures below the `connectivity` element:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -49,7 +49,6 @@ Declare the required procedures below the connectivity element:
 
 	<procedure name="getFeed"/>
 	<procedure name="getFeedFiltered"/>
-
 </mfp:adapter>
 ```
 
@@ -232,5 +231,5 @@ var weatherInfo = {
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/) the Adapters Maven project.
 
 ### Sample usage
-* Use either Maven or MobileFirst CLI to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.

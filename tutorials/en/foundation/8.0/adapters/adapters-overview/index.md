@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Adapters Overview
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 ## Overview

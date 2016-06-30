@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Logging in Java Adapters
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 ---
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in a Java adapter.
