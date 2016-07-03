@@ -14,6 +14,7 @@ author:
 ---
 Apple announced iOS 10 mid-June during their annual WWDC conference. This release of iOS includes many new user and developer oriented features. You can read more about all the new features in iOS 10 [in this news bulletin](http://www.apple.com/newsroom/2016/06/apple-previews-ios-10-biggest-ios-release-ever.html).
 
+We encourage you to start testing your application(s) with iOS 10.  
 Please see [our support plan for iOS 10]({{site.baseurl}}/blog/2016/06/05/support-plan-for-ios-10/).
 
 ### iOS 10 beta 1
