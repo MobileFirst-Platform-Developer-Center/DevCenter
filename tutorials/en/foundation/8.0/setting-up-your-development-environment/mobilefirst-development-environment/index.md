@@ -25,7 +25,7 @@ Continue reading to learn more about the components of MobileFirst Foundation.
 ## Installation guide
 [Read the installation guide](installation-guide) to quickly setup MobileFirst Foundation in your workstation.
 
-## MobileFirst Foundation Developer Kit
+## MobileFirst Foundation Development Kit
 The Developer Kit provides a ready-for-development environment with minimal configuration needed. The kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), as well as optionally provides client SDKs and adapter tooling for download.
 
 ### Developer Kit Installer
