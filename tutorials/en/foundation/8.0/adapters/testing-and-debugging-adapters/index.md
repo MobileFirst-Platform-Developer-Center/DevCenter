@@ -6,9 +6,9 @@ weight: 6
 ---
 ## Overview
 
-You can test Java and JavaScript adapters as well as debug Java code implemented for use in Java or JavaScript adapters via IDEs such as Eclipse, IntelliJ and alike.  
+You can uqe IDEs, such as Eclipse, IntelliJ, or similar environments, to test Java and JavaScript adapters, and debug Java code  that is implemented for use in Java or JavaScript adapters.  
 
-This tutorial demonstrates how to test adapters using the MobileFirst CLI and using Postman and also how to debug a Java adapter using the Eclipse IDE.
+This tutorial demonstrates how to test adapters by using the MobileFirst CLI and by using Postman, and also how to debug a Java adapter by using the Eclipse IDE.
 
 #### Jump to:
 
@@ -29,19 +29,19 @@ The structure of the URL used to access the adapter resource is:
 
 ### Passing parameters
 
-* When using Java adapters, parameters can be passed in the URL, body, form, etc, depending on how you configured your adapter.
-* When using JavaScript adapters, parameters are passed as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be **an array of ordered, unnamed values**. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
+* When using Java adapters, you can pass parameters in the URL, body, form, etc, depending on how you configured your adapter.
+* When using JavaScript adapters, you pass parameters as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be **an array of ordered, unnamed values**. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
 
 ### Handling security
 The MobileFirst security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope. So unless you specifically disabled security, the endpoint is always protected.
 
-To disable security in Java adapters you should attach the `OAuthSecurity` annotation to the method/class:
+To disable security in Java adapters, attach the `OAuthSecurity` annotation to the method/class:
 
 ```java
 @OAuthSecurity(enabled=false)
 ```
 
-To disable security in JavaScript adapters you should add the `secured` attribute to the procedure:
+To disable security in JavaScript adapters, add the `secured` attribute to the procedure:
 
 ```js
 <procedure name="adapter-procedure-name" secured="false"/>
