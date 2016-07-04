@@ -426,13 +426,13 @@ Once a Schmea has been defined, the system administrator can export and import i
 #### Get schema
 
 ```bash 
-curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.LiveUpdateDemo/schema > curl.get.txt
+curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema > curl.get.txt
 ```
 
 #### Post schema
 
 ```bash
-curl -X PUT -d @curl.get.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.LiveUpdateDemo/schema > --header "Content-Type:application/json"
+curl -X PUT -d @curl.get.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema > --header "Content-Type:application/json"
 ```
 
 * Replace "admin:admin" with your own (default is "admin")
