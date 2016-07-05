@@ -62,7 +62,7 @@ Objective-C
 Swift
 
 ```swift
-request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+request.sendWithCompletionHandler { (response, error) -> Void in
     if(error == nil){
         NSLog(response.responseText)
     }
@@ -204,7 +204,7 @@ The adapter Maven project contains the Java adapter used during the resource req
 
 ### Sample usage
 1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../../adapters/creating-adapters/).
+2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the adapter](../../../adapters/creating-adapters/).
 3. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
 4. Import the project to Xcode, and run the sample by clicking the **Run** button.
 

@@ -18,7 +18,7 @@ The MobileFirst Java Adapter is a simple and secure extension point on the Mobil
 Most often there is a subset of backend data or function that needs to be quickly and securely exposed as public services that can then be exploited by mobile applications.  The MobileFirst platform proposes the following approach to achieve this goal and also provides tools to accelerate the integration via this approach.
 
 ### Define ReST APIs for the backend data / function using Open API Specs
-For the backend data or function that you want to integrate with design ReST APIs which you could then describe using the [Open API Specification (fka Swagger Specifications)](https://github.com/OAI/OpenAPI-Specification) standard.  You may choose either YAML or JSON as the notation to describe the APIs.  You could use the online [Swagger Editor](editor.swagger.io) as a convenience tool to compose you API definitions according to the Open API specs.
+For the backend data or function that you want to integrate with design ReST APIs which you could then describe using the [Open API Specification (fka Swagger Specifications)](https://github.com/OAI/OpenAPI-Specification) standard.  You may choose either YAML or JSON as the notation to describe the APIs.  You could use the online [Swagger Editor](http://editor.swagger.io) as a convenience tool to compose you API definitions according to the Open API specs.
 
 Designing and describing the ReST APIs lays the foundation to opening up your backend data / functions for use by your mobile applications.  The next steps will be implementing these ReST APIs to connect to your backend data / functions and then hosting the APIs as a service that can be exploited by your mobile applications.
 
@@ -53,9 +53,9 @@ Here is how we go about this step-by-step to achieve this  :-
       </configuration>
       <dependencies>
           <dependency>
-          	<groupId>com.ibm.mfp</groupId>
+          	<groupId>com.github.mfpdev</groupId>
           	<artifactId>mfp-adapters-swagger-codegen</artifactId>
-          	<version>1.0-SNAPSHOT</version>
+          	<version>1.0.0</version>
       	</dependency>
       </dependencies>
       <executions>
@@ -129,7 +129,7 @@ If you lookup the outbput directory that you had configured in the maven swagger
     public class CustomersApiServiceFactoryFinder {
 
       public static CustomersApiServiceFactoryIfc findFactoryImpl() throws ServiceFactoryFinderException {
-        String svcFactoryClassname = "com.swaggercodegen.samples.factory.customer.api.CustomerFactoryImpl";
+        String svcFactoryClassname = "com.github.mfpdev.samples.swaggercodegen.factory.customer.api.CustomerFactoryImpl";
 
         if ( svcFactoryClassname != null && svcFactoryClassname.length() > 0 ) {
           try {
@@ -145,7 +145,7 @@ If you lookup the outbput directory that you had configured in the maven swagger
    
     ```  
 
-    Here is the complete generated sample service factory interface and implementation - [CusomterServiceFactory](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/samples/factory-customer-adapter/src/main/java/com/swaggercodegen/samples/factory/customer/api/CustomerFactoryImpl.java)
+    Here is the complete generated sample service factory interface and implementation - [CusomterServiceFactory](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/samples/factory-customer-adapter/src/main/java/com/github/mfpdev/samples/swaggercodegen/factory/customer/api/CustomerFactoryImpl.java)
 
 *   If you had set _autowiredSpringService_ property in the codegen configuration json to true then you will observe that the generated code adds a 'spring autowire' annotation for the service instance varibale in the JAXRS resource.  You must now provide a Spring bean implementation for the generated service interface.  
   

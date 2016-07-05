@@ -6,7 +6,7 @@ relevantTo: [ios,android,cordova]
 weight: 1
 ---
 ## Overview
-IBM MobileFirst Platform Foundation provides a unified set of API methods to send notifications to iOS, Android and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
+IBM MobileFirst Foundation provides a unified set of API methods to send notifications to iOS, Android and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
 
 #### Jump to:
 * [What is a Push Notification](#what-is-a-push-notification)
@@ -27,7 +27,7 @@ Notifications are received regardless of whether the application is currently ru
 * **Silent (iOS 8 and above)** - sending notifications without distrubing the user
 
 ### Device support
-Push notifications are supported for the following platforms in MobileFirst Platform Foundation:
+Push notifications are supported for the following platforms in MobileFirst Foundation:
 
 * iOS 8.x, 9.x
 * Android 4.x, 5.x, 6.x

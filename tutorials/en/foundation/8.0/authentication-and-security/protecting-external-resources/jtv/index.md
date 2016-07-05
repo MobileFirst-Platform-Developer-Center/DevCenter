@@ -2,14 +2,14 @@
 layout: tutorial
 title: Java Token Validator
 breadcrumb_title: Java Token Validator
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
   - name: Download sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 ## Overview
-MobileFirst Platform Foundation provides a Java library to enforce security capabilities on external resources.  
+MobileFirst Foundation provides a Java library to enforce security capabilities on external resources.  
 The Java library is provided as a .jar file (**mfp-java-token-validator-8.0.0.jar**).
 
 This tutorial will show how to protect a simple Java Servlet, `GetBalance`, using a scope (`accessRestricted`).
@@ -17,7 +17,7 @@ This tutorial will show how to protect a simple Java Servlet, `GetBalance`, usin
 **Prerequesites:**
 
 * Make sure to read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* Understanding of the [MobileFirst Platform Foundation security framework](../../).
+* Understanding of the [MobileFirst Foundation security framework](../../).
 
 ![Flow](JTV_flow.jpg)
 
@@ -31,14 +31,6 @@ The **mfp-java-token-validator-8.0.0.jar** is available as a **maven dependency*
   <version>8.0.0</version>
 </dependency>
 ```
-
-If Internet connectivity is not available while developing, prepare to work offline:
-
-1. Make sure you have first installed Apache Maven.
-2. Download the [MobileFirst Platform Foundation Development Kit Installer]({{site.baseurl}}/downloads/).
-3. Start the MobileFirst Server and load the MobileFirst Operations Console.
-4. Click on **Get Starter Code → Tools tab** and download &amp; extract the **mfp-maven-central-artifacts-filter.zip** file from the Adapter tooling section.
-5. Add the filters to the local Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
 
 ## Instantiating the TokenValidationManager
 To be able to validate tokens, instantiate `TokenValidationManager`.

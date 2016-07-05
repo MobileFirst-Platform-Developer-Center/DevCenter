@@ -1,6 +1,6 @@
 ---
 title: IBM MobileFirst Studio 8.0 Plug-in for Eclipse Now Available
-date: 2016-06-03
+date: 2016-06-17
 tags:
 - MobileFirst_Platform
 - Cordova
@@ -57,3 +57,11 @@ To access MobileFirst Foundation's shortcuts, right-click the root project direc
 
 ### Detailed instructions
 Learn more in the [Using the MobileFirst CLI in Eclipse]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/) tutorial.
+
+### Demo Video
+
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/yRe2AprnUeg"></iframe>
+    </div>
+</div>

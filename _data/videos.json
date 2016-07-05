@@ -1,4 +1,10 @@
 [{
+"caption": "Setting-up Eclipse for Cordova developing in MobileFirst Foundation 8.0",
+"url": "//www.youtube.com/watch?v=yRe2AprnUeg",
+"thumbnail": "//img.youtube.com/vi/yRe2AprnUeg/hqdefault.jpg",
+"tags": ["Integration", "CLI", "Development","THyM", "Eclipse"],
+"version": ["8.0"] 
+},{
     "caption": "Getting Started with Ionic and MobileFirst Platform Foundation 8.0",
     "url": "//www.youtube.com/watch?v=DlxZYxXszIw",
     "thumbnail": "//img.youtube.com/vi/DlxZYxXszIw/hqdefault.jpg",

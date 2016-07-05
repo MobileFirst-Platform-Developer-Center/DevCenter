@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Testing and Debugging Adapters
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
 ## Overview
@@ -214,6 +214,7 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
     - Click **Run** → **Debug Configurations**.
     - Double-click on **Remote Java application**.
     - Provide a **Name** for this configuration.
+    - Set the **Host** value: use "localhost" if running a local server, or provide your remote server host name.
     - Set the **Port** value to "10777".
     - Click **Browse** and select the Maven project.
     - Click **Debug**.

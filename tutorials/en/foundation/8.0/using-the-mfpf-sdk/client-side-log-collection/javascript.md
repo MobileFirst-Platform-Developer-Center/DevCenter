@@ -1,11 +1,11 @@
 ---
 layout: tutorial
-title: Logging in JavaScript (Cordova) Applications
-relevantTo: [cordova]
+title: Logging in JavaScript (Cordova, Web) Applications
+relevantTo: [javascript]
 weight: 1
 ---
 ## Overview
-This tutorial provides the required code snippets in order to add logging capabilities in Cordova applications.
+This tutorial provides the required code snippets in order to add logging capabilities in JavaScript (Cordova, Web) applications.
 
 **Prerequisite:** Make sure to read the [overview of client-side log collection](../).
 

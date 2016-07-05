@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Integrating with Cloudant Using an Adapter
-relevantTo: [cordova]
+relevantTo: [javascript]
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
@@ -137,7 +137,7 @@ It also contains a Cordova application that works with both the Java and JavaScr
   3. Use either Maven or MobileFirst CLI to [build and deploy the CloudantJS adapter](../creating-adapters/).
 
  * CloudantJava:
-  1. Use either Maven or MobileFirst CLI to [build and deploy the CloudantJava adapter](../creating-adapters/).
+  1. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the CloudantJava adapter](../creating-adapters/).
   2. In the **MobileFirst Operations Console → [your adapter] → Configurations tab**, fill in the **Cloudant DB name**, **Cloudant account**, **Cloudant key** and **Cloudant account** fields with the actual values.
 
   > To learn more about the adapter's configurations properties see the [Java Adapters](../java-adapters) tutorial.

@@ -115,7 +115,7 @@ In case of request failure, the response object also contains a `error` property
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
-<img alt="Image of the sample application" src="resource-request-success-Win8-10.PNG" style="float:right"/>
+<img alt="Image of the sample application" src="resource-request-success-win8-10.png" style="float:right"/>
 ## Sample application
 The ResourceRequestWin8 and ResourceRequestWin10 projects contain a native Windows 8 Universal/Windows 10 UWP application that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
@@ -126,6 +126,6 @@ The adapter Maven project contains the Java adapter used during the resource req
 
 ### Sample usage
 1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
-2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven or MobileFirst CLI to [build and deploy the adapter](../../../adapters/creating-adapters/).
+2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the adapter](../../../adapters/creating-adapters/).
 3. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
 4. import the project to Visual Studio, and run the sample by clicking the **Run* button.

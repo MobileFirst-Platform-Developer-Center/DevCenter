@@ -5,18 +5,18 @@ relevantTo: [cordova]
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80
-weight: 3
+weight: 4
 ---
 ## Overview
-Before iOS and Android Cordova applications are able to receive and display push notifications, the the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
+Before iOS and Android Cordova applications are able to receive and display push notifications, the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
 
-> **Note:** In the beta release, authenticated notifications are **not supported** in Cordova applications.
+> **Note:** In the release, authenticated notifications are **not supported** in Cordova applications due to a defect. However a workaround is provided: each `MFPPush` API call can be wrapped by `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. The provided sample application uses this workround.
 
 **Prequisites:**
 
 * Make sure you have read the following tutorials:
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
-    * [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/cordova)
+    * [Adding the MobileFirst Foundation SDK to Android applications](../../adding-the-mfpf-sdk/cordova)
     * [Push Notifications Overview](../push-notifications-overview)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server
 * MobileFirst CLI installed on the developer workstation
@@ -31,7 +31,7 @@ Before iOS and Android Cordova applications are able to receive and display push
 ## Notifications Configuration
 Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android.
 
-> If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova) tutorial.
+> If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova) tutorial.
 
 ### Adding the Push plug-in
 
@@ -108,8 +108,11 @@ MFPPush.isPushSupported (
 #### Register device
 Register the device to the push notifications service.
 
+
 ```javascript
+var options = { };
 MFPPush.registerDevice(
+    options,
     function(successResponse) {
         alert("Successfully registered");
     },
@@ -119,9 +122,7 @@ MFPPush.registerDevice(
 );
 ```
 
-> *Optional*. *iOS-only*. Before calling the above `registerDevice` API method, use the `setOptions(options)` API method to enable or disable various options, such as alerts, notification sound, badge and interactive notifications categories.  
->
-> Read more about the the `setOptions(options)` API method in the user documentation.
+> **Note:** Due to a defect, the `options` object for **Cordova-based Android** apps must currently contain an empty value as follows: `"phoneNumber":""`. Read more about the the `available options in the user documentation.
 
 #### Get tags
 Retrieve all the available tags from the push notification service.
@@ -228,3 +229,8 @@ var notificationReceived = function(message) {
 
 * Tag notification
     * Use the **MobileFirst Operations Console → [your application] → Push → Send Push tab**.
+* Authenticated notification:
+    * Deploy the [**UserLogin** Security Check](../../authentication-and-security/user-authentication/security-check).
+    * In **MobileFirst Operations Console → [your application] → Security tab**, map the **push.mobileclient** scope to the **UserLogin** Security Check.
+    * Use either the [REST APIs](../sending-push-notifications#rest-apis) to send the notification, or send to a userId from the Push section in the MobileFirst Operations Console.
+

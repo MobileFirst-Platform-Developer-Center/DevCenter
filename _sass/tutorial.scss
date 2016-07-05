@@ -191,6 +191,9 @@ $color_wild_sand_approx: #f5f5f5;
 					&.windowsphone10 {
 						background-image: url(../assets/personas/windowsphone10.png);
 					}
+					&.javascript {
+						background-image: url(../assets/personas/javascript.png);
+					}
 				}
 			}
 		}
@@ -221,22 +224,23 @@ $color_wild_sand_approx: #f5f5f5;
 		}
 		.boxBtn {
 		    display: inline-block;
-		    height: 100px;
-		    width: 168px;
+		    height: 120px;
+		    width: 170px;
 		    background-color: #f5f5f5;
-		    border-bottom: 35px solid #264a60;
+		    border-bottom: 35px solid #325c80;
 		    margin-right: 10px;
+			margin-bottom: 14px;
 		}
 		.boxBtn:hover {
 			border-bottom: 35px solid #1d3649;
 		}
 		.boxPlatform {
-		    line-height: 57px;
+		    line-height: 49px;
 		    color:white;
 		}
 		.boxBtn img {
-			margin: 7px 0 0 61px;
-			height: 47px;
+			margin: 7px 0 0 52px;
+			height: 72px;
 		}
 	}
 	.tutorial-center-div {

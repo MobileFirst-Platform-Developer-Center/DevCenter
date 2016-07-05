@@ -2,7 +2,7 @@
 layout: tutorial
 title: Creating a Security Check
 breadcrumb_title: Creating a security check
-relevantTo: [android,ios,windows,cordova]
+relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
 ## Overview
@@ -151,4 +151,4 @@ Remember to deploy your adapter when you're done developing or making changes.
 
 * [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/).
 * [Implementing the UserAuthenticationSecurityCheck](../user-authentication/).
-* Learn about additional MobileFirst Platform Foundation [authentication and security features](../).
+* Learn about additional MobileFirst Foundation [authentication and security features](../).
