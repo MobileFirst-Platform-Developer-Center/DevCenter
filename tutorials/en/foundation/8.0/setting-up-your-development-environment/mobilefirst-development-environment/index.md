@@ -6,16 +6,18 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 ## Overview
-The various IBM MobileFirst Foundation components are available in online repositories which provide the latest release of each component. They are also available in bundled form in the MobileFirst Foundation Development Kit for local use.
+IBM MobileFirst Foundation is made up of several components: the client SDKs, adapter archetypes, security checks, and authentication tools.
+
+These components are available from online repositories and can be installed using package managers. These online repositories provide the latest release of each component. The same component is also available to download from the MobileFirst Foundation Developer Kit for local use. Note that the version that is available from the Developer Kit represents the version that was available at the time the specific Developer Kit build was released, and that downloading a new Developer Kit build will be required in order to use the latest. 
 
 Continue reading to learn more about the components of MobileFirst Foundation.
 
-> To evalute MobileFirst Foundation all that you need to do is to spin an instance of MobileFirst Server on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../ibm-containers/using-mobile-foundation/) tutorial for instructions.
+> To evalute MobileFirst Foundation all that is needed is to spin an instance of MobileFirst Server on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../ibm-containers/using-mobile-foundation/) tutorial for instructions. You may also choose to install the Developer Kit for a local installation.
 
 #### Jump to:
 
 * [Installation guide](#installation-guide)
-* [MobileFirst Foundation Development Kit](#mobilefirst-foundation-development-kit)
+* [MobileFirst Foundation Developer Kit](#mobilefirst-foundation-development-kit)
 * [MobileFirst Foundation components](#mobilefirst-foundation-components)
 * [Applications and Adapters development](#applications-and-adapters-development)
 * [Tutorials to follow next](#tutorials-to-follow-next)
@@ -24,9 +26,9 @@ Continue reading to learn more about the components of MobileFirst Foundation.
 [Read the installation guide](installation-guide) to quickly setup MobileFirst Foundation in your workstation.
 
 ## MobileFirst Foundation Development Kit
-The Development Kit provides a ready-for-development environment with minimal configuration needed. The kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), MobileFirst client SDKs and MobileFirst adapter tooling.
+The Developer Kit provides a ready-for-development environment with minimal configuration needed. The kit consists of the following components: MobileFirst Server &amp; MobileFirst Operations Console, MobileFirst Developer Command-line Interface (CLI), as well as optionally provides client SDKs and adapter tooling for download.
 
-### Development Kit Installer
+### Developer Kit Installer
 The Installer packages the components for local installation where Internet connectivity is not available.  
 The components are available through the MobileFirst Operations Console's Download Center.
 
@@ -35,9 +37,9 @@ The components are available through the MobileFirst Operations Console's Downlo
 ## MobileFirst Foundation components
 
 ### MobileFirst Server
-As part of the Development Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
+As part of the Developer Kit, the MobileFirst Server is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
 
-In the Development Kit's root directory, the following scripts are available:
+In the Developer Kit's root directory, the following scripts are available:
 
 * `run.[sh|cmd]`: Run the MobileFirst Server with trailing Liberty Server messages
     * Add the `-bg` flag to run the process in the background
@@ -59,7 +61,7 @@ The MobileFirst Server can be integrated into the Eclipse IDE.
 You can now start and stop the MobileFirst Server from the Eclipse IDE "servers" view.
 
 ### MobileFirst Operations Console
-The MobileFirst Server's Operations Console exposes the following functionalities.  
+The MobileFirst Operations Console exposes the following functionalities.  
 A developer can:
 
 - Register and deploy applications and adapters
@@ -92,7 +94,7 @@ MobileFirst Foundation provides client SDKs for Cordova applications as well as 
 * To develop security checks, visit the [Authentication and security](../../authentication-and-security/) tutorials category.  
 
 #### Manual installation
-To use the client SDKs and adapter tooling that are provided as part of the Devlopment Kit Installer instead of the online repositories, [visit the user  documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) for setup instructions.
+To use the client SDKs and adapter tooling that are provided as part of the Developer Kit Installer instead of the online repositories, [visit the user  documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html) for setup instructions.
 
 ## Applications and adapters development
 
