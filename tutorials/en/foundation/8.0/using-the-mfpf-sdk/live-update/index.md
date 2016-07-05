@@ -499,5 +499,9 @@ In the sample application you select a country flag and using Live Update the ap
 
     Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
 
-4. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
-5. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
+4. In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs to **FR**.
+  * Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
+  * To see the map while using the app, you need to enable to `includeMap` feature.
+
+5. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
+6. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
