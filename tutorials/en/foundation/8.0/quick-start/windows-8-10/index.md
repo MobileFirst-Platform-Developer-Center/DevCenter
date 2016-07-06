@@ -100,9 +100,11 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
 <img src="windowsQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
-1. In Visual Studio, select the **mfpclient.resw** file and edit the **host** property with the IP address of the MobileFirst Server.
+1. In Visual Studio, select the **mfpclient.resw** file and edit the **protocol**, **host** and **port** properties with the correct values for your MobileFirst Server.
+    * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
+    * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
 
-    Alternatively, if you have installed the MobileFirst CLI then navigate to the project root folder and run the command `mfpdev app register`. If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
 
 2. Press the **Run App** button.
 
