@@ -127,7 +127,7 @@ Expand the endpoint's operation, enter the required parameters (if needed) and c
   ![Adapter request using Swagger with the test token](SwaggerReq.png)
 
 #### Swagger Annotations
-Available only in Java adapters. 
+Available only in Java adapters.
 
 To generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
 > To learn more about Swagger Annotations, see the [Swagger documentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
