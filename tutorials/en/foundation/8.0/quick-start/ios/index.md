@@ -8,8 +8,8 @@ weight: 2
 ## Overview
 The purpose of this demonstration is to experience an end-to-end flow:
 
-1. A scaffold application - an application that is pre-bundled with the MobileFirst client SDK, is registered and downloaded from the MobileFirst Operations Console.
-2. An new or provided adapter is deployed to the MobileFirst Operations Console.  
+1. A sample application that is pre-bundled with the MobileFirst client SDK is registered and downloaded from the MobileFirst Operations Console.
+2. A new or provided adapter is deployed to the MobileFirst Operations Console.  
 3. The application logic is changed to make a resource request.
 
 **End result**:
@@ -24,10 +24,8 @@ The purpose of this demonstration is to experience an end-to-end flow:
 * *Optional*. Stand-alone MobileFirst Server ([download]({{site.baseurl}}/downloads))
 
 ### 1. Starting the MobileFirst Server
-
-> If a remote server was already set-up, skip this step.
-
-From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
+Make sure you have [created a Mobile Foundation instance](../../ibm-containers/using-mobile-foundation), or  
+If using the [MobileFirst Foundation Development Kit](../../setting-up-your-development-environment/mobilefirst-development-environment), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
 
 ### 2. Creating an application
 
@@ -41,7 +39,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     
     <img class="gifplayer" alt="Register an application" src="register-an-application-ios.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the iOS Objective-C or iOS Swift application scaffold.
+2. Click on the **Get Starter Code** tile and select to download the iOS Objective-C or iOS Swift sample application.
 
     <img class="gifplayer" alt="Download sample application" src="download-starter-code-ios.png"/>
     
@@ -54,49 +52,71 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     In Objective-C:
 
     ```objc
-    - (void)testServerConnection {
-        _connectionStatusText.text = @"Connecting to Server...";
-        [[WLAuthorizationManager sharedInstance] obtainAccessTokenForScope: @"" withCompletionHandler:^(AccessToken *accessToken, NSError *error) {        
-            if (error != nil){            
-                NSLog(@"Failure: %@",error.description);
-                _connectionStatusText.text = @"Client Failed to connect to Server";
-            }
-            else if (accessToken != nil){            
-                NSLog(@"Success: %@",accessToken.value);
-                _connectionStatusText.text = @"Client has connected to Server";
-                NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/users/world"];
-                WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
-                [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
-                    if (error != nil){
-                        NSLog(@"Failure: %@",error.description);
-                    }
-                    else if (response != nil){
-                       // Will print "Hello world" in the Xcode Console.
-                       NSLog(@"Success: %@",response.responseText);
-                    }
-                }];
-            }        
-        }];    
-    }
+    - (IBAction)getAccessToken:(id)sender {
+    _testServerButton.enabled = NO;
+    NSURL *serverURL = [[WLClient sharedInstance] serverUrl];
+    _connectionStatusLabel.text = [NSString stringWithFormat:@"Connecting to server...\n%@", serverURL];
+    
+    
+    NSLog(@"Testing Server Connection");
+    [[WLAuthorizationManager sharedInstance] obtainAccessTokenForScope:@""
+                                                 withCompletionHandler:^(AccessToken *token, NSError *error) {
+        if (error != nil) {
+            _titleLabel.text = @"Bummer...";
+            _connectionStatusLabel.text = [NSString stringWithFormat:@"Failed to connect to MobileFirst Server\n%@", serverURL];
+            NSLog(@"Did not receive an access token from server: %@", error.description);
+        } else {
+            _titleLabel.text = @"Yay!";
+            _connectionStatusLabel.text = [NSString stringWithFormat:@"Connected to MobileFirst Server\n%@", serverURL];
+            NSLog(@"Received the following access token value: %@", token.value);
+            
+            NSURL* url = [NSURL URLWithString:@"/adapters/javaAdapter/resource/greet/"];
+            WLResourceRequest* request = [WLResourceRequest requestWithURL:url method:WLHttpMethodGet];
+            
+            [request setQueryParameterValue:@"world" forName:@"name"];
+            [request sendWithCompletionHandler:^(WLResponse *response, NSError *error) {
+                if (error != nil){
+                    NSLog(@"Failure: %@",error.description);
+                }
+                else if (response != nil){
+                    // Will print "Hello world" in the Xcode Console.
+                    NSLog(@"Success: %@",response.responseText);
+                }
+            }];
+        }
+
+        _testServerButton.enabled = YES;
+    }];
+}
+
     ```
     
     In Swift:
     
     ```swift
     @IBAction func getAccessToken(sender: AnyObject) {
-        connectionStatusWindow.text = "Connecting to Server...";
+        self.testServerButton.enabled = false
+        
+        let serverURL = WLClient.sharedInstance().serverUrl()
+        
+        connectionStatusLabel.text = "Connecting to server...\n\(serverURL)"
         print("Testing Server Connection")
         WLAuthorizationManager.sharedInstance().obtainAccessTokenForScope(nil) { (token, error) -> Void in
+            
             if (error != nil) {
-               self.connectionStatusWindow.text = "Client Failed to connect to Server"
-               print("Did not Recieved an Access Token from Server: " + error.description)
+                self.titleLabel.text = "Bummer..."
+                self.connectionStatusLabel.text = "Failed to connect to MobileFirst Server\n\(serverURL)"
+                print("Did not recieve an access token from server: " + error.description)
             } else {
-                self.connectionStatusWindow.text = "Client has connected to Server"
-                print("Recieved the Following Access Token value: " + token.value)
-                let url = NSURL(string: "/adapters/javaAdapter/users/world")
+                self.titleLabel.text = "Yay!"
+                self.connectionStatusLabel.text = "Connected to MobileFirst Server\n\(serverURL)"
+                print("Recieved the following access token value: " + token.value)
+                
+                let url = NSURL(string: "/adapters/javaAdapter/resource/greet/")
                 let request = WLResourceRequest(URL: url, method: WLHttpMethodGet)
-               
-                request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+                
+                request.setQueryParameterValue("world", forName: "name")
+                request.sendWithCompletionHandler { (response, error) -> Void in
                     if (error != nil){
                         NSLog("Failure: " + error.description)
                     }
@@ -105,11 +125,13 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
                     }
                 }
             }
+            
+            self.testServerButton.enabled = true
         }
     }
     ```
 
-### 4. Creating an adapter
+### 4. Deploy an adapter
 Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action.
 
 Alternatively, click the **New** button next to **Adapters**.  
@@ -124,16 +146,16 @@ Alternatively, click the **New** button next to **Adapters**.
     mfpdev adapter build
     ```
 
-3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. When the build finishes, deploy it from the MobileFirst Operations Console using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder. 
 
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    
+    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
 
 <img src="iosQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
 1. In Xcode, select the **mfpclient.plist** file and edit the **host** property with the IP address of the MobileFirst Server.
 
-    Alternatively, if you have installed the MobileFirst Develper CLI then navigate to the project root folder and run the command `mfpdev app register`.  If a remote server is used instead of a local server, first use the command `mfpdev server add` to add it.
+     Alternatively, if you have installed the MobileFirst CLI then navigate to the project root folder and run the command `mfpdev app register`. If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
 2. Press the **Play** button.
 
@@ -149,7 +171,7 @@ The adapter response is then printed in the Xcode Console.
 ## Next steps
 Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the MobileFirst security framework and more:
 
-- Review the [Using the MobileFirst Platform Foundation](../../using-the-mfpf-sdk/) tutorials
+- Review the [Using the MobileFirst Foundation](../../using-the-mfpf-sdk/) tutorials
 - Review the [Adapters development](../../adapters/) tutorials
 - Review the [Authentication and security tutorials](../../authentication-and-security/)
 - Review the [Notifications tutorials](../../notifications/)

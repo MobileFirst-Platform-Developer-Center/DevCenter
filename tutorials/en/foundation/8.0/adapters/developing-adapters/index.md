@@ -1,13 +1,13 @@
 ---
 layout: tutorial
 title: Developing Adapters in Eclipse
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
 ## Overview
 As taught in previous [Adapters tutorials](../), MobileFirst Adapters are Maven projects that are created by using either Maven directly or via the MobileFirst CLI. The adapter code can then be edited in any IDE, and later built and deployed using either Maven or the MobileFirst CLI. A developer may also choose to create, develop, build and deploy all inside a supported IDEs, such as Eclipse or IntelliJ. In this tutorial a MobileFirst adapter is created and built from the Eclipse IDE.
 
-> For instructions how to use IntelliJ see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/04/01/using-intellij-to-develop-adapters) Blog Post.
+> For instructions how to use IntelliJ see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) Blog Post.
 
 **Prerequisite:**
 
@@ -40,13 +40,12 @@ Follow the bellow instructions to either create a new adapter Maven project or i
     - Click on **Add Archetype** and provide the following details:
         - **Archetype Group Id**: `com.ibm.mfp`
         - **Archetype Artifact Id**: either `adapter-maven-archetype-java`, `adapter-maven-archetype-http` or `adapter-maven-archetype-sql`
-        - **Archetype Version**: `8.0.0`
+        - **Archetype Version**: `8.0.2016061011` (you can find the latest available version in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation))
 
     ![Image showing how to create an adapter Maven project in Eclipse](create-an-archetype.png)
 
 4. Specify Maven project parameters.  
     - Specify required **Group Id**, **Artifact Id**, **Version** and **package** parameters, and click **Finish**.
-    - Change <code>${archetypeVersion}</code> to <code>8.0.0</code>.
 
     ![Image showing how to create an adapter Maven project in Eclipse](project-parameters.png)
 

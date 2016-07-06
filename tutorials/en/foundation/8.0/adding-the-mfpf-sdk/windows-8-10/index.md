@@ -1,13 +1,13 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications
+title: Adding the MobileFirst Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---
 ## Overview
 
-The MobileFirst Platform Foundation SDK consists of a collection of dependencies, available through [Nuget](https://www.nuget.org/), that you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
+The MobileFirst Foundation SDK consists of a collection of dependencies, available through [Nuget](https://www.nuget.org/), that you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
 
@@ -29,10 +29,10 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Nuge
 - [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Adding the MobileFirst Native SDK
-Follow the below instructions to manually add the MobileFirst Native SDK to either a new or existing Visual Studio project, and registering the application in the MobileFirst Server.
+Follow the below instructions to add the MobileFirst Native SDK to either a new or existing Visual Studio project, and registering the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh` in Mac and Linux or  `start.cmd` in Windows.
+If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.cmd`.
 
 ### Creating an application
 Create a Windows 8.1 Universal or Windows 10 UWP project using Visual Studio 2013/2015 or use an existing project.  
@@ -67,15 +67,14 @@ NuGet is the package manager for the Microsoft development platform including .N
     ```bash
     mfpdev app register
     ```
+    - If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by updating the **mfpclient.resw** file in the **strings** folder in the Visual Studio project, and adding to it the metadata that identifies the MobileFirst Server.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
 >
-> 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
-
-> 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-
+> 1. Load the MobileFirst Operations Console.  
+> 2. Click the "New" button next to "Applications" to register a new application and follow the on-screen instructions.  
 > 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.resw** file. Follow the onscreen instructions to add the file to your project.
 
 ## Updating the MobileFirst Native SDK

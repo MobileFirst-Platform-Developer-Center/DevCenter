@@ -4,6 +4,12 @@ date: 2015-08-19 05:38:49.000000000 +03:00
 tags:
 - MobileFirst_Platform
 - Slack
+version:
+- 6.2
+- 6.3
+- 7.0
+- 7.1
+- 8.0
 author:
   name: Idan Adar
 pinned: true
@@ -29,7 +35,7 @@ After registering, please do edit your profile to mention your real name (first 
 2. Check your inbox for an invite
 3. Continue with the onboarding process
 
-<p><iframe src="https://slackin.mybluemix.net/" style="overflow:hidden; height:230px; width:310px" scrolling="no" frameborder="0"></iframe></p>
+<p><iframe src="https://slackin.mybluemix.net/" style="overflow:hidden; height:410px; width:310px" scrolling="no" frameborder="0"></iframe></p>
 
 That's it.  
 See you there!

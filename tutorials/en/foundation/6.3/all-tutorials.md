@@ -4,7 +4,7 @@ title: All Tutorials
 show_disqus: false
 ---
 <br>
-Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
+Below are all available tutorials for IBM MobileFirst Platform Foundation 6.3
 
 ### <a href="../setting-up-your-development-environment/">Setting up your development environment</a>
 <p>Set up your development environment to work with IBM MobileFirst Platform Foundation.</p>
@@ -146,7 +146,7 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
 * <a href="../moving-production/reports-analytics/">Reports and analytics</a>
 * <a href="../moving-production/distributing-mobile-applications-application-center/">Distributing mobile applications with Application Center</a>
 
-### <a href="../starter-application-sample/">Starter Application samples</a>
+### <a href="../starter-application-samples/">Starter Application samples</a>
 
-* <a href="../starter-application-sample/">Starter Application sample application</a>
-* <a href="../starter-application-sample/running-dojo-based-sample">Dojo Showcase sample application</a>
+* <a href="../starter-application-samples/">Starter Application sample application</a>
+* <a href="../starter-application-samples/running-dojo-based-sample">Dojo Showcase sample application</a>

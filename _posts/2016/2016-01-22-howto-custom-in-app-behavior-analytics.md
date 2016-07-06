@@ -4,6 +4,9 @@ date: 2016-01-22
 tags:
 - MobileFirst_Platform
 - Analytics
+version:
+- 7.0
+- 7.1
 author:
   name: Yoel Nunez
 ---
@@ -17,8 +20,10 @@ For more information about custom analytics visit [IBM MobileFirst Platform Foun
 
 ## Video Demonstration
 
-<div class="sizer"><div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/knkNJIKv_Jk"></iframe>
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/knkNJIKv_Jk"></iframe>
+    </div>
 </div>
 
 ## Code Sample

@@ -6,6 +6,8 @@ tags:
 - IBM_Containers
 - Bluemix
 - DevOps
+version:
+- 7.1
 author:
   name: Srinivasan Nanduri
 ---
@@ -23,7 +25,7 @@ The steps involved are as follows:
 ## Before you begin
 
 * Sign up for a [Bluemix account](https://hub.jazz.net/)
-* Download the [IBM MobileFirst Platform Foundation Evaluation on Containers v7.1 zip](http://www14.software.ibm.com/cgi-bin/weblap/lap.pl?popup=Y&amp;li_formnum=L-BVID-9XEQG7&amp;accepted_url=http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mfpfcontainers/ibm-mfpf-container-7.1.0.0-eval.zip) to your machine
+* Download the [IBM MobileFirst Platform Foundation Evaluation on Containers v7.1 zip](http://www14.software.ibm.com/cgi-bin/weblap/lap.pl?popup=Y&li_formnum=L-BVID-9XEQG7&accepted_url=http://public.dhe.ibm.com/ibmdl/export/pub/software/products/en/MobileFirstPlatform/mfpfcontainers/ibm-mfpf-container-7.1.0.0-eval.zip ) to your machine
 * Install [git](http://git-scm.com/downloads) to configure, change, sync and test locally
 
 ## The MobileFirst Platform Foundation Server Container
@@ -38,7 +40,7 @@ This section discusses the steps involved in organizing, building, deploying and
 ### Creating a DevOps Services project
 * Login to IBM DevOps Services at [https://hub.jazz.net/](https://hub.jazz.net/)
 * Select **Create Project**, and specify the project name as *mfpf-server*
-* Select **Create a new repository**, and select the option **Create a Git repo on Bluemix****** 
+* Select **Create a new repository**, and select the option **Create a Git repo on Bluemix**
 * Check the **Private Project** and leave all the remaining options unchecked
 * Select **Create**
 
@@ -81,7 +83,7 @@ The GIT_URL will be of the form: https://hub.jazz.net/git//mfpf-server. The git 
 
 **Configuring the MobileFirst Server Databases**
 
-* Configuring the MobileFirst Administration Database**
+* Configuring the MobileFirst Administration Database
 
 Create a file named *wladmin.xml* with the following content (Fill the values with valid Cloudant database details) in the ***usr/config*** directory of your local repository
 
@@ -159,11 +161,14 @@ The pipeline automates the continuous deployment of MobileFirst Platform Foundat
 * Provide the Target, Organization and Space of your Bluemix account to which the container has to be deployed
 * Choose the deployment strategy (‘red_black’ if you want to re-route the IP address or route to the new container on successful deployment. ‘clean’ if you want to remove the older container before deploying the new container)
 * Provide the name of the container
-* Provide the ports 9080,9443 in the PORT field
+* Provide the port numbers:
+    - Provide 9080,9443 in the PORT field if you are deploying a stand alone container
+    - Provide 9080 in the PORT field if you are deploying a scalable container group
+* Optional deploy arguments:
+    - Mandatory for scalable container groups: Add the entry *--env MFPF\_CLUSTER\_MODE=Farm* in the Optional deploy arguments field
 * Deployer script
-
-* If you want the container to be run as a stand alone container, there are no changes required to the script
-* If you want the container to be run as a scalable group, comment out the line ‘/bin/bash deployscripts/deploycontainer.sh’ and uncomment the line ‘/bin/bash deployscripts/deploygroup.sh’
+    - If you want the container to be run as a stand alone container, there are no changes required to the script
+    - If you want the container to be run as a scalable group, comment out the line ‘/bin/bash deployscripts/deploycontainer.sh’ and uncomment the line ‘/bin/bash deployscripts/deploygroup.sh’
 * Set the environment properties by clicking on the **ENVIRONMENT PROPERTIES** (when no such properties are set, the default values for the properties are considered)
 * Refer within the comments section within the Deployer script for the properties applicable for stand alone container / scalable container group
 * Click on **SAVE**

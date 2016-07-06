@@ -2,9 +2,9 @@
 layout: tutorial
 title: Handling Push Notifications in iOS
 relevantTo: [ios]
-weight: 4
+weight: 5
 downloads:
-  - name: Download Native project
+  - name: Download Xcode project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 
 ---
@@ -15,8 +15,8 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 * Make sure you have read the following tutorials:
 	* [Push Notifications Overview](../push-notifications-overview)
-    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
-    * [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios)
+    * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment)
+    * [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
 
@@ -29,7 +29,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 ### Notifications Configuration
 Create a new Xcode project or use and existing one.  
-If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios) tutorial.
+If the MobileFirst Native iOS SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/ios) tutorial.
 
 
 ### Adding the Push SDK
@@ -37,9 +37,15 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
 1. Open the project's existing **podfile** and add the following lines:
 
     ```xml
-	pod 'IBMMobileFirstPlatformFoundationPush'
+    use_frameworks! 
+
+    platform :ios, 8.0
+    target "Xcode-project-target" do
+        pod 'IBMMobileFirstPlatformFoundation'
+        pod 'IBMMobileFirstPlatformFoundationPush'
+    end
     
-    post_install do |installer|
+	post_install do |installer|
         workDir = Dir.pwd
        
         installer.pods_project.targets.each do |target|
@@ -55,6 +61,7 @@ If the MobileFirst Native iOS SDK is not already present in the project, follow 
         end
     end 
 	```
+    - Replace **Xcode-project-target** with the name of your Xcode project's target.
 
 2. Save and close the **podfile**.
 3. From a **Command-line** window, navigate into to the project's root folder.
@@ -115,7 +122,7 @@ if isPushSupported {
 Register the device to the push notifications service.
 
 ```swift
-MFPPush.sharedInstance().registerDevice({(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error: NSError!) -> Void in
     if error == nil {
         // Successfully registered
     } else {
@@ -123,6 +130,8 @@ MFPPush.sharedInstance().registerDevice({(response: WLResponse!, error: NSError!
     }
 })
 ```
+
+**Notes:** `options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request.
 
 Sends the device token to the server to register the device with its unique identifier.
 

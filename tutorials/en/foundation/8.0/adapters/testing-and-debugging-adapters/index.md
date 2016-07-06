@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Testing and Debugging Adapters
-relevantTo: [ios,android,windows,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
 ## Overview
@@ -52,14 +52,21 @@ Alternatively, the development version of the MobileFirst Server includes a test
 ### Using Postman
 
 #### Test Token
+To receive a Test Token, either click the "Run in Postman" button below to import a Collection to your Postman app that contains a ready request, or follow the next steps to create the request yourself.
 
+<a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="margin: 0"></a>
+
+<<<<<<< HEAD
 To receive a Test Token:
+=======
+>>>>>>> refs/remotes/MFPSamples/master
 {% comment %}
 1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes, set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
 {% endcomment %}
+
 1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
 
 * `grant_type` : `client_credentials`
@@ -211,6 +218,7 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
     - Click **Run** → **Debug Configurations**.
     - Double-click on **Remote Java application**.
     - Provide a **Name** for this configuration.
+    - Set the **Host** value: use "localhost" if running a local server, or provide your remote server host name.
     - Set the **Port** value to "10777".
     - Click **Browse** and select the Maven project.
     - Click **Debug**.
@@ -221,4 +229,4 @@ If your Eclipse instance does not support Maven, [follow the m2e instructions](h
 
     ![Image showing a being-debugged adapter](debugging.png)
 
-> For instructions how to use IntelliJ to debug Java adapters see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/04/01/using-intellij-to-develop-adapters) Blog Post.
+> For instructions how to use IntelliJ to debug Java adapters see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) Blog Post.

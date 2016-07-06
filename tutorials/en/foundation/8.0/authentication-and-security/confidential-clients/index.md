@@ -1,19 +1,20 @@
 ---
 layout: tutorial
 title: Confidential Clients
-relevantTo: [android,ios,windows,cordova]
-weight: 5
+relevantTo: [android,ios,windows,javascript]
+weight: 8
 ---
 ## Overview
-When accessing a resource protected by the MobileFirst Platform framework, the MobileFirst Platform Foundation client SDK (for Cordova, iOS,  Android and Windows) provide the tools to handle the security features.
+When accessing a resource protected by the MobileFirst Platform framework, the MobileFirst Foundation client SDK (for Cordova, iOS,  Android and Windows) provide the tools to handle the security features.
 
 Clients that do not use the MobileFirst client SDK can also request protected resources, by acting as a **confidential client**.  
-For example, your backend server may need to request a protected resource, or use one of the MobileFirst Platform **REST APIs** such as **Push Notifications**.
+For example, your backend server may need to request a protected resource, or use one of the MobileFirst Foundation **REST APIs** such as **Push Notifications**.
 
 Registered confidential clients can obtain a token to be used in all requests to the MobileFirst Server. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification.
 
 ## Registering the confidential client
-In the MobileFirst Operations Console, under **Settings** → **Confidential Clients**, click on **Create New** to add a new entry.  You will need to provide the following:
+In the MobileFirst Operations Console, click on **Runtime Settings** in the sidebar navigation → **Confidential Clients**. Click on **New** to add a new entry.  
+You will need to provide the following:
 
 - **Display Name**: A friendly display name that describes the confidential client, such as **Backend Node server**.
 - **ID**: A unique identifier for the confidential client (can be considered as a "username").
@@ -42,10 +43,10 @@ The `test` client is only available in development mode. It allows you easily to
 - **Allowed Scope**: `*` (any scope)
 
 ### admin
-The `admin` client is used internally by the MobileFirst Platform administration service.
+The `admin` client is used internally by the MobileFirst Foundation administration service.
 
 ### push
-The `push` client is used internally by the MobileFirst Platform push service.
+The `push` client is used internally by the MobileFirst Foundation push service.
 
 ## Obtaining an access token
 A token can be obtained from MobileFirst Server's **token endpoint**.  

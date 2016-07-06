@@ -1,11 +1,11 @@
 ---
 layout: tutorial
 title: Advanced Adapter Usage and Mashup
-relevantTo: [hybrid]
+relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Cordova project
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
-weight: 7
+weight: 8
 ---
 ## Overview
 Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
@@ -30,7 +30,7 @@ The `invocationData` function signature is:
 
 For example:
 {% highlight javascript %}
-MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate], });
+MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate]});
 {% endhighlight %}
 
 > Calling a Java adapter from a JavaScript adapter is not supported
@@ -46,9 +46,9 @@ AdaptersAPI adaptersAPI;
 When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
 This call returns an `HttpResponse` object.
 {% highlight java %}
-HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
-org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
-JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response)
+HttpUriRequest req = new HttpGet(JavaAdapterProcedureURL);
+HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 {% endhighlight %}
 
 ### Calling a JavaScript adapter procedure from a Java adapter
@@ -60,68 +60,71 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 {% endhighlight %}
 
 ## Data mashup example
-The following example shows how to mash up data from 2 data sources, a database table and Yahoo! Weather Service, And to return the data stream to the application as a single object.
+The following example shows how to mash up data from 2 data sources, a *database table* and *Fixer.io (exchange rate and currency conversion service)*, And to return the data stream to the application as a single object.
 
 In this example we will use 2 adapters:
 
-* Cities Adapter:
-  * Extract a list of cities from a “weather” database table.
-  * The result contains the list of several cities around the world, their Yahoo! Weather identifier and some description.
-* Weather Adapter:
-  * Connect to the Yahoo! Weather Service.
-  * Extract an updated weather forecast for each of the cities that are retrieved via the Cities adapter.
+* SQL Adapter:
+  * Extract a list of currencies from a currencies database table.
+  * The result contains the list of currencies. Each currency will have an id, symbol and name. For example: {3, EUR, Euro}
+  * This adapter will also have a procedure that calls the HTTP adapter passing 2 parameters - a base currency and a target currency to retrieve the updated exchange-rate.
+* HTTP Adapter:
+  * Connect to the Fixer.io service.
+  * Extract an updated exchange-rate for the requested currencies that are retrieved as parameters via the SQL adapter.
 
 Afterward, the mashed-up data is returned to the application for display.
 
-![Adapter Mashup Diagram](AdapterMashupDiagram.jpg)
+![Adapter Mashup Diagram](AdaptersMashupDiagram.jpg)
 
 The provided sample in this tutorial demonstrates the implementation of this scenario using 3 different mashup types.  
 In each one of them the names of the adapters are slightly different.  
 Here is a list of the mashup types and the corresponding adapter names:
 
-| Scenario                                         |      Cities Adapter name     |  Weather Adapter name |  
+| Scenario                                         |      SQL Adapter name        |  HTTP Adapter name    |  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** adapter → **JavaScript** adapter | getCitiesListJS              | getCityWeatherJS      |  
-| **Java** adapter → **JavaScript** adapter       | getCitiesListJavaToJS        | getCityWeatherJS      |  
-| **Java** adapter → **Java** adapter             | getCitiesListJava            | getCityWeatherJava    |
-
+| **JavaScript** adapter → **JavaScript** adapter  | SQLAdapterJS                 | HTTPAdapterJS         |  
+| **Java** adapter → **JavaScript** adapter        | SQLAdapterJava               | HTTPAdapterJS         |  
+| **Java** adapter → **Java** adapter              | SQLAdapterJava               | HTTPAdapterJava       |
 
 
 ###Mashup Sample Flow
-**1. Create a procedure / adapter call that create a request to a back-end endpoint for each city and retrieves the corresponding data:**  
+**1. Create a procedure / adapter call that create a request to a back-end endpoint for the requested currencies and retrieves the corresponding data:**  
 
-(getCityWeatherJS adapter) XML:
+(HTTPAdapterJS adapter) XML:
 {% highlight xml %}
 <connectivity>
   <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
     <protocol>http</protocol>
-    <domain>mobilefirstplatform.ibmcloud.com</domain>
+    <domain>api.fixer.io</domain>
     <port>80</port>
     ...
   </connectionPolicy>
 </connectivity>
 {% endhighlight %}
 
-(getCityWeatherJS adapter) JavaScript:
+(HTTPAdapterJS adapter) JavaScript:
 {% highlight javascript %}
-function getYahooWeather(woeid) {
+function getExchangeRate(fromCurrencySymbol, toCurrencySymbol) {
+  var input = {
+    method: 'get',
+    returnedContentType: 'json',
+    path: getPath(fromCurrencySymbol, toCurrencySymbol)
+  };
 
-	var input = {
-	    method : 'get',
-	    returnedContentType : 'json',
-	    path : 'assets/samples/adapters-mashup/'+ woeid + '.json'
-	};
+  return MFP.Server.invokeHttp(input);
+}
 
-	return MFP.Server.invokeHttp(input);
+function getPath(from, to) {
+  return "/latest?base=" + from + "&symbols=" + to;
 }
 {% endhighlight %}
 
-(getCityWeatherJava adapter)
+(HTTPAdapterJava adapter)
 {% highlight java %}
 @GET
 @Produces("application/json")
-public Response get(@QueryParam("cityId") String cityId) throws IOException, IllegalStateException, SAXException {
-  String path = "/assets/samples/adapters-mashup/"+ cityId +".json";
+public Response get(@QueryParam("fromCurrency") String fromCurrency, @QueryParam("toCurrency") String toCurrency) throws IOException, IllegalStateException, SAXException {
+  String path = "/latest?base="+ fromCurrency +"&symbols="+ toCurrency;
   return execute(new HttpGet(path));
 }
 
@@ -140,100 +143,133 @@ private Response execute(HttpUriRequest req) throws IOException, IllegalStateExc
 }
 {% endhighlight %}  
 
-**2. Create an SQL query and fetch the cities records from the database:**
+**2. Create a procedure that fetches the currencies records from the database and returns a resultSet / JSONArray to the application:**
 
-(getCitiesListJS adapter)
+(SQLAdapterJS adapter)
 {% highlight javascript %}
-var getCitiesListStatement = MFP.Server.createSQLStatement("select city, identifier, summary from weather;");
-function getCitiesList() {
-	return MFP.Server.invokeSQLStatement({
-		preparedStatement : getCitiesListStatement,
-		parameters : []
-	});
+var getCurrenciesListStatement = "SELECT id, symbol, name FROM currencies;";
+
+function getCurrenciesList() {
+  var list = MFP.Server.invokeSQLStatement({
+    preparedStatement: getCurrenciesListStatement,
+    parameters: []
+  });
+  return list.resultSet;
 }
 {% endhighlight %}  
 
-(getCitiesListJava, getCitiesListJavaToJs adapters)
+(SQLAdapterJava adapter)
 {% highlight java %}
-PreparedStatement getAllCities = conn.prepareStatement("select city, identifier, summary from weather");
-ResultSet rs = getAllCities.executeQuery();
-{% endhighlight %}  
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+@Path("/getCurrenciesList")
+public JSONArray getCurrenciesList() throws SQLException, IOException {
+  JSONArray jsonArr = new JSONArray();
 
-**3. Loop through the cities records and fetch the weather info for each city from Yahoo! Weather Service:**
-
-(getCitiesListJS adapter)
-{% highlight javascript %}
-for (var i = 0; i < cityList.resultSet.length; i++) {
-	var yahooWeatherData = getCityWeather(cityList.resultSet[i].identifier);
-...
-
-function getCityWeather(woeid){
-	return MFP.Server.invokeProcedure({
-		adapter : 'getCityWeatherJS',
-		procedure : 'getYahooWeather',
-		parameters : [woeid]
-	});
-}
-{% endhighlight %}  
-
-(getCitiesListJava adapter)
-{% highlight java %}
-while (rs.next()) {
-  getWeatherInfoProcedureURL = "/getCityWeatherJava?cityId="+ URLEncoder.encode(rs.getString("identifier"), "UTF-8");
-	HttpUriRequest req = new HttpGet(getWeatherInfoProcedureURL);
-	HttpResponse response = adaptersAPI.executeAdapterRequest(req);
-	JSONObject jsonWeather = adaptersAPI.getResponseAsJSON(response);
-  ...
-}
-{% endhighlight %}  
-
-(getCitiesListJavaToJs adapter)
-{% highlight java %}
-while (rs.next()) {
-  // Calling a JavaScript HTTP adapter procedure
-	HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest("getCityWeatherJS", "getYahooWeather", URLEncoder.encode(rs.getString("identifier"), "UTF-8"));
-	org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
-	JSONObject jsonWeather = adaptersAPI.getResponseAsJSON(response);
-  ...
-}
-{% endhighlight %}  
-
-**4. Iterating through the retrieved rss feed to fetch only the weather description,   
-put this values in a resultSet / JSONArray object and return it to the application:**
-
-(getCitiesListJS adapter)
-{% highlight javascript %}
-...
-if (yahooWeatherData.isSuccessful)
-  cityList.resultSet[i].weather = yahooWeatherData.query.results.channel.item.description;
-else {
-  cityList.resultSet[i].weather = "Could not receive the weather..."
-}
-}
-return cityList;
-{% endhighlight %}  
-
-(getCitiesListJava, getCitiesListJavaToJs adapters)
-{% highlight java %}
-{
-    ...
-    JSONObject query = (JSONObject) jsonWeather.get("query");
-    JSONObject results = (JSONObject) query.get("results");
-    JSONObject channel = (JSONObject) results.get("channel");
-    JSONObject item = (JSONObject) channel.get("item");
-    String weatherSummary = (String) item.get("description");
-
+  Connection conn = getSQLConnection();
+  PreparedStatement getAllCities = conn.prepareStatement("select id, symbol, name from currencies");
+  ResultSet rs = getAllCities.executeQuery();
+  while (rs.next()) {
     JSONObject jsonObj = new JSONObject();
-    jsonObj.put("city", rs.getString("city"));
-    jsonObj.put("identifier", rs.getString("identifier"));
-    jsonObj.put("summary", rs.getString("summary"));
-    jsonObj.put("weather", weatherSummary);
+    jsonObj.put("id", rs.getString("id"));
+    jsonObj.put("symbol", rs.getString("symbol"));
+    jsonObj.put("name", rs.getString("name"));
 
     jsonArr.add(jsonObj);
+  }
+  rs.close();
+  conn.close();
+  return jsonArr;
 }
-rs.close();
-conn.close();
-return jsonArr.toString();
+{% endhighlight %}  
+
+**3. Create a procedure that calls the HTTPAdapter procedure (which we created in step 1) with the base-currency and the target-currency:**
+
+(SQLAdapterJS adapter)
+{% highlight javascript %}
+function getExchangeRate(fromId, toId) {
+  var base = getCurrencySymbol(fromId);
+  var exchangeTo = getCurrencySymbol(toId);
+  var ExchangeRate = null;
+
+  if (base == exchangeTo) {
+    ExchangeRate = 1;
+  } else {
+    var fixerExchangeRateJSON = MFP.Server.invokeProcedure({
+      adapter: 'HTTPAdapterJS',
+      procedure: 'getExchangeRate',
+      parameters: [base, exchangeTo]
+    });
+    ExchangeRate = fixerExchangeRateJSON.rates[exchangeTo];
+  }
+
+  return {
+    "base": base,
+    "target": exchangeTo,
+    "exchangeRate": ExchangeRate
+  };
+}
+{% endhighlight %}  
+
+(SQLAdapterJava adapter - mashup with another Java adapter)
+{% highlight java %}
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+@Path("/getExchangeRate_JavaToJava")
+public JSONObject getExchangeRate_JavaToJava(@QueryParam("fromCurrencyId") Integer fromCurrencyId, @QueryParam("toCurrencyId") Integer toCurrencyId) throws SQLException, IOException{
+  String base = getCurrencySymbol(fromCurrencyId);
+  String exchangeTo = getCurrencySymbol(toCurrencyId);
+  Double ExchangeRate = null;
+
+  if(base.equals(exchangeTo)){
+    ExchangeRate = 1.0;
+  }
+  else{
+    String getFixerIOInfoProcedureURL = "/HTTPAdapterJava?fromCurrency="+ URLEncoder.encode(base, "UTF-8") +"&toCurrency="+ URLEncoder.encode(exchangeTo, "UTF-8");
+    HttpUriRequest req = new HttpGet(getFixerIOInfoProcedureURL);
+    HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+    JSONObject jsonExchangeRate = adaptersAPI.getResponseAsJSON(response);
+    JSONObject rates = (JSONObject)jsonExchangeRate.get("rates");
+    ExchangeRate = (Double) rates.get(exchangeTo);
+  }
+
+  JSONObject jsonObj = new JSONObject();
+  jsonObj.put("base", base);
+  jsonObj.put("target", exchangeTo);
+  jsonObj.put("exchangeRate", ExchangeRate);
+
+  return jsonObj;
+}
+{% endhighlight %}  
+
+(SQLAdapterJava adapter - mashup with a JavaScript adapter)
+{% highlight java %}
+@GET
+@Produces(MediaType.APPLICATION_JSON)
+@Path("/getExchangeRate_JavaToJS")
+public JSONObject getExchangeRate_JavaToJS(@QueryParam("fromCurrencyId") Integer fromCurrencyId, @QueryParam("toCurrencyId") Integer toCurrencyId) throws SQLException, IOException{
+  String base = getCurrencySymbol(fromCurrencyId);
+  String exchangeTo = getCurrencySymbol(toCurrencyId);
+  Double ExchangeRate = null;
+
+  if(base.equals(exchangeTo)){
+    ExchangeRate = 1.0;
+  }
+  else{
+    HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest("HTTPAdapterJS", "getExchangeRate", URLEncoder.encode(base, "UTF-8"), URLEncoder.encode(exchangeTo, "UTF-8"));
+    org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
+    JSONObject jsonExchangeRate = adaptersAPI.getResponseAsJSON(response);
+    JSONObject rates = (JSONObject)jsonExchangeRate.get("rates");
+    ExchangeRate = (Double) rates.get(exchangeTo);
+  }
+
+  JSONObject jsonObj = new JSONObject();
+  jsonObj.put("base", base);
+  jsonObj.put("target", exchangeTo);
+  jsonObj.put("exchangeRate", ExchangeRate);
+
+  return jsonObj;
+}
 {% endhighlight %}  
 
 <img alt="sample application" src="AdaptersMashupSample.png" style="float:right"/>
@@ -244,13 +280,13 @@ return jsonArr.toString();
 
 ### Sample usage
 #### Adapter setup
-An example of city list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
+An example of currencies list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
 
 1. Run the .sql script in your SQL database.
-2. Use either Maven or MobileFirst CLI to [build and deploy the adapters](../../adapters/creating-adapters/).
+2. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the adapters](../../adapters/creating-adapters/).
 3. Open the MobileFirst Console
-    - Click on the **getCitiesListJS** adapter and update the database connectivity properties.
-    - Click on the **getCitiesListJava** adapter and update the database connectivity properties.
+    - Click on the **SQLAdapterJS** adapter and update the database connectivity properties.
+    - Click on the **SQLAdapterJava** adapter and update the database connectivity properties.
 
 #### Application setup
 

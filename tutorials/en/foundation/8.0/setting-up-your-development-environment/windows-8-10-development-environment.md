@@ -2,8 +2,8 @@
 layout: tutorial
 title: Setting up the Windows 8.1 and Windows 10 development environment
 breadcrumb_title: Windows environments
-relevantTo: [windows,cordova]
-weight: 4
+relevantTo: [windows,javascript]
+weight: 5
 ---
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8.1 Universal and Windows 10 UWP applications.

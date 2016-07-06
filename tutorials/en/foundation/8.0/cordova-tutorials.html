@@ -1,13 +1,14 @@
 ---
 layout: tutorial
-title: Developing Cordova apps
+title: Developing for Cordova
 show_disqus: false
-use_dropdown: true
+use_dropdown: false
 print_pdf: false
 show_in_nav: false
+indexed: false
 ---
 <br>
-Develop your Cordova applications by following the tutorials bellow: set-up your development environment, experience the platform and add value by integrating with MobileFirst Platform Foundation 8.0 beta offerings.
+Develop your Cordova applications by following the tutorials bellow: set-up your development environment, experience the product and add value by integrating with MobileFirst Foundation 8.0 offerings.<br/><br/>
 
 <div id="container">
     <div class="row">
@@ -51,42 +52,49 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
 <div>
     <hr id="start-here"/>
     
-    <h3><a href="../setting-up-your-development-environment/">Setting up Your Development Environment</a></h3>
-    Set up your development environment to work with IBM MobileFirst Platform Foundation.
+    <h3><a href="../setting-up-your-development-environment/">Installation and Configuration</a></h3>
+    Set up your development environment to work with IBM MobileFirst Foundation.
     
     <ul>
         <li><a href="../setting-up-your-development-environment/mobilefirst-development-environment/">Setting up the MobileFirst development environment</a></li>
         <li><a href="../setting-up-your-development-environment/cordova-development-environment/">Setting up the Cordova development environments</a></li>
-        <li><a href="../setting-up-your-development-environment/console/">Using the MobileFirst Platform Operations Console</a></li>
+        <li><a href="../setting-up-your-development-environment/console/">Using the MobileFirst Foundation Operations Console</a></li>
     </ul>
     
     <h3><a href="../quick-start/">Quick Start</a></h3>
-    Get a feel of MobileFirst Platform Foundation.
+    Get a feel of MobileFirst Foundation.
     
     <ul>
         <li><a href="../quick-start/cordova/">Quick Start with Cordova</a></li>
     </ul>
     
-    <h3><a href="../adding-the-mfpf-sdk">Adding the MobileFirst Platform Foundation SDK</a></h3>
-    Add the MobileFirst Platform Foundation SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
+    <h3><a href="../adding-the-mfpf-sdk">Adding the MobileFirst Foundation SDK</a></h3>
+    Add the MobileFirst Foundation SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
 
     <ul>
-        <li><a href="../adding-the-mfpf-sdk/cordova/">Adding the MobileFirst Platform Foundation SDK to Cordova applications</a></li>
+        <li><a href="../adding-the-mfpf-sdk/cordova/">Adding the MobileFirst Foundation SDK to Cordova applications</a></li>
     </ul>
     
     <hr id="get-sdk-and-apis"/>
 
-    <h3><a href="../using-the-mfpf-sdk">Using the MobileFirst Platform Foundation SDK</a></h3>
+    <h3><a href="../using-the-mfpf-sdk">Using the MobileFirst Foundation SDK</a></h3>
     Learn to use MobileFirst APIs: Direct Update, JSONStore, WLResourceRequest, Client-side translation, debugging applications, Developer CLI and more...
 
     <ul>
-        <li><a href="../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/">MobileFirst Platform Foundation SDK development in Cordova applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/mfpf-development-in-cordova-applications/">MobileFirst Foundation SDK development in Cordova applications</a></li>
         <li><a href="../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using MobileFirst CLI to manage MobileFirst artifacts</a></li>
-        <li><a href="../using-the-mfpf-sdk/resource-request-from-cordova-applications/">Resource request from Cordova applications</a></li>
-        <li><a href="../using-the-mfpf-sdk/jsonstore-cordova/">JSONStore in Cordova applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/using-mobilefirst-cli-in-eclipse/">Using the MobileFirst CLI in Eclipse</a></li>
+        <li><a href="../using-the-mfpf-sdk/resource-request/javascript/">Resource request from JavaScript (Cordova, Web) applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/jsonstore/cordova/">JSONStore in Cordova applications</a></li>
+        <li>Client-side log collection
+            <ul>
+                <li><a href="../using-the-mfpf-sdk/client-side-log-collection/">Overview of client-side log collection</a></li>
+                <li><a href="../using-the-mfpf-sdk/client-side-log-collection/javascript/">Log collection in JavaScript (Cordova, Web) applications</a></li>
+            </ul>
+        </li>
         <li><a href="../using-the-mfpf-sdk/direct-update/">Using Direct Update in Cordova Applications</a></li>
-        <li><a href="../using-the-mfpf-sdk/translation/">Multilingual translation of Cordova applications</a></li>
-        <li><a href="../using-the-mfpf-sdk/debugging-applications/">Debugging Cordova applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/translation/">Multilingual translation of JavaScript (Cordova, Web) applications</a></li>
+        <li><a href="../using-the-mfpf-sdk/debugging-applications/">Debugging JavaScript (Cordova, Web) applications</a></li>
     </ul>
     
     <h3><a href="../adapters/">Adapters</a></h3>
@@ -110,6 +118,13 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         </li>
         <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
         <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
+        <li>Server-side log collection
+            <ul>
+                <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
+            </ul>
+        </li>
         <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
         <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
     </ul>
@@ -125,55 +140,59 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
             <ul>
                 <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/cordova/">Implementing the challenge handler in Cordova applications</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/javascript/">Implementing the challenge handler in JavaScript (Cordova, Web) applications</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
             <ul>
                 <li><a href="../authentication-and-security/user-authentication/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/user-authentication/cordova/">Implementing the challenge handler in Cordova applications</a></li>
+                <li><a href="../authentication-and-security/user-authentication/javascript/">Implementing the challenge handler in JavaScript (Cordova, Web) applications</a></li>
             </ul>
         </li>
+        <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
+        <li><a href="../authentication-and-security/step-up/">Step Up Authentication</a></li>
+        <li><a href="../authentication-and-security/enrollment/">Enrollment</a></li>
         <li><a href="../authentication-and-security/confidential-clients/">Confidential Clients</a></li>
         <li><a href="../authentication-and-security/protecting-external-resources/">Protecting External Resources</a>
             <ul>
                 <li><a href="../authentication-and-security/protecting-external-resources/tai">Trust Association Interceptor</a></li>
                 <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java Token Validation</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js Validation</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
+        <li><a href="../authentication-and-security/device-sso/">Configuring Device Single Sign-On</a></li>
     </ul>
 
     <hr id="measure-and-engage"/>
 
     <h3><a href="../notifications">Notifications</a></h3>
-    Send notifications with IBM MobileFirst Platform Foundation.  
+    Send notifications with IBM MobileFirst Foundation.  
 
     <ul>
         <li><a href="../notifications/push-notifications-overview/">Push Notifications Overview</a></li>
-        <li><a href="../notifications/sending-push-notifications/">Sending Push Notifications</a></li>
+        <li><a href="../notifications/sms-notifications-overview/">SMS Notifications Overview</a></li>
+        <li><a href="../notifications/sending-push-notifications/">Sending Notifications</a></li>
         <li><a href="../notifications/handling-push-notifications-in-cordova/">Handling Push Notifications in Cordova applications</a></li>
+        <li><a href="../notifications/handling-sms-notifications-in-cordova/">Handling SMS Notifications in Cordova applications</a></li>
     </ul>
     
     <h3><a href="../analytics">Operational Analytics</a></h3>
     Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.  
 
     <ul>
-        <li><a href="../analytics">Introduction to MobileFirst Platform Foundation Operational Analytics</a></li>
-        <li><a href="../analytics/remote-controlled-client-side-log-collection/">Remote controlled client-side log collection</a>
-            <ul>
-                <li><a href="../analytics/remote-controlled-client-side-log-collection/cordova/">Logging in Cordova applications</a></li>
-            </ul>
-        </li>
+        <li><a href="../analytics">Introduction to MobileFirst Foundation Operational Analytics</a></li>
         <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
+        <li><a href="../analytics/analytics-rest-api/">Using Analytics REST API</a></li>
     </ul>
     
     <h3><a href="../ibm-containers">IBM Containers</a></h3>
-    Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.  
+    Deploy MobileFirst Foundation to the cloud using IBM Containers on Bluemix.  
 
     <ul>
-        <li><a href="../ibm-containers/">Introduction to IBM MobileFirst Platform Foundation on IBM Containers</a></li>
-        <li><a href="../ibm-containers/using-mobile-foundation/">Using the Mobile Foundation service to set-up MobileFirst Server on IBM Containers</a></li>
+        <li><a href="../ibm-containers/">Introduction to IBM MobileFirst Foundation on IBM Containers</a></li>
+        <li><a href="../ibm-containers/using-mobile-foundation/">Create a MobileFirst Server instance using the Mobile Foundation Bluemix service</a></li>
+        <li><a href="../ibm-containers/mobilefirst-server-using-scripts/">Create a MobileFirst Server instance on IBM Containers using IBM-provided scripts</a></li>
     </ul>
     
     <h3><a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/">MobileFirst Quality Assurance</a></h3>
@@ -185,9 +204,10 @@ Develop your Cordova applications by following the tutorials bellow: set-up your
         <li><a href="{{site.baseurl}}/tutorials/en/quality-assurance/8.0/ios/">MobileFirst Quality Assurance in iOS applications</a></li>
     </ul>
     
-    <h3>Collateral tutorials</h3>
+    <h3>Collateral materials</h3>
 
     <ul>
-        <li><a href=""></a><a href="../collateral-tutorials/app-center/">Distributing mobile applications with Application Center</a></li>
+        <li><a href="../collateral-tutorials/app-center/">Distributing mobile applications with Application Center</a></li>
+        <li><a href="../migration-cookbook">Migration cookbook</a></li>
     </ul>
 </div>

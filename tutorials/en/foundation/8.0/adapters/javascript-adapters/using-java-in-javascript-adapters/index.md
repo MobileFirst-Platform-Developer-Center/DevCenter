@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Using Java in JavaScript Adapters
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: Download Adapter Maven project
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
@@ -68,5 +68,7 @@ After your custom Java code is created and any required JAR files are added, you
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
 
 ### Sample usage
-* Use either Maven or MobileFirst CLI to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
 * To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+
+When testing, the adapter expects an array with numbers to add or subtract, for example: `[1,2]`.

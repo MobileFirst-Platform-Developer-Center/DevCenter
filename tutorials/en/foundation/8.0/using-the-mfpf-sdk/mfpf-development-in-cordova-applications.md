@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: MobileFirst Platform Foundation development in Cordova applications
-breadcrumb_title: Application development
+title: MobileFirst Foundation development in Cordova applications
+breadcrumb_title: Cordova Application development
 relevantTo: [cordova]
 weight: 2
 ---
@@ -11,7 +11,7 @@ From [http://cordova.apache.org/](http://cordova.apache.org/):
 
 > Apache Cordova is an open-source mobile development framework. It allows you to use standard web technologies such as HTML5, CSS3, and JavaScript for cross-platform development, avoiding each mobile platforms' native development language. Applications execute within wrappers targeted to each platform, and rely on standards-compliant API bindings to access each device's sensors, data, and network status.
 
-IBM MobileFirst Platform Foundation provides an SDK in the form of several Cordova plug-ins. Learn how to [Add the MobileFirst Platform Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova).
+IBM MobileFirst Foundation provides an SDK in the form of several Cordova plug-ins. Learn how to [Add the MobileFirst Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova).
 
 The MobileFirst SDK feature set provides the following:
 
@@ -28,7 +28,8 @@ The MobileFirst SDK feature set provides the following:
 * [Cordova application development](#cordova-application-development)
 * [MobileFirst APIs](#mobilefirst-apis)
 * [Previewing an application's web resources](#previewing-an-application-39-s-web-resources)
-* [CrossWalk support](#crosswalk-support)
+* [CrossWalk support for Android](#crosswalk-support-for-android)
+* [WKWebView support for ios](#wkwebview-support-for-ios)
 * [Further reading](#further-reading)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
@@ -67,7 +68,7 @@ After [adding the MobileFirst Cordova SDK](../../adding-the-mfpf-sdk/cordova) to
 > For a complete list of available API methods, refer to the "Client API changes in V8.0.0" topic in the user documentation.
 
 ## Previewing an application's web resources
-A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Platform Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering.
+A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator or physical devices. In MobileFirst Foundation, two additional live-preview options are available: IBM Mobile Browser Simulator and Simple Browser rendering.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected in the preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
 
@@ -120,7 +121,7 @@ To run the application on a physical device, attached to the development worksta
 cordova run ios
 ```
 
-## CrossWalk support
+## CrossWalk support for Android
 Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  
 To add it:
 
@@ -138,6 +139,12 @@ To add it:
     ```bash
     cordova build
     ```
+
+## WKWebView support for ios
+The default UIWebView used in Cordova iOS applications can be replaced with [Apple's WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/).  
+To add, run the following command from a command-line window: `cordova plugin add cordova-plugin-wkwebview-engine`.
+
+> Learn more about the [Cordova WKWebView plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine).
 
 ## Further reading
 Learn more about Cordova:

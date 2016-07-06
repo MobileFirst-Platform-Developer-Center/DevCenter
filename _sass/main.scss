@@ -71,7 +71,7 @@ hr {
 		text-decoration: none;
 		border: 1px solid $color_chambray_approx;
 	}
-	
+
 	&.containers {
 		width: 400px;
 	}
@@ -94,7 +94,7 @@ hr {
 	height: 64px;
 	width: 64px;
 }
-.col-md-3 {
+.mid-nav {
 	margin: 20px 0;
 	p {
 		text-align: center;
@@ -161,7 +161,7 @@ code:not([class*="language-"]) {
 	background-color: inherit;
 	color: $black;
 	font-family: $font_4, $font_5, $font_6, $font_7, $font_8, $font_9, $font_10;
-	padding: 2px;
+	padding: 0px;
 	background: #FDFAFB;
     border: 1px solid #E0E0EA;
 	weight:400;
@@ -180,39 +180,42 @@ blockquote {
 }
 .downloadButtons {
 	margin-bottom: 53px;
-}
-.download-button {
-	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
-	border-radius: 5px;
-	font-family: $font_1;
-	color: $white;
-	font-size: 13px;
-	background-color: $color_rhino_approx;
-	padding: 5px 10px;
-	margin: 21px 0 5px 5px;
-	float: right;
-	border: 1px solid $color_chambray_approx;
-	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-	box-shadow: 0 2px $color_quill_gray_approx;
-	a {
-		color: $white;
-		text-decoration: none;
-		&:hover {
+	.btn-group {
+		float:right;
+		&.open>.btn-default.dropdown-toggle {
 			color: $white;
-			text-decoration: none;
+			background-color: $color_nile_blue_approx;
 		}
+	}
+	.download-button {
+		//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+		border-radius: 5px;
+		font-family: $font_1;
+		color: $white;
+		font-size: 13px;
+		background-color: $color_rhino_approx;
+		padding: 5px 10px;
+		margin: 21px 0 5px 5px;
+		float: right;
+		border: 1px solid $color_chambray_approx;
+		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+		box-shadow: 0 2px $color_quill_gray_approx;
+		text-decoration: none;
+
 		.glyphicon-download-alt:before {
 			padding: 0 5px 0 0;
 		}
-	}
-	&:hover {
-		background-color: $color_nile_blue_approx;
-		text-decoration: none;
-	}
-	&:active {
-		//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-		box-shadow: none;
-		margin-top: 22px;
+
+		&:hover {
+			color: $white;
+			background-color: $color_nile_blue_approx;
+			text-decoration: none;
+		}
+		&:active {
+			//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+			box-shadow: none;
+			margin-top: 22px;
+		}
 	}
 }
 :focus, a:focus {
@@ -299,12 +302,19 @@ h4.panel-title, .tutorial h4.panel-title  {
 	margin-bottom: 2px;
 }
 
-// beta site
-hr { 
-	border: 2px solid #DDD; 
+// AnchorJS
+.anchorjs-link:hover {
+	text-decoration: none;
+}
+
+hr {
+	border: 2px solid #DDD;
 	margin: 15px 0 5px 0;
 }
 
-.videoDemo {
-	height: 363px;
+// last mofidied date styling
+#timestamp {
+	font-size: 80%;
+	margin-top: 50px;
+	margin-bottom: 10px;
 }

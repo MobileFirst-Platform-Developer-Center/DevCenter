@@ -1,15 +1,15 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Platform Foundation SDK to iOS Applications
+title: Adding the MobileFirst Foundation SDK to iOS Applications
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
 ## Overview
-The MobileFirst Platform Foundation SDK consists of a collection of pods, available through [CocoaPods](http://guides.cocoapods.org), that you can add to your Xcode project. The pods correspond to core functions and other functions:
+The MobileFirst Foundation SDK consists of a collection of pods, available through [CocoaPods](http://guides.cocoapods.org), that you can add to your Xcode project. The pods correspond to core functions and other functions:
 
 * **IBMMobileFirstPlatformFoundation** - Implements client/server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../using-the-mfpf-sdk/jsonstore-ios/).
+* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../using-the-mfpf-sdk/jsonstore/ios/).
 * **IBMMobileFirstPlatformFoundationPush** - Contains the Push Notifications framework. For more information, review the [Notifications tutorials](../../notifications/).
 * **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for the Apple WatchOS. For more information, review the [user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/devref/t_ios_frameworks.html).
 
@@ -34,7 +34,7 @@ In this tutorial you will learn how to add the MobileFirst Native SDK using Coco
 Follow the below instructions to add the MobileFirst Native SDK to either a new or existing Xcode project, and register the application in the MobileFirst Server.
 
 Before starting, make sure the MobileFirst Server is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's **scripts** folder and run the command: `./start.sh`.
+If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
 
 ### Creating an application
 Create an Xcode project or use an existing one (Swift or Objective-C).  
@@ -46,17 +46,22 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     - If CocoaPods is not installed, install it as follows:  
         - Open a **Command-line** window and navigate to the root of the Xcode project.
         - Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands may take several minutes to complete.
-        - Run the command: `pod init`. This creates a `Podfile`.
-2. Using your favorite code editor, open the `Podfile`.
+2. Run the command: `pod init`. This creates a `Podfile`.
+3. Using your favorite code editor, open the `Podfile`.
     - Comment out or delete the contents of the file.
     - Add the following lines and save the changes:
 
         ```xml
         use_frameworks! 
-        pod 'IBMMobileFirstPlatformFoundation'
+
+        platform :ios, 8.0
+        target "Xcode-project-target" do
+            pod 'IBMMobileFirstPlatformFoundation'
+        end
         ```
+        - Replace **Xcode-project-target** with the name of your Xcode project's target.
         
-3. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
+4. Back in command-line, run the command: `pod install`, followed by `pod update`. This command adds the MobileFirst Native SDK files, adds the **mfpclient.plist** file and generates a Pod project.  
     **Note:** This command may take several minutes to complete.
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
@@ -70,17 +75,16 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     ```bash
     mfpdev app register
     ```
-    
+    - If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+
     You will be asked to provide the application's BundleID. Note that the BundleID is **case sensitive**.  
 
 The `mfpdev app register` CLI command first connects to the MobileFirst Server to register the application, followed by generating the **mfpclient.plist** file at the root of the Xcode project, and adding to it the metadata that identifies the MobileFirst Server.  
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** The application registration can also be performed from the MobileFirst Operations Console:    
 > 
-> 1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`. You can also open the console from the **Command-line** using the CLI command `mfpdev server console`.
-    
-> 2. Click the "New" button next to "Applications" to create a new application and follow the on-screen instructions.  
-    
+> 1. Load the MobileFirst Operations Console.
+> 2. Click the "New" button next to "Applications" to register a new application and follow the on-screen instructions.  
 > 3. Once the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
 
 ### Completing the setup process
@@ -88,7 +92,7 @@ In Xcode, right-click the project entry, click on **Add Files To [ProjectName]**
 
 ### Referencing the SDK
 
-Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Platform Foundation framework:
+Whenever you want to use the MobileFirst Native SDK, make sure that you import the MobileFirst Foundation framework:
 
 Objective-C:
 
@@ -103,9 +107,9 @@ import IBMMobileFirstPlatformFoundation
 ```
 
 <br>
-#### Note about iOS 9:
+#### Note about iOS 9 and above:
 
-> * Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+> * Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
 >   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
 >   2. Paste the following: 
 >

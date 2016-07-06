@@ -181,11 +181,11 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
     * <a href="../authentication-security/application-authenticity-protection/application-authenticity-protection-in-native-windows-universal-applications/">Application Authenticity Protection in Native Windows Universal applications</a>
 * <a href="../authentication-security/client-x-509-certificate-authentication-user-enrollment/">Client X.509 Certificate Authentication and User Enrollment</a>
 * <a href="../authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a>
+* <a href="../authentication-security/ntlm-authentication/">NTLM Authentication</a>
 
 ### <a href="../advanced-topics/">Advanced topics</a>
 <p>Tutorials showcasing "recipes" of advanced functionalities such as: "Remember Me", Offline authentication, device enrollment, remote loading of dynamic content and more.</p>
 
-* <a href="../advanced-topics/ntlm-authentication/">NTLM Authentication</a>
 * <a href="../advanced-topics/remember-me/">Remember Me</a>
 * <a href="../advanced-topics/two-step-adapter-authentication/">Two-Step adapter authentication</a>
 * <a href="../advanced-topics/offline-authentication/">Offline Authentication</a>
@@ -207,9 +207,9 @@ Below are all available tutorials for IBM MobileFirst Platform Foundation 7.1
 * <a href="../moving-production/reports-analytics/">Reports and analytics</a>
 * <a href="../moving-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a>
 
-### <a href="../starter-application-sample/">Starter Application samples</a>
+### <a href="../starter-application-samples/">Starter Application samples</a>
 
-* <a href="../starter-application-sample/">Starter Application sample application</a>
+* <a href="../starter-application-samples/">Starter Application sample application</a>
 
 ### <a href="../ibm-containers/">IBM Containers</a>
 Deploy MobileFirst platform to the cloud using IBM Containers on Bluemix.
