@@ -53,10 +53,10 @@ Alternatively, the development version of the MobileFirst Server includes a test
 
 #### Test Token
 
-To receive a Test Token you should:
+To receive a Test Token:
 {% comment %}
 1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
-For testing purposes set **Allowed Scopes** as `**`.
+For testing purposes, set **Allowed Scopes** as `**`.
 
   ![Image of setting a confidential client](confidential_client.png)
 {% endcomment %}
@@ -74,7 +74,7 @@ If you don't use a scope to protect your resource, use an empty string.
   ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
 
-The result will be a JSON object with a temporary valid access token:
+The result is a JSON object with a temporary valid access token:
 
 ```json
 {
@@ -106,9 +106,9 @@ To access Swagger:
 
 <img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 #### Test Token
-To add a Test Token to the request, so the security framework will skip any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
+To add a Test Token to the request, so that the security framework skips any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
 
-You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes you can select all). If you are using the Swagger UI for the first time you may be required to log in with the Confidential Client ID ("test") and Secret ("test").
+You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes, you can select all). If you are using the Swagger UI for the first time, you might be required to log in with the Confidential Client ID ("test") and Secret ("test").
 > Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
 
 <br/><br/>
@@ -122,11 +122,11 @@ Expand the endpoint's operation, enter the required parameters (if needed) and c
 #### Swagger Annotations
 Available only in Java adapters. 
 
-In order to generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
-> To learn more about Swagger Annotations see the [Swagger documentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
+To generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
+> To learn more about Swagger Annotations, see the [Swagger documentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
 
 ```java
-@ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
+@ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters by using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
 @ApiResponses(value = { @ApiResponse(code = 200, message = "A JSON object containing all the received parameters returned.") })
 @POST
 @Produces(MediaType.APPLICATION_JSON)
