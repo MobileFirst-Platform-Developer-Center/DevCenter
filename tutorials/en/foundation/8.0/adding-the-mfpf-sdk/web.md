@@ -6,15 +6,15 @@ relevantTo: [javascript]
 weight: 6
 ---
 ## Overview
-In this tutorial you will learn how to register a web application with the MobileFirst Server, as well as downloading and adding the MobileFirst SDK to web applications.  
+In this tutorial, you learn how to register a web application with the MobileFirst Server, and to download and add the MobileFirst SDK to web applications.  
 
 The MobileFirst Web SDK is provided as a set of JavaScript files, [and is available at NPM](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
-The SDK is comprised of the following files:
+The SDK includes the following files:
 
-- **ibmmfpf.js** - the core of the SDK.
-- **ibmmfpfanalytics.js** - provides support for MobileFirst Foundation Analytics.
+- **ibmmfpf.js** - The core of the SDK.
+- **ibmmfpfanalytics.js** - Provides support for MobileFirst Foundation Analytics.
 
-**Prerequisite:** to run NPM commands, [Node.js](https://nodejs.org) is required.
+**Prerequisite:** To run NPM commands, [Node.js](https://nodejs.org) is required.
 
 #### Jump to:
 
@@ -33,13 +33,13 @@ To add the SDK to new or existing web applications, first download it to your wo
 1. From a **command-line** window, navigate to your web application's root folder.
 2. Run the command: `npm install ibm-mfp-web-sdk`.
 
-This creates the following directory structure:
+This command creates the following directory structure:
 
 ![SDK folder contents](sdk-folder.png)
 
 ### Adding the SDK
-To add the MobileFirst Web SDK, reference it in standard fashion in the web application.  
-The SDK also [supports AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition), so you can use Module Loaders such as [RequireJS](http://requirejs.org/) to load the SDK.
+To add the MobileFirst Web SDK, reference it in a standard fashion in the web application.  
+The SDK also [supports AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition), so that you can use Module Loaders such as [RequireJS](http://requirejs.org/) to load the SDK.
 
 #### Standard
 Reference the **ibmmfpf.js** file in the `HEAD` element.  
@@ -91,17 +91,18 @@ WL.Client.init(wlInitOptions).then (
 });
 ```
 
-- **mfpContextRoot:** the context root used by the MobileFirst Server.
-- **applicationId:** the application package name, as defined while [registering the application](#registering-the-web-application).
+- **mfpContextRoot:** The context root used by the MobileFirst Server.
+- **applicationId:** The application package name, as defined when you [register the application](#registering-the-web-application).
 
 ### Registering the web application
-<!-- The application registration is performed either from the MobileFirst Operations Console, or from the MobileFirst CLI.
+<!-- You can register applications either from the MobileFirst Operations Console or from the MobileFirst CLI.
 
 #### From MobileFirst Operations Console -->
 
-1. Open your browser of choice and load the MobileFirst Operations Console using the address `http://localhost:9080/mfpconsole/`.
-2. Click the "New" button next to "Applications" to create a new application.
-3. Select **Web** as the platform, and provide its name and its application identifier. Then, click **Register application**.
+1. Open your favorite browser and load the MobileFirst Operations Console by entering the `http://localhost:9080/mfpconsole/` URL.
+2. Click the **New** button next to **Applications** to create a new application.
+3. Select **Web** as the platform, and provide a name and identifier.
+4. Click **Register application**.
 
 ![Adding the Web platform](add-web-platform.png)
 
@@ -119,22 +120,22 @@ To update the MobileFirst Web SDK with the latest release:
 2. Run the command: `npm update ibm-mfp-web-sdk`.
 
 ## Same-origin policy
-Because web resources may be hosted on different a server machine than the one that MobileFirst Server is installed on, this may trigger a [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation.
+If web resources are hosted on a different server machine than the one that MobileFirst Server is installed on, a [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation is triggered.
 
-Same-origin policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the MobileFirst Server.
+The same-origin policy is a restriction that is enforced on web browsers. For example, if an application is hosted on the domain **example.com**, that application is not allowed to also access context that is available on another server, or for that matter, from the MobileFirst Server.
 
-Web apps that are using the MobileFirst Web SDK should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
+Web apps that use the MobileFirst Web SDK must be handled in a supporting topology. For example, use a reverse proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
 
 ### Alternatives
-The policy requirements can be satisfied by using either of the following methods:
+You can meet the policy requirements by using either of the following methods:
 
-- Serving the web application resources, for example, from the same WebSphere Liberty profile application server that is used in the MobileFirst Development Kit.
+- Serving the web application resources, for example, from the same WebSphere Application Server Liberty profile application server that is used in the MobileFirst Development Kit.
 - Using Node.js as a proxy to redirect application requests to the MobileFirst Server.
 
 > Learn more in [Setting up the Web development environmnt](../../setting-up-your-development-environment/web-development-environment) tutorial
 
 ## Secure-origins policy
-When using Chrome during development, the browser might not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the secure-origins policy implemented and used by default in this browser.
+When you use Chrome during development, the browser might not allow an application to load if it uses both HTTP and a host that **is not** `localhost`. The cause is the secure-origins policy that is implemented and used by default in this browser.
 
 To overcome this, you can start the Chrome browser with the following flag:
 
