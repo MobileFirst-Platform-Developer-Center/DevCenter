@@ -6,7 +6,7 @@ weight: 6
 ---
 ## Overview
 
-You can uqe IDEs, such as Eclipse, IntelliJ, or similar environments, to test Java and JavaScript adapters, and debug Java code  that is implemented for use in Java or JavaScript adapters.  
+You can use IDEs, such as Eclipse, IntelliJ, or similar ones, to test Java and JavaScript adapters, and debug Java code  that is implemented for use in Java or JavaScript adapters.  
 
 This tutorial demonstrates how to test adapters by using the MobileFirst CLI and by using Postman, and also how to debug a Java adapter by using the Eclipse IDE.
 
