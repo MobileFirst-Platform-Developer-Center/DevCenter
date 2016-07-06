@@ -34,7 +34,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 1. Click the **New** button next to **Applications**
     * Select the **Android** platform
     * Enter **com.ibm.mfpstarterandroid** as the **application identifier**
-    * Enter **1.0.0** as the **version** value
+    * Enter **1.0** as the **version** value
     * Click on **Register application**
 
     <img class="gifplayer" alt="Register an application" src="register-an-application-android.png"/>
