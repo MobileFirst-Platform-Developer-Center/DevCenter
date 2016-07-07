@@ -19,7 +19,7 @@ Please see [our support plan for iOS 10]({{site.baseurl}}/blog/2016/06/05/suppor
 
 ### iOS 10 beta 1
 
-Compatibility tests with [iOS 10 beta 1](https://developer.apple.com/download) have been performed for MobileFirst Platform Foundation 6.3 to 7.1 as well as MobileFirst Foundation 8.0 using an upgraded an iPhone 6 running iOS 9.3.3.
+Compatibility tests with [iOS 10 beta 1](https://developer.apple.com/download) have been performed for MobileFirst Platform Foundation 6.3 to 7.1 as well as MobileFirst Foundation 8.0 using an iPhone 6 that was upgraded from iOS 9.3.3 to iOS 10 beta 1.
 
 For the tests, [XCode 8 beta 1](https://developer.apple.com/download) was used to compile native, hybrid and Cordova apps.  
 Highlighted features that were tested are: 

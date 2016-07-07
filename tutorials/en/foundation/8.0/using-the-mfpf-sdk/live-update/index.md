@@ -477,7 +477,7 @@ The `expirationPeriod` value that is defined in **Adapters → Live Update adapt
 
 <img alt="Image of the sample application" src="live-update-app.png" style="margin-left: 10px;float:right"/>
 ## Sample application
-In the sample application you select a country and using Live Update the app then outputs text in language that corresponds to the selected country.
+In the sample application you select a country flag and using Live Update the app then outputs text in language that corresponds to the selected country. If enabling the map feature and providing the map, a map of the corresponding country will be displayed.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80) the Xcode project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80) the Android Studio project.
@@ -499,5 +499,9 @@ In the sample application you select a country and using Live Update the app the
 
     Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
 
-4. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
-5. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
+4. In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs to **FR**.
+  * Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
+  * To see the map while using the app, you need to enable to `includeMap` feature.
+
+5. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
+6. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
