@@ -17,7 +17,6 @@ In this tutorial, you learn how to add the MobileFirst Native SDK by using Gradl
 > For instruction to manually add the SDK files to a project, [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
 
 **Prerequisites:**
-
 Make sure that:
 - Android Studio and MobileFirst CLI are installed on the developer workstation.  
 - A local or remote instance of MobileFirst Server is running.

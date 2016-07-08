@@ -40,7 +40,7 @@ Create a Windows 8.1 Universal or Windows 10 UWP project by using Visual Studio 
 
 ### Adding the SDK
 
-1. To import MobileFirst Studio packages, use a NuGet package manager.
+1. To import MobileFirst Studio packages, use the NuGet package manager.
 NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users.
 
 2. Open the Windows 8.1 Universal or Windows 10 UWP project in Visual studio 2013/2015. Right-click the project solution and select  **Manage Nuget packages**.
