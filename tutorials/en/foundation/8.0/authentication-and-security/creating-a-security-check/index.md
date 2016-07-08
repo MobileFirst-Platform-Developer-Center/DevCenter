@@ -59,7 +59,7 @@ It provides, among other options: externalization as JSON, inactivity timeout, e
 
 Subclassing this class leaves a lot of flexibility in your security check implementation.
 
-> Learn more in the `ExternalizableSecurityCheck` user documentation topic.
+> Learn more in the [ExternalizableSecurityCheck](../externalizable-security-check) tutorial.
 
 ### CredentialsValidationSecurityCheck
 This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods must be implemented: `validateCredentials` and `createChallenge`.
