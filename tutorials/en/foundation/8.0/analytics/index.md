@@ -14,7 +14,7 @@ IBM MobileFirst Foundation Operational Analytics collects data from app-to-serve
 
 #### Jump to
 
-* [MobileFirst Operational Analytics Console](#mobilefirst-analytics-console)
+* [MobileFirst Operational Analytics Console](#mobilefirst-operational-analytics-console)
 * [Elasticsearch](#elasticsearch)
 * [Server Control of Client Log Capture](#server-control-of-client-log-capture)
 * [Forwarding Server Logs](#forwarding-server-logs)
