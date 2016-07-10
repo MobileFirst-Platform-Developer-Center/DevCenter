@@ -56,10 +56,6 @@ To receive a Test Token, either click the "Run in Postman" button below to impor
 
 <a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="margin: 0"></a>
 
-<<<<<<< HEAD
-To receive a Test Token:
-=======
->>>>>>> refs/remotes/MFPSamples/master
 {% comment %}
 1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes, set **Allowed Scopes** as `**`.
