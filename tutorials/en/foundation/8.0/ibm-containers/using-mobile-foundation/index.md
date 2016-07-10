@@ -50,7 +50,7 @@ To setup the available plans, first follow these steps:
 ### Setting up the *Professional 1 Application* plan
 
 1. Agree to the Early license terms, provide your Bluemix username and password, and click **Continue**.
-2. The plan requires an external [dashDB database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set-up your dashDB instance, enter your credentials in the plan entry page:
+2. The plan requires an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/). After you have set-up your dashDB *Transactional plan* instance, enter your credentials in the plan entry page:
 
     ![Image of Mobile Foundation setup](create-dashdb-instance.png)
 
@@ -88,7 +88,7 @@ Through the Configuration tab, the server instance can be further customized wit
 * User registry 
 * TrustStore
 * Operational Analytics configuration
-* Database selection (available in the *Professional 1 Application* plan)
+* DashDB transactional database selection (available in the *Professional 1 Application* plan)
 * VPN
 
 ![Image of Mobile Foundation setup](advanced-server-configuration.png)

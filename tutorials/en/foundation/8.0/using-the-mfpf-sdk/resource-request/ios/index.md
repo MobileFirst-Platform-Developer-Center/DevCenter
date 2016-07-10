@@ -62,7 +62,7 @@ Objective-C
 Swift
 
 ```swift
-request.sendWithCompletionHandler { (WLResponse response, NSError error) -> Void in
+request.sendWithCompletionHandler { (response, error) -> Void in
     if(error == nil){
         NSLog(response.responseText)
     }

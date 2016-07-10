@@ -102,9 +102,20 @@ Alternatively, click the **New** button next to **Adapters**.
 <img src="web-success.png" alt="sample application" style="float:right"/>
 ### 5. Testing the application
 
-1. From a **Command-line** window, navigate to the **project's root → node-server** folder.
+1. From a **Command-line** window, navigate to the **[project root] → node-server** folder.
 2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
-3. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
+3. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your MobileFirst Server.
+    * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
+    * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**. 
+
+    For example:  
+    
+    ```javascript
+    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
+    var port = 9081; // The local port number to use
+    var mfpURL = host + ':443'; // The Mobile Foundation server port number
+    ```
+4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
 
 <br>
 #### Secure Origins Policy

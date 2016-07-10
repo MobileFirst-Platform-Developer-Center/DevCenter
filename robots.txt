@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 Disallow: /404
 Disallow: /help/mustgather
-Disallow: /cookbook
