@@ -219,11 +219,11 @@ WNS uses regular http or https requests.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) Windows 10 UWP project.
 
 ### Sample usage
-1. Import the project to Visual Studio.
+1. [Add the MobileFirst Windows SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/windows-8-10/#adding-the-sdk) to the sample.
 2. Configure the project with your bundleId (based on bundleId that you have created for your push notifications certificate .p12 file).
 3. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 4. Perform the required scope mapping for **push.mobileclient**.
-4. Run the app by clicking the **Run** button.
+5. Run the app by clicking the **Run** button.
 
 
 **[Sending a notification](../sending-push-notifications)**

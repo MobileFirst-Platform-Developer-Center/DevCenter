@@ -140,7 +140,7 @@ Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapt
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80) the PreemptiveLoginWin10 project.
 
 ### Sample usage
-
+* [Add the MobileFirst Windows SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/windows-8-10/#adding-the-sdk) to the sample.
 * Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `UserLogin` security check:

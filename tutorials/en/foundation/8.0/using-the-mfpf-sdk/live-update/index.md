@@ -421,23 +421,51 @@ public class ResolverAdapterData {
 
 ## Advanced Topics
 ### Import/Export
-Once a Schmea has been defined, the system administrator can export and import it to other server instances.
+Once a schmea and segments have been defined, the system administrator can export and import them to other server instances.
 
-#### Get schema
+#### Export schema
 
 ```bash 
-curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.LiveUpdateDemo/schema > curl.get.txt
+curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/schema > schema.txt
 ```
 
-#### Post schema
+#### Import schema
 
 ```bash
-curl -X PUT -d @curl.get.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.ibm.LiveUpdateDemo/schema > --header "Content-Type:application/json"
+curl -X PUT -d @schema.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/schema > --header "Content-Type:application/json"
 ```
 
 * Replace "admin:admin" with your own (default is "admin")
 * Replace "localhost" and the port number with your own if needed
 * Replace the application identifier "com.ibm.LiveUpdateDemo" with your own application's.
+
+#### Export segments
+
+```bash
+curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment > segments.txt
+```
+
+#### Import segments
+If you have a single segment: 
+
+```bash
+curl -X PUT -d @segment.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/schema > --header "Content-Type:application/json"
+```
+
+If you have multiple segments, you can use for example this bash script that you can alter.  
+If Windows is used as the workstation, Python may need to be installed first.
+
+```bash
+#!/bin/bash
+segments_number=$(python -c 'import json,sys;obj=json.load(sys.stdin);print len(obj["items"]);' < segments.txt)
+counter=0
+while [ $segments_number -gt $counter ]
+do
+   segment=$(cat segments.txt | python -c 'import json,sys;obj=json.load(sys.stdin);data_str=json.dumps(obj["items"]['$counter']);print data_str;')
+   echo $segment | curl -X POST -d @- --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdateSwift/segment --header "Content-Type:application/json"
+   ((counter++))
+done
+```
 
 ### Caching
 Caching is enabled by default in order to avoid network letancy. This means that updates may not take place immediately.  
@@ -505,3 +533,5 @@ In the sample application you select a country flag and using Live Update the ap
 
 5. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
 6. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
+
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can update the bundled SDK (iOS) by running the command `pod update` from the project's root folder.
