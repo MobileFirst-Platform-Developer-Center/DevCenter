@@ -111,7 +111,8 @@ To access Swagger:
 #### Test Token
 To add a Test Token to the request, so that the security framework skips any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
 
-You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes, you can select all). If you are using the Swagger UI for the first time, you might be required to log in with the Confidential Client ID ("test") and Secret ("test").
+You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes, you can select all). If you are using the Swagger UI for the first time, you might be required to log in with a Confidential Client ID and Secret. For this, you will need to create a new confidential client with `*` as its **Allowed Scope**.
+
 > Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
 
 <br/><br/>
