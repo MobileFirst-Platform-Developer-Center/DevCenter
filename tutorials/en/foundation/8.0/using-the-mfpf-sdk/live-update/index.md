@@ -505,3 +505,5 @@ In the sample application you select a country flag and using Live Update the ap
 
 5. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
 6. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
+
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can update the bundled SDK (iOS) by running the command `pod update` from the project's root folder.

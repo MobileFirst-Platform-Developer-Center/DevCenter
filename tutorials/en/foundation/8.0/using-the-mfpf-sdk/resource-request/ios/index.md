@@ -194,7 +194,7 @@ Use the `response` and `error` objects to get the data that is retrieved from th
 ## For more information
 > For more information about WLResourceRequest, refer to the user documentation.
 
-<img alt="Image of the sample application" src="resource-request-success-ios.png" style="float:right"/>
+<img alt="Image of the sample application" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
 ## Sample application
 The ResourceRequestSwift project contains an iOS application, implemented in Swift, that makes a resource request using a Java adapter.  
 The adapter Maven project contains the Java adapter used during the resource request call.
@@ -203,10 +203,13 @@ The adapter Maven project contains the Java adapter used during the resource req
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
 
 ### Sample usage
+
 1. From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 2. The sample uses the `JavaAdapter` contained in the Adapters Maven project. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the adapter](../../../adapters/creating-adapters/).
 3. To test or debug an adapter, see the [testing and debugging adapters](../../../adapters/testing-and-debugging-adapters) tutorial.
 4. Import the project to Xcode, and run the sample by clicking the **Run** button.
+
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can update the bundled SDK by running the command `pod update` from the project's root folder.
 
 #### Note about iOS 9:
 
