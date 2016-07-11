@@ -8,7 +8,7 @@ tags:
 version:
 - 8.0
 author:
-  name: Idan Adar
+  name: Sachin Nayak
 ---
 
 If you've created a new truststore and use it while deploying the Mobile Foundation service on Bluemix, MobileFirst Server may fail to load the runtime.   
