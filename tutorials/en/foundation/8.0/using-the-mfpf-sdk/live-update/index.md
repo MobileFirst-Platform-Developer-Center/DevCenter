@@ -437,24 +437,24 @@ curl -X PUT -d @schema.txt --user admin:admin http://localhost:9080/mfpadmin/man
 
 * Replace "admin:admin" with your own (default is "admin")
 * Replace "localhost" and the port number with your own if needed
-* Replace the application identifier "com.sample.LiveUpdateDemo" with your own application's.
+* Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
 
 #### Export segment(s)
 
 ```bash
-curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/segment > segments.txt
+curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment > segments.txt
 ```
 
 #### Import segment(s)
 If you have a single segment: 
 
 ```bash
-curl -X POST -d @segments.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/schema > --header "Content-Type:application/json"
+curl -X POST -d @segments.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema > --header "Content-Type:application/json"
 ```
 
 * Replace "admin:admin" with your own (default is "admin")
 * Replace "localhost" and the port number with your own if needed
-* Replace the application identifier "com.sample.LiveUpdateDemo" with your own application's.
+* Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
 
 If you have multiple segments, you can use for example this bash script that you can alter.  
 If Windows is used as the workstation, Python may need to be installed first.
@@ -466,7 +466,7 @@ counter=0
 while [ $segments_number -gt $counter ]
 do
    segment=$(cat segments.txt | python -c 'import json,sys;obj=json.load(sys.stdin);data_str=json.dumps(obj["items"]['$counter']);print data_str;')
-   echo $segment | curl -X POST -d @segments.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.com.sample.LiveUpdateDemo/segment --header "Content-Type:application/json"
+   echo $segment | curl -X POST -d @segments.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment --header "Content-Type:application/json"
    ((counter++))
 done
 ```
