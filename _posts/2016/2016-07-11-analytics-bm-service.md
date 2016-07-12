@@ -13,15 +13,15 @@ author:
 
 IBM MobileFirst Platform Foundation (MFP) capabilities are now available on Bluemix as a service called [Mobile Foundation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/). Mobile Foundation service provides you with all the capabilities that you need to build secure mobile apps using any technology of your choice for all the popular mobile OSs.
 
-A new experimental Bluemix service was launched in April called [Mobile Analytics](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/30/mobile-analytics-for-bluemix-service/). Mobile Analytics provides the developer valuable insight into the runtime of the app. It can provide you with app analytics like how many devices have connected, what is the OS breakdown, crash reporting  etc. etc. My personal favourite - client side developer logs. This is how I get to know if the code is falling in catch blocks where "you should never be here!". That too when its running on a users phone! We know all too well the app performs at its best when running on the  developers phone ;-)
+A new experimental Bluemix service was launched in April, called [Mobile Analytics](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/30/mobile-analytics-for-bluemix-service/). Mobile Analytics provides the developer valuable insights into the runtime of the app. It also provides you with app analytics, such as  how many devices have connected, what is the OS breakdown, crash reports  etc. etc. My personal favourite - client side developer logs. This is how I get to know if the code is falling in catch blocks where "you should never be here!". That too when its running on a user's phone! We know all too well the app performs at its best when running on the developers phone ;-)
 
-Though the Mobile Analytics service is advertised (and [documented](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) ) to be used only with its own client side SDKs, you can actually connect a Mobile Foundation server (or an on prem IBM MobileFirst Platform Server) to pump the events to this server! The MFP SDK that you install as part of integrating to MFP is enough to generate the analytics data - no additional SDK is needed. 
+Though the Mobile Analytics service is advertised (and [documented](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) ) to be used only with its own client side SDKs, you can actually connect a MobileFirst Server (or an on prem IBM MobileFirst Platform Server) to pump events to this service! The MFP SDK that you install as part of integrating to MFP is enough to generate the analytics data - no additional SDK is required. 
 
-If you are familiar to the Analytics server of MFP, you will see the similiarities. Lets see how you can configure a MFP server to the Mobile Analytics service.
+If you are familiar with the Analytics feture of MFP, you will see the similiarities. Let's see how you can configure a MFP server to send nalytics data to the Bluemix Mobile Analytics service.
 
 
 ## Create an instance of the Mobile Analytics service
-Login to your bluemix.net account and go to "All items". Then click the + button on the top right. This lists the catalog. Scroll all the wayyyy to the bottom to see a hidden treasure - a link called "Bluemix Experimental Services". Under the Mobile section you will see the "Mobile Analytics" service! phew! Click on it - give it a name - and you are ready to get started. Click on the Mobile Analytics instance tile you just created and go to the tab "Service Credentials". Here you will see a json with the access key. You will need this later
+Login to your bluemix.net account and go to "All items". Then click the + button on the top right. This lists the catalog. Scroll all the way to the bottom to see a hidden treasure - a link called "Bluemix Experimental Services". Under the Mobile section you will see the "Mobile Analytics" service! phew! Click on it - give it a name - and you are ready to get started. Click on the Mobile Analytics instance tile you just created and go to the tab "Service Credentials". Here you will see a json with the access key. Make a note as you will need this later.
 
 ```json
 {
@@ -32,9 +32,9 @@ Login to your bluemix.net account and go to "All items". Then click the + button
 ```
 
 ## Create an instance of the Mobile Foundation service
-Now you can go to the catalog again, and in the "Mobile" section of the main catalog you will see the "Mobile Foundation" service. Pick a plan, give it a name - you know the drill now. On the landing page of this service, click on "Start server with advanced configuration". If you have already created a instance of the Mobile Foundation service, just go to the "Settings" tab.
+Now you go back to the catalog, and in the "Mobile" section of the main catalog you will see the "Mobile Foundation" service. Pick a plan, give it a name - you know the drill now. On the landing page of this service, click on "Start server with advanced configuration". If you have already created an instance of the Mobile Foundation service, just go to the "Settings" tab.
 
-Here go to the go to the JNDI section in the "Server Configuration" tab. If its already blank, click on "Copy from sample". You will see something like below. 
+Here, go to the go to the JNDI section in the "Server Configuration" tab. If its already blank, click on "Copy from sample". You will see something like below. 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -75,7 +75,7 @@ Here go to the go to the JNDI section in the "Server Configuration" tab. If its 
 
 3. Optionally specify the `${env.MFPF_RUNTIME_ROOT}/mfp.analytics.console.url`  Here specify the *Instance ID*, this is the Analytics service instance ID - that you get from the analytics service dashboard URL - This is needed only if you want the direct link from the MFP console to the analytics console.
 
-Now your JNDI entries would look like following
+Now your JNDI entries should look like following
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -103,14 +103,13 @@ Now your JNDI entries would look like following
 <!--   <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.username" value="admin"/> -->
 <!--  <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.password" value="admin"/> -->
 <!-- If the mfp.analytics.url is to Bluemix Mobile Analytics service, uncomment the following and enter the correct value -->
- <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/bms.analytics.apikey" value="your analytics access key"/> 
+  <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/bms.analytics.apikey" value="your analytics access key"/> 
 
 </server>
 
 ```
-Now hit on "Start Advanced Server" at the bottom of the page. 
-Couple of minutes later you will get a MFP server with Mobile Analytics configured. 
+Now hit on "Start Advanced Server" at the bottom of the page. Couple of minutes later you will get an MFP server instance with Mobile Analytics configured. 
 
 ## Analytics
-Once you start using the apps connected to the Mobile First server instance - the analytics data starts getting published. If you want to see more in the analytics service - please leave a comment at the bottom of the [analytics announcement article](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/30/mobile-analytics-for-bluemix-service/) .
+Once you start using the apps connected to the Mobile First server instance - the analytics data starts getting published to the Analytics service. If you want to see more in the analytics service - please leave a comment at the bottom of the [analytics announcement article](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/30/mobile-analytics-for-bluemix-service/) .
 
