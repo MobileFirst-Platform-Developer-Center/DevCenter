@@ -13,7 +13,7 @@ downloads:
 This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are mandatory: `validateCredentials` and `createChallenge`.  
 The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
 
-This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client is blocked for 60 seconds).
+This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client app instance is blocked for 60 seconds).
 
 **Prerequisites:** Make sure to read the [Authorization concepts](../../authorization-concepts/) and [Creating a Security Check](../../creating-a-security-check) tutorials.
 

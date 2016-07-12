@@ -11,14 +11,14 @@ Application Center facilitates sharing mobile applications:
 * You can **share feedback and rating** information.  
 * You can use access control lists to limit who can install applications.
 
-Application Center works with MobileFirst apps and non-MobileFirst apps, and supports any **iOS, Android**, **BlackBerry 6/7** and **Windows/Phone 8.x** applications.
+Application Center works with MobileFirst apps and non-MobileFirst apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
 
 You can use Application Center in different contexts. For example:
 
 * As an enterprise app store across an organization.
 * During development to distribute applications within a team.
 
-> **Note:** to build the iOS AppCenter Installer application, MobileFirst 7.1 is required
+> **Note:** to build the iOS AppCenter Installer application, MobileFirst 7.1 is required.
 
 #### Jump to:
 
@@ -38,11 +38,11 @@ Application Center is installed as part of the installation of MobileFirst Serve
 
 If you do not have a database installed, the installation process can also install an Apache Derby database. However, using the Derby database is not recommended for production scenarios.
 
-1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server. Fore more information
+1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server.
 
     > For more information, see the topic about installing MobileFirst Server, in the user documentation.
 
-    Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purpose, provided that self-signed CA certificates are distributed to devices.
+    Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purposes, provided that self-signed CA certificates are distributed to devices.
 
     > For more information, see the topic about configuring Secure Sockets Layer (SSL), in the user documentation.
 
@@ -67,32 +67,32 @@ The mobile client is delivered as a compiled application (APK) and is located at
 ### For iPad and iPhone
 
 1. Compile and sign the client application provided in source code. This is mandatory.
-    
+
 2. In MobileFirst Studio, open the IBMAppCenter Project at: **install_dir/ApplicationCenter/installer**
-    
+
 3. Use **Run As > Run on MobileFirst Development Server** to build the project.
-    
+
 4. Use Xcode to build and sign the application with your Apple iOS Enterprise profile.  
-You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As > Xcode project** (which will generate the project and then open it in Xcode).
+You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As > Xcode project**. This action generats the project and opens it in Xcode.
 
 ### For Blackberry
 
 * To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java™ plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
-    
+
 A BlackBerry project is provided in: **install_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
-    
+
 ### For Windows Phone 8
 
 1.  Register a company account with Microsoft.  
 Application Center manages only company applications that are signed with the company certificate that comes with your company account.
-    
+
 2. The Windows Phone version of the mobile client is included at: **install_dir/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap**
 
 * Make sure that also the Application Center mobile client is signed with this company certificate.
-    
+
 * To install company applications on a device, first enroll the device with the company by installing a company enrollment token.
 
-> For more information about company accounts and enrollment tokens, see the [Microsoft Developer website > Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) page
+> For more information about company accounts and enrollment tokens, see the [Microsoft Developer website > Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) page.
 
 > For more information about how to sign Windows Phone mobile client applications, see the [Microsoft Developer website](http://dev.windows.com/en-us/develop).
 
@@ -104,7 +104,7 @@ Application Center manages only company applications that are signed with the co
 ### For Windows Store Apps for Windows 8.1 Pro
 
 * The **install_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file contains the executable of the Application Center client. Distribute this file to the client computer and unzip it. It contains the executable program.
-    
+
 * Installing a Windows Store app (a file of type `appx`) without using Microsoft Windows Store is called <em>sideloading</em> an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
 
 ## Managing applications in the Application Center console
@@ -118,14 +118,14 @@ Use the Application Center console to manage applications in the catalog in the 
 * Restrict the access of an application to specific users or groups of users
 * Read the reviews for each application
 * Review registered users and devices
-    
+
 ### Adding new applications to the store
 
 ![Image of adding apps to the app center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
 To add new applications to the Store:
 
-1. Open the Application Center console. 
+1. Open the Application Center console.
 2. Click **Add application**.
 3. Select an application file:
     * `.ipa`: iOS
@@ -135,7 +135,7 @@ To add new applications to the Store:
     * `.appx`: Windows Store 8.x
 
 * Click **Next**.
-    
+
     In the Application Details views, you can review the information about the new application and enter further information such as the description. You can return to this view later for all applications in the catalog.
 
     ![Image of application details screen]({{ site.baseurl }}/assets/backup/appDetails1.png)
@@ -151,10 +151,10 @@ By default, an application can be installed by any authorized user of the store.
 ### Restricting access to a group of users
 To restrict access to a group of users:
 
-1. In the catalog view, click the **unrestricted link** that is next to the application name. The Installation Access Control page opens. 
-2. Select **Access control enabled**. You can now enter the list of users or groups that are authorized to install the application. 
+1. In the catalog view, click the **unrestricted link** that is next to the application name. The Installation Access Control page opens.
+2. Select **Access control enabled**. You can now enter the list of users or groups that are authorized to install the application.
 3. If you have configured LDAP, add users and groups that are defined in the LDAP repository.
-    
+
 You can also add applications from public app stores such as Google Play or Apple App Store by entering their URLs.
 
 ## The Application Center mobile client
@@ -175,7 +175,7 @@ You must add Application Center mobile client applications to the catalog.
 5. Click **Done** to add the Application Center app to the catalog.
 
 The Application Center client for Windows 8.1 Pro does not need to be added to the catalog. This client is a regular Windows `.exe` program contained in the **install_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file. You can simply copy it to the client computer.
-    
+
 ### Windows Phone 8
 On Windows Phone 8, you must also install the enrollment token that you received with your company account to the Application Center console, so that users can enroll their devices. You use the Application Center Settings page, which you can open through the gear icon.
 
@@ -208,7 +208,7 @@ To log in to the mobile client:
 2. Enter the host name or IP address of the server.
 3. In the **Server port** field, enter the port number if it is not the default one (`9080`).
 4. In the **Application context** field, enter the context: `applicationcenter`.
-    
+
 ![Login screen]({{ site.baseurl }}/assets/backup/login.png)
 
 ### Application Center mobile client views
@@ -231,7 +231,7 @@ The **install_dir/ApplicationCenter/tools** directory contains all the files tha
 * `json4jar`: the library for the JSON format that is required by the upload tool.
 * `build.xml`: a sample Ant script that you can use to upload a single file or a sequence of files to Application Center.
 * `acdeploytool.sh` and `acdeploytool.bat`: Simple scripts to call Java with the `applicationcenterdeploytool.jar` file.
-    
+
 For example, to deploy an application `app.apk` file to the store in `localhost:9080/applicationcenter` with user ID `demo` and password `demo`, write:
 
 ```bash

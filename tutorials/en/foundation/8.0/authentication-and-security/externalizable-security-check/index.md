@@ -9,9 +9,9 @@ weight: 5
 The abstract `ExternalizableSecurityCheck` class implements the `SecurityCheck` interface and handles two important aspects of the security check functionality: externalization and state management.
 
 * Externalization - this class implements the `Externalizable` interface, so that the derived classes don't need to implement it themselves.
-* State management - this class predefined a `STATE_EXPIRED` state that means the security check is expired and its state will not be preserved. The derived classes need to define other states supported by their security check.
+* State management - this class predefines a `STATE_EXPIRED` state, which means that the security check is expired and its state is not preserved. The derived classes need to define other states supported by their security check.
 
-Three methods are required to be implemented by the subclasses: `initStateDurations`, `authorize` and `introspect`.
+Three methods are required to be implemented by the subclasses: `initStateDurations`, `authorize`, and `introspect`.
 
 This tutorial explains how to implement the class and demonstrates how to manage states.
 
@@ -25,7 +25,7 @@ This tutorial explains how to implement the class and demonstrates how to manage
 * [The RegistrationContext Object](#the-registrationcontext-object)
 
 ## The initStateDurations Method
-The `ExternalizableSecurityCheck` defines an abstract method called `initStateDurations`. The subclasses must implement that method providing the names and durations for all states supported by their security check. The duration values usually come from the security check configuration.
+The `ExternalizableSecurityCheck` defines an abstract method called `initStateDurations`. The subclasses must implement that method by providing the names and durations for all states supported by their security check. The duration values usually come from the security check configuration.
 
 ```java
 private static final String SUCCESS_STATE = "success";
@@ -48,7 +48,7 @@ protected void setState(String name)
 ```java
 public String getState()
 ```
-In the following example we simply check if the user is logged-in and return success or failure respectively:
+The following example simply checks whether the user is logged-in and returns success or failure accordingly:
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -68,7 +68,7 @@ The `AuthorizationResponse.addSuccess` method adds the success scope and its exp
 
 * The scope granted by the security check.
 * The expiration of the granted scope.  
-The `getExpiresAt` helper method returns the time when the current state will be expired, or 0 if the current state is null:
+The `getExpiresAt` helper method returns the time at which the current state expires, or 0 if the current state is null:
 
     ```java
     public long getExpiresAt()
@@ -86,8 +86,8 @@ The `AuthorizationResponse.addChallenge` method adds a challenge to the response
 * A challenge `Map` object.
 
 ## The introspect Method
-The `SecurityCheck` interface defines a method called `introspect`. This method should make sure that the security check is in the state that grants the requested scope. If the scope is granted, the security check should report the granted scope, its expiration, and a custom introspection data to the result parameter. If the scope is not granted, the security check does noting.  
-This method may change the state of the security check and/or the client registration record.
+The `SecurityCheck` interface defines a method called `introspect`. This method must make sure that the security check is in the state that grants the requested scope. If the scope is granted, the security check must report the granted scope, its expiration, and a custom introspection data to the result parameter. If the scope is not granted, the security check does nothing.  
+This method might change the state of the security check and/or the client registration record.
 
 ```java
 public void introspect(Set<String> checkScope, IntrospectionResponse response) {
@@ -98,10 +98,10 @@ public void introspect(Set<String> checkScope, IntrospectionResponse response) {
 ```
 
 ## The AuthorizationContext Object
-The `ExternalizableSecurityCheck` class provides the `AuthorizationContext authorizationContext` object is used for storing transient data associated with the current client for the security check.  
+The `ExternalizableSecurityCheck` class provides the `AuthorizationContext authorizationContext` object which is used for storing transient data associated with the current client for the security check.  
 Use the following methods to store and obtain data:
 
-* Get authenticated user set by this security check for the current client:
+* Get the authenticated user set by this security check for the current client:
 
     ```java
     AuthenticatedUser getActiveUser();
@@ -113,10 +113,10 @@ Use the following methods to store and obtain data:
     ```
 
 ## The RegistrationContext Object
-The `ExternalizableSecurityCheck` class provides the `RegistrationContext registrationContext` object is used for storing persistent/deployment data associated with the current client.  
+The `ExternalizableSecurityCheck` class provides the `RegistrationContext registrationContext` object which is used for storing persistent/deployment data associated with the current client.  
 Use the following methods to store and obtain data:
 
-* Get the user registered by this security check for the current client:
+* Get the user that is registered by this security check for the current client:
 
     ```java
     AuthenticatedUser getRegisteredUser();
@@ -141,6 +141,6 @@ Use the following methods to store and obtain data:
     ```java
     List<ClientData> findClientRegistrationData(ClientSearchCriteria criteria);
     ```
-    
+
 ## Sample Application
 For a sample that implements the `ExternalizableSecurityCheck`, see the [Enrollment](../enrollment) tutorial.
