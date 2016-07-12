@@ -11,11 +11,11 @@ author:
   name: Ajay Chebbi
 ---
 
-IBM MobileFirst Platform Foundation (MFP) capabilities are now available on Bluemix as a service called [Mobile Foundation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/). Mobile Foundation service provides you with all the capabilities that you need to build secure mobile apps using any technology of your choice for all the popular mobile OSs.
+IBM MobileFirst Foundation 8.0 capabilities are now available on Bluemix as a service called [Mobile Foundation](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/). Mobile Foundation service provides you with all the capabilities that you need to build secure mobile apps using any technology of your choice for all the popular mobile OSs.
 
 A new experimental Bluemix service was launched in April, called [Mobile Analytics](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/30/mobile-analytics-for-bluemix-service/). Mobile Analytics provides the developer valuable insights into the runtime of the app. It also provides you with app analytics, such as  how many devices have connected, what is the OS breakdown, crash reports  etc. etc. My personal favourite - client side developer logs. This is how I get to know if the code is falling in catch blocks where "you should never be here!". That too when its running on a user's phone! We know all too well the app performs at its best when running on the developers phone ;-)
 
-Though the Mobile Analytics service is advertised (and [documented](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) ) to be used only with its own client side SDKs, you can actually connect a MobileFirst Server (or an on prem IBM MobileFirst Platform Server) to pump events to this service! The MFP SDK that you install as part of integrating to MFP is enough to generate the analytics data - no additional SDK is required. 
+Though the Mobile Analytics service is advertised (and [documented](https://new-console.ng.bluemix.net/docs/services/mobileanalytics/index.html) ) to be used only with its own client side SDKs, you can actually connect a MobileFirst Server (or an on prem MobileFirst Server) to pump events to this service! The MFP SDK that you install as part of integrating to MFP is enough to generate the analytics data - no additional SDK is required. 
 
 If you are familiar with the Analytics feture of MFP, you will see the similiarities. Let's see how you can configure a MFP server to send nalytics data to the Bluemix Mobile Analytics service.
 
