@@ -449,7 +449,7 @@ curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runti
 If you have a single segment: 
 
 ```bash
-curl -X POST -d @segment.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/schema > --header "Content-Type:application/json"
+curl -X POST -d @segments.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.LiveUpdateDemo/schema > --header "Content-Type:application/json"
 ```
 
 * Replace "admin:admin" with your own (default is "admin")
@@ -466,7 +466,7 @@ counter=0
 while [ $segments_number -gt $counter ]
 do
    segment=$(cat segments.txt | python -c 'import json,sys;obj=json.load(sys.stdin);data_str=json.dumps(obj["items"]['$counter']);print data_str;')
-   echo $segment | curl -X POST -d @- --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.com.sample.LiveUpdateDemo/segment --header "Content-Type:application/json"
+   echo $segment | curl -X POST -d @segments.txt --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.com.sample.LiveUpdateDemo/segment --header "Content-Type:application/json"
    ((counter++))
 done
 ```
