@@ -35,7 +35,8 @@ IBM MobileFirst Foundation's **JSONStore** is an optional client-side API provid
 To add JSONStore plug-in to your Cordova application:
 
 1. Open a **Command-line** window and navigate to your Cordova project folder.
-3. Run the command: `cordova plugin add cordova-plugin-mfp-jsonstore`.
+2. Run the command: `cordova plugin add cordova-plugin-mfp-jsonstore`.
+3. Run the command: `cordova plugin add cordova-plugin-mfp-encrypt-utils`.
 
 ![Add JSONStore feature](jsonstore-add-plugin.png)
 
