@@ -36,7 +36,6 @@ To add JSONStore plug-in to your Cordova application:
 
 1. Open a **Command-line** window and navigate to your Cordova project folder.
 2. Run the command: `cordova plugin add cordova-plugin-mfp-jsonstore`.
-3. Run the command: `cordova plugin add cordova-plugin-mfp-encrypt-utils`.
 
 ![Add JSONStore feature](jsonstore-add-plugin.png)
 
@@ -220,6 +219,12 @@ WL.JSONStore.init(collections, options).then(function () {
     // handle failure
 });
 ```
+
+#### Encryption
+*iOS only*. By default, the MobileFirst Cordova SDK for iOS relies on iOS-provided APIs for encryption. If you prefer to replace this with OpenSSL:
+
+1. Add the cordova-plugin-mfp-encrypt-utils plug-in: `cordova plugin add cordova-plugin-mfp-encrypt-utils`.
+2. In the applicative logic, use: `WL.SecurityUtils.enableNativeEncryption(false)` to enable the OpenSSL option.
 
 ### Multiple User Support
 You can create multiple stores that contain different collections in a single MobileFirst application. The `init` function can take an options object with a username. If no username is given, the default username is **jsonstore**.
