@@ -519,7 +519,7 @@ In the sample application you select a country flag and using Live Update the ap
 1. Download and deploy the Live Update adapter [as instructed in the tutorial](#adding-live-update-to-mobilefirst-server).
 2. Add a scope mapping for **configuration-user-login** in **MobileFirst Operations Console → [your application] → Security tab → Scope-Elements Mapping**.
 3. Import the Live Update schema for the sample
-  * [Click to download](https://www.github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/blob/release80/schema.txt) the schema for the sample
+  * [Click to download](https://raw.githubusercontent.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/release80/schema.txt) the schema for the sample
   * [Follow the instructions in the tutorial](#import-export) to upload the schema
 3. Add segments: In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, add the following segments IDs:
   - DE
