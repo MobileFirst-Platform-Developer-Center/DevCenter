@@ -2,7 +2,7 @@
 title: Configuring Mobile Analytics and Mobile Foundation Bluemix services
 date: 2016-07-11
 tags:
-- MobileFirst_Platform
+- MobileFirst_Foundation
 - Bluemix
 - Mobile_Foundation
 version:
