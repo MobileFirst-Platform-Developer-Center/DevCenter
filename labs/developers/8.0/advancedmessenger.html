@@ -1,0 +1,472 @@
+---
+layout: labs
+title: MobileFirst Foundation 8.0 Developer Labs
+tabs:
+  - name: Introduction
+    path: /labs/developers/8.0/intro/
+  - name: Setup
+    path: /labs/developers/8.0/setup/
+  - name: Advanced Messenger
+    path: /labs/developers/8.0/advancedmessenger
+---
+<div>
+<img alt="logo" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/logo.png">
+</div>
+
+<div class="sizer">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iDe2EhiOn94"></iframe>
+    </div>
+</div>
+
+<br />
+
+<h4 class="no-anchor">Part 1. Lab series highlights</h4>
+<ul>
+  <li>Moving existing app to MobileFirst Platform Foudnation 8</li>
+  <li>Uses Ionic v2 beta with Typescript</li>
+  <li>Development using CLI and MS Visual Studio Code</li>
+  <li>Using Java and Javascript adapters for backend calls</li>
+  <li>User authentication</li>
+  <li>Push notifications messaging</li>
+  <li>JSONStore</li>
+  <li>Uses Google Maps Distance Matrix API</li>
+  <li>Uses Node.js as mock server</li>
+</ul>
+
+<p>Total labs: 5</p>
+<p>Time to complete: up to 4 hours</p>
+<br>
+<div>
+<img alt="lab session for 8.0" src="{{site.baseurl}}/labs/developers/8.0/advancedmessenger/screenstory.png">
+</div>
+
+<br>
+<h4 class="no-anchor">Pre-requisites:</h4>
+<p>Follow the <a href="{{site.baseurl}}/labs/developers/8.0/setup/">8.0 Labs required setup</a> to install Ubuntu image, install the MobileFirst Foundation devkit, archetypes and CLI and register at Bluemix</p>
+<p>You can download videos for offline usage from <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a> (2.62 - 2.66)</p>
+<br>
+
+<div class="panel-group accordion" id="accordionFirst" role="tablist" aria-multiselectable="true">
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Adding MFP SDK and registering app on server</a>
+            </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body no-anchor">
+                <b>Description:</b> Install MFP client-side sdk for cordova, register application and perform a proper init by catching SDK init event. Get familiar with basic application bootstrap process.
+                <br>
+                <b>Time to complete:</b> 30 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.62
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/I_dQxp-9WfY"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Repository URL</p>
+                <pre>https://github.com/andriivasylchenko/advancedMessenger</pre>
+                <p>Catching events</p>
+                <pre>
+renderer.listenGlobal('document', 'mfpjsloaded', () => {
+  console.log('--> MFP API init complete');
+  this.MFPInitComplete();
+})
+                </pre>
+                <p>Init complete function</p>
+                <pre>
+MFPInitComplete(){
+  console.log('--> MFPInitComplete function called')
+  this.rootPage = TabsPage;
+}
+                </pre>
+                <br>
+                <!-- <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.62">github repository branch</a>
+                <br> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingTwo">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Using Java and Javascript adapters to perform backend calls</a>
+            </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+            <div class="panel-body">
+                <b>Description:</b> Create MFP HTTP adapters and modify application to perform backend calls though WLResourceRequest API using adapters. Get familiar with Java and Javascript adapter structure, custom properties
+                <br>
+                <b>Time to complete:</b> 40 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.63
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/5YfqKFETZfU"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Adapters examples repository URL</p>
+                <pre>https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80</pre>
+                <p>Employee Javascript adapter getRating()</p>
+                <pre>
+function getRating() {
+
+	var endpoint = MFP.Server.getPropertyValue("endpoint");
+	var input = {
+	    method : 'get',
+	    returnedContentType : 'json',
+	    path : endpoint
+	};
+
+	return MFP.Server.invokeHttp(input);
+}
+                </pre>
+                <p>News Java adapter JSONObject parsing</p>
+                <pre>
+JSONObject result = JSONObject.parse(JSONResponse.getEntity().getContent());
+String json = result.toString();
+                </pre>
+                <p>Employee provider load function</p>
+                <pre>
+load() {
+  console.log('---> called EmployeeProvider load');
+  if (this.data) {
+    return Promise.resolve(this.data);
+  }
+
+  return new Promise(resolve => {
+    let dataRequest = new WLResourceRequest("/adapters/employeeAdapter/getRating", WLResourceRequest.GET);
+
+    dataRequest.send().then((response) => {
+      console.log('--> data loaded from adapter', response);
+      this.data = response.responseJSON.results;
+      resolve(this.data)
+    }, (failure) => {
+      console.log('--> failed to load data', failure);
+      resolve('error')
+    })
+  });
+}
+                </pre>
+                <p>News provider load function</p>
+                <pre>
+load() {
+  console.log('---> called NewsProvider load');
+
+  if (this.data) {
+    return Promise.resolve(this.data);
+  }
+
+  return new Promise(resolve => {
+    let dataRequest = new WLResourceRequest("/adapters/JavaHTTP/", WLResourceRequest.GET);
+
+    dataRequest.send().then((response) => {
+      console.log('--> data loaded from adapter', response);
+      this.data = response.responseJSON.news;
+      resolve(this.data)
+    }, (failure) => {
+      console.log('--> failed to load data', failure);
+      resolve('error')
+    })
+  });
+}
+                </pre>
+                <br>
+                <!-- <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.63">github repository branch</a>
+                <br> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingThree">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Securing backend calls with user authentication </a>
+            </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+            <div class="panel-body">
+                <b>Description:</b>Create security check to validate user credentials and implement client-side handler to grab them. Secure adapter procedures with scope and map it to security check
+                <br>
+                <b>Time to complete:</b> 50 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.64
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/oZsOIX7T234"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>AuthInit function</p>
+                <pre>
+AuthInit(){
+  this.AuthHandler = WL.Client.createSecurityCheckChallengeHandler("UserLogin");
+  this.AuthHandler.handleChallenge = ((response) => {
+      console.log('--> inside handleChallenge');
+      if(response.errorMsg){
+        var msg = response.errorMsg + '<br>';
+        msg += 'Remaining attempts: ' + response.remainingAttempts;
+      }
+      this.displayLogin(msg);
+  })
+}
+                </pre>
+                <p>displayLogin function</p>
+                <pre>
+displayLogin(msg) {
+  let prompt = Alert.create({
+    title: 'Login',
+    message: msg,
+    inputs: [
+      {
+        name: 'username',
+        placeholder: 'Username'
+      },
+      {
+        name: 'password',
+        placeholder: 'Password',
+        type: 'password'
+      },
+    ],
+    buttons: [
+      {
+        text: 'Login',
+        handler: data => {
+          console.log('--> Trying to auth with user', data.username);
+
+          this.AuthHandler.submitChallengeAnswer(data);
+        }
+      }
+    ]
+  });
+  this.nav.present(prompt);
+}
+                </pre>
+                <p>Getting active nav</p>
+                <pre>
+ngAfterViewInit(){
+  this.nav = this.app.getActiveNav();
+}
+                </pre>
+                <br>
+                <!-- <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.64">github repository branch</a>
+                <br> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFour">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Add push notification capabilities to mobile app and configure server side to send push messages</a>
+            </h4>
+        </div>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-body">
+                <b>Description:</b> Using new Push API register device and subscribe for a custom tag to receive Push messages
+                <br>
+                <b>Time to complete:</b> 30 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.65
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/h9gkDtGBgLs"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Push provider</p>
+                <pre>
+import {Injectable} from '@angular/core';
+
+@Injectable()
+export class PushProvider {
+  data: any = null;
+  constructor() {}
+  init() {
+    console.log('--> PushProvider init called');
+
+    MFPPush.initialize(
+    function(success){
+      console.log('--> Push init success');
+
+      MFPPush.registerNotificationsCallback(pushNotificationReceived);
+
+      var options = {"phoneNumber": ""};
+
+      MFPPush.registerDevice(
+        options,
+        function(success){
+          console.log('--> Push registration success');
+          var tag = ['am'];
+
+          MFPPush.subscribe(
+            tag,
+            function(success){
+              console.log('--> Push subscribe success');
+            },
+            function(failure){
+              console.log('--> Push subscribe failure', failure);
+            }
+          )
+        },
+        function(failure){
+          console.log('--> Push registration failure', failure);
+        }
+      )
+    }, function(failure){
+      console.log('--> Push init failure', failure);
+    })
+
+    function pushNotificationReceived(message){
+      console.log('--> Push received', message);
+      alert(message.alert);
+    }
+  }
+}
+                </pre>
+                <br>
+                <!-- <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.65">github repository branch</a>
+                <br> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <h4 class="panel-title no-anchor">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Lab 2.66. Advanced Messenger. Adding JSONStore to hybrid mobile app</a>
+            </h4>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+            <div class="panel-body">
+                <b>Description:</b> Store news messages inside JSONStore and display them on news tab
+                <br>
+                <b>Time to complete:</b> 45 minutes
+                <br>
+                <b>Lab number for offline usage:</b> 2.66
+                <br>
+                <br>
+                <div class="sizer">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Ep6w1zXoI-k"></iframe>
+                    </div>
+                </div>
+
+                <br>
+                <b>Lab helpers:</b>
+                <br>
+                <p>Storage provider</p>
+                <pre>
+import {Injectable} from '@angular/core';
+
+
+@Injectable()
+export class StorageProvider {
+  data: any = null;
+  constructor() {}
+  init() {
+    console.log('--> JSONStore init function called');
+    let collections = {
+      news: {
+        searchFields: {text: 'string', date: 'string'}
+      }
+    }
+
+    WL.JSONStore.init(collections).then((success) => {
+      console.log('-->JSONStore init success')
+    }, (failure) => {
+      console.log('-->JSONStore init failed', failure)
+    })
+  }
+
+  put(data){
+    console.log('--> JSONStore put function called');
+    let collectionName = 'news';
+    let options = {
+      replaceCriteria: ['text', 'date'],
+      addNew: true,
+      markDirty: false
+    };
+
+    WL.JSONStore.get(collectionName).change(data, options).then((success) => {
+      console.log('--> JSONStore put success')
+    }, (failure) => {
+      console.log('--> JSONStore put failed', failure)
+    })
+  }
+
+  getAll() {
+    console.log('--> JSONStore get all function called');
+
+    return new Promise( resolve => {
+      let collectionName = 'news';
+      let options = {};
+
+      WL.JSONStore.get(collectionName).findAll(options).then((success) => {
+        console.log('-->JSONStore get docs success', success)
+        resolve(success);
+      }, (failure) => {
+        console.log('-->JSONStore get docs failed', failure)
+        resolve('error');
+      })
+    })
+  }
+}
+                </pre>
+                <p>News provider load function</p>
+                <pre>
+load() {
+  console.log('---> called NewsProvider load');
+    let dataRequest = new WLResourceRequest("/adapters/JavaHTTP/", WLResourceRequest.GET);
+
+    dataRequest.send().then((response) => {
+      console.log('--> data loaded from adapter', response);
+      this.data = response.responseJSON.news;
+      console.log('--> puttin data to JSONStore');
+      this.storage.put(this.data);
+    }, (failure) => {
+      console.log('--> failed to load data', failure);
+    })
+}
+                </pre>
+                <br>
+                <!-- <br>
+                Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.66">github repository branch</a>
+                <br> -->
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+<br>
+<br>
