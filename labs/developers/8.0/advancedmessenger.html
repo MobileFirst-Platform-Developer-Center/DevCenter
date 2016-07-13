@@ -21,7 +21,7 @@ tabs:
 
 <br />
 
-<h4 class="no-anchor">Part 1. Lab series highlights</h4>
+<h4 class="no-anchor">Lab highlights</h4>
 <ul>
   <li>Moving existing app to MobileFirst Platform Foudnation 8</li>
   <li>Uses Ionic v2 beta with Typescript</li>
@@ -34,7 +34,6 @@ tabs:
   <li>Uses Node.js as mock server</li>
 </ul>
 
-<p>Total labs: 5</p>
 <p>Time to complete: up to 4 hours</p>
 <br>
 <div>
@@ -43,7 +42,7 @@ tabs:
 
 <br>
 <h4 class="no-anchor">Pre-requisites:</h4>
-<p>Follow the <a href="{{site.baseurl}}/labs/developers/8.0/setup/">8.0 Labs required setup</a> to install Ubuntu image, install the MobileFirst Foundation devkit, archetypes and CLI and register at Bluemix</p>
+<p>Follow the <a href="{{site.baseurl}}/labs/developers/8.0/setup/">8.0 Labs required setup</a> section to install an Ubuntu image, install the MobileFirst Foundation devkit, archetypes and CLI and register at Bluemix.</p>
 <p>You can download videos for offline usage from <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a> (2.62 - 2.66)</p>
 <br>
 
@@ -52,12 +51,12 @@ tabs:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title no-anchor">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Adding MFP SDK and registering app on server</a>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Adding MobileFirst SDK and registering app on server</a>
             </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body no-anchor">
-                <b>Description:</b> Install MFP client-side sdk for cordova, register application and perform a proper init by catching SDK init event. Get familiar with basic application bootstrap process.
+                <b>Description:</b> Install MobileFirst client-side sdk for cordova, register application and perform a proper init by catching SDK init event. Get familiar with basic application bootstrap process.
                 <br>
                 <b>Time to complete:</b> 30 minutes
                 <br>
@@ -76,19 +75,20 @@ tabs:
                 <p>Repository URL</p>
                 <pre>https://github.com/andriivasylchenko/advancedMessenger</pre>
                 <p>Catching events</p>
-                <pre>
+{% highlight javascript %}
 renderer.listenGlobal('document', 'mfpjsloaded', () => {
-  console.log('--> MFP API init complete');
+  console.log('--> MobileFirst API init complete');
   this.MFPInitComplete();
 })
-                </pre>
+{% endhighlight %}
+
                 <p>Init complete function</p>
-                <pre>
+{% highlight javascript %}
 MFPInitComplete(){
   console.log('--> MFPInitComplete function called')
   this.rootPage = TabsPage;
 }
-                </pre>
+{% endhighlight %}
                 <br>
                 <!-- <br>
                 Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.62">github repository branch</a>
@@ -105,7 +105,7 @@ MFPInitComplete(){
         </div>
         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-body">
-                <b>Description:</b> Create MFP HTTP adapters and modify application to perform backend calls though WLResourceRequest API using adapters. Get familiar with Java and Javascript adapter structure, custom properties
+                <b>Description:</b> Create HTTP adapters and modify application to perform backend calls though WLResourceRequest API using adapters. Get familiar with Java and Javascript adapter structure, custom properties
                 <br>
                 <b>Time to complete:</b> 40 minutes
                 <br>
@@ -124,7 +124,7 @@ MFPInitComplete(){
                 <p>Adapters examples repository URL</p>
                 <pre>https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80</pre>
                 <p>Employee Javascript adapter getRating()</p>
-                <pre>
+{% highlight javascript %}
 function getRating() {
 
 	var endpoint = MFP.Server.getPropertyValue("endpoint");
@@ -136,14 +136,14 @@ function getRating() {
 
 	return MFP.Server.invokeHttp(input);
 }
-                </pre>
+{% endhighlight %}
                 <p>News Java adapter JSONObject parsing</p>
-                <pre>
+{% highlight javascript %}
 JSONObject result = JSONObject.parse(JSONResponse.getEntity().getContent());
 String json = result.toString();
-                </pre>
+{% endhighlight %}
                 <p>Employee provider load function</p>
-                <pre>
+{% highlight javascript %}
 load() {
   console.log('---> called EmployeeProvider load');
   if (this.data) {
@@ -163,9 +163,9 @@ load() {
     })
   });
 }
-                </pre>
+{% endhighlight %}
                 <p>News provider load function</p>
-                <pre>
+{% highlight javascript %}
 load() {
   console.log('---> called NewsProvider load');
 
@@ -186,7 +186,7 @@ load() {
     })
   });
 }
-                </pre>
+{% endhighlight %}
                 <br>
                 <!-- <br>
                 Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.63">github repository branch</a>
@@ -220,7 +220,7 @@ load() {
                 <b>Lab helpers:</b>
                 <br>
                 <p>AuthInit function</p>
-                <pre>
+{% highlight javascript %}
 AuthInit(){
   this.AuthHandler = WL.Client.createSecurityCheckChallengeHandler("UserLogin");
   this.AuthHandler.handleChallenge = ((response) => {
@@ -232,9 +232,9 @@ AuthInit(){
       this.displayLogin(msg);
   })
 }
-                </pre>
+{% endhighlight %}
                 <p>displayLogin function</p>
-                <pre>
+{% highlight javascript %}
 displayLogin(msg) {
   let prompt = Alert.create({
     title: 'Login',
@@ -263,13 +263,13 @@ displayLogin(msg) {
   });
   this.nav.present(prompt);
 }
-                </pre>
+{% endhighlight %}
                 <p>Getting active nav</p>
-                <pre>
+{% highlight javascript %}
 ngAfterViewInit(){
   this.nav = this.app.getActiveNav();
 }
-                </pre>
+{% endhighlight %}
                 <br>
                 <!-- <br>
                 Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.64">github repository branch</a>
@@ -303,7 +303,7 @@ ngAfterViewInit(){
                 <b>Lab helpers:</b>
                 <br>
                 <p>Push provider</p>
-                <pre>
+{% highlight javascript %}
 import {Injectable} from '@angular/core';
 
 @Injectable()
@@ -351,7 +351,7 @@ export class PushProvider {
     }
   }
 }
-                </pre>
+{% endhighlight %}
                 <br>
                 <!-- <br>
                 Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.65">github repository branch</a>
@@ -385,7 +385,7 @@ export class PushProvider {
                 <b>Lab helpers:</b>
                 <br>
                 <p>Storage provider</p>
-                <pre>
+{% highlight javascript %}
 import {Injectable} from '@angular/core';
 
 
@@ -441,9 +441,9 @@ export class StorageProvider {
     })
   }
 }
-                </pre>
+{% endhighlight %}
                 <p>News provider load function</p>
-                <pre>
+{% highlight javascript %}
 load() {
   console.log('---> called NewsProvider load');
     let dataRequest = new WLResourceRequest("/adapters/JavaHTTP/", WLResourceRequest.GET);
@@ -457,7 +457,7 @@ load() {
       console.log('--> failed to load data', failure);
     })
 }
-                </pre>
+{% endhighlight %}
                 <br>
                 <!-- <br>
                 Link to completed lab <a href="https://github.com/andriivasylchenko/advancedmessenger/tree/lab2.66">github repository branch</a>
@@ -465,8 +465,4 @@ load() {
             </div>
         </div>
     </div>
-
-  </div>
-
-<br>
-<br>
+</div>
