@@ -442,7 +442,7 @@ curl -X PUT -d @schema.txt --user admin:admin -H "Content-Type:application/json"
 #### Export segment(s)
 
 ```bash
-curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment > segments.txt
+curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment?embedObjects=true > segments.txt
 ```
 
 #### Import segment(s)
