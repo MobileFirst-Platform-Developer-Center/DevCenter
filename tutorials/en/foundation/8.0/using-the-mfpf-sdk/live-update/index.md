@@ -510,24 +510,19 @@ In the sample application you select a country flag and using Live Update the ap
 
 1. Download and deploy the Live Update adapter [as instructed in the tutorial](#adding-live-update-to-mobilefirst-server).
 2. Add a scope mapping for **configuration-user-login** in **MobileFirst Operations Console → [your application] → Security tab → Scope-Elements Mapping**.
-3. Import the Live Update schema for the sample
-  * [Click to download](https://raw.githubusercontent.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/release80/schema.txt) the schema for the sample
-  * [Follow the instructions in the tutorial](#import-export) to upload the schema
-3. Add segments: In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, add the following segments IDs:
-  - DE
-  - FR
-  - ES
-  - UK
-  - IT
-  - US
+3. [Import the Live Update schema and segments](#import-export) for the sample application:
+ * [schema](https://raw.githubusercontent.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/release80/schema.txt)
+ * [segments](https://raw.githubusercontent.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/release80/segments.txt)
 
-    Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
-
-4. In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs to **FR**.
-  * Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
-  * To see the map while using the app, you need to enable to `includeMap` feature.
-
-5. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
-6. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
+4. From a command-line window, navigate to the project's root folder and run the command `mfpdev app register` to register the application.
+5. In Xcode or Android Studio, run the app in the iOS Simulator/Android Emulator or a physical device.
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can update the bundled SDK (iOS) by running the command `pod update` from the project's root folder.
+
+#### Changing Live Update Settings
+Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
+
+In **MobileFirst Operations Console → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs, for example, to **FR**.
+  
+* Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
+* To see the map while using the app, you need to enable to `includeMap` feature.
