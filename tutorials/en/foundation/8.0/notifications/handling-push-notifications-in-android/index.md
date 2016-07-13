@@ -35,8 +35,9 @@ If the MobileFirst Native Android SDK is not already present in the project, fol
 1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
 
 	```bash
-	com.google.android.gms:play-services-gcm:8.4.0
+	com.google.android.gms:play-services-gcm:9.0.2
 	```
+    - **Note:** there is a [known Google defect](https://code.google.com/p/android/issues/detail?id=212879) preventing use of the latest Play Services version (currently at 9.2.0). Use a lower version.
 
     And:
 
