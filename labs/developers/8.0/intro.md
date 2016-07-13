@@ -23,11 +23,13 @@ Before starting the lab series make sure to first follow through the setup instr
     </div>
 </div>
 
-<br />
-In this lab session you will be:
+<br/>
+**Part 1:** In this lab you will be:
 
 * Bootstrapping hybrid Ionic 2 (with typescript) based app
 * Developing Java and Javascript HTTP adapters to perform backend calls
 * Securing backend calls with user authentication
 * Adding Push notifications capabilities and sending push using GCM
 * Adding JSONStore to organize local data storage
+
+Stay tuned for part 2!
