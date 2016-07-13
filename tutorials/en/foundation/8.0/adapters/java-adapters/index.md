@@ -74,17 +74,22 @@ These properties can be overridden in the **MobileFirst Operations Console → [
 
 ![Console properties](console-properties.png)
 
-**Pull and Push Configurations**
+#### Pull and Push Configurations
 
 Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
-To do so, use the `pull` and `push` commands described below. For the properties to be shared, you need to *change the default values given to the properties*.
+To do so, use the `pull` and `push` commands described below using either Maven or the MobileFirst CLI. For the properties to be shared, you need to *change the default values given to the properties*.
 
-Replace the **DmfpfConfigFile** placeholder with the actual value, for example: `config.json`. Then, run the command from the root folder of the adapter Maven project:
+Run the commands from the root folder of the adapter Maven project:
 
-* To **pull** the configurations file - `mvn adapter:configpull -DmfpfConfigFile=<path to a file that will store the configuration>`.
-* To **push** the configurations file - `mvn adapter:configpush -DmfpfConfigFile=<path to the file that stores the configuration>`.
+**Maven**  
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:** The file can be of any file extension and if the file does not exist, it will be created.
+* To **pull** the configurations file - `mvn adapter:configpull -DmfpfConfigFile=config.json`.
+* To **push** the configurations file - `mvn adapter:configpush -DmfpfConfigFile=config.json`.
+
+**MobileFirst CLI**  
+
+* To **pull** the configurations file - `mfpdev adapter pull`.
+* To **push** the configurations file - `mfpdev adapter push`.
 
 ### The java folder
 the Java sources of the JAX-RS 2.0 service are placed in this folder. JAX-RS 2.0 services are composed of an application class (which extends `com.ibm.mfp.adapter.api.MFPJAXRSApplication`) and the resources classes.
