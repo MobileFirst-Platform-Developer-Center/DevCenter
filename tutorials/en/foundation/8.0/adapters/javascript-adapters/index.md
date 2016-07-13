@@ -2,7 +2,7 @@
 layout: tutorial
 title: JavaScript Adapters
 show_children: true
-relevantTo: [ios,android,windowsphone8,windows8,cordova]
+relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 ## Overview

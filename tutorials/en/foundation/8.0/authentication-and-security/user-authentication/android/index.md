@@ -3,7 +3,7 @@ layout: tutorial
 title: Implementing the challenge handler in Android applications
 breadcrumb_title: Android
 relevantTo: [android]
-weight: 5
+weight: 4
 downloads:
   - name: Download PreemptiveLogin project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80
@@ -28,7 +28,7 @@ submitChallengeAnswer(credentials);
 
 You may also want to login a user without any challenge being received. For example, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
 
-You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Platform Foundation SDK includes the `login` API:
+You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `login` API:
 
 ```java
 WLAuthorizationManager.getInstance().login(securityCheckName, credentials, new WLLoginResponseListener() {
@@ -70,7 +70,7 @@ public void login(JSONObject credentials){
 ## Obtaining an access token
 Since this security check supports *remember me* functionality, it would be useful to check if the client is currently logged in, during the application startup.
 
-The MobileFirst Platform Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
+The MobileFirst Foundation SDK provides the `obtainAccessToken` API to ask the server for a valid token:
 
 ```java
 WLAuthorizationManager.getInstance().obtainAccessToken(scope, new WLAccessTokenListener() {
@@ -130,7 +130,7 @@ Here, `identity` has a key called `user` which itself contains a `JSONObject` re
 ```
 
 ## Logout
-The MobileFirst Platform Foundation SDK also provides a `logout` API to logout from a specific security check:
+The MobileFirst Foundation SDK also provides a `logout` API to logout from a specific security check:
 
 ```java
 WLAuthorizationManager.getInstance().logout(securityCheckName, new WLLogoutResponseListener() {
@@ -160,7 +160,7 @@ Both samples use the same `UserLogin` security check from the **SecurityCheckAda
 
 ### Sample usage
 
-* Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
     * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.

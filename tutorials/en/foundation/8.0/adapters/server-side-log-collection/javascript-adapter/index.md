@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Logging in JavaScript Adapters
-relevantTo: [ios,android,window,cordova]
+relevantTo: [ios,android,window,javascript]
 ---
 ## Overview
 This tutorial provides the required code snippets in order to add logging capabilities in a JavaScript adapter.

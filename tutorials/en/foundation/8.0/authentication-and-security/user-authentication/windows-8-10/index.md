@@ -26,13 +26,16 @@ In this example, `UserLoginSecurityCheck` expects *key:value*s called `username`
 
 `credentials` is a `JSONObject` containing `username`, `password` and `rememberMe`:
 
-```c#
-ChallengeHandler.challengeAnswer = credentials;
+```csharp
+public override void SubmitChallengeAnswer(object answer)
+{
+    challengeAnswer = (JObject)answer;
+}
 ```
 
 You may also want to login a user without any challenge being received. For example, showing a login screen as the first screen of the application, or showing a login screen after a logout, or a login failure. We call those scenarios **preemptive logins**.
 
-You cannot call the `challengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Platform Foundation SDK includes the `Login` API:
+You cannot call the `challengeAnswer` API if there is no challenge to answer. For those scenarios, the MobileFirst Foundation SDK includes the `Login` API:
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Login(String securityCheckName, JObject credentials);
@@ -60,7 +63,7 @@ public async void login(JSONObject credentials)
 ## Obtaining an access token
 Since this security check supports *remember me* functionality, it would be useful to check if the client is currently logged in, during the application startup.
 
-The MobileFirst Platform Foundation SDK provides the `ObtainAccessToken` API to ask the server for a valid token:
+The MobileFirst Foundation SDK provides the `ObtainAccessToken` API to ask the server for a valid token:
 
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
@@ -116,7 +119,7 @@ Here, `identity` has a key called `user` which itself contains a `JObject` repre
 ```
 
 ## Logout
-The MobileFirst Platform Foundation SDK also provides a `Logout` API to logout from a specific security check:
+The MobileFirst Foundation SDK also provides a `Logout` API to logout from a specific security check:
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Logout(securityCheckName);
@@ -137,8 +140,8 @@ Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapt
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80) the PreemptiveLoginWin10 project.
 
 ### Sample usage
-
-* Use either Maven or MobileFirst CLI to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
+* [Add the MobileFirst Windows SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/windows-8-10/#adding-the-sdk) to the sample.
+* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **ResourceAdapter** and **UserLogin** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `UserLogin` security check:
     * In the MobileFirst Operations Console, under **Applications** → **[your-application]** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `UserLogin`.

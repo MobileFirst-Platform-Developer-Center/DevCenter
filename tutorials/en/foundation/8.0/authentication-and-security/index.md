@@ -7,6 +7,6 @@ print_pdf: false
 weight: 6
 ---
 ## Overview
-Add layers of protection to your applications and resources by implementing MobileFirst-provided authentiction methods: security checks, application-authenticity, security filters and others.
+Add layers of protection to your applications and resources by implementing the authentication methods that are provided in MobileFirst Foundation: security checks, application authenticity, security filters, and others.
 
 To continue, select a tutorial:

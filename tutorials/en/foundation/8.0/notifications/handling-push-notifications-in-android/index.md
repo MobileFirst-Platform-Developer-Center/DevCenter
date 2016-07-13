@@ -5,7 +5,7 @@ relevantTo: [android]
 downloads:
   - name: Download Android Studio project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
-weight: 5
+weight: 6
 ---
 ## Overview
 Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
@@ -14,7 +14,7 @@ Before Android applications are able to handle any received push notifications, 
 
 * Make sure you have read the following tutorials:
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
-    * [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android)
+    * [Adding the MobileFirst Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android)
     * [Push Notifications Overview](../push-notifications-overview)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
@@ -28,25 +28,26 @@ Before Android applications are able to handle any received push notifications, 
 
 ## Notifications Configuration
 Create a new Android Studio project or use an existing one.  
-If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Platform Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android) tutorial.
+If the MobileFirst Native Android SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android) tutorial.
 
 ### Project setup
 
 1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
 
 	```bash
-	com.google.android.gms:play-services-gcm:8.4.0
+	com.google.android.gms:play-services-gcm:9.0.2
 	```
+    - **Note:** there is a [known Google defect](https://code.google.com/p/android/issues/detail?id=212879) preventing use of the latest Play Services version (currently at 9.2.0). Use a lower version.
 
     And:
 
 
     ```xml
     compile group: 'com.ibm.mobile.foundation',
-    name: 'ibmmobilefirstplatformfoundationPush',
-    version: '8.0.+',
-    ext: 'aar',
-    transitive: true
+            name: 'ibmmobilefirstplatformfoundationpush',
+            version: '8.0.+',
+            ext: 'aar',
+            transitive: true
     ```
     
     Or in a single line:
@@ -122,7 +123,7 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
 | [`isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
-| [`registerDevice(MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
 | [`getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
 | [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
 | [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
@@ -156,7 +157,7 @@ if (isSupported ) {
 Register the device to the push notifications service.
 
 ```java
-MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
+MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>() {
     @Override
     public void onSuccess(String s) {
         // Successfully registered

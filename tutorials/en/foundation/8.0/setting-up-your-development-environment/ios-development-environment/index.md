@@ -2,8 +2,8 @@
 layout: tutorial
 title: Setting up the iOS development environment
 breadcrumb_title: iOS environment
-relevantTo: [ios,cordova]
-weight: 2
+relevantTo: [ios,javascript]
+weight: 3
 ---
 ## Overview
 This tutorial explains the steps a developer needs to follow in order to be able to develop and test iOS applications. These steps include registering at Apple Developer and installing Xcode.
