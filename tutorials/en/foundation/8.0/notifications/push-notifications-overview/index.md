@@ -6,7 +6,7 @@ relevantTo: [ios,android,windows,cordova]
 weight: 1
 ---
 ## Overview
-IBM MobileFirst Foundation provides a unified set of API methods to send notifications to iOS, Android, Windows 8.1 Universal and Windows 10 UWP and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
+IBM MobileFirst Foundation provides a unified set of API methods to send notifications to iOS, Android, Windows 8.1 &amp;  Windows 10 UWP and Cordova (iOS, Android) applications. Continue reading to learn more on the available push support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
 
 #### Jump to:
 * [What is a Push Notification](#what-is-a-push-notification)
@@ -19,10 +19,10 @@ Notifications are received regardless of whether the application is currently ru
 
 ### Notifications can take several forms:
 
-* **Alert (iOS, Android)** -  a pop-up text message
-* **Badge (iOS)** - a graphical representation that allows a short text or image
-* **Banner (iOS)** - a disappearing pop-up text message at the top of the device display
-* **Sound (iOS, Android)** - a sound file playing when a notification is received
+* **Alert (iOS, Android, Windows)** -  a pop-up text message
+* **Sound (iOS, Android, Windows)** - a sound file playing when a notification is received
+* **Badge (iOS), Tile (Windows)** - a graphical representation that allows a short text or image
+* **Banner (iOS), Toast (Windows)** - a disappearing pop-up text message at the top of the device display
 * **Interactive (iOS 8 and above)** - action buttons inside the banner of a received notification
 * **Silent (iOS 8 and above)** - sending notifications without distrubing the user
 
