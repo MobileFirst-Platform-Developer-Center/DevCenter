@@ -13,7 +13,7 @@ version:
 - 6.1
 - 6.0
 author:
-  name: Idan Adar
+  name: Beery Holstein
 ---
 iOS 10 may be announced in Apple's upcoming [World Wide Developer Conference](https://developer.apple.com/wwdc/) next week (June 13th - 17th).  
 **Update:** [announced](https://developer.apple.com/ios/)!
