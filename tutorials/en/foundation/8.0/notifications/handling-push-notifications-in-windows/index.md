@@ -5,14 +5,14 @@ breadcrumb_title: Handling Push Notifications in Windows
 relevantTo: [windows]
 weight: 7
 downloads:
-  - name: Download Visual Studio Project
+  - name: Download Windows 8.1 Universal Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
-  - name: Download Visual Studio Project
+  - name: Download Windows 10 UWP Project
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 
 ---
 ## Overview
-MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Native Windows 8 and Windows 10 UWP applications using Csharp.
+MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
 
 **Prerequisites:**
 
@@ -30,7 +30,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 
 ## Notifications Configuration
 Create a new Visual Studio project or use and existing one.  
-If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to iOS applications](../../adding-the-mfpf-sdk/windows-8-10) tutorial.
+If the MobileFirst Native Windows SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Windows applications](../../adding-the-mfpf-sdk/windows-8-10) tutorial.
 
 
 ### Adding the Push SDK
@@ -39,11 +39,16 @@ If the MobileFirst Native Windows SDK is not already present in the project, fol
 2. Choose the project where you want to install the MobileFirst push component.
 3. Add theMobileFirst push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
 
+## Pre-requisite WNS configuration
+1. Ensure the application is with Toast notification capability. This can be enabled in Package.appxmanifest.
+2. Ensure `Package Identity Name` and `Publisher` should be updated with the values registered with WNS.
+3. (Optional) Delete TemporaryKey.pfx file.
+
 ## Notifications API
 ### MFPPush Instance
-All API calls must be called on an instance of `MFPPush`.  This can be by created as a `var` in a view controller such as `var push = MFPPush.sharedInstance();`, and then calling `push.methodName()` throughout the view controller.
+All API calls must be called on an instance of `MFPPush`.  This can be by creating a variable such as `private MFPPush PushClient = MFPPush.GetInstance();`, and then calling `PushClient.methodName()` throughout the class.
 
-Alternatively you can call `MFPPush.sharedInstance().methodName()` for each instance in which you need to access the push API methods.
+Alternatively you can call `MFPPush.GetInstance().methodName()` for each instance in which you need to access the push API methods.
 
 ### Challenge Handlers
 If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
@@ -56,12 +61,12 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`Initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
 | [`IsPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`Task <MFPPushMessageResponse> RegisterDevice(JObject options)`](#register-device-amp-send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`Task <MFPPushMessageResponse> GetTags()`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`Task <MFPPushMessageResponse> Subscribe(String[] Tags)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`Task <MFPPushMessageResponse> GetSubscriptions()`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`Task <MFPPushMessageResponse> Unsubscribe(String[] Tags)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`Task <MFPPushMessageResponse> UnregisterDevice()`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+| [`RegisterDevice(JObject options)`](#register-device-amp-send-device-token)                  | Registers the device with the Push Notifications Service.               |
+| [`GetTags()`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
+| [`Subscribe(String[] Tags)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
+| [`GetSubscriptions()`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
+| [`Unsubscribe(String[] Tags)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
+| [`UnregisterDevice()`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
 
 #### Initialization
 Initialization is required for the client application to connect to MFPPush service.
@@ -70,7 +75,7 @@ Initialization is required for the client application to connect to MFPPush serv
 * It registers the callback function to handle received push notifications.
 
 ```csharp
-PushClient.Initialize();
+MFPPush.GetInstance().Initialize();
 ```
 
 #### Is push supported
@@ -199,7 +204,7 @@ internal class NotificationListner : MFPPushNotificationListener
 }
 ```
 
-2. Set the class to be the listener by calling `MFPPush.getInstance().listen(new NotificationListner())`
+2. Set the class to be the listener by calling `MFPPush.GetInstance().listen(new NotificationListner())`
 
 3. In the onReceive method you will receive the push notification and can handle the notification for the desired behavior.
 
