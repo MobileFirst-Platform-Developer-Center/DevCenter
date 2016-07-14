@@ -17,7 +17,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
-**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck** [challenge handler implementation](../../credentials-validation/android) tutorial.
+**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck** [challenge handler implementation](../../credentials-validation/windows-8-10) tutorial.
 
 The challenge handler tutorial demonstrate a few additional features (APIs) such as preemptive `Login`, `Logout`, and `ObtainAccessToken`.
 

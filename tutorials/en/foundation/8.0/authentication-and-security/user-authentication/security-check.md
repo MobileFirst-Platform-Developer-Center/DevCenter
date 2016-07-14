@@ -21,8 +21,8 @@ This tutorial uses the example of a security check that asks for a user name and
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
 * [Creating the AuthenticatedUser object](#creating-the-authenticateduser-object)
-* [Adding Remember Me functionality](#adding-remember-me-functionality)
-* [Configuring the SecurityCheck](#configuring-the-securitycheck)
+* [Adding RememberMe functionality](#adding-rememberme-functionality)
+* [Configuring the security check](#configuring-the-security-check)
 * [Sample security check](#sample-security-check)
 
 ## Creating the Security Check

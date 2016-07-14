@@ -1,4 +1,3 @@
-
 ---
 layout: tutorial
 title: Implementing the challenge handler in Android applications
