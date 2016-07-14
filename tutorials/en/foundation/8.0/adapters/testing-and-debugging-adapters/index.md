@@ -56,10 +56,6 @@ To receive a Test Token, either click the "Run in Postman" button below to impor
 
 <a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="margin: 0"></a>
 
-<<<<<<< HEAD
-To receive a Test Token:
-=======
->>>>>>> refs/remotes/MFPSamples/master
 {% comment %}
 1. In the MobileFirst Operations Console → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
 For testing purposes, set **Allowed Scopes** as `**`.
@@ -115,7 +111,8 @@ To access Swagger:
 #### Test Token
 To add a Test Token to the request, so that the security framework skips any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
 
-You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes, you can select all). If you are using the Swagger UI for the first time, you might be required to log in with the Confidential Client ID ("test") and Secret ("test").
+You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes, you can select all). If you are using the Swagger UI for the first time, you might be required to log in with a Confidential Client ID and Secret. For this, you will need to create a new confidential client with `*` as its **Allowed Scope**.
+
 > Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
 
 <br/><br/>

@@ -16,7 +16,7 @@
         }, {
             "name": "Foundation 6.3",
             "path": "/foundation/6.3/all-tutorials"
-        }, ]
+        }]
     }, {
         "name": "By Platform",
         "path": "",
@@ -68,7 +68,7 @@
             "name": "Foundation 6.3",
             "path": "/6.3"
         }]
-    } ]
+    }]
 }, {
     "name": "Labs",
     "path": "/labs",
@@ -80,13 +80,13 @@
         "path": "",
         "children": [{
             "name": "Foundation 8.0 Labs",
-            "path": "/developers/8.0/intro",
-            }, {
+            "path": "/developers/8.0/intro"
+        }, {
             "name": "Foundation 7.1 Labs",
-            "path": "/developers/7.1/setup",
-            }, {
+            "path": "/developers/7.1/setup"
+        }, {
             "name": "Foundation 7.0 Labs",
-            "path": "/developers/7.0/setup",
+            "path": "/developers/7.0/setup"
         }]
     }, {
         "name": "Administrators",
@@ -98,17 +98,18 @@
     }]
 }, {
     "name": "Learn More",
-    "path": "/learn-more",
+    "path": "/learn-more"
 }, {
     "name": "Video Gallery",
-    "path": "/video-gallery",
+    "path": "/video-gallery"
 }, {
     "name": "Blog",
-    "path": "/blog",
+    "path": "/blog"
 }, {
     "name": "Help",
-    "path": "/help",
+    "path": "/help"
 }, {
     "name": "Downloads",
     "path": "/downloads",
+    "extraClasses": "hidden-xs"
 }]

@@ -269,6 +269,8 @@ func application(application: UIApplication, didReceiveRemoteNotification userIn
 4. Perform the required scope mapping for **push.mobileclient**.
 4. Run the app by clicking the **Run** button.
 
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can update the bundled SDK by running the command `pod update` from the project's root folder.
+
 **[Sending a notification](../sending-push-notifications):**
 
 * Tag notification
