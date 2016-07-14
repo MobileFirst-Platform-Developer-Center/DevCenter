@@ -8,7 +8,7 @@ downloads:
 weight: 4
 ---
 ## Overview
-Before iOS and Android Cordova applications are able to receive and display push notifications, the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
+Before iOS, Android and Windows Cordova applications are able to receive and display push notifications, the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, MobileFirst-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
 
 > **Note:** In the release, authenticated notifications are **not supported** in Cordova applications due to a defect. However a workaround is provided: each `MFPPush` API call can be wrapped by `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. The provided sample application uses this workround.
 
@@ -29,7 +29,7 @@ Before iOS and Android Cordova applications are able to receive and display push
 * [Sample application](#sample-application)
 
 ## Notifications Configuration
-Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android.
+Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android, Windows.
 
 > If the MobileFirst Cordova SDK is not already present in the project, follow the instructions in the [Adding the MobileFirst Foundation SDK to Cordova applications](../../adding-the-mfpf-sdk/cordova) tutorial.
 
@@ -37,7 +37,7 @@ Create a new Cordova project or use an existing one, and add one or more of the 
 
 1. From a **command-line** window, navigate to the root of the Cordova project.  
 
-2. Add the push plug-in to the iOS and/or Android platform by running the command:
+2. Add the push plug-in to by running the command:
 
     ```bash
     cordova plugin add cordova-plugin-mfp-push

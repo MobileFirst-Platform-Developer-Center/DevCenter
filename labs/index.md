@@ -38,18 +38,20 @@ show_disqus: false
             <p>The following applications are used throughout the lab sessions for developers.</p>
             
             <ul>
+                <li><strong><a href="https://github.com/andriivasylchenko/advancedMessenger">Advanced Messenger</a></strong><br/>
+                MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/hybridMessenger">Hybrid Messenger</a></strong><br/>
-                MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
+                <i><b>Outdated</b></i>. MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/newHybridWallet">new HybridWallet</a></strong><br/>
-                MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
+                <i><b>Outdated</b></i>. MobileFirst Foundation 8.0 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/hybridWallet">HybridWallet</a></strong><br/>
-                MobileFirst Foundation 7.1 application. Based on Ionic framework.</li>
+                MobileFirst Platform Foundation 7.1 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/canteenPOS">canteenPOS</a></strong><br/>
-                MobileFirst Foundation 7.1 application. Based on Ionic framework.</li>
+                MobileFirst Platform Foundation 7.1 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/MFPcomradePOT">MFPcomradePOT</a></strong><br/>
-                MobileFirst Foundation 7.1 application. Based on Ionic framework.</li>
+                MobileFirst Platform Foundation 7.1 application. Based on Ionic framework.</li>
                 <li><strong><a href="https://github.com/andriivasylchenko/helloParis">Hello Paris</a></strong><br/>
-                MobileFirst Foundation 7.0 application. Based on Ionic framework.</li>
+                MobileFirst Platform Foundation 7.0 application. Based on Ionic framework.</li>
             </ul>
             <p>More apps: (these apps are not supported)</p>
             <ul>
