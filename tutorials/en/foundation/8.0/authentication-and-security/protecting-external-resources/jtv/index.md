@@ -15,9 +15,9 @@ The Java library is provided as a JAR file (**mfp-java-token-validator-8.0.0.jar
 This tutorial showS how to protect a simple Java Servlet, `GetBalance`, by using a scope (`accessRestricted`).
 
 **Prerequesites:**
-Make sure that:
-* You read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* You are familiar with the [MobileFirst Foundation security framework](../../).
+
+* Read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
+* Understanding of the [MobileFirst Foundation security framework](../../).
 
 ![Flow](JTV_flow.jpg)
 

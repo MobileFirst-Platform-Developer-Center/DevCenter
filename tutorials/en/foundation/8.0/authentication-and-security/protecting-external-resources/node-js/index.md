@@ -15,10 +15,10 @@ The Node.js framework is provided as an npm module (**passport-mfp-token-validat
 
 This tutorial shows how to protect a simple Node.js resource, `GetBalance`, by using a scope (`accessRestricted`).
 
-**Prerequsites:**
-Make sure that:
-* You rread the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
-* You are familiar with the [MobileFirst Platform Foundation security framework](../../).
+**Prerequsites:**  
+
+* Read the [Using the MobileFirst Server to authenticate external resources](../) tutorial.
+* Understanding of the [MobileFirst Foundation security framework](../../).
 
 ## The passport-mfp-token-validation module
 The passport-mfp-token-validation module provides an authentication mechanism to verify access tokens that are issued by the MobileFirst Server.
