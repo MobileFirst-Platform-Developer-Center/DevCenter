@@ -140,7 +140,7 @@ AuthenticatedUser(String id, String displayName, String securityCheckName, Map<S
 
 This constructor adds a `Map` of custom attributes to be stored with the user representation. The map can be used to store additional information such as a profile picture, a website, etc. This information is accessible to the client side (challenge handler) and the resource (using introspection data).
 
-## Adding the RememberMe functionality
+## Adding RememberMe functionality
 By default, `UserAuthenticationSecurityCheck` uses the `successStateExpirationSec` property to determine how long the success state lasts. This property is inherited from `CredentialsValidationSecurityCheck`.
 
 If you want to allow users to stay logged-in past the `successStateExpirationSec` value, `UserAuthenticationSecurityCheck` adds this capability.

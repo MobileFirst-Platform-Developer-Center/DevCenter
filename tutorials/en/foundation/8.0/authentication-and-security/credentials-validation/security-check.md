@@ -22,7 +22,7 @@ This tutorial uses the example of a hard-coded PIN code to protect a resource, a
 * [Creating the Security Check](#creating-the-security-check)
 * [Creating the Challenge](#creating-the-challenge)
 * [Validating the user credentials](#validating-the-user-credentials)
-* [Configuring the SecurityCheck](#configuring-the-securitycheck)
+* [Configuring the security check](#configuring-the-security-check)
 * [Sample security check](#sample-security-check)
 
 ## Creating the Security Check
