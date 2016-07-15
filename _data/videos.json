@@ -1,4 +1,16 @@
 [{
+"caption": "Live Update Showcase",
+"url": "//www.youtube.com/watch?v=P31W1sClqK0",
+"thumbnail": "//img.youtube.com/vi/P31W1sClqK0/hqdefault.jpg",
+"tags": ["Development","Live Update"],
+"version": ["8.0"] 
+},{
+"caption": "Hello Live Update demo",
+"url": "//www.youtube.com/watch?v=qw5Ue0kPCLE",
+"thumbnail": "//img.youtube.com/vi/qw5Ue0kPCLE/hqdefault.jpg",
+"tags": ["Development","Live Update"],
+"version": ["8.0"] 
+},{
 "caption": "Setting-up Eclipse for Cordova developing in MobileFirst Foundation 8.0",
 "url": "//www.youtube.com/watch?v=yRe2AprnUeg",
 "thumbnail": "//img.youtube.com/vi/yRe2AprnUeg/hqdefault.jpg",

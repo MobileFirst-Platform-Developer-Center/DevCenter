@@ -35,7 +35,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
 1. Click the **New** button next to **Applications**
     * Select a platform: **Android, iOS, Windows**
     * Enter **com.ibm.mfpstartercordova** as the **application identifier**
-    * Enter **1.0.0** as the **version** value for iOS and Windows, or **1.0** for Android
+    * Enter **1.0.0** as the **version**
     * Click on **Register application**
 
     <img class="gifplayer" alt="Register an application" src="register-an-application-cordova.png"/>
@@ -106,10 +106,11 @@ Alternatively, click the **New** button next to **Adapters**.
 
 1. From a **Command-line** window, navigate to the Cordova project's root folder.
 2. Run the command: `cordova platform add ios/android/windows` to add a platform.
-3. In the Cordova project, select the **config.xml** file and edit the  
-`<mfp:server ... url=" "/>` value with the IP address of the MobileFirst Server.
+3. In the Cordova project, select the **config.xml** file and edit the  `<mfp:server ... url=" "/>` value with the **protocol**, **host** and **port** properties with the correct values for your MobileFirst Server.
+    * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
+    * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
 
-    Alternatively, if you have installed the MobileFirst CLI then navigate to the project root folder and run the command `mfpdev app register`. If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
 
 4. Run the command: `cordova run`.
 

@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Adapters
+title: Developing Adapters
 show_children: true
 show_disqus: false
 print_pdf: false

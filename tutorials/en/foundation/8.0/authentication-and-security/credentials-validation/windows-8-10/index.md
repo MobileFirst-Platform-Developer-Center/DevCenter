@@ -13,7 +13,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
-When trying to access a protected resource, the server (the security check) will send back to the client a list containing one or more **challenges** for the client to handle.  
+When trying to access a protected resource, the server (the security check) sends back to the client a list containing one or more **challenges** for the client to handle.  
 This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
 
 ```json
@@ -31,9 +31,9 @@ The client should then register a **challenge handler** for each security check.
 The challenge handler defines the client-side behavior that is specific to the security check.
 
 ## Creating the challenge handler
-A challenge handler is a class responsible for handling challenges sent by the MobileFirst server, such as displaying a login screen, collecting credentials and submitting them back to the security check.
+A challenge handler is a class that handles the challenges sent by the MobileFirst server, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
 
-In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to login (`remainingAttempts`), and an optional `errorMsg`.
+In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to log in (`remainingAttempts`), and an optional `errorMsg`.
 
 Create a C# class that extends `Worklight.SecurityCheckChallengeHandler`:
 
@@ -56,7 +56,7 @@ public PinCodeChallengeHandler(String securityCheck) {
 }
 ```
 
-In this `HandleChallenge` example, an alert is displayed asking to enter the PIN code:
+In this `HandleChallenge` example, an alert prompts the user to enter the PIN code:
 
 ```csharp
 public override void HandleChallenge(Object challenge)
@@ -78,11 +78,11 @@ public override void HandleChallenge(Object challenge)
                _this.LoginGrid.Visibility = Visibility.Visible;
                if (errorMsg != "")
                {
-                   _this.HintText.Text = errorMsg + "Remaining Attempts: " + challengeJSON.GetValue("remainingAttempts");
+                   _this.HintText.Text = errorMsg + "Remaining attempts: " + challengeJSON.GetValue("remainingAttempts");
                }
                else
                {
-                   _this.HintText.Text = challengeJSON.GetValue("errorMsg") + "\n" + "Remaining Attempts: " + challengeJSON.GetValue("remainingAttempts");
+                   _this.HintText.Text = challengeJSON.GetValue("errorMsg") + "\n" + "Remaining attempts: " + challengeJSON.GetValue("remainingAttempts");
                }
 
                _this.GetBalance.IsEnabled = false;
@@ -100,7 +100,7 @@ If the credentials are incorrect, you can expect the framework to call `HandleCh
 
 ## Submitting the challenge's answer
 
-Once the credentials have been collected from the UI, use the `SecurityCheckChallengeHandler`'s `ShouldSubmitChallengeAnswer()` and `GetChallengeAnswer()` method to send an answer back to the security check. `ShouldSubmitChallengeAnswer()` returns a boolean indicating if the challenge response should be sent back to the security check.In this example `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+After the credentials have been collected from the UI, use the `SecurityCheckChallengeHandler`'s `ShouldSubmitChallengeAnswer()` and `GetChallengeAnswer()` methods to send an answer back to the security check. `ShouldSubmitChallengeAnswer()` returns a Boolean value that indicates whether the challenge response should be sent back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
 
 ```csharp
 public override bool ShouldSubmitChallengeAnswer()
@@ -119,7 +119,7 @@ public override JObject GetChallengeAnswer()
 ```
 
 ## Cancelling the challenge
-In some cases, such as clicking a "Cancel" button in the UI, you want to tell the framework to discard this challenge completely.
+In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.
 
 To achieve this, override the `ShouldCancel` method.
 
@@ -132,9 +132,9 @@ public override bool ShouldCancel()
 ```
 
 ## Registering the challenge handler
-In order for the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
+For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
 
-This is done by initializing the challenge handler with the security check like this:
+To do so, initialize the challenge handler with the security check as follows:
 
 ```csharp
 PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts");
@@ -148,7 +148,7 @@ client.RegisterChallengeHandler(pinCodeChallengeHandler);
 ```
 
 ## Sample application
-The sample **PinCodeWin8** and **PinCodeWin10** are C# applications that uses `ResourceRequest` to get a bank balance.  
+The **PinCodeWin8** and **PinCodeWin10** samples are C# applications that use `ResourceRequest` to get a bank balance.  
 The method is protected with a PIN code, with a maximum of 3 attempts.
 
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
@@ -157,7 +157,7 @@ The method is protected with a PIN code, with a maximum of 3 attempts.
 
 ### Sample usage
 
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
+* Use either Maven, MobileFirst CLI, or your favorite IDE to [build and deploy the available **ResourceAdapter** and **PinCodeAttempts** adapters](../../../adapters/creating-adapters/).
 * From a **Command-line** window, navigate to the project's root folder and run the command: `mfpdev app register`.
 * Map the `accessRestricted` scope to the `PinCodeAttempts` security check:
     * In the MobileFirst Operations Console, under **Applications** → **PinCode** → **Security** → **Scope-Elements Mapping**, add a scope mapping from `accessRestricted` to `PinCodeAttempts`.

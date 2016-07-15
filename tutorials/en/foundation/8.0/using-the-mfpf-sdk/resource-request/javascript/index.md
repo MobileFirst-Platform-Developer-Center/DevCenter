@@ -153,6 +153,7 @@ The adapter Maven project contains the Java adapter used during the resource req
 
 ### Web sample usage
 Make sure you have Node.js installed.
+
 1. Register the application in the MobileFirst Operations Console.
 
 {% comment %}

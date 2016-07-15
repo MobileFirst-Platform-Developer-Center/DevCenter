@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Using the MobileFirst Foundation SDK
+title: Developing Applications
 show_disqus: false
 show_children: true
 print_pdf: false

@@ -45,7 +45,7 @@ In a browser window, open the MobileFirst Operations Console by loading the URL:
     
 ### 3. Editing application logic
 
-1. Open the Xcode project project by double-clicking the **.xcworkspace** file.
+1. Open the Xcode project by double-clicking the **.xcworkspace** file.
 
 2. Select the **[project-root]/ViewController.m/swift** file and paste the following code snippet, replacing the existing `getAccessToken()` function:
  
@@ -153,9 +153,11 @@ Alternatively, click the **New** button next to **Adapters**.
 <img src="iosQuickStart.png" alt="sample app" style="float:right"/>
 ### 5. Testing the application
 
-1. In Xcode, select the **mfpclient.plist** file and edit the **host** property with the IP address of the MobileFirst Server.
-
-     Alternatively, if you have installed the MobileFirst CLI then navigate to the project root folder and run the command `mfpdev app register`. If a remote server is used, [use the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+1. In Xcode, select the **mfpclient.plist** file and edit the **protocol**, **host** and **port** properties with the correct values for your MobileFirst Server.
+    * If using a local MobileFirst Server, the values are typically **http**, **localhost** and **9080**.
+    * If using a remote MobileFirst Server (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+     
+    Alternatively, if you have installed the MobileFirst CLI, then navigate to the project root folder and run the command `mfpdev app register`. If a remote MobileFirst Server is used, [run the command `mfpdev server add`](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
 
 2. Press the **Play** button.
 

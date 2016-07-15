@@ -17,7 +17,7 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 ## Overview
-This sample demonstrates a custom enrollment process and step-up authorization. There is a one time enrollment process during which the user is required to enter username and password and define a PIN code.  
+This sample demonstrates a custom enrollment process and step-up authorization. During this one-time enrollment process, the user is required to enter his user name and password, and to define a PIN code.  
 
 **Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../externalizable-security-check/) and [Step-up](../step-up/) tutorials.
 
@@ -30,12 +30,12 @@ This sample demonstrates a custom enrollment process and step-up authorization. 
 
 ## Application Flow
 
-* When the application starts for the first time (before enrollment) it shows the UI with two buttons: "Get public data" and "Enroll".
-* When the user starts enrollment (taps on the "Enroll" button) he is prompted with login form and is then requested to set a PIN code.
-* After enrolling successfully, the UI includes four buttons: "Get public data", "Get balance", "Get transactions" and "Logout". The user can access all four buttons without entering the PIN code.
-* When the application is launched for a second time (after enrollment) the UI includes all four buttons however after clicking the "Get transactions" button the user will be required to enter the PIN code.
+* When the application starts for the first time (before enrollment), it shows the UI with two buttons: **Get public data** and **Enroll**.
+* When the user taps on the **Enroll** button to start enrollment, he is prompted with a log-in form and is then requested to set a PIN code.
+* After the user has enrolled successfully, the UI includes four buttons: **Get public data**, **Get balance**, **Get transactions**, and **Logout**. The user can access all four buttons without entering the PIN code.
+* When the application is launched for a second time (after enrollment), the UI still includes all four buttons. However, when the user clicks the **Get transactions*** button, he is required to enter the PIN code.
 
-After three failing attempts at entering the PIN code the user is prompted to authenticate again with a username and password and re-setting a PIN code.
+After three failing attempts at entering the PIN code, the user is prompted to authenticate again with a user name and password, and to reset a PIN code.
 
 ## Storing Data in Persistent Attributes
 You can choose to save protected data in the `PersistentAttributes` object which is a container for custom attributes of a registered client. The object can be accessed either from a security check class or from an adapter resource class.
@@ -77,7 +77,7 @@ In the provided sample application the `PersistentAttributes` object is used in 
 The Enrollment sample contains three security checks:
 
 ### EnrollmentUserLogin
-The `EnrollmentUserLogin` security check is protecting the **setPinCode** resource so that only authenticated users could set a PIN code. It should expire quickly and hold only for the duration of "first time experience". It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial except for an extra `isLoggedIn` and `getRegisteredUser` methods.  
+The `EnrollmentUserLogin` security check protects the **setPinCode** resource so that only authenticated users can set a PIN code. This security check is meant to expire quickly and to hold only for the duration of the "first time experience". It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial? except for the extra `isLoggedIn` and `getRegisteredUser` methods.  
 The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise.  
 The `getRegisteredUser` method returns the authenticated user.
 
@@ -93,16 +93,16 @@ public AuthenticatedUser getRegisteredUser() {
 ```
 
 ### EnrollmentPinCode
-The `EnrollmentPinCode` security check is protecting the **Get transactions** resource and is similar to the `PinCodeAttempts` security check explained in the [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/security-check) tutorial except for a few changes.
+The `EnrollmentPinCode` security check protects the **Get transactions** resource and is similar to the `PinCodeAttempts` security check explained in the [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/security-check) tutorial, except for a few changes.
 
-* In this tutorial's example, `EnrollmentPinCode` **depends on** `EnrollmentUserLogin`. The user should only be asked to enter a PIN code if a successful login to `EnrollmentUserLogin` previously happened.
+* In this tutorial's example, `EnrollmentPinCode` **depends on** `EnrollmentUserLogin`. After a successfully login to `EnrollmentUserLogin`, the user is only asked to enter a PIN code.
 
     ```java
     @SecurityCheckReference
     private transient EnrollmentUserLogin userLogin;
     ```
 
-* When the application starts **for the first time** and the user is successfully enrolled, we want him to be able to access the **Get transactions** resource without having to enter the PIN code he just set. To do so, in our `authorize` method, we use the `EnrollmentUserLogin.isLoggedIn` method to check if the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired the user can access **Get transactions**.
+* When the application starts **for the first time** and the user is successfully enrolled, the user must able to access the **Get transactions** resource without having to enter the PIN code that he just set. For this purpose, the `authorize` method uses the `EnrollmentUserLogin.isLoggedIn` method to check whether the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired, the user can access **Get transactions**.
 
     ```java
     @Override
@@ -113,7 +113,7 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
         }
     }
     ```
-    When the user fails to enter the PIN code after three attempts, we want to delete the **pinCode** attribute before he is prompted to authenticate with the username and password and re-setting a PIN code.
+    When the user fails to enter the PIN code after three attempts, the tutorial is designed so that the **pinCode** attribute is deleted before the user is prompted to authenticate by using the user name and password and resetting a PIN code.
 
     ```java
     @Override
@@ -131,7 +131,7 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
     }
     ```
 
-* The `validateCredentials` method is the same as in `PinCodeAttempts` security check except that in here we compare the credentials to the stored **pinCode** attribute.
+* The `validateCredentials` method is the same as in the `PinCodeAttempts` security check, except that here the credentials are compared to the stored **pinCode** attribute.
 
     ```java
     @Override
@@ -145,11 +145,11 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
                 return true;
             }
             else {
-                errorMsg = "Pin code is not valid. Hint: " + attributes.get("pinCode");
+                errorMsg = "The pin code is not valid. Hint: " + attributes.get("pinCode");
             }
         }
         else{
-            errorMsg = "Pin code was not provided";
+            errorMsg = "The pin code was not provided.";
         }
         //In any other case, credentials are not valid
         return false;
@@ -157,11 +157,11 @@ The `EnrollmentPinCode` security check is protecting the **Get transactions** re
     ```
 
 ### IsEnrolled
-The `IsEnrolled` security check is protecting:
+The `IsEnrolled` security check protects:
 
 * The **getBalance** resource so that only enrolled users can see the balance.
 * The **transactions** resource so that only enrolled users can get the transactions.
-* The **unenroll** resource so that deleting the **pinCode** will be possible only if it has been set before.
+* The **unenroll** resource so that deleting the **pinCode** is possible only if it has been set before.
 
 #### Creating the Security Check
 [Create a Java adapter](../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
@@ -212,7 +212,7 @@ protected void initStateDurations(Map<String, Integer> durations) {
 ```
 
 #### The authorize Method
-In our sample we simply check if the user is enrolled and return success or failure respectively:
+The code sample simply checks whether the user is enrolled and returns success or failure accordingly:
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -229,12 +229,12 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-* In case the "pinCode" attribute exist:
+* In case the `pinCode` attribute exists:
 
  * Set the state to SUCCESS by using the `setState` method.
  * Add success to the response object by using the `addSuccess` method.
 
-* In case the "pinCode" attribute doesn't exist:
+* In case the `pinCode` attribute doesn't exist:
 
  * Set the state to EXPIRED by using the `setState` method.
  * Add failure to the response object by using the `addFailure` method.
@@ -245,7 +245,7 @@ The `IsEnrolled` security check **depends on** `EnrollmentUserLogin`:
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
-* Set the active user by adding the following:
+* Set the active user by adding the following code:
 
     ```java
     public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -301,16 +301,16 @@ private transient EnrollmentUserLogin userLogin;
         }
     }
     ```
-    In our sample code, the `IsEnrolled` challenge handler's handleSuccess method use the user object to present the display name.
+    In our sample code, the `IsEnrolled` challenge handler's `handleSuccess` method use the user object to present the display name.
 
 ## Sample Applications
 
 ### Security check
-The `EnrollmentUserLogin`, `EnrollmentPinCode` and `IsEnrolled` security checks are available in the SecurityChecks project under the Enrollment Maven project.
+The `EnrollmentUserLogin`, `EnrollmentPinCode`, and `IsEnrolled` security checks are available in the SecurityChecks project under the Enrollment Maven project.
 [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
 
 ### Applications
-Sample applications are available for iOS (Swift), Android,  Cordova and Web.
+Sample applications are available for iOS (Swift), Android, Cordova, and Web.
 
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) the Cordova project.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80) the iOS Swift project.
@@ -318,14 +318,14 @@ Sample applications are available for iOS (Swift), Android,  Cordova and Web.
 * [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
 
 #### Deploy adapters
-* Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy](../../adapters/creating-adapters/) the available **Enrollment** and **ResourceAdapter** adapters.
+* Use either Maven, MobileFirst CLI, or your favorite IDE to [build and deploy](../../adapters/creating-adapters/) the available **Enrollment** and **ResourceAdapter** adapters.
 
 #### Register applications
 **Cordova**  
 From a **Command-line** window, navigate to the project's root folder and:
 
 * Add a platform by running the `cordova platform add` command.
-* Registering the application: `mfpdev app register`.
+* Registering the application by running the `mfpdev app register` command.
 
 <br/>
 **Native**  
@@ -333,7 +333,7 @@ From a **Command-line** window, navigate to the application's root folder and ru
 
 <br/>
 **Web**  
-Make sure you have Node.js installed.  
+Make sure that Node.js is installed.  
 Register the application in the MobileFirst Operations Console.
 
 {% comment %}
@@ -341,12 +341,12 @@ Navigate to the sample's root folder and run the command: `mfpdev app register w
 {% endcomment %}
 
 #### Scope mapping
-In the **MobileFirst Operations Console → EnrollmentWeb → Security**, map the following scopes:
+In the MobileFirst Operations Console, click **EnrollmentWeb → Security** and map scopes to security checks as follows:
 
-* `setPinCode` scope to `EnrollmentUserLogin` security check
-* `accessRestricted` scope to `IsEnrolled` security check
-* `unenroll` scope to `IsEnrolled` security check
-* `transactions` scope to `EnrollmentPinCode` and `IsEnrolled` security checks
+* Map the `setPinCode` scope to the `EnrollmentUserLogin` security check.
+* Map the `accessRestricted` scope to the `IsEnrolled` security check.
+* Map the `unenroll` scope to the `IsEnrolled` security check.
+* Map the `transactions` scope to the `EnrollmentPinCode` and `IsEnrolled` security checks.
 
 Alternatively, from the **Command-line**, navigate to the project's root folder and run the command: `mfpdev app push`.
 
