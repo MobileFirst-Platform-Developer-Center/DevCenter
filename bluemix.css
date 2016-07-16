@@ -5,48 +5,48 @@ canvas {
 }
 
 #wrap {
-	background:#2d3f49;
-	font: normal normal 300 normal 14.4px / 14.4px HelveticaNeue-Light, HelvLightIBM, Arial, sans-serif;
+  background:#2d3f49;
+  font: normal normal 300 normal 14.4px / 14.4px HelveticaNeue-Light, HelvLightIBM, Arial, sans-serif;
 }
 
 a {
-	color: white;
+  color: white;
 }
 
 .container {
-	z-index:100;
-	background:#2d3f49;
-	color:white;
-	padding-bottom: 75px;
+  z-index:100;
+  background:#2d3f49;
+  color:white;
+  padding-bottom: 75px;
 }
 
 .img-circle {
-	border-radius: 0%;
-	width: 120px;
-	margin-left: 22px
+  border-radius: 0%;
+  width: 120px;
+  margin-left: 22px
 }
 
 .carousel .carousel-indicators {
-	background-color: transparent;
-	bottom: -200px;
+  background-color: transparent;
+  bottom: -200px;
 }
 
 .carousel .carousel-inner .item {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 .carousel-inner {
-	overflow:visible;
+  overflow:visible;
 }
 
 .carousel .carousel-inner .item img {
-	height:auto;
-	width: 350px;
-	margin-top: 74px;
+  height:auto;
+  width: 350px;
+  margin-top: 74px;
 }
 
 .custom-mid-nav {
-	text-align: left !important;
+  text-align: left !important;
 }
 
 .buttons {
@@ -112,7 +112,7 @@ a {
 #particles-js {
   position: absolute;
   width: 100%;
-	height: 180px;
+  height: 180px;
   background-color: #20343e;
   background-image: url("");
   background-repeat: no-repeat;
