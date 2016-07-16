@@ -18,6 +18,8 @@ a {
   background:#2d3f49;
   color:white;
   padding-bottom: 75px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .img-circle {
@@ -26,17 +28,16 @@ a {
   margin-left: 22px
 }
 
+.carousel {
+  height: 400px;
+}
+
 .carousel .carousel-indicators {
   background-color: transparent;
-  bottom: -200px;
 }
 
 .carousel .carousel-inner .item {
   background-color: transparent;
-}
-
-.carousel-inner {
-  overflow:visible;
 }
 
 .carousel .carousel-inner .item img {
