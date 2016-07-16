@@ -6,7 +6,6 @@ canvas {
 
 #wrap {
   background:#2d3f49;
-  font: normal normal 300 normal 14.4px / 14.4px HelveticaNeue-Light, HelvLightIBM, Arial, sans-serif;
 }
 
 a {
@@ -14,6 +13,7 @@ a {
 }
 
 .container {
+  font: normal normal 300 normal 14.4px / 14.4px HelveticaNeue-Light, HelvLightIBM, Arial, sans-serif;
   z-index:100;
   background:#2d3f49;
   color:white;
