@@ -46,8 +46,24 @@ a {
   margin-top: 74px;
 }
 
+.carousel .carousel-inner .item .screenshot {
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    height: 150px;
+    width: 276.604px;
+    column-rule-color: rgb(255, 255, 255);
+    perspective-origin: 138.292px 75px;
+    transform-origin: 138.292px 75px;
+    border: 0px none rgb(255, 255, 255);
+    font: normal normal normal normal 16px / 16px "IBM Helvetica", "Helvetica Neue", HelveticaNeue, Helvetica, sans-serif;
+    outline: rgb(255, 255, 255) none 0px;
+    margin-top: 15px;
+    padding-right: 20px;
+}
+
 .custom-mid-nav {
   text-align: left !important;
+  line-height: 18px;
 }
 
 .buttons {
