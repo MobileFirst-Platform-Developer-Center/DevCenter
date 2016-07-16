@@ -108,4 +108,7 @@
 }, {
     "name": "Downloads",
     "path": "/downloads",
+}, {
+		"name": "Try Bluemix",
+		"path": "/bluemix"
 }]
