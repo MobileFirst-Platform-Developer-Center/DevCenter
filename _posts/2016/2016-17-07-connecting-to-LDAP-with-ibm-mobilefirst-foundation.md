@@ -25,6 +25,9 @@ The [LDAP Security Check sample](https://github.com/mfpdev/mfp-advanced-adapters
 protected boolean validateCredentials(Map<String, Object> credentials) {
 
     ...
+                    env.put(Context.SECURITY_PRINCIPAL, searchResult.getName());
+                    env.put(Context.SECURITY_CREDENTIALS, password);
+    ...
                     ldapContext = new InitialLdapContext(env, null);
                     userId = (String) searchResult.getAttributes().get(config.getLdapUserAttribute()).get();
                     displayName = (String) searchResult.getAttributes().get(config.getLdapNameAttribute()).get();
