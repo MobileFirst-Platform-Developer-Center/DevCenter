@@ -23,15 +23,19 @@ The [LDAP Security Check sample](https://github.com/mfpdev/mfp-advanced-adapters
 ```java
 @Override
 protected boolean validateCredentials(Map<String, Object> credentials) {
+    ...
 
-    ...
-                    env.put(Context.SECURITY_PRINCIPAL, searchResult.getName());
-                    env.put(Context.SECURITY_CREDENTIALS, password);
-    ...
-                    ldapContext = new InitialLdapContext(env, null);
-                    userId = (String) searchResult.getAttributes().get(config.getLdapUserAttribute()).get();
-                    displayName = (String) searchResult.getAttributes().get(config.getLdapNameAttribute()).get();
-                    return true;
+    ldapContext.addToEnvironment(Context.SECURITY_PRINCIPAL, searchResult.getName());
+    ldapContext.addToEnvironment(Context.SECURITY_CREDENTIALS, password);
+    try {
+        ldapContext.reconnect(null);
+        userId = (String) searchResult.getAttributes().get(config.getLdapUserAttribute()).get();
+        displayName = (String) searchResult.getAttributes().get(config.getLdapNameAttribute()).get();
+        return true;
+    } catch (Exception e) {
+      errorMsg = "Wrong Credentials";
+    }
+
     ...
 }
 ```
