@@ -3,8 +3,10 @@ layout: tutorial
 title: Trusteer for iOS
 relevantTo: [ios]
 downloads:
+  - name: Native Xcode project
+    url: https://github.com/MobileFirst-Platform-Developer-Center/TrusteerObjC/tree/release71
   - name: MobileFirst project
-    url: https://github.ibm.com/MFPSamples/TrusteeriOS/tree/release71
+    url: https://github.com/MobileFirst-Platform-Developer-Center/TrusteerIntegration/tree/release71
 ---
 ## Overview
 Trusteer Mobile SDK collects multiple mobile device risk factors and provides them to the mobile app, enabling organizations to restrict mobile app functionality based on risk levels. In your IBM MobileFirst Platform Foundation application, you may want to protect access to some specific resources or procedures based risk levels, such as detected malware or whether the device is jailbroken or rooted. For example, you could prevent a malware-ridden device from logging into your banking app, and prevent rooted devices from using the “transfer funds” feature.
@@ -23,8 +25,7 @@ Component (*.WLC) see MobileFirst documentation.
 **Note:** You still need to follow the following steps if you use a WLC file.
 
 ### Copy Files Into XCode Project
-Create a directory on your system called “tas” containing the 4 above files. If you’ve installed Trusteer as an Application Component, this folder will be created for you in the native folder. In your XCode project (whether MobileFirst-generated Hybrid,
-or your own using MobileFirst Native API), drag the folder created above onto your project navigator. Check “Copy items into destination group’s folder (if needed)”. Select “Create folder references for any added folders”. Make sure your target is
+Create a directory on your system called “tas” containing the 4 above files. If you’ve installed Trusteer as an Application Component, this folder will be created for you in the native folder. In your XCode project (whether MobileFirst-generated Hybrid, or your own using MobileFirst Native API), drag the folder created above onto your project navigator. Check “Copy items into destination group’s folder (if needed)”. Select “Create folder references for any added folders”. Make sure your target is
 selected.
 
 ![trusteer-drag-ios](trusteer-drag-ios.png)
@@ -265,7 +266,9 @@ If your have set one of your `realm` options to `alert`, you can catch the alert
  {% endhighlight %}
 
 ### Sample application
-<a href="https://github.com/MobileFirst-Platform-Developer-Center/TrusteerObjC/tree/release71" target="_blank">Click to download</a> the MobileFirst project.
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/TrusteerIntegration/tree/release71" target="_blank">Click to download</a> the MobileFirst project.  
+<a href="https://github.com/MobileFirst-Platform-Developer-Center/TrusteerObjC/tree/release71" target="_blank">Click to download</a> the Native Xcode project.  
+  
 
 
 #### Sample Setup

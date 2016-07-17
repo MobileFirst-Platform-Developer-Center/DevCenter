@@ -30,7 +30,23 @@ Highlighted features that were tested are:
 * Direct Update
 * Application Management
 
-All were validated to work on iOS 10.  
+All the above features were validated to work on iOS 10 beta 1.  
+
+
+### iOS 10 beta 2
+
+Compatibility tests with [iOS 10 beta 2](https://developer.apple.com/download) have been performed for MobileFirst Platform Foundation 6.3 to 7.1 as well as MobileFirst Foundation 8.0 using an iPhone 6 that was upgraded from iOS 10 beta 1 to iOS 10 beta 2.
+
+For the tests, [XCode 8 beta 2](https://developer.apple.com/download) was used to compile native, hybrid and Cordova apps.  
+Highlighted features that were tested are: 
+
+* OAuth authorization flow
+* Adapters
+* JSONStore
+* Direct Update
+* Application Management
+
+All the above features were validated to work on iOS 10 beta 2.  
 However, there were a few minor issues there were stumbled upon during our testing:
 
 * `NSLog` does not print messages to the XCode console. Messages however are printed to the device/simulator log file. This is a [known bug](http://adcdownload.apple.com/WWDC_2016/Xcode_8_beta/Release_Notes_for_Xcode_8_beta.pdf) in XCode 8 beta 1.
