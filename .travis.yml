@@ -19,4 +19,5 @@ git:
 notifications:
   slack:
     rooms:
-      secure: iMziNRssBgihnTWiDCm0r4qQRW52k2BtGH660br2I490tlmX8pf5zfE2+vng3HJ0bLe7RyT8Mv8/eEoK0M7tTCqBKWaFom42bZG8BzYykr/PlNriEZnlV6rXq+ezi5jAzQzQUZ7lUtCDWzSHai4Yn3gEDu9sfoLhb+ynxtXBP1o=
+      secure: 
+          - iMziNRssBgihnTWiDCm0r4qQRW52k2BtGH660br2I490tlmX8pf5zfE2+vng3HJ0bLe7RyT8Mv8/eEoK0M7tTCqBKWaFom42bZG8BzYykr/PlNriEZnlV6rXq+ezi5jAzQzQUZ7lUtCDWzSHai4Yn3gEDu9sfoLhb+ynxtXBP1o=#mfp-devcenter
