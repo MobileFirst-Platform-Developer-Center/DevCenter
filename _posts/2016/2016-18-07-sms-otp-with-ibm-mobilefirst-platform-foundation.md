@@ -40,7 +40,7 @@ From that time the security context can access to that number.
 7. The challenge response is sent back to server with the code, and if all correct the token flow is continue until client gets new OAuth token.
 The client now can use that token to call to any protected resource which has scope that map to `sms-otp` Security Check.
 
-### Register The phone number
+## Registering The phone number
 ##### [SMSOTPResource.java](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/java/com/github/mfpdev/sample/smsOTP/SMSOTPResource.java)
 
 ```java
@@ -55,7 +55,7 @@ public String registerPhoneNumber(@PathParam("phoneNumber") String phoneNumber) 
 }
 ```
 
-### Sending the SMS code as challenge
+## Sending the SMS code as a challenge
 ##### [SMSOTPSecurityCheck.java](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/java/com/github/mfpdev/sample/smsOTP/SMSOTPSecurityCheck.java)
 ```java
 @Override
@@ -73,7 +73,7 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-### Validating the SMS code
+## Validating the SMS code
 ##### [SMSOTPSecurityCheck.java](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/java/com/github/mfpdev/sample/smsOTP/SMSOTPSecurityCheck.java)
 ```java
 @Override
@@ -83,6 +83,6 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-### Configuration
-You can configure the sms-otp either by editing the properties in the [adapter.xml](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/adapter-resources/adapter.xml) file followed by re-building and re-deploying the .adapter file, or by editing the adapter properties directly from MobileFirst Console.  In the [SMSOTPSecurityCheckConfig] you can do the online validation for the Twilio account, and fail the deployment or warn the admin  if account data is incorrect(https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/java/com/github/mfpdev/sample/smsOTP/SMSOTPSecurityCheckConfig.java)
+## Configuration
+You can configure the sms-otp either by editing the properties in the [adapter.xml](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/adapter-resources/adapter.xml) file followed by re-building and re-deploying the .adapter file, or by editing the adapter properties directly from MobileFirst Console.  In the [SMSOTPSecurityCheckConfig](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/java/com/github/mfpdev/sample/smsOTP/SMSOTPSecurityCheckConfig.java) you can do the online validation for the Twilio account, and fail the deployment or warn the admin if the account data is incorrect
 ![SMS OTP configuration]({{site.baseurl}}/assets/blog/2016-18-07-sms-otp-with-ibm-mobilefirst-platform-foundation/Configuration.png)
