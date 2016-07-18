@@ -50,7 +50,7 @@ In Apps you can review in-depth analytics data related to: usage and devices (su
 ### Infrastructure
 In Infrastructure you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
 
-> Learn more in the [Analytics Workflows](/workflows/) tutorial.
+> Learn more in the [Analytics Workflows](workflows/) tutorial.
 
 ## Operational Analytics Features
 
