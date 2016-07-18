@@ -11,11 +11,7 @@ weight: 8
 ## Overview
 IBM MobileFirst Foundation Operational Analytics collects data from app-to-server activities, client logs, client crashes, and server-side logs from the MobileFirst Runtime Server and client devices. The collected data then provides a rich view into both the mobile landscape and server infrastructure. Included are: default reports of user retention, crash reports, device type and operating system breakdowns, custom data and custom charts, network usage, push notification results, in-app behavior, debug log collection, and beyond.
 
-MobileFirst Server comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems.
-
-Two client classes work together to send raw data to the server: the web logger class and the web analytics class. The logger functions as a standard logger. In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client-side and on the MobileFirst Analytics Server. You choose the verbosity and data retention policy of the reported events, set conditional alerts, build custom charts and engage with new data.
-
-The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
+MobileFirst Server comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems. In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client-side and on the MobileFirst Analytics Server. You choose the verbosity and data retention policy of the reported events, set conditional alerts, build custom charts and engage with new data.
 
 #### Platform support
 MobileFirst Operational Analytics supports iOS and Android. For Cordova applications, it is available for the Android and iOS platforms.  
@@ -84,6 +80,8 @@ App crashes are visualized on the Analytics Console, where you can quickly view 
 The MobileFirst Operational Analytics Console monitors network data when it is sent to the analytics server and allows the user to query this information in different ways.
 
 ## Enable/Disable Analytics Support
+The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
+
 1. In the navigation sidebar, click on **Runtime settings**. To avoid inadvertent changes, runtime properties are displayed in read-only mode.
 2. To make the settings editable, click the **Edit** button. If you logged in with a role other than *administrator* or *deployer*, the Edit button is not visible because you are not allowed to modify runtime properties.
 3. From the **Data collection enabled** drop-down menu, select **false** to disable data collection.
