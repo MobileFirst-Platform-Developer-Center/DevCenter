@@ -23,7 +23,7 @@ As the SMS vendor, the sample uses [Twilio](https://www.twilio.com/).  Twilio pr
 This blog post assumes that you have basic knowledge about *IBM MobileFirst Foundation 8.0* authentication and security checks. If it's not the case, refer to [the Authentication and Security tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/).  
 
 ## Running the sample
-To run this demo, review the instructions in the [sample's repository.](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/sms-otp-sample)
+To run this sample, review the instructions in the [sample's repository.](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/sms-otp-sample)
 
 ## The big picture
 ![login flow]({{site.baseurl}}/assets/blog/2016-18-07-sms-otp-with-ibm-mobilefirst-foundation/Architecture.png)
