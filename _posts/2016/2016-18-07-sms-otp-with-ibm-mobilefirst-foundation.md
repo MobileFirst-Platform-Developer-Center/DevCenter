@@ -2,7 +2,7 @@
 title: Implementing SMS OTP Authentication with IBM MobileFirst Foundation 8.0
 date: 2016-07-18
 tags:
-- MobileFirst_Platform
+- MobileFirst_Foundation
 - Authentication
 - Adapters
 - OTP
@@ -16,17 +16,17 @@ author:
 ## Introduction
  SMS [OTP](https://www.wikiwand.com/en/One-time_password) is essential authentication method in every modern mobile application.  SMS authentication and/or number verification gives your app good balance between security and user experience. More and more retails and banking apps use this method as their main authentication method.
 
- In this blog I want to introduce new [sample](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/sms-otp-sample) which using the SMS OTP method for device/user authentication.  The sample demonstrate registration of a phone number using the client [registration-data API on the server](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/registration/external/model/ClientData.html), and then how to authenticate with an SMS OTP.
+ In this blog I want to introduce a new [sample](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/sms-otp-sample) which using the SMS OTP method for device/user authentication.  The sample demonstrates registration of a phone number using the client [registration-data API on the server](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/registration/external/model/ClientData.html), and then how to authenticate with an SMS OTP.
 
-As SMS platform the sample uses [Twilio](https://www.twilio.com/). They gives you free trial for a limit period.
+As the SMS vendor, the sample uses [Twilio](https://www.twilio.com/).  Twilio provides a free trial for a limited period.
 
-This blog post assumes that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication and security checks. If it's not the case, refer to [the Authentication and Security tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/).  
+This blog post assumes that you have basic knowledge about *IBM MobileFirst Foundation 8.0* authentication and security checks. If it's not the case, refer to [the Authentication and Security tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/).  
 
-## Running the demo
+## Running the sample
 To run this demo, review the instructions in the [sample's repository.](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/sms-otp-sample)
 
 ## The big picture
-![login flow]({{site.baseurl}}/assets/blog/2016-18-07-sms-otp-with-ibm-mobilefirst-platform-foundation/Architecture.png)
+![login flow]({{site.baseurl}}/assets/blog/2016-18-07-sms-otp-with-ibm-mobilefirst-foundation/Architecture.png)
 
 The diagram above illustrates the login flow (here described with Google but also relevant to Facebook or other social providers). The diagram shows that the trigger to call social providers is initiated by the client.
 
@@ -40,7 +40,7 @@ From that time the security context can access to that number.
 7. The challenge response is sent back to server with the code, and if all correct the token flow is continue until client gets new OAuth token.
 The client now can use that token to call to any protected resource which has scope that map to `sms-otp` Security Check.
 
-## Registering The phone number
+## Registering the phone number
 ##### [SMSOTPResource.java](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/java/com/github/mfpdev/sample/smsOTP/SMSOTPResource.java)
 
 ```java
@@ -85,4 +85,4 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ## Configuration
 You can configure the sms-otp either by editing the properties in the [adapter.xml](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/adapter-resources/adapter.xml) file followed by re-building and re-deploying the .adapter file, or by editing the adapter properties directly from MobileFirst Console.  In the [SMSOTPSecurityCheckConfig](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/java/com/github/mfpdev/sample/smsOTP/SMSOTPSecurityCheckConfig.java) you can do the online validation for the Twilio account, and fail the deployment or warn the admin if the account data is incorrect
-![SMS OTP configuration]({{site.baseurl}}/assets/blog/2016-18-07-sms-otp-with-ibm-mobilefirst-platform-foundation/Configuration.png)
+![SMS OTP configuration]({{site.baseurl}}/assets/blog/2016-18-07-sms-otp-with-ibm-mobilefirst-foundation/Configuration.png)
