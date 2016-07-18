@@ -1,5 +1,5 @@
 ---
-title: Connecting to LDAP with IBM MobileFirst Foundation 8.0
+title: Connecting to LDAP servers with IBM MobileFirst Foundation 8.0
 date: 2016-07-17
 tags:
 - MobileFirst _Foundation
