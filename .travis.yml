@@ -6,11 +6,12 @@ env:
   matrix:
     # - BUILD=buildPDF.sh
     - BUILD=buildPages.sh
-    - BUILD=buildBluemix.sh
+     - BUILD=buildBluemix.sh
     - BUILD=buildElastic.sh
 script: ./build/$BUILD
 branches:
   only:
+  - analytics-poc      
   - master
 rvm:
 - 2.1.2 # version of `ruby'
