@@ -13,6 +13,7 @@ MobileFirst Foundation's Operational Analytics provides client-side APIs to help
 * [Sending Analytics Data](#sending-analytics-data)
 * [Enabling/Disabling Client Events](#enabling-disabling-client-event-types)
 * [Custom Events](#custom-events)
+* [Tracking Users](#tracking-users)
 
 ## Configuring Analytics on the Client Side
 Before you can start collecting the predefined data that MobileFirst Operational Analytics provides, you must first import the corresponding libraries to initialize the analytics support.
@@ -43,12 +44,18 @@ Depending on how you've added the MobileFirst Web SDK, proceed in either of the 
 		}
 	});
 
-	require(['ibmmfpfanalytics','mfp'], function(wlanalytics, WL) {
+	require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
 	    // application logic.
 	});
 	```
 
-	Note that you can select your own namespace instead of "wlanalytics".
+	Note that you can select your own namespace instead of "ibmmfpfanalytics".
+
+* For Web applications no listeners are required. Analytics can be enabled and disabled through the `ibmmfpfanalytics.logger` class:
+
+	```javascript
+	ibmmfpfanalytics.logger.config({analyticsCapture: true});
+	```
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: Some JavaScript API differences exist between the Cordova and Web SDKs. Please refer to the [API Reference topic](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in the user documentation.
 
@@ -79,6 +86,8 @@ WLAnalytics.init(this.getApplication());
 ## Sending Analytics Data
 Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the MobileFirst Analytics server after you use the `send` method of the Analytics API.
 
+It should also be considered to send the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the MobileFirst Analytics Console.
+
 ### JavaScript (Cordova)
 In a Cordova application, use the following JavaScript API method:
 
@@ -106,7 +115,7 @@ or for *Swift* use the API method:
 WLAnalytics.sharedInstance().send();
 ```
 
-#### Android
+### Android
 In an Android application, use the following Java API method:
 
 ```java
@@ -310,4 +319,63 @@ NSDictionary *inventory = @{
 let metadata: [NSObject: AnyObject] = ["foo": "bar"];  
 WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
 WLAnalytics.sharedInstance().send();
+```
+
+## Tracking Users
+To track individual users, use the `setUserContext` method:
+
+#### Cordova
+Not supported
+
+#### Web applications
+
+```javascript
+ibmmfpfanalytics.setUserContext(user);
+```
+
+#### iOS
+**Objective-C**
+
+```objc
+[[WLAnalytics sharedInstance] setUserContext:@"John Doe"];
+```
+
+**Swift**
+
+```swift
+WLAnalytics.sharedInstance().setUserContext("John Doe")
+```
+
+#### Android
+
+```java
+WLAnalytics.setUserContext("John Doe");
+```
+
+<br/>
+To un-track individual users, use the `unsetUserContext` method:
+
+#### Cordova
+Not supported
+
+#### Web applications
+There is no `unsetUserContext` in the MobileFirst Web SDK. The user session ends after 30 minutes of inactivity, unless another call is made to `ibmmfpfanalytics.setUserContext(user)`.
+
+#### iOS
+**Objective-C**
+
+```objc
+[[WLAnalytics sharedInstance] unsetUserContext];
+```
+
+**Swift**
+
+```swift
+WLAnalytics.sharedInstance().unsetUserContext
+```
+
+#### Android
+
+```java
+WLAnalytics.unsetUserContext();
 ```
