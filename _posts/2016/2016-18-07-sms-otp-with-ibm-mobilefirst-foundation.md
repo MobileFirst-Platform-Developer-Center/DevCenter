@@ -18,7 +18,17 @@ author:
 
  In this blog I want to introduce a new [sample](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/sms-otp-sample) which using the SMS OTP method for device/user authentication.  The sample demonstrates registration of a phone number using the client [registration-data API on the server](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/registration/external/model/ClientData.html), and then how to authenticate with an SMS OTP.
 
-As the SMS vendor, the sample uses [Twilio](https://www.twilio.com/).  Twilio provides a free trial for a limited period.
+As the SMS vendor, the sample uses [Twilio](https://www.twilio.com/).  Twilio provides a free trial for a limited period. The fact that the Security Check Adapter is a [maven project](https://maven.apache.org/) make it easy to add the [Twilio Java SDK](https://www.twilio.com/docs/libraries/java) as dependency in the [pom.xml](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/pom.xml) file.
+
+```xml
+...
+<dependency>
+	<groupId>com.twilio.sdk</groupId>
+	<artifactId>twilio-java-sdk</artifactId>
+	<version>6.3.0</version>
+</dependency>
+...
+```
 
 This blog post assumes that you have basic knowledge about *IBM MobileFirst Foundation 8.0* authentication and security checks. If it's not the case, refer to [the Authentication and Security tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/).  
 
