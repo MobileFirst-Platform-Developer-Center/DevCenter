@@ -46,23 +46,24 @@ Continue reading for an overview of Java and JavaScript adapters. Then follow th
 * Security integration with the MobileFirst security model with no additional customization, by using simple annotations in the source code
 
 ## JavaScript adapters
-JavaScript adapters provide templates for communicating with HTTP and SQL back-ends containing a set of services called procedures. Mobile apps can call these procedures by issuing AJAX requests. The procedure retrieves information from the back-end application that returns data to the application.
+JavaScript adapters provide templates for communicating with HTTP and SQL back-ends. These templates contain a set of services called procedures. Mobile apps can call these procedures by issuing AJAX requests. The procedure retrieves information from the back-end application and return data to the application. Using a REST interface, you can benefit from the [OAuth 2.0-based security framework](../authentication-and-security) provided by MobileFirst.
 
-* If the format of the data is JSON the MobileFirst Server keeps the data intact. Otherwise the MobileFirst Server automatically converts it to JSON.  
-* Alternatively you can provide XSL transformation to convert the data to JSON. In this case, the returned content type from the back end must be XML. Then, you can use an XSLT to filter the data based requirements.
+* If the format of the data is JSON then the MobileFirst Server keeps the data intact. Otherwise the MobileFirst Server automatically converts it to JSON.  
+* Alternatively you can provide XSL transformation to convert the data to JSON. In this case, the returned content type from the back-end must be XML. Then, you can use an XSLT to filter the data based on requirements.
+* With an HTTP adapter, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
+* With an SQL adapter, you can communicate with any SQL data source. You can use plain SQL queries or stored procedures.
 
-> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutotrial.
+> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutorial.
 > * Learn more about [JavaScript adapters](javascript-adapters)
 
 ![javascript_adapters](javascript_adapters.png)
 
 ## Java adapters
-Java adapters expose a full REST API to the client and are written in Java. This type of adapter is based on the [JAX-RS 2.0 specification] (https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html).  
-In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource. The only exception is if the client sending the request supports GZip, then the returned content encoding of the Java adapter is compressed by GZip. All operations on the returned content are done and owned by the developer.
+Java adapters are based on the [JAX-RS 2.0 specification] (https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html) and are thus written in Java, and expose a full REST API to the client. In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource. The only exception is if the client sending the request supports GZip, then the returned content encoding of the Java adapter is compressed by GZip. All operations on the returned content are done and owned by the developer.
 
-The illustration below depicts how a mobile device can access any Java adapter from its REST endpoint. The REST interface is protected by the MobileFirst OAuth security filter, meaning that the client needs to obtain an access token to access the adapter resources. Each of the resources of the adapter has its own URL, so it is possible to protect MobileFirst endpoints using any firewall. The REST interface invokes the Java code (JAX-RS service) to handle incoming requests. The Java code can perform operations on the server by using the Java MobileFirst Server API. In addition, the Java code can connect to the enterprise system to fetch data, update data, or perform any other operation that the enterprise system exposes.
+The diagram below depicts how a mobile device can access any Java adapter from its REST endpoint. The REST interface is protected by the MobileFirst OAuth security filter, meaning that the client needs to obtain an access token to access the adapter resources. Each of the resources of the adapter has its own URL, so it is possible to protect MobileFirst endpoints using any firewall. The REST interface invokes the Java code (JAX-RS service) to handle incoming requests. The Java code can perform operations on the server by using the Java MobileFirst Server API. In addition, the Java code can connect to the enterprise system to fetch data, update data, or perform any other operation that the enterprise system exposes.
 
-> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutotrial.
+> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutorial.
 > * Learn more about [Java adapters](java-adapters)
 
 ![java-adapter](java_adapter.jpg)
