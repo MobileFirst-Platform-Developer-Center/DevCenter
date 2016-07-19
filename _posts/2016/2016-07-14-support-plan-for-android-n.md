@@ -1,5 +1,5 @@
 ---
-title: Support plan for Google's Android N release
+title: Support plan for Google's Android 7.0 "Nougat" release
 date: 2016-07-14
 tags:
 - MobileFirst_Foundation
@@ -15,7 +15,7 @@ version:
 author:
   name: Beery Holstein
 ---
-IBM plans to provide service updates to IBM MobileFirst Platform Foundation to support the new Android release based on the terms described in [http://www-01.ibm.com/support/docview.wss?uid=swg27045489](http://www-01.ibm.com/support/docview.wss?uid=swg27045489). Note that this policy is not dictated by the Program Technical Support's lifecycle as stated in the product's version announce letter because a new version of a supported mobile operating system is considered a new feature. In other words, we do not plan to introduce support for Android N in IBM Worklight Foundation 6.2 or earlier releases.
+IBM plans to provide service updates to IBM MobileFirst Platform Foundation to support [the new Android release](https://developer.android.com/preview/index.html?utm_campaign=android_launch_developerpreview5_071816&utm_source=anddev&utm_medium=blog) based on the terms described in [http://www-01.ibm.com/support/docview.wss?uid=swg27045489](http://www-01.ibm.com/support/docview.wss?uid=swg27045489). Note that this policy is not dictated by the Program Technical Support's lifecycle as stated in the product's version announce letter because a new version of a supported mobile operating system is considered a new feature. In other words, we do not plan to introduce support for Android N in IBM Worklight Foundation 6.2 or earlier releases.
 
 For those customers who have Android apps developed using IBM Worklight Foundation 6.2 or earlier releases, and intend to have their app running on Android N, an upgrade to a later release is required. Talk to your IBM representative about how we can help.
 
