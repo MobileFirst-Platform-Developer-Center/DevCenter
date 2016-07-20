@@ -23,6 +23,7 @@ An adapter can be created using either Maven commands or by using the MobileFirs
 * [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
 * [Downloading or Deploying Adapters Using MobileFirst Operations Console](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
 * [Updating the Adapter Maven Project](#updating-the-adapter-maven-project)
+* [Working offline](#working-offline)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Install Maven
@@ -336,6 +337,25 @@ To update the adapter Maven project with the latest release, find the **version 
       <extensions>true</extensions>
     </plugin>
     ```
+
+## Working offline
+If you do not have online access to the Maven Central Repository, you can share MobileFirst Maven artifacts in the internal repository of your organization.
+
+1. [Visit the Downloads page]({{site.baseurl}}/downloads/) and download the MobileFirst Foundation Development Kit Installer.
+2. Start MobileFirst Server and in a browser, load the MobileFirst Operations Console from the following URL: http://<your-server-host:server-port>/mfpconsole.
+3. Click **Download Center**. Under **Tools → Adapter Archetypes**, click **Download**. The mfp-maven-central-artifacts-adapter.zip archive is downloaded.
+4. Add the adapter archetypes and security checks to the internal Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
+5. The following JAR files are required by adapter-maven-api. Make sure they are located either in developers' local **.m2** folder, or in the Maven repository of your organization. You can download them from The Central Repository.
+    * javax.ws.rs:javax.ws.rs-api:2.0
+    * javax:javaee-web-api:6.0
+    * org.apache.httpcomponents:httpclient:4.3.4
+    * org.apache.httpcomponents:httpcore:4.3.2
+    * commons-logging:commons-logging:1.1.3
+    * javax.xml:jaxp-api:1.4.2
+    * org.mozilla:rhino:1.7.7
+    * io.swagger:swagger-annotations:1.5.6
+    * com.ibm.websphere.appserver.api:com.ibm.websphere.appserver.api.json:1.0
+    * javax.servlet:javax.servlet-api:3.0.1
 
 ## Tutorials to follow next
 
