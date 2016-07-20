@@ -36,7 +36,7 @@ This blog post assumes that you have basic knowledge about *IBM MobileFirst Foun
 To run this sample, review the instructions in the [sample's repository.](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/sms-otp-sample)
 
 ## The big picture
-![login flow]({{site.baseurl}}/assets/blog/2016-18-07-sms-otp-with-ibm-mobilefirst-foundation/Architecture.png)
+![login flow]({{site.baseurl}}/assets/blog/2016-07-18-sms-otp-with-ibm-mobilefirst-foundation/Architecture.png)
 
 The diagram above illustrates the login flow (here described with Google but also relevant to Facebook or other social providers). The diagram shows that the trigger to call social providers is initiated by the client.
 
@@ -95,4 +95,4 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ## Configuration
 You can configure the sms-otp either by editing the properties in the [adapter.xml](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/adapter-resources/adapter.xml) file followed by re-building and re-deploying the .adapter file, or by editing the adapter properties directly from MobileFirst Console.  In the [SMSOTPSecurityCheckConfig](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/sms-otp/src/main/java/com/github/mfpdev/sample/smsOTP/SMSOTPSecurityCheckConfig.java) you can do the online validation for the Twilio account, and fail the deployment or warn the admin if the account data is incorrect
-![SMS OTP configuration]({{site.baseurl}}/assets/blog/2016-18-07-sms-otp-with-ibm-mobilefirst-foundation/Configuration.png)
+![SMS OTP configuration]({{site.baseurl}}/assets/blog/2016-07-18-sms-otp-with-ibm-mobilefirst-foundation/Configuration.png)
