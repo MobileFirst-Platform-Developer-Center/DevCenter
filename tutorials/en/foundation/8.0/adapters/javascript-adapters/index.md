@@ -21,20 +21,19 @@ The `adapter-resources` folder contains an XML configuration file. This configur
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <mfp:adapter name="JavaScriptAdapter">
+    <displayName>JavaScriptAdapter</displayName>
+    <description>JavaScriptAdapter</description>
+    
+    <connectivity>
+        <connectionPolicy>
+        ...
+        </connectionPolicy>
+    </connectivity>
 
-  <displayName>JavaScriptAdapter</displayName>
-	<description>JavaScriptAdapter</description>
-  <connectivity>
-    <connectionPolicy>
-    ...
+    <procedure name="procedure1"></procedure>
+    <procedure name="procedure2"></procedure>
 
-    </connectionPolicy>
-  </connectivity>
-
-  <procedure name="procedure1"></procedure>
-  <procedure name="procedure2"></procedure>
-
-  <property name="name" displayName="username" defaultValue="John"  />
+    <property name="name" displayName="username" defaultValue="John"  />
 </mfp:adapter>
 ```
 
@@ -42,7 +41,7 @@ The `adapter-resources` folder contains an XML configuration file. This configur
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements terminology</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements</b></a>
             </h4>
         </div>
 
@@ -70,19 +69,24 @@ The `adapter-resources` folder contains an XML configuration file. This configur
                             <li><b>secured</b>: <i>Optional.</i> Defines whether the adapter resource procedure is protected by the MobileFirst security framework. The following values are valid:
                                 <ul>
                                     <li><b>true</b>: Default. The procedure is protected. Calls to the procedure require a valid access token.</li>
-                                    <li><b>false</b>. The procedure is not protected. Calls to the procedure do not require an access token. When this value is set, the <b>scope</b> attribute is ignored. To understand the implications of disabling resource protection, see Unprotected resources.</li>
+                                    <li><b>false</b>. The procedure is not protected. Calls to the procedure do not require an access token. When this value is set, the <b>scope</b> attribute is ignored. To understand the implications of disabling resource protection, see the <a href="../../authentication-and-security/#unprotected-resources">Unprotected resources</a> topic in the <a href="../../authentication-and-security">Authorization Concepts</a> tutorial.</li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
+                    <li><b>securityCheckDefinition</b>: <i>Optional.</i> Defines a security-check object. Learn more about security checks in the <a href="../../authentication-and-security/creating-a-security-check">Creating a Security Checks</a> tutorial.</li>
+        			<li><b>property</b>: <i>Optional.</i> Declares a user-defined property. Learn more in the Custom properties topic below.</li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
+#### Custom properties
 
-* `property`: The **adapter.xml** file can also contain custom properties. The configuration properties elements must always be located *below* the `procedure` elements.
+The **adapter.xml** file can also contain user-defined custom properties. The values that developers assign to them during the creation of the adapter can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab**, without redeploying the adapter. User-defined properties can be read using the [getPropertyValue API](#getpropertyvalue) and then further customized at run time.
+
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `procedure` elements. In the example above we defined a displayName property with a default value, so it could be used later.
 
 The `<property>` element takes the following attributes:
 
@@ -91,8 +95,6 @@ The `<property>` element takes the following attributes:
 - **displayName**: *optional*, a friendly name to be displayed in the console.
 - **description**: *optional*, a description to be displayed in the console.
 - **type**: *optional*, ensures that the property is of a specific type such as `integer`, `string`, `boolean` or a list of valid values (for example `type="['1','2','3']"`).
-
-The connection properties as well as the custom properties can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab** without having to deploy the adapter again:
 
 ![Console properties](console-properties.png)
 
@@ -109,8 +111,7 @@ Replace the **DmfpfConfigFile** placeholder with the actual value, for example: 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:** The file can be of any file extension and if the file does not exist, it will be created.
 
 ### The js folder
-This folder contains all JavaScript files, which contains the implementation of procedures that are declared in the XML file. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data.  
-Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
+This folder contains all the JavaScript implementation file of the procedures that are declared in the **adapter.xml** file. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data. Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
 
 ## JavaScript adapter procedures
 Procedures are declared in XML and are implemented with server-side JavaScript, for the following purposes:
@@ -118,13 +119,24 @@ Procedures are declared in XML and are implemented with server-side JavaScript, 
 * To provide adapter functions to the application
 * To call back-end services to retrieve data or to perform actions
 
-Each procedure that is declared in the adapter XML file must have a corresponding function in the JavaScript file.
+Each procedure that is declared in the **adapter.xml** file must have a corresponding function in the JavaScript file.
 
 By using server-side JavaScript, a procedure can process the data before or after it calls the service. You can apply more filtering to retrieved data by using simple XSLT code.  
 JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to [use Java in the adapter](../javascript-adapters/using-java-in-javascript-adapters) code.
 
 ### Using global variables
 The MobileFirst server does not rely on HTTP sessions and each request may reach a different node. You should not rely on global variables to keep data from one request to the next.
+
+### Adapter response threshold
+Adapter calls are not designed to return huge chunks of data because the adapter response is stored in MobileFirst Server memory as a string. Thus, data that exceeds the amount of available memory might cause an out-of-memory exception and the failure of the adapter invocation. To prevent such failure, you configure a threshold value from which the MobileFirst Server returns gzipped HTTP responses. The HTTP protocol has standard headers to support gzip compression. The client application must also be able to support gzip content in HTTP.
+
+#### Server-side
+In the MobileFirst Operations Console, under **Runtimes > Settings > GZIP compression threshold for adapter responses**, set the desired threshold value. The default value is 20 KB.  
+**Note:** By saving the change in the MobileFirst Operations Console, the change is effective immediately in the runtime.
+
+#### Client-side
+Ensure that you enable the client to parse a gzip response, by setting the value of the `Accept-Encoding` header to `gzip` in every client request.
+Use the `addHeader` method with your request variable, for example: `request.addHeader("Accept-Encoding","gzip");`
 
 ## Server-side APIs
 JavaScript adapters can use the MobileFirst server-side APIs to perform operations that are related to MobileFirst Server, such as calling other JavaScript adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
@@ -143,7 +155,10 @@ Use the `MFP.Server.getTokenIntrospectionData()` API to
 To get the current `AuthenticatedUser` use:
 
 ```js
-var currentUser = MFP.Server.getTokenIntrospectionData()......
+var currentUser = MFP.Server.getTokenIntrospectionData() { 
+    securityContext.getAuthenticatedUser();
+    return "Hello " + user.getDisplayName();
+ }
 ```
 {% endcomment %}
 
@@ -176,6 +191,8 @@ var userAgent = request.getHeader("User-Agent");
 Use the `MFP.Server.invokeProcedure(invocationData)` to call other JavaScript adapters.  
 You can see usage examples on the [Advanced Adapter Usage and Mashup](../advanced-adapter-usage-mashup) tutorial.
 
-> Learn more about `MFP.Server` APIs in the user documentation.
+### Logging
+The JavaScript API provides logging capabilities through the MFP.Logger class. It contains four functions that correspond to four standard logging levels.  
+You can see the [server-side log collection](../server-side-log-collection) tutorial for more information.
 
 ## JavaScript adapter examples:

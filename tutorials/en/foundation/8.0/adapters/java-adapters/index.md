@@ -40,6 +40,10 @@ The **adapter-resources** folder contains an XML configuration file (**adapter.x
 	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
+	
+	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
+	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
+	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
 </mfp:adapter>
 ```
 
@@ -47,7 +51,7 @@ The **adapter-resources** folder contains an XML configuration file (**adapter.x
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements terminology</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements</b></a>
             </h4>
         </div>
 
@@ -58,11 +62,8 @@ The **adapter-resources** folder contains an XML configuration file (**adapter.x
 					<li><b>displayName</b>: <i>Optional.</i> The name of the adapter that is displayed in the MobileFirst Operations Console. If this element is not specified, the value of the name attribute is used instead.</li>
 					<li><b>description</b>: <i>Optional.</i> Additional information about the adapter. Displayed in the MobileFirst Operations Console.</li>
 					<li><b>JAXRSApplicationClass</b>: <i>Mandatory for exposing an /adapter endpoint.</i> Defines the class name of the JAX-RS application of this adapter. In the example, it is com.acme.JavaAdapter1Application.</li>
-					<li><b>securityCheckDefinition</b>: <i>Optional.</i> Defines a security-check object. Learn more about security checks in the <a href="../../authentication-and-security/creating-a-security-check">Creating a Security Checks</a> tutorial.
-						<ul>
-							<li><b>property</b>: <i>Optional.</i> Declares a user-defined property. Learn more in the Custom properties topic below.</li>
-						</ul>
-					</li>
+					<li><b>securityCheckDefinition</b>: <i>Optional.</i> Defines a security-check object. Learn more about security checks in the <a href="../../authentication-and-security/creating-a-security-check">Creating a Security Checks</a> tutorial.</li>
+					<li><b>property</b>: <i>Optional.</i> Declares a user-defined property. Learn more in the Custom properties topic below.</li>
                 </ul>
             </div>
         </div>
@@ -73,24 +74,8 @@ The **adapter-resources** folder contains an XML configuration file (**adapter.x
 
 The **adapter.xml** file can also contain user-defined custom properties. The values that developers assign to them during the creation of the adapter can be overridden in the **MobileFirst Operations Console → [your adapter] → Configurations tab**, without redeploying the adapter. User-defined properties can be read using the [ConfigurationAPI interface](#configuration-api) and then further customized at run time.
 
-```xml
-<mfp:adapter name="JavaSQL"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mfp="http://www.ibm.com/mfp/integration"
-	xmlns:http="http://www.ibm.com/mfp/integration/http">
-
-	<displayName>JavaSQL</displayName>
-	<description>JavaSQL</description>
-
-	<JAXRSApplicationClass>com.sample.JavaSQLApplication</JAXRSApplicationClass>
-
-	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
-	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
-	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
-</mfp:adapter>
-```
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must be located **below** the `JAXRSApplicationClass` element.  
-Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
+In the example above we defined the connection settings and gave them default values, so they could be used later in the AdapterApplication class.
 
 The `<property>` element takes the following attributes:
 
