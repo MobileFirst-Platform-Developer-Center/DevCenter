@@ -37,13 +37,51 @@ The `adapter-resources` folder contains an XML configuration file. This configur
   <property name="name" displayName="username" defaultValue="John"  />
 </mfp:adapter>
 ```
-* `name`: Mandatory. The name of the adapter
-* `displayName`: Optional. The name that is displayed in the MobileFirst Console
-* `description`: Optional. Additional information that is displayed in the MobileFirst Console
-* `connectivity`:
- * Defines the connection properties and load constraints of the back-end system.
- * When the back-end system requires user authentication, defines how user credentials are obtained.
-* `procedure`: Declares a service for accessing a back-end application. One entry for each adapter procedure.
+
+<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="adapter-xml">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements terminology</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
+            <div class="panel-body">
+                <ul>
+                    <li><b>name</b>: <i>Mandatory.</i> The name of the adapter. This name must be unique within the MobileFirst Server. It can contain alphanumeric characters and underscores, and must start with a letter. After you define and deploy an adapter, you cannot modify its name.</li>
+					<li><b>displayName</b>: <i>Optional.</i> The name of the adapter that is displayed in the MobileFirst Operations Console. If this element is not specified, the value of the name attribute is used instead.</li>
+					<li><b>description</b>: <i>Optional.</i> Additional information about the adapter. Displayed in the MobileFirst Operations Console.</li>
+					<li><b>connectivity</b>: <i>Mandatory.</i> Defines the mechanism by which the adapter connects to the back-end application. It contains the <code>connectionPolicy</code> subelement.
+                        <ul>
+                            <li><b>connectionPolicy</b>: <i>Mandatory</i>. The <code>connectionPolicy</code> defines connection properties. The structure of this subelement depends on the integration technology of the back-end application. For more information about connectionPolicy, see <a href="js-sql-adapter">HTTP adapter connectionPolicy element</a> and <a href="js-sql-adapter">SQL adapter connectionPolicy element</a>.</li>
+                        </ul>
+                    </li>
+                    <li><b>procedure</b>: <i>Mandatory.</i> Defines a process for accessing a service that is exposed by a back-end application.
+                        <ul>
+                            <li><b>name</b>: <i>Mandatory.</i> The name of the procedure. This name must be unique within the adapter. It can contain alphanumeric characters and underscores, and must start with a letter.</li>
+                            <li><b>audit</b>: <i>Optional.</i> Defines whether calls to the procedure are logged in the audit log. The following values are valid: 
+                                <ul>
+                                    <li><b>true</b>: Calls to the procedure are logged in the audit log.</li> 
+                                    <li><b>false</b>: Default. Calls to the procedure are not logged in the audit log.</li>
+                                </ul>
+                            </li>
+                            <li><b>scope</b>: <i>Optional.</i> The security scope that protects the adapter resource procedure, as a string of zero or more space-separated scope elements. A scope element can be a keyword that is mapped to a security check, or the name of a security check. The default value of the scope attribute is an empty string. When the value of the <b>secured</b> attribute is false, the scope attribute is ignored. For information on OAuth resource protection, see the <a href="../../authentication-and-security">Authorization Concepts</a> tutorial.</li>
+                            <li><b>secured</b>: <i>Optional.</i> Defines whether the adapter resource procedure is protected by the MobileFirst security framework. The following values are valid:
+                                <ul>
+                                    <li><b>true</b>: Default. The procedure is protected. Calls to the procedure require a valid access token.</li>
+                                    <li><b>false</b>. The procedure is not protected. Calls to the procedure do not require an access token. When this value is set, the <b>scope</b> attribute is ignored. To understand the implications of disabling resource protection, see Unprotected resources.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 * `property`: The **adapter.xml** file can also contain custom properties. The configuration properties elements must always be located *below* the `procedure` elements.
 
 The `<property>` element takes the following attributes:
