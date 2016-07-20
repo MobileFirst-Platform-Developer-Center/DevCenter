@@ -12,72 +12,86 @@ author:
   name: Robert Puryear
 ---
 
-## Overview
 Ionic SDK is a framework built on AngularJS and Apache Cordova that helps you rapidly build hybrid mobile apps using web technologies such as HTML, CSS, and Javascript.
 
-This blog is going to walk you through how to create, build, and deploy Ionic 1 apps implemented with MobileFirst Foundation.
+In this blog post I will walk you through how to create, build, and deploy Ionic v1 apps implemented with MobileFirst Foundation.
+
+Coming soon: walkthrough for Ionic v2.
 
 
-## Install MobileFirst CLI and SDKs
-You will need to install the **MobileFirst CLI, the Ionic, and Cordova SDKs as well as have an MobileFirst server running**.
+## Prerequisites
+You will need to install the following tools: MobileFirst CLI, Ionic CLI, Cordova CLI, as well as have a MobileFirst server running.
 
-Ensure that you have [NodeJS](https://nodejs.org/en/) downloaded and installed.
-
+Ensure that you have [NodeJS](https://nodejs.org/en/) downloaded and installed. With NodeJS install you can then install all required CLIs using npm.
 
 #### MobileFirst CLI
 Install the MobileFirst CLI by entering the following command:
 
-`npm install -g mfpdev-cli`
+```bash
+npm install -g mfpdev-cli
+```
 
-#### Ionic SDK
-Install the Ionic SDK by entering the following command:
+#### Ionic CLI
+Install the Ionic CLI by entering the following command:
 
-`npm install -g cordova ionic`
+```bash
+npm install -g cordova ionic
+```
 
-#### Cordova SDK
-Install the Cordova SDK by entering the following command:
+#### Cordova CLI
+Install the Cordova CLI by entering the following command:
 
-`npm install -g cordova`
+```bash
+npm install -g cordova
+```
 
-
-
-## Create a New Ionic Project
+## Creating a New Ionic Project
 Create a new Ionic project with a blank template by entering the command below.
 
-`ionic start myApp blank`
+```bash
+ionic start myApp blank
+```
 
-**Ionic automatically adds iOS v3.8 however MobileFirst v8.0 support ios v4.0+. To fix this issue, you will need to remove the ios platform and re-add it.**
+Ionic automatically adds **iOS v3.8** however MobileFirst Foundation v8.0 support **ios v4.0 and above**. To overcome this, remove the ios platform and re-add it.
 
-###To remove the existing iOS platform:
+#### To remove the existing iOS platform:
 Change directory into your Ionic project and run:
 
-`ionic platform remove ios`
+```bash
+ionic platform remove ios
+```
 
-###To add the latest iOS platform:
+#### To add the latest iOS platform:
 
-`ionic platform add ios@latest`
+```bashionic platform add ios@latest
+```
 
-**If you want to add the android platform, you can add it with:**
+If you want to add the android platform, you can add it with:
 
-`ionic platform add android@latest`
+```bash
+ionic platform add android@latest
+```
 
+## Adding the MobileFirst Cordova SDK
+The MobileFirst Cordova SDK is provided as a set of Cordova plug-ins and can be installed by running:
 
-## Add the MobileFirst Cordova SDK
-The MobileFirst Cordova SDK is provided as a Cordova plugin and can be installed by running:
+```bash
+cordova plugin add cordova-plugin-mfp
+```
 
-`cordova plugin add cordova-plugin-mfp`
-
-You can confirm the installed plugins by entering `ionic plugin list`
+You can confirm the installed plug-ins by entering `ionic plugin list`
 
 ![ionic-plugin]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/plugins.png)
 
-## Preview the App
+## Previewing the App
 You can preview the app in a number of ways.
 
 ### Ionic Preview
 To view both iOS and Android platforms using the Ionic CLI:
 
-`ionic serve --lab`
+```bash
+ionic serve --lab
+```
 
 ![ionic-serve]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/serve.png)
 
@@ -89,11 +103,15 @@ Open the **js/app.js** file.
 
 The module is named **starter**.
 
-`angular.module('starter', ['ionic'])`
+```javascript 
+angular.module('starter', ['ionic'])
+```
 
-The **ng-app** directive on index.html tells angular which code to run on the page.
+The **ng-app** directive in the **index.html** file tells angular which code to run on the page.
 
-`<body ng-app="starter">`
+```html 
+<body ng-app="starter">
+```
 
 To link the view and the model of the app together, **create a controller** in the **app.js** file.
 
@@ -108,26 +126,27 @@ Go back to **index.html**.
 
 Add **ng-controller** to the body tag and include the mainCtrl name. This allows you to use the controller anywhere inside the body tag.
 
-`ng-controller="mainCtrl"`
-
+```html
+ng-controller="mainCtrl"
+```
 
 ### Native App Simulator
 To preview the app in a native iOS or Android Simulator, you can use the Cordova emulate command:
 
-`cordova emulate`
+```bash
+cordova emulate
+```
 
-**The iOS simulator will only be available if you are working on a machine running OS X.**
+The iOS simulator will only be available if you are working on a machine running OS X.
 
 ## Register App on MobileFirst Server
-
 To enable the MobileFirst capabilities such as using the Mobile Browser Simulator to preview the application we need to add some javascript code to connect to the MobileFirst server.
 
-**Note: Make sure you have your MobileFirst server running.**
+**Note:** Make sure you have your MobileFirst server running.
 
 Open **app.js** and enter the following at the bottom:
 
 ```javascript
-
 function wlCommonInit() {
            console.log(">> wlCommonInit() ..." );  
            var serverUrl = WL.App.getServerUrl(function(success){
@@ -147,39 +166,41 @@ function wlCommonInit() {
     };
 ```
 
-**Register your app with your MobileFirst server.**
+Register your app with your MobileFirst server.
 
-`mfpdev app register`
+```bash
+mfpdev app register
+```
 
 Open your MobileFirst console and confirm that your app has been registered.
-
-
 
 ### MobileFirst Preview
 To preview the app in a browser or the mobile browser simulator using MobileFirst:
 
-`mfpdev app preview`
+```bash
+mfpdev app preview
+```
 
 Select the mobile browser simulator option.
 
-
 ![ionic-mbs]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/mbs.png)
 
-**Note: Currently OAuth isn't fully implemented with the Mobile Browser Simulator MobileFirst v8**
+**Note:** Currently OAuth isn't fully implemented with the Mobile Browser Simulator MobileFirst Foundation v8.0
 
-## Implement the MobileFirst Adapter
+## Implementing the MobileFirst Adapter
 MobileFirst adapters provide a way to retrieve and manage data for your mobile client app on the server side.
 
 I’m using the [ResourceAdapter](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80/ResourceAdapter) to call a resource API and [PinCodeAdapter](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80/PinCodeAttempts) for security in this example.
 
-You should first **build** and **deploy** them onto your MobileFirst server:
+You should first **build** and **deploy** them onto your MobileFirst server. Switch into the root folder of each and run the following commands:
 
-`mfpdev adapter build`
-
-`mfpdev adapter deploy`
+```bash
+mfpdev adapter build
+mfpdev adapter deploy
+```
 
 ### Security
-The url that gets the balance in the ResourceAdapter is protected by a security check named “accessRestricted”.
+The URL that gets the balance in the ResourceAdapter is protected by a scope named “accessRestricted”.
 
 `@OAuthSecurity(scope="accessRestricted")`
 
@@ -206,55 +227,54 @@ Add the following code to your **mainCtrl controller** to call make the adapter 
                   }
               );
   };
-
 ```
 
 We have defined the **balance** variable that will hold the value we get back from the adapter call. We have also defined the **getAdapter** variable which is the function where we actually call the adapter and get the balance.
 
-### Update the view
+### Updating the view
 Add the following code in your **index.html** in the `<ion-content>` elements:
 
-`<h3>Check your account balance</h3> `
+```html
+<h3>Check your account balance</h3>
+<button ng-click="getAdapter()" class="button button-block button-balanced">Submit</button>
 
-`<button ng-click="getAdapter()" class="button button-block button-balanced">Submit</button>`
+<h3>Balance: {{ balance }}</h3>
+```
 
-`<h3>Balance: {{ balance }}</h3>`
-
-The **ng-click** directive calls the getAdapter function.
-
+The **ng-click** directive calls the getAdapter function.  
 To display the value of a **$scope** variable in your view, you surround it with double curly brackets
 
-`{{ balance }}`
+```html
+{{ balance }}
+```
 
-### Add the Challenge Handler
+### Adding the Challenge Handler
 
 Add [ChallengeHandler.js](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80/www/js) in your project in the js directory.
 
-Reference the script in **index.html**.
-
-`<script src="js/ChallengeHandler.js"></script>`
+Reference the script in **index.html**: `<script src="js/ChallengeHandler.js"></script>`
 
 Call the challenge handler in wlCommonInit to handle the security check.
 
-`PinCodeChallengeHandler()`
+```javascript
+PinCodeChallengeHandler()
+```
 
 
-## Test the App
-
+## Testing the App
 Run the app in the simulator using Cordova since we are using OAuth security.
 
-`cordova emulate`
+```bash
+cordova emulate
+```
 
 ![ionic-launch]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/launch.png)
 
-Click the **Submit button** to get your balance.
-
+Click the **Submit button** to get your balance.  
 This will call the PinCode adapter and you will need to enter your authorization.
 
 ![ionic-pincode]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/pincode.png)
 
-**The default pin code is 1234. You can update this in the console under the PinCodeAttempts adapter > Security Check.**  
-
-After your code is validated, your balance is shown in the app.
+The default pin code is 1234. You can update this in the console under the PinCodeAttempts adapter > Security Check. After your code is validated, your balance is shown in the app.
 
 ![ionic-balance]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/balance.png)
