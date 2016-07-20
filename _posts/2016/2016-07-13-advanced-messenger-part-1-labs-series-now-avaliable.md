@@ -1,8 +1,8 @@
 ---
-title: Advanced Messenger Part 1 lab series now available
+title: 'Labs: Advanced Messenger Part 1 now available'
 date: 2016-07-13
 tags:
-- MobileFirst_Platform
+- MobileFirst_Foundation
 - Cordova
 - Ionic
 - Labs
@@ -11,9 +11,8 @@ version:
 author:
   name: Andrii Vasylchenko
 ---
-
-First part of new hybrid Advanced Messenger lab series for MobileFirst Platform Foundation 8 now available in [labs section]({{site.baseurl}}/labs/developers/8.0/intro)!  
-During 5 hands-on labs developers will get familiar with latest platform version and development using Ionic 2 Beta with typescript.
+A new Advanced Messenger lab for MobileFirst Foundation 8.0 is [now available]({{site.baseurl}}/labs/developers/8.0/intro)!  
+In this Part 1 of the Advanced Messenger lib, developers will go through 5 hands-on lab sessions and become familiar with the latest release of MobileFirst Foundation by implementing an Ionic 2 Beta application.
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
@@ -32,3 +31,6 @@ During 5 hands-on labs developers will get familiar with latest platform version
 * JSONStore
 * Uses Google Maps Distance Matrix API
 * Uses Node.js as mock server
+
+<br/>
+Stay tuned for part 2!
