@@ -47,4 +47,4 @@ To run the sample follow the instructions in the README.md file [link](https://g
 
 ## Configuration
 You can configure the LDAP connectivity either by editing the properties in the [adapter.xml](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/ldap/src/main/adapter-resources/adapter.xml) file followed by re-building and re-deploying the .adapter file, or by editing the adapter properties directly from MobileFirst Console.
-![LDAP configuration]({{site.baseurl}}/assets/blog/2016-17-07-connecting-to-LDAP-with-ibm-mobilefirst-foundation/ldap-configuration.png)
+![LDAP configuration]({{site.baseurl}}/assets/blog/2016-07-17-connecting-to-LDAP-with-ibm-mobilefirst-foundation/ldap-configuration.png)
