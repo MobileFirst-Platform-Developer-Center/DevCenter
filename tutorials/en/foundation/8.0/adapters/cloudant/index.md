@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Integrating with Cloudant Using an Adapter
+title: Integrating with Cloudant
 relevantTo: [javascript]
 downloads:
   - name: Download Cordova project

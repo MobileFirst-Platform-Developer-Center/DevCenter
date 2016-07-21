@@ -160,8 +160,6 @@ The following URL parts can be parameterized.
 * Query string parameters
 * Fragments
 
->See the topic about "The connectionPolicy element of the HTTP adapter" in the user documentation for advanced options for adapters, such as cookies, headers, and encoding.  
-
 To call an HTTP request, use the `MFP.Server.invokeHttp` method.  
 Provide an input parameter object, which must specify:
 
@@ -185,7 +183,7 @@ function getFeed() {
 }
 ```
 
->See the topic about "MFP.Server.invokeHttp" in the user documentation for a complete list of options.
+> See the API Reference for "MFP.Server.invokeHttp" in the user documentation for a complete list of options.
 
 ## XSL transformation filtering
 You can also apply XSL transformation to the received data, for example to filter the data.  
