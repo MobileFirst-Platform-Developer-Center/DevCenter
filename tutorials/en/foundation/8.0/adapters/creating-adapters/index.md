@@ -9,7 +9,7 @@ weight: 2
 ## Overview
 An adapter can be created using either Maven commands or by using the MobileFirst CLI (that is dependent on Maven being installed and configured). The Adapter code can then be edited and built using your IDE of choice, such as Eclipse and IntelliJ. This tutorial explains how to create, build and deploy MobileFirst **Java or JavaScript adapters** using Maven and the MobileFirst CLI. To learn how to use the Eclipse or IntelliJ IDEs to create and build adapters, review the [Developing Adapters in Eclipse](../developing-adapters) tutorial.
 
-**Prerequisite:** Make sure that you read the [Adapters Overview](../adapters-overview) first.
+**Prerequisite:** Make sure that you read the [Adapters Overview](../) first.
 
 #### Jump to:
 * [Install Maven](#install-maven)

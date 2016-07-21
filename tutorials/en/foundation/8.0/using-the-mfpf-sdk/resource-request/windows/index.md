@@ -19,7 +19,7 @@ The REST API works with all adapters and external resources.
 **Prerequisites**:
 
 - Ensure you have added the MobileFirst Platform SDK to your Native [Windows 8.1 Universal or Windows 10 UWP](../../../adding-the-mfpf-sdk/windows-8-10).
-- Learn how to [create adapters](../../../adapters/adapters-overview/).
+- Learn how to [create adapters](../../../adapters/creating-adapters/).
 
 ## WLResourceRequest
 The `WorklightResourceRequest` class handles resource requests to adapters or external resources.
