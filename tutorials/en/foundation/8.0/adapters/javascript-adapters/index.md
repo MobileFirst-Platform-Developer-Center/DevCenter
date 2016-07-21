@@ -69,7 +69,7 @@ The `adapter-resources` folder contains an XML configuration file. This configur
                             <li><b>secured</b>: <i>Optional.</i> Defines whether the adapter resource procedure is protected by the MobileFirst security framework. The following values are valid:
                                 <ul>
                                     <li><b>true</b>: Default. The procedure is protected. Calls to the procedure require a valid access token.</li>
-                                    <li><b>false</b>. The procedure is not protected. Calls to the procedure do not require an access token. When this value is set, the <b>scope</b> attribute is ignored. To understand the implications of disabling resource protection, see the <a href="../../authentication-and-security/authorization_concepts/#unprotected-resources">Unprotected resources</a> topic in the <a href="../../authentication-and-security">Authorization Concepts</a> tutorial.</li>
+                                    <li><b>false</b>. The procedure is not protected. Calls to the procedure do not require an access token. When this value is set, the <b>scope</b> attribute is ignored. To understand the implications of disabling resource protection, see the <a href="../../authentication-and-security/authorization-concepts/#unprotected-resources">Unprotected resources</a> topic in the <a href="../../authentication-and-security">Authorization Concepts</a> tutorial.</li>
                                 </ul>
                             </li>
                         </ul>
