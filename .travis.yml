@@ -11,7 +11,7 @@ env:
 script: ./build/$BUILD
 branches:
   only:
-  - analytics-poc      
+  - content-migration    
   - master
 rvm:
 - 2.1.2 # version of `ruby'
