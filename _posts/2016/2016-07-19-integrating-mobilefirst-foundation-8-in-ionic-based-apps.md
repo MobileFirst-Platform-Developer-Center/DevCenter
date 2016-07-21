@@ -11,35 +11,34 @@ version: 8.0
 author:
   name: Robert Puryear
 ---
-
 Ionic SDK is a framework built on AngularJS and Apache Cordova that helps you rapidly build hybrid mobile apps using web technologies such as HTML, CSS, and Javascript.
 
-In this blog post I will walk you through how to create, build, and deploy Ionic v1 apps implemented with MobileFirst Foundation.
-
+In this blog post I will walk you through how to create, build, and deploy Ionic v1 apps implemented with MobileFirst Foundation.  
 Coming soon: walkthrough for Ionic v2.
 
-
 ## Prerequisites
-You will need to install the following tools: MobileFirst CLI, Ionic CLI, Cordova CLI, as well as have a MobileFirst server running.
-
+You will need to install the following tools: MobileFirst CLI, Ionic CLI, Cordova CLI, as well as have a MobileFirst server running.  
 Ensure that you have [NodeJS](https://nodejs.org/en/) downloaded and installed. With NodeJS install you can then install all required CLIs using npm.
 
-#### MobileFirst CLI
-Install the MobileFirst CLI by entering the following command:
+To get up &amp; running with the MobileFirst Server you can either use the [Mobile Foundation Bluemix service]({{site.baseurl}}/tutorials/en/foundation/8.0/ibm-containers/using-mobile-foundation/) or [download the DevKit Installer]({{site.baseurl}}/downloads) for an on-prem installation.
+
+#### Installing the CLIs
+
+**MobileFirst CLI**  
 
 ```bash
 npm install -g mfpdev-cli
 ```
 
-#### Ionic CLI
-Install the Ionic CLI by entering the following command:
+> Learn more about the [MobileFirst CLI]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)
+
+**Ionic CLI**  
 
 ```bash
 npm install -g cordova ionic
 ```
 
-#### Cordova CLI
-Install the Cordova CLI by entering the following command:
+**Cordova CLI**  
 
 ```bash
 npm install -g cordova
@@ -52,18 +51,11 @@ Create a new Ionic project with a blank template by entering the command below.
 ionic start myApp blank
 ```
 
-Ionic automatically adds **iOS v3.8** however MobileFirst Foundation v8.0 support **ios v4.0 and above**. To overcome this, remove the ios platform and re-add it.
-
-#### To remove the existing iOS platform:
-Change directory into your Ionic project and run:
+Ionic automatically adds the **Cordova iOS v3.8** plug-in, however MobileFirst Foundation v8.0 support **Cordova iOS v4.0 and above**. To overcome this, remove the iOS platform and re-add it. Change directory into your Ionic project and run:
 
 ```bash
 ionic platform remove ios
-```
-
-#### To add the latest iOS platform:
-
-```bashionic platform add ios@latest
+ionic platform add ios@latest
 ```
 
 If you want to add the android platform, you can add it with:
@@ -82,6 +74,8 @@ cordova plugin add cordova-plugin-mfp
 You can confirm the installed plug-ins by entering `ionic plugin list`
 
 ![ionic-plugin]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/plugins.png)
+
+> Learn more about the [MobileFirst Cordova SDK]({{site.baseurl}}/tutorials/en/foundation/8.0/adding-the-mfpf-sdk/cordova/)
 
 ## Previewing the App
 You can preview the app in a number of ways.
@@ -137,42 +131,43 @@ To preview the app in a native iOS or Android Simulator, you can use the Cordova
 cordova emulate
 ```
 
-The iOS simulator will only be available if you are working on a machine running OS X.
+The iOS Simulator will only be available if you are working on a machine running OS X.
 
 ## Register App on MobileFirst Server
-To enable the MobileFirst capabilities such as using the Mobile Browser Simulator to preview the application we need to add some javascript code to connect to the MobileFirst server.
-
-**Note:** Make sure you have your MobileFirst server running.
+To enable the MobileFirst capabilities such as using the Mobile Browser Simulator to preview the application we need to add some JavaScript code to connect to the MobileFirst Server.
 
 Open **app.js** and enter the following at the bottom:
 
 ```javascript
 function wlCommonInit() {
-           console.log(">> wlCommonInit() ..." );  
-           var serverUrl = WL.App.getServerUrl(function(success){
-               console.log(success);
-           }, function(fail){
-               console.log(fail);
-           });
-			WLAuthorizationManager.obtainAccessToken().then(
-                    function (accessToken) {
-                      console.log(">> Success - Connected to MobileFirst Server");          
-                    },
-                    function (error) {
-                      console.log(">> Failed to connect to MobileFirst Server");  
-                      console.log(error);        
-                    }
-            );
-    };
+    console.log(">> wlCommonInit() ..." );  
+    var serverUrl = WL.App.getServerUrl(function(success){
+        console.log(success);
+    }, function(fail){
+        console.log(fail);
+    });
+    WLAuthorizationManager.obtainAccessToken().then(
+        function (accessToken) {
+          console.log(">> Success - Connected to MobileFirst Server");          
+        },
+        function (error) {
+          console.log(">> Failed to connect to MobileFirst Server");  
+          console.log(error);        
+        }
+    );
+};
 ```
 
-Register your app with your MobileFirst server.
+Register your app with your MobileFirst Server.
 
 ```bash
 mfpdev app register
 ```
 
-Open your MobileFirst console and confirm that your app has been registered.
+<br/>
+Open your MobileFirst Console and confirm that your app has been registered.
+
+![Ionic app registered in the server and appears in the console]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/app-in-console.png)
 
 ### MobileFirst Preview
 To preview the app in a browser or the mobile browser simulator using MobileFirst:
@@ -185,7 +180,8 @@ Select the mobile browser simulator option.
 
 ![ionic-mbs]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/mbs.png)
 
-**Note:** Currently OAuth isn't fully implemented with the Mobile Browser Simulator MobileFirst Foundation v8.0
+> **Note:** Currently OAuth isn't fully implemented with the Mobile Browser Simulator MobileFirst Foundation v8.0
+> Learn more about [previewing applications]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/mfpf-development-in-cordova-applications/#previewing-an-application-39-s-web-resources).
 
 ## Implementing the MobileFirst Adapter
 MobileFirst adapters provide a way to retrieve and manage data for your mobile client app on the server side.
@@ -198,6 +194,10 @@ You should first **build** and **deploy** them onto your MobileFirst server. Swi
 mfpdev adapter build
 mfpdev adapter deploy
 ```
+
+![adapters deployed to the server and appear in the console]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/adapters-in-console.png)
+
+> Learn more [about Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters/adapters-overview/)
 
 ### Security
 The URL that gets the balance in the ResourceAdapter is protected by a scope named “accessRestricted”.
@@ -231,6 +231,8 @@ Add the following code to your **mainCtrl controller** to call make the adapter 
 
 We have defined the **balance** variable that will hold the value we get back from the adapter call. We have also defined the **getAdapter** variable which is the function where we actually call the adapter and get the balance.
 
+> Learn more about the [MobileFirst security framework]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/authorization-concepts/)
+
 ### Updating the view
 Add the following code in your **index.html** in the `<ion-content>` elements:
 
@@ -260,7 +262,6 @@ Call the challenge handler in wlCommonInit to handle the security check.
 PinCodeChallengeHandler()
 ```
 
-
 ## Testing the App
 Run the app in the simulator using Cordova since we are using OAuth security.
 
@@ -275,6 +276,6 @@ This will call the PinCode adapter and you will need to enter your authorization
 
 ![ionic-pincode]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/pincode.png)
 
-The default pin code is 1234. You can update this in the console under the PinCodeAttempts adapter > Security Check. After your code is validated, your balance is shown in the app.
+The default pin code is **1234**. You can update this in the console under the PinCodeAttempts adapter > Security Check. After your code is validated, your balance is shown in the app.
 
 ![ionic-balance]({{site.baseurl}}/assets/blog/2016-07-19-integrating-mobilefirst-foundation-8-in-ionic-based-apps/balance.png)
