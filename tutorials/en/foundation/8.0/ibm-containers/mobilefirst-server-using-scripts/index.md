@@ -1,18 +1,23 @@
 ---
 layout: tutorial
-title: Setting Up the MobileFirst Server on IBM Containers by using Scripts
+title: Setting Up the MobileFirst Server on IBM Containers using Scripts
 relevantTo: [ios,android,windows,javascript]
-weight: 7
+weight: 2
 ---
 
 ## Overview
-This tutorial demonstrates how to take a locally developed IBM MobileFirst Foundation project and run it on Bluemix. To achieve this result, you go through the following steps: set up your host computer with the required tools (Cloud Foundry CLI, Docker, and IBM Containers Extension (cf ic) Plug-in), set up your Bluemix environment, build a MobileFirst Foundation Server image and push it to the Bluemix repository. Finally, you run the image on IBM Containers as a single Container or a Container group, and update it with the MobileFirst project application and adapter.
+Follow the instructions below to configure a MobileFirst Server instance as well as MobileFirst Analytics instance on IBM Bluemix. To achieve this you will go through the following steps: 
 
-**Note:** Windows OS is currently not supported.
+* Setup your host computer with the required tools (Cloud Foundry CLI, Docker, and IBM Containers Extension (cf ic) Plug-in)
+* Setup your Bluemix environment
+* Build a MobileFirst Server image and push it to the Bluemix repository.
 
-**Note:** The MobileFirst Server Configuration Tools cannot be used for deployments to IBM Containers.
+Finally, you will run the image on IBM Containers as a single Container or a Container group, and register your applications as well as deploy your adapters.
 
-**Prerequisite:** Make sure to read the [IBM MobileFirst Foundation on IBM Containers](../) tutorial.
+> **Notes:**  
+>
+> * Windows OS is currently not supported.  
+> * The MobileFirst Server Configuration tools cannot be used for deployments to IBM Containers.
 
 #### Jump to:
 
@@ -32,13 +37,13 @@ After signing in to Bluemix, you are presented with the Bluemix Dashboard, which
 To manage containers and images, you need to install the following tools: Docker, Cloud Foundry CLI, and IBM Containers (cf ic) Plug-in.
 
 ### Docker
-Go to the [Docker Documentation](https://docs.docker.com/) on the left menu, select **Install > Docker Engine**, select your OS type, and follow the instructions to install the Docker Toolbox.
+Go to the [Docker Documentation](https://docs.docker.com/) on the left menu, select **Install → Docker Engine**, select your OS type, and follow the instructions to install the Docker Toolbox.
 
-**Note:** IBM does not support Docker's Kitematic software.
+**Note:** IBM does not support Docker's Kitematic.
 
-In OS X, two options are available to run Docker commands:
+In macOS, two options are available to run Docker commands:
 
-* From the OS X Terminal: No further setup is needed. You must work only from it.
+* From the macOS Terminal.app: No further setup is needed. You can work only from it.
 * From the Docker Quickstart Terminal: proceed as follows.
 
 * Run the command:
@@ -57,61 +62,92 @@ In OS X, two options are available to run Docker commands:
     export DOCKER_MACHINE_NAME="default"
     ```
 
->For further information consult the Docker documentation.
+> For further information consult the Docker documentation.
 
 ### Cloud Foundry Plug-in and IBM Containers plug-in
 
 1. Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
 2. Install the [IBM Containers Plugin (cf ic)](https://www.ng.bluemix.net/docs/containers/container_cli_ov.html#container_cli_cfic).
 
-## Download the ibm-mfpf-container-8.0.0.0 zip
-To set up IBM MobileFirst Foundation on IBM Containers, you must first create an image that will later be pushed to Bluemix.
+## Download the ibm-mfpf-container-8.0.0.0 archive
+To set up IBM MobileFirst Foundation on IBM Containers, you must first create an image that will later be pushed to Bluemix.  
+<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the IBM MobileFirst Server for IBM Container v8.0 .zip file (search for: CNBL0EN).
 
-<a class="custombtn btn-lg btn-default" style="width:700px; font-size: 100%" href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions and download the IBM MobileFirst Server for IBM Container v8.0 .zip file (search for: CNBL0EN)</a>
-
-### Structure of the mfp-cloud-container-8.0.0.zip archive
 The extracted ZIP file contains the files for building an image (**dependencies** and **mfpf-libs**), the files for building and deploying an IBM MobileFirst Foundation Operational Analytics Container (**mfpf-analytics**) and files for configuring an IBM MobileFirst Foundation Server Container (**mfpf-server**).
 
-![zip file contents](zip.png)
+<div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="zip-file">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for .zip file folders and sub-folders decriptions</b></a>
+            </h4>
+        </div>
 
-#### The mfpf-server and mfpf-analytics folders
-
-* **Dockerfile**: Text document that contains all the commands that are necessary to build an image.
-* **scripts** folder: This folder contains the **args** folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a MobileFirst Foundation Server/MobileFirst Foundation Operational Analytics image and for pushing and running the image on Bluemix.
-You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later.
-* **usr** folder:
-  * **bin** folder: Contains the script file that gets executed when the container starts. You can add your own custom code to be executed.
-  * **config** folder: ￼Contains the server configuration fragments (keystore, server properties, user registry) used by MobileFirst Server Foundation/MobileFirst Foundation Operational Analytics.
-  * **env** folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).
-  * **jre-security** folder: You can update the JRE security-related files (truststore, policy JAR files, and so on) by placing them in this folder.
-  * **security** folder: Receives the key store, trust store, and the LTPA keys files (ltpa.keys).
-  * **ssh** folder: Receives the SSH public key file, which enables SSH access to the Container.
-  * **wxs** folder (only for MobileFirst Server Foundation): Contains the data cache / extreme -scale client library when Data Cache is used as an attribute store for the server.
+        <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+            <div class="panel-body">
+                <h4>dependencies folder</h4>
+                <p>Contains the IBM MobileFirst Foundation runtime and IBM Java JRE 8.</p>
+                
+                <h4>mfpf-libs folder</h4>
+                <p>Contains MobileFirst product component libraries and CLI.</p>
+                
+                <h4>mfpf-server and mfpf-analytics folders</h4>
+                
+                <ul>
+                    <li><b>Dockerfile</b>: Text document that contains all the commands that are necessary to build an image.</li>
+                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a MobileFirst Foundation Server/MobileFirst Foundation Operational Analytics image and for pushing and running the image on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
+                    <li><b>usr</b> folder:
+                        <ul>
+                            <li><b>bin</b> folder: Contains the script file that gets executed when the container starts. You can add your own custom code to be executed.</li>
+                            <li><b>config</b> folder: ￼Contains the server configuration fragments (keystore, server properties, user registry) used by MobileFirst Server/MobileFirst Operational Analytics.</li>
+                            <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
+                            <li><b>mfpfproperties.xml</b> - configuration properties for the MobileFirst Server. See the supported properties listed in these documentation topics:
+                                <ul>
+                                    <li><a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/install_config/r_wladmin_jndi_property_list.html?view=kc">List of JNDI properties for MobileFirst Server administration service</a></li>
+                                    <li><a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.installconfig.doc/admin/r_JNDI_entries_for_production.html?view=kc">List of JNDI properties for MobileFirst runtime</a></li>
+                                </ul>
+                            </li>
+                            <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
+                        </ul>
+                    </li>
+                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).</li>
+                    <li><b>jre-security</b> folder: You can update the JRE security-related files (truststore, policy JAR files, and so on) by placing them in this folder. The files in this folder get copied to the JAVA_HOME/jre/lib/security/ folder in the container.</li>
+                    <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
+                    <li><b>ssh</b> folder: used to store the SSH public key file (id_rsa.pub), which is used to enable SSH access to the container.</li>
+                    <li><b>wxs</b> folder (only for MobileFirst Server): Contains the data cache / extreme-scale client library when Data Cache is used as an attribute store for the server.</li>
+                </ul>
+				<br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>.
+            </div>
+        </div>
+    </div>
+</div>
 
 ## Prerequisites
+The below steps are mandatory as you will be running IBM Containers commands during the following section.
+
 1. Login to the IBM Bluemix environment.  
-This step is mandatory because you will be running IBM Containers commands during the following steps.  
-Run: `cf login`.  
-When prompted, enter the following information:
-  * Bluemix API endpoint
-  * Email
-  * Password
-  * Organization, if you have more than one
-  * Space, if you have more than one
+
+    Run: `cf login`.  
+    When prompted, enter the following information:
+      * Bluemix API endpoint
+      * Email
+      * Password
+      * Organization, if you have more than one
+      * Space, if you have more than one
 
 2. To run IBM Containers commands, you must first log in to the IBM Container Cloud Service.  
 Run: `cf ic login`.
 
-3. Make sure that the `namespace` for container registry is set. The `namespace` is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned once for an organization and cannot be changed.  
-Choose a namespace according to following rules:
- * It can contain only lowercase letters, numbers, or underscores.
- * It can be 4 - 30 characters. If you plan to manage containers from the command line, you might prefer to have a short namespace that can be typed quickly.
- * It must be unique in the Bluemix registry.
+3. Make sure that the `namespace` for container registry is set. The `namespace` is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned once for an organization and cannot be changed. Choose a namespace according to following rules:
+     * It can contain only lowercase letters, numbers, or underscores.
+     * It can be 4 - 30 characters. If you plan to manage containers from the command line, you might prefer to have a short namespace that can be typed quickly.
+     * It must be unique in the Bluemix registry.
 
     To set a namespace, run the command: `cf ic namespace set <new_name>`.  
     To get the namespace that you have set, run the command: `cf ic namespace get`.
 
->To learn more about IC commands, use the `ic help` command.
+> To learn more about IC commands, use the `ic help` command.
 
 ## Setting Up the MobileFirst and Analytics Servers on IBM Containers
 As explained above, you can choose to run the scripts interactively or by using the configuration files:

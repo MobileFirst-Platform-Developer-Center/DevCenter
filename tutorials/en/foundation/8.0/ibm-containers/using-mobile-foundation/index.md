@@ -3,7 +3,7 @@ layout: tutorial
 title: Using the Mobile Foundation service to set up MobileFirst Server on IBM Containers
 breadcrumb_title: Using the Mobile Foundation service
 relevantTo: [ios,android,windows,javascript]
-weight: 6
+weight: 2
 ---
 ## Overview
 This tutorial provides step-by-step instructions to set up a MobileFirst Server instance on IBM Containers by using the **Mobile Foundation** service.  
