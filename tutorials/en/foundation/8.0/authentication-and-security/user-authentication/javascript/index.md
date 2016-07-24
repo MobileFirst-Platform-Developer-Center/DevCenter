@@ -172,6 +172,6 @@ Make sure that Node.js is installed.
 4. Back on the command line:
     * Run the Cordova application by running the `cordova run` command.
 
-The username/password for the app are "john"/"john123".
+The username/password for the app must match, i.e. "john"/"john".
 
 ![sample application](sample-application.png)

@@ -149,6 +149,6 @@ Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapt
 
         > Learn more about the mfpdev app push/push commands in the [Using MobileFirst CLI to manage MobilefFirst artifacts](../../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts).
 
-The username/password for the app are "john"/"john123".
+The username/password for the app must match, i.e. "john"/"john".
 
 ![sample application](RememberMe.png)
