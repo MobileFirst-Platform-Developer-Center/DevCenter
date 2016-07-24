@@ -23,7 +23,7 @@ Finally, you will run the image on IBM Containers as a single Container or a Con
 
 * [Register an account at Bluemix](#register-an-account-at-bluemix)
 * [Set up your host machine](#set-up-your-host-machine)
-* [Download the ibm-mfpf-container-8.0.0.0 zip](#download-the-ibm-mfpf-container-8-0-0-0-zip)
+* [Download the ibm-mfpf-container-8.0.0.0 archive](#download-the-ibm-mfpf-container-8-0-0-0-archive)
 * [Prerequisites](#prerequisites)
 * [Setting Up the MobileFirst and Analytics Servers on IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
 
