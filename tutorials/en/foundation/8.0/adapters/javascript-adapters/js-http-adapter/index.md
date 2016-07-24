@@ -145,6 +145,8 @@ Declare the required procedures below the `connectivity` element:
                     <li><b>connectionTimeoutInMilliseconds</b>: <i>Optional.</i> The timeout in milliseconds until a connection to the back-end can be established. Setting this timeout does not ensure that a timeout exception occurs after a specific time elapses after the invocation of the HTTP request. If you pass a different value for this parameter in the <code>invokeHTTP()</code> function, you can override the value that is defined here.</li>
                     <li><b>socketTimeoutInMilliseconds</b>: <i>Optional.</i> The timeout in milliseconds between two consecutive packets, starting from the connection packet. Setting this timeout does not ensure that a timeout exception occurs after a specific time elapses after the invocation of the HTTP request. If you pass a different value for the <code>socketTimeoutInMilliseconds</code> parameter in the <code>invokeHttp()</code> function, you can override the value that is defined here.</li>
                 </ul>
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Close section</b></a>.
             </div>
         </div>
     </div>
