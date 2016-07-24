@@ -79,7 +79,7 @@ The extracted ZIP file contains the files for building an image (**dependencies*
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for .zip file folders and sub-folders decriptions</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for .zip file folders and sub-folders descriptions</b></a>
             </h4>
         </div>
 
@@ -110,7 +110,101 @@ The extracted ZIP file contains the files for building an image (**dependencies*
                             <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
                         </ul>
                     </li>
-                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).</li>
+                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).
+                    <br/>
+                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="server-env">
+                                <h4 class="panel-title">
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Click for a list of supported server environment properties</b></a>
+                                </h4>
+                            </div>
+
+                            <div id="collapse-server-env" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td><b>Property</b></td>
+                                            <td><b>Default Value</b></td>
+                                            <td><b>Description</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_SERVER_HTTPPORT</td>
+                                            <td>9080*</td>
+                                            <td>The port used for client HTTP requests. Use -1 to disable this port.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_SERVER_HTTPSPORT	</td>
+                                            <td>9443*	</td>
+                                            <td>The port used for client HTTP requests secured with SSL (HTTPS). Use -1 to disable this port.
+</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_CLUSTER_MODE	</td>
+                                            <td><code>Standalone</code></td>
+                                            <td>Configuration not required. Valid values are <code>Standalone</code> or <code>Farm</code>. The <code>Farm</code> value is automatically set when the container is run as a container group.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_ADMIN_ROOT	</td>
+                                            <td>mfpadmin</td>
+                                            <td>The context root at which the MobileFirst Server Administration Services are made available.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_CONSOLE_ROOT	</td>
+                                            <td>mfpconsole</td>
+                                            <td>The context root at which the MobileFirst Operations Console is made available.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_ADMIN_GROUP</td>
+                                            <td>mfpadmingroup</td>
+                                            <td>The name of the user group assigned the predefined role <code>mfpadmin</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_DEPLOYER_GROUP	</td>
+                                            <td>mfpdeployergroup</td>
+                                            <td>The name of the user group assigned the predefined role <code>mfpdeployer</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_MONITOR_GROUP	</td>
+                                            <td>mfpmonitorgroup</td>
+                                            <td>The name of the user group assigned the predefined role <code>mfpmonitor</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_OPERATOR_GROUP	</td>
+                                            <td>mfpoperatorgroup</td>
+                                            <td>The name of the user group assigned the predefined role <code>mfpoperator</code>.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_SERVER_ADMIN_USER	</td>
+                                            <td>WorklightRESTUser</td>
+                                            <td>The Liberty server administrator user for MobileFirst Server Administration Services.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_SERVER_ADMIN_PASSWORD	</td>
+                                            <td>mfpadmin. Ensure that you change the default value to a private password before deploying to a production environment.</td>
+                                            <td>The password of the Liberty server administrator user for MobileFirst Server Administration Services.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_ADMIN_USER	</td>
+                                            <td>admin</td>
+                                            <td>The user name for the administrator role for MobileFirst Server operations.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>MFPF_ADMIN_PASSWORD	</td>
+                                            <td>admin</td>
+                                            <td>The password for the administrator role for MobileFirst Server operations.</td>
+                                        </tr>
+                                    </table>
+                                    
+                    				<br/>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    </li>
                     <li><b>jre-security</b> folder: You can update the JRE security-related files (truststore, policy JAR files, and so on) by placing them in this folder. The files in this folder get copied to the JAVA_HOME/jre/lib/security/ folder in the container.</li>
                     <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
                     <li><b>ssh</b> folder: used to store the SSH public key file (id_rsa.pub), which is used to enable SSH access to the container.</li>
@@ -211,7 +305,7 @@ If you intend to use analytics with your MobileFirst Server start here.
 
         <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-              The following instructions demonstrate how to run the scripts by using the configuration files:
+              The following instructions demonstrate how to run the scripts by using the configuration files:<br/>
               <ol>
                   <li><strong>initenv.sh – Logging in to Bluemix </strong><br />
                       Run the <strong>initenv.sh</strong> script to create an environment for building and running IBM MobileFirst Foundation Operational Analytics on the IBM Containers:
@@ -263,7 +357,8 @@ If you intend to use analytics with your MobileFirst Server start here.
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            The <strong>args</strong> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:
+            The <strong>args</strong> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:<br/>
+            
               <h4>initenv.properties</h4>
               <ul>
                   <li><strong>BLUEMIX_USER - </strong>Your Bluemix username (email).</li>
@@ -272,7 +367,9 @@ If you intend to use analytics with your MobileFirst Server start here.
                   <li><strong>BLUEMIX_SPACE - </strong>Your Bluemix space (as explained previously).</li>
               </ul>
               <h4>prepareserverdbs.properties</h4>
-              The Mobile Foundation requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB *Transactional database* instance </a>. After you have set up your dashDB instance, provide the required arguments:
+              The Mobile Foundation service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
+              <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans may not be immediate. You might be contacted by the Sales team before the deployment of the service.<br/><br/>
+              After you have set up your dashDB instance, provide the required arguments:
               <ul>
                   <li><strong>ADMIN_DB_SRV_NAME - </strong>Your dashDB service instance name for storing admin data.</li>
                   <li><strong>ADMIN_SCHEMA_NAME - </strong>Your schema name for admin data. The default is MFPDATA.</li>
@@ -317,16 +414,106 @@ If you intend to use analytics with your MobileFirst Server start here.
               The following instructions demonstrate how to run the scripts by using the configuration files:
               <ol>
                   <li><strong>initenv.sh – Logging in to Bluemix </strong><br />
-                      Run the <strong>initenv.sh</strong> script to create an environment for building and running IBM MobileFirst Platform Foundation on the IBM Containers:
+                      Run the <strong>initenv.sh</strong> script to create an environment for building and running IBM MobileFirst Foundation on IBM Containers:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
+
+                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="script-initenv">
+                                <h4 class="panel-title">
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Click for a list of command-line arguments</b></a>
+                                </h4>
+                            </div>
+
+                            <div id="collapse-script-initenv" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-initenv">
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td><b>Command-line argument</b></td>
+                                            <td><b>Description</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>[-u|--user] BLUEMIX_USER</td>
+                                            <td>Bluemix user ID or email address</td>
+                                        </tr>
+                                        <tr>
+                                            <td>[-p|--password] BLUEMIX_PASSWORD	</td>
+                                            <td>Bluemix password</td>
+                                        </tr>
+                                        <tr>
+                                            <td>[-o|--org] BLUEMIX_ORG	</td>
+                                            <td>Bluemix organization name</td>
+                                        </tr>
+                                        <tr>
+                                            <td>[-s|--space] BLUEMIX_SPACE	</td>
+                                            <td>Bluemix space name</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Optional. [-a|--api] BLUEMIX_API_URL	</td>
+                                            <td>Bluemix API endpoint. (Defaults to https://api.ng.bluemix.net)</td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                   </li>
                   <li><strong>prepareserverdbs.sh - Prepare the MobileFirst Server database</strong><br />
                   The <strong>prepareserverdbs.sh</strong> script is used to configure Run:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
+
+                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="script-prepareserverdbs">
+                                <h4 class="panel-title">
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-script-prepareserverdbs"><b>Click for a list of command-line arguments</b></a>
+                                </h4>
+                            </div>
+
+                            <div id="collapse-script-prepareserverdbs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-prepareserverdbs">
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td><b>Command-line argument</b></td>
+                                            <td><b>Description</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>[-adl |--admindb ] ADMIN_DB_SRV_NAME	</td>
+                                            <td>Bluemix® dashDB™ service (with Bluemix service plan of Enterprise Transactional)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Optional. [-as |--adminschema ] ADMIN_SCHEMA_NAME	</td>
+                                            <td>Database schema name for administration service. Defaults to MFPDATA</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Optional. [-rd |--runtimedb ] RUNTIME_DB_SRV_NAME	</td>
+                                            <td>Bluemix database service instance name for storing runtime data. Defaults to the same service as given for admin data.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Optional. [-p |--push ] ENABLE_PUSH	</td>
+                                            <td>Enable configuring database for push service. Accepted values are Y (default) or N.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>[-pd |--pushdb ] PUSH_DB_SRV_NAME	</td>
+                                            <td>Bluemix database service instance name for storing push data. Defaults to the same service as given for runtime data.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>[-ps |--pushschema ] PUSH_SCHEMA_NAME	</td>
+                                            <td>Database schema name for push service. Defaults to the runtime schema name.</td>
+                                        </tr>
+                                    </table>
+                                    
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                   </li>
                   <li><strong>prepareserver.sh - Prepare a Mobilefirst Platform Foundation Server image</strong><br />
                   Run the <strong>prepareserver.sh</strong> script in order to build a MobileFirst Platform Foundation Server image and push it to your Bluemix repository:
@@ -336,6 +523,35 @@ If you intend to use analytics with your MobileFirst Server start here.
 
                   To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
                   The list contains the image name, date of creation, and ID.
+                  
+                  <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                      <div class="panel panel-default">
+                          <div class="panel-heading" role="tab" id="script-prepareserver">
+                              <h4 class="panel-title">
+                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Click for a list of command-line arguments</b></a>
+                              </h4>
+                          </div>
+
+                          <div id="collapse-script-prepareserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-prepareserver">
+                              <div class="panel-body">
+                                  <table class="table table-striped">
+                                      <tr>
+                                          <td><b>Command-line argument</b></td>
+                                          <td><b>Description</b></td>
+                                      </tr>
+                                      <tr>
+                                          <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
+                                          <td>Name to be used for the customized MobileFirst Server image. Format: registryUrl/namespace/imagename
+</td>
+                                      </tr>
+                                  </table>
+                                  
+                                  <br/>
+                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Close section</b></a>.
+                              </div>
+                          </div>
+                      </div>
+                  </div>
                   </li>
                   <li><strong>startserver.sh - Running the image on an IBM Container</strong><br />
                   The <strong>startserver.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container. It also binds your image to the public IP that you configured in the <strong>SERVER_IP</strong> property.</p>
@@ -343,14 +559,167 @@ If you intend to use analytics with your MobileFirst Server start here.
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
-                  </li>
-                  </li>
+
+                    <div id="collapse-script-prepareserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-startserver">
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <tr>
+                                    <td><b>Command-line argument</b></td>
+                                    <td><b>Description</b></td>
+                                </tr>
+                                <tr>
+                                    <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
+                                    <td>Name of the MobileFirst Server image.</td>
+                                </tr>
+                                <tr>
+                                    <td>[-i|--ip] SERVER_IP	</td>
+                                    <td>IP address that the MobileFirst Server container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-si|--services] SERVICE_INSTANCES	</td>
+                                    <td>Comma-separated Bluemix service instances that you want to bind to the container.</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-h|--http] EXPOSE_HTTP	</td>
+                                    <td>Expose HTTP Port. Accepted values are Y (default) or N.</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-s|--https] EXPOSE_HTTPS	</td>
+                                    <td>Expose HTTPS Port. Accepted values are Y (default) or N.</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-m|--memory] SERVER_MEM	</td>
+                                    <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-se|--ssh] SSH_ENABLE	</td>
+                                    <td>Enable SSH for the container. Accepted values are Y (default) or N.</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-sk|--sshkey] SSH_KEY	</td>
+                                    <td>The SSH Key to be injected into the container. (Provide the contents of your id_rsa.pub file.)</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
+                                    <td>The trace specification to be applied. Default: <code>*=info</code></td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
+                                    <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
+                                    <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
+                                    <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                </tr>
+                                <tr>
+                                    <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
+                                    <td>Specify MobileFirst properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>.  <b>Note:</b> If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
+                                </tr>
+                            </table>
+                            
+                            <br/>
+                            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Close section</b></a>.
+                        </div>
+                    </div></li>
+                  
+                  
                   <li><strong>startservergroup.sh - Running the image on an IBM Container group</strong><br />
                   The <strong>startservergroup.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container group. It also binds your image to the host name that you configured in the <strong>SERVER_CONTAINER_GROUP_HOST</strong> property.</p>
                   Run:
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
+
+                        <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="script-startservergroup">
+                                    <h4 class="panel-title">
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Click for a list of command-line arguments</b></a>
+                                    </h4>
+                                </div>
+
+                                <div id="collapse-script-startservergroup" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-startservergroup">
+                                    <div class="panel-body">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <td><b>Command-line argument</b></td>
+                                                <td><b>Description</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
+                                                <td>The name of the MobileFirst Server container image in the Bluemix registry.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
+                                                <td>The name of the MobileFirst Server container group.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gh|--host] SERVER_CONTAINER_GROUP_HOST	</td>
+                                                <td>The host name of the route.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
+                                                <td>The domain name of the route.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-gm|--min] SERVERS_CONTAINER_GROUP_MIN	</td>
+                                                <td>The minimum number of container instances. The default value is 1.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-gx|--max] SERVER_CONTAINER_GROUP_MAX	</td>
+                                                <td>The maximum number of container instances. The default value is 1.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED	</td>
+                                                <td>The desired number of container instances. The default value is 2.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-a|--auto] ENABLE_AUTORECOVERY	</td>
+                                                <td>Enable the automatic recovery option for the container instances. Accepted values are Y or N (default).</td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td>Optional. [-si|--services] SERVICES	</td>
+                                                <td>Comma-separated Bluemix service instance names that you want to bind to the container.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
+                                                <td>The trace specification to be applied. Default <code>*=info</code></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
+                                                <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
+                                                <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
+                                                <td>Specify MobileFirst properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
+                                                <b>Note:</b> If you specify properties using this script, ensure that the same properties have not been set in the configuration files in the usr/config folder.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-m|--memory] SERVER_MEM	</td>
+                                                <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
+                                                <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <br/>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Close section</b></a>.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                   </li>
               </ol>
             </div>
@@ -358,7 +727,12 @@ If you intend to use analytics with your MobileFirst Server start here.
     </div>
 </div>
 
+> **Note:** Containers must be restarted after any configuration changes have been made (`cf ic restart containerId`). For container groups, you must restart each container instance within the group. For example, if a root certificate changes, each container instance must be restarted after the new certificate has been added.
+
 Launch the MobileFirst Console by loading the following URL: http://MF_CONTAINER_HOST/mfpconsole (it may take a few moments).  
 Add the remote server by following the instructions in the [Using MobileFirst CLI to Manage MobileFirst Artifacts](../../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
 
 With MobileFirst Server running on IBM Bluemix, you can now start your application development. Review the MobileFirst Foundation [tutorials](../../all-tutorials).
+
+#### Port number limitation
+There is currently an IBM Containers limitation with the port numbers that are available for public domain. Therefore, the default port numbers given for the MobileFirst Analytics container and the MobileFirst Server container (9080 for HTTP and 9443 for HTTPS) cannot be altered. Containers in a container group must use HTTP port 9080. Container groups do not support the use of multiple port numbers or HTTPS requests.
