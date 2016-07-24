@@ -1,10 +1,11 @@
 ---
 title: Implementing License Agreement Signature using MobileFirst Foundation V8
-date: 2016-07-21
+date: 2016-07-24
 tags:
 - MobileFirst_Foundation
 - SecurityCheck
 - License_agreement
+- Terms_and_Conditions
 version: 8.0
 author:
   name: Uri Segev
@@ -23,6 +24,8 @@ The idea behind this security check is to store the state of the signature in th
 To implement the License Agreement functionality, I have created 2 artifacts:
 - The LicenseAgreementSecuirtyCheck which gets deployed on the server
 - The LicenseAgreementChallengeHandler which is used on the client to interact with the security check and the user. It is presented in a sample hybrid application.
+
+Source code for this security check and sample application can be found  [here](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/license-agreement)
 
 ## The License Agreement Security Check
 
@@ -124,7 +127,5 @@ The following image shows that the scope myCustomScope was mapped to the License
 
 ## Resources
 
-Source code for this security check and sample application: https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/license-agreement
-
-Authentication and security tutorial:
-https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/
+Authentication and security tutorial can be found
+[here](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/)
