@@ -114,7 +114,7 @@ The security check takes two configuration parameters: The license agreement URL
 
 The following image shows the configuration for the security check:
 
-![Configuring the security check]({{site.baseurl}}/assets/blog/2016-07-21-implementing-license-agreement-signature-using-mobilefirst-foundation-v8/configuring.png)
+![Configuring the security check]({{site.baseurl}}/assets/blog/2016-07-24-implementing-license-agreement-signature-using-mobilefirst-foundation-v8/configuring.png)
 
 
 ## Using the Security Check
@@ -123,7 +123,7 @@ In order to use the LicenseAgreement security check you need to assign it to one
 
 The following image shows that the scope myCustomScope was mapped to the LicenseAgreement security check. Whenever the application will try to access a resource which is protected with the scope myCustomScope, the LicenseAgreement security check will be invoked.
 
-![Using the security check]({{site.baseurl}}/assets/blog/2016-07-21-implementing-license-agreement-signature-using-mobilefirst-foundation-v8/using.png)
+![Using the security check]({{site.baseurl}}/assets/blog/2016-07-24-implementing-license-agreement-signature-using-mobilefirst-foundation-v8/using.png)
 
 ## Resources
 
