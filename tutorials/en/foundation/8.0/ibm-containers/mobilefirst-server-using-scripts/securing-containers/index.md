@@ -12,7 +12,7 @@ Below are several methods you can follow in order to secure your IBM Container w
 
 * [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
 * [Security configuration for IBM MobileFirst Foundation on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
-* [LDAP configuration for containers](ldap-configuration-for-containers)
+* [LDAP configuration for containers](#ldap-configuration-for-containers)
 
 ## Configuring App Transport Security (ATS)
 ATS configuration does not impact applications connecting from other, non-iOS, mobile operating systems. Other mobile operating systems do not mandate that servers communicate on the ATS level of security but can still communicate with ATS-configured servers. Before configuring your container image, have the generated certificates ready. The following steps assume that the keystore file **ssl_cert.p12** has the personal certificate and **ca.crt** is the signing certificate.
