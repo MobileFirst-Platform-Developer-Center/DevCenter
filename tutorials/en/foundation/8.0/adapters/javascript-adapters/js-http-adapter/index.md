@@ -296,21 +296,27 @@ To access the XML content:
 * On client-side, jQuery can be used to wrap the result string, and follow the DOM nodes:
 
 ```javascript
-WL.Client.invokeProcedure({
-	adapter : "JavaScriptSOAP",
-	procedure : "getWeatherInfo",
-	parameters : [ 'Washington', 'United States' ]
-}, {
-	onSuccess : function(resp) {
-		var $result = $(resp.invocationResult.Envelope.Body.GetWeatherResponse.GetWeatherResult);
+var resourceRequest = new WLResourceRequest(
+    "/adapters/JavaScriptSOAP/getWeatherInfo",
+    WLResourceRequest.GET
+);
+
+resourceRequest.setQueryParameter("params", "['Washington', 'United States']");
+
+resourceRequest.send().then(
+    function(response) {
+        var $result = $(response.invocationResult.Envelope.Body.GetWeatherResponse.GetWeatherResult);
 		var weatherInfo = {
 			location: $result.find('Location').text(),
 			time: $result.find('Time').text(),
 			wind: $result.find('Wind').text(),
 			temperature: $result.find('Temperature').text(),
 		};
-	}
-});
+    },
+    function() {
+        // ...
+    }
+)
 ```
 * On server-side, create an XML object with the result string. The nodes can then be accessed as properties:
 
