@@ -1,6 +1,7 @@
 ---
 layout: tutorial
 title: Setting Up the MobileFirst Server on IBM Containers using Scripts
+breadcrumb_title: MobileFirst Server on IBM Containers using Scripts
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
@@ -14,10 +15,10 @@ Follow the instructions below to configure a MobileFirst Server instance as well
 
 Finally, you will run the image on IBM Containers as a single Container or a Container group, and register your applications as well as deploy your adapters.
 
-> **Notes:**  
->
-> * Windows OS is currently not supported.  
-> * The MobileFirst Server Configuration tools cannot be used for deployments to IBM Containers.
+**Notes:**  
+
+* Windows OS is currently not supported.  
+* The MobileFirst Server Configuration tools cannot be used for deployments to IBM Containers.
 
 #### Jump to:
 
@@ -71,20 +72,21 @@ In macOS, two options are available to run Docker commands:
 
 ## Download the ibm-mfpf-container-8.0.0.0 archive
 To set up IBM MobileFirst Foundation on IBM Containers, you must first create an image that will later be pushed to Bluemix.  
-<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the IBM MobileFirst Server for IBM Container v8.0 .zip file (search for: CNBL0EN).
+<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the IBM MobileFirst Server 8.0 for IBM Containers archive (.zip file, search for: *CNBL0EN*).
 
-The extracted ZIP file contains the files for building an image (**dependencies** and **mfpf-libs**), the files for building and deploying an IBM MobileFirst Foundation Operational Analytics Container (**mfpf-analytics**) and files for configuring an IBM MobileFirst Foundation Server Container (**mfpf-server**).
+The archive file contains the files for building an image (**dependencies** and **mfpf-libs**), the files for building and deploying a MobileFirst Operational Analytics Container (**mfpf-analytics**) and files for configuring a MobileFirst Server Container (**mfpf-server**).
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for .zip file folders and sub-folders descriptions</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click to read more about the archive file contents and available environment properties to use</b></a>
             </h4>
         </div>
 
         <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
+                <img src="zip.png" style="float:right;width:570px"/>
                 <h4>dependencies folder</h4>
                 <p>Contains the IBM MobileFirst Foundation runtime and IBM Java JRE 8.</p>
                 
@@ -197,7 +199,7 @@ The extracted ZIP file contains the files for building an image (**dependencies*
                                     </table>
                                     
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>.
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +213,7 @@ The extracted ZIP file contains the files for building an image (**dependencies*
                     <li><b>wxs</b> folder (only for MobileFirst Server): Contains the data cache / extreme-scale client library when Data Cache is used as an attribute store for the server.</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>.
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
             </div>
         </div>
     </div>
@@ -305,7 +307,7 @@ If you intend to use analytics with your MobileFirst Server start here.
 
         <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-              The following instructions demonstrate how to run the scripts by using the configuration files:<br/>
+              <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
               <ol>
                   <li><strong>initenv.sh – Logging in to Bluemix </strong><br />
                       Run the <strong>initenv.sh</strong> script to create an environment for building and running IBM MobileFirst Foundation Operational Analytics on the IBM Containers:
@@ -411,7 +413,7 @@ If you intend to use analytics with your MobileFirst Server start here.
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-              The following instructions demonstrate how to run the scripts by using the configuration files:
+              <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
               <ol>
                   <li><strong>initenv.sh – Logging in to Bluemix </strong><br />
                       Run the <strong>initenv.sh</strong> script to create an environment for building and running IBM MobileFirst Foundation on IBM Containers:
@@ -456,7 +458,12 @@ If you intend to use analytics with your MobileFirst Server start here.
                                         </tr>
                                     </table>
                                     
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>.
+                                    <p>For example:</p>
+{% highlight bash %}
+initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
+{% endhighlight %}
+                    
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>
                                 </div>
                             </div>
                         </div>
@@ -509,21 +516,24 @@ If you intend to use analytics with your MobileFirst Server start here.
                                         </tr>
                                     </table>
                                     
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>.
+                                    <p>For example:</p>
+{% highlight bash %}
+prepareserverdbs.sh --admindb MFPDashDBService
+{% endhighlight %}
+                                    
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                   </li>
                   <li><strong>prepareserver.sh - Prepare a Mobilefirst Platform Foundation Server image</strong><br />
-                  Run the <strong>prepareserver.sh</strong> script in order to build a MobileFirst Platform Foundation Server image and push it to your Bluemix repository:
+                  Run the <strong>prepareserver.sh</strong> script in order to build a MobileFirst Platform Foundation Server image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
+                  The list contains the image name, date of creation, and ID.<br/>
+                  
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
-
-                  To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
-                  The list contains the image name, date of creation, and ID.
-                  
                   <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                       <div class="panel panel-default">
                           <div class="panel-heading" role="tab" id="script-prepareserver">
@@ -546,85 +556,102 @@ If you intend to use analytics with your MobileFirst Server start here.
                                       </tr>
                                   </table>
                                   
+                                  <p>For example:</p>
+{% highlight bash %}
+prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
+{% endhighlight %}
+                                  
                                   <br/>
-                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Close section</b></a>.
+                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Close section</b></a>
                               </div>
                           </div>
-                      </div>
+                    </div>
                   </div>
+                  
                   </li>
                   <li><strong>startserver.sh - Running the image on an IBM Container</strong><br />
-                  The <strong>startserver.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container. It also binds your image to the public IP that you configured in the <strong>SERVER_IP</strong> property.</p>
-                  Run:
+                  The <strong>startserver.sh</strong> script is used to run the Mobilefirst Server image on an IBM Container. It also binds your image to the public IP that you configured in the <strong>SERVER_IP</strong> property. Run:</p> 
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                    <div id="collapse-script-prepareserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-startserver">
-                        <div class="panel-body">
-                            <table class="table table-striped">
-                                <tr>
-                                    <td><b>Command-line argument</b></td>
-                                    <td><b>Description</b></td>
-                                </tr>
-                                <tr>
-                                    <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                    <td>Name of the MobileFirst Server image.</td>
-                                </tr>
-                                <tr>
-                                    <td>[-i|--ip] SERVER_IP	</td>
-                                    <td>IP address that the MobileFirst Server container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-si|--services] SERVICE_INSTANCES	</td>
-                                    <td>Comma-separated Bluemix service instances that you want to bind to the container.</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-h|--http] EXPOSE_HTTP	</td>
-                                    <td>Expose HTTP Port. Accepted values are Y (default) or N.</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-s|--https] EXPOSE_HTTPS	</td>
-                                    <td>Expose HTTPS Port. Accepted values are Y (default) or N.</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-m|--memory] SERVER_MEM	</td>
-                                    <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-se|--ssh] SSH_ENABLE	</td>
-                                    <td>Enable SSH for the container. Accepted values are Y (default) or N.</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-sk|--sshkey] SSH_KEY	</td>
-                                    <td>The SSH Key to be injected into the container. (Provide the contents of your id_rsa.pub file.)</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
-                                    <td>The trace specification to be applied. Default: <code>*=info</code></td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
-                                    <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                    <td>The maximum size of a log file. The default size is 20 MB.</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
-                                    <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
-                                </tr>
-                                <tr>
-                                    <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                    <td>Specify MobileFirst properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>.  <b>Note:</b> If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
-                                </tr>
-                            </table>
-                            
-                            <br/>
-                            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Close section</b></a>.
-                        </div>
-                    </div></li>
+                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="script-startserver">
+                                <h4 class="panel-title">
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Click for a list of command-line arguments</b></a>
+                                </h4>
+                            </div>
+                            <div id="collapse-script-startserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-startserver">
+                            <div class="panel-body">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td><b>Command-line argument</b></td>
+                                        <td><b>Description</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
+                                        <td>Name of the MobileFirst Server image.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>[-i|--ip] SERVER_IP	</td>
+                                        <td>IP address that the MobileFirst Server container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-si|--services] SERVICE_INSTANCES	</td>
+                                        <td>Comma-separated Bluemix service instances that you want to bind to the container.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-h|--http] EXPOSE_HTTP	</td>
+                                        <td>Expose HTTP Port. Accepted values are Y (default) or N.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-s|--https] EXPOSE_HTTPS	</td>
+                                        <td>Expose HTTPS Port. Accepted values are Y (default) or N.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-m|--memory] SERVER_MEM	</td>
+                                        <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-se|--ssh] SSH_ENABLE	</td>
+                                        <td>Enable SSH for the container. Accepted values are Y (default) or N.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-sk|--sshkey] SSH_KEY	</td>
+                                        <td>The SSH Key to be injected into the container. (Provide the contents of your id_rsa.pub file.)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
+                                        <td>The trace specification to be applied. Default: <code>*=info</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
+                                        <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
+                                        <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
+                                        <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
+                                        <td>Specify MobileFirst properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>.  <b>Note:</b> If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
+                                    </tr>
+                                </table>
+                                
+                                <p>For example:</p>
+{% highlight bash %}
+startserver.sh --tag image_tag_name --name container_name --ip container_ip_address
+{% endhighlight %}
+                                
+                                <br/>
+                                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Close section</b></a>
+                            </div>
+                        </div></li>
                   
                   
                   <li><strong>startservergroup.sh - Running the image on an IBM Container group</strong><br />
@@ -713,13 +740,17 @@ If you intend to use analytics with your MobileFirst Server start here.
                                             </tr>
                                         </table>
                                         
+                                        <p>For example:</p>
+{% highlight bash %}
+startservergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
+{% endhighlight %}
+                                        
                                         <br/>
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Close section</b></a>.
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Close section</b></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                   </li>
               </ol>
             </div>
