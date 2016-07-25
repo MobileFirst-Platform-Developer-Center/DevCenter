@@ -29,7 +29,7 @@ The following video provides a demonstration of the Live Update feature.
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
-        <iframe src="https://www.youtube.com/embed/P31W1sClqK0"></iframe>
+        <iframe src="https://www.youtube.com/embed/TjbC9thSfmM"></iframe>
     </div>
 </div>
 
