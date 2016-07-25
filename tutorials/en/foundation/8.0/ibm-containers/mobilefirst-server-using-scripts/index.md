@@ -86,7 +86,7 @@ The archive file contains the files for building an image (**dependencies** and 
 
         <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
-                <img src="zip.png" style="float:right;width:570px"/>
+                <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
                 <h4>dependencies folder</h4>
                 <p>Contains the IBM MobileFirst Foundation runtime and IBM Java JRE 8.</p>
                 
