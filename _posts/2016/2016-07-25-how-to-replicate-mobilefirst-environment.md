@@ -1,8 +1,8 @@
 ---
-title: MobileFirst Server Replication
+title: MobileFirst Server Replication - Different ways of exporting and importing MobileFirst Foundation server artifacts
 date: 2016-07-25
 tags:
-- MobileFirst_Platform
+- MobileFirst_Foundation
 version:
 - 8.0
 author:
