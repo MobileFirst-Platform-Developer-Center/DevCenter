@@ -131,7 +131,7 @@ curl -X POST -u admin:admin -F file=@/testuser/export_applications_adf_ios_2.zip
    ```
 
 ## Sample for Import
-[Download sample for import]({{site.baseurl}}/assets/blog/2016-07-25-how-to-replicate-mobilefirst-environment/export_adapters_newAdapter.zip)
+[Download sample for import](https://github.com/rahulraghuvanshi/Import-Sample)
 
 ## Reference
 [MobileFirst REST API Overview](https://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html).
