@@ -10,7 +10,7 @@ author:
 ---
 ## Overview
 
-In this article we explains how to replicate an existing MobileFist server to a new MobileFirst Server. Traditional approach is to run some scripts (.sh/.bat) that will migrate the artifacts from source to destination (db/application). From MobileFirst Platform 8.0 onwards the admins/operators can export the artifacts in the form of JSON's and zip and then import it to the fresh MobileFirst server. The export or import operations can be done using console or direct REST calls. The various approaches are detailed below.
+In this article we explain how to replicate an existing MobileFist server to a new MobileFirst Server. Traditional approach is to run some scripts (.sh/.bat) that will migrate the artifacts from source to destination (db/application). From MobileFirst Platform 8.0 onwards the admins/operators can export the artifacts in the form of JSON's and zip and then import it to the fresh MobileFirst server. The export or import operations can be done using console or direct REST calls. The various approaches are detailed below.
 
 
 * [Using MobileFirst console](#using-mobilefirst-console)
@@ -31,11 +31,11 @@ Through Mobile First console, only two artifacts can be exported. Currently Mobi
 ## Using resourceInfos query parameter in REST API
 There is one more way you can export required Artifacts, but for that user has to know about the resource-name and resource-types of each artifact.
 
+Use following GET REST endpoint to export artifacts as a compressed file, based on the resource selected in query parameters.
+
 ```
 http://{host}:{port}/{context}/management-apis/2.0/runtimes/{runtime-name}/export?resourceInfos={resource-name||resource-type}
 ```
-
-- GET  : Exports artifacts as a compressed file, based on the resource selected in query parameters.
 
 **Example**
 
@@ -43,15 +43,15 @@ http://{host}:{port}/{context}/management-apis/2.0/runtimes/{runtime-name}/expor
 curl -X GET -u username:password -o exported.zip “http://localhost:9080/worklightadmin/management-apis/2.0/runtimes/mfp/export?resourceInfos=com.mfp.test1%24android%241.0%7C%7CAPP_DESCRIPTOR&resourceInfos=sampleAdapter%7C%7CADAPTER_CONTENT”
 ```
 
-Here url is encoded, so there are two artifacts will be downloaded in exported.zip file. if you want to use in postman tool, you can use the following decoded url.
+Here url is encoded, so there are two artifacts that will be downloaded in exported.zip file. if you want to use in postman tool, you can use the following decoded url.
 
 ```
 http://localhost:9080/worklightadmin/management-apis/2.0/runtimes/mfp/export?resourceInfos=com.mfp.test$android$1.0||APP_DESCRIPTOR&resourceInfos=sampleAdapter||ADAPTER_CONTENT
 ```
 
 ## Using direct REST end points
-There are many export REST endpoint are provided in new version, where user can use required end point to replicate on new server.
-You can use following curl command to download Artifacts:
+There are many export REST endpoints are provided in new version, where user can use required endpoint to export set of artifacts
+You can use following curl command to export all artifacts:
 
 **Example**
 
@@ -101,10 +101,10 @@ Returns a compressed file that contain all or selected resources for a specific 
 http://{host}:{port}/{context}/management-apis/2.0/runtimes/{runtime-name}/export/applications/{application-name}/{application-env}/{application-version}?include={resource-type}
 ```
 
-**Note**: Here query parameter include is optional, which is used when you want to have more filtering.
+**Note**: Here query parameter *include* is optional, which is used when you want to have more filtering.
 
 ## Importing artifacts to new MobileFirst server
-Once you have zipped file containing artifacts are ready, you can import this zip file to you new MobileFirst server, to have exact replica of you old server. There are two way to importing artifacts, one is through console, other one is REST API.
+Once you have zipped file containing artifacts ready, you can import this zip file to a new MobileFirst server, to have exact replica of the old server. There are two ways to importing artifacts, one is through console, and the other one is through REST API.
 
 * [Importing artifacts from MobileFirst console](#importing-artifacts-from-mobilefirst-console)
 * [Importing artifacts using REST API](#importing-artifacts-using-rest-api)
