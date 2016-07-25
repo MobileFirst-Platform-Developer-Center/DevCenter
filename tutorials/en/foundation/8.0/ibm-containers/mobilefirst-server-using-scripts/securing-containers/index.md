@@ -5,6 +5,15 @@ relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 
+## Overview
+Below are several methods you can follow in order to secure your IBM Container with MobileFirst Server instance.
+
+#### Jump to
+
+* [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
+* [Security configuration for IBM MobileFirst Foundation on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
+* [LDAP configuration for containers](ldap-configuration-for-containers)
+
 ## Configuring App Transport Security (ATS)
 ATS configuration does not impact applications connecting from other, non-iOS, mobile operating systems. Other mobile operating systems do not mandate that servers communicate on the ATS level of security but can still communicate with ATS-configured servers. Before configuring your container image, have the generated certificates ready. The following steps assume that the keystore file **ssl_cert.p12** has the personal certificate and **ca.crt** is the signing certificate.
 
@@ -45,7 +54,7 @@ For development-stage purposes only, you can disable ATS by adding following pro
 </dict>
 ```
 
-## Security configuration for IBM MobileFirst Platform Foundation on IBM Containers	
+## Security configuration for IBM MobileFirst Foundation on IBM Containers	
 Your IBM MobileFirst Foundation instance on IBM Containers security configuration should include encrypting passwords, enabling application authenticity checking, and securing access to the consoles.
 
 ### Encrypting passwords
@@ -246,3 +255,105 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
 
 4. [Build the image and run the container](../). The MobileFirst Operations Console and the Analytics Console are now accessible only when the configured TAI security mechanism is satisfied.
 
+## LDAP configuration for containers
+You can configure an IBM MobileFirst Foundation container to securely connect out to an external LDAP repository.
+
+The external LDAP registry can be used in a container for the following purposes:
+
+* To configure the MobileFirst administration security with an external LDAP registry.
+* To configure the MobileFirst mobile applications to work with an external LDAP registry.
+
+### Configuring administration security with LDAP
+Configure the MobileFirst administration security with an external LDAP registry.  
+The configuration process includes the following steps:
+
+* Setup and configuration of an LDAP repository
+* Changes to the registry file (registry.xml)
+* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix® for this step.)
+
+#### LDAP repository
+Create users and groups in the LDAP repository. For groups, authorization is enforced based on user membership.
+
+#### Registry file
+1. Open the **registry.xml** and find the `basicRegistry` element. Replace the `basicRegistry` element with code that is similar to the following snippet:
+
+    ```xml
+    <ldapRegistry 
+        id="ldap"
+        host="1.234.567.8910" port="1234" ignoreCase="true"
+        baseDN="dc=worklight,dc=com"
+        ldapType="Custom"
+        sslEnabled="false"
+        bindDN="uid=admin,ou=system"
+        bindPassword="secret">
+        <customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))"
+        groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))"
+        userIdMap="*:uid"
+        groupIdMap="*:cn"
+        groupMemberIdMap="groupOfNames:member"/>
+    </ldapRegistry>
+    ```
+    
+    Entry | Description
+    --- | ---
+    `host` and `port` | Host name (IP address) and port number of your local LDAP server.
+    `baseDN` | The domain name (DN) in LDAP that captures all details about a specific organization.
+    `bindDN="uid=admin,ou=system"	` | Binding details of the LDAP server. For example, the default values for an Apache Directory Service would be `uid=admin,ou=system`.
+    `bindPassword="secret"	` | Binding password for the LDAP server. For example, the default value for an Apache Directory Service is `secret`.
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | The custom filters that are used for querying the directory service (such as Apache) during authentication and authorization.
+        
+2. Ensure that the following features are enabled for `appSecurity-2.0` and `ldapRegistry-3.0`:
+
+    ```xml
+    <featureManager>
+        <feature>appSecurity-2.0</feature>
+        <feature>ldapRegistry-3.0</feature>
+    </featureManager>
+    ```
+    
+    For details about configuring various LDAP server repositories, see the [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
+    
+#### Secure gateway
+To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
+
+1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
+2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
+3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
+4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
+5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
+6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
+7. Capture the **Destination ID** and **Cloud Host : Port** values. Go to the registry.xml file and add these values, replacing any existing values. See the following example of an updated code snippet in the registry.xml file:
+
+```xml
+<ldapRegistry 
+    id="ldap"
+    host="cap-sg-prd-5.integration.ibmcloud.com" port="15163" ignoreCase="true"
+    baseDN="dc=worklight,dc=com"
+    ldapType="Custom"
+    sslEnabled="false"
+    bindDN="uid=admin,ou=system"
+    bindPassword="secret">
+    <customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))"
+    groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))"
+    userIdMap="*:uid"
+    groupIdMap="*:cn"
+    groupMemberIdMap="groupOfNames:member"/>
+</ldapRegistry>
+```
+
+
+### Configuring apps to work with LDAP
+Configure MobileFirst mobile apps to work with an external LDAP registry.  
+The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix for this step.)
+
+To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this step.
+
+1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
+2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
+3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
+4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
+5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
+6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
+7. Capture the **Destination ID** and **Cloud Host : Port** values. Provide these values for the LDAP login module.
+Results
+The communication between the MobileFirst app in the container on Bluemix with your local LDAP server is established. The authentication and authorization from the Bluemix app is validated against your local LDAP server.
