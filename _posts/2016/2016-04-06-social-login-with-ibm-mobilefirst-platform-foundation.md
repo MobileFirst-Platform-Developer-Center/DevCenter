@@ -1,5 +1,5 @@
 ---
-title: Implementing Social Login Authentication with IBM MobileFirst Platform Foundation 8.0 Beta
+title: Implementing Social Login Authentication with IBM MobileFirst Platform Foundation 8.0
 date: 2016-04-06
 tags:
 - MobileFirst_Platform
@@ -15,7 +15,7 @@ author:
 ## Introduction
 [Social Login](https://www.wikiwand.com/en/Social_login) has become a common authentication method in many mobile apps.  App owners and users understand the big value it gives them. Users can now sign in to apps from their favorite social platform, such as Facebook or Google.  This method makes life easier for the users, and also can give the app owner the ability to leverage the information from the social platform (for example, profile picture, users friends, feed, etc). App owners can maximize the user engagements with such capabilities.  
 
-This blog post assumes that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0 Beta* authentication and security checks. If it's not the case, refer to [the Authentication and Security tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/).  
+This blog post assumes that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0* authentication and security checks. If it's not the case, refer to [the Authentication and Security tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/).  
 
 You can easily reuse the [Social Login security check](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-login) in this blog for your own needs. The sample includes social providers as [Facebook](https://developers.facebook.com/docs/facebook-login) and [Google](https://developers.google.com/identity/), which you can easily extend by adding more social providers, like Twitter.
 
@@ -215,5 +215,3 @@ private void callProtectedAdapter() {
 }
 ```
 
-## Supported Versions
-IBM MobileFirst Platform Foundation 8.0 beta
