@@ -142,8 +142,7 @@ The archive file contains the files for building an image (**dependencies** and 
                                         <tr>
                                             <td>MFPF_SERVER_HTTPSPORT	</td>
                                             <td>9443*	</td>
-                                            <td>The port used for client HTTP requests secured with SSL (HTTPS). Use -1 to disable this port.
-</td>
+                                            <td>The port used for client HTTP requests secured with SSL (HTTPS). Use -1 to disable this port.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CLUSTER_MODE	</td>
