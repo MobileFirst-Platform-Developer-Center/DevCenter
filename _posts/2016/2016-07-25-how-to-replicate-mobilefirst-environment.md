@@ -6,7 +6,10 @@ tags:
 version:
 - 8.0
 author:
-  name: Rahul Raghuvanshi, Vinod Appajanna, Shinoj Zacharias
+  name: Rahul Raghuvanshi
+additional_authors:
+  - Vinod Appajanna
+  - Shinoj Zacharias
 ---
 ## Overview
 
