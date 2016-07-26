@@ -96,6 +96,96 @@ Map the **push.mobileclient** scope element to the application.
 1. Load the MobileFirst Operations Console and navigate to **[your application] → Security → Map Scope Elements to Security Checks**, click on **Create New**.
 2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
 
+    <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="additional-scopes">
+                <h4 class="panel-title">
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Click for a list additional available scopes</b></a>
+                </h4>
+            </div>
+
+            <div id="collapse-additional-scopes" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <td><b>Scope</b></td>
+                            <td><b>Description</b></td>
+                        </tr>
+                        <tr>
+                            <td>apps.read	</td>
+                            <td>Permission to read application resource.</td>
+                        </tr>
+                        <tr>
+                            <td>apps.write	</td>
+                            <td>Permission to create, update, delete application resource.</td>
+                        </tr>
+                        <tr>
+                            <td>gcmConf.read	</td>
+                            <td>Permission to read GCM configuration settings (API Key and SenderId).</td>
+                        </tr>
+                        <tr>
+                            <td>gcmConf.write	</td>
+                            <td>Permission to update, delete GCM configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>apnsConf.read	</td>
+                            <td>Permission to read APNs configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>apnsConf.write	</td>
+                            <td>Permission to update, delete APNs configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>devices.read	</td>
+                            <td>Permission to read device.</td>
+                        </tr>
+                        <tr>
+                            <td>devices.write	</td>
+                            <td>Permission to create, update delete device.</td>
+                        </tr>
+                        <tr>
+                            <td>subscriptions.read	</td>
+                            <td>Permission to read subscriptions.</td>
+                        </tr>
+                        <tr>
+                            <td>subscriptions.write	</td>
+                            <td>Permission to create, update, delete subscriptions.</td>
+                        </tr>
+                        <tr>
+                            <td>messages.write	</td>
+                            <td>Permission to send push notifications.</td>
+                        </tr>
+                        <tr>
+                            <td>webhooks.read	</td>
+                            <td>Permission to read event-notifications.</td>
+                        </tr>
+                        <tr>
+                            <td>webhooks.write	</td>
+                            <td>Permission to send event-notifications.</td>
+                        </tr>
+                        <tr>
+                            <td>smsConf.read	</td>
+                            <td>Permission to read SMS configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>smsConf.write	</td>
+                            <td>Permission to update, delete SMS configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>wnsConf.read	</td>
+                            <td>Permission to read WNS configuration settings.</td>
+                        </tr>
+                        <tr>
+                            <td>wnsConf.write	</td>
+                            <td>Permission to update, delete WNS configuration settings.</td>
+                        </tr>
+                    </table>
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Close section</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
 
 ### Authenticated Notifications

@@ -2,10 +2,60 @@
 layout: tutorial
 title: Notifications
 show_children: true
-show_disqus: false
-print_pdf: false
+relevantTo: [ios,android,windows,cordova]
 weight: 7
 ---
 ## Overview
-Learn how to setup, send and receive push notification in Cordova and native applications using the MobileFirst Push Service.  
-To continue, select a tutorial:
+Push notifications is the ability of a mobile device to receive messages that are "pushed" from a server.  
+Notifications are received regardless of whether the application is currently running in the foreground or background.  
+
+IBM MobileFirst Foundation provides a unified set of API methods to send notifications to iOS, Android, Windows 8.1 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. The notifications are sent from the MobileFirst Server to the vendor (Apple, Google, Microsoft) infrastructure, and from there to the relevant devices. The unified push notification mechanism makes the entire process of communicating with the users and devices completely transparent to the developer.
+
+Continue reading to learn more on the available push notification support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
+
+> You can find an overview of SMS Notifications [in this tutorial](../sms-notifications-overview)
+
+#### Jump to:
+
+* [Push Notifications Types](#push-notifications-types)
+* [Tutorials to follow next](#tutorials-to-follow-next)
+
+## Push Notifications types
+Notifications can take several forms:
+
+* **Alert (iOS, Android, Windows)** -  a pop-up text message
+* **Sound (iOS, Android, Windows)** - a sound file playing when a notification is received
+* **Badge (iOS), Tile (Windows)** - a graphical representation that allows a short text or image
+* **Banner (iOS), Toast (Windows)** - a disappearing pop-up text message at the top of the device display
+* **Interactive (iOS 8 and above)** - action buttons inside the banner of a received notification
+* **Silent (iOS 8 and above)** - sending notifications without distrubing the user
+
+### Device support
+Push notifications are supported for the following platforms in MobileFirst Foundation:
+
+* iOS 8.x, 9.x
+* Android 4.x, 5.x, 6.x
+* Windows 8.1, Windows 10
+
+## Push Notification Types 
+
+#### Tag notifications
+Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.  
+Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
+
+#### Broadcast notifications
+Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). Broadcast notifications can be disabled by unsubscribing from the reserved `Push.all` tag.
+
+#### User Authenticated Notifications
+User Authenticated Notifications are notifications secured with OAuth.
+
+> For more information about notifications types, see the topic about push notifications in the user documentation.
+
+## Tutorials to follow next
+Follow through the below required setup of the server-side and client-side in order to be able to send and receive push notifications:
+
+* [Sending push notifications](../sending-push-notifications)
+* [Handling push notifications in Cordova applications](../handling-push-notifications-in-cordova)
+* [Handling push notifications in iOS applications](../handling-push-notifications-in-ios)
+* [Handling push notifications in Android applications](../handling-push-notifications-in-android)
+* [Handling push notifications in Windows applications](../handling-push-notifications-in-windows)
