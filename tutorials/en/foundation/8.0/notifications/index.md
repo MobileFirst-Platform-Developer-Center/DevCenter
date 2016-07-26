@@ -40,15 +40,16 @@ Push and SMS notifications are supported for the following platforms in MobileFi
 
 #### Tag notifications
 Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.  
-Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest.
+
+Tags-based notifications allow segmentation of notifications based on subject areas or topics. Notification recipients can choose to receive notifications only if it is about a subject or topic that is of interest. Therefore, tags-based notification provides a means to segment recipients. This feature enables you to define tags and send or receive messages by tags. A message is targeted to only the devices that are subscribed to a tag.
 
 #### Broadcast notifications
-Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). Broadcast notifications can be disabled by unsubscribing from the reserved `Push.all` tag.
+Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices, and are enabled by default for any push-enabled MobileFirst application by a subscription to a reserved `Push.all` tag (auto-created for every device). Broadcast notifications can be disabled by unsubscribing from the reserved `Push.all` tag.
 
-#### User Authenticated Notifications
-User Authenticated Notifications are notifications secured with OAuth.
+#### Unicast Notifications
+Unicast notifications, or User Authenticated Notifications that are secured with OAuth. These are notification messages target a particular device or a userID(s). The userID in the user subscription can come from the underlying security context.
 
-> For more information about notifications types, see the topic about push notifications in the user documentation.
+**Note:** Unicast notifications do not contain any tag in the payload. The notification message can target multiple devices or users by specifying multiple deviceIDs or userIDs respectively, in the target block of the POST message API.
 
 ## SMS Notifications
 To start receiving SMS notifications, an application must first register to an SMS notification subscription. To subscribe to SMS notifications, the user supplies a mobile phone number and approves the notification subscription. A subscription request is sent to the MobileFirst Server upon receipt of the user approval. When a notification is retrieved from the MobileFirst Operations Console, it is processed and sent through a preconfigured SMS gateway.
