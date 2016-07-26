@@ -17,7 +17,7 @@ MobileFirst-provided Notifications API can be used in order to register &amp; un
 **Prerequisites:**
 
 * Make sure you have read the following tutorials:
-	* [Push Notifications Overview](../push-notifications-overview)
+	* [Push Notifications Overview](../)
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
     * [Adding the MobileFirst Platform Foundation SDK to windows applications](../../adding-the-mfpf-sdk/windows-8-10)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.

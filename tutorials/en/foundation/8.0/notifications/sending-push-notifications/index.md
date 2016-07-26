@@ -12,8 +12,8 @@ Notifications can then be sent to: all devices (broadcast), devices that registe
 
 **Prerequisite**: 
 
-* For push notifications, make sure to read the [Push Notifications overview](../push-notifications-overview/) tutorial.
-* For SMS notifications, make sure to read the [SMS Notifications overview](../sms-notifications-overview/) tutorial.
+* For push notifications, make sure to read the [Push Notifications overview](../) tutorial.
+* For SMS notifications, make sure to read the [SMS Notifications overview](../) tutorial.
 
 #### Jump to
 

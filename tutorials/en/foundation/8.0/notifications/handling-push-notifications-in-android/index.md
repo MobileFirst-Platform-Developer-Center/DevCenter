@@ -15,7 +15,7 @@ Before Android applications are able to handle any received push notifications, 
 * Make sure you have read the following tutorials:
     * [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/)
     * [Adding the MobileFirst Foundation SDK to Android applications](../../adding-the-mfpf-sdk/android)
-    * [Push Notifications Overview](../push-notifications-overview)
+    * [Push Notifications Overview](../)
 * MobileFirst Server to run locally, or a remotely running MobileFirst Server.
 * MobileFirst CLI installed on the developer workstation
 

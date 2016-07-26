@@ -6,18 +6,17 @@ relevantTo: [ios,android,windows,cordova]
 weight: 7
 ---
 ## Overview
-Push notifications is the ability of a mobile device to receive messages that are "pushed" from a server.  
+Notifications is the ability of a mobile device to receive messages that are "pushed" from a server.  
 Notifications are received regardless of whether the application is currently running in the foreground or background.  
 
-IBM MobileFirst Foundation provides a unified set of API methods to send notifications to iOS, Android, Windows 8.1 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. The notifications are sent from the MobileFirst Server to the vendor (Apple, Google, Microsoft) infrastructure, and from there to the relevant devices. The unified push notification mechanism makes the entire process of communicating with the users and devices completely transparent to the developer.
+IBM MobileFirst Foundation provides a unified set of API methods to send either push or SMS notifications to iOS, Android, Windows 8.1 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. The notifications are sent from the MobileFirst Server to the vendor (Apple, Google, Microsoft, SMS Gateways) infrastructure, and from there to the relevant devices. The unified notification mechanism makes the entire process of communicating with the users and devices completely transparent to the developer.
 
-Continue reading to learn more on the available push notification support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
-
-> You can find an overview of SMS Notifications [in this tutorial](../sms-notifications-overview)
+Continue reading to learn more on the available push and SMS notification support, such as available notification forms types, how to send notifications to devices and how to handle received notifications in your application.
 
 #### Jump to:
 
 * [Push Notifications Types](#push-notifications-types)
+* [SMS Notifications](#sms-notifications)
 * [Tutorials to follow next](#tutorials-to-follow-next)
 
 ## Push Notifications types
@@ -31,7 +30,7 @@ Notifications can take several forms:
 * **Silent (iOS 8 and above)** - sending notifications without distrubing the user
 
 ### Device support
-Push notifications are supported for the following platforms in MobileFirst Foundation:
+Push and SMS notifications are supported for the following platforms in MobileFirst Foundation:
 
 * iOS 8.x, 9.x
 * Android 4.x, 5.x, 6.x
@@ -51,11 +50,8 @@ User Authenticated Notifications are notifications secured with OAuth.
 
 > For more information about notifications types, see the topic about push notifications in the user documentation.
 
+## SMS Notifications
+To start receiving SMS notifications, an application must first register to an SMS notification subscription. To subscribe to SMS notifications, the user supplies a mobile phone number and approves the notification subscription. A subscription request is sent to the MobileFirst Server upon receipt of the user approval. When a notification is retrieved from the MobileFirst Operations Console, it is processed and sent through a preconfigured SMS gateway.
+
 ## Tutorials to follow next
 Follow through the below required setup of the server-side and client-side in order to be able to send and receive push notifications:
-
-* [Sending push notifications](../sending-push-notifications)
-* [Handling push notifications in Cordova applications](../handling-push-notifications-in-cordova)
-* [Handling push notifications in iOS applications](../handling-push-notifications-in-ios)
-* [Handling push notifications in Android applications](../handling-push-notifications-in-android)
-* [Handling push notifications in Windows applications](../handling-push-notifications-in-windows)
