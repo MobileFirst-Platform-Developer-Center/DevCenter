@@ -54,4 +54,4 @@ Or, let's say you are preparing for a marketing event like Black Friday, and you
 
 To get started using the Live Update feature, see the [Live Update tutorial]({{site.baseurl}}/tutorials/en/foundation/8.0/using-the-mfpf-sdk/live-update/).
 
-![LiveUpdate]({{site.baseurl}}/assets/blog/2016-19-07-changing-your-app-on-the-fly-with-ibm-mobilefirst-foundation-8-0/LiveUpdate.png)
+![LiveUpdate]({{site.baseurl}}/assets/blog/2016-07-19-changing-your-app-on-the-fly-with-ibm-mobilefirst-foundation-8-0/LiveUpdate.png)

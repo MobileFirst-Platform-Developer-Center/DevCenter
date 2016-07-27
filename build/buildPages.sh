@@ -7,7 +7,7 @@ if [ $TRAVIS_PULL_REQUEST == "true" ]; then
 fi
 
 # only proceed script when on "master" branch
-if [ $TRAVIS_BRANCH != 'analytics-poc' ]; then
+if [ $TRAVIS_BRANCH != 'content-migration' ]; then
   echo "this is not the staging branch, exiting"
   exit 0
 fi
