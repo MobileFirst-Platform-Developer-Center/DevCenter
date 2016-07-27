@@ -17,10 +17,10 @@ author:
 
 This blog post assumes that you have basic knowledge about *IBM MobileFirst Platform Foundation 8.0* authentication and security checks. If it's not the case, refer to [the Authentication and Security tutorial](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/).  
 
-You can easily reuse the [Social Login security check](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-login) in this blog for your own needs. The sample includes social providers as [Facebook](https://developers.facebook.com/docs/facebook-login) and [Google](https://developers.google.com/identity/), which you can easily extend by adding more social providers, like Twitter.
+You can easily reuse the [Social Login security check](https://github.com/mfpdev/social-login-sample/tree/master/social-login-security-check) in this blog for your own needs. The sample includes social providers as [Facebook](https://developers.facebook.com/docs/facebook-login) and [Google](https://developers.google.com/identity/), which you can easily extend by adding more social providers, like Twitter.
 
 ## See in action
-Here is a short YouTube demo movie which shows an app that's using the [Social Login security check](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-login).
+Here is a short YouTube demo movie which shows an app that's using the [Social Login security check](https://github.com/mfpdev/social-login-sample/tree/master/social-login-security-check).
 
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
@@ -28,8 +28,8 @@ Here is a short YouTube demo movie which shows an app that's using the [Social L
   </div>
 </div>
 
-## Running the demo
-To run this demo, review the instructions in the [sample's repository.](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-app-samples/SocialLoginSample)
+## Running the sample
+To run this sample, review the instructions in the [sample's repository.](https://github.com/mfpdev/social-login-sample)
 
 ## The big picture
 ![login flow]({{site.baseurl}}/assets/blog/2016-04-06-social-login-with-ibm-mobilefirst-platform-foundation/login-flow.png)
@@ -112,7 +112,7 @@ Credentials are validated by the **validateCredentials** function:
 
 ***LoginVendor.java*** **GoogleSupport.java** **FacebookSupport.java**  
 
-[*GoogleSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/com/github/mfpdev/sample/socialogin/GoogleSupport.java) and [*FacebookSupport.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/com/github/mfpdev/sample/socialogin/FacebookSupport.java) implements the [*LoginVendor.java*](https://github.com/mfpdev/mfp-advanced-adapters-samples/blob/development/custom-security-checks/social-login/src/main/java/com/github/mfpdev/sample/socialogin/LoginVendor.java) interface. Each login vendor class is responsible for validating the specific social login user and for creating authenticated users by implementing the *validateTokenAndCreateUser* method. You can add more vendors by implementing *LoginVendor.java* (for example, In orVendor.java).  
+[*GoogleSupport.java*](https://github.com/mfpdev/social-login-sample/blob/master/social-login-security-check/src/main/java/com/github/mfpdev/sample/socialogin/GoogleSupport.java) and [*FacebookSupport.java*](https://github.com/mfpdev/social-login-sample/blob/master/social-login-security-check/src/main/java/com/github/mfpdev/sample/socialogin/FacebookSupport.java) implements the [*LoginVendor.java*](https://github.com/mfpdev/social-login-sample/blob/master/social-login-security-check/src/main/java/com/github/mfpdev/sample/socialogin/LoginVendor.java) interface. Each login vendor class is responsible for validating the specific social login user and for creating authenticated users by implementing the *validateTokenAndCreateUser* method. You can add more vendors by implementing *LoginVendor.java* (for example, In orVendor.java).  
 
 ***SocialLoginConfiguration.java***  
   The configuration class contains the configurations and vendors.
@@ -155,7 +155,7 @@ String socialLoginVendor = userAttributes.get("originalToken");
 ### The SocialLoginSample app
 ***SocialLoginChallengeHandler.java***
 
-In most cases, to call protected resources with custom OAuth scope, you need a custom [challenge handler](http://localhost:4000/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/android/). Here is the challenge handler code that triggers the social login flow and sends the challenge response that contains the vendor and the social platform token.
+In most cases, to call protected resources with custom OAuth scope, you need a custom [challenge handler]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security/user-authentication/android/). Here is the challenge handler code that triggers the social login flow and sends the challenge response that contains the vendor and the social platform token.
 
 ```java
 @Override
@@ -214,4 +214,3 @@ private void callProtectedAdapter() {
   });
 }
 ```
-
