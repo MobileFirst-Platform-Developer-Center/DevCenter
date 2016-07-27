@@ -35,7 +35,7 @@ Here is a short YouTube demo movie which shows an app that's analyzing some data
 </div>
 
 ## Running the demo
-In order to run this demo, review the instructions in the [sample's repository.](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/social-app-samples/AnalyzeFacebookWithWatsonSample/AnalyzeMyFacebookApp)
+In order to run this demo, review the instructions in the [sample's repository.](https://github.com/mfpdev/leverage-social-login-sample)
 
 ## The big picture
 Each of the two diagrams focuses on one flow:  
@@ -86,7 +86,7 @@ The code sample ues configuration to maintain the credentials for the Watson ser
 ConfigurationAPI configApi;
 ```
 
-* Then call it: 
+* Then call it:
 
 ```java
 configApi.getPropertyValue(ALCHEMY_API_KEY)
