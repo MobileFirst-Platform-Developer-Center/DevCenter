@@ -6,16 +6,25 @@ relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
 ## Overview
-A security check is an entity that is responsible for obtaining and validating client credentials.
+Security checks constitute the basic server-side building block of the MobileFirst security framework. A security check is a server-side entity that implements a specific authorization logic, such as obtaining and validating client credentials. You protect a resource by assigning it a scope that maps to zero or more security checks. The security framework ensures that only a client that passes all of the security checks of the protecting scope is granted access to the resource. You can use security checks to authorize access both to resources that are hosted on MobileFirst Server and to resources on an [external resource server](../protecting-external-resources).
 
-Security checks are defined inside **an adapter** and are implemented in Java code. Any adapter can theoretically define a security check.  
-
+Both Java and JavaScript adapters can theoretically define a security check in their respective definition files, however note that the security checks are implemented in Java code only.  
 An adapter can either be a *resource* adapter (meaning it serves resources and content to send to the client), a *SecurityCheck* adapter, or **both**.
+
+The architecture of the security framework is modular and flexible and so the implementation of the security check is not inherently dependent of any specific resource or application. You can reuse the same security check to protect different resources, and use different security-check combinations for various authorization flows. For enhanced flexibility, a security-check class exposes configuration properties that can be customized at the adapter level both in the security-check definition and during run time from thte MobileFirst Operations Console.
+
+To facilitate and accelerate your development process, IBM MobileFirst Foundation provides base abstract implementations of the `SecurityCheck` interface. In addition, a base abstract implementation of the `SecurityCheckConfiguration` interface is provided (`SecurityCheckConfigurationBase`), as well as complementary sample security-check configuration classes for each of the provided base security-check classes. Start out with the base security-check implementation (and related sample configuration) that best fits your development needs, and extend and modify the implementation as needed.
+
+> Learn more about the [security check contract](/contract).
+
 
 **Prerequisites:**
 
 * Read the [Authorization concepts](../) tutorial.
-* Learn how to [creating adapters](../../adapters/creating-adapters).
+* Learn how to [create adapters](../../adapters/creating-adapters).
+
+**Usage:**  
+The security check base classes that are described below are available are part of the MobileFirst `com.ibm.mfp.security.checks.base` Java Maven library, which are downloaded while building the adapter from from the [Maven Central repository](http://search.maven.org/#search|ga|1|a%3A%22mfp-security-checks-base%22). If you are developing offline, you can download these from the **MobileFirst Operations Console → Download Center → Tools tab → Security Checks**.
 
 #### Jump to:
 
@@ -62,18 +71,14 @@ Subclassing this class leaves a lot of flexibility in your security check implem
 > Learn more in the [ExternalizableSecurityCheck](../externalizable-security-check) tutorial.
 
 ### CredentialsValidationSecurityCheck
-This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods must be implemented: `validateCredentials` and `createChallenge`.
+This class extends the `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods must be implemented: `validateCredentials` and `createChallenge`. The implementation allows a limited number of login attempts during a certain interval, after which the security check is blocked for a configured period. In the case of a successful login, the state of the security check remains successful for a configured period, during which the user can access the requested resource.
 
 The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials, to grant access to a resource. A built-in capability to block access after a set number of attempts is also provided.
 
 > Learn more in the [CredentialsValidationSecurityCheck](../credentials-validation/) tutorials.
 
 ### UserAuthenticationSecurityCheck
-This abstract class extends `CredentialsValidationSecurityCheck` and therefore inherits all of its features.
-
-In addition, the `UserAuthenticationSecurityCheck` class provides the MobileFirst framework with an `AuthenticatedUser` object which represents the logged-in user. You must implement the `createUser`, `validateCredentials`, and `createChallenge` methods.
-
-A built-in capability to optionally enable a "Remember Me" login behavior is also provided.
+This class extends the `CredentialsValidationSecurityCheck` and therefore inherits all of its features. The class adds to it an implementation that creates an `AuthenticatedUser` user identity object  that can be used to identify the current logged-in user. A built-in capability to optionally enable a "Remember Me" login behavior is also provided. Three methods must be implemented: `createUser`, `validateCredentials`, and `createChallenge`.
 
 > Learn more in the [UserAuthentication security check](../user-authentication/) tutorials.
 
