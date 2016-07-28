@@ -27,6 +27,105 @@ Application developers protect access to their resources by defining the require
 
 ## Authorization entities
 
+### Access Token
+A MobileFirst access token is a digitally signed entity that describes the authorization permissions of a client. After the client's authorization request for a specific scope is granted, and the client is authenticated, the authorization server's token endpoint sends the client an HTTP response that contains the requested access token.
+
+### Structure
+The MobileFirst access token contains the following information:
+
+* **Client ID**: a unique identifier of the client.
+* **Scope**: the scope for which the token was granted (see OAuth scopes). This scope does not include the [mandatory application scope](#mandatory-application-scope)
+* **Token-expiration time**: the time at which the token becomes invalid (expires), in seconds.
+
+### Token expiration
+The granted access token remains valid until its expiration time elapses. The access token's expiration time is set to the shortest expiration time from among the expiration times of all the security checks in the scope. But if the period until the shortest expiration time is longer than the application's maximum token-expiration period, the token's expiration time is set to the current time plus the maximum expiration period. The default maximum token-expiration period (validity duration) is 3,600 seconds (1 hour), but it can be configured by setting the value of the `maxTokenExpiration` property. See Configuring the maximum access-token expiration period.
+
+<div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="access-token-expiration">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Configuring the maximum access-token expiration period</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-access-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="access-token-expiration">
+            <div class="panel-body">
+            <p>Configure the application’s maximum access-token expiration period by using one of the following alternative methods:</p>
+            <ul>
+                <li>Using the IBM MobileFirst Foundation Operations Console
+                    <ul>
+                        <li>Select <b>[your application] → Security</b> tab.</li>
+                        <li>In the <b>Token Configuration</b> section, set the value of the Maximum <b>Token-Expiration Period (seconds)</b> field to your preferred value, and click **Save**. You can repeat this procedure, at any time, to change the maximum token-expiration period, or select <b>Restore Default Values</b> to restore the default value.
+                    </ul>
+                </li>
+                <li>Editing the application's configuration file
+                    <ol>
+                        <li>From a <b>command-line window</b>, navigate to the project's root folder and run the <code>mfpdev app pull</code>.</li>
+                        <li>Open the configuration file, located in the <b>[project-folder\mobilefirst</b> folder.</li>
+                        <li>Edit the file by defining a <code>maxTokenExpiration</code> property, key and set its value to the maximum access-token expiration period, in seconds:
+
+{% highlight xml %}
+{
+    ...
+    "maxTokenExpiration": 7200
+}
+{% endhighlight %}</li>
+                        <li>Deploy the updated configuration JSON file by running the command: `mfpdev app push`.</li>
+                    </ol>
+                </li>
+            </ul>
+                
+            <br/>
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel-group accordion" id="response-access-token" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="response-structure">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>Access-token response structure</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-response-structure" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure">
+            <div class="panel-body">
+                <p>A successful HTTP response to an access-token request contains a JSON object with the access token and additional data. Following is an example of a valid-token response from the authorization server; (actual access tokens are longer than shown in the example):</p>
+                
+{% highlight json %}
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+{
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "access_token": "yI6ICJodHRwOi8vc2VydmVyLmV4YW1",
+    "scope": "scopeElement1 scopeElement2"
+}
+{% endhighlight %}
+
+<p>The token-response JSON object has these property objects:</p>
+<ul>
+    <li><b>token_type</b>: the token type is always <i>"Bearer"</i>, in accordance with the <a href="https://tools.ietf.org/html/rfc6750">OAuth 2.0 Bearer Token Usage specification</a>.</li>
+    <li><b>expires_in</b>: the expiration time of the access token, in seconds.</li>
+    <li><b>access_token</b>: the generated access token.</li>
+    <li><b>scope</b>: the requested scope.</li>
+</ul>
+
+<p>The <b>expires_in</b> and <b>scope</b> information is also contained in the token (<b>access_token</b>).</p>
+
+<blockquote><b>Note:</b> The structure of a valid access-token response is relevant if you use the low-level <code>WLAuthorizationManager</code> class and manage the OAuth interaction between the client and the authorization and resource servers yourself, or if you use a confidential client. If you are using the high-level <code>WLResourceRequest</code> class, which encapsulates the OAuth flow for accessing protected resources, the security framework handles the processing of access-token responses for you. <a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">See Client security APIs</a> and <a href="confidential-clients">Confidential clients</a>.</blockquote>
+
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 ### Security Check
 A security check is a server-side entity that implements the security logic for protecting server-side application resources. A simple example of a security check is a user-login security check that receives the credentials of a user, and verifies the credentials against a user registry. Another example is the predefined MobileFirst application-authenticity security check, which validates the authenticity of the mobile application and thus protects against unlawful attempts to access the application's resources. The same security check can also be used to protect several resources.
 
@@ -82,6 +181,22 @@ scope = `access-restricted deletePrivilege`
 
 <img class="gifplayer" alt="Scope mapping" src="scope_mapping.png"/>
 
+You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a MobileFirst Server.
+
+1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
+2. Open the configuration file, located in the **[project-folder\mobilefirst** folder.
+3. Edit the file by defining a `scopeElementMapping` property, in this property, define data pairs that are each composed of the name of your selected scope element, and a string of zero or more space-separated security checks to which the element maps. For example: 
+
+    ```xml
+    "scopeElementMapping": {
+        "UserAuth": "UserAuthentication",
+        "SSOUserValidation": "LtpaBasedSSO CredentialsValidation"
+    }
+    ```
+4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+
+> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobilefFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+
 ## Protecting resources
 In the OAuth model, a protected resource is a resource that requires an access token. You can use the MobileFirst security framework to protect both resources that are hosted on an instance of MobileFirst Server, and resources on an external server. You protect a resource by assigning it a scope that defines the required permissions for acquiring an access token for the resource. 
 
@@ -103,8 +218,12 @@ In the MobileFirst Operations Console, select **[your application] → Security 
 You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a MobileFirst Server.
 
 1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the [project]\mobilefirst] folder.
-3. Edit the file by defining a `mandatoryScope` property, and setting the property value to a scope string that contains a space-separated list of your selected scope elements. For example: `"mandatoryScope": "ScopeElement1 [ScopeElement2 ...]`
+2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
+3. Edit the file by defining a `mandatoryScope` property, and setting the property value to a scope string that contains a space-separated list of your selected scope elements. For example: 
+
+    ```xml
+    "mandatoryScope": "appAuthenticity PincodeValidation"
+    ```
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
 > You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobilefFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
