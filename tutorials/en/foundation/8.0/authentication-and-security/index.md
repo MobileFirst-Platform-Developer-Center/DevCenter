@@ -1,9 +1,6 @@
 ---
 layout: tutorial
 title: Authentication and Security
-show_children: true
-show_disqus: false
-print_pdf: false
 weight: 6
 ---
 ## Overview
@@ -86,13 +83,31 @@ scope = `access-restricted deletePrivilege`
 <img class="gifplayer" alt="Scope mapping" src="scope_mapping.png"/>
 
 ## Protecting resources
+In the OAuth model, a protected resource is a resource that requires an access token. You can use the MobileFirst security framework to protect both resources that are hosted on an instance of MobileFirst Server, and resources on an external server. You protect a resource by assigning it a scope that defines the required permissions for acquiring an access token for the resource. 
+
 You can protect your resources in various ways:
 
 ### Mandatory application scope
-At the application level, you can define a scope that will apply to all the resources used by this application.  
+At the application level, you can define a scope that will apply to all the resources used by the application. The security framework runs these checks (if exist) in addition to the security checks of the requested resource scope.
+
+**Notes:**
+
+* The mandatory application scope is not applied when accessing [an unprotected resource](#unprotected-resources).
+* The access token that is granted for the resource scope does not contain the mandatory application scope.
+
+<br/>
 In the MobileFirst Operations Console, select **[your application] → Security tab**. Under **Mandatory Application Scope**, click **Add to Scope**.
 
 <img class="gifplayer" alt="Mandatory application scope" src="mandatory-application-scope.png"/>
+
+You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a MobileFirst Server.
+
+1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
+2. Open the configuration file, located in the [project]\mobilefirst] folder.
+3. Edit the file by defining a `mandatoryScope` property, and setting the property value to a scope string that contains a space-separated list of your selected scope elements. For example: `"mandatoryScope": "ScopeElement1 [ScopeElement2 ...]`
+4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+
+> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobilefFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ### Resource-level
 #### Java adapters
@@ -110,11 +125,9 @@ public void deleteUser(@PathParam("userId") String userId){
 
 In the example above, the `deleteUser` method uses the annotation `@OAuthSecurity(scope="deletePrivilege")`, which means that it is protected by a scope containing the scope element `deletePrivilege`.
 
-A scope can be made of several scope elements, separated by spaces: `@OAuthSecurity(scope="element1 element2 element3")`.
-
-If you do not specify the `@OAuthSecurity` annotation, or set the scope to an empty string, the MobileFirst security framework still requires an access token for any incoming request.
-
-You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
+* A scope can be made of several scope elements, separated by spaces: `@OAuthSecurity(scope="element1 element2 element3")`.
+* If you do not specify the `@OAuthSecurity` annotation, or set the scope to an empty string, the MobileFirst security framework still requires an access token for any incoming request.
+* You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
 
 #### JavaScript adapters
 You can protect a JavaScript adapter procedure by assigning a scope to the procedure definition in the adapter XML file:
@@ -122,12 +135,15 @@ You can protect a JavaScript adapter procedure by assigning a scope to the proce
 ```xml
 <procedure name="deleteUser" scope="deletePrivilege">
 ```
-A scope can be made of several scope elements, separated by spaces: `scope="element1 element2 element3"`
 
-If you do not specify any scope, or use an empty string, the MobileFirst security framework still requires an access token for any incoming request.
+* A scope can be made of several scope elements, separated by spaces: `scope="element1 element2 element3"`
+* If you do not specify any scope, or use an empty string, the MobileFirst security framework still requires an access token for any incoming request.
 
 ### Disabling protection
+The default value of the annotation’s `enabled` element is `true`. When the `enabled` element is set to `false`, the `scope` element is ignored, and the resource or resource class is not protected.  
 **Disabling protection** allows any client to access the resource: the MobileFirst security framework will **not** require an access token.
+
+**Note:** When you assign a scope to a resource method that is contained in an unprotected class, the method is protected despite the class annotation, provided you do not also set the enabled element to false in the resource annotation.
 
 #### Java adapters
 If you want to disable protection, you can use: `@OAuthSecurity(enabled=false)`.
@@ -141,6 +157,9 @@ If you want to disable protection, you can use `secured="false"`.
 
 ### Unprotected resources
 An unprotected resource is a resource that does not require an access token. The MobileFirst security framework does not manage access to unprotected resources, and does not validate or check the identity of clients that access these resources. Therefore, features such as Direct Update, blocking device access, or remotely disabling an application, are not supported for unprotected resources.
+
+### External resources
+To protect external resources, you add a resource filter with an access-token validation module to the external resource server. The token-validation module uses the introspection endpoint of the security framework's authorization server to validate MobileFirst access tokens before granting the OAuth client access to the resources. You can use the [MobileFirst REST API for the MobileFirst runtime](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api) to create your own access-token validation module for any external server. Alternatively, use one of the provided MobileFirst extensions for protecting external Java™ resources, as outlined in the [Protecting External Resources](protecting-external-resources) tutorial.
 
 ## Authorization flow
 The authorization flow has two phases:
@@ -181,8 +200,4 @@ After obtaining an access token, the client attaches the obtained token to subse
 3. MobileFirst Server proceeds to adapter invocation.
 
 ## Tutorials to follow next
-Continue reading about authentication in the following tutorials:
-
-* [Creating a security check](../creating-a-security-check)
-* [Implementing the CredentialsValidationSecurityCheck](../credentials-validation)
-* [Implementing the UserAuthenticationSecurityCheck](../user-authentication)
+Continue reading about authentication in MobileFirst Foundation by following the tutorials from the sidebar navigation.  

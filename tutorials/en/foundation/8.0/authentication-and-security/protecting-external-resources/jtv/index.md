@@ -12,7 +12,7 @@ downloads:
 MobileFirst Foundation provides a Java library to enforce security capabilities on external resources.  
 The Java library is provided as a JAR file (**mfp-java-token-validator-8.0.0.jar**).
 
-This tutorial showS how to protect a simple Java Servlet, `GetBalance`, by using a scope (`accessRestricted`).
+This tutorial shows how to protect a simple Java Servlet, `GetBalance`, by using a scope (`accessRestricted`).
 
 **Prerequesites:**
 
@@ -42,6 +42,8 @@ TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId,
 - `authorizationURI`: the URI of the Authorization server, usually the MobileFirst Server. For example **http://localhost:9080/mfp/api**.
 - `clientId`: The confidential client ID that you configured in the MobileFirst Operations Console.
 - `clientSecret`: The confidential client secret that you configured in the MobileFirst Operations Console.
+
+> The library exposes an API that encapsulates and simplifies the interaction with the authorization server's introspection endpoint. For a detailed API reference, [see the MobileFirst Java Token Validator API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
 
 ## Validating the credentials
 The `validate` API method asks the authorization server to validate the authorization header:
