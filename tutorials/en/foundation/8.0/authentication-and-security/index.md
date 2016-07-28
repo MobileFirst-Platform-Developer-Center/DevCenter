@@ -308,7 +308,7 @@ Before the request for an access token the client registers itself with the Mobi
 4. The client application receives the access token.
 
 ### Using a token to access a protected resource
-It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server, as explained in tutorial [Using MobileFirst Server to authenticate external resources](../protecting-external-resources/).
+It is possible to enforce security both on resources that run on MobileFirst Server, as shown in this diagram, and on resources that run on any external resource server, as explained in tutorial [Using MobileFirst Server to authenticate external resources](protecting-external-resources/).
 
 After obtaining an access token, the client attaches the obtained token to subsequent requests to access protected resources. The resource server uses the authorization server's introspection endpoint to validate the token. The validation includes using the token's digital signature to verify the client's identity, verifying that the scope matches the authorized requested scope, and ensuring that the token has not expired. When the token is validated, the client is granted access to the resource.
 
