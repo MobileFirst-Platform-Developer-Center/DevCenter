@@ -14,7 +14,7 @@ An adapter can either be a *resource* adapter (meaning it serves resources and c
 
 **Prerequisites:**
 
-* Read the [Authorization concepts](../authorization-concepts/) tutorial.
+* Read the [Authorization concepts](../) tutorial.
 * Learn how to [creating adapters](../../adapters/creating-adapters).
 
 #### Jump to:

@@ -19,7 +19,7 @@ You must provide the following information:
 - **Display Name**: A user-friendly display name which describes the confidential client, such as **Back-end Node server**.
 - **ID**: A unique identifier for the confidential client (can be considered as a "user name").
 - **Secret**: A private passphrase to authorize access from the confidential client (can be considered as an API key).
-- **Allowed Scope**: A confidential client that uses such ID and Secret combination is automatically granted the scope that is defined here. Learn more about **Scopes** in the [Authorization Concepts](../authorization-concepts/#scope) tutorial.
+- **Allowed Scope**: A confidential client that uses such ID and Secret combination is automatically granted the scope that is defined here. Learn more about **Scopes** in the [Authorization Concepts](../#scope) tutorial.
 
 **Examples of scopes:**
 

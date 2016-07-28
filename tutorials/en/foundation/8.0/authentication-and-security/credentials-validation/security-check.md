@@ -15,7 +15,7 @@ The `CredentialsValidationSecurityCheck` class is meant for simple flows to vali
 
 This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client app instance is blocked for 60 seconds).
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../../authorization-concepts/) and [Creating a Security Check](../../creating-a-security-check) tutorials.
+**Prerequisites:** Make sure to read the [Authorization concepts](../../) and [Creating a Security Check](../../creating-a-security-check) tutorials.
 
 #### Jump to:
 
