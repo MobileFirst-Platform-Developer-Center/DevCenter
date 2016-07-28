@@ -1,6 +1,6 @@
 ---
 title: MobileFirst Platform Foundation compatibility for Android N
-date: 2016-07-28
+date: 2016-04-05
 tags:
 - MobileFirst_Platform
 - Android
@@ -20,7 +20,7 @@ The final developer preview version provides a flavour of the new [features](htt
 
 We encourage you to start testing your application(s) with Android N. Please see [IBM MobileFirst Platform Foundation's support plan for Android 7.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/07/14/support-plan-for-android-n/).
 
-MobileFirst Platform Foundation has embraced Android Nougat very well. A bunch of powerful features like adapter based authentication, custom authentication, form based authentication, invoking adapter procedures, application management, direct update that are offered by the MobileFirst Platform Foundation has been verified to work without any issues on Android 7.0. A sanity check has been performed to ensure that all the existing apps built on Android Marshmallow work on Android Nougat platform.
+MobileFirst Platform Foundation v6.3 to v8.0 has embraced Android Nougat very well. A bunch of powerful features like adapter based authentication, custom authentication, form based authentication, invoking adapter procedures, application management, direct update that are offered by the MobileFirst Platform Foundation has been verified to work without any issues on Android 7.0. A sanity check has been performed to ensure that all the existing apps built on Android Marshmallow work on Android Nougat platform.
 
 ### Known Issues
 ---
