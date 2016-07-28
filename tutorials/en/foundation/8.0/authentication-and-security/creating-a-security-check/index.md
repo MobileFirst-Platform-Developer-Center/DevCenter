@@ -6,7 +6,7 @@ relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
 ## Overview
-Security checks constitute the basic server-side building block of the MobileFirst security framework. A security check is a server-side entity that implements a specific authorization logic, such as obtaining and validating client credentials. You protect a resource by assigning it a scope that maps to zero or more security checks. The security framework ensures that only a client that passes all of the security checks of the protecting scope is granted access to the resource. You can use security checks to authorize access both to resources that are hosted on MobileFirst Server and to resources on an [external resource server](../protecting-external-resources).
+Security checks constitute the basic server-side building block of the MobileFirst security framework. A security check is a server-side entity that implements a specific authorization logic, such as obtaining and validating client credentials. You protect a resource by assigning it a scope that maps to zero or more security checks. The security framework ensures that only a client that passes all of the security checks of the protecting scope is granted access to the resource. You can use security checks to authorize access both to resources that are hosted on MobileFirst Server and to resources on an external resource server.
 
 Both Java and JavaScript adapters can theoretically define a security check in their respective definition files, however note that the security checks are implemented in Java code only.  
 An adapter can either be a *resource* adapter (meaning it serves resources and content to send to the client), a *SecurityCheck* adapter, or **both**.
@@ -15,8 +15,7 @@ The architecture of the security framework is modular and flexible and so the im
 
 To facilitate and accelerate your development process, IBM MobileFirst Foundation provides base abstract implementations of the `SecurityCheck` interface. In addition, a base abstract implementation of the `SecurityCheckConfiguration` interface is provided (`SecurityCheckConfigurationBase`), as well as complementary sample security-check configuration classes for each of the provided base security-check classes. Start out with the base security-check implementation (and related sample configuration) that best fits your development needs, and extend and modify the implementation as needed.
 
-> Learn more about the [security check contract](/contract).
-
+> Learn more about the [security check contract](contract).
 
 **Prerequisites:**
 
@@ -51,9 +50,17 @@ In the Java adapter's `adapter.xml` file, add an XML element called `securityChe
 </securityCheckDefinition>
 ```
 
-- The `name` attribute is the name of your security check.
-- The `class` attribute specifies the implementation Java class of the security check. You need to create this class.
-- Security checks can be [further configured](#security-check-configuration) with a list of `property` elements.
+* The `name` attribute is the name of your security check.
+* The `class` attribute specifies the implementation Java class of the security check. You need to create this class.
+* Security checks can be [further configured](#security-check-configuration) with a list of `property` elements.
+* For defining custom properties, see [Security Check Configuration](#security-check-configuration).
+
+After you successfully deploy an adapter with a security-check definition to the MobileFirst Server, you can also see your security check and its configuration information, and make runtime configuration changes, from **MobileFirst Operations Console → Adapters → [your adapter]**:
+
+* In the **Configuration Files** tab you can see the server copy of your adapter descriptor, including the `<securityCheckDefinition>` element that defines your custom security check and its configurable properties. You can also [pull the adapter configuration](../adapters/java-adapters/#custom-properties) and push it to different servers.
+* In the **Security Checks** tab you can see a list of all the configuration properties that you exposed in the security-check definition. The properties are referenced by the value of their configured `displayName` attribute, or by the value of the name attribute when no display name is configured. If you set the property's description attribute in the definition, this description is also displayed. 
+For each property, the value that is configured in the `defaultValue` attribute is shown as the current value. You can change the value to override the default value from your security-check definition. You can also restore, at any time, the original default values from your security-check definition. 
+* You can also select an application version from the **Applications** section of the MobileFirst Console.
 
 ## Security Check Implementation
 Create the **Java class** for the security check. The implementation should extend one of the provided base classes, as shown below. The parent class you choose determines the balance between customization and simplicity.

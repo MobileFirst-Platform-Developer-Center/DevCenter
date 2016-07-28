@@ -44,8 +44,6 @@ class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
 ## Handling the challenge
 The minimum requirement from the `SecurityCheckChallengeHandler` protocol is to implement the `handleChallenge` method, which prompts the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`.
 
-> Learn more about the `SecurityCheckChallengeHandler` protocol in the user documentation.
-
 In this example, an alert prompts the using-mobilefirst-cli-to-manage-mobilefirst-artifacts to enter the PIN code:
 
 ```swift

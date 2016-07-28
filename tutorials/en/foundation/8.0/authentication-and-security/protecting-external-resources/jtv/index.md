@@ -81,9 +81,6 @@ TokenIntrospectionData introspectionData = (TokenIntrospectionData) request.getA
 String username = introspectionData.getUsername();
 ```
 
-
-> For additional API methods, see the Java Token Validation JavaDoc in the user documentation.
-
 ## Cache
 The `TokenValidationManager` class comes with an internal cache which caches tokens and introspection data. The purpose of the cache is to reduce the amount of token *introspections* done against the Authorization Server, if a request is made with the same header.
 
