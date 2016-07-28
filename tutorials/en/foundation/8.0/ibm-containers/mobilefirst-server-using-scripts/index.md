@@ -71,7 +71,7 @@ In macOS, two options are available to run Docker commands:
 ### Cloud Foundry Plug-in and IBM Containers plug-in
 
 1. Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
-2. Install the [IBM Containers Plugin (cf ic)](https://www.ng.bluemix.net/docs/containers/container_cli_ov.html#container_cli_cfic).
+2. Install the [IBM Containers Plugin (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html).
 
 ## Download the ibm-mfpf-container-8.0.0.0 archive
 To set up IBM MobileFirst Foundation on IBM Containers, you must first create an image that will later be pushed to Bluemix.  
