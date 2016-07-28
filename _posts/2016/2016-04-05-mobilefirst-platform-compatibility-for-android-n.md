@@ -13,7 +13,7 @@ version:
 author:
   name: S.A.Norton Stanley
 ---
-![Android N]({{site.baseurl}}/assets/blog/2016-04-05-mobilefirst-platform-support-for-android-n/mfpcompatibilityandroidn.png)
+![Android N]({{site.baseurl}}/assets/blog/2016-04-05-mobilefirst-platform-compatibility-for-android-n/mfpcompatibilityandroidn.png)
 Google rolled out the final SDK version of [Android 7.0 Nougat](https://developer.android.com/preview/index.html), earlier this month. To run and test your app on the new platform you need to set up an [Android N runtime environment](http://developer.android.com/preview/download.html).
 
 The final developer preview version provides a flavour of the new [features](http://developer.android.com/preview/api-overview.html) like Multi-window support, Notification enhancements, Doze on the go, Data Saver.
@@ -73,7 +73,7 @@ Android Nougat has changed how Android handles trusted certificate authorities (
      
 
   - Finally copy the custom certificate (.crt) file into ```/res/raw``` folder
-    ![copy-custom-ca-raw-folder]({{site.baseurl}}/assets/blog/2016-04-05-mobilefirst-platform-support-for-android-n/copy-custom-ca-raw-folder.png)
+    ![copy-custom-ca-raw-folder]({{site.baseurl}}/assets/blog/2016-04-05-mobilefirst-platform-compatibility-for-android-n/copy-custom-ca-raw-folder.png)
 
 All for now on the compatibility of MobileFirst Platform Foundation on Android 7.0.
 
