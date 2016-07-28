@@ -34,7 +34,7 @@ A MobileFirst access token is a digitally signed entity that describes the autho
 The MobileFirst access token contains the following information:
 
 * **Client ID**: a unique identifier of the client.
-* **Scope**: the scope for which the token was granted (see OAuth scopes). This scope does not include the [mandatory application scope](#mandatory-application-scope)
+* **Scope**: the scope for which the token was granted (see OAuth scopes). This scope does not include the [mandatory application scope](#mandatory-application-scope).
 * **Token-expiration time**: the time at which the token becomes invalid (expires), in seconds.
 
 ### Token expiration
@@ -134,8 +134,8 @@ A security check typically issues security challenges that require the client to
 #### Built-in Security Checks
 The following predefined security checks are available:
 
-- [Application Authenticity](../application-authenticity/)
-- [Direct Update](../../using-the-mfpf-sdk/direct-update)
+- [Application Authenticity](application-authenticity/)
+- [Direct Update](../using-the-mfpf-sdk/direct-update)
 - LTPA
 
 ### Challenge Handler
@@ -144,7 +144,7 @@ When trying to access a protected resource, the client may be faced with a chall
 A challenge handler is a client-side entity that implements the client-side security logic and the related user interaction.  
 **Important**: After a challenge is received, it cannot be ignored. You must answer or cancel it. Ignoring a challenge might lead to unexpected behavior.
 
-> Learn more about security checks in the [Creating a Security Check](../creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](../credentials-validation) tutorial.
+> Learn more about security checks in the [Creating a Security Check](creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](credentials-validation) tutorial.
 
 ### Scope
 You can protect resources such as adapters from unauthorized access by specifying a **scope**.  

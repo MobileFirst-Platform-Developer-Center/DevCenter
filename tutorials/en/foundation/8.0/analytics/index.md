@@ -14,8 +14,12 @@ IBM MobileFirst Foundation Operational Analytics collects data from app-to-serve
 MobileFirst Server comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems. In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client-side and on the MobileFirst Analytics Server. You choose the verbosity and data retention policy of the reported events, set conditional alerts, build custom charts and engage with new data.
 
 #### Platform support
-MobileFirst Operational Analytics supports iOS and Android. For Cordova applications, it is available for the Android and iOS platforms.  
-It is not available for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms.
+MobileFirst Operational Analytics supports:
+
+* Native iOS and Android clients
+* Cordova applications (iOS, Android).
+* Web applications.
+* Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms.
 
 #### Jump to
 
