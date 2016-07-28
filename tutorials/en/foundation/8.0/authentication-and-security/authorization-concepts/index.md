@@ -135,6 +135,9 @@ If you want to disable protection, you can use `secured="false"`.
 <procedure name="deleteUser" secured="false">
 ```
 
+### Unprotected resources
+An unprotected resource is a resource that does not require an access token. The MobileFirst security framework does not manage access to unprotected resources, and does not validate or check the identity of clients that access these resources. Therefore, features such as Direct Update, blocking device access, or remotely disabling an application, are not supported for unprotected resources.
+
 ## Authorization flow
 The authorization flow has two phases:
 
