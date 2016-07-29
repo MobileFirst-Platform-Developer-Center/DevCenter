@@ -13,7 +13,7 @@
 		<link>{{ url_base}}/</link>
 		<atom:link href="{{ url_base }}{{page.url}}" rel="self" type="application/rss+xml" />
     {% if page.filterByTag %}{% assign posts = site.tags[page.filterByTag]%}{% else %}{% assign posts = site.posts %}{% endif %}
-		{% for post in posts | limit: 10 %}
+		{% for post in posts limit: 10 %}
   			<item>
   				<title>{{ post.title | xml_escape }}</title>
   				{% if post.author.name %}
