@@ -75,6 +75,5 @@ Android Nougat has changed how Android handles trusted certificate authorities (
   - Finally copy the custom certificate (.crt) file into ```/res/raw``` folder
     ![copy-custom-ca-raw-folder]({{site.baseurl}}/assets/blog/2016-04-05-mobilefirst-platform-compatibility-for-android-n/copy-custom-ca-raw-folder.png)
 
-All for now on the compatibility of MobileFirst Platform Foundation on Android 7.0.
 
 Stay tuned for more updates.
