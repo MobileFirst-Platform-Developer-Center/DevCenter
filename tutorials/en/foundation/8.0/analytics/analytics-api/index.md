@@ -139,7 +139,11 @@ You can enable or disable the collecting of app sessions by using the following 
 
 #### JavaScript
 **Web**  
-Web applications do not support client lifecycle events.
+To use client lifecycle events, initialize analytics: 
+
+```javascript
+ibmmfpfanalytics.logger.config({analyticsCapture: true});
+```
 
 **Cordova**  
 
@@ -207,7 +211,11 @@ Because the client and the server each collect their own information, charts do 
 #### JavaScript
 
 **Web**  
-Web applications do not support client network events.
+To use client network events, initialize analytics: 
+
+```javascript
+ibmmfpfanalytics.logger.config({analyticsCapture: true});
+```
 
 **Cordova**  
 
