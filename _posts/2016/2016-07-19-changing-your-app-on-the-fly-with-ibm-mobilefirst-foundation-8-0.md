@@ -2,7 +2,7 @@
 title: Changing your app on the fly with IBM MobileFirst Foundation 8.0 Live Update
 date: 2016-07-19
 tags:
-- Live Update
+- Live_Update
 - MobileFirst_Foundation
 - Adapters
 - Development
