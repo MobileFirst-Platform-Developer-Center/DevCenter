@@ -195,7 +195,7 @@ You can also manually edit the application's configuration JSON file with the re
     ```
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
-> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobilefFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ## Protecting resources
 In the OAuth model, a protected resource is a resource that requires an access token. You can use the MobileFirst security framework to protect both resources that are hosted on an instance of MobileFirst Server, and resources on an external server. You protect a resource by assigning it a scope that defines the required permissions for acquiring an access token for the resource. 
@@ -226,7 +226,7 @@ You can also manually edit the application's configuration JSON file with the re
     ```
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
-> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobilefFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> You can also push updated configurations to remote servers. Review the [Using MobileFirst CLI to Manage MobileFirst artifacts](../using-the-mfpf-sdk/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
 
 ### Resource-level
 #### Java adapters
