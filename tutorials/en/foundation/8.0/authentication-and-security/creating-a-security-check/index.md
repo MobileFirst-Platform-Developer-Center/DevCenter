@@ -142,12 +142,48 @@ Note that **only** the properties defined in the `adapter.xml` file appear on th
 
 ![Adapter in console](console-adapter-security.png)
 
+You can also manually edit the adapter's configuration JSON file with the required configuration and push the changes back to a MobileFirst Server.
+
+1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev adapter pull`.
+2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
+3. Edit the file and look for the `securityCheckDefinitions` object. In this object, find or create an object that is named as your selected security check. Within the security-checks object, find or add a properties object. For each available configuration property that you want to configure, add within the properties object a pair of configuration-property name and value. For example: 
+
+    ```xml
+    "securityCheckDefinitions": {
+        "UserAuthentication": {
+            "properties": {
+                "maxAttempts": "4",
+                "failureExpirationSec: "90"
+            }
+        }
+    }
+    ```
+4. Deploy the updated configuration JSON file by running the command: `mfpdev adapter push`.
+
 ### MobileFirst Operations Console - Application
 Property values can also be overridden at the application level.
 
 In the MobileFirst Operations Console → **[your application] → Security tab**, under the **Security Check Configurations** section, you can modify the values defined in each security check available.
 
 <img class="gifplayer" alt="Configuring security check properties" src="console-application-security.png"/>
+
+You can also manually edit the adapter's configuration JSON file with the required configuration and push the changes back to a MobileFirst Server.
+
+1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
+2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
+3. Edit the file and look for the `securityCheckConfigurations` object. In this object, find or create an object that is named as your selected security check. Within the security-checks object, add a pair of configuration-property name and value for each available configuration property that you want to configure. For example:
+
+    ```xml
+    "SecurityCheckConfigurations": {
+        "UserAuthentication": {
+            "properties": {
+                "maxAttempts": "2",
+                "failureExpirationSec: "60"
+            }
+        }
+    }
+    ```
+4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
 ## Predefined Security Checks
 These predefined security checks are also available:
