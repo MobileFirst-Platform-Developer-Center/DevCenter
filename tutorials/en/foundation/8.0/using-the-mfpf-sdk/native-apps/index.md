@@ -11,7 +11,7 @@ This tutorial provides additional information for native applications that are d
 ## iOS application development
 
 ### Adding the MobileFirst iOS SDK
-To develop a native iOS application, you must add the MobileFirst framework files to your Xcode project and register the app on the IBM MobileFirst Platform Server. You can add the MobileFirst frameworks to your Xcode project either manually or using CocoaPods.
+To develop a native iOS application, you must add the MobileFirst framework files to your Xcode project and register the app on the IBM MobileFirst  Server. You can add the MobileFirst frameworks to your Xcode project either manually or using CocoaPods.
 
 > Learn more on [adding the MobileFirst SDK](../../adding-the-mfpf-sdk/ios) and registering iOS applications
 
@@ -79,8 +79,8 @@ To prepare for production
 
 ## Android application development
 
-### Adding the MobileFirst iOS SDK
-To develop a native Android application, you must add the MobileFirst framework files to your Android Studio project and register the app on the IBM MobileFirst Platform Server. You can add the MobileFirst frameworks to your Android Studio project either manually or using Gradle.
+### Adding the MobileFirst Android SDK
+To develop a native Android application, you must add the MobileFirst framework files to your Android Studio project and register the app on the IBM MobileFirst Server. You can add the MobileFirst frameworks to your Android Studio project either manually or using Gradle.
 
 > Learn more on [adding the MobileFirst SDK](../../adding-the-mfpf-sdk/android) and registering Android applications
 
@@ -102,10 +102,30 @@ The MobileFirst Android Javadocs are included in the *.aar files imported by Gra
 5. Navigate to the downloaded Javadoc JAR file (**ibmmobilefirstplatformfoundation-javadoc.jar**) under **..\app\build\intermediates\exploded-aar\ibmmobilefirstplatformfoundation\jars\assets** and select it.
 6. Click **OK**. The Javadocs will now be available within your project.
 
-
-
 ### Notes
 
 * The MobileFirst APIs cannot be activated from within an Android Service.
 
 ## Windows application development
+
+### Adding the MobileFirst Windows SDK
+To develop a native Windows application, you must add the MobileFirst framework files to your Visual Studio project and register the app on the IBM MobileFirst Server. You can add the MobileFirst frameworks to your Visual Studio project either manually or using NuGet.
+
+> Learn more on [adding the MobileFirst SDK](../../adding-the-mfpf-sdk/windows) and registering Windows applications
+
+### Adding optional MobileFirst components using NuGet
+You can prepare your environment for developing MobileFirst applications with optional components such as MobileFirst push by getting the framework and library files through installing the IBM.MobileFirstPlatformFoundationPush package from NuGet. The MobileFirst SDK for Windows 8 and Windows 10 Universal Windows Platform (UWP) is a prerequisite.
+
+1. Create a Visual Studio C# Project for Windows Universal or open an existing project or solution.
+2. Select **Tools → NuGet Package Manager → Package Manager Console**.
+3. Choose the project where you want to install the MobileFirst push component.
+4. Install the MobileFirst push component by running the Install-Package IBM.MobileFirstPlatformFoundationPush command.
+
+Or,
+
+You can also add the MobileFirst push component to your Visual Studio Project by right-clicking the **References** tab of your project and selecting **Manage NuGet Packages**. Search for IBM.MobileFirstPlatformFoundationPush and click **Install**.
+
+
+
+
+
