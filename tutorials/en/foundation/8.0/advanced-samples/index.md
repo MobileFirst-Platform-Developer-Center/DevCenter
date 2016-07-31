@@ -22,7 +22,7 @@ Social Login by itself is good and gives values to app owners and users. In addi
 ### Add trusted devices with IBM MobileFirst Foundation 8.0
 Many of the apps you use every day, like your favorite chat and email apps, are available to you in multiple channels - like web and mobile. And you probably appreciate it if you can transition seamlessly between the two, even when it comes to authentication. Entering your credentials over and over on each device can be frustrating. What if your browser could somehow know that you already authenticated in your mobile app? [Continue reading...]({{site.baseurl}}/blog/2016/07/31/add-trusted-device/)
 
-<span style="font-size:90%;margin:0">*Security framework, Adapters connecticity, SMS*</span>
+<span style="font-size:90%;margin:0">*Security framework, Adapters connecticity*</span>
 
 ### Implementing SMS One-Time-Password Authentication with IBM MobileFirst Foundation 8.0
 SMS One-Time-Password(OTP) is essential authentication method in every modern mobile application. SMS authentication and/or number verification gives your app good balance between security and user experience. More and more retails and banking apps use this method as their main authentication method. [Continue reading...]({{site.baseurl}}/blog/2016/07/18/sms-otp-with-ibm-mobilefirst-foundation/)
