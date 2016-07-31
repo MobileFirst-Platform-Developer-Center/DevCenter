@@ -365,7 +365,7 @@ There are two options of preview: MBS and Browser.
 * MBS - Mobile Browser Simulator. Will simulate a mobile device on browser, as well as provide rudimentary Cordova API simulation such as Camera, File Upload, Geolocation and more.
 * Browser - Simple Browser Rendering. Will present the www resources of the cordova application as a usual browser web page.
 
-> For more details about the preview options see the [Cordova development tutorial](../mfpf-development-in-cordova-applications).
+> For more details about the preview options see the [Cordova development tutorial](../cordova-apps).
 
 ### Update web resources for Direct Update
 

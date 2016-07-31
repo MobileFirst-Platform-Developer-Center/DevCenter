@@ -106,7 +106,7 @@ You can also manually add the MobileFirst SDK:
                                     <li>openssl.framework</li>
                                 </ul>
                             </li>
-                            <li>Similarly, add optional frameworks. For more information about available frameworks, see <a href="../using-the-mfpf-sdk/native-apps/#adding-optional-mobilefirst-ios-frameworks">Adding optional frameworks manually</a>.
+                            <li>Similarly, add optional frameworks. For more information about available frameworks, see <a href="../../using-the-mfpf-sdk/native-apps/#adding-optional-mobilefirst-ios-frameworks">Adding optional frameworks manually</a>.
                             <blockquote><b>Note:</b> These steps copy the relevant MobileFirst frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</bloclquote></li>
                         </ul>
                     </li>
@@ -119,13 +119,13 @@ You can also manually add the MobileFirst SDK:
                         </ul>
                     </li>
                     <li>In the <b>Deployment</b> section of the <b>Build Settings</b> tab, select a value for the <b>iOS Deployment Target</b> field that is greater than or equal to 8.0.</li>
-                    <li><i>Optional:</i> From Xcode 7, bitcode is set as the default. For limitations and requirements see <a href="../using-the-mfpf-sdk/native-apps/#working-with-bitcode-in-ios-apps">Working with bitcode in iOS apps</a>. To disable bitcode:
+                    <li><i>Optional:</i> From Xcode 7, bitcode is set as the default. For limitations and requirements see <a href="../../using-the-mfpf-sdk/native-apps/#working-with-bitcode-in-ios-apps">Working with bitcode in iOS apps</a>. To disable bitcode:
                         <ul>
                             <li>Open the <b>Build Options</b> section.</li>
                             <li>Set <b>Enable Bitcode</b> to <b>No</b>.</li>
                         </ul>
                     </li>
-                    <li>Beginning with Xcode 7, TLS must be enforced. See <a href="../using-the-mfpf-sdk/native-apps/#enforcing-tls-secure-connections-in-ios-apps">Enforcing TLS-secure connections in iOS apps</a>.</li>
+                    <li>Beginning with Xcode 7, TLS must be enforced. See <a href="../../using-the-mfpf-sdk/native-apps/#enforcing-tls-secure-connections-in-ios-apps">Enforcing TLS-secure connections in iOS apps</a>.</li>
                 </ul> 
             
                 <br/>
