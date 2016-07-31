@@ -3,7 +3,7 @@ layout: tutorial
 title: Client-side log collection
 breadcrumb_title: Client-side log collection
 relevantTo: [ios,android,javascript]
-weight: 6
+weight: 7
 ---
 
 ## Overview
