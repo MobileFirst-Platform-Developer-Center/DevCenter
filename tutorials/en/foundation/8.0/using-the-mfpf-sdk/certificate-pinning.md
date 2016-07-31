@@ -72,7 +72,7 @@ The certificate pinning method will raise an exception in two cases:
 ### Cordova
 
 ```javascript
-WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onFailure)
+WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onFailure);
 
 ```
 
@@ -86,4 +86,3 @@ The certificate pinning method returns a promise:
 Later, if a secured request is made to a server whose certificate is not pinned, the `onFailure` callback of the specific request (for example, `obtainAccessToken` or `WLResourceRequest`) is called.
 
 > Learn more about the certificate pinning API method in the [API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html)
-
