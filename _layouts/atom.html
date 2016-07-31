@@ -38,7 +38,7 @@
   {% endif %}
 
   {% if page.filterByTag %}{% assign posts = site.tags[page.filterByTag]%}{% else %}{% assign posts = site.posts %}{% endif %}
-  {% for post in posts | limit : 10 %}
+  {% for post in posts limit: 10 %}
       <entry>
         <title>{{ post.title | markdownify | strip_html | strip_newlines | xml_escape }}</title>
         <link href="{{ post.url | prepend: url_base }}" rel="alternate" type="text/html" title="{{ post.title | xml_escape }}" />
