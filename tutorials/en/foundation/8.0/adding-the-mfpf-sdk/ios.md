@@ -15,8 +15,6 @@ The MobileFirst Foundation SDK consists of a collection of pods that are availab
 
 In this tutorial, you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the MobileFirst Server to recognize the application, and to find information about the MobileFirst configuration files that are added to the project.
 
-> For instructionsabout how to manually add the SDK files to a project, [visit the user documentation](http://www-01.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/wl_welcome.html).
-
 **Prerequisites:**
 
 Make sure that:
@@ -66,6 +64,76 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
     **Note:** The commands might take several minutes to complete.
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
+
+#### Manually adding the SDK
+You can also manually add the MobileFirst SDK:
+  
+<div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="ios-sdk">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Click for instructions</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
+            <div class="panel-body">
+            <p>To manually add the MobileFirst SDK, first download the SDK .zip file from the <b>MobileFirst Operations Console → Download Center → SDKs</b>.</p>
+            
+                <ul>
+                    <li>In your Xcode project, add the MobileFirst framework files to your project.
+                        <ul>
+                            <li>Select the project root icon in the project explorer.</li>
+                            <li>Select <b>File → Add Files</b> and navigate to the folder that contains the framework files previously downloaded.</li>
+                            <li>Click the <b>Options</b> button.</li>
+                            <li>Select <b>Copy items if needed</b> and <b>Create groups for any added folders</b>.<br/>
+                            <b>Note:</b> If you do not select the <b>Copy items if needed</b> option, the framework files are not copied but are linked from their original location.</li>
+                            <li>Select the main project (first option) and select the app target.</li>
+                            <li>In the <b>General</b> tab, remove any frameworks that would get added automatically to <b>Linked Frameworks and Libraries</b>.</li>
+                            <li>Required: In <b>Embedded Binaries</b>, add the following frameworks:
+                                <ul>
+                                    <li>IBMMobileFirstPlatformFoundation.framework</li>
+                                    <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
+                                    <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
+                                    <li>Localizations.bundle</li>
+                                </ul>
+                                Performing this step will automatically add these frameworks to <b>Linked Frameworks and Libraries</b>.
+                            </li>
+                            <li>In <b>Linked Frameworks and Libraries</b>, add the following frameworks:
+                                <ul>
+                                    <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
+                                    <li>sqlcipher.framework</li>
+                                    <li>openssl.framework</li>
+                                </ul>
+                            </li>
+                            <li>Similarly, add optional frameworks. For more information about available frameworks, see <a href="../using-the-mfpf-sdk/native-apps/#adding-optional-mobilefirst-ios-frameworks">Adding optional frameworks manually</a>.
+                            <blockquote><b>Note:</b> These steps copy the relevant MobileFirst frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</bloclquote></li>
+                        </ul>
+                    </li>
+                    <li>The frameworks added in Step 1, would be automatically added to the <b>Link Binary with Libraries</b> section, in the <b>Build Phases</b> tab.</li>
+                    <li><i>Optional:</i> If you did not copy the framework files into your project as described previously , perform the following steps by using the <b>Copy items if needed</b> option, in the <b>Build Phases</b> tab.
+                        <ul>
+                            <li>Open the <b>Build Settings</b> page.</li>
+                            <li>Find the <b>Search Paths</b> section.</li>
+                            <li>Add the path of the folder that contains the frameworks to the <b>Framework Search Paths</b> folder.</li>
+                        </ul>
+                    </li>
+                    <li>In the <b>Deployment</b> section of the <b>Build Settings</b> tab, select a value for the <b>iOS Deployment Target</b> field that is greater than or equal to 8.0.</li>
+                    <li><i>Optional:</i> From Xcode 7, bitcode is set as the default. For limitations and requirements see <a href="../using-the-mfpf-sdk/native-apps/#working-with-bitcode-in-ios-apps">Working with bitcode in iOS apps</a>. To disable bitcode:
+                        <ul>
+                            <li>Open the <b>Build Options</b> section.</li>
+                            <li>Set <b>Enable Bitcode</b> to <b>No</b>.</li>
+                        </ul>
+                    </li>
+                    <li>Beginning with Xcode 7, TLS must be enforced. See <a href="../using-the-mfpf-sdk/native-apps/#enforcing-tls-secure-connections-in-ios-apps">Enforcing TLS-secure connections in iOS apps</a>.</li>
+                </ul> 
+            
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Close section</b></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 ### Registering the application
 
@@ -136,13 +204,17 @@ SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.
 ## Generated MobileFirst Native SDK artifacts
 
 ### mfpclient.plist
-Located at the root of the project, this file contains server connectivity properties and is user-editable:
+Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the MobileFirst server.
 
-- `protocol` – The communication protocol to MobileFirst Server. Either `HTTP` or `HTPS`.
-- `host` – The host name of the MobileFirst Server instance.
-- `port` – The port of the MobileFirst Server instance.
-- `wlServerContext` – The context root path of the application on the MobileFirst Server instance.
-- `languagePreference` - Sets the default language for client sdk system messages.
+| Property            | Description                                                         | Example values |
+|---------------------|---------------------------------------------------------------------|----------------|
+| wlServerProtocol    | The communication protocol with the MobileFirst Server.             | http or https  |
+| wlServerHost        | The host name of the MobileFirst Server.                            | 192.168.1.63   |
+| wlServerPort        | The port of the MobileFirst Server.                                 | 9080           |
+| wlServerContext     | The context root path of the application on the MobileFirst Server. | /mfp/          |
+| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+
+
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:
