@@ -111,7 +111,7 @@ The MobileFirst Android Javadocs are included in the *.aar files imported by Gra
 ### Adding the MobileFirst Windows SDK
 To develop a native Windows application, you must add the MobileFirst framework files to your Visual Studio project and register the app on the IBM MobileFirst Server. You can add the MobileFirst frameworks to your Visual Studio project either manually or using NuGet.
 
-> Learn more on [adding the MobileFirst SDK](../../adding-the-mfpf-sdk/windows) and registering Windows applications
+> Learn more on [adding the MobileFirst SDK](../../adding-the-mfpf-sdk/windows-8-10) and registering Windows applications
 
 ### Adding optional MobileFirst components using NuGet
 You can prepare your environment for developing MobileFirst applications with optional components such as MobileFirst push by getting the framework and library files through installing the IBM.MobileFirstPlatformFoundationPush package from NuGet. The MobileFirst SDK for Windows 8 and Windows 10 Universal Windows Platform (UWP) is a prerequisite.
