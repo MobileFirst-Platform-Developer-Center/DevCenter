@@ -33,7 +33,7 @@ This blog will show you how simple it is to implement a feature which will let a
 ## Live Demo
 <div class="sizer">
   <div class="embed-responsive embed-responsive-16by9">
-    <iframe src="https://www.youtube.com/embed/Rqd5l7UPBf0"></iframe>
+    <iframe src="https://www.youtube.com/embed/95bXRedN_8I"></iframe>
   </div>
 </div>   
 <br>
