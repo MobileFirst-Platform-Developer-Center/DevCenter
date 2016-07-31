@@ -79,4 +79,33 @@ To prepare for production
 
 ## Android application development
 
+### Adding the MobileFirst iOS SDK
+To develop a native Android application, you must add the MobileFirst framework files to your Android Studio project and register the app on the IBM MobileFirst Platform Server. You can add the MobileFirst frameworks to your Android Studio project either manually or using Gradle.
+
+> Learn more on [adding the MobileFirst SDK](../../adding-the-mfpf-sdk/android) and registering Android applications
+
+### Adding optional MobileFirst components using Gradle
+You can add more MobileFirst features to your Android application with Gradle.
+
+| Feature                                            | aar file | 
+|----------------------------------------------------|------------------------------------------------------------------------------------|
+| JSONStore                                          | **ibmmobilefirstplatformfoundationjsonstore.aar**.  For more information on setup, see the [JSONStore tutorial](../jsonstore/android). |
+| Push                                               | **ibmmobilefirstplatformfoundationpush.aar**. For more information, see the [Notifications tutorials](../../notifications). |
+
+### Registering Javadocs to an Android Studio Gradle project
+The MobileFirst Android Javadocs are included in the *.aar files imported by Gradle. However you need to link them to their relevant library in Android Studio.
+
+1. In Android Studio make sure you are in the **Project** view.
+2. Find the library name under the **External Libraries** node (the Javadoc file appears below it).
+3. Right-click on the library name and select **Library Properties**.
+4. From the Library Properties dialog select the "+" button
+5. Navigate to the downloaded Javadoc JAR file (**ibmmobilefirstplatformfoundation-javadoc.jar**) under **..\app\build\intermediates\exploded-aar\ibmmobilefirstplatformfoundation\jars\assets** and select it.
+6. Click **OK**. The Javadocs will now be available within your project.
+
+
+
+### Notes
+
+* The MobileFirst APIs cannot be activated from within an Android Service.
+
 ## Windows application development

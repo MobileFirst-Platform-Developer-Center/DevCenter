@@ -78,7 +78,7 @@ You can also manually add the MobileFirst SDK:
 
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
-            <p>To manually add the MobileFirst SDK, first download the SDK .zip file from the <b>MobileFirst Operations Console → Download Center → SDKs</b>.</p>
+                <p>To manually add the MobileFirst SDK, first download the SDK .zip file from the <b>MobileFirst Operations Console → Download Center → SDKs</b> tab.</p>
             
                 <ul>
                     <li>In your Xcode project, add the MobileFirst framework files to your project.
@@ -213,8 +213,6 @@ Located at the root of the project, this file defines the client-side properties
 | wlServerPort        | The port of the MobileFirst Server.                                 | 9080           |
 | wlServerContext     | The context root path of the application on the MobileFirst Server. | /mfp/          |
 | languagePreferences | Sets the default language for client sdk system messages.           | en             |
-
-
 
 ## Tutorials to follow next
 With the MobileFirst Native SDK now integrated, you can now:

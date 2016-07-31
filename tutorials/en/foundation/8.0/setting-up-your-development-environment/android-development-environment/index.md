@@ -10,6 +10,9 @@ This tutorial explains the steps a developer needs to follow in order to be able
 
 **Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment/) tutorial.
 
+#### Support level
+MobileFirst SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
+
 ### Android Studio
 Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.
 
