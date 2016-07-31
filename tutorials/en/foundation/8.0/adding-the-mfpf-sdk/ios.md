@@ -18,6 +18,7 @@ In this tutorial, you learn how to add the MobileFirst Native SDK by using Cocoa
 **Prerequisites:**
 
 Make sure that:
+
 - Xcode and MobileFirst CLI are installed on the developer workstation.  
 - A local or remote instance of MobileFirst Server is running.
 - You have read the [Setting up your MobileFirst development environment](../../setting-up-your-development-environment/mobilefirst-development-environment) and [Setting up your iOS development environment](../../setting-up-your-development-environment/ios-development-environment) tutorials.
@@ -25,6 +26,7 @@ Make sure that:
 #### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
 - [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
@@ -65,7 +67,7 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
 
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
 
-#### Manually adding the SDK
+### Manually adding the MobileFirst Native SDK
 You can also manually add the MobileFirst SDK:
   
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">

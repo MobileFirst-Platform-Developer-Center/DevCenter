@@ -25,6 +25,7 @@ Make sure that:
 #### Jump to:
 
 - [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
+- [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
 - [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
 - [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
 - [Tutorials to follow next](#tutorials-to-follow-next)
@@ -90,7 +91,7 @@ Create an Android Studio project or use an existing one.
 
 > If a Gradle Sync request appears, accept it.
 
-#### Manually adding the SDK
+### Manually adding the MobileFirst Native SDK
 You can also manually add the MobileFirst SDK:
   
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
