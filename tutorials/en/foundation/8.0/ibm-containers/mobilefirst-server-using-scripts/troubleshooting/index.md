@@ -96,7 +96,7 @@ If additional values were added to the server.env file without new line characte
 **How to resolve**  
 Manually restart the containers. If the problem still exists, check to see if the number of connections to the database service exceeds the number of connections provisioned by your database plan. If so, make any needed adjustments before proceeding.
 
-If the problem was caused by unresolved properties, ensure that your editor adds the linefeed (LF) character to demarcate the end of a line when editing any of the provided files. For example, the TextEdit app on OS X might use the CR character to mark the end of line instead of LF, which would cause the issue.
+If the problem was caused by unresolved properties, ensure that your editor adds the linefeed (LF) character to demarcate the end of a line when editing any of the provided files. For example, the TextEdit app on macOS might use the CR character to mark the end of line instead of LF, which would cause the issue.
 
 ### prepareserver.sh script fails	
 The **prepareserver.sh** script fails and returns the error 405 Method Not Allowed.
