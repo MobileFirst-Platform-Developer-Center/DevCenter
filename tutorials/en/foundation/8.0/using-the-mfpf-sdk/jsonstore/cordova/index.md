@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore in Cordova applications
-breadcrumb_title: JSONStore - Cordova
+breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 6
 downloads:

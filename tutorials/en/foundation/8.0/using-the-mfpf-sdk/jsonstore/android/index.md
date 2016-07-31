@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore in Android applications
-breadcrumb_title: JSONStore - Android
+breadcrumb_title: Android
 relevantTo: [android]
 weight: 8
 downloads:

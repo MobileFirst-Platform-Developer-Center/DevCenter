@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: JSONStore in iOS applications
-breadcrumb_title: JSONStore - iOS
+breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 7
 downloads:
