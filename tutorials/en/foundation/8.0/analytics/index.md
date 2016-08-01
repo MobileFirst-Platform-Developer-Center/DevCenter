@@ -22,7 +22,6 @@ MobileFirst Operational Analytics supports:
 * Support is **not available** for the Windows 8.1 Universal or Windows 10 UWP native or Cordova platforms.
 
 #### Jump to
-
 * [Operational Analytics Console](#operational-analytics-console)
 * [Operational Analytics Features](#operational-analytics-features)
 * [Enable/Disable Analytics Support](#enable-disable-analytics-support)
