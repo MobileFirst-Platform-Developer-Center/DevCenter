@@ -26,7 +26,7 @@ To implement the License Agreement functionality, I have created two artifacts:
 - The LicenseAgreementSecuirtyCheck which gets deployed on the server
 - The LicenseAgreementChallengeHandler which is used on the client to interact with the security check and the user. It is presented in a sample hybrid application.
 
-Source code for this security check and sample application can be found  [here](https://github.com/mfpdev/mfp-advanced-adapters-samples/tree/development/custom-security-checks/license-agreement)
+Source code for this security check and sample application can be found  [here](https://github.com/mfpdev/license-agreement-sample)
 
 ## The License Agreement Security Check
 
